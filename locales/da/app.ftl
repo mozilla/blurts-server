@@ -223,6 +223,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Undersøg for datalæk
 find-out-what-hackers-know = Find ud af, hvad hackerne allerede ved om dig. Lær, hvordan du kan være et skridt foran dem.
+get-email-alerts = Beskyt dig selv: Få advarsler via mail, når dine data optræder i en kendt datalæk
 search-for-your-email = Søg efter din mailadresse i offentlige datalæk helt tilbage fra 2007.
 back-to-top = Tilbage til toppen
 comm-opt-0 = Send mig en mail, hvis en af mine nedenstående mailadresser optræder i en datalæk.
@@ -436,12 +437,18 @@ five-myths-desc = Undgå dårlige adgangskode-vaner, som gør det nemt for hacke
 take-further-steps-desc = Find ud af, hvordan du mindsker riskoen for identitetstyveri og undgår økonomiske tab.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Ændringer gemt!
+# Section headline
+rec-section-headline = Hvad skal jeg gøre ved denne datalæk?
+# Section headline
+rec-section-headline-no-pw = Hvad skal jeg gøre for at beskytte mine personlige data?
+rec-section-subhead-no-pw = Selvom adgangskoder ikke blev kompromitteret i dette datalæk, er der stadig forholdsregler, du kan tage for bedre at beskytte dine personlige data.
 # Button
 see-additional-recs = Se flere anbefalinger
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+resolve-top-notification = { $affectedEmail } optrådte i denne datalæk. <a>Hvad skal jeg gøre?</a>
 
 ##
 
