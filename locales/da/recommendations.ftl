@@ -53,16 +53,26 @@ rec-ip-subhead = Brug en tjeneste, der maskerer din IP-adresse
 rec-ip-us-cta = Prøv { -brand-fpn }
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+rec-hist-pw-subhead = Undgå at genbruge adgangskoder
 # Link title
 rec-hist-pw-cta-fx = Se logins i { -brand-name }
+rec-hist-pw =
+    Brug unikke, stærke adgangskoder til hver konto. Hvis en adgangskode bliver 
+    kompromitteret i en datalæk, skal du kun ændre dette ene login.
+# Recommendation subhead
+rec-sec-qa-subhead = Opret unikke svar på sikkerhedsspørgsmål
 # Recommendation subhead
 rec-phone-num-subhead = Undgå at dele dit telefonnummer
 # Recommendation subhead
 rec-dob-subhead = Undgå at bruge personlige informationer i PIN-koder
 # Recommendation subhead
+rec-pins-subhead = Øg sikkerheden af dine PIN-koder
+# Recommendation subhead
 rec-address-subhead = Undgå at bruge adresser i adgangskoder
 # Recommendation subhead
 rec-gen-1-subhead = Brug unikke, stærke adgangskoder til hver konto
+# Link title
+rec-gen-1-cta = Sådan opretter du stærke adgangskoder
 # Recommendation subhead
 rec-gen-2-subhead = Gem adgangskoder et sikkert sted
 # Link title

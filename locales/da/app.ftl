@@ -449,10 +449,21 @@ see-additional-recs = Se flere anbefalinger
 ## Please do not modify or remove "<a>" and "</a>".
 
 resolve-top-notification = { $affectedEmail } optrådte i denne datalæk. <a>Hvad skal jeg gøre?</a>
+resolve-top-notification-plural =
+    { $numAffectedEmails ->
+        [one] { $numAffectedEmails } af dine mailadresser optrådte i denne datalæk. <a>Hvad skal jeg gøre?</a>
+       *[other] { $numAffectedEmails } af dine mailadresser optrådte i denne datalæk. <a>Hvad skal jeg gøre?</a>
+    }
 
 ##
 
 marking-this-subhead = Markerer denne datalæk som løst
+# This string contains nested markup that is later used to style the text inside of it.
+# Please do not modify or remove "<span>" and "</span>".
+marking-this-body =
+    <span>Når du har taget de forholdsregler, du kan for at løse denne datalæk</span>,
+    kan du markere den som løst. Du kan se detaljer om datalækken 
+    når som helst fra din oversigt.
 mark-as-resolve-button = Marker som løst
 marked-as-resolved-label = Markeret som løst
 undo-button = Fortryd
