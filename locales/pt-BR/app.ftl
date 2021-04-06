@@ -575,6 +575,6 @@ promo-fpn-cta = Instale o { -brand-fpn }
 monitor-promo-headline = Descubra novos vazamentos de dados
 monitor-promo-body = Seja notificado na próxima vez que suas informações pessoais forem expostas em um vazamento conhecido.
 ecosystem-promo-headline = Proteja sua vida online com produtos que põem sua privacidade em primeiro lugar
-ecosystem-promo-body = Todos os produtos { -brand-name } honram nossa promessa de como lidar com dados pessoais: Coletar pouco. Manter seguro. Sem segredos.
+ecosystem-promo-body = Todos os produtos { -brand-name } honram nosso compromisso de como lidar com dados pessoais: Coletar pouco. Manter seguro. Sem segredos.
 promo-ecosystem-cta = Veja todos os produtos
 steps-to-resolve-headline = Passos para resolver este vazamento
