@@ -154,7 +154,7 @@ micro-survey-dont-care-response = 没有感觉
 latest-breach = 最新公开的外泄事件
 # Link title
 more-about-this-breach = 关于此数据外泄事件的更多信息
-take-control = 光复你的个人数据。
+take-control = 夺回个人数据的控制权。
 cant-stop-hackers = 您无法阻止黑客入侵，但可以通过改变习惯，让他们更难得手。
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
