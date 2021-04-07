@@ -596,3 +596,5 @@ ecosystem-promo-headline = Vern om livet ditt på nettet med personvernprodukter
 ecosystem-promo-body = Alle { -brand-name }-produkter overholder vår lovnad om private data i alt vi gjør: Samle inn mindre. Oppbevar det sikkert. Ingen hemmeligheter.
 promo-ecosystem-cta = Se alle produkter
 steps-to-resolve-headline = Fremgangsmåte for å løse denne datalekkasjen
+vpn-promo-headline = Nå er det på tide å øke sikkerheten din på nettet.
+vpn-promo-cta = Få { -brand-mozilla-vpn }
