@@ -597,4 +597,5 @@ ecosystem-promo-body = Alle { -brand-name }-produkter overholder vår lovnad om 
 promo-ecosystem-cta = Se alle produkter
 steps-to-resolve-headline = Fremgangsmåte for å løse denne datalekkasjen
 vpn-promo-headline = Nå er det på tide å øke sikkerheten din på nettet.
+vpn-promo-copy = { -brand-Mozilla } sin VPN-tjeneste hjelper med å beskytte internett-tilkoblingen din fra hackere og spioner.
 vpn-promo-cta = Få { -brand-mozilla-vpn }
