@@ -6,10 +6,10 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
-fx-desktop = { -brand-name } Browser para escritorio
-fx-mobile = { -brand-name } Browser para móviles
+fx-desktop = Navegador { -brand-name } para escritorio
+fx-mobile = Navegador { -brand-name } para móviles
 
-
+##
 
 # Aria label for the Bento button
 bento-button-title = Aplicaciones y servicios de { -brand-name }
