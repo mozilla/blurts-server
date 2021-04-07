@@ -600,3 +600,6 @@ ecosystem-promo-headline = Védje meg az online életét az adatvédelmet előre
 ecosystem-promo-body = Az összes { -brand-name } termék betartja a személyes adatokra vonatkozó ígéretünket: Gyűjts kevesebbet. Tartsd biztonságban. Nincsenek titkok.
 promo-ecosystem-cta = Összes termék megtekintése
 steps-to-resolve-headline = Lépések az adatsértés megoldása érdekében
+vpn-promo-headline = Itt az ideje, hogy felturbózza az online biztonságát.
+vpn-promo-copy = A { -brand-Mozilla } virtuális magánhálózata segít megvédeni az internetkapcsolatát a hackerek és kémek ellen.
+vpn-promo-cta = { -brand-mozilla-vpn } beszerzése
