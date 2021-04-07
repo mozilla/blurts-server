@@ -3,6 +3,14 @@ body {
   --vpn-purple: #c5c8fb;
 }
 
+.vpn-banner-visible .clear-header {
+  padding-top: 28rem;
+}
+
+.vpn-banner-visible .micro-survey-banner {
+  display: none;
+}
+
 .vpn-promo-banner {
   background-color: var(--vpn-purple);
   font-family: "Metropolis", sans-serif;
@@ -122,11 +130,18 @@ body {
   .vpn-promo-banner a {
     margin-bottom: 0.25rem;
   }
+
+  .vpn-banner-visible .clear-header {
+    padding-top: 18rem;
+  }
 }
 
 @media screen and (min-width: 800px) {
   .vpn-promo-copy {
     max-width: 400px;
+  }
+  .vpn-banner-visible .clear-header {
+    padding-top: 16rem;
   }
 }
 

@@ -317,6 +317,11 @@ function checkIfTier1(preferredLanguage) {
   return tier1Languages.some(lang => preferredLanguage.includes(lang));
 }
 
+function checkIfEnglishUS(preferredLanguage) {
+  const tier1Languages = ["en-US"];
+  return tier1Languages.some(lang => preferredLanguage.includes(lang));
+}
+
 function recruitmentLogic() {
   const recruitmentBannerLink = document.querySelector("#recruitment-banner");
   if (!recruitmentBannerLink) {
@@ -433,6 +438,7 @@ function vpnBannerLogic() {
     hide: function() {
       vpnPromoFunctions.setCookie();
       vpnPromoBanner.classList.add("closed");
+      document.body.classList.remove("vpn-banner-visible");
     },
     init: function() {
       vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
@@ -445,6 +451,7 @@ function vpnBannerLogic() {
     },
     show: function() {
       vpnPromoBanner.classList.remove("closed");
+      document.body.classList.add("vpn-banner-visible");
     },
   };
 
@@ -525,7 +532,11 @@ function vpnBannerLogic() {
     return;
   }
 
-  vpnBannerLogic();
+  const preferredFirstLanguageIsEnglish = checkIfEnglishUS(preferredLanguages[0]);
+
+  if (preferredFirstLanguageIsEnglish) {
+    vpnBannerLogic();
+  }
 
   if (document.getElementById("fxaCheckbox")) {
     document.getElementById("fxaCheckbox").style.display = "block";
