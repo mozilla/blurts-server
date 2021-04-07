@@ -1,0 +1,124 @@
+html,
+body {
+  --vpn-purple: #C5C8FB;
+}
+
+.vpn-promo-banner {
+  background-color: var(--vpn-purple);
+  font-family: "Metropolis", sans-serif;
+  font-size: 16px;
+  position: relative;
+}
+
+.vpn-promo-banner-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+.vpn-promo-logo {
+  display: block;
+  max-width: 122px;
+  margin: 0 auto 1rem;
+}
+
+.vpn-promo-copy {
+  text-align: center;
+  font-size: 1rem;
+  max-width: 320px;
+  margin: 0 auto 1rem;
+  line-height: 1.2rem;
+}
+
+.vpn-promo-banner a {
+  background-color: var(--bgLight);
+  border: solid 2px var(--inkDark);
+  box-shadow: 8px 8px 0 #6a57dc;
+  color: var(--inkDark);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.5rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.vpn-promo-banner a:hover,
+.vpn-promo-banner a:active,
+.vpn-promo-banner a:focus {
+  background-color: var(--inkDark);
+  color: var(--bgLight);
+}
+
+.vpn-promo-banner button {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  outline: none;
+  width: 2rem;
+}
+
+.vpn-promo-banner button:hover img {
+  transform: scale(1.1);
+}
+
+
+.vpn-promo-banner button img {
+  display: block;
+  width: 100%;
+  transition: transform 0.2s ease-out;
+}
+
+
+/* @media screen and (max-width: 800px) {
+
+@media screen and (max-width: 500px) { */
+
+@media screen and (min-width: 700px) {
+  .vpn-promo-banner-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .vpn-promo-copy {
+    flex-shrink: 2;
+  }
+  .vpn-promo-copy strong {
+    display: block;
+  }
+  .vpn-promo-banner button {
+    top: 0;
+    right: 0;
+  }
+
+  .vpn-promo-logo,
+  .vpn-promo-copy {
+    margin: 0;
+  }
+
+  .vpn-promo-banner a {
+    margin-bottom: 0.25rem;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .vpn-promo-copy {
+    max-width: 400px;
+  }
+
+}
+
+@media screen and (min-width: 960px) {
+  .vpn-promo-banner button {
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+}
