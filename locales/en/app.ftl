@@ -762,3 +762,7 @@ ecosystem-promo-body =
 promo-ecosystem-cta = See All Products
 
 steps-to-resolve-headline = Steps to resolve this breach
+
+vpn-promo-headline = Now’s the time to boost your safety online.
+vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helps shield your internet connection from hackers and spies. 
+vpn-promo-cta = Get { -brand-mozilla-vpn }
