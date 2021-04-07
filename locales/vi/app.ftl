@@ -587,3 +587,6 @@ ecosystem-promo-headline = Bảo vệ cuộc sống trực tuyến của bạn v
 ecosystem-promo-body = Mọi sản phẩm { -brand-name } chúng tôi làm đều tôn vinh lời hứa dữ liệu cá nhân của chúng tôi: Lấy ít hơn. Giữ nó an toàn. Không có bí mật.
 promo-ecosystem-cta = Xem tất cả sản phẩm
 steps-to-resolve-headline = Các bước để giải quyết rò rỉ này
+vpn-promo-headline = Bây giờ là lúc để tăng cường sự an toàn của bạn khi trực tuyến.
+vpn-promo-copy = Mạng riêng ảo của { -brand-Mozilla } giúp bảo vệ kết nối Internet của bạn khỏi tin tặc và gián điệp.
+vpn-promo-cta = Tải xuống { -brand-mozilla-vpn }
