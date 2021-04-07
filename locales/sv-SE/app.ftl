@@ -601,4 +601,5 @@ ecosystem-promo-body = Alla produkter från { -brand-name } respekterar vårt l�
 promo-ecosystem-cta = Se alla produkter
 steps-to-resolve-headline = Åtgärder för att lösa detta intrång
 vpn-promo-headline = Nu är det dags att öka din säkerhet online.
+vpn-promo-copy = { -brand-Mozilla }:s VPN hjälper till att skydda din internetanslutning från hackare och spioner.
 vpn-promo-cta = Hämta { -brand-mozilla-vpn }
