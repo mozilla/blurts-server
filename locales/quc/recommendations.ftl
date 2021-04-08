@@ -14,3 +14,7 @@ rec-ip-us-cta = Chak'amb'ejaj { -brand-fpn }
 rec-hist-pw-cta-fx = Rilik taq umajixik chak { -brand-name }
 # Link title
 rec-gen-1-cta = Jas uwinaqirisax nim uchuq'ab'il taq retokib'al
+# Link title
+rec-gen-2-cta = Mayjab'al rech taq ilawachinel retokib'al
+# Link title
+rec-gen-3-cta = Chasik'ij uwach taq chajital no'jib'al
