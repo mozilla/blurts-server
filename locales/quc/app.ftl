@@ -539,4 +539,5 @@ ecosystem-promo-body = Ronojel taq k'ayij rech { -brand-name } kkib'an le qatzuj
 promo-ecosystem-cta = Chawila' ronojel taq k'ayij
 steps-to-resolve-headline = Taq  ucholajil rech usolik we retztaqan
 vpn-promo-headline = Chanim qas are wa' qas utz kak'exsuk'umax le chajib'al pa nimk'atz
+vpn-promo-copy = Le kemk'at rech echeb'alil rech { -brand-Mozilla } ktob'an chech uchajixik le at'iqonem pa nimk'atz rech taq e b'ank'ax rech kematz'ib' chi'l tatab'enelab'.
 vpn-promo-cta = Chariqa' { -brand-mozilla-vpn }

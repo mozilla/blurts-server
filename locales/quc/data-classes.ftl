@@ -64,3 +64,6 @@ instant-messenger-identities = Wokwokaj rech aninaqil oqxa'n
 ip-addresses = Kemriqonib'al IP
 job-applications = Taq kojkemchak rech taq kojkemchak
 job-titles = Taq k'utq'atoj rech chak
+login-histories = Taq b'anatal kanoq rech umajixik kemchak
+mac-addresses = Taq kemriqonib'al MAC
+marital-statuses = Kemub'antajik taq k'ulanem
