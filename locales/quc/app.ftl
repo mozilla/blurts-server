@@ -109,6 +109,13 @@ security-tips = Taq no'jib'al rech chajib'al
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Chajaqa' { -brand-fxa } rech nik'onem
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Pa le ucholajil -10, jampa' rajilab'alil kakojo are chi ke'asik'ij utz awachib'il on chi kech taq awachib'il ere chi kkikoj we { -product-short-name }
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Man kinb'ij taj
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Sib'alaj kinb'ij
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = UK'ISB'AL RETZTAQAN YA'TALIK
 # Link title
