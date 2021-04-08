@@ -445,34 +445,32 @@ search-breaches = Search Breaches
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-note = <span>Your email doesn’t appear in this breach,
+facebook-breach-note = <span>Your email doesn’t appear in this leak,
   but your phone number may still be vulnerable.</span> Some of the accounts
-  compromised in the Facebook breach included phone numbers and other
+  compromised in the Facebook leak included phone numbers and other
   personal information but not email addresses. If you have ever signed up
   for a Facebook account — even if you don’t use it now — we recommend you
   take these steps to protect yourself
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-1 = <span>Change your profile information to private
-  in your Facebook privacy settings at
-  <a>https://www.facebook.com/me/about</a>.</span> During this breach, hackers
-  took profile information that was set as “open to the public” or “shared with
-  friends.” This information can be combined with other data to access even
-  more of your personal information and accounts.
+facebook-breach-what-to-do-1-headline = <span>Set your information to “Only me” or other non-public setting in <a>your Facebook profile</a>.</span>
+
+facebook-breach-what-to-do-1-copy = During this leak, hackers took profile 
+  information that was set as “open to the public” or “shared with friends.”
+  This information can be combined with other data to access even more of
+  your personal information and accounts.
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-2 = <span>Change the passcode on your <a>mobile
-  phone carrier accounts</a> to prevent SIM-swapping</span>. SIM swapping,
-  which is also called SIM-jacking, is when a hacker uses phone numbers, date
-  of birth and other data to take over a person’s cell phone number and then
-  hack into their email, social media and even financial accounts.
+facebook-breach-what-to-do-2-headline = <span>Change the passcode on your <a>mobile
+  phone carrier accounts</a> to prevent SIM-swapping</span>.
 
-# This string contains nested markup that is later used to style and link the text inside of it.
-# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-3 = <span>Follow the recommendations on our
-  <a>Facebook breach page</a>.</span>
+facebook-breach-what-to-do-2-copy = SIM swapping, which is also called SIM-jacking,
+  is when a hacker uses phone numbers, date of birth and other data to take over
+  a person’s cell phone number and then hack into their email, social media and even financial accounts.
+
+facebook-breach-what-to-do-3 = See all of the recommendations on our Facebook leak page
 
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Showing:

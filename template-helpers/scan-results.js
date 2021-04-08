@@ -44,19 +44,16 @@ function getScanResultsHeadline(args) {
 function getFacebookResultMessage(id, args) {
   let message = getString(id, args);
   message = message.replace("<span>", "<span class='bold'>");
-  let ctaHref;
+  let ctaHref = "";
   switch (id) {
-    case "facebook-breach-what-to-do-1":
+    case "facebook-breach-what-to-do-1-headline":
       ctaHref = "https://blog.mozilla.org/firefox/facebook-data-leak-explained/";
       break;
-    case "facebook-breach-what-to-do-2":
+    case "facebook-breach-what-to-do-2-headline":
       ctaHref = "https://blog.mozilla.org/firefox/mozilla-explains-sim-swapping/";
       break;
-    case "facebook-breach-what-to-do-3":
-      ctaHref = "/breach-details/Facebook";
-      break;
   }
-  message = message.replace("<a>", `<a href="${ctaHref}">`);
+  message = message.replace("<a>", `<a target="_blank" href="${ctaHref}">`);
 
   return message;
 }
