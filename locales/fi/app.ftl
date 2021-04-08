@@ -603,3 +603,6 @@ ecosystem-promo-headline = Suojaa elämääsi verkossa yksityisyyden ensisijaise
 ecosystem-promo-body = Kaikki { -brand-name }-tuotteet kunnioittavat henkilötietolupaustamme: Kerää vähemmän. Pidä ne turvassa. Ei salaisuuksia.
 promo-ecosystem-cta = Katso kaikki tuotteet
 steps-to-resolve-headline = Vaiheet tämän vuodon ratkaisemiseksi
+vpn-promo-headline = Nyt on aika parantaa turvallisuuttasi verkossa.
+vpn-promo-copy = { -brand-Mozilla }n Virtual Private Network auttaa suojaamaan internetyhteyttäsi hakkereilta ja vakoojilta.
+vpn-promo-cta = Hanki { -brand-mozilla-vpn }
