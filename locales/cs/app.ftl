@@ -659,3 +659,6 @@ ecosystem-promo-headline = Buďte na internetu v bezpečí díky produktům, kte
 ecosystem-promo-body = Žádný { -brand-name } nezneužívá vaše data. Méně dat je vždy více, udržíme je v bezpečí a nemáme před vámi žádná tajemství.
 promo-ecosystem-cta = Zobrazit všechny produkty
 steps-to-resolve-headline = Kroky vedoucí k vyřešení tohoto úniku
+vpn-promo-headline = Je čas zlepšit svou bezpečnost na internetu.
+vpn-promo-copy = Virtuální privátní síť (VPN) od { -brand-Mozilla(case: "gen") } ochrání vaše internetové připojení před hackery a špióny.
+vpn-promo-cta = Získat { -brand-mozilla-vpn(case: "acc") }
