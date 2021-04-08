@@ -564,3 +564,6 @@ ecosystem-promo-headline = Protegé tu vida en línea con productos que prioriza
 ecosystem-promo-body = Todos los productos { -brand-name } cumplen nuestra promesa de datos personales: tome menos. Mantenelo seguro. Sin secretos.
 promo-ecosystem-cta = Ver todos los productos
 steps-to-resolve-headline = Pasos para resolver esta violación
+vpn-promo-headline = Ahora es momento de mejorar la seguridad en línea.
+vpn-promo-copy = { -brand-Mozilla } Virtual Private Network ayuda a proteger la conexión a internet de hackers y espías.
+vpn-promo-cta = Obtener { -brand-mozilla-vpn }
