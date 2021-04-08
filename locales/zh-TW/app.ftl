@@ -509,3 +509,6 @@ ecosystem-promo-headline = 透過隱私優先的產品保護您的線上生活
 ecosystem-promo-body = 所有 { -brand-name } 都遵循我們對個人資料隱私的承諾: 能少拿就少拿、確保資料安全、絕不偷偷來。
 promo-ecosystem-cta = 看所有產品
 steps-to-resolve-headline = 解決此資料外洩事件的步驟
+vpn-promo-headline = 現在是時候加強您的上網安全了。
+vpn-promo-copy = { -brand-Mozilla } 的虛擬私人網路可幫助您保護網路連線內容，不受駭客間諜侵害。
+vpn-promo-cta = 下載 { -brand-mozilla-vpn }
