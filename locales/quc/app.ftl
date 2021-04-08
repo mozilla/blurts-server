@@ -146,11 +146,13 @@ micro-survey-strongly-agree-response = Sib'alaj utz
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Ja kachomaj we man katkowin ta chik kakoj { -product-short-name }?
+micro-survey-pmf-prompt = Jas kachomaj we man katkowin ta chik kakoj { -product-short-name }?
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = Sib'alaj Man utz taj
 # This is a survey response that follows the pmf prompt
 micro-survey-somewhat-disappointed-response = Man qas ta utz
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Maj kub'ij nuk'u'x chech
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = UK'ISB'AL RETZTAQAN YA'TALIK
 # Link title
