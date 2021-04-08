@@ -535,3 +535,5 @@ ecosystem-promo-headline = Proteggi la tua vita in rete con prodotti che mettono
 ecosystem-promo-body = Tutti i prodotti { -brand-name } rispettano la nostra “Garanzia sui dati personali”: raccogli meno dati, mantienili al sicuro, nessun segreto.
 promo-ecosystem-cta = Vedi tutti i prodotti
 steps-to-resolve-headline = Passaggi per risolvere questa violazione
+vpn-promo-headline = È il momento di aumentare la tua sicurezza online.
+vpn-promo-copy = La rete privata virtuale (VPN) di { -brand-Mozilla } aiuta a proteggere la tua connessione a Internet da hacker e spie.
