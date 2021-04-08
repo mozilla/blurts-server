@@ -116,6 +116,10 @@ micro-survey-nps-prompt = Pa le ucholajil -10, jampa' rajilab'alil kakojo are ch
 micro-survey-not-likely-response = Man kinb'ij taj
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-very-likely-response = Sib'alaj kinb'ij
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = La man k'ax ta ukojik we { -product-short-name }?
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = UK'ISB'AL RETZTAQAN YA'TALIK
 # Link title
