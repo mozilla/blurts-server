@@ -597,3 +597,4 @@ ecosystem-promo-headline = Προστατέψτε τη ζωή σας στο δι
 ecosystem-promo-body = Όλα τα προϊόντα { -brand-name } τιμούν την υπόσχεση μας σχετικά με τα προσωπικά δεδομένα: Λιγότερα δεδομένα. Με ασφάλεια. Χωρίς μυστικά.
 promo-ecosystem-cta = Προβολή όλων των προϊόντων
 steps-to-resolve-headline = Βήματα επίλυσης για αυτή τη διαρροή
+vpn-promo-cta = Λήψη του { -brand-mozilla-vpn }
