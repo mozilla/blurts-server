@@ -596,3 +596,6 @@ ecosystem-promo-headline = Bescherm uw onlineleven met producten die privacy voo
 ecosystem-promo-body = Alles wat { -brand-name } doet, staat in het teken van onze belofte voor persoonlijke gegevens: neem minder. Houd het veilig. Geen geheimen.
 promo-ecosystem-cta = Alle producten
 steps-to-resolve-headline = Stappen om dit lek op te lossen
+vpn-promo-headline = Dit is het moment om uw online veiligheid te verbeteren.
+vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helpt uw internetverbinding af te schermen van hackers en spionnen.
+vpn-promo-cta = { -brand-mozilla-vpn } downloaden
