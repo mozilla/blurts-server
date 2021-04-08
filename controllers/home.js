@@ -8,6 +8,7 @@ const {
   generatePageToken,
   getExperimentFlags,
   getUTMContents,
+  hasUserSignedUpForWaitlist,
 } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
@@ -84,6 +85,15 @@ async function home(req, res) {
   });
 }
 
+function removeMyData(req, res) {
+  const user = req.user;
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, "remove_data");
+  return res.render("remove-data", {
+    title: req.fluentFormat("home-title"),
+    userHasSignedUpForRemoveData,
+  });
+}
+
 function getAllBreaches(req, res) {
   return res.render("top-level-page", {
     title: "Firefox Monitor",
@@ -119,22 +129,22 @@ function getBentoStrings(req, res) {
   return res.json(localizedBentoStrings);
 }
 
-function _addPrivacyBundleToWaitlistsJoined(user) {
+function _addToWaitlistsJoined(user, waitlist) {
   if (!user.waitlists_joined) {
-    return {"privacy_bundle": {"notified": false} };
+    return {[waitlist]: {"notified": false} };
   }
-  user.waitlists_joined["privacy_bundle"] = {"notified": false };
+  user.waitlists_joined[waitlist] = {"notified": false };
   return user.waitlists_joined;
 }
 
-function addEmailToBundleWaitlist(req, res) {
+function addEmailToWaitlist(req, res) {
   if (!req.user) {
     return res.redirect("/");
   }
   const user = req.user;
-  const updatedWaitlistsJoined = _addPrivacyBundleToWaitlistsJoined(user);
+  const updatedWaitlistsJoined = _addToWaitlistsJoined(user, "remove_data");
   DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
-  return res.json("email-not-added");
+  return res.json("email-added");
 }
 
 
@@ -148,11 +158,12 @@ function notFound(req, res) {
 }
 
 module.exports = {
-  home,
+  addEmailToWaitlist,
   getAboutPage,
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
-  addEmailToBundleWaitlist,
+  home,
   notFound,
+  removeMyData,
 };

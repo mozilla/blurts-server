@@ -12,7 +12,11 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
-const { getExperimentFlags, getUTMContents } = require("./utils");
+const {
+  getExperimentFlags,
+  getUTMContents,
+  hasUserSignedUpForWaitlist,
+} = require("./utils");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
@@ -229,6 +233,8 @@ async function getDashboard(req, res) {
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
   const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, "remove_data");
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
@@ -246,6 +252,8 @@ async function getDashboard(req, res) {
     lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,
     utmOverrides,
