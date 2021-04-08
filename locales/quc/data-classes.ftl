@@ -51,3 +51,7 @@ financial-investments = Ub'e'al pwaqilal
 financial-transactions = Taq q'axpwaq rech pwaqilal
 fitness-levels = Taq ucholajil utzb'antajik
 genders = Taq b'anatajilal
+government-issued-ids = Jastaq rech q'atb'altzij amaq' IDs
+health-insurance-information = Q'alajisanem rech Utzwachil
+historical-passwords = Taq retokib'al b'anatal kanoq
+home-loan-information = Q'alajisanem rech qajomal ja
