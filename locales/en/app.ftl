@@ -463,7 +463,7 @@ facebook-breach-what-to-do-1-copy = During this leak, hackers took profile
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-2-headline = <span>Change the passcode on your <a>mobile
+facebook-breach-what-to-do-2-headline = <span>Change the password, PIN, or other security credentials on your <a>mobile
   phone carrier accounts</a> to prevent SIM-swapping</span>.
 
 facebook-breach-what-to-do-2-copy = SIM swapping, which is also called SIM-jacking,
