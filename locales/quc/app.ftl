@@ -120,6 +120,37 @@ micro-survey-very-likely-response = Sib'alaj kinb'ij
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = La man k'ax ta ukojik we { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = La kachomaj chi rech q'alb'al k'u'x le { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = La saq xuquje' la utz uk'utunsanem le { -product-short-name }?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Sib'alaj ja'i'
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Ja'i'
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Man weta'am taj
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Utz
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Sib'alaj utz
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Ja kachomaj we man katkowin ta chik kakoj { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Sib'alaj Man utz taj
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Man qas ta utz
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = UK'ISB'AL RETZTAQAN YA'TALIK
 # Link title
