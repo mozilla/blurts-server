@@ -317,11 +317,6 @@ function checkIfTier1(preferredLanguage) {
   return tier1Languages.some(lang => preferredLanguage.includes(lang));
 }
 
-function checkIfEnglishUS(preferredLanguage) {
-  const tier1Languages = ["en-US"];
-  return tier1Languages.some(lang => preferredLanguage.includes(lang));
-}
-
 function recruitmentLogic() {
   const recruitmentBannerLink = document.querySelector("#recruitment-banner");
   if (!recruitmentBannerLink) {
@@ -532,9 +527,8 @@ function vpnBannerLogic() {
     return;
   }
 
-  const preferredFirstLanguageIsEnglish = checkIfEnglishUS(preferredLanguages[0]);
-
-  if (preferredFirstLanguageIsEnglish) {
+  // Only show banner if users first language is some English-locale variant
+  if (preferredLanguages[0].includes("en")) {
     vpnBannerLogic();
   }
 
