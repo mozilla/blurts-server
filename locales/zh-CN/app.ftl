@@ -513,3 +513,6 @@ ecosystem-promo-headline = 使用尊重隐私的产品保卫您的网络世界
 ecosystem-promo-body = 所有 { -brand-name } 产品，均符合我们对个人数据隐私的承诺：索取更少、确保安全、绝不隐瞒。
 promo-ecosystem-cta = 一览所有产品
 steps-to-resolve-headline = 外泄事件处理步骤
+vpn-promo-headline = 就现在！增强您的在线安全性。
+vpn-promo-copy = { -brand-Mozilla } 的虚拟专用网络（VPN）可帮助保护您的互联网连接免受黑客和间谍的侵扰。
+vpn-promo-cta = 下载 { -brand-mozilla-vpn }
