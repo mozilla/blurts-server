@@ -537,3 +537,4 @@ promo-ecosystem-cta = Vedi tutti i prodotti
 steps-to-resolve-headline = Passaggi per risolvere questa violazione
 vpn-promo-headline = È il momento di aumentare la tua sicurezza online.
 vpn-promo-copy = La rete privata virtuale (VPN) di { -brand-Mozilla } aiuta a proteggere la tua connessione a Internet da hacker e spie.
+vpn-promo-cta = Ottieni { -brand-mozilla-vpn }
