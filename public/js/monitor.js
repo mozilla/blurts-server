@@ -410,6 +410,49 @@ function addWaitlistObservers() {
   }
 }
 
+function vpnBannerLogic() {
+
+  // Check if element exists at all
+  const vpnPromoBanner = document.getElementById("vpnPromoBanner");
+
+  if (!vpnPromoBanner) {
+    return;
+  }
+
+  // Check for dismissal cookie
+  const vpnBannerDismissedCookie = document.cookie.split("; ").some((item) => item.trim().startsWith("vpnBannerDismissed="));
+
+  if (vpnBannerDismissedCookie) {
+    return;
+  }
+
+  // Init: Show banner, set close button listener
+  const vpnPromoCloseButton = document.getElementById("vpnPromoCloseButton");
+
+  const vpnPromoFunctions = {
+    hide: function() {
+      vpnPromoFunctions.setCookie();
+      vpnPromoBanner.classList.add("closed");
+      document.body.classList.remove("vpn-banner-visible");
+    },
+    init: function() {
+      vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
+      vpnPromoFunctions.show();
+    },
+    setCookie: function() {
+      const date = new Date();
+      date.setTime(date.getTime() + 30*24*60*60*1000);
+      document.cookie = "vpnBannerDismissed=true; expires=" + date.toUTCString();
+    },
+    show: function() {
+      vpnPromoBanner.classList.remove("closed");
+      document.body.classList.add("vpn-banner-visible");
+    },
+  };
+
+  vpnPromoFunctions.init();
+}
+
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
   const win = window;
@@ -482,6 +525,11 @@ function addWaitlistObservers() {
 
   if (!preferredFirstLanguageIsTier1) {
     return;
+  }
+
+  // Only show banner if users first language is some English-locale variant
+  if (preferredLanguages[0].includes("en")) {
+    vpnBannerLogic();
   }
 
   if (document.getElementById("fxaCheckbox")) {
