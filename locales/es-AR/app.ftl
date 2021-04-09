@@ -318,6 +318,9 @@ facebook-breach-note =
     información personal pero no direcciones de correo electrónico. Si alguna vez te registraste
     para una cuenta de Facebook — aún si no la usás ahora — te recomendamos
     que sigás estos pasos para protegerte
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Poné tu información como “solamente yo” o alguna otra configuración que no sea pública en <a>tu perfil de Facebook</a>.</span>
 facebook-breach-what-to-do-1-copy =
     Durante esta filtración, los hackers tomaron información
     de los perfiles que estaba “abierta al público” o “compartida con amigos”.
