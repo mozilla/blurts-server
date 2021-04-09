@@ -315,6 +315,11 @@ facebook-breach-what-to-do-1-copy =
 facebook-breach-what-to-do-2-headline =
     <span>Ändern Sie das Passwort, die PIN oder andere Sicherheitsanmeldeinformationen auf den
     <a>Konten Ihres Mobilfunkanbieters</a>, um das Austauschen von SIM-Karten</span> zu verhindern.
+facebook-breach-what-to-do-2-copy =
+    SIM-Swapping, auch SIM-Jacking genannt,
+    bedeutet, dass ein Hacker Telefonnummern, Geburtsdatum und andere Daten verwendet,
+    um die Handynummer einer Person zu übernehmen und dann ihre E-Mail-, Social-Media- und sogar Bankkonten zu hacken.
+facebook-breach-what-to-do-3 = Alle Empfehlungen finden Sie auf unserer Informationsseite zum Facebook-Leck.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Angezeigt:
 
