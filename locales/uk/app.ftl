@@ -370,6 +370,33 @@ no-other-breaches-found = Під час загального пошуку інш
 no-results-blurb = На жаль, такого витоку даних немає в нашій базі даних.
 all-breaches-headline = Усі витоки даних в { -product-name }
 search-breaches = Пошук витоків
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Ваша електронна адреса не відсутня у цьому витоку,
+    але ваш номер телефону все ще може бути вразливим.</span> Деякі облікові записи
+    викриті в результаті витоку Facebook, включно з номерами телефонів та іншими
+    особистими даними, але не адреси електронної пошти. Якщо ви коли-небудь реєстрували
+    обліковий запис Facebook — навіть якщо ви не користуєтеся його зараз — ми радимо вам
+    виконати ці дії, щоб захистити себе
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Встановіть для своїх відомостей значення «Лише я» або інший непублічний параметр у <a>своєму профілі Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Під час цього витоку зловмисники взяли відомості
+    профілю, які була визначені «відкритими для загального користування» або «ділитися з друзями».
+    Ці відомості можна поєднувати з іншими даними для отримання доступу до ще більшої кількості
+    ваших особистих даних та облікових записів.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Змініть пароль, PIN-код або інші дані безпеки на своєму <a>мобільному телефоні
+    з обліковим записом</a>, щоб запобігти підміні SIM-картами</span>.
+facebook-breach-what-to-do-2-copy =
+    Підміна SIM-картки, яку також називають викраденням SIM-карт,
+    — це коли хакер використовує номери телефонів, дату народження та інші дані, щоб отримати на себе
+    номер мобільного телефону людини, а потім зламати її електронну пошту, соціальні медіа та навіть фінансові рахунки.
+facebook-breach-what-to-do-3 = Переглянути всі поради на нашій сторінці витоків з Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Відображено:
 
