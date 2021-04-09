@@ -345,7 +345,7 @@ search-breaches = Sök intrång
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
-    <span>Din e-postadress finns inte i denna läcka,
+    <span>Din e-postadress finns inte med i denna läcka,
     men ditt telefonnummer kan fortfarande vara sårbart.</span> Några av de konton
     som komprometteras med Facebook-läckan innehöll telefonnummer och annan
     personlig information men inte e-postadresser. Om du någonsin har registrerat dig
@@ -368,6 +368,7 @@ facebook-breach-what-to-do-2-copy =
     SIM-byte, som också kallas SIM-jacking,
     är när en hackare använder telefonnummer, födelsedatum och annan data för att ta över
     en persons mobilnummer och sedan hacka in i deras e-post, sociala medier och till och med finansiella konton.
+facebook-breach-what-to-do-3 = Se alla rekommendationer på vår sida om Facebook-läckan
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visar:
 
