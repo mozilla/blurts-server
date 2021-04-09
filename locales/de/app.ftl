@@ -293,6 +293,28 @@ no-other-breaches-found = Es wurden keine weiteren Datenlecks in der einfachen S
 no-results-blurb = Sorry, dieses Datenleck ist nicht in unserer Datenbank.
 all-breaches-headline = Alle Datenlecks in { -product-name }
 search-breaches = Datenlecks suchen
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Ihre E-Mail-Adresse ist von diesem Leck nicht betroffen,
+    Ihre Telefonnummer kann aber trotzdem angreifbar sein.</span> Einige der Konten,
+    die vom Facebook-Leck betroffen sind, enthalten Telefonnummern und andere
+    persönliche Daten, jedoch keine E-Mail-Adressen. Wenn Sie sich jemals für ein
+    Facebook-Konto registriert haben – auch wenn Sie es jetzt nicht nutzen –, sollten Sie
+    sich folgendermaßen schützen
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Setzen Sie Ihre Informationen in <a>Ihrem Facebook-Profil /a> auf „Nur ich“ oder eine andere nicht öffentliche Einstellung.</span>
+facebook-breach-what-to-do-1-copy =
+    Bei diesem Leck haben Hacker Profildaten
+    erbeutet, die „öffentlich sichtbar“ oder „mit Freunden geteilt“ wurden.
+    Diese Daten können mit anderen Daten kombiniert werden, um auf 
+    weitere persönliche Daten oder Konten zuzugreifen.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Ändern Sie das Passwort, die PIN oder andere Sicherheitsanmeldeinformationen auf den
+    <a>Konten Ihres Mobilfunkanbieters</a>, um das Austauschen von SIM-Karten</span> zu verhindern.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Angezeigt:
 
