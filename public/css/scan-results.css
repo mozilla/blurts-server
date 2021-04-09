@@ -81,7 +81,7 @@
 }
 
 .temp-marketing-callout {
-  margin: 20px auto 80px auto;
+  margin: 20px auto 40px auto;
 }
 
 .temp-marketing-callout span {
@@ -133,5 +133,34 @@
 
   .found-breaches.scan-res-breaches {
     padding: 0 var(--padding);
+  }
+}
+
+.facebook-notes {
+  text-align: left;
+  margin-bottom: 100px;
+}
+
+.facebook-notes .section-headline {
+  margin-top: 3rem;
+}
+
+.facebook-notes.temp-marketing-callout span a {
+  color: var(--blue3);
+}
+
+.facebook-notes .feature-tip-content-wrapper:last-of-type {
+  margin-bottom: 20px;
+}
+
+.facebook-notes a.recommendation {
+  margin-left: 80px;
+}
+
+@media screen and (max-width: 800px) {
+  .facebook-notes a.recommendation {
+    margin-left: 0;
+    text-align: center;
+    display: inline-block;
   }
 }

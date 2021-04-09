@@ -8,9 +8,34 @@
       {{#if specificBreach}}
         {{#getScanResultsHeadline }}
           <h2 class="headline scan-results-headline fb-res-headline">{{{ this.headline }}}</h2>
-          {{#if this.subhead }}
-            <h3 class="scan-res-subhead">{{{ this.subhead }}}</h2>
-          {{/if}}
+            {{#ifCompare ../specificBreach.Domain "===" "facebook.com"}}
+            <div class="facebook-notes temp-marketing-callout">
+              <p class="temp-marketing-p">{{{ getFacebookResultMessage "facebook-breach-note" }}}</p>
+                <h3 class="section-headline txt-purple7">{{ getString "rec-section-headline-no-pw" }}</h3>
+                <div class="flx feature-tip-group">
+                	<div class="feature-tip-content-wrapper col txt-cntr">
+                		<div class="rec-img rec-gen-3"></div>
+                		<div class="feature-tip-content">
+                			<h3 class="feature-title">{{{ getFacebookResultMessage "facebook-breach-what-to-do-1-headline" }}}</h3>
+                			<h4 class="feature-subhead">{{ getString "facebook-breach-what-to-do-1-copy" }}</h4>
+                		</div>
+                	</div>
+                	<div class="feature-tip-content-wrapper col txt-cntr">
+                		<div class="rec-img rec-pw-4"></div>
+                		<div class="feature-tip-content">
+                			<h3 class="feature-title">{{{ getFacebookResultMessage "facebook-breach-what-to-do-2-headline" }}}</h3>
+                			<h4 class="feature-subhead">{{ getString "facebook-breach-what-to-do-2-copy" }}</h4>
+                		</div>
+                	</div>
+                </div>
+                <p>
+                  <a class="text-link blue-link recommendation" href="/breach-details/Facebook">{{{ getFacebookResultMessage "facebook-breach-what-to-do-3" }}}</a>
+                </p>
+            </div>
+            {{/ifCompare}}
+            {{#if this.subhead }}
+              <h3 class="scan-res-subhead">{{{ this.subhead }}}</h3>
+            {{/if}}
         {{/getScanResultsHeadline}}
       {{else}}
         <h2 class="headline scan-results-headline">{{{ fluentNestedBold "scan-results-known-breaches" breachCount=foundBreaches.length }}}</h2>
