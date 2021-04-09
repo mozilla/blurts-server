@@ -330,6 +330,10 @@ no-other-breaches-found = Nenhum outro vazamento foi encontrado em uma pesquisa 
 no-results-blurb = Desculpe, aquele vazamento não está em nosso banco de dados.
 all-breaches-headline = Todos os vazamentos no { -product-name }
 search-breaches = Pesquisar vazamentos
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note = <span>Seu email não aparece neste vazamento, mas seu número de telefone ainda pode estar vulnerável.</span> Algumas contas comprometidas no vazamento do Facebook incluem números de telefone e outras informações pessoais, mas não endereços de email. Se você criou uma conta no Facebook, mesmo que não a esteja usando, recomendamos seguir essas instruções para se proteger
+facebook-breach-what-to-do-3 = Veja todas as recomendações em nossa página de vazamento do Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Exibindo:
 
