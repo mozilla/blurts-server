@@ -342,6 +342,32 @@ no-other-breaches-found = Inga andra intrång hittades från en grundläggande s
 no-results-blurb = Tyvärr, intrånget finns inte i vår databas.
 all-breaches-headline = Alla intrång i { -product-name }
 search-breaches = Sök intrång
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Din e-postadress finns inte i denna läcka,
+    men ditt telefonnummer kan fortfarande vara sårbart.</span> Några av de konton
+    som komprometteras med Facebook-läckan innehöll telefonnummer och annan
+    personlig information men inte e-postadresser. Om du någonsin har registrerat dig
+    för ett Facebook-konto — även om du inte använder det nu — rekommenderar vi
+    att du vidtar dessa steg för att skydda dig själv
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Ställ in din information till "Endast jag" eller annan icke-offentlig inställning i <a>din Facebook-profil</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Under denna läcka tog hackare profilinformation
+    som var inställd som "öppen för allmänheten" eller "delade med vänner."
+    Denna information kan kombineras med annan data för att få åtkomst till
+    ännu mer av din personliga information och konton.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Ändra lösenordet, PIN-koden eller andra säkerhetsuppgifter på dina
+    <a>mobiloperatörskonton</a> för att förhindra SIM-byte</span>.
+facebook-breach-what-to-do-2-copy =
+    SIM-byte, som också kallas SIM-jacking,
+    är när en hackare använder telefonnummer, födelsedatum och annan data för att ta över
+    en persons mobilnummer och sedan hacka in i deras e-post, sociala medier och till och med finansiella konton.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visar:
 
