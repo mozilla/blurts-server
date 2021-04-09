@@ -309,6 +309,25 @@ no-other-breaches-found = No se han encontrado otras filtraciones en una búsque
 no-results-blurb = Lo sentimos, ese filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
 search-breaches = Buscar filtraciones
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>El correo electrónico no aparece en esta filtración,
+    pero el número de teléfono aún puede ser vulnerable.</span> Algunas de las cuentas
+    comprometidas en la filtración de Facebook incluyen números de teléfonos y otra
+    información personal pero no direcciones de correo electrónico. Si alguna vez te registraste
+    para una cuenta de Facebook — aún si no la usás ahora — te recomendamos
+    que sigás estos pasos para protegerte
+facebook-breach-what-to-do-1-copy =
+    Durante esta filtración, los hackers tomaron información
+    de los perfiles que estaba “abierta al público” o “compartida con amigos”.
+    Esta información puede ser combinada con otros datos para acceder a alguna otra
+    información personal y cuentas.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Cambiá la contraseña, PIN o alguna otra credencial de seguridad en tu <a>cuenta
+    del proveedor de telefonía celular</a> para prevenir el clonado de SIM</span>.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Mostrar:
 
