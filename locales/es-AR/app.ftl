@@ -331,6 +331,11 @@ facebook-breach-what-to-do-1-copy =
 facebook-breach-what-to-do-2-headline =
     <span>Cambiá la contraseña, PIN o alguna otra credencial de seguridad en tu <a>cuenta
     del proveedor de telefonía celular</a> para prevenir el clonado de SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Intercambio de SIM, que también se denomina toma de SIM,
+    es cuando un pirata informático usa números de teléfono, fechas de nacimiento y otros datos para hacerse cargo
+    del número de teléfono celular de una persona y luego piratear su correo electrónico, redes sociales e incluso cuentas financieras.
+facebook-breach-what-to-do-3 = Ver todas las recomendaciones en nuestra página de filtración de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Mostrar:
 
