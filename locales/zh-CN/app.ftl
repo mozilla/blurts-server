@@ -286,6 +286,9 @@ search-breaches = 搜索数据外泄事件
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>在<a>你的 Facebook 信息</a>中将您的信息设为“仅限自己”或其他非公开设置。</span>
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>更改您手机上<a>电信运营商账户</a>的密码、PIN 码或其他安全凭证</a>，以防止“SIM 卡交换（SIM-swapping）”诈骗</span>。
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 显示：
 
