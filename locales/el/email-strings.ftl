@@ -69,7 +69,7 @@ faq-v2-3 = Μόλις έμαθα ότι έχω επηρεαστεί από δι�
 faq-v2-4 = Πώς αντιμετωπίζει το { -product-name } τις ευαίσθητες ιστοσελίδες;
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Δημιουργήστε ένα δωρεάν { -brand-fxa }</a> και θα μπορείτε να προσθέσετε έως 15 διευθύνσεις email.
+pre-fxa-message = <a>Δημιουργήστε έναν δωρεάν { -brand-fxa(case: "acc", capitalization: "lower") }</a> και θα μπορείτε να προσθέσετε έως 15 διευθύνσεις email.
 # Section headline
 monitor-another-email = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 # Subject line of email

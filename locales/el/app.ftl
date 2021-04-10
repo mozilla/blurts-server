@@ -46,7 +46,7 @@ error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
 error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
 error-must-be-signed-in = Πρέπει να συνδεθείτε στον { -brand-fxa(case: "acc", capitalization: "lower") } σας.
-error-to-finish-verifying = Για να ολοκληρώσετε την επαλήθευση αυτού του email για το { -product-name }, θα πρέπει να έχετε συνδεθεί με το πρωτεύον email του λογαριασμού σας.
+error-to-finish-verifying = Για να ολοκληρώσετε την επαλήθευση αυτού του email για το { -product-name }, θα πρέπει να έχετε συνδεθεί με το κύριο email του λογαριασμού σας.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
 oauth-invalid-session = Άκυρη συνεδρία
@@ -271,7 +271,7 @@ create-strong-passwords = Πώς να δημιουργήσετε ισχυρού�
 stop-reusing-pw = Σταματήστε να χρησιμοποιείτε ξανά τους ίδιους κωδικούς πρόσβασης
 create-unique-pw = Δημιουργήστε μοναδικούς κωδικούς πρόσβασης και αποθηκεύστε τους κάπου με ασφάλεια, όπως σε μια εφαρμογή διαχείρισης κωδικών πρόσβασης.
 five-myths = 5 μύθοι για τις εφαρμογές διαχείρισης κωδικών πρόσβασης
-create-a-fxa = Δημιουργήστε ένα { -brand-fxa } για αποστολή πλήρους αναφοράς παραβιάσεων και λήψη ειδοποιήσεων.
+create-a-fxa = Δημιουργήστε έναν { -brand-fxa(case: "acc", capitalization: "lower") } για αποστολή πλήρους αναφοράς παραβιάσεων και λήψη ειδοποιήσεων.
 feat-security-tips = Συμβουλές ασφάλειας για την προστασία των λογαριασμών σας
 feat-sensitive = Σύνθετη αναζήτηση σε ευαίσθητες διαρροές
 feat-enroll-multiple = Καταχωρήστε πολλαπλά email για εποπτεία παραβιάσεων
@@ -300,11 +300,11 @@ send-verification = Αποστολή συνδέσμου επαλήθευσης
 # email address.
 breach-summary = Περίληψη παραβίασης
 show-breaches-for-this-email = Εμφάνιση όλων των παραβιάσεων για αυτό το email.
-link-change-primary = Αλλαγή πρωτεύουσας διεύθυνσης email
+link-change-primary = Αλλαγή κύριας διεύθυνσης email
 remove-fxm = Αφαίρεση του { -product-name }
 remove-fxm-blurb =
-    Απενεργοποίηση των ειδοποιήσεων του { -product-name }. Ο { -brand-fxa } σας θα παραμείνει ενεργός και ίσως 
-    λάβετε άλλες ειδοποιήσεις σχετικά με το λογαριασμό.
+    Απενεργοποίηση των ειδοποιήσεων του { -product-name }. Ο { -brand-fxa(case: "nom", capitalization: "lower") } σας θα παραμείνει ενεργός και ίσως 
+    λάβετε άλλες ειδοποιήσεις σχετικά με τον λογαριασμό.
 # Button title
 manage-email-addresses = Διαχείριση διευθύνσεων email
 # Link title
@@ -339,7 +339,7 @@ new-breaches-found =
         [one] ΒΡΕΘΗΚΕ { $breachCount } ΝΕΑ ΠΑΡΑΒΙΑΣΗ
        *[other] ΒΡΕΘΗΚΑΝ { $breachCount } ΝΕΕΣ ΠΑΡΑΒΙΑΣΕΙΣ
     }
-sign-up-headline-1 = Λάβετε συνεχείς ειδοποιήσεις με ένα { -brand-fxa }.
+sign-up-headline-1 = Λάβετε συνεχείς ειδοποιήσεις με έναν { -brand-fxa(case: "acc", capitalization: "lower") }.
 account-not-required = Δεν απαιτείται το { -brand-name } για ένα { -brand-fxa }. Μπορείτε να λάβετε πληροφορίες σχετικά με τις υπηρεσίες { -brand-Mozilla }.
 was-your-info-exposed = Εκτέθηκαν οι πληροοφορίες σας στην παραβίαση δεδομένων { $breachName };
 find-out-if = Μάθετε αν τα δεδομένα σας εκτέθηκαν σε αυτή την παραβίαση.
@@ -440,7 +440,7 @@ scan-results-known-breaches =
 results-for = Αποτελέσματα για: { $userEmail }
 other-monitored-emails = Άλλα εποπτευμένα emails
 email-verification-required = Απαιτείται επαλήθευση email
-fxa-primary-email = Email του { -brand-fxa } - Πρωτεύον
+fxa-primary-email = Email του { -brand-fxa(case: "gen", capitalization: "lower") } - Κύριο
 what-is-a-website-breach = Τι είναι μια παραβίαση ιστοσελίδας;
 website-breach-blurb = Μια παραβίαση δεδομένων ιστοσελίδας συμβαίνει όταν οι κυβερνοεγκληματίες υποκλέπτουν, αντιγράφουν ή εξάγουν προσωπικά στοιχεία από διαδικτυακούς λογαριασμούς. Προκύπτει συνήθως όταν οι hackers βρίσκουν ένα τρωτό σημείο στην ασφάλεια της ιστοσελίδας. Παραβιάσεις συμβαίνουν επίσης όταν οι πληροφορίες λογαριασμού διαρρέουν κατά λάθος.
 security-tips-headline = Συμβουλές ασφάλειας για να προστατευτείτε από τους χάκερ
