@@ -289,6 +289,8 @@ facebook-breach-what-to-do-1-headline = <span>在<a>你的 Facebook 信息</a>�
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>更改您手机上<a>电信运营商账户</a>的密码、PIN 码或其他安全凭证</a>，以防止“SIM 卡交换（SIM-swapping）”诈骗</span>。
+facebook-breach-what-to-do-2-copy = SIM 卡交换，也被称为“SIM 卡劫持”，是指黑客用手机号码、出生日期和其他数据来接管一个人的手机号码，然后入侵他们的邮箱，社交媒体甚至财务账户。
+facebook-breach-what-to-do-3 = 到我们的 Facebook 泄露页面查看所有建议
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 显示：
 
