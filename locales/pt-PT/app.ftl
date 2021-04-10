@@ -347,6 +347,24 @@ facebook-breach-note =
     informações pessoais, mas não endereços de e-mail. Se já tinha criado 
     alguma conta no Facebook - mesmo que não a utilize agora - recomendamos que você 
     siga estes passos para se proteger
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Defina as suas informações como “Apenas eu” ou outra configuração não pública no <a>seu perfil do Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Durante esta fuga, os hackers extraíram informações de perfil 
+    que foram definidas como “disponíveis ao público” ou “partilhadas com amigos”.
+    Estas informações podem ser combinadas com outros dados para aceder ainda a mais
+    informações pessoais e contas suas.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Altere a palavra-passe, PIN ou outras credenciais de segurança nas suas <a>
+    contas da sua operadora de comunicações</a> para evitar troca de SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Troca de SIM, também chamada de apropriação de SIM,
+    é quando um hacker utiliza números de telefone, data de nascimento e outros dados para se apropriar
+    do número de telemóvel de uma pessoa e assim aceder ao respetivo e-mail, redes sociais e até mesmo a contas financeiras.
+facebook-breach-what-to-do-3 = Consulte todas as recomendações na nossa página de fuga do Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = A mostrar:
 
@@ -605,3 +623,6 @@ ecosystem-promo-headline = Proteja a sua vida na Internet com produtos de privac
 ecosystem-promo-body = Todos os produtos { -brand-name } honram o nosso compromisso com os dados pessoais: recolher menos; manter seguro; sem segredos.
 promo-ecosystem-cta = Ver todos os produtos
 steps-to-resolve-headline = Passos para resolver esta violação
+vpn-promo-headline = Agora é o momento de reforçar a sua segurança na Internet.
+vpn-promo-copy = A rede privada virtual da { -brand-Mozilla } ajuda a proteger a sua ligação com a Internet de piratas e de espiões.
+vpn-promo-cta = Obter a { -brand-mozilla-vpn }
