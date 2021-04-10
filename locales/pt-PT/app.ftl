@@ -338,6 +338,15 @@ no-other-breaches-found = Não foram encontradas outras violações de dados a p
 no-results-blurb = Lamentamos, mas esta violação de dados não está na nossa base de dados.
 all-breaches-headline = Todas as violações de dados no { -product-name }
 search-breaches = Procurar por violações de dados
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>O seu e-mail não aparece nesta fuga, 
+    mas o seu número de telefone ainda pode estar vulnerável.</span> Algumas das contas 
+    comprometidas na fuga do Facebook incluíam números de telefone e outras 
+    informações pessoais, mas não endereços de e-mail. Se já tinha criado 
+    alguma conta no Facebook - mesmo que não a utilize agora - recomendamos que você 
+    siga estes passos para se proteger
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = A mostrar:
 
