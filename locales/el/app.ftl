@@ -354,11 +354,20 @@ facebook-breach-note =
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Ορίστε τις πληροφορίες σας σε “Μόνο εγώ” ή κάποια άλλη ιδιωτική ρύθμιση στο <a>προφίλ σας στο Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Κατά τη διαρροή αυτή, οι hacker πήραν πληροφορίες 
+    που είχαν οριστεί ως “δημόσιες” ή “κοινόχρηστες με φίλους”.
+    Αυτές οι πληροφορίες μπορούν να συνδυαστούν με άλλα δεδομένα για πρόσβαση σε ακόμα
+    περισσότερες προσωπικές πληροφορίες και λογαριασμούς σας.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline =
     <span>Αλλάξτε τον κωδικό πρόσβασης, το PIN, ή άλλα διαπιστευτήρια ασφαλείας στους <a>λογαριασμούς
     του παρόχου κινητής τηλεφωνίας σας</a> για να αποφύγετε την αντικατάσταση SIM (SIM Swapping)</span>.
+facebook-breach-what-to-do-2-copy =
+    Η αντικατάσταση SIM (SIM Swapping), γνωστή κι ως κατάληψη SIM,
+    συμβαίνει όταν ένας hacker χρησιμοποιεί τον αριθμό τηλεφώνου, την ημερομηνία γέννησης και άλλα δεδομένα
+    για να πάρει τον έλεγχο του αριθμού τηλεφώνου ενός ατόμου και έπειτα, να εισβάλλει το email, τα κοινωνικά δίκτυα, ακόμα και τους τραπεζικούς του λογαριασμούς.
 facebook-breach-what-to-do-3 = Δείτε όλες τις προτάσεις στη σελίδα μας σχετικά με τη διαρροή του Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Εμφάνιση:
