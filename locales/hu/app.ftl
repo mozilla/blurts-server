@@ -359,6 +359,16 @@ facebook-breach-what-to-do-1-copy =
     melyek „nyilvánosként” vagy „barátokkal megosztottként” voltak beállítva.
     Az információk egyéb adatokkal kombinálhatók, hogy több személyes
     információt vagy fiókot érjenek le.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Módosítsa a jelszavát, a PIN-kódját vagy más a <a>mobiltelefonszámával kapcsolatos</a>
+    biztonsági adatot a SIM-felcserélés megakadályozása érdekében</span>.
+facebook-breach-what-to-do-2-copy =
+    A SIM-felcserélés vagy SIM-eltérítés az, amikor egy hacker
+    telefonszámokat, születési dátumokat és más adatokat használ, hogy átvegye
+    valaki telefonszámát és így feltörje az e-mail-fiókját, közösségi média és pénzügyi fiókjait.
+facebook-breach-what-to-do-3 = Tekintse meg az összes ajánlást a Facebook adatszivárgási oldalunkon
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Megjelenítés:
 
