@@ -348,8 +348,17 @@ facebook-breach-note =
     <span>Az e-mail-címe nem jelenik meg ebbe a szivárgásban,
     de a telefonszáma sérülékeny lehet.</span> Egyes érintett fiókok
     úgy kompromittálódtak, hogy a telefonszámok és más személyes adatok
-    szerepelnek benne, de az e-mail-címek nem. Ha valaha is volt Facebook fiókjafor a Facebook account — even if you don’t use it now — we recommend you
-    take these steps to protect yourself
+    szerepelnek benne, de az e-mail-címek nem. Ha valaha is volt Facebook-fiókja
+    – még akkor is, ha már nem használja –, akkor azt ajánljuk, hogy
+    végezze el a lenti lépéseket, hogy megvédje magát
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Állítsa adatait „Csak én” vagy más nem nyilvános beállításra a <a>Facebook-profiljában</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    A szivárgás során a hackerek olyan profilinformációkat mentettek le,
+    melyek „nyilvánosként” vagy „barátokkal megosztottként” voltak beállítva.
+    Az információk egyéb adatokkal kombinálhatók, hogy több személyes
+    információt vagy fiókot érjenek le.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Megjelenítés:
 
