@@ -7,7 +7,24 @@
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Λογαριασμός Firefox
+-brand-fxa =
+    { $case ->
+       *[nom]
+            { $capitalization ->
+               *[upper] Λογαριασμός Firefox
+                [lower] λογαριασμός Firefox
+            }
+        [gen]
+            { $capitalization ->
+               *[upper] Λογαριασμού Firefox
+                [lower] λογαριασμού Firefox
+            }
+        [acc]
+            { $capitalization ->
+               *[upper] Λογαριασμό Firefox
+                [lower] λογαριασμό Firefox
+            }
+    }
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
@@ -28,7 +45,7 @@ error-not-subscribed = Αυτή η διεύθυνση email δεν έχει εγ
 error-hibp-throttled = Πάρα πολλές συνδέσεις στο { -brand-HIBP }.
 error-hibp-connect = Σφάλμα σύνδεσης στο { -brand-HIBP }.
 error-hibp-load-breaches = Αδυναμία φόρτωσης διαρροών.
-error-must-be-signed-in = Πρέπει να συνδεθείτε στο { -brand-fxa } σας.
+error-must-be-signed-in = Πρέπει να συνδεθείτε στον { -brand-fxa(case: "acc", capitalization: "lower") } σας.
 error-to-finish-verifying = Για να ολοκληρώσετε την επαλήθευση αυτού του email για το { -product-name }, θα πρέπει να έχετε συνδεθεί με το πρωτεύον email του λογαριασμού σας.
 home-title = { -product-name }
 home-not-found = Η σελίδα δεν βρέθηκε.
@@ -75,7 +92,7 @@ fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
 sign-in = Σύνδεση
 sign-out = Αποσύνδεση
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Διαχείριση { -brand-fxa }
+manage-fxa = Διαχείριση { -brand-fxa(case: "gen", capitalization: "lower") }
 have-an-account = Έχετε ήδη λογαριασμό;
 fxa-pwt-summary-2 =
     Οι σύντομοι, μονολεκτικοί κωδικοί πρόσβασης μαντεύονται εύκολα από τους hackers.
@@ -120,7 +137,7 @@ breaches = Παραβιάσεις
 security-tips = Συμβουλές ασφαλείας
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
-open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa }
+open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa(case: "gen", capitalization: "lower") }
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled 1-10.
 micro-survey-nps-prompt = Από το 1 έως το 10, πόσο πιθανό είναι να συστήσετε το { -product-short-name } σε έναν φίλο ή συνάδελφό σας;
@@ -173,7 +190,7 @@ take-control = Ανακτήστε τον έλεγχο των προσωπικώ�
 cant-stop-hackers = Δεν μπορείτε να εμποδίσετε τους χάκερ από το να χακάρουν. Αλλά μπορείτε να αποφύγετε τις κακές συνήθειες που κάνουν τη δουλειά τους εύκολη.
 read-more-tips = Διαβάστε περισσότερες συμβουλές ασφαλείας
 how-hackers-work = Κατανοήστε πώς δρουν οι hackers
-monitor-your-online-accounts = Εγγραφείτε για παρακολούθηση παραβιάσεων με ένα { -brand-fxa }.
+monitor-your-online-accounts = Εγγραφείτε για παρακολούθηση παραβιάσεων με έναν { -brand-fxa(case: "acc", capitalization: "lower") }.
 stay-alert = Ενημέρωση για νέες παραβιάσεις
 if-your-info = Αν οι πληροφορίες σας εμφανιστούν σε νέα παραβίαση δεδομένων, θα σας ειδοποιήσουμε.
 search-all-emails = Αναζητήστε όλες τις διευθύνσεις email σας για παραβιάσεις και λάβετε ειδοποιήσεις σχετικά με νέες απειλές.
@@ -222,7 +239,7 @@ how-fxm-1-blurb =
     αυτά που περιέχουν ευαίσθητες προσωπικές πληροφορίες.
 how-fxm-2-headline = Εγγραφή για εποπτεία παραβιάσεων
 how-fxm-2-blurb =
-    Δημιουργήστε ένα { -brand-fxa } ώστε να εποπτεύετε συνεχώς το email σας για παραβιάσεις. 
+    Δημιουργήστε έναν { -brand-fxa(case: "acc", capitalization: "lower") } ώστε να εποπτεύετε συνεχώς το email σας για παραβιάσεις. 
     Μόλις επαληθεύσετε το email σας, θα λάβετε επίσης μια πλήρη αναφορά παλαιών παραβιάσεων, 
     καθώς και παραβιάσεων ευαίσθητων δεδομένων.
 how-fxm-3-headline = Eιδοποιήσεις στο πρόγραμμα περιήγησής σας
