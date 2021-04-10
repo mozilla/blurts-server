@@ -224,7 +224,7 @@ appears-in-x-breaches =
 check-for-breaches = 检查是否有外泄事件
 find-out-what-hackers-know = 看看黑客已经掌握了您哪些资料，并了解如何先发制人。
 get-email-alerts = 保持安全：当您的信息出现在已知外泄事件中时，将获得邮件警报
-search-for-your-email = 搜索自2007年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
+search-for-your-email = 搜索自 2007 年起的公开数据外泄事件当中，是否包含您的电子邮件地址。
 back-to-top = 回到顶端
 comm-opt-0 = 如果我的某个电子邮件地址出现在数据外泄事件中，请发邮件通知我。
 comm-opt-1 = 将所有外泄警报发送到 { $primaryEmail }。
@@ -283,6 +283,9 @@ no-other-breaches-found = 在基本搜索中未找到其他外泄事件。
 no-results-blurb = 很抱歉，我们的数据库中没有该外泄事件相关信息。
 all-breaches-headline = { -product-name } 的所有数据外泄事件
 search-breaches = 搜索数据外泄事件
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>在<a>你的 Facebook 信息</a>中将您的信息设为“仅限自己”或其他非公开设置。</span>
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 显示：
 
