@@ -285,7 +285,10 @@ all-breaches-headline = { -product-name } 的所有数据外泄事件
 search-breaches = 搜索数据外泄事件
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-1-headline = <span>在<a>你的 Facebook 信息</a>中将您的信息设为“仅限自己”或其他非公开设置。</span>
+facebook-breach-note = <span>您的电子邮件地址未出现在此次泄露事件中，但您的手机号码很可能已经中招。</span>部分 Facebook 账户泄露的是手机号码和其他个人信息，而非电子邮件地址。若您曾经注册过 Facebook 账户——即使现在已不使用——我们还是建议您采取以下步骤保护自己
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>到<a>你的 Facebook 信息</a>页将您的个人信息设为“仅限自己”或其他非公开设置。</span>
 facebook-breach-what-to-do-1-copy = 在此次泄露事件中，黑客采集了被设置为“公开”或“好友”的个人信息。这些信息与其他数据组合可以访问更多您的个人信息和账户。
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
