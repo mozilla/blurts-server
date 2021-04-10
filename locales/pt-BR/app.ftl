@@ -333,6 +333,9 @@ search-breaches = Pesquisar vazamentos
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note = <span>Seu email não aparece neste vazamento, mas seu número de telefone ainda pode estar vulnerável.</span> Algumas contas comprometidas no vazamento do Facebook incluem números de telefone e outras informações pessoais, mas não endereços de email. Se você criou uma conta no Facebook, mesmo que não a esteja usando, recomendamos seguir essas instruções para se proteger
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Defina a visibilidade das suas informações para "Somente eu" ou outra configuração não pública no <a>seu perfil do Facebook</a>.</span>
 facebook-breach-what-to-do-3 = Veja todas as recomendações em nossa página de vazamento do Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Exibindo:
