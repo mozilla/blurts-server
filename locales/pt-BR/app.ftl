@@ -336,6 +336,11 @@ facebook-breach-note = <span>Seu email não aparece neste vazamento, mas seu nú
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Defina a visibilidade das suas informações para "Somente eu" ou outra configuração não pública no <a>seu perfil do Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy = Durante este vazamento, hackers coletaram informações de perfil que estavam definidas como "abertas ao público" ou "compartilhadas com amigos". Essas informações podem ser combinadas com outros dados para acessar ainda mais de suas informações pessoais e contas.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Altere a senha, PIN ou outras credenciais de segurança em suas <a>contas de operadoras de celular</a> para evitar golpe de troca de SIM</span>.
+facebook-breach-what-to-do-2-copy = O golpe de troca de SIM, também chamado sequestro de SIM, é quando um hacker usa números de telefone, data de nascimento e outros dados para assumir o controle do número de celular de alguém e invadir suas contas de email, redes sociais e até contas bancárias.
 facebook-breach-what-to-do-3 = Veja todas as recomendações em nossa página de vazamento do Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Exibindo:
