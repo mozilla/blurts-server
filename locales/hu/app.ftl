@@ -342,6 +342,14 @@ no-other-breaches-found = Az alapvető keresés nem talált más adatsértést.
 no-results-blurb = Sajnáljuk, ez az adatsértés nem szerepel az adatbázisunkban.
 all-breaches-headline = Az összes adatsértés a { -product-name }ban
 search-breaches = Adatsértések keresése
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Az e-mail-címe nem jelenik meg ebbe a szivárgásban,
+    de a telefonszáma sérülékeny lehet.</span> Egyes érintett fiókok
+    úgy kompromittálódtak, hogy a telefonszámok és más személyes adatok
+    szerepelnek benne, de az e-mail-címek nem. Ha valaha is volt Facebook fiókjafor a Facebook account — even if you don’t use it now — we recommend you
+    take these steps to protect yourself
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Megjelenítés:
 
