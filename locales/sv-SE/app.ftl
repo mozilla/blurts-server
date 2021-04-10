@@ -363,9 +363,9 @@ facebook-breach-what-to-do-1-copy =
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline =
     <span>Ändra lösenordet, PIN-koden eller andra säkerhetsuppgifter på dina
-    <a>mobiloperatörskonton</a> för att förhindra SIM-byte</span>.
+    <a>mobiloperatörskonton</a> för att förhindra SIM-kortsbedrägeri</span>.
 facebook-breach-what-to-do-2-copy =
-    SIM-byte, som också kallas SIM-jacking,
+    SIM-kortsbedrägeri, som också kallas SIM-jacking,
     är när en hackare använder telefonnummer, födelsedatum och annan data för att ta över
     en persons mobilnummer och sedan hacka in i deras e-post, sociala medier och till och med finansiella konton.
 facebook-breach-what-to-do-3 = Se alla rekommendationer på vår sida om Facebook-läckan
