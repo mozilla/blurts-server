@@ -342,6 +342,19 @@ no-other-breaches-found = Δεν βρέθηκαν άλλες παραβιάσε�
 no-results-blurb = Λυπούμαστε, αυτή η παραβίαση δεν είναι στη βάση δεδομένων μας.
 all-breaches-headline = Όλες οι παραβιάσεις στο { -product-name }
 search-breaches = Αναζήτηση παραβιάσεων
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Το email σας δεν εμφανίζεται σε αυτή τη διαρροή,
+    αλλά ο αριθμός τηλεφώνου σας ενδέχεται να παραμένει ευάλωτος.</span> Κάποιοι από τους λογαριασμούς
+    που παραβιάστηκαν στη διαρροή του Facebook περιείχαν αριθμούς τηλεφώνων και άλλα
+    προσωπικά δεδομένα, αλλά όχι διευθύνσεις email. Αν έχετε δημιουργήσει ποτέ
+    λογαριασμό στο Facebook — ακόμα κι αν δεν τον χρησιμοποιείτε πλέον — προτείνουμε
+    να λάβετε αυτά τα μέτρα για να προστατευτείτε
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Ορίστε τις πληροφορίες σας σε “Μόνο εγώ” ή κάποια άλλη ιδιωτική ρύθμιση στο <a>προφίλ σας στο Facebook</a>.</span>
+facebook-breach-what-to-do-3 = Δείτε όλες τις προτάσεις στη σελίδα μας σχετικά με τη διαρροή του Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Εμφάνιση:
 
