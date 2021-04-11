@@ -47,6 +47,7 @@ rec-cc-subhead = Hold øje med dine kreditkort-transaktioner
 rec-cc =
     Hold øje med underlige betalinger fra dit kreditkort. Overvejs at 
     bede din kreditkortudsteder om et nyt kort med et nyt nummer.
+rec-email-cta = Prøv { -brand-relay }
 # Recommendation subhead
 rec-ip-subhead = Brug en tjeneste, der maskerer din IP-adresse
 # Link title
