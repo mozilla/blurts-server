@@ -385,6 +385,14 @@ facebook-breach-note =
     osobné informácie, ale nie e-mailové adresy. Ak ste si niekedy zaregistrovali
     účet na Facebooku - aj keď ho teraz nepoužívate - odporúčame vám
     podniknúť tieto kroky na svoju ochranu
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Vo <a>svojom profile na Facebooku</a> nastavte pri citlivých informáciách voľbu „Iba ja“ alebo na iné neverejné nastavenie.</span>
+facebook-breach-what-to-do-1-copy =
+    Počas tohto úniku hackeri získali informácie,
+    ktoré boli nastavené ako „otvorené pre verejnosť“ alebo „zdieľané s priateľmi“.
+    Tieto informácie možno kombinovať s inými údajmi, a získať tak
+    ďalšie osobné údaje a účty.
 facebook-breach-what-to-do-3 = Prečítajte si všetky odporúčania na našej stránke o úniku informácií z Facebooku
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
