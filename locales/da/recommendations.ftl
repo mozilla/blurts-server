@@ -50,10 +50,23 @@ rec-cc =
 # Recommendation subhead
 rec-email-subhead = Brug mail-aliasser
 rec-email-cta = Prøv { -brand-relay }
+rec-email =
+    Ved at dele din rigtige mailadresse gør du det nemmere for hackere eller 
+    sporings-teknologier at finde dine adgangskode eller følge dig på nettet. 
+    Med en service som { -brand-relay } kan du skjule din rigtige mailadresse
+    og få sendt mails videre til din rigtige indbakke.
 # Recommendation subhead
 rec-ip-subhead = Brug en tjeneste, der maskerer din IP-adresse
 # Link title
 rec-ip-us-cta = Prøv { -brand-fpn }
+rec-ip-us =
+    Din IP-adresse (Internet Protocol address) afslører din placering
+    og din internet-udbyder. Med en service som { -brand-fpn }
+    kan du skjule din IP-adresse og dermed din placering.
+rec-ip-non-us =
+    Din IP-adresse (Internet Protocol address) afslører din placering
+    og din internet-udbyder. Med en VPN (virtual private network)
+    kan du skjule din placering og tilsløre din IP-adresse.
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
 rec-hist-pw-subhead = Undgå at genbruge adgangskoder
@@ -64,12 +77,22 @@ rec-hist-pw =
     kompromitteret i en datalæk, skal du kun ændre dette ene login.
 # Recommendation subhead
 rec-sec-qa-subhead = Opret unikke svar på sikkerhedsspørgsmål
+rec-sec-qa =
+    Mange websteder stiller de samme spørgsmål. Hvis ét svar bliver kompromitteret, er 
+    oplysningen offentlig viden. Opret lange, vilkårlige svar, og opbevar dem et sikkert sted.
 # Recommendation subhead
 rec-phone-num-subhead = Undgå at dele dit telefonnummer
 # Recommendation subhead
 rec-dob-subhead = Undgå at bruge personlige informationer i PIN-koder
+rec-dob =
+    Det er bedst at undgå at bruge din fødselsdato i adgangskoder og 
+    PIN-koder. Din fødselsdato er nemlig let at finde i offentlige registre. 
+    Personer, der kender din fødselsdato, kan også let gætte din PIN-kode.
 # Recommendation subhead
 rec-pins-subhead = Øg sikkerheden af dine PIN-koder
+rec-pins =
+    En stærk PIN-kode indeholder ikke personlige informationer som din fødselsdato 
+    eller adresse. Den skal være et tal, som kun du kender, og den skal være svær at gætte.
 # Recommendation subhead
 rec-address-subhead = Undgå at bruge adresser i adgangskoder
 # Recommendation subhead
