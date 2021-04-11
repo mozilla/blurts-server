@@ -376,6 +376,15 @@ no-other-breaches-found = Základné vyhľadávanie nenašlo žiadne ďalšie ú
 no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
 all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
 search-breaches = Hľadať
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Vaša e-mailová adresa sa v tomto úniku neobjavuje,
+    ale vaše telefónne číslo môže byť stále zraniteľné.</span> Niektoré z účtov
+    kompromitovaných pri úniku Facebooku zahŕňali telefónne čísla a ďalšie
+    osobné informácie, ale nie e-mailové adresy. Ak ste si niekedy zaregistrovali
+    účet na Facebooku - aj keď ho teraz nepoužívate - odporúčame vám
+    podniknúť tieto kroky na svoju ochranu
 facebook-breach-what-to-do-3 = Prečítajte si všetky odporúčania na našej stránke o úniku informácií z Facebooku
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
@@ -642,4 +651,6 @@ ecosystem-promo-headline = Celý rad produktov zameraných na súkromie
 ecosystem-promo-body = Všetky produkty s označením { -brand-name } vychádzajú zo zásady, že menej dát je niekedy viac. Vaše dáta udržiavame v bezpečí a nemáme pred vami žiadne tajomstvá.
 promo-ecosystem-cta = Zobraziť všetky produkty
 steps-to-resolve-headline = Kroky vedúce k vyriešeniu tohto úniku
+vpn-promo-headline = Teraz je ten správny čas na zvýšenie vašej bezpečnosti online.
+vpn-promo-copy = Virtuálna súkromná sieť spoločnosti { -brand-Mozilla } pomáha chrániť vaše internetové pripojenie pred hackermi a špiónmi.
 vpn-promo-cta = Vyskúšajte { -brand-mozilla-vpn }
