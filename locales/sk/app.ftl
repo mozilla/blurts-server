@@ -376,6 +376,7 @@ no-other-breaches-found = Základné vyhľadávanie nenašlo žiadne ďalšie ú
 no-results-blurb = Ľutujeme, ale tento únik sa v našej databáze nenachádza.
 all-breaches-headline = Všetky úniky obsiahnuté vo { -product-name(case: "loc") }
 search-breaches = Hľadať
+facebook-breach-what-to-do-3 = Prečítajte si všetky odporúčania na našej stránke o úniku informácií z Facebooku
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
 
@@ -641,3 +642,4 @@ ecosystem-promo-headline = Celý rad produktov zameraných na súkromie
 ecosystem-promo-body = Všetky produkty s označením { -brand-name } vychádzajú zo zásady, že menej dát je niekedy viac. Vaše dáta udržiavame v bezpečí a nemáme pred vami žiadne tajomstvá.
 promo-ecosystem-cta = Zobraziť všetky produkty
 steps-to-resolve-headline = Kroky vedúce k vyriešeniu tohto úniku
+vpn-promo-cta = Vyskúšajte { -brand-mozilla-vpn }
