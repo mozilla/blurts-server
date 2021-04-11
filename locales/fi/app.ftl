@@ -348,6 +348,7 @@ no-other-breaches-found = Muita vuotoja ei löytynyt perushaulla.
 no-results-blurb = Valitettavasti tästä vuodosta ei ole merkintää tietokannassamme.
 all-breaches-headline = Kaikki { -product-name }in tuntemat tietovuodot
 search-breaches = Etsi vuotoja
+facebook-breach-what-to-do-3 = Katso kaikki suosituksemme Facebook-vuotosivultamme
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Näytetään:
 
