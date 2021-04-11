@@ -301,6 +301,10 @@ no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
 all-breaches-headline = { -product-name }’deki tüm ihlaller
 search-breaches = İhlallerde ara
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span><a>Facebook profilinizdeki</a> bilgilerinizi "Sadece ben" veya herkese açık olmayan bir ayara ayarlayın.</span>
+facebook-breach-what-to-do-3 = Diğer önerilerimizi Facebook sızıntı sayfamızda görebilirsiniz
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Gösterilen:
 
@@ -550,3 +554,6 @@ ecosystem-promo-headline = Gizliliğinize önem veren ürünlerle internetteki y
 ecosystem-promo-body = Tüm { -brand-name } ürünleri Kişisel Veri Sözümüzü yerine getirir: Daha az veri topla. Güvenle sakla. Sır tutma.
 promo-ecosystem-cta = Tüm ürünleri görün
 steps-to-resolve-headline = Bu ihlali giderme adımları
+vpn-promo-headline = Şimdi çevrimiçi güvenliğinizi artırmanın tam zamanı.
+vpn-promo-copy = { -brand-Mozilla } VPN, internet bağlantınızı hacker'lardan ve casuslardan korumaya yardımcı olur.
+vpn-promo-cta = { -brand-mozilla-vpn }’i indirin
