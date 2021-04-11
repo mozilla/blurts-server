@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -120,6 +121,46 @@ security-tips = Sikkerhedstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Åbn { -brand-fxa }-navigation
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = På en skal fra 1 til 10, hvor sandsynligt er det så, at du vil anbefale { -product-short-name } til en ven eller en kollega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Ikke sandsynligt
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Meget sandsynligt
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = Er { -product-short-name } nem at bruge?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = Har { -product-short-name } en klar og overskuelig brugerflade?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Meget uenig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Uenig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Ved ikke
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Enig
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Meget enig
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Hvordan ville du have det, hvis du ikke længere kunne bruge { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Meget skuffet
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Ret skuffet
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Det gør ingen forskel
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SENEST TILFØJEDE DATALÆK
 # Link title
@@ -297,6 +338,34 @@ no-other-breaches-found = Den grundlæggende søgning fandt ikke andre datalæk.
 no-results-blurb = Beklager, men den datalæk er ikke i vores database.
 all-breaches-headline = Alle datalæk i { -product-name }
 search-breaches = Søg efter datalæk
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Din mailadresse optræder ikke i denne læk,
+    men dit telefonnummer kan stadig være i fare. </span> Nogle af de kompromitterede
+    konti i Facebook-lækken inkluderede telefonnumre og andre personlige oplysninger - 
+    men ikke mailadresser. Hvis du på et tidspunkt har registreret en konto på Facebook
+    så anbefaler vi, at du følger disse trin for at beskytte dig selv. Også selvom du ikke bruger
+    kontoen længere.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Sæt din information til "Kun mig" eller en anden ikke-offentlig indstilling på <a>din Facebook-profil</a></span>
+facebook-breach-what-to-do-1-copy =
+    I denne læk kom hackere i besiddelse af
+    oplysninger, der var sat til "tilgængeligt for alle" eller "delt med venner."
+    Disse oplysninger kan kombineres med andre data for at få adgang til flere
+    af dine personlige oplysninger og konti.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Skift adgangskode, PIN eller andre sikkerheds-oplysninger for
+    konti, der vedrører <a>dine mobil-abonnementer</a> for at forhindre at svindlere overtager dit telefonnummer ved hjælp af SIM-swapping</span>.
+facebook-breach-what-to-do-2-copy =
+    SIM-swapping - eller SIM-jacking - handler om, 
+    at en hacker bruger telefonnumre, fødselsdato eller andre personlige data
+    til at overtage andre menneskers mobiltelefonnumre og derefter få adgang til deres mailkonti, 
+    profiler på sociale medier eller sågar deres bankkonti.
+facebook-breach-what-to-do-3 = Se alle anbefalingerne på vores side om Facebok-lækken
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
 
