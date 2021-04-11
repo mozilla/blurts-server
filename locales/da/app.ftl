@@ -508,6 +508,7 @@ take-further-steps-desc = Find ud af, hvordan du mindsker riskoen for identitets
 changes-saved = Ændringer gemt!
 # Section headline
 rec-section-headline = Hvad skal jeg gøre ved denne datalæk?
+rec-section-subhead = Vi anbefaler, at du følger disse forholdsregler til at sikre dine personlige data og beskytte din digitale identitet.
 # Section headline
 rec-section-headline-no-pw = Hvad skal jeg gøre for at beskytte mine personlige data?
 rec-section-subhead-no-pw = Selvom adgangskoder ikke blev kompromitteret i dette datalæk, er der stadig forholdsregler, du kan tage for bedre at beskytte dine personlige data.
@@ -536,10 +537,20 @@ marking-this-body =
 mark-as-resolve-button = Marker som løst
 marked-as-resolved-label = Markeret som løst
 undo-button = Fortryd
+confirmation-1-subhead = Godt gået! Du har lige løst din første datalæk.
+confirmation-1-body = Hold dampen oppe. Kontrollér din oversigt for at se, om der er mere at gøre.
+confirmation-2-subhead = Tag dén, hackere!
+confirmation-2-body = Du tager vigtige skridt i retning af at beskytte dine online-konti.
+confirmation-3-subhead = Endnu én klaret. Godt arbejde!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Er din nye adgangskode unik, stærk og svær at gætte? <a>Find ud af det</a>
 generic-confirmation-subhead = Denne datalæk er blevet markeret som løst
+generic-confirmation-message =
+    { $numUnresolvedBreaches ->
+        [one] Gå til din oversigt for at se den tilbageværende datalæk.
+       *[other] Gå til din oversigt for at se de tilbageværende datalæk.
+    }
 return-to-breach-details-link = Vend tilbage til detaljer om datalæk
 go-to-dashboard-link = Gå til oversigten
 # This string appears above a breach resolution progress bar and indicates
@@ -566,7 +577,17 @@ progress-complete = Alle kendte datalæk er blevet markeret som løste
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
+progress-message-1 =
+    <span>Du er kommet godt fra start!</span> Undersøg de resterende datalæk for at lære, 
+    hvilke forholdsregler du skal tage.
+progress-message-2 =
+    <span>Bliv ved!</span> Små ændringer som at opdatere adgangskoder har stor betydning 
+    for at dine personlige oplysninger er sikre.
+progress-message-3 = <span>Godt gået med at få løst de datalæk!</span> Fortsæt lidt endnu - du har stadig nogle at få styr på.
 progress-message-4 = <span>Næsten færdig!</span> Du er tæt på at være i mål.
+progress-complete-message =
+    <span>Var det ikke rart?</span> Hvis du har lyst til at fortsætte, så er det et godt tidspunkt at
+    gøre dine andre logins mere sikre med nogle stærkere adgangskoder.
 
 ##
 
@@ -603,3 +624,6 @@ ecosystem-promo-headline = Beskyt dit online-liv med produkter, der sætter priv
 ecosystem-promo-body = Alle { -brand-name }-produkter lever op til vores løfte om personlige data: Gem mindre. Beskyt alt. Ingen hemmeligheder.
 promo-ecosystem-cta = Se alle produkter
 steps-to-resolve-headline = Fremgangsmåde til at løse denne datalæk
+vpn-promo-headline = Nu er det tid til at forbedre din sikkerhed på internettet.
+vpn-promo-copy = { -brand-Mozilla }s Virtual Private Network beskytter din internetforbindelse mod hackere og spioner.
+vpn-promo-cta = Få { -brand-mozilla-vpn }
