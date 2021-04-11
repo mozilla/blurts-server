@@ -342,6 +342,33 @@ no-other-breaches-found = No other breaches found from a basic search.
 no-results-blurb = Sorry, that breach is not in our database.
 all-breaches-headline = All breaches in { -product-name }
 search-breaches = Search Breaches
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Your email doesn’t appear in this leak,
+    but your phone number may still be vulnerable.</span> Some of the accounts
+    compromised in the Facebook leak included phone numbers and other
+    personal information but not email addresses. If you have ever signed up
+    for a Facebook account — even if you don’t use it now — we recommend you
+    take these steps to protect yourself
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Set your information to “Only me” or other non-public setting in <a>your Facebook profile</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    During this leak, hackers took profile 
+    information that was set as “open to the public” or “shared with friends.”
+    This information can be combined with other data to access even more of
+    your personal information and accounts.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Change the password, PIN, or other security credentials on your <a>mobile
+    phone carrier accounts</a> to prevent SIM-swapping</span>.
+facebook-breach-what-to-do-2-copy =
+    SIM swapping, which is also called SIM-jacking,
+    is when a hacker uses phone numbers, date of birth and other data to take over
+    a person’s mobile phone number and then hack into their email, social media and even financial accounts.
+facebook-breach-what-to-do-3 = See all of the recommendations on our Facebook leak page
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Showing:
 
@@ -597,3 +624,4 @@ ecosystem-promo-headline = Protect your life online with privacy-first products
 ecosystem-promo-body = All { -brand-name } products honour our Personal Data Promise: Take less. Keep it safe. No secrets.
 promo-ecosystem-cta = See All Products
 steps-to-resolve-headline = Steps to resolve this breach
+vpn-promo-headline = Now’s the time to boost your safety online.
