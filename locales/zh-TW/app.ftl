@@ -279,6 +279,18 @@ no-other-breaches-found = 在基礎搜尋中沒有找到其他外洩事件。
 no-results-blurb = 很抱歉，我們的資料庫中沒有該外洩事件相關資料。
 all-breaches-headline = { -product-name } 的所有資料外洩事件
 search-breaches = 搜尋資料外洩事件
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note = <span>您的電子郵件地址看起來不在這次資料外洩事件當中，但您的手機號碼還是可能已遭洩漏。</span>Facebook 資料外洩事件當中某些遭外洩的帳號資料包含了手機號碼、部分個人資料，但沒有電子郵件地址。只要您曾經註冊過 Facebook 帳號，就算現在沒在使用，我們還是建議採取下列步驟來保護自己
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>將<a>您的 Facebook 個人資料頁面</a>當中的資訊設定為「只有自己」或其他非公開的選項。</span>
+facebook-breach-what-to-do-1-copy = 在此次資料外洩事件中，駭客們收集到了設定為「公開」或「分享給朋友」的個人資訊。此資訊可結合其他資料，來破解您的其他帳號或取得更多個人資訊。
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>更改您<a>手機門號業者網站的</a>密碼、PIN 碼或其他的登入驗證方式，以防止遭受 SIM 卡更換攻擊</span>。
+facebook-breach-what-to-do-2-copy = SIM 卡更換攻擊（又稱 SIM 卡綁架攻擊）是指當駭客使用手機門號、生日等各種資料欺騙電信業者，來接管受害者的手機門號，再駭入其信箱、社群網路，甚至金融機構帳號的行為。
+facebook-breach-what-to-do-3 = 到我們的 Facebook 資料外洩頁面看看完整建議
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 列出:
 
