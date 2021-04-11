@@ -338,6 +338,33 @@ no-other-breaches-found = Không có rò rỉ dữ liệu khác được tìm th
 no-results-blurb = Xin lỗi, vụ rò rỉ đó không có trong cơ sở dữ liệu của chúng tôi.
 all-breaches-headline = Tất cả các rò rỉ trong { -product-name }
 search-breaches = Tìm kiếm rò rỉ dữ liệu
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Email của bạn không xuất hiện trong rò rỉ này,
+    nhưng số điện thoại của bạn vẫn có thể dễ bị tấn công.</span> Một số tài khoản
+    bị xâm nhập trong vụ rò rỉ Facebook bao gồm số điện thoại và các thông tin
+    cá nhân nhưng không phải địa chỉ email. Nếu bạn đã từng đăng ký cho
+    tài khoản Facebook — ngay cả khi bạn không sử dụng nó bây giờ — chúng tôi
+    khuyên bạn thực hiện các bước sau để tự bảo vệ bản thân
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Đặt thông tin của bạn thành “Chỉ mình tôi” hoặc cài đặt không công khai khác trong <a>hồ sơ Facebook của bạn</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Trong lần rò rỉ này, tin tặc đã lấy hồ sơ thông tin
+    được đặt là "công khai" hoặc "được chia sẻ với bạn bè".
+    Thông tin này có thể được kết hợp với dữ liệu khác để truy cập
+    nhiều hơn thông tin cá nhân và tài khoản của bạn.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Thay đổi mật khẩu, mã PIN hoặc thông tin xác thực bảo mật khác trên
+    <a>tài khoản nhà cung cấp dịch vụ điện thoại di động của bạn</a> để ngăn việc tráo SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Tráo SIM, còn được gọi là SIM-jacking, là khi tin tặc sử dụng số điện thoại, 
+    ngày sinh và các dữ liệu khác để chiếm số điện thoại di động của một người
+    và sau đó xâm nhập vào email, mạng xã hội và thậm chí cả tài khoản tài chính của họ.
+facebook-breach-what-to-do-3 = Xem tất cả các khuyến nghị trên trang rò rỉ Facebook của chúng tôi
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Hiển thị:
 
