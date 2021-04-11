@@ -393,6 +393,15 @@ facebook-breach-what-to-do-1-copy =
     ktoré boli nastavené ako „otvorené pre verejnosť“ alebo „zdieľané s priateľmi“.
     Tieto informácie možno kombinovať s inými údajmi, a získať tak
     ďalšie osobné údaje a účty.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Zmeňte si heslo, PIN alebo iné bezpečnostné údaje vo svojom <a>účte mobilného operátora</a>,
+    aby ste zabránili výmene karty SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Podvod typu SIM swapping, tiež nazývaný SIM-jacking, je prípad,
+    keď hacker použije telefónne čísla, dátum narodenia a ďalšie údaje
+    na prevzatie čísla mobilného telefónu a následne sa nabúra do e-mailov, sociálnych sietí či dokonca finančných účtov.
 facebook-breach-what-to-do-3 = Prečítajte si všetky odporúčania na našej stránke o úniku informácií z Facebooku
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazené:
