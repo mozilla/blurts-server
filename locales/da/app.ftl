@@ -135,6 +135,10 @@ micro-survey-usability-prompt = Er { -product-short-name } nem at bruge?
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Synes du, at { -product-short-name } er pålidelig?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-appearance-prompt = Har { -product-short-name } en klar og overskuelig brugerflade?
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
