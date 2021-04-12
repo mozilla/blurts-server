@@ -324,15 +324,15 @@ new-breaches-found =
     }
 sign-up-headline-1 = Få de nyeste advarsler med en { -brand-fxa }.
 account-not-required = Du behøver ikke at have { -brand-name } for at bruge en { -brand-fxa }. Ved at tilmelde dig kan du modtage information om tjenester fra { -brand-Mozilla }.
-was-your-info-exposed = Er dine oplysninger blevet kompromitteret i datalækken { $breachName }?
+was-your-info-exposed = Er dine oplysninger blevet kompromitteret i { $breachName }-datalækken?
 find-out-if = Find ud af, om dine data er blevet kompromitteret i denne datalæk.
-fb-not-comp = Denne mailadresse optrådte ikke i datalækken { $breachName }.
+fb-not-comp = Denne mailadresse optrådte ikke i { $breachName }-datalækken.
 other-breaches-found =
     { $breachCount ->
         [one] Men den optrådte i { $breachCount } anden datalæk.
        *[other] Men den optrådte i { $breachCount } andre datalæk.
     }
-fb-comp-only = Denne mailadresse optrådte i datalækken { $breachName }.
+fb-comp-only = Denne mailadresse optrådte i { $breachName }-datalækken.
 fb-comp-and-others =
     { $breachCount ->
         [one] Denne mailadresse optrådte i { $breachCount } kendt datalæk, herunder { $breachName }.
