@@ -337,9 +337,25 @@ facebook-breach-note =
     <span>Nid yw'ch e-bost yn ymddangos yn y gollyngiad hwn,
     ond gall eich rhif ffôn fod yn agored i niwed o hyd.</span> Mae rhai o'r cyfrifon
     gafodd eu cyfaddawdu yn y gollyngiad Facebook yn cynnwys rhifau ffôn a
-    manylion personol eraill ond nid cyfeiriadau e-bost. Os ydych chi erioed wedicreu
-    cyfrif Facebook — hyd yn oed os nad ydych yn ei ddefnyddio nawr — rydym yn argymell
-    eich bod yn cymryd y camau hyn i ddiogelu eich hun
+    manylion personol eraill ond nid cyfeiriadau e-bost. Os ydych chi erioed wedi
+    creu cyfrif Facebook — hyd yn oed os nad ydych yn ei ddefnyddio nawr — 
+    rydym yn argymell eich bod yn cymryd y camau hyn i ddiogelu eich hun
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Gosodwch eich manylion i “Fi yn unig” neu osodiad arall nad yw'n gyhoeddusyn <a>eich proffil Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Yn ystod y gollyngiad hwn, cymerodd hacwyr fanylion proffil a osodwyd fel gwybodaeth “agored i'r cyhoedd” neu “wedi'i rannu gyda ffrindiau.”
+    Mae modd cyfuno'r manylion hyn â data arall i gael mynediad at fwy fyth o'ch manylion personol a'ch cyfrifon.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span> Newidiwch y cyfrinair, PIN, neu fanylion diogelwch eraill ar eich <a>cyfrifon
+     darparwyr ffôn symudol</a> i atal cyfnewid SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Mae cyfnewid SIM, sydd hefyd yn cael ei alw'n
+    SIM-jacking, yn digwydd pan fydd haciwr yn defnyddio rhifau ffôn, dyddiad geni a
+    data arall i gymryd drosodd rhif ffôn cell unigolyn ac yna hacio i mewn i'w e-bost, cyfryngau cymdeithasol a hyd yn oed cyfrifon ariannol.
+facebook-breach-what-to-do-3 = Gweld yr holl argymhellion ar ein tudalen gollyngiad Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Yn dangos:
 
@@ -637,3 +653,6 @@ ecosystem-promo-headline = Diogelwch eich bywyd ar-lein gyda chynnyrch preifatrw
 ecosystem-promo-body = Mae pob un o gynnyrch { -brand-name } yn anrhydeddu ein Addewid Data Personol: Cymryd llai. Cadw nhw'n ddiogel. Dim cyfrinachau.
 promo-ecosystem-cta = Gweld yr Holl Gynnyrch
 steps-to-resolve-headline = Camau i ddatrys y tor-data hwn
+vpn-promo-headline = Nawr yw'r amser i gynyddu'ch diogelwch ar-lein.
+vpn-promo-copy = Mae Rhwydwaith Preifat Rhithwir { -brand-Mozilla } yn helpu i ddiogelu eich cysylltiad rhyngrwyd rhag hacwyr ac ysbïwyr.
+vpn-promo-cta = Rhowch gynnig ar { -brand-mozilla-vpn }
