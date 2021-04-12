@@ -331,6 +331,15 @@ no-other-breaches-found = Heb ddarganfod  unrhyw dor-data arall o'r chwilio cych
 no-results-blurb = Ymddiheuriadau, nid yw'r tor-data hwnnw yn ein cronfa ddata.
 all-breaches-headline = Pob tor-data yn { -product-name }
 search-breaches = Chwilio am Dor-data
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Nid yw'ch e-bost yn ymddangos yn y gollyngiad hwn,
+    ond gall eich rhif ffôn fod yn agored i niwed o hyd.</span> Mae rhai o'r cyfrifon
+    gafodd eu cyfaddawdu yn y gollyngiad Facebook yn cynnwys rhifau ffôn a
+    manylion personol eraill ond nid cyfeiriadau e-bost. Os ydych chi erioed wedicreu
+    cyfrif Facebook — hyd yn oed os nad ydych yn ei ddefnyddio nawr — rydym yn argymell
+    eich bod yn cymryd y camau hyn i ddiogelu eich hun
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Yn dangos:
 
