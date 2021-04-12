@@ -325,6 +325,10 @@ no-other-breaches-found = Ndojejuhúi ambue ñembyai jeheka ñepyrũguávape.
 no-results-blurb = Rombyasy, pe ñembyai ndaipóri ore mba’ekuaarã rendápe.
 all-breaches-headline = Opaite ñembyai { -product-name }-pe.
 search-breaches = Ñembyai jeheka
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Emoĩ ne marandu “Che añoite” térã oimeraẽva ñemboheko ojehecha’ỹva <a>Facebook mba’etépe</a>.</span>
+facebook-breach-what-to-do-3 = Ehechapaite umi ñemoñe’ẽ ore Facebook kuatiarogue mboguahápe
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Jehechauka:
 
@@ -586,4 +590,6 @@ ecosystem-promo-headline = Emo’ã nde rekove ñandutípe apopyre iñemiguáva 
 ecosystem-promo-body = Opaite apopyre { -brand-name } oreko ore ñe’ẽ mba’ekuaarã nemba’évare: he’u’ive. Ereko tekorosãme. Kañygua’ỹre.
 promo-ecosystem-cta = Ehecha opaite apopyre
 steps-to-resolve-headline = Tape emoĩporã hag̃ua ko ñembyai
+vpn-promo-headline = Ko’ág̃a emongakuaa tekorosã ñandutípe.
+vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã hag̃ua nde jeike ñandutípe umi mba’evai apohágui.
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
