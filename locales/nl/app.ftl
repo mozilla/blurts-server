@@ -338,6 +338,31 @@ no-other-breaches-found = Geen andere datalekken gevonden in een basiszoekopdrac
 no-results-blurb = Sorry, dat datalek staat niet in onze database.
 all-breaches-headline = Alle datalekken in { -product-name }
 search-breaches = Datalekken zoeken
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Uw e-mailadres komt niet voor in dit lek,
+    maar uw telefoonnummer kan nog steeds kwetsbaar zijn.</span> Sommige van de accounts
+    die bij het Facebook-lek zijn blootgesteld bevatten telefoonnummers en andere
+    persoonlijke gegevens, maar geen e-mailadressen. Als u ooit een Facebook-account hebt aangemaakt – zelfs als u deze nu niet gebruikt – bevelen we u aan
+    deze stappen te nemen om uzelf te beschermen
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Stel uw gegevens in op ‘Alleen ik’ of een andere niet-openbare instelling in <a>uw Facebook-profiel</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Bij dit lek hebben hackers profielgegevens
+    die waren ingesteld op ‘openbaar’ of ‘gedeeld met vrienden’ buitgemaakt.
+    Deze gegevens kunnen worden gecombineerd met andere gegevens om nog meer
+    van uw persoonlijke gegevens en account te benaderen.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Wijzig het wachtwoord, de pincode of andere beveiligingsgegevens van uw <a>accounts van
+    telefoonaanbieders</a> om sim-swapping te voorkomen</span>.
+facebook-breach-what-to-do-2-copy =
+    Sim-swapping, ook wel sim-jacking genoemd,
+    gebeurt als een hacker telefoonnummer, geboortedatum en andere gegevens gebruikt om
+    iemands mobiele telefoonnummer over te nemen en vervolgens op hun e-mail-, sociale media- en zelfs financiële accounts in te breken.
 facebook-breach-what-to-do-3 = Lees alle aanbevelingen op onze pagina over het Facebook-lek
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Resultaat:
