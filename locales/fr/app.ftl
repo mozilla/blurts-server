@@ -308,6 +308,12 @@ facebook-breach-note =
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Définissez vos informations personnelles sur « Moi uniquement » ou tout autre paramètre non public dans <a>votre profil Facebook</a>.</span>
 facebook-breach-what-to-do-1-copy = Lors de cette fuite, les pirates se sont emparés des informations de profil qui étaient définies comme « ouvertes au public » ou « partagées avec des amis ». Ces informations peuvent être combinées avec d’autres données pour accéder à encore plus d’informations personnelles et de comptes.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Changez le mot de passe, le code PIN ou d’autres identifiants de sécurité sur vos <a>comptes
+    d’opérateur mobile</a> pour empêcher l’échange de cartes SIM</span>.
+facebook-breach-what-to-do-3 = Voir toutes les recommandations sur notre page consacrée aux fuites de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Fuites visibles :
 
