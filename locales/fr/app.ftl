@@ -299,6 +299,15 @@ no-other-breaches-found = Aucune autre fuite trouvée via une recherche basique.
 no-results-blurb = Désolé, cette fuite ne figure pas dans notre base de données.
 all-breaches-headline = Toutes les fuites de données dans { -product-name }
 search-breaches = Rechercher des fuites de données
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Votre adresse électronique n’apparait pas dans cette fuite de données, mais votre numéro de téléphone, lui, peut toujours être vulnérable.</span> Certains des comptes compromis dans la fuite de Facebook incluaient les numéros de téléphone et d’autres
+    informations personnelles mais pas d’adresses électroniques. Si vous avez déjà ouvert un compte Facebook — même si vous ne l’utilisez pas actuellement — nous vous recommandons de prendre les mesures suivantes pour vous protéger
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Définissez vos informations personnelles sur « Moi uniquement » ou tout autre paramètre non public dans <a>votre profil Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy = Lors de cette fuite, les pirates se sont emparés des informations de profil qui étaient définies comme « ouvertes au public » ou « partagées avec des amis ». Ces informations peuvent être combinées avec d’autres données pour accéder à encore plus d’informations personnelles et de comptes.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Fuites visibles :
 
