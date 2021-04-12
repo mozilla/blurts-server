@@ -338,6 +338,7 @@ no-other-breaches-found = Geen andere datalekken gevonden in een basiszoekopdrac
 no-results-blurb = Sorry, dat datalek staat niet in onze database.
 all-breaches-headline = Alle datalekken in { -product-name }
 search-breaches = Datalekken zoeken
+facebook-breach-what-to-do-3 = Lees alle aanbevelingen op onze pagina over het Facebook-lek
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Resultaat:
 
