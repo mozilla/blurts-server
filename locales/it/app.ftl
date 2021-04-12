@@ -294,6 +294,23 @@ no-other-breaches-found = Nessun’altra violazione trovata con la ricerca di ba
 no-results-blurb = Siamo spiacenti, questa violazione non si trova nel nostro database.
 all-breaches-headline = Tutte le violazioni in { -product-name }
 search-breaches = Cerca nelle violazioni
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Il tuo indirizzo email non è coinvolto in questa fuga di dati
+    ma il tuo numero di telefono potrebbe essere ancora a rischio.</span> Alcuni degli account
+    compromessi dalla fuga di dati di Facebook, infatti, contengono numeri di telefono e altre
+    informazioni personali ma non indirizzi di posta elettronica. Se ti sei registrato
+    a Facebook, anche con un account che non stai usando attualmente, ti suggeriamo
+    di seguire questi passaggi per proteggerti.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Configura la visibilità delle informazioni <a>nel tuo profilo Facebook</a> scegliendo l’opzione “Solo io” oppure un’altra opzione non pubblica.</span>
+facebook-breach-what-to-do-1-copy = Nel corso di questa fuga di dati, gli hacker hanno raccolto informazioni del profilo configurate come pubbliche (“Tutti”) o condivise con gli amici. Queste informazioni possono essere incrociate con altri dati per ottenere accesso a ulteriori informazioni personali e ai tuoi account.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Cambia password, PIN o altre credenziali di sicurezza negli <a>account del tuo gestore di telefonia mobile</a> per prevenire eventuali tentativi di sostituzione della SIM (“SIM swapping”)</span>.
+facebook-breach-what-to-do-3 = Leggi tutti i consigli sulla nostra pagina dedicata alla fuga di dati di Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visualizzati:
 
