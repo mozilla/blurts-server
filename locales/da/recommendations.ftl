@@ -125,3 +125,7 @@ rec-gen-3-subhead = Vær forsigtig med at udlevere personlige oplysninger
 rec-gen-3-cta = Læs flere sikkerhedstips
 # Recommendation subhead
 rec-gen-4-subhead = Opdater software og apps regelmæssigt
+rec-gen-4 =
+    Dine enheder er mere sikre, hvis du sørger for at opdatere apps på din smartphone,
+    din browser og dit operativsystem. Opdateringerne løser fejl, lukker sikkerhedshuller
+    og fjerner sikkerhedsproblemer.
