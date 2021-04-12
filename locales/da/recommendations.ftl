@@ -119,10 +119,17 @@ rec-gen-1 =
 rec-gen-2-subhead = Gem adgangskoder et sikkert sted
 # Link title
 rec-gen-2-cta = Myter om programmer til håndtering af adgangskoder
+rec-gen-2 =
+    Gem dine login-oplysninger et sikkert sted, som kun du har adgang til - 
+    fx i et program til håndtering af adgangskoder. Det gør det også nemmere at holde styr på dine adgangskoder.
 # Recommendation subhead
 rec-gen-3-subhead = Vær forsigtig med at udlevere personlige oplysninger
 # Link title
 rec-gen-3-cta = Læs flere sikkerhedstips
+rec-gen-3 =
+    Del ikke dine personlige oplysninger, hvis du ikke er nødt til det. Du behøver
+    ikke at indtaste din mailadresse, dit postnummer eller dit telefonnummer, hvis 
+    oplysningerne ikke er påkrævede.
 # Recommendation subhead
 rec-gen-4-subhead = Opdater software og apps regelmæssigt
 rec-gen-4 =
