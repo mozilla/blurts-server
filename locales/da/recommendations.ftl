@@ -69,6 +69,10 @@ rec-ip-non-us =
     kan du skjule din placering og tilsløre din IP-adresse.
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
+rec-moz-vpn =
+    Din IP-adresse (Internet Protocol adress) kan afsløre din placering og din internet-udbyder. En service som
+    { -brand-fpn } skjuler din IP-adresse og din placering, når du bruger { -brand-name }. Hvis du vil skjule din
+    IP-adresse og placering for hele din enhed, så kan du bruge en service som { -brand-mozilla-vpn }.
 rec-hist-pw-subhead = Undgå at genbruge adgangskoder
 # Link title
 rec-hist-pw-cta-fx = Se logins i { -brand-name }
@@ -82,6 +86,10 @@ rec-sec-qa =
     oplysningen offentlig viden. Opret lange, vilkårlige svar, og opbevar dem et sikkert sted.
 # Recommendation subhead
 rec-phone-num-subhead = Undgå at dele dit telefonnummer
+rec-phone-num =
+    Undgå helst at angive dit telefonnummer, når du opretter nye konti
+    eller services. Hvis det ikke er påkrævet at indtaste dit telefonnummer, 
+    så lad være.
 # Recommendation subhead
 rec-dob-subhead = Undgå at bruge personlige informationer i PIN-koder
 rec-dob =
@@ -95,10 +103,18 @@ rec-pins =
     eller adresse. Den skal være et tal, som kun du kender, og den skal være svær at gætte.
 # Recommendation subhead
 rec-address-subhead = Undgå at bruge adresser i adgangskoder
+rec-address =
+    Dine adgangskoder bliver svagere, hvis de indeholder din adresse  eller
+    adressen, hvor du voksede op. Det er nemlig nemt at finde disse 
+    oplysninger - og så bliver dine adgangskoder nemme at gætte.
 # Recommendation subhead
 rec-gen-1-subhead = Brug unikke, stærke adgangskoder til hver konto
 # Link title
 rec-gen-1-cta = Sådan opretter du stærke adgangskoder
+rec-gen-1 =
+    Genbrug af adgangskoder bringer alle dine konti i fare. For hvis først
+    én adgangskode afsløres, så har hackere pludselig adgang til mange
+    konti.
 # Recommendation subhead
 rec-gen-2-subhead = Gem adgangskoder et sikkert sted
 # Link title
