@@ -310,6 +310,7 @@ facebook-breach-what-to-do-1-copy = Nel corso di questa fuga di dati, gli hacker
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>Cambia password, PIN o altre credenziali di sicurezza negli <a>account del tuo gestore di telefonia mobile</a> per prevenire eventuali tentativi di sostituzione della SIM (“SIM swapping”)</span>.
+facebook-breach-what-to-do-2-copy = Il “SIM swapping”, o “SIM jacking”,  si verifica quando un hacker utilizza numeri di telefono, data di nascita e altre informazioni personali per prendere possesso del numero di telefono cellulare di un’altra persona. Questo viene poi utilizzato per ottenere accesso ad account di posta elettronica, social e perfino conti bancari.
 facebook-breach-what-to-do-3 = Leggi tutti i consigli sulla nostra pagina dedicata alla fuga di dati di Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Visualizzati:
