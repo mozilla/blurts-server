@@ -319,6 +319,26 @@ no-other-breaches-found = No se encontraron otras filtraciones en la búsqueda b
 no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
 search-breaches = Buscar filtraciones
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Tu correo electrónico no aparece en esta filtración,
+    pero tu número de teléfono aún podría ser vulnerable.</span> Algunas de las cuentas
+    comprometidas en la filtración de Facebook incluyen números de teléfonos y otra
+    información personal pero no direcciones de correo electrónico. Si alguna vez te registraste
+    para una cuenta de Facebook — incluso si ya no la usas — te recomendamos
+    que sigas estos pasos para protegerte
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Establece tu información a "Solo yo" u otro ajuste no público en <a>tu perfil de Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Durante esta filtración, los hackers tomaron información
+    de los perfiles que estaban “abiertos al público” o “compartidos con amigos”.
+    Esta información puede ser combinada con otros datos para acceder a más
+    información personal y cuentas.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Cambiar la contraseña, PIN u otras credenciales de seguridad en tus <a>cuestas de operador móvil</a> para prevenir el SIM-swapping</span>.
 facebook-breach-what-to-do-2-copy =
     SIM swapping, también conocido como intercambio de SIM o secuestro de SIM,
     es cuando un hacker usa números de teléfono, fecha de nacimiento y otros datos para adueñarse
