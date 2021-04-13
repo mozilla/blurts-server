@@ -313,6 +313,10 @@ facebook-breach-what-to-do-1-copy = Lors de cette fuite, les pirates se sont emp
 facebook-breach-what-to-do-2-headline =
     <span>Changez le mot de passe, le code PIN ou d’autres identifiants de sécurité sur vos <a>comptes
     d’opérateur mobile</a> pour empêcher l’échange de cartes SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    L’échange de carte SIM, également appelé détournement de SIM,
+    se produit lorsqu’un pirate utilise les numéros de téléphone, la date de naissance et d’autres données d’une personne
+    pour prendre le contrôle de son numéro de téléphone mobile, et ensuite pirater son adresse électronique, ses comptes de médias sociaux ou même d’institutions financières.
 facebook-breach-what-to-do-3 = Voir toutes les recommandations sur notre page consacrée aux fuites de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Fuites visibles :
