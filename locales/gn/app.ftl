@@ -327,6 +327,15 @@ all-breaches-headline = Opaite ñembyai { -product-name }-pe.
 search-breaches = Ñembyai jeheka
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Pe ñanduti veve ndojekuaái ko ñemboguahápe,
+    hákatu pe pumbyry papapy ikatu gueteri oñembyai.</span> Peteĩva umi mba’ete
+    ivaikuaáva Facebook mboguaha ryepýpe oike pumbyry papapy ha ambue
+    maranduete oike’ỹhápe ñanduti veve kundaharape. Eñemboheraguapýmaramo kuri
+    Facebook mba’etépe — ndereipurúiramo jepe — ro’e ndéve
+    ejapo hag̃ua ko’ã mba’e ne rekorosãrã.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Emoĩ ne marandu “Che añoite” térã oimeraẽva ñemboheko ojehecha’ỹva <a>Facebook mba’etépe</a>.</span>
 facebook-breach-what-to-do-1-copy =
     Pe ñembogua oiko aja, umi hacker ojapyhy marandu
