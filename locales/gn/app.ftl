@@ -328,6 +328,11 @@ search-breaches = Ñembyai jeheka
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Emoĩ ne marandu “Che añoite” térã oimeraẽva ñemboheko ojehecha’ỹva <a>Facebook mba’etépe</a>.</span>
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Emoambue ñe’ẽñemi, PIN térã peteĩva terarenda hekorosãva ne <a>pumbyry
+    popegua me’ẽhára rupi</a> emboyke hag̃ua SIM momokõi</span>.
 facebook-breach-what-to-do-3 = Ehechapaite umi ñemoñe’ẽ ore Facebook kuatiarogue mboguahápe
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Jehechauka:
