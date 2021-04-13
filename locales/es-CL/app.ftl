@@ -319,6 +319,11 @@ no-other-breaches-found = No se encontraron otras filtraciones en la búsqueda b
 no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
 search-breaches = Buscar filtraciones
+facebook-breach-what-to-do-2-copy =
+    SIM swapping, también conocido como intercambio de SIM o secuestro de SIM,
+    es cuando un hacker usa números de teléfono, fecha de nacimiento y otros datos para adueñarse
+    del número de teléfono de una persona y luego hackear sus cuentas de correo electrónico, de redes sociales e incluso financieras.
+facebook-breach-what-to-do-3 = Revisa todas las recomendaciones en nuestra página de filtración de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Mostrando:
 
@@ -570,3 +575,6 @@ ecosystem-promo-headline = Protege tu vida en línea con productos orientados a 
 ecosystem-promo-body = Todos los productos { -brand-name } honran nuestra promesa de datos personales: Tomar menos. Mantenerlo seguro. Sin secretos.
 promo-ecosystem-cta = Ver todos los productos
 steps-to-resolve-headline = Pasos para resolver esta filtración
+vpn-promo-headline = Ahora es tiempo de mejorar su seguridad en línea.
+vpn-promo-copy = La red privada virtual de { -brand-Mozilla } te ayuda a proteger tu conexión a Internet de hackers y espías.
+vpn-promo-cta = Obtener { -brand-mozilla-vpn }
