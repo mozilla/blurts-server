@@ -359,6 +359,11 @@ facebook-breach-what-to-do-1-copy =
 facebook-breach-what-to-do-2-headline =
     <span>Wizigje it wachtwurd, de pinkoade of oare befeiligingsgegevens fan jo <a>accounts fan
     telefoanoanbieders</a> om sim-swapping foar te kommen</span>.
+facebook-breach-what-to-do-2-copy =
+    Sim-swapping, ek wol sim-jacking neamd,
+    bart as in hacker telefoannûmer, bertedatum en oare gegevens brûkt om
+    ien syn/har mobile telefoannûmer oer te nimmen en dêrnei op harren e-mail-, sosjale media- en sels finansjele accounts yn te brekken.
+facebook-breach-what-to-do-3 = Lês alle oanrekommandaasjes op ús side oer it Facebook-lek
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Resultaat:
 
