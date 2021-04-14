@@ -338,6 +338,27 @@ no-other-breaches-found = Gjin oare datalekken fûn yn in basissykopdracht.
 no-results-blurb = Sorry, dat datalek stiet net yn ús database.
 all-breaches-headline = Alle datalekken yn { -product-name }
 search-breaches = Datalekken sykje
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Jo e-mailadres komt net foar yn dit lek,
+    mar jo telefoannûmer kin noch hieltyd kwetsber wêze.</span> Guon fan de accounts
+    dy't by it Facebook-lek bleatsteld binne befetsje telefoannûmers en oare
+    persoanlike gegevens, mar gjin e-mailadressen. As jo ea in Facebook-account oanmakke hawwe – sels as jo dizze no net brûke – rekommandearje wy jo oan
+    dizze stappen te nimmen om josels te beskermjen
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Stel jo gegevens yn op ‘Allinnich ik’ of in oare net-iepenbiere ynstelling yn <a>jo Facebook-profyl</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    By dit lek hawwe hackers profylgegevens
+    dy't ynsteld wien op ‘iepenbier’ of ‘dield mei freonen’ bútmakke.
+    Dizze gegevens kinne kombinearre wurde mei oare gegevens om noch mear
+    fan jo persoanlike gegevens en account te benaderen.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Wizigje it wachtwurd, de pinkoade of oare befeiligingsgegevens fan jo <a>accounts fan
+    telefoanoanbieders</a> om sim-swapping foar te kommen</span>.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Resultaat:
 
