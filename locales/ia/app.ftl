@@ -290,6 +290,14 @@ facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de 
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Defini tu informationes a “Solo me” o altere parametro non-public in <a>tu profilo Facebook</a>.</span>
 facebook-breach-what-to-do-1-copy = Durante iste fuga, le profanatores prendeva informationes ex le profilo, que era predefinite como “aperte al publico” o “compartite con amicos”.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Cambio le contrasigno, PIN, o altere credentiales de securitate sur tu <a>contos de gestor de telephonia mobile</a> pro impedir excambio de SIM</span>.<
+facebook-breach-what-to-do-2-copy =
+    Le excambio de SIM, que es alsi appellate SIM-jacking,
+    es quando un pirata informatic usa numeros de telephono, data de nascentia e altere datos
+    pro prender un numero de cellular del persona e pois profanar su e-mail, retes social e mesmo contos financiari.
+facebook-breach-what-to-do-3 = Vider tote le recommendationes sur nostre pagina de fuga de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Monstrate:
 
@@ -531,3 +539,6 @@ ecosystem-promo-headline = Protege tu vita online con productos de maxime discre
 ecosystem-promo-body = Tote le productos { -brand-name } honora nostre Promissa re datos personal: Prende minus. Mantene los secur. Nulle secretos.
 promo-ecosystem-cta = Vider tote le productos
 steps-to-resolve-headline = Grados pro resolver iste violation
+vpn-promo-headline = Ora es tempore pro meliorar tu securitate online.
+vpn-promo-copy = Le rete virtual private de { -brand-Mozilla } adjuta proteger tu connexion a internet contra profanatores e spias.
+vpn-promo-cta = Installa { -brand-mozilla-vpn }
