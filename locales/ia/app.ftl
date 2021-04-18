@@ -102,6 +102,9 @@ security-tips = Consilios de securitate
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Aperi le navigation de { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Sur un scala de 1 a 10, quanto es probabile que tu recommenda { -product-short-name } a un amico o collega?
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-not-likely-response = Non probabile
 # This is a survey response to the micro-survey-nps-prompt question.
@@ -133,6 +136,10 @@ micro-survey-agree-response = De accordo
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-strongly-agree-response = Fortemente de accordo
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Como te sentirea si tu non poterea plus usar { -product-short-name }?
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = Multo deludite
 # This is a survey response that follows the pmf prompt
@@ -276,6 +283,13 @@ no-other-breaches-found = Nulle altere violation ha essite trovate in un recerca
 no-results-blurb = Nos lo regretta, ille violation non es in nostre base de datos.
 all-breaches-headline = Tote le violationes in { -product-name }
 search-breaches = Cercar violationes
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de telephono pote ancora esser vulnerabile.</span> Parte del contos ha essite compromittite in le fuga de Facebook, includite numeros de telephono e altere informationes personal, ma non adresses e-mail.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Defini tu informationes a “Solo me” o altere parametro non-public in <a>tu profilo Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy = Durante iste fuga, le profanatores prendeva informationes ex le profilo, que era predefinite como “aperte al publico” o “compartite con amicos”.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Monstrate:
 
