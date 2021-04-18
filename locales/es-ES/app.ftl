@@ -329,6 +329,14 @@ facebook-breach-what-to-do-1-copy =
     de los perfiles que estaban “abiertos al público” o “compartidos con amigos”.
     Esta información puede ser combinada con otros datos para acceder a más
     información personal y cuentas.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Cambia la contraseña, PIN u otras credenciales de seguridad en tus <a>cuentas de operador móvil</a> para prevenir el SIM-swapping</span>.
+facebook-breach-what-to-do-2-copy =
+    SIM swapping, también conocido como intercambio de SIM o secuestro de SIM,
+    es cuando un hacker usa números de teléfono, fecha de nacimiento y otros datos para adueñarse
+    del número de teléfono de una persona y luego hackear sus cuentas de correo electrónico, de redes sociales e incluso financieras.
+facebook-breach-what-to-do-3 = Ver todas las recomendaciones en nuestra página de filtración de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Se muestran:
 
@@ -586,3 +594,6 @@ ecosystem-promo-headline = Protege tu vida en línea con productos orientados a 
 ecosystem-promo-body = Todos los productos { -brand-name } cumplen nuestra promesa de datos personales: Guardar menos datos. Mantenerlos seguros. Sin secretos.
 promo-ecosystem-cta = Ver todos los productos
 steps-to-resolve-headline = Pasos para resolver esta filtración
+vpn-promo-headline = Ahora es el momento de mejorar tu seguridad en línea.
+vpn-promo-copy = La red privada virtual de { -brand-Mozilla } te ayuda a proteger tu conexión a Internet de hackers y espías.
+vpn-promo-cta = Obtener { -brand-mozilla-vpn }
