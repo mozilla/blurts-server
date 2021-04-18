@@ -133,6 +133,12 @@ micro-survey-agree-response = De accordo
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-strongly-agree-response = Fortemente de accordo
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Multo deludite
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Un poco deludite
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Non me interessarea
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
 # Link title
