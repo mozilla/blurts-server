@@ -118,6 +118,21 @@ micro-survey-credibility-prompt = Esque tu senti que { -product-short-name } es 
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-appearance-prompt = Ha { -product-short-name } un presentation munde e simple?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Io dissenti fortemente
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Dissenti
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Insecur
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = De accordo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Fortemente de accordo
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
 # Link title
