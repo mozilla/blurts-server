@@ -252,6 +252,7 @@ feat-enroll-multiple = Inscreva vários emails na monitoração de vazamentos
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
+        [zero] Não aparece em nenhum vazamento conhecido.
         [one] Aparece em { $breachCount } vazamento conhecido.
        *[other] Aparece em { $breachCount } vazamentos conhecidos.
     }
