@@ -54,8 +54,8 @@ rec-email-subhead = Bruk e-postalias
 rec-email-cta = Prøv { -brand-relay }
 rec-email =
     Å gi ut den verkelege e-postadressa di gjer det lettare for hackarar eller sporarar å
-    finn passorda dine eller følgje deg på deg på nettet. Ei tjeneste som { -brand-relay }
-    skjuler den verkelege e-postadressa di mens du vidaresender e-post til den verkelege innboksen din.
+    finne passorda dine eller følgje deg på nettet. Ei teneste som { -brand-relay }
+    gøymer den verkelege e-postadressa di mens du vidaresender e-post til den verkelege innboksen din.
 # Recommendation subhead
 rec-ip-subhead = Bruk ei teneste som maskerer IP-adressa di
 # Link title
@@ -72,7 +72,7 @@ rec-ip-non-us =
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
 rec-moz-vpn =
     IP-adressa di kan avsløre plasseringa di og internettleverandøren din. Ei teneste som
-    { -brand-fpn } skjuler IP-adressa di og plasseringa di for { -brand-name }, og ei teneste som { -brand-mozilla-vpn } skjuler IP-adressea og plasseringa di for heile eininga.
+    { -brand-fpn } skjuler IP-adressa di og plasseringa di for { -brand-name }, og ei teneste som { -brand-mozilla-vpn } gøymer IP-adressea og plasseringa di for heile eininga.
 rec-hist-pw-subhead = Unngå å bruke passord på nytt
 # Link title
 rec-hist-pw-cta-fx = Vis innloggingar på { -brand-name }
