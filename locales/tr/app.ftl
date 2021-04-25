@@ -303,7 +303,13 @@ all-breaches-headline = { -product-name }’deki tüm ihlaller
 search-breaches = İhlallerde ara
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note = <span>E-posta adresiniz bu sızıntıda yer almıyor ama telefon numaranız yine de ele geçirilmiş olabilir.</span> Facebook sızıntısında ele geçirilen bazı hesaplarda e-posta adresleri yer almamasına rağmen telefon numaraları ve başka kişisel bilgiler yer alıyordu. Daha önce Facebook hesabı açtıysanız -şu anda kullanmıyor olsanız bile- kendini korumak için şu adımları atmanızı öneririz
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span><a>Facebook profilinizdeki</a> bilgilerinizi "Sadece ben" veya herkese açık olmayan bir ayara ayarlayın.</span>
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>SIM değişikliği saldırılarını önlemek için <a>mobil operatör hesaplarınızdaki</a> parolanızı, PIN'inizi veya diğer güvenlik bilgilerini değiştirin.</span>
 facebook-breach-what-to-do-3 = Diğer önerilerimizi Facebook sızıntı sayfamızda görebilirsiniz
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Gösterilen:
