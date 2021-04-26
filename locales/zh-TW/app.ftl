@@ -417,7 +417,7 @@ what-to-do-after-breach-desc = 鎖定帳號，讓您的個人資料不落入他�
 create-strong-passwords-desc = 讓您的密碼更強大、更安全、更難猜測。
 steps-to-protect-desc = 了解最常見的威脅，並了解要注意哪些事項。
 five-myths-desc = 了解如何避免設定密碼的壞習慣，讓密碼更難遭到駭客竊取。
-take-further-steps-desc = 了解如何降低身分遭竊的風險，防止財物損失。
+take-further-steps-desc = 了解如何降低身分遭盜用的風險，防止財物損失。
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = 變更已儲存！
 # Section headline
