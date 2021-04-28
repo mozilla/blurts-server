@@ -341,6 +341,12 @@ no-other-breaches-found = Ingen andre datalekkasjer ble funnet i dette grunnlegg
 no-results-blurb = Beklager, men denne datalekkasjen er ikke i vår database.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjer
+facebook-breach-what-to-do-1-copy =
+    I løpet av denne datalekkasjen tok hackere profilinformasjon
+    som ble satt som «åpen for publikum» eller «delt med venner.»
+    Denne informasjonen kan kombineres med andre data for å få tilgang til enda mer av
+    dine personlige opplysninger og kontoer.
+facebook-breach-what-to-do-3 = Se alle anbefalingene på vår Facebook-datalekkasjeside
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
 
