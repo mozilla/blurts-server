@@ -117,4 +117,4 @@ social-connections = Taq wokajil t'iqonem
 social-media-profiles = Taq wokajil t'iqonem rech cholk'aslemal
 social-security-numbers = Taq rajilab'alil wokajil rech chajib'al
 spoken-languages = Taq ch'ab'al eta'matalik
-spouses-names = Ub'i' achajilom
+spouses-names = Kib'i' k'ulan winaq
