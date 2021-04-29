@@ -1,3 +1,15 @@
+# Firefox Monitor is a product name and should not be translated.
+-product-name = Firefox Monitor
+# Firefox is a brand name and should not be translated.
+-brand-name = Firefox
+# A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
+firefox-monitor-report = { -product-name } woktzijob'al
+report-date = Rajilab'alil q'ij rech woktzijob'al
+email-address = Kemriqonib'al rech taqoqxa'nib'al:
+# A link to legal information about mozilla products.
+legal = Rech taqanik
+# Unsubscribe link in email.
+email-unsub-link = Uchupik utz'ib'axik ib'
 # Link Title
 faq-v2-1 = Man kinch'ob' ta rij jun chi kech we taq k'aywokaj on uk'olib'al web'. Jas che ink'o pa we jun retztaqan?
 # Link Title
