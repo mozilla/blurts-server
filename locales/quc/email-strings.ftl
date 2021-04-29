@@ -15,6 +15,15 @@ email-unsub-link = Uchupik utz'ib'axik ib'
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb = Xul we taqoqxa'nib'al awuk' rumal xatz'ib'aj awib' pa taq na'b'anem { -product-name }. ¿Man kawaj ta chi we taq taqoqxa'nib'al? { $unsubLink }. Wa' jun taqoqxa'nib'al pa utukelam. Chech toq'ab'al, chasolij { $faqLink }.
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy = Xul we taqoqxa'nib'al awuk' rumal xatz'ib'aj awib' pa taq na'b'anem { -product-name }. Wa' jun taqoqxa'nib'al pa utukelam. Chech toq'ab'al, chasolij { $faqLink }.
+# Button text
+verify-email-cta = Rilawachixik taqoqxa'nib'al
+# Button text
+see-all-breaches = Chawila' ronojel taq retztaqan
+# Headline of verification email
+email-link-expires = We taq kemwiqb'al kq'ax uq'ijol pa 24 ramaj
 # Link Title
 faq-v2-1 = Man kinch'ob' ta rij jun chi kech we taq k'aywokaj on uk'olib'al web'. Jas che ink'o pa we jun retztaqan?
 # Link Title
