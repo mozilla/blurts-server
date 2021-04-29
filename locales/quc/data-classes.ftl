@@ -108,3 +108,4 @@ religions = Taq kojb'al
 reward-program-balances = Taq pwaqilal rech kemwach rech sipanik
 salutations = Taq rutzil wachaj
 school-grades-class-levels = Ucholajil taq tijob'al (ucholajil taq tijonem)
+security-questions-and-answers = Taq k'otoj chi'aj xuquje' taq tzalib'al wachaj rech chajib'al
