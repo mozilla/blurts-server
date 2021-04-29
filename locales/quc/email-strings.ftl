@@ -10,6 +10,11 @@ email-address = Kemriqonib'al rech taqoqxa'nib'al:
 legal = Rech taqanik
 # Unsubscribe link in email.
 email-unsub-link = Uchupik utz'ib'axik ib'
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb = Xul we taqoqxa'nib'al awuk' rumal xatz'ib'aj awib' pa taq na'b'anem { -product-name }. ¿Man kawaj ta chi we taq taqoqxa'nib'al? { $unsubLink }. Wa' jun taqoqxa'nib'al pa utukelam. Chech toq'ab'al, chasolij { $faqLink }.
 # Link Title
 faq-v2-1 = Man kinch'ob' ta rij jun chi kech we taq k'aywokaj on uk'olib'al web'. Jas che ink'o pa we jun retztaqan?
 # Link Title
