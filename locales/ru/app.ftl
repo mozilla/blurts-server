@@ -334,6 +334,11 @@ facebook-breach-what-to-do-1-copy =
     профиля, которая была установлена как «доступна всем» или «друзьям».
     Эта информация может быть объединена с другими данными, чтобы получить доступ к ещё большему количеству
     вашей личной информации и аккаунтам.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Смените пароль, PIN-код или другие учётные данные в своих <a>аккаунтах оператора
+    мобильной связи</a>, чтобы предотвратить подмену SIM-карт</span>.
 facebook-breach-what-to-do-3 = Посмотрите все рекомендации на нашей странице об утечке Фейсбука
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Показаны:
