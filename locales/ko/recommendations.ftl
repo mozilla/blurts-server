@@ -50,3 +50,37 @@ rec-hist-pw-subhead = 비밀번호 재사용 방지
 rec-hist-pw-cta-fx = { -brand-name }에서 로그인 보기
 # Recommendation subhead
 rec-sec-qa-subhead = 보안 질문에 대한 고유한 답변 만들기
+# Recommendation subhead
+rec-phone-num-subhead = 전화 번호 공유 안하기
+# Recommendation subhead
+rec-dob-subhead = PIN에 개인 정보를 사용하지 않기
+# Recommendation subhead
+rec-pins-subhead = PIN 보안 강화
+# Recommendation subhead
+rec-address-subhead = 비밀번호에 주소 사용하지 않기
+# Recommendation subhead
+rec-gen-1-subhead = 모든 계정에 고유하고 강력한 비밀번호 사용
+# Link title
+rec-gen-1-cta = 강력한 비밀번호를 만드는 방법
+rec-gen-1 =
+    비밀번호를 재사용할 경우 연관된 모든 계정이 위험해집니다. 암호 하나가 노출되면 
+    해커들이 동시에 여러 계정에 대한 암호를 알게 된다는 것을 의미합니다.
+# Recommendation subhead
+rec-gen-2-subhead = 안전한 장소에 비밀번호 저장
+# Link title
+rec-gen-2-cta = 비밀번호 관리자에 대한 오해
+rec-gen-2 =
+    로그인 정보는 비밀번호 관리자와 같은 안전한 자소에 보관하세요.
+    이렇게 하면 서로다른 비밀번호를 추적하기 쉽습니다.
+# Recommendation subhead
+rec-gen-3-subhead = 개인 정보 제공에 관한 주의
+# Link title
+rec-gen-3-cta = 더 많은 보안 팁 읽기
+rec-gen-3 =
+    개인정보는 필요하지 않은 경우 제공하지 마십시오. 이메일주소, 우편번호, 전화번호 
+    등을 요구받았다면 이를 거부할 수 있습니다.
+# Recommendation subhead
+rec-gen-4-subhead = 정기적으로 소프트웨어 및 앱 업데이트
+rec-gen-4 =
+    스마트폰 앱, 브라우저 및 운영체제의 업데이트는 기기를 더 안전하게 만들어줍니다. 
+    이러한 업데이트는 버그, 소프트웨어 취약점 및 보안 문제를 해결합니다.
