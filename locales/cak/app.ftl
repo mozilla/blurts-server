@@ -597,3 +597,4 @@ ecosystem-promo-headline = Nuchajij ak'aslem pa k'amab'ey rik'in taq tikojil nik
 ecosystem-promo-body = Ronojel ri taq { -brand-name } tikojil, nukamelaj ri Rusujik Tzij chi rij Qatzij: Jub'a' etamab'äl nuk'äm. Nijikib'äx. Majun ewäl ta.
 promo-ecosystem-cta = Ketz'et Ronojel Tikojil
 steps-to-resolve-headline = Rub'eyal richin nisol re tz'ilanem
+vpn-promo-cta = Tik'ul { -brand-mozilla-vpn }
