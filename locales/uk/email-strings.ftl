@@ -7,7 +7,7 @@ firefox-monitor-report = Звіт { -product-name }
 report-date = Дата звіту:
 email-address = Адреса електронної пошти:
 # A link to legal information about mozilla products.
-legal = Юридична інформація
+legal = Правові положення
 # Unsubscribe link in email.
 email-unsub-link = Відписатися
 # This string appears in the footer of breach report and breach alert emails.
