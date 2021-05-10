@@ -392,6 +392,34 @@ no-other-breaches-found = Základní vyhledávání nenalezlo žádné další �
 no-results-blurb = Litujeme, ale tento únik se nenachází v naší databázi.
 all-breaches-headline = Všechny úniky obsažené ve { -product-name(case: "loc") }
 search-breaches = Prohledat úniky dat
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Vaši e-mailovou adresu jsme v žádném úniku nenašli, ale vaše
+    telefonní číslo může být stále zranitelné.</span> Některé účty postižené
+    únikem dat z Facebooku obsahovaly informace o telefonním čísle a další
+    osobní informace, ale ne e-mailovou adresu. Pokud jste někdy měli
+    zaregistrovaný účet na Facebooku, i když ho už třeba nepoužíváte,
+    doporučujeme provést následující kroky
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Nastavte viditelnost informací na <a>svém profilu na Facebooku</a> na „Pouze já“ nebo jiné neveřejné.</span>
+facebook-breach-what-to-do-1-copy =
+    Během tohoto úniku získali hackeři informace
+    o profilech, které byly nastaveny jako „veřejné“ nebo „sdílené s přáteli“.
+    Kombinací těchto informací s dalšími daty lze získat o vás a vašich
+    účtech ještě více podrobností.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Změňte si heslo, PIN a další bezpečnostní prvky chránící <a>účty
+    u vašeho telefonního operátora</a>, abyste předešli útoku „SIM swap“.</span>
+facebook-breach-what-to-do-2-copy =
+    Při útoku známém jako „SIM swap“ nebo také „únos SIM“
+    využije hacker telefonní číslo, datum narození a další data pro získání kontroly
+    nad telefonním číslem, které může využít třeba k nabourání e-mailové schránky,
+    sociálních sítí nebo bankovních účtů.
+facebook-breach-what-to-do-3 = Přečtěte si všechna naše doporučení ohledně úniku dat z Facebooku
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Zobrazeno:
 
