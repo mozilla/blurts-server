@@ -319,6 +319,12 @@ facebook-breach-what-to-do-1-copy =
 facebook-breach-what-to-do-2-headline =
     <span>Ndryshoni fjalëkalimin, PIN-in, ose kredenciale të tjera sigurie në
     <a>llogari tuajat shërbimesh celulare</a> që të parandaloni “SIM-swapping”</span>.
+facebook-breach-what-to-do-2-copy =
+    <em>SIM swapping</em>, që quhet edhe <em>SIM-jacking</em>,
+    quhet akti kur një <em>hacker</em> përdor numra telefonash, datë lindjeje dhe
+    të dhëna të tjera për të shtënë në dorë numrin e telefonit të një personi dhe
+    më pas email-in e tij, llogaritë në media shoqërore, madje dhe ato financiare.
+facebook-breach-what-to-do-3 = Shihni krejt rekomandimet te faqja jonë për rrjedhjen nga Facebook-u
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Po shfaqen:
 
@@ -564,3 +570,6 @@ ecosystem-promo-headline = Mbroni jetën tuaj internetore me produkte që vënë
 ecosystem-promo-body = Krejt produktet { -brand-name } respektojnë Premtimin tonë Mbi të Dhënat Personale: Grumbullim sa më pak. Mbajtje e parrezik. Pa të fshehta.
 promo-ecosystem-cta = Shihni Krejt Produktet
 steps-to-resolve-headline = Hapa për të zgjidhur këtë cenim
+vpn-promo-headline = Ka ardhur koha për të fuqizuar sigurinë tuaj internetore.
+vpn-promo-copy = Rrjeti Virtual Privat i { -brand-Mozilla }-s ndihmon të mbrohet lidhja juaj internet nga hacker-a dhe spiunë.
+vpn-promo-cta = Merrni { -brand-mozilla-vpn }
