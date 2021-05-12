@@ -297,6 +297,15 @@ no-other-breaches-found = S’u gjetën shkelje të tjera nga një kërkim eleme
 no-results-blurb = Na ndjeni, ajo shkelje s’gjendet në bazën tonë të të dhënave.
 all-breaches-headline = Krejt shkeljet te { -product-name }
 search-breaches = Kërkoni Te Shkeljet
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Email-i juaj s’shfaqet në këtë rrjedhje,
+    por numri i telefonit tuaj mund të jetë ende i rrezikuar.</span> Disa nga
+    llogaritë e komprometuara në rrjedhjen nga Facebook-u përfshinin numra telefoni
+    dhe të tjera hollësi persona, por jo adresa email. Nëse keni regjistruar
+    ndonjëherë një llogari Facebook — edhe po s’e përdorët tani — rekomandojmë
+    të ndërmerrni këto hapa për të mbrojtur veten
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Po shfaqen:
 
