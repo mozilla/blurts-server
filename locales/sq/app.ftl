@@ -306,6 +306,19 @@ facebook-breach-note =
     dhe të tjera hollësi persona, por jo adresa email. Nëse keni regjistruar
     ndonjëherë një llogari Facebook — edhe po s’e përdorët tani — rekomandojmë
     të ndërmerrni këto hapa për të mbrojtur veten
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Për hollësitë tuaja zgjidhni “Vetëm për mua”, ose tjetër rregullim jopublik te <a>profili juaj Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Gjatë kësaj rrjedhjeje, hacker-a morën
+    hollësi profilesh që qenë vënë si “të hapët për publikun” ose “ndarë me shokë”.
+    Këto hollësi mund të kombinohen me të dhëna të tjera për të hyrë në më tepër
+    hollësi dhe llogari tuajat personale.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Ndryshoni fjalëkalimin, PIN-in, ose kredenciale të tjera sigurie në
+    <a>llogari tuajat shërbimesh celulare</a> që të parandaloni “SIM-swapping”</span>.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Po shfaqen:
 
