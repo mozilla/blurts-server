@@ -64,7 +64,7 @@ terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
 error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
-error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber upozornení { -product-name(case: "gen") }.
+error-not-subscribed = Táto e-mailová adresa nie je prihlásená na odber upozornení z { -product-name(case: "gen") }.
 error-hibp-throttled = Príliš mnoho pripojení k službe { -brand-HIBP }.
 error-hibp-connect = Chyba pri pripájaní k { -brand-HIBP }.
 error-hibp-load-breaches = Nepodarilo sa načítať údaje o únikoch.
@@ -90,7 +90,7 @@ landing-headline = Každý má právo byť v bezpečí pred hackermi.
 scan-placeholder = Zadajte e-mailovú adresu
 scan-submit = Vyhľadajte svoju e-mailovú adresu
 scan-error = Zadaná e-mailová adresa nie je platná.
-download-firefox-banner-button = Prevziať { -brand-name(case: "acc") }
+download-firefox-banner-button = Stiahnuť { -brand-name(case: "acc") }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Odoslané!
 sign-up = Zaregistrujte sa
