@@ -154,6 +154,9 @@ micro-survey-strongly-disagree-response = Se sploh ne strinjam
 micro-survey-disagree-response = Se ne strinjam
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
+micro-survey-unsure-response = Ne vem
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
 micro-survey-agree-response = Se strinjam
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
@@ -633,3 +636,4 @@ ecosystem-promo-headline = Zaščitite svoje spletno življenje z izdelki, ki na
 ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravnanju z osebnimi podatki: Vzemi manj. Ohrani na varnem. Brez skrivnosti.
 promo-ecosystem-cta = Oglejte si vse izdelke
 steps-to-resolve-headline = Koraki za razrešitev te kraje podatkov
+vpn-promo-cta = Namestite { -brand-mozilla-vpn }
