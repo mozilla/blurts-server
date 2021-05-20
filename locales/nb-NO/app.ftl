@@ -341,11 +341,28 @@ no-other-breaches-found = Ingen andre datalekkasjer ble funnet i dette grunnlegg
 no-results-blurb = Beklager, men denne datalekkasjen er ikke i vår database.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjer
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>E-postadressen din vises ikke i denne datalekkasjen,
+    men telefonnummeret ditt kan fortsatt være sårbart.</span> Noen av kontoene
+    kompromittert i Facebook-lekkasjen inkludert telefonnumre og annet
+    personlig informasjon, men ikke e-postadresser. Hvis du noen gang har registrert deg
+    for en Facebook-konto - selv om du ikke bruker den nå - anbefaler vi deg
+    å ta disse trinnene for å beskytte deg selv
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Sett informasjonen din til «Kun meg» eller andre ikke-offentlige innstillinger i <a>Facebook-profilen din</a>.</span>
 facebook-breach-what-to-do-1-copy =
     I løpet av denne datalekkasjen tok hackere profilinformasjon
     som ble satt som «åpen for publikum» eller «delt med venner.»
     Denne informasjonen kan kombineres med andre data for å få tilgang til enda mer av
     dine personlige opplysninger og kontoer.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Endre passordet, PIN-koden eller annen sikkerhetsinformasjon for kontoer som hører til
+    <a>dine mobil-abonnementer</a> for å forhindre at svindlere kan overta ditt telefonnummer ved hjelp av SIM-kortbedrag</span>.
 facebook-breach-what-to-do-3 = Se alle anbefalingene på vår Facebook-datalekkasjeside
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
