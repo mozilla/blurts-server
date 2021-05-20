@@ -339,6 +339,9 @@ no-other-breaches-found = Ingen andre datalekkasjar vart funne i dette grunnlegg
 no-results-blurb = Beklagar, men denne datalekkasjen er ikkje i databasen vår.
 all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjar
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Still inn informasjonen din til «Berre meg» eller andre ikkje-offentlege innstillingar i <a>Facebook-profilen din</a>.</span>
 facebook-breach-what-to-do-2-copy =
     Simkort-bedrag, også kalla simkort-jacking eller simkort-swapping,
     er når ein hackar brukar telefonnummer, fødselsdato og andre personlege data for å overta
