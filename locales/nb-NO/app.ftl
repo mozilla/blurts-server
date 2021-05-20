@@ -365,8 +365,8 @@ facebook-breach-what-to-do-2-headline =
     <a>dine mobil-abonnementer</a> for å forhindre at svindlere kan overta ditt telefonnummer ved hjelp av SIM-kortbedrag</span>.
 facebook-breach-what-to-do-2-copy =
     SIM-kortbedrag, som også kalles SIM-jacking eller SIM swapping,
-    er når en hacker bruker telefonnumre, fødselsdato og andre data for å overta
-    personens mobiltelefonnummer og deretter hacke inn på deres e-postkonto, sosiale medier og til og med finansielle kontoer.
+    er når en hacker bruker telefonnumre, fødselsdato og andre personlige data for å overta
+    andre menneskers mobiltelefonnummer og deretter få adgang til deres e-postkonto, sosiale medier eller til-og-med deres bankkonto.
 facebook-breach-what-to-do-3 = Se alle anbefalingene på vår Facebook-datalekkasjeside
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
