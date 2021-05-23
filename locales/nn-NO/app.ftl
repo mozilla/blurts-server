@@ -342,10 +342,16 @@ search-breaches = Søk etter datalekkasjar
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Still inn informasjonen din til «Berre meg» eller andre ikkje-offentlege innstillingar i <a>Facebook-profilen din</a>.</span>
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Endre passordet, PIN-koden eller annan sikkerheitsinformasjon for kontoar som høyrer til
+    <a>mobil-abonnementa dine</a> for å hindre at svindlarar kan overta telefonnummeret ditt ved hjelp av simkort-bedrag</span>.
 facebook-breach-what-to-do-2-copy =
     Simkort-bedrag, også kalla simkort-jacking eller simkort-swapping,
     er når ein hackar brukar telefonnummer, fødselsdato og andre personlege data for å overta
     andre sitt mobiltelefonnummer, og deretter får tilgang til e-postkontoen deira, sosiale medium eller til-og-med bankkontoen deira.
+facebook-breach-what-to-do-3 = Sjå alle tilrådingane på Facebook-datalekkasjesida vår
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Viser:
 
