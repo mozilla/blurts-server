@@ -342,6 +342,11 @@ search-breaches = Søk etter datalekkasjar
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Still inn informasjonen din til «Berre meg» eller andre ikkje-offentlege innstillingar i <a>Facebook-profilen din</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    I løpet av denne datalekkasjen tok hackarar profilinformasjon
+    som vart innstilte som «open for publikum» eller «delt med vennar.»
+    Denne informasjonen kan kombinerast med andre data for å få tilgang til endå meir av
+    dei personlege opplysningane og kontoane dine.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline =
