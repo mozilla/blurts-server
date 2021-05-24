@@ -31,7 +31,7 @@
     "helmet": "4.2.0",
     "intl-pluralrules": "1.2.1",
     "isemail": "3.2.0",
-    "knex": "0.21.12",
+    "knex": "0.95.6",
     "knex-paginate": "1.2.2",
     "lodash": "4.17.19",
     "mozlog": "3.0.1",
