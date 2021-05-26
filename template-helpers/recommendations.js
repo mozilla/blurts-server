@@ -151,7 +151,7 @@ module.exports = {
             recommendationCopy: {
               subhead: "rec-ip-subhead",
               cta: isUserLocaleEnUs ? "rec-moz-vpn-cta" : "",
-              body: isUserLocaleEnUs ? "rec-moz-vpn" : "rec-ip-non-us",
+              body: isUserLocaleEnUs ? "rec-moz-vpn-update" : "rec-ip-non-us",
             },
             ctaHref: "https://vpn.mozilla.org?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-recommendations",
             ctaShouldOpenNewTab: true,
