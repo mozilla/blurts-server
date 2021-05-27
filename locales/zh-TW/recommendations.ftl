@@ -45,7 +45,7 @@ rec-ip-us = 您的 IP 地址可以對映到所在位置與網路公司。使用�
 rec-ip-non-us = 您的 IP 地址可以對映到所在位置與網路公司。使用 VPN 服務則可以將 IP 位置隱藏起來，藉以隱藏您的所在位置。
 # Recommendation subhead
 rec-moz-vpn-cta = 試用 { -brand-mozilla-vpn }
-rec-moz-vpn = 您的網際網路通訊協定地址（IP 地址）可能會洩露出實際所在位置與網路業者資訊。使用類似 { -brand-fpn } 的服務，可在 { -brand-name } 產品當中隱藏您的實際 IP 地址與地點；而使用 { -brand-mozilla-vpn } 則可以幫整台裝置隱藏實際 IP 地址與地點。
+rec-moz-vpn-update = 您的 IP 地址可以對映到所在位置與網路公司。使用類似 { -brand-mozilla-vpn } 的服務則可以將 IP 位置隱藏起來，藉以隱藏您的所在位置。
 rec-hist-pw-subhead = 避免重複使用密碼
 # Link title
 rec-hist-pw-cta-fx = 到 { -brand-name } 檢視登入資訊
