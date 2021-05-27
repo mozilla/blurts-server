@@ -94,6 +94,23 @@ export SMTP_USERNAME=<your-username>
 export SMTP_PASSWORD=<your-password>
 ```
 
+##### Trigger a breach alert email
+To trigger a breach alert email, you need to make a `POST /hibp/notify` request:
+
+* `Authorization: Bearer` header token value that matches `HIBP_NOTIFY_TOKEN`
+* `Content-Type: application/json` header
+* JSON body with `breachName`, `hashPrefix`, and `hashSuffix` values
+  * `breachName` - string of a breach name in Monitor
+  * `hashPrefix` - string of first 6 chars of a subscriber's `primary_sha1`
+  * `hashSuffix` - array of strings of the remaining chars of the sha1 hash
+
+E.g., a localhost `curl` command that triggers a breach alert email for the
+Adobe breach to the `localmonitor20200827@mailinator.com` subscriber:
+
+```
+curl -v -H "Authorization: Bearer unsafe-default-token-for-dev" -H "Content-Type: application/json" -d '{"breachName": "Adobe", "hashPrefix": "365050", "hashSuffixes": ["53cbb89874fc738c0512daf12bc4d91765"]}' http://localhost:6060/hibp/notify
+```
+
 #### Firefox Accounts
 
 Subscribe with a Firefox Account is controlled via the `FXA_ENABLED`
