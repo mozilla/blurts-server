@@ -68,7 +68,7 @@ rec-ip-non-us =
     e mascarar seu endereço IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Experimente o { -brand-mozilla-vpn }
-rec-moz-vpn = Seu endereço de protocolo da internet (endereço IP) pode revelar sua localização e seu provedor de serviços de internet. Um serviço como o { -brand-fpn } oculta seu endereço IP e a localização do { -brand-name } e um serviço como { -brand-mozilla-vpn } oculta seu endereço IP e a localização de todo o seu dispositivo.
+rec-moz-vpn-update = Seu endereço de protocolo de internet (endereço IP) pode revelar sua localização e seu provedor de acesso à internet. Um serviço como o { -brand-mozilla-vpn } oculta seu endereço IP e sua localização em todo o seu dispositivo.
 rec-hist-pw-subhead = Evite reusar senhas
 # Link title
 rec-hist-pw-cta-fx = Ver contas no { -brand-name }
