@@ -70,10 +70,9 @@ rec-ip-non-us =
     a tartózkodási helyét és az IP-címét.
 # Recommendation subhead
 rec-moz-vpn-cta = Próbálja ki a { -brand-mozilla-vpn }-t
-rec-moz-vpn =
-    Az Internet Protocol címe (IP-címe) felfedheti a tartózkodási helyét és internetszolgáltatóját. Egy olyan szolgáltatás, mint
-    a { -brand-fpn } elrejti az IP-címét és helyét a { -brand-name } számára, a { -brand-mozilla-vpn }-hez hasonló szolgáltatás
-    pedig elrejti az egész eszköz IP-címét és helyét.
+rec-moz-vpn-update =
+    Az Internet Protocol címe (IP-címe) felfedheti a helyét és internetszolgáltatóját. Egy olyan szolgáltatás, mint a { -brand-mozilla-vpn }
+    elrejti az eszköze IP-címét és tartózkodási helyét.
 rec-hist-pw-subhead = Kerülje a jelszavak újbóli felhasználását
 # Link title
 rec-hist-pw-cta-fx = Bejelentkezések megtekintése a { -brand-name }ban
