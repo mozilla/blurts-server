@@ -68,7 +68,7 @@ rec-ip-non-us =
     můžete skrýt svou IP adresu a tím i pozici.
 # Recommendation subhead
 rec-moz-vpn-cta = Vyzkoušejte službu { -brand-mozilla-vpn }
-rec-moz-vpn = Vaše IP adresa může prozradit vaši polohu i poskytovatele připojení k internetu. Služba jako { -brand-fpn } skryje vaši IP adresu i polohu pro { -brand-name(case: "acc") } a služba jako { -brand-mozilla-vpn } skryje vaši IP adresu i polohu pro celé vaše zařízení.
+rec-moz-vpn-update = Vaše internetová adresa (IP adresa) může prozradit vaši pozici a informace o poskytovateli internetového připojení. Služby jako { -brand-mozilla-vpn } skrývají vaši IP adresu a tím i pozici vašeho zařízení.
 rec-hist-pw-subhead = Vyhněte se opakovanému používání stejného hesla
 # Link title
 rec-hist-pw-cta-fx = Zobrazit přihlašovací údaje ve { -brand-name(case: "loc") }
