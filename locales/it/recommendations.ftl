@@ -52,6 +52,7 @@ rec-ip-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di r
 rec-ip-non-us = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Con una rete privata virtuale (VPN), puoi nascondere la tua posizione e mascherare il tuo indirizzo IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
+rec-moz-vpn-update = Il tuo indirizzo di protocollo internet (indirizzo IP) permette di risalire alla tua posizione e al fornitore di servizi internet che utilizzi. Un prodotto come { -brand-mozilla-vpn } nasconde l’indirizzo IP e la posizione per l’intero dispositivo.
 rec-hist-pw-subhead = Evita di riutilizzare le password
 # Link title
 rec-hist-pw-cta-fx = Visualizza le credenziali in { -brand-name }
