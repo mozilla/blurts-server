@@ -70,10 +70,10 @@ rec-ip-non-us =
     của mình và che dấu địa chỉ IP của bạn.
 # Recommendation subhead
 rec-moz-vpn-cta = Hãy thử { -brand-mozilla-vpn }
-rec-moz-vpn =
-    Địa chỉ giao thức Internet (địa chỉ IP) của bạn có thể tiết lộ vị trí và nhà cung cấp dịch vụ internet của bạn. Một dịch vụ
-    như { -brand-fpn } sẽ ẩn địa chỉ IP và vị trí của bạn cho { -brand-name } và một dịch vụ như { -brand-mozilla-vpn } ẩn
-    địa chỉ IP và vị trí của bạn cho toàn bộ thiết bị của bạn.
+rec-moz-vpn-update =
+    Địa chỉ giao thức Internet (địa chỉ IP) của bạn có thể tiết lộ vị trí của bạn và
+    nhà cung cấp dịch vụ internet. Một dịch vụ như { -brand-mozilla-vpn } có thể
+    ẩn địa chỉ IP và vị trí cho toàn bộ thiết bị của bạn.
 rec-hist-pw-subhead = Tránh sử dụng lại mật khẩu
 # Link title
 rec-hist-pw-cta-fx = Xem thông tin đăng nhập trong { -brand-name }
