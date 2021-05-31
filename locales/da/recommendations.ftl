@@ -69,10 +69,7 @@ rec-ip-non-us =
     kan du skjule din placering og tilsløre din IP-adresse.
 # Recommendation subhead
 rec-moz-vpn-cta = Prøv { -brand-mozilla-vpn }
-rec-moz-vpn =
-    Din IP-adresse (Internet Protocol adress) kan afsløre din placering og din internet-udbyder. En service som
-    { -brand-fpn } skjuler din IP-adresse og din placering, når du bruger { -brand-name }. Hvis du vil skjule din
-    IP-adresse og placering for hele din enhed, så kan du bruge en service som { -brand-mozilla-vpn }.
+rec-moz-vpn-update = Din IP-adresse (Internet Protocol address) kan afsløre din placering og hvilken internet-udbyder, du bruger. Med en service som { -brand-mozilla-vpn } kan du skjule din IP-adresse og din placering for hele din enhed.
 rec-hist-pw-subhead = Undgå at genbruge adgangskoder
 # Link title
 rec-hist-pw-cta-fx = Se logins i { -brand-name }
