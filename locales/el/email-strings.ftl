@@ -16,7 +16,7 @@ email-unsub-link = Κατάργηση εγγραφής
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
     Λαμβάνετε αυτό το email επειδή έχετε εγγραφεί στις ειδοποιήσεις του { -product-name }.
-    Δεν θέλετε πλέον αυτά τα emails; { $unsubLink }. Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
+    Δεν θέλετε πλέον αυτά τα email; { $unsubLink }. Αυτό είναι ένα αυτοματοποιημένο email. Για υποστήριξη, επισκεφθείτε τις { $faqLink }.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
@@ -46,7 +46,7 @@ email-subject-verify = Επαλήθευση email για το { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Μάθετε περισσότερα σχετικά με το { $fxmLink }
 email-sensitive-disclaimer =
-    Λόγω της ευαίσθητης φύσης της διαρροής, τα εμπλεκόμενα emails δεν ανιχνεύονται δημόσια. 
+    Λόγω της ευαίσθητης φύσης της διαρροής, τα εμπλεκόμενα email δεν ανιχνεύονται δημόσια. 
     Λαμβάνετε αυτή την ειδοποίηση επειδή είστε επαληθευμένος κάτοχος αυτής της διεύθυνσης email.
 fxm-warns-you-no-breaches =
     Το { -product-name } σας προειδοποιεί σχετικά με παραβιάσεις που αφορούν προσωπικά σας δεδομένα. 
