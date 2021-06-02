@@ -64,7 +64,7 @@ user-unsubscribe-token-email-error = Η κατάργηση εγγραφής απ
 user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης = Καλύτερη προστασία
 landing-headline = Το δικαίωμά σας για προστασία από χάκερς ξεκινά εδώ.
-scan-placeholder = Εισάγετε διεύθυνση email
+scan-placeholder = Εισαγάγετε διεύθυνση email
 scan-submit = Αναζήτηση email
 scan-error = Πρέπει να είναι ένα έγκυρο email.
 download-firefox-banner-button = Λήψη του { -brand-name }
