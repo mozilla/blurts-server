@@ -164,7 +164,7 @@ const articleCopy = {
               paragraphs: [
                 "Many websites offer two-factor authentication, also known as 2FA or multi-factor authentication. On top of your username and password, 2FA requires another piece of information to verify yourself. So, even if someone has your password, they can’t get in.",
                 "Withdrawing money from an ATM is an example of 2FA. It requires your PIN code and your bank card. You need these two pieces to complete the transaction.",
-                "<a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://twofactorauth.org/'>Websites that support 2FA</a> include Google and Amazon. When you have 2FA enabled, the site will text you a code to enter after your password. Other forms of 2FA include YubiKeys USB ports and security apps like DUO. ",
+                "<a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://2fa.directory/'>Websites that support 2FA</a> include Google and Amazon. When you have 2FA enabled, the site will text you a code to enter after your password. Other forms of 2FA include YubiKeys USB ports and security apps like DUO. ",
                 "When you set up 2FA, many sites will give you a list of backup codes to verify your account. A password manager is a great place to store these codes.",
               ],
             },

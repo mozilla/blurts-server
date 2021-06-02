@@ -267,7 +267,7 @@ module.exports = {
         body: LocaleUtils.fluentFormat(locales, "rec-pw-4"),
         cta: LocaleUtils.fluentFormat(locales, "rec-pw-4-cta"),
       },
-      ctaHref: "https://twofactorauth.org/",
+      ctaHref: "https://2fa.directory/",
       ctaShouldOpenNewTab: true,
       ctaAnalyticsId: "See sites that offer 2FA",
       recIconClassName: "rec-pw-4",
