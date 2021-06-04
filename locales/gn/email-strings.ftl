@@ -15,15 +15,13 @@ email-unsub-link = Ñemboheraguapy jeheja
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
-    Oguahẽ ndéve ñandutiveve eñemboheguapýre { -product-name } ñembyaípe. 
-    ¿Ndereipotavéimarõ? { $unsubLink }. Kóva ha’e ñandutiveve ijeheguíva. Eikotevẽramo pytyvõ, eike kuatiarogue { $faqLink }-pe.
+    Og̃uahẽ ndéve ñandutiveve eñemboheraguapýre { -product-name } ñembyaípe. 
+    ¿Ndereipotavéimarõ? { $unsubLink }. Kóva ha’e ñandutiveve ijeheguíva. Eikotevẽro pytyvõ, eike kuatiarogue { $faqLink }-pe.
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy =
     Og̃uahẽ ndéve ko ñanduti veve eñemboheguapy rupi ha omboúta ndéve kyhyjerã { -product-name }. 
     Kóva ha’e ñanduti veve ijeheguíva. Eñepytyvõ hag̃ua eike { $faqLink }-pe.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Ehecha Ñangarekoha mba’erupa
 # Button text
 verify-email-cta = Ñanduti veve jehechajey
 # Button text
