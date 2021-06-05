@@ -12,6 +12,8 @@ legal = ข้อกฎหมาย
 email-unsub-link = เลิกบอกรับ
 # Button text
 verify-email-cta = ตรวจสอบอีเมล
+# Button text
+see-all-breaches = ดูการรั่วไหลทั้งหมด
 # Headline of verification email
 email-link-expires = ลิงก์นี้จะหมดอายุใน 24 ชั่วโมง
 # Email headline

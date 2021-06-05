@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -328,6 +329,10 @@ changes-saved = บันทึกการเปลี่ยนแปลงแ�
 ##
 
 undo-button = เลิกทำ
+go-to-dashboard-link = ไปที่แดชบอร์ด
+# This string appears above a breach resolution progress bar and indicates
+# the percentage of breaches a user has resolved. For instance, "27% complete".
+progress-percent-complete = { $percentComplete }% เสร็จสมบูรณ์
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -338,3 +343,4 @@ undo-button = เลิกทำ
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = ใหม่
 promo-fpn-cta = รับ { -brand-fpn }
+promo-ecosystem-cta = ดูผลิตภัณฑ์ทั้งหมด
