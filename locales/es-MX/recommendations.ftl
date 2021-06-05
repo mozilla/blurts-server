@@ -47,6 +47,13 @@ rec-cc =
     Revisa en busca de cargos extraños en tu tarjeta de crédito. Puede que quieras 
     solicitar una nueva tarjeta con un nuevo número de parte de tu emisor de la tarjeta.
 # Recommendation subhead
+rec-email-subhead = Usar alias de correo electrónico
+rec-email-cta = Prueba { -brand-relay }
+rec-email =
+    Dar tu dirección de correo electrónico real facilita que los hackers o rastreadores
+    encuentren tus contraseñas o te encuentren en línea. Un servicio como { -brand-relay }
+    oculta tu dirección de correo electrónico real mientras reenvía correos a tu bandeja de entrada real.
+# Recommendation subhead
 rec-ip-subhead = Usa un servicio que oculte tu IP
 # Link title
 rec-ip-us-cta = Prueba { -brand-fpn }
@@ -60,10 +67,10 @@ rec-ip-non-us =
     y enmascarar tu dirección IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Probar { -brand-mozilla-vpn }
-rec-moz-vpn =
-    Tu dirección del protocolo de internet (dirección IP) puede revelar tu ubicación y tu proveedor de servicios de Internet. Un servicio como
-    { -brand-fpn } oculta tu dirección IP y ubicación para { -brand-name } y un servicio como { -brand-mozilla-vpn } oculta tu
-    dirección IP y ubicación en todo tu dispositivo.
+rec-moz-vpn-update =
+    Tu dirección de protocolo de Internet (dirección IP) puede revelar tu ubicación
+    y tu proveedor de servicios de internet. Un servicio como { -brand-mozilla-vpn }
+    oculta la dirección IP y ubicación de tu dispositivo.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }

@@ -107,6 +107,50 @@ security-tips = Consejos de seguridad
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir la navegación de { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = En una escala de 1 a 10, ¿con qué probabilidad recomendarías { -product-short-name } a un amigo o colega?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Poco probable
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Muy probablemente
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = ¿Es fácil usar { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = ¿Sientes que { -product-short-name } es de confianza?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = ¿Tiene { -product-short-name } una presentación limpia y sencilla?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Totalmente en desacuerdo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = En desacuerdo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = No estoy seguro
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = De acuerdo
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Totalmente de acuerdo
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = ¿Cómo te sentirías si no pudieras volver a usar { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Muy decepcionado
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Algo decepcionado
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = No me importaría
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMO INCUMPLIMIENTO AGREGADO
 # Link title
@@ -263,6 +307,31 @@ no-other-breaches-found = No se encontraron otras filtraciones en esta búsqueda
 no-results-blurb = Lo sentimos, esa filtración no está en nuestra base de datos.
 all-breaches-headline = Todas las filtraciones en { -product-name }
 search-breaches = Buscar filtraciones
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Tu correo electrónico no aparece en esta filtración,
+    pero tu número de teléfono aún podría ser vulnerable.</span> Algunas de las cuentas
+    comprometidas en la filtración de Facebook incluyen números de teléfono y otra
+    información personal pero no direcciones de correo electrónico. Si alguna vez te registraste
+    para una cuenta de Facebook — incluso si ya no la usas — te recomendamos
+    que sigas estos pasos para protegerte
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Establece tu información a “Solo yo” u otro ajuste no público en <a>tu perfil de Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Durante esta filtración, los hackers tomaron información
+    de los perfiles que estaban “abiertos al público” o “compartidos con amigos”.
+    Esta información puede ser combinada con otros datos para acceder a más
+    información personal y cuentas.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Cambia la contraseña, PIN u otras credenciales de seguridad en tus <a>cuentas de operador móvil</a> para prevenir el SIM-swapping</span>.
+facebook-breach-what-to-do-2-copy =
+    SIM swapping, también conocido como intercambio de SIM o secuestro de SIM,
+    es cuando un hacker usa números de teléfono, fecha de nacimiento y otros datos para adueñarse
+    del número de teléfono de una persona y luego hackear sus cuentas de correo electrónico, de redes sociales e incluso financieras.
+facebook-breach-what-to-do-3 = Ver todas las recomendaciones en nuestra página de filtración de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Mostrando:
 
@@ -516,3 +585,6 @@ ecosystem-promo-headline = Protege tu vida en línea con productos orientados a 
 ecosystem-promo-body = Todos los productos { -brand-name } honran nuestra promesa de datos personales: Tomar menos. Mantenerlo seguro. Sin secretos.
 promo-ecosystem-cta = Ver todos los productos
 steps-to-resolve-headline = Pasos para resolver esta filtración
+vpn-promo-headline = Ahora es el momento de mejorar tu seguridad en línea.
+vpn-promo-copy = La red privada virtual de { -brand-Mozilla } te ayuda a proteger tu conexión a Internet de hackers y espías.
+vpn-promo-cta = Obtener { -brand-mozilla-vpn }
