@@ -76,23 +76,14 @@ sign-out = Utz'apixik kemchak
 manage-fxa = Rilawachixik{ -brand-fxa }
 have-an-account = ¿La k'o akemb'i'aj?
 fxa-pwt-summary-2 = Le taq nitz' retokib'al le xa jun tukelal tzij man k'ax ta uriqik chi kech e b'ank'ax.
-fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, LastPass, Dashlane, chi'l Bitwarden kkik'ol taq ¶Taq retokib'al chi'l unojisaxik pa taq uk'olib'al web', xuquje' katkito' chech utzukuxik chajital taq retokib'al.
-fxa-pwt-summary-6 =
-    Le taq retztaqan rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' retztaqan rech taq juq'attzij, ¶
-    { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
-fxa-what-to-do-blurb-1 =
-    We man ktkowin taj kamajij kemchak, chach'ab'ej le uk'olib'al web' kata chech jas kab'an chech uk'ak'arisaxik. ¶
-    ¿kawil jun kemb'i'aj le man aweta'am ta uwach? Wene xa xe'ek'ayix b'i le taq ajuq'attzij ¶
-    on jachatal chi jumul. Wa' xuquje' wene jun kemb'i'aj le xasacho ¶
-    xawinaqirisaj on wene xa xuk'ex ub'i' jun k'aywokaj.
+fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, LastPass, Dashlane, chi'l Bitwarden kkik'ol taq Taq retokib'al chi'l unojisaxik pa taq uk'olib'al web', xuquje' katkito' chech utzukuxik chajital taq retokib'al.
+fxa-pwt-summary-6 = Le taq retztaqan rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' retztaqan rech taq juq'attzij, { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
+fxa-what-to-do-blurb-1 = We man ktkowin taj kamajij kemchak, chach'ab'ej le uk'olib'al web' kata chech jas kab'an chech uk'ak'arisaxik. ¿kawil jun kemb'i'aj le man aweta'am ta uwach? Wene xa xe'ek'ayix b'i le taq ajuq'attzij on jachatal chi jumul. Wa' xuquje' wene jun kemb'i'aj le xasacho xawinaqirisaj on wene xa xuk'ex ub'i' jun k'aywokaj.
 fxa-what-to-do-subhead-2 = Makoj chi le retokib'al k'o k'axk'olil chi rij, chak'exa' pa ronojel jawi' akojom wi.
-fxa-wtd-blurb-2 =
-    Le e b'ank'ax wene kkikoj le junam retokib'al chi'l le ataqoqxa'nib'al chech okem pa nik'aj chi kemb'i'aj.  ¶
-    Chawinaqirisaj jun jalan chi'l utukelal retokib'al chech jujun taq kemb'i'aj, qas na chech le akemb'i'aj rech ja k'olpwaq, ¶
-    Taqoqxa'nib'al, chi'l nik'aj chi uk'olib'al web' jawi' kk'ol wi winaqilal q'alajisanem.
-fxa-what-to-do-blurb-3 = Nima ronojel taq retztaqan xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. ¶ We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij.  ¶ Che'aq'atuj we kojom kumal nik'aj chik winaq.
+fxa-wtd-blurb-2 = Le e b'ank'ax wene kkikoj le junam retokib'al chi'l le ataqoqxa'nib'al chech okem pa nik'aj chi kemb'i'aj. Chawinaqirisaj jun jalan chi'l utukelal retokib'al chech jujun taq kemb'i'aj, qas na chech le akemb'i'aj rech ja k'olpwaq, Taqoqxa'nib'al, chi'l nik'aj chi uk'olib'al web' jawi' kk'ol wi winaqilal q'alajisanem.
+fxa-what-to-do-blurb-3 = Nima ronojel taq retztaqan xew kkib'an k'ax chech taq taqoqxa'nib'al chi'l taq retokib'al, xa k'ut k'o jujun ruk'a'am nim ucholajil q'alajisanem rech pwaqilal. We kachomaj k'o k'axk'olil chi rij le akemb'i'aj rech ja k'olwaq, on le rajilab'alil uwujil qajanik, chaya' ub'ixik chech le a ja k'olpwaq chi wene k'o k'axk'olil chi rij. Che'aq'atuj we kojom kumal nik'aj chik winaq.
 fxa-what-to-do-subhead-4 = Chariqa' tob'anik ruk' unatajisaxik ronojel taq aretokib'al chi'l che'achajij.
-fxa-what-to-do-blurb-4 = Le ilawachinelab' rech taq retokib'al pacha' 1Retokib'al, LastPass, Dashlane, chi'l Bitwarden utz uk'olik taq ¶ aretokib'al kkib'ano chi'l kkiya' pa taq uk'olib'al web'. Chakojo' jun ilawachinel rech taq retokib'al  ¶ pa le ach'aweb'al chi'l pa akematz'ib' are chi man rajawaxik taj ronojel kana'taj chi awech
+fxa-what-to-do-blurb-4 = Le ilawachinelab' rech taq retokib'al pacha' 1Retokib'al, LastPass, Dashlane, chi'l Bitwarden utz uk'olik taq aretokib'al kkib'ano chi'l kkiya' pa taq uk'olib'al web'. Chakojo' jun ilawachinel rech taq retokib'al  pa le ach'aweb'al chi'l pa akematz'ib' are chi man rajawaxik taj ronojel kana'taj chi awech
 # Alerts is a noun
 sign-up-for-alerts = Chatz'ib'aj awib' chech taq na'tajisab'al
 # Link title
@@ -180,34 +171,24 @@ unverified-breach-plural = Taq retztaqan man q'atutal taj
 spam-list-breach-plural = Taq retztaqan rech ucholajil mestaqoqxa'nib'al
 what-data = Jachike taq juq'attzij xkib'an k'amq'ab':
 sensitive-sites = Jas kub'an { -product-name } chech  taq wokk'olib'al rech na'b'alil
-sensitive-sites-copy =
-    { -product-name } xew kuk'ut kemb'i'aj le uximom rib' ruk' ¶
-    uwach taq retztaqan are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  ¶ katkowinik kawilo we xk'oji' le aq'alajisanem pa retztaqan (xew we k'o alachinaq ¶ le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
+sensitive-sites-copy = { -product-name } xew kuk'ut kemb'i'aj le uximom rib' ruk' uwach taq retztaqan are taq kq'atutaj kemriqonib'al rech taqoqxa'nib'al. Are wa' kub'ij xew at  katkowinik kawilo we xk'oji' le aq'alajisanem pa retztaqan (xew we k'o alachinaq le k'o rokem pa le akemb'i'aj rech taqoqxa'nib'al).
 delayed-reporting-headline = ¿Jasche naj kuk'am uwoktzijob'exik we retztaqan?
-delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk uk'axk'olil rech q'alajisab'al ¶ pa jun retztaqan rech uq'eqal web'. Le taq retztaqan aninaqil ke'eya' pa le mulib'al juq'attzij ¶ are taq ke'eriqitajik chi'l ke'eq'atutajik.
+delayed-reporting-copy = K'or kuk'am jampa' ik' on jampa junab' are chi kk'utuk uk'axk'olil rech q'alajisab'al pa jun retztaqan rech uq'eqal web'. Le taq retztaqan aninaqil ke'eya' pa le mulib'al juq'attzij are taq ke'eriqitajik chi'l ke'eq'atutajik.
 about-fxm-headline = Chi rij { -product-name }
-about-fxm-blurb =
-    { -product-name } kuya' ub'ixik we xe'ek'oji' taq akemb'i'aj pa nimk'atz pa jun ¶ retztaqan. Chawila' we atk'olinaq pa jun retztaqan, chariqa' taq na'b'anem chi rij taq k'ak' retztaqanj, ¶
-    chi'l chab'ana' taq ucholajil chech uchajixik taq akemb'i'aj pa nimk'atz. { -product-name } ya'tal ¶ rumal. { -brand-Mozilla }.
-fxm-warns-you = { -product-name } kuya' ub'ixik chi awech we xk'oji' le akemriqonib'al rech taqoqxa'nib'al pa uk'axk'olil  ¶ pa jun retztaqan pa nimk'atz. Chawila' we xk'oji' le aq'alajisam pa jun uk'axk'olil, chaweta'maj jas ¶ kb'an chech utz uchajixik le taq akemb'i'aj pa nimk'atz, chi'l chariqa' na'tajisanem we kk'utun le akemriqonib'al ¶ rech taqoqxa'nib'al pa jun k'ak' retztaqan.
+about-fxm-blurb = { -product-name } kuya' ub'ixik we xe'ek'oji' taq akemb'i'aj pa nimk'atz pa jun retztaqan. Chawila' we atk'olinaq pa jun retztaqan, chariqa' taq na'b'anem chi rij taq k'ak' retztaqanj, chi'l chab'ana' taq ucholajil chech uchajixik taq akemb'i'aj pa nimk'atz. { -product-name } ya'tal rumal. { -brand-Mozilla }.
+fxm-warns-you = { -product-name } kuya' ub'ixik chi awech we xk'oji' le akemriqonib'al rech taqoqxa'nib'al pa uk'axk'olil pa jun retztaqan pa nimk'atz. Chawila' we xk'oji' le aq'alajisam pa jun uk'axk'olil, chaweta'maj jas kb'an chech utz uchajixik le taq akemb'i'aj pa nimk'atz, chi'l chariqa' na'tajisanem we kk'utun le akemriqonib'al rech taqoqxa'nib'al pa jun k'ak' retztaqan.
 # How Firefox Monitor works
 how-fxm-works = Jas kchakun { -product-name }
 how-fxm-1-headline = Ub'anik jun tzukunem qas kk'ojik
-how-fxm-1-blurb =
-    Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaqan rech juq'attzij le e petinaq  ¶              pa ri 2007 loq . We tzukunem qas kkojik kuk'ut nima ronojel taq retztaqan xa k'ut man kuk'ut ta  ¶
-    le kuk'a'am taq juq'attzij rech na'b'alil.
+how-fxm-1-blurb = Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaqan rech juq'attzij le e petinaq pa ri 2007 loq . We tzukunem qas kkojik kuk'ut nima ronojel taq retztaqan xa k'ut man kuk'ut ta le kuk'a'am taq juq'attzij rech na'b'alil.
 how-fxm-2-headline = Chatz'ib'aj awib' pa jun rilawachixik retztaqan
-how-fxm-2-blurb = Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq retztaqan. ¶ Are taq kq'atutaj le ataqoqxa'nib'al, xuquje' kak'ulaj jun tz'aqat woktzijob'al rech taq retztaqan kanoq, ¶ rachi'l taq retztaqan rech na'b'alil.
+how-fxm-2-blurb = Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq retztaqan. Are taq kq'atutaj le ataqoqxa'nib'al, xuquje' kak'ulaj jun tz'aqat woktzijob'al rech taq retztaqan kanoq, rachi'l taq retztaqan rech na'b'alil.
 how-fxm-3-headline = Chak'ulaj taq ub'ixikil pa le nik'onel
-how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun ¶ jun wokk'olib'al web' le b'anom retztaqan chech. chawila' we chi'l at b'anom we retztaqan chi awech... chi'l jas rajawaxik kab'an chech.
+how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun jun wokk'olib'al web' le b'anom retztaqan chech. chawila' we chi'l at b'anom we retztaqan chi awech... chi'l jas rajawaxik kab'an chech.
 wtd-after-website = Jas kb'anik are taq xb'antaj jun retztaqan chech jun wokk'olib'al web':
 wtd-after-data-agg = Jas kb'anik are taq xb'antaj jun retztaqan chech le ya'l juq'attzij:
 what-is-data-agg = ¿Jas uwach ri' jun ya'l juq'attzij?
-what-is-data-agg-blurb =
-    Le taq ya'l juq'attzij o taq mulinel taq juq'attzij, kkimuluj q'alajisanem kech uk'iyal ¶
-    taq cholajib'al chi'l kkiloq chi kech e nik'aj chi k'aywokaj, kkimulij we taq juq'attzij k'ate k'u ri' kkik'ayij chi kech e nik'aj chi k'aywokaj ¶
-    chech ub'anik taq k'ayinem. Le taq e riqol uk'axal rech taq we retztaqan man qas ta e k'o pa uk'eyowal chech uriqik uk'axal rech pwaqilal.¶
-    sub'unem, xa  k'ut le taq b'ank'ax wene kkikoj we juq'attzij chech kijalwachixik.
+what-is-data-agg-blurb = Le taq ya'l juq'attzij o taq mulinel taq juq'attzij, kkimuluj q'alajisanem kech uk'iyal taq cholajib'al chi'l kkiloq chi kech e nik'aj chi k'aywokaj, kkimulij we taq juq'attzij k'ate k'u ri' kkik'ayij chi kech e nik'aj chi k'aywokaj chech ub'anik taq k'ayinem. Le taq e riqol uk'axal rech taq we retztaqan man qas ta e k'o pa uk'eyowal chech uriqik uk'axal rech pwaqilal. Sub'unem, xa  k'ut le taq b'ank'ax wene kkikoj we juq'attzij chech kijalwachixik.
 protect-your-privacy = Chachajij le awechab'alil pa nimk'atz'
 no-pw-to-change = Le uk'exb'alil jun retztaqan rech uk'olib'al web', man k'o taq retokib'al kk'exik.
 avoid-personal-info = Makoj winaqilal q'alajisanem pa taq retokib'al
@@ -264,14 +245,14 @@ welcome-back = Utz atzalijem pa, { $userName }!
 welcome-user = Utz apetik, { $userName }!
 breach-alert-subject = { -product-name } chariqa' ataqoqxa'nib'al pa jun k'ak' retztaqan rech juq'attzij
 your-info-was-discovered-headline = Xriqitaj le aq'alajisanem pa jun k'ak' retztaqan rech juq'attzij.
-your-info-was-discovered-blurb = Attz'ib'am are chi kopan taq na'b'anem awuk' { -product-name } ¶ aretaq kk'utun le ataqoqxa'nib'al pa jun retztaqan rech juq'attzij. Waral k'o wi jachike le qeta'am chi rij we retztaqan.
+your-info-was-discovered-blurb = Attz'ib'am are chi kopan taq na'b'anem awuk' { -product-name } aretaq kk'utun le ataqoqxa'nib'al pa jun retztaqan rech juq'attzij. Waral k'o wi jachike le qeta'am chi rij we retztaqan.
 what-to-do-after-breach = Jas kab'ano are taq kxajtaj jun retztaqan rech juq'attzij
 ba-next-step-1 = Chak'exa' le ataqoqxa'nib'al pa jun kowilal utukelal retokib'al.
-ba-next-step-blurb-1 = Jun kowilal retokib'al kukoj jun xolanem rech nim tz'ib' chi'l nitz' tz'ib', nim ucholajil taq tz'ib', ¶ chi'l taq ajilab'al. Man ruk'a'am ta winaqilal q'alaljisanem pacha' ¶ le akemriqonib'al, ralaxb'al, chi'l kib'i' taq ajupaja.
+ba-next-step-blurb-1 = Jun kowilal retokib'al kukoj jun xolanem rech nim tz'ib' chi'l nitz' tz'ib', nim ucholajil taq tz'ib', chi'l taq ajilab'al. Man ruk'a'am ta winaqilal q'alaljisanem pacha' le akemriqonib'al, ralaxb'al, chi'l kib'i' taq ajupaja.
 ba-next-step-2 = Makoj chi le jun retokib'al le k'o pa uk'axal.
-ba-next-step-blurb-2 = Le e kemelaq'omab' wene kkiriq le aretokib'al pa le uq'eqal web' chech ukojik ¶ chech okem a nik'aj chi taq kemb'i'aj ¶ are ukoik utukelal taq retokib'al chi jujunal.
+ba-next-step-blurb-2 = Le e kemelaq'omab' wene kkiriq le aretokib'al pa le uq'eqal web' chech ukojik chech okem a nik'aj chi taq kemb'i'aj are ukoik utukelal taq retokib'al chi jujunal.
 ba-next-step-3 = Chariqa' tob'anem chech uwinaqirisaxik utzalaj taq retokib'al chi'l kichajixik.
-ba-next-step-blurb-3 = Chakojo' jun ilawachinel retokib'al chech uwinaqirisaxik ukowilal, utukelal retokib'al.  Le Ilawachinelab' rech retokib'al kkik'ol pa chajinem ronojel taq ¶ umajixik taq kemchak pa ronojel taq awiqkemchakub'al.
+ba-next-step-blurb-3 = Chakojo' jun ilawachinel retokib'al chech uwinaqirisaxik ukowilal, utukelal retokib'al.  Le Ilawachinelab' rech retokib'al kkik'ol pa chajinem ronojel taq umajixik taq kemchak pa ronojel taq awiqkemchakub'al.
 faq1 = Man weta'am ta uwach we k'aywokaj on uk'olib'al web'. Jasche ink'o pa we jun retztaqan?
 faq2 = ¿Jas che sib'alaj knajtin ub'ixikil chi wech pa jun retztqan?
 faq3 = ¿Jas kinb'an chech reta'maxik we tzij rech { -product-name } we taqoqxa'nib'al?
@@ -301,11 +282,11 @@ currently-showing = Uk'utik
 ## Updated error messages
 
 error-bot-headline = Q'atem taq tzukunem chanim
-error-bot-blurb = Wene xa at bot rumal xatzukuj ¶ k'iyalaj kemriqonib'al reh taqoqxa'nib'al pa re jutz'it. Chech we chanim, atq'atem ¶ chech ub'anik nik'aj chi taq tzukunem, Utz kab'an chi pa jutz'it.
+error-bot-blurb = Wene xa at bot rumal xatzukuj k'iyalaj kemriqonib'al reh taqoqxa'nib'al pa re jutz'it. Chech we chanim, atq'atem chech ub'anik nik'aj chi taq tzukunem, Utz kab'an chi pa jutz'it.
 error-csrf-headline = Xk'is uq'ijol le kemchak
 error-csrf-blurb = Chacha' le pitz'b'al rech tzalijem rech le anik'onel, chak'ak'arisaj le uxaq wuj, k'ate k'u ri' chab'ana' chi jumul.
 error-invalid-unsub = Jas uchupik utz'ib'axik ib' pa taq na'b'anem { -product-name }
-error-invalid-unsub-blurb = Rajawaxik kachup utz'ib'axik ib' pa jun chi kech ¶  taq taqoqxa'nib'al { -product-name } taqom chi awech. Chaq'atuj le k'oltaqoqxa'nib'al rech taq oqxa'n pa ¶ { -brand-team-email }. Chacha' le kemwiqb'al rech uchupik utz'ib'axik ib' chi uxe' le taqoqxa'nib'al.
+error-invalid-unsub-blurb = Rajawaxik kachup utz'ib'axik ib' pa jun chi kech  taq taqoqxa'nib'al { -product-name } taqom chi awech. Chaq'atuj le k'oltaqoqxa'nib'al rech taq oqxa'n pa { -brand-team-email }. Chacha' le kemwiqb'al rech uchupik utz'ib'axik ib' chi uxe' le taqoqxa'nib'al.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -453,10 +434,7 @@ resolve-top-notification-plural =
 marking-this-subhead = Chakojo' retal we retztaqan pacha' solom
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
-marking-this-body =
-    <span>Are taq xb'antaj we ta ucholajil chech rilik uta'ik we retztaqan</span>,¶
-    Utz kakoj retal pacha solom. Utz na, katok pa taq ucholajil chi rij le retztaqan ¶
-    pa le k'olwokaj rech rilawachixik xaq jampa'.
+marking-this-body = <span>Are taq xb'antaj we ta ucholajil chech rilik uta'ik we retztaqan</span>, Utz kakoj retal pacha solom. Utz na, katok pa taq ucholajil chi rij le retztaqan pa le k'olwokaj rech rilawachixik xaq jampa'.
 mark-as-resolve-button = Chakojo' retal pacha' solom
 marked-as-resolved-label = Kojom retal pacha' solom
 undo-button = Chupb'al
@@ -480,7 +458,7 @@ go-to-dashboard-link = Utz katb'e pa k'olwokaj rech rilawachixik
 # the percentage of breaches a user has resolved. For instance, "27% complete".
 progress-percent-complete = { $percentComplete } % tz'aqat
 progress-intro-subhead = At k'ak' pa { -product-name }: chakojo' retal taq retztaqan pacha' solom
-progress-intro-message = Are taq chilitaj taq ucholajil chi rij le retztaqan chi'l ub'anik taq ucholajil chech uchajixik ¶ le awinaqilal q'alajisanem, utz kakoj retal taq retztaqan pacha' solom.
+progress-intro-message = Are taq chilitaj taq ucholajil chi rij le retztaqan chi'l ub'anik taq ucholajil chech uchajixik le awinaqilal q'alajisanem, utz kakoj retal taq retztaqan pacha' solom.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } chi rij { $numTotalBreaches }
@@ -491,17 +469,11 @@ progress-complete = Ronojel taq retztaqan le man eta'matal taj kojom retal pacha
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
-progress-message-1 =
-    <span>silab'alaj utz umajixik ab'anom</span>chawila' taq retztaqam k'a maja na chawila' jachike kraj na chech reta'maxik ¶                                                                                                                                        
-     jachike taq ucholajil kab'ano.
-progress-message-2 =
-    <span>¡chawila'!</span>nitz'aq taq k'exonem pacha' uk'ak'arisaxik taq retokib'al sib'alaj nim kub'an pa ¶                                                                                                                                                               
-    uchajixik le awinaqilal q'alajisanem.
+progress-message-1 = <span>silab'alaj utz umajixik ab'anom</span>chawila' taq retztaqam k'a maja na chawila' jachike kraj na chech reta'maxik jachike taq ucholajil kab'ano.
+progress-message-2 = <span>¡chawila'!</span>nitz'aq taq k'exonem pacha' uk'ak'arisaxik taq retokib'al sib'alaj nim kub'an pa uchajixik le awinaqilal q'alajisanem.
 progress-message-3 = <span>Utz chak xab'ano chech usolik taq retztaqan</span>jela' kab'an chech. K'o na nik'aj chik kab'ano.
 progress-message-4 = <span>Xpe rutzirik</span> Atk'o chi chi unaqaj le nab'e juch'.
-progress-complete-message =
-    <span>utz una'ik, tzij?</span>We kawaj kab'an na, wa' jun utz uq'ijol ¶                                          
-    chak'ak'arisaj nik'aj chi okem ruk' taq retokib'al qas k'o uchuq'ab'.
+progress-complete-message = <span>utz una'ik, tzij?</span>We kawaj kab'an na, wa' jun utz uq'ijol chak'ak'arisaj nik'aj chi okem ruk' taq retokib'al qas k'o uchuq'ab'.
 
 ##
 
