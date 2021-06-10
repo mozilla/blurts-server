@@ -77,9 +77,7 @@ rec-moz-vpn-update =
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }
-rec-hist-pw =
-    Eipuru ñe’ẽñemi ha’ete ha hekorosãva peteĩteĩva mba’etépe g̃uarã. Pe ñe’ẽñemi oreko ¶
-    ijehe mba’ekuaarã ñembyai, tekotevẽ embohekopyahu tembiapo ñepyrũ año.
+rec-hist-pw = Eipuru ñe’ẽñemi ha’ete ha hekorosãva peteĩteĩva mba’etépe g̃uarã. Pe ñe’ẽñemi oreko ijehe mba’ekuaarã ñembyai, tekotevẽ embohekopyahu tembiapo ñepyrũ año.
 # Recommendation subhead
 rec-sec-qa-subhead = Emoheñói mbohovái porandu hekorosãva rehegua
 rec-sec-qa =
@@ -98,9 +96,7 @@ rec-dob =
     oikuaáva ne aramboty arange ikatu avei oike ne PIN-pe.
 # Recommendation subhead
 rec-pins-subhead = Emohekorosãvéke ne PINs
-rec-pins =
-    Peteĩ PIN hekorosãva ndorekói marandu ndejehegua, ne arareñói ¶
-    térã kundaharape. Orekova’erã papapy nde añoite eikuaáva ha ndaikatuiva ojekuaarei.
+rec-pins = Peteĩ PIN hekorosãva ndorekói marandu ndejehegua, ne arareñói térã kundaharape. Orekova’erã papapy nde añoite eikuaáva ha ndaikatuiva ojekuaarei.
 # Recommendation subhead
 rec-address-subhead = Aníke eipuru kundaharape ñe’ẽñemíme
 rec-address =
@@ -111,9 +107,7 @@ rec-address =
 rec-gen-1-subhead = Eipuru ñe’ẽñemi ha’eño ha hekorosãva peteĩteĩva mba’etépe g̃uarã
 # Link title
 rec-gen-1-cta = Mba’éicha emoheñóita ñe’ẽñemi hekorosãva
-rec-gen-1 =
-    Ñe’ẽñemi eipurujeýrõ ombyaikuaa opaite ne mba’ete. Kóva he’ise pe ¶
-    ñe’ẽñemi ojehechakuaa, umi mba’evaiapoha oreko mba’eñemi heta mba’ete rehegua.
+rec-gen-1 = Ñe’ẽñemi eipurujeýrõ ombyaikuaa opaite ne mba’ete. Kóva he’ise pe ñe’ẽñemi ojehechakuaa, umi mba’evaiapoha oreko mba’eñemi heta mba’ete rehegua.
 # Recommendation subhead
 rec-gen-2-subhead = Embyaty ñe’ẽñemi tenda hekorosãvape
 # Link title

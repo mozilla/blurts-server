@@ -93,8 +93,8 @@ fxa-what-to-do-blurb-1 =
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
 fxa-wtd-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para acceder a otras cuentas. Crea una contraseña diferente y única para cada cuenta, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardas información personal.
 fxa-what-to-do-blurb-3 =
-    Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva. ¶
-    Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai. ¶
+    Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva.
+    Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai.
     Ehechajey umi je’epyre eikuaa’ỹva.
 fxa-what-to-do-subhead-4 = Eñepytyvõuka nemandu’a hag̃ua opaite ne ñe’ẽñemíre ha ereko tekorosãme.
 fxa-what-to-do-blurb-4 = Umi ñe’ẽñemi ñangarekoha 1Password, LastPass, Dashlane ha Bitwarden ombyaty ne ñe’ẽñemi tekorosãme ha oike ñanduti rendápe. Oipuru peteĩ ñe’ẽñemi ñangarekoha ne pumbyry ha mohendahápe ani hag̃ua ne mandu’apánte.
@@ -191,10 +191,7 @@ sensitive-sites-copy =
     neañomi ehechataha ne marandúpa oñembyaikuaápara’e (peteĩva noiméiramo
     oikekuaa ne mba’ete ñanduti veve reheguápe).
 delayed-reporting-headline = Mba’ére eha’arõiterei ñembyai ñemomarandu
-delayed-reporting-copy =
-    Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua ¶
-    mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe ¶
-    pya’ete ojejuhu térã ojehechajey rire.
+delayed-reporting-copy = Ikatu oraha heta jasy térã ary umi credencial ojehechakuaáva rehegua mba’ekuaarã ñembyaíva osẽkuaáva ñanduti ypytũme. Umi ñembyai ojuajúta ñane mba’ekuaarã rendápe pya’ete ojejuhu térã ojehechajey rire.
 about-fxm-headline = { -product-name } rehegua
 about-fxm-blurb = { -product-name } omombe’u ne mba’ete ñandutigua ivaikuaápara’e ne mba’ekuaarã. Ehecháke ne mba’ekuaarãpa imarãkuaára’e, og̃uahẽta kyhyjerã ñembyai pyahu ha ehecha mba’éichapa emo’ãkuaa ne mba’ete ñandutípe. { -brand-Mozilla } ohepyme’ẽ { -product-name }.
 fxm-warns-you = { -product-name } ne ñatõi ne mba’ete ñandutigua oĩpara’e mba’ekuaarã ñemboguápe. Ehechajey ne marandúpa oñembyaikuaára’e, eikuaa mba’éichapa ikatu emo’ã porãvéta ne mba’ete ñandutípe ha og̃uahẽta ndéve ne ñanduti veve kundaharapépe ikatúpa oñembyai.
@@ -603,9 +600,7 @@ promo-lockwise-headline = Eraha ne ñe’ẽñemi opa hendápe
 lockwise-promo-body = Ehapykueho ne rembiapo ñepyrũ opaite mba’e’okápe. Eike tekorosãme ne mohendaha, pumbyry térã tabléta guive.
 promo-lockwise-cta = Ereko { -brand-lockwise }
 fpn-promo-headline = Emokañy ne rendaite ñanduti renda ha tapykuehohágui
-promo-fpn-body =
-    { -brand-fpn } oñomi ne rendaite omboyke hag̃ua umi ñanduti renda ¶
-    ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
+promo-fpn-body = { -brand-fpn } oñomi ne rendaite omboyke hag̃ua umi ñanduti renda ha mba’ekuaarã mbyatyha ohechaukáva marandu’i ndive.
 promo-fpn-cta = Ereko { -brand-fpn }
 monitor-promo-headline = Eñemomarandu mba’ekuaarã ñembyai pyahu rehegua
 monitor-promo-body = Og̃uahẽta ndéve marandu’i nemba’etéva ikatúramo oñembyai.
