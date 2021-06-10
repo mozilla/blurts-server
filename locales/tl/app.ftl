@@ -10,13 +10,18 @@
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
+-brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
 GitHub-link-title = GitHub
+error-hibp-throttled = Masyadong maraming mga koneksyon sa { -brand-HIBP }.
 home-title = { -product-name }
 home-not-found = Hindi makita ang pahina.
 oauth-invalid-session = Imbalidong sesyon
+scan-title = { -product-name }: Mga Resulta sa Pag-scan
 user-add-invalid-email = Inbalidong Email
 error-headline = May Mali
 scan-submit = Hanapin sa Iyong Email
