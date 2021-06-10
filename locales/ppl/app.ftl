@@ -74,9 +74,7 @@ manage-fxa = Shiktuktia { -brand-fxa }
 have-an-account = Tikpia se ishtapual?
 fxa-pwt-summary-2 = Ne taketzalis ichtaka kutu u iwan maya se taketzalis, yaja te uij pal kimatit ne hackers.
 fxa-pwt-summary-4 = Tajpianimet ipal taketzalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kiana mutajtaketzalis ichtaka wan kiishtukilia mumaku. Yejemet yawit kichiwat tajtaketzalis ichtaka chupiuk tajpaltik.
-fxa-pwt-summary-6 =
-    Ne taichtekilis ipal mudatoj panu ukseujseujti an. Asu mudatoj nesi tik seuk taichtekilis,  ¶
-    { -product-name } metznawatis — pal tesu tikejkawa panu uksenpa wan tiktajpia mucuejcuentaj ukyek.
+fxa-pwt-summary-6 = Ne taichtekilis ipal mudatoj panu ukseujseujti an. Asu mudatoj nesi tik seuk taichtekilis,  { -product-name } metznawatis — pal tesu tikejkawa panu uksenpa wan tiktajpia mucuejcuentaj ukyek.
 fxa-what-to-do-blurb-1 =
     Asu te tiweli tikalaki tik mucuentaj, shiknawati ne iswat ka matapan ma metzilwi ken tikyankwilia. 
     Tikita se cuentaj tesu tikmati? Mudajdatoj anka munamaskiat 
@@ -87,7 +85,7 @@ fxa-wtd-blurb-2 =
     Ne hackers anka kikalaktisket ne sesan taketzalis ichtaka wan kikwisket mucorreoj pal kalakit tik ujukse cuentaj. 
     Shikchiwa se taketzalis ichtaka te kenha wan ma te keman mukwijtuk ipal sejse cuentaj, wan ipal ne icuentaj mutuminkal,
     correoj, wan ujukse iswat ka matapan kan tiktajpia ne muinformación.
-fxa-what-to-do-blurb-3 = Achka muchi ne taichtekilis ipal datoj kiwawana ne itukay mucorreoj wan taketzalis-ichtaka, man sejse kia kanat weyuk datoj ipal mutumin. . ¶
+fxa-what-to-do-blurb-3 = Achka muchi ne taichtekilis ipal datoj kiwawana ne itukay mucorreoj wan taketzalis-ichtaka, man sejse kia kanat weyuk datoj ipal mutumin.
 fxa-what-to-do-subhead-4 = Ma metzpalewi tikelnamiki muchi mutajtaketzalis ichtaka wan ma kitajpia.
 fxa-what-to-do-blurb-4 =
     Ne tajpianimet ipal taktezalis ichtaka ken 1Password, LastPass, Dashlane, wan Bitwarden kianat wan kitajpia
