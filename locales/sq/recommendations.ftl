@@ -55,9 +55,9 @@ rec-ip-non-us =
     dhe të maskoni adresën tuaj IP.
 # Recommendation subhead
 rec-moz-vpn-cta = Provoni { -brand-mozilla-vpn }
-rec-moz-vpn =
-    Adresa juaj e Protokollit Internet (adresa IP) mund të nxjerrë sheshit vendndodhjen tuaj dhe furnizuesin e shërbimit internet. Një shërbim si
-    { -brand-fpn } e fsheh adresën tuaj IP dhe vendndodhjen për { -brand-name } dhe një shërbim si { -brand-mozilla-vpn } adresën IP dhe vendndodhjen tuaj për krejt pajisjen tuaj.
+rec-moz-vpn-update =
+    Adresa juaj e Protokollit Internet (adresë IP) mund të lërë të zbulohet vendndodhja juaj dhe furnizuesi i shërbimit internet. Një shërbim 
+    si { -brand-mozilla-vpn } e fsheh adresën IP dhe vendndodhjen për krejt pajisjen tuaj.
 rec-hist-pw-subhead = Shmangni ripërdorim fjalëkalimesh
 # Link title
 rec-hist-pw-cta-fx = Shihni kredenciale hyrjesh te { -brand-name }
