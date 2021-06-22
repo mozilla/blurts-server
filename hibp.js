@@ -25,7 +25,7 @@ const HIBP = {
       headers: {
         "User-Agent": HIBP_USER_AGENT,
       },
-      json: true,
+      responseType: "json",
     };
     return Object.assign(options, hibpOptions);
   },
