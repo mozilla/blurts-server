@@ -80,7 +80,13 @@ async function recordVisitFromEmail (req, res, next) {
     log.info(`fxaResult: ${fxaResult}`);
   }
 
+  // If user is already signed in, proceed
   if (req.session.user) {
+    next();
+    return;
+  }
+  // If user is returning from FXA sign-in, proceed
+  if (req.path === "/oauth/confirmed") {
     next();
     return;
   }
