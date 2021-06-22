@@ -132,6 +132,7 @@ function setGAListeners(){
       "#scan-user-email",
       "#add-another-email-form",
       ".open-oauth:not(.product-promo-wrapper)", // The promo entrypoint events are handled elsewhere.
+      "#vpnPromoCloseButton",
     ];
     // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
     if (pageLocation === ("Scan Results")) {
