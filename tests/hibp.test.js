@@ -20,7 +20,7 @@ test("req adds hibp api root and standard options; NOT token", async() => {
   expect(gotCallArgs[0]).toContain(`${AppConstants.HIBP_API_ROOT}/some-path`);
   expect(gotCallArgs[0]).not.toContain("?code=");
   expect(gotCallArgs[1].headers["User-Agent"]).toContain("blurts-server");
-  expect(gotCallArgs[1].json).toBe(true);
+  expect(gotCallArgs[1].responseType).toBe("json");
 });
 
 

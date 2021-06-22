@@ -20,10 +20,10 @@ test("revokeOAuthToken calls oauth destroy with fxa_refresh_token", async () => 
   const accessGotCallArgs = gotCalls[0];
   expect(accessGotCallArgs[0]).toContain("/v1/destroy");
   const accessGotCallOptions = accessGotCallArgs[1];
-  expect(accessGotCallOptions.body.token).toEqual(subscriber.fxa_access_token);
+  expect(accessGotCallOptions.json.token).toEqual(subscriber.fxa_access_token);
 
   const refreshGotCallArgs = gotCalls[1];
   expect(refreshGotCallArgs[0]).toContain("/v1/destroy");
   const refreshGotCallOptions = refreshGotCallArgs[1];
-  expect(refreshGotCallOptions.body.refresh_token).toEqual(subscriber.fxa_refresh_token);
+  expect(refreshGotCallOptions.json.refresh_token).toEqual(subscriber.fxa_refresh_token);
 });
