@@ -528,7 +528,7 @@ function vpnBannerLogic() {
   }
 
   // Only show banner if users first language is some English-locale variant
-  if (preferredLanguages[0].includes("en")) {
+  if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
     vpnBannerLogic();
   }
 
