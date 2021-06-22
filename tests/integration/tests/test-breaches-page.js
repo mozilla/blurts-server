@@ -12,6 +12,6 @@ describe("Firefox Monitor Breaches Page", function() {
       hideElements: [
         $$(".breach-info-wrapper"),
       ],
-    })).to.be.within(0, 9.99);
+    })).to.be.within(0, 34.99);
   });
 });
