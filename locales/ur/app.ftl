@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox نجی نیٹ ورک
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -75,6 +76,21 @@ home = ابتدائی صفحہ
 # Link title
 security-tips = سلامتی  نسخے
 fxa-account = { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = کیا { -product-short-name } استعمال کرنا آسان ہے؟
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = عدم اتفاق
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = غیر یقینی
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = اتفاق کرتے ہیں
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = مجھے پرواہ نہیں ہوگی
 take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
 read-more-tips = مزید سلامتی نسخے پڑھیں
 how-hackers-work = سمجھیں کہ ہیکر کیسے کام کرتے ہیں
@@ -100,6 +116,7 @@ stop-reusing-pw = وہی پاس ورڈ دوبارہ استعمال کرنا بن
 feat-security-tips = آَپ کے اکاؤنٹس کی حفاظت کے لیے سلامتی نکات
 back-to-top = واپس اوپر کی جانب
 stop-monitoring-this = اس ای میل کی نگرانی بند کریں۔
+resend-verification = توژیق کاری کی ای میل دوبارہ ارسال کریں
 add-new-email = ایک نیا ای میل پتہ شامل کریں
 send-verification = توثیقی ربط ارسال  کریں
 remove-fxm = { -product-name } ہٹائیں
