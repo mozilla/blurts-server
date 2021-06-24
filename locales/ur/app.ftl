@@ -179,3 +179,4 @@ undo-button = کالعدم کریں
 
 ##
 
+mobile-promo-cta = Android اور iOS پر { -brand-name } حاصل کریں

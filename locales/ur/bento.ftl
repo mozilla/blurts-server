@@ -6,8 +6,9 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
+fx-mobile = موبائل کے لیے { -brand-name }
 
-
+##
 
 # A link at the bottom of the Bento menu
 made-by-mozilla = { -brand-Mozilla } کی جانب سے بنایا گیا
