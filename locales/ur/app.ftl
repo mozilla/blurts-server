@@ -218,4 +218,5 @@ promo-lockwise-headline = اپنے پاس ورڈ ہر جگہ لے جاٴییں
 promo-lockwise-cta = { -brand-lockwise } حاصل کریں
 promo-fpn-cta = { -brand-fpn } حاصل کریں
 promo-ecosystem-cta = تمام مصنوعات دیکھیں
+steps-to-resolve-headline = اس خلاف ورزی کو حل کرنے کے اقدامات
 vpn-promo-cta = { -brand-mozilla-vpn } حاصل کریں

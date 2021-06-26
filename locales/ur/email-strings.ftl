@@ -12,6 +12,8 @@ legal = قانونی
 email-unsub-link = رکنیت ختم کریں
 # Button text
 verify-email-cta = ای میل کی توثیق کریں
+# Button text
+see-all-breaches = تمام خلاف ورزیوں کو دیکھیں
 # Headline of verification email
 email-link-expires = یہ ربط 24 گھنٹوں میں راعد المیعاد ہو جاتا ہے۔
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.

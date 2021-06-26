@@ -6,6 +6,7 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
+fx-desktop = { -brand-name } براؤزر برائے ڈیسک ٹاپ
 fx-mobile = موبائل کے لیے { -brand-name }
 
 ##
