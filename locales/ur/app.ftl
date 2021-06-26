@@ -74,6 +74,8 @@ preferences = ترجیحات
 # Link title
 home = ابتدائی صفحہ
 # Link title
+breaches = خلاف ورزی
+# Link title
 security-tips = سلامتی  نسخے
 fxa-account = { -brand-fxa }
 # This is a survey response to the micro-survey-nps-prompt question.
@@ -82,6 +84,10 @@ micro-survey-not-likely-response = امکان نہیں ہے
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = کیا { -product-short-name } استعمال کرنا آسان ہے؟
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = کیا آپ کو لگتا ہے کہ { -product-short-name } قابل اعتبار ہے؟
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-disagree-response = عدم اتفاق
@@ -94,11 +100,16 @@ micro-survey-agree-response = اتفاق کرتے ہیں
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = بہت مایوسی ہوئی
 # This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = کسی حد تک مایوسی ہوئی
+# This is a survey response that follows the pmf prompt
 micro-survey-dont-care-response = مجھے پرواہ نہیں ہوگی
+# Link title
+more-about-this-breach = اس خلاف ورزی کے بارے میں مزید
 take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
 read-more-tips = مزید سلامتی نسخے پڑھیں
 how-hackers-work = سمجھیں کہ ہیکر کیسے کام کرتے ہیں
 monitor-several-emails = متعدد ای میلز کی نگرانی کریں
+unverified-breach = غیر تصدیق شدہ خلاف ورزی
 delayed-reporting-headline = اس خلاف ورزی کی رپورٹ دینے میں اتنا وقت کیوں لگا؟
 about-fxm-headline = { -product-name } کے بارے میں
 # How Firefox Monitor works
@@ -119,6 +130,7 @@ strength-of-your-pw = آپ کے پاس ورڈز کی طاقت براہ راست 
 create-strong-passwords = مضبوط پاس ورڈ کیسے بنائیں
 stop-reusing-pw = وہی پاس ورڈ دوبارہ استعمال کرنا بند کریں
 feat-security-tips = آَپ کے اکاؤنٹس کی حفاظت کے لیے سلامتی نکات
+check-for-breaches = خلاف ورزیوں کی جانچ پڑتال کریں
 back-to-top = واپس اوپر کی جانب
 stop-monitoring-this = اس ای میل کی نگرانی بند کریں۔
 resend-verification = توژیق کاری کی ای میل دوبارہ ارسال کریں
@@ -130,6 +142,8 @@ remove-fxm = { -product-name } ہٹائیں
 manage-email-addresses = ای میل پتہ بندرست کریں
 welcome-user = خوش آمدید ،  { $userName }
 ba-next-step-1 = اپنے پاس ورڈ کو مضبوط ، منفرد پاس ورڈ میں تبدیل کریں۔
+all-breaches-headline = { -product-name } میں تمام خلاف ورزیاں
+search-breaches = خلاف ورزیوں کو تلاش کریں
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = دکھایا جا رہا ہے:
 
@@ -144,6 +158,8 @@ email-addresses-being-monitored =
         [one] ای میل پتے کی نگرانی کی جارہی ہے
        *[other] ای میل پتوں کی نگرانی کی جارہی ہے
     }
+# Button
+see-additional-breaches = اضافی خلاف ورزی دیکھیں
 email-verification-required = ای میل کی توژیقکاری درکار ہے
 what-is-a-website-breach = ویب سائٹ کی خلاف ورزی کیا ہے؟
 # Title
@@ -153,6 +169,9 @@ email-addresses-title = ای میل پتے
 breach-overview-title = جائزہ
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } ترجیحات
+# When a user is signed in, this appears in the drop down menu 
+# and is followed by the user's primary Firefox Account email. 
+signed-in-as = بطور سائن ان: { $userEmail }
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = مینیو
 # Link title
@@ -184,6 +203,7 @@ see-additional-recs = اضافی سفارشات ملاحظہ کریں
 
 marked-as-resolved-label = بطور حل شدہ اسے نشان زد کریں
 undo-button = کالعدم کریں
+go-to-dashboard-link = ڈیش بورڈ پر جائیں
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -198,3 +218,4 @@ promo-lockwise-headline = اپنے پاس ورڈ ہر جگہ لے جاٴییں
 promo-lockwise-cta = { -brand-lockwise } حاصل کریں
 promo-fpn-cta = { -brand-fpn } حاصل کریں
 promo-ecosystem-cta = تمام مصنوعات دیکھیں
+vpn-promo-cta = { -brand-mozilla-vpn } حاصل کریں

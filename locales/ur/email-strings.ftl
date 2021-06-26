@@ -8,6 +8,8 @@ report-date = رپورٹ کی تاریخ:
 email-address = ایمیل اڈریسیس :
 # A link to legal information about mozilla products.
 legal = قانونی
+# Unsubscribe link in email.
+email-unsub-link = رکنیت ختم کریں
 # Button text
 verify-email-cta = ای میل کی توثیق کریں
 # Headline of verification email
