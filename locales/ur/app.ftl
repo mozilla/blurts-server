@@ -135,6 +135,7 @@ currently-showing = دکھایا جا رہا ہے:
 
 ## Updated error messages
 
+error-csrf-headline = سیشن کا وقت ختم ہوگیا
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
@@ -143,11 +144,15 @@ email-addresses-being-monitored =
         [one] ای میل پتے کی نگرانی کی جارہی ہے
        *[other] ای میل پتوں کی نگرانی کی جارہی ہے
     }
+email-verification-required = ای میل کی توژیقکاری درکار ہے
+what-is-a-website-breach = ویب سائٹ کی خلاف ورزی کیا ہے؟
 # Title
 email-addresses-title = ای میل پتے
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = جائزہ
+# Title appearing on the Preferences dashboard. 
+monitor-preferences = { -product-short-name } ترجیحات
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = مینیو
 # Link title
@@ -177,6 +182,7 @@ see-additional-recs = اضافی سفارشات ملاحظہ کریں
 
 ##
 
+marked-as-resolved-label = بطور حل شدہ اسے نشان زد کریں
 undo-button = کالعدم کریں
 
 ## These strings contain nested markup that is later used to style the text inside of it.
@@ -185,4 +191,10 @@ undo-button = کالعدم کریں
 
 ##
 
+# A status indicator that appears in the top right corner of new breach cards
+new-breach = نیا
 mobile-promo-cta = Android اور iOS پر { -brand-name } حاصل کریں
+promo-lockwise-headline = اپنے پاس ورڈ ہر جگہ لے جاٴییں
+promo-lockwise-cta = { -brand-lockwise } حاصل کریں
+promo-fpn-cta = { -brand-fpn } حاصل کریں
+promo-ecosystem-cta = تمام مصنوعات دیکھیں

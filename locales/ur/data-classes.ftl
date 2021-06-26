@@ -26,6 +26,7 @@ customer-feedback = گاہک کی رائے
 customer-interactions = گاہک سے بات چیت
 dates-of-birth = پیدائش کی تاریخیں
 deceased-date = ختم شدہ تاریخ
+deceased-statuses = مردہ حالت
 device-information = ڈیوائس کی معلومات
 drinking-habits = پینے کی عادات
 drug-habits = منشیات کی عادات
@@ -55,7 +56,9 @@ imsi-numbers = IMSI نمبر
 income-levels = آمدنی کی سطح
 instant-messenger-identities = فوری پیغامات کی شناخت
 ip-addresses = IP ایڈریسیس
+job-applications = نوکری کی درخواستیں
 job-titles = جاب عنوان
+living-costs = رہائشی اخراجات
 mac-addresses = MAC ایڈریسیس
 marital-statuses = شادی شدہ حیثیت
 # Mnemonic phrases are a group of words used to access the content of cryptocurrency wallets.
