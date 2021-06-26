@@ -76,6 +76,8 @@ home = ابتدائی صفحہ
 # Link title
 security-tips = سلامتی  نسخے
 fxa-account = { -brand-fxa }
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = امکان نہیں ہے
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
@@ -90,6 +92,8 @@ micro-survey-unsure-response = غیر یقینی
 # appearance prompts
 micro-survey-agree-response = اتفاق کرتے ہیں
 # This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = بہت مایوسی ہوئی
+# This is a survey response that follows the pmf prompt
 micro-survey-dont-care-response = مجھے پرواہ نہیں ہوگی
 take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
 read-more-tips = مزید سلامتی نسخے پڑھیں
@@ -101,6 +105,7 @@ about-fxm-headline = { -product-name } کے بارے میں
 how-fxm-works = { -product-name } کیسے کام کرتا ہے
 how-fxm-1-headline = ایک بنیادی تلاش کریں
 how-fxm-3-headline = اپنے براؤزر میں اطلاعات حاصل کریں
+wtd-after-website = کسی ویب سائٹ کی خلاف ورزی کے بعد کیا کریں:
 protect-your-privacy = اپنی آن لائن رازداری کی حفاظت کریں
 avoid-personal-info = پاس ورڈز میں ذاتی معلومات کو استعمال کرنے سے گریز کریں
 
@@ -119,6 +124,7 @@ stop-monitoring-this = اس ای میل کی نگرانی بند کریں۔
 resend-verification = توژیق کاری کی ای میل دوبارہ ارسال کریں
 add-new-email = ایک نیا ای میل پتہ شامل کریں
 send-verification = توثیقی ربط ارسال  کریں
+link-change-primary = بنیادی ای میل پتہ تبدیل کریں
 remove-fxm = { -product-name } ہٹائیں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
