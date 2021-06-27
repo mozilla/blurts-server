@@ -110,6 +110,8 @@ read-more-tips = مزید سلامتی نسخے پڑھیں
 how-hackers-work = سمجھیں کہ ہیکر کیسے کام کرتے ہیں
 monitor-several-emails = متعدد ای میلز کی نگرانی کریں
 unverified-breach = غیر تصدیق شدہ خلاف ورزی
+sensitive-breach-plural = حساس خلاف ورزی
+unverified-breach-plural = غیر تصدیق شدہ خلاف ورزی
 delayed-reporting-headline = اس خلاف ورزی کی رپورٹ دینے میں اتنا وقت کیوں لگا؟
 about-fxm-headline = { -product-name } کے بارے میں
 # How Firefox Monitor works
@@ -142,6 +144,7 @@ remove-fxm = { -product-name } ہٹائیں
 manage-email-addresses = ای میل پتہ بندرست کریں
 welcome-user = خوش آمدید ،  { $userName }
 ba-next-step-1 = اپنے پاس ورڈ کو مضبوط ، منفرد پاس ورڈ میں تبدیل کریں۔
+no-results-blurb = معذرت ، وہ خلاف ورزی ہمارے ڈیٹا بیس میں نہیں ہے۔
 all-breaches-headline = { -product-name } میں تمام خلاف ورزیاں
 search-breaches = خلاف ورزیوں کو تلاش کریں
 # "Appears in-page as: Showing: All Breaches"
@@ -161,6 +164,7 @@ email-addresses-being-monitored =
 # Button
 see-additional-breaches = اضافی خلاف ورزی دیکھیں
 email-verification-required = ای میل کی توژیقکاری درکار ہے
+fxa-primary-email = { -brand-fxa } ای میل - بنیادی
 what-is-a-website-breach = ویب سائٹ کی خلاف ورزی کیا ہے؟
 # Title
 email-addresses-title = ای میل پتے
@@ -201,6 +205,7 @@ see-additional-recs = اضافی سفارشات ملاحظہ کریں
 
 ##
 
+mark-as-resolve-button = بطور حل شدہ اسے نشان زد کریں
 marked-as-resolved-label = بطور حل شدہ اسے نشان زد کریں
 undo-button = کالعدم کریں
 go-to-dashboard-link = ڈیش بورڈ پر جائیں

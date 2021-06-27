@@ -21,5 +21,6 @@ learn-more-about-fxm = { $fxmLink } کے بارے میں مزید سیکھیں
 # List headline
 faq-list-headline = اکثر پوچھے گئے سوالات
 pre-fxa-headline = { -product-name } کے ساتھ کیا تبدیل ہو رہا ہے
+pre-fxa-tout-1 = مزید نئی خلاف ورزیوں کے بارے میں چوکس رہیں
 # Button at the bottom of pre-fxa email.
 create-account = اکاؤنٹ بنائیں
