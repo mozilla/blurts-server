@@ -22,6 +22,7 @@
 -brand-fx-account = Firefox اکاؤنٹ
 terms-and-privacy = شرائط اور رازداری
 GitHub-link-title = GitHub
+error-could-not-add-email = ڈیٹا بیس میں ای میل ایڈریس شامل نہیں کیا جاسکا۔
 error-not-subscribed = یہ ایمیل ایڈریس { -product-name } مے سبسکرائب نہیں ہے۔
 error-hibp-throttled = { -brand-HIBP } کے بہت سے کنکشنس۔
 error-hibp-connect = { -brand-HIBP } سے جڑنے مے خرابی۔
@@ -57,6 +58,8 @@ compromised-accounts = سمجھوتہ اکاؤنٹس:
 compromised-data = سمجھوتہ ہوا ڈیٹا:
 unsub-headline = { -product-name-nowrap } سے ان سبسکرائب کریں
 unsub-button = رکنیت ختم کریں
+share-facebook-headline = معلوم کریں کہ کیا آپ ڈیٹا کی خلاف ورزی کا حصہ بن چکے ہیں
+share-facebook-blurb = کیا آپ کے آن لائن اکاؤنٹس کو ڈیٹا کی خلاف ورزی پر بے نقاب کیا گیا ہے؟
 show-all = تمام دکھائیں
 fxa-scan-another-email = کسی اور ای میل کی پڑتال کرنا چاہتے ہیں؟
 sign-in = سائن ان کریں
@@ -64,6 +67,7 @@ sign-out = سائن آؤٹ کریں
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } بندرست کریں
 have-an-account = کیا آپ کا اکاؤنٹ ہے؟
+fxa-what-to-do-subhead-4 = اپنے تمام پاس ورڈز کو یاد رکھنے اور انہیں محفوظ رکھنے میں مدد حاصل کریں۔
 # Alerts is a noun
 sign-up-for-alerts = الرٹس کے لئے سائن اپ کریں
 # Link title
@@ -108,7 +112,10 @@ more-about-this-breach = اس خلاف ورزی کے بارے میں مزید
 take-control = اپنے ذاتی کويف کا دوبارہ کنٹرول حاصل کریں۔
 read-more-tips = مزید سلامتی نسخے پڑھیں
 how-hackers-work = سمجھیں کہ ہیکر کیسے کام کرتے ہیں
+stay-alert = نئی خلاف ورزیوں کے بارے میں چوکس رہیں
 monitor-several-emails = متعدد ای میلز کی نگرانی کریں
+website-breach = ویب سائٹ کی خلاف ورزی
+sensitive-breach = حساس ویب سائٹ کی خلاف ورزی
 unverified-breach = غیر تصدیق شدہ خلاف ورزی
 sensitive-breach-plural = حساس خلاف ورزی
 unverified-breach-plural = غیر تصدیق شدہ خلاف ورزی
