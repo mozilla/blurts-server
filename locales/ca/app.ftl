@@ -169,3 +169,4 @@ changes-saved = S'han desat els canvis.
 ##
 
 promo-lockwise-headline = Accediu a les vostres contrasenyes des de qualsevol lloc
+ecosystem-promo-body = Tots els nostres productes respecten el nostre «Compromís sobre les dades personals»: recollir menys dades, mantenir-les segures i sense secrets.
