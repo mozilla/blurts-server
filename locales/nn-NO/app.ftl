@@ -341,6 +341,15 @@ all-breaches-headline = Alle datalekkasjar i { -product-name }
 search-breaches = Søk etter datalekkasjar
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>E-postadressea di visest ikkje i denne datalekkasjen,
+    men telefonnummeret ditt kan framleis vere sårbart.</span> Nokre av kontoane
+    kompromitterte i Facebook-lekkasjen inkludert telefonnummer og anna
+    personleg informasjon, men ikkje e-postadresser. Dersom du har registrert
+     ein Facebook-konto — sjølv om du ikkje brukar han no — tilrår vi deg
+    å ta desse stega for å beskytte deg sjølv
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Still inn informasjonen din til «Berre meg» eller andre ikkje-offentlege innstillingar i <a>Facebook-profilen din</a>.</span>
 facebook-breach-what-to-do-1-copy =
     I løpet av denne datalekkasjen tok hackarar profilinformasjon
