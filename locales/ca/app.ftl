@@ -88,6 +88,8 @@ open-fxa-menu = Obre la navegació del { -brand-fxa }
 micro-survey-not-likely-response = Poc probable
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-very-likely-response = Molt probable
+# Link title
+more-about-this-breach = Més informació sobre aquesta filtració
 take-control = Recupereu el control de les vostres dades personals.
 website-breach = Filtració de lloc web
 about-fxm-headline = Quant al { -product-name }
@@ -166,3 +168,4 @@ changes-saved = S'han desat els canvis.
 
 ##
 
+promo-lockwise-headline = Accediu a les vostres contrasenyes des de qualsevol lloc
