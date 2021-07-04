@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -83,6 +84,10 @@ security-tips = Consells de seguretat
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Obre la navegació del { -brand-fxa }
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Poc probable
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Molt probable
 take-control = Recupereu el control de les vostres dades personals.
 website-breach = Filtració de lloc web
 about-fxm-headline = Quant al { -product-name }
