@@ -10,7 +10,6 @@ const { FluentError } = require("../locale-utils");
 const AppConstants = require("../app-constants");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
-const Basket = require("../basket");
 const getSha1 = require("../sha1-utils");
 const mozlog = require("../log");
 
@@ -235,11 +234,6 @@ const DB = {
         updated_at: knex.fn.now(),
       })
       .returning("*");
-
-    // TODO: move this "up" into controllers/users ?
-    if (emailHash.fx_newsletter) {
-      Basket.subscribe(emailHash.primary_email);
-    }
 
     return verifiedSubscriber;
   },
