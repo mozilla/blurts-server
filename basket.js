@@ -22,8 +22,7 @@ const Basket = {
     const url = `${AppConstants.BASKET_URL}/news/subscribe/`;
     const reqOptions = {
       method: "POST",
-      form: true,
-      body: params,
+      form: params,
     };
 
     try {

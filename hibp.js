@@ -190,7 +190,7 @@ const HIBP = {
     const path = "/range/subscribe";
     const options = {
       method: "POST",
-      body: {hashPrefix: sha1Prefix},
+      json: {hashPrefix: sha1Prefix},
     };
 
     return await this.kAnonReq(path, options);
