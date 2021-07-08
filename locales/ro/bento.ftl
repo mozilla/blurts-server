@@ -6,7 +6,7 @@ fx-lockwise = { -brand-lockwise }
 ## If possible, keep "Firefox Browser" in English, but feel free 
 ## to translate browser if that doesn't work for your language.
 
-fx-desktop = Browser { -brand-name } pentru calculator
+fx-desktop = Browserul { -brand-name } pentru desktop
 fx-mobile = Browser { -brand-name } pentru dispozitive mobile
 
 ##
