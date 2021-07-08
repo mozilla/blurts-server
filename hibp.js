@@ -25,7 +25,7 @@ const HIBP = {
       headers: {
         "User-Agent": HIBP_USER_AGENT,
       },
-      json: true,
+      responseType: "json",
     };
     return Object.assign(options, hibpOptions);
   },
@@ -190,7 +190,7 @@ const HIBP = {
     const path = "/range/subscribe";
     const options = {
       method: "POST",
-      body: {hashPrefix: sha1Prefix},
+      json: {hashPrefix: sha1Prefix},
     };
 
     return await this.kAnonReq(path, options);

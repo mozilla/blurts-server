@@ -9,7 +9,6 @@ require("./resetDB");
 
 
 jest.mock("../hibp");
-jest.mock("../basket");
 
 
 function sleep(ms) {
