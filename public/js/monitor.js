@@ -398,10 +398,13 @@ function addWaitlistObservers() {
       observer.observe(relayCta);
       relayCta.addEventListener("click", (e) => {
         if (relayCta.href) {
-          e.preventDefault();
-          ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel, {
-          "hitCallback": window.location.href = relayCta.href,
-          });
+          if (typeof(ga) !== "undefined") {
+            // Recheck if the user is on strict-mode and only block the click default action if GA is available
+            e.preventDefault();
+            ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel, {
+            "hitCallback": window.location.href = relayCta.href,
+            });
+          }
           return;
         }
         ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel);
