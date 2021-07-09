@@ -413,30 +413,13 @@ function addWaitlistObservers() {
   }
 }
 
-function vpnBannerLogic(options) {
+function vpnBannerLogic() {
 
   // Check if element exists at all
   const vpnPromoBanner = document.getElementById("vpnPromoBanner");
 
   if (!vpnPromoBanner) {
     return;
-  }
-
-  if (options && options.isEnglish) {
-    const vpnPromoCopy = document.querySelector(".vpn-promo-copy");
-    vpnPromoCopy.innerHTML = "";
-    const vpnPromoCopyStrongTag = document.createElement("strong");
-    const vpnPromoCopySpanTag = document.createElement("span");
-    const vpnPromoCopySmallTag = document.createElement("small");
-    vpnPromoCopyStrongTag.textContent = "Introductory offer ends soon: $4.99/month for Mozilla VPN";
-    vpnPromoCopySpanTag.textContent = "Now's the time to protect your device against hackers and prying eyes.";
-    vpnPromoCopySmallTag.textContent = "Offer only available in the United States, United Kingdom, Canada, New Zealand, Malaysia, and Singapore";
-    vpnPromoCopy.appendChild(vpnPromoCopyStrongTag);
-    vpnPromoCopy.appendChild(vpnPromoCopySpanTag);
-    vpnPromoCopy.appendChild(vpnPromoCopySmallTag);
-
-    const vpnPromoButton = document.querySelector(".vpn-promo-cta");
-    vpnPromoButton.href = "https://www.mozilla.org/products/vpn/?utm_source=monitor&utm_medium=monitor&utm_campaign=intro-pricing";
   }
 
   // Check for dismissal cookie
@@ -548,12 +531,8 @@ function vpnBannerLogic(options) {
   }
 
   // Only show banner if users first language is some English-locale variant
-  if (["de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
+  if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
     vpnBannerLogic();
-  }
-
-  if (["en"].some(lang=>preferredLanguages[0].includes(lang))) {
-    vpnBannerLogic({isEnglish: true});
   }
 
   if (document.getElementById("fxaCheckbox")) {
