@@ -412,10 +412,11 @@ const DB = {
   async deleteUnverifiedSubscribers() {
     const expiredDateTime = new Date(Date.now() - AppConstants.DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000);
     const expiredTimeStamp = expiredDateTime.toISOString();
-    await knex("subscribers")
+    const numDeleted = await knex("subscribers")
       .where("primary_verified", false)
       .andWhere("created_at", "<", expiredTimeStamp)
       .del();
+    log.info("deleteUnverifiedSubscribers", {msg:`Deleted ${numDeleted} rows.`});
   },
 
   async deleteSubscriberByFxAUID(fxaUID) {
