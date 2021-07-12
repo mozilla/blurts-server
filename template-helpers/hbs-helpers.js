@@ -134,6 +134,10 @@ function getString (id, args) {
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
+function getStringWithFallback (id, fallbackId, args) {
+  const supportedLocales = getSupportedLocales(args);
+  return LocaleUtils.fluentFormatWithFallback(supportedLocales, id, fallbackId, args.hash);
+}
 
 function getStrings(stringArr, locales) {
   stringArr.forEach(string => {
@@ -281,6 +285,7 @@ module.exports = {
   microsurveyBanner,
   englishInAcceptLanguages,
   getString,
+  getStringWithFallback,
   getStrings,
   fluentFxa,
   getStringID,
