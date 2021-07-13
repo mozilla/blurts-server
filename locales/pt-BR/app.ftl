@@ -594,3 +594,5 @@ steps-to-resolve-headline = Passos para resolver este vazamento
 vpn-promo-headline = Agora é a hora de aumentar sua segurança online.
 vpn-promo-copy = A Rede Privada Virtual da { -brand-Mozilla } ajuda a proteger sua conexão com a internet de hackers e espiões.
 vpn-promo-cta = Instale o { -brand-mozilla-vpn }
+vpn-promo-headline-new = Economize 50% com uma assinatura de ano inteiro
+vpn-promo-copy-new = Proteja seus dados online, escolha um plano de assinatura de VPN que sirva para você.
