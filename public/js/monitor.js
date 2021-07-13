@@ -530,7 +530,7 @@ function vpnBannerLogic() {
     return;
   }
 
-  // Only show banner if users first language is some English-locale variant
+  // Only show banner if users first language is English, Germand or French variant
   if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
     vpnBannerLogic();
   }
