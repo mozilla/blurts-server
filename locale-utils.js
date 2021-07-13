@@ -78,6 +78,29 @@ const LocaleUtils = {
     }
     return id;
   },
+
+  fluentFormatWithFallback (supportedLocales, id, fallbackId, args=null, errors=null) {
+    if (!fallbackId) {
+      log.error("fluentFormatWithFallback: No fallbackId");
+      return false;
+    }
+
+    for (const locale of supportedLocales) {
+      const bundle = fluentBundles[locale];
+      if (bundle.hasMessage(id)) {
+        const message = bundle.getMessage(id);
+        return bundle.format(message, args);
+      }
+
+      // If first message id doesn't have translation, use fallback id
+      if (fallbackId && bundle.hasMessage(fallbackId)) {
+        const message = bundle.getMessage(fallbackId);
+        return bundle.format(message, args);
+      }
+    }
+    return id;
+  },
+
 };
 
 module.exports = {
