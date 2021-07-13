@@ -528,3 +528,5 @@ steps-to-resolve-headline = 外泄事件处理步骤
 vpn-promo-headline = 就现在！增强您的在线安全性。
 vpn-promo-copy = { -brand-Mozilla } 的虚拟专用网络（VPN）可帮助保护您的互联网连接免受黑客和间谍的侵扰。
 vpn-promo-cta = 下载 { -brand-mozilla-vpn }
+vpn-promo-headline-new = 一次性订阅全年，可享半价
+vpn-promo-copy-new = 保护您的在线数据——请选择适合您的 VPN 订阅方案。
