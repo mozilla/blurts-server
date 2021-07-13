@@ -577,3 +577,5 @@ steps-to-resolve-headline = Schritte zur Behebung dieses Datenlecks
 vpn-promo-headline = Jetzt ist es Zeit, Ihre Sicherheit im Internet zu erhöhen.
 vpn-promo-copy = Das Virtual Private Network von { -brand-Mozilla } schützt Ihre Internetverbindung vor Hackern und Spionen.
 vpn-promo-cta = Holen Sie sich { -brand-mozilla-vpn }
+vpn-promo-headline-new = Sparen Sie 50% mit einem Jahresabo
+vpn-promo-copy-new = Schützen Sie Ihre Daten im Internet – und wählen Sie ein VPN-Abonnement, das zu Ihnen passt.
