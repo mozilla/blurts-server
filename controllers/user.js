@@ -529,6 +529,13 @@ async function getPreferences(req, res) {
 }
 
 
+// This endpoint returns breach stats for Firefox clients to display
+// in about:protections
+//
+// Firefox sends a signed JWT in the Authorization header. We verify this JWT
+// with the FXA verification endpoint before we return breach stats.
+//
+// To test this endpoint, see the "Test Firefox Integration" section of the README.
 async function getBreachStats(req, res) {
   if (!req.token) {
     return res.status(401).json({

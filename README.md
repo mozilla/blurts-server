@@ -138,6 +138,22 @@ To run tests with interactive `debugger` lines enabled:
 NODE_ENV=tests node inspect --harmony ./node_modules/.bin/jest tests/home.test.js
 ```
 
+### Test Firefox Integration
+
+Firefox's internal about:protections page ("Protections Dashboard") fetches and
+displays breach stats for Firefox users who are signed into their FXA.
+
+To test this part of Monitor:
+
+1. [Set a Firefox profile to use the staging Firefox Accounts
+   server.](https://mozilla.github.io/ecosystem-platform/docs/process/using-the-staging-environment#working-with-staging-firefox-accounts)
+2. In the same profile, go to about:config and replace [all
+   `https://monitor.firefox.com`
+   values](https://searchfox.org/mozilla-central/search?q=monitor.firefox.com&path=browser/app/profile/firefox.js) with `http://localhost:6060`
+3. Restart Firefox with that profile.
+4. Go to `about:protections`
+5. Everything should be using your localhost instance of Monitor.
+
 ### Lint
 
 After installing the dependencies, you can lint the code by calling:
