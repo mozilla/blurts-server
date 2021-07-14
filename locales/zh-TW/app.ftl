@@ -524,3 +524,5 @@ steps-to-resolve-headline = 解決此資料外洩事件的步驟
 vpn-promo-headline = 現在是時候加強您的上網安全了。
 vpn-promo-copy = { -brand-Mozilla } 的虛擬私人網路可幫助您保護網路連線內容，不受駭客間諜侵害。
 vpn-promo-cta = 下載 { -brand-mozilla-vpn }
+vpn-promo-headline-new = 一次訂閱一年份，享有半價折扣
+vpn-promo-copy-new = 保護您的線上資料 — 選擇適合您的 VPN 訂閱方案。
