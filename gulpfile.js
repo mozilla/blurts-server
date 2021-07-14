@@ -6,17 +6,18 @@ const del = require("del");
 const buildDir = "./public/scss/libs/protocol/";
 const finalDir = "./public/css/";
 
-function clean() {
+function cleanCompiledCssDirectory() {
     return del([
-        finalDir,
-        "!./public/css/legacy"
+        "./public/css/*",
+        "!./public/css/legacy/**",
     ]);
 }
 
-function reset() {    
+function resetCssDirectories() {    
     return del([
-        finalDir,
         buildDir,
+        "./public/css/*",
+        "!./public/css/legacy/**",
     ]);
 }
 
@@ -26,25 +27,26 @@ function styles() {
         .pipe(dest(finalDir));
 }
 
-function assetsCssCopy() { 
+function assetsCopyLegacy() { 
     return src(["./public/scss/partials/legacy/**/*"]).pipe(dest("./public/css/legacy/"));
 }
 
 function watchCss() {
-    return watch("./public/scss/**/*.scss", { ignoreInitial: false }, series(clean, styles));
+    return watch("./public/scss/**/*.scss", { ignoreInitial: false }, series(cleanCompiledCssDirectory, styles));
 }
-
-exports.watchCss = watchCss;
-exports.assetsCssCopy = assetsCssCopy;
 
 function assetsCopy() { 
     return src(["./node_modules/@mozilla-protocol/core/protocol/**/*"]).pipe(dest(buildDir));
 }
 
-exports.build = series(reset, assetsCopy, assetsCssCopy, styles);
+exports.watchCss = watchCss;
+exports.assetsCopyLegacy = assetsCopyLegacy;
+
+exports.build = series(resetCssDirectories, assetsCopy, assetsCopyLegacy, styles);
+
 exports.default = series(
-    clean, assetsCopy, styles, function() {
+    cleanCompiledCssDirectory, assetsCopy, styles, function() {
         // You can use a single task
-        watch("./public/scss/**/*.scss", { ignoreInitial: false }, series(clean, styles));
+        watch("./public/scss/**/*.scss", { ignoreInitial: false }, series(cleanCompiledCssDirectory, styles));
     }
 );

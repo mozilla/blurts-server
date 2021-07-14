@@ -11,4 +11,4 @@ loadtests/__pycache__
 loadtests/venv
 .tmp
 public/scss/libs/protocol
-public/css
+public/css/*
