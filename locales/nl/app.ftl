@@ -625,3 +625,5 @@ steps-to-resolve-headline = Stappen om dit lek op te lossen
 vpn-promo-headline = Dit is het moment om uw online veiligheid te verbeteren.
 vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helpt uw internetverbinding af te schermen van hackers en spionnen.
 vpn-promo-cta = { -brand-mozilla-vpn } downloaden
+vpn-promo-headline-new = Bespaar 50% met een jaarabonnement
+vpn-promo-copy-new = Bescherm uw onlinegegevens – en kies een VPN-abonnement dat bij u past.
