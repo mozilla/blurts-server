@@ -259,7 +259,9 @@
 }
 
 .email-sent {
+  opacity: 0.5;
   background-color: rgba(255, 255, 255, 1);
+  transition: opacity 0.15s ease-in-out;
 }
 
 .email-sent::after {

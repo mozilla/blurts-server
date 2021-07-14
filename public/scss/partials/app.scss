@@ -54,6 +54,7 @@ body {
   --grey8: #42425a;
   --grey9: #202340;
   --monitorGradient: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+  --vpn-purple: #c5c8fb;
 
   display: flex;
   flex-direction: column;
@@ -79,10 +80,6 @@ body {
 
 .take-back-control-gradient {
   background: var(--takeBackControlGradient);
-}
-
-.feature-title {
-  color: var(--ink);
 }
 
 .fx-monitor {

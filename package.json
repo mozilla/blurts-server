@@ -129,7 +129,7 @@
     "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm-run-all lint:*",
     "lint:js": "eslint .",
-    "lint:css": "stylelint --fix public/scss/",
+    "lint:css": "stylelint --fix public/scss/ public/css/app.css",
     "lint:audit": "npm-audit-ci-wrapper -t 'high'",
     "get-hashsets": "node scripts/get-hashsets",
     "server": "NODE_ICU_DATA=./node_modules/full-icu nodemon server.js",
