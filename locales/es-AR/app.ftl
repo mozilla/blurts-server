@@ -595,3 +595,4 @@ vpn-promo-headline = Ahora es momento de mejorar la seguridad en línea.
 vpn-promo-copy = { -brand-Mozilla } Virtual Private Network ayuda a proteger la conexión a internet de hackers y espías.
 vpn-promo-cta = Obtener { -brand-mozilla-vpn }
 vpn-promo-headline-new = Ahorrá un 50% con una suscripción de todo un año.
+vpn-promo-copy-new = Protegé tus datos en línea y elegí  un plan de suscripción a la VPN que se adapte a tus necesidades.
