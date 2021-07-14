@@ -657,3 +657,4 @@ vpn-promo-headline = Nawr yw'r amser i gynyddu'ch diogelwch ar-lein.
 vpn-promo-copy = Mae Rhwydwaith Preifat Rhithwir { -brand-Mozilla } yn helpu i ddiogelu eich cysylltiad rhyngrwyd rhag hacwyr ac ysbïwyr.
 vpn-promo-cta = Rhowch gynnig ar { -brand-mozilla-vpn }
 vpn-promo-headline-new = Arbedwch 50% gyda thanysgrifiad blwyddyn lawn
+vpn-promo-copy-new = Diogelwch eich data ar-lein - a dewis cynllun tanysgrifio VPN sy'n gweithio i chi.
