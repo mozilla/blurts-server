@@ -631,3 +631,4 @@ vpn-promo-headline = Itt az ideje, hogy felturbózza az online biztonságát.
 vpn-promo-copy = A { -brand-Mozilla } virtuális magánhálózata segít megvédeni az internetkapcsolatát a hackerek és kémek ellen.
 vpn-promo-cta = { -brand-mozilla-vpn } beszerzése
 vpn-promo-headline-new = Takarítson meg 50%-ot az éves előfizetéssel
+vpn-promo-copy-new = Védje megonline adatait – és válasszon egy Önnek megfelelő VPN-előfizetést.
