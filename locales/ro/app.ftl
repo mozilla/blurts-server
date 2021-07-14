@@ -7,7 +7,14 @@
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
 -brand-HIBP = Have I Been Pwned
--brand-fxa = Cont Firefox
+-brand-fxa =
+    { $capitalization ->
+       *[lower-indefinite-article] cont Firefox
+        [lower-definite-article] contul Firefox
+        [upper-indefinite-article] Cont Firefox
+        [upper-definite-article] Contul Firefox
+        [upper-definite-article-you] Contul tău Firefox
+    }
 -brand-pocket = Pocket
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
@@ -27,8 +34,8 @@ error-not-subscribed = Această adresă de e-mail nu este abonată la { -product
 error-hibp-throttled = Prea multe conexiuni la { -brand-HIBP }.
 error-hibp-connect = Eroare de conectare la { -brand-HIBP }.
 error-hibp-load-breaches = Încălcările securității datelor nu au putut fi încărcate.
-error-must-be-signed-in = Trebuie să fii autentificat(ă) în { -brand-fxa }.
-error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat în e-mailul primar al contului tău.
+error-must-be-signed-in = Trebuie să fii autentificat(ă) în { -brand-fxa(capitalization: "lower-definite-article") }.
+error-to-finish-verifying = Pentru a finaliza verificarea acestui e-mail pentru { -product-name }, trebuie să fii autentificat(ă) sub e-mailul principal al contului.
 home-title = { -product-name }
 home-not-found = Pagină negăsită.
 oauth-invalid-session = Sesiune nevalidă
@@ -74,7 +81,7 @@ fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
 sign-out = Deconectare
 # Manage Firefox Account, link to page where account holders can change their account settings.
-manage-fxa = Gestionează { -brand-fxa }
+manage-fxa = Gestionează { -brand-fxa(capitalization: "lower-definite-article") }
 have-an-account = Ai deja un cont?
 fxa-pwt-summary-2 =
     Parolele scurte, formate dintr-un singur cuvânt, sunt ușor de ghicit pentru hackeri.
@@ -110,7 +117,7 @@ breaches = Încălcări ale securității datelor
 security-tips = Ponturi de securitate
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
-open-fxa-menu = Deschide navigarea { -brand-fxa }
+open-fxa-menu = Deschide navigarea în { -brand-fxa(capitalization: "lower-definite-article") }.
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIMA ÎNCĂLCARE A SECURITĂȚII DATELOR ADĂUGATĂ
 # Link title
@@ -210,9 +217,9 @@ send-verification = Trimite linkul de verificare
 # email address.
 breach-summary = Rezumatul încălcării securității datelor
 show-breaches-for-this-email = Afișează toate încălcările securității datelor pentru acest e-mail.
-link-change-primary = Schimbă adresa de e-mail primară
+link-change-primary = Schimbă adresa de e-mail principală
 remove-fxm = Elimină { -product-name }
-remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa } tău va rămâne activ și poți primi alte comunicări legate de cont.
+remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa(capitalization: "upper-definite-article-you") } va rămâne activ și poți primi alte comunicări legate de cont.
 # Button title
 manage-email-addresses = Gestionează adresele de e-mail
 # Link title
