@@ -611,3 +611,5 @@ steps-to-resolve-headline = Tape emoĩporã hag̃ua ko ñembyai
 vpn-promo-headline = Ko’ág̃a emongakuaa tekorosã ñandutípe.
 vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã hag̃ua nde jeike ñandutípe umi mba’evai apohágui.
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
+vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽramo ary pukukue
+vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe teraguapy ojokupytýva eikotevẽvare.
