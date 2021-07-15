@@ -567,7 +567,7 @@ test("user breach-stats POST request with FXA http error responds with FXA error
   const mockJson = { json: jest.fn() };
   mockStatus.mockReturnValueOnce(mockJson);
   FXA.verifyOAuthToken = jest.fn();
-  FXA.verifyOAuthToken.mockReturnValueOnce({name: "HTTPError", statusCode: mockFXAStatusCode });
+  FXA.verifyOAuthToken.mockReturnValueOnce({name: "HTTPError", response: {statusCode: mockFXAStatusCode }});
 
   const resp = { status: mockStatus };
 
