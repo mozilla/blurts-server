@@ -626,3 +626,5 @@ steps-to-resolve-headline = Steps to resolve this breach
 vpn-promo-headline = Now’s the time to boost your safety online.
 vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helps shield your internet connection from hackers and spies.
 vpn-promo-cta = Get { -brand-mozilla-vpn }
+vpn-promo-headline-new = Save 50% with a full year subscription
+vpn-promo-copy-new = Protect your online data—and choose a VPN subscription plan that works for you.
