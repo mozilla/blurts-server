@@ -15,7 +15,7 @@ biometric-data = Βιομετρικά δεδομένα
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = Βιογραφικά
-browser-user-agent-details = Λεπτομέρειες προφίλ χρήστη προγράμματος περιήγησης
+browser-user-agent-details = Λεπτομέρειες παράγοντα χρήστη προγράμματος περιήγησης
 browsing-histories = Ιστορικά περιήγησης
 buying-preferences = Προτιμήσεις αγορών
 car-ownership-statuses = Καταστάσεις ιδιοκτησίας αυτοκινήτου
