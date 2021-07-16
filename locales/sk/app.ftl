@@ -671,3 +671,5 @@ steps-to-resolve-headline = Kroky vedúce k vyriešeniu tohto úniku
 vpn-promo-headline = Teraz je ten správny čas na zvýšenie vašej bezpečnosti online.
 vpn-promo-copy = Virtuálna súkromná sieť spoločnosti { -brand-Mozilla } pomáha chrániť vaše internetové pripojenie pred hackermi a špiónmi.
 vpn-promo-cta = Vyskúšajte { -brand-mozilla-vpn }
+vpn-promo-headline-new = Ušetrite 50% pri celoročnom predplatnom
+vpn-promo-copy-new = Chráňte svoje online dáta - a vyberte si plán predplatného VPN, ktorý vám vyhovuje.
