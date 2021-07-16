@@ -35,7 +35,23 @@
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Cont Firefox
+-brand-fx-account =
+    { $case ->
+       *[indefinite-article]
+            { $capitalization ->
+               *[lower] cont Firefox
+                [upper] Cont Firefox
+            }
+        [definite-article]
+            { $capitalization ->
+               *[lower] contul Firefox
+                [upper] Contul Firefox
+            }
+        [genitive-or-dative]
+            { $capitalization ->
+               *[lower] contului Firefox
+            }
+    }
 terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
