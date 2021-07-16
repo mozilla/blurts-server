@@ -556,4 +556,5 @@ steps-to-resolve-headline = Passaggi per risolvere questa violazione
 vpn-promo-headline = È il momento di aumentare la tua sicurezza online.
 vpn-promo-copy = La rete privata virtuale (VPN) di { -brand-Mozilla } aiuta a proteggere la tua connessione a Internet da hacker e spie.
 vpn-promo-cta = Ottieni { -brand-mozilla-vpn }
+vpn-promo-headline-new = Risparmia il 50% con un abbonamento annuale
 vpn-promo-copy-new = Proteggi i tuoi dati online e scegli un piano di abbonamento VPN adatto alle tue esigenze.
