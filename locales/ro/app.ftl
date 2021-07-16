@@ -229,7 +229,7 @@ breach-summary = Rezumatul încălcării securității datelor
 show-breaches-for-this-email = Afișează toate încălcările securității datelor pentru acest e-mail.
 link-change-primary = Schimbă adresa de e-mail principală
 remove-fxm = Elimină { -product-name }
-remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa(case: "indefinite-article", capitalization: "upper-and-you") } va rămâne activ și poți primi alte comunicări legate de cont.
+remove-fxm-blurb = Dezactivează alertele { -product-name }. { -brand-fxa(case: "definite-article", capitalization: "upper-and-you") } va rămâne activ și poți primi alte comunicări legate de cont.
 # Button title
 manage-email-addresses = Gestionează adresele de e-mail
 # Link title
