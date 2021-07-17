@@ -113,6 +113,21 @@ security-tips = Iwellihen ɣef tɣellist
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Inig deg { -brand-fxa }
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = { -product-short-name } fessus i useqdec?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = Tettwaliḍ tzemreḍ ad tgeḍ laman deg { -product-short-name }?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = { -product-short-name } ɣur-s tanekda yeṣfan yerna fessusen?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = Ur tḥiqeɣ ara
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
 # Link title
