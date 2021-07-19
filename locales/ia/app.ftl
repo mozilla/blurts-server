@@ -542,3 +542,5 @@ steps-to-resolve-headline = Grados pro resolver iste violation
 vpn-promo-headline = Ora es tempore pro meliorar tu securitate online.
 vpn-promo-copy = Le rete virtual private de { -brand-Mozilla } adjuta proteger tu connexion a internet contra profanatores e spias.
 vpn-promo-cta = Installa { -brand-mozilla-vpn }
+vpn-promo-headline-new = Sparnia le 50% con un subscription de un anno integre
+vpn-promo-copy-new = Protege tu datos online e selige un plano de subscription VPN que functiona pro te.
