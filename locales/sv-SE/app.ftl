@@ -630,3 +630,5 @@ steps-to-resolve-headline = Åtgärder för att lösa detta intrång
 vpn-promo-headline = Nu är det dags att öka din säkerhet online.
 vpn-promo-copy = { -brand-Mozilla }:s VPN hjälper till att skydda din internetanslutning från hackare och spioner.
 vpn-promo-cta = Hämta { -brand-mozilla-vpn }
+vpn-promo-headline-new = Spara 50% med en helårsprenumeration
+vpn-promo-copy-new = Skydda dina onlinedata—och välj en VPN-prenumerationsplan som fungerar för dig.
