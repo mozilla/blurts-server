@@ -66,6 +66,7 @@ instant-messenger-identities = Instant messenger identities
 ip-addresses = IP addresses
 job-applications = Job applications
 job-titles = Job titles
+licence-plates = Licence Plates
 living-costs = Living costs
 login-histories = Login histories
 mac-addresses = MAC addresses
