@@ -1,3 +1,5 @@
+"use strict";
+
 const { src, watch, series, dest } = require("gulp");
 const sass = require("gulp-sass");
 const del = require("del");
@@ -13,7 +15,7 @@ function cleanCompiledCssDirectory() {
     ]);
 }
 
-function resetCssDirectories() {    
+function resetCssDirectories() {
     return del([
         buildDir,
         "./public/css/*",
@@ -27,7 +29,7 @@ function styles() {
         .pipe(dest(finalDir));
 }
 
-function assetsCopyLegacy() { 
+function assetsCopyLegacy() {
     return src(["./public/scss/partials/legacy/**/*"]).pipe(dest("./public/css/legacy/"));
 }
 
@@ -35,7 +37,7 @@ function watchCss() {
     return watch("./public/scss/**/*.scss", { ignoreInitial: false }, series(cleanCompiledCssDirectory, styles));
 }
 
-function assetsCopy() { 
+function assetsCopy() {
     return src(["./node_modules/@mozilla-protocol/core/protocol/**/*"]).pipe(dest(buildDir));
 }
 
