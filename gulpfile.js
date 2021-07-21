@@ -8,19 +8,17 @@ const del = require("del");
 const buildDir = "./public/scss/libs/protocol/";
 const finalDir = "./public/css/";
 
+const compiledCssDirectories = [
+    "./public/css/*",
+    "!./public/css/legacy/**",
+];
+
 function cleanCompiledCssDirectory() {
-    return del([
-        "./public/css/*",
-        "!./public/css/legacy/**",
-    ]);
+    return del(compiledCssDirectories);
 }
 
 function resetCssDirectories() {
-    return del([
-        buildDir,
-        "./public/css/*",
-        "!./public/css/legacy/**",
-    ]);
+    return del(buildDir.concat(compiledCssDirectories));
 }
 
 function styles() {
