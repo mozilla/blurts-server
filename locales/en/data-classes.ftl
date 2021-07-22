@@ -66,6 +66,8 @@ instant-messenger-identities = Instant messenger identities
 ip-addresses = IP addresses
 job-applications = Job applications
 job-titles = Job titles
+# This string refers to vehicle license plates. 
+licence-plates = License Plates
 living-costs = Living costs
 login-histories = Login histories
 mac-addresses = MAC addresses
