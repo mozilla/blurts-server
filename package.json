@@ -12,7 +12,6 @@
     "babel-minify": "0.5.1",
     "basic-auth": "2.0.1",
     "body-parser": "1.19.0",
-    "clean-css-cli": "4.3.0",
     "client-oauth2": "4.3.2",
     "concat": "1.0.3",
     "connect-redis": "5.0.0",
