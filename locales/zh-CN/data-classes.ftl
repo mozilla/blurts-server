@@ -66,6 +66,8 @@ instant-messenger-identities = 即时通讯身份
 ip-addresses = IP 地址
 job-applications = 求职经历
 job-titles = 职务
+# This string refers to vehicle license plates. 
+licence-plates = 车牌号
 living-costs = 生活费用
 login-histories = 登录历史
 mac-addresses = MAC 地址
