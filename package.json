@@ -120,7 +120,7 @@
     "build:js": "run-s js:concat js:allBreaches js:minify",
     "build:polyfills": "minify public/js/polyfills/edge.js -o public/dist/edge.min.js",
     "watch:js": "onchange 'public/js/*.js' -- npm run build:js",
-    "watch:css": "./node_modules/.bin/gulp watchCss",
+    "watch:css": "gulp watchCss",
     "watch:all": "run-p watch:css watch:js",
     "build:dev": "run-s build:js build:css watch:all",
     "build:all": "run-s build:js build:css css:minify build:polyfills",

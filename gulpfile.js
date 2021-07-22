@@ -18,7 +18,7 @@ function cleanCompiledCssDirectory() {
 }
 
 function resetCssDirectories() {
-    return del(buildDir.concat(compiledCssDirectories));
+    return del(compiledCssDirectories.concat(buildDir));
 }
 
 function styles() {
@@ -40,13 +40,9 @@ function assetsCopy() {
 }
 
 exports.watchCss = watchCss;
-exports.assetsCopyLegacy = assetsCopyLegacy;
 
 exports.build = series(resetCssDirectories, assetsCopy, assetsCopyLegacy, styles);
 
 exports.default = series(
-    cleanCompiledCssDirectory, assetsCopy, styles, function() {
-        // You can use a single task
-        watch("./public/scss/**/*.scss", { ignoreInitial: false }, series(cleanCompiledCssDirectory, styles));
-    }
+    cleanCompiledCssDirectory, assetsCopy, styles, watchCss
 );
