@@ -66,6 +66,8 @@ instant-messenger-identities = Ταυτότητες άμεσης ανταλλα�
 ip-addresses = Διευθύνσεις IP
 job-applications = Αιτήσεις εργασίας
 job-titles = Τίτλοι επαγγελμάτων
+# This string refers to vehicle license plates. 
+licence-plates = Πινακίδες οχημάτων
 living-costs = Έξοδα διαβίωσης
 login-histories = Ιστορικά σύνδεσης
 mac-addresses = Διευθύνσεις MAC
