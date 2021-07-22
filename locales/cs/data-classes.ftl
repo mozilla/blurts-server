@@ -66,6 +66,8 @@ instant-messenger-identities = Identity z instant messengerů
 ip-addresses = IP adresy
 job-applications = Žádosti o práci
 job-titles = Názvy pracovních pozic
+# This string refers to vehicle license plates. 
+licence-plates = Státní poznávací značky
 living-costs = Životní náklady
 login-histories = Historie přihlášení
 mac-addresses = MAC adresy
