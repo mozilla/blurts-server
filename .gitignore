@@ -12,4 +12,4 @@ loadtests/venv
 .tmp
 public/scss/libs/protocol
 public/css/*
-public/dist/app.min.css
+public/dist
