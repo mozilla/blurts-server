@@ -36,6 +36,7 @@ device-information = Informace o zařízeních
 device-serial-numbers = Sériová čísla zařízení
 device-usage-tracking-data = Data o využívání zařízení
 drinking-habits = Míry konzumace alkoholu
+driver-s-licenses = Řidičské průkazy
 drug-habits = Míry užívání drog
 eating-habits = Stravovací návyky
 education-levels = Úrovně vzdělání
