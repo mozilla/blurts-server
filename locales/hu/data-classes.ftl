@@ -36,6 +36,7 @@ device-information = Eszközinformációk
 device-serial-numbers = Eszköz sorozatszámok
 device-usage-tracking-data = Eszközhasználati követési adatok
 drinking-habits = Alkoholfogyasztási szokások
+driver-s-licenses = Jogosítványok
 drug-habits = Kábítószer-fogyasztási szokások
 eating-habits = Étkezési szokások
 education-levels = Oktatási szintek
