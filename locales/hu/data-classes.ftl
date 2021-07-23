@@ -66,6 +66,8 @@ instant-messenger-identities = Azonnali üzenetküldő identitások
 ip-addresses = IP-címek
 job-applications = Állásjelentkezések
 job-titles = Beosztások
+# This string refers to vehicle license plates. 
+licence-plates = Rendszámtáblák
 living-costs = Megélhetési költségek
 login-histories = Bejelentkezési előzmények
 mac-addresses = MAC-címek
