@@ -66,6 +66,8 @@ instant-messenger-identities = Chat-identiteiten
 ip-addresses = IP-adressen
 job-applications = Sollisitaasjes
 job-titles = Funksjetitels
+# This string refers to vehicle license plates. 
+licence-plates = Kentekens
 living-costs = Kosten libbensûnderhâld
 login-histories = Oanmeldskiednissen
 mac-addresses = MAC-adressen
