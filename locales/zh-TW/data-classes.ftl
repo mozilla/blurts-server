@@ -36,6 +36,7 @@ device-information = 裝置資訊
 device-serial-numbers = 裝置序號
 device-usage-tracking-data = 裝置使用追蹤資料
 drinking-habits = 飲酒習慣
+driver-s-licenses = 駕照資訊
 drug-habits = 用藥習慣
 eating-habits = 飲食習慣
 education-levels = 教育水平
