@@ -36,6 +36,7 @@ device-information = Device information
 device-serial-numbers = Device serial numbers
 device-usage-tracking-data = Device usage tracking data
 drinking-habits = Drinking habits
+driver-s-licenses = Driver’s licenses
 drug-habits = Drug habits
 eating-habits = Eating habits
 education-levels = Education levels
