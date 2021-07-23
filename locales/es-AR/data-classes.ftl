@@ -36,6 +36,7 @@ device-information = Información del dispositivo
 device-serial-numbers = Números de serie del dispositivo
 device-usage-tracking-data = Datos de rastreo del uso del dispositivo
 drinking-habits = Hábitos de consumo de bebidas
+driver-s-licenses = Licencias de conducir
 drug-habits = Hábitos de consumo de drogas
 eating-habits = Hábitos alimenticios
 education-levels = Niveles de educación
