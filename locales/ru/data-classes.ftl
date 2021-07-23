@@ -36,6 +36,7 @@ device-information = Информация об устройствах
 device-serial-numbers = Серийные номера устройств
 device-usage-tracking-data = Данные отслеживания об использовании устройств
 drinking-habits = Употребление алкоголя
+driver-s-licenses = Водительские права
 drug-habits = Употребление лекарств и наркотиков
 eating-habits = Привычки в питании
 education-levels = Уровни образования
@@ -66,6 +67,8 @@ instant-messenger-identities = Идентификаторы мессенджер
 ip-addresses = IP-адреса
 job-applications = Заявления о приёме на работу
 job-titles = Названия должностей
+# This string refers to vehicle license plates. 
+licence-plates = Номерные знаки
 living-costs = Расходы на проживание
 login-histories = Истории логинов
 mac-addresses = MAC-адреса
