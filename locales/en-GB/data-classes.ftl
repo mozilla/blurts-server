@@ -36,6 +36,7 @@ device-information = Device information
 device-serial-numbers = Device serial numbers
 device-usage-tracking-data = Device usage tracking data
 drinking-habits = Drinking habits
+driver-s-licenses = Driver’s licences
 drug-habits = Drug habits
 eating-habits = Eating habits
 education-levels = Education levels
@@ -66,6 +67,8 @@ instant-messenger-identities = Instant messenger identities
 ip-addresses = IP addresses
 job-applications = Job applications
 job-titles = Job titles
+# This string refers to vehicle license plates. 
+licence-plates = Licence Plates
 living-costs = Living costs
 login-histories = Login histories
 mac-addresses = MAC addresses
