@@ -392,9 +392,9 @@ input.remove-email-submit {
   }
 
   .toggle-resolved-breaches,
-  .ec.breach-card, /* Hide breach cards until the email-card is toggled down */
-  .active .show-additional-breaches.hide .ec.breach-card, /* Hides any breaches gated behind "Show Remaining Breaches" button when there are more than 4 to an email. */
-  .active .show-remaining-breaches.hide, /* Hide "Show Remaining Breaches"" button after it has been clicked */
+  .ec.breach-card, // Hide breach cards until the email-card is toggled down */
+  .active .show-additional-breaches.hide .ec.breach-card, // Hides any breaches gated behind "Show Remaining Breaches" button when there are more than 4 to an email. */
+  .active .show-remaining-breaches.hide, // Hide "Show Remaining Breaches"" button after it has been clicked */
   .e-address::after,
   .show-remaining-breaches {
     display: none;
