@@ -66,6 +66,8 @@ instant-messenger-identities = Identidades de mensajería instantánea
 ip-addresses = Direcciones IP
 job-applications = Solicitudes de empleo
 job-titles = Cargos laborales
+# This string refers to vehicle license plates. 
+licence-plates = Chapa patente
 living-costs = Costos de vida
 login-histories = Historiales de inicio de sesión
 mac-addresses = Direcciones MAC
