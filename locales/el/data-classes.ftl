@@ -36,6 +36,7 @@ device-information = Πληροφορίες συσκευής
 device-serial-numbers = Σειριακοί αριθμοί συσκευών
 device-usage-tracking-data = Δεδομένα καταγραφής χρήσης συσκευής
 drinking-habits = Συνήθειες κατανάλωσης ποτών
+driver-s-licenses = Άδειες οδήγησης
 drug-habits = Συνήθειες ναρκωτικών
 eating-habits = Διατροφικές συνήθειες
 education-levels = Επίπεδα εκπαίδευσης
