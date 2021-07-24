@@ -85,7 +85,7 @@ scan-error = Trebuie să fie o adresă de e-mail validă.
 download-firefox-banner-button = Descarcă { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Trimis!
-sign-up = Înregistrare
+sign-up = Înscrie-te
 form-signup-error = Trebuie să fie o adresă de e-mail validă
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Data încălcării securității datelor:
@@ -101,7 +101,7 @@ hibp-attribution = Datele privind încălcările securității datelor sunt furn
 share-twitter = Majoritatea persoanelor au aproximativ 100 de conturi online. A fost expus vreunul dintre conturile tale într-o încălcare a securității datelor? Află.
 share-facebook-headline = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor
 share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare a securității datelor?
-og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înregistrează-te pentru alerte despre viitoare încălcări ale securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
+og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înscrie-te pentru alerte despre viitoare încălcări ale securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
 sign-in = Autentificare
@@ -129,7 +129,7 @@ fxa-what-to-do-blurb-4 =
     parolele în siguranță și le completează pe site-uri pentru tine. Folosește un manager de parole
     pe telefon și pe calculator, astfel încât să nu trebuiască să le ții minte pe toate.
 # Alerts is a noun
-sign-up-for-alerts = Înregistrează-te pentru alerte
+sign-up-for-alerts = Înscrie-te pentru alerte
 # Link title
 frequently-asked-questions = Întrebări adresate frecvent
 about-firefox-monitor = Despre { -product-name }
@@ -189,7 +189,7 @@ fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fo
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
 how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale securității datelor încă din anul 2007. Această căutare de bază va accesa majoritatea încălcărilor securității datelor, dar nu și pe cele care conțin informații cu caracter personal sensibile.
-how-fxm-2-headline = Înregistrează-te pentru monitorizarea încălcării securității datelor
+how-fxm-2-headline = Înscrie-te pentru monitorizarea încălcării securității datelor
 how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru încălcările curente ale securității datelor. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu încălcările anterioare, inclusiv încălcările securității datelor sensibile.
 how-fxm-3-headline = Primește notificări în browser
 how-fxm-3-blurb = Dacă folosești { -brand-name }, vei primi o notificare când intri pe un site care a fost suferit o încălcare a securității datelor. Afli imediat dacă ai fost implicat(ă) în încălcarea respectivă și ce măsuri poți lua.
