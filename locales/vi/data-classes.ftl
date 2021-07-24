@@ -36,6 +36,7 @@ device-information = Thông tin thiết bị
 device-serial-numbers = Số sê-ri thiết bị
 device-usage-tracking-data = Dữ liệu theo dõi sử dụng thiết bị
 drinking-habits = Thói quen uống
+driver-s-licenses = Giấy phép lái xe
 drug-habits = Thói quen dùng thuốc
 eating-habits = Thói quen ăn
 education-levels = Trình độ học vấn
@@ -66,6 +67,8 @@ instant-messenger-identities = Nhận dạng tin nhắn tức thời
 ip-addresses = Các địa chỉ IP
 job-applications = Đơn xin việc
 job-titles = Chức danh công việc
+# This string refers to vehicle license plates. 
+licence-plates = Biển số xe
 living-costs = Chi phí sinh hoạt
 login-histories = Lịch sử đăng nhập
 mac-addresses = Địa chỉ MAC
