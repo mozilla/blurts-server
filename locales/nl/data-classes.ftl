@@ -36,6 +36,7 @@ device-information = Apparaatgegevens
 device-serial-numbers = Serienummers van apparaten
 device-usage-tracking-data = Volggegevens over apparaatgebruik
 drinking-habits = Drinkgewoonten
+driver-s-licenses = Rijbewijzen
 drug-habits = Drugsgewoonten
 eating-habits = Eetgewoonten
 education-levels = Opleidingsniveaus
