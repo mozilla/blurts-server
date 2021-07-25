@@ -36,6 +36,7 @@ device-information = Cihaz bilgileri
 device-serial-numbers = Cihaz seri numaraları
 device-usage-tracking-data = Cihaz kullanımı izleme verileri
 drinking-habits = İçki alışkanlıkları
+driver-s-licenses = Sürücü belgeleri
 drug-habits = İlaç alışkanlıkları
 eating-habits = Yeme alışkanlıkları
 education-levels = Eğitim seviyeleri
@@ -66,6 +67,8 @@ instant-messenger-identities = Anlık mesajlaşma kimlikleri
 ip-addresses = IP adresleri
 job-applications = İş başvuruları
 job-titles = İş unvanları
+# This string refers to vehicle license plates. 
+licence-plates = Plaka numaraları
 living-costs = Yaşam maliyetleri
 login-histories = Giriş geçmişleri
 mac-addresses = MAC adresleri

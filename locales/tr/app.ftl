@@ -563,3 +563,5 @@ steps-to-resolve-headline = Bu ihlali giderme adımları
 vpn-promo-headline = Şimdi çevrimiçi güvenliğinizi artırmanın tam zamanı.
 vpn-promo-copy = { -brand-Mozilla } VPN, internet bağlantınızı hacker'lardan ve casuslardan korumaya yardımcı olur.
 vpn-promo-cta = { -brand-mozilla-vpn }’i indirin
+vpn-promo-headline-new = Yıllık abonelikle %50 tasarruf edin
+vpn-promo-copy-new = Çevrimiçi verilerinizi koruyun. Size en uygun VPN abonelik paketini seçin.

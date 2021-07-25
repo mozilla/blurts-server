@@ -63,10 +63,9 @@ rec-ip-non-us =
     IP adresinizi maskeleyebilirsiniz.
 # Recommendation subhead
 rec-moz-vpn-cta = { -brand-mozilla-vpn }’i deneyin
-rec-moz-vpn =
-    IP adresiniz konumunuzu ve internet servis sağlayıcınızı açığa çıkarabilir. { -brand-fpn } hizmeti,
-    { -brand-name } içinde IP adresinizi ve konumunuzu gizler. { -brand-mozilla-vpn } hizmeti ise IP adresinizi ve konumunuzu
-    tüm cihazlarınızda gizler.
+rec-moz-vpn-update =
+    IP adresiniz konumunuzu ve internet servis sağlayıcısınızı açığa çıkarabilir. { -brand-mozilla-vpn } gibi bir hizmeti kullanarak
+    IP adresinizi ve cihazınızın konumunu gizleyebilirsiniz.
 rec-hist-pw-subhead = Aynı parolayı başka yerlerde kullanmayın
 # Link title
 rec-hist-pw-cta-fx = { -brand-name } hesaplarınızı görüntüleyin
