@@ -36,6 +36,7 @@ device-information = Información del dispositivo
 device-serial-numbers = Números de serie de dispositivos
 device-usage-tracking-data = Datos de seguimiento del uso del dispositivo
 drinking-habits = Hábitos de consumo de bebidas
+driver-s-licenses = Licencias de conducir
 drug-habits = Hábitos de consumo de drogas
 eating-habits = Hábitos alimenticios
 education-levels = Niveles de educación
@@ -66,6 +67,8 @@ instant-messenger-identities = Identidades de mensajería instantánea
 ip-addresses = Direcciones IP
 job-applications = Solicitudes de empleo
 job-titles = Puestos de trabajo
+# This string refers to vehicle license plates. 
+licence-plates = Placas de patente
 living-costs = Costos de vida
 login-histories = Historiales de conexiones
 mac-addresses = Direcciones MAC
