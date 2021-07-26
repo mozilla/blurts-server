@@ -36,6 +36,7 @@ device-information = Manylion dyfais
 device-serial-numbers = Rhifau cyfresol dyfeisiau
 device-usage-tracking-data = Data tracio defnydd y ddyfais
 drinking-habits = Arferion yfed
+driver-s-licenses = Trwyddedau gyrrwr
 drug-habits = Arferion cyffuriau
 eating-habits = Arferion bwyta
 education-levels = Lefelau addysg
@@ -66,6 +67,8 @@ instant-messenger-identities = Hunaniaeth negesydd cyflym
 ip-addresses = Cyfeiriad IP
 job-applications = Ceisiadau am swyddi
 job-titles = Teitlau swyddi
+# This string refers to vehicle license plates. 
+licence-plates = Platiau Trwyddedau
 living-costs = Costau byw
 login-histories = Hanesion mewngofnodi
 mac-addresses = Cyfeiriadau MAC
