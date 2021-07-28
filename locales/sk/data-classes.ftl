@@ -36,6 +36,7 @@ device-information = Informácie o zariadeniach
 device-serial-numbers = Sériové čísla zariadení
 device-usage-tracking-data = Údaje o využívaní zariadenia
 drinking-habits = Pitné návyky
+driver-s-licenses = Vodičské preukazy
 drug-habits = Drogové návyky
 eating-habits = Stravovacie návyky
 education-levels = Úrovne vzdelania
@@ -66,6 +67,8 @@ instant-messenger-identities = Identity z chatových služieb
 ip-addresses = IP adresy
 job-applications = Žiadosti o zamestnanie
 job-titles = Názvy pracovných pozícií
+# This string refers to vehicle license plates. 
+licence-plates = Evidenčné čísla vozidiel
 living-costs = Životné náklady
 login-histories = História prihlasovania
 mac-addresses = MAC adresy
