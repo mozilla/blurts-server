@@ -67,6 +67,8 @@ instant-messenger-identities = Ñe’ẽmondoha ipya’éva reraite
 ip-addresses = IP kundaharape
 job-applications = Mba’ejerure mba’aporã
 job-titles = Nerenda mba’apohápe
+# This string refers to vehicle license plates. 
+licence-plates = Ñe’ẽmboguapy
 living-costs = Tekove repy
 login-histories = Tembiapo ñepyrũ rembiasakue
 mac-addresses = MAC kundaharape
