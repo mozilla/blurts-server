@@ -2,6 +2,8 @@
 
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
+const fs = require('fs');
+const Reader = require('@maxmind/geoip2-node').Reader
 
 function getSignedInAs(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -62,8 +64,29 @@ function fxaMenuLinks(args) {
   return getStrings(fxaLinks, locales);
 }
 
+function getIpLocation(args) {
+  const dbBuffer = fs.readFileSync('./tests/mmdb/GeoLite2-City-Test.mmdb');
+  const reader = Reader.openBuffer(dbBuffer);
+  const clientIp = args.data.root.constants.NODE_ENV === 'dev' ? '2.125.160.216' : args.data.root.req.ip; // TODO: normalize IP for different ip4/ip6 formats
+  let data, city, stateOrCountry
+
+  console.log('header.js getIpLocation called with IP:', clientIp)
+
+  try{
+    data = reader.city(clientIp);
+    city = data.city.names.en || ''; // TODO: add optional chaining after Node version upgrade
+    stateOrCountry = data.subdivisions[0].isoCode || data.country.isoCode || ''; // TODO: add optional chaining after Node version upgrade
+  }catch(e){
+    console.log(e)
+    return 'No Location'
+  }
+
+  return `${city}${stateOrCountry ? `, ${stateOrCountry}` : ''}`
+}
+
 module.exports = {
   navLinks,
   fxaMenuLinks,
   getSignedInAs,
+  getIpLocation,
 };
