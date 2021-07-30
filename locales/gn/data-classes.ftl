@@ -36,6 +36,7 @@ device-information = Mba’e’oka marandu
 device-serial-numbers = Mba’e’oka papapy hekoetáva
 device-usage-tracking-data = Mba’e’oka jepuru mba’ekuaarã rapykuehoha
 drinking-habits = Guari ñemokõ meme
+driver-s-licenses = Mongu’ekuaa ñe’ẽme’ẽguigua
 drug-habits = Droga je’u meme
 eating-habits = Mba’épa he’u meme
 education-levels = Tekombo’e yvatekue
