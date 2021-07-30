@@ -11,7 +11,7 @@ const {
   hasUserSignedUpForWaitlist,
 } = require("./utils");
 
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 
 function _getFeaturedBreach(allBreaches, breachQueryValue) {
   if (!breachQueryValue) {
@@ -49,8 +49,10 @@ async function home(req, res) {
   }
 
   if (req.query.breach) {
-
-    featuredBreach = _getFeaturedBreach(req.app.locals.breaches, req.query.breach);
+    featuredBreach = _getFeaturedBreach(
+      req.app.locals.breaches,
+      req.query.breach
+    );
 
     if (!featuredBreach) {
       return notFound(req, res);
@@ -87,7 +89,10 @@ async function home(req, res) {
 
 function removeMyData(req, res) {
   const user = req.user;
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, "remove_data");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
   return res.render("remove-data", {
     title: req.fluentFormat("home-title"),
     userHasSignedUpForRemoveData,
@@ -109,8 +114,15 @@ function getSecurityTips(req, res) {
 }
 
 function getAboutPage(req, res) {
-  return res.render("about",{
+  return res.render("about", {
     title: req.fluentFormat("about-firefox-monitor"),
+  });
+}
+
+function getRemovePage(req, res) {
+  return res.render("top-level-page", {
+    title: "Remove Data", //MH: todo
+    whichPartial: "top-level/remove-page",
   });
 }
 
@@ -124,16 +136,18 @@ function getBentoStrings(req, res) {
     fxMonitor: req.fluentFormat("fx-monitor"),
     pocket: req.fluentFormat("pocket"),
     mozVPN: "Mozilla VPN",
-    mobileCloseBentoButtonTitle: req.fluentFormat("mobile-close-bento-button-title"),
+    mobileCloseBentoButtonTitle: req.fluentFormat(
+      "mobile-close-bento-button-title"
+    ),
   };
   return res.json(localizedBentoStrings);
 }
 
 function _addToWaitlistsJoined(user, waitlist) {
   if (!user.waitlists_joined) {
-    return {[waitlist]: {"notified": false} };
+    return { [waitlist]: { notified: false } };
   }
-  user.waitlists_joined[waitlist] = {"notified": false };
+  user.waitlists_joined[waitlist] = { notified: false };
   return user.waitlists_joined;
 }
 
@@ -143,10 +157,9 @@ function addEmailToWaitlist(req, res) {
   }
   const user = req.user;
   const updatedWaitlistsJoined = _addToWaitlistsJoined(user, "remove_data");
-  DB.setWaitlistsJoined({user, updatedWaitlistsJoined});
+  DB.setWaitlistsJoined({ user, updatedWaitlistsJoined });
   return res.json("email-added");
 }
-
 
 function notFound(req, res) {
   res.status(404);
@@ -163,6 +176,7 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  getRemovePage,
   home,
   notFound,
   removeMyData,

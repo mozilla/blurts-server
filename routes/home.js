@@ -5,8 +5,15 @@ const bodyParser = require("body-parser");
 const csrf = require("csurf");
 
 const {
-  home, getAboutPage, getAllBreaches, getBentoStrings,
-  getSecurityTips, notFound, removeMyData, addEmailToWaitlist,
+  home,
+  getAboutPage,
+  getAllBreaches,
+  getBentoStrings,
+  getSecurityTips,
+  notFound,
+  removeMyData,
+  addEmailToWaitlist,
+  getRemovePage,
 } = require("../controllers/home");
 
 const { getShareUTMs, requireSessionUser } = require("../middleware");
@@ -24,9 +31,15 @@ router.get("/share/", csrfProtection, getShareUTMs, home);
 router.get("/about", getAboutPage);
 router.get("/breaches", getAllBreaches);
 router.get("/security-tips", getSecurityTips);
+router.get("/remove-page", getRemovePage);
 router.get("/getBentoStrings", getBentoStrings);
 router.get("/remove-my-data", requireSessionUser, removeMyData);
-router.post("/join-waitlist", jsonParser, requireSessionUser, addEmailToWaitlist);
+router.post(
+  "/join-waitlist",
+  jsonParser,
+  requireSessionUser,
+  addEmailToWaitlist
+);
 router.use(notFound);
 
 module.exports = router;

@@ -1,7 +1,14 @@
 :root {
   --warmGradient: linear-gradient(71deg, #972ab8, #e22951 100%, #e22851 100%);
   --takeBackControlGradient: linear-gradient(253deg, #2150c8, #712291);
-  --fxaSignUpGradient: linear-gradient(103deg, #374dcc, #9456f9 0%, #394cca 34%, #312a65 69%, #1d1133);
+  --fxaSignUpGradient: linear-gradient(
+    103deg,
+    #374dcc,
+    #9456f9 0%,
+    #394cca 34%,
+    #312a65 69%,
+    #1d1133
+  );
   --inkLight: #2b1e44;
   --ink: #20123a;
   --inkDark: #1d1133;
@@ -40,9 +47,17 @@
   --grey1: #f9f9fa;
   --grey2: #ededf0;
   --grey3: #cdcdd4;
+  --grey5: #666;
   --grey6: #5e5e72;
   --grey8: #42425a;
   --grey9: #202340;
-  --monitorGradient: linear-gradient(-90deg, #ff9100 0%, #f10366 50%, #6173ff 100%);
+  --monitorGradient: linear-gradient(
+    -90deg,
+    #ff9100 0%,
+    #f10366 50%,
+    #6173ff 100%
+  );
   --vpn-purple: #c5c8fb;
+
+  --fw-400: 400;
 }

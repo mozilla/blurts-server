@@ -1,3 +1,4 @@
+/*
 .monitoredEmails {
   background-color: var(--violet3);
 }
@@ -9,24 +10,28 @@
 .passwords {
   background-color: var(--violet5);
 }
+*/
 
 .breach-stat-number,
 .stat-headline {
-  color: rgba(255, 255, 255, 1);
+  //color: rgba(255, 255, 255, 1);
+  color: var(--grey5);
   justify-content: center;
   width: 100%;
 }
 
 .breach-stat-number {
-  font-size: 56px;
+  font-size: 36px;
   line-height: 1.14;
   min-width: 60px;
+  color: var(--ink);
 }
 
 .breach-stat-row {
-  padding: 32px var(--padding);
-  max-width: 31.25%;
-  border-radius: 8px;
+  padding: 0 var(--padding);
+  //max-width: 31.25%;
+  //border-radius: 8px;
+  text-align: center;
 }
 
 .stat-row-title-wrap {
@@ -38,7 +43,7 @@
 
 .stat-headline {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
   line-height: 1.33;
   text-align: center;
 }

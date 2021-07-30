@@ -11,7 +11,7 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
   getExperimentFlags,
   getUTMContents,
@@ -46,17 +46,23 @@ async function resendEmail(req, res) {
     throw new FluentError("user-verify-token-error");
   }
 
-  const unverifiedEmailAddressRecord = await DB.resetUnverifiedEmailAddress(emailId);
+  const unverifiedEmailAddressRecord = await DB.resetUnverifiedEmailAddress(
+    emailId
+  );
 
   const email = unverifiedEmailAddressRecord.email;
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("email-subject-verify"),
     "default_email",
-    { recipientEmail: email,
+    {
+      recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
-      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, "account-verification-email"),
+      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(
+        unverifiedEmailAddressRecord,
+        "account-verification-email"
+      ),
       whichPartial: "email_partials/email_verify",
     }
   );
@@ -69,13 +75,16 @@ async function updateCommunicationOptions(req, res) {
   const sessionUser = req.user;
   // 0 = Send breach alerts to the email address found in brew breach.
   // 1 = Send all breach alerts to user's primary email address.
-  const allEmailsToPrimary = (Number(req.body.communicationOption) === 1) ? true : false;
-  const updatedSubscriber = await DB.setAllEmailsToPrimary(sessionUser, allEmailsToPrimary);
+  const allEmailsToPrimary =
+    Number(req.body.communicationOption) === 1 ? true : false;
+  const updatedSubscriber = await DB.setAllEmailsToPrimary(
+    sessionUser,
+    allEmailsToPrimary
+  );
   req.session.user = updatedSubscriber;
 
   return res.json("Comm options updated");
 }
-
 
 async function resolveBreach(req, res) {
   const sessionUser = req.user;
@@ -89,7 +98,6 @@ async function resolveBreach(req, res) {
   return res.json("Breach marked as resolved.");
 }
 
-
 function _checkForDuplicateEmail(sessionUser, email) {
   email = email.toLowerCase();
   if (email === sessionUser.primary_email.toLowerCase()) {
@@ -101,7 +109,6 @@ function _checkForDuplicateEmail(sessionUser, email) {
     }
   }
 }
-
 
 async function add(req, res) {
   const sessionUser = await req.user;
@@ -116,19 +123,23 @@ async function add(req, res) {
   _checkForDuplicateEmail(sessionUser, email);
 
   const unverifiedSubscriber = await DB.addSubscriberUnverifiedEmailHash(
-    req.session.user, email
+    req.session.user,
+    email
   );
-
 
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("email-subject-verify"),
     "default_email",
-    { breachedEmail: email,
+    {
+      breachedEmail: email,
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
-      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, "account-verification-email"),
+      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(
+        unverifiedSubscriber,
+        "account-verification-email"
+      ),
       whichPartial: "email_partials/email_verify",
     }
   );
@@ -143,14 +154,14 @@ async function add(req, res) {
   res.redirect("/user/preferences");
 }
 
-
 function getResolvedBreachesForEmail(user, email) {
   if (user.breaches_resolved === null) {
     return [];
   }
-  return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : [];
+  return user.breaches_resolved.hasOwnProperty(email)
+    ? user.breaches_resolved[email]
+    : [];
 }
-
 
 function addResolvedOrNot(foundBreaches, resolvedBreaches) {
   const annotatedBreaches = [];
@@ -158,41 +169,53 @@ function addResolvedOrNot(foundBreaches, resolvedBreaches) {
     return foundBreaches;
   }
   for (const breach of foundBreaches) {
-    const IsResolved = resolvedBreaches.includes(breach.recencyIndex) ? true : false;
-    annotatedBreaches.push(Object.assign({IsResolved}, breach));
+    const IsResolved = resolvedBreaches.includes(breach.recencyIndex)
+      ? true
+      : false;
+    annotatedBreaches.push(Object.assign({ IsResolved }, breach));
   }
   return annotatedBreaches;
 }
-
 
 function addRecencyIndex(foundBreaches) {
   const annotatedBreaches = [];
   // slice() the array to make a copy so before reversing so we don't
   // reverse foundBreaches in-place
   const oldestToNewestFoundBreaches = foundBreaches.slice().reverse();
-  oldestToNewestFoundBreaches.forEach( (annotatingBreach, index) => {
-    const foundBreach = foundBreaches.find( foundBreach => foundBreach.Name === annotatingBreach.Name);
-    annotatedBreaches.push(Object.assign({recencyIndex: index}, foundBreach));
+  oldestToNewestFoundBreaches.forEach((annotatingBreach, index) => {
+    const foundBreach = foundBreaches.find(
+      (foundBreach) => foundBreach.Name === annotatingBreach.Name
+    );
+    annotatedBreaches.push(Object.assign({ recencyIndex: index }, foundBreach));
   });
   return annotatedBreaches.reverse();
 }
 
-
 async function bundleVerifiedEmails(options) {
-  const { user, email, recordId, recordVerified, allBreaches} = options;
+  const { user, email, recordId, recordVerified, allBreaches } = options;
   const lowerCaseEmailSha = sha1(email.toLowerCase());
-  const foundBreaches = await HIBP.getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false);
+  const foundBreaches = await HIBP.getBreachesForEmail(
+    lowerCaseEmailSha,
+    allBreaches,
+    true,
+    false
+  );
   const foundBreachesWithRecency = addRecencyIndex(foundBreaches);
   const resolvedBreaches = getResolvedBreachesForEmail(user, email);
-  const foundBreachesWithResolutions = addResolvedOrNot(foundBreachesWithRecency, resolvedBreaches);
-  const filteredAnnotatedFoundBreaches = HIBP.filterBreaches(foundBreachesWithResolutions);
+  const foundBreachesWithResolutions = addResolvedOrNot(
+    foundBreachesWithRecency,
+    resolvedBreaches
+  );
+  const filteredAnnotatedFoundBreaches = HIBP.filterBreaches(
+    foundBreachesWithResolutions
+  );
 
   const emailEntry = {
-    "email": email,
-    "breaches": filteredAnnotatedFoundBreaches,
-    "primary": email === user.primary_email,
-    "id": recordId,
-    "verified": recordVerified,
+    email: email,
+    breaches: filteredAnnotatedFoundBreaches,
+    primary: email === user.primary_email,
+    id: recordId,
+    verified: recordVerified,
   };
 
   return emailEntry;
@@ -202,22 +225,42 @@ async function getAllEmailsAndBreaches(user, allBreaches) {
   const monitoredEmails = await DB.getUserEmails(user.id);
   let verifiedEmails = [];
   const unverifiedEmails = [];
-  verifiedEmails.push(await bundleVerifiedEmails({user, email: user.primary_email, recordId: user.id, recordVerified: user.primary_verified, allBreaches}));
+  verifiedEmails.push(
+    await bundleVerifiedEmails({
+      user,
+      email: user.primary_email,
+      recordId: user.id,
+      recordVerified: user.primary_verified,
+      allBreaches,
+    })
+  );
   for (const email of monitoredEmails) {
     if (email.verified) {
-      verifiedEmails.push(await bundleVerifiedEmails({user, email: email.email, recordId: email.id, recordVerified: email.verified, allBreaches}));
+      verifiedEmails.push(
+        await bundleVerifiedEmails({
+          user,
+          email: email.email,
+          recordId: email.id,
+          recordVerified: email.verified,
+          allBreaches,
+        })
+      );
     } else {
       unverifiedEmails.push(email);
     }
   }
-  verifiedEmails = getNewBreachesForEmailEntriesSinceDate(verifiedEmails, user.breaches_last_shown);
+  verifiedEmails = getNewBreachesForEmailEntriesSinceDate(
+    verifiedEmails,
+    user.breaches_last_shown
+  );
   return { verifiedEmails, unverifiedEmails };
 }
 
-
 function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
   for (const emailEntry of emailEntries) {
-    const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= date);
+    const newBreachesForEmail = emailEntry.breaches.filter(
+      (breach) => breach.AddedDate >= date
+    );
 
     for (const newBreachForEmail of newBreachesForEmail) {
       newBreachForEmail["NewBreach"] = true; // add "NewBreach" property to the new breach.
@@ -227,14 +270,19 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
   return emailEntries;
 }
 
-
 async function getDashboard(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, "remove_data");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
@@ -260,6 +308,43 @@ async function getDashboard(req, res) {
   });
 }
 
+async function getRemove(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let lastAddedEmail = null;
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove",
+    experimentFlags,
+    utmOverrides,
+  });
+}
 
 async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
@@ -272,7 +357,6 @@ async function _verify(req) {
 
   const utmID = "report";
   const emailSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req);
-
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
@@ -289,7 +373,6 @@ async function _verify(req) {
     }
   );
 }
-
 
 async function verify(req, res) {
   if (!req.query.token) {
@@ -323,7 +406,6 @@ async function verify(req, res) {
   });
 }
 
-
 // legacy /user/unsubscribe controller for pre-FxA unsubscribe links
 async function getUnsubscribe(req, res) {
   if (!req.query.token) {
@@ -354,7 +436,6 @@ async function getUnsubscribe(req, res) {
   });
 }
 
-
 async function getRemoveFxm(req, res) {
   const sessionUser = req.user;
 
@@ -366,7 +447,6 @@ async function getRemoveFxm(req, res) {
   });
 }
 
-
 async function postRemoveFxm(req, res) {
   const sessionUser = req.user;
   await DB.removeSubscriber(sessionUser);
@@ -377,15 +457,11 @@ async function postRemoveFxm(req, res) {
 }
 
 function _updateResolvedBreaches(options) {
-  const {
-    user,
-    affectedEmail,
-    isResolved,
-    recencyIndexNumber,
-  } = options;
+  const { user, affectedEmail, isResolved, recencyIndexNumber } = options;
   // TODO: clarify the logic here. maybe change the endpoint to PUT /breach-resolution
   // with the new resolution value ?
-  const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved;
+  const userBreachesResolved =
+    user.breaches_resolved === null ? {} : user.breaches_resolved;
   if (isResolved === "false") {
     if (Array.isArray(userBreachesResolved[affectedEmail])) {
       userBreachesResolved[affectedEmail].push(recencyIndexNumber);
@@ -394,19 +470,23 @@ function _updateResolvedBreaches(options) {
     userBreachesResolved[affectedEmail] = [recencyIndexNumber];
     return userBreachesResolved;
   }
-  userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter( el => el !== recencyIndexNumber );
+  userBreachesResolved[affectedEmail] = userBreachesResolved[
+    affectedEmail
+  ].filter((el) => el !== recencyIndexNumber);
   return userBreachesResolved;
 }
-
 
 async function postResolveBreach(req, res) {
   const sessionUser = req.user;
   const { affectedEmail, recencyIndex, isResolved } = req.body;
   const recencyIndexNumber = Number(recencyIndex);
-  const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail;
-  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter( ea => {
-    ea.email === affectedEmail;
-  });
+  const affectedEmailIsSubscriberRecord =
+    sessionUser.primary_email === affectedEmail;
+  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(
+    (ea) => {
+      ea.email === affectedEmail;
+    }
+  );
 
   if (!affectedEmailIsSubscriberRecord && !affectedEmailInEmailAddresses) {
     return res.json("Error: affectedEmail is not valid for this subscriber");
@@ -419,9 +499,10 @@ async function postResolveBreach(req, res) {
     recencyIndexNumber,
   });
 
-  const updatedSubscriber = await DB.setBreachesResolved(
-    { user: sessionUser, updatedResolvedBreaches }
-  );
+  const updatedSubscriber = await DB.setBreachesResolved({
+    user: sessionUser,
+    updatedResolvedBreaches,
+  });
   req.session.user = updatedSubscriber;
   // return res.json("Breach marked as resolved.");
   // Currently we're sending { affectedEmail, recencyIndex, isResolved, passwordsExposed } in req.body
@@ -433,7 +514,10 @@ async function postResolveBreach(req, res) {
   }
 
   const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches);
+  const { verifiedEmails } = await getAllEmailsAndBreaches(
+    req.session.user,
+    allBreaches
+  );
 
   const userBreachStats = resultsSummary(verifiedEmails);
   const numTotalBreaches = userBreachStats.numBreaches.count;
@@ -442,48 +526,69 @@ async function postResolveBreach(req, res) {
   const localizedModalStrings = {
     headline: "",
     progressMessage: "",
-    progressStatus: req.fluentFormat( "progress-status", {
+    progressStatus: req.fluentFormat("progress-status", {
       numResolvedBreaches: numResolvedBreaches,
-      numTotalBreaches: numTotalBreaches }
-    ),
+      numTotalBreaches: numTotalBreaches,
+    }),
     headlineClassName: "",
   };
 
   switch (numResolvedBreaches) {
     case 1:
-      localizedModalStrings.headline = req.fluentFormat("confirmation-1-subhead");
-      localizedModalStrings.progressMessage = req.fluentFormat("confirmation-1-body");
+      localizedModalStrings.headline = req.fluentFormat(
+        "confirmation-1-subhead"
+      );
+      localizedModalStrings.progressMessage = req.fluentFormat(
+        "confirmation-1-body"
+      );
       localizedModalStrings.headlineClassName = "overlay-resolved-first-breach";
       break;
 
     case 2:
-      localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
-      localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+      localizedModalStrings.headline = req.fluentFormat(
+        "confirmation-2-subhead"
+      );
+      localizedModalStrings.progressMessage = req.fluentFormat(
+        "confirmation-2-body"
+      );
       localizedModalStrings.headlineClassName = "overlay-take-that-hackers";
       break;
 
     case 3:
-      localizedModalStrings.headline = req.fluentFormat("confirmation-3-subhead");
+      localizedModalStrings.headline = req.fluentFormat(
+        "confirmation-3-subhead"
+      );
       // TO CONSIDER: The "confirmation-3-body" string contains nested markup.
       // We'll either have to remove it (requiring a string change), or we will have
       // to inject it into the template using innerHTML (scaryish).
       // Defaulting to the generic progressMessage for now.
-      localizedModalStrings.progressMessage = req.fluentFormat("generic-confirmation-message", {
-        numUnresolvedBreaches: numTotalBreaches-numResolvedBreaches,
-      });
-      localizedModalStrings.headlineClassName = "overlay-another-breach-resolved";
+      localizedModalStrings.progressMessage = req.fluentFormat(
+        "generic-confirmation-message",
+        {
+          numUnresolvedBreaches: numTotalBreaches - numResolvedBreaches,
+        }
+      );
+      localizedModalStrings.headlineClassName =
+        "overlay-another-breach-resolved";
       break;
 
     case numTotalBreaches:
-      localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
-      localizedModalStrings.progressMessage = req.fluentFormat("progress-complete");
+      localizedModalStrings.headline = req.fluentFormat(
+        "confirmation-2-subhead"
+      );
+      localizedModalStrings.progressMessage =
+        req.fluentFormat("progress-complete");
       localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
       break;
 
     default:
       if (numResolvedBreaches > 3) {
-        localizedModalStrings.headline = req.fluentFormat("confirmation-2-subhead");
-        localizedModalStrings.progressMessage = req.fluentFormat("confirmation-2-body");
+        localizedModalStrings.headline = req.fluentFormat(
+          "confirmation-2-subhead"
+        );
+        localizedModalStrings.progressMessage = req.fluentFormat(
+          "confirmation-2-body"
+        );
         localizedModalStrings.headlineClassName = "overlay-marked-as-resolved";
       }
       break;
@@ -514,20 +619,22 @@ async function postUnsubscribe(req, res) {
   res.redirect("/");
 }
 
-
 async function getPreferences(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
 
   res.render("dashboards", {
     title: "Firefox Monitor",
     whichPartial: "dashboards/preferences",
     csrfToken: req.csrfToken(),
-    verifiedEmails, unverifiedEmails,
+    verifiedEmails,
+    unverifiedEmails,
   });
 }
-
 
 // This endpoint returns breach stats for Firefox clients to display
 // in about:protections
@@ -539,13 +646,16 @@ async function getPreferences(req, res) {
 async function getBreachStats(req, res) {
   if (!req.token) {
     return res.status(401).json({
-      errorMessage: "User breach stats requires an FXA OAuth token passed in the Authorization header.",
+      errorMessage:
+        "User breach stats requires an FXA OAuth token passed in the Authorization header.",
     });
   }
   const fxaResponse = await FXA.verifyOAuthToken(req.token);
   if (fxaResponse.name === "HTTPError") {
     return res.status(fxaResponse.response.statusCode).json({
-      errorMessage: "Could not verify FXA OAuth token. FXA returned message: " + fxaResponse.response.statusMessage,
+      errorMessage:
+        "Could not verify FXA OAuth token. FXA returned message: " +
+        fxaResponse.response.statusMessage,
     });
   }
   if (!fxaResponse.body.scope.includes(FXA_MONITOR_SCOPE)) {
@@ -571,10 +681,12 @@ async function getBreachStats(req, res) {
     numBreachesResolved: breachStats.numBreaches.numResolved,
     passwordsResolved: breachStats.passwords.numResolved,
   };
-  const returnStats = (req.query.includeResolved === "true") ? Object.assign(baseStats, resolvedStats) : baseStats;
+  const returnStats =
+    req.query.includeResolved === "true"
+      ? Object.assign(baseStats, resolvedStats)
+      : baseStats;
   return res.json(returnStats);
-  }
-
+}
 
 function logout(req, res) {
   // Growth Experiment
@@ -582,7 +694,7 @@ function logout(req, res) {
     // Persist experimentBranch across session reset
     const sessionExperimentFlags = req.session.experimentFlags;
     req.session.destroy(() => {
-      req.session = {experimentFlags: sessionExperimentFlags};
+      req.session = { experimentFlags: sessionExperimentFlags };
     });
 
     // Return
@@ -594,11 +706,11 @@ function logout(req, res) {
   res.redirect("/");
 }
 
-
 module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
+  getRemove,
   getBreachStats,
   getAllEmailsAndBreaches,
   add,

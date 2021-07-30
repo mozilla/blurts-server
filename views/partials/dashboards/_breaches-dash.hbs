@@ -1,25 +1,12 @@
 {{#getBreachStats}}
-  <main id="dashboard" class="dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  <main id="dashboard" class="dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
     <div class="mw-860 flx flx-col">
-      <div class="flx jst-cntr">
-        <div class="col-3"><span class="welcome-back">{{ welcomeMessage }}</span></div>
-        {{> breach-stats addClasses="user-stats"}}
-      </div>
-      <div class="breach-dash-tabs">
-          <ul class="flx flx-row dash-tabs-list">
-            <li class="dash-tabs-item dash-tabs-item--breaches col-3 active">
-              <a href="/user/dashboard" class="dash-tabs-link">{{ getString "dash-tab-breach-title" }}</a>
-              </li>
-            <li class="dash-tabs-item dash-tabs-item--remove col-3">
-              <a href="/user/remove" class="dash-tabs-link">{{ getString "dash-tab-remove-title" }}
-                <span class="dash-tabs-beta">{{ getString "dash-tab-beta" }}</span>
-              </a>
-            </li>
-          </ul>
-        </div>
+      <span class="welcome-back">{{ welcomeMessage }}</span>
+      <div class="flx flx-row hl-upgrade-btn-wrapper">
+        <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
       </div>
       <div class="dash-stats">
-        
+        {{> breach-stats addClasses="user-stats"}}
       </div>
       {{#if progressBar}}
       <div class="progress-bar-wrapper">

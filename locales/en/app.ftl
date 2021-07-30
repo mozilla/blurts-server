@@ -362,6 +362,12 @@ send-verification = Send Verification Link
 # email address.
 breach-summary = Breach Summary
 
+# dashboard tab language
+dash-tab-breach-title = Breach summary
+dash-tab-remove-title = Remove my data
+dash-tab-beta = Beta
+
+
 show-breaches-for-this-email = Show all breaches for this email.
 
 link-change-primary = Change Primary Email Address

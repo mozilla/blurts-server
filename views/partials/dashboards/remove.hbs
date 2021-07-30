@@ -1,0 +1,40 @@
+{{#getBreachStats}}
+  <main id="dashboard" class="dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+    <div class="mw-860 flx flx-col">
+      <div class="flx jst-cntr">
+        <div class="col-3"><span class="welcome-back">{{ welcomeMessage }}</span></div>
+        {{> breach-stats addClasses="user-stats"}}
+      </div>
+      <div class="breach-dash-tabs">
+          <ul class="flx flx-row dash-tabs-list">
+            <li class="dash-tabs-item dash-tabs-item--breaches col-3">
+              <a href="/user/dashboard" class="dash-tabs-link">{{ getString "dash-tab-breach-title" }}</a>
+              </li>
+            <li class="dash-tabs-item dash-tabs-item--remove col-3 active">
+              <a href="/user/remove" class="dash-tabs-link">{{ getString "dash-tab-remove-title" }}
+                <span class="dash-tabs-beta">{{ getString "dash-tab-beta" }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+{{/getBreachStats}}
+{{#getRemoveDashboard}}
+<div class="mw-860 flx flx-col">
+  {{#if ./../supportedLocalesIncludesEnglish}}
+    <div class="private-relay-dashboard-card">
+      <a href="/remove-my-data" class="private-relay-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
+        <div class="private-relay-dashboard-card-content flx">
+          <div class="private-relay-dashboard-card-copy">
+            <p class="bold ff-Met private-relay-dashboard-card-subhead">Remove your data from websites.</p>
+            <p class="private-relay-dashboard-card-body">We’re piloting a new service to monitor and remove your name, physical address, phone number, and email from online databases.</p>
+            <p class="blue-link private-relay-join-waitlist">Join the waitlist</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  {{/if}}
+</div>
+{{/getRemoveDashboard}}

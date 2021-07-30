@@ -1,8 +1,8 @@
 .welcome-back {
-  font-size: 18px;
+  font-size: 14px;
   line-height: 1.5;
   color: var(--grey8);
-  margin: auto;
+  margin: 0;
 }
 
 .dashboard.clear-header {
@@ -43,6 +43,42 @@ h3.pref-section-headline.remove {
 h2.pref-headline.breach-summary {
   margin-top: calc(var(--padding) * 5);
   margin-bottom: 24px;
+}
+
+.breach-dash-tabs {
+  margin-top: 20px;
+  border-bottom: 1px solid var(--grey3);
+}
+
+.dash-tabs {
+  &-list {
+    margin: 0;
+  }
+  &-item {
+    padding: 13px 0;
+    margin: 0 20px;
+    &:first-child {
+      margin-left: 0;
+    }
+    &.active {
+      border-bottom: 5px solid var(--blue3);
+    }
+  }
+  &-link {
+    font-size: 18px;
+    color: var(--grey5);
+    margin: 0 auto;
+    .active & {
+      color: var(--blue3);
+    }
+  }
+  &-beta {
+    font-size: 12px;
+    color: var(--grey5);
+    border: 1px solid var(--grey3);
+    padding: 4px;
+    border-radius: 4px;
+  }
 }
 
 .pref {
