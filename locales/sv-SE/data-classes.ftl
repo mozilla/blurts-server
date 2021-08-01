@@ -36,6 +36,7 @@ device-information = Enhetsinformation
 device-serial-numbers = Serienummer på enheter
 device-usage-tracking-data = Spårningsdata för enhetsanvändning
 drinking-habits = Drickvanor
+driver-s-licenses = Körkort
 drug-habits = Drogvanor
 eating-habits = Matvanor
 education-levels = Utbildningsnivåer
@@ -66,6 +67,8 @@ instant-messenger-identities = Instant messenger identiteter
 ip-addresses = IP-adresser
 job-applications = Jobbansökningar
 job-titles = Jobbtitlar
+# This string refers to vehicle license plates. 
+licence-plates = Registreringsskyltar
 living-costs = Levnadskostnader
 login-histories = Inloggningshistorik
 mac-addresses = MAC-adresser
