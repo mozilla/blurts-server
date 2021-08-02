@@ -568,3 +568,5 @@ steps-to-resolve-headline = Mesures à prendre pour résoudre cette fuite
 vpn-promo-headline = Le moment est venu de renforcer votre sécurité en ligne.
 vpn-promo-copy = Le réseau privé virtuel de { -brand-Mozilla } protège votre connexion Internet contre les pirates et les espions.
 vpn-promo-cta = Installer { -brand-mozilla-vpn }
+vpn-promo-headline-new = Économisez 50 % en vous abonnant pour un an
+vpn-promo-copy-new = Protégez vos données en ligne et choisissez le forfait d’abonnement VPN qui vous convient le mieux.
