@@ -53,6 +53,11 @@ input:focus,
   margin: auto;
 }
 
+.field--full {
+  display: block;
+  width: 100%;
+}
+
 .input-group,
 .input-group-button {
   position: relative;
@@ -60,6 +65,35 @@ input:focus,
   max-width: 100%;
   margin-left: 0;
   margin-right: 0;
+}
+
+.input-group-label {
+  &.required {
+    &:before {
+      content: "*";
+      color: var(--alertRed);
+      margin-right: 8px;
+    }
+  }
+}
+
+.input-group-field {
+  font-size: 13px;
+  line-height: 21px;
+  color: var(--grey7);
+  padding: 16px;
+  border: 1px solid var(--grey4);
+  border-radius: var(--br-input);
+  &:not(:first-of-type) {
+    margin-left: 20px;
+  }
+  &::placeholder {
+    color: var(--grey5);
+  }
+}
+
+.input-group-multi {
+  display: flex;
 }
 
 .form-group .error-message {
@@ -81,7 +115,7 @@ input:focus,
   opacity: 0;
   background: rgba(215, 0, 34, 1);
   top: -7px;
-  content: '';
+  content: "";
   height: 16px;
   position: absolute;
   text-indent: -999px;

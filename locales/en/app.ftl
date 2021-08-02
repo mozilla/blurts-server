@@ -362,6 +362,26 @@ send-verification = Send Verification Link
 # email address.
 breach-summary = Breach Summary
 
+# dashboard tab language
+dash-tab-breach-title = Breach summary
+dash-tab-remove-title = Remove my data
+dash-tab-beta = Beta
+
+#removal form strings
+dash-remove-form-email-label = Select your email address
+dash-remove-form-name-label = What is your full name?
+dash-remove-form-name = Enter your full name
+dash-remove-form-loc-label = What is your current location?
+dash-remove-form-loc-city = Enter your city
+dash-remove-form-loc-state = Enter your state
+dash-remove-form-loc-country = Enter your country
+dash-remove-form-birth-year-label = What is your birth year?
+dash-remove-form-birth-year = Enter your birth year
+dash-remove-submit = Start Data Removal
+dash-remove-form-required-helper = * These fields are required
+dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
+dash-remove-kanary-discalimer = Service provided by The Kanary
+
 show-breaches-for-this-email = Show all breaches for this email.
 
 link-change-primary = Change Primary Email Address

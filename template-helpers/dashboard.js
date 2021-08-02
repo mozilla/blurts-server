@@ -20,15 +20,15 @@ function getBreachesDashboard(args) {
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
     if (
-        a.breaches.length === 0 && b.breaches.length > 0 ||
-        b.breaches.length === 0 && a.breaches.length > 0
-      ) {
+      (a.breaches.length === 0 && b.breaches.length > 0) ||
+      (b.breaches.length === 0 && a.breaches.length > 0)
+    ) {
       return b.breaches.length - a.breaches.length;
     }
     return 0;
   });
 
-  verifiedEmails.forEach(email => {
+  verifiedEmails.forEach((email) => {
     const breachCards = makeBreachCards(email.breaches, locales);
 
     if (!breachesFound && breachCards.length > 0) {
@@ -40,7 +40,7 @@ function getBreachesDashboard(args) {
     email.numUnresolvedBreaches = 0;
 
     // Get the number of resolved breaches for email
-    email.breaches.forEach(breach => {
+    email.breaches.forEach((breach) => {
       if (breach.IsResolved) {
         email.numResolvedBreaches++;
       }
@@ -48,7 +48,7 @@ function getBreachesDashboard(args) {
 
     // Move resolved breaches to the end of breach list
     if (email.numResolvedBreaches > 0) {
-      breachCards.sort((a,b) => {
+      breachCards.sort((a, b) => {
         if (a.IsResolved && !b.IsResolved) {
           return 1;
         }
@@ -64,7 +64,78 @@ function getBreachesDashboard(args) {
     // If there are more than four unresolved breaches, show only the first four by default.
     if (email.numUnresolvedBreaches > 4) {
       email.foundBreaches.breachesShownByDefault = breachCards.slice(0, 4);
-      email.foundBreaches.remainingBreaches = breachCards.slice(4, breachCards.length);
+      email.foundBreaches.remainingBreaches = breachCards.slice(
+        4,
+        breachCards.length
+      );
+    } else {
+      email.foundBreaches.breachesShownByDefault = breachCards;
+    }
+  });
+  const emailCards = {
+    verifiedEmails: verifiedEmails,
+    breachesFound: breachesFound,
+  };
+
+  return args.fn(emailCards);
+}
+
+function getRemoveDashboard(args) {
+  const verifiedEmails = args.data.root.verifiedEmails;
+  const locales = args.data.root.req.supportedLocales;
+  let breachesFound = false;
+
+  // move emails with 0 breaches to the bottom of the page
+  verifiedEmails.sort((a, b) => {
+    if (
+      (a.breaches.length === 0 && b.breaches.length > 0) ||
+      (b.breaches.length === 0 && a.breaches.length > 0)
+    ) {
+      return b.breaches.length - a.breaches.length;
+    }
+    return 0;
+  });
+
+  verifiedEmails.forEach((email) => {
+    const breachCards = makeBreachCards(email.breaches, locales);
+
+    if (!breachesFound && breachCards.length > 0) {
+      breachesFound = true;
+    }
+
+    email.numBreaches = breachCards.length;
+    email.numResolvedBreaches = 0;
+    email.numUnresolvedBreaches = 0;
+
+    // Get the number of resolved breaches for email
+    email.breaches.forEach((breach) => {
+      if (breach.IsResolved) {
+        email.numResolvedBreaches++;
+      }
+    });
+
+    // Move resolved breaches to the end of breach list
+    if (email.numResolvedBreaches > 0) {
+      breachCards.sort((a, b) => {
+        if (a.IsResolved && !b.IsResolved) {
+          return 1;
+        }
+        if (!a.IsResolved && b.IsResolved) {
+          return -1;
+        }
+      });
+    }
+    delete email.breaches;
+    email.numUnresolvedBreaches = email.numBreaches - email.numResolvedBreaches;
+    email.foundBreaches = {};
+
+    // If there are more than four unresolved breaches, show only the first four by default.
+    if (email.numUnresolvedBreaches > 4) {
+      email.foundBreaches.breachesShownByDefault = breachCards.slice(0, 4);
+      email.foundBreaches.remainingBreaches = breachCards.slice(
+        4,
+        breachCards.length
+      );
     } else {
       email.foundBreaches.breachesShownByDefault = breachCards;
     }
@@ -83,39 +154,49 @@ function welcomeMessage(args) {
   const newUser = args.data.root.req.session.newUser;
 
   if (newUser) {
-    return LocaleUtils.fluentFormat(locales, "welcome-user", { userName: userEmail });
+    return LocaleUtils.fluentFormat(locales, "welcome-user", {
+      userName: userEmail,
+    });
   }
 
-  return LocaleUtils.fluentFormat(locales, "welcome-back", { userName: userEmail});
+  return LocaleUtils.fluentFormat(locales, "welcome-back", {
+    userName: userEmail,
+  });
 }
 
 function makeEmailAddedToSubscriptionString(email, args) {
   const locales = args.data.root.req.supportedLocales;
   const nestedEmail = `<span class="bold">${email}</span>`;
-  return LocaleUtils.fluentFormat(locales, "email-added-to-subscription", { email: nestedEmail });
+  return LocaleUtils.fluentFormat(locales, "email-added-to-subscription", {
+    email: nestedEmail,
+  });
 }
-
 
 function makeEmailVerifiedString(args) {
   const locales = args.data.root.req.supportedLocales;
-  let nestedSignInLink = LocaleUtils.fluentFormat(locales, "sign-in-nested", {});
+  let nestedSignInLink = LocaleUtils.fluentFormat(
+    locales,
+    "sign-in-nested",
+    {}
+  );
   nestedSignInLink = `<a class="text-link bold blue-link" href="/oauth/init">${nestedSignInLink}</a>`;
 
-  return LocaleUtils.fluentFormat(locales, "email-verified-view-dashboard", { nestedSignInLink: nestedSignInLink});
+  return LocaleUtils.fluentFormat(locales, "email-verified-view-dashboard", {
+    nestedSignInLink: nestedSignInLink,
+  });
 }
-
 
 function getUserPreferences(args) {
   const csrfToken = args.data.root.csrfToken;
   const unverifiedEmails = args.data.root.unverifiedEmails;
   const verifiedEmails = args.data.root.verifiedEmails;
   const sessionUser = args.data.root.req.session.user;
-  const communicationOption = (sessionUser.all_emails_to_primary) ? 1 : 0;
+  const communicationOption = sessionUser.all_emails_to_primary ? 1 : 0;
 
   const locales = args.data.root.req.supportedLocales;
   args.data.root.preferences = true;
 
-  verifiedEmails.forEach(email => {
+  verifiedEmails.forEach((email) => {
     email.numBreaches = email.breaches.length;
     delete email.breaches;
   });
@@ -126,7 +207,7 @@ function getUserPreferences(args) {
     primary: {
       subhead: LocaleUtils.fluentFormat(locales, "fxa-primary-email"),
       className: "fxa-primary-email",
-      email_addresses: [ primaryEmail ], // put in array for template looping
+      email_addresses: [primaryEmail], // put in array for template looping
     },
     secondary: {
       subhead: LocaleUtils.fluentFormat(locales, "other-monitored-emails"),
@@ -138,7 +219,8 @@ function getUserPreferences(args) {
       className: "email-verification-required",
       email_addresses: unverifiedEmails,
     },
-    total: [ primaryEmail ].length + verifiedEmails.length + unverifiedEmails.length,
+    total:
+      [primaryEmail].length + verifiedEmails.length + unverifiedEmails.length,
   };
 
   const communicationOptions = [
@@ -146,19 +228,22 @@ function getUserPreferences(args) {
       optionDescription: "Send breach alerts to the affected email address.",
       labelString: LocaleUtils.fluentFormat(locales, "to-affected-email"),
       optionId: "0",
-      optionChecked: (communicationOption === 0) ? "checked" : "",
+      optionChecked: communicationOption === 0 ? "checked" : "",
     },
     {
-      optionDescription: "Send all breach alerts to subscriber's primary email address.",
-      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-1", {primaryEmail: `<span class="bold">${primaryEmail.email}</span>`}),
+      optionDescription:
+        "Send all breach alerts to subscriber's primary email address.",
+      labelString: LocaleUtils.fluentFormat(locales, "comm-opt-1", {
+        primaryEmail: `<span class="bold">${primaryEmail.email}</span>`,
+      }),
       optionId: "1",
-      optionChecked: (communicationOption === 1) ? "checked" : "",
+      optionChecked: communicationOption === 1 ? "checked" : "",
     },
   ];
 
   const user = {
     primaryEmail: primaryEmail.email,
-    emails : emailAddresses,
+    emails: emailAddresses,
     communicationOptions: communicationOptions,
     csrfToken: csrfToken,
   };
@@ -170,11 +255,16 @@ function getLastAddedEmailStrings(args) {
   const lastAddedEmail = args.data.root.lastAddedEmail;
   const lastAddedEmailSpan = `<span class="bold">${lastAddedEmail}</span>`;
 
-  const preferencesLinkString = LocaleUtils.fluentFormat(locales, "preferences");
+  const preferencesLinkString = LocaleUtils.fluentFormat(
+    locales,
+    "preferences"
+  );
   const preferencesLink = `<a class="demi text-link" href="/user/preferences">${preferencesLinkString}</a>`;
 
   const lastAddedEmailStrings = [
-    LocaleUtils.fluentFormat(locales, "verify-the-link", { userEmail: lastAddedEmailSpan }),
+    LocaleUtils.fluentFormat(locales, "verify-the-link", {
+      userEmail: lastAddedEmailSpan,
+    }),
     LocaleUtils.fluentFormat(locales, "manage-all-emails", { preferencesLink }),
   ];
   return lastAddedEmailStrings;
@@ -183,6 +273,7 @@ function getLastAddedEmailStrings(args) {
 module.exports = {
   getUserPreferences,
   getBreachesDashboard,
+  getRemoveDashboard,
   welcomeMessage,
   getLastAddedEmailStrings,
   makeEmailVerifiedString,
