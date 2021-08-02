@@ -1,0 +1,14 @@
+<div class="mw-860 flx flx-col no-pad-mobile">
+  <div class="breach-dash-tabs">
+    <ul class="flx flx-row dash-tabs-list">
+      <li class="dash-tabs-item dash-tabs-item--breaches {{#ifCompare activeTab "===" "summary"}}active{{/ifCompare}}">
+        <a href="/user/dashboard" class="dash-tabs-link">{{ getString "dash-tab-breach-title" }}</a>
+        </li>
+      <li class="dash-tabs-item dash-tabs-item--remove {{#ifCompare activeTab "===" "remove"}}active{{/ifCompare}}">
+        <a href="/user/remove" class="dash-tabs-link">{{ getString "dash-tab-remove-title" }}
+          <span class="dash-tabs-beta hidden-mobile">{{ getString "dash-tab-beta" }}</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

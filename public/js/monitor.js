@@ -13,30 +13,30 @@ if (typeof TextEncoder === "undefined") {
   scripts.parentNode.insertBefore(cryptoScript, scripts);
 }
 
-
 function findAncestor(el, cls) {
   while ((el = el.parentElement) && !el.classList.contains(cls));
   return el;
 }
 
-
 function toggleEl(e) {
   const toggleButton = e.target;
   const toggleParent = findAncestor(toggleButton, "toggle-parent");
-  ["inactive", "active"].forEach(className => {
+  ["inactive", "active"].forEach((className) => {
     toggleParent.classList.toggle(className);
   });
 }
 
-
 function isValidEmail(val) {
   // https://stackoverflow.com/a/46181
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(val).toLowerCase());
 }
 
-function getSubmittedEmail(){
-  const email = document.querySelector("#scan-user-email input[type=email]").value;
+function getSubmittedEmail() {
+  const email = document.querySelector(
+    "#scan-user-email input[type=email]"
+  ).value;
   if (!isValidEmail(email)) {
     return false;
   }
@@ -52,11 +52,18 @@ function overwriteLastScannedEmail(email, scannedEmailId) {
   scannedEmailId.value = sessionStorage.length;
 }
 
-function doOauth(el, {emailWatch = false} = {}) {
+function doOauth(el, { emailWatch = false } = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
-  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
+  [
+    "flowId",
+    "flowBeginTime",
+    "entrypoint",
+    "entrypoint_experiment",
+    "entrypoint_variation",
+    "form_type",
+  ].forEach((key) => {
     if (el.dataset[key]) {
       url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
     }
@@ -83,7 +90,9 @@ function doOauth(el, {emailWatch = false} = {}) {
   }
 
   const submittedEmail = getSubmittedEmail();
-  const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
+  const scannedEmailId = document.querySelector(
+    "#scan-user-email input[name=scannedEmailId]"
+  );
 
   if (lastScannedEmail === submittedEmail) {
     url.searchParams.append("email", lastScannedEmail);
@@ -97,9 +106,8 @@ function doOauth(el, {emailWatch = false} = {}) {
   window.location.assign(url);
 }
 
-
 function addFormListeners() {
-  Array.from(document.forms).forEach(form =>  {
+  Array.from(document.forms).forEach((form) => {
     if (form.querySelector("input[type=email]")) {
       const emailInput = form.querySelector("input[type=email]");
       emailInput.addEventListener("keydown", (e) => {
@@ -132,7 +140,7 @@ function handleFormSubmits(formEvent) {
   const thisForm = formEvent.target;
   let email = "";
 
-  sendPing(thisForm, "Submit", null, {transport: "beacon"});
+  sendPing(thisForm, "Submit", null, { transport: "beacon" });
 
   if (thisForm.email) {
     email = thisForm.email.value.trim();
@@ -161,11 +169,11 @@ function handleFormSubmits(formEvent) {
 
 //re-enables inputs and clears loader
 function restoreInputs() {
-  Array.from(document.forms).forEach( form => {
+  Array.from(document.forms).forEach((form) => {
     form.classList.remove("loading-data");
     form.classList.remove("invalid");
   });
-  document.querySelectorAll("input").forEach( input => {
+  document.querySelectorAll("input").forEach((input) => {
     if (input.disabled) {
       input.disabled = false;
     }
@@ -181,22 +189,24 @@ function toggleDropDownMenu(dropDownMenu) {
 
 function toggleArticles() {
   const windowWidth = window.innerWidth;
-  const articleToggles = document.querySelectorAll(".st-toggle-wrapper, .relay-info.toggle-parent");
+  const articleToggles = document.querySelectorAll(
+    ".st-toggle-wrapper, .relay-info.toggle-parent"
+  );
   if (windowWidth > 600) {
-    articleToggles.forEach(toggle => {
+    articleToggles.forEach((toggle) => {
       toggle.classList.add("active");
       toggle.classList.remove("inactive");
     });
     return;
   }
-  articleToggles.forEach(toggle => {
+  articleToggles.forEach((toggle) => {
     toggle.classList.remove("active");
     toggle.classList.add("inactive");
   });
 }
 
 function hideShowNavBars(win, navBar, bentoButton) {
-  win.onscroll = function(e) {
+  win.onscroll = function (e) {
     // catch a window that has resized from less than 600px
     // to greater than 600px and unhide navigation.
     if (win.innerWidth > 600) {
@@ -210,10 +220,10 @@ function hideShowNavBars(win, navBar, bentoButton) {
     }
 
     if (
-        this.oldScroll < (this.scrollY - 50) &&
-        navBar.classList.contains("show-nav-bars") &&
-        !bentoButton._active
-      ) {
+      this.oldScroll < this.scrollY - 50 &&
+      navBar.classList.contains("show-nav-bars") &&
+      !bentoButton._active
+    ) {
       navBar.classList = ["hide-nav-bars"];
       this.oldScroll = this.scrollY;
       return;
@@ -232,23 +242,27 @@ function toggleMobileFeatures(topNavBar) {
   const win = window;
   const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
-    const emailCards = document.querySelectorAll(".breaches-dash.email-card:not(.zero-breaches)");
-      emailCards.forEach(card => {
-        card.classList.add("active");
-      });
-      return;
-    }
+    const emailCards = document.querySelectorAll(
+      ".breaches-dash.email-card:not(.zero-breaches)"
+    );
+    emailCards.forEach((card) => {
+      card.classList.add("active");
+    });
+    return;
+  }
 
   const bentoButton = document.querySelector("firefox-apps");
-  const closeActiveEmailCards = document.querySelectorAll(".breaches-dash.email-card.active");
-    closeActiveEmailCards.forEach(card => {
-      card.classList.remove("active");
-    });
+  const closeActiveEmailCards = document.querySelectorAll(
+    ".breaches-dash.email-card.active"
+  );
+  closeActiveEmailCards.forEach((card) => {
+    card.classList.remove("active");
+  });
 
-    if (windowWidth < 600) {
-      hideShowNavBars(win, topNavBar, bentoButton);
-      addBentoObserver();
-    }
+  if (windowWidth < 600) {
+    hideShowNavBars(win, topNavBar, bentoButton);
+    addBentoObserver();
+  }
 }
 
 function toggleHeaderStates(header, win) {
@@ -263,8 +277,10 @@ function toggleHeaderStates(header, win) {
 }
 
 function addMainNavListeners() {
-  const inactiveNavLinks = document.querySelectorAll(".nav-link:not(.active-link)");
-  inactiveNavLinks.forEach(link => {
+  const inactiveNavLinks = document.querySelectorAll(
+    ".nav-link:not(.active-link)"
+  );
+  inactiveNavLinks.forEach((link) => {
     /* Remove the .active-link-underline class from any link
        that isn't the current ".active-link" which occasionally
        happens when the user navigates to a page using browser
@@ -281,12 +297,12 @@ function addMainNavListeners() {
   });
 }
 
-function addBentoObserver(){
+function addBentoObserver() {
   const bodyClasses = document.body.classList;
   const bentoButton = document.querySelector("firefox-apps");
   const observerConfig = { attributes: true };
-  const watchBentoChanges = function(bentoEl, observer) {
-    for(const mutation of bentoEl) {
+  const watchBentoChanges = function (bentoEl, observer) {
+    for (const mutation of bentoEl) {
       if (mutation.type === "attributes") {
         bodyClasses.toggle("bento-open", bentoButton._active);
       }
@@ -299,7 +315,8 @@ function addBentoObserver(){
 }
 
 function resizeDashboardMargin() {
-  const userDashboard = document.querySelector("#dashboard.dashboard");
+  const userDashboard = document.querySelector(".js-dashboard");
+
   if (!userDashboard) {
     return;
   }
@@ -314,7 +331,7 @@ function resizeDashboardMargin() {
 
 function checkIfTier1(preferredLanguage) {
   const tier1Languages = ["de", "en", "fr"];
-  return tier1Languages.some(lang => preferredLanguage.includes(lang));
+  return tier1Languages.some((lang) => preferredLanguage.includes(lang));
 }
 
 function recruitmentLogic() {
@@ -323,7 +340,9 @@ function recruitmentLogic() {
     return;
   }
 
-  const recruited = document.cookie.split("; ").some((item) => item.trim().startsWith("recruited="));
+  const recruited = document.cookie
+    .split("; ")
+    .some((item) => item.trim().startsWith("recruited="));
   if (recruited) {
     recruitmentBannerLink.parentElement.remove();
     return;
@@ -331,16 +350,18 @@ function recruitmentLogic() {
 
   recruitmentBannerLink.addEventListener("click", () => {
     const date = new Date();
-    date.setTime(date.getTime() + 30*24*60*60*1000);
+    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = "recruited=true; expires=" + date.toUTCString();
   });
 }
 
 function addWaitlistSignupButtonListeners() {
-  document.querySelectorAll(".relay-sign-up-btn").forEach(btn => {
-
-    btn.addEventListener("click", async(e) => {
-      const relayEndpoint = new URL("/join-waitlist", document.body.dataset.serverUrl);
+  document.querySelectorAll(".relay-sign-up-btn").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      const relayEndpoint = new URL(
+        "/join-waitlist",
+        document.body.dataset.serverUrl
+      );
       const signUpCallout = document.querySelector(".relay-sign-up");
 
       signUpCallout.classList.add("sending-email");
@@ -351,15 +372,15 @@ function addWaitlistSignupButtonListeners() {
           },
           mode: "same-origin",
           method: "POST",
-          body: JSON.stringify({"emailToAdd": "add-user-email"}),
+          body: JSON.stringify({ emailToAdd: "add-user-email" }),
         });
         if (response && response.status === 200) {
-          setTimeout(()=> {
+          setTimeout(() => {
             signUpCallout.classList.add("email-sent");
             signUpCallout.classList.remove("sending-email");
           }, 500);
         }
-      } catch(e) {
+      } catch (e) {
         // we need error messaging
       }
     });
@@ -367,54 +388,66 @@ function addWaitlistSignupButtonListeners() {
 }
 
 function addWaitlistObservers() {
-
   const privateRelayCtas = document.querySelectorAll(".private-relay-cta");
 
   if (privateRelayCtas.length === 0) {
     return;
   }
-  const availableIntersectionObserver = ("IntersectionObserver" in window);
-  const gaAvailable = typeof(ga) !== undefined;
-
+  const availableIntersectionObserver = "IntersectionObserver" in window;
+  const gaAvailable = typeof ga !== undefined;
 
   if (availableIntersectionObserver && gaAvailable) {
-    const sendWaitlistViewPing = elemData => {
+    const sendWaitlistViewPing = (elemData) => {
       if (elemData.userIsSignedUp === "true") {
         return;
       }
       ga("send", "event", "Waitlist Test", "View", elemData.analyticsLabel);
     };
     const onRelayCtasComingIntoView = (entries, observer) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           sendWaitlistViewPing(entry.target.dataset);
           observer.unobserve(entry.target);
         }
       });
     };
-    const observer = new IntersectionObserver(onRelayCtasComingIntoView, { rootMargin: "-50px" });
+    const observer = new IntersectionObserver(onRelayCtasComingIntoView, {
+      rootMargin: "-50px",
+    });
 
-    privateRelayCtas.forEach(relayCta => {
+    privateRelayCtas.forEach((relayCta) => {
       observer.observe(relayCta);
       relayCta.addEventListener("click", (e) => {
         if (relayCta.href) {
-          if (typeof(ga) !== "undefined") {
+          if (typeof ga !== "undefined") {
             // Recheck if the user is on strict-mode and only block the click default action if GA is available
             e.preventDefault();
-            ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel, {
-            "hitCallback": window.location.href = relayCta.href,
-            });
+            ga(
+              "send",
+              "event",
+              "Waitlist Test",
+              "Engage",
+              relayCta.dataset.analyticsLabel,
+              {
+                hitCallback: (window.location.href = relayCta.href),
+              }
+            );
           }
           return;
         }
-        ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel);
+        ga(
+          "send",
+          "event",
+          "Waitlist Test",
+          "Engage",
+          relayCta.dataset.analyticsLabel
+        );
       });
     });
   }
 }
 
 function vpnBannerLogic() {
-
   // Check if element exists at all
   const vpnPromoBanner = document.getElementById("vpnPromoBanner");
 
@@ -423,7 +456,9 @@ function vpnBannerLogic() {
   }
 
   // Check for dismissal cookie
-  const vpnBannerDismissedCookie = document.cookie.split("; ").some((item) => item.trim().startsWith("vpnBannerDismissed="));
+  const vpnBannerDismissedCookie = document.cookie
+    .split("; ")
+    .some((item) => item.trim().startsWith("vpnBannerDismissed="));
 
   if (vpnBannerDismissedCookie) {
     return;
@@ -433,21 +468,22 @@ function vpnBannerLogic() {
   const vpnPromoCloseButton = document.getElementById("vpnPromoCloseButton");
 
   const vpnPromoFunctions = {
-    hide: function() {
+    hide: function () {
       vpnPromoFunctions.setCookie();
       vpnPromoBanner.classList.add("closed");
       document.body.classList.remove("vpn-banner-visible");
     },
-    init: function() {
+    init: function () {
       vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
       vpnPromoFunctions.show();
     },
-    setCookie: function() {
+    setCookie: function () {
       const date = new Date();
-      date.setTime(date.getTime() + 30*24*60*60*1000);
-      document.cookie = "vpnBannerDismissed=true; expires=" + date.toUTCString();
+      date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
+      document.cookie =
+        "vpnBannerDismissed=true; expires=" + date.toUTCString();
     },
-    show: function() {
+    show: function () {
       vpnPromoBanner.classList.remove("closed");
       document.body.classList.add("vpn-banner-visible");
     },
@@ -456,13 +492,13 @@ function vpnBannerLogic() {
   vpnPromoFunctions.init();
 }
 
-( async() => {
-  document.addEventListener("touchstart", function(){}, true);
+(async () => {
+  document.addEventListener("touchstart", function () {}, true);
   const win = window;
   const header = document.getElementById("header");
   const topNavigation = document.querySelector("#navigation-wrapper");
 
-  win.addEventListener("pageshow", function() {
+  win.addEventListener("pageshow", function () {
     addMainNavListeners();
     toggleMobileFeatures(topNavigation);
     toggleArticles();
@@ -475,7 +511,7 @@ function vpnBannerLogic() {
   let windowWidth = win.outerWidth;
   win.addEventListener("resize", () => {
     const newWindowWidth = win.outerWidth;
-      if (newWindowWidth !== windowWidth) {
+    if (newWindowWidth !== windowWidth) {
       toggleMobileFeatures(topNavigation);
       toggleArticles();
       windowWidth = newWindowWidth;
@@ -485,28 +521,34 @@ function vpnBannerLogic() {
 
   document.addEventListener("scroll", () => toggleHeaderStates(header, win));
 
-  document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach(logo => {
+  document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach((logo) => {
     logo.addEventListener("error", (missingLogo) => {
       missingLogo.target.src = "/img/svg/placeholder.svg";
     });
   });
 
-  document.querySelectorAll(".toggle").forEach(toggle => {
+  document.querySelectorAll(".toggle").forEach((toggle) => {
     toggle.addEventListener("click", toggleEl);
   });
 
-  document.querySelectorAll(".open-oauth").forEach(button => {
+  document.querySelectorAll(".open-oauth").forEach((button) => {
     button.addEventListener("click", (e) => doOauth(e.target));
   });
 
-  document.querySelectorAll("#see-additional-recs").forEach(button => {
+  document.querySelectorAll("#see-additional-recs").forEach((button) => {
     button.addEventListener("click", () => {
       button.classList.add("fade-out");
       const overflowRecs = document.getElementById("overflow-recs");
       overflowRecs.classList.remove("hide");
-      if (typeof(ga) !== "undefined") {
+      if (typeof ga !== "undefined") {
         // Send "Click" ping for #see-additional-recs click
-        ga("send", "event", "Breach Details: See Additional Recommendations" , "Click", "See Additional Recommendations");
+        ga(
+          "send",
+          "event",
+          "Breach Details: See Additional Recommendations",
+          "Click",
+          "See Additional Recommendations"
+        );
         // Send "View" pings for any CTAs that become visible on #see-additional-recs click
         sendRecommendationPings(".overflow-rec-cta");
       }
@@ -521,7 +563,9 @@ function vpnBannerLogic() {
   addWaitlistObservers();
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
-  dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
+  dropDownMenu.addEventListener("click", () =>
+    toggleDropDownMenu(dropDownMenu)
+  );
 
   const preferredLanguages = navigator.languages;
   const preferredFirstLanguageIsTier1 = checkIfTier1(preferredLanguages[0]);
@@ -531,7 +575,7 @@ function vpnBannerLogic() {
   }
 
   // Only show banner if users first language is English, Germand or French variant
-  if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
+  if (["en", "de", "fr"].some((lang) => preferredLanguages[0].includes(lang))) {
     vpnBannerLogic();
   }
 
@@ -543,12 +587,14 @@ function vpnBannerLogic() {
   const submitBtn = document.querySelector(".breachesSubmitButton");
 
   if (submitBtn) {
-    submitBtn.addEventListener("click", (e)=> {
+    submitBtn.addEventListener("click", (e) => {
       // Email Validation
       const scanForm = document.getElementById("scan-user-email");
-      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
+      const scanFormEmailValue = document.querySelector(
+        "#scan-user-email input[type='email']"
+      ).value;
 
-      if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+      if (scanFormEmailValue.length < 1 || !isValidEmail(scanFormEmailValue)) {
         scanForm.classList.add("invalid");
         return;
       }
@@ -557,7 +603,7 @@ function vpnBannerLogic() {
         e.preventDefault();
 
         // Send GA Ping
-        if (typeof(ga) !== "undefined") {
+        if (typeof ga !== "undefined") {
           ga("send", {
             hitType: "event",
             eventCategory: "Sign Up Button",
@@ -569,13 +615,9 @@ function vpnBannerLogic() {
           });
         }
 
-        doOauth(e.target, {emailWatch: true});
+        doOauth(e.target, { emailWatch: true });
         return;
       }
-
     });
   }
-
-
-
 })();

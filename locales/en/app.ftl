@@ -372,15 +372,19 @@ dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name = Enter your full name
 dash-remove-form-loc-label = What is your current location?
-dash-remove-form-loc-city = Enter your city
-dash-remove-form-loc-state = Enter your state
-dash-remove-form-loc-country = Enter your country
+dash-remove-form-loc-city = City
+dash-remove-form-loc-state = State
+dash-remove-form-loc-country = Country
 dash-remove-form-birth-year-label = What is your birth year?
 dash-remove-form-birth-year = Enter your birth year
 dash-remove-submit = Start Data Removal
 dash-remove-form-required-helper = * These fields are required
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 dash-remove-kanary-discalimer = Service provided by The Kanary
+remove-form-success-title = We're executing your data removal!
+remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
+remove-form-success-next-title = What's next?
+remove-form-success-next-details = We’ll email you once your summary is ready. Don’t forget to check your spam folder and promotions tab. 
 
 show-breaches-for-this-email = Show all breaches for this email.
 
