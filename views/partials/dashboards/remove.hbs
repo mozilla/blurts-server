@@ -41,12 +41,14 @@
     <form action="/user/remove-data-submit" method="post" id="add-another-email-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
       <input type="hidden" name="_csrf" value="{{ csrfToken }}">
       <div class="input-group">
-        <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
-        <div class="tmp-select-output flx space-between">
-          <div class="tmp-select-email bold">mheavers@gmail.com</div>
-          <div class="flx">
-            <div class="tmp-select-helper">Your Mozilla email account</div>
-            <div class="tmp-select-arrow">❯</div>
+        <div class="input-group remove-account-select">
+          <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
+          <div class="tmp-select-output flx space-between">
+            <select class="tmp-select-email bold" name="account" id="account">
+            {{#each this.verifiedEmails }}
+              <option value="{{ email }}">{{ email }}</option>
+            {{/each}}
+            </select>
           </div>
         </div>
       </div>
