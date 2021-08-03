@@ -308,7 +308,7 @@ async function getDashboard(req, res) {
   });
 }
 
-async function getRemove(req, res) {
+async function getRemoveFormPage(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
@@ -340,7 +340,7 @@ async function getRemove(req, res) {
     unverifiedEmails,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove",
+    whichPartial: "dashboards/remove-form",
     experimentFlags,
     utmOverrides,
   });
@@ -710,7 +710,7 @@ module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
-  getRemove,
+  getRemoveFormPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   add,

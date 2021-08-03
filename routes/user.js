@@ -11,7 +11,7 @@ const {
   verify,
   logout,
   getDashboard,
-  getRemove,
+  getRemoveFormPage,
   getPreferences,
   getBreachStats,
   removeEmail,
@@ -39,7 +39,7 @@ router.get(
   "/remove",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemove)
+  asyncMiddleware(getRemoveFormPage)
 );
 router.get(
   "/preferences",

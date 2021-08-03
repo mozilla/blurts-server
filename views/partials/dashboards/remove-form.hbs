@@ -10,7 +10,7 @@
     {{> dashboards/breach-dash-tabs activeTab="remove"}}
   </main>
 {{/getBreachStats}}
-{{#getRemoveDashboard}}
+{{#getRemoveFormData}}
 <div class="flx flx-col remove-dashboard-container js-remove-dashboard-container">
   {{#if ./../supportedLocalesIncludesEnglish}}
     <div class="mw-860 remove-dashboard-card-container">
@@ -93,4 +93,4 @@
 <div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
     <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
   </div>
-{{/getRemoveDashboard}}
+{{/getRemoveFormData}}
