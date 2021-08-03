@@ -414,6 +414,10 @@ ul li {
   flex-grow: 1;
 }
 
+.flx-wrap {
+  flex-wrap: wrap;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -426,6 +430,12 @@ ul li {
   flex: 1 1 25%;
   max-width: 25%;
   min-width: 25%;
+}
+
+.col-4 {
+  flex: 1 1 33.33333334%;
+  min-width: 33.33333334%;
+  max-width: 33.33333334%;
 }
 
 .col-6 {

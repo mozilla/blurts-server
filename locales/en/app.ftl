@@ -368,6 +368,9 @@ dash-tab-remove-title = Remove my data
 dash-tab-beta = Beta
 
 #removal form strings
+
+dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
+dash-remove-intro-2 = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start the removal process immediately. You’ll be receiveing an email update in 24 hours.
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name = Enter your full name
