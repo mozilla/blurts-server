@@ -1,88 +1,96 @@
 {{#getBreachStats}}
-  <main id="dashboard" class="dashboard clear-header flx flx-col" data-page-label="User Dashboard">
-    <div class="mw-860 flx flx-col">
-      <div class="flx jst-cntr">
-        <div class="col-3"><span class="welcome-back">{{ welcomeMessage }}</span></div>
+  <main id="remove-form" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+    <div class="mw-860 flx dashboard-stats-and-welcome">
+        <div class="dashboard-welcome-container flx">
+          <span class="dashboard-welcome-back">{{ welcomeMessage }}</span>
+        </div>
         {{> breach-stats addClasses="user-stats"}}
       </div>
-      <div class="breach-dash-tabs">
-          <ul class="flx flx-row dash-tabs-list">
-            <li class="dash-tabs-item dash-tabs-item--breaches col-3">
-              <a href="/user/dashboard" class="dash-tabs-link">{{ getString "dash-tab-breach-title" }}</a>
-              </li>
-            <li class="dash-tabs-item dash-tabs-item--remove col-3 active">
-              <a href="/user/remove" class="dash-tabs-link">{{ getString "dash-tab-remove-title" }}
-                <span class="dash-tabs-beta">{{ getString "dash-tab-beta" }}</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
+    {{> dashboards/breach-dash-tabs activeTab="remove"}}
   </main>
 {{/getBreachStats}}
 {{#getRemoveDashboard}}
-<div class="flx flx-col remove-dashboard-container">
+<div class="flx flx-col remove-dashboard-container js-remove-dashboard-container">
   {{#if ./../supportedLocalesIncludesEnglish}}
     <div class="mw-860 remove-dashboard-card-container">
       <div class="remove-dashboard-card">
         <div href="/remove-my-data" class="remove-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
           <div class="remove-dashboard-card-content flx">
             <div class="private-relay-dashboard-card-copy">
-              <p class="remove-dashboard-card-body">Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.</p>
-              <p class="remove-dashboard-card-body">To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start the removal process immediately. You’ll be receiveing an email update in 24 hours.</p>
+              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-1"}}</p>
+              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-2"}}</p>
             </div>
           </div>
         </div>
       </div>
     </div>
   {{/if}}
-  <div class="remove-dashboard-form-container mw-860">
-    <form action="/user/remove-data-submit" method="post" id="add-another-email-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
-      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-      <div class="input-group">
-        <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
-        <div class="tmp-select-output flx space-between">
-          <div class="tmp-select-email bold">mheavers@gmail.com</div>
-          <div class="flx">
-            <div class="tmp-select-helper">Your Mozilla email account</div>
-            <div class="tmp-select-arrow">❯</div>
+  <div class="mw-860 remove-dashboard-section-container">
+    <div class="remove-dashboard-form-container remove-dashboard-section">
+      <form action="/user/remove-data-submit" method="post" id="add-another-email-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div class="input-group">
+          <div class="input-group remove-account-select">
+            <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
+            <div class="tmp-select-output flx space-between">
+              <select class="tmp-select-email bold" name="account" id="account">
+              {{#each this.verifiedEmails }}
+                <option value="{{ email }}">{{ email }}</option>
+              {{/each}}
+              </select>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="input-group">
-        <label for="remove-dashboard-form-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
-        <input id="remove-dashboard-form-name" class="input-group-field field--full " type="text" name="full name" placeholder="{{ getString "dash-remove-form-name"}}" aria-label="{{ getString "dash-remove-form-name"}}" autocomplete="off">
-        {{> forms/error-message }}
-      </div>
-      <div class="input-group">
-        <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
-        <div class="flx">
-          <input id="remove-dashboard-form-loc-city" class="input-group-field " type="text" name="full name" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off" required>
-          
-          <input id="remove-dashboard-form-loc-state" class="input-group-field" type="text" name="full name" placeholder="{{ getString "dash-remove-form-loc-state"}}" aria-label="{{ getString "dash-remove-form-loc-state"}}" autocomplete="off" required>
-
-          <input id="remove-dashboard-form-loc-country" class="input-group-field flx-grow" type="text" name="full name" placeholder="{{ getString "dash-remove-form-loc-country"}}" aria-label="{{ getString "dash-remove-form-loc-country"}}" autocomplete="off" required>
+        <div class="input-group">
+          <label for="remove-dashboard-form-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+          <input id="remove-dashboard-form-name" class="input-group-field field--full " type="text" name="full name" placeholder="{{ getString "dash-remove-form-name"}}" aria-label="{{ getString "dash-remove-form-name"}}" autocomplete="off">
+          {{> forms/error-message }}
         </div>
-        {{> forms/error-message }}
-      </div>
-      <div class="input-group">
-        <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
-        <input id="remove-dashboard-form-year" required class="input-group-field field--full " type="text" name="full name" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off">
-        {{> forms/error-message }}
-      </div>
-      <div class="input-group-button inline">
-        <input id="remove-dashboard-data-submit" class="input-group-submit remove-dashboard-data-submit inline" type="submit" value="{{ getString "dash-remove-submit" }}"/>
-        {{> forms/loader }}
-      </div>
-      <div class="flx flx-col flx-cntr">
-        <p class="remove-dashboard-form-disclaimer">{{ getString "dash-remove-form-disclaimer"}}</p>
-        <p class="alert remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
-      </div>
-    </form>
-  </div>
-  <div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
-    <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
+        <div class="input-group">
+          <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
+          <div class="flx remove-dashboard-form-loc">
+            <input id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="full name" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off">
+    
+            <input id="remove-dashboard-form-loc-state" class="input-group-field" type="text" name="full name" placeholder="{{ getString "dash-remove-form-loc-state"}}" aria-label="{{ getString "dash-remove-form-loc-state"}}" autocomplete="off">
+            <input id="remove-dashboard-form-loc-country" class="input-group-field flx-grow" type="text" name="full name" placeholder="{{ getString "dash-remove-form-loc-country"}}" aria-label="{{ getString "dash-remove-form-loc-country"}}" autocomplete="off">
+          </div>
+          {{> forms/error-message }}
+        </div>
+        <div class="input-group">
+          <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
+          <input id="remove-dashboard-form-year" class="input-group-field field--full " type="text" name="full name" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off">
+          {{> forms/error-message }}
+        </div>
+        <div class="input-group-button inline">
+          <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" value="{{ getString "dash-remove-submit" }}"/>
+          {{> forms/loader }}
+        </div>
+        <div class="flx flx-col flx-cntr">
+          <p class="remove-dashboard-form-disclaimer">{{ getString "dash-remove-form-disclaimer"}}</p>
+          <p class="alert remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
+<div class="flx flx-col js-remove-success-container is-hidden">
+  <div class="mw-860 flx flx-col remove-dashboard-section remove-success-section">
+    <div class="flx jst-cntr">
+      <img class="remove-success-icon" src="/img/svg/remove-form-success-icon.svg"/>
+    </div>
+    <div class="flx flx-col txt-cntr remove-success-text-section">
+      <h2 class="title-section">{{ getString "remove-form-success-title"}}</h2>
+      <p>{{ getString "remove-form-success-details"}}</p>
+    </div>
+    <div class="flx flx-col txt-cntr remove-success-text-section">
+      <h2 class="title-section">{{ getString "remove-form-success-next-title"}}</h2>
+      <p>{{ getString "remove-form-success-next-details"}}</p>
+    </div>
+  </div>
+</div>
+<div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
+    <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
+  </div>
 {{/getRemoveDashboard}}

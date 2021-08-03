@@ -1,0 +1,19 @@
+.is-hidden {
+  display: none;
+}
+
+.no-pad-mobile {
+  @include breakpoint(mobile) {
+    padding: 0;
+  }
+}
+
+.hidden-mobile {
+  @include breakpoint(mobile) {
+    display: none;
+  }
+}
+
+.full-width-mobile {
+  width: 100%;
+}

@@ -1,6 +1,10 @@
 // Protocol
 // @import "libs/protocol/css/protocol.scss";
 
+//Sass Helpers
+@import "includes/_vars";
+@import "includes/_mixins";
+
 // Includes
 @import "includes/variables";
 // @import "includes/utils";
@@ -15,6 +19,8 @@
 // Previous Styles
 @import "partials/all-breaches.scss";
 @import "partials/main.scss";
+@import "partials/helpers.scss";
+@import "partials/typography.scss";
 @import "partials/articles.scss";
 @import "partials/breach-cards.scss";
 @import "partials/breach-detail.scss";

@@ -1,23 +1,25 @@
-/*
-.monitoredEmails {
-  background-color: var(--violet3);
-}
-
-.numBreaches {
-  background-color: var(--violet4);
-}
-
-.passwords {
-  background-color: var(--violet5);
-}
-*/
-
 .breach-stat-number,
 .stat-headline {
-  //color: rgba(255, 255, 255, 1);
   color: var(--grey5);
   justify-content: center;
   width: 100%;
+}
+
+.breach-stat {
+  &-row {
+  }
+  &-metrics {
+    @include breakpoint(mobile) {
+      margin-top: 16px;
+    }
+  }
+  &-numbers {
+    margin-top: 10px;
+  }
+  &-cell {
+    text-align: center;
+    @include col(4);
+  }
 }
 
 .breach-stat-number {
@@ -27,11 +29,8 @@
   color: var(--ink);
 }
 
-.breach-stat-row {
-  padding: 0 var(--padding);
-  //max-width: 31.25%;
-  //border-radius: 8px;
-  text-align: center;
+.breach-stat-container {
+  flex-direction: column;
 }
 
 .stat-row-title-wrap {
@@ -157,19 +156,9 @@ progress.progress-bar::-webkit-progress-value {
     flex-direction: column;
   }
 
-  .breach-stat-row {
-    max-width: 100%;
-    padding: 16px;
-    margin-bottom: 16px;
-  }
-
   .stat-row-title-wrap {
     flex-direction: row;
     align-items: center;
-  }
-
-  .stat-headline {
-    text-align: left;
   }
 
   .breach-stat-number {

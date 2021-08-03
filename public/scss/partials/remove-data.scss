@@ -17,11 +17,47 @@
         margin-top: 0;
       }
     }
+    &-border {
+      padding: 28px 0;
+      margin: 0.15rem;
+      overflow: hidden;
+    }
+    &-content::before {
+      background-image: url("/img/svg/data-removal-small.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      height: 100%;
+      width: 35%;
+      margin-right: 28px;
+      content: "";
+      display: inline-block;
+      align-self: center;
+      @include breakpoint(mobile) {
+        display: none;
+      }
+    }
   }
-  &-form-container {
+  &-section-container {
+    @include breakpoint(mobile) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  &-section {
     background-color: white;
-    padding: 50px 11vw;
+    padding: 50px 16%;
     border-radius: 8px;
+    @include breakpoint(mobile) {
+      border-radius: 0;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+  &-form-loc {
+    @include breakpoint(mobile) {
+      flex-wrap: wrap;
+    }
   }
   &-form {
     .input-group {
@@ -29,6 +65,22 @@
     }
     .input-group-field {
       margin-top: 16px;
+      &#remove-dashboard-form-loc-city {
+        flex: 1;
+      }
+      &#remove-dashboard-form-loc-state {
+        width: 20%;
+        max-width: 20%;
+      }
+      &#remove-dashboard-form-loc-country {
+        width: 33.3334%;
+        max-width: 33.3334%;
+      }
+      @include breakpoint(mobile) {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0;
+      }
     }
     .input-group-label {
       font-size: 15px;
@@ -56,35 +108,34 @@
   }
 }
 
-.remove-dashboard-card-content::before {
-  background-image: url("/img/svg/data-removal-small.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center center;
-  height: 100%;
-  width: 35%;
-  margin-right: 28px;
-  content: "";
-  display: inline-block;
-  align-self: center;
-}
-
-.remove-dashboard-card-border {
-  padding: 28px;
-  margin: 0.15rem;
-  overflow: hidden;
+//application form success screen
+.remove-success {
+  &-section {
+    margin-top: 56px;
+  }
+  &-text-section {
+    margin-top: 35px;
+  }
+  &-icon {
+    width: 170px;
+  }
 }
 
 .tmp-select-output {
   background-color: var(--grey0);
-  border-radius: var(br-input);
-  padding: 12px 16px;
+  border-radius: var(--br-input);
+  padding: 0 16px;
 }
 
 .tmp-select-email {
   font-size: 18px;
   line-height: 24px;
   color: var(--grey7);
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 12px 0;
 }
 
 .tmp-select-helper {
