@@ -119,13 +119,6 @@ function getAboutPage(req, res) {
   });
 }
 
-function getRemovePage(req, res) {
-  return res.render("top-level-page", {
-    title: "Remove Data", //MH: todo
-    whichPartial: "top-level/remove-page",
-  });
-}
-
 function getBentoStrings(req, res) {
   const localizedBentoStrings = {
     bentoButtonTitle: req.fluentFormat("bento-button-title"),
@@ -176,7 +169,6 @@ module.exports = {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
-  getRemovePage,
   home,
   notFound,
   removeMyData,

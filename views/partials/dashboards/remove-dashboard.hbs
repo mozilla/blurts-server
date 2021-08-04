@@ -1,0 +1,35 @@
+{{#getBreachStats}}
+  <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+    <div class="mw-860 flx dashboard-stats-and-welcome">
+        <div class="dashboard-welcome-container flx">
+          <span class="dashboard-welcome-back">{{ welcomeMessage }}</span>
+        </div>
+        {{> breach-stats addClasses="user-stats"}}
+      </div>
+    </div>
+    {{> dashboards/breach-dash-tabs activeTab="remove"}}
+  </main>
+{{/getBreachStats}}
+{{#getRemoveDashData}}
+<div class="flx flx-col remove-dashboard-container">
+
+  <div class="mw-860">
+    <div class="flx space-between remove-dash-status-container">
+      <div class="remove-dash-status-container">
+        <p class="remove-dash-status">{{ getString "remove-status-in-progress"}}</p>
+        <p class="remove-dash-status">
+          <span class="remove-email bold">{{this.verifiedEmails.0.email}} </span> 
+          {{ getString "remove-exposure-snippet"}}
+          <span class="bold">{{removeDashExposureMessage}}</span>
+        </p>
+      </div>
+      <div class="remove-dash-update-container">
+        <p class="remove-dash-update">{{ getString "remove-status-update" }} <span class="remove-dash-update-date">{{this.lastUpdate}}</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
+  <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
+</div>
+{{/getRemoveDashData}}

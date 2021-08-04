@@ -103,6 +103,54 @@ function getRemoveFormData(args) {
   return args.fn(emailCards);
 }
 
+function getRemoveDashData(args) {
+  const verifiedEmails = args.data.root.verifiedEmails;
+  const locales = args.data.root.req.supportedLocales;
+
+  //MH TODO: include only necessary logic here
+  // move emails with 0 breaches to the bottom of the page
+  verifiedEmails.sort((a, b) => {
+    if (
+      (a.breaches.length === 0 && b.breaches.length > 0) ||
+      (b.breaches.length === 0 && a.breaches.length > 0)
+    ) {
+      return b.breaches.length - a.breaches.length;
+    }
+    return 0;
+  });
+
+  //MH - temp construct FPO dynamic update date
+  const curDate = new Date();
+  const options = {
+    month: "short",
+    day: "2-digit",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  };
+
+  const upDate = curDate.toLocaleDateString(locales, options);
+
+  const emailCards = {
+    verifiedEmails: verifiedEmails,
+    breaches: verifiedEmails[0].breaches.length, //MH TODO: temp...use actual logic from API
+    lastUpdate: upDate,
+  };
+
+  return args.fn(emailCards);
+}
+
+function removeDashExposureMessage(args) {
+  //MH TODO: temp...use actual logic from API
+  const locales = args.data.root.req.supportedLocales;
+  const verifiedEmail = args.data.root.verifiedEmails[0].email;
+  const breaches = args.data.root.verifiedEmails[0].breaches.length;
+  return LocaleUtils.fluentFormat(locales, "remove-exposure-message", {
+    email: verifiedEmail,
+    breaches: breaches,
+  });
+}
+
 function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
@@ -229,7 +277,9 @@ module.exports = {
   getUserPreferences,
   getBreachesDashboard,
   getRemoveFormData,
+  getRemoveDashData,
   welcomeMessage,
+  removeDashExposureMessage,
   getLastAddedEmailStrings,
   makeEmailVerifiedString,
   makeEmailAddedToSubscriptionString,

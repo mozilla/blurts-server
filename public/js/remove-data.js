@@ -6,8 +6,18 @@ function initRemove() {
   const $removePage = document.querySelector(".remove-page");
   if ($removePage) {
     switch ($removePage.id) {
+      //MH - TODO: remove need for conditional and do this before we route. Talk to P&S about how best to handle this.
       case "remove-form":
-        initRemoveForm();
+        const removeFormSubmitted =
+          localStorage.getItem("remove-form-submitted") === "true";
+        if (removeFormSubmitted) {
+          window.location = "/user/remove-dashboard";
+        } else {
+          initRemoveForm();
+        }
+        break;
+      case "remove-dashboard":
+        initRemoveDashboard();
         break;
       default:
         console.log("no matching page id");
@@ -19,6 +29,10 @@ function initRemoveForm() {
   addRemoveFormListeners();
 }
 
+function initRemoveDashboard() {
+  localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
+}
+
 function addRemoveFormListeners() {
   document
     .querySelector(".js-remove-submit")
@@ -27,7 +41,13 @@ function addRemoveFormListeners() {
 
 function onSubmitClick(evt) {
   evt.preventDefault();
+  handleFormSubmit();
   toggleFormSuccess(true);
+}
+
+function handleFormSubmit() {
+  //process form then...
+  localStorage.setItem("remove-form-submitted", true); //MH - temp, set local storage to handle showing remove dashboard after form submission. Need to replace this with actual form processing
 }
 
 function toggleFormSuccess(doShow) {

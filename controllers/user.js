@@ -346,6 +346,44 @@ async function getRemoveFormPage(req, res) {
   });
 }
 
+async function getRemoveDashPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let lastAddedEmail = null;
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-dashboard",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
 async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   let unsafeBreachesForEmail = [];
@@ -711,6 +749,7 @@ module.exports = {
   getPreferences,
   getDashboard,
   getRemoveFormPage,
+  getRemoveDashPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   add,

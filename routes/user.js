@@ -12,6 +12,7 @@ const {
   logout,
   getDashboard,
   getRemoveFormPage,
+  getRemoveDashPage,
   getPreferences,
   getBreachStats,
   removeEmail,
@@ -36,11 +37,19 @@ router.get(
   asyncMiddleware(getDashboard)
 );
 router.get(
-  "/remove",
+  "/remove-form",
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveFormPage)
 );
+
+router.get(
+  "/remove-dashboard",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveDashPage)
+);
+
 router.get(
   "/preferences",
   csrfProtection,

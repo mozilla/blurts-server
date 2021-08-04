@@ -1,3 +1,13 @@
+.remove-dash {
+  &-status {
+    font-size: 14px;
+  }
+  &-update {
+    text-align: right;
+    color: var(--grey5);
+    font-size: 12px;
+  }
+}
 .remove-dashboard {
   &-container {
     margin: 0;
