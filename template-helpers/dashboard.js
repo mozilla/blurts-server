@@ -131,10 +131,52 @@ function getRemoveDashData(args) {
 
   const upDate = curDate.toLocaleDateString(locales, options);
 
+  //MH temp construct temporary removal results data
+
+  const removeResults = [
+    {
+      site: "Spydialer",
+      status: "in-progress",
+      time: "2 hours remaining", //MH todo: should probably be able to handle a timestamp or int time conversion e.g. ms
+      risk: "high",
+    },
+    {
+      site: "Lexisneix",
+      status: "in-progress",
+      time: "12 hours remaining",
+      risk: "high",
+    },
+    {
+      site: "Acxion",
+      status: "in-progress",
+      time: "2 days remaining",
+      risk: "low",
+    },
+    {
+      site: "Mozilla",
+      status: "in-progress",
+      time: "1 hour remaining",
+      risk: "high",
+    },
+    {
+      site: "Google",
+      status: "completed",
+      risk: "low",
+      details: "Your email was removed",
+    },
+    {
+      site: "Tinder",
+      status: "completed",
+      risk: "high",
+      details: "Your email, name and address was removed",
+    },
+  ];
+
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breaches: verifiedEmails[0].breaches.length, //MH TODO: temp...use actual logic from API
     lastUpdate: upDate,
+    removeResults: removeResults,
   };
 
   return args.fn(emailCards);

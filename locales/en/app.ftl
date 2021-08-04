@@ -398,6 +398,9 @@ remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
 remove-results-toggle-alt = Expand Option
+remove-risk-high = High Risk
+remove-risk-low = Low Risk
+
 
 show-breaches-for-this-email = Show all breaches for this email.
 

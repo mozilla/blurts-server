@@ -61,41 +61,9 @@
     </div>
     <div class="remove-dash-results-container">
         <ul class="remove-dash-results-list">
-          <li class="remove-dash-results-list-item drop-shadow flx space-between">
-            <div class="remove-dash-results-site-container flx flx-cntr">
-              <img src="/img/svg/remove-in-progress-icon.svg" alt="{{ getString "remove-filter-in-progress"}}" class="remove-dash-results-list-icon"/>
-              <div class="remove-dash-results-site-name-container">
-                <span class="remove-dash-results-site-name">Spydialer</span>
-              </div>
-            </div>
-            <div class="remove-dash-results-status-container flx flx-cntr">
-              <div class="remove-dash-results-status-time remove-dash-results-status-el">2 hours remaining</div>
-              <div class="remove-dash-results-risk remove-dash-results-status-el risk-high">High Risk</div>
-              <div class="remove-dash-results-toggle-container remove-dash-results-status-el">
-                <a href="" class="remove-dash-results-toggle">
-                  <img src="/img/svg/chevron-down-grey.svg" alt="{{ getString "remove-results-toggle-alt"}}" class="remove-dash-results-toggle-img">
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="remove-dash-results-list-item drop-shadow flx space-between">
-            <div class="remove-dash-results-site-container flx flx-cntr">
-              <img src="/img/svg/remove-filter-key-completed-icon.svg" alt="{{ getString "remove-filter-completed"}}" class="remove-dash-results-list-icon"/>
-              <div class="remove-dash-results-site-name-container flx flx-col">
-                <span class="remove-dash-results-site-name">Google</span>
-                <span class="remove-dash-results-site-status">Your email was removed</span>
-              </div>
-            </div>
-            <div class="remove-dash-results-status-container flx flx-cntr">
-              <div class="remove-dash-results-status-time remove-dash-results-status-el">2 hours remaining</div>
-              <div class="remove-dash-results-risk risk-low remove-dash-results-status-el">High Risk</div>
-              <div class="remove-dash-results-toggle-container remove-dash-results-status-el">
-                <a href="" class="remove-dash-results-toggle">
-                  <img src="/img/svg/chevron-down-grey.svg" alt="{{ getString "remove-results-toggle-alt"}}" class="remove-dash-results-toggle-img">
-                </a>
-              </div>
-            </div>
-          </li>
+          {{#each this.removeResults}}
+            {{> removal/removal-result }}
+          {{/each}}
         </ul>
       </div>
   </div>
