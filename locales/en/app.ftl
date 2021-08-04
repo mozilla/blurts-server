@@ -397,6 +397,7 @@ remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
+remove-results-toggle-alt = Expand Option
 
 show-breaches-for-this-email = Show all breaches for this email.
 
