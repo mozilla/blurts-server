@@ -393,6 +393,10 @@ remove-status-in-progress = We are working on removing your data
 remove-status-update = Last update:
 remove-exposure-snippet = is currently exposed in these
 remove-exposure-message = {$breaches} websites
+remove-filter-in-progress = In-Progress
+remove-filter-completed = Completed
+remove-filter-list = Filter Removal List
+remove-filter-date = Filter by Date
 
 show-breaches-for-this-email = Show all breaches for this email.
 

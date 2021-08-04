@@ -1,5 +1,5 @@
 {{#getBreachStats}}
-  <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
     <div class="mw-860 flx dashboard-stats-and-welcome">
         <div class="dashboard-welcome-container flx">
           <span class="dashboard-welcome-back">{{ welcomeMessage }}</span>
@@ -13,7 +13,7 @@
 {{#getRemoveDashData}}
 <div class="flx flx-col remove-dashboard-container">
 
-  <div class="mw-860">
+  <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
       <div class="remove-dash-status-container">
         <p class="remove-dash-status">{{ getString "remove-status-in-progress"}}</p>
@@ -25,6 +25,34 @@
       </div>
       <div class="remove-dash-update-container">
         <p class="remove-dash-update">{{ getString "remove-status-update" }} <span class="remove-dash-update-date">{{this.lastUpdate}}</span></p>
+      </div>
+    </div>
+    <div class="remove-filter-container flx space-between">
+      <div class="remove-filter-key flx flx-grow">
+        <ul class="remove-filter-key-list flx flx-row">
+          <li class="remove-filter-key-list-item">
+            <img src="/img/svg/remove-in-progress-icon.svg" alt="In-Progress" class="remove-filter-key-list-icon"/>
+            <span class="remove-filter-key-list-title">{{ getString "remove-filter-in-progress"}}</span>
+          </li>
+          <li class="remove-filter-key-list-item">
+            <img src="/img/svg/remove-filter-key-completed-icon.svg" alt="Completed" class="remove-filter-key-list-icon"/>
+            <span class="remove-filter-key-list-title">{{ getString "remove-filter-completed"}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="remove-filter-controls">
+        <ul class="remove-filter-list flx flx-row">
+          <li class="remove-filter-list-item">
+            <a href="#" class="remove-filter-list-button" role="button">
+              <img src="/img/svg/remove-filter-date-icon.svg" alt="{{ getString "remove-filter-date"}}" class="remove-filter-list-icon"/>
+            </a>
+          </li>
+          <li class="remove-filter-list-item">
+            <a href="#" class="remove-filter-list-button" role="button">
+              <img src="/img/svg/remove-filter-list-icon.svg" alt="{{ getString "remove-filter-list"}}" class="remove-filter-list-icon"/>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </div>

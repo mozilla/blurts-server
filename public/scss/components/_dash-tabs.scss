@@ -20,6 +20,7 @@
     }
   }
   &-link {
+    @include ff-metropolis;
     font-size: 18px;
     color: var(--grey5);
     margin: 0 auto;
