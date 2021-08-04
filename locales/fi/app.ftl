@@ -607,3 +607,5 @@ steps-to-resolve-headline = Vaiheet tämän vuodon ratkaisemiseksi
 vpn-promo-headline = Nyt on aika parantaa turvallisuuttasi verkossa.
 vpn-promo-copy = { -brand-Mozilla }n Virtual Private Network auttaa suojaamaan internetyhteyttäsi hakkereilta ja vakoojilta.
 vpn-promo-cta = Hanki { -brand-mozilla-vpn }
+vpn-promo-headline-new = Säästä 50 prosenttia koko vuoden tilauksella
+vpn-promo-copy-new = Suojaa tietojasi verkossa — ja valitse sinulle sopiva VPN-tilaus.
