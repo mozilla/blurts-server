@@ -1,7 +1,8 @@
-FROM node:14-alpine
+FROM node:14-slim
 
-RUN addgroup -g 10001 app && \
-    adduser -D -G app -h /app -u 10001 app
+RUN groupadd --gid 10001 app
+RUN useradd --uid 10001 --gid 10001 --home-dir /app -m app
+
 RUN npm update -g
 RUN rm -rf /tmp/*
 
