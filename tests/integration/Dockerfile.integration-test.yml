@@ -1,5 +1,5 @@
 # Build app for integration tests
-FROM node:14-slim
+FROM node:14
 
 RUN useradd -d /app -u 1001 -g 1000 app
 
@@ -16,9 +16,7 @@ USER app
 
 COPY package.json package.json
 
-RUN node -v
 RUN npm install
-RUN npm install wdio-image-comparison-service@2.3
 RUN rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:root . /app
