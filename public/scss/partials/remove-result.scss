@@ -21,6 +21,7 @@
     padding-top: 32px;
     margin-top: 32px;
     display: none;
+    width: 100%;
     .remove-dash-results-list-item.is-active & {
       display: block;
     }
@@ -45,6 +46,12 @@
     margin-left: 25px;
     &:first-child {
       margin-left: 0;
+    }
+    @include breakpoint(mobile) {
+      margin-left: 8px;
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
   &-results-status-time {
@@ -75,5 +82,6 @@
   &-results-detail {
     color: var(--ink);
     line-height: 20px;
+    width: 100%;
   }
 }

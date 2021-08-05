@@ -2,10 +2,18 @@
   &-status {
     font-size: 14px;
   }
+  &-status-container {
+    @include breakpoint(mobile) {
+      flex-direction: column-reverse;
+    }
+  }
   &-update {
     text-align: right;
     color: var(--grey5);
     font-size: 12px;
+    @include breakpoint(mobile) {
+      text-align: left;
+    }
   }
   &-results-container {
     margin-top: 34px;

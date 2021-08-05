@@ -25,10 +25,9 @@
     <div class="remove-dash-results-status-container flx flx-cntr">
       {{#if this.time}}
         <div
-          class="remove-dash-results-status-time remove-dash-results-status-el"
+          class="remove-dash-results-status-time remove-dash-results-status-el hidden-mobile"
         >
           {{this.time}}
-
         </div>
       {{/if}}
       {{#ifCompare this.risk "===" "high"}}
@@ -65,6 +64,11 @@
   </div>
   <div class="remove-dash-results-details-container">
     <ul class="remove-dash-results-details-list">
+      {{#if this.time}}
+        <li class="remove-dash-results-details-item mobile-only">
+          <p class="remove-dash-results-detail">{{this.time}}</p>
+        </li>
+      {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <h3 class="remove-dash-results-detail-title">
           {{getString "remove-result-details-found"}}
@@ -82,7 +86,10 @@
           {{getString "remove-result-link"}}
         </h3>
         <p class="remove-dash-results-detail">
-          <a class="remove-dash-results-detail-link" href="">{{this.link}}</a>
+          <a
+            class="remove-dash-results-detail-link break-word"
+            href=""
+          >{{this.link}}</a>
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
