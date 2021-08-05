@@ -34,40 +34,6 @@
     &:first-child {
       margin-left: 0;
     }
-    &[data-id="in-progress"] {
-      [data-filter="in-progress"] & {
-        background-color: var(--blue3);
-      }
-      .remove-filter-key-list-title {
-        [data-filter="in-progress"] & {
-          color: white;
-        }
-      }
-      .remove-filter-key-list-icon {
-        [data-filter="in-progress"] & {
-          path {
-            fill: white;
-          }
-        }
-      }
-    }
-    &[data-id="completed"] {
-      [data-filter="completed"] & {
-        background-color: var(--green2);
-      }
-      .remove-filter-key-list-title {
-        [data-filter="completed"] & {
-          color: white;
-        }
-      }
-      .remove-filter-key-list-icon {
-        [data-filter="completed"] & {
-          path {
-            fill: white;
-          }
-        }
-      }
-    }
   }
   &-key-list-title {
     @include ff-metropolis;
@@ -87,6 +53,39 @@
 .remove-dashboard {
   &-container {
     margin: 0;
+    //when a filter is active
+    &[data-filter="in-progress"] {
+      .remove-dash-results-list-item:not([data-status="in-progress"]) {
+        display: none;
+      }
+      .remove-filter-key-list-item[data-id="in-progress"] {
+        background-color: var(--blue3);
+        .remove-filter-key-list-title {
+          color: white;
+        }
+        .remove-filter-key-list-icon {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
+    &[data-filter="completed"] {
+      .remove-dash-results-list-item:not([data-status="completed"]) {
+        display: none;
+      }
+      .remove-filter-key-list-item[data-id="completed"] {
+        background-color: var(--green2);
+        .remove-filter-key-list-title {
+          color: white;
+        }
+        .remove-filter-key-list-icon {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
   }
   &-card-container {
     margin: 0 auto;

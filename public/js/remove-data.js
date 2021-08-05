@@ -90,26 +90,9 @@ function onStatusFilterToggle(e) {
   e.preventDefault();
   const $item = e.currentTarget.closest(".remove-filter-key-list-item");
   const filterType = $item.dataset.id;
-
-  const filteredItems = document.querySelectorAll(
-    `.remove-dash-results-list-item[data-status="${filterType}"]`
-  );
-  const hiddenItems = document.querySelectorAll(
-    `.remove-dash-results-list-item:not([data-status="${filterType}"])`
-  );
-  filteredItems.forEach(showItem, false);
-  hiddenItems.forEach(hideItem, true);
   document
     .querySelector(".remove-dashboard-container")
     .setAttribute("data-filter", filterType);
-}
-
-function showItem(el) {
-  el.classList.toggle("is-hidden", false);
-}
-
-function hideItem(el) {
-  el.classList.toggle("is-hidden", true);
 }
 
 window.onload = function () {
