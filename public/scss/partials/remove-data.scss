@@ -34,6 +34,40 @@
     &:first-child {
       margin-left: 0;
     }
+    &[data-id="in-progress"] {
+      [data-filter="in-progress"] & {
+        background-color: var(--blue3);
+      }
+      .remove-filter-key-list-title {
+        [data-filter="in-progress"] & {
+          color: white;
+        }
+      }
+      .remove-filter-key-list-icon {
+        [data-filter="in-progress"] & {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
+    &[data-id="completed"] {
+      [data-filter="completed"] & {
+        background-color: var(--green2);
+      }
+      .remove-filter-key-list-title {
+        [data-filter="completed"] & {
+          color: white;
+        }
+      }
+      .remove-filter-key-list-icon {
+        [data-filter="completed"] & {
+          path {
+            fill: white;
+          }
+        }
+      }
+    }
   }
   &-key-list-title {
     @include ff-metropolis;

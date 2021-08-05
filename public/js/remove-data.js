@@ -67,16 +67,49 @@ function addRemoveDashListeners() {
   document
     .querySelectorAll(".js-remove-dash-details-toggle")
     .forEach(addRemoveDashDetailsToggle);
+  document
+    .querySelectorAll(".remove-filter-key-button")
+    .forEach(addStatusFilterListener);
 }
 
 function addRemoveDashDetailsToggle(el) {
   el.addEventListener("click", onRemoveDashDetailsToggle);
 }
 
+function addStatusFilterListener(el) {
+  el.addEventListener("click", onStatusFilterToggle);
+}
+
 function onRemoveDashDetailsToggle(e) {
   e.preventDefault();
   const $item = e.currentTarget.closest(".remove-dash-results-list-item");
   $item.classList.toggle("is-active");
+}
+
+function onStatusFilterToggle(e) {
+  e.preventDefault();
+  const $item = e.currentTarget.closest(".remove-filter-key-list-item");
+  const filterType = $item.dataset.id;
+
+  const filteredItems = document.querySelectorAll(
+    `.remove-dash-results-list-item[data-status="${filterType}"]`
+  );
+  const hiddenItems = document.querySelectorAll(
+    `.remove-dash-results-list-item:not([data-status="${filterType}"])`
+  );
+  filteredItems.forEach(showItem, false);
+  hiddenItems.forEach(hideItem, true);
+  document
+    .querySelector(".remove-dashboard-container")
+    .setAttribute("data-filter", filterType);
+}
+
+function showItem(el) {
+  el.classList.toggle("is-hidden", false);
+}
+
+function hideItem(el) {
+  el.classList.toggle("is-hidden", true);
 }
 
 window.onload = function () {
