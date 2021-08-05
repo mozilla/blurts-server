@@ -36,6 +36,7 @@ device-information = Laitetiedot
 device-serial-numbers = Laitteen sarjanumerot
 device-usage-tracking-data = Laitteen käytön seurantatiedot
 drinking-habits = Juomatottumukset
+driver-s-licenses = Ajokortit
 drug-habits = Lääkitystottumukset
 eating-habits = Ruokailutottumukset
 education-levels = Koulutustasot
@@ -66,6 +67,8 @@ instant-messenger-identities = Pikaviestimien identiteetit
 ip-addresses = IP-osoitteet
 job-applications = Työhakemukset
 job-titles = Työnimikkeet
+# This string refers to vehicle license plates. 
+licence-plates = Rekisteritunnukset
 living-costs = Asumiskustannukset
 login-histories = Kirjautumishistoria
 mac-addresses = MAC-osoitteet
