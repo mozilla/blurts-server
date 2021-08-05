@@ -76,7 +76,7 @@
     "stylelint-scss": "^3.20.1",
     "uglify-js": "3.11.5",
     "wdio-docker-service": "2.4.0",
-    "wdio-image-comparison-service": "^2.3.0",
+    "wdio-image-comparison-service": "2.3.0",
     "wdio-video-reporter": "2.0.1"
   },
   "engines": {
