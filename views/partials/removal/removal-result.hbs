@@ -1,60 +1,96 @@
-<li class="remove-dash-results-list-item drop-shadow flx space-between">
-  <div class="remove-dash-results-site-container flx flx-cntr">
-    {{#ifCompare this.status "===" "in-progress"}}
-      <img
-        src="/img/svg/remove-in-progress-icon.svg"
-        alt="{{getString "remove-filter-in-progress"}}"
-        class="remove-dash-results-list-icon"
-      />
-    {{/ifCompare}}
-    {{#ifCompare this.status "===" "completed"}}
-      <img
-        src="/img/svg/remove-filter-key-completed-icon.svg"
-        alt="{{getString "remove-filter-completed"}}"
-        class="remove-dash-results-list-icon"
-      />
-    {{/ifCompare}}
-    <div class="remove-dash-results-site-name-container flx flx-col">
-      <span class="remove-dash-results-site-name">{{this.site}}</span>
-      {{#if this.details}}
-        <span class="remove-dash-results-site-details">{{this.details}}</span>
+<li class="remove-dash-results-list-item drop-shadow flx flx-col">
+  <div class="remove-dash-results-summary-container flx space-between">
+    <div class="remove-dash-results-site-container flx flx-cntr">
+      {{#ifCompare this.status "===" "in-progress"}}
+        <img
+          src="/img/svg/remove-in-progress-icon.svg"
+          alt="{{getString "remove-filter-in-progress"}}"
+          class="remove-dash-results-list-icon"
+        />
+      {{/ifCompare}}
+      {{#ifCompare this.status "===" "completed"}}
+        <img
+          src="/img/svg/remove-filter-key-completed-icon.svg"
+          alt="{{getString "remove-filter-completed"}}"
+          class="remove-dash-results-list-icon"
+        />
+      {{/ifCompare}}
+      <div class="remove-dash-results-site-name-container flx flx-col">
+        <span class="remove-dash-results-site-name">{{this.site}}</span>
+        {{#if this.details}}
+          <span class="remove-dash-results-site-details">{{this.details}}</span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="remove-dash-results-status-container flx flx-cntr">
+      {{#if this.time}}
+        <div
+          class="remove-dash-results-status-time remove-dash-results-status-el"
+        >
+          {{this.time}}
+
+        </div>
       {{/if}}
+      {{#ifCompare this.risk "===" "high"}}
+        <div
+          class="remove-dash-results-risk remove-dash-results-status-el risk-high"
+        >
+          {{getString "remove-risk-high"}}
+        </div>
+      {{/ifCompare}}
+
+      {{#ifCompare this.risk "===" "low"}}
+        <div
+          class="remove-dash-results-risk remove-dash-results-status-el risk-low"
+        >
+          {{getString "remove-risk-low"}}
+        </div>
+      {{/ifCompare}}
+
+      <div
+        class="remove-dash-results-toggle-container remove-dash-results-status-el"
+      >
+        <a
+          href="#"
+          class="remove-dash-results-toggle js-remove-dash-details-toggle"
+        >
+          <img
+            src="/img/svg/chevron-down-grey.svg"
+            alt="{{getString "remove-results-toggle-alt"}}"
+            class="remove-dash-results-toggle-img"
+          />
+        </a>
+      </div>
     </div>
   </div>
-  <div class="remove-dash-results-status-container flx flx-cntr">
-    {{#if this.time}}
-      <div
-        class="remove-dash-results-status-time remove-dash-results-status-el"
-      >
-        {{this.time}}
-      </div>
-    {{/if}}
-    {{#ifCompare this.risk "===" "high"}}
-      <div
-        class="remove-dash-results-risk remove-dash-results-status-el risk-high"
-      >
-        {{getString "remove-risk-high"}}
-      </div>
-    {{/ifCompare}}
-
-    {{#ifCompare this.risk "===" "low"}}
-      <div
-        class="remove-dash-results-risk remove-dash-results-status-el risk-low"
-      >
-        {{getString "remove-risk-low"}}
-      </div>
-    {{/ifCompare}}
-
-    <div
-      class="remove-dash-results-toggle-container remove-dash-results-status-el"
-    >
-      <a href="" class="remove-dash-results-toggle">
-        <img
-          src="/img/svg/chevron-down-grey.svg"
-          alt="{{getString "remove-results-toggle-alt"}}"
-          class="remove-dash-results-toggle-img"
-        />
-      </a>
-    </div>
+  <div class="remove-dash-results-details-container">
+    <ul class="remove-dash-results-details-list">
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <h3 class="remove-dash-results-detail-title">
+          {{getString "remove-result-details-found"}}
+        </h3>
+        <p class="remove-dash-results-detail">{{this.info}}</p>
+      </li>
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <h3 class="remove-dash-results-detail-title">
+          {{getString "remove-result-description"}}
+        </h3>
+        <p class="remove-dash-results-detail">{{this.description}}</p>
+      </li>
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <h3 class="remove-dash-results-detail-title">
+          {{getString "remove-result-link"}}
+        </h3>
+        <p class="remove-dash-results-detail">
+          <a class="remove-dash-results-detail-link" href="">{{this.link}}</a>
+        </p>
+      </li>
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <h3 class="remove-dash-results-detail-title">
+          {{getString "remove-result-opt-out"}}
+        </h3>
+        <p class="remove-dash-results-detail">{{this.optout}}</p>
+      </li>
+    </ul>
   </div>
 </li>

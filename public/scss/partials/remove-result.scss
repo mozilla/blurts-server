@@ -8,6 +8,23 @@
       margin-top: 0;
     }
   }
+  &-results-toggle-img {
+    .remove-dash-results-list-item.is-active & {
+      transform: rotate(180deg);
+    }
+  }
+  &-results-summary-container {
+    width: 100%;
+  }
+  &-results-details-container {
+    border-top: 1px solid var(--grey2);
+    padding-top: 32px;
+    margin-top: 32px;
+    display: none;
+    .remove-dash-results-list-item.is-active & {
+      display: block;
+    }
+  }
   &-results-list-icon {
     height: 24px;
     width: auto;
@@ -48,5 +65,15 @@
       color: var(--grey10);
       border: 1px solid var(--grey10);
     }
+  }
+  &-results-detail-title {
+    margin-bottom: 0;
+    @include ff-metropolis;
+    color: var(--grey5);
+    font-size: 12px;
+  }
+  &-results-detail {
+    color: var(--ink);
+    line-height: 20px;
   }
 }

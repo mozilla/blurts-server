@@ -397,10 +397,15 @@ remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
+
+# remove results
 remove-results-toggle-alt = Expand Option
 remove-risk-high = High Risk
 remove-risk-low = Low Risk
-
+remove-result-details-found = Info found
+remove-result-description = Description
+remove-result-link = Link
+remove-result-opt-out = Where to opt-out
 
 show-breaches-for-this-email = Show all breaches for this email.
 

@@ -31,6 +31,7 @@ function initRemoveForm() {
 
 function initRemoveDashboard() {
   localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
+  addRemoveDashListeners();
 }
 
 function addRemoveFormListeners() {
@@ -60,6 +61,22 @@ function toggleFormSuccess(doShow) {
     ".js-remove-success-container"
   );
   $formSuccessContainer.classList.toggle("is-hidden", !doShow);
+}
+
+function addRemoveDashListeners() {
+  document
+    .querySelectorAll(".js-remove-dash-details-toggle")
+    .forEach(addRemoveDashDetailsToggle);
+}
+
+function addRemoveDashDetailsToggle(el) {
+  el.addEventListener("click", onRemoveDashDetailsToggle);
+}
+
+function onRemoveDashDetailsToggle(e) {
+  e.preventDefault();
+  const $item = e.currentTarget.closest(".remove-dash-results-list-item");
+  $item.classList.toggle("is-active");
 }
 
 window.onload = function () {
