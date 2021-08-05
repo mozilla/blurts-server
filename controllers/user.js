@@ -308,7 +308,7 @@ async function getDashboard(req, res) {
   });
 }
 
-async function getRemove(req, res) {
+async function getRemoveFormPage(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
@@ -340,7 +340,45 @@ async function getRemove(req, res) {
     unverifiedEmails,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove",
+    whichPartial: "dashboards/remove-form",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveDashPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let lastAddedEmail = null;
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-dashboard",
     experimentFlags,
     utmOverrides,
   });
@@ -710,7 +748,8 @@ module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
-  getRemove,
+  getRemoveFormPage,
+  getRemoveDashPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   add,

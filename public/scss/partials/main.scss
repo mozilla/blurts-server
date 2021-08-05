@@ -402,6 +402,10 @@ ul li {
   flex-direction: row;
 }
 
+.flx-start {
+  justify-content: flex-start;
+}
+
 .flx-end {
   justify-content: flex-end;
 }
@@ -512,6 +516,10 @@ ul li {
 .jst-cntr {
   justify-content: center;
   align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
 }
 
 .bg-white {
