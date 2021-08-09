@@ -153,6 +153,10 @@ micro-survey-strongly-agree-response = Qebleɣ aṭas
 micro-survey-pmf-prompt = Amek ara tḥulfuḍ ma yella ur tettezziḍ ara ad tesqedceḍ { -product-short-name }?
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = Ḥezneɣ aṭas
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = Ḥezneɣ cwiṭ
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = Ur d-cliɛeɣ ara
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
 # Link title
@@ -296,6 +300,12 @@ no-other-breaches-found = Ula tarewla yettwafen s unadi afessas.
 no-results-blurb = Suref-aɣ, tarewla-a ur telli ara deg taffa-nneɣ n yisefka.
 all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
 search-breaches = Nadi tirewliwin n yisefka
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+     <span>Imayl-ik ur d-iban ara deg trewla-a,
+     maca uṭṭun-ik n tiliɣri izmer ad yettwasemres.</span> Kra n yimiḍanen i yettwakren deg trewla n yisefka n Facebook ddan ula d uṭṭunen n tiliɣriakken telɣut tudmawant maca ur ddint ara tansiwin n yimayl. Ma yella urǧin tjerrdeḍ ɣer ɣer Facebook
+    — xas wama ur t-tesseqdaceḍ ara — A-t-a wayen i ilaq ad txedmeḍ
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Tirewliwin ibanen:
 
