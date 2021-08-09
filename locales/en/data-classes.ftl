@@ -4,6 +4,7 @@ account-balances = Account balances
 address-book-contacts = Address book contacts
 age-groups = Age groups
 ages = Ages
+# Refers to medical appointments.
 appointments = Appointments
 apps-installed-on-devices = Apps installed on devices
 astrological-signs = Astrological signs
