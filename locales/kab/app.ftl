@@ -114,6 +114,13 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Inig deg { -brand-fxa }
 # This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = Acu n tezmilt gar 1, amek ara twellheḍ medden ɣer { -product-short-name } i yimeddukal neɣ wid ukud txeddmeḍ?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = Ur cukkeɣ ara
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = Ahat
+# This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = { -product-short-name } fessus i useqdec?
@@ -127,7 +134,25 @@ micro-survey-credibility-prompt = Tettwaliḍ tzemreḍ ad tgeḍ laman deg { -p
 micro-survey-appearance-prompt = { -product-short-name } ɣur-s tanekda yeṣfan yerna fessusen?
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
+micro-survey-strongly-disagree-response = Ur qbileɣ ara aṭas
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Ur qbileɣ ara
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
 micro-survey-unsure-response = Ur tḥiqeɣ ara
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Qebleɣ
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Qebleɣ aṭas
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = Amek ara tḥulfuḍ ma yella ur tettezziḍ ara ad tesqedceḍ { -product-short-name }?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = Ḥezneɣ aṭas
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
 # Link title
