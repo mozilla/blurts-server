@@ -4,6 +4,8 @@ account-balances = 帳戶餘額
 address-book-contacts = 通訊錄聯絡人
 age-groups = 年齡組別
 ages = 年齡
+# Refers to medical appointments.
+appointments = 醫療約診紀錄
 apps-installed-on-devices = 裝置上安裝的應用程式
 astrological-signs = 星座
 audio-recordings = 錄音
