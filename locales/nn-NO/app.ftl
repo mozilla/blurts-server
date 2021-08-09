@@ -624,3 +624,4 @@ steps-to-resolve-headline = Framgangsmåte for å løyse denne datalekkasjen
 vpn-promo-headline = No er det på tide å auke sikkerheita di på nettet.
 vpn-promo-copy = { -brand-Mozilla }:s VPN hjelper til med å beskytte internett-tilkoplinga di frå hackarar og spionar.
 vpn-promo-cta = Få { -brand-mozilla-vpn }
+vpn-promo-headline-new = Spar 50% med eit årsabonnement
