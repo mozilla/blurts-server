@@ -31,6 +31,7 @@ email-subject-no-breaches = { -product-name }chariqa' taq retztaqan le man eta'm
 email-subject-verify = Chaq'atuj le akemtaqoqxa'nib'al cheh { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Chaweta'maj nik'aj chik chi rij { $fxmLink }
+email-sensitive-disclaimer = Ruma nim ucholajil we retztaqan, le nik'aj chi taq taqoqxa'nib'al man utz taj keq'alajisax chi kiwach uk'iyal. xopan we na'b'anen awuk' rumal qas xqilo chi at at ajchoq'e we taqoqxa'nib'al
 # Link Title
 faq-v2-1 = Man kinch'ob' ta rij jun chi kech we taq k'aywokaj on uk'olib'al web'. Jas che ink'o pa we jun retztaqan?
 # Link Title
