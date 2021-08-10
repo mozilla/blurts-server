@@ -4,6 +4,8 @@ account-balances = Залишки на рахунках
 address-book-contacts = Контакти адресної книги
 age-groups = Вікові групи
 ages = Вік
+# Refers to medical appointments.
+appointments = Записи до лікаря
 apps-installed-on-devices = Додатки, встановлені на пристроях
 astrological-signs = Астрологічні знаки
 audio-recordings = Аудіозаписи
