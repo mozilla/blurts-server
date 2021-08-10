@@ -53,3 +53,5 @@ monitor-another-email = Kawaj kawilawachij jun chi taqoqxa'nib'al?
 # Subject line of email
 pre-fxa-subject = Jun k'ak'arisanem pa { -product-name }
 pre-fxa-headline = Jas uk'exom ruk' { -product-name }
+pre-fxa-blurb = Are wa' jastaq xk'extajik are taq xatz'ib'aj awib' pa { -product-name }. le pataninem le ¶ kuq'atuj taq chayub'al rech eta'matal juq'attzij rech aq'alajisanem
+pre-fxa-tout-1 = Chawilawachij nik'aj chi taq retztaqan
