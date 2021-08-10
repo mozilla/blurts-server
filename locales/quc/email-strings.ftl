@@ -57,3 +57,5 @@ pre-fxa-blurb = Are wa' jastaq xk'extajik are taq xatz'ib'aj awib' pa { -product
 pre-fxa-tout-1 = Chawilawachij nik'aj chi taq retztaqan
 pre-fxa-p-1 = <a>Chawinaqirisaj jun k'ak' akemb'i'aj</a>chech rilawachixik kq'ax pa uwi' 15 keriqonib'al rech taqoqxa'nb'al chech ¶ taq juq'attzij rech retztaqan. Kqab'ij chi utz kaya' apachike taqoqxa'nib'al le akojom chik chech uwinaqirisaxik taq kemb'i'aj pa nimk'atz.
 pre-fxa-tout-2 = Chariqa' jun ilwach
+pre-fxa-p-2 = Chawila' ronojel taq retztaqan rech juq'attzij xa pa jun k'olib'al are chi kawilo jachike retokib'al kak'exo.
+pre-fxa-tout-3 = Chariqa' na taq kemriqonib'al rech na'b'anem
