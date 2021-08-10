@@ -59,3 +59,6 @@ pre-fxa-p-1 = <a>Chawinaqirisaj jun k'ak' akemb'i'aj</a>chech rilawachixik kq'ax
 pre-fxa-tout-2 = Chariqa' jun ilwach
 pre-fxa-p-2 = Chawila' ronojel taq retztaqan rech juq'attzij xa pa jun k'olib'al are chi kawilo jachike retokib'al kak'exo.
 pre-fxa-tout-3 = Chariqa' na taq kemriqonib'al rech na'b'anem
+pre-fxa-p-3 = Kopan na taq na'b'anem awuk' pa { -product-name }. Kqaya' ub'ixik chi awech we ¶ kq'alajin le aq'alajisanem pa jun k'ak' retztaqan rech q'alajisanem.
+# Button at the bottom of pre-fxa email.
+create-account = Chawinaqirisaj jun kemb'i'aj
