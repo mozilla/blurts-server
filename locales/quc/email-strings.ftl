@@ -48,3 +48,8 @@ faq-v2-4 = Jas kub'an le { -product-name } chech taq nim ucholajiñ uk'olib'al w
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
 pre-fxa-message = <a> chawinaqirisaj jun sipatal { -brand-fxa }, chi'l utz katiq k'a pa 15 kemriqonib'al rech taqoqxa'nib'al.
+# Section headline
+monitor-another-email = Kawaj kawilawachij jun chi taqoqxa'nib'al?
+# Subject line of email
+pre-fxa-subject = Jun k'ak'arisanem pa { -product-name }
+pre-fxa-headline = Jas uk'exom ruk' { -product-name }
