@@ -4,6 +4,8 @@ account-balances = Υπόλοιπα λογαριασμών
 address-book-contacts = Επαφές βιβλίου διευθύνσεων
 age-groups = Ηλικιακές ομάδες
 ages = Ηλικίες
+# Refers to medical appointments.
+appointments = Ιατρικά ραντεβού
 apps-installed-on-devices = Εφαρμογές σε συσκευές
 astrological-signs = Αστρολογικά ζώδια
 audio-recordings = Ηχογραφήσεις
