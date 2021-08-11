@@ -4,6 +4,8 @@ account-balances = Tilisaldot
 address-book-contacts = Osoitekirjan yhteystiedot
 age-groups = Ikäryhmät
 ages = Iät
+# Refers to medical appointments.
+appointments = Tapaamiset
 apps-installed-on-devices = Laitteelle asennetut sovellukset
 astrological-signs = Horoskooppimerkit
 audio-recordings = Äänitallenteet
