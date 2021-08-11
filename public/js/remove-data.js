@@ -41,26 +41,12 @@ function addRemoveFormListeners() {
 }
 
 function onSubmitClick(evt) {
-  evt.preventDefault();
   handleFormSubmit();
-  toggleFormSuccess(true);
 }
 
 function handleFormSubmit() {
   //process form then...
   localStorage.setItem("remove-form-submitted", true); //MH - temp, set local storage to handle showing remove dashboard after form submission. Need to replace this with actual form processing
-}
-
-function toggleFormSuccess(doShow) {
-  const $dashboardContainer = document.querySelector(
-    ".js-remove-dashboard-container"
-  );
-  $dashboardContainer.classList.toggle("is-hidden", doShow);
-
-  const $formSuccessContainer = document.querySelector(
-    ".js-remove-success-container"
-  );
-  $formSuccessContainer.classList.toggle("is-hidden", !doShow);
 }
 
 function addRemoveDashListeners() {

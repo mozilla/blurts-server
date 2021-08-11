@@ -20,6 +20,15 @@ const {
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
+async function handleRemoveFormSignup(req, res) {
+  console.log(req.body); //FORM DATA
+  //const { account, fullname, city, state, country, birthyear } = req.body;
+  //validate form data
+  //store to DB?
+  //send to Kanary
+  res.redirect("/user/remove-signup-confirmation");
+}
+
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
   const sessionUser = req.user;
@@ -341,6 +350,44 @@ async function getRemoveFormPage(req, res) {
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-form",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveConfirmationPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let lastAddedEmail = null;
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-signup-confirmation",
     experimentFlags,
     utmOverrides,
   });
@@ -749,9 +796,11 @@ module.exports = {
   getPreferences,
   getDashboard,
   getRemoveFormPage,
+  getRemoveConfirmationPage,
   getRemoveDashPage,
   getBreachStats,
   getAllEmailsAndBreaches,
+  handleRemoveFormSignup,
   add,
   verify,
   getUnsubscribe,

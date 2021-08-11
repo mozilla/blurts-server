@@ -12,9 +12,11 @@ const {
   logout,
   getDashboard,
   getRemoveFormPage,
+  getRemoveConfirmationPage,
   getRemoveDashPage,
   getPreferences,
   getBreachStats,
+  handleRemoveFormSignup,
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
@@ -44,6 +46,13 @@ router.get(
 );
 
 router.get(
+  "/remove-signup-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveConfirmationPage)
+);
+
+router.get(
   "/remove-dashboard",
   csrfProtection,
   requireSessionUser,
@@ -66,6 +75,15 @@ router.post(
   requireSessionUser,
   asyncMiddleware(add)
 );
+
+router.post(
+  "/remove-data-submit",
+  urlEncodedParser,
+  //csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(handleRemoveFormSignup)
+);
+
 router.post(
   "/remove-email",
   urlEncodedParser,
