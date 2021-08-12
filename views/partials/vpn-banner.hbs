@@ -1,0 +1,13 @@
+<form class="vpn-banner">
+	<div class="vpn-banner-cta">
+		{{#with (getIpInfo)}}
+		<label>Your IP: <output>{{ ip }}</output></label>
+		<label>Location: <output>{{ location }}</output></label>
+		<label>Status: <output class="vpn-banner-red">Unprotected</output> by Mozilla VPN</label>
+		{{/with}}
+	</div>
+	<div class="vpn-banner-content">
+		<h2>Hide your IP address and boost your security in 3 steps</h2>
+		<button>Get Mozilla VPN</button>
+	</div>
+</form>

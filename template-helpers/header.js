@@ -64,29 +64,29 @@ function fxaMenuLinks(args) {
   return getStrings(fxaLinks, locales);
 }
 
-function getIpLocation(args) {
+function getIpInfo(args) {
   const dbBuffer = fs.readFileSync('./tests/mmdb/GeoLite2-City-Test.mmdb');
   const reader = Reader.openBuffer(dbBuffer);
   const clientIp = args.data.root.constants.NODE_ENV === 'dev' ? '2.125.160.216' : args.data.root.req.ip; // TODO: normalize IP for different ip4/ip6 formats
-  let data, city, stateOrCountry
-
-  console.log('header.js getIpLocation called with IP:', clientIp)
+  const info = {ip: clientIp}
+  let geoData, city, stateOrCountry
 
   try{
-    data = reader.city(clientIp);
-    city = data.city.names.en || ''; // TODO: add optional chaining after Node version upgrade
-    stateOrCountry = data.subdivisions[0].isoCode || data.country.isoCode || ''; // TODO: add optional chaining after Node version upgrade
+    geoData = reader.city(clientIp);
+    city = geoData.city.names.en || ''; // TODO: add optional chaining after Node version upgrade
+    stateOrCountry = geoData.subdivisions[0].isoCode || geoData.country.isoCode || ''; // TODO: add optional chaining after Node version upgrade
   }catch(e){
-    console.log(e)
-    return 'No Location'
+    console.warn(e)
   }
 
-  return `${city}${stateOrCountry ? `, ${stateOrCountry}` : ''}`
+  info.location = `${city}${stateOrCountry ? `, ${stateOrCountry}` : ''}`
+
+  return info
 }
 
 module.exports = {
   navLinks,
   fxaMenuLinks,
   getSignedInAs,
-  getIpLocation,
+  getIpInfo,
 };

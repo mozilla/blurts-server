@@ -413,48 +413,68 @@ function addWaitlistObservers() {
   }
 }
 
-function vpnBannerLogic() {
+function initVpnBanner(){
+  const vpnBanner = document.querySelector('.vpn-banner')
 
-  // Check if element exists at all
-  const vpnPromoBanner = document.getElementById("vpnPromoBanner");
+  if(!vpnBanner) return
+  
+  document.body.classList.add('vpn-banner-init')
+  vpnBanner.addEventListener('click', handleClick)
+  updateHeight()
 
-  if (!vpnPromoBanner) {
-    return;
+  function handleClick(){
+    vpnBanner.toggleAttribute('data-expanded')
+    document.body.classList.remove('vpn-banner-init')
+    updateHeight()
   }
 
-  // Check for dismissal cookie
-  const vpnBannerDismissedCookie = document.cookie.split("; ").some((item) => item.trim().startsWith("vpnBannerDismissed="));
-
-  if (vpnBannerDismissedCookie) {
-    return;
+  function updateHeight(){
+    document.body.style.setProperty('--vpn-banner-height', `${vpnBanner.clientHeight - 1}px`)
   }
-
-  // Init: Show banner, set close button listener
-  const vpnPromoCloseButton = document.getElementById("vpnPromoCloseButton");
-
-  const vpnPromoFunctions = {
-    hide: function() {
-      vpnPromoFunctions.setCookie();
-      vpnPromoBanner.classList.add("closed");
-      document.body.classList.remove("vpn-banner-visible");
-    },
-    init: function() {
-      vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
-      vpnPromoFunctions.show();
-    },
-    setCookie: function() {
-      const date = new Date();
-      date.setTime(date.getTime() + 30*24*60*60*1000);
-      document.cookie = "vpnBannerDismissed=true; expires=" + date.toUTCString();
-    },
-    show: function() {
-      vpnPromoBanner.classList.remove("closed");
-      document.body.classList.add("vpn-banner-visible");
-    },
-  };
-
-  vpnPromoFunctions.init();
 }
+
+// function vpnBannerLogic() {
+
+//   // Check if element exists at all
+//   const vpnPromoBanner = document.getElementById("vpnPromoBanner");
+
+//   if (!vpnPromoBanner) {
+//     return;
+//   }
+
+//   // Check for dismissal cookie
+//   const vpnBannerDismissedCookie = document.cookie.split("; ").some((item) => item.trim().startsWith("vpnBannerDismissed="));
+
+//   if (vpnBannerDismissedCookie) {
+//     return;
+//   }
+
+//   // Init: Show banner, set close button listener
+//   const vpnPromoCloseButton = document.getElementById("vpnPromoCloseButton");
+
+//   const vpnPromoFunctions = {
+//     hide: function() {
+//       vpnPromoFunctions.setCookie();
+//       vpnPromoBanner.classList.add("closed");
+//       document.body.classList.remove("vpn-banner-visible");
+//     },
+//     init: function() {
+//       vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
+//       vpnPromoFunctions.show();
+//     },
+//     setCookie: function() {
+//       const date = new Date();
+//       date.setTime(date.getTime() + 30*24*60*60*1000);
+//       document.cookie = "vpnBannerDismissed=true; expires=" + date.toUTCString();
+//     },
+//     show: function() {
+//       vpnPromoBanner.classList.remove("closed");
+//       document.body.classList.add("vpn-banner-visible");
+//     },
+//   };
+
+//   vpnPromoFunctions.init();
+// }
 
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);
@@ -532,7 +552,8 @@ function vpnBannerLogic() {
 
   // Only show banner if users first language is English, Germand or French variant
   if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
-    vpnBannerLogic();
+    // vpnBannerLogic();
+    initVpnBanner();
   }
 
   if (document.getElementById("fxaCheckbox")) {

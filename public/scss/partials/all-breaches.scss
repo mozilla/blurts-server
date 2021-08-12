@@ -89,6 +89,12 @@ button.fuzzy-find-show-breaches.show {
 
 .ab-bg.top-level {
   min-height: 98vh;
+  transform: translateY(var(--vpn-banner-height, 0));
+  transition: transform .2s;
+}
+
+.vpn-banner-init .ab-bg.top-level{
+  transition-duration: 0s;
 }
 
 .all-breaches-headline {

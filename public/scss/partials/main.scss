@@ -341,6 +341,12 @@ ul li {
   padding-top: calc(var(--padding) * 2);
   padding-bottom: calc(var(--padding) * 2);
   position: relative;
+  transform: translateY(var(--vpn-banner-height, 0));
+  transition: transform .2s;
+}
+
+.vpn-banner-init .container{
+  transition-duration: 0s;
 }
 
 .row {

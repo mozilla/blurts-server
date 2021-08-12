@@ -1,0 +1,51 @@
+.vpn-banner {
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+}
+
+.vpn-banner-cta{
+    padding: 8px;
+    background-color: #321C64;
+    pointer-events: none;
+}
+
+.vpn-banner .vpn-banner-red {
+    color: #E22850;
+}
+
+.vpn-banner label {
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 8px;
+}
+
+.vpn-banner output {
+    font-weight: bold;
+}
+
+.vpn-banner-content {
+    position: relative;
+    display: none;
+    color: black;
+    background-color: white;
+    padding: 16px;
+    z-index: -1;
+    cursor: default;
+}
+
+[data-expanded] .vpn-banner-content {
+    display: block;
+    animation: vpn-banner-slide .2s both;
+}
+
+@keyframes vpn-banner-slide {
+    from{
+        transform: translateY(-100%);
+    }
+    to{
+        transform: none;
+    }
+}
