@@ -414,22 +414,22 @@ function addWaitlistObservers() {
 }
 
 function initVpnBanner(){
-  const vpnBanner = document.querySelector('.vpn-banner')
+  const vpnBanner = document.querySelector(".vpn-banner");
 
-  if(!vpnBanner) return
-  
-  document.body.classList.add('vpn-banner-init')
-  vpnBanner.addEventListener('click', handleClick)
-  updateHeight()
+  if(!vpnBanner) return;
+
+  document.body.classList.add("vpn-banner-init");
+  vpnBanner.addEventListener("click", handleClick);
+  updateHeight();
 
   function handleClick(){
-    vpnBanner.toggleAttribute('data-expanded')
-    document.body.classList.remove('vpn-banner-init')
-    updateHeight()
+    vpnBanner.toggleAttribute("data-expanded");
+    document.body.classList.remove("vpn-banner-init");
+    updateHeight();
   }
 
   function updateHeight(){
-    document.body.style.setProperty('--vpn-banner-height', `${vpnBanner.clientHeight - 1}px`)
+    document.body.style.setProperty("--vpn-banner-height", `${vpnBanner.clientHeight - 1}px`);
   }
 }
 
