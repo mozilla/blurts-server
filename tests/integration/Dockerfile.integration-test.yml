@@ -1,5 +1,5 @@
 # Build app for integration tests
-FROM node:10
+FROM node:14
 
 RUN useradd -d /app -u 1001 -g 1000 app
 

@@ -6,7 +6,7 @@ services:
       context: ../..
       dockerfile: tests/integration/Dockerfile.integration-test.yml
     ports:
-      - ${PORT}:${PORT}
+      - "${PORT}:${PORT}"
     depends_on:
       - postgres
     environment:
