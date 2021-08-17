@@ -94,3 +94,9 @@ if (removeMonitorButton) {
     await sendForm(formAction, {_csrf: csrfToken, primaryToken, primaryHash});
   });
 }
+
+const relayLink = document.querySelector("[data-event-label='Try Firefox Relay']");
+//const relayUrl = new URL(relayLink.href);
+const user_email = document.querySelector(".nav-user-email").textContent;
+//relayUrl.searchParams.append("login_hint", user_email);
+relayLink.href = relayLink.href + encodeURIComponent("&login_hint=" + user_email);

@@ -212,7 +212,7 @@ module.exports = {
               body: "rec-email",
               cta: "rec-email-cta",
             },
-            ctaHref: "https://relay.firefox.com/",
+            ctaHref: "https://relay.firefox.com/accounts/fxa/login/?process=login&auth_params="+ encodeURIComponent("prompt=none"),
             ctaShouldOpenNewTab: true,
             ctaAnalyticsId: "Try Firefox Relay",
             recIconClassName: "rec-email",
