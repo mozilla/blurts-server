@@ -6,10 +6,6 @@ const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 const Sentry = require("@sentry/node");
 
 const AppConstants = require("./app-constants");
-Sentry.init({
-  dsn: AppConstants.SENTRY_DSN,
-  environment: AppConstants.NODE_ENV,
-});
 const DB = require("./db/DB");
 const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
@@ -130,6 +126,7 @@ function logErrors (err, req, res, next) {
 function localizeErrorMessages (err, req, res, next) {
   if (err instanceof FluentError) {
     err.message = req.fluentFormat(err.fluentID);
+    err.locales = req.supportedLocales;
   }
   next(err);
 }
