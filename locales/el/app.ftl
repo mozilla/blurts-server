@@ -59,8 +59,8 @@ user-add-duplicate-email-part-2 = Επισκεφθείτε τις { $preferences
 error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
 user-verify-email-report-subject = Η αναφορά σας για το { -product-name }
-user-unsubscribe-token-error = Η κατάργηση εγγραφής απαιτεί token.
-user-unsubscribe-token-email-error = Η κατάργηση εγγραφής απαιτεί token και emailHash.
+user-unsubscribe-token-error = Η κατάργηση εγγραφής απαιτεί διακριτικό.
+user-unsubscribe-token-email-error = Η κατάργηση εγγραφής απαιτεί διακριτικό και emailHash.
 user-unsubscribe-title = { -product-name } : Κατάργηση εγγραφής
 pwt-section-headline = Ισχυρότεροι κωδικοί πρόσβασης = Καλύτερη προστασία
 landing-headline = Το δικαίωμά σας για προστασία από χάκερς ξεκινά εδώ.
