@@ -36,6 +36,7 @@ device-information = Information om enheder
 device-serial-numbers = Serienummer på enheder
 device-usage-tracking-data = Sporingsdata for brug af enheder
 drinking-habits = Alkohol-vaner
+driver-s-licenses = Kørekort
 drug-habits = Narkotika-vaner
 eating-habits = Spisevaner
 education-levels = Uddannelsesniveauer
@@ -66,6 +67,8 @@ instant-messenger-identities = Identiteter på Instant messenger-tjenester
 ip-addresses = IP-adresser
 job-applications = Jobansøgninger
 job-titles = Jobtitler
+# This string refers to vehicle license plates. 
+licence-plates = Nummerplader
 living-costs = Leveomkostninger
 login-histories = Indlognings-historik
 mac-addresses = MAC-adresser

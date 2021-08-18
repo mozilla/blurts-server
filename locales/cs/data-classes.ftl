@@ -4,6 +4,8 @@ account-balances = Zůstatky na účtech
 address-book-contacts = Kontakty z adresáře
 age-groups = Věkové skupiny
 ages = Věk
+# Refers to medical appointments.
+appointments = Funkce
 apps-installed-on-devices = Aplikace nainstalované na zařízení
 astrological-signs = Znamení zvěrokruhu
 audio-recordings = Zvukové nahrávky

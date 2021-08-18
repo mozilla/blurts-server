@@ -4,6 +4,8 @@ account-balances = soldes des comptes
 address-book-contacts = contacts du carnet d’adresses
 age-groups = tranches d’âge
 ages = âges
+# Refers to medical appointments.
+appointments = rendez-vous
 apps-installed-on-devices = applications installées sur les appareils
 astrological-signs = signes du zodiaque
 audio-recordings = enregistrements audio
@@ -36,6 +38,7 @@ device-information = informations sur les appareils
 device-serial-numbers = numéros de série des appareils
 device-usage-tracking-data = données de suivi de l’utilisation des appareils
 drinking-habits = boissons habituelles
+driver-s-licenses = permis de conduire
 drug-habits = consommations de substances prohibées
 eating-habits = préférences alimentaires
 education-levels = niveaux d’éducation
@@ -66,6 +69,8 @@ instant-messenger-identities = profils de messagerie instantanée
 ip-addresses = adresses IP
 job-applications = demandes d’emploi
 job-titles = professions
+# This string refers to vehicle license plates. 
+licence-plates = plaques d’immatriculation
 living-costs = coûts de la vie
 login-histories = historique des identifiants
 mac-addresses = adresses MAC

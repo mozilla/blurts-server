@@ -631,3 +631,5 @@ steps-to-resolve-headline = Fremgangsmåde til at løse denne datalæk
 vpn-promo-headline = Nu er det tid til at forbedre din sikkerhed på internettet.
 vpn-promo-copy = { -brand-Mozilla }s Virtual Private Network beskytter din internetforbindelse mod hackere og spioner.
 vpn-promo-cta = Få { -brand-mozilla-vpn }
+vpn-promo-headline-new = Spar 50% med et årsabonnement
+vpn-promo-copy-new = Beskyt dine online-data - vælg et VPN-abonnement, der passer til dine behov.

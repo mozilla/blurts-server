@@ -4,6 +4,8 @@ account-balances = Kontostand
 address-book-contacts = Adressbuch-Kontakte
 age-groups = Altersgruppen
 ages = Alter
+# Refers to medical appointments.
+appointments = Arzttermine
 apps-installed-on-devices = Auf Geräten installierte Apps
 astrological-signs = Sternzeichen
 audio-recordings = Audioaufnahmen

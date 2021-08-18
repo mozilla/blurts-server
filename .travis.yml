@@ -8,19 +8,19 @@ matrix:
     include:
         - name: "js lint"
           language: node_js
-          node_js: 10
+          node_js: 14
           script: "npm run lint:js"
         - name: "css lint"
           language: node_js
-          node_js: 10
+          node_js: 14
           script: "npm run lint:css"
         - name: "npm audit"
           language: node_js
-          node_js: 10
+          node_js: 14
           script: "npm run lint:audit"
         - name: "tests"
           language: node_js
-          node_js: 10
+          node_js: 14
           env:
               - NODE_ENV=tests
           install:

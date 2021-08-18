@@ -4,6 +4,8 @@ account-balances = Tilisaldot
 address-book-contacts = Osoitekirjan yhteystiedot
 age-groups = Ikäryhmät
 ages = Iät
+# Refers to medical appointments.
+appointments = Tapaamiset
 apps-installed-on-devices = Laitteelle asennetut sovellukset
 astrological-signs = Horoskooppimerkit
 audio-recordings = Äänitallenteet
@@ -36,6 +38,7 @@ device-information = Laitetiedot
 device-serial-numbers = Laitteen sarjanumerot
 device-usage-tracking-data = Laitteen käytön seurantatiedot
 drinking-habits = Juomatottumukset
+driver-s-licenses = Ajokortit
 drug-habits = Lääkitystottumukset
 eating-habits = Ruokailutottumukset
 education-levels = Koulutustasot
@@ -66,6 +69,8 @@ instant-messenger-identities = Pikaviestimien identiteetit
 ip-addresses = IP-osoitteet
 job-applications = Työhakemukset
 job-titles = Työnimikkeet
+# This string refers to vehicle license plates. 
+licence-plates = Rekisteritunnukset
 living-costs = Asumiskustannukset
 login-histories = Kirjautumishistoria
 mac-addresses = MAC-osoitteet
