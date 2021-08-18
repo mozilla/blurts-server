@@ -6,6 +6,7 @@ const isemail = require("isemail");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
+const { Countries } = require("../form-utils");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
@@ -398,8 +399,10 @@ async function getDashboard(req, res) {
 async function getRemoveFormPage(req, res) {
   const user = req.user;
   //console.log(user);
-  console.log(req.session);
+  //console.log(req.session);
   const allBreaches = req.app.locals.breaches;
+  const countries = req.app.locals.COUNTRIES;
+  const usStates = req.app.locals.US_STATES;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,
     allBreaches
@@ -427,6 +430,8 @@ async function getRemoveFormPage(req, res) {
     lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
+    countries,
+    usStates,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-form",

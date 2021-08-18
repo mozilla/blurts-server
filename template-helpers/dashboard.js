@@ -81,6 +81,8 @@ function getBreachesDashboard(args) {
 }
 
 function getRemoveFormData(args) {
+  const countries = args.data.root.countries;
+  const usStates = args.data.root.usStates;
   const verifiedEmails = args.data.root.verifiedEmails;
   //const locales = args.data.root.req.supportedLocales;
 
@@ -98,6 +100,8 @@ function getRemoveFormData(args) {
 
   const emailCards = {
     verifiedEmails: verifiedEmails,
+    countries: countries,
+    usStates: usStates,
   };
 
   return args.fn(emailCards);

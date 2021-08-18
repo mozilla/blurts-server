@@ -26,8 +26,11 @@ function initRemove() {
 }
 
 function initRemoveForm() {
+  //populateCountries();
   addRemoveFormListeners();
 }
+
+function populateCountries() {}
 
 function initRemoveDashboard() {
   //localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
