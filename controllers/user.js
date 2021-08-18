@@ -10,6 +10,14 @@ const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
+const KanaryPartnerApi = require("kanary_partner_api");
+const fetch = require("node-fetch");
+
+const defaultClient = KanaryPartnerApi.ApiClient.instance;
+const ktoken = defaultClient.authentications["Bearer token"];
+ktoken.apiKey = AppConstants.KANARY_TOKEN; //MH: TODO: put in .env
+ktoken.apiKeyPrefix = "Bearer";
+const apiInstance = new KanaryPartnerApi.AccountApi();
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -21,13 +29,83 @@ const {
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function handleRemoveFormSignup(req, res) {
-  console.log(req.body); //FORM DATA
-  //const { account, fullname, city, state, country, birthyear } = req.body;
-  //validate form data
-  //store to DB?
-  //send to Kanary
+  //TODO: validate form data
+  //TODO: store to DB?
+
+  const { account, firstname, lastname, city, state, country, birthyear } =
+    req.body;
+
+  const memberList = {
+    members: [
+      {
+        names: [
+          {
+            first_name: firstname,
+            last_name: lastname,
+          },
+        ],
+        addresses: [
+          {
+            city: city,
+            state: state,
+            country: country,
+          },
+        ],
+        emails: [
+          {
+            email: account,
+          },
+        ],
+        birth_year: parseInt(birthyear),
+      },
+    ],
+  };
+
+  const jsonMemberList = JSON.stringify(memberList);
+
+  const accountsPostCallback = function (error, data, response) {
+    if (error) {
+      console.error("apiError", error);
+    } else {
+      console.log(data); //MH - if no data - is it already in the system? Getting undefined now...
+      //MH TODO: store data.id in fxa then...
+      return res.json({ id: data.id });
+      //res.redirect("/user/remove-signup-confirmation");
+    }
+  };
+
+  apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback);
+  //apiInstance.partnerApiV0AccountsPost(body, callback);
+
+  //apiInstance.partnerApiV0AccountsPost(jsonMemberList, handleKanarySignupSuccess);
+  //.then(); //MH TODO: use a then statement?
+  // res.redirect("/user/remove-signup-confirmation");
+}
+
+async function handleRemoveFormGet(req, res) {
+  const accountID = 2875; // Number | Account ID
+
+  const callback = function (error, data, response) {
+    if (error) {
+      console.error(error);
+    } else {
+      console.log("API called successfully. Returned data: " + data);
+    }
+  };
+  apiInstance.partnerApiV0AccountAccountIDGet(accountID, callback);
   res.redirect("/user/remove-signup-confirmation");
 }
+
+// async function handleKanarySignupSuccess(error, data, response) {
+//   if (error) {
+//     console.error("error", error);
+//     response.redirect("user/remove-signup-failure");
+//   } else {
+//     console.log("API called successfully. Returned data: " + data);
+//     //MH - if no data - is it already in the system?
+//     response.redirect("/user/remove-signup-confirmation"); //MH - may not work - if so, pass the `res` from `handleRemoveFormSignup`
+//   }
+// }
 
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
@@ -319,6 +397,8 @@ async function getDashboard(req, res) {
 
 async function getRemoveFormPage(req, res) {
   const user = req.user;
+  //console.log(user);
+  console.log(req.session);
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,
@@ -801,6 +881,7 @@ module.exports = {
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
+  handleRemoveFormGet,
   add,
   verify,
   getUnsubscribe,

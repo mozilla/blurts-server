@@ -28,7 +28,8 @@
   {{/if}}
   <div class="mw-860 remove-dashboard-section-container">
     <div class="remove-dashboard-form-container remove-dashboard-section">
-      <form action="/user/remove-data-submit" method="post" id="add-another-email-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+      <form action="/user/remove-data-submit" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
         <div class="input-group">
           <div class="input-group remove-account-select">
             <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
@@ -42,23 +43,25 @@
           </div>
         </div>
         <div class="input-group">
-          <label for="remove-dashboard-form-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
-          <input id="remove-dashboard-form-name" class="input-group-field field--full " type="text" name="fullname" placeholder="{{ getString "dash-remove-form-name"}}" aria-label="{{ getString "dash-remove-form-name"}}" autocomplete="off">
+          <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+          <div class="flx remove-dashboard-form-name">
+            <input id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off">
+            <input id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off">
+          </div>
           {{> forms/error-message }}
         </div>
         <div class="input-group">
           <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
           <div class="flx remove-dashboard-form-loc">
-            <input id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off">
-    
-            <input id="remove-dashboard-form-loc-state" class="input-group-field" type="text" name="state" placeholder="{{ getString "dash-remove-form-loc-state"}}" aria-label="{{ getString "dash-remove-form-loc-state"}}" autocomplete="off">
-            <input id="remove-dashboard-form-loc-country" class="input-group-field flx-grow" type="text" name="country" placeholder="{{ getString "dash-remove-form-loc-country"}}" aria-label="{{ getString "dash-remove-form-loc-country"}}" autocomplete="off">
+            <input id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off">
+            <input id="remove-dashboard-form-loc-state" class="input-group-field" type="text" name="state" maxlength="2" minlength="2" pattern="[A-Za-z]{2}" placeholder="{{ getString "dash-remove-form-loc-state"}}" aria-label="{{ getString "dash-remove-form-loc-state"}}" autocomplete="off">
+            <input id="remove-dashboard-form-loc-country" class="input-group-field flx-grow" type="text" maxlength="2" minlength="2" pattern="[A-Za-z]{2}" name="country" placeholder="{{ getString "dash-remove-form-loc-country"}}" aria-label="{{ getString "dash-remove-form-loc-country"}}" autocomplete="off">
           </div>
           {{> forms/error-message }}
         </div>
         <div class="input-group">
           <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
-          <input id="remove-dashboard-form-year" class="input-group-field field--full " type="text" name="birthyear" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off">
+          <input id="remove-dashboard-form-year" class="input-group-field field--full " type="text" name="birthyear" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off">
           {{> forms/error-message }}
         </div>
         <div class="input-group-button inline">
