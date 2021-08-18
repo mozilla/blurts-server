@@ -3,9 +3,10 @@
 /* eslint-disable no-process-env */
 
 const path = require("path");
-require("dotenv").config({path: path.join(__dirname, ".env")});
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const kEnvironmentVariables = [
+  "KANARY_TOKEN",
   "NODE_ENV",
   "SERVER_URL",
   "PORT",
@@ -48,7 +49,7 @@ const kEnvironmentVariables = [
   "MAX_NUM_ADDRESSES",
 ];
 
-const AppConstants = { };
+const AppConstants = {};
 
 for (const v of kEnvironmentVariables) {
   if (process.env[v] === undefined) {

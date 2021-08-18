@@ -8,10 +8,10 @@ function initRemove() {
     switch ($removePage.id) {
       //MH - TODO: remove need for conditional and do this before we route. Talk to P&S about how best to handle this.
       case "remove-form":
-        const removeFormSubmitted =
-          localStorage.getItem("remove-form-submitted") === "true";
-        if (removeFormSubmitted) {
-          window.location = "/user/remove-dashboard";
+        //const removeFormSubmitted = localStorage.getItem("remove-form-submitted") === "true";
+        const kanaryID = parseInt(localStorage.getItem("kanary-id"));
+        if (kanaryID) {
+          window.location = "/user/remove-dashboard"; //MH TODO: - this check should be happening at the router level before hitting this page so redirect is not needed
         } else {
           initRemoveForm();
         }
@@ -30,7 +30,8 @@ function initRemoveForm() {
 }
 
 function initRemoveDashboard() {
-  localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
+  //localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
+  localStorage.setItem("kanary-id", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
   addRemoveDashListeners();
 }
 
@@ -40,27 +41,34 @@ function addRemoveFormListeners() {
     .addEventListener("click", onSubmitClick);
 }
 
-function onSubmitClick(evt) {
-  evt.preventDefault();
-  handleFormSubmit();
-  toggleFormSuccess(true);
+function onSubmitClick(e) {
+  handleFormSubmit(e);
 }
 
-function handleFormSubmit() {
+function handleFormSubmit(e) {
+  e.preventDefault();
   //process form then...
-  localStorage.setItem("remove-form-submitted", true); //MH - temp, set local storage to handle showing remove dashboard after form submission. Need to replace this with actual form processing
-}
 
-function toggleFormSuccess(doShow) {
-  const $dashboardContainer = document.querySelector(
-    ".js-remove-dashboard-container"
-  );
-  $dashboardContainer.classList.toggle("is-hidden", doShow);
-
-  const $formSuccessContainer = document.querySelector(
-    ".js-remove-success-container"
-  );
-  $formSuccessContainer.classList.toggle("is-hidden", !doShow);
+  fetch(e.target.form.action, {
+    method: "POST",
+    body: new URLSearchParams(new FormData(e.target.form)),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((body) => {
+      if (body.id) {
+        // localStorage.setItem("remove-form-submitted", true);
+        localStorage.setItem("kanary-id", body.id); //MH - temp, set local storage to handle showing remove dashboard after form submission.
+        window.location = "/user/remove-signup-confirmation";
+      } else {
+        console.error("no member id received", body);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      // TODO handle error
+    });
 }
 
 function addRemoveDashListeners() {
