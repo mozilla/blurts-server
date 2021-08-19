@@ -6,6 +6,18 @@
     cursor: pointer;
 }
 
+.vpn-banner ~ header,
+.vpn-banner ~ main,
+.vpn-banner ~ footer{
+    transform: translateY(var(--vpn-banner-height, 0));
+}
+
+.vpn-banner[data-expanded] ~ header,
+.vpn-banner[data-expanded] ~ main,
+.vpn-banner[data-expanded] ~ footer{
+    transition: transform .2s;  
+}
+
 .vpn-banner-cta{
     padding: 8px;
     background-color: black;

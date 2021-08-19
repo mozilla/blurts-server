@@ -418,13 +418,11 @@ function initVpnBanner(){
 
   if(!vpnBanner) return;
 
-  document.body.classList.add("vpn-banner-init");
   vpnBanner.addEventListener("click", handleClick);
   updateHeight();
 
   function handleClick(){
     vpnBanner.toggleAttribute("data-expanded");
-    document.body.classList.remove("vpn-banner-init");
     updateHeight();
   }
 

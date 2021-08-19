@@ -5,12 +5,7 @@ header {
   right: 0;
   z-index: 2;
   box-shadow: 0 0 5px 0 #20123a1c;
-  transition: all 0.2s ease, transform .2s;
-  transform: translateY(var(--vpn-banner-height, 0));
-}
-
-.vpn-banner-init header{
-  transition-duration: 0.2s, 0s;
+  transition: box-shadow 0.2s ease;
 }
 
 header.show-shadow {
