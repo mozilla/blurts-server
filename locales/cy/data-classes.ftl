@@ -4,6 +4,8 @@ account-balances = Balansau cyfrifon
 address-book-contacts = Cysylltiadau llyfr cyfeiriadau
 age-groups = Grwpiau oedran
 ages = Oed
+# Refers to medical appointments.
+appointments = Apwyntiadau
 apps-installed-on-devices = Apiau wedi'u gosod ar ddyfeisiau
 astrological-signs = Arwyddion astrolegol
 audio-recordings = Recordiadau sain

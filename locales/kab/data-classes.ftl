@@ -4,6 +4,8 @@ account-balances = Tisgar n yimiḍanen
 address-book-contacts = Inermisen n yimedlis n tensa
 age-groups = Igrawen n uwtay
 ages = Iwtayen
+# Refers to medical appointments.
+appointments = Asiher
 apps-installed-on-devices = Isnasen bedden ɣef yibenkan
 astrological-signs = Izamulen zudyak
 audio-recordings = Ikalasen imeslawen
@@ -36,6 +38,7 @@ device-information = Talɣut n yibenk
 device-serial-numbers = Imḍanen n uzrir n yibenk
 device-usage-tracking-data = ISefka n uḍfaṛ n useqdec n yibenkan
 drinking-habits = Tanumi n tisit
+driver-s-licenses = Turagin n yinuḍaf
 drug-habits = Tanumi n useqdec n lehyuf
 eating-habits = Tanumi n wučči
 education-levels = Aswir n tɣuri
@@ -66,6 +69,8 @@ instant-messenger-identities = imuɣna n tirawt taskudant
 ip-addresses = Tansiwin IP
 job-applications = Asuter n uxeddim
 job-titles = axeddim
+# This string refers to vehicle license plates. 
+licence-plates = Tiplakin n turagin
 living-costs = Tisqamin n tmeddurt
 login-histories = Azray n unekcum
 mac-addresses = tansiwin MAC

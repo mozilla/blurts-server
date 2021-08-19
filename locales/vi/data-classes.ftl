@@ -4,6 +4,8 @@ account-balances = Số dư tài khoản
 address-book-contacts = Danh bạ
 age-groups = Nhóm tuổi
 ages = Tuổi
+# Refers to medical appointments.
+appointments = Cuộc hẹn
 apps-installed-on-devices = Ứng dụng được cài đặt trên thiết bị
 astrological-signs = Cung hoàng đạo
 audio-recordings = Bản ghi âm

@@ -4,6 +4,8 @@ account-balances = Saldos de conto bancari
 address-book-contacts = Contactos del libro del adresses
 age-groups = Gruppos de etate
 ages = Etates
+# Refers to medical appointments.
+appointments = Appunctamentos
 apps-installed-on-devices = Applicationes installate sur apparatos
 astrological-signs = Signos astrologic
 audio-recordings = Registrationes audio

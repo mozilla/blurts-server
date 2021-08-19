@@ -4,6 +4,8 @@ account-balances = Mba’ete rembyre
 address-book-contacts = Ehecha kundaharape jehaiha
 age-groups = Aty hi’aryjojáva
 ages = Arykuéra
+# Refers to medical appointments.
+appointments = Jeho
 apps-installed-on-devices = Tembipuru’i mba’e’okápe mohendapyre
 astrological-signs = Mbyjakuéra rehegua
 audio-recordings = Mba’epu ñongatuete

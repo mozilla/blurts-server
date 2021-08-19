@@ -4,6 +4,8 @@ account-balances = Számlaegyenlegek
 address-book-contacts = Címjegyzék-kapcsolatok
 age-groups = Korcsoportok
 ages = Életkorok
+# Refers to medical appointments.
+appointments = Találkozók
 apps-installed-on-devices = Eszközökre telepített alkalmazások
 astrological-signs = Asztrológiai jelek
 audio-recordings = Hangfelvételek

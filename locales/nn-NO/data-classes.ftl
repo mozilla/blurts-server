@@ -4,6 +4,8 @@ account-balances = Konto-saldoar
 address-book-contacts = Adressebokskontaktar
 age-groups = Aldersgrupper
 ages = Aldrar
+# Refers to medical appointments.
+appointments = Avtalar
 apps-installed-on-devices = Appar er installerte på einingar
 astrological-signs = Stjerneteikn
 audio-recordings = Lydinnspelingar
@@ -36,6 +38,7 @@ device-information = Einingsinformasjon
 device-serial-numbers = Serienummer på einingar
 device-usage-tracking-data = Sporingsdata for bruk av einingar
 drinking-habits = Drikkevanar
+driver-s-licenses = Førarkort
 drug-habits = Narkotikavanar
 eating-habits = Matvanar
 education-levels = Utdanningsnivå
