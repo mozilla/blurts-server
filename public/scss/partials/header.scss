@@ -9,8 +9,7 @@ header {
 }
 
 header.show-shadow {
-  box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.75);
-  transition: all 0.2s ease;
+  box-shadow: 0 5px 10px -5px black;
 }
 
 .desktop-menu:hover .active-link::after {
