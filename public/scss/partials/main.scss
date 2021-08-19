@@ -341,11 +341,14 @@ ul li {
   padding-top: calc(var(--padding) * 2);
   padding-bottom: calc(var(--padding) * 2);
   position: relative;
+}
+
+main:first-of-type{
   transform: translateY(var(--vpn-banner-height, 0));
   transition: transform .2s;
 }
 
-.vpn-banner-init .container{
+.vpn-banner-init main:first-of-type{
   transition-duration: 0s;
 }
 
