@@ -6,7 +6,6 @@ const isemail = require("isemail");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
-const { Countries } = require("../form-utils");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
@@ -84,17 +83,17 @@ async function handleRemoveFormSignup(req, res) {
 }
 
 async function handleRemoveFormGet(req, res) {
-  const accountID = 2875; // Number | Account ID
+  const accountID = 2875; // Number | Account ID //MH: TODO - retrieve from DB
 
   const callback = function (error, data, response) {
     if (error) {
       console.error(error);
     } else {
-      console.log("API called successfully. Returned data: " + data);
+      //console.log("data for account retrieved", data);
+      return res.json({ data: data });
     }
   };
   apiInstance.partnerApiV0AccountAccountIDGet(accountID, callback);
-  res.redirect("/user/remove-signup-confirmation");
 }
 
 // async function handleKanarySignupSuccess(error, data, response) {
@@ -478,6 +477,47 @@ async function getRemoveConfirmationPage(req, res) {
   });
 }
 
+async function getRemoveDashData() {
+  return fetch("https://thekanary.com/partner-api/v0/accounts/2875/reports/", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      const reportID = json[0].id; //MH - assuming this is the newest?
+      return reportID;
+    })
+    .then((reportID) => {
+      return fetch(
+        `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+          },
+        }
+      );
+    })
+    .then((res) => res.json())
+    .then((json) => {
+      if (json.url_matches) {
+        return json.url_matches;
+      } else {
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting reports for this account",
+        error
+      );
+    });
+}
+
 async function getRemoveDashPage(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
@@ -485,12 +525,15 @@ async function getRemoveDashPage(req, res) {
     user,
     allBreaches
   );
+
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
   const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
     user,
     "remove_data"
   );
+
+  const removeData = await getRemoveDashData(); //TODO: get only if they've signed up for this
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
@@ -509,6 +552,7 @@ async function getRemoveDashPage(req, res) {
     verifiedEmails,
     unverifiedEmails,
     userHasSignedUpForRemoveData,
+    removeData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-dashboard",
     experimentFlags,

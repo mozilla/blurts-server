@@ -4,7 +4,7 @@
 >
   <div class="remove-dash-results-summary-container flx space-between">
     <div class="remove-dash-results-site-container flx flx-cntr">
-      {{#ifCompare this.status "===" "in-progress"}}
+      {{#ifCompare this.status "===" "READY_TO_REMOVE"}}
         <img
           src="/img/svg/remove-in-progress-icon.svg"
           alt="{{getString "remove-filter-in-progress"}}"
@@ -19,21 +19,21 @@
         />
       {{/ifCompare}}
       <div class="remove-dash-results-site-name-container flx flx-col">
-        <span class="remove-dash-results-site-name">{{this.site}}</span>
+        <span class="remove-dash-results-site-name">{{this.broker}}</span>
         {{#if this.details}}
           <span class="remove-dash-results-site-details">{{this.details}}</span>
         {{/if}}
       </div>
     </div>
     <div class="remove-dash-results-status-container flx flx-cntr">
-      {{#if this.time}}
+      {{#if this.updated_at}}
         <div
           class="remove-dash-results-status-time remove-dash-results-status-el hidden-mobile"
         >
-          {{this.time}}
+          {{this.updated_at}}
         </div>
       {{/if}}
-      {{#ifCompare this.risk "===" "high"}}
+      {{#ifCompare this.risk_level "===" "HIGH"}}
         <div
           class="remove-dash-results-risk remove-dash-results-status-el risk-high"
         >
@@ -41,7 +41,7 @@
         </div>
       {{/ifCompare}}
 
-      {{#ifCompare this.risk "===" "low"}}
+      {{#ifCompare this.risk_level "===" "LOW"}}
         <div
           class="remove-dash-results-risk remove-dash-results-status-el risk-low"
         >
@@ -67,9 +67,9 @@
   </div>
   <div class="remove-dash-results-details-container">
     <ul class="remove-dash-results-details-list">
-      {{#if this.time}}
+      {{#if this.updated_at}}
         <li class="remove-dash-results-details-item mobile-only">
-          <p class="remove-dash-results-detail">{{this.time}}</p>
+          <p class="remove-dash-results-detail">Updated: {{this.updated_at}}</p>
         </li>
       {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
@@ -92,14 +92,14 @@
           <a
             class="remove-dash-results-detail-link break-word"
             href=""
-          >{{this.link}}</a>
+          >{{this.url}}</a>
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <h3 class="remove-dash-results-detail-title">
           {{getString "remove-result-opt-out"}}
         </h3>
-        <p class="remove-dash-results-detail">{{this.optout}}</p>
+        <p class="remove-dash-results-detail">{{this.opt_out}}</p>
       </li>
     </ul>
   </div>

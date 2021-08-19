@@ -56,7 +56,7 @@
             <input id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off">
             <!--<input id="remove-dashboard-form-loc-state" class="input-group-field" type="text" name="state" maxlength="2" minlength="2" pattern="[A-Za-z]{2}" placeholder="{{ getString "dash-remove-form-loc-state"}}" aria-label="{{ getString "dash-remove-form-loc-state"}}" autocomplete="off">-->
             <div class="input-group-field remove-dashboard-form-loc-select">
-              <select id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select" name="state">
+              <select id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
                   <option disabled selected>{{ getString "dash-remove-form-loc-state"}}</option>
                 {{#each this.usStates }}
                   <option value="{{ stateCode }}">{{ stateCode }}</option>
@@ -64,7 +64,7 @@
               </select>
             </div>
             <div class="input-group-field remove-dashboard-form-loc-select">
-              <select id="remove-dashboard-form-loc-country" class="input-group-select remove-dashboard-form-loc-select" name="country">
+              <select id="remove-dashboard-form-loc-country" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="country">
                 <option disabled selected>{{ getString "dash-remove-form-loc-country"}}</option>
                 {{#each this.countries }}
                   <option value="{{ countryCode }}">{{ countryCode }}</option>

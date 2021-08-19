@@ -26,11 +26,8 @@ function initRemove() {
 }
 
 function initRemoveForm() {
-  //populateCountries();
   addRemoveFormListeners();
 }
-
-function populateCountries() {}
 
 function initRemoveDashboard() {
   //localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
@@ -42,10 +39,18 @@ function addRemoveFormListeners() {
   document
     .querySelector(".js-remove-submit")
     .addEventListener("click", onSubmitClick);
+
+  document
+    .querySelector(".js-form-select")
+    .addEventListener("change", onSelectChange);
 }
 
 function onSubmitClick(e) {
   handleFormSubmit(e);
+}
+
+function onSelectChange(e) {
+  e.target.classList.toggle("active", true);
 }
 
 function handleFormSubmit(e) {
