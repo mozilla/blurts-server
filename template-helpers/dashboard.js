@@ -81,6 +81,8 @@ function getBreachesDashboard(args) {
 }
 
 function getRemoveFormData(args) {
+  const countries = args.data.root.countries;
+  const usStates = args.data.root.usStates;
   const verifiedEmails = args.data.root.verifiedEmails;
   //const locales = args.data.root.req.supportedLocales;
 
@@ -98,14 +100,18 @@ function getRemoveFormData(args) {
 
   const emailCards = {
     verifiedEmails: verifiedEmails,
+    countries: countries,
+    usStates: usStates,
   };
 
   return args.fn(emailCards);
 }
 
 function getRemoveDashData(args) {
+  //console.log("removeDashArgs", args);
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
+  const removeResults = args.data.root.removeData;
 
   //MH TODO: include only necessary logic here
   // move emails with 0 breaches to the bottom of the page
@@ -131,80 +137,9 @@ function getRemoveDashData(args) {
 
   const upDate = curDate.toLocaleDateString(locales, options);
 
-  //MH temp construct temporary removal results data
-  const removeResults = [
-    {
-      site: "Spydialer",
-      status: "in-progress",
-      time: "2 hours remaining", //MH todo: should probably be able to handle a timestamp or int time conversion e.g. ms
-      risk: "high",
-      description:
-        "This site is posting your contact information. It may not be sensitive info but scraping data from this site is easy, so spammers and advertisers could use this to target you.",
-      link: "https://www.spydealer.com/results.aspx?eid=34324235234234-ergr45r43-fsf34rvsredfwf4rffvae4",
-      optout: "We are working on finding the right contact for this site",
-      info: verifiedEmails[0].email,
-    },
-    {
-      site: "Lexisneix",
-      status: "in-progress",
-      time: "12 hours remaining",
-      risk: "high",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rerum excepturi saepe eius voluptatibus a obcaecati, numquam ad esse! Ipsum, possimus dolorum fugiat laudantium dolorem doloremque architecto labore magnam soluta.",
-      link: "https://www.lexisneix.com/results.aspx?eid=34324235234234-ergr45r43-fsf34rvsredfwf4rffvae4",
-      optout:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore velit quaerat, assumenda inventore quae omnis quis reiciendis fugiat corrupti vitae adipisci corporis iste",
-      info: verifiedEmails[0].email,
-    },
-    {
-      site: "Acxion",
-      status: "in-progress",
-      time: "2 days remaining",
-      risk: "low",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rerum excepturi saepe eius voluptatibus a obcaecati, numquam ad esse! Ipsum, possimus dolorum fugiat laudantium dolorem doloremque architecto labore magnam soluta.",
-      link: "https://www.acxion.com/results.aspx?eid=34324235234234-ergr45r43-fsf34rvsredfwf4rffvae4",
-      optout:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore velit quaerat, assumenda inventore quae omnis quis reiciendis fugiat corrupti vitae adipisci corporis iste",
-      info: verifiedEmails[0].email,
-    },
-    {
-      site: "Mozilla",
-      status: "in-progress",
-      time: "1 hour remaining",
-      risk: "high",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rerum excepturi saepe eius voluptatibus a obcaecati, numquam ad esse! Ipsum, possimus dolorum fugiat laudantium dolorem doloremque architecto labore magnam soluta.",
-      link: "https://www.mozilla.com/results.aspx?eid=34324235234234-ergr45r43-fsf34rvsredfwf4rffvae4",
-      optout:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore velit quaerat, assumenda inventore quae omnis quis reiciendis fugiat corrupti vitae adipisci corporis iste",
-      info: verifiedEmails[0].email,
-    },
-    {
-      site: "Google",
-      status: "completed",
-      risk: "low",
-      details: "Your email was removed",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rerum excepturi saepe eius voluptatibus a obcaecati, numquam ad esse! Ipsum, possimus dolorum fugiat laudantium dolorem doloremque architecto labore magnam soluta.",
-      link: "https://www.google.com/results.aspx?eid=34324235234234-ergr45r43-fsf34rvsredfwf4rffvae4",
-      optout:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore velit quaerat, assumenda inventore quae omnis quis reiciendis fugiat corrupti vitae adipisci corporis iste",
-      info: verifiedEmails[0].email,
-    },
-    {
-      site: "Tinder",
-      status: "completed",
-      risk: "high",
-      details: "Your email, name and address was removed",
-      description:
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto rerum excepturi saepe eius voluptatibus a obcaecati, numquam ad esse! Ipsum, possimus dolorum fugiat laudantium dolorem doloremque architecto labore magnam soluta.",
-      link: "https://www.tinder.com/results.aspx?eid=34324235234234-ergr45r43-fsf34rvsredfwf4rffvae4",
-      optout:
-        "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore velit quaerat, assumenda inventore quae omnis quis reiciendis fugiat corrupti vitae adipisci corporis iste",
-      info: verifiedEmails[0].email,
-    },
-  ];
+  removeResults.forEach((result) => {
+    result.info = verifiedEmails[0].email; //MH - temp - this info doesn't seem to be available
+  });
 
   const emailCards = {
     verifiedEmails: verifiedEmails,

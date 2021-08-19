@@ -193,6 +193,14 @@
   }
 }
 
+.remove-dashboard-form-loc-select {
+  margin-left: 20px;
+  padding: 0;
+  &.active {
+    color: var(--grey7);
+  }
+}
+
 //application form success screen
 .remove-success {
   &-section {

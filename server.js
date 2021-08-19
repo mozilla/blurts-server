@@ -19,10 +19,16 @@ const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
 const {
-  addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
-  clientErrorHandler, errorHandler, recordVisitFromEmail,
+  addRequestToResponse,
+  pickLanguage,
+  logErrors,
+  localizeErrorMessages,
+  clientErrorHandler,
+  errorHandler,
+  recordVisitFromEmail,
 } = require("./middleware");
 const { LocaleUtils } = require("./locale-utils");
+const { FormUtils } = require("./form-utils");
 const mozlog = require("./log");
 
 const DockerflowRoutes = require("./routes/dockerflow");
@@ -32,8 +38,8 @@ const ScanRoutes = require("./routes/scan");
 const SesRoutes = require("./routes/ses");
 const OAuthRoutes = require("./routes/oauth");
 const UserRoutes = require("./routes/user");
-const EmailL10nRoutes= require("./routes/email-l10n");
-const BreachRoutes= require("./routes/breach-details");
+const EmailL10nRoutes = require("./routes/email-l10n");
+const BreachRoutes = require("./routes/breach-details");
 
 const log = mozlog("server");
 
@@ -45,19 +51,20 @@ function getRedisStore() {
     return new redisStoreConstructor({ client: redis.createClient() });
   }
   const redis = require("redis");
-  return new redisStoreConstructor({ client: redis.createClient({url: AppConstants.REDIS_URL }) });
+  return new redisStoreConstructor({
+    client: redis.createClient({ url: AppConstants.REDIS_URL }),
+  });
 }
 
 const app = express();
 
-
 function devOrHeroku() {
- return ["dev", "heroku"].includes(AppConstants.NODE_ENV);
+  return ["dev", "heroku"].includes(AppConstants.NODE_ENV);
 }
 
 if (app.get("env") !== "dev") {
   app.enable("trust proxy");
-  app.use( (req, res, next) => {
+  app.use((req, res, next) => {
     if (req.secure) {
       next();
     } else {
@@ -71,6 +78,14 @@ try {
   LocaleUtils.loadLanguagesIntoApp(app);
 } catch (error) {
   log.error("try-load-languages-error", { error: error });
+}
+
+try {
+  FormUtils.init();
+  FormUtils.loadCountriesIntoApp(app);
+} catch (error) {
+  //log.error("try-load-countries-error", { error: error }); //MH TODO: figure out how these localized errors work
+  console.error("error loading countries");
 }
 
 (async () => {
@@ -87,7 +102,10 @@ if (AppConstants.NODE_ENV === "heroku") {
   app.use(helmet.hsts({ maxAge: 60 * 60 * 24 * 365 * 2 })); // 2 years
 }
 
-const SCRIPT_SOURCES = ["'self'", "https://www.google-analytics.com/analytics.js"];
+const SCRIPT_SOURCES = [
+  "'self'",
+  "https://www.google-analytics.com/analytics.js",
+];
 const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
 const FRAME_ANCESTORS = ["'none'"];
 
@@ -119,30 +137,32 @@ const connectSrc = [
 
 if (AppConstants.FXA_ENABLED) {
   const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
-  [imgSrc, connectSrc].forEach(arr => {
+  [imgSrc, connectSrc].forEach((arr) => {
     arr.push(fxaSrc);
   });
 }
 
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    baseUri: ["'none'"],
-    defaultSrc: ["'self'"],
-    connectSrc: connectSrc,
-    fontSrc: [
-      "'self'",
-      "https://fonts.gstatic.com/",
-      "https://code.cdn.mozilla.net/fonts/",
-    ],
-    frameAncestors: FRAME_ANCESTORS,
-    mediaSrc: ["'self'"],
-    imgSrc: imgSrc,
-    objectSrc: ["'none'"],
-    scriptSrc: SCRIPT_SOURCES,
-    styleSrc: STYLE_SOURCES,
-    reportUri: "/__cspreport__",
-  },
-}));
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      baseUri: ["'none'"],
+      defaultSrc: ["'self'"],
+      connectSrc: connectSrc,
+      fontSrc: [
+        "'self'",
+        "https://fonts.gstatic.com/",
+        "https://code.cdn.mozilla.net/fonts/",
+      ],
+      frameAncestors: FRAME_ANCESTORS,
+      mediaSrc: ["'self'"],
+      imgSrc: imgSrc,
+      objectSrc: ["'none'"],
+      scriptSrc: SCRIPT_SOURCES,
+      styleSrc: STYLE_SOURCES,
+      reportUri: "/__cspreport__",
+    },
+  })
+);
 app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
 
 // helmet no longer sets X-Content-Type-Options, so set it manually
@@ -151,10 +171,15 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static("public", {
-  setHeaders: res => res.set("Cache-Control",
-    "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000),
-})); // 10-minute client-side caching; 24-hour server-side caching
+app.use(
+  express.static("public", {
+    setHeaders: (res) =>
+      res.set(
+        "Cache-Control",
+        "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000
+      ),
+  })
+); // 10-minute client-side caching; 24-hour server-side caching
 
 const hbs = exphbs.create({
   extname: ".hbs",
@@ -179,19 +204,21 @@ app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN;
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname;
 
 const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48;
-app.use(session({
-  cookie: {
-    httpOnly: true,
-    maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
-    rolling: true,
-    sameSite: "lax",
-    secure: AppConstants.NODE_ENV !== "dev",
-  },
-  resave: false,
-  saveUninitialized: true,
-  secret: AppConstants.COOKIE_SECRET,
-  store: getRedisStore(),
-}));
+app.use(
+  session({
+    cookie: {
+      httpOnly: true,
+      maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
+      rolling: true,
+      sameSite: "lax",
+      secure: AppConstants.NODE_ENV !== "dev",
+    },
+    resave: false,
+    saveUninitialized: true,
+    secret: AppConstants.COOKIE_SECRET,
+    store: getRedisStore(),
+  })
+);
 
 app.use(pickLanguage);
 app.use(addRequestToResponse);
@@ -205,7 +232,7 @@ if (AppConstants.FXA_ENABLED) {
 app.use("/scan", ScanRoutes);
 app.use("/ses", SesRoutes);
 app.use("/user", UserRoutes);
-(devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : null);
+devOrHeroku ? app.use("/email-l10n", EmailL10nRoutes) : null;
 app.use("/breach-details", BreachRoutes);
 app.use("/", HomeRoutes);
 
@@ -214,10 +241,12 @@ app.use(localizeErrorMessages);
 app.use(clientErrorHandler);
 app.use(errorHandler);
 
-EmailUtils.init().then(() => {
-  const listener = app.listen(AppConstants.PORT, () => {
-    log.info("Listening", { port: listener.address().port });
+EmailUtils.init()
+  .then(() => {
+    const listener = app.listen(AppConstants.PORT, () => {
+      log.info("Listening", { port: listener.address().port });
+    });
+  })
+  .catch((error) => {
+    log.error("try-initialize-email-error", { error: error });
   });
-}).catch(error => {
-  log.error("try-initialize-email-error", { error: error });
-});

@@ -39,10 +39,18 @@ function addRemoveFormListeners() {
   document
     .querySelector(".js-remove-submit")
     .addEventListener("click", onSubmitClick);
+
+  document
+    .querySelector(".js-form-select")
+    .addEventListener("change", onSelectChange);
 }
 
 function onSubmitClick(e) {
   handleFormSubmit(e);
+}
+
+function onSelectChange(e) {
+  e.target.classList.toggle("active", true);
 }
 
 function handleFormSubmit(e) {

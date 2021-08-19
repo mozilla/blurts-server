@@ -6,6 +6,7 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const kEnvironmentVariables = [
+  "KANARY_ENDPOINT",
   "KANARY_TOKEN",
   "NODE_ENV",
   "SERVER_URL",
