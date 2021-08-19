@@ -96,7 +96,11 @@ if (removeMonitorButton) {
 }
 
 const relayLink = document.querySelector("[data-event-label='Try Firefox Relay']");
-//const relayUrl = new URL(relayLink.href);
 const user_email = document.querySelector(".nav-user-email").textContent;
-//relayUrl.searchParams.append("login_hint", user_email);
-relayLink.href = relayLink.href + encodeURIComponent("&login_hint=" + user_email);
+if (user_email) {
+  const relayUrl = new URL(relayLink.href);
+  relayUrl.pathname += "accounts/fxa/login/";
+  relayUrl.searchParams.append("process", "login");
+  relayUrl.searchParams.append("auth_params", "prompt=none&login_hint=" + user_email);
+  relayLink.href = relayUrl.href;
+}
