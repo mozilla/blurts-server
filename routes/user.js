@@ -17,7 +17,6 @@ const {
   getPreferences,
   getBreachStats,
   handleRemoveFormSignup,
-  handleRemoveFormGet,
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
@@ -80,10 +79,9 @@ router.post(
 router.post(
   "/remove-data-submit",
   urlEncodedParser,
-  //csrfProtection,
+  //csrfProtection, //MH TODO: figure out how to use this
   requireSessionUser,
   asyncMiddleware(handleRemoveFormSignup)
-  //asyncMiddleware(handleRemoveFormGet)
 );
 
 router.post(

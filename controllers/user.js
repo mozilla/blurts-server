@@ -10,14 +10,15 @@ const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
-const KanaryPartnerApi = require("kanary_partner_api");
 const fetch = require("node-fetch");
 
-const defaultClient = KanaryPartnerApi.ApiClient.instance;
-const ktoken = defaultClient.authentications["Bearer token"];
-ktoken.apiKey = AppConstants.KANARY_TOKEN; //MH: TODO: put in .env
-ktoken.apiKeyPrefix = "Bearer";
-const apiInstance = new KanaryPartnerApi.AccountApi();
+//MH - uncomment if using the swaggerhub generated npm module - note this needs to be a private module somewhere if you are deploying to heroku and not linking to a local repo
+//const KanaryPartnerApi = require("kanary_partner_api");
+// const defaultClient = KanaryPartnerApi.ApiClient.instance;
+// const ktoken = defaultClient.authentications["Bearer token"];
+// ktoken.apiKey = AppConstants.KANARY_TOKEN; //MH: TODO: put in .env
+// ktoken.apiKeyPrefix = "Bearer";
+// const apiInstance = new KanaryPartnerApi.AccountApi();
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -63,49 +64,43 @@ async function handleRemoveFormSignup(req, res) {
 
   const jsonMemberList = JSON.stringify(memberList);
 
-  const accountsPostCallback = function (error, data, response) {
-    if (error) {
-      console.error("apiError", error);
-    } else {
-      console.log(data); //MH - if no data - is it already in the system? Getting undefined now...
+  //uncomment if using kanary_partner_api npm module
+  // const accountsPostCallback = function (error, data, response) {
+  //   if (error) {
+  //     console.error("apiError", error);
+  //   } else {
+  //     console.log(data); //MH - if no data - is it already in the system? Getting undefined now...
+  //     //MH TODO: store data.id in fxa then...
+  //     return res.json({ id: data.id });
+  //     //res.redirect("/user/remove-signup-confirmation");
+  //   }
+  // };
+
+  const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
+  //apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback); //use swagger npm module method
+  console.log("memberID", memberID);
+  return res.json({ id: memberID });
+}
+
+async function handleKanaryAPISubmission(memberInfo) {
+  return fetch("https://thekanary.com/partner-api/v0/accounts/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+    body: memberInfo,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      //console.log(data);
       //MH TODO: store data.id in fxa then...
-      return res.json({ id: data.id });
-      //res.redirect("/user/remove-signup-confirmation");
-    }
-  };
-
-  apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback);
-  //apiInstance.partnerApiV0AccountsPost(body, callback);
-
-  //apiInstance.partnerApiV0AccountsPost(jsonMemberList, handleKanarySignupSuccess);
-  //.then(); //MH TODO: use a then statement?
-  // res.redirect("/user/remove-signup-confirmation");
+      return data.id;
+    })
+    .catch((error) => {
+      console.error("there was an error posting to the api", error);
+    });
 }
-
-async function handleRemoveFormGet(req, res) {
-  const accountID = 2875; // Number | Account ID //MH: TODO - retrieve from DB
-
-  const callback = function (error, data, response) {
-    if (error) {
-      console.error(error);
-    } else {
-      //console.log("data for account retrieved", data);
-      return res.json({ data: data });
-    }
-  };
-  apiInstance.partnerApiV0AccountAccountIDGet(accountID, callback);
-}
-
-// async function handleKanarySignupSuccess(error, data, response) {
-//   if (error) {
-//     console.error("error", error);
-//     response.redirect("user/remove-signup-failure");
-//   } else {
-//     console.log("API called successfully. Returned data: " + data);
-//     //MH - if no data - is it already in the system?
-//     response.redirect("/user/remove-signup-confirmation"); //MH - may not work - if so, pass the `res` from `handleRemoveFormSignup`
-//   }
-// }
 
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
@@ -930,7 +925,6 @@ module.exports = {
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
-  handleRemoveFormGet,
   add,
   verify,
   getUnsubscribe,
