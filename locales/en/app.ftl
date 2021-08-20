@@ -407,6 +407,7 @@ remove-result-details-found = Info found
 remove-result-description = Description
 remove-result-link = Link
 remove-result-opt-out = Where to opt-out
+remove-complete = No Data Currently to Remove
 
 show-breaches-for-this-email = Show all breaches for this email.
 

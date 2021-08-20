@@ -86,7 +86,6 @@ function getRemoveFormData(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   //const locales = args.data.root.req.supportedLocales;
 
-  //MH TODO: include only necessary logic here
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
     if (
@@ -108,12 +107,10 @@ function getRemoveFormData(args) {
 }
 
 function getRemoveDashData(args) {
-  //console.log("removeDashArgs", args);
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   const removeResults = args.data.root.removeData;
 
-  //MH TODO: include only necessary logic here
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
     if (
@@ -125,7 +122,7 @@ function getRemoveDashData(args) {
     return 0;
   });
 
-  //MH - temp construct FPO dynamic update date
+  //MH TODO: temp construct FPO dynamic update date
   const curDate = new Date();
   const options = {
     month: "short",
@@ -137,9 +134,11 @@ function getRemoveDashData(args) {
 
   const upDate = curDate.toLocaleDateString(locales, options);
 
-  removeResults.forEach((result) => {
-    result.info = verifiedEmails[0].email; //MH - temp - this info doesn't seem to be available
-  });
+  if (removeResults && removeResults.length) {
+    removeResults.forEach((result) => {
+      result.info = verifiedEmails[0].email; //MH - temp - this info doesn't seem to be available
+    });
+  }
 
   const emailCards = {
     verifiedEmails: verifiedEmails,

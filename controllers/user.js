@@ -79,6 +79,8 @@ async function handleRemoveFormSignup(req, res) {
   const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
   //apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback); //use swagger npm module method
   console.log("memberID", memberID);
+  req.session.kanary_id = memberID; //MH TODO: temporarily store in session until we can log this to DB
+
   return res.json({ id: memberID });
 }
 
@@ -95,6 +97,7 @@ async function handleKanaryAPISubmission(memberInfo) {
     .then((data) => {
       //console.log(data);
       //MH TODO: store data.id in fxa then...
+
       return data.id;
     })
     .catch((error) => {
@@ -390,10 +393,16 @@ async function getDashboard(req, res) {
   });
 }
 
-async function getRemoveFormPage(req, res) {
+async function getRemovePage(req, res) {
   const user = req.user;
   //console.log(user);
-  //console.log(req.session);
+  let kanary_id;
+  if (req.query && req.query.kid) {
+    kanary_id = req.query.kid;
+  } else {
+    kanary_id = req.session.kanary_id;
+  }
+
   const allBreaches = req.app.locals.breaches;
   const countries = req.app.locals.COUNTRIES;
   const usStates = req.app.locals.US_STATES;
@@ -408,6 +417,14 @@ async function getRemoveFormPage(req, res) {
     "remove_data"
   );
 
+  let removeData;
+  //console.log("kanaryID", kanary_id);
+  if (kanary_id) {
+    removeData = await getRemoveDashData(kanary_id);
+  } else {
+    removeData = null;
+  }
+
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
   let lastAddedEmail = null;
@@ -416,6 +433,14 @@ async function getRemoveFormPage(req, res) {
   if (req.session.lastAddedEmail) {
     lastAddedEmail = req.session.lastAddedEmail;
     req.session["lastAddedEmail"] = null;
+  }
+
+  let partialString;
+
+  if (kanary_id) {
+    partialString = "dashboards/remove-dashboard";
+  } else {
+    partialString = "dashboards/remove-form";
   }
 
   res.render("dashboards", {
@@ -427,8 +452,10 @@ async function getRemoveFormPage(req, res) {
     countries,
     usStates,
     userHasSignedUpForRemoveData,
+    removeData,
     supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-form",
+    //whichPartial: "dashboards/remove-form",
+    whichPartial: partialString,
     experimentFlags,
     utmOverrides,
   });
@@ -472,32 +499,54 @@ async function getRemoveConfirmationPage(req, res) {
   });
 }
 
-async function getRemoveDashData() {
-  return fetch("https://thekanary.com/partner-api/v0/accounts/2875/reports/", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-  })
+async function getRemoveDashData(kanary_id) {
+  return fetch(
+    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
+    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH hardcode a result with reports
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+      },
+    }
+  )
     .then((res) => res.json())
     .then((json) => {
-      const reportID = json[0].id; //MH - assuming this is the newest?
-      return reportID;
+      //console.log("reports", json);
+
+      if (json.length) {
+        const reportID = json[0].id; //MH - assuming this is the newest?
+        return reportID;
+      } else {
+        console.error("no reports available");
+        return null;
+      }
     })
     .then((reportID) => {
-      return fetch(
-        `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-          },
-        }
-      );
+      if (reportID) {
+        return fetch(
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+            },
+          }
+        );
+      } else {
+        //throw "No reports available";
+        console.error("No reports available");
+      }
     })
-    .then((res) => res.json())
+    .then((res) => {
+      if (res && res.json) {
+        return res.json();
+      } else {
+        console.error("No reports available");
+      }
+    })
     .then((json) => {
       if (json.url_matches) {
         return json.url_matches;
@@ -511,48 +560,6 @@ async function getRemoveDashData() {
         error
       );
     });
-}
-
-async function getRemoveDashPage(req, res) {
-  const user = req.user;
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const removeData = await getRemoveDashData(); //TODO: get only if they've signed up for this
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  let lastAddedEmail = null;
-
-  req.session.user = await DB.setBreachesLastShownNow(user);
-  if (req.session.lastAddedEmail) {
-    lastAddedEmail = req.session.lastAddedEmail;
-    req.session["lastAddedEmail"] = null;
-  }
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    lastAddedEmail,
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    removeData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-dashboard",
-    experimentFlags,
-    utmOverrides,
-  });
 }
 
 async function _verify(req) {
@@ -919,9 +926,8 @@ module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
-  getRemoveFormPage,
+  getRemovePage,
   getRemoveConfirmationPage,
-  getRemoveDashPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
