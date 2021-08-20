@@ -8,13 +8,7 @@ function initRemove() {
     switch ($removePage.id) {
       //MH - TODO: remove need for conditional and do this before we route. Talk to P&S about how best to handle this.
       case "remove-form":
-        //const removeFormSubmitted = localStorage.getItem("remove-form-submitted") === "true";
-        const kanaryID = parseInt(localStorage.getItem("kanary-id"));
-        if (kanaryID) {
-          window.location = "/user/remove-dashboard"; //MH TODO: - this check should be happening at the router level before hitting this page so redirect is not needed
-        } else {
-          initRemoveForm();
-        }
+        initRemoveForm();
         break;
       case "remove-dashboard":
         initRemoveDashboard();
@@ -30,8 +24,6 @@ function initRemoveForm() {
 }
 
 function initRemoveDashboard() {
-  //localStorage.setItem("remove-form-submitted", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
-  localStorage.setItem("kanary-id", false); //MH - TODO: temp - clear localStorage so form is shown next time we hit the remove tab default route.
   addRemoveDashListeners();
 }
 
@@ -66,9 +58,7 @@ function handleFormSubmit(e) {
     })
     .then((body) => {
       if (body.id) {
-        // localStorage.setItem("remove-form-submitted", true);
-        localStorage.setItem("kanary-id", body.id); //MH - temp, set local storage to handle showing remove dashboard after form submission.
-        window.location = "/user/remove-signup-confirmation";
+        window.location = "/user/remove-signup-confirmation"; //MH TODO: probably should be doing this through the router on backend?
       } else {
         console.error("no member id received", body);
       }

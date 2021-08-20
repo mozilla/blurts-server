@@ -65,9 +65,13 @@
     </div>
     <div class="remove-dash-results-container">
         <ul class="remove-dash-results-list">
-          {{#each this.removeResults}}
-            {{> removal/removal-result }}
-          {{/each}}
+          {{#if this.removeResults}}
+            {{#each this.removeResults}}
+              {{> removal/removal-result }}
+            {{/each}}
+          {{else}}
+            {{> removal/removal-complete }}
+          {{/if}}
         </ul>
       </div>
   </div>
