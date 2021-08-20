@@ -28,7 +28,6 @@ function initRemoveDashboard() {
 }
 
 function addRemoveFormListeners() {
-  console.log("arfl");
   document
     .querySelector(".js-remove-submit")
     .addEventListener("click", onSubmitClick);

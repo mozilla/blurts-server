@@ -68,6 +68,10 @@
       color: var(--alertRed);
       border: 1px solid var(--alertRed);
     }
+    &.risk-med {
+      color: var(--orange5);
+      border: 1px solid var(--orange5);
+    }
     &.risk-low {
       color: var(--grey10);
       border: 1px solid var(--grey10);

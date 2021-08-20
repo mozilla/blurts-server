@@ -571,6 +571,15 @@ known-data-breaches-exposed =
    *[other] Known data breaches have exposed your info
   }
 
+# This string is displayed under a large numeral that indicates the total number
+# of data brokers that have posted the user's information. Don’t add $removals to
+# your localization, because it would result in the number showing twice.
+data-brokers-listing-data =
+  { $removals ->
+    [one] website with data removal
+   *[other] websites with data removal
+  }
+
 # Button
 see-additional-breaches = See Additional Breaches
 
