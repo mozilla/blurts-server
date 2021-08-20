@@ -30,6 +30,17 @@ const FormUtils = {
       });
     });
   },
+  convertTimestamp(timestamp) {
+    //TODO: make separate utils for times or put in locale-utils
+    const upDate = new Date(timestamp);
+    const readableDate = upDate.toLocaleString("en", {
+      year: "numeric",
+      month: "short",
+      day: "2-digit",
+    });
+
+    return readableDate;
+  },
 };
 
 module.exports = {

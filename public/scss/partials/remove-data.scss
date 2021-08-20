@@ -487,6 +487,9 @@
       margin-top: 60px;
     }
   }
+  &-form-name {
+    flex-wrap: wrap;
+  }
   &-form-rqd {
     font-size: 14px;
   }
@@ -501,13 +504,17 @@
     color: var(--ink);
     font-size: 14px;
   }
-}
-
-.remove-dashboard-form-loc-select {
-  margin-left: 20px;
-  padding: 0;
-  &.active {
-    color: var(--grey7);
+  &-form-loc-select {
+    margin-left: 16px;
+    padding: 0;
+    &.active {
+      color: var(--grey7);
+    }
+  }
+  &-select-container {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 16px;
   }
 }
 

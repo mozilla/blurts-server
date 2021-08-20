@@ -402,12 +402,18 @@ remove-filter-date = Filter by Date
 # remove results
 remove-results-toggle-alt = Expand Option
 remove-risk-high = High Risk
+remove-risk-med = Medium Risk
 remove-risk-low = Low Risk
 remove-result-details-found = Info found
 remove-result-description = Description
 remove-result-link = Link
 remove-result-opt-out = Where to opt-out
 remove-complete = No Data Currently to Remove
+remove-result-updated = Updated
+remove-result-email = Email
+remove-result-phone = Phone
+remove-result-name = Name
+remove-result-address = Address
 
 show-breaches-for-this-email = Show all breaches for this email.
 
