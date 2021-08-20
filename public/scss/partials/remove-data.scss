@@ -396,6 +396,11 @@
         }
       }
     }
+    &[data-country="US"] {
+      .remove-dashboard-state-container {
+        opacity: 1;
+      }
+    }
   }
   &-card-container {
     margin: 0 auto;
@@ -515,6 +520,9 @@
     padding-left: 0;
     padding-right: 0;
     margin-left: 16px;
+  }
+  &-state-container {
+    opacity: 0;
   }
 }
 

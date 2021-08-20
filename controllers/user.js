@@ -553,7 +553,7 @@ async function getRemoveDashData(kanary_id) {
       }
     })
     .then((json) => {
-      if (json.url_matches) {
+      if (json && json.url_matches) {
         return json.url_matches;
       } else {
         return [];
