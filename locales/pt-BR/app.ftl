@@ -324,7 +324,8 @@ other-breaches-found =
 fb-comp-only = Este email apareceu no vazamento de { $breachName }
 fb-comp-and-others =
     { $breachCount ->
-        [one] Este email apareceu em { $breachCount } vazamento de dados conhecido, incluindo { $breachName }.
+        [zero] Este email não apareceu em nenhum vazamento de dados conhecido.
+        [one] Este email apareceu em { $breachCount } vazamento de dados conhecido: { $breachName }.
        *[other] Este email apareceu em { $breachCount } vazamentos de dados conhecidos, incluindo { $breachName }.
     }
 no-other-breaches-found = Nenhum outro vazamento foi encontrado em uma pesquisa básica.
@@ -388,6 +389,7 @@ known-data-breaches-exposed =
 see-additional-breaches = Ver vazamentos adicionais
 scan-results-known-breaches =
     { $breachCount ->
+        [zero] Este email não apareceu em nenhum vazamento de dados conhecido.
         [one] Este email apareceu em 1 vazamento de dados conhecido.
        *[other] Este email apareceu em { $breachCount } vazamentos de dados conhecidos.
     }
