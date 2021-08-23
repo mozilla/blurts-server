@@ -97,7 +97,7 @@ if (removeMonitorButton) {
 
 const relayLink = document.querySelector("[data-event-label='Try Firefox Relay']");
 const userEmailElement = document.querySelector(".nav-user-email");
-if (userEmailElement) {
+if (userEmailElement && relayLink) {
   const user_email = userEmailElement.textContent;
   if (user_email) {
     const relayUrl = new URL(relayLink.href);
