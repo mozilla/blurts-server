@@ -4,11 +4,13 @@
       @content;
     }
   }
+
   @if $point == mobile {
     @media (max-width: $bp-mobile) {
       @content;
     }
   }
+
   @if $point == tablet {
     @media (max-width: $bp-tablet) {
       @content;
@@ -22,21 +24,25 @@
     max-width: 16.6666667%;
     min-width: 16.6666667%;
   }
+
   @if $number == 3 {
     flex: 1 1 25%;
     max-width: 25%;
     min-width: 25%;
   }
+
   @if $number == 4 {
     flex: 1 1 33.33333334%;
     min-width: 33.33333334%;
     max-width: 33.33333334%;
   }
+
   @if $number == 6 {
     flex: 1 1 50%;
     min-width: 50%;
     max-width: 50%;
   }
+
   @if $number == 12 {
     flex: 0;
     width: 100%;

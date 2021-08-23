@@ -2,15 +2,20 @@
 
 .dashboard-stats-and-welcome {
   flex-direction: row;
+
   @include breakpoint(mobile) {
     flex-direction: column;
   }
 }
+
 .dashboard-welcome-container {
   @include col(3);
+
   align-items: center;
+
   @include breakpoint(mobile) {
     @include col(12);
+
     align-items: flex-start;
   }
 }
