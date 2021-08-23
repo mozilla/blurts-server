@@ -76,6 +76,9 @@
       color: var(--grey10);
       border: 1px solid var(--grey10);
     }
+    @include breakpoint(xs) {
+      display: none;
+    }
   }
   &-results-detail-title {
     margin-bottom: 0;

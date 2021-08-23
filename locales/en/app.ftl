@@ -576,8 +576,8 @@ known-data-breaches-exposed =
 # your localization, because it would result in the number showing twice.
 data-brokers-listing-data =
   { $removals ->
-    [one] website with data removal
-   *[other] websites with data removal
+    [one] Website with data removal
+   *[other] Websites with data removal
   }
 
 # Button

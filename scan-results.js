@@ -6,11 +6,10 @@ const HIBP = require("./hibp");
 const sha1 = require("./sha1-utils");
 
 const AppConstants = require("./app-constants");
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
+const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const { getExperimentFlags } = require("./controllers/utils");
 
-const scanResult = async(req, selfScan=false) => {
-
+const scanResult = async (req, selfScan = false) => {
   const allBreaches = req.app.locals.breaches;
   let scannedEmail = null;
 
@@ -54,8 +53,12 @@ const scanResult = async(req, selfScan=false) => {
   };
 
   // Checks for a signedInUser arriving from doorhanger.
-  if (signedInUser && url.searchParams.has("utm_source") && url.searchParams.get("utm_source") === "firefox") {
-    doorhangerScan = true, selfScan = true;
+  if (
+    signedInUser &&
+    url.searchParams.has("utm_source") &&
+    url.searchParams.get("utm_source") === "firefox"
+  ) {
+    (doorhangerScan = true), (selfScan = true);
     specificBreach = allBreaches.find(thisBreach(req.query.breach));
   }
 
@@ -69,7 +72,11 @@ const scanResult = async(req, selfScan=false) => {
 
   if (scannedEmail) {
     // Gets sensitive breaches only if selfScan === true
-    foundBreaches = await HIBP.getBreachesForEmail(scannedEmail, allBreaches, selfScan);
+    foundBreaches = await HIBP.getBreachesForEmail(
+      scannedEmail,
+      allBreaches,
+      selfScan
+    );
   }
 
   // Checks if scan originated from a breach detail/"featured breach" page.
@@ -78,7 +85,9 @@ const scanResult = async(req, selfScan=false) => {
   }
 
   if (doorhangerScan || specificBreach) {
-    const specificBreachIndex = foundBreaches.findIndex(breach => breach.Name === specificBreach.Name);
+    const specificBreachIndex = foundBreaches.findIndex(
+      (breach) => breach.Name === specificBreach.Name
+    );
 
     // Checks foundBreaches for specificBreach and if found,
     // brings specificBreach to front of foundBreaches list.
@@ -122,9 +131,8 @@ function resultsSummary(verifiedEmails) {
 
   // combine the breaches for each account, breach duplicates are ok
   // since the user may have multiple accounts with different emails
-  verifiedEmails.forEach(email => {
-
-    email.breaches.forEach(breach => {
+  verifiedEmails.forEach((email) => {
+    email.breaches.forEach((breach) => {
       if (breach.IsResolved) {
         breachStats.numBreaches.numResolved++;
       }

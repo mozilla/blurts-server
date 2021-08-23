@@ -365,7 +365,7 @@
     margin: 0;
     //when a filter is active
     &[data-filter="in-progress"] {
-      .remove-dash-results-list-item:not([data-status="in-progress"]) {
+      .remove-dash-results-list-item[data-status="#{$k-status-complete}"] {
         display: none;
       }
       .remove-filter-key-list-item[data-id="in-progress"] {
@@ -381,7 +381,7 @@
       }
     }
     &[data-filter="completed"] {
-      .remove-dash-results-list-item:not([data-status="completed"]) {
+      .remove-dash-results-list-item:not([data-status="#{$k-status-complete}"]) {
         display: none;
       }
       .remove-filter-key-list-item[data-id="completed"] {

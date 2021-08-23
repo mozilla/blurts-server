@@ -531,7 +531,7 @@ async function getRemoveDashData(kanary_id) {
     .then((reportID) => {
       if (reportID) {
         return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`, //MH: sample: report 11312
           {
             method: "GET",
             headers: {

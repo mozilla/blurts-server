@@ -1,18 +1,16 @@
-<div class="breach-stat-container flx">
-  <div class="breach-stat-row breach-stat-metrics flx">
-    {{#each breachStats}}
-      <div class="breach-stat-cell {{@key}} flx">
+<div class="breach-stat-container flx {{#if breachStats.removals}}has-removals{{/if}}" >
+  <div class="breach-stat-row flx">
+  {{#each breachStats}}
+    <div class="breach-stat-cell {{@key}} flx flx-col">
+      <div class="breach-stat-metrics">
         <span class="stat-headline">{{this.subhead}}</span>
       </div>
-    {{/each}}
-  </div>
-  <div class="breach-stat-row breach-stat-numbers flx">
-    {{#each breachStats}}
-      <div class="breach-stat-cell">
+      <div class="breach-stat-numbers">
         <span class="breach-stat-number flx bold {{@key}}">
-          {{this.displayCount}}
-        </span>
+        {{this.displayCount}}
+      </span>
       </div>
-    {{/each}}
+    </div>
+  {{/each}}
   </div>
 </div>
