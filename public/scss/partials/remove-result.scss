@@ -4,93 +4,118 @@
     border-radius: 8px;
     padding: 32px 24px;
     margin-top: 18px;
+
     &:first-child {
       margin-top: 0;
     }
   }
+
   &-results-toggle-img {
     .remove-dash-results-list-item.is-active & {
       transform: rotate(180deg);
     }
   }
+
   &-results-summary-container {
     width: 100%;
   }
+
   &-results-details-container {
     border-top: 1px solid var(--grey2);
     padding-top: 32px;
     margin-top: 32px;
     display: none;
     width: 100%;
+
     .remove-dash-results-list-item.is-active & {
       display: block;
     }
   }
+
   &-results-list-icon {
     height: 24px;
     width: auto;
   }
+
   &-results-site-name-container {
     margin-left: 12px;
   }
+
   &-results-site-name {
     @include ff-metropolis;
+
     font-size: 22px;
   }
+
   &-results-site-details {
     font-size: 14px;
     line-height: 26px;
     color: var(--grey5);
   }
+
   &-results-status-el {
     margin-left: 25px;
+
     &:first-child {
       margin-left: 0;
     }
+
     @include breakpoint(mobile) {
       margin-left: 8px;
+
       &:first-child {
         margin-left: 0;
       }
     }
   }
+
   &-results-status-time {
     font-size: 14px;
     color: var(--grey5);
   }
+
   &-results-risk {
     font-size: 12px;
     font-weight: 600;
     padding: 6px;
     border-radius: 4px;
     text-align: center;
+
     &.risk-high {
       color: var(--alertRed);
       border: 1px solid var(--alertRed);
     }
+
     &.risk-med {
       color: var(--orange5);
       border: 1px solid var(--orange5);
     }
+
     &.risk-low {
       color: var(--grey10);
       border: 1px solid var(--grey10);
     }
+
     @include breakpoint(xs) {
       display: none;
     }
   }
+
   &-results-detail-title {
     margin-bottom: 0;
+
     @include ff-metropolis;
+
     color: var(--grey5);
     font-size: 12px;
   }
+
   &-results-detail {
     color: var(--ink);
     line-height: 20px;
     width: 100%;
   }
+
   &-results-detail-link {
     color: var(--blue3);
   }

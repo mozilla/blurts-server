@@ -16,6 +16,7 @@
 
 .mobile-only {
   display: none;
+
   @include breakpoint(mobile) {
     display: block;
   }

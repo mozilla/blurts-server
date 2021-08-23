@@ -69,7 +69,7 @@ input:focus,
 
 .input-group-label {
   &.required {
-    &:before {
+    &::before {
       content: "*";
       color: var(--alertRed);
       margin-right: 8px;
@@ -84,9 +84,11 @@ input:focus,
   padding: 16px;
   border: 1px solid var(--grey4);
   border-radius: var(--br-input);
+
   &:not(:first-of-type) {
     margin-left: 20px;
   }
+
   &::placeholder {
     color: var(--grey5);
   }

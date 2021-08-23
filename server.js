@@ -7,11 +7,18 @@ Sentry.init({
   dsn: AppConstants.SENTRY_DSN,
   environment: AppConstants.NODE_ENV,
   beforeSend(event, hint) {
-    if (!hint.originalException.locales || hint.originalException.locales[0] === "en") return event; // return if no localization or localization is in english
+    if (
+      !hint.originalException.locales ||
+      hint.originalException.locales[0] === "en"
+    )
+      return event; // return if no localization or localization is in english
 
     try {
       if (hint.originalException.fluentID) {
-        event.exception.values[0].value = LocaleUtils.fluentFormat(["en"], hint.originalException.fluentID);
+        event.exception.values[0].value = LocaleUtils.fluentFormat(
+          ["en"],
+          hint.originalException.fluentID
+        );
       }
     } catch (e) {
       return event;
@@ -97,8 +104,7 @@ try {
   FormUtils.init();
   FormUtils.loadCountriesIntoApp(app);
 } catch (error) {
-  //log.error("try-load-countries-error", { error: error }); //MH TODO: figure out how these localized errors work
-  console.error("error loading countries");
+  log.error("try-load-countries-error", { error: error });
 }
 
 (async () => {
