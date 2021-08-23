@@ -1,4 +1,9 @@
 @mixin breakpoint($point) {
+  @if $point == xs {
+    @media (max-width: $bp-xs) {
+      @content;
+    }
+  }
   @if $point == mobile {
     @media (max-width: $bp-mobile) {
       @content;
@@ -26,6 +31,11 @@
     flex: 1 1 33.33333334%;
     min-width: 33.33333334%;
     max-width: 33.33333334%;
+  }
+  @if $number == 6 {
+    flex: 1 1 50%;
+    min-width: 50%;
+    max-width: 50%;
   }
   @if $number == 12 {
     flex: 0;

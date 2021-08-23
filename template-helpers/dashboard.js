@@ -1,8 +1,10 @@
 "use strict";
 
 const { LocaleUtils } = require("./../locale-utils");
+const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
+const { remove } = require("lodash");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -122,27 +124,28 @@ function getRemoveDashData(args) {
     return 0;
   });
 
-  //MH TODO: temp construct FPO dynamic update date
-  const curDate = new Date();
-  const options = {
-    month: "short",
-    day: "2-digit",
-    year: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-  };
-
-  const upDate = curDate.toLocaleDateString(locales, options);
+  let upDate;
 
   if (removeResults && removeResults.length) {
     removeResults.forEach((result) => {
-      result.info = verifiedEmails[0].email; //MH - temp - this info doesn't seem to be available
+      result.info = verifiedEmails[0].email; //TODO: find the most recent date from all results, not just date of first result
     });
+    upDate = FormUtils.convertTimestamp(removeResults[0].updated_at);
+  } else {
+    const curDate = new Date();
+    const options = {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+    };
+    upDate = curDate.toLocaleDateString(locales, options);
   }
 
   const emailCards = {
     verifiedEmails: verifiedEmails,
-    breaches: verifiedEmails[0].breaches.length, //MH TODO: temp...use actual logic from API
+    breaches: verifiedEmails[0].breaches.length,
     lastUpdate: upDate,
     removeResults: removeResults,
   };
@@ -154,10 +157,10 @@ function removeDashExposureMessage(args) {
   //MH TODO: temp...use actual logic from API
   const locales = args.data.root.req.supportedLocales;
   const verifiedEmail = args.data.root.verifiedEmails[0].email;
-  const breaches = args.data.root.verifiedEmails[0].breaches.length;
+  const numRemoveResults = args.data.root.removeData.length;
   return LocaleUtils.fluentFormat(locales, "remove-exposure-message", {
     email: verifiedEmail,
-    breaches: breaches,
+    numRemoveResults: numRemoveResults,
   });
 }
 

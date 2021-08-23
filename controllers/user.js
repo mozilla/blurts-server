@@ -6,6 +6,7 @@ const isemail = require("isemail");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FluentError } = require("../locale-utils");
+const { FormUtils } = require("../form-utils");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
@@ -418,9 +419,13 @@ async function getRemovePage(req, res) {
   );
 
   let removeData;
-  //console.log("kanaryID", kanary_id);
   if (kanary_id) {
     removeData = await getRemoveDashData(kanary_id);
+    removeData.forEach((removeItem) => {
+      removeItem.update_status = FormUtils.convertTimestamp(
+        removeItem.updated_at
+      );
+    });
   } else {
     removeData = null;
   }
@@ -502,7 +507,7 @@ async function getRemoveConfirmationPage(req, res) {
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
-    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH hardcode a result with reports
+    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH uncomment to hardcode a result with reports
     {
       method: "GET",
       headers: {
@@ -526,7 +531,7 @@ async function getRemoveDashData(kanary_id) {
     .then((reportID) => {
       if (reportID) {
         return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`, //MH: sample: report 11312
           {
             method: "GET",
             headers: {
@@ -548,7 +553,7 @@ async function getRemoveDashData(kanary_id) {
       }
     })
     .then((json) => {
-      if (json.url_matches) {
+      if (json && json.url_matches) {
         return json.url_matches;
       } else {
         return [];

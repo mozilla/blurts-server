@@ -32,9 +32,9 @@ function addRemoveFormListeners() {
     .querySelector(".js-remove-submit")
     .addEventListener("click", onSubmitClick);
 
-  document
-    .querySelector(".js-form-select")
-    .addEventListener("change", onSelectChange);
+  document.querySelectorAll(".js-form-select").forEach((selector) => {
+    selector.addEventListener("change", onSelectChange);
+  });
 }
 
 function onSubmitClick(e) {
@@ -43,11 +43,31 @@ function onSubmitClick(e) {
 
 function onSelectChange(e) {
   e.target.classList.toggle("active", true);
+  if (e.target.name === "country") {
+    document
+      .querySelector(".remove-dashboard-container")
+      .setAttribute("data-country", e.target.value);
+
+    if (e.target.value === "US") {
+      //TODO: should probably be in a constants file
+      document
+        .getElementById("remove-dashboard-form-loc-state")
+        .setAttribute("required", true);
+    } else {
+      document
+        .getElementById("remove-dashboard-form-loc-state")
+        .removeAttribute("required");
+    }
+  }
 }
 
 function handleFormSubmit(e) {
-  e.preventDefault();
-  //process form then...
+  const isValid = e.target.form.reportValidity(); //use native html form validator
+  if (!isValid) {
+    return;
+  }
+
+  e.preventDefault(); //if valid, prevent submission and post data
 
   fetch(e.target.form.action, {
     method: "POST",

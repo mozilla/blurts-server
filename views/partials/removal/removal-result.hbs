@@ -26,11 +26,12 @@
       </div>
     </div>
     <div class="remove-dash-results-status-container flx flx-cntr">
-      {{#if this.updated_at}}
+      {{#if this.update_status}}
         <div
           class="remove-dash-results-status-time remove-dash-results-status-el hidden-mobile"
         >
-          {{this.updated_at}}
+          {{getString "remove-result-updated"}}
+          {{this.update_status}}
         </div>
       {{/if}}
       {{#ifCompare this.risk_level "===" "HIGH"}}
@@ -38,6 +39,14 @@
           class="remove-dash-results-risk remove-dash-results-status-el risk-high"
         >
           {{getString "remove-risk-high"}}
+        </div>
+      {{/ifCompare}}
+
+      {{#ifCompare this.risk_level "===" "MEDIUM"}}
+        <div
+          class="remove-dash-results-risk remove-dash-results-status-el risk-med"
+        >
+          {{getString "remove-risk-med"}}
         </div>
       {{/ifCompare}}
 
@@ -67,16 +76,32 @@
   </div>
   <div class="remove-dash-results-details-container">
     <ul class="remove-dash-results-details-list">
-      {{#if this.updated_at}}
+      {{#if this.update_status}}
         <li class="remove-dash-results-details-item mobile-only">
-          <p class="remove-dash-results-detail">Updated: {{this.updated_at}}</p>
+          <p class="remove-dash-results-detail">{{getString
+              "remove-result-updated"
+            }}
+            {{this.update_status}}</p>
         </li>
       {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <h3 class="remove-dash-results-detail-title">
           {{getString "remove-result-details-found"}}
         </h3>
-        <p class="remove-dash-results-detail">{{this.info}}</p>
+        <p class="remove-dash-results-detail">
+          {{#ifLength this.email_matches}}{{getString
+              "remove-result-email"
+            }},{{/ifLength}}
+          {{#ifLength this.phone_matches}}{{getString
+              "remove-result-phone"
+            }},{{/ifLength}}
+          {{#ifLength this.name_matches}}{{getString
+              "remove-result-name"
+            }},{{/ifLength}}
+          {{#ifLength this.address_matches}}{{getString
+              "remove-result-address"
+            }}{{/ifLength}}
+        </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <h3 class="remove-dash-results-detail-title">

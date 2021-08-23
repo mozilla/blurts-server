@@ -393,7 +393,7 @@ remove-form-success-next-details = We’ll email you once your summary is ready.
 remove-status-in-progress = We are working on removing your data
 remove-status-update = Last update:
 remove-exposure-snippet = is currently exposed in these
-remove-exposure-message = {$breaches} websites
+remove-exposure-message = {$numRemoveResults} websites
 remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
@@ -402,12 +402,18 @@ remove-filter-date = Filter by Date
 # remove results
 remove-results-toggle-alt = Expand Option
 remove-risk-high = High Risk
+remove-risk-med = Medium Risk
 remove-risk-low = Low Risk
 remove-result-details-found = Info found
 remove-result-description = Description
 remove-result-link = Link
 remove-result-opt-out = Where to opt-out
 remove-complete = No Data Currently to Remove
+remove-result-updated = Updated
+remove-result-email = Email
+remove-result-phone = Phone
+remove-result-name = Name
+remove-result-address = Address
 
 show-breaches-for-this-email = Show all breaches for this email.
 
@@ -563,6 +569,15 @@ known-data-breaches-exposed =
   { $breaches ->
     [one] Known data breach has exposed your info
    *[other] Known data breaches have exposed your info
+  }
+
+# This string is displayed under a large numeral that indicates the total number
+# of data brokers that have posted the user's information. Don’t add $removals to
+# your localization, because it would result in the number showing twice.
+data-brokers-listing-data =
+  { $removals ->
+    [one] Website with data removal
+   *[other] Websites with data removal
   }
 
 # Button
