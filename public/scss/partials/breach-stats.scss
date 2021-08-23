@@ -8,32 +8,42 @@
 .breach-stat {
   &-row {
     align-items: flex-end;
+
     .has-removals & {
       @include breakpoint(mobile) {
         flex-wrap: wrap;
       }
     }
   }
+
   &-metrics {
     @include breakpoint(mobile) {
       margin-top: 16px;
     }
   }
+
   &-numbers {
     margin-top: 10px;
   }
+
   &-cell {
     text-align: center;
+
     @include col(4);
+
     .has-removals & {
       @include col(3);
+
       @include breakpoint(mobile) {
         @include col(6);
+
         padding: 20px;
+
         &:nth-child(1),
         &:nth-child(2) {
           border-bottom: 1px solid var(--grey2);
         }
+
         &:nth-child(1),
         &:nth-child(3) {
           border-right: 1px solid var(--grey2);
@@ -48,6 +58,7 @@
   line-height: 1.14;
   min-width: 60px;
   color: var(--ink);
+
   @include ff-metropolis;
 }
 

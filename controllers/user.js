@@ -32,7 +32,7 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function handleRemoveFormSignup(req, res) {
   //TODO: validate form data
-  //TODO: store to DB?
+  //TODO: store to DB
 
   const { account, firstname, lastname, city, state, country, birthyear } =
     req.body;
@@ -71,7 +71,6 @@ async function handleRemoveFormSignup(req, res) {
   //     console.error("apiError", error);
   //   } else {
   //     console.log(data); //MH - if no data - is it already in the system? Getting undefined now...
-  //     //MH TODO: store data.id in fxa then...
   //     return res.json({ id: data.id });
   //     //res.redirect("/user/remove-signup-confirmation");
   //   }
@@ -79,7 +78,7 @@ async function handleRemoveFormSignup(req, res) {
 
   const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
   //apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback); //use swagger npm module method
-  console.log("memberID", memberID);
+  // console.log("memberID", memberID);
   req.session.kanary_id = memberID; //MH TODO: temporarily store in session until we can log this to DB
 
   return res.json({ id: memberID });
@@ -128,7 +127,6 @@ async function resendEmail(req, res) {
   }
 
   if (existingEmail.subscriber_id !== sessionUser.id) {
-    // TODO: more specific error message?
     throw new FluentError("user-verify-token-error");
   }
 
@@ -153,7 +151,6 @@ async function resendEmail(req, res) {
     }
   );
 
-  // TODO: what should we return to the client?
   return res.json("Resent the email");
 }
 
