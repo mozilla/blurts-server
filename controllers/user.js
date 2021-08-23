@@ -504,7 +504,6 @@ async function getRemoveConfirmationPage(req, res) {
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
-    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH uncomment to hardcode a result with reports
     {
       method: "GET",
       headers: {
@@ -528,7 +527,7 @@ async function getRemoveDashData(kanary_id) {
     .then((reportID) => {
       if (reportID) {
         return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`, //MH: sample: report 11312
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
           {
             method: "GET",
             headers: {
