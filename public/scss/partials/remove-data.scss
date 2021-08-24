@@ -566,11 +566,14 @@
     &.active {
       color: var(--grey7);
     }
+
+    &:focus {
+      @include form-focus;
+    }
   }
 
   &-select-container {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
     margin-left: 16px;
   }
 

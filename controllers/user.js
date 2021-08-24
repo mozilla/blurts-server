@@ -32,7 +32,6 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function handleRemoveFormSignup(req, res) {
   //TODO: validate form data
-  //TODO: store to DB
 
   const { account, firstname, lastname, city, state, country, birthyear } =
     req.body;
@@ -65,23 +64,21 @@ async function handleRemoveFormSignup(req, res) {
 
   const jsonMemberList = JSON.stringify(memberList);
 
-  //uncomment if using kanary_partner_api npm module
-  // const accountsPostCallback = function (error, data, response) {
-  //   if (error) {
-  //     console.error("apiError", error);
-  //   } else {
-  //     console.log(data); //MH - if no data - is it already in the system? Getting undefined now...
-  //     return res.json({ id: data.id });
-  //     //res.redirect("/user/remove-signup-confirmation");
-  //   }
-  // };
-
   const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
-  //apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback); //use swagger npm module method
-  // console.log("memberID", memberID);
-  req.session.kanary_id = memberID; //MH TODO: temporarily store in session until we can log this to DB
+  console.log("memberID", memberID);
+  if (!req.user) {
+    console.error("no user");
+  }
+  const user = req.user;
 
-  return res.json({ id: memberID });
+  if (!user.kid) {
+    const kid = await DB.setKanaryID(user, memberID);
+    return res.json({ id: kid });
+  } else {
+    console.error(
+      "user received the kanary signup form but already has a kanary id"
+    );
+  }
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
@@ -127,6 +124,7 @@ async function resendEmail(req, res) {
   }
 
   if (existingEmail.subscriber_id !== sessionUser.id) {
+    // TODO: more specific error message?
     throw new FluentError("user-verify-token-error");
   }
 
@@ -151,6 +149,7 @@ async function resendEmail(req, res) {
     }
   );
 
+  // TODO: what should we return to the client?
   return res.json("Resent the email");
 }
 
@@ -396,9 +395,13 @@ async function getRemovePage(req, res) {
   //console.log(user);
   let kanary_id;
   if (req.query && req.query.kid) {
+    //if we pass a kanary id param in URL
     kanary_id = req.query.kid;
   } else {
-    kanary_id = req.session.kanary_id;
+    //get kanary id from user record
+    //console.log("user", user);
+    kanary_id = user.kid;
+    //kanary_id = req.session.kanary_id; //uncomment if wanting to use a query parameter to bypass registration step
   }
 
   const allBreaches = req.app.locals.breaches;
@@ -417,6 +420,7 @@ async function getRemovePage(req, res) {
 
   let removeData;
   if (kanary_id) {
+    //if user has a kanary ID, get kanary dashboard data
     removeData = await getRemoveDashData(kanary_id);
     removeData.forEach((removeItem) => {
       removeItem.update_status = FormUtils.convertTimestamp(
@@ -424,6 +428,7 @@ async function getRemovePage(req, res) {
       );
     });
   } else {
+    //data will be null and we will display the form
     removeData = null;
   }
 
@@ -504,6 +509,7 @@ async function getRemoveConfirmationPage(req, res) {
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
+    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH uncomment to hardcode a result with reports
     {
       method: "GET",
       headers: {
@@ -527,7 +533,7 @@ async function getRemoveDashData(kanary_id) {
     .then((reportID) => {
       if (reportID) {
         return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`, //MH: sample: report 11312
           {
             method: "GET",
             headers: {
@@ -538,14 +544,14 @@ async function getRemoveDashData(kanary_id) {
         );
       } else {
         //throw "No reports available";
-        console.error("No reports available");
+        console.log("No reports available");
       }
     })
     .then((res) => {
       if (res && res.json) {
         return res.json();
       } else {
-        console.error("No reports available");
+        console.log("No reports available");
       }
     })
     .then((json) => {

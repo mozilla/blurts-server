@@ -42,8 +42,8 @@ input[type="text"]:focus,
 input[type="radio"]:focus ~ .checkmark,
 input:focus,
 .radio-button-group:focus {
-  border: 1px solid rgb(40, 97, 205);
-  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+  @include form-focus;
+
   outline: none;
 }
 

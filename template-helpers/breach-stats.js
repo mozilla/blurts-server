@@ -19,7 +19,7 @@ function getBreachStats(args) {
   if (removeData && removeData.length) {
     breachStatBundle.removals = {
       count: removeData.length,
-      numResolved: 0, //MH TODO: loop through results to count status of "removal_verified"
+      numResolved: 0, //TODO: loop through results to count status of "removal_verified"
       subhead: localize(locales, "data-brokers-listing-data", {
         removals: removeData.length,
       }),
@@ -65,6 +65,7 @@ function getBreachStats(args) {
     breachesStat.displayCount = breachesStat.count;
   }
 
+  //console.log(userBreachStats);
   // add progress bar strings
   if (AppConstants.BREACH_RESOLUTION_ENABLED === "1") {
     userBreachStats.progressBar = makeProgressBar(breachesStat, locales);

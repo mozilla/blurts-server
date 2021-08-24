@@ -1,5 +1,7 @@
 "use strict";
 
+//MH TODO: Find out how to scope this to just remove page
+
 function initRemove() {
   const $removePage = document.querySelector(".remove-page");
   if ($removePage) {
@@ -12,7 +14,7 @@ function initRemove() {
         initRemoveDashboard();
         break;
       default:
-      //console.log("no matching page id");
+        console.log("no matching page id");
     }
   }
 }
@@ -78,12 +80,11 @@ function handleFormSubmit(e) {
       if (body.id) {
         window.location = "/user/remove-signup-confirmation"; //MH TODO: probably should be doing this through the router on backend?
       } else {
-        //console.error("no member id received", body);
+        console.error("no member id received", body);
       }
     })
     .catch((error) => {
-      //console.log(error);
-      // TODO handle error
+      console.error("error with form submission", error);
     });
 }
 

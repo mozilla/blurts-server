@@ -53,3 +53,8 @@
 @mixin ff-metropolis {
   font-family: "Metropolis", sans-serif;
 }
+
+@mixin form-focus {
+  border: 1px solid rgb(40, 97, 205);
+  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+}
