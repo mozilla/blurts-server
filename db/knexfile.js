@@ -4,7 +4,7 @@ const { parse } = require("pg-connection-string");
 
 const AppConstants = require("../app-constants");
 const connectionObj = parse(AppConstants.DATABASE_URL);
-if (["dev", "heroku"].includes(AppConstants.NODE_ENV)) {
+if (["heroku"].includes(AppConstants.NODE_ENV)) {
   connectionObj.ssl = { rejectUnauthorized: false };
 }
 
