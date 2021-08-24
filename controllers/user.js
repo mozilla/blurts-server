@@ -71,14 +71,8 @@ async function handleRemoveFormSignup(req, res) {
   }
   const user = req.user;
 
-  if (!user.kid) {
-    const kid = await DB.setKanaryID(user, memberID);
-    return res.json({ id: kid });
-  } else {
-    console.error(
-      "user received the kanary signup form but already has a kanary id"
-    );
-  }
+  const kid = await DB.setKanaryID(user, memberID);
+  return res.json({ id: kid });
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
@@ -397,6 +391,9 @@ async function getRemovePage(req, res) {
   if (req.query && req.query.kid) {
     //if we pass a kanary id param in URL
     kanary_id = req.query.kid;
+  } else if (req.query && req.query.show_form) {
+    console.log("showform");
+    kanary_id = null;
   } else {
     //get kanary id from user record
     //console.log("user", user);

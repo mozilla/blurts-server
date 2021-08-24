@@ -312,7 +312,7 @@ new-breaches-found =
        *[other] { $breachCount } NOVOS VAZAMENTOS ENCONTRADOS
     }
 sign-up-headline-1 = Receba alertas sobre novos vazamentos com uma { -brand-fxa }.
-account-not-required = O navegador { -brand-name } não é obrigatório para ter uma { -brand-fxa }. Você pode receber informações sobre serviços da { -brand-Mozilla }.
+account-not-required = Não é obrigatório usar o navegador { -brand-name } para ter uma { -brand-fxa }. Você pode receber informações sobre serviços { -brand-Mozilla }.
 was-your-info-exposed = Suas informações foram expostas no vazamento de dados de { $breachName }?
 find-out-if = Descubra se seus dados foram expostos neste vazamento.
 fb-not-comp = Este email não apareceu no vazamento de { $breachName }.
@@ -324,7 +324,8 @@ other-breaches-found =
 fb-comp-only = Este email apareceu no vazamento de { $breachName }
 fb-comp-and-others =
     { $breachCount ->
-        [one] Este email apareceu em { $breachCount } vazamento de dados conhecido, incluindo { $breachName }.
+        [zero] Este email não apareceu em nenhum vazamento de dados conhecido.
+        [one] Este email apareceu em { $breachCount } vazamento de dados conhecido: { $breachName }.
        *[other] Este email apareceu em { $breachCount } vazamentos de dados conhecidos, incluindo { $breachName }.
     }
 no-other-breaches-found = Nenhum outro vazamento foi encontrado em uma pesquisa básica.
@@ -388,6 +389,7 @@ known-data-breaches-exposed =
 see-additional-breaches = Ver vazamentos adicionais
 scan-results-known-breaches =
     { $breachCount ->
+        [zero] Este email não apareceu em nenhum vazamento de dados conhecido.
         [one] Este email apareceu em 1 vazamento de dados conhecido.
        *[other] Este email apareceu em { $breachCount } vazamentos de dados conhecidos.
     }
@@ -474,7 +476,7 @@ manage-all-emails = Gerencie todos os endereços de email nas { $preferencesLink
 breach-alert-notifications = Notificações de alerta de vazamento
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Vazamento adicionado em:
+breach-added-label = Informações sobre o vazamento adicionadas em:
 how-hackers-work-desc = Proteja suas senhas de criminosos cibernéticos, já que isso é o que eles mais querem.
 what-to-do-after-breach-desc = Tranque suas contas para manter suas informações longe de mãos erradas.
 create-strong-passwords-desc = Use senhas fortes, seguras e difíceis de adivinhar.

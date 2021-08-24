@@ -34,7 +34,7 @@ email-found-breaches-hl = Aqui está seu resumo de vazamentos de dados anteriore
 # Email headline
 email-breach-summary-for-email = Resumo de vazamentos de { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } apareceu em 0 vazamentos conhecidos de dados
+email-no-breaches-hl = { $userEmail } não apareceu em nenhum vazamento de dados conhecido
 # Email headline
 email-alert-hl = { $userEmail } apareceu em um novo vazamento de dados
 # Subject line of email
