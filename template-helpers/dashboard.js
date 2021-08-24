@@ -4,7 +4,6 @@ const { LocaleUtils } = require("./../locale-utils");
 const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
-const { remove } = require("lodash");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");

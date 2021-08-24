@@ -5,74 +5,67 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:node/recommended",
-  ],
+  extends: ["eslint:recommended", "plugin:node/recommended"],
   overrides: [
     {
-      files: [
-        "public/js/**/*.js",
-      ],
+      files: ["public/js/**/*.js"],
       env: {
         browser: true,
         node: false,
       },
       rules: {
-        "strict": "off",
+        strict: "off",
       },
     },
     {
-      files: [
-        "scripts/*.js",
-      ],
+      files: ["scripts/*.js"],
       rules: {
         "no-console": "off",
         "no-process-exit": "off",
       },
     },
     {
-      files: [
-        "tests/**/*.js",
-      ],
+      files: ["tests/**/*.js"],
       env: {
         jest: true,
       },
     },
     {
-      files: [
-        "tests/integration/**/*.js",
-      ],
+      files: ["tests/integration/**/*.js"],
       globals: {
-        "$": "readonly",
-        "$$": "readonly",
-        "browser": "readonly",
+        $: "readonly",
+        $$: "readonly",
+        browser: "readonly",
       },
       rules: {
         "valid-jsdoc": "off",
       },
     },
   ],
-  plugins: [
-    "node",
-  ],
+  plugins: ["node"],
   root: true,
   rules: {
-    "comma-dangle": ["error", {arrays: "always-multiline", objects: "always-multiline"}],
+    "comma-dangle": [
+      "error",
+      { arrays: "always-multiline", objects: "always-multiline" },
+    ],
     "eol-last": ["error", "always"],
-    "eqeqeq": "error",
-    "no-console": ["error", {allow: ["error", "info", "warn"]}],
+    eqeqeq: "error",
+    "no-console": ["error", { allow: ["error", "info", "warn", "log"] }],
     "no-process-env": "error",
     "no-prototype-builtins": "off",
     "no-trailing-spaces": "error",
-    "no-unused-vars": ["error", {vars: "all", args: "none", ignoreRestSiblings: false}],
+    "no-unused-vars": [
+      "error",
+      { vars: "all", args: "none", ignoreRestSiblings: false },
+    ],
     "no-var": "error",
     "no-warning-comments": "warn",
     "prefer-const": "error",
-    "quotes": ["error", "double"],
+    quotes: ["error", "double"],
     "require-jsdoc": "off",
-    "semi": ["error", "always"],
-    "strict": ["error", "safe"],
+    semi: ["error", "always"],
+    strict: ["error", "safe"],
     "valid-jsdoc": "warn",
   },
 };

@@ -378,15 +378,15 @@ const DB = {
   },
 
   async setKanaryID(user, kid) {
-    await knex("subscribers").where("id", user.id).update({
-      kid: kid,
-    });
-    // knex("subscribers")
-    //   .update({ kid })
-    //   .where({ id: user.id })
-    //   .then((u) => res.status(!!u ? 200 : 404).json({ success: !!u }))
-    //   .catch((e) => res.status(500).json(e));
-    return user;
+    await knex("subscribers")
+      .where("id", user.id)
+      .update({
+        kid: kid,
+      })
+      .catch((e) => {
+        console.error("error setting kanary id", e);
+      });
+    return kid;
   },
 
   async removeSubscriber(subscriber) {

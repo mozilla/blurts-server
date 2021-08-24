@@ -84,8 +84,7 @@ function handleFormSubmit(e) {
       }
     })
     .catch((error) => {
-      console.log(error);
-      // TODO handle error
+      console.error("error with form submission", error);
     });
 }
 

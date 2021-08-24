@@ -64,20 +64,7 @@ async function handleRemoveFormSignup(req, res) {
 
   const jsonMemberList = JSON.stringify(memberList);
 
-  //uncomment if using kanary_partner_api npm module
-  // const accountsPostCallback = function (error, data, response) {
-  //   if (error) {
-  //     console.error("apiError", error);
-  //   } else {
-  //     console.log(data); //MH - if no data - is it already in the system? Getting undefined now...
-  //     //MH TODO: store data.id in fxa then...
-  //     return res.json({ id: data.id });
-  //     //res.redirect("/user/remove-signup-confirmation");
-  //   }
-  // };
-
   const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
-  //apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback); //use swagger npm module method
   console.log("memberID", memberID);
   if (!req.user) {
     console.error("no user");
@@ -86,9 +73,7 @@ async function handleRemoveFormSignup(req, res) {
 
   if (!user.kid) {
     const kid = await DB.setKanaryID(user, memberID);
-    //console.log("kid", kid);
-    //req.session.kanary_id = memberID; //MH TODO: temporarily store in session until we can log this to DB
-    return res.json({ id: memberID });
+    return res.json({ id: kid });
   } else {
     console.error(
       "user received the kanary signup form but already has a kanary id"
@@ -436,7 +421,6 @@ async function getRemovePage(req, res) {
   let removeData;
   if (kanary_id) {
     //if user has a kanary ID, get kanary dashboard data
-    console.log("has kid");
     removeData = await getRemoveDashData(kanary_id);
     removeData.forEach((removeItem) => {
       removeItem.update_status = FormUtils.convertTimestamp(
@@ -445,7 +429,6 @@ async function getRemovePage(req, res) {
     });
   } else {
     //data will be null and we will display the form
-    console.log("no kid");
     removeData = null;
   }
 
