@@ -20,7 +20,7 @@ async function sendForm(action, formBody = {}) {
 
 async function sendCommunicationOption(e) {
   const { formAction, commOption, csrfToken } = e.target.dataset;
-  console.log(formAction, commOption);
+  //console.log(formAction, commOption);
   sendForm(formAction, { communicationOption: commOption, _csrf: csrfToken })
     .then((data) => {}) /*decide what to do with data */
     .catch((e) => {}) /* decide how to handle errors */;
