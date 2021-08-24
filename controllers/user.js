@@ -32,7 +32,6 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function handleRemoveFormSignup(req, res) {
   //TODO: validate form data
-  //TODO: store to DB?
 
   const { account, firstname, lastname, city, state, country, birthyear } =
     req.body;
@@ -80,9 +79,21 @@ async function handleRemoveFormSignup(req, res) {
   const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
   //apiInstance.partnerApiV0AccountsPost(jsonMemberList, accountsPostCallback); //use swagger npm module method
   console.log("memberID", memberID);
-  req.session.kanary_id = memberID; //MH TODO: temporarily store in session until we can log this to DB
+  if (!req.user) {
+    console.error("no user");
+  }
+  const user = req.user;
 
-  return res.json({ id: memberID });
+  if (!user.kid) {
+    const kid = await DB.setKanaryID(user, memberID);
+    //console.log("kid", kid);
+    //req.session.kanary_id = memberID; //MH TODO: temporarily store in session until we can log this to DB
+    return res.json({ id: memberID });
+  } else {
+    console.error(
+      "user received the kanary signup form but already has a kanary id"
+    );
+  }
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
@@ -399,9 +410,13 @@ async function getRemovePage(req, res) {
   //console.log(user);
   let kanary_id;
   if (req.query && req.query.kid) {
+    //if we pass a kanary id param in URL
     kanary_id = req.query.kid;
   } else {
-    kanary_id = req.session.kanary_id;
+    //get kanary id from user record
+    //console.log("user", user);
+    kanary_id = user.kid;
+    //kanary_id = req.session.kanary_id; //uncomment if wanting to use a query parameter to bypass registration step
   }
 
   const allBreaches = req.app.locals.breaches;
@@ -420,6 +435,8 @@ async function getRemovePage(req, res) {
 
   let removeData;
   if (kanary_id) {
+    //if user has a kanary ID, get kanary dashboard data
+    console.log("has kid");
     removeData = await getRemoveDashData(kanary_id);
     removeData.forEach((removeItem) => {
       removeItem.update_status = FormUtils.convertTimestamp(
@@ -427,6 +444,8 @@ async function getRemovePage(req, res) {
       );
     });
   } else {
+    //data will be null and we will display the form
+    console.log("no kid");
     removeData = null;
   }
 
@@ -542,14 +561,14 @@ async function getRemoveDashData(kanary_id) {
         );
       } else {
         //throw "No reports available";
-        console.error("No reports available");
+        console.log("No reports available");
       }
     })
     .then((res) => {
       if (res && res.json) {
         return res.json();
       } else {
-        console.error("No reports available");
+        console.log("No reports available");
       }
     })
     .then((json) => {

@@ -65,7 +65,7 @@ function getBreachStats(args) {
     breachesStat.displayCount = breachesStat.count;
   }
 
-  console.log(userBreachStats);
+  //console.log(userBreachStats);
   // add progress bar strings
   if (AppConstants.BREACH_RESOLUTION_ENABLED === "1") {
     userBreachStats.progressBar = makeProgressBar(breachesStat, locales);
