@@ -4,6 +4,8 @@ account-balances = Banksaldo’s
 address-book-contacts = Adresboekkontakten
 age-groups = Leeftiidsgroepen
 ages = Leeftiden
+# Refers to medical appointments.
+appointments = Ofspraken
 apps-installed-on-devices = Op apparaten ynstallearre apps
 astrological-signs = Stjerrebylden
 audio-recordings = Lûdsopnamen
