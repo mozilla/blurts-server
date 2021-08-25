@@ -13,14 +13,6 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const fetch = require("node-fetch");
 
-//MH - uncomment if using the swaggerhub generated npm module - note this needs to be a private module somewhere if you are deploying to heroku and not linking to a local repo
-//const KanaryPartnerApi = require("kanary_partner_api");
-// const defaultClient = KanaryPartnerApi.ApiClient.instance;
-// const ktoken = defaultClient.authentications["Bearer token"];
-// ktoken.apiKey = AppConstants.KANARY_TOKEN; //MH: TODO: put in .env
-// ktoken.apiKeyPrefix = "Bearer";
-// const apiInstance = new KanaryPartnerApi.AccountApi();
-
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
   getExperimentFlags,
