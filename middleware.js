@@ -158,12 +158,9 @@ async function _getRequestSessionUser(req, res, next) {
 async function requireSessionUser(req, res, next) {
   const user = await _getRequestSessionUser(req);
   if (!user) {
-    let queryParams = new URLSearchParams(req.query).toString();
+    const queryParams = new URLSearchParams(req.query).toString();
     const removeRoute = "/user/remove-data"; //MH TODO: should be in a constant, but probably not .env - do we have a file for these?
     if (req.originalUrl === removeRoute) {
-      // queryParams += `${ //MH TODO: - store in query params if FXA able to dynamically redirect versus store in session?
-      //   queryParams.length ? "&" : ""
-      // }post_auth_redirect=${removeRoute}`;
       req.session.post_auth_redirect = removeRoute;
     }
     return res.redirect(`/oauth/init?${queryParams}`);
