@@ -15,22 +15,20 @@ const HIBP = require("./hibp");
 
 const log = mozlog("middleware");
 
-
 // adds the request object to a res.local var
-function addRequestToResponse (req, res, next) {
+function addRequestToResponse(req, res, next) {
   res.locals.req = req;
   next();
 }
 
-
 // picks available language by Accept-Language and assigns to request
-function pickLanguage (req, res, next) {
+function pickLanguage(req, res, next) {
   res.vary("Accept-Language");
   const requestedLanguage = acceptedLanguages(req.headers["accept-language"]);
   const supportedLocales = negotiateLanguages(
     requestedLanguage,
     req.app.locals.AVAILABLE_LANGUAGES,
-    {defaultLocale: "en"}
+    { defaultLocale: "en" }
   );
   req.supportedLocales = supportedLocales;
 
@@ -48,8 +46,7 @@ function pickLanguage (req, res, next) {
   next();
 }
 
-
-async function recordVisitFromEmail (req, res, next) {
+async function recordVisitFromEmail(req, res, next) {
   if (req.query.utm_source && req.query.utm_source !== "fx-monitor") {
     next();
     return;
@@ -63,14 +60,17 @@ async function recordVisitFromEmail (req, res, next) {
   const capturedMatch = req.path.match(breachDetailsRE);
 
   // Send engagement ping to FXA if req.query contains a valid subscriber ID
-  if (req.query.subscriber_id && Number.isInteger(Number(req.query.subscriber_id))) {
+  if (
+    req.query.subscriber_id &&
+    Number.isInteger(Number(req.query.subscriber_id))
+  ) {
     const subscriber = await DB.getSubscriberById(req.query.subscriber_id);
 
     if (!subscriber.fxa_uid || subscriber.fxa_uid === "") {
       next();
       return;
     }
-    const utmContent = (capturedMatch) ? `&utm_content=${capturedMatch[1]}` : "";
+    const utmContent = capturedMatch ? `&utm_content=${capturedMatch[1]}` : "";
     const fxaMetricsFlowPath = `metrics-flow?utm_source=${req.query.utm_source}&utm_medium=${req.query.utm_medium}${utmContent}&event_type=engage&uid=${subscriber.fxa_uid}&service=${AppConstants.OAUTH_CLIENT_ID}`;
     const fxaResult = await FXA.sendMetricsFlowPing(fxaMetricsFlowPath);
     log.info(`fxaResult: ${fxaResult}`);
@@ -90,11 +90,13 @@ async function recordVisitFromEmail (req, res, next) {
   // Redirect users who have clicked "Resolve this breach" or "Go to Dashboard" from an email
   // and aren't signed in to the /oauth flow.
   if (
-    req.query.utm_campaign && req.query.utm_campaign === "resolve-this-breach-link" ||
-    req.query.utm_campaign && req.query.utm_campaign === "go-to-dashboard-link"
-    ) {
+    (req.query.utm_campaign &&
+      req.query.utm_campaign === "resolve-this-breach-link") ||
+    (req.query.utm_campaign &&
+      req.query.utm_campaign === "go-to-dashboard-link")
+  ) {
     const oauthUrl = new URL("/oauth/init", AppConstants.SERVER_URL);
-    ["utm_source", "utm_campaign", "utm_medium"].forEach(param => {
+    ["utm_source", "utm_campaign", "utm_medium"].forEach((param) => {
       if (req.query[param]) {
         oauthUrl.searchParams.append(param, req.query[param]);
       }
@@ -106,24 +108,21 @@ async function recordVisitFromEmail (req, res, next) {
   next();
 }
 
-
 // Helps handle errors for all async route controllers
 // See https://medium.com/@Abazhenov/using-async-await-in-express-with-node-8-b8af872c0016
-function asyncMiddleware (fn) {
+function asyncMiddleware(fn) {
   return (req, res, next) => {
     Promise.resolve(fn(req, res, next)).catch(next);
   };
 }
 
-
-function logErrors (err, req, res, next) {
-  log.error("error", {stack: err.stack});
+function logErrors(err, req, res, next) {
+  log.error("error", { stack: err.stack });
   Sentry.captureException(err);
   next(err);
 }
 
-
-function localizeErrorMessages (err, req, res, next) {
+function localizeErrorMessages(err, req, res, next) {
   if (err instanceof FluentError) {
     err.message = req.fluentFormat(err.fluentID);
     err.locales = req.supportedLocales;
@@ -131,8 +130,7 @@ function localizeErrorMessages (err, req, res, next) {
   next(err);
 }
 
-
-function clientErrorHandler (err, req, res, next) {
+function clientErrorHandler(err, req, res, next) {
   if (req.xhr || req.headers["content-type"] === "application/json") {
     res.status(500).send({ message: err.message });
   } else {
@@ -140,8 +138,7 @@ function clientErrorHandler (err, req, res, next) {
   }
 }
 
-
-function errorHandler (err, req, res, next) {
+function errorHandler(err, req, res, next) {
   res.status(500);
   res.render("subpage", {
     analyticsID: "error",
@@ -149,7 +146,6 @@ function errorHandler (err, req, res, next) {
     subhead: err.message,
   });
 }
-
 
 async function _getRequestSessionUser(req, res, next) {
   if (req.session && req.session.user) {
@@ -159,15 +155,24 @@ async function _getRequestSessionUser(req, res, next) {
   return null;
 }
 
-
 async function requireSessionUser(req, res, next) {
   const user = await _getRequestSessionUser(req);
   if (!user) {
-    const queryParams = new URLSearchParams(req.query).toString();
+    let queryParams = new URLSearchParams(req.query).toString();
+    const removeRoute = "/user/remove-data"; //MH TODO: should be in a constant, but probably not .env - do we have a file for these?
+    if (req.originalUrl === removeRoute) {
+      // queryParams += `${ //MH TODO: - store in query params if FXA able to dynamically redirect versus store in session?
+      //   queryParams.length ? "&" : ""
+      // }post_auth_redirect=${removeRoute}`;
+      req.session.post_auth_redirect = removeRoute;
+    }
     return res.redirect(`/oauth/init?${queryParams}`);
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token);
-  if (fxaProfileData.hasOwnProperty("name") && fxaProfileData.name === "HTTPError") {
+  if (
+    fxaProfileData.hasOwnProperty("name") &&
+    fxaProfileData.name === "HTTPError"
+  ) {
     delete req.session.user;
     return res.redirect("/");
   }
@@ -182,7 +187,7 @@ function getShareUTMs(req, res, next) {
   const generalShareUrls = [
     "/share/orange", //Header
     "/share/purple", // Footer
-    "/share/blue",  // user/dashboard
+    "/share/blue", // user/dashboard
     "/share/",
   ];
 
@@ -192,17 +197,17 @@ function getShareUTMs(req, res, next) {
   }
 
   // If user has no reference to experiment (default), add skip override
-  if (typeof(req.session.experimentFlags) === "undefined") {
+  if (typeof req.session.experimentFlags === "undefined") {
     req.session.experimentFlags = {
       excludeFromExperiment: true,
     };
   }
 
-  const excludedFromExperiment = (req.session.experimentFlags.excludeFromExperiment);
+  const excludedFromExperiment =
+    req.session.experimentFlags.excludeFromExperiment;
 
   // Excluse user from experiment if they don't have any experimentFlags set already.
   if (excludedFromExperiment) {
-
     // Step 2: Determine if user needs to have share-link UTMs set
     const colors = [
       "orange", //Header
@@ -212,7 +217,6 @@ function getShareUTMs(req, res, next) {
 
     const urlArray = req.url.split("/");
     const color = urlArray.slice(-1)[0];
-
 
     req.session.utmOverrides = {
       campaignName: "shareLinkTraffic",
@@ -242,7 +246,6 @@ function getShareUTMs(req, res, next) {
 
   next();
 }
-
 
 module.exports = {
   addRequestToResponse,

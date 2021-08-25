@@ -7,7 +7,7 @@
 
 .breach-stat {
   &-row {
-    align-items: flex-end;
+    align-items: center;
 
     .has-removals & {
       @include breakpoint(mobile) {
@@ -28,7 +28,9 @@
 
   &-cell {
     text-align: center;
-
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
     @include col(4);
 
     .has-removals & {
