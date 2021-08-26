@@ -363,9 +363,14 @@ send-verification = Send Verification Link
 breach-summary = Breach Summary
 
 # dashboard tab language
-dash-tab-breach-title = Breach summary
-dash-tab-remove-title = Remove my data
+dash-tab-breach-title = Data Breaches
+dash-tab-remove-title = Data Brokers
 dash-tab-beta = Beta
+
+# removal cta
+remove-card-title = Remove your data from websites.
+remove-card-body = We’re piloting a new service to monitor and remove your name, physical address, phone number, and email from online databases.
+remove-card-cta = Join the waitlist
 
 # removal form strings
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.

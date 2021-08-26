@@ -14,9 +14,19 @@ function userIsOnRelayWaitList(args) {
 }
 
 function getBreachesDashboard(args) {
-  const verifiedEmails = args.data.root.verifiedEmails;
+  const {
+    verifiedEmails,
+    userHasSignedUpForRemoveData: onRemoveWaitlist,
+    removeData,
+  } = args.data.root;
+  //const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
+  let showRemovalCTA = true;
+
+  if (onRemoveWaitlist || removeData.length) {
+    showRemovalCTA = false;
+  }
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
@@ -76,6 +86,7 @@ function getBreachesDashboard(args) {
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breachesFound: breachesFound,
+    showRemovalCTA: showRemovalCTA,
   };
 
   return args.fn(emailCards);

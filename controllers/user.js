@@ -392,7 +392,6 @@ async function getRemovePage(req, res) {
     //if we pass a kanary id param in URL
     kanary_id = req.query.kid;
   } else if (req.query && req.query.show_form) {
-    console.log("showform");
     kanary_id = null;
   } else {
     //get kanary id from user record
