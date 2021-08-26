@@ -1,63 +1,181 @@
 .vpn-banner {
+    --step-list-w: 560px;
     position: fixed;
+    width: 100%;
     z-index: 1;
     text-align: center;
     color: white;
-    cursor: pointer;
 }
 
+/* body header, main, and footer transform based on vpn-banner height */
 .vpn-banner ~ header,
 .vpn-banner ~ main,
 .vpn-banner ~ footer{
     transform: translateY(var(--vpn-banner-height, 0));
 }
 
-.vpn-banner[data-expanded] ~ header,
-.vpn-banner[data-expanded] ~ main,
-.vpn-banner[data-expanded] ~ footer{
+/* data-clicked attribute avoids initial animation on page load */
+.vpn-banner[data-clicked] ~ header,
+.vpn-banner[data-clicked] ~ main,
+.vpn-banner[data-clicked] ~ footer{
     transition: transform .3s;  
 }
 
-.vpn-banner-cta{
-    padding: 8px;
-    background-color: black;
-    pointer-events: none;
-}
-
-.vpn-banner .vpn-banner-red {
-    color: #E22850;
-}
-
-.vpn-banner label {
-    display: inline-block;
-    font-size: 12px;
-    margin: 0 8px;
+.vpn-banner label,
+.vpn-banner li {
+    font-size: 13px;
 }
 
 .vpn-banner output {
     font-weight: bold;
 }
 
-.vpn-banner-content {
+.vpn-banner-red {
+    color: #E22850;
+}
+
+/*** TOP PANEL ***/
+.vpn-banner-top{
+    padding: 8px 0;
+    background-color: black;
+    cursor: pointer;
+    box-shadow: inset 0 -1px 0 #444;
+}
+
+.vpn-banner-top label{
+    white-space: pre;
+    pointer-events: none;
+}
+
+.vpn-banner-chevron{
+    vertical-align: middle;
+    transition: transform .15s;
+}
+
+[data-expanded] .vpn-banner-chevron{
+    transform: rotate(180deg);
+}
+
+/*** BOTTOM PANEL ***/
+.vpn-banner-bottom {
     position: relative;
     display: none;
+    max-width: var(--maxWidth);
+    min-height: 250px;
+    color: black;
+    margin: auto;
+    padding: 32px 16px 16px;
+    counter-reset: step;
+    animation: vpn-banner-expand .3s ease-in both;
+}
+
+[data-expanded] .vpn-banner-bottom {
+    display: grid;
+}
+
+.vpn-banner-bottom::before {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: calc(50% - 50vw);
+    background: white url("/img/svg/clouds.svg") no-repeat 90% 75%;
+    z-index: -1;
+}
+
+.vpn-banner-title {
+    font-family: Metropolis, sans-serif;
+    text-align: left;
+}
+
+.vpn-banner-lists {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+// TODO: <ul> and <li> inherit custom flex styles from main.  Should separate this and refine for reusability
+.vpn-banner-lists .status-list{
+    white-space: pre-wrap;
+    margin: 16px 0;
+}
+
+.vpn-banner-lists .step-list{
+    flex: 0 1 var(--step-list-w);
+    display: flex;
+    flex-wrap: wrap;
+    margin: 16px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.vpn-banner-lists .step-list li{
+    flex-basis: calc(var(--step-list-w)/3);
+    margin: 0 auto 16px;
+}
+
+.vpn-banner-lists .step-list li::before{
+    display: inline-block;
+    content: counter(step)".";
+    counter-increment: step;
+    height: 40px;
+    line-height: 40px;
+    width: 36px;
+    margin-left: -36px;
+    border: 2px solid black;
+    box-shadow: inset 4px 4px 0 white;
+    background-color: #EDEDF0;
+    font-family: Metropolis, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: top;
+}
+
+.vpn-banner-lists .step-list figure{
+    display: inline-block;
+    width: 110px;
+    margin: 0;
+}
+
+.vpn-banner-cta{
+    justify-self: start;
+    margin: 16px 0;
+    padding: 12px 24px;
+    border: 2px solid black;
+    box-shadow: 6px 6px 0 #A883F8;
+    font: bold 14px/1 Metropolis, sans-serif;
+    font-weight: bold;
     color: black;
     background-color: white;
-    padding: 16px;
-    z-index: -1;
-    cursor: default;
 }
 
-[data-expanded] .vpn-banner-content {
+.vpn-banner-close{
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    border: transparent;
+    border-top: 2px solid #321C64;
+    border-left: 2px solid #321C64;
+    transform: rotate(45deg);
+    margin: auto;
+}
+
+.vpn-banner-close::after{
+    content: "";
     display: block;
-    animation: vpn-banner-slide .2s both;
+    border-top: 1px solid #592ACB;
+    border-left: 1px solid #592ACB;
+    width: 100%;
+    height: 100%;
+    margin: 4px;
 }
 
-@keyframes vpn-banner-slide {
+@keyframes vpn-banner-expand {
     from{
-        transform: translateY(-100%);
+        opacity: 0;
     }
     to{
-        transform: none;
+        opacity: 1;
     }
 }
