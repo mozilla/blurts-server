@@ -340,6 +340,14 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 async function getDashboard(req, res) {
   const user = req.user;
+  const kanary_id = user.kid;
+
+  let removeData = null;
+
+  if (kanary_id) {
+    removeData = await getRemoveDashData(kanary_id);
+  }
+
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,
@@ -369,6 +377,7 @@ async function getDashboard(req, res) {
     verifiedEmails,
     unverifiedEmails,
     userHasSignedUpForRemoveData,
+    removeData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,
@@ -378,7 +387,6 @@ async function getDashboard(req, res) {
 
 async function getRemovePage(req, res) {
   const user = req.user;
-  //console.log(user);
   let kanary_id;
   if (req.query && req.query.kid) {
     //if we pass a kanary id param in URL
@@ -388,9 +396,7 @@ async function getRemovePage(req, res) {
     kanary_id = null;
   } else {
     //get kanary id from user record
-    //console.log("user", user);
     kanary_id = user.kid;
-    //kanary_id = req.session.kanary_id; //uncomment if wanting to use a query parameter to bypass registration step
   }
 
   const allBreaches = req.app.locals.breaches;
@@ -450,7 +456,6 @@ async function getRemovePage(req, res) {
     userHasSignedUpForRemoveData,
     removeData,
     supportedLocalesIncludesEnglish,
-    //whichPartial: "dashboards/remove-form",
     whichPartial: partialString,
     experimentFlags,
     utmOverrides,

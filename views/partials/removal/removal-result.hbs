@@ -4,7 +4,7 @@
 >
   <div class="remove-dash-results-summary-container flx space-between">
     <div class="remove-dash-results-site-container flx flx-cntr">
-      {{#ifCompare this.status "===" "READY_TO_REMOVE"}}
+      {{#ifCompare this.status "!==" "REMOVAL_VERIFIED"}}
         <img
           src="/img/svg/remove-in-progress-icon.svg"
           alt="{{getString "remove-filter-in-progress"}}"
