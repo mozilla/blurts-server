@@ -563,8 +563,8 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed = 
   { $passwords ->
-    [one] Password exposed across all breaches
-   *[other] Passwords exposed across all breaches
+    [one] Password exposed
+   *[other] Passwords exposed
   }
 
 # This string is displayed under a large numeral that indicates the total number
@@ -572,8 +572,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
   { $breaches ->
-    [one] Known data breach has exposed your info
-   *[other] Known data breaches have exposed your info
+    [one] Known data breach
+   *[other] Known data breaches
   }
 
 # This string is displayed under a large numeral that indicates the total number
@@ -581,8 +581,8 @@ known-data-breaches-exposed =
 # your localization, because it would result in the number showing twice.
 data-brokers-listing-data =
   { $removals ->
-    [one] Website with data removal
-   *[other] Websites with data removal
+    [one] Website exposing your data
+   *[other] Websites exposing your data
   }
 
 # Button
@@ -820,8 +820,8 @@ show-resolved-button = Show Resolved
 
 unresolved-passwords-exposed =
   { $numPasswords ->
-    [one] Password exposed in unresolved breaches
-   *[other] Passwords exposed in unresolved breaches
+    [one] Unresolved password exposed
+   *[other] Unresolved passwords exposed
   }
 
 known-data-breaches-resolved = 
