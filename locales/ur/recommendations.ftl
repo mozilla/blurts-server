@@ -10,8 +10,12 @@ rec-pw-2-subhead = اسی پاس ورڈ کا استعمال کرتے ہوئے د
 rec-pw-2-cta-fx = { -brand-name } میں لاگ ان دیکھیں
 # Link title
 rec-pw-3-cta = { -brand-lockwise } حاصل کریں
+# Link title
+rec-pw-4-cta = وہ سائٹیں دیکھیں جو 2FA پیش کرتی ہیں۔
 # Recommendation subhead
 rec-bank-acc-subhead = اپنے بینک اسٹیٹمنٹ کی نگرانی کریں
+# Recommendation subhead
+rec-email-subhead = ای میل عرفی نام استعمال کریں۔
 rec-email-cta = { -brand-relay } کو آزمائیں
 # Link title
 rec-ip-us-cta = { -brand-fpn } کو آزمائیں
