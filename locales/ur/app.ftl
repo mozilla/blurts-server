@@ -84,6 +84,8 @@ security-tips = سلامتی  نسخے
 fxa-account = { -brand-fxa }
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-not-likely-response = امکان نہیں ہے
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = بہت ملتا جلتا
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
@@ -94,6 +96,9 @@ micro-survey-usability-prompt = کیا { -product-short-name } استعمال ک
 micro-survey-credibility-prompt = کیا آپ کو لگتا ہے کہ { -product-short-name } قابل اعتبار ہے؟
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
+micro-survey-strongly-disagree-response = بہت زیادہ اختلاف
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
 micro-survey-disagree-response = عدم اتفاق
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
@@ -101,6 +106,9 @@ micro-survey-unsure-response = غیر یقینی
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-agree-response = اتفاق کرتے ہیں
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = بہت زیادہ اتفاق
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = بہت مایوسی ہوئی
 # This is a survey response that follows the pmf prompt
@@ -223,6 +231,9 @@ go-to-dashboard-link = ڈیش بورڈ پر جائیں
 
 ##
 
+resolve-this-breach-link = اس خلاف ورزی کو حل کریں۔
+hide-resolved-button = حل شدہ چھپائیں۔
+show-resolved-button = حل شدہ دکھائیں۔
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = نیا
 mobile-promo-cta = Android اور iOS پر { -brand-name } حاصل کریں
