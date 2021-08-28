@@ -157,6 +157,8 @@ link-change-primary = بنیادی ای میل پتہ تبدیل کریں
 remove-fxm = { -product-name } ہٹائیں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
+# Link title
+latest-breach-link = دیکھیں کہ کیا آپ اس خلاف ورزی میں تھے؟
 welcome-user = خوش آمدید ،  { $userName }
 ba-next-step-1 = اپنے پاس ورڈ کو مضبوط ، منفرد پاس ورڈ میں تبدیل کریں۔
 no-results-blurb = معذرت ، وہ خلاف ورزی ہمارے ڈیٹا بیس میں نہیں ہے۔
@@ -210,6 +212,8 @@ sign-in-nested = سائن ان کریں
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = تبدیلیاں محفوظ ہوگئیں!
 # Section headline
+rec-section-headline = اس خلاف ورزی کے لیے کیا کیا جائے۔
+# Section headline
 rec-section-headline-no-pw = اپنی ذاتی معلومات کی حفاظت کے لیے کیا کریں
 # Button
 see-additional-recs = اضافی سفارشات ملاحظہ کریں
@@ -243,3 +247,4 @@ promo-fpn-cta = { -brand-fpn } حاصل کریں
 promo-ecosystem-cta = تمام مصنوعات دیکھیں
 steps-to-resolve-headline = اس خلاف ورزی کو حل کرنے کے اقدامات
 vpn-promo-cta = { -brand-mozilla-vpn } حاصل کریں
+vpn-promo-headline-new = پورے سال کی رکنیت کے ساتھ%  50 بچائیں۔

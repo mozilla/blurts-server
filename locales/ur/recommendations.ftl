@@ -1,3 +1,5 @@
+# Link title
+rec-ssn-cta = کریڈٹ رپورٹس کی درخواست کریں۔
 # Recommendation subhead
 rec-pw-1-subhead = اپنا پاس ورڈ تبدیل کریں
 # Link title
