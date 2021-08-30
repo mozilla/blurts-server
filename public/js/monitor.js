@@ -415,21 +415,21 @@ function addWaitlistObservers() {
 
 function initVpnBanner(){
   const vpnBanner = document.querySelector(".vpn-banner");
-  let resizeObserver
 
   if(!vpnBanner) return;
 
-  resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height))
-  resizeObserver.observe(vpnBanner)
+  const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
+
+  resizeObserver.observe(vpnBanner);
   vpnBanner.addEventListener("click", handleClick);
 
   function handleClick(e) {
-    vpnBanner.toggleAttribute('data-clicked', true)
+    vpnBanner.toggleAttribute("data-clicked", true);
     switch (e.target.className) {
-      case 'vpn-banner-top':
-      case 'vpn-banner-close':
+      case "vpn-banner-top":
+      case "vpn-banner-close":
         vpnBanner.toggleAttribute("data-expanded");
-        break
+        break;
     }
   }
 
