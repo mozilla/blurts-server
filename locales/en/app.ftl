@@ -397,8 +397,7 @@ remove-form-success-next-details = We’ll email you once your summary is ready.
 # removal dashboard strings
 remove-status-in-progress = We are working on removing your data
 remove-status-update = Last update:
-remove-exposure-snippet = is currently exposed in these
-remove-exposure-message = {$numRemoveResults} websites
+remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
 remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List

@@ -167,10 +167,21 @@ function removeDashExposureMessage(args) {
   //MH TODO: temp...use actual logic from API
   const locales = args.data.root.req.supportedLocales;
   const verifiedEmail = args.data.root.verifiedEmails[0].email;
-  const numRemoveResults = args.data.root.removeData.length;
+  let numRemoveResults = 0;
+  const removeResults = args.data.root.removeData;
+  const totalResults = removeResults.length;
+  removeResults.forEach((result) => {
+    if (result.status !== "REMOVAL_VERIFIED") {
+      //MH TODO: should come from a constants file
+      numRemoveResults++;
+    }
+  });
+  const resolvedResults = totalResults - numRemoveResults;
   return LocaleUtils.fluentFormat(locales, "remove-exposure-message", {
     email: verifiedEmail,
     numRemoveResults: numRemoveResults,
+    totalResults: totalResults,
+    resolvedResults: resolvedResults,
   });
 }
 
