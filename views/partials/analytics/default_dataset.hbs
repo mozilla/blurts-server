@@ -1,7 +1,7 @@
 data-server-url="{{ SERVER_URL }}"
 data-logos-origin="{{ LOGOS_ORIGIN }}"
 data-fxa-enabled="fxa-enabled"
-data-fxa-address={{ getFxaUrl }}
+data-fxa-address="{{ getFxaUrl }}"
 data-utm_source="{{ UTM_SOURCE }}"
 
 {{#if req.session.user}}
