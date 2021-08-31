@@ -396,7 +396,10 @@ dash-remove-kanary-discalimer = Service provided by The Kanary
 remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
-remove-form-success-next-details = We’ll email you once your summary is ready. Don’t forget to check your spam folder and promotions tab. 
+remove-form-success-next-details = Check back here frequently to see the data removal requests we initiate on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
+remove-form-success-dashboard = Go to my dashboard
+remove-form-data-collection-q = Why do we collect this info?
+remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
 
 # removal dashboard strings
 remove-status-in-progress = We are working on removing your data
