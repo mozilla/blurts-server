@@ -141,6 +141,7 @@ fxa-what-to-do-blurb-4 =
 # Alerts is a noun
 sign-up-for-alerts = Sign Up for Alerts
 
+
 # Link title
 frequently-asked-questions = Frequently Asked Questions
 
@@ -148,6 +149,9 @@ about-firefox-monitor = About {-product-name}
 
 # Link title
 preferences = Preferences
+
+# Link title
+your-data = Your Data
 
 # Link title
 home = Home
