@@ -71,7 +71,7 @@ jobs:
                 command: |
                     export NVM_DIR="/opt/circleci/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    nvm install 14 --default
+                    nvm install 14.17 --default
                     node -v
                     cp .env-dist .env
                     npm install
