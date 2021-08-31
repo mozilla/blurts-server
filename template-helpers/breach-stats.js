@@ -16,6 +16,7 @@ function getBreachStats(args) {
 
   const breachStatBundle = userBreachStats.breachStats;
   const removeData = args.data.root.removeData;
+
   if (removeData && removeData.length) {
     breachStatBundle.removals = {
       count: removeData.length,
@@ -63,6 +64,13 @@ function getBreachStats(args) {
       breaches: breachesStat.count,
     });
     breachesStat.displayCount = breachesStat.count;
+  }
+
+  const userHasSignedUpForRemoveData =
+    args.data.root.userHasSignedUpForRemoveData;
+
+  if (userHasSignedUpForRemoveData) {
+    userBreachStats.userHasSignedUpForRemoveData = userHasSignedUpForRemoveData;
   }
 
   //console.log(userBreachStats);
