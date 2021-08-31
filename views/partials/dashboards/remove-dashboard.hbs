@@ -19,8 +19,7 @@
         <p class="remove-dash-status">{{ getString "remove-status-in-progress"}}</p>
         <p class="remove-dash-status">
           <span class="remove-email bold">{{this.verifiedEmails.0.email}} </span> 
-          {{ getString "remove-exposure-snippet"}}
-          <span class="bold">{{removeDashExposureMessage}}</span>
+          {{removeDashExposureMessage}}
         </p>
       </div>
       <div class="remove-dash-update-container">
@@ -70,7 +69,7 @@
               {{> removal/removal-result }}
             {{/each}}
           {{else}}
-            {{> removal/removal-complete }}
+            {{> removal/removal-pending }}
           {{/if}}
         </ul>
       </div>

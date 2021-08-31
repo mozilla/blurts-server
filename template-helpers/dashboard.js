@@ -4,6 +4,7 @@ const { LocaleUtils } = require("./../locale-utils");
 const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
+const sortby = require("lodash.sortby");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -14,9 +15,19 @@ function userIsOnRelayWaitList(args) {
 }
 
 function getBreachesDashboard(args) {
-  const verifiedEmails = args.data.root.verifiedEmails;
+  const {
+    verifiedEmails,
+    userHasSignedUpForRemoveData: onRemoveWaitlist,
+    removeData,
+  } = args.data.root;
+  //const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
+  let showRemovalCTA = true;
+
+  if (onRemoveWaitlist || removeData.length) {
+    showRemovalCTA = false;
+  }
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
@@ -76,6 +87,7 @@ function getBreachesDashboard(args) {
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breachesFound: breachesFound,
+    showRemovalCTA: showRemovalCTA,
   };
 
   return args.fn(emailCards);
@@ -126,10 +138,13 @@ function getRemoveDashData(args) {
   let upDate;
 
   if (removeResults && removeResults.length) {
+    const removalDates = [];
     removeResults.forEach((result) => {
       result.info = verifiedEmails[0].email; //MH TODO: find the most recent date from all results, not just date of first result
+      removalDates.push(result.updated_at);
     });
-    upDate = FormUtils.convertTimestamp(removeResults[0].updated_at);
+    removalDates.sort();
+    upDate = FormUtils.convertTimestamp(removalDates[removalDates.length - 1]); //grab the most recent date
   } else {
     const curDate = new Date();
     const options = {
@@ -156,10 +171,21 @@ function removeDashExposureMessage(args) {
   //MH TODO: temp...use actual logic from API
   const locales = args.data.root.req.supportedLocales;
   const verifiedEmail = args.data.root.verifiedEmails[0].email;
-  const numRemoveResults = args.data.root.removeData.length;
+  let numRemoveResults = 0;
+  const removeResults = args.data.root.removeData;
+  const totalResults = removeResults.length;
+  removeResults.forEach((result) => {
+    if (result.status !== "REMOVAL_VERIFIED") {
+      //MH TODO: should come from a constants file
+      numRemoveResults++;
+    }
+  });
+  const resolvedResults = totalResults - numRemoveResults;
   return LocaleUtils.fluentFormat(locales, "remove-exposure-message", {
     email: verifiedEmail,
     numRemoveResults: numRemoveResults,
+    totalResults: totalResults,
+    resolvedResults: resolvedResults,
   });
 }
 

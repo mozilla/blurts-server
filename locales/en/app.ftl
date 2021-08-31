@@ -141,6 +141,7 @@ fxa-what-to-do-blurb-4 =
 # Alerts is a noun
 sign-up-for-alerts = Sign Up for Alerts
 
+
 # Link title
 frequently-asked-questions = Frequently Asked Questions
 
@@ -148,6 +149,9 @@ about-firefox-monitor = About {-product-name}
 
 # Link title
 preferences = Preferences
+
+# Link title
+your-data = Your Data
 
 # Link title
 home = Home
@@ -363,9 +367,14 @@ send-verification = Send Verification Link
 breach-summary = Breach Summary
 
 # dashboard tab language
-dash-tab-breach-title = Breach summary
-dash-tab-remove-title = Remove my data
+dash-tab-breach-title = Data Breaches
+dash-tab-remove-title = Data Brokers
 dash-tab-beta = Beta
+
+# removal cta
+remove-card-title = Remove your data from websites.
+remove-card-body = We’re piloting a new service to monitor and remove your name, physical address, phone number, and email from online databases.
+remove-card-cta = Join the waitlist
 
 # removal form strings
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
@@ -392,8 +401,7 @@ remove-form-success-next-details = We’ll email you once your summary is ready.
 # removal dashboard strings
 remove-status-in-progress = We are working on removing your data
 remove-status-update = Last update:
-remove-exposure-snippet = is currently exposed in these
-remove-exposure-message = {$numRemoveResults} websites
+remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
 remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
@@ -408,12 +416,13 @@ remove-result-details-found = Info found
 remove-result-description = Description
 remove-result-link = Link
 remove-result-opt-out = Where to opt-out
-remove-complete = No Data Currently to Remove
+remove-pending = Generating your report. Results can take up to 48 hours. Check Back Soon!
 remove-result-updated = Updated
 remove-result-email = Email
 remove-result-phone = Phone
 remove-result-name = Name
 remove-result-address = Address
+remove-result-status = Status
 
 show-breaches-for-this-email = Show all breaches for this email.
 
@@ -558,8 +567,8 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed = 
   { $passwords ->
-    [one] Password exposed across all breaches
-   *[other] Passwords exposed across all breaches
+    [one] Password exposed
+   *[other] Passwords exposed
   }
 
 # This string is displayed under a large numeral that indicates the total number
@@ -567,8 +576,8 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
   { $breaches ->
-    [one] Known data breach has exposed your info
-   *[other] Known data breaches have exposed your info
+    [one] Known data breach
+   *[other] Known data breaches
   }
 
 # This string is displayed under a large numeral that indicates the total number
@@ -576,8 +585,8 @@ known-data-breaches-exposed =
 # your localization, because it would result in the number showing twice.
 data-brokers-listing-data =
   { $removals ->
-    [one] Website with data removal
-   *[other] Websites with data removal
+    [one] Website exposing your data
+   *[other] Websites exposing your data
   }
 
 # Button
@@ -815,8 +824,8 @@ show-resolved-button = Show Resolved
 
 unresolved-passwords-exposed =
   { $numPasswords ->
-    [one] Password exposed in unresolved breaches
-   *[other] Passwords exposed in unresolved breaches
+    [one] Unresolved password exposed
+   *[other] Unresolved passwords exposed
   }
 
 known-data-breaches-resolved = 
