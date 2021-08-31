@@ -27,7 +27,21 @@ function initRemoveDashboard() {
   addRemoveDashListeners();
 }
 
+function addQAListeners() {
+  document.querySelectorAll(".js-question-q").forEach((question) => {
+    question.addEventListener("click", onQAQuestionClick);
+  });
+}
+
+function onQAQuestionClick(e) {
+  e.preventDefault();
+  const $thisQuestion = e.target;
+  const $thisContainer = $thisQuestion.closest(".question-container");
+  $thisContainer.classList.toggle("is-active");
+}
+
 function addRemoveFormListeners() {
+  addQAListeners();
   document
     .querySelector(".js-remove-submit")
     .addEventListener("click", onSubmitClick);
