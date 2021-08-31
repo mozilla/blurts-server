@@ -1,7 +1,7 @@
 <aside class="vpn-banner">
 	{{#with (getIpInfo)}}
 	<section class="vpn-banner-top">
-		<label>Your Location: <output>{{ location }}</output>  • </label>
+		<label>Your Location: <output>{{ shortLocation }}</output>&nbsp; • </label>
 		<label><output class="vpn-banner-red">Not protected</output> by Mozilla VPN. </label>
 		<label>Expand for more <img class="vpn-banner-chevron" src="/img/svg/chevron.svg" width="16" height="16"></label>
 	</section>
@@ -11,7 +11,7 @@
 			<ul class="status-list">
 				<li>Current status: <output class="vpn-banner-red">Not protected ⚠</output></li>
 				<li>IP address: <output>{{ ip }}</output></li>
-				<li>Location: <output>{{ location }}</output></li>
+				<li>Location: <output>{{ fullLocation }}</output></li>
 				<li><a class="vpn-banner-cta" href="https://vpn.mozilla.org/" target="_blank">Get Mozilla VPN</a></li>
 			</ul>
 			<ol class="step-list">
