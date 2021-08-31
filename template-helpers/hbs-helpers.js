@@ -305,6 +305,13 @@ function breachMath(lValue, operator = null, rValue = null) {
   return returnValue;
 }
 
+function sentenceCase(str) {
+  str = str.replace(/((?:\S[^\.\?\!]*)[\.\?\!]*)/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); //sentence case
+  });
+  return str.replace(/_/g, " "); //replace underscores with spaces
+}
+
 module.exports = {
   recruitmentBanner,
   microsurveyBanner,
@@ -326,4 +333,5 @@ module.exports = {
   ifLength,
   breachMath,
   loop,
+  sentenceCase,
 };

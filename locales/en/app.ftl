@@ -418,6 +418,7 @@ remove-result-email = Email
 remove-result-phone = Phone
 remove-result-name = Name
 remove-result-address = Address
+remove-result-status = Status
 
 show-breaches-for-this-email = Show all breaches for this email.
 

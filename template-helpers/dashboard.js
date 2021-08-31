@@ -4,6 +4,7 @@ const { LocaleUtils } = require("./../locale-utils");
 const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
+const sortby = require("lodash.sortby");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -137,10 +138,13 @@ function getRemoveDashData(args) {
   let upDate;
 
   if (removeResults && removeResults.length) {
+    const removalDates = [];
     removeResults.forEach((result) => {
       result.info = verifiedEmails[0].email; //MH TODO: find the most recent date from all results, not just date of first result
+      removalDates.push(result.updated_at);
     });
-    upDate = FormUtils.convertTimestamp(removeResults[0].updated_at);
+    removalDates.sort();
+    upDate = FormUtils.convertTimestamp(removalDates[removalDates.length - 1]); //grab the most recent date
   } else {
     const curDate = new Date();
     const options = {
