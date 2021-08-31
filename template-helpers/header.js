@@ -2,7 +2,6 @@
 
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
-const { req } = require("../hibp");
 
 function getSignedInAs(args) {
   const locales = args.data.root.req.supportedLocales;
