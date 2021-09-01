@@ -378,7 +378,8 @@ remove-card-cta = Join the waitlist
 
 # removal form strings
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
-dash-remove-intro-2 = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-signup = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name-first = Enter your first name
@@ -390,6 +391,7 @@ dash-remove-form-loc-country = Country
 dash-remove-form-birth-year-label = What is your birth year?
 dash-remove-form-birth-year = Enter your birth year
 dash-remove-submit = Start Data Removal
+dash-remove-change-submit = Submit
 dash-remove-form-required-helper = * These fields are required
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 dash-remove-kanary-discalimer = Service provided by The Kanary
@@ -402,6 +404,7 @@ remove-form-success-next-details = Check back here frequently to see the data re
 remove-form-success-dashboard = Go to my dashboard
 remove-form-data-collection-q = Why do we ask for this info?
 remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
+remove-form-data-delete = Cancel Data Removal
 
 # removal dashboard strings
 remove-status-in-progress = We are working on removing your data

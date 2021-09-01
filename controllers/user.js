@@ -64,7 +64,7 @@ async function handleRemoveFormSignup(req, res) {
   const user = req.user;
 
   const kid = await DB.setKanaryID(user, memberID);
-  return res.json({ id: kid });
+  return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
 }
 
 async function handleKanaryAPISubmission(memberInfo) {

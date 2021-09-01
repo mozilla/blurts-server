@@ -21,7 +21,11 @@
           <div class="remove-dashboard-card-content flx">
             <div class="private-relay-dashboard-card-copy">
               <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-1"}}</p>
-              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-2"}}</p>
+              {{#if this.acctInfo}}
+              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intfo-change"}}</p>
+              {{else}}
+              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-signup"}}</p>
+              {{/if}}
             </div>
           </div>
         </div>
@@ -105,11 +109,12 @@
           {{> forms/error-message }}
         </div>
         <div class="input-group-button inline">
-          <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" value="{{ getString "dash-remove-submit" }}"/>
+          <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" 
+            value="{{#if this.acctInfo}}{{ getString "dash-remove-change-submit" }}{{else}}{{ getString "dash-remove-submit" }}{{/if}}"/>
           {{> forms/loader }}
         </div>
         <div class="flx flx-col flx-cntr">
-          <p class="remove-dashboard-form-disclaimer">{{ getString "dash-remove-form-disclaimer"}}</p>
+          {{#unless this.acctInfo}}<p class="remove-dashboard-form-disclaimer">{{ getString "dash-remove-form-disclaimer"}}</p>{{/unless}}
           <p class="alert remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
         </div>
       </form>
@@ -117,6 +122,11 @@
         <a class="remove-dashboard-info-question question-q js-question-q" href="#">{{ getString "remove-form-data-collection-q" }}</a>
         <p class="remove-dashboard-info-answer question-a">{{ getString "remove-form-data-collection-a" }}</p>
       </div>
+      {{#if this.acctInfo}}
+      <div class="remove-dashboard-delete-container flx jst-cntr">
+        <a href="/user/remove-kan" class="btn-transparent btn-red btn-small">{{getString "remove-form-data-delete"}}</a>
+      </div>
+      {{/if}}
     </div>
   </div>
 </div>
@@ -137,6 +147,6 @@
   </div>
 </div>
 <div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
-    <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
-  </div>
+  <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
+</div>
 {{/getRemoveFormData}}

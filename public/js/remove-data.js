@@ -90,11 +90,11 @@ function handleFormSubmit(e) {
     .then((resp) => {
       return resp.json(); // or resp.text() or whatever the server sends
     })
-    .then((body) => {
-      if (body.id) {
-        window.location = "/user/remove-signup-confirmation"; //MH TODO: probably should be doing this through the router on backend?
+    .then((data) => {
+      if (data.nextPage) {
+        window.location = data.nextPage; //MH TODO: probably should be doing this through the router on backend?
       } else {
-        console.error("no member id received", body);
+        console.error("there was an error in the response", data);
       }
     })
     .catch((error) => {
