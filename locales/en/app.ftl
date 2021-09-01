@@ -393,6 +393,8 @@ dash-remove-submit = Start Data Removal
 dash-remove-form-required-helper = * These fields are required
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 dash-remove-kanary-discalimer = Service provided by The Kanary
+dash-remove-manage-info = Manage My Info
+
 remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?

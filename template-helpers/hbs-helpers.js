@@ -1,5 +1,6 @@
 "use strict";
 
+const { options } = require("../routes/user");
 const AppConstants = require("./../app-constants");
 const { LocaleUtils } = require("./../locale-utils");
 const mozlog = require("./../log");
@@ -265,8 +266,14 @@ function ifLength(array, options) {
   }
 }
 
+function compareString(v1, v2, options) {
+  console.log("compare", v1, v2, v1 === v2);
+  return options.fn(this);
+}
+
 function ifCompare(v1, operator, v2, options) {
   //https://stackoverflow.com/questions/28978759/length-check-in-a-handlebars-js-if-conditional
+
   const operators = {
     ">": v1 > v2 ? true : false,
     ">=": v1 >= v2 ? true : false,
@@ -274,6 +281,7 @@ function ifCompare(v1, operator, v2, options) {
     "<=": v1 <= v2 ? true : false,
     "!==": v1 !== v2 ? true : false,
     "===": v1 === v2 ? true : false,
+    "==": v1 == v2 ? true : false,
     "&&": v1 && v2 ? true : false,
     "||": v1 || v2 ? true : false,
     "!|": !v1 || !v2 ? true : false,
@@ -332,6 +340,7 @@ module.exports = {
   getFxaUrl,
   eachFromTo,
   ifCompare,
+  compareString,
   ifLength,
   breachMath,
   loop,

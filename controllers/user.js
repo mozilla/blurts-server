@@ -387,15 +387,17 @@ async function getDashboard(req, res) {
 
 async function getRemovePage(req, res) {
   const user = req.user;
-  let kanary_id;
-  if (req.query && req.query.kid) {
-    //if we pass a kanary id param in URL
-    kanary_id = req.query.kid;
-  } else if (req.query && req.query.show_form) {
-    kanary_id = null;
+  let show_form;
+
+  if (req.query && req.query.show_form) {
+    //if we explicitly request display of the form from a param
+    show_form = true;
+  } else if (!user.kid) {
+    //if user has no kanary id yet show the form
+    show_form = true;
   } else {
-    //get kanary id from user record
-    kanary_id = user.kid;
+    //show the dashboard instead
+    show_form = false;
   }
 
   const allBreaches = req.app.locals.breaches;
@@ -412,18 +414,22 @@ async function getRemovePage(req, res) {
     "remove_data"
   );
 
-  let removeData;
-  if (kanary_id) {
-    //if user has a kanary ID, get kanary dashboard data
-    removeData = await getRemoveDashData(kanary_id);
-    removeData.forEach((removeItem) => {
-      removeItem.update_status = FormUtils.convertTimestamp(
-        removeItem.updated_at
-      );
-    });
-  } else {
-    //data will be null and we will display the form
-    removeData = null;
+  let removeData = null; //data broker info
+  let removeAcctInfo = null; //acct info
+
+  if (user.kid) {
+    if (show_form) {
+      //get the users' kanary account info
+      removeAcctInfo = await getRemoveAcctInfo(user.kid);
+    } else {
+      //get kanary dashboard data
+      removeData = await getRemoveDashData(user.kid);
+      removeData.forEach((removeItem) => {
+        removeItem.update_status = FormUtils.convertTimestamp(
+          removeItem.updated_at
+        );
+      });
+    }
   }
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
@@ -438,10 +444,10 @@ async function getRemovePage(req, res) {
 
   let partialString;
 
-  if (kanary_id) {
-    partialString = "dashboards/remove-dashboard";
-  } else {
+  if (show_form) {
     partialString = "dashboards/remove-form";
+  } else {
+    partialString = "dashboards/remove-dashboard";
   }
 
   res.render("dashboards", {
@@ -454,6 +460,7 @@ async function getRemovePage(req, res) {
     usStates,
     userHasSignedUpForRemoveData,
     removeData,
+    removeAcctInfo,
     supportedLocalesIncludesEnglish,
     whichPartial: partialString,
     experimentFlags,
@@ -557,6 +564,37 @@ async function getRemoveDashData(kanary_id) {
     .catch((error) => {
       console.error(
         "there was an error getting reports for this account",
+        error
+      );
+    });
+}
+
+async function getRemoveAcctInfo(kanary_id) {
+  return fetch(
+    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`,
+    //`https://thekanary.com/partner-api/v0/accounts/2875/`, //MH uncomment to hardcode a result with reports
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      //console.log("accounts", json);
+
+      if (json.members && json.members.length) {
+        return json.members[0];
+      } else {
+        console.error("no account info available");
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting account info for this account",
         error
       );
     });
