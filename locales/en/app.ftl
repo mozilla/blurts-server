@@ -404,7 +404,13 @@ remove-form-success-next-details = Check back here frequently to see the data re
 remove-form-success-dashboard = Go to my dashboard
 remove-form-data-collection-q = Why do we ask for this info?
 remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
-remove-form-data-delete = Cancel Data Removal
+remove-form-data-delete = Cancel Service
+
+
+remove-form-update-title = Your information has been updated!
+remove-form-update-details = We’re updating your info for our removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
+
+
 
 # removal dashboard strings
 remove-status-in-progress = We are working on removing your data
@@ -439,6 +445,11 @@ link-change-primary = Change Primary Email Address
 remove-fxm = Remove {-product-name}
 remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
   other account-related communications.
+
+remove-kan = Stop Requesting Data Removal
+remove-kan-blurb = Stop Requesting Data Removal. Your Monitor Account Will Remain Active.
+
+
 
 # Button title
 manage-email-addresses = Manage Email Addresses

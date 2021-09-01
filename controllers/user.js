@@ -88,6 +88,66 @@ async function handleKanaryAPISubmission(memberInfo) {
     });
 }
 
+async function handleRemoveAcctUpdate(req, res) {
+  //TODO: validate form data
+
+  const { account, firstname, lastname, city, state, country, birthyear, id } =
+    req.body;
+
+  const memberData = {
+    id: parseInt(id),
+    names: [
+      {
+        first_name: firstname,
+        last_name: lastname,
+      },
+    ],
+    addresses: [
+      {
+        city: city,
+        state: state,
+        country: country,
+      },
+    ],
+    emails: [
+      {
+        email: account,
+      },
+    ],
+    birth_year: parseInt(birthyear),
+  };
+
+  const jsonMemberData = JSON.stringify(memberData);
+  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
+
+  if (memberID) {
+    return res.json({
+      id: memberID,
+      nextPage: "/user/remove-update-confirmation",
+    });
+  } else {
+    console.error("error submitting updates to kanary");
+  }
+}
+
+async function handleKanaryUpdateSubmission(memberInfo, id) {
+  return fetch(`https://thekanary.com/partner-api/v0/members/${id}/`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+    body: memberInfo,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data.id;
+    })
+    .catch((error) => {
+      console.error("there was an error posting to the api", error);
+    });
+}
+
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
   const sessionUser = req.user;
@@ -506,6 +566,35 @@ async function getRemoveConfirmationPage(req, res) {
   });
 }
 
+async function getRemoveUpdateConfirmationPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-update-confirmation",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
@@ -708,6 +797,24 @@ async function postRemoveFxm(req, res) {
 
   req.session.destroy();
   res.redirect("/");
+}
+
+async function getRemoveKan(req, res) {
+  const sessionUser = req.user;
+
+  res.render("subpage", {
+    title: req.fluentFormat("remove-kan"),
+    subscriber: sessionUser,
+    whichPartial: "subpages/remove_kan",
+    csrfToken: req.csrfToken(),
+  });
+}
+
+async function postRemoveKan(req, res) {
+  const sessionUser = req.user;
+  //MH TODO: post a request to Kanary's API and await a response, then remove id from our own DB
+  await DB.removeKan(sessionUser);
+  res.redirect("/"); //MH TODO: redirect to a confirmation page, not home page
 }
 
 function _updateResolvedBreaches(options) {
@@ -966,15 +1073,19 @@ module.exports = {
   getDashboard,
   getRemovePage,
   getRemoveConfirmationPage,
+  getRemoveUpdateConfirmationPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
+  handleRemoveAcctUpdate,
   add,
   verify,
   getUnsubscribe,
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
+  getRemoveKan,
+  postRemoveKan,
   postResolveBreach,
   logout,
   removeEmail,

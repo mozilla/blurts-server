@@ -314,12 +314,14 @@ function breachMath(lValue, operator = null, rValue = null) {
 }
 
 function sentenceCase(str) {
-  // eslint-disable-next-line no-useless-escape
-  str = str.replace(/((?:\S[^\.\?\!]*)[\.\?\!]*)/g, function (txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); //sentence case
-  });
-  // eslint-disable-next-line no-useless-escape
-  return str.replace(/_/g, " "); //replace underscores with spaces
+  if (str && str.length) {
+    // eslint-disable-next-line no-useless-escape
+    str = str.replace(/((?:\S[^\.\?\!]*)[\.\?\!]*)/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); //sentence case
+    });
+    // eslint-disable-next-line no-useless-escape
+    return str.replace(/_/g, " "); //replace underscores with spaces
+  }
 }
 
 module.exports = {

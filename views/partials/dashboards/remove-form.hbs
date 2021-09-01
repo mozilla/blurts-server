@@ -22,7 +22,7 @@
             <div class="private-relay-dashboard-card-copy">
               <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-1"}}</p>
               {{#if this.acctInfo}}
-              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intfo-change"}}</p>
+              <p class="remove-dashboard-card-body">{{ getString "dash-remove-info-change"}}</p>
               {{else}}
               <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-signup"}}</p>
               {{/if}}
@@ -34,7 +34,8 @@
   {{/if}}
   <div class="mw-860 remove-dashboard-section-container">
     <div class="remove-dashboard-form-container remove-dashboard-section">
-      <form action="/user/remove-data-submit" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+        {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
         <div class="input-group">
           <div class="input-group remove-account-select">

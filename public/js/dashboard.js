@@ -104,6 +104,15 @@ if (removeMonitorButton) {
   });
 }
 
+const removeKanaryButton = document.querySelector(".remove-kan");
+if (removeKanaryButton) {
+  removeKanaryButton.addEventListener("click", async (e) => {
+    const { formAction, csrfToken, primaryToken, primaryHash } =
+      e.target.dataset;
+    await sendForm(formAction, { _csrf: csrfToken, primaryToken, primaryHash });
+  });
+}
+
 const relayLink = document.querySelector(
   "[data-event-label='Try Firefox Relay']"
 );

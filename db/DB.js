@@ -394,6 +394,17 @@ const DB = {
     await knex("subscribers").where({ id: subscriber.id }).del();
   },
 
+  async removeKan(subscriber) {
+    await knex("subscribers")
+      .where({ id: subscriber.id })
+      .update({
+        kid: null,
+      })
+      .catch((e) => {
+        console.error("error removing kanary id", e);
+      });
+  },
+
   // This is used by SES callbacks to remove email addresses when recipients
   // perma-bounce or mark our emails as spam
   // Removes from either subscribers or email_addresses as necessary
