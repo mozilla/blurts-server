@@ -89,7 +89,7 @@
           {{getString "remove-result-status"}}
         </h3>
         <p class="remove-dash-results-detail">
-          {{sentenceCase this.status}}
+          {{#if this.status}}{{sentenceCase this.status}}{{/if}}
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
