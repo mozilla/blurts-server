@@ -11,7 +11,9 @@
   </main>
 {{/getBreachStats}}
 {{#getRemoveFormData}}
-<div class="flx flx-col remove-dashboard-container js-remove-dashboard-container">
+<div class="flx flx-col remove-dashboard-container js-remove-dashboard-container"
+  {{#if this.acctInfo.addresses.0.country}}data-country="{{this.acctInfo.addresses.0.country}}"{{/if}}
+>
   {{#if ./../supportedLocalesIncludesEnglish}}
     <div class="mw-860 remove-dashboard-card-container">
       <div class="remove-dashboard-card">
@@ -72,7 +74,10 @@
               </select>
               --}}
               <select required id="remove-dashboard-form-loc-country" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="country">
-                <option disabled selected value>{{ getString "dash-remove-form-loc-country"}}</option>
+                <option disabled {{#unless this.acctInfo.addresses.0.country}}selected{{/unless}} value>{{ getString "dash-remove-form-loc-country"}}</option>
+                {{#if this.acctInfo.addresses.0.country}}
+                <option selected value="{{ this.acctInfo.addresses.0.country }}" >{{ this.acctInfo.addresses.0.country }}</option>
+                {{/if}}
                 {{#each this.countries }}
                   <option value="{{ countryCode }}" >{{ countryCode }}</option>
                 {{/each}}
@@ -80,10 +85,13 @@
             </div>
             <div class="input-group-field remove-dashboard-select-container remove-dashboard-state-container">
               <select id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
-                  <option disabled selected>{{ getString "dash-remove-form-loc-state"}}</option>
-                {{#each this.usStates }}
-                  <option value="{{ stateCode }}">{{ stateCode }}</option>
-                {{/each}}
+                  <option disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
+                  {{#if this.acctInfo.addresses.0.state}}
+                    <option selected value="{{ this.acctInfo.addresses.0.state }}" >{{ this.acctInfo.addresses.0.state }}</option>
+                  {{/if}}
+                  {{#each this.usStates }}
+                    <option value="{{ stateCode }}">{{ stateCode }}</option>
+                  {{/each}}
               </select>
             </div>
           </div>
