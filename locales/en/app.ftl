@@ -378,7 +378,7 @@ remove-card-cta = Join the waitlist
 
 # removal form strings
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
-dash-remove-signup = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-intro-signup = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
 dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
@@ -409,6 +409,8 @@ remove-form-data-delete = Cancel Service
 
 remove-form-update-title = Your information has been updated!
 remove-form-update-details = We’re updating your info for our removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
+remove-form-delete-title = Your data removal service has been canceled.
+remove-form-delete-details = We are no longer making data removal requests on your behalf. Your Monitor Account Will Remain Active.
 
 
 
@@ -446,8 +448,8 @@ remove-fxm = Remove {-product-name}
 remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
   other account-related communications.
 
-remove-kan = Stop Requesting Data Removal
-remove-kan-blurb = Stop Requesting Data Removal. Your Monitor Account Will Remain Active.
+remove-kan = Cancel Data Removal Service
+remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Will Remain Active.
 
 
 

@@ -14,6 +14,7 @@ const {
   getRemovePage,
   getRemoveConfirmationPage,
   getRemoveUpdateConfirmationPage,
+  getRemoveDeleteConfirmationPage,
   getPreferences,
   getBreachStats,
   handleRemoveFormSignup,
@@ -60,6 +61,13 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveUpdateConfirmationPage)
+);
+
+router.get(
+  "/remove-delete-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveDeleteConfirmationPage)
 );
 
 router.get(

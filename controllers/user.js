@@ -595,10 +595,38 @@ async function getRemoveUpdateConfirmationPage(req, res) {
   });
 }
 
+async function getRemoveDeleteConfirmationPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-delete-confirmation",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
-    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH uncomment to hardcode a result with reports
     {
       method: "GET",
       headers: {
@@ -622,7 +650,7 @@ async function getRemoveDashData(kanary_id) {
     .then((reportID) => {
       if (reportID) {
         return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`, //MH: sample: report 11312
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
           {
             method: "GET",
             headers: {
@@ -659,17 +687,13 @@ async function getRemoveDashData(kanary_id) {
 }
 
 async function getRemoveAcctInfo(kanary_id) {
-  return fetch(
-    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`,
-    //`https://thekanary.com/partner-api/v0/accounts/2875/`, //MH uncomment to hardcode a result with reports
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-      },
-    }
-  )
+  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
     .then((res) => res.json())
     .then((json) => {
       //console.log("accounts", json);
@@ -686,6 +710,40 @@ async function getRemoveAcctInfo(kanary_id) {
         "there was an error getting account info for this account",
         error
       );
+    });
+}
+
+async function removeKanaryAcct(kanary_id) {
+  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        if (res.status === 204) {
+          return "";
+        } else if (res.status === 200) {
+          return res.json();
+        }
+      } else {
+        console.error("there was an error deleting the account");
+      }
+    })
+    .then((json) => {
+      return json;
+      // if (json.terminated_at) { //MH - not getting this due to 204 response from server
+      //   //request was successful
+      //   return json;
+      // } else {
+      //   console.error("error deleting account");
+      //   return null;
+      // }
+    })
+    .catch((error) => {
+      console.error("there was an error deleting the account", error);
     });
 }
 
@@ -812,9 +870,10 @@ async function getRemoveKan(req, res) {
 
 async function postRemoveKan(req, res) {
   const sessionUser = req.user;
-  //MH TODO: post a request to Kanary's API and await a response, then remove id from our own DB
-  await DB.removeKan(sessionUser);
-  res.redirect("/"); //MH TODO: redirect to a confirmation page, not home page
+  //await removeKanaryAcct(2886); //MH - to hardcode an account to delete to avoid deleting your current account
+  await removeKanaryAcct(sessionUser.kid);
+  await DB.removeKan(sessionUser); //current: 2959
+  res.redirect("/user/remove-delete-confirmation");
 }
 
 function _updateResolvedBreaches(options) {
@@ -1074,6 +1133,7 @@ module.exports = {
   getRemovePage,
   getRemoveConfirmationPage,
   getRemoveUpdateConfirmationPage,
+  getRemoveDeleteConfirmationPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
