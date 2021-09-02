@@ -48,11 +48,32 @@
 }
 
 .vpn-banner-chevron{
-    vertical-align: middle;
-    transition: transform .15s;
+    display: inline-block;
+    min-width: 67px;
+    text-align: left;
 }
 
-[data-expanded] .vpn-banner-chevron{
+.vpn-banner-chevron::before{
+    content: "Expand";
+    display: inline-block;
+}
+
+.vpn-banner-chevron::after{
+    content: url("/img/svg/chevron.svg");
+    display: inline-block;
+    vertical-align: bottom;
+    width: 16px;
+    height: 16px;
+    margin-left: 3px;
+    transition: transform .15s;
+    transform-origin: 50% 53%;
+}
+
+[data-expanded] .vpn-banner-chevron::before{
+    content: "Close"
+}
+
+[data-expanded] .vpn-banner-chevron::after{
     transform: rotate(180deg);
 }
 
