@@ -25,9 +25,7 @@ rec-pw-2 =
 rec-pw-3-subhead = Use um gerenciador de senhas para ter suas senhas em qualquer lugar
 # Link title
 rec-pw-3-cta = Instale o { -brand-lockwise }
-rec-pw-3-fx =
-    Use o { -brand-lockwise } para acessar com segurança em qualquer lugar 
-    as senhas em que você salva no { -brand-name } — mesmo fora do navegador.
+rec-pw-3-fx = Use o { -brand-lockwise } para acessar com segurança em qualquer lugar as senhas que você salva no { -brand-name }, mesmo fora do navegador.
 rec-pw-3-non-fx =
     Use o { -brand-lockwise } para acompanhar de perto todas as 
     suas senhas e acessar com segurança no seu celular ou tablet.
@@ -50,7 +48,7 @@ rec-cc =
     Procure cobranças estranhas no seu cartão de crédito. Se precisar você pode
     solicitar um novo cartão com outro número ao emissor do seu cartão de crédito.
 # Recommendation subhead
-rec-email-subhead = Use pseudônimos de email
+rec-email-subhead = Use endereços de redirecionamento de email
 rec-email-cta = Experimente o { -brand-relay }
 rec-email =
     Fornecer seu endereço de email real facilita aos hackers e rastreadores

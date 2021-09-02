@@ -9,12 +9,12 @@ fx-lockwise = { -brand-lockwise }
 fx-desktop = Navegador { -brand-name } para computador
 fx-mobile = Navegador { -brand-name } para celular
 
-
+##
 
 # Aria label for the Bento button
 bento-button-title = Aplicativos e serviços { -brand-name }
 # Bento headline
-fx-makes-tech = { -brand-name } é uma empresa de tecnologia que luta por sua privacidade online.
+fx-makes-tech = { -brand-name } é tecnologia que defende sua privacidade online.
 # A link at the bottom of the Bento menu
 made-by-mozilla = Feito pela { -brand-Mozilla }
 # Aria label for button that closes the Bento menu

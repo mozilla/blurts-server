@@ -4,6 +4,8 @@ account-balances = Hesap bakiyeleri
 address-book-contacts = Adres defteri kişileri
 age-groups = Yaş grupları
 ages = Yaşlar
+# Refers to medical appointments.
+appointments = Randevular
 apps-installed-on-devices = Cihazlarda yüklü uygulamalar
 astrological-signs = Burçlar
 audio-recordings = Ses kayıtları

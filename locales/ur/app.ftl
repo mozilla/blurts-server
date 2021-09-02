@@ -84,6 +84,8 @@ security-tips = سلامتی  نسخے
 fxa-account = { -brand-fxa }
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-not-likely-response = امکان نہیں ہے
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = بہت ملتا جلتا
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
@@ -94,6 +96,9 @@ micro-survey-usability-prompt = کیا { -product-short-name } استعمال ک
 micro-survey-credibility-prompt = کیا آپ کو لگتا ہے کہ { -product-short-name } قابل اعتبار ہے؟
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
+micro-survey-strongly-disagree-response = بہت زیادہ اختلاف
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
 micro-survey-disagree-response = عدم اتفاق
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
@@ -101,6 +106,9 @@ micro-survey-unsure-response = غیر یقینی
 # This is a survey response that follows the usability, credibility, and
 # appearance prompts
 micro-survey-agree-response = اتفاق کرتے ہیں
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = بہت زیادہ اتفاق
 # This is a survey response that follows the pmf prompt
 micro-survey-very-disappointed-response = بہت مایوسی ہوئی
 # This is a survey response that follows the pmf prompt
@@ -149,6 +157,8 @@ link-change-primary = بنیادی ای میل پتہ تبدیل کریں
 remove-fxm = { -product-name } ہٹائیں
 # Button title
 manage-email-addresses = ای میل پتہ بندرست کریں
+# Link title
+latest-breach-link = دیکھیں کہ کیا آپ اس خلاف ورزی میں تھے؟
 welcome-user = خوش آمدید ،  { $userName }
 ba-next-step-1 = اپنے پاس ورڈ کو مضبوط ، منفرد پاس ورڈ میں تبدیل کریں۔
 no-results-blurb = معذرت ، وہ خلاف ورزی ہمارے ڈیٹا بیس میں نہیں ہے۔
@@ -202,6 +212,8 @@ sign-in-nested = سائن ان کریں
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = تبدیلیاں محفوظ ہوگئیں!
 # Section headline
+rec-section-headline = اس خلاف ورزی کے لیے کیا کیا جائے۔
+# Section headline
 rec-section-headline-no-pw = اپنی ذاتی معلومات کی حفاظت کے لیے کیا کریں
 # Button
 see-additional-recs = اضافی سفارشات ملاحظہ کریں
@@ -223,6 +235,9 @@ go-to-dashboard-link = ڈیش بورڈ پر جائیں
 
 ##
 
+resolve-this-breach-link = اس خلاف ورزی کو حل کریں۔
+hide-resolved-button = حل شدہ چھپائیں۔
+show-resolved-button = حل شدہ دکھائیں۔
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = نیا
 mobile-promo-cta = Android اور iOS پر { -brand-name } حاصل کریں
@@ -232,3 +247,4 @@ promo-fpn-cta = { -brand-fpn } حاصل کریں
 promo-ecosystem-cta = تمام مصنوعات دیکھیں
 steps-to-resolve-headline = اس خلاف ورزی کو حل کرنے کے اقدامات
 vpn-promo-cta = { -brand-mozilla-vpn } حاصل کریں
+vpn-promo-headline-new = پورے سال کی رکنیت کے ساتھ%  50 بچائیں۔
