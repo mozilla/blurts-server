@@ -378,7 +378,8 @@ remove-card-cta = Join the waitlist
 
 # removal form strings
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
-dash-remove-intro-2 = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-intro-signup = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name-first = Enter your first name
@@ -390,9 +391,12 @@ dash-remove-form-loc-country = Country
 dash-remove-form-birth-year-label = What is your birth year?
 dash-remove-form-birth-year = Enter your birth year
 dash-remove-submit = Start Data Removal
+dash-remove-change-submit = Submit
 dash-remove-form-required-helper = * These fields are required
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 dash-remove-kanary-discalimer = Service provided by The Kanary
+dash-remove-manage-info = Manage My Info
+
 remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
@@ -400,6 +404,15 @@ remove-form-success-next-details = Check back here frequently to see the data re
 remove-form-success-dashboard = Go to my dashboard
 remove-form-data-collection-q = Why do we ask for this info?
 remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
+remove-form-data-delete = Cancel Service
+
+
+remove-form-update-title = Your information has been updated!
+remove-form-update-details = We’re updating your info for our removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
+remove-form-delete-title = Your data removal service has been canceled.
+remove-form-delete-details = We are no longer making data removal requests on your behalf. Your Monitor Account Will Remain Active.
+
+
 
 # removal dashboard strings
 remove-status-in-progress = We are working on removing your data
@@ -434,6 +447,11 @@ link-change-primary = Change Primary Email Address
 remove-fxm = Remove {-product-name}
 remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
   other account-related communications.
+
+remove-kan = Cancel Data Removal Service
+remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Will Remain Active.
+
+
 
 # Button title
 manage-email-addresses = Manage Email Addresses

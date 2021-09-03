@@ -13,9 +13,12 @@ const {
   getDashboard,
   getRemovePage,
   getRemoveConfirmationPage,
+  getRemoveUpdateConfirmationPage,
+  getRemoveDeleteConfirmationPage,
   getPreferences,
   getBreachStats,
   handleRemoveFormSignup,
+  handleRemoveAcctUpdate,
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
@@ -23,6 +26,8 @@ const {
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
+  getRemoveKan,
+  postRemoveKan,
   postResolveBreach,
 } = require("../controllers/user");
 
@@ -52,6 +57,20 @@ router.get(
 );
 
 router.get(
+  "/remove-update-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveUpdateConfirmationPage)
+);
+
+router.get(
+  "/remove-delete-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveDeleteConfirmationPage)
+);
+
+router.get(
   "/preferences",
   csrfProtection,
   requireSessionUser,
@@ -74,6 +93,14 @@ router.post(
   //csrfProtection, //MH TODO: figure out how to use this
   requireSessionUser,
   asyncMiddleware(handleRemoveFormSignup)
+);
+
+router.post(
+  "/remove-acct-update",
+  urlEncodedParser,
+  //csrfProtection, //MH TODO: figure out how to use this
+  requireSessionUser,
+  asyncMiddleware(handleRemoveAcctUpdate)
 );
 
 router.post(
@@ -115,6 +142,22 @@ router.post(
   requireSessionUser,
   asyncMiddleware(postRemoveFxm)
 );
+
+router.get(
+  "/remove-kan",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveKan)
+);
+router.post(
+  "/remove-kan",
+  jsonParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(postRemoveKan)
+);
+
 router.post(
   "/resolve-breach",
   jsonParser,

@@ -24,7 +24,7 @@ function getBreachesDashboard(args) {
   let breachesFound = false;
   let showRemovalCTA = true;
 
-  if (onRemoveWaitlist || removeData.length) {
+  if (onRemoveWaitlist || (removeData && removeData.length)) {
     showRemovalCTA = false;
   }
 
@@ -96,6 +96,8 @@ function getRemoveFormData(args) {
   const countries = args.data.root.countries;
   const usStates = args.data.root.usStates;
   const verifiedEmails = args.data.root.verifiedEmails;
+  const acctInfo = args.data.root.removeAcctInfo;
+  //console.log("acctinfo", acctInfo);
   //const locales = args.data.root.req.supportedLocales;
 
   // move emails with 0 breaches to the bottom of the page
@@ -113,6 +115,7 @@ function getRemoveFormData(args) {
     verifiedEmails: verifiedEmails,
     countries: countries,
     usStates: usStates,
+    acctInfo: acctInfo,
   };
 
   return args.fn(emailCards);

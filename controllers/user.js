@@ -64,7 +64,7 @@ async function handleRemoveFormSignup(req, res) {
   const user = req.user;
 
   const kid = await DB.setKanaryID(user, memberID);
-  return res.json({ id: kid });
+  return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
@@ -81,6 +81,66 @@ async function handleKanaryAPISubmission(memberInfo) {
       //console.log(data);
       //MH TODO: store data.id in fxa then...
 
+      return data.id;
+    })
+    .catch((error) => {
+      console.error("there was an error posting to the api", error);
+    });
+}
+
+async function handleRemoveAcctUpdate(req, res) {
+  //TODO: validate form data
+
+  const { account, firstname, lastname, city, state, country, birthyear, id } =
+    req.body;
+
+  const memberData = {
+    id: parseInt(id),
+    names: [
+      {
+        first_name: firstname,
+        last_name: lastname,
+      },
+    ],
+    addresses: [
+      {
+        city: city,
+        state: state,
+        country: country,
+      },
+    ],
+    emails: [
+      {
+        email: account,
+      },
+    ],
+    birth_year: parseInt(birthyear),
+  };
+
+  const jsonMemberData = JSON.stringify(memberData);
+  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
+
+  if (memberID) {
+    return res.json({
+      id: memberID,
+      nextPage: "/user/remove-update-confirmation",
+    });
+  } else {
+    console.error("error submitting updates to kanary");
+  }
+}
+
+async function handleKanaryUpdateSubmission(memberInfo, id) {
+  return fetch(`https://thekanary.com/partner-api/v0/members/${id}/`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+    body: memberInfo,
+  })
+    .then((res) => res.json())
+    .then((data) => {
       return data.id;
     })
     .catch((error) => {
@@ -387,15 +447,17 @@ async function getDashboard(req, res) {
 
 async function getRemovePage(req, res) {
   const user = req.user;
-  let kanary_id;
-  if (req.query && req.query.kid) {
-    //if we pass a kanary id param in URL
-    kanary_id = req.query.kid;
-  } else if (req.query && req.query.show_form) {
-    kanary_id = null;
+  let show_form;
+
+  if (req.query && req.query.show_form) {
+    //if we explicitly request display of the form from a param
+    show_form = true;
+  } else if (!user.kid) {
+    //if user has no kanary id yet show the form
+    show_form = true;
   } else {
-    //get kanary id from user record
-    kanary_id = user.kid;
+    //show the dashboard instead
+    show_form = false;
   }
 
   const allBreaches = req.app.locals.breaches;
@@ -412,18 +474,22 @@ async function getRemovePage(req, res) {
     "remove_data"
   );
 
-  let removeData;
-  if (kanary_id) {
-    //if user has a kanary ID, get kanary dashboard data
-    removeData = await getRemoveDashData(kanary_id);
-    removeData.forEach((removeItem) => {
-      removeItem.update_status = FormUtils.convertTimestamp(
-        removeItem.updated_at
-      );
-    });
-  } else {
-    //data will be null and we will display the form
-    removeData = null;
+  let removeData = null; //data broker info
+  let removeAcctInfo = null; //acct info
+
+  if (user.kid) {
+    if (show_form) {
+      //get the users' kanary account info
+      removeAcctInfo = await getRemoveAcctInfo(user.kid);
+    } else {
+      //get kanary dashboard data
+      removeData = await getRemoveDashData(user.kid);
+      removeData.forEach((removeItem) => {
+        removeItem.update_status = FormUtils.convertTimestamp(
+          removeItem.updated_at
+        );
+      });
+    }
   }
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
@@ -438,10 +504,10 @@ async function getRemovePage(req, res) {
 
   let partialString;
 
-  if (kanary_id) {
-    partialString = "dashboards/remove-dashboard";
-  } else {
+  if (show_form) {
     partialString = "dashboards/remove-form";
+  } else {
+    partialString = "dashboards/remove-dashboard";
   }
 
   res.render("dashboards", {
@@ -454,6 +520,7 @@ async function getRemovePage(req, res) {
     usStates,
     userHasSignedUpForRemoveData,
     removeData,
+    removeAcctInfo,
     supportedLocalesIncludesEnglish,
     whichPartial: partialString,
     experimentFlags,
@@ -499,10 +566,67 @@ async function getRemoveConfirmationPage(req, res) {
   });
 }
 
+async function getRemoveUpdateConfirmationPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-update-confirmation",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveDeleteConfirmationPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-delete-confirmation",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
-    //`https://thekanary.com/partner-api/v0/accounts/2875/reports/`, //MH uncomment to hardcode a result with reports
     {
       method: "GET",
       headers: {
@@ -526,7 +650,7 @@ async function getRemoveDashData(kanary_id) {
     .then((reportID) => {
       if (reportID) {
         return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`, //MH: sample: report 11312
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
           {
             method: "GET",
             headers: {
@@ -559,6 +683,67 @@ async function getRemoveDashData(kanary_id) {
         "there was an error getting reports for this account",
         error
       );
+    });
+}
+
+async function getRemoveAcctInfo(kanary_id) {
+  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      //console.log("accounts", json);
+
+      if (json.members && json.members.length) {
+        return json.members[0];
+      } else {
+        console.error("no account info available");
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting account info for this account",
+        error
+      );
+    });
+}
+
+async function removeKanaryAcct(kanary_id) {
+  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        if (res.status === 204) {
+          return "";
+        } else if (res.status === 200) {
+          return res.json();
+        }
+      } else {
+        console.error("there was an error deleting the account");
+      }
+    })
+    .then((json) => {
+      return json;
+      // if (json.terminated_at) { //MH - not getting this due to 204 response from server
+      //   //request was successful
+      //   return json;
+      // } else {
+      //   console.error("error deleting account");
+      //   return null;
+      // }
+    })
+    .catch((error) => {
+      console.error("there was an error deleting the account", error);
     });
 }
 
@@ -670,6 +855,25 @@ async function postRemoveFxm(req, res) {
 
   req.session.destroy();
   res.redirect("/");
+}
+
+async function getRemoveKan(req, res) {
+  const sessionUser = req.user;
+
+  res.render("subpage", {
+    title: req.fluentFormat("remove-kan"),
+    subscriber: sessionUser,
+    whichPartial: "subpages/remove_kan",
+    csrfToken: req.csrfToken(),
+  });
+}
+
+async function postRemoveKan(req, res) {
+  const sessionUser = req.user;
+  //await removeKanaryAcct(2886); //MH - to hardcode an account to delete to avoid deleting your current account
+  await removeKanaryAcct(sessionUser.kid);
+  await DB.removeKan(sessionUser); //current: 2959
+  res.redirect("/user/remove-delete-confirmation");
 }
 
 function _updateResolvedBreaches(options) {
@@ -928,15 +1132,20 @@ module.exports = {
   getDashboard,
   getRemovePage,
   getRemoveConfirmationPage,
+  getRemoveUpdateConfirmationPage,
+  getRemoveDeleteConfirmationPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
+  handleRemoveAcctUpdate,
   add,
   verify,
   getUnsubscribe,
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
+  getRemoveKan,
+  postRemoveKan,
   postResolveBreach,
   logout,
   removeEmail,

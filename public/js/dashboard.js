@@ -104,7 +104,18 @@ if (removeMonitorButton) {
   });
 }
 
-const relayLink = document.querySelector("[data-event-label='Try Firefox Relay']");
+const removeKanaryButton = document.querySelector(".remove-kan");
+if (removeKanaryButton) {
+  removeKanaryButton.addEventListener("click", async (e) => {
+    const { formAction, csrfToken, primaryToken, primaryHash } =
+      e.target.dataset;
+    await sendForm(formAction, { _csrf: csrfToken, primaryToken, primaryHash });
+  });
+}
+
+const relayLink = document.querySelector(
+  "[data-event-label='Try Firefox Relay']"
+);
 const userEmailElement = document.querySelector(".nav-user-email");
 if (userEmailElement && relayLink) {
   const user_email = userEmailElement.textContent;
@@ -112,7 +123,10 @@ if (userEmailElement && relayLink) {
     const relayUrl = new URL(relayLink.href);
     relayUrl.pathname += "accounts/fxa/login/";
     relayUrl.searchParams.append("process", "login");
-    relayUrl.searchParams.append("auth_params", "prompt=none&login_hint=" + user_email);
+    relayUrl.searchParams.append(
+      "auth_params",
+      "prompt=none&login_hint=" + user_email
+    );
     relayLink.href = relayUrl.href;
   }
 }
