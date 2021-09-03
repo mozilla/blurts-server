@@ -83,7 +83,7 @@
     "wdio-video-reporter": "2.0.1"
   },
   "engines": {
-    "node": "14.15.0"
+    "node": "14.17.6"
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
