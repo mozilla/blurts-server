@@ -597,3 +597,5 @@ steps-to-resolve-headline = Pasos para resolver esta filtración
 vpn-promo-headline = Ahora es el momento de mejorar tu seguridad en línea.
 vpn-promo-copy = La red privada virtual de { -brand-Mozilla } te ayuda a proteger tu conexión a Internet de hackers y espías.
 vpn-promo-cta = Obtener { -brand-mozilla-vpn }
+vpn-promo-headline-new = Ahorra un 50% con una suscripción anual
+vpn-promo-copy-new = Protege tus datos en línea y elige el plan de suscripción a VPN que más te convenga.
