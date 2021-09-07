@@ -1,0 +1,14 @@
+<section id="unsubscribe" class="half">
+    {{> dashboards/remove-sites-headline-subhead }}
+    <div>
+      <ul>
+        {{#getRemoveSitesList}}
+          {{#each removal_sites}}
+            <li>
+              <a href="http://{{this}}" target="_blank">{{this}}</a>
+            </li>
+          {{/each}}
+        {{/getRemoveSitesList}}
+    </ul>
+    </div>
+</section>

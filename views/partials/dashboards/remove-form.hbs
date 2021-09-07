@@ -134,6 +134,12 @@
         <a class="remove-dashboard-info-question question-q js-question-q" href="#">{{ getString "remove-form-data-collection-q" }}</a>
         <p class="remove-dashboard-info-answer question-a">{{ getString "remove-form-data-collection-a" }}</p>
       </div>
+      <div class="remove-dashboard-info-collection-container question-container">
+        <a class="remove-dashboard-info-question question-q js-question-q" href="#">{{ getString "remove-form-data-collection-sites-q" }}</a>
+        <p class="remove-dashboard-info-answer question-a">
+          <a href="/user/remove-sites-list" target="_blank">{{ getString "remove-form-data-collection-sites-a" }}</a>
+        </p>
+      </div>
       {{#if this.acctInfo}}
       <div class="remove-dashboard-delete-container flx jst-cntr">
         <a href="/user/remove-kan" class="btn-transparent btn-red btn-small">{{getString "remove-form-data-delete"}}</a>

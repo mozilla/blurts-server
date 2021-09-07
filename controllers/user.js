@@ -19,6 +19,7 @@ const {
   getUTMContents,
   hasUserSignedUpForWaitlist,
 } = require("./utils");
+const jsConstants = require("../js-constants");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
@@ -868,6 +869,18 @@ async function getRemoveKan(req, res) {
   });
 }
 
+async function getRemoveSitesList(req, res) {
+  const sessionUser = req.user;
+
+  res.render("subpage", {
+    title: req.fluentFormat("remove-sites-list"),
+    subscriber: sessionUser,
+    removal_sites: jsConstants.REMOVAL_SITES,
+    whichPartial: "subpages/remove_sites_list",
+    csrfToken: req.csrfToken(),
+  });
+}
+
 async function postRemoveKan(req, res) {
   const sessionUser = req.user;
   //await removeKanaryAcct(2886); //MH - to hardcode an account to delete to avoid deleting your current account
@@ -1145,6 +1158,7 @@ module.exports = {
   getRemoveFxm,
   postRemoveFxm,
   getRemoveKan,
+  getRemoveSitesList,
   postRemoveKan,
   postResolveBreach,
   logout,

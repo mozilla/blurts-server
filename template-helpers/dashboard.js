@@ -123,6 +123,14 @@ function getRemoveFormData(args) {
   return args.fn(emailCards);
 }
 
+function getRemoveSitesList(args) {
+  const removal_sites = args.data.root.removal_sites;
+  const removal_list = {
+    removal_sites: removal_sites,
+  };
+  return args.fn(removal_list);
+}
+
 function getRemoveDashData(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
@@ -320,6 +328,7 @@ module.exports = {
   getBreachesDashboard,
   getRemoveFormData,
   getRemoveDashData,
+  getRemoveSitesList,
   welcomeMessage,
   removeDashExposureMessage,
   getLastAddedEmailStrings,

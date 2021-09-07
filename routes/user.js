@@ -28,6 +28,7 @@ const {
   postRemoveFxm,
   getRemoveKan,
   postRemoveKan,
+  getRemoveSitesList,
   postResolveBreach,
 } = require("../controllers/user");
 
@@ -156,6 +157,14 @@ router.post(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(postRemoveKan)
+);
+
+router.get(
+  "/remove-sites-list",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveSitesList)
 );
 
 router.post(

@@ -407,6 +407,8 @@ remove-form-success-next-details = Check back here frequently to see the data re
 remove-form-success-dashboard = Go to my dashboard
 remove-form-data-collection-q = Why do we ask for this info?
 remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
+remove-form-data-collection-sites-q = What sites will I be removed from?
+remove-form-data-collection-sites-a = We request removal from 50 known data brokers. Click here to see the full list.
 remove-form-data-delete = Cancel Service
 
 
@@ -454,7 +456,8 @@ remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remai
 remove-kan = Cancel Data Removal Service
 remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Will Remain Active.
 
-
+remove-sites-list = Data Removal Site List
+remove-sites-blurb = Below are the sites we request user data to be removed from.
 
 # Button title
 manage-email-addresses = Manage Email Addresses
