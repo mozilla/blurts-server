@@ -110,6 +110,13 @@
     text-align: left;
 }
 
+.vpn-banner-title > span {
+    display: block;
+    font-weight: normal;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
 .vpn-banner-lists {
     display: flex;
     flex-wrap: wrap;
