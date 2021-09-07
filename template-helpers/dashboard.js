@@ -4,6 +4,7 @@ const { LocaleUtils } = require("./../locale-utils");
 const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
+const JS_CONSTANTS = require("./../js-constants");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -116,6 +117,7 @@ function getRemoveFormData(args) {
     countries: countries,
     usStates: usStates,
     acctInfo: acctInfo,
+    jsConstants: JS_CONSTANTS,
   };
 
   return args.fn(emailCards);

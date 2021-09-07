@@ -109,6 +109,17 @@
           >
           {{> forms/error-message }}
         </div>
+        <div class="input-group">
+          <label for="remove-dashboard-form-privacy required" class="input-group-label field--full required">{{ getString "dash-remove-form-privacy-label"}}</label>
+          <div class="flx jst-cntr">
+          <input required id="remove-dashboard-form-privacy" class="input-group-checkbox" type="checkbox" name="privacy">
+            <p class="input-group-checkbox-text">
+              {{ getString "dash-remove-form-privacy"}}
+              <a href="{{jsConstants.KANARY_PRIVACY_LINK}}" target="_blank">{{ getString "dash-remove-form-privacy-link"}}</a>
+            </p>
+          </div>
+          {{> forms/error-message }}
+        </div>
         <div class="input-group-button inline">
           <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" 
             value="{{#if this.acctInfo}}{{ getString "dash-remove-change-submit" }}{{else}}{{ getString "dash-remove-submit" }}{{/if}}"/>
