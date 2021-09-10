@@ -108,7 +108,7 @@ fxa-account = { -brand-fxa }
 open-fxa-menu = 打开 { -brand-fxa }导航栏
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 在 1 到 10 的范围内，您向朋友或同事推荐 { -product-short-name } 的可能性有多大？
+micro-survey-nps-prompt = 以 1 - 10 分计，您向朋友或同事推荐 { -product-short-name } 的可能性有多大？
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-not-likely-response = 不太可能
 # This is a survey response to the micro-survey-nps-prompt question.
