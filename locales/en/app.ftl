@@ -462,7 +462,8 @@ remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Wil
 remove-sites-list = Data Removal Site List
 remove-sites-blurb = Below are the sites we request user data to be removed from.
 
-#remove risks info page
+# Remove risks info page
+
 remove-risk-heading = About Data Removal Risk
 remove-risk-blurb = “Risk” is assigned at the site level as a way to prioiritize actions and escalations, and is made up of 4 metrics: 
 remove-risk-criteria-1 = Does the site sell data?
