@@ -400,6 +400,9 @@ dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to 
 dash-remove-kanary-discalimer = Service provided by The Kanary
 dash-remove-manage-info = Manage My Info
 
+dash-remove-link-risk = About Risk Level
+
+
 remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
@@ -458,6 +461,21 @@ remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Wil
 
 remove-sites-list = Data Removal Site List
 remove-sites-blurb = Below are the sites we request user data to be removed from.
+
+# Remove risks info page
+
+remove-risk-heading = About Data Removal Risk
+remove-risk-blurb = “Risk” is assigned at the site level as a way to prioiritize actions and escalations, and is made up of 4 metrics: 
+remove-risk-criteria-1 = Does the site sell data?
+remove-risk-criteria-2 = Does the site include context beyond the personally identifiable information?
+remove-risk-criteria-3 = Does the site remove data consistently?
+remove-risk-criteria-4 = Does the site feed data to other sources?
+remove-risk-rating-high = Posts or sells location information, family information, contact information, or credentials like passwords. Site includes context about why someone would want to target a person like job, salary, political party. The site has complicated requirements and takes longer than average to remove personal information. The site feeds data to many other sources.
+remove-risk-rating-med = Posts or sells contact information like name, email, phone number. The site doesn't include additional context. The site responds to removal requests on a consistent basis. The site likely feeds data to other sources.
+remove-risk-rating-low = Posts personal information that is less likely to harm a specific person but if combined with other personal details could lead to harm. The site responds to removal requests on a consistent basis. The site likely doesn’t feed data to other sources.
+remove-risk-title-high = High
+remove-risk-title-med = Medium
+remove-risk-title-low = Low
 
 # Button title
 manage-email-addresses = Manage Email Addresses

@@ -734,14 +734,16 @@ async function removeKanaryAcct(kanary_id) {
       }
     })
     .then((json) => {
-      return json;
-      // if (json.terminated_at) { //MH - not getting this due to 204 response from server
-      //   //request was successful
-      //   return json;
-      // } else {
-      //   console.error("error deleting account");
-      //   return null;
-      // }
+      //return json;
+      if (json.terminated_at) {
+        //request was successful
+        return json;
+      } else {
+        console.error(
+          "not receiving the expected response from the API for the data removal request"
+        );
+        return null;
+      }
     })
     .catch((error) => {
       console.error("there was an error deleting the account", error);
@@ -881,9 +883,16 @@ async function getRemoveSitesList(req, res) {
   });
 }
 
+async function getRemoveRiskLevel(req, res) {
+  res.render("subpage", {
+    title: req.fluentFormat("remove-risk-heading"),
+    whichPartial: "subpages/remove_risk_level",
+  });
+}
+
 async function postRemoveKan(req, res) {
   const sessionUser = req.user;
-  //await removeKanaryAcct(2886); //MH - to hardcode an account to delete to avoid deleting your current account
+  //await removeKanaryAcct(2888); //MH - to hardcode an account to delete to avoid deleting your current account
   await removeKanaryAcct(sessionUser.kid);
   await DB.removeKan(sessionUser); //current: 2959
   res.redirect("/user/remove-delete-confirmation");
@@ -1159,6 +1168,7 @@ module.exports = {
   postRemoveFxm,
   getRemoveKan,
   getRemoveSitesList,
+  getRemoveRiskLevel,
   postRemoveKan,
   postResolveBreach,
   logout,

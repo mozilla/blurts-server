@@ -332,6 +332,11 @@
   &-results-container {
     margin-top: 34px;
   }
+  &-links-container {
+    margin-top: 48px;
+    padding: 24px 0;
+    border-top: 1px solid var(--grey2);
+  }
 }
 
 .remove-filter {
@@ -604,6 +609,25 @@
 
   &-icon {
     width: 170px;
+  }
+}
+
+.remove-risk {
+  &-criteria-item {
+    display: list-item;
+    margin-top: 10px;
+  }
+  &-title {
+    font-weight: 600;
+    &.--high {
+      color: var(--alertRed);
+    }
+    &.--med {
+      color: var(--orange5);
+    }
+    &.--low {
+      color: var(--grey10);
+    }
   }
 }
 
