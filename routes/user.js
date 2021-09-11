@@ -29,6 +29,7 @@ const {
   getRemoveKan,
   postRemoveKan,
   getRemoveSitesList,
+  getRemoveRiskLevel,
   postResolveBreach,
 } = require("../controllers/user");
 
@@ -165,6 +166,14 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveSitesList)
+);
+
+router.get(
+  "/remove-risk-level",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveRiskLevel)
 );
 
 router.post(

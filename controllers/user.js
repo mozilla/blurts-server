@@ -883,6 +883,13 @@ async function getRemoveSitesList(req, res) {
   });
 }
 
+async function getRemoveRiskLevel(req, res) {
+  res.render("subpage", {
+    title: req.fluentFormat("remove-risk-heading"),
+    whichPartial: "subpages/remove_risk_level",
+  });
+}
+
 async function postRemoveKan(req, res) {
   const sessionUser = req.user;
   //await removeKanaryAcct(2888); //MH - to hardcode an account to delete to avoid deleting your current account
@@ -1161,6 +1168,7 @@ module.exports = {
   postRemoveFxm,
   getRemoveKan,
   getRemoveSitesList,
+  getRemoveRiskLevel,
   postRemoveKan,
   postResolveBreach,
   logout,

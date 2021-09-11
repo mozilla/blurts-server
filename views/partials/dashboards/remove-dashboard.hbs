@@ -69,16 +69,23 @@
     </div>
     
     <div class="remove-dash-results-container">
-        <ul class="remove-dash-results-list">
-          {{#if this.removeResults}}
-            {{#each this.removeResults}}
-              {{> removal/removal-result }}
-            {{/each}}
-          {{else}}
-            {{> removal/removal-pending }}
-          {{/if}}
-        </ul>
-      </div>
+      <ul class="remove-dash-results-list">
+        {{#if this.removeResults}}
+          {{#each this.removeResults}}
+            {{> removal/removal-result }}
+          {{/each}}
+        {{else}}
+          {{> removal/removal-pending }}
+        {{/if}}
+      </ul>
+    </div>
+    <div class="remove-dash-links-container">
+      <ul class="remove-dash-links-list">
+        <li class="remove-dash-link-item">
+          <a href="/user/remove-risk-level" class="remove-dash-link">{{ getString "dash-remove-link-risk"}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 <div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
