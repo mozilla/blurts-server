@@ -1,12 +1,14 @@
 "use strict";
 
+// eslint-disable-next-line node/no-extraneous-require
 const { parse } = require("pg-connection-string");
 
 const AppConstants = require("../app-constants");
 const connectionObj = parse(AppConstants.DATABASE_URL);
-if (["heroku"].includes(AppConstants.NODE_ENV)) {
-  connectionObj.ssl = { rejectUnauthorized: false };
+if (AppConstants.NODE_ENV === "heroku") {
+  connectionObj.ssl = {rejectUnauthorized: false};
 }
+
 
 // For runtime, use DATABASE_URL
 const RUNTIME_CONFIG = {
@@ -18,6 +20,7 @@ const RUNTIME_CONFIG = {
 const testConnectionObj = parse(
   AppConstants.DATABASE_URL.replace(/\/(\w*)$/, "/test-$1")
 );
+
 const TESTS_CONFIG = {
   client: "postgresql",
   connection: testConnectionObj,

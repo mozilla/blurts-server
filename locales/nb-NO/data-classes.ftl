@@ -4,6 +4,8 @@ account-balances = Kontosaldoer
 address-book-contacts = Adressebokskontakter
 age-groups = Aldersgrupper
 ages = Aldre
+# Refers to medical appointments.
+appointments = Avtaler
 apps-installed-on-devices = Apper installert på enheter
 astrological-signs = Stjernetegn
 audio-recordings = Lydopptak
@@ -36,6 +38,7 @@ device-information = Enhetsinformasjon
 device-serial-numbers = Serienummer på enheter
 device-usage-tracking-data = Sporingsdata for bruk av enheter
 drinking-habits = Drikkevaner
+driver-s-licenses = Førerkort
 drug-habits = Narkotikavaner
 eating-habits = Spisevaner
 education-levels = Utdanningsnivå
@@ -66,6 +69,8 @@ instant-messenger-identities = Identiteter på Instant messenger-tjenester
 ip-addresses = IP-adresser
 job-applications = Jobbsøknader
 job-titles = Jobbtitler
+# This string refers to vehicle license plates. 
+licence-plates = Bilskilt
 living-costs = Levekostnader
 login-histories = Innloggingshistorikk
 mac-addresses = MAC-adresser
