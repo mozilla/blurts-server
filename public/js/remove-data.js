@@ -132,6 +132,7 @@ function onStatusFilterToggle(e) {
 
   const filterType = $item.dataset.id;
   const curFilter = $container.getAttribute("data-filter");
+
   if (curFilter === filterType) {
     document
       .querySelector(".remove-dashboard-container")

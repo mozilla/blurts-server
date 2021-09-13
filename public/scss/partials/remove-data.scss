@@ -351,9 +351,24 @@
     height: 32px;
     border-radius: 16px;
     margin-left: 12px;
+    &[data-id="completed"]{
+      background-color: var(--green2);
+    }
+    &[data-id="in-progress"]{
+      background-color: var(--blue3);
+    }
 
     &:first-child {
       margin-left: 0;
+    }
+    .remove-filter-key-list-title {
+      color: white;
+    }
+    
+    .remove-filter-key-list-icon {
+      path {
+        fill: white;
+      }
     }
   }
 
@@ -361,7 +376,6 @@
     @include ff-metropolis;
 
     font-size: 14px;
-    color: var(--grey10);
     margin-left: 4px;
   }
 
@@ -379,40 +393,40 @@
     margin: 0;
     //when a filter is active
     &[data-filter="in-progress"] {
-      .remove-dash-results-list-item[data-status="#{$k-status-complete}"] {
+      .remove-dash-results-list-item:not([data-status="#{$k-status-complete}"]) {
         display: none;
       }
 
       .remove-filter-key-list-item[data-id="in-progress"] {
-        background-color: var(--blue3);
+        background-color: transparent;
 
         .remove-filter-key-list-title {
-          color: white;
+          color: var(--grey10);
         }
 
         .remove-filter-key-list-icon {
           path {
-            fill: white;
+            fill: var(--grey10);
           }
         }
       }
     }
 
     &[data-filter="completed"] {
-      .remove-dash-results-list-item:not([data-status="#{$k-status-complete}"]) {
+      .remove-dash-results-list-item[data-status="#{$k-status-complete}"] {
         display: none;
       }
 
       .remove-filter-key-list-item[data-id="completed"] {
-        background-color: var(--green2);
+        background-color: transparent;
 
         .remove-filter-key-list-title {
-          color: white;
+          color: var(--grey10);
         }
 
         .remove-filter-key-list-icon {
           path {
-            fill: white;
+            fill: var(--grey10);
           }
         }
       }
