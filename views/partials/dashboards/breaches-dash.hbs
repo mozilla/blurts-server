@@ -1,13 +1,6 @@
+<main id="dashboard" class="js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
 {{#getBreachStats}}
-  <main id="dashboard" class="js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
-    <div class="mw-860 flx flx-col">
-      <div class="dashboard-stats-and-welcome flx">
-        <div class="dashboard-welcome-container">
-          <span class="dashboard-welcome-back">{{ welcomeMessage }}</span>
-        </div>
-        {{> breach-stats addClasses="user-stats"}}
-      </div>
-    </div>
+    {{> dashboards/breach-dash-welcome}}
     {{> dashboards/breach-dash-tabs activeTab="summary"}}
     <div class="mw-860 flx flx-col">
       <div class="dash-stats"></div>
@@ -33,8 +26,8 @@
       </div>
     {{/if}}
     </div>
-  </main>
 {{/getBreachStats}}
+
 {{#getBreachesDashboard}}
   <div class="mw-860 jst-cntr flx-col">
     <div class="flx space-between cntr link-header-wrapper">
@@ -71,6 +64,7 @@
     </div>
   </div>
 {{/getBreachesDashboard}}
+</main>
 {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
 {{#ifCompare verifiedEmails.length "<" MAX_NUM_ADDRESSES}}
   <div class="row jst-cntr">

@@ -1,18 +1,10 @@
+<main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
 {{#getBreachStats}}
-  <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
-    <div class="mw-860 flx dashboard-stats-and-welcome">
-        <div class="dashboard-welcome-container flx">
-          <span class="dashboard-welcome-back">{{ welcomeMessage }}</span>
-        </div>
-        {{> breach-stats addClasses="user-stats"}}
-      </div>
-    </div>
+    {{> dashboards/breach-dash-welcome}}
     {{> dashboards/breach-dash-tabs activeTab="remove"}}
-  </main>
 {{/getBreachStats}}
 {{#getRemoveDashData}}
 <div class="flx flx-col remove-dashboard-container">
-
   <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
       <div class="remove-dash-status-container">
@@ -83,3 +75,4 @@
 </div>
 {{> dashboards/remove-form-kanary-footer}}
 {{/getRemoveDashData}}
+</main>

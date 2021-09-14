@@ -400,7 +400,7 @@ dash-remove-form-privacy = The Data Removal Service is offered by The Kanary.
 dash-remove-form-privacy-link = By proceeding, you agree to their Terms of Service and Privacy Notice.
 dash-remove-submit = Start Data Removal
 dash-remove-change-submit = Submit
-dash-remove-form-required-helper = * These fields are required
+dash-remove-form-required-helper = * * All fields are required to properly identify your information on data broker sites
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 
 dash-remove-manage-info = Manage My Info
