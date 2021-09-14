@@ -1,3 +1,5 @@
+
+
 .txt-light-grey {
   color: rgb(237, 237, 240);
 }
@@ -337,6 +339,9 @@
     padding: 24px 0;
     border-top: 1px solid var(--grey2);
   }
+  &-link {
+    @include blue-link;
+  }
 }
 
 .remove-filter {
@@ -526,6 +531,11 @@
   }
 
   &-form {
+    &-container {
+      a {
+        @include blue-link
+      }
+    }
     .input-group {
       margin-top: 32px;
     }
@@ -566,7 +576,9 @@
   }
 
   &-form-name {
-    flex-wrap: wrap;
+    @include breakpoint(mobile){
+      flex-wrap: wrap;
+    }
   }
 
   &-form-rqd {

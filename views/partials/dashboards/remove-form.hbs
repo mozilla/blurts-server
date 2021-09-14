@@ -55,6 +55,9 @@
             <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
               {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
             >
+            <input id="remove-dashboard-form-middle-name" class="input-group-field" type="text" name="middlename" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+              {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
+            >
             <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
               {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
             >
@@ -104,7 +107,7 @@
         </div>
         <div class="input-group">
           <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
-          <input required id="remove-dashboard-form-year" class="input-group-field field--full " type="text" name="birthyear" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
+          <input required id="remove-dashboard-form-year" class="input-group-field" type="text" name="birthyear" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
             {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
           >
           {{> forms/error-message }}
@@ -164,7 +167,5 @@
     </div>
   </div>
 </div>
-<div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
-  <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
-</div>
+{{> dashboards/remove-form-kanary-footer}}
 {{/getRemoveFormData}}

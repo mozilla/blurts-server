@@ -26,8 +26,16 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 async function handleRemoveFormSignup(req, res) {
   //TODO: validate form data
 
-  const { account, firstname, lastname, city, state, country, birthyear } =
-    req.body;
+  const {
+    account,
+    firstname,
+    lastname,
+    middlename,
+    city,
+    state,
+    country,
+    birthyear,
+  } = req.body;
 
   const memberList = {
     members: [
@@ -35,6 +43,7 @@ async function handleRemoveFormSignup(req, res) {
         names: [
           {
             first_name: firstname,
+            middle_name: middlename ? middlename : null,
             last_name: lastname,
           },
         ],
@@ -92,14 +101,24 @@ async function handleKanaryAPISubmission(memberInfo) {
 async function handleRemoveAcctUpdate(req, res) {
   //TODO: validate form data
 
-  const { account, firstname, lastname, city, state, country, birthyear, id } =
-    req.body;
+  const {
+    account,
+    firstname,
+    middlename,
+    lastname,
+    city,
+    state,
+    country,
+    birthyear,
+    id,
+  } = req.body;
 
   const memberData = {
     id: parseInt(id),
     names: [
       {
         first_name: firstname,
+        middle_name: middlename ? middlename : null,
         last_name: lastname,
       },
     ],

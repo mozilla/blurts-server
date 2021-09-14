@@ -202,6 +202,7 @@ function removeDashExposureMessage(args) {
 }
 
 function welcomeMessage(args) {
+  const { kid } = args.data.root.req.session.user;
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
   const newUser = args.data.root.req.session.newUser;

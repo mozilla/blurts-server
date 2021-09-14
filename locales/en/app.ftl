@@ -367,8 +367,8 @@ send-verification = Send Verification Link
 breach-summary = Breach Summary
 
 # dashboard tab language
-dash-tab-breach-title = Data Breaches
-dash-tab-remove-title = Data Brokers
+dash-tab-breach-title = Breaches
+dash-tab-remove-title = Exposures
 dash-tab-beta = Beta
 
 # removal cta
@@ -382,8 +382,9 @@ dash-remove-intro-signup = To start your data removal process, please provide th
 dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
-dash-remove-form-name-first = Enter your first name
-dash-remove-form-name-last = Enter your last name
+dash-remove-form-name-first = First Name
+dash-remove-form-name-middle = Middle (Optional)
+dash-remove-form-name-last = Last Name
 dash-remove-form-loc-label = What is your current location?
 dash-remove-form-loc-city = City
 dash-remove-form-loc-state = State
