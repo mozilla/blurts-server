@@ -498,12 +498,13 @@ async function getRemovePage(req, res) {
   let removeAcctInfo = null; //acct info
 
   if (user.kid) {
+    console.log("has id, get remove data");
+    removeData = await getRemoveDashData(user.kid);
     if (show_form) {
       //get the users' kanary account info
       removeAcctInfo = await getRemoveAcctInfo(user.kid);
     } else {
       //get kanary dashboard data
-      removeData = await getRemoveDashData(user.kid);
       removeData.forEach((removeItem) => {
         removeItem.update_status = FormUtils.convertTimestamp(
           removeItem.updated_at
@@ -550,6 +551,7 @@ async function getRemovePage(req, res) {
 
 async function getRemoveConfirmationPage(req, res) {
   const user = req.user;
+  console.log("user", user);
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,
@@ -572,6 +574,13 @@ async function getRemoveConfirmationPage(req, res) {
     req.session["lastAddedEmail"] = null;
   }
 
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  }
+
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
@@ -583,6 +592,8 @@ async function getRemoveConfirmationPage(req, res) {
     whichPartial: "dashboards/remove-signup-confirmation",
     experimentFlags,
     utmOverrides,
+    removeData,
+    removeAcctInfo,
   });
 }
 
@@ -602,6 +613,13 @@ async function getRemoveUpdateConfirmationPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  }
+
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
@@ -612,6 +630,8 @@ async function getRemoveUpdateConfirmationPage(req, res) {
     whichPartial: "dashboards/remove-update-confirmation",
     experimentFlags,
     utmOverrides,
+    removeData,
+    removeAcctInfo,
   });
 }
 
