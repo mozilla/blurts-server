@@ -14,24 +14,32 @@
 <div class="flx flx-col remove-dashboard-container js-remove-dashboard-container"
   {{#if this.acctInfo.addresses.0.country}}data-country="{{this.acctInfo.addresses.0.country}}"{{/if}}
 >
-  {{#if ./../supportedLocalesIncludesEnglish}}
+  
     <div class="mw-860 remove-dashboard-card-container">
       <div class="remove-dashboard-card">
         <div href="/remove-my-data" class="remove-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-usemailIder-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
           <div class="remove-dashboard-card-content flx">
-            <div class="private-relay-dashboard-card-copy">
-              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-1"}}</p>
+            <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
+              {{#if ./../supportedLocalesIncludesEnglish}}
+              <p class="remove-dashboard-card-body">Firefox Monitor has partnered with The Kanary, which can actively scan and automatically remove your personal data from <a href="/user/remove-sites-list">50 different data broker websites</a>. These sites expose your personal information to anyone who searches for you, thereby putting you at risk.</p>
+              {{/if}}
+              <p class="remove-dashboard-card-body"><a href="#">{{ getString "dash-remove-intro-service-link"}}</a></p>
               {{#if this.acctInfo}}
-              <p class="remove-dashboard-card-body">{{ getString "dash-remove-info-change"}}</p>
+              <p class="remove-dashboard-card-body">
+                <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>
+                {{ getString "dash-remove-info-change"}}
+              </p>
               {{else}}
-              <p class="remove-dashboard-card-body">{{ getString "dash-remove-intro-signup"}}</p>
+              <p class="remove-dashboard-card-body">
+                <span class="bold">{{ getString "dash-remove-intro-signup-title"}}</span><br/>
+                {{ getString "dash-remove-intro-signup"}}
+              </p>
               {{/if}}
             </div>
           </div>
         </div>
       </div>
     </div>
-  {{/if}}
   <div class="mw-860 remove-dashboard-section-container">
     <div class="remove-dashboard-form-container remove-dashboard-section">
       <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
@@ -133,16 +141,7 @@
           <p class="alert remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
         </div>
       </form>
-      <div class="remove-dashboard-info-collection-container question-container">
-        <a class="remove-dashboard-info-question question-q js-question-q" href="#">{{ getString "remove-form-data-collection-q" }}</a>
-        <p class="remove-dashboard-info-answer question-a">{{ getString "remove-form-data-collection-a" }}</p>
-      </div>
-      <div class="remove-dashboard-info-collection-container question-container">
-        <a class="remove-dashboard-info-question question-q js-question-q" href="#">{{ getString "remove-form-data-collection-sites-q" }}</a>
-        <p class="remove-dashboard-info-answer question-a">
-          <a href="/user/remove-sites-list" target="_blank">{{ getString "remove-form-data-collection-sites-a" }}</a>
-        </p>
-      </div>
+
       {{#if this.acctInfo}}
       <div class="remove-dashboard-delete-container flx jst-cntr">
         <a href="/user/remove-kan" class="btn-transparent btn-red btn-small">{{getString "remove-form-data-delete"}}</a>

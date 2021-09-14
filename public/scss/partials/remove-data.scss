@@ -449,8 +449,10 @@
   }
 
   &-card {
-    margin: 0 auto;
+    margin: 24px auto;
     width: 100%;
+    border: 1px solid var(--purple);
+    border-radius: 8px;
 
     &-body {
       margin: 10px 0 0;
@@ -462,9 +464,14 @@
         margin-top: 0;
       }
     }
+    &-copy {
+      p:first-child {
+        margin-top: 0;
+      }
+    }
 
     &-border {
-      padding: 28px 0;
+      padding: 20px;
       margin: 0.15rem;
       overflow: hidden;
     }

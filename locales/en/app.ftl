@@ -377,8 +377,12 @@ remove-card-body = We’re piloting a new service to monitor and remove your nam
 remove-card-cta = Join the waitlist
 
 # removal form strings
+
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
-dash-remove-intro-signup = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-intro-service-link = More about the service
+dash-remove-intro-signup-title = How to start
+dash-remove-intro-signup = To start removing your exposed personal data, please provide the following information. We use this information to scan and identify exposed personal information on data broker websites. Once we  find exposed personal information, we will automatically begin the removal process. Initial results can take up to 24 hours.
+dash-remove-info-change-title = Update your info
 dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
@@ -409,10 +413,6 @@ remove-form-success-details = We’re checking hundreds of sites that may be put
 remove-form-success-next-title = What's next?
 remove-form-success-next-details = Check back here frequently to see the data removal requests we initiate on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
 remove-form-success-dashboard = Go to my dashboard
-remove-form-data-collection-q = Why do we ask for this info?
-remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
-remove-form-data-collection-sites-q = What sites will I be removed from?
-remove-form-data-collection-sites-a = We request removal from 50 known data brokers. Click here to see the full list.
 remove-form-data-delete = Cancel Service
 
 
