@@ -334,14 +334,7 @@
   &-results-container {
     margin-top: 34px;
   }
-  &-links-container {
-    margin-top: 48px;
-    padding: 24px 0;
-    border-top: 1px solid var(--grey2);
-  }
-  &-link {
-    @include blue-link;
-  }
+
 }
 
 .remove-filter {

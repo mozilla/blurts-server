@@ -402,10 +402,13 @@ dash-remove-submit = Start Data Removal
 dash-remove-change-submit = Submit
 dash-remove-form-required-helper = * These fields are required
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
-dash-remove-kanary-discalimer = Service provided by The Kanary
+
 dash-remove-manage-info = Manage My Info
 
+# footer
+dash-remove-kanary-discalimer = Service provided by The Kanary
 dash-remove-link-risk = About Risk Level
+dash-remove-link-broker = Data Broker List
 
 
 remove-form-success-title = We're executing your data removal!

@@ -498,7 +498,6 @@ async function getRemovePage(req, res) {
   let removeAcctInfo = null; //acct info
 
   if (user.kid) {
-    console.log("has id, get remove data");
     removeData = await getRemoveDashData(user.kid);
     if (show_form) {
       //get the users' kanary account info
