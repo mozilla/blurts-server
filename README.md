@@ -79,7 +79,7 @@ To create the database tables ...
    ```
 
 #### Trigger Breach Alert Email
-Breach alert emails are triggered via HIBP which, for dev purposes, is set up to work with a [Mailinator](https://www.mailinator.com) email account.
+Breach alert emails are triggered via HIBP. For dev purposes, we can trigger them ourselves to send to a [Mailinator](https://www.mailinator.com) email address.
 
 To set up your environment for email testing with Mailinator:
 1. In your .env file, confirm or add values for `SMTP_URL`, `EMAIL_FROM`, `HIBP_KANON_API_TOKEN`, and `HIBP_API_TOKEN`
