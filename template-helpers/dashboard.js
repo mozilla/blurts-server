@@ -202,19 +202,25 @@ function removeDashExposureMessage(args) {
 }
 
 function welcomeMessage(args) {
-  const { kid } = args.data.root.req.session.user;
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
   const newUser = args.data.root.req.session.newUser;
+  const removeAcctInfo = args.data.root.removeAcctInfo;
+
+  let userDisplayName = userEmail;
+
+  if (removeAcctInfo && removeAcctInfo.names && removeAcctInfo.names.length) {
+    userDisplayName = removeAcctInfo.names[0].first_name;
+  }
 
   if (newUser) {
     return LocaleUtils.fluentFormat(locales, "welcome-user", {
-      userName: userEmail,
+      userName: userDisplayName,
     });
   }
 
   return LocaleUtils.fluentFormat(locales, "welcome-back", {
-    userName: userEmail,
+    userName: userDisplayName,
   });
 }
 

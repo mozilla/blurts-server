@@ -487,7 +487,7 @@ manage-email-addresses = Manage Email Addresses
 # Link title
 latest-breach-link = See if you were in this breach
 
-welcome-back = Welcome back, { $userName }!
+welcome-back = Welcome, { $userName }!
 welcome-user = Welcome, { $userName }!
 
 

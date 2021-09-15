@@ -499,11 +499,8 @@ async function getRemovePage(req, res) {
 
   if (user.kid) {
     removeData = await getRemoveDashData(user.kid);
-    if (show_form) {
-      //get the users' kanary account info
-      removeAcctInfo = await getRemoveAcctInfo(user.kid);
-    } else {
-      //get kanary dashboard data
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+    if (!show_form) {
       removeData.forEach((removeItem) => {
         removeItem.update_status = FormUtils.convertTimestamp(
           removeItem.updated_at
