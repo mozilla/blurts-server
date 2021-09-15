@@ -201,6 +201,30 @@ function removeDashExposureMessage(args) {
   });
 }
 
+function getFullName(args) {
+  const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
+  const removeAcctInfo = args.data.root.removeAcctInfo;
+
+  let userDisplayName = userEmail;
+
+  if (removeAcctInfo && removeAcctInfo.names && removeAcctInfo.names.length) {
+    const nameObj = removeAcctInfo.names[0];
+    let nameString = "";
+    if (nameObj.first_name) {
+      nameString += nameObj.first_name;
+    }
+    if (nameObj.middle_name) {
+      nameString += ` ${nameObj.middle_name}`;
+    }
+    if (nameObj.last_name) {
+      nameString += ` ${nameObj.last_name}`;
+    }
+    userDisplayName = nameString;
+  }
+
+  return userDisplayName;
+}
+
 function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
@@ -336,6 +360,7 @@ module.exports = {
   getRemoveFormData,
   getRemoveDashData,
   getRemoveSitesList,
+  getFullName,
   welcomeMessage,
   removeDashExposureMessage,
   getLastAddedEmailStrings,

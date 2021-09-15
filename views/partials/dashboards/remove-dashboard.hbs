@@ -8,10 +8,9 @@
   <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
       <div class="remove-dash-status-container">
-        <p class="remove-dash-status">{{ getString "remove-status-in-progress"}}</p>
         <p class="remove-dash-status">
-          <span class="remove-email bold">{{this.verifiedEmails.0.email}} </span> 
-          {{removeDashExposureMessage}}
+          {{ getString "remove-status-exposures"}}
+          <span class="bold">{{getFullName}}</span> 
         </p>
       </div>
       <div class="remove-dash-update-container">

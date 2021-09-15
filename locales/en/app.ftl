@@ -415,7 +415,8 @@ remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
 remove-form-success-next-details = Check back here frequently to see the data removal requests we initiate on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
-remove-form-success-dashboard = Go to my dashboard
+remove-form-delete-dashboard = Go to Monitor dashboard
+remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
 
 
@@ -427,9 +428,9 @@ remove-form-delete-details = We are no longer making data removal requests on yo
 
 
 # removal dashboard strings
-remove-status-in-progress = We are working on removing your data
+remove-status-exposures = Viewing exposures for:
 remove-status-update = Last update:
-remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
+# remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
 remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
