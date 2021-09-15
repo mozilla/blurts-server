@@ -82,7 +82,7 @@ To create the database tables ...
 Breach alert emails are triggered via HIBP. For dev purposes, we can trigger them ourselves to send to a [Mailinator](https://www.mailinator.com) email address.
 
 To set up your environment for email testing with Mailinator:
-1. In your .env file, confirm or add values for `SMTP_URL`, `EMAIL_FROM`, `HIBP_KANON_API_TOKEN`, and `HIBP_API_TOKEN`
+1. In your .env file, confirm or add values for `SMTP_URL`, `EMAIL_FROM`, `HIBP_KANON_API_TOKEN`, and `HIBP_API_TOKEN` (Ask for values in #fx-monitor-engineering)
 
 2. If you don't have a local FxA account, sign up on localhost.  You'll need to ensure `FXA_ENABLED=true` and confirm/add the value for `OAUTH_CLIENT_SECRET` in your .env file.
 
