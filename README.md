@@ -88,7 +88,7 @@ To set up your environment for email testing with Mailinator:
 
 3. Start/restart your server
 
-4. Login to your Monitor account in-browser, and add localmonitor20200827@mailinator.com to list of monitored email addresses
+4. Login to your Monitor account at http://localhost:6060/, and scroll to the bottom of [your dashboard](http://localhost:6060/user/dashboard) to add localmonitor20200827@mailinator.com to your list of monitored email addresses
 
 5. In your Monitor settings (in-browser), make sure notification preferences specify "Send breach alerts to the affected email address" (should be default).  This will send the alert to the Mailinator account.
 
