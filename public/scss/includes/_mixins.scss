@@ -65,24 +65,25 @@
   font-weight: 600;
   display: flex;
   align-items: center;
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     background-color: var(--blue4);
   }
 }
 
-
 @mixin blue-link {
-  &:not([class^='btn']){
+  &:not([class*="btn"]) {
     color: var(--blue3);
     font-family: "Metropolis", sans-serif;
     font-weight: 600;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       color: var(--blue4);
       text-decoration: underline;
     }
-    &:visited, &:active {
+    &:visited,
+    &:active {
       color: var(--blue5);
     }
   }
-  
 }

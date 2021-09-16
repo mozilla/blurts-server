@@ -1,11 +1,17 @@
 .remove-dashboard-confirm {
+  display: none;
+  .js-remove-dashboard-container[data-confirm="true"] & {
+    display: block;
+  }
   &-container {
     margin-top: 8px;
     background-color: var(--grey2);
     padding: 16px 24px;
     border-radius: 4px;
   }
-  &-item,&-item-label,&-item-entry {
+  &-item,
+  &-item-label,
+  &-item-entry {
     display: block;
   }
   &-item:not(:first-child) {
@@ -27,5 +33,14 @@
     &:hover {
       text-decoration: none !important;
     }
+  }
+  &-review-container {
+    align-items: center;
+  }
+  &-review-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--grey7);
+    margin: 0;
   }
 }

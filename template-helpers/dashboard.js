@@ -225,6 +225,19 @@ function getFullName(args) {
   return userDisplayName;
 }
 
+function getConfirmSubmitText(args) {
+  const kid = args.data.root.req.user.kid;
+  const locales = args.data.root.req.supportedLocales;
+  if (kid) {
+    return LocaleUtils.fluentFormat(
+      locales,
+      "dash-remove-confirm-submit-update"
+    );
+  } else {
+    return LocaleUtils.fluentFormat(locales, "dash-remove-confirm-submit-new");
+  }
+}
+
 function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
@@ -362,6 +375,7 @@ module.exports = {
   getRemoveSitesList,
   getFullName,
   welcomeMessage,
+  getConfirmSubmitText,
   removeDashExposureMessage,
   getLastAddedEmailStrings,
   makeEmailVerifiedString,

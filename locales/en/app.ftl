@@ -403,6 +403,16 @@ dash-remove-change-submit = Submit
 dash-remove-form-required-helper = * All fields are required to properly identify your information on data broker sites
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 
+# removal form confirm strings
+dash-remove-confirm-review = Review Your Information
+dash-remove-confirm-edit = Edit info
+dash-remove-confirm-label-full = Full Name
+dash-remove-confirm-email = Email Address
+dash-remove-confirm-loc = Current Location
+dash-remove-confirm-birthyear = Birth Year
+dash-remove-confirm-submit-new = Begin Data Removal
+dash-remove-confirm-submit-update = Confirm Information
+
 dash-remove-manage-info = Manage My Info
 
 # footer

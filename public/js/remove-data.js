@@ -33,6 +33,10 @@ function addRemoveFormListeners() {
     .addEventListener("click", onRemoveFormSubmitClick);
 
   document
+    .querySelector(".js-confirm-edit-btn")
+    .addEventListener("click", onConfirmEditClick);
+
+  document
     .querySelector(".js-remove-confirm")
     .addEventListener("click", onRemoveConfirmSubmitClick);
 
@@ -64,6 +68,11 @@ function onSelectChange(e) {
   }
 }
 
+function onConfirmEditClick(e) {
+  e.preventDefault();
+  toggleConfirmScreen(false);
+}
+
 function onRemoveFormSubmitClick(e) {
   const isValid = e.target.form.reportValidity();
   if (!isValid) {
@@ -74,6 +83,13 @@ function onRemoveFormSubmitClick(e) {
   const formData = new FormData(e.target.form);
 
   populateConfirmData(formData);
+  toggleConfirmScreen(true);
+}
+
+function toggleConfirmScreen(doShow) {
+  document
+    .querySelector(".js-remove-dashboard-container")
+    .setAttribute("data-confirm", doShow);
 }
 
 function populateConfirmData(formData) {
@@ -116,16 +132,17 @@ function onRemoveConfirmSubmitClick(e) {
 }
 
 function handleFormSubmit(e) {
-  const isValid = e.target.form.reportValidity(); //use native html form validator
+  const $form = document.getElementById("remove-data-signup-form");
+  const isValid = $form.reportValidity(); //use native html form validator
   if (!isValid) {
     return;
   }
 
   e.preventDefault(); //if valid, prevent submission and post data
 
-  fetch(e.target.form.action, {
+  fetch($form.action, {
     method: "POST",
-    body: new URLSearchParams(new FormData(e.target.form)),
+    body: new URLSearchParams(new FormData($form)),
   })
     .then((resp) => {
       return resp.json(); // or resp.text() or whatever the server sends

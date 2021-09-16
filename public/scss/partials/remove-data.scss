@@ -1,5 +1,3 @@
-
-
 .txt-light-grey {
   color: rgb(237, 237, 240);
 }
@@ -334,7 +332,6 @@
   &-results-container {
     margin-top: 34px;
   }
-
 }
 
 .remove-filter {
@@ -349,10 +346,10 @@
     height: 32px;
     border-radius: 16px;
     margin-left: 12px;
-    &[data-id="completed"]{
+    &[data-id="completed"] {
       background-color: var(--green2);
     }
-    &[data-id="in-progress"]{
+    &[data-id="in-progress"] {
       background-color: var(--blue3);
     }
 
@@ -362,7 +359,7 @@
     .remove-filter-key-list-title {
       color: white;
     }
-    
+
     .remove-filter-key-list-icon {
       path {
         fill: white;
@@ -505,6 +502,11 @@
       padding-right: 24px;
     }
   }
+  &-form-enter {
+    .js-remove-dashboard-container[data-confirm="true"] & {
+      display: none;
+    }
+  }
 
   &-form-loc {
     @include breakpoint(mobile) {
@@ -533,7 +535,7 @@
   &-form {
     &-container {
       a {
-        @include blue-link
+        @include blue-link;
       }
     }
     .input-group {
@@ -576,7 +578,7 @@
   }
 
   &-form-name {
-    @include breakpoint(mobile){
+    @include breakpoint(mobile) {
       flex-wrap: wrap;
     }
   }
@@ -610,12 +612,6 @@
     &:focus {
       @include form-focus;
     }
-  }
-
-  &-form-confirm-review {
-    font-size: 18px;
-    font-weight: 400;
-    color: var(--grey7);
   }
 
   &-select-container {
