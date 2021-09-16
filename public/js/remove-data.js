@@ -30,15 +30,18 @@ function initRemoveDashboard() {
 function addRemoveFormListeners() {
   document
     .querySelector(".js-remove-submit")
-    .addEventListener("click", onSubmitClick);
+    .addEventListener("click", onRemoveFormSubmitClick);
+
+  document
+    .querySelector(".js-remove-confirm")
+    .addEventListener("click", onRemoveConfirmSubmitClick);
 
   document.querySelectorAll(".js-form-select").forEach((selector) => {
     selector.addEventListener("change", onSelectChange);
   });
-}
-
-function onSubmitClick(e) {
-  handleFormSubmit(e);
+  document.querySelectorAll(".js-form-select").forEach((selector) => {
+    selector.addEventListener("change", onSelectChange);
+  });
 }
 
 function onSelectChange(e) {
@@ -59,6 +62,57 @@ function onSelectChange(e) {
         .removeAttribute("required");
     }
   }
+}
+
+function onRemoveFormSubmitClick(e) {
+  const isValid = e.target.form.reportValidity();
+  if (!isValid) {
+    console.log("not valid!");
+    return;
+  }
+  e.preventDefault();
+  const formData = new FormData(e.target.form);
+
+  populateConfirmData(formData);
+}
+
+function populateConfirmData(formData) {
+  const fieldData = {};
+
+  const fieldArr = [
+    "account",
+    "firstname",
+    "middlename",
+    "lastname",
+    "city",
+    "state",
+    "country",
+    "birthyear",
+  ];
+
+  const confirmArray = ["fullname", "account", "location", "birthyear"];
+
+  fieldArr.forEach((field) => {
+    fieldData[field] = formData.get(field) ? formData.get(field) : "";
+  });
+
+  fieldData["fullname"] = `${fieldData["firstname"]} ${
+    fieldData["middlename"] ? fieldData["middlename"] : ""
+  } ${fieldData["lastname"]}`;
+  fieldData["location"] = `${fieldData["city"]}, ${
+    fieldData["state"] ? fieldData["state"] : ""
+  }, ${fieldData["country"]}`;
+
+  confirmArray.forEach((confirmItem) => {
+    const curField = confirmItem;
+    const selectorString = `.remove-dashboard-confirm-item[data-id='${curField}'] .remove-dashboard-confirm-item-entry`;
+    document.querySelector(selectorString).innerText = fieldData[curField];
+  });
+}
+
+function onRemoveConfirmSubmitClick(e) {
+  e.preventDefault();
+  handleFormSubmit(e);
 }
 
 function handleFormSubmit(e) {

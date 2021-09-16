@@ -253,6 +253,10 @@ button.btn-ghost {
   min-width: 200px;
 }
 
+.btn-blue {
+  @include blue-button;
+}
+
 .btn-blue-primary,
 button.btn-violet-primary {
   border-radius: 8px;
