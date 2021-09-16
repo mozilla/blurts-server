@@ -65,6 +65,7 @@
   font-weight: 600;
   display: flex;
   align-items: center;
+
   &:hover,
   &:focus {
     background-color: var(--blue4);
@@ -76,11 +77,13 @@
     color: var(--blue3);
     font-family: "Metropolis", sans-serif;
     font-weight: 600;
+
     &:hover,
     &:focus {
       color: var(--blue4);
       text-decoration: underline;
     }
+
     &:visited,
     &:active {
       color: var(--blue5);
