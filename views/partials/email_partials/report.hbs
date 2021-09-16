@@ -53,7 +53,7 @@
         {{/each}}
       </table>
 
-      <!-- breach cards and disclaimers -->
+      <!-- breach cards -->
       <table align="center" width="100%" style="max-width: 400px;">
         {{#each (getUnsafeBreachesForEmailReport)}}
           <tr>
@@ -65,10 +65,3 @@
       </table>
     {{/ifCompare}}
   {{/if}}
-  <table align="center" width="100%" style="max-width: 400px; padding: 0;">
-    <tr>
-      <td width="100%">
-        {{> email_partials/email_disclaimers }}
-      </td>
-    </tr>
-  </table>
