@@ -311,6 +311,20 @@ function breachMath(lValue, operator = null, rValue = null) {
   return returnValue;
 }
 
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+function getOptOutLink(opt_out) {
+  console.log("optout", opt_out);
+  if (validateEmail(opt_out)) {
+    return `mailto:${opt_out}`;
+  } else {
+    return opt_out;
+  }
+}
+
 function sentenceCase(str) {
   if (str && str.length) {
     // eslint-disable-next-line no-useless-escape
@@ -345,4 +359,5 @@ module.exports = {
   breachMath,
   loop,
   sentenceCase,
+  getOptOutLink,
 };
