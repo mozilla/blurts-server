@@ -1,25 +1,16 @@
+<main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
 {{#getBreachStats}}
-  <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
-    <div class="mw-860 flx dashboard-stats-and-welcome">
-        <div class="dashboard-welcome-container flx">
-          <span class="dashboard-welcome-back">{{ welcomeMessage }}</span>
-        </div>
-        {{> breach-stats addClasses="user-stats"}}
-      </div>
-    </div>
+    {{> dashboards/breach-dash-welcome}}
     {{> dashboards/breach-dash-tabs activeTab="remove"}}
-  </main>
 {{/getBreachStats}}
 {{#getRemoveDashData}}
 <div class="flx flx-col remove-dashboard-container">
-
   <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
       <div class="remove-dash-status-container">
-        <p class="remove-dash-status">{{ getString "remove-status-in-progress"}}</p>
         <p class="remove-dash-status">
-          <span class="remove-email bold">{{this.verifiedEmails.0.email}} </span> 
-          {{removeDashExposureMessage}}
+          {{ getString "remove-status-exposures"}}
+          <span class="bold">{{getFullName}}</span> 
         </p>
       </div>
       <div class="remove-dash-update-container">
@@ -79,16 +70,8 @@
         {{/if}}
       </ul>
     </div>
-    <div class="remove-dash-links-container">
-      <ul class="remove-dash-links-list">
-        <li class="remove-dash-link-item">
-          <a href="/user/remove-risk-level" class="remove-dash-link">{{ getString "dash-remove-link-risk"}}</a>
-        </li>
-      </ul>
-    </div>
   </div>
 </div>
-<div class="remove-dashboard-kanary-container flx flx-col flx-cntr">
-  <p class="remove-dashboard-kanary-disclaimer">{{ getString "dash-remove-kanary-discalimer"}}</p>
-</div>
+{{> dashboards/remove-form-kanary-footer}}
 {{/getRemoveDashData}}
+</main>

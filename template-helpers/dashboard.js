@@ -201,19 +201,63 @@ function removeDashExposureMessage(args) {
   });
 }
 
+function getFullName(args) {
+  const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
+  const removeAcctInfo = args.data.root.removeAcctInfo;
+
+  let userDisplayName = userEmail;
+
+  if (removeAcctInfo && removeAcctInfo.names && removeAcctInfo.names.length) {
+    const nameObj = removeAcctInfo.names[0];
+    let nameString = "";
+    if (nameObj.first_name) {
+      nameString += nameObj.first_name;
+    }
+    if (nameObj.middle_name) {
+      nameString += ` ${nameObj.middle_name}`;
+    }
+    if (nameObj.last_name) {
+      nameString += ` ${nameObj.last_name}`;
+    }
+    userDisplayName = nameString;
+  }
+
+  return userDisplayName;
+}
+
+function getConfirmSubmitText(args) {
+  const kid = args.data.root.req.user.kid;
+  const locales = args.data.root.req.supportedLocales;
+  if (kid) {
+    return LocaleUtils.fluentFormat(
+      locales,
+      "dash-remove-confirm-submit-update"
+    );
+  } else {
+    return LocaleUtils.fluentFormat(locales, "dash-remove-confirm-submit-new");
+  }
+}
+
 function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
   const newUser = args.data.root.req.session.newUser;
+  const removeAcctInfo = args.data.root.removeAcctInfo;
+
+  let userDisplayName = userEmail;
+
+  if (removeAcctInfo && removeAcctInfo.names && removeAcctInfo.names.length) {
+    userDisplayName = removeAcctInfo.names[0].first_name;
+  }
 
   if (newUser) {
     return LocaleUtils.fluentFormat(locales, "welcome-user", {
-      userName: userEmail,
+      userName: userDisplayName,
     });
   }
 
   return LocaleUtils.fluentFormat(locales, "welcome-back", {
-    userName: userEmail,
+    userName: userDisplayName,
   });
 }
 
@@ -329,7 +373,9 @@ module.exports = {
   getRemoveFormData,
   getRemoveDashData,
   getRemoveSitesList,
+  getFullName,
   welcomeMessage,
+  getConfirmSubmitText,
   removeDashExposureMessage,
   getLastAddedEmailStrings,
   makeEmailVerifiedString,

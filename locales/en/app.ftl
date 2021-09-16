@@ -367,8 +367,8 @@ send-verification = Send Verification Link
 breach-summary = Breach Summary
 
 # dashboard tab language
-dash-tab-breach-title = Data Breaches
-dash-tab-remove-title = Data Brokers
+dash-tab-breach-title = Breaches
+dash-tab-remove-title = Exposures
 dash-tab-beta = Beta
 
 # removal cta
@@ -377,13 +377,18 @@ remove-card-body = We’re piloting a new service to monitor and remove your nam
 remove-card-cta = Join the waitlist
 
 # removal form strings
+
 dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
-dash-remove-intro-signup = To start your data removal process, please provide the following information to allow us match your profile on the websites exposing your profile and we’ll start making automated data removal requests immediately.
+dash-remove-intro-service-link = More about the service
+dash-remove-intro-signup-title = How to start
+dash-remove-intro-signup = To start removing your exposed personal data, please provide the following information. We use this information to scan and identify exposed personal information on data broker websites. Once we  find exposed personal information, we will automatically begin the removal process. Initial results can take up to 24 hours.
+dash-remove-info-change-title = Update your info
 dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
-dash-remove-form-name-first = Enter your first name
-dash-remove-form-name-last = Enter your last name
+dash-remove-form-name-first = First Name
+dash-remove-form-name-middle = Middle (Optional)
+dash-remove-form-name-last = Last Name
 dash-remove-form-loc-label = What is your current location?
 dash-remove-form-loc-city = City
 dash-remove-form-loc-state = State
@@ -395,23 +400,33 @@ dash-remove-form-privacy = The Data Removal Service is offered by The Kanary.
 dash-remove-form-privacy-link = By proceeding, you agree to their Terms of Service and Privacy Notice.
 dash-remove-submit = Start Data Removal
 dash-remove-change-submit = Submit
-dash-remove-form-required-helper = * These fields are required
+dash-remove-form-required-helper = * All fields are required to properly identify your information on data broker sites
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
-dash-remove-kanary-discalimer = Service provided by The Kanary
+
+# removal form confirm strings
+dash-remove-confirm-review = Review Your Information
+dash-remove-confirm-edit = Edit info
+dash-remove-confirm-label-full = Full Name
+dash-remove-confirm-email = Email Address
+dash-remove-confirm-loc = Current Location
+dash-remove-confirm-birthyear = Birth Year
+dash-remove-confirm-submit-new = Begin Data Removal
+dash-remove-confirm-submit-update = Confirm Information
+
 dash-remove-manage-info = Manage My Info
 
+# footer
+dash-remove-kanary-discalimer = Service provided by The Kanary
 dash-remove-link-risk = About Risk Level
+dash-remove-link-broker = Data Broker List
 
 
 remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
 remove-form-success-next-details = Check back here frequently to see the data removal requests we initiate on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
-remove-form-success-dashboard = Go to my dashboard
-remove-form-data-collection-q = Why do we ask for this info?
-remove-form-data-collection-a = The information you supply here is used solely for the purpose of creating data removal requests. We do not store any additional data from this form on our own servers.
-remove-form-data-collection-sites-q = What sites will I be removed from?
-remove-form-data-collection-sites-a = We request removal from 50 known data brokers. Click here to see the full list.
+remove-form-delete-dashboard = Go to Monitor dashboard
+remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
 
 
@@ -423,9 +438,9 @@ remove-form-delete-details = We are no longer making data removal requests on yo
 
 
 # removal dashboard strings
-remove-status-in-progress = We are working on removing your data
+remove-status-exposures = Viewing exposures for:
 remove-status-update = Last update:
-remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
+# remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
 remove-filter-in-progress = In-Progress
 remove-filter-completed = Completed
 remove-filter-list = Filter Removal List
@@ -483,7 +498,7 @@ manage-email-addresses = Manage Email Addresses
 # Link title
 latest-breach-link = See if you were in this breach
 
-welcome-back = Welcome back, { $userName }!
+welcome-back = Welcome, { $userName }!
 welcome-user = Welcome, { $userName }!
 
 

@@ -15,14 +15,7 @@ body {
   padding: 0;
   background-color: var(--grey0);
   scroll-behavior: smooth;
-  font-family:
-    "Inter",
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
   font-weight: 400;
   font-size: 15px;
   overflow-y: scroll;
@@ -258,6 +251,10 @@ button.btn-ghost {
   align-self: center;
   color: var(--purple7);
   min-width: 200px;
+}
+
+.btn-blue {
+  @include blue-button;
 }
 
 .btn-blue-primary,

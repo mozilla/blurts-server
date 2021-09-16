@@ -1,10 +1,19 @@
 @import "components/dash-tabs";
 
 .dashboard-stats-and-welcome {
-  flex-direction: row;
+  background-color: white;
+  padding: 24px 0;
 
   @include breakpoint(mobile) {
-    flex-direction: column;
+    padding: 60px 0 24px 0; //TODO: MH: fixed header and fixed promotion banners - would ideally like to avoid having to use javascript to adjust the underlying elements position. Best way would be to make sure fixed elements have a dependable fixed height
+  }
+
+  &-inner {
+    flex-direction: row;
+
+    @include breakpoint(mobile) {
+      flex-direction: column;
+    }
   }
 }
 

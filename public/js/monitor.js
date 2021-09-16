@@ -320,14 +320,14 @@ function resizeDashboardMargin() {
   if (!userDashboard) {
     return;
   }
-  const getHeaderHeight = () => {
-    const header = document.querySelector("header");
-    return header.offsetHeight;
-  };
+  // const getHeaderHeight = () => {
+  //   const header = document.querySelector("header");
+  //   return header.offsetHeight;
+  // };
   if (userDashboard) {
     //adds padding to header to make room for a fixed heade
     //TODO: MH - needs to account for mobile, as well as marketing touts
-    userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
+    //userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
   }
 }
 

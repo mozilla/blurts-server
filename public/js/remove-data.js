@@ -27,32 +27,25 @@ function initRemoveDashboard() {
   addRemoveDashListeners();
 }
 
-function addQAListeners() {
-  document.querySelectorAll(".js-question-q").forEach((question) => {
-    question.addEventListener("click", onQAQuestionClick);
-  });
-}
-
-function onQAQuestionClick(e) {
-  e.preventDefault();
-  const $thisQuestion = e.target;
-  const $thisContainer = $thisQuestion.closest(".question-container");
-  $thisContainer.classList.toggle("is-active");
-}
-
 function addRemoveFormListeners() {
-  addQAListeners();
   document
     .querySelector(".js-remove-submit")
-    .addEventListener("click", onSubmitClick);
+    .addEventListener("click", onRemoveFormSubmitClick);
+
+  document
+    .querySelector(".js-confirm-edit-btn")
+    .addEventListener("click", onConfirmEditClick);
+
+  document
+    .querySelector(".js-remove-confirm")
+    .addEventListener("click", onRemoveConfirmSubmitClick);
 
   document.querySelectorAll(".js-form-select").forEach((selector) => {
     selector.addEventListener("change", onSelectChange);
   });
-}
-
-function onSubmitClick(e) {
-  handleFormSubmit(e);
+  document.querySelectorAll(".js-form-select").forEach((selector) => {
+    selector.addEventListener("change", onSelectChange);
+  });
 }
 
 function onSelectChange(e) {
@@ -75,17 +68,81 @@ function onSelectChange(e) {
   }
 }
 
+function onConfirmEditClick(e) {
+  e.preventDefault();
+  toggleConfirmScreen(false);
+}
+
+function onRemoveFormSubmitClick(e) {
+  const isValid = e.target.form.reportValidity();
+  if (!isValid) {
+    console.log("not valid!");
+    return;
+  }
+  e.preventDefault();
+  const formData = new FormData(e.target.form);
+
+  populateConfirmData(formData);
+  toggleConfirmScreen(true);
+}
+
+function toggleConfirmScreen(doShow) {
+  document
+    .querySelector(".js-remove-dashboard-container")
+    .setAttribute("data-confirm", doShow);
+}
+
+function populateConfirmData(formData) {
+  const fieldData = {};
+
+  const fieldArr = [
+    "account",
+    "firstname",
+    "middlename",
+    "lastname",
+    "city",
+    "state",
+    "country",
+    "birthyear",
+  ];
+
+  const confirmArray = ["fullname", "account", "location", "birthyear"];
+
+  fieldArr.forEach((field) => {
+    fieldData[field] = formData.get(field) ? formData.get(field) : "";
+  });
+
+  fieldData["fullname"] = `${fieldData["firstname"]} ${
+    fieldData["middlename"] ? fieldData["middlename"] : ""
+  } ${fieldData["lastname"]}`;
+  fieldData["location"] = `${fieldData["city"]}, ${
+    fieldData["state"] ? fieldData["state"] : ""
+  }, ${fieldData["country"]}`;
+
+  confirmArray.forEach((confirmItem) => {
+    const curField = confirmItem;
+    const selectorString = `.remove-dashboard-confirm-item[data-id='${curField}'] .remove-dashboard-confirm-item-entry`;
+    document.querySelector(selectorString).innerText = fieldData[curField];
+  });
+}
+
+function onRemoveConfirmSubmitClick(e) {
+  e.preventDefault();
+  handleFormSubmit(e);
+}
+
 function handleFormSubmit(e) {
-  const isValid = e.target.form.reportValidity(); //use native html form validator
+  const $form = document.getElementById("remove-data-signup-form");
+  const isValid = $form.reportValidity(); //use native html form validator
   if (!isValid) {
     return;
   }
 
   e.preventDefault(); //if valid, prevent submission and post data
 
-  fetch(e.target.form.action, {
+  fetch($form.action, {
     method: "POST",
-    body: new URLSearchParams(new FormData(e.target.form)),
+    body: new URLSearchParams(new FormData($form)),
   })
     .then((resp) => {
       return resp.json(); // or resp.text() or whatever the server sends
@@ -132,6 +189,7 @@ function onStatusFilterToggle(e) {
 
   const filterType = $item.dataset.id;
   const curFilter = $container.getAttribute("data-filter");
+
   if (curFilter === filterType) {
     document
       .querySelector(".remove-dashboard-container")

@@ -1,8 +1,11 @@
 ## Breach Data Classes
 
 account-balances = اکاؤنٹ بیلنس
+address-book-contacts = ایڈریس بک کے رابطے۔
 age-groups = عمر گروپ
 ages = عمر
+# Refers to medical appointments.
+appointments = تعين ملاقاتيں
 apps-installed-on-devices = ڈیوائس پر ایپس تنصیب کریں
 astrological-signs = حیاتیاتی علامات
 audio-recordings = آڈیو ریکارڈنگ
@@ -31,6 +34,7 @@ deceased-statuses = مردہ حالت
 device-information = ڈیوائس کی معلومات
 device-serial-numbers = آلہ کے سیریل نمبرز
 drinking-habits = پینے کی عادات
+driver-s-licenses = ڈرائیور کا لائسنس۔
 drug-habits = منشیات کی عادات
 eating-habits = کھانے کی عادات
 education-levels = تعلیم کی سطح
@@ -60,6 +64,8 @@ instant-messenger-identities = فوری پیغامات کی شناخت
 ip-addresses = IP ایڈریسیس
 job-applications = نوکری کی درخواستیں
 job-titles = جاب عنوان
+# This string refers to vehicle license plates. 
+licence-plates = لائسنس پلیٹیں
 living-costs = رہائشی اخراجات
 mac-addresses = MAC ایڈریسیس
 marital-statuses = شادی شدہ حیثیت

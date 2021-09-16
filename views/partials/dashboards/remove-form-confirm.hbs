@@ -1,0 +1,45 @@
+<div class="remove-dashboard-confirm">
+  <div class="flx space-between remove-dashboard-confirm-review-container">
+    <h3 class="remove-dashboard-confirm-review-title">{{getString
+        "dash-remove-confirm-review"
+      }}</h3>
+    <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getString
+        "edit"
+      }}</a>
+  </div>
+  <div class="remove-dashboard-confirm-container">
+    <ul class="remove-dashboard-confirm-list">
+      <li class="remove-dashboard-confirm-item" data-id="fullname">
+        <span class="remove-dashboard-confirm-item-label">{{getString
+            "dash-remove-confirm-label-full"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry"></span>
+      </li>
+      <li class="remove-dashboard-confirm-item" data-id="account">
+        <span class="remove-dashboard-confirm-item-label">{{getString
+            "dash-remove-confirm-email"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry"></span>
+      </li>
+      <li class="remove-dashboard-confirm-item" data-id="location">
+        <span class="remove-dashboard-confirm-item-label">{{getString
+            "dash-remove-confirm-loc"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry"></span>
+      </li>
+      <li class="remove-dashboard-confirm-item" data-id="birthyear">
+        <span class="remove-dashboard-confirm-item-label">{{getString
+            "dash-remove-confirm-birthyear"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="flx">
+    <a
+      href="#"
+      class="js-remove-confirm remove-dashboard-confirm-submit jst-cntr flx btn-blue-primary"
+      role="button"
+    >{{getConfirmSubmitText}}</a>
+  </div>
+</div>
