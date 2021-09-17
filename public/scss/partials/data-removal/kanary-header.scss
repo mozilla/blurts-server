@@ -1,0 +1,32 @@
+.remove-dash {
+  &-kanary-header {
+    height: 25px;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+  }
+  &-kanary-poweredby {
+    padding: 4px 4px 4px 10px;
+  }
+  &-kanary-logo {
+    width: auto;
+    height: 16px;
+  }
+
+  &-kanary-more {
+    background-color: var(--kanary-yellow);
+    border-radius: 0 0 8px 8px;
+    padding: 0 16px;
+  }
+  &-kanary-more-text {
+    @include ff-metropolis;
+    font-weight: 600;
+    font-size: 10px;
+    color: black;
+  }
+  &-kanary-more-arrow {
+    height: 16px;
+    width: auto;
+    margin-left: 4px;
+  }
+}

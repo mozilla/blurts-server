@@ -318,17 +318,6 @@
     }
   }
 
-  &-update {
-    text-align: right;
-    color: var(--grey5);
-    font-size: 12px;
-    white-space: nowrap;
-
-    @include breakpoint(mobile) {
-      text-align: left;
-    }
-  }
-
   &-results-container {
     margin-top: 34px;
   }
