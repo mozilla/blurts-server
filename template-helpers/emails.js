@@ -293,6 +293,16 @@ function getServerUrlForNestedEmailPartial(args) {
 }
 
 
+// Do not show products for verification email.
+function showProducts(args) {
+  switch (args.data.root.whichPartial) {
+    case "email_partials/email_verify":
+      return;
+    default:
+      return args.fn();
+  }
+}
+
 module.exports = {
   emailBreachStats,
   getBreachAlert,
@@ -309,4 +319,5 @@ module.exports = {
   ifPreFxaSubscriber,
   makePreFxaSubscriberMessage,
   showFaqs,
+  showProducts,
 };

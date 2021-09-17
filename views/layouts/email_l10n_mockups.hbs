@@ -33,6 +33,11 @@
               {{> (lookup . 'whichPartial')}}
               {{> email_partials/email_button href=ctaHref }}
             </section>
+            {{#showProducts}}
+            <section class="email-other-products">
+              {{> email_partials/email_products }}
+            </section>
+            {{/showProducts}}
             {{#showFaqs}}
               <section class="faq-sumo-links">
                 {{> email_partials/email_faqs }}

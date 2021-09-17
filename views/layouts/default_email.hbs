@@ -123,6 +123,14 @@
                 {{> email_partials/email_button href=ctaHref}}
               </td>
             </tr>
+            {{#showProducts}}
+            <!--Other products-->
+            <tr>
+              <td align="center">
+                {{> email_partials/email_products}}
+              </td>
+            </tr>
+            {{/showProducts}}
             {{#showFaqs}}
               <!--FAQs-->
               <tr>
