@@ -317,7 +317,6 @@ function validateEmail(email) {
 }
 
 function getOptOutLink(opt_out) {
-  console.log("optout", opt_out);
   if (validateEmail(opt_out)) {
     return `mailto:${opt_out}`;
   } else {

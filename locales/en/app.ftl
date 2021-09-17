@@ -366,12 +366,14 @@ send-verification = Send Verification Link
 # email address.
 breach-summary = Breach Summary
 
-dash-remove-kanary-more = Find out more
 
 # dashboard tab language
 dash-tab-breach-title = Breaches
 dash-tab-remove-title = Exposures
 dash-tab-beta = Beta
+
+# removal kanary header
+dash-remove-kanary-more = Find out more
 
 # removal cta
 remove-card-title = Remove your data from websites.
