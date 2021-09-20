@@ -1,8 +1,19 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
+const JS_CONSTANTS = require("./../js-constants");
 const { resultsSummary } = require("../scan-results");
 const { localize } = require("./hbs-helpers");
+
+function countResolvedRemovals(removeData) {
+  let resolvedRemovals = 0;
+  removeData.forEach((removal) => {
+    if (removal.status === JS_CONSTANTS.REMOVAL_STATUSES["REMOVAL_VERIFIED"]) {
+      resolvedRemovals++;
+    }
+  });
+  return resolvedRemovals;
+}
 
 function getBreachStats(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
@@ -16,17 +27,40 @@ function getBreachStats(args) {
 
   const breachStatBundle = userBreachStats.breachStats;
   const removeData = args.data.root.removeData;
+  const removeAcctInfo = args.data.root.removeAcctInfo;
+
+  if (removeAcctInfo) {
+    //console.log("removeAcctInfo", removeAcctInfo);
+    const numIdentities = removeAcctInfo.names.length; //MH not sure what we want to use to measure the number of identities
+    breachStatBundle.identities = {
+      count: numIdentities,
+      displayCount: numIdentities,
+      subhead: localize(locales, "num-removal-identities", {
+        numIdentities: numIdentities,
+      }),
+    };
+  }
 
   if (removeData && removeData.length) {
     breachStatBundle.removals = {
       count: removeData.length,
-      numResolved: 0, //TODO: loop through results to count status of "removal_verified"
-      subhead: localize(locales, "data-brokers-listing-data", {
-        removals: removeData.length,
-      }),
-      displayCount: removeData.length,
+      numResolved: countResolvedRemovals(removeData),
+      unresolved: 0,
+      displayCount: 0,
     };
+    breachStatBundle.removals.unresolved =
+      breachStatBundle.removals.displayCount =
+        breachStatBundle.removals.count - breachStatBundle.removals.numResolved;
+
+    breachStatBundle.removals.subhead = localize(
+      locales,
+      "unresolved-identity-exposures",
+      {
+        unresolved: breachStatBundle.removals.unresolved,
+      }
+    );
   }
+
   const totalEmailsStat = breachStatBundle.monitoredEmails;
   // Format "00 emails being monitored" callout
   totalEmailsStat.subhead = localize(
@@ -42,18 +76,17 @@ function getBreachStats(args) {
   if (breachesStat.numResolved > 0) {
     // If a user has resolved at least one breach:
     // Change the password stat to show the number of password-exposing unresolved breaches.
-    const remainingExposedPasswords =
-      passwordStat.count - passwordStat.numResolved;
+
     passwordStat.subhead = localize(locales, "unresolved-passwords-exposed", {
-      numPasswords: remainingExposedPasswords,
+      numPasswords: breachesStat.unresolved,
     });
-    passwordStat.displayCount = remainingExposedPasswords;
+    passwordStat.displayCount = breachesStat.unresolved;
 
     // Change the total number of breaches callout to show the total number of resolved breaches
-    breachesStat.subhead = localize(locales, "known-data-breaches-resolved", {
-      numResolvedBreaches: breachesStat.numResolved,
+    breachesStat.subhead = localize(locales, "unresolved-data-breaches", {
+      unresolvedBreaches: breachesStat.unresolved,
     });
-    breachesStat.displayCount = breachesStat.numResolved;
+    breachesStat.displayCount = breachesStat.unresolved;
   } else {
     passwordStat.subhead = localize(locales, "passwords-exposed", {
       passwords: passwordStat.count,
@@ -73,7 +106,10 @@ function getBreachStats(args) {
     userBreachStats.userHasSignedUpForRemoveData = userHasSignedUpForRemoveData;
   }
 
-  //console.log(userBreachStats);
+  if (removeAcctInfo) {
+    //dont display passwords if we have remove account info
+    delete userBreachStats.breachStats.passwords;
+  }
   // add progress bar strings
   if (AppConstants.BREACH_RESOLUTION_ENABLED === "1") {
     userBreachStats.progressBar = makeProgressBar(breachesStat, locales);

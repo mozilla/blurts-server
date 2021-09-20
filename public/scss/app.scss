@@ -19,6 +19,9 @@
 //Data Removal
 @import "partials/data-removal/kanary-header.scss";
 
+//New General Components
+@import "partials/stats-and-welcome.scss";
+
 // Previous Styles
 @import "partials/all-breaches.scss";
 @import "partials/main.scss";
@@ -29,6 +32,7 @@
 @import "partials/breach-detail.scss";
 @import "partials/breach-stats.scss";
 @import "partials/dashboard.scss";
+@import "partials/dash-tabs";
 @import "partials/email-card.scss";
 @import "partials/feature-tip-group.scss";
 @import "partials/footer-about.scss";
