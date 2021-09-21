@@ -1,0 +1,20 @@
+<div class="remove-filter-key flx flx-grow">
+  <ul class="remove-filter-key-list flx flx-row">
+    {{#getRemovalFilters}}
+      {{#each this.filters}}
+        <li class="remove-filter-key-list-item" data-id="{{this.id}}">
+          <a
+            href="#"
+            class="remove-filter-key-button flx jst-cntr"
+            role="button"
+          >
+            <img src="{{this.icon}}" alt="{{this.statusText}}" />
+            <span
+              class="remove-filter-key-list-title"
+            >{{this.statusText}}</span>
+          </a>
+        </li>
+      {{/each}}
+    {{/getRemovalFilters}}
+  </ul>
+</div>
