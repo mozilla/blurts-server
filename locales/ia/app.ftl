@@ -348,12 +348,12 @@ other-monitored-emails = Altere emails spiate
 email-verification-required = Verification del email obligatori.
 fxa-primary-email = Email de { -brand-fxa }:  primari
 what-is-a-website-breach = Qual es un violation de sito web?
-website-breach-blurb = Un violation de datos de sito web eveni quando le cybercriminales roba, copia o expone informationes personal de contos online. Illo sole esser un resultato de hackers que trova un puncto debile in le securitate del sito web. Violationes pote alsi evenir quando informationes del conto es revelate per accidente.
+website-breach-blurb = Un violation de datos de sito web eveni quando le cybercriminales roba, copia o expone informationes personal de contos in linea. Isto es generalmente un resultato de hackers que trova un puncto debile in le securitate del sito web. Violationes pote alsi evenir quando informationes del conto es divulgate per accidente.
 security-tips-headline = Consilios de securitate pro proteger te contra hackers
 steps-to-protect = Mesuras a prender pro proteger tu identitate in linea
 take-further-steps = Prende passos ulterior pro proteger tu identitate
 alert-about-new-breaches = Avisar me re nove violationes
-see-if-youve-been-part = Vide si tu ha essite parte de un violation de datos online.
+see-if-youve-been-part = Verifica si tu ha essite implicate in un violation de datos in linea.
 get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses de e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Discoperir.
@@ -463,7 +463,7 @@ undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-1-body = Continua assi. Reguarda tu pannello de controlo pro vider si il ha altere cosa a facer.
 confirmation-2-subhead = Prende lo, piratas!
-confirmation-2-body = Tu prende importante mensurar verso le protection de tu contos online.
+confirmation-2-body = Tu prende mesuras importante verso le protection de tu contos in linea.
 confirmation-3-subhead = Uno plus, resolvite. Optimo!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
