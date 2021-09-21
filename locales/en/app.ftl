@@ -366,10 +366,14 @@ send-verification = Send Verification Link
 # email address.
 breach-summary = Breach Summary
 
+
 # dashboard tab language
 dash-tab-breach-title = Breaches
 dash-tab-remove-title = Exposures
 dash-tab-beta = Beta
+
+# removal kanary header
+dash-remove-kanary-more = Find out more
 
 # removal cta
 remove-card-title = Remove your data from websites.
@@ -617,8 +621,8 @@ error-invalid-unsub-blurb = You’ll need to unsubscribe from one of the
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored = 
   { $emails ->
-   *[one] Email address being monitored
-    [other] Email addresses being monitored
+   *[one] Email address monitored
+    [other] Email addresses monitored
   }
 
 
@@ -647,6 +651,12 @@ data-brokers-listing-data =
   { $removals ->
     [one] Website exposing your data
    *[other] Websites exposing your data
+  }
+
+unresolved-identity-exposures =
+  { $unresolved ->
+    [one] Unresolved identity exposure
+   *[other] Unresolved identity exposures
   }
 
 # Button
@@ -892,6 +902,18 @@ known-data-breaches-resolved =
   { $numResolvedBreaches ->
     [one] Known data breach marked as resolved
    *[other] Known data breaches marked as resolved
+  }
+
+unresolved-data-breaches = 
+  { $unresolvedBreaches ->
+    [one] Unresolved account breach
+   *[other] Unresolved account breaches
+  }
+
+num-removal-identities = 
+  { $numIdentities ->
+    [one] Identity monitored
+   *[other] Identities monitored
   }
 
 # A status indicator that appears in the top right corner of new breach cards

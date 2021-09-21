@@ -328,17 +328,6 @@
     }
   }
 
-  &-update {
-    text-align: right;
-    color: var(--grey5);
-    font-size: 12px;
-    white-space: nowrap;
-
-    @include breakpoint(mobile) {
-      text-align: left;
-    }
-  }
-
   &-results-container {
     margin-top: 34px;
   }
@@ -597,6 +586,18 @@
     @include breakpoint(mobile) {
       flex-wrap: wrap;
     }
+  }
+
+  &-form-middle-name {
+    max-width: 100px;
+
+    @include breakpoint(mobile) {
+      max-width: none;
+    }
+  }
+
+  &-form-country-container {
+    display: none; //MH TODO: TEMP - US Only
   }
 
   &-form-rqd {

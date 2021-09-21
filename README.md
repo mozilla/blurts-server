@@ -13,40 +13,41 @@ the "what" and "why" of data breach alerts.
 
 ## Development
 
-Please refer to our [coding standards](docs/coding-standards.md) information for code styles, naming conventions and other methodologies.  
+Please refer to our [coding standards](docs/coding-standards.md) information for code styles, naming conventions and other methodologies.
+
 ### Requirements
 
-* [Node](https://nodejs.org/) 10 (with npm)
-* [Postgres](https://www.postgresql.org/)
+- [Node](https://nodejs.org/) 10 (with npm)
+- [Postgres](https://www.postgresql.org/)
 
 ### Install
 
 1. Clone and change to the directory:
 
-    ```sh
-    git clone https://github.com/mozilla/blurts-server.git
-    cd blurts-server
-    ```
+   ```sh
+   git clone https://github.com/mozilla/blurts-server.git
+   cd blurts-server
+   ```
 
 2. Install dependencies:
 
-    ```sh
-    npm install
-    ```
+   ```sh
+   npm install
+   ```
 
 3. Copy the `.env-dist` file to `.env`:
 
-    ```sh
-    cp .env-dist .env
-    ```
+   ```sh
+   cp .env-dist .env
+   ```
 
 ### Run
 
 1. Run the server:
 
-    ```sh
-    npm start
-    ```
+   ```sh
+   npm start
+   ```
 
 Note: `npm start` uses `onchange` and `nodemon` to automatically detect file
 changes, re-compile static assets, and restart the express process. If you want
@@ -78,39 +79,40 @@ To create the database tables ...
    npm run db:migrate
    ```
 
-#### Emails
+#### Trigger Breach Alert Email
 
-The included `.env-dist` sets `DEBUG_DUMMY_SMTP=1` which disables emails.
+Breach alert emails are triggered via HIBP. For dev purposes, we can trigger them ourselves to send to a [Mailinator](https://www.mailinator.com) email address.
 
-To send emails, you'll need to unset `DEBUG_DUMMY_SMTP` and supply real SMTP
-config values for sending email.
+To set up your environment for email testing with Mailinator:
 
-You can set and source these via the `.env` file, or set them directly:
+1. In your .env file, confirm or add values for `SMTP_URL`, `EMAIL_FROM`, `HIBP_KANON_API_TOKEN`, and `HIBP_API_TOKEN` (Ask for values in #fx-monitor-engineering)
 
-```sh
-export DEBUG_DUMMY_SMTP=
-export SMTP_HOST=<your-smtp-host>
-export SMTP_PORT=<your-smtp-port>
-export SMTP_USERNAME=<your-username>
-export SMTP_PASSWORD=<your-password>
-```
+2. If you don't have a local FxA account, sign up on localhost. You'll need to ensure `FXA_ENABLED=true` and confirm/add the value for `OAUTH_CLIENT_SECRET` in your .env file. (Ask in #fx-monitor-engineering)
 
-##### Trigger a breach alert email
-To trigger a breach alert email, you need to make a `POST /hibp/notify` request:
+3. Start/restart your server
 
-* `Authorization: Bearer` header token value that matches `HIBP_NOTIFY_TOKEN`
-* `Content-Type: application/json` header
-* JSON body with `breachName`, `hashPrefix`, and `hashSuffix` values
-  * `breachName` - string of a breach name in Monitor
-  * `hashPrefix` - string of first 6 chars of a subscriber's `primary_sha1`
-  * `hashSuffix` - array of strings of the remaining chars of the sha1 hash
+4. Login to your Monitor account at http://localhost:6060/, and scroll to the bottom of [your dashboard](http://localhost:6060/user/dashboard) to add localmonitor20200827@mailinator.com to your list of monitored email addresses
 
-E.g., a localhost `curl` command that triggers a breach alert email for the
-Adobe breach to the `localmonitor20200827@mailinator.com` subscriber:
+5. In your [Monitor settings](http://localhost:6060/user/dashboard), make sure notification preferences specify "Send breach alerts to the affected email address" (should be default). This will send the alert to the Mailinator account.
 
-```
-curl -v -H "Authorization: Bearer unsafe-default-token-for-dev" -H "Content-Type: application/json" -d '{"breachName": "Adobe", "hashPrefix": "365050", "hashSuffixes": ["53cbb89874fc738c0512daf12bc4d91765"]}' http://localhost:6060/hibp/notify
-```
+   You _could_ set it to forward to your main email address/account (e.g. Gmail), but localhost images will be broken. The Mailinator account displays existing images automagically.
+
+6. To trigger a breach alert email, you need to make a `POST /hibp/notify` request:
+
+   - `Authorization: Bearer` header token value that matches `HIBP_NOTIFY_TOKEN`
+   - `Content-Type: application/json` header
+   - JSON body with `breachName`, `hashPrefix`, and `hashSuffix` values
+     - `breachName` - string of a breach name in Monitor
+     - `hashPrefix` - string of first 6 chars of a subscriber's `primary_sha1`
+     - `hashSuffix` - array of strings of the remaining chars of the sha1 hash
+
+   e.g., a localhost `curl` command that triggers a breach alert email for the Adobe breach to the `localmonitor20200827@mailinator.com` subscriber:
+
+   ```
+   curl -v -H "Authorization: Bearer unsafe-default-token-for-dev" -H "Content-Type: application/json" -d '{"breachName": "Adobe", "hashPrefix": "365050", "hashSuffixes": ["53cbb89874fc738c0512daf12bc4d91765"]}' http://localhost:6060/hibp/notify
+   ```
+
+7. Visit https://www.mailinator.com/v4/public/inboxes.jsp?to=localmonitor20200827# to view the email
 
 #### Firefox Accounts
 

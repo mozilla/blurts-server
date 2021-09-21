@@ -124,7 +124,8 @@
         <p class="remove-dash-results-detail">
           <a
             class="remove-dash-results-detail-link break-word"
-            href=""
+            href="{{this.url}}"
+            target="_blank"
           >{{this.url}}</a>
         </p>
       </li>
@@ -132,7 +133,10 @@
         <h3 class="remove-dash-results-detail-title">
           {{getString "remove-result-opt-out"}}
         </h3>
-        <p class="remove-dash-results-detail">{{this.opt_out}}</p>
+        <p class="remove-dash-results-detail"><a
+            href="{{getOptOutLink this.opt_out}}"
+            target="_blank"
+          >{{this.opt_out}}</a></p>
       </li>
     </ul>
   </div>

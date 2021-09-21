@@ -24,12 +24,18 @@
 
   &-numbers {
     margin-top: 10px;
+    justify-self: flex-end;
   }
 
   &-cell {
     text-align: center;
     justify-content: space-between;
     flex-direction: column;
+    min-height: 100px;
+
+    @include breakpoint(mobile) {
+      min-height: auto;
+    }
 
     @include col(4);
 
@@ -41,16 +47,26 @@
 
         padding: 20px;
 
-        &:nth-child(1),
-        &:nth-child(2) {
-          border-bottom: 1px solid var(--grey2);
-        }
+        // &:nth-child(1),
+        // &:nth-child(2) {
+        //   border-bottom: 1px solid var(--grey2);
+        // }
 
         &:nth-child(1),
         &:nth-child(3) {
           border-right: 1px solid var(--grey2);
         }
       }
+    }
+
+    &.monitoredEmails,
+    &.numBreaches {
+      border-bottom: 2px solid var(--blue2);
+    }
+
+    &.identities,
+    &.removals {
+      border-bottom: 2px solid var(--purple1);
     }
   }
 }

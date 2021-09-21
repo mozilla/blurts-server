@@ -98,7 +98,6 @@ function getRemoveFormData(args) {
   const usStates = args.data.root.usStates;
   const verifiedEmails = args.data.root.verifiedEmails;
   const acctInfo = args.data.root.removeAcctInfo;
-  //console.log("acctinfo", acctInfo);
   //const locales = args.data.root.req.supportedLocales;
 
   // move emails with 0 breaches to the bottom of the page
@@ -187,8 +186,7 @@ function removeDashExposureMessage(args) {
   const removeResults = args.data.root.removeData;
   const totalResults = removeResults.length;
   removeResults.forEach((result) => {
-    if (result.status !== "REMOVAL_VERIFIED") {
-      //MH TODO: should come from a constants file
+    if (result.status !== JS_CONSTANTS.REMOVAL_STATUSES["REMOVAL_VERIFIED"]) {
       numRemoveResults++;
     }
   });

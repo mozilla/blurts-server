@@ -5,7 +5,10 @@
 {{/getBreachStats}}
 {{#getRemoveFormData}}
 <div class="flx flx-col remove-dashboard-container js-remove-dashboard-container"
-  {{#if this.acctInfo.addresses.0.country}}data-country="{{this.acctInfo.addresses.0.country}}"{{/if}}
+  {{!-- MH TODO: US Only for now
+    {{#if this.acctInfo.addresses.0.country}}data-country="{{this.acctInfo.addresses.0.country}}"{{/if}} 
+  --}}
+  data-country="US"
 >
   
     <div class="mw-860 remove-dashboard-card-container">
@@ -58,7 +61,7 @@
               <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
               >
-              <input id="remove-dashboard-form-middle-name" class="input-group-field" type="text" name="middlename" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
               >
               <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="[A-Za-z]+" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
@@ -73,25 +76,17 @@
               <input required id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="[A-Z a-z]+" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off"
                 {{#if this.acctInfo.addresses.0.city}}value="{{this.acctInfo.addresses.0.city}}"{{/if}}
               >
-              <div class="input-group-field remove-dashboard-select-container">
-                {{!-- can't access acctInfo inside each loop
+              <div class="input-group-field remove-dashboard-select-container remove-dashboard-form-country-container">
                 <select required id="remove-dashboard-form-loc-country" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="country">
-                  <option disabled {{#unless this.acctInfo.addresses.0.country}}selected{{/unless}} value>{{ getString "dash-remove-form-loc-country"}}</option>
-                  {{#each this.countries }}
-                    <option value="{{ countryCode }}" 
-                      {{#ifCompare this.acctInfo.addresses.0.country "===" countryCode}}selected{{/ifCompare}}
-                    >{{ countryCode }}</option>
-                  {{/each}}
-                </select>
-                --}}
-                <select required id="remove-dashboard-form-loc-country" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="country">
-                  <option disabled {{#unless this.acctInfo.addresses.0.country}}selected{{/unless}} value>{{ getString "dash-remove-form-loc-country"}}</option>
+                  {{!--MH TEMP: US ONLY--}}
+                  <option selected value="US">US</option>
+                  {{!-- <option disabled {{#unless this.acctInfo.addresses.0.country}}selected{{/unless}} value>{{ getString "dash-remove-form-loc-country"}}</option>
                   {{#if this.acctInfo.addresses.0.country}}
                   <option selected value="{{ this.acctInfo.addresses.0.country }}" >{{ this.acctInfo.addresses.0.country }}</option>
                   {{/if}}
                   {{#each this.countries }}
                     <option value="{{ countryCode }}" >{{ countryCode }}</option>
-                  {{/each}}
+                  {{/each}} --}}
                 </select>
               </div>
               <div class="input-group-field remove-dashboard-select-container remove-dashboard-state-container">
