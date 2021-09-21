@@ -191,10 +191,10 @@ wtd-after-website = Que facer post un violation de sito web
 wtd-after-data-agg = Que facer post un violation de aggregator de datos
 what-is-data-agg = Que es un aggregator de datos?
 what-is-data-agg-blurb = La aggregatores de datos o mediatores de datos, collige informationes ex registrationes public e los compra ex altere companias. Illes compila iste datos pro vender los a companias pro propositos de marketing. Le victimas de iste violationes ha minor riscos de fraudes financiari, ma le hackers poterea usar iste datos pro finger se illes o profilar se pro illes.
-protect-your-privacy = Protege tu confidentialitate online
+protect-your-privacy = Protege tu vita private in linea
 no-pw-to-change = Contrarimente a un violation de sito web, il non ha un contrasigno a cambiar.
 avoid-personal-info = Evitar de usar informationes personal in le contrasignos
-avoid-personal-info-blurb = Il es facile trovar anniversarios, adresses e familiares online. Tener iste parolas foras de tu contrasignos.
+avoid-personal-info-blurb = Es facile trovar in linea informationes sur anniversarios, adresses e nomines de familiares. Evita le uso de tal parolas in tu contrasignos.
 
 ## What to do after data breach tips
 
@@ -202,7 +202,7 @@ change-pw = Cambia tu contrasigno.
 change-pw-site = Cambiar contrasigno pro iste sito
 even-for-old = Mesmo pro vetere contos, il es importante actualisar tu contrasigno.
 make-new-pw-unique = Crea le nove contrasigno differente e unic
-strength-of-your-pw = Le fortia de tu contrasignos impinge directemente tu securitate online.
+strength-of-your-pw = Le fortia de tu contrasignos ha un impacto directe sur tu securitate in linea.
 create-strong-passwords = Como crear contrasignos forte
 stop-reusing-pw = Cessa de reusar contrasignos identic
 create-unique-pw = Crea contrasignos unic e salva los in un loco secur, como un gestor de contrasignos.
