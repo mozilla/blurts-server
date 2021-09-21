@@ -110,26 +110,31 @@
         </h3>
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
-      <li class="remove-dash-results-details-item flx flx-col align-start">
-        <h3 class="remove-dash-results-detail-title">
-          {{getString "remove-result-link"}}
-        </h3>
-        <p class="remove-dash-results-detail">
-          <a
-            class="remove-dash-results-detail-link break-word"
-            href="{{this.url}}"
-            target="_blank"
-          >{{this.url}}</a>
-        </p>
-      </li>
+      {{#ifCompare this.status "!==" "REMOVAL_VERIFIED"}}
+        <li class="remove-dash-results-details-item flx flx-col align-start">
+          <h3 class="remove-dash-results-detail-title">
+            {{getString "remove-result-link"}}
+          </h3>
+          <p class="remove-dash-results-detail">
+            <a
+              class="remove-dash-results-detail-link break-word"
+              href="{{this.url}}"
+              target="_blank"
+            >{{this.url}}</a>
+          </p>
+        </li>
+      {{/ifCompare}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <h3 class="remove-dash-results-detail-title">
           {{getString "remove-result-opt-out"}}
         </h3>
-        <p class="remove-dash-results-detail"><a
+        <p class="remove-dash-results-detail">
+          <a
             href="{{getOptOutLink this.opt_out}}"
             target="_blank"
-          >{{this.opt_out}}</a></p>
+            class="break-word"
+          >{{this.opt_out}}</a>
+        </p>
       </li>
     </ul>
   </div>
