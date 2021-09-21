@@ -425,6 +425,7 @@ dash-remove-link-risk = About Risk Level
 dash-remove-link-broker = Data Broker List
 
 
+remove-form-success-alt = Success
 remove-form-success-title = We're executing your data removal!
 remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
