@@ -60,7 +60,8 @@
     }
 
     &.monitoredEmails,
-    &.numBreaches {
+    &.numBreaches,
+    &.passwords {
       border-bottom: 2px solid var(--blue2);
     }
 

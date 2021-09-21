@@ -25,7 +25,10 @@ function navLinks(args) {
       title: "Home",
       stringId: isLoggedIn ? "your-data" : "home",
       href: `${serverUrl}/`,
-      activeLink: hostUrl === "/" || hostUrl === "/dashboard",
+      activeLink:
+        hostUrl === "/" ||
+        hostUrl === "/dashboard" ||
+        hostUrl === "/remove-data",
     },
     {
       title: "Breaches",

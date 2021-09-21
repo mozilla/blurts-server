@@ -1,12 +1,12 @@
     <header id="header" class="{{ addUpgradeClasses }}">
-      {{> vpn-promo }}
-      {{{ recruitmentBanner }}}
-      {{{ microsurveyBanner }}}
+      {{!-- {{> vpn-promo }} --}}
+      {{!-- {{{ recruitmentBanner }}} --}}
+      {{!-- {{{ microsurveyBanner }}} --}}
       <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
         <section class="row-full-width fxm-branding">
           <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
             <div class="sprite fx-monitor-logo"><!--Firefox Monitor logo--></div>
-            <div class="fx-monitor-logotype"></div>
+            <div class="fx-monitor-logotype"><h1 class="sr-only">{{getString '-product-name'}}</h1></div>
           </a>
           <nav class="desktop-menu flx-auto flx-cntr jst-cntr">
             {{> header/nav-links }}

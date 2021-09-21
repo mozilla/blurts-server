@@ -46,6 +46,8 @@
     @include ff-metropolis;
 
     font-size: 22px;
+    margin: 0;
+    font-weight: 500;
   }
 
   &-results-site-details {
@@ -81,19 +83,20 @@
     padding: 6px;
     border-radius: 4px;
     text-align: center;
+    color: white;
 
     &.risk-high {
-      color: var(--alertRed);
+      background-color: var(--alertRed);
       border: 1px solid var(--alertRed);
     }
 
     &.risk-med {
-      color: var(--orange5);
+      background-color: var(--orange5);
       border: 1px solid var(--orange5);
     }
 
     &.risk-low {
-      color: var(--grey10);
+      background-color: var(--grey10);
       border: 1px solid var(--grey10);
     }
 

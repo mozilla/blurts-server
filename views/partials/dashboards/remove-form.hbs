@@ -47,7 +47,7 @@
             <div class="input-group remove-account-select">
               <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
               <div class="tmp-select-output flx space-between">
-                <select required class="tmp-select-email bold" name="account" id="account">
+                <select id="remove-dashboard-form-email" required class="tmp-select-email bold" name="account" id="account">
                 {{#each this.verifiedEmails }}
                   <option value="{{ email }}">{{ email }}</option>
                 {{/each}}
@@ -68,7 +68,7 @@
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
             </div>
-            {{> forms/error-message }}
+            
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
@@ -90,6 +90,7 @@
                 </select>
               </div>
               <div class="input-group-field remove-dashboard-select-container remove-dashboard-state-container">
+                <label class="sr-only" for="remove-dashboard-form-loc-state">{{getString "dash-remove-form-loc-state"}}</label>
                 <select id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
                     <option disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
                     {{#if this.acctInfo.addresses.0.state}}
@@ -101,14 +102,14 @@
                 </select>
               </div>
             </div>
-            {{> forms/error-message }}
+            
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
             <input required id="remove-dashboard-form-year" class="input-group-field" type="text" name="birthyear" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
               {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
             >
-            {{> forms/error-message }}
+            
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-privacy required" class="input-group-label field--full required">{{ getString "dash-remove-form-privacy-label"}}</label>
@@ -119,7 +120,7 @@
                 <a href="{{jsConstants.KANARY_PRIVACY_LINK}}" target="_blank">{{ getString "dash-remove-form-privacy-link"}}</a>
               </p>
             </div>
-            {{> forms/error-message }}
+            
           </div>
           <div class="input-group-button inline">
             <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" 
@@ -147,7 +148,7 @@
 <div class="flx flx-col js-remove-success-container is-hidden">
   <div class="mw-860 flx flx-col remove-dashboard-section remove-success-section">
     <div class="flx jst-cntr">
-      <img class="remove-success-icon" src="/img/svg/remove-form-success-icon.svg"/>
+      <img class="remove-success-icon" src="/img/svg/remove-form-success-icon.svg" alt="{{getString "remove-form-success-alt"}}"/>
     </div>
     <div class="flx flx-col txt-cntr remove-success-text-section">
       <h2 class="title-section">{{ getString "remove-form-success-title"}}</h2>

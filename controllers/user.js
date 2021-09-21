@@ -548,7 +548,6 @@ async function getRemovePage(req, res) {
 
 async function getRemoveConfirmationPage(req, res) {
   const user = req.user;
-  console.log("user", user);
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,

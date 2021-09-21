@@ -674,17 +674,24 @@
 
   &-title {
     font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 10px;
+    display: inline-block;
 
     &.--high {
-      color: var(--alertRed);
+      background-color: var(--alertRed);
+      color: white;
     }
 
     &.--med {
-      color: var(--orange5);
+      background-color: var(--orange5);
+      color: black;
     }
 
     &.--low {
-      color: var(--grey10);
+      background-color: var(--grey10);
+      color: black;
     }
   }
 }
