@@ -12,7 +12,7 @@
       />
 
       <div class="remove-dash-results-site-name-container flx flx-col">
-        <span class="remove-dash-results-site-name">{{this.broker}}</span>
+        <h2 class="remove-dash-results-site-name">{{this.broker}}</h2>
         {{#if this.details}}
           <span class="remove-dash-results-site-details">{{this.details}}</span>
         {{/if}}
@@ -78,17 +78,17 @@
         </li>
       {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <h3 class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title">
           {{getString "remove-result-status"}}
-        </h3>
+        </p>
         <p class="remove-dash-results-detail">
           {{#if this.status}}{{sentenceCase this.status}}{{/if}}
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <h3 class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title">
           {{getString "remove-result-details-found"}}
-        </h3>
+        </p>
         <p class="remove-dash-results-detail">
           {{#ifLength this.email_matches}}{{getString
               "remove-result-email"
@@ -105,16 +105,16 @@
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <h3 class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title">
           {{getString "remove-result-description"}}
-        </h3>
+        </p>
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
       {{#ifCompare this.status "!==" "REMOVAL_VERIFIED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
-          <h3 class="remove-dash-results-detail-title">
+          <p class="remove-dash-results-detail-title">
             {{getString "remove-result-link"}}
-          </h3>
+          </p>
           <p class="remove-dash-results-detail">
             <a
               class="remove-dash-results-detail-link break-word"
@@ -125,9 +125,9 @@
         </li>
       {{/ifCompare}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <h3 class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title">
           {{getString "remove-result-opt-out"}}
-        </h3>
+        </p>
         <p class="remove-dash-results-detail">
           <a
             href="{{getOptOutLink this.opt_out}}"
