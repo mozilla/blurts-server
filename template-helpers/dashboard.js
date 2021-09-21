@@ -4,7 +4,7 @@ const { LocaleUtils } = require("./../locale-utils");
 const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
-const JS_CONSTANTS = require("./../js-constants");
+const { JS_CONSTANTS, REMOVAL_FILTERS } = require("./../js-constants");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -130,6 +130,12 @@ function getRemoveSitesList(args) {
   return args.fn(removal_list);
 }
 
+function assignRemovalFilters(removeResults) {
+  removeResults.forEach((result) => {
+    result.filter = JS_CONSTANTS.REMOVAL_STATUSES[result.status].filter;
+  });
+}
+
 function getRemoveDashData(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
@@ -168,6 +174,8 @@ function getRemoveDashData(args) {
     upDate = curDate.toLocaleDateString(locales, options);
   }
 
+  assignRemovalFilters(removeResults);
+
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breaches: verifiedEmails[0].breaches.length,
@@ -178,6 +186,26 @@ function getRemoveDashData(args) {
   return args.fn(emailCards);
 }
 
+function getRemovalFilters(args) {
+  const locales = args.data.root.req.supportedLocales;
+  const removalFilterArr = [];
+
+  Object.values(REMOVAL_FILTERS).forEach((filter) => {
+    const filterObj = {
+      icon: filter.icon,
+      statusText: LocaleUtils.fluentFormat(locales, filter.locale_var),
+      id: filter.id,
+    };
+    removalFilterArr.push(filterObj);
+  });
+  const removeFilters = {
+    filters: removalFilterArr,
+  };
+
+  return args.fn(removeFilters);
+  //return args.fn(removalFilterArr);
+}
+
 function removeDashExposureMessage(args) {
   //MH TODO: temp...use actual logic from API
   const locales = args.data.root.req.supportedLocales;
@@ -186,7 +214,9 @@ function removeDashExposureMessage(args) {
   const removeResults = args.data.root.removeData;
   const totalResults = removeResults.length;
   removeResults.forEach((result) => {
-    if (result.status !== JS_CONSTANTS.REMOVAL_STATUSES["REMOVAL_VERIFIED"]) {
+    if (
+      result.status !== JS_CONSTANTS.REMOVAL_STATUSES["REMOVAL_VERIFIED"].code
+    ) {
       numRemoveResults++;
     }
   });
@@ -371,6 +401,7 @@ module.exports = {
   getRemoveFormData,
   getRemoveDashData,
   getRemoveSitesList,
+  getRemovalFilters,
   getFullName,
   welcomeMessage,
   getConfirmSubmitText,

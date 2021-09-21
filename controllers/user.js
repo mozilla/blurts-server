@@ -420,12 +420,12 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 
 async function getDashboard(req, res) {
   const user = req.user;
-  const kanary_id = user.kid;
 
-  let removeData = null;
-
-  if (kanary_id) {
-    removeData = await getRemoveDashData(kanary_id);
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
   }
 
   const allBreaches = req.app.locals.breaches;
@@ -458,6 +458,7 @@ async function getDashboard(req, res) {
     unverifiedEmails,
     userHasSignedUpForRemoveData,
     removeData,
+    removeAcctInfo,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,

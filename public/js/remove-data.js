@@ -188,17 +188,15 @@ function onStatusFilterToggle(e) {
   const $container = document.querySelector(".remove-dashboard-container");
 
   const filterType = $item.dataset.id;
-  const curFilter = $container.getAttribute("data-filter");
+  let curFilter = $container.getAttribute("data-filter");
 
-  if (curFilter === filterType) {
-    document
-      .querySelector(".remove-dashboard-container")
-      .setAttribute("data-filter", "");
+  if (curFilter.includes(filterType)) {
+    curFilter = curFilter.replace(filterType, "");
   } else {
-    document
-      .querySelector(".remove-dashboard-container")
-      .setAttribute("data-filter", filterType);
+    curFilter += ` ${filterType}`;
   }
+  curFilter = curFilter.replace(/^\s+|\s+$/g, ""); //remove lead and end spaces
+  $container.setAttribute("data-filter", curFilter);
 }
 
 window.onload = function () {

@@ -4,7 +4,9 @@
     {{> dashboards/breach-dash-tabs activeTab="remove"}}
 {{/getBreachStats}}
 {{#getRemoveDashData}}
-<div class="flx flx-col remove-dashboard-container">
+<div class="flx flx-col remove-dashboard-container" 
+  data-filter="{{#getRemovalFilters}}{{#each filters}}{{this.id}} {{/each}}{{/getRemovalFilters}}"
+>
   <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
       <div class="remove-dash-status-container">
@@ -15,28 +17,9 @@
       </div>
       {{> data-removal/kanary-header}}
     </div>
-
+    
     <div class="remove-filter-container flx space-between">
-      <div class="remove-filter-key flx flx-grow">
-        <ul class="remove-filter-key-list flx flx-row">
-          <li class="remove-filter-key-list-item" data-id="in-progress">
-            <a href="#" class="remove-filter-key-button flx jst-cntr" role="button">
-              <svg class="remove-filter-key-list-icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path  title="{{ getString "remove-filter-in-progress"}}" d="M4.91988 5.98495C4.57488 5.63995 3.98238 5.69995 3.74988 6.12745C3.53988 6.50995 3.37488 6.89995 3.24738 7.31245C3.10488 7.78495 3.47988 8.24995 3.96738 8.24995H3.97488C4.29738 8.24995 4.58988 8.03995 4.67988 7.72495C4.76988 7.42495 4.88988 7.13245 5.03988 6.84745C5.20488 6.56995 5.15238 6.21745 4.91988 5.98495ZM3.98238 9.74995H3.96738C3.47988 9.74995 3.10488 10.215 3.24738 10.6875C3.36738 11.0925 3.53238 11.49 3.74238 11.8725C3.97488 12.3 4.57488 12.3675 4.91988 12.0225C5.14488 11.79 5.20488 11.445 5.04738 11.16C4.89738 10.8825 4.77738 10.59 4.68738 10.29C4.59738 9.95995 4.30488 9.74995 3.98238 9.74995ZM6.11988 14.265C6.50238 14.475 6.89988 14.64 7.31238 14.76C7.77738 14.895 8.24238 14.52 8.24238 14.04V14.0175C8.24238 13.695 8.03238 13.4025 7.71738 13.3125C7.41738 13.2225 7.13238 13.1025 6.85488 12.9525C6.56988 12.795 6.20988 12.8475 5.98488 13.08L5.96238 13.1025C5.62488 13.44 5.69238 14.0325 6.11988 14.265ZM9.74988 3.05245V2.55745C9.74988 1.88995 8.93988 1.55245 8.46738 2.02495L6.87738 3.62245C6.57738 3.92245 6.57738 4.40245 6.87738 4.69495L8.47488 6.25495C8.94738 6.71995 9.74988 6.38245 9.74988 5.71495V4.56745C11.8799 4.92745 13.4999 6.77245 13.4999 8.99995C13.4999 11.0475 12.1349 12.765 10.2599 13.3125C9.95238 13.4025 9.74988 13.695 9.74988 14.0175V14.0325C9.74988 14.52 10.2074 14.8875 10.6724 14.7525C13.1774 14.0325 14.9999 11.73 14.9999 8.99995C14.9999 5.93995 12.7124 3.41995 9.74988 3.05245Z" fill="#0060DF"/>
-              </svg>
-              <span class="remove-filter-key-list-title">{{ getString "remove-filter-in-progress"}}</span>
-            </a>
-          </li>
-          <li class="remove-filter-key-list-item" data-id="completed">
-            <a href="#" class="remove-filter-key-button flx jst-cntr" role="button">
-              <svg class="remove-filter-key-list-icon" title="{{ getString "remove-filter-completed"}}" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 0C4.032 0 0 4.032 0 9C0 13.968 4.032 18 9 18C13.968 18 18 13.968 18 9C18 4.032 13.968 0 9 0ZM7.2 13.5L2.7 9L3.969 7.731L7.2 10.953L14.031 4.122L15.3 5.4L7.2 13.5Z" fill="#0AE020"/>
-              </svg>
-              <span class="remove-filter-key-list-title">{{ getString "remove-filter-completed"}}</span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      {{> data-removal/filter-keys}}
       
       <div class="remove-filter-controls">
         

@@ -445,10 +445,14 @@ remove-form-delete-details = We are no longer making data removal requests on yo
 remove-status-exposures = Viewing exposures for:
 remove-status-update = Last update:
 # remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
-remove-filter-in-progress = In-Progress
-remove-filter-completed = Completed
+
+# remove filters
+remove-filter-in-progress = In progress
+remove-filter-complete = Complete
+remove-filter-blocked = Blocked
 remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
+
 
 # remove results
 remove-results-toggle-alt = Expand Option
