@@ -130,6 +130,12 @@ function getRemoveSitesList(args) {
   return args.fn(removal_list);
 }
 
+function assignRemovalFilters(removeResults) {
+  removeResults.forEach((result) => {
+    result.filter = JS_CONSTANTS.REMOVAL_STATUSES[result.status].filter;
+  });
+}
+
 function getRemoveDashData(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
@@ -168,6 +174,8 @@ function getRemoveDashData(args) {
     upDate = curDate.toLocaleDateString(locales, options);
   }
 
+  assignRemovalFilters(removeResults);
+
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breaches: verifiedEmails[0].breaches.length,
@@ -180,18 +188,16 @@ function getRemoveDashData(args) {
 
 function getRemovalFilters(args) {
   const locales = args.data.root.req.supportedLocales;
-  const iconPath = JS_CONSTANTS.REMOVAL_STATUS_ICON_PATH;
   const removalFilterArr = [];
 
   Object.values(REMOVAL_FILTERS).forEach((filter) => {
     const filterObj = {
-      icon: `${iconPath}${filter.icon}`,
+      icon: filter.icon,
       statusText: LocaleUtils.fluentFormat(locales, filter.locale_var),
       id: filter.id,
     };
     removalFilterArr.push(filterObj);
   });
-  console.log(removalFilterArr);
   const removeFilters = {
     filters: removalFilterArr,
   };

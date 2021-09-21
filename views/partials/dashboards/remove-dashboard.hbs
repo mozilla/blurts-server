@@ -4,7 +4,9 @@
     {{> dashboards/breach-dash-tabs activeTab="remove"}}
 {{/getBreachStats}}
 {{#getRemoveDashData}}
-<div class="flx flx-col remove-dashboard-container">
+<div class="flx flx-col remove-dashboard-container" 
+  data-filter="{{#getRemovalFilters}}{{#each filters}}{{this.id}} {{/each}}{{/getRemovalFilters}}"
+>
   <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
       <div class="remove-dash-status-container">
@@ -17,7 +19,7 @@
     </div>
     
     <div class="remove-filter-container flx space-between">
-      {{ > data-removal/filter-keys }}
+      {{> data-removal/filter-keys}}
       
       <div class="remove-filter-controls">
         

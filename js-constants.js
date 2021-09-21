@@ -3,17 +3,17 @@
 const REMOVAL_FILTERS = {
   IN_PROGRESS: {
     id: "IN_PROGRESS",
-    icon: "remove-status-in-progress.svg",
+    icon: "/img/removal/remove-status-in-progress.svg",
     locale_var: "remove-filter-in-progress",
   },
   COMPLETE: {
     id: "COMPLETE",
-    icon: "remove-status-complete.svg",
+    icon: "/img/removal/remove-status-complete.svg",
     locale_var: "remove-filter-complete",
   },
   BLOCKED: {
     id: "BLOCKED",
-    icon: "remove-status-blocked.svg",
+    icon: "/img/removal/remove-status-blocked.svg",
     locale_var: "remove-filter-blocked",
   },
 };
@@ -72,7 +72,6 @@ const JS_CONSTANTS = {
     "zabasearch.com",
     "peoplebyname.com",
   ],
-  REMOVAL_STATUS_ICON_PATH: "/img/removal/",
   REMOVAL_STATUSES: {
     READY_TO_REMOVE: {
       //
