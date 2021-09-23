@@ -292,25 +292,24 @@ function getServerUrlForNestedEmailPartial(args) {
   return args.data.root.SERVER_URL;
 }
 
-
-// Do not show products for verification email.
 function showProducts(args) {
-  const strings = {
-    "headline": "more-products-headline",
-    "copyVpn": "more-products-vpn",
-    "ctaVpn": "more-products-cta-vpn",
-    "copyRelay": "more-products-relay",
-    "ctaRelay": "more-products-cta-relay",
-  };
+  const { supportedLocales, whichPartial } = args.data.root;
 
-  switch (args.data.root.whichPartial) {
-    case "email_partials/email_verify":
-      return;
-    default:
-      return args.fn({
-        strings: strings,
-      });
+  switch (true) {
+    case whichPartial === "email_partials/email_verify":
+    case supportedLocales[0] === "zh-CN":
+      return; // don't show products for cases above
   }
+
+  return args.fn({
+    strings: {
+      "headline": "more-products-headline",
+      "copyVpn": "more-products-vpn",
+      "ctaVpn": "more-products-cta-vpn",
+      "copyRelay": "more-products-relay",
+      "ctaRelay": "more-products-cta-relay",
+    },
+  });
 }
 
 module.exports = {
