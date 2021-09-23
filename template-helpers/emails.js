@@ -295,11 +295,21 @@ function getServerUrlForNestedEmailPartial(args) {
 
 // Do not show products for verification email.
 function showProducts(args) {
+  const strings = {
+    "headline": "more-products-headline",
+    "copyVpn": "more-products-vpn",
+    "ctaVpn": "more-products-cta-vpn",
+    "copyRelay": "more-products-relay",
+    "ctaRelay": "more-products-cta-relay",
+  };
+
   switch (args.data.root.whichPartial) {
     case "email_partials/email_verify":
       return;
     default:
-      return args.fn();
+      return args.fn({
+        strings: strings,
+      });
   }
 }
 
