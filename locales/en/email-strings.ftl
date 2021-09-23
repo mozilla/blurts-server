@@ -5,7 +5,7 @@
 
 # Firefox Relay is a product name and should not be translated.
 -product-name-relay = Firefox Relay
-# Mozilla VPN is a product name and likely should not be translated.
+# Mozilla VPN is a product name and should not be translated.
 -product-name-vpn = Mozilla VPN
 
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
