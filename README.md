@@ -141,7 +141,7 @@ NODE_ENV=tests node inspect --harmony ./node_modules/.bin/jest tests/home.test.j
 
 ### Integration tests
 
-Integration tests utilize the @wdio suite in conjunction with selenium.  Tests include image comparisons that utilize the baseline images found in *tests/integration/tests/Visual_Baseline/desktop_firefox*.  In order to get the tests to run locally, you will need to have the Selenium standalone server installed on your machine:
+Integration tests utilize the `@wdio` suite in conjunction with selenium.  Tests include image comparisons that utilize the baseline images found in *tests/integration/tests/Visual_Baseline/desktop_firefox*.  In order to get the tests to run locally, you will need to have the Selenium standalone server installed on your machine:
 ```
 brew install selenium-server-standalone
 ```
