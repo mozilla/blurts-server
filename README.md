@@ -153,7 +153,7 @@ sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtua
 
 The image comparison tests are very brittle and may not work as expected when running strictly local, given individual machine setups.  You may have better luck running the headless test versions: "test:integration-headless", "test:integration-headless-ci", and "test:integration-docker"
 
-Generating a new baseline image should ideally be done via the docker test to maintain consistency.  To do this, first delete the existing image and then run the docker integration test.  The test should prompt you that the baseline image cannot be found, and indicate the location for an auto-generated image to copy over.  Alternatively, you could also uncomment `autoSaveBaseline: true` in *tests/integration/wdio.docker.js* to have the image automatically copy/paste into *tests/integration/tests/Visual_Baseline/desktop_firefox*.
+Generating a new baseline image should ideally be done via the docker test to maintain consistency.  To do this, first delete the existing image and then run the docker integration test.  The test should prompt you that the baseline image cannot be found, and indicate the location for an auto-generated image to copy over.  Alternatively, you could also uncomment `autoSaveBaseline: true` in `tests/integration/wdio.docker.js` to have the image automatically copy/paste into `tests/integration/tests/Visual_Baseline/desktop_firefox`.
 
 ### Test Firefox Integration
 
