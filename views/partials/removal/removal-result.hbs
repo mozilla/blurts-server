@@ -1,7 +1,7 @@
 <li
   class="remove-dash-results-list-item drop-shadow flx flx-col"
   data-status="{{this.status}}"
-  data-filter="{{this.filter.id}}"
+  data-step="{{this.current_step}}"
 >
   <div class="remove-dash-results-summary-container flx space-between">
     <div class="remove-dash-results-site-container flx flx-cntr">
@@ -82,7 +82,7 @@
           {{getString "remove-result-status"}}
         </p>
         <p class="remove-dash-results-detail">
-          {{#if this.status}}{{sentenceCase this.status}}{{/if}}
+          {{#if this.current_step}}{{sentenceCase this.current_step}}{{/if}}
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
@@ -110,7 +110,7 @@
         </p>
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
-      {{#ifCompare this.status "!==" "REMOVAL_VERIFIED"}}
+      {{#ifCompare this.status "!==" "REMOVED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
           <p class="remove-dash-results-detail-title">
             {{getString "remove-result-link"}}

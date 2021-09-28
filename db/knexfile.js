@@ -6,9 +6,8 @@ const { parse } = require("pg-connection-string");
 const AppConstants = require("../app-constants");
 const connectionObj = parse(AppConstants.DATABASE_URL);
 if (AppConstants.NODE_ENV === "heroku") {
-  connectionObj.ssl = {rejectUnauthorized: false};
+  connectionObj.ssl = { rejectUnauthorized: false };
 }
-
 
 // For runtime, use DATABASE_URL
 const RUNTIME_CONFIG = {
@@ -20,7 +19,6 @@ const RUNTIME_CONFIG = {
 const testConnectionObj = parse(
   AppConstants.DATABASE_URL.replace(/\/(\w*)$/, "/test-$1")
 );
-
 const TESTS_CONFIG = {
   client: "postgresql",
   connection: testConnectionObj,

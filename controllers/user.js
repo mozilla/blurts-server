@@ -660,6 +660,35 @@ async function getRemoveDeleteConfirmationPage(req, res) {
   });
 }
 
+async function getRemoveMoreTimePage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-more-time",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
@@ -1191,6 +1220,7 @@ module.exports = {
   getRemoveConfirmationPage,
   getRemoveUpdateConfirmationPage,
   getRemoveDeleteConfirmationPage,
+  getRemoveMoreTimePage,
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,

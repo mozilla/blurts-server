@@ -4,7 +4,7 @@ const { LocaleUtils } = require("./../locale-utils");
 const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
-const { JS_CONSTANTS, REMOVAL_FILTERS } = require("./../js-constants");
+const { JS_CONSTANTS, REMOVAL_STATUS } = require("./../js-constants");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -132,7 +132,7 @@ function getRemoveSitesList(args) {
 
 function assignRemovalFilters(removeResults) {
   removeResults.forEach((result) => {
-    result.filter = JS_CONSTANTS.REMOVAL_STATUSES[result.status].filter;
+    result.filter = REMOVAL_STATUS[result.status];
   });
 }
 
@@ -190,7 +190,7 @@ function getRemovalFilters(args) {
   const locales = args.data.root.req.supportedLocales;
   const removalFilterArr = [];
 
-  Object.values(REMOVAL_FILTERS).forEach((filter) => {
+  Object.values(REMOVAL_STATUS).forEach((filter) => {
     const filterObj = {
       icon: filter.icon,
       statusText: LocaleUtils.fluentFormat(locales, filter.locale_var),
@@ -214,9 +214,7 @@ function removeDashExposureMessage(args) {
   const removeResults = args.data.root.removeData;
   const totalResults = removeResults.length;
   removeResults.forEach((result) => {
-    if (
-      result.status !== JS_CONSTANTS.REMOVAL_STATUSES["REMOVAL_VERIFIED"].code
-    ) {
+    if (result.status !== REMOVAL_STATUS["COMPLETE"].id) {
       numRemoveResults++;
     }
   });
