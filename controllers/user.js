@@ -19,7 +19,7 @@ const {
   getUTMContents,
   hasUserSignedUpForWaitlist,
 } = require("./utils");
-const jsConstants = require("../js-constants");
+const { JS_CONSTANTS } = require("../js-constants");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
@@ -941,7 +941,7 @@ async function getRemoveSitesList(req, res) {
   res.render("subpage", {
     title: req.fluentFormat("remove-sites-list"),
     subscriber: sessionUser,
-    removal_sites: jsConstants.REMOVAL_SITES,
+    removal_sites: JS_CONSTANTS.REMOVAL_SITES,
     whichPartial: "subpages/remove_sites_list",
     csrfToken: req.csrfToken(),
   });
