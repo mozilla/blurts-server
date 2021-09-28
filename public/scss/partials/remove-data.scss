@@ -392,7 +392,7 @@
     margin: 0;
     //when a filter is active
     &[data-filter*="#{$k-status-progress}"] {
-      .remove-dash-results-list-item[data-filter="#{$k-status-progress}"] {
+      .remove-dash-results-list-item[data-status="#{$k-status-progress}"] {
         display: block;
       }
 
@@ -409,7 +409,7 @@
       }
     }
     &[data-filter*="#{$k-status-complete}"] {
-      .remove-dash-results-list-item[data-filter="#{$k-status-complete}"] {
+      .remove-dash-results-list-item[data-status="#{$k-status-complete}"] {
         display: block;
       }
       .remove-filter-key-list-item[data-id*="#{$k-status-complete}"] {

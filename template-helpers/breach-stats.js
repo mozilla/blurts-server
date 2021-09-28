@@ -1,16 +1,14 @@
 "use strict";
 
 const AppConstants = require("../app-constants");
-const { JS_CONSTANTS } = require("./../js-constants");
+const { REMOVAL_STATUS } = require("./../js-constants");
 const { resultsSummary } = require("../scan-results");
 const { localize } = require("./hbs-helpers");
 
 function countResolvedRemovals(removeData) {
   let resolvedRemovals = 0;
   removeData.forEach((removal) => {
-    if (
-      removal.status === JS_CONSTANTS.REMOVAL_STATUSES["REMOVAL_VERIFIED"].code
-    ) {
+    if (removal.status === REMOVAL_STATUS["COMPLETE"].id) {
       resolvedRemovals++;
     }
   });

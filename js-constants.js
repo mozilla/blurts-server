@@ -1,8 +1,8 @@
 "use strict";
 
-const REMOVAL_FILTERS = {
-  IN_PROGRESS: {
-    id: "IN_PROGRESS",
+const REMOVAL_STATUS = {
+  ACTIVE: {
+    id: "ACTIVE",
     icon: "/img/removal/remove-status-in-progress.svg",
     locale_var: "remove-filter-in-progress",
   },
@@ -10,11 +10,6 @@ const REMOVAL_FILTERS = {
     id: "COMPLETE",
     icon: "/img/removal/remove-status-complete.svg",
     locale_var: "remove-filter-complete",
-  },
-  BLOCKED: {
-    id: "BLOCKED",
-    icon: "/img/removal/remove-status-blocked.svg",
-    locale_var: "remove-filter-blocked",
   },
 };
 
@@ -72,65 +67,53 @@ const JS_CONSTANTS = {
     "zabasearch.com",
     "peoplebyname.com",
   ],
-  REMOVAL_STATUSES: {
-    READY_TO_REMOVE: {
+
+  REMOVAL_STEP: {
+    FOUND: {
       //
-      locale_var: "remove-status-ready",
-      code: "READY_TO_REMOVE",
-      text: "Ready to remove",
-      filter: REMOVAL_FILTERS["IN_PROGRESS"],
+      locale_var: "remove-status-found",
+      code: "FOUND",
+      text: "Information found",
+      filter: REMOVAL_STATUS["ACTIVE"],
     },
-    REQUEST_SUBMITTED: {
+    AWAITING_REMOVAL: {
       //
+      locale_var: "remove-status-awaiting-removal",
+      code: "AWAITING_REMOVAL",
+      text: "Awaiting removal",
+      filter: REMOVAL_STATUS["ACTIVE"],
+    },
+    SUBMITTED: {
       locale_var: "remove-status-submitted",
-      code: "REQUEST_SUBMITTED",
-      text: "Request submitted",
-      filter: REMOVAL_FILTERS["IN_PROGRESS"],
+      code: "SUBMITTED",
+      text: "Removal Request Submitted",
+      filter: REMOVAL_STATUS["ACTIVE"],
     },
-    SITE_RESPONDED: {
-      locale_var: "remove-status-responded",
-      code: "SITE_RESPONDED",
-      text: "Site responded",
-      filter: REMOVAL_FILTERS["IN_PROGRESS"],
-    },
-    ADDITIONAL_INFORMATION_NEEDED: {
+    AWAITING_REVIEW: {
       //
-      locale_var: "remove-status-info_needed",
-      code: "ADDITIONAL_INFORMATION_NEEDED",
-      text: "Additional info needed",
-      filter: REMOVAL_FILTERS["IN_PROGRESS"],
+      locale_var: "remove-status-awaiting-review",
+      code: "AWAITING_REVIEW",
+      text: "Awaiting Review",
+      filter: REMOVAL_STATUS["ACTIVE"],
     },
-    ESCALATING_REQUEST: {
+    REMOVED: {
       //
-      locale_var: "remove-status-escalating",
-      code: "ESCALATING_REQUEST",
-      text: "Escalating request",
-      filter: REMOVAL_FILTERS["IN_PROGRESS"],
-    },
-    VERIFYING_REMOVAL: {
-      locale_var: "remove-status-verifying",
-      code: "VERIFYING_REMOVAL",
-      text: "Verifying removal",
-      filter: REMOVAL_FILTERS["IN_PROGRESS"],
-    },
-    REMOVAL_VERIFIED: {
-      //
-      locale_var: "remove-status-verified",
-      code: "REMOVAL_VERIFIED",
-      text: "Removal verified",
-      filter: REMOVAL_FILTERS["COMPLETE"],
+      locale_var: "remove-status-removed",
+      code: "REMOVED",
+      text: "Removed",
+      filter: REMOVAL_STATUS["COMPLETE"],
     },
     BLOCKED: {
       //
       locale_var: "remove-status-blocked",
       code: "BLOCKED",
       text: "Request blocked",
-      filter: REMOVAL_FILTERS["BLOCKED"],
+      filter: REMOVAL_STATUS["ACTIVE"],
     },
   },
 };
 
 module.exports = {
   JS_CONSTANTS,
-  REMOVAL_FILTERS,
+  REMOVAL_STATUS,
 };
