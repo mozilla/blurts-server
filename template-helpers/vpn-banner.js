@@ -1,5 +1,5 @@
-// IP location info includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com.
-// Test different IPs by comparing to the corresponding json, for example: https://github.com/maxmind/MaxMind-DB/blob/main/source-data/GeoLite2-City-Test.json
+// IP location data includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com.
+// Test IPs by comparing to the corresponding json, for example: https://github.com/maxmind/MaxMind-DB/blob/main/source-data/GeoLite2-City-Test.json
 
 "use strict";
 
@@ -8,11 +8,11 @@ const fs = require("fs");
 const Reader = require("@maxmind/geoip2-node").Reader;
 const maxmindDb = AppConstants.MAXMIND_DB_PATH || "./tests/mmdb/GeoLite2-City-Test.mmdb";
 
-function getIpInfo(args) {
+function vpnBannerData(args) {
     const dbBuffer = fs.readFileSync(maxmindDb);
     const reader = Reader.openBuffer(dbBuffer);
     const clientIp = args.data.root.constants.NODE_ENV === "dev" ? "216.160.83.56" : args.data.root.req.ip; // TODO: normalize IP for different ip4/ip6 formats
-    const info = { ip: clientIp };
+    const bannerData = { ip: clientIp };
     let geoData, locationArr;
 
     try {
@@ -22,12 +22,12 @@ function getIpInfo(args) {
         console.warn(e);
     }
 
-    info.shortLocation = locationArr.slice(0, 2).join(", "); // shows the first two location values from the ones available
-    info.fullLocation = locationArr.join(", "); // shows up to three location values from the ones available
+    bannerData.shortLocation = locationArr.slice(0, 2).join(", "); // shows the first two location values from the ones available
+    bannerData.fullLocation = locationArr.join(", "); // shows up to three location values from the ones available
 
-    return info;
+    return bannerData;
 }
 
 module.exports = {
-    getIpInfo,
+    vpnBannerData,
 };

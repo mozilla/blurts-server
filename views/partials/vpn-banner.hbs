@@ -1,35 +1,37 @@
 <aside class="vpn-banner">
-	{{#with (getIpInfo)}}
+	{{#with (vpnBannerData)}}
 	<section class="vpn-banner-top">
-		<label>Your Location: <output>{{ shortLocation }}</output>&nbsp; • </label>
-		<label><output class="vpn-banner-red">Not protected</output> by Mozilla VPN. </label>
+		<label>{{ getString "vpn-banner-location" }} <output>{{ shortLocation }}</output>&nbsp; • </label>
+		<label><output class="vpn-banner-red">{{ getString "vpn-banner-protect-yourself" }}</output> {{ getString
+			"vpn-banner-with-moz-vpn" }} </label>
 		<label class="vpn-banner-chevron"></label>
 	</section>
 	<section class="vpn-banner-bottom">
-		<h2 class="vpn-banner-title">Your location can be tracked if you don’t use a VPN.
-			<span>Protect your location and browse securely in 3 steps</span>
+		<h2 class="vpn-banner-title">{{ getString "vpn-banner-title-1" }}
+			<span>{{ getString "vpn-banner-subtitle-1" }}</span>
 		</h2>
 		<div class="vpn-banner-lists">
 			<ul class="status-list">
-				<li>Current status: <output class="vpn-banner-red">Not protected ⚠</output></li>
-				<li>IP address: <output>{{ ip }}</output></li>
-				<li>Location: <output>{{ fullLocation }}</output></li>
-				<li><a class="vpn-banner-cta" href="https://vpn.mozilla.org/" target="_blank">Get Mozilla VPN</a></li>
+				<li>{{ getString "vpn-banner-status" }} <output class="vpn-banner-red">{{ getString "vpn-banner-not-protected"
+						}}</output></li>
+				<li>{{ getString "vpn-banner-ip-address" }} <output>{{ ip }}</output></li>
+				<li>{{ getString "vpn-banner-location" }} <output>{{ fullLocation }}</output></li>
+				<li><a class="vpn-banner-cta" href="https://vpn.mozilla.org/" target="_blank">{{ getString "vpn-banner-cta" }}</a></li>
 			</ul>
 			<ol class="step-list">
 				<li>
 					<figure><img src="/img/svg/laptop.svg">
-						<figcaption>Subscribe to Mozilla VPN</figcaption>
+						<figcaption>{{ getString "vpn-banner-step-1" }}</figcaption>
 					</figure>
 				</li>
 				<li>
 					<figure><img src="/img/svg/globe.svg">
-						<figcaption>Select a VPN location</figcaption>
+						<figcaption>{{ getString "vpn-banner-step-2" }}</figcaption>
 					</figure>
 				</li>
 				<li>
 					<figure><img src="/img/svg/vpn.svg">
-						<figcaption>Activate VPN and browse securely</figcaption>
+						<figcaption>{{ getString "vpn-banner-step-3" }}</figcaption>
 					</figure>
 				</li>
 			</ol>
