@@ -127,7 +127,6 @@ function getRemoveSitesList(args) {
   const removal_list = {
     removal_sites: removal_sites,
   };
-  console.log(removal_sites);
   return args.fn(removal_list);
 }
 
