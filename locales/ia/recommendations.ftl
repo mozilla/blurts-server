@@ -38,10 +38,7 @@ rec-cc = Presta attention al debitos estranie sur tu carta de credito. Si necess
 # Recommendation subhead
 rec-email-subhead = Usar aliases de email
 rec-email-cta = Prova { -brand-relay }
-rec-email =
-    Divulgar tu adresse e-mail real simplifica pro piratas informatic o traciatores
-    trovar tu contrasignos o te adressar online. Un servicio como { -brand-relay } 
-    cela tu real adresse e-mail durante que inultra e-mails a tu effective cassa de ingresso.
+rec-email = Divulgar tu adresse de e-mail real rende plus facile pro piratas informatic o traciatores trovar tu contrasignos o attaccar te in linea. Un servicio como { -brand-relay } cela tu adresse de e-mail real e reexpedi le messages a tu cassa de entrata real.
 # Recommendation subhead
 rec-ip-subhead = Usa un servicio que masca tu adresse IP
 # Link title
