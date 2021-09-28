@@ -348,6 +348,15 @@ no-other-breaches-found = Muita vuotoja ei löytynyt perushaulla.
 no-results-blurb = Valitettavasti tästä vuodosta ei ole merkintää tietokannassamme.
 all-breaches-headline = Kaikki { -product-name }in tuntemat tietovuodot
 search-breaches = Etsi vuotoja
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Sähköpostiosoitteesi ei ole mukana tässä vuodossa,
+    mutta puhelinnumerosi saattaa silti olla vaarantunut.</span> Jotkin Facebook-
+    vuodossa vaarantuneet tilit sisälsivät puhelinnumeroita ja muuta
+    henkilökohtaisia tietoja, mutta ei sähköpostiosoitteita. Jos olet koskaan
+    rekisteröinyt Facebook-tilin — vaikka et käyttäisi sitä nyt — suosittelemme
+    ryhtymään seuraaviin toimiin suojellaksesi itseäsi
 facebook-breach-what-to-do-3 = Katso kaikki suosituksemme Facebook-vuotosivultamme
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Näytetään:
