@@ -727,8 +727,6 @@ function sortRemovalData(removalData) {
 
   const sortedData = [...completeItems, ...activeItems, ...blockedItems];
 
-  console.log("sorted", sortedData);
-
   return sortedData;
 }
 

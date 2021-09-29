@@ -72,6 +72,14 @@
   }
 }
 
+@mixin remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include ff-metropolis;
+  text-align: center;
+}
+
 @mixin blue-link {
   &:not([class*="btn"]) {
     color: var(--blue3);

@@ -33,6 +33,7 @@
     "got": "10.7.0",
     "gulp": "^4.0.2",
     "gulp-sass": "^3.2.1",
+    "gulp-sourcemaps": "^3.0.0",
     "helmet": "4.2.0",
     "intl-pluralrules": "1.2.1",
     "isemail": "3.2.0",

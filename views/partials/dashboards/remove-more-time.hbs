@@ -3,9 +3,33 @@
       {{> dashboards/breach-dash-welcome}}
       {{> dashboards/breach-dash-tabs activeTab="remove"}}
   {{/getBreachStats}}
-  <div class="flx flx-col">
-    <div class="mw-860 flx flx-col remove-dashboard-section">
-      Hello
+  <div class="mw-860 flx flx-col remove-more-time-container">
+    <p>Get More Time</p>
+    <div class="remove-dashboard-card">
+      <div class="remove-dashboard-card-border flx">
+        <p>The 90-day pilot of our data removal service will remain at no cost to you for the duration of the pilot period. However, in order to continue for the remaining 45 days, we’d like to offer you a choice...</p>
+      </div>
+    </div>
+    <div class="remove-more-time-options flx space-between">
+      <div class="remove-more-time-option-description remove-more-time-col">
+          <p class="bold">Option 2: Continue Service</p>
+          <p>Continue your service for the remaining 45 days of the pilot at no cost to you.</p>
+      </div>
+      <div class="remove-more-time-option-description remove-more-time-col">
+          <p class="bold">Option 1: Discontinue Service</p>
+          <p>Discontinue your service today* and receive a $5 Amazon gift card.</p>
+      </div>
+    </div>
+    <div class="remove-more-time-selections flx space-between">
+      <a class="remove-more-time-button remove-more-time-col continue" role="button" href="#">
+        Continue Service
+      </a>
+      <a class="remove-more-time-button remove-more-time-col cancel" role="button" href="#">
+        Discontinue Service
+      </a>
+    </div>
+    <div class="flx space-between">
+      <p class="remove-more-time-small remove-more-time-col">*Any removals in progress will be suspended and all completed removals will remain so. No additional removals will take place. You will lose access to your exposures dashboard.</p>
     </div>
   </div>
   {{> dashboards/remove-form-kanary-footer}}
