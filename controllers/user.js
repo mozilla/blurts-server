@@ -19,7 +19,7 @@ const {
   getUTMContents,
   hasUserSignedUpForWaitlist,
 } = require("./utils");
-const { JS_CONSTANTS } = require("../js-constants");
+const { JS_CONSTANTS, REMOVAL_STATUS } = require("../js-constants");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
@@ -689,6 +689,49 @@ async function getRemoveMoreTimePage(req, res) {
   });
 }
 
+function alphabetizeByBroker(data) {
+  return data.sort(function (a, b) {
+    if (a.broker < b.broker) {
+      return -1;
+    }
+    if (a.broker > b.broker) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+function sortRemovalData(removalData) {
+  const completeItems = removalData.filter((removalItem) => {
+    return removalItem.status === REMOVAL_STATUS["COMPLETE"].id;
+  });
+
+  alphabetizeByBroker(completeItems);
+
+  const blockedItems = removalData.filter((removalItem) => {
+    return (
+      removalItem.current_step === JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+    );
+  });
+
+  alphabetizeByBroker(blockedItems);
+
+  const activeItems = removalData.filter((removalItem) => {
+    return (
+      removalItem.status !== REMOVAL_STATUS["COMPLETE"].id &&
+      removalItem.current_step !== JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+    );
+  });
+
+  alphabetizeByBroker(activeItems);
+
+  const sortedData = [...completeItems, ...activeItems, ...blockedItems];
+
+  console.log("sorted", sortedData);
+
+  return sortedData;
+}
+
 async function getRemoveDashData(kanary_id) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
@@ -738,7 +781,7 @@ async function getRemoveDashData(kanary_id) {
     })
     .then((json) => {
       if (json && json.url_matches) {
-        return json.url_matches;
+        return sortRemovalData(json.url_matches);
       } else {
         return [];
       }
