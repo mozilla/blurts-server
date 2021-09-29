@@ -5,6 +5,7 @@ const { FormUtils } = require("./../form-utils");
 const { makeBreachCards } = require("./breaches");
 const { hasUserSignedUpForRelay } = require("./../controllers/utils");
 const { JS_CONSTANTS, REMOVAL_STATUS } = require("./../js-constants");
+const { sentenceCase, getSupportedLocales } = require("./hbs-helpers");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -132,8 +133,57 @@ function getRemoveSitesList(args) {
 
 function assignRemovalFilters(removeResults) {
   removeResults.forEach((result) => {
-    result.filter = REMOVAL_STATUS[result.status];
+    if (result.current_step === JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code) {
+      result.filter = REMOVAL_STATUS[result.current_step];
+    } else {
+      result.filter = REMOVAL_STATUS[result.status];
+    }
   });
+}
+
+function localizeRemoveStatus(removeResults, locales) {
+  removeResults.forEach((result) => {
+    const localeVar = JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var;
+    if (localeVar) {
+      result.current_step_text = LocaleUtils.fluentFormat(locales, localeVar);
+    } else {
+      result.current_step_text = sentenceCase(result.current_step);
+    }
+  });
+}
+
+function trimRemoveInfo(removeResult, args) {
+  const supportedLocales = getSupportedLocales(args);
+  let infoString = "";
+  if (this.email_matches.length) {
+    infoString += `${LocaleUtils.fluentFormat(
+      supportedLocales,
+      "remove-result-email",
+      args.hash
+    )},`;
+  }
+  if (this.phone_matches.length) {
+    infoString += `${LocaleUtils.fluentFormat(
+      supportedLocales,
+      "remove-result-phone",
+      args.hash
+    )},`;
+  }
+  if (this.name_matches.length) {
+    infoString += `${LocaleUtils.fluentFormat(
+      supportedLocales,
+      "remove-result-name",
+      args.hash
+    )},`;
+  }
+  if (this.address_matches.length) {
+    infoString += `${LocaleUtils.fluentFormat(
+      supportedLocales,
+      "remove-result-address",
+      args.hash
+    )},`;
+  }
+  return infoString.slice(0, -1);
 }
 
 function getRemoveDashData(args) {
@@ -175,6 +225,7 @@ function getRemoveDashData(args) {
   }
 
   assignRemovalFilters(removeResults);
+  localizeRemoveStatus(removeResults, locales);
 
   const emailCards = {
     verifiedEmails: verifiedEmails,
@@ -400,6 +451,7 @@ module.exports = {
   getRemoveDashData,
   getRemoveSitesList,
   getRemovalFilters,
+  trimRemoveInfo,
   getFullName,
   welcomeMessage,
   getConfirmSubmitText,

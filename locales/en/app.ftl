@@ -454,6 +454,14 @@ remove-filter-blocked = Blocked
 remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
 
+# remove steps
+remove-step-found = Information found
+remove-step-awaiting-removal = Awaiting removal
+remove-step-submitted = Removal request submitted
+remove-step-awaiting-review = Awaiting review
+remove-step-removed = Removed
+remove-step-blocked = Request blocked
+
 
 # remove results
 remove-results-toggle-alt = Expand Option

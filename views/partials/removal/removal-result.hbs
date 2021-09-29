@@ -82,7 +82,7 @@
           {{getString "remove-result-status"}}
         </p>
         <p class="remove-dash-results-detail">
-          {{#if this.current_step}}{{sentenceCase this.current_step}}{{/if}}
+          {{#if this.current_step_text}}{{this.current_step_text}}{{/if}}
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
@@ -90,18 +90,7 @@
           {{getString "remove-result-details-found"}}
         </p>
         <p class="remove-dash-results-detail">
-          {{#ifLength this.email_matches}}{{getString
-              "remove-result-email"
-            }},{{/ifLength}}
-          {{#ifLength this.phone_matches}}{{getString
-              "remove-result-phone"
-            }},{{/ifLength}}
-          {{#ifLength this.name_matches}}{{getString
-              "remove-result-name"
-            }},{{/ifLength}}
-          {{#ifLength this.address_matches}}{{getString
-              "remove-result-address"
-            }}{{/ifLength}}
+          {{trimRemoveInfo this}}
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
@@ -110,32 +99,32 @@
         </p>
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
-      {{#ifCompare this.status "!==" "REMOVED"}}
-        <li class="remove-dash-results-details-item flx flx-col align-start">
-          <p class="remove-dash-results-detail-title">
-            {{getString "remove-result-link"}}
-          </p>
-          <p class="remove-dash-results-detail">
-            <a
-              class="remove-dash-results-detail-link break-word"
-              href="{{this.url}}"
-              target="_blank"
-            >{{this.url}}</a>
-          </p>
-        </li>
-      {{/ifCompare}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title">
-          {{getString "remove-result-opt-out"}}
+          {{getString "remove-result-link"}}
         </p>
         <p class="remove-dash-results-detail">
           <a
-            href="{{getOptOutLink this.opt_out}}"
+            class="remove-dash-results-detail-link break-word"
+            href="{{this.url}}"
             target="_blank"
-            class="break-word"
-          >{{this.opt_out}}</a>
+          >{{this.url}}</a>
         </p>
       </li>
+      {{#ifCompare this.current_step "===" "BLOCKED"}}
+        <li class="remove-dash-results-details-item flx flx-col align-start">
+          <p class="remove-dash-results-detail-title">
+            {{getString "remove-result-opt-out"}}
+          </p>
+          <p class="remove-dash-results-detail">
+            <a
+              href="{{getOptOutLink this.opt_out}}"
+              target="_blank"
+              class="break-word"
+            >{{this.opt_out}}</a>
+          </p>
+        </li>
+      {{/ifCompare}}
     </ul>
   </div>
 </li>

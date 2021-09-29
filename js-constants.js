@@ -11,6 +11,11 @@ const REMOVAL_STATUS = {
     icon: "/img/removal/remove-status-complete.svg",
     locale_var: "remove-filter-complete",
   },
+  BLOCKED: {
+    id: "BLOCKED",
+    icon: "/img/removal/remove-status-blocked.svg",
+    locale_var: "remove-filter-blocked",
+  },
 };
 
 const JS_CONSTANTS = {
@@ -71,43 +76,38 @@ const JS_CONSTANTS = {
   REMOVAL_STEP: {
     FOUND: {
       //
-      locale_var: "remove-status-found",
+      locale_var: "remove-step-found",
       code: "FOUND",
       text: "Information found",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     AWAITING_REMOVAL: {
       //
-      locale_var: "remove-status-awaiting-removal",
+      locale_var: "remove-step-awaiting-removal",
       code: "AWAITING_REMOVAL",
-      text: "Awaiting removal",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     SUBMITTED: {
-      locale_var: "remove-status-submitted",
+      locale_var: "remove-step-submitted",
       code: "SUBMITTED",
-      text: "Removal Request Submitted",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     AWAITING_REVIEW: {
       //
-      locale_var: "remove-status-awaiting-review",
+      locale_var: "remove-step-awaiting-review",
       code: "AWAITING_REVIEW",
-      text: "Awaiting Review",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     REMOVED: {
       //
-      locale_var: "remove-status-removed",
+      locale_var: "remove-step-removed",
       code: "REMOVED",
-      text: "Removed",
       filter: REMOVAL_STATUS["COMPLETE"],
     },
     BLOCKED: {
       //
-      locale_var: "remove-status-blocked",
+      locale_var: "remove-step-blocked",
       code: "BLOCKED",
-      text: "Request blocked",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
   },
