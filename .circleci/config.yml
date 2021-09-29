@@ -1,5 +1,12 @@
 version: 2.0
 jobs:
+    lint:
+        docker:
+            - image: circleci/node:14
+        steps:
+            - checkout
+            - run: npm install
+            - run: npm run lint
     build:
         docker:
             - image: docker:stable-git
@@ -141,6 +148,7 @@ workflows:
   version: 2
   build-test-deploy:
     jobs:
+      - lint
       - build:
           filters:
             tags:
