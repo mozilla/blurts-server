@@ -26,16 +26,25 @@
     font-size: 13px;
 }
 
+.vpn-banner em,
 .vpn-banner output {
     font-weight: bold;
+    font-style: normal;
 }
 
-.vpn-banner-red {
+.vpn-banner[data-protected="false"] em{
     color: #E22850;
+}
+
+.vpn-banner[data-protected="true"] em{
+    color: #1CC4A0;
 }
 
 /*** TOP PANEL ***/
 .vpn-banner-top{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 8px 0;
     background-color: black;
     cursor: pointer;
@@ -43,18 +52,22 @@
 }
 
 .vpn-banner-top label{
-    white-space: pre;
+    padding: 0 4px;
     pointer-events: none;
 }
 
+.vpn-banner-top label:first-of-type::after{
+    content: "•";
+    padding-left: 8px;
+}
+
 .vpn-banner-chevron{
-    display: inline-block;
-    min-width: 67px;
+    min-width: 76px;
     text-align: left;
 }
 
 .vpn-banner-chevron::before{
-    content: "Expand";
+    content: attr(data-expand);
     display: inline-block;
 }
 
@@ -70,7 +83,7 @@
 }
 
 [data-expanded] .vpn-banner-chevron::before{
-    content: "Close"
+    content: attr(data-close);
 }
 
 [data-expanded] .vpn-banner-chevron::after{
@@ -125,8 +138,12 @@
 
 // TODO: <ul> and <li> inherit custom flex styles from main.  Should separate this and refine for reusability
 .vpn-banner-lists .status-list{
-    white-space: pre-wrap;
     margin: 16px 0;
+}
+
+.vpn-banner-lists .status-list em,
+.vpn-banner-lists .status-list output{
+    padding: 0 4px;
 }
 
 .vpn-banner-lists .step-list{

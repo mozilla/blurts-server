@@ -1,19 +1,35 @@
-<aside class="vpn-banner">
-	{{#with (vpnBannerData)}}
+{{#with (vpnBannerData)}}
+<aside class="vpn-banner" data-protected={{ protected }}>
 	<section class="vpn-banner-top">
-		<label>{{ getString "vpn-banner-location" }} <output>{{ shortLocation }}</output>&nbsp; • </label>
-		<label><output class="vpn-banner-red">{{ getString "vpn-banner-protect-yourself" }}</output> {{ getString
-			"vpn-banner-with-moz-vpn" }} </label>
-		<label class="vpn-banner-chevron"></label>
+		<label>{{{ getString "vpn-banner-location" }}} <output>{{ shortLocation }}</output></label>
+		<label>
+			{{#if protected}}
+			{{{ getString "vpn-banner-protected-with-vpn" }}}
+			{{else}}
+			{{{ getString "vpn-banner-protect-yourself-with-vpn" }}}
+			{{/if}}
+		</label>
+		<label class="vpn-banner-chevron" data-expand={{ getString "vpn-banner-cta-expand" }} data-close={{
+			getString "vpn-banner-cta-close" }}></label>
 	</section>
 	<section class="vpn-banner-bottom">
-		<h2 class="vpn-banner-title">{{ getString "vpn-banner-title-1" }}
-			<span>{{ getString "vpn-banner-subtitle-1" }}</span>
+		<h2 class="vpn-banner-title">
+			{{#if protected}}
+			{{ getString "vpn-banner-title-1" }}
+			{{else}}
+			{{ getString "vpn-banner-title-2" }}
+			<span>{{ getString "vpn-banner-subtitle-2" }}</span>
+			{{/if}}
 		</h2>
 		<div class="vpn-banner-lists">
 			<ul class="status-list">
-				<li>{{ getString "vpn-banner-status" }} <output class="vpn-banner-red">{{ getString "vpn-banner-not-protected"
-						}}</output></li>
+				<li>
+					{{#if protected}}
+					{{{ getString "vpn-banner-status-protected" }}}
+					{{else}}
+					{{{ getString "vpn-banner-status-not-protected" }}}
+					{{/if}}
+				</li>
 				<li>{{ getString "vpn-banner-ip-address" }} <output>{{ ip }}</output></li>
 				<li>{{ getString "vpn-banner-location" }} <output>{{ fullLocation }}</output></li>
 				<li><a class="vpn-banner-cta" href="https://vpn.mozilla.org/" target="_blank">{{ getString "vpn-banner-cta" }}</a></li>
@@ -38,5 +54,5 @@
 		</div>
 		<button class="vpn-banner-close"></button>
 		</section>
-	{{/with}}
-</aside>
+	</aside>
+{{/with}}

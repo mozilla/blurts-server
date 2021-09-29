@@ -24,6 +24,7 @@ function vpnBannerData(args) {
 
     bannerData.shortLocation = locationArr.slice(0, 2).join(", "); // shows the first two location values from the ones available
     bannerData.fullLocation = locationArr.join(", "); // shows up to three location values from the ones available
+    bannerData.protected = false; // TODO: make this work with Guardian API
 
     return bannerData;
 }
