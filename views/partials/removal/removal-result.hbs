@@ -27,12 +27,14 @@
           {{this.update_status}}
         </div>
       {{/if}}
-      {{#ifCompare this.risk_level "===" "HIGH"}}
-        <div
-          class="remove-dash-results-risk remove-dash-results-status-el risk-high"
-        >
-          {{getString "remove-risk-high"}}
-        </div>
+      {{#ifCompare this.status "!==" "COMPLETE"}}
+        {{#ifCompare this.risk_level "===" "HIGH"}}
+          <div
+            class="remove-dash-results-risk remove-dash-results-status-el risk-high"
+          >
+            {{getString "remove-risk-high"}}
+          </div>
+        {{/ifCompare}}
       {{/ifCompare}}
 
       {{#ifCompare this.risk_level "===" "MEDIUM"}}
