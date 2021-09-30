@@ -1,12 +1,28 @@
 version: 2.0
 jobs:
-    lint:
+    lint-js-css:
         docker:
             - image: circleci/node:14
         steps:
             - checkout
             - run: npm install
             - run: npm run lint
+    lint-l10n:
+        docker:
+            - image: cimg/python:3.9.7
+        steps:
+            - checkout
+            - run:
+                name: Install dependencies
+                command: |
+                    sudo apt update
+                    sudo apt install -y python3-pip
+                    sudo pip install compare-locales
+            - run: 
+                name: Lint and compare locales
+                command: |
+                    moz-l10n-lint l10n.toml
+                    compare-locales l10n.toml . `ls locales`
     build:
         docker:
             - image: docker:stable-git
@@ -148,7 +164,8 @@ workflows:
   version: 2
   build-test-deploy:
     jobs:
-      - lint
+      - lint-js-css
+      - lint-l10n
       - build:
           filters:
             tags:
