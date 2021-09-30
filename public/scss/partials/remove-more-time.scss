@@ -8,7 +8,11 @@
   &-col {
     width: calc(50% - 12px);
   }
-
+  &-title {
+    @include ff-inter;
+    font-size: 18px;
+    font-weight: 400;
+  }
   &-option-description {
     background-color: var(--grey2);
     padding: 20px 10px;

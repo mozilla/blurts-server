@@ -480,6 +480,17 @@ remove-result-name = Name
 remove-result-address = Address
 remove-result-status = Status
 
+# remove more time page
+remove-mt-title = Get More Time
+remove-mt-intro = The 90-day pilot of our data removal service will remain at no cost to you for the duration of the pilot period. However, in order to continue for the remaining 45 days, we’d like to offer you a choice...
+remove-mt-option1-title = Option 1: Continue Service
+remove-mt-option1-description = Continue your service for the remaining 45 days of the pilot at no cost to you.
+remove-mt-option1-btn = Cntinue Service
+remove-mt-option2-title = Option 2: Discontinue Service
+remove-mt-option2-description = Discontinue your service today* and receive a $5 Amazon gift card.
+remove-mt-option2-btn = Discontinue Service
+remove-mt-option2-smalltext = *Any removals in progress will be suspended and all completed removals will remain so. No additional removals will take place. You will lose access to your exposures dashboard.
+
 show-breaches-for-this-email = Show all breaches for this email.
 
 link-change-primary = Change Primary Email Address

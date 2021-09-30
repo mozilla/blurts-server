@@ -4,32 +4,32 @@
       {{> dashboards/breach-dash-tabs activeTab="remove"}}
   {{/getBreachStats}}
   <div class="mw-860 flx flx-col remove-more-time-container">
-    <p>Get More Time</p>
+    <h2 class="remove-more-time-title">{{getString "remove-mt-title"}}</h2>
     <div class="remove-dashboard-card">
       <div class="remove-dashboard-card-border flx">
-        <p>The 90-day pilot of our data removal service will remain at no cost to you for the duration of the pilot period. However, in order to continue for the remaining 45 days, we’d like to offer you a choice...</p>
+        <p>{{getString "remove-mt-intro"}}</p>
       </div>
     </div>
     <div class="remove-more-time-options flx space-between">
       <div class="remove-more-time-option-description remove-more-time-col">
-          <p class="bold">Option 2: Continue Service</p>
-          <p>Continue your service for the remaining 45 days of the pilot at no cost to you.</p>
+          <p class="bold">{{getString "remove-mt-option1-title"}}</p>
+          <p>{{getString "remove-mt-option1-description"}}</p>
       </div>
       <div class="remove-more-time-option-description remove-more-time-col">
-          <p class="bold">Option 1: Discontinue Service</p>
-          <p>Discontinue your service today* and receive a $5 Amazon gift card.</p>
+          <p class="bold">{{getString "remove-mt-option2-title"}}</p>
+          <p>{{getString "remove-mt-option2-description"}}</p>
       </div>
     </div>
     <div class="remove-more-time-selections flx space-between">
       <a class="remove-more-time-button remove-more-time-col continue" role="button" href="#">
-        Continue Service
+        {{getString "remove-mt-option1-btn"}}
       </a>
       <a class="remove-more-time-button remove-more-time-col cancel" role="button" href="#">
-        Discontinue Service
+        {{getString "remove-mt-option2-btn"}}
       </a>
     </div>
-    <div class="flx space-between">
-      <p class="remove-more-time-small remove-more-time-col">*Any removals in progress will be suspended and all completed removals will remain so. No additional removals will take place. You will lose access to your exposures dashboard.</p>
+    <div class="flx flx-end">
+      <p class="remove-more-time-small remove-more-time-col">{{getString "remove-mt-option2-smalltext"}}</p>
     </div>
   </div>
   {{> dashboards/remove-form-kanary-footer}}
