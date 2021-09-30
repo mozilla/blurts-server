@@ -28,7 +28,7 @@
     "git-rev-sync": "1.12.0",
     "got": "10.7.0",
     "gulp": "^4.0.2",
-    "gulp-sass": "^3.2.1",
+    "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "helmet": "4.2.0",
     "intl-pluralrules": "1.2.1",
@@ -63,12 +63,16 @@
     "npm-audit-ci-wrapper": "3.0.1",
     "onchange": "6.1.1",
     "redis-mock": "0.52.0",
+    "sass": "^1.42.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "18.3.0",
     "stylelint-scss": "^3.19.0",
     "wdio-docker-service": "2.4.0",
     "wdio-image-comparison-service": "1.13.6",
     "wdio-video-reporter": "2.0.1"
+  },
+  "peerDependencies": {
+    "sass": "^1.42.1"
   },
   "engines": {
     "node": "14.17",
