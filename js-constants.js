@@ -45,6 +45,7 @@ const JS_CONSTANTS = {
     "neighborwho.com",
     "nuwber.com",
     "peekyou.com",
+    "peoplebyname.com",
     "peoplefinders.com",
     "pplcheck.com",
     "publicdatadigger.com",
@@ -70,7 +71,6 @@ const JS_CONSTANTS = {
     "xlek.com",
     "yellowbook.com",
     "zabasearch.com",
-    "peoplebyname.com",
   ],
 
   REMOVAL_STEP: {
