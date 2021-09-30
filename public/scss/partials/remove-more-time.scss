@@ -1,10 +1,6 @@
 .remove-more-time {
   &-container {
-    background-color: white;
-    padding-top: 72px;
-    padding-bottom: 72px;
-    margin-top: 72px;
-    border-radius: 8px;
+    @include remove-container;
   }
   &-col {
     width: calc(50% - 12px);

@@ -13,10 +13,17 @@ function initRemove() {
       case "remove-dashboard":
         initRemoveDashboard();
         break;
+      case "remove-enroll":
+        initRemoveEnroll();
+        break;
       default:
         console.log("no matching page id");
     }
   }
+}
+
+function initRemoveEnroll() {
+  addRemoveEnrollListeners();
 }
 
 function initRemoveForm() {
@@ -25,6 +32,12 @@ function initRemoveForm() {
 
 function initRemoveDashboard() {
   addRemoveDashListeners();
+}
+
+function addRemoveEnrollListeners() {
+  document
+    .querySelector(".js-enroll-submit")
+    .addEventListener("click", onEnrollFormSubmitClick);
 }
 
 function addRemoveFormListeners() {
@@ -71,6 +84,33 @@ function onSelectChange(e) {
 function onConfirmEditClick(e) {
   e.preventDefault();
   toggleConfirmScreen(false);
+}
+
+function onEnrollFormSubmitClick(e) {
+  const $form = e.target.form;
+  const isValid = $form.reportValidity();
+  if (!isValid) {
+    console.log("not valid!");
+    return;
+  }
+  e.preventDefault();
+  fetch($form.action, {
+    method: "POST",
+    body: new URLSearchParams(new FormData($form)),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.nextPage) {
+        window.location = data.nextPage; //MH TODO: probably should be doing this through the router on backend?
+      } else {
+        console.error("there was an error in the response", data);
+      }
+    })
+    .catch((error) => {
+      console.error("error with form submission", error);
+    });
 }
 
 function onRemoveFormSubmitClick(e) {

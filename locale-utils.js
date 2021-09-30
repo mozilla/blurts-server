@@ -33,7 +33,6 @@ class FluentError extends Error {
 
 const LocaleUtils = {
   init() {
-    console.log("init locales");
     let languageDirectories = supportedLocales.split(",");
     if (supportedLocales === "*") {
       languageDirectories = fs.readdirSync(localesDir).filter((item) => {

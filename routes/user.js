@@ -16,9 +16,12 @@ const {
   getRemoveUpdateConfirmationPage,
   getRemoveDeleteConfirmationPage,
   getRemoveMoreTimePage,
+  getRemoveEnrollPage,
+  getRemoveEnrollFullPage,
   getPreferences,
   getBreachStats,
   handleRemoveFormSignup,
+  handleEnrollFormSignup,
   handleRemoveAcctUpdate,
   removeEmail,
   resendEmail,
@@ -78,6 +81,27 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveMoreTimePage)
+);
+
+router.get(
+  "/remove-enroll",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveEnrollPage)
+);
+
+router.post(
+  "/remove-enroll-submit",
+  urlEncodedParser,
+  requireSessionUser,
+  asyncMiddleware(handleEnrollFormSignup)
+);
+
+router.get(
+  "/remove-enroll-full",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveEnrollFullPage)
 );
 
 router.get(

@@ -6,6 +6,7 @@ const { negotiateLanguages, acceptedLanguages } = require("fluent-langneg");
 const Sentry = require("@sentry/node");
 
 const AppConstants = require("./app-constants");
+const { JS_CONSTANTS } = require("./js-constants");
 const DB = require("./db/DB");
 const { FXA } = require("./lib/fxa");
 const { FluentError } = require("./locale-utils");
@@ -159,10 +160,15 @@ async function requireSessionUser(req, res, next) {
   const user = await _getRequestSessionUser(req);
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString();
-    const removeRoute = "/user/remove-data"; //MH TODO: should be in a constant, but probably not .env - do we have a file for these?
-    if (req.originalUrl === removeRoute) {
-      req.session.post_auth_redirect = removeRoute;
-    }
+    JS_CONSTANTS.REMOVE_ROUTES.forEach((removeRoute) => {
+      if (req.originalUrl.includes(removeRoute)) {
+        if (queryParams && queryParams.length) {
+          req.session.post_auth_redirect = removeRoute + `?${queryParams}`;
+        } else {
+          req.session.post_auth_redirect = removeRoute;
+        }
+      }
+    });
     return res.redirect(`/oauth/init?${queryParams}`);
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token);

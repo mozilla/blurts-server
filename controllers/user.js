@@ -23,6 +23,21 @@ const { JS_CONSTANTS, REMOVAL_STATUS } = require("../js-constants");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
+async function handleEnrollFormSignup(req, res) {
+  //TODO: validate form data
+
+  const { privacy } = req.body;
+  console.log(privacy);
+  const isFull = true; //MH TODO: Temp - need to check this against database
+  let nextPage;
+  if (isFull) {
+    nextPage = "/user/remove-enroll-full";
+  } else {
+    nextPage = "/user/remove-data"; //MH TODO: show success screen or just send them straight to the form?
+  }
+  return res.json({ nextPage: nextPage });
+}
+
 async function handleRemoveFormSignup(req, res) {
   //TODO: validate form data
 
@@ -660,6 +675,64 @@ async function getRemoveDeleteConfirmationPage(req, res) {
   });
 }
 
+async function getRemoveEnrollPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrollFullPage(req, res) {
+  const user = req.user;
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll-full",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
 async function getRemoveMoreTimePage(req, res) {
   const user = req.user;
   const allBreaches = req.app.locals.breaches;
@@ -1271,9 +1344,12 @@ module.exports = {
   getRemoveUpdateConfirmationPage,
   getRemoveDeleteConfirmationPage,
   getRemoveMoreTimePage,
+  getRemoveEnrollPage,
+  getRemoveEnrollFullPage,
   getBreachStats,
   getAllEmailsAndBreaches,
   handleRemoveFormSignup,
+  handleEnrollFormSignup,
   handleRemoveAcctUpdate,
   add,
   verify,

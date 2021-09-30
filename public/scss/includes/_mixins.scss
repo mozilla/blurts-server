@@ -85,6 +85,15 @@
   text-align: center;
 }
 
+@mixin remove-container {
+  background-color: white;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  margin-top: 72px;
+  border-radius: 8px;
+  position: relative;
+}
+
 @mixin blue-link {
   &:not([class*="btn"]) {
     color: var(--blue3);

@@ -485,11 +485,29 @@ remove-mt-title = Get More Time
 remove-mt-intro = The 90-day pilot of our data removal service will remain at no cost to you for the duration of the pilot period. However, in order to continue for the remaining 45 days, we’d like to offer you a choice...
 remove-mt-option1-title = Option 1: Continue Service
 remove-mt-option1-description = Continue your service for the remaining 45 days of the pilot at no cost to you.
-remove-mt-option1-btn = Cntinue Service
+remove-mt-option1-btn = Continue Service
 remove-mt-option2-title = Option 2: Discontinue Service
 remove-mt-option2-description = Discontinue your service today* and receive a $5 Amazon gift card.
 remove-mt-option2-btn = Discontinue Service
 remove-mt-option2-smalltext = *Any removals in progress will be suspended and all completed removals will remain so. No additional removals will take place. You will lose access to your exposures dashboard.
+
+# remove enroll page
+
+remove-enroll-title = Welcome to Firefox Monitor’s data removal pilot
+remove-enroll-description-title = Here's what you need to know
+remove-enroll-description = First, you’ll share some identifying information with us. This info allows us to find data brokers online that share it—and then get it removed. 
+  This info will only be used for the duration of the pilot, and then deleted. This pilot is separate from your main Firefox account. That means any changes you make to your account while part of this pilot program don't apply to your normal account, including changing emails, passwords, and more.
+remove-enroll-terms-title = Terms of pilot service
+remove-enroll-terms = The pilot service will be offered at no cost to you for a 90 day period.
+  The purpose of the pilot is to evaluate the service for a paid offering. As such, participating in the pilot will include additional communications and data collection about your experience. You are not required to respond to these requests for information, but we would appreciate your assistance. 
+  At the end of the 90-day pilot period, any additional service will be suspended and all account information held by Mozilla or our partner Kanary will be deleted. 
+  You may discontinue your service at any point within the 90-day pilot period.
+remove-enroll-terms-agreement = By checking this box, you agree to the terms of pilot service listed above.
+remove-enroll-submit = Join the pilot
+
+remove-enroll-full-title = Enrollment in the Pilot is Full
+remove-enroll-full-description = Thank you for your interest in Mozilla’s Data Removal Service powered by Kanary. 
+  Unfortunately, the pilot program is at capacity
 
 show-breaches-for-this-email = Show all breaches for this email.
 
