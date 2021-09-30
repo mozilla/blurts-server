@@ -139,6 +139,22 @@ To run tests with interactive `debugger` lines enabled:
 NODE_ENV=tests node inspect --harmony ./node_modules/.bin/jest tests/home.test.js
 ```
 
+### Integration tests
+
+Integration tests utilize the `@wdio` suite in conjunction with selenium.  Tests include image comparisons that utilize the baseline images found in *tests/integration/tests/Visual_Baseline/desktop_firefox*.  In order to get the tests to run locally, you will need to have the Selenium standalone server installed on your machine:
+```
+brew install selenium-server-standalone
+```
+
+This should auto-install the Java dependency (openjdk), however, it may not be linked correctly.  You can test linkage by running `java -version`.  If your terminal is unable to locate the Java runtime, you can try linking it:
+```
+sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+```
+
+The image comparison tests are very brittle and may not work as expected when running strictly local, given individual machine setups.  You may have better luck running the headless test versions: "test:integration-headless", "test:integration-headless-ci", and "test:integration-docker"
+
+Generating a new baseline image should ideally be done via the docker test to maintain consistency.  To do this, first delete the existing image and then run the docker integration test.  The test should prompt you that the baseline image cannot be found, and indicate the location for an auto-generated image to copy over.  Alternatively, you could also uncomment `autoSaveBaseline: true` in `tests/integration/wdio.docker.js` to have the image automatically copy/paste into `tests/integration/tests/Visual_Baseline/desktop_firefox`.
+
 ### Test Firefox Integration
 
 Firefox's internal about:protections page ("Protections Dashboard") fetches and

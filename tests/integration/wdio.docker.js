@@ -12,6 +12,7 @@ exports.config = Object.assign({}, common.config, {
     formatImageName: process.env.MOZ_HEADLESS ? "{tag}-headless-{width}x{height}" : "{tag}-{width}x{height}",
     screenshotPath: join(process.cwd(), ".tmp/"),
     savePerInstance: true,
+    // autoSaveBaseline: true,
   }]],
   dockerOptions: {
     image: "selenium/standalone-firefox",
