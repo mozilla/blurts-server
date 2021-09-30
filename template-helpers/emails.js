@@ -298,7 +298,8 @@ function showProducts(args) {
   switch (true) {
     case whichPartial === "email_partials/email_verify":
     case supportedLocales[0] === "zh-CN":
-      return; // don't show products for cases above
+    case Boolean(args.data.root.breachAlert):
+      return; // don't show products partial for the cases above
   }
 
   return args.fn({
