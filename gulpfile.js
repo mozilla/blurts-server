@@ -3,6 +3,7 @@
 const { src, watch, series, dest } = require("gulp");
 const sass = require("gulp-sass");
 const del = require("del");
+const sourcemaps = require("gulp-sourcemaps");
 
 // directory for building SCSS, and bundles
 const buildDir = "./public/scss/libs/protocol/";
@@ -23,7 +24,9 @@ function resetCssDirectories() {
 
 function styles() {
     return src("./public/scss/app.scss")
+        .pipe(sourcemaps.init())
         .pipe(sass().on("error", sass.logError))
+        .pipe(sourcemaps.write("."))
         .pipe(dest(finalDir));
 }
 
