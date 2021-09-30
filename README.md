@@ -78,39 +78,39 @@ To create the database tables ...
    npm run db:migrate
    ```
 
-#### Emails
+#### Trigger Breach Alert Email
+Breach alert emails are triggered via HIBP. For dev purposes, we can trigger them ourselves to send to a [Mailinator](https://www.mailinator.com) email address.
 
-The included `.env-dist` sets `DEBUG_DUMMY_SMTP=1` which disables emails.
+To set up your environment for email testing with Mailinator:
+1. In your .env file, confirm or add values for `SMTP_URL`, `EMAIL_FROM`, `HIBP_KANON_API_TOKEN`, and `HIBP_API_TOKEN` (Ask for values in #fx-monitor-engineering)
 
-To send emails, you'll need to unset `DEBUG_DUMMY_SMTP` and supply real SMTP
-config values for sending email.
+2. If you don't have a local FxA account, sign up on localhost.  You'll need to ensure `FXA_ENABLED=true` and confirm/add the value for `OAUTH_CLIENT_SECRET` in your .env file. (Ask in #fx-monitor-engineering)
 
-You can set and source these via the `.env` file, or set them directly:
+3. Start/restart your server
 
-```sh
-export DEBUG_DUMMY_SMTP=
-export SMTP_HOST=<your-smtp-host>
-export SMTP_PORT=<your-smtp-port>
-export SMTP_USERNAME=<your-username>
-export SMTP_PASSWORD=<your-password>
-```
+4. Login to your Monitor account at http://localhost:6060/, and scroll to the bottom of [your dashboard](http://localhost:6060/user/dashboard) to add localmonitor20200827@mailinator.com to your list of monitored email addresses
 
-##### Trigger a breach alert email
-To trigger a breach alert email, you need to make a `POST /hibp/notify` request:
+5. In your [Monitor settings](http://localhost:6060/user/dashboard), make sure notification preferences specify "Send breach alerts to the affected email address" (should be default).  This will send the alert to the Mailinator account.
 
-* `Authorization: Bearer` header token value that matches `HIBP_NOTIFY_TOKEN`
-* `Content-Type: application/json` header
-* JSON body with `breachName`, `hashPrefix`, and `hashSuffix` values
-  * `breachName` - string of a breach name in Monitor
-  * `hashPrefix` - string of first 6 chars of a subscriber's `primary_sha1`
-  * `hashSuffix` - array of strings of the remaining chars of the sha1 hash
+   You *could* set it to forward to your main email address/account (e.g. Gmail), but localhost images will be broken.  The Mailinator account displays existing images automagically.
 
-E.g., a localhost `curl` command that triggers a breach alert email for the
-Adobe breach to the `localmonitor20200827@mailinator.com` subscriber:
+6. To trigger a breach alert email, you need to make a `POST /hibp/notify` request:
+   * `Authorization: Bearer` header token value that matches `HIBP_NOTIFY_TOKEN`
+   * `Content-Type: application/json` header
+   * JSON body with `breachName`, `hashPrefix`, and `hashSuffix` values
+      * `breachName` - string of a breach name in Monitor
+      * `hashPrefix` - string of first 6 chars of a subscriber's `primary_sha1`
+      * `hashSuffix` - array of strings of the remaining chars of the sha1 hash
 
-```
-curl -v -H "Authorization: Bearer unsafe-default-token-for-dev" -H "Content-Type: application/json" -d '{"breachName": "Adobe", "hashPrefix": "365050", "hashSuffixes": ["53cbb89874fc738c0512daf12bc4d91765"]}' http://localhost:6060/hibp/notify
-```
+   e.g., a localhost `curl` command that triggers a breach alert email for the Adobe breach to the `localmonitor20200827@mailinator.com` subscriber:
+
+   ```
+   curl -v -H "Authorization: Bearer unsafe-default-token-for-dev" -H "Content-Type: application/json" -d '{"breachName": "Adobe", "hashPrefix": "365050", "hashSuffixes": ["53cbb89874fc738c0512daf12bc4d91765"]}' http://localhost:6060/hibp/notify
+   ```
+
+7. Visit https://www.mailinator.com/v4/public/inboxes.jsp?to=localmonitor20200827# to view the email
+
+
 
 #### Firefox Accounts
 
@@ -138,6 +138,22 @@ To run tests with interactive `debugger` lines enabled:
 ```
 NODE_ENV=tests node inspect --harmony ./node_modules/.bin/jest tests/home.test.js
 ```
+
+### Integration tests
+
+Integration tests utilize the `@wdio` suite in conjunction with selenium.  Tests include image comparisons that utilize the baseline images found in *tests/integration/tests/Visual_Baseline/desktop_firefox*.  In order to get the tests to run locally, you will need to have the Selenium standalone server installed on your machine:
+```
+brew install selenium-server-standalone
+```
+
+This should auto-install the Java dependency (openjdk), however, it may not be linked correctly.  You can test linkage by running `java -version`.  If your terminal is unable to locate the Java runtime, you can try linking it:
+```
+sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
+```
+
+The image comparison tests are very brittle and may not work as expected when running strictly local, given individual machine setups.  You may have better luck running the headless test versions: "test:integration-headless", "test:integration-headless-ci", and "test:integration-docker"
+
+Generating a new baseline image should ideally be done via the docker test to maintain consistency.  To do this, first delete the existing image and then run the docker integration test.  The test should prompt you that the baseline image cannot be found, and indicate the location for an auto-generated image to copy over.  Alternatively, you could also uncomment `autoSaveBaseline: true` in `tests/integration/wdio.docker.js` to have the image automatically copy/paste into `tests/integration/tests/Visual_Baseline/desktop_firefox`.
 
 ### Test Firefox Integration
 
