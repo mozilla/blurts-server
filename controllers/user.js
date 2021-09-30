@@ -676,6 +676,13 @@ async function getRemoveMoreTimePage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  }
+
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
@@ -686,6 +693,8 @@ async function getRemoveMoreTimePage(req, res) {
     whichPartial: "dashboards/remove-more-time",
     experimentFlags,
     utmOverrides,
+    removeData,
+    removeAcctInfo,
   });
 }
 

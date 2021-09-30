@@ -1,8 +1,10 @@
 <main id="remove-confirmation" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
   {{#getBreachStats}}
       {{> dashboards/breach-dash-welcome}}
-      {{> dashboards/breach-dash-tabs activeTab="remove"}}
   {{/getBreachStats}}
+  <div class="mw-860">
+    {{> data-removal/kanary-header}}
+  </div>
   <div class="mw-860 flx flx-col remove-more-time-container">
     <h2 class="remove-more-time-title">{{getString "remove-mt-title"}}</h2>
     <div class="remove-dashboard-card">

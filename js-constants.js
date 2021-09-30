@@ -72,7 +72,10 @@ const JS_CONSTANTS = {
     "zabasearch.com",
     "peoplebyname.com",
   ],
-
+  REMOVAL_ENROLLMENT_END_DAY: 30, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PMT_DAY: 45, //days from pilot start to showing the willingness to pay option
+  REMOVAL_PMT_DECISION_DAY: 65, //days from pilot start to no longer displaying the pmt choice screen
+  REMOVAL_END_DAY: 90, //days from pilot start to when the pilot ends
   REMOVAL_STEP: {
     FOUND: {
       //
