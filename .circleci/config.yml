@@ -5,8 +5,12 @@ jobs:
             - image: circleci/node:14
         steps:
             - checkout
-            - run: npm install
-            - run: npm run lint
+            - run: 
+                name: Install dependencies
+                command: npm install
+            - run: 
+                name: Lint JS and CSS
+                command: npm run lint
     lint-l10n:
         docker:
             - image: cimg/python:3.9.7
