@@ -71,11 +71,14 @@ jobs:
                 command: |
                     export NVM_DIR="/opt/circleci/.nvm"
                     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    nvm install 14.17 --default
+                    nvm install 14.17 --default --latest-npm
                     node -v
+                    npm -v
+                    npm install npm@7
+                    npm -v
                     cp .env-dist .env
                     npm install
-                    npm install --only=dev
+                    npm -v
                     sudo chown -R  $USER:$USER .
                     mkdir ./tests/integration/errorShots
                     docker-compose -f tests/integration/docker-compose.yml up --build -d

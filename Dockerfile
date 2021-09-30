@@ -3,6 +3,10 @@ FROM node:14-alpine
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app
 RUN npm update -g
+RUN npm install npm@7
+RUN rm -rf /usr/local/lib/node_modules/npm
+RUN mv node_modules/npm /usr/local/lib/node_modules/npm
+RUN npm -v
 RUN rm -rf /tmp/*
 
 WORKDIR /app
