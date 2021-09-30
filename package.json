@@ -67,7 +67,7 @@
     "stylelint-config-standard": "18.3.0",
     "stylelint-scss": "^3.19.0",
     "wdio-docker-service": "2.4.0",
-    "wdio-image-comparison-service": "1.13.6",
+    "wdio-image-comparison-service": "^3.0.0",
     "wdio-video-reporter": "2.0.1"
   },
   "engines": {
