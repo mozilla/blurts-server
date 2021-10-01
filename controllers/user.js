@@ -24,11 +24,9 @@ const { JS_CONSTANTS, REMOVAL_STATUS } = require("../js-constants");
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function handleEnrollFormSignup(req, res) {
-  //TODO: validate form data
-
   const { privacy } = req.body;
-  console.log(privacy);
   const isFull = true; //MH TODO: Temp - need to check this against database
+  //MH TODO: log enroll timestamp to DB
   let nextPage;
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
