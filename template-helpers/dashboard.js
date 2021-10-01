@@ -143,6 +143,9 @@ function assignRemovalFilters(removeResults) {
 
 function localizeRemoveStatus(removeResults, locales) {
   removeResults.forEach((result) => {
+    if (!result || !result.current_step) {
+      console.log("no step", result);
+    }
     if (
       JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
       JS_CONSTANTS.REMOVAL_STEP[result.current_step.locale_var]
