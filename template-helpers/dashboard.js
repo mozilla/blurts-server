@@ -142,8 +142,6 @@ function assignRemovalFilters(removeResults) {
 }
 
 function localizeRemoveStatus(removeResults, locales) {
-  console.log("jsConst", JS_CONSTANTS.REMOVAL_STEP);
-  console.log("await", JS_CONSTANTS.REMOVAL_STEP["AWAITING_REVIEW"]);
   removeResults.forEach((result) => {
     if (
       JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
@@ -154,7 +152,7 @@ function localizeRemoveStatus(removeResults, locales) {
         JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
       );
     } else {
-      console.log("localize", JS_CONSTANTS.REMOVAL_STEP[result.current_step]);
+      console.log("localize", result);
       result.current_step_text = sentenceCase(result.current_step);
     }
   });
