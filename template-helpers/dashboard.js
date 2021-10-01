@@ -152,7 +152,6 @@ function localizeRemoveStatus(removeResults, locales) {
         JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
       );
     } else {
-      console.log("localize", result);
       result.current_step_text = sentenceCase(result.current_step);
     }
   });
