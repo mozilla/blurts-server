@@ -104,6 +104,8 @@ function onEnrollFormSubmitClick(e) {
     .then((data) => {
       if (data.nextPage) {
         window.location = data.nextPage; //MH TODO: probably should be doing this through the router on backend?
+      } else if (data.error) {
+        alert(data.error);
       } else {
         console.error("there was an error in the response", data);
       }

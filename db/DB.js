@@ -7,6 +7,7 @@ const { attachPaginate } = require("knex-paginate");
 
 const { FluentError } = require("../locale-utils");
 const AppConstants = require("../app-constants");
+const { JS_CONSTANTS } = require("../js-constants");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const getSha1 = require("../sha1-utils");
@@ -389,6 +390,15 @@ const DB = {
     return kid;
   },
 
+  async getRemovalPilotByName(pilot_name) {
+    const res = await knex("removal_pilot")
+      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .catch((e) => {
+        console.error("error retrieving pilot record", e);
+      });
+    return res[0];
+  },
+
   async setRemovalEnrollTime(user, ts) {
     await knex("subscribers")
       .where("id", user.id)
@@ -399,6 +409,15 @@ const DB = {
         console.error("error setting removal enrolled time", e);
       });
     return ts;
+  },
+
+  async incrementRemovalEnrolledUsers(user, ts) {
+    return await knex("removal_pilot")
+      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .increment("enrolled_users", 1)
+      .catch((e) => {
+        console.error("error incrementing enrolled users", e);
+      });
   },
 
   async removeSubscriber(subscriber) {

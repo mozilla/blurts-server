@@ -5,7 +5,7 @@ const isemail = require("isemail");
 
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
-const { FluentError } = require("../locale-utils");
+const { FluentError, LocaleUtils } = require("../locale-utils");
 const { FormUtils } = require("../form-utils");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
@@ -23,19 +23,36 @@ const { JS_CONSTANTS, REMOVAL_STATUS } = require("../js-constants");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
+async function checkIfRemovalPilotFull() {
+  const curPilot = await DB.getRemovalPilotByName(
+    JS_CONSTANTS.REMOVAL_PILOT_GROUP
+  );
+  return curPilot.enrolled_users >= JS_CONSTANTS.REMOVAL_PILOT_MAX_USERS; //full if enrolled users exceed the max set in our constants file for the current group
+}
+
 async function handleEnrollFormSignup(req, res) {
   const { privacy } = req.body;
-  const isFull = false; //MH TODO: Temp - need to check this against database
   const user = req.user;
+  let nextPage; //where do we send the user next
 
-  let nextPage;
+  const isFull = await checkIfRemovalPilotFull();
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
+    return res.json({ nextPage: nextPage });
+  } else if (user.removal_enrolled_time) {
+    //if user has already enrolled
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-enroll-error-is_enrolled"
+    );
+    return res.json({ error: localeError });
   } else {
     const ts = await DB.setRemovalEnrollTime(user, new Date().toISOString());
+    console.log("enroll time", ts);
+    await DB.incrementRemovalEnrolledUsers();
     nextPage = "/user/remove-data"; //MH TODO: show success screen or just send them straight to the form?
+    return res.json({ nextPage: nextPage });
   }
-  return res.json({ nextPage: nextPage });
 }
 
 async function handleRemoveFormSignup(req, res) {
@@ -677,6 +694,11 @@ async function getRemoveDeleteConfirmationPage(req, res) {
 
 async function getRemoveEnrollPage(req, res) {
   const user = req.user;
+
+  if (!req.query.show_form && (user.removal_enrolled_time || user.kid)) {
+    //user already has data indicating they are enrolled in the pilot - skip the enroll page
+    res.redirect("/user/remove-data");
+  }
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,

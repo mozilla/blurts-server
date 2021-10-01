@@ -509,6 +509,7 @@ remove-enroll-submit = Join the pilot
 remove-enroll-full-title = Enrollment in the Pilot is Full
 remove-enroll-full-description = Thank you for your interest in Mozilla’s Data Removal Service powered by Kanary. 
   Unfortunately, the pilot program is at capacity
+remove-enroll-error-is_enrolled = User is already enrolled
 
 show-breaches-for-this-email = Show all breaches for this email.
 
