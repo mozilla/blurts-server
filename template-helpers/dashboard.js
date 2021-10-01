@@ -147,11 +147,11 @@ function localizeRemoveStatus(removeResults, locales) {
   removeResults.forEach((result) => {
     if (
       JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
-      JS_CONSTANTS.REMOVAL_STEP[result.current_step.locale_var]
+      JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
     ) {
       result.current_step_text = LocaleUtils.fluentFormat(
         locales,
-        JS_CONSTANTS.REMOVAL_STEP[result.current_step.locale_var]
+        JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
       );
     } else {
       console.log("localize", JS_CONSTANTS.REMOVAL_STEP[result.current_step]);
