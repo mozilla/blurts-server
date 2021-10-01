@@ -455,6 +455,7 @@ remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
 
 # remove steps
+remove-step-awaiting-scan = Awaiting scan
 remove-step-found = Information found
 remove-step-awaiting-removal = Awaiting removal
 remove-step-submitted = Removal request submitted

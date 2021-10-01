@@ -78,15 +78,17 @@ const JS_CONSTANTS = {
   REMOVAL_PMT_DECISION_DAY: 65, //days from pilot start to no longer displaying the pmt choice screen
   REMOVAL_END_DAY: 90, //days from pilot start to when the pilot ends
   REMOVAL_STEP: {
+    AWAITING_SCAN: {
+      locale_var: "remove-step-awaiting-scan",
+      code: "AWAITING_SCAN",
+      filter: REMOVAL_STATUS["ACTIVE"],
+    },
     FOUND: {
-      //
       locale_var: "remove-step-found",
       code: "FOUND",
-      text: "Information found",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     AWAITING_REMOVAL: {
-      //
       locale_var: "remove-step-awaiting-removal",
       code: "AWAITING_REMOVAL",
       filter: REMOVAL_STATUS["ACTIVE"],
@@ -97,19 +99,16 @@ const JS_CONSTANTS = {
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     AWAITING_REVIEW: {
-      //
       locale_var: "remove-step-awaiting-review",
       code: "AWAITING_REVIEW",
       filter: REMOVAL_STATUS["ACTIVE"],
     },
     REMOVED: {
-      //
       locale_var: "remove-step-removed",
       code: "REMOVED",
       filter: REMOVAL_STATUS["COMPLETE"],
     },
     BLOCKED: {
-      //
       locale_var: "remove-step-blocked",
       code: "BLOCKED",
       filter: REMOVAL_STATUS["ACTIVE"],
