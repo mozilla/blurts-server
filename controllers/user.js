@@ -25,12 +25,14 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 async function handleEnrollFormSignup(req, res) {
   const { privacy } = req.body;
-  const isFull = true; //MH TODO: Temp - need to check this against database
-  //MH TODO: log enroll timestamp to DB
+  const isFull = false; //MH TODO: Temp - need to check this against database
+  const user = req.user;
+
   let nextPage;
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
   } else {
+    const ts = await DB.setRemovalEnrollTime(user, new Date().toISOString());
     nextPage = "/user/remove-data"; //MH TODO: show success screen or just send them straight to the form?
   }
   return res.json({ nextPage: nextPage });

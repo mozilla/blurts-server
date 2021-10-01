@@ -389,6 +389,18 @@ const DB = {
     return kid;
   },
 
+  async setRemovalEnrollTime(user, ts) {
+    await knex("subscribers")
+      .where("id", user.id)
+      .update({
+        removal_enrolled_time: ts,
+      })
+      .catch((e) => {
+        console.error("error setting removal enrolled time", e);
+      });
+    return ts;
+  },
+
   async removeSubscriber(subscriber) {
     await knex("email_addresses").where({ subscriber_id: subscriber.id }).del();
     await knex("subscribers").where({ id: subscriber.id }).del();
