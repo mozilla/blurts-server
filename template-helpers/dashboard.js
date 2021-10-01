@@ -143,11 +143,16 @@ function assignRemovalFilters(removeResults) {
 
 function localizeRemoveStatus(removeResults, locales) {
   removeResults.forEach((result) => {
-    console.log("localize", result);
-    const localeVar = JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var;
-    if (localeVar) {
-      result.current_step_text = LocaleUtils.fluentFormat(locales, localeVar);
+    if (
+      JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
+      JS_CONSTANTS.REMOVAL_STEP[result.current_step.locale_var]
+    ) {
+      result.current_step_text = LocaleUtils.fluentFormat(
+        locales,
+        JS_CONSTANTS.REMOVAL_STEP[result.current_step.locale_var]
+      );
     } else {
+      console.log("localize", result.current_step);
       result.current_step_text = sentenceCase(result.current_step);
     }
   });
