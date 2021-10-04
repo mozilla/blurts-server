@@ -1,16 +1,38 @@
 version: 2.0
 jobs:
-    lint-js-css:
+    lint-js:
         docker:
-            - image: circleci/node:14
+            - image: circleci/node:14.17
         steps:
             - checkout
             - run: 
                 name: Install dependencies
                 command: npm install
             - run: 
-                name: Lint JS and CSS
-                command: npm run lint
+                name: Lint JS
+                command: npm run lint:js
+    lint-css:
+        docker:
+            - image: circleci/node:14.17
+        steps:
+            - checkout
+            - run: 
+                name: Install dependencies
+                command: npm install
+            - run: 
+                name: Lint CSS
+                command: npm run lint:css
+    lint-audit:
+        docker:
+            - image: circleci/node:14.17
+        steps:
+            - checkout
+            - run: 
+                name: Install dependencies
+                command: npm install
+            - run: 
+                name: npm audit
+                command: npm run lint:audit
     lint-l10n:
         docker:
             - image: cimg/python:3.9.7
@@ -167,7 +189,9 @@ workflows:
   version: 2
   build-test-deploy:
     jobs:
-      - lint-js-css
+      - lint-js
+      - lint-css
+      - lint-audit
       - lint-l10n
       - build:
           filters:
