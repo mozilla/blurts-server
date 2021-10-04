@@ -50,6 +50,17 @@
   }
 }
 
+@mixin ff-inter {
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
+}
+
 @mixin ff-metropolis {
   font-family: "Metropolis", sans-serif;
 }
@@ -70,6 +81,25 @@
   &:focus {
     background-color: var(--blue4);
   }
+}
+
+@mixin remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include ff-metropolis;
+
+  text-align: center;
+}
+
+@mixin remove-container {
+  background-color: white;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  margin-top: 72px;
+  border-radius: 8px;
+  position: relative;
 }
 
 @mixin blue-link {

@@ -1,0 +1,19 @@
+.remove-enroll {
+  &-container {
+    @include remove-container;
+
+    p {
+      line-height: 24px;
+    }
+  }
+
+  &-kanary-container {
+    position: absolute;
+    top: 0;
+    right: 36px;
+  }
+
+  &-submit {
+    margin-top: 25px;
+  }
+}

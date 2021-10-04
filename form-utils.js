@@ -41,6 +41,14 @@ const FormUtils = {
 
     return readableDate;
   },
+  getDaysFromTimestamp(ts, numDays) {
+    const curDate = new Date(ts * 1000); //days to ms
+    return new Date(
+      curDate.getFullYear(),
+      curDate.getMonth(),
+      curDate.getDate() + numDays
+    );
+  },
 };
 
 module.exports = {

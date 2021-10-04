@@ -1,11 +1,37 @@
-<main id="remove-confirmation" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+<main id="remove-more-time" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
   {{#getBreachStats}}
       {{> dashboards/breach-dash-welcome}}
-      {{> dashboards/breach-dash-tabs activeTab="remove"}}
   {{/getBreachStats}}
-  <div class="flx flx-col">
-    <div class="mw-860 flx flx-col remove-dashboard-section">
-      Hello
+  <div class="mw-860">
+    {{> data-removal/kanary-header}}
+  </div>
+  <div class="mw-860 flx flx-col remove-more-time-container">
+    <h2 class="remove-more-time-title">{{getString "remove-mt-title"}}</h2>
+    <div class="remove-dashboard-card">
+      <div class="remove-dashboard-card-border flx">
+        <p>{{getString "remove-mt-intro"}}</p>
+      </div>
+    </div>
+    <div class="remove-more-time-options flx space-between">
+      <div class="remove-more-time-option-description remove-more-time-col">
+          <p class="bold">{{getString "remove-mt-option1-title"}}</p>
+          <p>{{getString "remove-mt-option1-description"}}</p>
+      </div>
+      <div class="remove-more-time-option-description remove-more-time-col">
+          <p class="bold">{{getString "remove-mt-option2-title"}}</p>
+          <p>{{getString "remove-mt-option2-description"}}</p>
+      </div>
+    </div>
+    <div class="remove-more-time-selections flx space-between">
+      <a class="remove-more-time-button remove-more-time-col continue" role="button" href="#">
+        {{getString "remove-mt-option1-btn"}}
+      </a>
+      <a class="remove-more-time-button remove-more-time-col cancel" role="button" href="#">
+        {{getString "remove-mt-option2-btn"}}
+      </a>
+    </div>
+    <div class="flx flx-end">
+      <p class="remove-more-time-small remove-more-time-col">{{getString "remove-mt-option2-smalltext"}}</p>
     </div>
   </div>
   {{> dashboards/remove-form-kanary-footer}}

@@ -1,0 +1,20 @@
+<main id="remove-enroll" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  <div class="mw-860 flx flx-col remove-enroll-container">
+    <div class="remove-enroll-kanary-container">{{> data-removal/kanary-header}}</div>
+    <h2 class="remove-enroll-title">{{getString "remove-enroll-title"}}</h2>
+    <p>{{getString "remove-mt-intro"}}</p>
+    <h3 class="remove-enroll-heading">{{getString "remove-enroll-description-title"}}</h3>
+    <p>{{getString "remove-enroll-description"}}</p>
+    <h3 class="remove-enroll-heading">{{getString "remove-enroll-terms-title"}}</h3>
+    <p>{{getString "remove-enroll-terms"}}</p>
+    <div class="flx">
+      <form id="remove-enroll-form" action="/user/remove-enroll-submit">
+        <input required id="remove-enroll-terms-checkbox" class="input-group-checkbox" type="checkbox" name="privacy">
+        <label for="remve-enroll-terms-checkbox" class="required">{{getString "remove-enroll-terms-agreement"}}</label>
+        <input id="" class="js-enroll-submit remove-enroll-submit" type="submit" value="{{getString "remove-enroll-submit"}}"/>
+      </form>
+    </div>
+  </div>
+  {{> dashboards/remove-form-kanary-footer}}
+</main>
+

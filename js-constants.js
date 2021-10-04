@@ -20,6 +20,7 @@ const REMOVAL_STATUS = {
 
 const JS_CONSTANTS = {
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
+  REMOVE_ROUTES: ["/user/remove-data", "/user/remove-enroll"],
   REMOVAL_SITES: [
     "anywho.com",
     "backgroundalert.com",
@@ -72,7 +73,13 @@ const JS_CONSTANTS = {
     "zabasearch.com",
     "peoplebyname.com",
   ],
-
+  REMOVAL_PILOT_START_TIME: 1634108460, //10/13/2021 - 7:00am GMT - timestamp when the pilot started (can generate a timestamp from a calendar date at https://www.epochconverter.com/)
+  REMOVAL_PILOT_MAX_USERS: 500, //max number of users allowed in this pilot group
+  REMOVAL_PILOT_ENROLLMENT_END_DAY: 30, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PILOT_PMT_DAY: 45, //days from pilot start to showing the willingness to pay option
+  REMOVAL_PILOT_PMT_DECISION_DAY: 65, //days from pilot start to no longer displaying the pmt choice screen
+  REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
+  REMOVAL_PILOT_GROUP: "round_01", //name of the current pilot group
   REMOVAL_STEP: {
     AWAITING_SCAN: {
       locale_var: "remove-step-awaiting-scan",
