@@ -686,6 +686,10 @@ function logout(req, res) {
 async function getRemovePage(req, res) {
   const user = req.user;
 
+  if (!checkIfEnrolledInRemovalPilot(user)) {
+    return res.redirect("/user/remove-enroll");
+  }
+
   if (checkIfRemovalPilotEnded()) {
     //if the pilot is over, redirect to the end screen
     return res.redirect("/user/remove-pilot-ended");
@@ -1275,6 +1279,10 @@ function checkIfRemovalPilotEnded() {
   } else {
     return false;
   }
+}
+
+function checkIfEnrolledInRemovalPilot(user) {
+  return user.removal_enrolled_time;
 }
 
 function checkIfRemoveDisplayMoreTime() {
