@@ -1,55 +1,47 @@
-version: 2.0
-jobs:
-    code-checkout:
+version: 2.1
+
+orbs:
+    node: circleci/node@4.7.0
+    python: circleci/python@1.4.0
+
+executors:
+    node:
         docker:
-            - image: alpine:3.7
+            - image: cimg/node:14.17
+    python:
+        docker:
+            - image: cimg/python:3.9.7
+
+jobs:
+    lint-js:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm run lint:js
+    lint-css:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm run lint:css
+    lint-audit:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm run lint:audit
+    lint-l10n:
+        executor: python
         steps:
             - checkout
             - run:
-                  name: Checkout code
-                  command: |
-                      ls -al
-                      echo '✔ Checkout success'
-    lint-js:
-        docker:
-            - image: circleci/node:14.17
-        steps:
-            - run:
-                  name: Install dependencies
-                  command: npm install
-            - run:
-                  name: Lint JS
-                  command: npm run lint:js
-    lint-css:
-        docker:
-            - image: circleci/node:14.17
-        steps:
-            - run:
-                  name: Install dependencies
-                  command: npm install
-            - run:
-                  name: Lint CSS
-                  command: npm run lint:css
-    lint-audit:
-        docker:
-            - image: circleci/node:14.17
-        steps:
-            - run:
-                  name: Install dependencies
-                  command: npm install
-            - run:
-                  name: npm audit
-                  command: npm run lint:audit
-    lint-l10n:
-        docker:
-            - image: cimg/python:3.9.7
-        steps:
-            - run:
-                  name: Install dependencies
-                  command: |
-                      sudo apt update
-                      sudo apt install -y python3-pip
-                      sudo pip install compare-locales
+                command: |
+                    pip install pipreqs
+                    pipreqs ~/project
+            - python/install-packages:
+                args: compare-locales
+                pkg-manager: 'pip'
             - run:
                   name: Lint and compare locales
                   command: |
@@ -177,8 +169,7 @@ jobs:
                           docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
                       fi
     deploy_static:
-        docker:
-            - image: circleci/python:3.8
+        executor: python
         steps:
             - checkout
             - run:
@@ -192,22 +183,14 @@ jobs:
                       ./.circleci/scripts/sync-static
 
 workflows:
-    version: 2
+    Test Workflow:
+        jobs:
+        - lint-js
+        - lint-css
+        - lint-audit
+        - lint-l10n
     build-test-deploy:
         jobs:
-            - code-checkout
-            - lint-js:
-                requires:
-                    - code-checkout
-            - lint-css:
-                requires:
-                    - code-checkout
-            - lint-audit:
-                requires:
-                    - code-checkout
-            - lint-l10n:
-                requires:
-                    - code-checkout
             - build:
                   filters:
                       tags:
