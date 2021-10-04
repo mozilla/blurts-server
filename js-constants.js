@@ -73,6 +73,7 @@ const JS_CONSTANTS = {
     "zabasearch.com",
     "peoplebyname.com",
   ],
+  REMOVAL_PILOT_START_TIME: 1634108460, //10/13/2021 - 7:00am GMT - timestamp when the pilot started (can generate a timestamp from a calendar date at https://www.epochconverter.com/)
   REMOVAL_PILOT_MAX_USERS: 500, //max number of users allowed in this pilot group
   REMOVAL_PILOT_ENROLLMENT_END_DAY: 30, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_PMT_DAY: 45, //days from pilot start to showing the willingness to pay option

@@ -11,18 +11,8 @@ const {
   verify,
   logout,
   getDashboard,
-  getRemovePage,
-  getRemoveConfirmationPage,
-  getRemoveUpdateConfirmationPage,
-  getRemoveDeleteConfirmationPage,
-  getRemoveMoreTimePage,
-  getRemoveEnrollPage,
-  getRemoveEnrollFullPage,
   getPreferences,
   getBreachStats,
-  handleRemoveFormSignup,
-  handleEnrollFormSignup,
-  handleRemoveAcctUpdate,
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
@@ -30,11 +20,24 @@ const {
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
+  postResolveBreach,
+  getRemovePage, //data removal pilot routes
+  getRemoveConfirmationPage,
+  getRemoveUpdateConfirmationPage,
+  getRemoveDeleteConfirmationPage,
+  getRemoveMoreTimePage,
+  getRemoveEnrollPage,
+  getRemoveEnrolledPage,
+  getRemoveEnrollFullPage,
+  getRemoveEnrollEndedPage,
+  getRemovePilotEndedPage,
+  handleRemoveFormSignup,
+  handleRemoveEnrollFormSignup,
+  handleRemoveAcctUpdate,
   getRemoveKan,
   postRemoveKan,
   getRemoveSitesList,
   getRemoveRiskLevel,
-  postResolveBreach,
 } = require("../controllers/user");
 
 const router = express.Router();
@@ -90,11 +93,18 @@ router.get(
   asyncMiddleware(getRemoveEnrollPage)
 );
 
+router.get(
+  "/remove-enrolled",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveEnrolledPage)
+);
+
 router.post(
   "/remove-enroll-submit",
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(handleEnrollFormSignup)
+  asyncMiddleware(handleRemoveEnrollFormSignup)
 );
 
 router.get(
@@ -102,6 +112,20 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveEnrollFullPage)
+);
+
+router.get(
+  "/remove-enroll-ended",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveEnrollEndedPage)
+);
+
+router.get(
+  "/remove-pilot-ended",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemovePilotEndedPage)
 );
 
 router.get(
@@ -124,7 +148,6 @@ router.post(
 router.post(
   "/remove-data-submit",
   urlEncodedParser,
-  //csrfProtection, //MH TODO: figure out how to use this
   requireSessionUser,
   asyncMiddleware(handleRemoveFormSignup)
 );
@@ -132,7 +155,6 @@ router.post(
 router.post(
   "/remove-acct-update",
   urlEncodedParser,
-  //csrfProtection, //MH TODO: figure out how to use this
   requireSessionUser,
   asyncMiddleware(handleRemoveAcctUpdate)
 );

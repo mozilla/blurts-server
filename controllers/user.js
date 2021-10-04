@@ -23,183 +23,6 @@ const { JS_CONSTANTS, REMOVAL_STATUS } = require("../js-constants");
 
 const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
-async function checkIfRemovalPilotFull() {
-  const curPilot = await DB.getRemovalPilotByName(
-    JS_CONSTANTS.REMOVAL_PILOT_GROUP
-  );
-  return curPilot.enrolled_users >= JS_CONSTANTS.REMOVAL_PILOT_MAX_USERS; //full if enrolled users exceed the max set in our constants file for the current group
-}
-
-async function handleEnrollFormSignup(req, res) {
-  const { privacy } = req.body;
-  const user = req.user;
-  let nextPage; //where do we send the user next
-
-  const isFull = await checkIfRemovalPilotFull();
-  if (isFull) {
-    nextPage = "/user/remove-enroll-full";
-    return res.json({ nextPage: nextPage });
-  } else if (user.removal_enrolled_time) {
-    //if user has already enrolled
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-enroll-error-is_enrolled"
-    );
-    return res.json({ error: localeError });
-  } else {
-    const ts = await DB.setRemovalEnrollTime(user, new Date().toISOString());
-    console.log("enroll time", ts);
-    await DB.incrementRemovalEnrolledUsers();
-    nextPage = "/user/remove-data"; //MH TODO: show success screen or just send them straight to the form?
-    return res.json({ nextPage: nextPage });
-  }
-}
-
-async function handleRemoveFormSignup(req, res) {
-  //TODO: validate form data
-
-  const {
-    account,
-    firstname,
-    lastname,
-    middlename,
-    city,
-    state,
-    country,
-    birthyear,
-  } = req.body;
-
-  const memberList = {
-    members: [
-      {
-        names: [
-          {
-            first_name: firstname,
-            middle_name: middlename ? middlename : null,
-            last_name: lastname,
-          },
-        ],
-        addresses: [
-          {
-            city: city,
-            state: state,
-            country: country,
-          },
-        ],
-        emails: [
-          {
-            email: account,
-          },
-        ],
-        birth_year: parseInt(birthyear),
-      },
-    ],
-  };
-
-  const jsonMemberList = JSON.stringify(memberList);
-
-  const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
-  console.log("memberID", memberID);
-  if (!req.user) {
-    console.error("no user");
-  }
-  const user = req.user;
-
-  const kid = await DB.setKanaryID(user, memberID);
-  return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
-}
-
-async function handleKanaryAPISubmission(memberInfo) {
-  return fetch("https://thekanary.com/partner-api/v0/accounts/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-    body: memberInfo,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      //console.log(data);
-      //MH TODO: store data.id in fxa then...
-
-      return data.id;
-    })
-    .catch((error) => {
-      console.error("there was an error posting to the api", error);
-    });
-}
-
-async function handleRemoveAcctUpdate(req, res) {
-  //TODO: validate form data
-
-  const {
-    account,
-    firstname,
-    middlename,
-    lastname,
-    city,
-    state,
-    country,
-    birthyear,
-    id,
-  } = req.body;
-
-  const memberData = {
-    id: parseInt(id),
-    names: [
-      {
-        first_name: firstname,
-        middle_name: middlename ? middlename : null,
-        last_name: lastname,
-      },
-    ],
-    addresses: [
-      {
-        city: city,
-        state: state,
-        country: country,
-      },
-    ],
-    emails: [
-      {
-        email: account,
-      },
-    ],
-    birth_year: parseInt(birthyear),
-  };
-
-  const jsonMemberData = JSON.stringify(memberData);
-  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
-
-  if (memberID) {
-    return res.json({
-      id: memberID,
-      nextPage: "/user/remove-update-confirmation",
-    });
-  } else {
-    console.error("error submitting updates to kanary");
-  }
-}
-
-async function handleKanaryUpdateSubmission(memberInfo, id) {
-  return fetch(`https://thekanary.com/partner-api/v0/members/${id}/`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-    body: memberInfo,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      return data.id;
-    })
-    .catch((error) => {
-      console.error("there was an error posting to the api", error);
-    });
-}
-
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
   const sessionUser = req.user;
@@ -498,467 +321,6 @@ async function getDashboard(req, res) {
   });
 }
 
-async function getRemovePage(req, res) {
-  const user = req.user;
-  let show_form;
-
-  if (req.query && req.query.show_form) {
-    //if we explicitly request display of the form from a param
-    show_form = true;
-  } else if (!user.kid) {
-    //if user has no kanary id yet show the form
-    show_form = true;
-  } else {
-    //show the dashboard instead
-    show_form = false;
-  }
-
-  const allBreaches = req.app.locals.breaches;
-  const countries = req.app.locals.COUNTRIES;
-  const usStates = req.app.locals.US_STATES;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  let removeData = null; //data broker info
-  let removeAcctInfo = null; //acct info
-
-  if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
-    removeAcctInfo = await getRemoveAcctInfo(user.kid);
-    if (!show_form) {
-      removeData.forEach((removeItem) => {
-        removeItem.update_status = FormUtils.convertTimestamp(
-          removeItem.updated_at
-        );
-      });
-    }
-  }
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  let lastAddedEmail = null;
-
-  req.session.user = await DB.setBreachesLastShownNow(user);
-  if (req.session.lastAddedEmail) {
-    lastAddedEmail = req.session.lastAddedEmail;
-    req.session["lastAddedEmail"] = null;
-  }
-
-  let partialString;
-
-  if (show_form) {
-    partialString = "dashboards/remove-form";
-  } else {
-    partialString = "dashboards/remove-dashboard";
-  }
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    lastAddedEmail,
-    verifiedEmails,
-    unverifiedEmails,
-    countries,
-    usStates,
-    userHasSignedUpForRemoveData,
-    removeData,
-    removeAcctInfo,
-    supportedLocalesIncludesEnglish,
-    whichPartial: partialString,
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveConfirmationPage(req, res) {
-  const user = req.user;
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  let lastAddedEmail = null;
-
-  req.session.user = await DB.setBreachesLastShownNow(user);
-  if (req.session.lastAddedEmail) {
-    lastAddedEmail = req.session.lastAddedEmail;
-    req.session["lastAddedEmail"] = null;
-  }
-
-  let removeData,
-    removeAcctInfo = null; //data broker info
-  if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
-    removeAcctInfo = await getRemoveAcctInfo(user.kid);
-  }
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    lastAddedEmail,
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-signup-confirmation",
-    experimentFlags,
-    utmOverrides,
-    removeData,
-    removeAcctInfo,
-  });
-}
-
-async function getRemoveUpdateConfirmationPage(req, res) {
-  const user = req.user;
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  let removeData,
-    removeAcctInfo = null; //data broker info
-  if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
-    removeAcctInfo = await getRemoveAcctInfo(user.kid);
-  }
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-update-confirmation",
-    experimentFlags,
-    utmOverrides,
-    removeData,
-    removeAcctInfo,
-  });
-}
-
-async function getRemoveDeleteConfirmationPage(req, res) {
-  const user = req.user;
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-delete-confirmation",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveEnrollPage(req, res) {
-  const user = req.user;
-
-  if (!req.query.show_form && (user.removal_enrolled_time || user.kid)) {
-    //user already has data indicating they are enrolled in the pilot - skip the enroll page
-    res.redirect("/user/remove-data");
-  }
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-enroll",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveEnrollFullPage(req, res) {
-  const user = req.user;
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-enroll-full",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveMoreTimePage(req, res) {
-  const user = req.user;
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  let removeData,
-    removeAcctInfo = null; //data broker info
-  if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
-    removeAcctInfo = await getRemoveAcctInfo(user.kid);
-  }
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-more-time",
-    experimentFlags,
-    utmOverrides,
-    removeData,
-    removeAcctInfo,
-  });
-}
-
-function alphabetizeByBroker(data) {
-  return data.sort(function (a, b) {
-    if (a.broker < b.broker) {
-      return -1;
-    }
-    if (a.broker > b.broker) {
-      return 1;
-    }
-    return 0;
-  });
-}
-
-function sortRemovalData(removalData) {
-  const completeItems = removalData.filter((removalItem) => {
-    return removalItem.status === REMOVAL_STATUS["COMPLETE"].id;
-  });
-
-  alphabetizeByBroker(completeItems);
-
-  const blockedItems = removalData.filter((removalItem) => {
-    return (
-      removalItem.current_step === JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
-    );
-  });
-
-  alphabetizeByBroker(blockedItems);
-
-  const activeItems = removalData.filter((removalItem) => {
-    return (
-      removalItem.status !== REMOVAL_STATUS["COMPLETE"].id &&
-      removalItem.current_step !== JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
-    );
-  });
-
-  alphabetizeByBroker(activeItems);
-
-  const sortedData = [...completeItems, ...activeItems, ...blockedItems];
-
-  return sortedData;
-}
-
-async function getRemoveDashData(kanary_id) {
-  return fetch(
-    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      //console.log("reports", json);
-
-      if (json.length) {
-        const reportID = json[0].id; //MH - assuming this is the newest?
-        return reportID;
-      } else {
-        console.error("no reports available");
-        return null;
-      }
-    })
-    .then((reportID) => {
-      if (reportID) {
-        return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-            },
-          }
-        );
-      } else {
-        //throw "No reports available";
-        console.log("No reports available");
-      }
-    })
-    .then((res) => {
-      if (res && res.json) {
-        return res.json();
-      } else {
-        console.log("No reports available");
-      }
-    })
-    .then((json) => {
-      if (json && json.url_matches) {
-        return sortRemovalData(json.url_matches);
-      } else {
-        return [];
-      }
-    })
-    .catch((error) => {
-      console.error(
-        "there was an error getting reports for this account",
-        error
-      );
-    });
-}
-
-async function getRemoveAcctInfo(kanary_id) {
-  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      //console.log("accounts", json);
-
-      if (json.members && json.members.length) {
-        return json.members[0];
-      } else {
-        console.error("no account info available");
-        return null;
-      }
-    })
-    .catch((error) => {
-      console.error(
-        "there was an error getting account info for this account",
-        error
-      );
-    });
-}
-
-async function removeKanaryAcct(kanary_id) {
-  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-  })
-    .then((res) => {
-      if (res.ok) {
-        if (res.status === 204) {
-          return "";
-        } else if (res.status === 200) {
-          return res.json();
-        }
-      } else {
-        console.error("there was an error deleting the account");
-      }
-    })
-    .then((json) => {
-      //return json;
-      if (json.terminated_at) {
-        //request was successful
-        return json;
-      } else {
-        console.error(
-          "not receiving the expected response from the API for the data removal request"
-        );
-        return null;
-      }
-    })
-    .catch((error) => {
-      console.error("there was an error deleting the account", error);
-    });
-}
-
 async function _verify(req) {
   const verifiedEmailHash = await DB.verifyEmailHash(req.query.token);
   let unsafeBreachesForEmail = [];
@@ -1067,44 +429,6 @@ async function postRemoveFxm(req, res) {
 
   req.session.destroy();
   res.redirect("/");
-}
-
-async function getRemoveKan(req, res) {
-  const sessionUser = req.user;
-
-  res.render("subpage", {
-    title: req.fluentFormat("remove-kan"),
-    subscriber: sessionUser,
-    whichPartial: "subpages/remove_kan",
-    csrfToken: req.csrfToken(),
-  });
-}
-
-async function getRemoveSitesList(req, res) {
-  const sessionUser = req.user;
-
-  res.render("subpage", {
-    title: req.fluentFormat("remove-sites-list"),
-    subscriber: sessionUser,
-    removal_sites: JS_CONSTANTS.REMOVAL_SITES,
-    whichPartial: "subpages/remove_sites_list",
-    csrfToken: req.csrfToken(),
-  });
-}
-
-async function getRemoveRiskLevel(req, res) {
-  res.render("subpage", {
-    title: req.fluentFormat("remove-risk-heading"),
-    whichPartial: "subpages/remove_risk_level",
-  });
-}
-
-async function postRemoveKan(req, res) {
-  const sessionUser = req.user;
-  //await removeKanaryAcct(2888); //MH - to hardcode an account to delete to avoid deleting your current account
-  await removeKanaryAcct(sessionUser.kid);
-  await DB.removeKan(sessionUser); //current: 2959
-  res.redirect("/user/remove-delete-confirmation");
 }
 
 function _updateResolvedBreaches(options) {
@@ -1357,36 +681,825 @@ function logout(req, res) {
   res.redirect("/");
 }
 
+//DATA REMOVAL PILOT LOGIC
+
+async function getRemovePage(req, res) {
+  const user = req.user;
+
+  if (checkIfRemovalPilotEnded()) {
+    //if the pilot is over, redirect to the end screen
+    return res.redirect("/user/remove-pilot-ended");
+  }
+
+  if (checkIfRemoveDisplayMoreTime()) {
+    return res.redirect("/user/remove-more-time");
+  }
+
+  let show_form;
+
+  if (req.query && req.query.show_form) {
+    //if we explicitly request display of the form from a param
+    show_form = true;
+  } else if (!user.kid) {
+    //if user has no kanary id yet show the form
+    show_form = true;
+  } else {
+    //show the dashboard instead
+    show_form = false;
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const countries = req.app.locals.COUNTRIES;
+  const usStates = req.app.locals.US_STATES;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  let removeData = null; //data broker info
+  let removeAcctInfo = null; //acct info
+
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+    if (!show_form) {
+      removeData.forEach((removeItem) => {
+        removeItem.update_status = FormUtils.convertTimestamp(
+          removeItem.updated_at
+        );
+      });
+    }
+  }
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let lastAddedEmail = null;
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
+
+  let partialString;
+
+  if (show_form) {
+    partialString = "dashboards/remove-form";
+  } else {
+    partialString = "dashboards/remove-dashboard";
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
+    verifiedEmails,
+    unverifiedEmails,
+    countries,
+    usStates,
+    userHasSignedUpForRemoveData,
+    removeData,
+    removeAcctInfo,
+    supportedLocalesIncludesEnglish,
+    whichPartial: partialString,
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveConfirmationPage(req, res) {
+  const user = req.user;
+
+  if (!user.kid) {
+    return res.redirect("/user/remove-data");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let lastAddedEmail = null;
+
+  req.session.user = await DB.setBreachesLastShownNow(user);
+  if (req.session.lastAddedEmail) {
+    lastAddedEmail = req.session.lastAddedEmail;
+    req.session["lastAddedEmail"] = null;
+  }
+
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    lastAddedEmail,
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-signup-confirmation",
+    experimentFlags,
+    utmOverrides,
+    removeData,
+    removeAcctInfo,
+  });
+}
+
+async function getRemoveUpdateConfirmationPage(req, res) {
+  const user = req.user;
+
+  if (!user.kid) {
+    return res.redirect("/user/remove-data");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-update-confirmation",
+    experimentFlags,
+    utmOverrides,
+    removeData,
+    removeAcctInfo,
+  });
+}
+
+async function getRemoveDeleteConfirmationPage(req, res) {
+  const user = req.user;
+
+  if (!user.kid) {
+    return res.redirect("/user/remove-data");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-delete-confirmation",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrollPage(req, res) {
+  const user = req.user;
+
+  const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
+    JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
+    JS_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+  );
+
+  if (!req.query.show_form && (user.removal_enrolled_time || user.kid)) {
+    //user already has data indicating they are enrolled in the pilot - skip the enroll page
+    return res.redirect("/user/remove-data");
+  } else if (new Date() > enrollmentEndDate) {
+    return res.redirect("/user/remove-enroll-ended");
+  }
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrolledPage(req, res) {
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enrolled",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrollFullPage(req, res) {
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll-full",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrollEndedPage(req, res) {
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll-ended",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemovePilotEndedPage(req, res) {
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-pilot-ended",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveMoreTimePage(req, res) {
+  const user = req.user;
+
+  if (!checkIfRemoveDisplayMoreTime() || !user.kid) {
+    //if we shouldn't be showing this page, send them to the remove dashboard
+    return res.redirect("/user/remove-data");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  let removeData,
+    removeAcctInfo = null; //data broker info
+  if (user.kid) {
+    removeData = await getRemoveDashData(user.kid);
+    removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-more-time",
+    experimentFlags,
+    utmOverrides,
+    removeData,
+    removeAcctInfo,
+  });
+}
+
+function alphabetizeByBroker(data) {
+  return data.sort(function (a, b) {
+    if (a.broker < b.broker) {
+      return -1;
+    }
+    if (a.broker > b.broker) {
+      return 1;
+    }
+    return 0;
+  });
+}
+
+function sortRemovalData(removalData) {
+  const completeItems = removalData.filter((removalItem) => {
+    return removalItem.status === REMOVAL_STATUS["COMPLETE"].id;
+  });
+
+  alphabetizeByBroker(completeItems);
+
+  const blockedItems = removalData.filter((removalItem) => {
+    return (
+      removalItem.current_step === JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+    );
+  });
+
+  alphabetizeByBroker(blockedItems);
+
+  const activeItems = removalData.filter((removalItem) => {
+    return (
+      removalItem.status !== REMOVAL_STATUS["COMPLETE"].id &&
+      removalItem.current_step !== JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+    );
+  });
+
+  alphabetizeByBroker(activeItems);
+
+  const sortedData = [...completeItems, ...activeItems, ...blockedItems];
+
+  return sortedData;
+}
+
+async function getRemoveDashData(kanary_id) {
+  return fetch(
+    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      //console.log("reports", json);
+
+      if (json.length) {
+        const reportID = json[0].id; //MH - assuming this is the newest?
+        return reportID;
+      } else {
+        console.error("no reports available");
+        return null;
+      }
+    })
+    .then((reportID) => {
+      if (reportID) {
+        return fetch(
+          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+            },
+          }
+        );
+      } else {
+        //throw "No reports available";
+        console.log("No reports available");
+      }
+    })
+    .then((res) => {
+      if (res && res.json) {
+        return res.json();
+      } else {
+        console.log("No reports available");
+      }
+    })
+    .then((json) => {
+      if (json && json.url_matches) {
+        return sortRemovalData(json.url_matches);
+      } else {
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting reports for this account",
+        error
+      );
+    });
+}
+
+async function getRemoveAcctInfo(kanary_id) {
+  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => {
+      //console.log("accounts", json);
+
+      if (json.members && json.members.length) {
+        return json.members[0];
+      } else {
+        console.error("no account info available");
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting account info for this account",
+        error
+      );
+    });
+}
+
+async function removeKanaryAcct(kanary_id) {
+  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+  })
+    .then((res) => {
+      if (res.ok) {
+        if (res.status === 204) {
+          return "";
+        } else if (res.status === 200) {
+          return res.json();
+        }
+      } else {
+        console.error("there was an error deleting the account");
+      }
+    })
+    .then((json) => {
+      //return json;
+      if (json.terminated_at) {
+        //request was successful
+        return json;
+      } else {
+        console.error(
+          "not receiving the expected response from the API for the data removal request"
+        );
+        return null;
+      }
+    })
+    .catch((error) => {
+      console.error("there was an error deleting the account", error);
+    });
+}
+
+async function getRemoveKan(req, res) {
+  const sessionUser = req.user;
+
+  res.render("subpage", {
+    title: req.fluentFormat("remove-kan"),
+    subscriber: sessionUser,
+    whichPartial: "subpages/remove_kan",
+    csrfToken: req.csrfToken(),
+  });
+}
+
+async function getRemoveSitesList(req, res) {
+  const sessionUser = req.user;
+
+  res.render("subpage", {
+    title: req.fluentFormat("remove-sites-list"),
+    subscriber: sessionUser,
+    removal_sites: JS_CONSTANTS.REMOVAL_SITES,
+    whichPartial: "subpages/remove_sites_list",
+    csrfToken: req.csrfToken(),
+  });
+}
+
+async function getRemoveRiskLevel(req, res) {
+  res.render("subpage", {
+    title: req.fluentFormat("remove-risk-heading"),
+    whichPartial: "subpages/remove_risk_level",
+  });
+}
+
+async function postRemoveKan(req, res) {
+  const sessionUser = req.user;
+  //await removeKanaryAcct(2888); //MH - to hardcode an account to delete to avoid deleting your current account
+  await removeKanaryAcct(sessionUser.kid);
+  await DB.removeKan(sessionUser); //current: 2959
+  res.redirect("/user/remove-delete-confirmation");
+}
+
+async function checkIfRemovalPilotFull() {
+  const curPilot = await DB.getRemovalPilotByName(
+    JS_CONSTANTS.REMOVAL_PILOT_GROUP
+  );
+  return curPilot.enrolled_users >= JS_CONSTANTS.REMOVAL_PILOT_MAX_USERS; //full if enrolled users exceed the max set in our constants file for the current group
+}
+
+function checkIfRemovalPilotEnded() {
+  const pilotEndDate = FormUtils.getDaysFromTimestamp(
+    JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
+    JS_CONSTANTS.REMOVAL_PILOT_END_DAY
+  );
+  if (new Date() > pilotEndDate) {
+    //if the current date/time is past the pilot end date...
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function checkIfRemoveDisplayMoreTime() {
+  const pilotPmtDate = FormUtils.getDaysFromTimestamp(
+    JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
+    JS_CONSTANTS.REMOVAL_PILOT_PMT_DAY
+  );
+
+  const pilotPmtEndDate = FormUtils.getDaysFromTimestamp(
+    JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
+    JS_CONSTANTS.REMOVAL_PILOT_PMT_DECISION_DAY
+  );
+
+  const now = new Date();
+
+  if (now > pilotPmtDate && now < pilotPmtEndDate) {
+    //if the current date/time is past the pilot payment start date but before the pilot payment decision day
+    return true;
+  } else {
+    return false;
+  }
+}
+
+async function handleRemoveEnrollFormSignup(req, res) {
+  const user = req.user;
+  let nextPage; //where do we send the user next
+
+  const isFull = await checkIfRemovalPilotFull();
+  if (isFull) {
+    nextPage = "/user/remove-enroll-full";
+    return res.json({ nextPage: nextPage });
+  } else if (user.removal_enrolled_time) {
+    //if user has already enrolled
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-enroll-error-is_enrolled"
+    );
+    return res.json({ error: localeError });
+  } else {
+    const ts = await DB.setRemovalEnrollTime(user, new Date().toISOString());
+    console.log("enroll time", ts);
+    await DB.incrementRemovalEnrolledUsers();
+    nextPage = "/user/remove-enrolled";
+    return res.json({ nextPage: nextPage });
+  }
+}
+
+async function handleRemoveFormSignup(req, res) {
+  //TODO: validate form data
+
+  const {
+    account,
+    firstname,
+    lastname,
+    middlename,
+    city,
+    state,
+    country,
+    birthyear,
+  } = req.body;
+
+  const memberList = {
+    members: [
+      {
+        names: [
+          {
+            first_name: firstname,
+            middle_name: middlename ? middlename : null,
+            last_name: lastname,
+          },
+        ],
+        addresses: [
+          {
+            city: city,
+            state: state,
+            country: country,
+          },
+        ],
+        emails: [
+          {
+            email: account,
+          },
+        ],
+        birth_year: parseInt(birthyear),
+      },
+    ],
+  };
+
+  const jsonMemberList = JSON.stringify(memberList);
+
+  const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
+  console.log("memberID", memberID);
+  if (!req.user) {
+    console.error("no user");
+  }
+  const user = req.user;
+
+  const kid = await DB.setKanaryID(user, memberID);
+  return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
+}
+
+async function handleKanaryAPISubmission(memberInfo) {
+  return fetch("https://thekanary.com/partner-api/v0/accounts/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+    body: memberInfo,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      //console.log(data);
+      //MH TODO: store data.id in fxa then...
+
+      return data.id;
+    })
+    .catch((error) => {
+      console.error("there was an error posting to the api", error);
+    });
+}
+
+async function handleRemoveAcctUpdate(req, res) {
+  //TODO: validate form data
+
+  const {
+    account,
+    firstname,
+    middlename,
+    lastname,
+    city,
+    state,
+    country,
+    birthyear,
+    id,
+  } = req.body;
+
+  const memberData = {
+    id: parseInt(id),
+    names: [
+      {
+        first_name: firstname,
+        middle_name: middlename ? middlename : null,
+        last_name: lastname,
+      },
+    ],
+    addresses: [
+      {
+        city: city,
+        state: state,
+        country: country,
+      },
+    ],
+    emails: [
+      {
+        email: account,
+      },
+    ],
+    birth_year: parseInt(birthyear),
+  };
+
+  const jsonMemberData = JSON.stringify(memberData);
+  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
+
+  if (memberID) {
+    return res.json({
+      id: memberID,
+      nextPage: "/user/remove-update-confirmation",
+    });
+  } else {
+    console.error("error submitting updates to kanary");
+  }
+}
+
+async function handleKanaryUpdateSubmission(memberInfo, id) {
+  return fetch(`https://thekanary.com/partner-api/v0/members/${id}/`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+    },
+    body: memberInfo,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      return data.id;
+    })
+    .catch((error) => {
+      console.error("there was an error posting to the api", error);
+    });
+}
+
 module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
   getDashboard,
-  getRemovePage,
-  getRemoveConfirmationPage,
-  getRemoveUpdateConfirmationPage,
-  getRemoveDeleteConfirmationPage,
-  getRemoveMoreTimePage,
-  getRemoveEnrollPage,
-  getRemoveEnrollFullPage,
   getBreachStats,
   getAllEmailsAndBreaches,
-  handleRemoveFormSignup,
-  handleEnrollFormSignup,
-  handleRemoveAcctUpdate,
   add,
   verify,
   getUnsubscribe,
   postUnsubscribe,
   getRemoveFxm,
   postRemoveFxm,
-  getRemoveKan,
-  getRemoveSitesList,
-  getRemoveRiskLevel,
-  postRemoveKan,
   postResolveBreach,
   logout,
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
   resolveBreach,
+  getRemovePage, //removal related functions:
+  getRemoveConfirmationPage,
+  getRemoveUpdateConfirmationPage,
+  getRemoveDeleteConfirmationPage,
+  getRemoveMoreTimePage,
+  getRemoveEnrollPage,
+  getRemoveEnrolledPage,
+  getRemoveEnrollFullPage,
+  getRemoveEnrollEndedPage,
+  getRemovePilotEndedPage,
+  handleRemoveFormSignup,
+  handleRemoveEnrollFormSignup,
+  handleRemoveAcctUpdate,
+  getRemoveKan,
+  getRemoveSitesList,
+  getRemoveRiskLevel,
+  postRemoveKan,
 };
