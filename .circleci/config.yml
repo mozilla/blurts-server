@@ -1,10 +1,19 @@
 version: 2.0
 jobs:
+    code-checkout:
+        docker:
+            - image: alpine:3.7
+        steps:
+            - checkout
+            - run:
+                  name: Checkout code
+                  command: |
+                      ls -al
+                      echo '✔ Checkout success'
     lint-js:
         docker:
             - image: circleci/node:14.17
         steps:
-            - checkout
             - run:
                   name: Install dependencies
                   command: npm install
@@ -15,7 +24,6 @@ jobs:
         docker:
             - image: circleci/node:14.17
         steps:
-            - checkout
             - run:
                   name: Install dependencies
                   command: npm install
@@ -26,7 +34,6 @@ jobs:
         docker:
             - image: circleci/node:14.17
         steps:
-            - checkout
             - run:
                   name: Install dependencies
                   command: npm install
@@ -37,7 +44,6 @@ jobs:
         docker:
             - image: cimg/python:3.9.7
         steps:
-            - checkout
             - run:
                   name: Install dependencies
                   command: |
@@ -189,10 +195,19 @@ workflows:
     version: 2
     build-test-deploy:
         jobs:
-            - lint-js
-            - lint-css
-            - lint-audit
-            - lint-l10n
+            - code-checkout
+            - lint-js:
+                requires:
+                    - code-checkout
+            - lint-css:
+                requires:
+                    - code-checkout
+            - lint-audit:
+                requires:
+                    - code-checkout
+            - lint-l10n:
+                requires:
+                    - code-checkout
             - build:
                   filters:
                       tags:
