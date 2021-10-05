@@ -54,6 +54,8 @@ jobs:
                   username: $DOCKER_USER
                   password: $DOCKER_PASS
         working_directory: /dockerflow
+        environment:
+          SERVER_URL: http://localhost:6060
         steps:
             - checkout
             - setup_remote_docker
@@ -80,7 +82,12 @@ jobs:
             - run:
                   name: Build docker image
                   command: docker build -t blurts-server .
-
+            - run:
+                  name: Install Dev Dependencies
+                  command: docker run blurts-server npm install --include=dev
+            - run:
+                  name: Test Code
+                  command: docker run blurts-server npm run test:tests
             # save the built docker container into CircleCI's cache. This is
             # required since Workflows do not have the same remote docker instance.
             - run:
@@ -102,11 +109,16 @@ jobs:
                   name: Restore Docker image cache
                   command: docker load -i /cache/docker.tar
             - run:
-                  name: Update npm to latest
-                  command: docker run blurts-server npm install npm@latest -g
-            - run:
                   name: Test Code
-                  command: docker run blurts-server npm run lint
+                  command: docker run blurts-server npm test
+
+    test2:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm test
+
 
     integration-test:
         machine:
@@ -190,14 +202,12 @@ workflows:
             - lint-audit
             - lint-l10n
             - build:
-                requires:
-                    - lint-js
-                    - lint-css
-                    - lint-audit
-                    - lint-l10n
                 filters:
                     tags:
                         only: /.*/
+            - integration-test:
+                requires:
+                    - build
             - deploy:
                 requires:
                     - build
@@ -210,6 +220,3 @@ workflows:
                 filters:
                     branches:
                         only: main
-            - integration-test:
-                requires:
-                    - build
