@@ -183,30 +183,33 @@ jobs:
                       ./.circleci/scripts/sync-static
 
 workflows:
-    Test Workflow:
+    lint-build-test-deploy:
         jobs:
-        - lint-js
-        - lint-css
-        - lint-audit
-        - lint-l10n
-    build-test-deploy:
-        jobs:
+            - lint-js
+            - lint-css
+            - lint-audit
+            - lint-l10n
             - build:
-                  filters:
-                      tags:
-                          only: /.*/
+                requires:
+                    - lint-js
+                    - lint-css
+                    - lint-audit
+                    - lint-l10n
+                filters:
+                    tags:
+                        only: /.*/
             - deploy:
-                  requires:
-                      - build
-                  filters:
-                      tags:
-                          only: /.*/
-                      branches:
-                          only: main
+                requires:
+                    - build
+                filters:
+                    tags:
+                        only: /.*/
+                    branches:
+                        only: main
             - deploy_static:
-                  filters:
-                      branches:
-                          only: main
+                filters:
+                    branches:
+                        only: main
             - integration-test:
-                  requires:
-                      - build
+                requires:
+                    - build
