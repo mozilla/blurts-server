@@ -36,12 +36,12 @@ jobs:
         steps:
             - checkout
             - run:
-                command: |
-                    pip install pipreqs
-                    pipreqs ~/project
+                  command: |
+                      pip install pipreqs
+                      pipreqs ~/project
             - python/install-packages:
-                args: compare-locales
-                pkg-manager: 'pip'
+                  args: compare-locales
+                  pkg-manager: "pip"
             - run:
                   name: Lint and compare locales
                   command: |
@@ -49,16 +49,19 @@ jobs:
                       compare-locales l10n.toml . `ls locales`
     build:
         docker:
-            - image: docker:stable-git
+            - image: cimg/base:2021.10
               auth:
                   username: $DOCKER_USER
                   password: $DOCKER_PASS
-        working_directory: /dockerflow
-        environment:
-          SERVER_URL: http://localhost:6060
+              environment:
+                  SERVER_URL: http://localhost:6060
+                  DATABASE_URL: postgres://postgres@localhost:5432/blurts
+                  NODE_ENV: tests
         steps:
             - checkout
             - setup_remote_docker
+            - run: |
+                ssh remote-docker \ export SERVER_URL=http://localhost:6060
             - run:
                   name: Create version.json
                   command: |
@@ -83,11 +86,9 @@ jobs:
                   name: Build docker image
                   command: docker build -t blurts-server .
             - run:
-                  name: Install Dev Dependencies
-                  command: docker run blurts-server npm install --include=dev
-            - run:
                   name: Test Code
-                  command: docker run blurts-server npm run test:tests
+                  command: docker run blurts-server -e SERVER_URL='localhost' npm test:db:migrate 
+
             # save the built docker container into CircleCI's cache. This is
             # required since Workflows do not have the same remote docker instance.
             - run:
@@ -118,7 +119,6 @@ jobs:
             - checkout
             - node/install-packages
             - run: npm test
-
 
     integration-test:
         machine:
@@ -202,21 +202,21 @@ workflows:
             - lint-audit
             - lint-l10n
             - build:
-                filters:
-                    tags:
-                        only: /.*/
+                  filters:
+                      tags:
+                          only: /.*/
             - integration-test:
-                requires:
-                    - build
+                  requires:
+                      - build
             - deploy:
-                requires:
-                    - build
-                filters:
-                    tags:
-                        only: /.*/
-                    branches:
-                        only: main
+                  requires:
+                      - build
+                  filters:
+                      tags:
+                          only: /.*/
+                      branches:
+                          only: main
             - deploy_static:
-                filters:
-                    branches:
-                        only: main
+                  filters:
+                      branches:
+                          only: main
