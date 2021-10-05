@@ -914,8 +914,8 @@ async function getRemoveEnrollPage(req, res) {
     JS_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
   );
 
-  if (!req.query.show_form && (user.removal_enrolled_time || user.kid)) {
-    //user already has data indicating they are enrolled in the pilot - skip the enroll page
+  if (user.removal_enrolled_time && !req.query.show_form) {
+    //if the user has already enrolled in the pilot, just send them to the remove data page
     return res.redirect("/user/remove-data");
   } else if (new Date() > enrollmentEndDate) {
     return res.redirect("/user/remove-enroll-ended");
