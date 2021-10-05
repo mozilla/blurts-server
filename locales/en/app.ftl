@@ -1006,7 +1006,7 @@ remove-sites-blurb = Below are the sites we request user data to be removed from
 
 # Data Removal Pilot Risks Info Page
 remove-risk-heading = About Data Removal Risk
-remove-risk-blurb = “Risk” is assigned at the site level as a way to prioiritize actions and escalations, and is made up of 4 metrics: 
+remove-risk-blurb = “Risk” is assigned at the site level as a way to prioritize actions and escalations, and is made up of 4 metrics: 
 remove-risk-criteria-1 = Does the site sell data?
 remove-risk-criteria-2 = Does the site include context beyond the personally identifiable information?
 remove-risk-criteria-3 = Does the site remove data consistently?
