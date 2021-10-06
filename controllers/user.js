@@ -683,19 +683,128 @@ function logout(req, res) {
 
 //DATA REMOVAL PILOT LOGIC
 
-async function getRemovePage(req, res) {
+async function getRemoveEnrollPage(req, res) {
   const user = req.user;
 
-  if (!checkIfEnrolledInRemovalPilot(user)) {
+  if (checkIfRemovalEnrollmentEnded() && !req.query.show) {
+    //If the pilot enrollment period is not active
+    return res.redirect("/user/remove-enroll-ended");
+  }
+
+  if (checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+    //if the user has already enrolled in the pilot, just send them to the remove data page
+    return res.redirect("/user/remove-data");
+  }
+
+  if (checkIfRemovalPilotFull() && !req.query.show) {
+    //If we have already hit the enrollment limit:
+    return res.redirect("/user/remove-enroll-full");
+  }
+
+  const allBreaches = req.app.locals.breaches;
+  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
+    user,
+    allBreaches
+  );
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
+    user,
+    "remove_data"
+  );
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    verifiedEmails,
+    unverifiedEmails,
+    userHasSignedUpForRemoveData,
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrolledPage(req, res) {
+  const user = req.user;
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
     return res.redirect("/user/remove-enroll");
   }
 
-  if (checkIfRemovalPilotEnded()) {
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enrolled",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrollFullPage(req, res) {
+  const user = req.user;
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  if (checkIfRemovalPilotFull() && !req.query.show) {
+    return res.redirect("/user/remove-enroll");
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll-full",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemoveEnrollEndedPage(req, res) {
+  const user = req.user;
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  if (!checkIfRemovalEnrollmentEnded() && !req.query.show) {
+    return res.redirect("/user/remove-enroll");
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-enroll-ended",
+    experimentFlags,
+    utmOverrides,
+  });
+}
+
+async function getRemovePage(req, res) {
+  const user = req.user;
+
+  if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+    return res.redirect("/user/remove-enroll");
+  }
+
+  if (checkIfRemovalPilotEnded() && !req.query.show) {
     //if the pilot is over, redirect to the end screen
     return res.redirect("/user/remove-pilot-ended");
   }
 
-  if (checkIfRemoveDisplayMoreTime()) {
+  if (checkIfRemoveDisplayMoreTime(user) && !req.query.show) {
     return res.redirect("/user/remove-more-time");
   }
 
@@ -780,7 +889,11 @@ async function getRemovePage(req, res) {
 async function getRemoveConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid) {
+  if (!user.kid && !checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+    return res.redirect("/user/remove-enroll");
+  }
+
+  if (!user.kid && checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
     return res.redirect("/user/remove-data");
   }
 
@@ -832,7 +945,11 @@ async function getRemoveConfirmationPage(req, res) {
 async function getRemoveUpdateConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid) {
+  if (!user.kid && !req.query.show) {
+    return res.redirect("/user/remove-enroll");
+  }
+
+  if (user.kid && !req.query.show) {
     return res.redirect("/user/remove-data");
   }
 
@@ -875,7 +992,11 @@ async function getRemoveUpdateConfirmationPage(req, res) {
 async function getRemoveDeleteConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid) {
+  if (!user.kid && !req.query.show) {
+    return res.redirect("/user/remove-enroll");
+  }
+
+  if (user.kid && !req.query.show) {
     return res.redirect("/user/remove-data");
   }
 
@@ -906,118 +1027,15 @@ async function getRemoveDeleteConfirmationPage(req, res) {
   });
 }
 
-async function getRemoveEnrollPage(req, res) {
-  const user = req.user;
-
-  const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
-    JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
-    JS_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
-  );
-
-  if (user.removal_enrolled_time && !req.query.show_form) {
-    //if the user has already enrolled in the pilot, just send them to the remove data page
-    return res.redirect("/user/remove-data");
-  } else if (new Date() > enrollmentEndDate) {
-    return res.redirect("/user/remove-enroll-ended");
-  }
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-enroll",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveEnrolledPage(req, res) {
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-enrolled",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveEnrollFullPage(req, res) {
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-enroll-full",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemoveEnrollEndedPage(req, res) {
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-enroll-ended",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
-async function getRemovePilotEndedPage(req, res) {
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-pilot-ended",
-    experimentFlags,
-    utmOverrides,
-  });
-}
-
 async function getRemoveMoreTimePage(req, res) {
   const user = req.user;
 
-  if (!checkIfRemoveDisplayMoreTime() || !user.kid) {
-    //if we shouldn't be showing this page, send them to the remove dashboard
+  if (checkIfRemovalPmtDecisionMade(user) && !req.query.show) {
+    res.redirect("/user/remove-data");
+  }
+
+  if (!checkIfRemoveDisplayMoreTime(user) && !req.query.show) {
+    //if we're not in the more time window, the user has not signed up for a kanary ID yet, or they have already indicated a willingness to pay decision, redirect them to the remove dashboard
     return res.redirect("/user/remove-data");
   }
 
@@ -1054,6 +1072,28 @@ async function getRemoveMoreTimePage(req, res) {
     utmOverrides,
     removeData,
     removeAcctInfo,
+  });
+}
+
+async function getRemovePilotEndedPage(req, res) {
+  const user = req.user;
+  const utmOverrides = getUTMContents(req);
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
+
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
+
+  if (checkIfRemovalPilotEnded() && !req.query.show) {
+    return res.redirect("user/remove-data");
+  }
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+
+    supportedLocalesIncludesEnglish,
+    whichPartial: "dashboards/remove-pilot-ended",
+    experimentFlags,
+    utmOverrides,
   });
 }
 
@@ -1262,6 +1302,7 @@ async function postRemoveKan(req, res) {
 }
 
 async function checkIfRemovalPilotFull() {
+  //MH TODO: This logic will have to change to accommodate multiple groups' max users
   const curPilot = await DB.getRemovalPilotByName(
     JS_CONSTANTS.REMOVAL_PILOT_GROUP
   );
@@ -1273,19 +1314,27 @@ function checkIfRemovalPilotEnded() {
     JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
     JS_CONSTANTS.REMOVAL_PILOT_END_DAY
   );
-  if (new Date() > pilotEndDate) {
-    //if the current date/time is past the pilot end date...
-    return true;
-  } else {
-    return false;
-  }
+
+  return new Date() > pilotEndDate;
 }
 
 function checkIfEnrolledInRemovalPilot(user) {
   return user.removal_enrolled_time;
 }
 
-function checkIfRemoveDisplayMoreTime() {
+function checkIfRemovalEnrollmentEnded() {
+  const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
+    JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
+    JS_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+  );
+  return new Date() > enrollmentEndDate;
+}
+
+function checkIfRemovalPmtDecisionMade(user) {
+  return user.removal_would_pay !== null; //can be true or false, but not
+}
+
+function checkIfRemoveDisplayMoreTime(user) {
   const pilotPmtDate = FormUtils.getDaysFromTimestamp(
     JS_CONSTANTS.REMOVAL_PILOT_START_TIME,
     JS_CONSTANTS.REMOVAL_PILOT_PMT_DAY
@@ -1298,8 +1347,12 @@ function checkIfRemoveDisplayMoreTime() {
 
   const now = new Date();
 
-  if (now > pilotPmtDate && now < pilotPmtEndDate) {
-    //if the current date/time is past the pilot payment start date but before the pilot payment decision day
+  if (
+    now > pilotPmtDate &&
+    now < pilotPmtEndDate &&
+    checkIfRemovalPmtDecisionMade(user)
+  ) {
+    //if the current date/time is past the pilot payment start date but before the pilot payment decision day, and user has not made a decision
     return true;
   } else {
     return false;
@@ -1314,7 +1367,7 @@ async function handleRemoveEnrollFormSignup(req, res) {
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
     return res.json({ nextPage: nextPage });
-  } else if (user.removal_enrolled_time) {
+  } else if (checkIfEnrolledInRemovalPilot(user)) {
     //if user has already enrolled
     const localeError = LocaleUtils.fluentFormat(
       req.supportedLocales,

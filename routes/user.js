@@ -51,40 +51,6 @@ router.get(
   requireSessionUser,
   asyncMiddleware(getDashboard)
 );
-router.get(
-  "/remove-data",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemovePage)
-);
-
-router.get(
-  "/remove-signup-confirmation",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveConfirmationPage)
-);
-
-router.get(
-  "/remove-update-confirmation",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveUpdateConfirmationPage)
-);
-
-router.get(
-  "/remove-delete-confirmation",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveDeleteConfirmationPage)
-);
-
-router.get(
-  "/remove-more-time",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveMoreTimePage)
-);
 
 router.get(
   "/remove-enroll",
@@ -119,6 +85,41 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveEnrollEndedPage)
+);
+
+router.get(
+  "/remove-data",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemovePage)
+);
+
+router.get(
+  "/remove-signup-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveConfirmationPage)
+);
+
+router.get(
+  "/remove-update-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveUpdateConfirmationPage)
+);
+
+router.get(
+  "/remove-delete-confirmation",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveDeleteConfirmationPage)
+);
+
+router.get(
+  "/remove-more-time",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveMoreTimePage)
 );
 
 router.get(
