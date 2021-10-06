@@ -696,7 +696,7 @@ async function getRemoveEnrollPage(req, res) {
     return res.redirect("/user/remove-data");
   }
 
-  if (checkIfRemovalPilotFull() && !req.query.show) {
+  if ((await checkIfRemovalPilotFull()) && !req.query.show) {
     //If we have already hit the enrollment limit:
     return res.redirect("/user/remove-enroll-full");
   }
@@ -756,7 +756,7 @@ async function getRemoveEnrollFullPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (checkIfRemovalPilotFull() && !req.query.show) {
+  if ((await checkIfRemovalPilotFull()) && !req.query.show) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -1306,7 +1306,10 @@ async function checkIfRemovalPilotFull() {
   const curPilot = await DB.getRemovalPilotByName(
     JS_CONSTANTS.REMOVAL_PILOT_GROUP
   );
-  return curPilot.enrolled_users >= JS_CONSTANTS.REMOVAL_PILOT_MAX_USERS; //full if enrolled users exceed the max set in our constants file for the current group
+  return (
+    parseInt(curPilot.enrolled_users) >=
+    parseInt(JS_CONSTANTS.REMOVAL_PILOT_MAX_USERS)
+  ); //full if enrolled users exceed the max set in our constants file for the current group
 }
 
 function checkIfRemovalPilotEnded() {
