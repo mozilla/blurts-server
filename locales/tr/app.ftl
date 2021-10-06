@@ -307,9 +307,11 @@ facebook-breach-note = <span>E-posta adresiniz bu sızıntıda yer almıyor ama 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span><a>Facebook profilinizdeki</a> bilgilerinizi "Sadece ben" veya herkese açık olmayan bir ayara ayarlayın.</span>
+facebook-breach-what-to-do-1-copy = Bu sızıntı sırasında hacker’lar “herkese açık” veya “arkadaşlarla paylaşıldı” olarak ayarlanmış profil bilgilerini ele geçirdi. Bu bilgiler, başka verilerle bir araya getirilerek daha fazla kişisel bilginize veya hesabınıza ulaşmak için kullanılabilir.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>SIM değişikliği saldırılarını önlemek için <a>mobil operatör hesaplarınızdaki</a> parolanızı, PIN'inizi veya diğer güvenlik bilgilerini değiştirin.</span>
+facebook-breach-what-to-do-2-copy = SIM değiş tokuşu (SIM-jacking), hacker’ın telefon numaralarını, doğum tarihini ve başka bilgileri kullanarak bir kişinin telefon numarasını ele geçirmesidir. Bu işlemin ardından e-posta, sosyal medya ve hatta banka hesapları bile hack’lenebilir.
 facebook-breach-what-to-do-3 = Diğer önerilerimizi Facebook sızıntı sayfamızda görebilirsiniz
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Gösterilen:

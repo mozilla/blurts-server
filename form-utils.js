@@ -30,8 +30,10 @@ const FormUtils = {
       });
     });
   },
+  convertDateToTimestamp(curDate) {
+    return parseInt((new Date(curDate).getTime() / 1000).toFixed(0));
+  },
   convertTimestamp(timestamp) {
-    //TODO: make separate utils for times or put in locale-utils
     const upDate = new Date(timestamp);
     const readableDate = upDate.toLocaleString("en", {
       year: "numeric",

@@ -263,7 +263,6 @@ function getRemovalFilters(args) {
 }
 
 function removeDashExposureMessage(args) {
-  //MH TODO: temp...use actual logic from API
   const locales = args.data.root.req.supportedLocales;
   const verifiedEmail = args.data.root.verifiedEmails[0].email;
   let numRemoveResults = 0;

@@ -30,8 +30,7 @@ function getBreachStats(args) {
   const removeAcctInfo = args.data.root.removeAcctInfo;
 
   if (removeAcctInfo) {
-    //console.log("removeAcctInfo", removeAcctInfo);
-    const numIdentities = removeAcctInfo.names.length; //MH not sure what we want to use to measure the number of identities
+    const numIdentities = removeAcctInfo.names.length; //MH TODO: not sure what we want to use to measure the number of identities - could be multiple names, emails, etc for each account ID but we have to pick one
     breachStatBundle.identities = {
       count: numIdentities,
       displayCount: numIdentities,

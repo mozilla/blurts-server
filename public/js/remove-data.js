@@ -1,7 +1,5 @@
 "use strict";
 
-//MH TODO: Find out how to scope this to just remove page
-
 function initRemove() {
   const $removePage = document.querySelector(".remove-page");
   if ($removePage) {
@@ -69,7 +67,7 @@ function onSelectChange(e) {
       .setAttribute("data-country", e.target.value);
 
     if (e.target.value === "US") {
-      //TODO: should probably be in a constants file
+      //MH TODO: should probably be in a constants file
       document
         .getElementById("remove-dashboard-form-loc-state")
         .setAttribute("required", true);
@@ -103,7 +101,7 @@ function onEnrollFormSubmitClick(e) {
     })
     .then((data) => {
       if (data.nextPage) {
-        window.location = data.nextPage; //MH TODO: probably should be doing this through the router on backend?
+        window.location = data.nextPage;
       } else if (data.error) {
         alert(data.error);
       } else {
@@ -187,11 +185,11 @@ function handleFormSubmit(e) {
     body: new URLSearchParams(new FormData($form)),
   })
     .then((resp) => {
-      return resp.json(); // or resp.text() or whatever the server sends
+      return resp.json();
     })
     .then((data) => {
       if (data.nextPage) {
-        window.location = data.nextPage; //MH TODO: probably should be doing this through the router on backend?
+        window.location = data.nextPage;
       } else {
         console.error("there was an error in the response", data);
       }

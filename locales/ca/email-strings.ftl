@@ -29,3 +29,5 @@ see-all-breaches = Mostra totes les filtracions
 # Headline of verification email
 email-link-expires = Aquest enllaç caduca d'aquí a 24 hores
 email-verify-blurb = Verifiqueu la vostra adreça electrònica per afegir-la al { -product-name } i rebre alertes de filtracions.
+# List headline
+faq-list-headline = Preguntes freqüents
