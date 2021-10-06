@@ -73,13 +73,35 @@ const JS_CONSTANTS = {
     "zabasearch.com",
     "peoplebyname.com",
   ],
-  REMOVAL_PILOT_START_TIME: 1634108460, //10/13/2021 - 7:00am GMT - timestamp when the pilot started (can generate a timestamp from a calendar date at https://www.epochconverter.com/)
-  REMOVAL_PILOT_MAX_USERS: 500, //max number of users allowed in this pilot group
+  REMOVAL_PILOTS: [
+    {
+      id: 1,
+      name: "group_01",
+      start_time: 1634145917, //oct 13
+      max_users: 0, //total max users in pilot across all groups at this point in time
+    },
+    {
+      id: 2,
+      name: "group_02",
+      start_time: 1636527600, //nov 10
+      max_users: 400, //total max users in pilot across all groups at this time
+    },
+    {
+      id: 3,
+      name: "group_03",
+      start_time: 1639119600, //dec 10
+      max_users: 1000, //total max users in pilot across all groups at this time
+    },
+    //samples
+    //1634281200 //oct 15
+    //1637391600 - nov 20
+    //1639378800 - dec 13
+  ],
   REMOVAL_PILOT_ENROLLMENT_END_DAY: 30, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_PMT_DAY: 45, //days from pilot start to showing the willingness to pay option
   REMOVAL_PILOT_PMT_DECISION_DAY: 65, //days from pilot start to no longer displaying the pmt choice screen
   REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
-  REMOVAL_PILOT_GROUP: "round_01", //name of the current pilot group
+  REMOVAL_PILOT_GROUP: "round_01", //the `name` used to retrieve the proper record from the `removal_pilot` database tablename of the current pilot group in the removal_pilot_database
   REMOVAL_STEP: {
     AWAITING_SCAN: {
       locale_var: "remove-step-awaiting-scan",
