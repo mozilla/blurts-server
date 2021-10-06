@@ -2,7 +2,7 @@ FROM node:14.17-alpine
 
 ARG dev
 RUN if [[ -n "$dev" ]] ; then \ 
-    echo Adding glibc packages missing from Alpine to satisfy canvas package dependency of @wdio ; \
+    echo Adding glibc packages missing from Alpine to satisfy node-canvas, a @wdio dependency ; \
     apk add --update --no-cache make g++ jpeg-dev cairo-dev pango-dev ; \
 fi
 

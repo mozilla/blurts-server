@@ -49,12 +49,23 @@ jobs:
                       compare-locales l10n.toml . `ls locales`
     build:
         docker:
-            - image: cimg/base:2021.10
-              auth:
-                  username: $DOCKER_USER
-                  password: $DOCKER_PASS
+          - image: cimg/base:2021.10
+            auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+            environment:
+                PGUSER: postgres
+                DATABASE_URL: postgresql://postgres@localhost:5432/blurts
+          - image: circleci/postgres:12-alpine-ram
+            auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
         steps:
             - checkout
+            - run:
+                name: Wait for db
+                command: dockerize -wait tcp://localhost:5432 -timeout 1m
+            - run: createdb -h localhost test-blurts
             - setup_remote_docker
             - run:
                   name: Create version.json
@@ -66,7 +77,6 @@ jobs:
                       "$CIRCLE_PROJECT_USERNAME" \
                       "$CIRCLE_PROJECT_REPONAME" \
                       "$CIRCLE_BUILD_URL" > version.json
-
             - run:
                   name: Login to dockerhub
                   command: |
@@ -76,43 +86,19 @@ jobs:
                         echo "${DOCKER_PASS}" | docker login -u="${DOCKER_USER}" --password-stdin
                       fi
 
-            - run:
-                  name: Build docker image in dev mode
-                  command: docker build -t blurts-server . --build-arg dev=true
-            - run:
-                  name: Test Code
-                  command: docker run -e SERVER_URL=$SERVER_URL blurts-server npm run test:db:migrate
-
-            # save the built docker container into CircleCI's cache. This is
-            # required since Workflows do not have the same remote docker instance.
-            - run:
-                  name: docker save blurts-server
-                  command: mkdir -p /cache; docker save -o /cache/docker.tar "blurts-server"
-            - save_cache:
-                  key: v1-{{ .Branch }}-{{epoch}}
-                  paths:
-                      - /cache/docker.tar
-
-    test:
-        docker:
-            - image: docker:18.06.3-ce
-        steps:
-            - setup_remote_docker
             - restore_cache:
-                  key: v1-{{.Branch}}
+                keys:
+                    - blurts-{{ .Branch }}-{{ checksum "package-lock.json" }}
             - run:
-                  name: Restore Docker image cache
-                  command: docker load -i /cache/docker.tar
+                name: Build application Docker in "dev" mode
+                command: docker build -t blurts-server . --build-arg dev=true
+            - save_cache:
+                key: blurts-{{ .Branch }}-{{ checksum "package-lock.json" }}
+                paths:
+                    - caches/
             - run:
-                  name: Test Code
-                  command: docker run blurts-server npm test
-
-    test2:
-        executor: node
-        steps:
-            - checkout
-            - node/install-packages
-            - run: npm test
+                name: Test Code
+                command: docker run --network="host" --env-file .env-dist -e NODE_ENV=tests -e DATABASE_URL=$DATABASE_URL  blurts-server npm test
 
     integration-test:
         machine:
