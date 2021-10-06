@@ -19,7 +19,7 @@
     </div>
     
     <div class="remove-filter-container flx space-between">
-      {{> data-removal/filter-keys}}
+      {{#if this.removeResults}}{{> data-removal/filter-keys}}{{/if}}
       
       <div class="remove-filter-controls">
         
@@ -41,15 +41,16 @@
     </div>
     
     <div class="remove-dash-results-container">
+      {{#if this.removeResults}}
+      {{> removal/removal-results-header }}
       <ul class="remove-dash-results-list">
-        {{#if this.removeResults}}
-          {{#each this.removeResults}}
-            {{> removal/removal-result }}
-          {{/each}}
-        {{else}}
-          {{> removal/removal-pending }}
-        {{/if}}
+        {{#each this.removeResults}}
+          {{> removal/removal-result }}
+        {{/each}}
       </ul>
+      {{else}}
+          {{> removal/removal-pending }}
+      {{/if}}
     </div>
   </div>
 </div>

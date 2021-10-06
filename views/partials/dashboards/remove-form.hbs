@@ -19,7 +19,7 @@
               {{#if ./../supportedLocalesIncludesEnglish}}
               <p class="remove-dashboard-card-body">Firefox Monitor has partnered with The Kanary, which can actively scan and automatically remove your personal data from <a href="/user/remove-sites-list">50 different data broker websites</a>. These sites expose your personal information to anyone who searches for you, thereby putting you at risk.</p>
               {{/if}}
-              <p class="remove-dashboard-card-body"><a href="#">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              <p class="remove-dashboard-card-body"><a href="https://www.thekanary.com/faq" target="_blank">{{ getString "dash-remove-intro-service-link"}}</a></p>
               {{#if this.acctInfo}}
               <p class="remove-dashboard-card-body">
                 <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>
@@ -112,9 +112,8 @@
             
           </div>
           <div class="input-group">
-            <label for="remove-dashboard-form-privacy required" class="input-group-label field--full required">{{ getString "dash-remove-form-privacy-label"}}</label>
+            <label for="remove-dashboard-form-privacy" class="input-group-label field--full">{{ getString "dash-remove-form-privacy-label"}}</label>
             <div class="flx jst-cntr">
-            <input required id="remove-dashboard-form-privacy" class="input-group-checkbox" type="checkbox" name="privacy">
               <p class="input-group-checkbox-text">
                 {{ getString "dash-remove-form-privacy"}}
                 <a href="{{jsConstants.KANARY_PRIVACY_LINK}}" target="_blank">{{ getString "dash-remove-form-privacy-link"}}</a>

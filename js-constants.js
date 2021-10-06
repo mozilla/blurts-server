@@ -78,7 +78,7 @@ const JS_CONSTANTS = {
       id: 1,
       name: "group_01",
       start_time: 1634145917, //oct 13
-      max_users: 0, //total max users in pilot across all groups at this point in time
+      max_users: 100, //total max users in pilot across all groups at this point in time
     },
     {
       id: 2,

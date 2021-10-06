@@ -1,0 +1,5 @@
+.remove-pending {
+  &-container {
+    @include remove-container;
+  }
+}

@@ -943,7 +943,8 @@ remove-result-details-found = Info found
 remove-result-description = Description
 remove-result-link = Link
 remove-result-opt-out = Where to opt-out
-remove-pending = Generating your report. Results can take up to 48 hours. Check Back Soon!
+remove-pending-title = Starting your data removal
+remove-pending = We’re scanning our list of data broker sites for any exposure of your personal information. It may take 24 hours for your report to finish. 
 remove-result-updated = Updated
 remove-result-email = Email
 remove-result-phone = Phone
@@ -983,8 +984,7 @@ remove-enroll-error-is_enrolled = User is already enrolled
 
 # Data Removal Pilot Enrollment Ended Page
 remove-enroll-ended-title = Pilot Enrollment Deadline Expired
-remove-enroll-ended-description = Thank you for your interest in Mozilla’s Data Removal Service powered by Kanary. 
- Unfortunately, the enrollment deadline for participating in the pilot has passed.
+remove-enroll-ended-description = Thank you for your interest in Mozilla’s Data Removal Service powered by Kanary. <br>Unfortunately, the enrollment deadline for participating in the pilot has passed.
 
 # Data Removal Pilot Ended Page
 remove-pilot-ended-title = Data Removal Pilot Has Ended
@@ -1002,7 +1002,7 @@ remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Wil
 
 # Data Removal Pilot Sites List Page
 remove-sites-list = Data Removal Site List
-remove-sites-blurb = Below are the sites we request user data to be removed from.
+remove-sites-blurb = Below are the most common sites Kanary requests user data to be removed from.
 
 # Data Removal Pilot Risks Info Page
 remove-risk-heading = About Data Removal Risk

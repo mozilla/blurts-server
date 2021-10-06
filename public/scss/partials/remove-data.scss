@@ -362,6 +362,8 @@
     @include breakpoint(mobile) {
       margin-left: 0;
       margin-top: 10px;
+      height: 48px;
+      border-radius: 24px;
     }
   }
 
