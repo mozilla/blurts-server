@@ -308,7 +308,7 @@ error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercat
 error-csrf-headline = Session foras tempore limite
 error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
 error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
-error-invalid-unsub-blurb = Tu debera disabonar te un del messages que { -product-name } te ha inviate. Controla tu cassa de entrata pro messages de { -brand-team-email }. Clicca sur le ligamine de disabonamento al fundo del message.
+error-invalid-unsub-blurb = Tu debera disabonar te a partir de un del messages que { -product-name } te ha inviate. Controla tu cassa de entrata pro messages de { -brand-team-email }. Clicca sur le ligamine de disabonamento al fundo del message.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
