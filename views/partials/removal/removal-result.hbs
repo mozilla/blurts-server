@@ -76,20 +76,23 @@
           <p class="remove-dash-results-detail">{{getString
               "remove-result-updated"
             }}
-            {{this.update_status}}</p>
+            {{this.update_status}}
+          </p>
         </li>
       {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <p class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getString "remove-result-status"}}
+          {{> removal/removal-question-trigger modal="modal-remove-status" alt="About result status"}}
         </p>
         <p class="remove-dash-results-detail">
           {{#if this.current_step_text}}{{this.current_step_text}}{{/if}}
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <p class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getString "remove-result-details-found"}}
+          {{> removal/removal-question-trigger modal="modal-remove-info-found" alt="About info found"}}
         </p>
         <p class="remove-dash-results-detail">
           {{trimRemoveInfo this}}
@@ -102,8 +105,9 @@
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <p class="remove-dash-results-detail-title">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getString "remove-result-link"}}
+          {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
         </p>
         <p class="remove-dash-results-detail">
           <a
@@ -115,8 +119,9 @@
       </li>
       {{#ifCompare this.current_step "===" "BLOCKED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
-          <p class="remove-dash-results-detail-title">
+          <p class="remove-dash-results-detail-title flx jst-cntr">
             {{getString "remove-result-opt-out"}}
+            {{> removal/removal-question-trigger modal="modal-remove-optout" alt="About Manual Removal"}}
           </p>
           <p class="remove-dash-results-detail">
             <a

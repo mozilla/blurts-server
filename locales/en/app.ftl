@@ -1029,3 +1029,20 @@ remove-modal-close-accessible = Close this dialog window
 remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
 remove-modal-info-link = Learn More
+
+# Data Removal Status Modal
+remove-modal-status-title = Removal Status
+remove-modal-status-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+
+# Data Removal Info Found Modal
+remove-modal-info-found-title = Info Found
+remove-modal-info-found-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+
+# Data Removal Link Modal
+remove-modal-link-title = Data Broker Link
+remove-modal-link-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+
+# Data Removal Opt Out Modal
+remove-modal-optout-title = Manual Removal
+remove-modal-optout-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+
