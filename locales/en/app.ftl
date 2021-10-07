@@ -1020,3 +1020,12 @@ remove-risk-rating-low = Posts personal information that is less likely to harm 
 remove-risk-title-high = High
 remove-risk-title-med = Medium
 remove-risk-title-low = Low
+
+# Data Removal Modal General
+remove-modal-close = Close
+remove-modal-close-accessible = Close this dialog window
+
+# Data Removal Info Needed modal
+remove-modal-info-title = Why is this information needed?
+remove-modal-info-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+remove-modal-info-link = Learn More

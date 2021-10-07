@@ -55,15 +55,18 @@
             </div>
           </div>
           <div class="input-group">
-            <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+            <div class="flx space-between cntr">
+              <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">Why is this needed?</a>
+            </div>
             <div class="flx remove-dashboard-form-name">
-              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="^[a-zA-Z\-\’]+( [a-zA-Z\-\’]+)+$" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
+              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
               >
-              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="^[a-zA-Z\-\’]+( [a-zA-Z\-\’]+)+$" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
               >
-              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="^[a-zA-Z\-\’]+( [a-zA-Z\-\’]+)+$" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
+              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
             </div>
@@ -161,3 +164,5 @@
 {{> dashboards/remove-form-kanary-footer}}
 {{/getRemoveFormData}}
 </main>
+
+{{> data-removal/modal-info-needed}}

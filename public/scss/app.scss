@@ -16,9 +16,6 @@
 // @import "components/buttons";
 // @import "components/filter-bar";
 
-//Data Removal
-@import "partials/data-removal/kanary-header.scss";
-
 //New General Components
 @import "partials/stats-and-welcome.scss";
 
@@ -43,15 +40,19 @@
 @import "partials/latest-breach.scss";
 @import "partials/monitor.scss";
 @import "partials/product-promos.scss";
-@import "partials/remove-data.scss";
-@import "partials/remove-form-confirm.scss";
-@import "partials/remove-result.scss";
-@import "partials/remove-pending.scss";
-@import "partials/remove-more-time.scss";
-@import "partials/remove-enroll.scss";
 @import "partials/research-recruitment.scss";
 @import "partials/scan-results.scss";
 @import "partials/security-tips.scss";
 @import "partials/sign-up-banner.scss";
 @import "partials/subpage.scss";
 @import "partials/vpn-promo-banner.scss";
+
+//Data Removal
+@import "partials/data-removal/kanary-header.scss";
+@import "partials/data-removal/modal.scss";
+@import "partials/remove-data.scss";
+@import "partials/remove-form-confirm.scss";
+@import "partials/remove-result.scss";
+@import "partials/remove-pending.scss";
+@import "partials/remove-more-time.scss";
+@import "partials/remove-enroll.scss";

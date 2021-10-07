@@ -2,6 +2,8 @@
 
 function initRemove() {
   const $removePage = document.querySelector(".remove-page");
+  window.MicroModal.init();
+
   if ($removePage) {
     switch ($removePage.id) {
       //MH - TODO: remove need for conditional and do this before we route. Talk to P&S about how best to handle this.

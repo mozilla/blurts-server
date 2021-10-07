@@ -58,7 +58,6 @@ function navLinks(args) {
   }
 
   const headerLinks = getStrings(links, locales);
-  console.log(headerLinks);
   return headerLinks;
 }
 
