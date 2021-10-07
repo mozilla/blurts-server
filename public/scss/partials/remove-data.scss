@@ -313,9 +313,11 @@
   }
 
   &-status-container {
-    @include breakpoint(mobile) {
-      flex-direction: column-reverse;
-    }
+    margin-top: 20px;
+  }
+
+  &-status-manage-btn {
+    white-space: nowrap;
   }
 
   &-results-container {

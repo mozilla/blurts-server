@@ -151,7 +151,10 @@ about-firefox-monitor = About {-product-name}
 preferences = Preferences
 
 # Link title
-your-data = Your Data
+remove-header-your-data = Your Data
+remove-header-breaches = Breaches
+remove-header-exposures = Exposures
+
 
 # Link title
 home = Home

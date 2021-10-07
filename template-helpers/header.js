@@ -20,30 +20,45 @@ function navLinks(args) {
   const isLoggedIn =
     args.data.root.req.session && args.data.root.req.session.user;
 
-  const links = [
-    {
-      title: "Home",
-      stringId: isLoggedIn ? "your-data" : "home",
-      href: `${serverUrl}/`,
-      activeLink:
-        hostUrl === "/" ||
-        hostUrl === "/dashboard" ||
-        hostUrl === "/remove-data",
-    },
-    {
-      title: "Breaches",
-      stringId: "breaches",
-      href: `${serverUrl}/breaches`,
-      activeLink: hostUrl === "/breaches",
-    },
-    {
-      title: "Security Tips",
-      stringId: "security-tips",
-      href: `${serverUrl}/security-tips`,
-      activeLink: hostUrl === "/security-tips",
-    },
-  ];
+  let links = [];
+
+  const linkSecurityTips = {
+    title: "Security Tips",
+    stringId: "security-tips",
+    href: `${serverUrl}/security-tips`,
+    activeLink: hostUrl === "/security-tips",
+  };
+
+  if (!isLoggedIn) {
+    links = [
+      {
+        title: "Home",
+        stringId: "home",
+        href: `${serverUrl}/`,
+        activeLink: hostUrl === "/",
+      },
+      linkSecurityTips,
+    ];
+  } else {
+    links = [
+      {
+        title: "Breaches",
+        stringId: "remove-header-breaches",
+        href: `${serverUrl}/user/dashboard`,
+        activeLink: hostUrl === "/dashboard",
+      },
+      {
+        title: "Exposures",
+        stringId: "remove-header-exposures",
+        href: `${serverUrl}/user/remove-data`,
+        activeLink: hostUrl === "/remove-data",
+      },
+      linkSecurityTips,
+    ];
+  }
+
   const headerLinks = getStrings(links, locales);
+  console.log(headerLinks);
   return headerLinks;
 }
 
