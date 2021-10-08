@@ -22,6 +22,29 @@ function navLinks(args) {
 
   let links = [];
 
+  const linkHome = {
+    title: "Home",
+    stringId: "home",
+    href: `${serverUrl}/`,
+    activeLink: hostUrl === "/",
+  };
+
+  const linkBreaches = {
+    title: "Breaches",
+    stringId: "remove-header-breaches",
+    href: `${serverUrl}/user/dashboard`,
+    activeLink: hostUrl === "/dashboard",
+  };
+
+  const linkExposures = {
+    title: "Exposures",
+    stringId: isLoggedIn
+      ? "remove-header-exposures"
+      : "remove-header-your-data",
+    href: `${serverUrl}/user/remove-data`,
+    activeLink: hostUrl === "/remove-data",
+  };
+
   const linkSecurityTips = {
     title: "Security Tips",
     stringId: "security-tips",
@@ -30,31 +53,9 @@ function navLinks(args) {
   };
 
   if (!isLoggedIn) {
-    links = [
-      {
-        title: "Home",
-        stringId: "home",
-        href: `${serverUrl}/`,
-        activeLink: hostUrl === "/",
-      },
-      linkSecurityTips,
-    ];
+    links = [linkHome, linkExposures, linkSecurityTips];
   } else {
-    links = [
-      {
-        title: "Breaches",
-        stringId: "remove-header-breaches",
-        href: `${serverUrl}/user/dashboard`,
-        activeLink: hostUrl === "/dashboard",
-      },
-      {
-        title: "Exposures",
-        stringId: "remove-header-exposures",
-        href: `${serverUrl}/user/remove-data`,
-        activeLink: hostUrl === "/remove-data",
-      },
-      linkSecurityTips,
-    ];
+    links = [linkBreaches, linkExposures, linkSecurityTips];
   }
 
   const headerLinks = getStrings(links, locales);
