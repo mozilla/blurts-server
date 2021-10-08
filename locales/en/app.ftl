@@ -151,7 +151,7 @@ about-firefox-monitor = About {-product-name}
 preferences = Preferences
 
 # Link title
-remove-header-your-data = Your Data
+remove-header-your-data = Start Monitoring
 remove-header-breaches = Breaches
 remove-header-exposures = Exposures
 
@@ -858,12 +858,11 @@ remove-card-body = We’re piloting a new service to monitor and remove your nam
 remove-card-cta = Join the waitlist
 
 # Data Removal Pilot Form Strings
-dash-remove-intro-1 = Mozilla Privacy Pack actively monitors hundreds of thousands of websites for your personal information and removes it from any website that puts you and your loved ones at risk.
 dash-remove-intro-service-link = More about the service
 dash-remove-intro-signup-title = How to start
-dash-remove-intro-signup = To start removing your exposed personal data, please provide the following information. We use this information to scan and identify exposed personal information on data broker websites. Once we  find exposed personal information, we will automatically begin the removal process. Initial results can take up to 24 hours.
+dash-remove-intro-signup = To start removing your exposed personal data, please provide the following information. This information is used to scan and identify exposed personal information. Once exposed personal information is found, the removal request process will automatically begin. Initial results can take up to 24 hours.
 dash-remove-info-change-title = Update your info
-dash-remove-info-change = To update the info you want removed from data brokers, fill out the form below
+dash-remove-info-change = To update the info you want removed, fill out the form below
 dash-remove-form-email-label = Select your email address
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name-first = First Name
@@ -880,7 +879,7 @@ dash-remove-form-privacy = The Data Removal Service is offered by The Kanary.
 dash-remove-form-privacy-link = By proceeding, you agree to their Terms of Service and Privacy Notice.
 dash-remove-submit = Start Data Removal
 dash-remove-change-submit = Submit
-dash-remove-form-required-helper = * All fields are required to properly identify your information on data broker sites
+dash-remove-form-required-helper = * All fields are required to properly identify your exposed information
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 
 # Data Removal Pilot Form Confirmation Strings
@@ -901,24 +900,24 @@ dash-remove-link-broker = Data Broker List
 
 # Data Removal Pilot Data Removal Form Completion Page
 remove-form-success-alt = Success
-remove-form-success-title = We're executing your data removal!
-remove-form-success-details = We’re checking hundreds of sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
+remove-form-success-title = Your automated data removal request process is underway!
+remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
-remove-form-success-next-details = Check back here frequently to see the data removal requests we initiate on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
+remove-form-success-next-details = Check back here frequently to see the data removal requests initiated on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
 remove-form-delete-dashboard = Go to Monitor dashboard
 remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
 
 # Data Removal Pilot Information Update Page
 remove-form-update-title = Your information has been updated!
-remove-form-update-details = We’re updating your info for our removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
+remove-form-update-details = We’re updating your info for removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
 remove-form-delete-title = Your data removal service has been canceled.
 remove-form-delete-details = We are no longer making data removal requests on your behalf. Your Monitor Account Will Remain Active.
 
 # Data Removal Pilot Dashboard Strings
 remove-status-exposures = Viewing exposures for:
 remove-status-update = Last update:
-# remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} data brokers
+# remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} sites
 
 # Data Removal Filters 
 remove-filter-in-progress = In progress
@@ -944,10 +943,10 @@ remove-risk-med = Medium Risk
 remove-risk-low = Low Risk
 remove-result-details-found = Info found
 remove-result-description = Description
-remove-result-link = Link
-remove-result-opt-out = Where to opt-out
+remove-result-link = View the listing
+remove-result-opt-out = Manual removal instructions
 remove-pending-title = Starting your data removal
-remove-pending = We’re scanning our list of data broker sites for any exposure of your personal information. It may take 24 hours for your report to finish. 
+remove-pending = A scan is underway for sites that expose your personal information. It may take 24 hours for your report to finish. 
 remove-result-updated = Updated
 remove-result-email = Email
 remove-result-phone = Phone
@@ -964,18 +963,18 @@ remove-mt-option1-btn = Continue Service
 remove-mt-option2-title = Option 2: Discontinue Service
 remove-mt-option2-description = Discontinue your service today* and receive a $5 Amazon gift card.
 remove-mt-option2-btn = Discontinue Service
-remove-mt-option2-smalltext = *Any removals in progress will be suspended and all completed removals will remain so. No additional removals will take place. You will lose access to your exposures dashboard.
+remove-mt-option2-smalltext = *Any removals in progress will be suspended. No additional removal requests will take place. You will lose access to your exposures dashboard.
 
 # Data Removal Pilot Enrollment Page
 remove-enroll-title = Welcome to Firefox Monitor’s data removal pilot
 remove-enroll-description-title = Here's what you need to know
-remove-enroll-description = First, you’ll share some identifying information with us. This info allows us to find data brokers online that share it—and then get it removed. 
- This info will only be used for the duration of the pilot, and then deleted. This pilot is separate from your main Firefox account. That means any changes you make to your account while part of this pilot program don't apply to your normal account, including changing emails, passwords, and more.
+remove-enroll-description = First, you’ll share some identifying information with us. This info is used to find sites online that share it — and then get that information removed. 
+ This info will only be used for the duration of the pilot, and then deleted. The firefox account you created for this pilot is separate from your main Firefox account. That means any changes you make to your account while part of this pilot program don't apply to your normal account, including changing emails, passwords, and more.
 remove-enroll-terms-title = Terms of pilot service
 remove-enroll-terms = The pilot service will be offered at no cost to you for a 90 day period.
- The purpose of the pilot is to evaluate the service for a paid offering. As such, participating in the pilot will include additional communications and data collection about your experience. You are not required to respond to these requests for information, but we would appreciate your assistance. 
- At the end of the 90-day pilot period, any additional service will be suspended and all account information held by Mozilla or our partner Kanary will be deleted. 
- You may discontinue your service at any point within the 90-day pilot period.
+ The purpose of the pilot is to evaluate the service for a paid offering. As such, participating in the pilot will include additional communications to learn more about your experience. You are not required to respond to these requests, but we would appreciate your feedback. 
+ At the end of the 90-day pilot period, any additional removal requests will be suspended and all account information held by Mozilla or our partner Kanary will be deleted. 
+ You may discontinue the data removal service at any point within the 90-day pilot period.
 remove-enroll-terms-agreement = By checking this box, you agree to the terms of pilot service listed above.
 remove-enroll-submit = Join the pilot
 
@@ -992,7 +991,7 @@ remove-enroll-ended-description = Thank you for your interest in Mozilla’s Dat
 # Data Removal Pilot Ended Page
 remove-pilot-ended-title = Data Removal Pilot Has Ended
 remove-pilot-ended-description = We are evaluating whether to continue offering the data removal service at Mozilla. 
- In the meantime, if you wish to continue monitoring data brokers for your information, you can sign up at thekanary.com. 
+ In the meantime, if you wish to continue monitoring for information exposures, you can sign up at thekanary.com. 
  If you participated in the pilot and chose to receive a gift card rather than continue the service, those gift cards will be distributed soon.
 
 # Data Removal Pilot Success Page
@@ -1028,25 +1027,27 @@ remove-risk-title-low = Low
 # Data Removal Modal General
 remove-modal-close = Close
 remove-modal-close-accessible = Close this dialog window
+remove-modal-more-info = Visit our FAQ page for more info
 
 # Data Removal Info Needed modal
 remove-modal-info-title = Why is this information needed?
-remove-modal-info-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
-remove-modal-info-link = Learn More
+remove-modal-info-text = The information you provide her will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
+remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
 remove-modal-status-title = Removal Status
-remove-modal-status-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+remove-modal-status-text = Once a match of your information is found on a site, the status of the removal request will change to indicate its progress as it is being resolved.
+
 
 # Data Removal Info Found Modal
-remove-modal-info-found-title = Info Found
-remove-modal-info-found-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+remove-modal-info-found-title = Personal Info Found
+remove-modal-info-found-text = The following information was found listed on the site. You can click the listing link in this result to verify.
 
 # Data Removal Link Modal
 remove-modal-link-title = Data Broker Link
-remove-modal-link-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+remove-modal-link-text = The following link is the web address where your information was found. You can click it to verify the listing. If your information was removed, this link should no longer show your info. 
 
 # Data Removal Opt Out Modal
 remove-modal-optout-title = Manual Removal
-remove-modal-optout-text = Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi eligendi aspernatur ducimus accusantium consectetur atque voluptatum nulla ab iure, impedit debitis sunt vel nemo rem minus culpa, ipsa dolores laudantium! Tenetur provident nesciunt eius. Autem aperiam eius ipsa nihil saepe laborum architecto aliquid debitis molestiae officiis
+remove-modal-optout-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information, you can use the contact email or website provided for this result to do so.
 

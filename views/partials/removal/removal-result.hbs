@@ -99,23 +99,20 @@
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
-        <p class="remove-dash-results-detail-title">
-          {{getString "remove-result-description"}}
-        </p>
-        <p class="remove-dash-results-detail">{{this.description}}</p>
-      </li>
-      <li class="remove-dash-results-details-item flx flx-col align-start">
-        <p class="remove-dash-results-detail-title flx jst-cntr">
-          {{getString "remove-result-link"}}
-          {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
-        </p>
-        <p class="remove-dash-results-detail">
+        <p class="remove-dash-results-detail flx">
           <a
             class="remove-dash-results-detail-link break-word"
             href="{{this.url}}"
             target="_blank"
-          >{{this.url}}</a>
+          >{{getString "remove-result-link"}}</a>
+          {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
         </p>
+      </li>
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title">
+          {{getString "remove-result-description"}}
+        </p>
+        <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
       {{#ifCompare this.current_step "===" "BLOCKED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">

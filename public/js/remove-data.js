@@ -5,6 +5,7 @@ function initRemove() {
   window.MicroModal.init();
 
   if ($removePage) {
+    addRemoveGeneralListeners();
     switch ($removePage.id) {
       //MH - TODO: remove need for conditional and do this before we route. Talk to P&S about how best to handle this.
       case "remove-form":
@@ -32,6 +33,16 @@ function initRemoveForm() {
 
 function initRemoveDashboard() {
   addRemoveDashListeners();
+}
+
+function addRemoveGeneralListeners() {
+  document
+    .querySelectorAll(".info-trigger, .modal__close-footer")
+    .forEach((infoTrigger) => {
+      infoTrigger.addEventListener("click", (e) => {
+        e.preventDefault(); //prevent page from scrolling to a non-existing anchor
+      });
+    });
 }
 
 function addRemoveEnrollListeners() {

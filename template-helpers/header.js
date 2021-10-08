@@ -2,6 +2,7 @@
 
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
+const { JS_CONSTANTS } = require("./../js-constants");
 
 function getSignedInAs(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -53,7 +54,13 @@ function navLinks(args) {
   };
 
   if (!isLoggedIn) {
-    links = [linkHome, linkExposures, linkSecurityTips];
+    links = [
+      linkHome,
+      JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE === "/user/remove-data"
+        ? linkExposures
+        : linkBreaches,
+      linkSecurityTips,
+    ];
   } else {
     links = [linkBreaches, linkExposures, linkSecurityTips];
   }
