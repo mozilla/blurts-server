@@ -1,21 +1,13 @@
-<li
-  class="remove-dash-results-list-item drop-shadow flx flx-col"
-  data-filter="COMPLETE"
->
-  <div class="remove-dash-results-summary-container flx space-between">
-    <div class="remove-dash-results-site-container flx flx-cntr">
-
-      <img
-        src="/img/svg/remove-in-progress-icon.svg"
-        alt="{{getString "remove-filter-in-progress"}}"
-        class="remove-dash-results-list-icon"
-      />
-
-      <div class="remove-dash-results-site-name-container flx flx-col">
-        <span class="remove-dash-results-site-name">{{getString
-            "remove-pending"
-          }}</span>
-      </div>
-    </div>
+<div class="mw-860 flx flx-col remove-pending-container">
+  <div class="flx jst-cntr">
+    <img
+      class="remove-success-icon"
+      src="/img/svg/remove-form-success-icon.svg"
+      alt="{{getString "remove-form-success-alt"}}"
+    />
   </div>
-</li>
+  <div class="flx flx-col jst-cntr">
+    <h2>{{getString "remove-pending-title"}}</h2>
+    <p>{{getString "remove-pending"}}</p>
+  </div>
+</div>

@@ -20,6 +20,7 @@ const REMOVAL_STATUS = {
 
 const JS_CONSTANTS = {
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
+  REMOVE_LOGGED_IN_DEFAULT_ROUTE: "/user/remove-data",
   REMOVE_ROUTES: ["/user/remove-data", "/user/remove-enroll"],
   REMOVAL_SITES: [
     "anywho.com",

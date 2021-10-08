@@ -1,7 +1,6 @@
 <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
 {{#getBreachStats}}
     {{> dashboards/breach-dash-welcome}}
-    {{> dashboards/breach-dash-tabs activeTab="remove"}}
 {{/getBreachStats}}
 {{#getRemoveDashData}}
 <div class="flx flx-col remove-dashboard-container" 
@@ -9,50 +8,41 @@
 >
   <div class="mw-860 remove-data-dashboard">
     <div class="flx space-between remove-dash-status-container">
-      <div class="remove-dash-status-container">
-        <p class="remove-dash-status">
-          {{ getString "remove-status-exposures"}}
-          <span class="bold">{{getFullName}}</span> 
-        </p>
+      <p class="remove-dash-status">
+        {{ getString "remove-status-exposures"}}
+        <span class="bold">{{getFullName}}</span> 
+      </p>
+      <div class="flx cntr">
+      <a
+        href="/user/remove-data?show_form=true"
+        class="btn-blue btn-small remove-dash-status-manage-btn"
+      >{{getString "dash-remove-manage-info"}}</a>
       </div>
-      {{> data-removal/kanary-header}}
     </div>
     
     <div class="remove-filter-container flx space-between">
-      {{> data-removal/filter-keys}}
-      
-      <div class="remove-filter-controls">
-        
-        <ul class="remove-filter-list flx flx-row">
-          <li class="remove-filter-list-item"><a href="/user/remove-data?show_form=true" class="btn-violet-secondary btn-transparent btn-small">{{ getString "dash-remove-manage-info" }}</a></li>
-          {{!--<li class="remove-filter-list-item">
-            <a href="#" class="remove-filter-list-button" role="button">
-              <img src="/img/svg/remove-filter-date-icon.svg" alt="{{ getString "remove-filter-date"}}" class="remove-filter-list-icon"/>
-            </a>
-          </li>
-          <li class="remove-filter-list-item">
-            <a href="#" class="remove-filter-list-button" role="button">
-              <img src="/img/svg/remove-filter-list-icon.svg" alt="{{ getString "remove-filter-list"}}" class="remove-filter-list-icon"/>
-            </a>
-          </li> --}}
-        </ul>
-      </div>
-     
+      {{#if this.removeResults}}{{> data-removal/filter-keys}}{{/if}}
     </div>
     
     <div class="remove-dash-results-container">
+      {{#if this.removeResults}}
+      {{> removal/removal-results-header }}
       <ul class="remove-dash-results-list">
-        {{#if this.removeResults}}
-          {{#each this.removeResults}}
-            {{> removal/removal-result }}
-          {{/each}}
-        {{else}}
-          {{> removal/removal-pending }}
-        {{/if}}
+        {{#each this.removeResults}}
+          {{> removal/removal-result }}
+        {{/each}}
       </ul>
+      {{else}}
+          {{> removal/removal-pending }}
+      {{/if}}
     </div>
   </div>
 </div>
 {{> dashboards/remove-form-kanary-footer}}
 {{/getRemoveDashData}}
 </main>
+
+{{> data-removal/modal-remove-status}}
+{{> data-removal/modal-remove-info-found}}
+{{> data-removal/modal-remove-link}}
+{{> data-removal/modal-remove-optout}}

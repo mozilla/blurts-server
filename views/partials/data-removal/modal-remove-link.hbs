@@ -1,0 +1,38 @@
+<div class="modal micromodal-slide" id="modal-remove-link" aria-hidden="true">
+  <div class="modal__overlay flx jst-cntr" tabindex="-1" data-micromodal-close>
+    <div
+      class="modal__container"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-1-title"
+    >
+      <div class="flx space-between cntr modal__header">
+        <h2 class="modal__title" id="modal-1-title">
+          {{getString "remove-modal-link-title"}}
+        </h2>
+        <button
+          class="modal__close"
+          aria-label="Close modal"
+          data-micromodal-close
+        ></button>
+      </div>
+      <div class="modal__content" id="modal-1-content">
+        <p>
+          {{getString "remove-modal-link-text"}}
+        </p>
+      </div>
+      <div class="modal__footer flx space-between">
+        <a href="/remove-faq" target="_blank">{{getString
+            "remove-modal-more-info"
+          }}</a>
+        <a
+          class="modal__close-footer"
+          href="#"
+          role="button"
+          data-micromodal-close
+          aria-label="{{getString "remove-modal-close-accessible"}}"
+        >{{getString "remove-modal-close"}}</a>
+      </div>
+    </div>
+  </div>
+</div>

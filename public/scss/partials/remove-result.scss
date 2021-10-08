@@ -1,4 +1,16 @@
 .remove-dash {
+  &-results-list-item-header {
+    background-color: transparent;
+    padding: 16px 24px 16px 0;
+
+    .remove-dash-results-list-icon {
+      height: auto;
+    }
+
+    .remove-dash-results-toggle-container {
+      visibility: hidden;
+    }
+  }
   &-results-list-item {
     background-color: white;
     border-radius: 8px;
@@ -102,6 +114,11 @@
 
     @include breakpoint(xs) {
       display: none;
+    }
+
+    @include breakpoint(mobile) {
+      min-width: 88px;
+      white-space: nowrap;
     }
   }
 

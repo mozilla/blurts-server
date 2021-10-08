@@ -1,4 +1,9 @@
 .remove-dash {
+  &-kanary-header-container {
+    @include breakpoint(xs) {
+      display: none !important;
+    }
+  }
   &-kanary-header {
     height: 25px;
     overflow: hidden;

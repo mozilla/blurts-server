@@ -1,7 +1,6 @@
 <main id="remove-form" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="User Dashboard">
 {{#getBreachStats}}
     {{> dashboards/breach-dash-welcome}}
-    {{> dashboards/breach-dash-tabs activeTab="remove"}}
 {{/getBreachStats}}
 {{#getRemoveFormData}}
 <div class="flx flx-col remove-dashboard-container js-remove-dashboard-container"
@@ -19,7 +18,7 @@
               {{#if ./../supportedLocalesIncludesEnglish}}
               <p class="remove-dashboard-card-body">Firefox Monitor has partnered with The Kanary, which can actively scan and automatically remove your personal data from <a href="/user/remove-sites-list">50 different data broker websites</a>. These sites expose your personal information to anyone who searches for you, thereby putting you at risk.</p>
               {{/if}}
-              <p class="remove-dashboard-card-body"><a href="#">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              <p class="remove-dashboard-card-body"><a href="https://www.thekanary.com/faq" target="_blank">{{ getString "dash-remove-intro-service-link"}}</a></p>
               {{#if this.acctInfo}}
               <p class="remove-dashboard-card-body">
                 <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>
@@ -56,15 +55,18 @@
             </div>
           </div>
           <div class="input-group">
-            <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+            <div class="flx space-between cntr">
+              <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">Why is this needed?</a>
+            </div>
             <div class="flx remove-dashboard-form-name">
-              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="^[a-zA-Z\-\’]+( [a-zA-Z\-\’]+)+$" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
+              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
               >
-              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="^[a-zA-Z\-\’]+( [a-zA-Z\-\’]+)+$" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
               >
-              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="^[a-zA-Z\-\’]+( [a-zA-Z\-\’]+)+$" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
+              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
             </div>
@@ -112,9 +114,8 @@
             
           </div>
           <div class="input-group">
-            <label for="remove-dashboard-form-privacy required" class="input-group-label field--full required">{{ getString "dash-remove-form-privacy-label"}}</label>
+            <label for="remove-dashboard-form-privacy" class="input-group-label field--full">{{ getString "dash-remove-form-privacy-label"}}</label>
             <div class="flx jst-cntr">
-            <input required id="remove-dashboard-form-privacy" class="input-group-checkbox" type="checkbox" name="privacy">
               <p class="input-group-checkbox-text">
                 {{ getString "dash-remove-form-privacy"}}
                 <a href="{{jsConstants.KANARY_PRIVACY_LINK}}" target="_blank">{{ getString "dash-remove-form-privacy-link"}}</a>
@@ -129,7 +130,7 @@
           </div>
           <div class="flx flx-col flx-cntr">
             {{#unless this.acctInfo}}<p class="remove-dashboard-form-disclaimer">{{ getString "dash-remove-form-disclaimer"}}</p>{{/unless}}
-            <p class="alert remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
+            <p class="alert txt-cntr remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
           </div>
         
 
@@ -163,3 +164,5 @@
 {{> dashboards/remove-form-kanary-footer}}
 {{/getRemoveFormData}}
 </main>
+
+{{> data-removal/modal-info-needed}}

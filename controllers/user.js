@@ -1133,7 +1133,7 @@ function sortRemovalData(removalData) {
 
   alphabetizeByBroker(activeItems);
 
-  const sortedData = [...completeItems, ...activeItems, ...blockedItems];
+  const sortedData = [...activeItems, ...blockedItems, ...completeItems];
 
   return sortedData;
 }

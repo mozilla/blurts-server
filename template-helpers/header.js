@@ -2,6 +2,7 @@
 
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
+const { JS_CONSTANTS } = require("./../js-constants");
 
 function getSignedInAs(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -20,29 +21,50 @@ function navLinks(args) {
   const isLoggedIn =
     args.data.root.req.session && args.data.root.req.session.user;
 
-  const links = [
-    {
-      title: "Home",
-      stringId: isLoggedIn ? "your-data" : "home",
-      href: `${serverUrl}/`,
-      activeLink:
-        hostUrl === "/" ||
-        hostUrl === "/dashboard" ||
-        hostUrl === "/remove-data",
-    },
-    {
-      title: "Breaches",
-      stringId: "breaches",
-      href: `${serverUrl}/breaches`,
-      activeLink: hostUrl === "/breaches",
-    },
-    {
-      title: "Security Tips",
-      stringId: "security-tips",
-      href: `${serverUrl}/security-tips`,
-      activeLink: hostUrl === "/security-tips",
-    },
-  ];
+  let links = [];
+
+  const linkHome = {
+    title: "Home",
+    stringId: "home",
+    href: `${serverUrl}/`,
+    activeLink: hostUrl === "/",
+  };
+
+  const linkBreaches = {
+    title: "Breaches",
+    stringId: "remove-header-breaches",
+    href: `${serverUrl}/user/dashboard`,
+    activeLink: hostUrl === "/dashboard",
+  };
+
+  const linkExposures = {
+    title: "Exposures",
+    stringId: isLoggedIn
+      ? "remove-header-exposures"
+      : "remove-header-your-data",
+    href: `${serverUrl}/user/remove-data`,
+    activeLink: hostUrl === "/remove-data",
+  };
+
+  const linkSecurityTips = {
+    title: "Security Tips",
+    stringId: "security-tips",
+    href: `${serverUrl}/security-tips`,
+    activeLink: hostUrl === "/security-tips",
+  };
+
+  if (!isLoggedIn) {
+    links = [
+      linkHome,
+      JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE === "/user/remove-data"
+        ? linkExposures
+        : linkBreaches,
+      linkSecurityTips,
+    ];
+  } else {
+    links = [linkBreaches, linkExposures, linkSecurityTips];
+  }
+
   const headerLinks = getStrings(links, locales);
   return headerLinks;
 }

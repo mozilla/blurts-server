@@ -4,6 +4,7 @@ const { URL } = require("url");
 const crypto = require("crypto");
 
 const AppConstants = require("../app-constants");
+const { JS_CONSTANTS } = require("../js-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FXA, FxAOAuthClient } = require("../lib/fxa");
@@ -62,7 +63,10 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
     req.session.post_auth_redirect = null;
   } else {
-    returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
+    returnURL = new URL(
+      JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
+      AppConstants.SERVER_URL
+    );
   }
 
   // Check if user is signing up or signing in,
