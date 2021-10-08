@@ -996,8 +996,12 @@ remove-pilot-ended-description = We are evaluating whether to continue offering 
  If you participated in the pilot and chose to receive a gift card rather than continue the service, those gift cards will be distributed soon.
 
 # Data Removal Pilot Success Page
-remove-enrolled-title = Welcome to the Pilot
-remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here's how things work:
+remove-enrolled-title = Welcome to the Pilot!
+remove-enrolled-description = <p>Congratulations on successfully being enrolled in the pilot. Here's how things work:<br><br>
+ First you'll need to enter the info you want removed. This data will be submitted for automatic data removal. <br><br>
+ Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.<br><br>
+ If you view the details of each exposure, you can see the status of your data removal request as it moves from request to completion.
+remove-enrolled-btn = Get started
 
 # Data Removal Pilot Cancellation Page
 remove-kan = Cancel Data Removal Service
