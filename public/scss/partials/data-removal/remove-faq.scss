@@ -1,0 +1,55 @@
+.remove-faq {
+  padding-top: 85px; //MH must match header height
+  &__header {
+    background-color: var(--inkDark);
+    padding: 84px 0;
+    color: white;
+  }
+  &__title {
+    font-size: 64px;
+    max-width: 75%;
+    font-weight: 600;
+  }
+  &__nav-col {
+    width: 50%;
+  }
+  &__nav-item {
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &__nav-link {
+    color: white;
+    @include ff-metropolis;
+    font-weight: 600;
+    font-size: 18px;
+  }
+  &__content-container {
+    padding: 40px 0;
+  }
+  &__content-title {
+    font-size: 36px;
+    font-weight: 600;
+  }
+  &__subtitle {
+    @include ff-metropolis;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  &__content {
+    margin-top: 50px;
+    &:first-child {
+      margin-top: 0;
+    }
+    p {
+      line-height: 24px;
+    }
+  }
+  &__anchor {
+    height: 0px;
+    display: block;
+    position: absolute;
+    margin-top: -100px;
+  }
+}

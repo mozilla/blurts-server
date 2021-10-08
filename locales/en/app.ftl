@@ -973,7 +973,7 @@ remove-enroll-description = First, you’ll share some identifying information w
 remove-enroll-terms-title = Terms of pilot service
 remove-enroll-terms = The pilot service will be offered at no cost to you for a 90 day period.
  The purpose of the pilot is to evaluate the service for a paid offering. As such, participating in the pilot will include additional communications to learn more about your experience. You are not required to respond to these requests, but we would appreciate your feedback. 
- At the end of the 90-day pilot period, any additional removal requests will be suspended and all account information held by Mozilla or our partner Kanary will be deleted. 
+ At the end of the 90-day pilot period, any outstanding removal requests will be suspended and all data removal account information held by Mozilla or our partner Kanary will be deleted. 
  You may discontinue the data removal service at any point within the 90-day pilot period.
 remove-enroll-terms-agreement = By checking this box, you agree to the terms of pilot service listed above.
 remove-enroll-submit = Join the pilot
@@ -1051,3 +1051,6 @@ remove-modal-link-text = The following link is the web address where your inform
 remove-modal-optout-title = Manual Removal
 remove-modal-optout-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information, you can use the contact email or website provided for this result to do so.
 
+# Data Removal FAQ Page
+
+remove-faq-title = Data Removal Pilot FAQ

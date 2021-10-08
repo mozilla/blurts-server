@@ -10,6 +10,7 @@ const {
   getAllBreaches,
   getBentoStrings,
   getSecurityTips,
+  getRemoveFAQPage,
   notFound,
   removeMyData,
   addEmailToWaitlist,
@@ -32,6 +33,7 @@ router.get("/breaches", getAllBreaches);
 router.get("/security-tips", getSecurityTips);
 router.get("/getBentoStrings", getBentoStrings);
 router.get("/remove-my-data", requireSessionUser, removeMyData);
+router.get("/remove-faq", requireSessionUser, getRemoveFAQPage);
 router.post(
   "/join-waitlist",
   jsonParser,
