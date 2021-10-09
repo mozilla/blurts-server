@@ -52,4 +52,27 @@
     position: absolute;
     margin-top: -100px;
   }
+  &__list-item {
+    @include toggle-item;
+    &.is-active {
+      .remove-faq__details-container {
+        display: block;
+      }
+    }
+  }
+  &__title-container {
+    width: 100%;
+  }
+  &__q-title {
+    @include ff-metropolis;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+  }
+  &__details-container {
+    display: none;
+    p {
+      line-height: 24px;
+    }
+  }
 }
