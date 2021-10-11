@@ -899,9 +899,12 @@ dash-remove-confirm-submit-update = Confirm Information
 dash-remove-manage-info = Manage My Info
 
 # Data Removal Pilot Footer
-dash-remove-kanary-discalimer = Service provided by { remove-pilot-partner }
+dash-remove-kanary-discalimer = Service powered by { remove-pilot-partner }
 dash-remove-link-risk = About Risk Level
 dash-remove-link-broker = Data Broker List
+dash-remove-link-pilot = Pilot Details
+dash-remove-link-faqs = Pilot FAQs
+dash-remove-link-support = Get Help
 
 # Data Removal Pilot Data Removal Form Completion Page
 remove-form-success-alt = Success

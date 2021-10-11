@@ -59,9 +59,10 @@ function addRemoveFAQListeners() {
 }
 
 function addRemoveEnrollListeners() {
-  document
-    .querySelector(".js-enroll-submit")
-    .addEventListener("click", onEnrollFormSubmitClick);
+  const $enrollSubmit = document.querySelector(".js-enroll-submit");
+  if ($enrollSubmit) {
+    $enrollSubmit.addEventListener("click", onEnrollFormSubmitClick);
+  }
 }
 
 function addRemoveFormListeners() {
