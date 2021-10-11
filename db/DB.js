@@ -430,6 +430,8 @@ const DB = {
       .where({ id: subscriber.id })
       .update({
         kid: null,
+        removal_would_pay: null,
+        removal_enrolled_time: null,
       })
       .catch((e) => {
         console.error("error removing kanary id", e);

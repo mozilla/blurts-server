@@ -33,6 +33,10 @@
     color: var(--grey7);
   }
 
+  &-cancel {
+    margin-right: 10px;
+  }
+
   &-submit {
     color: white !important;
     max-width: 100%;
@@ -45,6 +49,15 @@
 
   &-review-container {
     align-items: center;
+    @include breakpoint(xs) {
+      flex-direction: column;
+    }
+  }
+
+  &-review-btns {
+    @include breakpoint(xs) {
+      margin-top: 10px;
+    }
   }
 
   &-review-title {

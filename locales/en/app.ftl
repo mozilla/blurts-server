@@ -883,13 +883,14 @@ dash-remove-form-privacy-label = Privacy Policy
 dash-remove-form-privacy = The Data Removal Service is offered by The Kanary. 
 dash-remove-form-privacy-link = By proceeding, you agree to their Terms of Service and Privacy Notice.
 dash-remove-submit = Start Data Removal
-dash-remove-change-submit = Submit
+dash-remove-change-submit = Review Information
 dash-remove-form-required-helper = * All fields are required to properly identify your exposed information
 dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 
 # Data Removal Pilot Form Confirmation Strings
 dash-remove-confirm-review = Review Your Information
 dash-remove-confirm-edit = Edit info
+dash-remove-confirm-cancel = Cancel
 dash-remove-confirm-label-full = Full Name
 dash-remove-confirm-email = Email Address
 dash-remove-confirm-loc = Current Location
@@ -973,7 +974,7 @@ remove-mt-option2-btn = Discontinue Service
 remove-mt-option2-smalltext = *Any removals in progress will be suspended. No additional removal requests will take place. You will lose access to your exposures dashboard.
 
 # Data Removal Pilot Enrollment Page
-remove-enroll-title = Welcome to Firefox Monitor’s data removal pilot
+remove-enroll-title = Welcome to Firefox Monitor’s Data Removal Pilot
 remove-enroll-description-title = Here's what you need to know
 remove-enroll-description = First, you’ll share some identifying information with us. This info is used to find sites online that share it — and then get that information removed. 
  This info will only be used for the duration of the pilot, and then deleted. The firefox account you created for this pilot is separate from your main Firefox account. That means any changes you make to your account while part of this pilot program don't apply to your normal account, including changing emails, passwords, and more.
@@ -1010,8 +1011,14 @@ remove-enrolled-description = <p>Congratulations on successfully being enrolled 
 remove-enrolled-btn = Get started
 
 # Data Removal Pilot Cancellation Page
-remove-kan = Cancel Data Removal Service
+remove-kan = Confirm Cancelation
+remove-kan-disclaimer-title = Disclaimer
+remove-kan-disclaimer-content = Deleting your account removes all of your data from Firefox Monitor as well as from our partner service The Kanary. Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended. Your information will be removed immediately upon removal request. 
 remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Will Remain Active.
+remove-kan-btn-confirm = Confirm
+remove-kan-btn-nevermind = Nevermind
+
+
 
 # Data Removal Pilot Sites List Page
 remove-sites-list = Data Removal Site List

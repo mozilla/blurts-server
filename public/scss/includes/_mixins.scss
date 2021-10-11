@@ -64,16 +64,43 @@
   box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
 }
 
-@mixin blue-button {
-  background-color: var(--blue3);
-  color: white;
+@mixin button {
   font-weight: 600;
   display: flex;
   align-items: center;
+  border-width: 0;
+}
+
+@mixin blue-button {
+  @include button;
+  background-color: var(--blue3);
+  color: white;
 
   &:hover,
   &:focus {
     background-color: var(--blue4);
+  }
+}
+
+@mixin grey-button {
+  @include button;
+  background-color: var(--grey2);
+  color: var(--grey9);
+
+  &:hover,
+  &:focus {
+    background-color: var(--grey0);
+  }
+}
+
+@mixin red-button {
+  @include button;
+  background-color: var(--alertRed);
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: var(--alertRedDark);
   }
 }
 

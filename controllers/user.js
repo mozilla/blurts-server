@@ -994,10 +994,6 @@ async function getRemoveUpdateConfirmationPage(req, res) {
 async function getRemoveDeleteConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid && !req.query.show) {
-    return res.redirect("/user/remove-enroll");
-  }
-
   if (user.kid && !req.query.show) {
     return res.redirect("/user/remove-data");
   }
@@ -1173,16 +1169,11 @@ async function getRemoveDashData(kanary_id) {
             },
           }
         );
-      } else {
-        //throw "No reports available";
-        console.log("No reports available");
       }
     })
     .then((res) => {
       if (res && res.json) {
         return res.json();
-      } else {
-        console.log("No reports available");
       }
     })
     .then((json) => {
@@ -1262,13 +1253,13 @@ async function removeKanaryAcct(kanary_id) {
 }
 
 async function getRemoveKan(req, res) {
-  const sessionUser = req.user;
+  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
 
-  res.render("subpage", {
+  res.render("dashboards", {
     title: req.fluentFormat("remove-kan"),
-    subscriber: sessionUser,
-    whichPartial: "subpages/remove_kan",
     csrfToken: req.csrfToken(),
+    supportedLocalesIncludesEnglish,
+    whichPartial: "subpages/remove_kan",
   });
 }
 

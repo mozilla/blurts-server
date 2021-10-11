@@ -3,9 +3,17 @@
     <h3 class="remove-dashboard-confirm-review-title">{{getString
         "dash-remove-confirm-review"
       }}</h3>
-    <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getString
-        "dash-remove-confirm-edit"
-      }}</a>
+    <div class="flx remove-dashboard-confirm-review-btns">
+      {{#if this.acctInfo}}
+        <a
+          href="/user/remove-data"
+          class="remove-dashboard-confirm-cancel btn-grey btn-small"
+        >{{getString "dash-remove-confirm-cancel"}}</a>
+      {{/if}}
+      <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getString
+          "dash-remove-confirm-edit"
+        }}</a>
+    </div>
   </div>
   <div class="remove-dashboard-confirm-container">
     <ul class="remove-dashboard-confirm-list">
