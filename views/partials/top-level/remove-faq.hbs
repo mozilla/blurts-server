@@ -5,35 +5,31 @@
 >
   <div class="flx flx-col remove-faq__header">
     <div class="mw-860">
-      <h2 class="remove-faq__title">Data Removal Pilot</h2>
+      <h2 class="remove-faq__title">{{getString "remove-pilot-title"}}</h2>
       <div class="remove-faq__nav-container flx">
         <div class="remove-faq__nav-col">
           <ul class="remove-faq__nav-list">
             <li class="remove-faq__nav-item">
-              <a href="#pilot-details" class="remove-faq__nav-link">Pilot
-                Details</a>
+              <a href="#pilot-details" class="remove-faq__nav-link">{{ getString "remove-about-faq-details"}}</a>
             </li>
             <li class="remove-faq__nav-item">
-              <a href="#pilot-partner" class="remove-faq__nav-link">About our
-                partner: Kanary</a>
+              <a href="#pilot-partner" class="remove-faq__nav-link">{{getString "remove-about-partner-title"}}</a>
             </li>
           </ul>
         </div>
         <div class="remove-faq__nav-col">
           <ul class="remove-faq__nav-list">
             <li class="remove-faq__nav-item">
-              <a href="#data-brokers" class="remove-faq__nav-link">About the
-                Scanned Sites</a>
+              <a href="#data-brokers" class="remove-faq__nav-link">{{getString "remove-about-scanned-title"}}</a>
             </li>
             <li class="remove-faq__nav-item">
-              <a href="#risk" class="remove-faq__nav-link">Risk Levels Explained</a>
+              <a href="#risk" class="remove-faq__nav-link">{{getString "remove-about-risk-title"}}</a>
             </li>
             <li class="remove-faq__nav-item">
-              <a href="#process" class="remove-faq__nav-link">Data Removal
-                Process</a>
+              <a href="#process" class="remove-faq__nav-link">{{getString "remove-about-process-title"}}</a>
             </li>
             <li class="remove-faq__nav-item">
-              <a href="#faq" class="remove-faq__nav-link">FAQ</a>
+              <a href="#faq" class="remove-faq__nav-link">{{getString "remove-about-faq-title"}}</a>
             </li>
           </ul>
         </div>
@@ -44,70 +40,43 @@
     <div class="mw-860">
       <div id="pilot-details" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">Pilot Details</h3>
-        <p>Mozilla has been working with
-          <a href="http://thekanary.com" target="_blank">Kanary</a>
-          to evaluate implementing a new feature into Firefox Monitor that
-          allows users to automate the search and removal of personal
-          information from a list of websites that expose people’s personal
-          information without their knowledge or consent.</p>
-        <h4 class="remove-faq__subtitle">Participation</h4>
-        <p>We will be piloting this feature with a maximum of 1000 Monitor users
-          who expressed interest in being on the waitlist for the data removal
-          service. Participants must be based in the U.S. due to current service
-          limitations.</p>
-        <h4 class="remove-faq__subtitle">Duration</h4>
-        <p>Each pilot group will have access to the service for 90 days. At the
-          end of the trial period any outstanding removal requests will be
-          suspended and all data removal information held by Mozilla or our
-          partner Kanary will be deleted. The user will be given the option to
-          continue the data removal service directly with Kanary at that time.</p>
-        <p>Pilot participants may discontinue the data removal service at any
-          point within the 90-day pilot period.</p>
+        <h3 class="remove-faq__content-title">{{getString "remove-about-faq-details"}}</h3>
+        <p>{{{ getString "remove-about-partner-content" }}}</p>
+        <h4 class="remove-faq__subtitle">{{getString "remove-about-participation-title"}}</h4>
+        <p>{{getString "remove-about-participation-content"}}</p>
+        <h4 class="remove-faq__subtitle">{{getString "remove-about-duration-title"}}</h4>
+        <p>{{getString "remove-about-duration-content"}}</p>
       </div>
       <div id="pilot-partner" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">About Our Partner</h3>
-        <p>Kanary is our partner providing the data removal service. Kanary
-          scans the internet, shows which sites expose your information, and
-          helps you protect your safety and wellbeing by removing it. You can
-          learn more about them
-          <a href="https://www.thekanary.com/faq" target="_blank">on their
-            website.</a></p>
+        <h3 class="remove-faq__content-title">{{getString "remove-about-partner-title"}}</h3>
+        <p>{{{getString "remove-about-partner-content"}}}</p>
       </div>
       <div id="data-brokers" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">About The Scannned Sites</h3>
-        <p>The information you provide to the service is used to scan sites that
-          post data about you, many of them without your consent, and some of
-          which are very difficult to remove your information from.</p>
+        <h3 class="remove-faq__content-title">{{getString "remove-about-scanned-title"}}</h3>
+        <p>{{getString "remove-about-scanned-content"}}</p>
       </div>
       <div id="risk" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">Risk Levels Explained</h3>
-        <p>The sites your information appear on are assigned a risk level, based
-          on the sensitivity of the information they list, the difficulty in
-          getting that information removed, and whether they sell or provide
-          your information to other sites.</p>
+        <h3 class="remove-faq__content-title">{{getString "remove-about-risk-title"}}</h3>
+        <p>{{getString "remove-about-risk-content"}}</p>
       </div>
       <div id="process" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">Data Removal Process</h3>
-        <p>Removal requests are made automatically on your behalf for the sites
-          that are found listing your info. Data removal is not guaranteed, but
-          Kanary continues to follow up, even on blocked requests.
+        <h3 class="remove-faq__content-title">{{getString "remove-about-process-title"}}</h3>
+        <p>{{getString "remove-about-process-content"}}
         </p>
       </div>
       <div id="faq" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">Frequently Asked Questions</h3>
+        <h3 class="remove-faq__content-title">{{getString "remove-about-faq-long-title"}}</h3>
       </div>
       <div class="remove-faq__questions-container">
         <ul class="remove-faq__list">
           <li class="remove-faq__list-item drop-shadow flx flx-col">
             <div class="remove-faq__title-container flx cntr space-between">
-              <h4 class="remove-faq__q-title">What type of sites do you scan
-                for?</h4>
+              <h4 class="remove-faq__q-title">{{getString "remove-faq-sites-title"}}</h4>
               <div class="remove-faq__toggle-container">
                 <a href="" class="remove-faq__toggle js-remove-faq-toggle">
                   <img
@@ -119,8 +88,112 @@
               </div>
             </div>
             <div class="remove-faq__details-container">
-              <p>We scan for sites that collect and sell personal data like
-                names, addresses, and phone numbers.</p>
+              <p>We scan for sites that collect and sell your personal data like
+                names, addresses, and phone numbers. Here is a list of the most
+                common sites:</p>
+              <div>
+                <ul class="remove-faq__col-3">
+                  <li>anywho.com</li>
+                  <li>backgroundalert.com</li>
+                  <li>beenverified.com</li>
+                  <li>checkpeople.com</li>
+                  <li>checkthem.com</li>
+                  <li>clustrmaps.com</li>
+                  <li>cocofinder.com</li>
+                  <li>cyberbackgroundchecks.com</li>
+                  <li>dobsearch.com</li>
+                  <li>emailsherlock.com</li>
+                  <li>familytreenow.com</li>
+                  <li>fastpeoplesearch.com</li>
+                  <li>freepeopledirectory.com</li>
+                  <li>homemetry.com</li>
+                  <li>hpccusa.com</li>
+                  <li>infotracer.com</li>
+                  <li>instantcheckmate.com</li>
+                  <li>intelius.com</li>
+                  <li>kiwisearches.com</li>
+                  <li>locatepeople.com</li>
+                  <li>mylife.com</li>
+                  <li>neighborwho.com</li>
+                  <li>nuwber.com</li>
+                  <li>peekyou.com</li>
+                  <li>peoplefinders.com</li>
+                  <li>pplcheck.com</li>
+                  <li>publicdatadigger.com</li>
+                  <li>publicdatausa.com</li>
+                  <li>publicemailrecords.com</li>
+                  <li>publicinfoservices.com</li>
+                  <li>publicrecordsnow.com</li>
+                  <li>radaris.com</li>
+                  <li>searchpeoplefree.com</li>
+                  <li>searchquarry.com</li>
+                  <li>smartbackgroundchecks.com</li>
+                  <li>socialcatfish.com</li>
+                  <li>spokeo.com</li>
+                  <li>spydialer.com</li>
+                  <li>spyfly.com</li>
+                  <li>thatsthem.com</li>
+                  <li>truthfinder.com</li>
+                  <li>unmask.com</li>
+                  <li>usphonebook.com</li>
+                  <li>ussearch.com</li>
+                  <li>veripages.com</li>
+                  <li>whitepages.com</li>
+                  <li>xlek.com</li>
+                  <li>yellowbook.com</li>
+                  <li>zabasearch.com</li>
+                  <li>peoplebyname.com</li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-broker-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-broker-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-fxa-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-fxa-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-usage-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-usage-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-kanary-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-kanary-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-search-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-search-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-blocked-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-blocked-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-pii-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-pii-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-cancel-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{{getString "remove-faq-cancel-content"}}}</p>
+              <p><a href="/user/remove-kan">Click here to cancel</a></p>
             </div>
           </li>
         </ul>

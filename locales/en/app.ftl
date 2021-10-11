@@ -844,6 +844,11 @@ vpn-promo-copy-new = Protect your online data—and choose a VPN subscription pl
 
 # ---DATA REMOVAL CONTENT---
 
+# Data Removal Variables
+remove-pilot-title = Data Removal Pilot
+remove-pilot-partner = Kanary
+remove-partner-link = http://thekanary.com
+
 # Data Removal Pilot Dashboard Tabs
 dash-tab-breach-title = Breaches
 dash-tab-remove-title = Exposures
@@ -894,7 +899,7 @@ dash-remove-confirm-submit-update = Confirm Information
 dash-remove-manage-info = Manage My Info
 
 # Data Removal Pilot Footer
-dash-remove-kanary-discalimer = Service provided by The Kanary
+dash-remove-kanary-discalimer = Service provided by { remove-pilot-partner }
 dash-remove-link-risk = About Risk Level
 dash-remove-link-broker = Data Broker List
 
@@ -927,14 +932,13 @@ remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
 
 # Data Removal Pilot Steps (Status)
-remove-step-awaiting-scan = Awaiting scan
-remove-step-found = Information found
-remove-step-awaiting-removal = Awaiting removal
-remove-step-submitted = Removal request submitted
-remove-step-awaiting-review = Awaiting review
-remove-step-removed = Removed
-remove-step-blocked = Request blocked
-
+remove-step-awaiting-scan = In-progress
+remove-step-found = In-progress
+remove-step-awaiting-removal = In-progress
+remove-step-submitted = In-progress 
+remove-step-awaiting-review = In-progress
+remove-step-removed = Data Removed
+remove-step-blocked = Request Blocked
 
 # Data Removal Pilot Results Page
 remove-results-toggle-alt = Expand Option
@@ -1031,7 +1035,7 @@ remove-modal-more-info = Visit our FAQ page for more info
 
 # Data Removal Info Needed modal
 remove-modal-info-title = Why is this information needed?
-remove-modal-info-text = The information you provide her will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
+remove-modal-info-text = The information you provide here will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
@@ -1052,5 +1056,38 @@ remove-modal-optout-title = Manual Removal
 remove-modal-optout-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information, you can use the contact email or website provided for this result to do so.
 
 # Data Removal FAQ Page
+remove-about-faq-title = FAQ
+remove-about-faq-long-title = Frequently Asked Questions
+remove-faq-title = { remove-pilot-title } {remove-about-faq-title}
+remove-about-faq-details = Pilot Details
+remove-about-partner-title = About our partner: { remove-pilot-partner }
+remove-about-partner-content = Mozilla has been working with <a href="{ remove-partner-link }" target="_blank">{ remove-pilot-partner }</a> to evaluate implementing a new feature into Firefox Monitor that allows users to automate the search and removal of personal information from a list of websites that expose people’s personal information without their knowledge or consent.
+remove-about-participation-title = Participation
+remove-about-participation-content = We will be piloting this feature with a maximum of 1000 Monitor users who expressed interest in being on the waitlist for the data removal service. Participants must be based in the U.S. due to current service limitations.
+remove-about-duration-title = Duration
+remove-about-duration-content = Each pilot group will have access to the service for 90 days. At the end of the trial period any outstanding removal requests will be suspended and all data removal information held by Mozilla or our partner Kanary will be deleted. The user will be given the option to continue the data removal service directly with Kanary at that time. Pilot participants may discontinue the data removal service at any point within the 90-day pilot period.
+remove-about-scanned-title = About the Scanned Sites
+remove-about-scanned-content = The information you provide to the service is used to scan sites that post data about you, many of them without your consent, and some of which are very difficult to remove your information from.
+remove-about-risk-title = Risk Levels Explained
+remove-about-risk-content = The sites your information appear on are assigned a risk level (High, Medium, or Low) based on the sensitivity of the information they list, the difficulty in getting that information removed, and whether they sell or provide your information to other sites.
+remove-about-process-title = Data Removal Process
+remove-about-process-content = Removal requests are made automatically on your behalf for the sites that are found listing your info. Data removal is not guaranteed, but Kanary continues to follow up, even on blocked requests.
 
-remove-faq-title = Data Removal Pilot FAQ
+
+remove-faq-sites-title = What type of sites do you scan for?
+remove-faq-fxa-title = Why do I need to create a new Firefox account?
+remove-faq-fxa-content = To protect and prevent any changes to your real Firefox Account, the pilot uses a separate, temporary Firefox account. At any point at your request, this temporary pilot account can be deleted without causing any changes to any non-pilot Firefoxc accounts. This pilot account will be deleted and all data removed at the end of the pilot period.
+remove-faq-broker-title = What is a data broker?
+remove-faq-broker-content = Data brokers sell your personal information to sources like marketers, scammers, and others, often without your consent. They often acquire this information by scraping the internet.
+remove-faq-usage-title = What can bad actors do with my personal info?
+remove-faq-usage-content = If your personal data is exposed and purchased, you could be targeted by scammers and spammers, and in a worst-case scenario, you could even become a victim of identity theft.
+remove-faq-kanary-title = How does { remove-pilot-partner } work?
+remove-faq-kanary-content = In partnership with { remove-pilot-partner }, we scan a list of common sites that sell data for the personal information you provide us.We then initiate an automated process of contacting those sites in order to request that your data be removed.
+remove-faq-search-title = Can you remove my information from Google?
+remove-faq-search-content = We can't remove your info from search engines like Google or social media sites like Facebook. In general, we cannot remove your information from services where you’ve signed up for an account, or publicly-available information on government websites.
+remove-faq-blocked-title = What is blocked request? 
+remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a data removal request. While data removal is not guaranteed, Kanary’s current success rate for removals is >70%.
+remove-faq-pii-title = Why do you need my personal information?
+remove-faq-pii-content = The information you provide here will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
+remove-faq-cancel-title = How do I cancel my service?
+remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted from our servers, and from our partner, { remove-pilot-partner }.

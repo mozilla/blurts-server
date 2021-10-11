@@ -75,4 +75,19 @@
       line-height: 24px;
     }
   }
+  &__col-3 {
+    column-count: 3;
+    column-gap: 20px;
+    column-width: 16vw;
+    display: block;
+    word-break: break-word;
+    @include breakpoint(mobile) {
+      column-count: 2;
+      column-width: 24vw;
+    }
+    @include breakpoint(xs) {
+      column-count: 1;
+      column-width: auto;
+    }
+  }
 }
