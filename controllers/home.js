@@ -163,6 +163,13 @@ function notFound(req, res) {
   });
 }
 
+function getRemoveFAQPage(req, res) {
+  return res.render("top-level-page", {
+    title: req.fluentFormat("remove-faq-title"),
+    whichPartial: "top-level/remove-faq",
+  });
+}
+
 module.exports = {
   addEmailToWaitlist,
   getAboutPage,
@@ -172,4 +179,5 @@ module.exports = {
   home,
   notFound,
   removeMyData,
+  getRemoveFAQPage,
 };

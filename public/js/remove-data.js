@@ -17,10 +17,17 @@ function initRemove() {
       case "remove-enroll":
         initRemoveEnroll();
         break;
+      case "remove-faq":
+        initRemoveFAQ();
+        break;
       default:
         console.log("no matching page id");
     }
   }
+}
+
+function initRemoveFAQ() {
+  addRemoveFAQListeners();
 }
 
 function initRemoveEnroll() {
@@ -45,10 +52,17 @@ function addRemoveGeneralListeners() {
     });
 }
 
+function addRemoveFAQListeners() {
+  document.querySelectorAll(".js-remove-faq-toggle").forEach((el) => {
+    el.addEventListener("click", onRemoveDashFAQToggle);
+  });
+}
+
 function addRemoveEnrollListeners() {
-  document
-    .querySelector(".js-enroll-submit")
-    .addEventListener("click", onEnrollFormSubmitClick);
+  const $enrollSubmit = document.querySelector(".js-enroll-submit");
+  if ($enrollSubmit) {
+    $enrollSubmit.addEventListener("click", onEnrollFormSubmitClick);
+  }
 }
 
 function addRemoveFormListeners() {
@@ -232,6 +246,12 @@ function addStatusFilterListener(el) {
 function onRemoveDashDetailsToggle(e) {
   e.preventDefault();
   const $item = e.currentTarget.closest(".remove-dash-results-list-item");
+  $item.classList.toggle("is-active");
+}
+
+function onRemoveDashFAQToggle(e) {
+  e.preventDefault();
+  const $item = e.currentTarget.closest(".remove-faq__list-item");
   $item.classList.toggle("is-active");
 }
 

@@ -7,6 +7,7 @@
     <p>{{getString "remove-enroll-description"}}</p>
     <h3 class="remove-enroll-heading">{{getString "remove-enroll-terms-title"}}</h3>
     <p>{{getString "remove-enroll-terms"}}</p>
+    {{#unless isEnrolledInPilot}}
     <div class="flx">
       <form id="remove-enroll-form" action="/user/remove-enroll-submit">
         <input required id="remove-enroll-terms-checkbox" class="input-group-checkbox" type="checkbox" name="privacy">
@@ -14,6 +15,7 @@
         <input id="" class="js-enroll-submit remove-enroll-submit" type="submit" value="{{getString "remove-enroll-submit"}}"/>
       </form>
     </div>
+    {{/unless}}
   </div>
   {{> dashboards/remove-form-kanary-footer}}
 </main>

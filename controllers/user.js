@@ -691,7 +691,8 @@ async function getRemoveEnrollPage(req, res) {
     return res.redirect("/user/remove-enroll-ended");
   }
 
-  if (checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  const isEnrolledInPilot = checkIfEnrolledInRemovalPilot(user);
+  if (isEnrolledInPilot && !req.query.show) {
     //if the user has already enrolled in the pilot, just send them to the remove data page
     return res.redirect("/user/remove-data");
   }
@@ -720,6 +721,7 @@ async function getRemoveEnrollPage(req, res) {
     csrfToken: req.csrfToken(),
     verifiedEmails,
     unverifiedEmails,
+    isEnrolledInPilot,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-enroll",
