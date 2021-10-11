@@ -60,13 +60,13 @@
               <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">Why is this needed?</a>
             </div>
             <div class="flx remove-dashboard-form-name">
-              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
+              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
               >
-              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
               >
-              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
+              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
             </div>
@@ -75,7 +75,7 @@
           <div class="input-group">
             <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
             <div class="flx remove-dashboard-form-loc">
-              <input required id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="[A-Z a-z]+" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off"
+              <input required id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off"
                 {{#if this.acctInfo.addresses.0.city}}value="{{this.acctInfo.addresses.0.city}}"{{/if}}
               >
               <div class="input-group-field remove-dashboard-select-container remove-dashboard-form-country-container">
@@ -108,7 +108,7 @@
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
-            <input required id="remove-dashboard-form-year" class="input-group-field" type="text" name="birthyear" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
+            <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
               {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
             >
             
