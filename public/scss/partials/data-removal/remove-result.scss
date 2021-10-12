@@ -11,8 +11,10 @@
       visibility: hidden;
     }
   }
+
   &-results-list-item {
     @include toggle-item;
+
     display: none;
   }
 
@@ -49,6 +51,7 @@
 
   &-results-site-name {
     @include ff-metropolis;
+
     font-size: 22px;
     font-weight: 500;
     margin: 0;

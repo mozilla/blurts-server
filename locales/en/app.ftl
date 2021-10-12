@@ -976,7 +976,8 @@ remove-mt-option2-smalltext = *Any removals in progress will be suspended. No ad
 
 # Data Removal Pilot Enrollment Page
 remove-enroll-title = Welcome to Firefox Monitor’s Data Removal Pilot
-remove-enroll-intro = This service scans the internet for sites that expose your personal information, and helps you protect you online by automatically requesting that the data be removed.
+remove-enroll-intro = This service scans the internet for sites that expose your personal information, and helps you protect you online by automatically requesting that the data be removed. <br><br>
+ The Pilot is currently open to US residents only.
 remove-enroll-description-title = Here's what you need to know
 remove-enroll-description = First, you’ll share some identifying information with us. This info is used to find sites online that share it — and then get that information removed. 
  This info will only be used for the duration of the pilot, and then deleted. The firefox account you created for this pilot is separate from your main Firefox account. That means any changes you make to your account while part of this pilot program don't apply to your normal account, including changing emails, passwords, and more.

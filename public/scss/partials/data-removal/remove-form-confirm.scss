@@ -49,6 +49,7 @@
 
   &-review-container {
     align-items: center;
+
     @include breakpoint(xs) {
       flex-direction: column;
     }
