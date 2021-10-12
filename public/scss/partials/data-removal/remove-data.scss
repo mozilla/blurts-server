@@ -602,6 +602,11 @@
     }
   }
 
+  &-form-error {
+    color: var(--alertRed);
+    margin-top: 10px;
+  }
+
   &-form-name {
     @include breakpoint(mobile) {
       flex-wrap: wrap;

@@ -37,7 +37,7 @@
     </div>
   <div class="mw-860 remove-dashboard-section-container">
     <section class="remove-dashboard-form-container remove-dashboard-section">
-      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate>
       <div class="remove-dashboard-form-enter">
         
           {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}
@@ -70,6 +70,7 @@
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
             </div>
+            <div class="remove-dashboard-form-error --name"></div>
             
           </div>
           <div class="input-group">
@@ -104,7 +105,7 @@
                 </select>
               </div>
             </div>
-            
+            <div class="remove-dashboard-form-error --loc"></div>
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
