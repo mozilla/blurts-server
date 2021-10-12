@@ -321,27 +321,31 @@
   }
 
   &-results-container {
-    margin-top: 34px;
+    margin-top: 0px;
+  }
+  &-results-list {
+    margin: 0;
   }
 }
 
 .remove-filter {
   &-container {
-    padding: 24px 0;
+    padding: 24px 0 10px 0;
     border-bottom: 1px solid var(--grey2);
     flex-wrap: wrap;
 
     @include breakpoint(mobile) {
       flex-direction: column-reverse;
+      padding-bottom: 24px;
     }
   }
 
   &-key-list {
     flex-direction: row;
+    margin: 0;
 
     @include breakpoint(mobile) {
       flex-direction: column;
-      margin: 0;
       width: 100%;
     }
   }
@@ -568,7 +572,7 @@
     }
 
     .input-group-field {
-      margin-top: 16px;
+      margin-top: 8px;
 
       &#remove-dashboard-form-loc-city {
         flex: 1;
@@ -598,13 +602,17 @@
     }
 
     .input-group-submit {
-      margin-top: 60px;
+      margin-top: 16px;
     }
   }
 
   &-form-error {
     color: var(--alertRed);
     margin-top: 10px;
+  }
+
+  &-email-container {
+    margin-top: 8px;
   }
 
   &-form-name {

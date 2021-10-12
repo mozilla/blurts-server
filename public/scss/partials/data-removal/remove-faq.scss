@@ -31,6 +31,7 @@
   &__content-title {
     font-size: 36px;
     font-weight: 600;
+    margin-bottom: 20px;
   }
   &__subtitle {
     @include ff-metropolis;
@@ -81,13 +82,22 @@
     column-width: 16vw;
     display: block;
     word-break: break-word;
-    @include breakpoint(mobile) {
+
+    @include breakpoint(tablet) {
       column-count: 2;
       column-width: 24vw;
     }
-    @include breakpoint(xs) {
+
+    @include breakpoint(mobile) {
       column-count: 1;
+    }
+
+    @include breakpoint(xs) {
       column-width: auto;
+    }
+
+    li {
+      display: flex;
     }
   }
 }

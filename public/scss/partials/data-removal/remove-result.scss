@@ -1,7 +1,7 @@
 .remove-dash {
   &-results-list-item-header {
     background-color: transparent;
-    padding: 16px 24px 16px 0;
+    padding: 10px 24px 10px 0;
 
     .remove-dash-results-list-icon {
       height: auto;
@@ -44,7 +44,7 @@
   }
 
   &-results-site-name-container {
-    margin-left: 12px;
+    margin-left: 3vw;
   }
 
   &-results-site-name {
@@ -127,6 +127,8 @@
     color: var(--ink);
     line-height: 20px;
     width: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
   }
 
   &-results-detail-link {
