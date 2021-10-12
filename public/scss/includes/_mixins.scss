@@ -51,8 +51,14 @@
 }
 
 @mixin ff-inter {
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 @mixin ff-metropolis {
@@ -73,6 +79,7 @@
 
 @mixin blue-button {
   @include button;
+
   background-color: var(--blue3);
   color: white;
 
@@ -84,6 +91,7 @@
 
 @mixin grey-button {
   @include button;
+
   background-color: var(--grey2);
   color: var(--grey9);
 
@@ -95,6 +103,7 @@
 
 @mixin red-button {
   @include button;
+
   background-color: var(--alertRed);
   color: white;
 

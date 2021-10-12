@@ -53,6 +53,73 @@ router.get(
 );
 
 router.get(
+  "/preferences",
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getPreferences)
+);
+router.use("/breach-stats", bearerToken());
+router.get("/breach-stats", urlEncodedParser, asyncMiddleware(getBreachStats));
+router.get("/logout", logout);
+router.post(
+  "/email",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(add)
+);
+
+router.post(
+  "/remove-email",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(removeEmail)
+);
+router.post(
+  "/resend-email",
+  jsonParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(resendEmail)
+);
+router.post(
+  "/update-comm-option",
+  jsonParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(updateCommunicationOptions)
+);
+router.get("/verify", jsonParser, asyncMiddleware(verify));
+router.use("/unsubscribe", urlEncodedParser);
+router.get("/unsubscribe", urlEncodedParser, asyncMiddleware(getUnsubscribe));
+router.post("/unsubscribe", csrfProtection, asyncMiddleware(postUnsubscribe));
+router.get(
+  "/remove-fxm",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveFxm)
+);
+router.post(
+  "/remove-fxm",
+  jsonParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(postRemoveFxm)
+);
+
+router.post(
+  "/resolve-breach",
+  jsonParser,
+  urlEncodedParser,
+  requireSessionUser,
+  asyncMiddleware(postResolveBreach)
+);
+
+//REMOVE PILOT CONTROLLERS
+
+router.get(
   "/remove-enroll",
   csrfProtection,
   requireSessionUser,
@@ -68,6 +135,7 @@ router.get(
 
 router.post(
   "/remove-enroll-submit",
+  csrfProtection,
   urlEncodedParser,
   requireSessionUser,
   asyncMiddleware(handleRemoveEnrollFormSignup)
@@ -129,25 +197,9 @@ router.get(
   asyncMiddleware(getRemovePilotEndedPage)
 );
 
-router.get(
-  "/preferences",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getPreferences)
-);
-router.use("/breach-stats", bearerToken());
-router.get("/breach-stats", urlEncodedParser, asyncMiddleware(getBreachStats));
-router.get("/logout", logout);
-router.post(
-  "/email",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(add)
-);
-
 router.post(
   "/remove-data-submit",
+  csrfProtection,
   urlEncodedParser,
   requireSessionUser,
   asyncMiddleware(handleRemoveFormSignup)
@@ -155,49 +207,10 @@ router.post(
 
 router.post(
   "/remove-acct-update",
+  csrfProtection,
   urlEncodedParser,
   requireSessionUser,
   asyncMiddleware(handleRemoveAcctUpdate)
-);
-
-router.post(
-  "/remove-email",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(removeEmail)
-);
-router.post(
-  "/resend-email",
-  jsonParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(resendEmail)
-);
-router.post(
-  "/update-comm-option",
-  jsonParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(updateCommunicationOptions)
-);
-router.get("/verify", jsonParser, asyncMiddleware(verify));
-router.use("/unsubscribe", urlEncodedParser);
-router.get("/unsubscribe", urlEncodedParser, asyncMiddleware(getUnsubscribe));
-router.post("/unsubscribe", csrfProtection, asyncMiddleware(postUnsubscribe));
-router.get(
-  "/remove-fxm",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveFxm)
-);
-router.post(
-  "/remove-fxm",
-  jsonParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(postRemoveFxm)
 );
 
 router.get(
@@ -231,11 +244,4 @@ router.get(
   asyncMiddleware(getRemoveRiskLevel)
 );
 
-router.post(
-  "/resolve-breach",
-  jsonParser,
-  urlEncodedParser,
-  requireSessionUser,
-  asyncMiddleware(postResolveBreach)
-);
 module.exports = router;

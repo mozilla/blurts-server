@@ -121,9 +121,14 @@ function onEnrollFormSubmitClick(e) {
     return;
   }
 
+  const formData = new FormData($form);
+
   fetch($form.action, {
     method: "POST",
-    body: new URLSearchParams(new FormData($form)),
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
   })
     .then((resp) => {
       return resp.json(); // or resp.text() or whatever the server sends
@@ -273,12 +278,16 @@ function handleFormSubmit(e) {
   if (!isValid) {
     return;
   }
+  const formData = new FormData($form);
 
   e.preventDefault(); //if valid, prevent submission and post data
 
   fetch($form.action, {
     method: "POST",
-    body: new URLSearchParams(new FormData($form)),
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
   })
     .then((resp) => {
       return resp.json();

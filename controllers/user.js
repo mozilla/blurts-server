@@ -1153,7 +1153,6 @@ async function getRemoveDashData(kanary_id) {
         const reportID = json[0].id; //MH - TODO: Verify this is always the newest report
         return reportID;
       } else {
-        console.error("no reports available");
         return null;
       }
     })
