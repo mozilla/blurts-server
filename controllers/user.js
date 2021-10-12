@@ -870,8 +870,6 @@ async function getRemovePage(req, res) {
     partialString = "dashboards/remove-dashboard";
   }
 
-  const csrfToken = req.csrfToken();
-
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
@@ -1155,7 +1153,6 @@ async function getRemoveDashData(kanary_id) {
         const reportID = json[0].id; //MH - TODO: Verify this is always the newest report
         return reportID;
       } else {
-        console.error("no reports available");
         return null;
       }
     })
@@ -1421,7 +1418,6 @@ async function handleRemoveFormSignup(req, res) {
     state,
     country,
     birthyear,
-    _csrf,
   } = req.body;
 
   const memberList = {
@@ -1453,7 +1449,7 @@ async function handleRemoveFormSignup(req, res) {
 
   const jsonMemberList = JSON.stringify(memberList);
 
-  const memberID = await handleKanaryAPISubmission(jsonMemberList, _csrf); //use fetch method
+  const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
   if (!req.user) {
     console.error("no user");
   }
@@ -1463,12 +1459,11 @@ async function handleRemoveFormSignup(req, res) {
   return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
 }
 
-async function handleKanaryAPISubmission(memberInfo, _csrf) {
+async function handleKanaryAPISubmission(memberInfo) {
   return fetch("https://thekanary.com/partner-api/v0/accounts/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "CSRF-Token": _csrf,
       Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
     },
     body: memberInfo,
@@ -1495,7 +1490,6 @@ async function handleRemoveAcctUpdate(req, res) {
     country,
     birthyear,
     id,
-    _csrf,
   } = req.body;
 
   const memberData = {
@@ -1523,11 +1517,7 @@ async function handleRemoveAcctUpdate(req, res) {
   };
 
   const jsonMemberData = JSON.stringify(memberData);
-  const memberID = await handleKanaryUpdateSubmission(
-    jsonMemberData,
-    id,
-    _csrf
-  ); //use fetch method
+  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
 
   if (memberID) {
     return res.json({
@@ -1539,12 +1529,11 @@ async function handleRemoveAcctUpdate(req, res) {
   }
 }
 
-async function handleKanaryUpdateSubmission(memberInfo, id, _csrf) {
+async function handleKanaryUpdateSubmission(memberInfo, id) {
   return fetch(`https://thekanary.com/partner-api/v0/members/${id}/`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      "CSRF-Token": _csrf,
       Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
     },
     body: memberInfo,
