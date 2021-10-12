@@ -135,7 +135,7 @@ function onEnrollFormSubmitClick(e) {
     })
     .then((data) => {
       if (data.nextPage) {
-        window.location = data.nextPage;
+        window.location.pathname = data.nextPage;
       } else if (data.error) {
         alert(data.error);
       } else {
@@ -294,7 +294,7 @@ function handleFormSubmit(e) {
     })
     .then((data) => {
       if (data.nextPage) {
-        window.location = data.nextPage;
+        window.location.pathname = data.nextPage;
       } else {
         console.error("there was an error in the response", data);
       }
