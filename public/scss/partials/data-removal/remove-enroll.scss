@@ -5,6 +5,11 @@
     p {
       line-height: 24px;
     }
+    h2,
+    h3,
+    h4 {
+      margin-top: revert; //browser defaults
+    }
   }
 
   &-kanary-container {

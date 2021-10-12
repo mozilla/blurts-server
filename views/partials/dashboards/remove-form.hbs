@@ -37,7 +37,7 @@
     </div>
   <div class="mw-860 remove-dashboard-section-container">
     <section class="remove-dashboard-form-container remove-dashboard-section">
-      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form">
+      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate>
       <div class="remove-dashboard-form-enter">
         
           {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}
@@ -45,7 +45,7 @@
           <div class="input-group">
             <div class="input-group remove-account-select">
               <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
-              <div class="tmp-select-output flx space-between">
+              <div class="remove-dashboard-email-container tmp-select-output flx space-between">
                 <select id="remove-dashboard-form-email" required class="tmp-select-email bold" name="account" id="account">
                 {{#each this.verifiedEmails }}
                   <option value="{{ email }}">{{ email }}</option>
@@ -60,22 +60,23 @@
               <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">Why is this needed?</a>
             </div>
             <div class="flx remove-dashboard-form-name">
-              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
+              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
               >
-              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" name="middlename" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
               >
-              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="(-?([A-Z'-].\s)?([A-Z'-][a-z'-]+)\s?)+([A-Z'-]'([A-Z'-][a-z'-]+))?" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
+              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
             </div>
+            <div class="remove-dashboard-form-error --name"></div>
             
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
             <div class="flx remove-dashboard-form-loc">
-              <input required id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="[A-Z a-z]+" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off"
+              <input required id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off"
                 {{#if this.acctInfo.addresses.0.city}}value="{{this.acctInfo.addresses.0.city}}"{{/if}}
               >
               <div class="input-group-field remove-dashboard-select-container remove-dashboard-form-country-container">
@@ -104,11 +105,11 @@
                 </select>
               </div>
             </div>
-            
+            <div class="remove-dashboard-form-error --loc"></div>
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
-            <input required id="remove-dashboard-form-year" class="input-group-field" type="text" name="birthyear" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year-label"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
+            <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
               {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
             >
             
@@ -125,11 +126,10 @@
           </div>
           <div class="input-group-button inline">
             <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" 
-              value="{{#if this.acctInfo}}{{ getString "dash-remove-change-submit" }}{{else}}{{ getString "dash-remove-submit" }}{{/if}}"/>
+              value="{{ getString "dash-remove-change-submit" }}"/>
             {{> forms/loader }}
           </div>
           <div class="flx flx-col flx-cntr">
-            {{#unless this.acctInfo}}<p class="remove-dashboard-form-disclaimer">{{ getString "dash-remove-form-disclaimer"}}</p>{{/unless}}
             <p class="alert txt-cntr remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
           </div>
         

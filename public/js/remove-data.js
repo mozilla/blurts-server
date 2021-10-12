@@ -112,13 +112,15 @@ function onConfirmEditClick(e) {
 }
 
 function onEnrollFormSubmitClick(e) {
+  e.preventDefault();
   const $form = e.target.form;
+
   const isValid = $form.reportValidity();
   if (!isValid) {
     console.log("not valid!");
     return;
   }
-  e.preventDefault();
+
   fetch($form.action, {
     method: "POST",
     body: new URLSearchParams(new FormData($form)),
@@ -140,13 +142,80 @@ function onEnrollFormSubmitClick(e) {
     });
 }
 
+function displayCustomPatternValidity($fieldEl, patternError, unknownError) {
+  $fieldEl.setCustomValidity("");
+  if (!$fieldEl.checkValidity()) {
+    console.log("problem with field", $fieldEl, $fieldEl.validationMessage);
+    if ($fieldEl.validity.patternMismatch) {
+      $fieldEl.setCustomValidity(patternError);
+    } else {
+      $fieldEl.setCustomValidity(unknownError);
+    }
+  }
+}
+
+function checkNameErrors(nameError, unknownError) {
+  const $firstName = document.getElementById(
+    "remove-dashboard-form-first-name"
+  );
+  const $middleName = document.getElementById(
+    "remove-dashboard-form-middle-name"
+  );
+  const $lastName = document.getElementById("remove-dashboard-form-last-name");
+  const $nameErrorField = document.querySelector(
+    ".remove-dashboard-form-error.--name"
+  );
+
+  displayCustomPatternValidity($firstName, nameError, unknownError);
+  displayCustomPatternValidity($middleName, nameError, unknownError);
+  displayCustomPatternValidity($lastName, nameError, unknownError);
+
+  const firstValid = $firstName.checkValidity();
+  const middleValid = $middleName.checkValidity();
+  const lastValid = $lastName.checkValidity();
+
+  if (!firstValid || !middleValid || !lastValid) {
+    displayRemoveFormError($nameErrorField, nameError);
+  } else {
+    displayRemoveFormError($nameErrorField, "");
+  }
+}
+
+function checkLocErrors(nameError, unknownError) {
+  const $cityField = document.getElementById("remove-dashboard-form-loc-city");
+  const cityValid = $cityField.checkValidity();
+  const $cityErrorField = document.querySelector(
+    ".remove-dashboard-form-error.--loc"
+  );
+  displayCustomPatternValidity($cityField, nameError, unknownError);
+
+  if (!cityValid) {
+    displayRemoveFormError($cityErrorField, nameError);
+  } else {
+    displayRemoveFormError($cityErrorField, "");
+  }
+}
+
+function displayRemoveFormError($el, error) {
+  $el.innerText = error;
+}
+
 function onRemoveFormSubmitClick(e) {
+  e.preventDefault();
+
+  const nameError =
+    "This field must use only letters, spaces, apostrophes, or dashes, and must be at least 2 characters long";
+  const unknownError = "There was an unknown error with this field";
+
+  checkNameErrors(nameError, unknownError);
+  checkLocErrors(nameError, unknownError);
+
   const isValid = e.target.form.reportValidity();
+
   if (!isValid) {
     console.log("not valid!");
     return;
   }
-  e.preventDefault();
   const formData = new FormData(e.target.form);
 
   populateConfirmData(formData);
