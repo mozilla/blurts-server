@@ -99,6 +99,7 @@ function getRemoveFormData(args) {
   const usStates = args.data.root.usStates;
   const verifiedEmails = args.data.root.verifiedEmails;
   const acctInfo = args.data.root.removeAcctInfo;
+  const csrfToken = args.data.root.csrfToken;
   //const locales = args.data.root.req.supportedLocales;
 
   // move emails with 0 breaches to the bottom of the page
@@ -113,6 +114,7 @@ function getRemoveFormData(args) {
   });
 
   const emailCards = {
+    csrfToken: csrfToken,
     verifiedEmails: verifiedEmails,
     countries: countries,
     usStates: usStates,
