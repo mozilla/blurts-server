@@ -1509,6 +1509,15 @@ function checkForEmailMatch(account, user) {
 }
 
 async function handleRemoveAcctUpdate(req, res) {
+  if (!req.user) {
+    console.error("no user");
+    return res.json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
+
   const {
     account,
     firstname,
@@ -1521,14 +1530,21 @@ async function handleRemoveAcctUpdate(req, res) {
     id,
   } = req.body;
 
-  const user = req.user;
-
   const emailMatch = checkForEmailMatch(account, user);
 
   if (!emailMatch) {
     console.error("no email match");
     return res.json({
       error: "The email you provided does not match any we have on file.",
+    });
+  }
+
+  const removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  if (parseInt(id) !== parseInt(removeAcctInfo.id)) {
+    console.error("no id match");
+    return res.json({
+      error:
+        "The id submitted for this user does not match the Kanary member ID.",
     });
   }
 
