@@ -4,4 +4,4 @@ loadtests
 public/dist
 public/js/polyfills
 public/scss/libs
-public/js/libs/*
+public/js/micromodal.js
