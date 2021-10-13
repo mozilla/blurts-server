@@ -54,8 +54,6 @@ jobs:
         executor: ubuntu
         environment:
             DATABASE_URL: postgresql://postgres:unsafe-dev-pass@localhost/blurts
-            POSTGRES_USER: postgres
-            # TERM: xterm
         steps:
             - checkout
             - run: 
@@ -65,7 +63,7 @@ jobs:
                     sudo apt-get install postgresql
                     pg_isready
             - run:
-                name: Set password so app container can connect to localhost
+                name: Set password to allow Docker connection
                 command: sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'unsafe-dev-pass';" | cat
             - run:
                 name: Create test database
@@ -85,11 +83,19 @@ jobs:
                 command: docker build -t blurts-server . --build-arg dev=true
             - run:
                 name: Test Code
-                command: docker run --network="host" --env-file .env-dist -e NODE_ENV=tests -e DATABASE_URL=$DATABASE_URL -e HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN blurts-server npm test
+                command: |
+                    docker run --network="host" \
+                    --env-file .env-dist \
+                    -e NODE_ENV=tests \
+                    -e DATABASE_URL=$DATABASE_URL \
+                    -e HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN \
+                    -e COVERALLS_SERVICE_NAME=circleci \
+                    -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN \
+                    -e COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
+                    blurts-server npm test
 
     integration-test:
-        machine:
-            image: ubuntu-1604:201903-01
+        executor: ubuntu
         steps:
             - checkout
             - run:
