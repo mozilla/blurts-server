@@ -1412,6 +1412,14 @@ async function handleRemoveEnrollFormSignup(req, res) {
 async function handleRemoveFormSignup(req, res) {
   //MH TODO: validate form data
 
+  if (!req.user) {
+    console.error("no user");
+    return res.json({
+      error: "No user found",
+    });
+  }
+  const user = req.user;
+
   const {
     account,
     firstname,
@@ -1422,6 +1430,15 @@ async function handleRemoveFormSignup(req, res) {
     country,
     birthyear,
   } = req.body;
+
+  const emailMatch = checkForEmailMatch(account, user);
+
+  if (!emailMatch) {
+    console.error("no email match");
+    return res.json({
+      error: "The email you provided does not match any we have on file.",
+    });
+  }
 
   const memberList = {
     members: [
@@ -1453,10 +1470,6 @@ async function handleRemoveFormSignup(req, res) {
   const jsonMemberList = JSON.stringify(memberList);
 
   const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
-  if (!req.user) {
-    console.error("no user");
-  }
-  const user = req.user;
 
   const kid = await DB.setKanaryID(user, memberID);
   return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
@@ -1480,8 +1493,30 @@ async function handleKanaryAPISubmission(memberInfo) {
     });
 }
 
+function checkForEmailMatch(account, user) {
+  const emailArray = [user.primary_email];
+  user.email_addresses.forEach((email) => {
+    emailArray.push(email.email);
+  });
+
+  let emailMatch = false;
+  emailArray.forEach((email) => {
+    if (email === account) {
+      emailMatch = true;
+    }
+  });
+  return emailMatch;
+}
+
 async function handleRemoveAcctUpdate(req, res) {
-  //MH TODO: validate form data
+  if (!req.user) {
+    console.error("no user");
+    return res.json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
 
   const {
     account,
@@ -1494,6 +1529,24 @@ async function handleRemoveAcctUpdate(req, res) {
     birthyear,
     id,
   } = req.body;
+
+  const emailMatch = checkForEmailMatch(account, user);
+
+  if (!emailMatch) {
+    console.error("no email match");
+    return res.json({
+      error: "The email you provided does not match any we have on file.",
+    });
+  }
+
+  const removeAcctInfo = await getRemoveAcctInfo(user.kid);
+  if (parseInt(id) !== parseInt(removeAcctInfo.id)) {
+    console.error("no id match");
+    return res.json({
+      error:
+        "The id submitted for this user does not match the Kanary member ID.",
+    });
+  }
 
   const memberData = {
     id: parseInt(id),
@@ -1529,6 +1582,10 @@ async function handleRemoveAcctUpdate(req, res) {
     });
   } else {
     console.error("error submitting updates to kanary");
+    return res.json({
+      error:
+        "Error submitting updates to Kanary. Please try your request again.",
+    });
   }
 }
 
