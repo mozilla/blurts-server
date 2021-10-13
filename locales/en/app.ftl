@@ -869,6 +869,7 @@ dash-remove-intro-signup = To start removing your exposed personal data, please 
 dash-remove-info-change-title = Update your info
 dash-remove-info-change = To update the info you want removed, fill out the form below
 dash-remove-form-email-label = Select your email address
+dash-remove-form-why-needed = Why is this needed?
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name-first = First Name
 dash-remove-form-name-middle = Middle (Optional)
@@ -1086,6 +1087,11 @@ remove-about-risk-title = Risk Levels Explained
 remove-about-risk-content = The sites your information appear on are assigned a risk level (High, Medium, or Low) based on the sensitivity of the information they list, the difficulty in getting that information removed, and whether they sell or provide your information to other sites.
 remove-about-process-title = Data Removal Process
 remove-about-process-content = Removal requests are made automatically on your behalf for the sites that are found listing your info. Data removal is not guaranteed, but Kanary continues to follow up, even on blocked requests.
+remove-about-support-title = Support
+remove-about-support-email = monitor-pilot@mozilla.com
+remove-about-bug-form = https://docs.google.com/forms/d/e/1FAIpQLSe4qAy3vB6iZvq9DsKGgh65zN4X3xq-T3K2XjF0zNScDSMcgQ/viewform
+remove-about-support-content = If you cannot find an answer to your questions on this page, you can contact support via e-mail at <a href="mailto:{remove-about-support-email}">{remove-about-support-email}</a>.<br><br>
+ If you wish to file a bug, <a href="{remove-about-bug-form}" target="_blank">you may do so via this google form</a>.
 
 
 remove-faq-sites-title = What type of sites do you scan for?

@@ -1150,7 +1150,10 @@ async function getRemoveDashData(kanary_id) {
     .then((res) => res.json())
     .then((json) => {
       if (json.length) {
-        const reportID = json[0].id; //MH - TODO: Verify this is always the newest report
+        //MH TODO: Verify whether each new report contain all a user's info or only new exposures? If the latter, we'll need to loop through the array and display all results
+        const reportIndex = 0;
+        //const reportIndex = json.length - 1;
+        const reportID = json[reportIndex].id;
         return reportID;
       } else {
         return null;

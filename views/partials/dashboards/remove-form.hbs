@@ -18,7 +18,7 @@
               {{#if ./../supportedLocalesIncludesEnglish}}
               <p class="remove-dashboard-card-body">Firefox Monitor has partnered with The Kanary, which can actively scan and automatically remove your personal data from <a href="/user/remove-sites-list">50 different data broker websites</a>. These sites expose your personal information to anyone who searches for you, thereby putting you at risk.</p>
               {{/if}}
-              <p class="remove-dashboard-card-body"><a href="https://www.thekanary.com/faq" target="_blank">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              <p class="remove-dashboard-card-body"><a href="https://thekanary.com/signup/terms" target="_blank">{{ getString "dash-remove-intro-service-link"}}</a></p>
               {{#if this.acctInfo}}
               <p class="remove-dashboard-card-body">
                 <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>
@@ -48,7 +48,7 @@
               <div class="remove-dashboard-email-container tmp-select-output flx space-between">
                 <select id="remove-dashboard-form-email" required class="tmp-select-email bold" name="account" id="account">
                 {{#each this.verifiedEmails }}
-                  <option value="{{ email }}">{{ email }}</option>
+                  <option {{#if isSelected}}selected{{/if}} value="{{ email }}" {{#ifCompare email "===" this.acctInfo.emails.0.email}}selected{{/ifCompare}}>{{ email }}</option>
                 {{/each}}
                 </select>
               </div>
@@ -57,7 +57,7 @@
           <div class="input-group">
             <div class="flx space-between cntr">
               <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
-              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">Why is this needed?</a>
+              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">{{getString "dash-remove-form-why-needed"}}</a>
             </div>
             <div class="flx remove-dashboard-form-name">
               <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 

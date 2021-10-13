@@ -113,6 +113,12 @@ function getRemoveFormData(args) {
     return 0;
   });
 
+  verifiedEmails.forEach((email) => {
+    if (email.email === acctInfo.emails[0].email) {
+      email.isSelected = true;
+    }
+  });
+
   const emailCards = {
     csrfToken: csrfToken,
     verifiedEmails: verifiedEmails,
