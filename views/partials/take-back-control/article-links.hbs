@@ -1,11 +1,17 @@
         <ul class="article-list {{ variableClasses }}">
+          <li>
+            <a class="btn-big btn-blue remove-home__start-btn" href="/user/remove-enroll">{{getString "remove-home-removal-btn"}}</a>
+          </li>
           {{#eachFromTo (articleLinks) 0 3}}
             <li class="logo-title-wrapper flx article">
               <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
               <a href="/security-tips#{{ this.class }}" class="article-link send-ga-ping" {{> analytics/security-tips-link linkTitle=this.title }}>{{ this.stringId }}{{> svg/arrow-head-right }}</a>
             </li>
           {{/eachFromTo}}
-          <li class="logo-title-wrapper flx">
-            <a class="article-link security-tips-link btn-transparent btn-white btn-small send-ga-ping" href="/security-tips" {{> analytics/security-tips-link linkTitle="Read More Security Tips" }}>{{ getString "read-more-tips" }}</a>
+          <li class="logo-title-wrapper flx article">
+            <div class="icon-inline-wrapper">
+              <img class="icon-inline remove-home__tips-icon" src="/img/removal/remove-question.svg" alt="About result status">
+            </div>
+            <a class="article-link send-ga-ping" href="/security-tips" {{> analytics/security-tips-link linkTitle=(getString "read-more-tips") }}>{{ getString "read-more-tips" }}{{> svg/arrow-head-right }}</a>
           </li>
         </ul>

@@ -1116,3 +1116,10 @@ remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The information you provide here will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
 remove-faq-cancel-title = How do I cancel my service?
 remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted from our servers, and from our partner, { remove-pilot-partner }.
+
+# Data Removal Home Page Content
+remove-home-title = Stay ahead of threats with breach monitoring and personal data removal
+remove-home-cta-content = You can’t stop hackers from hacking. But you can take steps to reduce your vulnerability.
+remove-home-removal-btn = Sign Up to Start Data Removal
+remove-home-protect-pii = Protect your personal information
+remove-home-protect-subtitle = Automatically remove exposed personal information.

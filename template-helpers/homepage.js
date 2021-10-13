@@ -9,7 +9,11 @@ function makeLanding(args) {
   const landingCopy = {};
 
   if (featuredBreach) {
-    landingCopy.headline = LocaleUtils.fluentFormat(locales, "was-your-info-exposed", { breachName : `<span class="bold">${featuredBreach.Title}</span>` });
+    landingCopy.headline = LocaleUtils.fluentFormat(
+      locales,
+      "was-your-info-exposed",
+      { breachName: `<span class="bold">${featuredBreach.Title}</span>` }
+    );
     landingCopy.info = [
       {
         subhead: LocaleUtils.fluentFormat(locales, "about-fxm-headline"),
@@ -17,8 +21,14 @@ function makeLanding(args) {
       },
     ];
   } else {
-    landingCopy.headline = LocaleUtils.fluentFormat(locales, "see-if-youve-been-part");
-    landingCopy.subhead = LocaleUtils.fluentFormat(locales, "find-out-what-hackers-know");
+    landingCopy.headline = LocaleUtils.fluentFormat(
+      locales,
+      "remove-home-title"
+    );
+    landingCopy.subhead = LocaleUtils.fluentFormat(
+      locales,
+      "find-out-what-hackers-know"
+    );
   }
   if (featuredBreach && featuredBreach.IsSensitive) {
     landingCopy.breachIsSensitive = true;
@@ -29,7 +39,6 @@ function makeLanding(args) {
   }
 
   return args.fn(landingCopy);
-
 }
 module.exports = {
   makeLanding,
