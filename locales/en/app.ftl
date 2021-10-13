@@ -938,13 +938,13 @@ remove-filter-list = Filter Removal List
 remove-filter-date = Filter by Date
 
 # Data Removal Pilot Steps (Status)
-remove-step-awaiting-scan = In-progress
-remove-step-found = In-progress
-remove-step-awaiting-removal = In-progress
-remove-step-submitted = In-progress 
-remove-step-awaiting-review = In-progress
-remove-step-removed = Data Removed
-remove-step-blocked = Request Blocked
+remove-step-awaiting-scan = In progress
+remove-step-found = In progress
+remove-step-awaiting-removal = In progress
+remove-step-submitted = In progress 
+remove-step-awaiting-review = In progress
+remove-step-removed = Complete
+remove-step-blocked = Blocked
 
 # Data Removal Pilot Results Page
 remove-results-toggle-alt = Expand Option
@@ -1055,7 +1055,10 @@ remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
 remove-modal-status-title = Removal Status
-remove-modal-status-text = Once a match of your information is found on a site, the status of the removal request will change to indicate its progress as it is being resolved.
+remove-modal-status-text = Once a match of your information is found on a site, the status of the removal request will change to indicate its progress as it is being resolved. <br><br>
+ • Complete: Your data has been removed. You're all set!<br><br>
+ • In progress: Hang tight, we're working on removing your data.<br><br>
+ • Blocked: We're unable to proceed with a removal request for the time being. You don't need to do anything, we'll keep trying to request removal.<br><br>
 
 
 # Data Removal Info Found Modal
@@ -1085,6 +1088,8 @@ remove-about-scanned-title = About the Scanned Sites
 remove-about-scanned-content = The information you provide to the service is used to scan sites that post data about you, many of them without your consent, and some of which are very difficult to remove your information from.
 remove-about-risk-title = Risk Levels Explained
 remove-about-risk-content = The sites your information appear on are assigned a risk level (High, Medium, or Low) based on the sensitivity of the information they list, the difficulty in getting that information removed, and whether they sell or provide your information to other sites.
+remove-about-status-title = Status Explained
+remove-about-status-content = {remove-modal-status-text}
 remove-about-process-title = Data Removal Process
 remove-about-process-content = Removal requests are made automatically on your behalf for the sites that are found listing your info. Data removal is not guaranteed, but Kanary continues to follow up, even on blocked requests.
 remove-about-support-title = Support
@@ -1111,3 +1116,10 @@ remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The information you provide here will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
 remove-faq-cancel-title = How do I cancel my service?
 remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted from our servers, and from our partner, { remove-pilot-partner }.
+
+# Data Removal Home Page Content
+remove-home-title = Stay ahead of threats with breach monitoring and personal data removal
+remove-home-cta-content = You can’t stop hackers from hacking. But you can take steps to reduce your vulnerability.
+remove-home-removal-btn = Sign Up to Start Data Removal
+remove-home-protect-pii = Protect your personal information
+remove-home-protect-subtitle = Automatically remove exposed personal information.
