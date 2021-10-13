@@ -1,9 +1,5 @@
 version: 2.1
 
-orbs:
-    node: circleci/node@4.7.0
-    python: circleci/python@1.4.0
-
 executors:
     node:
         docker:
@@ -14,6 +10,10 @@ executors:
     ubuntu:
         machine:
             image: ubuntu-2004:202107-02
+
+orbs:
+    node: circleci/node@4.7.0
+    python: circleci/python@1.4.0
 
 jobs:
     lint-js:
@@ -107,10 +107,13 @@ jobs:
                       node -v
                       cp .env-dist .env
                       npm install
+                      npm install --only=dev
                       sudo chown -R  $USER:$USER .
                       mkdir ./tests/integration/errorShots
                       docker-compose -f tests/integration/docker-compose.yml up --build -d
                       docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
+                  environment:
+                    PORT: 6060
             - run:
                   name: Capture Logs.
                   when: on_fail
@@ -129,15 +132,12 @@ jobs:
 
     deploy:
         docker:
-            - image: docker:18.06.3-ce
+            - image: cimg/base:stable
         steps:
             - setup_remote_docker
-            - restore_cache:
-                  key: v1-{{.Branch}}
             - run:
-                  name: Restore Docker image cache
-                  command: docker load -i /cache/docker.tar
-
+                name: Build app for deploy
+                command: docker build -t blurts-server .
             - run:
                   name: Deploy to Dockerhub
                   command: |
@@ -170,10 +170,10 @@ jobs:
 workflows:
     lint-build-test-deploy:
         jobs:
-            # - lint-js
-            # - lint-css
-            # - lint-audit
-            # - lint-l10n
+            - lint-js
+            - lint-css
+            - lint-audit
+            - lint-l10n
             - build:
                   filters:
                       tags:
