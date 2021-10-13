@@ -869,6 +869,7 @@ dash-remove-intro-signup = To start removing your exposed personal data, please 
 dash-remove-info-change-title = Update your info
 dash-remove-info-change = To update the info you want removed, fill out the form below
 dash-remove-form-email-label = Select your email address
+dash-remove-form-why-needed = Why is this needed?
 dash-remove-form-name-label = What is your full name?
 dash-remove-form-name-first = First Name
 dash-remove-form-name-middle = Middle (Optional)

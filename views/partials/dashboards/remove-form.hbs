@@ -48,7 +48,7 @@
               <div class="remove-dashboard-email-container tmp-select-output flx space-between">
                 <select id="remove-dashboard-form-email" required class="tmp-select-email bold" name="account" id="account">
                 {{#each this.verifiedEmails }}
-                  <option value="{{ email }}">{{ email }}</option>
+                  <option {{#if isSelected}}selected{{/if}} value="{{ email }}" {{#ifCompare email "===" this.acctInfo.emails.0.email}}selected{{/ifCompare}}>{{ email }}</option>
                 {{/each}}
                 </select>
               </div>
@@ -57,7 +57,7 @@
           <div class="input-group">
             <div class="flx space-between cntr">
               <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
-              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">Why is this needed?</a>
+              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">{{getString "dash-remove-form-why-needed"}}</a>
             </div>
             <div class="flx remove-dashboard-form-name">
               <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
