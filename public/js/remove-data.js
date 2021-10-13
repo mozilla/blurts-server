@@ -297,6 +297,11 @@ function handleFormSubmit(e) {
         window.location.pathname = data.nextPage;
       } else {
         console.error("there was an error in the response", data);
+        if (data.error) {
+          document.querySelector(
+            ".remove-dashboard-form-error.--general"
+          ).innerText = data.error;
+        }
       }
     })
     .catch((error) => {
