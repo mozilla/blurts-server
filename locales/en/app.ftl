@@ -1090,7 +1090,7 @@ remove-about-process-content = Removal requests are made automatically on your b
 
 remove-faq-sites-title = What type of sites do you scan for?
 remove-faq-fxa-title = Why do I need to create a new Firefox account?
-remove-faq-fxa-content = To protect and prevent any changes to your real Firefox Account, the pilot uses a separate, temporary Firefox account. At any point at your request, this temporary pilot account can be deleted without causing any changes to any non-pilot Firefoxc accounts. This pilot account will be deleted and all data removed at the end of the pilot period.
+remove-faq-fxa-content = To protect and prevent any changes to your real Firefox Account, the pilot uses a separate, temporary Firefox account. At any point at your request, this temporary pilot account can be deleted without causing any changes to any non-pilot Firefox accounts. This pilot account will be deleted and all data removed at the end of the pilot period.
 remove-faq-broker-title = What is a data broker?
 remove-faq-broker-content = Data brokers sell your personal information to sources like marketers, scammers, and others, often without your consent. They often acquire this information by scraping the internet.
 remove-faq-usage-title = What can bad actors do with my personal info?
