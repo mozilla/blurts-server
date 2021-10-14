@@ -106,11 +106,11 @@ jobs:
                       nvm install 14.17 --default
                       node -v
                       cp .env-dist .env
-                      npm ci
+                      npm ci --audit=false
                       sudo chown -R  $USER:$USER .
                       mkdir ./tests/integration/errorShots
-                      docker-compose -f tests/integration/docker-compose.yml up --build -d
-                      docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
+                      docker-compose --env-file .env -f tests/integration/docker-compose.yml up --build -d
+                      docker-compose --env-file .env -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
             - run:
                   name: Capture Logs.
                   when: on_fail

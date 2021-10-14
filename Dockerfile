@@ -19,7 +19,7 @@ COPY package-lock.json package-lock.json
 
 RUN if [[ -n "$dev" ]] ; then \
     echo Using npm ci to install production AND development dependencies. ; \
-    npm ci && rm -rf ~app/.npm /tmp/* ; \
+    npm ci --audit=false && rm -rf ~app/.npm /tmp/* ; \
 else \
     echo Installing production dependencies only ; \
     npm install --production && rm -rf ~app/.npm /tmp/* ; \
