@@ -64,7 +64,7 @@ function getBreachStats(args) {
   // Format "00 emails being monitored" callout
   totalEmailsStat.subhead = localize(
     locales,
-    "email-addresses-being-monitored",
+    "remove-email-addresses-monitored",
     { emails: verifiedEmails.length }
   );
   totalEmailsStat.displayCount = breachStatBundle.monitoredEmails.count;
@@ -87,12 +87,12 @@ function getBreachStats(args) {
     });
     breachesStat.displayCount = breachesStat.unresolved;
   } else {
-    passwordStat.subhead = localize(locales, "passwords-exposed", {
+    passwordStat.subhead = localize(locales, "remove-passwords-exposed", {
       passwords: passwordStat.count,
     });
     passwordStat.displayCount = passwordStat.count;
 
-    breachesStat.subhead = localize(locales, "known-data-breaches-exposed", {
+    breachesStat.subhead = localize(locales, "remove-known-data-breaches", {
       breaches: breachesStat.count,
     });
     breachesStat.displayCount = breachesStat.count;
