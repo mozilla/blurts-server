@@ -1469,10 +1469,12 @@ async function handleRemoveFormSignup(req, res) {
 
   const jsonMemberList = JSON.stringify(memberList);
 
-  const memberID = await handleKanaryAPISubmission(jsonMemberList); //use fetch method
+  const memberID = await handleKanaryAPISubmission(jsonMemberList);
+  if (!user.kid) {
+    await DB.setKanaryID(user, memberID);
+  }
 
-  const kid = await DB.setKanaryID(user, memberID);
-  return res.json({ id: kid, nextPage: "/user/remove-signup-confirmation" });
+  return res.json({ nextPage: "/user/remove-signup-confirmation" });
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
@@ -1579,11 +1581,10 @@ async function handleRemoveAcctUpdate(req, res) {
   };
 
   const jsonMemberData = JSON.stringify(memberData);
-  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
+  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id);
 
   if (memberID) {
     return res.json({
-      id: memberID,
       nextPage: "/user/remove-update-confirmation",
     });
   } else {
