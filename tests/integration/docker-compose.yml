@@ -5,8 +5,6 @@ services:
     build:
       context: ../..
       dockerfile: tests/integration/Dockerfile.integration-test.yml
-    ports:
-      - "${PORT}:${PORT}"
     depends_on:
       - postgres
     environment:
@@ -19,6 +17,7 @@ services:
       - DATABASE_URL=postgres://postgres@postgres:5432/blurts
     links:
       - postgres
+    network_mode: host
   postgres:
     image: postgres
     restart: always
