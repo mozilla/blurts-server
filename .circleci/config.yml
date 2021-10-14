@@ -98,6 +98,10 @@ jobs:
         executor: ubuntu
         steps:
             - checkout
+            - node/install-npm:
+                # Most node@14 images come packages with npm@6. For some reason, this ubuntu image comes with node@14 + npm@7
+                # Attempted to roll ubuntu image back, but current version includes docker-compose bug-fix which we use (--env-file)
+                version: "6"
             - node/install-packages
             - run:
                   name: Run tests
