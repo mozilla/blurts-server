@@ -1581,11 +1581,10 @@ async function handleRemoveAcctUpdate(req, res) {
   };
 
   const jsonMemberData = JSON.stringify(memberData);
-  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id); //use fetch method
+  const memberID = await handleKanaryUpdateSubmission(jsonMemberData, id);
 
   if (memberID) {
     return res.json({
-      id: memberID,
       nextPage: "/user/remove-update-confirmation",
     });
   } else {
