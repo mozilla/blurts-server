@@ -10,9 +10,12 @@ services:
     depends_on:
       - postgres
     environment:
+      - HIBP_KANON_API_TOKEN
+      - HIBP_API_TOKEN
       - FXA_ENABLED=1
       - LOGOS_ORIGIN=null
       - BREACH_RESOLUTION_ENABLED=false
+      - MONITOR_FXA_PASSWORD
       - DATABASE_URL=postgres://postgres@postgres:5432/blurts
     links:
       - postgres

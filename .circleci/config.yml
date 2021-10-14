@@ -63,11 +63,11 @@ jobs:
                     sudo apt-get install postgresql
                     pg_isready
             - run:
-                name: Set password to allow Docker connection
-                command: sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'unsafe-dev-pass';" | cat
-            - run:
                 name: Create test database
-                command: sudo -u postgres createdb test-blurts | cat
+                command: |
+                    sudo -u postgres createdb test-blurts | cat
+                    # Set password to allow Docker connection
+                    sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'unsafe-dev-pass';" | cat
             - run:
                   name: Create version.json
                   command: |
@@ -98,21 +98,17 @@ jobs:
         executor: ubuntu
         steps:
             - checkout
+            - node/install-packages
             - run:
-                  name: Build and run tests.
+                  name: Run tests
                   command: |
-                      export NVM_DIR="/opt/circleci/.nvm"
-                      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                      nvm install 14.17 --default
-                      node -v
                       cp .env-dist .env
-                      npm ci --audit=false
                       sudo chown -R  $USER:$USER .
                       mkdir ./tests/integration/errorShots
                       docker-compose --env-file .env -f tests/integration/docker-compose.yml up --build -d
                       docker-compose --env-file .env -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
             - run:
-                  name: Capture Logs.
+                  name: Capture logs
                   when: on_fail
                   command: |
                       docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
@@ -165,7 +161,7 @@ jobs:
                       ./.circleci/scripts/sync-static
 
 workflows:
-    lint-build-test-deploy:
+    test-build-deploy:
         jobs:
             - lint-js
             - lint-css
@@ -175,9 +171,7 @@ workflows:
                   filters:
                       tags:
                           only: /.*/
-            - integration-test:
-                  requires:
-                      - build
+            - integration-test
             - deploy:
                   requires:
                       - build
