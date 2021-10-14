@@ -348,7 +348,7 @@ function welcomeMessage(args) {
     });
   }
 
-  return LocaleUtils.fluentFormat(locales, "welcome-back", {
+  return LocaleUtils.fluentFormat(locales, "welcome-user", {
     userName: userDisplayName,
   });
 }

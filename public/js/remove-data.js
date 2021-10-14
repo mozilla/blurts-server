@@ -27,6 +27,7 @@ function initRemove() {
 }
 
 function initRemoveFAQ() {
+  addRemoveFAQLinks();
   addRemoveFAQListeners();
 }
 
@@ -50,6 +51,27 @@ function addRemoveGeneralListeners() {
         e.preventDefault(); //prevent page from scrolling to a non-existing anchor
       });
     });
+}
+
+function addRemoveFAQLinks() {
+  const FAQ_LINKS = {
+    "remove-link-partner": "https://www.thekanary.com/",
+    "remove-link-support-email": "mailto:monitor-pilot@mozilla.com",
+    "remove-link-bug-form":
+      "https://docs.google.com/forms/d/e/1FAIpQLSe4qAy3vB6iZvq9DsKGgh65zN4X3xq-T3K2XjF0zNScDSMcgQ/viewform",
+  };
+
+  const $faqLinks = document.querySelectorAll("[data-l10n-name]");
+  const faqLinkIDs = [];
+  $faqLinks.forEach((link) => {
+    const linkID = link.dataset.l10nName;
+    const linkURL = FAQ_LINKS[linkID];
+    if (linkURL) {
+      link.href = linkURL;
+    } else {
+      console.log("no link match", link, linkID);
+    }
+  });
 }
 
 function addRemoveFAQListeners() {
