@@ -113,7 +113,7 @@ function getRemoveFormData(args) {
     return 0;
   });
 
-  if (acctInfo.emails && acctInfo.emails.length) {
+  if (acctInfo && acctInfo.emails && acctInfo.emails.length) {
     verifiedEmails.forEach((email) => {
       if (email.email === acctInfo.emails[0].email) {
         email.isSelected = true;
