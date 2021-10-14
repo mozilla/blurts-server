@@ -114,6 +114,7 @@ function getRemoveFormData(args) {
   });
 
   if (acctInfo && acctInfo.emails && acctInfo.emails.length) {
+    //set a default email if available
     verifiedEmails.forEach((email) => {
       if (email.email === acctInfo.emails[0].email) {
         email.isSelected = true;

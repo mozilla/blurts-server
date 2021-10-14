@@ -1493,18 +1493,24 @@ async function handleKanaryAPISubmission(memberInfo) {
     });
 }
 
-function checkForEmailMatch(account, user) {
-  const emailArray = [user.primary_email];
-  user.email_addresses.forEach((email) => {
-    emailArray.push(email.email);
-  });
-
+async function checkForEmailMatch(account, user) {
   let emailMatch = false;
-  emailArray.forEach((email) => {
-    if (email === account) {
+  if (user.primary_email && user.primary_verified) {
+    if (user.primary_email === account) {
       emailMatch = true;
     }
+  }
+
+  const monitoredEmails = await DB.getUserEmails(user.id);
+
+  monitoredEmails.forEach((email) => {
+    if (email.email && email.verified) {
+      if (email.email === account) {
+        emailMatch = true;
+      }
+    }
   });
+
   return emailMatch;
 }
 
@@ -1530,7 +1536,7 @@ async function handleRemoveAcctUpdate(req, res) {
     id,
   } = req.body;
 
-  const emailMatch = checkForEmailMatch(account, user);
+  const emailMatch = await checkForEmailMatch(account, user);
 
   if (!emailMatch) {
     console.error("no email match");
