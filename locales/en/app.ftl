@@ -141,6 +141,7 @@ fxa-what-to-do-blurb-4 =
 # Alerts is a noun
 sign-up-for-alerts = Sign Up for Alerts
 
+
 # Link title
 frequently-asked-questions = Frequently Asked Questions
 
@@ -148,6 +149,12 @@ about-firefox-monitor = About {-product-name}
 
 # Link title
 preferences = Preferences
+
+# Link title
+remove-header-your-data = Start Monitoring
+remove-header-breaches = Breaches
+remove-header-exposures = Exposures
+
 
 # Link title
 home = Home
@@ -370,13 +377,21 @@ remove-fxm = Remove {-product-name}
 remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
   other account-related communications.
 
+show-breaches-for-this-email = Show all breaches for this email.
+
+link-change-primary = Change Primary Email Address
+
+remove-fxm = Remove {-product-name}
+remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive 
+  other account-related communications.
+
 # Button title
 manage-email-addresses = Manage Email Addresses
 
 # Link title
 latest-breach-link = See if you were in this breach
 
-welcome-back = Welcome back, { $userName }!
+welcome-back = Welcome, { $userName }!
 welcome-user = Welcome, { $userName }!
 
 
@@ -495,8 +510,8 @@ error-invalid-unsub-blurb = You’ll need to unsubscribe from one of the
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored = 
   { $emails ->
-   *[one] Email address being monitored
-    [other] Email addresses being monitored
+   *[one] Email address monitored
+    [other] Email addresses monitored
   }
 
 
@@ -505,8 +520,8 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed = 
   { $passwords ->
-    [one] Password exposed across all breaches
-   *[other] Passwords exposed across all breaches
+    [one] Password exposed
+   *[other] Passwords exposed
   }
 
 # This string is displayed under a large numeral that indicates the total number
@@ -514,8 +529,23 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
   { $breaches ->
-    [one] Known data breach has exposed your info
-   *[other] Known data breaches have exposed your info
+    [one] Known data breach
+   *[other] Known data breaches
+  }
+
+# This string is displayed under a large numeral that indicates the total number
+# of data brokers that have posted the user's information. Don’t add $removals to
+# your localization, because it would result in the number showing twice.
+data-brokers-listing-data =
+  { $removals ->
+    [one] Website exposing your data
+   *[other] Websites exposing your data
+  }
+
+unresolved-identity-exposures =
+  { $unresolved ->
+    [one] Unresolved identity exposure
+   *[other] Unresolved identity exposures
   }
 
 # Button
@@ -753,14 +783,26 @@ show-resolved-button = Show Resolved
 
 unresolved-passwords-exposed =
   { $numPasswords ->
-    [one] Password exposed in unresolved breaches
-   *[other] Passwords exposed in unresolved breaches
+    [one] Unresolved password exposed
+   *[other] Unresolved passwords exposed
   }
 
 known-data-breaches-resolved = 
   { $numResolvedBreaches ->
     [one] Known data breach marked as resolved
    *[other] Known data breaches marked as resolved
+  }
+
+unresolved-data-breaches = 
+  { $unresolvedBreaches ->
+    [one] Unresolved account breach
+   *[other] Unresolved account breaches
+  }
+
+num-removal-identities = 
+  { $numIdentities ->
+    [one] Identity monitored
+   *[other] Identities monitored
   }
 
 # A status indicator that appears in the top right corner of new breach cards
@@ -798,3 +840,286 @@ vpn-promo-cta = Get { -brand-mozilla-vpn }
 
 vpn-promo-headline-new = Save 50% with a full year subscription
 vpn-promo-copy-new = Protect your online data—and choose a VPN subscription plan that works for you.
+
+
+# ---DATA REMOVAL CONTENT---
+
+# Data Removal Variables
+remove-pilot-title = Data Removal Pilot
+remove-pilot-partner = Kanary
+remove-partner-link = http://thekanary.com
+
+# Data Removal Pilot Dashboard Tabs
+dash-tab-breach-title = Breaches
+dash-tab-remove-title = Exposures
+dash-tab-beta = Beta
+
+# Data Removal Pilot Kanary Header
+dash-remove-kanary-more = Find out more
+
+# Data Removal Pilot CTA
+remove-card-title = Remove your data from websites.
+remove-card-body = We’re piloting a new service to monitor and remove your name, physical address, phone number, and email from online databases.
+remove-card-cta = Join the waitlist
+
+# Data Removal Pilot Form Strings
+dash-remove-intro-service-link = More about the service
+dash-remove-intro-signup-title = How to start
+dash-remove-intro-signup = To start removing your exposed personal data, please provide the following information. This information is used to scan and identify exposed personal information. Once exposed personal information is found, the removal request process will automatically begin. Initial results can take up to 24 hours.
+dash-remove-info-change-title = Update your info
+dash-remove-info-change = To update the info you want removed, fill out the form below
+dash-remove-form-email-label = Select your email address
+dash-remove-form-why-needed = Why is this needed?
+dash-remove-form-name-label = What is your full name?
+dash-remove-form-name-first = First Name
+dash-remove-form-name-middle = Middle (Optional)
+dash-remove-form-name-last = Last Name
+dash-remove-form-loc-label = What is your current location?
+dash-remove-form-loc-city = City
+dash-remove-form-loc-state = State
+dash-remove-form-loc-country = Country
+dash-remove-form-birth-year-label = What is your birth year?
+dash-remove-form-birth-year = Enter your birth year
+dash-remove-form-privacy-label = Privacy Policy
+dash-remove-form-privacy = The Data Removal Service is offered by The Kanary. 
+dash-remove-form-privacy-link = By proceeding, you agree to their Terms of Service and Privacy Notice.
+dash-remove-submit = Start Data Removal
+dash-remove-change-submit = Review Information
+dash-remove-form-required-helper = * All fields are required to properly identify your exposed information
+dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
+
+
+# Data Removal Pilot Form Confirmation Strings
+dash-remove-confirm-review = Review Your Information
+dash-remove-confirm-edit = Edit info
+dash-remove-confirm-cancel = Cancel
+dash-remove-confirm-label-full = Full Name
+dash-remove-confirm-email = Email Address
+dash-remove-confirm-loc = Current Location
+dash-remove-confirm-birthyear = Birth Year
+dash-remove-confirm-submit-new = Begin Data Removal
+dash-remove-confirm-submit-update = Confirm Information
+dash-remove-manage-info = Manage My Info
+
+# Data Removal Pilot Footer
+dash-remove-kanary-discalimer = Service powered by { remove-pilot-partner }
+dash-remove-link-risk = About Risk Level
+dash-remove-link-broker = Data Broker List
+dash-remove-link-pilot = Pilot Details
+dash-remove-link-faqs = Pilot FAQs
+dash-remove-link-support = Get Help
+
+# Data Removal Pilot Data Removal Form Completion Page
+remove-form-success-alt = Success
+remove-form-success-title = Your automated data removal request process is underway!
+remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk. Due to a high number of requests, it may take 24 hours for your report to finish.
+remove-form-success-next-title = What's next?
+remove-form-success-next-details = Check back here frequently to see the data removal requests initiated on your behalf. As removals are verified, we'll update your dashboard to let you know the status. 
+remove-form-delete-dashboard = Go to Monitor dashboard
+remove-form-create-dashboard = Go to my dashboard
+remove-form-data-delete = Cancel Service
+
+# Data Removal Pilot Information Update Page
+remove-form-update-title = Your information has been updated!
+remove-form-update-details = We’re updating your info for removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
+remove-form-delete-title = Your data removal service has been canceled.
+remove-form-delete-details = We are no longer making data removal requests on your behalf. Your Monitor Account Will Remain Active.
+
+# Data Removal Pilot Dashboard Strings
+remove-status-exposures = Viewing exposures for:
+remove-status-update = Last update:
+# remove-exposure-message = is currently exposed in {$numRemoveResults} websites and has been removed from {$resolvedResults} sites
+
+# Data Removal Filters 
+remove-filter-in-progress = In progress
+remove-filter-complete = Complete
+remove-filter-blocked = Blocked
+remove-filter-list = Filter Removal List
+remove-filter-date = Filter by Date
+
+# Data Removal Pilot Steps (Status)
+remove-step-awaiting-scan = In progress
+remove-step-found = In progress
+remove-step-awaiting-removal = In progress
+remove-step-submitted = In progress 
+remove-step-awaiting-review = In progress
+remove-step-removed = Complete
+remove-step-blocked = Blocked
+
+# Data Removal Pilot Results Page
+remove-results-toggle-alt = Expand Option
+remove-risk-high = High Risk
+remove-risk-med = Medium Risk
+remove-risk-low = Low Risk
+remove-result-details-found = Info found
+remove-result-description = Description
+remove-result-link = View the listing
+remove-result-opt-out = Manual removal instructions
+remove-pending-title = Starting your data removal
+remove-pending = A scan is underway for sites that expose your personal information. It may take 24 hours for your report to finish. 
+remove-result-updated = Updated
+remove-result-email = Email
+remove-result-phone = Phone
+remove-result-name = Name
+remove-result-address = Address
+remove-result-status = Status
+
+# Data Removal Pilot Get More Time Page
+remove-mt-title = Get More Time
+remove-mt-intro = The 90-day pilot of our data removal service will remain at no cost to you for the duration of the pilot period. However, in order to continue for the remaining 45 days, we’d like to offer you a choice...
+remove-mt-option1-title = Option 1: Continue Service
+remove-mt-option1-description = Continue your service for the remaining 45 days of the pilot at no cost to you.
+remove-mt-option1-btn = Continue Service
+remove-mt-option2-title = Option 2: Discontinue Service
+remove-mt-option2-description = Discontinue your service today* and receive a $5 Amazon gift card.
+remove-mt-option2-btn = Discontinue Service
+remove-mt-option2-smalltext = *Any removals in progress will be suspended. No additional removal requests will take place. You will lose access to your exposures dashboard.
+
+# Data Removal Pilot Enrollment Page
+remove-enroll-title = Welcome to Firefox Monitor’s Data Removal Pilot
+remove-enroll-intro = This service scans the internet for sites that expose your personal information, and helps you protect you online by automatically requesting that the data be removed. <br><br>
+ The Pilot is currently open to US residents only.
+remove-enroll-description-title = Here's what you need to know
+remove-enroll-description = First, you’ll share some identifying information with us. This info is used to find sites online that share it — and then get that information removed. 
+ This info will only be used for the duration of the pilot, and then deleted. The firefox account you created for this pilot is separate from your main Firefox account. That means any changes you make to your account while part of this pilot program don't apply to your normal account, including changing emails, passwords, and more.
+remove-enroll-terms-title = Terms of pilot service
+remove-enroll-terms = The pilot service will be offered at no cost to you for a 90 day period.
+ The purpose of the pilot is to evaluate the service for a paid offering. As such, participating in the pilot will include additional communications to learn more about your experience. You are not required to respond to these requests, but we would appreciate your feedback. 
+ At the end of the 90-day pilot period, any outstanding removal requests will be suspended and all data removal account information held by Mozilla or our partner Kanary will be deleted. 
+ You may discontinue the data removal service at any point within the 90-day pilot period.
+remove-enroll-terms-agreement = By checking this box, you agree to the terms of pilot service listed above.
+remove-enroll-submit = Join the pilot
+
+# Data Removal Pilot Enrollment Full Page
+remove-enroll-full-title = Enrollment in the Pilot is Full
+remove-enroll-full-description = Thank you for your interest in Mozilla’s Data Removal Service powered by Kanary. <br><br>
+ Unfortunately, the pilot program is at capacity
+remove-enroll-error-is_enrolled = User is already enrolled
+
+# Data Removal Pilot Enrollment Ended Page
+remove-enroll-ended-title = Pilot Enrollment Deadline Expired
+remove-enroll-ended-description = Thank you for your interest in Mozilla’s Data Removal Service powered by Kanary. <br><br>
+ Unfortunately, the enrollment deadline for participating in the pilot has passed.
+
+# Data Removal Pilot Ended Page
+remove-pilot-ended-title = Data Removal Pilot Has Ended
+remove-pilot-ended-description = We are evaluating whether to continue offering the data removal service at Mozilla. 
+ In the meantime, if you wish to continue monitoring for information exposures, you can sign up at thekanary.com. 
+ If you participated in the pilot and chose to receive a gift card rather than continue the service, those gift cards will be distributed soon.
+
+# Data Removal Pilot Success Page
+remove-enrolled-title = Welcome to the Pilot!
+remove-enrolled-description = <p>Congratulations on successfully being enrolled in the pilot. Here's how things work:<br><br>
+ • First you'll need to enter the info you want removed. This data will be submitted for automatic data removal. <br><br>
+ • Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.<br><br>
+ • If you view the details of each exposure, you can see the status of your data removal request as it moves from request to completion.
+remove-enrolled-btn = Get started
+
+# Data Removal Pilot Cancellation Page
+remove-kan = Confirm Cancelation
+remove-kan-disclaimer-title = Disclaimer
+remove-kan-disclaimer-content = Deleting your account removes all of your data from Firefox Monitor as well as from our partner service The Kanary. Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended. Your information will be removed immediately upon removal request. 
+remove-kan-blurb = Confirm Cancel Data Removal Service? Your Monitor Account Will Remain Active.
+remove-kan-btn-confirm = Confirm
+remove-kan-btn-nevermind = Nevermind
+
+
+
+# Data Removal Pilot Sites List Page
+remove-sites-list = Data Removal Site List
+remove-sites-blurb = Below are the most common sites Kanary requests user data to be removed from.
+
+# Data Removal Pilot Risks Info Page
+remove-risk-heading = About Data Removal Risk
+remove-risk-blurb = “Risk” is assigned at the site level as a way to prioritize actions and escalations, and is made up of 4 metrics: 
+remove-risk-criteria-1 = Does the site sell data?
+remove-risk-criteria-2 = Does the site include context beyond the personally identifiable information?
+remove-risk-criteria-3 = Does the site remove data consistently?
+remove-risk-criteria-4 = Does the site feed data to other sources?
+remove-risk-rating-high = Posts or sells location information, family information, contact information, or credentials like passwords. Site includes context about why someone would want to target a person like job, salary, political party. The site has complicated requirements and takes longer than average to remove personal information. The site feeds data to many other sources.
+remove-risk-rating-med = Posts or sells contact information like name, email, phone number. The site doesn't include additional context. The site responds to removal requests on a consistent basis. The site likely feeds data to other sources.
+remove-risk-rating-low = Posts personal information that is less likely to harm a specific person but if combined with other personal details could lead to harm. The site responds to removal requests on a consistent basis. The site likely doesn’t feed data to other sources.
+remove-risk-title-high = High
+remove-risk-title-med = Medium
+remove-risk-title-low = Low
+
+# Data Removal Modal General
+remove-modal-close = Close
+remove-modal-close-accessible = Close this dialog window
+remove-modal-more-info = Visit our FAQ page for more info
+
+# Data Removal Info Needed modal
+remove-modal-info-title = Why is this information needed?
+remove-modal-info-text = The information you provide here will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
+remove-modal-info-link = Learn how your privacy is protected
+
+# Data Removal Status Modal
+remove-modal-status-title = Removal Status
+remove-modal-status-text = Once a match of your information is found on a site, the status of the removal request will change to indicate its progress as it is being resolved. <br><br>
+ • Complete: Your data has been removed. You're all set!<br><br>
+ • In progress: Hang tight, we're working on removing your data.<br><br>
+ • Blocked: We're unable to proceed with a removal request for the time being. You don't need to do anything, we'll keep trying to request removal.<br><br>
+
+
+# Data Removal Info Found Modal
+remove-modal-info-found-title = Personal Info Found
+remove-modal-info-found-text = The following information was found listed on the site. You can click the listing link in this result to verify.
+
+# Data Removal Link Modal
+remove-modal-link-title = Data Broker Link
+remove-modal-link-text = The following link is the web address where your information was found. You can click it to verify the listing. If your information was removed, this link should no longer show your info. 
+
+# Data Removal Opt Out Modal
+remove-modal-optout-title = Manual Removal
+remove-modal-optout-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information, you can use the contact email or website provided for this result to do so.
+
+# Data Removal FAQ Page
+remove-about-faq-title = FAQ
+remove-about-faq-long-title = Frequently Asked Questions
+remove-faq-title = { remove-pilot-title } {remove-about-faq-title}
+remove-about-faq-details = Pilot Details
+remove-about-partner-title = About our partner: { remove-pilot-partner }
+remove-about-partner-content = Mozilla has been working with <a href="{ remove-partner-link }" target="_blank">{ remove-pilot-partner }</a> to evaluate implementing a new feature into Firefox Monitor that allows users to automate the search and removal of personal information from a list of websites that expose people’s personal information without their knowledge or consent.
+remove-about-participation-title = Participation
+remove-about-participation-content = We will be piloting this feature with a maximum of 1000 Monitor users who expressed interest in being on the waitlist for the data removal service. Participants must be based in the U.S. due to current service limitations.
+remove-about-duration-title = Duration
+remove-about-duration-content = Each pilot group will have access to the service for 90 days. At the end of the trial period any outstanding removal requests will be suspended and all data removal information held by Mozilla or our partner Kanary will be deleted. The user will be given the option to continue the data removal service directly with Kanary at that time. Pilot participants may discontinue the data removal service at any point within the 90-day pilot period.
+remove-about-scanned-title = About the Scanned Sites
+remove-about-scanned-content = The information you provide to the service is used to scan sites that post data about you, many of them without your consent, and some of which are very difficult to remove your information from.
+remove-about-risk-title = Risk Levels Explained
+remove-about-risk-content = The sites your information appear on are assigned a risk level (High, Medium, or Low) based on the sensitivity of the information they list, the difficulty in getting that information removed, and whether they sell or provide your information to other sites.
+remove-about-status-title = Status Explained
+remove-about-status-content = {remove-modal-status-text}
+remove-about-process-title = Data Removal Process
+remove-about-process-content = Removal requests are made automatically on your behalf for the sites that are found listing your info. Data removal is not guaranteed, but Kanary continues to follow up, even on blocked requests.
+remove-about-support-title = Support
+remove-about-support-email = monitor-pilot@mozilla.com
+remove-about-bug-form = https://docs.google.com/forms/d/e/1FAIpQLSe4qAy3vB6iZvq9DsKGgh65zN4X3xq-T3K2XjF0zNScDSMcgQ/viewform
+remove-about-support-content = If you cannot find an answer to your questions on this page, you can contact support via e-mail at <a href="mailto:{remove-about-support-email}">{remove-about-support-email}</a>.<br><br>
+ If you wish to file a bug, <a href="{remove-about-bug-form}" target="_blank">you may do so via this google form</a>.
+
+
+remove-faq-sites-title = What type of sites do you scan for?
+remove-faq-fxa-title = Why do I need to create a new Firefox account?
+remove-faq-fxa-content = To protect and prevent any changes to your real Firefox Account, the pilot uses a separate, temporary Firefox account. At any point at your request, this temporary pilot account can be deleted without causing any changes to any non-pilot Firefox accounts. This pilot account will be deleted and all data removed at the end of the pilot period.
+remove-faq-broker-title = What is a data broker?
+remove-faq-broker-content = Data brokers sell your personal information to sources like marketers, scammers, and others, often without your consent. They often acquire this information by scraping the internet.
+remove-faq-usage-title = What can bad actors do with my personal info?
+remove-faq-usage-content = If your personal data is exposed and purchased, you could be targeted by scammers and spammers, and in a worst-case scenario, you could even become a victim of identity theft.
+remove-faq-kanary-title = How does { remove-pilot-partner } work?
+remove-faq-kanary-content = In partnership with { remove-pilot-partner }, we scan a list of common sites that sell data for the personal information you provide us.We then initiate an automated process of contacting those sites in order to request that your data be removed.
+remove-faq-search-title = Can you remove my information from Google?
+remove-faq-search-content = We can't remove your info from search engines like Google or social media sites like Facebook. In general, we cannot remove your information from services where you’ve signed up for an account, or publicly-available information on government websites.
+remove-faq-blocked-title = What is blocked request? 
+remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a data removal request. While data removal is not guaranteed, Kanary’s current success rate for removals is >70%.
+remove-faq-pii-title = Why do you need my personal information?
+remove-faq-pii-content = The information you provide here will be used to identify sites that are listing your info. None of the additional information below is stored on Mozilla's servers aside from your email.
+remove-faq-cancel-title = How do I cancel my service?
+remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted from our servers, and from our partner, { remove-pilot-partner }.
+
+# Data Removal Home Page Content
+remove-home-title = Stay ahead of threats with breach monitoring and personal data removal
+remove-home-cta-content = You can’t stop hackers from hacking. But you can take steps to reduce your vulnerability.
+remove-home-removal-btn = Sign Up to Start Data Removal
+remove-home-protect-pii = Protect your personal information
+remove-home-protect-subtitle = Automatically remove exposed personal information.
