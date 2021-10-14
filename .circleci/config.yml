@@ -112,8 +112,6 @@ jobs:
                       mkdir ./tests/integration/errorShots
                       docker-compose -f tests/integration/docker-compose.yml up --build -d
                       docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
-                  environment:
-                    PORT: 6060
             - run:
                   name: Capture Logs.
                   when: on_fail
