@@ -99,13 +99,19 @@
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
+          {{getString "remove-result-link"}}
+          {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
+        </p>
         <p class="remove-dash-results-detail flx">
+          {{#each this.url}}
           <a
             class="remove-dash-results-detail-link break-word"
-            href="{{this.url}}"
+            href="{{this}}"
             target="_blank"
-          >{{getString "remove-result-link"}}</a>
-          {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
+          >{{getString "remove-result-link-title"}} {{incrementedIndex @index}}</a>
+          {{/each}}
+          
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
