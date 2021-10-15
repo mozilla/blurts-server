@@ -38,12 +38,7 @@ jobs:
         executor: python
         steps:
             - checkout
-            - run:
-                  command: |
-                      pip install compare-locales
-            # - python/install-packages:
-            #       args: compare-locales
-            #       pkg-manager: "pip"
+            - run: pip install compare-locales
             - run:
                   name: Lint and compare locales
                   command: |
