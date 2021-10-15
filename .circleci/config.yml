@@ -40,11 +40,10 @@ jobs:
             - checkout
             - run:
                   command: |
-                      pip install pipreqs
-                      pipreqs ~/project
-            - python/install-packages:
-                  args: compare-locales
-                  pkg-manager: "pip"
+                      pip install compare-locales
+            # - python/install-packages:
+            #       args: compare-locales
+            #       pkg-manager: "pip"
             - run:
                   name: Lint and compare locales
                   command: |
@@ -57,7 +56,10 @@ jobs:
         steps:
             - checkout
             - run: 
-                name: Install postgres
+                name: Install Postgres
+                # Installing Postgres on a host machine. 
+                # Originally attempted to use a container, but communication between container-within-a-container is not well supported currently
+                # The solutions here were attempted without success: https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal
                 command: |
                     sudo apt-get update
                     sudo apt-get install postgresql
@@ -99,7 +101,7 @@ jobs:
         steps:
             - checkout
             - node/install-npm:
-                # Most node@14 images come packages with npm@6. For some reason, this ubuntu image comes with node@14 + npm@7
+                # Official node@14 images come packaged with npm@6. For some reason, this ubuntu image comes with node@14 + npm@7
                 # Attempted to roll ubuntu image back, but current version includes docker-compose bug-fix which we use (--env-file)
                 version: "6"
             - node/install-packages

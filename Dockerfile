@@ -4,6 +4,7 @@ ARG dev
 RUN if [[ -n "$dev" ]] ; then \ 
     echo Adding glibc packages missing from Alpine to satisfy node-canvas, a @wdio dependency ; \
     apk add --update --no-cache make g++ jpeg-dev cairo-dev pango-dev ; \
+    # https://github.com/node-gfx/node-canvas-prebuilt/issues/77
 fi
 
 RUN addgroup -g 10001 app && \
