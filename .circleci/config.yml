@@ -44,7 +44,7 @@ jobs:
                   command: |
                       moz-l10n-lint l10n.toml
                       compare-locales l10n.toml . `ls locales`
-    build:
+    unit-tests:
         executor: ubuntu
         environment:
             DATABASE_URL: postgresql://postgres:unsafe-dev-pass@localhost/blurts
@@ -66,16 +66,6 @@ jobs:
                     # Set password to allow Docker connection
                     sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'unsafe-dev-pass';" | cat
             - run:
-                  name: Create version.json
-                  command: |
-                      # create a version.json per https://github.com/mozilla-services/Dockerflow/blob/master/docs/version_object.md
-                      printf '{"commit":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}\n' \
-                      "$CIRCLE_SHA1" \
-                      "$CIRCLE_TAG" \
-                      "$CIRCLE_PROJECT_USERNAME" \
-                      "$CIRCLE_PROJECT_REPONAME" \
-                      "$CIRCLE_BUILD_URL" > version.json
-            - run:
                 name: Build app container in dev mode
                 command: docker build -t blurts-server . --build-arg dev=true
             - run:
@@ -91,7 +81,7 @@ jobs:
                     -e COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
                     blurts-server npm test
 
-    integration-test:
+    integration-tests:
         executor: ubuntu
         steps:
             - checkout
@@ -124,64 +114,12 @@ jobs:
             - store_artifacts:
                   path: ./tests/integration/firefox.log
 
-    deploy:
-        docker:
-            - image: cimg/base:stable
-        steps:
-            - setup_remote_docker
-            - run:
-                name: Build app for deploy
-                command: docker build -t blurts-server .
-            - run:
-                  name: Deploy to Dockerhub
-                  command: |
-                      echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                      # deploy main
-                      if [ "${CIRCLE_BRANCH}" == "main" ]; then
-                          docker tag blurts-server ${DOCKERHUB_REPO}:latest
-                          docker push ${DOCKERHUB_REPO}:latest
-                      elif  [ ! -z "${CIRCLE_TAG}" ]; then
-                          # deploy a release tag...
-                          echo "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                          docker tag blurts-server "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                          docker images
-                          docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
-                      fi
-    deploy_static:
-        executor: python
-        steps:
-            - checkout
-            - run:
-                  name: Install AWS CLI
-                  command: |
-                      sudo pip install --upgrade pip
-                      sudo pip install --upgrade awscli
-            - run:
-                  name: Sync static content to S3
-                  command: |
-                      ./.circleci/scripts/sync-static
-
 workflows:
-    test-build-deploy:
+    lint-and-test:
         jobs:
             - lint-js
             - lint-css
             - lint-audit
             - lint-l10n
-            - build:
-                  filters:
-                      tags:
-                          only: /.*/
-            - integration-test
-            - deploy:
-                  requires:
-                      - build
-                  filters:
-                      tags:
-                          only: /.*/
-                      branches:
-                          only: main
-            - deploy_static:
-                  filters:
-                      branches:
-                          only: main
+            - unit-tests
+            - integration-tests
