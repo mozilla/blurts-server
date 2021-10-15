@@ -12,6 +12,7 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const fetch = require("node-fetch");
+const _ = require("lodash");
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -1107,6 +1108,16 @@ function alphabetizeByBroker(data) {
   });
 }
 
+function removeDuplicatesByProperty(keyFn, array) {
+  const mySet = new Set();
+  return array.filter(function (x) {
+    const key = keyFn(x),
+      isNew = !mySet.has(key);
+    if (isNew) mySet.add(key);
+    return isNew;
+  });
+}
+
 function sortRemovalData(removalData) {
   const completeItems = removalData.filter((removalItem) => {
     return removalItem.status === REMOVAL_STATUS["COMPLETE"].id;
@@ -1133,12 +1144,14 @@ function sortRemovalData(removalData) {
 
   const sortedData = [...activeItems, ...blockedItems, ...completeItems];
 
-  return sortedData;
+  const dedupedData = removeDuplicatesByProperty((x) => x.broker, sortedData);
+
+  return dedupedData;
 }
 
 async function getRemoveDashData(kanary_id) {
   return fetch(
-    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/reports/`,
+    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
     {
       method: "GET",
       headers: {
@@ -1149,45 +1162,15 @@ async function getRemoveDashData(kanary_id) {
   )
     .then((res) => res.json())
     .then((json) => {
-      if (json.length) {
-        //MH TODO: Verify whether each new report contain all a user's info or only new exposures? If the latter, we'll need to loop through the array and display all results
-        const reportIndex = 0;
-        //const reportIndex = json.length - 1;
-        const reportID = json[reportIndex].id;
-        return reportID;
-      } else {
-        return null;
-      }
-    })
-    .then((reportID) => {
-      if (reportID) {
-        return fetch(
-          `https://thekanary.com/partner-api/v0/reports/${reportID}/`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-            },
-          }
-        );
-      }
-    })
-    .then((res) => {
-      if (res && res.json) {
-        return res.json();
-      }
-    })
-    .then((json) => {
-      if (json && json.url_matches) {
-        return sortRemovalData(json.url_matches);
+      if (json && json.length) {
+        return sortRemovalData(json);
       } else {
         return [];
       }
     })
     .catch((error) => {
       console.error(
-        "there was an error getting reports for this account",
+        "there was an error getting matches for this account",
         error
       );
     });
