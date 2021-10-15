@@ -14,8 +14,10 @@
 
   &-results-list-item {
     @include toggle-item;
-
     display: none;
+    a:not([class*="btn"]) {
+      @include default-link;
+    }
   }
 
   &-results-toggle-img {
