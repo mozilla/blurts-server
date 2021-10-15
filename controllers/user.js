@@ -1108,14 +1108,12 @@ function alphabetizeByBroker(data) {
   });
 }
 
-function removeDuplicatesByProperty(keyFn, array) {
-  const mySet = new Set();
-  return array.filter(function (x) {
-    const key = keyFn(x),
-      isNew = !mySet.has(key);
-    if (isNew) mySet.add(key);
-    return isNew;
-  });
+function reduceAndMergeURLs(originalArray) {
+  const res = originalArray.reduce((a, b) => {
+    const found = a.find((e) => e.broker === b.broker);
+    return found ? found.url.push(b.url) : a.push({ ...b, url: [b.url] }), a;
+  }, []);
+  return res;
 }
 
 function sortRemovalData(removalData) {
@@ -1144,9 +1142,9 @@ function sortRemovalData(removalData) {
 
   const sortedData = [...activeItems, ...blockedItems, ...completeItems];
 
-  const dedupedData = removeDuplicatesByProperty((x) => x.broker, sortedData);
+  const mergedData = reduceAndMergeURLs(sortedData);
 
-  return dedupedData;
+  return mergedData;
 }
 
 async function getRemoveDashData(kanary_id) {
