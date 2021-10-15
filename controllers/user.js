@@ -1410,15 +1410,25 @@ async function handleRemoveEnrollFormSignup(req, res) {
 }
 
 async function handleRemoveFormSignup(req, res) {
-  //MH TODO: validate form data
+  //MH TODO: validate form data server side
 
-  if (!req.user) {
+  const user = req.user;
+
+  if (!user) {
     console.error("no user");
     return res.json({
       error: "No user found",
     });
   }
-  const user = req.user;
+
+  if (user.kid) {
+    console.error(
+      "user should have been directed to the handleRemoveAcctUpdate function if they have a kid"
+    );
+    return res.json({
+      error: "An account already exists for this user",
+    });
+  }
 
   const {
     account,

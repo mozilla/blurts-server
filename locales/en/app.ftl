@@ -1230,5 +1230,5 @@ remove-home-cta-content = You can’t stop hackers from hacking. But you can tak
 remove-home-removal-btn = Sign Up to Start Data Removal
 remove-home-protect-pii = Protect your personal information
 remove-home-protect-subtitle = Automatically remove exposed personal information.
-remove-home-signup-button = Start Monitoring
-remove-home-signup-bottom-button = Sign Up Now! 
+remove-home-signup-btn = Start Monitoring
+remove-home-signup-bottom-btn = Sign Up Now! 
