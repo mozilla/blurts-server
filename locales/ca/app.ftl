@@ -88,6 +88,21 @@ open-fxa-menu = Obre la navegació del { -brand-fxa }
 micro-survey-not-likely-response = Poc probable
 # This is a survey response to the micro-survey-nps-prompt question.
 micro-survey-very-likely-response = Molt probable
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = Hi estic molt en desacord
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = Hi estic en desacord
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = No n'estic segur/a
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = Hi estic d’acord
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = Hi estic totalment d’acord
 # Link title
 more-about-this-breach = Més informació sobre aquesta filtració
 take-control = Recupereu el control de les vostres dades personals.
@@ -128,6 +143,8 @@ currently-showing = S'està mostrant:
 
 ## Updated error messages
 
+error-csrf-headline = S’ha esgotat el temps de la sessió
+error-csrf-blurb = Feu clic al botó «Enrere» del navegador, actualitzeu la pàgina i torneu-ho a provar.
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
 additional-information-including = Informació addicional, com ara:
@@ -161,6 +178,7 @@ changes-saved = S'han desat els canvis.
 
 ##
 
+undo-button = Desfés
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
