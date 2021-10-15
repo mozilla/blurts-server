@@ -952,9 +952,9 @@ remove-form-success-alt = Success
 remove-form-success-title = Your automated data removal request process is underway!
 remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk.
  Due to a high number of requests, it may take 24 hours for your report to finish.
-remove-form-success-next-title = What's next?
+remove-form-success-next-title = What’s next?
 remove-form-success-next-details = Check back here frequently to see the data removal requests initiated on your behalf.
- As removals are verified, we'll update your dashboard to let you know the status.
+ As removals are verified, we’ll update your dashboard to let you know the status.
 remove-form-delete-dashboard = Go to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
@@ -1028,12 +1028,12 @@ remove-enroll-title = Welcome to the { -product-name } Data Removal Pilot
 remove-enroll-intro = This service scans the internet for sites that expose your personal information,
  and helps you protect you online by automatically requesting that the data be removed. <br><br>
  The Pilot is currently open to US residents only.
-remove-enroll-description-title = Here's what you need to know
+remove-enroll-description-title = Here’s what you need to know
 remove-enroll-description = First, you’ll share some identifying information with us.
  This info is used to find sites online that share it — and then get that information removed.
  This info will only be used for the duration of the pilot, and then deleted.
  The { -brand-fxa } you created for this pilot is separate from your main { -brand-fxa }.
- That means any changes you make to your account while part of this pilot program don't apply
+ That means any changes you make to your account while part of this pilot program don’t apply
  to your normal account, including changing emails, passwords, and more.
 remove-enroll-terms-title = Terms of pilot service
 remove-enroll-terms = The pilot service will be offered at no cost to you for a 90 day period.
@@ -1068,8 +1068,8 @@ remove-pilot-ended-description = We are evaluating whether to continue offering 
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the Pilot!
-remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here's how things work:<br><br>
- • First you'll need to enter the info you want removed. This data will be submitted for automatic data removal. <br><br>
+remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here’s how things work:<br><br>
+ • First you’ll need to enter the info you want removed. This data will be submitted for automatic data removal. <br><br>
  • Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.<br><br>
  • If you view the details of each exposure, you can see the status of your data removal request as it moves from request to completion.
 remove-enrolled-btn = Get started
@@ -1103,7 +1103,7 @@ remove-risk-rating-high = Posts or sells location information, family informatio
  The site has complicated requirements and takes longer than average to remove personal information.
  The site feeds data to many other sources.
 remove-risk-rating-med = Posts or sells contact information like name, email, phone number.
- The site doesn't include additional context.
+ The site doesn’t include additional context.
  The site responds to removal requests on a consistent basis.
  The site likely feeds data to other sources.
 remove-risk-rating-low = Posts personal information that is less likely to harm a specific person
@@ -1124,7 +1124,7 @@ remove-modal-more-info = Visit our FAQ page for more info
 
 remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = The information you provide here will be used to identify sites that are listing your info.
-None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
+None of the additional information below is stored on { -brand-Mozilla }’s servers aside from your email.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
@@ -1164,9 +1164,9 @@ remove-about-faq-details = Pilot Details
 remove-about-details-content = { -brand-Mozilla } has been working with <a data-l10n-name="remove-link-partner">{ -brand-remove-partner }</a> to evaluate implementing a new feature into { -product-name } that allows users to automate the search and removal of personal information from a
  list of websites that expose people’s personal information without their knowledge or consent.
 remove-about-partner-title = About our partner: { -brand-remove-partner }
-remove-about-partner-content = { -brand-remove-partner}'s technology powers the automated search for your exposed information.
+remove-about-partner-content = { -brand-remove-partner}’s technology powers the automated search for your exposed information.
 { -brand-remove-partner} was built to hold websites accountable if they do not respond to privacy and data removal requests. They adhere to strict data storage, encryption, and anti-tracking practices.
-remove-about-partner-security-link = Learn more about {-brand-remove-partner}'s privacy and security practices here.
+remove-about-partner-security-link = Learn more about {-brand-remove-partner}’s privacy and security practices here.
 
 remove-about-participation-title = Participation
 remove-about-participation-content = We will be piloting this feature with a maximum of 1000 { -product-short-name } users who expressed interest
@@ -1211,7 +1211,7 @@ remove-faq-kanary-content = In partnership with { -brand-remove-partner }, we sc
  data for the personal information you provide us.We then initiate an automated process of contacting those sites
  in order to request that your data be removed.
 remove-faq-search-title = Can you remove my information from Google?
-remove-faq-search-content = We can't remove your info from search engines like Google or social media sites like Facebook.
+remove-faq-search-content = We can’t remove your info from search engines like Google or social media sites like Facebook.
  In general, we cannot remove your information from services where you’ve signed up for an account, or publicly-available
  information on government websites.
 remove-faq-blocked-title = What is blocked request?
@@ -1219,7 +1219,7 @@ remove-faq-blocked-content = Sometimes, for various reasons, we are unable to pr
  While data removal is not guaranteed, { -brand-remove-partner }’s current success rate for removals is >70%.
 remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The information you provide here will be used to identify sites that are listing your info.
- None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
+ None of the additional information below is stored on { -brand-Mozilla }’s servers aside from your email.
 remove-faq-cancel-title = How do I cancel my service?
 remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted from our servers, and from our partner, { -brand-remove-partner }.
 
