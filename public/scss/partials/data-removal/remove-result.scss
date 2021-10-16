@@ -14,8 +14,10 @@
 
   &-results-list-item {
     @include toggle-item;
-
     display: none;
+    a:not([class*="btn"]) {
+      @include default-link;
+    }
   }
 
   &-results-toggle-img {
@@ -136,5 +138,9 @@
 
   &-results-detail-link {
     color: var(--blue3);
+    margin-left: 10px;
+    &:first-child {
+      margin-left: 0;
+    }
   }
 }

@@ -157,6 +157,11 @@ function getStringWithFallback(id, fallbackId, args) {
   );
 }
 
+function incrementedIndex(index) {
+  index++;
+  return index;
+}
+
 function getStrings(stringArr, locales) {
   stringArr.forEach((string) => {
     const stringId = string.stringId;
@@ -359,4 +364,5 @@ module.exports = {
   loop,
   sentenceCase,
   getOptOutLink,
+  incrementedIndex,
 };
