@@ -1381,7 +1381,7 @@ async function handleRemoveEnrollFormSignup(req, res) {
       req.supportedLocales,
       "remove-enroll-error-is_enrolled"
     );
-    return res.json({ error: localeError });
+    return res.status(400).json({ error: localeError });
   } else {
     await DB.setRemovalEnrollTime(user, new Date().toISOString());
     await DB.incrementRemovalEnrolledUsers();
@@ -1397,7 +1397,7 @@ async function handleRemoveFormSignup(req, res) {
 
   if (!user) {
     console.error("no user");
-    return res.json({
+    return res.status(404).json({
       error: "No user found",
     });
   }
@@ -1406,7 +1406,7 @@ async function handleRemoveFormSignup(req, res) {
     console.error(
       "user should have been directed to the handleRemoveAcctUpdate function if they have a kid"
     );
-    return res.json({
+    return res.status(400).json({
       error: "An account already exists for this user",
     });
   }
@@ -1422,11 +1422,11 @@ async function handleRemoveFormSignup(req, res) {
     birthyear,
   } = req.body;
 
-  const emailMatch = checkForEmailMatch(account, user);
+  const emailMatch = await checkForEmailMatch(account, user);
 
   if (!emailMatch) {
     console.error("no email match");
-    return res.json({
+    return res.status(404).json({
       error: "The email you provided does not match any we have on file.",
     });
   }
@@ -1510,7 +1510,7 @@ async function checkForEmailMatch(account, user) {
 async function handleRemoveAcctUpdate(req, res) {
   if (!req.user) {
     console.error("no user");
-    return res.json({
+    return res.status(404).json({
       error: "No user found",
     });
   }
@@ -1533,7 +1533,7 @@ async function handleRemoveAcctUpdate(req, res) {
 
   if (!emailMatch) {
     console.error("no email match");
-    return res.json({
+    return res.status(404).json({
       error: "The email you provided does not match any we have on file.",
     });
   }
@@ -1541,7 +1541,7 @@ async function handleRemoveAcctUpdate(req, res) {
   const removeAcctInfo = await getRemoveAcctInfo(user.kid);
   if (parseInt(id) !== parseInt(removeAcctInfo.id)) {
     console.error("no id match");
-    return res.json({
+    return res.status(404).json({
       error:
         "The id submitted for this user does not match the Kanary member ID.",
     });
@@ -1580,7 +1580,7 @@ async function handleRemoveAcctUpdate(req, res) {
     });
   } else {
     console.error("error submitting updates to kanary");
-    return res.json({
+    return res.status(500).json({
       error:
         "Error submitting updates to Kanary. Please try your request again.",
     });
