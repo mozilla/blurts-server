@@ -181,6 +181,17 @@ function displayCustomPatternValidity($fieldEl, patternError, unknownError) {
   }
 }
 
+function checkEmptyErrors($form) {
+  const emptyFields = [];
+  Array.from($form.elements).forEach(($fieldEl) => {
+    const fieldLength = $fieldEl.value.trim().length;
+    if (!fieldLength) {
+      emptyFields.push($fieldEl);
+    }
+  });
+  return emptyFields;
+}
+
 function checkNameErrors(nameError, unknownError) {
   const $firstName = document.getElementById(
     "remove-dashboard-form-first-name"
@@ -227,8 +238,40 @@ function displayRemoveFormError($el, error) {
   $el.innerText = error;
 }
 
+function displayEmptyFieldErrors(emptyFields) {
+  emptyFields.forEach(($fieldEl) => {
+    const $fieldGroup = $fieldEl.closest(".input-group");
+    const $fieldError = $fieldGroup.querySelector(
+      ".remove-dashboard-form-error"
+    );
+    $fieldError.innerText = "Fields cannot be blank or contain only spaces";
+  });
+}
+
+function clearFieldErrors() {
+  document
+    .querySelectorAll(".remove-dashboard-form-error")
+    .forEach(($formError) => {
+      $formError.innerText = "";
+    });
+}
+
 function onRemoveFormSubmitClick(e) {
   e.preventDefault();
+
+  clearFieldErrors();
+
+  const $form = e.target.form;
+
+  const emptyFields = checkEmptyErrors($form);
+  if (emptyFields.length) {
+    displayEmptyFieldErrors(emptyFields);
+    return;
+  }
+
+  const formData = new FormData($form);
+
+  console.log("formData", formData);
 
   const nameError =
     "This field must use only letters, spaces, apostrophes, or dashes, and must be at least 2 characters long";
@@ -243,8 +286,6 @@ function onRemoveFormSubmitClick(e) {
     console.log("not valid!");
     return;
   }
-  const formData = new FormData(e.target.form);
-
   populateConfirmData(formData);
   toggleConfirmScreen(true);
 }
