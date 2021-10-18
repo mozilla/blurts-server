@@ -1054,8 +1054,8 @@ remove-enroll-submit = Join the pilot
 # Data Removal Pilot Enrollment Full Page
 
 remove-enroll-full-title = Enrollment in the pilot is closed
-remove-enroll-full-description = Thank you for your interest in the { -brand-Mozilla } { remove-pilot-title } powered by { -brand-remove-partner }. 
- Unfortunately, the pilot program is at capacity and we are not currently accepting participants to the pilot service. 
+remove-enroll-full-description = Thank you for your interest in the { -brand-Mozilla } { remove-pilot-title } powered by { -brand-remove-partner }.
+ Unfortunately, the pilot program is at capacity and we are not currently accepting participants to the pilot service.
 
 # Data Removal Other Projects Component
 
@@ -1145,9 +1145,9 @@ remove-modal-info-link = Learn how your privacy is protected
 
 remove-modal-status-title = What is removal status?
 remove-modal-status-text = Once a record is found, the data removal service automatically sends a removal request and follows up with the site to track the status of the removal. <br><br>
- • In Progress refers to active requests that are still being worked on. 
+ • In Progress refers to active requests that are still being worked on.
  Removals can take some time depending on the responsiveness of the data broker or people search site, and the steps they have set up for processing a removal.<br><br>
- • Complete refers to information that has been successfully removed and verified. Although data brokers and people search sites remove data, 
+ • Complete refers to information that has been successfully removed and verified. Although data brokers and people search sites remove data,
  they may relist the same information after some time. If this happens a new removal request is initiated.<br><br>
  • Blocked refers to request that cannot be completed at this time. Blocked removals occur for a variety of reasons
  including data brokers or people search sites that add additional criteria to removing information.
@@ -1156,7 +1156,7 @@ remove-modal-status-text = Once a record is found, the data removal service auto
 # Data Removal Info Found Modal
 
 remove-modal-info-found-title = What info can you find?
-remove-modal-info-found-text = This is the personal information we found based on the information you provided. 
+remove-modal-info-found-text = This is the personal information we found based on the information you provided.
  We search many of the top data broker and people search websites for names, phone numbers, addresses, and emails.
 
 # Data Removal Link Modal
