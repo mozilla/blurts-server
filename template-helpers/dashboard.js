@@ -171,35 +171,46 @@ function localizeRemoveStatus(removeResults, locales) {
 function trimRemoveInfo(removeResult, args) {
   const supportedLocales = getSupportedLocales(args);
   let infoString = "";
+
+  let addSpace = "";
+
+  if (
+    this.email_matches.length ||
+    this.phone_matches.length ||
+    this.name_matches.length ||
+    this.address_matches.length
+  ) {
+    addSpace = " ";
+  }
   if (this.email_matches.length) {
     infoString += `${LocaleUtils.fluentFormat(
       supportedLocales,
       "remove-result-email",
       args.hash
-    )},`;
+    )},${addSpace}`;
   }
   if (this.phone_matches.length) {
     infoString += `${LocaleUtils.fluentFormat(
       supportedLocales,
       "remove-result-phone",
       args.hash
-    )},`;
+    )},${addSpace}`;
   }
   if (this.name_matches.length) {
     infoString += `${LocaleUtils.fluentFormat(
       supportedLocales,
       "remove-result-name",
       args.hash
-    )},`;
+    )},${addSpace}`;
   }
   if (this.address_matches.length) {
     infoString += `${LocaleUtils.fluentFormat(
       supportedLocales,
       "remove-result-address",
       args.hash
-    )},`;
+    )},${addSpace}`;
   }
-  return infoString.slice(0, -1);
+  return infoString.slice(0, -2); //trim last comma and space
 }
 
 function getRemoveDashData(args) {
