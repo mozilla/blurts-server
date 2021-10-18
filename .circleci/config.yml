@@ -165,13 +165,10 @@ jobs:
             - checkout
             - run:
                   name: Install AWS CLI
-                  command: |
-                      sudo pip install --upgrade pip
-                      sudo pip install --upgrade awscli
+                  command: pip install awscli
             - run:
                   name: Sync static content to S3
-                  command: |
-                      ./.circleci/scripts/sync-static
+                  command: ./.circleci/scripts/sync-static
 
 workflows:
     lint-and-test:
