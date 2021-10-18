@@ -18,6 +18,11 @@
     a:not([class*="btn"]) {
       @include default-link;
     }
+    &[data-status="COMPLETE"] {
+      .remove-dash-results-risk {
+        display: none;
+      }
+    }
   }
 
   &-results-toggle-img {
@@ -121,9 +126,8 @@
 
   &-results-detail-title {
     margin-bottom: 0;
-
     @include ff-metropolis;
-
+    text-transform: uppercase;
     color: var(--grey5);
     font-size: 12px;
   }
@@ -141,6 +145,12 @@
     margin-left: 10px;
     &:first-child {
       margin-left: 0;
+    }
+  }
+  &-results-link-item {
+    margin-top: 10px;
+    &:first-child {
+      margin-top: 0;
     }
   }
 }

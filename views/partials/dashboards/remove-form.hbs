@@ -15,10 +15,12 @@
         <div href="/remove-my-data" class="remove-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-usemailIder-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
           <div class="remove-dashboard-card-content flx">
             <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
-              {{#if ./../supportedLocalesIncludesEnglish}}
-              <p class="remove-dashboard-card-body">Firefox Monitor has partnered with The Kanary, which can actively scan and automatically remove your personal data from <a href="/user/remove-sites-list">50 different data broker websites</a>. These sites expose your personal information to anyone who searches for you, thereby putting you at risk.</p>
-              {{/if}}
-              <p class="remove-dashboard-card-body"><a href="https://thekanary.com/signup/terms" target="_blank">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              {{#unless this.acctInfo}}
+              <p class="remove-dashboard-card-body">
+                {{{getString "remove-form-intro-description"}}}
+              </p>
+              <p class="remove-dashboard-card-body"><a href="/remove-faq#process">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              {{/unless}}
               {{#if this.acctInfo}}
               <p class="remove-dashboard-card-body">
                 <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>

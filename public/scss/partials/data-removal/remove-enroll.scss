@@ -19,6 +19,10 @@
     right: 36px;
   }
 
+  &-link-item {
+    @include list-item-inside;
+  }
+
   &-submit {
     margin-top: 25px;
   }
@@ -27,5 +31,8 @@
 .remove-enrolled {
   &-btn {
     display: inline-block;
+  }
+  &-btn-container {
+    margin-top: 20px;
   }
 }

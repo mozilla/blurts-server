@@ -27,14 +27,12 @@
           {{this.update_status}}
         </div>
       {{/if}}
-      {{#ifCompare this.status "!==" "COMPLETE"}}
-        {{#ifCompare this.risk_level "===" "HIGH"}}
-          <div
-            class="remove-dash-results-risk remove-dash-results-status-el risk-high"
-          >
-            {{getString "remove-risk-high"}}
-          </div>
-        {{/ifCompare}}
+      {{#ifCompare this.risk_level "===" "HIGH"}}
+        <div
+          class="remove-dash-results-risk remove-dash-results-status-el risk-high"
+        >
+          {{getString "remove-risk-high"}}
+        </div>
       {{/ifCompare}}
 
       {{#ifCompare this.risk_level "===" "MEDIUM"}}
@@ -104,14 +102,17 @@
           {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
         </p>
         <p class="remove-dash-results-detail flx">
+          <ul>
           {{#each this.url}}
-          <a
-            class="remove-dash-results-detail-link break-word"
-            href="{{this}}"
-            target="_blank"
-          >{{getString "remove-result-link-title"}} {{incrementedIndex @index}}</a>
+          <li class="remove-dash-results-link-item">
+            <a
+              class="remove-dash-results-detail-link break-word"
+              href="{{this}}"
+              target="_blank"
+            >{{getString "remove-result-link-title"}} {{incrementedIndex @index}}</a>
+          </li>
           {{/each}}
-          
+          </ul>
         </p>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">

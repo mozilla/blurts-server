@@ -599,6 +599,10 @@
         max-width: 33.3334%;
       }
 
+      &#remove-dashboard-form-year {
+        min-width: 120px;
+      }
+
       @include breakpoint(mobile) {
         width: 100% !important;
         max-width: 100% !important;
