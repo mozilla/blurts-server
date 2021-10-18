@@ -27,12 +27,18 @@
 
 .modal__title {
   margin: 0;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 .modal__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.modal__footer {
+  margin-top: 20px;
 }
 
 .modal__close {
