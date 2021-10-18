@@ -4,9 +4,15 @@ executors:
     node:
         docker:
             - image: cimg/node:14.17
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
     python:
         docker:
             - image: cimg/python:3.9.7
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
     ubuntu:
         machine:
             image: ubuntu-2004:202107-02
@@ -47,7 +53,7 @@ jobs:
     unit-tests:
         executor: ubuntu
         environment:
-            DATABASE_URL: postgresql://postgres:unsafe-dev-pass@localhost/blurts
+            DATABASE_URL: postgresql://postgres:test-pass@localhost/blurts
         steps:
             - checkout
             - run: 
@@ -64,10 +70,10 @@ jobs:
                 command: |
                     sudo -u postgres createdb test-blurts | cat
                     # Set password to allow Docker connection
-                    sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'unsafe-dev-pass';" | cat
+                    sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'test-pass';" | cat
             - run:
-                name: Build app container in dev mode
-                command: docker build -t blurts-server . --build-arg dev=true
+                name: Build app container
+                command: docker build -t blurts-server .
             - run:
                 name: Test Code
                 command: |
@@ -114,6 +120,56 @@ jobs:
             - store_artifacts:
                   path: ./tests/integration/firefox.log
 
+    deploy:
+        docker:
+            - image: docker:stable-git
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+        working_directory: /dockerflow
+        steps:
+            - checkout
+            - setup_remote_docker
+            - run:
+                name: Create version.json
+                # create version.json per https://github.com/mozilla-services/Dockerflow/blob/main/docs/version_object.md
+                command: |
+                    printf '{"commit":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}\n' \
+                    "$CIRCLE_SHA1" \
+                    "$CIRCLE_TAG" \
+                    "$CIRCLE_PROJECT_USERNAME" \
+                    "$CIRCLE_PROJECT_REPONAME" \
+                    "$CIRCLE_BUILD_URL" > version.json
+            - run:
+                name: Build Docker image
+                command: docker build -t blurts-server .
+            - run:
+                name: Deploy to Dockerhub
+                command: |
+                    echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                    if [ "${CIRCLE_BRANCH}" == "main" ]; then
+                        # deploy main
+                        docker tag blurts-server ${DOCKERHUB_REPO}:latest
+                        docker push ${DOCKERHUB_REPO}:latest
+                    elif  [ ! -z "${CIRCLE_TAG}" ]; then
+                        # deploy a release tag...
+                        echo "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                        docker tag blurts-server "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                        docker images
+                        docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
+                    fi
+
+    deploy_static:
+        executor: python
+        steps:
+            - checkout
+            - run:
+                  name: Install AWS CLI
+                  command: pip install awscli
+            - run:
+                  name: Sync static content to S3
+                  command: ./.circleci/scripts/sync-static
+
 workflows:
     lint-and-test:
         jobs:
@@ -121,5 +177,17 @@ workflows:
             - lint-css
             - lint-audit
             - lint-l10n
-            - unit-tests
             - integration-tests
+            - unit-tests
+            - deploy:
+                requires:
+                    - unit-tests
+                filters:
+                    tags:
+                        only: /.*/
+                    branches:
+                        only: main
+            - deploy_static:
+                filters:
+                    branches:
+                        only: main
