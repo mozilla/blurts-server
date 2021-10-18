@@ -96,8 +96,8 @@
               </div>
               <div class="input-group-field remove-dashboard-select-container remove-dashboard-state-container">
                 <label class="sr-only" for="remove-dashboard-form-loc-state">{{getString "dash-remove-form-loc-state"}}</label>
-                <select id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
-                    <option disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
+                <select required id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
+                    <option value="" disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
                     {{#if this.acctInfo.addresses.0.state}}
                       <option selected value="{{ this.acctInfo.addresses.0.state }}" >{{ this.acctInfo.addresses.0.state }}</option>
                     {{/if}}

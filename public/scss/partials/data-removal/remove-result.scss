@@ -20,7 +20,7 @@
     }
     &[data-status="COMPLETE"] {
       .remove-dash-results-risk {
-        display: none;
+        visibility: hidden;
       }
     }
   }
