@@ -1,11 +1,8 @@
 FROM node:14.17-alpine
 
-ARG dev
-RUN if [[ -n "$dev" ]] ; then \ 
-    echo Adding glibc packages missing from Alpine to satisfy node-canvas, a @wdio dependency ; \
-    apk add --update --no-cache make g++ jpeg-dev cairo-dev pango-dev ; \
-    # https://github.com/node-gfx/node-canvas-prebuilt/issues/77
-fi
+# Add glibc packages missing from Alpine to satisfy node-canvas, a @wdio dependency
+# https://github.com/node-gfx/node-canvas-prebuilt/issues/77
+RUN apk add --update --no-cache make g++ jpeg-dev cairo-dev pango-dev
 
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app
@@ -18,13 +15,7 @@ USER app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-RUN if [[ -n "$dev" ]] ; then \
-    echo Using npm ci to install production AND development dependencies. ; \
-    npm ci --audit=false && rm -rf ~app/.npm /tmp/* ; \
-else \
-    echo Installing production dependencies only ; \
-    npm install --production && rm -rf ~app/.npm /tmp/* ; \
-fi
+RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:app . /app
 
