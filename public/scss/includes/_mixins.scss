@@ -158,3 +158,12 @@
     margin-top: 0;
   }
 }
+
+@mixin list-item-inside {
+  display: list-item;
+  list-style-position: inside;
+  margin-top: 10px;
+  &:first-child {
+    margin-top: 0;
+  }
+}

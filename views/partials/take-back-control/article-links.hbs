@@ -2,15 +2,21 @@
           <li>
             <a class="btn-big btn-blue remove-home__start-btn" href="/user/remove-enroll">{{getString "remove-home-removal-btn"}}</a>
           </li>
-          {{#eachFromTo (articleLinks) 0 3}}
+          {{!-- {{#eachFromTo (articleLinks) 0 3}}
             <li class="logo-title-wrapper flx article">
               <div class="icon-inline-wrapper">{{> (lookup . 'pathToPartial') }}</div>
               <a href="/security-tips#{{ this.class }}" class="article-link send-ga-ping" {{> analytics/security-tips-link linkTitle=this.title }}>{{ this.stringId }}{{> svg/arrow-head-right }}</a>
             </li>
-          {{/eachFromTo}}
+          {{/eachFromTo}} --}}
+          <li class="logo-title-wrapper flx article">
+            <div class="icon-inline-wrapper remove__icon-at">
+              {{> svg/icon-at }}
+            </div>
+            <a class="article-link send-ga-ping" href="/remove-faq#faq" {{> analytics/security-tips-link linkTitle=(getString "remove-faq") }}>{{ getString "remove-home-article-data-removal-learn-more"}}{{> svg/arrow-head-right }}</a>
+          </li>
           <li class="logo-title-wrapper flx article">
             <div class="icon-inline-wrapper">
-              <img class="icon-inline remove-home__tips-icon" src="/img/removal/remove-question.svg" alt="About result status">
+              <img class="icon-inline remove-home__tips-icon" src="/img/removal/remove-question.svg" alt="{{ getString "read-more-tips" }}">
             </div>
             <a class="article-link send-ga-ping" href="/security-tips" {{> analytics/security-tips-link linkTitle=(getString "read-more-tips") }}>{{ getString "read-more-tips" }}{{> svg/arrow-head-right }}</a>
           </li>

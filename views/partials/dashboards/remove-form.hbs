@@ -15,10 +15,12 @@
         <div href="/remove-my-data" class="remove-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-usemailIder-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
           <div class="remove-dashboard-card-content flx">
             <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
-              {{#if ./../supportedLocalesIncludesEnglish}}
-              <p class="remove-dashboard-card-body">Firefox Monitor has partnered with The Kanary, which can actively scan and automatically remove your personal data from <a href="/user/remove-sites-list">50 different data broker websites</a>. These sites expose your personal information to anyone who searches for you, thereby putting you at risk.</p>
-              {{/if}}
-              <p class="remove-dashboard-card-body"><a href="https://thekanary.com/signup/terms" target="_blank">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              {{#unless this.acctInfo}}
+              <p class="remove-dashboard-card-body">
+                {{{getString "remove-form-intro-description"}}}
+              </p>
+              <p class="remove-dashboard-card-body"><a href="/remove-faq#process">{{ getString "dash-remove-intro-service-link"}}</a></p>
+              {{/unless}}
               {{#if this.acctInfo}}
               <p class="remove-dashboard-card-body">
                 <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>
@@ -94,8 +96,8 @@
               </div>
               <div class="input-group-field remove-dashboard-select-container remove-dashboard-state-container">
                 <label class="sr-only" for="remove-dashboard-form-loc-state">{{getString "dash-remove-form-loc-state"}}</label>
-                <select id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
-                    <option disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
+                <select required id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
+                    <option value="" disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
                     {{#if this.acctInfo.addresses.0.state}}
                       <option selected value="{{ this.acctInfo.addresses.0.state }}" >{{ this.acctInfo.addresses.0.state }}</option>
                     {{/if}}

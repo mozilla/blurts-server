@@ -585,6 +585,14 @@
     .input-group-field {
       margin-top: 8px;
 
+      &#remove-dashboard-form-first-name,
+      &#remove-dashboard-form-middle-name,
+      &#remove-dashboard-form-last-name {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0;
+      }
+
       &#remove-dashboard-form-loc-city {
         flex: 1;
       }
@@ -597,6 +605,10 @@
       &#remove-dashboard-form-loc-country {
         width: 33.3334%;
         max-width: 33.3334%;
+      }
+
+      &#remove-dashboard-form-year {
+        min-width: 120px;
       }
 
       @include breakpoint(mobile) {
@@ -627,17 +639,7 @@
   }
 
   &-form-name {
-    @include breakpoint(mobile) {
-      flex-wrap: wrap;
-    }
-  }
-
-  &-form-middle-name {
-    max-width: 100px;
-
-    @include breakpoint(mobile) {
-      max-width: none;
-    }
+    flex-wrap: wrap;
   }
 
   &-form-country-container {
