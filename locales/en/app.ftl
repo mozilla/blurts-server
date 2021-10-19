@@ -954,9 +954,9 @@ remove-form-success-alt = Success
 remove-form-success-title = Your automated data removal request process is underway!
 remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk.
  Due to a high number of requests, it may take 24 hours for your report to finish.
-remove-form-success-next-title = What's next?
+remove-form-success-next-title = What’s next?
 remove-form-success-next-details = Check back here frequently to see the data removal requests initiated on your behalf.
- As removals are verified, we'll update your dashboard to let you know the status.
+ As removals are verified, we’ll update your dashboard to let you know the status.
 remove-form-delete-dashboard = Go to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
@@ -1003,7 +1003,7 @@ remove-result-link = Links to exposed info
 remove-result-link-title = Link
 remove-result-opt-out = Manual removal instructions
 remove-pending-title = Starting your data removal
-remove-pending = We're scanning for sites that expose your personal information. It may take 24 hours for your report to finish.
+remove-pending = We’re scanning for sites that expose your personal information. It may take 24 hours for your report to finish.
 remove-result-updated = Updated
 remove-result-email = Email
 remove-result-phone = Phone
@@ -1031,9 +1031,9 @@ remove-enroll-title = Welcome to the { -product-name } Data Removal Pilot
 remove-enroll-intro = This service scans the internet for sites that expose your personal information,
  and helps you protect you online by automatically requesting that the data be removed. <br><br>
  The Pilot is currently open to US residents only.
-remove-enroll-description-title = Here's what happens next
+remove-enroll-description-title = Here’s what happens next
 remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our data removal partner, { -brand-remove-partner }. This info allows us to find data brokers and people search sites online that share it—and then get it removed. This info will only be used for the duration of the pilot, and then deleted.<br><br>
- You’ll need to create a new { -brand-fxa } as part of this pilot. This pilot { -brand-fxa } is separate from your regular { -brand-fxa }. If you use the same email for both { -brand-fxa }s, that means any changes you make to your account as part of this pilot program don't apply to your regular { -brand-fxa }, including changes made to your email, passwords, and more.<br><br>
+ You’ll need to create a new { -brand-fxa } as part of this pilot. This pilot { -brand-fxa } is separate from your regular { -brand-fxa }. If you use the same email for both { -brand-fxa }s, that means any changes you make to your account as part of this pilot program don’t apply to your regular { -brand-fxa }, including changes made to your email, passwords, and more.<br><br>
  The pilot service will be offered to you at no cost for 90 days.<br>
  The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating in the pilot will include additional communications and surveys about your experience. You are not required to respond to these requests for information, but we would appreciate your assistance.<br><br>
  At the end of the pilot period, any additional service will be suspended and all account information held by Mozilla or our partner { -brand-remove-partner } will be deleted.<br><br>
@@ -1138,7 +1138,7 @@ remove-modal-more-info = Learn More
 
 remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = The personal information you give us is the same information we search for on data broker and people search sites. We only use this data in order to find where it’s being exposed on these sites.
-None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
+  None of the additional information below is stored on { -brand-Mozilla }’s servers aside from your email.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
@@ -1181,7 +1181,7 @@ remove-about-details-content = { -brand-Mozilla } has been working with <a data-
  list of websites that expose people’s personal information without their knowledge or consent.
 remove-about-partner-title = About our partner: { -brand-remove-partner }
 remove-about-partner-content = { -brand-remove-partner}’s technology powers the automated search for your exposed information.
-{ -brand-remove-partner} was built to hold websites accountable if they do not respond to privacy and data removal requests. They adhere to strict data storage, encryption, and anti-tracking practices.
+  { -brand-remove-partner} was built to hold websites accountable if they do not respond to privacy and data removal requests. They adhere to strict data storage, encryption, and anti-tracking practices.
 remove-about-partner-security-link = Learn more about {-brand-remove-partner}’s privacy and security practices here.
 
 remove-about-participation-title = Participation
