@@ -1,5 +1,5 @@
 # Build app for integration tests
-FROM node:14
+FROM node:14.17
 
 RUN useradd -d /app -u 1001 -g 1000 app
 
@@ -17,7 +17,7 @@ USER app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-RUN npm install && rm -rf ~app/.npm /tmp/*
+RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:root . /app
 

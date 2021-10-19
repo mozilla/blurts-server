@@ -1,7 +1,7 @@
 "use strict";
 
 const { src, watch, series, dest } = require("gulp");
-const sass = require("gulp-sass");
+const sass = require("gulp-sass")(require("sass"));
 const del = require("del");
 const sourcemaps = require("gulp-sourcemaps");
 
