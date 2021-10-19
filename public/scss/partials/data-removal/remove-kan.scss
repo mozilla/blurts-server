@@ -6,6 +6,7 @@
 
   &__container {
     @include remove-container;
+    /* stylelint-disable-next-line */
     margin-top: 0;
   }
 

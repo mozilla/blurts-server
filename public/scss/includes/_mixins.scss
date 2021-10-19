@@ -51,8 +51,14 @@
 }
 
 @mixin ff-inter {
-  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Open Sans",
+    "Helvetica Neue",
+    sans-serif;
 }
 
 @mixin ff-metropolis {
@@ -128,6 +134,7 @@
 
 @mixin default-link {
   color: var(--blue3);
+
   &:hover,
   &:focus {
     color: var(--blue4);
@@ -143,6 +150,7 @@
 @mixin blue-link {
   &:not([class*="btn"]) {
     @include default-link();
+
     font-family: "Metropolis", sans-serif;
     font-weight: 600;
   }
@@ -163,6 +171,7 @@
   display: list-item;
   list-style-position: inside;
   margin-top: 10px;
+
   &:first-child {
     margin-top: 0;
   }
