@@ -178,7 +178,10 @@ workflows:
             - lint-audit
             - lint-l10n
             - integration-tests
-            - unit-tests
+            - unit-tests:
+                filters:
+                    tags:
+                        only: /.*/
             - deploy:
                 requires:
                     - unit-tests
