@@ -49,7 +49,5 @@ services:
       - ../../:/code
     expose:
       - "4444"
-    ports:
-      - "5900:5900"
     shm_size: 2g
     network_mode: host
