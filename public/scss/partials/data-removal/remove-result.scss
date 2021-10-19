@@ -84,6 +84,11 @@
         margin-left: 0;
       }
     }
+    &.--risk {
+      @include breakpoint(xs) {
+        display: none;
+      }
+    }
   }
 
   &-results-status-time {

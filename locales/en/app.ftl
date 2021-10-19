@@ -896,12 +896,15 @@ remove-card-cta = Join the waitlist
 
 # Data Removal Form Strings
 
-remove-form-intro-description = Firefox Monitor can scan many common <a href="/remove-faq#data-brokers">data broker and people search sites</a> for your personal data. If we find any of your personal data exposed, we’ll automatically begin the process of getting it removed from those sites.
+remove-form-intro-description = { -product-name } can scan many common <a href="/remove-faq#data-brokers">data broker and people search sites</a> for your personal data. If we find any of your personal data exposed, we’ll automatically begin the process of getting it removed from those sites.
+remove-form-intro-broker-title = What are data brokers and people search sites?
+remove-form-intro-broker-description = Data brokers and people search sites are websites that collect personal data like names, addresses, and phone numbers. They first search the Internet for your data without your knowledge. Then they may sell the data to marketers, scammers, and others.
+remove-form-intro-broker-link = Learn more about data brokers and people search sites
 dash-remove-intro-service-link = Learn more about data removal
 dash-remove-intro-signup-title = How to start
 dash-remove-intro-signup = To start removing your exposed personal data, please provide the following
- information. This information is used to scan and identify exposed personal information. Once exposed
- personal information is found, the removal request process will automatically begin.
+ information. This information is used to scan and identify exposed personal data. 
+ Once exposed personal data is found, the removal request process will automatically begin.
  Initial results can take up to 24 hours.
 dash-remove-info-change-title = Update your info
 dash-remove-info-change = Note: Editing information should be done only in the case that the results you are receiving are incorrect or inaccurate with regards to your personal identity.
@@ -1138,7 +1141,7 @@ remove-modal-more-info = Learn More
 
 remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = The personal information you give us is the same information we search for on data broker and people search sites. We only use this data in order to find where it’s being exposed on these sites.
-None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
+ None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
@@ -1181,7 +1184,7 @@ remove-about-details-content = { -brand-Mozilla } has been working with <a data-
  list of websites that expose people’s personal information without their knowledge or consent.
 remove-about-partner-title = About our partner: { -brand-remove-partner }
 remove-about-partner-content = { -brand-remove-partner}'s technology powers the automated search for your exposed information.
-{ -brand-remove-partner} was built to hold websites accountable if they do not respond to privacy and data removal requests. They adhere to strict data storage, encryption, and anti-tracking practices.
+ { -brand-remove-partner} was built to hold websites accountable if they do not respond to privacy and data removal requests. They adhere to strict data storage, encryption, and anti-tracking practices.
 remove-about-partner-security-link = Learn more about {-brand-remove-partner}'s privacy and security practices here.
 
 remove-about-participation-title = Participation
@@ -1240,11 +1243,12 @@ remove-faq-cancel-content = By cancelling your participation in the { remove-pil
 
 # Data Removal Home Page Content
 
-remove-home-title = Stay ahead of threats with breach monitoring and personal data removal
-remove-home-cta-content = You can’t stop hackers from hacking. But you can take steps to reduce your vulnerability.
+remove-home-title = See if you've been part of an online data breach.
+remove-home-cta-content = Data brokers and people search sites make your personal data available to anyone. Let us help.
 remove-home-removal-btn = Sign Up to Start Data Removal
-remove-home-protect-pii = Protect your personal information
+remove-home-protect-pii = Protect your identity
 remove-home-protect-subtitle = Automatically remove exposed personal information.
-remove-home-signup-btn = Start Monitoring
+remove-home-signup-btn = Check for Breaches
 remove-home-signup-bottom-btn = Sign Up Now!
 remove-home-article-data-removal-learn-more = Learn More About Data Removal
+remove-home-feature-tip-title = Sign up for monitoring & data removal with a { -brand-fxa }.
