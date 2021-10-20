@@ -38,6 +38,7 @@ const {
   postRemoveKan,
   getRemoveSitesList,
   getRemoveRiskLevel,
+  createRemoveHashWaitlist,
 } = require("../controllers/user");
 
 const router = express.Router();
@@ -242,6 +243,13 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveRiskLevel)
+);
+
+router.get(
+  "/remove-hash-waitlist",
+  urlEncodedParser,
+  requireSessionUser,
+  asyncMiddleware(createRemoveHashWaitlist)
 );
 
 module.exports = router;

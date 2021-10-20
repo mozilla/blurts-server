@@ -115,7 +115,7 @@
             <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
               {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
             >
-            
+            <div class="remove-dashboard-form-error --year"></div>
           </div>
           <div class="input-group">
             <label for="remove-dashboard-form-privacy" class="input-group-label field--full">{{ getString "dash-remove-form-privacy-label"}}</label>

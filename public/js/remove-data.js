@@ -171,7 +171,6 @@ function onEnrollFormSubmitClick(e) {
 function displayCustomPatternValidity($fieldEl, patternError, unknownError) {
   $fieldEl.setCustomValidity("");
   if (!$fieldEl.checkValidity()) {
-    console.log("problem with field", $fieldEl, $fieldEl.validationMessage);
     if ($fieldEl.validity.patternMismatch) {
       $fieldEl.setCustomValidity(patternError);
     } else {
@@ -243,7 +242,9 @@ function displayEmptyFieldErrors(emptyFields) {
     const $fieldError = $fieldGroup.querySelector(
       ".remove-dashboard-form-error"
     );
-    $fieldError.innerText = "Fields cannot be blank or contain only spaces";
+    if ($fieldError) {
+      $fieldError.innerText = "Fields cannot be blank or contain only spaces";
+    }
   });
 }
 
@@ -269,8 +270,6 @@ function onRemoveFormSubmitClick(e) {
   }
 
   const formData = new FormData($form);
-
-  console.log("formData", formData);
 
   const nameError =
     "This field must use only letters, spaces, apostrophes, or dashes, and must be at least 2 characters long";

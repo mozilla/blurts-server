@@ -13,3 +13,4 @@ loadtests/venv
 public/scss/libs/protocol
 public/css/*
 public/dist
+waitlist.txt
