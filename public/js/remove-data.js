@@ -62,7 +62,6 @@ function addRemoveFAQLinks() {
   };
 
   const $faqLinks = document.querySelectorAll("[data-l10n-name]");
-  const faqLinkIDs = [];
   $faqLinks.forEach((link) => {
     const linkID = link.dataset.l10nName;
     const linkURL = FAQ_LINKS[linkID];

@@ -1111,6 +1111,7 @@ function alphabetizeByBroker(data) {
 function reduceAndMergeURLs(originalArray) {
   const res = originalArray.reduce((a, b) => {
     const found = a.find((e) => e.broker === b.broker);
+    //eslint-disable-next-line
     return found ? found.url.push(b.url) : a.push({ ...b, url: [b.url] }), a;
   }, []);
   return res;

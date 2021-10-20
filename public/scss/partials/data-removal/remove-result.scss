@@ -14,10 +14,13 @@
 
   &-results-list-item {
     @include toggle-item;
+
     display: none;
+
     a:not([class*="btn"]) {
       @include default-link;
     }
+
     &[data-status="COMPLETE"] {
       .remove-dash-results-risk {
         visibility: hidden;
@@ -84,6 +87,12 @@
         margin-left: 0;
       }
     }
+
+    &.--risk {
+      @include breakpoint(xs) {
+        display: none;
+      }
+    }
   }
 
   &-results-status-time {
@@ -126,7 +135,9 @@
 
   &-results-detail-title {
     margin-bottom: 0;
+
     @include ff-metropolis;
+
     text-transform: uppercase;
     color: var(--grey5);
     font-size: 12px;
@@ -143,12 +154,15 @@
   &-results-detail-link {
     color: var(--blue3);
     margin-left: 10px;
+
     &:first-child {
       margin-left: 0;
     }
   }
+
   &-results-link-item {
     margin-top: 10px;
+
     &:first-child {
       margin-top: 0;
     }

@@ -123,7 +123,11 @@ the `OAUTH_CLIENT_SECRET` value from someone in #fxmonitor-engineering.
 
 ## Testing
 
-The full test suite can be run via `npm test`.
+The full test suite can be run via `npm test`.  
+
+At the end of a test suite run, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge.  For this step to complete locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.  Alternatively, without the token you can simply ignore the `coveralls` error.  
+
+*TODO:* Disable Coveralls step for local testing?
 
 ### Individual tests
 

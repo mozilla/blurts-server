@@ -1,6 +1,126 @@
-version: 2.0
+version: 2.1
+
+executors:
+    node:
+        docker:
+            - image: cimg/node:14.17
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+    python:
+        docker:
+            - image: cimg/python:3.9.7
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+    ubuntu:
+        machine:
+            image: ubuntu-2004:202107-02
+
+orbs:
+    node: circleci/node@4.7.0
+    python: circleci/python@1.4.0
+
 jobs:
-    build:
+    lint-js:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm run lint:js
+    lint-css:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm run lint:css
+    lint-audit:
+        executor: node
+        steps:
+            - checkout
+            - node/install-packages
+            - run: npm run lint:audit
+    lint-l10n:
+        executor: python
+        steps:
+            - checkout
+            - run: pip install compare-locales
+            - run:
+                  name: Lint and compare locales
+                  command: |
+                      moz-l10n-lint l10n.toml
+                      compare-locales l10n.toml . `ls locales`
+    unit-tests:
+        executor: ubuntu
+        environment:
+            DATABASE_URL: postgresql://postgres:test-pass@localhost/blurts
+        steps:
+            - checkout
+            - run: 
+                name: Install Postgres
+                # Installing Postgres on a host machine. 
+                # Originally attempted to use a container, but communication between container-within-a-container is not well supported currently
+                # The solutions here were attempted without success: https://stackoverflow.com/questions/48546124/what-is-linux-equivalent-of-host-docker-internal
+                command: |
+                    sudo apt-get update
+                    sudo apt-get install postgresql
+                    pg_isready
+            - run:
+                name: Create test database
+                command: |
+                    sudo -u postgres createdb test-blurts | cat
+                    # Set password to allow Docker connection
+                    sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'test-pass';" | cat
+            - run:
+                name: Build app container
+                command: docker build -t blurts-server .
+            - run:
+                name: Test Code
+                command: |
+                    docker run --network="host" \
+                    --env-file .env-dist \
+                    -e NODE_ENV=tests \
+                    -e DATABASE_URL=$DATABASE_URL \
+                    -e HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN \
+                    -e COVERALLS_SERVICE_NAME=circleci \
+                    -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN \
+                    -e COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
+                    blurts-server npm test
+
+    integration-tests:
+        executor: ubuntu
+        steps:
+            - checkout
+            - node/install-npm:
+                # Official node@14 images come packaged with npm@6. For some reason, this ubuntu image comes with node@14 + npm@7
+                # Attempted to roll ubuntu image back, but current version includes docker-compose bug-fix which we use (--env-file)
+                version: "6"
+            - node/install-packages
+            - run:
+                  name: Run tests
+                  command: |
+                      cp .env-dist .env
+                      sudo chown -R  $USER:$USER .
+                      mkdir ./tests/integration/errorShots
+                      docker-compose --env-file .env -f tests/integration/docker-compose.yml up --build -d
+                      docker-compose --env-file .env -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
+            - run:
+                  name: Capture logs
+                  when: on_fail
+                  command: |
+                      docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
+                      docker-compose -f tests/integration/docker-compose.yml logs postgres &> tests/integration/postgres.log
+                      docker-compose -f tests/integration/docker-compose.yml logs firefox &> tests/integration/firefox.log
+            - store_artifacts:
+                  path: ./tests/integration/errorShots/
+            - store_artifacts:
+                  path: ./tests/integration/server.log
+            - store_artifacts:
+                  path: ./tests/integration/postgres.log
+            - store_artifacts:
+                  path: ./tests/integration/firefox.log
+
+    deploy:
         docker:
             - image: docker:stable-git
               auth:
@@ -12,107 +132,23 @@ jobs:
             - setup_remote_docker
             - run:
                 name: Create version.json
+                # create version.json per https://github.com/mozilla-services/Dockerflow/blob/main/docs/version_object.md
                 command: |
-                    # create a version.json per https://github.com/mozilla-services/Dockerflow/blob/master/docs/version_object.md
                     printf '{"commit":"%s","version":"%s","source":"https://github.com/%s/%s","build":"%s"}\n' \
                     "$CIRCLE_SHA1" \
                     "$CIRCLE_TAG" \
                     "$CIRCLE_PROJECT_USERNAME" \
                     "$CIRCLE_PROJECT_REPONAME" \
                     "$CIRCLE_BUILD_URL" > version.json
-
             - run:
-                name: Login to dockerhub
-                command: |
-                    if [ "${DOCKER_USER}" == "" ] || [ "${DOCKER_PASS}" == "" ]; then
-                      echo "Skipping Login to Dockerhub, credentials not available."
-                    else
-                      echo "${DOCKER_PASS}" | docker login -u="${DOCKER_USER}" --password-stdin
-                    fi
-
-            - run:
-                name: Build docker image
+                name: Build Docker image
                 command: docker build -t blurts-server .
-
-            # save the built docker container into CircleCI's cache. This is
-            # required since Workflows do not have the same remote docker instance.
-            - run:
-                  name: docker save blurts-server
-                  command: mkdir -p /cache; docker save -o /cache/docker.tar "blurts-server"
-            - save_cache:
-                  key: v1-{{ .Branch }}-{{epoch}}
-                  paths:
-                      - /cache/docker.tar
-
-    test:
-        docker:
-            - image: docker:18.06.3-ce
-        steps:
-            - setup_remote_docker
-            - restore_cache:
-                key: v1-{{.Branch}}
-            - run:
-                name: Restore Docker image cache
-                command: docker load -i /cache/docker.tar
-            - run:
-                name: Update npm to latest
-                command: docker run blurts-server npm install npm@latest -g
-            - run:
-                name: Test Code
-                command: docker run blurts-server npm run lint
-
-    integration-test:
-        machine:
-            image: ubuntu-1604:201903-01
-        steps:
-            - checkout
-            - run:
-                name: Build and run tests.
-                command: |
-                    export NVM_DIR="/opt/circleci/.nvm"
-                    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-                    nvm install 14.17 --default
-                    node -v
-                    cp .env-dist .env
-                    npm install
-                    npm install --only=dev
-                    sudo chown -R  $USER:$USER .
-                    mkdir ./tests/integration/errorShots
-                    docker-compose -f tests/integration/docker-compose.yml up --build -d
-                    docker-compose -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
-            - run:
-                name: Capture Logs.
-                when: on_fail
-                command: |
-                    docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
-                    docker-compose -f tests/integration/docker-compose.yml logs postgres &> tests/integration/postgres.log
-                    docker-compose -f tests/integration/docker-compose.yml logs firefox &> tests/integration/firefox.log
-            - store_artifacts:
-                path: ./tests/integration/errorShots/
-            - store_artifacts:
-                path: ./tests/integration/server.log
-            - store_artifacts:
-                path: ./tests/integration/postgres.log
-            - store_artifacts:
-                path: ./tests/integration/firefox.log
-
-    deploy:
-        docker:
-            - image: docker:18.06.3-ce
-        steps:
-            - setup_remote_docker
-            - restore_cache:
-                key: v1-{{.Branch}}
-            - run:
-                name: Restore Docker image cache
-                command: docker load -i /cache/docker.tar
-
             - run:
                 name: Deploy to Dockerhub
                 command: |
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    # deploy main
                     if [ "${CIRCLE_BRANCH}" == "main" ]; then
+                        # deploy main
                         docker tag blurts-server ${DOCKERHUB_REPO}:latest
                         docker push ${DOCKERHUB_REPO}:latest
                     elif  [ ! -z "${CIRCLE_TAG}" ]; then
@@ -122,42 +158,39 @@ jobs:
                         docker images
                         docker push "${DOCKERHUB_REPO}:${CIRCLE_TAG}"
                     fi
+
     deploy_static:
-        docker:
-            - image: circleci/python:3.8
+        executor: python
         steps:
             - checkout
             - run:
-                name: Install AWS CLI
-                command: |
-                  sudo pip install --upgrade pip
-                  sudo pip install --upgrade awscli
+                  name: Install AWS CLI
+                  command: pip install awscli
             - run:
-                name: Sync static content to S3
-                command: |
-                    ./.circleci/scripts/sync-static
+                  name: Sync static content to S3
+                  command: ./.circleci/scripts/sync-static
 
 workflows:
-  version: 2
-  build-test-deploy:
-    jobs:
-      - build:
-          filters:
-            tags:
-              only: /.*/
-      - deploy:
-          requires:
-            - build
-          filters:
-            tags:
-              only: /.*/
-            branches:
-                only: main
-      - deploy_static:
-          filters:
-            branches:
-              only: main
-      - integration-test:
-          requires:
-            - build
-
+    lint-and-test:
+        jobs:
+            - lint-js
+            - lint-css
+            - lint-audit
+            - lint-l10n
+            - integration-tests
+            - unit-tests:
+                filters:
+                    tags:
+                        only: /.*/
+            - deploy:
+                requires:
+                    - unit-tests
+                filters:
+                    tags:
+                        only: /.*/
+                    branches:
+                        only: main
+            - deploy_static:
+                filters:
+                    branches:
+                        only: main

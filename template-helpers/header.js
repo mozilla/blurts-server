@@ -43,7 +43,8 @@ function navLinks(args) {
       ? "remove-header-exposures"
       : "remove-header-your-data",
     href: `${serverUrl}/user/remove-data`,
-    activeLink: hostUrl === "/remove-data",
+    activeLink:
+      hostUrl === "/remove-data" || hostUrl === "/remove-data?show_form=true",
   };
 
   const linkSecurityTips = {
