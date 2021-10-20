@@ -75,8 +75,8 @@
     "sass": "^1.42.1"
   },
   "engines": {
-    "node": "14.17",
-    "npm": "6"
+    "node": "14.17.x",
+    "npm": "6.x"
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
