@@ -199,7 +199,7 @@ Firefox Monitor Breach Alerts is designed with [12-factor](https://12factor.net/
 
 ### Deploy on Heroku
 
-We use Heroku apps for dev review only – official stage and production builds are handled by the Site Reliability Services team.
+We use Heroku apps for dev review only – official stage and production apps are built by the Dockerfile and CircleCI config, with deploy overseen by the Site Reliability Engineering team.
 
 Deploys from the `main` branch to Heroku are automatic.  We also employ Heroku's "Review Apps" to check Pull Requests.  These are currently set to auto-deploy: you can find the app link in your GitHub Pull Request. Review apps auto-destroy after 2 days of inactivity.
 
