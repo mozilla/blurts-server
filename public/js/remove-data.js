@@ -243,7 +243,9 @@ function displayEmptyFieldErrors(emptyFields) {
     const $fieldError = $fieldGroup.querySelector(
       ".remove-dashboard-form-error"
     );
-    $fieldError.innerText = "Fields cannot be blank or contain only spaces";
+    if ($fieldError) {
+      $fieldError.innerText = "Fields cannot be blank or contain only spaces";
+    }
   });
 }
 
