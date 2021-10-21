@@ -1,7 +1,9 @@
 {{#with (vpnBannerData)}}
 <aside class="vpn-banner" data-protected={{ protected }}>
 	<section class="vpn-banner-top">
+		{{#if shortLocation}}
 		<label>{{{ getString "vpn-banner-location" }}} <output>{{ shortLocation }}</output></label>
+		{{/if}}
 		<label>
 			{{#if protected}}
 			{{{ getString "vpn-banner-protected-with-vpn" }}}
@@ -31,7 +33,9 @@
 					{{/if}}
 				</li>
 				<li>{{ getString "vpn-banner-ip-address" }} <output>{{ ip }}</output></li>
+				{{#if fullLocation}}
 				<li>{{ getString "vpn-banner-location" }} <output>{{ fullLocation }}</output></li>
+				{{/if}}
 				<li><a class="vpn-banner-cta" href="https://vpn.mozilla.org/" target="_blank">{{ getString "vpn-banner-cta" }}</a></li>
 			</ul>
 			<ol class="step-list">
