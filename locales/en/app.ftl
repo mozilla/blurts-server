@@ -903,7 +903,7 @@ remove-form-intro-broker-link = Learn more about data brokers and people search 
 dash-remove-intro-service-link = Learn more about data removal
 dash-remove-intro-signup-title = How to start
 dash-remove-intro-signup = To start removing your exposed personal data, please provide the following
- information. This information is used to scan and identify exposed personal data. 
+ information. This information is used to scan and identify exposed personal data.
  Once exposed personal data is found, the removal request process will automatically begin.
  Initial results can take up to 24 hours.
 dash-remove-info-change-title = Update your info
@@ -947,7 +947,7 @@ dash-remove-manage-info = Manage My Info
 dash-remove-kanary-discalimer = Service powered by { -brand-remove-partner }
 dash-remove-link-risk = About Risk Level
 dash-remove-link-broker = Data Broker List
-dash-remove-link-pilot = Pilot Details
+dash-remove-link-pilot = About the Data Removal Pilot
 dash-remove-link-faqs = Pilot FAQs
 dash-remove-link-support = Get Help
 
@@ -1146,7 +1146,7 @@ remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Status Modal
 
-remove-modal-status-title = What is removal status?
+remove-modal-status-title = What is removal status?=
 remove-modal-status-text = Once a record is found, the data removal service automatically sends a removal request and follows up with the site to track the status of the removal. <br><br>
  • In Progress refers to active requests that are still being worked on.
  Removals can take some time depending on the responsiveness of the data broker or people search site, and the steps they have set up for processing a removal.<br><br>
@@ -1179,33 +1179,60 @@ remove-modal-optout-text = If your request is blocked, or if for any reason you 
 remove-about-faq-title = FAQ
 remove-about-faq-long-title = Frequently Asked Questions
 remove-faq-title = Data Removal Pilot FAQ
-remove-about-faq-details = Pilot Details
-remove-about-details-content = { -brand-Mozilla } has been working with <a data-l10n-name="remove-link-partner">{ -brand-remove-partner }</a> to evaluate implementing a new feature into { -product-name } that allows users to automate the search and removal of personal information from a
- list of websites that expose people’s personal information without their knowledge or consent.
-remove-about-partner-title = About our partner: { -brand-remove-partner }
-remove-about-partner-content = { -brand-remove-partner}'s technology powers the automated search for your exposed information.
- { -brand-remove-partner} was built to hold websites accountable if they do not respond to privacy and data removal requests. They adhere to strict data storage, encryption, and anti-tracking practices.
-remove-about-partner-security-link = Learn more about {-brand-remove-partner}'s privacy and security practices here.
 
-remove-about-participation-title = Participation
-remove-about-participation-content = We will be piloting this feature with a maximum of 1000 { -product-short-name } users who expressed interest
- in being on the waitlist for the data removal service. Participants must be based in the U.S. due to current service limitations.
-remove-about-duration-title = Duration
-remove-about-duration-content = Each pilot group will have access to the service for 90 days. At the end of the trial
- period any outstanding removal requests will be suspended and all data removal information held by { -brand-Mozilla } or our partner { -brand-remove-partner } will be deleted.
- The user will be given the option to continue the data removal service directly with { -brand-remove-partner } at that time.
- Pilot participants may discontinue the data removal service at any point within the 90-day pilot period.
-remove-about-scanned-title = About the Scanned Sites
-remove-about-scanned-content = The information you provide to the service is used to scan sites that post data about you,
- many of them without your consent, and some of which are very difficult to remove your information from.
-remove-about-risk-title = Risk Levels Explained
-remove-about-risk-content = The sites your information appear on are assigned a risk level (High, Medium, or Low) based on the sensitivity
- of the information they list, the difficulty in getting that information removed, and whether they sell or provide your information to other sites.
+remove-about-faq-details = Pilot details
+remove-about-details-content = In partnership with <a data-l10n-name="remove-link-partner">{ -brand-remove-partner }</a>, we are evaluating a new feature for { -product-name }
+ that allows users to automate the search and removal of personal information from data broker and people search sites.
+ This service is offered as part of a pilot program that will help us determine future products and features within { -product-name }.
+
+remove-about-partner-title = About our partner: { -brand-remove-partner }
+remove-about-partner-content = { -brand-name } has partnered with { -brand-remove-partner}, a leading data removal provider, to help create this pilot service within { -product-name}.
+ { -brand-remove-partner} helps you maintain your online presence. They scour the internet for sites posting data about you,
+ including your home address, phone numbers, leaked passwords and emails.
+ They adhere to strict data storage, encryption, and anti-tracking practices.
+remove-about-partner-security-link = Learn more about {-brand-remove-partner}'s privacy and security practices here
+
+remove-about-service-details-title = Service details
+remove-about-service-details-content = The pilot service will be offered at no cost to you.
+ The purpose of the pilot is to evaluate the service for a future paid offering.
+ As such, participating in the pilot will include additional communications and surveys about your experience.
+ You are not required to respond to these requests for information, but we would appreciate your assistance.<br><br>
+ At the end of the pilot period, the service will be canceled and all account information held by Mozilla or our partner Kanary will be deleted.
+ You may also cancel your service at any point within the pilot period.
+
+remove-about-sites-title = Data brokers and people search sites explained
+remove-about-sites-content = Data brokers and people search sites are third-party websites that collect and expose personal data like
+ names, addresses, and phone numbers. They collect and expose this personal data without the knowledge
+ of the person to whom that data belogs or represents. Many of these sites even sell this data,
+ leaving you open to violations of your privacy and security.
+
+remove-about-risk-title = Risk Level Explained
+remove-about-risk-content = We categorize sites and information we find by risk level. There are 3 risk levels:
+remove-about-risk-high = High
+remove-about-risk-high-content = The site is sharing location information, contact information, or credentials without your consent.
+ It may include context that makes you a target like salary, political party, or profession.
+ Removing data for the site is difficult and may take months to remove or be impossible.
+remove-about-risk-medium = Medium
+remove-about-risk-medium-content = The site is sharing contact information like name, email, or phone number without your consent.
+ The site is often inaccurate or doesn’t include additional context.
+ It responds to requests and removes personal information on a consistent basis.
+remove-about-risk-low = Low
+remove-about-risk-low-content = The site is sharing personal information but you likely posted it yourself or provided consent.
+ It is unlikely to be harmful but could cause issues if combined with other personal information.
+ You may want to withdraw your consent and the site will likely comply with your request.
+
 remove-about-status-title = Status Explained
 remove-about-status-content = {remove-modal-status-text}
-remove-about-process-title = Data Removal Process
-remove-about-process-content = Removal requests are made automatically on your behalf for the sites that are found listing your info.
+
+remove-about-process-title = Data Removal Process Explained
+remove-about-process-content = Once you submit your information, our data removal partner, { -brand-remove-partner },
+ will continuously scan for your information on known data removal and people search sites.
+ Once your personal data is found on one of these sites, we automate the process of getting it removed.
+ Sometimes, even if your data was removed from one of these sites, it may reappear at a later date.
+ Data brokers and people search sites regularly collect data, and removal does not necessarily
+ prevent many of these sites from sharing it again later.
  Data removal is not guaranteed, but { -brand-remove-partner } continues to follow up, even on blocked requests.
+
 remove-about-support-title = Support
 remove-about-support-email = monitor-pilot@mozilla.com
 remove-about-support-content = If you cannot find an answer to your questions on this page, you can contact support
@@ -1215,30 +1242,37 @@ remove-about-support-content = If you cannot find an answer to your questions on
 # Data Removal FAQ Section
 
 remove-faq-sites-title = What type of sites do you scan for?
+
 remove-faq-fxa-title = Why do I need to create a new { -brand-fxa }?
 remove-faq-fxa-content = To protect and prevent any changes to your real { -brand-fxa }, the pilot uses a separate, temporary { -brand-fxa }.
  At any point at your request, this temporary pilot account can be deleted without causing any changes to any non-pilot { -brand-fxa }s.
  This pilot account will be deleted and all data removed at the end of the pilot period.
-remove-faq-broker-title = What is a data broker?
-remove-faq-broker-content = Data brokers and people search sites are websites that collect personal data like names, addresses, and phone numbers. They first search the Internet for your data without your knowledge. Then they may sell the data to marketers, scammers, and others.
+
 remove-faq-usage-title = What can bad actors do with my personal info?
 remove-faq-usage-content = If your personal data is exposed and purchased, you could be targeted by scammers and spammers,
  and in a worst-case scenario, you could even become a victim of identity theft.
-remove-faq-kanary-title = How does { -brand-remove-partner } work?
-remove-faq-kanary-content = In partnership with { -brand-remove-partner }, we scan a list of common sites that sell
- data for the personal information you provide us.We then initiate an automated process of contacting those sites
- in order to request that your data be removed.
+
 remove-faq-search-title = Can you remove my information from Google?
-remove-faq-search-content = We can't remove your info from search engines like Google or social media sites like Facebook.
+remove-faq-search-content = No - we can't remove your info from search engines like Google or social media sites like Facebook.
  In general, we cannot remove your information from services where you’ve signed up for an account, or publicly-available
  information on government websites.
+
+remove-faq-success-rate = { -brand-remove-partner }’s current success rate for removals is currently above 70%
+remove-faq-guarantee-title = Is data removal guaranteed?
+remove-faq-guarantee-content = Data removal is not guaranteed, but { remove-faq-success-rate }.
 remove-faq-blocked-title = What is blocked request?
 remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a data removal request.
- While data removal is not guaranteed, { -brand-remove-partner }’s current success rate for removals is >70%.
+ While data removal is not guaranteed, { remove-faq-success-rate }.
+
 remove-faq-pii-title = Why do you need my personal information?
-remove-faq-pii-content = The information you provide here will be used to identify sites that are listing your info.
- None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
-remove-faq-cancel-title = How do I cancel my service?
+remove-faq-pii-content = The personal information you give us is the same information we search for on data broker and people search sites.
+ No additional information is stored on { -brand-Mozilla }'s servers aside from your email.
+
+remove-faq-how-found-title = How do data brokers and people search sites find my personal info?
+remove-faq-how-found-content = Data brokers scrape the Internet for your data without your knowledge.
+ Then they may sell the data to marketers, scammers, and others without your consent.
+
+remove-faq-cancel-title = How can I cancel my service?
 remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted from our servers, and from our partner, { -brand-remove-partner }.
 
 # Data Removal Home Page Content
@@ -1252,3 +1286,8 @@ remove-home-signup-btn = Check for Breaches
 remove-home-signup-bottom-btn = Sign Up Now!
 remove-home-article-data-removal-learn-more = Learn More About Data Removal
 remove-home-feature-tip-title = Sign up for monitoring & data removal with a { -brand-fxa }.
+
+# Data Removal Footer
+
+remove-footer-monitor-faq = Monitor FAQ
+remove-footer-data-removal-faq = Data Removal FAQ
