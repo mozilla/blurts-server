@@ -16,7 +16,7 @@
               <a href="#pilot-partner" class="remove-faq__nav-link">{{getString "remove-about-partner-title"}}</a>
             </li>
             <li class="remove-faq__nav-item">
-              <a href="#data-brokers" class="remove-faq__nav-link">{{getString "remove-about-scanned-title"}}</a>
+              <a href="#data-brokers" class="remove-faq__nav-link">{{getString "remove-about-sites-title"}}</a>
             </li>
           </ul>
         </div>
@@ -48,10 +48,8 @@
       <div class="remove-faq__content">
         <h3 class="remove-faq__content-title">{{getString "remove-about-faq-details"}}</h3>
         <p>{{{ getString "remove-about-details-content" }}}</p>
-        <h4 class="remove-faq__subtitle">{{getString "remove-about-participation-title"}}</h4>
-        <p>{{getString "remove-about-participation-content"}}</p>
-        <h4 class="remove-faq__subtitle">{{getString "remove-about-duration-title"}}</h4>
-        <p>{{getString "remove-about-duration-content"}}</p>
+        <h4 class="remove-faq__subtitle">{{getString "remove-about-service-details-title"}}</h4>
+        <p>{{{getString "remove-about-service-details-content"}}}</p>
       </div>
       <div id="pilot-partner" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
@@ -61,13 +59,27 @@
       </div>
       <div id="data-brokers" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
-        <h3 class="remove-faq__content-title">{{getString "remove-about-scanned-title"}}</h3>
-        <p>{{getString "remove-about-scanned-content"}}</p>
+        <h3 class="remove-faq__content-title">{{getString "remove-about-sites-title"}}</h3>
+        <p>{{getString "remove-about-sites-content"}}</p>
       </div>
       <div id="risk" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
         <h3 class="remove-faq__content-title">{{getString "remove-about-risk-title"}}</h3>
         <p>{{getString "remove-about-risk-content"}}</p>
+        <ul class="remove-faq__risk-list">
+          <li>
+            <span class="bold">{{getString "remove-about-risk-low"}}</span>:
+            {{getString "remove-about-risk-low-content"}}
+          </li>
+          <li>
+            <span class="bold">{{getString "remove-about-risk-medium"}}</span>:
+            {{getString "remove-about-risk-medium-content"}}
+          </li>
+          <li>
+            <span class="bold">{{getString "remove-about-risk-high"}}</span>:
+            {{getString "remove-about-risk-high-content"}}
+          </li>
+        </ul>
       </div>
       <div id="status" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
@@ -160,15 +172,21 @@
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getString "remove-faq-broker-title")}}
-            <div class="remove-faq__details-container">
-              <p>{{getString "remove-faq-broker-content"}}</p>
-            </div>
-          </li>
-          <li class="remove-faq__list-item drop-shadow flx flx-col">
             {{> data-removal/remove-faq-title alt=(getString "remove-faq-fxa-title")}}
             <div class="remove-faq__details-container">
               <p>{{getString "remove-faq-fxa-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-pii-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-pii-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-how-found-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getString "remove-faq-how-found-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
@@ -178,15 +196,9 @@
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getString "remove-faq-kanary-title")}}
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-guarantee-title")}}
             <div class="remove-faq__details-container">
-              <p>{{getString "remove-faq-kanary-content"}}</p>
-            </div>
-          </li>
-          <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getString "remove-faq-search-title")}}
-            <div class="remove-faq__details-container">
-              <p>{{getString "remove-faq-search-content"}}</p>
+              <p>{{getString "remove-faq-guarantee-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
@@ -196,9 +208,9 @@
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getString "remove-faq-pii-title")}}
+            {{> data-removal/remove-faq-title alt=(getString "remove-faq-search-title")}}
             <div class="remove-faq__details-container">
-              <p>{{getString "remove-faq-pii-content"}}</p>
+              <p>{{getString "remove-faq-search-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">

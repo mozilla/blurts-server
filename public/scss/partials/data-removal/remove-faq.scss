@@ -123,4 +123,13 @@
       display: flex;
     }
   }
+  &__risk-list {
+    li {
+      display: block;
+      margin-top: 10px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
 }
