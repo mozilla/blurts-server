@@ -425,6 +425,12 @@ async function getRemoveFxm(req, res) {
 
 async function postRemoveFxm(req, res) {
   const sessionUser = req.user;
+
+  if (sessionUser.kid) {
+    await DB.removeKan(sessionUser);
+    await removeKanaryAcct(sessionUser.kid);
+  }
+
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
