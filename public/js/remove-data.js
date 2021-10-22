@@ -168,8 +168,14 @@ function onEnrollFormSubmitClick(e) {
     });
 }
 
+function clearFieldValidity() {
+  const $formFields = document.querySelectorAll("input, select");
+  $formFields.forEach(($fieldEl) => {
+    $fieldEl.setCustomValidity("");
+  });
+}
+
 function displayCustomPatternValidity($fieldEl, patternError, unknownError) {
-  $fieldEl.setCustomValidity("");
   if (!$fieldEl.checkValidity()) {
     console.log("problem with field", $fieldEl, $fieldEl.validationMessage);
     if ($fieldEl.validity.patternMismatch) {
@@ -245,6 +251,10 @@ function displayEmptyFieldErrors(emptyFields) {
     );
     if ($fieldError) {
       $fieldError.innerText = "Fields cannot be blank or contain only spaces";
+      $fieldEl.setCustomValidity(
+        "Fields cannot be blank or contain only spaces"
+      );
+      $fieldEl.reportValidity();
     }
   });
 }
@@ -264,6 +274,8 @@ function onRemoveFormSubmitClick(e) {
 
   const $form = e.target.form;
 
+  clearFieldValidity();
+
   const emptyFields = checkEmptyErrors($form);
   if (emptyFields.length) {
     displayEmptyFieldErrors(emptyFields);
@@ -271,8 +283,6 @@ function onRemoveFormSubmitClick(e) {
   }
 
   const formData = new FormData($form);
-
-  console.log("formData", formData);
 
   const nameError =
     "This field must use only letters, spaces, apostrophes, or dashes, and must be at least 2 characters long";
@@ -284,7 +294,6 @@ function onRemoveFormSubmitClick(e) {
   const isValid = e.target.form.reportValidity();
 
   if (!isValid) {
-    console.log("not valid!");
     return;
   }
   populateConfirmData(formData);
