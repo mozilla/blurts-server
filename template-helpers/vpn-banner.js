@@ -1,12 +1,15 @@
+/*eslint-disable no-process-env*/
+// using process.env vars here to keep the banner/MaxMind vars localized, for when this banner is eventually removed
+
 // IP location data includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com.
 // Test IPs by comparing to the corresponding json, for example: https://github.com/maxmind/MaxMind-DB/blob/main/source-data/GeoLite2-City-Test.json
 
 "use strict";
 
-const AppConstants = require("../app-constants");
+require("dotenv").config();
 const fs = require("fs");
 const Reader = require("@maxmind/geoip2-node").Reader;
-const maxmindDb = AppConstants.MAXMIND_DB_PATH || "./tests/mmdb/GeoLite2-City-Test.mmdb";
+const maxmindDb = process.env.GEOIP_GEOLITE2_PATH + process.env.GEOIP_GEOLITE2_CITY_FILENAME;
 
 function vpnBannerData(args) {
     const dbBuffer = fs.readFileSync(maxmindDb);
