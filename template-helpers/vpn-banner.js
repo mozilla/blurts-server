@@ -12,13 +12,13 @@ const Reader = require("@maxmind/geoip2-node").Reader;
 const maxmindDb = process.env.GEOIP_GEOLITE2_PATH + process.env.GEOIP_GEOLITE2_CITY_FILENAME;
 
 function vpnBannerData(args) {
-    const dbBuffer = fs.readFileSync(maxmindDb);
-    const reader = Reader.openBuffer(dbBuffer);
     const clientIp = getClientIp(args.data.root.constants.NODE_ENV, args.data.root.req);
     const bannerData = { ip: clientIp };
-    let geoData, locationArr;
+    let dbBuffer, reader, geoData, locationArr;
 
     try {
+        dbBuffer = fs.readFileSync(maxmindDb);
+        reader = Reader.openBuffer(dbBuffer);
         geoData = reader.city(clientIp);
         locationArr = [geoData.city?.names.en, geoData.subdivisions?.[0].isoCode, geoData.country?.isoCode].filter(str => str);
     } catch (e) {
