@@ -1612,6 +1612,104 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
     });
 }
 
+async function calculateAverageResolutionTime(resolutionTimeArray) {
+  //MH TODO:
+  console.log("calculate", resolutionTimeArray);
+  const mean = await FormUtils.getMeanFromArray(resolutionTimeArray);
+  const variance = await FormUtils.getVarianceFromMean(
+    resolutionTimeArray,
+    mean
+  );
+  const stdDev = await FormUtils.getStdDevFromVariance(variance);
+  const avg = await FormUtils.getAverageFromArray(resolutionTimeArray);
+  const mode = await FormUtils.getModeFromArray(resolutionTimeArray);
+  return {
+    mean: FormUtils.numberWithDigits(mean, 2),
+    variance: FormUtils.numberWithDigits(variance, 2),
+    stdDev: FormUtils.numberWithDigits(stdDev, 4),
+    avg: FormUtils.numberWithDigits(avg, 2),
+    mode: FormUtils.numberWithDigits(mode, 2),
+  };
+}
+
+async function getRemoveRateByKid(kanary_id) {
+  return fetch(
+    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then(async (json) => {
+      if (json && json.length) {
+        const resultData = {
+          totalResults: json.length,
+          removedResults: 0,
+          resolutionPct: null,
+          resolutionTimeArray: [],
+          resolutionTime: null,
+        };
+        await json.forEach(async (removeResult) => {
+          if (removeResult.status === "COMPLETE") {
+            resultData.removedResults++;
+            const resolutionTime =
+              await FormUtils.calculateDaysBetweenTimestamps(
+                new Date(removeResult.created_at),
+                new Date(removeResult.updated_at)
+              );
+            resultData.resolutionTimeArray.push(
+              FormUtils.numberWithDigits(resolutionTime, 2)
+            );
+          }
+        });
+        resultData.resolutionPct = FormUtils.calculatePercentage(
+          resultData.removedResults,
+          resultData.totalResults
+        );
+        const resolutionTimeData = await calculateAverageResolutionTime(
+          resultData.resolutionTimeArray
+        );
+        resultData.resolutionTime = resolutionTimeData;
+        return resultData;
+      } else {
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting matches for this account",
+        error
+      );
+    });
+}
+
+async function getRemoveStats(req, res) {
+  //MH TODO: validate form data server side
+  if (!req.user) {
+    console.error("no user");
+    return res.status(404).json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
+
+  if (!user.kid) {
+    console.error("no kid");
+    return res.status(404).json({
+      error: "No kid found",
+    });
+  }
+  //MH TODO: read kid from file
+  const userStats = await getRemoveRateByKid(user.kid);
+  console.log("userStats", userStats);
+  return res.json({ data: userStats });
+}
+
 module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
@@ -1647,4 +1745,5 @@ module.exports = {
   getRemoveSitesList,
   getRemoveRiskLevel,
   postRemoveKan,
+  getRemoveStats,
 };
