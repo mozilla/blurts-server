@@ -648,6 +648,7 @@
 
   &-form-rqd {
     font-size: 14px;
+    margin-top: 10px;
   }
 
   &-form-disclaimer {
@@ -772,9 +773,15 @@
     margin-top: 72px;
     margin-bottom: 72px;
   }
+  &-title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  &-list {
+    margin-top: 20px;
+  }
   &-time-list {
-    margin-left: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
   &-item,
   &-time-item {

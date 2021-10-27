@@ -1712,6 +1712,15 @@ async function getRemoveStats(req, res) {
       error: "No kid found",
     });
   }
+
+  if (!user.primary_email.includes("@mozilla.com")) {
+    console.error("non mozilla email");
+    return res.status(404).json({
+      error:
+        "You must be signed in with a mozilla.com email address to access this page",
+    });
+  }
+
   const allStats = {
     totalResults: 0,
     removedResults: 0,
