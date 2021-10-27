@@ -1837,7 +1837,26 @@ async function getRemoveStatsUser(req, res) {
     styleNonce: res.locals.styleNonce,
     whichPartial: "dashboards/remove-all-stats",
   });
+}
+
 async function createRemoveHashWaitlist(req, res) {
+  if (!req.user) {
+    console.error("no user");
+    return res.status(404).json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
+
+  if (!user.primary_email.includes("@mozilla.com")) {
+    console.error("non mozilla email");
+    return res.status(404).json({
+      error:
+        "You must be signed in with a mozilla.com email address to access this page",
+    });
+  }
+
   let waitlistArray;
   const writeStream = fs.createWriteStream("hashed-waitlist.txt");
   fs.readFile("waitlist.txt", function (err, data) {
@@ -1869,7 +1888,6 @@ async function createRemoveHashWaitlist(req, res) {
     });
     writeStream.end();
   });
-  //const hash = bcrypt.hashSync(req.body.password, 10);
 }
 
 module.exports = {
