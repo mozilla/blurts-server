@@ -39,6 +39,7 @@ const {
   getRemoveSitesList,
   getRemoveRiskLevel,
   getRemoveStats,
+  getRemoveStatsUser,
 } = require("../controllers/user");
 
 const router = express.Router();
@@ -246,11 +247,19 @@ router.get(
 );
 
 router.get(
-  "/remove-get-stats",
+  "/remove-all-stats",
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveStats)
+);
+
+router.get(
+  "/remove-user-stats",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  asyncMiddleware(getRemoveStatsUser)
 );
 
 module.exports = router;

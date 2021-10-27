@@ -13,6 +13,8 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const fetch = require("node-fetch");
 const _ = require("lodash");
+const fs = require("fs");
+const { readFile } = require("fs/promises");
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -1094,7 +1096,6 @@ async function getRemovePilotEndedPage(req, res) {
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
-
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-pilot-ended",
     experimentFlags,
@@ -1176,7 +1177,8 @@ async function getRemoveDashData(kanary_id) {
     .catch((error) => {
       console.error(
         "there was an error getting matches for this account",
-        error
+        error,
+        kanary_id
       );
     });
 }
@@ -1614,7 +1616,9 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
 
 async function calculateAverageResolutionTime(resolutionTimeArray) {
   //MH TODO:
-  console.log("calculate", resolutionTimeArray);
+  if (!resolutionTimeArray.length) {
+    return null;
+  }
   const mean = await FormUtils.getMeanFromArray(resolutionTimeArray);
   const variance = await FormUtils.getVarianceFromMean(
     resolutionTimeArray,
@@ -1632,7 +1636,7 @@ async function calculateAverageResolutionTime(resolutionTimeArray) {
   };
 }
 
-async function getRemoveRateByKid(kanary_id) {
+async function getRemoveRateByKid(kanary_id, aggregate = false) {
   return fetch(
     `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
     {
@@ -1670,10 +1674,14 @@ async function getRemoveRateByKid(kanary_id) {
           resultData.removedResults,
           resultData.totalResults
         );
-        const resolutionTimeData = await calculateAverageResolutionTime(
-          resultData.resolutionTimeArray
-        );
-        resultData.resolutionTime = resolutionTimeData;
+        if (!aggregate) {
+          //if calculating for a single individual, get their resolution time data here
+          const resolutionTimeData = await calculateAverageResolutionTime(
+            resultData.resolutionTimeArray
+          );
+          resultData.resolutionTimeData = resolutionTimeData;
+        }
+
         return resultData;
       } else {
         return [];
@@ -1704,10 +1712,79 @@ async function getRemoveStats(req, res) {
       error: "No kid found",
     });
   }
-  //MH TODO: read kid from file
-  const userStats = await getRemoveRateByKid(user.kid);
-  console.log("userStats", userStats);
-  return res.json({ data: userStats });
+  const allStats = {
+    totalResults: 0,
+    removedResults: 0,
+    resolutionTimeArray: [],
+    resolutionPct: 0,
+    resolutionTimeData: null,
+  };
+  const kidFile = await readFile("kids.txt", "binary");
+  const kidArr = kidFile.toString().split("\n");
+  for await (const kid of kidArr) {
+    const userStats = await getRemoveRateByKid(kid, true); //true = aggregate performance metrics, skipping individual resolution time calculations
+    console.log("userStats", userStats, kid);
+    if (userStats) {
+      if (userStats.totalResults) {
+        allStats.totalResults += userStats.totalResults;
+      }
+      if (userStats.removedResults) {
+        allStats.removedResults += userStats.removedResults;
+      }
+      if (
+        userStats.resolutionTimeArray &&
+        userStats.resolutionTimeArray.length
+      ) {
+        allStats.resolutionTimeArray = [
+          ...allStats.resolutionTimeArray,
+          ...userStats.resolutionTimeArray,
+        ];
+      }
+    }
+  }
+
+  allStats.resolutionPct = await FormUtils.calculatePercentage(
+    allStats.removedResults,
+    allStats.totalResults
+  );
+  allStats.resolutionTimeData = await calculateAverageResolutionTime(
+    allStats.resolutionTimeArray
+  );
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    stats: allStats,
+    whichPartial: "dashboards/remove-all-stats",
+  });
+}
+
+async function getRemoveStatsUser(req, res) {
+  //MH TODO: validate form data server side
+  if (!req.user) {
+    console.error("no user");
+    return res.status(404).json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
+
+  if (!user.kid) {
+    console.error("no kid");
+    return res.status(404).json({
+      error: "No kid found",
+    });
+  }
+
+  const userStats = await getRemoveRateByKid(user.kid, false);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    stats: userStats,
+    whichPartial: "dashboards/remove-all-stats",
+  });
 }
 
 module.exports = {
@@ -1746,4 +1823,5 @@ module.exports = {
   getRemoveRiskLevel,
   postRemoveKan,
   getRemoveStats,
+  getRemoveStatsUser,
 };
