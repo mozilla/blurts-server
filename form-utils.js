@@ -30,8 +30,18 @@ const FormUtils = {
       });
     });
   },
+  numberWithDigits(number, digits) {
+    return parseFloat(number.toFixed(digits));
+  },
+  calculatePercentage(base, total) {
+    return parseFloat(((base / total) * 100).toFixed(2));
+  },
   convertDateToTimestamp(curDate) {
     return parseInt((new Date(curDate).getTime() / 1000).toFixed(0));
+  },
+  calculateDaysBetweenTimestamps(startTime, endTime) {
+    const timeDifference = endTime.getTime() - startTime.getTime();
+    return timeDifference / (1000 * 3600 * 24); //ms to seconds, seconds to minutes, minutes to hours, hours to days
   },
   convertTimestamp(timestamp) {
     const upDate = new Date(timestamp);
@@ -50,6 +60,38 @@ const FormUtils = {
       curDate.getMonth(),
       curDate.getDate() + numDays
     );
+  },
+  getMeanFromArray: async (arr) => {
+    return arr.reduce((s, n) => s + n) / arr.length;
+  },
+  getVarianceFromMean: async (arr, mean) => {
+    return arr.reduce((s, n) => s + (n - mean) ** 2, 0) / (arr.length - 1);
+  },
+  getStdDevFromVariance: async (variance) => {
+    return Math.sqrt(variance);
+  },
+  getSumFromArray: async (arr) => {
+    return arr.reduce(function (a, b) {
+      return a + b;
+    });
+  },
+  getAverageFromArray: async (arr) => {
+    const sum = arr.reduce(function (a, b) {
+      return a + b;
+    });
+    return sum / arr.length;
+  },
+  getModeFromArray: async (arr) => {
+    const mode = Object.entries(
+      arr.reduce((previous, current) => {
+        if (previous[current] === undefined) previous[current] = 1;
+        else previous[current]++;
+        return previous;
+      }, {})
+    ).reduce((previous, current) =>
+      current[1] >= previous[1] ? current : previous
+    )[0];
+    return parseFloat(mode);
   },
 };
 

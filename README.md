@@ -199,12 +199,8 @@ Firefox Monitor Breach Alerts is designed with [12-factor](https://12factor.net/
 
 ### Deploy on Heroku
 
-You will need to set some required environment variables on Heroku.
+We use Heroku apps for dev review only – official stage and production apps are built by the Dockerfile and CircleCI config, with deploy overseen by the Site Reliability Engineering team.
 
-```sh
-heroku config:set COOKIE_SECRET=unsafe-cookie-secret-for-heroku
-heroku config:set DEBUG_DUMMY_SMTP=1
-```
+Deploys from the `main` branch to Heroku are automatic.  We also employ Heroku's "Review Apps" to check Pull Requests.  These are currently set to auto-deploy: you can find the app link in your GitHub Pull Request. Review apps auto-destroy after 2 days of inactivity.
 
-And any others, depending on the features you're running on Heroku - e.g.,
-Email or Firefox Accounts.
+If you encounter issues with Heroku deploys, be sure to check your environment variables, including those required in `app-constants.js`.  Review apps also share a database and you should not assume good data integrity if testing db-related features.

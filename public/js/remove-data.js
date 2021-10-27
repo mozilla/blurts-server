@@ -20,6 +20,9 @@ function initRemove() {
       case "remove-faq":
         initRemoveFAQ();
         break;
+      case "remove-allstats":
+        initRemoveStats();
+        break;
       default:
         console.log("no matching page id");
     }
@@ -41,6 +44,10 @@ function initRemoveForm() {
 
 function initRemoveDashboard() {
   addRemoveDashListeners();
+}
+
+function initRemoveStats() {
+  initStatsChart();
 }
 
 function addRemoveGeneralListeners() {
@@ -426,6 +433,62 @@ function onStatusFilterToggle(e) {
   }
   curFilter = curFilter.replace(/^\s+|\s+$/g, ""); //remove lead and end spaces
   $container.setAttribute("data-filter", curFilter);
+}
+
+function initStatsChart() {
+  const $chartEls = document.querySelectorAll(".remove-allstats-time-item");
+  const chartData = [];
+  const chartLabels = [];
+  $chartEls.forEach(($chartEl) => {
+    const label = $chartEl.dataset.label;
+    const val = parseFloat($chartEl.dataset.val);
+    chartData.push(val);
+    chartLabels.push(label);
+  });
+  const chartOptions = {
+    series: [
+      {
+        data: chartData,
+      },
+    ],
+    chart: {
+      type: "bar",
+      toolbar: {
+        show: false,
+      },
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 4,
+        horizontal: false,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      enabled: false,
+    },
+    xaxis: {
+      categories: chartLabels,
+    },
+    yaxis: {
+      labels: {
+        formatter: function (val, index) {
+          return parseInt(val);
+        },
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+  };
+  //eslint-disable-next-line
+  const chart = new ApexCharts(
+    document.querySelector(".remove-allstats-chart-container"),
+    chartOptions
+  );
+  chart.render();
 }
 
 window.onload = function () {

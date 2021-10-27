@@ -33,14 +33,8 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 27px;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
+    "Helvetica Neue", sans-serif;
   margin: auto;
 }
 
@@ -177,19 +171,15 @@
   border-radius: 6px;
   overflow: hidden;
   cursor: pointer;
-  box-shadow:
-    0 2px 8px 0 rgba(14, 13, 26, 0),
-    0 3px 1px -2px rgba(7, 48, 114, 0),
-    0 2px 4px 0 rgba(34, 0, 51, 0),
+  box-shadow: 0 2px 8px 0 rgba(14, 13, 26, 0),
+    0 3px 1px -2px rgba(7, 48, 114, 0), 0 2px 4px 0 rgba(34, 0, 51, 0),
     0 0 0 1px rgba(32, 18, 58, 0);
   transition: all 0.2s ease;
 }
 
 .private-relay-dashboard-card:hover {
-  box-shadow:
-    0 2px 8px 0 rgba(14, 13, 26, 0.12),
-    0 3px 1px -2px rgba(7, 48, 114, 0.12),
-    0 2px 4px 0 rgba(34, 0, 51, 0.04),
+  box-shadow: 0 2px 8px 0 rgba(14, 13, 26, 0.12),
+    0 3px 1px -2px rgba(7, 48, 114, 0.12), 0 2px 4px 0 rgba(34, 0, 51, 0.04),
     0 0 0 1px rgba(32, 18, 58, 0.04);
   transition: all 0.2s ease;
 }
@@ -658,6 +648,7 @@
 
   &-form-rqd {
     font-size: 14px;
+    margin-top: 10px;
   }
 
   &-form-disclaimer {
@@ -774,4 +765,38 @@
   margin-left: 20px;
   transform: rotate(90deg);
   color: var(--grey5);
+}
+
+//stats
+.remove-allstats {
+  &-container {
+    margin-top: 72px;
+    margin-bottom: 72px;
+  }
+  &-title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  &-list {
+    margin-top: 20px;
+  }
+  &-time-list {
+    margin-top: 20px;
+  }
+  &-item,
+  &-time-item {
+    margin-top: 10px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  &-time-item {
+    white-space: nowrap;
+  }
+
+  &-chart-container {
+    margin-top: 20px;
+    border: 1px solid var(--grey3);
+    border-radius: 8px;
+  }
 }

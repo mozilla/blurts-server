@@ -13,6 +13,8 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const fetch = require("node-fetch");
 const _ = require("lodash");
+const fs = require("fs");
+const { readFile } = require("fs/promises");
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -1094,7 +1096,6 @@ async function getRemovePilotEndedPage(req, res) {
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
-
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-pilot-ended",
     experimentFlags,
@@ -1176,7 +1177,8 @@ async function getRemoveDashData(kanary_id) {
     .catch((error) => {
       console.error(
         "there was an error getting matches for this account",
-        error
+        error,
+        kanary_id
       );
     });
 }
@@ -1612,6 +1614,197 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
     });
 }
 
+async function calculateAverageResolutionTime(resolutionTimeArray) {
+  //MH TODO:
+  if (!resolutionTimeArray.length) {
+    return null;
+  }
+  const mean = await FormUtils.getMeanFromArray(resolutionTimeArray);
+  const variance = await FormUtils.getVarianceFromMean(
+    resolutionTimeArray,
+    mean
+  );
+  const stdDev = await FormUtils.getStdDevFromVariance(variance);
+  const avg = await FormUtils.getAverageFromArray(resolutionTimeArray);
+  const mode = await FormUtils.getModeFromArray(resolutionTimeArray);
+  return {
+    mean: FormUtils.numberWithDigits(mean, 2),
+    variance: FormUtils.numberWithDigits(variance, 2),
+    stdDev: FormUtils.numberWithDigits(stdDev, 4),
+    avg: FormUtils.numberWithDigits(avg, 2),
+    mode: FormUtils.numberWithDigits(mode, 2),
+  };
+}
+
+async function getRemoveRateByKid(kanary_id, aggregate = false) {
+  return fetch(
+    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+      },
+    }
+  )
+    .then((res) => res.json())
+    .then(async (json) => {
+      if (json && json.length) {
+        const resultData = {
+          totalResults: json.length,
+          removedResults: 0,
+          resolutionPct: null,
+          resolutionTimeArray: [],
+          resolutionTime: null,
+        };
+        await json.forEach(async (removeResult) => {
+          if (removeResult.status === "COMPLETE") {
+            resultData.removedResults++;
+            const resolutionTime =
+              await FormUtils.calculateDaysBetweenTimestamps(
+                new Date(removeResult.created_at),
+                new Date(removeResult.updated_at)
+              );
+            resultData.resolutionTimeArray.push(
+              FormUtils.numberWithDigits(resolutionTime, 2)
+            );
+          }
+        });
+        resultData.resolutionPct = FormUtils.calculatePercentage(
+          resultData.removedResults,
+          resultData.totalResults
+        );
+        if (!aggregate) {
+          //if calculating for a single individual, get their resolution time data here
+          const resolutionTimeData = await calculateAverageResolutionTime(
+            resultData.resolutionTimeArray
+          );
+          resultData.resolutionTimeData = resolutionTimeData;
+        }
+
+        return resultData;
+      } else {
+        return [];
+      }
+    })
+    .catch((error) => {
+      console.error(
+        "there was an error getting matches for this account",
+        error
+      );
+    });
+}
+
+async function getRemoveStats(req, res) {
+  //MH TODO: validate form data server side
+  if (!req.user) {
+    console.error("no user");
+    return res.status(404).json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
+
+  if (!user.kid) {
+    console.error("no kid");
+    return res.status(404).json({
+      error: "No kid found",
+    });
+  }
+
+  if (!user.primary_email.includes("@mozilla.com")) {
+    console.error("non mozilla email");
+    return res.status(404).json({
+      error:
+        "You must be signed in with a mozilla.com email address to access this page",
+    });
+  }
+
+  const allStats = {
+    totalResults: 0,
+    removedResults: 0,
+    resolutionTimeArray: [],
+    resolutionPct: 0,
+    resolutionTimeData: null,
+  };
+  let kidArr;
+  if (req.query && req.query.from_file) {
+    //read from static file
+    const kidFile = await readFile("kids.txt", "binary");
+    kidArr = kidFile.toString().split("\n");
+  } else {
+    //read from DB
+    kidArr = await DB.getRemoveParticipants();
+  }
+
+  for await (const kid of kidArr) {
+    const userStats = await getRemoveRateByKid(kid, true); //true = aggregate performance metrics, skipping individual resolution time calculations
+    console.log("userStats", userStats, kid);
+    if (userStats) {
+      if (userStats.totalResults) {
+        allStats.totalResults += userStats.totalResults;
+      }
+      if (userStats.removedResults) {
+        allStats.removedResults += userStats.removedResults;
+      }
+      if (
+        userStats.resolutionTimeArray &&
+        userStats.resolutionTimeArray.length
+      ) {
+        allStats.resolutionTimeArray = [
+          ...allStats.resolutionTimeArray,
+          ...userStats.resolutionTimeArray,
+        ];
+      }
+    }
+  }
+
+  allStats.resolutionPct = await FormUtils.calculatePercentage(
+    allStats.removedResults,
+    allStats.totalResults
+  );
+  allStats.resolutionTimeData = await calculateAverageResolutionTime(
+    allStats.resolutionTimeArray
+  );
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    stats: allStats,
+    whichPartial: "dashboards/remove-all-stats",
+  });
+}
+
+async function getRemoveStatsUser(req, res) {
+  //MH TODO: validate form data server side
+  if (!req.user) {
+    console.error("no user");
+    return res.status(404).json({
+      error: "No user found",
+    });
+  }
+
+  const user = req.user;
+
+  if (!user.kid) {
+    console.error("no kid");
+    return res.status(404).json({
+      error: "No kid found",
+    });
+  }
+
+  const userStats = await getRemoveRateByKid(user.kid, false);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
+    csrfToken: req.csrfToken(),
+    stats: userStats,
+    styleNonce: res.locals.styleNonce,
+    whichPartial: "dashboards/remove-all-stats",
+  });
+}
+
 module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
@@ -1647,4 +1840,6 @@ module.exports = {
   getRemoveSitesList,
   getRemoveRiskLevel,
   postRemoveKan,
+  getRemoveStats,
+  getRemoveStatsUser,
 };
