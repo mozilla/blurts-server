@@ -5,4 +5,4 @@ public/dist
 public/js/polyfills
 public/scss/libs
 public/js/micromodal.js
-public/js/TChart.min.js
+public/js/apexcharts.min.js
