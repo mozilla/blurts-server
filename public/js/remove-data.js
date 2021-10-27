@@ -438,22 +438,57 @@ function onStatusFilterToggle(e) {
 function initStatsChart() {
   const $chartEls = document.querySelectorAll(".remove-allstats-time-item");
   const chartData = [];
+  const chartLabels = [];
   $chartEls.forEach(($chartEl) => {
     const label = $chartEl.dataset.label;
     const val = parseFloat($chartEl.dataset.val);
-    chartData.push({
-      value: val,
-      label: label,
-    });
+    chartData.push(val);
+    chartLabels.push(label);
   });
+  const chartOptions = {
+    series: [
+      {
+        data: chartData,
+      },
+    ],
+    chart: {
+      type: "bar",
+      toolbar: {
+        show: false,
+      },
+    },
+    plotOptions: {
+      bar: {
+        borderRadius: 4,
+        horizontal: false,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      enabled: false,
+    },
+    xaxis: {
+      categories: chartLabels,
+    },
+    yaxis: {
+      labels: {
+        formatter: function (val, index) {
+          return parseInt(val);
+        },
+      },
+    },
+    dataLabels: {
+      enabled: false,
+    },
+  };
   //eslint-disable-next-line
-  let chart = new TChart(
-    "remove-allstats-chart-container",
-    400,
-    200,
-    chartData
+  const chart = new ApexCharts(
+    document.querySelector(".remove-allstats-chart-container"),
+    chartOptions
   );
-  chart.drawBarChart();
+  chart.render();
 }
 
 window.onload = function () {

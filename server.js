@@ -38,6 +38,8 @@ const { URL } = require("url");
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
+const uuidv4 = require("uuid/v4");
+
 const {
   addRequestToResponse,
   pickLanguage,
@@ -161,6 +163,12 @@ if (AppConstants.FXA_ENABLED) {
   });
 }
 
+app.use((req, res, next) => {
+  // nonce should be base64 encoded
+  res.locals.styleNonce = Buffer.from(uuidv4()).toString("base64");
+  next();
+});
+
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -177,7 +185,12 @@ app.use(
       imgSrc: imgSrc,
       objectSrc: ["'none'"],
       scriptSrc: SCRIPT_SOURCES,
-      styleSrc: STYLE_SOURCES,
+      styleSrc: [
+        ...STYLE_SOURCES,
+        (req, res) => `'nonce-${res.locals.styleNonce}'`,
+        // `'unsafe-inline'`,
+      ],
+      // styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.styleNonce}'`]
       reportUri: "/__cspreport__",
     },
   })
