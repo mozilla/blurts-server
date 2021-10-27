@@ -1736,7 +1736,6 @@ async function getRemoveStats(req, res) {
   } else {
     //read from DB
     kidArr = await DB.getRemoveParticipants();
-    console.log("kid db", kidArr);
   }
 
   for await (const kid of kidArr) {

@@ -782,6 +782,7 @@
   }
   &-time-list {
     margin-top: 20px;
+    width: 50%;
   }
   &-item,
   &-time-item {
@@ -789,5 +790,13 @@
     &:first-child {
       margin-top: 0;
     }
+  }
+  &-time-item {
+    white-space: nowrap;
+    padding-left: 10px;
+    border-left: 5px solid var(--grey4);
+  }
+  &-chart-container {
+    //
   }
 }

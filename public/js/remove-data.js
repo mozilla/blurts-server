@@ -20,6 +20,9 @@ function initRemove() {
       case "remove-faq":
         initRemoveFAQ();
         break;
+      case "remove-allstats":
+        initRemoveStats();
+        break;
       default:
         console.log("no matching page id");
     }
@@ -41,6 +44,10 @@ function initRemoveForm() {
 
 function initRemoveDashboard() {
   addRemoveDashListeners();
+}
+
+function initRemoveStats() {
+  initStatsChart();
 }
 
 function addRemoveGeneralListeners() {
@@ -426,6 +433,27 @@ function onStatusFilterToggle(e) {
   }
   curFilter = curFilter.replace(/^\s+|\s+$/g, ""); //remove lead and end spaces
   $container.setAttribute("data-filter", curFilter);
+}
+
+function initStatsChart() {
+  const $chartEls = document.querySelectorAll(".remove-allstats-time-item");
+  const chartData = [];
+  $chartEls.forEach(($chartEl) => {
+    const label = $chartEl.dataset.label;
+    const val = parseFloat($chartEl.dataset.val);
+    chartData.push({
+      value: val,
+      label: label,
+    });
+  });
+  //eslint-disable-next-line
+  let chart = new TChart(
+    "remove-allstats-chart-container",
+    400,
+    200,
+    chartData
+  );
+  chart.drawBarChart();
 }
 
 window.onload = function () {

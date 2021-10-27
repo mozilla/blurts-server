@@ -508,7 +508,7 @@ const DB = {
       .select("kid")
       .from("subscribers")
       .whereNotNull("kid")
-      .pluck("kid");
+      .pluck("kid"); //return only the values in an array not the object ({kid: xxxx})
     return res;
   },
 
