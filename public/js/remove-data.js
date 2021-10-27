@@ -184,7 +184,6 @@ function clearFieldValidity() {
 
 function displayCustomPatternValidity($fieldEl, patternError, unknownError) {
   if (!$fieldEl.checkValidity()) {
-    console.log("problem with field", $fieldEl, $fieldEl.validationMessage);
     if ($fieldEl.validity.patternMismatch) {
       $fieldEl.setCustomValidity(patternError);
     } else {

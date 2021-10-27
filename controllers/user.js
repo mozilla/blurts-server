@@ -13,6 +13,7 @@ const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const fetch = require("node-fetch");
 const _ = require("lodash");
+const bcrypt = require("bcrypt");
 const fs = require("fs");
 const { readFile } = require("fs/promises");
 
@@ -1440,6 +1441,16 @@ async function handleRemoveFormSignup(req, res) {
     });
   }
 
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST) {
+    const hashMatch = await checkEmailHash(account);
+
+    if (!hashMatch) {
+      return res.status(400).json({
+        error: "email address is not in our waitlist",
+      });
+    }
+  }
+
   const memberList = {
     members: [
       {
@@ -1514,6 +1525,29 @@ async function checkForEmailMatch(account, user) {
   });
 
   return emailMatch;
+}
+
+async function getHashedWaitlist() {
+  let hashedWaitlistArray;
+  hashedWaitlistArray = await readFile("hashed-waitlist.txt", "binary");
+  console.log("hwla", hashedWaitlistArray);
+  return hashedWaitlistArray.toString().split("\n");
+}
+
+async function checkEmailHash(account) {
+  let matchedHash = false;
+  const hashedWaitlistArray = await getHashedWaitlist();
+  console.log("hashed waitlist", hashedWaitlistArray, account);
+  matchedHash = hashedWaitlistArray.find((arrayItem) => {
+    const isMatch = bcrypt.compareSync(account, arrayItem, function (err, res) {
+      console.log("aaer", account, arrayItem, err, res);
+      return res;
+    });
+    console.log("isMatch", isMatch);
+    return isMatch;
+  });
+  console.log("matchedHash", matchedHash);
+  return matchedHash;
 }
 
 async function handleRemoveAcctUpdate(req, res) {
@@ -1803,6 +1837,39 @@ async function getRemoveStatsUser(req, res) {
     styleNonce: res.locals.styleNonce,
     whichPartial: "dashboards/remove-all-stats",
   });
+async function createRemoveHashWaitlist(req, res) {
+  let waitlistArray;
+  const writeStream = fs.createWriteStream("hashed-waitlist.txt");
+  fs.readFile("waitlist.txt", function (err, data) {
+    if (err) {
+      console.log("error reading waitlist file", err);
+      return res.status(400).json({
+        error: "error reading waitlist file",
+      });
+    }
+    waitlistArray = data.toString().split("\n");
+    waitlistArray.forEach((arrayItem) => {
+      const hashedEmail = bcrypt.hashSync(arrayItem, 10);
+      writeStream.write(`${hashedEmail}\n`);
+    });
+
+    writeStream.on("finish", () => {
+      console.log("hashed waitlist complete");
+
+      return res.status(200).json({
+        msg: "hashed waitlist complete",
+      });
+    });
+
+    writeStream.on("error", (err) => {
+      console.error("There is an error writing the file", err);
+      return res.status(400).json({
+        error: "error creating hashed waitlist",
+      });
+    });
+    writeStream.end();
+  });
+  //const hash = bcrypt.hashSync(req.body.password, 10);
 }
 
 module.exports = {
@@ -1842,4 +1909,5 @@ module.exports = {
   postRemoveKan,
   getRemoveStats,
   getRemoveStatsUser,
+  createRemoveHashWaitlist,
 };
