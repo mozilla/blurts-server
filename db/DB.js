@@ -378,64 +378,9 @@ const DB = {
     return this.getSubscriberByEmail(user.primary_email);
   },
 
-  async setKanaryID(user, kid) {
-    await knex("subscribers")
-      .where("id", user.id)
-      .update({
-        kid: kid,
-      })
-      .catch((e) => {
-        console.error("error setting kanary id", e);
-      });
-    return kid;
-  },
-
-  async getRemovalPilotByName(pilot_name) {
-    const res = await knex("removal_pilot")
-      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
-      .catch((e) => {
-        console.error("error retrieving pilot record", e);
-      });
-    return res[0];
-  },
-
-  async setRemovalEnrollTime(user, ts) {
-    await knex("subscribers")
-      .where("id", user.id)
-      .update({
-        removal_enrolled_time: ts,
-      })
-      .catch((e) => {
-        console.error("error setting removal enrolled time", e);
-      });
-    return ts;
-  },
-
-  async incrementRemovalEnrolledUsers(user, ts) {
-    return await knex("removal_pilot")
-      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
-      .increment("enrolled_users", 1)
-      .catch((e) => {
-        console.error("error incrementing enrolled users", e);
-      });
-  },
-
   async removeSubscriber(subscriber) {
     await knex("email_addresses").where({ subscriber_id: subscriber.id }).del();
     await knex("subscribers").where({ id: subscriber.id }).del();
-  },
-
-  async removeKan(subscriber) {
-    await knex("subscribers")
-      .where({ id: subscriber.id })
-      .update({
-        kid: null,
-        removal_would_pay: null,
-        removal_enrolled_time: null,
-      })
-      .catch((e) => {
-        console.error("error removing kanary id", e);
-      });
   },
 
   // This is used by SES callbacks to remove email addresses when recipients
@@ -541,6 +486,72 @@ const DB = {
   async destroyConnection() {
     await knex.destroy();
     knex = null;
+  },
+
+  //removal pilot functions
+
+  async removeKan(subscriber) {
+    await knex("subscribers")
+      .where({ id: subscriber.id })
+      .update({
+        kid: null,
+        removal_would_pay: null,
+        removal_enrolled_time: null,
+      })
+      .catch((e) => {
+        console.error("error removing kanary id", e);
+      });
+  },
+
+  async getRemoveParticipants() {
+    const res = await knex
+      .select("kid")
+      .from("subscribers")
+      .whereNotNull("kid")
+      .pluck("kid");
+    return res;
+  },
+
+  async setKanaryID(user, kid) {
+    await knex("subscribers")
+      .where("id", user.id)
+      .update({
+        kid: kid,
+      })
+      .catch((e) => {
+        console.error("error setting kanary id", e);
+      });
+    return kid;
+  },
+
+  async getRemovalPilotByName(pilot_name) {
+    const res = await knex("removal_pilot")
+      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .catch((e) => {
+        console.error("error retrieving pilot record", e);
+      });
+    return res[0];
+  },
+
+  async setRemovalEnrollTime(user, ts) {
+    await knex("subscribers")
+      .where("id", user.id)
+      .update({
+        removal_enrolled_time: ts,
+      })
+      .catch((e) => {
+        console.error("error setting removal enrolled time", e);
+      });
+    return ts;
+  },
+
+  async incrementRemovalEnrolledUsers(user, ts) {
+    return await knex("removal_pilot")
+      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .increment("enrolled_users", 1)
+      .catch((e) => {
+        console.error("error incrementing enrolled users", e);
+      });
   },
 };
 

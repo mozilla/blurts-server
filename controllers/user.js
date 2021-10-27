@@ -1728,8 +1728,17 @@ async function getRemoveStats(req, res) {
     resolutionPct: 0,
     resolutionTimeData: null,
   };
-  const kidFile = await readFile("kids.txt", "binary");
-  const kidArr = kidFile.toString().split("\n");
+  let kidArr;
+  if (req.query && req.query.from_file) {
+    //read from static file
+    const kidFile = await readFile("kids.txt", "binary");
+    kidArr = kidFile.toString().split("\n");
+  } else {
+    //read from DB
+    kidArr = await DB.getRemoveParticipants();
+    console.log("kid db", kidArr);
+  }
+
   for await (const kid of kidArr) {
     const userStats = await getRemoveRateByKid(kid, true); //true = aggregate performance metrics, skipping individual resolution time calculations
     console.log("userStats", userStats, kid);
