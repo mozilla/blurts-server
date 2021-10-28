@@ -128,6 +128,7 @@ const connectSrc = [
   "https://www.google-analytics.com",
   "https://accounts.firefox.com",
   "https://accounts.stage.mozaws.net/metrics-flow",
+  "https://am.i.mullvad.net/json",
 ];
 
 if (AppConstants.FXA_ENABLED) {

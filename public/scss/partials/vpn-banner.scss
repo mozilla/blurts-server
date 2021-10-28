@@ -32,12 +32,41 @@
     font-style: normal;
 }
 
-.vpn-banner[data-protected="false"] em{
+.vpn-banner em{
     color: #E22850;
 }
 
 .vpn-banner[data-protected="true"] em{
     color: #1CC4A0;
+}
+
+.vpn-banner .vpn-banner-top::after,
+.vpn-banner:not([data-protected]) .vpn-banner-top::after{
+    /* black screen while loading protected data */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    transition: opacity .3s, visibility 0s .3s;
+}
+
+.vpn-banner[data-protected] .vpn-banner-top::after{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.vpn-banner[data-protected="true"] .protected-txt:first-child,
+.vpn-banner[data-protected="false"] .protected-txt:last-child{
+    display: block;
+}
+
+.vpn-banner[data-protected="false"] .protected-txt:first-child,
+.vpn-banner[data-protected="true"] .protected-txt:last-child,
+.vpn-banner[data-protected="true"] .vpn-banner-cta{
+    display: none;
 }
 
 /*** TOP PANEL ***/
@@ -56,7 +85,7 @@
     pointer-events: none;
 }
 
-.vpn-banner-top label:first-of-type::after{
+.vpn-banner-top .short-location::after{
     content: "•";
     padding-left: 8px;
 }
@@ -123,7 +152,7 @@
     text-align: left;
 }
 
-.vpn-banner-title > span {
+.vpn-banner-title .subheading {
     display: block;
     font-weight: normal;
     font-size: 18px;

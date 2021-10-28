@@ -1,41 +1,29 @@
-{{#with (vpnBannerData)}}
-<aside class="vpn-banner" data-protected={{ protected }}>
+<aside class="vpn-banner" data-loading="checking connection">
 	<section class="vpn-banner-top">
-		{{#if shortLocation}}
-		<label>{{{ getString "vpn-banner-location" }}} <output>{{ shortLocation }}</output></label>
-		{{/if}}
+		<label class="short-location">{{{ getString "vpn-banner-location" }}} <output></output></label>
 		<label>
-			{{#if protected}}
-			{{{ getString "vpn-banner-protected-with-vpn" }}}
-			{{else}}
-			{{{ getString "vpn-banner-protect-yourself-with-vpn" }}}
-			{{/if}}
+			<span class="protected-txt">{{{ getString "vpn-banner-protected-with-vpn" }}}</span>
+			<span class="protected-txt">{{{ getString "vpn-banner-protect-yourself-with-vpn" }}}</span>
 		</label>
 		<label class="vpn-banner-chevron" data-expand={{ getString "vpn-banner-cta-expand" }} data-close={{
 			getString "vpn-banner-cta-close" }}></label>
 	</section>
 	<section class="vpn-banner-bottom">
 		<h2 class="vpn-banner-title">
-			{{#if protected}}
-			{{ getString "vpn-banner-title-1" }}
-			{{else}}
-			{{ getString "vpn-banner-title-2" }}
-			<span>{{ getString "vpn-banner-subtitle-2" }}</span>
-			{{/if}}
+			<span class="protected-txt">{{ getString "vpn-banner-title-1" }}</span>
+			<span class="protected-txt">
+				{{ getString "vpn-banner-title-2" }}
+				<span class="subheading">{{ getString "vpn-banner-subtitle-2" }}</span>
+				</span>
 		</h2>
 		<div class="vpn-banner-lists">
 			<ul class="status-list">
 				<li>
-					{{#if protected}}
-					{{{ getString "vpn-banner-status-protected" }}}
-					{{else}}
-					{{{ getString "vpn-banner-status-not-protected" }}}
-					{{/if}}
+					<span class="protected-txt">{{{ getString "vpn-banner-status-protected" }}}</span>
+					<span class="protected-txt">{{{ getString "vpn-banner-status-not-protected" }}}</span>
 				</li>
-				<li>{{ getString "vpn-banner-ip-address" }} <output>{{ ip }}</output></li>
-				{{#if fullLocation}}
-				<li>{{ getString "vpn-banner-location" }} <output>{{ fullLocation }}</output></li>
-				{{/if}}
+				<li class="client-ip">{{ getString "vpn-banner-ip-address" }} <output></output></li>
+				<li class="full-location">{{ getString "vpn-banner-location" }} <output></output></li>
 				<li><a class="vpn-banner-cta" href="https://vpn.mozilla.org/" target="_blank">{{ getString "vpn-banner-cta" }}</a></li>
 			</ul>
 			<ol class="step-list">
@@ -59,4 +47,3 @@
 		<button class="vpn-banner-close"></button>
 		</section>
 	</aside>
-{{/with}}

@@ -413,15 +413,72 @@ function addWaitlistObservers() {
   }
 }
 
-function initVpnBanner(){
+async function initVpnBanner() {
   const vpnBanner = document.querySelector(".vpn-banner");
 
   if(!vpnBanner) return;
 
+  const clientIpEl = vpnBanner.querySelector(".client-ip");
+  const shortLocationEl = vpnBanner.querySelector(".short-location");
+  const fullLocationEl = vpnBanner.querySelector(".full-location");
   const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
+  resizeObserver.observe(vpnBanner); // call immediately to init proper size
 
-  resizeObserver.observe(vpnBanner);
+  const locationDataRequest = new Request("/ipLocation");
+  const protectionDataRequest = new Request("https://am.i.mullvad.net/json");
+  const cache = "caches" in self ? await caches.open("vpn-banner") : null;
+
+  const locationData = await fetch(locationDataRequest)
+    .then(res => res.json())
+    .catch(e => console.warn("Error fetching location data.", e));
+
+  let protectionData;
+
+  if (cache) protectionData = await getCacheData(protectionDataRequest);
+
+  if (!protectionData || protectionData.ip !== locationData.clientIp) {
+    // if no cached data, or if user IP changed since last cached response
+    console.log("protectionData undefined, or IPs don't match");
+    if (cache) {
+      await cache.add(protectionDataRequest).catch(e => console.warn("Error caching protection data request.", e));
+      protectionData = await getCacheData(protectionDataRequest);
+    } else {
+      protectionData = await fetch(protectionDataRequest)
+        .then(res => res.json())
+        .catch(e => console.warn("Error fetching protection data.", e));
+    }
+  }
+
+  console.log(protectionData, locationData);
+
+  if (locationData.clientIp) {
+    clientIpEl.querySelector("output").textContent = locationData.clientIp;
+  } else {
+    clientIpEl.remove();
+  }
+
+  if (locationData.shortLocation) {
+    shortLocationEl.querySelector("output").textContent = locationData.shortLocation;
+  } else {
+    shortLocationEl.remove();
+  }
+
+  if (locationData.fullLocation) {
+    fullLocationEl.querySelector("output").textContent = locationData.fullLocation;
+  } else {
+    fullLocationEl.remove();
+  }
+
+  vpnBanner.setAttribute("data-protected", Boolean(protectionData?.mullvad_exit_ip));
   vpnBanner.addEventListener("click", handleClick);
+
+  async function getCacheData(req) {
+    const json = await cache.match(req)
+      .then(res => res.json())
+      .catch(e => console.log("Error getting cached request.", e.message));
+
+    return json;
+  }
 
   function handleClick(e) {
     vpnBanner.toggleAttribute("data-clicked", true);
