@@ -40,6 +40,7 @@ const {
   getRemoveRiskLevel,
   getRemoveStats,
   getRemoveStatsUser,
+  createRemoveHashWaitlist,
 } = require("../controllers/user");
 
 const router = express.Router();
@@ -260,6 +261,12 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(getRemoveStatsUser)
+);
+router.get(
+  "/remove-hash-waitlist",
+  urlEncodedParser,
+  requireSessionUser,
+  asyncMiddleware(createRemoveHashWaitlist)
 );
 
 module.exports = router;

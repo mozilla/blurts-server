@@ -377,14 +377,6 @@ remove-fxm = Remove {-product-name}
 remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive
   other account-related communications.
 
-show-breaches-for-this-email = Show all breaches for this email.
-
-link-change-primary = Change Primary Email Address
-
-remove-fxm = Remove {-product-name}
-remove-fxm-blurb = Turn off {-product-name} alerts. Your {-brand-fxa} will remain active, and you may receive
-  other account-related communications.
-
 # Button title
 manage-email-addresses = Manage Email Addresses
 
