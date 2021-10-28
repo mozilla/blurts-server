@@ -161,7 +161,7 @@ async function requireSessionUser(req, res, next) {
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString();
     JS_CONSTANTS.REMOVE_ROUTES.forEach((removeRoute) => {
-      if (req.originalUrl.includes(removeRoute)) {
+      if (req.originalUrl && req.originalUrl.includes(removeRoute)) {
         if (queryParams && queryParams.length) {
           req.session.post_auth_redirect = removeRoute + `?${queryParams}`;
         } else {
