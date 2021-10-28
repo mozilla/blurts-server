@@ -12,7 +12,6 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const fetch = require("node-fetch");
-const _ = require("lodash");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const { readFile } = require("fs/promises");
@@ -1119,7 +1118,6 @@ function alphabetizeByBroker(data) {
 function reduceAndMergeURLs(originalArray) {
   const res = originalArray.reduce((a, b) => {
     const found = a.find((e) => e.broker === b.broker);
-    //eslint-disable-next-line
     return found ? found.url.push(b.url) : a.push({ ...b, url: [b.url] }), a;
   }, []);
   return res;
@@ -1528,8 +1526,7 @@ async function checkForEmailMatch(account, user) {
 }
 
 async function getHashedWaitlist() {
-  let hashedWaitlistArray;
-  hashedWaitlistArray = await readFile("hashed-waitlist.txt", "binary");
+  const hashedWaitlistArray = await readFile("hashed-waitlist.txt", "binary");
   console.log("hwla", hashedWaitlistArray);
   return hashedWaitlistArray.toString().split("\n");
 }
