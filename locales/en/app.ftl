@@ -925,7 +925,7 @@ dash-remove-form-disclaimer = By clicking “Start Data Removal” you agree to 
 # Data Removal Form Confirmation Strings
 
 dash-remove-confirm-review = Review Your Information
-dash-remove-confirm-edit = Edit info
+dash-remove-confirm-edit = Edit Info
 dash-remove-confirm-cancel = Cancel
 dash-remove-confirm-label-full = Full Name
 dash-remove-confirm-email = Email Address

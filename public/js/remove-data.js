@@ -195,9 +195,14 @@ function displayCustomPatternValidity($fieldEl, patternError, unknownError) {
 function checkEmptyErrors($form) {
   const emptyFields = [];
   Array.from($form.elements).forEach(($fieldEl) => {
-    const fieldLength = $fieldEl.value.trim().length;
-    if (!fieldLength) {
-      emptyFields.push($fieldEl);
+    const isRequired =
+      $fieldEl.getAttribute("required") === null ? false : true;
+
+    if (isRequired) {
+      const fieldLength = $fieldEl.value.trim().length;
+      if (!fieldLength) {
+        emptyFields.push($fieldEl);
+      }
     }
   });
   return emptyFields;
