@@ -440,7 +440,11 @@ async function initVpnBanner() {
     // if no cached data, or if user IP changed since last cached response
     console.log("protectionData undefined, or IPs don't match");
     if (cache) {
-      await cache.add(protectionDataRequest).catch(e => console.warn("Error caching protection data request.", e));
+      await cache.add(protectionDataRequest)
+        .catch(e => {
+          console.warn("Error fetching/caching protection data request.", e);
+          return protectionData = null;
+        });
       protectionData = await getCacheData(protectionDataRequest);
     } else {
       protectionData = await fetch(protectionDataRequest)
