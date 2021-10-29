@@ -17,7 +17,7 @@ async function ipLocation(req, res) {
   try {
     reader = await Reader.open(maxmindDb);
     geoData = reader.city(clientIp);
-    locationArr = [geoData.city?.names.en, geoData.subdivisions?.[0].isoCode, geoData.country?.isoCode].filter(str => str); // [city name, state code, country code] with non-null items.
+    locationArr = [geoData.city?.names.en, geoData.subdivisions?.[0].isoCode, geoData.country?.names.en].filter(str => str); // [city name, state code, country code] with non-null items.
   } catch (e) {
     console.warn("Error reading location database:", e);
     locationArr = [null]; // will return empty strings for location
