@@ -1021,6 +1021,8 @@ async function getRemoveDeleteConfirmationPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
+  const removeSurveyLink = JS_CONSTANTS.REMOVE_CANCELATION_SURVEY_LINK;
+
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
@@ -1028,6 +1030,7 @@ async function getRemoveDeleteConfirmationPage(req, res) {
     unverifiedEmails,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
+    removeSurveyLink,
     whichPartial: "dashboards/remove-delete-confirmation",
     experimentFlags,
     utmOverrides,
@@ -1349,6 +1352,9 @@ function checkIfRemovalPmtDecisionMade(user) {
 }
 
 function checkIfRemoveDisplayMoreTime(user) {
+  if (!JS_CONSTANTS.REMOVE_WILLINGNESS_TO_PAY_ENABLED) {
+    return false;
+  }
   const pilotGroup = getPilotGroup(user);
 
   const pilotPmtDate = FormUtils.getDaysFromTimestamp(
@@ -1439,7 +1445,7 @@ async function handleRemoveFormSignup(req, res) {
     });
   }
 
-  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST) {
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {

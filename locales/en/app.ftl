@@ -868,6 +868,7 @@ vpn-promo-copy-new = Protect your online data—and choose a VPN subscription pl
 
 -brand-remove-partner = Kanary
 remove-pilot-title = Data Removal Pilot
+remove-process-name = data removal
 remove-partner-link = https://thekanary.com
 
 # Data Removal Dashboard Tabs
@@ -892,7 +893,7 @@ remove-form-intro-description = { -product-name } can scan many common <a href="
 remove-form-intro-broker-title = What are data brokers and people search sites?
 remove-form-intro-broker-description = Data brokers and people search sites are websites that collect personal data like names, addresses, and phone numbers. They first search the Internet for your data without your knowledge. Then they may sell the data to marketers, scammers, and others.
 remove-form-intro-broker-link = Learn more about data brokers and people search sites
-dash-remove-intro-service-link = Learn more about data removal
+dash-remove-intro-service-link = Learn more about { remove-process-name }
 dash-remove-intro-signup-title = How to start
 dash-remove-intro-signup = To start removing your exposed personal data, please provide the following
  information. This information is used to scan and identify exposed personal data.
@@ -946,11 +947,11 @@ dash-remove-link-support = Get Help
 # Data Removal Data Removal Form Completion Page
 
 remove-form-success-alt = Success
-remove-form-success-title = Your automated data removal request process is underway!
+remove-form-success-title = Your automated { remove-process-name } request process is underway!
 remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk.
  Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
-remove-form-success-next-details = Check back here frequently to see the data removal requests initiated on your behalf.
+remove-form-success-next-details = Check back here frequently to see the { remove-process-name } requests initiated on your behalf.
  As removals are verified, we'll update your dashboard to let you know the status.
 remove-form-delete-dashboard = Go to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
@@ -960,8 +961,10 @@ remove-form-data-delete = Cancel Service
 
 remove-form-update-title = Your information has been updated!
 remove-form-update-details = We’re updating your info for removal requests. Due to a high number of requests, it may take 24 hours for your changes to take effect.
-remove-form-delete-title = Your data removal service has been canceled.
-remove-form-delete-details = We are no longer making data removal requests on your behalf. Your { -product-short-name } account will remain active.
+remove-form-delete-title = Sorry to see you go
+remove-form-delete-details = Your { remove-process-name } service has been canceled and we are no longer making { remove-process-name } requests on your behalf. Your { -product-short-name } account will remain active.
+remove-form-delete-survey-context = Before you go, we would like to know more about why you left.
+remove-form-delete-survey-request = Please take a minute to answer a short survey
 
 # Data Removal Dashboard Strings
 
@@ -997,7 +1000,7 @@ remove-result-description = Description
 remove-result-link = Links to exposed info
 remove-result-link-title = Link
 remove-result-opt-out = Manual removal instructions
-remove-pending-title = Starting your data removal
+remove-pending-title = Starting your { remove-process-name }
 remove-pending = We're scanning for sites that expose your personal information. It may take 24 hours for your report to finish.
 remove-result-updated = Updated
 remove-result-email = Email
@@ -1009,7 +1012,7 @@ remove-result-status = Removal Status
 # Data Removal Pilot Get More Time Page
 
 remove-mt-title = Get More Time
-remove-mt-intro = The 90-day pilot of our data removal service will remain at no cost to you for the duration of the pilot period.
+remove-mt-intro = The 90-day pilot of our { remove-process-name } service will remain at no cost to you for the duration of the pilot period.
  However, in order to continue for the remaining 45 days, we’d like to offer you a choice:
 remove-mt-option1-title = Option 1: Continue Service
 remove-mt-option1-description = Continue your service for the remaining 45 days of the pilot at no cost to you.
@@ -1027,7 +1030,7 @@ remove-enroll-intro = This service scans the internet for sites that expose your
  and helps you protect you online by automatically requesting that the data be removed. <br><br>
  The Pilot is currently open to US residents only.
 remove-enroll-description-title = Here's what happens next
-remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our data removal partner, { -brand-remove-partner }. This info allows us to find data brokers and people search sites online that share it—and then get it removed. This info will only be used for the duration of the pilot, and then deleted.<br><br>
+remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our { remove-process-name } partner, { -brand-remove-partner }. This info allows us to find data brokers and people search sites online that share it—and then get it removed. This info will only be used for the duration of the pilot, and then deleted.<br><br>
  You’ll need to create a new { -brand-fxa } as part of this pilot. This pilot { -brand-fxa } is separate from your regular { -brand-fxa }. If you use the same email for both { -brand-fxa }s, that means any changes you make to your account as part of this pilot program don't apply to your regular { -brand-fxa }, including changes made to your email, passwords, and more.<br><br>
  The pilot service will be offered to you at no cost for 90 days.<br>
  The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating in the pilot will include additional communications and surveys about your experience. You are not required to respond to these requests for information, but we would appreciate your assistance.<br><br>
@@ -1040,7 +1043,7 @@ remove-enroll-terms = The pilot service will be offered at no cost to you for a 
  to respond to these requests, but we would appreciate your feedback.
  At the end of the 90-day pilot period, any outstanding removal requests will be suspended and all data
  removal account information held by { -brand-Mozilla } or our partner { -brand-remove-partner } will be deleted.
- You may discontinue the data removal service at any point within the 90-day pilot period.
+ You may discontinue the { remove-process-name } service at any point within the 90-day pilot period.
 remove-enroll-link-faq = { -product-name } { remove-pilot-title } FAQ
 remove-enroll-link-tos = { -product-name } { remove-pilot-title } Terms of Service and Privacy Notice
 remove-enroll-terms-agreement = By continuing, I agree to the Terms of Service and Privacy Notice.
@@ -1071,16 +1074,16 @@ remove-enroll-ended-description = Thank you for your interest in { -brand-Mozill
 # Data Removal Pilot Ended Page
 
 remove-pilot-ended-title = Data Removal Pilot Has Ended
-remove-pilot-ended-description = We are evaluating whether to continue offering the data removal service at { -brand-Mozilla }.
+remove-pilot-ended-description = We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.
  In the meantime, if you wish to continue monitoring for information exposures, you can sign up at { remove-partner-link }.
  If you participated in the pilot and chose to receive a gift card rather than continue the service, those gift cards will be distributed soon.
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the Pilot!
 remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here's how things work:<br><br>
- • First you'll need to enter the info you want removed. This data will be submitted for automatic data removal. <br><br>
+ • First you'll need to enter the info you want removed. This data will be submitted for automatic { remove-process-name }. <br><br>
  • Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.<br><br>
- • If you view the details of each exposure, you can see the status of your data removal request as it moves from request to completion.
+ • If you view the details of each exposure, you can see the status of your { remove-process-name } request as it moves from request to completion.
 remove-enrolled-btn = Get started
 
 # Data Removal Cancellation Page
@@ -1090,7 +1093,7 @@ remove-kan-disclaimer-title = Disclaimer
 remove-kan-disclaimer-content = Deleting your account removes all of your data from { -product-name } as well as from our partner service { -brand-remove-partner }.
  Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended.
  Your information will be removed upon removal request.
-remove-kan-blurb = Confirm cancellation of data removal service? Your { -product-short-name } account will remain active.
+remove-kan-blurb = Confirm cancellation of { remove-process-name } service? Your { -product-short-name } account will remain active.
 remove-kan-btn-confirm = Confirm Cancelation
 remove-kan-btn-nevermind = Nevermind
 
@@ -1139,7 +1142,7 @@ remove-modal-info-link = Learn how your privacy is protected
 # Data Removal Status Modal
 
 remove-modal-status-title = What is removal status?=
-remove-modal-status-text = Once a record is found, the data removal service automatically sends a removal request and follows up with the site to track the status of the removal. <br><br>
+remove-modal-status-text = Once a record is found, the { remove-process-name } service automatically sends a removal request and follows up with the site to track the status of the removal. <br><br>
  • In Progress refers to active requests that are still being worked on.
  Removals can take some time depending on the responsiveness of the data broker or people search site, and the steps they have set up for processing a removal.<br><br>
  • Complete refers to information that has been successfully removed and verified. Although data brokers and people search sites remove data,
@@ -1178,7 +1181,7 @@ remove-about-details-content = In partnership with <a data-l10n-name="remove-lin
  This service is offered as part of a pilot program that will help us determine future products and features within { -product-name }.
 
 remove-about-partner-title = About our partner: { -brand-remove-partner }
-remove-about-partner-content = { -brand-name } has partnered with { -brand-remove-partner}, a leading data removal provider, to help create this pilot service within { -product-name}.
+remove-about-partner-content = { -brand-name } has partnered with { -brand-remove-partner}, a leading { remove-process-name } provider, to help create this pilot service within { -product-name}.
  { -brand-remove-partner} helps you maintain your online presence. They scour the internet for sites posting data about you,
  including your home address, phone numbers, leaked passwords and emails.
  They adhere to strict data storage, encryption, and anti-tracking practices.
@@ -1217,8 +1220,8 @@ remove-about-status-title = Status Explained
 remove-about-status-content = {remove-modal-status-text}
 
 remove-about-process-title = Data Removal Process Explained
-remove-about-process-content = Once you submit your information, our data removal partner, { -brand-remove-partner },
- will continuously scan for your information on known data removal and people search sites.
+remove-about-process-content = Once you submit your information, our { remove-process-name } partner, { -brand-remove-partner },
+ will continuously scan for your information on known { remove-process-name } and people search sites.
  Once your personal data is found on one of these sites, we automate the process of getting it removed.
  Sometimes, even if your data was removed from one of these sites, it may reappear at a later date.
  Data brokers and people search sites regularly collect data, and removal does not necessarily
@@ -1250,11 +1253,11 @@ remove-faq-search-content = No - we can't remove your info from search engines l
  information on government websites.
 
 remove-faq-success-rate = { -brand-remove-partner }’s current success rate for removals is currently above 70%
-remove-faq-guarantee-title = Is data removal guaranteed?
+remove-faq-guarantee-title = Is { remove-process-name } guaranteed?
 remove-faq-guarantee-content = Data removal is not guaranteed, but { remove-faq-success-rate }.
 remove-faq-blocked-title = What is blocked request?
-remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a data removal request.
- While data removal is not guaranteed, { remove-faq-success-rate }.
+remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a { remove-process-name } request.
+ While { remove-process-name } is not guaranteed, { remove-faq-success-rate }.
 
 remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The personal information you give us is the same information we search for on data broker and people search sites.
@@ -1277,7 +1280,7 @@ remove-home-protect-subtitle = Automatically remove exposed personal information
 remove-home-signup-btn = Check for Breaches
 remove-home-signup-bottom-btn = Sign Up Now!
 remove-home-article-data-removal-learn-more = Learn More About Data Removal
-remove-home-feature-tip-title = Sign up for monitoring & data removal with a { -brand-fxa }.
+remove-home-feature-tip-title = Sign up for monitoring & { remove-process-name } with a { -brand-fxa }.
 
 # Data Removal Footer
 

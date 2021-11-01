@@ -19,8 +19,10 @@ const REMOVAL_STATUS = {
 };
 
 const JS_CONSTANTS = {
-  REMOVE_CHECK_WAITLIST: false,
+  REMOVE_CHECK_WAITLIST_ENABLED: false, //enable the waitlist check
+  REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
+  REMOVE_CANCELATION_SURVEY_LINK: "", //MH TODO: Get survey link
   REMOVE_LOGGED_IN_DEFAULT_ROUTE: "/user/remove-data",
   REMOVE_ROUTES: ["/user/remove-data", "/user/remove-enroll"],
   REMOVAL_SITES: [
@@ -80,7 +82,7 @@ const JS_CONSTANTS = {
       id: 1,
       name: "group_01",
       start_time: 1634713260, //oct 20
-      max_users: 100, //total max users in pilot across all groups at this point in time
+      max_users: 50, //total max users in pilot across all groups at this point in time
     },
     {
       id: 2,
@@ -95,7 +97,7 @@ const JS_CONSTANTS = {
       max_users: 1000, //total max users in pilot across all groups at this time
     },
   ],
-  REMOVAL_PILOT_ENROLLMENT_END_DAY: 15, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PILOT_ENROLLMENT_END_DAY: 7, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_PMT_DAY: 45, //days from pilot start to showing the willingness to pay option
   REMOVAL_PILOT_PMT_DECISION_DAY: 65, //days from pilot start to no longer displaying the pmt choice screen
   REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
