@@ -800,3 +800,16 @@
     border-radius: 8px;
   }
 }
+
+.remove-form-deleted {
+  &-section {
+    background-color: var(--purple);
+    color: white;
+  }
+  &-link {
+    color: white;
+    text-decoration: underline;
+  }
+  &-content {
+  }
+}
