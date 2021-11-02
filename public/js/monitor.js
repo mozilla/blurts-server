@@ -418,74 +418,77 @@ async function initVpnBanner() {
 
   if(!vpnBanner) return;
 
-  const clientIpEl = vpnBanner.querySelector(".client-ip");
-  const shortLocationEl = vpnBanner.querySelector(".short-location");
-  const fullLocationEl = vpnBanner.querySelector(".full-location");
   const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
-  resizeObserver.observe(vpnBanner); // call immediately to init proper size
+  resizeObserver.observe(vpnBanner);
 
-  const locationDataRequest = new Request("/ipLocation");
-  const protectionDataRequest = new Request("https://am.i.mullvad.net/json");
+  const locationDataReq = new Request("/ipLocation");
+  const protectionDataReq = new Request("https://am.i.mullvad.net/json");
   const cache = "caches" in self ? await caches.open("vpn-banner") : null;
 
-  const locationData = await fetch(locationDataRequest)
+  const locationData = await fetch(locationDataReq)
     .then(res => res.json())
     .catch(e => console.warn("Error fetching location data.", e));
 
-  let protectionData;
-
-  if (cache) protectionData = await getCacheData(protectionDataRequest);
+  let protectionData = await getCacheData(protectionDataReq);
 
   if (!protectionData || protectionData.ip !== locationData.clientIp) {
-    // if no cached data, or if user IP changed since last cached response
-    console.log("protectionData undefined, or IPs don't match");
-    if (cache) {
-      await cache.add(protectionDataRequest)
-        .catch(e => {
-          console.warn("Error fetching/caching protection data request.", e);
-          return protectionData = null;
-        });
-      protectionData = await getCacheData(protectionDataRequest);
-    } else {
-      protectionData = await fetch(protectionDataRequest)
-        .then(res => res.json())
-        .catch(e => console.warn("Error fetching protection data.", e));
-    }
+    // get fresh data if none cached or user IP changed since last cached response
+    protectionData = await fetchData(protectionDataReq).then(data => {
+      if (!data) return null;
+
+      return { ip: data.ip, isProtected: data.mullvad_exit_ip };
+
+    });
   }
 
-  console.log(protectionData, locationData);
-
   if (locationData.clientIp) {
-    clientIpEl.querySelector("output").textContent = locationData.clientIp;
+    vpnBanner.querySelector(".client-ip output").textContent = locationData.clientIp;
   } else {
-    clientIpEl.remove();
+    vpnBanner.querySelector(".client-ip").remove();
   }
 
   if (locationData.shortLocation) {
-    shortLocationEl.querySelector("output").textContent = locationData.shortLocation;
+    vpnBanner.querySelector(".short-location output").textContent = locationData.shortLocation;
   } else {
-    shortLocationEl.remove();
+    vpnBanner.querySelector(".short-location").remove();
   }
 
   if (locationData.fullLocation) {
-    fullLocationEl.querySelector("output").textContent = locationData.fullLocation;
+    vpnBanner.querySelector(".full-location output").textContent = locationData.fullLocation;
   } else {
-    fullLocationEl.remove();
+    vpnBanner.querySelector(".full-location").remove();
   }
 
-  vpnBanner.setAttribute("data-protected", Boolean(protectionData?.mullvad_exit_ip));
+  vpnBanner.setAttribute("data-protected", Boolean(protectionData?.isProtected));
   vpnBanner.addEventListener("click", handleClick);
 
+  if (cache && protectionData) cache.put(protectionDataReq, new Response(JSON.stringify(protectionData)));
+
   async function getCacheData(req) {
+    if (!cache) return null;
+
     const json = await cache.match(req)
       .then(res => res.json())
-      .catch(e => console.log("Error getting cached request.", e.message));
+      .catch(e => console.log("Could not get cached response.", e.message));
+
+    return json;
+  }
+
+  async function fetchData(req) {
+    const abortController = new AbortController();
+    const timer = setTimeout(() => abortController.abort(), 4000); // abort a delayed response after 4s
+    const json = await fetch(req, { signal: abortController.signal })
+      .then(res => {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error(`Bad response (${res.status})`);
+        return res.json();
+      })
+      .catch(e => console.warn("Error fetching protection data.", e));
 
     return json;
   }
 
   function handleClick(e) {
-    vpnBanner.toggleAttribute("data-clicked", true);
     switch (e.target.className) {
       case "vpn-banner-top":
       case "vpn-banner-close":
@@ -498,49 +501,6 @@ async function initVpnBanner() {
     document.body.style.setProperty("--vpn-banner-height", `${Math.floor(h)}px`);
   }
 }
-
-// function vpnBannerLogic() {
-
-//   // Check if element exists at all
-//   const vpnPromoBanner = document.getElementById("vpnPromoBanner");
-
-//   if (!vpnPromoBanner) {
-//     return;
-//   }
-
-//   // Check for dismissal cookie
-//   const vpnBannerDismissedCookie = document.cookie.split("; ").some((item) => item.trim().startsWith("vpnBannerDismissed="));
-
-//   if (vpnBannerDismissedCookie) {
-//     return;
-//   }
-
-//   // Init: Show banner, set close button listener
-//   const vpnPromoCloseButton = document.getElementById("vpnPromoCloseButton");
-
-//   const vpnPromoFunctions = {
-//     hide: function() {
-//       vpnPromoFunctions.setCookie();
-//       vpnPromoBanner.classList.add("closed");
-//       document.body.classList.remove("vpn-banner-visible");
-//     },
-//     init: function() {
-//       vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
-//       vpnPromoFunctions.show();
-//     },
-//     setCookie: function() {
-//       const date = new Date();
-//       date.setTime(date.getTime() + 30*24*60*60*1000);
-//       document.cookie = "vpnBannerDismissed=true; expires=" + date.toUTCString();
-//     },
-//     show: function() {
-//       vpnPromoBanner.classList.remove("closed");
-//       document.body.classList.add("vpn-banner-visible");
-//     },
-//   };
-
-//   vpnPromoFunctions.init();
-// }
 
 ( async() => {
   document.addEventListener("touchstart", function(){}, true);

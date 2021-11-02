@@ -12,7 +12,7 @@ const Reader = require("@maxmind/geoip2-node").Reader;
 
 async function ipLocation(req, res) {
   let reader, geoData, locationArr;
-  const clientIp = process.env.NODE_ENV === "dev" ? "216.160.83.56" : req.ip; // for dev, return an IP that exists in GeoLite2 test DB.
+  const clientIp = process.env.NODE_ENV === "dev" ? "216.160.83.56" : req.ip; // for dev, return an IP that exists in GeoLite2 test DB, e.g. 216.160.83.56
 
   try {
     reader = await Reader.open(maxmindDb);

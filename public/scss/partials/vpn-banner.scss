@@ -14,10 +14,10 @@
     transform: translateY(var(--vpn-banner-height, 0));
 }
 
-/* data-clicked attribute avoids initial animation on page load */
-.vpn-banner[data-clicked] ~ header,
-.vpn-banner[data-clicked] ~ main,
-.vpn-banner[data-clicked] ~ footer{
+/* By waiting for the async data-protected attribute, we avoid initial animation on page load */
+.vpn-banner[data-protected] ~ header,
+.vpn-banner[data-protected] ~ main,
+.vpn-banner[data-protected] ~ footer{
     transition: transform .3s;  
 }
 
@@ -42,7 +42,7 @@
 
 .vpn-banner .vpn-banner-top::after,
 .vpn-banner:not([data-protected]) .vpn-banner-top::after{
-    /* black screen while loading protected data */
+    /* black screen while loading protection data */
     content: "";
     position: absolute;
     top: 0;
