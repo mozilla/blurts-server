@@ -431,7 +431,7 @@ async function initVpnBanner() {
 
   let protectionData = await getCacheData(protectionDataReq);
 
-  if (!protectionData || protectionData.ip !== locationData.clientIp) {
+  if (!protectionData || protectionData.ip !== locationData?.clientIp) {
     // get fresh data if none cached or user IP changed since last cached response
     protectionData = await fetchData(protectionDataReq).then(data => {
       if (!data) return null;
@@ -441,19 +441,19 @@ async function initVpnBanner() {
     });
   }
 
-  if (locationData.clientIp) {
+  if (locationData?.clientIp) {
     vpnBanner.querySelector(".client-ip output").textContent = locationData.clientIp;
   } else {
     vpnBanner.querySelector(".client-ip").remove();
   }
 
-  if (locationData.shortLocation) {
+  if (locationData?.shortLocation) {
     vpnBanner.querySelector(".short-location output").textContent = locationData.shortLocation;
   } else {
     vpnBanner.querySelector(".short-location").remove();
   }
 
-  if (locationData.fullLocation) {
+  if (locationData?.fullLocation) {
     vpnBanner.querySelector(".full-location output").textContent = locationData.fullLocation;
   } else {
     vpnBanner.querySelector(".full-location").remove();

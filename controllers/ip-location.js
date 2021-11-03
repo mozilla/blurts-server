@@ -14,22 +14,24 @@ async function ipLocation(req, res) {
   let reader, geoData, locationArr;
   const clientIp = process.env.NODE_ENV === "dev" ? "216.160.83.56" : req.ip; // for dev, return an IP that exists in GeoLite2 test DB, e.g. 216.160.83.56
 
+  if (clientIp === req.session.locationData?.clientIp) return res.status(200).json(req.session.locationData);
+
   try {
     reader = await Reader.open(maxmindDb);
     geoData = reader.city(clientIp);
     locationArr = [geoData.city?.names.en, geoData.subdivisions?.[0].isoCode, geoData.country?.names.en].filter(str => str); // [city name, state code, country code] with non-null items.
   } catch (e) {
     console.warn("Error reading location database:", e);
-    locationArr = [null]; // will return empty strings for location
+    locationArr = [null]; // null value will return empty strings for location
   }
 
-  return res.status(200).json(
-    {
-      clientIp,
-      shortLocation: locationArr.slice(0, 2).join(", "), // shows the first two location values from the ones available
-      fullLocation: locationArr.join(", "), // shows up to three location values from the ones available
-    }
-  );
+  req.session.locationData = {
+    clientIp,
+    shortLocation: locationArr.slice(0, 2).join(", "), // shows the first two location values from the ones available
+    fullLocation: locationArr.join(", "), // shows up to three location values from the ones available
+  };
+
+  return res.status(200).json(req.session.locationData);
 }
 
 module.exports = {
