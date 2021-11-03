@@ -204,3 +204,9 @@ We use Heroku apps for dev review only – official stage and production apps ar
 Deploys from the `main` branch to Heroku are automatic.  We also employ Heroku's "Review Apps" to check Pull Requests.  These are currently set to auto-deploy: you can find the app link in your GitHub Pull Request. Review apps auto-destroy after 2 days of inactivity.
 
 If you encounter issues with Heroku deploys, be sure to check your environment variables, including those required in `app-constants.js`.  Review apps also share a database and you should not assume good data integrity if testing db-related features.
+
+## VPN Banner
+
+A banner has been added to inform users whether their IP address is being masked by Mozilla VPN.  It also uses their IP address to demonstrate geolocation. This can inform users why they might use Mozilla VPN for privacy.  
+
+The IP location data includes GeoLite2 data created by MaxMind, available from https://www.maxmind.com.  For localhost, a test MaxMind database with limited data is included with this repo. For the Heroku Dev site, the following buildpack is used to enable geolocation: https://github.com/HiMamaInc/heroku-buildpack-geoip-geolite2. For stage and prod environments, a shared database is set via env vars.
