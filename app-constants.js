@@ -5,11 +5,7 @@
 const path = require("path");
 require("dotenv").config({path: path.join(__dirname, ".env")});
 
-if (!process.env.SERVER_URL && process.env.NODE_ENV === "heroku") {
-  process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
-}
-
-const kEnvironmentVariables = [
+const requiredEnvVars = [
   "NODE_ENV",
   "SERVER_URL",
   "PORT",
@@ -43,8 +39,6 @@ const kEnvironmentVariables = [
   "DATABASE_URL",
   "PAGE_TOKEN_TIMER",
   "PRODUCT_PROMOS_ENABLED",
-  "RECRUITMENT_BANNER_LINK",
-  "RECRUITMENT_BANNER_TEXT",
   "REDIS_URL",
   "SENTRY_DSN",
   "DELETE_UNVERIFIED_SUBSCRIBERS_TIMER",
@@ -52,13 +46,26 @@ const kEnvironmentVariables = [
   "MAX_NUM_ADDRESSES",
 ];
 
+const optionalEnvVars = [
+  "RECRUITMENT_BANNER_LINK",
+  "RECRUITMENT_BANNER_TEXT",
+];
+
 const AppConstants = { };
 
-for (const v of kEnvironmentVariables) {
+if (!process.env.SERVER_URL && process.env.NODE_ENV === "heroku") {
+  process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
+}
+
+for (const v of requiredEnvVars) {
   if (process.env[v] === undefined) {
     throw new Error(`Required environment variable was not set: ${v}`);
   }
   AppConstants[v] = process.env[v];
 }
+
+optionalEnvVars.forEach(key => {
+  if (key in process.env) AppConstants[key] = process.env[key];
+});
 
 module.exports = Object.freeze(AppConstants);
