@@ -423,8 +423,7 @@ async function initVpnBanner() {
 
   const locationDataReq = new Request("/ipLocation");
   const protectionDataReq = new Request("https://am.i.mullvad.net/json");
-  const cache = "caches" in self ? await caches.open("vpn-banner") : null;
-
+  const cache = await initCache();
   const locationData = await fetch(locationDataReq)
     .then(res => res.json())
     .catch(e => console.warn("Error fetching location data.", e));
@@ -463,6 +462,15 @@ async function initVpnBanner() {
   vpnBanner.addEventListener("click", handleClick);
 
   if (cache && protectionData) cache.put(protectionDataReq, new Response(JSON.stringify(protectionData)));
+
+  async function initCache() {
+    const cacheAvailable = "caches" in self;
+    let cache;
+
+    if (cacheAvailable) cache = await caches.open("vpn-banner").catch(e => null);
+
+    return cache;
+  }
 
   async function getCacheData(req) {
     if (!cache) return null;
