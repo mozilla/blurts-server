@@ -20,6 +20,12 @@ const REMOVAL_STATUS = {
 
 const JS_CONSTANTS = {
   REMOVE_CHECK_WAITLIST_ENABLED: false, //enable the waitlist check
+  REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: true, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
+  REMOVE_EMAIL_DOMAIN_LIST: [
+    "mozilla.com",
+    "getpocket.com",
+    "mozillafoundation.org",
+  ], //users must sign up with an email from one of these domains if REMOVE_CHECK_EMAIL_DOMAIN_ENABLED is true
   REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
   REMOVE_CANCELATION_SURVEY_LINK: "", //MH TODO: Get survey link
@@ -78,22 +84,23 @@ const JS_CONSTANTS = {
     "zabasearch.com",
   ],
   REMOVAL_PILOTS: [
+    //https://www.epochconverter.com/
     {
       id: 1,
       name: "group_01",
-      start_time: 1634713260, //oct 20
+      start_time: 1636700400, //fri, nov 12
       max_users: 50, //total max users in pilot across all groups at this point in time
     },
     {
       id: 2,
       name: "group_02",
-      start_time: 1636527600, //nov 10
+      start_time: 1636045681, //jan 12
       max_users: 400, //total max users in pilot across all groups at this time
     },
     {
       id: 3,
       name: "group_03",
-      start_time: 1639119600, //dec 10
+      start_time: 1644390000, //feb 9
       max_users: 1000, //total max users in pilot across all groups at this time
     },
   ],
