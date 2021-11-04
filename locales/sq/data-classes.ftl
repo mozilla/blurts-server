@@ -4,6 +4,8 @@ account-balances = Llogari bankare
 address-book-contacts = Kontakte libri adresash
 age-groups = Grupe moshash
 ages = Mosha
+# Refers to medical appointments.
+appointments = Takime
 apps-installed-on-devices = Aplikacione të instaluara në pajisje
 astrological-signs = Shenja astrologjike
 audio-recordings = Incizime audio
@@ -35,6 +37,7 @@ device-information = Të dhëna pajisjeje
 device-serial-numbers = Numra serialë pajisjesh
 device-usage-tracking-data = Të dhëna gjurmimi përdorimi pajisjeje
 drinking-habits = Zakone pirjeje
+driver-s-licenses = Leje drejtimi automjtesh
 drug-habits = Zakone drogimi
 eating-habits = Zakone ngrënieje
 education-levels = Shkallë arsimi
@@ -64,6 +67,8 @@ instant-messenger-identities = Identitete shkëmbimi mesazhesh të atypëratysh�
 ip-addresses = Adresa IP
 job-applications = Aplikime punësimi
 job-titles = Emërtesa vendi pune
+# This string refers to vehicle license plates. 
+licence-plates = Targa
 living-costs = Kosto jetese
 login-histories = Kronologji hyrjesh
 mac-addresses = Adresa MAC
