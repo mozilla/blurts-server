@@ -1092,8 +1092,8 @@ async function getRemovePilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (checkIfRemovalPilotEnded(user) && !req.query.show) {
-    return res.redirect("user/remove-data");
+  if (!checkIfRemovalPilotEnded(user) && !req.query.show) {
+    return res.redirect("/user/remove-data");
   }
 
   res.render("dashboards", {
@@ -1372,7 +1372,7 @@ function checkIfRemoveDisplayMoreTime(user) {
   if (
     now > pilotPmtDate &&
     now < pilotPmtEndDate &&
-    checkIfRemovalPmtDecisionMade(user)
+    !checkIfRemovalPmtDecisionMade(user)
   ) {
     //if the current date/time is past the pilot payment start date but before the pilot payment decision day, and user has not made a decision
     return true;
@@ -1626,6 +1626,16 @@ async function handleRemoveAcctUpdate(req, res) {
       error:
         "The email you are using for signup is being checked against a list of approved email domains and has not been found on that list.",
     });
+  }
+
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+    const hashMatch = await checkEmailHash(account);
+
+    if (!hashMatch) {
+      return res.status(400).json({
+        error: "email address is not in our waitlist",
+      });
+    }
   }
 
   const removeAcctInfo = await getRemoveAcctInfo(user.kid);

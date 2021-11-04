@@ -1073,10 +1073,13 @@ remove-enroll-ended-description = Thank you for your interest in { -brand-Mozill
 
 # Data Removal Pilot Ended Page
 
-remove-pilot-ended-title = Data Removal Pilot Has Ended
-remove-pilot-ended-description = We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.
- In the meantime, if you wish to continue monitoring for information exposures, you can sign up at { remove-partner-link }.
- If you participated in the pilot and chose to receive a gift card rather than continue the service, those gift cards will be distributed soon.
+remove-pilot-ended-title = The data removal pilot has ended
+remove-pilot-ended-description = We hope you enjoyed the ability to get your personal data removed 
+ from data broker and people search websites, and we appreciate your assistance in developing this service!<br><br>
+ We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.<br><br>
+ If you wish to continue monitoring for information exposures, you can sign up directly with {-brand-remove-partner}.
+remove-pilot-ended-link-text = Click here to continue data removal with {-brand-remove-partner}.
+
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the Pilot!
