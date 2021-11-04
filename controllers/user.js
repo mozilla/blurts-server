@@ -1628,6 +1628,16 @@ async function handleRemoveAcctUpdate(req, res) {
     });
   }
 
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+    const hashMatch = await checkEmailHash(account);
+
+    if (!hashMatch) {
+      return res.status(400).json({
+        error: "email address is not in our waitlist",
+      });
+    }
+  }
+
   const removeAcctInfo = await getRemoveAcctInfo(user.kid);
   if (parseInt(id) !== parseInt(removeAcctInfo.id)) {
     console.error("no id match");
