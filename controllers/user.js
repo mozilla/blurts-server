@@ -1372,7 +1372,7 @@ function checkIfRemoveDisplayMoreTime(user) {
   if (
     now > pilotPmtDate &&
     now < pilotPmtEndDate &&
-    checkIfRemovalPmtDecisionMade(user)
+    !checkIfRemovalPmtDecisionMade(user)
   ) {
     //if the current date/time is past the pilot payment start date but before the pilot payment decision day, and user has not made a decision
     return true;
