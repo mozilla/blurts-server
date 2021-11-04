@@ -419,7 +419,7 @@ async function initVpnBanner() {
   if(!vpnBanner) return;
 
   const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
-  resizeObserver.observe(vpnBanner);
+  resizeObserver.observe(vpnBanner); // call before `await` for initial height render
 
   const locationDataReq = new Request("/ipLocation");
   const protectionDataReq = new Request("https://am.i.mullvad.net/json");
@@ -435,9 +435,7 @@ async function initVpnBanner() {
     // get fresh data if none cached or user IP changed since last cached response
     protectionData = await fetchData(protectionDataReq).then(data => {
       if (!data) return null;
-
       return { ip: data.ip, isProtected: data.mullvad_exit_ip };
-
     });
   }
 
@@ -459,6 +457,8 @@ async function initVpnBanner() {
     vpnBanner.querySelector(".full-location").remove();
   }
 
+  vpnBanner.cta = vpnBanner.querySelector("a.vpn-banner-cta");
+  vpnBanner.cta.setAttribute("href", vpnBanner.cta.getAttribute("href") + getPageAttribution());
   vpnBanner.setAttribute("data-protected", Boolean(protectionData?.isProtected));
   vpnBanner.addEventListener("click", handleClick);
 
@@ -469,7 +469,7 @@ async function initVpnBanner() {
 
     const json = await cache.match(req)
       .then(res => res.json())
-      .catch(e => console.log("Could not get cached response.", e.message));
+      .catch(e => console.warn("Could not get cached response.", e.message));
 
     return json;
   }
@@ -486,6 +486,16 @@ async function initVpnBanner() {
       .catch(e => console.warn("Error fetching protection data.", e));
 
     return json;
+  }
+
+  function getPageAttribution() {
+    let page = location.pathname;
+
+    if (page.startsWith("/")) page = page.slice(1);
+
+    if (page === "") page = "home";
+
+    return `&utm_content=${page}`;
   }
 
   function handleClick(e) {
