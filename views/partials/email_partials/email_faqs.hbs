@@ -1,7 +1,8 @@
 <table style="padding: 30px 0 0 0;">
   {{#ifPreFxaSubscriber }}
     <tr align="center" class="pre-fxa-subscriber-message email-faq" style="text-align: center;">
-      <td colspan="2" valign="top" style="padding-bottom: 60px; padding-top: 20px; text-align: center;">
+      <td colspan="2" valign="top"
+        style="padding-bottom: 32px; padding-top: 32px; text-align: center; border-bottom: 1px solid #eee;">
         <img src="{{ getServerUrlForNestedEmailPartial }}/img/email_images/pictogram-email.png" width="100" alt="" aria-hidden="true"/>
         <p class="pre-fxa-headline" style="font-size: 20px; font-weight: 700; padding-top: 16px; margin: 0 auto; color: #20123a">{{ getString "monitor-another-email" }}{{ serverUrl }}</p>
         <p class="pre-fxa-subhead" style="max-width: 310px; color: #0c0c0d; font-weight: 400; font-size: 16px; margin: auto;">{{{ makePreFxaSubscriberMessage }}}</p>
@@ -10,7 +11,8 @@
   {{/ifPreFxaSubscriber}}
   <tr class="email-faq">
     <td colspan="2" valign="top" style="padding-bottom: 20px;">
-      <p class="faq-header" style="color: #20123a; font-family: sans-serif; font-weight: 400; font-size: 16px; margin: 0px; text-align: left;">
+      <p class="faq-header"
+        style="color: #20123a; font-family: sans-serif; font-weight: 400; font-size: 19px; margin: 0px; text-align: center;">
         {{ getString "faq-list-headline" }}
       </p>
     </td>

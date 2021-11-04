@@ -143,9 +143,27 @@ table.table-button tr {
   margin-top: 30px;
 }
 
+.email-other-products{
+  margin-top: 32px; 
+  padding-bottom:32px; 
+  border-bottom:1px solid #eee; 
+  font: 15px/1.2 sans-serif; 
+  text-align:left;
+}
+
+.email-other-products caption{
+  font-size: 19px;
+}
+
+.email-other-products img{
+  width:100px; 
+  height:auto;
+}
+
 .pre-fxa-subscriber-message td {
-  padding-top: 30px !important;
-  border-top: 1px solid #eee;
+  padding-bottom: 32px; 
+  padding-top: 32px;
+  border-bottom: 1px solid #eee;
 }
 
 .pre-fxa-headline {
@@ -169,7 +187,7 @@ a.faq-link {
 }
 
 .faq-header {
-  text-align: left;
+  text-align: center;
   font-size: 19px;
   padding: 30px 0 10px 0;
 }
