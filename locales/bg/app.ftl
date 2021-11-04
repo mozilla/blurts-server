@@ -32,11 +32,13 @@ signup-modal-sent = Изпратено!
 sign-up = Регистриране
 form-signup-error = Адресът за е-поща трябва да е действителен
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Дата на нарушение:
+breach-date = Дата на взломяване:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Компрометирани данни:
 unsub-headline = Отпишете се от { -product-name-nowrap }
 unsub-button = Отписване
+# Breach data provided by Have I Been Pwned.
+hibp-attribution = Данни за взломяването са предоставени от { $hibp-link }
 
 ## What to do after data breach tips
 
@@ -66,3 +68,4 @@ learn-more-link = Научете повече.
 
 ##
 
+ecosystem-promo-body = Всички продукти на { -brand-name } спазват обещанието ни за лични данни: Събираме малко. Пазим го. Нищо не скриваме от вас.
