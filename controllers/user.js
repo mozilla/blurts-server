@@ -1445,6 +1445,18 @@ async function handleRemoveFormSignup(req, res) {
     });
   }
 
+  const emailDomainMatch = await checkEmailDomainMatch(account);
+
+  if (!emailDomainMatch) {
+    console.error(
+      "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
+    );
+    return res.status(404).json({
+      error:
+        "The email you are using for signup is being checked against a list of approved email domains and has not been found on that list.",
+    });
+  }
+
   if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
     const hashMatch = await checkEmailHash(account);
 
@@ -1531,6 +1543,26 @@ async function checkForEmailMatch(account, user) {
   return emailMatch;
 }
 
+async function checkEmailDomainMatch(account) {
+  //TODO: Remove for external testing. For internal testing, we need to check that users are signing up with a Mozilla email account
+
+  let emailDomainMatch = false;
+  if (!JS_CONSTANTS.REMOVE_CHECK_EMAIL_DOMAIN_ENABLED) {
+    //if the domain check is disabled, force a match
+    emailDomainMatch = true;
+  }
+
+  const accountDomain = account.substring(account.lastIndexOf("@") + 1);
+
+  JS_CONSTANTS.REMOVE_EMAIL_DOMAIN_LIST.forEach((emailDomain) => {
+    if (emailDomain === accountDomain) {
+      emailDomainMatch = true;
+    }
+  });
+
+  return emailDomainMatch;
+}
+
 async function getHashedWaitlist() {
   const hashedWaitlistArray = await readFile("hashed-waitlist.txt", "binary");
   console.log("hwla", hashedWaitlistArray);
@@ -1581,6 +1613,18 @@ async function handleRemoveAcctUpdate(req, res) {
     console.error("no email match");
     return res.status(404).json({
       error: "The email you provided does not match any we have on file.",
+    });
+  }
+
+  const emailDomainMatch = await checkEmailDomainMatch(account);
+
+  if (!emailDomainMatch) {
+    console.error(
+      "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
+    );
+    return res.status(404).json({
+      error:
+        "The email you are using for signup is being checked against a list of approved email domains and has not been found on that list.",
     });
   }
 
