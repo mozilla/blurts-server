@@ -70,6 +70,7 @@
     "onchange": "6.1.1",
     "redis-mock": "0.52.0",
     "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0",
     "wdio-docker-service": "2.4.0",
