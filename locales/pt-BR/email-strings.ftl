@@ -94,3 +94,5 @@ create-account = Criar conta
 more-products-headline = Proteja-se com mais produtos nossos
 more-products-vpn = Proteção do dispositivo todo, em todos os seus dispositivos.
 more-products-cta-vpn = Obtenha o { -product-name-vpn }
+more-products-relay = Oculte seu endereço de email real para ajudar a proteger sua identidade.
+more-products-cta-relay = Obtenha o { -product-name-relay }
