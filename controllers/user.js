@@ -1092,8 +1092,8 @@ async function getRemovePilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (checkIfRemovalPilotEnded(user) && !req.query.show) {
-    return res.redirect("user/remove-data");
+  if (!checkIfRemovalPilotEnded(user) && !req.query.show) {
+    return res.redirect("/user/remove-data");
   }
 
   res.render("dashboards", {
