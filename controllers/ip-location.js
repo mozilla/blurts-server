@@ -11,7 +11,7 @@ const maxmindDb = process.env.GEOIP_GEOLITE2_PATH + process.env.GEOIP_GEOLITE2_C
 const Reader = require("@maxmind/geoip2-node").Reader;
 
 async function ipLocation(req, res) {
-  let reader, geoData, locationArr;
+  let reader, geoData, countryName, cityName, locationArr;
   const clientIp = process.env.NODE_ENV === "dev" ? "216.160.83.56" : req.ip; // for dev, return an IP that exists in GeoLite2 test DB, e.g. 216.160.83.56
 
   if (clientIp === req.session.locationData?.clientIp) return res.status(200).json(req.session.locationData);
@@ -19,10 +19,12 @@ async function ipLocation(req, res) {
   try {
     reader = await Reader.open(maxmindDb);
     geoData = reader.city(clientIp);
-    locationArr = [geoData.city?.names.en, geoData.subdivisions?.[0].isoCode, geoData.country?.names.en].filter(str => str); // [city name, state code, country code] with non-null items.
+    countryName = geoData.country?.names[req.supportedLocales.find(locale => locale in geoData.country?.names)]; // find valid locale key and return its value
+    cityName = geoData.city?.names[req.supportedLocales.find(locale => locale in geoData.city?.names)];
+    locationArr = [cityName, geoData.subdivisions?.[0].isoCode, countryName].filter(str => str); // [city name, state code, country code] with non-null items.
   } catch (e) {
     console.warn("Error reading location database:", e);
-    locationArr = [null]; // null value will return empty strings for location
+    locationArr = [null]; // a null item will return empty strings for locationData below
   }
 
   req.session.locationData = {

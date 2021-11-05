@@ -312,11 +312,6 @@ function resizeDashboardMargin() {
   }
 }
 
-function checkIfTier1(preferredLanguage) {
-  const tier1Languages = ["de", "en", "fr"];
-  return tier1Languages.some(lang => preferredLanguage.includes(lang));
-}
-
 function recruitmentLogic() {
   const recruitmentBannerLink = document.querySelector("#recruitment-banner");
   if (!recruitmentBannerLink) {
@@ -587,18 +582,8 @@ async function initVpnBanner() {
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
 
-  const preferredLanguages = navigator.languages;
-  const preferredFirstLanguageIsTier1 = checkIfTier1(preferredLanguages[0]);
-
-  if (!preferredFirstLanguageIsTier1) {
-    return;
-  }
-
-  // Only show banner if users first language is English, Germand or French variant
-  if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
-    // vpnBannerLogic();
-    initVpnBanner();
-  }
+  // Show vpn-banner for locales not in the blocked list
+  if (!["zh-CN"].some(lang => navigator.languages[0].includes(lang))) initVpnBanner();
 
   if (document.getElementById("fxaCheckbox")) {
     document.getElementById("fxaCheckbox").style.display = "block";
