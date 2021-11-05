@@ -90,3 +90,9 @@ pre-fxa-p-3 =
     apparaissent dans une nouvelle fuite de données.
 # Button at the bottom of pre-fxa email.
 create-account = Créer un compte
+# More security products
+more-products-headline = Protégez-vous grâce à davantage de nos produits
+more-products-vpn = Protection complète de votre appareil, pour chacun de vos appareils.
+more-products-cta-vpn = Installez { -product-name-vpn }
+more-products-relay = Masquez votre véritable adresse e-mail pour protéger votre identité
+more-products-cta-relay = Installez { -product-name-relay }
