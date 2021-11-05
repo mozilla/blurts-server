@@ -76,5 +76,9 @@ pre-fxa-tout-3 = 繼續接收電子郵件警報
 pre-fxa-p-3 = 當您出現在新的資料外洩事件時，還是會收到來自 { -product-name } 的警報內容。
 # Button at the bottom of pre-fxa email.
 create-account = 註冊帳號
+# More security products
+more-products-headline = 使用我們的其他產品來保護自己
 more-products-vpn = 在每一台裝置上都有完整保護。
+more-products-cta-vpn = 下載 { -product-name-vpn }
 more-products-relay = 隱藏您的實際電子郵件地址，保護身分資訊。
+more-products-cta-relay = 下載 { -product-name-relay }
