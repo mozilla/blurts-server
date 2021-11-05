@@ -90,3 +90,5 @@ create-account = Krijoje Llogarinë
 more-products-headline = Mbrojeni veten me më tepër produkte tonat
 more-products-vpn = Mbrojtje për krejt pajisjen tuaj, në çdo pajisje
 more-products-cta-vpn = Merrni { -product-name-vpn }
+more-products-relay = Fshiheni adresën tuaj reale email, që të ndihmoni në mbrojtjen e identitetit tuaj.
+more-products-cta-relay = Merrni { -product-name-relay }
