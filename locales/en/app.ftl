@@ -1073,13 +1073,13 @@ remove-enroll-ended-description = Thank you for your interest in { -brand-Mozill
 
 # Data Removal Pilot Ended Page
 
-remove-pilot-ended-title = The data removal pilot has ended
-remove-pilot-ended-description = We hope you enjoyed the ability to get your personal data removed 
- from data broker and people search websites, and we appreciate your assistance in developing this service!<br><br>
+remove-pilot-ended-title = { -product-name } { remove-pilot-title } is now closed
+remove-pilot-ended-description = Thank you for participating in the { -product-name} { remove-pilot-title}.<br><br>
  We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.<br><br>
- If you wish to continue monitoring for information exposures, you can sign up directly with {-brand-remove-partner}.
-remove-pilot-ended-link-text = Click here to continue data removal with {-brand-remove-partner}.
-
+ We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
+ If you have any additional comments or questions, please send them to { remove-about-support-email }.
+remove-pilot-ended-continue-title = Interested in continuing your service with Kanary?
+remove-pilot-ended-continue-text = If you are interested in continuing your data removal coverage while we evaluate next steps for our offering, please proceed to our partner's website:
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the Pilot!
