@@ -92,6 +92,8 @@ pre-fxa-p-3 =
     aparece en una nueva filtración de datos.
 # Button at the bottom of pre-fxa email.
 create-account = Crear cuenta
+# More security products
+more-products-headline = Protégete con más de nuestros productos
 more-products-vpn = Protección para todo tu dispositivo, en todos los dispositivos.
 more-products-cta-vpn = Obtener { -product-name-vpn }
 more-products-relay = Oculta tu dirección de correo electrónico real para ayudar a proteger tu identidad.
