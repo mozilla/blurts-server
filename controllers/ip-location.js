@@ -19,8 +19,8 @@ async function ipLocation(req, res) {
   try {
     reader = await Reader.open(maxmindDb);
     geoData = reader.city(clientIp);
-    countryName = geoData.country?.names[req.supportedLocales.find(locale => locale in geoData.country?.names)]; // find valid locale key and return its value
-    cityName = geoData.city?.names[req.supportedLocales.find(locale => locale in geoData.city?.names)];
+    countryName = geoData.country?.names[req.supportedLocales.find(locale => geoData.country?.names[locale])]; // find valid locale key and return its value
+    cityName = geoData.city?.names[req.supportedLocales.find(locale => geoData.city?.names[locale])];
     locationArr = [cityName, geoData.subdivisions?.[0].isoCode, countryName].filter(str => str); // [city name, state code, country code] with non-null items.
   } catch (e) {
     console.warn("Error reading location database:", e);
