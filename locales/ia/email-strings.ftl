@@ -82,3 +82,9 @@ pre-fxa-tout-3 = Continuar reciper avisos email
 pre-fxa-p-3 = Tu recipera ancora avisos de { -product-name }.
 # Button at the bottom of pre-fxa email.
 create-account = Crear conto
+# More security products
+more-products-headline = Protege te mesme con altere nostre productos
+more-products-vpn = Protection pro tu apparato, in tote le apparatos.
+more-products-cta-vpn = Installa { -product-name-vpn }
+more-products-relay = Cela tu real adresse e-mail pro adjutar a proteger tu identitate.
+more-products-cta-relay = Installa { -product-name-relay }
