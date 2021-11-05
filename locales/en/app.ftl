@@ -1073,13 +1073,13 @@ remove-enroll-ended-description = Thank you for your interest in { -brand-Mozill
 
 # Data Removal Pilot Ended Page
 
-remove-pilot-ended-title = The data removal pilot has ended
-remove-pilot-ended-description = We hope you enjoyed the ability to get your personal data removed 
- from data broker and people search websites, and we appreciate your assistance in developing this service!<br><br>
+remove-pilot-ended-title = { -product-name } { remove-pilot-title } is now closed
+remove-pilot-ended-description = Thank you for participating in the { -product-name} { remove-pilot-title}.<br><br>
  We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.<br><br>
- If you wish to continue monitoring for information exposures, you can sign up directly with {-brand-remove-partner}.
-remove-pilot-ended-link-text = Click here to continue data removal with {-brand-remove-partner}.
-
+ We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
+ If you have any additional comments or questions, please send them to { remove-about-support-email }.
+remove-pilot-ended-continue-title = Interested in continuing your service with Kanary?
+remove-pilot-ended-continue-text = If you are interested in continuing your data removal coverage while we evaluate next steps for our offering, please proceed to our partner's website:
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the Pilot!
@@ -1289,3 +1289,14 @@ remove-home-feature-tip-title = Sign up for monitoring & { remove-process-name }
 
 remove-footer-monitor-faq = Monitor FAQ
 remove-footer-data-removal-faq = Data Removal FAQ
+
+# Data Removal Error messages
+
+remove-error-no-user = No user found
+remove-error-account-exists = An account already exists for this user
+remove-error-no-email-match = The email you provided does not match any verified email addresses in your Firefox Account
+remove-error-no-email-domain-match = The domain of the email addresss you are using for signup does not match any of our approved domains.
+remove-error-no-waitlist-match = The email address you provided is not on our list of verified pilot participants. Please contact us at { remove-about-support-email } if you think this is in error.
+remove-error-no-kid = No Kanary ID found for this user
+remove-error-no-kid-match = The Kanary ID submitted for this user does not match the ID we have on file
+remove-error-update = Error submitting updates to Kanary. Please try your request again.

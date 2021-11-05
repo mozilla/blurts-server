@@ -107,7 +107,7 @@ sign-up-for-alerts = ลงทะเบียนเพื่อรับกา�
 frequently-asked-questions = คำถามที่พบบ่อย
 about-firefox-monitor = เกี่ยวกับ { -product-name }
 # Link title
-preferences = ค่ากำหนด
+preferences = การกำหนดลักษณะ
 # Link title
 home = หน้าแรก
 # Link title
@@ -275,7 +275,7 @@ email-addresses-title = ที่อยู่อีเมล
 # a short summary about the breach.
 breach-overview-title = ภาพรวม
 # Title appearing on the Preferences dashboard. 
-monitor-preferences = ค่ากำหนด { -product-short-name }
+monitor-preferences = การกำหนดลักษณะ { -product-short-name }
 # When a user is signed in, this appears in the drop down menu 
 # and is followed by the user's primary Firefox Account email. 
 signed-in-as = ลงชื่อเข้าในชื่อ: { $userEmail }
