@@ -86,3 +86,7 @@ pre-fxa-tout-3 = Vazhdoni të merrni sinjalizime me email
 pre-fxa-p-3 = Do të merrni ende sinjalizime prej { -product-name }. Do t’ju bëjmë të ditur, nëse të dhënat tuaja shfaqen në një cenim të ri të dhënash.
 # Button at the bottom of pre-fxa email.
 create-account = Krijoje Llogarinë
+# More security products
+more-products-headline = Mbrojeni veten me më tepër produkte tonat
+more-products-vpn = Mbrojtje për krejt pajisjen tuaj, në çdo pajisje
+more-products-cta-vpn = Merrni { -product-name-vpn }
