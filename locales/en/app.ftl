@@ -1083,10 +1083,13 @@ remove-pilot-ended-continue-text = If you are interested in continuing your data
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the Pilot!
-remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here's how things work:<br><br>
- • First you'll need to enter the info you want removed. This data will be submitted for automatic { remove-process-name }. <br><br>
- • Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.<br><br>
- • If you view the details of each exposure, you can see the status of your { remove-process-name } request as it moves from request to completion.
+remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here's how things work:
+remove-enrolled-step1-title = Step 1: Submit your info
+remove-enrolled-step2-title = Step 2: Watch for results
+remove-enrolled-step3-title = Step 3: Examine the details
+remove-enrolled-step1 = First you'll need to enter the info you want removed. This data will be submitted for automatic { remove-process-name }.
+remove-enrolled-step2 = Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.
+remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your { remove-process-name } request as it moves from request to completion.
 remove-enrolled-btn = Get started
 
 # Data Removal Cancellation Page

@@ -36,4 +36,26 @@
   &-btn-container {
     margin-top: 20px;
   }
+  &-steps-container {
+    width: 80%;
+    @include breakpoint(mobile) {
+      width: 100%;
+    }
+  }
+  &-step {
+    margin-top: 20 px;
+    padding-top: 20 px;
+    border-top: 1 px solid #ccc;
+  }
+  &-step-icon {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+  }
+  &-step-text {
+    font-size: 20px;
+    @include breakpoint(mobile) {
+      font-size: 16px;
+    }
+  }
 }

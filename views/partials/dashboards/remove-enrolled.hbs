@@ -1,7 +1,23 @@
 <main id="remove-enrolled" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
   <div class="mw-860 flx flx-col remove-enroll-container">
     <h2 class="remove-enroll-title">{{getString "remove-enrolled-title"}}</h2>
-    <div>{{{getString "remove-enrolled-description"}}}</div>
+    <div>
+      <p>{{{getString "remove-enrolled-description"}}}</p>
+      <div class="remove-enrolled-steps-container">
+        <div class="remove-enrolled-step flx --form">
+          <img src="/img/svg/remove-enrolled-form.svg" alt="{{getString "remove-enrolled-step1-title"}}" class="remove-enrolled-step-icon">
+          <p class="remove-enrolled-step-text">{{getString "remove-enrolled-step1"}}</p>
+        </div>
+        <div class="remove-enrolled-step flx --results">
+          <img src="/img/svg/remove-enrolled-results.svg" alt="{{getString "remove-enrolled-step2-title"}}" class="remove-enrolled-step-icon">
+          <p class="remove-enrolled-step-text">{{getString "remove-enrolled-step2"}}</p>
+        </div>
+        <div class="remove-enrolled-step flx --details">
+          <img src="/img/svg/remove-enrolled-details.svg" alt="{{getString "remove-enrolled-step3-title"}}" class="remove-enrolled-step-icon">
+          <p class="remove-enrolled-step-text">{{getString "remove-enrolled-step3"}}</p>
+        </div>
+      </div>
+    </div>
     <div class="remove-enrolled-btn-container txt-cntr">
       <a class="btn-big btn-blue remove-enrolled-btn" href="/user/remove-data">{{getString "remove-enrolled-btn"}}</a>
     </div>
