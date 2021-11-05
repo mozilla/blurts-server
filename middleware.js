@@ -88,14 +88,10 @@ async function recordVisitFromEmail(req, res, next) {
     return;
   }
 
-  // Redirect users who have clicked "Resolve this breach" or "Go to Dashboard" from an email
-  // and aren't signed in to the /oauth flow.
+  // Redirect users who have clicked "Go to Dashboard" from an email and aren't signed in to the /oauth flow.
   if (
-    (req.query.utm_campaign &&
-      req.query.utm_campaign === "resolve-this-breach-link") ||
-    (req.query.utm_campaign &&
-      req.query.utm_campaign === "go-to-dashboard-link")
-  ) {
+    req.query.utm_campaign && req.query.utm_campaign === "go-to-dashboard-link"
+    ) {
     const oauthUrl = new URL("/oauth/init", AppConstants.SERVER_URL);
     ["utm_source", "utm_campaign", "utm_medium"].forEach((param) => {
       if (req.query[param]) {

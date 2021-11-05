@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="/css/app.css">
-    <link rel="stylesheet" href="/css/legacy/email_l10n_testing.css">
+    <link rel="stylesheet" href="/scss/partials/legacy/email_l10n_testing.css">
     <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
     <meta name="partialport" content="width=device-width, initial-scale=1.0, partialport-fit=cover" />
     <title>Firefox Monitor: Email L10n</title>
@@ -33,6 +33,11 @@
               {{> (lookup . 'whichPartial')}}
               {{> email_partials/email_button href=ctaHref }}
             </section>
+            {{#showProducts}}
+            <section class="email-other-products">
+              {{> email_partials/email_products }}
+            </section>
+            {{/showProducts}}
             {{#showFaqs}}
               <section class="faq-sumo-links">
                 {{> email_partials/email_faqs }}
@@ -40,6 +45,7 @@
             {{/showFaqs}}
           </div><!--email-content-->
           <section class="email-footer">
+            {{> email_partials/email_disclaimers }}
             {{> email_partials/email_footer }}
           </section>
         </section>

@@ -10,6 +10,13 @@ email-address = メールアドレス:
 legal = 法的通知
 # Unsubscribe link in email.
 email-unsub-link = 登録解除
+# This string appears in the footer of breach report and breach alert emails.
+# { $unsubLink } is a link to the user's dashboard where they can unsubscribe from Monitor
+# and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
+# Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-footer-blurb =
+    { -product-name } に登録したため、このアラートメールが届きます。
+    これらのメールはもう必要ありませんか？ { $unsubLink }。これは自動化されたメールです。サポートについては、{ $faqLink } にアクセスしてください。
 # Button text
 verify-email-cta = メールアドレスを確認
 # Button text

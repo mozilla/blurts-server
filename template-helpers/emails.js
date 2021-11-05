@@ -292,6 +292,26 @@ function getServerUrlForNestedEmailPartial(args) {
   return args.data.root.SERVER_URL;
 }
 
+function showProducts(args) {
+  const { supportedLocales, whichPartial } = args.data.root;
+
+  switch (true) {
+    case whichPartial === "email_partials/email_verify":
+    case supportedLocales[0] === "zh-CN":
+    case Boolean(args.data.root.breachAlert):
+      return; // don't show products partial for the cases above
+  }
+
+  return args.fn({
+    strings: {
+      "headline": "more-products-headline",
+      "copyVpn": "more-products-vpn",
+      "ctaVpn": "more-products-cta-vpn",
+      "copyRelay": "more-products-relay",
+      "ctaRelay": "more-products-cta-relay",
+    },
+  });
+}
 
 module.exports = {
   emailBreachStats,
@@ -309,4 +329,5 @@ module.exports = {
   ifPreFxaSubscriber,
   makePreFxaSubscriberMessage,
   showFaqs,
+  showProducts,
 };
