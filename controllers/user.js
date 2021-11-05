@@ -1411,8 +1411,14 @@ async function handleRemoveFormSignup(req, res) {
 
   if (!user) {
     console.error("no user");
+
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-user"
+    );
+
     return res.status(404).json({
-      error: "No user found",
+      error: localeError,
     });
   }
 
@@ -1420,8 +1426,13 @@ async function handleRemoveFormSignup(req, res) {
     console.error(
       "user should have been directed to the handleRemoveAcctUpdate function if they have a kid"
     );
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-account-exists"
+    );
+
     return res.status(400).json({
-      error: "An account already exists for this user",
+      error: localeError,
     });
   }
 
@@ -1440,8 +1451,14 @@ async function handleRemoveFormSignup(req, res) {
 
   if (!emailMatch) {
     console.error("no email match");
+
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-email-match"
+    );
+
     return res.status(404).json({
-      error: "The email you provided does not match any we have on file.",
+      error: localeError,
     });
   }
 
@@ -1451,9 +1468,12 @@ async function handleRemoveFormSignup(req, res) {
     console.error(
       "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
     );
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-email-domain-match"
+    );
     return res.status(404).json({
-      error:
-        "The email you are using for signup is being checked against a list of approved email domains and has not been found on that list.",
+      error: localeError,
     });
   }
 
@@ -1461,8 +1481,12 @@ async function handleRemoveFormSignup(req, res) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {
+      const localeError = LocaleUtils.fluentFormat(
+        req.supportedLocales,
+        "remove-error-no-email-waitlist-match"
+      );
       return res.status(400).json({
-        error: "email address is not in our waitlist",
+        error: localeError,
       });
     }
   }
@@ -1588,8 +1612,13 @@ async function checkEmailHash(account) {
 async function handleRemoveAcctUpdate(req, res) {
   if (!req.user) {
     console.error("no user");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-user"
+    );
+
     return res.status(404).json({
-      error: "No user found",
+      error: localeError,
     });
   }
 
@@ -1611,8 +1640,13 @@ async function handleRemoveAcctUpdate(req, res) {
 
   if (!emailMatch) {
     console.error("no email match");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-email-match"
+    );
+
     return res.status(404).json({
-      error: "The email you provided does not match any we have on file.",
+      error: localeError,
     });
   }
 
@@ -1622,9 +1656,12 @@ async function handleRemoveAcctUpdate(req, res) {
     console.error(
       "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
     );
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-email-domain-match"
+    );
     return res.status(404).json({
-      error:
-        "The email you are using for signup is being checked against a list of approved email domains and has not been found on that list.",
+      error: localeError,
     });
   }
 
@@ -1632,8 +1669,12 @@ async function handleRemoveAcctUpdate(req, res) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {
+      const localeError = LocaleUtils.fluentFormat(
+        req.supportedLocales,
+        "remove-error-no-waitlist-match"
+      );
       return res.status(400).json({
-        error: "email address is not in our waitlist",
+        error: localeError,
       });
     }
   }
@@ -1641,9 +1682,12 @@ async function handleRemoveAcctUpdate(req, res) {
   const removeAcctInfo = await getRemoveAcctInfo(user.kid);
   if (parseInt(id) !== parseInt(removeAcctInfo.id)) {
     console.error("no id match");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-kid-match"
+    );
     return res.status(404).json({
-      error:
-        "The id submitted for this user does not match the Kanary member ID.",
+      error: localeError,
     });
   }
 
@@ -1680,9 +1724,12 @@ async function handleRemoveAcctUpdate(req, res) {
     });
   } else {
     console.error("error submitting updates to kanary");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-update"
+    );
     return res.status(500).json({
-      error:
-        "Error submitting updates to Kanary. Please try your request again.",
+      error: localeError,
     });
   }
 }
@@ -1790,8 +1837,12 @@ async function getRemoveStats(req, res) {
   //MH TODO: validate form data server side
   if (!req.user) {
     console.error("no user");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-user"
+    );
     return res.status(404).json({
-      error: "No user found",
+      error: localeError,
     });
   }
 
@@ -1799,13 +1850,18 @@ async function getRemoveStats(req, res) {
 
   if (!user.kid) {
     console.error("no kid");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-kid"
+    );
     return res.status(404).json({
-      error: "No kid found",
+      error: localeError,
     });
   }
 
   if (!user.primary_email.includes("@mozilla.com")) {
     console.error("non mozilla email");
+
     return res.status(404).json({
       error:
         "You must be signed in with a mozilla.com email address to access this page",
@@ -1871,8 +1927,12 @@ async function getRemoveStatsUser(req, res) {
   //MH TODO: validate form data server side
   if (!req.user) {
     console.error("no user");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-user"
+    );
     return res.status(404).json({
-      error: "No user found",
+      error: localeError,
     });
   }
 
@@ -1880,8 +1940,12 @@ async function getRemoveStatsUser(req, res) {
 
   if (!user.kid) {
     console.error("no kid");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-kid"
+    );
     return res.status(404).json({
-      error: "No kid found",
+      error: localeError,
     });
   }
 
@@ -1899,8 +1963,12 @@ async function getRemoveStatsUser(req, res) {
 async function createRemoveHashWaitlist(req, res) {
   if (!req.user) {
     console.error("no user");
+    const localeError = LocaleUtils.fluentFormat(
+      req.supportedLocales,
+      "remove-error-no-user"
+    );
     return res.status(404).json({
-      error: "No user found",
+      error: localeError,
     });
   }
 
