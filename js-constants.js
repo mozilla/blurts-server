@@ -91,23 +91,11 @@ const JS_CONSTANTS = {
       start_time: 1636459200, //tue, nov 9
       max_users: 50, //total max users in pilot across all groups at this point in time
     },
-    {
-      id: 2,
-      name: "group_02",
-      start_time: 1636045681, //jan 12
-      max_users: 400, //total max users in pilot across all groups at this time
-    },
-    {
-      id: 3,
-      name: "group_03",
-      start_time: 1644390000, //feb 9
-      max_users: 1000, //total max users in pilot across all groups at this time
-    },
   ],
   REMOVAL_PILOT_ENROLLMENT_END_DAY: 7, //days from pilot start to when a user can no longer enroll in their pilot group
-  REMOVAL_PILOT_PMT_DAY: 45, //days from pilot start to showing the willingness to pay option
-  REMOVAL_PILOT_PMT_DECISION_DAY: 65, //days from pilot start to no longer displaying the pmt choice screen
-  REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
+  REMOVAL_PILOT_PMT_DAY: 25, //days from pilot start to showing the willingness to pay option
+  REMOVAL_PILOT_PMT_DECISION_DAY: 32, //days from pilot start to no longer displaying the pmt choice screen
+  REMOVAL_PILOT_END_DAY: 51, //days from pilot start to when the pilot ends
   REMOVAL_PILOT_GROUP: "round_01", //the `name` used to retrieve the proper record from the `removal_pilot` database tablename of the current pilot group in the removal_pilot_database
   REMOVAL_STEP: {
     AWAITING_SCAN: {
