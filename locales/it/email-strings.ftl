@@ -76,6 +76,9 @@ pre-fxa-tout-3 = Continua a ricevere avvisi email
 pre-fxa-p-3 = Riceverai altri avvisi da { -product-name } per informarti ogni volta che i tuoi dati sensibili verranno coinvolti in una nuova violazione.
 # Button at the bottom of pre-fxa email.
 create-account = Crea account
+# More security products
+more-products-headline = Proteggiti con i nostri altri prodotti
 more-products-vpn = Protezione completa del dispositivo, per ogni dispositivo.
 more-products-cta-vpn = Ottieni { -product-name-vpn }
+more-products-relay = Nascondi il tuo indirizzo email reale per mantenere la tua identità al sicuro.
 more-products-cta-relay = Ottieni { -product-name-relay }
