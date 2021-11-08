@@ -951,8 +951,8 @@ remove-form-success-title = Your automated { remove-process-name } request proce
 remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk.
  Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
-remove-form-success-next-details = Check back here frequently to see the { remove-process-name } requests initiated on your behalf.
- As removals are verified, we'll update your dashboard to let you know the status.
+remove-form-success-next-details = Check the exposures dashboard frequently to see the { remove-process-name } requests initiated on your behalf.
+ As new exposures are found or existing results are removed, we'll update the exposures dashboard to reflect the changes.
 remove-form-delete-dashboard = Go to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
@@ -1000,7 +1000,7 @@ remove-result-description = Description
 remove-result-link = Links to exposed info
 remove-result-link-title = Link
 remove-result-opt-out = Manual removal instructions
-remove-pending-title = Starting your { remove-process-name }
+remove-pending-title = Starting your { remove-process-name }. Check back in 24-48 hours for results.
 remove-pending = We're scanning for sites that expose your personal information. It may take 24 hours for your report to finish.
 remove-result-updated = Updated
 remove-result-email = Email
@@ -1089,7 +1089,8 @@ remove-enrolled-step2-title = Step 2: Watch for results
 remove-enrolled-step3-title = Step 3: Examine the details
 remove-enrolled-step1 = First you'll need to enter the info you want removed. This data will be submitted for automatic { remove-process-name }.
 remove-enrolled-step2 = Within around 24-48 hours you should start seeing a list of sites where your information has been found appear in your Exposures dashboard.
-remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your { remove-process-name } request as it moves from request to completion.
+remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your { remove-process-name } request as it moves from request to completion. Removals typically take 7-14 days.
+
 remove-enrolled-btn = Get started
 
 # Data Removal Cancellation Page
