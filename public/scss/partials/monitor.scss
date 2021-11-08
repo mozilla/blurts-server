@@ -15,8 +15,7 @@
 }
 
 .landing-bottom-bar {
-  background-image:
-    url(/img/landing/background-noodle-middle.svg),
+  background-image: url(/img/landing/background-noodle-middle.svg),
     linear-gradient(224deg, #2150c8, #712291);
   background-repeat: no-repeat;
   background-size: 100% auto;
@@ -188,4 +187,14 @@ h3.sb-callout {
     text-align: center;
     font-size: var(--topHeadline);
   }
+}
+
+//Data Removal Home Page Custom Styling
+
+.remove-monitor-landing {
+  margin-top: 40px;
+}
+
+.remove-monitor-subhead {
+  margin-bottom: 40px;
 }

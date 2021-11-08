@@ -15,14 +15,8 @@ body {
   padding: 0;
   background-color: var(--grey0);
   scroll-behavior: smooth;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
+    "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-size: 15px;
   overflow-y: scroll;
@@ -240,10 +234,8 @@ button {
 .btn-transparent:active,
 .btn-violet-primary:active,
 input[type="submit"]:active {
-  box-shadow:
-    0 2px 8px 0 rgba(14, 13, 26, 0.12),
-    0 3px 1px -2px rgba(7, 48, 114, 0.12),
-    0 2px 4px 0 rgba(34, 0, 51, 0.04),
+  box-shadow: 0 2px 8px 0 rgba(14, 13, 26, 0.12),
+    0 3px 1px -2px rgba(7, 48, 114, 0.12), 0 2px 4px 0 rgba(34, 0, 51, 0.04),
     0 0 0 1px rgba(32, 18, 58, 0.04);
 }
 
@@ -531,6 +523,14 @@ ul li {
   color: var(--purple7);
 }
 
+.txt-white {
+  color: white;
+}
+
+.txt-grey-3 {
+  color: var(--grey3);
+}
+
 .jst-cntr {
   justify-content: center;
   align-items: center;
@@ -638,11 +638,8 @@ div.sprite {
 .show {
   visibility: visible;
   opacity: 1;
-  transition:
-    opacity 0.1s ease,
-    visibility 0.1s ease 0.2s,
-    max-height 0.1s ease 0.2s,
-    padding 0.1s ease 0.2s;
+  transition: opacity 0.1s ease, visibility 0.1s ease 0.2s,
+    max-height 0.1s ease 0.2s, padding 0.1s ease 0.2s;
 }
 
 .hide {
@@ -650,11 +647,8 @@ div.sprite {
   opacity: 0;
   max-height: 0;
   visibility: hidden;
-  transition:
-    opacity 0.1s ease,
-    visibility 0.1s ease 0.2s,
-    max-height 0.1s ease 0.2s,
-    padding 0.1s ease 0.2s;
+  transition: opacity 0.1s ease, visibility 0.1s ease 0.2s,
+    max-height 0.1s ease 0.2s, padding 0.1s ease 0.2s;
 }
 
 .hide > * {

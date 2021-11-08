@@ -3,12 +3,15 @@
   <section class="row jst-cntr monitor-landing">
     <div class="col-12 flx-cntr landing-content">
       {{#makeLanding}}
-          <h2 class="top-headline landing-headline">{{{ headline }}}</h2>
-          <h3 class="subhead landing-subhead">{{ subhead }}</h3>
+          <h2 class="top-headline landing-headline">{{getString "take-control"}}</h2>
+          <h3 class="subhead landing-subhead">{{getString "remove-home-cta-content" }}</h3>
       {{/makeLanding}}
-          {{#unless featuredBreach.IsSensitive}}
+          {{!-- {{#unless featuredBreach.IsSensitive}}
             {{> forms/scan-email-form }}
-          {{/unless}}
+          {{/unless}} --}}
+          <a class="remove-home__start-btn btn-blue-primary flx flx-cntr" data-event-category="Sign Up Button" href="/user/remove-enroll">
+            {{getString "remove-home-removal-btn"}}</a>
+          </a>
       {{#makeLanding}}
           {{#if info}}
             <section class="landing-sensitive-info">
@@ -48,13 +51,24 @@
             {{> breach-card cardType="latest-breach" latestBreach=true}}
           {{/each}}
         </div>
-        <div class="row take-back-control-banner">
-          <div class="article-list-headline-wrapper jst-cntr">
-            {{> take-back-control/headlines variableClasses="dash"}}
-          </div>
-          <div>
-            {{> take-back-control/article-links }}
-          </div>
+        <div class="remove-monitor-landing mw-860">
+          {{#makeLanding}}
+            <h2 class="headline article-list-headline txt-cntr">{{{ headline }}}</h2>
+            <h3 class="article-list-subhead txt-cntr remove-monitor-subhead">{{ subhead }}</h3>
+          {{/makeLanding}}
+          {{#unless featuredBreach.IsSensitive}}
+            {{> forms/scan-email-form }}
+          {{/unless}}
+          {{#makeLanding}}
+              {{#if info}}
+                <section class="landing-sensitive-info">
+                  {{#each info}}
+                    <h3 class="sb-callout">{{ subhead }}</h3>
+                    <p class="sb-callout-body">{{ body }}</p>
+                  {{/each}}
+                </section>
+              {{/if}}
+          {{/makeLanding}}
         </div>
       {{> sign-up-banners/monitor-features }}
       </section>
