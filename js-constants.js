@@ -19,7 +19,7 @@ const REMOVAL_STATUS = {
 };
 
 const JS_CONSTANTS = {
-  REMOVE_CHECK_WAITLIST_ENABLED: false, //enable the waitlist check
+  REMOVE_CHECK_WAITLIST_ENABLED: true, //enable the waitlist check
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: true, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
   REMOVE_EMAIL_DOMAIN_LIST: [
     "mozilla.com",

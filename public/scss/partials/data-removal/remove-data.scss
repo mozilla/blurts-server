@@ -626,8 +626,31 @@
   }
 
   &-form-error {
-    color: var(--alertRed);
+    color: var(--alertRedDark);
     margin-top: 10px;
+    &.--general {
+      &:not(:empty) {
+        color: var(--grey7);
+        line-height: 24px;
+        border-radius: 5px;
+        align-items: center;
+        display: inline-flex;
+        border: 1px solid var(--alertRed);
+        margin-right: 10px;
+        padding-right: 5px;
+        &::before {
+          content: "";
+          display: inline-flex;
+          background-image: url("/img/svg/remove-icon-caution-white.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          min-width: 48px;
+          min-height: 80px;
+          background-color: var(--alertRed);
+          margin-right: 10px;
+        }
+      }
+    }
   }
 
   &-email-container {
