@@ -165,7 +165,9 @@ function onEnrollFormSubmitClick(e) {
       if (data.nextPage) {
         window.location.pathname = data.nextPage;
       } else if (data.error) {
-        alert(data.error);
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
       } else {
         console.error("there was an error in the response", data);
       }

@@ -183,7 +183,6 @@ app.use(
       frameAncestors: FRAME_ANCESTORS,
       mediaSrc: ["'self'"],
       formAction: ["'self'"], //MH TODO: verify with RRA team
-      requireTrustedTypesFor: [" 'script' "],
       imgSrc: imgSrc,
       objectSrc: ["'none'"],
       scriptSrc: SCRIPT_SOURCES,

@@ -1386,6 +1386,21 @@ async function handleRemoveEnrollFormSignup(req, res) {
   let nextPage; //where do we send the user next
 
   const isFull = await checkIfRemovalPilotFull(user);
+
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+    const hashMatch = await checkEmailHash(user.primary_email);
+
+    if (!hashMatch) {
+      const localeError = LocaleUtils.fluentFormat(
+        req.supportedLocales,
+        "remove-error-no-fxa-waitlist-match"
+      );
+      return res.status(400).json({
+        error: localeError,
+      });
+    }
+  }
+
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
     return res.json({ nextPage: nextPage });
@@ -1483,7 +1498,7 @@ async function handleRemoveFormSignup(req, res) {
     if (!hashMatch) {
       const localeError = LocaleUtils.fluentFormat(
         req.supportedLocales,
-        "remove-error-no-email-waitlist-match"
+        "remove-error-no-waitlist-match"
       );
       return res.status(400).json({
         error: localeError,
