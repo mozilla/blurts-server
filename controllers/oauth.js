@@ -93,20 +93,23 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     );
 
     const utmID = "report";
-    const reportSubject = EmailUtils.getReportSubject(
-      unsafeBreachesForEmail,
-      req
-    );
 
-    await EmailUtils.sendEmail(email, reportSubject, "default_email", {
+    // const reportSubject = EmailUtils.getReportSubject(
+    //   unsafeBreachesForEmail,
+    //   req
+    // ); old breaches subject
+
+    const reportSubject = req.fluentFormat("removal-fxa-email-subject");
+
+    await EmailUtils.sendEmail(email, reportSubject, "removal_email", {
       supportedLocales: req.supportedLocales,
       breachedEmail: email,
       recipientEmail: email,
       date: req.fluentFormat(new Date()),
       unsafeBreachesForEmail: unsafeBreachesForEmail,
-      ctaHref: EmailUtils.getEmailCtaHref(utmID, "go-to-dashboard-link"),
+      ctaHref: EmailUtils.getRemovalEmailCtaHref(utmID, "go-to-dashboard-link"),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
-      whichPartial: "email_partials/report",
+      whichPartial: "email_partials/removal",
     });
     req.session.user = verifiedSubscriber;
     return res.redirect(returnURL.pathname + returnURL.search);
