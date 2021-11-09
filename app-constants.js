@@ -49,6 +49,9 @@ const requiredEnvVars = [
 const optionalEnvVars = [
   "RECRUITMENT_BANNER_LINK",
   "RECRUITMENT_BANNER_TEXT",
+  "GEOIP_GEOLITE2_PATH",
+  "GEOIP_GEOLITE2_CITY_FILENAME",
+  "GEOIP_GEOLITE2_COUNTRY_FILENAME",
 ];
 
 const AppConstants = { };
