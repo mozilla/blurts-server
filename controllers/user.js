@@ -1614,13 +1614,10 @@ async function checkEmailHash(account) {
   console.log("hashed waitlist", hashedWaitlistArray, account);
   matchedHash = hashedWaitlistArray.find((arrayItem) => {
     const isMatch = bcrypt.compareSync(account, arrayItem, function (err, res) {
-      console.log("aaer", account, arrayItem, err, res);
       return res;
     });
-    console.log("isMatch", isMatch);
     return isMatch;
   });
-  console.log("matchedHash", matchedHash);
   return matchedHash;
 }
 
