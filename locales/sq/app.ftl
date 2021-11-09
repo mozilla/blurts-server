@@ -573,3 +573,5 @@ steps-to-resolve-headline = Hapa për të zgjidhur këtë cenim
 vpn-promo-headline = Ka ardhur koha për të fuqizuar sigurinë tuaj internetore.
 vpn-promo-copy = Rrjeti Virtual Privat i { -brand-Mozilla }-s ndihmon të mbrohet lidhja juaj internet nga hacker-a dhe spiunë.
 vpn-promo-cta = Merrni { -brand-mozilla-vpn }
+vpn-promo-headline-new = Kurseni 50% përmes një pajtimi të plotë njëvjetor
+vpn-promo-copy-new = Mbroni të dhënat tuaja internetore—dhe zgjidhni një plan pajtimi VPN që bën për ju.

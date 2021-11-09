@@ -2,7 +2,7 @@
 rec-ssn-subhead = chaq'atuj le woktzijob'al qajanem
 # Link title
 rec-ssn-cta = Tzonoj rech uwotzijob'al q'ajanem
-rec-ssn = Kariq oxib' sipal woktzijob'al chi junab' rumal ley. ¶                                                                                                                              Le utz'onik xuquje' le rilik man k'o ta kub'an chech le uwujil ¶                                                                              Chawila' taq kemb'i'aj, k'asaj on qajanik le man aweta'm ta uwach.
+rec-ssn = Kariq oxib' sipal woktzijob'al chi junab' rumal ley.                                                                                                                               Le utz'onik xuquje' le rilik man k'o ta kub'an chech le uwujil                                                                               Chawila' taq kemb'i'aj, k'asaj on qajanik le man aweta'm ta uwach.
 # Recommendation subhead
 rec-pw-1-subhead = Chak'exa' le aretokib'al
 # Link title

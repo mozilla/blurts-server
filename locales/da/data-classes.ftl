@@ -4,6 +4,8 @@ account-balances = Konto-saldoer
 address-book-contacts = Adressebogs-kontakter
 age-groups = Aldersgrupper
 ages = Aldre
+# Refers to medical appointments.
+appointments = Aftaler
 apps-installed-on-devices = Apps installeret på enheder
 astrological-signs = Stjernetegn
 audio-recordings = Lydoptagelser
