@@ -182,6 +182,7 @@ app.use(
       ],
       frameAncestors: FRAME_ANCESTORS,
       mediaSrc: ["'self'"],
+      formAction: ["self"], //MH TODO: verify with RRA team
       imgSrc: imgSrc,
       objectSrc: ["'none'"],
       scriptSrc: SCRIPT_SOURCES,
@@ -244,6 +245,7 @@ app.use(
       rolling: true,
       sameSite: "lax",
       secure: AppConstants.NODE_ENV !== "dev",
+      name: "__Secure-connect.sid", //MH TODO: Verify with RRA team
     },
     resave: false,
     saveUninitialized: true,
