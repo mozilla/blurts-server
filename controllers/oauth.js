@@ -93,10 +93,13 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     );
 
     const utmID = "report";
-    const reportSubject = EmailUtils.getReportSubject(
-      unsafeBreachesForEmail,
-      req
-    );
+
+    // const reportSubject = EmailUtils.getReportSubject(
+    //   unsafeBreachesForEmail,
+    //   req
+    // ); old breaches subject
+
+    const reportSubject = req.fluentFormat("removal-fxa-email-subject");
 
     await EmailUtils.sendEmail(email, reportSubject, "removal_email", {
       supportedLocales: req.supportedLocales,
