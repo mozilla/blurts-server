@@ -1,7 +1,7 @@
 {{#unless (vpnPromoBlocked)}}
 	<aside class="vpn-banner">
 		<section class="vpn-banner-top">
-			<label class="short-location">{{{ getString "vpn-banner-location" }}} <output></output></label>
+			<label class="short-location">{{{ getString "vpn-banner-location" ip-location="<output></output>"}}}</label>
 			<label>
 				<span class="protected-txt">{{{ getString "vpn-banner-protected-with-vpn" }}}</span>
 				<span class="protected-txt">{{{ getString "vpn-banner-protect-yourself-with-vpn" }}}</span>
@@ -23,8 +23,8 @@
 						<span class="protected-txt">{{{ getString "vpn-banner-status-protected" }}}</span>
 						<span class="protected-txt">{{{ getString "vpn-banner-status-not-protected" }}}</span>
 					</li>
-					<li class="client-ip">{{ getString "vpn-banner-ip-address" }} <output></output></li>
-					<li class="full-location">{{ getString "vpn-banner-location" }} <output></output></li>
+					<li class="client-ip">{{{ getString "vpn-banner-ip-address" ip-address="<output></output>"}}}</li>
+					<li class="full-location">{{{ getString "vpn-banner-location" ip-location="<output></output>"}}}</li>
 					<li><a class="vpn-banner-cta"
 							href="https://vpn.mozilla.org/?utm_source=firefox-monitor&utm_medium=banner&utm_campaign=ip"
 							target="_blank">{{
