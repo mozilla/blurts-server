@@ -204,3 +204,7 @@ We use Heroku apps for dev review only – official stage and production apps ar
 Deploys from the `main` branch to Heroku are automatic.  We also employ Heroku's "Review Apps" to check Pull Requests.  These are currently set to auto-deploy: you can find the app link in your GitHub Pull Request. Review apps auto-destroy after 2 days of inactivity.
 
 If you encounter issues with Heroku deploys, be sure to check your environment variables, including those required in `app-constants.js`.  Review apps also share a database and you should not assume good data integrity if testing db-related features.
+
+### REPO VISUALIZATION
+
+![Visualization of the codebase](./diagram.svg)
