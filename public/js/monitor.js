@@ -477,9 +477,9 @@ async function initVpnBanner() {
     return json;
   }
 
-  async function fetchData(req) {
+  async function fetchData(req, reqTimeoutMs = 4000) {
     const abortController = new AbortController();
-    const timer = setTimeout(() => abortController.abort(), 4000); // abort a delayed response after 4s
+    const timer = setTimeout(() => abortController.abort(), reqTimeoutMs); // abort a delayed response
     const json = await fetch(req, { signal: abortController.signal })
       .then(res => {
         clearTimeout(timer);
