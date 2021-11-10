@@ -5,7 +5,7 @@ const { URL } = require("url");
 const { LocaleUtils } = require("./../locale-utils");
 
 const { makeBreachCards } = require("./breaches");
-const { prettyDate } = require("./hbs-helpers");
+const { prettyDate, vpnPromoBlocked } = require("./hbs-helpers");
 
 
 function emailBreachStats(args) {
@@ -293,12 +293,12 @@ function getServerUrlForNestedEmailPartial(args) {
 }
 
 function showProducts(args) {
-  const { supportedLocales, whichPartial } = args.data.root;
+  const { whichPartial, breachAlert } = args.data.root;
 
   switch (true) {
     case whichPartial === "email_partials/email_verify":
-    case supportedLocales[0] === "zh-CN":
-    case Boolean(args.data.root.breachAlert):
+    case vpnPromoBlocked(args):
+    case Boolean(breachAlert):
       return; // don't show products partial for the cases above
   }
 

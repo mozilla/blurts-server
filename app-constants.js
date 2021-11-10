@@ -52,6 +52,7 @@ const optionalEnvVars = [
   "GEOIP_GEOLITE2_PATH",
   "GEOIP_GEOLITE2_CITY_FILENAME",
   "GEOIP_GEOLITE2_COUNTRY_FILENAME",
+  "VPN_PROMO_BLOCKED_LOCALES",
 ];
 
 const AppConstants = { };
@@ -70,5 +71,7 @@ for (const v of requiredEnvVars) {
 optionalEnvVars.forEach(key => {
   if (key in process.env) AppConstants[key] = process.env[key];
 });
+
+AppConstants.VPN_PROMO_BLOCKED_LOCALES = AppConstants.VPN_PROMO_BLOCKED_LOCALES?.split(",");
 
 module.exports = Object.freeze(AppConstants);

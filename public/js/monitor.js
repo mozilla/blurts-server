@@ -578,12 +578,10 @@ async function initVpnBanner() {
 
   addWaitlistSignupButtonListeners();
   addWaitlistObservers();
+  initVpnBanner();
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
-
-  // Show vpn-banner for locales not in the blocked list
-  if (!["zh-CN"].some(lang => navigator.languages[0].includes(lang))) initVpnBanner();
 
   if (document.getElementById("fxaCheckbox")) {
     document.getElementById("fxaCheckbox").style.display = "block";
