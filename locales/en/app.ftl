@@ -1148,7 +1148,7 @@ remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Birth Year modal
 remove-modal-birth-year-title = Why do you need my birth year?
-remove-modal-birth-year-text = Your birth year is used to distinguish you from others who might share your same name, email, or address to ensure that the proper listing is requested for removal
+remove-modal-birth-year-text = Your birth year is used to distinguish you from others who may have your same name or location. This information ensures the proper listing is requested for removal.
 
 
 # Data Removal Status Modal
