@@ -111,7 +111,9 @@
             <div class="remove-dashboard-form-error --loc"></div>
           </div>
           <div class="input-group">
-            <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}</label>
+            <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}
+              {{> removal/removal-question-trigger modal="modal-birth-year" alt="Why we require birth year"}}
+            </label>
             <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
               {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
             >
@@ -169,3 +171,4 @@
 </main>
 
 {{> data-removal/modal-info-needed}}
+{{> data-removal/modal-birth-year}}
