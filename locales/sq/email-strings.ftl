@@ -2,6 +2,10 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Firefox Relay is a product name and should not be translated.
+-product-name-relay = Firefox Relay
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Raport { -product-name }
 report-date = Datë Raporti:
@@ -18,8 +22,6 @@ email-footer-blurb = Këtë email po e merrni ngaqë jeni regjistruar për sinja
 # This string appears in the footer of verification emails. { $faqLink } is a link
 # to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-verify-footer-copy = Këtë email po e merrni ngaqë jeni regjistruar për sinjalizime { -product-name }. Ky është një email i automatizuar. Për asistencë vizitoni { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Parje e Pultit Tim
 # Button text
 verify-email-cta = Verifikoni Email
 # Button text
@@ -84,3 +86,9 @@ pre-fxa-tout-3 = Vazhdoni të merrni sinjalizime me email
 pre-fxa-p-3 = Do të merrni ende sinjalizime prej { -product-name }. Do t’ju bëjmë të ditur, nëse të dhënat tuaja shfaqen në një cenim të ri të dhënash.
 # Button at the bottom of pre-fxa email.
 create-account = Krijoje Llogarinë
+# More security products
+more-products-headline = Mbrojeni veten me më tepër produkte tonat
+more-products-vpn = Mbrojtje për krejt pajisjen tuaj, në çdo pajisje
+more-products-cta-vpn = Merrni { -product-name-vpn }
+more-products-relay = Fshiheni adresën tuaj reale email, që të ndihmoni në mbrojtjen e identitetit tuaj.
+more-products-cta-relay = Merrni { -product-name-relay }
