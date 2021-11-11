@@ -9,14 +9,6 @@ if (!process.env.SERVER_URL && process.env.NODE_ENV === "heroku") {
   process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
 }
 
-if (!process.env.SERVER_URL && process.env.NODE_ENV === "heroku") {
-  process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
-}
-
-if (!process.env.SERVER_URL && process.env.NODE_ENV === "heroku") {
-  process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
-}
-
 const kEnvironmentVariables = [
   "KANARY_ENDPOINT",
   "KANARY_TOKEN",
