@@ -51,14 +51,8 @@
 }
 
 @mixin ff-inter {
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
-    "Open Sans",
-    "Helvetica Neue",
-    sans-serif;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
+    "Helvetica Neue", sans-serif;
 }
 
 @mixin ff-metropolis {
