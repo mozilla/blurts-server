@@ -820,7 +820,6 @@ async function getRemovePage(req, res) {
   }
 
   let show_form;
-
   if (req.query && req.query.show_form) {
     //if we explicitly request display of the form from a param
     show_form = true;
@@ -850,9 +849,24 @@ async function getRemovePage(req, res) {
   let removeAcctInfo = null; //acct info
 
   if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
     removeAcctInfo = await getRemoveAcctInfo(user.kid);
-    if (!show_form) {
+    if (!removeAcctInfo) {
+      console.error(
+        "kid in database, but no account returned from API - likely this account was removed"
+      );
+      const localeError = LocaleUtils.fluentFormat(
+        req.supportedLocales,
+        "remove-error-kid-but-no-acct"
+      );
+      res.render("dashboards", {
+        title: req.fluentFormat("Firefox Monitor"),
+        whichPartial: "dashboards/remove-error",
+        error: localeError,
+      });
+    }
+    removeData = await getRemoveDashData(user.kid);
+
+    if (!show_form && removeData) {
       removeData.forEach((removeItem) => {
         removeItem.update_status = FormUtils.convertTimestamp(
           removeItem.updated_at
@@ -1173,7 +1187,7 @@ async function getRemoveDashData(kanary_id) {
       if (json && json.length) {
         return sortRemovalData(json);
       } else {
-        return [];
+        return null;
       }
     })
     .catch((error) => {

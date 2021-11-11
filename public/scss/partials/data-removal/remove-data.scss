@@ -840,3 +840,7 @@
     text-decoration: underline;
   }
 }
+
+.remove-general-container {
+  @include remove-container;
+}

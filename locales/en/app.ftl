@@ -1296,6 +1296,7 @@ remove-footer-data-removal-faq = Data Removal FAQ
 
 # Data Removal Error messages
 
+remove-error-title = Error encountered
 remove-error-no-user = No user found
 remove-error-account-exists = An account already exists for this user
 remove-error-no-email-match = The email you provided does not match any verified email addresses in your { -brand-fxa }
@@ -1305,3 +1306,4 @@ remove-error-no-waitlist-match = The email address you provided does not appear 
 remove-error-no-kid = No Kanary ID found for this user
 remove-error-no-kid-match = The Kanary ID submitted for this user does not match the ID we have on file
 remove-error-update = Error submitting updates to Kanary. Please try your request again.
+remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in Kanary. Please contact support.
