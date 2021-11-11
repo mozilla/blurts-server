@@ -416,7 +416,7 @@ async function initVpnBanner() {
   const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
   resizeObserver.observe(vpnBanner); // call before `await` for initial height render
 
-  const locationDataReq = new Request("/ipLocation");
+  const locationDataReq = new Request("/iplocation");
   const protectionDataReq = new Request("https://am.i.mullvad.net/json");
   const cache = await initCache();
   const locationData = await fetch(locationDataReq)

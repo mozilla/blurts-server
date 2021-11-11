@@ -31,6 +31,8 @@ const { URL } = require("url");
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
+const IpLocationService = require("./ip-location-service");
+
 const {
   addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
   clientErrorHandler, errorHandler, recordVisitFromEmail,
@@ -92,6 +94,11 @@ try {
   } catch (error) {
     log.error("try-load-breaches-error", { error: error });
   }
+})();
+
+(async () => {
+  // open location database once at server start. Service includes 24hr check to reload fresh database.
+  await IpLocationService.openLocationDb().catch(e => console.warn(e));
 })();
 
 // Use helmet to set security headers
