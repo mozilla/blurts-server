@@ -820,7 +820,6 @@ async function getRemovePage(req, res) {
   }
 
   let show_form;
-
   if (req.query && req.query.show_form) {
     //if we explicitly request display of the form from a param
     show_form = true;
@@ -850,9 +849,24 @@ async function getRemovePage(req, res) {
   let removeAcctInfo = null; //acct info
 
   if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
     removeAcctInfo = await getRemoveAcctInfo(user.kid);
-    if (!show_form) {
+    if (!removeAcctInfo) {
+      console.error(
+        "kid in database, but no account returned from API - likely this account was removed"
+      );
+      const localeError = LocaleUtils.fluentFormat(
+        req.supportedLocales,
+        "remove-error-kid-but-no-acct"
+      );
+      res.render("dashboards", {
+        title: req.fluentFormat("Firefox Monitor"),
+        whichPartial: "dashboards/remove-error",
+        error: localeError,
+      });
+    }
+    removeData = await getRemoveDashData(user.kid);
+
+    if (!show_form && removeData) {
       removeData.forEach((removeItem) => {
         removeItem.update_status = FormUtils.convertTimestamp(
           removeItem.updated_at
@@ -1173,7 +1187,7 @@ async function getRemoveDashData(kanary_id) {
       if (json && json.length) {
         return sortRemovalData(json);
       } else {
-        return [];
+        return null;
       }
     })
     .catch((error) => {
@@ -1386,6 +1400,21 @@ async function handleRemoveEnrollFormSignup(req, res) {
   let nextPage; //where do we send the user next
 
   const isFull = await checkIfRemovalPilotFull(user);
+
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+    const hashMatch = await checkEmailHash(user.primary_email);
+
+    if (!hashMatch) {
+      const localeError = LocaleUtils.fluentFormat(
+        req.supportedLocales,
+        "remove-error-no-fxa-waitlist-match"
+      );
+      return res.status(400).json({
+        error: localeError,
+      });
+    }
+  }
+
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
     return res.json({ nextPage: nextPage });
@@ -1483,7 +1512,7 @@ async function handleRemoveFormSignup(req, res) {
     if (!hashMatch) {
       const localeError = LocaleUtils.fluentFormat(
         req.supportedLocales,
-        "remove-error-no-email-waitlist-match"
+        "remove-error-no-waitlist-match"
       );
       return res.status(400).json({
         error: localeError,
@@ -1599,13 +1628,10 @@ async function checkEmailHash(account) {
   console.log("hashed waitlist", hashedWaitlistArray, account);
   matchedHash = hashedWaitlistArray.find((arrayItem) => {
     const isMatch = bcrypt.compareSync(account, arrayItem, function (err, res) {
-      console.log("aaer", account, arrayItem, err, res);
       return res;
     });
-    console.log("isMatch", isMatch);
     return isMatch;
   });
-  console.log("matchedHash", matchedHash);
   return matchedHash;
 }
 

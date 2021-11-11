@@ -218,7 +218,6 @@ function getRemoveDashData(args) {
   const locales = args.data.root.req.supportedLocales;
   const removeResults = args.data.root.removeData;
 
-  // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
     if (
       (a.breaches.length === 0 && b.breaches.length > 0) ||
@@ -251,8 +250,10 @@ function getRemoveDashData(args) {
     upDate = curDate.toLocaleDateString(locales, options);
   }
 
-  assignRemovalFilters(removeResults);
-  localizeRemoveStatus(removeResults, locales);
+  if (removeResults && removeResults.length) {
+    assignRemovalFilters(removeResults);
+    localizeRemoveStatus(removeResults, locales);
+  }
 
   const emailCards = {
     verifiedEmails: verifiedEmails,

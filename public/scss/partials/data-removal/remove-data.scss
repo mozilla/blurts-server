@@ -650,6 +650,9 @@
           margin-right: 10px;
         }
       }
+      &.--enroll {
+        margin-right: 0;
+      }
     }
   }
 
@@ -836,4 +839,8 @@
     color: white;
     text-decoration: underline;
   }
+}
+
+.remove-general-container {
+  @include remove-container;
 }
