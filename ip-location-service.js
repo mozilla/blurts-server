@@ -7,10 +7,7 @@ const AppConstants = require("./app-constants");
 let locationDb, timestamp;
 
 async function openLocationDb() {
-  if (locationDb && isFresh()) {
-    console.warn("Location database opened less than 24hrs: returning original instance.");
-    return locationDb;
-  }
+  if (locationDb && isFresh()) return console.warn("Location database already open.");
 
   try {
     const dbPath = path.join(AppConstants.GEOIP_GEOLITE2_PATH, AppConstants.GEOIP_GEOLITE2_CITY_FILENAME);
@@ -20,7 +17,7 @@ async function openLocationDb() {
   }
 
   timestamp = Date.now();
-  return locationDb;
+  return true;
 }
 
 async function readLocationData(ip, locales) {
@@ -34,8 +31,7 @@ async function readLocationData(ip, locales) {
     const cityName = data.city?.names[locales.find(locale => data.city?.names[locale])];
     locationArr = [cityName, data.subdivisions?.[0].isoCode, countryName].filter(str => str); // [city name, state code, country code] with non-null items.
   } catch (e) {
-    console.warn("Could not read location from database:", e.message);
-    return;
+    return console.warn("Could not read location from database:", e.message);
   }
 
   return {
@@ -45,7 +41,7 @@ async function readLocationData(ip, locales) {
 }
 
 function isFresh() {
-  if (Date.now() - timestamp < 86400000) return true; // elapsed time is less than 24hrs
+  if (Date.now() - timestamp < 259200000) return true; // 1000ms * 60s * 60m * 24h * 3 elapsed time is less than 24hrs
   return false;
 }
 
