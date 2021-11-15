@@ -1875,7 +1875,7 @@ async function getRemoveStats(req, res) {
   const user = req.user;
 
   if (!user.kid) {
-    console.error("no kid");
+    console.error("no kid all", user);
     const localeError = LocaleUtils.fluentFormat(
       req.supportedLocales,
       "remove-error-no-kid"
@@ -1965,7 +1965,7 @@ async function getRemoveStatsUser(req, res) {
   const user = req.user;
 
   if (!user.kid) {
-    console.error("no kid");
+    console.error("no kid user", user);
     const localeError = LocaleUtils.fluentFormat(
       req.supportedLocales,
       "remove-error-no-kid"
