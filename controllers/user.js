@@ -1874,17 +1874,6 @@ async function getRemoveStats(req, res) {
 
   const user = req.user;
 
-  if (!user.kid) {
-    console.error("no kid all", user);
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-kid"
-    );
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
   if (!user.primary_email.includes("@mozilla.com")) {
     console.error("non mozilla email");
 
