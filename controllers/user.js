@@ -1829,11 +1829,19 @@ async function getRemoveRateByKid(kanary_id, aggregate = false) {
                 new Date(removeResult.created_at),
                 new Date(removeResult.updated_at)
               );
-            resultData.resolutionTimeArray.push(
-              FormUtils.numberWithDigits(resolutionTime, 2)
-            );
+
+            if (resolutionTime > 0) {
+              resultData.resolutionTimeArray.push(
+                FormUtils.numberWithDigits(resolutionTime, 2)
+              );
+            }
           }
         });
+        console.log(
+          "resolution time array",
+          kanary_id,
+          resultData.resolutionTimeArray
+        );
         resultData.resolutionPct = FormUtils.calculatePercentage(
           resultData.removedResults,
           resultData.totalResults
@@ -1874,17 +1882,6 @@ async function getRemoveStats(req, res) {
 
   const user = req.user;
 
-  if (!user.kid) {
-    console.error("no kid");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-kid"
-    );
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
   if (!user.primary_email.includes("@mozilla.com")) {
     console.error("non mozilla email");
 
@@ -1913,7 +1910,7 @@ async function getRemoveStats(req, res) {
 
   for await (const kid of kidArr) {
     const userStats = await getRemoveRateByKid(kid, true); //true = aggregate performance metrics, skipping individual resolution time calculations
-    console.log("userStats", userStats, kid);
+    //console.log("userStats", userStats, kid);
     if (userStats) {
       if (userStats.totalResults) {
         allStats.totalResults += userStats.totalResults;
@@ -1965,7 +1962,7 @@ async function getRemoveStatsUser(req, res) {
   const user = req.user;
 
   if (!user.kid) {
-    console.error("no kid");
+    console.error("no kid user", user);
     const localeError = LocaleUtils.fluentFormat(
       req.supportedLocales,
       "remove-error-no-kid"
