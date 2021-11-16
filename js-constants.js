@@ -92,7 +92,7 @@ const JS_CONSTANTS = {
       max_users: 50, //total max users in pilot across all groups at this point in time
     },
   ],
-  REMOVAL_PILOT_ENROLLMENT_END_DAY: 7, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PILOT_ENROLLMENT_END_DAY: 14, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_PMT_DAY: 25, //days from pilot start to showing the willingness to pay option
   REMOVAL_PILOT_PMT_DECISION_DAY: 32, //days from pilot start to no longer displaying the pmt choice screen
   REMOVAL_PILOT_END_DAY: 51, //days from pilot start to when the pilot ends
