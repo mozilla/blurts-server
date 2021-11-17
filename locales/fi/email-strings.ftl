@@ -93,3 +93,9 @@ pre-fxa-p-3 =
     tietojasi ilmenee uudessa tietovuodossa.
 # Button at the bottom of pre-fxa email.
 create-account = Luo tili
+# More security products
+more-products-headline = Suojaa itseäsi muilla tuotteillamme
+more-products-vpn = Suojausta koko laitteellesi, jokaiselle laitteellesi.
+more-products-cta-vpn = Hanki { -product-name-vpn }
+more-products-relay = Piilota todellinen sähköpostiosoitteesi henkilöytesi suojaamiseksi.
+more-products-cta-relay = Hanki { -product-name-relay }
