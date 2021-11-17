@@ -1627,9 +1627,13 @@ async function checkEmailHash(account) {
   const hashedWaitlistArray = await getHashedWaitlist();
   console.log("hashed waitlist", hashedWaitlistArray, account);
   matchedHash = hashedWaitlistArray.find((arrayItem) => {
-    const isMatch = bcrypt.compareSync(account, arrayItem, function (err, res) {
-      return res;
-    });
+    const isMatch = bcrypt.compareSync(
+      account.toLowerCase(),
+      arrayItem,
+      function (err, res) {
+        return res;
+      }
+    );
     return isMatch;
   });
   return matchedHash;
@@ -2016,7 +2020,8 @@ async function createRemoveHashWaitlist(req, res) {
     }
     waitlistArray = data.toString().split("\n");
     waitlistArray.forEach((arrayItem) => {
-      const hashedEmail = bcrypt.hashSync(arrayItem, 10);
+      const stringLower = arrayItem.toLowerCase();
+      const hashedEmail = bcrypt.hashSync(stringLower, 10);
       writeStream.write(`${hashedEmail}\n`);
     });
 

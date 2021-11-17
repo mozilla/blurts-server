@@ -127,7 +127,7 @@ const SCRIPT_SOURCES = [
   "'self'",
   "https://www.google-analytics.com/analytics.js",
 ];
-const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
+const STYLE_SOURCES = ["https://code.cdn.mozilla.net/fonts/"];
 const FRAME_ANCESTORS = ["'none'"];
 
 app.locals.ENABLE_PONTOON_JS = false;
@@ -141,7 +141,7 @@ if (AppConstants.NODE_ENV === "heroku") {
 }
 
 const imgSrc = [
-  "'self'",
+  "'self' data:",
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
   "https://mozillausercontent.com/",
@@ -176,7 +176,7 @@ app.use(
       defaultSrc: ["'self'"],
       connectSrc: connectSrc,
       fontSrc: [
-        "'self'",
+        "'self' data:",
         "https://fonts.gstatic.com/",
         "https://code.cdn.mozilla.net/fonts/",
       ],
@@ -188,10 +188,9 @@ app.use(
       scriptSrc: SCRIPT_SOURCES,
       styleSrc: [
         ...STYLE_SOURCES,
-        (req, res) => `'nonce-${res.locals.styleNonce}'`,
-        // `'unsafe-inline'`,
+        "'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0='",
+        //(req, res) => `'nonce-${res.locals.styleNonce}'`,
       ],
-      // styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.styleNonce}'`]
       reportUri: "/__cspreport__",
     },
   })
