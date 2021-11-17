@@ -2,6 +2,10 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Firefox Relay is a product name and should not be translated.
+-product-name-relay = Firefox Relay
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Relatório do { -product-name }
 report-date = Data do relatório:
@@ -90,3 +94,9 @@ pre-fxa-p-3 =
     se a sua informação aparecer numa nova violação de dados.
 # Button at the bottom of pre-fxa email.
 create-account = Criar conta
+# More security products
+more-products-headline = Proteja-se com mais produtos nossos
+more-products-vpn = Proteção completa para o seu dispositivo, em todos os dispositivos.
+more-products-cta-vpn = Obter a { -product-name-vpn }
+more-products-relay = Oculte o seu endereço de e-mail real para ajudar a proteger sua identidade.
+more-products-cta-relay = Obter o { -product-name-relay }
