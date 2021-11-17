@@ -1625,15 +1625,12 @@ async function getHashedWaitlist() {
 async function checkEmailHash(account) {
   let matchedHash = false;
   const hashedWaitlistArray = await getHashedWaitlist();
-  console.log("hashed waitlist", hashedWaitlistArray, account);
+  let email = `${account}`;
+  email = email.toLowerCase();
   matchedHash = hashedWaitlistArray.find((arrayItem) => {
-    const isMatch = bcrypt.compareSync(
-      account.toLowerCase(),
-      arrayItem,
-      function (err, res) {
-        return res;
-      }
-    );
+    const isMatch = bcrypt.compareSync(email, arrayItem, function (err, res) {
+      return res;
+    });
     return isMatch;
   });
   return matchedHash;

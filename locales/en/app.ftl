@@ -1153,7 +1153,7 @@ remove-modal-birth-year-text = Your birth year is used to distinguish you from o
 
 # Data Removal Status Modal
 
-remove-modal-status-title = What is removal status?=
+remove-modal-status-title = What is removal status?
 remove-modal-status-text = Once a record is found, the { remove-process-name } service automatically sends a removal request and follows up with the site to track the status of the removal. <br><br>
  • In Progress refers to active requests that are still being worked on.
  Removals can take some time depending on the responsiveness of the data broker or people search site, and the steps they have set up for processing a removal.<br><br>
