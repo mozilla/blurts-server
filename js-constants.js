@@ -21,12 +21,13 @@ const REMOVAL_STATUS = {
 const JS_CONSTANTS = {
   REMOVE_CHECK_WAITLIST_ENABLED: true, //enable the waitlist check
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: true, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
+  REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
+  REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: false, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
   REMOVE_EMAIL_DOMAIN_LIST: [
     "mozilla.com",
     "getpocket.com",
     "mozillafoundation.org",
   ], //users must sign up with an email from one of these domains if REMOVE_CHECK_EMAIL_DOMAIN_ENABLED is true
-  REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
   REMOVE_CANCELATION_SURVEY_LINK: "", //MH TODO: Get survey link
   REMOVE_LOGGED_IN_DEFAULT_ROUTE: "/user/remove-data",
