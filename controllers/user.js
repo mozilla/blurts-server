@@ -1352,6 +1352,10 @@ function checkIfEnrolledInRemovalPilot(user) {
 }
 
 function checkIfRemovalEnrollmentEnded(user) {
+  if (!JS_CONSTANTS.REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED) {
+    //if we're not enabling this check, the ended check will be false
+    return false;
+  }
   const pilotGroup = getPilotGroup(user);
 
   const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
