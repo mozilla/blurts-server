@@ -16,7 +16,7 @@ beauty-ratings = Schoonheidswaarderingen
 biometric-data = Biometrische gegevens
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
-bios = Bio's
+bios = Bio’s
 browser-user-agent-details = Details over de gebruikte browser
 browsing-histories = Navigatiegeschiedenis
 buying-preferences = Aankoopvoorkeuren
