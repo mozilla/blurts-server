@@ -118,7 +118,7 @@ rec-gen-2-subhead = Bewarje wachtwurden op in feilich plak
 # Link title
 rec-gen-2-cta = Myten oer wachtwurdbehearders
 rec-gen-2 =
-    Bewarje jo oanmeldingsgegevens op in feilich plak wêr't allinnich jo by kinne, lykas in 
+    Bewarje jo oanmeldingsgegevens op in feilich plak wêr’t allinnich jo by kinne, lykas in 
     wachtwurdbehearder. Hjirmei kinne jo al jo ferskate wachtwurden ienfâldich byhâlde.
 # Recommendation subhead
 rec-gen-3-subhead = Wês foarsichtich mei it ferstrekken fan persoanlike ynformaasje

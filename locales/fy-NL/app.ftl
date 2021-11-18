@@ -87,11 +87,11 @@ fxa-pwt-summary-6 =
     Datalekken komme hieltyd faker foar. As jo persoanlike gegevens yn in nij datalek ferskine,
     stjoert { -product-name } jo in warskôging - sadat jo yn aksje komme kinne en jo accounts beskermje kinne.
 fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy’t jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme wizige is.
-fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr't jo it brûkt hawwe.
+fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr’t jo it brûkt hawwe.
 fxa-wtd-blurb-2 =
     Hackers kinne probearje itselde wachtwurd en jo e-mailadres te brûken foar tagong ta oare accounts.  
     Meitsje foar elk account in oar en unyk wachtwurd oan, foaral foar jo bankrekken, 
-    e-mailaccount en oare websites wêr't jo persoanlike gegevens bewarje.
+    e-mailaccount en oare websites wêr’t jo persoanlike gegevens bewarje.
 fxa-what-to-do-blurb-3 =
     De measte lekken omfetsje allinnich e-mailadressen en wachtwurden, mar guon befetsje ek gefoelige finansjele ynformaasje. 
     As jo bankrekkening of creditcardnûmers lekt binne, warskôgje dan jo bank foar mooglike fraude. 
@@ -499,7 +499,7 @@ breach-added-label = Datalek tafoege:
 how-hackers-work-desc = Beskermje jo wachtwurden tsjin cyberkriminelen, want dêr jouwe se it meast om.
 what-to-do-after-breach-desc = Beskoattelje jo accounts om jo gegevens út de ferkearde hannen te hâlden.
 create-strong-passwords-desc = Meitsje jo wachtwurden sterk, feilich en swier te rieden.
-steps-to-protect-desc = Meitsje josels paadwiis yn de meast foarkommende bedriegingen en lear wêr't jo op lette moatte.
+steps-to-protect-desc = Meitsje josels paadwiis yn de meast foarkommende bedriegingen en lear wêr’t jo op lette moatte.
 five-myths-desc = Lear hoe't jo slimme wachtwurdgewoanten, dy’t it wurk fan in hacker maklik meitsje, mije kinne.
 take-further-steps-desc = Untdek hoe't jo de risiko’s fan identiteitstellerij beheine kinne om finansjeel ferlies te mijen.
 # This message appears after a user has successfully updated their communication settings.
@@ -608,7 +608,7 @@ known-data-breaches-resolved =
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nij
 mobile-promo-headline = Bring { -brand-name } nei jo telefoan en tablet
-mobile-promo-body = Fluch, privee en feilich sneupe oeral wêr't jo ek binne. Sykje { -brand-name } yn de Google Play en App Store.
+mobile-promo-body = Fluch, privee en feilich sneupe oeral wêr’t jo ek binne. Sykje { -brand-name } yn de Google Play en App Store.
 mobile-promo-cta = Download { -brand-name } op Android en iOS
 promo-lockwise-headline = Nim jo wachtwurden oeral mei hinne
 lockwise-promo-body = Hâld jo oanmeldingen by op alle apparaten. Benaderje se feilich fan jo kompjûter, telefoan of tablet ôf.
