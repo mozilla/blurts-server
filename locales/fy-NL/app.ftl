@@ -86,7 +86,7 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekken komme hieltyd faker foar. As jo persoanlike gegevens yn in nij datalek ferskine,
     stjoert { -product-name } jo in warskôging - sadat jo yn aksje komme kinne en jo accounts beskermje kinne.
-fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy't jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme feroare is.
+fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy't jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme wizige is.
 fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr't jo it brûkt hawwe.
 fxa-wtd-blurb-2 =
     Hackers kinne probearje itselde wachtwurd en jo e-mailadres te brûken foar tagong ta oare accounts.  

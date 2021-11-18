@@ -19,7 +19,7 @@ rec-pw-2-subhead = Wurkje oare oanmeldingen mei itselde wachtwurd by
 # Link title
 rec-pw-2-cta-fx = Oanmeldingen besjen yn { -brand-name }
 rec-pw-2 =
-    Troch wachtwurden opnij te brûken, feroaret ien inkeld datalek yn folle mear. No dit 
+    Troch wachtwurden opnij te brûken, wiziget ien inkeld datalek yn folle mear. No dit 
     wachtwurd lekt is, kinne hackers it brûke om tagong ta oare accounts te krijen.
 # Recommendation subhead
 rec-pw-3-subhead = Brûk in wachtwurdbehearder om jo wachtwurden oeral mei hinne te nimmen
