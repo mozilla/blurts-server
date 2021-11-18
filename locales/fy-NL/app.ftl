@@ -69,7 +69,7 @@ hibp-attribution = Gegevens fan datalekken ferstrekt troch { $hibp-link }
 share-twitter = De measte minsken hawwe ûngefear 100 online accounts. Is ien fan dy fan jo belutsen by in datalek? Untdek it.
 share-facebook-headline = Untdek oft jo troffen binne troch in datalek
 share-facebook-blurb = Binne jo online accounts troffen troch in datalek?
-og-site-description = Untdek mei { -product-name } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe't jo jo accounts feilich hâlde.
+og-site-description = Untdek mei { -product-name } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe’t jo jo accounts feilich hâlde.
 show-all = Alles toane
 fxa-scan-another-email = Wolle jo in oar e-mailadres kontrolearje?
 sign-in = Oanmelde
@@ -86,7 +86,7 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekken komme hieltyd faker foar. As jo persoanlike gegevens yn in nij datalek ferskine,
     stjoert { -product-name } jo in warskôging - sadat jo yn aksje komme kinne en jo accounts beskermje kinne.
-fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy’t jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme wizige is.
+fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe’t jo it bywurkje kinne. Sjogge jo in account dy’t jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme wizige is.
 fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr’t jo it brûkt hawwe.
 fxa-wtd-blurb-2 =
     Hackers kinne probearje itselde wachtwurd en jo e-mailadres te brûken foar tagong ta oare accounts.  
@@ -168,7 +168,7 @@ more-about-this-breach = Mear oer dit datalek
 take-control = Nim jo persoanlike gegevens wer ûnder kontrôle.
 cant-stop-hackers = Jo kinne hackers net stopje om te hacken. Mar jo kinne minne gewoanten dy’t harren wurk maklik meitsje mije.
 read-more-tips = Mear befeiligingstips
-how-hackers-work = Begryp hoe't hackers te wurk gean
+how-hackers-work = Begryp hoe’t hackers te wurk gean
 monitor-your-online-accounts = Meld jo oan foar beweitsjen fan datalekken mei in { -brand-fxa }
 stay-alert = Bliuw alert op nije datalekken
 if-your-info = As jo gegevens foarkomme yn in nij datalek, stjoere wy jo in melding.
@@ -206,7 +206,7 @@ about-fxm-blurb =
     troch { -brand-Mozilla }.
 fxm-warns-you =
     { -product-name } warskôget jo as jo e-mailadres foar komt
-    yn in online datalek. Sjoch oft jo ynformaasje lekt is, lês hoe't
+    yn in online datalek. Sjoch oft jo ynformaasje lekt is, lês hoe’t
     jo jo online accounts better beskermje kinne en ûntfang in warskôging
     as jo e-mailadres foar komt yn in nij datalek.
 # How Firefox Monitor works
@@ -262,7 +262,7 @@ appears-in-x-breaches =
        *[other] Komt foar yn { $breachCount } bekende datalekken.
     }
 check-for-breaches = Kontrolearje op datalekken
-find-out-what-hackers-know = Untdek wat hackers al oer jo witte. Lear hoe't jo harren in stap yn it foar bliuwe kinne.
+find-out-what-hackers-know = Untdek wat hackers al oer jo witte. Lear hoe’t jo harren in stap yn it foar bliuwe kinne.
 get-email-alerts = Bliuw feilich: ûntfang e-mailberjochten wannear’t jo gegevens foarkomme yn in bekend datalek
 search-for-your-email = Sykje werom oant 2007 nei jo e-mailadres yn iepenbiere datalekken.
 back-to-top = Werom nei boppe
@@ -500,8 +500,8 @@ how-hackers-work-desc = Beskermje jo wachtwurden tsjin cyberkriminelen, want dê
 what-to-do-after-breach-desc = Beskoattelje jo accounts om jo gegevens út de ferkearde hannen te hâlden.
 create-strong-passwords-desc = Meitsje jo wachtwurden sterk, feilich en swier te rieden.
 steps-to-protect-desc = Meitsje josels paadwiis yn de meast foarkommende bedriegingen en lear wêr’t jo op lette moatte.
-five-myths-desc = Lear hoe't jo slimme wachtwurdgewoanten, dy’t it wurk fan in hacker maklik meitsje, mije kinne.
-take-further-steps-desc = Untdek hoe't jo de risiko’s fan identiteitstellerij beheine kinne om finansjeel ferlies te mijen.
+five-myths-desc = Lear hoe’t jo slimme wachtwurdgewoanten, dy’t it wurk fan in hacker maklik meitsje, mije kinne.
+take-further-steps-desc = Untdek hoe’t jo de risiko’s fan identiteitstellerij beheine kinne om finansjeel ferlies te mijen.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Wizigingen bewarre!
 # Section headline
