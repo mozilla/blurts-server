@@ -50,7 +50,7 @@ email-subject-verify = Ferifiearje jo e-mailadres foar { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Mear ynfo oer { $fxmLink }
 email-sensitive-disclaimer =
-    Fanwegen de gefoelige aard fan dit datalek, binne de e-mailberjochten dy't hjirby belutsen binne net publyklik te finen.
+    Fanwegen de gefoelige aard fan dit datalek, binne de e-mailberjochten dy’t hjirby belutsen binne net publyklik te finen.
     Jo ûntfange dizze melding omdat jo de ferifiearre eigener fan dit e-mailadres binne.
 fxm-warns-you-no-breaches =
     { -product-name } warskôget jo foar datalekken mei betrekking ta jo persoanlike gegevens.
@@ -80,12 +80,12 @@ monitor-another-email = Wolle jo in oar e-mailadres kontrolearje?
 pre-fxa-subject = In fernijing fan { -product-name }
 pre-fxa-headline = Wat wiziget der oan { -product-name }
 pre-fxa-blurb =
-    Dit is der wizige sûnt jo jo oanmeld hawwe foar { -product-name }, de service dy't 
+    Dit is der wizige sûnt jo jo oanmeld hawwe foar { -product-name }, de service dy’t 
     bekende datalekken monitort foar jo persoanlike gegevens. Wy keppelje dizze oan Firefox-accounts.
 pre-fxa-tout-1 = Bliuw alert op mear datalekken
 pre-fxa-p-1 =
     <a>Meitsje in account oan</a> om oant 15 e-mailadressen te monitoarjen op 
-    datalekken. We riede oan om alle e-mailadressen, dy't jo brûkt hawwe om online accounts oan te meitsjen, ta te foegjen.
+    datalekken. We riede oan om alle e-mailadressen, dy’t jo brûkt hawwe om online accounts oan te meitsjen, ta te foegjen.
 pre-fxa-tout-2 = Untfang in dashboerdwerjefte
 pre-fxa-p-2 =
     Besjoch alle datalekken op ien plak, sadat jo witte hokker wachtwurden jo wizigje moatte. 

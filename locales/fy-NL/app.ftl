@@ -62,7 +62,7 @@ compromised-accounts = Troffen accounts:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Troffen gegevens:
 unsub-headline = Utskriuwe fan { -product-name-nowrap }
-unsub-blurb = Dit smyt jo e-mailadres fuort út de list fan { -product-name-nowrap } en jo ûntfange gjin warskôgingen mear wannear't nije lekken bekendmakke wurde.
+unsub-blurb = Dit smyt jo e-mailadres fuort út de list fan { -product-name-nowrap } en jo ûntfange gjin warskôgingen mear wannear’t nije lekken bekendmakke wurde.
 unsub-button = Utskriuwe
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Gegevens fan datalekken ferstrekt troch { $hibp-link }
@@ -86,7 +86,7 @@ fxa-pwt-summary-4 =
 fxa-pwt-summary-6 =
     Datalekken komme hieltyd faker foar. As jo persoanlike gegevens yn in nij datalek ferskine,
     stjoert { -product-name } jo in warskôging - sadat jo yn aksje komme kinne en jo accounts beskermje kinne.
-fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy't jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme wizige is.
+fxa-what-to-do-blurb-1 = As jo jo net oanmelde kinne, nim dan kontakt op mei de website en freegje hoe't jo it bywurkje kinne. Sjogge jo in account dy’t jo net werkenne? Mooglik binne jo gegevens dan ferkocht of opnij ferdield. Dit kin ek in ferjitten account wêze, of in bedriuw dat fan namme wizige is.
 fxa-what-to-do-subhead-2 = Stop mei it gebrûk fan it lekte wachtwurd, en wizigje it op de plakken wêr't jo it brûkt hawwe.
 fxa-wtd-blurb-2 =
     Hackers kinne probearje itselde wachtwurd en jo e-mailadres te brûken foar tagong ta oare accounts.  
@@ -95,7 +95,7 @@ fxa-wtd-blurb-2 =
 fxa-what-to-do-blurb-3 =
     De measte lekken omfetsje allinnich e-mailadressen en wachtwurden, mar guon befetsje ek gefoelige finansjele ynformaasje. 
     As jo bankrekkening of creditcardnûmers lekt binne, warskôgje dan jo bank foar mooglike fraude. 
-    Let op ôfskriuwingen dy't jo net werkenne.
+    Let op ôfskriuwingen dy’t jo net werkenne.
 fxa-what-to-do-subhead-4 = Brûk help by it ûnthâlden fan al jo wachtwurden en it feilich hâlden derfan.
 fxa-what-to-do-blurb-4 =
     Wachtwurdbehearders as 1Password, LastPass, Dashlane en Bitwarden bewarje jo 
@@ -166,7 +166,7 @@ latest-breach = LÊST TAFOEGE DATALEK
 # Link title
 more-about-this-breach = Mear oer dit datalek
 take-control = Nim jo persoanlike gegevens wer ûnder kontrôle.
-cant-stop-hackers = Jo kinne hackers net stopje om te hacken. Mar jo kinne minne gewoanten dy't harren wurk maklik meitsje mije.
+cant-stop-hackers = Jo kinne hackers net stopje om te hacken. Mar jo kinne minne gewoanten dy’t harren wurk maklik meitsje mije.
 read-more-tips = Mear befeiligingstips
 how-hackers-work = Begryp hoe't hackers te wurk gean
 monitor-your-online-accounts = Meld jo oan foar beweitsjen fan datalekken mei in { -brand-fxa }
@@ -189,13 +189,13 @@ spam-list-breach-plural = Spamlistdatalekken
 what-data = Hokker gegevens binne kompromittearre:
 sensitive-sites = Hoe behannelet { -product-name } gefoelige websites?
 sensitive-sites-copy =
-    { -product-name } ûntbleatet allinnich accounts dy't troffen binne troch dit
+    { -product-name } ûntbleatet allinnich accounts dy’t troffen binne troch dit
     soarte datalekken nei ferifikaasje fan in e-mailadres. Dit betsjut dat jo de
-    iennige persoan binne dy't sjen kin oft jo ynformaasje yn dit datalek foar komt
+    iennige persoan binne dy’t sjen kin oft jo ynformaasje yn dit datalek foar komt
     (útsein in oar tagong ta jo e-mailaccount hat).
 delayed-reporting-headline = Wêrom duorre it sa lang eardat dit datalek meld waard?
 delayed-reporting-copy =
-    It kin somtiden moannen of jierren duorje eardat de oanmeldgegevens dy't yn in datalek
+    It kin somtiden moannen of jierren duorje eardat de oanmeldgegevens dy’t yn in datalek
     foar komme op it dark web ferskine. Datalekken wurde, sa gau as se ûntdekt binne en
     ferifiearre, oan ús database tafoege.
 about-fxm-headline = Oer { -product-name }
@@ -215,7 +215,7 @@ how-fxm-1-headline = In ienfâldige sykopdracht útfiere
 how-fxm-1-blurb =
     Sykje nei jo e-mailadres yn bekende datalekken weromgeand
     oant 2007. Dizze ienfâldige sykopdracht sil de measte datalekken werjaan, mar net
-    de datalekken dy't gefoelige persoanlike ynformaasje befetsje.
+    de datalekken dy’t gefoelige persoanlike ynformaasje befetsje.
 how-fxm-2-headline = Skriuw jo yn foar it beweitsjen fan datalekken
 how-fxm-2-blurb =
     Meitsje in { -brand-fxa } om jo e-mailadres trochgeand te kontrolearjen op datalekken.
@@ -224,7 +224,7 @@ how-fxm-2-blurb =
 how-fxm-3-headline = Untfang meldingen yn jo browser
 how-fxm-3-blurb =
     As jo { -brand-name } brûke, ûntfange jo in melding as jo in besite bringe oan in
-    website dy't skeind is. Untdek it daliks as jo yn it datalek foar komme en
+    website dy’t skeind is. Untdek it daliks as jo yn it datalek foar komme en
     wat jo der oan dwaan kinne.
 wtd-after-website = Wat te dwaan nei in datalek fan de website
 wtd-after-data-agg = Wat te dwaan nei in datalek fan in gegevenssamler
@@ -263,7 +263,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Kontrolearje op datalekken
 find-out-what-hackers-know = Untdek wat hackers al oer jo witte. Lear hoe't jo harren in stap yn it foar bliuwe kinne.
-get-email-alerts = Bliuw feilich: ûntfang e-mailberjochten wannear't jo gegevens foarkomme yn in bekend datalek
+get-email-alerts = Bliuw feilich: ûntfang e-mailberjochten wannear’t jo gegevens foarkomme yn in bekend datalek
 search-for-your-email = Sykje werom oant 2007 nei jo e-mailadres yn iepenbiere datalekken.
 back-to-top = Werom nei boppe
 comm-opt-0 = Stjoer my in e-mailberjocht as ien fan myn e-mailadressen hjirûnder yn in datalek ferskynt.
@@ -343,7 +343,7 @@ search-breaches = Datalekken sykje
 facebook-breach-note =
     <span>Jo e-mailadres komt net foar yn dit lek,
     mar jo telefoannûmer kin noch hieltyd kwetsber wêze.</span> Guon fan de accounts
-    dy't by it Facebook-lek bleatsteld binne befetsje telefoannûmers en oare
+    dy’t by it Facebook-lek bleatsteld binne befetsje telefoannûmers en oare
     persoanlike gegevens, mar gjin e-mailadressen. As jo ea in Facebook-account oanmakke hawwe – sels as jo dizze no net brûke – rekommandearje wy jo oan
     dizze stappen te nimmen om josels te beskermjen
 # This string contains nested markup that is later used to style and link the text inside of it.
@@ -351,7 +351,7 @@ facebook-breach-note =
 facebook-breach-what-to-do-1-headline = <span>Stel jo gegevens yn op ‘Allinnich ik’ of in oare net-iepenbiere ynstelling yn <a>jo Facebook-profyl</a>.</span>
 facebook-breach-what-to-do-1-copy =
     By dit lek hawwe hackers profylgegevens
-    dy't ynsteld wien op ‘iepenbier’ of ‘dield mei freonen’ bútmakke.
+    dy’t ynsteld wien op ‘iepenbier’ of ‘dield mei freonen’ bútmakke.
     Dizze gegevens kinne kombinearre wurde mei oare gegevens om noch mear
     fan jo persoanlike gegevens en account te benaderen.
 # This string contains nested markup that is later used to style and link the text inside of it.
@@ -379,7 +379,7 @@ error-csrf-blurb = Selektearje de knop Tebek fan jo browser, laad de side opnij 
 error-invalid-unsub = Hoe ôf te melden fan warskôgingen fan { -product-name }
 error-invalid-unsub-blurb =
     Jo moatte jo ôfmelde fan ien fan de
-    e-mailberichten út dy't { -product-name } jo stjoerd hat. Sjoch yn jo Postfek YN foar berjochten
+    e-mailberichten út dy’t { -product-name } jo stjoerd hat. Sjoch yn jo Postfek YN foar berjochten
     fan { -brand-team-email }. Selektear ûnderoan it e-mailberjocht de keppeling foar ôfmelden.
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
@@ -467,7 +467,7 @@ email-sent = E-mailberjocht ferstjoerd!
 want-to-add = Wolle jo noch in e-mailadres tafoegje?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
-verify-the-link = Ferifiearje de keppeling dy't nei { $userEmail } ferstjoerd is om dy oan { -product-name } ta te foegjen.
+verify-the-link = Ferifiearje de keppeling dy’t nei { $userEmail } ferstjoerd is om dy oan { -product-name } ta te foegjen.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
@@ -476,7 +476,7 @@ email-verified = E-mailadres mei sukses ferifiearre!
 email-added-to-subscription = Wy stjoere jo in warskôging as { $email } troch in datalek troffen is.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = { $nestedSignInLink } om alle e-mailadressen dy't jo oanmeld hawwe foar beweitsjen op lekken te besjen en te behearen.
+email-verified-view-dashboard = { $nestedSignInLink } om alle e-mailadressen dy’t jo oanmeld hawwe foar beweitsjen op lekken te besjen en te behearen.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = oanmelde
 
@@ -500,7 +500,7 @@ how-hackers-work-desc = Beskermje jo wachtwurden tsjin cyberkriminelen, want dê
 what-to-do-after-breach-desc = Beskoattelje jo accounts om jo gegevens út de ferkearde hannen te hâlden.
 create-strong-passwords-desc = Meitsje jo wachtwurden sterk, feilich en swier te rieden.
 steps-to-protect-desc = Meitsje josels paadwiis yn de meast foarkommende bedriegingen en lear wêr't jo op lette moatte.
-five-myths-desc = Lear hoe't jo slimme wachtwurdgewoanten, dy't it wurk fan in hacker maklik meitsje, mije kinne.
+five-myths-desc = Lear hoe't jo slimme wachtwurdgewoanten, dy’t it wurk fan in hacker maklik meitsje, mije kinne.
 take-further-steps-desc = Untdek hoe't jo de risiko’s fan identiteitstellerij beheine kinne om finansjeel ferlies te mijen.
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Wizigingen bewarre!
@@ -509,7 +509,7 @@ rec-section-headline = Wat kinne jo dwaan foar dit datalek
 rec-section-subhead = Wy riede jo oan de folgjende stappen te nimmen om jo persoanlike gegevens feilich te hâlden en jo digitale identiteit te beskermjen.
 # Section headline
 rec-section-headline-no-pw = Wat kinne jo dwaan om jo persoanlike gegevens te beskermjen
-rec-section-subhead-no-pw = Hoewol by dit datalek gjin wachtwurden lekt binne, binne der noch hieltyd stappen dy't jo nimme kinne om jo personlike gegevens better te beskermjen.
+rec-section-subhead-no-pw = Hoewol by dit datalek gjin wachtwurden lekt binne, binne der noch hieltyd stappen dy’t jo nimme kinne om jo personlike gegevens better te beskermjen.
 # Button
 see-additional-recs = Oanfoljende oanrekommandaasjes
 
@@ -614,11 +614,11 @@ promo-lockwise-headline = Nim jo wachtwurden oeral mei hinne
 lockwise-promo-body = Hâld jo oanmeldingen by op alle apparaten. Benaderje se feilich fan jo kompjûter, telefoan of tablet ôf.
 promo-lockwise-cta = Download { -brand-lockwise }
 fpn-promo-headline = Maskearje jo lokaasje foar websites en trackers
-promo-fpn-body = { -brand-fpn } smyt de websites en gegevenssammelers dy't jo mei advertinsjes profilearje fuort, troch jo echte IP-adres te maskearjen.
+promo-fpn-body = { -brand-fpn } smyt de websites en gegevenssammelers dy’t jo mei advertinsjes profilearje fuort, troch jo echte IP-adres te maskearjen.
 promo-fpn-cta = Download { -brand-fpn }
 monitor-promo-headline = Kom mear te witten oer nije datalekken
-monitor-promo-body = Untfang de folgjende kear in melding wannear't jo persoanlike gegevens foarkomme yn in bekend datalek.
-ecosystem-promo-headline = Beskermje jo onlinelibben mei produkten dy't privacy foarop stelle
+monitor-promo-body = Untfang de folgjende kear in melding wannear’t jo persoanlike gegevens foarkomme yn in bekend datalek.
+ecosystem-promo-headline = Beskermje jo onlinelibben mei produkten dy’t privacy foarop stelle
 ecosystem-promo-body = Alles wat { -brand-name } docht, stiet yn it teken fan ús belofte foar persoanlike gegevens: nim minder. Hâld it feilich. Gjin geheimen.
 promo-ecosystem-cta = Alle produkten
 steps-to-resolve-headline = Stappen om dit lek op te lossen

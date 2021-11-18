@@ -9,12 +9,12 @@ fx-lockwise = { -brand-lockwise }
 fx-desktop = { -brand-name } Browser foar buro-pc
 fx-mobile = { -brand-name } Browser foar mobyl
 
-
+##
 
 # Aria label for the Bento button
 bento-button-title = { -brand-name } apps en tsjinsten
 # Bento headline
-fx-makes-tech = { -brand-name } is in technology dy't fjochtet foar jo online privacy.
+fx-makes-tech = { -brand-name } is in technology dy’t fjochtet foar jo online privacy.
 # A link at the bottom of the Bento menu
 made-by-mozilla = Makke troch { -brand-Mozilla }
 # Aria label for button that closes the Bento menu
