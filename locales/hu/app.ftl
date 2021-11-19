@@ -632,3 +632,9 @@ vpn-promo-copy = A { -brand-Mozilla } virtuális magánhálózata segít megvéd
 vpn-promo-cta = { -brand-mozilla-vpn } beszerzése
 vpn-promo-headline-new = Takarítson meg 50%-ot az éves előfizetéssel
 vpn-promo-copy-new = Védje meg online adatait – és válasszon egy Önnek megfelelő VPN-előfizetést.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Az Ön tartózkodási helye: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Védje meg magát</em> a { -brand-mozilla-vpn } segítségével.
