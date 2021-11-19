@@ -593,6 +593,11 @@ vpn-promo-copy-new = Protege tus datos en línea—y elige un plan de suscripci�
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Tu ubicación: { $ip-location }
+vpn-banner-status-protected = Estado actual: <em>Protegido ✓</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Dirección IP: { $ip-address }
 vpn-banner-cta = Obtén { -brand-mozilla-vpn }
 # button to close panel
 vpn-banner-cta-close = Cerrar
