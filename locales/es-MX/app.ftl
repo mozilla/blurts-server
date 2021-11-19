@@ -590,3 +590,9 @@ vpn-promo-copy = La red privada virtual de { -brand-Mozilla } te ayuda a protege
 vpn-promo-cta = Obtener { -brand-mozilla-vpn }
 vpn-promo-headline-new = Ahorra 50% con una suscripción de un año completo
 vpn-promo-copy-new = Protege tus datos en línea—y elige un plan de suscripción a la VPN que funcione para ti.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+vpn-banner-cta = Obtén { -brand-mozilla-vpn }
+# button to close panel
+vpn-banner-cta-close = Cerrar
