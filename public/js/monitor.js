@@ -312,11 +312,6 @@ function resizeDashboardMargin() {
   }
 }
 
-function checkIfTier1(preferredLanguage) {
-  const tier1Languages = ["de", "en", "fr"];
-  return tier1Languages.some(lang => preferredLanguage.includes(lang));
-}
-
 function recruitmentLogic() {
   const recruitmentBannerLink = document.querySelector("#recruitment-banner");
   if (!recruitmentBannerLink) {
@@ -413,47 +408,111 @@ function addWaitlistObservers() {
   }
 }
 
-function vpnBannerLogic() {
+async function initVpnBanner() {
+  const vpnBanner = document.querySelector(".vpn-banner");
 
-  // Check if element exists at all
-  const vpnPromoBanner = document.getElementById("vpnPromoBanner");
+  if(!vpnBanner) return;
 
-  if (!vpnPromoBanner) {
-    return;
+  const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
+  resizeObserver.observe(vpnBanner); // call before `await` for initial height render
+
+  const locationDataReq = new Request("/iplocation");
+  const protectionDataReq = new Request("https://am.i.mullvad.net/json");
+  const cache = await initCache();
+  const locationData = await fetch(locationDataReq)
+    .then(res => res.json())
+    .catch(e => console.warn("Error fetching location data.", e));
+
+  let protectionData = await getCacheData(protectionDataReq);
+
+  if (!protectionData || protectionData.ip !== locationData?.clientIp) {
+    // get fresh data if none cached or user IP changed since last cached response
+    protectionData = await fetchData(protectionDataReq).then(data => {
+      if (!data) return null;
+      return { ip: data.ip, isProtected: data.mullvad_exit_ip };
+    });
   }
 
-  // Check for dismissal cookie
-  const vpnBannerDismissedCookie = document.cookie.split("; ").some((item) => item.trim().startsWith("vpnBannerDismissed="));
-
-  if (vpnBannerDismissedCookie) {
-    return;
+  if (locationData?.clientIp) {
+    vpnBanner.querySelector(".client-ip output").textContent = locationData.clientIp;
+  } else {
+    vpnBanner.querySelector(".client-ip").remove();
   }
 
-  // Init: Show banner, set close button listener
-  const vpnPromoCloseButton = document.getElementById("vpnPromoCloseButton");
+  if (locationData?.shortLocation) {
+    vpnBanner.querySelector(".short-location output").textContent = locationData.shortLocation;
+  } else {
+    vpnBanner.querySelector(".short-location").remove();
+  }
 
-  const vpnPromoFunctions = {
-    hide: function() {
-      vpnPromoFunctions.setCookie();
-      vpnPromoBanner.classList.add("closed");
-      document.body.classList.remove("vpn-banner-visible");
-    },
-    init: function() {
-      vpnPromoCloseButton.addEventListener("click", vpnPromoFunctions.hide);
-      vpnPromoFunctions.show();
-    },
-    setCookie: function() {
-      const date = new Date();
-      date.setTime(date.getTime() + 30*24*60*60*1000);
-      document.cookie = "vpnBannerDismissed=true; expires=" + date.toUTCString();
-    },
-    show: function() {
-      vpnPromoBanner.classList.remove("closed");
-      document.body.classList.add("vpn-banner-visible");
-    },
-  };
+  if (locationData?.fullLocation) {
+    vpnBanner.querySelector(".full-location output").textContent = locationData.fullLocation;
+  } else {
+    vpnBanner.querySelector(".full-location").remove();
+  }
 
-  vpnPromoFunctions.init();
+  vpnBanner.cta = vpnBanner.querySelector("a.vpn-banner-cta");
+  vpnBanner.cta.setAttribute("href", vpnBanner.cta.getAttribute("href") + getPageAttribution());
+  vpnBanner.setAttribute("data-protected", Boolean(protectionData?.isProtected));
+  vpnBanner.addEventListener("click", handleClick);
+
+  if (cache && protectionData) cache.put(protectionDataReq, new Response(JSON.stringify(protectionData)));
+
+  async function initCache() {
+    const cacheAvailable = "caches" in self;
+    let cache;
+
+    if (cacheAvailable) cache = await caches.open("vpn-banner").catch(e => null);
+
+    return cache;
+  }
+
+  async function getCacheData(req) {
+    if (!cache) return null;
+
+    const json = await cache.match(req)
+      .then(res => res.json())
+      .catch(e => console.warn("Could not get cached response.", e.message));
+
+    return json;
+  }
+
+  async function fetchData(req, reqTimeoutMs = 4000) {
+    const abortController = new AbortController();
+    const timer = setTimeout(() => abortController.abort(), reqTimeoutMs); // abort a delayed response
+    const json = await fetch(req, { signal: abortController.signal })
+      .then(res => {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error(`Bad response (${res.status})`);
+        return res.json();
+      })
+      .catch(e => console.warn("Error fetching protection data.", e));
+
+    return json;
+  }
+
+  function getPageAttribution() {
+    let page = location.pathname;
+
+    if (page.startsWith("/")) page = page.slice(1);
+
+    if (page === "") page = "home";
+
+    return `&utm_content=${page}`;
+  }
+
+  function handleClick(e) {
+    switch (e.target.className) {
+      case "vpn-banner-top":
+      case "vpn-banner-close":
+        vpnBanner.toggleAttribute("data-expanded");
+        break;
+    }
+  }
+
+  function updateHeight(h) {
+    document.body.style.setProperty("--vpn-banner-height", `${Math.floor(h)}px`);
+  }
 }
 
 ( async() => {
@@ -519,21 +578,10 @@ function vpnBannerLogic() {
 
   addWaitlistSignupButtonListeners();
   addWaitlistObservers();
+  initVpnBanner();
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
-
-  const preferredLanguages = navigator.languages;
-  const preferredFirstLanguageIsTier1 = checkIfTier1(preferredLanguages[0]);
-
-  if (!preferredFirstLanguageIsTier1) {
-    return;
-  }
-
-  // Only show banner if users first language is English, Germand or French variant
-  if (["en", "de", "fr"].some(lang=>preferredLanguages[0].includes(lang))) {
-    vpnBannerLogic();
-  }
 
   if (document.getElementById("fxaCheckbox")) {
     document.getElementById("fxaCheckbox").style.display = "block";

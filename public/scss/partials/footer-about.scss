@@ -7,16 +7,8 @@
 }
 
 .about-fxm {
-  color: rgba(255, 255, 255, 1);
-  background-color: #1d1133e0;
-}
-
-.about-noodles {
-  background-color: var(--ink);
-  background-image: url("/img/landing/background-noodle-right.svg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: auto 100%;
+  color: white;
+  background: var(--ink) url("/img/landing/background-noodle-right.svg") no-repeat top right / auto 100%;
 }
 
 .fx-monitor-svg {

@@ -7,6 +7,7 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
+    "@maxmind/geoip2-node": "^3.1.0",
     "@mozilla-protocol/core": "^14.0.3",
     "@sentry/node": "5.27.2",
     "babel-minify": "0.5.1",
@@ -63,7 +64,7 @@
     "nodemon": "2.0.4",
     "npm-audit-ci-wrapper": "3.0.1",
     "onchange": "6.1.1",
-    "redis-mock": "0.52.0",
+    "redis-mock": "^0.56.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0",

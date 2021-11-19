@@ -1,17 +1,22 @@
 .monitor-homepage {
   min-height: 90vh;
   background-color: var(--inkDark);
-  background-image: url(/img/landing/background-noodle-top2.svg);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom center;
   position: relative;
+  padding-bottom: 0;
 }
 
 .featured-breach h2.landing-headline {
   font-size: 40px;
   max-width: 600px;
   margin-bottom: 0;
+}
+
+.monitor-landing {
+  background-image: url(/img/landing/background-noodle-top2.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom center;
+  padding: 2rem .75rem;
 }
 
 .landing-bottom-bar {
@@ -35,18 +40,12 @@
   padding-top: 0;
 }
 
-.sb-top-container {
-  position: absolute;
-  bottom: -1px;
-  z-index: 1;
-  padding: 0 var(--padding);
-  width: 100%;
-}
-
 .sb-top-wrapper.row {
-  content: "";
+  position: relative;
   width: 100%;
   max-width: var(--maxWidth);
+  z-index: 1;
+  margin-top: -32px;
 }
 
 .sb-top {

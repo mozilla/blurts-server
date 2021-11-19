@@ -20,6 +20,10 @@ function getSupportedLocales(args) {
   return null;
 }
 
+function vpnPromoBlocked(args) {
+  const userLocale = args.data.root.req.supportedLocales[0];
+  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocale.includes(blockedLocale));
+}
 
 function englishInAcceptLanguages(args) {
   const acceptedLanguages = args.data.root.req.acceptsLanguages();
@@ -300,4 +304,5 @@ module.exports = {
   ifCompare,
   breachMath,
   loop,
+  vpnPromoBlocked,
 };

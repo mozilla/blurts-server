@@ -8,6 +8,7 @@ const {
   home, getAboutPage, getAllBreaches, getBentoStrings,
   getSecurityTips, notFound, removeMyData, addEmailToWaitlist,
 } = require("../controllers/home");
+const { getIpLocation } = require("../controllers/ip-location");
 
 const { getShareUTMs, requireSessionUser } = require("../middleware");
 
@@ -27,6 +28,7 @@ router.get("/security-tips", getSecurityTips);
 router.get("/getBentoStrings", getBentoStrings);
 router.get("/remove-my-data", requireSessionUser, removeMyData);
 router.post("/join-waitlist", jsonParser, requireSessionUser, addEmailToWaitlist);
+router.get("/iplocation", getIpLocation);
 router.use(notFound);
 
 module.exports = router;
