@@ -599,5 +599,7 @@ vpn-banner-status-protected = Estado actual: <em>Protegido ✓</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Dirección IP: { $ip-address }
 vpn-banner-cta = Obtén { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Expandir
 # button to close panel
 vpn-banner-cta-close = Cerrar
