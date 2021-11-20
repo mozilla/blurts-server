@@ -550,7 +550,9 @@ vpn-promo-copy-new = Protege tu datos in linea – e selige un plano de subscrip
 # user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
 vpn-banner-location = Tu ubication: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Protege te</em> con { -brand-mozilla-vpn }.
-vpn-banner-protected-with-vpn = <em>Protecte</em> con { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Protegite</em> con { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Tu es protegite — gratias pro usar { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Tu ubication pote esser traciate si tu non usa un VPN.
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Adresse IP: { $ip-address }
 vpn-banner-step-2 = Eliger le position del VPN
