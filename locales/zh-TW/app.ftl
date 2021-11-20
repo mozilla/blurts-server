@@ -526,3 +526,25 @@ vpn-promo-copy = { -brand-Mozilla } 的虛擬私人網路可幫助您保護網�
 vpn-promo-cta = 下載 { -brand-mozilla-vpn }
 vpn-promo-headline-new = 一次訂閱一年份，享有半價折扣
 vpn-promo-copy-new = 保護您的線上資料 — 選擇適合您的 VPN 訂閱方案。
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = 您的所在地點：{ $ip-location }
+vpn-banner-protect-yourself-with-vpn = 使用 { -brand-mozilla-vpn } <em>保護自己</em>。
+vpn-banner-protected-with-vpn = 使用 { -brand-mozilla-vpn } <em>保護</em>。
+vpn-banner-title-1 = 您已受保護 — 感謝使用 { -brand-mozilla-vpn }。
+vpn-banner-title-2 = 若不使用 VPN，可能會被其他人追蹤到您的所在位置。
+vpn-banner-subtitle-2 = 只要三個步驟，快速保護您的位置資訊並安全上網
+vpn-banner-status-protected = 目前狀態：<em>保護中 ✓</em>
+vpn-banner-status-not-protected = 目前狀態：<em>未受保護 ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP 位置：{ $ip-address }
+vpn-banner-step-1 = 訂閱 { -brand-mozilla-vpn }
+vpn-banner-step-2 = 選擇 VPN 地點
+vpn-banner-step-3 = 啟用 VPN，上網更安全
+vpn-banner-cta = 下載 { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = 展開
+# button to close panel
+vpn-banner-cta-close = 關閉
