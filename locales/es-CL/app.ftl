@@ -610,3 +610,15 @@ vpn-banner-protected-with-vpn = <em>Protegido</em> con { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Estás bajo protección — gracias por usar { -brand-mozilla-vpn }.
 vpn-banner-title-2 = Tu ubicación puede ser rastreada si no usas un VPN.
 vpn-banner-subtitle-2 = Protege tu ubicación y navega de forma segura en 3 pasos
+vpn-banner-status-protected = Estado actual: <em>Bajo protección</em>
+vpn-banner-status-not-protected = Estado actual: <em>Sin protección ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Dirección IP: { $ip-address }
+vpn-banner-step-1 = Suscríbete a { -brand-mozilla-vpn }
+vpn-banner-step-2 = Selecciona una ubicación de VPN
+vpn-banner-step-3 = Activa el VPN y navega de forma segura
+vpn-banner-cta = Obtener { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Expandir
+# button to close panel
+vpn-banner-cta-close = Cerrar
