@@ -544,3 +544,18 @@ vpn-promo-copy = Le rete virtual private de { -brand-Mozilla } adjuta proteger t
 vpn-promo-cta = Installa { -brand-mozilla-vpn }
 vpn-promo-headline-new = Sparnia le 50% con un subscription de un anno integre
 vpn-promo-copy-new = Protege tu datos in linea – e selige un plano de subscription VPN que functiona pro te.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Tu ubication: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Protege te</em> con { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Protecte</em> con { -brand-mozilla-vpn }.
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Adresse IP: { $ip-address }
+vpn-banner-step-2 = Eliger le position del VPN
+vpn-banner-cta = Installa { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Expander
+# button to close panel
+vpn-banner-cta-close = Clauder
