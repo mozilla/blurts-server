@@ -539,11 +539,13 @@ vpn-banner-protect-yourself-with-vpn = 使用 { -brand-mozilla-vpn } <em>保护�
 vpn-banner-protected-with-vpn = 使用 { -brand-mozilla-vpn } <em>保护</em>。
 vpn-banner-title-1 = 您已受保护 — 感谢使用 { -brand-mozilla-vpn }。
 vpn-banner-title-2 = 若不使用 VPN，您的真实位置会暴露无遗。
+vpn-banner-subtitle-2 = 只需 3 个步骤，就能保护自己的位置信息并安全地上网。
 vpn-banner-status-protected = 当前状态：<em>保护中 ✓</em>
 vpn-banner-status-not-protected = 当前状态：<em>未受保护 ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP 地址：{ $ip-address }
 vpn-banner-step-1 = 订阅 { -brand-mozilla-vpn }
+vpn-banner-step-2 = 选择 VPN 位置
 vpn-banner-step-3 = 激活 VPN，上网更安全
 vpn-banner-cta = 下载 { -brand-mozilla-vpn }
 # button to expand panel
