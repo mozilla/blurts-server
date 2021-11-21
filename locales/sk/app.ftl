@@ -673,3 +673,25 @@ vpn-promo-copy = Virtuálna súkromná sieť spoločnosti { -brand-Mozilla } pom
 vpn-promo-cta = Vyskúšajte { -brand-mozilla-vpn }
 vpn-promo-headline-new = Ušetrite 50% pri celoročnom predplatnom
 vpn-promo-copy-new = Chráňte svoje online dáta - a vyberte si plán predplatného VPN, ktorý vám vyhovuje.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Vaša poloha: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Chráňte sa</em> pomocou { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Chránený</em> pomocou { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Ste chránení – ďakujeme, že používate { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ak nepoužívate sieť VPN, vašu polohu je možné sledovať.
+vpn-banner-subtitle-2 = Chráňte svoju polohu a bezpečne prehliadajte v 3 krokoch
+vpn-banner-status-protected = Aktuálny stav: <em>Chránený ✓</em>
+vpn-banner-status-not-protected = Aktuálny stav: <em>Nechránený ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP adresa: { $ip-address }
+vpn-banner-step-1 = Prihlásiť sa na odber { -brand-mozilla-vpn }
+vpn-banner-step-2 = Vyberte umiestnenie VPN
+vpn-banner-step-3 = Aktivujte si VPN a prehliadajte bezpečne
+vpn-banner-cta = Získajte { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Rozbaliť
+# button to close panel
+vpn-banner-cta-close = Zavrieť
