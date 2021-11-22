@@ -618,3 +618,8 @@ vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe
 
 # user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
 vpn-banner-location = Ne rendaite: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Eñemo’ã</em> { -brand-mozilla-vpn } ndive.
+vpn-banner-protected-with-vpn = <em>Mo’ãmbyre</em> { -brand-mozilla-vpn } ndive.
+vpn-banner-title-1 = Reñemo’ãreína — aguyje reipurúre { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereipurúiramo VPN.
+vpn-banner-subtitle-2 = Emo’ã ne rendaite ha eikundaha tekorosãme 3 jeku’épe
