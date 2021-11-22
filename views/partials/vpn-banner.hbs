@@ -1,0 +1,55 @@
+{{#unless (vpnPromoBlocked)}}
+<aside class="vpn-banner">
+	<section class="vpn-banner-top">
+		<label class="short-location">{{{ getString "vpn-banner-location" ip-location="<output></output>"}}}</label>
+		<label>
+			<span class="protected-txt">{{{ getString "vpn-banner-protected-with-vpn" }}}</span>
+			<span class="protected-txt">{{{ getString "vpn-banner-protect-yourself-with-vpn" }}}</span>
+		</label>
+		<label class="vpn-banner-chevron" data-expand={{ getString "vpn-banner-cta-expand" }} data-close={{
+			getString "vpn-banner-cta-close" }}></label>
+	</section>
+	<section class="vpn-banner-bottom">
+		<h2 class="vpn-banner-title">
+			<span class="protected-txt">{{ getString "vpn-banner-title-1" }}</span>
+			<span class="protected-txt">
+				{{ getString "vpn-banner-title-2" }}
+				<span class="subheading">{{ getString "vpn-banner-subtitle-2" }}</span>
+			</span>
+		</h2>
+		<div class="vpn-banner-lists">
+			<ul class="status-list">
+				<li>
+					<span class="protected-txt">{{{ getString "vpn-banner-status-protected" }}}</span>
+					<span class="protected-txt">{{{ getString "vpn-banner-status-not-protected" }}}</span>
+				</li>
+				<li class="client-ip">{{{ getString "vpn-banner-ip-address" ip-address="<output></output>"}}}</li>
+				<li class="full-location">{{{ getString "vpn-banner-location" ip-location="<output></output>"}}}</li>
+				<li><a class="vpn-banner-cta"
+						href="https://vpn.mozilla.org/?utm_source=firefox-monitor&utm_medium=banner&utm_campaign=ip"
+						target="_blank">{{
+						getString "vpn-banner-cta" }}</a>
+				</li>
+			</ul>
+			<ol class="step-list">
+				<li>
+					<figure><img src="/img/svg/laptop.svg">
+						<figcaption>{{ getString "vpn-banner-step-1" }}</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><img src="/img/svg/globe.svg">
+						<figcaption>{{ getString "vpn-banner-step-2" }}</figcaption>
+					</figure>
+				</li>
+				<li>
+					<figure><img src="/img/svg/vpn.svg">
+						<figcaption>{{ getString "vpn-banner-step-3" }}</figcaption>
+					</figure>
+				</li>
+			</ol>
+		</div>
+		<button class="vpn-banner-close"></button>
+	</section>
+</aside>
+{{/unless}}

@@ -632,3 +632,25 @@ vpn-promo-copy = { -brand-Mozilla }:s VPN hjälper till att skydda din interneta
 vpn-promo-cta = Hämta { -brand-mozilla-vpn }
 vpn-promo-headline-new = Spara 50% med en helårsprenumeration
 vpn-promo-copy-new = Skydda dina onlinedata—och välj en VPN-prenumerationsplan som fungerar för dig.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Din plats: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Skydda dig själv</em> med { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Skyddad</em> med { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Du är skyddad — tack för att du använder { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Din plats kan spåras om du inte använder ett VPN.
+vpn-banner-subtitle-2 = Skydda din plats och surfa säkert i tre steg
+vpn-banner-status-protected = Aktuell status: <em>Skyddad ✓</em>
+vpn-banner-status-not-protected = Aktuell status: <em>Inte skyddad ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-adress: { $ip-address }
+vpn-banner-step-1 = Prenumerera på { -brand-mozilla-vpn }
+vpn-banner-step-2 = Välj en VPN-plats
+vpn-banner-step-3 = Aktivera VPN och surfa säkert
+vpn-banner-cta = Hämta { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Expandera
+# button to close panel
+vpn-banner-cta-close = Stäng

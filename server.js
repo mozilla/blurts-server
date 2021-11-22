@@ -31,6 +31,8 @@ const { URL } = require("url");
 const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
+const IpLocationService = require("./ip-location-service");
+
 const {
   addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
   clientErrorHandler, errorHandler, recordVisitFromEmail,
@@ -94,6 +96,11 @@ try {
   }
 })();
 
+(async () => {
+  // open location database once at server start. Service includes 24hr check to reload fresh database.
+  await IpLocationService.openLocationDb().catch(e => console.warn(e));
+})();
+
 // Use helmet to set security headers
 // only enable HSTS on heroku; Ops handles it in stage & prod configs
 if (AppConstants.NODE_ENV === "heroku") {
@@ -128,6 +135,7 @@ const connectSrc = [
   "https://www.google-analytics.com",
   "https://accounts.firefox.com",
   "https://accounts.stage.mozaws.net/metrics-flow",
+  "https://am.i.mullvad.net/json",
 ];
 
 if (AppConstants.FXA_ENABLED) {

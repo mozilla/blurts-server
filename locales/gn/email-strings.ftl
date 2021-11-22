@@ -2,6 +2,10 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Firefox Relay is a product name and should not be translated.
+-product-name-relay = Firefox Relay
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } Marandu
 report-date = Marandu Arange:
@@ -93,3 +97,9 @@ pre-fxa-p-3 =
     osẽramo mba’ekuaarã ñembyai pyahúpe.
 # Button at the bottom of pre-fxa email.
 create-account = Emoheñói mba’ete
+# More security products
+more-products-headline = Eñemo’ã ambue ore apopyre ndive
+more-products-vpn = Ñemo’ã opaite ne mba’e’okápe, peteĩteĩva mba’e’okápe.
+more-products-cta-vpn = Erekóke { -product-name-vpn }
+more-products-relay = Eñomi ne ñanduti veve kundaharape emo’ã hag̃ua nde reraite.
+more-products-cta-relay = Erekóke { -product-name-relay }

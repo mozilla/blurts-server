@@ -671,3 +671,25 @@ vpn-promo-copy = Віртуальна приватна мережа { -brand-Moz
 vpn-promo-cta = Отримати { -brand-mozilla-vpn }
 vpn-promo-headline-new = Заощаджуйте 50% із річною передплатою
 vpn-promo-copy-new = Захистіть свої інтернет-дані та оберіть тарифний план VPN, який вас задовольнить.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Ваше місцеперебування: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Захистіть себе</em> за допомогою { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Захищено</em> за допомогою { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Ви захищені — дякуємо за використання { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ваше місцеперебування може бути відстежено, якщо ви не використовуєте VPN.
+vpn-banner-subtitle-2 = Захистіть своє місцеперебування та безпечно переглядайте вебсторінки за 3 кроки
+vpn-banner-status-protected = Поточний стан: <em>Захищено ✓</em>
+vpn-banner-status-not-protected = Поточний стан: <em>Не захищено ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-адреса: { $ip-address }
+vpn-banner-step-1 = Передплатіть { -brand-mozilla-vpn }
+vpn-banner-step-2 = Оберіть розташування VPN
+vpn-banner-step-3 = Активуйте VPN та безпечно переглядайте в інтернеті
+vpn-banner-cta = Отримати { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Розгорнути
+# button to close panel
+vpn-banner-cta-close = Закрити

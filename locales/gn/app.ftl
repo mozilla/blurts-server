@@ -613,3 +613,25 @@ vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã h
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
 vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽramo ary pukukue
 vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe teraguapy ojokupytýva eikotevẽvare.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Ne rendaite: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Eñemo’ã</em> { -brand-mozilla-vpn } ndive.
+vpn-banner-protected-with-vpn = <em>Mo’ãmbyre</em> { -brand-mozilla-vpn } ndive.
+vpn-banner-title-1 = Reñemo’ãreína — aguyje reipurúre { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereipurúiramo VPN.
+vpn-banner-subtitle-2 = Emo’ã ne rendaite ha eikundaha tekorosãme 3 jeku’épe
+vpn-banner-status-protected = Nde rekoite: <em>Oĩ ñemo’ãme</em>
+vpn-banner-status-not-protected = Nde rekoite: <em>Noñemo’ãi⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP kundaharape: { $ip-address }
+vpn-banner-step-1 = Eñemboheraguapy { -brand-mozilla-vpn }-pe
+vpn-banner-step-2 = Eiporavo VPN rendaite
+vpn-banner-step-3 = Emyandy VPN ha eikundaha tekorosãme
+vpn-banner-cta = Erekóke { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Myasãi
+# button to close panel
+vpn-banner-cta-close = Mboty

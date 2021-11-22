@@ -632,3 +632,25 @@ vpn-promo-copy = A { -brand-Mozilla } virtuális magánhálózata segít megvéd
 vpn-promo-cta = { -brand-mozilla-vpn } beszerzése
 vpn-promo-headline-new = Takarítson meg 50%-ot az éves előfizetéssel
 vpn-promo-copy-new = Védje meg online adatait – és válasszon egy Önnek megfelelő VPN-előfizetést.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Az Ön tartózkodási helye: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Védje meg magát</em> a { -brand-mozilla-vpn } segítségével.
+vpn-banner-protected-with-vpn = A { -brand-mozilla-vpn } által <em>védve</em>.
+vpn-banner-title-1 = Ön védett – köszönjük, hogy a { -brand-mozilla-vpn }-t használja.
+vpn-banner-title-2 = A tartózkodási helye nyomon követhető, ha nem használ VPN-t.
+vpn-banner-subtitle-2 = Védje meg tartózkodási helyét és böngésszen biztonságosan 3 lépésben
+vpn-banner-status-protected = Jelenlegi állapot: <em>Védett ✓</em>
+vpn-banner-status-not-protected = Jelenlegi állapot: <em>Nem védett ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-cím: { $ip-address }
+vpn-banner-step-1 = Feliratkozás a { -brand-mozilla-vpn }-re
+vpn-banner-step-2 = Válasszon egy VPN helyet
+vpn-banner-step-3 = Aktiválja a VPN-t, és böngésszen biztonságosan
+vpn-banner-cta = { -brand-mozilla-vpn } beszerzése
+# button to expand panel
+vpn-banner-cta-expand = Kibontás
+# button to close panel
+vpn-banner-cta-close = Bezárás

@@ -611,3 +611,17 @@ vpn-promo-copy = Виртуальная частная сеть { -brand-Mozilla
 vpn-promo-cta = Получить { -brand-mozilla-vpn }
 vpn-promo-headline-new = Сэкономьте 50% с годовой подпиской
 vpn-promo-copy-new = Защитите свои данные в Интернете — выберите подходящий план подписки на VPN.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Ваше местоположение: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Защитите себя</em> с помощью { -brand-mozilla-vpn }.
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-адрес: { $ip-address }
+vpn-banner-step-1 = Подпишитесь на { -brand-mozilla-vpn }
+vpn-banner-cta = Получить { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Развернуть
+# button to close panel
+vpn-banner-cta-close = Закрыть

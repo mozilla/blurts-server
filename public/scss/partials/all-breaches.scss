@@ -1,3 +1,7 @@
+.all-breaches-main {
+  background: url("/img/svg/ab-bg.svg") left top / 100% auto;
+}
+
 span.x-close-bg,
 svg.x-close {
   pointer-events: none;
@@ -85,10 +89,6 @@ button.fuzzy-find-show-breaches.show {
 
 .x-close-bg svg path {
   fill: var(--grey1);
-}
-
-.ab-bg.top-level {
-  min-height: 98vh;
 }
 
 .all-breaches-headline {

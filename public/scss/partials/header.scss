@@ -4,13 +4,6 @@ header {
   left: 0;
   right: 0;
   z-index: 2;
-  box-shadow: 0 0 5px 0 #20123a1c;
-  transition: all 0.2s ease;
-}
-
-header.show-shadow {
-  box-shadow: 2px 2px 10px rgba(24, 24, 24, 0.75);
-  transition: all 0.2s ease;
 }
 
 .desktop-menu:hover .active-link::after {
@@ -89,6 +82,12 @@ header.show-shadow {
 
 #navigation-wrapper {
   background-color: var(--inkDark);
+  box-shadow: 0 0 5px 0 #20123a1c;
+  transition: box-shadow 0.2s ease;
+}
+
+.show-shadow #navigation-wrapper{
+  box-shadow: 0 5px 10px -5px black;
 }
 
 .show-nav-bars {
