@@ -613,3 +613,8 @@ vpn-promo-copy = { -brand-Mozilla } Virtual Private Network oipytyvõ emo’ã h
 vpn-promo-cta = Erekóke { -brand-mozilla-vpn }
 vpn-promo-headline-new = 50% sa’ivéta ehepyme’ẽramo ary pukukue
 vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe teraguapy ojokupytýva eikotevẽvare.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Ne rendaite: { $ip-location }
