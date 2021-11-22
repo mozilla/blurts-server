@@ -629,3 +629,9 @@ vpn-banner-status-not-protected = Nde rekoite: <em>Noñemo’ãi⚠</em>
 vpn-banner-ip-address = IP kundaharape: { $ip-address }
 vpn-banner-step-1 = Eñemboheraguapy { -brand-mozilla-vpn }-pe
 vpn-banner-step-2 = Eiporavo VPN rendaite
+vpn-banner-step-3 = Emyandy VPN ha eikundaha tekorosãme
+vpn-banner-cta = Erekóke { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Myasãi
+# button to close panel
+vpn-banner-cta-close = Mboty
