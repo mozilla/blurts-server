@@ -627,3 +627,25 @@ vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helpt uw interne
 vpn-promo-cta = { -brand-mozilla-vpn } downloaden
 vpn-promo-headline-new = Bespaar 50% met een jaarabonnement
 vpn-promo-copy-new = Bescherm uw onlinegegevens – en kies een VPN-abonnement dat bij u past.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Uw locatie: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Bescherm uzelf</em> met { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Beschermd</em> met { -brand-mozilla-vpn }.
+vpn-banner-title-1 = U bent beschermd – bedankt dat u { -brand-mozilla-vpn } gebruikt.
+vpn-banner-title-2 = Uw locatie kan worden gevolgd als u geen VPN gebruikt.
+vpn-banner-subtitle-2 = Bescherm uw locatie en navigeer veilig in drie stappen
+vpn-banner-status-protected = Huidige status: <em>Beschermd ✓</em>
+vpn-banner-status-not-protected = Huidige status: <em>Niet beschermd ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-adres: { $ip-address }
+vpn-banner-step-1 = Abonneren op { -brand-mozilla-vpn }
+vpn-banner-step-2 = Selecteer een VPN-locatie
+vpn-banner-step-3 = Activeer VPN en navigeer veilig
+vpn-banner-cta = { -brand-mozilla-vpn } downloaden
+# button to expand panel
+vpn-banner-cta-expand = Uitvouwen
+# button to close panel
+vpn-banner-cta-close = Sluiten
