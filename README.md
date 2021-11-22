@@ -199,7 +199,7 @@ This repo includes a dedicated branch for localization called... `localization`.
 
 To trigger translations, open a pull request against `localization`. Please be mindful that Mozilla localizers are volunteers, and translations come from different locales at different times – usually after a week or more. It's best to initiate a PR when your strings are more-or-less final. Your PR should be automatically tagged with a reviewer from the [Mozilla L10n team](https://wiki.mozilla.org/L10n:Mozilla_Team) to approve your request.
 
-After your pull request is merged into `localization`, you will start to see commits from Pontoon, Mozilla's localization platform. You can also check translation status via the [Pontoon site](https://pontoon.mozilla.org/projects/firefox-monitor-website/). 
+After your updates are merged into `localization`, you will start to see commits from Pontoon, Mozilla's localization platform. You can also check translation status via the [Pontoon site](https://pontoon.mozilla.org/projects/firefox-monitor-website/). 
 
 When enough translations have been commited, you should merge `localization` into `main`, or back into your feature branch if it's not yet merged to `main`. Note it's unlikely to have 100% of locales translated. You might discuss with stakeholders which locales are priority.
 
