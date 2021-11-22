@@ -627,3 +627,14 @@ vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helpt jo ynterne
 vpn-promo-cta = { -brand-mozilla-vpn } downloade
 vpn-promo-headline-new = Besparje 50% mei in jierabonnemint
 vpn-promo-copy-new = Beskermje jo onlinegegevens – en kies in VPN-abonnemint dat by jo past.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Jo lokaasje: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Beskermje josels</em> mei { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Beskerme</em> mei { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Jo binne beskerme – tank dat jo { -brand-mozilla-vpn } brûke.
+vpn-banner-title-2 = Jo lokaasje kin folge wurde as jo gjin VPN brûke.
+vpn-banner-subtitle-2 = Beskermje jo lokaasje en navigearje feilich yn trije stappen
+vpn-banner-status-protected = Aktuele steat: <em>Beskerme ✓</em>
