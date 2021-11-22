@@ -638,3 +638,14 @@ vpn-banner-title-1 = Jo binne beskerme – tank dat jo { -brand-mozilla-vpn } br
 vpn-banner-title-2 = Jo lokaasje kin folge wurde as jo gjin VPN brûke.
 vpn-banner-subtitle-2 = Beskermje jo lokaasje en navigearje feilich yn trije stappen
 vpn-banner-status-protected = Aktuele steat: <em>Beskerme ✓</em>
+vpn-banner-status-not-protected = Aktuele steat: <em>Net beskerme ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-adres: { $ip-address }
+vpn-banner-step-1 = Abonnearje op { -brand-mozilla-vpn }
+vpn-banner-step-2 = Selektearje in VPN-lokaasje
+vpn-banner-step-3 = Aktivearje VPN en navigearje feilich
+vpn-banner-cta = { -brand-mozilla-vpn } downloade
+# button to expand panel
+vpn-banner-cta-expand = Utklappe
+# button to close panel
+vpn-banner-cta-close = Slute
