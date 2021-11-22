@@ -570,3 +570,11 @@ vpn-promo-copy = Le réseau privé virtuel de { -brand-Mozilla } protège votre 
 vpn-promo-cta = Installer { -brand-mozilla-vpn }
 vpn-promo-headline-new = Économisez 50 % en vous abonnant pour un an
 vpn-promo-copy-new = Protégez vos données en ligne et choisissez le forfait d’abonnement VPN qui vous convient le mieux.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Votre emplacement : { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Protégez-vous</em> avec { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Protégé·e</em> avec { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Vous êtes protégé·e — merci d’utiliser { -brand-mozilla-vpn }.
