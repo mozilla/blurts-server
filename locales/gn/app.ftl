@@ -623,3 +623,9 @@ vpn-banner-protected-with-vpn = <em>Mo’ãmbyre</em> { -brand-mozilla-vpn } ndi
 vpn-banner-title-1 = Reñemo’ãreína — aguyje reipurúre { -brand-mozilla-vpn }.
 vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereipurúiramo VPN.
 vpn-banner-subtitle-2 = Emo’ã ne rendaite ha eikundaha tekorosãme 3 jeku’épe
+vpn-banner-status-protected = Nde rekoite: <em>Oĩ ñemo’ãme</em>
+vpn-banner-status-not-protected = Nde rekoite: <em>Noñemo’ãi⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP kundaharape: { $ip-address }
+vpn-banner-step-1 = Eñemboheraguapy { -brand-mozilla-vpn }-pe
+vpn-banner-step-2 = Eiporavo VPN rendaite
