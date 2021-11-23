@@ -626,6 +626,8 @@ vpn-banner-location = Sijaintisi: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Suojaa itsesi</em> käyttäen { -brand-mozilla-vpn }:ää.
 vpn-banner-protected-with-vpn = <em>Suojattu</em> käyttäen { -brand-mozilla-vpn }:ää.
 vpn-banner-title-1 = Olet suojattu — kiitos kun käytät { -brand-mozilla-vpn }:ää.
+vpn-banner-title-2 = Sijaintiasi voidaan seurata, jos et käytä VPN:ää.
+vpn-banner-subtitle-2 = Suojaa sijaintisi ja selaa turvallisesti kolmen vaiheen kautta
 vpn-banner-status-protected = Nykyinen tila: <em>Suojattu ✓</em>
 vpn-banner-status-not-protected = Nykyinen tila: <em>Ei suojattu ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
