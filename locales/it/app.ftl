@@ -565,6 +565,7 @@ vpn-promo-copy-new = Proteggi i tuoi dati online e scegli un piano di abbonament
 vpn-banner-location = La tua posizione: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Proteggiti</em> con { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Protetto</em> con { -brand-mozilla-vpn }.
+vpn-banner-title-1 = La tua connessione è protetta. Grazie per aver utilizzato { -brand-mozilla-vpn }.
 vpn-banner-title-2 = La tua posizione può essere tracciata se non utilizzi una VPN.
 vpn-banner-subtitle-2 = Proteggi la tua posizione e naviga in sicurezza in 3 passaggi
 vpn-banner-status-protected = Stato attuale: <em>Protetto ✓</em>
