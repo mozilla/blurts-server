@@ -658,3 +658,25 @@ vpn-promo-copy = Mae Rhwydwaith Preifat Rhithwir { -brand-Mozilla } yn helpu i d
 vpn-promo-cta = Rhowch gynnig ar { -brand-mozilla-vpn }
 vpn-promo-headline-new = Arbedwch 50% gyda thanysgrifiad blwyddyn lawn
 vpn-promo-copy-new = Diogelwch eich data ar-lein - a dewis cynllun tanysgrifio VPN sy'n gweithio i chi.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Eich lleoliad: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Diogelwch eich hun</em> gyda { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Diogelwyd</em> gan { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Rydych wedi'ch diogelu - diolch am ddefnyddio { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Mae modd olrhain eich lleoliad os nad ydych yn defnyddio VPN.
+vpn-banner-subtitle-2 = Diogelwch eich lleoliad a phori'n ddiogel mewn 3 cham
+vpn-banner-status-protected = Statws cyfredol: <em>Diogelwyd ✓</em>
+vpn-banner-status-not-protected = Statws cyfredol: <em>Heb ei ddiogelu ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Cyfeiriad IP: %(ipAddress)s
+vpn-banner-step-1 = Tanysgrifiwch i { -brand-mozilla-vpn }
+vpn-banner-step-2 = Dewiswch leoliad i'r VPN
+vpn-banner-step-3 = Cychwyn y VPN a phori'n ddiogel
+vpn-banner-cta = Cael { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Ehangu
+# button to close panel
+vpn-banner-cta-close = Cau
