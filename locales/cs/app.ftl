@@ -709,3 +709,4 @@ vpn-banner-ip-address = IP adresa: { $ip-address }
 vpn-banner-step-1 = Předplatit si službu { -brand-mozilla-vpn }
 vpn-banner-step-2 = Vyberte umístění serveru VPN
 vpn-banner-step-3 = Aktivujte si síť VPN a brouzdejte bezpečně
+vpn-banner-cta = Získat službu { -brand-mozilla-vpn }
