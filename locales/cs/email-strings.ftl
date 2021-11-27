@@ -88,3 +88,7 @@ pre-fxa-p-3 = Stále budete dostávat upozornění od { -product-name(case: "gen
 create-account = Vytvořit účet
 # More security products
 more-products-headline = Chraňte se pomocí dalších našich produktů
+more-products-vpn = Celková ochrana pro každé vaše zařízení
+more-products-cta-vpn = Získat { -product-name-vpn }
+more-products-relay = Skryjte svou skutečnou e-mailovou adresu, abyste ochránili svou identitu.
+more-products-cta-relay = Získat { -product-name-relay }
