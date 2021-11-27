@@ -710,3 +710,7 @@ vpn-banner-step-1 = Předplatit si službu { -brand-mozilla-vpn }
 vpn-banner-step-2 = Vyberte umístění serveru VPN
 vpn-banner-step-3 = Aktivujte si síť VPN a brouzdejte bezpečně
 vpn-banner-cta = Získat službu { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Rozbalit
+# button to close panel
+vpn-banner-cta-close = Zavřít
