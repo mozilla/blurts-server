@@ -692,3 +692,11 @@ vpn-promo-copy = Virtuální privátní síť (VPN) od { -brand-Mozilla(case: "g
 vpn-promo-cta = Získat { -brand-mozilla-vpn(case: "acc") }
 vpn-promo-headline-new = Ušetřete až 50 % s předplatným na celý rok.
 vpn-promo-copy-new = Chraňte svá online data a vyberte si plán předplatného pro síť VPN, který vám vyhovuje.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Vaše poloha: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Chraňte se</em> pomocí služby { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Chráněno</em> pomocí služby { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Jste chráněni – děkujeme, že používáte službu { -brand-mozilla-vpn }.
