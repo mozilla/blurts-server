@@ -700,3 +700,10 @@ vpn-banner-location = Vaše poloha: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Chraňte se</em> pomocí služby { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Chráněno</em> pomocí služby { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Jste chráněni – děkujeme, že používáte službu { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Pokud nepoužíváte síť VPN, je možné vysledovat vaši polohu.
+vpn-banner-subtitle-2 = Chraňte svou polohu a brouzdejte bezpečně ve 3 krocích
+vpn-banner-status-protected = Aktuální stav: <em>Chráněno ✓</em>
+vpn-banner-status-not-protected = Aktuální stav: <em>Nechráněno ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP adresa: { $ip-address }
+vpn-banner-step-1 = Předplatit si službu { -brand-mozilla-vpn }
