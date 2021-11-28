@@ -91,8 +91,14 @@ fxa-what-to-do-blurb-1 =
 fxa-what-to-do-subhead-2 = 漏洩したパスワードの使用を中止し、それを使用しているすべての場所でパスワードを変更してください。
 fxa-wtd-blurb-2 =
     悪いハッカーは、同じパスワードとあなたのメールアドレスを使用して他のアカウントにもログインしようとします。
-    すべてのアカウントで異なるパスワードを作成してください。特に銀行関連のアカウントやメールアドレス、個人情報を保存しているウェブサイトのアカウントで同じパスワードを使いまわしてはいけません。
+    すべてのアカウントで異なるパスワードを作成してください。特に銀行の口座情報やメールアドレス、個人情報を保存しているウェブサイトのアカウントで同じパスワードを使いまわしてはいけません。
+fxa-what-to-do-blurb-3 =
+    多くの侵害はメールアドレスとパスワードのみを晒しますが、中には取り扱いに注意が必要な金融情報が含まれることもあります。
+    あなたの銀行口座やクレジットカード番号が晒されていた場合は、詐欺行為の可能性があることを銀行に知らせ、覚えのない取り引きがないか監視してください。
 fxa-what-to-do-subhead-4 = すべてのパスワードを記憶するための助けを得て安全に保管しましょう。
+fxa-what-to-do-blurb-4 =
+    1Password、LastPass、Dashlane、Bitwarden のようなパスワードマネージャーは、パスワードを安全に保存し、ウェブサイトへの入力を補助します。
+    携帯電話やコンピューターでパスワードマネージャーを利用すれば、パスワードをすべて記憶しておく必要がなくなります。
 # Alerts is a noun
 sign-up-for-alerts = 登録して通知を受け取る
 # Link title
@@ -109,6 +115,50 @@ security-tips = セキュリティの秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } ナビゲーションを開く
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = 1〜10のスケールで、友人や同僚に { -product-short-name } を勧める可能性はどのくらいありますか。1～10 人の間でお答えください。
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = そう思わない
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = そう思う
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = { -product-short-name } は使いやすいですか？
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = { -product-short-name } は信頼できると思いますか？
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = { -product-short-name } にはすっきりとしてシンプルな印象がありますか？
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = 全く同意しない
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = 同意しない
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = 分からない
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = 同意する
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = 強く同意する
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = { -product-short-name } が利用できなくなったらどう思いますか？
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = とてもがっかりする
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = 残念に思う
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = 気にしない
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最近追加されたデータ侵害
 # Link title
