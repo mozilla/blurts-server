@@ -172,6 +172,7 @@ stay-alert = 新しいデータ侵害の警告を受け取る
 if-your-info = あなたの情報が新しいデータ侵害にさらされた場合、警告を送信します。
 search-all-emails = すべてのメールアドレスを検索して侵害がないか確認し、新たな脅威の警告を受け取りましょう。
 monitor-several-emails = 複数のメールアドレスを監視する
+take-action = アカウントを保護するための行動を起こしましょう
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 website-breach = ウェブサイト侵害
 unverified-breach = 未確認の侵害
@@ -402,3 +403,5 @@ promo-ecosystem-cta = すべての製品を見る
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = あなたの現在地: { $ip-location }
