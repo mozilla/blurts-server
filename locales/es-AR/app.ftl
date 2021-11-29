@@ -612,3 +612,9 @@ vpn-banner-status-not-protected = Estado actual: <em>No protegido ⚠</em>
 vpn-banner-ip-address = Dirección IP: { $ip-address }
 vpn-banner-step-1 = Suscribite a { -brand-mozilla-vpn }
 vpn-banner-step-2 = Seleccioná una ubicación de VPN
+vpn-banner-step-3 = Activá tu VPN y navegá de forma segura
+vpn-banner-cta = Obtené { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Expandir
+# button to close panel
+vpn-banner-cta-close = Cerrar
