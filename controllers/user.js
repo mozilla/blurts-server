@@ -1221,6 +1221,7 @@ async function getRemoveAcctInfo(kanary_id) {
         "there was an error getting account info for this account",
         error
       );
+      return null;
     });
 }
 
