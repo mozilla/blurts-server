@@ -575,3 +575,25 @@ vpn-promo-copy = Rrjeti Virtual Privat i { -brand-Mozilla }-s ndihmon të mbrohe
 vpn-promo-cta = Merrni { -brand-mozilla-vpn }
 vpn-promo-headline-new = Kurseni 50% përmes një pajtimi të plotë njëvjetor
 vpn-promo-copy-new = Mbroni të dhënat tuaja internetore—dhe zgjidhni një plan pajtimi VPN që bën për ju.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Vendndodhja juaj: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Mbroni veten</em> me { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>I mbrojtur</em> me { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Jeni i mbrojtur — falë përdorimit të { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Vendndodhja juaj mund të gjurmohet, nëse s’përdorni VPN.
+vpn-banner-subtitle-2 = Mbroni vendndodhjen tuaj dhe sfhletoni të parrezik, me 3 hapa
+vpn-banner-status-protected = Gjendje e tanishme: <em>I mbrojtur ✓</em>
+vpn-banner-status-not-protected = Gjendje e tanishme: <em>Jo i mbrojtur ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Adresë IP: { $ip-address }
+vpn-banner-step-1 = Pajtohuni te { -brand-mozilla-vpn }
+vpn-banner-step-2 = Përzgjidhni një vend VPN-je
+vpn-banner-step-3 = Aktivizoni VPN-në dhe shfletoni të parrezik
+vpn-banner-cta = Merrni { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Zgjeroje
+# button to close panel
+vpn-banner-cta-close = Mbylle

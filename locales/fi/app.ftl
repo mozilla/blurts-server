@@ -618,3 +618,25 @@ vpn-promo-copy = { -brand-Mozilla }n Virtual Private Network auttaa suojaamaan i
 vpn-promo-cta = Hanki { -brand-mozilla-vpn }
 vpn-promo-headline-new = Säästä 50 prosenttia koko vuoden tilauksella
 vpn-promo-copy-new = Suojaa tietojasi verkossa — ja valitse sinulle sopiva VPN-tilaus.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Sijaintisi: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Suojaa itsesi</em> käyttäen { -brand-mozilla-vpn }:ää.
+vpn-banner-protected-with-vpn = <em>Suojattu</em> käyttäen { -brand-mozilla-vpn }:ää.
+vpn-banner-title-1 = Olet suojattu — kiitos kun käytät { -brand-mozilla-vpn }:ää.
+vpn-banner-title-2 = Sijaintiasi voidaan seurata, jos et käytä VPN:ää.
+vpn-banner-subtitle-2 = Suojaa sijaintisi ja selaa turvallisesti kolmen vaiheen kautta
+vpn-banner-status-protected = Nykyinen tila: <em>Suojattu ✓</em>
+vpn-banner-status-not-protected = Nykyinen tila: <em>Ei suojattu ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-osoite: { $ip-address }
+vpn-banner-step-1 = Tilaa { -brand-mozilla-vpn }
+vpn-banner-step-2 = Valitse VPN:n sijainti
+vpn-banner-step-3 = Aktivoi VPN ja selaa turvallisesti
+vpn-banner-cta = Hanki { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Laajenna
+# button to close panel
+vpn-banner-cta-close = Sulje
