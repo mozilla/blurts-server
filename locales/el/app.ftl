@@ -646,3 +646,18 @@ vpn-promo-copy = Το εικονικό ιδιωτικό δίκτυο της { -b
 vpn-promo-cta = Λήψη του { -brand-mozilla-vpn }
 vpn-promo-headline-new = Εξοικονομήστε 50% με συνδρομή ενός έτους
 vpn-promo-copy-new = Προστατέψτε τα διαδικτυακά σας δεδομένα — επιλέξτε το πακέτο συνδρομής VPN που σας ταιριάζει.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Η τοποθεσία σας: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Προστατευτείτε</em> με το { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Προστατεύεστε — ευχαριστούμε που χρησιμοποιείτε το { -brand-mozilla-vpn }.
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Διεύθυνση IP: { $ip-address }
+vpn-banner-step-1 = Συνδρομή στο { -brand-mozilla-vpn }
+vpn-banner-cta = Λήψη του { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Ανάπτυξη
+# button to close panel
+vpn-banner-cta-close = Κλείσιμο
