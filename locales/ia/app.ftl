@@ -462,7 +462,7 @@ marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-1-body = Continua assi. Reguarda tu pannello de controlo pro vider si il ha altere cosa a facer.
-confirmation-2-subhead = Prende lo, piratas!
+confirmation-2-subhead = Prende isto, piratas!
 confirmation-2-body = Tu prende mesuras importante verso le protection de tu contos in linea.
 confirmation-3-subhead = Uno plus, resolvite. Optimo!
 # This string contains nested markup that becomes a link later in the code.
@@ -498,7 +498,7 @@ progress-complete = Tote le violationes note ha essite marcate como resolvite
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
-progress-message-1 = <span>Tu veni de un optime initio!</span> Discoperi le restante violationes pro apprender que mensuras prender.<
+progress-message-1 = <span>Tu ha comenciate ben!</span> Discoperi le violationes restante pro apprender qual mensuras prender.
 progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
 progress-message-3 = <span>Optime labor a resolver ille violationes!</span> Continua assi. Ancora un poco.
 progress-message-4 = <span>Quasi facite!</span> Tu es presso le linea de fin.

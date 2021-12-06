@@ -7,12 +7,12 @@ rec-ssn =
     Requestar e revider los non affice tu credito. 
     Presta attention a tu contos currente, prestos o cartas de credito que tu non recognosce.
 # Recommendation subhead
-rec-pw-1-subhead = Modifica le contrasigno contrasigno.
+rec-pw-1-subhead = Cambia tu contrasigno
 # Link title
 rec-pw-1-cta = Modifica contrasigno pro iste sito
 rec-pw-1 =
-    Crea iste contrasigno unic, nove e differente de tote le alteres que tu usa. 
-    Un bon strategia a sequer es de combinar duo o plus parolas non correlate pro crear un integre phrase contrasigno.
+    Face le contrasigno unic e differente de tote le alteres que tu usa. 
+    Un bon strategia a sequer es de combinar duo o plus parolas sin relation inter se pro crear un phrase-clave complete.
 # Recommendation subhead
 rec-pw-2-subhead = Renova altere credentiales que usa identic contrasigno
 # Link title
