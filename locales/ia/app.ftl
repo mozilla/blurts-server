@@ -464,7 +464,7 @@ confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-1-body = Continua assi. Reguarda tu pannello de controlo pro vider si il ha altere cosa a facer.
 confirmation-2-subhead = Prende isto, piratas!
 confirmation-2-body = Tu prende mesuras importante verso le protection de tu contos in linea.
-confirmation-3-subhead = Uno plus, resolvite. Optimo!
+confirmation-3-subhead = Un altere resolvite. Optimo!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Es tu nove contrasigno unic, forte e difficile a divinar? <a>Discoperi lo</a>
@@ -493,7 +493,7 @@ progress-status =
         [one] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
        *[other] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
     }
-progress-complete = Tote le violationes note ha essite marcate como resolvite
+progress-complete = Tote le violationes cognoscite ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
@@ -511,7 +511,7 @@ resolve-this-breach-link = Resolver iste violation
 # the date the user marked the breach as resolved.
 marked-resolved = Marcate le resolvite:
 hide-resolved-button = Celar le resolvite
-show-resolved-button = Monstrar le resolvite
+show-resolved-button = Monstrar resolvites
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Contrasigno exponite in violationes non resolvite
@@ -519,8 +519,8 @@ unresolved-passwords-exposed =
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] Violation de datos note marcate como resolvite
-       *[other] Violationes de datos note marcate como resolvite
+        [one] Violation de datos cognoscite marcate como resolvite
+       *[other] Violationes de datos cognoscite marcate como resolvite
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nove
