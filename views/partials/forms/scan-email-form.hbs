@@ -23,10 +23,12 @@
     {{#if featuredBreach}}
         <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-find-out-blue-btn" }} type="submit" value="{{ getString "find-out" }}"/>
     {{else}}
-        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/>
+        {{!-- MH TODO: Reenable the following line and disable the one that follows to use prod. monitor verbiage --}}
+        {{!-- <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "check-for-breaches" }}"/> --}}
+        <input class="breachesSubmitButton add-metrics-flow-values" data-form_type="other" {{> analytics/fxa id="fx-monitor-check-for-breaches-blue-btn" }} type="submit" value="{{ getString "remove-home-signup-btn" }}"/>
     {{/if}}
       {{> forms/loader }}
   </div>
 </form>
 
-<p class="paragraph form-desc txt-cntr txt-purple7">{{ getString "search-for-your-email" }}</p>
+<p class="paragraph form-desc txt-cntr txt-grey-3">{{ getString "search-for-your-email" }}</p>

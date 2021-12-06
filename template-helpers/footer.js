@@ -12,10 +12,20 @@ function getFooterLinks(args) {
       href: "/about",
     },
     {
-      title: "Frequently Asked Questions",
-      stringId: "frequently-asked-questions",
+      //MH TODO: reinstate for production monitor verbiage if not including separate FAQ link for Data Removal
+      //title: "Frequently Asked Questions",
+      //stringId: "frequently-asked-questions",
+      title: "Monitor FAQ", //DATA REMOVAL SPECIFIC
+      stringId: "remove-footer-monitor-faq", //DATA REMOVAL SPECIFIC
       href: "https://support.mozilla.org/kb/firefox-monitor-faq",
     },
+    //DATA REMOVAL SPECIFIC
+    {
+      title: "Data Removal FAQ",
+      stringId: "remove-footer-data-removal-faq",
+      href: "/remove-faq",
+    },
+    //END DATA REMOVAL SPECIFIC
     {
       title: "Terms & Privacy",
       stringId: "terms-and-privacy",
@@ -35,32 +45,41 @@ function getAboutPageStrings(args) {
   const locales = args.data.root.req.supportedLocales;
   const aboutPageStrings = [
     {
-      headline:"how-fxm-1-headline",
+      headline: "how-fxm-1-headline",
       subhead: "how-fxm-1-blurb",
       localizedCta: LocaleUtils.fluentFormat(locales, "scan-submit"),
       href: "/",
       eventCategory: "About Page: Search Your Email",
     },
     {
-      headline:"how-fxm-2-headline",
+      headline: "how-fxm-2-headline",
       subhead: "how-fxm-2-blurb",
       ctaId: "signUp",
       localizedCta: LocaleUtils.fluentFormat(locales, "sign-up-for-alerts"),
     },
     {
-      headline:"how-fxm-3-headline",
+      headline: "how-fxm-3-headline",
       subhead: "how-fxm-3-blurb",
-      localizedCta: LocaleUtils.fluentFormat(locales, "download-firefox-banner-button"),
+      localizedCta: LocaleUtils.fluentFormat(
+        locales,
+        "download-firefox-banner-button"
+      ),
       href: "https://www.mozilla.org/firefox",
       eventCategory: "About Page: Download Firefox",
       download: "download",
     },
   ];
 
-  aboutPageStrings.forEach(aboutBlock => {
-    aboutBlock.headline = LocaleUtils.fluentFormat(locales, aboutBlock.headline);
+  aboutPageStrings.forEach((aboutBlock) => {
+    aboutBlock.headline = LocaleUtils.fluentFormat(
+      locales,
+      aboutBlock.headline
+    );
     aboutBlock.subhead = LocaleUtils.fluentFormat(locales, aboutBlock.subhead);
-    aboutBlock.localizedCta = LocaleUtils.fluentFormat(locales, aboutBlock.localizedCta);
+    aboutBlock.localizedCta = LocaleUtils.fluentFormat(
+      locales,
+      aboutBlock.localizedCta
+    );
   });
   return aboutPageStrings;
 }

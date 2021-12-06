@@ -3,9 +3,15 @@
 /* eslint-disable no-process-env */
 
 const path = require("path");
-require("dotenv").config({path: path.join(__dirname, ".env")});
+require("dotenv").config({ path: path.join(__dirname, ".env") });
+
+if (!process.env.SERVER_URL && process.env.NODE_ENV === "heroku") {
+  process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`;
+}
 
 const requiredEnvVars = [
+  "KANARY_ENDPOINT",
+  "KANARY_TOKEN",
   "NODE_ENV",
   "SERVER_URL",
   "PORT",

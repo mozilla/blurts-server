@@ -1,0 +1,10 @@
+.remove-other-projects {
+  &-item {
+    display: inline-block;
+    margin-top: 10px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

@@ -302,7 +302,7 @@ img.avatar,
   opacity: 1;
   margin: auto;
   z-index: 2;
-  transform: rotateX;
+  transform: rotatex;
   transform: rotate(45deg);
   visibility: hidden;
 }
@@ -317,8 +317,8 @@ img.avatar,
   visibility: visible;
   transform: translateY(8px);
   animation: fxaMenuAppear ease 0.3s;
-  -webkit-animation: fxaMenuAppear ease 0.3s;
-  -moz-animation: fxaMenuAppear ease 0.3s;
+  -webkit-animation: fxamenuappear ease 0.3s;
+  -moz-animation: fxamenuappear ease 0.3s;
   transition: all 0.25s ease;
 }
 

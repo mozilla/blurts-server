@@ -1,4 +1,4 @@
-.welcome-back {
+.welcome-back { //MH TODO: Remove if using merged dash tabs
   font-size: 18px;
   line-height: 1.5;
   color: var(--grey8);
@@ -44,6 +44,12 @@ h2.pref-headline.breach-summary {
   margin-top: calc(var(--padding) * 5);
   margin-bottom: 24px;
 }
+
+//DATA REMOVAL SPECIFIC - uncomment to use merged dash tabs
+// .breach-dash-tabs {
+//   margin-top: 20px;
+//   border-bottom: 1px solid var(--grey3);
+// }
 
 .pref {
   width: 100%;
@@ -167,13 +173,13 @@ span.email-confirmed {
     align-items: flex-start;
   }
 
-  /* .dashboard.clear-header {
-    padding-top: 156px;
-  } */
-
   .pref .email-add {
     margin-bottom: 8px;
   }
+
+  /* .dashboard.clear-header {
+    padding-top: 156px;
+  } */
 }
 
 @media screen and (max-width: 600px) {
@@ -181,7 +187,7 @@ span.email-confirmed {
     font-size: 2rem;
   }
 
-  .welcome-back {
+  .welcome-back { //MH TODO: Comment out to use removal dashboard welcome back
     font-size: 14px;
   }
 
@@ -189,4 +195,9 @@ span.email-confirmed {
     padding-left: 24px;
     padding-right: 24px;
   }
+
+  //DATA REMOVAL SPECIFIC - uncomment to use merged design
+  // .dashboard-welcome-back {
+  //   font-size: 14px;
+  // }
 }

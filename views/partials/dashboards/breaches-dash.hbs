@@ -1,13 +1,20 @@
+<main id="dashboard" class="js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
 {{#getBreachStats}}
-  <main id="dashboard" class="dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
+    {{!---DATA REMOVAL SPECIFIC ---}}
+    {{> dashboards/breach-dash-welcome}}
+    {{!---END DATA REMOVAL SPECIFIC ---}}
     <div class="mw-860 flx flx-col">
-      <span class="welcome-back">{{ welcomeMessage }}</span>
+      {{!-- MH TODO: re-enable this code if getting rid of customized `breach-stats` include from data removal prototype --}}
+      {{!-- <span class="welcome-back">{{ welcomeMessage }}</span>
       <div class="flx flx-row hl-upgrade-btn-wrapper">
         <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
       </div>
       <div class="dash-stats">
         {{> breach-stats addClasses="user-stats"}}
-      </div>
+      </div> --}}
+
+      {{!-- MH TODO: Not sure dash-stats does anything. Delete? --}}
+      <div class="dash-stats"></div>
       {{#if progressBar}}
       <div class="progress-bar-wrapper">
         {{#if progressBar.progressStatus}}
@@ -30,8 +37,8 @@
       </div>
     {{/if}}
     </div>
-  </main>
 {{/getBreachStats}}
+
 {{#getBreachesDashboard}}
   <div class="mw-860 jst-cntr flx-col">
     <div class="flx space-between cntr link-header-wrapper">
@@ -44,17 +51,21 @@
       {{/eachFromTo}}
 
       {{#if ./../supportedLocalesIncludesEnglish}}
+        {{!---DATA REMOVAL SPECIFIC ---}}
+        {{#if this.showRemovalCTA}}
         <div class="private-relay-dashboard-card">
           <a href="/remove-my-data" class="private-relay-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
             <div class="private-relay-dashboard-card-content flx">
               <div class="private-relay-dashboard-card-copy">
-                <p class="bold ff-Met private-relay-dashboard-card-subhead">Remove your data from websites.</p>
-                <p class="private-relay-dashboard-card-body">We’re piloting a new service to monitor and remove your name, physical address, phone number, and email from online databases.</p>
-                <p class="blue-link private-relay-join-waitlist">Join the waitlist</p>
+                <p class="bold ff-Met private-relay-dashboard-card-subhead">{{ getString "remove-card-title" }}</p>
+                <p class="private-relay-dashboard-card-body">{{ getString "remove-card-body" }}</p>
+                <p class="blue-link private-relay-join-waitlist">{{ getString "remove-card-cta" }}</p>
               </div>
             </div>
           </a>
         </div>
+        {{/if}}
+        {{!---END DATA REMOVAL SPECIFIC ---}}
       {{/if}}
       {{#eachFromTo this.verifiedEmails 1 this.verifiedEmails.length }}
         {{> email-card }}
@@ -66,6 +77,7 @@
     </div>
   </div>
 {{/getBreachesDashboard}}
+</main>
 {{!-- TODO: remove this when https://github.com/mozilla/blurts-server/issues/1148 is fixed --}}
 {{#ifCompare verifiedEmails.length "<" MAX_NUM_ADDRESSES}}
   <div class="row jst-cntr">

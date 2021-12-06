@@ -6,7 +6,10 @@
           {{#if featuredBreach }}
             {{ getString "find-out-if" }}
           {{else}}
-            {{ getString "monitor-your-online-accounts" }}
+            {{!---DATA REMOVAL SPECIFIC ---}}
+            {{!-- MH TODO: Reenable the next line and disable the following if reverting to prod monitor homepage --}}
+            {{!-- {{ getString "monitor-your-online-accounts" }} --}}
+            {{ getString "remove-home-feature-tip-title" }}
           {{/if}}
         </h2>
       </div>
@@ -24,7 +27,10 @@
               </button>
             {{else}}
               <button class="btn-violet-primary open-oauth" data-event-category="Sign Up Button" {{>analytics/fxa id="fx-monitor-sign-up-for-alerts"}}>
-                {{ getString "sign-up-for-alerts" }}
+                {{!---DATA REMOVAL SPECIFIC ---}}
+                {{!-- MH TODO: Reenable the next line and disable the following if reverting to prod monitor homepage --}}
+                {{!-- {{ getString "sign-up-for-alerts" }} --}}
+                {{ getString "remove-home-signup-bottom-btn" }}
               </button>
             {{/if}}
             {{> sign-up-banners/browser-not-required }}

@@ -1,5 +1,5 @@
 .monitor-homepage {
-  min-height: 90vh;
+  min-height: 90vh; //MH TODO: Disable for data removal homepage settings
   background-color: var(--inkDark);
   position: relative;
   padding-bottom: 0;
@@ -20,7 +20,8 @@
 }
 
 .landing-bottom-bar {
-  background-image: url(/img/landing/background-noodle-middle.svg), linear-gradient(224deg, #2150c8, #712291);
+  background-image: url(/img/landing/background-noodle-middle.svg),
+    linear-gradient(224deg, #2150c8, #712291);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top center;
@@ -185,4 +186,14 @@ h3.sb-callout {
     text-align: center;
     font-size: var(--topHeadline);
   }
+}
+
+//DATA REMOVAL SPECIFIC
+
+.remove-monitor-landing {
+  margin-top: 40px;
+}
+
+.remove-monitor-subhead {
+  margin-bottom: 40px;
 }

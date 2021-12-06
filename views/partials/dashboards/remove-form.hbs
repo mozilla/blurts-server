@@ -1,0 +1,174 @@
+<main id="remove-form" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+{{#getBreachStats}}
+    {{> dashboards/breach-dash-welcome}}
+{{/getBreachStats}}
+{{#getRemoveFormData}}
+<div class="flx flx-col remove-dashboard-container js-remove-dashboard-container"
+  {{!-- MH TODO: US Only for now
+    {{#if this.acctInfo.addresses.0.country}}data-country="{{this.acctInfo.addresses.0.country}}"{{/if}} 
+  --}}
+  data-country="US"
+>
+  
+    <div class="mw-860 remove-dashboard-card-container">
+      <div class="remove-dashboard-card">
+        <div href="/remove-my-data" class="remove-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-usemailIder-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
+          <div class="remove-dashboard-card-content flx">
+            <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
+              {{#if this.acctInfo}}
+              <p class="remove-dashboard-card-body">
+                <span class="bold">{{ getString "dash-remove-info-change-title"}}</span><br/>
+                {{ getString "dash-remove-info-change"}}
+              </p>
+              {{else}}
+              <p class="remove-dashboard-card-body">
+                <span class="bold">{{ getString "dash-remove-intro-signup-title"}}</span><br/>
+                {{ getString "dash-remove-intro-signup"}}
+              </p>
+              {{/if}}
+              {{#unless this.acctInfo}}
+              <p class="remove-dashboard-card-body">
+                <span class="bold">{{ getString "remove-form-intro-broker-title"}}</span><br/>
+                {{{getString "remove-form-intro-broker-description"}}}
+              </p>
+              <p class="remove-dashboard-card-body"><a href="/remove-faq#faq">{{ getString "remove-form-intro-broker-link"}}</a></p>
+              {{/unless}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="mw-860 remove-dashboard-section-container">
+    <section class="remove-dashboard-form-container remove-dashboard-section">
+      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate>
+      <div class="remove-dashboard-form-enter">
+        
+          {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}
+          <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+          <div class="input-group">
+            <div class="input-group remove-account-select">
+              <label for="remove-dashboard-form-email" class="input-group-label field--full required">{{ getString "dash-remove-form-email-label"}}</label>
+              <div class="remove-dashboard-email-container tmp-select-output flx space-between">
+                <select id="remove-dashboard-form-email" required class="tmp-select-email bold" name="account" id="account">
+                {{#each this.verifiedEmails }}
+                  <option {{#if isSelected}}selected{{/if}} value="{{ email }}" {{#ifCompare email "===" this.acctInfo.emails.0.email}}selected{{/ifCompare}}>{{ email }}</option>
+                {{/each}}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="flx space-between cntr">
+              <label for="remove-dashboard-form-first-name" class="input-group-label field--full required">{{ getString "dash-remove-form-name-label"}}</label>
+              <a href="#" role="button" class="nowrap" data-micromodal-trigger="modal-info-needed">{{getString "dash-remove-form-why-needed"}}</a>
+            </div>
+            <div class="flx remove-dashboard-form-name">
+              <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" maxlength="50" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-first"}}" aria-label="{{ getString "dash-remove-form-name-first"}}" autocomplete="off" 
+                {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
+              >
+              <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" maxlength="50" name="middlename" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-middle"}}" aria-label="{{ getString "dash-remove-form-name-middle"}}" autocomplete="off" 
+                {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
+              >
+              <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" maxlength="50" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-name-last"}}" aria-label="{{ getString "dash-remove-form-name-last"}}" autocomplete="off"
+                {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
+              >
+            </div>
+            <div class="remove-dashboard-form-error --name"></div>
+            
+          </div>
+          <div class="input-group">
+            <label for="remove-dashboard-form-loc-city" class="input-group-label field--full required">{{ getString "dash-remove-form-loc-label"}}</label>
+            <div class="flx remove-dashboard-form-loc">
+              <input required id="remove-dashboard-form-loc-city" class="input-group-field" type="text" name="city" maxlength="50" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getString "dash-remove-form-loc-city"}}" aria-label="{{ getString "dash-remove-form-loc-city"}}" autocomplete="off"
+                {{#if this.acctInfo.addresses.0.city}}value="{{this.acctInfo.addresses.0.city}}"{{/if}}
+              >
+              <div class="input-group-field remove-dashboard-select-container remove-dashboard-form-country-container">
+                <select required id="remove-dashboard-form-loc-country" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="country">
+                  {{!--MH TEMP: US ONLY--}}
+                  <option selected value="US">US</option>
+                  {{!-- <option disabled {{#unless this.acctInfo.addresses.0.country}}selected{{/unless}} value>{{ getString "dash-remove-form-loc-country"}}</option>
+                  {{#if this.acctInfo.addresses.0.country}}
+                  <option selected value="{{ this.acctInfo.addresses.0.country }}" >{{ this.acctInfo.addresses.0.country }}</option>
+                  {{/if}}
+                  {{#each this.countries }}
+                    <option value="{{ countryCode }}" >{{ countryCode }}</option>
+                  {{/each}} --}}
+                </select>
+              </div>
+              <div class="input-group-field remove-dashboard-select-container remove-dashboard-state-container">
+                <label class="sr-only" for="remove-dashboard-form-loc-state">{{getString "dash-remove-form-loc-state"}}</label>
+                <select required id="remove-dashboard-form-loc-state" class="input-group-select remove-dashboard-form-loc-select js-form-select" name="state">
+                    <option value="" disabled {{#unless this.acctInfo.addresses.0.state}}selected{{/unless}}>{{ getString "dash-remove-form-loc-state"}}</option>
+                    {{#if this.acctInfo.addresses.0.state}}
+                      <option selected value="{{ this.acctInfo.addresses.0.state }}" >{{ this.acctInfo.addresses.0.state }}</option>
+                    {{/if}}
+                    {{#each this.usStates }}
+                      <option value="{{ stateCode }}">{{ stateCode }}</option>
+                    {{/each}}
+                </select>
+              </div>
+            </div>
+            <div class="remove-dashboard-form-error --loc"></div>
+          </div>
+          <div class="input-group">
+            <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getString "dash-remove-form-birth-year-label"}}
+              {{> removal/removal-question-trigger modal="modal-birth-year" alt="Why we require birth year"}}
+            </label>
+            <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getString "dash-remove-form-birth-year"}}" aria-label="{{ getString "dash-remove-form-birth-year"}}" autocomplete="off"
+              {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
+            >
+            <div class="remove-dashboard-form-error --year"></div>
+          </div>
+          <div class="input-group">
+            <label for="remove-dashboard-form-privacy" class="input-group-label field--full">{{ getString "dash-remove-form-privacy-label"}}</label>
+            <div class="flx jst-cntr">
+              <p class="input-group-checkbox-text">
+                {{ getString "dash-remove-form-privacy"}}
+                <a href="{{jsConstants.KANARY_PRIVACY_LINK}}" target="_blank">{{ getString "dash-remove-form-privacy-link"}}</a>
+              </p>
+            </div>
+            
+          </div>
+          <div class="input-group-button inline">
+            <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" 
+              value="{{ getString "dash-remove-change-submit" }}"/>
+            {{> forms/loader }}
+          </div>
+          <div class="flx flx-col flx-cntr">
+            <p class="alert txt-cntr remove-dashboard-form-rqd bold">{{ getString "dash-remove-form-required-helper"}}</p>
+          </div>
+        
+
+        {{#if this.acctInfo}}
+        <div class="remove-dashboard-delete-container flx jst-cntr">
+          <a href="/user/remove-kan" class="btn-transparent btn-red btn-small">{{getString "remove-form-data-delete"}}</a>
+        </div>
+        {{/if}}
+      </div>
+      {{> dashboards/remove-form-confirm}}
+      </form>
+    </section>
+  </div>
+</div>
+
+<div class="flx flx-col js-remove-success-container is-hidden">
+  <div class="mw-860 flx flx-col remove-dashboard-section remove-success-section">
+    <div class="flx jst-cntr">
+      <img class="remove-success-icon" src="/img/svg/remove-form-success-icon.svg" alt="{{getString "remove-form-success-alt"}}"/>
+    </div>
+    <div class="flx flx-col txt-cntr remove-success-text-section">
+      <h2 class="title-section">{{ getString "remove-form-success-title"}}</h2>
+      <p>{{ getString "remove-form-success-details"}}</p>
+    </div>
+    <div class="flx flx-col txt-cntr remove-success-text-section">
+      <h2 class="title-section">{{ getString "remove-form-success-next-title"}}</h2>
+      <p>{{ getString "remove-form-success-next-details"}}</p>
+    </div>
+  </div>
+</div>
+{{> dashboards/remove-form-kanary-footer}}
+{{/getRemoveFormData}}
+</main>
+
+{{> data-removal/modal-info-needed}}
+{{> data-removal/modal-birth-year}}

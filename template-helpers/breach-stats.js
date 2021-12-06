@@ -4,6 +4,20 @@ const AppConstants = require("../app-constants");
 const { resultsSummary } = require("../scan-results");
 const { localize } = require("./hbs-helpers");
 
+//DATA REMOVAL SPECIFIC
+//MH TODO: Remove this if not using merged stats
+const { REMOVAL_STATUS } = require("./../js-constants");
+
+function countResolvedRemovals(removeData) {
+  let resolvedRemovals = 0;
+  removeData.forEach((removal) => {
+    if (removal.status === REMOVAL_STATUS["COMPLETE"].id) {
+      resolvedRemovals++;
+    }
+  });
+  return resolvedRemovals;
+}
+//END DATA REMOVAL SPECIFIC
 
 function getBreachStats(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
@@ -16,9 +30,51 @@ function getBreachStats(args) {
   };
 
   const breachStatBundle = userBreachStats.breachStats;
+
+  //DATA REMOVAL SPECIFIC
+  //MH TODO: Remove this if not using merged stats
+  const removeData = args.data.root.removeData;
+  const removeAcctInfo = args.data.root.removeAcctInfo;
+
+  if (removeAcctInfo) {
+    const numIdentities = removeAcctInfo.names.length; //MH TODO: not sure what we want to use to measure the number of identities - could be multiple names, emails, etc for each account ID but we have to pick one
+    breachStatBundle.identities = {
+      count: numIdentities,
+      displayCount: numIdentities,
+      subhead: localize(locales, "num-removal-identities", {
+        numIdentities: numIdentities,
+      }),
+    };
+  }
+
+  if (removeData && removeData.length) {
+    breachStatBundle.removals = {
+      count: removeData.length,
+      numResolved: countResolvedRemovals(removeData),
+      unresolved: 0,
+      displayCount: 0,
+    };
+    breachStatBundle.removals.unresolved =
+      breachStatBundle.removals.displayCount =
+        breachStatBundle.removals.count - breachStatBundle.removals.numResolved;
+
+    breachStatBundle.removals.subhead = localize(
+      locales,
+      "unresolved-identity-exposures",
+      {
+        unresolved: breachStatBundle.removals.unresolved,
+      }
+    );
+  }
+  //END DATA REMOVAL SPECIFIC
+
   const totalEmailsStat = breachStatBundle.monitoredEmails;
   // Format "00 emails being monitored" callout
-  totalEmailsStat.subhead = localize(locales, "email-addresses-being-monitored", { emails: verifiedEmails.length });
+  totalEmailsStat.subhead = localize(
+    locales,
+    "remove-email-addresses-monitored",
+    { emails: verifiedEmails.length }
+  );
   totalEmailsStat.displayCount = breachStatBundle.monitoredEmails.count;
 
   const breachesStat = breachStatBundle.numBreaches;
@@ -27,21 +83,43 @@ function getBreachStats(args) {
   if (breachesStat.numResolved > 0) {
     // If a user has resolved at least one breach:
     // Change the password stat to show the number of password-exposing unresolved breaches.
-    const remainingExposedPasswords = passwordStat.count - passwordStat.numResolved;
-    passwordStat.subhead = localize(locales, "unresolved-passwords-exposed", { numPasswords: remainingExposedPasswords });
-    passwordStat.displayCount = remainingExposedPasswords;
+
+    passwordStat.subhead = localize(locales, "unresolved-passwords-exposed", {
+      numPasswords: breachesStat.unresolved,
+    });
+    passwordStat.displayCount = breachesStat.unresolved;
 
     // Change the total number of breaches callout to show the total number of resolved breaches
-    breachesStat.subhead = localize(locales, "known-data-breaches-resolved", { numResolvedBreaches: breachesStat.numResolved });
-    breachesStat.displayCount = breachesStat.numResolved;
+    breachesStat.subhead = localize(locales, "unresolved-data-breaches", {
+      unresolvedBreaches: breachesStat.unresolved,
+    });
+    breachesStat.displayCount = breachesStat.unresolved;
   } else {
-
-    passwordStat.subhead = localize(locales, "passwords-exposed", { passwords: passwordStat.count });
+    passwordStat.subhead = localize(locales, "remove-passwords-exposed", {
+      passwords: passwordStat.count,
+    });
     passwordStat.displayCount = passwordStat.count;
 
-    breachesStat.subhead = localize(locales, "known-data-breaches-exposed", { breaches: breachesStat.count });
+    breachesStat.subhead = localize(locales, "remove-known-data-breaches", {
+      breaches: breachesStat.count,
+    });
     breachesStat.displayCount = breachesStat.count;
   }
+
+  //DATA REMOVAL SPECIFIC
+  //MH TODO: Remove this if not using merged stats
+  const userHasSignedUpForRemoveData =
+    args.data.root.userHasSignedUpForRemoveData;
+
+  if (userHasSignedUpForRemoveData) {
+    userBreachStats.userHasSignedUpForRemoveData = userHasSignedUpForRemoveData;
+  }
+
+  if (removeAcctInfo) {
+    //dont display passwords if we have remove account info
+    delete userBreachStats.breachStats.passwords;
+  }
+  //END DATA REMOVAL SPECIFIC
 
   // add progress bar strings
   if (AppConstants.BREACH_RESOLUTION_ENABLED === "1") {
@@ -67,7 +145,6 @@ function getProgressMessage(locales, percentBreachesResolved) {
   return formatProgressMessage(localize(locales, "progress-message-4"));
 }
 
-
 function makeProgressBar(userBreachTotals, locales) {
   const numTotalBreaches = userBreachTotals.count;
   const numResolvedBreaches = userBreachTotals.numResolved;
@@ -87,12 +164,17 @@ function makeProgressBar(userBreachTotals, locales) {
     };
   }
 
-  let percentBreachesResolved = Math.floor(numResolvedBreaches / numTotalBreaches * 100);
-  percentBreachesResolved = percentBreachesResolved < 1 ? 1 : percentBreachesResolved;
+  let percentBreachesResolved = Math.floor(
+    (numResolvedBreaches / numTotalBreaches) * 100
+  );
+  percentBreachesResolved =
+    percentBreachesResolved < 1 ? 1 : percentBreachesResolved;
   if (percentBreachesResolved === 100) {
     return {
       subhead: localize(locales, "progress-complete"),
-      progressMessage: formatProgressMessage(localize(locales, "progress-complete-message")),
+      progressMessage: formatProgressMessage(
+        localize(locales, "progress-complete-message")
+      ),
       imageClassName: "breach-resolution-complete",
     };
   }
@@ -101,10 +183,12 @@ function makeProgressBar(userBreachTotals, locales) {
   // and has others left to resolve.
   return {
     progressStatus: localize(locales, "progress-status", {
-      "numResolvedBreaches": numResolvedBreaches,
-      "numTotalBreaches": numTotalBreaches,
+      numResolvedBreaches: numResolvedBreaches,
+      numTotalBreaches: numTotalBreaches,
     }),
-    percentComplete: localize(locales, "progress-percent-complete", { "percentComplete": percentBreachesResolved}),
+    percentComplete: localize(locales, "progress-percent-complete", {
+      percentComplete: percentBreachesResolved,
+    }),
     progressMessage: getProgressMessage(locales, percentBreachesResolved),
     percentBreachesResolved: percentBreachesResolved,
   };

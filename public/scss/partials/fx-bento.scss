@@ -81,8 +81,8 @@ firefox-apps:active {
   height: auto;
   transform: translateY(12px);
   animation: fxBentoAppear ease 0.3s;
-  -webkit-animation: fxBentoAppear ease 0.3s;
-  -moz-animation: fxBentoAppear ease 0.3s;
+  -webkit-animation: fxbentoappear ease 0.3s;
+  -moz-animation: fxbentoappear ease 0.3s;
 }
 
 .active .fx-bento-content-wrapper::after { /* tool tip top notch */
