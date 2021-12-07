@@ -1,5 +1,4 @@
-{{!-- MH TODO: Reinstate this if not using a merged stats header, otherwise run conditional --}}
-{{!-- {{#each breachStats}}
+{{#each breachStats}}
   <div class="breach-stat-row {{ @key }}">
     <div class="stat-row-title-wrap">
       <div class="breach-stat-number flx bold {{ @key }}">
@@ -8,23 +7,4 @@
       <span class="stat-headline">{{ this.subhead }}</span>
     </div>
   </div>
-{{/each}} --}}
-
-{{!---DATA REMOVAL SPECIFIC ---}}
-<div class="breach-stat-container flx {{#if breachStats.removals}}has-removals{{/if}}" >
-  <div class="breach-stat-row flx">
-  {{#each breachStats}}
-    <div class="breach-stat-cell {{@key}} flx flx-col">
-      <div class="breach-stat-metrics">
-        <span class="stat-headline">{{this.subhead}}</span>
-      </div>
-      <div class="breach-stat-numbers">
-        <span class="breach-stat-number flx bold {{@key}}">
-        {{this.displayCount}}
-      </span>
-      </div>
-    </div>
-  {{/each}}
-  </div>
-</div>
-{{!---END DATA REMOVAL SPECIFIC ---}}
+{{/each}}

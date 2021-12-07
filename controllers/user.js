@@ -281,17 +281,6 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 async function getDashboard(req, res) {
   const user = req.user;
 
-  //DATA REMOVAL SPECIFIC
-  //MH TODO: If we don't want to customize the stats header I don't think we need this.
-  //We could optionally hide the stats altogether for pilot participants
-  let removeData,
-    removeAcctInfo = null; //data broker info
-  if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
-    removeAcctInfo = await getRemoveAcctInfo(user.kid);
-  }
-  //END DATA REMOVAL SPECIFIC
-
   const allBreaches = req.app.locals.breaches;
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
     user,
@@ -325,8 +314,6 @@ async function getDashboard(req, res) {
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,
     utmOverrides,
-    removeData, //DATA REMOVAL SPECIFIC
-    removeAcctInfo, //DATA REMOVAL SPECIFIC
   });
 }
 

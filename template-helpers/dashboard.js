@@ -18,21 +18,11 @@ function userIsOnRelayWaitList(args) {
 }
 
 function getBreachesDashboard(args) {
-  const {
-    verifiedEmails,
-    //DATA REMOVAL SPECIFIC
-    userHasSignedUpForRemoveData: onRemoveWaitlist,
-    removeData,
-  } = args.data.root;
+  const { verifiedEmails, removeData } = args.data.root;
   //const verifiedEmails = args.data.root.verifiedEmails; //MH TODO: reinstate if not using a removal specific dashboard, stats header(?)
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
-  let showRemovalCTA = true;
-
-  //DATA REMOVAL SPECIFIC
-  if (onRemoveWaitlist || (removeData && removeData.length)) {
-    showRemovalCTA = false;
-  }
+  let showRemovalCTA = false;
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
@@ -92,7 +82,6 @@ function getBreachesDashboard(args) {
   const emailCards = {
     verifiedEmails: verifiedEmails,
     breachesFound: breachesFound,
-    showRemovalCTA: showRemovalCTA, //DATA REMOVAL SPECIFIC
   };
 
   return args.fn(emailCards);

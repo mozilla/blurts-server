@@ -1,7 +1,4 @@
 <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
-{{#getBreachStats}}
-    {{> dashboards/breach-dash-welcome}}
-{{/getBreachStats}}
 {{#getRemoveDashData}}
 <div class="flx flx-col remove-dashboard-container" 
   data-filter="{{#getRemovalFilters}}{{#each filters}}{{this.id}} {{/each}}{{/getRemovalFilters}}"
