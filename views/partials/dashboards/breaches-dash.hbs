@@ -1,6 +1,6 @@
-{{#getBreachStats}}
-  <main id="dashboard" class="dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
-    <div class="mw-860 flx flx-col">
+<main id="dashboard" class="dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
+  {{#getBreachStats}}
+  <div class="dashboard-summary mw-860 flx flx-col">
       <span class="welcome-back">{{ welcomeMessage }}</span>
       <div class="flx flx-row hl-upgrade-btn-wrapper">
         <h2 class="pref-headline breach-summary">{{ getString "breach-summary" }}</h2>
@@ -30,7 +30,6 @@
       </div>
     {{/if}}
     </div>
-  </main>
 {{/getBreachStats}}
 {{#getBreachesDashboard}}
   <div class="mw-860 jst-cntr flx-col">
@@ -82,3 +81,4 @@
   </div>
 {{/ifCompare}}
 {{> take-back-control/take-back-control-banner additionalClasses="dash-take-back-wrapper"}}
+</main>
