@@ -21,8 +21,8 @@ function getSupportedLocales(args) {
 }
 
 function vpnPromoBlocked(args) {
-  const userLocale = args.data.root.req.supportedLocales[0];
-  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocale.includes(blockedLocale));
+  const userLocales = getSupportedLocales(args);
+  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale));
 }
 
 function englishInAcceptLanguages(args) {
