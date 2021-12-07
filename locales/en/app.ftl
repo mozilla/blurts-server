@@ -762,8 +762,8 @@ show-resolved-button = Show Resolved
 # your localization, because it would result in the number showing twice.
 unresolved-passwords-exposed =
   { $numPasswords ->
-    [one] Unresolved password exposed
-   *[other] Unresolved passwords exposed
+    [one] Password exposed in unresolved breaches
+   *[other] Passwords exposed in unresolved breaches
   }
 
 # don't add $numResolvedBreaches to your translation or it will show up twice
