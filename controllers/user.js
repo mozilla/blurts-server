@@ -1408,6 +1408,13 @@ function checkIfRemoveDisplayMoreTime(user) {
   }
 }
 
+async function checkIfOnRemovalPilotList(user) {
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+    const hashMatch = await checkEmailHash(user.primary_email);
+    return hashMatch;
+  }
+}
+
 async function handleRemoveEnrollFormSignup(req, res) {
   const user = req.user;
   let nextPage; //where do we send the user next
@@ -2094,4 +2101,5 @@ module.exports = {
   getRemoveStats,
   getRemoveStatsUser,
   createRemoveHashWaitlist,
+  checkIfOnRemovalPilotList,
 };
