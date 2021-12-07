@@ -4,7 +4,6 @@ const { URL } = require("url");
 const crypto = require("crypto");
 
 const AppConstants = require("../app-constants");
-const { JS_CONSTANTS } = require("../js-constants");
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
 const { FXA, FxAOAuthClient } = require("../lib/fxa");
@@ -12,6 +11,11 @@ const { FluentError } = require("../locale-utils");
 const HIBP = require("../hibp");
 const mozlog = require("../log");
 const sha1 = require("../sha1-utils");
+
+//DATA REMOVAL SPECIFIC
+const { JS_CONSTANTS } = require("../js-constants");
+const { checkIfOnRemovalPilotList } = require("./user");
+//END DATA REMOVAL SPECIFIC
 
 const log = mozlog("controllers.oauth");
 
@@ -56,23 +60,28 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   const existingUser = await DB.getSubscriberByEmail(email);
   req.session.user = existingUser;
 
+  //const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL); //MH TODO: Current prod monitor code. Enable this if not using the conditional pilot redirect below
+
   //DATA REMOVAL SPECIFIC
-  const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL); //MH TODO: disable this if using the post auth redirect below
-  //TODO: MH - enable this for pilot, but only for pilot participants
 
-  // const { post_auth_redirect } = req.session;
-  // let returnURL;
+  const { post_auth_redirect } = req.session;
+  let returnURL;
 
-  // if (post_auth_redirect) {
-  //   returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
-  //   req.session.post_auth_redirect = null;
-  // } else {
-  //   returnURL = new URL(
-  //     JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
-  //     AppConstants.SERVER_URL
-  //   );
-  // }
-
+  if (existingUser && checkIfOnRemovalPilotList(existingUser)) {
+    //if they are an existing user and on the pilot list, use pilot redirect
+    if (post_auth_redirect) {
+      returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
+      req.session.post_auth_redirect = null;
+    } else {
+      returnURL = new URL(
+        JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
+        AppConstants.SERVER_URL
+      );
+    }
+  } else {
+    //return standard monitor post auth redirect
+    returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
+  }
   //END DATA REMOVAL SPECIFIC
 
   // Check if user is signing up or signing in,

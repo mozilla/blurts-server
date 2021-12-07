@@ -1409,9 +1409,11 @@ function checkIfRemoveDisplayMoreTime(user) {
 }
 
 async function checkIfOnRemovalPilotList(user) {
-  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
     const hashMatch = await checkEmailHash(user.primary_email);
     return hashMatch;
+  } else {
+    return false;
   }
 }
 
