@@ -45,23 +45,14 @@ function monitorFeaturesList(args) {
       subtitleStringId: "get-ongoing-breach-monitoring",
       pictogramPath: "email",
     },
-    //MH TODO: Reinstate for original home page signup
-    // {
-    //   title: "Protect your privacy",
-    //   titleStringId: "protect-your-privacy",
-    //   subtitle: "Find out what you need to do to keep your data safe from cyber criminals.",
-    //   subtitleStringId: "keep-your-data-safe",
-    // },
-    //DATA REMOVAL SPECIFIC
-    //MH TODO: this overrides what was on production monitor and should only be conditionally displayed
     {
-      title: "Protect your personal information",
-      titleStringId: "remove-home-protect-pii",
-      subtitle: "Automatically remove exposed personal information.",
-      subtitleStringId: "remove-home-protect-subtitle",
+      title: "Protect your privacy",
+      titleStringId: "protect-your-privacy",
+      subtitle:
+        "Find out what you need to do to keep your data safe from cyber criminals.",
+      subtitleStringId: "keep-your-data-safe",
       pictogramPath: "advice",
     },
-    //END DATA REMOVAL SPECIFIC
   ];
 
   features.forEach((feature) => {

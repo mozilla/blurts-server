@@ -23,7 +23,7 @@ describe("Firefox Monitor homepage", function () {
       browser.checkFullPageScreen("Home_Page", {
         hideElements: [$$(".breach-info-wrapper")],
       })
-    ).to.be.within(0, 59.99); //MH TODO: this was 24.99 for standard monitor homepage, reinstate if necessary
+    ).to.be.within(0, 24.99);
   });
 
   it("should load correct number of breaches from an email input", function () {

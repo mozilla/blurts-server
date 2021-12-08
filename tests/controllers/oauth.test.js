@@ -74,10 +74,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
   expect(subscribers[0].signup_language).toBe(userAddLanguages);
 
   const mockRedirectCallArgs = mockResponse.redirect.mock.calls[0];
-  expect(mockRedirectCallArgs[0]).toBe("/user/dashboard"); //MH TODO: Reinstate this and make sure to change homepage redirect to monitor dashboard
-  //DATA REMOVAL SPECIFIC
-  //MH TODO: this should only happen conditionally if they are on the waitlist
-  expect(mockRedirectCallArgs[0]).toBe("/user/remove-data");
+  expect(mockRedirectCallArgs[0]).toBe("/user/dashboard");
 };);
 
 test("confirmed request checks session cookie, calls FXA for token and email, recognizes existing subscriber and redirects", async () => {

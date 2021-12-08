@@ -109,7 +109,6 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
     const utmID = "report";
 
-    //MH TODO: send this conditionally to non-pilot participants:
     const reportSubject = EmailUtils.getReportSubject(
       unsafeBreachesForEmail,
       req
@@ -125,24 +124,6 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
       whichPartial: "email_partials/report",
     });
-    //MH TODO: End non-pilot email code
-
-    //DATA REMOVAL SPECIFIC
-    //MH TODO: send this conditionally to pilot participants
-
-    // const reportSubject = req.fluentFormat("removal-fxa-email-subject");
-
-    // await EmailUtils.sendEmail(email, reportSubject, "removal_email", {
-    //   supportedLocales: req.supportedLocales,
-    //   breachedEmail: email,
-    //   recipientEmail: email,
-    //   date: req.fluentFormat(new Date()),
-    //   unsafeBreachesForEmail: unsafeBreachesForEmail,
-    //   ctaHref: EmailUtils.getRemovalEmailCtaHref(utmID, "go-to-dashboard-link"),
-    //   unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
-    //   whichPartial: "email_partials/removal",
-    // });
-    //END DATA REMOVAL SPECIFIC
 
     req.session.user = verifiedSubscriber;
     return res.redirect(returnURL.pathname + returnURL.search);
