@@ -2,7 +2,7 @@
 
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
-const { hasUserSignedUpForRelay } = require("./../controllers/utils");
+const { hasUserSignedUpForRelay } = require("./../controllers/utils"); //MH TODO: this function doesn't seem to be present
 
 //DATA REMOVAL SPECIFIC
 const { sentenceCase, getSupportedLocales } = require("./hbs-helpers");

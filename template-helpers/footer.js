@@ -5,6 +5,10 @@ const { LocaleUtils } = require("./../locale-utils");
 
 function getFooterLinks(args) {
   const locales = args.data.root.req.supportedLocales;
+  const session = args.data.root.req.session;
+  const user = session.user;
+  const isLoggedIn = session && user;
+
   const footerLinks = [
     {
       title: "About Firefox Monitor",
@@ -12,20 +16,10 @@ function getFooterLinks(args) {
       href: "/about",
     },
     {
-      //MH TODO: reinstate for production monitor verbiage if not including separate FAQ link for Data Removal
-      //title: "Frequently Asked Questions",
-      //stringId: "frequently-asked-questions",
-      title: "Monitor FAQ", //DATA REMOVAL SPECIFIC
-      stringId: "remove-footer-monitor-faq", //DATA REMOVAL SPECIFIC
+      title: "Frequently Asked Questions",
+      stringId: "frequently-asked-questions",
       href: "https://support.mozilla.org/kb/firefox-monitor-faq",
     },
-    //DATA REMOVAL SPECIFIC
-    {
-      title: "Data Removal FAQ",
-      stringId: "remove-footer-data-removal-faq",
-      href: "/remove-faq",
-    },
-    //END DATA REMOVAL SPECIFIC
     {
       title: "Terms & Privacy",
       stringId: "terms-and-privacy",
@@ -37,6 +31,19 @@ function getFooterLinks(args) {
       href: "https://github.com/mozilla/blurts-server",
     },
   ];
+
+  //DATA REMOVAL SPECIFIC
+  const onRemovalPilotList =
+    isLoggedIn && session.kanary.onRemovalPilotList ? true : false;
+  if (onRemovalPilotList) {
+    const removalFAQ = {
+      title: "Data Removal FAQ",
+      stringId: "remove-footer-data-removal-faq",
+      href: "/remove-faq",
+    };
+    footerLinks.splice(2, 0, removalFAQ);
+  }
+  //END DATA REMOVAL SPECIFIC
 
   return getStrings(footerLinks, locales);
 }

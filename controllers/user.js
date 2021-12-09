@@ -1627,7 +1627,6 @@ async function checkEmailDomainMatch(account) {
 
 async function getHashedWaitlist() {
   const hashedWaitlistArray = await readFile("hashed-waitlist.txt", "binary");
-  console.log("hwla", hashedWaitlistArray);
   return hashedWaitlistArray.toString().split("\n");
 }
 

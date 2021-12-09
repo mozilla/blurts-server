@@ -17,34 +17,15 @@ function navLinks(args) {
   const hostUrl = args.data.root.req.url;
   const serverUrl = args.data.root.constants.SERVER_URL;
   const locales = args.data.root.req.supportedLocales;
-
-  //MH TODO: Reinstate this if not customizing the header, and find a way to include data removal
-  // const links = [
-  //   {
-  //     title: "Home",
-  //     stringId: "home",
-  //     href: `${serverUrl}/`,
-  //     activeLink: (hostUrl === "/" || hostUrl === "/dashboard"),
-  //   },
-  //   {
-  //     title: "Breaches",
-  //     stringId: "breaches",
-  //     href: `${serverUrl}/breaches`,
-  //     activeLink: (hostUrl === "/breaches"),
-  //   },
-  //   {
-  //     title: "Security Tips",
-  //     stringId: "security-tips",
-  //     href: `${serverUrl}/security-tips`,
-  //     activeLink: (hostUrl === "/security-tips"),
-  //   },
-  // ];
-
-  //DATA REMOVAL SPECIFIC
-  const isLoggedIn =
-    args.data.root.req.session && args.data.root.req.session.user;
+  const session = args.data.root.req.session;
+  const user = session.user;
+  const isLoggedIn = session && user;
 
   let links = [];
+  //DATA REMOVAL SPECIFIC
+
+  const onRemovalPilotList =
+    isLoggedIn && session.kanary.onRemovalPilotList ? true : false;
 
   const linkHome = {
     title: "Home",
@@ -55,19 +36,9 @@ function navLinks(args) {
 
   const linkBreaches = {
     title: "Breaches",
-    stringId: "remove-header-breaches",
+    stringId: "breaches",
     href: `${serverUrl}/user/dashboard`,
     activeLink: hostUrl === "/dashboard",
-  };
-
-  const linkExposures = {
-    title: "Exposures",
-    stringId: isLoggedIn
-      ? "remove-header-exposures"
-      : "remove-header-your-data",
-    href: `${serverUrl}/user/remove-data`,
-    activeLink:
-      hostUrl === "/remove-data" || hostUrl === "/remove-data?show_form=true",
   };
 
   const linkSecurityTips = {
@@ -77,16 +48,26 @@ function navLinks(args) {
     activeLink: hostUrl === "/security-tips",
   };
 
-  if (!isLoggedIn) {
-    links = [
-      linkHome,
-      JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE === "/user/remove-data"
-        ? linkExposures
-        : linkBreaches,
-      linkSecurityTips,
-    ];
-  } else {
+  if (onRemovalPilotList) {
+    let isActiveLink = false;
+
+    JS_CONSTANTS.REMOVE_ACTIVE_LINKS.forEach((link) => {
+      console.log(link, hostUrl);
+      if (hostUrl === link) {
+        isActiveLink = true;
+      }
+    });
+
+    const linkExposures = {
+      title: "Exposures",
+      stringId: "remove-header-exposures",
+      href: `${serverUrl}/user/remove-data`,
+      activeLink: isActiveLink,
+    };
+
     links = [linkBreaches, linkExposures, linkSecurityTips];
+  } else {
+    links = [linkHome, linkBreaches, linkSecurityTips];
   }
   //END DATA REMOVAL SPECIFIC
 

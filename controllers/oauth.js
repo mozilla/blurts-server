@@ -63,11 +63,11 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   //const returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL); //MH TODO: Current prod monitor code. Enable this if not using the conditional pilot redirect below
 
   //DATA REMOVAL SPECIFIC
-
-  const { post_auth_redirect } = req.session;
+  const post_auth_redirect = req.session.post_auth_redirect;
   let returnURL;
 
-  if (existingUser && checkIfOnRemovalPilotList(existingUser)) {
+  if (existingUser && (await checkIfOnRemovalPilotList(existingUser))) {
+    req.session.kanary = { onRemovalPilotList: true };
     //if they are an existing user and on the pilot list, use pilot redirect
     if (post_auth_redirect) {
       returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);

@@ -31,6 +31,18 @@ const JS_CONSTANTS = {
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
   REMOVE_CANCELATION_SURVEY_LINK: "", //MH TODO: Get survey link
   REMOVE_LOGGED_IN_DEFAULT_ROUTE: "/user/remove-data",
+  REMOVE_ACTIVE_LINKS: [
+    "/remove-data",
+    "/remove-data?show_form=true",
+    "/remove-enrolled",
+    "/remove-enroll",
+    "/remove-enroll-full",
+    "/remove-enroll-ended",
+    "/remove-signup-confirmation",
+    "/remove-update-confirmation",
+    "/remove-delete-confirmation",
+    "/remove-pilot-ended",
+  ], //used to highlight the exposures tab on any route in array
   REMOVE_ROUTES: ["/user/remove-data", "/user/remove-enroll"],
   REMOVAL_SITES: [
     "anywho.com",
