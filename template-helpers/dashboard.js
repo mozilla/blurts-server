@@ -2,7 +2,6 @@
 
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
-const { hasUserSignedUpForRelay } = require("./../controllers/utils"); //MH TODO: this function doesn't seem to be present
 
 //DATA REMOVAL SPECIFIC
 const { sentenceCase, getSupportedLocales } = require("./hbs-helpers");
@@ -11,10 +10,6 @@ const { JS_CONSTANTS, REMOVAL_STATUS } = require("./../js-constants");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
-}
-
-function userIsOnRelayWaitList(args) {
-  return hasUserSignedUpForRelay(args.data.root.req.user);
 }
 
 function getBreachesDashboard(args) {
@@ -467,7 +462,6 @@ module.exports = {
   makeEmailVerifiedString,
   makeEmailAddedToSubscriptionString,
   enLocaleIsSupported,
-  userIsOnRelayWaitList,
   //DATA REMOVAL SPECIFIC
   getRemoveFormData,
   getRemoveDashData,
