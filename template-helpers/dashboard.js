@@ -18,11 +18,9 @@ function userIsOnRelayWaitList(args) {
 }
 
 function getBreachesDashboard(args) {
-  const { verifiedEmails, removeData } = args.data.root;
-  //const verifiedEmails = args.data.root.verifiedEmails; //MH TODO: reinstate if not using a removal specific dashboard, stats header(?)
+  const verifiedEmails = args.data.root.verifiedEmails;
   const locales = args.data.root.req.supportedLocales;
   let breachesFound = false;
-  let showRemovalCTA = false;
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
@@ -91,26 +89,15 @@ function welcomeMessage(args) {
   const locales = args.data.root.req.supportedLocales;
   const userEmail = args.data.root.req.session.user.fxa_profile_json.email;
   const newUser = args.data.root.req.session.newUser;
-  const removeAcctInfo = args.data.root.removeAcctInfo; //DATA REMOVAL SPECIFIC
-
-  //DATA REMOVAL SPECIFIC
-  //MH TODO: could delete this logic if we go back to just displaying the user's email instead of name
-  let userDisplayName = userEmail;
-
-  if (removeAcctInfo && removeAcctInfo.names && removeAcctInfo.names.length) {
-    userDisplayName = removeAcctInfo.names[0].first_name;
-  }
 
   if (newUser) {
-    // return LocaleUtils.fluentFormat(locales, "welcome-user", { userName: userEmail }); //MH TODO: Re-enable if we just want to display user's email
-    //DATA REMOVAL SPECIFIC
     return LocaleUtils.fluentFormat(locales, "welcome-user", {
-      userName: userDisplayName,
+      userName: userEmail,
     });
   }
 
-  return LocaleUtils.fluentFormat(locales, "welcome-user", {
-    userName: userDisplayName,
+  return LocaleUtils.fluentFormat(locales, "welcome-back", {
+    userName: userEmail,
   });
 }
 

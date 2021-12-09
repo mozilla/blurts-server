@@ -52,7 +52,6 @@ function navLinks(args) {
     let isActiveLink = false;
 
     JS_CONSTANTS.REMOVE_ACTIVE_LINKS.forEach((link) => {
-      console.log(link, hostUrl);
       if (hostUrl === link) {
         isActiveLink = true;
       }
