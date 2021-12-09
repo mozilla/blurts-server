@@ -337,6 +337,11 @@ function incrementedIndex(index) {
   return index;
 }
 
+function getRemoveString(id, args) {
+  console.log("getRemovalString", id, args);
+  return LocaleUtils.removeFormat(id);
+}
+
 //END DATA REMOVAL SPECIFIC
 
 module.exports = {
@@ -364,4 +369,5 @@ module.exports = {
   sentenceCase,
   getOptOutLink,
   incrementedIndex,
+  getRemoveString,
 };
