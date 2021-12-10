@@ -1,19 +1,19 @@
 <main id="remove-enroll" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
   <div class="mw-860 flx flx-col remove-enroll-container">
-    <h2 class="remove-enroll-title">{{getString "remove-enroll-title"}}</h2>
-    <p>{{{getString "remove-enroll-intro"}}}</p>
-    <h3 class="remove-enroll-heading">{{getString "remove-enroll-description-title"}}</h3>
-    <p>{{{getString "remove-enroll-description"}}}</p>
+    <h2 class="remove-enroll-title">{{getRemoveString "remove-enroll-title"}}</h2>
+    <p>{{{getRemoveString "remove-enroll-intro"}}}</p>
+    <h3 class="remove-enroll-heading">{{getRemoveString "remove-enroll-description-title"}}</h3>
+    <p>{{{getRemoveString "remove-enroll-description"}}}</p>
     <ul class="remove-enroll-link-list">
       <li class="remove-enroll-link-item">
         <a href="/remove-faq" class="remove-enroll-link">
-          {{getString "remove-enroll-link-faq"}}
+          {{getRemoveString "remove-enroll-link-faq"}}
         </a>
       </li>
       <li class="remove-enroll-link-item">
-        {{!-- TODO: Need TOS from Legal --}}
-        <a href="#" class="remove-enroll-link">
-          {{getString "remove-enroll-link-tos"}}
+        {{!-- MH TODO: Need TOS from Legal --}}
+        <a href="https://www.thekanary.com/privacy_and_security" class="remove-enroll-link" target="_blank">
+          {{getRemoveString "remove-enroll-link-tos"}}
         </a>
       </li>
     </ul>
@@ -22,9 +22,9 @@
       <form id="remove-enroll-form" action="/user/remove-enroll-submit">
         <input type="hidden" name="_csrf" value="{{ csrfToken }}">
         <p>
-          <a href="#">{{getString "remove-enroll-terms-agreement"}}</a>
+          <a href="#">{{getRemoveString "remove-enroll-terms-agreement"}}</a>
         </p>
-        <input id="" class="js-enroll-submit remove-enroll-submit" type="submit" value="{{getString "remove-enroll-submit"}}"/>
+        <input id="" class="js-enroll-submit remove-enroll-submit" type="submit" value="{{getRemoveString "remove-enroll-submit"}}"/>
       </form>
     </div>
     <div class="remove-dashboard-form-error --general --enroll"></div>

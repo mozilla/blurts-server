@@ -181,6 +181,7 @@ function fluentFxa(id, args) {
 }
 
 function getStringID(id, number, args) {
+  //MH TODO: remove this function?
   // const supportedLocales = args.data.root.req.supportedLocales;
   // id = `${id}${number}`;
   // if (modifiedStringMap[id]) {
@@ -338,7 +339,6 @@ function incrementedIndex(index) {
 }
 
 function getRemoveString(id, args) {
-  console.log("getRemovalString", id, args);
   return LocaleUtils.removeFormat(id);
 }
 

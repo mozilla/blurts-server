@@ -23,7 +23,7 @@
         <div
           class="remove-dash-results-status-time remove-dash-results-status-el hidden-mobile"
         >
-          {{getString "remove-result-updated"}}
+          {{getRemoveString "remove-result-updated"}}
           {{this.update_status}}
         </div>
       {{/if}}
@@ -31,7 +31,7 @@
         <div
           class="remove-dash-results-risk remove-dash-results-status-el risk-high"
         >
-          {{getString "remove-risk-high"}}
+          {{getRemoveString "remove-risk-high"}}
         </div>
       {{/ifCompare}}
 
@@ -39,7 +39,7 @@
         <div
           class="remove-dash-results-risk remove-dash-results-status-el risk-med"
         >
-          {{getString "remove-risk-med"}}
+          {{getRemoveString "remove-risk-med"}}
         </div>
       {{/ifCompare}}
 
@@ -47,7 +47,7 @@
         <div
           class="remove-dash-results-risk remove-dash-results-status-el risk-low"
         >
-          {{getString "remove-risk-low"}}
+          {{getRemoveString "remove-risk-low"}}
         </div>
       {{/ifCompare}}
 
@@ -60,7 +60,7 @@
         >
           <img
             src="/img/svg/chevron-down-grey.svg"
-            alt="{{getString "remove-results-toggle-alt"}}"
+            alt="{{getRemoveString "remove-results-toggle-alt"}}"
             class="remove-dash-results-toggle-img"
           />
         </a>
@@ -80,7 +80,7 @@
       {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
-          {{getString "remove-result-status"}}
+          {{getRemoveString "remove-result-status"}}
           {{> removal/removal-question-trigger modal="modal-remove-status" alt="About result status"}}
         </p>
         <p class="remove-dash-results-detail">
@@ -89,7 +89,7 @@
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
-          {{getString "remove-result-details-found"}}
+          {{getRemoveString "remove-result-details-found"}}
           {{> removal/removal-question-trigger modal="modal-remove-info-found" alt="About info found"}}
         </p>
         <p class="remove-dash-results-detail">
@@ -98,7 +98,7 @@
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
-          {{getString "remove-result-link"}}
+          {{getRemoveString "remove-result-link"}}
           {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
         </p>
         <p class="remove-dash-results-detail flx">
@@ -109,7 +109,7 @@
               class="remove-dash-results-detail-link break-word"
               href="{{this}}"
               target="_blank"
-            >{{getString "remove-result-link-title"}} {{incrementedIndex @index}}</a>
+            >{{getRemoveString "remove-result-link-title"}} {{incrementedIndex @index}}</a>
           </li>
           {{/each}}
           </ul>
@@ -117,14 +117,14 @@
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title">
-          {{getString "remove-result-description"}}
+          {{getRemoveString "remove-result-description"}}
         </p>
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
       {{#ifCompare this.current_step "===" "BLOCKED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
           <p class="remove-dash-results-detail-title flx jst-cntr">
-            {{getString "remove-result-opt-out"}}
+            {{getRemoveString "remove-result-opt-out"}}
             {{> removal/removal-question-trigger modal="modal-remove-optout" alt="About Manual Removal"}}
           </p>
           <p class="remove-dash-results-detail">

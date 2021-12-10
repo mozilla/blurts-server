@@ -268,8 +268,7 @@ function localizeRemoveStatus(removeResults, locales) {
       JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
       JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
     ) {
-      result.current_step_text = LocaleUtils.fluentFormat(
-        locales,
+      result.current_step_text = LocaleUtils.removeFormat(
         JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
       );
     } else {
@@ -279,7 +278,6 @@ function localizeRemoveStatus(removeResults, locales) {
 }
 
 function trimRemoveInfo(removeResult, args) {
-  const supportedLocales = getSupportedLocales(args);
   let infoString = "";
 
   let addSpace = "";
@@ -293,31 +291,23 @@ function trimRemoveInfo(removeResult, args) {
     addSpace = " ";
   }
   if (this.email_matches.length) {
-    infoString += `${LocaleUtils.fluentFormat(
-      supportedLocales,
-      "remove-result-email",
-      args.hash
+    infoString += `${LocaleUtils.removeFormat(
+      "remove-result-email"
     )},${addSpace}`;
   }
   if (this.phone_matches.length) {
-    infoString += `${LocaleUtils.fluentFormat(
-      supportedLocales,
-      "remove-result-phone",
-      args.hash
+    infoString += `${LocaleUtils.removeFormat(
+      "remove-result-phone"
     )},${addSpace}`;
   }
   if (this.name_matches.length) {
-    infoString += `${LocaleUtils.fluentFormat(
-      supportedLocales,
-      "remove-result-name",
-      args.hash
+    infoString += `${LocaleUtils.removeFormat(
+      "remove-result-name"
     )},${addSpace}`;
   }
   if (this.address_matches.length) {
-    infoString += `${LocaleUtils.fluentFormat(
-      supportedLocales,
-      "remove-result-address",
-      args.hash
+    infoString += `${LocaleUtils.removeFormat(
+      "remove-result-address"
     )},${addSpace}`;
   }
   return infoString.slice(0, -2); //trim last comma and space
@@ -382,7 +372,7 @@ function getRemovalFilters(args) {
   Object.values(REMOVAL_STATUS).forEach((filter) => {
     const filterObj = {
       icon: filter.icon,
-      statusText: LocaleUtils.fluentFormat(locales, filter.locale_var),
+      statusText: LocaleUtils.removeFormat(filter.locale_var),
       id: filter.id,
     };
     removalFilterArr.push(filterObj);
@@ -393,26 +383,6 @@ function getRemovalFilters(args) {
 
   return args.fn(removeFilters);
   //return args.fn(removalFilterArr);
-}
-
-function removeDashExposureMessage(args) {
-  const locales = args.data.root.req.supportedLocales;
-  const verifiedEmail = args.data.root.verifiedEmails[0].email;
-  let numRemoveResults = 0;
-  const removeResults = args.data.root.removeData;
-  const totalResults = removeResults.length;
-  removeResults.forEach((result) => {
-    if (result.status !== REMOVAL_STATUS["COMPLETE"].id) {
-      numRemoveResults++;
-    }
-  });
-  const resolvedResults = totalResults - numRemoveResults;
-  return LocaleUtils.fluentFormat(locales, "remove-exposure-message", {
-    email: verifiedEmail,
-    numRemoveResults: numRemoveResults,
-    totalResults: totalResults,
-    resolvedResults: resolvedResults,
-  });
 }
 
 function getFullName(args) {
@@ -443,12 +413,9 @@ function getConfirmSubmitText(args) {
   const kid = args.data.root.req.user.kid;
   const locales = args.data.root.req.supportedLocales;
   if (kid) {
-    return LocaleUtils.fluentFormat(
-      locales,
-      "dash-remove-confirm-submit-update"
-    );
+    return LocaleUtils.removeFormat("remove-dash-confirm-submit-update");
   } else {
-    return LocaleUtils.fluentFormat(locales, "dash-remove-confirm-submit-new");
+    return LocaleUtils.removeFormat("remove-dash-confirm-submit-new");
   }
 }
 
@@ -470,5 +437,4 @@ module.exports = {
   trimRemoveInfo,
   getFullName,
   getConfirmSubmitText,
-  removeDashExposureMessage,
 };

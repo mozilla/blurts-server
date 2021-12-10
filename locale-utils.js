@@ -75,7 +75,9 @@ const LocaleUtils = {
     //DATA REMOVAL SPECIFIC
     const removeLang = "en";
     const removeFile = "remove.ftl";
-    const removeBundleEn = new FluentBundle(removeLang, { useIsolating: false });
+    const removeBundleEn = new FluentBundle(removeLang, {
+      useIsolating: false,
+    });
     const removeFTLSource = fs.readFileSync(
       path.join(removeLocalesDir, removeLang, removeFile),
       "utf8"
@@ -83,9 +85,8 @@ const LocaleUtils = {
     removeBundleEn.addMessages(removeFTLSource);
     removeBundles[removeLang] = removeBundleEn;
     log.info("LocaleUtils.init", { removeBundles });
-    return { availableLanguages, fluentBundles,removeBundles }; //DATA REMOVAL SPECIFIC
+    return { availableLanguages, fluentBundles, removeBundles }; //DATA REMOVAL SPECIFIC
     //END DATA REMOVAL SPECIFIC
-
   },
 
   loadLanguagesIntoApp(app) {
@@ -133,7 +134,8 @@ const LocaleUtils = {
     return id;
   },
 
-  removeFormat(id){
+  //DATA REMOVAL SPECIFIC
+  removeFormat(id) {
     const removeLang = "en";
     const bundle = removeBundles[removeLang];
     if (bundle.hasMessage(id)) {
