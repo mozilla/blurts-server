@@ -303,7 +303,7 @@ function showProducts(args) {
 
   return args.fn({
     strings: {
-      breachAttribution: breachAlert ? `&utm_breach_name=${breachAlert.Name}` : "",
+      campaign: breachAlert?.Name || "report",
     },
   });
 }
