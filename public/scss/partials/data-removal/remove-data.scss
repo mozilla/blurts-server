@@ -844,3 +844,7 @@
 .remove-general-container {
   @include remove-container;
 }
+
+.remove-page.dashboard.clear-header {
+  background-color: transparent;
+}
