@@ -20,9 +20,9 @@ function getSupportedLocales(args) {
 }
 
 function vpnPromoBlocked(args) {
-  const userLocale = args.data.root.req.supportedLocales[0];
+  const userLocales = getSupportedLocales(args);
   return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some((blockedLocale) =>
-    userLocale.includes(blockedLocale)
+    userLocales[0].includes(blockedLocale)
   );
 }
 
@@ -341,10 +341,6 @@ function getRemoveString(id, args) {
   return LocaleUtils.removeFormat(id);
 }
 
-function getLocale(args) {
-  return args.data.root.req.supportedLocales[0];
-}
-
 //END DATA REMOVAL SPECIFIC
 
 module.exports = {
@@ -373,5 +369,4 @@ module.exports = {
   getOptOutLink,
   incrementedIndex,
   getRemoveString,
-  getLocale,
 };

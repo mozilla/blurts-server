@@ -298,18 +298,12 @@ function addBentoObserver(){
   }
 }
 
-function resizeDashboardMargin() {
-  const userDashboard = document.querySelector("#dashboard.dashboard");
-  if (!userDashboard) {
-    return;
-  }
-  const getHeaderHeight = () => {
-    const header = document.querySelector("header");
-    return header.offsetHeight;
-  };
-  if (userDashboard) {
-    userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
-  }
+function setHeaderHeight() {
+  const header = document.getElementById("header");
+
+  if (!header) return;
+
+  document.body.style.setProperty("--header-height", `${header.offsetHeight}px`);
 }
 
 function recruitmentLogic() {
@@ -538,7 +532,7 @@ async function initVpnBanner() {
       toggleMobileFeatures(topNavigation);
       toggleArticles();
       windowWidth = newWindowWidth;
-      resizeDashboardMargin();
+        setHeaderHeight();
     }
   });
 
@@ -572,10 +566,8 @@ async function initVpnBanner() {
     });
   });
 
-  resizeDashboardMargin();
-
+  setHeaderHeight();
   recruitmentLogic();
-
   addWaitlistSignupButtonListeners();
   addWaitlistObservers();
   initVpnBanner();

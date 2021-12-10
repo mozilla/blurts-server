@@ -567,3 +567,25 @@ vpn-promo-copy = { -brand-Mozilla } VPN, internet bağlantınızı hacker'lardan
 vpn-promo-cta = { -brand-mozilla-vpn }’i indirin
 vpn-promo-headline-new = Yıllık abonelikle %50 tasarruf edin
 vpn-promo-copy-new = Çevrimiçi verilerinizi koruyun. Size en uygun VPN abonelik paketini seçin.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Konumunuz: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = { -brand-mozilla-vpn } ile <em>kendinizi koruyun</em>.
+vpn-banner-protected-with-vpn = { -brand-mozilla-vpn } ile <em>korunuyorsunuz</em>.
+vpn-banner-title-1 = Koruma altındasınız. { -brand-mozilla-vpn } kullandığınız için teşekkürler.
+vpn-banner-title-2 = VPN kullanmıyorsanız konumunuz takip edilebilir.
+vpn-banner-subtitle-2 = 3 adımda konumunuzu gizleyin ve güvenle gezinin
+vpn-banner-status-protected = Mevcut durum: <em>Korunuyor ✓</em>
+vpn-banner-status-not-protected = Mevcut durum: <em>Korunmuyor ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP adresi: { $ip-address }
+vpn-banner-step-1 = { -brand-mozilla-vpn }’e abone olun
+vpn-banner-step-2 = VPN konumunu seçin
+vpn-banner-step-3 = VPN’i etkinleştirin ve güvenle gezinin
+vpn-banner-cta = { -brand-mozilla-vpn }’i edinin
+# button to expand panel
+vpn-banner-cta-expand = Genişlet
+# button to close panel
+vpn-banner-cta-close = Kapat

@@ -619,3 +619,25 @@ vpn-promo-copy = Mạng riêng ảo của { -brand-Mozilla } giúp bảo vệ k�
 vpn-promo-cta = Tải xuống { -brand-mozilla-vpn }
 vpn-promo-headline-new = Tiết kiệm 50% với thuê bao cả năm
 vpn-promo-copy-new = Bảo vệ dữ liệu trực tuyến của bạn — và chọn gói thuê bao VPN phù hợp với bạn.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Vị trí của bạn: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Bảo vệ bạn</em> với { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Được bảo vệ</em> với { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Bạn đã được bảo vệ — cảm ơn bạn đã sử dụng { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Vị trí của bạn có thể được theo dõi nếu bạn không sử dụng VPN.
+vpn-banner-subtitle-2 = Bảo vệ vị trí của bạn và duyệt web an toàn trong 3 bước
+vpn-banner-status-protected = Tình trạng hiện tại: <em>Được bảo vệ ✓</em>
+vpn-banner-status-not-protected = Tình trạng hiện tại: <em>Không được bảo vệ ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Địa chỉ IP: { $ip-address }
+vpn-banner-step-1 = Đăng ký { -brand-mozilla-vpn }
+vpn-banner-step-2 = Chọn một vị trí VPN
+vpn-banner-step-3 = Kích hoạt VPN và duyệt web an toàn
+vpn-banner-cta = Nhận { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Mở rộng
+# button to close panel
+vpn-banner-cta-close = Đóng
