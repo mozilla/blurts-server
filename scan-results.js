@@ -157,19 +157,6 @@ function resultsSummary(verifiedEmails) {
   // total number of breaches across all emails
   breachStats.numBreaches.count = foundBreaches.length;
 
-  //DATA REMOVAL SPECIFIC
-
-  //unresolved breaches
-  if (breachStats.numBreaches.count && breachStats.numBreaches.numResolved) {
-    breachStats.numBreaches.unresolved =
-      breachStats.numBreaches.count - breachStats.numBreaches.numResolved;
-  }
-
-  if (breachStats.passwords.count && breachStats.passwords.numResolved) {
-    breachStats.passwords.unresolved =
-      breachStats.passwords.count - breachStats.passwords.numResolved;
-  }
-
   return breachStats;
 }
 

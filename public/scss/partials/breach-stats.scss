@@ -1,4 +1,3 @@
-//MH TODO: remove this if showing a revised stats header
 .monitoredEmails {
   background-color: var(--violet3);
 }
@@ -15,92 +14,17 @@
 .breach-stat-number,
 .stat-headline {
   color: rgba(255, 255, 255, 1);
-  // color: var(--grey5); //DATA REMOVAL SPECIFIC //MH TODO: Re-enable if desiring combined stats header
   justify-content: center;
   width: 100%;
 }
 
-//DATA REMOVAL SPECIFIC - Re-enable for revised stat header
-/*
-.breach-stat {
-  &-row {
-    //align-items: center;
-
-    .has-removals & {
-      @include breakpoint(mobile) {
-        flex-wrap: wrap;
-      }
-    }
-  }
-
-  &-metrics {
-    @include breakpoint(mobile) {
-      margin-top: 16px;
-    }
-  }
-
-  &-numbers {
-    margin-top: 10px;
-    justify-self: flex-end;
-  }
-
-  &-cell {
-    text-align: center;
-    justify-content: space-between;
-    flex-direction: column;
-    min-height: 100px;
-
-    @include breakpoint(mobile) {
-      min-height: auto;
-    }
-
-    @include col(4);
-
-    .has-removals & {
-      @include col(3);
-
-      @include breakpoint(mobile) {
-        @include col(6);
-
-        padding: 20px;
-
-        // &:nth-child(1),
-        // &:nth-child(2) {
-        //   border-bottom: 1px solid var(--grey2);
-        // }
-
-        &:nth-child(1),
-        &:nth-child(3) {
-          border-right: 1px solid var(--grey2);
-        }
-      }
-    }
-
-    &.monitoredEmails,
-    &.numBreaches,
-    &.passwords {
-      border-bottom: 2px solid var(--blue2);
-    }
-
-    &.identities,
-    &.removals {
-      border-bottom: 2px solid var(--purple1);
-    }
-  }
-}
-*/
-
 .breach-stat-number {
   font-size: 56px;
-  //font-size: 36px; //DATA REMOVAL SPECIFIC - reenable if using revised stat header
   line-height: 1.14;
   min-width: 60px;
-  //color: var(--ink); //DATA REMOVAL SPECIFIC - reenable if using revised stat header
-
-  //@include ff-metropolis;
 }
 
-.breach-stat-row { //MH TODO: Remove if you want the data removal specific header
+.breach-stat-row {
   padding: 32px var(--padding);
   max-width: 31.25%;
   border-radius: 8px;
@@ -117,7 +41,6 @@
 .stat-headline {
   font-weight: 400;
   font-size: 16px;
-  //font-size: 12px; //DATA REMOVAL SPECIFIC - reenable if using revised stat header
   line-height: 1.33;
   text-align: center;
 }
@@ -231,7 +154,7 @@ progress.progress-bar::-webkit-progress-value {
     flex-direction: column;
   }
 
-  .breach-stat-row { //MH TODO: Disable if using new breach stat header
+  .breach-stat-row {
     max-width: 100%;
     padding: 16px;
     margin-bottom: 16px;
@@ -246,7 +169,7 @@ progress.progress-bar::-webkit-progress-value {
     text-align: left;
   }
 
-  .breach-stat-number { //MH TODO: Disable if using new breach stat header
+  .breach-stat-number {
     max-width: 100%;
     width: auto;
     font-size: 30px;

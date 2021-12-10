@@ -4,7 +4,7 @@ const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
 
 //DATA REMOVAL SPECIFIC
-const { sentenceCase, getSupportedLocales } = require("./hbs-helpers");
+const { sentenceCase } = require("./hbs-helpers");
 const { FormUtils } = require("./../form-utils");
 const { JS_CONSTANTS, REMOVAL_STATUS } = require("./../js-constants");
 
@@ -210,7 +210,6 @@ function getRemoveFormData(args) {
   const verifiedEmails = args.data.root.verifiedEmails;
   const acctInfo = args.data.root.removeAcctInfo;
   const csrfToken = args.data.root.csrfToken;
-  //const locales = args.data.root.req.supportedLocales;
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {

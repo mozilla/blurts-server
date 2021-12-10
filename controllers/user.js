@@ -1788,7 +1788,6 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
 }
 
 async function calculateAverageResolutionTime(resolutionTimeArray) {
-  //MH TODO:
   if (!resolutionTimeArray.length) {
     return null;
   }

@@ -122,7 +122,6 @@ function onSelectChange(e) {
       .setAttribute("data-country", e.target.value);
 
     if (e.target.value === "US") {
-      //MH TODO: should probably be in a constants file
       document
         .getElementById("remove-dashboard-form-loc-state")
         .setAttribute("required", true);

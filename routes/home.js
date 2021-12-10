@@ -37,7 +37,7 @@ router.get("/iplocation", getIpLocation);
 //DATA REMOVAL SPECIFIC
 router.get("/remove-my-data", requireSessionUser, removeMyData); //MH TODO: think this can be deleted and its associated files
 router.get("/remove-faq", getRemoveFAQPage);
-//MH TODO: this can be deleted and its associated files
+//MH TODO: this can be deleted and its associated files(?)
 router.post(
   "/join-waitlist",
   jsonParser,

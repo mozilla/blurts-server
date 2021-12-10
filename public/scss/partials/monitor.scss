@@ -1,5 +1,5 @@
 .monitor-homepage {
-  min-height: 90vh; //MH TODO: Disable for data removal homepage settings
+  min-height: 90vh;
   background-color: var(--inkDark);
   position: relative;
   padding-bottom: 0;
@@ -186,14 +186,4 @@ h3.sb-callout {
     text-align: center;
     font-size: var(--topHeadline);
   }
-}
-
-//DATA REMOVAL SPECIFIC
-
-.remove-monitor-landing {
-  margin-top: 40px;
-}
-
-.remove-monitor-subhead {
-  margin-bottom: 40px;
 }

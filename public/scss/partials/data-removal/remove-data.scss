@@ -527,7 +527,7 @@
 
   &-section {
     background-color: white;
-    padding: 50px 32px; //MH TODO: was 16%, was that an error? Supposed to be px? IF 
+    padding: 50px 32px;
     border-radius: 8px;
 
     @include breakpoint(mobile) {
@@ -641,7 +641,7 @@
         &::before {
           content: "";
           display: inline-flex;
-          background-image: url("/img/svg/remove-icon-caution-white.svg");
+          background-image: url("/img/removal/remove-icon-caution-white.svg");
           background-repeat: no-repeat;
           background-position: center;
           min-width: 48px;

@@ -106,6 +106,7 @@ try {
 }
 
 //DATA REMOVAL SPECIFIC
+//MH TODO: could remove this and just force US as country in form
 try {
   FormUtils.init();
   FormUtils.loadCountriesIntoApp(app);
@@ -150,7 +151,7 @@ if (AppConstants.NODE_ENV === "heroku") {
 }
 
 const imgSrc = [
-  "'self' data:", //data solves a console error related to CSP for data urls
+  "'self' data:", //MH - data solves a console error related to CSP for data urls- could be useful for prod. monitor
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
   "https://mozillausercontent.com/",
@@ -192,14 +193,13 @@ app.use(
       ],
       frameAncestors: FRAME_ANCESTORS,
       mediaSrc: ["'self'"],
-      formAction: ["'self'"], //MH TODO: verify with RRA team
+      formAction: ["'self'"],
       imgSrc: imgSrc,
       objectSrc: ["'none'"],
       scriptSrc: SCRIPT_SOURCES,
       styleSrc: [
         ...STYLE_SOURCES,
-        "'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0='",
-        //(req, res) => `'nonce-${res.locals.styleNonce}'`,
+        "'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0='", //MH TODO: this SHA may change, in which case this needs to be updated to avoid console / CSP errors
       ],
       reportUri: "/__cspreport__",
     },

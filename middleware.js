@@ -161,6 +161,7 @@ async function requireSessionUser(req, res, next) {
     const queryParams = new URLSearchParams(req.query).toString();
     //DATA REMOVAL SPECIFIC
     JS_CONSTANTS.REMOVE_ROUTES.forEach((removeRoute) => {
+      //MH allows you to redirect to a different page after fxa login and include any query params - might be useful for Prod Monitor
       if (req.originalUrl && req.originalUrl.includes(removeRoute)) {
         if (queryParams && queryParams.length) {
           req.session.post_auth_redirect = removeRoute + `?${queryParams}`;

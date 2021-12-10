@@ -181,7 +181,6 @@ function fluentFxa(id, args) {
 }
 
 function getStringID(id, number, args) {
-  //MH TODO: remove this function?
   // const supportedLocales = args.data.root.req.supportedLocales;
   // id = `${id}${number}`;
   // if (modifiedStringMap[id]) {
@@ -307,7 +306,7 @@ function breachMath(lValue, operator = null, rValue = null) {
 }
 
 //DATA REMOVAL SPECIFIC
-//TODO: These could be useful for prod. monitor
+//MH: These could be useful for prod. monitor
 
 function validateEmail(email) {
   const re = /\S+@\S+\.\S+/;

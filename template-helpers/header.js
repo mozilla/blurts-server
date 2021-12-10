@@ -23,7 +23,7 @@ function navLinks(args) {
 
   let links = [];
   //DATA REMOVAL SPECIFIC
-
+  //MH this changes the way that the links are constructed from prod. monitor, but only the data removal specific bits should be deleted
   const onRemovalPilotList =
     isLoggedIn && session.kanary.onRemovalPilotList ? true : false;
 
