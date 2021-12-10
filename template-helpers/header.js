@@ -31,14 +31,20 @@ function navLinks(args) {
     title: "Home",
     stringId: "home",
     href: `${serverUrl}/`,
-    activeLink: hostUrl === "/",
+    activeLink: onRemovalPilotList
+      ? hostUrl === "/"
+      : hostUrl === "/" || hostUrl === "/dashboard",
   };
 
   const linkBreaches = {
     title: "Breaches",
     stringId: "breaches",
-    href: `${serverUrl}/user/dashboard`,
-    activeLink: hostUrl === "/dashboard",
+    href: onRemovalPilotList
+      ? `${serverUrl}/user/dashboard`
+      : `${serverUrl}/breaches`,
+    activeLink: onRemovalPilotList
+      ? hostUrl === "/dashboard"
+      : hostUrl === "/breaches",
   };
 
   const linkSecurityTips = {
