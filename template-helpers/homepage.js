@@ -21,27 +21,14 @@ function makeLanding(args) {
       },
     ];
   } else {
-    //MH TODO: reinstate these and find a way to conditionally display the data removal specific homepage
-    // landingCopy.headline = LocaleUtils.fluentFormat(
-    //   locales,
-    //   "see-if-youve-been-part"
-    // );
-    // landingCopy.subhead = LocaleUtils.fluentFormat(
-    //   locales,
-    //   "find-out-what-hackers-know"
-    // );
-
-    //DATA REMOVAL SPECIFIC
-    //MH TODO: only display these conditionally if enrolled in pilot and logged in
     landingCopy.headline = LocaleUtils.fluentFormat(
       locales,
-      "remove-home-title"
+      "see-if-youve-been-part"
     );
     landingCopy.subhead = LocaleUtils.fluentFormat(
       locales,
       "find-out-what-hackers-know"
     );
-    //END DATA REMOVAL SPECIFIC
   }
   if (featuredBreach && featuredBreach.IsSensitive) {
     landingCopy.breachIsSensitive = true;

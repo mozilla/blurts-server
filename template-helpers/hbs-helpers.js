@@ -342,6 +342,10 @@ function getRemoveString(id, args) {
   return LocaleUtils.removeFormat(id);
 }
 
+function getLocale(args) {
+  return args.data.root.req.supportedLocales[0];
+}
+
 //END DATA REMOVAL SPECIFIC
 
 module.exports = {
@@ -370,4 +374,5 @@ module.exports = {
   getOptOutLink,
   incrementedIndex,
   getRemoveString,
+  getLocale,
 };
