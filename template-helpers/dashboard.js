@@ -267,7 +267,7 @@ function localizeRemoveStatus(removeResults, locales) {
       JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
       JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
     ) {
-      result.current_step_text = LocaleUtils.removeFormat(
+      result.current_step_text = LocaleUtils.formatRemoveString(
         JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
       );
     } else {
@@ -290,22 +290,22 @@ function trimRemoveInfo(removeResult, args) {
     addSpace = " ";
   }
   if (this.email_matches.length) {
-    infoString += `${LocaleUtils.removeFormat(
+    infoString += `${LocaleUtils.formatRemoveString(
       "remove-result-email"
     )},${addSpace}`;
   }
   if (this.phone_matches.length) {
-    infoString += `${LocaleUtils.removeFormat(
+    infoString += `${LocaleUtils.formatRemoveString(
       "remove-result-phone"
     )},${addSpace}`;
   }
   if (this.name_matches.length) {
-    infoString += `${LocaleUtils.removeFormat(
+    infoString += `${LocaleUtils.formatRemoveString(
       "remove-result-name"
     )},${addSpace}`;
   }
   if (this.address_matches.length) {
-    infoString += `${LocaleUtils.removeFormat(
+    infoString += `${LocaleUtils.formatRemoveString(
       "remove-result-address"
     )},${addSpace}`;
   }
@@ -371,7 +371,7 @@ function getRemovalFilters(args) {
   Object.values(REMOVAL_STATUS).forEach((filter) => {
     const filterObj = {
       icon: filter.icon,
-      statusText: LocaleUtils.removeFormat(filter.locale_var),
+      statusText: LocaleUtils.formatRemoveString(filter.locale_var),
       id: filter.id,
     };
     removalFilterArr.push(filterObj);
@@ -412,9 +412,9 @@ function getConfirmSubmitText(args) {
   const kid = args.data.root.req.user.kid;
   const locales = args.data.root.req.supportedLocales;
   if (kid) {
-    return LocaleUtils.removeFormat("remove-dash-confirm-submit-update");
+    return LocaleUtils.formatRemoveString("remove-dash-confirm-submit-update");
   } else {
-    return LocaleUtils.removeFormat("remove-dash-confirm-submit-new");
+    return LocaleUtils.formatRemoveString("remove-dash-confirm-submit-new");
   }
 }
 

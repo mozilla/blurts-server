@@ -19,7 +19,7 @@ const availableLanguages = [];
 const fluentBundles = {};
 
 //DATA REMOVAL SPECIFIC
-const removeLocalesDir = "remove_locales";
+const removeLocalesDir = "remove_en";
 const removeBundles = {};
 
 class FluentError extends Error {
@@ -79,7 +79,7 @@ const LocaleUtils = {
       useIsolating: false,
     });
     const removeFTLSource = fs.readFileSync(
-      path.join(removeLocalesDir, removeLang, removeFile),
+      path.join(removeLocalesDir, removeFile),
       "utf8"
     );
     removeBundleEn.addMessages(removeFTLSource);
@@ -135,7 +135,7 @@ const LocaleUtils = {
   },
 
   //DATA REMOVAL SPECIFIC
-  removeFormat(id) {
+  formatRemoveString(id) {
     const removeLang = "en";
     const bundle = removeBundles[removeLang];
     if (bundle.hasMessage(id)) {

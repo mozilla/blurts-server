@@ -338,7 +338,7 @@ function incrementedIndex(index) {
 }
 
 function getRemoveString(id, args) {
-  return LocaleUtils.removeFormat(id);
+  return LocaleUtils.formatRemoveString(id);
 }
 
 //END DATA REMOVAL SPECIFIC
