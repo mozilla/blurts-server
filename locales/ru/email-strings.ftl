@@ -96,5 +96,9 @@ pre-fxa-p-3 =
     будет затронута новой утечкой данных.
 # Button at the bottom of pre-fxa email.
 create-account = Создать аккаунт
+# More security products
+more-products-headline = Защитите себя с помощью других наших продуктов
+more-products-vpn = Защита всего вашего устройства на любом устройстве.
 more-products-cta-vpn = Получите { -product-name-vpn }
+more-products-relay = Скройте ваш настоящий адрес электронной почты, чтобы лучше защитить свою личность.
 more-products-cta-relay = Получите { -product-name-relay }
