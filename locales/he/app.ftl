@@ -13,6 +13,7 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -244,3 +245,6 @@ known-data-breaches-resolved =
         [one] דליפת נתונים מוכרת אחת סומנה שטופלה
        *[other] דליפות נתונים מוכרות סומנו שטופלו
     }
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
