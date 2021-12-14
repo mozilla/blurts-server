@@ -298,17 +298,12 @@ function showProducts(args) {
   switch (true) {
     case whichPartial === "email_partials/email_verify":
     case vpnPromoBlocked(args):
-    case Boolean(breachAlert):
       return; // don't show products partial for the cases above
   }
 
   return args.fn({
     strings: {
-      "headline": "more-products-headline",
-      "copyVpn": "more-products-vpn",
-      "ctaVpn": "more-products-cta-vpn",
-      "copyRelay": "more-products-relay",
-      "ctaRelay": "more-products-cta-relay",
+      campaign: breachAlert?.Name || "report",
     },
   });
 }
