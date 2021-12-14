@@ -20,6 +20,12 @@ function getSupportedLocales(args) {
   return null;
 }
 
+function getFirstItem(arr) {
+  if (!arr) return;
+  if (typeof arr === "string") return arr.split(",")[0];
+  return arr[0];
+}
+
 function vpnPromoBlocked(args) {
   const userLocales = getSupportedLocales(args);
   return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale));
@@ -294,6 +300,7 @@ module.exports = {
   fluentFxa,
   getStringID,
   getSupportedLocales,
+  getFirstItem,
   fluentNestedBold,
   localizedBreachDataClasses,
   localize,
