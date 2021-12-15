@@ -303,7 +303,7 @@ function showProducts(args) {
 
   return args.fn({
     strings: {
-      campaign: breachAlert?.Name || "report",
+      campaign: breachAlert ? `monitor-alert-emails&utm_content=${breachAlert.Name}` : "report",
     },
   });
 }
