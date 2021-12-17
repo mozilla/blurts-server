@@ -528,3 +528,7 @@ steps-to-resolve-headline = 이 유출을 해결하려면
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
 vpn-banner-step-2 = VPN 위치 선택
+vpn-banner-step-3 = VPN을 활성화하고 안전하게 탐색하세요
+vpn-banner-cta = { -brand-mozilla-vpn } 받기
+# button to close panel
+vpn-banner-cta-close = 닫기

@@ -36,6 +36,7 @@ device-information = 기기 정보
 device-serial-numbers = 기기 일련 번호
 device-usage-tracking-data = 기기 사용 추적 데이터
 drinking-habits = 술버릇
+driver-s-licenses = 운전 면허증
 drug-habits = 마약중독
 eating-habits = 식습관
 education-levels = 교육 수준

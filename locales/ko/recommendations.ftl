@@ -17,6 +17,9 @@ rec-pw-1 =
 rec-pw-2-subhead = 동일한 비밀번호를 사용하여 다른 로그인 업데이트
 # Link title
 rec-pw-2-cta-fx = { -brand-name }에서의 로그인 보기
+rec-pw-2 =
+    비밀번호를 재사용하면 한번의 데이터 침해가 여러으로 확대됩니다. 이 비밀번호가
+    유출되면 해커가 이를 사용하여 다른 계정에 들어갈 수 있습니다.
 # Recommendation subhead
 rec-pw-3-subhead = 암호 관리자를 사용하여 어디서든 암호를 가져오기
 # Link title
