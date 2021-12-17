@@ -75,7 +75,7 @@ test("confirmed request checks session cookie, calls FXA for token and email, ad
 
   const mockRedirectCallArgs = mockResponse.redirect.mock.calls[0];
   expect(mockRedirectCallArgs[0]).toBe("/user/dashboard");
-};);
+});
 
 test("confirmed request checks session cookie, calls FXA for token and email, recognizes existing subscriber and redirects", async () => {
   EmailUtils.sendEmail = jest.fn();

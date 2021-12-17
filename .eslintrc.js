@@ -5,9 +5,6 @@ module.exports = {
     es6: true,
     node: true,
   },
-  parserOptions: {
-    ecmaVersion: 2018,
-  },
   extends: ["eslint:recommended", "plugin:node/recommended"],
   overrides: [
     {
@@ -45,12 +42,10 @@ module.exports = {
       },
     },
   ],
-  "parserOptions": {
-    "ecmaVersion": 2020,
+  parserOptions: {
+    ecmaVersion: 2020,
   },
-  plugins: [
-    "node",
-  ],
+  plugins: ["node"],
   root: true,
   rules: {
     "comma-dangle": [

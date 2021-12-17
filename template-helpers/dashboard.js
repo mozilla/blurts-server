@@ -367,7 +367,6 @@ function getRemoveDashData(args) {
 }
 
 function getRemovalFilters(args) {
-  const locales = args.data.root.req.supportedLocales;
   const removalFilterArr = [];
 
   Object.values(REMOVAL_STATUS).forEach((filter) => {
@@ -412,7 +411,6 @@ function getFullName(args) {
 
 function getConfirmSubmitText(args) {
   const kid = args.data.root.req.user.kid;
-  const locales = args.data.root.req.supportedLocales;
   if (kid) {
     return LocaleUtils.formatRemoveString("remove-dash-confirm-submit-update");
   } else {

@@ -37,7 +37,6 @@ const {
   handleRemovalAcctUpdate,
   getRemovalKan,
   postRemovalKan,
-  getRemovalStats,
   getRemovalStatsUser,
   createRemovalHashWaitlist,
   //END DATA REMOVAL SPECIFIC

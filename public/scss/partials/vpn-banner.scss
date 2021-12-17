@@ -191,7 +191,7 @@
 
 .vpn-banner-lists .step-list li::before{
     display: inline-block;
-    content: counter(step)".";
+    content: counter(step) ".";
     counter-increment: step;
     height: 40px;
     line-height: 40px;

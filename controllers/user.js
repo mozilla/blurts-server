@@ -25,7 +25,6 @@ const { FormUtils } = require("../form-utils");
 const fetch = require("node-fetch");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
-const { readFile } = require("fs/promises");
 const { REMOVAL_CONSTANTS, REMOVAL_STATUS } = require("../removal-constants");
 
 async function removeEmail(req, res) {
