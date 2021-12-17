@@ -203,6 +203,8 @@ After your updates are merged into `localization`, you will start to see commits
 
 When enough translations have been commited, you should merge `localization` into `main`, or back into your feature branch if it's not yet merged to `main`. Note it's unlikely to have 100% of locales translated. You might discuss with stakeholders which locales are priority.
 
+**Important:** Do not use "Squash" or "Rebase" to merge `localization` into `main` or vice versa.  Doing so creates new commit hashes and the branches will appear out of sync.
+
 TODO: auto-sync `localization` with `main`
 
 ## Deployment
