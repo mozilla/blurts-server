@@ -26,7 +26,7 @@ const fetch = require("node-fetch");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const { readFile } = require("fs/promises");
-const { JS_CONSTANTS, REMOVAL_STATUS } = require("../js-constants");
+const { REMOVAL_CONSTANTS, REMOVAL_STATUS } = require("../removal-constants");
 
 async function removeEmail(req, res) {
   const emailId = req.body.emailId;
@@ -687,7 +687,7 @@ function logout(req, res) {
 
 //DATA REMOVAL SPECIFIC:
 
-async function getRemoveEnrollPage(req, res) {
+async function getRemovalEnrollPage(req, res) {
   const user = req.user;
 
   if (checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
@@ -734,7 +734,7 @@ async function getRemoveEnrollPage(req, res) {
   });
 }
 
-async function getRemoveEnrolledPage(req, res) {
+async function getRemovalEnrolledPage(req, res) {
   const user = req.user;
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
@@ -755,7 +755,7 @@ async function getRemoveEnrolledPage(req, res) {
   });
 }
 
-async function getRemoveEnrollFullPage(req, res) {
+async function getRemovalEnrollFullPage(req, res) {
   const user = req.user;
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
@@ -776,7 +776,7 @@ async function getRemoveEnrollFullPage(req, res) {
   });
 }
 
-async function getRemoveEnrollEndedPage(req, res) {
+async function getRemovalEnrollEndedPage(req, res) {
   const user = req.user;
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
@@ -798,7 +798,7 @@ async function getRemoveEnrollEndedPage(req, res) {
   });
 }
 
-async function getRemovePage(req, res) {
+async function getRemovalPage(req, res) {
   const user = req.user;
 
   if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
@@ -906,7 +906,7 @@ async function getRemovePage(req, res) {
   });
 }
 
-async function getRemoveConfirmationPage(req, res) {
+async function getRemovalConfirmationPage(req, res) {
   const user = req.user;
 
   if (!user.kid && !checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
@@ -962,7 +962,7 @@ async function getRemoveConfirmationPage(req, res) {
   });
 }
 
-async function getRemoveUpdateConfirmationPage(req, res) {
+async function getRemovalUpdateConfirmationPage(req, res) {
   const user = req.user;
 
   if (!user.kid && !req.query.show) {
@@ -1009,7 +1009,7 @@ async function getRemoveUpdateConfirmationPage(req, res) {
   });
 }
 
-async function getRemoveDeleteConfirmationPage(req, res) {
+async function getRemovalDeleteConfirmationPage(req, res) {
   const user = req.user;
 
   if (user.kid && !req.query.show) {
@@ -1030,7 +1030,7 @@ async function getRemoveDeleteConfirmationPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  const removeSurveyLink = JS_CONSTANTS.REMOVE_CANCELATION_SURVEY_LINK;
+  const removeSurveyLink = REMOVAL_CONSTANTS.REMOVE_CANCELATION_SURVEY_LINK;
 
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
@@ -1046,7 +1046,7 @@ async function getRemoveDeleteConfirmationPage(req, res) {
   });
 }
 
-async function getRemoveMoreTimePage(req, res) {
+async function getRemovalMoreTimePage(req, res) {
   const user = req.user;
 
   if (checkIfRemovalPmtDecisionMade(user) && !req.query.show) {
@@ -1094,7 +1094,7 @@ async function getRemoveMoreTimePage(req, res) {
   });
 }
 
-async function getRemovePilotEndedPage(req, res) {
+async function getRemovalPilotEndedPage(req, res) {
   const user = req.user;
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
@@ -1144,7 +1144,8 @@ function sortRemovalData(removalData) {
 
   const blockedItems = removalData.filter((removalItem) => {
     return (
-      removalItem.current_step === JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+      removalItem.current_step ===
+      REMOVAL_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
     );
   });
 
@@ -1153,7 +1154,8 @@ function sortRemovalData(removalData) {
   const activeItems = removalData.filter((removalItem) => {
     return (
       removalItem.status !== REMOVAL_STATUS["COMPLETE"].id &&
-      removalItem.current_step !== JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+      removalItem.current_step !==
+        REMOVAL_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
     );
   });
 
@@ -1256,7 +1258,7 @@ async function removeKanaryAcct(kanary_id) {
     });
 }
 
-async function getRemoveKan(req, res) {
+async function getRemovalKan(req, res) {
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
 
   res.render("dashboards", {
@@ -1267,26 +1269,7 @@ async function getRemoveKan(req, res) {
   });
 }
 
-async function getRemoveSitesList(req, res) {
-  const sessionUser = req.user;
-
-  res.render("subpage", {
-    title: req.fluentFormat("remove-sites-list"),
-    subscriber: sessionUser,
-    removal_sites: JS_CONSTANTS.REMOVAL_SITES,
-    whichPartial: "subpages/remove_sites_list",
-    csrfToken: req.csrfToken(),
-  });
-}
-
-async function getRemoveRiskLevel(req, res) {
-  res.render("subpage", {
-    title: req.fluentFormat("remove-risk-heading"),
-    whichPartial: "subpages/remove_risk_level",
-  });
-}
-
-async function postRemoveKan(req, res) {
+async function postRemovalKan(req, res) {
   const sessionUser = req.user;
   await removeKanaryAcct(sessionUser.kid);
   await DB.removeKan(sessionUser);
@@ -1295,7 +1278,7 @@ async function postRemoveKan(req, res) {
 
 async function checkIfRemovalPilotFull(user) {
   const curPilot = await DB.getRemovalPilotByName(
-    JS_CONSTANTS.REMOVAL_PILOT_GROUP
+    REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP
   );
 
   const pilotGroup = getPilotGroup(user);
@@ -1304,7 +1287,7 @@ async function checkIfRemovalPilotFull(user) {
 }
 
 function getPilotGroup(user) {
-  const removalPilots = JS_CONSTANTS.REMOVAL_PILOTS.slice();
+  const removalPilots = REMOVAL_CONSTANTS.REMOVAL_PILOTS.slice();
 
   let enrolledTime = FormUtils.convertDateToTimestamp(Date.now());
 
@@ -1337,7 +1320,7 @@ function checkIfRemovalPilotEnded(user) {
 
   const pilotEndDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,
-    JS_CONSTANTS.REMOVAL_PILOT_END_DAY
+    REMOVAL_CONSTANTS.REMOVAL_PILOT_END_DAY
   );
 
   return new Date() > pilotEndDate;
@@ -1348,7 +1331,7 @@ function checkIfEnrolledInRemovalPilot(user) {
 }
 
 function checkIfRemovalEnrollmentEnded(user) {
-  if (!JS_CONSTANTS.REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED) {
+  if (!REMOVAL_CONSTANTS.REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED) {
     //if we're not enabling this check, the ended check will be false
     return false;
   }
@@ -1356,7 +1339,7 @@ function checkIfRemovalEnrollmentEnded(user) {
 
   const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,
-    JS_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+    REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
   );
   return new Date() > enrollmentEndDate;
 }
@@ -1366,19 +1349,19 @@ function checkIfRemovalPmtDecisionMade(user) {
 }
 
 function checkIfRemoveDisplayMoreTime(user) {
-  if (!JS_CONSTANTS.REMOVE_WILLINGNESS_TO_PAY_ENABLED) {
+  if (!REMOVAL_CONSTANTS.REMOVE_WILLINGNESS_TO_PAY_ENABLED) {
     return false;
   }
   const pilotGroup = getPilotGroup(user);
 
   const pilotPmtDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,
-    JS_CONSTANTS.REMOVAL_PILOT_PMT_DAY
+    REMOVAL_CONSTANTS.REMOVAL_PILOT_PMT_DAY
   );
 
   const pilotPmtEndDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,
-    JS_CONSTANTS.REMOVAL_PILOT_PMT_DECISION_DAY
+    REMOVAL_CONSTANTS.REMOVAL_PILOT_PMT_DECISION_DAY
   );
 
   const now = new Date();
@@ -1396,7 +1379,7 @@ function checkIfRemoveDisplayMoreTime(user) {
 }
 
 async function checkIfOnRemovalPilotList(user) {
-  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
+  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
     const hashMatch = await checkEmailHash(user.primary_email);
     return hashMatch;
   } else {
@@ -1404,13 +1387,13 @@ async function checkIfOnRemovalPilotList(user) {
   }
 }
 
-async function handleRemoveEnrollFormSignup(req, res) {
+async function handleRemovalEnrollFormSignup(req, res) {
   const user = req.user;
   let nextPage; //where do we send the user next
 
   const isFull = await checkIfRemovalPilotFull(user);
 
-  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
     const hashMatch = await checkEmailHash(user.primary_email);
 
     if (!hashMatch) {
@@ -1442,7 +1425,7 @@ async function handleRemoveEnrollFormSignup(req, res) {
   }
 }
 
-async function handleRemoveFormSignup(req, res) {
+async function handleRemovalFormSignup(req, res) {
   //MH TODO: validate form data server side
 
   const user = req.user;
@@ -1462,7 +1445,7 @@ async function handleRemoveFormSignup(req, res) {
 
   if (user.kid) {
     console.error(
-      "user should have been directed to the handleRemoveAcctUpdate function if they have a kid"
+      "user should have been directed to the handleRemovalAcctUpdate function if they have a kid"
     );
     const localeError = LocaleUtils.fluentFormat(
       req.supportedLocales,
@@ -1515,7 +1498,7 @@ async function handleRemoveFormSignup(req, res) {
     });
   }
 
-  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {
@@ -1609,14 +1592,14 @@ async function checkEmailDomainMatch(account) {
   //TODO: Remove for external testing. For internal testing, we need to check that users are signing up with a Mozilla email account
 
   let emailDomainMatch = false;
-  if (!JS_CONSTANTS.REMOVE_CHECK_EMAIL_DOMAIN_ENABLED) {
+  if (!REMOVAL_CONSTANTS.REMOVE_CHECK_EMAIL_DOMAIN_ENABLED) {
     //if the domain check is disabled, force a match
     emailDomainMatch = true;
   }
 
   const accountDomain = account.substring(account.lastIndexOf("@") + 1);
 
-  JS_CONSTANTS.REMOVE_EMAIL_DOMAIN_LIST.forEach((emailDomain) => {
+  REMOVAL_CONSTANTS.REMOVE_EMAIL_DOMAIN_LIST.forEach((emailDomain) => {
     if (emailDomain === accountDomain) {
       emailDomainMatch = true;
     }
@@ -1644,7 +1627,7 @@ async function checkEmailHash(account) {
   return matchedHash;
 }
 
-async function handleRemoveAcctUpdate(req, res) {
+async function handleRemovalAcctUpdate(req, res) {
   if (!req.user) {
     console.error("no user");
     const localeError = LocaleUtils.fluentFormat(
@@ -1700,7 +1683,7 @@ async function handleRemoveAcctUpdate(req, res) {
     });
   }
 
-  if (JS_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {
@@ -1875,7 +1858,7 @@ async function getRemoveRateByKid(kanary_id, aggregate = false) {
     });
 }
 
-async function getRemoveStats(req, res) {
+async function getRemovalStats(req, res) {
   //MH TODO: validate form data server side
   if (!req.user) {
     console.error("no user");
@@ -1954,7 +1937,7 @@ async function getRemoveStats(req, res) {
   });
 }
 
-async function getRemoveStatsUser(req, res) {
+async function getRemovalStatsUser(req, res) {
   //MH TODO: validate form data server side
   if (!req.user) {
     console.error("no user");
@@ -1991,7 +1974,7 @@ async function getRemoveStatsUser(req, res) {
   });
 }
 
-async function createRemoveHashWaitlist(req, res) {
+async function createRemovalHashWaitlist(req, res) {
   if (!req.user) {
     console.error("no user");
     const localeError = LocaleUtils.fluentFormat(
@@ -2068,25 +2051,23 @@ module.exports = {
   updateCommunicationOptions,
   resolveBreach,
   //DATA REMOVAL SPECIFIC
-  getRemovePage,
-  getRemoveConfirmationPage,
-  getRemoveUpdateConfirmationPage,
-  getRemoveDeleteConfirmationPage,
-  getRemoveMoreTimePage,
-  getRemoveEnrollPage,
-  getRemoveEnrolledPage,
-  getRemoveEnrollFullPage,
-  getRemoveEnrollEndedPage,
-  getRemovePilotEndedPage,
-  handleRemoveFormSignup,
-  handleRemoveEnrollFormSignup,
-  handleRemoveAcctUpdate,
-  getRemoveKan,
-  getRemoveSitesList,
-  getRemoveRiskLevel,
-  postRemoveKan,
-  getRemoveStats,
-  getRemoveStatsUser,
-  createRemoveHashWaitlist,
+  getRemovalPage,
+  getRemovalConfirmationPage,
+  getRemovalUpdateConfirmationPage,
+  getRemovalDeleteConfirmationPage,
+  getRemovalMoreTimePage,
+  getRemovalEnrollPage,
+  getRemovalEnrolledPage,
+  getRemovalEnrollFullPage,
+  getRemovalEnrollEndedPage,
+  getRemovalPilotEndedPage,
+  handleRemovalFormSignup,
+  handleRemovalEnrollFormSignup,
+  handleRemovalAcctUpdate,
+  getRemovalKan,
+  postRemovalKan,
+  getRemovalStats,
+  getRemovalStatsUser,
+  createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,
 };

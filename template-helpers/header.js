@@ -2,7 +2,7 @@
 
 const { getStrings, getFxaUrl } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
-const { JS_CONSTANTS } = require("./../js-constants"); //DATA REMOVAL SPECIFIC
+const { REMOVAL_CONSTANTS } = require("./../removal-constants"); //DATA REMOVAL SPECIFIC
 
 function getSignedInAs(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -57,7 +57,7 @@ function navLinks(args) {
   if (onRemovalPilotList) {
     let isActiveLink = false;
 
-    JS_CONSTANTS.REMOVE_ACTIVE_LINKS.forEach((link) => {
+    REMOVAL_CONSTANTS.REMOVE_ACTIVE_LINKS.forEach((link) => {
       if (hostUrl === link) {
         isActiveLink = true;
       }

@@ -13,7 +13,7 @@ const mozlog = require("../log");
 const sha1 = require("../sha1-utils");
 
 //DATA REMOVAL SPECIFIC
-const { JS_CONSTANTS } = require("../js-constants");
+const { REMOVAL_CONSTANTS } = require("../removal-constants");
 const { checkIfOnRemovalPilotList } = require("./user");
 //END DATA REMOVAL SPECIFIC
 
@@ -74,7 +74,7 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       req.session.post_auth_redirect = null;
     } else {
       returnURL = new URL(
-        JS_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
+        REMOVAL_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
         AppConstants.SERVER_URL
       );
     }

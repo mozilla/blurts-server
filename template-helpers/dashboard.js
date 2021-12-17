@@ -6,7 +6,7 @@ const { makeBreachCards } = require("./breaches");
 //DATA REMOVAL SPECIFIC
 const { sentenceCase } = require("./hbs-helpers");
 const { FormUtils } = require("./../form-utils");
-const { JS_CONSTANTS, REMOVAL_STATUS } = require("./../js-constants");
+const { REMOVAL_CONSTANTS, REMOVAL_STATUS } = require("./../removal-constants");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
@@ -237,13 +237,13 @@ function getRemoveFormData(args) {
     countries: countries,
     usStates: usStates,
     acctInfo: acctInfo,
-    jsConstants: JS_CONSTANTS,
+    jsConstants: REMOVAL_CONSTANTS,
   };
 
   return args.fn(emailCards);
 }
 
-function getRemoveSitesList(args) {
+function getRemovalSitesList(args) {
   const removal_sites = args.data.root.removal_sites;
   const removal_list = {
     removal_sites: removal_sites,
@@ -253,7 +253,9 @@ function getRemoveSitesList(args) {
 
 function assignRemovalFilters(removeResults) {
   removeResults.forEach((result) => {
-    if (result.current_step === JS_CONSTANTS.REMOVAL_STEP["BLOCKED"].code) {
+    if (
+      result.current_step === REMOVAL_CONSTANTS.REMOVAL_STEP["BLOCKED"].code
+    ) {
       result.filter = REMOVAL_STATUS[result.current_step];
     } else {
       result.filter = REMOVAL_STATUS[result.status];
@@ -264,11 +266,11 @@ function assignRemovalFilters(removeResults) {
 function localizeRemoveStatus(removeResults, locales) {
   removeResults.forEach((result) => {
     if (
-      JS_CONSTANTS.REMOVAL_STEP[result.current_step] &&
-      JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
+      REMOVAL_CONSTANTS.REMOVAL_STEP[result.current_step] &&
+      REMOVAL_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
     ) {
       result.current_step_text = LocaleUtils.formatRemoveString(
-        JS_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
+        REMOVAL_CONSTANTS.REMOVAL_STEP[result.current_step].locale_var
       );
     } else {
       result.current_step_text = sentenceCase(result.current_step);
@@ -431,7 +433,7 @@ module.exports = {
   //DATA REMOVAL SPECIFIC
   getRemoveFormData,
   getRemoveDashData,
-  getRemoveSitesList,
+  getRemovalSitesList,
   getRemovalFilters,
   trimRemoveInfo,
   getFullName,

@@ -165,7 +165,7 @@ function notFound(req, res) {
 
 //DATA REMOVAL SPECIFIC
 
-function getRemoveFAQPage(req, res) {
+function getRemovalFAQPage(req, res) {
   console.log("get remove faq page");
   return res.render("top-level-page", {
     title: req.fluentFormat("remove-faq-title"),
@@ -182,5 +182,5 @@ module.exports = {
   home,
   notFound,
   removeMyData,
-  getRemoveFAQPage,
+  getRemovalFAQPage,
 };

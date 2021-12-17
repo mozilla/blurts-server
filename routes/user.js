@@ -22,26 +22,24 @@ const {
   postRemoveFxm,
   postResolveBreach,
   //DATA REMOVAL SPECIFIC
-  getRemovePage,
-  getRemoveConfirmationPage,
-  getRemoveUpdateConfirmationPage,
-  getRemoveDeleteConfirmationPage,
-  getRemoveMoreTimePage,
-  getRemoveEnrollPage,
-  getRemoveEnrolledPage,
-  getRemoveEnrollFullPage,
-  getRemoveEnrollEndedPage,
-  getRemovePilotEndedPage,
-  handleRemoveFormSignup,
-  handleRemoveEnrollFormSignup,
-  handleRemoveAcctUpdate,
-  getRemoveKan,
-  postRemoveKan,
-  getRemoveSitesList,
-  getRemoveRiskLevel,
-  getRemoveStats,
-  getRemoveStatsUser,
-  createRemoveHashWaitlist,
+  getRemovalPage,
+  getRemovalConfirmationPage,
+  getRemovalUpdateConfirmationPage,
+  getRemovalDeleteConfirmationPage,
+  getRemovalMoreTimePage,
+  getRemovalEnrollPage,
+  getRemovalEnrolledPage,
+  getRemovalEnrollFullPage,
+  getRemovalEnrollEndedPage,
+  getRemovalPilotEndedPage,
+  handleRemovalFormSignup,
+  handleRemovalEnrollFormSignup,
+  handleRemovalAcctUpdate,
+  getRemovalKan,
+  postRemovalKan,
+  getRemovalStats,
+  getRemovalStatsUser,
+  createRemovalHashWaitlist,
   //END DATA REMOVAL SPECIFIC
 } = require("../controllers/user");
 
@@ -128,14 +126,14 @@ router.get(
   "/remove-enroll",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveEnrollPage)
+  asyncMiddleware(getRemovalEnrollPage)
 );
 
 router.get(
   "/remove-enrolled",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveEnrolledPage)
+  asyncMiddleware(getRemovalEnrolledPage)
 );
 
 router.post(
@@ -143,63 +141,63 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(handleRemoveEnrollFormSignup)
+  asyncMiddleware(handleRemovalEnrollFormSignup)
 );
 
 router.get(
   "/remove-enroll-full",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveEnrollFullPage)
+  asyncMiddleware(getRemovalEnrollFullPage)
 );
 
 router.get(
   "/remove-enroll-ended",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveEnrollEndedPage)
+  asyncMiddleware(getRemovalEnrollEndedPage)
 );
 
 router.get(
   "/remove-data",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemovePage)
+  asyncMiddleware(getRemovalPage)
 );
 
 router.get(
   "/remove-signup-confirmation",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveConfirmationPage)
+  asyncMiddleware(getRemovalConfirmationPage)
 );
 
 router.get(
   "/remove-update-confirmation",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveUpdateConfirmationPage)
+  asyncMiddleware(getRemovalUpdateConfirmationPage)
 );
 
 router.get(
   "/remove-delete-confirmation",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveDeleteConfirmationPage)
+  asyncMiddleware(getRemovalDeleteConfirmationPage)
 );
 
 router.get(
   "/remove-more-time",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveMoreTimePage)
+  asyncMiddleware(getRemovalMoreTimePage)
 );
 
 router.get(
   "/remove-pilot-ended",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemovePilotEndedPage)
+  asyncMiddleware(getRemovalPilotEndedPage)
 );
 
 router.post(
@@ -207,7 +205,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(handleRemoveFormSignup)
+  asyncMiddleware(handleRemovalFormSignup)
 );
 
 router.post(
@@ -215,7 +213,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(handleRemoveAcctUpdate)
+  asyncMiddleware(handleRemovalAcctUpdate)
 );
 
 router.get(
@@ -223,30 +221,14 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveKan)
+  asyncMiddleware(getRemovalKan)
 );
 router.post(
   "/remove-kan",
   jsonParser,
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(postRemoveKan)
-);
-
-router.get(
-  "/remove-sites-list",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveSitesList)
-);
-
-router.get(
-  "/remove-risk-level",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemoveRiskLevel)
+  asyncMiddleware(postRemovalKan)
 );
 
 router.get(
@@ -254,7 +236,7 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveStats)
+  asyncMiddleware(getRemovalStats)
 );
 
 router.get(
@@ -262,13 +244,13 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(getRemoveStatsUser)
+  asyncMiddleware(getRemovalStatsUser)
 );
 router.get(
   "/remove-hash-waitlist",
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(createRemoveHashWaitlist)
+  asyncMiddleware(createRemovalHashWaitlist)
 );
 
 //END DATA REMOVAL SPECIFIC

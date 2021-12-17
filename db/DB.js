@@ -19,7 +19,7 @@ attachPaginate();
 
 const log = mozlog("DB");
 
-const { JS_CONSTANTS } = require("../js-constants"); //DATA REMOVAL SPECIFIC
+const { REMOVAL_CONSTANTS } = require("../removal-constants"); //DATA REMOVAL SPECIFIC
 
 const DB = {
   async getSubscriberByToken(token) {
@@ -527,7 +527,7 @@ const DB = {
 
   async getRemovalPilotByName(pilot_name) {
     const res = await knex("removal_pilot")
-      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .where("name", REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP)
       .catch((e) => {
         console.error("error retrieving pilot record", e);
       });
@@ -548,7 +548,7 @@ const DB = {
 
   async incrementRemovalEnrolledUsers(user, ts) {
     return await knex("removal_pilot")
-      .where("name", JS_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .where("name", REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP)
       .increment("enrolled_users", 1)
       .catch((e) => {
         console.error("error incrementing enrolled users", e);

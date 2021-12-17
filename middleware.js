@@ -16,7 +16,7 @@ const HIBP = require("./hibp");
 const log = mozlog("middleware");
 
 //DATA REMOVAL SPECIFIC
-const { JS_CONSTANTS } = require("./js-constants");
+const { REMOVAL_CONSTANTS } = require("./removal-constants");
 
 // adds the request object to a res.local var
 function addRequestToResponse(req, res, next) {
@@ -160,7 +160,7 @@ async function requireSessionUser(req, res, next) {
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString();
     //DATA REMOVAL SPECIFIC
-    JS_CONSTANTS.REMOVE_ROUTES.forEach((removeRoute) => {
+    REMOVAL_CONSTANTS.REMOVE_ROUTES.forEach((removeRoute) => {
       //MH allows you to redirect to a different page after fxa login and include any query params - might be useful for Prod Monitor
       if (req.originalUrl && req.originalUrl.includes(removeRoute)) {
         if (queryParams && queryParams.length) {
