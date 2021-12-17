@@ -19,6 +19,7 @@ const REMOVAL_STATUS = {
 };
 
 const REMOVAL_CONSTANTS = {
+  REMOVAL_PARTICIPANTS_HASHED: null, //this is the pilot participant list and gets assigned in server.js from the removal-waitlist.js functionality on server startup
   REMOVE_CHECK_WAITLIST_ENABLED: true, //enable the waitlist check
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: true, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
   REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen

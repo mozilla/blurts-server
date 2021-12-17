@@ -3,6 +3,7 @@
 // initialize Sentry ASAP to capture fatal startup errors
 const Sentry = require("@sentry/node");
 const AppConstants = require("./app-constants");
+const { REMOVAL_CONSTANTS } = require("./removal-constants");
 Sentry.init({
   dsn: AppConstants.SENTRY_DSN,
   environment: AppConstants.NODE_ENV,
@@ -40,6 +41,8 @@ const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
 const IpLocationService = require("./ip-location-service");
 const uuidv4 = require("uuid/v4");
+
+const { getHashedWaitlist } = require("./removal-waitlist");
 
 const {
   addRequestToResponse,
@@ -125,6 +128,19 @@ try {
 (async () => {
   // open location database once at server start. Service includes 24hr check to reload fresh database.
   await IpLocationService.openLocationDb().catch((e) => console.warn(e));
+})();
+
+//DATA REMOVAL SPECIFIC
+(async () => {
+  // open location database once at server start. Service includes 24hr check to reload fresh database.
+  const removalWaitlist = await getHashedWaitlist().catch((e) =>
+    console.error("problem getting removal waitlist", e)
+  );
+  if (removalWaitlist && removalWaitlist.length) {
+    REMOVAL_CONSTANTS["REMOVAL_PARTICIPANTS_HASHED"] = removalWaitlist;
+  } else {
+    console.error("removal waitlist empty");
+  }
 })();
 
 // Use helmet to set security headers

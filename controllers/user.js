@@ -1608,14 +1608,14 @@ async function checkEmailDomainMatch(account) {
   return emailDomainMatch;
 }
 
-async function getHashedWaitlist() {
-  const hashedWaitlistArray = await readFile("hashed-waitlist.txt", "binary");
-  return hashedWaitlistArray.toString().split("\n");
-}
-
 async function checkEmailHash(account) {
   let matchedHash = false;
-  const hashedWaitlistArray = await getHashedWaitlist();
+  const hashedWaitlistArray = REMOVAL_CONSTANTS.REMOVAL_PARTICIPANTS_HASHED;
+
+  if (!hashedWaitlistArray || !hashedWaitlistArray.length) {
+    console.error("there must be a problem creating the waitlist");
+    return false;
+  }
   let email = `${account}`;
   email = email.toLowerCase();
   matchedHash = hashedWaitlistArray.find((arrayItem) => {

@@ -34,7 +34,9 @@ function getFooterLinks(args) {
 
   //DATA REMOVAL SPECIFIC
   const onRemovalPilotList =
-    isLoggedIn && session.kanary.onRemovalPilotList ? true : false;
+    isLoggedIn && session.kanary && session.kanary.onRemovalPilotList
+      ? true
+      : false;
   if (onRemovalPilotList) {
     const removalFAQ = {
       title: "Data Removal FAQ",
