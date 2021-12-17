@@ -1858,85 +1858,6 @@ async function getRemoveRateByKid(kanary_id, aggregate = false) {
     });
 }
 
-async function getRemovalStats(req, res) {
-  //MH TODO: validate form data server side
-  if (!req.user) {
-    console.error("no user");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-user"
-    );
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const user = req.user;
-
-  if (!user.primary_email.includes("@mozilla.com")) {
-    console.error("non mozilla email");
-
-    return res.status(404).json({
-      error:
-        "You must be signed in with a mozilla.com email address to access this page",
-    });
-  }
-
-  const allStats = {
-    totalResults: 0,
-    removedResults: 0,
-    resolutionTimeArray: [],
-    resolutionPct: 0,
-    resolutionTimeData: null,
-  };
-  let kidArr;
-  if (req.query && req.query.from_file) {
-    //read from static file
-    const kidFile = await readFile("kids.txt", "binary");
-    kidArr = kidFile.toString().split("\n");
-  } else {
-    //read from DB
-    kidArr = await DB.getRemoveParticipants();
-  }
-
-  for await (const kid of kidArr) {
-    const userStats = await getRemoveRateByKid(kid, true); //true = aggregate performance metrics, skipping individual resolution time calculations
-    //console.log("userStats", userStats, kid);
-    if (userStats) {
-      if (userStats.totalResults) {
-        allStats.totalResults += userStats.totalResults;
-      }
-      if (userStats.removedResults) {
-        allStats.removedResults += userStats.removedResults;
-      }
-      if (
-        userStats.resolutionTimeArray &&
-        userStats.resolutionTimeArray.length
-      ) {
-        allStats.resolutionTimeArray = [
-          ...allStats.resolutionTimeArray,
-          ...userStats.resolutionTimeArray,
-        ];
-      }
-    }
-  }
-
-  allStats.resolutionPct = await FormUtils.calculatePercentage(
-    allStats.removedResults,
-    allStats.totalResults
-  );
-  allStats.resolutionTimeData = await calculateAverageResolutionTime(
-    allStats.resolutionTimeArray
-  );
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    stats: allStats,
-    whichPartial: "dashboards/remove-all-stats",
-  });
-}
-
 async function getRemovalStatsUser(req, res) {
   //MH TODO: validate form data server side
   if (!req.user) {
@@ -2066,7 +1987,6 @@ module.exports = {
   handleRemovalAcctUpdate,
   getRemovalKan,
   postRemovalKan,
-  getRemovalStats,
   getRemovalStatsUser,
   createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,

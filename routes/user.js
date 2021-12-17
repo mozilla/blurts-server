@@ -232,14 +232,6 @@ router.post(
 );
 
 router.get(
-  "/remove-all-stats",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemovalStats)
-);
-
-router.get(
   "/remove-user-stats",
   urlEncodedParser,
   csrfProtection,
