@@ -132,7 +132,6 @@ try {
 
 //DATA REMOVAL SPECIFIC
 (async () => {
-  // open location database once at server start. Service includes 24hr check to reload fresh database.
   const removalWaitlist = await getHashedWaitlist().catch((e) =>
     console.error("problem getting removal waitlist", e)
   );
