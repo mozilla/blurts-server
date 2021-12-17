@@ -138,12 +138,6 @@ function getEmailHeader(args) {
     });
   }
 
-  //DATA REMOVAL SPECIFIC
-  //MH TODO: Could omit this if not sending a separate data removal email on sign up
-  if (emailType === "email_partials/removal") {
-    return LocaleUtils.fluentFormat(locales, "removal-fxa-email-header");
-  }
-
   return LocaleUtils.fluentFormat(locales, "email-found-breaches-hl");
 }
 
@@ -337,17 +331,14 @@ function showProducts(args) {
   switch (true) {
     case whichPartial === "email_partials/email_verify":
     case vpnPromoBlocked(args):
-    case Boolean(breachAlert):
       return; // don't show products partial for the cases above
   }
 
   return args.fn({
     strings: {
-      headline: "more-products-headline",
-      copyVpn: "more-products-vpn",
-      ctaVpn: "more-products-cta-vpn",
-      copyRelay: "more-products-relay",
-      ctaRelay: "more-products-cta-relay",
+      campaign: breachAlert
+        ? `monitor-alert-emails&utm_content=${breachAlert.Name}`
+        : "report",
     },
   });
 }

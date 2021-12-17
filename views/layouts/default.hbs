@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-{{!-- MH: not sure locale is actually loading in properly - this is not data removal specific and should be fixed for prod monitor if broken --}}
-{{!-- MH TODO: verify this locale is actually coming through --}}
-<html lang="{{ getLocale }}">
+<html lang="{{ getFirstItem (getSupportedLocales) }}">
   <head>
     <meta charset="utf-8" />
     <meta property="csp-nonce" content="{{ styleNonce }}" />

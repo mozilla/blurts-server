@@ -175,7 +175,7 @@ what-data = Que datos ha essite compromittite:
 sensitive-sites = Como { -product-name } tracta le sitos sensibile?
 sensitive-sites-copy = { -product-name } revela solmente le contos associate con iste typos de violationes post que un adresse de e-mail ha essite verificate. Isto significa tu es le sol persona qui pote vider si tu informationes es includite in iste violation (a minus que alcuno altere ha accesso a tu conto de e-mail).
 delayed-reporting-headline = Proque ha prendite tante tempore signalar iste violation?
-delayed-reporting-copy = Il pote aliquando prender menses o annos proque le credentiales exponite in un violation de datos appare sur le web obscur. Violationes es addite a nostre base de datos a pena illos ha essite discoperite e verificate.
+delayed-reporting-copy = A vices, il pote prender menses o annos ante que le credentiales exponite in un violation de datos appare sur le web obscur. Le violationes es addite a nostre base de datos promptemente post lor discoperta e verification.
 about-fxm-headline = A proposito de { -product-name }
 about-fxm-blurb = { -product-name } te adverti si tu contos in linea ha essite implicate in un violation de datos. Discoperi si tu es victima de un tal violation, recipe avisos sur nove violationes, e prende mesuras pro proteger tu contos in linea. { -product-name } es fornite per { -brand-Mozilla }.
 fxm-warns-you = { -product-name } te adverti si tu adresse de e-mail ha essite divulgate in un violation de datos in linea. Vide si tu informationes ha essite divulgate, apprende a proteger melio tu contos in linea, e recipe alertas si tu adresse de e-mail appare in un nove violation.
@@ -456,15 +456,15 @@ resolve-top-notification-plural =
 marking-this-subhead = Marcar iste violation como resolvite
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
-marking-this-body = <span>Un vice que tu ha prendite le mensuras que tu pote pro resolver iste violation</span>, tu pote marcar lo como resolvite. Tu potera sempre acceder ancora al detalios re le violation, ab tu pannello de controlo.
+marking-this-body = <span>Un vice que tu ha prendite le mesuras possibile pro remediar a iste violation</span>, tu pote marcar lo como resolvite. Tu potera sempre retrovar le detalios de iste violation a partir de tu pannello de controlo.
 mark-as-resolve-button = Marcar como resolvite
 marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
 confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
 confirmation-1-body = Continua assi. Reguarda tu pannello de controlo pro vider si il ha altere cosa a facer.
-confirmation-2-subhead = Prende lo, piratas!
+confirmation-2-subhead = Prende isto, piratas!
 confirmation-2-body = Tu prende mesuras importante verso le protection de tu contos in linea.
-confirmation-3-subhead = Uno plus, resolvite. Optimo!
+confirmation-3-subhead = Un altere resolvite. Optimo!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Es tu nove contrasigno unic, forte e difficile a divinar? <a>Discoperi lo</a>
@@ -493,12 +493,12 @@ progress-status =
         [one] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
        *[other] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
     }
-progress-complete = Tote le violationes note ha essite marcate como resolvite
+progress-complete = Tote le violationes cognoscite ha essite marcate como resolvite
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
-progress-message-1 = <span>Tu veni de un optime initio!</span> Discoperi le restante violationes pro apprender que mensuras prender.<
+progress-message-1 = <span>Tu ha comenciate ben!</span> Discoperi le violationes restante pro apprender qual mensuras prender.
 progress-message-2 = <span>Continua assi!</span> Micre cambiamentos como actualisation de contrasignos ha un grande impacto pro mantener secur tu informationes personal.
 progress-message-3 = <span>Optime labor a resolver ille violationes!</span> Continua assi. Ancora un poco.
 progress-message-4 = <span>Quasi facite!</span> Tu es presso le linea de fin.
@@ -511,7 +511,7 @@ resolve-this-breach-link = Resolver iste violation
 # the date the user marked the breach as resolved.
 marked-resolved = Marcate le resolvite:
 hide-resolved-button = Celar le resolvite
-show-resolved-button = Monstrar le resolvite
+show-resolved-button = Monstrar resolvites
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Contrasigno exponite in violationes non resolvite
@@ -519,8 +519,8 @@ unresolved-passwords-exposed =
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] Violation de datos note marcate como resolvite
-       *[other] Violationes de datos note marcate como resolvite
+        [one] Violation de datos cognoscite marcate como resolvite
+       *[other] Violationes de datos cognoscite marcate como resolvite
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nove

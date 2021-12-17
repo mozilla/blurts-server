@@ -617,9 +617,17 @@ vpn-promo-copy-new = Защитите свои данные в Интернет�
 # user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
 vpn-banner-location = Ваше местоположение: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Защитите себя</em> с помощью { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Защищено</em> с помощью { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Вы защищены — спасибо что пользуетесь { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Ваше местоположение может быть отслежено, если вы не используете VPN.
+vpn-banner-subtitle-2 = Защитите своё местоположение и работу в Интернете за 3 шага
+vpn-banner-status-protected = Текущий статус: <em>Защищено ✓</em>
+vpn-banner-status-not-protected = Текущий статус: <em>Не защищено ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP-адрес: { $ip-address }
 vpn-banner-step-1 = Подпишитесь на { -brand-mozilla-vpn }
+vpn-banner-step-2 = Выберите местоположение VPN
+vpn-banner-step-3 = Активируйте VPN и безопасно работайте в Интернете
 vpn-banner-cta = Получить { -brand-mozilla-vpn }
 # button to expand panel
 vpn-banner-cta-expand = Развернуть
