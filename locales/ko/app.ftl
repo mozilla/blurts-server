@@ -119,6 +119,13 @@ security-tips = 보안 정보
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } 열기
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled 1-10.
+micro-survey-nps-prompt = 친구나 동료에게 { -product-short-name }를 추천할 의향은 1-10 사이에서 어느 정도인가요?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-usability-prompt = { -product-short-name }는 사용하기 쉽나요?
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 최근 유출 내역
 # Link title
@@ -517,3 +524,7 @@ monitor-promo-body = 다음에 알려진 유출에서 사용자의 개인정보�
 ecosystem-promo-headline = 사생활 보호를 최우선으로 하는 제품과 함께 온라인 생활을 보호하세요.
 promo-ecosystem-cta = 모든 제품 보기
 steps-to-resolve-headline = 이 유출을 해결하려면
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+vpn-banner-step-2 = VPN 위치 선택
