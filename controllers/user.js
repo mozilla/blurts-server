@@ -687,6 +687,7 @@ function logout(req, res) {
 //DATA REMOVAL SPECIFIC:
 
 async function getRemovalEnrollPage(req, res) {
+  console.log("get removal enroll page");
   const user = req.user;
 
   if (checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
@@ -1382,6 +1383,7 @@ async function checkIfOnRemovalPilotList(user) {
     const hashMatch = await checkEmailHash(user.primary_email);
     return hashMatch;
   } else {
+    console.log("pilot check not enabled");
     return false;
   }
 }
@@ -1608,7 +1610,6 @@ async function checkEmailDomainMatch(account) {
 }
 
 async function checkEmailHash(account) {
-  let matchedHash = false;
   const hashedWaitlistArray = REMOVAL_CONSTANTS.REMOVAL_PARTICIPANTS_HASHED;
 
   if (!hashedWaitlistArray || !hashedWaitlistArray.length) {
@@ -1617,12 +1618,15 @@ async function checkEmailHash(account) {
   }
   let email = `${account}`;
   email = email.toLowerCase();
-  matchedHash = hashedWaitlistArray.find((arrayItem) => {
+  const matchedHash = hashedWaitlistArray.find((arrayItem) => {
     const isMatch = bcrypt.compareSync(email, arrayItem, function (err, res) {
       return res;
     });
     return isMatch;
   });
+  if (!matchedHash) {
+    return false;
+  }
   return matchedHash;
 }
 

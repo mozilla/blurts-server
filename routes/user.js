@@ -5,7 +5,11 @@ const bearerToken = require("express-bearer-token");
 const bodyParser = require("body-parser");
 const csrf = require("csurf");
 
-const { asyncMiddleware, requireSessionUser } = require("../middleware");
+const {
+  asyncMiddleware,
+  requireSessionUser,
+  requireRemovalUser,
+} = require("../middleware");
 const {
   add,
   verify,
@@ -125,6 +129,7 @@ router.get(
   "/remove-enroll",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalEnrollPage)
 );
 
@@ -132,6 +137,7 @@ router.get(
   "/remove-enrolled",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalEnrolledPage)
 );
 
@@ -140,6 +146,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalEnrollFormSignup)
 );
 
@@ -147,6 +154,7 @@ router.get(
   "/remove-enroll-full",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalEnrollFullPage)
 );
 
@@ -154,6 +162,7 @@ router.get(
   "/remove-enroll-ended",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalEnrollEndedPage)
 );
 
@@ -161,6 +170,7 @@ router.get(
   "/remove-data",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalPage)
 );
 
@@ -168,6 +178,7 @@ router.get(
   "/remove-signup-confirmation",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalConfirmationPage)
 );
 
@@ -175,6 +186,7 @@ router.get(
   "/remove-update-confirmation",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalUpdateConfirmationPage)
 );
 
@@ -182,6 +194,7 @@ router.get(
   "/remove-delete-confirmation",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalDeleteConfirmationPage)
 );
 
@@ -189,6 +202,7 @@ router.get(
   "/remove-more-time",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalMoreTimePage)
 );
 
@@ -196,6 +210,7 @@ router.get(
   "/remove-pilot-ended",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalPilotEndedPage)
 );
 
@@ -204,6 +219,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalFormSignup)
 );
 
@@ -212,6 +228,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalAcctUpdate)
 );
 
@@ -227,6 +244,7 @@ router.post(
   jsonParser,
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(postRemovalKan)
 );
 
@@ -235,12 +253,14 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalStatsUser)
 );
 router.get(
   "/remove-hash-waitlist",
   urlEncodedParser,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(createRemovalHashWaitlist)
 );
 

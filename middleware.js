@@ -17,6 +17,7 @@ const log = mozlog("middleware");
 
 //DATA REMOVAL SPECIFIC
 const { REMOVAL_CONSTANTS } = require("./removal-constants");
+const { checkIfOnRemovalPilotList } = require("./controllers/user");
 
 // adds the request object to a res.local var
 function addRequestToResponse(req, res, next) {
@@ -251,6 +252,22 @@ function getShareUTMs(req, res, next) {
   next();
 }
 
+//DATA REMOVAL SPECIFIC
+async function requireRemovalUser(req, res, next) {
+  if (req.user) {
+    const isOnRemovalPilotList = await checkIfOnRemovalPilotList(req.user);
+    if (!isOnRemovalPilotList) {
+      console.error("user is not on pilot list, redirecting...");
+      return res.redirect("/");
+    } else {
+      next();
+      return;
+    }
+  } else {
+    return res.redirect("/");
+  }
+}
+
 module.exports = {
   addRequestToResponse,
   pickLanguage,
@@ -262,4 +279,5 @@ module.exports = {
   errorHandler,
   requireSessionUser,
   getShareUTMs,
+  requireRemovalUser,
 };
