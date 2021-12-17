@@ -8,6 +8,14 @@
 }
 
 body {
+  
+  --howHackersWork: var(--orange6);
+  --strongerPasswords: var(--blue2);
+  --stepsToProtect: var(--purple1);
+  --fiveMyths: var(--violet1);
+  --nextSteps: #e31587;
+  --afterBreach: #3fe1b0;
+
   display: flex;
   flex-direction: column;
   margin: 0;
