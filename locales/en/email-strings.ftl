@@ -129,3 +129,13 @@ more-products-vpn = Protection for your whole device, on every device.
 more-products-cta-vpn = Get {-product-name-vpn}
 more-products-relay = Hide your real email address to help protect your identity.
 more-products-cta-relay = Get {-product-name-relay}
+
+
+# // DATA REMOVAL SPECIFIC
+
+removal-fxa-email-header = Welcome to the Monitor Data Removal Pilot
+removal-fxa-email-signup = Thank you for setting up a Firefox Account for the Data Removal Pilot.<br><br>
+  By logging in with this account, you can enroll in the pilot and submit the data you want removed. <br><br>
+  Make sure to check the exposures dashboard on the website periodically to see if there are any new sites listing your personal information, and to see which sites your data has been successfully removed from.<br><br>
+  You can go to your exposures dashboard by clicking the button below.
+removal-fxa-email-subject = Next steps in the Data Removal Pilot

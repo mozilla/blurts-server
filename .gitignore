@@ -13,3 +13,5 @@ loadtests/venv
 public/scss/libs/protocol
 public/css/*
 public/dist
+kids.txt
+waitlist.txt

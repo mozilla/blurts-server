@@ -1,11 +1,10 @@
-
-        {{#each breachStats}}
-          <div class="breach-stat-row {{ @key }}">
-            <div class="stat-row-title-wrap">
-              <div class="breach-stat-number flx bold {{ @key }}">
-                {{ this.displayCount }}
-              </div>
-              <span class="stat-headline">{{ this.subhead }}</span>
-            </div>
-          </div>
-        {{/each}}
+{{#each breachStats}}
+  <div class="breach-stat-row {{ @key }}">
+    <div class="stat-row-title-wrap">
+      <div class="breach-stat-number flx bold {{ @key }}">
+        {{ this.displayCount }}
+      </div>
+      <span class="stat-headline">{{ this.subhead }}</span>
+    </div>
+  </div>
+{{/each}}

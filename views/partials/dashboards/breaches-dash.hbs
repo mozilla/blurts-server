@@ -1,4 +1,4 @@
-<main id="dashboard" class="dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
+<main id="dashboard" class="js-dashboard dashboard clear-header jst-cntr flx flx-col" data-page-label="User Dashboard">
   {{#getBreachStats}}
   <div class="dashboard-summary mw-860 flx flx-col">
       <span class="welcome-back">{{ welcomeMessage }}</span>
@@ -8,6 +8,7 @@
       <div class="dash-stats">
         {{> breach-stats addClasses="user-stats"}}
       </div>
+
       {{#if progressBar}}
       <div class="progress-bar-wrapper">
         {{#if progressBar.progressStatus}}
@@ -31,6 +32,7 @@
     {{/if}}
     </div>
 {{/getBreachStats}}
+
 {{#getBreachesDashboard}}
   <div class="mw-860 jst-cntr flx-col">
     <div class="flx space-between cntr link-header-wrapper">
@@ -42,19 +44,6 @@
         {{> email-card }}
       {{/eachFromTo}}
 
-      {{#if ./../supportedLocalesIncludesEnglish}}
-        <div class="private-relay-dashboard-card">
-          <a href="/remove-my-data" class="private-relay-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-user-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
-            <div class="private-relay-dashboard-card-content flx">
-              <div class="private-relay-dashboard-card-copy">
-                <p class="bold ff-Met private-relay-dashboard-card-subhead">Remove your data from websites.</p>
-                <p class="private-relay-dashboard-card-body">We’re piloting a new service to monitor and remove your name, physical address, phone number, and email from online databases.</p>
-                <p class="blue-link private-relay-join-waitlist">Join the waitlist</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      {{/if}}
       {{#eachFromTo this.verifiedEmails 1 this.verifiedEmails.length }}
         {{> email-card }}
       {{/eachFromTo}}

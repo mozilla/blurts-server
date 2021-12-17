@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">
+    <title>Firefox Monitor Data Removal Pilot</title>
+    <style>
+       body {
+        text-align: center;
+        font-family: sans-serif;
+        font-weight: 400;
+        color: #20123a;
+        background: #fbfcfe;
+      }
+      
+      a,
+      .footer-copy a {
+        color: #0060df;
+        font-weight: 400;
+      }
+
+      p.more-info-link-wrap,
+      a.more-info-link {
+        font-size: 16px;
+      }
+
+      .button {
+        display: inline-block;
+        width: 100%;
+        color: #ffffff;
+      }
+
+      .body-copy {
+        text-decoration: none;
+        line-height: 1.5;
+        font-size: 15px;
+      }
+
+      .footer-copy {
+        color:#738597;
+      }
+
+      td {
+        border-collapse: collapse;
+        border-width: 0px;
+      }
+
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+
+      .rec-email a {
+        color: #9059ff;
+        text-decoration: none !important;
+        font-weight: 700;
+      }
+
+      a {
+        transition: all .1s ease;
+      }
+
+      a:hover {
+        text-decoration: underline !important;
+        transition: all .1s ease;
+      }
+
+      @media screen and (max-width: 600px) {
+
+        .email-breach-listing {
+          border: 1px solid #eee;
+        }
+
+        .source-info-wrap {
+          width: 100% !important;
+        }
+      }
+    </style>
+  </head>
+  <body bgcolor="#fbfcfe" style="background-color: #fbfcfe; padding: 0px; margin: 0px; width: 100%; height: 100%; font-famly: sans-serif; color: #20123a;" >
+    <table bgcolor="#fbfcfe" height="100%" width="100%" style="width: 100%; height: 100%; background-color: #fbfcfe; padding: 50px 20px;">
+      <tr>
+        <td align="center" valign="top" width="460px" style="width: 460px; max-width: 460px;">
+          <table width="100%" cellspacing="0" cellpadding="0" align="center" style="text-align: center; border-collapse: collapse; max-width: 460px;">
+            
+            <!--Firefox Monitor Logo-->
+            <tr>
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 16px;">
+                <img align="center" src="{{ SERVER_URL }}/img/firefox-monitor-logo.png" width="70px" style="width: 70px;">
+              </td>
+            </tr>
+
+            <!--Firefox Monitor Logotype-->
+            <tr>
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 24px;">
+                <img align="center" src="{{ SERVER_URL }}/img/email_images/fxm-lg-drk.png" style="width: 100%; min-width: 100px; max-width: 156px; display: block; margin: auto;" />
+              </td>
+            </tr>
+            
+            <!-- header -->
+
+            <tr>
+              <td align="center" width="100%" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 20px; width: 100%; text-align: center;">
+                <h2 class="email-hl" align="center" style="color: #20123a; font-size: 24px; text-align: center; line-height: 1.25; margin: auto; font-family: sans-serif;">
+                  {{getString "removal-fxa-email-header"}}
+                </h2>
+              </td>
+            </tr>
+
+            <!--email content-->
+            <tr>
+              <td border="0" cellpadding="0" cellspacing="0" style="border-width: 0px;">
+                {{> (lookup . 'whichPartial') }}
+              </td>
+            </tr>
+            <tr>
+              <td border="0" cellpadding="0" cellspacing="0" style="padding-bottom: 40px; border-bottom: 1px solid #eee;">
+                {{> email_partials/email_button href=ctaHref}}
+              </td>
+            </tr>
+            
+            <tr>
+              <td align="center" width="100%" style="max-width: 400px; padding-top: 30px;">
+                {{> email_partials/email_disclaimers }}
+              </td>
+              </tr>
+              <tr>
+              <td align="center" border="0" cellpadding="0" cellspacing="0" style="border-width: 0px; border-collapse: collapse; padding-bottom: 30px; padding-top: 30px;">
+                {{> email_partials/removal_email_footer}}
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

@@ -1,20 +1,33 @@
 {{#ifCompare UTM_SOURCE "===" "localhost"}}
-  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/app.css" />
 
-  <script type="text/javascript" src="/js/all-breaches/all-breaches.js"></script>
-  <script type="text/javascript" src="/js/analytics_dnt-helper.js" defer></script>
-
+  <script
+    type="text/javascript"
+    src="/js/all-breaches/all-breaches.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="/js/analytics_dnt-helper.js"
+    defer
+  ></script>
+  {{!---DATA REMOVAL SPECIFIC ---}}
+  <script type="text/javascript" src="/js/micromodal.js" defer></script>
+  <script type="text/javascript" src="/js/apexcharts.min.js"></script>
+  {{!---END DATA REMOVAL SPECIFIC ---}}
   <script type="text/javascript" src="/js/fx-bento.js"></script>
   <script type="text/javascript" src="/js/fxa-analytics.js" defer></script>
   <script type="text/javascript" src="/js/fxa-menu.js" defer></script>
   <script type="text/javascript" src="/js/dashboard.js" defer></script>
+  {{!---DATA REMOVAL SPECIFIC ---}}
+  <script type="text/javascript" src="/js/remove-data.js"></script>
+  {{!---END DATA REMOVAL SPECIFIC ---}}
   <script type="text/javascript" src="/js/monitor.js" defer></script>
   <script type="text/javascript" src="/js/resolve-breaches.js" defer></script>
   <script type="text/javascript" src="/js/scan-email.js" defer></script>
   <script type="text/javascript" src="/js/scan-results.js" defer></script>
 
 {{else}}
-  <link rel="stylesheet" href="/dist/app.min.css">
+  <link rel="stylesheet" href="/dist/app.min.css" />
 
   {{#ifCompare whichPartial "===" "top-level/all-breaches"}}
     <script type="text/javascript" src="/dist/all-breaches.min.js"></script>

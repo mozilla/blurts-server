@@ -10,17 +10,29 @@ async function getEmailMockUps(req, res) {
     req.query.type = "email_verify";
   }
 
-  if (["breachAlert", "pre-fxa", "singleBreach", "multipleBreaches", "noBreaches", "email_verify"].indexOf(req.query.type) === -1) {
+  if (
+    [
+      "breachAlert",
+      "pre-fxa",
+      "singleBreach",
+      "multipleBreaches",
+      "noBreaches",
+      "email_verify",
+      "removal-fxa",
+    ].indexOf(req.query.type) === -1
+  ) {
     return res.redirect("/email-l10n");
   }
 
   const unsafeBreachesForEmail = [];
-  ["Dropbox", "Apollo", "Adobe"].forEach(name => {
-    unsafeBreachesForEmail.push(req.app.locals.breaches.filter(breach => breach.Name === name)[0]);
+  ["Dropbox", "Apollo", "Adobe"].forEach((name) => {
+    unsafeBreachesForEmail.push(
+      req.app.locals.breaches.filter((breach) => breach.Name === name)[0]
+    );
   });
 
   const emailContent = ((req) => {
-    switch(req.query.type) {
+    switch (req.query.type) {
       case "pre-fxa":
         return {
           emailSubject: req.fluentFormat("pre-fxa-subject"),
@@ -36,7 +48,9 @@ async function getEmailMockUps(req, res) {
       case "breachAlert":
         return {
           emailSubject: req.fluentFormat("breach-alert-subject"),
-          breachAlert: req.app.locals.breaches.filter(breach => breach.Name === "LinkedIn")[0],
+          breachAlert: req.app.locals.breaches.filter(
+            (breach) => breach.Name === "LinkedIn"
+          )[0],
           unsafeBreachesForEmail: null,
           preFxaSubscriber: true,
         };
@@ -50,6 +64,13 @@ async function getEmailMockUps(req, res) {
         return {
           emailSubject: req.fluentFormat("email-subject-found-breaches"),
           unsafeBreachesForEmail: unsafeBreachesForEmail,
+          breachAlert: null,
+        };
+      //DATA REMOVAL SPECIFIC
+      case "removal-fxa":
+        return {
+          emailSubject: req.fluentFormat("removal-fxa-email-subject"),
+          unsafeBreachesForEmail: unsafeBreachesForEmail.slice(0, 1),
           breachAlert: null,
         };
       default:
