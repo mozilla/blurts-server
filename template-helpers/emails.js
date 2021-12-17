@@ -15,18 +15,18 @@ function emailBreachStats(args) {
 
   userBreaches.forEach(breach => {
     if (breach.DataClasses.includes("passwords")) {
-      numPasswordsExposed ++;
+      numPasswordsExposed++;
     }
   });
 
   const emailBreachStats = {
     numBreaches: {
       statNumber: userBreaches.length,
-      statTitle: LocaleUtils.fluentFormat(locales, "known-data-breaches-exposed", {breaches: userBreaches.length}),
+      statTitle: LocaleUtils.fluentFormat(locales, "known-data-breaches-exposed", { breaches: userBreaches.length }),
     },
     numPasswords: {
       statNumber: numPasswordsExposed,
-      statTitle: LocaleUtils.fluentFormat(locales, "passwords-exposed", {passwords: numPasswordsExposed}),
+      statTitle: LocaleUtils.fluentFormat(locales, "passwords-exposed", { passwords: numPasswordsExposed }),
     },
   };
   return emailBreachStats;
@@ -56,17 +56,17 @@ function getPreFxaTouts(args) {
     {
       imgSrc: `${serverUrl}/img/email_images/pictogram-alert.png`,
       headline: LocaleUtils.fluentFormat(locales, "pre-fxa-tout-1"),
-      paragraph: LocaleUtils.fluentFormat(locales,"pre-fxa-p-1"),
+      paragraph: LocaleUtils.fluentFormat(locales, "pre-fxa-p-1"),
     },
     {
       imgSrc: `${serverUrl}/img/email_images/pictogram-advice.png`,
       headline: LocaleUtils.fluentFormat(locales, "pre-fxa-tout-2"),
-      paragraph: LocaleUtils.fluentFormat(locales,"pre-fxa-p-2"),
+      paragraph: LocaleUtils.fluentFormat(locales, "pre-fxa-p-2"),
     },
     {
       imgSrc: `${serverUrl}/img/email_images/pictogram-email.png`,
       headline: LocaleUtils.fluentFormat(locales, "pre-fxa-tout-3"),
-      paragraph: LocaleUtils.fluentFormat(locales,"pre-fxa-p-3"),
+      paragraph: LocaleUtils.fluentFormat(locales, "pre-fxa-p-3"),
     },
   ];
 
@@ -93,7 +93,7 @@ function getUnsafeBreachesForEmailReport(args) {
 }
 
 
-function boldVioletText(breachedEmail, addBlockDisplayToEmail=false) {
+function boldVioletText(breachedEmail, addBlockDisplayToEmail = false) {
   let optionalDisplayProperty = "";
 
   if (addBlockDisplayToEmail) {
@@ -115,7 +115,7 @@ function getEmailHeader(args) {
     return LocaleUtils.fluentFormat(locales, "email-link-expires");
   }
 
-  if (emailType ==="email_partials/pre-fxa") {
+  if (emailType === "email_partials/pre-fxa") {
     return LocaleUtils.fluentFormat(locales, "pre-fxa-headline");
   }
 
@@ -126,7 +126,7 @@ function getEmailHeader(args) {
   const userBreaches = args.data.root.unsafeBreachesForEmail;
 
   if (userBreaches.length === 0) {
-    return LocaleUtils.fluentFormat(locales, "email-no-breaches-hl", { userEmail: boldVioletText(breachedEmail, true)});
+    return LocaleUtils.fluentFormat(locales, "email-no-breaches-hl", { userEmail: boldVioletText(breachedEmail, true) });
   }
 
   return LocaleUtils.fluentFormat(locales, "email-found-breaches-hl");
@@ -153,19 +153,19 @@ function makePreFxaSubscriberMessage(args) {
   const url = new URL(`${serverUrl}/#fx-account-features`);
 
   const utmParameters = {
-    utm_source : "fx-monitor",
-    utm_medium : "email",
-    utm_content : "breach-alert",
-    utm_campaign : "pre-fxa-subscribers",
+    utm_source: "fx-monitor",
+    utm_medium: "email",
+    utm_content: "breach-alert",
+    utm_campaign: "pre-fxa-subscribers",
   };
   for (const param in utmParameters) {
     url.searchParams.append(param, utmParameters[param]);
   }
   let preFxaMessage = LocaleUtils.fluentFormat(locales, "pre-fxa-message");
   if ((/<a>/).test(preFxaMessage) && (/<\/a>/).test(preFxaMessage)) {
-      const openingAnchorTag = `<a class="pre-fxa-nested-link" href="${url}" style="color: #0060df; font-family: sans-serif; font-weight: 400; font-size: 16px; text-decoration: none;">`;
-      preFxaMessage = preFxaMessage.replace("<a>", openingAnchorTag);
-    }
+    const openingAnchorTag = `<a class="pre-fxa-nested-link" href="${url}" style="color: #0060df; font-family: sans-serif; font-weight: 400; font-size: 16px; text-decoration: none;">`;
+    preFxaMessage = preFxaMessage.replace("<a>", openingAnchorTag);
+  }
   return preFxaMessage;
 }
 
@@ -174,17 +174,17 @@ function getBreachAlertFaqs(args) {
   const supportedLocales = args.data.root.supportedLocales;
   const faqs = [
     {
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-1", args),
+      "linkTitle": LocaleUtils.fluentFormat(supportedLocales, "faq-v2-1", args),
       "stringDescription": "I don’t recognize one of these companies or websites. Why am I in this breach?",
       "href": makeFaqLink("#w_i-donaot-recognize-this-company-or-website-why-am-i-receiving-notifications-about-this-breach", "faq1"),
     },
     {
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-2", args),
+      "linkTitle": LocaleUtils.fluentFormat(supportedLocales, "faq-v2-2", args),
       "stringDescription": "Do I need to do anything if a breach happened years ago or this is an old account?",
       "href": makeFaqLink("#w_do-i-need-to-do-anything-if-a-breach-happened-years-ago-or-in-an-old-account", "faq2"),
     },
     {
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-3", args),
+      "linkTitle": LocaleUtils.fluentFormat(supportedLocales, "faq-v2-3", args),
       "stringDescription": "I just found out I’m in a data breach. What do I do next?",
       "href": makeFaqLink("#w_i-just-found-out-im-in-a-data-breach-what-do-i-do-next", "faq3"),
     },
@@ -192,7 +192,7 @@ function getBreachAlertFaqs(args) {
 
   if (args.data.root.breachAlert && args.data.root.breachAlert.IsSensitive) {
     faqs.push({
-      "linkTitle" : LocaleUtils.fluentFormat(supportedLocales, "faq-v2-4", args),
+      "linkTitle": LocaleUtils.fluentFormat(supportedLocales, "faq-v2-4", args),
       "stringDescription": "How does Firefox Monitor treat sensitive sites?",
       "href": makeFaqLink("#w_how-does-firefox-monitor-treat-sensitive-sites", "faq4"),
     });
@@ -210,7 +210,7 @@ function getReportHeader(args) {
     strings: {
       "email": "email-address",
       "reportDate": "report-date",
-      "fxmReport" : "firefox-monitor-report",
+      "fxmReport": "firefox-monitor-report",
     },
   };
   for (const stringId in reportHeader.strings) {
@@ -238,7 +238,7 @@ function getEmailFooterCopy(args) {
   const localizedFooterCopy = LocaleUtils.fluentFormat(locales, "email-footer-blurb", {
     unsubLink: unsubLink,
     faqLink: faqLink,
-   });
+  });
 
   return localizedFooterCopy;
 }
@@ -276,7 +276,7 @@ function showFaqs(args) {
     return;
   }
 
-  if ( args.data.root.breachAlert || (args.data.root.unsafeBreachesForEmail && args.data.root.unsafeBreachesForEmail.length > 0)) {
+  if (args.data.root.breachAlert || (args.data.root.unsafeBreachesForEmail && args.data.root.unsafeBreachesForEmail.length > 0)) {
     return args.fn();
   }
 }
@@ -298,17 +298,12 @@ function showProducts(args) {
   switch (true) {
     case whichPartial === "email_partials/email_verify":
     case vpnPromoBlocked(args):
-    case Boolean(breachAlert):
       return; // don't show products partial for the cases above
   }
 
   return args.fn({
     strings: {
-      "headline": "more-products-headline",
-      "copyVpn": "more-products-vpn",
-      "ctaVpn": "more-products-cta-vpn",
-      "copyRelay": "more-products-relay",
-      "ctaRelay": "more-products-cta-relay",
+      campaign: breachAlert ? `monitor-alert-emails&utm_content=${breachAlert.Name}` : "report",
     },
   });
 }

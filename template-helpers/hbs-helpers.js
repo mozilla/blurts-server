@@ -20,9 +20,15 @@ function getSupportedLocales(args) {
   return null;
 }
 
+function getFirstItem(arr) {
+  if (!arr) return;
+  if (typeof arr === "string") return arr.split(",")[0];
+  return arr[0];
+}
+
 function vpnPromoBlocked(args) {
-  const userLocale = args.data.root.req.supportedLocales[0];
-  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocale.includes(blockedLocale));
+  const userLocales = getSupportedLocales(args);
+  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale));
 }
 
 function englishInAcceptLanguages(args) {
@@ -55,7 +61,7 @@ function microsurveyBanner(args) {
   }
 
   // don't show micro survey if user is not signed in
-  if (!args.data.root.req.session.user){
+  if (!args.data.root.req.session.user) {
     return;
   }
 
@@ -72,7 +78,7 @@ function microsurveyBanner(args) {
     "micro-survey-very-likely-response",
   ];
   const enLocaleArgs = {
-    hash: args.hash, data: {root: {req: {supportedLocales: ["en"]} } },
+    hash: args.hash, data: { root: { req: { supportedLocales: ["en"] } } },
   };
   let bannerOpeningDivDataset = "";
   microSurveyResponseIds.forEach(id => {
@@ -133,12 +139,12 @@ function microsurveyBanner(args) {
   return [bannerOpeningDiv, surveyElements, bannerClosingDev].join("");
 }
 
-function getString (id, args) {
+function getString(id, args) {
   const supportedLocales = getSupportedLocales(args);
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
 
-function getStringWithFallback (id, fallbackId, args) {
+function getStringWithFallback(id, fallbackId, args) {
   const supportedLocales = getSupportedLocales(args);
   return LocaleUtils.fluentFormatWithFallback(supportedLocales, id, fallbackId, args.hash);
 }
@@ -152,7 +158,7 @@ function getStrings(stringArr, locales) {
 }
 
 
-function fluentFxa (id, args) {
+function fluentFxa(id, args) {
   const supportedLocales = args.data.root.req.supportedLocales;
   if (AppConstants.FXA_ENABLED) {
     id = `fxa-${id}`;
@@ -161,7 +167,7 @@ function fluentFxa (id, args) {
 }
 
 
-function getStringID (id, number, args) {
+function getStringID(id, number, args) {
   // const supportedLocales = args.data.root.req.supportedLocales;
   // id = `${id}${number}`;
   // if (modifiedStringMap[id]) {
@@ -197,7 +203,7 @@ function fluentNestedBold(id, args) {
 
 function prettyDate(date, locales) {
   const jsDate = new Date(date);
-  const options = {year: "numeric", month: "long", day: "numeric"};
+  const options = { year: "numeric", month: "long", day: "numeric" };
   const intlDateTimeFormatter = new Intl.DateTimeFormat(locales, options);
   return intlDateTimeFormatter.format(jsDate);
 }
@@ -214,8 +220,8 @@ function getFxaUrl() {
 
 
 function eachFromTo(ary, min, max, options) {
-  if(!ary || ary.length === 0)
-      return options.inverse(this);
+  if (!ary || ary.length === 0)
+    return options.inverse(this);
 
   let result = "";
 
@@ -232,12 +238,12 @@ function localize(locales, stringId, args) {
 
 
 function loop(from, to, inc, block) {
-  block = block || {fn: function () { return arguments[0]; }};
-  const data = block.data || {index: null};
+  block = block || { fn: function () { return arguments[0]; } };
+  const data = block.data || { index: null };
   let output = "";
   for (let i = from; i <= to; i += inc) {
-      data["index"] = i;
-      output += block.fn(i, {data: data});
+    data["index"] = i;
+    output += block.fn(i, { data: data });
   }
   return output;
 }
@@ -251,10 +257,10 @@ function ifCompare(v1, operator, v2, options) {
     "<": v1 < v2 ? true : false,
     "<=": v1 <= v2 ? true : false,
     "===": v1 === v2 ? true : false,
-    "&&" : v1 && v2 ? true : false,
-    "||" : v1 || v2 ? true : false,
-    "!|" : !v1 || !v2 ? true : false,
-    "!!" : !v1 && !v2  ? true : false,
+    "&&": v1 && v2 ? true : false,
+    "||": v1 || v2 ? true : false,
+    "!|": !v1 || !v2 ? true : false,
+    "!!": !v1 && !v2 ? true : false,
   };
   if (operators.hasOwnProperty(operator)) {
     if (operators[operator]) {
@@ -262,7 +268,7 @@ function ifCompare(v1, operator, v2, options) {
     }
     return options.inverse(this);
   }
-  log.error("ifCompare", {message: `${operator} not found`});
+  log.error("ifCompare", { message: `${operator} not found` });
   return;
 }
 
@@ -271,7 +277,7 @@ function breachMath(lValue, operator = null, rValue = null) {
   lValue = parseFloat(lValue);
   let returnValue = lValue;
   if (operator) {
-      rValue = parseFloat(rValue);
+    rValue = parseFloat(rValue);
     returnValue = {
       "+": lValue + rValue,
       "-": lValue - rValue,
@@ -294,6 +300,7 @@ module.exports = {
   fluentFxa,
   getStringID,
   getSupportedLocales,
+  getFirstItem,
   fluentNestedBold,
   localizedBreachDataClasses,
   localize,

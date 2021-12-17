@@ -35,7 +35,7 @@ function isValidEmail(val) {
   return re.test(String(val).toLowerCase());
 }
 
-function getSubmittedEmail(){
+function getSubmittedEmail() {
   const email = document.querySelector("#scan-user-email input[type=email]").value;
   if (!isValidEmail(email)) {
     return false;
@@ -52,7 +52,7 @@ function overwriteLastScannedEmail(email, scannedEmailId) {
   scannedEmailId.value = sessionStorage.length;
 }
 
-function doOauth(el, {emailWatch = false} = {}) {
+function doOauth(el, { emailWatch = false } = {}) {
   let url = new URL("/oauth/init", document.body.dataset.serverUrl);
   url = getFxaUtms(url);
 
@@ -99,7 +99,7 @@ function doOauth(el, {emailWatch = false} = {}) {
 
 
 function addFormListeners() {
-  Array.from(document.forms).forEach(form =>  {
+  Array.from(document.forms).forEach(form => {
     if (form.querySelector("input[type=email]")) {
       const emailInput = form.querySelector("input[type=email]");
       emailInput.addEventListener("keydown", (e) => {
@@ -132,7 +132,7 @@ function handleFormSubmits(formEvent) {
   const thisForm = formEvent.target;
   let email = "";
 
-  sendPing(thisForm, "Submit", null, {transport: "beacon"});
+  sendPing(thisForm, "Submit", null, { transport: "beacon" });
 
   if (thisForm.email) {
     email = thisForm.email.value.trim();
@@ -161,11 +161,11 @@ function handleFormSubmits(formEvent) {
 
 //re-enables inputs and clears loader
 function restoreInputs() {
-  Array.from(document.forms).forEach( form => {
+  Array.from(document.forms).forEach(form => {
     form.classList.remove("loading-data");
     form.classList.remove("invalid");
   });
-  document.querySelectorAll("input").forEach( input => {
+  document.querySelectorAll("input").forEach(input => {
     if (input.disabled) {
       input.disabled = false;
     }
@@ -196,7 +196,7 @@ function toggleArticles() {
 }
 
 function hideShowNavBars(win, navBar, bentoButton) {
-  win.onscroll = function(e) {
+  win.onscroll = function (e) {
     // catch a window that has resized from less than 600px
     // to greater than 600px and unhide navigation.
     if (win.innerWidth > 600) {
@@ -210,10 +210,10 @@ function hideShowNavBars(win, navBar, bentoButton) {
     }
 
     if (
-        this.oldScroll < (this.scrollY - 50) &&
-        navBar.classList.contains("show-nav-bars") &&
-        !bentoButton._active
-      ) {
+      this.oldScroll < (this.scrollY - 50) &&
+      navBar.classList.contains("show-nav-bars") &&
+      !bentoButton._active
+    ) {
       navBar.classList = ["hide-nav-bars"];
       this.oldScroll = this.scrollY;
       return;
@@ -233,22 +233,22 @@ function toggleMobileFeatures(topNavBar) {
   const windowWidth = win.innerWidth;
   if (windowWidth > 800) {
     const emailCards = document.querySelectorAll(".breaches-dash.email-card:not(.zero-breaches)");
-      emailCards.forEach(card => {
-        card.classList.add("active");
-      });
-      return;
-    }
+    emailCards.forEach(card => {
+      card.classList.add("active");
+    });
+    return;
+  }
 
   const bentoButton = document.querySelector("firefox-apps");
   const closeActiveEmailCards = document.querySelectorAll(".breaches-dash.email-card.active");
-    closeActiveEmailCards.forEach(card => {
-      card.classList.remove("active");
-    });
+  closeActiveEmailCards.forEach(card => {
+    card.classList.remove("active");
+  });
 
-    if (windowWidth < 600) {
-      hideShowNavBars(win, topNavBar, bentoButton);
-      addBentoObserver();
-    }
+  if (windowWidth < 600) {
+    hideShowNavBars(win, topNavBar, bentoButton);
+    addBentoObserver();
+  }
 }
 
 function toggleHeaderStates(header, win) {
@@ -281,12 +281,12 @@ function addMainNavListeners() {
   });
 }
 
-function addBentoObserver(){
+function addBentoObserver() {
   const bodyClasses = document.body.classList;
   const bentoButton = document.querySelector("firefox-apps");
   const observerConfig = { attributes: true };
-  const watchBentoChanges = function(bentoEl, observer) {
-    for(const mutation of bentoEl) {
+  const watchBentoChanges = function (bentoEl, observer) {
+    for (const mutation of bentoEl) {
       if (mutation.type === "attributes") {
         bodyClasses.toggle("bento-open", bentoButton._active);
       }
@@ -298,18 +298,12 @@ function addBentoObserver(){
   }
 }
 
-function resizeDashboardMargin() {
-  const userDashboard = document.querySelector("#dashboard.dashboard");
-  if (!userDashboard) {
-    return;
-  }
-  const getHeaderHeight = () => {
-    const header = document.querySelector("header");
-    return header.offsetHeight;
-  };
-  if (userDashboard) {
-    userDashboard.style.paddingTop = `calc(${getHeaderHeight()}px + 80px)`;
-  }
+function setHeaderHeight() {
+  const header = document.getElementById("header");
+
+  if (!header) return;
+
+  document.body.style.setProperty("--header-height", `${header.offsetHeight}px`);
 }
 
 function recruitmentLogic() {
@@ -326,7 +320,7 @@ function recruitmentLogic() {
 
   recruitmentBannerLink.addEventListener("click", () => {
     const date = new Date();
-    date.setTime(date.getTime() + 30*24*60*60*1000);
+    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
     document.cookie = "recruited=true; expires=" + date.toUTCString();
   });
 }
@@ -334,7 +328,7 @@ function recruitmentLogic() {
 function addWaitlistSignupButtonListeners() {
   document.querySelectorAll(".relay-sign-up-btn").forEach(btn => {
 
-    btn.addEventListener("click", async(e) => {
+    btn.addEventListener("click", async (e) => {
       const relayEndpoint = new URL("/join-waitlist", document.body.dataset.serverUrl);
       const signUpCallout = document.querySelector(".relay-sign-up");
 
@@ -346,15 +340,15 @@ function addWaitlistSignupButtonListeners() {
           },
           mode: "same-origin",
           method: "POST",
-          body: JSON.stringify({"emailToAdd": "add-user-email"}),
+          body: JSON.stringify({ "emailToAdd": "add-user-email" }),
         });
         if (response && response.status === 200) {
-          setTimeout(()=> {
+          setTimeout(() => {
             signUpCallout.classList.add("email-sent");
             signUpCallout.classList.remove("sending-email");
           }, 500);
         }
-      } catch(e) {
+      } catch (e) {
         // we need error messaging
       }
     });
@@ -369,7 +363,7 @@ function addWaitlistObservers() {
     return;
   }
   const availableIntersectionObserver = ("IntersectionObserver" in window);
-  const gaAvailable = typeof(ga) !== undefined;
+  const gaAvailable = typeof (ga) !== undefined;
 
 
   if (availableIntersectionObserver && gaAvailable) {
@@ -393,11 +387,11 @@ function addWaitlistObservers() {
       observer.observe(relayCta);
       relayCta.addEventListener("click", (e) => {
         if (relayCta.href) {
-          if (typeof(ga) !== "undefined") {
+          if (typeof (ga) !== "undefined") {
             // Recheck if the user is on strict-mode and only block the click default action if GA is available
             e.preventDefault();
             ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel, {
-            "hitCallback": window.location.href = relayCta.href,
+              "hitCallback": window.location.href = relayCta.href,
             });
           }
           return;
@@ -411,7 +405,7 @@ function addWaitlistObservers() {
 async function initVpnBanner() {
   const vpnBanner = document.querySelector(".vpn-banner");
 
-  if(!vpnBanner) return;
+  if (!vpnBanner) return;
 
   const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
   resizeObserver.observe(vpnBanner); // call before `await` for initial height render
@@ -515,13 +509,13 @@ async function initVpnBanner() {
   }
 }
 
-( async() => {
-  document.addEventListener("touchstart", function(){}, true);
+(async () => {
+  document.addEventListener("touchstart", function () { }, true);
   const win = window;
   const header = document.getElementById("header");
   const topNavigation = document.querySelector("#navigation-wrapper");
 
-  win.addEventListener("pageshow", function() {
+  win.addEventListener("pageshow", function () {
     addMainNavListeners();
     toggleMobileFeatures(topNavigation);
     toggleArticles();
@@ -534,11 +528,11 @@ async function initVpnBanner() {
   let windowWidth = win.outerWidth;
   win.addEventListener("resize", () => {
     const newWindowWidth = win.outerWidth;
-      if (newWindowWidth !== windowWidth) {
+    if (newWindowWidth !== windowWidth) {
       toggleMobileFeatures(topNavigation);
       toggleArticles();
       windowWidth = newWindowWidth;
-      resizeDashboardMargin();
+      setHeaderHeight();
     }
   });
 
@@ -563,19 +557,17 @@ async function initVpnBanner() {
       button.classList.add("fade-out");
       const overflowRecs = document.getElementById("overflow-recs");
       overflowRecs.classList.remove("hide");
-      if (typeof(ga) !== "undefined") {
+      if (typeof (ga) !== "undefined") {
         // Send "Click" ping for #see-additional-recs click
-        ga("send", "event", "Breach Details: See Additional Recommendations" , "Click", "See Additional Recommendations");
+        ga("send", "event", "Breach Details: See Additional Recommendations", "Click", "See Additional Recommendations");
         // Send "View" pings for any CTAs that become visible on #see-additional-recs click
         sendRecommendationPings(".overflow-rec-cta");
       }
     });
   });
 
-  resizeDashboardMargin();
-
+  setHeaderHeight();
   recruitmentLogic();
-
   addWaitlistSignupButtonListeners();
   addWaitlistObservers();
   initVpnBanner();
@@ -591,12 +583,12 @@ async function initVpnBanner() {
   const submitBtn = document.querySelector(".breachesSubmitButton");
 
   if (submitBtn) {
-    submitBtn.addEventListener("click", (e)=> {
+    submitBtn.addEventListener("click", (e) => {
       // Email Validation
       const scanForm = document.getElementById("scan-user-email");
       const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
 
-      if (scanFormEmailValue.length < 1  || !isValidEmail(scanFormEmailValue)) {
+      if (scanFormEmailValue.length < 1 || !isValidEmail(scanFormEmailValue)) {
         scanForm.classList.add("invalid");
         return;
       }
@@ -605,7 +597,7 @@ async function initVpnBanner() {
         e.preventDefault();
 
         // Send GA Ping
-        if (typeof(ga) !== "undefined") {
+        if (typeof (ga) !== "undefined") {
           ga("send", {
             hitType: "event",
             eventCategory: "Sign Up Button",
@@ -617,7 +609,7 @@ async function initVpnBanner() {
           });
         }
 
-        doOauth(e.target, {emailWatch: true});
+        doOauth(e.target, { emailWatch: true });
         return;
       }
 
