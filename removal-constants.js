@@ -43,10 +43,10 @@ const REMOVAL_CONSTANTS = {
     "/remove-update-confirmation",
     "/remove-delete-confirmation",
     "/remove-pilot-ended",
-  ], //used to highlight the exposures tab on any route in array
+  ], //used to underline the exposures menu tab on any route in this array
   REMOVE_ROUTES: ["/user/remove-data", "/user/remove-enroll"],
   REMOVAL_PILOTS: [
-    //https://www.epochconverter.com/
+    //can use https://www.epochconverter.com/ for a timestamp
     {
       id: 1,
       name: "group_01",

@@ -849,8 +849,7 @@ async function getRemovalPage(req, res) {
       console.error(
         "kid in database, but no account returned from API - likely this account was removed"
       );
-      const localeError = LocaleUtils.fluentFormat(
-        req.supportedLocales,
+      const localeError = LocaleUtils.formatRemoveString(
         "remove-error-kid-but-no-acct"
       );
       res.render("dashboards", {
@@ -1398,8 +1397,7 @@ async function handleRemovalEnrollFormSignup(req, res) {
     const hashMatch = await checkEmailHash(user.primary_email);
 
     if (!hashMatch) {
-      const localeError = LocaleUtils.fluentFormat(
-        req.supportedLocales,
+      const localeError = LocaleUtils.formatRemoveString(
         "remove-error-no-fxa-waitlist-match"
       );
       return res.status(400).json({
@@ -1496,8 +1494,7 @@ async function handleRemovalFormSignup(req, res) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {
-      const localeError = LocaleUtils.fluentFormat(
-        req.supportedLocales,
+      const localeError = LocaleUtils.formatRemoveString(
         "remove-error-no-waitlist-match"
       );
       return res.status(400).json({
@@ -1679,8 +1676,7 @@ async function handleRemovalAcctUpdate(req, res) {
     const hashMatch = await checkEmailHash(account);
 
     if (!hashMatch) {
-      const localeError = LocaleUtils.fluentFormat(
-        req.supportedLocales,
+      const localeError = LocaleUtils.formatRemoveString(
         "remove-error-no-waitlist-match"
       );
       return res.status(400).json({
