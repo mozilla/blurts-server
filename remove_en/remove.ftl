@@ -345,7 +345,6 @@ remove-modal-optout-text = If your request is blocked, or if for any reason you 
 
 remove-about-faq-title = FAQ
 remove-about-faq-long-title = Frequently Asked Questions
-remove-faq-title = Data Removal Pilot FAQ
 
 remove-about-faq-details = Pilot details
 remove-about-details-content = In partnership with <a data-l10n-name="remove-link-partner">{ -remove-brand-partner }</a>, we are evaluating a new feature for { -product-name }
