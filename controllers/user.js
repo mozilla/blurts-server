@@ -1413,8 +1413,7 @@ async function handleRemovalEnrollFormSignup(req, res) {
     return res.json({ nextPage: nextPage });
   } else if (checkIfEnrolledInRemovalPilot(user)) {
     //if user has already enrolled
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-enroll-error-is_enrolled"
     );
     return res.status(400).json({ error: localeError });
@@ -1434,10 +1433,7 @@ async function handleRemovalFormSignup(req, res) {
   if (!user) {
     console.error("no user");
 
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-user"
-    );
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
 
     return res.status(404).json({
       error: localeError,
@@ -1448,8 +1444,7 @@ async function handleRemovalFormSignup(req, res) {
     console.error(
       "user should have been directed to the handleRemovalAcctUpdate function if they have a kid"
     );
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-error-account-exists"
     );
 
@@ -1474,8 +1469,7 @@ async function handleRemovalFormSignup(req, res) {
   if (!emailMatch) {
     console.error("no email match");
 
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-email-match"
     );
 
@@ -1490,8 +1484,7 @@ async function handleRemovalFormSignup(req, res) {
     console.error(
       "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
     );
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-email-domain-match"
     );
     return res.status(404).json({
@@ -1570,6 +1563,7 @@ async function handleKanaryAPISubmission(memberInfo) {
 
 async function checkForEmailMatch(account, user) {
   let emailMatch = false;
+
   if (user.primary_email && user.primary_verified) {
     if (user.primary_email === account) {
       emailMatch = true;
@@ -1633,10 +1627,7 @@ async function checkEmailHash(account) {
 async function handleRemovalAcctUpdate(req, res) {
   if (!req.user) {
     console.error("no user");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-user"
-    );
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
 
     return res.status(404).json({
       error: localeError,
@@ -1661,8 +1652,7 @@ async function handleRemovalAcctUpdate(req, res) {
 
   if (!emailMatch) {
     console.error("no email match");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-email-match"
     );
 
@@ -1677,8 +1667,7 @@ async function handleRemovalAcctUpdate(req, res) {
     console.error(
       "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
     );
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-email-domain-match"
     );
     return res.status(404).json({
@@ -1703,8 +1692,7 @@ async function handleRemovalAcctUpdate(req, res) {
   const removeAcctInfo = await getRemoveAcctInfo(user.kid);
   if (parseInt(id) !== parseInt(removeAcctInfo.id)) {
     console.error("no id match");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
+    const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-kid-match"
     );
     return res.status(404).json({
@@ -1745,10 +1733,7 @@ async function handleRemovalAcctUpdate(req, res) {
     });
   } else {
     console.error("error submitting updates to kanary");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-update"
-    );
+    const localeError = LocaleUtils.formatRemoveString("remove-error-update");
     return res.status(500).json({
       error: localeError,
     });
@@ -1865,10 +1850,7 @@ async function getRemovalStatsUser(req, res) {
   //MH TODO: validate form data server side
   if (!req.user) {
     console.error("no user");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-user"
-    );
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
     return res.status(404).json({
       error: localeError,
     });
@@ -1878,10 +1860,7 @@ async function getRemovalStatsUser(req, res) {
 
   if (!user.kid) {
     console.error("no kid user", user);
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-kid"
-    );
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-kid");
     return res.status(404).json({
       error: localeError,
     });
@@ -1901,10 +1880,7 @@ async function getRemovalStatsUser(req, res) {
 async function createRemovalHashWaitlist(req, res) {
   if (!req.user) {
     console.error("no user");
-    const localeError = LocaleUtils.fluentFormat(
-      req.supportedLocales,
-      "remove-error-no-user"
-    );
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
     return res.status(404).json({
       error: localeError,
     });
