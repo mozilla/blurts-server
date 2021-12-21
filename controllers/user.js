@@ -11,6 +11,7 @@ const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
 const Joi = require("joi");
+const got = require("got");
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -23,7 +24,6 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 //DATA REMOVAL SPECIFIC
 const { FormUtils } = require("../form-utils");
-const fetch = require("node-fetch");
 const bcrypt = require("bcrypt");
 const fs = require("fs");
 const { REMOVAL_CONSTANTS, REMOVAL_STATUS } = require("../removal-constants");
@@ -423,8 +423,14 @@ async function postRemoveFxm(req, res) {
 
   //DATA REMOVAL SPECIFIC
   if (sessionUser.kid) {
+    const deleteResponse = await removeKanaryAcct(sessionUser.kid);
+    if (!deleteResponse.id) {
+      const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
+      return res.status(400).json({
+        error: localeError,
+      });
+    }
     await DB.removeKan(sessionUser);
-    await removeKanaryAcct(sessionUser.kid);
   }
   //END DATA REMOVAL SPECIFIC
 
@@ -688,7 +694,6 @@ function logout(req, res) {
 //DATA REMOVAL SPECIFIC:
 
 async function getRemovalEnrollPage(req, res) {
-  console.log("get removal enroll page");
   const user = req.user;
 
   if (checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
@@ -1170,93 +1175,81 @@ function sortRemovalData(removalData) {
 }
 
 async function getRemoveDashData(kanary_id) {
-  return fetch(
-    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then((json) => {
-      if (json && json.length) {
-        return sortRemovalData(json);
-      } else {
-        return null;
+  try {
+    const json = await got(
+      `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+        },
       }
-    })
-    .catch((error) => {
-      console.error(
-        "there was an error getting matches for this account",
-        error,
-        kanary_id
-      );
-    });
+    ).json();
+    if (json && json.length) {
+      return sortRemovalData(json);
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error(
+      "there was an error getting matches for this account",
+      error,
+      kanary_id
+    );
+    return null;
+  }
 }
 
 async function getRemoveAcctInfo(kanary_id) {
-  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => {
-      if (json.members && json.members.length) {
-        return json.members[0];
-      } else {
-        console.error("no account info available");
-        return null;
+  try {
+    const json = await got(
+      `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+        },
       }
-    })
-    .catch((error) => {
-      console.error(
-        "there was an error getting account info for this account",
-        error
-      );
+    ).json();
+    if (json.members && json.members.length) {
+      return json.members[0];
+    } else {
+      console.error("no account info available");
       return null;
-    });
+    }
+  } catch (error) {
+    console.error(
+      "there was an error getting account info for this account",
+      error
+    );
+    return null;
+  }
 }
 
 async function removeKanaryAcct(kanary_id) {
-  return fetch(`https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-  })
-    .then((res) => {
-      if (res.ok) {
-        if (res.status === 204) {
-          return "";
-        } else if (res.status === 200) {
-          return res.json();
-        }
-      } else {
-        console.error("there was an error deleting the account");
+  try {
+    const res = await got(
+      `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+        },
       }
-    })
-    .then((json) => {
-      //return json;
-      if (json.terminated_at) {
-        //request was successful
-        return json;
-      } else {
-        console.error(
-          "not receiving the expected response from the API for the data removal request"
-        );
-        return null;
-      }
-    })
-    .catch((error) => {
-      console.error("there was an error deleting the account", error);
-    });
+    );
+    if (res.statusCode === 204) {
+      return "";
+    } else if (res.statusCode === 200) {
+      const jsonBody = JSON.parse(res.body);
+      return jsonBody;
+    }
+  } catch (error) {
+    console.error("there was an error deleting the account", error);
+    return null;
+  }
 }
 
 async function getRemovalKan(req, res) {
@@ -1272,7 +1265,13 @@ async function getRemovalKan(req, res) {
 
 async function postRemovalKan(req, res) {
   const sessionUser = req.user;
-  await removeKanaryAcct(sessionUser.kid);
+  const deleteResponse = await removeKanaryAcct(sessionUser.kid);
+  if (!deleteResponse.id) {
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
+    return res.status(400).json({
+      error: localeError,
+    });
+  }
   await DB.removeKan(sessionUser);
   res.redirect("/user/remove-delete-confirmation");
 }
@@ -1543,6 +1542,12 @@ async function handleRemovalFormSignup(req, res) {
   const jsonMemberList = JSON.stringify(memberList);
 
   const memberID = await handleKanaryAPISubmission(jsonMemberList);
+  if (!memberID) {
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
+    return res.status(400).json({
+      error: localeError,
+    });
+  }
   if (!user.kid) {
     await DB.setKanaryID(user, memberID);
   }
@@ -1592,21 +1597,25 @@ function validateRemovalForm(fields) {
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
-  return fetch("https://thekanary.com/partner-api/v0/accounts/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-    body: memberInfo,
-  })
-    .then((res) => res.json())
-    .then((data) => {
+  try {
+    const data = await got("https://thekanary.com/partner-api/v0/accounts/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+      },
+      body: memberInfo,
+    }).json();
+    if (data.id) {
       return data.id;
-    })
-    .catch((error) => {
-      console.error("there was an error posting to the api", error);
-    });
+    } else {
+      console.error("the api did not return an id");
+      return null;
+    }
+  } catch (error) {
+    console.error("there was an error posting to the api", error);
+    return null;
+  }
 }
 
 async function checkForEmailMatch(account, user) {
@@ -1796,21 +1805,28 @@ async function handleRemovalAcctUpdate(req, res) {
 }
 
 async function handleKanaryUpdateSubmission(memberInfo, id) {
-  return fetch(`https://thekanary.com/partner-api/v0/members/${id}/`, {
-    method: "PATCH",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-    },
-    body: memberInfo,
-  })
-    .then((res) => res.json())
-    .then((data) => {
+  try {
+    const data = await got(
+      `https://thekanary.com/partner-api/v0/members/${id}/`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+        },
+        body: memberInfo,
+      }
+    ).json();
+    if (data.id) {
       return data.id;
-    })
-    .catch((error) => {
-      console.error("there was an error posting to the api", error);
-    });
+    } else {
+      console.error("the api did not return an id");
+      return null;
+    }
+  } catch (error) {
+    console.error("there was an error posting to the api", error);
+    return null;
+  }
 }
 
 async function calculateAverageResolutionTime(resolutionTimeArray) {
@@ -1835,70 +1851,61 @@ async function calculateAverageResolutionTime(resolutionTimeArray) {
 }
 
 async function getRemoveRateByKid(kanary_id, aggregate = false) {
-  return fetch(
-    `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-      },
-    }
-  )
-    .then((res) => res.json())
-    .then(async (json) => {
-      if (json && json.length) {
-        const resultData = {
-          totalResults: json.length,
-          removedResults: 0,
-          resolutionPct: null,
-          resolutionTimeArray: [],
-          resolutionTime: null,
-        };
-        await json.forEach(async (removeResult) => {
-          if (removeResult.status === "COMPLETE") {
-            resultData.removedResults++;
-            const resolutionTime =
-              await FormUtils.calculateDaysBetweenTimestamps(
-                new Date(removeResult.created_at),
-                new Date(removeResult.updated_at)
-              );
+  try {
+    const json = await got(
+      `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+        },
+      }
+    ).json();
+    if (json && json.length) {
+      const resultData = {
+        totalResults: json.length,
+        removedResults: 0,
+        resolutionPct: null,
+        resolutionTimeArray: [],
+        resolutionTime: null,
+      };
+      await json.forEach(async (removeResult) => {
+        if (removeResult.status === "COMPLETE") {
+          resultData.removedResults++;
+          const resolutionTime = await FormUtils.calculateDaysBetweenTimestamps(
+            new Date(removeResult.created_at),
+            new Date(removeResult.updated_at)
+          );
 
-            if (resolutionTime > 0) {
-              resultData.resolutionTimeArray.push(
-                FormUtils.numberWithDigits(resolutionTime, 2)
-              );
-            }
+          if (resolutionTime > 0) {
+            resultData.resolutionTimeArray.push(
+              FormUtils.numberWithDigits(resolutionTime, 2)
+            );
           }
-        });
-        console.log(
-          "resolution time array",
-          kanary_id,
+        }
+      });
+
+      resultData.resolutionPct = FormUtils.calculatePercentage(
+        resultData.removedResults,
+        resultData.totalResults
+      );
+      if (!aggregate) {
+        //if calculating for a single individual, get their resolution time data here
+        const resolutionTimeData = await calculateAverageResolutionTime(
           resultData.resolutionTimeArray
         );
-        resultData.resolutionPct = FormUtils.calculatePercentage(
-          resultData.removedResults,
-          resultData.totalResults
-        );
-        if (!aggregate) {
-          //if calculating for a single individual, get their resolution time data here
-          const resolutionTimeData = await calculateAverageResolutionTime(
-            resultData.resolutionTimeArray
-          );
-          resultData.resolutionTimeData = resolutionTimeData;
-        }
-
-        return resultData;
-      } else {
-        return [];
+        resultData.resolutionTimeData = resolutionTimeData;
       }
-    })
-    .catch((error) => {
-      console.error(
-        "there was an error getting matches for this account",
-        error
-      );
-    });
+
+      return resultData;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error("there was an error getting matches for this account", error);
+    return null;
+  }
 }
 
 async function getRemovalStatsUser(req, res) {
