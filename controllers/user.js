@@ -10,6 +10,7 @@ const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
 const { resultsSummary } = require("../scan-results");
 const sha1 = require("../sha1-utils");
+const Joi = require("joi");
 
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
@@ -902,6 +903,7 @@ async function getRemovalPage(req, res) {
     whichPartial: partialString,
     experimentFlags,
     utmOverrides,
+    doClientsideValidation: REMOVAL_CONSTANTS.REMOVE_CLIENT_VALIDATION_ENABLED,
   });
 }
 
@@ -1503,6 +1505,14 @@ async function handleRemovalFormSignup(req, res) {
     }
   }
 
+  const validationResults = validateRemovalForm(req.body);
+
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error,
+    });
+  }
+
   const memberList = {
     members: [
       {
@@ -1538,6 +1548,47 @@ async function handleRemovalFormSignup(req, res) {
   }
 
   return res.json({ nextPage: "/user/remove-signup-confirmation" });
+}
+
+function validateRemovalForm(fields) {
+  const nameRegEx = new RegExp("^([A-zÀ-ž-'s]){2,}");
+  const regexID = "alpha";
+  const errorCode = 400;
+  const successCode = 200;
+
+  const removalFormSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    id: Joi.string(),
+    account: Joi.string().email().required(),
+    firstname: Joi.string()
+      .min(2)
+      .pattern(nameRegEx, { name: regexID })
+      .required(),
+    middlename: Joi.string().pattern(nameRegEx, { name: regexID }),
+    lastname: Joi.string()
+      .min(2)
+      .pattern(nameRegEx, { name: regexID })
+      .required(),
+    city: Joi.string().min(2).pattern(nameRegEx, { name: regexID }),
+    state: Joi.string().min(2).max(2).required(),
+    country: Joi.string().min(2).max(2).required(),
+    birthyear: Joi.number().integer().min(1900).max(2020).required(),
+  });
+  const validationResults = removalFormSchema.validate(fields);
+  const validationResponse = { status: successCode, error: null };
+  if (validationResults.error) {
+    //console.log(validationResults.error.details);
+    validationResponse.status = errorCode;
+    const firstError = validationResults.error.details[0];
+    if (firstError.context.name === "alpha") {
+      const localeError = LocaleUtils.formatRemoveString("remove-error-alpha");
+
+      validationResponse.error = `"${firstError.context.label}" ${localeError}`;
+    } else {
+      validationResponse.error = firstError.message;
+    }
+  }
+  return validationResponse;
 }
 
 async function handleKanaryAPISubmission(memberInfo) {
@@ -1693,6 +1744,14 @@ async function handleRemovalAcctUpdate(req, res) {
     );
     return res.status(404).json({
       error: localeError,
+    });
+  }
+
+  const validationResults = validateRemovalForm(req.body);
+
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error,
     });
   }
 

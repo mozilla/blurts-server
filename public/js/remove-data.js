@@ -285,29 +285,30 @@ function onRemoveFormSubmitClick(e) {
   clearFieldErrors();
 
   const $form = e.target.form;
-
-  clearFieldValidity();
-
-  const emptyFields = checkEmptyErrors($form);
-  if (emptyFields.length) {
-    displayEmptyFieldErrors(emptyFields);
-    return;
-  }
-
+  const doValidate = $form.dataset.validate;
   const formData = new FormData($form);
+  if (doValidate) {
+    clearFieldValidity();
 
-  const nameError =
-    "This field must use only letters, spaces, apostrophes, or dashes, and must be at least 2 characters long";
-  const unknownError = "There was an unknown error with this field";
+    const emptyFields = checkEmptyErrors($form);
+    if (emptyFields.length) {
+      displayEmptyFieldErrors(emptyFields);
+      return;
+    }
 
-  checkNameErrors(nameError, unknownError);
-  checkLocErrors(nameError, unknownError);
+    const nameError =
+      "This field must use only letters, spaces, apostrophes, or dashes, and must be at least 2 characters long";
+    const unknownError = "There was an unknown error with this field";
 
-  const isValid = e.target.form.reportValidity();
+    checkNameErrors(nameError, unknownError);
+    checkLocErrors(nameError, unknownError);
 
-  if (!isValid) {
-    return;
+    const isValid = $form.reportValidity(); //use native html form validator
+    if (!isValid) {
+      return;
+    }
   }
+
   populateConfirmData(formData);
   toggleConfirmScreen(true);
 }
@@ -359,9 +360,13 @@ function onRemoveConfirmSubmitClick(e) {
 
 function handleFormSubmit(e) {
   const $form = document.getElementById("remove-data-signup-form");
-  const isValid = $form.reportValidity(); //use native html form validator
-  if (!isValid) {
-    return;
+  const doValidate = $form.dataset.validate;
+  if (doValidate) {
+    console.log("client side validation");
+    const isValid = $form.reportValidity(); //use native html form validator
+    if (!isValid) {
+      return;
+    }
   }
   const formData = new FormData($form);
 
