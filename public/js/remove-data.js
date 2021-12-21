@@ -24,7 +24,7 @@ function initRemove() {
         initRemoveStats();
         break;
       default:
-        console.log("no matching page id");
+        console.log("no page specific js required");
     }
   }
 }
@@ -362,7 +362,6 @@ function handleFormSubmit(e) {
   const $form = document.getElementById("remove-data-signup-form");
   const doValidate = $form.dataset.validate;
   if (doValidate) {
-    console.log("client side validation");
     const isValid = $form.reportValidity(); //use native html form validator
     if (!isValid) {
       return;

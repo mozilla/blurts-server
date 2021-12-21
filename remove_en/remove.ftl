@@ -467,3 +467,4 @@ remove-error-no-kid-match = The Kanary ID submitted for this user does not match
 remove-error-update = Error submitting updates to Kanary. Please try your request again.
 remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in Kanary. Please contact support.
 remove-error-alpha = field allows only letters, dashes, and spaces
+remove-error-no-id = The {-brand-remove-partner} API did not return an ID
