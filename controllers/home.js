@@ -166,9 +166,8 @@ function notFound(req, res) {
 //DATA REMOVAL SPECIFIC
 
 function getRemovalFAQPage(req, res) {
-  console.log("get remove faq page");
   return res.render("top-level-page", {
-    title: req.fluentFormat("remove-faq-title"),
+    title: "Data Removal Pilot FAQ",
     whichPartial: "top-level/remove-faq",
   });
 }

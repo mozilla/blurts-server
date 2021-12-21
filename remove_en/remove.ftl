@@ -257,7 +257,7 @@ remove-enrolled-btn = Get started
 
 remove-kan = Confirm Cancelation
 remove-kan-disclaimer-title = Disclaimer
-remove-kan-disclaimer-content = Deleting your account removes all of your data from { -product-name } as well as from our partner service { -remove-brand-partner }.
+remove-kan-disclaimer-content = Canceling this service removes all of your { remove-process-name } specific information from { -product-name } as well as from our partner service { -remove-brand-partner }.
  Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended.
  Your information will be removed upon removal request.
 remove-kan-blurb = Confirm cancellation of { remove-process-name } service? Your { -product-short-name } account will remain active.
@@ -345,7 +345,6 @@ remove-modal-optout-text = If your request is blocked, or if for any reason you 
 
 remove-about-faq-title = FAQ
 remove-about-faq-long-title = Frequently Asked Questions
-remove-faq-title = Data Removal Pilot FAQ
 
 remove-about-faq-details = Pilot details
 remove-about-details-content = In partnership with <a data-l10n-name="remove-link-partner">{ -remove-brand-partner }</a>, we are evaluating a new feature for { -product-name }
