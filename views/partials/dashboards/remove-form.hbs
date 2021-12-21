@@ -37,7 +37,7 @@
     </div>
   <div class="mw-860 remove-dashboard-section-container">
     <section class="remove-dashboard-form-container remove-dashboard-section">
-      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate>
+      <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate {{#if this.doClientsideValidation}}data-validate="true"{{/if}}>
       <div class="remove-dashboard-form-enter">
         
           {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}

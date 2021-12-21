@@ -903,6 +903,7 @@ async function getRemovalPage(req, res) {
     whichPartial: partialString,
     experimentFlags,
     utmOverrides,
+    doClientsideValidation: REMOVAL_CONSTANTS.REMOVE_CLIENT_VALIDATION_ENABLED,
   });
 }
 

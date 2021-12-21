@@ -24,6 +24,7 @@ const REMOVAL_CONSTANTS = {
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: false, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
   REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
   REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: false, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
+  REMOVE_CLIENT_VALIDATION_ENABLED: true, //allows us to run removal form validity check client side before server side validation
   REMOVE_EMAIL_DOMAIN_LIST: [
     "mozilla.com",
     "getpocket.com",
