@@ -348,6 +348,12 @@ function kebabCase(str) {
   }
 }
 
+function lowerCase(str) {
+  if (str && str.length) {
+    return str.toLowerCase();
+  }
+}
+
 function incrementedIndex(index) {
   index++;
   return index;
@@ -384,6 +390,7 @@ module.exports = {
   //DATA REMOVAL SPECIFIC
   sentenceCase,
   kebabCase,
+  lowerCase,
   getOptOutLink,
   incrementedIndex,
   getRemoveString,
