@@ -429,6 +429,7 @@ function onRemoveDashFAQToggle(e) {
 
 function onStatusFilterToggle(e) {
   e.preventDefault();
+  e.stopPropagation();
   const $item = e.currentTarget.closest(".remove-filter-key-list-item");
   const $container = document.querySelector(".remove-dashboard-container");
 

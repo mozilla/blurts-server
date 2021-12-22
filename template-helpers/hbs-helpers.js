@@ -338,6 +338,16 @@ function sentenceCase(str) {
   }
 }
 
+function kebabCase(str) {
+  if (str && str.length) {
+    // eslint-disable-next-line no-useless-escape
+    return str
+      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      .replace(/[\s_]+/g, "-")
+      .toLowerCase();
+  }
+}
+
 function incrementedIndex(index) {
   index++;
   return index;
@@ -373,6 +383,7 @@ module.exports = {
   vpnPromoBlocked,
   //DATA REMOVAL SPECIFIC
   sentenceCase,
+  kebabCase,
   getOptOutLink,
   incrementedIndex,
   getRemoveString,

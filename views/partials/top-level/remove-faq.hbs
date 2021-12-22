@@ -102,13 +102,9 @@
             <div class="remove-faq__title-container flx cntr space-between">
               <h4 class="remove-faq__q-title">{{getRemoveString "remove-faq-sites-title"}}</h4>
               <div class="remove-faq__toggle-container">
-                <a href="" class="remove-faq__toggle js-remove-faq-toggle">
-                  <img
-                    src="/img/removal/chevron-down-grey.svg"
-                    alt="View Answer to this Question"
-                    class="remove-faq__toggle-img"
-                  />
-                </a>
+                <label class="sr-only" for="remove-faq-sites-title">{{getRemoveString "remove-expand"}}</label>
+                <button id="remove-faq-sites-title" class="remove-faq__toggle js-remove-faq-toggle" name="expand section">
+                </button>
               </div>
             </div>
             <div class="remove-faq__details-container">
@@ -117,49 +113,49 @@
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-fxa-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-fxa-title" alt=(getRemoveString "remove-faq-fxa-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-fxa-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-pii-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-pii-title" alt=(getRemoveString "remove-faq-pii-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-pii-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-how-found-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-how-found-title" alt=(getRemoveString "remove-faq-how-found-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-how-found-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-usage-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-usage-title" alt=(getRemoveString "remove-faq-usage-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-usage-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-guarantee-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-guarantee-title" alt=(getRemoveString "remove-faq-guarantee-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-guarantee-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-blocked-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-blocked-title" alt=(getRemoveString "remove-faq-blocked-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-blocked-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-search-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-search-title" alt=(getRemoveString "remove-faq-search-title")}}
             <div class="remove-faq__details-container">
               <p>{{getRemoveString "remove-faq-search-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title alt=(getRemoveString "remove-faq-cancel-title")}}
+            {{> data-removal/remove-faq-title altid="remove-faq-cancel-title" alt=(getRemoveString "remove-faq-cancel-title")}}
             <div class="remove-faq__details-container">
               <p>{{{getRemoveString "remove-faq-cancel-content"}}}</p>
               <p><a href="/user/remove-kan">Click here to cancel</a></p>

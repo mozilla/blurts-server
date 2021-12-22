@@ -79,6 +79,19 @@
     }
   }
 
+  &__toggle {
+    border: 0;
+    width: 32px;
+    height: 32px;
+    background: url('/img/removal/chevron-down-grey.svg') center no-repeat;
+    &:focus, &:hover {
+      filter: brightness(.5);
+    }
+    .remove-faq__list-item.is-active & {
+      transform: rotate(180deg);
+    }
+  }
+
   &__title-container {
     width: 100%;
   }

@@ -3,11 +3,7 @@
     {{#getRemovalFilters}}
       {{#each this.filters}}
         <li class="remove-filter-key-list-item" data-id="{{this.id}}">
-          <a
-            href="#"
-            class="remove-filter-key-button flx jst-cntr"
-            role="button"
-          >
+          <button class="remove-filter-key-button flx jst-cntr">
             <img
               class="remove-filter-key-list-icon"
               src="{{this.icon}}"
@@ -16,7 +12,7 @@
             <span
               class="remove-filter-key-list-title"
             >{{this.statusText}}</span>
-          </a>
+          </button>
         </li>
       {{/each}}
     {{/getRemovalFilters}}

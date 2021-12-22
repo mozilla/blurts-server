@@ -358,10 +358,8 @@
   }
 
   &-key-list-item {
-    border: 1px solid var(--inkDark);
-    padding: 7px 10px;
+    
     height: 32px;
-    border-radius: 16px;
     margin-left: 12px;
 
     &:first-child {
@@ -376,13 +374,18 @@
       margin-left: 0;
       margin-top: 10px;
       height: 48px;
-      border-radius: 24px;
     }
   }
 
   &-key-button {
+    height: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--inkDark);
+    border-radius: 16px;
+
     @include breakpoint(mobile) {
       width: 100%;
+      border-radius: 24px;
     }
   }
 
@@ -416,7 +419,9 @@
       }
 
       .remove-filter-key-list-item[data-id*="#{$k-status-progress}"] {
-        background-color: var(--inkDark);
+        .remove-filter-key-button {
+          background-color: var(--inkDark);
+        }
 
         .remove-filter-key-list-title {
           color: white;
@@ -432,7 +437,10 @@
         display: block;
       }
       .remove-filter-key-list-item[data-id*="#{$k-status-complete}"] {
-        background-color: var(--inkDark);
+        
+        .remove-filter-key-button {
+          background-color: var(--inkDark);
+        }
 
         .remove-filter-key-list-title {
           color: white;
@@ -448,7 +456,9 @@
         display: block;
       }
       .remove-filter-key-list-item[data-id*="#{$k-status-blocked}"] {
-        background-color: var(--inkDark);
+        .remove-filter-key-button {
+          background-color: var(--inkDark);
+        }
 
         .remove-filter-key-list-title {
           color: white;
@@ -565,6 +575,13 @@
 
   &-delete-container {
     margin-top: 20px;
+  }
+
+  &-delete-link {
+    &:hover, &:focus {
+      background-color: var(--alertRed);
+      color: white;
+    }
   }
 
   &-form {
@@ -758,6 +775,12 @@
 
 .remove-question-trigger {
   margin-left: 5px;
+  border: 0;
+  &:focus, &:hover {
+    .remove-question-img {
+      filter: brightness(.9);
+    }
+  }
 }
 
 .tmp-select-output {
@@ -831,7 +854,7 @@
 
 .remove-form-deleted {
   &-section {
-    background-color: var(--purple);
+    background-color: var(--violet4);
     color: white;
   }
 

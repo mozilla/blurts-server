@@ -298,6 +298,7 @@ remove-risk-title-low = Low
 remove-modal-close = Close
 remove-modal-close-accessible = Close this dialog window
 remove-modal-more-info = Learn More
+remove-expand = Expand Section
 
 # Data Removal Info Needed modal
 

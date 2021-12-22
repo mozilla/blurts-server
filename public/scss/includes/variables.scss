@@ -19,7 +19,7 @@
   --topHeadline: 56px;
   --borderColor: #eee;
   --textLight: #5e5e72;
-  --alertRed: #ff4f5e;
+  --alertRed: #ee0700; //MH Accessibility: this is the closest WCAG compliant red-on-white color. Should replace sitewide if changing this hex as some values can not leverage the variable
   --alertRedDark: #d10000;
   --purple: #9059ff;
   --violet1: #c689ff;

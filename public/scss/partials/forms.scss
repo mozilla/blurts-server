@@ -383,6 +383,7 @@ input[type="radio"]:focus ~ .checkmark {
   margin: 0 16px;
   outline: 0;
   color: var(--grey5);
+  background-color: transparent;
 }
 
 .input-group-checkbox {

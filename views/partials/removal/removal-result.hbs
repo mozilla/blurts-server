@@ -54,16 +54,12 @@
       <div
         class="remove-dash-results-toggle-container remove-dash-results-status-el"
       >
-        <a
-          href="#"
+        <label class="sr-only" for="{{kebabCase this.broker}}-btn">{{getRemoveString "remove-expand"}}</label>
+        <button
+          id="{{kebabCase this.broker}}-btn"
           class="remove-dash-results-toggle js-remove-dash-details-toggle"
         >
-          <img
-            src="/img/removal/chevron-down-grey.svg"
-            alt="{{getRemoveString "remove-results-toggle-alt"}}"
-            class="remove-dash-results-toggle-img"
-          />
-        </a>
+        </button>
       </div>
     </div>
   </div>

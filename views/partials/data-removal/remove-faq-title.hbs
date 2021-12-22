@@ -1,12 +1,8 @@
 <div class="remove-faq__title-container flx cntr space-between">
   <h4 class="remove-faq__q-title">{{alt}}</h4>
   <div class="remove-faq__toggle-container">
-    <a href="" class="remove-faq__toggle js-remove-faq-toggle">
-      <img
-        src="/img/removal/chevron-down-grey.svg"
-        alt="View Answer to this Question"
-        class="remove-faq__toggle-img"
-      />
-    </a>
+    <label class="sr-only" for="{{altid}}">{{getRemoveString "remove-expand"}}</label>
+    <button id="{{altid}}" class="remove-faq__toggle js-remove-faq-toggle">
+    </button>
   </div>
 </div>
