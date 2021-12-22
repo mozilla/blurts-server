@@ -368,6 +368,10 @@
       margin-left: 0;
     }
 
+    &:focus {
+      border: 1px dotted var(--grey5);
+    }
+
     .remove-filter-key-list-title {
       color: var(--inkDark);
     }

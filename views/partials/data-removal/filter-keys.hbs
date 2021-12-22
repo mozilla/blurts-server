@@ -2,12 +2,7 @@
   <ul class="remove-filter-key-list flx">
     {{#getRemovalFilters}}
       {{#each this.filters}}
-        <li class="remove-filter-key-list-item" data-id="{{this.id}}">
-          <a
-            href="#"
-            class="remove-filter-key-button flx jst-cntr"
-            role="button"
-          >
+        <li class="remove-filter-key-list-item flx jst-cntr" data-id="{{this.id}}" role="button">
             <img
               class="remove-filter-key-list-icon"
               src="{{this.icon}}"
@@ -16,7 +11,6 @@
             <span
               class="remove-filter-key-list-title"
             >{{this.statusText}}</span>
-          </a>
         </li>
       {{/each}}
     {{/getRemovalFilters}}
