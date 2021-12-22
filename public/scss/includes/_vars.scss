@@ -8,3 +8,8 @@ $bp-xs: 411px;
 $k-status-progress: "ACTIVE";
 $k-status-complete: "COMPLETE";
 $k-status-blocked: "BLOCKED";
+
+//colors - these should coincide with their css variables in `variables.scss`
+$status-complete-color: #00a888;
+$status-in-progress-color: #0060df;
+$status-blocked-color: #ee0700;

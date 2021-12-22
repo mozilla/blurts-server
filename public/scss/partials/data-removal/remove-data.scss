@@ -396,7 +396,6 @@
     border: 1px solid var(--grey5);
     border-radius: 16px;
 
-
     @include breakpoint(mobile) {
       width: 100%;
       border-radius: 24px;
@@ -438,8 +437,13 @@
 
       .remove-filter-key-list-item[data-id*="#{$k-status-progress}"] {
         .remove-filter-key-button {
-          background-color: var(--status-in-progress);
-          border-color: var(--status-in-progress);
+          background-color: $status-in-progress-color;
+          border-color: $status-in-progress-color;
+
+          &:hover,&:focus {
+            background-color: darken($status-in-progress-color,10%);
+            border-color: darken($status-in-progress-color,10%);
+          }
         }
 
         .remove-filter-key-list-title {
@@ -458,9 +462,14 @@
       .remove-filter-key-list-item[data-id*="#{$k-status-complete}"] {
         
         .remove-filter-key-button {
-          background-color: var(--status-complete);
-          border-color: var(--status-complete);
+          background-color: $status-complete-color;
+          border-color: $status-complete-color;
+          &:hover,&:focus {
+            background-color: darken($status-complete-color,10%);
+            border-color: darken($status-complete-color,10%);
+          }
         }
+        
 
         .remove-filter-key-list-title {
           color: white;
@@ -477,8 +486,12 @@
       }
       .remove-filter-key-list-item[data-id*="#{$k-status-blocked}"] {
         .remove-filter-key-button {
-          background-color: var(--status-blocked);
-          border-color: var(--status-blocked);
+          background-color: $status-blocked-color;
+          border-color: $status-blocked-color;
+          &:hover,&:focus {
+            background-color: darken($status-blocked-color,10%);
+            border-color: darken($status-blocked-color,10%);
+          }
         }
 
         .remove-filter-key-list-title {
