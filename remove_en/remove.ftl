@@ -134,6 +134,7 @@ remove-status-update = Last update:
 
 # Data Removal Filters
 
+remove-filter-label = Filters:
 remove-filter-in-progress = In progress
 remove-filter-complete = Complete
 remove-filter-blocked = Blocked

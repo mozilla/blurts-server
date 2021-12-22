@@ -60,6 +60,18 @@
   &-results-list-icon {
     height: 24px;
     width: auto;
+    box-sizing: content-box;
+    border-radius: 50%;
+    padding: 4px;
+    &.complete {
+      background-color: var(--status-complete);
+    }
+    &.active {
+      background-color: var(--status-in-progress);
+    }
+    &.blocked {
+      background-color: var(--status-blocked);
+    }
   }
 
   &-results-site-name-container {
