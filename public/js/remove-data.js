@@ -403,7 +403,7 @@ function addRemoveDashListeners() {
     .querySelectorAll(".js-remove-dash-details-toggle")
     .forEach(addRemoveDashDetailsToggle);
   document
-    .querySelectorAll(".remove-filter-list-item")
+    .querySelectorAll(".remove-filter-key-button")
     .forEach(addStatusFilterListener);
 }
 
@@ -413,16 +413,6 @@ function addRemoveDashDetailsToggle(el) {
 
 function addStatusFilterListener(el) {
   el.addEventListener("click", onStatusFilterToggle);
-  el.addEventListener("keydown", (e) => {
-    console.log("keydown", e.keyCode);
-    e.preventDefault();
-    if (e.keyCode === 32) {
-      //if spacebar
-      console.log("spacebar");
-      e.preventDefault();
-      onStatusFilterToggle(e);
-    }
-  });
 }
 
 function onRemoveDashDetailsToggle(e) {

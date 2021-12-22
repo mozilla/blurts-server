@@ -9,7 +9,7 @@
   
     <div class="mw-860 remove-dashboard-card-container">
       <div class="remove-dashboard-card">
-        <div href="/remove-my-data" class="remove-dashboard-card-border flx private-relay-cta" data-analytics-label="join-the-waitlist-link" data-usemailIder-is-signed-up="{{ ./../userHasSignedUpForRemoveData }}">
+        <div class="remove-dashboard-card-border flx private-relay-cta">
           <div class="remove-dashboard-card-content flx">
             <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
               {{#if this.acctInfo}}
@@ -63,9 +63,11 @@
               <input required id="remove-dashboard-form-first-name" class="input-group-field" type="text" name="firstname" maxlength="50" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getRemoveString "remove-dash-form-name-first"}}" aria-label="{{ getRemoveString "remove-dash-form-name-first"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.first_name}}value="{{this.acctInfo.names.0.first_name}}"{{/if}}
               >
+              <label for="remove-dashboard-form-middle-name" class="sr-only">{{ getRemoveString "remove-dash-form-name-middle"}}</label>
               <input id="remove-dashboard-form-middle-name" class="input-group-field remove-dashboard-form-middle-name" type="text" maxlength="50" name="middlename" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getRemoveString "remove-dash-form-name-middle"}}" aria-label="{{ getRemoveString "remove-dash-form-name-middle"}}" autocomplete="off" 
                 {{#if this.acctInfo.names.0.middle_name}}value="{{this.acctInfo.names.0.middle_name}}"{{/if}}
               >
+              <label for="remove-dashboard-form-last-name" class="sr-only">{{ getRemoveString "remove-dash-form-name-last"}}</label>
               <input required id="remove-dashboard-form-last-name" class="input-group-field flx-grow" type="text" name="lastname" maxlength="50" pattern="([A-zÀ-ž-'\s]){2,}" placeholder="{{ getRemoveString "remove-dash-form-name-last"}}" aria-label="{{ getRemoveString "remove-dash-form-name-last"}}" autocomplete="off"
                 {{#if this.acctInfo.names.0.last_name}}value="{{this.acctInfo.names.0.last_name}}"{{/if}}
               >
@@ -108,7 +110,7 @@
             <div class="remove-dashboard-form-error --loc"></div>
           </div>
           <div class="input-group">
-            <label for="remove-dashboard-form-year required" class="input-group-label field--full required">{{ getRemoveString "remove-dash-form-birth-year-label"}}
+            <label for="remove-dashboard-form-year" class="input-group-label field--full required">{{ getRemoveString "remove-dash-form-birth-year-label"}}
               {{> removal/removal-question-trigger modal="modal-birth-year" alt="Why we require birth year"}}
             </label>
             <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getRemoveString "remove-dash-form-birth-year"}}" aria-label="{{ getRemoveString "remove-dash-form-birth-year"}}" autocomplete="off"
@@ -138,7 +140,7 @@
 
         {{#if this.acctInfo}}
         <div class="remove-dashboard-delete-container flx jst-cntr">
-          <a href="/user/remove-kan" class="btn-transparent btn-red btn-small">{{getRemoveString "remove-form-data-delete"}}</a>
+          <a href="/user/remove-kan" class="remove-dashboard-delete-link btn-transparent btn-red btn-small">{{getRemoveString "remove-form-data-delete"}}</a>
         </div>
         {{/if}}
       </div>

@@ -217,8 +217,8 @@ button {
 }
 
 .btn-red:hover {
-  border-color: #cf434f;
-  color: #cf434f;
+  border-color: var(--alertRed);
+  color: var(--alertRed);
 }
 
 .btn-violet-secondary {
@@ -565,6 +565,8 @@ ul li {
   width: 1px;
   height: 1px;
   overflow: hidden;
+  color: black;
+  background-color: white;
 }
 
 .bg-light {
