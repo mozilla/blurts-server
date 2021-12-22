@@ -1,6 +1,6 @@
 <main id="remove-form" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="User Dashboard">
 {{#getRemoveFormData}}
-<div class="flx flx-col remove-dashboard-container js-remove-dashboard-container"
+<div class="flx flx-col remove-dashboard-container js-remove-dashboard-container" {{#if this.acctInfo}}data-confirm="true"{{/if}}
   {{!-- MH TODO: US Only for now
     {{#if this.acctInfo.addresses.0.country}}data-country="{{this.acctInfo.addresses.0.country}}"{{/if}} 
   --}}
@@ -144,7 +144,7 @@
         </div>
         {{/if}}
       </div>
-      {{> dashboards/remove-form-confirm}}
+      {{> dashboards/remove-form-confirm acctInfo=acctInfo}}
       </form>
     </section>
   </div>

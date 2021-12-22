@@ -88,6 +88,7 @@ remove-dash-form-disclaimer = By clicking “Start Data Removal” you agree to 
 remove-dash-confirm-review = Review Your Information
 remove-dash-confirm-edit = Edit Info
 remove-dash-confirm-cancel = Cancel
+remove-dash-confirm-back = Back
 remove-dash-confirm-label-full = Full Name
 remove-dash-confirm-email = Email Address
 remove-dash-confirm-loc = Current Location
