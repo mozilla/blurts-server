@@ -10,6 +10,10 @@
     .remove-dash-results-toggle-container {
       visibility: hidden;
     }
+    .remove-dash-results-status-el {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
   }
 
   &-results-list-item {

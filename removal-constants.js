@@ -1,15 +1,15 @@
 "use strict";
 
 const REMOVAL_STATUS = {
-  ACTIVE: {
-    id: "ACTIVE",
-    icon: "/img/removal/remove-status-in-progress.svg",
-    locale_var: "remove-filter-in-progress",
-  },
   COMPLETE: {
     id: "COMPLETE",
     icon: "/img/removal/remove-status-complete.svg",
     locale_var: "remove-filter-complete",
+  },
+  ACTIVE: {
+    id: "ACTIVE",
+    icon: "/img/removal/remove-status-in-progress.svg",
+    locale_var: "remove-filter-in-progress",
   },
   BLOCKED: {
     id: "BLOCKED",

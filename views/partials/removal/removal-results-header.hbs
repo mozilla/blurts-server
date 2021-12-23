@@ -2,20 +2,16 @@
   <div class="remove-dash-results-summary-container flx space-between">
     <div class="remove-dash-results-site-container flx flx-cntr">
       <div class="remove-dash-results-status-el">
-        STATUS
+        {{getRemoveString "remove-dash-header-status"}}
       </div>
 
-      <div class="remove-dash-results-site-name-container flx flx-col">
-        NAME OF SITE
+      <div class="remove-dash-results-site-name-container remove-dash-results-status-el flx flx-col">
+        {{getRemoveString "remove-dash-header-site"}}
       </div>
     </div>
     <div class="remove-dash-results-status-container flx flx-cntr">
       <div class="remove-dash-results-status-el hidden-mobile">
-        LAST UPDATE
-      </div>
-
-      <div class="remove-dash-results-status-el --risk">
-        RISK LEVEL
+        {{getRemoveString "remove-dash-header-updated"}}
       </div>
 
       <div

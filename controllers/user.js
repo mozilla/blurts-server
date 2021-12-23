@@ -1167,7 +1167,7 @@ function sortRemovalData(removalData) {
 
   alphabetizeByBroker(activeItems);
 
-  const sortedData = [...activeItems, ...blockedItems, ...completeItems];
+  const sortedData = [...completeItems, ...activeItems, ...blockedItems];
 
   const mergedData = reduceAndMergeURLs(sortedData);
 

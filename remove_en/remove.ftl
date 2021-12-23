@@ -151,16 +151,23 @@ remove-step-awaiting-review = In progress
 remove-step-removed = Complete
 remove-step-blocked = Blocked
 
+# Data Removal Dashboard Header
+
+remove-dash-header-status = Status
+remove-dash-header-site = Name of Site
+remove-dash-header-updated = Last Update
+
 # Data Removal Results Page
 
 remove-results-toggle-alt = Expand Option
-remove-risk-high = High Risk
-remove-risk-med = Medium Risk
-remove-risk-low = Low Risk
+remove-risk-title = Risk Level
+remove-risk-high = {remove-about-risk-high} Risk
+remove-risk-medium = {remove-about-risk-medium} Risk
+remove-risk-low = {remove-about-risk-low} Risk
 remove-result-details-found = Info found
-remove-result-description = Description
+remove-result-description = What is this website?
 remove-result-link = Links to exposed info
-remove-result-link-title = Link
+remove-result-link-title = Record Link
 remove-result-opt-out = Manual removal instructions
 remove-pending-title = Starting your { remove-process-name }. Check back in 24-48 hours for results.
 remove-pending = We're scanning for sites that expose your personal information. It may take 24 hours for your report to finish.
@@ -337,6 +344,10 @@ remove-modal-info-found-text = This is the personal information we found based o
 remove-modal-link-title = Links to exposed info
 remove-modal-link-text = The following links are the web addresses where your information was found.
  You can click it to verify the listing. If your information was removed, this link should no longer show your info.
+
+# Data Removal Risk Modal
+
+remove-modal-risk-title = What is Risk Level?
 
 # Data Removal Opt Out Modal
 
