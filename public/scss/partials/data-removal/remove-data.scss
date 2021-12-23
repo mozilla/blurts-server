@@ -810,9 +810,11 @@
 .remove-question-trigger {
   margin-left: 5px;
   border: 0;
+  display: flex;
+  align-items: center;
   &:focus, &:hover {
     .remove-question-img {
-      filter: brightness(.9);
+      filter: brightness(.8);
     }
   }
 }

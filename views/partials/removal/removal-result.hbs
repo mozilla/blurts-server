@@ -23,33 +23,9 @@
         <div
           class="remove-dash-results-status-time remove-dash-results-status-el hidden-mobile"
         >
-          {{getRemoveString "remove-result-updated"}}
           {{this.update_status}}
         </div>
       {{/if}}
-      {{#ifCompare this.risk_level "===" "HIGH"}}
-        <div
-          class="remove-dash-results-risk remove-dash-results-status-el risk-high"
-        >
-          {{getRemoveString "remove-risk-high"}}
-        </div>
-      {{/ifCompare}}
-
-      {{#ifCompare this.risk_level "===" "MEDIUM"}}
-        <div
-          class="remove-dash-results-risk remove-dash-results-status-el risk-med"
-        >
-          {{getRemoveString "remove-risk-med"}}
-        </div>
-      {{/ifCompare}}
-
-      {{#ifCompare this.risk_level "===" "LOW"}}
-        <div
-          class="remove-dash-results-risk remove-dash-results-status-el risk-low"
-        >
-          {{getRemoveString "remove-risk-low"}}
-        </div>
-      {{/ifCompare}}
 
       <div
         class="remove-dash-results-toggle-container remove-dash-results-status-el"
@@ -95,7 +71,7 @@
           {{getRemoveString "remove-result-link"}}
           {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
         </p>
-        <p class="remove-dash-results-detail flx">
+        <div class="remove-dash-results-detail flx">
           <ul>
           {{#each this.url}}
           <li class="remove-dash-results-link-item">
@@ -107,13 +83,29 @@
           </li>
           {{/each}}
           </ul>
-        </p>
+        </div>
       </li>
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title">
           {{getRemoveString "remove-result-description"}}
         </p>
         <p class="remove-dash-results-detail">{{this.description}}</p>
+      </li>
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
+          {{getRemoveString "remove-risk-title"}}
+          {{> removal/removal-question-trigger modal="modal-remove-risk" alt="About result risk"}}
+        </p>
+        <p class="remove-dash-results-detail">
+          <span class="bold">
+          {{#ifCompare this.risk_level "===" "HIGH"}}{{getRemoveString "remove-risk-high"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-risk-medium"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-risk-low"}}: {{/ifCompare}}
+          </span>
+          {{#ifCompare this.risk_level "===" "HIGH"}}{{getRemoveString "remove-about-risk-high-content"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-about-risk-medium-content"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-about-risk-low-content"}}: {{/ifCompare}}
+        </p>
       </li>
       {{#ifCompare this.current_step "===" "BLOCKED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
