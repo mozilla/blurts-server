@@ -1,9 +1,12 @@
 "use strict";
 
 const EmailUtils = require("../email-utils");
+const AppConstants = require("../app-constants");
 
 async function getEmailMockUps(req, res) {
   const email = "example@email.com";
+
+  if (!["dev", "heroku"].includes(AppConstants.NODE_ENV)) return notFound(req, res);
 
   if (!req.query.partial) {
     req.query.partial = "email_verify";
@@ -79,7 +82,11 @@ async function getEmailMockUps(req, res) {
 
 function notFound(req, res) {
   res.status(404);
-  res.redirect("/email-l10n");
+  res.render("subpage", {
+    analyticsID: "error",
+    headline: req.fluentFormat("error-headline"),
+    subhead: req.fluentFormat("home-not-found"),
+  });
 }
 
 module.exports = {
