@@ -53,10 +53,12 @@
 @mixin ff-inter {
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
     "Helvetica Neue", sans-serif;
+    font-display: swap;
 }
 
 @mixin ff-metropolis {
   font-family: "Metropolis", sans-serif;
+  font-display: swap;
 }
 
 @mixin form-focus {
