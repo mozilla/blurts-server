@@ -1,10 +1,12 @@
 {{#ifCompare UTM_SOURCE "===" "localhost"}}
   <link rel="stylesheet" href="/css/app.css" />
-
-  <script
+  {{#ifCompare whichPartial "===" "top-level/all-breaches"}}
+    <script
     type="text/javascript"
     src="/js/all-breaches/all-breaches.js"
   ></script>
+  {{/ifCompare}}
+  
   <script
     type="text/javascript"
     src="/js/analytics_dnt-helper.js"
@@ -12,7 +14,10 @@
   ></script>
   {{!---DATA REMOVAL SPECIFIC ---}}
   <script type="text/javascript" src="/js/micromodal.js" defer></script>
+  
+  {{#ifCompare whichPartial "===" "dashboards/remove-all-stats"}}
   <script type="text/javascript" src="/js/apexcharts.min.js"></script>
+  {{/ifCompare}}
   {{!---END DATA REMOVAL SPECIFIC ---}}
   <script type="text/javascript" src="/js/fx-bento.js"></script>
   <script type="text/javascript" src="/js/fxa-analytics.js" defer></script>
