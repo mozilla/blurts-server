@@ -635,3 +635,10 @@ vpn-banner-protect-yourself-with-vpn = <em>Beskytt deg sjølv</em> med { -brand-
 vpn-banner-protected-with-vpn = <em>Beskytta</em> med { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Du er beskytta — takk for at du brukar { -brand-mozilla-vpn }.
 vpn-banner-title-2 = Plasseringa di kan sporast dersom du ikkje brukar ein VPN.
+vpn-banner-subtitle-2 = Beskytt posisjonen din og surf trygt i 3 steg
+vpn-banner-status-protected = Gjeldande status: <em>Beskytta ✓</em>
+vpn-banner-status-not-protected = Gjeldande status: <em>Ikkje beskytta ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP-adresse: { $ip-adresse }
+vpn-banner-step-1 = Abonner på { -brand-mozilla-vpn }
+vpn-banner-step-2 = Vel ei VPN-plassering
