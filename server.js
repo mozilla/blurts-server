@@ -230,11 +230,21 @@ app.use((req, res, next) => {
 
 app.use(
   express.static("public", {
-    setHeaders: (res) =>
-      res.set(
-        "Cache-Control",
-        "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000
-      ),
+    setHeaders: (res, path) => {
+      if (path.includes("/img/") || path.includes("/fonts/")) {
+        //DATA REMOVAL SPECIFIC - May want to keep this post-pilot
+        res.setHeader("Cache-Control", "max-age=31536000"); //1 yr
+      } else {
+        //MH - the code inside this condition is what was set as default pre-merge
+        res.set(
+          "Cache-Control",
+          "public, maxage=" +
+            10 * 60 * 1000 +
+            ", s-maxage=" +
+            24 * 60 * 60 * 1000
+        );
+      }
+    },
   })
 ); // 10-minute client-side caching; 24-hour server-side caching
 

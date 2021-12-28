@@ -32,12 +32,12 @@
           <img alt="{{ req.session.user.primary_email }}" class="relay-avatar" src="{{ req.session.user.fxa_profile_json.avatar }}"/>
           <span class="relay-sign-up-email">{{ req.session.user.primary_email }}</span>
           <button class="btn-blue-primary bold ff-Met relay-sign-up-btn private-relay-cta" data-analytics-label="join-the-waitlist-button" data-user-is-signed-up={{ userHasSignedUpForRemoveData }}>Join the Waitlist</button>
-          <p><a href="https://www.mozilla.org/en-US/privacy/" target="_blank">Privacy Policy</a></p>
+          <p><a href="https://www.mozilla.org/en-US/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></p>
       </div>
       <div class="relay-sign-up-confirmation flx flx-col jst-cntr al-cntr">
         <h2 class="relay-sign-up-headline relay-confirmation-headline">You're on the list!</h2>
         <p class="relay-confirmation-body"><span class="bold">{{ req.session.user.primary_email }}</span> has been added to the waitlist. We’ll let you know when we have more updates to share about this service.</p>
-        <p class="relay-confirmation-body">We'd also love for you to <span class="bold"><a href="https://survey.alchemer.com/s3/6275633/Data-Removal-Service-Waitlist" target="_blank">answer a few questions about this service</a></span>, so we can make it more relevant and useful to you.</p>
+        <p class="relay-confirmation-body">We'd also love for you to <span class="bold"><a href="https://survey.alchemer.com/s3/6275633/Data-Removal-Service-Waitlist" rel="noopener noreferrer" target="_blank">answer a few questions about this service</a></span>, so we can make it more relevant and useful to you.</p>
       </div>
     </div>
   </div>
