@@ -642,3 +642,9 @@ vpn-banner-status-not-protected = Gjeldande status: <em>Ikkje beskytta ⚠</em>
 vpn-banner-ip-address = IP-adresse: { $ip-adresse }
 vpn-banner-step-1 = Abonner på { -brand-mozilla-vpn }
 vpn-banner-step-2 = Vel ei VPN-plassering
+vpn-banner-step-3 = Aktiver VPN og surf trygt
+vpn-banner-cta = Få { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Utvid
+# button to close panel
+vpn-banner-cta-close = Lat att
