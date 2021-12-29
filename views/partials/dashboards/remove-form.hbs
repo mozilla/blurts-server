@@ -112,7 +112,7 @@
           <div class="input-group">
             <div class="flx flx-cntr">
               <label for="remove-dashboard-form-year" class="input-group-label required">{{ getRemoveString "remove-dash-form-birth-year-label"}}</label>
-              {{> removal/removal-question-trigger modal="modal-birth-year" alt="Why we require birth year"}}
+              {{> removal/removal-question-trigger modal="modal-birth-year" alt=(getRemoveString "remove-modal-birth-year-title")}}
             </div>
             <input required id="remove-dashboard-form-year" class="input-group-field" type="number" name="birthyear" min="1900" max="2020" maxlength="4" minlength="4" pattern="[0-9]{4}" placeholder="{{ getRemoveString "remove-dash-form-birth-year"}}" aria-label="{{ getRemoveString "remove-dash-form-birth-year"}}" autocomplete="off"
               {{#if this.acctInfo.birth_year}}value="{{this.acctInfo.birth_year}}"{{/if}}
