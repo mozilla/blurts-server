@@ -31,7 +31,8 @@ const REMOVAL_CONSTANTS = {
     "mozillafoundation.org",
   ], //users must sign up with an email from one of these domains if REMOVE_CHECK_EMAIL_DOMAIN_ENABLED is true
   KANARY_PRIVACY_LINK: "https://www.thekanary.com/privacy_and_security",
-  REMOVE_CANCELATION_SURVEY_LINK: "", //MH TODO: Get survey link
+  REMOVE_CANCELATION_SURVEY_LINK:
+    "https://qsurvey.mozilla.com/s3/Firefox-Monitor-Data-Removal-Cancellation", //MH TODO: Get survey link
   REMOVE_LOGGED_IN_DEFAULT_ROUTE: "/user/remove-data",
   REMOVE_ACTIVE_LINKS: [
     "/remove-data",
