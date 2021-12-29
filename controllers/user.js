@@ -1556,7 +1556,9 @@ function validateRemovalForm(fields) {
       .min(2)
       .pattern(nameRegEx, { name: regexID })
       .required(),
-    middlename: Joi.string().pattern(nameRegEx, { name: regexID }),
+    middlename: Joi.string()
+      .pattern(nameRegEx, { name: regexID })
+      .allow(null, ""),
     lastname: Joi.string()
       .min(2)
       .pattern(nameRegEx, { name: regexID })
