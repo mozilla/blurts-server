@@ -711,6 +711,15 @@
     margin-top: 8px;
   }
 
+  &-add-email-btn {
+    margin-top: 20px;
+    display: block;
+    cursor: pointer;
+  }
+  &-add-email-form {
+    margin-top: 32px;
+  }
+
   &-form-name {
     flex-wrap: wrap;
   }

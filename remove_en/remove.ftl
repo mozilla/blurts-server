@@ -360,6 +360,9 @@ remove-modal-optout-title = Manual Removal Instructions
 remove-modal-optout-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information,
  you can use the contact email or website provided for this result to do so.
 
+# Data Removal Add Email Modal
+remove-modal-add-email-title = Add another e-mail address
+
 # Data Removal About Page
 
 remove-about-faq-title = FAQ

@@ -336,6 +336,12 @@ a.btn-transparent:hover {
   padding: 8px 16px;
 }
 
+.btn-link {
+  @include default-link;
+  border: 0;
+  padding: 0;
+}
+
 a,
 button,
 a:hover,
