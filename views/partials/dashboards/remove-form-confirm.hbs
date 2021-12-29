@@ -64,5 +64,10 @@
       role="button"
     >{{getConfirmSubmitText}}</a>
   </div>
+  {{#if this.acctInfo}}
+  <div class="remove-dashboard-delete-container flx jst-cntr">
+    <a href="/user/remove-kan" class="remove-dashboard-delete-link btn-transparent btn-red btn-small">{{getRemoveString "remove-form-data-delete"}}</a>
+  </div>
+  {{/if}}
 
 </div>
