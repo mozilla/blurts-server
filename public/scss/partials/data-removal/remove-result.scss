@@ -67,11 +67,9 @@
     box-sizing: content-box;
     border-radius: 50%;
     padding: 4px;
-    &.complete {
+    background-color: $status-in-progress-color;
+    &.removed {
       background-color: $status-complete-color;
-    }
-    &.active {
-      background-color: $status-in-progress-color;
     }
     &.blocked {
       background-color: $status-blocked-color;
