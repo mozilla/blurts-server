@@ -1491,19 +1491,6 @@ async function handleRemovalFormSignup(req, res) {
     });
   }
 
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
-    const hashMatch = await checkEmailHash(account);
-
-    if (!hashMatch) {
-      const localeError = LocaleUtils.formatRemoveString(
-        "remove-error-no-waitlist-match"
-      );
-      return res.status(400).json({
-        error: localeError,
-      });
-    }
-  }
-
   const validationResults = validateRemovalForm(req.body);
 
   if (validationResults.error) {
@@ -1718,7 +1705,7 @@ async function handleRemovalAcctUpdate(req, res) {
     });
   }
 
-  const emailDomainMatch = await checkEmailDomainMatch(account);
+  const emailDomainMatch = await checkEmailDomainMatch(account); //runs if email check enabled in remove-constants
 
   if (!emailDomainMatch) {
     console.error(
@@ -1730,19 +1717,6 @@ async function handleRemovalAcctUpdate(req, res) {
     return res.status(404).json({
       error: localeError,
     });
-  }
-
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
-    const hashMatch = await checkEmailHash(account);
-
-    if (!hashMatch) {
-      const localeError = LocaleUtils.formatRemoveString(
-        "remove-error-no-waitlist-match"
-      );
-      return res.status(400).json({
-        error: localeError,
-      });
-    }
   }
 
   const removeAcctInfo = await getRemoveAcctInfo(user.kid);

@@ -214,7 +214,7 @@ remove-enroll-terms = The pilot service will be offered at no cost to you for a 
  removal account information held by { -brand-Mozilla } or our partner { -remove-brand-partner } will be deleted.
  You may discontinue the { remove-process-name } service at any point within the 90 day pilot period.
 remove-enroll-link-faq = { -product-name } { remove-pilot-title } FAQ
-remove-enroll-link-tos = { -product-name } { remove-pilot-title } Terms of Service and Privacy Notice
+remove-enroll-link-tos = { remove-pilot-title } Terms of Service and Privacy Notice
 remove-enroll-terms-agreement = By continuing, I agree to the Terms of Service and Privacy Notice.
 remove-enroll-submit = Join the pilot
 

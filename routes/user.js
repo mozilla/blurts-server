@@ -170,7 +170,6 @@ router.get(
   "/remove-data",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalPage)
 );
 
@@ -178,7 +177,6 @@ router.get(
   "/remove-signup-confirmation",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalConfirmationPage)
 );
 
@@ -186,7 +184,6 @@ router.get(
   "/remove-update-confirmation",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalUpdateConfirmationPage)
 );
 
@@ -194,7 +191,6 @@ router.get(
   "/remove-delete-confirmation",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalDeleteConfirmationPage)
 );
 
@@ -228,7 +224,6 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalAcctUpdate)
 );
 
@@ -244,7 +239,6 @@ router.post(
   jsonParser,
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(postRemovalKan)
 );
 
