@@ -668,3 +668,10 @@ vpn-banner-cta = Λήψη του { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Ανάπτυξη
 # button to close panel
 vpn-banner-cta-close = Κλείσιμο
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Πώς κρατάτε μυστική τη διεύθυνση email σας;
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Ανησυχείτε για την ασφάλεια των δημόσιων Wi-Fi;
