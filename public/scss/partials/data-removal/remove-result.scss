@@ -158,10 +158,10 @@
     margin-bottom: 0;
 
     @include ff-metropolis;
-
     text-transform: uppercase;
     color: var(--grey5);
     font-size: 12px;
+    font-weight: 300;
   }
 
   &-results-detail {
