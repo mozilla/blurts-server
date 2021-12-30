@@ -641,3 +641,10 @@ vpn-banner-cta = Nhận { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Mở rộng
 # button to close panel
 vpn-banner-cta-close = Đóng
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Làm thế nào để bạn giữ bí mật địa chỉ email của mình?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Bạn có lo lắng về sự an toàn của Wi-Fi công cộng?
