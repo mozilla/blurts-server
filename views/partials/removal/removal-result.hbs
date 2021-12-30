@@ -48,15 +48,17 @@
           </p>
         </li>
       {{/if}}
+      {{#if this.current_step_text}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getRemoveString "remove-result-status"}}
           {{> removal/removal-question-trigger modal="modal-remove-status" alt="About result status"}}
         </p>
         <p class="remove-dash-results-detail">
-          {{#if this.current_step_text}}{{this.current_step_text}}{{/if}}
+          {{this.current_step_text}}
         </p>
       </li>
+      {{/if}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getRemoveString "remove-result-details-found"}}
@@ -66,6 +68,7 @@
           {{trimRemoveInfo this}}
         </p>
       </li>
+      {{#if this.url}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getRemoveString "remove-result-link"}}
@@ -86,12 +89,16 @@
           </ul>
         </div>
       </li>
+      {{/if}}
+      {{#if this.description}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title">
           {{getRemoveString "remove-result-description"}}
         </p>
         <p class="remove-dash-results-detail">{{this.description}}</p>
       </li>
+      {{/if}}
+      {{#if this.risk_level}}
       <li class="remove-dash-results-details-item flx flx-col align-start">
         <p class="remove-dash-results-detail-title flx jst-cntr">
           {{getRemoveString "remove-risk-title"}}
@@ -108,6 +115,7 @@
           {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-about-risk-low-content"}}: {{/ifCompare}}
         </p>
       </li>
+      {{/if}}
       {{#ifCompare this.current_step "===" "BLOCKED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
           <p class="remove-dash-results-detail-title flx jst-cntr">
