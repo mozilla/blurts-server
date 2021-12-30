@@ -305,6 +305,8 @@ remove-risk-title-low = Low
 # Data Removal Modal General
 
 remove-modal-close = Close
+remove-modal-cancel = Cancel
+remove-modal-continue = Continue
 remove-modal-close-accessible = Close this dialog window
 remove-modal-more-info = Learn More
 remove-modal-more-info-found = Learn more about info found
@@ -320,6 +322,11 @@ remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = The personal information you give us is the same information we search for on data broker and people search sites. We only use this data in order to find where it’s being exposed on these sites.
  None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
 remove-modal-info-link = Learn how your privacy is protected
+
+# Data Removal Leaving Monitor title
+remove-modal-leaving-title = Leaving {-product-name}
+remove-modal-leaving-text = You are about to leave Firefox Monitor. The links directs you to a record of your personal information found on data broker or people search site. Mozilla is not responsible for the content or service offered by this website.
+
 
 # Data Removal Birth Year modal
 remove-modal-birth-year-title = Why do you need my birth year?
