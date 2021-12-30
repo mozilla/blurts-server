@@ -58,7 +58,7 @@ async function resendEmail(req, res) {
     emailId
   );
 
-  const email = unverifiedEmailAddresxsRecord.email;
+  const email = unverifiedEmailAddressRecord.email;
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("email-subject-verify"),
