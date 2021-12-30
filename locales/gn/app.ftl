@@ -635,3 +635,10 @@ vpn-banner-cta = Erekóke { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Myasãi
 # button to close panel
 vpn-banner-cta-close = Mboty
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kundaharape?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
