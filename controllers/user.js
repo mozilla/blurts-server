@@ -58,7 +58,7 @@ async function resendEmail(req, res) {
     emailId
   );
 
-  const email = unverifiedEmailAddressRecord.email;
+  const email = unverifiedEmailAddresxsRecord.email;
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat("email-subject-verify"),
@@ -1256,7 +1256,7 @@ async function getRemovalKan(req, res) {
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
 
   res.render("dashboards", {
-    title: req.fluentFormat("remove-kan"),
+    title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
     supportedLocalesIncludesEnglish,
     whichPartial: "subpages/remove_kan",
