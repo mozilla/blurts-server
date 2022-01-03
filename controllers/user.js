@@ -13,6 +13,8 @@ const sha1 = require("../sha1-utils");
 const Joi = require("joi");
 const got = require("got");
 
+const { removeFromPilotWaitlist } = require("./../removal-waitlist");
+
 const EXPERIMENTS_ENABLED = AppConstants.EXPERIMENT_ACTIVE === "1";
 const {
   getExperimentFlags,
@@ -1670,6 +1672,50 @@ async function checkEmailHash(account) {
   return matchedHash;
 }
 
+async function handleWaitlistRemoval(req, res) {
+  const account = req.user.primary_email;
+
+  if (!account) {
+    console.error("error getting primary email");
+  }
+
+  let email = `${account}`;
+  email = email.toLowerCase();
+
+  const removalWaitlist = await removeFromPilotWaitlist(email).catch((e) =>
+    console.error("problem getting removal waitlist", e)
+  );
+  if (removalWaitlist && removalWaitlist.length) {
+    console.log("removalWaitlist", removalWaitlist);
+  } else {
+    console.error("removal waitlist empty");
+  }
+
+  const removalWaitlistArray = removalWaitlist.toString().split("\n");
+  const writeStream = fs.createWriteStream("hashed-waitlist.txt");
+  removalWaitlistArray.forEach((arrayItem) => {
+    const stringLower = arrayItem.toLowerCase();
+    const hashedEmail = bcrypt.hashSync(stringLower, 10);
+    writeStream.write(`${hashedEmail}\n`);
+  });
+
+  writeStream.on("finish", () => {
+    console.log("hashed waitlist updated with email removed");
+
+    return res.status(200).json({
+      msg: "email removed from waitlist",
+    });
+  });
+
+  writeStream.on("error", (err) => {
+    console.error("There is an error writing the file", err);
+    return res.status(400).json({
+      error: "error creating hashed waitlist with removed email",
+    });
+  });
+  writeStream.end();
+}
+
 async function handleRemovalAcctUpdate(req, res) {
   if (!req.user) {
     console.error("no user");
@@ -2002,6 +2048,7 @@ module.exports = {
   handleRemovalFormSignup,
   handleRemovalEnrollFormSignup,
   handleRemovalAcctUpdate,
+  handleWaitlistRemoval,
   getRemovalKan,
   postRemovalKan,
   getRemovalStatsUser,
