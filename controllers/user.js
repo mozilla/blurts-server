@@ -279,6 +279,17 @@ function getNewBreachesForEmailEntriesSinceDate(emailEntries, date) {
 }
 
 async function getDashboard(req, res) {
+  console.log("sending email...");
+
+  await EmailUtils.sendEmail("localmonitor20200827@mailinator.com", "testing", "removal_email",
+    {
+      ctaHref: EmailUtils.getEmailCtaHref("removal", "go-to-dashboard-link"),
+      supportedLocales: req.supportedLocales,
+      whichPartial: "email_partials/removal_update",
+    }
+  );
+  console.log("...sent.");
+
   const user = req.user;
 
   const allBreaches = req.app.locals.breaches;

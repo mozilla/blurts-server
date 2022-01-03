@@ -124,6 +124,10 @@ function getEmailHeader(args) {
     return LocaleUtils.fluentFormat(locales, "pre-fxa-headline");
   }
 
+  if (emailType === "email_partials/removal_update") {
+    return "Data Removal Update";
+  }
+
   if (args.data.root.breachAlert) {
     return LocaleUtils.fluentFormat(locales, "email-alert-hl", {
       userEmail: boldVioletText(breachedEmail, true),
@@ -351,26 +355,9 @@ function getRemovalEmailFooterCopy(args) {
   let faqLink = LocaleUtils.fluentFormat(locales, "frequently-asked-questions");
   faqLink = `<a href="">${faqLink}</a>`;
 
-  if (args.data.root.whichPartial === "email_partials/email_verify") {
-    return LocaleUtils.fluentFormat(locales, "email-verify-footer-copy", {
+  return LocaleUtils.fluentFormat(locales, "email-verify-footer-copy", {
       faqLink,
-    });
-  }
-
-  const unsubUrl = args.data.root.unsubscribeUrl;
-  const unsubLinkText = LocaleUtils.fluentFormat(locales, "email-unsub-link");
-  const unsubLink = `<a href="${unsubUrl}">${unsubLinkText}</a>`;
-
-  const localizedFooterCopy = LocaleUtils.fluentFormat(
-    locales,
-    "email-footer-blurb",
-    {
-      unsubLink: unsubLink,
-      faqLink: faqLink,
-    }
-  );
-
-  return localizedFooterCopy;
+  });
 }
 
 module.exports = {

@@ -126,7 +126,17 @@
             
             <tr>
               <td align="center" width="100%" style="max-width: 400px; padding-top: 30px;">
-                {{> email_partials/email_disclaimers }}
+                <table class="source-info-wrap" style="text-align: center; width: 100%;" width="100%">
+                  <tr>
+                    <td align="center" style="font-family: sans-serif; text-align: center;">
+                      <p class="source-info email-small-text"
+                        style="color: #5e5e72; padding: 0; margin: 0; font-size: 13px; line-height: 1.5; font-weight: 300; font-family: sans-serif;">
+                        {{{ getString "learn-more-about-fxm" fxmLink='<a style="color: #0060df; font-weight: 400;"
+                          href="https://monitor.firefox.com/?utm_source=fx-monitor&utm_medium=email&utm_campaign=learn-more-link"
+                          target="_blank" rel="noopener noreferrer">Firefox Monitor</a>'}}}</p>
+                    </td>
+                  </tr>
+                </table>
               </td>
               </tr>
               <tr>
