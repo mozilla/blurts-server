@@ -1,14 +1,36 @@
 "use strict";
 
 const EmailUtils = require("../email-utils");
+const AppConstants = require("../app-constants");
+const path = require("path");
+const { readdir } = require("fs/promises");
+const partialDir = path.join(path.dirname(require.main.filename), "/views/partials/email_partials");
+
+let partialFilenames;
+
+async function getPartialFilenames() {
+  try {
+    partialFilenames = await readdir(partialDir);
+  } catch (e) {
+    console.error(e);
+    partialFilenames = [];
+  }
+
+  return partialFilenames;
+}
 
 async function getEmailMockUps(req, res) {
   const email = "example@email.com";
+  const partials = partialFilenames || await getPartialFilenames();
+
+  if (!["dev", "heroku"].includes(AppConstants.NODE_ENV)) return notFound(req, res);
 
   if (!req.query.partial) {
     req.query.partial = "email_verify";
     req.query.type = "email_verify";
   }
+
+  if (!partials.includes(`${req.query.partial}.hbs`)) return notFound(req, res);
 
   if (["breachAlert", "pre-fxa", "singleBreach", "multipleBreaches", "noBreaches", "email_verify"].indexOf(req.query.type) === -1) {
     return res.redirect("/email-l10n");
@@ -79,7 +101,11 @@ async function getEmailMockUps(req, res) {
 
 function notFound(req, res) {
   res.status(404);
-  res.redirect("/email-l10n");
+  res.render("subpage", {
+    analyticsID: "error",
+    headline: req.fluentFormat("error-headline"),
+    subhead: req.fluentFormat("home-not-found"),
+  });
 }
 
 module.exports = {
