@@ -78,12 +78,11 @@
           <ul>
           {{#each this.url}}
           <li class="remove-dash-results-link-item">
-            <a
+            <button
               class="remove-dash-results-detail-link break-word"
-              href="{{this}}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >{{getRemoveString "remove-result-link-title"}} {{incrementedIndex @index}}</a>
+              data-micromodal-trigger="modal-leaving-monitor"
+              data-link="{{this}}"
+            >{{getRemoveString "remove-result-link-title"}} {{incrementedIndex @index}}</button>
           </li>
           {{/each}}
           </ul>

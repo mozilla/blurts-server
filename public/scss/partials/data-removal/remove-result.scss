@@ -175,6 +175,12 @@
   &-results-detail-link {
     color: var(--blue3);
     margin-left: 10px;
+    border: 0;
+    padding: 0;
+
+    &:hover, &:focus {
+      color: var(--blue5);
+    }
 
     &:first-child {
       margin-left: 0;

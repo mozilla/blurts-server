@@ -405,6 +405,9 @@ function addRemoveDashListeners() {
   document
     .querySelectorAll(".remove-filter-key-button")
     .forEach(addStatusFilterListener);
+  document
+    .querySelectorAll(".remove-dash-results-detail-link")
+    .forEach(addLeavingLink);
 }
 
 function addRemoveDashDetailsToggle(el) {
@@ -413,6 +416,10 @@ function addRemoveDashDetailsToggle(el) {
 
 function addStatusFilterListener(el) {
   el.addEventListener("click", onStatusFilterToggle);
+}
+
+function addLeavingLink(el) {
+  el.addEventListener("click", onLeavingLinkClick);
 }
 
 function onRemoveDashDetailsToggle(e) {
@@ -443,6 +450,25 @@ function onStatusFilterToggle(e) {
   }
   curFilter = curFilter.replace(/^\s+|\s+$/g, ""); //remove lead and end spaces
   $container.setAttribute("data-filter", curFilter);
+}
+
+function onLeavingLinkClick(e) {
+  const $trigger = e.currentTarget;
+  const thisLink = $trigger.dataset.link;
+  const modalID = $trigger.dataset.micromodalTrigger;
+  const $thisModal = document.getElementById(modalID);
+  const $modalLink = $thisModal.querySelector(".modal__leaving_link");
+
+  if (thisLink && $modalLink) {
+    $modalLink.href = thisLink;
+  } else {
+    console.error(
+      "either the leaving monitor modal or the link data attribute for the modal trigger is missing"
+    );
+    if ($modalLink) {
+      $modalLink.href = "#"; //clear out any previous links
+    }
+  }
 }
 
 function initStatsChart() {
