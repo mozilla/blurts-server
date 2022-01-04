@@ -32,6 +32,7 @@ const {
   getRemovalDeleteConfirmationPage,
   getRemovalMoreTimePage,
   getRemovalEnrollPage,
+  handleRemovalOptout,
   getRemovalEnrolledPage,
   getRemovalEnrollFullPage,
   getRemovalEnrollEndedPage,
@@ -148,6 +149,14 @@ router.post(
   requireSessionUser,
   asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalEnrollFormSignup)
+);
+
+router.get(
+  "/remove-optout-confirm",
+  csrfProtection,
+  urlEncodedParser,
+  requireSessionUser,
+  asyncMiddleware(handleRemovalOptout)
 );
 
 router.get(

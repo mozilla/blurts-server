@@ -761,6 +761,27 @@ async function getRemovalEnrolledPage(req, res) {
   });
 }
 
+async function handleRemovalOptout(req, res) {
+  const sessionUser = req.user;
+  const optoutRes = await DB.removalOptout(sessionUser);
+  if (!optoutRes || optoutRes !== 1) {
+    const localeError = LocaleUtils.formatRemoveString("remove-error-optout");
+    return res.status(400).json({
+      error: localeError,
+    });
+  }
+
+  if (!req.session || !req.session.kanary) {
+    const localeError = LocaleUtils.formatRemoveString("remove-error-optout");
+    return res.status(400).json({
+      error: localeError,
+    });
+  }
+
+  req.session.kanary.onRemovalPilotList = false; //this must be set so they no longer see the tab in the navigation
+  return res.redirect("/");
+}
+
 async function getRemovalEnrollFullPage(req, res) {
   const user = req.user;
   const utmOverrides = getUTMContents(req);
@@ -1276,6 +1297,19 @@ async function postRemovalKan(req, res) {
   res.redirect("/user/remove-delete-confirmation");
 }
 
+async function postRemovalKan(req, res) {
+  const sessionUser = req.user;
+  const deleteResponse = await removeKanaryAcct(sessionUser.kid);
+  if (!deleteResponse.id) {
+    const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
+    return res.status(400).json({
+      error: localeError,
+    });
+  }
+  await DB.removeKan(sessionUser);
+  res.redirect("/user/remove-delete-confirmation");
+}
+
 async function checkIfRemovalPilotFull(user) {
   const curPilot = await DB.getRemovalPilotByName(
     REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP
@@ -1381,7 +1415,19 @@ function checkIfRemoveDisplayMoreTime(user) {
 async function checkIfOnRemovalPilotList(user) {
   if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
     const hashMatch = await checkEmailHash(user.primary_email);
-    return hashMatch;
+    if (hashMatch) {
+      //user is on the list
+      const isOptedOut = await DB.getRemovalOptoutStatus(user);
+      if (isOptedOut) {
+        //have they opted out of the pilot?
+        return false;
+      } else {
+        //user is active in the pilot
+        return hashMatch;
+      }
+    } else {
+      return false;
+    }
   } else {
     console.log("pilot check not enabled");
     return false;
@@ -1998,6 +2044,7 @@ module.exports = {
   getRemovalEnrolledPage,
   getRemovalEnrollFullPage,
   getRemovalEnrollEndedPage,
+  handleRemovalOptout,
   getRemovalPilotEndedPage,
   handleRemovalFormSignup,
   handleRemovalEnrollFormSignup,

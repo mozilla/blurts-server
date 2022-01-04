@@ -81,6 +81,7 @@ remove-dash-submit = Start Data Removal
 remove-dash-change-submit = Review Information
 remove-dash-form-required-helper = * All fields are required to properly identify your exposed information
 remove-dash-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
+remove-optout = Opt Out
 
 
 # Data Removal Form Confirmation Strings
@@ -311,7 +312,7 @@ remove-modal-close-accessible = Close this dialog window
 remove-modal-more-info = Learn More
 remove-modal-more-info-found = Learn more about info found
 remove-modal-more-info-links = Learn more about links to exposed info
-remove-modal-more-optout = Learn more about manual removal
+remove-modal-more-manual = Learn more about manual removal
 remove-modal-more-risk = Learn more about risk
 remove-modal-more-status = Learn more about risk
 remove-expand = Expand Section
@@ -361,11 +362,16 @@ remove-modal-link-text = The following links are the web addresses where your in
 
 remove-modal-risk-title = What is Risk Level?
 
-# Data Removal Opt Out Modal
+# Data Removal Manual Modal
 
-remove-modal-optout-title = Manual Removal Instructions
-remove-modal-optout-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information,
+remove-modal-manual-title = Manual Removal Instructions
+remove-modal-manual-text = If your request is blocked, or if for any reason you wish to attempt to manually remove your information,
  you can use the contact email or website provided for this result to do so.
+
+ # Data Removal Optout Modal
+
+remove-modal-optout-title = Confirm Opt-Out of Data Removal Pilot
+remove-modal-optout-text = Once you submit your opt-out request, this action cannot be undone. 
 
 # Data Removal About Page
 
@@ -494,3 +500,5 @@ remove-error-update = Error submitting updates to Kanary. Please try your reques
 remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in Kanary. Please contact support.
 remove-error-alpha = field allows only letters, dashes, and spaces
 remove-error-no-id = The {-brand-remove-partner} API did not return an ID
+remove-error-optout = There was an error opting out of the { remove-pilot-title }
+remove-error-no-session = No { -remove-brand-partner } session variable found

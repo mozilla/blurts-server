@@ -504,6 +504,27 @@ const DB = {
       });
   },
 
+  async removalOptout(subscriber) {
+    const res = await knex("subscribers")
+      .where({ id: subscriber.id })
+      .update({
+        removal_optout: true,
+      })
+      .catch((e) => {
+        console.error("error updating optout status in db", e);
+      });
+    return res;
+  },
+
+  async getRemovalOptoutStatus(user) {
+    const res = await knex
+      .select("removal_optout")
+      .from("subscribers")
+      .where("id", user.id)
+      .pluck("removal_optout"); //return only the values in an array not the object
+    return res[0];
+  },
+
   async getRemoveParticipants() {
     const res = await knex
       .select("kid")
