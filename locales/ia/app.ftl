@@ -566,3 +566,10 @@ vpn-banner-cta = Installa { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Expander
 # button to close panel
 vpn-banner-cta-close = Clauder
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Como mantene tu tu adresse e-mail un secreto?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Esque tu te preoccupa del securitate sur wi-fi public?
