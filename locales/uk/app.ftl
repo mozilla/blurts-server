@@ -693,3 +693,10 @@ vpn-banner-cta = Отримати { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Розгорнути
 # button to close panel
 vpn-banner-cta-close = Закрити
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Як ви зберігаєте свою електронну адресу в таємниці?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Чи турбуєтеся ви про безпечність загальнодоступного Wi-Fi?
