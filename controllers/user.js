@@ -424,7 +424,7 @@ async function postRemoveFxm(req, res) {
   //DATA REMOVAL SPECIFIC
   if (sessionUser.kid) {
     const deleteResponse = await removeKanaryAcct(sessionUser.kid);
-    if (!deleteResponse.id) {
+    if (!deleteResponse?.id) {
       const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
       return res.status(400).json({
         error: localeError,
@@ -1289,7 +1289,7 @@ async function getRemovalKan(req, res) {
 async function postRemovalKan(req, res) {
   const sessionUser = req.user;
   const deleteResponse = await removeKanaryAcct(sessionUser.kid);
-  if (!deleteResponse || !deleteResponse.id) {
+  if (!deleteResponse?.id) {
     const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
     return res.status(400).json({
       error: localeError,
