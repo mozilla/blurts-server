@@ -363,6 +363,14 @@ function getRemoveString(id, args) {
   return LocaleUtils.formatRemoveString(id);
 }
 
+function checkIfInRemovalPilot(args) {
+  const { session } = args.data.root.req;
+  if (session.kanary && session.kanary.onRemovalPilotList) {
+    return session.kanary.onRemovalPilotList;
+  }
+  return false;
+}
+
 //END DATA REMOVAL SPECIFIC
 
 module.exports = {
@@ -394,4 +402,5 @@ module.exports = {
   getOptOutLink,
   incrementedIndex,
   getRemoveString,
+  checkIfInRemovalPilot,
 };
