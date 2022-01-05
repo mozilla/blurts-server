@@ -27,9 +27,16 @@
         <input id="" class="js-enroll-submit remove-enroll-submit" type="submit" value="{{getRemoveString "remove-enroll-submit"}}"/>
       </form>
     </div>
+    <div class="flx jst-cntr">
+        <button
+          class="js-remove-optout remove-dashboard-optout-btn btn-small btn-grey-dark"
+          data-micromodal-trigger="modal-remove-optout"
+          type="button"
+        >{{getRemoveString "remove-optout"}}</button>
+    </div>
     <div class="remove-dashboard-form-error --general --enroll"></div>
     {{/unless}}
   </div>
   {{> dashboards/remove-form-kanary-footer}}
 </main>
-
+{{> data-removal/modal-remove-optout}}

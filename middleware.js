@@ -268,6 +268,22 @@ async function requireRemovalUser(req, res, next) {
   }
 }
 
+async function requireNoOptOut(req, res, next) {
+  if (req.user) {
+    const isOptedOut = await DB.getRemovalOptoutStatus(req.user);
+    if (isOptedOut) {
+      console.log("user opted out, redirecting...");
+      return res.redirect("/");
+    } else {
+      next();
+      return;
+    }
+  } else {
+    console.log("no user found, redirecting...");
+    return res.redirect("/");
+  }
+}
+
 module.exports = {
   addRequestToResponse,
   pickLanguage,
@@ -280,4 +296,5 @@ module.exports = {
   requireSessionUser,
   getShareUTMs,
   requireRemovalUser,
+  requireNoOptOut,
 };

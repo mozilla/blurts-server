@@ -256,12 +256,24 @@ button.btn-ghost {
   min-width: 200px;
 }
 
+.btn-link {
+  border: 0;
+  @include ff-inter;
+  @include default-link;
+  font-size: 15px;
+  font-weight: normal;
+}
+
 .btn-blue {
   @include blue-button;
 }
 
 .btn-grey {
   @include grey-button;
+}
+
+.btn-grey-dark {
+  @include dark-grey-button;
 }
 
 .btn-red-primary {

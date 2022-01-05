@@ -14,22 +14,30 @@
           class="modal__close"
           aria-label="Close modal"
           data-micromodal-close
-        ></button>
+        ><span class="sr-only">{{getRemoveString "remove-modal-close"}}</span></button>
       </div>
-      <div class="modal__content" id="modal-1-content">
+      <div class="modal__content" id="modal-optout-content">
         <p>
           {{getRemoveString "remove-modal-optout-text"}}
         </p>
       </div>
       <div class="modal__footer flx space-between">
-        <a href="/remove-faq">{{getRemoveString "remove-modal-more-optout"}}</a>
         <a
-          class="modal__close-footer"
+          class=""
           href="#"
           role="button"
           data-micromodal-close
-          aria-label="{{getRemoveString "remove-modal-close-accessible"}}"
-        >{{getRemoveString "remove-modal-close"}}</a>
+          aria-label="{{getRemoveString "remove-modal-cancel"}}"
+        >{{getRemoveString "remove-modal-cancel"}}</a>
+        <div class="remove-modal-optout-container">
+          <form action="/user/remove-optout-confirm">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+            <button
+              class="remove-modal-optout-confirm btn-link"
+              type="submit"
+            >{{getRemoveString "remove-modal-continue"}}</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
