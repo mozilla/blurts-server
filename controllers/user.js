@@ -772,7 +772,9 @@ async function handleRemovalOptout(req, res) {
   }
 
   if (!req.session || !req.session.kanary) {
-    const localeError = LocaleUtils.formatRemoveString("remove-error-optout");
+    const localeError = LocaleUtils.formatRemoveString(
+      "remove-error-no-session"
+    );
     return res.status(400).json({
       error: localeError,
     });
@@ -1287,7 +1289,7 @@ async function getRemovalKan(req, res) {
 async function postRemovalKan(req, res) {
   const sessionUser = req.user;
   const deleteResponse = await removeKanaryAcct(sessionUser.kid);
-  if (!deleteResponse.id) {
+  if (!deleteResponse || !deleteResponse.id) {
     const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
     return res.status(400).json({
       error: localeError,

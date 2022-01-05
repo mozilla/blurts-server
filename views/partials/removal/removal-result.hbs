@@ -118,8 +118,8 @@
       {{#ifCompare this.current_step "===" "BLOCKED"}}
         <li class="remove-dash-results-details-item flx flx-col align-start">
           <p class="remove-dash-results-detail-title flx jst-cntr">
-            {{getRemoveString "remove-result-opt-out"}}
-            {{> removal/removal-question-trigger modal="modal-remove-manual" alt="About Manual Removal"}}
+            {{getRemoveString "remove-result-manual"}}
+            {{> removal/removal-question-trigger modal="modal-remove-manual" alt=(getRemoveString "remove-result-manual")}}
           </p>
           <p class="remove-dash-results-detail">
             <a

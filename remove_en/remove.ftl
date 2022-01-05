@@ -81,7 +81,7 @@ remove-dash-submit = Start Data Removal
 remove-dash-change-submit = Review Information
 remove-dash-form-required-helper = * All fields are required to properly identify your exposed information
 remove-dash-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
-remove-optout = Opt Out
+remove-optout = Opt-Out
 
 
 # Data Removal Form Confirmation Strings
@@ -169,7 +169,7 @@ remove-result-details-found = Info found
 remove-result-description = What is this website?
 remove-result-link = Links to exposed info
 remove-result-link-title = Record Link
-remove-result-opt-out = Manual removal instructions
+remove-result-manual = Manual removal instructions
 remove-pending-title = Starting your { remove-process-name }. Check back in 24-48 hours for results.
 remove-pending = We're scanning for sites that expose your personal information. It may take 24 hours for your report to finish.
 remove-result-updated = Updated
