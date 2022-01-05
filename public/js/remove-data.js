@@ -112,6 +112,12 @@ function addRemoveFormListeners() {
   document.querySelectorAll(".js-form-select").forEach((selector) => {
     selector.addEventListener("change", onSelectChange);
   });
+
+  //user should only see the opt out button the first time they sign up, not when editing info, hence the check
+  const $optOutBtn = document.querySelector(".js-remove-optout");
+  if ($optOutBtn) {
+    $optOutBtn.addEventListener("click", onRemoveFormOptoutClick);
+  }
 }
 
 function onSelectChange(e) {
@@ -311,6 +317,10 @@ function onRemoveFormSubmitClick(e) {
 
   populateConfirmData(formData);
   toggleConfirmScreen(true);
+}
+
+function onRemoveFormOptoutClick(e) {
+  e.preventDefault();
 }
 
 function toggleConfirmScreen(doShow) {

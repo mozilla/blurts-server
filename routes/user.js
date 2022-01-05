@@ -9,6 +9,7 @@ const {
   asyncMiddleware,
   requireSessionUser,
   requireRemovalUser,
+  requireNoOptOut,
 } = require("../middleware");
 const {
   add,
@@ -32,6 +33,7 @@ const {
   getRemovalDeleteConfirmationPage,
   getRemovalMoreTimePage,
   getRemovalEnrollPage,
+  handleRemovalOptout,
   getRemovalEnrolledPage,
   getRemovalEnrollFullPage,
   getRemovalEnrollEndedPage,
@@ -151,6 +153,14 @@ router.post(
 );
 
 router.get(
+  "/remove-optout-confirm",
+  csrfProtection,
+  urlEncodedParser,
+  requireSessionUser,
+  asyncMiddleware(handleRemovalOptout)
+);
+
+router.get(
   "/remove-enroll-full",
   csrfProtection,
   requireSessionUser,
@@ -170,6 +180,7 @@ router.get(
   "/remove-data",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireNoOptOut),
   asyncMiddleware(getRemovalPage)
 );
 
@@ -191,6 +202,7 @@ router.get(
   "/remove-delete-confirmation",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireNoOptOut),
   asyncMiddleware(getRemovalDeleteConfirmationPage)
 );
 
@@ -232,6 +244,7 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalKan)
 );
 router.post(

@@ -97,6 +97,18 @@
   }
 }
 
+@mixin dark-grey-button {
+  @include button;
+
+  background-color: var(--grey6);
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: var(--grey7);
+  }
+}
+
 @mixin red-button {
   @include button;
 
