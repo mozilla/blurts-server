@@ -9,6 +9,7 @@ const {
   asyncMiddleware,
   requireSessionUser,
   requireRemovalUser,
+  requireNoOptOut,
 } = require("../middleware");
 const {
   add,
@@ -179,6 +180,7 @@ router.get(
   "/remove-data",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireNoOptOut),
   asyncMiddleware(getRemovalPage)
 );
 
@@ -200,6 +202,7 @@ router.get(
   "/remove-delete-confirmation",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireNoOptOut),
   asyncMiddleware(getRemovalDeleteConfirmationPage)
 );
 
@@ -241,6 +244,7 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalKan)
 );
 router.post(

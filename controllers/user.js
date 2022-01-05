@@ -1297,19 +1297,6 @@ async function postRemovalKan(req, res) {
   res.redirect("/user/remove-delete-confirmation");
 }
 
-async function postRemovalKan(req, res) {
-  const sessionUser = req.user;
-  const deleteResponse = await removeKanaryAcct(sessionUser.kid);
-  if (!deleteResponse.id) {
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-id");
-    return res.status(400).json({
-      error: localeError,
-    });
-  }
-  await DB.removeKan(sessionUser);
-  res.redirect("/user/remove-delete-confirmation");
-}
-
 async function checkIfRemovalPilotFull(user) {
   const curPilot = await DB.getRemovalPilotByName(
     REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP
