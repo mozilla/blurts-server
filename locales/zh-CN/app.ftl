@@ -552,3 +552,10 @@ vpn-banner-cta = 下载 { -brand-mozilla-vpn }
 vpn-banner-cta-expand = 展开
 # button to close panel
 vpn-banner-cta-close = 关闭
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = 要如何保密自己的邮箱地址？
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = 您是否担心公共 Wi-Fi 的安全？

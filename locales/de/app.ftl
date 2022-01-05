@@ -601,3 +601,10 @@ vpn-banner-cta = Holen Sie sich { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Ausklappen
 # button to close panel
 vpn-banner-cta-close = Schließen
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Wie halten Sie Ihre E-Mail-Adresse geheim?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Machen Sie sich Sorgen um die Sicherheit im öffentlichen WLAN?

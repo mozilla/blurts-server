@@ -69,6 +69,8 @@ instant-messenger-identities = Identitetar på Instant messenger-tenester
 ip-addresses = IP-adresser
 job-applications = Jobbsøknadar
 job-titles = Jobbtitlar
+# This string refers to vehicle license plates. 
+licence-plates = Bilskilt
 living-costs = Levekostnadar
 login-histories = Innloggingshistorikk
 mac-addresses = MAC-adresser
