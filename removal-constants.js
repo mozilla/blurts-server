@@ -41,7 +41,6 @@ const REMOVAL_CONSTANTS = {
     "/remove-enroll",
     "/remove-enroll-full",
     "/remove-enroll-ended",
-    "/remove-signup-confirmation",
     "/remove-update-confirmation",
     "/remove-delete-confirmation",
     "/remove-pilot-ended",
@@ -57,8 +56,6 @@ const REMOVAL_CONSTANTS = {
     },
   ],
   REMOVAL_PILOT_ENROLLMENT_END_DAY: 14, //days from pilot start to when a user can no longer enroll in their pilot group
-  REMOVAL_PILOT_PMT_DAY: 25, //days from pilot start to showing the willingness to pay option
-  REMOVAL_PILOT_PMT_DECISION_DAY: 32, //days from pilot start to no longer displaying the pmt choice screen
   REMOVAL_PILOT_END_DAY: 51, //days from pilot start to when the pilot ends
   REMOVAL_PILOT_GROUP: "round_01", //the `name` used to retrieve the proper record from the `removal_pilot` database tablename of the current pilot group in the removal_pilot_database
   REMOVAL_STEP: {

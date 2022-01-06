@@ -28,10 +28,8 @@ const {
   postResolveBreach,
   //DATA REMOVAL SPECIFIC
   getRemovalPage,
-  getRemovalConfirmationPage,
   getRemovalUpdateConfirmationPage,
   getRemovalDeleteConfirmationPage,
-  getRemovalMoreTimePage,
   getRemovalEnrollPage,
   handleRemovalOptout,
   getRemovalEnrolledPage,
@@ -185,13 +183,6 @@ router.get(
 );
 
 router.get(
-  "/remove-signup-confirmation",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(getRemovalConfirmationPage)
-);
-
-router.get(
   "/remove-update-confirmation",
   csrfProtection,
   requireSessionUser,
@@ -204,14 +195,6 @@ router.get(
   requireSessionUser,
   asyncMiddleware(requireNoOptOut),
   asyncMiddleware(getRemovalDeleteConfirmationPage)
-);
-
-router.get(
-  "/remove-more-time",
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
-  asyncMiddleware(getRemovalMoreTimePage)
 );
 
 router.get(
