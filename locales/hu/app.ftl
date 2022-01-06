@@ -654,3 +654,10 @@ vpn-banner-cta = { -brand-mozilla-vpn } beszerzése
 vpn-banner-cta-expand = Kibontás
 # button to close panel
 vpn-banner-cta-close = Bezárás
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Hogyan tartja titokban az e-mail-címét?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Aggódik a biztonsága miatt a nyilvános Wi-Fiken?

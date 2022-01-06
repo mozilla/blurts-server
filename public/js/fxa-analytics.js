@@ -369,6 +369,8 @@ function analyticsSurveyLogic() {
     ga("create", "UA-77033033-16");
     ga("set", "anonymizeIp", true);
     ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+    ga("set", "dimension11", `${document.body.dataset.removalPilotUser}`);
+
 
     ga("send", "pageview", {
       hitCallback: function() {

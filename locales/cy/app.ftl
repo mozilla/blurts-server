@@ -680,3 +680,10 @@ vpn-banner-cta = Cael { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Ehangu
 # button to close panel
 vpn-banner-cta-close = Cau
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Sut ydych chi'n cadw'ch cyfeiriad e-bost yn gyfrinach?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Ydych chi'n poeni am ddiogelwch ar Wi-Fi cyhoeddus?
