@@ -1315,10 +1315,6 @@ function checkIfRemovalEnrollmentEnded(user) {
   return new Date() > enrollmentEndDate;
 }
 
-function checkIfRemovalPmtDecisionMade(user) {
-  return user.removal_would_pay !== null; //can be true or false, but not
-}
-
 async function checkIfOnRemovalPilotList(user) {
   if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
     const hashMatch = await checkEmailHash(user.primary_email);
