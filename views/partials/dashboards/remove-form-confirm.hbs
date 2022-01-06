@@ -12,9 +12,17 @@
           class="remove-dashboard-confirm-cancel btn-grey btn-small"
         >{{getRemoveString "remove-dash-confirm-back"}}</a>
       {{/if}}
-      <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getRemoveString
+      {{#if this.acctInfo}}
+        {{#if this.allowEditRemovalInfo}}
+        <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getRemoveString
+            "remove-dash-confirm-edit"
+          }}</a>
+        {{/if}}
+      {{else}}
+        <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getRemoveString
           "remove-dash-confirm-edit"
         }}</a>
+      {{/if}}
     </div>
   </div>
   <div class="remove-dashboard-confirm-container">
@@ -58,11 +66,24 @@
   </div>
   <div class="remove-dashboard-form-error --general"></div>
   <div class="flx">
-    <a
-      href="#"
-      class="js-remove-confirm remove-dashboard-confirm-submit jst-cntr flx btn-blue-primary"
-      role="button"
-    >{{getConfirmSubmitText}}</a>
+    {{#if this.acctInfo}}
+      {{#if this.allowEditRemovalInfo}}
+      <a
+        href="#"
+        class="js-remove-confirm remove-dashboard-confirm-submit jst-cntr flx btn-blue-primary"
+        role="button"
+      >{{getConfirmSubmitText}}</a>
+      
+      {{else}}
+      <p class="remove-dashboard-conirm-edit">{{getRemoveString "remove-form-change-contact-msg"}}: <a href="mailto:{{ getRemoveString "remove-about-support-email"}}">{{ getRemoveString "remove-about-support-email"}}</a></p>
+      {{/if}}
+    {{else}}
+      <a
+        href="#"
+        class="js-remove-confirm remove-dashboard-confirm-submit jst-cntr flx btn-blue-primary"
+        role="button"
+      >{{getConfirmSubmitText}}</a>
+    {{/if}}
   </div>
   {{#if this.acctInfo}}
   <div class="remove-dashboard-delete-container flx jst-cntr">
