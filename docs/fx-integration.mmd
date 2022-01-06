@@ -1,0 +1,7 @@
+sequenceDiagram
+    Firefox->>accounts.firefox.com: POST /oauth/token grant_type:fxa-credentials
+    accounts.firefox.com->>Firefox: {access_token: ...}
+    Firefox->>monitor.firefox.com: GET /user/breach-stats Bearer: $access_token
+    monitor.firefox.com->>accounts.firefox.com: POST /oauth/verify $access_token
+    accounts.firefox.com->>monitor.firefox.com: {user: ...}
+    monitor.firefox.com->>Firefox: {breaches ...}
