@@ -172,6 +172,20 @@ function getRemovalFAQPage(req, res) {
   });
 }
 
+function getRemovalPilotTermsPage(req, res) {
+  return res.render("top-level-page", {
+    title: "Data Removal Pilot Terms of Service",
+    whichPartial: "top-level/removal-pilot-terms",
+  });
+}
+
+function getRemovalPilotPrivacyPage(req, res) {
+  return res.render("top-level-page", {
+    title: "Data Removal Pilot Privacy Notice",
+    whichPartial: "top-level/removal-pilot-privacy",
+  });
+}
+
 module.exports = {
   addEmailToWaitlist,
   getAboutPage,
@@ -182,4 +196,6 @@ module.exports = {
   notFound,
   removeMyData,
   getRemovalFAQPage,
+  getRemovalPilotTermsPage,
+  getRemovalPilotPrivacyPage,
 };
