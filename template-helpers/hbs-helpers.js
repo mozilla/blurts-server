@@ -365,7 +365,7 @@ function getRemoveString(id, args) {
 
 function checkIfInRemovalPilot(args) {
   const { session } = args.data.root.req;
-  if (session.kanary && session.kanary.onRemovalPilotList) {
+  if (session.kanary?.onRemovalPilotList) {
     return session.kanary.onRemovalPilotList;
   }
   return false;
