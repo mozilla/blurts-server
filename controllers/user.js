@@ -839,10 +839,6 @@ async function getRemovalPage(req, res) {
     return res.redirect("/user/remove-pilot-ended");
   }
 
-  if (checkIfRemoveDisplayMoreTime(user) && !req.query.show) {
-    return res.redirect("/user/remove-more-time");
-  }
-
   let show_form;
   if (req.query && req.query.show_form) {
     //if we explicitly request display of the form from a param
@@ -931,6 +927,8 @@ async function getRemovalPage(req, res) {
     whichPartial: partialString,
     experimentFlags,
     utmOverrides,
+    //DATA REMOVAL SPECIFIC
+    allowEditRemovalInfo: REMOVAL_CONSTANTS.REMOVE_EDIT_INFO_ENABLED,
     doClientsideValidation: REMOVAL_CONSTANTS.REMOVE_CLIENT_VALIDATION_ENABLED,
   });
 }
@@ -1072,54 +1070,6 @@ async function getRemovalDeleteConfirmationPage(req, res) {
     whichPartial: "dashboards/remove-delete-confirmation",
     experimentFlags,
     utmOverrides,
-  });
-}
-
-async function getRemovalMoreTimePage(req, res) {
-  const user = req.user;
-
-  if (checkIfRemovalPmtDecisionMade(user) && !req.query.show) {
-    res.redirect("/user/remove-data");
-  }
-
-  if (!checkIfRemoveDisplayMoreTime(user) && !req.query.show) {
-    //if we're not in the more time window, the user has not signed up for a kanary ID yet, or they have already indicated a willingness to pay decision, redirect them to the remove dashboard
-    return res.redirect("/user/remove-data");
-  }
-
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
-  const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
-    user,
-    "remove_data"
-  );
-
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  let removeData,
-    removeAcctInfo = null; //data broker info
-  if (user.kid) {
-    removeData = await getRemoveDashData(user.kid);
-    removeAcctInfo = await getRemoveAcctInfo(user.kid);
-  }
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
-    userHasSignedUpForRemoveData,
-    supportedLocalesIncludesEnglish,
-    whichPartial: "dashboards/remove-more-time",
-    experimentFlags,
-    utmOverrides,
-    removeData,
-    removeAcctInfo,
   });
 }
 
@@ -1367,40 +1317,6 @@ function checkIfRemovalEnrollmentEnded(user) {
   return new Date() > enrollmentEndDate;
 }
 
-function checkIfRemovalPmtDecisionMade(user) {
-  return user.removal_would_pay !== null; //can be true or false, but not
-}
-
-function checkIfRemoveDisplayMoreTime(user) {
-  if (!REMOVAL_CONSTANTS.REMOVE_WILLINGNESS_TO_PAY_ENABLED) {
-    return false;
-  }
-  const pilotGroup = getPilotGroup(user);
-
-  const pilotPmtDate = FormUtils.getDaysFromTimestamp(
-    pilotGroup.start_time,
-    REMOVAL_CONSTANTS.REMOVAL_PILOT_PMT_DAY
-  );
-
-  const pilotPmtEndDate = FormUtils.getDaysFromTimestamp(
-    pilotGroup.start_time,
-    REMOVAL_CONSTANTS.REMOVAL_PILOT_PMT_DECISION_DAY
-  );
-
-  const now = new Date();
-
-  if (
-    now > pilotPmtDate &&
-    now < pilotPmtEndDate &&
-    !checkIfRemovalPmtDecisionMade(user)
-  ) {
-    //if the current date/time is past the pilot payment start date but before the pilot payment decision day, and user has not made a decision
-    return true;
-  } else {
-    return false;
-  }
-}
-
 async function checkIfOnRemovalPilotList(user) {
   if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
     const hashMatch = await checkEmailHash(user.primary_email);
@@ -1574,7 +1490,7 @@ async function handleRemovalFormSignup(req, res) {
     await DB.setKanaryID(user, memberID);
   }
 
-  return res.json({ nextPage: "/user/remove-signup-confirmation" });
+  return res.json({ nextPage: "/user/remove-data" });
 }
 
 function validateRemovalForm(fields) {
@@ -2028,7 +1944,6 @@ module.exports = {
   getRemovalConfirmationPage,
   getRemovalUpdateConfirmationPage,
   getRemovalDeleteConfirmationPage,
-  getRemovalMoreTimePage,
   getRemovalEnrollPage,
   getRemovalEnrolledPage,
   getRemovalEnrollFullPage,
