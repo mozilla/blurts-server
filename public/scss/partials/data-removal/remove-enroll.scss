@@ -23,6 +23,10 @@
     @include list-item-inside;
   }
 
+  &-terms {
+    margin-right: 10px;
+  }
+
   &-submit {
     margin-top: 25px;
   }

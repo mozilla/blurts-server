@@ -217,7 +217,9 @@ remove-enroll-terms = The pilot service will be offered at no cost to you for a 
  You may discontinue the { remove-process-name } service at any point within the 90 day pilot period.
 remove-enroll-link-faq = { -product-name } { remove-pilot-title } FAQ
 remove-enroll-link-tos = { remove-pilot-title } Terms of Service and Privacy Notice
-remove-enroll-terms-agreement = By continuing, I agree to the Terms of Service and Privacy Notice.
+remove-enroll-terms-agreement = By continuing, I agree to the
+remove-enroll-terms-link = Terms of Service
+remove-enroll-privacy-link = Privacy Notice
 remove-enroll-submit = Join the pilot
 
 # Data Removal Pilot Enrollment Full Page
