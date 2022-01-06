@@ -927,6 +927,8 @@ async function getRemovalPage(req, res) {
     whichPartial: partialString,
     experimentFlags,
     utmOverrides,
+    //DATA REMOVAL SPECIFIC
+    allowEditRemovalInfo: REMOVAL_CONSTANTS.REMOVE_EDIT_INFO_ENABLED,
     doClientsideValidation: REMOVAL_CONSTANTS.REMOVE_CLIENT_VALIDATION_ENABLED,
   });
 }

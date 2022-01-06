@@ -211,6 +211,7 @@ function getRemoveFormData(args) {
   const acctInfo = args.data.root.removeAcctInfo;
   const csrfToken = args.data.root.csrfToken;
   const doClientsideValidation = args.data.root.doClientsideValidation;
+  const allowEditRemovalInfo = args.data.root.allowEditRemovalInfo;
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
@@ -240,6 +241,7 @@ function getRemoveFormData(args) {
     acctInfo: acctInfo,
     jsConstants: REMOVAL_CONSTANTS,
     doClientsideValidation: doClientsideValidation,
+    allowEditRemovalInfo: allowEditRemovalInfo,
   };
 
   return args.fn(emailCards);

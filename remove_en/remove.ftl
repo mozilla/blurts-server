@@ -82,6 +82,7 @@ remove-dash-change-submit = Review Information
 remove-dash-form-required-helper = * All fields are required to properly identify your exposed information
 remove-dash-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
 remove-optout = Opt-Out
+remove-form-change-contact-msg = If you need to change your personal information due to an error, please contact support
 
 
 # Data Removal Form Confirmation Strings
