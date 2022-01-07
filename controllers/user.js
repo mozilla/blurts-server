@@ -833,13 +833,14 @@ async function getRemovalEnrollEndedPage(req, res) {
 async function getRemovalPage(req, res) {
   const user = req.user;
 
-  if (!checkIfEnrolledInRemovalPilot(user) && !FormUtils.canShowViaParams(req.query?.show)) {
-    return res.redirect("/user/remove-enroll");
-  }
-
-  if (checkIfRemovalPilotEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
-    //if the pilot is over, redirect to the end screen
-    return res.redirect("/user/remove-pilot-ended");
+  if (!FormUtils.canShowViaParams(req.query?.show)) {
+    if (!checkIfEnrolledInRemovalPilot(user)) {
+      return res.redirect("/user/remove-enroll");
+    }
+    if (checkIfRemovalPilotEnded(user)) {
+      // if the pilot is over, redirect to the end screen
+      return res.redirect("/user/remove-pilot-ended");
+    }
   }
 
   let show_form;

@@ -95,11 +95,7 @@ const FormUtils = {
     return parseFloat(mode);
   },
   canShowViaParams(doShow) {
-    if (["dev", "heroku"].includes(AppConstants.NODE_ENV) && doShow) {
-      return true;
-    } else {
-      return false;
-    }
+    return ["dev", "heroku"].includes(AppConstants.NODE_ENV) && doShow;
   },
 };
 
