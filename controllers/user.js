@@ -1006,7 +1006,7 @@ async function getRemovalConfirmationPage(req, res) {
 async function getRemovalUpdateConfirmationPage(req, res) {
   const user = req.user;
 
-  canShowViaParams = FormUtils.canShowViaParams(req.query?.show);
+  const canShowViaParams = FormUtils.canShowViaParams(req.query?.show);
 
   if (!user.kid && !canShowViaParams) {
     return res.redirect("/user/remove-enroll");
