@@ -1336,11 +1336,17 @@ function checkIfRemovalEnrollmentEnded(user) {
   }
   const pilotGroup = getPilotGroup(user);
 
+  const today = new Date();
+  const enrollmentStartDate = FormUtils.convertTimestampToDate(
+    pilotGroup.start_time
+  );
   const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,
     REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
   );
-  return new Date() > enrollmentEndDate;
+
+  return today < enrollmentStartDate || today > enrollmentEndDate;
+
 }
 
 async function checkIfOnRemovalPilotList(user) {

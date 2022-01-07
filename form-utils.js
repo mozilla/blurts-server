@@ -39,6 +39,9 @@ const FormUtils = {
   convertDateToTimestamp(curDate) {
     return parseInt((new Date(curDate).getTime() / 1000).toFixed(0));
   },
+  convertTimestampToDate(ts) {
+    return new Date(parseInt(ts) * 1000);
+  },
   calculateDaysBetweenTimestamps(startTime, endTime) {
     const timeDifference = endTime.getTime() - startTime.getTime();
     return timeDifference / (1000 * 3600 * 24); //ms to seconds, seconds to minutes, minutes to hours, hours to days
