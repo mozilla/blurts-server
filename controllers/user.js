@@ -696,18 +696,21 @@ function logout(req, res) {
 async function getRemovalEnrollPage(req, res) {
   const user = req.user;
 
-  if (checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
+  if (
+    checkIfRemovalEnrollmentEnded(user) &&
+    !FormUtils.canShowViaParams(req.query?.show)
+  ) {
     //If the pilot enrollment period is not active
     return res.redirect("/user/remove-enroll-ended");
   }
 
   const isEnrolledInPilot = checkIfEnrolledInRemovalPilot(user);
-  if (isEnrolledInPilot && !req.query.show) {
+  if (isEnrolledInPilot && !FormUtils.canShowViaParams(req.query?.show)) {
     //if the user has already enrolled in the pilot, just send them to the remove data page
     return res.redirect("/user/remove-data");
   }
 
-  if ((await checkIfRemovalPilotFull(user)) && !req.query.show) {
+  if ((await checkIfRemovalPilotFull(user)) && !FormUtils.canShowViaParams(req.query?.show)) {
     //If we have already hit the enrollment limit:
     return res.redirect("/user/remove-enroll-full");
   }
@@ -747,7 +750,7 @@ async function getRemovalEnrolledPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  if (!checkIfEnrolledInRemovalPilot(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -791,7 +794,7 @@ async function getRemovalEnrollFullPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!(await checkIfRemovalPilotFull(user)) && !req.query.show) {
+  if (!(await checkIfRemovalPilotFull(user)) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -812,7 +815,7 @@ async function getRemovalEnrollEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
+  if (!checkIfRemovalEnrollmentEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -830,11 +833,11 @@ async function getRemovalEnrollEndedPage(req, res) {
 async function getRemovalPage(req, res) {
   const user = req.user;
 
-  if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  if (!checkIfEnrolledInRemovalPilot(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-enroll");
   }
 
-  if (checkIfRemovalPilotEnded(user) && !req.query.show) {
+  if (checkIfRemovalPilotEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     //if the pilot is over, redirect to the end screen
     return res.redirect("/user/remove-pilot-ended");
   }
@@ -936,11 +939,11 @@ async function getRemovalPage(req, res) {
 async function getRemovalConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid && !checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  if (!user.kid && !checkIfEnrolledInRemovalPilot(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-enroll");
   }
 
-  if (!user.kid && checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  if (!user.kid && checkIfEnrolledInRemovalPilot(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-data");
   }
 
@@ -992,11 +995,11 @@ async function getRemovalConfirmationPage(req, res) {
 async function getRemovalUpdateConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid && !req.query.show) {
+  if (!user.kid && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-enroll");
   }
 
-  if (user.kid && !req.query.show) {
+  if (user.kid && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1039,7 +1042,7 @@ async function getRemovalUpdateConfirmationPage(req, res) {
 async function getRemovalDeleteConfirmationPage(req, res) {
   const user = req.user;
 
-  if (user.kid && !req.query.show) {
+  if (user.kid && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1080,7 +1083,7 @@ async function getRemovalPilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfRemovalPilotEnded(user) && !req.query.show) {
+  if (!checkIfRemovalPilotEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-data");
   }
 

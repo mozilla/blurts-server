@@ -1,6 +1,7 @@
 "use strict";
 
 const Countrily = require("countrily");
+const AppConstants = require("./app-constants");
 
 let countryCodes;
 let usStates;
@@ -92,6 +93,13 @@ const FormUtils = {
       current[1] >= previous[1] ? current : previous
     )[0];
     return parseFloat(mode);
+  },
+  canShowViaParams(doShow) {
+    if (["dev", "heroku"].includes(AppConstants.NODE_ENV) && doShow) {
+      return true;
+    } else {
+      return false;
+    }
   },
 };
 
