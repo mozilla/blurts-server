@@ -433,7 +433,9 @@ async function postRemoveFxm(req, res) {
     await DB.removeKan(sessionUser);
   }
   //END DATA REMOVAL SPECIFIC
-
+  if (req.session?.kanary) {
+    req.session.kanary.onRemovalPilotList = false;
+  }
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
@@ -771,7 +773,7 @@ async function handleRemovalOptout(req, res) {
     });
   }
 
-  if (!req.session || !req.session.kanary) {
+  if (!req.session?.kanary) {
     const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-session"
     );
@@ -1246,6 +1248,9 @@ async function postRemovalKan(req, res) {
     });
   }
   await DB.removeKan(sessionUser);
+  if (req.session?.kanary) {
+    req.session.kanary.onRemovalPilotList = false;
+  }
   res.redirect("/user/remove-delete-confirmation");
 }
 
