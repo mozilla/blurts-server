@@ -1260,7 +1260,8 @@ async function checkIfRemovalPilotFull(user) {
 }
 
 function getPilotGroup(user) {
-  const removalPilots = REMOVAL_CONSTANTS.REMOVAL_PILOTS.slice();
+  //get the pilot group with the closest starting time before the user's enrollment time
+  const removalPilots = REMOVAL_CONSTANTS.REMOVAL_PILOTS.slice(); //shallow copy the array
 
   let enrolledTime = FormUtils.convertDateToTimestamp(Date.now());
 
@@ -1269,22 +1270,47 @@ function getPilotGroup(user) {
   }
 
   removalPilots.sort((a, b) => {
-    const aDiff = enrolledTime - a.start_time;
-    const bDiff = enrolledTime - b.start_time;
+    const aEnd = FormUtils.convertDateToTimestamp(
+      FormUtils.getDaysFromTimestamp(
+        a.start_time,
+        REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+      )
+    );
+    const bEnd = FormUtils.convertDateToTimestamp(
+      FormUtils.getDaysFromTimestamp(
+        b.start_time,
+        REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+      )
+    );
+    //if diff time > 0 then the enrollment end date is still in the future
+    const aDiff = aEnd - enrolledTime;
+    const bDiff = bEnd - enrolledTime;
+    console.log("diffs", aDiff, bDiff);
 
+    //sort the array by the closest future end date
     if (aDiff > 0 && bDiff < 0) {
+      //console.log("a end is in the future, b end is in past, assign to a");
       return -1;
     } else if (aDiff < 0 && bDiff > 0) {
+      //console.log("a end is in the past, b end is in future, move to b");
       return 1;
     } else if (aDiff > 0 && bDiff > 0 && aDiff < bDiff) {
+      //console.log("both are in the future, but a is less far off, assign to a");
       return -1;
     } else if (aDiff > 0 && bDiff > 0 && aDiff > bDiff) {
+      //console.log("both are in the future, but b is less far off, assign to b");
       return 1;
+    } else if (aDiff < 0 && bDiff < 0 && aDiff < bDiff) {
+      //console.log("both are in the past, but b is less far off, assign to b");
+      return 1;
+    } else if (aDiff < 0 && bDiff < 0 && aDiff > bDiff) {
+      //console.log("both are in the past, but a is less far off, assign to a");
+      return -1;
     } else {
       return 0;
     }
   });
-
+  console.log("user is in group", removalPilots[0].name);
   return removalPilots[0];
 }
 
