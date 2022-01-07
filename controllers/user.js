@@ -1289,28 +1289,28 @@ function getPilotGroup(user) {
 
     //sort the array by the closest future end date
     if (aDiff > 0 && bDiff < 0) {
-      //console.log("a end is in the future, b end is in past, assign to a");
+      //a end is in the future, b end is in past, assign to a
       return -1;
     } else if (aDiff < 0 && bDiff > 0) {
-      //console.log("a end is in the past, b end is in future, move to b");
+      //a end is in the past, b end is in future, move to b
       return 1;
     } else if (aDiff > 0 && bDiff > 0 && aDiff < bDiff) {
-      //console.log("both are in the future, but a is less far off, assign to a");
+      //both are in the future, but a is less far off, assign to a
       return -1;
     } else if (aDiff > 0 && bDiff > 0 && aDiff > bDiff) {
-      //console.log("both are in the future, but b is less far off, assign to b");
+      //both are in the future, but b is less far off, assign to b
       return 1;
     } else if (aDiff < 0 && bDiff < 0 && aDiff < bDiff) {
-      //console.log("both are in the past, but b is less far off, assign to b");
+      //both are in the past, but b is less far off, assign to b
       return 1;
     } else if (aDiff < 0 && bDiff < 0 && aDiff > bDiff) {
-      //console.log("both are in the past, but a is less far off, assign to a");
+      //both are in the past, but a is less far off, assign to a
       return -1;
     } else {
       return 0;
     }
   });
-  console.log("user is in group", removalPilots[0].name);
+  //console.log("user is in group", removalPilots[0].name);
   return removalPilots[0];
 }
 

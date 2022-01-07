@@ -53,28 +53,15 @@ const REMOVAL_CONSTANTS = {
     {
       id: 1,
       name: "group_01",
-      start_time: 1638393405, //test - 1/13/22
-      max_users: 500,
+      start_time: 1641967200, //wed, jan 12
+      max_users: 300,
     },
     {
       id: 2,
       name: "group_02",
-      start_time: 1641676605, //test - 1/14/22
-      max_users: 500, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
+      start_time: 1644601719, //fri, feb 11
+      max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
     },
-    //MH - leave these - they are the actual values for the pilot
-    // {
-    //   id: 1,
-    //   name: "group_01",
-    //   start_time: 1641967200, //wed, jan 12
-    //   max_users: 300,
-    // },
-    // {
-    //   id: 2,
-    //   name: "group_02",
-    //   start_time: 1644601719, //fri, feb 11
-    //   max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
-    // },
   ],
   REMOVAL_PILOT_ENROLLMENT_END_DAY: 7, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
