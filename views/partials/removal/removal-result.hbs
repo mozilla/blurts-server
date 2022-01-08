@@ -109,9 +109,9 @@
           {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-risk-medium"}}: {{/ifCompare}}
           {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-risk-low"}}: {{/ifCompare}}
           </span>
-          {{#ifCompare this.risk_level "===" "HIGH"}}{{getRemoveString "remove-about-risk-high-content"}}: {{/ifCompare}}
-          {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-about-risk-medium-content"}}: {{/ifCompare}}
-          {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-about-risk-low-content"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "HIGH"}}{{getRemoveString "remove-about-risk-high-content"}}{{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-about-risk-medium-content"}}{{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-about-risk-low-content"}}{{/ifCompare}}
         </p>
       </li>
       {{/if}}

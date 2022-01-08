@@ -20,7 +20,10 @@
       </div>
       <div class="modal__content" id="modal-1-content">
         <div class="modal__status-container">
-          {{{getRemoveString "remove-modal-status-text"}}}
+          <p>Once a record is found on a data broker or people search site, the data removal service automatically sends a removal request and follows up with the site to track the status of the removal.</p>
+          <p><span class="bold">{{getRemoveString "remove-filter-in-progress"}}</span> refers to active requests that are still being worked on. Removals can take some time depending on the responsiveness of the data broker or people search site, and the steps they have set up for processing a removal.</p>
+          <p><span class="bold">{{getRemoveString "remove-filter-complete"}}</span> refers to inactive requests. These items correspond to data or information that have been requested and successfully removed and verified. Although data brokers and people search sites remove data, they may relist the same information after some time. If this happens a new removal request is initiated.</p>
+          <p><span class="bold">{{getRemoveString "remove-filter-blocked"}}</span> refers to request that cannot be completed or require additional steps. On hold removals occur for a variety of reasons including data brokers or people search sites that add additional criteria to removing information.</p>
         </div>
       </div>
       <div class="modal__footer flx space-between">

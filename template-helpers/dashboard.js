@@ -398,15 +398,16 @@ function getFullName(args) {
   if (removeAcctInfo && removeAcctInfo.names && removeAcctInfo.names.length) {
     const nameObj = removeAcctInfo.names[0];
     let nameString = "";
+    if (nameObj.last_name) {
+      nameString += `${nameObj.last_name},`;
+    }
     if (nameObj.first_name) {
-      nameString += nameObj.first_name;
+      nameString += ` ${nameObj.first_name}`;
     }
     if (nameObj.middle_name) {
       nameString += ` ${nameObj.middle_name}`;
     }
-    if (nameObj.last_name) {
-      nameString += ` ${nameObj.last_name}`;
-    }
+
     userDisplayName = nameString;
   }
 
