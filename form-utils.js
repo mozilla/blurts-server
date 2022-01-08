@@ -1,6 +1,7 @@
 "use strict";
 
 const Countrily = require("countrily");
+const AppConstants = require("./app-constants");
 
 let countryCodes;
 let usStates;
@@ -38,6 +39,9 @@ const FormUtils = {
   },
   convertDateToTimestamp(curDate) {
     return parseInt((new Date(curDate).getTime() / 1000).toFixed(0));
+  },
+  convertTimestampToDate(ts) {
+    return new Date(parseInt(ts) * 1000);
   },
   calculateDaysBetweenTimestamps(startTime, endTime) {
     const timeDifference = endTime.getTime() - startTime.getTime();
@@ -92,6 +96,9 @@ const FormUtils = {
       current[1] >= previous[1] ? current : previous
     )[0];
     return parseFloat(mode);
+  },
+  canShowViaParams(doShow) {
+    return ["dev", "heroku"].includes(AppConstants.NODE_ENV) && doShow;
   },
 };
 

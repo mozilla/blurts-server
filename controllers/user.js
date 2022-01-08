@@ -433,7 +433,9 @@ async function postRemoveFxm(req, res) {
     await DB.removeKan(sessionUser);
   }
   //END DATA REMOVAL SPECIFIC
-
+  if (req.session?.kanary) {
+    req.session.kanary.onRemovalPilotList = false;
+  }
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
@@ -696,18 +698,20 @@ function logout(req, res) {
 async function getRemovalEnrollPage(req, res) {
   const user = req.user;
 
-  if (checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
+  const canShowViaParams = FormUtils.canShowViaParams(req.query?.show);
+
+  if (checkIfRemovalEnrollmentEnded(user) && !canShowViaParams) {
     //If the pilot enrollment period is not active
     return res.redirect("/user/remove-enroll-ended");
   }
 
   const isEnrolledInPilot = checkIfEnrolledInRemovalPilot(user);
-  if (isEnrolledInPilot && !req.query.show) {
+  if (isEnrolledInPilot && !canShowViaParams) {
     //if the user has already enrolled in the pilot, just send them to the remove data page
     return res.redirect("/user/remove-data");
   }
 
-  if ((await checkIfRemovalPilotFull(user)) && !req.query.show) {
+  if ((await checkIfRemovalPilotFull(user)) && !canShowViaParams) {
     //If we have already hit the enrollment limit:
     return res.redirect("/user/remove-enroll-full");
   }
@@ -747,7 +751,10 @@ async function getRemovalEnrolledPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  if (
+    !checkIfEnrolledInRemovalPilot(user) &&
+    !FormUtils.canShowViaParams(req.query?.show)
+  ) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -771,7 +778,7 @@ async function handleRemovalOptout(req, res) {
     });
   }
 
-  if (!req.session || !req.session.kanary) {
+  if (!req.session?.kanary) {
     const localeError = LocaleUtils.formatRemoveString(
       "remove-error-no-session"
     );
@@ -791,7 +798,10 @@ async function getRemovalEnrollFullPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!(await checkIfRemovalPilotFull(user)) && !req.query.show) {
+  if (
+    !(await checkIfRemovalPilotFull(user)) &&
+    !FormUtils.canShowViaParams(req.query?.show)
+  ) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -812,7 +822,10 @@ async function getRemovalEnrollEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfRemovalEnrollmentEnded(user) && !req.query.show) {
+  if (
+    !checkIfRemovalEnrollmentEnded(user) &&
+    !FormUtils.canShowViaParams(req.query?.show)
+  ) {
     return res.redirect("/user/remove-enroll");
   }
 
@@ -830,13 +843,14 @@ async function getRemovalEnrollEndedPage(req, res) {
 async function getRemovalPage(req, res) {
   const user = req.user;
 
-  if (!checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
-    return res.redirect("/user/remove-enroll");
-  }
-
-  if (checkIfRemovalPilotEnded(user) && !req.query.show) {
-    //if the pilot is over, redirect to the end screen
-    return res.redirect("/user/remove-pilot-ended");
+  if (!FormUtils.canShowViaParams(req.query?.show)) {
+    if (!checkIfEnrolledInRemovalPilot(user)) {
+      return res.redirect("/user/remove-enroll");
+    }
+    if (checkIfRemovalPilotEnded(user)) {
+      // if the pilot is over, redirect to the end screen
+      return res.redirect("/user/remove-pilot-ended");
+    }
   }
 
   let show_form;
@@ -936,11 +950,13 @@ async function getRemovalPage(req, res) {
 async function getRemovalConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid && !checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  const canShowViaParams = FormUtils.canShowViaParams(req.query?.show);
+
+  if (!user.kid && !checkIfEnrolledInRemovalPilot(user) && !canShowViaParams) {
     return res.redirect("/user/remove-enroll");
   }
 
-  if (!user.kid && checkIfEnrolledInRemovalPilot(user) && !req.query.show) {
+  if (!user.kid && checkIfEnrolledInRemovalPilot(user) && !canShowViaParams) {
     return res.redirect("/user/remove-data");
   }
 
@@ -992,11 +1008,13 @@ async function getRemovalConfirmationPage(req, res) {
 async function getRemovalUpdateConfirmationPage(req, res) {
   const user = req.user;
 
-  if (!user.kid && !req.query.show) {
+  const canShowViaParams = FormUtils.canShowViaParams(req.query?.show);
+
+  if (!user.kid && !canShowViaParams) {
     return res.redirect("/user/remove-enroll");
   }
 
-  if (user.kid && !req.query.show) {
+  if (user.kid && !canShowViaParams) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1039,7 +1057,7 @@ async function getRemovalUpdateConfirmationPage(req, res) {
 async function getRemovalDeleteConfirmationPage(req, res) {
   const user = req.user;
 
-  if (user.kid && !req.query.show) {
+  if (user.kid && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1080,7 +1098,7 @@ async function getRemovalPilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfRemovalPilotEnded(user) && !req.query.show) {
+  if (!checkIfRemovalPilotEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1246,6 +1264,9 @@ async function postRemovalKan(req, res) {
     });
   }
   await DB.removeKan(sessionUser);
+  if (req.session?.kanary) {
+    req.session.kanary.onRemovalPilotList = false;
+  }
   res.redirect("/user/remove-delete-confirmation");
 }
 
@@ -1260,7 +1281,8 @@ async function checkIfRemovalPilotFull(user) {
 }
 
 function getPilotGroup(user) {
-  const removalPilots = REMOVAL_CONSTANTS.REMOVAL_PILOTS.slice();
+  //get the pilot group with the closest starting time before the user's enrollment time
+  const removalPilots = REMOVAL_CONSTANTS.REMOVAL_PILOTS.slice(); //shallow copy the array
 
   let enrolledTime = FormUtils.convertDateToTimestamp(Date.now());
 
@@ -1269,22 +1291,47 @@ function getPilotGroup(user) {
   }
 
   removalPilots.sort((a, b) => {
-    const aDiff = enrolledTime - a.start_time;
-    const bDiff = enrolledTime - b.start_time;
+    const aEnd = FormUtils.convertDateToTimestamp(
+      FormUtils.getDaysFromTimestamp(
+        a.start_time,
+        REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+      )
+    );
+    const bEnd = FormUtils.convertDateToTimestamp(
+      FormUtils.getDaysFromTimestamp(
+        b.start_time,
+        REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
+      )
+    );
+    //if diff time > 0 then the enrollment end date is still in the future
+    const aDiff = aEnd - enrolledTime;
+    const bDiff = bEnd - enrolledTime;
+    console.log("diffs", aDiff, bDiff);
 
+    //sort the array by the closest future end date
     if (aDiff > 0 && bDiff < 0) {
+      //a end is in the future, b end is in past, assign to a
       return -1;
     } else if (aDiff < 0 && bDiff > 0) {
+      //a end is in the past, b end is in future, move to b
       return 1;
     } else if (aDiff > 0 && bDiff > 0 && aDiff < bDiff) {
+      //both are in the future, but a is less far off, assign to a
       return -1;
     } else if (aDiff > 0 && bDiff > 0 && aDiff > bDiff) {
+      //both are in the future, but b is less far off, assign to b
       return 1;
+    } else if (aDiff < 0 && bDiff < 0 && aDiff < bDiff) {
+      //both are in the past, but b is less far off, assign to b
+      return 1;
+    } else if (aDiff < 0 && bDiff < 0 && aDiff > bDiff) {
+      //both are in the past, but a is less far off, assign to a
+      return -1;
     } else {
       return 0;
     }
   });
-
+  //console.log("user is in group", removalPilots[0].name);
   return removalPilots[0];
 }
 
@@ -1310,11 +1357,17 @@ function checkIfRemovalEnrollmentEnded(user) {
   }
   const pilotGroup = getPilotGroup(user);
 
+  const today = new Date();
+  const enrollmentStartDate = FormUtils.convertTimestampToDate(
+    pilotGroup.start_time
+  );
   const enrollmentEndDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,
     REMOVAL_CONSTANTS.REMOVAL_PILOT_ENROLLMENT_END_DAY
   );
-  return new Date() > enrollmentEndDate;
+
+  return today < enrollmentStartDate || today > enrollmentEndDate;
+
 }
 
 async function checkIfOnRemovalPilotList(user) {
