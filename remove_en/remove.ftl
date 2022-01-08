@@ -375,7 +375,7 @@ remove-modal-manual-title = Manual Removal Instructions
 remove-modal-manual-text = In the unlikely event that we cannot automatically remove your personal data from a site where we’ve 
   found it, we will try to provide a means of reaching out to that site manually in order to get your data removed.
 
- # Data Removal Optout Modal
+# Data Removal Optout Modal
 
 remove-modal-optout-title = Confirm Opt-Out of Data Removal Pilot
 remove-modal-optout-text = Once you submit your opt-out request, this action cannot be undone. 
