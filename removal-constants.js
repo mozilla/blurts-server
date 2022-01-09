@@ -23,7 +23,7 @@ const REMOVAL_CONSTANTS = {
   REMOVE_CHECK_WAITLIST_ENABLED: true, //enable the waitlist check
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: false, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
   REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
-  REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: true, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
+  REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: false, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
   REMOVE_CLIENT_VALIDATION_ENABLED: true, //allows us to run removal form validity check client side before server side validation
   REMOVE_EDIT_INFO_ENABLED: false, //when true, users can edit their info without the need to contact support
   REMOVE_EMAIL_DOMAIN_LIST: [
