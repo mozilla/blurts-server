@@ -190,39 +190,29 @@ remove-result-status = Removal Status
 
 # Data Removal Pilot Enrollment Page
 
-remove-enroll-title = Welcome to the { -product-name } Data Removal Pilot
-remove-enroll-intro = This service scans the internet for sites that expose your personal 
-  information, and helps you protect you online by automatically requesting that the data be removed. <br><br>
-  The Pilot is currently open to US residents only.
+remove-enroll-program-end-date = 4/12/2022
+remove-enroll-title = Welcome to { -product-name } Data Removal Pilot
+remove-enroll-intro = We’re confident you’ll love the ability to find and remove your personal data from data broker and people search sites.
+remove-enroll-learn-more = Learn more about data brokers and people search sites
 remove-enroll-description-title = Here's what happens next
-remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, 
-  which we share with our { remove-process-name } partner, { -remove-brand-partner }. This info allows us 
-  to find data brokers and people search sites online that share it—and then get it removed. 
-  This info will only be used for the duration of the pilot, and then deleted.<br><br>
-  You’ll need to create a new { -brand-fxa } as part of this pilot. This pilot { -brand-fxa } is separate 
-  from your regular { -brand-fxa }. If you use the same email for both { -brand-fxa }s, that means any 
-  changes you make to your account as part of this pilot program don't apply to your regular { -brand-fxa }, 
-  including changes made to your email, passwords, and more.<br><br>
-  The pilot service will be offered to you at no cost for 90 days.<br>
-  The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating 
-  in the pilot will include additional communications and surveys about your experience. 
-  You are not required to respond to these requests for information, but we would appreciate your assistance.<br><br>
-  At the end of the pilot period, any additional service will be suspended and all account information held by Mozilla or our partner { -remove-brand-partner } will be deleted.<br><br>
-  You may discontinue your service at any point within the pilot period.
-remove-enroll-terms-title = Terms of pilot service
-remove-enroll-terms = The pilot service will be offered at no cost to you for a 90 day period.
-  The purpose of the pilot is to evaluate the service for a paid offering. As such, participating in the
-  pilot will include additional communications to learn more about your experience. You are not required
- to respond to these requests, but we would appreciate your feedback.
- At the end of the 90 day pilot period, any outstanding removal requests will be suspended and all data
- removal account information held by { -brand-Mozilla } or our partner { -remove-brand-partner } will be deleted.
- You may discontinue the { remove-process-name } service at any point within the 90 day pilot period.
-remove-enroll-link-faq = { -product-name } { remove-pilot-title } FAQ
-remove-enroll-link-tos = { remove-pilot-title } Terms of Service and Privacy Notice
-remove-enroll-terms-agreement = By continuing, I agree to the
+remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our {remove-process-name} partner, 
+  {-remove-brand-partner}. This info allows us to find data brokers and people search sites online that share it—and then get it removed. 
+  This info will only be used for the duration of the pilot, and then deleted. <br><br>
+  Once the pilot is over, the {-product-name} {remove-process-name} 
+  service will end, but you’ll be able to continue your service directly with our partner, { -remove-brand-partner }.
+remove-enroll-details-title = Key details about the {-product-name} { remove-pilot-title }
+remove-enroll-details1 = The pilot service will be offered at no cost to you until {remove-enroll-program-end-date}.
+remove-enroll-details2 = The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating 
+  in the pilot will include additional communications and surveys about your experience. You are not required 
+  to respond to these requests for information, but we would appreciate your assistance.
+remove-enroll-details3 = At the end of the pilot period, any additional service will be suspended and all account information 
+  held by {-brand-Mozilla} or our partner {-remove-brand-partner} will be deleted.
+remove-enroll-details4 = You may discontinue your service at any point within the pilot period.
+remove-enroll-terms-agreement1 = By checking this box you are accepting the
 remove-enroll-terms-link = Terms of Service
 remove-enroll-privacy-link = Privacy Notice
-remove-enroll-submit = Join the pilot
+remove-enroll-terms-agreement2 = for participating in the {-product-name} { remove-pilot-title }
+remove-enroll-submit = Continue to { remove-pilot-title }
 
 # Data Removal Pilot Enrollment Full Page
 
