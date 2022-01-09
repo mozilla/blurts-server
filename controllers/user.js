@@ -1306,7 +1306,6 @@ function getPilotGroup(user) {
     //if diff time > 0 then the enrollment end date is still in the future
     const aDiff = aEnd - enrolledTime;
     const bDiff = bEnd - enrolledTime;
-    console.log("diffs", aDiff, bDiff);
 
     //sort the array by the closest future end date
     if (aDiff > 0 && bDiff < 0) {
