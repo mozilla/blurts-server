@@ -50,19 +50,13 @@ remove-card-cta = Join the waitlist
 
 # Data Removal Form Strings
 
+remove-form-intro-title = Please provide your information below
 remove-form-intro-description = { -product-name } can scan many common <a href="/remove-faq#data-brokers">data broker and people 
   search sites</a> for your personal data. If we find any of your personal data exposed, we’ll automatically begin the process of getting it removed from those sites.
-remove-form-intro-broker-title = What are data brokers and people search sites?
-remove-form-intro-broker-description = Data brokers and people search sites are websites that collect personal data like 
-  names, addresses, and phone numbers. They first search the Internet for your data without your knowledge. 
-  Then they may sell the data to marketers, scammers, and others.
-remove-form-intro-broker-link = Learn more about data brokers and people search sites
-remove-dash-intro-service-link = Learn more about { remove-process-name }
-remove-dash-intro-signup-title = How to start
-remove-dash-intro-signup = To start removing your exposed personal data, please provide the following
- information. This information is used to scan and identify exposed personal data.
- Once exposed personal data is found, the removal request process will automatically begin.
- Initial results can take up to 24 hours.
+remove-dash-intro-signup-title = How to start removing your exposed personal data
+remove-dash-intro-signup = To start removing your exposed personal data, please provide the following information. This information is used to scan 
+  and identify exposed personal data. Once exposed personal data is found, the removal request process will automatically begin.
+  Initial results can take up to 48 hours.
 remove-dash-info-change-title = Update your info
 remove-dash-info-change = Note: Editing information should be done only in the case that the results you 
   are receiving are incorrect or inaccurate with regards to your personal identity.
@@ -92,7 +86,8 @@ remove-form-change-contact-msg = If you need to change your personal information
 
 # Data Removal Form Confirmation Strings
 
-remove-dash-confirm-review = Review Your Information
+remove-dash-confirm-review = Confirm Your Information
+remove-dash-confirm-subtext = Please make sure your details are correct. You will not be able to make changes once you begin data removal.
 remove-dash-confirm-edit = Edit Info
 remove-dash-confirm-cancel = Cancel
 remove-dash-confirm-back = Back

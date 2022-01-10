@@ -23,13 +23,6 @@
                 {{ getRemoveString "remove-dash-intro-signup"}}
               </p>
               {{/if}}
-              {{#unless this.acctInfo}}
-              <p class="remove-dashboard-card-body">
-                <span class="bold">{{ getRemoveString "remove-form-intro-broker-title"}}</span><br/>
-                {{{getRemoveString "remove-form-intro-broker-description"}}}
-              </p>
-              <p class="remove-dashboard-card-body"><a href="/remove-faq#faq">{{ getRemoveString "remove-form-intro-broker-link"}}</a></p>
-              {{/unless}}
             </div>
           </div>
         </div>
@@ -37,9 +30,9 @@
     </div>
   <div class="mw-860 remove-dashboard-section-container">
     <section class="remove-dashboard-form-container remove-dashboard-section">
+      <h3 class="remove-dashboard-title txt-cntr">{{getRemoveString "remove-form-intro-title"}}</h3>
       <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate {{#if this.doClientsideValidation}}data-validate="true"{{/if}}>
       <div class="remove-dashboard-form-enter">
-        
           {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}
           <input type="hidden" name="_csrf" value="{{ csrfToken }}">
           <div class="input-group">
