@@ -189,8 +189,12 @@ workflows:
                     tags:
                         only: /.*/
                     branches:
-                        only: main
+                        only: 
+                            - main
+                            - main-kanary
             - deploy_static:
                 filters:
                     branches:
-                        only: main
+                        only: 
+                            - main
+                            - main-kanary
