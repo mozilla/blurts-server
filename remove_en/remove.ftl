@@ -111,7 +111,7 @@ remove-form-success-details = A scan has been initiated for sites that may be pu
 remove-form-success-next-title = What's next?
 remove-form-success-next-details = Check the exposures dashboard frequently to see the { remove-process-name } requests initiated on your behalf.
  As new exposures are found or existing results are removed, we'll update the exposures dashboard to reflect the changes.
-remove-form-delete-dashboard = Go to { -product-short-name } dashboard
+remove-form-delete-dashboard = Return to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
 
@@ -121,8 +121,7 @@ remove-form-update-title = Your information has been updated!
 remove-form-update-details = We’re updating your info for removal requests. Due to a high number of requests, 
   it may take 24 hours for your changes to take effect.
 remove-form-delete-title = Sorry to see you go
-remove-form-delete-details = Your { remove-process-name } service has been canceled and we are no longer making 
-  { remove-process-name } requests on your behalf. Your { -product-short-name } account will remain active.
+remove-form-delete-details = Your cancellation request has been processed. Your account has been deleted.
 remove-form-delete-survey-context = Before you go, we would like to know more about why you left.
 remove-form-delete-survey-request = Please take a minute to answer a short survey
 
@@ -253,10 +252,9 @@ remove-enrolled-btn = Get started
 
 remove-kan = Confirm Cancelation
 remove-kan-disclaimer-title = Disclaimer
-remove-kan-disclaimer-content = Canceling this service removes all of your { remove-process-name } specific 
-  information from { -product-name } as well as from our partner service { -remove-brand-partner }.
-  Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended.
-  Your information will be removed upon removal request.
+remove-kan-disclaimer-content = Canceling your service removes all of your data from {-product-name} as well as from our partner service { -remove-brand-partner }. 
+  Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended.<br><br>
+  Your information will be removed immediately upon removal request.
 remove-kan-blurb = Confirm cancellation of { remove-process-name } service? Your { -product-short-name } account 
   will remain active.
 remove-kan-btn-confirm = Confirm Cancelation
