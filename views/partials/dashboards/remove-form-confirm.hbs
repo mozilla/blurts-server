@@ -1,9 +1,15 @@
 <div class="remove-dashboard-confirm">
   <div class="flx space-between remove-dashboard-confirm-review-container">
     <div class="flx cntr">
-      <h3 class="remove-dashboard-confirm-review-title">{{getRemoveString
-        "remove-dash-confirm-review"
-      }}</h3>
+      {{#if this.acctInfo}}
+      <h3 class="remove-dashboard-confirm-review-title">
+        {{getRemoveString "remove-dash-info-change-title"}}
+      </h3>
+      {{else}}
+      <h3 class="remove-dashboard-confirm-review-title">
+        {{getRemoveString "remove-dash-confirm-review"}}
+      </h3>
+      {{/if}}
     </div>
     <div class="flx remove-dashboard-confirm-review-btns">
       {{#if this.acctInfo}}
@@ -11,8 +17,6 @@
           href="/user/remove-data"
           class="remove-dashboard-confirm-cancel btn-grey btn-small"
         >{{getRemoveString "remove-dash-confirm-back"}}</a>
-      {{/if}}
-      {{#if this.acctInfo}}
         {{#if this.allowEditRemovalInfo}}
         <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getRemoveString
             "remove-dash-confirm-edit"

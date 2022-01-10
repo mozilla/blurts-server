@@ -85,12 +85,15 @@
       <div class="remove-faq__content">
         <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-status-title"}}</h3>
         <p>{{{getRemoveString "remove-about-status-content"}}}</p>
+        <p><span class="bold">{{getRemoveString "remove-filter-in-progress"}}</span> {{getRemoveString "remove-about-status-in-progress"}}</p>
+        <p><span class="bold">{{getRemoveString "remove-filter-complete"}}</span> {{getRemoveString "remove-about-status-complete"}}</p>
+        <p><span class="bold">{{getRemoveString "remove-filter-blocked"}}</span> {{getRemoveString "remove-about-status-blocked"}}</p>
       </div>
       <div id="process" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
         <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-process-title"}}</h3>
-        <p>{{getRemoveString "remove-about-process-content"}}
-        </p>
+        <p>{{getRemoveString "remove-about-process-content"}}</p>
+        <p>{{getRemoveString "remove-about-process-content2"}}</p>
       </div>
       <div id="faq" class="remove-faq__anchor"></div>
       <div class="remove-faq__content">
@@ -110,12 +113,6 @@
             <div class="remove-faq__details-container">
               <p>We scan for sites that collect and sell your personal data like
                 names, addresses, and phone numbers. While the list changes frequently, you can <a href="https://www.thekanary.com/faq#heading1" rel="noopener noreferrer" target="_blank">visit Kanary's FAQ page</a> to see the most common sites.</p>
-            </div>
-          </li>
-          <li class="remove-faq__list-item drop-shadow flx flx-col">
-            {{> data-removal/remove-faq-title altid="remove-faq-fxa-title" alt=(getRemoveString "remove-faq-fxa-title")}}
-            <div class="remove-faq__details-container">
-              <p>{{getRemoveString "remove-faq-fxa-content"}}</p>
             </div>
           </li>
           <li class="remove-faq__list-item drop-shadow flx flx-col">

@@ -733,7 +733,7 @@
   }
 
   &-kanary-container {
-    margin-top: 120px;
+    margin-top: 50px;
     margin-bottom: 50px;
   }
 
@@ -904,6 +904,9 @@
   &-link {
     color: white;
     text-decoration: underline;
+  }
+  &-return-btn {
+    margin-top: 20px;
   }
 }
 

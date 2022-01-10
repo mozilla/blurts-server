@@ -6,10 +6,12 @@
         <p>{{ getRemoveString "remove-form-delete-details"}}</p>
         {{#ifCompare removeSurveyLink "!==" ""}}
         <div class="remove-form-deleted-survey">
-          <p>{{ getRemoveString "remove-form-delete-survey-context" }}</p>
-          <p><a class="remove-form-deleted-link" href="{{ removeSurveyLink}}">{{ getRemoveString "remove-form-delete-survey-request" }}</a> >></p>
+          <p>{{ getRemoveString "remove-form-delete-survey-context" }} <a class="remove-form-deleted-link" href="{{ removeSurveyLink}}">{{ getRemoveString "remove-form-delete-survey-request" }}</a> >></p>
         </div>
         {{/ifCompare  }}
+        <div class="flx jst-cntr">
+          <a class="remove-form-deleted-return-btn btn-grey btn-small" href="/">{{ getRemoveString "remove-form-delete-dashboard" }}</a>
+        </div>
       </div>
     </div>
   </div>

@@ -828,6 +828,6 @@ relay-video-headline = How do you keep your email address a secret?
 # VPN video headline for placement on Monitor user's dashboard
 vpn-video-headline = Do you worry about safety on public Wi-Fi?
 
-remove-header-exposures = Exposures
+remove-header-exposures = Data Removal
 remove-footer-data-removal-faq = Data Removal FAQ
 remove-faq-title = Data Removal Pilot FAQ
