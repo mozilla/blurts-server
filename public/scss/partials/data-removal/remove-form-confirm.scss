@@ -60,6 +60,9 @@
     @include breakpoint(xs) {
       margin-top: 10px;
     }
+    a:only-child {
+      margin-right: 0;
+    }
   }
 
   &-review-title {

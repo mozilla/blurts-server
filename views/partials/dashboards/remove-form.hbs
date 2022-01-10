@@ -6,33 +6,32 @@
   --}}
   data-country="US"
 >
-  
+  {{#unless this.acctInfo}}
     <div class="mw-860 remove-dashboard-card-container">
       <div class="remove-dashboard-card">
         <div class="remove-dashboard-card-border flx private-relay-cta">
           <div class="remove-dashboard-card-content flx">
             <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
-              {{#if this.acctInfo}}
-              <p class="remove-dashboard-card-body">
-                <span class="bold">{{ getRemoveString "remove-dash-info-change-title"}}</span><br/>
-                {{ getRemoveString "remove-dash-info-change"}}
-              </p>
-              {{else}}
+              
               <p class="remove-dashboard-card-body">
                 <span class="bold">{{ getRemoveString "remove-dash-intro-signup-title"}}</span><br/>
                 {{ getRemoveString "remove-dash-intro-signup"}}
               </p>
-              {{/if}}
+              
             </div>
           </div>
         </div>
       </div>
     </div>
+  {{/unless}}
   <div class="mw-860 remove-dashboard-section-container">
     <section class="remove-dashboard-form-container remove-dashboard-section">
-      <h3 class="remove-dashboard-title txt-cntr">{{getRemoveString "remove-form-intro-title"}}</h3>
+      
       <form action="{{#if this.acctInfo}}/user/remove-acct-update{{else}}/user/remove-data-submit{{/if}}" method="post" id="remove-data-signup-form" class="remove-dashboard-form form-group" data-event-category="Remove Data Form" novalidate {{#if this.doClientsideValidation}}data-validate="true"{{/if}}>
       <div class="remove-dashboard-form-enter">
+          {{#unless this.acctInfo}}
+          <h3 class="remove-dashboard-title txt-cntr">{{getRemoveString "remove-form-intro-title"}}</h3>
+          {{/unless}}
           {{#if this.acctInfo}}<input type="hidden" name="id" value="{{ this.acctInfo.id }}">{{/if}}
           <input type="hidden" name="_csrf" value="{{ csrfToken }}">
           <div class="input-group">
@@ -112,23 +111,13 @@
             >
             <div class="remove-dashboard-form-error --year"></div>
           </div>
-          <div class="input-group">
-            <label for="remove-dashboard-form-privacy" class="input-group-label field--full">{{ getRemoveString "remove-dash-form-privacy-label"}}</label>
-            <div class="flx jst-cntr">
-              <p class="input-group-checkbox-text">
-                {{ getRemoveString "remove-dash-form-privacy"}}
-                <a href="{{jsConstants.KANARY_PRIVACY_LINK}}" rel="noopener noreferrer" target="_blank">{{ getRemoveString "remove-dash-form-privacy-link"}}</a>
-              </p>
-            </div>
-            
-          </div>
-          <div class="flx flx-col flx-cntr">
-            <p class="alert txt-cntr remove-dashboard-form-rqd bold">{{ getRemoveString "remove-dash-form-required-helper"}}</p>
-          </div>
           <div class="input-group-button inline">
             <input id="remove-dashboard-data-submit" class="js-remove-submit input-group-submit remove-dashboard-data-submit inline" type="submit" 
               value="{{ getRemoveString "remove-dash-change-submit" }}"/>
             {{> forms/loader }}
+          </div>
+          <div class="flx flx-col flx-cntr">
+            <p class="alert txt-cntr remove-dashboard-form-rqd bold">{{ getRemoveString "remove-dash-form-required-helper"}}</p>
           </div>
           {{#unless this.acctInfo}}
           <div class="flx jst-cntr">

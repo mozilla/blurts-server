@@ -57,10 +57,7 @@ remove-dash-intro-signup-title = How to start removing your exposed personal dat
 remove-dash-intro-signup = To start removing your exposed personal data, please provide the following information. This information is used to scan 
   and identify exposed personal data. Once exposed personal data is found, the removal request process will automatically begin.
   Initial results can take up to 48 hours.
-remove-dash-info-change-title = Update your info
-remove-dash-info-change = Note: Editing information should be done only in the case that the results you 
-  are receiving are incorrect or inaccurate with regards to your personal identity.
-  For example, you may want to edit your information if you are receiving results for someone with the same first and last name as you, but a different middle name.
+remove-dash-info-change-title = Review your information
 remove-dash-form-email-label = Select your email address
 remove-dash-form-why-needed = Why is this information needed?
 remove-dash-form-name-label = What is your full name?
@@ -73,9 +70,6 @@ remove-dash-form-loc-state = State
 remove-dash-form-loc-country = Country
 remove-dash-form-birth-year-label = What is your birth year?
 remove-dash-form-birth-year = Birth year
-remove-dash-form-privacy-label = Privacy Policy
-remove-dash-form-privacy = The Data Removal Service is offered by { -remove-brand-partner }.
-remove-dash-form-privacy-link = { remove-enroll-terms-agreement }
 remove-dash-submit = Start Data Removal
 remove-dash-change-submit = Review Information
 remove-dash-form-required-helper = * All fields are required to properly identify your exposed information
