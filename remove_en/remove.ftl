@@ -141,13 +141,13 @@ remove-filter-date = Filter by Date
 
 # Data Removal Steps (Status)
 
-remove-step-awaiting-scan = In progress
-remove-step-found = In progress
-remove-step-awaiting-removal = In progress
-remove-step-submitted = In progress
-remove-step-awaiting-review = In progress
-remove-step-removed = Removed
-remove-step-blocked = On hold
+remove-step-awaiting-scan = {remove-filter-in-progress}
+remove-step-found = {remove-filter-in-progress}
+remove-step-awaiting-removal = {remove-filter-in-progress}
+remove-step-submitted = {remove-filter-in-progress}
+remove-step-awaiting-review = {remove-filter-in-progress}
+remove-step-removed = {remove-filter-complete}
+remove-step-blocked = {remove-filter-blocked}
 
 # Data Removal Dashboard Header
 
@@ -328,6 +328,8 @@ remove-modal-birth-year-text = Your birth year is used to distinguish you from o
 # Data Removal Status Modal
 
 remove-modal-status-title = Removal Status
+remove-modal-status-text = Once a record is found on a data broker or people search site, 
+  the { remove-process-name } service automatically sends a removal request and follows up with the site to track the status of the removal.
 
 # Data Removal Info Found Modal
 
@@ -405,6 +407,13 @@ remove-about-risk-low-content = The site is sharing personal information but you
 
 remove-about-status-title = Status Explained
 remove-about-status-content = {remove-modal-status-text}
+remove-about-status-in-progress = refers to active requests that are still being worked on. Removals can take some time 
+  depending on the responsiveness of the data broker or people search site, and the steps they have set up for processing a removal.
+remove-about-status-complete = refers to inactive requests. These items correspond to data or information that have 
+  been requested and successfully removed and verified. Although data brokers and people search sites remove data, 
+  they may relist the same information after some time. If this happens a new removal request is initiated.
+remove-about-status-blocked = refers to request that cannot be completed or require additional steps. 
+  {remove-filter-blocked} removals occur for a variety of reasons including data brokers or people search sites that add additional criteria to removing information.
 
 remove-about-process-title = Data Removal Process Explained
 remove-about-process-content = Once you submit your information, our { remove-process-name } partner, { -remove-brand-partner },
@@ -413,23 +422,22 @@ remove-about-process-content = Once you submit your information, our { remove-pr
   Sometimes, even if your data was removed from one of these sites, it may reappear at a later date.
   Data brokers and people search sites regularly collect data, and removal does not necessarily
   prevent many of these sites from sharing it again later.
-  Data removal is not guaranteed, but { -remove-brand-partner } continues to follow up, even on blocked requests.
+remove-about-process-content2 = Data removal is not guaranteed. At times, {remove-process-name} requests cannot be completed or require additional steps. 
+  Even still, {-remove-brand-partner} continues to work on removing your personal information. In the event that a request is 
+  {remove-filter-blocked}, manual removal instructions are shown in the bottom of the expanded card. These instructions provide another means to attempt 
+  removing your personal information from a data broker or people search site. The instructions are gathered from each specific site, 
+  and so vary depending on the site requirements.
 
 remove-about-support-title = Support
 remove-about-support-email = monitor-pilot@mozilla.com
-remove-about-support-content = If you cannot find an answer to your questions on this page, you can contact support
+remove-about-support-content = For self-help, please consult the knowledge base articles.<br><br> 
+  If you cannot find an answer to your questions on this page, you can contact support
   via e-mail at <a data-l10n-name="remove-link-support-email">{remove-about-support-email}</a>.<br><br>
   If you wish to file a bug, <a data-l10n-name="remove-link-bug-form">you may do so via this google form</a>.
 
 # Data Removal FAQ Section
 
 remove-faq-sites-title = What type of sites do you scan for?
-
-remove-faq-fxa-title = Why do I need to create a new { -brand-fxa }?
-remove-faq-fxa-content = To protect and prevent any changes to your real { -brand-fxa }, the pilot uses a separate, 
-  temporary { -brand-fxa }. At any point at your request, this temporary pilot account can be deleted without 
-  causing any changes to any non-pilot { -brand-fxa }s. This pilot account will be deleted and all data removed at 
-  the end of the pilot period.
 
 remove-faq-usage-title = What can bad actors do with my personal info?
 remove-faq-usage-content = If your personal data is exposed and purchased, you could be targeted by 
@@ -443,7 +451,7 @@ remove-faq-search-content = No - we can't remove your info from search engines l
 remove-faq-success-rate = { -remove-brand-partner }’s current success rate for removals is currently above 70%
 remove-faq-guarantee-title = Is { remove-process-name } guaranteed?
 remove-faq-guarantee-content = Data removal is not guaranteed, but { remove-faq-success-rate }.
-remove-faq-blocked-title = What is blocked request?
+remove-faq-blocked-title = What does it mean when a removal is ‘{remove-filter-blocked}’?
 remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a { remove-process-name } 
   request. While { remove-process-name } is not guaranteed, { remove-faq-success-rate }.
 
