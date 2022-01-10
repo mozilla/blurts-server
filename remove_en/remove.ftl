@@ -216,13 +216,13 @@ remove-enroll-submit = Continue to { remove-pilot-title }
 
 # Data Removal Pilot Enrollment Full Page
 
-remove-enroll-full-title = Enrollment in the pilot is closed
-remove-enroll-full-description = Thank you for your interest in the { -brand-Mozilla } { remove-pilot-title } powered by { -remove-brand-partner }.
- Unfortunately, the pilot program is at capacity and we are not currently accepting participants to the pilot service.
+remove-enroll-full-title = Enrollment in the { -product-name } { remove-pilot-title } is now closed
+remove-enroll-full-description = Thank you for your interest in the { -product-name } { remove-pilot-title } powered by { -remove-brand-partner }.
+  Unfortunately, we are not currently accepting participants to the pilot service. We’ve currently reached our maximum number of participants in this pilot.
 
 # Data Removal Other Projects Component
 
-remove-other-projects-title = Other { -brand-Mozilla } projects you can get involved with.
+remove-other-projects-title = Other { -brand-Mozilla } projects you can get involved with:
 remove-other-projects-nightly = Download Nightly
 remove-other-projects-nightly-description = Experience cutting-edge browser features by downloading future releases of Firefox for desktop.
 remove-other-projects-community = Join the Community
@@ -248,17 +248,15 @@ remove-pilot-ended-continue-text = If you are interested in continuing your data
   while we evaluate next steps for our offering, please proceed to our partner's website:
 
 # Data Removal Pilot Success Page
-remove-enrolled-title = Welcome to the Pilot!
-remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here's how things work:
+remove-enrolled-title = Welcome to the {remove-pilot-title}!  
+remove-enrolled-description = Congratulations on successfully being enrolled in the pilot. Here’s how it works:
 remove-enrolled-step1-title = Step 1: Submit your info
 remove-enrolled-step2-title = Step 2: Watch for results
 remove-enrolled-step3-title = Step 3: Examine the details
-remove-enrolled-step1 = First you'll need to enter the info you want removed. This data will be submitted for 
-  automatic { remove-process-name }.
-remove-enrolled-step2 = Within around 24-48 hours you should start seeing a list of sites where your information 
-  has been found appear in your Exposures dashboard.
-remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your 
-  { remove-process-name } request as it moves from request to completion. Removals typically take 7-14 days.
+remove-enrolled-step1 = First, enter the info you want to search for and have removed. This data will be submitted for automatic {remove-process-name}.
+remove-enrolled-step2 = Within 48 hours you should start seeing a list of sites where your information has been found on your {remove-process-name} dashboard.
+remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your {remove-process-name} request as it moves from request to completion. 
+  Removals can take anywhere from two weeks to two months.
 
 remove-enrolled-btn = Get started
 
