@@ -27,19 +27,10 @@
 # Data Removal Variables
 
 -remove-brand-partner = Kanary
-remove-pilot-title = Data Removal Pilot
-remove-process-name = data removal
 remove-partner-link = https://thekanary.com
-
-# Data Removal Dashboard Tabs
-
-remove-dash-tab-breaches-title = Breaches
-remove-dash-tab-exposures-title = Exposures
-remove-dash-tab-beta = Beta
-
-# Data Removal Kanary Header
-
-remove-dash-kanary-more = Find out more
+remove-process-name = data removal
+remove-process-title = Data Removal
+remove-pilot-title = { remove-process-title } Pilot
 
 # Data Removal Pilot CTA
 
@@ -70,10 +61,10 @@ remove-dash-form-loc-state = State
 remove-dash-form-loc-country = Country
 remove-dash-form-birth-year-label = What is your birth year?
 remove-dash-form-birth-year = Birth year
-remove-dash-submit = Start Data Removal
+remove-dash-submit = Start { remove-process-title }
 remove-dash-change-submit = Review Information
 remove-dash-form-required-helper = * All fields are required to properly identify your exposed information
-remove-dash-form-disclaimer = By clicking “Start Data Removal” you agree to start the data removal process.
+remove-dash-form-disclaimer = By clicking “Start { remove-process-title }” you agree to start the { remove-process-name } process.
 remove-optout = Opt-Out
 remove-form-change-contact-msg = If you need to change your personal information due to an error, please contact support
 
@@ -81,7 +72,7 @@ remove-form-change-contact-msg = If you need to change your personal information
 # Data Removal Form Confirmation Strings
 
 remove-dash-confirm-review = Confirm Your Information
-remove-dash-confirm-subtext = Please make sure your details are correct. You will not be able to make changes once you begin data removal.
+remove-dash-confirm-subtext = Please make sure your details are correct. You will not be able to make changes once you begin { remove-process-name }.
 remove-dash-confirm-edit = Edit Info
 remove-dash-confirm-cancel = Cancel
 remove-dash-confirm-back = Back
@@ -89,7 +80,7 @@ remove-dash-confirm-label-full = Full Name
 remove-dash-confirm-email = Email Address
 remove-dash-confirm-loc = Current Location
 remove-dash-confirm-birthyear = Birth Year
-remove-dash-confirm-submit-new = Begin Data Removal
+remove-dash-confirm-submit-new = Begin { remove-process-title }
 remove-dash-confirm-submit-update = Confirm Information
 remove-dash-manage-info = Review My Info
 
@@ -102,15 +93,15 @@ remove-dash-link-support = Help
 remove-dash-link-terms = Pilot Terms
 remove-dash-link-privacy = Privacy
 
-# Data Removal Data Removal Form Completion Page
+# Data Removal Form Completion Page
 
 remove-form-success-alt = Success
 remove-form-success-title = Your automated { remove-process-name } request process is underway!
 remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk.
- Due to a high number of requests, it may take 24 hours for your report to finish.
+  Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
 remove-form-success-next-details = Check the exposures dashboard frequently to see the { remove-process-name } requests initiated on your behalf.
- As new exposures are found or existing results are removed, we'll update the exposures dashboard to reflect the changes.
+  As new exposures are found or existing results are removed, we'll update the exposures dashboard to reflect the changes.
 remove-form-delete-dashboard = Return to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
 remove-form-data-delete = Cancel Service
@@ -179,7 +170,7 @@ remove-result-status = Removal Status
 # Data Removal Pilot Enrollment Page
 
 remove-enroll-program-end-date = 4/12/2022
-remove-enroll-title = Welcome to { -product-name } Data Removal Pilot
+remove-enroll-title = Welcome to { -product-name } { remove-pilot-title }
 remove-enroll-intro = We’re confident you’ll love the ability to find and remove your personal data from data broker and people search sites.
 remove-enroll-learn-more = Learn more about data brokers and people search sites
 remove-enroll-description-title = Here's what happens next
@@ -212,7 +203,7 @@ remove-enroll-full-description = Thank you for your interest in the { -product-n
 
 remove-other-projects-title = Other { -brand-Mozilla } projects you can get involved with:
 remove-other-projects-nightly = Download Nightly
-remove-other-projects-nightly-description = Experience cutting-edge browser features by downloading future releases of Firefox for desktop.
+remove-other-projects-nightly-description = Experience cutting-edge browser features by downloading future releases of {-brand-name} for desktop.
 remove-other-projects-community = Join the Community
 remove-other-projects-community-description = Help make the web more open and accessible to all. Learn, collaborate, and share your skills by joining one of Mozilla’s communities.
 
@@ -221,18 +212,18 @@ remove-enroll-error-is_enrolled = User is already enrolled
 # Data Removal Pilot Enrollment Ended Page
 
 remove-enroll-ended-title = Pilot Enrollment Deadline Expired
-remove-enroll-ended-description = Thank you for your interest in { -brand-Mozilla }’s Data Removal Service powered by { -remove-brand-partner }. <br><br>
- Unfortunately, the enrollment deadline for participating in the pilot has passed.
+remove-enroll-ended-description = Thank you for your interest in { -brand-Mozilla }’s { remove-process-title } Service powered by { -remove-brand-partner }. <br><br>
+  Unfortunately, the enrollment deadline for participating in the pilot has passed.
 
 # Data Removal Pilot Ended Page
 
 remove-pilot-ended-title = { -product-name } { remove-pilot-title } is now closed
 remove-pilot-ended-description = Thank you for participating in the { -product-name} { remove-pilot-title}.<br><br>
- We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.<br><br>
- We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
- If you have any additional comments or questions, please send them to { remove-about-support-email }.
-remove-pilot-ended-continue-title = Interested in continuing your service with Kanary?
-remove-pilot-ended-continue-text = If you are interested in continuing your data removal coverage 
+  We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.<br><br>
+  We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
+  If you have any additional comments or questions, please send them to { remove-about-support-email }.
+remove-pilot-ended-continue-title = Interested in continuing your service with {-remove-brand-partner}?
+remove-pilot-ended-continue-text = If you are interested in continuing your { remove-process-name } coverage 
   while we evaluate next steps for our offering, please proceed to our partner's website:
 
 # Data Removal Pilot Success Page
@@ -262,12 +253,12 @@ remove-kan-btn-nevermind = Nevermind
 
 # Data Removal Sites List Page
 
-remove-sites-list = Data Removal Site List
+remove-sites-list = { remove-process-title } Site List
 remove-sites-blurb = Below are the most common sites { -remove-brand-partner } requests user data to be removed from.
 
 # Data Removal Risks Info Page
 
-remove-risk-heading = About Data Removal Risk
+remove-risk-heading = About { remove-process-title } Risk
 remove-risk-blurb = “Risk” is assigned at the site level as a way to prioritize actions and escalations, and 
   is made up of 4 metrics:
 remove-risk-criteria-1 = Does the site sell data?
@@ -354,7 +345,7 @@ remove-modal-manual-text = In the unlikely event that we cannot automatically re
 
 # Data Removal Optout Modal
 
-remove-modal-optout-title = Confirm Opt-Out of Data Removal Pilot
+remove-modal-optout-title = Confirm Opt-Out of { remove-pilot-title }
 remove-modal-optout-text = Once you submit your opt-out request, this action cannot be undone. 
 
 # Data Removal About Page
@@ -378,11 +369,11 @@ remove-about-partner-security-link = Learn more about {-remove-brand-partner}'s 
 
 remove-about-service-details-title = Service details
 remove-about-service-details-content = The pilot service will be offered at no cost to you.
- The purpose of the pilot is to evaluate the service for a future paid offering.
- As such, participating in the pilot will include additional communications and surveys about your experience.
- You are not required to respond to these requests for information, but we would appreciate your assistance.<br><br>
- At the end of the pilot period, the service will be canceled and all account information held by Mozilla or our 
- partner Kanary will be deleted. You may also cancel your service at any point within the pilot period.
+  The purpose of the pilot is to evaluate the service for a future paid offering.
+  As such, participating in the pilot will include additional communications and surveys about your experience.
+  You are not required to respond to these requests for information, but we would appreciate your assistance.<br><br>
+  At the end of the pilot period, the service will be canceled and all account information held by Mozilla or our 
+  partner {-remove-brand-partner} will be deleted. You may also cancel your service at any point within the pilot period.
 
 remove-about-sites-title = Data brokers and people search sites explained
 remove-about-sites-content = Data brokers and people search sites are third-party websites that collect and 
@@ -415,7 +406,7 @@ remove-about-status-complete = refers to inactive requests. These items correspo
 remove-about-status-blocked = refers to request that cannot be completed or require additional steps. 
   {remove-filter-blocked} removals occur for a variety of reasons including data brokers or people search sites that add additional criteria to removing information.
 
-remove-about-process-title = Data Removal Process Explained
+remove-about-process-title = { remove-process-title } Process Explained
 remove-about-process-content = Once you submit your information, our { remove-process-name } partner, { -remove-brand-partner },
   will continuously scan for your information on known { remove-process-name } and people search sites.
   Once your personal data is found on one of these sites, we automate the process of getting it removed.
@@ -461,7 +452,7 @@ remove-faq-pii-content = The personal information you give us is the same inform
 
 remove-faq-how-found-title = How do data brokers and people search sites find my personal info?
 remove-faq-how-found-content = Data brokers scrape the Internet for your data without your knowledge.
- Then they may sell the data to marketers, scammers, and others without your consent.
+  Then they may sell the data to marketers, scammers, and others without your consent.
 
 remove-faq-cancel-title = How can I cancel my service?
 remove-faq-cancel-content = By cancelling your participation in the { remove-pilot-title}, your data will be deleted 
@@ -471,12 +462,12 @@ remove-faq-cancel-content = By cancelling your participation in the { remove-pil
 
 remove-home-title = See if you've been part of an online data breach.
 remove-home-cta-content = Data brokers and people search sites make your personal data available to anyone. Let us help.
-remove-home-removal-btn = Sign Up to Start Data Removal
+remove-home-removal-btn = Sign Up to Start { remove-process-title }
 remove-home-protect-pii = Protect your identity
 remove-home-protect-subtitle = Automatically remove exposed personal information.
 remove-home-signup-btn = Check for Breaches
 remove-home-signup-bottom-btn = Sign Up Now!
-remove-home-article-data-removal-learn-more = Learn More About Data Removal
+remove-home-article-data-removal-learn-more = Learn More About { remove-process-title }
 remove-home-feature-tip-title = Sign up for monitoring & { remove-process-name } with a { -brand-fxa }.
 
 # Data Removal Error messages
@@ -491,10 +482,10 @@ remove-error-no-fxa-waitlist-match = The { -brand-fxa } email you are logged in 
   our waitlist. Be sure you are logged in with the appropriate account, and that it has been added to our waitlist.
 remove-error-no-waitlist-match = The email address you provided does not appear on our list of invited participants. 
   Be sure to use the email address you used to sign up for the waitlist.
-remove-error-no-kid = No Kanary ID found for this user
-remove-error-no-kid-match = The Kanary ID submitted for this user does not match the ID we have on file
-remove-error-update = Error submitting updates to Kanary. Please try your request again.
-remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in Kanary. Please contact support.
+remove-error-no-kid = No {-remove-brand-partner} ID found for this user
+remove-error-no-kid-match = The {-remove-brand-partner} ID submitted for this user does not match the ID we have on file
+remove-error-update = Error submitting updates to {-remove-brand-partner}. Please try your request again.
+remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in {-remove-brand-partner}. Please contact support.
 remove-error-alpha = field allows only letters, dashes, and spaces
 remove-error-no-id = The {-brand-remove-partner} API did not return an ID
 remove-error-optout = There was an error opting out of the { remove-pilot-title }
