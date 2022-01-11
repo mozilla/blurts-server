@@ -175,9 +175,7 @@ remove-enroll-learn-more = Learn more about data brokers and people search sites
 remove-enroll-description-title = Here's what happens next
 remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our {remove-process-title} partner, 
   {-remove-brand-partner}. This info allows us to find data brokers and people search sites online that share it—and then get it removed. 
-  This info will only be used for the duration of the pilot, and then deleted. <br><br>
-  Once the pilot is over, the {-product-name} {remove-process-title} 
-  service will end, but you’ll be able to continue your service directly with our partner, { -remove-brand-partner }.
+  This info will only be used for the duration of the pilot, and then deleted.
 remove-enroll-details-title = Key details about the {-product-name} { remove-pilot-title }
 remove-enroll-details1 = The pilot service will be offered at no cost to you for 3 months.
 remove-enroll-details2 = The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating 
@@ -298,8 +296,7 @@ remove-expand = Expand Section
 
 remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = The personal information provided here is used to search data broker and people search sites.<br><br>
-  The purpose of this information is to find where your information is exposed on these sites. <br><br>
-  The personal information provided on this page is not stored on {-brand-Mozilla}'s servers aside from your email.
+  The purpose of this information is to find where your information is exposed on these sites.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Leaving Monitor title
@@ -352,7 +349,7 @@ remove-modal-optout-text = Once you submit your opt-out request, this action can
 remove-about-faq-title = FAQ
 remove-about-faq-long-title = Frequently Asked Questions
 
-remove-about-faq-details = Pilot details
+remove-about-faq-details = Pilot Details
 remove-about-details-content = In partnership with <a data-l10n-name="remove-link-partner">{ -remove-brand-partner }</a>, 
   we are evaluating a new feature for { -product-name } that allows users to automate the search and removal of 
   personal information from data broker and people search sites. This service is offered as part of a pilot program 
@@ -383,12 +380,12 @@ remove-about-sites-content = Data brokers and people search sites are third-part
 remove-about-risk-title = Risk Level Explained
 remove-about-risk-content = We categorize sites and information we find by risk level. There are 3 risk levels:
 remove-about-risk-high = High
-remove-about-risk-high-content = The site is sharing location information, contact information, or credentials 
-  without your consent. It may include context that makes you a target like salary, political party, or profession.
+remove-about-risk-high-content = The site is sharing location information, contact information, or credentials, 
+  possibly without your consent. It may include context that makes you a target like salary, political party, or profession.
   Removing data for the site is difficult and may take months to remove or be impossible.
 remove-about-risk-medium = Medium
-remove-about-risk-medium-content = The site is sharing contact information like name, email, or phone number 
-  without your consent. The site is often inaccurate or doesn’t include additional context.
+remove-about-risk-medium-content = The site is sharing contact information like name, email, or phone number, 
+  possibly without your consent. The site may also be inaccurate or fail to include additional context.
   It responds to requests and removes personal information on a consistent basis.
 remove-about-risk-low = Low
 remove-about-risk-low-content = The site is sharing personal information but you likely posted it yourself or 
@@ -447,7 +444,7 @@ remove-faq-blocked-content = Sometimes, for various reasons, we are unable to pr
 
 remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The personal information you give us is the same information we search for on data broker 
-  and people search sites. No additional information is stored on { -brand-Mozilla }'s servers aside from your email.
+  and people search sites.
 
 remove-faq-how-found-title = How do data brokers and people search sites find my personal info?
 remove-faq-how-found-content = Data brokers scrape the Internet for your data without your knowledge.
