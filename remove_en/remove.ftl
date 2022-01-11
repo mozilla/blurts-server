@@ -28,7 +28,6 @@
 
 -remove-brand-partner = Kanary
 remove-partner-link = https://thekanary.com
-remove-process-name = data removal
 remove-process-title = Data Removal
 remove-pilot-title = { remove-process-title } Pilot
 
@@ -46,7 +45,7 @@ remove-form-intro-description = { -product-name } can scan many common <a href="
   search sites</a> for your personal data. If we find any of your personal data exposed, we’ll automatically begin the process of getting it removed from those sites.
 remove-dash-intro-signup-title = How to start removing your exposed personal data
 remove-dash-intro-signup = To start removing your exposed personal data, please provide the following information. This information is used to scan 
-  and identify exposed personal data. Once exposed personal data is found, the removal request process will automatically begin.
+  and identify exposed personal data. Once exposed personal data is found, the removal request process will automatically begin.<br><br>
   Initial results can take up to 48 hours.
 remove-dash-info-change-title = Review your information
 remove-dash-form-email-label = Select your email address
@@ -64,7 +63,7 @@ remove-dash-form-birth-year = Birth year
 remove-dash-submit = Start { remove-process-title }
 remove-dash-change-submit = Review Information
 remove-dash-form-required-helper = * All fields are required to properly identify your exposed information
-remove-dash-form-disclaimer = By clicking “Start { remove-process-title }” you agree to start the { remove-process-name } process.
+remove-dash-form-disclaimer = By clicking “Start { remove-process-title }” you agree to start the { remove-process-title } process.
 remove-optout = Opt-Out
 remove-form-change-contact-msg = If you need to change your personal information due to an error, please contact support
 
@@ -72,7 +71,7 @@ remove-form-change-contact-msg = If you need to change your personal information
 # Data Removal Form Confirmation Strings
 
 remove-dash-confirm-review = Confirm Your Information
-remove-dash-confirm-subtext = Please make sure your details are correct. You will not be able to make changes once you begin { remove-process-name }.
+remove-dash-confirm-subtext = Please make sure your details are correct. Once you submit your information, changes to your personal information can only be done by contacting support at
 remove-dash-confirm-edit = Edit Info
 remove-dash-confirm-cancel = Cancel
 remove-dash-confirm-back = Back
@@ -96,11 +95,11 @@ remove-dash-link-privacy = Privacy
 # Data Removal Form Completion Page
 
 remove-form-success-alt = Success
-remove-form-success-title = Your automated { remove-process-name } request process is underway!
+remove-form-success-title = Your automated { remove-process-title } request process is underway!
 remove-form-success-details = A scan has been initiated for sites that may be putting your privacy and security at risk.
   Due to a high number of requests, it may take 24 hours for your report to finish.
 remove-form-success-next-title = What's next?
-remove-form-success-next-details = Check the exposures dashboard frequently to see the { remove-process-name } requests initiated on your behalf.
+remove-form-success-next-details = Check the exposures dashboard frequently to see the { remove-process-title } requests initiated on your behalf.
   As new exposures are found or existing results are removed, we'll update the exposures dashboard to reflect the changes.
 remove-form-delete-dashboard = Return to { -product-short-name } dashboard
 remove-form-create-dashboard = Go to my dashboard
@@ -174,13 +173,13 @@ remove-enroll-title = Welcome to { -product-name } { remove-pilot-title }
 remove-enroll-intro = We’re confident you’ll love the ability to find and remove your personal data from data broker and people search sites.
 remove-enroll-learn-more = Learn more about data brokers and people search sites
 remove-enroll-description-title = Here's what happens next
-remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our {remove-process-name} partner, 
+remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our {remove-process-title} partner, 
   {-remove-brand-partner}. This info allows us to find data brokers and people search sites online that share it—and then get it removed. 
   This info will only be used for the duration of the pilot, and then deleted. <br><br>
-  Once the pilot is over, the {-product-name} {remove-process-name} 
+  Once the pilot is over, the {-product-name} {remove-process-title} 
   service will end, but you’ll be able to continue your service directly with our partner, { -remove-brand-partner }.
 remove-enroll-details-title = Key details about the {-product-name} { remove-pilot-title }
-remove-enroll-details1 = The pilot service will be offered at no cost to you until {remove-enroll-program-end-date}.
+remove-enroll-details1 = The pilot service will be offered at no cost to you for 3 months.
 remove-enroll-details2 = The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating 
   in the pilot will include additional communications and surveys about your experience. You are not required 
   to respond to these requests for information, but we would appreciate your assistance.
@@ -219,11 +218,11 @@ remove-enroll-ended-description = Thank you for your interest in { -brand-Mozill
 
 remove-pilot-ended-title = { -product-name } { remove-pilot-title } is now closed
 remove-pilot-ended-description = Thank you for participating in the { -product-name} { remove-pilot-title}.<br><br>
-  We are evaluating whether to continue offering the { remove-process-name } service at { -brand-Mozilla }.<br><br>
+  We are evaluating whether to continue offering the { remove-process-title } service at { -brand-Mozilla }.<br><br>
   We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
   If you have any additional comments or questions, please send them to { remove-about-support-email }.
 remove-pilot-ended-continue-title = Interested in continuing your service with {-remove-brand-partner}?
-remove-pilot-ended-continue-text = If you are interested in continuing your { remove-process-name } coverage 
+remove-pilot-ended-continue-text = If you are interested in continuing your { remove-process-title } coverage 
   while we evaluate next steps for our offering, please proceed to our partner's website:
 
 # Data Removal Pilot Success Page
@@ -232,9 +231,9 @@ remove-enrolled-description = Congratulations on successfully being enrolled in 
 remove-enrolled-step1-title = Step 1: Submit your info
 remove-enrolled-step2-title = Step 2: Watch for results
 remove-enrolled-step3-title = Step 3: Examine the details
-remove-enrolled-step1 = First, enter the info you want to search for and have removed. This data will be submitted for automatic {remove-process-name}.
-remove-enrolled-step2 = Within 48 hours you should start seeing a list of sites where your information has been found on your {remove-process-name} dashboard.
-remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your {remove-process-name} request as it moves from request to completion. 
+remove-enrolled-step1 = First, enter the info you want to search for and have removed. This data will be submitted for automatic {remove-process-title}.
+remove-enrolled-step2 = Within 48 hours you should start seeing a list of sites where your information has been found on your {remove-process-title} dashboard.
+remove-enrolled-step3 = If you view the details of each exposure, you can see the status of your {remove-process-title} request as it moves from request to completion. 
   Removals can take anywhere from two weeks to two months.
 
 remove-enrolled-btn = Get started
@@ -246,7 +245,7 @@ remove-kan-disclaimer-title = Disclaimer
 remove-kan-disclaimer-content = Canceling your service removes all of your data from {-product-name} as well as from our partner service { -remove-brand-partner }. 
   Any exposures that have been removed will remain so and any yet-to-be finished removals will be suspended.<br><br>
   Your information will be removed immediately upon removal request.
-remove-kan-blurb = Confirm cancellation of { remove-process-name } service? Your { -product-short-name } account 
+remove-kan-blurb = Confirm cancellation of { remove-process-title } service? Your { -product-short-name } account 
   will remain active.
 remove-kan-btn-confirm = Confirm Cancelation
 remove-kan-btn-nevermind = Nevermind
@@ -298,9 +297,9 @@ remove-expand = Expand Section
 # Data Removal Info Needed modal
 
 remove-modal-info-title = Why is this information needed?
-remove-modal-info-text = The personal information you give us is the same information we search for on data 
-  broker and people search sites. We only use this data in order to find where it’s being exposed on these sites.
-  None of the additional information below is stored on { -brand-Mozilla }'s servers aside from your email.
+remove-modal-info-text = The personal information provided here is used to search data broker and people search sites.<br><br>
+  The purpose of this information is to find where your information is exposed on these sites. <br><br>
+  The personal information provided on this page is not stored on {-brand-Mozilla}'s servers aside from your email.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Leaving Monitor title
@@ -320,7 +319,7 @@ remove-modal-birth-year-text = Your birth year is used to distinguish you from o
 
 remove-modal-status-title = Removal Status
 remove-modal-status-text = Once a record is found on a data broker or people search site, 
-  the { remove-process-name } service automatically sends a removal request and follows up with the site to track the status of the removal.
+  the { remove-process-title } service automatically sends a removal request and follows up with the site to track the status of the removal.
 
 # Data Removal Info Found Modal
 
@@ -359,15 +358,15 @@ remove-about-details-content = In partnership with <a data-l10n-name="remove-lin
   personal information from data broker and people search sites. This service is offered as part of a pilot program 
   that will help us determine future products and features within { -product-name }.
 
-remove-about-partner-title = About our partner: { -remove-brand-partner }
+remove-about-partner-title = About Our Partner: { -remove-brand-partner }
 remove-about-partner-content = { -brand-name } has partnered with { -remove-brand-partner}, 
-  a leading { remove-process-name } provider, to help create this pilot service within { -product-name}.
+  a leading { remove-process-title } provider, to help create this pilot service within { -product-name}.
   { -remove-brand-partner} helps you maintain your online presence. They scour the internet for sites posting 
   data about you, including your home address, phone numbers, leaked passwords and emails.
   They adhere to strict data storage, encryption, and anti-tracking practices.
 remove-about-partner-security-link = Learn more about {-remove-brand-partner}'s privacy and security practices here
 
-remove-about-service-details-title = Service details
+remove-about-service-details-title = Service Details
 remove-about-service-details-content = The pilot service will be offered at no cost to you.
   The purpose of the pilot is to evaluate the service for a future paid offering.
   As such, participating in the pilot will include additional communications and surveys about your experience.
@@ -375,7 +374,7 @@ remove-about-service-details-content = The pilot service will be offered at no c
   At the end of the pilot period, the service will be canceled and all account information held by Mozilla or our 
   partner {-remove-brand-partner} will be deleted. You may also cancel your service at any point within the pilot period.
 
-remove-about-sites-title = Data brokers and people search sites explained
+remove-about-sites-title = Data Brokers and People Search Sites Explained
 remove-about-sites-content = Data brokers and people search sites are third-party websites that collect and 
   expose personal data like names, addresses, and phone numbers. They collect and expose this personal data 
   without the knowledge of the person to whom that data belogs or represents. Many of these sites even sell this data,
@@ -407,13 +406,13 @@ remove-about-status-blocked = refers to request that cannot be completed or requ
   {remove-filter-blocked} removals occur for a variety of reasons including data brokers or people search sites that add additional criteria to removing information.
 
 remove-about-process-title = { remove-process-title } Process Explained
-remove-about-process-content = Once you submit your information, our { remove-process-name } partner, { -remove-brand-partner },
-  will continuously scan for your information on known { remove-process-name } and people search sites.
+remove-about-process-content = Once you submit your information, our { remove-process-title } partner, { -remove-brand-partner },
+  will continuously scan for your information on known { remove-process-title } and people search sites.
   Once your personal data is found on one of these sites, we automate the process of getting it removed.
   Sometimes, even if your data was removed from one of these sites, it may reappear at a later date.
   Data brokers and people search sites regularly collect data, and removal does not necessarily
   prevent many of these sites from sharing it again later.
-remove-about-process-content2 = Data removal is not guaranteed. At times, {remove-process-name} requests cannot be completed or require additional steps. 
+remove-about-process-content2 = Data removal is not guaranteed. At times, {remove-process-title} requests cannot be completed or require additional steps. 
   Even still, {-remove-brand-partner} continues to work on removing your personal information. In the event that a request is 
   {remove-filter-blocked}, manual removal instructions are shown in the bottom of the expanded card. These instructions provide another means to attempt 
   removing your personal information from a data broker or people search site. The instructions are gathered from each specific site, 
@@ -421,8 +420,8 @@ remove-about-process-content2 = Data removal is not guaranteed. At times, {remov
 
 remove-about-support-title = Support
 remove-about-support-email = monitor-pilot@mozilla.com
-remove-about-support-content = For self-help, please consult the knowledge base articles.<br><br> 
-  If you cannot find an answer to your questions on this page, you can contact support
+remove-about-support-kb-text = For self-help, please consult the knowledge base articles.
+remove-about-support-content = If you cannot find an answer to your questions on this page, you can contact support
   via e-mail at <a data-l10n-name="remove-link-support-email">{remove-about-support-email}</a>.<br><br>
   If you wish to file a bug, <a data-l10n-name="remove-link-bug-form">you may do so via this google form</a>.
 
@@ -440,11 +439,11 @@ remove-faq-search-content = No - we can't remove your info from search engines l
   or publicly-available information on government websites.
 
 remove-faq-success-rate = { -remove-brand-partner }’s current success rate for removals is currently above 70%
-remove-faq-guarantee-title = Is { remove-process-name } guaranteed?
+remove-faq-guarantee-title = Is { remove-process-title } guaranteed?
 remove-faq-guarantee-content = Data removal is not guaranteed, but { remove-faq-success-rate }.
 remove-faq-blocked-title = What does it mean when a removal is ‘{remove-filter-blocked}’?
-remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a { remove-process-name } 
-  request. While { remove-process-name } is not guaranteed, { remove-faq-success-rate }.
+remove-faq-blocked-content = Sometimes, for various reasons, we are unable to proceed with a { remove-process-title } 
+  request. While { remove-process-title } is not guaranteed, { remove-faq-success-rate }.
 
 remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The personal information you give us is the same information we search for on data broker 
@@ -468,7 +467,7 @@ remove-home-protect-subtitle = Automatically remove exposed personal information
 remove-home-signup-btn = Check for Breaches
 remove-home-signup-bottom-btn = Sign Up Now!
 remove-home-article-data-removal-learn-more = Learn More About { remove-process-title }
-remove-home-feature-tip-title = Sign up for monitoring & { remove-process-name } with a { -brand-fxa }.
+remove-home-feature-tip-title = Sign up for monitoring & { remove-process-title } with a { -brand-fxa }.
 
 # Data Removal Error messages
 

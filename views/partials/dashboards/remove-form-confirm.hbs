@@ -29,6 +29,14 @@
       {{/if}}
     </div>
   </div>
+  {{#unless this.acctInfo}}
+  <div>
+    <p>
+      {{getRemoveString "remove-dash-confirm-subtext"}}
+      <a href='mailto:{{getRemoveString "remove-about-support-email"}}'>{{getRemoveString "remove-about-support-email"}}</a>
+    </p>
+  </div>
+  {{/unless}}
   <div class="remove-dashboard-confirm-container">
     <ul class="remove-dashboard-confirm-list">
       <li class="remove-dashboard-confirm-item" data-id="fullname">

@@ -21,10 +21,16 @@
 
   &-link-item {
     @include list-item-inside;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   &-terms {
     margin-right: 10px;
+  }
+  &-terms-label {
+    font-size: 16px;
+    line-height: 24px;
   }
 
   &-submit {
