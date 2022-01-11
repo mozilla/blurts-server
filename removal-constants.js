@@ -23,7 +23,7 @@ const REMOVAL_CONSTANTS = {
   REMOVE_CHECK_WAITLIST_ENABLED: true, //enable the waitlist check
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: false, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
   REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
-  REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: false, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
+  REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: true, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
   REMOVE_CLIENT_VALIDATION_ENABLED: true, //allows us to run removal form validity check client side before server side validation
   REMOVE_EDIT_INFO_ENABLED: false, //when true, users can edit their info without the need to contact support
   REMOVE_EMAIL_DOMAIN_LIST: [
@@ -53,7 +53,7 @@ const REMOVAL_CONSTANTS = {
     {
       id: 1,
       name: "group_01",
-      start_time: 1641967200, //wed, jan 12
+      start_time: 1641916800, //wed, jan 11 8am PST
       max_users: 300,
     },
     {
@@ -63,7 +63,7 @@ const REMOVAL_CONSTANTS = {
       max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
     },
   ],
-  REMOVAL_PILOT_ENROLLMENT_END_DAY: 7, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PILOT_ENROLLMENT_END_DAY: 8, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
   REMOVAL_STEP: {
     AWAITING_SCAN: {
