@@ -2,6 +2,8 @@
   class="remove-dash-results-list-item drop-shadow flx flx-col"
   data-status="{{this.status}}"
   data-step="{{this.current_step}}"
+  data-event-category="Removal"
+  data-broker="{{kebabCase this.broker}}"
 >
   <div class="remove-dash-results-summary-container flx space-between">
     <div class="remove-dash-results-site-container flx flx-cntr">
@@ -82,6 +84,10 @@
               class="remove-dash-results-detail-link break-word"
               data-micromodal-trigger="modal-leaving-monitor"
               data-link="{{this}}"
+              data-send-ga-ping
+              data-event-action="Click"
+              data-event-category="Removal"
+              data-event-label="{{../broker}}"
             >{{getRemoveString "remove-result-link-title"}} {{incrementedIndex @index}}</button>
           </li>
           {{/each}}
@@ -127,6 +133,9 @@
               target="_blank"
               rel="noopener noreferrer"
               class="break-word"
+              data-event-category="Removal"
+              data-ga-link
+              data-event-label="{{this.broker}}"
             >{{this.opt_out}}</a>
           </p>
         </li>
