@@ -349,7 +349,7 @@ remove-modal-optout-text = Once you submit your opt-out request, this action can
 remove-about-faq-title = FAQ
 remove-about-faq-long-title = Frequently Asked Questions
 
-remove-about-faq-details = Pilot details
+remove-about-faq-details = Pilot Details
 remove-about-details-content = In partnership with <a data-l10n-name="remove-link-partner">{ -remove-brand-partner }</a>, 
   we are evaluating a new feature for { -product-name } that allows users to automate the search and removal of 
   personal information from data broker and people search sites. This service is offered as part of a pilot program 
