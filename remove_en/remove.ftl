@@ -175,9 +175,7 @@ remove-enroll-learn-more = Learn more about data brokers and people search sites
 remove-enroll-description-title = Here's what happens next
 remove-enroll-description = After you join the pilot, you’ll share some identifying information with us, which we share with our {remove-process-title} partner, 
   {-remove-brand-partner}. This info allows us to find data brokers and people search sites online that share it—and then get it removed. 
-  This info will only be used for the duration of the pilot, and then deleted. <br><br>
-  Once the pilot is over, the {-product-name} {remove-process-title} 
-  service will end, but you’ll be able to continue your service directly with our partner, { -remove-brand-partner }.
+  This info will only be used for the duration of the pilot, and then deleted.
 remove-enroll-details-title = Key details about the {-product-name} { remove-pilot-title }
 remove-enroll-details1 = The pilot service will be offered at no cost to you for 3 months.
 remove-enroll-details2 = The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating 
@@ -298,8 +296,7 @@ remove-expand = Expand Section
 
 remove-modal-info-title = Why is this information needed?
 remove-modal-info-text = The personal information provided here is used to search data broker and people search sites.<br><br>
-  The purpose of this information is to find where your information is exposed on these sites. <br><br>
-  The personal information provided on this page is not stored on {-brand-Mozilla}'s servers aside from your email.
+  The purpose of this information is to find where your information is exposed on these sites.
 remove-modal-info-link = Learn how your privacy is protected
 
 # Data Removal Leaving Monitor title
@@ -447,7 +444,7 @@ remove-faq-blocked-content = Sometimes, for various reasons, we are unable to pr
 
 remove-faq-pii-title = Why do you need my personal information?
 remove-faq-pii-content = The personal information you give us is the same information we search for on data broker 
-  and people search sites. No additional information is stored on { -brand-Mozilla }'s servers aside from your email.
+  and people search sites.
 
 remove-faq-how-found-title = How do data brokers and people search sites find my personal info?
 remove-faq-how-found-content = Data brokers scrape the Internet for your data without your knowledge.
