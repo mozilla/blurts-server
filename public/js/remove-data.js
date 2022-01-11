@@ -1,5 +1,7 @@
 "use strict";
 
+/* global sendPing */
+
 function initRemove() {
   const $removePage = document.querySelector(".remove-page");
   window.MicroModal.init();
@@ -434,8 +436,11 @@ function addLeavingLink(el) {
 
 function onRemoveDashDetailsToggle(e) {
   e.preventDefault();
-  const $item = e.currentTarget.closest(".remove-dash-results-list-item");
+  const $thisToggle = e.currentTarget;
+  const $item = $thisToggle.closest(".remove-dash-results-list-item");
+  const thisID = `${$item.dataset.broker}-${$item.dataset.step}`;
   $item.classList.toggle("is-active");
+  sendPing($item, "Click", thisID);
 }
 
 function onRemoveDashFAQToggle(e) {
@@ -465,12 +470,14 @@ function onStatusFilterToggle(e) {
 function onLeavingLinkClick(e) {
   const $trigger = e.currentTarget;
   const thisLink = $trigger.dataset.link;
+  const thisLabel = $trigger.dataset.eventLabel;
   const modalID = $trigger.dataset.micromodalTrigger;
   const $thisModal = document.getElementById(modalID);
   const $modalLink = $thisModal.querySelector(".modal__leaving_link");
 
   if (thisLink && $modalLink) {
     $modalLink.href = thisLink;
+    $modalLink.dataset.eventLabel = thisLabel;
   } else {
     console.error(
       "either the leaving monitor modal or the link data attribute for the modal trigger is missing"
