@@ -102,7 +102,7 @@ remove-form-success-next-title = What's next?
 remove-form-success-next-details = Check the exposures dashboard frequently to see the { remove-process-title } requests initiated on your behalf.
   As new exposures are found or existing results are removed, we'll update the exposures dashboard to reflect the changes.
 remove-form-delete-dashboard = Return to { -product-short-name } dashboard
-remove-form-create-dashboard = Go to my dashboard
+remove-form-create-dashboard = Go to My Dashboard
 remove-form-data-delete = Cancel Service
 
 # Data Removal Information Update Page
