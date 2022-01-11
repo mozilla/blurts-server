@@ -380,12 +380,12 @@ remove-about-sites-content = Data brokers and people search sites are third-part
 remove-about-risk-title = Risk Level Explained
 remove-about-risk-content = We categorize sites and information we find by risk level. There are 3 risk levels:
 remove-about-risk-high = High
-remove-about-risk-high-content = The site is sharing location information, contact information, or credentials 
-  without your consent. It may include context that makes you a target like salary, political party, or profession.
+remove-about-risk-high-content = The site is sharing location information, contact information, or credentials, 
+  possibly without your consent. It may include context that makes you a target like salary, political party, or profession.
   Removing data for the site is difficult and may take months to remove or be impossible.
 remove-about-risk-medium = Medium
-remove-about-risk-medium-content = The site is sharing contact information like name, email, or phone number 
-  without your consent. The site is often inaccurate or doesn’t include additional context.
+remove-about-risk-medium-content = The site is sharing contact information like name, email, or phone number, 
+  possibly without your consent. The site may also be inaccurate or fail to include additional context.
   It responds to requests and removes personal information on a consistent basis.
 remove-about-risk-low = Low
 remove-about-risk-low-content = The site is sharing personal information but you likely posted it yourself or 
