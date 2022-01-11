@@ -156,7 +156,10 @@ app.use(helmet.contentSecurityPolicy({
       "https://code.cdn.mozilla.net/fonts/",
     ],
     frameAncestors: FRAME_ANCESTORS,
-    mediaSrc: ["'self'"],
+    mediaSrc: [
+      "'self'",
+      "https://monitor.cdn.mozilla.net/",
+    ],
     imgSrc: imgSrc,
     objectSrc: ["'none'"],
     scriptSrc: SCRIPT_SOURCES,
