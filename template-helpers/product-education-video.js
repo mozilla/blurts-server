@@ -2,10 +2,11 @@
 
 const { getString } = require("./hbs-helpers");
 
-function productEducation(productType, args) {
+function productEducation(type, args) {
+  const productType = type.toLowerCase();
   let videoSrc;
 
-  switch (productType.toLowerCase()) {
+  switch (productType) {
     case "relay":
       videoSrc = "https://monitor.cdn.mozilla.net/videos/FF_Relay_version_02.mp4";
       break;
@@ -15,7 +16,7 @@ function productEducation(productType, args) {
   }
 
   return {
-    heading: getString(`${productType}-video-headline`, args),
+    headingTxt: getString(`${productType}-video-headline`, args),
     videoSrc,
   };
 }

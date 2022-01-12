@@ -1,6 +1,6 @@
-{{#with (productEducation productType)}}
-<aside class="product-education">
-  <h2>{{ heading }}</h2>
+<aside class="product-education {{ theme }}">
+  {{#with (productEducation type)}}
+  <h2>{{ headingTxt }}</h2>
   <video src="{{ videoSrc }}" width=" 3840" height="2160" type="video/mp4" controls></video>
+  {{/with}}
 </aside>
-{{/with}}
