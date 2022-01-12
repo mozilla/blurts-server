@@ -98,7 +98,7 @@ const FormUtils = {
     return parseFloat(mode);
   },
   canShowViaParams(doShow) {
-    return ["dev", "heroku"].includes(AppConstants.NODE_ENV) && doShow;
+    return ["dev", "heroku", "stage"].includes(AppConstants.NODE_ENV) && doShow;
   },
 };
 
