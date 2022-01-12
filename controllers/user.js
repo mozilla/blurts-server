@@ -1264,9 +1264,10 @@ async function postRemovalKan(req, res) {
     });
   }
   await DB.removeKan(sessionUser);
-  if (req.session?.kanary) {
-    req.session.kanary.onRemovalPilotList = false;
-  }
+  // if (req.session?.kanary) {
+  //   req.session.kanary.onRemovalPilotList = false;
+  // }
+  //MH TODO: renable when you reenable removal_optout: fals in DB removeKan
   res.redirect("/user/remove-delete-confirmation");
 }
 
@@ -1366,12 +1367,13 @@ function checkIfRemovalEnrollmentEnded(user) {
   );
 
   return today < enrollmentStartDate || today > enrollmentEndDate;
-
 }
 
 async function checkIfOnRemovalPilotList(user) {
   if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
+    console.log("checking hash match");
     const hashMatch = await checkEmailHash(user.primary_email);
+    console.log("hash matched");
     if (hashMatch) {
       //user is on the list
       const isOptedOut = await DB.getRemovalOptoutStatus(user);
@@ -1397,19 +1399,6 @@ async function handleRemovalEnrollFormSignup(req, res) {
 
   const isFull = await checkIfRemovalPilotFull(user);
 
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
-    const hashMatch = await checkEmailHash(user.primary_email);
-
-    if (!hashMatch) {
-      const localeError = LocaleUtils.formatRemoveString(
-        "remove-error-no-fxa-waitlist-match"
-      );
-      return res.status(400).json({
-        error: localeError,
-      });
-    }
-  }
-
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
     return res.json({ nextPage: nextPage });
@@ -1420,9 +1409,13 @@ async function handleRemovalEnrollFormSignup(req, res) {
     );
     return res.status(400).json({ error: localeError });
   } else {
+    console.log("enrolling user");
     await DB.setRemovalEnrollTime(user, new Date().toISOString());
+    console.log("enroll time set");
     await DB.incrementRemovalEnrolledUsers();
+    console.log("users incremented");
     nextPage = "/user/remove-enrolled";
+    console.log("enrolled", nextPage);
     return res.json({ nextPage: nextPage });
   }
 }
@@ -1459,7 +1452,10 @@ async function handleRemovalFormSignup(req, res) {
     state,
     country,
     birthyear,
+    _csrf,
   } = req.body;
+
+  console.log("submit csrf", _csrf);
 
   const emailMatch = await checkForEmailMatch(account, user);
 
@@ -1648,7 +1644,9 @@ async function checkEmailDomainMatch(account) {
 }
 
 async function checkEmailHash(account) {
+  console.log("getting hashed array");
   const hashedWaitlistArray = REMOVAL_CONSTANTS.REMOVAL_PARTICIPANTS_HASHED;
+  console.log("hashed array received");
 
   if (!hashedWaitlistArray || !hashedWaitlistArray.length) {
     console.error("there must be a problem creating the waitlist");
@@ -1656,10 +1654,14 @@ async function checkEmailHash(account) {
   }
   let email = `${account}`;
   email = email.toLowerCase();
+  console.log("finding match");
   const matchedHash = hashedWaitlistArray.find((arrayItem) => {
     const isMatch = bcrypt.compareSync(email, arrayItem, function (err, res) {
       return res;
     });
+    if (isMatch) {
+      console.log("match found");
+    }
     return isMatch;
   });
   if (!matchedHash) {

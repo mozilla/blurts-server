@@ -137,7 +137,7 @@ router.get(
   "/remove-enrolled",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
+  // asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalEnrolledPage)
 );
 
@@ -146,7 +146,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
+  // asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalEnrollFormSignup)
 );
 
@@ -210,7 +210,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
+  // asyncMiddleware(requireRemovalUser),
   asyncMiddleware(handleRemovalFormSignup)
 );
 
@@ -227,7 +227,7 @@ router.get(
   urlEncodedParser,
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
+  // asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalKan)
 );
 router.post(

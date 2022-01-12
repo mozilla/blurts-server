@@ -152,6 +152,7 @@ function onConfirmEditClick(e) {
 }
 
 function onEnrollFormSubmitClick(e) {
+  console.log("enroll form submit click");
   e.preventDefault();
   const $form = e.target.form;
 
@@ -162,7 +163,7 @@ function onEnrollFormSubmitClick(e) {
   }
 
   const formData = new FormData($form);
-
+  console.log("calling form action", $form.action, $form);
   fetch($form.action, {
     method: "POST",
     headers: {
@@ -171,9 +172,11 @@ function onEnrollFormSubmitClick(e) {
     body: new URLSearchParams(formData),
   })
     .then((resp) => {
+      console.log("response", resp);
       return resp.json(); // or resp.text() or whatever the server sends
     })
     .then((data) => {
+      console.log("response data", data);
       if (data.nextPage) {
         window.location.pathname = data.nextPage;
       } else if (data.error) {
@@ -182,6 +185,7 @@ function onEnrollFormSubmitClick(e) {
         ).innerText = data.error;
       } else {
         console.error("there was an error in the response", data);
+        window.location = "/user/remove-enrolled";
       }
     })
     .catch((error) => {

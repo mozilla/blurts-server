@@ -67,7 +67,9 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
   let returnURL;
   const isOnRemovalPilotList = await checkIfOnRemovalPilotList(existingUser);
   if (isOnRemovalPilotList) {
+    console.log("oauth, on removal pilot list", isOnRemovalPilotList);
     req.session.kanary = { onRemovalPilotList: true };
+    console.log("oauth req session kanary", req.session.kanary);
   }
 
   if (existingUser && isOnRemovalPilotList) {
