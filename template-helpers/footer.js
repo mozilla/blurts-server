@@ -1,6 +1,6 @@
 "use strict";
 
-const { getStrings } = require("./hbs-helpers");
+const { getStrings, getRemoveString } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 
 function getFooterLinks(args) {
@@ -32,6 +32,8 @@ function getFooterLinks(args) {
     },
   ];
 
+  const footerLinksWithStrings = getStrings(footerLinks, locales);
+
   //DATA REMOVAL SPECIFIC
   const onRemovalPilotList =
     isLoggedIn && session.kanary && session.kanary.onRemovalPilotList
@@ -40,14 +42,14 @@ function getFooterLinks(args) {
   if (onRemovalPilotList) {
     const removalFAQ = {
       title: "Data Removal FAQ",
-      stringId: "remove-footer-data-removal-faq",
+      stringId: getRemoveString("remove-footer-data-removal-faq"),
       href: "/remove-faq",
     };
-    footerLinks.splice(2, 0, removalFAQ);
+    footerLinksWithStrings.splice(2, 0, removalFAQ);
   }
   //END DATA REMOVAL SPECIFIC
 
-  return getStrings(footerLinks, locales);
+  return footerLinksWithStrings;
 }
 
 function getAboutPageStrings(args) {

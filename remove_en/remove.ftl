@@ -486,3 +486,8 @@ remove-error-alpha = field allows only letters, dashes, and spaces
 remove-error-no-id = The {-brand-remove-partner} API did not return an ID
 remove-error-optout = There was an error opting out of the { remove-pilot-title }
 remove-error-no-session = No { -remove-brand-partner } session variable found
+
+# Navigation Links
+
+remove-header-exposures = Data Removal
+remove-footer-data-removal-faq = Data Removal FAQ
