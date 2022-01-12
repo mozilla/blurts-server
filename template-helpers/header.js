@@ -1,6 +1,6 @@
 "use strict";
 
-const { getStrings, getFxaUrl } = require("./hbs-helpers");
+const { getStrings, getFxaUrl, getRemoveString } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
 const { REMOVAL_CONSTANTS } = require("./../removal-constants"); //DATA REMOVAL SPECIFIC
 
@@ -56,6 +56,8 @@ function navLinks(args) {
     activeLink: hostUrl === "/security-tips",
   };
 
+  let headerLinks;
+
   if (onRemovalPilotList) {
     let isActiveLink = false;
 
@@ -67,18 +69,19 @@ function navLinks(args) {
 
     const linkExposures = {
       title: "Exposures",
-      stringId: "remove-header-exposures",
+      stringId: getRemoveString("remove-header-exposures"),
       href: `${serverUrl}/user/remove-data`,
       activeLink: isActiveLink,
     };
 
-    links = [linkBreaches, linkExposures, linkSecurityTips];
+    links = [linkBreaches, linkSecurityTips];
+    headerLinks = getStrings(links, locales);
+    headerLinks.splice(1, 0, linkExposures);
   } else {
     links = [linkHome, linkBreaches, linkSecurityTips];
+    headerLinks = getStrings(links, locales);
   }
   //END DATA REMOVAL SPECIFIC
-
-  const headerLinks = getStrings(links, locales);
   return headerLinks;
 }
 
