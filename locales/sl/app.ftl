@@ -652,6 +652,7 @@ vpn-banner-status-not-protected = Trenutno stanje: <em>Niste zaščiteni ⚠</em
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Naslov IP: { $ip-address }
 vpn-banner-step-1 = Naročite se na { -brand-mozilla-vpn }
+vpn-banner-cta = Pridobite { -brand-mozilla-vpn }
 # button to expand panel
 vpn-banner-cta-expand = Razširi
 # button to close panel
@@ -659,3 +660,5 @@ vpn-banner-cta-close = Zapri
 
 ## VPN and Relay educational videos
 
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Vas skrbi varnost na javnih omrežjih Wi-Fi?
