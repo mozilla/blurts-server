@@ -1444,15 +1444,10 @@ async function handleRemovalFormSignup(req, res) {
 
   if (user.kid) {
     console.error(
-      "user should have been directed to the handleRemovalAcctUpdate function if they have a kid"
-    );
-    const localeError = LocaleUtils.formatRemoveString(
-      "remove-error-account-exists"
+      "user should not be able to submit the form again if they already have a Kanary ID"
     );
 
-    return res.status(400).json({
-      error: localeError,
-    });
+    return res.redirect("/user/remove-data");
   }
 
   const {
