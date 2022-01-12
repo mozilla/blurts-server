@@ -637,3 +637,11 @@ ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravna
 promo-ecosystem-cta = Oglejte si vse izdelke
 steps-to-resolve-headline = Koraki za razrešitev te kraje podatkov
 vpn-promo-cta = Namestite { -brand-mozilla-vpn }
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+vpn-banner-protect-yourself-with-vpn = <em>Zaščitite se</em> z { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Zaščiteni</em> z { -brand-mozilla-vpn }.
+
+## VPN and Relay educational videos
+
