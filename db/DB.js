@@ -498,7 +498,7 @@ const DB = {
         kid: null,
         removal_would_pay: null,
         removal_enrolled_time: null,
-        removal_optout: false, //MH TODO: reenable after debugging stage
+        removal_optout: true, //MH TODO: set to false if we want to be able to debug re-enrollment
       })
       .catch((e) => {
         console.error("error removing kanary id", e);

@@ -96,17 +96,22 @@ function addRemoveEnrollListeners() {
 }
 
 function addRemoveFormListeners() {
-  document
-    .querySelector(".js-remove-submit")
-    .addEventListener("click", onRemoveFormSubmitClick);
+  const $removeSubmit = document.querySelector(".js-remove-submit");
 
-  document
-    .querySelector(".js-confirm-edit-btn")
-    .addEventListener("click", onConfirmEditClick);
+  if ($removeSubmit) {
+    $removeSubmit.addEventListener("click", onRemoveFormSubmitClick);
+  }
 
-  document
-    .querySelector(".js-remove-confirm")
-    .addEventListener("click", onRemoveConfirmSubmitClick);
+  const $confirmEdit = document.querySelector(".js-confirm-edit-btn");
+
+  if ($confirmEdit) {
+    $confirmEdit.addEventListener("click", onConfirmEditClick);
+  }
+
+  const $removeConfirm = document.querySelector(".js-remove-confirm");
+  if ($removeConfirm) {
+    $removeConfirm.addEventListener("click", onRemoveConfirmSubmitClick);
+  }
 
   document.querySelectorAll(".js-form-select").forEach((selector) => {
     selector.addEventListener("change", onSelectChange);
@@ -438,15 +443,19 @@ function onRemoveDashDetailsToggle(e) {
   e.preventDefault();
   const $thisToggle = e.currentTarget;
   const $item = $thisToggle.closest(".remove-dash-results-list-item");
-  const thisID = `${$item.dataset.broker}-${$item.dataset.step}`;
-  $item.classList.toggle("is-active");
-  sendPing($item, "Click", thisID);
+  if ($item) {
+    const thisID = `${$item.dataset.broker}-${$item.dataset.step}`;
+    $item.classList.toggle("is-active");
+    sendPing($item, "Click", thisID);
+  }
 }
 
 function onRemoveDashFAQToggle(e) {
   e.preventDefault();
   const $item = e.currentTarget.closest(".remove-faq__list-item");
-  $item.classList.toggle("is-active");
+  if ($item) {
+    $item.classList.toggle("is-active");
+  }
 }
 
 function onStatusFilterToggle(e) {
@@ -454,17 +463,18 @@ function onStatusFilterToggle(e) {
   e.stopPropagation();
   const $item = e.currentTarget.closest(".remove-filter-key-list-item");
   const $container = document.querySelector(".remove-dashboard-container");
+  if ($item && $container) {
+    const filterType = $item.dataset.id;
+    let curFilter = $container.getAttribute("data-filter");
 
-  const filterType = $item.dataset.id;
-  let curFilter = $container.getAttribute("data-filter");
-
-  if (curFilter.includes(filterType)) {
-    curFilter = curFilter.replace(filterType, "");
-  } else {
-    curFilter += ` ${filterType}`;
+    if (curFilter.includes(filterType)) {
+      curFilter = curFilter.replace(filterType, "");
+    } else {
+      curFilter += ` ${filterType}`;
+    }
+    curFilter = curFilter.replace(/^\s+|\s+$/g, ""); //remove lead and end spaces
+    $container.setAttribute("data-filter", curFilter);
   }
-  curFilter = curFilter.replace(/^\s+|\s+$/g, ""); //remove lead and end spaces
-  $container.setAttribute("data-filter", curFilter);
 }
 
 function onLeavingLinkClick(e) {
