@@ -572,7 +572,7 @@ num-resolved =
 progress-intro-subhead = Novo v { -product-name }ju: Označite kraje podatkov kot razrešene
 progress-intro-message =
     Po pregledu podrobnosti o kraji podatkov in izvedbi ukrepov za zaščito 
-    vaših osebnih podatkov, lahko kraje podatkov označite kot razrešene.
+    vaših osebnih podatkov lahko kraje podatkov označite kot razrešene.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bila označena kot razrešena
