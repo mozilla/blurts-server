@@ -1446,13 +1446,7 @@ async function handleRemovalFormSignup(req, res) {
     console.error(
       "user should not be able to submit the form again if they already have a Kanary ID"
     );
-    // const localeError = LocaleUtils.formatRemoveString(
-    //   "remove-error-account-exists"
-    // );
 
-    // return res.status(400).json({
-    //   error: localeError,
-    // });
     return res.redirect("/user/remove-data");
   }
 
