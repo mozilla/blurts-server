@@ -650,3 +650,10 @@ vpn-banner-cta = Få { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Utvid
 # button to close panel
 vpn-banner-cta-close = Lukk
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Hvordan holder du e-postadressen din hemmelig?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Bekymrer du deg for sikkerheten på offentlig Wi-Fi?

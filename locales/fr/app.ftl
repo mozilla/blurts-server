@@ -592,3 +592,8 @@ vpn-banner-cta = Installer { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Développer
 # button to close panel
 vpn-banner-cta-close = Fermer
+
+## VPN and Relay educational videos
+
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Vous souciez-vous de la sécurité des Wi-Fi publics ?
