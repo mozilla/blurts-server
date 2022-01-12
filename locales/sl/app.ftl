@@ -640,8 +640,18 @@ vpn-promo-cta = Namestite { -brand-mozilla-vpn }
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Vaša lokacija: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Zaščitite se</em> z { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Zaščiteni</em> z { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Zaščiteni ste – hvala, ker uporabljate { -brand-mozilla-vpn }.
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Naslov IP: { $ip-address }
+vpn-banner-step-1 = Naročite se na { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Razširi
+# button to close panel
+vpn-banner-cta-close = Zapri
 
 ## VPN and Relay educational videos
 
