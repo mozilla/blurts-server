@@ -248,3 +248,11 @@ promo-ecosystem-cta = تمام مصنوعات دیکھیں
 steps-to-resolve-headline = اس خلاف ورزی کو حل کرنے کے اقدامات
 vpn-promo-cta = { -brand-mozilla-vpn } حاصل کریں
 vpn-promo-headline-new = پورے سال کی رکنیت کے ساتھ%  50 بچائیں۔
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# button to close panel
+vpn-banner-cta-close = بند کریں
+
+## VPN and Relay educational videos
+
