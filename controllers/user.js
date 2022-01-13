@@ -24,7 +24,6 @@ const FXA_MONITOR_SCOPE = "https://identity.mozilla.com/apps/monitor";
 
 //DATA REMOVAL SPECIFIC
 const { FormUtils } = require("../form-utils");
-const bcrypt = require("bcrypt");
 const fs = require("fs");
 const { REMOVAL_CONSTANTS, REMOVAL_STATUS } = require("../removal-constants");
 
