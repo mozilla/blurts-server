@@ -11,7 +11,6 @@
     "@mozilla-protocol/core": "^14.0.3",
     "@sentry/node": "5.27.2",
     "babel-minify": "0.5.1",
-    "bcrypt": "^5.0.1",
     "body-parser": "1.19.0",
     "clean-css-cli": "4.3.0",
     "client-oauth2": "4.3.2",
