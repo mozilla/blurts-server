@@ -1354,28 +1354,6 @@ function checkIfRemovalEnrollmentEnded(user) {
   return today < enrollmentStartDate || today > enrollmentEndDate;
 }
 
-async function checkIfOnRemovalPilotList(user) {
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
-    const hashMatch = await checkEmailHash(user.primary_email);
-    if (hashMatch) {
-      //user is on the list
-      const isOptedOut = await DB.getRemovalOptoutStatus(user);
-      if (isOptedOut) {
-        //have they opted out of the pilot?
-        return false;
-      } else {
-        //user is active in the pilot
-        return hashMatch;
-      }
-    } else {
-      return false;
-    }
-  } else {
-    console.log("pilot check not enabled");
-    return false;
-  }
-}
-
 async function handleRemovalEnrollFormSignup(req, res) {
   const user = req.user;
   await DB.setRemovalEnrollTime(user, new Date().toISOString());
@@ -1861,5 +1839,5 @@ module.exports = {
   getRemovalKan,
   postRemovalKan,
   createRemovalHashWaitlist,
-  checkIfOnRemovalPilotList,
+  checkEmailHash,
 };

@@ -490,6 +490,28 @@ const DB = {
   },
 
   //DATA REMOVAL SPECIFIC
+  async getOnRemovalList(subscriber) {
+    const res = await knex
+      .select("removal_on_list")
+      .from("subscribers")
+      .where("id", subscriber.id)
+      .pluck("removal_on_list"); //return only the values in an array not the object
+    return res[0];
+  },
+
+  async setOnRemovalList(subscriber, isOnList = false) {
+    await knex("subscribers")
+      .where({ id: subscriber.id })
+      .update({
+        removal_on_list: isOnList,
+      })
+      .catch((e) => {
+        console.error(
+          `error updating removal_on_list with value ${isOnList}`,
+          e
+        );
+      });
+  },
 
   async removeKan(subscriber) {
     await knex("subscribers")

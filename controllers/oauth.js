@@ -14,7 +14,7 @@ const sha1 = require("../sha1-utils");
 
 //DATA REMOVAL SPECIFIC
 const { REMOVAL_CONSTANTS } = require("../removal-constants");
-const { checkIfOnRemovalPilotList } = require("./user");
+const { checkEmailHash } = require("./user");
 //END DATA REMOVAL SPECIFIC
 
 const log = mozlog("controllers.oauth");
@@ -64,26 +64,55 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
   //DATA REMOVAL SPECIFIC
   const post_auth_redirect = req.session.post_auth_redirect;
-  let returnURL;
-  const isOnRemovalPilotList = await checkIfOnRemovalPilotList(existingUser);
-  if (isOnRemovalPilotList) {
-    req.session.kanary = { onRemovalPilotList: true };
-  }
+  let returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL); //default return URL will be the dashboard
 
-  if (existingUser && isOnRemovalPilotList) {
-    //if they are an existing user and on the pilot list, use pilot redirect
-    if (post_auth_redirect) {
-      returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
-      req.session.post_auth_redirect = null;
-    } else {
-      returnURL = new URL(
-        REMOVAL_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
-        AppConstants.SERVER_URL
+  if (existingUser) {
+    //if they're an existing user...
+
+    //first check the DB to see if they're on the pilot list
+    const onremovalPilotListInDB = await DB.getOnRemovalList(existingUser); //true, false, or null
+    console.log("onremovalPilotListInDB?", onremovalPilotListInDB);
+
+    if (onremovalPilotListInDB === true) {
+      //if we've already confirmed they're in the pilot...
+      if (!(await DB.getRemovalOptoutStatus(existingUser))) {
+        //they've explicitly been set as part of the pilot, and haven't opted out...
+        //if they are an existing user and on the pilot list, use pilot redirect
+        if (post_auth_redirect) {
+          returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
+          req.session.post_auth_redirect = null;
+        } else {
+          returnURL = new URL(
+            REMOVAL_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
+            AppConstants.SERVER_URL
+          );
+        }
+      }
+    } else if (onremovalPilotListInDB === null) {
+      //we haven't checked the hash file yet to see if they're in the pilot, so run it now...
+      console.log(
+        "existing user primary email check",
+        existingUser.primary_email
       );
+      if (await checkEmailHash(existingUser.primary_email)) {
+        //they're on the hash file
+        //update the database so we don't have to do this again
+        await DB.setOnRemovalList(existingUser, true);
+        if (post_auth_redirect) {
+          returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
+          req.session.post_auth_redirect = null;
+        } else {
+          returnURL = new URL(
+            REMOVAL_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
+            AppConstants.SERVER_URL
+          );
+        }
+      } else {
+        //they're not on the hash file
+        //update the database so we don't have to do this again
+        await DB.setOnRemovalList(existingUser, false);
+      }
     }
-  } else {
-    //return standard monitor post auth redirect
-    returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
   }
   //END DATA REMOVAL SPECIFIC
 
@@ -129,6 +158,19 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
     });
 
     req.session.user = verifiedSubscriber;
+
+    //DATA REMOVAL SPECIFIC
+    console.log(
+      "new user primary email check",
+      verifiedSubscriber.primary_email
+    );
+
+    if (await checkEmailHash(verifiedSubscriber.primary_email)) {
+      await DB.setOnRemovalList(verifiedSubscriber, true);
+    } else {
+      await DB.setOnRemovalList(verifiedSubscriber, true);
+    }
+
     return res.redirect(returnURL.pathname + returnURL.search);
   }
   // Update existing user's FxA data
