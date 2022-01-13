@@ -697,6 +697,11 @@ async function getRemovalEnrollPage(req, res) {
 
   const canShowViaParams = FormUtils.canShowViaParams(req.query?.show);
 
+  if (!checkIfRemovalUser(user) && !canShowViaParams) {
+    //user is not on the waitlist or is opted out
+    return res.redirect("/");
+  }
+
   if (checkIfRemovalEnrollmentEnded(user) && !canShowViaParams) {
     //If the pilot enrollment period is not active
     return res.redirect("/user/remove-enroll-ended");
@@ -1302,6 +1307,13 @@ function getPilotGroup(user) {
   });
   //console.log("user is in group", removalPilots[0].name);
   return removalPilots[0];
+}
+
+function checkIfRemovalUser(user) {
+  if (user?.removal_on_list === true && !user?.removal_optout) {
+    return true;
+  }
+  return false;
 }
 
 function checkIfRemovalPilotEnded(user) {

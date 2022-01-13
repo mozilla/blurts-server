@@ -252,20 +252,6 @@ function getShareUTMs(req, res, next) {
   next();
 }
 
-//DATA REMOVAL SPECIFIC
-async function requireRemovalUser(req, res, next) {
-
-  const {user} = req.session;
-
-  if (user?.removal_on_list === true) {
-    next();
-    return;
-  } else {
-    console.error("user is not on pilot list, redirecting...");
-    return res.redirect("/");
-  }
-}
-
 module.exports = {
   addRequestToResponse,
   pickLanguage,
@@ -277,5 +263,4 @@ module.exports = {
   errorHandler,
   requireSessionUser,
   getShareUTMs,
-  requireRemovalUser,
 };

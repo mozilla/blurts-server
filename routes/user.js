@@ -5,11 +5,7 @@ const bearerToken = require("express-bearer-token");
 const bodyParser = require("body-parser");
 const csrf = require("csurf");
 
-const {
-  asyncMiddleware,
-  requireSessionUser,
-  requireRemovalUser,
-} = require("../middleware");
+const { asyncMiddleware, requireSessionUser } = require("../middleware");
 const {
   add,
   verify,
@@ -127,7 +123,6 @@ router.get(
   "/remove-enroll",
   csrfProtection,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(getRemovalEnrollPage)
 );
 
