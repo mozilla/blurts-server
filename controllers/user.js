@@ -832,7 +832,6 @@ async function getRemovalEnrollEndedPage(req, res) {
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
-
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-enroll-ended",
     experimentFlags,
@@ -1018,11 +1017,6 @@ async function getRemovalUpdateConfirmationPage(req, res) {
     return res.redirect("/user/remove-data");
   }
 
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
   const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
@@ -1042,8 +1036,6 @@ async function getRemovalUpdateConfirmationPage(req, res) {
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-update-confirmation",
@@ -1061,12 +1053,6 @@ async function getRemovalDeleteConfirmationPage(req, res) {
     return res.redirect("/user/remove-data");
   }
 
-  const allBreaches = req.app.locals.breaches;
-  const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(
-    user,
-    allBreaches
-  );
-  const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
   const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(
     user,
@@ -1080,14 +1066,11 @@ async function getRemovalDeleteConfirmationPage(req, res) {
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
-    verifiedEmails,
-    unverifiedEmails,
     userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
     removeSurveyLink,
     whichPartial: "dashboards/remove-delete-confirmation",
     experimentFlags,
-    utmOverrides,
   });
 }
 
@@ -1098,7 +1081,10 @@ async function getRemovalPilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfRemovalPilotEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
+  if (
+    !checkIfRemovalPilotEnded(user) &&
+    !FormUtils.canShowViaParams(req.query?.show)
+  ) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1264,9 +1250,9 @@ async function postRemovalKan(req, res) {
     });
   }
   await DB.removeKan(sessionUser);
-  if (req.session?.kanary) {
-    req.session.kanary.onRemovalPilotList = false;
-  }
+  // if (req.session?.kanary) { //MH TODO: reenable once we're setting optout status in DB.js `removeKan`
+  //   req.session.kanary.onRemovalPilotList = false;
+  // }
   res.redirect("/user/remove-delete-confirmation");
 }
 
@@ -1366,7 +1352,6 @@ function checkIfRemovalEnrollmentEnded(user) {
   );
 
   return today < enrollmentStartDate || today > enrollmentEndDate;
-
 }
 
 async function checkIfOnRemovalPilotList(user) {
@@ -1393,38 +1378,9 @@ async function checkIfOnRemovalPilotList(user) {
 
 async function handleRemovalEnrollFormSignup(req, res) {
   const user = req.user;
-  let nextPage; //where do we send the user next
-
-  const isFull = await checkIfRemovalPilotFull(user);
-
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
-    const hashMatch = await checkEmailHash(user.primary_email);
-
-    if (!hashMatch) {
-      const localeError = LocaleUtils.formatRemoveString(
-        "remove-error-no-fxa-waitlist-match"
-      );
-      return res.status(400).json({
-        error: localeError,
-      });
-    }
-  }
-
-  if (isFull) {
-    nextPage = "/user/remove-enroll-full";
-    return res.json({ nextPage: nextPage });
-  } else if (checkIfEnrolledInRemovalPilot(user)) {
-    //if user has already enrolled
-    const localeError = LocaleUtils.formatRemoveString(
-      "remove-enroll-error-is_enrolled"
-    );
-    return res.status(400).json({ error: localeError });
-  } else {
-    await DB.setRemovalEnrollTime(user, new Date().toISOString());
-    await DB.incrementRemovalEnrolledUsers();
-    nextPage = "/user/remove-enrolled";
-    return res.json({ nextPage: nextPage });
-  }
+  await DB.setRemovalEnrollTime(user, new Date().toISOString());
+  await DB.incrementRemovalEnrolledUsers();
+  return res.json({ nextPage: "/user/remove-enrolled" });
 }
 
 async function handleRemovalFormSignup(req, res) {
@@ -1470,20 +1426,6 @@ async function handleRemovalFormSignup(req, res) {
       "remove-error-no-email-match"
     );
 
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const emailDomainMatch = await checkEmailDomainMatch(account);
-
-  if (!emailDomainMatch) {
-    console.error(
-      "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
-    );
-    const localeError = LocaleUtils.formatRemoveString(
-      "remove-error-no-email-domain-match"
-    );
     return res.status(404).json({
       error: localeError,
     });
@@ -1614,37 +1556,19 @@ async function checkForEmailMatch(account, user) {
     }
   }
 
-  const monitoredEmails = await DB.getUserEmails(user.id);
+  if (!emailMatch) {
+    const monitoredEmails = await DB.getUserEmails(user.id);
 
-  monitoredEmails.forEach((email) => {
-    if (email.email && email.verified) {
-      if (email.email === account) {
-        emailMatch = true;
+    monitoredEmails.forEach((email) => {
+      if (email.email && email.verified) {
+        if (email.email === account) {
+          emailMatch = true;
+        }
       }
-    }
-  });
-
-  return emailMatch;
-}
-
-async function checkEmailDomainMatch(account) {
-  //TODO: Remove for external testing. For internal testing, we need to check that users are signing up with a Mozilla email account
-
-  let emailDomainMatch = false;
-  if (!REMOVAL_CONSTANTS.REMOVE_CHECK_EMAIL_DOMAIN_ENABLED) {
-    //if the domain check is disabled, force a match
-    emailDomainMatch = true;
+    });
   }
 
-  const accountDomain = account.substring(account.lastIndexOf("@") + 1);
-
-  REMOVAL_CONSTANTS.REMOVE_EMAIL_DOMAIN_LIST.forEach((emailDomain) => {
-    if (emailDomain === accountDomain) {
-      emailDomainMatch = true;
-    }
-  });
-
-  return emailDomainMatch;
+  return emailMatch;
 }
 
 async function checkEmailHash(account) {
@@ -1700,20 +1624,6 @@ async function handleRemovalAcctUpdate(req, res) {
       "remove-error-no-email-match"
     );
 
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const emailDomainMatch = await checkEmailDomainMatch(account); //runs if email check enabled in remove-constants
-
-  if (!emailDomainMatch) {
-    console.error(
-      "the email you are using for signup is being checked against a list of approved email domains and has not been found on that list"
-    );
-    const localeError = LocaleUtils.formatRemoveString(
-      "remove-error-no-email-domain-match"
-    );
     return res.status(404).json({
       error: localeError,
     });
@@ -1803,27 +1713,6 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
   }
 }
 
-async function calculateAverageResolutionTime(resolutionTimeArray) {
-  if (!resolutionTimeArray.length) {
-    return null;
-  }
-  const mean = await FormUtils.getMeanFromArray(resolutionTimeArray);
-  const variance = await FormUtils.getVarianceFromMean(
-    resolutionTimeArray,
-    mean
-  );
-  const stdDev = await FormUtils.getStdDevFromVariance(variance);
-  const avg = await FormUtils.getAverageFromArray(resolutionTimeArray);
-  const mode = await FormUtils.getModeFromArray(resolutionTimeArray);
-  return {
-    mean: FormUtils.numberWithDigits(mean, 2),
-    variance: FormUtils.numberWithDigits(variance, 2),
-    stdDev: FormUtils.numberWithDigits(stdDev, 4),
-    avg: FormUtils.numberWithDigits(avg, 2),
-    mode: FormUtils.numberWithDigits(mode, 2),
-  };
-}
-
 async function getRemoveRateByKid(kanary_id, aggregate = false) {
   try {
     const json = await got(
@@ -1880,37 +1769,6 @@ async function getRemoveRateByKid(kanary_id, aggregate = false) {
     console.error("there was an error getting matches for this account", error);
     return null;
   }
-}
-
-async function getRemovalStatsUser(req, res) {
-  //MH TODO: validate form data server side
-  if (!req.user) {
-    console.error("no user");
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const user = req.user;
-
-  if (!user.kid) {
-    console.error("no kid user", user);
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-kid");
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const userStats = await getRemoveRateByKid(user.kid, false);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    stats: userStats,
-    styleNonce: res.locals.styleNonce,
-    whichPartial: "dashboards/remove-all-stats",
-  });
 }
 
 async function createRemovalHashWaitlist(req, res) {
@@ -2002,7 +1860,6 @@ module.exports = {
   handleRemovalAcctUpdate,
   getRemovalKan,
   postRemovalKan,
-  getRemovalStatsUser,
   createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,
 };
