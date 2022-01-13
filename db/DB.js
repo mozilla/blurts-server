@@ -509,7 +509,7 @@ const DB = {
     const res = await knex("subscribers")
       .where({ id: subscriber.id })
       .update({
-        removal_optout: true,
+        removal_optout: false,
       })
       .catch((e) => {
         console.error("error updating optout status in db", e);

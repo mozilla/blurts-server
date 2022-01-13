@@ -1265,7 +1265,7 @@ async function postRemovalKan(req, res) {
   }
   await DB.removeKan(sessionUser);
   if (req.session?.kanary) {
-    req.session.kanary.onRemovalPilotList = false;
+    req.session.kanary.onRemovalPilotList = true;
   }
   res.redirect("/user/remove-delete-confirmation");
 }
