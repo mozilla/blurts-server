@@ -250,7 +250,6 @@ router.get(
   "/remove-hash-waitlist",
   urlEncodedParser,
   requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
   asyncMiddleware(createRemovalHashWaitlist)
 );
 

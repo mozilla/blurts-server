@@ -1098,7 +1098,10 @@ async function getRemovalPilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (!checkIfRemovalPilotEnded(user) && !FormUtils.canShowViaParams(req.query?.show)) {
+  if (
+    !checkIfRemovalPilotEnded(user) &&
+    !FormUtils.canShowViaParams(req.query?.show)
+  ) {
     return res.redirect("/user/remove-data");
   }
 
@@ -1366,7 +1369,6 @@ function checkIfRemovalEnrollmentEnded(user) {
   );
 
   return today < enrollmentStartDate || today > enrollmentEndDate;
-
 }
 
 async function checkIfOnRemovalPilotList(user) {
@@ -1656,16 +1658,12 @@ async function checkEmailHash(account) {
   }
   let email = `${account}`;
   email = email.toLowerCase();
-  const matchedHash = hashedWaitlistArray.find((arrayItem) => {
-    const isMatch = bcrypt.compareSync(email, arrayItem, function (err, res) {
-      return res;
-    });
-    return isMatch;
-  });
-  if (!matchedHash) {
-    return false;
+  const emailHash = sha1(email);
+  if (hashedWaitlistArray.includes(emailHash)) {
+    return emailHash;
   }
-  return matchedHash;
+
+  return false;
 }
 
 async function handleRemovalAcctUpdate(req, res) {
@@ -1944,7 +1942,8 @@ async function createRemovalHashWaitlist(req, res) {
     waitlistArray = data.toString().split("\n");
     waitlistArray.forEach((arrayItem) => {
       const stringLower = arrayItem.toLowerCase();
-      const hashedEmail = bcrypt.hashSync(stringLower, 10);
+      //const hashedEmail = bcrypt.hashSync(stringLower, 10);
+      const hashedEmail = sha1(stringLower);
       writeStream.write(`${hashedEmail}\n`);
     });
 
