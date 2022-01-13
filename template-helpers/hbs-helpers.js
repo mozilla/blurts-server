@@ -1,5 +1,6 @@
 "use strict";
 
+const { requireSessionUser } = require("../middleware");
 const AppConstants = require("./../app-constants");
 const { LocaleUtils } = require("./../locale-utils");
 const mozlog = require("./../log");
@@ -365,10 +366,7 @@ function getRemoveString(id, args) {
 
 function checkIfInRemovalPilot(args) {
   const { session } = args.data.root.req;
-  if (session.kanary?.onRemovalPilotList) {
-    return session.kanary.onRemovalPilotList;
-  }
-  return false;
+  return session.user?.removal_on_list;
 }
 
 //END DATA REMOVAL SPECIFIC

@@ -518,7 +518,6 @@ const DB = {
       .where({ id: subscriber.id })
       .update({
         kid: null,
-        removal_would_pay: null,
         removal_enrolled_time: null,
         removal_optout: false, //MH TODO: set to false if we want to be able to debug re-enrollment
       })

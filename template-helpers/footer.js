@@ -2,6 +2,7 @@
 
 const { getStrings, getRemoveString } = require("./hbs-helpers");
 const { LocaleUtils } = require("./../locale-utils");
+const DB = require("../db/DB");
 
 function getFooterLinks(args) {
   const locales = args.data.root.req.supportedLocales;
@@ -35,10 +36,8 @@ function getFooterLinks(args) {
   const footerLinksWithStrings = getStrings(footerLinks, locales);
 
   //DATA REMOVAL SPECIFIC
-  const onRemovalPilotList =
-    isLoggedIn && session.kanary && session.kanary.onRemovalPilotList
-      ? true
-      : false;
+
+  const onRemovalPilotList = isLoggedIn && user?.removal_on_list === true;
   if (onRemovalPilotList) {
     const removalFAQ = {
       title: "Data Removal FAQ",

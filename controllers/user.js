@@ -432,10 +432,7 @@ async function postRemoveFxm(req, res) {
     }
     await DB.removeKan(sessionUser);
   }
-  //END DATA REMOVAL SPECIFIC
-  if (req.session?.kanary) {
-    req.session.kanary.onRemovalPilotList = false;
-  }
+
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
@@ -778,16 +775,6 @@ async function handleRemovalOptout(req, res) {
     });
   }
 
-  if (!req.session?.kanary) {
-    const localeError = LocaleUtils.formatRemoveString(
-      "remove-error-no-session"
-    );
-    return res.status(400).json({
-      error: localeError,
-    });
-  }
-
-  req.session.kanary.onRemovalPilotList = false; //this must be set so they no longer see the tab in the navigation
   return res.redirect("/");
 }
 
@@ -1250,9 +1237,6 @@ async function postRemovalKan(req, res) {
     });
   }
   await DB.removeKan(sessionUser);
-  // if (req.session?.kanary) { //MH TODO: reenable once we're setting optout status in DB.js `removeKan`
-  //   req.session.kanary.onRemovalPilotList = false;
-  // }
   res.redirect("/user/remove-delete-confirmation");
 }
 
