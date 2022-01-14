@@ -64,26 +64,23 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
 
   //DATA REMOVAL SPECIFIC
   const post_auth_redirect = req.session.post_auth_redirect;
-  let returnURL;
-  const isOnRemovalPilotList = await checkIfOnRemovalPilotList(existingUser);
-  if (isOnRemovalPilotList) {
-    req.session.kanary = { onRemovalPilotList: true };
-  }
+  let returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
+  const defaultRemovalPilotURL = new URL(
+    REMOVAL_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
+    AppConstants.SERVER_URL
+  );
 
-  if (existingUser && isOnRemovalPilotList) {
-    //if they are an existing user and on the pilot list, use pilot redirect
+  if (existingUser) {
+    const isOnRemovalPilotList = await checkIfOnRemovalPilotList(existingUser);
+    if (isOnRemovalPilotList) {
+      req.session.kanary = { onRemovalPilotList: true };
+    }
     if (post_auth_redirect) {
       returnURL = new URL(post_auth_redirect, AppConstants.SERVER_URL);
       req.session.post_auth_redirect = null;
     } else {
-      returnURL = new URL(
-        REMOVAL_CONSTANTS.REMOVE_LOGGED_IN_DEFAULT_ROUTE,
-        AppConstants.SERVER_URL
-      );
+      returnURL = defaultRemovalPilotURL;
     }
-  } else {
-    //return standard monitor post auth redirect
-    returnURL = new URL("/user/dashboard", AppConstants.SERVER_URL);
   }
   //END DATA REMOVAL SPECIFIC
 
@@ -101,6 +98,14 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       fxaProfileData
     );
 
+    console.log("new subscriber", verifiedSubscriber);
+    const isOnRemovalPilotList = await checkIfOnRemovalPilotList(
+      verifiedSubscriber
+    );
+    if (isOnRemovalPilotList) {
+      req.session.kanary = { onRemovalPilotList: true };
+      returnURL = defaultRemovalPilotURL;
+    }
     // duping some of user/verify for now
     let unsafeBreachesForEmail = [];
 

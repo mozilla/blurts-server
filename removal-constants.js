@@ -22,7 +22,6 @@ const REMOVAL_CONSTANTS = {
   REMOVAL_PARTICIPANTS_HASHED: null, //this is the pilot participant list and gets assigned in server.js from the removal-waitlist.js functionality on server startup
   REMOVE_CHECK_WAITLIST_ENABLED: true, //enable the waitlist check
   REMOVE_CHECK_EMAIL_DOMAIN_ENABLED: false, //enable a check of the user's email domain to be within the REMOVE_EMAIL_DOMAIN_LIST array
-  REMOVE_WILLINGNESS_TO_PAY_ENABLED: false, //show the willingness to pay screen
   REMOVE_CHECK_ENROLLMENT_ENDED_ENABLED: true, //allows us to enforce a fixed amount of time from the pilot start (set with REMOVAL_PILOT_ENROLLMENT_END_DAY) for users to enroll when true
   REMOVE_CLIENT_VALIDATION_ENABLED: true, //allows us to run removal form validity check client side before server side validation
   REMOVE_EDIT_INFO_ENABLED: false, //when true, users can edit their info without the need to contact support
@@ -53,13 +52,14 @@ const REMOVAL_CONSTANTS = {
     {
       id: 1,
       name: "group_01",
-      start_time: 1641916800, //wed, jan 11 8am PST
+      start_time: 1642197405, //MH TODO: remove after testing
+      //start_time: 1642492740, //monday, jan 18 12am PST
       max_users: 300,
     },
     {
       id: 2,
       name: "group_02",
-      start_time: 1644601719, //fri, feb 11
+      start_time: 1645084740, //thu, feb 17 12am PST
       max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
     },
   ],
