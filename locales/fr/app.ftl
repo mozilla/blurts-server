@@ -595,5 +595,7 @@ vpn-banner-cta-close = Fermer
 
 ## VPN and Relay educational videos
 
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Comment garder votre adresse e-mail secrète ?
 # VPN video headline for placement on Monitor user's dashboard
 vpn-video-headline = Vous souciez-vous de la sécurité des Wi-Fi publics ?
