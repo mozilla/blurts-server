@@ -98,7 +98,6 @@ async function confirmed(req, res, next, client = FxAOAuthClient) {
       fxaProfileData
     );
 
-    console.log("new subscriber", verifiedSubscriber);
     const isOnRemovalPilotList = await checkIfOnRemovalPilotList(
       verifiedSubscriber
     );

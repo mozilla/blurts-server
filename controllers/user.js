@@ -787,7 +787,6 @@ async function handleRemovalOptout(req, res) {
     });
   }
 
-  req.session.kanary.onRemovalPilotList = false; //this must be set so they no longer see the tab in the navigation
   req.session.destroy();
   return res.redirect("/");
 }

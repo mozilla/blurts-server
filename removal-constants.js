@@ -52,8 +52,7 @@ const REMOVAL_CONSTANTS = {
     {
       id: 1,
       name: "group_01",
-      start_time: 1642197405, //MH TODO: remove after testing
-      //start_time: 1642492740, //monday, jan 18 12am PST
+      start_time: 1642492740, //monday, jan 18 12am PST
       max_users: 300,
     },
     {
