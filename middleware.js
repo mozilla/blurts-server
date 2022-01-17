@@ -254,16 +254,30 @@ function getShareUTMs(req, res, next) {
 
 //DATA REMOVAL SPECIFIC
 async function requireRemovalUser(req, res, next) {
-  if (req.user) {
+  if (!REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
+    //skip check
+    next();
+    return;
+  }
+  if (req.session?.kanary?.onRemovalPilotList) {
+    //we've already checked, they're on it
+    next();
+    return;
+  } else if (req.user) {
+    //we'll have to do a direct check of the hash list
     const isOnRemovalPilotList = await checkIfOnRemovalPilotList(req.user);
+    if (req.session) {
+      // set a session variable so we don't have to compare hashes again
+      req.session.kanary = { onRemovalPilotList: isOnRemovalPilotList };
+    }
     if (!isOnRemovalPilotList) {
-      console.error("user is not on pilot list, redirecting...");
       return res.redirect("/");
     } else {
       next();
       return;
     }
   } else {
+    console.error("can't find a user to check the waitlist for");
     return res.redirect("/");
   }
 }

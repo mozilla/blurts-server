@@ -421,6 +421,10 @@ async function postRemoveFxm(req, res) {
   const sessionUser = req.user;
 
   //DATA REMOVAL SPECIFIC
+  if (req.session?.kanary) {
+    await DB.removeKan(sessionUser);
+    req.session.kanary.onRemovalPilotList = false;
+  }
   if (sessionUser.kid) {
     const deleteResponse = await removeKanaryAcct(sessionUser.kid);
     if (!deleteResponse?.id) {
@@ -429,12 +433,9 @@ async function postRemoveFxm(req, res) {
         error: localeError,
       });
     }
-    await DB.removeKan(sessionUser);
   }
   //END DATA REMOVAL SPECIFIC
-  if (req.session?.kanary) {
-    req.session.kanary.onRemovalPilotList = false;
-  }
+
   await DB.removeSubscriber(sessionUser);
   await FXA.revokeOAuthTokens(sessionUser);
 
@@ -786,7 +787,7 @@ async function handleRemovalOptout(req, res) {
     });
   }
 
-  req.session.kanary.onRemovalPilotList = false; //this must be set so they no longer see the tab in the navigation
+  req.session.destroy();
   return res.redirect("/");
 }
 
@@ -1371,25 +1372,15 @@ function checkIfRemovalEnrollmentEnded(user) {
 }
 
 async function checkIfOnRemovalPilotList(user) {
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED && user) {
-    const hashMatch = await checkEmailHash(user.primary_email);
-    if (hashMatch) {
-      //user is on the list
-      const isOptedOut = await DB.getRemovalOptoutStatus(user);
-      if (isOptedOut) {
-        //have they opted out of the pilot?
-        return false;
-      } else {
-        //user is active in the pilot
-        return hashMatch;
-      }
-    } else {
-      return false;
-    }
-  } else {
-    console.log("pilot check not enabled");
+  if (!REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED || !user) {
     return false;
   }
+
+  if (await DB.getRemovalOptoutStatus(user)) {
+    //user on list but opted out of pilot
+    return false;
+  }
+  return await checkEmailHash(user.primary_email); //check the list and return whether they're on it or not
 }
 
 async function handleRemovalEnrollFormSignup(req, res) {
@@ -1397,19 +1388,6 @@ async function handleRemovalEnrollFormSignup(req, res) {
   let nextPage; //where do we send the user next
 
   const isFull = await checkIfRemovalPilotFull(user);
-
-  if (REMOVAL_CONSTANTS.REMOVE_CHECK_WAITLIST_ENABLED) {
-    const hashMatch = await checkEmailHash(user.primary_email);
-
-    if (!hashMatch) {
-      const localeError = LocaleUtils.formatRemoveString(
-        "remove-error-no-fxa-waitlist-match"
-      );
-      return res.status(400).json({
-        error: localeError,
-      });
-    }
-  }
 
   if (isFull) {
     nextPage = "/user/remove-enroll-full";
@@ -1658,11 +1636,7 @@ async function checkEmailHash(account) {
   let email = `${account}`;
   email = email.toLowerCase();
   const emailHash = sha1(email);
-  if (hashedWaitlistArray.includes(emailHash)) {
-    return emailHash;
-  }
-
-  return false;
+  return hashedWaitlistArray.includes(emailHash);
 }
 
 async function handleRemovalAcctUpdate(req, res) {
