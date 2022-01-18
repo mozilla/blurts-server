@@ -300,10 +300,9 @@ function addBentoObserver() {
 
 function setHeaderHeight() {
   const header = document.getElementById("header");
+  const height = header?.offsetHeight || 0;
 
-  if (!header) return;
-
-  document.body.style.setProperty("--header-height", `${header.offsetHeight}px`);
+  document.body.style.setProperty("--header-height", `${height}px`);
 }
 
 function recruitmentLogic() {
@@ -526,6 +525,7 @@ async function initVpnBanner() {
   document.forms ? (restoreInputs(), addFormListeners()) : null;
 
   let windowWidth = win.outerWidth;
+  document.addEventListener("DOMContentLoaded", setHeaderHeight);
   win.addEventListener("resize", () => {
     const newWindowWidth = win.outerWidth;
     if (newWindowWidth !== windowWidth) {
