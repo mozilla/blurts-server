@@ -7,7 +7,19 @@ const AppConstants = require("../app-constants");
 const { readLocationData } = require("../ip-location-service");
 
 async function getIpLocation(req, res) {
-  const clientIp = AppConstants.NODE_ENV === "dev" ? "216.160.83.56" : req.ip; // for dev, return an IP that exists in GeoLite2 test DB, e.g. 216.160.83.56
+  let clientIp;
+
+  switch(AppConstants.NODE_ENV){
+    case "dev":
+      clientIp = req.headers["test-ip"] || "216.160.83.56"; // fallback an IP that exists in limited/local GeoLite2 test DB
+      break;
+    case "heroku":
+    case "stage":
+      clientIp = req.headers["test-ip"] || req.ip; // Use "test-ip" header if available, fallback to original IP
+      break;
+    default:
+      clientIp = req.ip;
+  }
 
   if (clientIp === req.session.locationData?.clientIp) {
     return res.status(200).json(req.session.locationData); // return cached data

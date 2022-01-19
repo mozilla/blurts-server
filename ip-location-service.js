@@ -29,7 +29,10 @@ async function readLocationData(ip, locales) {
     const data = locationDb.city(ip);
     const countryName = data.country?.names[locales.find(locale => data.country?.names[locale])]; // find valid locale key and return its value
     const cityName = data.city?.names[locales.find(locale => data.city?.names[locale])];
-    locationArr = [cityName, data.subdivisions?.[0].isoCode, countryName].filter(str => str); // [city name, state code, country code] with non-null items.
+    const subdivisionName = data.subdivisions?.[0].isoCode;
+    const subdivisionFiltered = /[A-z]{2,}/.test(subdivisionName) ? subdivisionName : null; // return strings that are 2 or more letters, or null (avoid unfamiliar subdivisions like `E` or `09`)
+
+    locationArr = [cityName, subdivisionFiltered, countryName].filter(str => str); // [city name, state code, country code] with non-null items.
   } catch (e) {
     return console.warn("Could not read location from database:", e.message);
   }
