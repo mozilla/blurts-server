@@ -687,7 +687,7 @@ vpn-banner-status-protected = Aktuálny stav: <em>Chránený ✓</em>
 vpn-banner-status-not-protected = Aktuálny stav: <em>Nechránený ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP adresa: { $ip-address }
-vpn-banner-step-1 = Prihlásiť sa na odber { -brand-mozilla-vpn }
+vpn-banner-step-1 = Predplaťte si službu { -brand-mozilla-vpn }
 vpn-banner-step-2 = Vyberte umiestnenie VPN
 vpn-banner-step-3 = Aktivujte si VPN a prehliadajte bezpečne
 vpn-banner-cta = Získajte { -brand-mozilla-vpn }
