@@ -9,10 +9,9 @@ const { readLocationData } = require("../ip-location-service");
 async function getIpLocation(req, res) {
   let clientIp = req.ip;
 
-  if("test-ip" in req.headers){
-    clientIp = req.headers["test-ip"]; // allow testing IP addresses via custom header
-  }else if(AppConstants.NODE_ENV === "dev") {
-    clientIp = "216.160.83.56"; // local GeoLite2 test DB has a limited dataset – return an IP that exists, e.g. 216.160.83.56
+  if (["dev", "heroku"].includes(AppConstants.NODE_ENV)) {
+    // Use `req.headers["test-ip"]` if truthy, else fall-back to known IP in local limited DB (e.g. 216.160.83.56)
+    clientIp = req.headers["test-ip"] || "216.160.83.56";
   }
 
   if (clientIp === req.session.locationData?.clientIp) {
