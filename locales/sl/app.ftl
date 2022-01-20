@@ -572,7 +572,7 @@ num-resolved =
 progress-intro-subhead = Novo v { -product-name }ju: Označite kraje podatkov kot razrešene
 progress-intro-message =
     Po pregledu podrobnosti o kraji podatkov in izvedbi ukrepov za zaščito 
-    vaših osebnih podatkov, lahko kraje podatkov označite kot razrešene.
+    vaših osebnih podatkov lahko kraje podatkov označite kot razrešene.
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bila označena kot razrešena
@@ -637,3 +637,28 @@ ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravna
 promo-ecosystem-cta = Oglejte si vse izdelke
 steps-to-resolve-headline = Koraki za razrešitev te kraje podatkov
 vpn-promo-cta = Namestite { -brand-mozilla-vpn }
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Vaša lokacija: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Zaščitite se</em> z { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Zaščiteni</em> z { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Zaščiteni ste – hvala, ker uporabljate { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Vašo lokacijo je mogoče izslediti, če ne uporabljate VPN.
+vpn-banner-subtitle-2 = Zaščitite svojo lokacijo in brskajte varno v 3 korakih
+vpn-banner-status-protected = Trenutno stanje: <em>Zaščiteni ✓</em>
+vpn-banner-status-not-protected = Trenutno stanje: <em>Niste zaščiteni ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Naslov IP: { $ip-address }
+vpn-banner-step-1 = Naročite se na { -brand-mozilla-vpn }
+vpn-banner-cta = Pridobite { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Razširi
+# button to close panel
+vpn-banner-cta-close = Zapri
+
+## VPN and Relay educational videos
+
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Vas skrbi varnost na javnih omrežjih Wi-Fi?

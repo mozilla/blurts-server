@@ -2,6 +2,10 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Firefox Relay is a product name and should not be translated.
+-product-name-relay = Firefox Relay
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Poročilo { -product-name }
 report-date = Datum poročila:
@@ -22,8 +26,6 @@ email-footer-blurb =
 email-verify-footer-copy =
     To e-poštno sporočilo ste prejeli, ker ste se prijavili na opozorila { -product-name }ja. 
     To je samodejno e-poštno sporočilo. Za dodatno pomoč obiščite { $faqLink }.
-# Button text that takes the user to their signed in user dashboard.
-view-my-dashboard-cta = Prikaži mojo nadzorno ploščo
 # Button text
 verify-email-cta = Potrdi e-poštni naslov
 # Button text
@@ -92,3 +94,5 @@ pre-fxa-p-3 =
     pojavili v novi kraji podatkov.
 # Button at the bottom of pre-fxa email.
 create-account = Ustvarite račun
+more-products-cta-vpn = Pridobite { -product-name-vpn }
+more-products-cta-relay = Pridobite { -product-name-relay }

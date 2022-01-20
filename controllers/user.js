@@ -1380,7 +1380,8 @@ async function checkIfOnRemovalPilotList(user) {
     //user on list but opted out of pilot
     return false;
   }
-  return await checkEmailHash(user.primary_email); //check the list and return whether they're on it or not
+  const emailHash = await checkEmailHash(user.primary_email); //check the list and return whether they're on it or not
+  return emailHash;
 }
 
 async function handleRemovalEnrollFormSignup(req, res) {
