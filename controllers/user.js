@@ -1879,7 +1879,6 @@ async function getRemovalStatsUser(req, res) {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
     stats: userStats,
-    styleNonce: res.locals.styleNonce,
     whichPartial: "dashboards/remove-all-stats",
   });
 }
