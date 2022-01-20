@@ -40,7 +40,6 @@ const EmailUtils = require("./email-utils");
 const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
 const IpLocationService = require("./ip-location-service");
-const uuidv4 = require("uuid/v4");
 
 const { getHashedWaitlist } = require("./removal-waitlist");
 
@@ -152,7 +151,7 @@ const SCRIPT_SOURCES = [
   "'self'",
   "https://www.google-analytics.com/analytics.js",
 ];
-const STYLE_SOURCES = ["https://code.cdn.mozilla.net/fonts/"];
+const STYLE_SOURCES = ["'self'", "https://code.cdn.mozilla.net/fonts/"];
 const FRAME_ANCESTORS = ["'none'"];
 
 app.locals.ENABLE_PONTOON_JS = false;
@@ -189,12 +188,6 @@ if (AppConstants.FXA_ENABLED) {
   });
 }
 
-app.use((req, res, next) => {
-  // nonce should be base64 encoded
-  res.locals.styleNonce = Buffer.from(uuidv4()).toString("base64");
-  next();
-});
-
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
@@ -215,10 +208,7 @@ app.use(
       imgSrc: imgSrc,
       objectSrc: ["'none'"],
       scriptSrc: SCRIPT_SOURCES,
-      styleSrc: [
-        ...STYLE_SOURCES,
-        "'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0='", //MH TODO: this SHA may change, in which case this needs to be updated to avoid console / CSP errors
-      ],
+      styleSrc: STYLE_SOURCES,
       reportUri: "/__cspreport__",
     },
   })
