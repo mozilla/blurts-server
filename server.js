@@ -145,29 +145,40 @@ if (AppConstants.FXA_ENABLED) {
   });
 }
 
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    baseUri: ["'none'"],
-    defaultSrc: ["'self'"],
-    connectSrc: connectSrc,
-    fontSrc: [
-      "'self'",
-      "https://fonts.gstatic.com/",
-      "https://code.cdn.mozilla.net/fonts/",
-    ],
-    frameAncestors: FRAME_ANCESTORS,
-    mediaSrc: [
-      "'self'",
-      "https://monitor.cdn.mozilla.net/",
-    ],
-    imgSrc: imgSrc,
-    objectSrc: ["'none'"],
-    scriptSrc: SCRIPT_SOURCES,
-    styleSrc: STYLE_SOURCES,
-    reportUri: "/__cspreport__",
-  },
-}));
-app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
+app.use((req, res, next) => {
+  // nonce should be base64 encoded
+  res.locals.styleNonce = Buffer.from(uuidv4()).toString("base64");
+  next();
+});
+
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      baseUri: ["'none'"],
+      defaultSrc: ["'self'"],
+      connectSrc: connectSrc,
+      fontSrc: [
+        "'self' data:",
+        "https://fonts.gstatic.com/",
+        "https://code.cdn.mozilla.net/fonts/",
+      ],
+      frameAncestors: FRAME_ANCESTORS,
+      mediaSrc: [
+        "'self'",
+        "https://monitor.cdn.mozilla.net/",
+      ],
+      formAction: ["'self'"],
+      imgSrc: imgSrc,
+      objectSrc: ["'none'"],
+      scriptSrc: SCRIPT_SOURCES,
+      styleSrc: [
+        ...STYLE_SOURCES,
+        "'self' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-We76yQ6BbUqy3OL7pB4AiChSOtAH/BdDsZ0Z+MzXvD0='", //MH TODO: this SHA may change, in which case this needs to be updated to avoid console / CSP errors
+      ],
+      reportUri: "/__cspreport__",
+    },
+  })
+);
 
 // helmet no longer sets X-Content-Type-Options, so set it manually
 app.use((req, res, next) => {
