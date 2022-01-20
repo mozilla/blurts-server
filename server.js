@@ -207,7 +207,10 @@ app.use(
         "https://code.cdn.mozilla.net/fonts/",
       ],
       frameAncestors: FRAME_ANCESTORS,
-      mediaSrc: ["'self'"],
+      mediaSrc: [
+        "'self'",
+        "https://monitor.cdn.mozilla.net/",
+      ],
       formAction: ["'self'"],
       imgSrc: imgSrc,
       objectSrc: ["'none'"],
