@@ -145,28 +145,31 @@ if (AppConstants.FXA_ENABLED) {
   });
 }
 
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    baseUri: ["'none'"],
-    defaultSrc: ["'self'"],
-    connectSrc: connectSrc,
-    fontSrc: [
-      "'self'",
-      "https://fonts.gstatic.com/",
-      "https://code.cdn.mozilla.net/fonts/",
-    ],
-    frameAncestors: FRAME_ANCESTORS,
-    mediaSrc: [
-      "'self'",
-      "https://monitor.cdn.mozilla.net/",
-    ],
-    imgSrc: imgSrc,
-    objectSrc: ["'none'"],
-    scriptSrc: SCRIPT_SOURCES,
-    styleSrc: STYLE_SOURCES,
-    reportUri: "/__cspreport__",
-  },
-}));
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      baseUri: ["'none'"],
+      defaultSrc: ["'self'"],
+      connectSrc: connectSrc,
+      fontSrc: [
+        "'self'",
+        "https://fonts.gstatic.com/",
+        "https://code.cdn.mozilla.net/fonts/",
+      ],
+      frameAncestors: FRAME_ANCESTORS,
+      mediaSrc: [
+        "'self'",
+        "https://monitor.cdn.mozilla.net/",
+      ],
+      formAction: ["'self'"],
+      imgSrc: imgSrc,
+      objectSrc: ["'none'"],
+      scriptSrc: SCRIPT_SOURCES,
+      styleSrc: STYLE_SOURCES,
+      reportUri: "/__cspreport__",
+    },
+  })
+);
 app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
 
 // helmet no longer sets X-Content-Type-Options, so set it manually
