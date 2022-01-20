@@ -122,10 +122,47 @@ open-fxa-menu = { -brand-fxa } 열기
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled 1-10.
 micro-survey-nps-prompt = 친구나 동료에게 { -product-short-name }를 추천할 의향은 1-10 사이에서 어느 정도인가요?
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-not-likely-response = 가능성 낮음
+# This is a survey response to the micro-survey-nps-prompt question.
+micro-survey-very-likely-response = 가능성 높음
 # This survey question is periodically shown to signed-in users along the very
 # top of the site. It is followed by a list of clickable buttons labeled:
 # strongly-disagree, disagree, unsure, agree, strongly-agree
 micro-survey-usability-prompt = { -product-short-name }는 사용하기 쉽나요?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-credibility-prompt = { -product-short-name }를 신뢰할 수 있다고 생각하십니까?
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# strongly-disagree, disagree, unsure, agree, strongly-agree
+micro-survey-appearance-prompt = { -product-short-name }는 명확하고 간단한 모습입니까?
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-disagree-response = 매우 동의 안함
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-disagree-response = 동의 안함
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-unsure-response = 확실하지 않음
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-agree-response = 동의함
+# This is a survey response that follows the usability, credibility, and
+# appearance prompts
+micro-survey-strongly-agree-response = 매우 동의함
+# This survey question is periodically shown to signed-in users along the very
+# top of the site. It is followed by a list of clickable buttons labeled:
+# very-disappointed, somewhat-disappointed, dont-care
+micro-survey-pmf-prompt = 만약 더 이상 { -product-short-name }를 사용할 수 없다면 어떤 느낌이 드나요?
+# This is a survey response that follows the pmf prompt
+micro-survey-very-disappointed-response = 매우 실망스러움
+# This is a survey response that follows the pmf prompt
+micro-survey-somewhat-disappointed-response = 다소 실망스러움
+# This is a survey response that follows the pmf prompt
+micro-survey-dont-care-response = 상관없음
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 최근 유출 내역
 # Link title
@@ -532,3 +569,6 @@ vpn-banner-step-3 = VPN을 활성화하고 안전하게 탐색하세요
 vpn-banner-cta = { -brand-mozilla-vpn } 받기
 # button to close panel
 vpn-banner-cta-close = 닫기
+
+## VPN and Relay educational videos
+
