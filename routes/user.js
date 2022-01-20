@@ -41,7 +41,6 @@ const {
   handleRemovalAcctUpdate,
   getRemovalKan,
   postRemovalKan,
-  getRemovalStatsUser,
   createRemovalHashWaitlist,
   //END DATA REMOVAL SPECIFIC
 } = require("../controllers/user");
@@ -236,15 +235,6 @@ router.post(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(postRemovalKan)
-);
-
-router.get(
-  "/remove-user-stats",
-  urlEncodedParser,
-  csrfProtection,
-  requireSessionUser,
-  asyncMiddleware(requireRemovalUser),
-  asyncMiddleware(getRemovalStatsUser)
 );
 router.get(
   "/remove-hash-waitlist",
