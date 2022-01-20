@@ -134,7 +134,7 @@ fxa-what-to-do-blurb-4 =
 # Alerts is a noun
 sign-up-for-alerts = Підписатися на сповіщення
 # Link title
-frequently-asked-questions = Часті питання
+frequently-asked-questions = Часті запитання
 about-firefox-monitor = Про { -product-name }
 # Link title
 preferences = Налаштування
