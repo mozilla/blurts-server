@@ -1,0 +1,24 @@
+<table width="100%" class="footer" align="center" border="0" cellspacing="0" cellpadding="0" style="text-align: center; width: 100%;">
+  <tr>
+    <td align="center" style="padding-bottom: 30px; max-width: 400px;">
+      <p class="email-small-text unsub-disclaimer" style="margin: 0px; font-weight: 300; font-family: sans-serif; color: #5e5e72; max-width: 400px; line-height: 1.5; font-size: 13px;">
+        {{{ getRemovalEmailFooterCopy }}}
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td class="footer-border-top" width="100%" align="center" style="margin:0px; width: 100%; border-top: 1px solid #eee; padding-top: 40px; padding-bottom: 10px; width: 100%;">
+      <a rel="noopener" href="https://www.mozilla.org/{{> email_partials/utm_email_footer }}" style="margin: 0px; padding: 0px;">
+        <img src="{{ SERVER_URL }}/img/email_images/mozilla-logo-bw-rgb.png" width="130px" style="width: 130px;" />
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td valign="top">
+      <p class="email-small-text" style="padding: 0px 0px 10px 0px; margin: 0px; font-weight: 300; color: #5e5e72; font-family: sans-serif; font-size: 13px;">2 Harrison St. #175, San Francisco, California 94105 USA</p>
+      <p class="email-small-text" style="padding: 0px; margin: 0px; font-size: 13px;">
+        <a class="footer-link" href="https://www.mozilla.org/about/legal/{{> email_partials/utm_email_footer }}" rel="noopener" style="color: #0060df; font-family: sans-serif;">{{ getString "legal" }}</a><span style="color:#5e5e72;"> &#8226;</span> <a class="footer-link" href="https://www.mozilla.org/privacy/firefox-monitor/{{> email_partials/utm_email_footer }}" rel="noopener" style="color: #0060df; font-family: sans-serif;">{{ getString "terms-and-privacy" }}</a>
+      </p>
+    </td>
+  </tr>
+</table>

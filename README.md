@@ -54,7 +54,7 @@ more control, see the `scripts` section of `package.json` for more commands.
 
 2. Navigate to [localhost:6060/](http://localhost:6060/)
 
-#### Database
+### Database
 
 To create the database tables ...
 
@@ -78,7 +78,7 @@ To create the database tables ...
    npm run db:migrate
    ```
 
-#### Trigger Breach Alert Email
+### Trigger Breach Alert Email
 Breach alert emails are triggered via HIBP. For dev purposes, we can trigger them ourselves to send to a [Mailinator](https://www.mailinator.com) email address.
 
 To set up your environment for email testing with Mailinator:
@@ -112,7 +112,7 @@ To set up your environment for email testing with Mailinator:
 
 
 
-#### Firefox Accounts
+### Firefox Accounts
 
 Subscribe with a Firefox Account is controlled via the `FXA_ENABLED`
 environment variable. (See `.env-dist`)

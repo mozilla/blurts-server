@@ -1,0 +1,21 @@
+//breakpoints
+$bp-desktop: 1439px;
+$bp-tablet: 1023px;
+$bp-mobile: 800px;
+$bp-xs: 411px;
+
+//strings
+$k-status-progress: "ACTIVE";
+$k-status-complete: "COMPLETE";
+$k-status-blocked: "BLOCKED";
+
+//colors - these should coincide with their css variables in `variables.scss`
+$status-complete-color: #48a388;
+$status-in-progress-color: #0060df;
+$status-blocked-color: #ee0700;
+
+//z-index
+$z-modal: 10;
+
+//dimensions
+$header-height: 80px;

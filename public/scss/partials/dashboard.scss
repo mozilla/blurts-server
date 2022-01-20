@@ -167,13 +167,13 @@ span.email-confirmed {
     align-items: flex-start;
   }
 
-  /* .dashboard.clear-header {
-    padding-top: 156px;
-  } */
-
   .pref .email-add {
     margin-bottom: 8px;
   }
+
+  /* .dashboard.clear-header {
+    padding-top: 156px;
+  } */
 }
 
 @media screen and (max-width: 600px) {
@@ -189,4 +189,5 @@ span.email-confirmed {
     padding-left: 24px;
     padding-right: 24px;
   }
+
 }

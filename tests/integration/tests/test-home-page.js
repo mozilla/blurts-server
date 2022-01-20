@@ -6,36 +6,35 @@ const HomePage = require("../pages/desktop/home.page");
 // const NavBar = require("../regions/navbar.region");
 // const UserDashboardPage = require("../pages/desktop/dashboard.page");
 
-describe("Firefox Monitor homepage", function() {
-
-  beforeEach(function() {
+describe("Firefox Monitor homepage", function () {
+  beforeEach(function () {
     browser.url("/?experimentBranch=false");
   });
 
-  it("should load the latest breach card", function() {
+  it("should load the latest breach card", function () {
     const homePage = HomePage;
 
     homePage.waitForPageToLoad();
     expect(homePage.breachCard.latestBreachCard.isDisplayed()).to.be.true;
   });
 
-  it("should look like normal", function() {
-    expect(browser.checkFullPageScreen("Home_Page", {
-      hideElements: [
-        $$(".breach-info-wrapper"),
-      ],
-    })).to.be.within(0, 24.99);
+  it("should look like normal", function () {
+    expect(
+      browser.checkFullPageScreen("Home_Page", {
+        hideElements: [$$(".breach-info-wrapper")],
+      })
+    ).to.be.within(0, 24.99);
   });
 
-  it("should load correct number of breaches from an email input", function() {
+  it("should load correct number of breaches from an email input", function () {
     const homePage = HomePage;
 
     homePage.waitForPageToLoad();
     homePage.breachEmailAddress.setValue(global.primaryEmail);
     const scanResults = homePage.checkBreachesButton;
-    expect(scanResults.breachCards.length)
-      .to
-      .equal(Number(scanResults.numberOfBreaches));
+    expect(scanResults.breachCards.length).to.equal(
+      Number(scanResults.numberOfBreaches)
+    );
   });
 
   /*

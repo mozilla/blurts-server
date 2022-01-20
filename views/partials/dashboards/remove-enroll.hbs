@@ -1,0 +1,42 @@
+<main id="remove-enroll" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  <div class="mw-860 flx flx-col remove-enroll-container">
+    <h2 class="remove-enroll-title">{{getRemoveString "remove-enroll-title"}}</h2>
+    <p>{{{getRemoveString "remove-enroll-intro"}}}</p>
+    <p><a href="/remove-faq#data-brokers" target="_blank" rel="noopener noreferrer">{{getRemoveString "remove-enroll-learn-more"}}</a></p>
+    <h3 class="remove-enroll-heading">{{getRemoveString "remove-enroll-description-title"}}</h3>
+    <p>{{{getRemoveString "remove-enroll-description"}}}</p>
+    <h3 class="remove-enroll-heading">{{getRemoveString "remove-enroll-details-title"}}</h3>
+    <div>
+      <ul class="remove-enroll-link-list">
+        <li class="remove-enroll-link-item">{{getRemoveString "remove-enroll-details1"}}</li>
+        <li class="remove-enroll-link-item">{{getRemoveString "remove-enroll-details2"}}</li>
+        <li class="remove-enroll-link-item">{{getRemoveString "remove-enroll-details3"}}</li>
+        <li class="remove-enroll-link-item">{{getRemoveString "remove-enroll-details4"}}</li>
+      </ul>
+    </div>
+    <div class="flx">
+      <form id="remove-enroll-form" action="/user/remove-enroll-submit">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        <div class="flx">
+          <input id="remove-enroll-terms" class="remove-enroll-terms" type="checkbox" name="terms" required>
+          <label for="remove-enroll-terms" class="remove-enroll-terms-label input-group-label required">{{getRemoveString "remove-enroll-terms-agreement1"}} 
+            <a href="/removal-pilot-terms">{{getRemoveString "remove-enroll-terms-link"}}</a> &
+            <a href="/removal-pilot-privacy">{{getRemoveString "remove-enroll-privacy-link"}}</a>
+            {{getRemoveString "remove-enroll-terms-agreement2"}}
+          </label>
+        </div>
+        <input id="" class="js-enroll-submit remove-enroll-submit" type="submit" value="{{getRemoveString "remove-enroll-submit"}}"/>
+      </form>
+    </div>
+    <div class="flx jst-cntr">
+        <button
+          class="js-remove-optout remove-dashboard-optout-btn btn-small btn-grey-dark"
+          data-micromodal-trigger="modal-remove-optout"
+          type="button"
+        >{{getRemoveString "remove-optout"}}</button>
+    </div>
+    <div class="remove-dashboard-form-error --general --enroll"></div>
+  </div>
+  {{> dashboards/remove-form-kanary-footer}}
+</main>
+{{> data-removal/modal-remove-optout}}

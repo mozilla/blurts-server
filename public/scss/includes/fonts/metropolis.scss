@@ -25,6 +25,14 @@
 @font-face {
   font-family: "Metropolis";
   font-style: normal;
+  font-weight: 400;
+  src: local('Metropolis-Regular'), url("/fonts/Metropolis/Metropolis-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Metropolis";
+  font-style: normal;
   font-weight: 300;
   src: local('Metropolis-Light'), url("/fonts/Metropolis/Metropolis-Light.woff2") format("woff2");
   font-display: swap;

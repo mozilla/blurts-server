@@ -9,7 +9,6 @@ const hbs = require("nodemailer-express-handlebars");
 const HBSHelpers = require("./template-helpers/");
 const mozlog = require("./log");
 
-
 const log = mozlog("email-utils");
 
 const hbsOptions = {
@@ -30,11 +29,13 @@ let gTransporter;
 
 const EmailUtils = {
   async init(smtpUrl = AppConstants.SMTP_URL) {
-
     // Allow a debug mode that will log JSON instead of sending emails.
     if (!smtpUrl) {
-      log.info("smtpUrl-empty", { message: "EmailUtils will log a JSON response instead of sending emails." });
-      gTransporter = nodemailer.createTransport({jsonTransport: true});
+      log.info("smtpUrl-empty", {
+        message:
+          "EmailUtils will log a JSON response instead of sending emails.",
+      });
+      gTransporter = nodemailer.createTransport({ jsonTransport: true });
       return Promise.resolve(true);
     }
 
@@ -44,15 +45,17 @@ const EmailUtils = {
     return Promise.resolve(gTransporterVerification);
   },
 
-
   sendEmail(aRecipient, aSubject, aTemplate, aContext) {
     if (!gTransporter) {
       return Promise.reject("SMTP transport not initialized");
     }
 
-    const emailContext = Object.assign({
-      SERVER_URL: AppConstants.SERVER_URL,
-    }, aContext);
+    const emailContext = Object.assign(
+      {
+        SERVER_URL: AppConstants.SERVER_URL,
+      },
+      aContext
+    );
     return new Promise((resolve, reject) => {
       const emailFrom = AppConstants.EMAIL_FROM;
       const mailOptions = {
@@ -99,27 +102,45 @@ const EmailUtils = {
     return req.fluentFormat("email-subject-found-breaches");
   },
 
-  getEmailCtaHref(emailType, campaign, subscriberId=null) {
-    const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : "/";
+  getEmailCtaHref(emailType, campaign, subscriberId = null) {
+    const subscriberParamPath = subscriberId
+      ? `/?subscriber_id=${subscriberId}`
+      : "/";
     const url = new URL(subscriberParamPath, AppConstants.SERVER_URL);
     return this.appendUtmParams(url, campaign, emailType);
   },
 
   getVerificationUrl(subscriber) {
     let url = new URL(`${AppConstants.SERVER_URL}/user/verify`);
-    url = this.appendUtmParams(url, "verified-subscribers", "account-verification-email");
-    url.searchParams.append("token", encodeURIComponent(subscriber.verification_token));
+    url = this.appendUtmParams(
+      url,
+      "verified-subscribers",
+      "account-verification-email"
+    );
+    url.searchParams.append(
+      "token",
+      encodeURIComponent(subscriber.verification_token)
+    );
     return url;
   },
 
   getUnsubscribeUrl(subscriber, emailType) {
     let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`);
-    const token = (subscriber.hasOwnProperty("verification_token")) ? subscriber.verification_token : subscriber.primary_verification_token;
-    const hash = (subscriber.hasOwnProperty("sha1")) ? subscriber.sha1 : subscriber.primary_sha1;
+    const token = subscriber.hasOwnProperty("verification_token")
+      ? subscriber.verification_token
+      : subscriber.primary_verification_token;
+    const hash = subscriber.hasOwnProperty("sha1")
+      ? subscriber.sha1
+      : subscriber.primary_sha1;
     url.searchParams.append("token", encodeURIComponent(token));
     url.searchParams.append("hash", encodeURIComponent(hash));
     url = this.appendUtmParams(url, "unsubscribe", emailType);
     return url;
+  },
+  getRemovalEmailCtaHref(emailType, campaign, subscriberId = null) {
+    const subscriberParamPath = "/user/remove-data";
+    const url = new URL(subscriberParamPath, AppConstants.SERVER_URL);
+    return this.appendUtmParams(url, campaign, emailType);
   },
 };
 

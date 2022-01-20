@@ -1,6 +1,10 @@
 // Protocol
 // @import "libs/protocol/css/protocol.scss";
 
+//Sass Helpers
+@import "includes/_vars";
+@import "includes/_mixins";
+
 // Includes
 @import "includes/variables";
 // @import "includes/utils";
@@ -15,11 +19,14 @@
 // Previous Styles
 @import "partials/all-breaches.scss";
 @import "partials/main.scss";
+@import "partials/helpers.scss";
+@import "partials/typography.scss";
 @import "partials/articles.scss";
 @import "partials/breach-cards.scss";
 @import "partials/breach-detail.scss";
 @import "partials/breach-stats.scss";
 @import "partials/dashboard.scss";
+@import "partials/dash-tabs";
 @import "partials/email-card.scss";
 @import "partials/feature-tip-group.scss";
 @import "partials/footer-about.scss";
@@ -30,10 +37,20 @@
 @import "partials/latest-breach.scss";
 @import "partials/monitor.scss";
 @import "partials/product-promos.scss";
-@import "partials/remove-data.scss";
 @import "partials/research-recruitment.scss";
 @import "partials/scan-results.scss";
 @import "partials/security-tips.scss";
 @import "partials/sign-up-banner.scss";
 @import "partials/subpage.scss";
 @import "partials/vpn-banner.scss";
+
+//DATA REMOVAL SPECIFIC
+@import "partials/data-removal/modal.scss";
+@import "partials/data-removal/remove-data.scss";
+@import "partials/data-removal/remove-form-confirm.scss";
+@import "partials/data-removal/remove-result.scss";
+@import "partials/data-removal/remove-pending.scss";
+@import "partials/data-removal/remove-enroll.scss";
+@import "partials/data-removal/remove-faq.scss";
+@import "partials/data-removal/remove-kan.scss";
+@import "partials/data-removal/remove-other-projects.scss";

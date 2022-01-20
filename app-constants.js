@@ -3,9 +3,11 @@
 /* eslint-disable no-process-env */
 
 const path = require("path");
-require("dotenv").config({path: path.join(__dirname, ".env")});
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const requiredEnvVars = [
+  "KANARY_ENDPOINT",
+  "KANARY_TOKEN",
   "NODE_ENV",
   "SERVER_URL",
   "PORT",

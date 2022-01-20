@@ -1,0 +1,174 @@
+<main
+  id="remove-faq"
+  class="remove-page remove-faq clear-header flx flx-col"
+  data-page-label="Remove FAQ Page"
+>
+  <div class="flx flx-col remove-faq__header">
+    <div class="mw-860">
+      <h2 class="remove-faq__title">{{getRemoveString "remove-pilot-title"}}</h2>
+      <div class="remove-faq__nav-container flx">
+        <div class="remove-faq__nav-col">
+          <ul class="remove-faq__nav-list">
+            <li class="remove-faq__nav-item">
+              <a href="#pilot-details" class="remove-faq__nav-link">{{ getRemoveString "remove-about-faq-details"}}</a>
+            </li>
+            <li class="remove-faq__nav-item">
+              <a href="#pilot-partner" class="remove-faq__nav-link">{{getRemoveString "remove-about-partner-title"}}</a>
+            </li>
+            <li class="remove-faq__nav-item">
+              <a href="#data-brokers" class="remove-faq__nav-link">{{getRemoveString "remove-about-sites-title"}}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="remove-faq__nav-col">
+          <ul class="remove-faq__nav-list">
+            <li class="remove-faq__nav-item">
+              <a href="#risk" class="remove-faq__nav-link">{{getRemoveString "remove-about-risk-title"}}</a>
+            </li>
+            <li class="remove-faq__nav-item">
+              <a href="#status" class="remove-faq__nav-link">{{getRemoveString "remove-about-status-title"}}</a>
+            </li>
+            <li class="remove-faq__nav-item">
+              <a href="#process" class="remove-faq__nav-link">{{getRemoveString "remove-about-process-title"}}</a>
+            </li>
+            <li class="remove-faq__nav-item">
+              <a href="#faq" class="remove-faq__nav-link">{{getRemoveString "remove-about-faq-title"}}</a>
+            </li>
+            <li class="remove-faq__nav-item">
+              <a href="#support" class="remove-faq__nav-link">{{getRemoveString "remove-about-support-title"}}</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="remove-faq__content-container">
+    <div class="mw-860">
+      <div id="pilot-details" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-faq-details"}}</h3>
+        <p>{{{ getRemoveString "remove-about-details-content" }}}</p>
+        <h4 class="remove-faq__subtitle">{{getRemoveString "remove-about-service-details-title"}}</h4>
+        <p>{{{getRemoveString "remove-about-service-details-content"}}}</p>
+      </div>
+      <div id="pilot-partner" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-partner-title"}}</h3>
+        <p>{{{getRemoveString "remove-about-partner-content"}}}</p>
+        <p><a href="https://www.thekanary.com/privacy_and_security" target="_blank" rel="noopener noreferrer">{{getRemoveString "remove-about-partner-security-link"}}</a></p>
+      </div>
+      <div id="data-brokers" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-sites-title"}}</h3>
+        <p>{{getRemoveString "remove-about-sites-content"}}</p>
+      </div>
+      <div id="risk" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-risk-title"}}</h3>
+        <p>{{getRemoveString "remove-about-risk-content"}}</p>
+        <ul class="remove-faq__risk-list">
+          <li>
+            <span class="bold">{{getRemoveString "remove-about-risk-low"}}</span>:
+            {{getRemoveString "remove-about-risk-low-content"}}
+          </li>
+          <li>
+            <span class="bold">{{getRemoveString "remove-about-risk-medium"}}</span>:
+            {{getRemoveString "remove-about-risk-medium-content"}}
+          </li>
+          <li>
+            <span class="bold">{{getRemoveString "remove-about-risk-high"}}</span>:
+            {{getRemoveString "remove-about-risk-high-content"}}
+          </li>
+        </ul>
+      </div>
+      <div id="status" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-status-title"}}</h3>
+        <p>{{{getRemoveString "remove-about-status-content"}}}</p>
+        <p><span class="bold">{{getRemoveString "remove-filter-in-progress"}}</span> {{getRemoveString "remove-about-status-in-progress"}}</p>
+        <p><span class="bold">{{getRemoveString "remove-filter-complete"}}</span> {{getRemoveString "remove-about-status-complete"}}</p>
+        <p><span class="bold">{{getRemoveString "remove-filter-blocked"}}</span> {{getRemoveString "remove-about-status-blocked"}}</p>
+      </div>
+      <div id="process" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-process-title"}}</h3>
+        <p>{{getRemoveString "remove-about-process-content"}}</p>
+        <p>{{getRemoveString "remove-about-process-content2"}}</p>
+      </div>
+      <div id="faq" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-faq-long-title"}}</h3>
+      </div>
+      <div class="remove-faq__questions-container">
+        <ul class="remove-faq__list">
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            <div class="remove-faq__title-container flx cntr space-between">
+              <h4 class="remove-faq__q-title">{{getRemoveString "remove-faq-sites-title"}}</h4>
+              <div class="remove-faq__toggle-container">
+                <button id="remove-faq-sites-title" class="remove-faq__toggle js-remove-faq-toggle" name="expand section">
+                  <span class="sr-only" for="remove-faq-sites-title">{{getRemoveString "remove-expand"}}</span>
+                </button>
+              </div>
+            </div>
+            <div class="remove-faq__details-container">
+              <p>We scan for sites that collect and sell your personal data like
+                names, addresses, and phone numbers. While the list changes frequently, you can <a href="https://www.thekanary.com/faq#heading1" rel="noopener noreferrer" target="_blank">visit Kanary's FAQ page</a> to see the most common sites.</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-pii-title" alt=(getRemoveString "remove-faq-pii-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getRemoveString "remove-faq-pii-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-how-found-title" alt=(getRemoveString "remove-faq-how-found-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getRemoveString "remove-faq-how-found-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-usage-title" alt=(getRemoveString "remove-faq-usage-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getRemoveString "remove-faq-usage-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-guarantee-title" alt=(getRemoveString "remove-faq-guarantee-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getRemoveString "remove-faq-guarantee-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-blocked-title" alt=(getRemoveString "remove-faq-blocked-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getRemoveString "remove-faq-blocked-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-search-title" alt=(getRemoveString "remove-faq-search-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{getRemoveString "remove-faq-search-content"}}</p>
+            </div>
+          </li>
+          <li class="remove-faq__list-item drop-shadow flx flx-col">
+            {{> data-removal/remove-faq-title altid="remove-faq-cancel-title" alt=(getRemoveString "remove-faq-cancel-title")}}
+            <div class="remove-faq__details-container">
+              <p>{{{getRemoveString "remove-faq-cancel-content"}}}</p>
+              <p><a href="/user/remove-kan">Click here to cancel</a></p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div id="support" class="remove-faq__anchor"></div>
+      <div class="remove-faq__content">
+        <h3 class="remove-faq__content-title">{{getRemoveString "remove-about-support-title"}}</h3>
+        <p><a href="https://support.mozilla.org/en-US/products/monitor-data-removal-pilot" target="_blank" rel="noreferrer noopener">{{getRemoveString "remove-about-support-kb-text"}}</a></p>
+        <p>{{{getRemoveString "remove-about-support-content"}}}</p>
+      </div>
+    </div>
+  </div>
+
+  {{> dashboards/remove-form-kanary-footer}}
+
+</main>

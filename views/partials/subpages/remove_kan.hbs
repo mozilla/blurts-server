@@ -1,0 +1,23 @@
+<main id="unsubscribe" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  <div class="mw-860 remove-kan__card-container remove-dashboard-card-container">
+    <div class="remove-dashboard-card">
+      <div class="remove-dashboard-card-border flx">
+        <div class="remove-dashboard-card-content flx">
+          <div class="private-relay-dashboard-card-copy remove-dashboard-card-copy">
+            <p class="remove-dashboard-card-body bold">{{getRemoveString "remove-kan-disclaimer-title"}}</p>
+            <p>{{{getRemoveString "remove-kan-disclaimer-content"}}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mw-860 flx flx-col remove-kan__container">
+    <h2 class="remove-enroll-title">{{getRemoveString "remove-kan"}}</h2>
+    <div class="flx">
+      <a class="remove-kan__btn-nevermind btn-grey btn-big" href="/user/remove-data?show_form=true">{{ getRemoveString "remove-kan-btn-nevermind" }}</a>
+      <button class="remove-kan remove-kan__btn-confirm btn-red-primary btn-big" data-form-action="remove-kan" data-csrf-token="{{ csrfToken }}" data-primary-token="{{ primaryToken }}" data-primary-hash="{{ primaryHash }}">{{ getRemoveString "remove-kan-btn-confirm" }}</button>
+    </div>
+    
+  </div>
+  {{> dashboards/remove-form-kanary-footer}}
+</main>
