@@ -9,7 +9,6 @@ function productEducation(type, args) {
   return {
     headingTxt: getString(`${productType}-video-headline`, args),
     videoSrc: AppConstants[`EDUCATION_VIDEO_URL_${type.toUpperCase()}`],
-    posterSrc: `${AppConstants.SERVER_URL}/img/education-vid-cover-${productType}.png`,
   };
 }
 
