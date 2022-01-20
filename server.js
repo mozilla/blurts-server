@@ -165,7 +165,7 @@ if (AppConstants.NODE_ENV === "heroku") {
 }
 
 const imgSrc = [
-  "'self' data:", //MH - data solves a console error related to CSP for data urls- could be useful for prod. monitor
+  "'self'",
   "https://www.google-analytics.com",
   "https://firefoxusercontent.com",
   "https://mozillausercontent.com/",
@@ -195,7 +195,7 @@ app.use(
       defaultSrc: ["'self'"],
       connectSrc: connectSrc,
       fontSrc: [
-        "'self' data:",
+        "'self'",
         "https://fonts.gstatic.com/",
         "https://code.cdn.mozilla.net/fonts/",
       ],
