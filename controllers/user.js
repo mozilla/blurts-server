@@ -770,7 +770,7 @@ async function getRemovalEnrolledPage(req, res) {
 
 async function handleRemovalOptout(req, res) {
   const sessionUser = req.user;
-  const optoutRes = await DB.removalOptout(sessionUser);
+  const optoutRes = await DB.removalOptout(sessionUser, true); //params: user, do opt out?
   if (!optoutRes || optoutRes !== 1) {
     const localeError = LocaleUtils.formatRemoveString("remove-error-optout");
     return res.status(400).json({
@@ -1884,24 +1884,6 @@ async function getRemovalStatsUser(req, res) {
 }
 
 async function createRemovalHashWaitlist(req, res) {
-  if (!req.user) {
-    console.error("no user");
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const user = req.user;
-
-  if (!user.primary_email.includes("@mozilla.com")) {
-    console.error("non mozilla email");
-    return res.status(404).json({
-      error:
-        "You must be signed in with a mozilla.com email address to access this page",
-    });
-  }
-
   let waitlistArray;
   const writeStream = fs.createWriteStream("hashed-waitlist.txt");
   fs.readFile("waitlist.txt", function (err, data) {
@@ -1935,6 +1917,45 @@ async function createRemovalHashWaitlist(req, res) {
     });
     writeStream.end();
   });
+}
+
+async function handleRemovalPilotMgmt(req, res) {
+  if (req.query && Object.entries(req.query).length > 0) {
+    const { email, optout } = req.query;
+    if (email && optout) {
+      let doOptOut;
+      if (optout === "true") {
+        doOptOut = true;
+      } else if (optout === "false") {
+        doOptOut = false;
+      } else {
+        return res.status(400).json({
+          error: "no valid optout status",
+        });
+      }
+      const removeResponse = DB.handleRemovalOptOutByEmail(email, doOptOut);
+      console.log("removeResponse", removeResponse);
+      const removeSuccess = Boolean(removeResponse);
+      console.log("removeSuccess", removeSuccess);
+      if (removeSuccess) {
+        return res.status(200).json({
+          msg: `${email} optout status set to ${doOptOut}`,
+        });
+      } else {
+        return res.status(400).json({
+          error: "no record found",
+        });
+      }
+    } else {
+      return res.status(400).json({
+        error: "no email or optout param",
+      });
+    }
+  } else {
+    return res.status(400).json({
+      error: "no query",
+    });
+  }
 }
 
 //END DATA REMOVAL SPECIFIC
@@ -1976,4 +1997,5 @@ module.exports = {
   getRemovalStatsUser,
   createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,
+  handleRemovalPilotMgmt,
 };

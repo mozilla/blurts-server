@@ -505,15 +505,31 @@ const DB = {
       });
   },
 
-  async removalOptout(subscriber) {
+  async removalOptout(subscriber, doOptOut = true) {
     const res = await knex("subscribers")
       .where({ id: subscriber.id })
       .update({
-        removal_optout: true,
+        removal_optout: doOptOut,
       })
       .catch((e) => {
         console.error("error updating optout status in db", e);
       });
+    return res;
+  },
+
+  async handleRemovalOptOutByEmail(email, doOptOut = true) {
+    console.log("handle removal optout");
+    const res = await knex("subscribers")
+      .where({ primary_email: email })
+      .update({
+        removal_optout: doOptOut,
+      })
+      .catch((e) => {
+        console.error("error updating optout status in db", e);
+        return false;
+      });
+
+    console.log("optout res", email, res);
     return res;
   },
 

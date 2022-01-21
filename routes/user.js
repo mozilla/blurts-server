@@ -10,6 +10,7 @@ const {
   requireSessionUser,
   requireRemovalUser,
   requireNoOptOut,
+  requireMozAdmin,
 } = require("../middleware");
 const {
   add,
@@ -43,6 +44,7 @@ const {
   postRemovalKan,
   getRemovalStatsUser,
   createRemovalHashWaitlist,
+  handleRemovalPilotMgmt,
   //END DATA REMOVAL SPECIFIC
 } = require("../controllers/user");
 
@@ -250,7 +252,15 @@ router.get(
   "/remove-hash-waitlist",
   urlEncodedParser,
   requireSessionUser,
+  requireMozAdmin,
   asyncMiddleware(createRemovalHashWaitlist)
+);
+router.get(
+  "/remove-pilot-mgmt",
+  urlEncodedParser,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalPilotMgmt)
 );
 
 //END DATA REMOVAL SPECIFIC
