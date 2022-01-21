@@ -1933,10 +1933,11 @@ async function handleRemovalPilotMgmt(req, res) {
           error: "no valid optout status",
         });
       }
-      const removeResponse = DB.handleRemovalOptOutByEmail(email, doOptOut);
-      console.log("removeResponse", removeResponse);
+      const removeResponse = await DB.handleRemovalOptOutByEmail(
+        email,
+        doOptOut
+      );
       const removeSuccess = Boolean(removeResponse);
-      console.log("removeSuccess", removeSuccess);
       if (removeSuccess) {
         return res.status(200).json({
           msg: `${email} optout status set to ${doOptOut}`,

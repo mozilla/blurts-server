@@ -307,6 +307,9 @@ async function requireMozAdmin(req, res, next) {
       error:
         "You must be signed in with a mozilla.com email address to access this page",
     });
+  } else {
+    next();
+    return;
   }
 }
 
