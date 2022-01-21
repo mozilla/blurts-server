@@ -518,7 +518,6 @@ const DB = {
   },
 
   async handleRemovalOptOutByEmail(email, doOptOut = true) {
-    console.log("handle removal optout");
     const res = await knex("subscribers")
       .where({ primary_email: email })
       .update({
@@ -528,8 +527,6 @@ const DB = {
         console.error("error updating optout status in db", e);
         return false;
       });
-
-    console.log("optout res", email, res);
     return res;
   },
 
