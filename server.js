@@ -161,7 +161,7 @@ if (AppConstants.NODE_ENV === "heroku") {
   app.locals.ENABLE_PONTOON_JS = true;
   SCRIPT_SOURCES.push(PONTOON_DOMAIN);
   STYLE_SOURCES.push(PONTOON_DOMAIN);
-  FRAME_ANCESTORS.push(PONTOON_DOMAIN);
+  FRAME_ANCESTORS[0] = PONTOON_DOMAIN; // other sources cannot be declared alongside 'none'
 }
 
 const imgSrc = [
