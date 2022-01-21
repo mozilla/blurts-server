@@ -1778,115 +1778,6 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
   }
 }
 
-async function calculateAverageResolutionTime(resolutionTimeArray) {
-  if (!resolutionTimeArray.length) {
-    return null;
-  }
-  const mean = await FormUtils.getMeanFromArray(resolutionTimeArray);
-  const variance = await FormUtils.getVarianceFromMean(
-    resolutionTimeArray,
-    mean
-  );
-  const stdDev = await FormUtils.getStdDevFromVariance(variance);
-  const avg = await FormUtils.getAverageFromArray(resolutionTimeArray);
-  const mode = await FormUtils.getModeFromArray(resolutionTimeArray);
-  return {
-    mean: FormUtils.numberWithDigits(mean, 2),
-    variance: FormUtils.numberWithDigits(variance, 2),
-    stdDev: FormUtils.numberWithDigits(stdDev, 4),
-    avg: FormUtils.numberWithDigits(avg, 2),
-    mode: FormUtils.numberWithDigits(mode, 2),
-  };
-}
-
-async function getRemoveRateByKid(kanary_id, aggregate = false) {
-  try {
-    const json = await got(
-      `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/matches/`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-        },
-      }
-    ).json();
-    if (json && json.length) {
-      const resultData = {
-        totalResults: json.length,
-        removedResults: 0,
-        resolutionPct: null,
-        resolutionTimeArray: [],
-        resolutionTime: null,
-      };
-      await json.forEach(async (removeResult) => {
-        if (removeResult.status === "COMPLETE") {
-          resultData.removedResults++;
-          const resolutionTime = await FormUtils.calculateDaysBetweenTimestamps(
-            new Date(removeResult.created_at),
-            new Date(removeResult.updated_at)
-          );
-
-          if (resolutionTime > 0) {
-            resultData.resolutionTimeArray.push(
-              FormUtils.numberWithDigits(resolutionTime, 2)
-            );
-          }
-        }
-      });
-
-      resultData.resolutionPct = FormUtils.calculatePercentage(
-        resultData.removedResults,
-        resultData.totalResults
-      );
-      if (!aggregate) {
-        //if calculating for a single individual, get their resolution time data here
-        const resolutionTimeData = await calculateAverageResolutionTime(
-          resultData.resolutionTimeArray
-        );
-        resultData.resolutionTimeData = resolutionTimeData;
-      }
-
-      return resultData;
-    } else {
-      return [];
-    }
-  } catch (error) {
-    console.error("there was an error getting matches for this account", error);
-    return null;
-  }
-}
-
-async function getRemovalStatsUser(req, res) {
-  //MH TODO: validate form data server side
-  if (!req.user) {
-    console.error("no user");
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const user = req.user;
-
-  if (!user.kid) {
-    console.error("no kid user", user);
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-kid");
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const userStats = await getRemoveRateByKid(user.kid, false);
-
-  res.render("dashboards", {
-    title: req.fluentFormat("Firefox Monitor"),
-    csrfToken: req.csrfToken(),
-    stats: userStats,
-    whichPartial: "dashboards/remove-all-stats",
-  });
-}
-
 async function createRemovalHashWaitlist(req, res) {
   if (!req.user) {
     console.error("no user");
@@ -1977,7 +1868,6 @@ module.exports = {
   handleRemovalAcctUpdate,
   getRemovalKan,
   postRemovalKan,
-  getRemovalStatsUser,
   createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,
 };

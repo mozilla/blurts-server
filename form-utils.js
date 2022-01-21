@@ -65,38 +65,6 @@ const FormUtils = {
       curDate.getDate() + numDays
     );
   },
-  getMeanFromArray: async (arr) => {
-    return arr.reduce((s, n) => s + n) / arr.length;
-  },
-  getVarianceFromMean: async (arr, mean) => {
-    return arr.reduce((s, n) => s + (n - mean) ** 2, 0) / (arr.length - 1);
-  },
-  getStdDevFromVariance: async (variance) => {
-    return Math.sqrt(variance);
-  },
-  getSumFromArray: async (arr) => {
-    return arr.reduce(function (a, b) {
-      return a + b;
-    });
-  },
-  getAverageFromArray: async (arr) => {
-    const sum = arr.reduce(function (a, b) {
-      return a + b;
-    });
-    return sum / arr.length;
-  },
-  getModeFromArray: async (arr) => {
-    const mode = Object.entries(
-      arr.reduce((previous, current) => {
-        if (previous[current] === undefined) previous[current] = 1;
-        else previous[current]++;
-        return previous;
-      }, {})
-    ).reduce((previous, current) =>
-      current[1] >= previous[1] ? current : previous
-    )[0];
-    return parseFloat(mode);
-  },
   canShowViaParams(doShow) {
     return ["dev", "heroku", "stage"].includes(AppConstants.NODE_ENV) && doShow;
   },
