@@ -926,6 +926,10 @@ async function getRemovalPage(req, res) {
     partialString = "dashboards/remove-dashboard";
   }
 
+  if (req.query.edit && req.query.edit === "true") {
+    REMOVAL_CONSTANTS.REMOVE_EDIT_INFO_ENABLED = true;
+  }
+
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
