@@ -23,7 +23,7 @@ describe("Firefox Monitor homepage", function () {
       browser.checkFullPageScreen("Home_Page", {
         hideElements: [$$(".breach-info-wrapper")],
       })
-    ).to.be.within(0, 24.99);
+    ).to.be.within(0, 33);
   });
 
   it("should load correct number of breaches from an email input", function () {
