@@ -62,7 +62,7 @@ const REMOVAL_CONSTANTS = {
       max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
     },
   ],
-  REMOVAL_PILOT_ENROLLMENT_END_DAY: 8, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PILOT_ENROLLMENT_END_DAY: 11, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
   REMOVAL_STEP: {
     AWAITING_SCAN: {
