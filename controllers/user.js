@@ -919,15 +919,14 @@ async function getRemovalPage(req, res) {
   }
 
   let partialString;
-
+  let canEdit = REMOVAL_CONSTANTS.REMOVE_EDIT_INFO_ENABLED;
+  if (req.query.edit && req.query.edit === "true") {
+    canEdit = true; //override via param
+  }
   if (show_form) {
     partialString = "dashboards/remove-form";
   } else {
     partialString = "dashboards/remove-dashboard";
-  }
-
-  if (req.query.edit && req.query.edit === "true") {
-    REMOVAL_CONSTANTS.REMOVE_EDIT_INFO_ENABLED = true;
   }
 
   res.render("dashboards", {
@@ -946,7 +945,7 @@ async function getRemovalPage(req, res) {
     experimentFlags,
     utmOverrides,
     //DATA REMOVAL SPECIFIC
-    allowEditRemovalInfo: REMOVAL_CONSTANTS.REMOVE_EDIT_INFO_ENABLED,
+    allowEditRemovalInfo: canEdit,
     doClientsideValidation: REMOVAL_CONSTANTS.REMOVE_CLIENT_VALIDATION_ENABLED,
   });
 }
