@@ -302,10 +302,9 @@ async function requireMozAdmin(req, res, next) {
   const user = req.user;
 
   if (!user?.primary_email.includes("@mozilla.com")) {
-    console.error("non mozilla email");
+    console.error("You are not authorized to access this page");
     return res.status(401).json({
-      error:
-        "You must be signed in with a mozilla.com email address to access this page",
+      error: "You are not authorized to access this page",
     });
   } else {
     next();
