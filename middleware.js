@@ -303,7 +303,7 @@ async function requireMozAdmin(req, res, next) {
 
   if (!user?.primary_email.includes("@mozilla.com")) {
     console.error("non mozilla email");
-    return res.status(404).json({
+    return res.status(401).json({
       error:
         "You must be signed in with a mozilla.com email address to access this page",
     });
