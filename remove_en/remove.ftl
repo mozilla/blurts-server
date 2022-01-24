@@ -177,6 +177,7 @@ remove-enroll-description = After you join the pilot, you’ll share some identi
   {-remove-brand-partner}. This info allows us to find data brokers and people search sites online that share it—and then get it removed. 
   This info will only be used for the duration of the pilot, and then deleted.
 remove-enroll-details-title = Key details about the {-product-name} { remove-pilot-title }
+remove-enroll-details0 = You must be a US resident to participate in the pilot.
 remove-enroll-details1 = The pilot service will be offered at no cost to you for 3 months.
 remove-enroll-details2 = The purpose of the pilot is to evaluate the service for a future paid offering. As such, participating 
   in the pilot will include additional communications and surveys about your experience. You are not required 
@@ -188,7 +189,7 @@ remove-enroll-terms-agreement1 = By checking this box you are accepting the
 remove-enroll-terms-link = Terms of Service
 remove-enroll-privacy-link = Privacy Notice
 remove-enroll-terms-agreement2 = for participating in the {-product-name} { remove-pilot-title }
-remove-enroll-submit = Continue to { remove-pilot-title }
+remove-enroll-submit = Join the Pilot
 
 # Data Removal Pilot Enrollment Full Page
 
