@@ -640,3 +640,10 @@ vpn-banner-cta = Hanki { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Laajenna
 # button to close panel
 vpn-banner-cta-close = Sulje
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Kuinka pidät sähköpostiosoitteesi salassa?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Oletko huolissasi julkisen Wi-Fi-verkon turvallisuudesta?
