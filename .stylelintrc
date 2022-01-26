@@ -1,9 +1,7 @@
 {
   "extends": [
-    "stylelint-config-standard"
-  ],
-  "plugins": [
-    "stylelint-scss"
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss"
   ],
   "ignoreFiles": [
     "public/scss/includes/fonts/**",
