@@ -65,7 +65,7 @@
     "npm-audit-ci-wrapper": "3.0.1",
     "onchange": "6.1.1",
     "redis-mock": "^0.56.3",
-    "stylelint": "^13.13.1",
+    "stylelint": "^14.3.0",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0",
     "wdio-docker-service": "2.4.0",
