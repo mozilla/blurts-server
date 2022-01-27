@@ -95,4 +95,6 @@ create-account = 계정 생성
 # More security products
 more-products-headline = 더 많은 우리의 제품으로 스스로를 보호하세요
 more-products-vpn = 모든 장치를 완전히 보호합니다.
+more-products-cta-vpn = { -product-name-vpn } 받기
 more-products-relay = 신분 보호를 위해 실제 이메일 주소를 숨기세요.
+more-products-cta-relay = { -product-name-relay } 받기

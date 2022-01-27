@@ -24,6 +24,9 @@ rec-pw-2 =
 rec-pw-3-subhead = 암호 관리자를 사용하여 어디서든 암호를 가져오기
 # Link title
 rec-pw-3-cta = { -brand-lockwise } 받기
+rec-pw-3-non-fx =
+    { -brand-lockwise }를 사용하여 휴대전화나 태블릿에서 
+    사용자의 비밀번호를 살펴보고 안전하게 접근할 수 있습니다.
 # Recommendation subhead
 rec-pw-4-subhead = 2단계 인증 (2FA) 설정
 # Link title
@@ -42,6 +45,7 @@ rec-cc-subhead = 신용 카드 명세서 모니터링
 rec-cc =
     신용카드에 이상한 청구가 있지는 않은지 확인하세요.
     신용 카드 발급 기관으로부터 새 카드를 발급받아야 할 지도 모릅니다.
+rec-email-cta = { -brand-relay } 써보기
 # Recommendation subhead
 rec-ip-subhead = IP 주소를 숨기는 서비스 사용
 # Link title
@@ -51,6 +55,9 @@ rec-moz-vpn-cta = { -brand-mozilla-vpn } 사용해보기
 rec-hist-pw-subhead = 비밀번호 재사용 방지
 # Link title
 rec-hist-pw-cta-fx = { -brand-name }에서 로그인 보기
+rec-hist-pw =
+    모든 계정에서 고유하고 강력한 암호를 사용하세요. 데이터 침해에 하나의
+    비밀번호가 유출된 경우 그 로그인 하나만 업데이트하면 됩니다.
 # Recommendation subhead
 rec-sec-qa-subhead = 보안 질문에 대한 고유한 답변 만들기
 # Recommendation subhead
