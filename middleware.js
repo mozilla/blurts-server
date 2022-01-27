@@ -301,15 +301,14 @@ async function requireNoOptOut(req, res, next) {
 async function requireMozAdmin(req, res, next) {
   const user = req.user;
 
-  if (!user?.primary_email.includes("@mozilla.com")) {
+  if (!user?.primary_email.endsWith("@mozilla.com")) {
     console.error("You are not authorized to access this page");
     return res.status(401).json({
       error: "You are not authorized to access this page",
     });
-  } else {
-    next();
-    return;
   }
+  next();
+  return;
 }
 
 module.exports = {

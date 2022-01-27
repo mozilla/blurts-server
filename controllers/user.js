@@ -1919,42 +1919,81 @@ async function createRemovalHashWaitlist(req, res) {
   });
 }
 
-async function handleRemovalPilotMgmt(req, res) {
-  if (req.query && Object.entries(req.query).length > 0) {
-    const { email, optout } = req.query;
-    if (email && optout) {
-      let doOptOut;
-      if (optout === "true") {
-        doOptOut = true;
-      } else if (optout === "false") {
-        doOptOut = false;
-      } else {
-        return res.status(400).json({
-          error: "no valid optout status",
-        });
-      }
-      const removeResponse = await DB.handleRemovalOptOutByEmail(
-        email,
-        doOptOut
-      );
-      const removeSuccess = Boolean(removeResponse);
-      if (removeSuccess) {
-        return res.status(200).json({
-          msg: `${email} optout status set to ${doOptOut}`,
-        });
-      } else {
-        return res.status(400).json({
-          error: "no record found",
-        });
-      }
-    } else {
-      return res.status(400).json({
-        error: "no email or optout param",
-      });
-    }
+async function getRemovalPilotMgmt(req, res) {
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor Pilot Management"),
+    csrfToken: req.csrfToken(),
+    whichPartial: "dashboards/remove-pilot-mgmt",
+  });
+}
+
+async function handleRemovalAdminGetKid(req, res) {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({
+      error: "no email provided",
+    });
+  }
+
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    email: Joi.string().email().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error,
+    });
+  }
+  const kid = await DB.getKidByAcct(email);
+  if (kid && kid.length) {
+    return res.status(200).json({
+      kid: parseInt(kid),
+    });
   } else {
     return res.status(400).json({
-      error: "no query",
+      error: "no match found in DB",
+    });
+  }
+}
+
+async function handleRemovalAdminCancel(req, res) {
+  let { kid } = req.body;
+  if (!kid) {
+    return res.status(400).json({
+      error: "no kid",
+    });
+  }
+  kid = parseInt(kid);
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    kid: Joi.number().integer().min(0).max(99999).required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error,
+    });
+  }
+
+  const deleteResponse = await removeKanaryAcct(kid);
+  if (!deleteResponse?.id) {
+    return res.status(400).json({
+      error: "no account found in the kanary API with this ID",
+    });
+  }
+  const dbCancelSuccess = await DB.mgmtCancelAccount(kid);
+  if (dbCancelSuccess) {
+    return res.status(200).json({
+      msg: "user account cancelled. Please reset the form to submit a new request",
+    });
+  } else {
+    return res.status(400).json({
+      error:
+        "kanary account removed, but there was an error finding account to delete in DB",
     });
   }
 }
@@ -1998,5 +2037,7 @@ module.exports = {
   getRemovalStatsUser,
   createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,
-  handleRemovalPilotMgmt,
+  getRemovalPilotMgmt,
+  handleRemovalAdminCancel,
+  handleRemovalAdminGetKid,
 };

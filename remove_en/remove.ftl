@@ -483,7 +483,7 @@ remove-error-no-kid-match = The {-remove-brand-partner} ID submitted for this us
 remove-error-update = Error submitting updates to {-remove-brand-partner}. Please try your request again.
 remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in {-remove-brand-partner}. Please contact support.
 remove-error-alpha = field allows only letters, dashes, and spaces
-remove-error-no-id = The {-brand-remove-partner} API did not return an ID
+remove-error-no-id = The {-remove-brand-partner} API did not return an ID
 remove-error-optout = There was an error opting out of the { remove-pilot-title }
 remove-error-no-session = No { -remove-brand-partner } session variable found
 

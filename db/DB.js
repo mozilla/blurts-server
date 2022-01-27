@@ -589,6 +589,31 @@ const DB = {
         console.error("error incrementing enrolled users", e);
       });
   },
+
+  async getKidByAcct(account) {
+    const res = await knex
+      .select("kid")
+      .from("subscribers")
+      .where("primary_email", account)
+      .pluck("kid"); //return only the values in an array not the object ({kid: xxxx})
+    return res;
+  },
+
+  async mgmtCancelAccount(kid) {
+    const res = await knex("subscribers")
+      .where({ kid: kid })
+      .update({
+        kid: null,
+        removal_would_pay: null,
+        removal_enrolled_time: null,
+        removal_optout: true, //MH TODO: set to false if we want to be able to debug re-enrollment
+      })
+      .catch((e) => {
+        console.error("error removing kanary id", e);
+      });
+    return res;
+  },
+
   //END DATA REMOVAL SPECIFIC
 };
 
