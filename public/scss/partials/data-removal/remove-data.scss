@@ -886,6 +886,9 @@
     input {
       padding: 4px 12px;
       margin-left: 10px;
+      &:only-child {
+        margin-left: 0;
+      }
     }
     input[type="submit"]{
       height: auto;

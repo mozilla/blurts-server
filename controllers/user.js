@@ -1924,6 +1924,13 @@ async function handleRemovalAdminOptin(req, res) {
   }
 }
 
+async function getRemovalAdminKidCount(req, res) {
+  const kidCount = await DB.mgmtGetKidCount();
+  return res.status(200).json({
+    count: parseInt(kidCount),
+  });
+}
+
 //END DATA REMOVAL SPECIFIC
 
 module.exports = {
@@ -1966,4 +1973,5 @@ module.exports = {
   handleRemovalAdminCancel,
   handleRemovalAdminGetKid,
   handleRemovalAdminOptin,
+  getRemovalAdminKidCount,
 };

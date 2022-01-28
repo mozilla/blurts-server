@@ -94,6 +94,23 @@
         </div>
       </form>
     </div>
+    <div class="remove-mgmt-form-container">
+      <h3>Pilot KID count</h3>
+      <form
+        id="remove-mgmt-getkidcount-form"
+        action="/user/remove-pilot-admin-getkidcount"
+      >
+        <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+        <div class="remove-mgmt-form-row flx cntr">
+          <input
+            id="remove-mgmt-getkidcount-submit"
+            class="js-mgmt-getkidcount-submit remove-mgmt-getkidcount-submit"
+            type="submit"
+            value="Get Count"
+          />
+        </div>
+      </form>
+    </div>
     <div class="remove-dashboard-form-error --general"></div>
     <div class="remove-mgmt-form-container">
       <a href="/user/remove-pilot-mgmt">Reset Form</a>

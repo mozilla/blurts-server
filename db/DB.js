@@ -626,6 +626,16 @@ const DB = {
     return res;
   },
 
+  async mgmtGetKidCount(email) {
+    const res = await knex("subscribers")
+      .count("kid")
+      .catch((e) => {
+        console.error("error getting count", e);
+      });
+    console.log(res);
+    return res[0].count;
+  },
+
   //END DATA REMOVAL SPECIFIC
 };
 
