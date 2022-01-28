@@ -375,7 +375,7 @@ remove-about-service-details-content = The pilot service will be offered at no c
 remove-about-sites-title = Data Brokers and People Search Sites Explained
 remove-about-sites-content = Data brokers and people search sites are third-party websites that collect and 
   expose personal data like names, addresses, and phone numbers. They collect and expose this personal data 
-  without the knowledge of the person to whom that data belogs or represents. Many of these sites even sell this data,
+  without the knowledge of the person to whom that data belongs or represents. Many of these sites even sell this data,
   leaving you open to violations of your privacy and security.
 
 remove-about-risk-title = Risk Level Explained
