@@ -375,7 +375,7 @@ remove-about-service-details-content = The pilot service will be offered at no c
 remove-about-sites-title = Data Brokers and People Search Sites Explained
 remove-about-sites-content = Data brokers and people search sites are third-party websites that collect and 
   expose personal data like names, addresses, and phone numbers. They collect and expose this personal data 
-  without the knowledge of the person to whom that data belogs or represents. Many of these sites even sell this data,
+  without the knowledge of the person to whom that data belongs or represents. Many of these sites even sell this data,
   leaving you open to violations of your privacy and security.
 
 remove-about-risk-title = Risk Level Explained
@@ -484,7 +484,7 @@ remove-error-no-kid-match = The {-remove-brand-partner} ID submitted for this us
 remove-error-update = Error submitting updates to {-remove-brand-partner}. Please try your request again.
 remove-error-kid-but-no-acct = An account is stored in our database, but does not exist in {-remove-brand-partner}. Please contact support.
 remove-error-alpha = field allows only letters, dashes, and spaces
-remove-error-no-id = The {-brand-remove-partner} API did not return an ID
+remove-error-no-id = The {-remove-brand-partner} API did not return an ID
 remove-error-optout = There was an error opting out of the { remove-pilot-title }
 remove-error-no-session = No { -remove-brand-partner } session variable found
 

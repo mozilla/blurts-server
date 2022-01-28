@@ -22,6 +22,9 @@ function initRemove() {
       case "remove-faq":
         initRemoveFAQ();
         break;
+      case "remove-pilot-mgmt":
+        initRemovePilotMgmt();
+        break;
       default:
         console.log("no page specific js required");
     }
@@ -43,6 +46,28 @@ function initRemoveForm() {
 
 function initRemoveDashboard() {
   addRemoveDashListeners();
+}
+
+function initRemovePilotMgmt() {
+  document
+    .getElementById("remove-mgmt-getkid-submit")
+    .addEventListener("click", handleMgmtGetKidClick);
+
+  document
+    .getElementById("remove-mgmt-cancel-submit")
+    .addEventListener("click", handleMgmtCancelClick);
+
+  document
+    .getElementById("remove-mgmt-optin-submit")
+    .addEventListener("click", handleOptinClick);
+
+  document
+    .getElementById("remove-mgmt-getcounts-submit")
+    .addEventListener("click", handleGetCountsClick);
+
+  document
+    .getElementById("remove-mgmt-enroll-count-submit")
+    .addEventListener("click", handleEnrollmentCountSubmit);
 }
 
 function addRemoveGeneralListeners() {
@@ -489,6 +514,154 @@ function onLeavingLinkClick(e) {
       $modalLink.href = "#"; //clear out any previous links
     }
   }
+}
+
+function handleMgmtGetKidClick(e) {
+  e.preventDefault();
+  const $form = e.target.form;
+  const formData = new FormData($form);
+  fetch($form.action, {
+    method: "POST",
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.kid) {
+        document.getElementById("remove-mgmt-cancel-kid").value = data.kid;
+      } else if (data.error) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
+      }
+    })
+    .catch((error) => {
+      console.error("error with form submission", error);
+    });
+}
+
+function handleOptinClick(e) {
+  e.preventDefault();
+  const $form = e.target.form;
+  const formData = new FormData($form);
+  fetch($form.action, {
+    method: "POST",
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.msg) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.msg;
+      } else if (data.error) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
+      }
+    })
+    .catch((error) => {
+      console.error("error with form submission", error);
+    });
+}
+
+function handleMgmtCancelClick(e) {
+  e.preventDefault();
+  const $form = e.target.form;
+  const formData = new FormData($form);
+  fetch($form.action, {
+    method: "POST",
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.msg) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.msg;
+      } else if (data.error) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
+      }
+    })
+    .catch((error) => {
+      console.error("error with form submission", error);
+    });
+}
+
+function handleGetCountsClick(e) {
+  e.preventDefault();
+  const $form = e.target.form;
+  const formData = new FormData($form);
+  fetch($form.action, {
+    method: "POST",
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.msg) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.msg;
+      } else if (data.error) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
+      }
+    })
+    .catch((error) => {
+      console.error("error getting ID count from database", error);
+    });
+}
+
+function handleEnrollmentCountSubmit(e) {
+  e.preventDefault();
+  const $form = e.target.form;
+  const formData = new FormData($form);
+  fetch($form.action, {
+    method: "POST",
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.msg) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.msg;
+      } else if (data.error) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
+      }
+    })
+    .catch((error) => {
+      console.error("error getting ID count from database", error);
+    });
 }
 
 window.onload = function () {

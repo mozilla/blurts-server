@@ -770,7 +770,7 @@ async function getRemovalEnrolledPage(req, res) {
 
 async function handleRemovalOptout(req, res) {
   const sessionUser = req.user;
-  const optoutRes = await DB.removalOptout(sessionUser);
+  const optoutRes = await DB.removalOptout(sessionUser, true); //params: user, do opt out?
   if (!optoutRes || optoutRes !== 1) {
     const localeError = LocaleUtils.formatRemoveString("remove-error-optout");
     return res.status(400).json({
@@ -1778,29 +1778,11 @@ async function handleKanaryUpdateSubmission(memberInfo, id) {
 }
 
 async function createRemovalHashWaitlist(req, res) {
-  if (!req.user) {
-    console.error("no user");
-    const localeError = LocaleUtils.formatRemoveString("remove-error-no-user");
-    return res.status(404).json({
-      error: localeError,
-    });
-  }
-
-  const user = req.user;
-
-  if (!user.primary_email.includes("@mozilla.com")) {
-    console.error("non mozilla email");
-    return res.status(404).json({
-      error:
-        "You must be signed in with a mozilla.com email address to access this page",
-    });
-  }
-
   let waitlistArray;
   const writeStream = fs.createWriteStream("hashed-waitlist.txt");
   fs.readFile("waitlist.txt", function (err, data) {
     if (err) {
-      console.log("error reading waitlist file", err);
+      console.error("error reading waitlist file", err);
       return res.status(400).json({
         error: "error reading waitlist file",
       });
@@ -1829,6 +1811,175 @@ async function createRemovalHashWaitlist(req, res) {
     });
     writeStream.end();
   });
+}
+
+async function getRemovalPilotMgmt(req, res) {
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor Pilot Management"),
+    csrfToken: req.csrfToken(),
+    whichPartial: "dashboards/remove-pilot-mgmt",
+  });
+}
+
+async function handleRemovalAdminGetKid(req, res) {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({
+      error: "no email provided",
+    });
+  }
+
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    email: Joi.string().email().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].message,
+    });
+  }
+  const kid = await DB.getKidByAcct(email);
+  if (kid && kid.length) {
+    return res.status(200).json({
+      kid: parseInt(kid),
+    });
+  } else {
+    return res.status(400).json({
+      error: "no match found in DB",
+    });
+  }
+}
+
+async function handleRemovalAdminCancel(req, res) {
+  let { kid } = req.body;
+  if (!kid) {
+    return res.status(400).json({
+      error: "No valid Kanary ID provided",
+    });
+  }
+  kid = parseInt(kid);
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    kid: Joi.number().integer().min(0).max(99999).required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].message,
+    });
+  }
+
+  const deleteResponse = await removeKanaryAcct(kid);
+  if (!deleteResponse?.id) {
+    return res.status(400).json({
+      error: "no account found in the kanary API with this ID",
+    });
+  }
+  const dbCancelSuccess = await DB.mgmtCancelAccount(kid);
+  if (dbCancelSuccess) {
+    return res.status(200).json({
+      msg: "user account cancelled. Please reset the form to submit a new request",
+    });
+  } else {
+    return res.status(400).json({
+      error:
+        "kanary account removed, but there was an error finding account to delete in DB",
+    });
+  }
+}
+
+async function handleRemovalAdminOptin(req, res) {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({
+      error: "no email provided",
+    });
+  }
+
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    email: Joi.string().email().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].message,
+    });
+  }
+  const dbOptinSuccess = await DB.mgmtOptin(email);
+  if (dbOptinSuccess) {
+    return res.status(200).json({
+      msg: "user optin success. Please reset the form to submit a new request",
+    });
+  } else {
+    return res.status(400).json({
+      error: "could not reset optin status for this user",
+    });
+  }
+}
+
+async function getRemovalAdminCounts(req, res) {
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].msg,
+    });
+  }
+
+  const counts = await DB.mgmtGetCounts();
+
+  if (!counts.numKids || !counts.numEnrollees) {
+    return res.status(400).json({
+      error: "error getting KIDs or enrollees",
+    });
+  }
+  return res.status(200).json({
+    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees} `,
+  });
+}
+
+async function setRemovalAdminEnrollmentCount(req, res) {
+  const { count } = req.body;
+
+  if (!count) {
+    return res.status(400).json({
+      error: "no count provided",
+    });
+  }
+
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    count: Joi.number().integer().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].message,
+    });
+  }
+
+  const setCountSuccess = await DB.mgmtSetEnrollmentCount(parseInt(count));
+
+  if (setCountSuccess) {
+    return res.status(200).json({
+      msg: "Enrollment count set successfully",
+    });
+  } else {
+    return res.status(400).json({
+      error: "could not update the enrollment count",
+    });
+  }
 }
 
 //END DATA REMOVAL SPECIFIC
@@ -1869,4 +2020,10 @@ module.exports = {
   postRemovalKan,
   createRemovalHashWaitlist,
   checkIfOnRemovalPilotList,
+  getRemovalPilotMgmt,
+  handleRemovalAdminCancel,
+  handleRemovalAdminGetKid,
+  handleRemovalAdminOptin,
+  getRemovalAdminCounts,
+  setRemovalAdminEnrollmentCount,
 };

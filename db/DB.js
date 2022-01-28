@@ -505,14 +505,27 @@ const DB = {
       });
   },
 
-  async removalOptout(subscriber) {
+  async removalOptout(subscriber, doOptOut = true) {
     const res = await knex("subscribers")
       .where({ id: subscriber.id })
       .update({
-        removal_optout: true,
+        removal_optout: doOptOut,
       })
       .catch((e) => {
         console.error("error updating optout status in db", e);
+      });
+    return res;
+  },
+
+  async handleRemovalOptOutByEmail(email, doOptOut = true) {
+    const res = await knex("subscribers")
+      .where({ primary_email: email })
+      .update({
+        removal_optout: doOptOut,
+      })
+      .catch((e) => {
+        console.error("error updating optout status in db", e);
+        return false;
       });
     return res;
   },
@@ -576,6 +589,85 @@ const DB = {
         console.error("error incrementing enrolled users", e);
       });
   },
+
+  async getKidByAcct(account) {
+    const res = await knex
+      .select("kid")
+      .from("subscribers")
+      .where("primary_email", account)
+      .pluck("kid"); //return only the values in an array not the object ({kid: xxxx})
+    return res;
+  },
+
+  async mgmtCancelAccount(kid) {
+    const res = await knex("subscribers")
+      .where({ kid: kid })
+      .update({
+        kid: null,
+        removal_would_pay: null,
+        removal_enrolled_time: null,
+        removal_optout: true,
+      })
+      .catch((e) => {
+        console.error("error removing kanary id", e);
+      });
+    return res;
+  },
+
+  async mgmtOptin(email) {
+    const res = await knex("subscribers")
+      .where({ primary_email: email })
+      .update({
+        removal_optout: false,
+      })
+      .catch((e) => {
+        console.error("error removing kanary id", e);
+      });
+    return res;
+  },
+
+  async mgmtGetCounts() {
+    let numKids, numEnrollees;
+
+    const res = await knex("subscribers")
+      .count("kid")
+      .catch((e) => {
+        console.error("error getting count", e);
+      });
+    if (res.length && res[0].count) {
+      numKids = parseInt(res[0].count);
+    }
+
+    const enrollRes = await knex("removal_pilot")
+      .select("enrolled_users")
+      .where("name", REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .pluck("enrolled_users")
+      .catch((e) => {
+        console.error("error getting enrolled users", e);
+      });
+
+    if (enrollRes) {
+      numEnrollees = parseInt(enrollRes);
+    }
+
+    return {
+      numKids: numKids,
+      numEnrollees: numEnrollees,
+    };
+  },
+
+  async mgmtSetEnrollmentCount(count) {
+    const res = await knex("removal_pilot")
+      .where({ name: REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP })
+      .update({
+        enrolled_users: count,
+      })
+      .catch((e) => {
+        console.error("error updating count", e);
+      });
+    return res;
+  },
+
   //END DATA REMOVAL SPECIFIC
 };
 

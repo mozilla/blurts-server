@@ -1,0 +1,147 @@
+<main
+  id="remove-pilot-mgmt"
+  class="remove-page js-dashboard dashboard clear-header flx flx-col"
+  data-page-label="Data Removal Pilot Management"
+>
+  <div class="mw-860 flx flx-col remove-mgmt-container">
+    <h2>Pilot Management</h2>
+    <div class="remove-dashboard-form-error --general"></div>
+    <div class="remove-mgmt-form-container">
+      <h3>Get ID by E-Mail</h3>
+      <form
+        id="remove-mgmt-getkid-form"
+        action="/user/remove-pilot-admin-get-kid"
+        method="post"
+      >
+        <div class="remove-mgmt-form-row flx cntr">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+          <label
+            for="remove-mgmt-email"
+            class="remove-mgmt-email-label input-group-label required"
+          >Email</label>
+          <input
+            id="remove-mgmt-email"
+            class="remove-mgmt-email"
+            type="text"
+            name="email"
+            required
+          />
+          <input
+            id="remove-mgmt-getkid-submit"
+            class="js-mgmt-getkid-submit remove-mgmt-getkid-submit"
+            type="submit"
+            value="Get ID"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="remove-mgmt-form-container">
+      <h3>Cancel Account</h3>
+      <form
+        id="remove-mgmt-getkid-form"
+        action="/user/remove-pilot-admin-cancel"
+      >
+        <div class="remove-mgmt-form-row flx cntr">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+          <label
+            for="remove-mgmt-cancel-kid"
+            class="remove-mgmt-cancel-kid-label input-group-label required"
+          >Kanary ID</label>
+          <input
+            id="remove-mgmt-cancel-kid"
+            class="remove-mgmt-cancel-kid"
+            type="number"
+            name="kid"
+            required
+          />
+          <input
+            id="remove-mgmt-cancel-submit"
+            class="js-mgmt-cancel-submit remove-mgmt-cancel-submit"
+            type="submit"
+            value="Cancel Account"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="remove-mgmt-form-container">
+      <h3>Reset Optout Status</h3>
+      <form
+        id="remove-mgmt-optin-form"
+        action="/user/remove-pilot-admin-optin"
+      >
+        <div class="remove-mgmt-form-row flx cntr">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+          <label
+            for="remove-mgmt-optin-email"
+            class="remove-mgmt-optin-email-label input-group-label required"
+          >E-mail</label>
+          <input
+            id="remove-mgmt-optin-email"
+            class="remove-mgmt-optin-email"
+            type="text"
+            name="email"
+            required
+          />
+          <input
+            id="remove-mgmt-optin-submit"
+            class="js-mgmt-optin-submit remove-mgmt-optin-submit"
+            type="submit"
+            value="Reset Status"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="remove-mgmt-form-container">
+      <h3>Pilot Counts</h3>
+      <form
+        id="remove-mgmt-getcounts-form"
+        action="/user/remove-pilot-admin-getkidcount"
+      >
+        <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+        <div class="remove-mgmt-form-row flx cntr">
+          <input
+            id="remove-mgmt-getcounts-submit"
+            class="js-mgmt-getcounts-submit remove-mgmt-getcounts-submit"
+            type="submit"
+            value="Get Counts"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="remove-mgmt-form-container">
+      <h3>Set Enrollment Count</h3>
+      <form
+        id="remove-mgmt-setcount-form"
+        action="/user/remove-pilot-admin-set-enrollment"
+      >
+        <div class="remove-mgmt-form-row flx cntr">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+          <label
+            for="remove-mgmt-count"
+            class="remove-mgmt-count-label input-group-label required"
+          >Enrollment Count</label>
+          <input
+            id="remove-mgmt-count"
+            class="remove-mgmt-count"
+            type="number"
+            name="count"
+            required
+          />
+          <input
+            id="remove-mgmt-enroll-count-submit"
+            class="js-mgmt-count-submit remove-mgmt-enroll-count-submit"
+            type="submit"
+            value="Set Count"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="remove-mgmt-form-container">
+      <a class="remove-mgmt-form-reset btn btn-small btn-blue" href="/user/remove-pilot-mgmt">Reset Form</a>
+    </div>
+  </div>
+</main>

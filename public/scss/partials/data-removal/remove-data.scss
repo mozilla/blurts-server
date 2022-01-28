@@ -877,3 +877,28 @@
 .remove-page.dashboard.clear-header {
   background-color: transparent;
 }
+
+.remove-mgmt {
+  &-container {
+    margin-bottom: 40px;
+  }
+  &-form-container {
+    margin-top: 20px;
+  }
+  &-form-row {
+    input {
+      padding: 4px 12px;
+      margin-left: 10px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+    input[type="submit"]{
+      height: auto;
+      flex: 0;
+    }
+  }
+  &-form-reset {
+    display: inline-flex;
+  }
+}

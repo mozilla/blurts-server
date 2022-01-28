@@ -10,6 +10,7 @@ const {
   requireSessionUser,
   requireRemovalUser,
   requireNoOptOut,
+  requireMozAdmin,
 } = require("../middleware");
 const {
   add,
@@ -42,6 +43,12 @@ const {
   getRemovalKan,
   postRemovalKan,
   createRemovalHashWaitlist,
+  getRemovalPilotMgmt,
+  handleRemovalAdminCancel,
+  handleRemovalAdminGetKid,
+  handleRemovalAdminOptin,
+  getRemovalAdminCounts,
+  setRemovalAdminEnrollmentCount,
   //END DATA REMOVAL SPECIFIC
 } = require("../controllers/user");
 
@@ -240,8 +247,70 @@ router.get(
   "/remove-hash-waitlist",
   urlEncodedParser,
   requireSessionUser,
+  requireMozAdmin,
   asyncMiddleware(createRemovalHashWaitlist)
 );
+router.get(
+  "/remove-pilot-mgmt",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(getRemovalPilotMgmt)
+);
+router.post(
+  "/remove-pilot-admin-get-kid",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalAdminGetKid)
+);
+router.post(
+  "/remove-pilot-admin-cancel",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalAdminCancel)
+);
+router.post(
+  "/remove-pilot-admin-cancel",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalAdminCancel)
+);
+router.post(
+  "/remove-pilot-admin-optin",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalAdminOptin)
+);
+
+router.post(
+  "/remove-pilot-admin-getkidcount",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(getRemovalAdminCounts)
+);
+
+router.post(
+  "/remove-pilot-admin-set-enrollment",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(setRemovalAdminEnrollmentCount)
+);
+
+
+
 
 //END DATA REMOVAL SPECIFIC
 
