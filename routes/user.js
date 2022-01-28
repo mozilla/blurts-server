@@ -47,7 +47,8 @@ const {
   handleRemovalAdminCancel,
   handleRemovalAdminGetKid,
   handleRemovalAdminOptin,
-  getRemovalAdminKidCount,
+  getRemovalAdminCounts,
+  setRemovalAdminEnrollmentCount,
   //END DATA REMOVAL SPECIFIC
 } = require("../controllers/user");
 
@@ -296,7 +297,16 @@ router.post(
   csrfProtection,
   requireSessionUser,
   requireMozAdmin,
-  asyncMiddleware(getRemovalAdminKidCount)
+  asyncMiddleware(getRemovalAdminCounts)
+);
+
+router.post(
+  "/remove-pilot-admin-set-enrollment",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(setRemovalAdminEnrollmentCount)
 );
 
 

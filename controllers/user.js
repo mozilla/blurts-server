@@ -1782,7 +1782,7 @@ async function createRemovalHashWaitlist(req, res) {
   const writeStream = fs.createWriteStream("hashed-waitlist.txt");
   fs.readFile("waitlist.txt", function (err, data) {
     if (err) {
-      console.log("error reading waitlist file", err);
+      console.error("error reading waitlist file", err);
       return res.status(400).json({
         error: "error reading waitlist file",
       });
@@ -1838,7 +1838,7 @@ async function handleRemovalAdminGetKid(req, res) {
   const validationResults = removalAdminSchema.validate(req.body);
   if (validationResults.error) {
     return res.status(400).json({
-      error: validationResults.error,
+      error: validationResults.error.details[0].message,
     });
   }
   const kid = await DB.getKidByAcct(email);
@@ -1857,7 +1857,7 @@ async function handleRemovalAdminCancel(req, res) {
   let { kid } = req.body;
   if (!kid) {
     return res.status(400).json({
-      error: "no kid",
+      error: "No valid Kanary ID provided",
     });
   }
   kid = parseInt(kid);
@@ -1869,7 +1869,7 @@ async function handleRemovalAdminCancel(req, res) {
   const validationResults = removalAdminSchema.validate(req.body);
   if (validationResults.error) {
     return res.status(400).json({
-      error: validationResults.error,
+      error: validationResults.error.details[0].message,
     });
   }
 
@@ -1909,7 +1909,7 @@ async function handleRemovalAdminOptin(req, res) {
   const validationResults = removalAdminSchema.validate(req.body);
   if (validationResults.error) {
     return res.status(400).json({
-      error: validationResults.error,
+      error: validationResults.error.details[0].message,
     });
   }
   const dbOptinSuccess = await DB.mgmtOptin(email);
@@ -1924,11 +1924,62 @@ async function handleRemovalAdminOptin(req, res) {
   }
 }
 
-async function getRemovalAdminKidCount(req, res) {
-  const kidCount = await DB.mgmtGetKidCount();
-  return res.status(200).json({
-    count: parseInt(kidCount),
+async function getRemovalAdminCounts(req, res) {
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
   });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].msg,
+    });
+  }
+
+  const counts = await DB.mgmtGetCounts();
+  
+  if (!counts.numKids || !counts.numEnrollees) {
+    return res.status(400).json({
+      error: "error getting KIDs or enrollees",
+    });
+  }
+  return res.status(200).json({
+    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees} `,
+  });
+}
+
+async function setRemovalAdminEnrollmentCount(req, res) {
+  const { count } = req.body;
+
+  if (!count) {
+    return res.status(400).json({
+      error: "no count provided",
+    });
+  }
+
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    count: Joi.number().integer().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error.details[0].message,
+    });
+  }
+
+  const setCountSuccess = await DB.mgmtSetEnrollmentCount(parseInt(count));
+
+  if (setCountSuccess) {
+    return res.status(200).json({
+      msg: "Enrollment count set successfully",
+    });
+  } else {
+    return res.status(400).json({
+      error: "could not update the enrollment count",
+    });
+  }
 }
 
 //END DATA REMOVAL SPECIFIC
@@ -1973,5 +2024,6 @@ module.exports = {
   handleRemovalAdminCancel,
   handleRemovalAdminGetKid,
   handleRemovalAdminOptin,
-  getRemovalAdminKidCount,
+  getRemovalAdminCounts,
+  setRemovalAdminEnrollmentCount,
 };

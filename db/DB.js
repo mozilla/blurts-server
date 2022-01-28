@@ -626,14 +626,46 @@ const DB = {
     return res;
   },
 
-  async mgmtGetKidCount(email) {
+  async mgmtGetCounts() {
+    let numKids, numEnrollees;
+
     const res = await knex("subscribers")
       .count("kid")
       .catch((e) => {
         console.error("error getting count", e);
       });
-    console.log(res);
-    return res[0].count;
+    if (res.length && res[0].count) {
+      numKids = parseInt(res[0].count);
+    }
+
+    const enrollRes = await knex("removal_pilot")
+      .select("enrolled_users")
+      .where("name", REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP)
+      .pluck("enrolled_users")
+      .catch((e) => {
+        console.error("error getting enrolled users", e);
+      });
+
+    if (enrollRes) {
+      numEnrollees = parseInt(enrollRes);
+    }
+
+    return {
+      numKids: numKids,
+      numEnrollees: numEnrollees,
+    };
+  },
+
+  async mgmtSetEnrollmentCount(count) {
+    const res = await knex("removal_pilot")
+      .where({ name: REMOVAL_CONSTANTS.REMOVAL_PILOT_GROUP })
+      .update({
+        enrolled_users: count,
+      })
+      .catch((e) => {
+        console.error("error updating count", e);
+      });
+    return res;
   },
 
   //END DATA REMOVAL SPECIFIC

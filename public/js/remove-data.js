@@ -62,8 +62,12 @@ function initRemovePilotMgmt() {
     .addEventListener("click", handleOptinClick);
 
   document
-    .getElementById("remove-mgmt-getkidcount-submit")
-    .addEventListener("click", handleGetKidCountClick);
+    .getElementById("remove-mgmt-getcounts-submit")
+    .addEventListener("click", handleGetCountsClick);
+
+  document
+    .getElementById("remove-mgmt-enroll-count-submit")
+    .addEventListener("click", handleEnrollmentCountSubmit);
 }
 
 function addRemoveGeneralListeners() {
@@ -600,7 +604,7 @@ function handleMgmtCancelClick(e) {
     });
 }
 
-function handleGetKidCountClick(e) {
+function handleGetCountsClick(e) {
   e.preventDefault();
   const $form = e.target.form;
   const formData = new FormData($form);
@@ -615,10 +619,40 @@ function handleGetKidCountClick(e) {
       return resp.json(); // or resp.text() or whatever the server sends
     })
     .then((data) => {
-      if (data.count) {
+      if (data.msg) {
         document.querySelector(
           ".remove-dashboard-form-error.--general"
-        ).innerText = `Kanary IDs: ${data.count}`;
+        ).innerText = data.msg;
+      } else if (data.error) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.error;
+      }
+    })
+    .catch((error) => {
+      console.error("error getting ID count from database", error);
+    });
+}
+
+function handleEnrollmentCountSubmit(e) {
+  e.preventDefault();
+  const $form = e.target.form;
+  const formData = new FormData($form);
+  fetch($form.action, {
+    method: "POST",
+    headers: {
+      "CSRF-Token": formData.get("_csrf"), // <-- is the csrf token as a header
+    },
+    body: new URLSearchParams(formData),
+  })
+    .then((resp) => {
+      return resp.json(); // or resp.text() or whatever the server sends
+    })
+    .then((data) => {
+      if (data.msg) {
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = data.msg;
       } else if (data.error) {
         document.querySelector(
           ".remove-dashboard-form-error.--general"
