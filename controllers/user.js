@@ -1998,6 +1998,38 @@ async function handleRemovalAdminCancel(req, res) {
   }
 }
 
+async function handleRemovalAdminOptin(req, res) {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({
+      error: "no email provided",
+    });
+  }
+
+  const removalAdminSchema = Joi.object({
+    _csrf: Joi.string().required(),
+    email: Joi.string().email().required(),
+  });
+
+  const validationResults = removalAdminSchema.validate(req.body);
+  if (validationResults.error) {
+    return res.status(400).json({
+      error: validationResults.error,
+    });
+  }
+  const dbOptinSuccess = await DB.mgmtOptin(email);
+  if (dbOptinSuccess) {
+    return res.status(200).json({
+      msg: "user optin success. Please reset the form to submit a new request",
+    });
+  } else {
+    return res.status(400).json({
+      error: "could not reset optin status for this user",
+    });
+  }
+}
+
 //END DATA REMOVAL SPECIFIC
 
 module.exports = {
@@ -2040,4 +2072,5 @@ module.exports = {
   getRemovalPilotMgmt,
   handleRemovalAdminCancel,
   handleRemovalAdminGetKid,
+  handleRemovalAdminOptin,
 };

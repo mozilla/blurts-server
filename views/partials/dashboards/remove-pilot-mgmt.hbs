@@ -7,7 +7,7 @@
     <h2>Pilot Management</h2>
 
     <div class="remove-mgmt-form-container">
-      <h3>Get KID by E-Mail</h3>
+      <h3>Get ID by E-Mail</h3>
       <form
         id="remove-mgmt-getkid-form"
         action="/user/remove-pilot-admin-get-kid"
@@ -31,7 +31,7 @@
             id="remove-mgmt-getkid-submit"
             class="js-mgmt-getkid-submit remove-mgmt-getkid-submit"
             type="submit"
-            value="Get KID"
+            value="Get ID"
           />
         </div>
       </form>
@@ -60,7 +60,36 @@
             id="remove-mgmt-cancel-submit"
             class="js-mgmt-cancel-submit remove-mgmt-cancel-submit"
             type="submit"
-            value="Cancel Account"
+            value="Cancel"
+          />
+        </div>
+      </form>
+    </div>
+    <div class="remove-mgmt-form-container">
+      <h3>Reset Optout Status</h3>
+      <form
+        id="remove-mgmt-optin-form"
+        action="/user/remove-pilot-admin-optin"
+      >
+        <div class="remove-mgmt-form-row flx cntr">
+          <input type="hidden" name="_csrf" value="{{csrfToken}}" />
+
+          <label
+            for="remove-mgmt-optin-email"
+            class="remove-mgmt-optin-email-label input-group-label required"
+          >E-mail</label>
+          <input
+            id="remove-mgmt-optin-email"
+            class="remove-mgmt-optin-email"
+            type="text"
+            name="email"
+            required
+          />
+          <input
+            id="remove-mgmt-optin-submit"
+            class="js-mgmt-optin-submit remove-mgmt-optin-submit"
+            type="submit"
+            value="Reset"
           />
         </div>
       </form>

@@ -47,6 +47,7 @@ const {
   getRemovalPilotMgmt,
   handleRemovalAdminCancel,
   handleRemovalAdminGetKid,
+  handleRemovalAdminOptin,
   //END DATA REMOVAL SPECIFIC
 } = require("../controllers/user");
 
@@ -281,6 +282,23 @@ router.post(
   requireMozAdmin,
   asyncMiddleware(handleRemovalAdminCancel)
 );
+router.post(
+  "/remove-pilot-admin-cancel",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalAdminCancel)
+);
+router.post(
+  "/remove-pilot-admin-optin",
+  urlEncodedParser,
+  csrfProtection,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(handleRemovalAdminOptin)
+);
+
 
 //END DATA REMOVAL SPECIFIC
 

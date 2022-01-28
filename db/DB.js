@@ -606,7 +606,19 @@ const DB = {
         kid: null,
         removal_would_pay: null,
         removal_enrolled_time: null,
-        removal_optout: true, //MH TODO: set to false if we want to be able to debug re-enrollment
+        removal_optout: true,
+      })
+      .catch((e) => {
+        console.error("error removing kanary id", e);
+      });
+    return res;
+  },
+
+  async mgmtOptin(email) {
+    const res = await knex("subscribers")
+      .where({ primary_email: email })
+      .update({
+        removal_optout: false,
       })
       .catch((e) => {
         console.error("error removing kanary id", e);
