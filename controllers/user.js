@@ -1937,7 +1937,7 @@ async function getRemovalAdminCounts(req, res) {
   }
 
   const counts = await DB.mgmtGetCounts();
-  
+
   if (!counts.numKids || !counts.numEnrollees) {
     return res.status(400).json({
       error: "error getting KIDs or enrollees",
