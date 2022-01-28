@@ -48,11 +48,6 @@ function initRemoveDashboard() {
   addRemoveDashListeners();
 }
 
-<<<<<<< HEAD
-function initRemoveStats() {
-  initStatsChart();
-}
-
 function initRemovePilotMgmt() {
   document
     .getElementById("remove-mgmt-getkid-submit")
@@ -67,8 +62,6 @@ function initRemovePilotMgmt() {
     .addEventListener("click", handleOptinClick);
 }
 
-=======
->>>>>>> main-kanary
 function addRemoveGeneralListeners() {
   document
     .querySelectorAll(".info-trigger, .modal__close-footer")
@@ -515,63 +508,6 @@ function onLeavingLinkClick(e) {
   }
 }
 
-<<<<<<< HEAD
-function initStatsChart() {
-  const $chartEls = document.querySelectorAll(".remove-allstats-time-item");
-  const chartData = [];
-  const chartLabels = [];
-  $chartEls.forEach(($chartEl) => {
-    const label = $chartEl.dataset.label;
-    const val = parseFloat($chartEl.dataset.val);
-    chartData.push(val);
-    chartLabels.push(label);
-  });
-  const chartOptions = {
-    series: [
-      {
-        data: chartData,
-      },
-    ],
-    chart: {
-      type: "bar",
-      toolbar: {
-        show: false,
-      },
-    },
-    plotOptions: {
-      bar: {
-        borderRadius: 4,
-        horizontal: false,
-      },
-    },
-    legend: {
-      show: false,
-    },
-    tooltip: {
-      enabled: false,
-    },
-    xaxis: {
-      categories: chartLabels,
-    },
-    yaxis: {
-      labels: {
-        formatter: function (val, index) {
-          return parseInt(val);
-        },
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-  };
-  //eslint-disable-next-line
-  const chart = new ApexCharts(
-    document.querySelector(".remove-allstats-chart-container"),
-    chartOptions
-  );
-  chart.render();
-}
-
 function handleMgmtGetKidClick(e) {
   e.preventDefault();
   const $form = e.target.form;
@@ -660,8 +596,6 @@ function handleMgmtCancelClick(e) {
     });
 }
 
-=======
->>>>>>> main-kanary
 window.onload = function () {
   initRemove();
 };
