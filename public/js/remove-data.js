@@ -22,9 +22,6 @@ function initRemove() {
       case "remove-faq":
         initRemoveFAQ();
         break;
-      case "remove-allstats":
-        initRemoveStats();
-        break;
       case "remove-pilot-mgmt":
         initRemovePilotMgmt();
         break;
@@ -51,6 +48,7 @@ function initRemoveDashboard() {
   addRemoveDashListeners();
 }
 
+<<<<<<< HEAD
 function initRemoveStats() {
   initStatsChart();
 }
@@ -69,6 +67,8 @@ function initRemovePilotMgmt() {
     .addEventListener("click", handleOptinClick);
 }
 
+=======
+>>>>>>> main-kanary
 function addRemoveGeneralListeners() {
   document
     .querySelectorAll(".info-trigger, .modal__close-footer")
@@ -515,6 +515,7 @@ function onLeavingLinkClick(e) {
   }
 }
 
+<<<<<<< HEAD
 function initStatsChart() {
   const $chartEls = document.querySelectorAll(".remove-allstats-time-item");
   const chartData = [];
@@ -659,6 +660,8 @@ function handleMgmtCancelClick(e) {
     });
 }
 
+=======
+>>>>>>> main-kanary
 window.onload = function () {
   initRemove();
 };
