@@ -1875,9 +1875,7 @@ async function handleRemovalAdminCancel(req, res) {
 
   const deleteResponse = await removeKanaryAcct(kid);
   if (!deleteResponse?.id) {
-    return res.status(400).json({
-      error: "no account found in the kanary API with this ID",
-    });
+    console.log("no account found in the kanary API for this user", kid);
   }
   const dbCancelSuccess = await DB.mgmtCancelAccount(kid);
   if (dbCancelSuccess) {
