@@ -595,8 +595,8 @@ const DB = {
       .select("kid")
       .from("subscribers")
       .where("primary_email", account)
-      .pluck("kid"); //return only the values in an array not the object ({kid: xxxx})
-    return res;
+      .pluck("kid"); //return only the values in an array not the object ({kid: xxxx});
+    return res[0];
   },
 
   async mgmtCancelAccount(kid) {

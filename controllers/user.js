@@ -1842,15 +1842,15 @@ async function handleRemovalAdminGetKid(req, res) {
     });
   }
   const kid = await DB.getKidByAcct(email);
-  if (kid && kid.length) {
-    return res.status(200).json({
-      kid: parseInt(kid),
-    });
-  } else {
+  if (!kid) {
     return res.status(400).json({
-      error: "no match found in DB",
+      error: `No KID match for ${email} found in DB`,
     });
   }
+  return res.status(200).json({
+    email: email,
+    kid: parseInt(kid),
+  });
 }
 
 async function handleRemovalAdminCancel(req, res) {
@@ -1934,6 +1934,8 @@ async function getRemovalAdminCounts(req, res) {
     });
   }
 
+  const pilotGroup = getPilotGroup({});
+
   const counts = await DB.mgmtGetCounts();
 
   if (!counts.numKids || !counts.numEnrollees) {
@@ -1942,7 +1944,7 @@ async function getRemovalAdminCounts(req, res) {
     });
   }
   return res.status(200).json({
-    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees} `,
+    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees}, Max Users: ${pilotGroup?.max_users}`,
   });
 }
 
