@@ -532,7 +532,9 @@ function handleMgmtGetKidClick(e) {
     })
     .then((data) => {
       if (data.kid) {
-        document.getElementById("remove-mgmt-cancel-kid").value = data.kid;
+        document.querySelector(
+          ".remove-dashboard-form-error.--general"
+        ).innerText = `KID for ${data.email}: ${data.kid}`;
       } else if (data.error) {
         document.querySelector(
           ".remove-dashboard-form-error.--general"
