@@ -1874,8 +1874,11 @@ async function handleRemovalAdminCancel(req, res) {
   }
 
   const deleteResponse = await removeKanaryAcct(kid);
+  let apiDeleteMessage;
   if (!deleteResponse?.id) {
-    console.log("no account found in the kanary API for this user", kid);
+    apiDeleteMessage = `User ${kid} not found in the Kanary API`;
+  } else {
+    apiDeleteMessage = `User ${kid} removed from Kanary API`;
   }
   const dbCancelSuccess = await DB.mgmtCancelAccount(kid);
   if (dbCancelSuccess) {
@@ -1884,8 +1887,7 @@ async function handleRemovalAdminCancel(req, res) {
     });
   } else {
     return res.status(400).json({
-      error:
-        "kanary account removed, but there was an error finding account to delete in DB",
+      error: `${apiDeleteMessage}. This Kanary account was not found in the DB`,
     });
   }
 }
