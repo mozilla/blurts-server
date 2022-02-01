@@ -1946,7 +1946,7 @@ async function getRemovalAdminCounts(req, res) {
     });
   }
   return res.status(200).json({
-    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees}, Max Users: ${pilotGroup?.max_users}`,
+    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees}, Enrolled Timestamp Count: ${counts.numEnrolledCount}, Max Users: ${pilotGroup?.max_users}`,
   });
 }
 
