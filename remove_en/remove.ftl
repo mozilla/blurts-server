@@ -436,7 +436,7 @@ remove-faq-search-content = No - we can't remove your info from search engines l
   like Facebook. In general, we cannot remove your information from services where you’ve signed up for an account, 
   or publicly-available information on government websites.
 
-remove-faq-success-rate = { -remove-brand-partner }’s current success rate for removals is currently above 70%
+remove-faq-success-rate = { -remove-brand-partner }’s success rate for removals is currently above 70%
 remove-faq-guarantee-title = Is { remove-process-title } guaranteed?
 remove-faq-guarantee-content = Data removal is not guaranteed, but { remove-faq-success-rate }.
 remove-faq-blocked-title = What does it mean when a removal is ‘{remove-filter-blocked}’?

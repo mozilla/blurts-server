@@ -247,14 +247,6 @@ function getRemoveFormData(args) {
   return args.fn(emailCards);
 }
 
-function getRemovalSitesList(args) {
-  const removal_sites = args.data.root.removal_sites;
-  const removal_list = {
-    removal_sites: removal_sites,
-  };
-  return args.fn(removal_list);
-}
-
 function assignRemovalFilters(removeResults) {
   removeResults.forEach((result) => {
     if (
@@ -436,7 +428,6 @@ module.exports = {
   //DATA REMOVAL SPECIFIC
   getRemoveFormData,
   getRemoveDashData,
-  getRemovalSitesList,
   getRemovalFilters,
   trimRemoveInfo,
   getFullName,

@@ -1883,11 +1883,11 @@ async function handleRemovalAdminCancel(req, res) {
   const dbCancelSuccess = await DB.mgmtCancelAccount(kid);
   if (dbCancelSuccess) {
     return res.status(200).json({
-      msg: "user account cancelled. Please reset the form to submit a new request",
+      msg: `user account ${kid} cancelled. Please reset the form to submit a new request`,
     });
   } else {
     return res.status(400).json({
-      error: `${apiDeleteMessage}. This Kanary account was not found in the DB`,
+      error: `${apiDeleteMessage}. Kanary account ${kid} was not found in the DB`,
     });
   }
 }
@@ -1915,11 +1915,11 @@ async function handleRemovalAdminOptin(req, res) {
   const dbOptinSuccess = await DB.mgmtOptin(email);
   if (dbOptinSuccess) {
     return res.status(200).json({
-      msg: "user optin success. Please reset the form to submit a new request",
+      msg: `user optin for ${email} was a success. Please reset the form to submit a new request`,
     });
   } else {
     return res.status(400).json({
-      error: "could not reset optin status for this user",
+      error: `could not reset optin status for user with email ${email}`,
     });
   }
 }
@@ -1946,7 +1946,7 @@ async function getRemovalAdminCounts(req, res) {
     });
   }
   return res.status(200).json({
-    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees}, Max Users: ${pilotGroup?.max_users}`,
+    msg: `KIDs: ${counts.numKids}, Enrolled Users: ${counts.numEnrollees}, Enrolled Timestamp Count: ${counts.numEnrolledCount}, Max Users: ${pilotGroup?.max_users}`,
   });
 }
 

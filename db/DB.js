@@ -627,7 +627,7 @@ const DB = {
   },
 
   async mgmtGetCounts() {
-    let numKids, numEnrollees;
+    let numKids, numEnrollees, numEnrolledCount;
 
     const res = await knex("subscribers")
       .count("kid")
@@ -636,6 +636,15 @@ const DB = {
       });
     if (res.length && res[0].count) {
       numKids = parseInt(res[0].count);
+    }
+
+    const enrollCountRes = await knex("subscribers")
+      .count("removal_enrolled_time")
+      .catch((e) => {
+        console.error("error getting enrolled count", e);
+      });
+    if (enrollCountRes.length && enrollCountRes[0].count) {
+      numEnrolledCount = parseInt(enrollCountRes[0].count);
     }
 
     const enrollRes = await knex("removal_pilot")
@@ -653,6 +662,7 @@ const DB = {
     return {
       numKids: numKids,
       numEnrollees: numEnrollees,
+      numEnrolledCount: numEnrolledCount,
     };
   },
 
