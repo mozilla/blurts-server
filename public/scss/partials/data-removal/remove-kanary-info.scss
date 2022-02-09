@@ -1,17 +1,25 @@
 .remove-kanary {
+  &-ended-container, &-container {
+    background-color: white;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 8px;
+  }
+  &-ended-container {
+    line-height: 1.5em;
+  }
+  &-ended-subtitle {
+    margin-top: 20px;
+  }
   &-logo {
     width: 185px;
   }
   &-container {
-    background-color: white;
     background-image: url('/img/removal/kanary-info-bg.jpg');
     background-repeat: no-repeat;
     background-position: top center;
     background-size: contain;
     margin-top: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    border-radius: 8px;
 
     p {
       line-height: 1.5em;

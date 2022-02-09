@@ -215,14 +215,12 @@ remove-enroll-ended-description = Thank you for your interest in { -brand-Mozill
 
 # Data Removal Pilot Ended Page
 
-remove-pilot-ended-title = { -product-name } { remove-pilot-title } is now closed
-remove-pilot-ended-description = Thank you for participating in the { -product-name} { remove-pilot-title}.<br><br>
-  We are evaluating whether to continue offering the { remove-process-title } service at { -brand-Mozilla }.<br><br>
-  We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
-  If you have any additional comments or questions, please send them to { remove-about-support-email }.
-remove-pilot-ended-continue-title = Interested in continuing your service with {-remove-brand-partner}?
-remove-pilot-ended-continue-text = If you are interested in continuing your { remove-process-title } coverage 
-  while we evaluate next steps for our offering, please proceed to our partner's website:
+remove-pilot-ended-title = { -product-name } { remove-pilot-title } has ended.
+remove-pilot-ended-description = Thank you for participating in the { -product-name} { remove-pilot-title}.
+  The { -product-name } { remove-process-title } is a temporary service to evaluate a new offering within 
+  the { -brand-Mozilla } product suite. We appreciate your input and feedback as we research new offerings to best meet your needs.<br><br>
+   If you have any additional comments or questions, please send them to the following email address:
+remove-pilot-ended-continue = If you would like to continue the service directly with our partner {-remove-brand-partner}, please read below.
 
 # Data Removal Pilot Success Page
 remove-enrolled-title = Welcome to the {remove-pilot-title}!  
