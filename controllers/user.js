@@ -1790,7 +1790,6 @@ async function createRemovalHashWaitlist(req, res) {
     waitlistArray = data.toString().split("\n");
     waitlistArray.forEach((arrayItem) => {
       const stringLower = arrayItem.toLowerCase();
-      //const hashedEmail = bcrypt.hashSync(stringLower, 10);
       const hashedEmail = sha1(stringLower);
       writeStream.write(`${hashedEmail}\n`);
     });
@@ -1807,6 +1806,46 @@ async function createRemovalHashWaitlist(req, res) {
       console.error("There is an error writing the file", err);
       return res.status(400).json({
         error: "error creating hashed waitlist",
+      });
+    });
+    writeStream.end();
+  });
+}
+
+async function createRemovalHashAdminList(req, res) {
+  let adminArray;
+  const writeStream = fs.createWriteStream("hashed-admin-list.txt");
+  fs.readFile("removal-admins.txt", function (err, data) {
+    if (err) {
+      console.error("error reading admins file", err);
+      return res.status(400).json({
+        error: "error reading admin file",
+      });
+    }
+    adminArray = data.toString().split("\n");
+
+    adminArray.forEach((arrayItem, index) => {
+      const stringLower = arrayItem.toLowerCase();
+      const hashedEmail = sha1(stringLower);
+      if (index === adminArray.length - 1) {
+        writeStream.write(`${hashedEmail}`);
+      } else {
+        writeStream.write(`${hashedEmail}\n`);
+      }
+    });
+
+    writeStream.on("finish", () => {
+      console.log("hashed admin list complete");
+
+      return res.status(200).json({
+        msg: "hashed admin list complete",
+      });
+    });
+
+    writeStream.on("error", (err) => {
+      console.error("There is an error writing the file", err);
+      return res.status(400).json({
+        error: "error creating hashed admin list",
       });
     });
     writeStream.end();
@@ -2021,6 +2060,7 @@ module.exports = {
   getRemovalKan,
   postRemovalKan,
   createRemovalHashWaitlist,
+  createRemovalHashAdminList,
   checkIfOnRemovalPilotList,
   getRemovalPilotMgmt,
   handleRemovalAdminCancel,

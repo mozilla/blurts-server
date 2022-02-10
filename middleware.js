@@ -16,6 +16,7 @@ const HIBP = require("./hibp");
 const log = mozlog("middleware");
 
 //DATA REMOVAL SPECIFIC
+const sha1 = require("./sha1-utils");
 const { REMOVAL_CONSTANTS } = require("./removal-constants");
 const { checkIfOnRemovalPilotList } = require("./controllers/user");
 
@@ -301,7 +302,16 @@ async function requireNoOptOut(req, res, next) {
 async function requireMozAdmin(req, res, next) {
   const user = req.user;
 
-  if (!user?.primary_email.endsWith("@mozilla.com")) {
+  if (!user?.primary_email) {
+    res.status(400).send({
+      error: "no user or primary email",
+    });
+  }
+
+  const emailHash = sha1(user.primary_email);
+
+
+  if (!REMOVAL_CONSTANTS.REMOVAL_ADMINS_HASHED.includes(emailHash)) {
     console.error("You are not authorized to access this page");
     return res.status(401).json({
       error: "You are not authorized to access this page",

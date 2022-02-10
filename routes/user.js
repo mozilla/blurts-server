@@ -43,6 +43,7 @@ const {
   getRemovalKan,
   postRemovalKan,
   createRemovalHashWaitlist,
+  createRemovalHashAdminList,
   getRemovalPilotMgmt,
   handleRemovalAdminCancel,
   handleRemovalAdminGetKid,
@@ -250,6 +251,14 @@ router.get(
   requireMozAdmin,
   asyncMiddleware(createRemovalHashWaitlist)
 );
+router.get(
+  "/remove-hash-admins",
+  urlEncodedParser,
+  requireSessionUser,
+  requireMozAdmin,
+  asyncMiddleware(createRemovalHashAdminList)
+);
+
 router.get(
   "/remove-pilot-mgmt",
   urlEncodedParser,

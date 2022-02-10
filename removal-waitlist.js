@@ -7,6 +7,12 @@ async function getHashedWaitlist() {
   return hashedWaitlistArray.toString().split("\n");
 }
 
+async function getHashedAdminList() {
+  const hashedAdminList = await readFile("hashed-admin-list.txt", "binary");
+  return hashedAdminList.toString().split("\n");
+}
+
 module.exports = {
   getHashedWaitlist,
+  getHashedAdminList,
 };

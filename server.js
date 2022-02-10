@@ -41,7 +41,7 @@ const HBSHelpers = require("./template-helpers/");
 const HIBP = require("./hibp");
 const IpLocationService = require("./ip-location-service");
 
-const { getHashedWaitlist } = require("./removal-waitlist");
+const { getHashedWaitlist, getHashedAdminList } = require("./removal-waitlist");
 
 const {
   addRequestToResponse,
@@ -140,6 +140,19 @@ try {
     console.error("removal waitlist empty");
   }
 })();
+
+(async () => {
+  const removalAdminList = await getHashedAdminList().catch((e) =>
+    console.error("problem getting removal admin list", e)
+  );
+  if (removalAdminList && removalAdminList.length) {
+    REMOVAL_CONSTANTS["REMOVAL_ADMINS_HASHED"] = removalAdminList;
+  } else {
+    console.error("removal admin list empty");
+  }
+})();
+
+
 
 // Use helmet to set security headers
 // only enable HSTS on heroku; Ops handles it in stage & prod configs
