@@ -37,7 +37,7 @@
     &.--featured {
       padding-left: 15px;
       position: relative;
-      &:before {
+      &::before {
         content: '';
         width: 5px;
         background-color: var(--kanary-yellow);
