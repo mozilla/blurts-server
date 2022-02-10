@@ -1,4 +1,5 @@
 <main id="remove-pilot-ended" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  {{#if pilotEnded}}
   <div class="mw-860 flx flx-col remove-kanary-ended-container">
     <h2 class="">{{getRemoveString "remove-pilot-ended-title"}}</h2>
     <p>{{{getRemoveString "remove-pilot-ended-description"}}}
@@ -6,6 +7,7 @@
       {{getRemoveString "remove-pilot-ended-continue"}}
     </p>
   </div>
+  {{/if}}
   {{> data-removal/remove-kanary-info}}
   {{> dashboards/remove-form-kanary-footer}}
 </main>

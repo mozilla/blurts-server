@@ -1101,15 +1101,13 @@ async function getRemovalPilotEndedPage(req, res) {
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
-  if (
-    !checkIfRemovalPilotEnded(user) &&
-    !FormUtils.canShowViaParams(req.query?.show)
-  ) {
-    return res.redirect("/user/remove-data");
-  }
+  //the ended page can be shown when pilot is about to end, or if it has already ended
+  //this param is used to conditionally display messaging specific to when the pilot has indeed ended
+  const isPilotEnded = checkIfRemovalPilotEnded(user);
 
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
+    pilotEnded: isPilotEnded,
     csrfToken: req.csrfToken(),
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/remove-pilot-ended",
@@ -1338,6 +1336,17 @@ function getPilotGroup(user) {
   });
   //console.log("user is in group", removalPilots[0].name);
   return removalPilots[0];
+}
+
+function checkIfRemovalPilotEnding(user) {
+  const pilotGroup = getPilotGroup(user);
+
+  const pilotEndingDate = FormUtils.getDaysFromTimestamp(
+    pilotGroup.start_time,
+    REMOVAL_CONSTANTS.REMOVAL_PILOT_ENDING_DAY
+  );
+
+  return new Date() > pilotEndingDate;
 }
 
 function checkIfRemovalPilotEnded(user) {
@@ -2028,4 +2037,5 @@ module.exports = {
   handleRemovalAdminOptin,
   getRemovalAdminCounts,
   setRemovalAdminEnrollmentCount,
+  checkIfRemovalPilotEnding,
 };
