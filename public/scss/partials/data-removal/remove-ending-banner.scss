@@ -1,0 +1,18 @@
+.removal-ending {
+  &-banner {
+    background-color: var(--kanary-yellow);
+    padding: 10px;
+    text-align: center;
+  }
+  &-content {
+    margin: 0;
+    @include ff-metropolis;
+    font-weight: 600;
+  }
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    color: black;
+  }
+
+}
