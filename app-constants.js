@@ -8,6 +8,7 @@ require("dotenv").config({ path: path.join(__dirname, ".env") });
 const requiredEnvVars = [
   "KANARY_ENDPOINT",
   "KANARY_TOKEN",
+  "REMOVAL_ADMINS",
   "NODE_ENV",
   "SERVER_URL",
   "PORT",

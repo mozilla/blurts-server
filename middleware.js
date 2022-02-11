@@ -301,7 +301,9 @@ async function requireNoOptOut(req, res, next) {
 async function requireMozAdmin(req, res, next) {
   const user = req.user;
 
-  if (!user?.primary_email.endsWith("@mozilla.com")) {
+  const adminArray = AppConstants.REMOVAL_ADMINS.toString().split(",");
+
+  if (!adminArray.includes(user.primary_email)) {
     console.error("You are not authorized to access this page");
     return res.status(401).json({
       error: "You are not authorized to access this page",
@@ -309,6 +311,7 @@ async function requireMozAdmin(req, res, next) {
   }
   next();
   return;
+
 }
 
 module.exports = {
