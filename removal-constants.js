@@ -58,7 +58,7 @@ const REMOVAL_CONSTANTS = {
     {
       id: 2,
       name: "group_02",
-      start_time: 1644998340000, //wed, feb 16 12am PST
+      start_time: 1644998340, //wed, feb 16 12am PST
       max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
     },
   ],
