@@ -58,11 +58,11 @@ const REMOVAL_CONSTANTS = {
     {
       id: 2,
       name: "group_02",
-      start_time: 1645084740, //thu, feb 17 12am PST
+      start_time: 1644998340, //wed, feb 16 12am PST
       max_users: 1000, //max users represents the sum of all users from this and the preceding pilot groups (thus 700 in this cohort and 1000 total from both) - so that we can compare against a single DB value of max users
     },
   ],
-  REMOVAL_PILOT_ENROLLMENT_END_DAY: 21, //days from pilot start to when a user can no longer enroll in their pilot group
+  REMOVAL_PILOT_ENROLLMENT_END_DAY: 14, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_ENDING_DAY: 75, //days from pilot start to when we start messaging the end of the pilot / continuation with Kanary
   REMOVAL_PILOT_END_DAY: 90, //days from pilot start to when the pilot ends
   REMOVAL_STEP: {
