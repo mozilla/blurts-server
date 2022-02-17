@@ -1338,17 +1338,6 @@ function getPilotGroup(user) {
   return removalPilots[0];
 }
 
-function checkIfRemovalPilotEnding(user) {
-  const pilotGroup = getPilotGroup(user);
-
-  const pilotEndingDate = FormUtils.getDaysFromTimestamp(
-    pilotGroup.start_time,
-    REMOVAL_CONSTANTS.REMOVAL_PILOT_ENDING_DAY
-  );
-
-  return new Date() > pilotEndingDate;
-}
-
 function checkIfRemovalPilotEnded(user) {
   const pilotGroup = getPilotGroup(user);
 
@@ -2037,5 +2026,4 @@ module.exports = {
   handleRemovalAdminOptin,
   getRemovalAdminCounts,
   setRemovalAdminEnrollmentCount,
-  checkIfRemovalPilotEnding,
 };
