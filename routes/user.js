@@ -11,6 +11,7 @@ const {
   requireRemovalUser,
   requireNoOptOut,
   requireMozAdmin,
+  isRemovalPilotEnding,
 } = require("../middleware");
 const {
   add,
@@ -61,6 +62,7 @@ router.get(
   "/dashboard",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(isRemovalPilotEnding),
   asyncMiddleware(getDashboard)
 );
 
@@ -169,6 +171,7 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(requireRemovalUser),
+  asyncMiddleware(isRemovalPilotEnding),
   asyncMiddleware(getRemovalEnrollFullPage)
 );
 
@@ -185,6 +188,7 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(requireNoOptOut),
+  asyncMiddleware(isRemovalPilotEnding),
   asyncMiddleware(getRemovalPage)
 );
 
@@ -192,6 +196,7 @@ router.get(
   "/remove-update-confirmation",
   csrfProtection,
   requireSessionUser,
+  asyncMiddleware(isRemovalPilotEnding),
   asyncMiddleware(getRemovalUpdateConfirmationPage)
 );
 
@@ -208,6 +213,7 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(requireRemovalUser),
+  asyncMiddleware(isRemovalPilotEnding),
   asyncMiddleware(getRemovalPilotEndedPage)
 );
 
@@ -225,6 +231,7 @@ router.post(
   csrfProtection,
   urlEncodedParser,
   requireSessionUser,
+  asyncMiddleware(isRemovalPilotEnding),
   asyncMiddleware(handleRemovalAcctUpdate)
 );
 
@@ -234,6 +241,7 @@ router.get(
   csrfProtection,
   requireSessionUser,
   asyncMiddleware(requireRemovalUser),
+
   asyncMiddleware(getRemovalKan)
 );
 router.post(

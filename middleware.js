@@ -17,7 +17,10 @@ const log = mozlog("middleware");
 
 //DATA REMOVAL SPECIFIC
 const { REMOVAL_CONSTANTS } = require("./removal-constants");
-const { checkIfOnRemovalPilotList } = require("./controllers/user");
+const {
+  checkIfOnRemovalPilotList,
+  checkIfRemovalPilotEnding,
+} = require("./controllers/user");
 
 // adds the request object to a res.local var
 function addRequestToResponse(req, res, next) {
@@ -311,7 +314,31 @@ async function requireMozAdmin(req, res, next) {
   }
   next();
   return;
+}
 
+async function isRemovalPilotEnding(req, res, next) {
+  //used to determine if we show UI elements notifying the user that the pilot is ending
+
+  if (req.query?.showEnding === "true") {
+    //if we force visibility via param
+    return true;
+  }
+
+  const user = req.session?.user;
+  const isOnRemovalPilotList = req.session.kanary?.onRemovalPilotList;
+  console.log("isRemovalPilotEnding", user, isOnRemovalPilotList);
+  if (!user || !isOnRemovalPilotList) {
+    return false;
+  }
+
+  //if they are in the pilot, check today's date against the ending date from the constants file
+  req.session.isRemovalPilotEnding = checkIfRemovalPilotEnding(user); //calls the user controller function
+  console.log(
+    "middleware removal pilot ending",
+    req.session.isRemovalPilotEnding
+  );
+  next();
+  return;
 }
 
 module.exports = {
@@ -328,4 +355,5 @@ module.exports = {
   requireRemovalUser,
   requireNoOptOut,
   requireMozAdmin,
+  isRemovalPilotEnding,
 };

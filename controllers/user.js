@@ -5,6 +5,7 @@ const isemail = require("isemail");
 
 const DB = require("../db/DB");
 const EmailUtils = require("../email-utils");
+console.log("EmailUtils", EmailUtils);
 const { FluentError, LocaleUtils } = require("../locale-utils");
 const { FXA } = require("../lib/fxa");
 const HIBP = require("../hibp");
@@ -1340,6 +1341,7 @@ function getPilotGroup(user) {
 
 function checkIfRemovalPilotEnding(user) {
   const pilotGroup = getPilotGroup(user);
+  console.log("pilotGroup", pilotGroup);
 
   const pilotEndingDate = FormUtils.getDaysFromTimestamp(
     pilotGroup.start_time,

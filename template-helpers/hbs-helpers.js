@@ -5,7 +5,6 @@ const { LocaleUtils } = require("./../locale-utils");
 const mozlog = require("./../log");
 
 const log = mozlog("template-helpers/hbs-helpers");
-const { checkIfRemovalPilotEnding } = require("./../controllers/user");
 
 function getSupportedLocales(args) {
   if (args.data) {
@@ -366,31 +365,21 @@ function getRemoveString(id, args) {
 
 function checkIfInRemovalPilot(args) {
   const { session } = args.data.root.req;
+  console.log("chirp", session);
   if (session.kanary?.onRemovalPilotList) {
     return session.kanary.onRemovalPilotList;
   }
   return false;
 }
 
-function isRemovalPilotEnding(args) {
+function removalPilotEnding(args) {
   //used to determine if we show UI elements notifying the user that the pilot is ending
-
-  if (args.data.root.req.query?.showEnding === "true") {
-    //if we force visibility via param
-    return true;
-  }
-  const user = args.data.root.req.session?.user;
-  if (!user) {
+  const { session } = args.data.root.req;
+  if (!session) {
     return false;
   }
-  const isInRemovalPilot = checkIfInRemovalPilot(args);
-  if (!isInRemovalPilot) {
-    return false;
-  }
-
-  //if they are in the pilot, check today's date against the ending date from the constants file
-  const isPilotEnding = checkIfRemovalPilotEnding(user); //check
-  return isPilotEnding;
+  console.log("rpe", session);
+  return session.isPilotEnding;
 }
 
 //END DATA REMOVAL SPECIFIC
@@ -425,5 +414,5 @@ module.exports = {
   incrementedIndex,
   getRemoveString,
   checkIfInRemovalPilot,
-  isRemovalPilotEnding,
+  removalPilotEnding,
 };
