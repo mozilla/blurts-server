@@ -660,3 +660,5 @@ vpn-banner-cta-close = Luk
 
 # Relay video headline for placement on Monitor home page
 relay-video-headline = Hvordan holder du din mailadresse hemmelig?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Er du bekymret for sikkerheden på offentlige wi-fi?
