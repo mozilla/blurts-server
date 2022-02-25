@@ -602,3 +602,5 @@ vpn-banner-cta-close = Mbylle
 
 # Relay video headline for placement on Monitor home page
 relay-video-headline = Si ta mbani të fshehtë adresën tuaj email?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = A shqetësoheni për sigurinë në një Wi-Fi publik?
