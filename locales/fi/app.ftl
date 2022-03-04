@@ -357,6 +357,9 @@ facebook-breach-note =
     henkilökohtaisia tietoja, mutta ei sähköpostiosoitteita. Jos olet koskaan
     rekisteröinyt Facebook-tilin — vaikka et käyttäisi sitä nyt — suosittelemme
     ryhtymään seuraaviin toimiin suojellaksesi itseäsi
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Aseta tietojesi asetukseksi “Vain minä” tai muu ei-julkinen asetus <a>Facebook-profiilissasi</a>.</span>
 facebook-breach-what-to-do-3 = Katso kaikki suosituksemme Facebook-vuotosivultamme
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Näytetään:
