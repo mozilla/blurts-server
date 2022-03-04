@@ -28,7 +28,7 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-tili
-terms-and-privacy = Ehdot ja yksityisyys
+terms-and-privacy = Ehdot ja tietosuoja
 GitHub-link-title = GitHub
 error-scan-page-token = Yrität tarkistaa liian montaa sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
 error-could-not-add-email = Sähköpostiosoitetta ei voitu lisätä tietokantaan.
@@ -360,6 +360,9 @@ facebook-breach-note =
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Aseta tietojesi asetukseksi “Vain minä” tai muu ei-julkinen asetus <a>Facebook-profiilissasi</a>.</span>
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Vaihda salasana, PIN-koodi ja muut kirjautumistiedot <a>mobiililiittymäsi palveluntarjoajan tililtä</a> estääksesi ns. SIM-swapping -hyökkäyksen.</span>.
 facebook-breach-what-to-do-3 = Katso kaikki suosituksemme Facebook-vuotosivultamme
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Näytetään:
