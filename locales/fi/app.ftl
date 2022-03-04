@@ -360,6 +360,11 @@ facebook-breach-note =
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Aseta tietojesi asetukseksi “Vain minä” tai muu ei-julkinen asetus <a>Facebook-profiilissasi</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Tämän vuodon aikana hakkerit ottivat talteen profiilitietoja,
+    jotka oli asetettu näkyviin asetuksella “avoinna kaikille” tai “jaettu kavereille”.
+    Nämä tiedot on mahdollista yhdistää muiden tietojen kanssa, jonka seurauksena
+    on mahdollista päästä entistä useampaan käyttäjätiliisi tai henkilötietoihisi.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>Vaihda salasana, PIN-koodi ja muut kirjautumistiedot <a>mobiililiittymäsi palveluntarjoajan tililtä</a> estääksesi ns. SIM-swapping -hyökkäyksen.</span>.
