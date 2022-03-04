@@ -363,6 +363,11 @@ facebook-breach-what-to-do-1-headline = <span>Aseta tietojesi asetukseksi “Vai
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>Vaihda salasana, PIN-koodi ja muut kirjautumistiedot <a>mobiililiittymäsi palveluntarjoajan tililtä</a> estääksesi ns. SIM-swapping -hyökkäyksen.</span>.
+facebook-breach-what-to-do-2-copy =
+    Niin sanottu SIM swapping tai SIM-jacking, suomeksi SIM-kortin vaihto tai kaappaus,
+    tarkoittaa sitä, että pahantahtoinen taho käyttää puhelinnumeroita, syntymäpäiviä ja
+    muita tietoja ottaakseen haltuun kohteen puhelinnumeron ja sen jälkeen murtautuu kohteen
+    sähköpostiin, sosiaaliseen mediaan ja jopa pankkitileille.
 facebook-breach-what-to-do-3 = Katso kaikki suosituksemme Facebook-vuotosivultamme
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Näytetään:
