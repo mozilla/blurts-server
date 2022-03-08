@@ -603,12 +603,12 @@ show-resolved-button = Megoldottak megjelenítése
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Megoldatlan adatsértésekben kikerült jelszó
-       *[other] Megoldatlan adatsértésekben kikerült jelszavak
+       *[other] Megoldatlan adatsértésekben kikerült jelszó
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Megoldottként megjelölt adatsértés
-       *[other] Megoldottként megjelölt adatsértések
+       *[other] Megoldottként megjelölt adatsértés
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Új
