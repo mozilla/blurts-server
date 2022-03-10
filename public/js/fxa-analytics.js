@@ -161,8 +161,10 @@ function setGAListeners(){
 
     document.querySelectorAll("video").forEach((el) => {
       el.addEventListener("play", async (e) => {
+        console.warn("video played!  Current time is", e.target.currentTime);
         if (e.target.currentTime > 0) return; // only track initial play event
         const linkId = `Link ID: ${e.target.src}`;
+        console.warn("sending Link ID:", e.target.src);
         await sendPing(el, "Click", `${linkId}`);
       });
     });
@@ -358,6 +360,7 @@ function analyticsSurveyLogic() {
 
   const gaEnabled = (typeof(ga) !== "undefined");
   const utmParamsInUrl = (winLocationSearch.includes("utm_"));
+  console.warn("GA Enabled?", gaEnabled, ga);
 
   const removeUtmsFromUrl = () => {
     if (utmParamsInUrl) {
