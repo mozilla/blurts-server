@@ -159,6 +159,13 @@ function setGAListeners(){
       });
     });
 
+    document.querySelectorAll("video").forEach((el) => {
+      el.addEventListener("play", async (e) => {
+        if (e.target.currentTime > 0) return; // only track initial play event
+        e.target.dataset.eventCategory = "video play";
+        await sendPing(e.target, "Click", e.target.src);
+      });
+    });
   }
 
   window.sessionStorage.setItem("gaInit", true);
