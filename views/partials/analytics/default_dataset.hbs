@@ -6,6 +6,10 @@ data-utm_source="{{ UTM_SOURCE }}"
 
 {{#if req.session.user}}
   data-signed-in-user="true"
+  {{!-- DATA REMOVAL SPECIFIC --}}
+  data-removal-pilot-user="{{ checkIfInRemovalPilot }}" 
 {{else}}
   data-signed-in-user="false"
+  {{!-- DATA REMOVAL SPECIFIC --}}
+  data-removal-pilot-user="false"
 {{/if}}

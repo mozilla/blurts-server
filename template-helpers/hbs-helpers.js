@@ -4,7 +4,6 @@ const AppConstants = require("./../app-constants");
 const { LocaleUtils } = require("./../locale-utils");
 const mozlog = require("./../log");
 
-
 const log = mozlog("template-helpers/hbs-helpers");
 
 function getSupportedLocales(args) {
@@ -28,22 +27,25 @@ function getFirstItem(arr) {
 
 function vpnPromoBlocked(args) {
   const userLocales = getSupportedLocales(args);
-  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale));
+  return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some((blockedLocale) =>
+    userLocales[0].includes(blockedLocale)
+  );
 }
 
 function englishInAcceptLanguages(args) {
   const acceptedLanguages = args.data.root.req.acceptsLanguages();
-  return acceptedLanguages.some(locale => locale.startsWith("en"));
+  return acceptedLanguages.some((locale) => locale.startsWith("en"));
 }
-
 
 function escapeHtmlAttributeChars(text) {
   return text.replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
 
-
 function recruitmentBanner(args) {
-  if (!AppConstants.RECRUITMENT_BANNER_LINK || !AppConstants.RECRUITMENT_BANNER_TEXT) {
+  if (
+    !AppConstants.RECRUITMENT_BANNER_LINK ||
+    !AppConstants.RECRUITMENT_BANNER_TEXT
+  ) {
     return;
   }
 
@@ -51,12 +53,19 @@ function recruitmentBanner(args) {
     return;
   }
 
-  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
+  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${
+    AppConstants.RECRUITMENT_BANNER_LINK
+  }"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(
+    AppConstants.RECRUITMENT_BANNER_TEXT
+  )}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
 }
 
 function microsurveyBanner(args) {
   // don't show micro survey if we're already showing a recruitment banner
-  if (AppConstants.RECRUITMENT_BANNER_LINK && AppConstants.RECRUITMENT_BANNER_TEXT) {
+  if (
+    AppConstants.RECRUITMENT_BANNER_LINK &&
+    AppConstants.RECRUITMENT_BANNER_TEXT
+  ) {
     return;
   }
 
@@ -78,12 +87,19 @@ function microsurveyBanner(args) {
     "micro-survey-very-likely-response",
   ];
   const enLocaleArgs = {
-    hash: args.hash, data: { root: { req: { supportedLocales: ["en"] } } },
+    hash: args.hash,
+    data: { root: { req: { supportedLocales: ["en"] } } },
   };
   let bannerOpeningDivDataset = "";
-  microSurveyResponseIds.forEach(id => {
-    bannerOpeningDivDataset += ` data-${id}-translated="${getString(id, args)}" `;
-    bannerOpeningDivDataset += ` data-${id}-english="${getString(id, enLocaleArgs)}" `;
+  microSurveyResponseIds.forEach((id) => {
+    bannerOpeningDivDataset += ` data-${id}-translated="${getString(
+      id,
+      args
+    )}" `;
+    bannerOpeningDivDataset += ` data-${id}-english="${getString(
+      id,
+      enLocaleArgs
+    )}" `;
   });
   const bannerOpeningDiv = `<div id="micro-survey-banner" class="micro-survey-banner hidden" ${bannerOpeningDivDataset}>`;
   const nowSecond = new Date().getSeconds() % 10;
@@ -146,17 +162,21 @@ function getString(id, args) {
 
 function getStringWithFallback(id, fallbackId, args) {
   const supportedLocales = getSupportedLocales(args);
-  return LocaleUtils.fluentFormatWithFallback(supportedLocales, id, fallbackId, args.hash);
+  return LocaleUtils.fluentFormatWithFallback(
+    supportedLocales,
+    id,
+    fallbackId,
+    args.hash
+  );
 }
 
 function getStrings(stringArr, locales) {
-  stringArr.forEach(string => {
+  stringArr.forEach((string) => {
     const stringId = string.stringId;
     string.stringId = LocaleUtils.fluentFormat(locales, stringId);
   });
   return stringArr;
 }
-
 
 function fluentFxa(id, args) {
   const supportedLocales = args.data.root.req.supportedLocales;
@@ -165,7 +185,6 @@ function fluentFxa(id, args) {
   }
   return LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
 }
-
 
 function getStringID(id, number, args) {
   // const supportedLocales = args.data.root.req.supportedLocales;
@@ -176,7 +195,6 @@ function getStringID(id, number, args) {
   // return LocaleUtils.fluentFormat(supportedLocales, id);
 }
 
-
 function localizedBreachDataClasses(dataClasses, locales) {
   const localizedDataClasses = [];
   for (const dataClass of dataClasses) {
@@ -185,7 +203,6 @@ function localizedBreachDataClasses(dataClasses, locales) {
   return localizedDataClasses.join(", ");
 }
 
-
 function fluentNestedBold(id, args) {
   const supportedLocales = args.data.root.req.supportedLocales;
 
@@ -193,13 +210,19 @@ function fluentNestedBold(id, args) {
     return ` <span class="bold">${word}</span> `;
   };
 
-  let localizedStrings = LocaleUtils.fluentFormat(supportedLocales, id, args.hash);
+  let localizedStrings = LocaleUtils.fluentFormat(
+    supportedLocales,
+    id,
+    args.hash
+  );
   if (args.hash.breachCount || args.hash.breachCount === 0) {
-    localizedStrings = localizedStrings.replace(/(\s[\d]+\s)/, addMarkup(args.hash.breachCount));
+    localizedStrings = localizedStrings.replace(
+      /(\s[\d]+\s)/,
+      addMarkup(args.hash.breachCount)
+    );
   }
   return localizedStrings;
 }
-
 
 function prettyDate(date, locales) {
   const jsDate = new Date(date);
@@ -207,7 +230,6 @@ function prettyDate(date, locales) {
   const intlDateTimeFormatter = new Intl.DateTimeFormat(locales, options);
   return intlDateTimeFormatter.format(jsDate);
 }
-
 
 function localeString(numericInput, locales) {
   const intlNumberFormatter = new Intl.NumberFormat(locales);
@@ -218,10 +240,8 @@ function getFxaUrl() {
   return AppConstants.FXA_SETTINGS_URL;
 }
 
-
 function eachFromTo(ary, min, max, options) {
-  if (!ary || ary.length === 0)
-    return options.inverse(this);
+  if (!ary || ary.length === 0) return options.inverse(this);
 
   let result = "";
 
@@ -231,14 +251,16 @@ function eachFromTo(ary, min, max, options) {
   return result;
 }
 
-
 function localize(locales, stringId, args) {
   return LocaleUtils.fluentFormat(locales, stringId, args);
 }
 
-
 function loop(from, to, inc, block) {
-  block = block || { fn: function () { return arguments[0]; } };
+  block = block || {
+    fn: function () {
+      return arguments[0];
+    },
+  };
   const data = block.data || { index: null };
   let output = "";
   for (let i = from; i <= to; i += inc) {
@@ -248,14 +270,15 @@ function loop(from, to, inc, block) {
   return output;
 }
 
-
 function ifCompare(v1, operator, v2, options) {
   //https://stackoverflow.com/questions/28978759/length-check-in-a-handlebars-js-if-conditional
+
   const operators = {
     ">": v1 > v2 ? true : false,
     ">=": v1 >= v2 ? true : false,
     "<": v1 < v2 ? true : false,
     "<=": v1 <= v2 ? true : false,
+    "!==": v1 !== v2 ? true : false,
     "===": v1 === v2 ? true : false,
     "&&": v1 && v2 ? true : false,
     "||": v1 || v2 ? true : false,
@@ -271,7 +294,6 @@ function ifCompare(v1, operator, v2, options) {
   log.error("ifCompare", { message: `${operator} not found` });
   return;
 }
-
 
 function breachMath(lValue, operator = null, rValue = null) {
   lValue = parseFloat(lValue);
@@ -289,6 +311,67 @@ function breachMath(lValue, operator = null, rValue = null) {
   return returnValue;
 }
 
+//DATA REMOVAL SPECIFIC
+//MH: These could be useful for prod. monitor
+
+function validateEmail(email) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
+
+function getOptOutLink(opt_out) {
+  if (validateEmail(opt_out)) {
+    return `mailto:${opt_out}`;
+  } else {
+    return opt_out;
+  }
+}
+
+function sentenceCase(str) {
+  if (str && str.length) {
+    // eslint-disable-next-line no-useless-escape
+    str = str.replace(/((?:\S[^\.\?\!]*)[\.\?\!]*)/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); //sentence case
+    });
+    // eslint-disable-next-line no-useless-escape
+    return str.replace(/_/g, " "); //replace underscores with spaces
+  }
+}
+
+function kebabCase(str) {
+  if (str && str.length) {
+    // eslint-disable-next-line no-useless-escape
+    return str
+      .replace(/([a-z])([A-Z])/g, "$1-$2")
+      .replace(/[\s_]+/g, "-")
+      .toLowerCase();
+  }
+}
+
+function lowerCase(str) {
+  if (str && str.length) {
+    return str.toLowerCase();
+  }
+}
+
+function incrementedIndex(index) {
+  index++;
+  return index;
+}
+
+function getRemoveString(id, args) {
+  return LocaleUtils.formatRemoveString(id);
+}
+
+function checkIfInRemovalPilot(args) {
+  const { session } = args.data.root.req;
+  if (session.kanary?.onRemovalPilotList) {
+    return session.kanary.onRemovalPilotList;
+  }
+  return false;
+}
+
+//END DATA REMOVAL SPECIFIC
 
 module.exports = {
   recruitmentBanner,
@@ -312,4 +395,12 @@ module.exports = {
   breachMath,
   loop,
   vpnPromoBlocked,
+  //DATA REMOVAL SPECIFIC
+  sentenceCase,
+  kebabCase,
+  lowerCase,
+  getOptOutLink,
+  incrementedIndex,
+  getRemoveString,
+  checkIfInRemovalPilot,
 };

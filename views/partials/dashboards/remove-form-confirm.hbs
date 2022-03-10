@@ -1,0 +1,106 @@
+<div class="remove-dashboard-confirm">
+  <div class="flx space-between remove-dashboard-confirm-review-container">
+    <div class="flx cntr">
+      {{#if this.acctInfo}}
+      <h3 class="remove-dashboard-confirm-review-title">
+        {{getRemoveString "remove-dash-info-change-title"}}
+      </h3>
+      {{else}}
+      <h3 class="remove-dashboard-confirm-review-title">
+        {{getRemoveString "remove-dash-confirm-review"}}
+      </h3>
+      {{/if}}
+    </div>
+    <div class="flx remove-dashboard-confirm-review-btns">
+      {{#if this.acctInfo}}
+        <a
+          href="/user/remove-data"
+          class="remove-dashboard-confirm-cancel btn-grey btn-small"
+        >{{getRemoveString "remove-dash-confirm-back"}}</a>
+        {{#if this.allowEditRemovalInfo}}
+        <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getRemoveString
+            "remove-dash-confirm-edit"
+          }}</a>
+        {{/if}}
+      {{else}}
+        <a href="#" class="js-confirm-edit-btn btn-blue btn-small">{{getRemoveString
+          "remove-dash-confirm-edit"
+        }}</a>
+      {{/if}}
+    </div>
+  </div>
+  {{#unless this.acctInfo}}
+  <div>
+    <p>
+      {{getRemoveString "remove-dash-confirm-subtext"}}
+      <a href='mailto:{{getRemoveString "remove-about-support-email"}}'>{{getRemoveString "remove-about-support-email"}}</a>
+    </p>
+  </div>
+  {{/unless}}
+  <div class="remove-dashboard-confirm-container">
+    <ul class="remove-dashboard-confirm-list">
+      <li class="remove-dashboard-confirm-item" data-id="fullname">
+        <span class="remove-dashboard-confirm-item-label">{{getRemoveString
+            "remove-dash-confirm-label-full"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry">
+          {{#if this.acctInfo.names.0.first_name}}{{this.acctInfo.names.0.first_name}}{{/if}}
+          {{#if this.acctInfo.names.0.middle_name}}{{this.acctInfo.names.0.middle_name}}{{/if}}
+          {{#if this.acctInfo.names.0.last_name}}{{this.acctInfo.names.0.last_name}}{{/if}}
+        </span>
+      </li>
+      <li class="remove-dashboard-confirm-item" data-id="account">
+        <span class="remove-dashboard-confirm-item-label">{{getRemoveString
+            "remove-dash-confirm-email"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry">
+          {{#if this.acctInfo.emails.0.email}}{{this.acctInfo.emails.0.email}}{{/if}}
+        </span>
+      </li>
+      <li class="remove-dashboard-confirm-item" data-id="location">
+        <span class="remove-dashboard-confirm-item-label">{{getRemoveString
+            "remove-dash-confirm-loc"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry">
+          {{#if this.acctInfo.addresses.0.city}}{{this.acctInfo.addresses.0.city}}, {{/if}}
+          {{#if this.acctInfo.addresses.0.state}}{{this.acctInfo.addresses.0.state}}{{/if}}
+        </span>
+      </li>
+      <li class="remove-dashboard-confirm-item" data-id="birthyear">
+        <span class="remove-dashboard-confirm-item-label">{{getRemoveString
+            "remove-dash-confirm-birthyear"
+          }}</span>
+        <span class="remove-dashboard-confirm-item-entry">
+          {{#if this.acctInfo.birth_year}}{{this.acctInfo.birth_year}}{{/if}}
+        </span>
+      </li>
+    </ul>
+  </div>
+  <div class="remove-dashboard-form-error --general"></div>
+  <div class="flx">
+    {{#if this.acctInfo}}
+      {{#if this.allowEditRemovalInfo}}
+      <a
+        href="#"
+        class="js-remove-confirm remove-dashboard-confirm-submit jst-cntr flx btn-blue-primary"
+        role="button"
+      >{{getConfirmSubmitText}}</a>
+      
+      {{else}}
+      <p>{{getRemoveString "remove-form-change-contact-msg"}}: <a href="mailto:{{ getRemoveString "remove-about-support-email"}}">{{ getRemoveString "remove-about-support-email"}}</a></p>
+      {{/if}}
+    {{else}}
+      <a
+        href="#"
+        class="js-remove-confirm remove-dashboard-confirm-submit jst-cntr flx btn-blue-primary"
+        role="button"
+      >{{getConfirmSubmitText}}</a>
+    {{/if}}
+  </div>
+  {{#if this.acctInfo}}
+  <div class="remove-dashboard-delete-container flx jst-cntr">
+    <a href="/user/remove-kan" class="remove-dashboard-delete-link btn-transparent btn-red btn-small">{{getRemoveString "remove-form-data-delete"}}</a>
+  </div>
+  {{/if}}
+
+</div>

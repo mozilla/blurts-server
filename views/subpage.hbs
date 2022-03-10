@@ -1,14 +1,14 @@
 {{!< default }}
 
-<section id="subpage" class="subpage container clear-header {{#ifCompare whichPartial "===" "subpages/confirm"}}email-confirmed{{/ifCompare}}" data-analytics-id="{{ analyticsID }}">
+<main id="subpage" class="subpage container clear-header {{#ifCompare whichPartial "===" "subpages/confirm"}}email-confirmed{{/ifCompare}}" data-analytics-id="{{ analyticsID }}">
   <section class="row-full-width flx-col">
-    <h2 class="subpage-headline" >{{{ headline }}}</h2>
+    {{#if headline}}<h2 class="subpage-headline" >{{{ headline }}}</h2>{{/if}}
     <p class="subpage-subhead">{{{ subhead }}}</p>
     {{#if whichPartial}}
       {{> (lookup . 'whichPartial') }}
     {{/if}}
   </section>
-</section>
+</main>
 {{#ifCompare whichPartial "===" "subpages/confirm"}}
   {{> take-back-control/take-back-control-banner additionalClasses="dash-take-back-wrapper"}}
 {{/ifCompare}}

@@ -1,0 +1,20 @@
+<main id="remove-delete-confirmation" class="remove-page js-dashboard dashboard clear-header flx flx-col" data-page-label="User Dashboard">
+  <div class="flx flx-col">
+    <div class="mw-860 flx flx-col remove-dashboard-section remove-success-section remove-form-deleted-section">
+      <div class="remove-form-deleted-content">
+        <h2 class="remove-form-deleted-title">{{ getRemoveString "remove-form-delete-title"}}</h2>
+        <p>{{ getRemoveString "remove-form-delete-details"}}</p>
+        {{#ifCompare removeSurveyLink "!==" ""}}
+        <div class="remove-form-deleted-survey">
+          <p>{{ getRemoveString "remove-form-delete-survey-context" }} <a class="remove-form-deleted-link" href="{{ removeSurveyLink}}">{{ getRemoveString "remove-form-delete-survey-request" }}</a> >></p>
+        </div>
+        {{/ifCompare  }}
+        <div class="flx jst-cntr">
+          <a class="remove-form-deleted-return-btn btn-grey btn-small" href="/">{{ getRemoveString "remove-form-delete-dashboard" }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{> dashboards/remove-form-kanary-footer}}
+</main>
+

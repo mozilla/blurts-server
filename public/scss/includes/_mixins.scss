@@ -1,0 +1,186 @@
+@mixin breakpoint($point) {
+  @if $point == xs {
+    @media (max-width: $bp-xs) {
+      @content;
+    }
+  }
+
+  @if $point == mobile {
+    @media (max-width: $bp-mobile) {
+      @content;
+    }
+  }
+
+  @if $point == tablet {
+    @media (max-width: $bp-tablet) {
+      @content;
+    }
+  }
+}
+
+@mixin col($number) {
+  @if $number == 2 {
+    flex: 1 1 16.6666667%;
+    max-width: 16.6666667%;
+    min-width: 16.6666667%;
+  }
+
+  @if $number == 3 {
+    flex: 1 1 25%;
+    max-width: 25%;
+    min-width: 25%;
+  }
+
+  @if $number == 4 {
+    flex: 1 1 33.33333334%;
+    min-width: 33.33333334%;
+    max-width: 33.33333334%;
+  }
+
+  @if $number == 6 {
+    flex: 1 1 50%;
+    min-width: 50%;
+    max-width: 50%;
+  }
+
+  @if $number == 12 {
+    flex: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@mixin ff-inter {
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", "Open Sans",
+    "Helvetica Neue", sans-serif;
+    font-display: swap;
+}
+
+@mixin ff-metropolis {
+  font-family: "Metropolis", sans-serif;
+  font-display: swap;
+}
+
+@mixin form-focus {
+  border: 1px solid rgb(40, 97, 205);
+  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+}
+
+@mixin button {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  border-width: 0;
+}
+
+@mixin blue-button {
+  @include button;
+
+  background-color: var(--blue3);
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: var(--blue4);
+  }
+}
+
+@mixin grey-button {
+  @include button;
+
+  background-color: var(--grey2);
+  color: var(--grey9);
+
+  &:hover,
+  &:focus {
+    background-color: var(--grey0);
+  }
+}
+
+@mixin dark-grey-button {
+  @include button;
+
+  background-color: var(--grey6);
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: var(--grey7);
+  }
+}
+
+@mixin red-button {
+  @include button;
+
+  background-color: var(--alertRed);
+  color: white;
+
+  &:hover,
+  &:focus {
+    background-color: var(--alertRedDark);
+  }
+}
+
+@mixin remove-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include ff-metropolis;
+
+  text-align: center;
+}
+
+@mixin remove-container {
+  background-color: white;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  margin-top: 72px;
+  border-radius: 8px;
+  position: relative;
+}
+
+@mixin default-link {
+  color: var(--blue3);
+
+  &:hover,
+  &:focus {
+    color: var(--blue4);
+    text-decoration: underline;
+  }
+
+  &:visited,
+  &:active {
+    color: var(--blue5);
+  }
+}
+
+@mixin blue-link {
+  &:not([class*="btn"]) {
+    @include default-link();
+
+    font-family: "Metropolis", sans-serif;
+    font-weight: 600;
+  }
+}
+
+@mixin toggle-item {
+  background-color: white;
+  border-radius: 8px;
+  padding: 32px 24px;
+  margin-top: 18px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+@mixin list-item-inside {
+  display: list-item;
+  list-style-position: inside;
+  margin-top: 10px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}

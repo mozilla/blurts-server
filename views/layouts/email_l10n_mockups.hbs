@@ -10,7 +10,8 @@
     <script type="text/javascript" src="/dist/app.min.js" defer></script>
 
     {{#if ENABLE_PONTOON_JS}}
-      <script src="https://pontoon.mozilla.org/pontoon.js"></script>
+      {{!-- MH TODO: the integrity and crossorigin fix a linting error but may not be desired - verify if needed for prod or just pilot --}}
+      <script src="https://pontoon.mozilla.org/pontoon.js" integrity="sha384-L18V3RJB0otzqEU0n8K0JKfi3xonJAHRAhoVgW2p6r3T99Zzo3GEICaoIuzwuuxV" crossorigin="anonymous"></script>
     {{/if}}
 
   </head>
@@ -56,6 +57,9 @@
           <a href="/email-l10n/?partial=report&type=noBreaches">Report with No Breaches</a>
           <a href="/email-l10n/?partial=report&type=breachAlert">Breach Alert</a>
           <a href="/email-l10n/?partial=pre-fxa&type=pre-fxa">Pre-FxA Subscriber</a>
+          {{!---DATA REMOVAL SPECIFIC ---}}
+          {{!-- MH TODO: Remove if not using separate data removal email --}}
+          <a href="/email-l10n/?partial=removal&type=removal-fxa">Data Removal</a>
         </nav>
       </div>
     </section>

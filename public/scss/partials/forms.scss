@@ -42,8 +42,8 @@ input[type="text"]:focus,
 input[type="radio"]:focus ~ .checkmark,
 input:focus,
 .radio-button-group:focus {
-  border: 1px solid rgb(40, 97, 205);
-  box-shadow: 0 0 0 1px rgb(63, 97, 217), 0 0 0 4px rgba(63, 97, 217, 0.3);
+  @include form-focus;
+
   outline: none;
 }
 
@@ -52,6 +52,7 @@ input:focus,
   max-width: 320px;
   margin: auto;
 }
+
 
 .input-group,
 .input-group-button {
@@ -81,7 +82,7 @@ input:focus,
   opacity: 0;
   background: rgba(215, 0, 34, 1);
   top: -7px;
-  content: '';
+  content: "";
   height: 16px;
   position: absolute;
   text-indent: -999px;
@@ -340,6 +341,57 @@ input[type="radio"]:focus ~ .checkmark {
 
 .create-fxa-checkbox-input:checked ~ .create-fxa-checkbox-checkmark::after {
   display: block;
+}
+
+//DATA REMOVAL SPECIFIC
+.field--full {
+  display: block;
+  width: 100%;
+}
+
+.input-group-label {
+  &.required {
+    &::before {
+      content: "*";
+      color: var(--alertRed);
+      margin-right: 8px;
+    }
+  }
+}
+
+.input-group-field {
+  font-size: 13px;
+  line-height: 21px;
+  color: var(--grey7);
+  padding: 16px;
+  border: 1px solid var(--grey4);
+  border-radius: var(--br-input);
+
+  &:not(:first-of-type) {
+    margin-left: 20px;
+  }
+
+  &::placeholder {
+    color: var(--grey5);
+  }
+}
+
+.input-group-select {
+  height: 100%;
+  border: 0;
+  padding: 16px 0;
+  margin: 0 16px;
+  outline: 0;
+  color: var(--grey5);
+  background-color: transparent;
+}
+
+.input-group-checkbox {
+  margin-right: 16px;
+}
+
+.input-group-multi {
+  display: flex;
 }
 
 @media screen and (max-width: 800px) {

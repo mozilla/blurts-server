@@ -1,0 +1,145 @@
+<li
+  class="remove-dash-results-list-item drop-shadow flx flx-col"
+  data-status="{{this.status}}"
+  data-step="{{this.current_step}}"
+  data-event-category="Removal"
+  data-broker="{{kebabCase this.broker}}"
+>
+  <div class="remove-dash-results-summary-container flx space-between">
+    <div class="remove-dash-results-site-container flx flx-cntr">
+      <img
+        src="{{this.filter.icon}}"
+        alt="{{getString this.filter.local_var}}"
+        class="remove-dash-results-list-icon {{lowerCase this.current_step}}"
+      />
+
+      <div class="remove-dash-results-site-name-container flx flx-col">
+        <h2 class="remove-dash-results-site-name">{{this.broker}}</h2>
+        {{#if this.details}}
+          <span class="remove-dash-results-site-details">{{this.details}}</span>
+        {{/if}}
+      </div>
+    </div>
+    <div class="remove-dash-results-status-container flx flx-cntr">
+      {{#if this.update_status}}
+        <div
+          class="remove-dash-results-status-time remove-dash-results-status-el hidden-mobile"
+        >
+          {{this.update_status}}
+        </div>
+      {{/if}}
+
+      <div
+        class="remove-dash-results-toggle-container remove-dash-results-status-el"
+      >
+        <button
+          id="{{kebabCase this.broker}}-btn"
+          class="remove-dash-results-toggle js-remove-dash-details-toggle"
+        >
+          <span class="sr-only">{{getRemoveString "remove-expand"}}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="remove-dash-results-details-container">
+    <ul class="remove-dash-results-details-list">
+      {{#if this.update_status}}
+        <li class="remove-dash-results-details-item mobile-only">
+          <p class="remove-dash-results-detail">{{getRemoveString "remove-result-updated" }}
+            {{this.update_status}}
+          </p>
+        </li>
+      {{/if}}
+      {{#if this.current_step_text}}
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
+          {{getRemoveString "remove-result-status"}}
+          {{> removal/removal-question-trigger modal="modal-remove-status" alt="About result status"}}
+        </p>
+        <p class="remove-dash-results-detail">
+          {{this.current_step_text}}
+        </p>
+      </li>
+      {{/if}}
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
+          {{getRemoveString "remove-result-details-found"}}
+          {{> removal/removal-question-trigger modal="modal-remove-info-found" alt="About info found"}}
+        </p>
+        <p class="remove-dash-results-detail">
+          {{trimRemoveInfo this}}
+        </p>
+      </li>
+      {{#if this.url}}
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
+          {{getRemoveString "remove-result-link"}}
+          {{> removal/removal-question-trigger modal="modal-remove-link" alt="About result link"}}
+        </p>
+        <div class="remove-dash-results-detail flx">
+          <ul>
+          {{#each this.url}}
+          <li class="remove-dash-results-link-item">
+            <button
+              class="remove-dash-results-detail-link break-word"
+              data-micromodal-trigger="modal-leaving-monitor"
+              data-link="{{this}}"
+              data-send-ga-ping
+              data-event-action="Click"
+              data-event-category="Removal"
+              data-event-label="{{../broker}}"
+            >{{getRemoveString "remove-result-link-title"}} {{incrementedIndex @index}}</button>
+          </li>
+          {{/each}}
+          </ul>
+        </div>
+      </li>
+      {{/if}}
+      {{#if this.description}}
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title">
+          {{getRemoveString "remove-result-description"}}
+        </p>
+        <p class="remove-dash-results-detail">{{this.description}}</p>
+      </li>
+      {{/if}}
+      {{#if this.risk_level}}
+      <li class="remove-dash-results-details-item flx flx-col align-start">
+        <p class="remove-dash-results-detail-title flx jst-cntr">
+          {{getRemoveString "remove-risk-title"}}
+          {{> removal/removal-question-trigger modal="modal-remove-risk" alt="About result risk"}}
+        </p>
+        <p class="remove-dash-results-detail">
+          <span class="bold">
+          {{#ifCompare this.risk_level "===" "HIGH"}}{{getRemoveString "remove-risk-high"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-risk-medium"}}: {{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-risk-low"}}: {{/ifCompare}}
+          </span>
+          {{#ifCompare this.risk_level "===" "HIGH"}}{{getRemoveString "remove-about-risk-high-content"}}{{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "MEDIUM"}}{{getRemoveString "remove-about-risk-medium-content"}}{{/ifCompare}}
+          {{#ifCompare this.risk_level "===" "LOW"}}{{getRemoveString "remove-about-risk-low-content"}}{{/ifCompare}}
+        </p>
+      </li>
+      {{/if}}
+      {{#ifCompare this.current_step "===" "BLOCKED"}}
+        <li class="remove-dash-results-details-item flx flx-col align-start">
+          <p class="remove-dash-results-detail-title flx jst-cntr">
+            {{getRemoveString "remove-result-manual"}}
+            {{> removal/removal-question-trigger modal="modal-remove-manual" alt=(getRemoveString "remove-result-manual")}}
+          </p>
+          <p class="remove-dash-results-detail">
+            <a
+              href="{{getOptOutLink this.opt_out}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="break-word"
+              data-event-category="Removal"
+              data-ga-link
+              data-event-label="{{this.broker}}"
+            >{{this.opt_out}}</a>
+          </p>
+        </li>
+      {{/ifCompare}}
+    </ul>
+  </div>
+</li>

@@ -9,8 +9,7 @@ require("intl-pluralrules");
 const { FluentBundle } = require("fluent");
 
 const mozlog = require("./log");
-const {supportedLocales} = require("./package.json");
-
+const { supportedLocales } = require("./package.json");
 
 const log = mozlog("locale-utils");
 
@@ -19,6 +18,9 @@ const localesDir = "locales";
 const availableLanguages = [];
 const fluentBundles = {};
 
+//DATA REMOVAL SPECIFIC
+const removeLocalesDir = "remove_en";
+const removeBundles = {};
 
 class FluentError extends Error {
   constructor(fluentID = null, ...params) {
@@ -33,42 +35,67 @@ class FluentError extends Error {
   }
 }
 
-
 const LocaleUtils = {
   init() {
     let languageDirectories = supportedLocales.split(",");
     if (supportedLocales === "*") {
-      languageDirectories = fs.readdirSync( localesDir ).filter(item => {
-        return (!item.startsWith(".") && fs.lstatSync(path.join(localesDir, item)).isDirectory());
+      languageDirectories = fs.readdirSync(localesDir).filter((item) => {
+        return (
+          !item.startsWith(".") &&
+          fs.lstatSync(path.join(localesDir, item)).isDirectory()
+        );
       });
     }
     for (const lang of languageDirectories) {
       try {
-        const langBundle = new FluentBundle(lang, {useIsolating: false});
-        const ftlFiles = fs.readdirSync(path.join(localesDir, lang)).filter(item => {
-          return (item.endsWith(".ftl"));
-        });
+        const langBundle = new FluentBundle(lang, { useIsolating: false });
+        const ftlFiles = fs
+          .readdirSync(path.join(localesDir, lang))
+          .filter((item) => {
+            return item.endsWith(".ftl");
+          });
         for (const file of ftlFiles) {
-          const langFTLSource = fs.readFileSync(path.join(localesDir, lang, file), "utf8");
+          const langFTLSource = fs.readFileSync(
+            path.join(localesDir, lang, file),
+            "utf8"
+          );
           langBundle.addMessages(langFTLSource);
         }
         fluentBundles[lang] = langBundle;
         availableLanguages.push(lang);
       } catch (e) {
-        log.error("loadFluentBundle", {stack: e.stack});
+        log.error("loadFluentBundle", { stack: e.stack });
       }
     }
-    log.info("LocaleUtils.init", {availableLanguages});
-    log.info("LocaleUtils.init", {fluentBundles});
-    return {availableLanguages, fluentBundles};
+    log.info("LocaleUtils.init", { availableLanguages });
+    log.info("LocaleUtils.init", { fluentBundles });
+
+    //return { availableLanguages, fluentBundles };  //MH TODO: reinstate for prod. monitor
+
+    //DATA REMOVAL SPECIFIC
+    const removeLang = "en";
+    const removeFile = "remove.ftl";
+    const removeBundleEn = new FluentBundle(removeLang, {
+      useIsolating: false,
+    });
+    const removeFTLSource = fs.readFileSync(
+      path.join(removeLocalesDir, removeFile),
+      "utf8"
+    );
+    removeBundleEn.addMessages(removeFTLSource);
+    removeBundles[removeLang] = removeBundleEn;
+    log.info("LocaleUtils.init", { removeBundles });
+    return { availableLanguages, fluentBundles, removeBundles }; //DATA REMOVAL SPECIFIC
+    //END DATA REMOVAL SPECIFIC
   },
 
-  loadLanguagesIntoApp (app) {
+  loadLanguagesIntoApp(app) {
     app.locals.AVAILABLE_LANGUAGES = availableLanguages;
     app.locals.FLUENT_BUNDLES = fluentBundles;
+    app.locals.REMOVE_BUNDLE = removeBundles; //DATA REMOVAL SPECIFIC
   },
 
-  fluentFormat (supportedLocales, id, args=null, errors=null) {
+  fluentFormat(supportedLocales, id, args = null, errors = null) {
     for (const locale of supportedLocales) {
       const bundle = fluentBundles[locale];
       if (bundle.hasMessage(id)) {
@@ -79,7 +106,13 @@ const LocaleUtils = {
     return id;
   },
 
-  fluentFormatWithFallback (supportedLocales, id, fallbackId, args=null, errors=null) {
+  fluentFormatWithFallback(
+    supportedLocales,
+    id,
+    fallbackId,
+    args = null,
+    errors = null
+  ) {
     if (!fallbackId) {
       log.error("fluentFormatWithFallback: No fallbackId");
       return false;
@@ -101,6 +134,16 @@ const LocaleUtils = {
     return id;
   },
 
+  //DATA REMOVAL SPECIFIC
+  formatRemoveString(id) {
+    const removeLang = "en";
+    const bundle = removeBundles[removeLang];
+    if (bundle.hasMessage(id)) {
+      const message = bundle.getMessage(id);
+      return bundle.format(message);
+    }
+    return id;
+  },
 };
 
 module.exports = {

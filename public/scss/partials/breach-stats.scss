@@ -10,6 +10,7 @@
   background-color: var(--violet5);
 }
 
+
 .breach-stat-number,
 .stat-headline {
   color: rgba(255, 255, 255, 1);
@@ -28,6 +29,7 @@
   max-width: 31.25%;
   border-radius: 8px;
 }
+  
 
 .stat-row-title-wrap {
   display: flex;
@@ -168,9 +170,11 @@ progress.progress-bar::-webkit-progress-value {
   }
 
   .breach-stat-number {
+    max-width: 100%;
     width: auto;
     font-size: 30px;
   }
+
 }
 
 @media screen and (max-width: 600px) {
@@ -182,6 +186,7 @@ progress.progress-bar::-webkit-progress-value {
     flex-direction: column;
     text-align: center;
   }
+  
 }
 
 @media screen and (max-width: 550px) {

@@ -4,8 +4,8 @@ const { LocaleUtils } = require("./../locale-utils");
 
 function getSecurityTipsIntro() {
   return [
-      "Data breaches are becoming more common. Finding out you were part of one usually includes a long list of compromised information, such as your password, username, and email address. What does that mean for your internet safety? What should you do? Learn how you can take control after a data breach and better protect your devices, online accounts, and personal data from cyber criminals.",
-    ];
+    "Data breaches are becoming more common. Finding out you were part of one usually includes a long list of compromised information, such as your password, username, and email address. What does that mean for your internet safety? What should you do? Learn how you can take control after a data breach and better protect your devices, online accounts, and personal data from cyber criminals.",
+  ];
 }
 
 const articleCopy = {
@@ -13,7 +13,7 @@ const articleCopy = {
     paragraphs: [
       {
         dropCap: "F",
-        leads : [
+        leads: [
           "orget about those hackers in movies trying to crack the code on someone’s computer to get their top-secret files. The hackers responsible for data breaches usually start by targeting companies, rather than specific individuals. They want to get data from as many people as possible so they can use, resell, or leverage it to make money. It all starts with getting your password.",
         ],
       },
@@ -29,7 +29,7 @@ const articleCopy = {
         paragraphs: [
           "Some data — like banking information, bank card numbers, government-issued ID numbers, and PIN numbers — is valuable because it can be used to steal the victim’s identity or withdraw money. Email addresses and passwords are also valuable because hackers can try them on other accounts. All sorts of data can be valuable in some way because it can be sold on the dark web for a profit or kept for some future use.",
         ],
-        },
+      },
       {
         subhead: "Common passwords make a hacker’s work easy.",
         paragraphs: [
@@ -49,8 +49,8 @@ const articleCopy = {
         paragraphs: [
           "Hackers know people reuse the same passwords. If your banking password is the same as your email password is the same as your Amazon password, a single vulnerability in one site can put the others at risk.",
           "It’s why you should use different passwords for every single account. The average person has 90 accounts, and that’s a lot of passwords to remember. Security experts recommend using a password manager to safely store unique passwords for every site.",
-          ],
-        },
+        ],
+      },
       {
         subhead: "Hackers don’t care how much money you have.",
         paragraphs: [
@@ -71,40 +71,42 @@ const articleCopy = {
         ],
       },
       {
-      toggles: [
-        {
-          subhead: "Read the details about the breach.",
-          paragraphs: [
-            "Read closely to learn what happened. What personal data of yours was included? Your next steps will depend on what information you need to protect. When did the breach happen? You may receive the notice months or even years after the data breach occurred. Sometimes it takes awhile for companies to discover a breach. Sometimes breaches are not immediately made public.",
-          ],
-        },
-        {
-          subhead: "If you haven’t yet, change your password.",
-          paragraphs: [
-            "Lock down your account with a new password. If you can’t log in, contact the website to ask how you can recover or shut down the account. See an account you don’t recognize? The site may have changed names or someone may have created an account for you.",
-          ],
-        },
-        {
-          subhead: "If you’ve used that password for other accounts, change those too.",
-          paragraphs: [
-            "Hackers may try to reuse your exposed password to get into other accounts. Create a different password for each website, especially for your financial accounts, email account, and other websites where you save personal information.",
-          ],
-        },
-        {
-          subhead: "Take extra steps if your financial data was breached.",
-          paragraphs: [
-            "Many breaches expose emails and passwords, but some do include sensitive financial information. If your bank account or credit card numbers were included in a breach, alert your bank to possible fraud. Monitor statements for charges you don't recognize.",
-          ],
-        },
-        {
-          subhead: "Review your credit reports to catch identity theft.",
-          paragraphs: [
-            "If you have credit history in the United States, check your credit reports for suspicious activity. Ensure that no new accounts, loans, or cards have been opened in your name. By law, you’re permitted to one free report from the three major credit reporting bureaus every year. Request them through annualcreditreport.com. And don’t worry, checking your own credit report never affects your score.",
-          ],
-        },
-      ],
-    },
-  ]},
+        toggles: [
+          {
+            subhead: "Read the details about the breach.",
+            paragraphs: [
+              "Read closely to learn what happened. What personal data of yours was included? Your next steps will depend on what information you need to protect. When did the breach happen? You may receive the notice months or even years after the data breach occurred. Sometimes it takes awhile for companies to discover a breach. Sometimes breaches are not immediately made public.",
+            ],
+          },
+          {
+            subhead: "If you haven’t yet, change your password.",
+            paragraphs: [
+              "Lock down your account with a new password. If you can’t log in, contact the website to ask how you can recover or shut down the account. See an account you don’t recognize? The site may have changed names or someone may have created an account for you.",
+            ],
+          },
+          {
+            subhead:
+              "If you’ve used that password for other accounts, change those too.",
+            paragraphs: [
+              "Hackers may try to reuse your exposed password to get into other accounts. Create a different password for each website, especially for your financial accounts, email account, and other websites where you save personal information.",
+            ],
+          },
+          {
+            subhead: "Take extra steps if your financial data was breached.",
+            paragraphs: [
+              "Many breaches expose emails and passwords, but some do include sensitive financial information. If your bank account or credit card numbers were included in a breach, alert your bank to possible fraud. Monitor statements for charges you don't recognize.",
+            ],
+          },
+          {
+            subhead: "Review your credit reports to catch identity theft.",
+            paragraphs: [
+              "If you have credit history in the United States, check your credit reports for suspicious activity. Ensure that no new accounts, loans, or cards have been opened in your name. By law, you’re permitted to one free report from the three major credit reporting bureaus every year. Request them through annualcreditreport.com. And don’t worry, checking your own credit report never affects your score.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
   "strong-passwords": {
     paragraphs: [
       {
@@ -140,8 +142,10 @@ const articleCopy = {
               "The word “Password,” or any variation of it. That includes P@assword!",
             ],
             securityTip: {
-              tipHeadline: "<span class='bold'>SECURITY TIP</span> Steer clear of the 100 most-used passwords.",
-              tipSubhead: "Every year, SplashData evaluates millions of leaked passwords and compiles the <a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/'>100 most common ones.</a> The most recent list includes password, 123456, and other passwords you shouldn’t use. ",
+              tipHeadline:
+                "<span class='bold'>SECURITY TIP</span> Steer clear of the 100 most-used passwords.",
+              tipSubhead:
+                "Every year, SplashData evaluates millions of leaked passwords and compiles the <a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://www.teamsid.com/splashdatas-top-100-worst-passwords-of-2018/'>100 most common ones.</a> The most recent list includes password, 123456, and other passwords you shouldn’t use. ",
             },
           },
           {
@@ -157,23 +161,24 @@ const articleCopy = {
               "Do you really need to remember 100 passwords? Not at all. A password manager is a piece of software that keeps all your password safe, encrypted, and protected. It can even generate strong passwords for you and automatically enter them in to websites and apps.",
               "Password managers act like a digital safe-deposit box for all your online accounts. You just need one key to get into your accounts: A single, easy-to-remember but hard-to-guess password. That password unlocks the safe.",
               "But what if your password manager gets hacked? A good one keeps your passwords encrypted behind a password they don’t know (only you do). They don’t store any of your credentials on their servers. While no single tool can guarantee total online safety, security experts agree that using a password manager is far more secure than using the same password everywhere.",
-              ],
-            },
-            {
-              subhead: "Add an extra layer of security with two-factor authentication.",
-              paragraphs: [
-                "Many websites offer two-factor authentication, also known as 2FA or multi-factor authentication. On top of your username and password, 2FA requires another piece of information to verify yourself. So, even if someone has your password, they can’t get in.",
-                "Withdrawing money from an ATM is an example of 2FA. It requires your PIN code and your bank card. You need these two pieces to complete the transaction.",
-                "<a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://2fa.directory/'>Websites that support 2FA</a> include Google and Amazon. When you have 2FA enabled, the site will text you a code to enter after your password. Other forms of 2FA include YubiKeys USB ports and security apps like DUO. ",
-                "When you set up 2FA, many sites will give you a list of backup codes to verify your account. A password manager is a great place to store these codes.",
-              ],
-            },
-          ],
-        },
-        {
-          passwordDosAndDonts: {
+            ],
+          },
+          {
+            subhead:
+              "Add an extra layer of security with two-factor authentication.",
+            paragraphs: [
+              "Many websites offer two-factor authentication, also known as 2FA or multi-factor authentication. On top of your username and password, 2FA requires another piece of information to verify yourself. So, even if someone has your password, they can’t get in.",
+              "Withdrawing money from an ATM is an example of 2FA. It requires your PIN code and your bank card. You need these two pieces to complete the transaction.",
+              "<a class='st-copy-link' target='_blank' rel='noopener noreferer' href='https://2fa.directory/'>Websites that support 2FA</a> include Google and Amazon. When you have 2FA enabled, the site will text you a code to enter after your password. Other forms of 2FA include YubiKeys USB ports and security apps like DUO. ",
+              "When you set up 2FA, many sites will give you a list of backup codes to verify your account. A password manager is a great place to store these codes.",
+            ],
+          },
+        ],
+      },
+      {
+        passwordDosAndDonts: {
           listHeadline: "Password do’s and don’ts",
-          doDontList : [
+          doDontList: [
             {
               do: "Do use different passwords everywhere. Password managers and many browsers can generate secure and unique passwords.",
               dont: "Don’t use variations of the same password for different accounts.",
@@ -228,7 +233,8 @@ const articleCopy = {
             ],
           },
           {
-            subhead: "Run software and app updates as soon as they’re available.",
+            subhead:
+              "Run software and app updates as soon as they’re available.",
             paragraphs: [
               "Updating software on your computer or phone can seem like a pain, but it’s a crucial step to keeping devices safe. These updates fix bugs, software vulnerabilities, and security problems. Regularly updating your smartphone apps and operating systems makes your devices more secure.",
             ],
@@ -243,12 +249,15 @@ const articleCopy = {
           },
           {
             securityTip: {
-              tipHeadline: "<span class='bold'>SECURITY TIP</span> Turn on automatic updates.",
-              tipSubhead: "You can set your computer, browser, apps, and phone to update automatically as soon as new updates become available. Set it and forget it!",
+              tipHeadline:
+                "<span class='bold'>SECURITY TIP</span> Turn on automatic updates.",
+              tipSubhead:
+                "You can set your computer, browser, apps, and phone to update automatically as soon as new updates become available. Set it and forget it!",
             },
           },
           {
-            subhead: "Be vigilant about emails that seem even a little bit strange.",
+            subhead:
+              "Be vigilant about emails that seem even a little bit strange.",
             paragraphs: [
               "Phishing is a type of email scam that is becoming increasingly common. In these emails, hackers impersonate a service or company you trust. These emails can even come from one of your contacts. They look like the real thing because they mimic the design of authentic emails, like those from your bank or email provider.",
               "The goal of these hackers is to get you to unknowingly enter your password or download a document that can infect your computer. Most online services won’t ask you to enter your login info directly from an email. If they do, you should instead go directly to their website to log in.",
@@ -263,7 +272,8 @@ const articleCopy = {
               "Asks you to log in from the email itself",
               "Asks you to open or download a file that you don’t recognize",
             ],
-            warning: "Clicked on a phishing email? Contact your email administrator right away for next steps. Do this before sending or opening any other emails. The faster you report it, the faster the damage can be mitigated.",
+            warning:
+              "Clicked on a phishing email? Contact your email administrator right away for next steps. Do this before sending or opening any other emails. The faster you report it, the faster the damage can be mitigated.",
           },
           {
             subhead: "Be selective about who you give your email address to.",
@@ -283,8 +293,10 @@ const articleCopy = {
               "Your passwords also need to be strong. Single words (like sunshine, monkey, or football) make for weak passwords. So do these 100 most-commonly used passwords, which include password and 123456. Avoid pop-culture references, sports teams, and personal info. Do not use your address, birthday, names of family members, or pets’ names. The longer and more unique your passwords are, the harder they will be for hackers to crack.",
             ],
             securityTip: {
-              tipHeadline: "<span class='bold'>SECURITY TIP</span> How to create strong passwords",
-              tipSubhead: "Include a combination of upper and lowercase letters, numbers, and characters. Combining a few unrelated words and changing the letters is a good method. <a class='st-link' href='#strong-passwords'>Read the guide</a>",
+              tipHeadline:
+                "<span class='bold'>SECURITY TIP</span> How to create strong passwords",
+              tipSubhead:
+                "Include a combination of upper and lowercase letters, numbers, and characters. Combining a few unrelated words and changing the letters is a good method. <a class='st-link' href='#strong-passwords'>Read the guide</a>",
             },
           },
           {
@@ -292,16 +304,18 @@ const articleCopy = {
             paragraphs: [
               "Ever forgotten your password? It happens all the time. The average person has 90 online accounts. And we’re being asked to create new ones all the time.",
               "The good news is you don’t have to recall all your passwords from memory. Password managers are secure, easy-to-use applications that do the remembering for you. They even fill your passwords into websites and apps when you need to log in. All you need to remember is a single password — the one you use to unlock your password manager. They can even generate hard-to-guess passwords to help make your accounts more secure. All your data is encrypted, making password managers pretty secure — even if they get hacked.",
-              ],
+            ],
             securityTip: {
               tipHeadline: "<span class='bold'>SECURITY TIP</span>",
-              tipSubhead: "Firefox recommends 1Password, LastPass, Dashlane, and Bitwarden for security and ease of use.",
+              tipSubhead:
+                "Firefox recommends 1Password, LastPass, Dashlane, and Bitwarden for security and ease of use.",
             },
           },
           {
             securityTip: {
               tipHeadline: "<span class='bold'>SECURITY TIP</span>",
-              tipSubhead: "Still wary of password managers? What’s most important is that you use different passwords everywhere. To remember them, write down your passwords and store them in a safe place that only you have access to.",
+              tipSubhead:
+                "Still wary of password managers? What’s most important is that you use different passwords everywhere. To remember them, write down your passwords and store them in a safe place that only you have access to.",
             },
           },
         ],
@@ -315,17 +329,18 @@ const articleCopy = {
           "Password managers are the most recommended tool by security experts to protect your online credentials from hackers. But many people are still hesitant to use them. Here’s why password managers are safe, secure, and your best defense against password-hungry cyber criminals.",
         ],
       },
-        {
-          subhead: "What is a password manager?",
-          paragraphs: [
-            "Think of it like a safe for your passwords. When you need something inside the safe, you unlock it. Password managers work the same for your online credentials.",
-            "You create a single, super-strong password, which acts like a key. Install the password manager app on your phone, computer, browser, and other devices. Your passwords are securely stored inside. Anytime you need to log in to an account, unlock your password manager and retrieve your login info.",
-          ],
-        },
+      {
+        subhead: "What is a password manager?",
+        paragraphs: [
+          "Think of it like a safe for your passwords. When you need something inside the safe, you unlock it. Password managers work the same for your online credentials.",
+          "You create a single, super-strong password, which acts like a key. Install the password manager app on your phone, computer, browser, and other devices. Your passwords are securely stored inside. Anytime you need to log in to an account, unlock your password manager and retrieve your login info.",
+        ],
+      },
       {
         toggles: [
           {
-            subhead: "<span class='myth'>Myth 1:</span> Password managers aren’t safe or trustworthy.",
+            subhead:
+              "<span class='myth'>Myth 1:</span> Password managers aren’t safe or trustworthy.",
             paragraphs: [
               "With website vulnerabilities and security incidents on the rise, many people have grown to mistrust a tech tool to manage their passwords. What if the password manager gets hacked?",
               "Reputable password managers take extra steps to lock down your info and keep it safe from cyber criminals.",
@@ -343,7 +358,8 @@ const articleCopy = {
       {
         toggles: [
           {
-            subhead: "<span class='myth'>Myth 2:</span> Password managers aren’t 100% secure, so I shouldn’t use one.",
+            subhead:
+              "<span class='myth'>Myth 2:</span> Password managers aren’t 100% secure, so I shouldn’t use one.",
             paragraphs: [
               "No tool can completely guarantee your online safety. Even the most elaborate lock can be broken into. Yet we still lock our doors to our houses and cars. ",
               "The alternative to using a password manager is to rely on your own memory to remember all your credentials. This inevitably leads to recycling passwords or using variations — a bad habit that hackers love.",
@@ -351,20 +367,23 @@ const articleCopy = {
             ],
           },
           {
-            subhead: "<span class='myth'>Myth 3:</span> Storing all my passwords in one place makes them vulnerable to hackers.",
+            subhead:
+              "<span class='myth'>Myth 3:</span> Storing all my passwords in one place makes them vulnerable to hackers.",
             paragraphs: [
               "Password managers don’t store all your credentials together in one place. Any data you store in a password manager — passwords, logins, security questions, and other sensitive info — is securely encrypted. Even if the password manager gets hacked, cyber criminals would not be able to see your logins.",
               "The only way to access your data is with a single primary password that only you know. You use this password to unlock the manager on your computer, phone, or other devices. Once it’s unlocked, a password manager can fill in your logins to websites and apps.",
             ],
           },
           {
-            subhead: "<span class='myth'>Myth 4:</span> Remembering all my passwords is safer than trusting technology to do it for me.",
+            subhead:
+              "<span class='myth'>Myth 4:</span> Remembering all my passwords is safer than trusting technology to do it for me.",
             paragraphs: [
               "Our memories sometimes fail us. Ever clicked a “forgot password?” link? It’s very common to use variations of the same password to make them easier to remember. With a password manager, you don’t need to remember any of your credentials. It can be installed on all your devices and will auto-fill your passwords for you. Once you get in the habit of using one, you’ll no longer have to worry about forgetting your credentials.",
             ],
           },
           {
-            subhead: "<span class='myth'>Myth 5:</span> It’s a huge pain to set up a password manager.",
+            subhead:
+              "<span class='myth'>Myth 5:</span> It’s a huge pain to set up a password manager.",
             paragraphs: [
               "Sure, it takes time to log all your credentials in a password manager. But you don’t need to do it all at once. You can always start small and change just a few passwords at a time. Try installing a password manager and creating new, unique passwords for the websites you visit most frequently. Over time, as you log in to other sites, you can add others.",
             ],
@@ -433,7 +452,8 @@ const articleCopy = {
         ],
       },
       {
-        subhead: "Next step: Block unauthorized access to your credit report with a credit freeze. ",
+        subhead:
+          "Next step: Block unauthorized access to your credit report with a credit freeze. ",
         paragraphs: [
           "Placing a freeze on your credit report is the most effective method to stop identity thieves in their tracks. It’s completely free with all three bureaus and will not affect your credit cards, credit report, or credit score. You can continue using your cards as you were before.",
           "Freezing your credit report means only you can apply for new cards or loans. No one else will be able to do this in your name. It’s like putting a lock on your credit report, and only you have the key. You can unlock (or unfreeze) your credit report at any time. For example, you may want to open a new credit card. You can temporarily lift the freeze to do so, then refreeze your credit report again after.",
@@ -442,12 +462,11 @@ const articleCopy = {
       },
     ],
   },
-
 };
 
 function getArticleCopy(args) {
   const articles = articleLinks(args);
-  articles.forEach(article => {
+  articles.forEach((article) => {
     const articleName = article["class"];
     article["copy"] = articleCopy[articleName].paragraphs;
   });
@@ -457,50 +476,62 @@ function getArticleCopy(args) {
 
 function articleLinks(args) {
   const locales = args.data.root.req.supportedLocales;
-  const articleLinks = [
-    {
-      title: "Understand how hackers work",
-      stringId: LocaleUtils.fluentFormat(locales, "how-hackers-work"),
-      class: "how-hackers-work",
-      pathToPartial: "svg/icon-hackers",
-      subhead: LocaleUtils.fluentFormat(locales, "how-hackers-work-desc"),
 
-    },
-    {
-      title: "What to do after a data breach",
-      stringId: LocaleUtils.fluentFormat(locales,"what-to-do-after-breach"),
-      class: "after-breach",
-      pathToPartial: "svg/icon-at",
-      subhead: LocaleUtils.fluentFormat(locales,"what-to-do-after-breach-desc"),
-    },
-    {
-      title: "How to create strong passwords",
-      stringId: LocaleUtils.fluentFormat(locales,"create-strong-passwords"),
-      class: "strong-passwords",
-      pathToPartial: "svg/icon-password",
-      subhead: LocaleUtils.fluentFormat(locales,"create-strong-passwords-desc"),
-    },
-    {
-      title: "Steps to take to protect your identity online",
-      stringId: LocaleUtils.fluentFormat(locales,"steps-to-protect"),
-      class: "steps-to-protect",
-      pathToPartial: "svg/icon-fingerprinters",
-      subhead: LocaleUtils.fluentFormat(locales,"steps-to-protect-desc"),
-    },
-    {
-      title: "5 myths about password managers",
-      stringId: LocaleUtils.fluentFormat(locales,"five-myths"),
-      class: "five-myths",
-      pathToPartial: "svg/icon-myths",
-      subhead: LocaleUtils.fluentFormat(locales,"five-myths-desc"),
-    },
-    {
-      title: "Take further steps to protect your identity",
-      stringId: LocaleUtils.fluentFormat(locales,"take-further-steps"),
-      class: "next-steps",
-      pathToPartial: "svg/icon-trackers",
-      subhead: LocaleUtils.fluentFormat(locales, "take-further-steps-desc"),
-    },
+  const articleLinkHackers = {
+    title: "Understand how hackers work",
+    stringId: LocaleUtils.fluentFormat(locales, "how-hackers-work"),
+    class: "how-hackers-work",
+    pathToPartial: "svg/icon-hackers",
+    subhead: LocaleUtils.fluentFormat(locales, "how-hackers-work-desc"),
+  };
+
+  const articleLinkBreach = {
+    title: "What to do after a data breach",
+    stringId: LocaleUtils.fluentFormat(locales, "what-to-do-after-breach"),
+    class: "after-breach",
+    pathToPartial: "svg/icon-at",
+    subhead: LocaleUtils.fluentFormat(locales, "what-to-do-after-breach-desc"),
+  };
+
+  const articleLinkPasswords = {
+    title: "How to create strong passwords",
+    stringId: LocaleUtils.fluentFormat(locales, "create-strong-passwords"),
+    class: "strong-passwords",
+    pathToPartial: "svg/icon-password",
+    subhead: LocaleUtils.fluentFormat(locales, "create-strong-passwords-desc"),
+  };
+
+  const articleLinkIdentity = {
+    title: "Steps to take to protect your identity online",
+    stringId: LocaleUtils.fluentFormat(locales, "steps-to-protect"),
+    class: "steps-to-protect",
+    pathToPartial: "svg/icon-fingerprinters",
+    subhead: LocaleUtils.fluentFormat(locales, "steps-to-protect-desc"),
+  };
+
+  const articleLinkMyths = {
+    title: "5 myths about password managers",
+    stringId: LocaleUtils.fluentFormat(locales, "five-myths"),
+    class: "five-myths",
+    pathToPartial: "svg/icon-myths",
+    subhead: LocaleUtils.fluentFormat(locales, "five-myths-desc"),
+  };
+
+  const articleLinkNextSteps = {
+    title: "Take further steps to protect your identity",
+    stringId: LocaleUtils.fluentFormat(locales, "take-further-steps"),
+    class: "next-steps",
+    pathToPartial: "svg/icon-trackers",
+    subhead: LocaleUtils.fluentFormat(locales, "take-further-steps-desc"),
+  };
+
+  const articleLinks = [
+    articleLinkHackers,
+    articleLinkBreach,
+    articleLinkPasswords,
+    articleLinkIdentity,
+    articleLinkMyths,
+    articleLinkNextSteps,
   ];
 
   return articleLinks;

@@ -1,0 +1,28 @@
+.remove-kan {
+  &__card-container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &__container {
+    @include remove-container;
+    /* stylelint-disable-next-line */
+    margin-top: 0;
+  }
+
+  &__btn-confirm,
+  &__btn-nevermind {
+    height: 60px;
+  }
+
+  &__btn-confirm {
+    flex-grow: 1;
+  }
+
+  &__btn-nevermind {
+    margin-right: 10px;
+    flex-grow: 0;
+    padding-left: 36px;
+    padding-right: 36px;
+  }
+}

@@ -1,0 +1,74 @@
+.remove-dashboard-confirm {
+  display: none;
+
+  .js-remove-dashboard-container[data-confirm="true"] & {
+    display: block;
+  }
+
+  &-container {
+    margin-top: 8px;
+    background-color: var(--grey2);
+    padding: 16px 24px;
+    border-radius: 4px;
+  }
+
+  &-item,
+  &-item-label,
+  &-item-entry {
+    display: block;
+  }
+
+  &-item:not(:first-child) {
+    margin-top: 20px;
+  }
+
+  &-item-label {
+    font-size: 12px;
+    color: var(--grey8);
+  }
+
+  &-item-entry {
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--grey7);
+    word-break: break-all;
+  }
+
+  &-cancel {
+    margin-right: 10px;
+  }
+
+  &-submit {
+    color: white !important;
+    max-width: 100%;
+    margin-top: 30px;
+
+    &:hover {
+      text-decoration: none !important;
+    }
+  }
+
+  &-review-container {
+    align-items: center;
+
+    @include breakpoint(xs) {
+      flex-direction: column;
+    }
+  }
+
+  &-review-btns {
+    @include breakpoint(xs) {
+      margin-top: 10px;
+    }
+    a:only-child {
+      margin-right: 0;
+    }
+  }
+
+  &-review-title {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--grey7);
+    margin: 0;
+  }
+}

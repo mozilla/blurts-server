@@ -15,11 +15,13 @@
     <meta name="twitter:description" content="{{getString "share-twitter"}}" />
     <title>{{ title }}</title>
     {{#if ENABLE_PONTOON_JS}}
-      <script src="https://pontoon.mozilla.org/pontoon.js"></script>
+      {{!-- MH TODO: the integrity and crossorigin fix a linting error but may not be desired - verify if needed for prod or just pilot --}}
+      <script src="https://pontoon.mozilla.org/pontoon.js" integrity="sha384-L18V3RJB0otzqEU0n8K0JKfi3xonJAHRAhoVgW2p6r3T99Zzo3GEICaoIuzwuuxV" crossorigin="anonymous"></script>
     {{/if}}
     <link rel="icon" href="/img/favicons/favicon-64.png" sizes="64x64" />
     <link rel="icon" href="/img/favicons/favicon-128.png" sizes="128x128" />
     <link rel="icon" href="/img/favicons/favicon-256.png" sizes="256x256" />
+    <link rel="apple-touch-icon" href="/img/favicons/favicon-192.png" sizes="192x192" />
   </head>
   <body {{> analytics/default_dataset }} data-bento-app-id="fx-monitor"
     {{#if utmOverrides.campaignName }} {{> analytics/share }} {{/if}} >
