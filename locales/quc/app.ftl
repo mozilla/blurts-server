@@ -77,7 +77,9 @@ sign-out = Utz'apixik kemchak
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Rilawachixik{ -brand-fxa }
 have-an-account = ¿La k'o akemb'i'aj?
-fxa-pwt-summary-2 = Le taq nitz' retokib'al le xa jun tukelal tzij man k'ax ta uriqik chi kech e b'ank'ax.
+fxa-pwt-summary-2 =
+    Le taq nitz'aq utukelal tzij rech retokib'al man k'ax taj uriqitajik kumal e b'ank'ax. 
+    Chakojo' keb' tzij xuquje' chaxolo' taq tz'ib', taq ajilab'al, xuquje' ucholajil taq tzib'.
 fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, LastPass, Dashlane, chi'l Bitwarden kkik'ol taq Taq retokib'al chi'l unojisaxik pa taq uk'olib'al web', xuquje' katkito' chech utzukuxik chajital taq retokib'al.
 fxa-pwt-summary-6 = Le taq retztaqan rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' retztaqan rech taq juq'attzij, { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
 fxa-what-to-do-blurb-1 = We man ktkowin taj kamajij kemchak, chach'ab'ej le uk'olib'al web' kata chech jas kab'an chech uk'ak'arisaxik. ¿kawil jun kemb'i'aj le man aweta'am ta uwach? Wene xa xe'ek'ayix b'i le taq ajuq'attzij on jachatal chi jumul. Wa' xuquje' wene jun kemb'i'aj le xasacho xawinaqirisaj on wene xa xuk'ex ub'i' jun k'aywokaj.
