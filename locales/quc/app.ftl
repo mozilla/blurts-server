@@ -298,8 +298,13 @@ facebook-breach-what-to-do-1-copy =
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-2-headline = <span>Chak'exa' le retokib'al, PIN, on nik'aj chi chajital pa le <a>kemb'aiaj kech ajchakib' rech chaweb'al </a> chech uq'atexik k'exelonem rech SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    K'exelonem rech SIM, le kb'ix xuquje' chech relaq'axik SIM,
+    Are le we kukoj rajilab'alil ch'aweb'al le b'ank'ax, rajilab'alil 'ij rech alaxb'al xuquje' jun chi juq'attzij chech relaq'axik
+    rajilab'alil uch'aweb'al alachinaq k'ate k'u ri' kub'an k'ax pa le ataqoqxa'nib'al, komon q'alajisanem xuquje' pa kemb'i'aj rech pwaqilal.
+facebook-breach-what-to-do-3 = Chawila' ronojel le no'jib'al pa le chayib'al uxaq qawuj rech Facebook.
 # "Appears in-page as: Showing: All Breaches"
-currently-showing = Uk'utik
+currently-showing = Uk'utik:
 
 ## Updated error messages
 
@@ -535,9 +540,13 @@ steps-to-resolve-headline = Taq  ucholajil rech usolik we retztaqan
 vpn-promo-headline = Chanim qas are wa' qas utz kak'exsuk'umax le chajib'al pa nimk'atz
 vpn-promo-copy = Le kemk'at rech echeb'alil rech { -brand-Mozilla } ktob'an chech uchajixik le at'iqonem pa nimk'atz rech taq e b'ank'ax rech kematz'ib' chi'l tatab'enelab'.
 vpn-promo-cta = Chariqa' { -brand-mozilla-vpn }
+vpn-promo-headline-new = Chak'olo' 50 % ruk' jun utz'ib'axik ib' rech jun junab'
+vpn-promo-copy-new = Chaq'alajisaj le ajuq'attzij pa kemk'atz—xuquje' chacha' jun utz'ib'axik ib' pa VPN  le cholchak le ktob'an chi awech.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Le ak'olib'al { $ip-location }
 
 ## VPN and Relay educational videos
 
