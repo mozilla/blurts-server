@@ -288,6 +288,14 @@ facebook-breach-note =
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Chaya' le aq'alajisanem pa “Xew in” on pa jun chi majib'al le man kech ta uk'iyal <a>Le uwachib'al Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Pa we chayunem, le e b'ank'ax xkik'am le wachib'alil 
+    q'alajisanem le xya' pacha' “jaqatal chi kech le uk'iyal ” on “komonetal kumal le utz achib'il.”
+    We q'alajisanem wene utz kxol ruk' nik'aj chi juq'attzij chech okem pa nik'aj chik 
+    Le awinaqilal q'alajisanem chi'l taq akemb'i'aj.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Chak'exa' le retokib'al, PIN, on nik'aj chi chajital pa le <a>kemb'aiaj kech ajchakib' rech chaweb'al </a> chech uq'atexik k'exelonem rech SIM</span>.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Uk'utik
 
