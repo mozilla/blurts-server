@@ -278,6 +278,14 @@ no-other-breaches-found = Man xriqitaj ta nik'aj chi taq retztaqan pa jun tzukun
 no-results-blurb = Chakuyu', le retztaqan man k'o ta pa le mulib'al juq'attzij.
 all-breaches-headline = Ronojel juq'attzij pa { -product-name }
 search-breaches = Taq retztaqan rech tzukunem
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Man kq'alajin ta le atoqxa'nib'al pa we chayub'al, 
+    xa k'ut le rajilab'alil ach'aweb'al wene man k'o ta ukowil.</span> Jujun chi kech taq kemb'i'aj kamatal raqan uq'ab' le chayunem rech Facebook xya' taq rajilab'alil ch'aweb'al chi'l nikaj chik 
+          winaqilal q'alajsanem xa k'ut man chi'l ta kemriqonib'al rech taqoqxa'nib'al. We atz'ib'am awib' 
+          pa le kemb'i'aj rech Facebook — pine man kakoj ta hanim — kqab'ij chi awech   
+    chab'ana' we taq ucholajil chech uq'alajisaxik awib'.take these steps to protect yourself
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Uk'utik
 
