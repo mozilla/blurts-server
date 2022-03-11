@@ -285,6 +285,9 @@ facebook-breach-note =
     xa k'ut le rajilab'alil ach'aweb'al wene man k'o ta ukowil.</span> Jujun chi kech taq kemb'i'aj k'amatal raqan uq'ab' le chayunem rech Facebook xya' taq rajilab'alil ch'aweb'al chi'l nikaj chik 
     winaqilal q'alajisanem xa k'ut man chi'l ta kemriqonib'al rech taqoqxa'nib'al. We atz'ib'am awib'    pa le kemb'i'aj rech Facebook — pine man kakoj ta chanim — kqab'ij chi awech   
     chab'ana' we taq ucholajil chech uq'alajisaxik awib'.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Chaya' le aq'alajisanem pa “Xew in” on pa jun chi majib'al le man kech ta uk'iyal <a>Le uwachib'al Facebook</a>.</span>
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Uk'utik
 
