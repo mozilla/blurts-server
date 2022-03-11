@@ -549,6 +549,16 @@ vpn-promo-copy-new = Chaq'alajisaj le ajuq'attzij pa kemk'atz—xuquje' chacha' 
 vpn-banner-location = Le ak'olib'al { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Chaq'alajisaj awib'</em> ruk' { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Chajitalik</em> ruk' { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Atchajitalik — tyox chech ukojik { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Wene kterene'x le ak'olib'al we man kakoj ta VPN.
+vpn-banner-subtitle-2 = Chachajij le ak'olib'al chi'l le anik'onel pa 3 ucholajil
+vpn-banner-status-protected = Kemub'antajik chanim: <em>Chajitalik ✓</em>
+vpn-banner-status-not-protected = Kemub'antajik chanim: <em>Man chajital taj ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = kemriqonib'al IP: { $ip-address }
+vpn-banner-step-1 = Chatz'ib'aj awib' pa { -brand-mozilla-vpn }
+vpn-banner-step-2 = Chacha' jun k'olib'al rech VPN
+vpn-banner-step-3 = Chatziija' chajital VPM chi'l nik'onel
 
 ## VPN and Relay educational videos
 
