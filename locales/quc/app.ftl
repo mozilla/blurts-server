@@ -12,6 +12,8 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -513,3 +515,9 @@ steps-to-resolve-headline = Taq  ucholajil rech usolik we retztaqan
 vpn-promo-headline = Chanim qas are wa' qas utz kak'exsuk'umax le chajib'al pa nimk'atz
 vpn-promo-copy = Le kemk'at rech echeb'alil rech { -brand-Mozilla } ktob'an chech uchajixik le at'iqonem pa nimk'atz rech taq e b'ank'ax rech kematz'ib' chi'l tatab'enelab'.
 vpn-promo-cta = Chariqa' { -brand-mozilla-vpn }
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+
+## VPN and Relay educational videos
+
