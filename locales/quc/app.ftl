@@ -559,6 +559,15 @@ vpn-banner-ip-address = kemriqonib'al IP: { $ip-address }
 vpn-banner-step-1 = Chatz'ib'aj awib' pa { -brand-mozilla-vpn }
 vpn-banner-step-2 = Chacha' jun k'olib'al rech VPN
 vpn-banner-step-3 = Chatziija' chajital VPM chi'l nik'onel
+vpn-banner-cta = Chariqa' { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Chanimarisaj
+# button to close panel
+vpn-banner-cta-close = Chatz'apij
 
 ## VPN and Relay educational videos
 
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Jas kab'an chech akemriqonib'al rech taqoqxa'nib'al chech uya'ik pa owatalik?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = La k'o kub'ij ak'u'x chech chajinem pa uk'iyal Wi-Fi?
