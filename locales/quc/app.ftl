@@ -547,6 +547,8 @@ vpn-promo-copy-new = Chaq'alajisaj le ajuq'attzij pa kemk'atz—xuquje' chacha' 
 
 # user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
 vpn-banner-location = Le ak'olib'al { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Chaq'alajisaj awib'</em> ruk' { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Chajitalik</em> ruk' { -brand-mozilla-vpn }.
 
 ## VPN and Relay educational videos
 
