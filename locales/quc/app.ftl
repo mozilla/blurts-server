@@ -282,10 +282,9 @@ search-breaches = Taq retztaqan rech tzukunem
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
     <span>Man kq'alajin ta le atoqxa'nib'al pa we chayub'al, 
-    xa k'ut le rajilab'alil ach'aweb'al wene man k'o ta ukowil.</span> Jujun chi kech taq kemb'i'aj kamatal raqan uq'ab' le chayunem rech Facebook xya' taq rajilab'alil ch'aweb'al chi'l nikaj chik 
-          winaqilal q'alajsanem xa k'ut man chi'l ta kemriqonib'al rech taqoqxa'nib'al. We atz'ib'am awib' 
-          pa le kemb'i'aj rech Facebook — pine man kakoj ta hanim — kqab'ij chi awech   
-    chab'ana' we taq ucholajil chech uq'alajisaxik awib'.take these steps to protect yourself
+    xa k'ut le rajilab'alil ach'aweb'al wene man k'o ta ukowil.</span> Jujun chi kech taq kemb'i'aj k'amatal raqan uq'ab' le chayunem rech Facebook xya' taq rajilab'alil ch'aweb'al chi'l nikaj chik 
+    winaqilal q'alajisanem xa k'ut man chi'l ta kemriqonib'al rech taqoqxa'nib'al. We atz'ib'am awib'    pa le kemb'i'aj rech Facebook — pine man kakoj ta chanim — kqab'ij chi awech   
+    chab'ana' we taq ucholajil chech uq'alajisaxik awib'.
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Uk'utik
 
