@@ -331,6 +331,16 @@ no-other-breaches-found = 기본 검색에서 발견된 다른 유출은 없습�
 no-results-blurb = 죄송합니다. 해당 유출은 데이터베이스에 없습니다.
 all-breaches-headline = { -product-name } 모든 유출 내역
 search-breaches = 유출 내역 검색하기
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>이 유출에는 이메일이 포함되지 않았지만
+    전화번호는 여전히 노출 되었을 수 있습니다.</span> Facebook 유출에
+    포함된 일부 계정의 전화번호와 기타 정보가 유출되었지만 
+    이메일 주소는 아닙니다. Facebook에 가입한 적이 있다면
+    — 지금 사용하지 않더라도 — 보호를 위한 이 절차를
+    따르기를 권장합니다.
+facebook-breach-what-to-do-3 = Facebook 유출 페이지에서 모든 권장 사항 보기
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 보기:
 
@@ -561,12 +571,25 @@ monitor-promo-body = 다음에 알려진 유출에서 사용자의 개인정보�
 ecosystem-promo-headline = 사생활 보호를 최우선으로 하는 제품과 함께 온라인 생활을 보호하세요.
 promo-ecosystem-cta = 모든 제품 보기
 steps-to-resolve-headline = 이 유출을 해결하려면
+vpn-promo-headline = 이제 온라인에서 안전을 강화할 때입니다.
+vpn-promo-copy = { -brand-Mozilla }의 가상 사설망은 해커와 스파이로부터 인터넷 연결을 보호합니다.
+vpn-promo-cta = { -brand-mozilla-vpn } 받기
+vpn-promo-headline-new = 1년 구독으로 50% 할인
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = 현재 위치: { $ip-location }
+vpn-banner-status-protected = 현재 상태: <em>보호됨 ✓</em>
+vpn-banner-status-not-protected = 현재 상태: <em>보호되지 않음 ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP 주소: { $ip-address }
+vpn-banner-step-1 = { -brand-mozilla-vpn } 구독하기
 vpn-banner-step-2 = VPN 위치 선택
 vpn-banner-step-3 = VPN을 활성화하고 안전하게 탐색하세요
 vpn-banner-cta = { -brand-mozilla-vpn } 받기
+# button to expand panel
+vpn-banner-cta-expand = 펼치기
 # button to close panel
 vpn-banner-cta-close = 닫기
 

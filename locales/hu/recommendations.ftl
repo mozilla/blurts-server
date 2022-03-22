@@ -126,7 +126,7 @@ rec-gen-3-subhead = Legyen óvatos, amikor személyes információkat oszt meg
 # Link title
 rec-gen-3-cta = Olvasson további biztonsági tippeket
 rec-gen-3 =
-    Ne adja ki a személyes adatait, ha nem muszáj. Ha elkérik az e-mail címét,
+    Ne adja ki a személyes adatait, ha nem muszáj. Ha elkérik az e-mail-címét,
     irányítószámát vagy telefonszámát, akkor mondhat nemet.
 # Recommendation subhead
 rec-gen-4-subhead = Rendszeresen frissítse a szoftvereit és alkalmazásait

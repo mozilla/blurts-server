@@ -9,6 +9,7 @@ rec-pw-1-subhead = Chak'exa' le aretokib'al
 rec-pw-1-cta = Uk'exik retokib'al chech we uk'olib'al web'
 # Link title
 rec-pw-2-cta-fx = Rilik taq umajixik kemchak { -brand-name }
+rec-pw-2 = Le ukamulixik ukojik taq retokib'al pa uk'iyal. Chanim chi
 # Link title
 rec-pw-3-cta = Chariqa' { -brand-lockwise }
 # Link title

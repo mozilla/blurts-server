@@ -9,7 +9,7 @@
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } jelentés
 report-date = Jelentés ideje:
-email-address = E-mail cím:
+email-address = E-mail-cím:
 # A link to legal information about mozilla products.
 legal = Jogi információk
 # Unsubscribe link in email.
@@ -27,12 +27,12 @@ email-verify-footer-copy =
     Azért kapja ezt az e-mailt, mert feliratkozott a { -product-name } figyelmeztetéseire.
     Ez egy automatikus levél. Támogatásért keresse fel a { $faqLink } oldalt.
 # Button text
-verify-email-cta = E-mail cím megerősítése
+verify-email-cta = E-mail-cím megerősítése
 # Button text
 see-all-breaches = Az összes adatsértés megtekintése
 # Headline of verification email
 email-link-expires = Ez a hivatkozás 24 óra múlva lejár
-email-verify-blurb = Erősítse meg az e-mail címét a { -product-name }hoz hozzáadáshoz, és iratkozzon fel az adatsértési figyelmeztetésekre.
+email-verify-blurb = Erősítse meg az e-mail-címét a { -product-name }hoz hozzáadáshoz, és iratkozzon fel az adatsértési figyelmeztetésekre.
 # Email headline
 email-found-breaches-hl = Íme a múltbeli adatsértéseinek összefoglalása
 # Email headline
@@ -46,18 +46,18 @@ email-subject-found-breaches = A { -product-name } ezekben az adatsértésekben 
 # Subject line of email
 email-subject-no-breaches = A { -product-name } nem talált ismert adatsértést
 # Subject line of email
-email-subject-verify = Erősítse meg a { -product-name }hoz használt e-mail címét
+email-subject-verify = Erősítse meg a { -product-name }hoz használt e-mail-címét
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Tudjon meg többet a { $fxmLink }ról
 email-sensitive-disclaimer =
-    Az adatsértés érzékeny jellege miatt, az érintett e-mail címek nem nyilvánosak.
-    Azért kapja ezt a figyelmeztetést, mert megerősítette, hogy Ön az e-mail cím tulajdonosa.
+    Az adatsértés érzékeny jellege miatt, az érintett e-mail-címek nem nyilvánosak.
+    Azért kapja ezt a figyelmeztetést, mert megerősítette, hogy Ön az e-mail-cím tulajdonosa.
 fxm-warns-you-no-breaches =
     A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
-    Eddig egyetlen adatsértés sem található. Figyelmeztetést küldünk Önnek, ha az e-mail címe új adatsértésben jelenik meg.
+    Eddig egyetlen adatsértés sem található. Figyelmeztetést küldünk Önnek, ha az e-mail-címe új adatsértésben jelenik meg.
 fxm-warns-you-found-breaches =
     A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
-    Arra is feliratkozott, hogy figyelmeztetést kapjon, ha az e-mail címe új adatsértésben jelenik meg.
+    Arra is feliratkozott, hogy figyelmeztetést kapjon, ha az e-mail-címe új adatsértésben jelenik meg.
 email-breach-alert-blurb =
     A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
     Épp most kaptunk részleteket egy másik céget érintő adatsértésről.
@@ -73,9 +73,9 @@ faq-v2-3 = Észrevettem, hogy szereplek egy adatsértésben. Mit legyen a követ
 faq-v2-4 = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
 # This string contains nested markup that becomes a link to Firefox Monitor
 # later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Hozzon létre egy ingyenes { -brand-fxa }ot</a>, és akár 15 e-mail címet is hozzáadhat.
+pre-fxa-message = <a>Hozzon létre egy ingyenes { -brand-fxa }ot</a>, és akár 15 e-mail-címet is hozzáadhat.
 # Section headline
-monitor-another-email = Egy másik e-mail címet is figyelni szeretne?
+monitor-another-email = Egy másik e-mail-címet is figyelni szeretne?
 # Subject line of email
 pre-fxa-subject = Frissítés a { -product-name }tól
 pre-fxa-headline = Mi változik a { -product-name }ban
@@ -84,8 +84,8 @@ pre-fxa-blurb =
     az ismert adatsértéseket figyeli az Ön személyes adatait keresve. Ezt összekötjük a Firefox fiókokkal.
 pre-fxa-tout-1 = Figyeljen a további adatsértésekre
 pre-fxa-p-1 =
-    <a>Hozzon létre egy fiókot</a>, amellyel akár 15 e-mail címet figyelhet meg, 
-    adatsértést keresve. Javasoljuk, hogy minden olyan e-mail címet adjon hozzá, amelyet online fiókok létrehozásához használt.
+    <a>Hozzon létre egy fiókot</a>, amellyel akár 15 e-mail-címet figyelhet meg, 
+    adatsértést keresve. Javasoljuk, hogy minden olyan e-mail-címet adjon hozzá, amelyet online fiókok létrehozásához használt.
 pre-fxa-tout-2 = Vezérlőpult nézet beszerzése
 pre-fxa-p-2 =
     Tekintse meg az összes adatsértést egy helyen, hogy tudja, mely jelszavakat kell megváltoztatnia. 

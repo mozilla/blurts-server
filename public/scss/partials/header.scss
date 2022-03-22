@@ -16,9 +16,14 @@ header {
 
 .recruitment-banner,
 .micro-survey-banner {
-  background-color: #f9f7fd;
+  color: var(--ink);
+  background-color: var(--violet1);
   padding: 0.5em;
   text-align: center;
+}
+
+.recruitment-banner a{
+  color: inherit;
 }
 
 #micro-survey-prompt {
