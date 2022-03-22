@@ -95,4 +95,5 @@ pre-fxa-p-3 =
 # Button at the bottom of pre-fxa email.
 create-account = Ustvarite račun
 more-products-cta-vpn = Pridobite { -product-name-vpn }
+more-products-relay = Skrijte svoj pravi e-poštni naslov in zavarujte svojo identiteto.
 more-products-cta-relay = Pridobite { -product-name-relay }

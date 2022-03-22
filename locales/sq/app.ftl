@@ -597,3 +597,10 @@ vpn-banner-cta = Merrni { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Zgjeroje
 # button to close panel
 vpn-banner-cta-close = Mbylle
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Si ta mbani të fshehtë adresën tuaj email?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = A shqetësoheni për sigurinë në një Wi-Fi publik?

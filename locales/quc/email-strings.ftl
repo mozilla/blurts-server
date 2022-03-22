@@ -62,3 +62,5 @@ pre-fxa-tout-3 = Chariqa' na taq kemriqonib'al rech na'b'anem
 pre-fxa-p-3 = Kopan na taq na'b'anem awuk' pa { -product-name }. Kqaya' ub'ixik chi awech we  kq'alajin le aq'alajisanem pa jun k'ak' retztaqan rech q'alajisanem.
 # Button at the bottom of pre-fxa email.
 create-account = Chawinaqirisaj jun kemb'i'aj
+# More security products
+more-products-headline = Caq'alajisaj awib' ruk' nik'aj chi qak'ay

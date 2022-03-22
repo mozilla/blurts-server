@@ -12,6 +12,8 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -75,7 +77,9 @@ sign-out = Utz'apixik kemchak
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Rilawachixik{ -brand-fxa }
 have-an-account = ¿La k'o akemb'i'aj?
-fxa-pwt-summary-2 = Le taq nitz' retokib'al le xa jun tukelal tzij man k'ax ta uriqik chi kech e b'ank'ax.
+fxa-pwt-summary-2 =
+    Le taq nitz'aq utukelal tzij rech retokib'al man k'ax taj uriqitajik kumal e b'ank'ax. 
+    Chakojo' keb' tzij xuquje' chaxolo' taq tz'ib', taq ajilab'al, xuquje' ucholajil taq tzib'.
 fxa-pwt-summary-4 = Taq ilawachinelab' rech taq retokib'al pacha' 1Password, LastPass, Dashlane, chi'l Bitwarden kkik'ol taq Taq retokib'al chi'l unojisaxik pa taq uk'olib'al web', xuquje' katkito' chech utzukuxik chajital taq retokib'al.
 fxa-pwt-summary-6 = Le taq retztaqan rech taq juq'attzij ktajin ke'enimarik. We kq'alajin le awinaqilal q'alajisanem pa jun k'ak' retztaqan rech taq juq'attzij, { -product-name } kutaq jun na'tajisab'al chi awech — are chi utz kachajij le akemb'i'aj.
 fxa-what-to-do-blurb-1 = We man ktkowin taj kamajij kemchak, chach'ab'ej le uk'olib'al web' kata chech jas kab'an chech uk'ak'arisaxik. ¿kawil jun kemb'i'aj le man aweta'am ta uwach? Wene xa xe'ek'ayix b'i le taq ajuq'attzij on jachatal chi jumul. Wa' xuquje' wene jun kemb'i'aj le xasacho xawinaqirisaj on wene xa xuk'ex ub'i' jun k'aywokaj.
@@ -276,8 +280,31 @@ no-other-breaches-found = Man xriqitaj ta nik'aj chi taq retztaqan pa jun tzukun
 no-results-blurb = Chakuyu', le retztaqan man k'o ta pa le mulib'al juq'attzij.
 all-breaches-headline = Ronojel juq'attzij pa { -product-name }
 search-breaches = Taq retztaqan rech tzukunem
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Man kq'alajin ta le atoqxa'nib'al pa we chayub'al, 
+    xa k'ut le rajilab'alil ach'aweb'al wene man k'o ta ukowil.</span> Jujun chi kech taq kemb'i'aj k'amatal raqan uq'ab' le chayunem rech Facebook xya' taq rajilab'alil ch'aweb'al chi'l nikaj chik 
+    winaqilal q'alajisanem xa k'ut man chi'l ta kemriqonib'al rech taqoqxa'nib'al. We atz'ib'am awib'    pa le kemb'i'aj rech Facebook — pine man kakoj ta chanim — kqab'ij chi awech   
+    chab'ana' we taq ucholajil chech uq'alajisaxik awib'.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Chaya' le aq'alajisanem pa “Xew in” on pa jun chi majib'al le man kech ta uk'iyal <a>Le uwachib'al Facebook</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Pa we chayunem, le e b'ank'ax xkik'am le wachib'alil 
+    q'alajisanem le xya' pacha' “jaqatal chi kech le uk'iyal ” on “komonetal kumal le utz achib'il.”
+    We q'alajisanem wene utz kxol ruk' nik'aj chi juq'attzij chech okem pa nik'aj chik 
+    Le awinaqilal q'alajisanem chi'l taq akemb'i'aj.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>Chak'exa' le retokib'al, PIN, on nik'aj chi chajital pa le <a>kemb'aiaj kech ajchakib' rech chaweb'al </a> chech uq'atexik k'exelonem rech SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    K'exelonem rech SIM, le kb'ix xuquje' chech relaq'axik SIM,
+    Are le we kukoj rajilab'alil ch'aweb'al le b'ank'ax, rajilab'alil 'ij rech alaxb'al xuquje' jun chi juq'attzij chech relaq'axik
+    rajilab'alil uch'aweb'al alachinaq k'ate k'u ri' kub'an k'ax pa le ataqoqxa'nib'al, komon q'alajisanem xuquje' pa kemb'i'aj rech pwaqilal.
+facebook-breach-what-to-do-3 = Chawila' ronojel le no'jib'al pa le chayib'al uxaq qawuj rech Facebook.
 # "Appears in-page as: Showing: All Breaches"
-currently-showing = Uk'utik
+currently-showing = Uk'utik:
 
 ## Updated error messages
 
@@ -513,3 +540,34 @@ steps-to-resolve-headline = Taq  ucholajil rech usolik we retztaqan
 vpn-promo-headline = Chanim qas are wa' qas utz kak'exsuk'umax le chajib'al pa nimk'atz
 vpn-promo-copy = Le kemk'at rech echeb'alil rech { -brand-Mozilla } ktob'an chech uchajixik le at'iqonem pa nimk'atz rech taq e b'ank'ax rech kematz'ib' chi'l tatab'enelab'.
 vpn-promo-cta = Chariqa' { -brand-mozilla-vpn }
+vpn-promo-headline-new = Chak'olo' 50 % ruk' jun utz'ib'axik ib' rech jun junab'
+vpn-promo-copy-new = Chaq'alajisaj le ajuq'attzij pa kemk'atz—xuquje' chacha' jun utz'ib'axik ib' pa VPN  le cholchak le ktob'an chi awech.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Le ak'olib'al { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Chaq'alajisaj awib'</em> ruk' { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Chajitalik</em> ruk' { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Atchajitalik — tyox chech ukojik { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Wene kterene'x le ak'olib'al we man kakoj ta VPN.
+vpn-banner-subtitle-2 = Chachajij le ak'olib'al chi'l le anik'onel pa 3 ucholajil
+vpn-banner-status-protected = Kemub'antajik chanim: <em>Chajitalik ✓</em>
+vpn-banner-status-not-protected = Kemub'antajik chanim: <em>Man chajital taj ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = kemriqonib'al IP: { $ip-address }
+vpn-banner-step-1 = Chatz'ib'aj awib' pa { -brand-mozilla-vpn }
+vpn-banner-step-2 = Chacha' jun k'olib'al rech VPN
+vpn-banner-step-3 = Chatziija' chajital VPM chi'l nik'onel
+vpn-banner-cta = Chariqa' { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Chanimarisaj
+# button to close panel
+vpn-banner-cta-close = Chatz'apij
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Jas kab'an chech akemriqonib'al rech taqoqxa'nib'al chech uya'ik pa owatalik?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = La k'o kub'ij ak'u'x chech chajinem pa uk'iyal Wi-Fi?

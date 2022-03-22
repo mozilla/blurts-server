@@ -714,3 +714,10 @@ vpn-banner-cta = Získat službu { -brand-mozilla-vpn }
 vpn-banner-cta-expand = Rozbalit
 # button to close panel
 vpn-banner-cta-close = Zavřít
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Jak uchovávat svou e-mailovou adresu v tajnosti?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Máte obavy o bezpečnost na veřejných Wi-Fi?

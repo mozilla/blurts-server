@@ -542,7 +542,7 @@ vpn-banner-status-not-protected = 目前狀態：<em>未受保護 ⚠</em>
 vpn-banner-ip-address = IP 位置：{ $ip-address }
 vpn-banner-step-1 = 訂閱 { -brand-mozilla-vpn }
 vpn-banner-step-2 = 選擇 VPN 地點
-vpn-banner-step-3 = 啟用 VPN，上網更安全
+vpn-banner-step-3 = 開啟 VPN，上網更安全
 vpn-banner-cta = 下載 { -brand-mozilla-vpn }
 # button to expand panel
 vpn-banner-cta-expand = 展開

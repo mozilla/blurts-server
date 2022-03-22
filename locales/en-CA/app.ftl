@@ -628,3 +628,32 @@ vpn-promo-copy = { -brand-Mozilla }’s Virtual Private Network helps shield you
 vpn-promo-cta = Get { -brand-mozilla-vpn }
 vpn-promo-headline-new = Save 50% with a full year subscription
 vpn-promo-copy-new = Protect your online data—and choose a VPN subscription plan that works for you.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Your location: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Protect yourself</em> with { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Protected</em> with { -brand-mozilla-vpn }.
+vpn-banner-title-1 = You’re protected — thanks for using { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Your location can be tracked if you don’t use a VPN.
+vpn-banner-subtitle-2 = Protect your location and browse securely in 3 steps
+vpn-banner-status-protected = Current status: <em>Protected ✓</em>
+vpn-banner-status-not-protected = Current status: <em>Not protected ⚠</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = IP address: { $ip-address }
+vpn-banner-step-1 = Subscribe to { -brand-mozilla-vpn }
+vpn-banner-step-2 = Select a VPN location
+vpn-banner-step-3 = Activate VPN and browse securely
+vpn-banner-cta = Get { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Expand
+# button to close panel
+vpn-banner-cta-close = Close
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = How do you keep your email address a secret?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Do you worry about safety on public Wi-Fi?
