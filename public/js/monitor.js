@@ -315,6 +315,8 @@ function recruitmentLogic() {
   if (recruited) {
     recruitmentBannerLink.parentElement.remove();
     return;
+  } else {
+    recruitmentBannerLink.removeAttribute("hidden");
   }
 
   recruitmentBannerLink.addEventListener("click", () => {

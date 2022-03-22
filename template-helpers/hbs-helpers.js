@@ -51,7 +51,7 @@ function recruitmentBanner(args) {
     return;
   }
 
-  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
+  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}" hidden target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
 }
 
 function microsurveyBanner(args) {
