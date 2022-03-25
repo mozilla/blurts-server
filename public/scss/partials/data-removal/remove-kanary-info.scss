@@ -79,3 +79,11 @@
     line-height: 1.5em;
   }
 }
+.remove-kanary-info-close{
+  position: absolute;
+  top: calc(30px + var(--header-height));
+  right: 30px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+}
