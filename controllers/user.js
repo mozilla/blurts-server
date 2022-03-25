@@ -881,8 +881,11 @@ async function getRemovalPage(req, res) {
 
   let removeData = null; //data broker info
   let removeAcctInfo = null; //acct info
+  let removeGroupId;
+
 
   if (user.kid) {
+    removeGroupId = getPilotGroup(user).id;
     removeAcctInfo = await getRemoveAcctInfo(user.kid);
     if (!removeAcctInfo) {
       console.error(
@@ -940,6 +943,7 @@ async function getRemovalPage(req, res) {
     userHasSignedUpForRemoveData,
     removeData,
     removeAcctInfo,
+    removeGroupId,
     supportedLocalesIncludesEnglish,
     whichPartial: partialString,
     experimentFlags,
@@ -1105,6 +1109,8 @@ async function getRemovalPilotEndedPage(req, res) {
   //this param is used to conditionally display messaging specific to when the pilot has indeed ended
   const isPilotEnded = checkIfRemovalPilotEnded(user);
 
+  const conversionUrl = await getConversionUrl(user.kid);
+
   res.render("dashboards", {
     title: req.fluentFormat("Firefox Monitor"),
     pilotEnded: isPilotEnded,
@@ -1113,6 +1119,7 @@ async function getRemovalPilotEndedPage(req, res) {
     whichPartial: "dashboards/remove-pilot-ended",
     experimentFlags,
     utmOverrides,
+    conversionUrl,
   });
 }
 
@@ -1217,6 +1224,34 @@ async function getRemoveAcctInfo(kanary_id) {
   } catch (error) {
     console.error(
       "there was an error getting account info for this account",
+      error
+    );
+    return null;
+  }
+}
+
+async function getConversionUrl(kanary_id) {
+  try {
+    const json = await got(
+      `https://thekanary.com/partner-api/v0/accounts/${kanary_id}/conversion_url/`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+        },
+      }
+    ).json();
+
+    if (json.url?.length) {
+      return json.url;
+    } else {
+      console.error("no conversion url available");
+      return "https://thekanary.com";
+    }
+  } catch (error) {
+    console.error(
+      "there was an error getting conversion url for this account",
       error
     );
     return null;
