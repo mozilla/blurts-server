@@ -3,6 +3,9 @@
     background-color: var(--kanary-yellow);
     padding: 10px;
     text-align: center;
+    position: absolute;
+    top: var(--header-height);
+    width: 100%;
   }
   &-content {
     margin: 0;

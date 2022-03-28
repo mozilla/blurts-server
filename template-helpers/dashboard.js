@@ -204,6 +204,10 @@ function getLastAddedEmailStrings(args) {
 
 //DATA REMOVAL SPECIFIC
 
+function showRemovalEndingBanner(args) {
+  return args.data.root.removeGroupId === 1;
+}
+
 function getRemoveFormData(args) {
   const countries = args.data.root.countries;
   const usStates = args.data.root.usStates;
@@ -432,4 +436,5 @@ module.exports = {
   trimRemoveInfo,
   getFullName,
   getConfirmSubmitText,
+  showRemovalEndingBanner,
 };

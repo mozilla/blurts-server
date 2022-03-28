@@ -1,4 +1,7 @@
 <main id="remove-dashboard" class="js-dashboard remove-page dashboard clear-header flx flx-col" data-page-label="Remove Data Dashboard">
+  {{#if (showRemovalEndingBanner)}}
+  {{> data-removal/removal-ending-banner }}
+  {{/if}}
 {{#getRemoveDashData}}
 <div class="flx flx-col remove-dashboard-container" 
   data-filter="{{#getRemovalFilters}}{{#each filters}}{{this.id}} {{/each}}{{/getRemovalFilters}}"
