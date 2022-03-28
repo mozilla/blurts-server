@@ -1254,7 +1254,7 @@ async function getConversionUrl(kanary_id) {
       "there was an error getting conversion url for this account",
       error
     );
-    return null;
+    return "https://thekanary.com";
   }
 }
 
