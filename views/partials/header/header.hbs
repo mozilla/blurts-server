@@ -1,6 +1,6 @@
     {{> vpn-banner }}
     <header id="header" class="{{ addUpgradeClasses }}">
-      {{{ recruitmentBanner }}}
+      {{#unless (checkIfInRemovalPilot)}}{{{ recruitmentBanner }}}{{/unless}}
       {{!-- {{{ microsurveyBanner }}} --}}
       <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
         <section class="row-full-width fxm-branding">
@@ -28,4 +28,5 @@
           </nav>
         </section>
       </div>
+      {{#if (showRemovalEndingBanner)}}{{> data-removal/removal-ending-banner }}{{/if}}
     </header>
