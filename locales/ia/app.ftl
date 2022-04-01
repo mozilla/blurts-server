@@ -554,7 +554,7 @@ vpn-banner-protected-with-vpn = <em>Protegite</em> con { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Tu es protegite — gratias pro usar { -brand-mozilla-vpn }.
 vpn-banner-title-2 = Tu ubication pote esser traciate si tu non usa un VPN.
 vpn-banner-subtitle-2 = Protege tu position e naviga con securitate in 3 passos
-vpn-banner-status-protected = Stato actual: <em>Protegite ✓</em
+vpn-banner-status-protected = Stato actual: <em>Protegite ✓</em>
 vpn-banner-status-not-protected = Stato actual: <em>Non protegite ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Adresse IP: { $ip-address }
