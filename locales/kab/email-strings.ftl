@@ -2,6 +2,8 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Aneqqis { -product-name }
 report-date = Azemz n tummla
@@ -92,3 +94,5 @@ pre-fxa-p-3 =
     banent-d deg trewla tamaynut n yisefka.
 # Button at the bottom of pre-fxa email.
 create-account = Rnu amiḍan
+more-products-cta-vpn = Awi { -product-name-vpn }
+more-products-cta-relay = Awi { -product-name-relay }
