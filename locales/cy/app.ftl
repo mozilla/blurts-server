@@ -671,7 +671,7 @@ vpn-banner-subtitle-2 = Diogelwch eich lleoliad a phori'n ddiogel mewn 3 cham
 vpn-banner-status-protected = Statws cyfredol: <em>Diogelwyd ✓</em>
 vpn-banner-status-not-protected = Statws cyfredol: <em>Heb ei ddiogelu ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
-vpn-banner-ip-address = Cyfeiriad IP: %(ipAddress)s
+vpn-banner-ip-address = Cyfeiriad IP: { $ip-address }
 vpn-banner-step-1 = Tanysgrifiwch i { -brand-mozilla-vpn }
 vpn-banner-step-2 = Dewiswch leoliad i'r VPN
 vpn-banner-step-3 = Cychwyn y VPN a phori'n ddiogel
