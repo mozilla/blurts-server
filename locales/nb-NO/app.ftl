@@ -641,7 +641,7 @@ vpn-banner-subtitle-2 = Beskytt posisjonen din og surf trygt i 3 trinn
 vpn-banner-status-protected = Nåværende status: <em>Beskyttet ✓</em>
 vpn-banner-status-not-protected = Nåværende status: <em>Ikke beskyttet ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
-vpn-banner-ip-address = IP-adresse: { $ip-adresse }
+vpn-banner-ip-address = IP-adresse: { $ip-address }
 vpn-banner-step-1 = Abonner på { -brand-mozilla-vpn }
 vpn-banner-step-2 = Velg en VPN-plassering
 vpn-banner-step-3 = Aktiver VPN og surf trygt
