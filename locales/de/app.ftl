@@ -304,7 +304,7 @@ facebook-breach-note =
     sich folgendermaßen schützen
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-1-headline = <span>Setzen Sie Ihre Informationen in <a>Ihrem Facebook-Profil /a> auf „Nur ich“ oder eine andere nicht öffentliche Einstellung.</span>
+facebook-breach-what-to-do-1-headline = <span>Setzen Sie Ihre Informationen in <a>Ihrem Facebook-Profil</a> auf „Nur ich“ oder eine andere nicht öffentliche Einstellung.</span>
 facebook-breach-what-to-do-1-copy =
     Bei diesem Leck haben Hacker Profildaten
     erbeutet, die „öffentlich sichtbar“ oder „mit Freunden geteilt“ wurden.
