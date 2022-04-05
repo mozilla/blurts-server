@@ -510,6 +510,28 @@ async function initVpnBanner() {
   }
 }
 
+async function initCsatBanner() {
+  const csatBanner = document.querySelector(".csat-banner");
+
+  if (!csatBanner) return;
+
+  csatBanner.addEventListener("click", handleClick);
+
+  function handleClick(e) {
+    let ttl;
+
+    switch (e.target.className) {
+      case "csat-banner-close":
+        csatBanner.toggleAttribute("hidden", true);
+        setHeaderHeight();
+        ttl = new Date();
+        ttl.setDate(ttl.getDate() + 90);
+        document.cookie = "csatHidden=true; path=/; sameSite=Lax; expires=" + ttl.toUTCString();
+        break;
+    }
+  }
+}
+
 (async () => {
   document.addEventListener("touchstart", function () { }, true);
   const win = window;
@@ -573,6 +595,7 @@ async function initVpnBanner() {
   addWaitlistSignupButtonListeners();
   addWaitlistObservers();
   initVpnBanner();
+  initCsatBanner();
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));

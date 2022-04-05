@@ -15,15 +15,42 @@ header {
 }
 
 .recruitment-banner,
-.micro-survey-banner {
+.micro-survey-banner,
+.csat-banner {
+  position: relative;
+  font-size: 13px;
   color: var(--ink);
   background-color: var(--violet1);
-  padding: 0.5em;
+  padding: 12px 48px;
   text-align: center;
 }
 
 .recruitment-banner a{
   color: inherit;
+}
+
+.csat-banner > * + *{
+  margin: 6px 3px 0;
+}
+
+.csat-banner .btn-small {
+  color: #56198f;
+  border-color: #7639af;
+}
+
+.csat-banner-close{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  border: 0;
+  cursor: pointer;
+}
+
+.csat-banner-close img{
+  pointer-events: none;
+  width: 24px;
+  height: auto;
 }
 
 #micro-survey-prompt {
