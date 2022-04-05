@@ -33,12 +33,29 @@ header {
   margin: 6px 3px 0;
 }
 
-.csat-banner .btn-small {
+.csat-banner label {
   color: #56198f;
   border-color: #7639af;
+  cursor: pointer;
+  transition: background-color .15s, opacity .3s;
 }
 
-.csat-banner-close{
+.csat-banner label.disabled{
+  opacity: .5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.csat-banner label.selected{
+  opacity: 1;
+  background-color: #d89eff;
+}
+
+.csat-banner label input {
+  display: none;
+}
+
+[name="csat-close-btn"]{
   position: absolute;
   top: 12px;
   right: 12px;
@@ -47,7 +64,7 @@ header {
   cursor: pointer;
 }
 
-.csat-banner-close img{
+[name="csat-close-btn"] img{
   pointer-events: none;
   width: 24px;
   height: auto;

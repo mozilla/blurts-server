@@ -515,18 +515,24 @@ async function initCsatBanner() {
 
   if (!csatBanner) return;
 
-  csatBanner.addEventListener("click", handleClick);
+  csatBanner.addEventListener("click", handleEvent);
 
-  function handleClick(e) {
-    let ttl;
+  function handleEvent(e) {
+    const ttl = new Date();
+    ttl.setDate(ttl.getDate() + 90);
+    document.cookie = "csatHidden=1; path=/; sameSite=Lax; expires=" + ttl.toUTCString();
 
-    switch (e.target.className) {
-      case "csat-banner-close":
+    switch (e.target.name) {
+      case "csat-close-btn":
         csatBanner.toggleAttribute("hidden", true);
         setHeaderHeight();
-        ttl = new Date();
-        ttl.setDate(ttl.getDate() + 90);
-        document.cookie = "csatHidden=true; path=/; sameSite=Lax; expires=" + ttl.toUTCString();
+        ga("send", "event", "csat", "close");
+        break;
+      case "csat-option":
+        csatBanner.querySelector(".csat-question").textContent = "Thanks for your feedback!";
+        csatBanner.querySelectorAll("label").forEach(el => el.classList.add("disabled"));
+        e.target.parentElement.classList.add("selected");
+        ga("send", "event", "csat", "submit", e.target.parentElement.textContent, e.target.value);
         break;
     }
   }
