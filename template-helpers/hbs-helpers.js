@@ -327,6 +327,6 @@ module.exports = {
   ifCompare,
   breachMath,
   loop,
-  vpnPromoBlocked,
   showCsatBanner,
+  vpnPromoBlocked,
 };
