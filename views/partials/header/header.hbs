@@ -1,7 +1,8 @@
     {{> vpn-banner }}
     <header id="header" class="{{ addUpgradeClasses }}">
       {{{ recruitmentBanner }}}
-      {{{ microsurveyBanner }}}
+      {{!-- {{{ microsurveyBanner }}} --}}
+      {{> csat-banner }}
       <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
         <section class="row-full-width fxm-branding">
           <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>

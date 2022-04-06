@@ -26,6 +26,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const { URL } = require("url");
 
 const EmailUtils = require("./email-utils");
@@ -182,6 +183,8 @@ app.use(express.static("public", {
   setHeaders: res => res.set("Cache-Control",
     "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000),
 })); // 10-minute client-side caching; 24-hour server-side caching
+
+app.use(cookieParser());
 
 const hbs = exphbs.create({
   extname: ".hbs",
