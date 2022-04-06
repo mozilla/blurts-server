@@ -17,9 +17,6 @@ header {
 .recruitment-banner,
 .micro-survey-banner,
 .csat-banner {
-  position: relative;
-  font-size: 13px;
-  color: var(--ink);
   background-color: var(--violet1);
   padding: 12px 48px;
   text-align: center;
@@ -29,21 +26,24 @@ header {
   color: inherit;
 }
 
-.csat-banner > * + *{
-  margin: 6px 3px 0;
+.csat-banner p {
+  margin: 0;
+  font-size: 14px;
 }
 
 .csat-banner label {
+  margin: 6px 3px 0;
   color: #56198f;
   border-color: #7639af;
   cursor: pointer;
-  transition: background-color .15s, opacity .3s;
+  transition: opacity .5s ease-out;
 }
 
-.csat-banner label.disabled{
-  opacity: .5;
-  cursor: default;
+.csat-banner[disabled] label,
+.csat-banner[hidden] label {
   pointer-events: none;
+  cursor: default;
+  opacity: .3;
 }
 
 .csat-banner label.selected{
@@ -55,19 +55,17 @@ header {
   display: none;
 }
 
-[name="csat-close-btn"]{
+.csat-banner [name="csat-close-btn"]{
   position: absolute;
   top: 12px;
   right: 12px;
-  display: flex;
   border: 0;
   cursor: pointer;
 }
 
-[name="csat-close-btn"] img{
+.csat-banner button img{
   pointer-events: none;
   width: 24px;
-  height: auto;
 }
 
 #micro-survey-prompt {

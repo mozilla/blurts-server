@@ -525,16 +525,18 @@ async function initCsatBanner() {
     switch (e.target.name) {
       case "csat-close-btn":
         csatBanner.toggleAttribute("hidden", true);
-        setHeaderHeight();
-        ga("send", "event", "csat", "close");
+        csatBanner.removeEventListener("click", handleEvent);
+        if (window.ga) ga("send", "event", "CSAT banner", "close", "No answer");
         break;
       case "csat-option":
+        csatBanner.toggleAttribute("disabled", true);
         csatBanner.querySelector(".csat-question").textContent = "Thanks for your feedback!";
-        csatBanner.querySelectorAll("label").forEach(el => el.classList.add("disabled"));
         e.target.parentElement.classList.add("selected");
-        ga("send", "event", "csat", "submit", e.target.parentElement.textContent, e.target.value);
+        if (window.ga) ga("send", "event", "CSAT banner", "submit", e.target.nextSibling.textContent, e.target.value);
         break;
     }
+
+    setHeaderHeight();
   }
 }
 
