@@ -56,6 +56,23 @@ function recruitmentBanner(args) {
   return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}" hidden target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
 }
 
+
+function showCsatBanner(args) {
+  const signupDate = args.data.root.req.session.user?.created_at;
+
+  if (!signupDate) return; // don't show if user is not logged in or not signed up
+
+  if (args.data.root.req.cookies.csatHidden) return; // don't show if user closed banner
+
+  if (Date.now() - Date.parse(signupDate) < 604800000) return; // don't show if sign-up is less than 7 days old
+
+  if (AppConstants.RECRUITMENT_BANNER_LINK || AppConstants.RECRUITMENT_BANNER_TEXT) return; // don't show if recruitment banner is present
+
+  if (!englishInAcceptLanguages(args)) return; // don't show if language is not english
+
+  return true;
+}
+
 function microsurveyBanner(args) {
   // don't show micro survey if we're already showing a recruitment banner
   if (
@@ -391,6 +408,7 @@ module.exports = {
   breachMath,
   loop,
   vpnPromoBlocked,
+  showCsatBanner,
   //DATA REMOVAL SPECIFIC
   sentenceCase,
   kebabCase,
