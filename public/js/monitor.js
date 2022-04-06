@@ -526,7 +526,6 @@ async function initCsatBanner() {
       case "csat-close-btn":
         csatBanner.toggleAttribute("hidden", true);
         csatBanner.removeEventListener("click", handleEvent);
-        if (window.ga) ga("send", "event", "CSAT banner", "close", "No answer");
         break;
       case "csat-option":
         csatBanner.toggleAttribute("disabled", true);
