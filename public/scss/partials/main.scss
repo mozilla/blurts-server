@@ -670,7 +670,7 @@ div.sprite {
 }
 
 .clear-header {
-  padding-top: 10rem;
+  padding-top: calc(var(--header-height) + 80px);
 }
 
 .toggle-parent.active .toggle svg {
@@ -702,10 +702,6 @@ div.sprite {
     --maxWidth: 600px;
     --topHeadline: 43px;
     --headline: 36px;
-  }
-
-  .clear-header {
-    padding-top: 11rem;
   }
 
   .hide-mobile {

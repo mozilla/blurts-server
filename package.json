@@ -15,6 +15,7 @@
     "clean-css-cli": "4.3.0",
     "client-oauth2": "4.3.2",
     "concat": "1.0.3",
+    "cookie-parser": "^1.4.6",
     "connect-redis": "5.0.0",
     "countrily": "^1.5.2",
     "cpr": "3.0.1",
