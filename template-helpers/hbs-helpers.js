@@ -407,7 +407,6 @@ module.exports = {
   breachMath,
   loop,
   vpnPromoBlocked,
-  showCsatBanner,
   //DATA REMOVAL SPECIFIC
   sentenceCase,
   kebabCase,
