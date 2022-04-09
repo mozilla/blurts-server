@@ -406,7 +406,6 @@ module.exports = {
   ifCompare,
   breachMath,
   loop,
-  showCsatBanner,
   vpnPromoBlocked,
   //DATA REMOVAL SPECIFIC
   sentenceCase,
