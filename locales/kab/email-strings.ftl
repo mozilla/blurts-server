@@ -100,4 +100,5 @@ create-account = Rnu amiḍan
 more-products-headline = Mmesten iman-ik·im s uqettun n yifarisen-nneɣ
 more-products-vpn = Ammesten ummid n yiben-ik·im, n yal ibenk-ik·im
 more-products-cta-vpn = Awi { -product-name-vpn }
+more-products-relay = Ffer tansa-inek·inem n yimayl taḥeqqanit i ummesten n timagit-ik·im.
 more-products-cta-relay = Awi { -product-name-relay }
