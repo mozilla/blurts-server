@@ -1,32 +1,35 @@
-    {{> vpn-banner }}
-    <header id="header" class="{{ addUpgradeClasses }}">
-      {{!-- {{{ recruitmentBanner }}} --}}
-      {{!-- {{{ microsurveyBanner }}} --}}
-      {{> csat-banner }}
-      <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
-        <section class="row-full-width fxm-branding">
-          <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{> analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
-            <div class="sprite fx-monitor-logo"><!--Firefox Monitor logo--></div>
-            <div class="fx-monitor-logotype"></div>
-          </a>
-          <nav class="desktop-menu flx-auto flx-cntr jst-cntr">
-            {{> header/nav-links }}
-          </nav>
-          <div class="flx flx-end flx-cntr bento-sign-up">
-            <firefox-apps></firefox-apps>
-            {{#if req.session.user}}
-              {{> header/fxa-menu }}
-            {{else}}
-              <button id="sign-in-btn" class="open-oauth sign-in btn-white btn-big btn-transparent" {{> analytics/fxa id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
-            {{/if}}
-          </div>
-        </section>
-        <!--mobile navigation-->
-        <section class="mobile-nav show-mobile">
-          <span class="nav-link drop-down-menu">{{ getString "menu" }} {{> svg/toggle-down }}</span>
-          <nav class="mobile-menu flx-cntr row-full-width">
-            {{> header/nav-links }}
-          </nav>
-        </section>
+{{> vpn-banner }}
+<header id="header" class="{{ addUpgradeClasses }}">
+  {{{ recruitmentBanner }}}
+  {{> csat-banner }}
+  <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
+    <section class="row-full-width fxm-branding">
+      <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{>
+        analytics/internal-link eventLabel="Fx-Monitor-Logo" }}>
+        <div class="sprite fx-monitor-logo">
+          <!--Firefox Monitor logo-->
+        </div>
+        <div class="fx-monitor-logotype"></div>
+      </a>
+      <nav class="desktop-menu flx-auto flx-cntr jst-cntr">
+        {{> header/nav-links }}
+      </nav>
+      <div class="flx flx-end flx-cntr bento-sign-up">
+        <firefox-apps></firefox-apps>
+        {{#if req.session.user}}
+        {{> header/fxa-menu }}
+        {{else}}
+        <button id="sign-in-btn" class="open-oauth sign-in btn-white btn-big btn-transparent" {{> analytics/fxa
+          id="fx-monitor-sign-in-button" }} data-event-category="Sign In Button">{{ getString "sign-in" }}</button>
+        {{/if}}
       </div>
-    </header>
+    </section>
+    <!--mobile navigation-->
+    <section class="mobile-nav show-mobile">
+      <span class="nav-link drop-down-menu">{{ getString "menu" }} {{> svg/toggle-down }}</span>
+      <nav class="mobile-menu flx-cntr row-full-width">
+        {{> header/nav-links }}
+      </nav>
+    </section>
+  </div>
+</header>
