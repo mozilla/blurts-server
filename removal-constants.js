@@ -64,7 +64,7 @@ const REMOVAL_CONSTANTS = {
   ],
   REMOVAL_PILOT_ENROLLMENT_END_DAY: 18, //days from pilot start to when a user can no longer enroll in their pilot group
   REMOVAL_PILOT_ENDING_DAY: 75, //days from pilot start to when we start messaging the end of the pilot / continuation with Kanary
-  REMOVAL_PILOT_END_DAY: 92, //days from pilot start to when the pilot ends
+  REMOVAL_PILOT_END_DAY: 93, //days from pilot start to when the pilot ends
   REMOVAL_STEP: {
     AWAITING_SCAN: {
       locale_var: "remove-step-awaiting-scan",
