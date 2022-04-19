@@ -127,6 +127,30 @@ h3.sb-callout {
   color: var(--violet2);
 }
 
+.product-education {
+  width: min(960px, 100%);
+  margin: 80px auto;
+}
+
+.product-education.dark {
+  color: white;
+}
+
+.product-education.light {
+  color: black;
+}
+
+.product-education h2 {
+  color: inherit;
+  font-size: var(--headline);
+}
+
+.product-education video{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 @media screen and (max-width: 800px) {
   .landing-content {
     max-width: 600px;

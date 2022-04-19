@@ -159,6 +159,13 @@ function setGAListeners(){
       });
     });
 
+    document.querySelectorAll("video").forEach((el) => {
+      el.addEventListener("play", async (e) => {
+        if (e.target.currentTime > 0) return; // only track initial play event
+        e.target.dataset.eventCategory = "video play";
+        await sendPing(e.target, "Click", e.target.src);
+      });
+    });
   }
 
   window.sessionStorage.setItem("gaInit", true);
@@ -166,167 +173,6 @@ function setGAListeners(){
 
 function isGoogleAnalyticsAvailable() {
   return (typeof(ga) !== "undefined");
-}
-
-function setSurveyedCookie() {
-  const date = new Date();
-  date.setTime(date.getTime() + 30*24*60*60*1000);
-  document.cookie = "surveyed=true; expires=" + date.toUTCString();
-  const microSurveyBanner = document.getElementById("micro-survey-banner");
-  if (microSurveyBanner) {
-    microSurveyBanner.remove();
-  }
-}
-
-function analyticsSurveyLogic() {
-
-  if (!isGoogleAnalyticsAvailable) {
-    return;
-  }
-
-  const microSurveyBanner = document.getElementById("micro-survey-banner");
-  if (!microSurveyBanner) {
-    return;
-  }
-
-  const alreadySurveyed = document.cookie.split("; ").some((item) => item.trim().startsWith("surveyed="));
-  if (alreadySurveyed) {
-    microSurveyBanner.remove();
-    return;
-  }
-
-  // Unhide the micro survey
-  microSurveyBanner.classList.remove("hidden");
-
-  const surveyPrompt = document.getElementById("micro-survey-prompt");
-  const surveyType = surveyPrompt.dataset.surveyType;
-  const surveyOptions = document.getElementById("micro-survey-options");
-  switch (surveyType) {
-    case "nps": {
-      const notLikely = document.createElement("li");
-      notLikely.textContent = microSurveyBanner.getAttribute("data-micro-survey-not-likely-response-translated");
-      notLikely.classList = "nps-bookend";
-      surveyOptions.appendChild(notLikely);
-      [...Array(10).keys()].forEach(option => {
-        const li = document.createElement("li");
-        li.classList = "micro-survey-option";
-        li.textContent = option + 1;
-        li.dataset.eventCategory = "NPS Survey";
-        li.dataset.eventAction = "submitted";
-        li.dataset.eventValue = option + 1;
-        if (option < 6) {
-          li.dataset.eventLabel = "detractor";
-          li.dataset.npsValue = -1;
-        } else if (option < 8) {
-          li.dataset.eventLabel = "passive";
-          li.dataset.npsValue = 0;
-        } else {
-          li.dataset.eventLabel = "promoter";
-          li.dataset.npsValue = 1;
-        }
-        li.addEventListener("click", (evt) => {
-          const eventData = li.dataset;
-          ga("send", "event",
-            eventData.eventCategory,
-            eventData.eventAction,
-            eventData.eventLabel,
-            eventData.eventValue,
-            {
-              dimension1: eventData.eventLabel,
-              metric2: 1,
-              metric3: eventData.eventValue,
-              metric4: eventData.npsValue,
-            }
-          );
-        });
-
-        li.addEventListener("click", setSurveyedCookie);
-        surveyOptions.appendChild(li);
-      });
-      const veryLikely = document.createElement("li");
-      veryLikely.textContent = microSurveyBanner.getAttribute("data-micro-survey-very-likely-response-translated");
-      veryLikely.classList = "nps-bookend";
-      surveyOptions.appendChild(veryLikely);
-    break;
-    }
-    case "pmf": {
-      const options = [
-        "micro-survey-very-disappointed-response",
-        "micro-survey-somewhat-disappointed-response",
-        "micro-survey-dont-care-response",
-      ];
-      options.forEach(option => {
-        const li = document.createElement("li");
-        li.classList = "micro-survey-option";
-        li.textContent = microSurveyBanner.getAttribute(`data-${option}-translated`);
-        li.dataset.eventCategory = "PMF Survey";
-        li.dataset.eventAction = "submitted";
-        li.dataset.eventLabel = microSurveyBanner.getAttribute(`data-${option}-english`);
-        li.addEventListener("click", setSurveyedCookie);
-        li.addEventListener("click", (evt) => {
-          const eventData = li.dataset;
-          ga("send", "event",
-            eventData.eventCategory,
-            eventData.eventAction,
-            eventData.eventLabel,
-            eventData.eventValue
-          );
-        });
-        surveyOptions.appendChild(li);
-      });
-      break;
-    }
-    case "usability":
-    case "credibility":
-    case "appearance": {
-      let countMetric = "metric5";
-      let rankMetric = "metric6";
-      if (surveyType === "credibility") {
-        countMetric = "metric7";
-        rankMetric = "metric8";
-      }
-      if (surveyType === "appearance") {
-        countMetric = "metric9";
-        rankMetric = "metric10";
-      }
-
-      const options = [
-        "micro-survey-strongly-disagree-response",
-        "micro-survey-disagree-response",
-        "micro-survey-unsure-response",
-        "micro-survey-agree-response",
-        "micro-survey-strongly-agree-response",
-      ];
-      let eventValue = 1;
-      options.forEach(option => {
-        const li = document.createElement("li");
-        li.classList = "micro-survey-option";
-        li.textContent = microSurveyBanner.getAttribute(`data-${option}-translated`);
-        li.dataset.eventCategory = `SUPR-Q Survey ${surveyType}`;
-        li.dataset.eventAction = "submitted";
-        li.dataset.eventLabel = microSurveyBanner.getAttribute(`data-${option}-english`);
-        li.dataset.eventValue = eventValue;
-        li.addEventListener("click", setSurveyedCookie);
-        li.addEventListener("click", (evt) => {
-          const eventData = li.dataset;
-          const gaFieldsObject = {
-              [countMetric]: 1,
-              [rankMetric]: eventData.eventValue,
-          };
-          ga("send", "event",
-            eventData.eventCategory,
-            eventData.eventAction,
-            eventData.eventLabel,
-            eventData.eventValue,
-            gaFieldsObject
-          );
-        });
-        eventValue++;
-        surveyOptions.appendChild(li);
-      });
-      break;
-    }
-  }
 }
 
 (() => {
@@ -384,8 +230,6 @@ function analyticsSurveyLogic() {
       }
       setGAListeners();
     }, false);
-
-    analyticsSurveyLogic();
 
   } else {
     removeUtmsFromUrl();

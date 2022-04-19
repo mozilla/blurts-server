@@ -15,69 +15,61 @@ header {
 }
 
 .recruitment-banner,
-.micro-survey-banner {
-  background-color: #f9f7fd;
-  padding: 0.5em;
+.csat-banner {
+  background-color: var(--violet1);
+  padding: 12px 48px;
   text-align: center;
 }
 
-#micro-survey-prompt {
-  font-size: 1.1rem;
+.recruitment-banner a{
+  color: inherit;
 }
 
-.micro-survey-banner {
-  background-color: #d8b7f7;
-  font-weight: bold;
-  padding-top: 1rem;
+.csat-banner p {
+  margin: 0;
+  font-size: 14px;
 }
 
-.micro-survey-banner.hidden {
+.csat-banner label {
+  margin: 6px 3px 0;
+  color: #56198f;
+  border-color: #7639af;
+  cursor: pointer;
+  transition: opacity .5s ease-out;
+}
+
+.csat-banner[disabled] label,
+.csat-banner[hidden] label {
+  pointer-events: none;
+  cursor: default;
+  opacity: .3;
+}
+
+.csat-banner label.selected{
+  opacity: 1;
+  background-color: #d89eff;
+}
+
+.csat-banner label input {
   display: none;
 }
 
-.micro-survey-options {
-  padding: 0;
-  font-size: 0.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-}
-
-.micro-survey-options .micro-survey-option {
-  border-radius: 4px;
-  margin-right: 1rem;
-  color: var(--violet5);
-  border: 2px solid var(--violet5);
-  transition: all 0.1s ease-out;
+.csat-banner [name="csat-close-btn"]{
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 0;
   cursor: pointer;
 }
 
-.micro-survey-options .micro-survey-option:hover {
-  border-color: var(--violet6);
-  background: var(--violet6);
-  color: var(--grey1);
-}
-
-.micro-survey-options-numeric .micro-survey-option {
-  width: 2.5rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.micro-survey-options-likert .micro-survey-option {
-  padding: 0.5rem 0.75rem;
+.csat-banner button img{
+  pointer-events: none;
+  width: 24px;
 }
 
 .nps-bookend {
   display: inline-block;
   margin-right: 1rem;
-}
-
-.micro-survey-options li:last-child {
-  margin-right: 0;
 }
 
 #navigation-wrapper {
@@ -471,12 +463,6 @@ img.avatar,
     padding-right: 2.75rem;
     text-align: left;
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .micro-survey-banner {
-    display: none;
   }
 }
 

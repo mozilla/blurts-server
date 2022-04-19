@@ -26,6 +26,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const helmet = require("helmet");
 const session = require("express-session");
+const cookieParser = require("cookie-parser");
 const { URL } = require("url");
 
 const EmailUtils = require("./email-utils");
@@ -118,7 +119,7 @@ if (AppConstants.NODE_ENV === "heroku") {
   app.locals.ENABLE_PONTOON_JS = true;
   SCRIPT_SOURCES.push(PONTOON_DOMAIN);
   STYLE_SOURCES.push(PONTOON_DOMAIN);
-  FRAME_ANCESTORS.push(PONTOON_DOMAIN);
+  FRAME_ANCESTORS[0] = PONTOON_DOMAIN; // other sources cannot be declared alongside 'none'
 }
 
 const imgSrc = [
@@ -145,25 +146,31 @@ if (AppConstants.FXA_ENABLED) {
   });
 }
 
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    baseUri: ["'none'"],
-    defaultSrc: ["'self'"],
-    connectSrc: connectSrc,
-    fontSrc: [
-      "'self'",
-      "https://fonts.gstatic.com/",
-      "https://code.cdn.mozilla.net/fonts/",
-    ],
-    frameAncestors: FRAME_ANCESTORS,
-    mediaSrc: ["'self'"],
-    imgSrc: imgSrc,
-    objectSrc: ["'none'"],
-    scriptSrc: SCRIPT_SOURCES,
-    styleSrc: STYLE_SOURCES,
-    reportUri: "/__cspreport__",
-  },
-}));
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      baseUri: ["'none'"],
+      defaultSrc: ["'self'"],
+      connectSrc: connectSrc,
+      fontSrc: [
+        "'self'",
+        "https://fonts.gstatic.com/",
+        "https://code.cdn.mozilla.net/fonts/",
+      ],
+      frameAncestors: FRAME_ANCESTORS,
+      mediaSrc: [
+        "'self'",
+        "https://monitor.cdn.mozilla.net/",
+      ],
+      formAction: ["'self'"],
+      imgSrc: imgSrc,
+      objectSrc: ["'none'"],
+      scriptSrc: SCRIPT_SOURCES,
+      styleSrc: STYLE_SOURCES,
+      reportUri: "/__cspreport__",
+    },
+  })
+);
 app.use(helmet.referrerPolicy({ policy: "strict-origin-when-cross-origin" }));
 
 // helmet no longer sets X-Content-Type-Options, so set it manually
@@ -176,6 +183,8 @@ app.use(express.static("public", {
   setHeaders: res => res.set("Cache-Control",
     "public, maxage=" + 10 * 60 * 1000 + ", s-maxage=" + 24 * 60 * 60 * 1000),
 })); // 10-minute client-side caching; 24-hour server-side caching
+
+app.use(cookieParser());
 
 const hbs = exphbs.create({
   extname: ".hbs",

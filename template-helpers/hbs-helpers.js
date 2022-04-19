@@ -51,92 +51,23 @@ function recruitmentBanner(args) {
     return;
   }
 
-  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}"  target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
+  return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}" hidden target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`;
 }
 
-function microsurveyBanner(args) {
-  // don't show micro survey if we're already showing a recruitment banner
-  if (AppConstants.RECRUITMENT_BANNER_LINK && AppConstants.RECRUITMENT_BANNER_TEXT) {
-    return;
-  }
+function showCsatBanner(args) {
+  const signupDate = args.data.root.req.session.user?.created_at;
 
-  // don't show micro survey if user is not signed in
-  if (!args.data.root.req.session.user) {
-    return;
-  }
+  if (!signupDate) return; // don't show if user is not logged in or not signed up
 
-  const microSurveyResponseIds = [
-    "micro-survey-strongly-disagree-response",
-    "micro-survey-disagree-response",
-    "micro-survey-unsure-response",
-    "micro-survey-agree-response",
-    "micro-survey-strongly-agree-response",
-    "micro-survey-very-disappointed-response",
-    "micro-survey-somewhat-disappointed-response",
-    "micro-survey-dont-care-response",
-    "micro-survey-not-likely-response",
-    "micro-survey-very-likely-response",
-  ];
-  const enLocaleArgs = {
-    hash: args.hash, data: { root: { req: { supportedLocales: ["en"] } } },
-  };
-  let bannerOpeningDivDataset = "";
-  microSurveyResponseIds.forEach(id => {
-    bannerOpeningDivDataset += ` data-${id}-translated="${getString(id, args)}" `;
-    bannerOpeningDivDataset += ` data-${id}-english="${getString(id, enLocaleArgs)}" `;
-  });
-  const bannerOpeningDiv = `<div id="micro-survey-banner" class="micro-survey-banner hidden" ${bannerOpeningDivDataset}>`;
-  const nowSecond = new Date().getSeconds() % 10;
-  let surveyElements;
-  switch (nowSecond) {
-    case 1:
-    case 6: {
-      const promptStr = getString("micro-survey-nps-prompt", args);
-      surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="nps">${promptStr}</span>
-        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-numeric"></ul>
-      `;
-      break;
-    }
-    case 2:
-    case 7: {
-      const promptStr = getString("micro-survey-usability-prompt", args);
-      surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="usability">${promptStr}</span>
-        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
-      `;
-      break;
-    }
-    case 3:
-    case 8: {
-      const promptStr = getString("micro-survey-credibility-prompt", args);
-      surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="credibility">${promptStr}</span>
-        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
-      `;
-      break;
-    }
-    case 4:
-    case 9: {
-      const promptStr = getString("micro-survey-appearance-prompt", args);
-      surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="appearance">${promptStr}</span>
-        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
-      `;
-      break;
-    }
-    default: {
-      const promptStr = getString("micro-survey-pmf-prompt", args);
-      surveyElements = `
-        <span id="micro-survey-prompt" data-survey-type="pmf">${promptStr}</span>
-        <ul id="micro-survey-options" class="micro-survey-options micro-survey-options-likert"></ul>
-      `;
-      break;
-    }
-  }
-  const bannerClosingDev = "</div>";
+  if (args.data.root.req.cookies.csatHidden) return; // don't show if user closed banner
 
-  return [bannerOpeningDiv, surveyElements, bannerClosingDev].join("");
+  if (Date.now() - Date.parse(signupDate) < 604800000) return; // don't show if sign-up is less than 7 days old
+
+  if (AppConstants.RECRUITMENT_BANNER_LINK || AppConstants.RECRUITMENT_BANNER_TEXT) return; // don't show if recruitment banner is present
+
+  if (!englishInAcceptLanguages(args)) return; // don't show if language is not english
+
+  return true;
 }
 
 function getString(id, args) {
@@ -292,7 +223,6 @@ function breachMath(lValue, operator = null, rValue = null) {
 
 module.exports = {
   recruitmentBanner,
-  microsurveyBanner,
   englishInAcceptLanguages,
   getString,
   getStringWithFallback,
@@ -311,5 +241,6 @@ module.exports = {
   ifCompare,
   breachMath,
   loop,
+  showCsatBanner,
   vpnPromoBlocked,
 };
