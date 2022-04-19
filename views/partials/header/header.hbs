@@ -1,7 +1,9 @@
 {{> vpn-banner }}
 <header id="header" class="{{ addUpgradeClasses }}">
+  {{#unless (checkIfInRemovalPilot)}}
   {{{ recruitmentBanner }}}
   {{> csat-banner }}
+  {{/unless}}
   <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
     <section class="row-full-width fxm-branding">
       <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{>
@@ -32,4 +34,5 @@
       </nav>
     </section>
   </div>
+  {{#if (showRemovalEndingBanner)}}{{> data-removal/removal-ending-banner }}{{/if}}
 </header>
