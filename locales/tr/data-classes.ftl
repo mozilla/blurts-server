@@ -59,6 +59,7 @@ geographic-locations = Coğrafi konumlar
 government-issued-ids = Devlet tarafından verilen kimlikler
 health-insurance-information = Sağlık sigortası bilgisi
 historical-passwords = Eski parolalar
+hiv-statuses = HIV durumları
 home-loan-information = Ev kredisi bilgileri
 home-ownership-statuses = Ev sahipliği durumları
 homepage-urls = Web sitesi adresleri
