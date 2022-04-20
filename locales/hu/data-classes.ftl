@@ -59,6 +59,7 @@ geographic-locations = Földrajzi helyek
 government-issued-ids = Kormány által kiállított igazolványok
 health-insurance-information = Egészségbiztosítási információk
 historical-passwords = Régebben használt jelszavak
+hiv-statuses = HIV állapotok
 home-loan-information = Lakáshitel információk
 home-ownership-statuses = Lakástulajdonosi állapotok
 homepage-urls = Weboldal URL-ek
