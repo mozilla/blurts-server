@@ -11,6 +11,9 @@ Breach data is powered by [haveibeenpwned.com](https://haveibeenpwned.com/).
 See the [Have I Been Pwned about page](https://haveibeenpwned.com/About) for
 the "what" and "why" of data breach alerts.
 
+## Architecture
+![Image of Monitor architecture](docs/monitor-architecture.png "Firefox Monitor")
+
 ## Development
 
 Please refer to our [coding standards](docs/coding-standards.md) information for code styles, naming conventions and other methodologies.  
