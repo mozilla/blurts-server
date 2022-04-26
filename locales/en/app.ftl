@@ -762,9 +762,39 @@ vpn-banner-cta-expand = Expand
 # button to close panel
 vpn-banner-cta-close = Close
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = How do you keep your email address a secret?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Do you worry about safety on public Wi-Fi?
+ad-unit-relay-cta = Learn more about { -brand-relay }
+ad-unit-vpn-cta = Learn more about { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = How do you keep your email address a secret?
+# ad 2 heading
+ad-unit-2-do-you-worry = Do you worry about safety on public Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Stay in the game!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } lets you keep a stable connection safe and secure while you play games or stream movies.
+ad-unit-3-prevent-throttling = Prevent throttling
+ad-unit-3-be-anywhere = Be anywhere in the world
+ad-unit-3-access-more = Access more
+# ad 4 heading
+ad-unit-4-shopping-with = Shopping with Email Masks
+ad-unit-4-want-to-buy = Want to buy something online and don’t know or fully trust the shop?
+ad-unit-4-shop-online = Use an email mask whenever you shop online. Get the confirmation sent to your real email and then easily turn the mask off anytime later.
+# ad 5 heading
+ad-unit-5-on-the-go = On the Go with { -brand-relay }
+ad-unit-5-instantly-make = Instantly make a custom email mask anywhere and everywhere you go!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connect on the go
+ad-unit-5-privately-sign-in = Use your email mask when you want to privately sign into your favorite coffee shop or public wifi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Get email receipts
+ad-unit-5-share-custom-email = Share a custom email mask for in-store shopping receipts without sharing your real email
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Use on your phone
+ad-unit-5-no-matter-where = No matter where you are, create a custom email mask in seconds for anything you want to do
+# ad 6 heading
+ad-unit-6-worry-free = Worry-Free Signups
+ad-unit-6-want-to-start = Want to start a new subscription, RSVP to an event, or get a bargain promo code without having spam flooding your inbox?
+ad-unit-6-before-you-complete = Before you complete that next signup, use an email mask instead of your real one to protect your info and keep control over your inbox
+
+
