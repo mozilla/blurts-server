@@ -102,50 +102,6 @@ security-tips = Consilios de securitate
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Aperi le navigation de { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Sur un scala de 1 a 10, quanto es probabile que tu recommenda { -product-short-name } a un amico o collega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Non probabile
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Multo probabile
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Es { -product-short-name } facile a usar?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Esque tu senti que { -product-short-name } es digne de fide?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Ha { -product-short-name } un presentation munde e simple?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Io dissenti fortemente
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Dissenti
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Insecur
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = De accordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Fortemente de accordo
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Como te sentirea si tu non poterea plus usar { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Multo deludite
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Un poco deludite
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Non me interessarea
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
 # Link title
@@ -567,9 +523,15 @@ vpn-banner-cta-expand = Expander
 # button to close panel
 vpn-banner-cta-close = Clauder
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Como mantene tu tu adresse e-mail un secreto?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Esque tu te preoccupa del securitate sur wi-fi public?
+ad-unit-relay-cta = Saper plus re { -brand-relay }
+ad-unit-vpn-cta = Saper plus re { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Como pote tu mantener un secreto tu adresse e-mail?
+# ad 2 heading
+ad-unit-2-do-you-worry = Esque tu te preoccupa del securitate sur wi-fi public?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Sta al joco!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Impedi le strangulation
