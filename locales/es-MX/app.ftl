@@ -596,3 +596,13 @@ ad-unit-5-instantly-make = ¡Crea instantáneamente una máscara de correo perso
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Conéctate sobre la marcha
 ad-unit-5-privately-sign-in = Usa tu máscara de correo cuando quieras iniciar sesión de forma privada al Wi-Fi público de tu cafetería favorita
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Recibo tus recibos por correo
+ad-unit-5-share-custom-email = Comparte una máscara de correo personalizada para recibos de compras en la tienda sin compartir tu correo  real
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Úsalo en tu teléfono
+ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de correo electrónico personalizada en segundos para cualquier cosa que desees hacer
+# ad 6 heading
+ad-unit-6-worry-free = Regístrate sin preocupaciones
+ad-unit-6-want-to-start = ¿Quieres iniciar una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
+ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar de la real para proteger tu información y mantener el control sobre tu bandeja de entrada
