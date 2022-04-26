@@ -785,7 +785,7 @@ ad-unit-5-on-the-go = On the Go with { -brand-relay }
 ad-unit-5-instantly-make = Instantly make a custom email mask anywhere and everywhere you go!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Connect on the go
-ad-unit-5-privately-sign-in = Use your email mask when you want to privately sign into your favorite coffee shop or public wifi
+ad-unit-5-privately-sign-in = Use your email mask when you want to privately sign in to your favorite coffee shop or public Wi-Fi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Get email receipts
 ad-unit-5-share-custom-email = Share a custom email mask for in-store shopping receipts without sharing your real email
