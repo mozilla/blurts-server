@@ -121,50 +121,6 @@ security-tips = Biztonsági tippek
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = A { -brand-fxa } navigáció megnyitása
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 1-től 10-ig terjedő skálán, mekkora valószínűséggel ajánlaná a { -product-short-name }t egy barátjának vagy kollégájának?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Nem valószínű
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Nagyon valószínű
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Könnyen használható a { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Megbízhatónak érzi a { -product-short-name }t?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = A { -product-short-name }nak letisztult és egyszerű a megjelenése?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Egyáltalán nem ért egyet
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Nem ért egyet
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Bizonytalan
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Egyetért
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Teljesen egyetért
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Mit érezne, ha már nem használhatná a { -product-short-name }t?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Nagyon csalódna
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Kissé csalódna
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Nem érdekelné
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LEGUTÓBB HOZZÁADOTT ADATSÉRTÉS
 # Link title
@@ -655,9 +611,32 @@ vpn-banner-cta-expand = Kibontás
 # button to close panel
 vpn-banner-cta-close = Bezárás
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Hogyan tartja titokban az e-mail-címét?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Aggódik a biztonsága miatt a nyilvános Wi-Fiken?
+ad-unit-relay-cta = Tudjon meg többet a { -brand-relay }ről
+ad-unit-vpn-cta = Tudjon meg többet a { -brand-mozilla-vpn }ről
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Hogyan tartja titokban az e-mail-címét?
+# ad 2 heading
+ad-unit-2-do-you-worry = Aggódik a biztonsága miatt a nyilvános Wi-Fiken?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Maradjon játékban!
+ad-unit-3-lets-you-keep = A { -brand-mozilla-vpn } segítségével stabil kapcsolatot tarthat biztonságosan, miközben játszik vagy filmeket néz.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Akadályozza meg a sebességkorlátozást
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Legyen bárhol a világon
+# ad 3 list item 3
+ad-unit-3-access-more = Érjen el több mindent.
+# ad 4 heading
+ad-unit-4-shopping-with = Vásárlás e-mail-maszkokkal
+ad-unit-4-want-to-buy = Szeretne vásárolni valamit az interneten, de nem ismeri az üzletet vagy nem bízik benne teljesen?
+ad-unit-4-shop-online = Használjon e-mail-maszkot, amikor online vásárol. Kapja meg a visszaigazolást a valódi e-mail-címére, majd később bármikor könnyedén kikapcsolhatja a maszkot.
+# ad 5 heading
+ad-unit-5-on-the-go = Útközben a { -brand-relay } segítségével
+ad-unit-5-instantly-make = Azonnal készítsen egy egyéni e-mail-maszkot, bárhol is jár.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Csatlakozzon útközben
+ad-unit-5-privately-sign-in = Használja e-mail-maszkját, ha privát módon szeretne bejelentkezni kedvenc kávézójába vagy egy nyilvános Wi-Fi-hálózatra
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Kapjon e-mailes nyugtákat
