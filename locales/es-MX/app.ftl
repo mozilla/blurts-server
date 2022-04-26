@@ -580,3 +580,19 @@ ad-unit-2-do-you-worry = ¿Te preocupas por tu seguridad en las redes Wi-Fi púb
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Mantente al día!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permite mantener una conexión estable y segura mientras juegas o miras películas.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Evita el sobrecalentamiento
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Puedes estar en cualquier lugar del mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Más acceso
+# ad 4 heading
+ad-unit-4-shopping-with = Comprar con correos enmascarados
+ad-unit-4-want-to-buy = ¿Quieres comprar algo en línea y no confías totalmente en la tienda?
+ad-unit-4-shop-online = Usa una mascara de correo cada vez que compres en línea. Obtén la confirmación de compra enviada a tu correo electrónico real y luego desactiva fácilmente la máscara en cualquier momento.
+# ad 5 heading
+ad-unit-5-on-the-go = Sobre la marcha con { -brand-relay }
+ad-unit-5-instantly-make = ¡Crea instantáneamente una máscara de correo personalizada en cualquier lugar y donde sea que vayas!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conéctate sobre la marcha
+ad-unit-5-privately-sign-in = Usa tu máscara de correo cuando quieras iniciar sesión de forma privada al Wi-Fi público de tu cafetería favorita
