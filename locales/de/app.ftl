@@ -566,3 +566,32 @@ ad-unit-vpn-cta = Weitere Informationen zu { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = Wie halten Sie Ihre E-Mail-Adresse geheim?
 # ad 2 heading
 ad-unit-2-do-you-worry = Machen Sie sich Sorgen um die Sicherheit im öffentlichen WLAN?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Bleiben Sie im Spiel!
+ad-unit-3-lets-you-keep = Mit { -brand-mozilla-vpn } können Sie sicher und geschützt eine stabile Verbindung aufrechterhalten, während Sie Spiele spielen oder Filme streamen.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Drosselung verhindern
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Seien Sie irgendwo auf der Welt
+# ad 3 list item 3
+ad-unit-3-access-more = Mehr Zugriff
+# ad 4 heading
+ad-unit-4-shopping-with = Einkaufen mit E-Mail-Masken
+ad-unit-4-want-to-buy = Möchten Sie etwas im Internet kaufen, kennen oder vertrauen dem Verkäufer aber nicht ganz?
+ad-unit-4-shop-online = Verwenden Sie eine E-Mail-Maske, wenn Sie online einkaufen. Lassen Sie sich die Bestätigung an Ihre echte E-Mail-Adresse senden und schalten Sie die Maske später jederzeit einfach aus.
+# ad 5 heading
+ad-unit-5-on-the-go = Unterwegs mit { -brand-relay }
+ad-unit-5-instantly-make = Erstellen Sie sofort und überall eine benutzerdefinierte E-Mail-Maske!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Verbinden Sie sich unterwegs
+ad-unit-5-privately-sign-in = Verwenden Sie Ihre E-Mail-Maske, wenn Sie sich privat bei Ihrem Lieblingscafé oder öffentlichen WLAN anmelden möchten
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Erhalten Sie Quittungen per E-Mail
+ad-unit-5-share-custom-email = Geben Sie beim Einkaufen eine benutzerdefinierte E-Mail-Maske für Quittungen an, ohne Ihre echte E-Mail-Adresse preiszugeben
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Auf Ihrem Handy verwenden
+ad-unit-5-no-matter-where = Egal wo Sie sind, erstellen Sie in Sekundenschnelle eine benutzerdefinierte E-Mail-Maske für alles, was Sie tun möchten
+# ad 6 heading
+ad-unit-6-worry-free = Sorgenfreies Registrieren
+ad-unit-6-want-to-start = Möchten Sie ein neues Abonnement abschließen, auf eine Einladung antworten oder einen günstigen Rabatt-Code erhalten, ohne dass Spam Ihren Posteingang überschwemmt?
+ad-unit-6-before-you-complete = Bevor Sie die nächste Registrieren abschließen, verwenden Sie eine E-Mail-Maske anstelle Ihrer echten, um Ihre Daten zu schützen und die Kontrolle über Ihren Posteingang zu behalten
