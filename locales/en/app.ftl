@@ -773,8 +773,11 @@ ad-unit-2-do-you-worry = Do you worry about safety on public Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Stay in the game!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } lets you keep a stable connection safe and secure while you play games or stream movies.
+# ad 3 list item 1
 ad-unit-3-prevent-throttling = Prevent throttling
+# ad 3 list item 2
 ad-unit-3-be-anywhere = Be anywhere in the world
+# ad 3 list item 3
 ad-unit-3-access-more = Access more
 # ad 4 heading
 ad-unit-4-shopping-with = Shopping with Email Masks
@@ -794,5 +797,5 @@ ad-unit-5-use-on-phone = Use on your phone
 ad-unit-5-no-matter-where = No matter where you are, create a custom email mask in seconds for anything you want to do
 # ad 6 heading
 ad-unit-6-worry-free = Worry-Free Signups
-ad-unit-6-want-to-start = Want to start a new subscription, RSVP to an event, or get a bargain promo code without having spam flooding your inbox?
+ad-unit-6-want-to-start = Want to start a new subscription, respond to an invitation, or get a bargain promo code without having spam flooding your inbox?
 ad-unit-6-before-you-complete = Before you complete that next signup, use an email mask instead of your real one to protect your info and keep control over your inbox
