@@ -59,6 +59,7 @@ geographic-locations = Positiones geographic
 government-issued-ids = IDs publicate per le governamento
 health-insurance-information = Informationes re le assecurantia sur le salute
 historical-passwords = chronologia del contrasignos
+hiv-statuses = Statos de HIV
 home-loan-information = Informationes sur le presto del casa
 home-ownership-statuses = Statos de proprietate del casa
 homepage-urls = URLs del pagina principal

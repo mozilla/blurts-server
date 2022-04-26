@@ -59,6 +59,7 @@ geographic-locations = Географические местоположения
 government-issued-ids = Удостоверения личности выданные государством
 health-insurance-information = Информация о медицинском страховании
 historical-passwords = История изменения паролей
+hiv-statuses = ВИЧ-статусы
 home-loan-information = Наличие кредитов на недвижимость
 home-ownership-statuses = Наличие недвижимости
 homepage-urls = URL домашних страниц

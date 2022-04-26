@@ -59,6 +59,7 @@ geographic-locations = Lleoliadau daearyddol
 government-issued-ids = IDau a gyhoeddwyd gan y Llywodraeth
 health-insurance-information = Manylion yswiriant iechyd
 historical-passwords = Cyfrineiriau hanesyddol
+hiv-statuses = Statws HIV
 home-loan-information = Manylion benthyciad cartref
 home-ownership-statuses = Statws perchnogaeth cartref
 homepage-urls = URLau tudalennau cartref

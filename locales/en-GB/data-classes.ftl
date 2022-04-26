@@ -59,6 +59,7 @@ geographic-locations = Geographic locations
 government-issued-ids = Government issued IDs
 health-insurance-information = Health insurance information
 historical-passwords = Historical passwords
+hiv-statuses = HIV statuses
 home-loan-information = Home loan information
 home-ownership-statuses = Home ownership statuses
 homepage-urls = Homepage URLs

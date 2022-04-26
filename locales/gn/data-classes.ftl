@@ -59,6 +59,7 @@ geographic-locations = Yvy rendatee
 government-issued-ids = Tetã Rekuái onohẽva IDs
 health-insurance-information = Marandu tesãirã jehepyme’ẽ
 historical-passwords = Ñe’ẽñemi rembiasakuéva
+hiv-statuses = VIH rekotee
 home-loan-information = Marandu virujepuru rehegua
 home-ownership-statuses = Mba’etee rekotee óga rehegua
 homepage-urls = Kuatiarogue ñepyrũha URLs

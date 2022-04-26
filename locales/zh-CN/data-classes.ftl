@@ -59,6 +59,7 @@ geographic-locations = 地理位置
 government-issued-ids = 有效证件
 health-insurance-information = 健康保险信息
 historical-passwords = 历史密码
+hiv-statuses = 艾滋病（HIV）状态
 home-loan-information = 住房贷款信息
 home-ownership-statuses = 房屋所有权状况
 homepage-urls = 主页网址

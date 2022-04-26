@@ -59,6 +59,7 @@ geographic-locations = Geografiska platser
 government-issued-ids = Regeringens utfärdade ID
 health-insurance-information = Sjukförsäkringsinformation
 historical-passwords = Historiska lösenord
+hiv-statuses = HIV-status
 home-loan-information = Hemlånsinformation
 home-ownership-statuses = Bostadsstatus
 homepage-urls = Hemsidaadresser

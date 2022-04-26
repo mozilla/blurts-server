@@ -113,50 +113,6 @@ security-tips = Iwellihen ɣef tɣellist
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Inig deg { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Acu n tezmilt gar 1, amek ara twellheḍ medden ɣer { -product-short-name } i yimeddukal neɣ wid ukud txeddmeḍ?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Ur cukkeɣ ara
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Ahat
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } fessus i useqdec?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Tettwaliḍ tzemreḍ ad tgeḍ laman deg { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } ɣur-s tanekda yeṣfan yerna fessusen?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Ur qbileɣ ara aṭas
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Ur qbileɣ ara
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ur tḥiqeɣ ara
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Qebleɣ
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Qebleɣ aṭas
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Amek ara tḥulfuḍ ma yella ur tettezziḍ ara ad tesqedceḍ { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Ḥezneɣ aṭas
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Ḥezneɣ cwiṭ
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Ur d-cliɛeɣ ara
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = TIREWLIWIN N YISEFKA TINEGGURA YETTWARNAN
 # Link title
@@ -306,6 +262,7 @@ facebook-breach-note =
      <span>Imayl-ik ur d-iban ara deg trewla-a,
      maca uṭṭun-ik n tiliɣri izmer ad yettwasemres.</span> Kra n yimiḍanen i yettwakren deg trewla n yisefka n Facebook ddan ula d uṭṭunen n tiliɣriakken telɣut tudmawant maca ur ddint ara tansiwin n yimayl. Ma yella urǧin tjerrdeḍ ɣer ɣer Facebook
     — xas wama ur t-tesseqdaceḍ ara — A-t-a wayen i ilaq ad txedmeḍ
+facebook-breach-what-to-do-3 = Wali akk iwellihen yellan ɣef usebter-nneɣ yerzan tuffɣiwin n Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Tirewliwin ibanen:
 
@@ -559,3 +516,36 @@ ecosystem-promo-headline = Seḥbiber tudert-inek deg internet s yifarisen yetta
 ecosystem-promo-body = Akk ifarisen-agi { -brand-name } ttqadaren ṭṭmana-nneɣ ɣef yisefka udmawanen: Lqeḍ cwiṭ n yisefka. Mmesten-iten. Ulac tuffriwin.
 promo-ecosystem-cta = Wali akk ifarisen
 steps-to-resolve-headline = Isurifen ɣef ferru n trewla-a
+vpn-promo-headline = D lawan ad tesǧehdeḍ taɣellust-ik•im srid.
+vpn-promo-cta = Awi { -brand-mozilla-vpn }
+vpn-promo-headline-new = Ḥrez 50 % s ujerred n useggas ikmel
+vpn-promo-copy-new = Mmesten isefka-inek•inem srid—syen fren aɣawas n umultaɣ n VPN i ak•akem-iseɛden.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Adig-ik·im: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Mmesten iman-ik·im</em> s { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Yettwammesten</em> s { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Tettummestneḍ — tanemmirt ɣef useqdec n { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Adig-ine·inem yezmer ad yettwaḍfer ma yella ur tesqedceḍ ara VPN.
+vpn-banner-subtitle-2 = Mmesten adig-ik·im syen inig s wudem aɣellsan s 3 takkayin
+vpn-banner-status-protected = Addad amiran: <em>Yettwammesten ✓</em>
+vpn-banner-status-not-protected = Addad amiran: <em>Ur yettwammesten ara ✓</em>
+# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Tansa IP: { $ip-address }
+vpn-banner-step-1 = Multeɣ ɣer { -brand-mozilla-vpn }
+vpn-banner-step-2 = Fren adig VPN
+vpn-banner-step-3 = Rmed VPN, tinigeḍ s wudem aɣellsan
+vpn-banner-cta = Awi { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Snefli
+# button to close panel
+vpn-banner-cta-close = Mdel
+
+## VPN and Relay educational videos
+
+# Relay video headline for placement on Monitor home page
+relay-video-headline = Amek ara teǧǧeḍ tansa-ik·im n yimayl d tuffirt?
+# VPN video headline for placement on Monitor user's dashboard
+vpn-video-headline = Tettagadeḍ ɣef tɣellist deg Wi-Fi azayaz?

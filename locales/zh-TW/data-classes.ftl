@@ -59,6 +59,7 @@ geographic-locations = 地理位置
 government-issued-ids = 政府簽發的證件資料
 health-insurance-information = 健康保險資訊
 historical-passwords = 過去使用的密碼
+hiv-statuses = HIV / 愛滋病狀態
 home-loan-information = 房貸資訊
 home-ownership-statuses = 房屋擁有情況
 homepage-urls = 首頁網址

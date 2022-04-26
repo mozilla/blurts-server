@@ -796,5 +796,3 @@ ad-unit-5-no-matter-where = No matter where you are, create a custom email mask 
 ad-unit-6-worry-free = Worry-Free Signups
 ad-unit-6-want-to-start = Want to start a new subscription, RSVP to an event, or get a bargain promo code without having spam flooding your inbox?
 ad-unit-6-before-you-complete = Before you complete that next signup, use an email mask instead of your real one to protect your info and keep control over your inbox
-
-

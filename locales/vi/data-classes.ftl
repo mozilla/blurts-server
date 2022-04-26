@@ -59,6 +59,7 @@ geographic-locations = Vị trí địa lý
 government-issued-ids = ID do chính phủ cấp
 health-insurance-information = Thông tin bảo hiểm y tế
 historical-passwords = Mật khẩu quá khứ
+hiv-statuses = Tình trạng nhiễm HIV
 home-loan-information = Thông tin cho vay mua nhà
 home-ownership-statuses = Tình trạng sở hữu nhà
 homepage-urls = URL trang chủ
