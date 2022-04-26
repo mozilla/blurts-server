@@ -640,3 +640,11 @@ ad-unit-5-connect-on-the-go = Csatlakozzon útközben
 ad-unit-5-privately-sign-in = Használja e-mail-maszkját, ha privát módon szeretne bejelentkezni kedvenc kávézójába vagy egy nyilvános Wi-Fi-hálózatra
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Kapjon e-mailes nyugtákat
+ad-unit-5-share-custom-email = Ossza meg egyéni e-mail maszkját a bolti vásárlási nyugtákhoz anélkül, hogy megosztaná valódi e-mail-címét
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Használja a telefonján
+ad-unit-5-no-matter-where = Nem számít, hol van, pillanatok alatt hozzon létre egy egyéni e-mail-maszkot bármihez, amihez csak szeretne
+# ad 6 heading
+ad-unit-6-worry-free = Gondtalan regisztrációk
+ad-unit-6-want-to-start = Új előfizetést szeretne indítani, válaszolna egy meghívásra, vagy akciós promóciós kódot szeretne kapni anélkül, hogy levélszemét árasztaná el a postaládáját?
+ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztrációt, használjon egy e-mail maszkot a valódi címe helyett, hogy megvédje adatait és megtartsa a levelesládája feletti irányítást.
