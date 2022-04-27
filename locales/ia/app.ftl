@@ -552,3 +552,10 @@ ad-unit-5-connect-on-the-go = Connecte te al volo
 ad-unit-5-privately-sign-in = Usa tu masca email quando tu vole reservatemente acceder a tu favorite bar o wi-fi public
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Recipe quitantias email
+ad-unit-5-share-custom-email = Comparti un masca email personalisate pro quitantias de compras in boteca, sin compartir tu real email
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Usa lo sur tu telephono
+ad-unit-5-no-matter-where = Non importa ubi tu es, crea un masca email personalisate in secundas pro toto lo que tu vole facer
+# ad 6 heading
+ad-unit-6-worry-free = Registrationes sin anxietate
+ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, usa un masca email in vice de tu real adresse pro proteger tu information e mantener le controlo sur tu cassa de ingresso
