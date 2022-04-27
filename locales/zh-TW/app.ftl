@@ -523,3 +523,4 @@ ad-unit-3-be-anywhere = 從世界上任何地點上網
 ad-unit-3-access-more = 存取更多內容
 # ad 4 heading
 ad-unit-4-shopping-with = 使用轉寄信箱網購
+ad-unit-4-want-to-buy = 想要在網路上網購，但不是熟悉的店家或無法完全信任這家商店嗎？
