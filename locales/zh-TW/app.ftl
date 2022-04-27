@@ -515,6 +515,7 @@ ad-unit-1-how-do-you-keep = 要如何保密電子郵件信箱？
 ad-unit-2-do-you-worry = 您擔心使用公用 Wi-Fi 的安全性嗎？
 # ad 3 heading
 ad-unit-3-stay-in-the-game = 繼續努力！
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 讓您在玩遊戲或觀賞網路串流影片時，有穩定而安全的網路連線。
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = 避免限速
 # ad 3 list item 2
@@ -530,6 +531,7 @@ ad-unit-5-on-the-go = 隨時隨地使用 { -brand-relay }
 ad-unit-5-instantly-make = 隨時隨地建立自訂的轉寄郵件信箱！
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = 隨時隨地連線
+ad-unit-5-privately-sign-in = 可使用轉寄信箱來在喜愛的咖啡店登入上網或登入使用公共 Wi-Fi。
 # ad 5 subheading 2
 ad-unit-5-email-receipts = 接收電子收據信
 # ad 5 subheading 3
