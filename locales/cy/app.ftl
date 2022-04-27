@@ -646,5 +646,31 @@ ad-unit-1-how-do-you-keep = Sut mae cadw'ch cyfeiriad e-bost yn gyfrinach?
 # ad 2 heading
 ad-unit-2-do-you-worry = Ydych chi'n poeni am ddiogelwch ar Wi-Fi cyhoeddus?
 # ad 3 heading
-ad-unit-3-stay-in-the-game = Arhoswch yn y gêm!
+ad-unit-3-stay-in-the-game = Cadw yn y gêm!
 ad-unit-3-lets-you-keep = Mae { -brand-mozilla-vpn } yn gadael i chi gadw cysylltiad sefydlog yn ddiogel tra byddwch yn chwarae gemau neu ffrydio ffilmiau.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Atal cyfyngu
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Byddwch unrhyw le yn y byd
+# ad 3 list item 3
+ad-unit-3-access-more = Mwy o fynediad
+# ad 4 heading
+ad-unit-4-shopping-with = Siopa gyda Arallenwau E-bost
+ad-unit-4-want-to-buy = Eisiau prynu rhywbeth ar-lein a ddim yn gyfarwydd nac yn ymddiried yn llwyr yn y siop?
+ad-unit-4-shop-online = Defnyddiwch arallenw e-bost pryd bynnag y byddwch chi'n siopa ar-lein. Anfonwch y cadarnhad i'ch e-bost go iawn, gallwch ddiffodd yr arallenw yn hawdd unrhyw bryd yn y dyfodol.
+# ad 5 heading
+ad-unit-5-on-the-go = Ar Daith gyda { -brand-relay }
+ad-unit-5-instantly-make = Gwnewch arallenw e-bost personol yn syth yn unrhyw le ac ym mhobman!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Cysylltu wrth fynd
+ad-unit-5-privately-sign-in = Defnyddiwch eich arallenw e-bost pan fyddwch chi eisiau mewngofnodi'n breifat i'ch hoff siop goffi neu Wi-Fi cyhoeddus
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Cael derbynebau e-bost
+ad-unit-5-share-custom-email = Rhannwch arallenw e-bost personol ar gyfer derbynebau siopa yn y siop a pheidio rhannu'ch e-bost go iawn
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Ei ddefnyddio ar eich ffôn
+ad-unit-5-no-matter-where = Does dim gwahaniaeth lle rydych chi, crëwch arllenw e-bost personol mewn eiliadau ar gyfer unrhyw beth rydych chi am ei wneud
+# ad 6 heading
+ad-unit-6-worry-free = Cofrestriadau Di-bryder
+ad-unit-6-want-to-start = Eisiau cychwyn tanysgrifiad newydd, ymateb i wahoddiad, neu gael cod hyrwyddo bargen heb gael sbam yn gorlifo'ch blwch derbyn?
+ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, defnyddiwch arallenw e-bost yn lle'ch un go iawn i ddiogelu eich manylion a chadw rheolaeth dros eich blwch derbyn
