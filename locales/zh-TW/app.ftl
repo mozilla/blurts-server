@@ -524,3 +524,12 @@ ad-unit-3-access-more = 存取更多內容
 # ad 4 heading
 ad-unit-4-shopping-with = 使用轉寄信箱網購
 ad-unit-4-want-to-buy = 想要在網路上網購，但不是熟悉的店家或無法完全信任這家商店嗎？
+ad-unit-4-shop-online = 在線上購物時使用轉寄信箱消費。可將訂單信轉寄到您的實際信箱並稍後再隨時關閉轉寄。
+# ad 5 heading
+ad-unit-5-on-the-go = 隨時隨地使用 { -brand-relay }
+# ad 5 subheading 2
+ad-unit-5-email-receipts = 接收電子收據信
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = 在手機上使用
+# ad 6 heading
+ad-unit-6-worry-free = 註冊帳號免煩惱
