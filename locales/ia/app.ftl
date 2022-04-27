@@ -22,7 +22,7 @@
 -brand-fx-account = Conto Firefox
 terms-and-privacy = Conditiones de uso e confidentialitate
 GitHub-link-title = GitHub
-error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
+error-scan-page-token = Tu ha probate a analysar troppo de adresses email in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
 error-could-not-add-email = Impossibile adder le adresse de e-mail al base de datos.
 error-not-subscribed = Iste adresse de e-mail non es inscribite a { -product-name }.
 error-hibp-throttled = Troppo de connexiones a { -brand-HIBP }.
@@ -35,7 +35,7 @@ home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 scan-title = { -product-name } : Resultatos del analyse
 user-add-invalid-email = Email non valide
-user-add-too-many-emails = Tu jam survelia le maxime numero de adresses de e-mail.
+user-add-too-many-emails = Tu jam survelia le maxime numero de adresses email.
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
@@ -113,7 +113,7 @@ how-hackers-work = Comprende como le hackers labora
 monitor-your-online-accounts = Inscribe te pro un { -brand-fxa } pro guardar un oculo sur le violationes de datos.
 stay-alert = Sta alerte a nove violationes
 if-your-info = Si tu informationes emerge in un nove violation de datos, nos te inviara un aviso.
-search-all-emails = Cerca tote tu adresses de e-mail inter le violationes e recipe avisos sur nove menacias.
+search-all-emails = Cerca tote tu adresses email inter le violationes e recipe avisos sur nove menacias.
 monitor-several-emails = Controla plure emails
 take-action = Activa te pro proteger tu contos
 keep-your-data-safe = Discoperi que tu debe facer pro mantener tu datos secur ab le cyber criminales.
@@ -179,7 +179,7 @@ find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprend
 get-email-alerts = Sta secur: recipe avisos email quando tu informationes appare in un note violation
 search-for-your-email = Cerca tu adresse email in violationes public de datos a partir de 2007.
 back-to-top = Receder al apice
-comm-opt-0 = Adverti me per e-mail si un de mi adresses listate hic infra appare in un violation de datos.
+comm-opt-0 = Adverti me per email si un de mi adresses listate hic infra appare in un violation de datos.
 comm-opt-1 = Invia tote le avisos de violation a { $primaryEmail }.
 stop-monitoring-this = Cessa de controlar iste email.
 resend-verification = Reinviar email de verification
@@ -196,7 +196,7 @@ link-change-primary = Cambiar le adresse de e-mail primari
 remove-fxm = Remover { -product-name }
 remove-fxm-blurb = Disactivar le avisos de { -product-name }. Tu { -brand-fxa } remanera active, e tu pote reciper altere communicationes pertinente tu conto.
 # Button title
-manage-email-addresses = Gerer adresses de e-mail
+manage-email-addresses = Gerer adresses email
 # Link title
 latest-breach-link = Vide si tu era in iste violation
 welcome-back = Benvenite retro, { $userName }!
@@ -241,7 +241,7 @@ all-breaches-headline = Tote le violationes in { -product-name }
 search-breaches = Cercar violationes
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de telephono pote ancora esser vulnerabile.</span> Parte del contos ha essite compromittite in le fuga de Facebook, includite numeros de telephono e altere informationes personal, ma non adresses e-mail.
+facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de telephono pote ancora esser vulnerabile.</span> Parte del contos ha essite compromittite in le fuga de Facebook, includite numeros de telephono e altere informationes personal, ma non adresses email.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Defini tu informationes a “Solo me” o altere parametro non-public in <a>tu profilo Facebook</a>.</span>
@@ -260,7 +260,7 @@ currently-showing = Monstrate:
 ## Updated error messages
 
 error-bot-headline = Recercas temporarimente suspendite
-error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercate plure adresses de e-mail in un curte periodo de tempore. Pro le momento, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
+error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercate plure adresses email in un curte periodo de tempore. Pro le momento, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
 error-csrf-headline = Session foras tempore limite
 error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
 error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
@@ -270,8 +270,8 @@ error-invalid-unsub-blurb = Tu debera disabonar te a partir de un del messages q
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Adresse de e-mail surveliate
-       *[other] Adresses de e-mail surveliate
+        [one] Adresse email surveliate
+       *[other] Adresses email surveliate
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -310,7 +310,7 @@ steps-to-protect = Mesuras a prender pro proteger tu identitate in linea
 take-further-steps = Prende passos ulterior pro proteger tu identitate
 alert-about-new-breaches = Avisar me re nove violationes
 see-if-youve-been-part = Verifica si tu ha essite implicate in un violation de datos in linea.
-get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses de e-mail.
+get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Discoperir.
 new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
@@ -323,7 +323,7 @@ other-known-breaches-found =
 # of data classes that the breach exposed.
 additional-information-including = Altere informationes, includite:
 # Title
-email-addresses-title = Adresses de e-mail
+email-addresses-title = Adresses email
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Vision general
@@ -370,7 +370,7 @@ sign-in-nested = aperir session
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
-manage-all-emails = Gere tote le adresses de e-mail in { $preferencesLink }.
+manage-all-emails = Gere tote le adresses email in { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
