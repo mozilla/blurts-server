@@ -547,3 +547,8 @@ ad-unit-4-shop-online = Usa un masca email quandocunque tu compra online. Recipe
 # ad 5 heading
 ad-unit-5-on-the-go = Al volo con { -brand-relay }
 ad-unit-5-instantly-make = Al instante crea un masca email personalisate ubique tu va!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connecte te al volo
+ad-unit-5-privately-sign-in = Usa tu masca email quando tu vole reservatemente acceder a tu favorite bar o wi-fi public
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Recipe quitantias email
