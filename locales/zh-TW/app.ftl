@@ -534,6 +534,7 @@ ad-unit-5-connect-on-the-go = 隨時隨地連線
 ad-unit-5-privately-sign-in = 可使用轉寄信箱來在喜愛的咖啡店登入上網或登入使用公共 Wi-Fi。
 # ad 5 subheading 2
 ad-unit-5-email-receipts = 接收電子收據信
+ad-unit-5-share-custom-email = 將自訂轉寄信箱提供給店家寄送消費收據給您，而無須提供實際信箱
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = 在手機上使用
 ad-unit-5-no-matter-where = 不論您在哪裡，只要花幾秒就可以建立自訂轉寄信箱來滿足您的任何需求
