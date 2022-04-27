@@ -543,3 +543,7 @@ ad-unit-3-access-more = Accede a plus
 # ad 4 heading
 ad-unit-4-shopping-with = Compras con mascas email
 ad-unit-4-want-to-buy = Vole tu comprar alco online e non cognosce o non confide plenmente in le boteca?
+ad-unit-4-shop-online = Usa un masca email quandocunque tu compra online. Recipe le confirmation inviate a tu real email e pois facilemente disactiva le masca quando tu lo vole plus tarde.
+# ad 5 heading
+ad-unit-5-on-the-go = Al volo con { -brand-relay }
+ad-unit-5-instantly-make = Al instante crea un masca email personalisate ubique tu va!
