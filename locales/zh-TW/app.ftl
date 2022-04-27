@@ -527,6 +527,9 @@ ad-unit-4-want-to-buy = 想要在網路上網購，但不是熟悉的店家或�
 ad-unit-4-shop-online = 在線上購物時使用轉寄信箱消費。可將訂單信轉寄到您的實際信箱並稍後再隨時關閉轉寄。
 # ad 5 heading
 ad-unit-5-on-the-go = 隨時隨地使用 { -brand-relay }
+ad-unit-5-instantly-make = 隨時隨地建立自訂的轉寄郵件信箱！
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = 隨時隨地連線
 # ad 5 subheading 2
 ad-unit-5-email-receipts = 接收電子收據信
 # ad 5 subheading 3
