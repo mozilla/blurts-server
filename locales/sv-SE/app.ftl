@@ -621,3 +621,13 @@ ad-unit-1-how-do-you-keep = Hur håller du din e-postadress hemlig?
 ad-unit-2-do-you-worry = Oroar du dig för säkerheten på ett offentligt Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Håll dig uppdaterad!
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Få e-postkvitton
+ad-unit-5-share-custom-email = Dela ett anpassat e-postalias för shoppingkvitton i butik utan att dela din riktiga e-postadress
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Använd på din telefon
+ad-unit-5-no-matter-where = Oavsett var du är, skapa ett anpassat e-postalias på några sekunder för allt du vill göra
+# ad 6 heading
+ad-unit-6-worry-free = Bekymmersfria registreringar
+ad-unit-6-want-to-start = Vill du starta en ny prenumeration, svara på en inbjudan eller få en fyndkampanjkod utan att skräpposten svämmar över din inkorg?
+ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd ett e-postalias istället för din riktiga för att skydda din information och behålla kontrollen över din inkorg
