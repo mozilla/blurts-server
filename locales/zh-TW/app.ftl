@@ -102,50 +102,6 @@ security-tips = 安全小秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 開啟 { -brand-fxa } 導航列
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 從 1-10 分計算，您多有可能會把 { -product-short-name } 推薦給朋友或同事？
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = 非常不願意
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = 非常願意
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } 好用嗎？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = 您覺得 { -product-short-name } 值得信任嗎？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = 您覺得 { -product-short-name } 的畫面簡潔好用嗎？
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = 非常不同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = 不同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = 沒意見
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = 同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = 非常同意
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = 如果不能再使用 { -product-short-name } 了，您會覺得如何？
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = 非常失望
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = 有點失望
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = 我沒差
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公開的外洩事件
 # Link title
@@ -549,9 +505,11 @@ vpn-banner-cta-expand = 展開
 # button to close panel
 vpn-banner-cta-close = 關閉
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = 要如何保密電子郵件信箱？
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = 您擔心使用公用 Wi-Fi 的安全性嗎？
+ad-unit-relay-cta = 了解 { -brand-relay } 的更多資訊
+ad-unit-vpn-cta = 了解 { -brand-mozilla-vpn } 的更多資訊
+# ad 1 heading
+ad-unit-1-how-do-you-keep = 要如何保密電子郵件信箱？
+# ad 2 heading
+ad-unit-2-do-you-worry = 您擔心使用公用 Wi-Fi 的安全性嗎？
