@@ -513,3 +513,5 @@ ad-unit-vpn-cta = 了解 { -brand-mozilla-vpn } 的更多資訊
 ad-unit-1-how-do-you-keep = 要如何保密電子郵件信箱？
 # ad 2 heading
 ad-unit-2-do-you-worry = 您擔心使用公用 Wi-Fi 的安全性嗎？
+# ad 3 heading
+ad-unit-3-stay-in-the-game = 繼續努力！
