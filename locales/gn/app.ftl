@@ -114,50 +114,6 @@ security-tips = Ñe’ẽporã tekorosãrã
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Embojuruja { -brand-fxa } kundahára
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Embopapapýtarõ 1 ha 10 peve, ¿mboýpa eréta orekoha { -product-short-name } ne angirũ térã rembiapoirũme?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Hasy oikóvo
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Ikatuete oiko
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = ¿{ -product-short-name } ndahasýipa ipuru?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = ¿Eñandu { -product-short-name } jeroviahápa?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = ¿Oreko { -product-short-name } jehecharã ipotĩ ha hasy’ỹva?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Namoneĩriete
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Namoneĩri
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ndaikuaaporãi
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Amoneĩ
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Amoneĩmbaite
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = ¿Mba’ẽichapa eñeñandúta ndereipurukuavéiramo { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Atĩeterei
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Atĩ’imi
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Mba’evete chéve
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÑEMBYAI IPYAHUVÉVA MBOJUAJUPYRE
 # Link title
@@ -636,9 +592,11 @@ vpn-banner-cta-expand = Myasãi
 # button to close panel
 vpn-banner-cta-close = Mboty
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kundaharape?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
+ad-unit-relay-cta = Eikuaave { -brand-relay } rehegua
+ad-unit-vpn-cta = Eikuaave { -brand-mozilla-vpn } rehegua
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kundaharape?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
