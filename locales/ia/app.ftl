@@ -536,3 +536,10 @@ ad-unit-3-stay-in-the-game = Sta al joco!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permitte de mantener un connexion stabile e secur durante que tu joca o reproduce films in diffusion.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Impedi le strangulation
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Sia ubique in le mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Accede a plus
+# ad 4 heading
+ad-unit-4-shopping-with = Compras con mascas email
+ad-unit-4-want-to-buy = Vole tu comprar alco online e non cognosce o non confide plenmente in le boteca?
