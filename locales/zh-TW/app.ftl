@@ -540,3 +540,4 @@ ad-unit-5-no-matter-where = 不論您在哪裡，只要花幾秒就可以建立�
 # ad 6 heading
 ad-unit-6-worry-free = 註冊帳號免煩惱
 ad-unit-6-want-to-start = 想要開始新訂閱、回覆邀請函或接收折扣碼，但又不想要收到一堆垃圾信嗎？
+ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱而非實際信箱，來保護您的個資，也可更加掌握您的收件匣。
