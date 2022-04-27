@@ -515,3 +515,11 @@ ad-unit-1-how-do-you-keep = 要如何保密電子郵件信箱？
 ad-unit-2-do-you-worry = 您擔心使用公用 Wi-Fi 的安全性嗎？
 # ad 3 heading
 ad-unit-3-stay-in-the-game = 繼續努力！
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = 避免限速
+# ad 3 list item 2
+ad-unit-3-be-anywhere = 從世界上任何地點上網
+# ad 3 list item 3
+ad-unit-3-access-more = 存取更多內容
+# ad 4 heading
+ad-unit-4-shopping-with = 使用轉寄信箱網購
