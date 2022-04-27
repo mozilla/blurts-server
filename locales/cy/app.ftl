@@ -116,50 +116,6 @@ security-tips = Awgrymiadau Diogelwch
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Agor llywio { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Ar raddfa o 1-10, pa mor debygol ydych chi i argymell { -product-short-name } i ffrind neu gydweithiwr?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Ddim yn debygol
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Yn debygol iawn
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = A yw { -product-short-name } yn hawdd ei ddefnyddio?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Ydych chi'n teimlo bod { -product-short-name } yn ddibynadwy?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = A oes gan { -product-short-name } gyflwyniad glân a syml?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Anghytuno'n gryf
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Anghytuno
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ansicr
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Cytuno
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Cytuno'n gryf
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Sut fyddech chi'n teimlo pe na bo modd i chi'n ddefnyddio { -product-short-name } mwyach?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Siomedig iawn
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Braidd yn siomedig
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Dim gwahaniaeth
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DYMA'R TOR-DATA DIWEDDARAF
 # Link title
@@ -681,9 +637,14 @@ vpn-banner-cta-expand = Ehangu
 # button to close panel
 vpn-banner-cta-close = Cau
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Sut ydych chi'n cadw'ch cyfeiriad e-bost yn gyfrinach?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Ydych chi'n poeni am ddiogelwch ar Wi-Fi cyhoeddus?
+ad-unit-relay-cta = Dysgu rhagor am { -brand-relay }
+ad-unit-vpn-cta = Dysgu rhagor am { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Sut mae cadw'ch cyfeiriad e-bost yn gyfrinach?
+# ad 2 heading
+ad-unit-2-do-you-worry = Ydych chi'n poeni am ddiogelwch ar Wi-Fi cyhoeddus?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Arhoswch yn y gêm!
+ad-unit-3-lets-you-keep = Mae { -brand-mozilla-vpn } yn gadael i chi gadw cysylltiad sefydlog yn ddiogel tra byddwch yn chwarae gemau neu ffrydio ffilmiau.
