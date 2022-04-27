@@ -533,5 +533,6 @@ ad-unit-1-how-do-you-keep = Como pote tu mantener un secreto tu adresse e-mail?
 ad-unit-2-do-you-worry = Esque tu te preoccupa del securitate sur wi-fi public?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Sta al joco!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permitte de mantener un connexion stabile e secur durante que tu joca o reproduce films in diffusion.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Impedi le strangulation
