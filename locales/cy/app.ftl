@@ -116,50 +116,6 @@ security-tips = Awgrymiadau Diogelwch
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Agor llywio { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Ar raddfa o 1-10, pa mor debygol ydych chi i argymell { -product-short-name } i ffrind neu gydweithiwr?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Ddim yn debygol
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Yn debygol iawn
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = A yw { -product-short-name } yn hawdd ei ddefnyddio?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Ydych chi'n teimlo bod { -product-short-name } yn ddibynadwy?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = A oes gan { -product-short-name } gyflwyniad glân a syml?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Anghytuno'n gryf
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Anghytuno
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ansicr
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Cytuno
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Cytuno'n gryf
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Sut fyddech chi'n teimlo pe na bo modd i chi'n ddefnyddio { -product-short-name } mwyach?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Siomedig iawn
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Braidd yn siomedig
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Dim gwahaniaeth
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DYMA'R TOR-DATA DIWEDDARAF
 # Link title
@@ -304,7 +260,7 @@ new-breaches-found =
        *[other] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
     }
 sign-up-headline-1 = Derbyn rhybuddion parhaus gyda { -brand-fxa }.
-account-not-required = Nid oes ange porwr { -brand-name } ar gyfer { -brand-fxa }. Efallai y cewch wybodaeth am wasanaethau { -brand-Mozilla }.
+account-not-required = Nid oes angen porwr { -brand-name } ar gyfer { -brand-fxa }. Efallai y cewch wybodaeth am wasanaethau { -brand-Mozilla }.
 was-your-info-exposed = A oedd eich manylion wedi'i datgelu yn y tor-data { $breachName }
 find-out-if = Gweld a oedd eich data wedi'i ddatgelu yn y tor-data hwn.
 fb-not-comp = Nid yw'r e-bost hwn wedi ymddangos yn y tor-data { $breachName }
@@ -671,7 +627,7 @@ vpn-banner-subtitle-2 = Diogelwch eich lleoliad a phori'n ddiogel mewn 3 cham
 vpn-banner-status-protected = Statws cyfredol: <em>Diogelwyd ✓</em>
 vpn-banner-status-not-protected = Statws cyfredol: <em>Heb ei ddiogelu ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
-vpn-banner-ip-address = Cyfeiriad IP: %(ipAddress)s
+vpn-banner-ip-address = Cyfeiriad IP: { $ip-address }
 vpn-banner-step-1 = Tanysgrifiwch i { -brand-mozilla-vpn }
 vpn-banner-step-2 = Dewiswch leoliad i'r VPN
 vpn-banner-step-3 = Cychwyn y VPN a phori'n ddiogel
@@ -681,9 +637,40 @@ vpn-banner-cta-expand = Ehangu
 # button to close panel
 vpn-banner-cta-close = Cau
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Sut ydych chi'n cadw'ch cyfeiriad e-bost yn gyfrinach?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Ydych chi'n poeni am ddiogelwch ar Wi-Fi cyhoeddus?
+ad-unit-relay-cta = Dysgu rhagor am { -brand-relay }
+ad-unit-vpn-cta = Dysgu rhagor am { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Sut mae cadw'ch cyfeiriad e-bost yn gyfrinach?
+# ad 2 heading
+ad-unit-2-do-you-worry = Ydych chi'n poeni am ddiogelwch ar Wi-Fi cyhoeddus?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Cadw yn y gêm!
+ad-unit-3-lets-you-keep = Mae { -brand-mozilla-vpn } yn gadael i chi gadw cysylltiad sefydlog yn ddiogel tra byddwch yn chwarae gemau neu ffrydio ffilmiau.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Atal cyfyngu
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Byddwch unrhyw le yn y byd
+# ad 3 list item 3
+ad-unit-3-access-more = Mwy o fynediad
+# ad 4 heading
+ad-unit-4-shopping-with = Siopa gyda Arallenwau E-bost
+ad-unit-4-want-to-buy = Eisiau prynu rhywbeth ar-lein a ddim yn gyfarwydd nac yn ymddiried yn llwyr yn y siop?
+ad-unit-4-shop-online = Defnyddiwch arallenw e-bost pryd bynnag y byddwch chi'n siopa ar-lein. Anfonwch y cadarnhad i'ch e-bost go iawn, gallwch ddiffodd yr arallenw yn hawdd unrhyw bryd yn y dyfodol.
+# ad 5 heading
+ad-unit-5-on-the-go = Ar Daith gyda { -brand-relay }
+ad-unit-5-instantly-make = Gwnewch arallenw e-bost personol yn syth yn unrhyw le ac ym mhobman!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Cysylltu wrth fynd
+ad-unit-5-privately-sign-in = Defnyddiwch eich arallenw e-bost pan fyddwch chi eisiau mewngofnodi'n breifat i'ch hoff siop goffi neu Wi-Fi cyhoeddus
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Cael derbynebau e-bost
+ad-unit-5-share-custom-email = Rhannwch arallenw e-bost personol ar gyfer derbynebau siopa yn y siop a pheidio rhannu'ch e-bost go iawn
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Ei ddefnyddio ar eich ffôn
+ad-unit-5-no-matter-where = Does dim gwahaniaeth lle rydych chi, crëwch arllenw e-bost personol mewn eiliadau ar gyfer unrhyw beth rydych chi am ei wneud
+# ad 6 heading
+ad-unit-6-worry-free = Cofrestriadau Di-bryder
+ad-unit-6-want-to-start = Eisiau cychwyn tanysgrifiad newydd, ymateb i wahoddiad, neu gael cod hyrwyddo bargen heb gael sbam yn gorlifo'ch blwch derbyn?
+ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, defnyddiwch arallenw e-bost yn lle'ch un go iawn i ddiogelu eich manylion a chadw rheolaeth dros eich blwch derbyn

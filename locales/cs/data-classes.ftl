@@ -59,6 +59,7 @@ geographic-locations = Zeměpisné polohy
 government-issued-ids = Státem vydané průkazy totožnosti
 health-insurance-information = Informace o zdravotním pojištění
 historical-passwords = Stará hesla
+hiv-statuses = Statusy ohledně nemoci HIV
 home-loan-information = Informace o úvěrech na bydlení
 home-ownership-statuses = Stavy vlastnického bydlení
 homepage-urls = URL domovských stránek

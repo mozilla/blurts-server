@@ -73,7 +73,7 @@ pre-fxa-subject = Un actualisation de { -product-name }
 pre-fxa-headline = Que cambia con { -product-name }
 pre-fxa-blurb = Ecce lo que es cambiate desde tu te inscribeva a { -product-name }, le servicio que controla note violationes de datos pro tu informationes personal. Nos lo liga al contos Firefox.
 pre-fxa-tout-1 = Sta alerte a altere violationes
-pre-fxa-p-1 = <a>Crea un conto</a> pro surveliar usque a 15 adresses de e-mail contra violationes de datos. Nos recommenda adder tote le adresses de e-mail que tu ha usate pro crear contos in linea.
+pre-fxa-p-1 = <a>Crea un conto</a> pro surveliar usque a 15 adresses email contra violationes de datos. Nos recommenda adder tote le adresses de e-mail que tu ha usate pro crear contos in linea.
 pre-fxa-tout-2 = Da un vista al pannello de controlo
 pre-fxa-p-2 =
     Vide tote le violationes de datos in un loco, assi tu sape qual contrasignos cambiar. 

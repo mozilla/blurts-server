@@ -112,50 +112,6 @@ security-tips = Sicherheitstipps
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } Navigation öffnen
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Wie wahrscheinlich ist es auf einer Skala von 1-10, dass Sie { -product-short-name } einem Freund oder Kollegen empfehlen?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Unwahrscheinlich
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Sehr wahrscheinlich
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Ist { -product-short-name } einfach zu bedienen?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Halten Sie { -product-short-name } für vertrauenswürdig?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Hat { -product-short-name } eine übersichtliche und einfache Benutzeroberfläche?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Stimme überhaupt nicht zu
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Stimme nicht zu
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Unsicher
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Stimme zu
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Stimme voll zu
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Wie würden Sie sich fühlen, wenn Sie { -product-short-name } nicht mehr verwenden könnten?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Sehr enttäuscht
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Etwas enttäuscht
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Es wäre mir egal
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = Zuletzt hinzugefügtes Datenleck
 # Link title
@@ -304,7 +260,7 @@ facebook-breach-note =
     sich folgendermaßen schützen
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-1-headline = <span>Setzen Sie Ihre Informationen in <a>Ihrem Facebook-Profil /a> auf „Nur ich“ oder eine andere nicht öffentliche Einstellung.</span>
+facebook-breach-what-to-do-1-headline = <span>Setzen Sie Ihre Informationen in <a>Ihrem Facebook-Profil</a> auf „Nur ich“ oder eine andere nicht öffentliche Einstellung.</span>
 facebook-breach-what-to-do-1-copy =
     Bei diesem Leck haben Hacker Profildaten
     erbeutet, die „öffentlich sichtbar“ oder „mit Freunden geteilt“ wurden.
@@ -602,9 +558,40 @@ vpn-banner-cta-expand = Ausklappen
 # button to close panel
 vpn-banner-cta-close = Schließen
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Wie halten Sie Ihre E-Mail-Adresse geheim?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Machen Sie sich Sorgen um die Sicherheit im öffentlichen WLAN?
+ad-unit-relay-cta = Weitere Informationen zu { -brand-relay }
+ad-unit-vpn-cta = Weitere Informationen zu { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Wie halten Sie Ihre E-Mail-Adresse geheim?
+# ad 2 heading
+ad-unit-2-do-you-worry = Machen Sie sich Sorgen um die Sicherheit im öffentlichen WLAN?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Bleiben Sie im Spiel!
+ad-unit-3-lets-you-keep = Mit { -brand-mozilla-vpn } können Sie sicher und geschützt eine stabile Verbindung aufrechterhalten, während Sie Spiele spielen oder Filme streamen.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Drosselung verhindern
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Seien Sie irgendwo auf der Welt
+# ad 3 list item 3
+ad-unit-3-access-more = Mehr Zugriff
+# ad 4 heading
+ad-unit-4-shopping-with = Einkaufen mit E-Mail-Masken
+ad-unit-4-want-to-buy = Möchten Sie etwas im Internet kaufen, kennen oder vertrauen dem Verkäufer aber nicht ganz?
+ad-unit-4-shop-online = Verwenden Sie eine E-Mail-Maske, wenn Sie online einkaufen. Lassen Sie sich die Bestätigung an Ihre echte E-Mail-Adresse senden und schalten Sie die Maske später jederzeit einfach aus.
+# ad 5 heading
+ad-unit-5-on-the-go = Unterwegs mit { -brand-relay }
+ad-unit-5-instantly-make = Erstellen Sie sofort und überall eine benutzerdefinierte E-Mail-Maske!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Verbinden Sie sich unterwegs
+ad-unit-5-privately-sign-in = Verwenden Sie Ihre E-Mail-Maske, wenn Sie sich privat bei Ihrem Lieblingscafé oder öffentlichen WLAN anmelden möchten
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Erhalten Sie Quittungen per E-Mail
+ad-unit-5-share-custom-email = Geben Sie beim Einkaufen eine benutzerdefinierte E-Mail-Maske für Quittungen an, ohne Ihre echte E-Mail-Adresse preiszugeben
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Auf Ihrem Handy verwenden
+ad-unit-5-no-matter-where = Egal wo Sie sind, erstellen Sie in Sekundenschnelle eine benutzerdefinierte E-Mail-Maske für alles, was Sie tun möchten
+# ad 6 heading
+ad-unit-6-worry-free = Sorgenfreies Registrieren
+ad-unit-6-want-to-start = Möchten Sie ein neues Abonnement abschließen, auf eine Einladung antworten oder einen günstigen Rabatt-Code erhalten, ohne dass Spam Ihren Posteingang überschwemmt?
+ad-unit-6-before-you-complete = Bevor Sie die nächste Registrieren abschließen, verwenden Sie eine E-Mail-Maske anstelle Ihrer echten, um Ihre Daten zu schützen und die Kontrolle über Ihren Posteingang zu behalten

@@ -59,6 +59,7 @@ geographic-locations = Maantieteelliset sijainnit
 government-issued-ids = Viranomaisten myöntämät tunnisteet
 health-insurance-information = Terveysvakuutuksen tiedot
 historical-passwords = Aiemmat salasanat
+hiv-statuses = HIV-tilat
 home-loan-information = Asuntolainatiedot
 home-ownership-statuses = Asunnon omistussuhteen tilatieto
 homepage-urls = Kotisivujen osoitteet

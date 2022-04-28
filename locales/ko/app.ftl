@@ -569,6 +569,7 @@ promo-fpn-cta = { -brand-fpn } 받기
 monitor-promo-headline = 새로운 데이터 유출 찾기
 monitor-promo-body = 다음에 알려진 유출에서 사용자의 개인정보가 노출되면 알림을 받습니다.
 ecosystem-promo-headline = 사생활 보호를 최우선으로 하는 제품과 함께 온라인 생활을 보호하세요.
+ecosystem-promo-body = { -brand-name }의 모든 제품은 개인 정보 약속을 존중합니다. 적게 가집니다. 안전하게 보관합니다. 비밀은 없습니다.
 promo-ecosystem-cta = 모든 제품 보기
 steps-to-resolve-headline = 이 유출을 해결하려면
 vpn-promo-headline = 이제 온라인에서 안전을 강화할 때입니다.

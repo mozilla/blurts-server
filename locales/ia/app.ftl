@@ -22,7 +22,7 @@
 -brand-fx-account = Conto Firefox
 terms-and-privacy = Conditiones de uso e confidentialitate
 GitHub-link-title = GitHub
-error-scan-page-token = Tu ha probate a analysar troppo de adresses de e-mail in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
+error-scan-page-token = Tu ha probate a analysar troppo de adresses email in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
 error-could-not-add-email = Impossibile adder le adresse de e-mail al base de datos.
 error-not-subscribed = Iste adresse de e-mail non es inscribite a { -product-name }.
 error-hibp-throttled = Troppo de connexiones a { -brand-HIBP }.
@@ -35,7 +35,7 @@ home-not-found = Pagina non trovate.
 oauth-invalid-session = Session non valide
 scan-title = { -product-name } : Resultatos del analyse
 user-add-invalid-email = Email non valide
-user-add-too-many-emails = Tu jam survelia le maxime numero de adresses de e-mail.
+user-add-too-many-emails = Tu jam survelia le maxime numero de adresses email.
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
@@ -102,50 +102,6 @@ security-tips = Consilios de securitate
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Aperi le navigation de { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Sur un scala de 1 a 10, quanto es probabile que tu recommenda { -product-short-name } a un amico o collega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Non probabile
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Multo probabile
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Es { -product-short-name } facile a usar?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Esque tu senti que { -product-short-name } es digne de fide?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Ha { -product-short-name } un presentation munde e simple?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Io dissenti fortemente
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Dissenti
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Insecur
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = De accordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Fortemente de accordo
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Como te sentirea si tu non poterea plus usar { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Multo deludite
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Un poco deludite
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Non me interessarea
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIME VIOLATION ADDITE
 # Link title
@@ -157,7 +113,7 @@ how-hackers-work = Comprende como le hackers labora
 monitor-your-online-accounts = Inscribe te pro un { -brand-fxa } pro guardar un oculo sur le violationes de datos.
 stay-alert = Sta alerte a nove violationes
 if-your-info = Si tu informationes emerge in un nove violation de datos, nos te inviara un aviso.
-search-all-emails = Cerca tote tu adresses de e-mail inter le violationes e recipe avisos sur nove menacias.
+search-all-emails = Cerca tote tu adresses email inter le violationes e recipe avisos sur nove menacias.
 monitor-several-emails = Controla plure emails
 take-action = Activa te pro proteger tu contos
 keep-your-data-safe = Discoperi que tu debe facer pro mantener tu datos secur ab le cyber criminales.
@@ -223,7 +179,7 @@ find-out-what-hackers-know = Discoperi lo que le hackers jam sape de te. Apprend
 get-email-alerts = Sta secur: recipe avisos email quando tu informationes appare in un note violation
 search-for-your-email = Cerca tu adresse email in violationes public de datos a partir de 2007.
 back-to-top = Receder al apice
-comm-opt-0 = Adverti me per e-mail si un de mi adresses listate hic infra appare in un violation de datos.
+comm-opt-0 = Adverti me per email si un de mi adresses listate hic infra appare in un violation de datos.
 comm-opt-1 = Invia tote le avisos de violation a { $primaryEmail }.
 stop-monitoring-this = Cessa de controlar iste email.
 resend-verification = Reinviar email de verification
@@ -240,7 +196,7 @@ link-change-primary = Cambiar le adresse de e-mail primari
 remove-fxm = Remover { -product-name }
 remove-fxm-blurb = Disactivar le avisos de { -product-name }. Tu { -brand-fxa } remanera active, e tu pote reciper altere communicationes pertinente tu conto.
 # Button title
-manage-email-addresses = Gerer adresses de e-mail
+manage-email-addresses = Gerer adresses email
 # Link title
 latest-breach-link = Vide si tu era in iste violation
 welcome-back = Benvenite retro, { $userName }!
@@ -285,7 +241,7 @@ all-breaches-headline = Tote le violationes in { -product-name }
 search-breaches = Cercar violationes
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de telephono pote ancora esser vulnerabile.</span> Parte del contos ha essite compromittite in le fuga de Facebook, includite numeros de telephono e altere informationes personal, ma non adresses e-mail.
+facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de telephono pote ancora esser vulnerabile.</span> Parte del contos ha essite compromittite in le fuga de Facebook, includite numeros de telephono e altere informationes personal, ma non adresses email.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Defini tu informationes a “Solo me” o altere parametro non-public in <a>tu profilo Facebook</a>.</span>
@@ -304,7 +260,7 @@ currently-showing = Monstrate:
 ## Updated error messages
 
 error-bot-headline = Recercas temporarimente suspendite
-error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercate plure adresses de e-mail in un curte periodo de tempore. Pro le momento, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
+error-bot-blurb = Nos suspecta que tu poterea esser un robot perque tu ha cercate plure adresses email in un curte periodo de tempore. Pro le momento, tu es blocate de facer nove recercas. Tu pote provar de novo plus tarde.
 error-csrf-headline = Session foras tempore limite
 error-csrf-blurb = Selige le button Receder de tu navigator, recarga le pagina e prova de novo.
 error-invalid-unsub = Como remover le inscription al avisos de { -product-name }
@@ -314,8 +270,8 @@ error-invalid-unsub-blurb = Tu debera disabonar te a partir de un del messages q
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] Adresse de e-mail surveliate
-       *[other] Adresses de e-mail surveliate
+        [one] Adresse email surveliate
+       *[other] Adresses email surveliate
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -354,7 +310,7 @@ steps-to-protect = Mesuras a prender pro proteger tu identitate in linea
 take-further-steps = Prende passos ulterior pro proteger tu identitate
 alert-about-new-breaches = Avisar me re nove violationes
 see-if-youve-been-part = Verifica si tu ha essite implicate in un violation de datos in linea.
-get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses de e-mail.
+get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos pro plure adresses email.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Discoperir.
 new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
@@ -367,7 +323,7 @@ other-known-breaches-found =
 # of data classes that the breach exposed.
 additional-information-including = Altere informationes, includite:
 # Title
-email-addresses-title = Adresses de e-mail
+email-addresses-title = Adresses email
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Vision general
@@ -414,7 +370,7 @@ sign-in-nested = aperir session
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
-manage-all-emails = Gere tote le adresses de e-mail in { $preferencesLink }.
+manage-all-emails = Gere tote le adresses email in { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -554,7 +510,7 @@ vpn-banner-protected-with-vpn = <em>Protegite</em> con { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Tu es protegite — gratias pro usar { -brand-mozilla-vpn }.
 vpn-banner-title-2 = Tu ubication pote esser traciate si tu non usa un VPN.
 vpn-banner-subtitle-2 = Protege tu position e naviga con securitate in 3 passos
-vpn-banner-status-protected = Stato actual: <em>Protegite ✓</em
+vpn-banner-status-protected = Stato actual: <em>Protegite ✓</em>
 vpn-banner-status-not-protected = Stato actual: <em>Non protegite ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Adresse IP: { $ip-address }
@@ -567,9 +523,40 @@ vpn-banner-cta-expand = Expander
 # button to close panel
 vpn-banner-cta-close = Clauder
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Como mantene tu tu adresse e-mail un secreto?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Esque tu te preoccupa del securitate sur wi-fi public?
+ad-unit-relay-cta = Saper plus re { -brand-relay }
+ad-unit-vpn-cta = Saper plus re { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Como pote tu mantener un secreto tu adresse e-mail?
+# ad 2 heading
+ad-unit-2-do-you-worry = Esque tu te preoccupa del securitate sur wi-fi public?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Sta al joco!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permitte de mantener un connexion stabile e secur durante que tu joca o reproduce films in diffusion.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Impedi le strangulation
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Sia ubique in le mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Accede a plus
+# ad 4 heading
+ad-unit-4-shopping-with = Compras con mascas email
+ad-unit-4-want-to-buy = Vole tu comprar alco online e non cognosce o non confide plenmente in le boteca?
+ad-unit-4-shop-online = Usa un masca email quandocunque tu compra online. Recipe le confirmation inviate a tu real email e pois facilemente disactiva le masca quando tu lo vole plus tarde.
+# ad 5 heading
+ad-unit-5-on-the-go = Al volo con { -brand-relay }
+ad-unit-5-instantly-make = Al instante crea un masca email personalisate ubique tu va!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connecte te al volo
+ad-unit-5-privately-sign-in = Usa tu masca email quando tu vole reservatemente acceder a tu favorite bar o wi-fi public
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Recipe quitantias email
+ad-unit-5-share-custom-email = Comparti un masca email personalisate pro quitantias de compras in boteca, sin compartir tu real email
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Usa lo sur tu telephono
+ad-unit-5-no-matter-where = Non importa ubi tu es, crea un masca email personalisate in secundas pro toto lo que tu vole facer
+# ad 6 heading
+ad-unit-6-worry-free = Registrationes sin anxietate
+ad-unit-6-want-to-start = Vole tu initiar un nove subscription, responder a un invitation, o reciper un codice de promotion de compras sin que le SPAM inunda tu cassa de ingresso?
+ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, usa un masca email in vice de tu real adresse pro proteger tu information e mantener le controlo sur tu cassa de ingresso

@@ -59,6 +59,7 @@ geographic-locations = Ubicaciones geográficas
 government-issued-ids = Documentos de identidad emitidos por el Gobierno
 health-insurance-information = Información del seguro de salud
 historical-passwords = Historial de contraseñas
+hiv-statuses = Estudios de VIH
 home-loan-information = Información de préstamos hipotecarios
 home-ownership-statuses = Estados de propiedad de la vivienda
 homepage-urls = URLs de página de inicio
