@@ -77,6 +77,6 @@ optionalEnvVars.forEach(key => {
 
 AppConstants.VPN_PROMO_BLOCKED_LOCALES = AppConstants.VPN_PROMO_BLOCKED_LOCALES?.split(",");
 
-AppConstants.AD_UNIT_TOTAL = fs.readdirSync("views/partials/ad-units").length;
+AppConstants.AD_UNIT_TOTAL = fs.readdirSync(path.join(__dirname, "views/partials/ad-units")).length;
 
 module.exports = Object.freeze(AppConstants);

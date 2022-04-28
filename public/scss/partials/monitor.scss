@@ -127,30 +127,43 @@ h3.sb-callout {
   color: var(--violet2);
 }
 
-.product-education {
+aside[class*=ad-unit] {
   width: min(960px, 100%);
   margin: 80px auto;
+  text-align: center;
 }
 
-.product-education.dark {
+aside[class*=ad-unit]>*+* {
+  margin-top: 24px;
+}
+
+aside[class*=ad-unit].dark {
   color: white;
 }
 
-.product-education.light {
+aside[class*=ad-unit].light {
   color: black;
 }
 
-.product-education h2 {
+aside[class*=ad-unit] h2 {
   color: inherit;
-  font-size: var(--headline);
+  font-size: 32px;
+  margin: 0;
 }
 
-.product-education video{
+aside[class*=ad-unit] video {
   display: block;
   width: 100%;
   height: auto;
 }
 
+.ad-unit-cta {
+  color: black;
+  background-color: var(--violet2);
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+}
 @media screen and (max-width: 800px) {
   .landing-content {
     max-width: 600px;

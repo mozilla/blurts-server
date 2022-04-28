@@ -225,7 +225,7 @@ function getExperimentFlags(req, EXPERIMENTS_ENABLED) {
 }
 
 function setAdUnitCookie(req, res) {
-  const oldNum = parseInt(req.cookies.adUnit) || Math.ceil(Math.random() * AppConstants.AD_UNIT_TOTAL);
+  const oldNum = parseInt(req.cookies?.adUnit) || Math.ceil(Math.random() * AppConstants.AD_UNIT_TOTAL);
   const newNum = oldNum % AppConstants.AD_UNIT_TOTAL + 1;
 
   res.cookie("adUnit", newNum, { path: "/", sameSite: "Lax", maxAge: 60 * 60 * 24 * 30, httpOnly: true });
