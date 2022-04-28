@@ -260,7 +260,7 @@ new-breaches-found =
        *[other] WEDI CANFOD { $breachCount } TOR-DATA NEWYDD
     }
 sign-up-headline-1 = Derbyn rhybuddion parhaus gyda { -brand-fxa }.
-account-not-required = Nid oes ange porwr { -brand-name } ar gyfer { -brand-fxa }. Efallai y cewch wybodaeth am wasanaethau { -brand-Mozilla }.
+account-not-required = Nid oes angen porwr { -brand-name } ar gyfer { -brand-fxa }. Efallai y cewch wybodaeth am wasanaethau { -brand-Mozilla }.
 was-your-info-exposed = A oedd eich manylion wedi'i datgelu yn y tor-data { $breachName }
 find-out-if = Gweld a oedd eich data wedi'i ddatgelu yn y tor-data hwn.
 fb-not-comp = Nid yw'r e-bost hwn wedi ymddangos yn y tor-data { $breachName }
