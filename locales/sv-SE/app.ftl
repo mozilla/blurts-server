@@ -621,10 +621,23 @@ ad-unit-1-how-do-you-keep = Hur håller du din e-postadress hemlig?
 ad-unit-2-do-you-worry = Oroar du dig för säkerheten på ett offentligt Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Håll dig uppdaterad!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } låter dig hålla en säker och stabil anslutning medan du spelar spel eller streamar filmer.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Ingen begränsning
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Var var som helst i världen
+# ad 3 list item 3
+ad-unit-3-access-more = Få tillgång till fler
+# ad 4 heading
+ad-unit-4-shopping-with = Shopping med e-postalias
+ad-unit-4-want-to-buy = Vill du köpa något online och inte känner till eller litar helt på butiken?
+ad-unit-4-shop-online = Använd ett e-postalias när du handlar online. Få bekräftelsen skickad till din riktiga e-post och stäng sedan enkelt av alias när som helst senare.
 # ad 5 heading
 ad-unit-5-on-the-go = På språng med { -brand-relay }
+ad-unit-5-instantly-make = Gör omedelbart ett anpassat e-postalias var som helst och var du än går!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Anslut när du är på språng
+ad-unit-5-privately-sign-in = Använd ditt e-postalias när du vill logga in privat på ditt favoritkafé eller offentliga Wi-Fi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Få e-postkvitton
 ad-unit-5-share-custom-email = Dela ett anpassat e-postalias för shoppingkvitton i butik utan att dela din riktiga e-postadress
