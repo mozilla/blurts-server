@@ -117,50 +117,6 @@ security-tips = Befeiligingstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa }-navigaasje iepenje
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Op in skeal fan 1-10, hoe wierskynlik is it dat jo { -product-short-name } oanrekommandearje by in freon of kollega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Net wierskynlik
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Nei alle gedachten
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Is { -product-short-name } maklik te brûken?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Fine jo { -product-short-name } betrouber?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Hat { -product-short-name } in dúdlike en ienfâldige útstrieling?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Beslist net mei iens
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Net mei iens
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Unwis
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Iens
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Beslist mei iens
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Hoe soene jo jo fiele as jo { -product-short-name } net langer brûke kinne?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Tige teloarsteld
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Wat teloarsteld
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Makket my net út
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = LÊST TAFOEGE DATALEK
 # Link title
@@ -650,9 +606,29 @@ vpn-banner-cta-expand = Utklappe
 # button to close panel
 vpn-banner-cta-close = Slute
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Hoe hâlde jo jo e-mailadres geheim?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Meitsje jo jo soargen oer feilichheid op iepenbiere wi-fi-netwurken?
+ad-unit-relay-cta = Mear ynfo oer { -brand-relay }
+ad-unit-vpn-cta = Mear ynfo oer { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Hoe hâlde jo jo e-mailadres geheim?
+# ad 2 heading
+ad-unit-2-do-you-worry = Meitsje jo jo soargen oer feilichheid op iepenbiere wifi-netwurken?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Bliuw yn it spul!
+ad-unit-3-lets-you-keep = Mei { -brand-mozilla-vpn } kinne jo in stabile ferbining feilich hâlde, wylst jo games spylje of films streame.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Foarkom beheining
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Wês oeral yn de wrâld
+# ad 3 list item 3
+ad-unit-3-access-more = Tagong ta mear
+# ad 4 heading
+ad-unit-4-shopping-with = Winkelje mei e-mailmaskers
+ad-unit-4-want-to-buy = Wolle jo wat online keapje en kenne jo de winkel net of fertrouwe jo dizze net folslein?
+ad-unit-4-shop-online = Brûk in e-mailmasker as jo online winkelje. Untfang de befêstiging nei jo echte e-mailadres en skeakelje dan it masker letter maklik út.
+# ad 5 heading
+ad-unit-5-on-the-go = Underweis mei { -brand-relay }
+ad-unit-5-instantly-make = Meitsje direkt en oeral in oanpast e-mailmasker!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Underweis ferbining meitsje
