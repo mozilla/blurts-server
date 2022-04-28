@@ -632,6 +632,7 @@ ad-unit-5-on-the-go = Underweis mei { -brand-relay }
 ad-unit-5-instantly-make = Meitsje direkt en oeral in oanpast e-mailmasker!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Underweis ferbining meitsje
+ad-unit-5-privately-sign-in = Brûk jo e-mailmasker wannear’t jo jo privee oanmelde wolle by jo favorite hoarekagelegenheid of iepenbiere wifi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Untfang ûntfangstbewizen per e-mail
 ad-unit-5-share-custom-email = Diel in oanpast e-mailmasker foar kassabonnen yn de winkel sûnder jo echte e-mailadres te dielen
@@ -640,3 +641,5 @@ ad-unit-5-use-on-phone = Brûke op jo telefoan
 ad-unit-5-no-matter-where = Wêr’t jo ek binne, meitsje binnen inkelde sekonden in oanpast e-mailmasker foar alles wat jo dwaan wolle
 # ad 6 heading
 ad-unit-6-worry-free = Soargeleas oanmelde
+ad-unit-6-want-to-start = Wolle jo in nij abonnemint starte, reagearje op in útnûging of in promokoade mei foardiel krije sûnder dat spam jo Postfek YN oerrint?
+ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje foltôgje, in e-mailmasker yn stee fan jo echte adres om jo gegevens te beskermjen en kontrôle te hâlden oer jo Postfek YN
