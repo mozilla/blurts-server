@@ -621,6 +621,10 @@ ad-unit-1-how-do-you-keep = Hur håller du din e-postadress hemlig?
 ad-unit-2-do-you-worry = Oroar du dig för säkerheten på ett offentligt Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Håll dig uppdaterad!
+# ad 5 heading
+ad-unit-5-on-the-go = På språng med { -brand-relay }
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Anslut när du är på språng
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Få e-postkvitton
 ad-unit-5-share-custom-email = Dela ett anpassat e-postalias för shoppingkvitton i butik utan att dela din riktiga e-postadress
