@@ -543,9 +543,17 @@ vpn-banner-cta-expand = Snefli
 # button to close panel
 vpn-banner-cta-close = Mdel
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Amek ara teǧǧeḍ tansa-ik·im n yimayl d tuffirt?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Tettagadeḍ ɣef tɣellist deg Wi-Fi azayaz?
+ad-unit-relay-cta = Issin ugar ɣef { -brand-relay }
+ad-unit-vpn-cta = Issin ugar ɣef { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Amek ara teǧǧeḍ tansa-ik·im n yimayl d tuffirt?
+# ad 2 heading
+ad-unit-2-do-you-worry = Tettagadeḍ ɣef tɣellist deg Wi-Fi azayaz?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Qqim deg wurar!
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Ili-k·kem deg yal adeg deg umaḍal
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
