@@ -577,8 +577,15 @@ vpn-banner-cta-close = Cerrar
 
 ## Relay and VPN educational/ad units
 
+ad-unit-relay-cta = Conocer más sobre { -brand-relay }
+ad-unit-vpn-cta = Conocer más sobre { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Cómo mantener tu correo electrónico secreto?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿Te preocupa la seguridad de un Wi-Fi público?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Mantente al día!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permite mantener una conexión estable segura mientras jugás o mirás películas.
 # ad 3 list item 3
 ad-unit-3-access-more = Acceder a más
 # ad 5 subheading 1
