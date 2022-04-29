@@ -529,3 +529,5 @@ ad-unit-5-connect-on-the-go = 随时随地连接
 ad-unit-5-email-receipts = 收取电子收据邮件
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = 在手机上使用
+# ad 6 heading
+ad-unit-6-worry-free = 注册全无忧
