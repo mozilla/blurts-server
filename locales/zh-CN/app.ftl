@@ -521,10 +521,13 @@ ad-unit-2-do-you-worry = 您是否担心公共 Wi-Fi 的安全？
 ad-unit-3-prevent-throttling = 拒绝限速
 # ad 3 list item 3
 ad-unit-3-access-more = 访问更多内容
+# ad 4 heading
+ad-unit-4-shopping-with = 用马甲邮箱网购
 # ad 5 heading
 ad-unit-5-on-the-go = 随时随地使用 { -brand-relay }
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = 随时随地连接
+ad-unit-5-privately-sign-in = 可使用马甲邮箱登录公共 Wi-Fi，如在您最常去的咖啡厅登录上网时
 # ad 5 subheading 2
 ad-unit-5-email-receipts = 收取电子收据邮件
 # ad 5 subheading 3
