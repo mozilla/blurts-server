@@ -673,3 +673,19 @@ ad-unit-3-access-more = Majte viac možností
 ad-unit-4-shopping-with = Nakupovanie s e-mailovými maskami
 ad-unit-4-want-to-buy = Chcete si niečo kúpiť online a nepoznáte obchod alebo mu úplne nedôverujete?
 ad-unit-4-shop-online = Pri každom online nakupovaní používajte e-mailovú masku. Nechajte si poslať potvrdenie na váš skutočný e-mail a potom masku kedykoľvek jednoducho vypnite.
+# ad 5 heading
+ad-unit-5-on-the-go = Na cestách s { -brand-relay }
+ad-unit-5-instantly-make = Okamžite si vytvorte vlastnú e-mailovú masku kdekoľvek sa nachádzate!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Pripojte sa na cestách
+ad-unit-5-privately-sign-in = Použite svoju e-mailovú masku, keď sa chcete súkromne prihlásiť do svojej obľúbenej kaviarne alebo verejnej siete Wi-Fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Získajte e-mailové potvrdenia
+ad-unit-5-share-custom-email = Zdieľajte vlastnú e-mailovú masku pre potvrdenia o nákupe v obchode bez odhalenia svojho skutočného e-mailu
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Použitie na svojom telefóne
+ad-unit-5-no-matter-where = Bez ohľadu na to, kde sa nachádzate, vytvorte si za pár sekúnd vlastnú e-mailovú masku pre čokoľvek, čo chcete urobiť
+# ad 6 heading
+ad-unit-6-worry-free = Bezstarostné registrácie
+ad-unit-6-want-to-start = Chcete začať nové predplatné, odpovedať na pozvánku alebo získať výhodný propagačný kód bez toho, aby vašu e-mailovú schránku zaplavovala nevyžiadaná pošta?
+ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie použite e-mailovú masku namiesto svojej skutočnej adresy, aby ste ochránili svoje informácie a mali kontrolu nad svojou e-mailovou schránkou
