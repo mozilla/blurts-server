@@ -9,13 +9,13 @@ fx-lockwise = { -brand-lockwise }
 fx-desktop = { -brand-name } 桌面浏览器
 fx-mobile = { -brand-name } 移动浏览器
 
-
+##
 
 # Aria label for the Bento button
 bento-button-title = { -brand-name } 应用和服务
 # Bento headline
 fx-makes-tech = { -brand-name } 用技术为您的隐私而战。
 # A link at the bottom of the Bento menu
-made-by-mozilla = 由 { -brand-Mozilla } 打造
+made-by-mozilla = { -brand-Mozilla } 出品
 # Aria label for button that closes the Bento menu
 mobile-close-bento-button-title = 关闭菜单
