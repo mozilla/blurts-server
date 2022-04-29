@@ -629,5 +629,14 @@ vpn-banner-cta-close = Κλείσιμο
 
 ad-unit-relay-cta = Μάθετε περισσότερα για το { -brand-relay }
 ad-unit-vpn-cta = Μάθετε περισσότερα για το { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Πώς κρατάτε μυστική τη διεύθυνση email σας;
+# ad 2 heading
+ad-unit-2-do-you-worry = Ανησυχείτε για την ασφάλεια των δημόσιων Wi-Fi;
 # ad 4 heading
 ad-unit-4-shopping-with = Αγορές με τις μάσκες email
+# ad 5 heading
+ad-unit-5-on-the-go = Εν κινήσει με το { -brand-relay }
+ad-unit-5-instantly-make = Δημιουργήστε μια προσαρμοσμένη μάσκα email στη στιγμή, όπου κι αν πάτε!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Σύνδεση εν κινήσει
