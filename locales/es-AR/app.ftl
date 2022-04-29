@@ -588,7 +588,13 @@ ad-unit-3-stay-in-the-game = ¡Mantente al día!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permite mantener una conexión estable segura mientras jugás o mirás películas.
 # ad 3 list item 3
 ad-unit-3-access-more = Acceder a más
+# ad 4 heading
+ad-unit-4-shopping-with = Comprar con máscaras de correo electrónico
+ad-unit-4-want-to-buy = ¿Querés comprar algo en línea y no conocés el negocio o no le tenés confianza?
+ad-unit-4-shop-online = Usá una máscara de correo electrónico para comprar en línea. La confirmación te llegará a tu correo electrónico real y podrás desactivar la máscara fácilmente en cualquier momento.
+ad-unit-5-instantly-make = ¡Hacé instantáneamente una máscara de correo electrónico personalizada en cualquier lugar y donde quiera que vayas!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Conectarse sobre la marcha
+ad-unit-5-privately-sign-in = Usá tu máscara de correo electrónico cuando quieras ingresar de forma privada en tu café favorito o un wi-fi público
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Usalo en tu teléfono
