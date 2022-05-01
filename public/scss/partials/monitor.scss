@@ -157,6 +157,7 @@ h3.sb-callout {
   display: block;
   width: 100%;
   height: auto;
+  border-radius: 8px;
 }
 
 [data-ad-unit="3"] {
@@ -227,7 +228,8 @@ h3.sb-callout {
   top: 30px;
   box-shadow: 0 0 6px #6e008b;
 }
-[data-ad-unit="4"] {
+[data-ad-unit="4"],
+[data-ad-unit="6"] {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -236,15 +238,20 @@ h3.sb-callout {
   background-color: white;
 }
 
-[data-ad-unit="4"]>* {
-  flex: 1 1 360px;
+[data-ad-unit="4"]>*,
+[data-ad-unit="6"]>* {
+  flex: 1 1 325px;
   margin: auto;
 }
 
-[data-ad-unit="4"]>figure img {
-  object-fit: contain;
-  height: 100%;
-  width: min(100%, 500px);
+[data-ad-unit="4"] article,
+[data-ad-unit="6"] article {
+  text-align: left;
+}
+
+[data-ad-unit="4"] figure img,
+[data-ad-unit="6"] figure img {
+  width: min(100%, 400px);
 }
 [data-ad-unit="5"] {
   background-color: white;
@@ -268,6 +275,7 @@ h3.sb-callout {
   max-width: 100%;
   max-height: 160px;
 }
+
 .ad-unit-cta {
   font-weight: bold;
   color: black;
@@ -299,6 +307,10 @@ h3.sb-callout {
 
   .landing-content form {
     margin-top: 8px;
+  }
+  [data-ad-unit="4"] article,
+  [data-ad-unit="6"] article {
+    text-align: center;
   }
 }
 
