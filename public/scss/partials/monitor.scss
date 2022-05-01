@@ -127,43 +127,116 @@ h3.sb-callout {
   color: var(--violet2);
 }
 
-aside[class*=ad-unit] {
-  width: min(960px, 100%);
+[data-ad-unit] {
+  width: min(960px, calc(100% - 60px));
   margin: 80px auto;
   text-align: center;
+  color: black;
+  border-radius: 8px;
 }
 
-aside[class*=ad-unit]>*+* {
+[data-ad-unit]>*+* {
   margin-top: 24px;
 }
 
-aside[class*=ad-unit].dark {
+[data-ad-unit].dark {
   color: white;
 }
 
-aside[class*=ad-unit].light {
+[data-ad-unit].light {
   color: black;
 }
 
-aside[class*=ad-unit] h2 {
+[data-ad-unit] h2 {
   color: inherit;
   font-size: 32px;
   margin: 0;
 }
 
-aside[class*=ad-unit] video {
+[data-ad-unit] video {
   display: block;
   width: 100%;
   height: auto;
 }
 
-.ad-unit-cta {
+[data-ad-unit="3"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  background-color: #6e008b;
+}
+
+[data-ad-unit="3"]>article {
+  flex: 0 1 360px;
+  margin: auto;
+}
+
+[data-ad-unit="3"]>article h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 70px;
+  line-height: 1;
+}
+
+[data-ad-unit="3"]>article h2::first-line {
+  font-size: 100px;
+}
+
+[data-ad-unit="3"]>figure {
+  flex: 1 1 360px;
+  position: relative;
+  margin: 0;
+  min-height: 360px;
+}
+
+[data-ad-unit="3"]>figure img {
+  object-fit: contain;
+  height: 100%;
+  width: 75%;
+}
+
+[data-ad-unit="3"]>figure i {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  padding: 12px;
+  font-weight: bold;
+  font-style: normal;
   color: black;
-  background-color: var(--violet2);
+  background-color: #c688ff;
+}
+
+[data-ad-unit="3"]>figure i:nth-of-type(1) {
+  width: max(25%, 130px);
+  top: 10px;
+  box-shadow: 0 0 24px #6e008b;
+}
+
+[data-ad-unit="3"]>figure i:nth-of-type(2) {
+  width: max(20%, 100px);
+  bottom: 20px;
+  box-shadow: 0 0 12px #6e008b;
+}
+
+[data-ad-unit="3"]>figure i:nth-of-type(3) {
+  width: max(17%, 70px);
+  right: 0;
+  top: 30px;
+  box-shadow: 0 0 6px #6e008b;
+}
+.ad-unit-cta {
+  font-weight: bold;
+  color: black;
+  background-color: #C688FF;
   border: 0;
   display: inline-flex;
   align-items: center;
 }
+
 @media screen and (max-width: 800px) {
   .landing-content {
     max-width: 600px;
