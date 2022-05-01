@@ -174,7 +174,6 @@ h3.sb-callout {
 }
 
 [data-ad-unit="3"]>article h2 {
-  font-family: 'Inter', sans-serif;
   font-size: 70px;
   line-height: 1;
 }
@@ -227,6 +226,25 @@ h3.sb-callout {
   right: 0;
   top: 30px;
   box-shadow: 0 0 6px #6e008b;
+}
+[data-ad-unit="4"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  background-color: white;
+}
+
+[data-ad-unit="4"]>* {
+  flex: 1 1 360px;
+  margin: auto;
+}
+
+[data-ad-unit="4"]>figure img {
+  object-fit: contain;
+  height: 100%;
+  width: min(100%, 500px);
 }
 .ad-unit-cta {
   font-weight: bold;
