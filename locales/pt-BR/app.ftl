@@ -588,6 +588,8 @@ ad-unit-2-do-you-worry = Você se preocupa com segurança em redes públicas de 
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Esteja em dia!
 ad-unit-3-lets-you-keep = O { -brand-mozilla-vpn } permite manter uma conexão estável segura e protegida enquanto você joga ou assiste filmes.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Evite limitação
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Esteja em qualquer lugar do mundo
 # ad 3 list item 3
@@ -599,6 +601,8 @@ ad-unit-4-shop-online = Use uma máscara de email sempre que fizer compras onlin
 # ad 5 heading
 ad-unit-5-on-the-go = Em movimento com o { -brand-relay }
 ad-unit-5-instantly-make = Crie instantaneamente uma máscara de email personalizada em todo e qualquer lugar que você vá!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conexão em movimento
 ad-unit-5-privately-sign-in = Use sua máscara de email quando quiser acessar com privacidade em uma cafeteria ou em uma rede pública de WiFi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Receba notas fiscais por email
@@ -608,3 +612,5 @@ ad-unit-5-use-on-phone = Usar no seu celular
 ad-unit-5-no-matter-where = Não importa onde você esteja, crie uma máscara de email personalizada em segundos para qualquer coisa que você queira fazer
 # ad 6 heading
 ad-unit-6-worry-free = Cadastro de contas sem preocupações
+ad-unit-6-want-to-start = Quer iniciar uma nova inscrição, responder a um convite ou obter um código promocional de pechincha sem ter spam inundando sua caixa de entrada?
+ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma máscara de email em vez do email real para proteger suas informações e manter o controle sobre sua caixa de entrada
