@@ -246,6 +246,28 @@ h3.sb-callout {
   height: 100%;
   width: min(100%, 500px);
 }
+[data-ad-unit="5"] {
+  background-color: white;
+  padding: 30px;
+}
+
+[data-ad-unit="5"] section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+[data-ad-unit="5"] section>* {
+  flex-grow: 1;
+  flex-basis: calc((700px - 100%) * 999);
+  margin: 0;
+}
+
+[data-ad-unit="5"] figure img {
+  max-width: 100%;
+  max-height: 160px;
+}
 .ad-unit-cta {
   font-weight: bold;
   color: black;
