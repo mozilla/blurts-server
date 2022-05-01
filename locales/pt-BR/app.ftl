@@ -599,3 +599,12 @@ ad-unit-4-shop-online = Use uma máscara de email sempre que fizer compras onlin
 # ad 5 heading
 ad-unit-5-on-the-go = Em movimento com o { -brand-relay }
 ad-unit-5-instantly-make = Crie instantaneamente uma máscara de email personalizada em todo e qualquer lugar que você vá!
+ad-unit-5-privately-sign-in = Use sua máscara de email quando quiser acessar com privacidade em uma cafeteria ou em uma rede pública de WiFi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Receba notas fiscais por email
+ad-unit-5-share-custom-email = Compartilhe uma máscara de email personalizada para receber notas fiscais de compras de uma loja sem compartilhar seu email real
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Usar no seu celular
+ad-unit-5-no-matter-where = Não importa onde você esteja, crie uma máscara de email personalizada em segundos para qualquer coisa que você queira fazer
+# ad 6 heading
+ad-unit-6-worry-free = Cadastro de contas sem preocupações
