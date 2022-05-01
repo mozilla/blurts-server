@@ -580,3 +580,22 @@ vpn-banner-cta-close = Fechar
 ## Relay and VPN educational/ad units
 
 ad-unit-relay-cta = Saiba mais sobre o { -brand-relay }
+ad-unit-vpn-cta = Saiba mais sobre o { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Como você mantém seu endereço de email em segredo?
+# ad 2 heading
+ad-unit-2-do-you-worry = Você se preocupa com segurança em redes públicas de WiFi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Esteja em dia!
+ad-unit-3-lets-you-keep = O { -brand-mozilla-vpn } permite manter uma conexão estável segura e protegida enquanto você joga ou assiste filmes.
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Esteja em qualquer lugar do mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Acesse mais
+# ad 4 heading
+ad-unit-4-shopping-with = Compras com máscaras de email
+ad-unit-4-want-to-buy = Quer comprar algo online, mas não conhece ou não confia totalmente na loja?
+ad-unit-4-shop-online = Use uma máscara de email sempre que fizer compras online. Receba a confirmação enviada para seu email real e depois desative facilmente a máscara, quando quiser.
+# ad 5 heading
+ad-unit-5-on-the-go = Em movimento com o { -brand-relay }
+ad-unit-5-instantly-make = Crie instantaneamente uma máscara de email personalizada em todo e qualquer lugar que você vá!
