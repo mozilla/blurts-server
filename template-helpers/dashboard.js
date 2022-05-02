@@ -205,7 +205,7 @@ function getLastAddedEmailStrings(args) {
 //DATA REMOVAL SPECIFIC
 
 function showRemovalEndingBanner(args) {
-  return args.data.root.removeGroupId === 1;
+  return args.data.root.removeGroupId >= 1;
 }
 
 function getRemoveFormData(args) {
