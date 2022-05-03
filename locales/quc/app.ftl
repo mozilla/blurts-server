@@ -547,4 +547,9 @@ ad-unit-5-on-the-go = Pa le b'e ruk' { -brand-relay }
 ad-unit-5-instantly-make = ¡Chab'ana' jun k'oj rech taqoqxa'nib'al rech winaqilal pa apawije' katb'e wi!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Chat'iqa' awib' apawije' katb'e wi
-ad-unit-5-privately-sign-in = Chakojo' jun ch'uqb'al wachaj rech taqoqxa'nib'al are taq kawaj kab'an echeb'alil chech, chatz'ib'aj awib' pa le k'ayib'al kape on pa Wi-Fi
+ad-unit-5-privately-sign-in = Chakojo' jun k'oj rech taqoqxa'nib'al are taq kawaj kab'an echeb'alil chech, chatz'ib'aj awib' pa le k'ayib'al kape on pa Wi-Fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Chariqa' taq uwujil loq'oj pa taqoqxa'nib'al
+ad-unit-5-share-custom-email = Chakomone'j jun k'oj rech taqoqxa'nib'al chech uwujil loq'oj rech taq loq'o'manem pa k'ayib'al man rajawaxik taj kakomone'j le ataqoqxa'nib'al.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Chakojo' pa le ach'aweb'al
