@@ -531,3 +531,4 @@ ad-unit-1-how-do-you-keep = ¿Jas kab'an check rowaxik le akemriqonib'al rech ta
 ad-unit-2-do-you-worry = ¿La ksach ak'u'x chi rij chajinem pa Wi-Fi kech uk'iyal?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Chatk'oloq pa le etz'anem
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } chak'ama' jun suk'ul t'iqonem, chajitalik xuquje' rech q'alb'al k'u'xaj are taq katetz'anik on katzij taq silob'wachib'al.
