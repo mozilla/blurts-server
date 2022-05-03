@@ -521,9 +521,13 @@ vpn-banner-cta-expand = Chanimarisaj
 # button to close panel
 vpn-banner-cta-close = Chatz'apij
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Jas kab'an chech akemriqonib'al rech taqoqxa'nib'al chech uya'ik pa owatalik?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = La k'o kub'ij ak'u'x chech chajinem pa uk'iyal Wi-Fi?
+ad-unit-relay-cta = Chaweta'maj nik'aj chik chi rij { -brand-relay }
+ad-unit-vpn-cta = Chaweta'maj nik'aj chik chi rij { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Jas kab'an check rowaxik le akemriqonib'al rech taqoqxa'nib'al?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿La ksach ak'u'x chi rij chajinem pa Wi-Fi kech uk'iyal?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Chatk'oloq pa le etz'anem
