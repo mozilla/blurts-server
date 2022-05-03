@@ -538,3 +538,5 @@ ad-unit-3-prevent-throttling = Kuq'atej jitz'anem
 ad-unit-3-be-anywhere = Utz katk'oji' pa apawije' tinamit pa le uwachulew
 # ad 3 list item 3
 ad-unit-3-access-more = Chariqa' nik'aj chik
+# ad 4 heading
+ad-unit-4-shopping-with = Loq'omanem ruk' ch'uqb'al chi'aj rech taqoqxa'nib'al
