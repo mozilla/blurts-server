@@ -553,3 +553,6 @@ ad-unit-5-email-receipts = Chariqa' taq uwujil loq'oj pa taqoqxa'nib'al
 ad-unit-5-share-custom-email = Chakomone'j jun k'oj rech taqoqxa'nib'al chech uwujil loq'oj rech taq loq'o'manem pa k'ayib'al man rajawaxik taj kakomone'j le ataqoqxa'nib'al.
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Chakojo' pa le ach'aweb'al
+ad-unit-5-no-matter-where = Man k'o ta kub'ano jawi' atk'owi, chab'ana' jun a k'oj xaq pa re jujun alaj taq kajb'al chech apachike jastaq kawaj kabano.
+# ad 6 heading
+ad-unit-6-worry-free = Taq utz'ib'axik ib' man k'o ta sachb'al k'u'xaj chi rij
