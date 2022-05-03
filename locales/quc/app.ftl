@@ -556,3 +556,4 @@ ad-unit-5-use-on-phone = Chakojo' pa le ach'aweb'al
 ad-unit-5-no-matter-where = Man k'o ta kub'ano jawi' atk'owi, chab'ana' jun a k'oj xaq pa re jujun alaj taq kajb'al chech apachike jastaq kawaj kabano.
 # ad 6 heading
 ad-unit-6-worry-free = Taq utz'ib'axik ib' man k'o ta sachb'al k'u'xaj chi rij
+ad-unit-6-want-to-start = ¿Kawaj kamajij jun k'ak' utz'ib'axik ib', chatzalijisaj uwach jun sik'inem, Uta'ik qasab'al rajilal rech jun etal rech kemtzijob'al are chi le mestaqoqxa'nib'al man kunojisaj ta uwi' le ropanib'al taqoqxa'nib'al?
