@@ -532,3 +532,9 @@ ad-unit-2-do-you-worry = ¿La ksach ak'u'x chi rij chajinem pa Wi-Fi kech uk'iya
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Chatk'oloq pa le etz'anem
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } chak'ama' jun suk'ul t'iqonem, chajitalik xuquje' rech q'alb'al k'u'xaj are taq katetz'anik on katzij taq silob'wachib'al.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Kuq'atej jitz'anem
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Utz katk'oji' pa apawije' tinamit pa le uwachulew
+# ad 3 list item 3
+ad-unit-3-access-more = Chariqa' nik'aj chik
