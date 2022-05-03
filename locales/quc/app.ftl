@@ -557,3 +557,4 @@ ad-unit-5-no-matter-where = Man k'o ta kub'ano jawi' atk'owi, chab'ana' jun a k'
 # ad 6 heading
 ad-unit-6-worry-free = Taq utz'ib'axik ib' man k'o ta sachb'al k'u'xaj chi rij
 ad-unit-6-want-to-start = ¿Kawaj kamajij jun k'ak' utz'ib'axik ib', chatzalijisaj uwach jun sik'inem, Uta'ik qasab'al rajilal rech jun etal rech kemtzijob'al are chi le mestaqoqxa'nib'al man kunojisaj ta uwi' le ropanib'al taqoqxa'nib'al?
+ad-unit-6-before-you-complete = Are taq k'amaja' katz'aqatisaj  le jun chi utz'ib'axik ib', chakojo' jun k'oj rech taqoqxa'nib'al chi uwach le qas awech chech uchajixik le aq'alajisanem xuquje' rilawachixik le ropanib'al taqoqxa'nib'al.
