@@ -544,3 +544,6 @@ ad-unit-4-want-to-buy = Wene kawaj kaloq' apachike jastaq pa nimk'atz xa k'ut ma
 ad-unit-4-shop-online = Chakojo' jun ch'uqb'al chi'aj rech taqoqxa'nib'al apawije' kaloq'oman wi pa nimk'atz', chariqa' le usuk'ub'axik tzij le taqom chi awech pa le qas ataqoqxa'nib'al k'ate k'u ri' man k'ax ta kab'an chech relesaxik le ch'uqb'al chi'aj xaq jampa' aq'anoq.
 # ad 5 heading
 ad-unit-5-on-the-go = Pa le b'e ruk' { -brand-relay }
+ad-unit-5-instantly-make = ¡Chab'ana' jun ch'uqb'al wachaj rech taqoqxa'nib'al rech winaqilal pa apawije' katb'e wi!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Chat'iqa' awib' apawije' katb'e wi
