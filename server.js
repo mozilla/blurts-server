@@ -51,6 +51,7 @@ const OAuthRoutes = require('./routes/oauth')
 const UserRoutes = require('./routes/user')
 const EmailL10nRoutes = require('./routes/email-l10n')
 const BreachRoutes = require('./routes/breach-details')
+const BrokersRoutes = require('./routes/brokers')
 
 const log = mozlog('server')
 
@@ -236,6 +237,7 @@ app.use('/ses', SesRoutes)
 app.use('/user', UserRoutes)
 if (devOrHeroku) app.use('/email-l10n', EmailL10nRoutes)
 app.use('/breach-details', BreachRoutes)
+app.use('/brokers', BrokersRoutes)
 app.use('/', HomeRoutes)
 
 app.use(logErrors)

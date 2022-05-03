@@ -1,0 +1,45 @@
+<main class="clear-header about-fxm container" data-page-label="About Firefox Monitor">
+    <div class="row about-row">
+      <div class="col-8">
+        <div class="fx-monitor-svg"></div>
+        <h2 class="headline mw-550">Data brokers</h2>
+      </div>
+    </div>
+    <section class="row">
+      <div class="gradient-inset about-row flx-col">
+        <div class="content-wrap">
+            <div class="col-12 how-fxm-works flx-row no-vertical-padding space-between">
+              {{#if profileData }}
+                <p>Profile:</p>
+                <ul>
+                  <li>First Name: {{ profileData.first_name }}</li>
+                  <li>Last Name: {{ profileData.last_name }}</li>
+                  <li>Addresses: {{ profileData.addresses }}</li>
+                </ul>
+                <p>Scans:</p>
+                {{log scans }}
+              {{/if }}
+              {{#if scanResults }}
+                <p>Scan results:</p>
+                <ul>
+                {{#each scanResults }}
+                  <li>{{ data_broker }}: <a href="{{ link }}">{{ link }}</a> </li>
+                {{/each }}
+                </ul>
+              {{/if }}
+              {{#unless scanResults }}
+              <p>Enter the information below to see what sites are publishing your private info.</p>
+              <form action="/brokers" method="post" data-csrf-token="{{ csrfToken }}">
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+                <input type="text" name="first_name" placeholder="First name" value="{{ profileData?.first_name }}"/>
+                <input type="text" name="last_name" placeholder="Last name" value="{{ profileData?.last_name }}"/>
+                <input type="text" name="city" placeholder="City" value="{{ profileData?.city }}"/>
+                <input type="text" name="state" placeholder="State" value="{{ profileData?.state }}"/>
+                <input type="submit" />
+              </form>
+              {{/unless }}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>

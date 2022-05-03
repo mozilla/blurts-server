@@ -9,6 +9,7 @@ require('dotenv').config({ path: path.join(__dirname, '.env') })
 const requiredEnvVars = [
   'NODE_ENV',
   'SERVER_URL',
+  'PORT',
   'LOGOS_ORIGIN',
   'COOKIE_SECRET',
   'SESSION_DURATION_HOURS',
@@ -43,7 +44,9 @@ const requiredEnvVars = [
   'SENTRY_DSN',
   'DELETE_UNVERIFIED_SUBSCRIBERS_TIMER',
   'EXPERIMENT_ACTIVE',
-  'MAX_NUM_ADDRESSES'
+  'MAX_NUM_ADDRESSES',
+  'ONEREP_API_BASE',
+  'ONEREP_API_KEY'
 ]
 
 const optionalEnvVars = [

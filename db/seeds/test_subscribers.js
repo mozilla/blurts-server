@@ -38,6 +38,18 @@ exports.TEST_SUBSCRIBERS = {
     primary_verification_token: '54010800-6c3c-4186-971a-76dc92874941',
     primary_verified: true,
     signup_language: 'en-US;q=0.7,en;q=0.3'
+  },
+  onerep_user: {
+    id: 12345678,
+    primary_sha1: getSha1('onerep_user@test.com'),
+    primary_email: 'onerep_user@test.com',
+    primary_verification_token: '0e2cb147-2041-4e5b-8ca9-494e773b2cf2',
+    primary_verified: true,
+    fxa_uid: 12345678,
+    fxa_profile_json: {},
+    breaches_last_shown: '2019-04-24 13:27:08.421-05',
+    breaches_resolved: { 'onerep_user@test.com': [0] },
+    onerep_profile_id: 32
   }
 }
 

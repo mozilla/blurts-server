@@ -419,6 +419,17 @@ const DB = {
     await knex('email_addresses').where({ subscriber_id: uid }).del()
   },
 
+  async setOneRepID (user, id) {
+    await knex('subscribers')
+      .where('id', user.id)
+      .update({
+        onerep_profile_id: id
+      })
+      .catch(e => {
+        console.error('error setting onerep_profile_id', e)
+      })
+  },
+
   async createConnection () {
     if (knex === null) {
       knex = Knex(knexConfig)
