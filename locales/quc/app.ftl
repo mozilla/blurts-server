@@ -540,3 +540,7 @@ ad-unit-3-be-anywhere = Utz katk'oji' pa apawije' tinamit pa le uwachulew
 ad-unit-3-access-more = Chariqa' nik'aj chik
 # ad 4 heading
 ad-unit-4-shopping-with = Loq'omanem ruk' ch'uqb'al chi'aj rech taqoqxa'nib'al
+ad-unit-4-want-to-buy = Wene kawaj kaloq' apachike jastaq pa nimk'atz xa k'ut man aweta'am taj on man kq'a'i' ta ak'u'x chi rij le k'ayib'al?
+ad-unit-4-shop-online = Chakojo' jun ch'uqb'al chi'aj rech taqoqxa'nib'al apawije' kaloq'oman wi pa nimk'atz', chariqa' le usuk'ub'axik tzij le taqom chi awech pa le qas ataqoqxa'nib'al k'ate k'u ri' man k'ax ta kab'an chech relesaxik le ch'uqb'al chi'aj xaq jampa' aq'anoq.
+# ad 5 heading
+ad-unit-5-on-the-go = Pa le b'e ruk' { -brand-relay }
