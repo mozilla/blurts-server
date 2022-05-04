@@ -596,3 +596,23 @@ ad-unit-3-prevent-throttling = Previene las limitaciones
 ad-unit-3-be-anywhere = Te permite estar en cualquier lugar del mundo
 # ad 3 list item 3
 ad-unit-3-access-more = Accede a más
+# ad 4 heading
+ad-unit-4-shopping-with = Compra con correos electrónicos enmascarados
+ad-unit-4-want-to-buy = ¿Quieres comprar algo en línea y no conoces o no confías plenamente en la tienda?
+ad-unit-4-shop-online = Usa una máscara de correo electrónico cada vez que compres en línea. Obtén la confirmación enviada en tu correo electrónico real y luego desactiva fácilmente la máscara en cualquier momento posterior.
+# ad 5 heading
+ad-unit-5-on-the-go = Sobre la marcha con { -brand-relay }
+ad-unit-5-instantly-make = ¡Crea instantáneamente una máscara de correo electrónico personalizada en cualquier lugar y donde sea que vayas!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conéctate sobre la marcha
+ad-unit-5-privately-sign-in = Usa tu máscara de correo electrónico cuando desees conectarte de forma privada al Wi-Fi de tu cafetería favorita o red pública
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Obtener tus recibos por correo
+ad-unit-5-share-custom-email = Comparte una máscara personalizada de tu correo electrónico para recibos de compras en la tienda sin compartir tu correo electrónico real
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Úsalo en tu teléfono
+ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de correo electrónico personalizada en segundos para cualquier cosa que desees hacer
+# ad 6 heading
+ad-unit-6-worry-free = Regístrate sin preocupaciones
+ad-unit-6-want-to-start = ¿Quieres iniciar una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
+ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar del real para proteger tu información y mantener el control sobre tu bandeja de entrada
