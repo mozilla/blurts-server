@@ -543,6 +543,8 @@ ad-unit-relay-cta = Scopri di più su { -brand-relay }
 ad-unit-vpn-cta = Scopri di più su { -brand-mozilla-vpn }
 # ad 1 heading
 ad-unit-1-how-do-you-keep = In che modo cerchi di mantenere segreto il tuo indirizzo email?
+# ad 2 heading
+ad-unit-2-do-you-worry = Sei preoccupato per la sicurezza dei tuoi dati quando utilizzi reti Wi-Fi pubbliche?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Rimani in partita!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } ti consente di mantenere una connessione stabile, sicura e protetta mentre giochi o riproduci film in streaming.
