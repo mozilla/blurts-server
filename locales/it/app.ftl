@@ -541,17 +541,32 @@ vpn-banner-cta-close = Chiudi
 
 ad-unit-relay-cta = Scopri di più su { -brand-relay }
 ad-unit-vpn-cta = Scopri di più su { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = In che modo cerchi di mantenere segreto il tuo indirizzo email?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Rimani in partita!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } ti consente di mantenere una connessione stabile, sicura e protetta mentre giochi o riproduci film in streaming.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Evita limitazioni di banda
+# ad 3 list item 3
+ad-unit-3-access-more = Accedi a più contenuti
 # ad 4 heading
 ad-unit-4-shopping-with = Fai acquisti con gli alias
 ad-unit-4-want-to-buy = Vuoi acquistare qualcosa online e non conosci o non ti fidi completamente del negozio?
 ad-unit-4-shop-online = Utilizza un alias di posta elettronica ogni volta che fai acquisti online. Ricevi la conferma al tuo indirizzo email reale e disattiva facilmente l’alias in qualsiasi momento.
+# ad 5 heading
+ad-unit-5-on-the-go = Fuori casa con { -brand-relay }
+ad-unit-5-instantly-make = Crea al volo un alias di posta elettronica personalizzato, ovunque ti trovi.
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Connettiti mentre sei in viaggio
+ad-unit-5-privately-sign-in = Utilizza il tuo alias di posta elettronica quando vuoi accedere in modo privato alla rete Wi-Fi del tuo bar preferito o a una rete pubblica
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Ricevi fatture via email
+ad-unit-5-share-custom-email = Quando fai acquisti in un negozio, fornisci un alias di posta elettronica personalizzato per ricevere la fattura senza condividere il tuo indirizzo email reale
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Utilizzalo sul tuo telefono
 ad-unit-5-no-matter-where = Non importa dove ti trovi, crea un alias di posta elettronica personalizzato in pochi secondi per qualsiasi cosa tu voglia fare
 # ad 6 heading
 ad-unit-6-worry-free = Registrazioni senza pensieri
 ad-unit-6-want-to-start = Vuoi sottoscrivere un nuovo abbonamento, rispondere a un invito o ottenere un codice promozionale vantaggioso senza che lo spam invada la tua casella di posta?
+ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza un alias di posta elettronica invece del tuo indirizzo email reale. In questo modo potrai proteggere le tue informazioni e rimanere in controllo della tua casella di posta
