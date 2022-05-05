@@ -541,3 +541,11 @@ vpn-banner-cta-close = Chiudi
 
 ad-unit-relay-cta = Scopri di più su { -brand-relay }
 ad-unit-vpn-cta = Scopri di più su { -brand-mozilla-vpn }
+# ad 4 heading
+ad-unit-4-shopping-with = Fai acquisti con gli alias
+ad-unit-4-want-to-buy = Vuoi acquistare qualcosa online e non conosci o non ti fidi completamente del negozio?
+ad-unit-4-shop-online = Utilizza un alias di posta elettronica ogni volta che fai acquisti online. Ricevi la conferma al tuo indirizzo email reale e disattiva facilmente l’alias in qualsiasi momento.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connettiti mentre sei in viaggio
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Ricevi fatture via email
