@@ -549,3 +549,9 @@ ad-unit-4-shop-online = Utilizza un alias di posta elettronica ogni volta che fa
 ad-unit-5-connect-on-the-go = Connettiti mentre sei in viaggio
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Ricevi fatture via email
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Utilizzalo sul tuo telefono
+ad-unit-5-no-matter-where = Non importa dove ti trovi, crea un alias di posta elettronica personalizzato in pochi secondi per qualsiasi cosa tu voglia fare
+# ad 6 heading
+ad-unit-6-worry-free = Registrazioni senza pensieri
+ad-unit-6-want-to-start = Vuoi sottoscrivere un nuovo abbonamento, rispondere a un invito o ottenere un codice promozionale vantaggioso senza che lo spam invada la tua casella di posta?
