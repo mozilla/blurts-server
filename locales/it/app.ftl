@@ -550,6 +550,8 @@ ad-unit-3-stay-in-the-game = Rimani in partita!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } ti consente di mantenere una connessione stabile, sicura e protetta mentre giochi o riproduci film in streaming.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Evita limitazioni di banda
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Puoi risultare ovunque nel mondo, senza esserti mosso da casa
 # ad 3 list item 3
 ad-unit-3-access-more = Accedi a più contenuti
 # ad 4 heading
