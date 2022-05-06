@@ -121,50 +121,6 @@ security-tips = Säkerhetstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } öppna navigering
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = På en skala från 1-10, hur troligt är det att du skulle rekommendera { -product-short-name } till en vän eller kollega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Inte troligt
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Väldigt troligt
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Är { -product-short-name } lätt att använda?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Känner du att { -product-short-name } är pålitlig?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Har { -product-short-name } en ren och enkel presentation?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Håller inte alls med
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Håller inte med
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Osäker
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Håller med
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Håller helt med
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Hur skulle du känna om du inte längre kunde använda { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Väldigt besviken
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Något besviken
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Jag bryr mig inte
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = Senaste tillagda intrång
 # Link title
@@ -655,9 +611,40 @@ vpn-banner-cta-expand = Expandera
 # button to close panel
 vpn-banner-cta-close = Stäng
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Hur håller du din e-postadress hemlig?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Oroar du dig för säkerheten på ett offentligt Wi-Fi?
+ad-unit-relay-cta = Läs mer om { -brand-relay }
+ad-unit-vpn-cta = Läs mer om { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Hur håller du din e-postadress hemlig?
+# ad 2 heading
+ad-unit-2-do-you-worry = Oroar du dig för säkerheten på ett offentligt Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Håll dig uppdaterad!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } låter dig hålla en säker och stabil anslutning medan du spelar spel eller streamar filmer.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Ingen begränsning
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Var var som helst i världen
+# ad 3 list item 3
+ad-unit-3-access-more = Få tillgång till fler
+# ad 4 heading
+ad-unit-4-shopping-with = Shopping med e-postalias
+ad-unit-4-want-to-buy = Vill du köpa något online och inte känner till eller litar helt på butiken?
+ad-unit-4-shop-online = Använd ett e-postalias när du handlar online. Få bekräftelsen skickad till din riktiga e-post och stäng sedan enkelt av alias när som helst senare.
+# ad 5 heading
+ad-unit-5-on-the-go = På språng med { -brand-relay }
+ad-unit-5-instantly-make = Gör omedelbart ett anpassat e-postalias var som helst och var du än går!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Anslut när du är på språng
+ad-unit-5-privately-sign-in = Använd ditt e-postalias när du vill logga in privat på ditt favoritkafé eller offentliga Wi-Fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Få e-postkvitton
+ad-unit-5-share-custom-email = Dela ett anpassat e-postalias för shoppingkvitton i butik utan att dela din riktiga e-postadress
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Använd på din telefon
+ad-unit-5-no-matter-where = Oavsett var du är, skapa ett anpassat e-postalias på några sekunder för allt du vill göra
+# ad 6 heading
+ad-unit-6-worry-free = Bekymmersfria registreringar
+ad-unit-6-want-to-start = Vill du starta en ny prenumeration, svara på en inbjudan eller få en fyndkampanjkod utan att skräpposten svämmar över din inkorg?
+ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd ett e-postalias istället för din riktiga för att skydda din information och behålla kontrollen över din inkorg

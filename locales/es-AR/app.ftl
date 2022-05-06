@@ -107,50 +107,6 @@ security-tips = Consejos de seguridad
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir la navegación de { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = En una escala de 1 a 10, ¿qué tanto recomendarías { -product-short-name } a un amigo o colega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Poco probable
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Muy probablemente
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = ¿Es { -product-short-name } fácil de usar?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = ¿Sentís que { -product-short-name } es confiable?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = ¿Tiene { -product-short-name } una presentación limpia y simple?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Muy en desacuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = En desacuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = No estoy seguro
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = De acuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Totalmente de acuerdo
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = ¿Cómo te sentirías si no pudieras usar más { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Muy decepcionado
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Algo decepcionado
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = No me importaría
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA VIOLACIÓN AGREGADA
 # Link title
@@ -619,9 +575,13 @@ vpn-banner-cta-expand = Expandir
 # button to close panel
 vpn-banner-cta-close = Cerrar
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = ¿Cómo mantenés en secreto tu dirección de correo electrónico?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = ¿Te preocupa la eguridad de un Wi-Fi público?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = ¡Mantente al día!
+# ad 3 list item 3
+ad-unit-3-access-more = Acceder a más
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conectarse sobre la marcha
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Usalo en tu teléfono

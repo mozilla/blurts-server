@@ -102,50 +102,6 @@ security-tips = 安全小秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 開啟 { -brand-fxa } 導航列
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 從 1-10 分計算，您多有可能會把 { -product-short-name } 推薦給朋友或同事？
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = 非常不願意
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = 非常願意
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } 好用嗎？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = 您覺得 { -product-short-name } 值得信任嗎？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = 您覺得 { -product-short-name } 的畫面簡潔好用嗎？
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = 非常不同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = 不同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = 沒意見
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = 同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = 非常同意
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = 如果不能再使用 { -product-short-name } 了，您會覺得如何？
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = 非常失望
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = 有點失望
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = 我沒差
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公開的外洩事件
 # Link title
@@ -549,9 +505,40 @@ vpn-banner-cta-expand = 展開
 # button to close panel
 vpn-banner-cta-close = 關閉
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = 要如何保密電子郵件信箱？
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = 您擔心使用公用 Wi-Fi 的安全性嗎？
+ad-unit-relay-cta = 了解 { -brand-relay } 的更多資訊
+ad-unit-vpn-cta = 了解 { -brand-mozilla-vpn } 的更多資訊
+# ad 1 heading
+ad-unit-1-how-do-you-keep = 要如何保密電子郵件信箱？
+# ad 2 heading
+ad-unit-2-do-you-worry = 您擔心使用公用 Wi-Fi 的安全性嗎？
+# ad 3 heading
+ad-unit-3-stay-in-the-game = 繼續努力！
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 讓您在玩遊戲或觀賞網路串流影片時，有穩定而安全的網路連線。
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = 避免限速
+# ad 3 list item 2
+ad-unit-3-be-anywhere = 從世界上任何地點上網
+# ad 3 list item 3
+ad-unit-3-access-more = 存取更多內容
+# ad 4 heading
+ad-unit-4-shopping-with = 使用轉寄信箱網購
+ad-unit-4-want-to-buy = 想要在網路上網購，但不是熟悉的店家或無法完全信任這家商店嗎？
+ad-unit-4-shop-online = 在線上購物時使用轉寄信箱消費。可將訂單信轉寄到您的實際信箱並稍後再隨時關閉轉寄。
+# ad 5 heading
+ad-unit-5-on-the-go = 隨時隨地使用 { -brand-relay }
+ad-unit-5-instantly-make = 隨時隨地建立自訂的轉寄郵件信箱！
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = 隨時隨地連線
+ad-unit-5-privately-sign-in = 可使用轉寄信箱來在喜愛的咖啡店登入上網或登入使用公共 Wi-Fi。
+# ad 5 subheading 2
+ad-unit-5-email-receipts = 接收電子收據信
+ad-unit-5-share-custom-email = 將自訂轉寄信箱提供給店家寄送消費收據給您，而無須提供實際信箱
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = 在手機上使用
+ad-unit-5-no-matter-where = 不論您在哪裡，只要花幾秒就可以建立自訂轉寄信箱來滿足您的任何需求
+# ad 6 heading
+ad-unit-6-worry-free = 註冊帳號免煩惱
+ad-unit-6-want-to-start = 想要開始新訂閱、回覆邀請函或接收折扣碼，但又不想要收到一堆垃圾信嗎？
+ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱而非實際信箱，來保護您的個資，也可更加掌握您的收件匣。

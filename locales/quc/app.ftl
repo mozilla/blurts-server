@@ -104,50 +104,6 @@ security-tips = Taq no'jib'al rech chajib'al
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Chajaqa' { -brand-fxa } rech nik'onem
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Pa le ucholajil -10, jampa' rajilab'alil kakojo are chi ke'asik'ij utz awachib'il on chi kech taq awachib'il ere chi kkikoj we { -product-short-name }
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Man kinb'ij taj
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Sib'alaj kinb'ij
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = La man k'ax ta ukojik we { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = La kachomaj chi rech q'alb'al k'u'x le { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = La saq xuquje' la utz uk'utunsanem le { -product-short-name }?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Sib'alaj ja'i'
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Ja'i'
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Man weta'am taj
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Utz
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Sib'alaj utz
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Jas kachomaj we man katkowin ta chik kakoj { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Sib'alaj Man utz taj
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Man qas ta utz
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Maj kub'ij nuk'u'x chech
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = UK'ISB'AL RETZTAQAN YA'TALIK
 # Link title
@@ -188,7 +144,7 @@ how-fxm-1-blurb = Chatzukuj taq kemriqonib'al rech taqoqx'anib'al pa taq retztaq
 how-fxm-2-headline = Chatz'ib'aj awib' pa jun rilawachixik retztaqan
 how-fxm-2-blurb = Chawinaqirisaj jun { -brand-fxa } chech rilawachixik le ataqoqxa'nib'al chech utzukuxik taq retztaqan. Are taq kq'atutaj le ataqoqxa'nib'al, xuquje' kak'ulaj jun tz'aqat woktzijob'al rech taq retztaqan kanoq, rachi'l taq retztaqan rech na'b'alil.
 how-fxm-3-headline = Chak'ulaj taq ub'ixikil pa le nik'onel
-how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun jun wokk'olib'al web' le b'anom retztaqan chech. chawila' we chi'l at b'anom we retztaqan chi awech... chi'l jas rajawaxik kab'an chech.
+how-fxm-3-blurb = We kakoj{ -brand-name }, kariq na jun ub'ixikil we kasolij jun jun wokk'olib'al web' le b'anom retztaqan chech. chawila' we chi'l at b'anom we retztaqan chi awech… chi'l jas rajawaxik kab'an chech.
 wtd-after-website = Jas kb'anik are taq xb'antaj jun retztaqan chech jun wokk'olib'al web':
 wtd-after-data-agg = Jas kb'anik are taq xb'antaj jun retztaqan chech le ya'l juq'attzij:
 what-is-data-agg = ¿Jas uwach ri' jun ya'l juq'attzij?

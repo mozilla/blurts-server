@@ -59,6 +59,7 @@ geographic-locations = Geografyske lokaasjes
 government-issued-ids = Troch de oerheid útjûne ID’s
 health-insurance-information = Ynformaasje oer soarchfersekering
 historical-passwords = Alde wachtwurden
+hiv-statuses = HIV-statussen
 home-loan-information = Hypoteekynformaasje
 home-ownership-statuses = Steaten oer hûseigendom
 homepage-urls = Startsiden-URL’s

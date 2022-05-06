@@ -59,6 +59,7 @@ geographic-locations = Γεωγραφικές τοποθεσίες
 government-issued-ids = Ταυτότητες που έχουν εκδοθεί από την κυβέρνηση
 health-insurance-information = Πληροφορίες ασφάλειας υγείας
 historical-passwords = Παλιοί κωδικοί πρόσβασης
+hiv-statuses = Καταστάσεις HIV
 home-loan-information = Πληροφορίες στεγαστικού δανείου
 home-ownership-statuses = Καταστάσεις ιδιοκτησίας οικιών
 homepage-urls = URLs αρχικών σελίδων
