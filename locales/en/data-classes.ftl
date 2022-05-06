@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Account balances
 address-book-contacts = Address book contacts
