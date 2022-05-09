@@ -538,3 +538,4 @@ ad-unit-5-use-on-phone = 在手机上使用
 ad-unit-5-no-matter-where = 无论您身居何处，只需几秒就可为想做的任何事情创建自定义马甲邮箱
 # ad 6 heading
 ad-unit-6-worry-free = 注册全无忧
+ad-unit-6-want-to-start = 想要开始新订阅、回复邀请或获得优惠促销代码，而不让垃圾邮件充斥您的收件箱吗？
