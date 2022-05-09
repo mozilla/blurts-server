@@ -177,10 +177,15 @@ h3.sb-callout {
 [data-ad-unit="3"]>article h2 {
   font-size: 70px;
   line-height: 1;
+  color: white;
 }
 
 [data-ad-unit="3"]>article h2::first-line {
   font-size: 100px;
+}
+
+[data-ad-unit="3"]>article p {
+  color: white;
 }
 
 [data-ad-unit="3"]>figure {
