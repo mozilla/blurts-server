@@ -602,6 +602,8 @@ ad-unit-1-how-do-you-keep = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kun
 ad-unit-2-do-you-worry = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Epyta ñembosaráipe!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Omboyke tekombegue
 # ad 3 list item 3
 ad-unit-3-access-more = Eikekuaave
 # ad 5 subheading 1
