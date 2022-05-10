@@ -126,6 +126,15 @@ function setGAListeners(){
 
   if (typeof(ga) !== "undefined") {
     const pageLocation = getLocation();
+    const intersectElements = [];
+    const intersectObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !intersectElements.includes(entry.target)) {
+          intersectElements.push(entry.target);
+          ga("send", "event", "Ad Unit", "view", `ad-unit-${entry.target.dataset.adUnit}`);
+        }
+      });
+    }, { threshold: 1 });
 
     // Elements for which we send Google Analytics "View" pings...
     const eventTriggers = [
@@ -159,12 +168,23 @@ function setGAListeners(){
       });
     });
 
-    document.querySelectorAll("video").forEach((el) => {
-      el.addEventListener("play", async (e) => {
-        if (e.target.currentTime > 0) return; // only track initial play event
-        e.target.dataset.eventCategory = "video play";
-        await sendPing(e.target, "Click", e.target.src);
+    document.querySelectorAll("[data-ad-unit]").forEach(el => {
+      const cta = el.querySelector(".ad-unit-cta");
+      const video = el.querySelector("video");
+      const label = `ad-unit-${el.dataset.adUnit}`;
+
+      intersectObserver.observe(el);
+
+      if (cta) cta.addEventListener("click", () => {
+        ga("send", "event", "Ad Unit", "click", label);
       });
+
+      if (video) {
+        video.addEventListener("play", e => {
+          if (e.target.currentTime > 0) return; // only track initial play event
+          ga("send", "event", "Ad Unit", "play", label);
+        });
+      }
     });
   }
 
