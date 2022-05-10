@@ -1,91 +1,90 @@
-"use strict";
+'use strict'
 
-const { URL } = require("url");
+const { URL } = require('url')
 
-const HIBP = require("./hibp");
-const sha1 = require("./sha1-utils");
+const HIBP = require('./hibp')
+const sha1 = require('./sha1-utils')
 
-const AppConstants = require("./app-constants");
-const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
-const { getExperimentFlags } = require("./controllers/utils");
+const AppConstants = require('./app-constants')
+const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === '1')
+const { getExperimentFlags } = require('./controllers/utils')
 
-const scanResult = async(req, selfScan=false) => {
+const scanResult = async (req, selfScan = false) => {
+  const allBreaches = req.app.locals.breaches
+  let scannedEmail = null
 
-  const allBreaches = req.app.locals.breaches;
-  let scannedEmail = null;
+  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED)
 
-  const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
-
-  const title = req.fluentFormat("scan-title");
-  let foundBreaches = [];
-  let specificBreach = null;
-  let doorhangerScan = false;
-  let userCompromised = false;
-  let signedInUser = null;
-  let fullReport = false;
-  let userDash = false;
-  let scannedEmailId = null;
+  const title = req.fluentFormat('scan-title')
+  let foundBreaches = []
+  let specificBreach = null
+  let doorhangerScan = false
+  let userCompromised = false
+  let signedInUser = null
+  let fullReport = false
+  let userDash = false
+  let scannedEmailId = null
 
   if (req.session.user) {
-    signedInUser = req.session.user;
+    signedInUser = req.session.user
   }
 
   // Checks if the user scanning their own verified email.
   if (req.body && req.body.emailHash) {
-    scannedEmail = req.body.emailHash;
+    scannedEmail = req.body.emailHash
 
     if (req.body.scannedEmailId) {
-      scannedEmailId = req.body.scannedEmailId;
+      scannedEmailId = req.body.scannedEmailId
     }
 
     if (signedInUser) {
       for (const emailAddress of signedInUser.email_addresses) {
         if (!selfScan && sha1(emailAddress.email) === req.body.emailHash) {
-          selfScan = true;
-          break;
+          selfScan = true
+          break
         }
       }
     }
   }
 
-  const url = new URL(req.url, req.app.locals.SERVER_URL);
+  const url = new URL(req.url, req.app.locals.SERVER_URL)
   const thisBreach = (breach) => {
-    return (element) => element.Name.toLowerCase() === breach.toLowerCase();
-  };
-
-  // Checks for a signedInUser arriving from doorhanger.
-  if (signedInUser && url.searchParams.has("utm_source") && url.searchParams.get("utm_source") === "firefox") {
-    doorhangerScan = true, selfScan = true;
-    specificBreach = allBreaches.find(thisBreach(req.query.breach));
+    return (element) => element.Name.toLowerCase() === breach.toLowerCase()
   }
 
-  fullReport = url.pathname === "/full_report";
+  // Checks for a signedInUser arriving from doorhanger.
+  if (signedInUser && url.searchParams.has('utm_source') && url.searchParams.get('utm_source') === 'firefox') {
+    doorhangerScan = true, selfScan = true
+    specificBreach = allBreaches.find(thisBreach(req.query.breach))
+  }
 
-  userDash = url.pathname === "/user_dashboard";
+  fullReport = url.pathname === '/full_report'
+
+  userDash = url.pathname === '/user_dashboard'
 
   if (selfScan) {
-    scannedEmail = sha1(signedInUser.primary_email);
+    scannedEmail = sha1(signedInUser.primary_email)
   }
 
   if (scannedEmail) {
     // Gets sensitive breaches only if selfScan === true
-    foundBreaches = await HIBP.getBreachesForEmail(scannedEmail, allBreaches, selfScan);
+    foundBreaches = await HIBP.getBreachesForEmail(scannedEmail, allBreaches, selfScan)
   }
 
   // Checks if scan originated from a breach detail/"featured breach" page.
   if (req.body && req.body.featuredBreach) {
-    specificBreach = allBreaches.find(thisBreach(req.body.featuredBreach));
+    specificBreach = allBreaches.find(thisBreach(req.body.featuredBreach))
   }
 
   if (doorhangerScan || specificBreach) {
-    const specificBreachIndex = foundBreaches.findIndex(breach => breach.Name === specificBreach.Name);
+    const specificBreachIndex = foundBreaches.findIndex(breach => breach.Name === specificBreach.Name)
 
     // Checks foundBreaches for specificBreach and if found,
     // brings specificBreach to front of foundBreaches list.
     if (specificBreachIndex !== -1) {
-      userCompromised = true;
-      foundBreaches.splice(specificBreachIndex, 1);
-      foundBreaches.unshift(specificBreach);
+      userCompromised = true
+      foundBreaches.splice(specificBreachIndex, 1)
+      foundBreaches.unshift(specificBreach)
     }
   }
 
@@ -100,55 +99,54 @@ const scanResult = async(req, selfScan=false) => {
     fullReport,
     userDash,
     scannedEmailId,
-    experimentFlags,
-  };
-};
+    experimentFlags
+  }
+}
 
-function resultsSummary(verifiedEmails) {
+function resultsSummary (verifiedEmails) {
   const breachStats = {
     monitoredEmails: {
-      count: 0,
+      count: 0
     },
     numBreaches: {
       count: 0,
-      numResolved: 0,
+      numResolved: 0
     },
     passwords: {
       count: 0,
-      numResolved: 0,
-    },
-  };
-  let foundBreaches = [];
+      numResolved: 0
+    }
+  }
+  let foundBreaches = []
 
   // combine the breaches for each account, breach duplicates are ok
   // since the user may have multiple accounts with different emails
   verifiedEmails.forEach(email => {
-
     email.breaches.forEach(breach => {
       if (breach.IsResolved) {
-        breachStats.numBreaches.numResolved++;
+        breachStats.numBreaches.numResolved++
       }
 
-      const dataClasses = breach.DataClasses;
-      if (dataClasses.includes("passwords")) {
-        breachStats.passwords.count++;
+      const dataClasses = breach.DataClasses
+      if (dataClasses.includes('passwords')) {
+        breachStats.passwords.count++
         if (breach.IsResolved) {
-          breachStats.passwords.numResolved++;
+          breachStats.passwords.numResolved++
         }
       }
-    });
-    foundBreaches = [...foundBreaches, ...email.breaches];
-  });
+    })
+    foundBreaches = [...foundBreaches, ...email.breaches]
+  })
 
   // total number of verified emails being monitored
-  breachStats.monitoredEmails.count = verifiedEmails.length;
+  breachStats.monitoredEmails.count = verifiedEmails.length
 
   // total number of breaches across all emails
-  breachStats.numBreaches.count = foundBreaches.length;
-  return breachStats;
+  breachStats.numBreaches.count = foundBreaches.length
+  return breachStats
 }
 
 module.exports = {
   scanResult,
-  resultsSummary,
-};
+  resultsSummary
+}

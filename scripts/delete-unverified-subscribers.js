@@ -1,9 +1,8 @@
-"use strict";
+'use strict'
 
-const DB = require("../db/DB");
-
+const DB = require('../db/DB');
 
 (async () => {
-  await DB.deleteUnverifiedSubscribers();
-  process.exit();
-})();
+  await DB.deleteUnverifiedSubscribers()
+  process.exit()
+})()

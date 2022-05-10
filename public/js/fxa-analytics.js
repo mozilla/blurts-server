@@ -1,239 +1,231 @@
-"use strict";
+'use strict'
 
 /* eslint-disable no-unused-vars */
 /* global _dntEnabled */
 /* global ga */
 
-
 const hasParent = (el, selector) => {
   while (el.parentNode) {
-    el = el.parentNode;
-    if (el.dataset && el.dataset.analyticsId === selector)
-      return el;
+    el = el.parentNode
+    if (el.dataset && el.dataset.analyticsId === selector) { return el }
   }
-  return null;
-};
+  return null
+}
 
-
-function getLocation() {
-  const eventLocation = document.querySelectorAll("[data-page-label]");
+function getLocation () {
+  const eventLocation = document.querySelectorAll('[data-page-label]')
   if (eventLocation.length > 0) {
-    return `Page ID: ${eventLocation[0].dataset.pageLabel}`;
+    return `Page ID: ${eventLocation[0].dataset.pageLabel}`
   } else {
-    return "Page ID: Undefined Page";
+    return 'Page ID: Undefined Page'
   }
 }
 
-
-async function sendPing(el, eventAction, eventLabel = null, options = null) {
-  if (typeof(ga) !== "undefined" && !el.classList.contains("hide")) {
+async function sendPing (el, eventAction, eventLabel = null, options = null) {
+  if (typeof (ga) !== 'undefined' && !el.classList.contains('hide')) {
     if (!eventLabel) {
-      eventLabel = `${getLocation()}`;
+      eventLabel = `${getLocation()}`
     }
-    const eventCategory = `[v2] ${el.dataset.eventCategory}`;
-    return ga("send", "event", eventCategory, eventAction, eventLabel, options);
+    const eventCategory = `[v2] ${el.dataset.eventCategory}`
+    return ga('send', 'event', eventCategory, eventAction, eventLabel, options)
   }
 }
 
-function appendFxaParams(url, storageObject) {
+function appendFxaParams (url, storageObject) {
   getUTMNames().forEach(param => {
     if (storageObject[param] && !url.searchParams.get(param)) {
       // Bug #2011 - This logic only allows params to be set/passed
       // on to FxA if that param isn't already set.
       // (Example: Overwriting a utm_source)
-      url.searchParams.append(param, encodeURIComponent(storageObject[param]));
+      url.searchParams.append(param, encodeURIComponent(storageObject[param]))
     }
-  });
-  return url;
+  })
+  return url
 }
 
-function getFxaUtms(url) {
+function getFxaUtms (url) {
   if (sessionStorage) {
-    url = appendFxaParams(url, sessionStorage);
+    url = appendFxaParams(url, sessionStorage)
   }
 
-  return appendFxaParams(url, document.body.dataset);
+  return appendFxaParams(url, document.body.dataset)
 }
 
-function saveReferringPageData(utmParams) {
+function saveReferringPageData (utmParams) {
   if (sessionStorage) {
     getUTMNames().forEach(param => {
-      if(utmParams.get(param)) {
-        sessionStorage[param] = utmParams.get(param);
+      if (utmParams.get(param)) {
+        sessionStorage[param] = utmParams.get(param)
       }
-    });
-    return;
+    })
   }
 }
 
-function getUTMNames() {
-  return ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+function getUTMNames () {
+  return ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']
 }
 
-function sendRecommendationPings(ctaSelector) {
+function sendRecommendationPings (ctaSelector) {
   document.querySelectorAll(ctaSelector).forEach(cta => {
-    const eventLabel = cta.dataset.eventLabel;
-    ga("send", "event", "Breach Detail: Recommendation CTA", "View", eventLabel, {nonInteraction: true});
-    cta.addEventListener("click", () => {
-      ga("send", "event", "Breach Detail: Recommendation CTA", "Engage", eventLabel, {transport: "beacon"});
-    });
-  });
+    const eventLabel = cta.dataset.eventLabel
+    ga('send', 'event', 'Breach Detail: Recommendation CTA', 'View', eventLabel, { nonInteraction: true })
+    cta.addEventListener('click', () => {
+      ga('send', 'event', 'Breach Detail: Recommendation CTA', 'Engage', eventLabel, { transport: 'beacon' })
+    })
+  })
 }
 
-function  setMetricsIds(el) {
-  if (el.dataset.entrypoint && hasParent(el, "sign-up-banner")) {
-    el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`;
-    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`;
+function setMetricsIds (el) {
+  if (el.dataset.entrypoint && hasParent(el, 'sign-up-banner')) {
+    el.dataset.eventCategory = `${el.dataset.eventCategory} - Banner`
+    el.dataset.entrypoint = `${el.dataset.entrypoint}-banner`
   }
-  return;
 }
 
-function setGAListeners(){
+function setGAListeners () {
   // Send "View" pings for any visible recommendation CTAs.
-  sendRecommendationPings(".first-four-recs");
+  sendRecommendationPings('.first-four-recs')
 
-  document.querySelectorAll(".send-ga-ping, [data-send-ga-ping]").forEach((el) => {
-    el.addEventListener("click", (e) => {
-      const eventCategory = e.target.dataset.eventCategory;
-      const eventAction = e.target.dataset.eventAction;
-      const eventLabel = e.target.dataset.eventLabel;
-      ga("send", "event", eventCategory, eventAction, eventLabel, {transport: "beacon"});
-    });
-  });
+  document.querySelectorAll('.send-ga-ping, [data-send-ga-ping]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      const eventCategory = e.target.dataset.eventCategory
+      const eventAction = e.target.dataset.eventAction
+      const eventLabel = e.target.dataset.eventLabel
+      ga('send', 'event', eventCategory, eventAction, eventLabel, { transport: 'beacon' })
+    })
+  })
 
   // Update data-event-category and data-fxa-entrypoint if the element
   // is nested inside a sign up banner.
-  document.querySelectorAll("#scan-user-email, .open-oauth").forEach(el => {
-    setMetricsIds(el);
-  });
+  document.querySelectorAll('#scan-user-email, .open-oauth').forEach(el => {
+    setMetricsIds(el)
+  })
 
-
-  document.querySelectorAll(".open-oauth").forEach( async(el) => {
-    const fxaUrl = new URL("/metrics-flow?", document.body.dataset.fxaAddress);
+  document.querySelectorAll('.open-oauth').forEach(async (el) => {
+    const fxaUrl = new URL('/metrics-flow?', document.body.dataset.fxaAddress)
 
     try {
-      const response = await fetch(fxaUrl, {credentials: "omit"});
-      fxaUrl.searchParams.append("entrypoint", encodeURIComponent(el.dataset.entrypoint));
+      const response = await fetch(fxaUrl, { credentials: 'omit' })
+      fxaUrl.searchParams.append('entrypoint', encodeURIComponent(el.dataset.entrypoint))
       if (response && response.status === 200) {
-        const {flowId, flowBeginTime} = await response.json();
-        el.dataset.flowId = flowId;
-        el.dataset.flowBeginTime = flowBeginTime;
+        const { flowId, flowBeginTime } = await response.json()
+        el.dataset.flowId = flowId
+        el.dataset.flowBeginTime = flowBeginTime
       }
-    } catch(e) {
+    } catch (e) {
       // should we do anything with this?
     }
-  });
+  })
 
-  if (typeof(ga) !== "undefined") {
-    const pageLocation = getLocation();
+  if (typeof (ga) !== 'undefined') {
+    const pageLocation = getLocation()
 
     // Elements for which we send Google Analytics "View" pings...
     const eventTriggers = [
-      "#scan-user-email",
-      "#add-another-email-form",
-      ".open-oauth:not(.product-promo-wrapper)", // The promo entrypoint events are handled elsewhere.
-      "#vpnPromoCloseButton",
-    ];
+      '#scan-user-email',
+      '#add-another-email-form',
+      '.open-oauth:not(.product-promo-wrapper)', // The promo entrypoint events are handled elsewhere.
+      '#vpnPromoCloseButton'
+    ]
     // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
-    if (pageLocation === ("Scan Results")) {
-      const breaches = document.querySelectorAll(".breach-card");
-      ga("send", "event", "[v2] Breach Count", "Returned Breaches", `${pageLocation}`, breaches.length);
+    if (pageLocation === ('Scan Results')) {
+      const breaches = document.querySelectorAll('.breach-card')
+      ga('send', 'event', '[v2] Breach Count', 'Returned Breaches', `${pageLocation}`, breaches.length)
     }
 
     // Send "View" pings and add event listeners.
     document.querySelectorAll(eventTriggers).forEach(el => {
-      sendPing(el, "View", pageLocation, {nonInteraction: true});
-      if (["BUTTON", "A"].includes(el.tagName)) {
-        el.addEventListener("click", async(e) => {
-          await sendPing(el, "Engage", pageLocation, {transport: "beacon"});
-        });
+      sendPing(el, 'View', pageLocation, { nonInteraction: true })
+      if (['BUTTON', 'A'].includes(el.tagName)) {
+        el.addEventListener('click', async (e) => {
+          await sendPing(el, 'Engage', pageLocation, { transport: 'beacon' })
+        })
       }
-    });
+    })
 
     // Add event listeners to event triggering elements
     // for which we do not send "View" pings.
-    document.querySelectorAll("[data-ga-link]").forEach((el) => {
-      el.addEventListener("click", async(e) => {
-        const linkId = `Link ID: ${e.target.dataset.eventLabel}`;
-        await sendPing(el, "Click", `${linkId}`);
-      });
-    });
+    document.querySelectorAll('[data-ga-link]').forEach((el) => {
+      el.addEventListener('click', async (e) => {
+        const linkId = `Link ID: ${e.target.dataset.eventLabel}`
+        await sendPing(el, 'Click', `${linkId}`)
+      })
+    })
 
-    document.querySelectorAll("video").forEach((el) => {
-      el.addEventListener("play", async (e) => {
-        if (e.target.currentTime > 0) return; // only track initial play event
-        e.target.dataset.eventCategory = "video play";
-        await sendPing(e.target, "Click", e.target.src);
-      });
-    });
+    document.querySelectorAll('video').forEach((el) => {
+      el.addEventListener('play', async (e) => {
+        if (e.target.currentTime > 0) return // only track initial play event
+        e.target.dataset.eventCategory = 'video play'
+        await sendPing(e.target, 'Click', e.target.src)
+      })
+    })
   }
 
-  window.sessionStorage.setItem("gaInit", true);
+  window.sessionStorage.setItem('gaInit', true)
 }
 
-function isGoogleAnalyticsAvailable() {
-  return (typeof(ga) !== "undefined");
+function isGoogleAnalyticsAvailable () {
+  return (typeof (ga) !== 'undefined')
 }
 
 (() => {
-  const win = window;
-  const winLocationSearch = win.location.search;
+  const win = window
+  const winLocationSearch = win.location.search
 
-  let winLocation = win.location;
+  let winLocation = win.location
 
   // Check for DoNotTrack header before running GA script
   if (!_dntEnabled()) {
-    (function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments);},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);
-    })(window,document,"script","https://www.google-analytics.com/analytics.js","ga");
+    (function (i, s, o, g, r, a, m) {
+      i.GoogleAnalyticsObject = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
   }
 
   // Remove token and hash values from URL so that they aren't sent to GA
-  if (winLocationSearch.includes("token=") || winLocationSearch.includes("hash=")) {
-    winLocation = winLocation.toString().replace(/[?&]token=[A-Za-z0-9_-]+/, "").replace(/&hash=[A-Za-z0-9_-]+/, "");
-    win.history.replaceState({}, "", winLocation);
+  if (winLocationSearch.includes('token=') || winLocationSearch.includes('hash=')) {
+    winLocation = winLocation.toString().replace(/[?&]token=[A-Za-z0-9_-]+/, '').replace(/&hash=[A-Za-z0-9_-]+/, '')
+    win.history.replaceState({}, '', winLocation)
   }
 
-  const gaEnabled = (typeof(ga) !== "undefined");
-  const utmParamsInUrl = (winLocationSearch.includes("utm_"));
+  const gaEnabled = (typeof (ga) !== 'undefined')
+  const utmParamsInUrl = (winLocationSearch.includes('utm_'))
 
   const removeUtmsFromUrl = () => {
     if (utmParamsInUrl) {
-      win.history.replaceState({}, "", winLocation.toString().replace(/[?&]utm_.*/g, ""));
+      win.history.replaceState({}, '', winLocation.toString().replace(/[?&]utm_.*/g, ''))
     }
-  };
+  }
 
   // Store UTM params in session
   if (utmParamsInUrl) {
-    saveReferringPageData(new URL(winLocation).searchParams);
+    saveReferringPageData(new URL(winLocation).searchParams)
   }
 
-  const gaInit = new Event("gaInit");
+  const gaInit = new Event('gaInit')
 
   if (gaEnabled) {
-    ga("create", "UA-77033033-16");
-    ga("set", "anonymizeIp", true);
-    ga("set", "dimension6", `${document.body.dataset.signedInUser}`);
+    ga('create', 'UA-77033033-16')
+    ga('set', 'anonymizeIp', true)
+    ga('set', 'dimension6', `${document.body.dataset.signedInUser}`)
 
-    ga("send", "pageview", {
-      hitCallback: function() {
-        removeUtmsFromUrl();
-        sessionStorage.removeItem("gaInit");
-        document.dispatchEvent(gaInit);
-      },
-    });
-
-    document.addEventListener("gaInit", (e) => {
-      if (sessionStorage.getItem("gaInit")) {
-        return;
+    ga('send', 'pageview', {
+      hitCallback: function () {
+        removeUtmsFromUrl()
+        sessionStorage.removeItem('gaInit')
+        document.dispatchEvent(gaInit)
       }
-      setGAListeners();
-    }, false);
+    })
 
+    document.addEventListener('gaInit', (e) => {
+      if (sessionStorage.getItem('gaInit')) {
+        return
+      }
+      setGAListeners()
+    }, false)
   } else {
-    removeUtmsFromUrl();
+    removeUtmsFromUrl()
   }
-
-
-})();
+})()

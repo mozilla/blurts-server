@@ -1,9 +1,9 @@
-"use strict";
+'use strict'
 
 class NavBar {
-	/* Represents the navbar */
+  /* Represents the navbar */
 
-	get signIn() { return $("#sign-in-btn"); }
+  get signIn () { return $('#sign-in-btn') }
 }
 
-module.exports = new NavBar();
+module.exports = new NavBar()
