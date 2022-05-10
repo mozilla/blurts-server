@@ -1,0 +1,26 @@
+name: Lint Reference Files
+on:
+  push:
+    paths: ['en/**.ftl' ]
+    branches: [ main, main-kanary, localization ]
+  pull_request:
+    paths: ['en/**.ftl' ]
+    branches: [ main, main-kanary, localization ]
+  workflow_dispatch:
+jobs:
+  linter:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+      - name: Set up Python 3
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.9'
+          cache: 'pip'
+      - name: Install Python dependencies
+        run: |
+          pip install -r .github/requirements.txt
+      - name: Lint reference
+        run: |
+          moz-fluent-lint ./en --config .github/linter_config.yml
