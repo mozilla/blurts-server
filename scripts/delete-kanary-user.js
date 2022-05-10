@@ -35,37 +35,37 @@ async function deleteAcctsFromFile() {
   });
 }
 
-async function getAcctsFromFile() {
-  // this function can be used as a test run before delete
-  const rl = readline.createInterface({
-    input: fs.createReadStream(new URL(`file://${filepath}`)),
-    crlfDelay: Infinity,
-  });
+// async function getAcctsFromFile() {
+//   // this function can be used as a test run before delete
+//   const rl = readline.createInterface({
+//     input: fs.createReadStream(new URL(`file://${filepath}`)),
+//     crlfDelay: Infinity,
+//   });
 
-  rl.on("line", async (kid) => {
-    try {
-      const res = await got(
-        `https://thekanary.com/partner-api/v0/accounts/${kid}/`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
-          },
-        }
-      );
+//   rl.on("line", async (kid) => {
+//     try {
+//       const res = await got(
+//         `https://thekanary.com/partner-api/v0/accounts/${kid}/`,
+//         {
+//           method: "GET",
+//           headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${AppConstants.KANARY_TOKEN}`,
+//           },
+//         }
+//       );
 
-      if (res.statusCode === 200) {
-        const jsonBody = JSON.parse(res.body);
-        console.log(res.statusCode, kid, jsonBody.created_at.substring(0, jsonBody.created_at.indexOf("T")));
-      } else {
-        console.log(res.statusCode, kid);
-      }
-    } catch (e) {
-      return console.error(`Error deleting account ${kid}`, e);
-    }
-  });
-}
+//       if (res.statusCode === 200) {
+//         const jsonBody = JSON.parse(res.body);
+//         console.log(res.statusCode, kid, jsonBody.created_at.substring(0, jsonBody.created_at.indexOf("T")));
+//       } else {
+//         console.log(res.statusCode, kid);
+//       }
+//     } catch (e) {
+//       return console.error(`Error deleting account ${kid}`, e);
+//     }
+//   });
+// }
 
 // getAcctsFromFile();
 deleteAcctsFromFile();
