@@ -39,7 +39,7 @@ function productPromos (locales, promoUtms, promoKey) {
   if (productPromos[promoKey]) {
     return productPromos[promoKey]
   }
-  productPromos['fx-ecosystem']
+  return productPromos['fx-ecosystem']
 }
 
 function getPromoStrings (args) {
