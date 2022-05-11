@@ -49,12 +49,9 @@ function getBreachesDashboard (args) {
     // Move resolved breaches to the end of breach list
     if (email.numResolvedBreaches > 0) {
       breachCards.sort((a, b) => {
-        if (a.IsResolved && !b.IsResolved) {
-          return 1
-        }
-        if (!a.IsResolved && b.IsResolved) {
-          return -1
-        }
+        if (a.IsResolved && !b.IsResolved) return 1
+        if (!a.IsResolved && b.IsResolved) return -1
+        return 0
       })
     }
     delete email.breaches
