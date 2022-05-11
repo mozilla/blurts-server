@@ -22,6 +22,8 @@ function _decryptPageToken (encryptedPageToken) {
     decipher = crypto.createDecipheriv('aes-256-cbc', key, iv)
     encryptedPageToken = encryptedPageToken.slice(25)
   } else {
+    // TODO: replace deprecated api
+    // eslint-disable-next-line n/no-deprecated-api
     decipher = crypto.createDecipher('aes-256-cbc', AppConstants.COOKIE_SECRET)
   }
 
