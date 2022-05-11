@@ -564,12 +564,6 @@ async function initCsatBanner () {
 
   document.addEventListener('scroll', () => toggleHeaderStates(header, win))
 
-  document.querySelectorAll('.breach-logo:not(.lazy-img)').forEach(logo => {
-    logo.addEventListener('error', (missingLogo) => {
-      missingLogo.target.src = '/img/svg/placeholder.svg'
-    })
-  })
-
   document.querySelectorAll('.toggle').forEach(toggle => {
     toggle.addEventListener('click', toggleEl)
   })

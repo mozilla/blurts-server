@@ -8,32 +8,6 @@ function replaceLogo (e) {
   return true
 }
 
-function breachImages () {
-  this.active = false
-  this.lazyLoad = () => {
-    const lazyImages = [].slice.call(document.querySelectorAll('.lazy-img'))
-    if (!this.active) {
-      this.active = true
-      const winHeight = window.innerHeight
-      lazyImages.forEach(lazyImage => {
-        if ((lazyImage.getBoundingClientRect().top <= winHeight && lazyImage.getBoundingClientRect().bottom >= 0)) {
-          lazyImage.classList.add('lazy-loaded')
-          lazyImage.classList.remove('lazy-img')
-          lazyImage.src = lazyImage.dataset.src
-          lazyImage.addEventListener('error', replaceLogo)
-
-          if (lazyImages.length === 0) {
-            document.removeEventListener('scroll', this.lazyLoad)
-            window.removeEventListener('resize', this.lazyLoad)
-            window.removeEventListener('orientationchange', this.lazyLoad)
-          }
-        }
-      }),
-      this.active = false
-    }
-  }
-}
-
 const makeBreachInfoSpans = (className, spanContent, wrapper) => {
   const span = document.createElement('span')
   span.classList = className
@@ -55,7 +29,7 @@ function clearBreaches (wrapper) {
   }
 }
 
-function makeBreaches (breaches, LocalizedBreachCardStrings, breachCardWrapper, breachLogos) {
+function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper) {
   breachCardWrapper.classList.toggle('hide-breaches')
   clearBreaches(breachCardWrapper)
 
@@ -77,10 +51,11 @@ function makeBreaches (breaches, LocalizedBreachCardStrings, breachCardWrapper, 
     const logoWrapper = makeDiv('breach-logo-wrapper', card)
 
     const breachLogo = document.createElement('img')
-    breachLogo.alt = ''
-    breachLogo.classList = 'breach-logo lazy-img'
-    breachLogo.dataset.src = `${logosOrigin}/img/logos/${breach.LogoPath}`
-    breachLogo.src = '/img/logos/lazyPlaceHolder.png'
+    breachLogo.addEventListener('error', replaceLogo)
+    breachLogo.alt = `${breach.Title} logo`
+    breachLogo.classList = 'breach-logo'
+    breachLogo.loading = 'lazy'
+    breachLogo.src = `${logosOrigin}/img/logos/${breach.LogoPath}`
     logoWrapper.appendChild(breachLogo)
 
     // make wrapper for the breach-info and link
@@ -105,7 +80,6 @@ function makeBreaches (breaches, LocalizedBreachCardStrings, breachCardWrapper, 
 
   breachCardWrapper.appendChild(fragment)
   breachCardWrapper.classList.toggle('hide-breaches')
-  breachLogos.lazyLoad()
   const loader = document.getElementById('breaches-loader')
 
   loader.classList = ['hide']
@@ -118,13 +92,8 @@ function initBreaches () {
     const breachWrapper = document.getElementById('breach-array-json')
     const { LocalizedBreachCardStrings, breaches } = JSON.parse(breachWrapper.dataset.breachArray)
 
-    const breachLogos = new breachImages()
-    document.addEventListener('scroll', breachLogos.lazyLoad)
-    window.addEventListener('resize', breachLogos.lazyLoad)
-    window.addEventListener('orientationchange', breachLogos.lazyLoad)
-
     const doBreaches = (arr) => {
-      makeBreaches(arr, LocalizedBreachCardStrings, breachCardWrapper, breachLogos)
+      makeBreaches(arr, LocalizedBreachCardStrings, breachCardWrapper)
     }
 
     const firstFifteen = breaches.slice(0, 15)

@@ -7,18 +7,11 @@ svg.x-close {
   pointer-events: none;
 }
 
-.hide-breaches,
-.lazy-img {
+.hide-breaches {
   opacity: 0;
 }
 
-.breach-logo.lazy-loaded {
-  opacity: 1;
-}
-
-.hide-breaches,
-.lazy-img,
-.lazy-img.lazy-loaded {
+.hide-breaches {
   transition: opacity 0.15s ease;
 }
 
@@ -147,16 +140,6 @@ input#fuzzy-find-input {
 
 .search-icon {
   pointer-events: none;
-}
-
-.lazy-img {
-  opacity: 0;
-  transition: all 0.2s ease;
-}
-
-.lazy-loaded {
-  opacity: 1;
-  transition: all 0.2s ease;
 }
 
 .breaches-loader {
