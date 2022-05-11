@@ -47,7 +47,7 @@
   const gaEventTriggers = [...productPromos, ...resolveBtns]
 
   const availableIntersectionObserver = ('IntersectionObserver' in window)
-  const gaAvailable = typeof (ga) !== undefined
+  const gaAvailable = typeof (ga) !== 'undefined'
 
   // TODO: Store this in the dataset of breach resolution event triggers
   const resolutionEventCategory = 'Breach Resolution'
