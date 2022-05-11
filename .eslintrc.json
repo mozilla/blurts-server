@@ -12,5 +12,8 @@
         "sourceType": "module"
     },
     "rules": {
+        "no-prototype-builtins": "warn",
+        "no-undef": "warn",
+        "camelcase": "warn"
     }
 }
