@@ -28,6 +28,7 @@ const helmet = require('helmet')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
 const { URL } = require('url')
+const path = require('path')
 
 const EmailUtils = require('./email-utils')
 const HBSHelpers = require('./template-helpers/')
@@ -186,9 +187,9 @@ app.use(cookieParser())
 
 const hbs = exphbs.create({
   extname: '.hbs',
-  layoutsDir: __dirname + '/views/layouts',
+  layoutsDir: path.join(__dirname, '/views/layouts'),
   defaultLayout: 'default',
-  partialsDir: __dirname + '/views/partials',
+  partialsDir: path.join(__dirname, '/views/partials'),
   helpers: HBSHelpers.helpers
 })
 app.engine('hbs', hbs.engine)

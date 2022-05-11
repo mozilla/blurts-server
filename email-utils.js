@@ -1,4 +1,6 @@
 'use strict'
+
+const path = require('path')
 const { URL } = require('url')
 
 const AppConstants = require('./app-constants')
@@ -14,12 +16,12 @@ const log = mozlog('email-utils')
 const hbsOptions = {
   viewEngine: {
     extname: '.hbs',
-    layoutsDir: __dirname + '/views/layouts',
+    layoutsDir: path.join(__dirname, '/views/layouts'),
     defaultLayout: 'default_email',
-    partialsDir: __dirname + '/views/partials',
+    partialsDir: path.join(__dirname, '/views/partials'),
     helpers: HBSHelpers.helpers
   },
-  viewPath: __dirname + '/views/layouts',
+  viewPath: path.join(__dirname, '/views/layouts'),
   extName: '.hbs'
 }
 
