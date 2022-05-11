@@ -56,7 +56,6 @@ const log = mozlog('server')
 function getRedisStore () {
   const redisStoreConstructor = connectRedis(session)
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
-    // eslint-disable-next-line node/no-unpublished-require
     const redis = require('redis-mock')
     return new redisStoreConstructor({ client: redis.createClient() })
   }

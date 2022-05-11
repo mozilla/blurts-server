@@ -1,6 +1,5 @@
 'use strict'
 
-// eslint-disable-next-line node/no-extraneous-require
 const uuidv4 = require('uuid/v4')
 const Knex = require('knex')
 const { attachPaginate } = require('knex-paginate')

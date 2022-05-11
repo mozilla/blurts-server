@@ -1,6 +1,5 @@
 'use strict'
 
-// eslint-disable-next-line node/no-extraneous-require
 const { parse } = require('pg-connection-string')
 
 const AppConstants = require('../app-constants')
