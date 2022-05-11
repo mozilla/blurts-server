@@ -54,7 +54,8 @@ const scanResult = async (req, selfScan = false) => {
 
   // Checks for a signedInUser arriving from doorhanger.
   if (signedInUser && url.searchParams.has('utm_source') && url.searchParams.get('utm_source') === 'firefox') {
-    doorhangerScan = true, selfScan = true
+    doorhangerScan = true
+    selfScan = true
     specificBreach = allBreaches.find(thisBreach(req.query.breach))
   }
 

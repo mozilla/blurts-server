@@ -233,8 +233,8 @@ if (AppConstants.FXA_ENABLED) {
 }
 app.use('/scan', ScanRoutes)
 app.use('/ses', SesRoutes)
-app.use('/user', UserRoutes);
-(devOrHeroku ? app.use('/email-l10n', EmailL10nRoutes) : null)
+app.use('/user', UserRoutes)
+if (devOrHeroku) app.use('/email-l10n', EmailL10nRoutes)
 app.use('/breach-details', BreachRoutes)
 app.use('/', HomeRoutes)
 

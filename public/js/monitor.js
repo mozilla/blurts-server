@@ -545,10 +545,16 @@ async function initCsatBanner () {
     toggleMobileFeatures(topNavigation)
     toggleArticles()
     toggleHeaderStates(header, win)
-    document.forms ? (restoreInputs(), addFormListeners()) : null // TODO: what is this..?
+    if (document.forms) {
+      restoreInputs()
+      addFormListeners()
+    }
   })
 
-  document.forms ? (restoreInputs(), addFormListeners()) : null // TODO: what is this..?
+  if (document.forms) {
+    restoreInputs()
+    addFormListeners()
+  }
 
   let windowWidth = win.outerWidth
   document.addEventListener('DOMContentLoaded', setHeaderHeight)
