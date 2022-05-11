@@ -14,6 +14,7 @@
     "rules": {
         "no-prototype-builtins": "warn",
         "no-undef": "warn",
-        "camelcase": "warn"
+        "camelcase": "warn",
+        "new-cap": "warn"
     }
 }
