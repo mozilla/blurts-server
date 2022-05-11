@@ -389,9 +389,7 @@ async function postResolveBreach (req, res) {
   const { affectedEmail, recencyIndex, isResolved } = req.body
   const recencyIndexNumber = Number(recencyIndex)
   const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail
-  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => {
-    ea.email === affectedEmail
-  })
+  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => ea.email === affectedEmail)
 
   if (!affectedEmailIsSubscriberRecord && !affectedEmailInEmailAddresses) {
     return res.json('Error: affectedEmail is not valid for this subscriber')
