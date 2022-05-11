@@ -20,8 +20,8 @@ function getBreachesDashboard (args) {
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
     if (
-      a.breaches.length === 0 && b.breaches.length > 0 ||
-        b.breaches.length === 0 && a.breaches.length > 0
+      (a.breaches.length === 0 && b.breaches.length > 0) ||
+      (b.breaches.length === 0 && a.breaches.length > 0)
     ) {
       return b.breaches.length - a.breaches.length
     }

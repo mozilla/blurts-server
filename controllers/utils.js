@@ -117,7 +117,7 @@ function getExperimentBranch (req, sorterNum = false, language = false, variatio
 
   // If we cannot parse req.headers["accept-language"], we should not
   // enroll users in the experiment.
-  if (language && !req.headers || language && !req.headers['accept-language']) {
+  if (language && !req.headers?.['accept-language']) {
     log.debug('No headers or accept-language information present.')
     unEnrollSession(sessionExperimentFlags)
     return false
