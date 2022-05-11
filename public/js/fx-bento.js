@@ -50,10 +50,6 @@ async function getlocalizedBentoStrings () {
 }
 
 class FirefoxApps extends HTMLElement {
-  constructor () {
-    super()
-  }
-
   async connectedCallback () {
     this._currentSite = document.body.dataset.bentoAppId
     this._localizedBentoStrings = await getlocalizedBentoStrings()
