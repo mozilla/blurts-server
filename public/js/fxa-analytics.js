@@ -174,6 +174,7 @@ function isGoogleAnalyticsAvailable () {
 
   let winLocation = win.location
 
+  /* eslint-disable no-unused-expressions, no-sequences */
   // Check for DoNotTrack header before running GA script
   if (!_dntEnabled()) {
     (function (i, s, o, g, r, a, m) {
@@ -183,6 +184,7 @@ function isGoogleAnalyticsAvailable () {
       m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga')
   }
+  /* eslint-enable no-unused-expressions, no-sequences */
 
   // Remove token and hash values from URL so that they aren't sent to GA
   if (winLocationSearch.includes('token=') || winLocationSearch.includes('hash=')) {
