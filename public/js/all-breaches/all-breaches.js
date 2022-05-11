@@ -29,7 +29,7 @@ function clearBreaches (wrapper) {
   }
 }
 
-function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper) {
+function makeBreaches (breaches, LocalizedBreachCardStrings, breachCardWrapper) {
   breachCardWrapper.classList.toggle('hide-breaches')
   clearBreaches(breachCardWrapper)
 

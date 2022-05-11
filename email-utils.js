@@ -46,7 +46,7 @@ const EmailUtils = {
 
   sendEmail (aRecipient, aSubject, aTemplate, aContext) {
     if (!gTransporter) {
-      return Promise.reject('SMTP transport not initialized')
+      return Promise.reject(new Error('SMTP transport not initialized'))
     }
 
     const emailContext = Object.assign({
