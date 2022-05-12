@@ -178,6 +178,7 @@ h3.sb-callout {
   font-size: 70px;
   line-height: 1;
   color: white;
+  word-break: break-word;
 }
 
 [data-ad-unit="3"]>article h2::first-line {
@@ -209,29 +210,31 @@ h3.sb-callout {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 12px;
+  font-size: min(2vw, 13px);
   font-weight: bold;
   font-style: normal;
   color: black;
   background-color: #c688ff;
+  word-break: break-word;
 }
 
 [data-ad-unit="3"]>figure i:nth-of-type(1) {
-  width: max(25%, 130px);
   top: 10px;
   box-shadow: 0 0 24px #6e008b;
+  width: clamp(15%, 140px, 30%);
 }
 
 [data-ad-unit="3"]>figure i:nth-of-type(2) {
-  width: max(20%, 100px);
   bottom: 20px;
   box-shadow: 0 0 12px #6e008b;
+  width: clamp(15%, 120px, 25%);
 }
 
 [data-ad-unit="3"]>figure i:nth-of-type(3) {
-  width: max(17%, 70px);
   right: 0;
   top: 30px;
   box-shadow: 0 0 6px #6e008b;
+  width: clamp(15%, 140px, 35%);
 }
 [data-ad-unit="4"],
 [data-ad-unit="6"] {
