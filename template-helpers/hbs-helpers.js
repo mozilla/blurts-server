@@ -246,6 +246,6 @@ module.exports = {
   breachMath,
   loop,
   showCsatBanner,
-  vpnPromoBlocked,
   getAppConstant,
+  vpnPromoBlocked,
 };
