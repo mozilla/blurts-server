@@ -32,10 +32,6 @@ function vpnPromoBlocked(args) {
   );
 }
 
-function getAppConstant(constant) {
-  return AppConstants[constant];
-}
-
 function englishInAcceptLanguages(args) {
   const acceptedLanguages = args.data.root.req.acceptsLanguages();
   return acceptedLanguages.some((locale) => locale.startsWith("en"));
@@ -316,7 +312,6 @@ module.exports = {
   loop,
   showCsatBanner,
   vpnPromoBlocked,
-  getAppConstant,
   //DATA REMOVAL SPECIFIC
   sentenceCase,
   kebabCase,
