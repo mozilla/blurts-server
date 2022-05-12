@@ -486,16 +486,6 @@ async function initVpnBanner() {
     return json;
   }
 
-  function getPageAttribution() {
-    let page = location.pathname;
-
-    if (page.startsWith("/")) page = page.slice(1);
-
-    if (page === "") page = "home";
-
-    return `&utm_content=${page}`;
-  }
-
   function handleClick(e) {
     switch (e.target.className) {
       case "vpn-banner-top":
@@ -537,6 +527,28 @@ async function initCsatBanner() {
 
     setHeaderHeight();
   }
+}
+
+async function initAdUnit() {
+  const adUnit = document.querySelector("[data-ad-unit]");
+
+  if (!adUnit) return;
+
+  adUnit.cta = adUnit.querySelector(".ad-unit-cta");
+
+  adUnit.cta.setAttribute("href", adUnit.cta.getAttribute("href") + getPageAttribution());
+}
+
+function getPageAttribution() {
+  // returns additional page-level attribution e.g. "&utm_content=dashboard"
+  // assumes initial attribution labels are already set e.g. https://vpn.mozilla.org/?utm_source=firefox-monitor&utm_medium=ad-unit
+  let page = location.pathname;
+
+  if (page.startsWith("/")) page = page.slice(1);
+
+  if (page === "") page = "home";
+
+  return `&utm_content=${page}`;
 }
 
 (async () => {
@@ -603,6 +615,7 @@ async function initCsatBanner() {
   // addWaitlistObservers();
   initVpnBanner();
   initCsatBanner();
+  initAdUnit();
 
   const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
   dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
