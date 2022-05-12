@@ -12,7 +12,6 @@ const homepage = require("./homepage");
 const legacyHelpers = require("./hbs-helpers");
 const scanResults = require("./scan-results");
 const signUpBanners = require("./sign-up-banners");
-const productEducationVideo = require("./product-education-video");
 
 module.exports = {
   helpers: Object.assign(
@@ -27,7 +26,6 @@ module.exports = {
     homepage,
     legacyHelpers,
     scanResults,
-    signUpBanners,
-    productEducationVideo
+    signUpBanners
   ),
 };

@@ -35,7 +35,7 @@ test("home GET without breach renders monitor without breach", () => {
   mockRequest.query = { breach: null };
   mockRequest = addBreachesToMockRequest(mockRequest);
   mockRequest.session = { user: null} ;
-  const mockResponse = { render: jest.fn() };
+  const mockResponse = { render: jest.fn(), cookie: jest.fn() };
 
   home.home(mockRequest, mockResponse);
 
@@ -54,7 +54,7 @@ test("home GET with breach renders monitor with breach", async() => {
   mockRequest.app.locals.SERVER_URL = AppConstants.SERVER_URL;
 
 
-  const mockResponse = { render: jest.fn(), redirect: jest.fn() };
+  const mockResponse = { render: jest.fn(), redirect: jest.fn(), cookie: jest.fn() };
   home.home(mockRequest, mockResponse);
   const scanRes = await scanResult(mockRequest);
 
