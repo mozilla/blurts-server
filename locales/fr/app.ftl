@@ -567,3 +567,14 @@ ad-unit-4-want-to-buy = Vous voulez faire un achat en ligne mais vous ne connais
 ad-unit-4-shop-online = Utilisez un alias de messagerie pour tout achat en ligne. Recevez sur votre véritable adresse e-mail la confirmation envoyée et, quand vous le voulez, désactivez facilement l’alias par la suite.
 # ad 5 heading
 ad-unit-5-on-the-go = À la volée avec { -brand-relay }
+ad-unit-5-instantly-make = Créez instantanément un alias de messagerie où que vous soyez et où que vous alliez !
+ad-unit-5-privately-sign-in = Utilisez votre alias de messagerie quand vous le souhaitez pour vous connecter en toute confidentialité à un Wi-Fi public ou à celui de votre café préféré.
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Recevez vos factures par e-mail
+ad-unit-5-share-custom-email = Donnez une adresse e-mail personnalisée pour les factures de vos achats en magasin sans communiquer votre véritable adresse e-mail.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Utilisez-le sur votre téléphone
+ad-unit-5-no-matter-where = Peu importe où vous vous trouvez, créez une adresse e-mail personnalisée en quelques secondes quel que soit votre besoin.
+# ad 6 heading
+ad-unit-6-worry-free = Inscriptions sans souci
+ad-unit-6-want-to-start = Vous voulez commencer un nouvel abonnement, répondre à une invitation ou un obtenir un code de réduction sans que les spams n’inondent votre boîte de réception ?
