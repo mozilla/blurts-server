@@ -561,6 +561,8 @@ ad-unit-1-how-do-you-keep = Comment garder votre adresse e-mail secrète ?
 # ad 2 heading
 ad-unit-2-do-you-worry = Vous souciez-vous de la sécurité des Wi-Fi publics ?
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vous permet de maintenir une connexion stable en toute sécurité pendant que vous jouez à des jeux ou regardez des films en streaming.
+# ad 4 heading
+ad-unit-4-shopping-with = Shopping avec les alias de messagerie.
 ad-unit-4-want-to-buy = Vous voulez faire un achat en ligne mais vous ne connaissez pas la boutique ou ne lui faites pas totalement confiance ?
 ad-unit-4-shop-online = Utilisez un alias de messagerie pour tout achat en ligne. Recevez sur votre véritable adresse e-mail la confirmation envoyée et, quand vous le voulez, désactivez facilement l’alias par la suite.
 # ad 5 heading
