@@ -580,3 +580,4 @@ ad-unit-5-no-matter-where = Peu importe où vous vous trouvez, créez une adress
 # ad 6 heading
 ad-unit-6-worry-free = Inscriptions sans souci
 ad-unit-6-want-to-start = Vous voulez commencer un nouvel abonnement, répondre à une invitation ou un obtenir un code de réduction sans que les spams n’inondent votre boîte de réception ?
+ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias de messagerie à la place de votre véritable adresse e-mail pour protéger vos informations et garder le contrôle de votre boîte de réception.
