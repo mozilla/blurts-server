@@ -568,6 +568,8 @@ ad-unit-4-shop-online = Utilisez un alias de messagerie pour tout achat en ligne
 # ad 5 heading
 ad-unit-5-on-the-go = À la volée avec { -brand-relay }
 ad-unit-5-instantly-make = Créez instantanément un alias de messagerie où que vous soyez et où que vous alliez !
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connectez-vous partout
 ad-unit-5-privately-sign-in = Utilisez votre alias de messagerie quand vous le souhaitez pour vous connecter en toute confidentialité à un Wi-Fi public ou à celui de votre café préféré.
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Recevez vos factures par e-mail
