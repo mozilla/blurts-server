@@ -563,6 +563,8 @@ ad-unit-2-do-you-worry = Vous souciez-vous de la sécurité des Wi-Fi publics ?
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vous permet de maintenir une connexion stable en toute sécurité pendant que vous jouez à des jeux ou regardez des films en streaming.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Évitez la limitation de la bande passante
+# ad 3 list item 3
+ad-unit-3-access-more = Accédez à plus de contenus
 # ad 4 heading
 ad-unit-4-shopping-with = Shopping avec les alias de messagerie.
 ad-unit-4-want-to-buy = Vous voulez faire un achat en ligne mais vous ne connaissez pas la boutique ou ne lui faites pas totalement confiance ?
