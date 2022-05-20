@@ -160,50 +160,6 @@ security-tips = Bezpečnostné tipy
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Otvoriť ponuku { -brand-fxa(case: "gen") }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Aká je pravdepodobnosť, že na stupnici od 1 do 10 odporučíte { -product-short-name } priateľovi alebo kolegovi?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Malá pravdepodobnosť
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Veľká pravdepodobnosť
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Používa sa { -product-short-name } jednoducho?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Máte pocit, že je produkt { -product-short-name } dôveryhodný?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Pôsobí na vás { -product-short-name } čistým a jednoduchým dojmom?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Rozhodne nesúhlasím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Nesúhlasím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Neviem
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Súhlasím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Rozhodne súhlasím
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Ako by ste sa cítili, ak by ste { -product-short-name } už nemohli používať?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Veľmi sklamane
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Trochu sklamane
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Bolo by mi to jedno
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PRIDANÝ ÚNIK
 # Link title
@@ -696,9 +652,40 @@ vpn-banner-cta-expand = Rozbaliť
 # button to close panel
 vpn-banner-cta-close = Zavrieť
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Ako udržujete svoju e-mailovú adresu v tajnosti?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Máte obavy o bezpečnosť na verejných Wi-Fi?
+ad-unit-relay-cta = Ďalšie informácie o službe { -brand-relay }
+ad-unit-vpn-cta = Ďalšie informácie o službe { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Ako udržujete svoju e-mailovú adresu v tajnosti?
+# ad 2 heading
+ad-unit-2-do-you-worry = Máte obavy o bezpečnosť na verejných Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Zostaňte v hre!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vám umožňuje udržiavať stabilné bezpečné pripojenie pri hraní hier alebo streamovaní filmov.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Zabráňte obmedzovaniu
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Buďte kdekoľvek na svete
+# ad 3 list item 3
+ad-unit-3-access-more = Majte viac možností
+# ad 4 heading
+ad-unit-4-shopping-with = Nakupovanie s e-mailovými maskami
+ad-unit-4-want-to-buy = Chcete si niečo kúpiť online a nepoznáte obchod alebo mu úplne nedôverujete?
+ad-unit-4-shop-online = Pri každom online nakupovaní používajte e-mailovú masku. Nechajte si poslať potvrdenie na váš skutočný e-mail a potom masku kedykoľvek jednoducho vypnite.
+# ad 5 heading
+ad-unit-5-on-the-go = Na cestách s { -brand-relay }
+ad-unit-5-instantly-make = Okamžite si vytvorte vlastnú e-mailovú masku kdekoľvek sa nachádzate!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Pripojte sa na cestách
+ad-unit-5-privately-sign-in = Použite svoju e-mailovú masku, keď sa chcete súkromne prihlásiť do svojej obľúbenej kaviarne alebo verejnej siete Wi-Fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Získajte e-mailové potvrdenia
+ad-unit-5-share-custom-email = Zdieľajte vlastnú e-mailovú masku pre potvrdenia o nákupe v obchode bez odhalenia svojho skutočného e-mailu
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Použitie na svojom telefóne
+ad-unit-5-no-matter-where = Bez ohľadu na to, kde sa nachádzate, vytvorte si za pár sekúnd vlastnú e-mailovú masku pre čokoľvek, čo chcete urobiť
+# ad 6 heading
+ad-unit-6-worry-free = Bezstarostné registrácie
+ad-unit-6-want-to-start = Chcete začať nové predplatné, odpovedať na pozvánku alebo získať výhodný propagačný kód bez toho, aby vašu e-mailovú schránku zaplavovala nevyžiadaná pošta?
+ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie použite e-mailovú masku namiesto svojej skutočnej adresy, aby ste ochránili svoje informácie a mali kontrolu nad svojou e-mailovou schránkou
