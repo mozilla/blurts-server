@@ -24,7 +24,7 @@ describe("Firefox Monitor homepage", function() {
       hideElements: [
         $$(".breach-info-wrapper"),
       ],
-    })).to.be.within(0, 24.99);
+    })).to.be.within(0, 45);
   });
 
   it("should load correct number of breaches from an email input", function() {

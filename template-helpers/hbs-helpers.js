@@ -31,6 +31,10 @@ function vpnPromoBlocked(args) {
   return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale));
 }
 
+function getAppConstant(constant) {
+  return AppConstants[constant];
+}
+
 function englishInAcceptLanguages(args) {
   const acceptedLanguages = args.data.root.req.acceptsLanguages();
   return acceptedLanguages.some(locale => locale.startsWith("en"));
@@ -242,5 +246,6 @@ module.exports = {
   breachMath,
   loop,
   showCsatBanner,
+  getAppConstant,
   vpnPromoBlocked,
 };

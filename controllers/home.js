@@ -9,6 +9,7 @@ const {
   getExperimentFlags,
   getUTMContents,
   hasUserSignedUpForWaitlist,
+  setAdUnitCookie,
 } = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
@@ -26,6 +27,8 @@ async function home(req, res) {
     pageToken: AppConstants.PAGE_TOKEN_TIMER > 0 ? generatePageToken(req) : "",
     csrfToken: req.csrfToken(),
   };
+
+  const adUnitNum = setAdUnitCookie(req, res);
 
   let featuredBreach = null;
   let scanFeaturedBreach = false;
@@ -71,6 +74,7 @@ async function home(req, res) {
       csrfToken: formTokens.csrfToken,
       experimentFlags,
       utmOverrides,
+      adUnit: `ad-units/ad-unit-${adUnitNum}`,
     });
   }
 
@@ -82,6 +86,7 @@ async function home(req, res) {
     csrfToken: formTokens.csrfToken,
     experimentFlags,
     utmOverrides,
+    adUnit: `ad-units/ad-unit-${adUnitNum}`,
   });
 }
 
