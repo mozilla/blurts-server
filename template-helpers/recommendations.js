@@ -208,7 +208,7 @@ module.exports = {
         recommendations: [
           {
             recommendationCopy: {
-              subhead: "rec-email-subhead",
+              subhead: "rec-email-mask-subhead",
               body: "rec-email",
               cta: "rec-email-cta",
             },
