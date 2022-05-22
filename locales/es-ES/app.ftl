@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -107,50 +110,6 @@ security-tips = Consejos de seguridad
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegación { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = En una escala de 1 a 10, ¿con qué probabilidad recomendarías { -product-short-name } a un amigo o colega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Poco probable
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Muy probablemente
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = ¿Es fácil usar { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = ¿Sientes que { -product-short-name } es de confianza?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = ¿Tiene { -product-short-name } una presentación limpia y sencilla?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Totalmente en desacuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = En desacuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = No estoy seguro
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Estoy de acuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Totalmente de acuerdo
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = ¿Cómo te sentirías si no pudieras volver a usar { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Muy decepcionado
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Algo decepcionado
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = No me importaría
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AÑADIDA
 # Link title
@@ -622,9 +581,11 @@ vpn-banner-cta-expand = Expandir
 # button to close panel
 vpn-banner-cta-close = Cerrar
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = ¿Cómo se mantiene en secreto tu dirección de correo electrónico?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = ¿Te preocupa la seguridad en las redes Wi-Fi públicas?
+ad-unit-relay-cta = Más información sobre { -brand-relay }
+ad-unit-vpn-cta = Más información sobre { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Cómo se mantiene en secreto tu dirección de correo electrónico?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿Te preocupa la seguridad en las redes Wi-Fi públicas?
