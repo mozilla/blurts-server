@@ -572,7 +572,7 @@ vpn-banner-status-protected = Estado actual: <em>Protegido ✓</em>
 vpn-banner-status-not-protected = Estado actual: <em>No protegido ⚠</em>
 # user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Dirección IP: { $ip-address }
-vpn-banner-step-1 = Siscíbete a { -brand-mozilla-vpn }
+vpn-banner-step-1 = Suscríbete a { -brand-mozilla-vpn }
 vpn-banner-step-2 = Selecciona una ubicación para la VPN
 vpn-banner-step-3 = Activa la VPN y navega de forma segura
 vpn-banner-cta = Obtener { -brand-mozilla-vpn }
@@ -589,3 +589,32 @@ ad-unit-vpn-cta = Más información sobre { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = ¿Cómo se mantiene en secreto tu dirección de correo electrónico?
 # ad 2 heading
 ad-unit-2-do-you-worry = ¿Te preocupa la seguridad en las redes Wi-Fi públicas?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = ¡Mantente al día!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permite mantener una conexión estable y segura mientras juegas o ves películas.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Prevenir las limitaciones de ancho de banda
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Puedes estar en cualquier lugar del mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Acceder a más
+# ad 4 heading
+ad-unit-4-shopping-with = Comprar con máscaras de correo electrónico
+ad-unit-4-want-to-buy = ¿Quieres comprar algo online y no conoces o no confías plenamente en la tienda?
+ad-unit-4-shop-online = Usa una máscara de correo electrónico cada vez que compres en línea. Obtén la confirmación enviada a tu correo electrónico real y luego desactiva fácilmente la máscara en cualquier momento.
+# ad 5 heading
+ad-unit-5-on-the-go = En movimiento con { -brand-relay }
+ad-unit-5-instantly-make = ¡Crea sobre la marcha una máscara de correo personalizada cuando quieras y donde quieras!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conéctate en movimiento
+ad-unit-5-privately-sign-in = Usa tu máscara de correo cuando quieras iniciar sesión de forma privada en tu cafetería favorita o en un Wi-Fi público
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Recibe facturas por correo
+ad-unit-5-share-custom-email = Comparte una máscara de correo personalizada para recibos de compras sin compartir tu correo real
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Úsalo en tu teléfono
+ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de correo electrónico personalizada en segundos para cualquier cosa que quieras hacer
+# ad 6 heading
+ad-unit-6-worry-free = Registros sin preocupaciones
+ad-unit-6-want-to-start = ¿Quieres hacer una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
+ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar de tu correo real para proteger tu información y mantener el control sobre tu bandeja de entrada
