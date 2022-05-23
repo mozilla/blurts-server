@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -619,3 +622,7 @@ vpn-banner-cta-close = Sulje
 ad-unit-1-how-do-you-keep = Miten pidät sähköpostiosoitteesi salassa?
 # ad 2 heading
 ad-unit-2-do-you-worry = Oletko huolissasi julkisen wifi-verkon turvallisuudesta?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Pysy pelissä mukana!
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Käytä puhelimessasi
