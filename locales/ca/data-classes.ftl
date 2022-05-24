@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = saldo de comptes
 address-book-contacts = contactes de la llibreta d'adreces
@@ -78,7 +78,7 @@ payment-histories = historials de pagaments
 payment-methods = mètodes de pagament
 personal-descriptions = descripcions personals
 personal-health-data = dades de salut personals
-personal-interests = interesos personals
+personal-interests = interessos personals
 phone-numbers = números de telèfon
 photos = fotografies
 physical-addresses = adreces físiques

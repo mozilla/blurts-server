@@ -138,50 +138,6 @@ security-tips = Συμβουλές ασφαλείας
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Άνοιγμα πλοήγησης { -brand-fxa(case: "gen", capitalization: "lower") }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Από το 1 έως το 10, πόσο πιθανό είναι να συστήσετε το { -product-short-name } σε έναν φίλο ή συνάδελφό σας;
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Καθόλου πιθανό
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Πολύ πιθανό
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Είναι το { -product-short-name } εύκολο στη χρήση;
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Πιστεύετε πως το { -product-short-name } είναι αξιόπιστο;
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Διαθέτει το { -product-short-name } μια απλή και σαφή παρουσίαση;
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Διαφωνώ απόλυτα
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Διαφωνώ
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Δεν ξέρω σίγουρα
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Συμφωνώ
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Συμφωνώ απόλυτα
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Πώς θα νιώθατε αν δεν μπορούσατε πλέον να χρησιμοποιήσετε το { -product-short-name };
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Μεγάλη απογοήτευση
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Μερική απογοήτευση
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Δεν θα με ένοιαζε
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ΠΡΟΣΦΑΤΗ ΠΡΟΣΘΗΚΗ
 # Link title
@@ -669,9 +625,25 @@ vpn-banner-cta-expand = Ανάπτυξη
 # button to close panel
 vpn-banner-cta-close = Κλείσιμο
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Πώς κρατάτε μυστική τη διεύθυνση email σας;
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Ανησυχείτε για την ασφάλεια των δημόσιων Wi-Fi;
+ad-unit-relay-cta = Μάθετε περισσότερα για το { -brand-relay }
+ad-unit-vpn-cta = Μάθετε περισσότερα για το { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Πώς κρατάτε μυστική τη διεύθυνση email σας;
+# ad 2 heading
+ad-unit-2-do-you-worry = Ανησυχείτε για την ασφάλεια των δημόσιων Wi-Fi;
+ad-unit-3-lets-you-keep = Το { -brand-mozilla-vpn } σάς επιτρέπει να προστατεύετε μια σταθερή σύνδεση ενώ παίζετε παιχνίδια ή παρακολουθείτε ταινίες.
+# ad 3 list item 3
+ad-unit-3-access-more = Πρόσβαση σε περισσότερα
+# ad 4 heading
+ad-unit-4-shopping-with = Αγορές με τις μάσκες email
+ad-unit-4-want-to-buy = Θέλετε να αγοράσετε κάτι στο διαδίκτυο και δεν γνωρίζετε ή δεν εμπιστεύεστε απόλυτα το κατάστημα;
+# ad 5 heading
+ad-unit-5-on-the-go = Εν κινήσει με το { -brand-relay }
+ad-unit-5-instantly-make = Δημιουργήστε μια προσαρμοσμένη μάσκα email στη στιγμή, όπου κι αν πάτε!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Σύνδεση εν κινήσει
+ad-unit-5-no-matter-where = Όπου κι αν βρίσκεστε, δημιουργήστε μια προσαρμοσμένη μάσκα email σε δευτερόλεπτα για οποιαδήποτε χρήση
+# ad 6 heading
+ad-unit-6-worry-free = Εγγραφές χωρίς ανησυχία

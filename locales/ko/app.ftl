@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -119,50 +122,6 @@ security-tips = 보안 정보
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } 열기
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 친구나 동료에게 { -product-short-name }를 추천할 의향은 1-10 사이에서 어느 정도인가요?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = 가능성 낮음
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = 가능성 높음
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name }는 사용하기 쉽나요?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = { -product-short-name }를 신뢰할 수 있다고 생각하십니까?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name }는 명확하고 간단한 모습입니까?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = 매우 동의 안함
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = 동의 안함
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = 확실하지 않음
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = 동의함
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = 매우 동의함
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = 만약 더 이상 { -product-short-name }를 사용할 수 없다면 어떤 느낌이 드나요?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = 매우 실망스러움
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = 다소 실망스러움
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = 상관없음
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 최근 유출 내역
 # Link title
@@ -340,6 +299,9 @@ facebook-breach-note =
     이메일 주소는 아닙니다. Facebook에 가입한 적이 있다면
     — 지금 사용하지 않더라도 — 보호를 위한 이 절차를
     따르기를 권장합니다.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline = <span>SIM 스와핑을 방지하기 위해 <a>이동 통신사 계정</a>에서 비밀번호, PIN 및 기타 보안 자격 증명을 변경하세요</span>.
 facebook-breach-what-to-do-3 = Facebook 유출 페이지에서 모든 권장 사항 보기
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = 보기:
@@ -594,5 +556,5 @@ vpn-banner-cta-expand = 펼치기
 # button to close panel
 vpn-banner-cta-close = 닫기
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 

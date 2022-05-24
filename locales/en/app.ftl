@@ -1,3 +1,5 @@
+# Strings for the main app
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -14,6 +16,7 @@
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+
 ##
 
 # “account” can be localized, “Firefox” must be treated as a brand,
@@ -608,6 +611,7 @@ resolve-top-notification-plural =
   { $numAffectedEmails ->
     *[other] { $numAffectedEmails } of your email addresses appeared in this breach. <a>What to do next</a>
   }
+
 ##
 
 marking-this-subhead = Marking this breach as resolved
@@ -681,6 +685,7 @@ progress-message-4 = <span>Almost done!</span> You’re close to the finish line
 progress-complete-message = 
   <span>Feels good, right?</span> If you want to keep going, this is a good time to 
   update other logins with stronger passwords.
+
 ##
 
 resolve-this-breach-link = Resolve this breach

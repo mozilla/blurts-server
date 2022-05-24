@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -114,50 +117,6 @@ security-tips = Conseils de sécurité
 fxa-account = { -brand-fxa(capitalization: "uppercase") }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Naviguer sur { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Sur une échelle de 1 à 10, quelle est la probabilité que vous recommandiez { -product-short-name } à des ami·es ou collègues ?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Peu probable
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Très probable
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } est-il facile à utiliser ?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Avez-vous l’impression de pouvoir faire confiance à { -product-short-name } ?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } a-t-il une présentation claire et simple ?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Pas du tout d’accord
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Pas d’accord
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Je ne sais pas trop
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = D’accord
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Tout à fait d’accord
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Comment vous sentiriez-vous si vous ne pouviez plus utiliser { -product-short-name } ?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Très déçu·e
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Assez déçu·e
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Aucune importance pour moi
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = DERNIÈRE FUITE DE DONNÉES AJOUTÉE
 # Link title
@@ -593,9 +552,38 @@ vpn-banner-cta-expand = Développer
 # button to close panel
 vpn-banner-cta-close = Fermer
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Comment garder votre adresse e-mail secrète ?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Vous souciez-vous de la sécurité des Wi-Fi publics ?
+ad-unit-relay-cta = En savoir plus sur { -brand-relay }
+ad-unit-vpn-cta = En savoir plus sur { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Comment garder votre adresse e-mail secrète ?
+# ad 2 heading
+ad-unit-2-do-you-worry = Vous souciez-vous de la sécurité des Wi-Fi publics ?
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vous permet de maintenir une connexion stable en toute sécurité pendant que vous jouez à des jeux ou regardez des films en streaming.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Évitez la limitation de la bande passante
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Apparaissez de n’importe où dans le monde
+# ad 3 list item 3
+ad-unit-3-access-more = Accédez à plus de contenus
+# ad 4 heading
+ad-unit-4-shopping-with = Shopping avec les alias de messagerie.
+ad-unit-4-want-to-buy = Vous voulez faire un achat en ligne mais vous ne connaissez pas la boutique ou ne lui faites pas totalement confiance ?
+ad-unit-4-shop-online = Utilisez un alias de messagerie pour tout achat en ligne. Recevez sur votre véritable adresse e-mail la confirmation envoyée et, quand vous le voulez, désactivez facilement l’alias par la suite.
+# ad 5 heading
+ad-unit-5-on-the-go = À la volée avec { -brand-relay }
+ad-unit-5-instantly-make = Créez instantanément un alias de messagerie où que vous soyez et où que vous alliez !
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connectez-vous partout
+ad-unit-5-privately-sign-in = Utilisez votre alias de messagerie quand vous le souhaitez pour vous connecter en toute confidentialité à un Wi-Fi public ou à celui de votre café préféré.
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Recevez vos factures par e-mail
+ad-unit-5-share-custom-email = Donnez une adresse e-mail personnalisée pour les factures de vos achats en magasin sans communiquer votre véritable adresse e-mail.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Utilisez-le sur votre téléphone
+ad-unit-5-no-matter-where = Peu importe où vous vous trouvez, créez une adresse e-mail personnalisée en quelques secondes quel que soit votre besoin.
+# ad 6 heading
+ad-unit-6-worry-free = Inscriptions sans souci
+ad-unit-6-want-to-start = Vous voulez commencer un nouvel abonnement, répondre à une invitation ou un obtenir un code de réduction sans que les spams n’inondent votre boîte de réception ?
+ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias de messagerie à la place de votre véritable adresse e-mail pour protéger vos informations et garder le contrôle de votre boîte de réception.

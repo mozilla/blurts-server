@@ -107,50 +107,6 @@ security-tips = Consejos de seguridad
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir la navegación de { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = En una escala del 1 al 10, ¿qué tan probable es que recomiendes { -product-short-name } a un amigo o colega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Poco probable
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Muy probable
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = ¿Es { -product-short-name } fácil de usar?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = ¿Sientes que { -product-short-name } es confiable?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = ¿Tiene { -product-short-name } una presentación limpia y sencilla?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Muy en desacuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = En desacuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Inseguro
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = De acuerdo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Muy de acuerdo
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = ¿Cómo te sentirías si ya no pudieras usar { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Muy decepcionado
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Algo decepcionado
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = No me importaría
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMA FILTRACIÓN AGREGADA
 # Link title
@@ -623,9 +579,40 @@ vpn-banner-cta-expand = Expandir
 # button to close panel
 vpn-banner-cta-close = Cerrar
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = ¿Cómo mantienes en secreto tu dirección de correo electrónico?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = ¿Te preocupa la seguridad en las redes Wi-Fi públicas?
+ad-unit-relay-cta = Aprender más sobre { -brand-relay }
+ad-unit-vpn-cta = Aprender más sobre { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Cómo mantienes en secreto tu dirección de correo electrónico?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿Te preocupa la seguridad en las redes Wi-Fi públicas?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = ¡Mantente al día!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permite mantener una conexión estable y segura mientras juegas o reproduces películas.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Previene las limitaciones
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Te permite estar en cualquier lugar del mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Accede a más
+# ad 4 heading
+ad-unit-4-shopping-with = Compra con correos electrónicos enmascarados
+ad-unit-4-want-to-buy = ¿Quieres comprar algo en línea y no conoces o no confías plenamente en la tienda?
+ad-unit-4-shop-online = Usa una máscara de correo electrónico cada vez que compres en línea. Obtén la confirmación enviada en tu correo electrónico real y luego desactiva fácilmente la máscara en cualquier momento posterior.
+# ad 5 heading
+ad-unit-5-on-the-go = Sobre la marcha con { -brand-relay }
+ad-unit-5-instantly-make = ¡Crea instantáneamente una máscara de correo electrónico personalizada en cualquier lugar y donde sea que vayas!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conéctate sobre la marcha
+ad-unit-5-privately-sign-in = Usa tu máscara de correo electrónico cuando desees conectarte de forma privada al Wi-Fi de tu cafetería favorita o red pública
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Obtener tus recibos por correo
+ad-unit-5-share-custom-email = Comparte una máscara personalizada de tu correo electrónico para recibos de compras en la tienda sin compartir tu correo electrónico real
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Úsalo en tu teléfono
+ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de correo electrónico personalizada en segundos para cualquier cosa que desees hacer
+# ad 6 heading
+ad-unit-6-worry-free = Regístrate sin preocupaciones
+ad-unit-6-want-to-start = ¿Quieres iniciar una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
+ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar del real para proteger tu información y mantener el control sobre tu bandeja de entrada

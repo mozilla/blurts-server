@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = soldes des comptes
 address-book-contacts = contacts du carnet d’adresses
@@ -59,6 +59,7 @@ geographic-locations = emplacements géographiques
 government-issued-ids = cartes d’identité émises par le gouvernement
 health-insurance-information = informations relatives à l’assurance maladie
 historical-passwords = anciens mots de passe
+hiv-statuses = résultats de tests VIH
 home-loan-information = informations sur les prêts immobiliers
 home-ownership-statuses = statuts de propriété du domicile
 homepage-urls = adresses des pages d’accueil

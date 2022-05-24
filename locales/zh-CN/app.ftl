@@ -106,50 +106,6 @@ security-tips = 安全提示
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = 打开 { -brand-fxa }导航栏
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 以 1 - 10 分计，您向朋友或同事推荐 { -product-short-name } 的可能性有多大？
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = 不太可能
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = 极有可能
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } 易于使用吗？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = 您认为 { -product-short-name } 值得信赖吗？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } 的界面显示简洁吗？
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = 强烈反对
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = 反对
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = 不确定
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = 同意
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = 非常同意
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = 若不能再使用 { -product-short-name }，您会觉得？
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = 非常失望
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = 有点失望
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = 没有感觉
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最新公开的外泄事件
 # Link title
@@ -553,9 +509,33 @@ vpn-banner-cta-expand = 展开
 # button to close panel
 vpn-banner-cta-close = 关闭
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = 要如何保密自己的邮箱地址？
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = 您是否担心公共 Wi-Fi 的安全？
+ad-unit-relay-cta = 详细了解 { -brand-relay }
+ad-unit-vpn-cta = 详细了解 { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = 要如何保密自己的邮箱地址？
+# ad 2 heading
+ad-unit-2-do-you-worry = 您是否担心公共 Wi-Fi 的安全？
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 可为您提供稳定且安全的连接，玩游戏、看网剧，不在话下。
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = 拒绝限速
+# ad 3 list item 3
+ad-unit-3-access-more = 访问更多内容
+# ad 4 heading
+ad-unit-4-shopping-with = 用马甲邮箱网购
+ad-unit-4-want-to-buy = 想要网购，但不熟悉或不是很信任商家？
+# ad 5 heading
+ad-unit-5-on-the-go = 随时随地使用 { -brand-relay }
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = 随时随地连接
+ad-unit-5-privately-sign-in = 可使用马甲邮箱登录公共 Wi-Fi，如在您最常去的咖啡厅登录上网时
+# ad 5 subheading 2
+ad-unit-5-email-receipts = 收取电子收据邮件
+ad-unit-5-share-custom-email = 向商家提供马甲邮箱用于发送电子收据，无需提供真实邮箱
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = 在手机上使用
+ad-unit-5-no-matter-where = 无论您身居何处，只需几秒就可为想做的任何事情创建自定义马甲邮箱
+# ad 6 heading
+ad-unit-6-worry-free = 注册全无忧
+ad-unit-6-want-to-start = 想要开始新订阅、回复邀请或获得优惠促销代码，而不让垃圾邮件充斥您的收件箱吗？

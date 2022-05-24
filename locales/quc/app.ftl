@@ -521,9 +521,40 @@ vpn-banner-cta-expand = Chanimarisaj
 # button to close panel
 vpn-banner-cta-close = Chatz'apij
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Jas kab'an chech akemriqonib'al rech taqoqxa'nib'al chech uya'ik pa owatalik?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = La k'o kub'ij ak'u'x chech chajinem pa uk'iyal Wi-Fi?
+ad-unit-relay-cta = Chaweta'maj nik'aj chik chi rij { -brand-relay }
+ad-unit-vpn-cta = Chaweta'maj nik'aj chik chi rij { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Jas kab'an check rowaxik le akemriqonib'al rech taqoqxa'nib'al?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿La ksach ak'u'x chi rij chajinem pa Wi-Fi kech uk'iyal?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Chatk'oloq pa le etz'anem
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } chak'ama' jun suk'ul t'iqonem, chajitalik xuquje' rech q'alb'al k'u'xaj are taq katetz'anik on katzij taq silob'wachib'al.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Kuq'atej jitz'anem
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Utz katk'oji' pa apawije' tinamit pa le uwachulew
+# ad 3 list item 3
+ad-unit-3-access-more = Chariqa' nik'aj chik
+# ad 4 heading
+ad-unit-4-shopping-with = Loq'omanem ruk' k'oj rech taqoqxa'nib'al
+ad-unit-4-want-to-buy = Wene kawaj kaloq' apachike jastaq pa nimk'atz xa k'ut man aweta'am taj on man kq'a'i' ta ak'u'x chi rij le k'ayib'al?
+ad-unit-4-shop-online = Chakojo' jun k'oj rech taqoqxa'nib'al apawije' kaloq'oman wi pa nimk'atz', chariqa' le usuk'ub'axik tzij le taqom chi awech pa le qas ataqoqxa'nib'al k'ate k'u ri' man k'ax ta kab'an chech relesaxik le ch'uqb'al chi'aj xaq jampa' aq'anoq.
+# ad 5 heading
+ad-unit-5-on-the-go = Pa le b'e ruk' { -brand-relay }
+ad-unit-5-instantly-make = ¡Chab'ana' jun k'oj rech taqoqxa'nib'al rech winaqilal pa apawije' katb'e wi!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Chat'iqa' awib' apawije' katb'e wi
+ad-unit-5-privately-sign-in = Chakojo' jun k'oj rech taqoqxa'nib'al are taq kawaj kab'an echeb'alil chech, chatz'ib'aj awib' pa le k'ayib'al kape on pa Wi-Fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Chariqa' taq uwujil loq'oj pa taqoqxa'nib'al
+ad-unit-5-share-custom-email = Chakomone'j jun k'oj rech taqoqxa'nib'al chech uwujil loq'oj rech taq loq'o'manem pa k'ayib'al man rajawaxik taj kakomone'j le ataqoqxa'nib'al.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Chakojo' pa le ach'aweb'al
+ad-unit-5-no-matter-where = Man k'o ta kub'ano jawi' atk'owi, chab'ana' jun a k'oj xaq pa re jujun alaj taq kajb'al chech apachike jastaq kawaj kabano.
+# ad 6 heading
+ad-unit-6-worry-free = Taq utz'ib'axik ib' man k'o ta sachb'al k'u'xaj chi rij
+ad-unit-6-want-to-start = ¿Kawaj kamajij jun k'ak' utz'ib'axik ib', chatzalijisaj uwach jun sik'inem, Uta'ik qasab'al rajilal rech jun etal rech kemtzijob'al are chi le mestaqoqxa'nib'al man kunojisaj ta uwi' le ropanib'al taqoqxa'nib'al?
+ad-unit-6-before-you-complete = Are taq k'amaja' katz'aqatisaj  le jun chi utz'ib'axik ib', chakojo' jun k'oj rech taqoqxa'nib'al chi uwach le qas awech chech uchajixik le aq'alajisanem xuquje' rilawachixik le ropanib'al taqoqxa'nib'al.

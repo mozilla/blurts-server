@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -119,50 +122,6 @@ security-tips = Tryggingstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Opne navigering for { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = På ein skala frå 1-10, kor sannsynleg er det at du tilrår { -product-short-name } til ein venn eller kollega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Lite sannsynleg
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Svært sannsynleg
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Er { -product-short-name } lett å bruke?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Synest du at { -product-short-name } er påliteleg?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Har { -product-short-name } ein rein og enkel presentasjon?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Heilt ueinig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Ueinig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Usikker
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Einig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Heilt einig
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Kva ville reaksjonen din vere dersom du ikkje lenger kunne bruke { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Veldig skuffa
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Litt skuffa
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Eg bryr meg ikkje
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SISTE DATALEKKASJE SOM ER LAGT TIL
 # Link title
@@ -649,9 +608,13 @@ vpn-banner-cta-expand = Utvid
 # button to close panel
 vpn-banner-cta-close = Lat att
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Korleis held du e-postadressa di hemmeleg?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Uroar du deg for sikkerheita på offentleg Wi-Fi?
+ad-unit-relay-cta = Les meir om { -brand-relay }
+ad-unit-vpn-cta = Les meir om { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Korleis held du e-postadressa di hemmeleg?
+# ad 2 heading
+ad-unit-2-do-you-worry = Er du bekymra for sikkerheita på offentleg Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Hald deg oppdatert!
