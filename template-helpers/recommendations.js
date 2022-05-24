@@ -209,9 +209,9 @@ module.exports = {
         recommendations: [
           {
             recommendationCopy: {
-              subhead: 'rec-email-subhead',
-              body: 'rec-email',
-              cta: 'rec-email-cta'
+              subhead: "rec-email-mask-subhead",
+              body: "rec-email",
+              cta: "rec-email-cta",
             },
             ctaHref: 'https://relay.firefox.com/',
             ctaShouldOpenNewTab: true,

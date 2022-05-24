@@ -626,12 +626,13 @@ ad-unit-3-access-more = Toegang tot meer
 # ad 4 heading
 ad-unit-4-shopping-with = Winkelen met e-mailmaskers
 ad-unit-4-want-to-buy = Wilt u iets online kopen en kent u de winkel niet of vertrouwt u deze niet volledig?
-ad-unit-4-shop-online = Gebruik een e-mailmasker wanneer u online winkelt. Ontvang de bevestiging naar uw echte e-mailadres en schakel het masker later gemakkelijk uit.
+ad-unit-4-shop-online = Gebruik een e-mailmasker wanneer u online winkelt. Ontvang de bevestiging op uw echte e-mailadres en schakel het masker later gemakkelijk uit.
 # ad 5 heading
 ad-unit-5-on-the-go = Onderweg met { -brand-relay }
 ad-unit-5-instantly-make = Maak direct en overal een aangepast e-mailmasker!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Onderweg verbinding maken
+ad-unit-5-privately-sign-in = Gebruik uw e-mailmasker wanneer u zich privé wilt aanmelden bij uw favoriete lunchroom of openbare wifi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Ontvang ontvangstbewijzen per e-mail
 ad-unit-5-share-custom-email = Deel een aangepast e-mailmasker voor kassabonnen in de winkel zonder uw echte e-mailadres te delen

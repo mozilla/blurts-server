@@ -50,7 +50,7 @@ rec-cc =
     Xem ra các khoản phí lạ trên thẻ tín dụng của bạn. Bạn có thể muốn 
     yêu cầu một thẻ mới có số mới từ nhà phát hành thẻ tín dụng của bạn.
 # Recommendation subhead
-rec-email-subhead = Sử dụng bí danh email
+rec-email-mask-subhead = Sử dụng mặt nạ email
 rec-email-cta = Thử { -brand-relay }
 rec-email =
     Cung cấp địa chỉ email thực của bạn giúp tin tặc hoặc kẻ theo dõi tìm mật khẩu

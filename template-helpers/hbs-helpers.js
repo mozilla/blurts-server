@@ -30,9 +30,13 @@ function vpnPromoBlocked (args) {
   return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale))
 }
 
-function englishInAcceptLanguages (args) {
-  const acceptedLanguages = args.data.root.req.acceptsLanguages()
-  return acceptedLanguages.some(locale => locale.startsWith('en'))
+function getAppConstant(constant) {
+  return AppConstants[constant];
+}
+
+function englishInAcceptLanguages(args) {
+  const acceptedLanguages = args.data.root.req.acceptsLanguages();
+  return acceptedLanguages.some(locale => locale.startsWith("en"));
 }
 
 function escapeHtmlAttributeChars (text) {
@@ -225,5 +229,6 @@ module.exports = {
   breachMath,
   loop,
   showCsatBanner,
-  vpnPromoBlocked
-}
+  getAppConstant,
+  vpnPromoBlocked,
+};

@@ -602,11 +602,21 @@ ad-unit-1-how-do-you-keep = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kun
 ad-unit-2-do-you-worry = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Epyta ñembosaráipe!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Omboyke tekombegue
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Reimekuaa oimeraẽ tenda arapýpe
 # ad 3 list item 3
 ad-unit-3-access-more = Eikekuaave
+# ad 4 heading
+ad-unit-4-shopping-with = Emba’ejogua tovara’ãnga reheve ñanduti veve rupive
+# ad 5 heading
+ad-unit-5-on-the-go = Pya’eterei { -brand-relay } ndive
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Eikékatu pya’e porã
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Og̃uahẽ kuatia ñanduti veve rupive
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Eipuru ne pumbyrýpe
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre

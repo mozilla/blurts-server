@@ -15,8 +15,9 @@ const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === '1')
 const {
   getExperimentFlags,
   getUTMContents,
-  hasUserSignedUpForWaitlist
-} = require('./utils')
+  hasUserSignedUpForWaitlist,
+  setAdUnitCookie,
+} = require("./utils");
 
 const FXA_MONITOR_SCOPE = 'https://identity.mozilla.com/apps/monitor'
 
@@ -238,8 +239,10 @@ async function getDashboard (req, res) {
     req.session.lastAddedEmail = null
   }
 
-  res.render('dashboards', {
-    title: req.fluentFormat('Firefox Monitor'),
+  const adUnitNum = setAdUnitCookie(req, res);
+
+  res.render("dashboards", {
+    title: req.fluentFormat("Firefox Monitor"),
     csrfToken: req.csrfToken(),
     lastAddedEmail,
     verifiedEmails,
@@ -248,8 +251,9 @@ async function getDashboard (req, res) {
     supportedLocalesIncludesEnglish,
     whichPartial: 'dashboards/breaches-dash',
     experimentFlags,
-    utmOverrides
-  })
+    utmOverrides,
+    adUnit: `ad-units/ad-unit-${adUnitNum}`,
+  });
 }
 
 async function _verify (req) {

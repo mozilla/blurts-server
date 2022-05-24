@@ -8,8 +8,9 @@ const {
   generatePageToken,
   getExperimentFlags,
   getUTMContents,
-  hasUserSignedUpForWaitlist
-} = require('./utils')
+  hasUserSignedUpForWaitlist,
+  setAdUnitCookie,
+} = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === '1')
 
@@ -27,8 +28,10 @@ async function home (req, res) {
     csrfToken: req.csrfToken()
   }
 
-  let featuredBreach = null
-  let scanFeaturedBreach = false
+  const adUnitNum = setAdUnitCookie(req, res);
+
+  let featuredBreach = null;
+  let scanFeaturedBreach = false;
 
   if (req.session.user && !req.query.breach) {
     return res.redirect('/user/dashboard')
@@ -69,8 +72,9 @@ async function home (req, res) {
       pageToken: formTokens.pageToken,
       csrfToken: formTokens.csrfToken,
       experimentFlags,
-      utmOverrides
-    })
+      utmOverrides,
+      adUnit: `ad-units/ad-unit-${adUnitNum}`,
+    });
   }
 
   res.render('monitor', {
@@ -80,8 +84,9 @@ async function home (req, res) {
     pageToken: formTokens.pageToken,
     csrfToken: formTokens.csrfToken,
     experimentFlags,
-    utmOverrides
-  })
+    utmOverrides,
+    adUnit: `ad-units/ad-unit-${adUnitNum}`,
+  });
 }
 
 function removeMyData (req, res) {

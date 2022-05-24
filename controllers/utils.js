@@ -218,10 +218,20 @@ function getExperimentFlags (req, EXPERIMENTS_ENABLED) {
   return experimentFlags
 }
 
+function setAdUnitCookie(req, res) {
+  const oldNum = parseInt(req.cookies?.adUnit) || Math.ceil(Math.random() * AppConstants.AD_UNIT_TOTAL);
+  const newNum = oldNum % AppConstants.AD_UNIT_TOTAL + 1;
+
+  res.cookie("adUnit", newNum, { path: "/", sameSite: "Lax", maxAge: 60 * 60 * 24 * 30, httpOnly: true });
+
+  return newNum;
+}
+
 module.exports = {
   generatePageToken,
   hasUserSignedUpForWaitlist,
   getExperimentBranch,
   getExperimentFlags,
-  getUTMContents
-}
+  getUTMContents,
+  setAdUnitCookie,
+};

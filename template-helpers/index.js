@@ -1,18 +1,17 @@
 'use strict'
 
-const articles = require('./articles')
-const breachDetail = require('./breach-detail')
-const breaches = require('./breaches')
-const breachStats = require('./breach-stats')
-const dashboard = require('./dashboard')
-const emails = require('./emails')
-const footer = require('./footer')
-const header = require('./header')
-const homepage = require('./homepage')
-const legacyHelpers = require('./hbs-helpers')
-const scanResults = require('./scan-results')
-const signUpBanners = require('./sign-up-banners')
-const productEducationVideo = require('./product-education-video')
+const articles = require("./articles");
+const breachDetail = require("./breach-detail");
+const breaches = require("./breaches");
+const breachStats = require("./breach-stats");
+const dashboard = require("./dashboard");
+const emails = require("./emails");
+const footer = require("./footer");
+const header = require("./header");
+const homepage = require("./homepage");
+const legacyHelpers = require("./hbs-helpers");
+const scanResults = require("./scan-results");
+const signUpBanners = require("./sign-up-banners");
 
 module.exports = {
   helpers: Object.assign(
@@ -27,7 +26,6 @@ module.exports = {
     homepage,
     legacyHelpers,
     scanResults,
-    signUpBanners,
-    productEducationVideo
-  )
-}
+    signUpBanners
+  ),
+};

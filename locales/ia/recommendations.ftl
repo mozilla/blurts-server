@@ -36,7 +36,7 @@ rec-bank-acc = Verifica que tu extractos bancari non include alcun transaction s
 rec-cc-subhead = Survelia tu extractos de carta de credito
 rec-cc = Presta attention al debitos estranie sur tu carta de credito. Si necessari, demanda a tu emissor un nove carta con un nove numero.
 # Recommendation subhead
-rec-email-subhead = Usa aliases de email
+rec-email-mask-subhead = Usa un masca email
 rec-email-cta = Prova { -brand-relay }
 rec-email = Divulgar tu adresse de e-mail real rende plus facile pro piratas informatic o traciatores trovar tu contrasignos o attaccar te in linea. Un servicio como { -brand-relay } cela tu adresse de e-mail real e reexpedi le messages a tu cassa de entrata real.
 # Recommendation subhead

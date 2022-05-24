@@ -51,7 +51,7 @@ rec-cc =
     Tarkkaile erityisesti outoja veloituksia luottokortiltasi. Uudella numerolla 
     varustetun luottokortin pyytäminen luottokortin myöntäjältä saattaa olla hyvä idea.
 # Recommendation subhead
-rec-email-subhead = Käytä sähköpostialiaksia
+rec-email-mask-subhead = Käytä sähköpostimaskia
 rec-email-cta = Kokeile { -brand-relay }ta
 rec-email =
     Oikean sähköpostiosoitteesi antaminen helpottaa pahojen tahojen ja seurainten
