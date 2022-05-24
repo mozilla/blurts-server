@@ -2,9 +2,9 @@
 
 /* eslint-disable no-process-env */
 
-const path = require("path");
-const fs = require("fs");
-require("dotenv").config({ path: path.join(__dirname, ".env") });
+const path = require('path')
+const fs = require('fs')
+require('dotenv').config({ path: path.join(__dirname, '.env') })
 
 const requiredEnvVars = [
   'NODE_ENV',
@@ -77,6 +77,6 @@ optionalEnvVars.forEach(key => {
 
 AppConstants.VPN_PROMO_BLOCKED_LOCALES = AppConstants.VPN_PROMO_BLOCKED_LOCALES?.split(',')
 
-AppConstants.AD_UNIT_TOTAL = fs.readdirSync(path.join(__dirname, "views/partials/ad-units")).length;
+AppConstants.AD_UNIT_TOTAL = fs.readdirSync(path.join(__dirname, 'views/partials/ad-units')).length
 
-module.exports = Object.freeze(AppConstants);
+module.exports = Object.freeze(AppConstants)
