@@ -626,6 +626,17 @@ ad-unit-1-how-do-you-keep = Miten pidät sähköpostiosoitteesi salassa?
 ad-unit-2-do-you-worry = Oletko huolissasi julkisen wifi-verkon turvallisuudesta?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Pysy pelissä mukana!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } mahdollistaa vakaan ja turvallisen yhteyden, kun pelaat verkkopelejä tai suoratoistat elokuvia.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Estä rajoituksia
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Ole missä päin maailmaa tahansa
+# ad 4 heading
+ad-unit-4-shopping-with = Ostoksia sähköpostimaskeilla
+ad-unit-4-want-to-buy = Haluatko ostaa jotain verkosta, mutta et tunne kauppaa entuudestaan tai luota siihen täysin?
+ad-unit-5-instantly-make = Luo heti mukautettu sähköpostimaski missä tahansa oletkin!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Yhdistä liikkeellä ollessasi
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Käytä puhelimessasi
 ad-unit-5-no-matter-where = Missä tahansa oletkin, luo mukautettu sähköpostimaski haluamaasi asiaa varten sekunneissa
