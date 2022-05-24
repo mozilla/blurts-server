@@ -1,9 +1,7 @@
 {{> vpn-banner }}
 <header id="header" class="{{ addUpgradeClasses }}">
-  {{#unless (checkIfInRemovalPilot)}}
   {{{ recruitmentBanner }}}
-  {{> csat-banner }}
-  {{/unless}}
+  <!-- {{> csat-banner }} -->
   <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
     <section class="row-full-width fxm-branding">
       <a class="flx-cntr fx-monitor-logo-wrapper" href="/" aria-label="{{ getString 'home' }}" {{>
