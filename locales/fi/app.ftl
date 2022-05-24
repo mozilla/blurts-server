@@ -628,3 +628,7 @@ ad-unit-2-do-you-worry = Oletko huolissasi julkisen wifi-verkon turvallisuudesta
 ad-unit-3-stay-in-the-game = Pysy pelissä mukana!
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Käytä puhelimessasi
+ad-unit-5-no-matter-where = Missä tahansa oletkin, luo mukautettu sähköpostimaski haluamaasi asiaa varten sekunneissa
+# ad 6 heading
+ad-unit-6-worry-free = Huolettomat ilmoittautumiset
+ad-unit-6-want-to-start = Haluatko aloittaa uuden tilauksen, vastata kutsuun tai saada tarjouskoodin ilman, että postilaatikkosi tulvii roskapostia?
