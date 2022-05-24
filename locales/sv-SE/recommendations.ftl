@@ -50,7 +50,7 @@ rec-cc =
     Se upp för konstiga avgifter på ditt kreditkort. Du kanske vill 
     begära ett nytt kort med ett nytt nummer från din kreditkortsutgivare.
 # Recommendation subhead
-rec-email-subhead = Använd e-postalias
+rec-email-mask-subhead = Använd ett e-postalias
 rec-email-cta = Prova { -brand-relay }
 rec-email =
     Att ge ut din riktiga e-postadress gör det lättare för hackare eller spårare att hitta

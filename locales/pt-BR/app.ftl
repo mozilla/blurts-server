@@ -121,50 +121,6 @@ security-tips = Dicas de segurança
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir navegação na { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Numa de escala de 1 a 10, qual é a probabilidade de você recomendar o { -product-short-name } para um amigo ou colega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Pouco provável
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Muito provável
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = O { -product-short-name } é fácil de usar?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Você acha o { -product-short-name } confiável?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = O { -product-short-name } tem uma apresentação limpa e simples?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Discordo totalmente
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Discordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Não tenho certeza
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Concordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Concordo plenamente
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Como você se sentiria se não pudesse mais usar o { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Muito desapontado
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Um pouco desapontado
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Eu não me importaria
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMO VAZAMENTO ADICIONADO
 # Link title
@@ -621,9 +577,40 @@ vpn-banner-cta-expand = Expandir
 # button to close panel
 vpn-banner-cta-close = Fechar
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Como manter seu endereço de email em segredo?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Você se preocupa com segurança em redes públicas de WiFi?
+ad-unit-relay-cta = Saiba mais sobre o { -brand-relay }
+ad-unit-vpn-cta = Saiba mais sobre o { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Como você mantém seu endereço de email em segredo?
+# ad 2 heading
+ad-unit-2-do-you-worry = Você se preocupa com segurança em redes públicas de WiFi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Esteja em dia!
+ad-unit-3-lets-you-keep = O { -brand-mozilla-vpn } permite manter uma conexão estável segura e protegida enquanto você joga ou assiste filmes.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Evite limitação
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Esteja em qualquer lugar do mundo
+# ad 3 list item 3
+ad-unit-3-access-more = Acesse mais
+# ad 4 heading
+ad-unit-4-shopping-with = Compras com máscaras de email
+ad-unit-4-want-to-buy = Quer comprar algo online, mas não conhece ou não confia totalmente na loja?
+ad-unit-4-shop-online = Use uma máscara de email sempre que fizer compras online. Receba a confirmação enviada para seu email real e depois desative facilmente a máscara, quando quiser.
+# ad 5 heading
+ad-unit-5-on-the-go = Em movimento com o { -brand-relay }
+ad-unit-5-instantly-make = Crie instantaneamente uma máscara de email personalizada em todo e qualquer lugar que você vá!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Conexão em movimento
+ad-unit-5-privately-sign-in = Use sua máscara de email quando quiser acessar com privacidade em uma cafeteria ou em uma rede pública de WiFi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Receba notas fiscais por email
+ad-unit-5-share-custom-email = Compartilhe uma máscara de email personalizada para receber notas fiscais de compras de uma loja sem compartilhar seu email real
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Usar no seu celular
+ad-unit-5-no-matter-where = Não importa onde você esteja, crie uma máscara de email personalizada em segundos para qualquer coisa que você queira fazer
+# ad 6 heading
+ad-unit-6-worry-free = Cadastro de contas sem preocupações
+ad-unit-6-want-to-start = Quer iniciar uma nova inscrição, responder a um convite ou obter um código promocional de pechincha sem ter spam inundando sua caixa de entrada?
+ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma máscara de email em vez do email real para proteger suas informações e manter o controle sobre sua caixa de entrada

@@ -34,7 +34,7 @@ rec-bank-acc = 檢查您的銀行對帳單當中是否有可疑或不尋常的�
 rec-cc-subhead = 檢查信用卡帳單
 rec-cc = 看看信用卡帳單當中是否有奇怪的項目。您可能會想要聯絡信用卡發卡單位更換卡號。
 # Recommendation subhead
-rec-email-subhead = 使用電子郵件別名
+rec-email-mask-subhead = 使用轉寄信箱
 rec-email-cta = 試用 { -brand-relay }
 rec-email = 給出您的實際電子郵件地址，會讓駭客或追蹤器更容易在網路上找到您或追蹤您。諸如 { -brand-relay } 的服務，可先代收電子郵件，再轉寄到您實際的信箱。
 # Recommendation subhead

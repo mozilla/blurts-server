@@ -58,7 +58,7 @@ rec-cc =
   to request a new card with a new number from your credit card issuer.
 
 # Recommendation subhead
-rec-email-subhead = Use email aliases
+rec-email-mask-subhead = Use an email mask
 rec-email-cta = Try { -brand-relay }
 rec-email =
   Giving out your real email address makes it easier for hackers or trackers to

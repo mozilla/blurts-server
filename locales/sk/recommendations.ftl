@@ -47,7 +47,7 @@ rec-cc =
     Skontrolujte, či neboli prostredníctvom vašej karty uskutočnené 
     podozrivé transakcie. Ak áno, požiadajte o vydanie novej.
 # Recommendation subhead
-rec-email-subhead = Používajte e-mailové aliasy
+rec-email-mask-subhead = Použite e-mailovú masku
 rec-email-cta = Vyskúšajte { -brand-relay }
 rec-email =
     Poskytnutie skutočnej e-mailovej adresy uľahčuje prácu hackerom alebo

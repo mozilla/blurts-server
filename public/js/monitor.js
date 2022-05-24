@@ -534,14 +534,14 @@ async function initAdUnit() {
 
   if (!adUnit) return;
 
-  adUnit.cta = adUnit.querySelector(".ad-unit-cta");
+  const cta = adUnit.querySelector(".ad-unit-cta");
 
-  adUnit.cta.setAttribute("href", adUnit.cta.getAttribute("href") + getPageAttribution());
+  // add utm_content param.  Final href example: https://vpn.mozilla.org/?utm_source=firefox-monitor&utm_medium=ad-unit&utm_content=home-ad-3
+  cta.href += `${getPageAttribution()}-ad-${adUnit.dataset.adUnit}`;
 }
 
 function getPageAttribution() {
-  // returns additional page-level attribution e.g. "&utm_content=dashboard"
-  // assumes initial attribution labels are already set e.g. https://vpn.mozilla.org/?utm_source=firefox-monitor&utm_medium=ad-unit
+  // returns utm_content param e.g. "&utm_content=user/dashboard"
   let page = location.pathname;
 
   if (page.startsWith("/")) page = page.slice(1);

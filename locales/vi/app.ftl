@@ -121,50 +121,6 @@ security-tips = Mẹo về bảo mật
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Mở điều hướng { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Trên thang điểm từ 1-10, bạn có muốn giới thiệu { -product-short-name } cho bạn bè hoặc đồng nghiệp không?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Không muốn
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Rất muốn
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } có dễ sử dụng không?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Bạn có cảm thấy { -product-short-name } đáng tin cậy không?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } có bản trình bày rõ ràng và đơn giản không?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Hoàn toàn không đồng ý
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Không đồng ý
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Phân vân
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Đồng ý
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Hoàn toàn đồng ý
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Bạn sẽ cảm thấy thế nào nếu không sử dụng { -product-short-name } nữa?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Rất thất vọng
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Một phần thất vọng
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Tôi không quan tâm
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = RÒ RỈ DỮ LIỆU MỚI NHẤT ĐƯỢC THÊM
 # Link title
@@ -642,9 +598,40 @@ vpn-banner-cta-expand = Mở rộng
 # button to close panel
 vpn-banner-cta-close = Đóng
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Làm thế nào để bạn giữ bí mật địa chỉ email của mình?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Bạn có lo lắng về sự an toàn của Wi-Fi công cộng?
+ad-unit-relay-cta = Tìm hiểu thêm về { -brand-relay }
+ad-unit-vpn-cta = Tìm hiểu thêm về { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Làm thế nào để bạn giữ bí mật địa chỉ email của mình?
+# ad 2 heading
+ad-unit-2-do-you-worry = Bạn có lo lắng về sự an toàn trên Wi-Fi công cộng?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Ở trong trò chơi!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } cho phép bạn giữ kết nối ổn định an toàn và bảo mật khi bạn chơi trò chơi hoặc phát phim trực tuyến.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Tránh bị giới hạn
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Có mặt ở bất cứ đâu trên thế giới
+# ad 3 list item 3
+ad-unit-3-access-more = Truy cập thêm
+# ad 4 heading
+ad-unit-4-shopping-with = Mua sắm với mặt nạ email
+ad-unit-4-want-to-buy = Bạn muốn mua một thứ gì đó trực tuyến và không biết hoặc hoàn toàn tin tưởng vào cửa hàng?
+ad-unit-4-shop-online = Sử dụng mặt nạ email bất cứ khi nào bạn mua sắm trực tuyến. Nhận xác nhận được gửi đến email thực của bạn và sau đó dễ dàng tắt mặt nạ bất cứ lúc nào.
+# ad 5 heading
+ad-unit-5-on-the-go = Cùng di chuyển với { -brand-relay }
+ad-unit-5-instantly-make = Tạo mặt nạ email tùy chỉnh ngay lập tức ở mọi nơi bạn đến!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Kết nối mọi lúc, mọi nơi
+ad-unit-5-privately-sign-in = Sử dụng mặt nạ email của bạn khi bạn muốn đăng nhập riêng vào quán cà phê yêu thích hoặc Wi-Fi công cộng của mình
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Nhận biên nhận email
+ad-unit-5-share-custom-email = Chia sẻ mặt nạ email tùy chỉnh cho biên nhận mua sắm tại cửa hàng mà không cần chia sẻ email thực của bạn
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Sử dụng trên điện thoại của bạn
+ad-unit-5-no-matter-where = Cho dù bạn ở đâu, hãy tạo mặt nạ email tùy chỉnh trong vài giây cho bất kỳ điều gì bạn muốn làm
+# ad 6 heading
+ad-unit-6-worry-free = Đăng ký mà không gặp rắc rối
+ad-unit-6-want-to-start = Bạn muốn bắt đầu đăng ký mới, trả lời lời mời hoặc nhận mã khuyến mãi hời mà không bị spam tràn ngập hộp thư đến của bạn?
+ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký tiếp theo, hãy sử dụng mặt nạ email thay vì email thật để bảo vệ thông tin của bạn và giữ quyền kiểm soát hộp thư đến của bạn

@@ -50,7 +50,7 @@ landing-headline = Azref-ik ad teqqimeḍ d aɣelsan seg yimakaren ad yebdu sya.
 scan-placeholder = Sekcem tansa imayl
 scan-submit = Nadi imayl-ik
 scan-error = Yessefk ad tili d tansa tameɣtut.
-download-firefox-banner-button = Sider { -brand-name }
+download-firefox-banner-button = Sader { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Yettwazen!
 sign-up = Jerred

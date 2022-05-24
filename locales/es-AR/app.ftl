@@ -577,11 +577,38 @@ vpn-banner-cta-close = Cerrar
 
 ## Relay and VPN educational/ad units
 
+ad-unit-relay-cta = Conocer más sobre { -brand-relay }
+ad-unit-vpn-cta = Conocer más sobre { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = ¿Cómo mantener tu correo electrónico secreto?
+# ad 2 heading
+ad-unit-2-do-you-worry = ¿Te preocupa la seguridad de un Wi-Fi público?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Mantente al día!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } te permite mantener una conexión estable segura mientras jugás o mirás películas.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Evitar la regulación
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Podés estar en cualquier lugar del mundo
 # ad 3 list item 3
 ad-unit-3-access-more = Acceder a más
+# ad 4 heading
+ad-unit-4-shopping-with = Comprar con máscaras de correo electrónico
+ad-unit-4-want-to-buy = ¿Querés comprar algo en línea y no conocés el negocio o no le tenés confianza?
+ad-unit-4-shop-online = Usá una máscara de correo electrónico para comprar en línea. La confirmación te llegará a tu correo electrónico real y podrás desactivar la máscara fácilmente en cualquier momento.
+# ad 5 heading
+ad-unit-5-on-the-go = Sobre la marcha con { -brand-relay }
+ad-unit-5-instantly-make = ¡Hacé instantáneamente una máscara de correo electrónico personalizada en cualquier lugar y donde quiera que vayas!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Conectarse sobre la marcha
+ad-unit-5-privately-sign-in = Usá tu máscara de correo electrónico cuando quieras ingresar de forma privada en tu café favorito o un wi-fi público
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Obtener los recibos por correo electrónico
+ad-unit-5-share-custom-email = Compartí una máscara de correo personalizada para recibos de compras en la tienda sin compartir tu correo real
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Usalo en tu teléfono
+ad-unit-5-no-matter-where = No importa dónde estés, creá una máscara de correo electrónico personalizada en segundos para cualquier cosa que quieras hacer
+# ad 6 heading
+ad-unit-6-worry-free = Registrate sin preocupaciones
+ad-unit-6-want-to-start = ¿Querés iniciar una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
+ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá una máscara de correo elecrtrónico en lugar del real para proteger tu información y mantener el control sobre tu bandeja de entrada

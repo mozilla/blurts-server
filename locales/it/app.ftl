@@ -110,50 +110,6 @@ security-tips = Consigli per la sicurezza
 fxa-account = { -brand-fxa(capitalization: "uppercase") }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Apri la navigazione di { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Su una scala da 1 a 10, con quale probabilità consiglieresti { -product-short-name } a un amico o a un collega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Poco probabile
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Molto probabile
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } è facile da usare?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Pensi che { -product-short-name } sia affidabile?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } ha una presentazione chiara e semplice?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Assolutamente in disaccordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Non sono d’accordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Non sono sicuro
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Sono d’accordo
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Assolutamente d’accordo
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Come ti sentiresti se non potessi più usare { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Molto deluso
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Un po’ deluso
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Non mi importerebbe
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ULTIMA VIOLAZIONE AGGIUNTA
 # Link title
@@ -581,9 +537,40 @@ vpn-banner-cta-expand = Espandi
 # button to close panel
 vpn-banner-cta-close = Chiudi
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Come mantieni segreto il tuo indirizzo email?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Ti preoccupi della sicurezza quando utilizzi le reti Wi-Fi pubbliche?
+ad-unit-relay-cta = Scopri di più su { -brand-relay }
+ad-unit-vpn-cta = Scopri di più su { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = In che modo cerchi di mantenere segreto il tuo indirizzo email?
+# ad 2 heading
+ad-unit-2-do-you-worry = Sei preoccupato per la sicurezza dei tuoi dati quando utilizzi reti Wi-Fi pubbliche?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Rimani in partita!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } ti consente di mantenere una connessione stabile, sicura e protetta mentre giochi o riproduci film in streaming.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Evita limitazioni di banda
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Puoi risultare ovunque nel mondo, senza esserti mosso da casa
+# ad 3 list item 3
+ad-unit-3-access-more = Accedi a più contenuti
+# ad 4 heading
+ad-unit-4-shopping-with = Fai acquisti con gli alias
+ad-unit-4-want-to-buy = Vuoi acquistare qualcosa online e non conosci o non ti fidi completamente del negozio?
+ad-unit-4-shop-online = Utilizza un alias di posta elettronica ogni volta che fai acquisti online. Ricevi la conferma al tuo indirizzo email reale e disattiva facilmente l’alias in qualsiasi momento.
+# ad 5 heading
+ad-unit-5-on-the-go = Fuori casa con { -brand-relay }
+ad-unit-5-instantly-make = Crea al volo un alias di posta elettronica personalizzato, ovunque ti trovi.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Connettiti mentre sei in viaggio
+ad-unit-5-privately-sign-in = Utilizza il tuo alias di posta elettronica quando vuoi accedere in modo privato alla rete Wi-Fi del tuo bar preferito o a una rete pubblica
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Ricevi fatture via email
+ad-unit-5-share-custom-email = Quando fai acquisti in un negozio, fornisci un alias di posta elettronica personalizzato per ricevere la fattura senza condividere il tuo indirizzo email reale
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Utilizzalo sul tuo telefono
+ad-unit-5-no-matter-where = Non importa dove ti trovi, crea un alias di posta elettronica personalizzato in pochi secondi per qualsiasi cosa tu voglia fare
+# ad 6 heading
+ad-unit-6-worry-free = Registrazioni senza pensieri
+ad-unit-6-want-to-start = Vuoi sottoscrivere un nuovo abbonamento, rispondere a un invito o ottenere un codice promozionale vantaggioso senza che lo spam invada la tua casella di posta?
+ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza un alias di posta elettronica invece del tuo indirizzo email reale. In questo modo potrai proteggere le tue informazioni e rimanere in controllo della tua casella di posta
