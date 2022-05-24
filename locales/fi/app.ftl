@@ -618,6 +618,8 @@ vpn-banner-cta-close = Sulje
 
 ## Relay and VPN educational/ad units
 
+ad-unit-relay-cta = Lisätietoja { -brand-relay }sta
+ad-unit-vpn-cta = Lisätietoja { -brand-mozilla-vpn }:stä
 # ad 1 heading
 ad-unit-1-how-do-you-keep = Miten pidät sähköpostiosoitteesi salassa?
 # ad 2 heading
