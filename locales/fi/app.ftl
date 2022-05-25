@@ -631,6 +631,8 @@ ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } mahdollistaa vakaan ja turvalli
 ad-unit-3-prevent-throttling = Estä rajoituksia
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Ole missä päin maailmaa tahansa
+# ad 3 list item 3
+ad-unit-3-access-more = Enemmän käytössäsi
 # ad 4 heading
 ad-unit-4-shopping-with = Ostoksia sähköpostimaskeilla
 ad-unit-4-want-to-buy = Haluatko ostaa jotain verkosta, mutta et tunne kauppaa entuudestaan tai luota siihen täysin?
@@ -641,9 +643,13 @@ ad-unit-5-instantly-make = Luo heti mukautettu sähköpostimaski missä tahansa 
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Yhdistä liikkeellä ollessasi
 ad-unit-5-privately-sign-in = Käytä sähköpostimaskia, kun haluat kirjautua yksityisesti suosikkikahvilaasi tai muuhun julkiseen wifi-verkkoon
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Vastaanota kuitit sähköpostitse
+ad-unit-5-share-custom-email = Jaa mukautettu sähköpostimaski ostosten kuitteja varten jakamatta oikeaa sähköpostiosoitettasi
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Käytä puhelimessasi
 ad-unit-5-no-matter-where = Missä tahansa oletkin, luo mukautettu sähköpostimaski haluamaasi asiaa varten sekunneissa
 # ad 6 heading
 ad-unit-6-worry-free = Huolettomat ilmoittautumiset
 ad-unit-6-want-to-start = Haluatko aloittaa uuden tilauksen, vastata kutsuun tai saada tarjouskoodin ilman, että postilaatikkosi tulvii roskapostia?
+ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen, käytä sähköpostimaskia oikean sähköpostiosoitteesi sijaan tietojesi suojaamiseksi ja postilaatikkosi hallitsemiseksi.
