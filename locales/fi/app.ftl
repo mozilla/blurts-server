@@ -634,9 +634,13 @@ ad-unit-3-be-anywhere = Ole missä päin maailmaa tahansa
 # ad 4 heading
 ad-unit-4-shopping-with = Ostoksia sähköpostimaskeilla
 ad-unit-4-want-to-buy = Haluatko ostaa jotain verkosta, mutta et tunne kauppaa entuudestaan tai luota siihen täysin?
+ad-unit-4-shop-online = Käytä sähköpostimaskia, kun teet ostoksia verkossa. Saat vahvistuksen oikeaan sähköpostiosoitteeseesi ja voit lopettaa maskin käytön vaivatta milloin tahansa.
+# ad 5 heading
+ad-unit-5-on-the-go = { -brand-relay } mukana matkassa
 ad-unit-5-instantly-make = Luo heti mukautettu sähköpostimaski missä tahansa oletkin!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Yhdistä liikkeellä ollessasi
+ad-unit-5-privately-sign-in = Käytä sähköpostimaskia, kun haluat kirjautua yksityisesti suosikkikahvilaasi tai muuhun julkiseen wifi-verkkoon
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Käytä puhelimessasi
 ad-unit-5-no-matter-where = Missä tahansa oletkin, luo mukautettu sähköpostimaski haluamaasi asiaa varten sekunneissa
