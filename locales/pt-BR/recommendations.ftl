@@ -48,7 +48,7 @@ rec-cc =
     Procure cobranças estranhas no seu cartão de crédito. Se precisar você pode
     solicitar um novo cartão com outro número ao emissor do seu cartão de crédito.
 # Recommendation subhead
-rec-email-subhead = Use endereços de redirecionamento de email
+rec-email-mask-subhead = Use uma máscara de email
 rec-email-cta = Experimente o { -brand-relay }
 rec-email =
     Fornecer seu endereço de email real facilita aos hackers e rastreadores
