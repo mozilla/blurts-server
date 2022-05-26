@@ -1,0 +1,293 @@
+body.email-locale-testing {
+  background-color: rgb(237, 237, 240);
+}
+
+body.email-locale-testing .section-wrapper {
+  justify-content: center;
+  position: relative;
+  flex-wrap: nowrap;
+}
+
+body.email-locale-testing p {
+  margin: 0;
+  line-height: 1.5 !important;
+}
+
+.text-light {
+  font-weight: 300;
+}
+
+.text-medium {
+  font-weight: 600;
+}
+
+.text-bold {
+  font-weight: 700;
+}
+
+.email-breach-listing .text-bold {
+  padding-bottom: 15px;
+  font-size: 16px;
+}
+
+.email-breach-listing .text-medium {
+  font-size: 16px;
+  padding-bottom: 12px;
+}
+
+p.email-small-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--grey6);
+}
+
+.email-breach-listing .text-light {
+  color: var(--grey6);
+  font-size: 14px;
+}
+
+.email-subject {
+  margin: 30px auto 120px auto;
+}
+
+.email-breach-listing {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 7px;
+  max-width: 400px;
+  text-align: left;
+}
+
+.email-test-wrapper {
+  background-color: #fbfcfe;
+  padding: 4rem 6rem;
+}
+
+.email-content,
+.email-footer {
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.email-locale-testing nav {
+  margin: 30px;
+  align-self: flex-start;
+}
+
+.email-locale-testing nav a {
+  color: rgb(0, 0, 0);
+  display: block;
+  margin: 10px 0;
+}
+
+.email-logo,
+.email-footer {
+  padding: 0 20px;
+}
+
+.email-footer a {
+  color: rgb(0, 96, 223);
+}
+
+.l10n-fxm-logo {
+  display: block;
+  height: 70px;
+  margin: 40px auto 20px auto;
+}
+
+.l10n-fxm-logotype {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 30px auto;
+}
+
+.email-button-wrapper {
+  background-color: transparent !important;
+}
+
+.email-button-table {
+  width: 100%;
+}
+
+.email-button {
+  padding: 20px 30px !important;
+  width: 100%;
+  display: inline-block;
+  border-radius: 10px !important;
+  background-color: rgb(0, 96, 223);
+  color: rgba(255, 255, 255, 1);
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 17px;
+  max-width: 420px;
+}
+
+.email-footer tr {
+  display: flex;
+  justify-content: center;
+}
+
+table.table-button tr {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.email-main-copy tr {
+  justify-content: flex-start;
+}
+
+.email-headline-copy,
+.email-main-copy tr,
+.footer-border-top {
+  margin-top: 30px;
+}
+
+.email-other-products{
+  margin-top: 32px; 
+  padding-bottom:32px; 
+  border-bottom:1px solid #eee; 
+  font: 15px/1.2 sans-serif; 
+  text-align:left;
+}
+
+.email-other-products caption{
+  font-size: 19px;
+}
+
+.email-other-products img{
+  width:100px; 
+  height:auto;
+}
+
+.pre-fxa-subscriber-message td {
+  padding-bottom: 32px; 
+  padding-top: 32px;
+  border-bottom: 1px solid #eee;
+}
+
+.pre-fxa-headline {
+  font-size: 20px;
+  font-weight: 800;
+  padding-top: 16px;
+}
+
+.pre-fxa-subhead {
+  max-width: 310px;
+}
+
+a.pre-fxa-nested-link,
+a.faq-link {
+  color: var(--blue4);
+}
+
+a.faq-link {
+  text-align: left;
+  padding-top: 5px;
+}
+
+.faq-header {
+  text-align: center;
+  font-size: 19px;
+  padding: 30px 0 10px 0;
+}
+
+td.email-faq-bullet {
+  width: 30px;
+}
+
+td.email-faq-link {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+.footer-border-top {
+  border-top: 1px solid #eee;
+  padding-top: 40px;
+}
+
+.email-hl .rec-email {
+  display: block;
+}
+
+.rec-email {
+  color: rgb(144, 89, 255);
+}
+
+.breach-summary-for {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+}
+
+.alert-red-border {
+  border: 2px solid rgba(255, 79, 94, 0.831);
+}
+
+.breach-stat-wrapper {
+  padding: 10px;
+}
+
+.breach-stat {
+  background-color: #f0f0f4;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.breach-stat-number-wrap {
+  min-width: 60px;
+  text-align: right;
+}
+
+.breach-stat-number {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.breach-stat-number,
+.breach-stat-title {
+  padding: 0;
+}
+
+.breach-stat-title {
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 0 30px;
+}
+
+.email-hl,
+.l10n-link-expires {
+  font-size: 26px;
+}
+
+p.more-info-link-wrap {
+  margin-top: 10px !important;
+  font-weight: 500;
+}
+
+.email-breach-listing,
+.email-hl,
+table.breach-stats,
+.faq-sumo-links {
+  margin: 0 auto 20px auto;
+}
+
+.source-info-wrap,
+.email-subhead {
+  padding-bottom: 20px;
+}
+
+p.email-subject {
+  padding-bottom: 4rem;
+}
+
+img.pre-fxa-icon {
+  max-width: 90px;
+  margin-bottom: 16px;
+}
+
+.pre-fxa-tout {
+  padding-bottom: 40px;
+  max-width: 360px;
+}
