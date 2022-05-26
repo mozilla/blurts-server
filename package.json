@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "@maxmind/geoip2-node": "^3.1.0",
-    "@mozilla-protocol/core": "^14.0.3",
     "@sentry/node": "5.27.2",
     "babel-minify": "0.5.1",
     "body-parser": "1.19.0",
