@@ -102,7 +102,7 @@
     "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm run lint:js && npm run lint:css && npm run lint:audit",
     "lint:js": "eslint .",
-    "lint:css": "stylelint --fix public/scss/ public/css/app.css",
+    "lint:css": "stylelint --fix public/css/",
     "lint:audit": "npm-audit-ci-wrapper -t 'high'",
     "get-hashsets": "node scripts/get-hashsets",
     "test:db:migrate": "NODE_ENV=tests knex migrate:latest --knexfile db/knexfile.js --env tests",

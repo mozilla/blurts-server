@@ -2,13 +2,6 @@
   "extends": [
     "stylelint-config-standard"
   ],
-  "plugins": [
-    "stylelint-scss"
-  ],
-  "ignoreFiles": [
-    "public/scss/includes/fonts/**",
-    "public/scss/libs/**"
-  ],
   "rules": {
     "no-descending-specificity": null,
     "selector-type-no-unknown": null
