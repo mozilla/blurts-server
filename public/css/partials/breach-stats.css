@@ -57,7 +57,7 @@
   display: inline-block;
   vertical-align: middle;
   background-color: #20c3a2;
-  background-image: url("/img/svg/white-check.svg");
+  background-image: url("../../img/svg/white-check.svg");
   background-repeat: no-repeat;
   background-position: center center;
   content: "";
@@ -75,7 +75,7 @@
 .progress-bar {
   -webkit-appearance: none;
   background: var(--monitorGradient);
-  color: #fff; /* removes default blue background on edge */
+  color: #fff;
   border-radius: 4px;
   height: 24px;
   overflow: hidden;
@@ -121,11 +121,11 @@
 }
 
 .breach-resolution-intro {
-  background-image: url("/img/svg/breach-resolution-intro.svg");
+  background-image: url("../../img/svg/breach-resolution-intro.svg");
 }
 
 .breach-resolution-complete {
-  background-image: url("/img/svg/breach-resolution-complete.svg");
+  background-image: url("../../img/svg/breach-resolution-complete.svg");
 }
 
 progress[value]::-webkit-progress-bar {
@@ -139,7 +139,7 @@ progress[value]::-webkit-progress-bar {
 
 progress.progress-bar::-webkit-progress-value {
   background-color: rgba(255, 255, 255, 1);
-  box-shadow: 30px -9px 0 9px white; /* helps to mask gradient background peak-through */
+  box-shadow: 30px -9px 0 9px white;
   transition: all 0.5s ease;
 }
 

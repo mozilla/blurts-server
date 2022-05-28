@@ -1,8 +1,4 @@
-'use strict'
-
-/* eslint-disable no-unused-vars */
-/* global _dntEnabled */
-/* global ga */
+import { dntEnabled } from './analytics_dnt-helper.js'
 
 const hasParent = (el, selector) => {
   while (el.parentNode) {
@@ -22,12 +18,12 @@ function getLocation () {
 }
 
 async function sendPing (el, eventAction, eventLabel = null, options = null) {
-  if (typeof (ga) !== 'undefined' && !el.classList.contains('hide')) {
+  if (typeof (window.ga) !== 'undefined' && !el.classList.contains('hide')) {
     if (!eventLabel) {
       eventLabel = `${getLocation()}`
     }
     const eventCategory = `[v2] ${el.dataset.eventCategory}`
-    return ga('send', 'event', eventCategory, eventAction, eventLabel, options)
+    return window.ga('send', 'event', eventCategory, eventAction, eventLabel, options)
   }
 }
 
@@ -68,9 +64,9 @@ function getUTMNames () {
 function sendRecommendationPings (ctaSelector) {
   document.querySelectorAll(ctaSelector).forEach(cta => {
     const eventLabel = cta.dataset.eventLabel
-    ga('send', 'event', 'Breach Detail: Recommendation CTA', 'View', eventLabel, { nonInteraction: true })
+    window.ga('send', 'event', 'Breach Detail: Recommendation CTA', 'View', eventLabel, { nonInteraction: true })
     cta.addEventListener('click', () => {
-      ga('send', 'event', 'Breach Detail: Recommendation CTA', 'Engage', eventLabel, { transport: 'beacon' })
+      window.ga('send', 'event', 'Breach Detail: Recommendation CTA', 'Engage', eventLabel, { transport: 'beacon' })
     })
   })
 }
@@ -91,7 +87,7 @@ function setGAListeners () {
       const eventCategory = e.target.dataset.eventCategory
       const eventAction = e.target.dataset.eventAction
       const eventLabel = e.target.dataset.eventLabel
-      ga('send', 'event', eventCategory, eventAction, eventLabel, { transport: 'beacon' })
+      window.ga('send', 'event', eventCategory, eventAction, eventLabel, { transport: 'beacon' })
     })
   })
 
@@ -117,14 +113,14 @@ function setGAListeners () {
     }
   })
 
-  if (typeof (ga) !== 'undefined') {
+  if (typeof (window.ga) !== 'undefined') {
     const pageLocation = getLocation()
     const intersectElements = []
     const intersectObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting && !intersectElements.includes(entry.target)) {
           intersectElements.push(entry.target)
-          ga('send', 'event', 'Ad Unit', 'view', `ad-unit-${entry.target.dataset.adUnit}`)
+          window.ga('send', 'event', 'Ad Unit', 'view', `ad-unit-${entry.target.dataset.adUnit}`)
         }
       })
     }, { threshold: 1 })
@@ -139,7 +135,7 @@ function setGAListeners () {
     // Send number of foundBreaches on Scan, Full Report, and User Dashboard pageviews
     if (pageLocation === ('Scan Results')) {
       const breaches = document.querySelectorAll('.breach-card')
-      ga('send', 'event', '[v2] Breach Count', 'Returned Breaches', `${pageLocation}`, breaches.length)
+      window.ga('send', 'event', '[v2] Breach Count', 'Returned Breaches', `${pageLocation}`, breaches.length)
     }
 
     // Send "View" pings and add event listeners.
@@ -170,14 +166,14 @@ function setGAListeners () {
 
       if (cta) {
         cta.addEventListener('click', () => {
-          ga('send', 'event', 'Ad Unit', 'click', label)
+          window.ga('send', 'event', 'Ad Unit', 'click', label)
         })
       }
 
       if (video) {
         video.addEventListener('play', e => {
           if (e.target.currentTime > 0) return // only track initial play event
-          ga('send', 'event', 'Ad Unit', 'play', label)
+          window.ga('send', 'event', 'Ad Unit', 'play', label)
         })
       }
     })
@@ -187,7 +183,7 @@ function setGAListeners () {
 }
 
 function isGoogleAnalyticsAvailable () {
-  return (typeof (ga) !== 'undefined')
+  return (typeof (window.ga) !== 'undefined')
 }
 
 (() => {
@@ -198,7 +194,7 @@ function isGoogleAnalyticsAvailable () {
 
   /* eslint-disable no-unused-expressions, no-sequences */
   // Check for DoNotTrack header before running GA script
-  if (!_dntEnabled()) {
+  if (!dntEnabled()) {
     (function (i, s, o, g, r, a, m) {
       i.GoogleAnalyticsObject = r; i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
@@ -214,7 +210,7 @@ function isGoogleAnalyticsAvailable () {
     win.history.replaceState({}, '', winLocation)
   }
 
-  const gaEnabled = (typeof (ga) !== 'undefined')
+  const gaEnabled = (typeof (window.ga) !== 'undefined')
   const utmParamsInUrl = (winLocationSearch.includes('utm_'))
 
   const removeUtmsFromUrl = () => {
@@ -231,11 +227,11 @@ function isGoogleAnalyticsAvailable () {
   const gaInit = new Event('gaInit')
 
   if (gaEnabled) {
-    ga('create', 'UA-77033033-16')
-    ga('set', 'anonymizeIp', true)
-    ga('set', 'dimension6', `${document.body.dataset.signedInUser}`)
+    window.ga('create', 'UA-77033033-16')
+    window.ga('set', 'anonymizeIp', true)
+    window.ga('set', 'dimension6', `${document.body.dataset.signedInUser}`)
 
-    ga('send', 'pageview', {
+    window.ga('send', 'pageview', {
       hitCallback: function () {
         removeUtmsFromUrl()
         sessionStorage.removeItem('gaInit')
@@ -253,3 +249,5 @@ function isGoogleAnalyticsAvailable () {
     removeUtmsFromUrl()
   }
 })()
+
+export { sendPing, sendRecommendationPings, getFxaUtms }

@@ -41,12 +41,10 @@ body {
   position: relative;
   background: #07081e;
   background-image:
-    url("/img/wave-header.svg"),
-    linear-gradient(
-      177deg,
+    url("../../img/wave-header.svg"),
+    linear-gradient(177deg,
       #002275,
-      #261034 95.11%
-    );
+      #261034 95.11%);
   background-repeat: no-repeat;
   background-position: 0 -5%, center center;
   background-attachment: scroll, fixed;
@@ -246,7 +244,7 @@ img {
 }
 
 .stack {
-  margin: calc(var(--columnSpacing) / 4)  calc(var(--columnSpacing) / 2);
+  margin: calc(var(--columnSpacing) / 4) calc(var(--columnSpacing) / 2);
   align-items: center;
   flex: 1 1 auto;
   display: flex;
@@ -376,7 +374,7 @@ span.radio-dot {
   border: 4px solid rgba(255, 255, 255, 0.4);
 }
 
-.radio-button-group input:checked ~ .radio-dot {
+.radio-button-group input:checked~.radio-dot {
   background-color: rgba(255, 255, 255, 0.3);
   border: 5px solid rgba(255, 255, 255, 1);
 }
@@ -407,7 +405,7 @@ input[type="checkbox"] {
   margin: 12px 0;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background-image: url("/img/checkbox-check.svg");
+  background-image: url("../../img/checkbox-check.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 70%;
@@ -707,7 +705,7 @@ h5,
 
 .x-close {
   background-color: rgba(0, 0, 0, 0);
-  background-image: url("/img/x-close.svg");
+  background-image: url("../../img/x-close.svg");
   background-repeat: no-repeat;
   background-size: 15px 15px;
   background-position: center center;
@@ -753,7 +751,7 @@ h5,
 }
 
 .subscribe-icon {
-  background-image: url("/img/subscribe-icon.svg");
+  background-image: url("../../img/subscribe-icon.svg");
   background-repeat: no-repeat;
   background-position: top right;
   content: "";
@@ -959,14 +957,14 @@ header a h1 {
 }
 
 .firefox-logo {
-  background: url("/img/gradient-sprites.png") -331px 0;
+  background: url("../../img/gradient-sprites.png") -331px 0;
   min-width: 55px;
   width: 55px;
   height: 55px;
 }
 
 .firefox-logo.firefox-monitor {
-  background: url("/img/gradient-sprites.png") -422px 0;
+  background: url("../../img/gradient-sprites.png") -422px 0;
   min-width: 60px;
   height: 60px;
 }
@@ -1095,11 +1093,11 @@ main.scan-results .section-wrapper .half {
   max-width: 450px;
 }
 
-.scan-results-message > * {
+.scan-results-message>* {
   margin-bottom: var(--gap);
 }
 
-.scan-results-message > *:last-child {
+.scan-results-message>*:last-child {
   margin-bottom: 0 !important;
 }
 
@@ -1167,13 +1165,13 @@ main .breach-headline {
 
 .tip,
 #password-advice,
-.tip > * {
+.tip>* {
   flex-direction: column;
   text-align: center;
 }
 
 .tip,
-.tip > * {
+.tip>* {
   height: 100%;
   margin-bottom: var(--gap);
 }
@@ -1192,27 +1190,27 @@ main .breach-headline {
 }
 
 .tip-icon-1 {
-  background: url(/img/gradient-sprites.png) 0 0;
+  background: url(../../img/gradient-sprites.png) 0 0;
 }
 
 .tip-icon-2 {
-  background: url(/img/gradient-sprites.png) -85px 0;
+  background: url(../../img/gradient-sprites.png) -85px 0;
 }
 
 .tip-icon-3 {
-  background: url(/img/gradient-sprites.png) -170px 0;
+  background: url(../../img/gradient-sprites.png) -170px 0;
 }
 
 .tip-icon-4 {
-  background: url(/img/gradient-sprites.png) -255px 0;
+  background: url(../../img/gradient-sprites.png) -255px 0;
 }
 
 .tip-icon-5 {
-  background: url(/img/gradient-sprites.png) -340px 0;
+  background: url(../../img/gradient-sprites.png) -340px 0;
 }
 
 .tip-icon-6 {
-  background: url(/img/gradient-sprites.png) -425px 0;
+  background: url(../../img/gradient-sprites.png) -425px 0;
 }
 
 .tip-icon {
@@ -1309,7 +1307,7 @@ span.breach-info .medium {
   margin-bottom: var(--gap);
 }
 
-#what-to-do .section-wrapper > * {
+#what-to-do .section-wrapper>* {
   max-width: 600px;
 }
 
@@ -1469,7 +1467,7 @@ body.sub .content-wrap {
   overflow: visible;
 }
 
-.subpage .section-wrapper > * {
+.subpage .section-wrapper>* {
   margin-bottom: var(--gap);
   display: block;
   margin-top: 0;
@@ -1557,20 +1555,20 @@ form.show-thankyou span.thank-you-message {
   height: 100%;
   pointer-events: none;
   min-height: 75vh;
-  background-image: url("/img/wave-footer.svg");
+  background-image: url("../../img/wave-footer.svg");
   background-position: 0 100%;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.content-wrap > * {
+.content-wrap>* {
   pointer-events: all;
 }
 
 /* desktop hides */
 .mobile-menu,
 .show-mobile,
-.show-mobile > * {
+.show-mobile>* {
   display: none !important;
   pointer-events: none;
 }
@@ -1667,7 +1665,8 @@ form.show-thankyou span.thank-you-message {
 }
 
 .menu-open .mobile-menu .avatar {
-  -webkit-transform: translateZ(0); /* prevent transition jig in chrome */
+  -webkit-transform: translateZ(0);
+  /* prevent transition jig in chrome */
 }
 
 .menu-open .firefox-monitor-brand {
@@ -1714,7 +1713,7 @@ svg#menu-icon path {
 
 @media screen and (min-width: 2200px) {
   body {
-    background-position: 0  -8%, center center;
+    background-position: 0 -8%, center center;
   }
 
   .content-wrap {
@@ -1733,7 +1732,7 @@ svg#menu-icon path {
 
 @media screen and (max-width: 2300px) {
   body {
-    background-position: 0  -5%, center center;
+    background-position: 0 -5%, center center;
   }
 
   .content-wrap {
@@ -1750,6 +1749,7 @@ svg#menu-icon path {
 }
 
 @media screen and (max-width: 1300px) {
+
   body,
   body.sub {
     background-position: 0 -3%, center center;
@@ -1772,6 +1772,7 @@ svg#menu-icon path {
 }
 
 @media screen and (max-width: 850px) {
+
   .half,
   .third {
     max-width: 100%;
@@ -1811,8 +1812,8 @@ svg#menu-icon path {
     margin-bottom: 0;
   }
 
-  .top-bar.banner .section-wrapper > *,
-  .download-firefox .section-wrapper > * {
+  .top-bar.banner .section-wrapper>*,
+  .download-firefox .section-wrapper>* {
     margin: 0 auto;
   }
 
@@ -1822,7 +1823,7 @@ svg#menu-icon path {
     text-align: center;
   }
 
-  .download-firefox .wrap-row > * {
+  .download-firefox .wrap-row>* {
     margin-bottom: var(--gap);
   }
 
@@ -1846,7 +1847,7 @@ svg#menu-icon path {
 
 @media screen and (max-width: 680px) {
   .firefox-logo.firefox-monitor {
-    background: url(/img/gradient-sprites.png) -246px 0;
+    background: url(../../img/gradient-sprites.png) -246px 0;
     background-size: cover;
     width: 34px !important;
     min-width: 20px;
@@ -1856,7 +1857,8 @@ svg#menu-icon path {
 
   .fxa-new-user-bar p {
     font-size: 14px;
-    margin-left: 7%; /* prevent overlap with .x-close */
+    margin-left: 7%;
+    /* prevent overlap with .x-close */
     margin-right: 7%;
   }
 
@@ -1932,12 +1934,10 @@ svg#menu-icon path {
     --columnSpacing: 40px;
 
     background-image:
-      url("/img/wave-header.svg"),
-      linear-gradient(
-        157deg,
+      url("../../img/wave-header.svg"),
+      linear-gradient(157deg,
         #002275,
-        #261034 43.11%
-      );
+        #261034 43.11%);
   }
 
   /* prevents iphone from zooming on form entry */
@@ -1957,7 +1957,7 @@ svg#menu-icon path {
   }
 
   .show-mobile,
-  .show-mobile > * {
+  .show-mobile>* {
     display: inline-flex !important;
     pointer-events: all;
   }

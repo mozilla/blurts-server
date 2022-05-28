@@ -1,5 +1,4 @@
-'use strict'
-/* global findAncestor */
+import { findAncestor } from './monitor.js'
 
 async function sendForm (action, formBody = {}) {
   const response = await fetch(`/user/${action}`, {

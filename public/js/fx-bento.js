@@ -1,7 +1,3 @@
-'use strict'
-
-/* global ga */
-
 function getFxAppLinkInfo (localizedBentoStrings, referringSiteURL) {
   return [
     [localizedBentoStrings.fxMonitor, 'https://monitor.firefox.com/', 'fx-monitor'],
@@ -108,8 +104,8 @@ class FirefoxApps extends HTMLElement {
   }
 
   metricsSendEvent (eventAction, eventLabel) {
-    if (typeof (ga) !== 'undefined') {
-      return ga('send', 'event', 'bento', eventAction, eventLabel)
+    if (typeof (window.ga) !== 'undefined') {
+      return window.ga('send', 'event', 'bento', eventAction, eventLabel)
     }
   }
 

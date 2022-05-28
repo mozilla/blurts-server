@@ -1,6 +1,5 @@
 @import "includes/variables.css";
-@import "includes/fonts/inter-ui.css";
-@import "includes/fonts/metropolis.css";
+@import "includes/fonts.css";
 
 @import "partials/all-breaches.css";
 @import "partials/main.css";

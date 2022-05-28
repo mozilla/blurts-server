@@ -56,7 +56,7 @@
   height: 24px;
   width: 24px;
   position: absolute;
-  background-image: url("/img/x-close-gray.svg");
+  background-image: url("../../img/x-close-gray.svg");
   right: 2rem;
   top: 0;
   border-radius: 50%;

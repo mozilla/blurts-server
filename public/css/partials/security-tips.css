@@ -343,11 +343,11 @@ a.st-link {
 }
 
 .icon-dont::before {
-  background-image: url("/img/svg/x-close-red.svg");
+  background-image: url("../../img/svg/x-close-red.svg");
 }
 
 .icon-do::before {
-  background-image: url("/img/svg/green-check.svg");
+  background-image: url("../../img/svg/green-check.svg");
 }
 
 .icon-do::before,
@@ -428,6 +428,7 @@ a.st-link {
 }
 
 @media screen and (max-width: 950px) {
+
   .security-tip-list-item .article-icon,
   .security-tip-link-subhead {
     display: none;
@@ -522,7 +523,7 @@ a.st-link {
   }
 }
 
-@media screen and (max-width: 600px) { /* some articles become toggled closed */
+@media screen and (max-width: 600px) {
   .st-intro,
   .article-list-item,
   .article-paragraph {

@@ -43,15 +43,15 @@
 }
 
 .feat-img.advice {
-  background-image: url("/img/svg/pictogram-advice.svg");
+  background-image: url("../../img/svg/pictogram-advice.svg");
 }
 
 .feat-img.email {
-  background-image: url("/img/svg/pictogram-email.svg");
+  background-image: url("../../img/svg/pictogram-email.svg");
 }
 
 .feat-img.alert {
-  background-image: url("/img/svg/pictogram-alert.svg");
+  background-image: url("../../img/svg/pictogram-alert.svg");
 }
 
 .feature-tip-headline {
@@ -183,6 +183,7 @@
 }
 
 @media screen and (max-width: 600px) {
+
   .facebook-notes .feature-tip-content,
   .breach-detail .feature-tip-content {
     margin: auto;

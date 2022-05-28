@@ -8,11 +8,11 @@
 
 .about-fxm {
   color: white;
-  background: var(--ink) url("/img/landing/background-noodle-right.svg") no-repeat top right / auto 100%;
+  background: var(--ink) url("../../img/landing/background-noodle-right.svg") no-repeat top right / auto 100%;
 }
 
 .fx-monitor-svg {
-  background-image: url("/img/svg/fx-monitor.svg");
+  background-image: url("../../img/svg/fx-monitor.svg");
   background-repeat: no-repeat;
   background-position: bottom left;
   background-size: contain;

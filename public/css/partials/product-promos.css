@@ -17,19 +17,19 @@
 
 .promo-monitor {
   background-color: #393473;
-  background-image: url("/img/svg/promos/promo-bg-monitor.svg");
+  background-image: url("../../img/svg/promos/promo-bg-monitor.svg");
 }
 
 .promo-mobile {
   background-color: #123474;
-  background-image: url("/img/svg/promos/promo-bg-mobile.svg");
+  background-image: url("../../img/svg/promos/promo-bg-mobile.svg");
 }
 
 /* QR Code */
 .product-promo.promo-mobile::after {
   background: #fff;
   border-radius: 4px;
-  background-image: url("/img/svg/promos/mobile-qr-gradient.svg");
+  background-image: url("../../img/svg/promos/mobile-qr-gradient.svg");
   content: "";
   width: 60px;
   height: 60px;
@@ -42,15 +42,15 @@
 }
 
 .promo-lockwise {
-  background-image: url("/img/svg/promos/promo-bg-lockwise.svg");
+  background-image: url("../../img/svg/promos/promo-bg-lockwise.svg");
 }
 
 .promo-fpn {
-  background-image: url("/img/svg/promos/promo-bg-fpn.svg");
+  background-image: url("../../img/svg/promos/promo-bg-fpn.svg");
 }
 
 .promo-ecosystem {
-  background-image: url("/img/svg/promos/promo-bg-ecosystem.svg");
+  background-image: url("../../img/svg/promos/promo-bg-ecosystem.svg");
 }
 
 .promo-lockwise,
@@ -59,24 +59,24 @@
   background-color: #1e1338;
 }
 
-.promo-monitor > .promo-content::before {
-  background-image: url("/img/svg/fxa-tout-yellow-env.svg");
+.promo-monitor>.promo-content::before {
+  background-image: url("../../img/svg/fxa-tout-yellow-env.svg");
 }
 
-.promo-mobile > .promo-content::before {
-  background-image: url("/img/svg/logos/fx-logo.svg");
+.promo-mobile>.promo-content::before {
+  background-image: url("../../img/svg/logos/fx-logo.svg");
 }
 
-.promo-lockwise > .promo-content::before {
-  background-image: url("/img/svg/logos/fx-lockwise.svg");
+.promo-lockwise>.promo-content::before {
+  background-image: url("../../img/svg/logos/fx-lockwise.svg");
 }
 
-.promo-fpn > .promo-content::before {
-  background-image: url("/img/svg/logos/fpn-logo.svg");
+.promo-fpn>.promo-content::before {
+  background-image: url("../../img/svg/logos/fpn-logo.svg");
 }
 
-.promo-ecosystem > .promo-content::before {
-  background-image: url("/img/svg/logos/fx-master-logo.svg");
+.promo-ecosystem>.promo-content::before {
+  background-image: url("../../img/svg/logos/fx-master-logo.svg");
 }
 
 .promo-content::before {

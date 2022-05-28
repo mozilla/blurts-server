@@ -12,7 +12,7 @@
 }
 
 .monitor-landing {
-  background-image: url(/img/landing/background-noodle-top2.svg);
+  background-image: url(../../img/landing/background-noodle-top2.svg);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: bottom center;
@@ -20,7 +20,7 @@
 }
 
 .landing-bottom-bar {
-  background-image: url(/img/landing/background-noodle-middle.svg), linear-gradient(224deg, #2150c8, #712291);
+  background-image: url(../../img/landing/background-noodle-middle.svg), linear-gradient(224deg, #2150c8, #712291);
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: top center;
@@ -236,6 +236,7 @@ h3.sb-callout {
   box-shadow: 0 0 6px #6e008b;
   width: clamp(15%, 140px, 35%);
 }
+
 [data-ad-unit="4"],
 [data-ad-unit="6"] {
   display: flex;
@@ -261,6 +262,7 @@ h3.sb-callout {
 [data-ad-unit="6"] figure img {
   width: min(100%, 400px);
 }
+
 [data-ad-unit="5"] {
   background-color: white;
   padding: 30px;
@@ -316,6 +318,7 @@ h3.sb-callout {
   .landing-content form {
     margin-top: 8px;
   }
+
   [data-ad-unit="4"] article,
   [data-ad-unit="6"] article {
     text-align: center;

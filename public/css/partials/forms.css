@@ -335,7 +335,7 @@ input[type="radio"]:focus ~ .checkmark {
   border-radius: 4px;
   background-size: 100% auto;
   background-repeat: no-repeat;
-  background-image: url("/img/svg/purple-check.svg");
+  background-image: url("../../img/svg/purple-check.svg");
 }
 
 .create-fxa-checkbox-input:checked ~ .create-fxa-checkbox-checkmark::after {
@@ -343,6 +343,7 @@ input[type="radio"]:focus ~ .checkmark {
 }
 
 @media screen and (max-width: 800px) {
+
   button.internal-link,
   input.transparent-button,
   input[type="submit"],

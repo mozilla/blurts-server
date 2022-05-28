@@ -1,7 +1,4 @@
-'use strict';
-
-/* global ga */
-/* global doOauth */
+import { doOauth } from './monitor.js'
 
 (() => {
   function trapFocusInModal (modal, trapFocusInModal = true) {
@@ -30,13 +27,13 @@
   }
 
   function sendBreachDetailAnalyticsPing (eventCategory, eventAction, eventLabel) {
-    if (typeof (ga) !== 'undefined') {
+    if (typeof (window.ga) !== 'undefined') {
       // Set view pings as nonInteraction:true to get accurate bounce rate
       let options = {}
       if (eventAction !== 'Engage') {
         options = { nonInteraction: true }
       }
-      ga('send', 'event', eventCategory, eventAction, eventLabel, options)
+      window.ga('send', 'event', eventCategory, eventAction, eventLabel, options)
     }
   }
 
@@ -47,7 +44,7 @@
   const gaEventTriggers = [...productPromos, ...resolveBtns]
 
   const availableIntersectionObserver = ('IntersectionObserver' in window)
-  const gaAvailable = typeof (ga) !== 'undefined'
+  const gaAvailable = typeof (window.ga) !== 'undefined'
 
   // TODO: Store this in the dataset of breach resolution event triggers
   const resolutionEventCategory = 'Breach Resolution'

@@ -1,8 +1,3 @@
-'use strict'
-
-/* eslint-disable no-var */
-/* eslint-disable no-unused-vars */
-
 /**
  * Returns true or false based on whether doNotTack is enabled. It also takes into account the
  * anomalies, such as !bugzilla 887703, which effect versions of Fx 31 and lower. It also handles
@@ -13,7 +8,7 @@
  * @returns {boolean} true if enabled else false
  */
 
-function _dntEnabled (dnt, userAgent) {
+function dntEnabled(dnt, userAgent) {
   // for old version of IE we need to use the msDoNotTrack property of navigator
   // on newer versions, and newer platforms, this is doNotTrack but, on the window object
   // Safari also exposes the property on the window object.
@@ -48,5 +43,4 @@ function _dntEnabled (dnt, userAgent) {
   return dntStatus === 'Enabled'
 }
 
-/* eslint-enable no-var */
-/* eslint-enable no-unused-vars */
+export { dntEnabled }

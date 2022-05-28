@@ -1,18 +1,9 @@
-'use strict'
-/* eslint-disable no-unused-vars */
-
-/* global libpolycrypt */
-/* global sendPing */
+import { sendPing } from './fxa-analytics.js'
 
 async function sha1 (message) {
   message = message.toLowerCase()
   const msgBuffer = new TextEncoder('utf-8').encode(message)
-  let hashBuffer
-  if (/edge/i.test(navigator.userAgent)) {
-    hashBuffer = libpolycrypt.sha1(msgBuffer)
-  } else {
-    hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer)
-  }
+  const hashBuffer = await crypto.subtle.digest('SHA-1', msgBuffer)
   const hashArray = Array.from(new Uint8Array(hashBuffer))
   const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('')
   return hashHex.toUpperCase()
@@ -44,3 +35,5 @@ async function hashEmailAndSend (emailFormSubmitEvent) {
   sendPing(emailForm, 'Success', null, { transport: 'beacon' })
   emailForm.submit()
 }
+
+export { hashEmailAndSend }

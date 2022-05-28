@@ -1,4 +1,3 @@
-
 .email-card.preferences .e-info {
   border-bottom: none;
   padding-bottom: 0;
@@ -43,7 +42,7 @@
   margin-bottom: 0;
 }
 
-.e-info { /* email address info */
+.e-info {
   display: inline-flex;
   align-items: center;
   flex-direction: row;
@@ -284,7 +283,7 @@ form.remove-email:hover svg path {
 }
 
 .show-email-breaches.toggle {
-  pointer-events: none; /* prevent toggling on desktop */
+  pointer-events: none;
   display: none;
   right: 0;
   left: 0;
@@ -392,9 +391,9 @@ input.remove-email-submit {
   }
 
   .toggle-resolved-breaches,
-  .ec.breach-card, // Hide breach cards until the email-card is toggled down */
-  .active .show-additional-breaches.hide .ec.breach-card, // Hides any breaches gated behind "Show Remaining Breaches" button when there are more than 4 to an email. */
-  .active .show-remaining-breaches.hide, // Hide "Show Remaining Breaches"" button after it has been clicked */
+    .ec.breach-card,
+    .active .show-additional-breaches.hide .ec.breach-card,
+    .active .show-remaining-breaches.hide,
   .e-address::after,
   .show-remaining-breaches {
     display: none;
@@ -417,6 +416,7 @@ input.remove-email-submit {
 }
 
 @media screen and (max-width: 600px) {
+
   .e-address,
   .radio-label {
     font-size: 1rem;

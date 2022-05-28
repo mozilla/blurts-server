@@ -21,7 +21,7 @@ header {
   text-align: center;
 }
 
-.recruitment-banner a{
+.recruitment-banner a {
   color: inherit;
 }
 
@@ -45,7 +45,7 @@ header {
   opacity: .3;
 }
 
-.csat-banner label.selected{
+.csat-banner label.selected {
   opacity: 1;
   background-color: #d89eff;
 }
@@ -54,7 +54,7 @@ header {
   display: none;
 }
 
-.csat-banner [name="csat-close-btn"]{
+.csat-banner [name="csat-close-btn"] {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -62,7 +62,7 @@ header {
   cursor: pointer;
 }
 
-.csat-banner button img{
+.csat-banner button img {
   pointer-events: none;
   width: 24px;
 }
@@ -78,7 +78,7 @@ header {
   transition: box-shadow 0.2s ease;
 }
 
-.show-shadow #navigation-wrapper{
+.show-shadow #navigation-wrapper {
   box-shadow: 0 5px 10px -5px black;
 }
 
@@ -116,13 +116,13 @@ header {
 
 /* Fx-Monitor logo */
 .sprite.fx-monitor-logo {
-  background: url("/img/fx-bento-sprites.png") -220px 0;
+  background: url("../../img/fx-bento-sprites.png") -220px 0;
   min-width: 40px;
   height: 40px;
 }
 
 .fx-monitor-logotype {
-  background: url("/img/svg/fx-monitor-logotype.svg");
+  background: url("../../img/svg/fx-monitor-logotype.svg");
   width: 100%;
   max-width: 212px;
   margin-left: 8px;
@@ -149,7 +149,7 @@ nav {
 
 .nav-link span {
   position: relative;
-  pointer-events: none; /* Prevents conflicts with GA events that should fire off the wrapping <a> tag. */
+  pointer-events: none;
 }
 
 .active-link {
@@ -467,6 +467,7 @@ img.avatar,
 }
 
 @media screen and (max-width: 600px) {
+
   header,
   header.show-shadow {
     background-color: transparent;

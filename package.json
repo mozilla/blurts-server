@@ -113,10 +113,9 @@
   },
   "scripts": {
     "start": "npm run build & node server.js",
-    "dev": "npm run build && nodemon server.js",
-    "build": "npm run build:assets && node esbuild.js",
-    "build:assets": "mkdir -p public/dist/img/ && cp -a public/img/. public/dist/img/",
-    "clean": "rm -rf dist",
+    "dev": "npm run build & nodemon server.js",
+    "build": "node esbuild.js",
+    "clean": "rm -rf public/dist",
     "//js:minify": "minify public/dist/app.min.js -o public/dist/app.min.js",
     "//js:concat": "concat -o public/dist/app.min.js public/js/*.js",
     "//js:allBreaches": "minify public/js/all-breaches/all-breaches.js -o public/dist/all-breaches.min.js",

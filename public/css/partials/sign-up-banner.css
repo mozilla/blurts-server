@@ -48,7 +48,7 @@
   height: 50px;
   content: "";
   display: block;
-  background-image: url(/img/svg/fxa-tout-yellow-env.svg);
+  background-image: url(../../img/svg/fxa-tout-yellow-env.svg);
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain;

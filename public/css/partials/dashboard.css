@@ -35,7 +35,7 @@ h2.pref-headline.breach-summary {
 
 .dashboard-summary::before {
   content: "";
-  background: #eee url("/img/svg/scan-res-bg.svg") top center / cover;
+  background: #eee url("../../img/svg/scan-res-bg.svg") top center / cover;
   position: absolute;
   width: 100vw;
   height: calc(100% + var(--header-height));
@@ -84,7 +84,7 @@ h2.pref-headline.breach-summary {
 
 .email-verification-required::before {
   content: "";
-  background-image: url(/img/svg/data-compromised.svg);
+  background-image: url(../../img/svg/data-compromised.svg);
   background-repeat: no-repeat;
   background-size: 100%;
   margin-right: 8px;

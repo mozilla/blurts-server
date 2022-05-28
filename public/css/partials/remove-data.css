@@ -1,4 +1,3 @@
-
 .txt-light-grey {
   color: rgb(237, 237, 240);
 }
@@ -23,7 +22,7 @@
   display: block;
   height: 150px;
   width: 100%;
-  background-image: url("/img/svg/data-removal-large.svg");
+  background-image: url("../../img/svg/data-removal-large.svg");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -152,7 +151,7 @@
 }
 
 .private-relay-dashboard-card-content::before {
-  background-image: url("/img/svg/data-removal-small.svg");
+  background-image: url("../../img/svg/data-removal-small.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;
@@ -229,7 +228,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url("/img/svg/new-loader.svg");
+  background-image: url("../../img/svg/new-loader.svg");
   background-position: center center;
   background-repeat: no-repeat;
   transition: all 0.3s ease;
@@ -287,7 +286,7 @@
   display: block;
   background-color: #2ac3a2;
   border: 3px solid #3fe1b0;
-  background-image: url("/img/svg/white-check.svg");
+  background-image: url("../../img/svg/white-check.svg");
   background-size: 50px;
   background-repeat: no-repeat;
   background-position: center center;

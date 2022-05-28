@@ -1,10 +1,5 @@
-'use strict'
-
-/* global sendPing */
-/* global getFxaUtms */
-/* global hashEmailAndSend */
-/* global sendRecommendationPings */
-/* global ga */
+import { sendPing, sendRecommendationPings, getFxaUtms } from './fxa-analytics.js'
+import { hashEmailAndSend } from './scan-email.js'
 
 if (typeof TextEncoder === 'undefined') {
   const cryptoScript = document.createElement('script')
@@ -322,82 +317,6 @@ function recruitmentLogic () {
   })
 }
 
-// function addWaitlistSignupButtonListeners() {
-//   document.querySelectorAll(".relay-sign-up-btn").forEach(btn => {
-
-//     btn.addEventListener("click", async (e) => {
-//       const relayEndpoint = new URL("/join-waitlist", document.body.dataset.serverUrl);
-//       const signUpCallout = document.querySelector(".relay-sign-up");
-
-//       signUpCallout.classList.add("sending-email");
-//       try {
-//         const response = await fetch(relayEndpoint, {
-//           headers: {
-//             "Content-Type": "application/json; charset=utf-8",
-//           },
-//           mode: "same-origin",
-//           method: "POST",
-//           body: JSON.stringify({ "emailToAdd": "add-user-email" }),
-//         });
-//         if (response && response.status === 200) {
-//           setTimeout(() => {
-//             signUpCallout.classList.add("email-sent");
-//             signUpCallout.classList.remove("sending-email");
-//           }, 500);
-//         }
-//       } catch (e) {
-//         // we need error messaging
-//       }
-//     });
-//   });
-// }
-
-// function addWaitlistObservers() {
-
-//   const privateRelayCtas = document.querySelectorAll(".private-relay-cta");
-
-//   if (privateRelayCtas.length === 0) {
-//     return;
-//   }
-//   const availableIntersectionObserver = ("IntersectionObserver" in window);
-//   const gaAvailable = typeof (ga) !== undefined;
-
-//   if (availableIntersectionObserver && gaAvailable) {
-//     const sendWaitlistViewPing = elemData => {
-//       if (elemData.userIsSignedUp === "true") {
-//         return;
-//       }
-//       ga("send", "event", "Waitlist Test", "View", elemData.analyticsLabel);
-//     };
-//     const onRelayCtasComingIntoView = (entries, observer) => {
-//       entries.forEach(entry => {
-//         if (entry.isIntersecting) {
-//           sendWaitlistViewPing(entry.target.dataset);
-//           observer.unobserve(entry.target);
-//         }
-//       });
-//     };
-//     const observer = new IntersectionObserver(onRelayCtasComingIntoView, { rootMargin: "-50px" });
-
-//     privateRelayCtas.forEach(relayCta => {
-//       observer.observe(relayCta);
-//       relayCta.addEventListener("click", (e) => {
-//         if (relayCta.href) {
-//           if (typeof (ga) !== "undefined") {
-//             // Recheck if the user is on strict-mode and only block the click default action if GA is available
-//             e.preventDefault();
-//             ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel, {
-//               "hitCallback": window.location.href = relayCta.href,
-//             });
-//           }
-//           return;
-//         }
-//         ga("send", "event", "Waitlist Test", "Engage", relayCta.dataset.analyticsLabel);
-//       });
-//     });
-//   }
-// }
-
 async function initVpnBanner () {
   const vpnBanner = document.querySelector('.vpn-banner')
 
@@ -516,7 +435,7 @@ async function initCsatBanner () {
         csatBanner.toggleAttribute('disabled', true)
         csatBanner.querySelector('.csat-question').textContent = 'Thanks for your feedback!'
         e.target.parentElement.classList.add('selected')
-        if (window.ga) ga('send', 'event', 'CSAT banner', 'submit', e.target.nextSibling.textContent, e.target.value)
+        if (window.ga) window.ga('send', 'event', 'CSAT banner', 'submit', e.target.nextSibling.textContent, e.target.value)
         break
     }
 
@@ -595,9 +514,9 @@ function getPageAttribution () {
       button.classList.add('fade-out')
       const overflowRecs = document.getElementById('overflow-recs')
       overflowRecs.classList.remove('hide')
-      if (typeof (ga) !== 'undefined') {
+      if (typeof (window.ga) !== 'undefined') {
         // Send "Click" ping for #see-additional-recs click
-        ga('send', 'event', 'Breach Details: See Additional Recommendations', 'Click', 'See Additional Recommendations')
+        window.ga('send', 'event', 'Breach Details: See Additional Recommendations', 'Click', 'See Additional Recommendations')
         // Send "View" pings for any CTAs that become visible on #see-additional-recs click
         sendRecommendationPings('.overflow-rec-cta')
       }
@@ -637,8 +556,8 @@ function getPageAttribution () {
         e.preventDefault()
 
         // Send GA Ping
-        if (typeof (ga) !== 'undefined') {
-          ga('send', {
+        if (typeof (window.ga) !== 'undefined') {
+          window.ga('send', {
             hitType: 'event',
             eventCategory: 'Sign Up Button',
             eventAction: 'Engage',
@@ -654,3 +573,5 @@ function getPageAttribution () {
     })
   }
 })()
+
+export { findAncestor, doOauth }
