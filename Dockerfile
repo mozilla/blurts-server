@@ -21,4 +21,4 @@ COPY --chown=app:app . /app
 
 RUN npm run build:all
 
-CMD NODE_ICU_DATA=./node_modules/full-icu node server.js
+CMD node server.js
