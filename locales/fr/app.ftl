@@ -560,6 +560,8 @@ ad-unit-vpn-cta = En savoir plus sur { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = Comment garder votre adresse e-mail secrète ?
 # ad 2 heading
 ad-unit-2-do-you-worry = Vous souciez-vous de la sécurité des Wi-Fi publics ?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Restez dans la partie !
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vous permet de maintenir une connexion stable en toute sécurité pendant que vous jouez à des jeux ou regardez des films en streaming.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Évitez la limitation de la bande passante
