@@ -2,14 +2,9 @@
 
 const { LocaleUtils } = require("./../locale-utils");
 const { makeBreachCards } = require("./breaches");
-const { hasUserSignedUpForRelay } = require("./../controllers/utils");
 
 function enLocaleIsSupported(args) {
   return args.data.root.req.headers["accept-language"].includes("en");
-}
-
-function userIsOnRelayWaitList(args) {
-  return hasUserSignedUpForRelay(args.data.root.req.user);
 }
 
 function getBreachesDashboard(args) {
@@ -188,5 +183,4 @@ module.exports = {
   makeEmailVerifiedString,
   makeEmailAddedToSubscriptionString,
   enLocaleIsSupported,
-  userIsOnRelayWaitList,
 };
