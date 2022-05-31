@@ -15,7 +15,6 @@ const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === "1");
 const {
   getExperimentFlags,
   getUTMContents,
-  hasUserSignedUpForWaitlist,
   setAdUnitCookie,
 } = require("./utils");
 
@@ -235,7 +234,6 @@ async function getDashboard(req, res) {
   const { verifiedEmails, unverifiedEmails } = await getAllEmailsAndBreaches(user, allBreaches);
   const utmOverrides = getUTMContents(req);
   const supportedLocalesIncludesEnglish = req.supportedLocales.includes("en");
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, "remove_data");
 
   const experimentFlags = getExperimentFlags(req, EXPERIMENTS_ENABLED);
 
@@ -255,7 +253,6 @@ async function getDashboard(req, res) {
     lastAddedEmail,
     verifiedEmails,
     unverifiedEmails,
-    userHasSignedUpForRemoveData,
     supportedLocalesIncludesEnglish,
     whichPartial: "dashboards/breaches-dash",
     experimentFlags,
