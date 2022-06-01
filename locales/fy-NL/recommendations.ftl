@@ -50,7 +50,7 @@ rec-cc =
     Let op frjemde kosten op jo creditcard. Jo wolle miskien 
     in nije kaart mei in nij nûmer oanfreegje by jo creditcardmaatskippij.
 # Recommendation subhead
-rec-email-subhead = E-mailaliassen brûke
+rec-email-mask-subhead = In e-mailmasker brûke
 rec-email-cta = { -brand-relay } probearje
 rec-email =
     Troch jo echte e-mailadres te jaan, meitsje jo it makliker foar hackers of trackers om

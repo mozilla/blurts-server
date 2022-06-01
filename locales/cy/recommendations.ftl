@@ -48,7 +48,7 @@ rec-cc =
     Cadwch lygad ar daliadau annisgwyl ar eich cerdyn credyd. Efallai y bydd angen
     gofyn am gerdyn newydd gyda rhif newydd gan gyhoeddwr eich cerdyn credyd.
 # Recommendation subhead
-rec-email-subhead = Defnyddiwch arallenwau e-bost
+rec-email-mask-subhead = Defnyddiwch enwarall e-bost
 rec-email-cta = Rhowch gynnig ar { -brand-relay }
 rec-email =
     Mae rhoi eich cyfeiriad e-bost go iawn yn ei gwneud hi'n haws i hacwyr neu dracwyr ddod o hyd i'ch cyfrineiriau neu eich targedu ar-lein. Mae gwasanaeth fel { -brand-relay }

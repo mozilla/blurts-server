@@ -8,9 +8,8 @@ const {
   generatePageToken,
   getExperimentFlags,
   getUTMContents,
-  hasUserSignedUpForWaitlist,
-  setAdUnitCookie
-} = require('./utils')
+  setAdUnitCookie,
+} = require("./utils");
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === '1')
 
@@ -89,20 +88,11 @@ async function home (req, res) {
   })
 }
 
-function removeMyData (req, res) {
-  const user = req.user
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, 'remove_data')
-  return res.render('remove-data', {
-    title: req.fluentFormat('home-title'),
-    userHasSignedUpForRemoveData
-  })
-}
-
-function getAllBreaches (req, res) {
-  return res.render('top-level-page', {
-    title: 'Firefox Monitor',
-    whichPartial: 'top-level/all-breaches'
-  })
+function getAllBreaches(req, res) {
+  return res.render("top-level-page", {
+    title: "Firefox Monitor",
+    whichPartial: "top-level/all-breaches",
+  });
 }
 
 function getSecurityTips (req, res) {
@@ -168,5 +158,4 @@ module.exports = {
   getSecurityTips,
   home,
   notFound,
-  removeMyData
-}
+};

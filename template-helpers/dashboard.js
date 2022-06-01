@@ -1,21 +1,16 @@
 'use strict'
 
-const { LocaleUtils } = require('./../locale-utils')
-const { makeBreachCards } = require('./breaches')
-const { hasUserSignedUpForRelay } = require('./../controllers/utils')
+const { LocaleUtils } = require("./../locale-utils");
+const { makeBreachCards } = require("./breaches");
 
 function enLocaleIsSupported (args) {
   return args.data.root.req.headers['accept-language'].includes('en')
 }
 
-function userIsOnRelayWaitList (args) {
-  return hasUserSignedUpForRelay(args.data.root.req.user)
-}
-
-function getBreachesDashboard (args) {
-  const verifiedEmails = args.data.root.verifiedEmails
-  const locales = args.data.root.req.supportedLocales
-  let breachesFound = false
+function getBreachesDashboard(args) {
+  const verifiedEmails = args.data.root.verifiedEmails;
+  const locales = args.data.root.req.supportedLocales;
+  let breachesFound = false;
 
   // move emails with 0 breaches to the bottom of the page
   verifiedEmails.sort((a, b) => {
@@ -183,5 +178,4 @@ module.exports = {
   makeEmailVerifiedString,
   makeEmailAddedToSubscriptionString,
   enLocaleIsSupported,
-  userIsOnRelayWaitList
-}
+};
