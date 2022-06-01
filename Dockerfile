@@ -19,6 +19,6 @@ RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:app . /app
 
-RUN npm run build:all
+RUN npm run build
 
 CMD node server.js

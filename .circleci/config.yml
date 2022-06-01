@@ -34,12 +34,6 @@ jobs:
             - checkout
             - node/install-packages
             - run: npm run lint:css
-    lint-audit:
-        executor: node
-        steps:
-            - checkout
-            - node/install-packages
-            - run: npm run lint:audit
     lint-l10n:
         executor: python
         steps:
@@ -175,7 +169,6 @@ workflows:
         jobs:
             - lint-js
             - lint-css
-            - lint-audit
             - lint-l10n
             - integration-tests
             - unit-tests:
