@@ -8,8 +8,8 @@ const {
   generatePageToken,
   getExperimentFlags,
   getUTMContents,
-  setAdUnitCookie,
-} = require("./utils");
+  setAdUnitCookie
+} = require('./utils')
 
 const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === '1')
 
@@ -88,11 +88,11 @@ async function home (req, res) {
   })
 }
 
-function getAllBreaches(req, res) {
-  return res.render("top-level-page", {
-    title: "Firefox Monitor",
-    whichPartial: "top-level/all-breaches",
-  });
+function getAllBreaches (req, res) {
+  return res.render('top-level-page', {
+    title: 'Firefox Monitor',
+    whichPartial: 'top-level/all-breaches'
+  })
 }
 
 function getSecurityTips (req, res) {
@@ -157,5 +157,5 @@ module.exports = {
   getBentoStrings,
   getSecurityTips,
   home,
-  notFound,
-};
+  notFound
+}

@@ -322,8 +322,8 @@ function recruitmentLogic () {
   })
 }
 
-async function initVpnBanner() {
-  const vpnBanner = document.querySelector(".vpn-banner");
+async function initVpnBanner () {
+  const vpnBanner = document.querySelector('.vpn-banner')
 
   if (!vpnBanner) return
 

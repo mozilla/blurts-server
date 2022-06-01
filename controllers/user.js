@@ -15,8 +15,8 @@ const EXPERIMENTS_ENABLED = (AppConstants.EXPERIMENT_ACTIVE === '1')
 const {
   getExperimentFlags,
   getUTMContents,
-  setAdUnitCookie,
-} = require("./utils");
+  setAdUnitCookie
+} = require('./utils')
 
 const FXA_MONITOR_SCOPE = 'https://identity.mozilla.com/apps/monitor'
 
