@@ -182,10 +182,6 @@ function setGAListeners () {
   window.sessionStorage.setItem('gaInit', true)
 }
 
-function isGoogleAnalyticsAvailable () {
-  return (typeof (window.ga) !== 'undefined')
-}
-
 (() => {
   const win = window
   const winLocationSearch = win.location.search

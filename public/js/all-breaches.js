@@ -1,6 +1,6 @@
 import { sendPing } from './fxa-analytics.js'
 
-function replaceLogo(e) {
+function replaceLogo (e) {
   e.target.src = '/img/logos/missing-logo-icon.png'
   e.target.removeEventListener('error', replaceLogo)
   return true
@@ -14,20 +14,20 @@ const makeBreachInfoSpans = (className, spanContent, wrapper) => {
   return span
 }
 
-function makeDiv(className, wrapper) {
+function makeDiv (className, wrapper) {
   const div = document.createElement('div')
   div.classList = className
   wrapper.appendChild(div)
   return div
 }
 
-function clearBreaches(wrapper) {
+function clearBreaches (wrapper) {
   while (wrapper.firstChild) {
     wrapper.removeChild(wrapper.firstChild)
   }
 }
 
-function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper) {
+function makeBreaches (breaches, LocalizedBreachCardStrings, breachCardWrapper) {
   breachCardWrapper.classList.toggle('hide-breaches')
   clearBreaches(breachCardWrapper)
 
@@ -84,7 +84,7 @@ function makeBreaches(breaches, LocalizedBreachCardStrings, breachCardWrapper) {
   return breaches
 }
 
-function initBreaches() {
+function initBreaches () {
   const breachCardWrapper = document.querySelector('#all-breaches')
   if (breachCardWrapper) {
     const breachWrapper = document.getElementById('breach-array-json')

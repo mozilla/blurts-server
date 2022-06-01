@@ -8,22 +8,22 @@
  * @returns {boolean} true if enabled else false
  */
 
-function dntEnabled(dnt, userAgent) {
+function dntEnabled (dnt, userAgent) {
   // for old version of IE we need to use the msDoNotTrack property of navigator
   // on newer versions, and newer platforms, this is doNotTrack but, on the window object
   // Safari also exposes the property on the window object.
-  var dntStatus = dnt || navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack
-  var ua = userAgent || navigator.userAgent
+  let dntStatus = dnt || navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack
+  const ua = userAgent || navigator.userAgent
 
   // List of Windows versions known to not implement DNT according to the standard.
-  var anomalousWinVersions = ['Windows NT 6.1', 'Windows NT 6.2', 'Windows NT 6.3']
+  const anomalousWinVersions = ['Windows NT 6.1', 'Windows NT 6.2', 'Windows NT 6.3']
 
-  var fxMatch = ua.match(/Firefox\/(\d+)/)
-  var ieRegEx = /MSIE|Trident/i
-  var isIE = ieRegEx.test(ua)
+  const fxMatch = ua.match(/Firefox\/(\d+)/)
+  const ieRegEx = /MSIE|Trident/i
+  const isIE = ieRegEx.test(ua)
   // Matches from Windows up to the first occurance of ; un-greedily
   // http://www.regexr.com/3c2el
-  var platform = ua.match(/Windows.+?(?=;)/g)
+  const platform = ua.match(/Windows.+?(?=;)/g)
 
   // With old versions of IE, DNT did not exist so we simply return false;
   if (isIE && typeof Array.prototype.indexOf !== 'function') {
