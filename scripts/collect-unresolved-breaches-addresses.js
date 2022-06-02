@@ -1,79 +1,77 @@
-"use strict";
+'use strict'
 
 // TODO: Confirm db row has index
 
-const Knex = require("knex");
-const knexConfig = require("../db/knexfile");
-const knex = Knex(knexConfig);
+const Knex = require('knex')
+const knexConfig = require('../db/knexfile')
+const knex = Knex(knexConfig)
 
-const HIBP = require("../hibp");
+const HIBP = require('../hibp')
 
-async function checkIfBreachesExist(sha1, breaches) {
-  const breachResults = await HIBP.getBreachesForEmail(sha1, breaches, true);
+async function checkIfBreachesExist (sha1, breaches) {
+  const breachResults = await HIBP.getBreachesForEmail(sha1, breaches, true)
 
   if (breachResults.length >= 1) {
-    return true;
+    return true
   }
 
-  return false;
+  return false
 }
 
-function getArgsValue(argument) {
-  const cliArguments = process.argv;
+function getArgsValue (argument) {
+  const cliArguments = process.argv
 
   if (cliArguments.indexOf(argument) < 0) {
-    throw new Error(`You are missing the argument: ${argument}`);
+    throw new Error(`You are missing the argument: ${argument}`)
   }
 
-  const arguemntIndex = cliArguments.indexOf(argument);
-  const value = cliArguments[(arguemntIndex + 1)];
+  const arguemntIndex = cliArguments.indexOf(argument)
+  const value = cliArguments[(arguemntIndex + 1)]
 
-  if (!value ) {
-    throw new Error(`No value set for ${argument}.`);
+  if (!value) {
+    throw new Error(`No value set for ${argument}.`)
   }
 
-  const valueNumber = parseInt(value);
+  const valueNumber = parseInt(value)
 
   if (Number.isNaN(valueNumber)) {
-    throw new Error(`The value for ${argument} is not an interger.`);
+    throw new Error(`The value for ${argument} is not an interger.`)
   }
 
-  return valueNumber;
-
+  return valueNumber
 }
 
 (async () => {
-  console.log("Script starting");
+  console.log('Script starting')
 
-  const allHibpBreachesResp = await HIBP.req("/breaches");
-  const allHibpBreaches = allHibpBreachesResp.body;
+  const allHibpBreachesResp = await HIBP.req('/breaches')
+  const allHibpBreaches = allHibpBreachesResp.body
 
-  const limitQuery = getArgsValue("--limit");
-  const cohortSize = getArgsValue("--cohort-size");
+  const limitQuery = getArgsValue('--limit')
+  const cohortSize = getArgsValue('--cohort-size')
 
-  console.log(`The limit of this query is ${limitQuery}`);
-  console.log(`The target cohort size of this query is ${cohortSize}`);
+  console.log(`The limit of this query is ${limitQuery}`)
+  console.log(`The target cohort size of this query is ${cohortSize}`)
 
   // "SELECT primary_email, primary_sha1 FROM subscribers WHERE signup_language LIKE 'en%' AND breaches_resolved IS NULL ORDER BY random();"
 
-  const results = await knex("subscribers").where("signup_language", "like", "en%").andWhere({breaches_resolved: null}).orderByRaw("RANDOM()").limit(limitQuery).select("primary_email", "primary_sha1");
+  const results = await knex('subscribers').where('signup_language', 'like', 'en%').andWhere({ breaches_resolved: null }).orderByRaw('RANDOM()').limit(limitQuery).select('primary_email', 'primary_sha1')
 
-  const cohort = [];
+  const cohort = []
 
   for (const record of results) {
     if (cohort.length > cohortSize) {
       // Cohort size reached
-      break;
+      break
     }
 
-    const sha1 = record.primary_sha1;
-    const isValidCohortMember = await checkIfBreachesExist(sha1, allHibpBreaches);
-    if (isValidCohortMember) { cohort.push(record.primary_email); }
+    const sha1 = record.primary_sha1
+    const isValidCohortMember = await checkIfBreachesExist(sha1, allHibpBreaches)
+    if (isValidCohortMember) { cohort.push(record.primary_email) }
   }
 
-  console.log("Script completed! See final output:");
-  console.log(cohort.toString());
+  console.log('Script completed! See final output:')
+  console.log(cohort.toString())
 
-  process.exit();
-
-})();
+  process.exit()
+})()

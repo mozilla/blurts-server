@@ -1,19 +1,18 @@
-"use strict";
+'use strict'
 
-const express = require("express");
-const bodyParser = require("body-parser");
+const express = require('express')
+const bodyParser = require('body-parser')
 
-const bearerToken = require("express-bearer-token");
+const bearerToken = require('express-bearer-token')
 
-const {asyncMiddleware} = require("../middleware");
-const {notify, breaches} = require("../controllers/hibp");
+const { asyncMiddleware } = require('../middleware')
+const { notify, breaches } = require('../controllers/hibp')
 
+const router = express.Router()
+const jsonParser = bodyParser.json()
 
-const router = express.Router();
-const jsonParser = bodyParser.json();
+router.use('/notify', bearerToken())
+router.post('/notify', jsonParser, asyncMiddleware(notify))
+router.get('/breaches', jsonParser, asyncMiddleware(breaches))
 
-router.use("/notify", bearerToken());
-router.post("/notify", jsonParser, asyncMiddleware(notify));
-router.get("/breaches", jsonParser, asyncMiddleware(breaches));
-
-module.exports = router;
+module.exports = router

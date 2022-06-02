@@ -1,23 +1,22 @@
 /* eslint-disable no-console */
-"use strict";
+'use strict'
 
-const HomePage = require("../pages/desktop/home.page");
+const HomePage = require('../pages/desktop/home.page')
 // Don't need these until secondary email test is restored
 // const NavBar = require("../regions/navbar.region");
 // const UserDashboardPage = require("../pages/desktop/dashboard.page");
 
-describe("Firefox Monitor homepage", function() {
+describe('Firefox Monitor homepage', function () {
+  beforeEach(function () {
+    browser.url('/?experimentBranch=false')
+  })
 
-  beforeEach(function() {
-    browser.url("/?experimentBranch=false");
-  });
+  it('should load the latest breach card', function () {
+    const homePage = HomePage
 
-  it("should load the latest breach card", function() {
-    const homePage = HomePage;
-
-    homePage.waitForPageToLoad();
-    expect(homePage.breachCard.latestBreachCard.isDisplayed()).to.be.true;
-  });
+    homePage.waitForPageToLoad()
+    expect(homePage.breachCard.latestBreachCard.isDisplayed()).to.be.true
+  })
 
   // it("should look like normal", function() {
   //   expect(browser.checkFullPageScreen("Home_Page", {
@@ -27,16 +26,16 @@ describe("Firefox Monitor homepage", function() {
   //   })).to.be.within(0, 45);
   // });
 
-  it("should load correct number of breaches from an email input", function() {
-    const homePage = HomePage;
+  it('should load correct number of breaches from an email input', function () {
+    const homePage = HomePage
 
-    homePage.waitForPageToLoad();
-    homePage.breachEmailAddress.setValue(global.primaryEmail);
-    const scanResults = homePage.checkBreachesButton;
+    homePage.waitForPageToLoad()
+    homePage.breachEmailAddress.setValue(global.primaryEmail)
+    const scanResults = homePage.checkBreachesButton
     expect(scanResults.breachCards.length)
       .to
-      .equal(Number(scanResults.numberOfBreaches));
-  });
+      .equal(Number(scanResults.numberOfBreaches))
+  })
 
   /*
   it("should allow secondary email to be added", function() {
@@ -80,4 +79,4 @@ describe("Firefox Monitor homepage", function() {
     expect(email.getText()).to.equal(global.primaryEmail);
   });
   */
-});
+})

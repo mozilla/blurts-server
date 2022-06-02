@@ -1,9 +1,9 @@
-"use strict";
+'use strict'
 
-const crypto = require("crypto");
+const crypto = require('crypto')
 
-function getSha1(email) {
-  return crypto.createHash("sha1").update(email).digest("hex");
+function getSha1 (email) {
+  return crypto.createHash('sha1').update(email).digest('hex')
 }
 
-module.exports = getSha1;
+module.exports = getSha1

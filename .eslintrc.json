@@ -1,0 +1,20 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "rules": {
+        "no-prototype-builtins": "warn",
+        "no-undef": "warn",
+        "camelcase": "warn",
+        "new-cap": "warn"
+    }
+}

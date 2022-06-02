@@ -1,8 +1,7 @@
 {
   "name": "blurts-server",
-  "description": "Blurts backend Server",
-  "version": "0.0.1",
-  "author": "Nihanth Subramanya",
+  "description": "Firefox Monitor Server",
+  "version": "1.0.0",
   "bugs": {
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
@@ -58,8 +57,12 @@
     "@wdio/sync": "5.23.0",
     "chai": "4.2.0",
     "coveralls": "3.1.0",
-    "eslint": "^8.0.1",
+    "eslint": "^8.15.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
     "eslint-plugin-node": "6.0.1",
+    "eslint-plugin-promise": "^6.0.0",
     "jest": "^27.2.5",
     "node-mocks-http": "1.9.0",
     "nodemon": "2.0.4",

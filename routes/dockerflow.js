@@ -1,16 +1,12 @@
-"use strict";
+'use strict'
 
-const express = require("express");
-const {vers, heartbeat} = require("../controllers/dockerflow");
+const express = require('express')
+const { vers, heartbeat } = require('../controllers/dockerflow')
 
+const router = express.Router()
 
-const router = express.Router();
+router.get('/__version__', vers)
+router.get('/__heartbeat__', heartbeat)
+router.get('/__lbheartbeat__', heartbeat)
 
-
-router.get("/__version__", vers);
-router.get("/__heartbeat__", heartbeat);
-router.get("/__lbheartbeat__", heartbeat);
-
-
-module.exports = router;
-
+module.exports = router
