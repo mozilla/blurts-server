@@ -1,5 +1,3 @@
-'use strict';
-
 (() => {
   if (document.getElementById('scannedEmail')) {
     const scannedEmail = document.getElementById('scannedEmail')

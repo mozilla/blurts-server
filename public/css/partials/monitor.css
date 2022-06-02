@@ -1,0 +1,361 @@
+.monitor-homepage {
+  min-height: 90vh;
+  background-color: var(--inkDark);
+  position: relative;
+  padding-bottom: 0;
+}
+
+.featured-breach h2.landing-headline {
+  font-size: 40px;
+  max-width: 600px;
+  margin-bottom: 0;
+}
+
+.monitor-landing {
+  background-image: url(../../img/landing/background-noodle-top2.svg);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: bottom center;
+  padding: 2rem 0.75rem;
+}
+
+.landing-bottom-bar {
+  background-image: url(../../img/landing/background-noodle-middle.svg), linear-gradient(224deg, #2150c8, #712291);
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  background-position: top center;
+  position: relative;
+  padding-top: 0;
+}
+
+.landing-bottom-bar .take-back-control-banner {
+  margin: 88px auto 40px auto;
+}
+
+/* sensitive featured breach */
+
+.landing-bottom-bar.sensitive-breach,
+.gradient-container.sensitive-breach,
+.row.sensitive-breach {
+  padding-top: 0;
+}
+
+.sb-top-wrapper.row {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxWidth);
+  z-index: 1;
+  margin-top: -32px;
+}
+
+.sb-top {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  min-height: 4rem;
+  width: 100%;
+}
+
+.sensitive-breach .gradient-inset {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.landing-sensitive-info {
+  color: var(--grey1);
+  text-align: left;
+  max-width: 800px;
+  max-width: var(--maxWidth);
+  margin-bottom: 4rem;
+}
+
+.sb-callout-body {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--grey2);
+}
+
+.sensitive-breach .feat-headline-wrapper {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+h3.sb-callout {
+  font-size: 24px;
+  margin: 3rem auto 0 auto;
+  font-weight: 700;
+}
+
+.sb-callout,
+.sb-callout-body {
+  max-width: 600px;
+}
+
+.landing-content {
+  text-align: center;
+}
+
+.landing-content .form-desc {
+  color: var(--grey2);
+  margin-bottom: calc(var(--padding) * 3);
+}
+
+.landing-subhead {
+  padding: 0;
+  margin: 0 auto calc(var(--padding) * 2) auto;
+  max-width: 560px;
+  font-size: 24px;
+  line-height: 1.17;
+}
+
+.landing-headline,
+.landing-subhead {
+  color: var(--grey1);
+}
+
+.landing-headline {
+  margin: auto auto 22px auto;
+  max-width: 750px;
+}
+
+.landing-content form {
+  max-width: 320px;
+  margin: auto;
+}
+
+.landing-headline .bold {
+  color: var(--violet2);
+}
+
+[data-ad-unit] {
+  width: min(960px, calc(100% - 60px));
+  margin: 80px auto;
+  text-align: center;
+  color: black;
+  border-radius: 8px;
+}
+
+[data-ad-unit] > * + * {
+  margin-top: 24px;
+}
+
+[data-ad-unit].dark {
+  color: white;
+}
+
+[data-ad-unit].light {
+  color: black;
+}
+
+[data-ad-unit] h2 {
+  color: inherit;
+  font-size: 32px;
+  margin: 0;
+}
+
+[data-ad-unit] video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+[data-ad-unit="3"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  background-color: #6e008b;
+}
+
+[data-ad-unit="3"] > article {
+  flex: 0 1 360px;
+  margin: auto;
+}
+
+[data-ad-unit="3"] > article h2 {
+  font-size: 70px;
+  line-height: 1;
+  color: white;
+  word-break: break-word;
+}
+
+[data-ad-unit="3"] > article h2::first-line {
+  font-size: 100px;
+}
+
+[data-ad-unit="3"] > article p {
+  color: white;
+}
+
+[data-ad-unit="3"] > figure {
+  flex: 1 1 360px;
+  position: relative;
+  margin: 0;
+  min-height: 360px;
+}
+
+[data-ad-unit="3"] > figure img {
+  object-fit: contain;
+  height: 100%;
+  width: 75%;
+}
+
+[data-ad-unit="3"] > figure i {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: min(2vw, 13px);
+  font-weight: bold;
+  font-style: normal;
+  color: black;
+  background-color: #c688ff;
+  word-break: break-word;
+}
+
+[data-ad-unit="3"] > figure i:nth-of-type(1) {
+  top: 10px;
+  box-shadow: 0 0 24px #6e008b;
+  width: clamp(15%, 140px, 30%);
+}
+
+[data-ad-unit="3"] > figure i:nth-of-type(2) {
+  bottom: 20px;
+  box-shadow: 0 0 12px #6e008b;
+  width: clamp(15%, 120px, 25%);
+}
+
+[data-ad-unit="3"] > figure i:nth-of-type(3) {
+  right: 0;
+  top: 30px;
+  box-shadow: 0 0 6px #6e008b;
+  width: clamp(15%, 140px, 35%);
+}
+
+[data-ad-unit="4"],
+[data-ad-unit="6"] {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding: 30px;
+  background-color: white;
+}
+
+[data-ad-unit="4"] > *,
+[data-ad-unit="6"] > * {
+  flex: 1 1 325px;
+  margin: auto;
+}
+
+[data-ad-unit="4"] article,
+[data-ad-unit="6"] article {
+  text-align: left;
+}
+
+[data-ad-unit="4"] figure img,
+[data-ad-unit="6"] figure img {
+  width: min(100%, 400px);
+}
+
+[data-ad-unit="5"] {
+  background-color: white;
+  padding: 30px;
+}
+
+[data-ad-unit="5"] section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+[data-ad-unit="5"] section > * {
+  flex-grow: 1;
+  flex-basis: calc((700px - 100%) * 999);
+  margin: 0;
+}
+
+[data-ad-unit="5"] figure img {
+  max-width: 100%;
+  max-height: 160px;
+}
+
+.ad-unit-cta {
+  font-weight: bold;
+  color: black;
+  background-color: #c688ff;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+  .landing-content {
+    max-width: 600px;
+  }
+
+  .monitor-homepage.featured-breach {
+    min-height: 100vh;
+  }
+
+  .featured-breach h2.landing-headline,
+  h2.landing-headline,
+  .landing-subhead {
+    margin: 0 auto 12px auto;
+  }
+
+  .landing-subhead {
+    font-size: 20px;
+    max-width: 500px;
+  }
+
+  .landing-content form {
+    margin-top: 8px;
+  }
+
+  [data-ad-unit="4"] article,
+  [data-ad-unit="6"] article {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .monitor-homepage {
+    min-height: 86vh;
+  }
+
+  .landing-bottom-bar .take-back-control-banner {
+    margin: 68px auto 20px auto;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .landing-content {
+    max-width: 400px;
+  }
+
+  .landing-content form {
+    max-width: 100%;
+  }
+
+  .landing-subhead {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .landing-subhead,
+  .landing-headline {
+    text-align: left;
+  }
+
+  .featured-breach h2.landing-headline {
+    text-align: center;
+    font-size: var(--topHeadline);
+  }
+}

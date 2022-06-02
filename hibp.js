@@ -82,7 +82,6 @@ const HIBP = {
   },
 
   async loadBreachesIntoApp (app) {
-    log.info('loadBreachesIntoApp')
     try {
       const breachesResponse = await this.req('/breaches')
       const breaches = []
@@ -99,7 +98,7 @@ const HIBP = {
     } catch (error) {
       throw new FluentError('error-hibp-load-breaches')
     }
-    log.info('done-loading-breaches')
+    log.info('done-loading-breaches', 'great success 👍')
   },
 
   async getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {

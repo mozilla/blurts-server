@@ -56,7 +56,6 @@ const LocaleUtils = {
       }
     }
     log.info('LocaleUtils.init', { availableLanguages })
-    log.info('LocaleUtils.init', { fluentBundles })
     return { availableLanguages, fluentBundles }
   },
 

@@ -34,12 +34,6 @@ jobs:
             - checkout
             - node/install-packages
             - run: npm run lint:css
-    lint-audit:
-        executor: node
-        steps:
-            - checkout
-            - node/install-packages
-            - run: npm run lint:audit
     lint-l10n:
         executor: python
         steps:
@@ -78,7 +72,6 @@ jobs:
                 name: Test Code
                 command: |
                     docker run --network="host" \
-                    --env-file .env-dist \
                     -e NODE_ENV=tests \
                     -e DATABASE_URL=$DATABASE_URL \
                     -e HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN \
@@ -175,7 +168,6 @@ workflows:
         jobs:
             - lint-js
             - lint-css
-            - lint-audit
             - lint-l10n
             - integration-tests
             - unit-tests:

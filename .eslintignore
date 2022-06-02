@@ -2,6 +2,4 @@ db/migration
 coverage
 loadtests
 public/dist
-public/js/polyfills
-public/scss/libs
 tests

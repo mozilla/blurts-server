@@ -1,10 +1,5 @@
-'use strict'
-
-/* global sendPing */
-/* global getFxaUtms */
-/* global hashEmailAndSend */
-/* global sendRecommendationPings */
-/* global ga */
+import { sendPing, sendRecommendationPings, getFxaUtms } from './fxa-analytics.js'
+import { hashEmailAndSend } from './scan-email.js'
 
 if (typeof TextEncoder === 'undefined') {
   const cryptoScript = document.createElement('script')
@@ -440,7 +435,7 @@ async function initCsatBanner () {
         csatBanner.toggleAttribute('disabled', true)
         csatBanner.querySelector('.csat-question').textContent = 'Thanks for your feedback!'
         e.target.parentElement.classList.add('selected')
-        if (window.ga) ga('send', 'event', 'CSAT banner', 'submit', e.target.nextSibling.textContent, e.target.value)
+        if (window.ga) window.ga('send', 'event', 'CSAT banner', 'submit', e.target.nextSibling.textContent, e.target.value)
         break
     }
 
@@ -519,9 +514,9 @@ function getPageAttribution () {
       button.classList.add('fade-out')
       const overflowRecs = document.getElementById('overflow-recs')
       overflowRecs.classList.remove('hide')
-      if (typeof (ga) !== 'undefined') {
+      if (typeof (window.ga) !== 'undefined') {
         // Send "Click" ping for #see-additional-recs click
-        ga('send', 'event', 'Breach Details: See Additional Recommendations', 'Click', 'See Additional Recommendations')
+        window.ga('send', 'event', 'Breach Details: See Additional Recommendations', 'Click', 'See Additional Recommendations')
         // Send "View" pings for any CTAs that become visible on #see-additional-recs click
         sendRecommendationPings('.overflow-rec-cta')
       }
@@ -561,8 +556,8 @@ function getPageAttribution () {
         e.preventDefault()
 
         // Send GA Ping
-        if (typeof (ga) !== 'undefined') {
-          ga('send', {
+        if (typeof (window.ga) !== 'undefined') {
+          window.ga('send', {
             hitType: 'event',
             eventCategory: 'Sign Up Button',
             eventAction: 'Engage',
@@ -578,3 +573,5 @@ function getPageAttribution () {
     })
   }
 })()
+
+export { findAncestor, doOauth }
