@@ -36,7 +36,7 @@ rec-bank-acc = Vérifiez l’absence de dépenses suspectes ou inhabituelles sur
 rec-cc-subhead = Surveillez vos relevés de carte bancaire
 rec-cc = Vérifiez l’absence de dépenses inhabituelles effectuées avec votre carte. Pensez à demander une nouvelle carte avec un nouveau numéro à l’émetteur de votre carte bancaire en cas de doute.
 # Recommendation subhead
-rec-email-subhead = Utilisez des alias de messagerie
+rec-email-mask-subhead = Utilisez un alias de messagerie
 rec-email-cta = Essayer { -brand-relay }
 rec-email = Fournir votre adresse électronique réelle permet aux pirates informatiques ou aux traqueurs de trouver vos mots de passe ou de vous cibler en ligne plus facilement. Un service comme { -brand-relay } masque votre adresse électronique réelle tout en transmettant les messages à votre boîte de réception réelle.
 # Recommendation subhead

@@ -8,7 +8,6 @@ const {
   generatePageToken,
   getExperimentFlags,
   getUTMContents,
-  hasUserSignedUpForWaitlist,
   setAdUnitCookie
 } = require('./utils')
 
@@ -89,15 +88,6 @@ async function home (req, res) {
   })
 }
 
-function removeMyData (req, res) {
-  const user = req.user
-  const userHasSignedUpForRemoveData = hasUserSignedUpForWaitlist(user, 'remove_data')
-  return res.render('remove-data', {
-    title: req.fluentFormat('home-title'),
-    userHasSignedUpForRemoveData
-  })
-}
-
 function getAllBreaches (req, res) {
   return res.render('top-level-page', {
     title: 'Firefox Monitor',
@@ -167,6 +157,5 @@ module.exports = {
   getBentoStrings,
   getSecurityTips,
   home,
-  notFound,
-  removeMyData
+  notFound
 }
