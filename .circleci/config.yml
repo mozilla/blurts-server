@@ -72,7 +72,6 @@ jobs:
                 name: Test Code
                 command: |
                     docker run --network="host" \
-                    --env-file .env-dist \
                     -e NODE_ENV=tests \
                     -e DATABASE_URL=$DATABASE_URL \
                     -e HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN \
