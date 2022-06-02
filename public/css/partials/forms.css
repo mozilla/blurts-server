@@ -343,7 +343,6 @@ input[type="radio"]:focus ~ .checkmark {
 }
 
 @media screen and (max-width: 800px) {
-
   button.internal-link,
   input.transparent-button,
   input[type="submit"],

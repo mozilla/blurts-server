@@ -3,7 +3,7 @@
   margin: auto;
 }
 
-.latest-breach-info{
+.latest-breach-info {
   margin-top: -32px;
 }
 
@@ -59,11 +59,11 @@
   padding: 16px 16px 12px 16px;
   box-shadow: 0 7px 12px 0 #1c1c1d80;
   font-size: 14px;
-  text-align: center
+  text-align: center;
 }
 
 @media screen and (max-width: 600px) {
-  .latest-breach-info{
+  .latest-breach-info {
     padding: 0 calc(var(--padding) + 0.75rem);
   }
 

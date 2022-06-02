@@ -391,9 +391,9 @@ input.remove-email-submit {
   }
 
   .toggle-resolved-breaches,
-    .ec.breach-card,
-    .active .show-additional-breaches.hide .ec.breach-card,
-    .active .show-remaining-breaches.hide,
+  .ec.breach-card,
+  .active .show-additional-breaches.hide .ec.breach-card,
+  .active .show-remaining-breaches.hide,
   .e-address::after,
   .show-remaining-breaches {
     display: none;
@@ -416,7 +416,6 @@ input.remove-email-submit {
 }
 
 @media screen and (max-width: 600px) {
-
   .e-address,
   .radio-label {
     font-size: 1rem;

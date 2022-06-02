@@ -1,6 +1,5 @@
 @import "includes/variables.css";
 @import "includes/fonts.css";
-
 @import "partials/all-breaches.css";
 @import "partials/main.css";
 @import "partials/articles.css";
@@ -18,7 +17,6 @@
 @import "partials/latest-breach.css";
 @import "partials/monitor.css";
 @import "partials/product-promos.css";
-@import "partials/research-recruitment.css";
 @import "partials/scan-results.css";
 @import "partials/security-tips.css";
 @import "partials/sign-up-banner.css";

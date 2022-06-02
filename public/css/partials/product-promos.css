@@ -59,23 +59,23 @@
   background-color: #1e1338;
 }
 
-.promo-monitor>.promo-content::before {
+.promo-monitor > .promo-content::before {
   background-image: url("../../img/svg/fxa-tout-yellow-env.svg");
 }
 
-.promo-mobile>.promo-content::before {
+.promo-mobile > .promo-content::before {
   background-image: url("../../img/svg/logos/fx-logo.svg");
 }
 
-.promo-lockwise>.promo-content::before {
+.promo-lockwise > .promo-content::before {
   background-image: url("../../img/svg/logos/fx-lockwise.svg");
 }
 
-.promo-fpn>.promo-content::before {
+.promo-fpn > .promo-content::before {
   background-image: url("../../img/svg/logos/fpn-logo.svg");
 }
 
-.promo-ecosystem>.promo-content::before {
+.promo-ecosystem > .promo-content::before {
   background-image: url("../../img/svg/logos/fx-master-logo.svg");
 }
 

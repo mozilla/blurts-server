@@ -143,25 +143,25 @@ table.table-button tr {
   margin-top: 30px;
 }
 
-.email-other-products{
-  margin-top: 32px; 
-  padding-bottom:32px; 
-  border-bottom:1px solid #eee; 
-  font: 15px/1.2 sans-serif; 
-  text-align:left;
+.email-other-products {
+  margin-top: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid #eee;
+  font: 15px/1.2 sans-serif;
+  text-align: left;
 }
 
-.email-other-products caption{
+.email-other-products caption {
   font-size: 19px;
 }
 
-.email-other-products img{
-  width:100px; 
-  height:auto;
+.email-other-products img {
+  width: 100px;
+  height: auto;
 }
 
 .pre-fxa-subscriber-message td {
-  padding-bottom: 32px; 
+  padding-bottom: 32px;
   padding-top: 32px;
   border-bottom: 1px solid #eee;
 }

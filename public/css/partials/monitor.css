@@ -16,7 +16,7 @@
   background-repeat: no-repeat;
   background-size: 100% auto;
   background-position: bottom center;
-  padding: 2rem .75rem;
+  padding: 2rem 0.75rem;
 }
 
 .landing-bottom-bar {
@@ -135,7 +135,7 @@ h3.sb-callout {
   border-radius: 8px;
 }
 
-[data-ad-unit]>*+* {
+[data-ad-unit] > * + * {
   margin-top: 24px;
 }
 
@@ -169,40 +169,40 @@ h3.sb-callout {
   background-color: #6e008b;
 }
 
-[data-ad-unit="3"]>article {
+[data-ad-unit="3"] > article {
   flex: 0 1 360px;
   margin: auto;
 }
 
-[data-ad-unit="3"]>article h2 {
+[data-ad-unit="3"] > article h2 {
   font-size: 70px;
   line-height: 1;
   color: white;
   word-break: break-word;
 }
 
-[data-ad-unit="3"]>article h2::first-line {
+[data-ad-unit="3"] > article h2::first-line {
   font-size: 100px;
 }
 
-[data-ad-unit="3"]>article p {
+[data-ad-unit="3"] > article p {
   color: white;
 }
 
-[data-ad-unit="3"]>figure {
+[data-ad-unit="3"] > figure {
   flex: 1 1 360px;
   position: relative;
   margin: 0;
   min-height: 360px;
 }
 
-[data-ad-unit="3"]>figure img {
+[data-ad-unit="3"] > figure img {
   object-fit: contain;
   height: 100%;
   width: 75%;
 }
 
-[data-ad-unit="3"]>figure i {
+[data-ad-unit="3"] > figure i {
   position: absolute;
   display: flex;
   align-items: center;
@@ -218,19 +218,19 @@ h3.sb-callout {
   word-break: break-word;
 }
 
-[data-ad-unit="3"]>figure i:nth-of-type(1) {
+[data-ad-unit="3"] > figure i:nth-of-type(1) {
   top: 10px;
   box-shadow: 0 0 24px #6e008b;
   width: clamp(15%, 140px, 30%);
 }
 
-[data-ad-unit="3"]>figure i:nth-of-type(2) {
+[data-ad-unit="3"] > figure i:nth-of-type(2) {
   bottom: 20px;
   box-shadow: 0 0 12px #6e008b;
   width: clamp(15%, 120px, 25%);
 }
 
-[data-ad-unit="3"]>figure i:nth-of-type(3) {
+[data-ad-unit="3"] > figure i:nth-of-type(3) {
   right: 0;
   top: 30px;
   box-shadow: 0 0 6px #6e008b;
@@ -247,8 +247,8 @@ h3.sb-callout {
   background-color: white;
 }
 
-[data-ad-unit="4"]>*,
-[data-ad-unit="6"]>* {
+[data-ad-unit="4"] > *,
+[data-ad-unit="6"] > * {
   flex: 1 1 325px;
   margin: auto;
 }
@@ -275,7 +275,7 @@ h3.sb-callout {
   gap: 30px;
 }
 
-[data-ad-unit="5"] section>* {
+[data-ad-unit="5"] section > * {
   flex-grow: 1;
   flex-basis: calc((700px - 100%) * 999);
   margin: 0;
@@ -289,7 +289,7 @@ h3.sb-callout {
 .ad-unit-cta {
   font-weight: bold;
   color: black;
-  background-color: #C688FF;
+  background-color: #c688ff;
   border: 0;
   display: inline-flex;
   align-items: center;

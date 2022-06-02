@@ -81,8 +81,8 @@ firefox-apps:active {
   height: auto;
   transform: translateY(12px);
   animation: fxBentoAppear ease 0.3s;
-  -webkit-animation: fxBentoAppear ease 0.3s;
-  -moz-animation: fxBentoAppear ease 0.3s;
+  -webkit-animation: fxbentoappear ease 0.3s;
+  -moz-animation: fxbentoappear ease 0.3s;
 }
 
 .active .fx-bento-content-wrapper::after {
@@ -98,7 +98,7 @@ firefox-apps:active {
   border-top-left-radius: 1px;
   background-color: rgb(249, 249, 250);
   border-top: 1px solid transparent;
-    border-left: 1px solid transparent;
+  border-left: 1px solid transparent;
   z-index: -1;
 }
 
@@ -282,7 +282,7 @@ body.hide-bento firefox-apps > button {
     margin: 0 var(--appIconHeight);
   }
 
-    button.fx-bento-mobile-close {
+  button.fx-bento-mobile-close {
     display: block;
   }
 
@@ -297,7 +297,7 @@ body.hide-bento firefox-apps > button {
     overflow-x: scroll;
   }
 
-        .fx-bento-mobile-close::after {
+  .fx-bento-mobile-close::after {
     content: "";
     display: block;
     position: fixed;
@@ -376,7 +376,7 @@ body.hide-bento firefox-apps > button {
   }
 }
 
-@keyframes fxBentoAppear {
+@keyframes fxbentoappear {
   0% {
     opacity: 0;
     transform: translateY(0);
