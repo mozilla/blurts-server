@@ -1,0 +1,53 @@
+.sr {
+  background-size: auto;
+  padding-bottom: 40px;
+}
+
+.sr .headline {
+  font-size: 32px;
+}
+
+.field {
+  width: 100%;
+  max-width: 600px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 6px 24px;
+  gap: 3px;
+}
+
+.field h4 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.field dl {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field dl dt {
+  font-weight: 700;
+}
+
+form.profile-data input:not([type=submit]),
+form.profile-data select {
+  padding: 6px;
+  background-color: white;
+  border: 1px solid var(--grey3);
+  border-radius: 3px;
+  font-size: 16px;
+  width: 250px;
+}
+
+form.profile-data input[type=submit] {
+  width: 250px;
+}
+
+h3.scan-results-heading {
+  font-size: 36px;
+  margin-bottom: 0;
+}

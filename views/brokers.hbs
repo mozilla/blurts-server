@@ -1,45 +1,150 @@
-<main class="clear-header about-fxm container" data-page-label="About Firefox Monitor">
-    <div class="row about-row">
-      <div class="col-8">
-        <div class="fx-monitor-svg"></div>
-        <h2 class="headline mw-550">Data brokers</h2>
-      </div>
+<section class="clear-header sr jst-cntr flx" data-page-label="Data brokers">
+    <div class="field">
+      <h2 class="headline mw-550">Remove Personal Information from Data Brokers</h2>
     </div>
-    <section class="row">
-      <div class="gradient-inset about-row flx-col">
-        <div class="content-wrap">
-            <div class="col-12 how-fxm-works flx-row no-vertical-padding space-between">
-              {{#if profileData }}
-                <p>Profile:</p>
-                <ul>
-                  <li>First Name: {{ profileData.first_name }}</li>
-                  <li>Last Name: {{ profileData.last_name }}</li>
-                  <li>Addresses: {{ profileData.addresses }}</li>
-                </ul>
-                <p>Scans:</p>
-                {{log scans }}
-              {{/if }}
-              {{#if scanResults }}
-                <p>Scan results:</p>
-                <ul>
-                {{#each scanResults }}
-                  <li>{{ data_broker }}: <a href="{{ link }}">{{ link }}</a> </li>
-                {{/each }}
-                </ul>
-              {{/if }}
-              {{#unless scanResults }}
-              <p>Enter the information below to see what sites are publishing your private info.</p>
-              <form action="/brokers" method="post" data-csrf-token="{{ csrfToken }}">
-                <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-                <input type="text" name="first_name" placeholder="First name" value="{{ profileData?.first_name }}"/>
-                <input type="text" name="last_name" placeholder="Last name" value="{{ profileData?.last_name }}"/>
-                <input type="text" name="city" placeholder="City" value="{{ profileData?.city }}"/>
-                <input type="text" name="state" placeholder="State" value="{{ profileData?.state }}"/>
-                <input type="submit" />
-              </form>
-              {{/unless }}
-            </div>
-          </div>
+</section>
+{{#unless profileData }}
+  <section class="flx flx-col">
+    <p class="field">Enter the information below to find websites that are publishing your personal info.</p>
+    <form action="/brokers" method="post" data-csrf-token="{{ csrfToken }}" class="profile-data flx flx-col">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+      <div class="field">
+        <label for="first_name">
+          First name
+        </label>
+        <input type="text" id="first_name" name="first_name" value="{{ profileData?.first_name }}"/>
+      </div>
+      <div class="field">
+        <label for="last_name">
+          Last Name
+        </label>
+        <input type="text" id="last_name" name="last_name" value="{{ profileData?.last_name }}"/>
+      </div>
+      <div class="field">
+        <label for="city">
+          City
+        </label>
+        <input type="text" id="city" name="city" value="{{ profileData?.city }}"/>
+      </div>
+      <div class="field">
+        <label for="state">
+          U.S. State
+        </label>
+        <select name="state" id="state">
+          {{#each validStates }}
+            <option value="{{ @key }}">{{ this }}</option>
+          {{/each }}
+        </select>
+      </div>
+      <div class="field">
+        <input type="submit" value="Scan" />
+      </div>
+    </form>
+  </section>
+{{/unless }}
+{{#if profileData }}
+  <section class="flx flx-col">
+    <p class="field">
+      {{#if scanResults }}
+        We scanned for websites publishing (parts of) the following personal info:
+      {{else}}
+        Scanning for websites publishing (parts of) the following personal info:
+      {{/if}}
+    </p>
+    <div class="field">
+      <dl>
+        <dt>First name</dt>
+        <dd>{{ profileData.first_name }}</dd>
+        <dt>Last name</dt>
+        <dd>{{ profileData.last_name }}</dd>
+        {{#each profileData.addresses }}
+          <dt>City</dt>
+          <dd>{{ this.city }}</dd>
+          <dt>State</dt>
+          <dd>{{ lookup ../validStates this.state }}</dd>
+        {{/each}}
+      </dl>
+      <p>The scan was initiated at {{ profileData.created_at }}.</p>
+    </div>
+  </section>
+  <section class="flx flx-col">
+    {{#if scanResults }}
+      <h3 class="field scan-results-heading">
+        Scan results
+      </h3>
+      {{#each scanResults }}
+        <div class="field scan-result">
+          <h4>
+            {{ data_broker  }}
+          </h4>
+          <p>Data found at {{created_at}}.</p>
+          <dl>
+            {{#if first_name }}
+              <div>
+                <dt>First name</dt>
+                <dd>{{ first_name }}</dd>
+              </div>
+            {{/if}}
+            {{#if middle_name }}
+              <div>
+                <dt>Middle name</dt>
+                <dd>{{ middle_name }}</dd>
+              </div>
+            {{/if}}
+            {{#if last_name }}
+              <div>
+                <dt>Last name</dt>
+                <dd>{{ last_name }}</dd>
+              </div>
+            {{/if}}
+            {{#if age }}
+              <div>
+                <dt>Age</dt>
+                <dd>{{ age }}</dd>
+              </div>
+            {{/if}}
+            {{#if addresses }}
+              <div>
+                <dt>Addresses</dt>
+                <dd>
+                  <ul>
+                  {{#each addresses }}
+                    <li>{{ this.zip }} {{ this.street }} {{ this.city }} {{ lookup ../../validStates this.state }}</li>
+                  {{/each}}
+                  </ul>
+                </dd>
+              </div>
+            {{/if}}
+            {{#if emails }}
+              <div>
+                <dt>E-mails</dt>
+                <dd>
+                  <ul>
+                  {{#each emails }}
+                    <li><a href="mailto:{{ this }}">{{ this }}</a></li>
+                  {{/each}}
+                  </ul>
+                </dd>
+              </div>
+            {{/if}}
+            {{#if relatives }}
+              <div>
+                <dt>Relatives</dt>
+                <dd>
+                  <ul>
+                  {{#each relatives }}
+                    <li>{{ this }}</li>
+                  {{/each}}
+                  </ul>
+                </dd>
+              </div>
+            {{/if}}
+          </dl>
+          <a href="{{ link }}">Source</a>
         </div>
-      </section>
-    </main>
+      {{/each }}
+    {{else }}
+      <p class="field">Scan in progress, please check back later.</p>
+    {{/if }}
+  </section>
+{{/if }}
