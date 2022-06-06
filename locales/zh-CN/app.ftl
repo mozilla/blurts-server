@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -520,6 +523,8 @@ ad-unit-2-do-you-worry = 您是否担心公共 Wi-Fi 的安全？
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 可为您提供稳定且安全的连接，玩游戏、看网剧，不在话下。
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = 拒绝限速
+# ad 3 list item 2
+ad-unit-3-be-anywhere = 无论身在何处
 # ad 3 list item 3
 ad-unit-3-access-more = 访问更多内容
 # ad 4 heading
