@@ -93,7 +93,6 @@
     "start": "npm run build & node server.js",
     "dev": "npm run build & nodemon server.js",
     "build": "node esbuild.js",
-    "clean": "rm -rf public/dist",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
     "docker:run": "docker run -p 6060:6060 blurts-server",
