@@ -9,7 +9,6 @@ require('dotenv').config({ path: path.join(__dirname, '.env') })
 const requiredEnvVars = [
   'NODE_ENV',
   'SERVER_URL',
-  'PORT',
   'LOGOS_ORIGIN',
   'COOKIE_SECRET',
   'SESSION_DURATION_HOURS',
@@ -48,6 +47,7 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
+  'PORT',
   'RECRUITMENT_BANNER_LINK',
   'RECRUITMENT_BANNER_TEXT',
   'GEOIP_GEOLITE2_PATH',

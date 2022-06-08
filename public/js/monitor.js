@@ -525,8 +525,6 @@ function getPageAttribution () {
 
   setHeaderHeight()
   recruitmentLogic()
-  // addWaitlistSignupButtonListeners();
-  // addWaitlistObservers();
   initVpnBanner()
   initCsatBanner()
   initAdUnit()
