@@ -619,3 +619,12 @@ vpn-banner-cta-close = Luk
 
 # ad 2 heading
 ad-unit-2-do-you-worry = Er du bekymret for sikkerheden på offentlige wi-fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Hold fokus!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } sørger for, at din forbindelse er stabil og sikker, når du spiller spil eller streamer film.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Undgå neddrosling
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Vær hvor som helst i verden
+# ad 3 list item 3
+ad-unit-3-access-more = Få adgang til mere
