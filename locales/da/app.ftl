@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -121,50 +124,6 @@ security-tips = Sikkerhedstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Åbn { -brand-fxa }-navigation
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = På en skal fra 1 til 10, hvor sandsynligt er det så, at du vil anbefale { -product-short-name } til en ven eller en kollega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Ikke sandsynligt
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Meget sandsynligt
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Er { -product-short-name } nem at bruge?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Synes du, at { -product-short-name } er pålidelig?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Har { -product-short-name } en klar og overskuelig brugerflade?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Meget uenig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Uenig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ved ikke
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Enig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Meget enig
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Hvordan ville du have det, hvis du ikke længere kunne bruge { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Meget skuffet
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Ret skuffet
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Det gør ingen forskel
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SENEST TILFØJEDE DATALÆK
 # Link title
@@ -656,9 +615,7 @@ vpn-banner-cta-expand = Udvid
 # button to close panel
 vpn-banner-cta-close = Luk
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Hvordan holder du din mailadresse hemmelig?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Er du bekymret for sikkerheden på offentlige wi-fi?
+# ad 2 heading
+ad-unit-2-do-you-worry = Er du bekymret for sikkerheden på offentlige wi-fi?
