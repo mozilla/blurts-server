@@ -628,3 +628,4 @@ ad-unit-3-prevent-throttling = Undgå neddrosling
 ad-unit-3-be-anywhere = Vær hvor som helst i verden
 # ad 3 list item 3
 ad-unit-3-access-more = Få adgang til mere
+ad-unit-6-want-to-start = Vil du starte et nyt abonnement, svare på en indbydelse eller få en rabatkode uden at din indbakke bliver fyldt med spam?
