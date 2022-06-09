@@ -64,7 +64,6 @@
           <dd>{{ lookup ../validStates this.state }}</dd>
         {{/each}}
       </dl>
-      <p>The scan was initiated at {{ profileData.created_at }}.</p>
     </div>
   </section>
   <section class="flx flx-col">
@@ -72,79 +71,112 @@
       <h3 class="field scan-results-heading">
         Scan results
       </h3>
-      {{#each scanResults }}
-        <div class="field scan-result">
-          <h4>
-            {{ data_broker  }}
-          </h4>
-          <p>Data found at {{created_at}}.</p>
-          <dl>
-            {{#if first_name }}
-              <div>
-                <dt>First name</dt>
-                <dd>{{ first_name }}</dd>
-              </div>
-            {{/if}}
-            {{#if middle_name }}
-              <div>
-                <dt>Middle name</dt>
-                <dd>{{ middle_name }}</dd>
-              </div>
-            {{/if}}
-            {{#if last_name }}
-              <div>
-                <dt>Last name</dt>
-                <dd>{{ last_name }}</dd>
-              </div>
-            {{/if}}
-            {{#if age }}
-              <div>
-                <dt>Age</dt>
-                <dd>{{ age }}</dd>
-              </div>
-            {{/if}}
-            {{#if addresses }}
-              <div>
-                <dt>Addresses</dt>
-                <dd>
-                  <ul>
-                  {{#each addresses }}
-                    <li>{{ this.zip }} {{ this.street }} {{ this.city }} {{ lookup ../../validStates this.state }}</li>
-                  {{/each}}
-                  </ul>
-                </dd>
-              </div>
-            {{/if}}
-            {{#if emails }}
-              <div>
-                <dt>E-mails</dt>
-                <dd>
-                  <ul>
-                  {{#each emails }}
-                    <li><a href="mailto:{{ this }}">{{ this }}</a></li>
-                  {{/each}}
-                  </ul>
-                </dd>
-              </div>
-            {{/if}}
-            {{#if relatives }}
-              <div>
-                <dt>Relatives</dt>
-                <dd>
-                  <ul>
-                  {{#each relatives }}
-                    <li>{{ this }}</li>
-                  {{/each}}
-                  </ul>
-                </dd>
-              </div>
-            {{/if}}
-          </dl>
-          <a href="{{ link }}">Source</a>
-        </div>
-      {{/each }}
+      <div class="field">
+        {{#ifCompare scanStats.newCount "===" 0 }}
+          <p>The scan was initiated at {{ profileData.created_at }}.</p>
+        {{/ifCompare}}
+        {{#ifCompare scanStats.newCount ">" 0 }}
+          <p>Found {{ scanStats.newCount }} websites publishing your personal data at {{ profileData.created_at }}.</p>
+          <form action="/brokers/optout" method="post" data-csrf-token="{{ csrfToken }}">
+            <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
+            <input type="submit" value="Request data removal">
+          </form>
+        {{/ifCompare}}
+      </div>
+      <div class="field scan-results-wrapper">
+        {{#each scanResults }}
+          <div class="scan-result">
+            <div class="scan-result-header">
+              <h4>
+                {{ data_broker  }}
+              </h4>
+              {{#ifCompare status "===" "new" }}
+                <span class="status is-new">New</span>
+              {{/ifCompare}}
+              {{#ifCompare status "===" "optout_in_progress" }}
+                <span class="status is-optout_in_progress">Removal requested</span>
+              {{/ifCompare}}
+              {{#ifCompare status "===" "waiting_for_verification" }}
+                <span class="status is-waiting_for_verification">Removal requested</span>
+              {{/ifCompare}}
+              {{#ifCompare status "===" "removed" }}
+                <span class="status is-removed">Data removed</span>
+              {{/ifCompare}}
+              <button class="toggle-scan-result-button toggle svg-wrap">
+                {{> svg/toggle-down }}
+              </button>
+            </div>
+            <div class="scan-result-body">
+              <p>Data found at <time>{{created_at}}</time>.</p>
+              <dl>
+                {{#if first_name }}
+                  <div>
+                    <dt>First name</dt>
+                    <dd>{{ first_name }}</dd>
+                  </div>
+                {{/if}}
+                {{#if middle_name }}
+                  <div>
+                    <dt>Middle name</dt>
+                    <dd>{{ middle_name }}</dd>
+                  </div>
+                {{/if}}
+                {{#if last_name }}
+                  <div>
+                    <dt>Last name</dt>
+                    <dd>{{ last_name }}</dd>
+                  </div>
+                {{/if}}
+                {{#if age }}
+                  <div>
+                    <dt>Age</dt>
+                    <dd>{{ age }}</dd>
+                  </div>
+                {{/if}}
+                {{#if addresses }}
+                  <div>
+                    <dt>Addresses</dt>
+                    <dd>
+                      <ul>
+                      {{#each addresses }}
+                        <li>{{ this.zip }} {{ this.street }} {{ this.city }} {{ lookup ../../validStates this.state }}</li>
+                      {{/each}}
+                      </ul>
+                    </dd>
+                  </div>
+                {{/if}}
+                {{#if emails }}
+                  <div>
+                    <dt>E-mails</dt>
+                    <dd>
+                      <ul>
+                      {{#each emails }}
+                        <li><a href="mailto:{{ this }}">{{ this }}</a></li>
+                      {{/each}}
+                      </ul>
+                    </dd>
+                  </div>
+                {{/if}}
+                {{#if relatives }}
+                  <div>
+                    <dt>Relatives</dt>
+                    <dd>
+                      <ul>
+                      {{#each relatives }}
+                        <li>{{ this }}</li>
+                      {{/each}}
+                      </ul>
+                    </dd>
+                  </div>
+                {{/if}}
+              </dl>
+              <a href="{{ link }}">Source</a>
+            </div>
+          </div>
+        {{/each }}
+      </div>
     {{else }}
-      <p class="field">Scan in progress, please check back later.</p>
+      <p class="field">The scan was initiated at {{ profileData.created_at }} and is still in progress, please check back later.</p>
     {{/if }}
   </section>
 {{/if }}

@@ -87,6 +87,9 @@ async function get (req, res) {
     profileData: expandDatesInProfileData(profileData),
     scans,
     scanResults: expandDatesInScanResults(scanResults.data),
+    scanStats: {
+      newCount: (scanResults?.data ?? []).filter(scanResult => scanResult.status === 'new').length
+    },
     validStates
   })
 }
@@ -102,6 +105,10 @@ async function post (req, res) {
   }
   await OneRep.createProfile(req.user, profileData)
   await OneRep.createScan(req.user)
+  res.redirect('/brokers')
+}
+
+async function postOptout (req, res) {
   await OneRep.activate(req.user)
   await OneRep.optout(req.user)
   res.redirect('/brokers')
@@ -112,11 +119,11 @@ async function post (req, res) {
  * @property {number} id
  * @property {number} profile_id
  * @property {number} scan_id
- * @property {'new'} status
+ * @property {'new' | 'optout_in_progress' | 'waiting_for_verification' | 'removed'} status
  * @property {string | null} first_name
  * @property {string | null} middle_name
  * @property {string | null} last_name
- * @property {null} age
+ * @property {`${number}` | null} age
  * @property {Array<{ zip: number, street: string, city: string }>} addresses
  * @property {string[]} phones
  * @property {string[]} emails
@@ -149,7 +156,7 @@ function expandDatesInScanResults (scanResults = []) {
  * @property {string | null} first_name
  * @property {string | null} middle_name
  * @property {string | null} last_name
- * @property {null} birth_date
+ * @property {string | null} birth_date
  * @property {string[]} first_names
  * @property {string[]} middle_names
  * @property {string[]} last_names
@@ -161,12 +168,12 @@ function expandDatesInScanResults (scanResults = []) {
  *  state: keyof validStates,
  *  city: string,
  *  address_line: null | string,
- *  zip: null,
+ *  zip: null | string,
  *  created_at: string,
  *  updated_at: string,
  *  url: string
  * }>} addresses
- * @property {'inactive'} status
+ * @property {'inactive' | 'active'} status
  * @property {string} created_at
  * @property {string} updated_at
  * @property {string} url
@@ -195,5 +202,6 @@ function formatIsoDateString (dateString) {
 
 module.exports = {
   get,
-  post
+  post,
+  postOptout
 }
