@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -610,6 +613,11 @@ vpn-banner-cta-close = Fechar
 ## Relay and VPN educational/ad units
 
 ad-unit-relay-cta = Saber mais sobre o { -brand-relay }
+ad-unit-vpn-cta = Saiba mais sobre a { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Como manter o seu endereço de e-mail em segredo?
+# ad 2 heading
+ad-unit-2-do-you-worry = Preocupa-se com a segurança das redes sem fio públicas?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Mantenha-se atualizado!
 # ad 3 list item 2
@@ -620,3 +628,5 @@ ad-unit-3-access-more = Aceda a mais
 ad-unit-5-on-the-go = Em movimento com { -brand-relay }
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Conecte-se em qualquer lugar
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Utilize no seu telemóvel
