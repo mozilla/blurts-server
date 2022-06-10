@@ -619,6 +619,8 @@ vpn-banner-cta-close = Luk
 
 ad-unit-relay-cta = Læs mere om { -brand-relay }
 ad-unit-vpn-cta = Læs mere om { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Hvordan holder du din mailadresse hemmelig?
 # ad 2 heading
 ad-unit-2-do-you-worry = Er du bekymret for sikkerheden på offentlige wi-fi?
 # ad 3 heading
@@ -630,5 +632,15 @@ ad-unit-3-prevent-throttling = Undgå neddrosling
 ad-unit-3-be-anywhere = Vær hvor som helst i verden
 # ad 3 list item 3
 ad-unit-3-access-more = Få adgang til mere
+# ad 4 heading
+ad-unit-4-shopping-with = Maskér din mailadresse, når du handler ind
 ad-unit-4-want-to-buy = Vil du købe noget på nettet, selvom du ikke kender eller stoler på butikken?
+ad-unit-4-shop-online = Maskér din mailadresse, når du handler på nettet. Få bekræftelsen sendt til din rigtige mailadresse, og deaktiver nemt maskeringen, når det passer dig.
+ad-unit-5-instantly-make = Maskér hurtigt din mailadresse, uanset hvor du er.
+ad-unit-5-privately-sign-in = Maskér din mailadresse, når du vil logge ind privat på din yndlingscafé eller et offentligt wi-fi
+ad-unit-5-share-custom-email = Brug en maskeret mailadresse til at modtage kvitteringer fra butikker - uden at dele din rigtige mailadresse
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Brug det på din telefon
+ad-unit-5-no-matter-where = Maskér lynhurtigt din mailadresse, uanset hvor du er
 ad-unit-6-want-to-start = Vil du starte et nyt abonnement, svare på en indbydelse eller få en rabatkode uden at din indbakke bliver fyldt med spam?
+ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine oplysninger og behold kontrollen over din indbakke, næste gang du skal oprette dig som bruger et sted
