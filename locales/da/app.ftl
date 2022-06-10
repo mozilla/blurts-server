@@ -617,6 +617,8 @@ vpn-banner-cta-close = Luk
 
 ## Relay and VPN educational/ad units
 
+ad-unit-relay-cta = Læs mere om { -brand-relay }
+ad-unit-vpn-cta = Læs mere om { -brand-mozilla-vpn }
 # ad 2 heading
 ad-unit-2-do-you-worry = Er du bekymret for sikkerheden på offentlige wi-fi?
 # ad 3 heading
