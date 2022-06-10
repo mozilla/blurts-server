@@ -642,9 +642,13 @@ ad-unit-5-instantly-make = Maskér hurtigt din mailadresse, uanset hvor du er.
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Opret forbindelse undervejs
 ad-unit-5-privately-sign-in = Maskér din mailadresse, når du vil logge ind privat på din yndlingscafé eller et offentligt wi-fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Modtag kvitteringer på mail
 ad-unit-5-share-custom-email = Brug en maskeret mailadresse til at modtage kvitteringer fra butikker - uden at dele din rigtige mailadresse
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Brug det på din telefon
 ad-unit-5-no-matter-where = Maskér lynhurtigt din mailadresse, uanset hvor du er
+# ad 6 heading
+ad-unit-6-worry-free = Tilmelding uden bekymringer
 ad-unit-6-want-to-start = Vil du starte et nyt abonnement, svare på en indbydelse eller få en rabatkode uden at din indbakke bliver fyldt med spam?
 ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine oplysninger og behold kontrollen over din indbakke, næste gang du skal oprette dig som bruger et sted
