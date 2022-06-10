@@ -9,7 +9,6 @@ require('dotenv').config({ path: path.join(__dirname, '.env') })
 const requiredEnvVars = [
   'NODE_ENV',
   'SERVER_URL',
-  'PORT',
   'LOGOS_ORIGIN',
   'COOKIE_SECRET',
   'SESSION_DURATION_HOURS',
