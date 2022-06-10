@@ -636,7 +636,11 @@ ad-unit-3-access-more = Få adgang til mere
 ad-unit-4-shopping-with = Maskér din mailadresse, når du handler ind
 ad-unit-4-want-to-buy = Vil du købe noget på nettet, selvom du ikke kender eller stoler på butikken?
 ad-unit-4-shop-online = Maskér din mailadresse, når du handler på nettet. Få bekræftelsen sendt til din rigtige mailadresse, og deaktiver nemt maskeringen, når det passer dig.
+# ad 5 heading
+ad-unit-5-on-the-go = Undervejs med { -brand-relay }
 ad-unit-5-instantly-make = Maskér hurtigt din mailadresse, uanset hvor du er.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Opret forbindelse undervejs
 ad-unit-5-privately-sign-in = Maskér din mailadresse, når du vil logge ind privat på din yndlingscafé eller et offentligt wi-fi
 ad-unit-5-share-custom-email = Brug en maskeret mailadresse til at modtage kvitteringer fra butikker - uden at dele din rigtige mailadresse
 # ad 5 subheading 3
