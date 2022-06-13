@@ -465,6 +465,11 @@ function getPageAttribution () {
   return `&utm_content=${page}`
 }
 
+function replaceLogo (e) {
+  e.target.src = '/img/logos/missing-logo-icon.png'
+  e.target.removeEventListener('error', replaceLogo)
+}
+
 (async () => {
   document.addEventListener('touchstart', function () { }, true)
   const win = window
@@ -497,6 +502,10 @@ function getPageAttribution () {
       windowWidth = newWindowWidth
       setHeaderHeight()
     }
+  })
+
+  document.querySelectorAll('.breach-logo').forEach(logo => {
+    logo.addEventListener('error', replaceLogo)
   })
 
   document.addEventListener('scroll', () => toggleHeaderStates(header, win))
@@ -572,4 +581,4 @@ function getPageAttribution () {
   }
 })()
 
-export { findAncestor, doOauth }
+export { findAncestor, doOauth, replaceLogo }
