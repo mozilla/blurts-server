@@ -7,7 +7,7 @@ rec-ssn = Kariq oxib' sipal woktzijob'al chi junab' rumal ley.                  
 rec-pw-1-subhead = Chak'exa' le aretokib'al
 # Link title
 rec-pw-1-cta = Uk'exik retokib'al chech we uk'olib'al web'
-rec-pw-1 = Chab'ana' utikelal chech we retokib'al xuquje' jalan chi kiwach e nik'aj chik le kawaj.                                          Jun utz ub'eal chech uterenexik are uxolik keb on nik'aj chik le man kjunamataj taj
+rec-pw-1 = Chab'ana' utukelal chech we retokib'al xuquje' jalan chi kiwach e nik'aj chik le kawaj.                                          Jun utz ub'e'al chech uterenexik are uxolik keb' on nik'aj chik le man kjunamataj taj                                      taq tzij chech uwinaqirisaxik jun tz'aqat retokib'al rech cholaj tzij.
 # Link title
 rec-pw-2-cta-fx = Rilik taq umajixik kemchak { -brand-name }
 rec-pw-2 = Le ukamulixik ukojik taq retokib'al pa uk'iyal. Chanim chi
