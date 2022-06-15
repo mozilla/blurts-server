@@ -624,9 +624,13 @@ ad-unit-3-stay-in-the-game = Mantenha-se atualizado!
 ad-unit-3-be-anywhere = Esteja em qualquer lugar do mundo
 # ad 3 list item 3
 ad-unit-3-access-more = Aceda a mais
+# ad 4 heading
+ad-unit-4-shopping-with = Compras com Máscaras de E-mail
 # ad 5 heading
 ad-unit-5-on-the-go = Em movimento com { -brand-relay }
+ad-unit-5-instantly-make = Crie instantaneamente uma máscara de e-mail personalizada em qualquer momento e lugar que vá!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Conecte-se em qualquer lugar
+ad-unit-5-privately-sign-in = Use a sua máscara de e-mail quando quiser fazer iniciar sessão privadamente na rede Wi-Fi pública ou do seu café favorito
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Utilize no seu telemóvel
