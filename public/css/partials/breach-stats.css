@@ -1,0 +1,193 @@
+/* stylelint-disable-next-line selector-class-pattern */
+.monitoredEmails {
+  background-color: var(--violet3);
+}
+
+/* stylelint-disable-next-line selector-class-pattern */
+.numBreaches {
+  background-color: var(--violet4);
+}
+
+.passwords {
+  background-color: var(--violet5);
+}
+
+.breach-stat-number,
+.stat-headline {
+  color: rgb(255 255 255 / 1);
+  justify-content: center;
+  width: 100%;
+}
+
+.breach-stat-number {
+  font-size: 56px;
+  line-height: 1.14;
+  min-width: 60px;
+}
+
+.breach-stat-row {
+  padding: 32px var(--padding);
+  max-width: 31.25%;
+  border-radius: 8px;
+}
+
+.stat-row-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.stat-headline {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.33;
+  text-align: center;
+}
+
+.dash-stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: calc(var(--padding) * 4);
+}
+
+.resolved-breach-indicator,
+.progress-header::before {
+  height: 24px;
+  min-width: 24px;
+  display: inline-block;
+  vertical-align: middle;
+  background-color: #20c3a2;
+  background-image: url('../../img/svg/white-check.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  content: '';
+  border-radius: 50%;
+}
+
+.progress-header::before {
+  margin-right: 8px;
+}
+
+.progress-bar-wrapper {
+  margin-bottom: calc(var(--padding) * 4);
+}
+
+.progress-bar {
+  -webkit-appearance: none;
+  background: var(--monitor-gradient);
+  color: #fff;
+  border-radius: 4px;
+  height: 24px;
+  overflow: hidden;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 100%;
+  direction: rtl;
+  padding: 0;
+  border: none;
+  box-shadow: 0 0 0 1px var(--grey3);
+}
+
+/* removes black border on edge */
+.progress-bar::-ms-fill {
+  border-color: currentcolor;
+}
+
+.progress-status-message {
+  color: var(--purple7);
+  margin: auto;
+  max-width: 640px;
+  align-items: center;
+}
+
+.progress-message-subhead {
+  margin-bottom: 8px;
+}
+
+.progress-message-body {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.breach-resolution-img {
+  height: 115px;
+  width: 120px;
+  min-width: 120px;
+  margin-right: 20px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.breach-resolution-intro {
+  background-image: url('../../img/svg/breach-resolution-intro.svg');
+}
+
+.breach-resolution-complete {
+  background-image: url('../../img/svg/breach-resolution-complete.svg');
+}
+
+progress[value]::-webkit-progress-bar {
+  background: transparent;
+}
+
+.progress-bar::-moz-progress-bar {
+  background-color: rgb(255 255 255 / 1);
+  transition: all 0.5s ease;
+}
+
+progress.progress-bar::-webkit-progress-value {
+  background-color: rgb(255 255 255 / 1);
+  box-shadow: 30px -9px 0 9px white;
+  transition: all 0.5s ease;
+}
+
+.percent-complete {
+  align-self: center;
+}
+
+@media screen and (max-width: 800px) {
+  .dash-stats {
+    flex-direction: column;
+  }
+
+  .breach-stat-row {
+    max-width: 100%;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .stat-row-title-wrap {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .stat-headline {
+    text-align: left;
+  }
+
+  .breach-stat-number {
+    width: auto;
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .img-placeholder {
+    margin-bottom: 20px;
+  }
+
+  .progress-status-message {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .percent-complete {
+    display: none;
+  }
+}

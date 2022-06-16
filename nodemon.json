@@ -1,0 +1,17 @@
+{
+  "restartable": "rs",
+  "verbose": false,
+  "events": {
+    "restart": "npm run build"
+  },
+  "watch": [
+    "./*",
+    ".env",
+    ".env-dist"
+  ],
+  "ignore": [
+    "public/dist/*",
+    "tests/*"
+  ],
+  "ext": "js,css,hbs,json"
+}

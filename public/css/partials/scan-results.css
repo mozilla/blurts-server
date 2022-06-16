@@ -1,0 +1,166 @@
+.mw-860.found-breaches {
+  padding-top: 0;
+  padding-bottom: 0;
+  flex-direction: row;
+  display: inline-flex;
+}
+
+.headline-col {
+  text-align: center;
+  padding-bottom: 0;
+}
+
+.scanned-email-address {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-family: Metropolis, sans-serif;
+  font-weight: 600;
+}
+
+.source-info-wrap {
+  margin-top: 16px;
+  padding-bottom: 0;
+}
+
+.scan-res-subhead,
+.scanned-email-address,
+.scan-results-headline {
+  text-align: center;
+}
+
+.scan-results-headline {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+.found-breaches,
+.show-additional-breaches {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.show-additional-breaches-wrapper {
+  width: 100%;
+}
+
+.row.scan-results,
+.user-found-breaches {
+  margin: 0 auto;
+}
+
+.scan-res-subhead {
+  margin: var(--padding) auto auto auto;
+}
+
+.scanned-email-address .bold,
+.scan-results-headline span.bold,
+.scan-res-subhead span.bold {
+  color: var(--violet3);
+}
+
+.temp-marketing-img {
+  max-width: 320px;
+}
+
+.temp-marketing-hl {
+  color: #20123a;
+  font-size: 24px;
+  line-height: 1.13;
+  margin-bottom: 4px;
+}
+
+.temp-marketing-p {
+  color: var(--grey8);
+  line-height: 1.5;
+  margin: 0 auto 16px;
+  font-size: 18px;
+}
+
+.temp-marketing-callout {
+  margin: 20px auto 40px;
+}
+
+.temp-marketing-callout span {
+  color: var(--purple7);
+}
+
+.temp-marketing-btn-blue {
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 16px;
+  max-width: 320px;
+  font-weight: 600;
+  background-color: var(--blue3);
+  border: none;
+  width: 100%;
+  color: rgb(255 255 255 / 1);
+  padding-right: var(--padding);
+  padding-left: var(--padding);
+  min-height: 48px;
+  transition: all 0.15s ease-in-out;
+}
+
+.temp-marketing-btn-blue.button-top {
+  margin-top: 16px;
+}
+
+.temp-marketing-btn-blue:hover {
+  background-color: var(--blue4);
+  transition: all 0.15s ease-in-out;
+}
+
+@media screen and (max-width: 800px) {
+  .scanned-email-address,
+  .scan-results-headline,
+  .scan-res-subhead {
+    text-align: left;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .headline-col {
+    text-align: left;
+    max-width: 500px;
+  }
+
+  .scanned-email-address {
+    font-size: 16px;
+  }
+
+  .found-breaches.scan-res-breaches {
+    padding: 0 var(--padding);
+  }
+}
+
+.facebook-notes {
+  text-align: left;
+  margin-bottom: 100px;
+}
+
+.facebook-notes .section-headline {
+  margin-top: 3rem;
+}
+
+.facebook-notes.temp-marketing-callout span a {
+  color: var(--blue3);
+}
+
+.facebook-notes .feature-tip-content-wrapper:last-of-type {
+  margin-bottom: 20px;
+}
+
+.facebook-notes a.recommendation {
+  margin-left: 80px;
+}
+
+@media screen and (max-width: 800px) {
+  .facebook-notes a.recommendation {
+    margin-left: 0;
+    text-align: center;
+    display: inline-block;
+  }
+}

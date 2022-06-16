@@ -10,14 +10,14 @@
       <div class="gradient-inset about-row flx-col">
         <div class="content-wrap">
           <div class="col-12 txt-cntr">
-            <h3 class="feature-tip-headline bold ff-Met">{{ getString "how-fxm-works" }}</h3>
+            <h3 class="feature-tip-headline bold ff-met">{{ getString "how-fxm-works" }}</h3>
           </div>
             <div class="col-12 how-fxm-works flx-row no-vertical-padding space-between">
               {{#each (getAboutPageStrings) }}
                 <div class="fxm-card-wrap flx">
                   <div class="fxm-card flx flx-col space-between">
                     <div class="txt-cntr">
-                      <h4 class="how-fxm-headline feature-title ff-Met">{{ this.headline }}</h4>
+                      <h4 class="how-fxm-headline feature-title ff-met">{{ this.headline }}</h4>
                       <p class="how-fxm-works-blurb feature-subhead txt-light">{{ this.subhead }}</p>
                     </div>
                     {{#ifCompare this.ctaId "===" "signUp"}} 

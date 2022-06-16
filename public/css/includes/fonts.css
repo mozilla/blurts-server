@@ -1,0 +1,39 @@
+@font-face {
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 600;
+  src: local('Metropolis-SemiBold'), url('../../fonts/Metropolis/Metropolis-SemiBold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter-Regular'), url('../../fonts/Inter/Inter-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter-Italic'), url('../../fonts/Inter/Inter-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Inter-Bold'), url('../../fonts/Inter/Inter-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Inter;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Inter-BoldItalic'), url('../../fonts/Inter/Inter-BoldItalic.woff2') format('woff2');
+}

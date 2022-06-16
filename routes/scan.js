@@ -1,18 +1,17 @@
-"use strict";
+'use strict'
 
-const express = require("express");
-const bodyParser = require("body-parser");
-const csrf = require("csurf");
+const express = require('express')
+const bodyParser = require('body-parser')
+const csrf = require('csurf')
 
-const { asyncMiddleware } = require("../middleware");
-const { post, get } = require("../controllers/scan");
+const { asyncMiddleware } = require('../middleware')
+const { post, get } = require('../controllers/scan')
 
-const router = express.Router();
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
-const csrfProtection = csrf();
+const router = express.Router()
+const urlEncodedParser = bodyParser.urlencoded({ extended: false })
+const csrfProtection = csrf()
 
+router.post('/', urlEncodedParser, csrfProtection, asyncMiddleware(post))
+router.get('/', get)
 
-router.post("/", urlEncodedParser, csrfProtection, asyncMiddleware(post));
-router.get("/", get);
-
-module.exports = router;
+module.exports = router

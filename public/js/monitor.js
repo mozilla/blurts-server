@@ -1,589 +1,584 @@
-"use strict";
+import { sendPing, sendRecommendationPings, getFxaUtms } from './fxa-analytics.js'
+import { hashEmailAndSend } from './scan-email.js'
 
-/* global sendPing */
-/* global getFxaUtms */
-/* global hashEmailAndSend */
-/* global sendRecommendationPings */
-/* global ga */
-
-if (typeof TextEncoder === "undefined") {
-  const cryptoScript = document.createElement("script");
-  const scripts = document.getElementsByTagName("script")[0];
-  cryptoScript.src = "/dist/edge.min.js";
-  scripts.parentNode.insertBefore(cryptoScript, scripts);
+if (typeof TextEncoder === 'undefined') {
+  const cryptoScript = document.createElement('script')
+  const scripts = document.getElementsByTagName('script')[0]
+  cryptoScript.src = '/dist/edge.min.js'
+  scripts.parentNode.insertBefore(cryptoScript, scripts)
 }
 
-
-function findAncestor(el, cls) {
+function findAncestor (el, cls) {
   while ((el = el.parentElement) && !el.classList.contains(cls));
-  return el;
+  return el
 }
 
-
-function toggleEl(e) {
-  const toggleButton = e.target;
-  const toggleParent = findAncestor(toggleButton, "toggle-parent");
-  ["inactive", "active"].forEach(className => {
-    toggleParent.classList.toggle(className);
-  });
+function toggleEl (e) {
+  const toggleButton = e.target
+  const toggleParent = findAncestor(toggleButton, 'toggle-parent');
+  ['inactive', 'active'].forEach(className => {
+    toggleParent.classList.toggle(className)
+  })
 }
 
-
-function isValidEmail(val) {
+function isValidEmail (val) {
   // https://stackoverflow.com/a/46181
-  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(String(val).toLowerCase());
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  return re.test(String(val).toLowerCase())
 }
 
-function getSubmittedEmail() {
-  const email = document.querySelector("#scan-user-email input[type=email]").value;
+function getSubmittedEmail () {
+  const email = document.querySelector('#scan-user-email input[type=email]').value
   if (!isValidEmail(email)) {
-    return false;
+    return false
   }
-  return email;
+  return email
 }
 
-function overwriteLastScannedEmail(email, scannedEmailId) {
+function overwriteLastScannedEmail (email, scannedEmailId) {
   if (!sessionStorage) {
-    throw new Error("Session storage not available");
+    throw new Error('Session storage not available')
   }
-  sessionStorage.removeItem("lastScannedEmail");
-  sessionStorage.setItem("lastScannedEmail", email);
-  scannedEmailId.value = sessionStorage.length;
+  sessionStorage.removeItem('lastScannedEmail')
+  sessionStorage.setItem('lastScannedEmail', email)
+  scannedEmailId.value = sessionStorage.length
 }
 
-function doOauth(el, { emailWatch = false } = {}) {
-  let url = new URL("/oauth/init", document.body.dataset.serverUrl);
+function doOauth (el, { emailWatch = false } = {}) {
+  let url = new URL('/oauth/init', document.body.dataset.serverUrl)
   url = getFxaUtms(url);
 
-  ["flowId", "flowBeginTime", "entrypoint", "entrypoint_experiment", "entrypoint_variation", "form_type"].forEach(key => {
+  ['flowId', 'flowBeginTime', 'entrypoint', 'entrypoint_experiment', 'entrypoint_variation', 'form_type'].forEach(key => {
     if (el.dataset[key]) {
-      url.searchParams.append(key, encodeURIComponent(el.dataset[key]));
+      url.searchParams.append(key, encodeURIComponent(el.dataset[key]))
     }
-  });
+  })
 
   if (!sessionStorage) {
-    window.location.assign(url);
-    return;
+    window.location.assign(url)
+    return
   }
 
-  const lastScannedEmail = sessionStorage.getItem("lastScannedEmail");
+  const lastScannedEmail = sessionStorage.getItem('lastScannedEmail')
 
-  if (typeof emailWatch !== "boolean") {
-    throw new Error("invalid argument option in doOauth");
+  if (typeof emailWatch !== 'boolean') {
+    throw new Error('invalid argument option in doOauth')
   }
 
   if (!emailWatch) {
     // Preserve entire control function
     if (lastScannedEmail) {
-      url.searchParams.append("email", lastScannedEmail);
+      url.searchParams.append('email', lastScannedEmail)
     }
-    window.location.assign(url);
-    return;
+    window.location.assign(url)
+    return
   }
 
-  const submittedEmail = getSubmittedEmail();
-  const scannedEmailId = document.querySelector("#scan-user-email input[name=scannedEmailId]");
+  const submittedEmail = getSubmittedEmail()
+  const scannedEmailId = document.querySelector('#scan-user-email input[name=scannedEmailId]')
 
   if (lastScannedEmail === submittedEmail) {
-    url.searchParams.append("email", lastScannedEmail);
-    window.location.assign(url);
-    return;
+    url.searchParams.append('email', lastScannedEmail)
+    window.location.assign(url)
+    return
   }
 
   // Use the email address the user submitted in FxA Oauth flow
-  overwriteLastScannedEmail(submittedEmail, scannedEmailId);
-  url.searchParams.append("email", submittedEmail);
-  window.location.assign(url);
+  overwriteLastScannedEmail(submittedEmail, scannedEmailId)
+  url.searchParams.append('email', submittedEmail)
+  window.location.assign(url)
 }
 
-
-function addFormListeners() {
+function addFormListeners () {
   Array.from(document.forms).forEach(form => {
-    if (form.querySelector("input[type=email]")) {
-      const emailInput = form.querySelector("input[type=email]");
-      emailInput.addEventListener("keydown", (e) => {
-        form.classList.remove("invalid");
-      });
+    if (form.querySelector('input[type=email]')) {
+      const emailInput = form.querySelector('input[type=email]')
+      emailInput.addEventListener('keydown', (e) => {
+        form.classList.remove('invalid')
+      })
 
-      emailInput.addEventListener("invalid", (e) => {
-        e.preventDefault();
-        form.classList.add("invalid");
-      });
+      emailInput.addEventListener('invalid', (e) => {
+        e.preventDefault()
+        form.classList.add('invalid')
+      })
 
-      emailInput.addEventListener("keydown", () => {
-        if (emailInput.value === "") {
-          sendPing(form, "Engage");
+      emailInput.addEventListener('keydown', () => {
+        if (emailInput.value === '') {
+          sendPing(form, 'Engage')
         }
-      });
+      })
 
-      emailInput.addEventListener("focus", () => {
-        if (emailInput.value === "") {
-          sendPing(form, "Engage");
+      emailInput.addEventListener('focus', () => {
+        if (emailInput.value === '') {
+          sendPing(form, 'Engage')
         }
-      });
+      })
     }
-    form.addEventListener("submit", (e) => handleFormSubmits(e), true);
-  });
+    form.addEventListener('submit', (e) => handleFormSubmits(e), true)
+  })
 }
 
-function handleFormSubmits(formEvent) {
-  formEvent.preventDefault();
-  const thisForm = formEvent.target;
-  let email = "";
+function handleFormSubmits (formEvent) {
+  formEvent.preventDefault()
+  const thisForm = formEvent.target
+  let email = ''
 
-  sendPing(thisForm, "Submit", null, { transport: "beacon" });
+  sendPing(thisForm, 'Submit', null, { transport: 'beacon' })
 
   if (thisForm.email) {
-    email = thisForm.email.value.trim();
-    thisForm.email.value = email;
+    email = thisForm.email.value.trim()
+    thisForm.email.value = email
   }
 
-  const formClassList = thisForm.classList;
+  const formClassList = thisForm.classList
 
   if (thisForm.email && !isValidEmail(email)) {
-    sendPing(thisForm, "Failure");
-    formClassList.add("invalid");
-    return;
+    sendPing(thisForm, 'Failure')
+    formClassList.add('invalid')
+    return
   }
-  if (formClassList.contains("email-scan")) {
-    hashEmailAndSend(formEvent);
-    return;
+  if (formClassList.contains('email-scan')) {
+    hashEmailAndSend(formEvent)
+    return
   }
   // if the form contains the class "loading-data", it has
   // already been submitted, so return without re-submitting.
-  if (formClassList.contains("loading-data")) {
-    return;
+  if (formClassList.contains('loading-data')) {
+    return
   }
-  formClassList.add("loading-data");
-  return thisForm.submit();
+  formClassList.add('loading-data')
+  return thisForm.submit()
 }
 
-//re-enables inputs and clears loader
-function restoreInputs() {
+// re-enables inputs and clears loader
+function restoreInputs () {
   Array.from(document.forms).forEach(form => {
-    form.classList.remove("loading-data");
-    form.classList.remove("invalid");
-  });
-  document.querySelectorAll("input").forEach(input => {
+    form.classList.remove('loading-data')
+    form.classList.remove('invalid')
+  })
+  document.querySelectorAll('input').forEach(input => {
     if (input.disabled) {
-      input.disabled = false;
+      input.disabled = false
     }
-  });
+  })
 }
 
-function toggleDropDownMenu(dropDownMenu) {
-  if (dropDownMenu.classList.contains("mobile-menu-open")) {
-    return dropDownMenu.classList.remove("mobile-menu-open");
+function toggleDropDownMenu (dropDownMenu) {
+  if (dropDownMenu.classList.contains('mobile-menu-open')) {
+    return dropDownMenu.classList.remove('mobile-menu-open')
   }
-  return dropDownMenu.classList.add("mobile-menu-open");
+  return dropDownMenu.classList.add('mobile-menu-open')
 }
 
-function toggleArticles() {
-  const windowWidth = window.innerWidth;
-  const articleToggles = document.querySelectorAll(".st-toggle-wrapper, .relay-info.toggle-parent");
+function toggleArticles () {
+  const windowWidth = window.innerWidth
+  const articleToggles = document.querySelectorAll('.st-toggle-wrapper, .relay-info.toggle-parent')
   if (windowWidth > 600) {
     articleToggles.forEach(toggle => {
-      toggle.classList.add("active");
-      toggle.classList.remove("inactive");
-    });
-    return;
+      toggle.classList.add('active')
+      toggle.classList.remove('inactive')
+    })
+    return
   }
   articleToggles.forEach(toggle => {
-    toggle.classList.remove("active");
-    toggle.classList.add("inactive");
-  });
+    toggle.classList.remove('active')
+    toggle.classList.add('inactive')
+  })
 }
 
-function hideShowNavBars(win, navBar, bentoButton) {
+function hideShowNavBars (win, navBar, bentoButton) {
   win.onscroll = function (e) {
     // catch a window that has resized from less than 600px
     // to greater than 600px and unhide navigation.
     if (win.innerWidth > 600) {
-      navBar.classList = ["show-nav-bars"];
-      return;
+      navBar.classList = ['show-nav-bars']
+      return
     }
 
     if (win.pageYOffset < 100) {
-      navBar.classList = ["show-nav-bars"];
-      return;
+      navBar.classList = ['show-nav-bars']
+      return
     }
 
     if (
       this.oldScroll < (this.scrollY - 50) &&
-      navBar.classList.contains("show-nav-bars") &&
+      navBar.classList.contains('show-nav-bars') &&
       !bentoButton._active
     ) {
-      navBar.classList = ["hide-nav-bars"];
-      this.oldScroll = this.scrollY;
-      return;
+      navBar.classList = ['hide-nav-bars']
+      this.oldScroll = this.scrollY
+      return
     }
 
     if (this.oldScroll > this.scrollY + 50) {
-      navBar.classList = ["show-nav-bars"];
-      this.oldScroll = this.scrollY;
-      return;
+      navBar.classList = ['show-nav-bars']
+      this.oldScroll = this.scrollY
+      return
     }
-    this.oldScroll = this.scrollY;
-  };
+    this.oldScroll = this.scrollY
+  }
 }
 
-function toggleMobileFeatures(topNavBar) {
-  const win = window;
-  const windowWidth = win.innerWidth;
+function toggleMobileFeatures (topNavBar) {
+  const win = window
+  const windowWidth = win.innerWidth
   if (windowWidth > 800) {
-    const emailCards = document.querySelectorAll(".breaches-dash.email-card:not(.zero-breaches)");
+    const emailCards = document.querySelectorAll('.breaches-dash.email-card:not(.zero-breaches)')
     emailCards.forEach(card => {
-      card.classList.add("active");
-    });
-    return;
+      card.classList.add('active')
+    })
+    return
   }
 
-  const bentoButton = document.querySelector("firefox-apps");
-  const closeActiveEmailCards = document.querySelectorAll(".breaches-dash.email-card.active");
+  const bentoButton = document.querySelector('firefox-apps')
+  const closeActiveEmailCards = document.querySelectorAll('.breaches-dash.email-card.active')
   closeActiveEmailCards.forEach(card => {
-    card.classList.remove("active");
-  });
+    card.classList.remove('active')
+  })
 
   if (windowWidth < 600) {
-    hideShowNavBars(win, topNavBar, bentoButton);
-    addBentoObserver();
+    hideShowNavBars(win, topNavBar, bentoButton)
+    addBentoObserver()
   }
 }
 
-function toggleHeaderStates(header, win) {
+function toggleHeaderStates (header, win) {
   if (win.outerWidth < 600) {
-    return;
+    return
   }
   if (win.pageYOffset > 400) {
-    header.classList.add("show-shadow");
+    header.classList.add('show-shadow')
   } else {
-    header.classList.remove("show-shadow");
+    header.classList.remove('show-shadow')
   }
 }
 
-function addMainNavListeners() {
-  const inactiveNavLinks = document.querySelectorAll(".nav-link:not(.active-link)");
+function addMainNavListeners () {
+  const inactiveNavLinks = document.querySelectorAll('.nav-link:not(.active-link)')
   inactiveNavLinks.forEach(link => {
     /* Remove the .active-link-underline class from any link
        that isn't the current ".active-link" which occasionally
        happens when the user navigates to a page using browser
        backwards/forwards buttons. */
-    if (link.classList.contains("active-link-underline")) {
-      link.classList.remove("active-link-underline");
+    if (link.classList.contains('active-link-underline')) {
+      link.classList.remove('active-link-underline')
     }
-    link.addEventListener("mouseenter", () => {
-      link.classList.add("active-link-underline");
-    });
-    link.addEventListener("mouseleave", () => {
-      link.classList.remove("active-link-underline");
-    });
-  });
+    link.addEventListener('mouseenter', () => {
+      link.classList.add('active-link-underline')
+    })
+    link.addEventListener('mouseleave', () => {
+      link.classList.remove('active-link-underline')
+    })
+  })
 }
 
-function addBentoObserver() {
-  const bodyClasses = document.body.classList;
-  const bentoButton = document.querySelector("firefox-apps");
-  const observerConfig = { attributes: true };
+function addBentoObserver () {
+  const bodyClasses = document.body.classList
+  const bentoButton = document.querySelector('firefox-apps')
+  const observerConfig = { attributes: true }
   const watchBentoChanges = function (bentoEl, observer) {
     for (const mutation of bentoEl) {
-      if (mutation.type === "attributes") {
-        bodyClasses.toggle("bento-open", bentoButton._active);
+      if (mutation.type === 'attributes') {
+        bodyClasses.toggle('bento-open', bentoButton._active)
       }
     }
-  };
+  }
   if (bentoButton) {
-    const observer = new MutationObserver(watchBentoChanges);
-    observer.observe(bentoButton, observerConfig);
+    const observer = new MutationObserver(watchBentoChanges)
+    observer.observe(bentoButton, observerConfig)
   }
 }
 
-function setHeaderHeight() {
-  const header = document.getElementById("header");
-  const height = header?.offsetHeight || 0;
+function setHeaderHeight () {
+  const header = document.getElementById('header')
+  const height = header?.offsetHeight || 0
 
-  document.body.style.setProperty("--header-height", `${height}px`);
+  document.body.style.setProperty('--header-height', `${height}px`)
 }
 
-function recruitmentLogic() {
-  const recruitmentBannerLink = document.querySelector("#recruitment-banner");
+function recruitmentLogic () {
+  const recruitmentBannerLink = document.querySelector('#recruitment-banner')
   if (!recruitmentBannerLink) {
-    return;
+    return
   }
 
-  const recruited = document.cookie.split("; ").some((item) => item.trim().startsWith("recruited="));
+  const recruited = document.cookie.split('; ').some((item) => item.trim().startsWith('recruited='))
   if (recruited) {
-    recruitmentBannerLink.parentElement.remove();
-    return;
+    recruitmentBannerLink.parentElement.remove()
+    return
   } else {
-    recruitmentBannerLink.removeAttribute("hidden");
+    recruitmentBannerLink.removeAttribute('hidden')
   }
 
-  recruitmentBannerLink.addEventListener("click", () => {
-    const date = new Date();
-    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000);
-    document.cookie = "recruited=true; expires=" + date.toUTCString();
-  });
+  recruitmentBannerLink.addEventListener('click', () => {
+    const date = new Date()
+    date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000)
+    document.cookie = 'recruited=true; expires=' + date.toUTCString()
+  })
 }
 
-async function initVpnBanner() {
-  const vpnBanner = document.querySelector(".vpn-banner");
+async function initVpnBanner () {
+  const vpnBanner = document.querySelector('.vpn-banner')
 
-  if (!vpnBanner) return;
+  if (!vpnBanner) return
 
-  const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height));
-  resizeObserver.observe(vpnBanner); // call before `await` for initial height render
+  const resizeObserver = new ResizeObserver(entries => updateHeight(entries[0].contentRect.height))
+  resizeObserver.observe(vpnBanner) // call before `await` for initial height render
 
-  const locationDataReq = new Request("/iplocation");
-  const protectionDataReq = new Request("https://am.i.mullvad.net/json");
-  const cache = await initCache();
+  const locationDataReq = new Request('/iplocation')
+  const protectionDataReq = new Request('https://am.i.mullvad.net/json')
+  const cache = await initCache()
   const locationData = await fetch(locationDataReq)
     .then(res => res.json())
-    .catch(e => console.warn("Error fetching location data.", e));
+    .catch(e => console.warn('Error fetching location data.', e))
 
-  let protectionData = await getCacheData(protectionDataReq);
+  let protectionData = await getCacheData(protectionDataReq)
 
   if (!protectionData || protectionData.ip !== locationData?.clientIp) {
     // get fresh data if none cached or user IP changed since last cached response
     protectionData = await fetchData(protectionDataReq).then(data => {
-      if (!data) return null;
-      return { ip: data.ip, isProtected: data.mullvad_exit_ip };
-    });
+      if (!data) return null
+      return { ip: data.ip, isProtected: data.mullvad_exit_ip }
+    })
   }
 
   if (locationData?.clientIp) {
-    vpnBanner.querySelector(".client-ip output").textContent = locationData.clientIp;
+    vpnBanner.querySelector('.client-ip output').textContent = locationData.clientIp
   } else {
-    vpnBanner.querySelector(".client-ip").remove();
+    vpnBanner.querySelector('.client-ip').remove()
   }
 
   if (locationData?.shortLocation) {
-    vpnBanner.querySelector(".short-location output").textContent = locationData.shortLocation;
+    vpnBanner.querySelector('.short-location output').textContent = locationData.shortLocation
   } else {
-    vpnBanner.querySelector(".short-location").remove();
+    vpnBanner.querySelector('.short-location').remove()
   }
 
   if (locationData?.fullLocation) {
-    vpnBanner.querySelector(".full-location output").textContent = locationData.fullLocation;
+    vpnBanner.querySelector('.full-location output').textContent = locationData.fullLocation
   } else {
-    vpnBanner.querySelector(".full-location").remove();
+    vpnBanner.querySelector('.full-location').remove()
   }
 
-  vpnBanner.cta = vpnBanner.querySelector("a.vpn-banner-cta");
-  vpnBanner.cta.setAttribute("href", vpnBanner.cta.getAttribute("href") + getPageAttribution());
-  vpnBanner.setAttribute("data-protected", Boolean(protectionData?.isProtected));
-  vpnBanner.addEventListener("click", handleClick);
+  vpnBanner.cta = vpnBanner.querySelector('a.vpn-banner-cta')
+  vpnBanner.cta.setAttribute('href', vpnBanner.cta.getAttribute('href') + getPageAttribution())
+  vpnBanner.setAttribute('data-protected', Boolean(protectionData?.isProtected))
+  vpnBanner.addEventListener('click', handleClick)
 
-  if (cache && protectionData) cache.put(protectionDataReq, new Response(JSON.stringify(protectionData)));
+  if (cache && protectionData) cache.put(protectionDataReq, new Response(JSON.stringify(protectionData)))
 
-  async function initCache() {
-    const cacheAvailable = "caches" in self;
-    let cache;
+  async function initCache () {
+    const cacheAvailable = 'caches' in self
+    let cache
 
-    if (cacheAvailable) cache = await caches.open("vpn-banner").catch(e => null);
+    if (cacheAvailable) cache = await caches.open('vpn-banner').catch(e => null)
 
-    return cache;
+    return cache
   }
 
-  async function getCacheData(req) {
-    if (!cache) return null;
+  async function getCacheData (req) {
+    if (!cache) return null
 
     const json = await cache.match(req)
       .then(res => res.json())
-      .catch(e => console.warn("Could not get cached response.", e.message));
+      .catch(e => console.warn('Could not get cached response.', e.message))
 
-    return json;
+    return json
   }
 
-  async function fetchData(req, reqTimeoutMs = 4000) {
-    const abortController = new AbortController();
-    const timer = setTimeout(() => abortController.abort(), reqTimeoutMs); // abort a delayed response
+  async function fetchData (req, reqTimeoutMs = 4000) {
+    const abortController = new AbortController()
+    const timer = setTimeout(() => abortController.abort(), reqTimeoutMs) // abort a delayed response
     const json = await fetch(req, { signal: abortController.signal })
       .then(res => {
-        clearTimeout(timer);
-        if (!res.ok) throw new Error(`Bad response (${res.status})`);
-        return res.json();
+        clearTimeout(timer)
+        if (!res.ok) throw new Error(`Bad response (${res.status})`)
+        return res.json()
       })
-      .catch(e => console.warn("Error fetching protection data.", e));
+      .catch(e => console.warn('Error fetching protection data.', e))
 
-    return json;
+    return json
   }
 
-  function handleClick(e) {
+  function handleClick (e) {
     switch (e.target.className) {
-      case "vpn-banner-top":
-      case "vpn-banner-close":
-        vpnBanner.toggleAttribute("data-expanded");
-        break;
+      case 'vpn-banner-top':
+      case 'vpn-banner-close':
+        vpnBanner.toggleAttribute('data-expanded')
+        break
     }
   }
 
-  function updateHeight(h) {
-    document.body.style.setProperty("--vpn-banner-height", `${Math.floor(h)}px`);
+  function updateHeight (h) {
+    document.body.style.setProperty('--vpn-banner-height', `${Math.floor(h)}px`)
   }
 }
 
-async function initCsatBanner() {
-  const csatBanner = document.querySelector(".csat-banner");
+async function initCsatBanner () {
+  const csatBanner = document.querySelector('.csat-banner')
 
-  if (!csatBanner) return;
+  if (!csatBanner) return
 
-  csatBanner.addEventListener("click", handleEvent);
+  csatBanner.addEventListener('click', handleEvent)
 
-  function handleEvent(e) {
-    const ttl = new Date();
-    ttl.setDate(ttl.getDate() + 90);
-    document.cookie = "csatHidden=1; path=/; sameSite=Lax; expires=" + ttl.toUTCString();
+  function handleEvent (e) {
+    const ttl = new Date()
+    ttl.setDate(ttl.getDate() + 90)
+    document.cookie = 'csatHidden=1; path=/; sameSite=Lax; expires=' + ttl.toUTCString()
 
     switch (e.target.name) {
-      case "csat-close-btn":
-        csatBanner.toggleAttribute("hidden", true);
-        csatBanner.removeEventListener("click", handleEvent);
-        break;
-      case "csat-option":
-        csatBanner.toggleAttribute("disabled", true);
-        csatBanner.querySelector(".csat-question").textContent = "Thanks for your feedback!";
-        e.target.parentElement.classList.add("selected");
-        if (window.ga) ga("send", "event", "CSAT banner", "submit", e.target.nextSibling.textContent, e.target.value);
-        break;
+      case 'csat-close-btn':
+        csatBanner.toggleAttribute('hidden', true)
+        csatBanner.removeEventListener('click', handleEvent)
+        break
+      case 'csat-option':
+        csatBanner.toggleAttribute('disabled', true)
+        csatBanner.querySelector('.csat-question').textContent = 'Thanks for your feedback!'
+        e.target.parentElement.classList.add('selected')
+        if (window.ga) window.ga('send', 'event', 'CSAT banner', 'submit', e.target.nextSibling.textContent, e.target.value)
+        break
     }
 
-    setHeaderHeight();
+    setHeaderHeight()
   }
 }
 
-async function initAdUnit() {
-  const adUnit = document.querySelector("[data-ad-unit]");
+async function initAdUnit () {
+  const adUnit = document.querySelector('[data-ad-unit]')
 
-  if (!adUnit) return;
+  if (!adUnit) return
 
-  const cta = adUnit.querySelector(".ad-unit-cta");
+  const cta = adUnit.querySelector('.ad-unit-cta')
 
   // add utm_content param.  Final href example: https://vpn.mozilla.org/?utm_source=firefox-monitor&utm_medium=ad-unit&utm_content=home-ad-3
-  cta.href += `${getPageAttribution()}-ad-${adUnit.dataset.adUnit}`;
+  cta.href += `${getPageAttribution()}-ad-${adUnit.dataset.adUnit}`
 }
 
-function getPageAttribution() {
+function getPageAttribution () {
   // returns utm_content param e.g. "&utm_content=user/dashboard"
-  let page = location.pathname;
+  let page = location.pathname
 
-  if (page.startsWith("/")) page = page.slice(1);
+  if (page.startsWith('/')) page = page.slice(1)
 
-  if (page === "") page = "home";
+  if (page === '') page = 'home'
 
-  return `&utm_content=${page}`;
+  return `&utm_content=${page}`
+}
+
+function replaceLogo (e) {
+  e.target.src = '/img/logos/missing-logo-icon.png'
+  e.target.removeEventListener('error', replaceLogo)
 }
 
 (async () => {
-  document.addEventListener("touchstart", function () { }, true);
-  const win = window;
-  const header = document.getElementById("header");
-  const topNavigation = document.querySelector("#navigation-wrapper");
+  document.addEventListener('touchstart', function () { }, true)
+  const win = window
+  const header = document.getElementById('header')
+  const topNavigation = document.querySelector('#navigation-wrapper')
 
-  win.addEventListener("pageshow", function () {
-    addMainNavListeners();
-    toggleMobileFeatures(topNavigation);
-    toggleArticles();
-    toggleHeaderStates(header, win);
-    document.forms ? (restoreInputs(), addFormListeners()) : null;
-  });
-
-  document.forms ? (restoreInputs(), addFormListeners()) : null;
-
-  let windowWidth = win.outerWidth;
-  document.addEventListener("DOMContentLoaded", setHeaderHeight);
-  win.addEventListener("resize", () => {
-    const newWindowWidth = win.outerWidth;
-    if (newWindowWidth !== windowWidth) {
-      toggleMobileFeatures(topNavigation);
-      toggleArticles();
-      windowWidth = newWindowWidth;
-      setHeaderHeight();
+  win.addEventListener('pageshow', function () {
+    addMainNavListeners()
+    toggleMobileFeatures(topNavigation)
+    toggleArticles()
+    toggleHeaderStates(header, win)
+    if (document.forms) {
+      restoreInputs()
+      addFormListeners()
     }
-  });
+  })
 
-  document.addEventListener("scroll", () => toggleHeaderStates(header, win));
-
-  document.querySelectorAll(".breach-logo:not(.lazy-img)").forEach(logo => {
-    logo.addEventListener("error", (missingLogo) => {
-      missingLogo.target.src = "/img/svg/placeholder.svg";
-    });
-  });
-
-  document.querySelectorAll(".toggle").forEach(toggle => {
-    toggle.addEventListener("click", toggleEl);
-  });
-
-  document.querySelectorAll(".open-oauth").forEach(button => {
-    button.addEventListener("click", (e) => doOauth(e.target));
-  });
-
-  document.querySelectorAll("#see-additional-recs").forEach(button => {
-    button.addEventListener("click", () => {
-      button.classList.add("fade-out");
-      const overflowRecs = document.getElementById("overflow-recs");
-      overflowRecs.classList.remove("hide");
-      if (typeof (ga) !== "undefined") {
-        // Send "Click" ping for #see-additional-recs click
-        ga("send", "event", "Breach Details: See Additional Recommendations", "Click", "See Additional Recommendations");
-        // Send "View" pings for any CTAs that become visible on #see-additional-recs click
-        sendRecommendationPings(".overflow-rec-cta");
-      }
-    });
-  });
-
-  setHeaderHeight();
-  recruitmentLogic();
-  // addWaitlistSignupButtonListeners();
-  // addWaitlistObservers();
-  initVpnBanner();
-  initCsatBanner();
-  initAdUnit();
-
-  const dropDownMenu = document.querySelector(".mobile-nav.show-mobile");
-  dropDownMenu.addEventListener("click", () => toggleDropDownMenu(dropDownMenu));
-
-  if (document.getElementById("fxaCheckbox")) {
-    document.getElementById("fxaCheckbox").style.display = "block";
+  if (document.forms) {
+    restoreInputs()
+    addFormListeners()
   }
 
-  const createFxaCheckbox = document.getElementById("createFxaCheckbox");
-  const submitBtn = document.querySelector(".breachesSubmitButton");
+  let windowWidth = win.outerWidth
+  document.addEventListener('DOMContentLoaded', setHeaderHeight)
+  win.addEventListener('resize', () => {
+    const newWindowWidth = win.outerWidth
+    if (newWindowWidth !== windowWidth) {
+      toggleMobileFeatures(topNavigation)
+      toggleArticles()
+      windowWidth = newWindowWidth
+      setHeaderHeight()
+    }
+  })
+
+  document.querySelectorAll('.breach-logo').forEach(logo => {
+    logo.addEventListener('error', replaceLogo)
+  })
+
+  document.addEventListener('scroll', () => toggleHeaderStates(header, win))
+
+  document.querySelectorAll('.toggle').forEach(toggle => {
+    toggle.addEventListener('click', toggleEl)
+  })
+
+  document.querySelectorAll('.open-oauth').forEach(button => {
+    button.addEventListener('click', (e) => doOauth(e.target))
+  })
+
+  document.querySelectorAll('#see-additional-recs').forEach(button => {
+    button.addEventListener('click', () => {
+      button.classList.add('fade-out')
+      const overflowRecs = document.getElementById('overflow-recs')
+      overflowRecs.classList.remove('hide')
+      if (typeof (window.ga) !== 'undefined') {
+        // Send "Click" ping for #see-additional-recs click
+        window.ga('send', 'event', 'Breach Details: See Additional Recommendations', 'Click', 'See Additional Recommendations')
+        // Send "View" pings for any CTAs that become visible on #see-additional-recs click
+        sendRecommendationPings('.overflow-rec-cta')
+      }
+    })
+  })
+
+  setHeaderHeight()
+  recruitmentLogic()
+  initVpnBanner()
+  initCsatBanner()
+  initAdUnit()
+
+  const dropDownMenu = document.querySelector('.mobile-nav.show-mobile')
+  dropDownMenu.addEventListener('click', () => toggleDropDownMenu(dropDownMenu))
+
+  if (document.getElementById('fxaCheckbox')) {
+    document.getElementById('fxaCheckbox').style.display = 'block'
+  }
+
+  const createFxaCheckbox = document.getElementById('createFxaCheckbox')
+  const submitBtn = document.querySelector('.breachesSubmitButton')
 
   if (submitBtn) {
-    submitBtn.addEventListener("click", (e) => {
+    submitBtn.addEventListener('click', (e) => {
       // Email Validation
-      const scanForm = document.getElementById("scan-user-email");
-      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value;
+      const scanForm = document.getElementById('scan-user-email')
+      const scanFormEmailValue = document.querySelector("#scan-user-email input[type='email']").value
 
       if (scanFormEmailValue.length < 1 || !isValidEmail(scanFormEmailValue)) {
-        scanForm.classList.add("invalid");
-        return;
+        scanForm.classList.add('invalid')
+        return
       }
 
       if (createFxaCheckbox.checked) {
-        e.preventDefault();
+        e.preventDefault()
 
         // Send GA Ping
-        if (typeof (ga) !== "undefined") {
-          ga("send", {
-            hitType: "event",
-            eventCategory: "Sign Up Button",
-            eventAction: "Engage",
-            eventLabel: "fx-monitor-homepage-fxa-checkbox",
+        if (typeof (window.ga) !== 'undefined') {
+          window.ga('send', {
+            hitType: 'event',
+            eventCategory: 'Sign Up Button',
+            eventAction: 'Engage',
+            eventLabel: 'fx-monitor-homepage-fxa-checkbox',
             options: {
-              transport: "beacon",
-            },
-          });
+              transport: 'beacon'
+            }
+          })
         }
 
-        doOauth(e.target, { emailWatch: true });
-        return;
+        doOauth(e.target, { emailWatch: true })
       }
-
-    });
+    })
   }
+})()
 
-
-
-})();
+export { findAncestor, doOauth, replaceLogo }

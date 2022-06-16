@@ -19,6 +19,8 @@ RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:app . /app
 
-RUN npm run build:all
+COPY .env-dist ./.env
 
-CMD NODE_ICU_DATA=./node_modules/full-icu node server.js
+RUN npm run build
+
+CMD node server.js

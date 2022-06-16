@@ -1,14 +1,13 @@
-"use strict";
+'use strict'
 
-const mozlog = require("mozlog");
+const mozlog = require('mozlog')
 
-const AppConstants = require("./app-constants");
+const AppConstants = require('./app-constants')
 
 const log = mozlog({
-  app: "fx-monitor",
+  app: 'fx-monitor',
   level: AppConstants.MOZLOG_LEVEL,
-  fmt: AppConstants.MOZLOG_FMT,
-});
+  fmt: AppConstants.MOZLOG_FMT
+})
 
-
-module.exports = log;
+module.exports = log
