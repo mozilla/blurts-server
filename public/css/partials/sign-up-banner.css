@@ -4,7 +4,7 @@
   width: 100%;
   padding: 40px;
   justify-content: space-between;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
 }
 
 .breach-detail-sign-up {
@@ -32,10 +32,10 @@
 }
 
 .sign-up-feature::before {
-  content: "\2022";
+  content: '\2022';
   display: inline-block;
   height: 1rem;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   flex: 1;
   margin-right: 0.5rem;
   width: 1rem;
@@ -46,9 +46,9 @@
 .sign-up-cta::before {
   width: 76px;
   height: 50px;
-  content: "";
+  content: '';
   display: block;
-  background-image: url(../../img/svg/fxa-tout-yellow-env.svg);
+  background-image: url('../../img/svg/fxa-tout-yellow-env.svg');
   background-repeat: no-repeat;
   background-position: bottom center;
   background-size: contain;
@@ -57,7 +57,7 @@
 
 .sign-up-cta p,
 .sign-up-cta .text-link {
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
 }
 
 .have-an-account path {
@@ -69,7 +69,7 @@
   text-align: center;
   font-size: 12px;
   margin: 12px auto;
-  color: rgba(91, 91, 102, 1);
+  color: rgb(91 91 102 / 1);
   line-height: 1.4;
   max-width: 288px;
 }
@@ -92,16 +92,16 @@ p.have-an-account {
 .sign-up-headline {
   font-size: 24px;
   line-height: 1.17;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   max-width: 320px;
-  margin: 0 0 16px 0;
+  margin: 0 0 16px;
 }
 
 .sign-up-feature {
   line-height: 1.5;
   font-size: 16px;
   font-weight: 500;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   display: flex;
 }
 
@@ -110,7 +110,7 @@ p.have-an-account {
 }
 
 .sign-up-cta .browser-not-required {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(255 255 255 / 0.8);
 }
 
 .sign-up-cta {
@@ -133,7 +133,7 @@ p.have-an-account {
 
   h2.sign-up-headline {
     text-align: center;
-    margin: 0 auto 24px auto;
+    margin: 0 auto 24px;
   }
 
   .sign-up-cta,

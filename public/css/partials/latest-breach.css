@@ -12,7 +12,7 @@
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border: 0;
-  padding: 20px 40px 24px 40px;
+  padding: 20px 40px 24px;
 }
 
 .breach-card.latest-breach:hover {
@@ -51,12 +51,12 @@
 
 .latest-breach-headline {
   color: var(--purple6);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255 255 255 / 0.95);
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   font-weight: 600;
   margin: 0 auto;
-  padding: 16px 16px 12px 16px;
+  padding: 16px 16px 12px;
   box-shadow: 0 7px 12px 0 #1c1c1d80;
   font-size: 14px;
   text-align: center;

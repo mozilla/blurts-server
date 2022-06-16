@@ -1,5 +1,5 @@
 .all-breaches-main {
-  background: url("../../img/svg/ab-bg.svg") left top / 100% auto;
+  background: url('../../img/svg/ab-bg.svg') left top / 100% auto;
 }
 
 span.x-close-bg,
@@ -50,7 +50,7 @@ button.fuzzy-find-show-breaches {
   pointer-events: none;
   display: none;
   opacity: 0;
-  margin: 48px auto auto auto;
+  margin: 48px auto auto;
   color: var(--purple7);
   transition: all 0.15s ease-in-out;
 }
@@ -88,14 +88,14 @@ button.fuzzy-find-show-breaches.show {
 
 .fuzzy-form {
   max-width: 320px;
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: rgb(255 255 255 / 0.05);
+  border: 1px solid rgb(255 255 255 / 0.1);
   position: relative;
   margin: 20px auto;
 }
 
 .fuzzy-find-input {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
   border: 1px solid var(--grey90a3);
   width: 100%;
   display: inline-block;
@@ -146,7 +146,7 @@ input#fuzzy-find-input {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
   transition: all 0.1s ease;
 }
 
@@ -157,8 +157,7 @@ input#fuzzy-find-input {
 
 .all-breaches {
   padding: var(--padding);
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: flex-start;
 }
 

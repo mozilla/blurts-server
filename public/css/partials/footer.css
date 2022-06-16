@@ -1,13 +1,13 @@
 footer {
   width: 100%;
-  margin: auto auto 0 auto;
-  background-color: var(--inkDark);
+  margin: auto auto 0;
+  background-color: var(--ink-dark);
   padding-top: 32px;
   padding-bottom: 32px;
 }
 
 .footer-link {
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   font-size: 16px;
   font-weight: 600;
 }
@@ -20,7 +20,7 @@ footer {
   margin: auto auto auto 0;
 }
 
-svg.Mozilla-logo {
+svg.mozilla-logo {
   min-width: 124px;
   max-width: 124px;
 }

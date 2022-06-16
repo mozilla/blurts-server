@@ -22,7 +22,7 @@ li.article {
   font-weight: 600;
   font-size: 16px;
   text-decoration: none;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   display: inline-block;
   align-items: center;
 }
@@ -32,7 +32,7 @@ li.article {
 }
 
 .article-link .arrow-head-right path {
-  fill: rgba(255, 255, 255, 1);
+  fill: rgb(255 255 255 / 1);
 }
 
 .article-list-headline {
