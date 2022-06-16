@@ -14,7 +14,7 @@
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 24px;
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
   font-weight: 600;
 }
 
@@ -76,12 +76,12 @@
 .temp-marketing-p {
   color: var(--grey8);
   line-height: 1.5;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 16px;
   font-size: 18px;
 }
 
 .temp-marketing-callout {
-  margin: 20px auto 40px auto;
+  margin: 20px auto 40px;
 }
 
 .temp-marketing-callout span {
@@ -97,7 +97,7 @@
   background-color: var(--blue3);
   border: none;
   width: 100%;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   padding-right: var(--padding);
   padding-left: var(--padding);
   min-height: 48px;

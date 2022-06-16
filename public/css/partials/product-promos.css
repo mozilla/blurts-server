@@ -3,7 +3,7 @@
   overflow: hidden;
   border-radius: 16px;
   padding: 32px 42px;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   text-align: left;
   background-position: 104%;
   background-size: auto 104%;
@@ -17,20 +17,20 @@
 
 .promo-monitor {
   background-color: #393473;
-  background-image: url("../../img/svg/promos/promo-bg-monitor.svg");
+  background-image: url('../../img/svg/promos/promo-bg-monitor.svg');
 }
 
 .promo-mobile {
   background-color: #123474;
-  background-image: url("../../img/svg/promos/promo-bg-mobile.svg");
+  background-image: url('../../img/svg/promos/promo-bg-mobile.svg');
 }
 
 /* QR Code */
 .product-promo.promo-mobile::after {
   background: #fff;
   border-radius: 4px;
-  background-image: url("../../img/svg/promos/mobile-qr-gradient.svg");
-  content: "";
+  background-image: url('../../img/svg/promos/mobile-qr-gradient.svg');
+  content: '';
   width: 60px;
   height: 60px;
   position: absolute;
@@ -42,15 +42,15 @@
 }
 
 .promo-lockwise {
-  background-image: url("../../img/svg/promos/promo-bg-lockwise.svg");
+  background-image: url('../../img/svg/promos/promo-bg-lockwise.svg');
 }
 
 .promo-fpn {
-  background-image: url("../../img/svg/promos/promo-bg-fpn.svg");
+  background-image: url('../../img/svg/promos/promo-bg-fpn.svg');
 }
 
 .promo-ecosystem {
-  background-image: url("../../img/svg/promos/promo-bg-ecosystem.svg");
+  background-image: url('../../img/svg/promos/promo-bg-ecosystem.svg');
 }
 
 .promo-lockwise,
@@ -60,23 +60,23 @@
 }
 
 .promo-monitor > .promo-content::before {
-  background-image: url("../../img/svg/fxa-tout-yellow-env.svg");
+  background-image: url('../../img/svg/fxa-tout-yellow-env.svg');
 }
 
 .promo-mobile > .promo-content::before {
-  background-image: url("../../img/svg/logos/fx-logo.svg");
+  background-image: url('../../img/svg/logos/fx-logo.svg');
 }
 
 .promo-lockwise > .promo-content::before {
-  background-image: url("../../img/svg/logos/fx-lockwise.svg");
+  background-image: url('../../img/svg/logos/fx-lockwise.svg');
 }
 
 .promo-fpn > .promo-content::before {
-  background-image: url("../../img/svg/logos/fpn-logo.svg");
+  background-image: url('../../img/svg/logos/fpn-logo.svg');
 }
 
 .promo-ecosystem > .promo-content::before {
-  background-image: url("../../img/svg/logos/fx-master-logo.svg");
+  background-image: url('../../img/svg/logos/fx-master-logo.svg');
 }
 
 .promo-content::before {
@@ -86,7 +86,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: top center;
-  content: "";
+  content: '';
   display: inline-block;
 }
 
@@ -99,14 +99,14 @@
 .promo-body {
   font-size: 16px;
   line-height: 1.5;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 16px;
 }
 
 .promo-cta {
-  border-color: rgba(255, 255, 255, 1);
+  border-color: rgb(255 255 255 / 1);
   border-radius: 8px;
   min-height: 40px;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   font-size: 16px;
   margin: auto auto auto 0;
   padding: 12px 32px;
@@ -114,7 +114,7 @@
 }
 
 .promo-cta:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgb(255 255 255 / 0.1);
 }
 
 .promo-wrapper {
@@ -152,7 +152,7 @@
   }
 
   .promo-content::before {
-    margin: auto auto 16px auto;
+    margin: auto auto 16px;
   }
 
   .promo-headline {

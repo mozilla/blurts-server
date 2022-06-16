@@ -25,8 +25,7 @@
 
 .security-tip-list {
   margin-top: var(--padding);
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
 }
 
 .st-intro-wrap {
@@ -46,7 +45,7 @@
   font-weight: 600;
   color: var(--grey1);
   align-items: center;
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
 }
 
 .security-tip-link-subhead {
@@ -86,7 +85,7 @@
   line-height: 1.3;
   margin-bottom: 6rem;
   display: block;
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
 }
 
 .ico svg.icon-inline path {
@@ -94,46 +93,46 @@
 }
 
 body {
-  --howHackersWork: var(--orange6);
-  --strongerPasswords: var(--blue2);
-  --stepsToProtect: var(--purple1);
-  --fiveMyths: var(--violet1);
-  --nextSteps: #e31587;
-  --afterBreach: #3fe1b0;
+  --how-hackers-work: var(--orange6);
+  --stronger-passwords: var(--blue2);
+  --steps-to-protect: var(--purple1);
+  --five-myths: var(--violet1);
+  --next-steps: #e31587;
+  --after-breach: #3fe1b0;
 }
 
 .how-hackers-work {
-  border-bottom-color: var(--howHackersWork);
-  color: var(--howHackersWork);
+  border-bottom-color: var(--how-hackers-work);
+  color: var(--how-hackers-work);
 }
 
 .strong-passwords {
-  border-bottom-color: var(--strongerPasswords);
-  color: var(--strongerPasswords);
+  border-bottom-color: var(--stronger-passwords);
+  color: var(--stronger-passwords);
 }
 
 .after-breach {
-  border-bottom-color: var(--afterBreach);
-  color: var(--afterBreach);
+  border-bottom-color: var(--after-breach);
+  color: var(--after-breach);
 }
 
 .steps-to-protect {
-  border-bottom-color: var(--stepsToProtect);
-  color: var(--stepsToProtect);
+  border-bottom-color: var(--steps-to-protect);
+  color: var(--steps-to-protect);
 }
 
 .five-myths {
-  border-bottom-color: var(--fiveMyths);
-  color: var(--fiveMyths);
+  border-bottom-color: var(--five-myths);
+  color: var(--five-myths);
 }
 
 .next-steps {
-  border-bottom-color: var(--nextSteps);
-  color: var(--nextSteps);
+  border-bottom-color: var(--next-steps);
+  color: var(--next-steps);
 }
 
 .security-tip-link svg path {
-  fill: rgba(255, 255, 255, 1);
+  fill: rgb(255 255 255 / 1);
 }
 
 .how-hackers-work-list {
@@ -204,7 +203,7 @@ a.st-link:hover {
 }
 
 .article-list-item::before {
-  content: "\2022";
+  content: '\2022';
   display: inline-block;
   margin-right: 1rem;
   font-size: 1.5rem;
@@ -220,7 +219,7 @@ a.st-link:hover {
 
 h3.article-subhead,
 .toggle-subhead {
-  margin: 2.5rem auto 0 auto;
+  margin: 2.5rem auto 0;
   font-weight: 700;
   color: var(--ink);
 }
@@ -260,7 +259,7 @@ h3.article-subhead,
 }
 
 .st-list-item::before {
-  content: "\2022";
+  content: '\2022';
   display: inline-block;
   margin-right: 0.75rem;
 }
@@ -284,13 +283,13 @@ a.st-link {
 .st-call-out {
   margin: calc(var(--padding) * 2) auto;
   border-radius: 0.7rem;
-  background: var(--monitorGradient);
+  background: var(--monitor-gradient);
   padding: 2px;
-  box-shadow: 0 0 10px 1px rgba(205, 205, 212, 0.78);
+  box-shadow: 0 0 10px 1px rgb(205 205 212 / 0.78);
 }
 
 .inset {
-  background-color: var(--bgLight);
+  background-color: var(--bg-light);
   border-radius: 0.575rem;
   padding: calc(var(--padding) * 2);
 }
@@ -302,7 +301,7 @@ a.st-link {
 }
 
 .pw-tip-item.flx:nth-child(odd) {
-  background-color: rgba(32, 18, 58, 0.031);
+  background-color: rgb(32 18 58 / 0.031);
 }
 
 .pw-do-hl,
@@ -321,8 +320,8 @@ a.st-link {
   right: 0;
   height: 3px;
   display: block;
-  content: "";
-  background: var(--monitorGradient);
+  content: '';
+  background: var(--monitor-gradient);
 }
 
 .pw-tip-headlines,
@@ -343,17 +342,17 @@ a.st-link {
 }
 
 .icon-dont::before {
-  background-image: url("../../img/svg/x-close-red.svg");
+  background-image: url('../../img/svg/x-close-red.svg');
 }
 
 .icon-do::before {
-  background-image: url("../../img/svg/green-check.svg");
+  background-image: url('../../img/svg/green-check.svg');
 }
 
 .icon-do::before,
 .icon-dont::before {
   left: -2.5rem;
-  content: "";
+  content: '';
   width: 2rem;
   height: 2rem;
   background-size: contain;
@@ -381,7 +380,7 @@ a.st-link {
 
 .pw-tip-table {
   border-radius: 0.7rem;
-  box-shadow: 0 0 10px 1px rgba(205, 205, 212, 0.78);
+  box-shadow: 0 0 10px 1px rgb(205 205 212 / 0.78);
 }
 
 .password-tip-list-headline {
@@ -451,7 +450,7 @@ a.st-link {
   }
 
   .pw-tip-table {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(0 0 0 / 0);
     box-shadow: none;
   }
 
@@ -502,12 +501,12 @@ a.st-link {
   }
 
   .pw-do {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(255 255 255 / 1);
   }
 
   .pw-dont {
     position: relative;
-    background-color: rgba(32, 18, 58, 0.05);
+    background-color: rgb(32 18 58 / 0.05);
   }
 
   .pw-dont::before {
@@ -515,7 +514,7 @@ a.st-link {
     height: 1.25rem;
     background-color: white;
     display: block;
-    content: "";
+    content: '';
     position: absolute;
     top: -0.75rem;
     transform: rotate(45deg);

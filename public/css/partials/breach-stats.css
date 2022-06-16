@@ -1,7 +1,9 @@
+/* stylelint-disable-next-line selector-class-pattern */
 .monitoredEmails {
   background-color: var(--violet3);
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .numBreaches {
   background-color: var(--violet4);
 }
@@ -12,7 +14,7 @@
 
 .breach-stat-number,
 .stat-headline {
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   justify-content: center;
   width: 100%;
 }
@@ -57,10 +59,10 @@
   display: inline-block;
   vertical-align: middle;
   background-color: #20c3a2;
-  background-image: url("../../img/svg/white-check.svg");
+  background-image: url('../../img/svg/white-check.svg');
   background-repeat: no-repeat;
   background-position: center center;
-  content: "";
+  content: '';
   border-radius: 50%;
 }
 
@@ -74,7 +76,7 @@
 
 .progress-bar {
   -webkit-appearance: none;
-  background: var(--monitorGradient);
+  background: var(--monitor-gradient);
   color: #fff;
   border-radius: 4px;
   height: 24px;
@@ -90,7 +92,7 @@
 
 /* removes black border on edge */
 .progress-bar::-ms-fill {
-  border-color: currentColor;
+  border-color: currentcolor;
 }
 
 .progress-status-message {
@@ -121,11 +123,11 @@
 }
 
 .breach-resolution-intro {
-  background-image: url("../../img/svg/breach-resolution-intro.svg");
+  background-image: url('../../img/svg/breach-resolution-intro.svg');
 }
 
 .breach-resolution-complete {
-  background-image: url("../../img/svg/breach-resolution-complete.svg");
+  background-image: url('../../img/svg/breach-resolution-complete.svg');
 }
 
 progress[value]::-webkit-progress-bar {
@@ -133,12 +135,12 @@ progress[value]::-webkit-progress-bar {
 }
 
 .progress-bar::-moz-progress-bar {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
   transition: all 0.5s ease;
 }
 
 progress.progress-bar::-webkit-progress-value {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
   box-shadow: 30px -9px 0 9px white;
   transition: all 0.5s ease;
 }
