@@ -54,7 +54,10 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   const existingUser = await DB.getSubscriberByEmail(email)
   req.session.user = existingUser
 
-  const returnURL = new URL('/user/dashboard', AppConstants.SERVER_URL)
+  // onerep data removal
+  console.log('request headers host:', req.headers.host)
+  const returnPath = ['localhost:6060', 'monitor-v2.herokuapp.com'].includes(req.headers.host) ? '/brokers' : '/user/dashboard'
+  const returnURL = new URL(returnPath, AppConstants.SERVER_URL)
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
