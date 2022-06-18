@@ -22,6 +22,12 @@ function navLinks (args) {
       activeLink: (hostUrl === '/' || hostUrl === '/dashboard')
     },
     {
+      title: 'Data Removal',
+      stringId: 'Data Removal', // this is hackish and temporary
+      href: `${serverUrl}/brokers`,
+      activeLink: (hostUrl === '/brokers')
+    },
+    {
       title: 'Breaches',
       stringId: 'breaches',
       href: `${serverUrl}/breaches`,
