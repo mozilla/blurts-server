@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -130,50 +133,6 @@ security-tips = Советы по безопасности
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Открыть { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = По шкале от 1 до 10, насколько вероятно, что вы порекомендуете { -product-short-name } другу или коллеге?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Не очень вероятно
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Очень вероятно
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Легко ли использовать { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Считаете ли вы, что { -product-short-name } заслуживает доверия?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Является ли интерфейс { -product-short-name } простым и понятным?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Совсем не соглашаюсь
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Не соглашаюсь
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Не знаю
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Соглашаюсь
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Полностью соглашаюсь
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Как бы отнеслись к тому, что более не смогли бы использовать { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Я сильно разочаруюсь
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Я немного разочаруюсь
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Мне будет всё равно
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ПОСЛЕДНЯЯ УТЕЧКА ДОБАВЛЕНА
 # Link title
@@ -634,9 +593,26 @@ vpn-banner-cta-expand = Развернуть
 # button to close panel
 vpn-banner-cta-close = Закрыть
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Как вы держите свой адрес электронной почты в секрете?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Беспокоитесь ли вы о своей безопасности в общедоступных сетях Wi-Fi?
+ad-unit-relay-cta = Узнайте больше о { -brand-relay }
+ad-unit-vpn-cta = Узнайте больше о { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Как держать в секрете свой адрес электронной почты?
+# ad 2 heading
+ad-unit-2-do-you-worry = Беспокоитесь о безопасности в публичных сетях Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Будьте в курсе!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } позволяет поддерживать стабильное и безопасное соединение пока вы играете в игры и смотрите фильмы.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Без ограничений
+# ad 3 list item 2
+ad-unit-3-be-anywhere = В любой точке мира
+# ad 3 list item 3
+ad-unit-3-access-more = Доступ к большему
+# ad 4 heading
+ad-unit-4-shopping-with = Делайте покупки с псевдонимами электронной почты
+ad-unit-4-want-to-buy = Хотите купить что-нибудь в Интернете и не знаете или не доверяете магазину?
+ad-unit-4-shop-online = При покупке в  Интернете используйте псевдоним электронной почты. Получите подтверждение на свою реальную электронную почту, а затем в любой момент легко отключите этот псевдоним.
+# ad 5 heading
+ad-unit-5-on-the-go = В дороге с { -brand-relay }
