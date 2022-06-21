@@ -38,7 +38,7 @@ rec-bank-acc =
 rec-cc-subhead = 监控您的信用卡对账单
 rec-cc = 查探您的信用卡是否受到了奇怪的收费。如有发生，请考虑向卡签发机构申请新号码的信用卡。
 # Recommendation subhead
-rec-email-subhead = 给邮箱披上“马甲”
+rec-email-mask-subhead = 使用马甲邮箱
 rec-email-cta = 试用 { -brand-relay }
 rec-email =
     真实的邮箱地址容易被黑客找到密码，或被跟踪者定位。

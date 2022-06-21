@@ -520,6 +520,8 @@ ad-unit-vpn-cta = 详细了解 { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = 要如何保密自己的邮箱地址？
 # ad 2 heading
 ad-unit-2-do-you-worry = 您是否担心公共 Wi-Fi 的安全？
+# ad 3 heading
+ad-unit-3-stay-in-the-game = 再接再厉！
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 可为您提供稳定且安全的连接，玩游戏、看网剧，不在话下。
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = 拒绝限速
