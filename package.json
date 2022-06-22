@@ -51,8 +51,8 @@
     "stylelint-config-standard": "^26.0.0"
   },
   "engines": {
-    "node": "14.17.x",
-    "npm": "6.x"
+    "node": "16.x",
+    "npm": "8.x"
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
