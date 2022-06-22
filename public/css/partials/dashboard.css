@@ -8,7 +8,7 @@
 .dashboard.clear-header {
   padding-top: calc(var(--header-height) + 80px);
   position: relative;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
 }
 
 h2.pref-headline {
@@ -17,7 +17,7 @@ h2.pref-headline {
 }
 
 h3.pref-section-headline {
-  margin: 60px 0 32px 0;
+  margin: 60px 0 32px;
 }
 
 h3.pref-section-headline.remove {
@@ -34,8 +34,8 @@ h2.pref-headline.breach-summary {
 }
 
 .dashboard-summary::before {
-  content: "";
-  background: #eee url("../../img/svg/scan-res-bg.svg") top center / cover;
+  content: '';
+  background: #eee url('../../img/svg/scan-res-bg.svg') top center / cover;
   position: absolute;
   width: 100vw;
   height: calc(100% + var(--header-height));
@@ -67,7 +67,7 @@ h2.pref-headline.breach-summary {
 
 .email-pref {
   font-size: 14px;
-  margin: 40px 0 12px 0;
+  margin: 40px 0 12px;
   font-weight: 600;
   color: #686869;
 }
@@ -77,14 +77,14 @@ h2.pref-headline.breach-summary {
 }
 
 .email-verification-required {
-  color: var(--alertRed);
+  color: var(--alert-red);
   display: flex;
   align-items: center;
 }
 
 .email-verification-required::before {
-  content: "";
-  background-image: url(../../img/svg/data-compromised.svg);
+  content: '';
+  background-image: url('../../img/svg/data-compromised.svg');
   background-repeat: no-repeat;
   background-size: 100%;
   margin-right: 8px;
@@ -104,7 +104,7 @@ h2.pref-headline.breach-summary {
 }
 
 .link-header-wrapper {
-  margin: 80px 0 60px 0;
+  margin: 80px 0 60px;
 }
 
 .email-cards {
@@ -129,7 +129,7 @@ p.confirm-submit {
 
 span.email-confirmed {
   font-size: 18px;
-  margin: 0 auto 24px auto;
+  margin: 0 auto 24px;
   line-height: 1.5;
 }
 

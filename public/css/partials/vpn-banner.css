@@ -37,14 +37,14 @@
   color: #e22850;
 }
 
-.vpn-banner[data-protected="true"] em {
+.vpn-banner[data-protected='true'] em {
   color: #1cc4a0;
 }
 
 .vpn-banner .vpn-banner-top::after,
 .vpn-banner:not([data-protected]) .vpn-banner-top::after {
   /* black screen while loading protection data */
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -59,14 +59,14 @@
   visibility: hidden;
 }
 
-.vpn-banner[data-protected="true"] .protected-txt:first-child,
-.vpn-banner[data-protected="false"] .protected-txt:last-child {
+.vpn-banner[data-protected='true'] .protected-txt:first-child,
+.vpn-banner[data-protected='false'] .protected-txt:last-child {
   display: block;
 }
 
-.vpn-banner[data-protected="false"] .protected-txt:first-child,
-.vpn-banner[data-protected="true"] .protected-txt:last-child,
-.vpn-banner[data-protected="true"] .vpn-banner-cta {
+.vpn-banner[data-protected='false'] .protected-txt:first-child,
+.vpn-banner[data-protected='true'] .protected-txt:last-child,
+.vpn-banner[data-protected='true'] .vpn-banner-cta {
   display: none;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .vpn-banner-top .short-location::after {
-  content: "•";
+  content: '•';
   padding-left: 8px;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .vpn-banner-chevron::after {
-  content: url("../../img/svg/chevron.svg");
+  content: url('../../img/svg/chevron.svg');
   display: inline-block;
   vertical-align: bottom;
   width: 16px;
@@ -124,7 +124,7 @@
 .vpn-banner-bottom {
   position: relative;
   display: none;
-  max-width: var(--maxWidth);
+  max-width: var(--max-width);
   min-height: 250px;
   color: black;
   margin: auto;
@@ -144,7 +144,7 @@
   height: 100%;
   top: 0;
   left: calc(50% - 50vw);
-  background: white url("../../img/svg/clouds.svg") no-repeat 90% 75%;
+  background: white url('../../img/svg/clouds.svg') no-repeat 90% 75%;
   z-index: -1;
 }
 
@@ -192,7 +192,7 @@
 
 .vpn-banner-lists .step-list li::before {
   display: inline-block;
-  content: counter(step) ".";
+  content: counter(step) '.';
   counter-increment: step;
   height: 40px;
   line-height: 40px;
@@ -237,7 +237,7 @@
 }
 
 .vpn-banner-close::after {
-  content: "";
+  content: '';
   display: block;
   border-top: 1px solid #592acb;
   border-left: 1px solid #592acb;

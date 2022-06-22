@@ -3,7 +3,22 @@
     "stylelint-config-standard"
   ],
   "rules": {
-    "no-descending-specificity": null,
-    "selector-type-no-unknown": null
+    "alpha-value-notation": "number",
+    "no-descending-specificity": [
+      true,
+      {
+        "severity": "warning"
+      }
+    ],
+    "property-no-vendor-prefix": null,
+    "selector-type-no-unknown": [
+      true,
+      {
+        "ignore": [
+          "custom-elements"
+        ]
+      }
+    ],
+    "string-quotes": "single"
   }
 }

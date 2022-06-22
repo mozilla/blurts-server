@@ -12,9 +12,9 @@
 .gradient-inset {
   width: 100%;
   border-radius: 8px;
-  box-shadow: 0 0 12px 0 rgba(28, 28, 29, 0.4);
+  box-shadow: 0 0 12px 0 rgb(28 28 29 / 0.4);
   padding: calc(var(--padding) * 2) 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgb(255 255 255 / 0.95);
 }
 
 .feature-tip-content-wrapper {
@@ -43,15 +43,15 @@
 }
 
 .feat-img.advice {
-  background-image: url("../../img/svg/pictogram-advice.svg");
+  background-image: url('../../img/svg/pictogram-advice.svg');
 }
 
 .feat-img.email {
-  background-image: url("../../img/svg/pictogram-email.svg");
+  background-image: url('../../img/svg/pictogram-email.svg');
 }
 
 .feat-img.alert {
-  background-image: url("../../img/svg/pictogram-alert.svg");
+  background-image: url('../../img/svg/pictogram-alert.svg');
 }
 
 .feature-tip-headline {
@@ -196,7 +196,7 @@
 
   .facebook-notes .feature-tip-content-wrapper,
   .breach-detail .feature-tip-content-wrapper {
-    margin: 0 auto 60px auto;
+    margin: 0 auto 60px;
     text-align: center;
     flex-direction: column;
   }

@@ -27,11 +27,11 @@ body {
 }
 
 .fxa-signup-gradient {
-  background: var(--fxaSignUpGradient);
+  background: var(--fxa-sign-up-gradient);
 }
 
 .take-back-control-gradient {
-  background: var(--takeBackControlGradient);
+  background: var(--take-back-control-gradient);
 }
 
 .fx-monitor {
@@ -40,7 +40,7 @@ body {
 
 p,
 .paragraph {
-  font-size: var(--paragraphFontSize);
+  font-size: var(--paragraph-font-size);
 }
 
 .medium {
@@ -64,20 +64,20 @@ p,
   max-width: 320px;
 }
 
-.ff-Met {
-  font-family: "Metropolis", sans-serif;
+.ff-met {
+  font-family: Metropolis, sans-serif;
 }
 
 h1,
 h2 {
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
 }
 
 h3,
 .nav-link,
 button,
-input[type="submit"] {
-  font-family: "Metropolis", sans-serif;
+input[type='submit'] {
+  font-family: Metropolis, sans-serif;
   font-weight: 600;
 }
 
@@ -99,7 +99,7 @@ h3,
 }
 
 .top-headline {
-  font-size: var(--topHeadline);
+  font-size: var(--top-headline);
   font-weight: 700;
   line-height: 1.14;
 }
@@ -150,7 +150,7 @@ button.text-link {
 
 .blue-link {
   color: var(--blue3);
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
   font-weight: 600;
 }
 
@@ -185,8 +185,8 @@ button {
 }
 
 .btn-white {
-  border-color: rgba(255, 255, 255, 1);
-  color: rgba(255, 255, 255, 1);
+  border-color: rgb(255 255 255 / 1);
+  color: rgb(255 255 255 / 1);
 }
 
 .btn-white:hover,
@@ -201,8 +201,8 @@ button {
 }
 
 .btn-red {
-  border-color: var(--alertRed);
-  color: var(--alertRed);
+  border-color: var(--alert-red);
+  color: var(--alert-red);
 }
 
 .btn-red:hover {
@@ -229,8 +229,12 @@ button {
 .btn-blue-primary:active,
 .btn-transparent:active,
 .btn-violet-primary:active,
-input[type="submit"]:active {
-  box-shadow: 0 2px 8px 0 rgba(14, 13, 26, 0.12), 0 3px 1px -2px rgba(7, 48, 114, 0.12), 0 2px 4px 0 rgba(34, 0, 51, 0.04), 0 0 0 1px rgba(32, 18, 58, 0.04);
+input[type='submit']:active {
+  box-shadow:
+    0 2px 8px 0 rgb(14 13 26 / 0.12),
+    0 3px 1px -2px rgb(7 48 114 / 0.12),
+    0 2px 4px 0 rgb(34 0 51 / 0.04),
+    0 0 0 1px rgb(32 18 58 / 0.04);
 }
 
 button.btn-ghost {
@@ -252,7 +256,7 @@ button.btn-violet-primary {
   max-width: 320px;
   font-weight: 600;
   width: 100%;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   padding-right: var(--padding);
   padding-left: var(--padding);
 }
@@ -289,7 +293,7 @@ button.btn-violet-primary {
   align-content: center;
   border-style: solid;
   border-width: 2px;
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
   font-weight: 600;
   align-items: center;
 }
@@ -345,7 +349,7 @@ ul li {
 .row {
   justify-content: space-between;
   padding: 0.75rem;
-  max-width: var(--maxWidth);
+  max-width: var(--max-width);
 }
 
 .row-full-width {
@@ -417,9 +421,9 @@ ul li {
 }
 
 .col-8 {
-  flex: 1 1 66.66666667%;
-  min-width: 66.66666667%;
-  max-width: 66.66666667%;
+  flex: 1 1 66.6667%;
+  min-width: 66.6667%;
+  max-width: 66.6667%;
 }
 
 .mw-700 {
@@ -487,11 +491,11 @@ ul li {
 }
 
 .bg-white {
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
 }
 
 .sr {
-  background-image: url("../../img/svg/scan-res-bg.svg");
+  background-image: url('../../img/svg/scan-res-bg.svg');
   background-position: top center;
   background-attachment: fixed;
   background-size: cover;
@@ -502,8 +506,8 @@ ul li {
 }
 
 .bg-dark {
-  background-color: var(--inkDark);
-  color: rgba(255, 255, 255, 1);
+  background-color: var(--ink-dark);
+  color: rgb(255 255 255 / 1);
 }
 
 .drop-shadow {
@@ -525,7 +529,7 @@ ul li {
 
 .source-info a,
 .source-info {
-  color: var(--textLight);
+  color: var(--text-light);
   font-size: 14px;
 }
 
@@ -608,14 +612,14 @@ div.sprite {
 
 @media screen and (max-width: 1200px) {
   body {
-    --maxWidth: 1000px;
+    --max-width: 1000px;
   }
 }
 
 @media screen and (max-width: 800px) {
   body {
-    --maxWidth: 600px;
-    --topHeadline: 43px;
+    --max-width: 600px;
+    --top-headline: 43px;
     --headline: 36px;
   }
 
@@ -630,7 +634,7 @@ div.sprite {
   }
 
   .mw-700 {
-    max-width: var(--maxWidth);
+    max-width: var(--max-width);
   }
 
   .col-6 {
@@ -684,8 +688,7 @@ div.sprite {
 
 @media screen and (max-width: 500px) {
   body {
-    --skinnyHeadline: 1.4rem;
-    --topHeadline: 36px;
+    --top-headline: 36px;
     --headline: 32px;
   }
 

@@ -32,7 +32,7 @@
 
 .email-card.preferences {
   padding: 20px;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
   border: 1px solid #e8e8e8;
   margin: 0 0 16px;
   border-radius: 4px;
@@ -45,12 +45,11 @@
 .e-info {
   display: inline-flex;
   align-items: center;
-  flex-direction: row;
+  flex-flow: row wrap;
   border-bottom: 2px solid #e8e8e8;
   padding-bottom: 12px;
   max-width: 100%;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .preferences .e-info {
@@ -93,13 +92,13 @@
 }
 
 .e-address::after {
-  content: "-";
+  content: '-';
   margin: auto 6px;
   font-weight: 400;
 }
 
 .breach-title-wrapper.ec {
-  border-bottom: 1px solid var(--borderColor);
+  border-bottom: 1px solid var(--border-color);
 }
 
 /* email breach lists */
@@ -107,8 +106,7 @@
 .e-breach-list {
   display: flex;
   justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   visibility: hidden;
   margin: auto;
   max-width: 780px;
@@ -137,7 +135,7 @@
 }
 
 .show-remaining-breaches.btn-violet-secondary {
-  margin: 16px auto auto auto;
+  margin: 16px auto auto;
 }
 
 .show-remaining-breaches.hide {
@@ -202,7 +200,7 @@ button.toggle-resolved-breaches {
 .svg-wrap {
   border-width: 0;
   border-radius: 0.25rem;
-  padding: 0.5rem 0 0 0;
+  padding: 0.5rem 0 0;
   pointer-events: all;
   text-align: left;
 }
@@ -251,7 +249,7 @@ button.toggle-resolved-breaches {
   margin-left: 16px;
   font-size: 12px;
   background: #3fe1b0;
-  color: rgba(255, 255, 255, 1);
+  color: rgb(255 255 255 / 1);
   padding: 2px 4px;
   border-radius: 4px;
   font-weight: 600;
@@ -330,7 +328,7 @@ input.remove-email-submit {
 }
 
 form.remove-email svg path {
-  fill: var(--alertRed);
+  fill: var(--alert-red);
   transition: fill 0.15s ease-in-out;
 }
 
@@ -356,7 +354,7 @@ input.remove-email-submit {
 
   .email-card {
     padding: 20px;
-    background-color: rgba(255, 255, 255, 1);
+    background-color: rgb(255 255 255 / 1);
     border-radius: 8px;
     border: 1px solid #e8e8e8;
   }

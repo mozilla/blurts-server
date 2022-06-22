@@ -1,45 +1,45 @@
 firefox-apps {
-  --backgroundColor: rgb(249, 249, 250);
-  --bentoHoverBgColor: rgb(97, 90, 115);
-  --bentoClickBgColor: rgb(142, 137, 154);
-  --bentoButtonHeight: 25px;
-  --zIndex: 10000;
-  --appIconHeight: 16px;
-  --textColor: rgb(32, 18, 58);
-  --bentoPadding: 24px;
+  --background-color: rgb(249 249 250);
+  --bento-hover-bg-color: rgb(97 90 115);
+  --bento-click-bg-color: rgb(142 137 154);
+  --bento-button-height: 25px;
+  --z-index: 10000;
+  --app-icon-height: 16px;
+  --text-color: rgb(32 18 58);
+  --bento-padding: 24px;
 
   display: flex;
   margin: 0 32px;
   position: relative;
   text-align: center;
-  z-index: var(--zIndex);
+  z-index: var(--z-index);
   font-size: 12px;
-  width: var(--bentoButtonHeight);
-  min-height: var(--bentoButtonHeight);
-  color: var(--textColor);
-  background: url("../../img/fx-bento-sprites.png");
+  width: var(--bento-button-height);
+  min-height: var(--bento-button-height);
+  color: var(--text-color);
+  background: url('../../img/fx-bento-sprites.png');
   background-position-x: -215.5px;
   background-position-x: -224px;
-  background-size: auto var(--bentoButtonHeight);
+  background-size: auto var(--bento-button-height);
   border-radius: 2px;
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0);
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 0);
 }
 
 firefox-apps.fx-bento-open,
 firefox-apps:hover {
-  box-shadow: 0 0 0 4px var(--bentoHoverBgColor);
-  background-color: var(--bentoHoverBgColor);
+  box-shadow: 0 0 0 4px var(--bento-hover-bg-color);
+  background-color: var(--bento-hover-bg-color);
 }
 
 firefox-apps:focus,
 firefox-apps:focus-within {
-  box-shadow: 0 0 0 4px var(--bentoHoverBgColor);
-  background-color: var(--bentoHoverBgColor);
+  box-shadow: 0 0 0 4px var(--bento-hover-bg-color);
+  background-color: var(--bento-hover-bg-color);
 }
 
 firefox-apps:active {
-  box-shadow: 0 0 0 4px var(--bentoClickBgColor);
-  background-color: var(--bentoClickBgColor);
+  box-shadow: 0 0 0 4px var(--bento-click-bg-color);
+  background-color: var(--bento-click-bg-color);
 }
 
 .fx-bento-hide-vpn .moz-vpn {
@@ -54,12 +54,12 @@ firefox-apps:active {
 
 .fx-bento-content-wrapper {
   position: absolute;
-  top: calc(var(--bentoButtonHeight) + 10px);
+  top: calc(var(--bento-button-height) + 10px);
   min-width: 260px;
-  z-index: calc(var(--zIndex) + 1);
-  box-shadow: 0 7px 12px -3px rgba(28, 28, 29, 0.502);
+  z-index: calc(var(--z-index) + 1);
+  box-shadow: 0 7px 12px -3px rgb(28 28 29 / 0.502);
   right: -18px;
-  background: var(--backgroundColor);
+  background: var(--background-color);
   border-radius: 8px;
   transform: translateY(0);
   display: none;
@@ -69,7 +69,7 @@ firefox-apps:active {
 .fx-bento-content {
   display: flex;
   flex-direction: column;
-  padding: var(--bentoPadding) 0 0 0;
+  padding: var(--bento-padding) 0 0 0;
 }
 
 .fx-bento-enable-scrolling {
@@ -87,7 +87,7 @@ firefox-apps:active {
 
 .active .fx-bento-content-wrapper::after {
   display: block;
-  content: "";
+  content: '';
   height: 12px;
   width: 12px;
   position: absolute;
@@ -96,25 +96,25 @@ firefox-apps:active {
   margin: auto;
   transform: rotate(45deg);
   border-top-left-radius: 1px;
-  background-color: rgb(249, 249, 250);
+  background-color: rgb(249 249 250);
   border-top: 1px solid transparent;
   border-left: 1px solid transparent;
   z-index: -1;
 }
 
 .fx-bento-logo {
-  background: url("../../img/fx-bento-sprites.png");
+  background: url('../../img/fx-bento-sprites.png');
   background-repeat: no-repeat;
   background-size: cover;
   height: 40px;
   width: 40px;
-  margin: auto auto 8px auto;
+  margin: auto auto 8px;
   background-position-x: -90px;
 }
 
 .fx-bento-headline {
   font-size: 16px;
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
   line-height: 20px;
   font-weight: 600;
   margin-right: auto;
@@ -126,22 +126,22 @@ firefox-apps:active {
 }
 
 .fx-bento-bottom-link {
-  color: rgb(0, 96, 223);
+  color: rgb(0 96 223);
   text-decoration: underline;
-  padding: 10px var(--bentoPadding);
+  padding: 10px var(--bento-padding);
   margin: 14px auto;
   width: 100%;
 }
 
 a.fx-bento-app-link {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgb(255 255 255 / 0);
   text-align: left;
 }
 
 .fx-bento-app-link-span {
   display: block;
-  padding: 10px var(--appIconHeight) 10px calc(var(--appIconHeight) + 32px);
-  color: var(--textColor);
+  padding: 10px var(--app-icon-height) 10px calc(var(--app-icon-height) + 32px);
+  color: var(--text-color);
   position: relative;
   margin-right: auto;
   margin-left: auto;
@@ -152,16 +152,16 @@ a.fx-bento-app-link {
 .fx-bento-app-link-span::before {
   display: block;
   position: absolute;
-  left: var(--bentoPadding);
+  left: var(--bento-padding);
   top: 0;
   bottom: 0;
   margin: auto;
-  height: var(--appIconHeight);
-  min-height: var(--appIconHeight);
-  width: var(--appIconHeight);
-  background: url("../../img/fx-bento-sprites.png");
-  background-size: auto var(--appIconHeight);
-  content: "";
+  height: var(--app-icon-height);
+  min-height: var(--app-icon-height);
+  width: var(--app-icon-height);
+  background: url('../../img/fx-bento-sprites.png');
+  background-size: auto var(--app-icon-height);
+  content: '';
 }
 
 .fx-bento-app-link-span.pocket::before {
@@ -177,15 +177,15 @@ a.fx-bento-app-link {
 }
 
 .fx-bento-app-link-span.moz-vpn::before {
-  background: url(../../img/svg/logos/vpn-logo.svg) !important;
+  background: url('../../img/svg/logos/vpn-logo.svg') !important;
   background-position: center !important;
-  background-size: var(--appIconHeight) !important;
+  background-size: var(--app-icon-height) !important;
   background-repeat: no-repeat !important;
 }
 
 .fx-bento-link:hover,
 .fx-bento-link:focus {
-  background-color: rgb(230, 230, 230);
+  background-color: rgb(230 230 230);
   opacity: 1 !important;
 }
 
@@ -212,15 +212,15 @@ a.fx-bento-app-link {
 button.fx-bento-mobile-close {
   display: none;
   position: absolute;
-  right: var(--appIconHeight);
-  top: var(--appIconHeight);
-  height: var(--bentoPadding);
-  min-height: var(--bentoPadding);
-  width: var(--bentoPadding);
-  max-width: var(--bentoPadding);
-  min-width: var(--bentoPadding);
-  background-color: rgb(55, 54, 111);
-  background-image: url("../../img/fx-bento-sprites.png");
+  right: var(--app-icon-height);
+  top: var(--app-icon-height);
+  height: var(--bento-padding);
+  min-height: var(--bento-padding);
+  width: var(--bento-padding);
+  max-width: var(--bento-padding);
+  min-width: var(--bento-padding);
+  background-color: rgb(55 54 111);
+  background-image: url('../../img/fx-bento-sprites.png');
   background-size: auto 20px;
   background-repeat: no-repeat;
   background-position-x: -150.5px;
@@ -231,7 +231,7 @@ button.fx-bento-mobile-close {
 }
 
 .fx-bento-app-link:first-of-type {
-  margin-top: var(--appIconHeight);
+  margin-top: var(--app-icon-height);
 }
 
 .fx-bento-fade-out {
@@ -265,7 +265,7 @@ body.hide-bento firefox-apps > button {
 
 @media screen and (max-width: 900px) {
   firefox-apps {
-    margin: 0 var(--bentoPadding);
+    margin: 0 var(--bento-padding);
   }
 
   .fx-bento-button {
@@ -275,11 +275,11 @@ body.hide-bento firefox-apps > button {
 
 @media screen and (max-width: 500px) {
   firefox-apps {
-    --appIconHeight: var(--bentoPadding);
-    --mobileClickableCloseArea: 12vh;
+    --app-icon-height: var(--bento-padding);
+    --mobile-clickable-close-area: 12vh;
 
     position: inherit;
-    margin: 0 var(--appIconHeight);
+    margin: 0 var(--app-icon-height);
   }
 
   button.fx-bento-mobile-close {
@@ -298,13 +298,13 @@ body.hide-bento firefox-apps > button {
   }
 
   .fx-bento-mobile-close::after {
-    content: "";
+    content: '';
     display: block;
     position: fixed;
     right: 0;
     top: 0;
     left: 0;
-    height: var(--mobileClickableCloseArea);
+    height: var(--mobile-clickable-close-area);
   }
 
   .fx-bento-content-wrapper {
@@ -321,20 +321,20 @@ body.hide-bento firefox-apps > button {
     height: 48px;
     width: 48px;
     min-height: 48px;
-    margin-top: var(--mobileClickableCloseArea);
+    margin-top: var(--mobile-clickable-close-area);
     background-position-x: -108px;
   }
 
   .fx-bento-headline {
     font-size: 20px;
-    line-height: var(--bentoPadding);
+    line-height: var(--bento-padding);
     padding-left: 0;
     padding-right: 0;
   }
 
   .fx-bento-bottom-link {
     margin-bottom: auto;
-    margin-top: var(--bentoPadding);
+    margin-top: var(--bento-padding);
   }
 
   .fx-bento-bottom-link,
@@ -358,8 +358,7 @@ body.hide-bento firefox-apps > button {
 
   .fx-bento-app-link-span {
     max-width: 342px;
-    padding-left: calc(var(--appIconHeight) + 40px);
-    padding-left: calc(var(--appIconHeight) + 40px);
+    padding-left: calc(var(--app-icon-height) + 40px);
   }
 
   .fx-bento-app-link-span.pocket::before {

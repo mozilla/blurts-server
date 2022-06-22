@@ -1,10 +1,5 @@
 import { sendPing } from './fxa-analytics.js'
-
-function replaceLogo (e) {
-  e.target.src = '/img/logos/missing-logo-icon.png'
-  e.target.removeEventListener('error', replaceLogo)
-  return true
-}
+import { replaceLogo } from './monitor.js'
 
 const makeBreachInfoSpans = (className, spanContent, wrapper) => {
   const span = document.createElement('span')
