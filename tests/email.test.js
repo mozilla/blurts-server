@@ -17,27 +17,27 @@ test('EmailUtils.init with empty host doesnt invoke nodemailer', () => {
   expect(mockCreateTransport.calls[0][0]).toEqual({ jsonTransport: true })
 })
 
-// test('EmailUtils.init with user, pass, host, port invokes nodemailer.createTransport', () => {
-//   const testSmtpUrl = 'smtps://test:test@test:1'
-//   nodemailer.createTransport = jest.fn()
+test.skip('EmailUtils.init with user, pass, host, port invokes nodemailer.createTransport', () => {
+  const testSmtpUrl = 'smtps://test:test@test:1'
+  nodemailer.createTransport = jest.fn()
 
-//   EmailUtils.init(testSmtpUrl)
+  EmailUtils.init(testSmtpUrl)
 
-//   const mockCreateTransport = nodemailer.createTransport.mock
-//   expect(mockCreateTransport.calls.length).toBe(1)
-//   expect(mockCreateTransport.calls[0][0]).toBe(testSmtpUrl)
-// })
+  const mockCreateTransport = nodemailer.createTransport.mock
+  expect(mockCreateTransport.calls.length).toBe(1)
+  expect(mockCreateTransport.calls[0][0]).toBe(testSmtpUrl)
+})
 
-// test('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', () => {
-//   const testSmtpUrl = 'smtps://test:test@test:1'
-//   const sendMailArgs = ['test@example.com', 'subject', 'template.hbs', { breach: 'Test' }]
-//   nodemailer.createTransport = jest.fn()
+test.skip('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', () => {
+  const testSmtpUrl = 'smtps://test:test@test:1'
+  const sendMailArgs = ['test@example.com', 'subject', 'template.hbs', { breach: 'Test' }]
+  nodemailer.createTransport = jest.fn()
 
-//   EmailUtils.init(testSmtpUrl)
-//   EmailUtils.sendEmail(...sendMailArgs)
+  EmailUtils.init(testSmtpUrl)
+  EmailUtils.sendEmail(...sendMailArgs)
 
-//   // TODO: find a way to expect gTransporter.sendMail
-// })
+  // TODO: find a way to expect gTransporter.sendMail
+})
 
 test('EmailUtils.getUnsubscribeUrl works with subscriber record', () => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
