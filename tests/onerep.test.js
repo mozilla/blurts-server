@@ -1,6 +1,7 @@
 "use strict";
 
 const { TEST_SUBSCRIBERS } = require("../db/seeds/test_subscribers");
+const AppConstants = require("../app-constants");
 const DB = require("../db/DB");
 const OneRep = require("../lib/onerep");
 
@@ -15,6 +16,10 @@ const CREATE_ONEREP_PROFILE_DATA = {
     },
   ],
 };
+
+test("clearAllWebhooks clears all webhooks", async () => {
+  await OneRep.clearAllWebhooks();
+});
 
 test("createProfile creates onerep profile ID", async () => {
   const subscriber = TEST_SUBSCRIBERS.firefox_account;
@@ -34,6 +39,16 @@ test("getProfile gets existing onerep profile", async () => {
 
   // OneRep should have returned a new profile ID
   expect(profile.id).toEqual(subscriber.onerep_profile_id);
+});
+
+test("createWebhook makes webhooks", async () => {
+  const endpointUrl = `${AppConstants.SERVER_URL}/brokers/onerep_event`;
+  for (const eventType of ["scan.started", "scan.completed", "scan_result.created", "scan_result.updated"]) {
+    const createWebhookResponse = OneRep.createWebhook(eventType, endpointUrl);
+    expect(createWebhookResponse.statusCode).toEqual(201);
+    expect(createWebhookResponse.body.event_type).toEqual(eventType);
+    expect(createWebhookResponse.body.endpoint_url).toEqual(endpointUrl);
+  }
 });
 
 test("createScan creates scan for onerep profile", async () => {

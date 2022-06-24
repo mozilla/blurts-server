@@ -200,8 +200,15 @@ function formatIsoDateString (dateString) {
   return (new Date(dateString)).toLocaleString()
 }
 
+async function onerep_event_webhook (req, res) {
+  const { profile_id, type } = req.body;
+  await OneRep.recordEvent(profile_id, type);
+  return res.json("OK");
+}
+
 module.exports = {
   get,
   post,
-  postOptout
-}
+  postOptout,
+  onerep_event_webhook,
+};
