@@ -201,8 +201,8 @@ function formatIsoDateString (dateString) {
 }
 
 async function onerep_event_webhook (req, res) {
-  const { profile_id, type } = req.body;
-  await OneRep.recordEvent(profile_id, type);
+  const { type, data } = req.body;
+  await OneRep.recordEvent(type, data.object);
   return res.json("OK");
 }
 
