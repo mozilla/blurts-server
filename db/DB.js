@@ -430,15 +430,16 @@ const DB = {
       })
   },
 
-  async recordOneRepEvent (event_type, event_data) {
-    const dateTime = new Date(Date.now());
-    await knex("onerep_events")
-    .insert({
-      id: event_data.id,
-      event_type: event_type,
-      profile_id: event_data.profile_id,
-      date_time: dateTime,
-    });
+  async recordOneRepEvent (eventId, eventType, eventData) {
+    const dateTime = new Date(Date.now())
+    await knex('onerep_events')
+      .insert({
+        event_id: eventId,
+        event_type: eventType,
+        object_id: eventData.id,
+        profile_id: eventData.profile_id,
+        date_time: dateTime
+      })
   },
 
   async createConnection () {

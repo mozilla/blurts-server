@@ -43,11 +43,24 @@ test("getProfile gets existing onerep profile", async () => {
 
 test("createWebhook makes webhooks", async () => {
   const endpointUrl = `${AppConstants.SERVER_URL}/brokers/onerep_event`;
-  for (const eventType of ["scan.started", "scan.completed", "scan_result.created", "scan_result.updated"]) {
-    const createWebhookResponse = OneRep.createWebhook(eventType, endpointUrl);
+  for (const eventType of OneRep.eventTypes) {
+    const createWebhookResponse = await OneRep.createWebhook(eventType, endpointUrl);
     expect(createWebhookResponse.statusCode).toEqual(201);
     expect(createWebhookResponse.body.event_type).toEqual(eventType);
     expect(createWebhookResponse.body.endpoint_url).toEqual(endpointUrl);
+  }
+});
+
+test("listWebhooks lists webhooks", async () => {
+  const webhooks = await OneRep.listWebhooks();
+  expect(webhooks.length).toEqual(OneRep.eventTypes.length);
+
+  for (const webhook of webhooks) {
+    expect(OneRep.eventTypes.includes(webhook.event_type))
+  }
+
+  for (const eventType of OneRep.eventTypes) {
+    expect(webhooks.map(hook => hook.event_type).includes(eventType));
   }
 });
 

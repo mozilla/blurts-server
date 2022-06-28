@@ -105,6 +105,8 @@ async function post (req, res) {
   }
   await OneRep.createProfile(req.user, profileData)
   await OneRep.createScan(req.user)
+  await OneRep.activate(req.user)
+  await OneRep.optout(req.user)
   res.redirect('/brokers')
 }
 
@@ -201,8 +203,8 @@ function formatIsoDateString (dateString) {
 }
 
 async function onerep_event_webhook (req, res) {
-  const { type, data } = req.body;
-  await OneRep.recordEvent(type, data.object);
+  const { id, type, data } = req.body;
+  await OneRep.recordEvent(id, type, data.object);
   return res.json("OK");
 }
 

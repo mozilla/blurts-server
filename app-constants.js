@@ -45,7 +45,8 @@ const requiredEnvVars = [
   'EXPERIMENT_ACTIVE',
   'MAX_NUM_ADDRESSES',
   'ONEREP_API_BASE',
-  'ONEREP_API_KEY'
+  'ONEREP_API_KEY',
+  'ONEREP_WEBHOOK_ROOT'
 ]
 
 const optionalEnvVars = [

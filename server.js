@@ -34,6 +34,7 @@ const EmailUtils = require('./email-utils')
 const HBSHelpers = require('./template-helpers/')
 const HIBP = require('./hibp')
 const IpLocationService = require('./ip-location-service')
+const OneRep = require('./lib/onerep')
 
 const {
   addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
@@ -252,3 +253,5 @@ EmailUtils.init().then(() => {
 }).catch(error => {
   log.error('try-initialize-email-error', { error })
 })
+
+OneRep.init()
