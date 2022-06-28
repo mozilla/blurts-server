@@ -37,7 +37,7 @@
 .field.scan-results-wrapper .scan-result {
   overflow: hidden;
   width: 100%;
-  box-shadow: 0 8px 12px 1px rgba(29,17,51,.04),0 3px 16px 2px rgba(9,32,77,.12),0 5px 10px -3px rgba(29,17,51,.12);
+  box-shadow: 0 8px 12px 1px rgba(29, 17, 51, 0.04), 0 3px 16px 2px rgba(9, 32, 77, 0.12), 0 5px 10px -3px rgba(29, 17, 51, 0.12);
   background-color: white;
   border-radius: 8px;
 }
@@ -60,7 +60,7 @@
 
 .field.scan-results-wrapper .scan-result .scan-result-header .status {
   padding: 6px;
-  border: 2px solid currentcolor;
+  border: 2px solid currentColor;
   border-radius: 3px;
   font-weight: 500;
   flex: 1 0 auto;
@@ -81,7 +81,7 @@
   background-size: 16px auto;
   background-position: 4px center;
   background-repeat: no-repeat;
-  padding-left: calc(4px + 16px + 4px) ;
+  padding-left: calc(4px + 16px + 4px);
 }
 
 .field.scan-results-wrapper .scan-result .scan-result-header .toggle-scan-result-button {
@@ -97,7 +97,7 @@
 }
 
 .field.scan-results-wrapper .scan-result .scan-result-header .toggle-scan-result-button svg {
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .field.scan-results-wrapper .scan-result .scan-result-body {
@@ -105,6 +105,7 @@
   visibility: hidden;
   transition-property: max-height, padding;
   transition-duration: 0.2s, 0s;
+
   /* When collapsing, delay the padding removal until it's fully collapsed: */
   transition-delay: 0s, 0.2s;
   font-family: "Inter", sans-serif;
@@ -132,6 +133,7 @@
   visibility: visible;
   max-height: 100vh;
   padding: 24px;
+
   /* When expanding, the increased padding should be applied immediately: */
   transition-delay: 0s;
 }
