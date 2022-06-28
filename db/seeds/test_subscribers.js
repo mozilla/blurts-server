@@ -43,7 +43,7 @@ exports.TEST_SUBSCRIBERS = {
     id: 12345678,
     primary_sha1: getSha1('onerep_user@test.com'),
     primary_email: 'onerep_user@test.com',
-    primary_verification_token: '0e2cb147-2041-4e5b-8ca9-494e773b2cf2',
+    primary_verification_token: '0e2cb147-2041-4e5b-8ca9-494e773b2cf3',
     primary_verified: true,
     fxa_uid: 12345678,
     fxa_profile_json: {},
