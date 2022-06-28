@@ -17,6 +17,9 @@ const CREATE_ONEREP_PROFILE_DATA = {
   ],
 };
 
+require('./resetDB')
+require('./resetOnerep')
+
 test("clearAllWebhooks clears all webhooks", async () => {
   await OneRep.clearAllWebhooks();
 });
