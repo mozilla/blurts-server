@@ -75,6 +75,9 @@ jobs:
                     -e NODE_ENV=tests \
                     -e DATABASE_URL=$DATABASE_URL \
                     -e HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN \
+                    -e ONEREP_API_BASE=$ONEREP_API_BASE \
+                    -e ONEREP_API_KEY=$ONEREP_API_KEY \
+                    -e ONEREP_WEBHOOK_ROOT=$ONEREP_WEBHOOK_ROOT \
                     -e COVERALLS_SERVICE_NAME=circleci \
                     -e COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN \
                     -e COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
