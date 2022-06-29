@@ -1,16 +1,7 @@
 'use strict'
 
+const DB = require('../db/DB')
 const OneRep = require('../lib/onerep')
-
-async function _getScansOrCreateScan (subscriber) {
-  const existingScans = await OneRep.listScans(subscriber)
-  if (existingScans.length > 0) {
-    return existingScans
-  }
-  await OneRep.createScan(subscriber)
-  const newScans = await OneRep.listScans(subscriber)
-  return newScans
-}
 
 const validStates = {
   AL: 'Alabama',
@@ -80,7 +71,7 @@ const validStates = {
 
 async function get (req, res) {
   const profileData = req.user.onerep_profile_id ? await OneRep.getProfile(req.user) : null
-  const scans = profileData ? await _getScansOrCreateScan(req.user) : []
+  const scans = profileData ? await OneRep.listScans(req.user) : []
   const scanResults = scans.length > 0 ? await OneRep.getScanResults(req.user) : []
   res.render('brokers', {
     csrfToken: req.csrfToken(),
@@ -104,9 +95,8 @@ async function post (req, res) {
     ]
   }
   await OneRep.createProfile(req.user, profileData)
-  await OneRep.createScan(req.user)
-  await OneRep.activate(req.user)
-  await OneRep.optout(req.user)
+  const updatedUser = await DB.getSubscriberById(req.user.id)
+  await OneRep.createScan(updatedUser)
   res.redirect('/brokers')
 }
 
@@ -199,6 +189,15 @@ function formatIsoDateString (dateString) {
 async function onerepEventWebhook (req, res) {
   const { id, type, data } = req.body
   await OneRep.recordEvent(id, type, data.object)
+  if (type === 'scan.completed') {
+    // When a user's scan is compelted, start the optout/removal
+    const user = await DB.getSubscriberByOneRepProfileID(data.object.profile_id)
+    const oneRepProfile = await OneRep.getProfile(user)
+    if (oneRepProfile.status !== 'active') {
+      await OneRep.activate(user)
+    }
+    await OneRep.optout(user)
+  }
   return res.json('OK')
 }
 

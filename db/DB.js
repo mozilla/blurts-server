@@ -78,6 +78,13 @@ const DB = {
     return subscriberAndEmails
   },
 
+  async getSubscriberByOneRepProfileID (profileID) {
+    const [subscriber] = await knex('subscribers').where({
+      onerep_profile_id: profileID
+    })
+    return subscriber
+  },
+
   async getPreFxaSubscribersPage (pagination) {
     return await knex('subscribers')
       .whereRaw("(fxa_uid = '') IS NOT FALSE")
@@ -438,6 +445,7 @@ const DB = {
         event_type: eventType,
         object_id: eventData.id,
         profile_id: eventData.profile_id,
+        event_status: eventData.status,
         date_time: dateTime
       })
   },
