@@ -51,7 +51,7 @@
 }
 
 .field.scan-results-wrapper .scan-result .scan-result-header h4 {
-  font-family: "Metropolis", sans-serif;
+  font-family: 'Metropolis', sans-serif;
   font-weight: 400;
   font-size: 16px;
   margin: 0;
@@ -77,7 +77,7 @@
 
 .field.scan-results-wrapper .scan-result .scan-result-header .status.is-removed {
   color: var(--violet3);
-  background-image: url("../../img/svg/purple-check.svg");
+  background-image: url('../../img/svg/purple-check.svg');
   background-size: 16px auto;
   background-position: 4px center;
   background-repeat: no-repeat;
@@ -108,7 +108,7 @@
 
   /* When collapsing, delay the padding removal until it's fully collapsed: */
   transition-delay: 0s, 0.2s;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   display: flex;
   flex-direction: column;

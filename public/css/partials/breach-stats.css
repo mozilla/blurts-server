@@ -92,7 +92,7 @@
 
 /* removes black border on edge */
 .progress-bar::-ms-fill {
-  border-color: currentcolor;
+  border-color: currentColor;
 }
 
 .progress-status-message {
