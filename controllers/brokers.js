@@ -110,12 +110,6 @@ async function post (req, res) {
   res.redirect('/brokers')
 }
 
-async function postOptout (req, res) {
-  await OneRep.activate(req.user)
-  await OneRep.optout(req.user)
-  res.redirect('/brokers')
-}
-
 /**
  * @typedef {Object} ScanResult
  * @property {number} id
@@ -211,6 +205,5 @@ async function onerepEventWebhook (req, res) {
 module.exports = {
   get,
   post,
-  postOptout,
   onerepEventWebhook
 }

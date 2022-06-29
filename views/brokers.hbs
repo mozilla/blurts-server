@@ -5,7 +5,7 @@
 </section>
 {{#unless profileData }}
   <section class="flx flx-col">
-    <p class="field">Enter the information below to find websites that are publishing your personal info.</p>
+    <p class="field">Enter the information below to find websites that are publishing your personal info and request its removal.</p>
     <form action="/brokers" method="post" data-csrf-token="{{ csrfToken }}" class="profile-data flx flx-col">
       <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
       <div class="field">
@@ -37,7 +37,7 @@
         </select>
       </div>
       <div class="field">
-        <input type="submit" value="Scan" />
+        <input type="submit" value="Request removal" />
       </div>
     </form>
   </section>
@@ -76,11 +76,8 @@
           <p>The scan was initiated at {{ profileData.created_at }}.</p>
         {{/ifCompare}}
         {{#ifCompare scanStats.newCount ">" 0 }}
-          <p>Found {{ scanStats.newCount }} websites publishing your personal data at {{ profileData.created_at }}.</p>
-          <form action="/brokers/optout" method="post" data-csrf-token="{{ csrfToken }}">
-            <input type="hidden" name="_csrf" value="{{ csrfToken }}" />
-            <input type="submit" value="Request data removal">
-          </form>
+          <p>We found {{ scanStats.newCount }} websites publishing your personal data at {{ profileData.created_at }}.</p>
+          <p>We are working to request the removal of your data; please stay tuned.</p>
         {{/ifCompare}}
       </div>
       <div class="field scan-results-wrapper">
