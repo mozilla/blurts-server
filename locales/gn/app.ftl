@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -602,6 +605,7 @@ ad-unit-1-how-do-you-keep = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kun
 ad-unit-2-do-you-worry = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Epyta ñembosaráipe!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } omoneĩ eikekatukuaa hag̃ua eñembosarái térã ehechávo ta’ãngamýi.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Omboyke tekombegue
 # ad 3 list item 2
