@@ -4,7 +4,7 @@ const AppConstants = require('./app-constants')
 esbuild.build({
   logLevel: 'info',
   bundle: true,
-  entryPoints: ['public/js/app.js', 'public/css/app.css'],
+  entryPoints: ['public/js/app.js', 'public/js/autorefresh.js', 'public/css/app.css'],
   entryNames: '[name]',
   external: ['./public/img/*', './public/fonts/*'],
   outdir: 'public/dist',

@@ -77,7 +77,8 @@
         {{/ifCompare}}
         {{#ifCompare scanStats.newCount ">" 0 }}
           <p>We found {{ scanStats.newCount }} websites publishing your personal data at {{ profileData.created_at }}.</p>
-          <p>We are working to request the removal of your data; please stay tuned.</p>
+          <p>We are working to request the removal of your data; please stay tuned. This page will automatically refresh.</p>
+          <script defer fetchpriority="low" src="/dist/autorefresh.js"></script>
         {{/ifCompare}}
       </div>
       <div class="field scan-results-wrapper">
@@ -173,7 +174,8 @@
         {{/each }}
       </div>
     {{else }}
-      <p class="field">The scan was initiated at {{ profileData.created_at }} and is still in progress, please check back later.</p>
+      <p class="field">The scan was initiated at {{ profileData.created_at }} and is still in progress. This page will automatically refresh to check for updates.</p>
+      <script defer fetchpriority="low" src="/dist/autorefresh.js"></script>
     {{/if }}
   </section>
 {{/if }}
