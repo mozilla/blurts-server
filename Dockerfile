@@ -1,8 +1,4 @@
-FROM node:14.17-alpine
-
-# Add glibc packages missing from Alpine to satisfy node-canvas, a @wdio dependency
-# https://github.com/node-gfx/node-canvas-prebuilt/issues/77
-RUN apk add --update --no-cache make g++ jpeg-dev cairo-dev pango-dev
+FROM node:16.15-alpine
 
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app

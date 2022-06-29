@@ -1,6 +1,6 @@
 .breach-card {
-  --logoDmns: 24px;
-  --logoMargin: 20px;
+  --logo-dmns: 24px;
+  --logo-margin: 20px;
 
   padding: 20px;
   border-radius: 8px;
@@ -8,7 +8,7 @@
   position: relative;
   margin: 0.5rem;
   color: var(--ink);
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgb(255 255 255 / 1);
 }
 
 .breach-key {
@@ -32,7 +32,7 @@
   padding-top: 2px;
   font-size: 18px;
   font-weight: 600;
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis, sans-serif;
 }
 
 .breach-info-wrapper {
@@ -41,18 +41,18 @@
 }
 
 .breach-logo {
-  max-height: var(--logoDmns);
-  max-width: var(--logoDmns);
+  max-height: var(--logo-dmns);
+  max-width: var(--logo-dmns);
 }
 
 .breach-logo-wrapper { /* reduce jumping on lazyload */
-  content: "";
+  content: '';
   display: block;
-  min-height: var(--logoDmns);
-  min-width: var(--logoDmns);
-  max-height: var(--logoDmns);
-  max-width: var(--logoDmns);
-  margin-right: var(--logoMargin);
+  min-height: var(--logo-dmns);
+  min-width: var(--logo-dmns);
+  max-height: var(--logo-dmns);
+  max-width: var(--logo-dmns);
+  margin-right: var(--logo-margin);
 }
 
 .breach-card-link-wrap {
@@ -83,7 +83,7 @@
 }
 
 .new-breach-card {
-  border: 2px solid var(--alertRed);
+  border: 2px solid var(--alert-red);
 }
 
 .resolved-breach-card {
@@ -110,13 +110,13 @@
 }
 
 .breach-status-message {
-  margin: 0 0 auto 0;
+  margin: 0 0 auto;
   padding: 2px 6px;
   border-radius: 2px;
 }
 
 .new-breach-message {
-  background-color: var(--alertRed);
+  background-color: var(--alert-red);
 }
 
 @media screen and (max-width: 1000px) {

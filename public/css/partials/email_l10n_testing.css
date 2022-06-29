@@ -1,5 +1,5 @@
 body.email-locale-testing {
-  background-color: rgb(237, 237, 240);
+  background-color: rgb(237 237 240);
 }
 
 body.email-locale-testing .section-wrapper {
@@ -47,11 +47,11 @@ p.email-small-text {
 }
 
 .email-subject {
-  margin: 30px auto 120px auto;
+  margin: 30px auto 120px;
 }
 
 .email-breach-listing {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255 255 255);
   padding: 20px;
   border-radius: 7px;
   max-width: 400px;
@@ -76,7 +76,7 @@ p.email-small-text {
 }
 
 .email-locale-testing nav a {
-  color: rgb(0, 0, 0);
+  color: rgb(0 0 0);
   display: block;
   margin: 10px 0;
 }
@@ -87,19 +87,19 @@ p.email-small-text {
 }
 
 .email-footer a {
-  color: rgb(0, 96, 223);
+  color: rgb(0 96 223);
 }
 
 .l10n-fxm-logo {
   display: block;
   height: 70px;
-  margin: 40px auto 20px auto;
+  margin: 40px auto 20px;
 }
 
 .l10n-fxm-logotype {
   display: block;
   max-width: 200px;
-  margin: 0 auto 30px auto;
+  margin: 0 auto 30px;
 }
 
 .email-button-wrapper {
@@ -115,8 +115,8 @@ p.email-small-text {
   width: 100%;
   display: inline-block;
   border-radius: 10px !important;
-  background-color: rgb(0, 96, 223);
-  color: rgba(255, 255, 255, 1);
+  background-color: rgb(0 96 223);
+  color: rgb(255 255 255 / 1);
   margin-bottom: 40px;
   font-weight: 400;
   font-size: 17px;
@@ -189,7 +189,7 @@ a.faq-link {
 .faq-header {
   text-align: center;
   font-size: 19px;
-  padding: 30px 0 10px 0;
+  padding: 30px 0 10px;
 }
 
 td.email-faq-bullet {
@@ -211,7 +211,7 @@ td.email-faq-link {
 }
 
 .rec-email {
-  color: rgb(144, 89, 255);
+  color: rgb(144 89 255);
 }
 
 .breach-summary-for {
@@ -221,7 +221,7 @@ td.email-faq-link {
 }
 
 .alert-red-border {
-  border: 2px solid rgba(255, 79, 94, 0.831);
+  border: 2px solid rgb(255 79 94 / 0.831);
 }
 
 .breach-stat-wrapper {
@@ -270,7 +270,7 @@ p.more-info-link-wrap {
 .email-hl,
 table.breach-stats,
 .faq-sumo-links {
-  margin: 0 auto 20px auto;
+  margin: 0 auto 20px;
 }
 
 .source-info-wrap,
