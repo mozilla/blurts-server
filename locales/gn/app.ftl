@@ -624,7 +624,9 @@ ad-unit-5-connect-on-the-go = Eikékatu pya’e porã
 ad-unit-5-privately-sign-in = Eipuru ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oipurukuaávape
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Og̃uahẽ kuatia ñanduti veve rupive
+ad-unit-5-share-custom-email = Emoherakuã peteĩ ñanduti veve rovara’ãnga nemba’eteéva kuatia ñemba’ejoguakue eme’ẽ’ỹ rehe ne ñanduti veve teete
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Eipuru ne pumbyrýpe
+ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve rovara’ãnga nemba’eteéva sapy’aitépe ejapo hag̃ua ejaposéva uperire
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
