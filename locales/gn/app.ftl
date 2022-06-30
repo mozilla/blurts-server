@@ -630,3 +630,4 @@ ad-unit-5-use-on-phone = Eipuru ne pumbyrýpe
 ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve rovara’ãnga nemba’eteéva sapy’aitépe ejapo hag̃ua ejaposéva uperire
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
+ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemyasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
