@@ -615,11 +615,13 @@ ad-unit-3-access-more = Eikekuaave
 # ad 4 heading
 ad-unit-4-shopping-with = Emba’ejogua tovara’ãnga reheve ñanduti veve rupive
 ad-unit-4-want-to-buy = Emba’ejoguasépa ñandutí rupive ha ndereikuaái jejoguaha térã nderejeroviái hese
+ad-unit-4-shop-online = Eipuru ñanduti veve rovara’ãnga emba’ejoguávo ñanduti rupive. Erekóta ñemoneĩ ne ñanduti vevépe ha upéi eipe’a tovara’ãnga ejapose vove.
 # ad 5 heading
 ad-unit-5-on-the-go = Pya’eterei { -brand-relay } ndive
 ad-unit-5-instantly-make = ¡Ejapo ñanduti veve rovara’ãnga oimeraẽva tendápe ha eho ehohápe!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Eikékatu pya’e porã
+ad-unit-5-privately-sign-in = Eipuru ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oipurukuaávape
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Og̃uahẽ kuatia ñanduti veve rupive
 # ad 5 subheading 3
