@@ -627,6 +627,8 @@ vpn-banner-cta-close = Zapri
 
 ad-unit-relay-cta = Več o { -brand-relay }u
 ad-unit-vpn-cta = Več o { -brand-mozilla-vpn }
+# ad 2 heading
+ad-unit-2-do-you-worry = Vas skrbi varnost na javnih omrežjih Wi-Fi?
 # ad 4 heading
 ad-unit-4-shopping-with = Nakupovanje z e-poštnimi maskami
 ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali popolnoma zaupate trgovini?
