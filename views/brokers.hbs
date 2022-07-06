@@ -12,19 +12,31 @@
         <label for="first_name">
           First name
         </label>
-        <input type="text" id="first_name" name="first_name" value="{{ profileData?.first_name }}"/>
+        <input required="required" type="text" id="first_name" name="first_name" value="{{ profileData?.first_name }}"/>
       </div>
       <div class="field">
         <label for="last_name">
           Last Name
         </label>
-        <input type="text" id="last_name" name="last_name" value="{{ profileData?.last_name }}"/>
+        <input required="required" type="text" id="last_name" name="last_name" value="{{ profileData?.last_name }}"/>
+      </div>
+      <div class="field">
+        <label for="birth_date">
+          Date of birth
+        </label>
+        <input required="required" type="date" id="birth_date" name="birth_date" value="1970-01-01" max="2010-01-01" />
+      </div>
+      <div class="field">
+        <label for="email">
+          Email address
+        </label>
+        <input required="required" type="email" id="email" name="email" value="{{ email }}"/>
       </div>
       <div class="field">
         <label for="city">
           City
         </label>
-        <input type="text" id="city" name="city" value="{{ profileData?.city }}"/>
+        <input required="required" type="text" id="city" name="city" value="{{ profileData?.city }}"/>
       </div>
       <div class="field">
         <label for="state">
@@ -57,6 +69,12 @@
         <dd>{{ profileData.first_name }}</dd>
         <dt>Last name</dt>
         <dd>{{ profileData.last_name }}</dd>
+        <dt>Date of birth</dt>
+        <dd>{{ profileData.birth_date }}</dd>
+        {{#each profileData.emails }}
+          <dt>Email</dt>
+          <dd>{{ this.email }}</dd>
+        {{/each}}
         {{#each profileData.addresses }}
           <dt>City</dt>
           <dd>{{ this.city }}</dd>

@@ -146,6 +146,10 @@ form.profile-data select {
   border-radius: 3px;
   font-size: 16px;
   width: 250px;
+  /* This is needed to override a height that is set on *all* input[type=email] elements: */
+  height: auto;
+  /* This is needed to override a text-indent that is set on *all* input[type=email] elements: */
+  text-indent: initial;
 }
 
 form.profile-data input[type=submit] {
