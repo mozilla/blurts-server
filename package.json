@@ -37,6 +37,7 @@
     "uuid": "3.4.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.23.0",
     "coveralls": "3.1.0",
     "eslint": "^8.15.0",
     "eslint-config-standard": "^17.0.0",
@@ -48,7 +49,8 @@
     "nodemon": "2.0.4",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0"
+    "stylelint-config-standard": "^26.0.0",
+    "axe-playwright": "^1.1.11"
   },
   "engines": {
     "node": "16.15.x",
@@ -94,7 +96,12 @@
     "test:integration-headless": "MOZ_HEADLESS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
-    "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls"
+    "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls",
+    "allure:generate": "npx allure generate ./allure-results --clean",
+    "allure:open": "npm run allure:generate && npx allure open ./allure-report",
+    "test:playwright": "npx playwright test tests/e2e/specs/monitor-landing.spec.js",
+    "test:report": "npx playwright show-report",
+    "posttest": "npm run allure:generate" 
   },
   "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
 }

@@ -11,3 +11,9 @@ loadtests/__pycache__
 loadtests/venv
 .tmp
 public/dist
+allure-results/*
+test-results/*
+test-results/*
+playwright-report/
+allure-report/*
+test-results.json
