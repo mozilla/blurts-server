@@ -557,5 +557,15 @@ ad-unit-vpn-cta = { -brand-mozilla-vpn } hakkında bilgi alın
 ad-unit-1-how-do-you-keep = E-posta adresinizi nasıl gizli tutabilirsiniz?
 # ad 2 heading
 ad-unit-2-do-you-worry = Halka açık Wi-Fi ağlarının güvenliğinden endişeleniyor musunuz?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Oyunda kalın!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Hız sınırlarına takılmayın
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Dünyanın her yerinde olun
+# ad 3 list item 3
+ad-unit-3-access-more = Daha fazlasına erişin
+# ad 4 heading
+ad-unit-4-shopping-with = E-posta maskeleri ile alışveriş
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Telefonunuzda kullanın
