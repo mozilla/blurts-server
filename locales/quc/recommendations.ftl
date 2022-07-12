@@ -52,10 +52,19 @@ rec-pins-subhead = Chakowirisaj le uchajinem le taq PINs awech
 rec-pins = Jun kowoilal PIN man ruk'a'am ta winaqilal q'alajisanem pacha' rajilab'alil q'ij rech alaxb'al on kemriqonib'al. Rajawaxik jun ajilab'al le xew at ateta'manaq le man kax ta uriqik.
 # Recommendation subhead
 rec-address-subhead = Makoj taq kemriqonib'al pa taq retokib'al
+rec-address = Ruk' ukojik taq kemriqonib'al rech le rajilab'alil b'e jawi' xatk'iy wi wene' kuya' le aretokib'al pa uk'axal. Rumal man k'ax ta uriqik we q'alajisanem kech uk'iyal, wa' ktob'an chech are chi man k'ax ta uriqik we taq retokib'al.
+# Recommendation subhead
+rec-gen-1-subhead = Chakojo' jalan xuquje' kowilal retokib'al che kijujunal retokib'al.
 # Link title
 rec-gen-1-cta = Jas uwinaqirisax nim uchuq'ab'il taq retokib'al
+rec-gen-1 = Le retokib'al kuq'atej uya'ik ronojel taq kemb'i'aj pa uk'axal. Ar wa' kub'ij we k'o jun retolib'al kriqitajik, le e b'ank'ax kkriq le retokib'al rech uk'iyal akeb'i'aj.
+# Recommendation subhead
+rec-gen-2-subhead = Che'ak'olo' taq aretokib'al pa chajital k'olib'al
 # Link title
 rec-gen-2-cta = Mayjab'al rech taq ilawachinel retokib'al
+rec-gen-2 = Che'ak'olo' taq aretokib'al pa chajital k'olib'al jawi' le xewi at uz katokik, pacha' retokib'al rech ilawachinel. Xuquje' man k'ax ta kub'an chech uterene'xik ronojel le e nik'aj chi retokib'al.
+# Recommendation subhead
+rec-gen-3-subhead = Chachajij awib' chech uya'ik winaqilal q'alajisanem
 # Link title
 rec-gen-3-cta = Chasik'ij uwach taq chajital no'jib'al
 rec-gen-3 = Maya' le awinaqilal q'alajisanem we man rajawaxik taj. We xuquje' kta chi  awech                                              chatz'ib'aj on chaya' loq le akemriqonib'al, Rajilab'alil rulewal, on rajilab'al ch'aweb'al. utz kab'ij ja'i'
