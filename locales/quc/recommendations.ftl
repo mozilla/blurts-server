@@ -24,6 +24,8 @@ rec-pw-4-subhead = Chajeqeb'a' keb' ub'antajik uya'b'al usaqil tzij (2FA)
 # Link title
 rec-pw-4-cta = Chawila' taq uk'olib'al web' le kutzujuj 2FA
 # Recommendation subhead
+rec-bank-acc-subhead = Chaq'aqtuj le ub'antajik le ja k'olpwaq awech
+# Recommendation subhead
 rec-ip-subhead = Chakojo' pataninem le kuch'uq le kemriqonib'al rech IP
 # Link title
 rec-ip-us-cta = Chak'amb'ejaj { -brand-fpn }
