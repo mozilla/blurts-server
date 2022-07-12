@@ -29,6 +29,10 @@ rec-bank-acc-subhead = Chaq'aqtuj le ub'antajik le ja k'olpwaq awech
 rec-bank-acc = Chaq'atuj le ub'antajik ja k'olpwaq rumal wene k'o uk'axal b'anom on jalan pwaq toq'im. Chaya' ub'ixik chech le ja k'olpwaq we k'o jun jastaq kawilo che na aweta'am taj.
 # Recommendation subhead
 rec-cc-subhead = Chaq'atuj le ub'antajik uwujil qajanik
+rec-cc = Chaq'atuj we k'o jalan utoq'ixik pwaq pa le uwujil qajanik. Wene kawaj kata' jun chi wujilal ruk' k'ak' ajilab'al kuya' le rajawal uwujil qajanik.
+# Recommendation subhead
+rec-email-mask-subhead = Chakojo' jun k'oj rech taqoqxa'nib'al
+rec-email-cta = Chak'amb'ejaj { -brand-relay }
 # Recommendation subhead
 rec-ip-subhead = Chakojo' pataninem le kuch'uq le kemriqonib'al rech IP
 # Link title
