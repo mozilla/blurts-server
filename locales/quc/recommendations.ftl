@@ -33,6 +33,7 @@ rec-cc = Chaq'atuj we k'o jalan utoq'ixik pwaq pa le uwujil qajanik. Wene kawaj 
 # Recommendation subhead
 rec-email-mask-subhead = Chakojo' jun k'oj rech taqoqxa'nib'al
 rec-email-cta = Chak'amb'ejaj { -brand-relay }
+rec-email = Le uya'ik le qas ataqoqxa'nib'al man k'ax ta uriqik kkib'an le e b'ank'ax chech uriqik le aretokib'al pa nimk'atz. Jun patanib'al pacha' { -brand-relay }, krowaj le qas ataqoqxa'nib'al are taq kataq b'ik taq taqoqxa'nib'al pa le qas rokib'al taqoqxa'nib'al awech.
 # Recommendation subhead
 rec-ip-subhead = Chakojo' pataninem le kuch'uq le kemriqonib'al rech IP
 # Link title
