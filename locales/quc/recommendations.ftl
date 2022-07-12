@@ -23,8 +23,12 @@ rec-pw-3-non-fx = Chakojo' { -brand-lockwise } chech uterene'xik na ronojel le j
 rec-pw-4-subhead = Chajeqeb'a' keb' ub'antajik uya'b'al usaqil tzij (2FA)
 # Link title
 rec-pw-4-cta = Chawila' taq uk'olib'al web' le kutzujuj 2FA
+rec-pw-4 = K'i taq uk'olib'al web' kkitzujuj 2FA pacha' uwi' retab'alil chajib'al. Wa' kajawataj nik'aj chi q'alajisanem chech umajixik kemchak pacha' jun retokib'al rech jumul tzij le kopan awuk' pa oqxa'n.
 # Recommendation subhead
 rec-bank-acc-subhead = Chaq'aqtuj le ub'antajik le ja k'olpwaq awech
+rec-bank-acc = Chaq'atuj le ub'antajik ja k'olpwaq rumal wene k'o uk'axal b'anom on jalan pwaq toq'im. Chaya' ub'ixik chech le ja k'olpwaq we k'o jun jastaq kawilo che na aweta'am taj.
+# Recommendation subhead
+rec-cc-subhead = Chaq'atuj le ub'antajik uwujil qajanik
 # Recommendation subhead
 rec-ip-subhead = Chakojo' pataninem le kuch'uq le kemriqonib'al rech IP
 # Link title
