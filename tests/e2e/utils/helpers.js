@@ -3,7 +3,7 @@ const axios = require('axios');
 const delay = (timeInMilliSeconds) =>
   new Promise(function (resolve) {
     setTimeout(resolve, timeInMilliSeconds);
-  });
+});
 
 const generateRandomWord = (wordLength = 6) => {
   let word = '';
@@ -19,30 +19,13 @@ const generateRandomWord = (wordLength = 6) => {
   return word;
 };
 
-const getEmail = async (testEmail, attempts = 6) => {
-  let response;
+const generateRandomEmail = async (wordLength = 2) => {  
+  return `${Date.now()}_mntr@restmail.net`;
+};
 
-  if (attempts === 0) {
-    console.log('res---: ', response);
-    throw new Error('Unable to retrieve restmail data');
-  }
-
-  try {
-    const res = await axios.get(`http://restmail.net/mail/${testEmail}`);
-    response = res.data;
-  } catch (err) {
-    console.log('ERROR GET RESTMAIL EMAIL', err);
-  }
-
-  if (response.length) {
-    console.log('first 1 >>>>> ', response.subject);
-    console.log('first >2>>>> ', response[0].subject);
-    // console.log('second >>>>>', response[0].subject);
-    return response;
-  }
-
-  await delay(1000);
-  await getEmail(testEmail, attempts - 1);
+const defaultScreenshotOpts = {
+  animations: 'disabled',
+  maxDiffPixelRatio: 0.04
 };
 
 const deleteEmailAddress = async (testEmail) => {
@@ -68,7 +51,6 @@ const waitForRestmail = async (request, testEmail, attempts = 5) => {
 
   const resJson = JSON.parse(await response.text());
   if (resJson.length) {
-    // restEmail = resJson[0].subject;
     return resJson[0].subject;
   }
 
@@ -78,8 +60,9 @@ const waitForRestmail = async (request, testEmail, attempts = 5) => {
 
 module.exports = {
   generateRandomWord,
-  getEmail,
+  generateRandomEmail,
   deleteEmailAddress,
   delay,
-  waitForRestmail
+  waitForRestmail,
+  defaultScreenshotOpts,
 };

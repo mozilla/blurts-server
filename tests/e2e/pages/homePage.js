@@ -6,8 +6,7 @@ exports.HomePage = class HomePage {
     this.breachSummary = page.locator('.dash-stats .breach-stat-row').count();
     this.verificationLink = page.locator('#dashboard > div.row.jst-cntr');
     this.emailAddresses = page
-      .locator('//*[@id="dashboard"]/div[2]')
-      .textContent();
+      .locator('//*[@id="dashboard"]/div[2]');
     this.inviteEmailInput = page.locator('#email-add');
     this.manageAccountButton = page.locator('text=Manage Email Addresses');
     this.summaryDashBoard = page.locator('.dashboard-summary');
@@ -22,9 +21,6 @@ exports.HomePage = class HomePage {
       '//div[contains(@class, "breach-stat-number") and contains(@class, "passwords")]'
     );
     this.email = page.locator('.e-info-content span').first();
-    this.emailAddressesContentField = page.locator(
-      '(//*[@id="dashboard"]/div)[2]'
-    );
     this.addAnotherEmailInput = page.locator('#dashboard-add-email');
     this.takeBackControlDiv = page.locator(
       '.take-back-control-gradient .take-back-control-banner'

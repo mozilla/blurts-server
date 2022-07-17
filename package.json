@@ -8,6 +8,7 @@
   "dependencies": {
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "5.27.2",
+    "axios": "^0.27.2",
     "body-parser": "1.19.0",
     "client-oauth2": "4.3.2",
     "connect-redis": "5.0.0",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.23.0",
+    "axe-playwright": "^1.1.11",
     "coveralls": "3.1.0",
     "eslint": "^8.15.0",
     "eslint-config-standard": "^17.0.0",
@@ -49,8 +51,7 @@
     "nodemon": "2.0.4",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0",
-    "axe-playwright": "^1.1.11"
+    "stylelint-config-standard": "^26.0.0"
   },
   "engines": {
     "node": "16.15.x",
@@ -97,11 +98,14 @@
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
     "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls",
+    "test:e2e": "TEST_BASE_URL=https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net npx playwright test",
+    "test:prod": "TEST_BASE_URL=https://monitor.firefox.com npx playwright test",
+    "test:stage": "TEST_BASE_URL=https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net npx playwright test",
+    "test:local": "TEST_BASE_URL=http://localhost:3000 npx playwright test",
     "allure:generate": "npx allure generate ./allure-results --clean",
     "allure:open": "npm run allure:generate && npx allure open ./allure-report",
-    "test:playwright": "npx playwright test tests/e2e/specs/monitor-landing.spec.js",
     "test:report": "npx playwright show-report",
-    "posttest": "npm run allure:generate" 
+    "posttest": "npm run allure:generate"
   },
   "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
 }

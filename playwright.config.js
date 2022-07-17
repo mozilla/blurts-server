@@ -14,7 +14,10 @@ require('dotenv').config();
  */
 const config = {
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
-  globalTimeout: process.env.CI ? 60 * 60 * 1000 : undefined,
+  globalTimeout: process.env.CI ? 360000 : undefined,
+
+  /* Global setup */
+  globalSetup: require.resolve('./tests/e2e/global-setup.ts'),
 
   updateSnapshots: 'missing',
 
@@ -22,7 +25,8 @@ const config = {
   testDir: 'tests/e2e/specs',
 
   /* Maximum time one test can run for. */
-  timeout: 50 * 1000,
+  timeout: process.env.CI ? 180000 : 50 * 1000,
+
   // fullyParallel: true,
   expect: {
     /**
@@ -40,21 +44,21 @@ const config = {
   // forbidOnly: !!process.env.CI,
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
+
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 4 : undefined,
+
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     [process.env.CI ? 'github' : 'html']
-    // ['allure-playwright']
-    // ['json', {  outputFile: 'test-results.json' }],
-    // ['./tests/utils/custom-reporter.js']
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
+
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.URL || 'https://monitor.firefox.com',
+    baseURL: process.env.TEST_BASE_URL || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
 
     // failure behavior
     screenshot: 'only-on-failure',
@@ -73,13 +77,13 @@ const config = {
       use: {
         ...devices['Desktop Chrome']
       }
+    },
+    {
+      name: 'firefox',
+      use: {
+        ...devices['Desktop Firefox']
+      }
     }
-    // {
-    //   name: 'firefox',
-    //   use: {
-    //     ...devices['Desktop Firefox']
-    //   }
-    // }
     // {
     //   name: 'webkit',
     //   use: {

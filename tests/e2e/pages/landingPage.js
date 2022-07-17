@@ -24,7 +24,10 @@ exports.LandingPage = class LandingPage {
     this.monitorAccountFeatures = page.locator(
       '(//section[@id="fx-account-features"]//div)[4]'
     );
-    this.footer = page.locator('[data-bento-app-id="fx-monitor"] footer ul');
+    this.monitorAccountFeaturesPane = page.locator(
+      '#fx-account-features div'
+    );
+    this.footer = page.locator('footer ul');
     this.alertAboutNewBreachesButton = page.locator('#new-scan-page');
     this.breachResults = page.locator('.scan-results-headline');
     this.emailScannedForBreaches = page.locator('#scannedEmail');

@@ -13,7 +13,7 @@ loadtests/venv
 public/dist
 allure-results/*
 test-results/*
-test-results/*
 playwright-report/
 allure-report/*
 test-results.json
+state.json

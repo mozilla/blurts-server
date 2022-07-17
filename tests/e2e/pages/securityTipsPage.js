@@ -6,10 +6,10 @@ exports.SecurityPage = class SecurityPage {
     this.homePageNavButton = page.locator(
       '.desktop-menu [data-event-label="Home"]'
     );
-    this.SecTipsNavButton = page.locator(
+    this.secTipsNavButton = page.locator(
       '.desktop-menu [data-event-label="Security Tips"]'
     );
-    this.SecurityPageUI = page.locator('.security-tips .no-vertical-padding');
+    this.securityPageUI = page.locator('.security-tips .no-vertical-padding');
   }
 
   async open() {
