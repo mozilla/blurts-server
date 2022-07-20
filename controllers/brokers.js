@@ -99,7 +99,7 @@ async function post (req, res) {
   // Whereas OneRep expects an ISO 8601 string,
   // the time component is `00:00:00.000Z` in their example.
   // Thus, presumably the user's time zone is irrelevant.
-  const birth_date_obj = new Date(Date.UTC(birth_date_parts[0], birth_date_parts[1], birth_date_parts[2]))
+  const birth_date_obj = new Date(Date.UTC(birth_date_parts[0], birth_date_parts[1] - 1, birth_date_parts[2]))
   const profileData = {
     first_name,
     last_name,
