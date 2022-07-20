@@ -37,7 +37,10 @@
 .field.scan-results-wrapper .scan-result {
   overflow: hidden;
   width: 100%;
-  box-shadow: 0 8px 12px 1px rgba(29, 17, 51, 0.04), 0 3px 16px 2px rgba(9, 32, 77, 0.12), 0 5px 10px -3px rgba(29, 17, 51, 0.12);
+  box-shadow:
+    0 8px 12px 1px rgba(29 17 51 0.04),
+    0 3px 16px 2px rgba(9 32 77 0.12),
+    0 5px 10px -3px rgba(29 17 51 0.12);
   background-color: white;
   border-radius: 8px;
 }
@@ -51,7 +54,7 @@
 }
 
 .field.scan-results-wrapper .scan-result .scan-result-header h4 {
-  font-family: 'Metropolis', sans-serif;
+  font-family: Metropolis, sans-serif;
   font-weight: 400;
   font-size: 16px;
   margin: 0;
@@ -60,7 +63,7 @@
 
 .field.scan-results-wrapper .scan-result .scan-result-header .status {
   padding: 6px;
-  border: 2px solid currentColor;
+  border: 2px solid currentcolor;
   border-radius: 3px;
   font-weight: 500;
   flex: 1 0 auto;
@@ -70,8 +73,8 @@
   color: var(--orange1);
 }
 
-.field.scan-results-wrapper .scan-result .scan-result-header .status.is-optout_in_progress,
-.field.scan-results-wrapper .scan-result .scan-result-header .status.is-waiting_for_verification {
+.field.scan-results-wrapper .scan-result .scan-result-header .status.is-optout-in-progress,
+.field.scan-results-wrapper .scan-result .scan-result-header .status.is-waiting-for-verification {
   color: var(--purple);
 }
 
@@ -108,7 +111,7 @@
 
   /* When collapsing, delay the padding removal until it's fully collapsed: */
   transition-delay: 0s, 0.2s;
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -138,7 +141,7 @@
   transition-delay: 0s;
 }
 
-form.profile-data input:not([type=submit]),
+form.profile-data input:not([type='submit']),
 form.profile-data select {
   padding: 6px;
   background-color: white;
@@ -146,13 +149,15 @@ form.profile-data select {
   border-radius: 3px;
   font-size: 16px;
   width: 250px;
+
   /* This is needed to override a height that is set on *all* input[type=email] elements: */
   height: auto;
+
   /* This is needed to override a text-indent that is set on *all* input[type=email] elements: */
   text-indent: initial;
 }
 
-form.profile-data input[type=submit] {
+form.profile-data input[type='submit'] {
   width: 250px;
 }
 
