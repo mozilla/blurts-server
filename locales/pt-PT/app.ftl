@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -610,13 +613,32 @@ vpn-banner-cta-close = Fechar
 ## Relay and VPN educational/ad units
 
 ad-unit-relay-cta = Saber mais sobre o { -brand-relay }
+ad-unit-vpn-cta = Saiba mais sobre a { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Como manter o seu endereço de e-mail em segredo?
+# ad 2 heading
+ad-unit-2-do-you-worry = Preocupa-se com a segurança das redes sem fio públicas?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Mantenha-se atualizado!
+ad-unit-3-lets-you-keep = A { -brand-mozilla-vpn } permite manter uma conexão estável segura e protegida enquanto joga ou transmite filmes.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Previna limitações
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Esteja em qualquer lugar do mundo
 # ad 3 list item 3
 ad-unit-3-access-more = Aceda a mais
+# ad 4 heading
+ad-unit-4-shopping-with = Compras com Máscaras de E-mail
+ad-unit-4-want-to-buy = Quer comprar algo online e não conhece ou confia totalmente na loja?
 # ad 5 heading
 ad-unit-5-on-the-go = Em movimento com { -brand-relay }
+ad-unit-5-instantly-make = Crie instantaneamente uma máscara de e-mail personalizada em qualquer momento e lugar que vá!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Conecte-se em qualquer lugar
+ad-unit-5-privately-sign-in = Use a sua máscara de e-mail quando quiser fazer iniciar sessão privadamente na rede Wi-Fi pública ou do seu café favorito
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Obtenha comprovativos de email
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Utilize no seu telemóvel
+# ad 6 heading
+ad-unit-6-worry-free = Inscrições sem preocupações

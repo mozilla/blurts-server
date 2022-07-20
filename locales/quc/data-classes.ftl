@@ -1,9 +1,11 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Rajilab'alil taq kemb'i'aj
 address-book-contacts = Taq ajch'ab'e'n rech le uwujil taq kemriqonib'al
 age-groups = Taq wokaj rech Junab'
 ages = Taq junab'
+# Refers to medical appointments.
+appointments = Taq riqoj ib'
 apps-installed-on-devices = Taq wiqkemchakub'al jeqetal pa taq kojkemchak
 astrological-signs = Taq etal rech nik'onem wachkaj
 audio-recordings = Taq k'olch'ab'alil

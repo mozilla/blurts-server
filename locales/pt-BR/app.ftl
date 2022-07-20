@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -84,8 +87,8 @@ fxa-pwt-summary-4 =
     Gerenciadores de senhas como 1Password, LastPass, Dashlane e Bitwarden armazenam 
     suas senhas e as preenchem em sites para você. Eles até ajudam a criar senhas fortes.
 fxa-pwt-summary-6 =
-    Vazamentos de dados vêm aumentando. Se suas informações pessoais aparecerem em um novo vazamento do dados, 
-    o { -product-name } envia um alerta — assim você pode tomar providências e proteger suas contas.
+    Vazamentos de dados vêm aumentando. Se aparecer suas informações pessoais em um novo vazamento de dados, 
+    o { -product-name } envia um alerta, assim você pode tomar providências para proteger suas contas.
 fxa-what-to-do-blurb-1 =
     Se não consegue entrar na conta, entre em contato com o site para saber como atualizar. 
     Vê uma conta que não reconhece? Seus dados podem ter sido vendidos 
@@ -214,7 +217,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Verificar se há vazamentos
 find-out-what-hackers-know = Descubra o que os hackers já sabem sobre você. Saiba como estar um passo à frente.
-get-email-alerts = Mantenha-se protegido: Receba alertas por email quando suas informações aparecerem em um vazamento de dados conhecido
+get-email-alerts = Mantenha-se protegido: Receba alertas por email quando aparecer suas informações em um vazamento de dados conhecido
 search-for-your-email = Pesquise seu endereço de email em vazamentos de dados tornados públicos desde 2007.
 back-to-top = Voltar ao início
 comm-opt-0 = Enviar email para mim se um de meus endereços de email abaixo aparecer em um vazamento de dados.

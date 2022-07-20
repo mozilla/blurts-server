@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -517,16 +520,22 @@ ad-unit-vpn-cta = 详细了解 { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = 要如何保密自己的邮箱地址？
 # ad 2 heading
 ad-unit-2-do-you-worry = 您是否担心公共 Wi-Fi 的安全？
+# ad 3 heading
+ad-unit-3-stay-in-the-game = 再接再厉！
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } 可为您提供稳定且安全的连接，玩游戏、看网剧，不在话下。
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = 拒绝限速
+# ad 3 list item 2
+ad-unit-3-be-anywhere = 无论身在何处
 # ad 3 list item 3
 ad-unit-3-access-more = 访问更多内容
 # ad 4 heading
 ad-unit-4-shopping-with = 用马甲邮箱网购
 ad-unit-4-want-to-buy = 想要网购，但不熟悉或不是很信任商家？
+ad-unit-4-shop-online = 网购就用马甲邮箱。您可将订单邮件转发至真实邮箱，并随时按需关闭马甲的转发功能。
 # ad 5 heading
 ad-unit-5-on-the-go = 随时随地使用 { -brand-relay }
+ad-unit-5-instantly-make = 随时随地创建自定义马甲邮箱！
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = 随时随地连接
 ad-unit-5-privately-sign-in = 可使用马甲邮箱登录公共 Wi-Fi，如在您最常去的咖啡厅登录上网时
@@ -539,3 +548,4 @@ ad-unit-5-no-matter-where = 无论您身居何处，只需几秒就可为想做�
 # ad 6 heading
 ad-unit-6-worry-free = 注册全无忧
 ad-unit-6-want-to-start = 想要开始新订阅、回复邀请或获得优惠促销代码，而不让垃圾邮件充斥您的收件箱吗？
+ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮箱而非真实邮箱，保护您的个人信息并更好地管理收件箱

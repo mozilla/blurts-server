@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -131,46 +134,6 @@ security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Odpri navigacijo { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Na lestvici od 1 do 10, kako verjetno bi prijatelju ali sodelavcu priporočili { -product-short-name }?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Verjetno ne
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Zelo verjetno
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Je { -product-short-name } preprost za uporabo?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Ali čutite, da je { -product-short-name } vreden zaupanja?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Se sploh ne strinjam
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Se ne strinjam
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ne vem
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Se strinjam
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Se popolnoma strinjam
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Kako bi se počutili, če ne bi mogli več uporabljati { -product-short-name }ja?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Zelo razočarano
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Nekoliko razočarano
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Bilo bi mi vseeno
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ZADNJA DODANA KRAJA PODATKOV
 # Link title
@@ -660,7 +623,18 @@ vpn-banner-cta-expand = Razširi
 # button to close panel
 vpn-banner-cta-close = Zapri
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Vas skrbi varnost na javnih omrežjih Wi-Fi?
+ad-unit-relay-cta = Več o { -brand-relay }u
+ad-unit-vpn-cta = Več o { -brand-mozilla-vpn }
+# ad 2 heading
+ad-unit-2-do-you-worry = Vas skrbi varnost na javnih omrežjih Wi-Fi?
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Bodite kjerkoli na svetu
+# ad 3 list item 3
+ad-unit-3-access-more = Več dostopa
+# ad 4 heading
+ad-unit-4-shopping-with = Nakupovanje z e-poštnimi maskami
+ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali popolnoma zaupate trgovini?
+# ad 6 heading
+ad-unit-6-worry-free = Brezskrbna registracija

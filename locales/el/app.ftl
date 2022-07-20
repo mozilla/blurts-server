@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -633,6 +636,8 @@ ad-unit-vpn-cta = Μάθετε περισσότερα για το { -brand-mozil
 ad-unit-1-how-do-you-keep = Πώς κρατάτε μυστική τη διεύθυνση email σας;
 # ad 2 heading
 ad-unit-2-do-you-worry = Ανησυχείτε για την ασφάλεια των δημόσιων Wi-Fi;
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Μείνετε στο παιχνίδι!
 ad-unit-3-lets-you-keep = Το { -brand-mozilla-vpn } σάς επιτρέπει να προστατεύετε μια σταθερή σύνδεση ενώ παίζετε παιχνίδια ή παρακολουθείτε ταινίες.
 # ad 3 list item 3
 ad-unit-3-access-more = Πρόσβαση σε περισσότερα

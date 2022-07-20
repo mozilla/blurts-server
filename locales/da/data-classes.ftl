@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Konto-saldoer
 address-book-contacts = Adressebogs-kontakter
@@ -59,6 +59,7 @@ geographic-locations = Geografiske placeringer
 government-issued-ids = ID-kort udstedt af regeringer
 health-insurance-information = Information om sundhedsforsikringer
 historical-passwords = Tidligere adgangskoder
+hiv-statuses = HIV-status
 home-loan-information = Information om boliglån
 home-ownership-statuses = Status for boligejerskab
 homepage-urls = Websteds-adresser

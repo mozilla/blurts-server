@@ -68,3 +68,7 @@ pre-fxa-p-3 = Kopan na taq na'b'anem awuk' pa { -product-name }. Kqaya' ub'ixik 
 create-account = Chawinaqirisaj jun kemb'i'aj
 # More security products
 more-products-headline = Caq'alajisaj awib' ruk' nik'aj chi qak'ay
+more-products-vpn = Chajinem chi rij le wiqkemchakub'al awech, pa ronojel wiqkemchakub'al.
+more-products-cta-vpn = Chariqa' { -product-name-vpn }
+more-products-relay = Chawowaj le akemriqonib'al rech ataqoqxa'nib'al chech tob'anem che uchajixik le awinaqilal.
+more-products-cta-relay = Chariqa' { -product-name-relay }

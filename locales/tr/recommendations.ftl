@@ -47,7 +47,7 @@ rec-cc =
     Kredi kartınızdaki tuhaf ücretlere dikkat edin. 
     Gerekirse kredi kartınızı iptal ederek yeni bir kredi kartı talep edin.
 # Recommendation subhead
-rec-email-subhead = E-posta takma adları kullanın
+rec-email-mask-subhead = Bir e-posta maskesi kullanın
 rec-email-cta = { -brand-relay }’i deneyin
 rec-email = Gerçek e-posta adresinizi vermek, hacker’ların ve botların parolalarınızı bulmasını ve sizi hedef almasını kolaylaştırır { -brand-relay } gerçek e-posta adresinizi gizler ve gelen e-postaları gerçek gelen kutunuza iletir.
 # Recommendation subhead

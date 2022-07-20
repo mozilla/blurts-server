@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -121,50 +124,6 @@ security-tips = Sikkerhedstips
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Åbn { -brand-fxa }-navigation
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = På en skal fra 1 til 10, hvor sandsynligt er det så, at du vil anbefale { -product-short-name } til en ven eller en kollega?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Ikke sandsynligt
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Meget sandsynligt
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Er { -product-short-name } nem at bruge?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Synes du, at { -product-short-name } er pålidelig?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Har { -product-short-name } en klar og overskuelig brugerflade?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Meget uenig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Uenig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Ved ikke
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Enig
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Meget enig
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Hvordan ville du have det, hvis du ikke længere kunne bruge { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Meget skuffet
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Ret skuffet
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Det gør ingen forskel
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SENEST TILFØJEDE DATALÆK
 # Link title
@@ -656,9 +615,40 @@ vpn-banner-cta-expand = Udvid
 # button to close panel
 vpn-banner-cta-close = Luk
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Hvordan holder du din mailadresse hemmelig?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Er du bekymret for sikkerheden på offentlige wi-fi?
+ad-unit-relay-cta = Læs mere om { -brand-relay }
+ad-unit-vpn-cta = Læs mere om { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Hvordan holder du din mailadresse hemmelig?
+# ad 2 heading
+ad-unit-2-do-you-worry = Er du bekymret for sikkerheden på offentlige wi-fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Hold fokus!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } sørger for, at din forbindelse er stabil og sikker, når du spiller spil eller streamer film.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Undgå neddrosling
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Vær hvor som helst i verden
+# ad 3 list item 3
+ad-unit-3-access-more = Få adgang til mere
+# ad 4 heading
+ad-unit-4-shopping-with = Maskér din mailadresse, når du handler ind
+ad-unit-4-want-to-buy = Vil du købe noget på nettet, selvom du ikke kender eller stoler på butikken?
+ad-unit-4-shop-online = Maskér din mailadresse, når du handler på nettet. Få bekræftelsen sendt til din rigtige mailadresse, og deaktiver nemt maskeringen, når det passer dig.
+# ad 5 heading
+ad-unit-5-on-the-go = Undervejs med { -brand-relay }
+ad-unit-5-instantly-make = Maskér hurtigt din mailadresse, uanset hvor du er.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Opret forbindelse undervejs
+ad-unit-5-privately-sign-in = Maskér din mailadresse, når du vil logge ind privat på din yndlingscafé eller et offentligt wi-fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Modtag kvitteringer på mail
+ad-unit-5-share-custom-email = Brug en maskeret mailadresse til at modtage kvitteringer fra butikker - uden at dele din rigtige mailadresse
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Brug det på din telefon
+ad-unit-5-no-matter-where = Maskér lynhurtigt din mailadresse, uanset hvor du er
+# ad 6 heading
+ad-unit-6-worry-free = Tilmelding uden bekymringer
+ad-unit-6-want-to-start = Vil du starte et nyt abonnement, svare på en indbydelse eller få en rabatkode uden at din indbakke bliver fyldt med spam?
+ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine oplysninger og behold kontrollen over din indbakke, næste gang du skal oprette dig som bruger et sted

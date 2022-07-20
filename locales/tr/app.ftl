@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -114,50 +117,6 @@ security-tips = Güvenlik ipuçları
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } menüsünü aç
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 1-10 arası bir ölçekte, { -product-short-name }’ü bir arkadaşınıza önerme olasılığınız nedir?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Çok düşük
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Çok yüksek
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name }’ün kullanımı kolay mı?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = { -product-short-name }’ün güvenilir olduğunu düşünüyor musunuz?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } yalın ve basit bir arayüze sahip mi?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Kesinlikle katılmıyorum
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Katılmıyorum
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Emin değilim
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Katılıyorum
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Kesinlikle katılıyorum
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = { -product-short-name }’ü artık kullanamayacak olsanız ne hissederdiniz?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Çok hayal kırıklığına uğrardım
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Biraz hayal kırıklığına uğrardım
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Umrumda olmazdı
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = EKLENEN SON İHLAL
 # Link title
@@ -590,9 +549,23 @@ vpn-banner-cta-expand = Genişlet
 # button to close panel
 vpn-banner-cta-close = Kapat
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = E-posta adresinizi nasıl gizli tutabilirsiniz?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Halka açık Wi-Fi ağlarının güvenliğinden endişeleniyor musunuz?
+ad-unit-relay-cta = { -brand-relay } hakkında bilgi alın
+ad-unit-vpn-cta = { -brand-mozilla-vpn } hakkında bilgi alın
+# ad 1 heading
+ad-unit-1-how-do-you-keep = E-posta adresinizi nasıl gizli tutabilirsiniz?
+# ad 2 heading
+ad-unit-2-do-you-worry = Halka açık Wi-Fi ağlarının güvenliğinden endişeleniyor musunuz?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Oyunda kalın!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Hız sınırlarına takılmayın
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Dünyanın her yerinde olun
+# ad 3 list item 3
+ad-unit-3-access-more = Daha fazlasına erişin
+# ad 4 heading
+ad-unit-4-shopping-with = E-posta maskeleri ile alışveriş
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Telefonunuzda kullanın

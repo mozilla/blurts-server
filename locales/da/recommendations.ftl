@@ -48,7 +48,7 @@ rec-cc =
     Hold øje med underlige betalinger fra dit kreditkort. Overvejs at 
     bede din kreditkortudsteder om et nyt kort med et nyt nummer.
 # Recommendation subhead
-rec-email-subhead = Brug mail-aliasser
+rec-email-mask-subhead = Maskér din mailadresse
 rec-email-cta = Prøv { -brand-relay }
 rec-email =
     Ved at dele din rigtige mailadresse gør du det nemmere for hackere eller 

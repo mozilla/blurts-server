@@ -1,9 +1,11 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = stanja na računih
 address-book-contacts = stiki iz imenika
 age-groups = starostne skupine
 ages = starosti
+# Refers to medical appointments.
+appointments = termini pregledov
 apps-installed-on-devices = aplikacije, nameščene v napravah
 astrological-signs = astrološka znamenja
 audio-recordings = zvočni posnetki
@@ -57,6 +59,7 @@ geographic-locations = geografske lokacije
 government-issued-ids = osebni dokumenti
 health-insurance-information = podatki o zdravstvenem zavarovanju
 historical-passwords = predhodna gesla
+hiv-statuses = statusi HIV
 home-loan-information = podatki o domačih posojilih
 home-ownership-statuses = statusi lastništev nepremičnin
 homepage-urls = spletni naslovi domačih strani

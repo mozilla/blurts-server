@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -602,6 +605,7 @@ ad-unit-1-how-do-you-keep = ¿Mba’éicha ereko kañyhápe ne ñanduti veve kun
 ad-unit-2-do-you-worry = ¿Ejepy’apýpa pyha tekorosãre Wi-Fi opavaveguávape?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = ¡Epyta ñembosaráipe!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } omoneĩ eikekatukuaa hag̃ua eñembosarái térã ehechávo ta’ãngamýi.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Omboyke tekombegue
 # ad 3 list item 2
@@ -610,13 +614,21 @@ ad-unit-3-be-anywhere = Reimekuaa oimeraẽ tenda arapýpe
 ad-unit-3-access-more = Eikekuaave
 # ad 4 heading
 ad-unit-4-shopping-with = Emba’ejogua tovara’ãnga reheve ñanduti veve rupive
+ad-unit-4-want-to-buy = Emba’ejoguasépa ñandutí rupive ha ndereikuaái jejoguaha térã nderejeroviái hese
+ad-unit-4-shop-online = Eipuru ñanduti veve rovara’ãnga emba’ejoguávo ñanduti rupive. Erekóta ñemoneĩ ne ñanduti vevépe ha upéi eipe’a tovara’ãnga ejapose vove.
 # ad 5 heading
 ad-unit-5-on-the-go = Pya’eterei { -brand-relay } ndive
+ad-unit-5-instantly-make = ¡Ejapo ñanduti veve rovara’ãnga oimeraẽva tendápe ha eho ehohápe!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Eikékatu pya’e porã
+ad-unit-5-privately-sign-in = Eipuru ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oipurukuaávape
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Og̃uahẽ kuatia ñanduti veve rupive
+ad-unit-5-share-custom-email = Emoherakuã peteĩ ñanduti veve rovara’ãnga nemba’eteéva kuatia ñemba’ejoguakue eme’ẽ’ỹ rehe ne ñanduti veve teete
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Eipuru ne pumbyrýpe
+ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve rovara’ãnga nemba’eteéva sapy’aitépe ejapo hag̃ua ejaposéva uperire
 # ad 6 heading
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
+ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemyasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
+ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñanduti veve rovara’ãnga ne ñanduti vevetéva rendaguépe emo’ã hag̃ua ne marandu ha ehechamemekuaa hag̃ua ne ñe’ẽmondo g̃uahẽha
