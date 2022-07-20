@@ -29,7 +29,22 @@ ESLint rules are based on [eslint-config-standard](https://github.com/standard/e
 
 Stylelint rules are based on [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard). To fix all auto-fixable problems, run `npx stylelint public/css/ --fix`
 
-To run linting/formatting as you type or upon save, add the ESLint and Stylelint extensions and configure both to be the default formatter for this repo.  See here for more on Stylelint config with VSCode: https://github.com/stylelint/vscode-stylelint#editorcodeactionsonsave
+To run linting/formatting as you type or upon save, add the ESLint and Stylelint extensions and configure both to be the default formatter.  For VS Code, you may want to add properties to your personal settings.json file, similar to:
+```
+"[javascript]": {
+   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+   "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+   }
+},
+"[css]": {
+   "editor.defaultFormatter": "stylelint.vscode-stylelint",
+   "editor.codeActionsOnSave": {
+      "source.fixAll.stylelint": true
+   }
+}
+```
+See here for more on Stylelint config with VSCode: https://github.com/stylelint/vscode-stylelint#editorcodeactionsonsave
 
 ### Install
 
@@ -154,32 +169,6 @@ To run tests with interactive `debugger` lines enabled:
 ```
 NODE_ENV=tests node inspect --harmony ./node_modules/.bin/jest tests/home.test.js
 ```
-
-### Integration tests
-
-Integration tests utilize the `@wdio` suite in conjunction with selenium.  Tests include image comparisons that utilize the baseline images found in *tests/integration/tests/Visual_Baseline/desktop_firefox*.  In order to get the tests to run locally, you will need to have the Selenium standalone server installed and running on your machine:
-```
-brew install selenium-server-standalone
-```
-
-This should auto-install the Java dependency (openjdk), however, it may not be linked correctly.  You can test linkage by running `java -version`.  If your terminal is unable to locate the Java runtime, you can try linking it:
-```
-sudo ln -sfn /usr/local/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
-```
-
-Additionally, you'll need the Gecko driver:
-```
-brew install geckodriver
-```
-
-Before running the integration test, you may need to start the selenium server:
-```
-brew services start selenium-server-standalone
-```
-
-The image comparison tests are very brittle and may not work as expected when running strictly local, given individual machine setups.  In particular, if you have a high-dpi monitor on your machine, the browser may not be able to resize correctly.  (Baseline images are currently set to 1920x1080, which may not fit on your screen.) You may have better luck running the headless test versions: "test:integration-headless", "test:integration-headless-ci", and "test:integration-docker".
-
-Generating a new baseline image should ideally be done via the docker test to maintain consistency.  To do this, first delete the existing image and then run the docker integration test.  The test should prompt you that the baseline image cannot be found, and indicate the location for an auto-generated image to copy over.  Alternatively, you could also uncomment `autoSaveBaseline: true` in `tests/integration/wdio.docker.js` to have the image automatically copy/paste into `tests/integration/tests/Visual_Baseline/desktop_firefox`.
 
 ### Test Firefox Integration
 

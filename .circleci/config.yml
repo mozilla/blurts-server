@@ -3,7 +3,7 @@ version: 2.1
 executors:
     node:
         docker:
-            - image: cimg/node:14.17
+            - image: cimg/node:16.15
               auth:
                 username: $DOCKER_USER
                 password: $DOCKER_PASS
@@ -18,7 +18,7 @@ executors:
             image: ubuntu-2004:202107-02
 
 orbs:
-    node: circleci/node@4.7.0
+    node: circleci/node@5.0.2
     python: circleci/python@1.4.0
 
 jobs:
@@ -80,39 +80,6 @@ jobs:
                     -e COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
                     blurts-server npm test
 
-    integration-tests:
-        executor: ubuntu
-        steps:
-            - checkout
-            - node/install-npm:
-                # Official node@14 images come packaged with npm@6. For some reason, this ubuntu image comes with node@14 + npm@7
-                # Attempted to roll ubuntu image back, but current version includes docker-compose bug-fix which we use (--env-file)
-                version: "6"
-            - node/install-packages
-            - run:
-                  name: Run tests
-                  command: |
-                      cp .env-dist .env
-                      sudo chown -R  $USER:$USER .
-                      mkdir ./tests/integration/errorShots
-                      docker-compose --env-file .env -f tests/integration/docker-compose.yml up --build -d
-                      docker-compose --env-file .env -f tests/integration/docker-compose.yml exec --user root firefox npm run test:integration-headless-ci
-            - run:
-                  name: Capture logs
-                  when: on_fail
-                  command: |
-                      docker-compose -f tests/integration/docker-compose.yml logs server &> tests/integration/server.log
-                      docker-compose -f tests/integration/docker-compose.yml logs postgres &> tests/integration/postgres.log
-                      docker-compose -f tests/integration/docker-compose.yml logs firefox &> tests/integration/firefox.log
-            - store_artifacts:
-                  path: ./tests/integration/errorShots/
-            - store_artifacts:
-                  path: ./tests/integration/server.log
-            - store_artifacts:
-                  path: ./tests/integration/postgres.log
-            - store_artifacts:
-                  path: ./tests/integration/firefox.log
-
     deploy:
         docker:
             - image: docker:stable-git
@@ -169,7 +136,6 @@ workflows:
             - lint-js
             - lint-css
             - lint-l10n
-            - integration-tests
             - unit-tests:
                 filters:
                     tags:
@@ -183,10 +149,8 @@ workflows:
                     branches:
                         only: 
                             - main
-                            - main-kanary
             - deploy_static:
                 filters:
                     branches:
                         only: 
                             - main
-                            - main-kanary
