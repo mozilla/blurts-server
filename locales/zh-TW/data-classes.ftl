@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = 帳戶餘額
 address-book-contacts = 通訊錄聯絡人
@@ -54,6 +54,7 @@ family-structure = 家庭結構
 financial-investments = 金融投資
 financial-transactions = 金融交易紀錄
 fitness-levels = 健身水平
+flights-taken = 搭乘過的航班
 genders = 性別
 geographic-locations = 地理位置
 government-issued-ids = 政府簽發的證件資料
