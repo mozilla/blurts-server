@@ -1,6 +1,5 @@
-import { LandingPage } from "./pages/landingPage";
-import { LoginPage } from "./pages/LoginPage";
-
+const { LandingPage } =  require("./pages/landingPage");
+const { LoginPage } = require("./pages/LoginPage");
 const { chromium } = require('@playwright/test');
 
 async function globalSetup() {
@@ -15,11 +14,11 @@ async function globalSetup() {
     const loginPage = new LoginPage(page);
     await loginPage.login(
       process.env.TESTACCOUNT_EMAIL,
-      process.env.TESTACCOUNT_PASSWORD2
+      process.env.TESTACCOUNT_PASSWORD
     );
 
     await page.context().storageState({ path: 'state.json' });
     await browser.close();
 }
 
-export default globalSetup;
+module.exports = globalSetup

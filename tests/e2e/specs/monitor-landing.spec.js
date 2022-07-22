@@ -56,7 +56,7 @@ test.describe.only('Monitor Landing Page', () => {
   });
 
   test('Verify breach check on landing page', async ({ page }) => {
-    const testEmail = generateRandomWord(7) + '_testacct2@restmail.net';
+    const testEmail = Date.now() + '_testacct2@restmail.net';
     await page.fill(landingPage.checkForBreachesEmailInput, testEmail);
     await landingPage.CheckForBreachesButton.click();
 

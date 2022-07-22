@@ -17,7 +17,7 @@ const config = {
   globalTimeout: process.env.CI ? 360000 : undefined,
 
   /* Global setup */
-  globalSetup: require.resolve('./tests/e2e/global-setup.ts'),
+  globalSetup: require.resolve('./tests/e2e/global-setup.js'),
 
   updateSnapshots: 'missing',
 
