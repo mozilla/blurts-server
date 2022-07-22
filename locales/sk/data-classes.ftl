@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Zostatky na účtoch
 address-book-contacts = Kontakty v adresári
@@ -54,6 +54,7 @@ family-structure = Rodinné štruktúry
 financial-investments = Finančné investície
 financial-transactions = Finančné transakcie
 fitness-levels = Úrovne fyzičky
+flights-taken = Uskutočnené lety
 genders = Pohlavia
 geographic-locations = Geografické polohy
 government-issued-ids = Štátom vydané identifikačné doklady
