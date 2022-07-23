@@ -618,3 +618,5 @@ ad-unit-1-how-do-you-keep = Korleis held du e-postadressa di hemmeleg?
 ad-unit-2-do-you-worry = Er du bekymra for sikkerheita på offentleg Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Hald deg oppdatert!
+# ad 3 list item 3
+ad-unit-3-access-more = Få tilgang til meir
