@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Số dư tài khoản
 address-book-contacts = Danh bạ
@@ -54,6 +54,7 @@ family-structure = Cơ cấu gia đình
 financial-investments = Sự đầu tư tài chính
 financial-transactions = Giao dịch tài chính
 fitness-levels = Mức độ thể dục
+flights-taken = Các chuyến bay đã thực hiện
 genders = Giới tính
 geographic-locations = Vị trí địa lý
 government-issued-ids = ID do chính phủ cấp
