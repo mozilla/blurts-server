@@ -701,3 +701,13 @@ ad-unit-5-instantly-make = E-mailovou masku si vytvoříte kdykoliv a kdekoliv p
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Připojení na cestách
 ad-unit-5-privately-sign-in = Když se chcete soukromě přihlásit do své oblíbené kavárny nebo veřejné sítě Wi-Fi, použijte svou e-mailovou masku.
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Příjem e-mailových účtenek
+ad-unit-5-share-custom-email = Sdílejte vámi zvolenou e-mailovou masku pro obdržení účtenek z nákupů v obchodech, bez nutnosti sdílet váš skutečný e-mail.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Použití i v telefonu
+ad-unit-5-no-matter-where = Ať jste kdekoli, vytvořte si během několika sekund vlastní e-mailovou masku pro cokoli, co chcete udělat.
+# ad 6 heading
+ad-unit-6-worry-free = Registrace bez obav
+ad-unit-6-want-to-start = Chcete si zřídit nové předplatné, odpovědět na pozvánku nebo získat výhodný promo kód bez toho, aby vám e-mailovou schránku zaplavil spam?
+ad-unit-6-before-you-complete = Během své další registrace použijte místo svého skutečného e-mailu masku, abyste ochránili své údaje a udržovali si kontrolu nad doručenou poštou.
