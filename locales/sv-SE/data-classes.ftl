@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Kontosaldon
 address-book-contacts = Adressbokskontakter
@@ -54,6 +54,7 @@ family-structure = Familjestruktur
 financial-investments = Finansiella investeringar
 financial-transactions = Finansiella transaktioner
 fitness-levels = Fitnessnivåer
+flights-taken = Använda flyg
 genders = Kön
 geographic-locations = Geografiska platser
 government-issued-ids = Regeringens utfärdade ID
