@@ -687,3 +687,17 @@ ad-unit-3-stay-in-the-game = Zůstaňte ve hře!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vám umožňuje udržovat stabilní připojení v bezpečí při hraní her nebo streamování filmů.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Zabraňte zpomalování
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Buďte kdekoli na světě
+# ad 3 list item 3
+ad-unit-3-access-more = Mějte víc možností přístupu
+# ad 4 heading
+ad-unit-4-shopping-with = Nakupování s e-mailovými maskami
+ad-unit-4-want-to-buy = Chcete si něco koupit v online obchodě, který ještě neznáte, nebo mu plně nedůvěřujete?
+ad-unit-4-shop-online = Používejte e-mailovou masku při každém nákupu. Nechte si přeposlat potvrzení na svůj skutečný e-mail a poté masku kdykoli snadno vypněte.
+# ad 5 heading
+ad-unit-5-on-the-go = Cestování s { -brand-relay(case: "ins") }
+ad-unit-5-instantly-make = E-mailovou masku si vytvoříte kdykoliv a kdekoliv potřebujete.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Připojení na cestách
+ad-unit-5-privately-sign-in = Když se chcete soukromě přihlásit do své oblíbené kavárny nebo veřejné sítě Wi-Fi, použijte svou e-mailovou masku.
