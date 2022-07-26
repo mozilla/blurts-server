@@ -1,24 +1,21 @@
-const axios = require('axios');
-const { HomePage } = require('../pages/homePage');
+const { DashboardPage } = require('../pages/dashboardPage');
 const { PreferencePage } = require('../pages/prefPage');
 
 const pages = {
-  dashboard: `${process.env.TEST_BASE_URL}/user/dashboard`,
-  preference: `${process.env.TEST_BASE_URL}/user/preferences`,
-  breach: `${process.env.TEST_BASE_URL}/user/breaches`,
-  security: `${process.env.TEST_BASE_URL}/user/security-tips`
+  dashboard: '/user/dashboard',
+  preference: '/user/preferences',
+  breach: '/user/breaches',
+  security: '/user/security-tips'
 }
 
 const goToDashboard = async (page) => {
     await page.goto(pages.dashboard)
-    const homePage = new HomePage(page);
-    return homePage;
+    return new DashboardPage(page);
 }
 
 const goToManageAccount = async (page) => {
-    await page.goto(pages.preference)  
-    const preferencePage = new PreferencePage(page)
-    return preferencePage;
+    await page.goto(pages.preference)
+    return new PreferencePage(page)
 }
 
 module.exports = {

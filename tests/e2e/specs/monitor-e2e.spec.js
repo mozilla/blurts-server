@@ -30,7 +30,7 @@ test.describe('Monitor e2e check for breaches', () => {
       await page.type(landingPage.checkForBreachesEmailInput, testEmail, {
         delay: 50
       });
-      await landingPage.CheckForBreachesButton.click();
+      await landingPage.checkForBreachesButton.click();
 
       expect(page.url()).toContain('/scan');
       expect(await landingPage.emailScannedForBreaches.textContent()).toContain(
@@ -40,9 +40,9 @@ test.describe('Monitor e2e check for breaches', () => {
 
       await landingPage.alertAboutNewBreachesButton.click();
       const registerPage = new RegisterPage(page);
-      await registerPage.createAccount(process.env.TESTACCOUNT_PASSWORD);
-
-      async (attempts = 5) => {
+      await registerPage.createAccount();
+      
+      const waitForRestmail = async (attempts = 5) => {
         if (attempts === 0) {
           throw new Error('Unable to retrieve restmail data');
         }
@@ -63,6 +63,7 @@ test.describe('Monitor e2e check for breaches', () => {
         await delay(1000);
         await waitForRestmail(attempts - 1);
       };
+      await waitForRestmail()
 
       const verificationCode = restEmail.split(':')[1];
       await registerPage.verifyCodeInputField.fill(verificationCode.trim());
@@ -79,7 +80,7 @@ test.describe('Monitor e2e check for breaches', () => {
   }) => {
       await page.type(landingPage.checkForBreachesEmailInput, testEmail);
       await landingPage.newsLetterCheckBox.check();
-      await landingPage.CheckForBreachesButton.click();
+      await landingPage.checkForBreachesButton.click();
       await page.waitForLoadState('networkidle');
       
       if(browserName === 'firefox'){

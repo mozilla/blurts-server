@@ -1,4 +1,3 @@
-/* eslint-disable semi */
 // @ts-check
 const { devices } = require('@playwright/test');
 
@@ -25,7 +24,7 @@ const config = {
   testDir: 'tests/e2e/specs',
 
   /* Maximum time one test can run for. */
-  timeout: process.env.CI ? 180000 : 50 * 1000,
+  timeout: process.env.CI ? 180000 : 50000,
 
   // fullyParallel: true,
   expect: {
@@ -83,13 +82,13 @@ const config = {
       use: {
         ...devices['Desktop Firefox']
       }
-    }
-    // {
-    //   name: 'webkit',
-    //   use: {
-    //     ...devices['Desktop Safari']
-    //   }
-    // }
+    },
+    {
+      name: 'webkit',
+      use: {
+        ...devices['Desktop Safari']
+      }
+    },
     // Test against mobile viewports.
     // {
     //   name: 'Mobile Chrome',

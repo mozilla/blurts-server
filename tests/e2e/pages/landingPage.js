@@ -16,7 +16,7 @@ exports.LandingPage = class LandingPage {
       '.desktop-menu [data-event-label="Security Tips"]'
     );
     this.checkForBreachesEmailInput = '#scan-email';
-    this.CheckForBreachesButton = page.locator(
+    this.checkForBreachesButton = page.locator(
       '#scan-user-email [data-entrypoint="fx-monitor-check-for-breaches-blue-btn"]'
     );
     this.newsLetterCheckBox = page.locator('.create-fxa-checkbox-checkmark');
@@ -37,7 +37,6 @@ exports.LandingPage = class LandingPage {
     await this.page.goto('/', {
       waitUntil: 'networkidle'
     });
-    await this.CheckForBreachesButton.elementHandle();
   }
 
   async goToLogin() {

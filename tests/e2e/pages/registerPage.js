@@ -31,9 +31,9 @@ exports.RegisterPage = class RegisterPage {
     await this.ageInputField.type(randomAge.toString());
   }
 
-  async createAccount(password) {
-    await this.enterPassword(password);
-    await this.enterPasswordConfirmation(password);
+  async createAccount() {
+    await this.enterPassword(process.env.TESTACCOUNT_PASSWORD);
+    await this.enterPasswordConfirmation(process.env.TESTACCOUNT_PASSWORD);
     await this.enterAge();
     await this.page.check(this.testFirefoxProductsOption);
     await this.continue();

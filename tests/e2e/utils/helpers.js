@@ -1,23 +1,9 @@
-const axios = require('axios');
+const got = require('got')
 
 const delay = (timeInMilliSeconds) =>
   new Promise(function (resolve) {
     setTimeout(resolve, timeInMilliSeconds);
 });
-
-const generateRandomWord = (wordLength = 6) => {
-  let word = '';
-  let possibleWordLetters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-
-  for (let i = 0; i < wordLength; i++) {
-    word += possibleWordLetters.charAt(
-      Math.floor(Math.random() * possibleWordLetters.length)
-    );
-  }
-
-  return word;
-};
 
 const generateRandomEmail = async (wordLength = 2) => {  
   return `${Date.now()}_mntr@restmail.net`;
@@ -31,7 +17,7 @@ const defaultScreenshotOpts = {
 const deleteEmailAddress = async (testEmail) => {
   let status;
   try {
-    const res = await axios.delete(`http://restmail.net/mail/${testEmail}`);
+    const res = await got.delete(`http://restmail.net/mail/${testEmail}`).json();
     response = res.status;
   } catch (err) {
     console.log('ERROR DELETE RESTMAIL EMAIL', err);
@@ -40,18 +26,23 @@ const deleteEmailAddress = async (testEmail) => {
   return status;
 };
 
-const waitForRestmail = async (request, testEmail, attempts = 5) => {
+const waitForRestmail = async (request, testEmail, attempts = 5) => {  
   if (attempts === 0) {
     throw new Error('Unable to retrieve restmail data');
   }
 
-  const response = await request.get(`http://restmail.net/mail/${testEmail}`, {
-    failOnStatusCode: false
-  });
+  const response = await request.get(
+    `http://restmail.net/mail/${testEmail}`,
+    {
+      failOnStatusCode: false
+    }
+  );
 
   const resJson = JSON.parse(await response.text());
   if (resJson.length) {
-    return resJson[0].subject;
+    const restEmail = resJson[0].subject;
+    const verificationCode = restEmail.split(':')[1];
+    return verificationCode;
   }
 
   await delay(1000);
@@ -59,7 +50,6 @@ const waitForRestmail = async (request, testEmail, attempts = 5) => {
 };
 
 module.exports = {
-  generateRandomWord,
   generateRandomEmail,
   deleteEmailAddress,
   delay,

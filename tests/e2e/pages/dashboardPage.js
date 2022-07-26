@@ -1,4 +1,4 @@
-exports.HomePage = class HomePage {
+exports.DashboardPage = class DashboardPage {
   constructor(page) {
     this.page = page;
     this.avatar = page.locator('#avatar-wrapper');

@@ -9,7 +9,7 @@ async function globalSetup() {
 
     const landingPage = new LandingPage(page);
     await page.goto(process.env.TEST_BASE_URL)
-    await landingPage.goToLogin();
+    await landingPage.goToLogin()
 
     const loginPage = new LoginPage(page);
     await loginPage.login(

@@ -24,8 +24,7 @@ exports.LoginPage = class LoginPage {
   }
 
   async login(email, password) {
-    await this.enterEmail(email);
+    await this.enterEmail(email);    
     await this.enterPassword(password);
-    (await this.page.url()) === 'https://monitor.firefox.com/user/dashboard';
   }
 };

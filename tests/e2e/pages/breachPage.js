@@ -21,7 +21,6 @@ exports.BreachPage = class BreachPage {
     await this.page.goto('/breaches', {
       waitUntil: 'networkidle'
     });
-    await this.CheckForBreachesButton.elementHandle();
   }
 
   async countCards() {
