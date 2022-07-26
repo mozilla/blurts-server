@@ -24,8 +24,6 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run test:e2e
-        env:
-          CI: true
 
       - name: Upload html report as artifact to troubleshoot failures.
         uses: actions/upload-artifact@v2
