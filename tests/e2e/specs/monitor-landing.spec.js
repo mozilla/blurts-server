@@ -4,7 +4,7 @@ const { LandingPage } = require('../pages/landingPage');
 const { SecurityPage } = require('../pages/securityTipsPage');
 const { defaultScreenshotOpts } = require('../utils/helpers');
 
-test.describe.only('Monitor Landing Page', () => {
+test.describe('Monitor Landing Page', () => {
   let landingPage;
   test.beforeEach(async ({ page }) => {
     landingPage = new LandingPage(page);
@@ -44,8 +44,8 @@ test.describe.only('Monitor Landing Page', () => {
   });  
 });
 
-test.describe.only('Monitor Landing Page - Visual Regression', () => {
-  test.skip(({ browserName }) => browserName !== 'webkit', 'Webkit only image comparisons!');
+test.describe('Monitor Landing Page - Visual Regression', () => {
+  test.skip(({ browserName }) => browserName !== 'firefox', 'firefox only image comparisons!');
 
   let landingPage;
   test.beforeEach(async ({ page }) => {
@@ -80,7 +80,7 @@ test.describe.only('Monitor Landing Page - Visual Regression', () => {
     const securityPage = new SecurityPage(page);
 
     await expect(securityPage.securityPageUI).toHaveScreenshot(
-      'SecurityPageUI.png',
+      'securityPageUI.png',
       {...defaultScreenshotOpts, mask: [securityPage.vpnBanner]}
     );
   });  

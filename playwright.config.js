@@ -13,7 +13,7 @@ require('dotenv').config();
  */
 const config = {
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
-  globalTimeout: process.env.CI ? 360000 : undefined,
+  globalTimeout: 360_000,
 
   /* Global setup */
   globalSetup: require.resolve('./tests/e2e/global-setup.js'),
@@ -24,7 +24,7 @@ const config = {
   testDir: 'tests/e2e/specs',
 
   /* Maximum time one test can run for. */
-  timeout: process.env.CI ? 180000 : 50000,
+  timeout: process.env.CI ? 180_000 : 180_000,
 
   // fullyParallel: true,
   expect: {
@@ -32,11 +32,11 @@ const config = {
      * Maximum time expect() should wait for the condition to be met.
      * For example in `await expect(locator).toHaveText();`
      */
-    timeout: 10000,
+    timeout: 10_000,
     toMatchSnapshot: {
-      threshold: 0.3,
+      threshold: 0.04,
       maxDiffPixels: 250,
-      maxDiffPixelRatio: 0.2
+      maxDiffPixelRatio: 0.04
     }
   },
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -49,8 +49,9 @@ const config = {
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    [process.env.CI ? 'github' : 'html']
+    [process.env.CI ? 'github' : 'line']
   ],
+  
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */

@@ -30,7 +30,7 @@ npx playwright install
 
 ### 5. Run Tests
 
-```
+```sh
 create/update a .env file with the following:
 
 TEST_BASE_URL
@@ -40,6 +40,6 @@ TESTACCOUNT_PASSWORD
 
 ### 6. Run Tests
 
-```
-npx playwright test || npm run test:e2e
+```sh
+npm run test:e2e
 ```

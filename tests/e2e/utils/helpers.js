@@ -1,11 +1,6 @@
 const got = require('got')
 
-const delay = (timeInMilliSeconds) =>
-  new Promise(function (resolve) {
-    setTimeout(resolve, timeInMilliSeconds);
-});
-
-const generateRandomEmail = async (wordLength = 2) => {  
+const generateRandomEmail = async () => {  
   return `${Date.now()}_mntr@restmail.net`;
 };
 
@@ -26,7 +21,7 @@ const deleteEmailAddress = async (testEmail) => {
   return status;
 };
 
-const waitForRestmail = async (request, testEmail, attempts = 5) => {  
+const getVerificationCode = async (request, testEmail, page, attempts = 5) => {  
   if (attempts === 0) {
     throw new Error('Unable to retrieve restmail data');
   }
@@ -40,19 +35,17 @@ const waitForRestmail = async (request, testEmail, attempts = 5) => {
 
   const resJson = JSON.parse(await response.text());
   if (resJson.length) {
-    const restEmail = resJson[0].subject;
-    const verificationCode = restEmail.split(':')[1];
+    const verificationCode = resJson[0].headers['x-verify-short-code']
     return verificationCode;
   }
 
-  await delay(1000);
-  await waitForRestmail(request, testEmail, attempts - 1);
+  await page.waitForTimeout(1000);
+  return getVerificationCode(request, testEmail, page, attempts - 1);
 };
 
 module.exports = {
   generateRandomEmail,
   deleteEmailAddress,
-  delay,
-  waitForRestmail,
+  getVerificationCode,
   defaultScreenshotOpts,
 };

@@ -3,7 +3,7 @@ const { defaultScreenshotOpts } = require('../utils/helpers');
 const { goToManageAccount } = require('../utils/pageNavigation');
 
 test.describe('Monitor Preference page', () => {
-  test.skip(({ browserName }) => browserName !== 'webkit', 'Webkit only image comparisons!');
+  test.skip(({ browserName }) => browserName !== 'firefox', 'firefox only image comparisons!'); 
   test.use({ storageState: 'state.json' })  
 
   test('Verify account preference breach alert notifications and email addresses appearance', async ({

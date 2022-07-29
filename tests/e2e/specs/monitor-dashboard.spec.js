@@ -21,19 +21,19 @@ test.describe('Monitor dashboard page', () => {
 
 
 test.describe('Monitor dashboard page - Visual Regression', () => { 
-  test.skip(({ browserName }) => browserName !== 'webkit', 'Webkit only image comparisons!');
+  test.skip(({ browserName }) => browserName !== 'firefox', 'firefox only image comparisons!'); 
   test.use({ storageState: 'state.json' })
 
   test('Visually compare', async ({ page }) => {    
     const dashboardPage = await goToDashboard(page);    
 
-    await expect(dashboardPage.summaryDashBoard).toHaveScreenshot(
-      'summaryDashBoard.png',
+    await expect(dashboardPage.summaryDashboard).toHaveScreenshot(
+      'summaryDashboard.png',
       {...defaultScreenshotOpts, mask: [
         dashboardPage.numberOfEmailsMonitoredCount,
         dashboardPage.numberOfKnownBreachesCount,
         dashboardPage.numberOfPasswordsExposedCount,
-        dashboardPage.summaryDashBoardEmail
+        dashboardPage.summaryDashboardEmail
       ]}
     );
 
@@ -42,7 +42,10 @@ test.describe('Monitor dashboard page - Visual Regression', () => {
       {...defaultScreenshotOpts,mask: [dashboardPage.email] }
     );
 
-    expect(await dashboardPage.addAnotherEmailInput.screenshot()).toMatchSnapshot('addAnotherEmailInput.png', { ...defaultScreenshotOpts.maxDiffPixelRatio });
+    await expect(dashboardPage.addAnotherEmailInput).toHaveScreenshot(
+      'addAnotherEmailInput.png',      
+      defaultScreenshotOpts
+    );
 
     await expect(dashboardPage.takeBackControlDiv).toHaveScreenshot(
       'takeBackControlDiv.png',

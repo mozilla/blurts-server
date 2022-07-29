@@ -23,7 +23,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: npm run test:e2e        
+        env:          
+          TEST_BASE_URL: ${{ secrets.TEST_BASE_URL }}
+          TESTACCOUNT_EMAIL: ${{ secrets.TESTACCOUNT_EMAIL }}
+          TESTACCOUNT_PASSWORD: ${{ secrets.TESTACCOUNT_PASSWORD }}
 
       - name: Upload html report as artifact to troubleshoot failures.
         uses: actions/upload-artifact@v2

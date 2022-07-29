@@ -4,7 +4,6 @@ exports.RegisterPage = class RegisterPage {
     this.passwordInputField = page.locator('#password');
     this.passwordConfirmInputField = page.locator('#vpassword');
     this.ageInputField = page.locator('#age');
-    this.testFirefoxProductsOption = '#test-pilot';
     this.createAccountButton = page.locator('#submit-btn');
     this.verifyCodeInputField = page.locator(
       '//div[@id="main-content"]/section/form/div[1]/input'
@@ -35,7 +34,6 @@ exports.RegisterPage = class RegisterPage {
     await this.enterPassword(process.env.TESTACCOUNT_PASSWORD);
     await this.enterPasswordConfirmation(process.env.TESTACCOUNT_PASSWORD);
     await this.enterAge();
-    await this.page.check(this.testFirefoxProductsOption);
     await this.continue();
   }
 };

@@ -9,8 +9,8 @@ exports.DashboardPage = class DashboardPage {
       .locator('//*[@id="dashboard"]/div[2]');
     this.inviteEmailInput = page.locator('#email-add');
     this.manageAccountButton = page.locator('text=Manage Email Addresses');
-    this.summaryDashBoard = page.locator('.dashboard-summary');
-    this.summaryDashBoardEmail = page.locator('.welcome-back');
+    this.summaryDashboard = page.locator('.dashboard-summary');
+    this.summaryDashboardEmail = page.locator('.welcome-back');
     this.numberOfEmailsMonitoredCount = page.locator(
       '//div[contains(@class, "breach-stat-number") and contains(@class, "monitoredEmails")]'
     );

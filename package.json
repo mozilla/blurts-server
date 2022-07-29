@@ -97,7 +97,7 @@
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
     "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls",
-    "test:e2e": "npx playwright test",
+    "test:e2e": "npx playwright test --retries=2",
     "test:prod": "TEST_BASE_URL=https://monitor.firefox.com npx playwright test",
     "test:stage": "TEST_BASE_URL=https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net npx playwright test",
     "test:local": "TEST_BASE_URL=http://localhost:3000 npx playwright test",
