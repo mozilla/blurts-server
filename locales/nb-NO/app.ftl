@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -615,3 +618,5 @@ ad-unit-vpn-cta = Les mer om { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = Hvordan holder du e-postadressen din hemmelig?
 # ad 2 heading
 ad-unit-2-do-you-worry = Bekymrer du deg for sikkerheten på offentlig Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Hold deg oppdatert!
