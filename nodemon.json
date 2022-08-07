@@ -2,7 +2,7 @@
   "restartable": "rs",
   "verbose": false,
   "events": {
-    "restart": "npm run build"
+    "//restart": "npm run build"
   },
   "watch": [
     "./*",
@@ -13,5 +13,5 @@
     "public/dist/*",
     "tests/*"
   ],
-  "ext": "js,css,hbs,json"
+  "ext": "js,css,hbs,json,ftl"
 }

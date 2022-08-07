@@ -6,6 +6,8 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
+    "@fluent/bundle": "^0.17.1",
+    "@fluent/langneg": "^0.6.2",
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "5.27.2",
     "body-parser": "1.19.0",
@@ -19,8 +21,6 @@
     "express-bearer-token": "2.4.0",
     "express-handlebars": "5.3.1",
     "express-session": "1.17.1",
-    "fluent": "0.12.0",
-    "fluent-langneg": "0.2.0",
     "git-rev-sync": "^3.0.2",
     "got": "10.7.0",
     "helmet": "4.2.0",
@@ -56,7 +56,8 @@
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
-  "main": "server.js",
+  "main": "server/app.js",
+  "type": "module",
   "jest": {
     "collectCoverageFrom": [
       "**/*.js",
@@ -79,7 +80,7 @@
   },
   "scripts": {
     "start": "npm run build & node server.js",
-    "dev": "npm run build & nodemon server.js",
+    "dev": "nodemon server/app.js",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
@@ -95,6 +96,5 @@
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
     "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls"
-  },
-  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
+  }
 }
