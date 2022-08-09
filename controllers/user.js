@@ -576,6 +576,26 @@ function logout (req, res) {
   res.redirect('/')
 }
 
+async function admin (req, res) {
+  console.log('This is the admin function.  The current user is', req.user)
+  const isAdmin = ['2b82c5b71e4f4621a1dcaf24e4fc2c75'].includes(req.user.fxa_profile_json.uid)
+
+  if (!isAdmin) return res.sendStatus(401)
+
+  await EmailUtils.sendEmail('amri+local@mozilla.com', 'testing an email', 'refresh_email',
+    {
+      recipientEmail: 'amri+local@mozilla.com',
+      supportedLocales: req.supportedLocales,
+      whichPartial: 'email_partials/reengage'
+    }
+  )
+
+  res.send(`
+  <h2>Emails sent!</h2>
+  <a href='/user/logout'>Sign Out</a>
+  `)
+}
+
 module.exports = {
   FXA_MONITOR_SCOPE,
   getPreferences,
@@ -593,5 +613,6 @@ module.exports = {
   removeEmail,
   resendEmail,
   updateCommunicationOptions,
-  resolveBreach
+  resolveBreach,
+  admin
 }

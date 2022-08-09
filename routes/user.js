@@ -10,7 +10,7 @@ const {
   add, verify, logout,
   getDashboard, getPreferences, getBreachStats,
   removeEmail, resendEmail, updateCommunicationOptions,
-  getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm, postResolveBreach
+  getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm, postResolveBreach, admin
 } = require('../controllers/user')
 
 const router = express.Router()
@@ -34,4 +34,5 @@ router.post('/unsubscribe', csrfProtection, asyncMiddleware(postUnsubscribe))
 router.get('/remove-fxm', urlEncodedParser, csrfProtection, requireSessionUser, asyncMiddleware(getRemoveFxm))
 router.post('/remove-fxm', jsonParser, csrfProtection, requireSessionUser, asyncMiddleware(postRemoveFxm))
 router.post('/resolve-breach', jsonParser, urlEncodedParser, requireSessionUser, asyncMiddleware(postResolveBreach))
+router.get('/admin', requireSessionUser, admin)
 module.exports = router

@@ -50,7 +50,8 @@ const EmailUtils = {
     }
 
     const emailContext = Object.assign({
-      SERVER_URL: AppConstants.SERVER_URL
+      SERVER_URL: AppConstants.SERVER_URL,
+      layout: aTemplate
     }, aContext)
     return new Promise((resolve, reject) => {
       const emailFrom = AppConstants.EMAIL_FROM
