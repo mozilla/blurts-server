@@ -570,5 +570,19 @@ ad-unit-3-access-more = Daha fazlasına erişin
 ad-unit-4-shopping-with = E-posta maskeleri ile alışveriş
 ad-unit-4-want-to-buy = Çevrimiçi bir şey satın almak istiyor fakat mağazayı bilmiyor veya mağazaya tam olarak güvenmiyor musunuz?
 ad-unit-4-shop-online = İnternetten alışveriş yaparken e-posta maskesi kullanın. Onay mesajı gerçek e-postanıza iletildikten sonra maskeyi kolayca kapatabilirsiniz.
+# ad 5 heading
+ad-unit-5-on-the-go = { -brand-relay } her yerde
+ad-unit-5-instantly-make = Nerede olursanız olun, istediğiniz zaman özel e-posta maskeleri oluşturun!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Dışarıdan bağlanın
+ad-unit-5-privately-sign-in = Oturduğunuz kafenin ağına veya herkese açık Wi-Fi ağlarına giriş yaparken kimliğinizi açığa çıkarmamak için e-posta maskenizi kullanabilirsiniz
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Faturalar e-postanıza gelsin
+ad-unit-5-share-custom-email = Gerçek e-posta adresinizi paylaşmadan, faturalarınızı özel e-posta maskenize gelmesini sağlayabilirsiniz
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Telefonunuzda kullanın
+ad-unit-5-no-matter-where = Nerede olursanız olun, yapmak istediğiniz her şey için saniyeler içinde özel bir e-posta maskesi oluşturabilirsiniz
+# ad 6 heading
+ad-unit-6-worry-free = Kaydolurken endişe etmeyin
+ad-unit-6-want-to-start = Gelen kutunuzu spam mesajlarla doldurmadan bir siteye üye olmak, bir davete yanıt vermek veya promosyon kodu almak mı istiyorsunuz?
+ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gelen kutunuzun kontrolünü elinizde tutmak için gerçek e-posta adresiniz yerine e-posta maskenizi kullanabilirsiniz.
