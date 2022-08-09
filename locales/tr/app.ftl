@@ -559,6 +559,7 @@ ad-unit-1-how-do-you-keep = E-posta adresinizi nasıl gizli tutabilirsiniz?
 ad-unit-2-do-you-worry = Halka açık Wi-Fi ağlarının güvenliğinden endişeleniyor musunuz?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Oyunda kalın!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn }, oyun oynarken veya film izlerken güvenli bir stabil bağlantı kurmanıza olanak tanır.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Hız sınırlarına takılmayın
 # ad 3 list item 2
@@ -567,5 +568,6 @@ ad-unit-3-be-anywhere = Dünyanın her yerinde olun
 ad-unit-3-access-more = Daha fazlasına erişin
 # ad 4 heading
 ad-unit-4-shopping-with = E-posta maskeleri ile alışveriş
+ad-unit-4-want-to-buy = Çevrimiçi bir şey satın almak istiyor fakat mağazayı bilmiyor veya mağazaya tam olarak güvenmiyor musunuz?
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Telefonunuzda kullanın

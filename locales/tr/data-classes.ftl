@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Hesap bakiyeleri
 address-book-contacts = Adres defteri kişileri
@@ -54,6 +54,7 @@ family-structure = Aile yapısı
 financial-investments = Finansal yatırımlar
 financial-transactions = Finansal işlemler
 fitness-levels = Fitness seviyeleri
+flights-taken = Uçuşlar
 genders = Cinsiyetler
 geographic-locations = Coğrafi konumlar
 government-issued-ids = Devlet tarafından verilen kimlikler
