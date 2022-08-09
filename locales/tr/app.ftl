@@ -569,5 +569,6 @@ ad-unit-3-access-more = Daha fazlasına erişin
 # ad 4 heading
 ad-unit-4-shopping-with = E-posta maskeleri ile alışveriş
 ad-unit-4-want-to-buy = Çevrimiçi bir şey satın almak istiyor fakat mağazayı bilmiyor veya mağazaya tam olarak güvenmiyor musunuz?
+ad-unit-4-shop-online = İnternetten alışveriş yaparken e-posta maskesi kullanın. Onay mesajı gerçek e-postanıza iletildikten sonra maskeyi kolayca kapatabilirsiniz.
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Telefonunuzda kullanın
