@@ -635,3 +635,5 @@ ad-unit-5-on-the-go = På farten med { -brand-relay }
 ad-unit-5-instantly-make = Masker din e-postadresse umiddelbart hvor som helst og overalt hvor du går!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Koble til mens du er på farten
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Bruk det på din telefon
