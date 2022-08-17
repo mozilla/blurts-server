@@ -141,7 +141,7 @@ email-2022-hibp-attribution = Breach data provided by <a href="{ $hibp-url }" re
 email-unresolved-heading = You have unresolved breaches
 email-unresolved-subhead = Your email has been exposed. <br>Fix it right away with { -product-name }.
 email-is-affected = Your email, { $email-address }, is affected by at least one data breach
-email-more-detail = Sign in to {-product-name} now to see more details about your breaches (including when they occured and what data was exposed), and learn what you should do when your email's been exposed in a data breach. 
+email-more-detail = Sign in to { -product-name } now to see more details about your breaches (including when they occurred and what data was exposed), and learn what you should do when your email’s been exposed in a data breach. 
 email-breach-status = Current breach status
 # table row 1 label
 email-monitored = Total emails monitored:
