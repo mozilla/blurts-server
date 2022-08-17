@@ -244,6 +244,7 @@ if (devOrHeroku) app.use('/email-l10n', EmailL10nRoutes)
 app.use('/breach-details', BreachRoutes)
 app.use('/', HomeRoutes)
 
+app.use(Sentry.Handlers.errorHandler())
 app.use(logErrors)
 app.use(localizeErrorMessages)
 app.use(clientErrorHandler)
