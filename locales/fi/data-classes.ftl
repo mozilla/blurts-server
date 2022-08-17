@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Tilisaldot
 address-book-contacts = Osoitekirjan yhteystiedot
@@ -54,6 +54,7 @@ family-structure = Perherakenne
 financial-investments = Taloudelliset sijoitukset
 financial-transactions = Rahansiirrot
 fitness-levels = Kuntotasot
+flights-taken = Lentomatkat
 genders = Sukupuolet
 geographic-locations = Maantieteelliset sijainnit
 government-issued-ids = Viranomaisten myöntämät tunnisteet

@@ -54,6 +54,7 @@ family-structure = structure familiale
 financial-investments = investissements financiers
 financial-transactions = transactions financières
 fitness-levels = niveaux de condition physique
+flights-taken = vols effectués
 genders = genres
 geographic-locations = emplacements géographiques
 government-issued-ids = cartes d’identité émises par le gouvernement
