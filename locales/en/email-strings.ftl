@@ -132,7 +132,7 @@ more-products-cta-relay = Get {-product-name-relay}
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
-email-2022-unsubscribe = You’re receiving this automated email as a subscriber of Firefox Monitor. <br>Feel free to change your email preferences at any time <a href="{ $unsubscribe-url }">here</a>.
+email-2022-unsubscribe = You’re receiving this automated email as a subscriber of { -product-name }. <br>Feel free to change your email preferences at any time <a href="{ $unsubscribe-url }">here</a>.
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = Breach data provided by <a href="{ $hibp-url }" rel="noopener">{-brand-HIBP}</a>
 
