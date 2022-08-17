@@ -65,6 +65,12 @@ function getRedisStore () {
 }
 
 const app = express()
+app.use(
+  Sentry.Handlers.requestHandler({
+    request: ['headers', 'method', 'url'], // omit cookies, data, query_string
+    user: ['id'] // omit username, email
+  })
+)
 
 function devOrHeroku () {
   return ['dev', 'heroku'].includes(AppConstants.NODE_ENV)
