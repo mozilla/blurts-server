@@ -103,7 +103,10 @@ jobs:
                     "$CIRCLE_BUILD_URL" > version.json
             - run:
                 name: Build Docker image
-                command: docker build -t blurts-server .
+                command: |
+                  docker build --tag blurts-server \
+                  --build-arg SENTRY_RELEASE="$CIRCLE_TAG"
+                  .
             - run:
                 name: Deploy to Dockerhub
                 command: |
