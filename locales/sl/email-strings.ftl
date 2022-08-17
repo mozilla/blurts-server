@@ -94,6 +94,9 @@ pre-fxa-p-3 =
     pojavili v novi kraji podatkov.
 # Button at the bottom of pre-fxa email.
 create-account = Ustvarite račun
+# More security products
+more-products-headline = Zaščitite se z našimi ostalimi izdelki
+more-products-vpn = Zaščita za celotno vašo napravo – katerokoli napravo.
 more-products-cta-vpn = Pridobite { -product-name-vpn }
 more-products-relay = Skrijte svoj pravi e-poštni naslov in zavarujte svojo identiteto.
 more-products-cta-relay = Pridobite { -product-name-relay }

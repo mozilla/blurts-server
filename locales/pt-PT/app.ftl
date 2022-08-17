@@ -630,6 +630,7 @@ ad-unit-3-access-more = Aceda a mais
 # ad 4 heading
 ad-unit-4-shopping-with = Compras com Máscaras de E-mail
 ad-unit-4-want-to-buy = Quer comprar algo online e não conhece ou confia totalmente na loja?
+ad-unit-4-shop-online = Utilize um e-mail virtual sempre que fizer compras online. Tenha a confirmação enviada para o seu e-mail real e desative o e-mail virtual a qualquer momento.
 # ad 5 heading
 ad-unit-5-on-the-go = Em movimento com { -brand-relay }
 ad-unit-5-instantly-make = Crie instantaneamente uma máscara de e-mail personalizada em qualquer momento e lugar que vá!
@@ -638,7 +639,11 @@ ad-unit-5-connect-on-the-go = Conecte-se em qualquer lugar
 ad-unit-5-privately-sign-in = Use a sua máscara de e-mail quando quiser fazer iniciar sessão privadamente na rede Wi-Fi pública ou do seu café favorito
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Obtenha comprovativos de email
+ad-unit-5-share-custom-email = Utilize um e-mail virtual personalizado para recibos de compras em lojas sem partilhar o seu e-mail real
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Utilize no seu telemóvel
+ad-unit-5-no-matter-where = Não importa onde esteja, crie um e-mail virtual personalizado em segundos para qualquer coisa que queira fazer
 # ad 6 heading
 ad-unit-6-worry-free = Inscrições sem preocupações
+ad-unit-6-want-to-start = Deseja iniciar uma nova subscrição, responder a um convite ou obter um código promocional sem ter SPAM a inundar a sua caixa de entrada?
+ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utilize um e-mail virtual em vez do real para proteger os seus dados e manter o controlo sobre a sua caixa de entrada

@@ -50,7 +50,7 @@ rec-cc =
     Se opp for merkelige kostnader på kredittkortet ditt. Det kan være lurt 
     å be om et nytt kort med et nytt nummer fra kredittkortutstederen din.
 # Recommendation subhead
-rec-email-subhead = Bruk e-postaliaser
+rec-email-mask-subhead = Masker din e-postadresse
 rec-email-cta = Prøv { -brand-relay }
 rec-email =
     Å gi ut din virkelige e-postadresse gjør det lettere for hackere eller sporere å

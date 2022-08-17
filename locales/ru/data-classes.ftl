@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Остатки на счетах
 address-book-contacts = Контакты адресной книги
@@ -54,6 +54,7 @@ family-structure = Структура семей
 financial-investments = Финансовые вложения
 financial-transactions = Финансовые транзакции
 fitness-levels = Уровни физической подготовки
+flights-taken = Выполнено рейсов
 genders = Половая принадлежность
 geographic-locations = Географические местоположения
 government-issued-ids = Удостоверения личности выданные государством

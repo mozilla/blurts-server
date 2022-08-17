@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Mba’ete rembyre
 address-book-contacts = Ehecha kundaharape jehaiha
@@ -54,6 +54,7 @@ family-structure = Pehẽnguegua jeiko
 financial-investments = Pirapire jepuruporã
 financial-transactions = Pirapire mohendakuaa
 fitness-levels = Teteku’e rapykuere
+flights-taken = Jevevepyre
 genders = Meña
 geographic-locations = Yvy rendatee
 government-issued-ids = Tetã Rekuái onohẽva IDs
