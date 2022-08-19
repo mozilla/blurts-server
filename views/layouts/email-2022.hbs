@@ -67,8 +67,10 @@
 
     <tr class="footer">
       <td style="border-top: 1px solid #ddd; padding: 24px 0">
-        <p>{{{ getString "email-2022-unsubscribe" unsubscribe-url=this.SERVER_URL }}}</p>
-        <p>{{{ getString "email-2022-hibp-attribution" hibp-url="https://haveibeenpwned.com/" }}}</p>
+        <p>{{{ getString "email-2022-unsubscribe" unsubscribe-link-attr=( concat "href=" this.SERVER_URL ) }}}</p>
+        <p>{{{ getString "email-2022-hibp-attribution" hibp-link-attr='href="https://haveibeenpwned.com/"
+          rel="noopener"' }}}
+        </p>
         <img src="{{ SERVER_URL }}/img/email_images/mozilla-logo-bw-rgb.png" width="130px"
           style="display: block; margin: 24px auto 0;">
         <p>
