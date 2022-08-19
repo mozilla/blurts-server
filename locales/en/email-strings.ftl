@@ -129,3 +129,26 @@ more-products-vpn = Protection for your whole device, on every device.
 more-products-cta-vpn = Get {-product-name-vpn}
 more-products-relay = Hide your real email address to help protect your identity.
 more-products-cta-relay = Get {-product-name-relay}
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = You’re receiving this automated email as a subscriber of { -product-name }. <br>Feel free to change your email preferences at any time <a { $unsubscribe-link-attr }>here</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Breach data provided by <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = You have unresolved breaches
+email-unresolved-subhead = Your email has been exposed. <br>Fix it right away with { -product-name }.
+email-is-affected = Your email, { $email-address }, is affected by at least one data breach
+email-more-detail = Sign in to { -product-name } now to see more details about your breaches (including when they occurred and what data was exposed), and learn what you should do when your email’s been exposed in a data breach. 
+email-breach-status = Current breach status
+# table row 1 label
+email-monitored = Total emails monitored:
+# table row 2 label
+email-breach-total = Total number of breaches:
+# table row 3 label
+email-resolved = Resolved breaches:
+# table row 4 label
+email-unresolved = Unresolved breaches:
+email-resolve-cta = Resolve breaches
