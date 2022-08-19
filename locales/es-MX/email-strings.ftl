@@ -109,3 +109,15 @@ email-2022-hibp-attribution = Filtración de datos proporcionada por <a { $hibp-
 
 email-unresolved-heading = Tienes filtraciones de correo sin resolver
 email-unresolved-subhead = Tu correo ha quedado expuesto. <br>Soluciónalo ahora mismo { -product-name }.
+email-is-affected = Tu correo, { $email-address }, se vio afectado por al menos una filtración de datos
+email-more-detail = Inicia sesión en { -product-name } ahora para ver más detalles sobre tus filtraciones de correo (incluido cuando ocurrieron y que datos se expusieron) y conoce que debes hacer cuando tu correo ha sido expuesto en una filtración de datos.
+email-breach-status = Estado de la filtración actual
+# table row 1 label
+email-monitored = Total de correos monitoreados:
+# table row 2 label
+email-breach-total = Número total de filtraciones:
+# table row 3 label
+email-resolved = Filtraciones resueltas:
+# table row 4 label
+email-unresolved = Filtraciones sin resolver:
+email-resolve-cta = Resolver filtraciones:
