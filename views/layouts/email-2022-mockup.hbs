@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>Firefox Monitor</title>
+</head>
+
+<body style="max-width: 1000px; margin: auto;">
+  <header style="display: flex; align-items: center; justify-content: space-between; padding: 24px 0;">
+    <strong>Monthly Email: Unresolved Breaches</strong>
+    <form method="POST" action="send-test-email">
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      <input type="email" name="recipientEmail" placeholder="Recipient email">
+      <button type="submit"
+        style="background-color: #666; color: white; border-radius: 6px; padding: 12px; border: 0;">Send test
+        email</button>
+    </form>
+  </header>
+
+  <div style="border: 1px solid #666">
+    {{> email-2022 }}
+  </div>
+</body>
+
+</html>

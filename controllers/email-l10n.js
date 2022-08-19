@@ -5,6 +5,7 @@ const AppConstants = require('../app-constants')
 const path = require('path')
 const { readdir } = require('fs/promises')
 const partialDir = path.join(path.dirname(require.main.filename), '/views/partials/email_partials')
+const { LocaleUtils } = require('./../locale-utils')
 
 let partialFilenames
 
@@ -108,7 +109,25 @@ function notFound (req, res) {
   })
 }
 
+function sendTestEmail (data) {
+  return async function (req, res, next) {
+    await EmailUtils.sendEmail(req.body.recipientEmail, LocaleUtils.fluentFormat(req.supportedLocales, data.subjectId), data.layout,
+      {
+        recipientEmail: req.body.recipientEmail,
+        supportedLocales: req.supportedLocales,
+        whichPartial: data.whichPartial
+      }
+    )
+
+    res.send(`
+    <h2>Email sent!</h2>
+    <a href='/user/logout'>Sign Out</a>
+    `)
+  }
+}
+
 module.exports = {
   getEmailMockUps,
-  notFound
+  notFound,
+  sendTestEmail
 }

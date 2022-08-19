@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <title>Firefox Monitor</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font: normal 16px/1.2 sans-serif;
+      background-color: #F9F9FA;
+    }
+
+    h1,
+    p {
+      margin: 12px 24px;
+    }
+
+    a {
+      color: #592ACB;
+      text-decoration: none;
+    }
+
+    table {
+      table-layout: fixed;
+    }
+  </style>
+
+</head>
+
+<body>
+  <table style="width: 100%; max-width:1000px; margin: auto; text-align: center;" role="presentation" border="0"
+    cellpadding="0" cellspacing="0">
+    <tr class="logo">
+      <td style="height: 100px; text-align: center">
+        <img src="{{ SERVER_URL }}/img/email_images/email-refresh-logo.png" width="216" height="33"
+          alt="Firefox Monitor logo">
+      </td>
+    </tr>
+    <tr class="header">
+      <td>
+        <table style="height: 331px; background-color: #321C64; color: white; text-align: left; margin-bottom: 24px;"
+          role="presentation" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <h1>{{ getString "email-unresolved-heading" }}</h1>
+              <p>{{{ getString "email-unresolved-subhead" }}}</p>
+            </td>
+            <td style="width: 50%; background-color: #321C64; vertical-align: bottom;">
+              <img src="http://localhost:6060/img/email_images/email-refresh-1.png" width="476" height="331"
+                style="display: block; max-width: 100%; margin-left: auto; object-fit: cover; object-position: left;"
+                alt="Person at computer">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    {{> (lookup . 'whichPartial') }}
+
+    <tr class="footer">
+      <td style="border-top: 1px solid #ddd; padding: 24px 0">
+        <p>{{{ getString "email-2022-unsubscribe" unsubscribe-url=this.SERVER_URL }}}</p>
+        <p>{{{ getString "email-2022-hibp-attribution" hibp-url="https://haveibeenpwned.com/" }}}</p>
+        <img src="{{ SERVER_URL }}/img/email_images/mozilla-logo-bw-rgb.png" width="130px"
+          style="display: block; margin: 24px auto 0;">
+        <p>
+          2 Harrison St. #175, San Francisco, California 94105 USA
+        </p>
+        <p>
+          <a href="https://www.mozilla.org/about/legal/">{{getString "legal"}}</a> • <a
+            href="https://www.mozilla.org/privacy/firefox-monitor/">{{getString "terms-and-privacy"}}</a>
+        </p>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>

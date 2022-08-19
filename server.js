@@ -189,7 +189,7 @@ const hbs = exphbs.create({
   extname: '.hbs',
   layoutsDir: path.join(__dirname, '/views/layouts'),
   defaultLayout: 'default',
-  partialsDir: path.join(__dirname, '/views/partials'),
+  partialsDir: [path.join(__dirname, '/views/layouts'), path.join(__dirname, '/views/partials')],
   helpers: HBSHelpers.helpers
 })
 app.engine('hbs', hbs.engine)
