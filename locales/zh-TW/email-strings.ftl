@@ -82,3 +82,23 @@ more-products-vpn = 在每一台裝置上都有完整保護。
 more-products-cta-vpn = 下載 { -product-name-vpn }
 more-products-relay = 隱藏您的實際電子郵件地址，保護身分資訊。
 more-products-cta-relay = 下載 { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = 資料外洩事件資訊由 <a { $hibp-link-attr }>{ -brand-HIBP }</a> 提供
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = 您有未處理過的資料外洩事件
+email-unresolved-subhead = 您的電子郵件信箱已遭外洩。<br>立即使用 { -product-name } 採取後續行動修正。
+email-breach-status = 目前事件狀態
+# table row 1 label
+email-monitored = 監控信箱數量：
+# table row 2 label
+email-breach-total = 總資料外洩事件數量：
+# table row 3 label
+email-resolved = 處理過的事件數量：
+# table row 4 label
+email-unresolved = 未處理的事件數量：
+email-resolve-cta = 處理此事件
