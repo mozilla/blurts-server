@@ -238,6 +238,8 @@ async function getDashboard (req, res) {
 
   const adUnitNum = setAdUnitCookie(req, res)
 
+  DB.updateBreachStats(user, resultsSummary(verifiedEmails)) // TODO: find a better place to update DB e.g. scan-results.js
+
   res.render('dashboards', {
     title: req.fluentFormat('Firefox Monitor'),
     csrfToken: req.csrfToken(),

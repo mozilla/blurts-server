@@ -16,19 +16,19 @@
       role="presentation" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td style="padding: 3px 12px;">{{ getString "email-monitored" }}</td>
-        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">3</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.monitoredEmails.count }}</td>
       </tr>
       <tr>
         <td style="padding: 3px 12px;">{{ getString "email-breach-total" }}</td>
-        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">14</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.numBreaches.count }}</td>
       </tr>
       <tr>
         <td style="padding: 3px 12px;">{{ getString "email-resolved" }}</td>
-        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">12</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.numBreaches.numResolved }}</td>
       </tr>
       <tr>
         <td style="padding: 3px 12px;">{{ getString "email-unresolved" }}</td>
-        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">2</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.numBreaches.numUnresolved }}</td>
       </tr>
     </table>
     <a href="{{ SERVER_URL }}"

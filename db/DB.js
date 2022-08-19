@@ -419,6 +419,21 @@ const DB = {
     await knex('email_addresses').where({ subscriber_id: uid }).del()
   },
 
+  async updateBreachStats (subscriber, stats) {
+    await knex('subscribers').where('id', subscriber.id)
+      .update({
+        breach_stats: stats
+      })
+  },
+
+  async getBreachStats (subscriber) {
+    const res = await knex.table('subscribers').first('breach_stats').where('id', subscriber.id).whereNotNull('breach_stats')
+    const breachStats = res.breach_stats
+
+    breachStats.numBreaches.numUnresolved = breachStats.numBreaches.count - breachStats.numBreaches.numResolved
+    return breachStats
+  },
+
   async createConnection () {
     if (knex === null) {
       knex = Knex(knexConfig)
