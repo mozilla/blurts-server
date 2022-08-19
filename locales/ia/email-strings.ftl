@@ -88,3 +88,30 @@ more-products-vpn = Protection pro tu apparato, in tote le apparatos.
 more-products-cta-vpn = Installa { -product-name-vpn }
 more-products-relay = Cela tu real adresse e-mail pro adjutar a proteger tu identitate.
 more-products-cta-relay = Installa { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe =
+    Tu recipe iste email automatisate como abonato de { -product-name }.
+    <br>Senti te sempre libere de cambiar tu preferentias email <a { $unsubscribe-link-attr }>ci</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Violation de datos fornite per <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Tu ha violationes non resolvite
+email-unresolved-subhead =
+    Tu email ha essite exponite.
+    <br>Corrige lo immediatemente con { -product-name }.
+email-is-affected = Tu email, { $email-address }, es afficite per al minus un violation de datos
+email-more-detail = Accede a { -product-name } ora pro vider altere detalios re tu violationes (includite quando illos occurreva e que datos era exponite) e apprende lo que tu deberea facer quando tu email ha essite exponite in un violation de datos.
+email-breach-status = Stato actual del violationes
+# table row 1 label
+email-monitored = Total emails surveliate:
+# table row 2 label
+email-breach-total = Numero total de violationes:
+# table row 3 label
+email-resolved = Violationes resolvite:
+# table row 4 label
+email-unresolved = Violationes non resolvite:
+email-resolve-cta = Resolver violationes
