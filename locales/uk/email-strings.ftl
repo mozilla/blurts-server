@@ -120,3 +120,8 @@ email-breach-status = Поточний стан витоку
 email-monitored = Загальна кількість відстежуваних електронних адрес:
 # table row 2 label
 email-breach-total = Загальна кількість витоків:
+# table row 3 label
+email-resolved = Розв'язані витоки:
+# table row 4 label
+email-unresolved = Нерозв'язані витоки:
+email-resolve-cta = Розв'язати витоки
