@@ -107,6 +107,7 @@ email-2022-unsubscribe = To samodejno e-poštno sporočilo ste prejeli, ker ste 
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Imate nerazrešene kraje podatkov
 email-breach-status = Trenutno stanje kraje
 # table row 1 label
 email-monitored = Skupaj nadzorovanih e-poštnih naslovov:
