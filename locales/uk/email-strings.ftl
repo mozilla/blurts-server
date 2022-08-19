@@ -102,3 +102,13 @@ more-products-vpn = Повний захист усіх ваших пристро
 more-products-cta-vpn = Отримати { -product-name-vpn }
 more-products-relay = Приховайте свою справжню електронну адресу, щоб захистити свою особистість.
 more-products-cta-relay = Отримати { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Ви отримали цей автоматичний електронний лист, оскільки ви передплатили { -product-name }. <br>Ви можете будь-коли змінити свої параметри електронної пошти { $unsubscribe-link-attr }тут</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Дані про витоки даних надані <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = У вас є нерозв'язані витоки
