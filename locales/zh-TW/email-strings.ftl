@@ -85,6 +85,7 @@ more-products-cta-relay = 下載 { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = 您會收到這封自動寄出的郵件，是因為您是 { -product-name } 的訂閱者。<br>歡迎您隨時在<a { $unsubscribe-link-attr }>此處</a>更改郵件偏好設定。
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = 資料外洩事件資訊由 <a { $hibp-link-attr }>{ -brand-HIBP }</a> 提供
 
@@ -92,6 +93,8 @@ email-2022-hibp-attribution = 資料外洩事件資訊由 <a { $hibp-link-attr }
 
 email-unresolved-heading = 您有未處理過的資料外洩事件
 email-unresolved-subhead = 您的電子郵件信箱已遭外洩。<br>立即使用 { -product-name } 採取後續行動修正。
+email-is-affected = 您的信箱 { $email-address } 已受至少一場資料外洩事件影響。
+email-more-detail = 請立即登入 { -product-name }，了解有關資料外洩事件的更多詳細資訊（包含發生時間、哪些資料已遭外洩），並了解該如何進行後續處理。
 email-breach-status = 目前事件狀態
 # table row 1 label
 email-monitored = 監控信箱數量：
