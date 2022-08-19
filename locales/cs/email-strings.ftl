@@ -106,3 +106,7 @@ email-unresolved-subhead = Vaše e-mailová adresa se stala součástí úniku d
 email-is-affected = Vaše e-mailová adresa { $email-address } je předmětem nejméně jednoho úniku dat
 email-more-detail = Přihlaste se do { -product-name(case: "gen") }, abyste se dozvěděli více podrobností o svých únicích (včetně toho, kdy k nim došlo a jaké údaje byly vyzrazeny), a zjistili, jak byste měli postupovat, když se vaše e-mailová adresa stala součástí úniku dat.
 email-breach-status = Aktuální stav případů úniků
+# table row 1 label
+email-monitored = Celkem monitorovaných e-mailů:
+# table row 2 label
+email-breach-total = Celkový počet úniků:
