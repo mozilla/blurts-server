@@ -20,6 +20,7 @@ executors:
 orbs:
     node: circleci/node@5.0.2
     python: circleci/python@1.4.0
+    heroku: circleci/heroku@1.2.6
 
 jobs:
     lint-js:
@@ -154,3 +155,17 @@ workflows:
                     branches:
                         only: 
                             - main
+            - heroku/deploy-via-git:
+                app-name: $HEROKU_MAIN_APP_NAME
+                requires:
+                    - unit-tests
+                filters:
+                    branches:
+                        only: main
+            - heroku/deploy-via-git:
+                app-name: $HEROKU_LOCALIZATION_APP_NAME
+                requires:
+                    - unit-tests
+                filters:
+                    branches:
+                        only: localization
