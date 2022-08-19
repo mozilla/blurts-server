@@ -110,3 +110,8 @@ email-breach-status = Aktuální stav případů úniků
 email-monitored = Celkem monitorovaných e-mailů:
 # table row 2 label
 email-breach-total = Celkový počet úniků:
+# table row 3 label
+email-resolved = Vyřešeno úniků:
+# table row 4 label
+email-unresolved = Nevyřešeno úniků:
+email-resolve-cta = Vyřešit úniky
