@@ -102,9 +102,22 @@ more-products-cta-relay = Obtené { -product-name-relay }
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 email-2022-unsubscribe = Estás recibiendo este correo electrónico automático como suscriptor de { -product-name }. <br>Podés cambiar tus preferencias de correo electrónico en cualquier momento <a { $unsubscribe-link-attr }>acá</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datos de filtración provistos por<a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Tenés filtraciones sin resolver
 email-unresolved-subhead = Tu correo electrónico ha sido expuesto. <br>Arreglalo ya mismo  con { -product-name }.
+email-is-affected = Tu correo electrónico, { $email-address }, está afectado por al menos una filtración de datos
+email-more-detail = Iniciá sesión en { -product-name } ahora para ver más detalles sobre tus filtraciones (incluido cuándo ocurrieron y qué datos se expusieron) y aprendé qué se debe hacer cuando tu correo electrónico ha sido expuesto en una filtración de datos.
+email-breach-status = Estado actual de filtración
 # table row 1 label
 email-monitored = Total de correos electrónicos monitoreados:
+# table row 2 label
+email-breach-total = Número total de filtraciones:
+# table row 3 label
+email-resolved = Filtraciones resueltas:
+# table row 4 label
+email-unresolved = Filtraciones sin resolver:
+email-resolve-cta = Resolver filtraciones
