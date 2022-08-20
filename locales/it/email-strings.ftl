@@ -92,6 +92,9 @@ email-2022-hibp-attribution = Dati sulle violazioni forniti da <a { $hibp-link-a
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Hai delle violazioni non risolte
+email-unresolved-subhead = Il tuo indirizzo email è stato coinvolto in una violazione di dati. <br>Risolvila subito con { -product-name }.
+email-is-affected = Il tuo indirizzo email { $email-address }, è stato coinvolto in almeno una violazione di dati
+email-more-detail = Accedi ora a { -product-name } per visualizzare ulteriori dettagli sulle violazioni che ti riguardano (incluso quando si sono verificate e quali dati sono stati esposti) e per scoprire quali procedure adottare quando il tuo indirizzo email risulta coinvolto in una violazione di dati.
 email-breach-status = Stato attuale della violazione
 # table row 1 label
 email-monitored = Totale indirizzi email monitorati:
