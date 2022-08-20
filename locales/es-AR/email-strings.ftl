@@ -98,3 +98,13 @@ more-products-vpn = Protección completa, en cada dispositivo.
 more-products-cta-vpn = Obtené { -product-name-vpn }
 more-products-relay = Ocultá tu dirección de correo electrónico real para ayudar a proteger tu identidad.
 more-products-cta-relay = Obtené { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Estás recibiendo este correo electrónico automático como suscriptor de { -product-name }. <br>Podés cambiar tus preferencias de correo electrónico en cualquier momento <a { $unsubscribe-link-attr }>acá</a>.
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-subhead = Tu correo electrónico ha sido expuesto. <br>Arreglalo ya mismo  con { -product-name }.
+# table row 1 label
+email-monitored = Total de correos electrónicos monitoreados:
