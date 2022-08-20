@@ -27,46 +27,46 @@ email-verify-footer-copy =
 # Button text
 verify-email-cta = Verificar correo electrónico
 # Button text
-see-all-breaches = Ver todas las violaciones
+see-all-breaches = Ver todas las filtraciones
 # Headline of verification email
 email-link-expires = Este enlace vence en 24 horas.
-email-verify-blurb = Verificá tu correo electrónico para agregarlo a { -product-name } e inscribite para recibir alertas de violaciones.
+email-verify-blurb = Verificá tu correo electrónico para agregarlo a { -product-name } e inscribite para recibir alertas de filtraciones.
 # Email headline
-email-found-breaches-hl = Aquí está tu resumen de las violaciones de datos anteriores
+email-found-breaches-hl = Acá está tu resumen de las filtraciones de datos anteriores
 # Email headline
-email-breach-summary-for-email = Resumen de la violación para { $userEmail }
+email-breach-summary-for-email = Resumen de filtraciones para { $userEmail }
 # Email headline
-email-no-breaches-hl = { $userEmail } apareció en 0 violaciones de datos conocidas
+email-no-breaches-hl = { $userEmail } apareció en 0 filtraciones de datos conocidas
 # Email headline
-email-alert-hl = { $userEmail } apareció en una nueva violación de datos
+email-alert-hl = { $userEmail } apareció en una nueva filtración de datos
 # Subject line of email
-email-subject-found-breaches = { -product-name } encontró tu información en estas violaciones
+email-subject-found-breaches = { -product-name } encontró tu información en estas filtraciones
 # Subject line of email
-email-subject-no-breaches = { -product-name } no encontró violaciones conocidas
+email-subject-no-breaches = { -product-name } no encontró filtraciones conocidas
 # Subject line of email
 email-subject-verify = Verificá tu correo electrónico para { -product-name }
 # { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
 learn-more-about-fxm = Aprender más sobre { $fxmLink }
 email-sensitive-disclaimer =
-    Debido a la naturaleza privada de esta violación, los correos electrónicos involucrados no se ven de manera pública.
+    Debido a la naturaleza privada de esta filtración, los correos electrónicos involucrados no se ven de manera pública.
     Estás recibiendo este alerta porque sos el propietario verificado de esta dirección de correo electrónico.
 fxm-warns-you-no-breaches =
-    { -product-name } te advierte sobre violaciones de datos relacionadas con tu información personal.
-    Hasta el momento, no se encontraron infracciones. Te enviaremos un alerta si tu dirección de correo electrónico aparece en una nueva violación.
+    { -product-name } te advierte sobre filtraciones de datos relacionadas con tu información personal.
+    Hasta el momento, no se encontraron infracciones. Te enviaremos un alerta si tu dirección de correo electrónico aparece en una nueva filtración.
 fxm-warns-you-found-breaches =
-    { -product-name } te advierte sobre violaciones de datos relacionadas con tu información personal.
-    También te registraste para recibir alertas si tu dirección de correo electrónico aparece en una nueva violación.
+    { -product-name } te advierte sobre filtraciones de datos relacionadas con tu información personal.
+    También te registraste para recibir alertas si tu dirección de correo electrónico aparece en una nueva filtración.
 email-breach-alert-blurb =
-    { -product-name } te advierte sobre violaciones de datos relacionadas con tu información personal.
-    Recién recibimos detalles sobre la violación de datos de otra empresa.
+    { -product-name } te advierte sobre filtraciones de datos relacionadas con tu información personal.
+    Recién recibimos detalles sobre la filtración de datos de otra empresa.
 # List headline
 faq-list-headline = Preguntas frecuentes
 # Link Title
-faq-v2-1 = No reconozco esta empresa o sitio web. ¿Por qué estoy en esta violación?
+faq-v2-1 = No reconozco esta empresa o sitio web. ¿Por qué estoy en esta filtración?
 # Link Title
-faq-v2-2 = ¿Tengo que hacer algo si ocurrió una violación hace años, o esta es una cuenta antigua?
+faq-v2-2 = ¿Tengo que hacer algo si ocurrió una filtración hace años o si esta es una cuenta antigua?
 # Link Title
-faq-v2-3 = Recién de descubrí una violación de datos. ¿Qué tengo que hacer?
+faq-v2-3 = Recién de descubrí una filtración de datos. ¿Qué tengo que hacer?
 # Link Title
 faq-v2-4 = ¿Cómo trata { -product-name } a los sitios con información privada?
 # This string contains nested markup that becomes a link to Firefox Monitor
@@ -79,17 +79,17 @@ pre-fxa-subject = Una actualización de { -product-name }
 pre-fxa-headline = ¿Qué está cambiando con { -product-name }
 pre-fxa-blurb =
     Esto es lo que cambió desde que te registraste en { -product-name }, el servicio que
-    controla las violaciones de datos conocidas para tu información personal. Lo estamos vinculando a las cuentas de Firefox.
-pre-fxa-tout-1 = Mantenete alerta a las nuevas violaciones
-pre-fxa-p-1 = <a> Crear una cuenta</a> para controlar hasta 15 direcciones de correo electrónico para detectar violaciones de datos. Recomendamos agregar cualquier dirección de correo electrónico que usaste para crear cuentas en línea.
+    controla las filtraciones de datos conocidas para tu información personal. Lo estamos vinculando a las cuentas de Firefox.
+pre-fxa-tout-1 = Mantenete alerta a las nuevas filtraciones
+pre-fxa-p-1 = <a>Creá una cuenta</a> para controlar hasta 15 direcciones de correo electrónico para detectar filtraciones de datos. Recomendamos agregar cualquier dirección de correo electrónico que usaste para crear cuentas en línea.
 pre-fxa-tout-2 = Obtené una vista del cuadro de mandos
 pre-fxa-p-2 =
-    Encontrá todas las violaciones de datos en un solo lugar para saber qué contraseñas te conviene cambiar.
-    El cuadro de violaciones solo está disponible con una cuenta.
+    Encontrá todas las filtraciones de datos en un solo lugar para saber qué contraseñas te conviene cambiar.
+    El cuadro de filtraciones solo está disponible con una cuenta.
 pre-fxa-tout-3 = Seguí recibiendo alertas por correo electrónico
 pre-fxa-p-3 =
     Vas a seguir recibiendo alertas de { -product-name }. Te vamos a informar si tu información
-    aparece en una nueva violación de datos.
+    aparece en una nueva filtración de datos.
 # Button at the bottom of pre-fxa email.
 create-account = Crear cuenta
 # More security products
