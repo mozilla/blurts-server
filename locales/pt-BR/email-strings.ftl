@@ -96,3 +96,15 @@ more-products-vpn = Proteção do dispositivo todo, em todos os seus dispositivo
 more-products-cta-vpn = Obtenha o { -product-name-vpn }
 more-products-relay = Oculte seu endereço de email real para ajudar a proteger sua identidade.
 more-products-cta-relay = Obtenha o { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Você está recebendo este email automático porque tem assinatura do { -product-name }. <br>Sinta-se à vontade para alterar <a { $unsubscribe-link-attr }>aqui</a> quando quiser suas preferências de email.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Dados de vazamentos fornecidos por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Você tem vazamentos não resolvidos
+email-unresolved-subhead = Seu email foi exposto. <br>Corrija agora mesmo com o { -product-name }.
+email-is-affected = Seu email, { $email-address }, foi afetado por pelo menos um vazamento de dados
