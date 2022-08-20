@@ -108,3 +108,14 @@ email-2022-hibp-attribution = Dados de vazamentos fornecidos por <a { $hibp-link
 email-unresolved-heading = Você tem vazamentos não resolvidos
 email-unresolved-subhead = Seu email foi exposto. <br>Corrija agora mesmo com o { -product-name }.
 email-is-affected = Seu email, { $email-address }, foi afetado por pelo menos um vazamento de dados
+email-more-detail = Entre agora na sua conta no { -product-name } para ver mais detalhes sobre seus vazamentos (incluindo quando ocorreram e quais dados foram expostos) e saiba o que deve fazer quando seu email for exposto em um vazamento de dados.
+email-breach-status = Status atual de vazamentos
+# table row 1 label
+email-monitored = Total de emails monitorados:
+# table row 2 label
+email-breach-total = Número total de vazamentos:
+# table row 3 label
+email-resolved = Vazamentos resolvidos:
+# table row 4 label
+email-unresolved = Vazamentos não resolvidos:
+email-resolve-cta = Resolver vazamentos
