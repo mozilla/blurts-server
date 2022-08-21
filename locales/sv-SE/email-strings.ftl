@@ -102,3 +102,12 @@ more-products-vpn = Skydd för hela din enhet, på varje enhet.
 more-products-cta-vpn = Hämta { -product-name-vpn }
 more-products-relay = Dölj din riktiga e-postadress för att skydda din identitet.
 more-products-cta-relay = Hämta { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Intrångsdata tillhandahållen av <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Du har olösta intrång
