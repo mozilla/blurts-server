@@ -13,10 +13,16 @@
     <strong>Monthly Email: Unresolved Breaches</strong>
     <form method="POST" action="send-email-2022">
       <input type="hidden" name="_csrf" value="{{ csrfToken }}">
-      <input type="email" name="recipientEmail" placeholder="Recipient email">
-      <button type="submit"
-        style="background-color: #666; color: white; border-radius: 6px; padding: 12px; border: 0;">Send test
-        email</button>
+      <div style="display: flex; gap: 12px;">
+        <span style="font-size: 14px; display: flex; flex-flow: column; gap: 3px; align-items: end;">
+          <input type="email" name="recipientEmail" placeholder="Recipient email"
+            style="text-align: right; padding: 6px; border-radius: 6px; border: 2px solid #808080;">
+          <label>1 minute delay <input type="checkbox" name="delay"></label>
+        </span>
+        <button type="submit"
+          style="background-color: #666; color: white; border-radius: 6px; padding: 12px; border: 0; cursor: pointer">Send test
+          email</button>
+      </div>
     </form>
   </header>
 

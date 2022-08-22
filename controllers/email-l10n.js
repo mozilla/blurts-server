@@ -7,6 +7,7 @@ const { readdir } = require('fs/promises')
 const partialDir = path.join(path.dirname(require.main.filename), '/views/partials/email_partials')
 const { LocaleUtils } = require('./../locale-utils')
 const DB = require('../db/DB')
+const { initMinuteCron } = require('../cron')
 
 let partialFilenames
 
@@ -111,30 +112,46 @@ function notFound (req, res) {
 }
 
 async function previewEmail2022 (req, res) {
-  const breachStats = await DB.getBreachStats(req.user)
+  const breachStats = await DB.getBreachStats(req.user.id)
 
   res.render('layouts/email-2022-mockup', {
     layout: 'email-2022-mockup',
     whichPartial: 'email_partials/email-monthly-unresolved',
     csrfToken: req.csrfToken(),
-    recipientEmail: req.user.primary_email,
+    primaryEmail: req.user.primary_email,
     breachStats
   })
 }
 
 function sendTestEmail (data) {
-  return async function (req, res, next) {
-    await EmailUtils.sendEmail(req.body.recipientEmail, LocaleUtils.fluentFormat(req.supportedLocales, data.subjectId), data.layout,
-      {
-        recipientEmail: req.body.recipientEmail,
-        supportedLocales: req.supportedLocales,
-        whichPartial: data.whichPartial
-      }
-    )
+  return async function (req, res) {
+    const breachStats = await DB.getBreachStats(req.user.id)
+    const subject = LocaleUtils.fluentFormat(req.supportedLocales, data.subjectId)
+    const context = {
+      whichPartial: data.whichPartial,
+      supportedLocales: req.supportedLocales,
+      primaryEmail: req.user.primary_email,
+      breachStats
+    }
+
+    async function sendEmail () {
+      await EmailUtils.sendEmail(req.body.recipientEmail, subject, data.layout, context)
+    }
+
+    if (req.body.delay === 'on') {
+      initMinuteCron(sendEmail)
+
+      return res.send(`
+      <h2>Email scheduled to send 1 minute from now!</h2>
+      <a href='/email-l10n/email-2022-mockup'>Go Back</a> | <a href='/user/logout'>Sign Out</a>
+      `)
+    }
+
+    await sendEmail()
 
     res.send(`
     <h2>Email sent!</h2>
-    <a href='/user/logout'>Sign Out</a>
+    <a href='/email-l10n/email-2022-mockup'>Go Back</a> | <a href='/user/logout'>Sign Out</a>
     `)
   }
 }

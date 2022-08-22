@@ -238,7 +238,11 @@ async function getDashboard (req, res) {
 
   const adUnitNum = setAdUnitCookie(req, res)
 
-  DB.updateBreachStats(user, resultsSummary(verifiedEmails)) // TODO: find a better place to update DB e.g. scan-results.js
+  if (!req.session.statsUpdated) {
+    // update user's breach stats in DB once per session without blocking render
+    DB.updateBreachStats(user.id, resultsSummary(verifiedEmails))
+    req.session.statsUpdated = true
+  }
 
   res.render('dashboards', {
     title: req.fluentFormat('Firefox Monitor'),
@@ -423,6 +427,8 @@ async function postResolveBreach (req, res) {
   const userBreachStats = resultsSummary(verifiedEmails)
   const numTotalBreaches = userBreachStats.numBreaches.count
   const numResolvedBreaches = userBreachStats.numBreaches.numResolved
+
+  DB.updateBreachStats(sessionUser.id, userBreachStats)
 
   const localizedModalStrings = {
     headline: '',
