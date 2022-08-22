@@ -102,3 +102,26 @@ more-products-vpn = Bảo vệ cho toàn bộ thiết bị của bạn, trên m�
 more-products-cta-vpn = Nhận { -product-name-vpn }
 more-products-relay = Ẩn địa chỉ email thực của bạn để giúp bảo vệ danh tính của bạn.
 more-products-cta-relay = Nhận { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Bạn nhận được email tự động này với tư cách là người đăng ký { -product-name }. <br>Vui lòng thay đổi tùy chọn email của bạn bất kỳ lúc nào <a { $unsubscribe-link-attr }>tại đây</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Dữ liệu về những vụ rò rỉ dữ liệu được cung cấp bởi <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Bạn có những vụ rò rỉ dữ liệu chưa được giải quyết
+email-unresolved-subhead = Email của bạn đã bị lộ. <br>Khắc phục sự cố ngay lập tức với { -product-name }.
+email-is-affected = Email của bạn, { $email-address }, bị ảnh hưởng bởi ít nhất một lần rò rỉ dữ liệu
+email-more-detail = Đăng nhập vào { -product-name } ngay bây giờ để xem thêm chi tiết về các vụ rò rỉ dữ liệu của bạn (bao gồm thời điểm chúng xảy ra và dữ liệu nào được tiết lộ) và tìm hiểu những gì bạn nên làm khi email của bạn bị lộ trong một vụ rò rỉ dữ liệu.
+email-breach-status = Tình trạng rò rỉ dữ liệu hiện tại
+# table row 1 label
+email-monitored = Tổng số email được theo dõi:
+# table row 2 label
+email-breach-total = Tổng số rò rỉ dữ liệu:
+# table row 3 label
+email-resolved = Rò rỉ dữ liệu đã giải quyết:
+# table row 4 label
+email-unresolved = Rò rỉ dữ liệu chưa được giải quyết:
+email-resolve-cta = Giải quyết rò rỉ dữ liệu

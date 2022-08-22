@@ -102,3 +102,11 @@ more-products-vpn = Πλήρης προστασία, σε κάθε συσκευ�
 more-products-cta-vpn = Λήψη του { -product-name-vpn }
 more-products-relay = Αποκρύψτε το πραγματικό σας email και προστατέψετε την ταυτότητά σας.
 more-products-cta-relay = Λήψη του { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-breach-status = Τρέχουσα κατάσταση παραβίασης
+email-resolve-cta = Επίλυση παραβιάσεων

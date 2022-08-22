@@ -102,3 +102,26 @@ more-products-vpn = Повний захист усіх ваших пристро
 more-products-cta-vpn = Отримати { -product-name-vpn }
 more-products-relay = Приховайте свою справжню електронну адресу, щоб захистити свою особистість.
 more-products-cta-relay = Отримати { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Ви отримали цей автоматичний електронний лист, оскільки ви передплатили { -product-name }. <br>Ви можете будь-коли змінити свої параметри електронної пошти <a { $unsubscribe-link-attr }>тут</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Дані про витоки даних надані <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = У вас є нерозв'язані витоки
+email-unresolved-subhead = Вашу електронну адресу було розкрито. <br>Виправте це негайно за допомогою { -product-name }.
+email-is-affected = Ваша електронна адреса { $email-address } помічена принаймні в одному витоці даних
+email-more-detail = Увійдіть у { -product-name } зараз, щоб переглянути докладніші відомості про ваші витоки (зокрема, коли вони сталися та які дані було розкрито), а також дізнатися, що робити, якщо вашу електронну адресу виявлено у витоці даних.
+email-breach-status = Поточний стан витоку
+# table row 1 label
+email-monitored = Загальна кількість відстежуваних електронних адрес:
+# table row 2 label
+email-breach-total = Загальна кількість витоків:
+# table row 3 label
+email-resolved = Розв'язані витоки:
+# table row 4 label
+email-unresolved = Нерозв'язані витоки:
+email-resolve-cta = Розв'язати витоки
