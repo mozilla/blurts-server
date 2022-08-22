@@ -102,3 +102,13 @@ more-products-vpn = Beskerming foar jo folsleine apparaat, op elk apparaat.
 more-products-cta-vpn = Download { -product-name-vpn }
 more-products-relay = Ferbergje jo echte e-mailadres om jo identiteit te beskermjen
 more-products-cta-relay = Download { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Jo ûntfange dit automatyske e-mailberjocht as abonnee fan { -product-name }. <br>Fiel jo frij om jo e-mailfoarkar op elk momint <a { $unsubscribe-link-attr }>hjir</a> te wizigjen.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datalek oanlevere troch <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Jo hawwe net oploste datalekken
