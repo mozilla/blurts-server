@@ -110,3 +110,4 @@ more-products-cta-relay = { -product-name-relay } beszerzése
 
 # table row 1 label
 email-monitored = Összes megfigyelt e-mail-cím:
+email-resolve-cta = Adatsértések megoldása
