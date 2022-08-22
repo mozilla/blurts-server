@@ -105,9 +105,23 @@ more-products-cta-relay = { -product-name-relay } beszerzése
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = Ezt az automatikus e-mailt a { -product-name } feliratkozójaként kapja. <br>Bármikor módosíthatja az e-mail-beállításait <a { $unsubscribe-link-attr }>itt</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Az adatsértési adatokat a <a { $hibp-link-attr }>{ -brand-HIBP }</a> szolgáltatta
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Meg nem oldott adatsértései vannak
+email-unresolved-subhead = Kikerült az Ön e-mail-címe. <br>Javítsa azonnal a { -product-name } segítségével.
+email-is-affected = Az Ön ({ $email-address }) e-mail-címét legalább egy adatvédelmi incidens érintette
+email-more-detail = Jelentkezzen be most a { -product-name } szolgáltatásba, hogy további részleteket tudjon meg az adatsértésekről (beleértve, hogy mikor történtek és milyen adatok kerültek nyilvánosságra), és hogy megtudja, mit kell tennie, ha az e-mail-címe adatvédelmi incidens miatt került nyilvánosságra.
+email-breach-status = Az adatsértés jelenlegi állapota
 # table row 1 label
 email-monitored = Összes megfigyelt e-mail-cím:
+# table row 2 label
+email-breach-total = Adatértések teljes száma:
+# table row 3 label
+email-resolved = Megoldott adatsértések:
+# table row 4 label
+email-unresolved = Meg nem oldott adatsértések:
 email-resolve-cta = Adatsértések megoldása
