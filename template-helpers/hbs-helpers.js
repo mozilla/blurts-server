@@ -25,6 +25,10 @@ function getFirstItem (arr) {
   return arr[0]
 }
 
+function concat (...args) {
+  return args.slice(0, -1).join('')
+}
+
 function vpnPromoBlocked (args) {
   const userLocales = getSupportedLocales(args)
   return AppConstants.VPN_PROMO_BLOCKED_LOCALES?.some(blockedLocale => userLocales[0].includes(blockedLocale))
@@ -230,5 +234,6 @@ module.exports = {
   loop,
   showCsatBanner,
   getAppConstant,
-  vpnPromoBlocked
+  vpnPromoBlocked,
+  concat
 }

@@ -102,3 +102,11 @@ more-products-vpn = Teljes eszközvédelem, minden eszközön.
 more-products-cta-vpn = { -product-name-vpn } beszerzése
 more-products-relay = Rejtse el a valódi e-mail-címét, hogy megvédje személyazonosságát.
 more-products-cta-relay = { -product-name-relay } beszerzése
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+# table row 1 label
+email-monitored = Összes megfigyelt e-mail-cím:
