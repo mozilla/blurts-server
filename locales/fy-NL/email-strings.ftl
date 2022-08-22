@@ -112,3 +112,5 @@ email-2022-hibp-attribution = Datalek oanlevere troch <a { $hibp-link-attr }>{ -
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Jo hawwe net oploste datalekken
+email-unresolved-subhead = Jo e-mailadres is bleatsteld. <br>Los it daliks op mei { -product-name }.
+email-is-affected = Jo e-mailadres, { $email-address }, wurdt beynfloede troch op syn minst ien datalek
