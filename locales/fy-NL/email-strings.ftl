@@ -114,3 +114,4 @@ email-2022-hibp-attribution = Datalek oanlevere troch <a { $hibp-link-attr }>{ -
 email-unresolved-heading = Jo hawwe net oploste datalekken
 email-unresolved-subhead = Jo e-mailadres is bleatsteld. <br>Los it daliks op mei { -product-name }.
 email-is-affected = Jo e-mailadres, { $email-address }, wurdt beynfloede troch op syn minst ien datalek
+email-more-detail = Meld jo no oan by { -product-name } om mear details te sjen oer jo datalekken (ynklusyf wannear’t se bard binne en hokker gegevens bleatsteld binne), en lear wat jo dwaan moatte as jo e-mailadres bleatsteld is yn in datalek.
