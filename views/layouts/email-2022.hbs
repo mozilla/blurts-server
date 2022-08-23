@@ -39,6 +39,12 @@
         display: none;
       }
     }
+
+    @media (prefers-color-scheme: dark) {
+      .logo > td {
+        background-image: url({{ SERVER_URL }}/img/email_images/monitor-logo-transparent-dark-mode.png)
+      }
+    }
   </style>
 
 </head>
@@ -47,9 +53,8 @@
   <table style="width: 100%; max-width:1080px; margin: auto; text-align: center;" role="presentation" border="0"
     cellpadding="0" cellspacing="0">
     <tr class="logo">
-      <td style="height: 100px; text-align: center">
-        <img src="{{ SERVER_URL }}/img/email_images/email-refresh-logo.png" width="216" height="33"
-          alt="Firefox Monitor logo">
+      <td
+        style="height: 100px; background: #F9F9FA url('{{ SERVER_URL }}/img/email_images/monitor-logo-bg-f9f9fa.png') no-repeat 50%; background-size: 240px 50px;">
       </td>
     </tr>
     <tr class="header">
@@ -63,7 +68,7 @@
               <p>{{{ getString "email-unresolved-subhead" }}}</p>
             </td>
             <td class="header-image" style="width: 50%; background-color: #321C64; vertical-align: bottom;">
-              <img src="{{ SERVER_URL }}/img/email_images/email-refresh-1.png" width="476" height="331"
+              <img src="{{ SERVER_URL }}/img/email_images/person-at-desk.png" width="476" height="331"
                 style="display: block; max-width: 100%; margin-left: auto; object-fit: cover; object-position: left;"
                 alt="Person at computer">
             </td>

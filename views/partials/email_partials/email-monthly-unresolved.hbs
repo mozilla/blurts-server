@@ -1,8 +1,6 @@
 <tr>
   <td>
-    <p>
-      <strong>{{{ getString "email-is-affected" email-address=primaryEmail }}}</strong>
-    </p>
+    <p>{{{ getString "email-is-affected" email-address=( concat "<strong>" primaryEmail "</strong>" ) }}}</p>
     <p>{{ getString "email-more-detail" }}</p>
   </td>
 </tr>
