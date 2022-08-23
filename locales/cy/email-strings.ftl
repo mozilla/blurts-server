@@ -99,3 +99,17 @@ email-2022-hibp-attribution = Data tor-data wedi'i ddarparu gan <a { $hibp-link-
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Mae gennych dor-data heb eu datrys
+email-unresolved-subhead = Mae eich e-bost wedi'i amlygu. <br>Trwsiwch ef ar unwaith gyda { -product-name }.
+email-is-affected = Mae eich e-bost, { $email-address }, yn cael ei effeithio gan o leiaf un tor-data
+email-more-detail = Mewngofnodwch i { -product-name } nawr i weld mwy o fanylion am eich tor-data (gan gynnwys pryd y digwyddodd hyn a pha ddata a ddatgelwyd), a dysgwch beth ddylech chi ei wneud pan fydd eich e-bost wedi'i ddatgelu mewn tor-data.
+email-breach-status = Statws tor-data presennol
+# table row 1 label
+email-monitored = Cyfanswm yr e-byst a gafodd eu monitro:
+# table row 2 label
+email-breach-total = Cyfanswm y nifer yr achosion o dor-data:
+# table row 3 label
+email-resolved = Tor-data a ddatryswyd:
+# table row 4 label
+email-unresolved = Tor-data heb eu datrys:
+email-resolve-cta = Datrys tor-data
