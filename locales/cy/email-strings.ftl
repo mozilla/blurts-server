@@ -90,3 +90,12 @@ more-products-vpn = Diogelwch ar gyfer eich dyfais gyfan, ar bob dyfais.
 more-products-cta-vpn = Cael { -product-name-vpn }
 more-products-relay = Cuddiwch eich cyfeiriad e-bost go iawn i helpu diogelu eich hunaniaeth
 more-products-cta-relay = Cael { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Rydych chi'n derbyn yr e-bost awtomataidd hwn fel tanysgrifiwr { -product-name }. <br>Mae croeso i chi newid eich dewisiadau e-bost unrhyw bryd <a { $unsubscribe-link-attr }>yma</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Data tor-data wedi'i ddarparu gan <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
