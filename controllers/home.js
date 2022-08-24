@@ -141,6 +141,13 @@ function addEmailToWaitlist (req, res) {
   return res.json('email-added')
 }
 
+function testSentry (req, res) {
+  if (!req.user || !req.user.primary_email.endsWith('@mozilla.com')) {
+    return res.redirect('/')
+  }
+  throw new Error('Successfully tested exception handling')
+}
+
 function notFound (req, res) {
   res.status(404)
   res.render('subpage', {
@@ -157,5 +164,6 @@ module.exports = {
   getBentoStrings,
   getSecurityTips,
   home,
-  notFound
+  notFound,
+  testSentry
 }

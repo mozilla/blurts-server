@@ -6,7 +6,7 @@ const csrf = require('csurf')
 
 const {
   home, getAboutPage, getAllBreaches, getBentoStrings,
-  getSecurityTips, notFound, addEmailToWaitlist
+  getSecurityTips, notFound, addEmailToWaitlist, testSentry
 } = require('../controllers/home')
 const { getIpLocation } = require('../controllers/ip-location')
 
@@ -28,6 +28,7 @@ router.get('/security-tips', getSecurityTips)
 router.get('/getBentoStrings', getBentoStrings)
 router.post('/join-waitlist', jsonParser, requireSessionUser, addEmailToWaitlist)
 router.get('/iplocation', getIpLocation)
+router.get('/test-sentry', requireSessionUser, testSentry)
 router.use(notFound)
 
 module.exports = router

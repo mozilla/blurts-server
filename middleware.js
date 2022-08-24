@@ -3,7 +3,6 @@
 const { URLSearchParams } = require('url')
 
 const { negotiateLanguages, acceptedLanguages } = require('fluent-langneg')
-const Sentry = require('@sentry/node')
 
 const AppConstants = require('./app-constants')
 const DB = require('./db/DB')
@@ -111,7 +110,6 @@ function asyncMiddleware (fn) {
 
 function logErrors (err, req, res, next) {
   log.error('error', { stack: err.stack })
-  Sentry.captureException(err)
   next(err)
 }
 
