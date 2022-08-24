@@ -47,7 +47,7 @@ rec-cc =
     Ḥader isnifal ur tnummeḍ ara ɣef tkerḍa-inek n usmad. Ilaq-ak ahat
     ad tsutreḍ takarḍa tamaynut s wuṭṭun amaynut ɣer win i ak-d-yefkan takarḍa-inek n usmad.
 # Recommendation subhead
-rec-email-subhead = Seqdec meffer isem
+rec-email-mask-subhead = Seqdec agelmus n yimayl
 rec-email-cta = Ɛreḍ { -brand-relay }
 # Recommendation subhead
 rec-ip-subhead = Seqdec aqeddac ara yeffren tansa-inek n IP.
