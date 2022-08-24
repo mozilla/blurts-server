@@ -159,6 +159,7 @@ workflows:
                         only: 
                             - main
             - heroku/deploy-via-git:
+                name: Deploy main to Heroku
                 app-name: $HEROKU_MAIN_APP_NAME
                 requires:
                     - unit-tests
@@ -166,6 +167,7 @@ workflows:
                     branches:
                         only: main
             - heroku/deploy-via-git:
+                name: Deploy l10n to Heroku
                 app-name: $HEROKU_LOCALIZATION_APP_NAME
                 requires:
                     - unit-tests
