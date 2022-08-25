@@ -30,7 +30,7 @@
     "knex-paginate": "1.2.2",
     "mozlog": "3.0.2",
     "nodemailer": "^6.6.5",
-    "nodemailer-express-handlebars": "^4.0.0",
+    "nodemailer-express-handlebars": "5.0.0",
     "pg": "^8.7.1",
     "redis": "3.1.1",
     "sns-validator": "0.3.4",
