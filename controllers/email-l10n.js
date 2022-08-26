@@ -122,10 +122,12 @@ function previewEmail2022 (req, res) {
 
 function sendTestEmail (data) {
   return async function (req, res) {
-    const subject = LocaleUtils.fluentFormat(req.supportedLocales, data.subjectId)
+    // const supportedLocales = [req.user.signup_language, 'en'].filter(Boolean) // filter potential nullish signup_language, fallback to en
+    const supportedLocales = req.supportedLocales // this varies from send-email-to-unresolved-breach-subscribers.js (the line above) in order for QA to switch lang from browser
+    const subject = LocaleUtils.fluentFormat(supportedLocales, data.subjectId)
     const context = {
       whichPartial: data.whichPartial,
-      supportedLocales: req.supportedLocales,
+      supportedLocales,
       primaryEmail: req.user.primary_email,
       breachStats: req.user.breach_stats
     }

@@ -67,9 +67,11 @@ const LocaleUtils = {
   fluentFormat (supportedLocales, id, args = null, errors = null) {
     for (const locale of supportedLocales) {
       const bundle = fluentBundles[locale]
-      if (bundle.hasMessage(id)) {
+      try {
         const message = bundle.getMessage(id)
         return bundle.format(message, args)
+      } catch (e) {
+        continue
       }
     }
     return id

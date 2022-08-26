@@ -6,7 +6,7 @@ async function sendUnresolvedBreachEmails () {
   const subscribers = await DB.getSubscribersWithUnresolvedBreaches()
 
   subscribers.forEach(async subscriber => {
-    const supportedLocales = [subscriber.signup_language, 'en'].filter(Boolean) // filter potential nullish signup_language
+    const supportedLocales = [subscriber.signup_language, 'en'].filter(Boolean) // filter potential nullish signup_language, fallback to en
     const subject = LocaleUtils.fluentFormat(supportedLocales, 'email-unresolved-heading')
 
     await EmailUtils.sendEmail(subscriber.primary_email, subject, 'email-2022',
