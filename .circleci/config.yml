@@ -134,6 +134,29 @@ jobs:
                   name: Sync static content to S3
                   command: ./.circleci/scripts/sync-static
 
+    deploy_heroku:
+        # Attempt to deploy, but do not fail job if the push fails. The push will fail if a
+        # developer has manually pushed a branch, usually for review purposes. This command
+        # is based on:
+        # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
+        # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
+        executor: heroku/default
+        parameters:
+            app-name:
+                description: "The name of the Heroku App"
+                type: string
+        steps:
+            - heroku/install
+            - heroku/check-authentication
+            - checkout
+            - run:
+                  name: Attempt to deploy to Heroku via git push
+                  command: |
+                      set -x
+                      heroku_url="https://heroku:${HEROKU_API_KEY}@git.heroku.com/<< parameters.app-name >>.git"
+                      git push $heroku_url $CIRCLE_BRANCH:main ||
+                      echo "*** git push failed, but it is allowed to fail. ***"
+
 workflows:
     lint-and-test:
         jobs:
@@ -158,7 +181,7 @@ workflows:
                     branches:
                         only: 
                             - main
-            - heroku/deploy-via-git:
+            - deploy_heroku:
                 name: Deploy main to Heroku
                 app-name: $HEROKU_MAIN_APP_NAME
                 requires:
@@ -166,7 +189,8 @@ workflows:
                 filters:
                     branches:
                         only: main
-            - heroku/deploy-via-git:
+
+            - deploy_heroku:
                 name: Deploy l10n to Heroku
                 app-name: $HEROKU_LOCALIZATION_APP_NAME
                 requires:
