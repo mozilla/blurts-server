@@ -175,7 +175,7 @@ async function requireAdminUser (req, res, next) {
   const admins = AppConstants.ADMINS?.split(',') || []
   const isAdmin = admins.includes(JSON.parse(fxaProfileData).email)
 
-  const hasFxaError = Object.prototype.hasOwnProperty.call(fxaProfileData, "name") && fxaProfileData.name
+  const hasFxaError = Object.prototype.hasOwnProperty.call(fxaProfileData, 'name') && fxaProfileData.name
   if (hasFxaError) {
     delete req.session.user
   }
