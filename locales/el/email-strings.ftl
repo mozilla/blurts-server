@@ -109,4 +109,12 @@ more-products-cta-relay = Λήψη του { -product-name-relay }
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-breach-status = Τρέχουσα κατάσταση παραβίασης
+# table row 1 label
+email-monitored = Σύνολο email υπό εποπτεία:
+# table row 2 label
+email-breach-total = Συνολικός αριθμός παραβιάσεων:
+# table row 3 label
+email-resolved = Επιλυμένες παραβιάσεις:
+# table row 4 label
+email-unresolved = Μη επιλυμένες παραβιάσεις:
 email-resolve-cta = Επίλυση παραβιάσεων

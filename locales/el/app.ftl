@@ -653,6 +653,8 @@ ad-unit-5-on-the-go = Εν κινήσει με το { -brand-relay }
 ad-unit-5-instantly-make = Δημιουργήστε μια προσαρμοσμένη μάσκα email στη στιγμή, όπου κι αν πάτε!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Σύνδεση εν κινήσει
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Λήψη αποδείξεων email
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Χρήση στο τηλέφωνό σας
 ad-unit-5-no-matter-where = Όπου κι αν βρίσκεστε, δημιουργήστε μια προσαρμοσμένη μάσκα email σε δευτερόλεπτα για οποιαδήποτε χρήση
