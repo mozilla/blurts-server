@@ -427,14 +427,6 @@ const DB = {
       })
   },
 
-  async getBreachStats (id) {
-    const { breach_stats: breachStats } = await knex('subscribers')
-      .where({ id })
-      .first('breach_stats')
-
-    return breachStats
-  },
-
   async getSubscribersWithUnresolvedBreaches () {
     const res = await knex('subscribers')
       .select('primary_email', 'breach_stats', 'signup_language')

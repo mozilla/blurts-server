@@ -6,7 +6,6 @@ const path = require('path')
 const { readdir } = require('fs/promises')
 const partialDir = path.join(path.dirname(require.main.filename), '/views/partials/email_partials')
 const { LocaleUtils } = require('./../locale-utils')
-const DB = require('../db/DB')
 const { initMinuteCron } = require('../cron')
 
 let partialFilenames
@@ -111,27 +110,24 @@ function notFound (req, res) {
   })
 }
 
-async function previewEmail2022 (req, res) {
-  const breachStats = await DB.getBreachStats(req.user.id)
-
+function previewEmail2022 (req, res) {
   res.render('layouts/email-2022-mockup', {
     layout: 'email-2022-mockup',
     whichPartial: 'email_partials/email-monthly-unresolved',
     csrfToken: req.csrfToken(),
     primaryEmail: req.user.primary_email,
-    breachStats
+    breachStats: req.user.breach_stats
   })
 }
 
 function sendTestEmail (data) {
   return async function (req, res) {
-    const breachStats = await DB.getBreachStats(req.user.id)
     const subject = LocaleUtils.fluentFormat(req.supportedLocales, data.subjectId)
     const context = {
       whichPartial: data.whichPartial,
       supportedLocales: req.supportedLocales,
       primaryEmail: req.user.primary_email,
-      breachStats
+      breachStats: req.user.breach_stats
     }
 
     async function sendEmail () {
