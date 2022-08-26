@@ -172,7 +172,7 @@ async function requireAdminUser (req, res, next) {
     return res.redirect(`/oauth/init?${queryParams}`)
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
-  const admins = AppConstants.ADMINS?.split(',')
+  const admins = AppConstants.ADMINS?.split(',') || []
   const isAdmin = admins.includes(JSON.parse(fxaProfileData).email)
 
   if (!isAdmin || (fxaProfileData.hasOwnProperty('name') && fxaProfileData.name === 'HTTPError')) {
