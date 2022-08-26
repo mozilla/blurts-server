@@ -105,7 +105,7 @@ jobs:
                 name: Build Docker image
                 command: |
                   docker build --tag blurts-server \
-                  --build-arg SENTRY_RELEASE="$CIRCLE_TAG"
+                  --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
                   .
             - run:
                 name: Deploy to Dockerhub
