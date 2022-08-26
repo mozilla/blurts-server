@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Υπόλοιπα λογαριασμών
 address-book-contacts = Επαφές βιβλίου διευθύνσεων
@@ -54,6 +54,7 @@ family-structure = Οικογενειακή δομή
 financial-investments = Οικονομικές επενδύσεις
 financial-transactions = Οικονομικές συναλλαγές
 fitness-levels = Επίπεδα φυσικής κατάστασης
+flights-taken = Πραγματοποιημένες πτήσεις
 genders = Φύλα
 geographic-locations = Γεωγραφικές τοποθεσίες
 government-issued-ids = Ταυτότητες που έχουν εκδοθεί από την κυβέρνηση
