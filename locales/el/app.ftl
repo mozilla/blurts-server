@@ -263,7 +263,7 @@ link-change-primary = Αλλαγή κύριας διεύθυνσης email
 remove-fxm = Αφαίρεση του { -product-name }
 remove-fxm-blurb =
     Απενεργοποίηση των ειδοποιήσεων του { -product-name }. Ο { -brand-fxa(case: "nom", capitalization: "lower") } σας θα παραμείνει ενεργός και ίσως 
-    λάβετε άλλες ειδοποιήσεις σχετικά με τον λογαριασμό.
+    λάβετε και άλλες ειδοποιήσεις σχετικά αυτόν.
 # Button title
 manage-email-addresses = Διαχείριση διευθύνσεων email
 # Link title
