@@ -105,9 +105,15 @@ more-products-cta-relay = Λήψη του { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = Λαμβάνετε αυτό το αυτοματοποιημένο email επειδή εγγραφήκατε στο { -product-name }. <br>Μπορείτε να αλλάξετε τις προτιμήσεις email σας ανά πάσα στιγμή <a { $unsubscribe-link-attr }>εδώ</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Έχετε μη επιλυμένες παραβιάσεις
+email-unresolved-subhead = Το email σας έχει εκτεθεί. <br>Διορθώστε το αμέσως με το { -product-name }.
+email-is-affected = Το email σας, { $email-address }, επηρεάζεται από τουλάχιστον μία παραβίαση δεδομένων
 email-breach-status = Τρέχουσα κατάσταση παραβίασης
 # table row 1 label
 email-monitored = Σύνολο email υπό εποπτεία:
