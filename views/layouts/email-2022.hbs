@@ -15,7 +15,7 @@
 
     body {
       font: normal 16px/1.2 sans-serif;
-      background-color: #F9F9FA;
+      color: black;
     }
 
     h1,
@@ -49,7 +49,7 @@
 
 </head>
 
-<body>
+<body style="font: normal 16px/1.2 sans-serif; color: black">
   <table style="width: 100%; max-width:1080px; margin: auto; text-align: center;" role="presentation" border="0"
     cellpadding="0" cellspacing="0">
     <tr class="logo">
@@ -60,7 +60,7 @@
     <tr class="header">
       <td>
         <table
-          style="width: 100%; height: 331px; background-color: #321C64; color: white; text-align: left; margin-bottom: 24px;"
+          style="width: 100%; height: 331px; background-color: #321C64; color: white; text-align: left;"
           role="presentation" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td>
@@ -80,7 +80,7 @@
     {{> (lookup . 'whichPartial') }}
 
     <tr class="footer">
-      <td style="border-top: 1px solid #ddd; padding: 24px 0">
+      <td style="border-top: 1px solid #ddd; padding: 24px 0; background: #F9F9FA;">
         <p>{{{ getString "email-2022-unsubscribe" unsubscribe-link-attr=( concat "href=" this.SERVER_URL ) }}}</p>
         <p>{{{ getString "email-2022-hibp-attribution" hibp-link-attr='href="https://haveibeenpwned.com/"
           rel="noopener"' }}}
