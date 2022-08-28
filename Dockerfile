@@ -19,4 +19,7 @@ COPY .env-dist ./.env
 
 RUN npm run build
 
+ARG SENTRY_RELEASE
+ENV SENTRY_RELEASE=$SENTRY_RELEASE
+
 CMD node server.js
