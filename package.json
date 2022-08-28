@@ -82,6 +82,7 @@
     "start": "npm run build & node server.js",
     "dev": "npm run build & nodemon server.js",
     "build": "node esbuild.js",
+    "cron:monthly-email": "node -e \"require('./scripts/send-email-to-unresolved-breach-subscribers.js').sendUnresolvedBreachEmails()\"",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
     "docker:run": "docker run -p 6060:6060 blurts-server",

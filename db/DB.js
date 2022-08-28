@@ -427,9 +427,14 @@ const DB = {
       })
   },
 
+  async updateMonthlyEmailTimestamp (email) {
+    await knex('subscribers').update({ monthly_email_at: 'now' }).where('primary_email', email)
+  },
+
   async getSubscribersWithUnresolvedBreaches () {
     const res = await knex('subscribers')
       .select('primary_email', 'breach_stats', 'signup_language')
+      .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
       .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)
 
     return res

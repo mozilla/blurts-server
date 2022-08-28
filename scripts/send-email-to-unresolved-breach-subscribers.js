@@ -17,6 +17,8 @@ async function sendUnresolvedBreachEmails () {
         breachStats: subscriber.breach_stats
       }
     )
+
+    DB.updateMonthlyEmailTimestamp(subscriber.primary_email)
   })
 }
 
