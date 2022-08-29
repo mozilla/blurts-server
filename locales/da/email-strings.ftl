@@ -105,11 +105,15 @@ email-2022-hibp-attribution = Information om datalæk stammer fra <a { $hibp-lin
 
 email-unresolved-heading = Du har uløste datalæk
 email-unresolved-subhead = Din mailadresse har været involveret i en datalæk. <br>Løs det med det samme med { -product-name }.
+email-is-affected = Din mailadresse, { $email-address }, er berørt af mindst en datalæk
 email-more-detail = Log ind på { -product-name } nu for at se flere detaljer om dine datalæk (herunder hvornår de fandt sted og hvilke data, der er blevet kompromitteret), og find ud af, hvad du skal gøre, når din mailadresse er blevet kompromitteret i en datalæk.
 email-breach-status = Nuværende lækstatus
 # table row 1 label
 email-monitored = Overvågede mailadresser i alt:
 # table row 2 label
 email-breach-total = Datalæk i alt:
+# table row 3 label
+email-resolved = Løste datalæk:
 # table row 4 label
 email-unresolved = Uløste datalæk:
+email-resolve-cta = Løs datalæk
