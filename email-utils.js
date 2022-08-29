@@ -113,12 +113,23 @@ const EmailUtils = {
   },
 
   getUnsubscribeUrl (subscriber, emailType) {
+    // TODO: email unsubscribe is broken for most emails
     let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`)
     const token = (subscriber.hasOwnProperty('verification_token')) ? subscriber.verification_token : subscriber.primary_verification_token
     const hash = (subscriber.hasOwnProperty('sha1')) ? subscriber.sha1 : subscriber.primary_sha1
     url.searchParams.append('token', encodeURIComponent(token))
     url.searchParams.append('hash', encodeURIComponent(hash))
     url = this.appendUtmParams(url, 'unsubscribe', emailType)
+    return url
+  },
+
+  getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
+    // TODO: create new subscriptions section in settings to manage all emails and avoid one-off routes like this
+    let url = new URL('user/unsubscribe-monthly', AppConstants.SERVER_URL)
+
+    url.searchParams.append('token', subscriber.primary_verification_token)
+    url = this.appendUtmParams(url, campaign, content)
+
     return url
   }
 }

@@ -111,13 +111,16 @@ function notFound (req, res) {
 }
 
 function previewEmail2022 (req, res) {
+  const unsubscribeUrl = EmailUtils.getMonthlyUnsubscribeUrl(req.user, 'monthly-unresolved', 'unsubscribe-cta')
+
   res.render('layouts/email-2022-mockup', {
     layout: 'email-2022-mockup',
     whichPartial: 'email_partials/email-monthly-unresolved',
     supportedLocales: req.supportedLocales,
     csrfToken: req.csrfToken(),
     primaryEmail: req.user.primary_email,
-    breachStats: req.user.breach_stats
+    breachStats: req.user.breach_stats,
+    unsubscribeUrl
   })
 }
 
@@ -126,7 +129,7 @@ function sendTestEmail (data) {
     // const supportedLocales = [req.user.signup_language, 'en'].filter(Boolean) // filter potential nullish signup_language, fallback to en
     const supportedLocales = req.supportedLocales // this varies from send-email-to-unresolved-breach-subscribers.js (the line above) in order for QA to switch lang from browser
     const subject = LocaleUtils.fluentFormat(supportedLocales, data.subjectId)
-    const unsubscribeUrl = `${AppConstants.SERVER_URL}/user/unsubscribe-monthly?token=${req.user.primary_verification_token}`
+    const unsubscribeUrl = EmailUtils.getMonthlyUnsubscribeUrl(req.user, 'monthly-unresolved', 'unsubscribe-cta')
     const optoutNote = req.user.monthly_email_optout ? 'Current user unsubscribed monthly emails. The email was sent anyway for testing purposes.' : 'Current user has <strong>not</strong> unsubscribed monthly emails.'
     const context = {
       whichPartial: data.whichPartial,
