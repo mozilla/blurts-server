@@ -5,7 +5,7 @@ const isemail = require('isemail')
 
 const DB = require('../db/DB')
 const EmailUtils = require('../email-utils')
-const { FluentError } = require('../locale-utils')
+const { FluentError, LocaleUtils } = require('../locale-utils')
 const { FXA } = require('../lib/fxa')
 const HIBP = require('../hibp')
 const { resultsSummary } = require('../scan-results')
@@ -506,6 +506,13 @@ async function postUnsubscribe (req, res) {
   res.redirect('/')
 }
 
+async function getUnsubscribeMonthly (req, res) {
+  await DB.updateMonthlyEmailOptout(req.query.token)
+  return res.send(`
+  <h2>${LocaleUtils.fluentFormat(req.supportedLocales, 'changes-saved')}</h2>
+  `)
+}
+
 async function getPreferences (req, res) {
   const user = req.user
   const allBreaches = req.app.locals.breaches
@@ -594,6 +601,7 @@ module.exports = {
   verify,
   getUnsubscribe,
   postUnsubscribe,
+  getUnsubscribeMonthly,
   getRemoveFxm,
   postRemoveFxm,
   postResolveBreach,
