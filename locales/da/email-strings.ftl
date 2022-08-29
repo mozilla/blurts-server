@@ -94,3 +94,22 @@ more-products-vpn = Fuld beskyttelse af alle dine enheder.
 more-products-cta-vpn = Hent { -product-name-vpn }
 more-products-relay = Skjul din rigtige mailadresse for at beskytte din identitet.
 more-products-cta-relay = Hent { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Du modtager denne automatisk udsendte mail som abonnent på { -product-name }. <br>Du kan når som helst ændre dine mailpræferencer <a { $unsubscribe-link-attr }>her</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Information om datalæk stammer fra <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Du har uløste datalæk
+email-unresolved-subhead = Din mailadresse har været involveret i en datalæk. <br>Løs det med det samme med { -product-name }.
+email-more-detail = Log ind på { -product-name } nu for at se flere detaljer om dine datalæk (herunder hvornår de fandt sted og hvilke data, der er blevet kompromitteret), og find ud af, hvad du skal gøre, når din mailadresse er blevet kompromitteret i en datalæk.
+email-breach-status = Nuværende lækstatus
+# table row 1 label
+email-monitored = Overvågede mailadresser i alt:
+# table row 2 label
+email-breach-total = Datalæk i alt:
+# table row 4 label
+email-unresolved = Uløste datalæk:
