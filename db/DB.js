@@ -419,6 +419,32 @@ const DB = {
     await knex('email_addresses').where({ subscriber_id: uid }).del()
   },
 
+  async updateBreachStats (id, stats) {
+    await knex('subscribers')
+      .where('id', id)
+      .update({
+        breach_stats: stats
+      })
+  },
+
+  async updateMonthlyEmailTimestamp (email) {
+    await knex('subscribers').update({ monthly_email_at: 'now' }).where('primary_email', email)
+  },
+
+  async updateMonthlyEmailOptout (token) {
+    await knex('subscribers').update('monthly_email_optout', true).where('primary_verification_token', token)
+  },
+
+  async getSubscribersWithUnresolvedBreaches () {
+    const res = await knex('subscribers')
+      .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
+      .whereRaw('monthly_email_optout IS NOT TRUE')
+      .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
+      .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)
+
+    return res
+  },
+
   async createConnection () {
     if (knex === null) {
       knex = Knex(knexConfig)

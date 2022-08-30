@@ -34,6 +34,8 @@ const EmailUtils = require('./email-utils')
 const HBSHelpers = require('./template-helpers/')
 const HIBP = require('./hibp')
 const IpLocationService = require('./ip-location-service')
+const { initMonthlyCron } = require('./cron')
+const { sendUnresolvedBreachEmails } = require('./scripts/send-email-to-unresolved-breach-subscribers')
 
 const {
   addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
@@ -195,7 +197,7 @@ const hbs = exphbs.create({
   extname: '.hbs',
   layoutsDir: path.join(__dirname, '/views/layouts'),
   defaultLayout: 'default',
-  partialsDir: path.join(__dirname, '/views/partials'),
+  partialsDir: [path.join(__dirname, '/views/layouts'), path.join(__dirname, '/views/partials')],
   helpers: HBSHelpers.helpers
 })
 app.engine('hbs', hbs.engine)
@@ -257,3 +259,8 @@ EmailUtils.init().then(() => {
 }).catch(error => {
   log.error('try-initialize-email-error', { error })
 })
+
+if (AppConstants.MONTHLY_CRON_ENABLED && AppConstants.MONTHLY_CRON_ENABLED !== 'false') {
+  console.log('Starting monthly cron job.')
+  initMonthlyCron(sendUnresolvedBreachEmails)
+}

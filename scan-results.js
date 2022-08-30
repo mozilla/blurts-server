@@ -144,6 +144,9 @@ function resultsSummary (verifiedEmails) {
 
   // total number of breaches across all emails
   breachStats.numBreaches.count = foundBreaches.length
+
+  breachStats.numBreaches.numUnresolved = breachStats.numBreaches.count - breachStats.numBreaches.numResolved
+
   return breachStats
 }
 

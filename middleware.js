@@ -163,6 +163,30 @@ async function requireSessionUser (req, res, next) {
   next()
 }
 
+async function requireAdminUser (req, res, next) {
+  const user = await _getRequestSessionUser(req)
+  if (!user) {
+    const queryParams = new URLSearchParams(req.query).toString()
+    return res.redirect(`/oauth/init?${queryParams}`)
+  }
+  const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
+  const admins = AppConstants.ADMINS?.split(',') || []
+  const isAdmin = admins.includes(JSON.parse(fxaProfileData).email)
+
+  const hasFxaError = Object.prototype.hasOwnProperty.call(fxaProfileData, 'name') && fxaProfileData.name
+  if (hasFxaError) {
+    delete req.session.user
+  }
+  if (!isAdmin || hasFxaError) {
+    return res.sendStatus(401)
+  }
+
+  await DB.updateFxAProfileData(user, fxaProfileData)
+  req.session.user = user
+  req.user = user
+  next()
+}
+
 function getShareUTMs (req, res, next) {
   // Step 1: See if the user needs to be redirected to the homepage or to a breach-detail page.
   const generalShareUrls = [
@@ -237,5 +261,6 @@ module.exports = {
   clientErrorHandler,
   errorHandler,
   requireSessionUser,
+  requireAdminUser,
   getShareUTMs
 }

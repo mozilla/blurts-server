@@ -5,7 +5,7 @@ const isemail = require('isemail')
 
 const DB = require('../db/DB')
 const EmailUtils = require('../email-utils')
-const { FluentError } = require('../locale-utils')
+const { FluentError, LocaleUtils } = require('../locale-utils')
 const { FXA } = require('../lib/fxa')
 const HIBP = require('../hibp')
 const { resultsSummary } = require('../scan-results')
@@ -238,6 +238,12 @@ async function getDashboard (req, res) {
 
   const adUnitNum = setAdUnitCookie(req, res)
 
+  if (!req.session.statsUpdated) {
+    // update user's breach stats in DB once per session without blocking render
+    DB.updateBreachStats(user.id, resultsSummary(verifiedEmails))
+    req.session.statsUpdated = true
+  }
+
   res.render('dashboards', {
     title: req.fluentFormat('Firefox Monitor'),
     csrfToken: req.csrfToken(),
@@ -422,6 +428,8 @@ async function postResolveBreach (req, res) {
   const numTotalBreaches = userBreachStats.numBreaches.count
   const numResolvedBreaches = userBreachStats.numBreaches.numResolved
 
+  DB.updateBreachStats(sessionUser.id, userBreachStats)
+
   const localizedModalStrings = {
     headline: '',
     progressMessage: '',
@@ -496,6 +504,23 @@ async function postUnsubscribe (req, res) {
   await FXA.revokeOAuthTokens(unsubscribedUser)
   req.session.destroy()
   res.redirect('/')
+}
+
+async function getUnsubscribeMonthly (req, res) {
+  await DB.updateMonthlyEmailOptout(req.query.token)
+  return res.send(`
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/dist/app.js" defer></script>
+    <title>${LocaleUtils.fluentFormat(req.supportedLocales, 'home-title')}</title>
+  </head>
+  <body>
+    <h2>${LocaleUtils.fluentFormat(req.supportedLocales, 'changes-saved')}</h2>
+  </body>
+  </html>
+  `)
 }
 
 async function getPreferences (req, res) {
@@ -586,6 +611,7 @@ module.exports = {
   verify,
   getUnsubscribe,
   postUnsubscribe,
+  getUnsubscribeMonthly,
   getRemoveFxm,
   postRemoveFxm,
   postResolveBreach,
