@@ -509,7 +509,17 @@ async function postUnsubscribe (req, res) {
 async function getUnsubscribeMonthly (req, res) {
   await DB.updateMonthlyEmailOptout(req.query.token)
   return res.send(`
-  <h2>${LocaleUtils.fluentFormat(req.supportedLocales, 'changes-saved')}</h2>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/dist/app.js" defer></script>
+    <title>${LocaleUtils.fluentFormat(req.supportedLocales, 'home-title')}</title>
+  </head>
+  <body>
+    <h2>${LocaleUtils.fluentFormat(req.supportedLocales, 'changes-saved')}</h2>
+  </body>
+  </html>
   `)
 }
 

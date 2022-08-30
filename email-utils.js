@@ -125,10 +125,10 @@ const EmailUtils = {
 
   getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
     // TODO: create new subscriptions section in settings to manage all emails and avoid one-off routes like this
-    let url = new URL('user/unsubscribe-monthly', AppConstants.SERVER_URL)
+    let url = new URL('user/unsubscribe-monthly/', AppConstants.SERVER_URL)
 
-    url.searchParams.append('token', subscriber.primary_verification_token)
     url = this.appendUtmParams(url, campaign, content)
+    url.searchParams.append('token', encodeURIComponent(subscriber.primary_verification_token))
 
     return url
   }
