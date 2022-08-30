@@ -507,6 +507,8 @@ async function postUnsubscribe (req, res) {
 }
 
 async function getUnsubscribeMonthly (req, res) {
+  if (!req.query.token) return res.redirect('/')
+
   await DB.updateMonthlyEmailOptout(req.query.token)
   return res.send(`
   <!DOCTYPE html>
