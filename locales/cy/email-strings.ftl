@@ -90,3 +90,26 @@ more-products-vpn = Diogelwch ar gyfer eich dyfais gyfan, ar bob dyfais.
 more-products-cta-vpn = Cael { -product-name-vpn }
 more-products-relay = Cuddiwch eich cyfeiriad e-bost go iawn i helpu diogelu eich hunaniaeth
 more-products-cta-relay = Cael { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Rydych chi'n derbyn yr e-bost awtomataidd hwn fel tanysgrifiwr { -product-name }. <br>Mae croeso i chi newid eich dewisiadau e-bost unrhyw bryd <a { $unsubscribe-link-attr }>yma</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Data tor-data wedi'i ddarparu gan <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Mae gennych dor-data heb eu datrys
+email-unresolved-subhead = Mae eich e-bost wedi'i amlygu. <br>Trwsiwch ef ar unwaith gyda { -product-name }.
+email-is-affected = Mae eich e-bost, { $email-address }, yn cael ei effeithio gan o leiaf un tor-data
+email-more-detail = Mewngofnodwch i { -product-name } nawr i weld mwy o fanylion am eich tor-data (gan gynnwys pryd y digwyddodd hyn a pha ddata a ddatgelwyd), a dysgwch beth ddylech chi ei wneud pan fydd eich e-bost wedi'i ddatgelu mewn tor-data.
+email-breach-status = Statws tor-data presennol
+# table row 1 label
+email-monitored = Cyfanswm yr e-byst a gafodd eu monitro:
+# table row 2 label
+email-breach-total = Cyfanswm y nifer yr achosion o dor-data:
+# table row 3 label
+email-resolved = Tor-data a ddatryswyd:
+# table row 4 label
+email-unresolved = Tor-data heb eu datrys:
+email-resolve-cta = Datrys tor-data

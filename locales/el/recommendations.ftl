@@ -50,7 +50,7 @@ rec-cc =
     Ελέγξτε για περίεργες χρεώσεις στην πιστωτική σας κάρτα. Μπορείτε 
     να ζητήσετε μια νέα κάρτα με νέο αριθμό από την τράπεζά σας.
 # Recommendation subhead
-rec-email-subhead = Χρήση ψευδώνυμων email
+rec-email-mask-subhead = Χρήση μιας μάσκας email
 rec-email-cta = Δοκιμή του { -brand-relay }
 rec-email =
     Δίνοντας την πραγματική σας διεύθυνση email, βοηθάτε τους hacker ή τους ιχνηλάτες

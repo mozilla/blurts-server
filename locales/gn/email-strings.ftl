@@ -103,3 +103,19 @@ more-products-vpn = Ñemo’ã opaite ne mba’e’okápe, peteĩteĩva mba’e�
 more-products-cta-vpn = Erekóke { -product-name-vpn }
 more-products-relay = Eñomi ne ñanduti veve kundaharape emo’ã hag̃ua nde reraite.
 more-products-cta-relay = Erekóke { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-breach-status = Mba’éicha oĩ ñembogua
+# table row 1 label
+email-monitored = Ñanduti vevekuéra jehechapyre:
+# table row 2 label
+email-breach-total = Ñemboguaguasu papapy:
+# table row 3 label
+email-resolved = Ñembogua moĩporãmbyre:
+# table row 4 label
+email-unresolved = Ñembogua oĩporã’ỹva:
+email-resolve-cta = Emoĩporã ñembogua

@@ -102,3 +102,26 @@ more-products-vpn = Bescherming voor uw volledige apparaat, op elk apparaat.
 more-products-cta-vpn = { -product-name-vpn } downloaden
 more-products-relay = Verberg uw echte e-mailadres om uw identiteit te beschermen.
 more-products-cta-relay = { -product-name-relay } downloaden
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = U ontvangt dit automatische e-mailbericht als abonnee van { -product-name }. <br>Voel u vrij om uw e-mailvoorkeuren op elk moment <a { $unsubscribe-link-attr }>hier</a> te wijzigen.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datalek aangeleverd door <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = U hebt onopgeloste datalekken
+email-unresolved-subhead = Uw e-mail is blootgesteld. <br>Los het meteen op met { -product-name }.
+email-is-affected = Uw e-mailadres, { $email-address }, is getroffen door ten minste één datalek
+email-more-detail = Meld u nu aan bij { -product-name } om meer details over uw datalekken te zien (inclusief wanneer ze hebben plaatsgevonden en welke gegevens zijn blootgesteld) en ontdek wat u moet doen wanneer uw e-mailadres is blootgesteld aan een datalek.
+email-breach-status = Huidige datalekstatus
+# table row 1 label
+email-monitored = Totaal aantal gecontroleerde e-mailberichten:
+# table row 2 label
+email-breach-total = Totaal aantal datalekken:
+# table row 3 label
+email-resolved = Opgeloste datalekken:
+# table row 4 label
+email-unresolved = Onopgeloste datalekken:
+email-resolve-cta = Datalekken oplossen

@@ -1,7 +1,7 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Υπόλοιπα λογαριασμών
-address-book-contacts = Επαφές βιβλίου διευθύνσεων
+address-book-contacts = Επαφές ευρετηρίου
 age-groups = Ηλικιακές ομάδες
 ages = Ηλικίες
 # Refers to medical appointments.
@@ -54,6 +54,7 @@ family-structure = Οικογενειακή δομή
 financial-investments = Οικονομικές επενδύσεις
 financial-transactions = Οικονομικές συναλλαγές
 fitness-levels = Επίπεδα φυσικής κατάστασης
+flights-taken = Πραγματοποιημένες πτήσεις
 genders = Φύλα
 geographic-locations = Γεωγραφικές τοποθεσίες
 government-issued-ids = Ταυτότητες που έχουν εκδοθεί από την κυβέρνηση
