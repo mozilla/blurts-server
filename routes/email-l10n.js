@@ -18,7 +18,7 @@ const cspUnsafeInline = {
 router.get('/', getEmailMockUps)
 // This page needs unsafe-inline because it renders the email-monthly-resolved.hbs partial, which has inline styles to work in HTML emails.
 // But this route is only enabled on dev or heroku apps.
-if (['dev', 'heroku'].includes(AppConstants.NODE_ENV)) {
+if (['dev', 'heroku', 'stage'].includes(AppConstants.NODE_ENV)) {
   router.get('/email-2022-mockup', csrfProtection, requireAdminUser, helmet.contentSecurityPolicy(cspUnsafeInline), previewEmail2022)
   router.post('/send-email-2022', express.urlencoded({ extended: false }), csrfProtection, requireAdminUser, sendTestEmail({ layout: 'email-2022', whichPartial: 'email_partials/email-monthly-unresolved', subjectId: 'email-unresolved-heading' }))
 }
