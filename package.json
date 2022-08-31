@@ -9,7 +9,7 @@
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "5.27.2",
     "body-parser": "1.19.0",
-    "client-oauth2": "4.3.2",
+    "client-oauth2": "4.3.3",
     "connect-redis": "5.0.0",
     "cookie-parser": "^1.4.6",
     "csurf": "1.11.0",
