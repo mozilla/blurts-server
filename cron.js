@@ -1,7 +1,8 @@
 const cron = require('node-cron')
 
 function initMonthlyCron (...jobs) {
-  cron.schedule('* * 1 * *', () => {
+  cron.schedule('* 16 1 * *', () => {
+    // first of the month and 1600 UTC, 11am EST
     jobs.forEach(job => job())
   })
 }
