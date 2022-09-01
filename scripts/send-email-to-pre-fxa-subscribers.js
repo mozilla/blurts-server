@@ -2,7 +2,7 @@
 
 /* eslint-disable no-process-env */
 
-const { negotiateLanguages, acceptedLanguages } = require('fluent-langneg')
+const { negotiateLanguages, acceptedLanguages } = require('@fluent/langneg')
 
 const AppConstants = require('../app-constants')
 const DB = require('../db/DB')
