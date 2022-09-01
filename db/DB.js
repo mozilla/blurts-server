@@ -428,7 +428,11 @@ const DB = {
   },
 
   async updateMonthlyEmailTimestamp (email) {
-    await knex('subscribers').update({ monthly_email_at: 'now' }).where('primary_email', email)
+    const res = await knex('subscribers').update({ monthly_email_at: 'now' })
+      .where('primary_email', email)
+      .returning('monthly_email_at')
+
+    return res
   },
 
   async updateMonthlyEmailOptout (token) {
