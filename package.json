@@ -6,6 +6,7 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
+    "@fluent/bundle": "0.13.0",
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "5.27.2",
     "body-parser": "1.19.0",
@@ -19,7 +20,6 @@
     "express-bearer-token": "2.4.0",
     "express-handlebars": "6.0.6",
     "express-session": "1.17.1",
-    "fluent": "0.13.0",
     "fluent-langneg": "0.2.0",
     "git-rev-sync": "^3.0.2",
     "got": "11.8.5",

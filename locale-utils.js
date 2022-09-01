@@ -6,7 +6,7 @@ const path = require('path')
 // node.js needs Intl.PluralRules polyfill
 require('intl-pluralrules')
 
-const { FluentBundle } = require('fluent')
+const { FluentBundle } = require('@fluent/bundle')
 
 const mozlog = require('./log')
 const { supportedLocales } = require('./package.json')
