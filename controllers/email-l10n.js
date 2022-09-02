@@ -6,7 +6,6 @@ const path = require('path')
 const { readdir } = require('fs/promises')
 const partialDir = path.join(path.dirname(require.main.filename), '/views/partials/email_partials')
 const { LocaleUtils } = require('./../locale-utils')
-const { initMinuteCron } = require('../cron')
 
 let partialFilenames
 
@@ -139,21 +138,7 @@ function sendTestEmail (data) {
       unsubscribeUrl
     }
 
-    async function sendEmail () {
-      await EmailUtils.sendEmail(req.body.recipientEmail, subject, data.layout, context)
-    }
-
-    if (req.body.delay === 'on') {
-      initMinuteCron(sendEmail)
-
-      return res.send(`
-      <h2>Email scheduled to send 1 minute from now!</h2>
-      <p>${optoutNote}</p>
-      <a href='/email-l10n/email-2022-mockup'>Go Back</a> | <a href='/user/logout'>Sign Out</a>
-      `)
-    }
-
-    await sendEmail()
+    await EmailUtils.sendEmail(req.body.recipientEmail, subject, data.layout, context)
 
     res.send(`
     <h2>Email sent!</h2>

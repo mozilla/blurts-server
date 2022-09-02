@@ -34,8 +34,6 @@ const EmailUtils = require('./email-utils')
 const HBSHelpers = require('./template-helpers/')
 const HIBP = require('./hibp')
 const IpLocationService = require('./ip-location-service')
-const { initMonthlyCron } = require('./cron')
-const { sendUnresolvedBreachEmails } = require('./scripts/send-email-to-unresolved-breach-subscribers')
 
 const {
   addRequestToResponse, pickLanguage, logErrors, localizeErrorMessages,
@@ -259,8 +257,3 @@ EmailUtils.init().then(() => {
 }).catch(error => {
   log.error('try-initialize-email-error', { error })
 })
-
-if (AppConstants.MONTHLY_CRON_ENABLED && AppConstants.MONTHLY_CRON_ENABLED !== 'false') {
-  console.log('Starting monthly cron job.')
-  initMonthlyCron(sendUnresolvedBreachEmails)
-}
