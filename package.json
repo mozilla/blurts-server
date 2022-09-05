@@ -29,7 +29,7 @@
     "knex": "^2.2.0",
     "knex-paginate": "3.0.1",
     "mozlog": "3.0.2",
-    "nodemailer": "^6.6.5",
+    "nodemailer": "^6.7.8",
     "nodemailer-express-handlebars": "5.0.0",
     "pg": "^8.7.1",
     "redis": "3.1.1",
