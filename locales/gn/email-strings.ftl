@@ -106,11 +106,14 @@ more-products-cta-relay = Erekóke { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Mba’ekuaarã ñembogua ome’ẽva { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Eguereko ñembogua oĩporã’ỹva
 email-unresolved-subhead = Ne ñanduti veve ikatu oñembyai. <br>Emoĩporã ko’ag̃aite { -product-name }.
+email-is-affected = Ne ñanduti veve, { $email-address }, oñembyai sa’ivéramo peteĩ mba’ekuaarã ñemboguápe
 email-breach-status = Mba’éicha oĩ ñembogua
 # table row 1 label
 email-monitored = Ñanduti vevekuéra jehechapyre:
