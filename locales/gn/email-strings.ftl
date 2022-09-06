@@ -109,6 +109,8 @@ more-products-cta-relay = Erekóke { -product-name-relay }
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Eguereko ñembogua oĩporã’ỹva
+email-unresolved-subhead = Ne ñanduti veve ikatu oñembyai. <br>Emoĩporã ko’ag̃aite { -product-name }.
 email-breach-status = Mba’éicha oĩ ñembogua
 # table row 1 label
 email-monitored = Ñanduti vevekuéra jehechapyre:
