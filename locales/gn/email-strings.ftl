@@ -107,7 +107,7 @@ more-products-cta-relay = Erekóke { -product-name-relay }
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 # Have I Been Pwned attribution
-email-2022-hibp-attribution = Mba’ekuaarã ñembogua ome’ẽva { $hibp-link-attr }>{ -brand-HIBP }</a>
+email-2022-hibp-attribution = Mba’ekuaarã ñembogua ome’ẽva <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
