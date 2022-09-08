@@ -444,7 +444,9 @@ const DB = {
       .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
       .whereRaw('monthly_email_optout IS NOT TRUE')
       .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
-      .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)
+      // .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)  // Requires psql 11
+      .whereNotNull('breach_stats')
+      .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
 
     return res
   },
