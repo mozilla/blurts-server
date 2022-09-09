@@ -38,6 +38,37 @@ exports.TEST_SUBSCRIBERS = {
     primary_verification_token: '54010800-6c3c-4186-971a-76dc92874941',
     primary_verified: true,
     signup_language: 'en-US;q=0.7,en;q=0.3'
+  },
+  has_breaches: {
+    id: 12346,
+    created_at: '2022-06-07 14:29:00.000-05',
+    primary_sha1: getSha1('has-breaches@example.com'),
+    primary_email: 'has-breaches@example.com',
+    primary_verification_token: 'c165711a-69d1-42f1-9850-ce74754f36de',
+    primary_verified: true,
+    fxa_access_token: '5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc0',
+    fxa_refresh_token: '5a4792b89434153f1a6262fbd6a4510c00834ff842585fc4f4d972da158f0fc1',
+    fxa_uid: 12346,
+    fxa_profile_json: {},
+    breaches_last_shown: '2022-07-08 14:19:00.000-05',
+    breaches_resolved: { 'has-breaches@example.com': [1] },
+    breach_stats: {
+      passwords: {
+        count: 1,
+        numResolved: 0
+      },
+      numBreaches: {
+        count: 2,
+        numResolved: 1,
+        numUnresolved: 1
+      },
+      monitoredEmails: {
+        count: 1
+      }
+    },
+    monthly_email_at: '2022-08-07 14:22:00.000-05',
+    monthly_email_optout: false,
+    signup_language: 'fr-CH, fr;q=0.9, en;q=0.8, de;q=0.7,*;q=0.5'
   }
 }
 
@@ -64,6 +95,14 @@ exports.TEST_EMAIL_ADDRESSES = {
     sha1: getSha1('secondary_sending_to_primary@test.com'),
     email: 'secondary_sending_to_primary@test.com',
     verification_token: '0e2cb147-2041-4e5b-8ca9-494e773b2cf4',
+    verified: true
+  },
+  has_breaches: {
+    id: 11112,
+    subscriber_id: 12346,
+    sha1: getSha1('has-breaches@example.com'),
+    email: 'has-breaches@example.com',
+    verification_token: 'c165711a-69d1-42f1-9850-ce74754f36df',
     verified: true
   }
 }
