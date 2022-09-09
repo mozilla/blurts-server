@@ -445,7 +445,6 @@ const DB = {
       .whereRaw('monthly_email_optout IS NOT TRUE')
       .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
       // .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)  // Requires psql 11
-      .whereNotNull('breach_stats')
       .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
 
     return res
