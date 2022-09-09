@@ -103,3 +103,5 @@ email-2022-unsubscribe = Vous recevez cet e-mail automatique en tant qu’abonn�
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Vous avez des fuites de données non résolues
+email-is-affected = Votre adresse e-mail, { $email-address }, est affectée par au moins une fuite de données
