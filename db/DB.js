@@ -439,15 +439,27 @@ const DB = {
     await knex('subscribers').update('monthly_email_optout', true).where('primary_verification_token', token)
   },
 
-  async getSubscribersWithUnresolvedBreaches () {
-    const res = await knex('subscribers')
-      .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
+  getSubscribersWithUnresolvedBreachesQuery () {
+    return knex('subscribers')
       .whereRaw('monthly_email_optout IS NOT TRUE')
       .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
       // .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)  // Requires psql 11
       .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
+  },
 
-    return res
+  async getSubscribersWithUnresolvedBreaches (limit = 0) {
+    let query = this.getSubscribersWithUnresolvedBreachesQuery()
+      .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
+    if (limit && limit > 0) {
+      query = query.limit(limit).orderBy('created_at')
+    }
+    return await query
+  },
+
+  async getSubscribersWithUnresolvedBreachesCount () {
+    const query = this.getSubscribersWithUnresolvedBreachesQuery()
+    const count = parseInt((await query.count({ count: '*' }))[0].count)
+    return count
   },
 
   async createConnection () {
@@ -457,8 +469,10 @@ const DB = {
   },
 
   async destroyConnection () {
-    await knex.destroy()
-    knex = null
+    if (knex !== null) {
+      await knex.destroy()
+      knex = null
+    }
   }
 
 }

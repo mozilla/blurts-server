@@ -2,18 +2,28 @@ const DB = require('../db/DB')
 const EmailUtils = require('../email-utils')
 const { LocaleUtils } = require('../locale-utils')
 const AppConstants = require('../app-constants')
-const { argv } = require('node:process')
+const { env, argv } = require('node:process')
 
-async function sendUnresolvedBreachEmails (subscribers = null) {
+/* Send a monthly email to each subscriber with unresolved breaches
+ *
+ * Usage:
+ * node scripts/send-email-to-unresolved-breach-subscribers.js
+ *
+ * For testing, pass a comma-separated arg with no spaces, for example:
+ * node scripts/send-email-to-unresolved-breach-subscribers.js test1@test.com,test2@test.com,...
+ */
+
+async function sendUnresolvedBreachEmails (subscribers = null, limit = 0) {
   let count = 0
-
-  LocaleUtils.init()
-  await EmailUtils.init()
-  await DB.createConnection()
-
-  if (!subscribers) subscribers = await DB.getSubscribersWithUnresolvedBreaches() // if test subscribers are not available, pull from db
-
-  console.log('- Recipient total:', subscribers.length)
+  let total = 0
+  if (subscribers) {
+    total = subscribers.length
+  } else {
+    // if test subscribers are not available, pull from db
+    total = await DB.getSubscribersWithUnresolvedBreachesCount()
+    subscribers = await DB.getSubscribersWithUnresolvedBreaches(limit)
+  }
+  console.log(`- Attempting to email ${subscribers.length} of ${total} subscribers...`)
 
   for (const subscriber of subscribers) {
     try {
@@ -38,18 +48,41 @@ async function sendUnresolvedBreachEmails (subscribers = null) {
     }
   }
 
-  await DB.destroyConnection()
-  console.log(`- Successfully emailed ${count} of ${subscribers.length} subscribers`)
+  console.log(`- Successfully emailed ${count} of ${subscribers.length} subscribers (${total} total)`)
+  return {
+    emailed: count,
+    attempted: subscribers.length,
+    total
+  }
 }
 
-if (argv[2]) {
-  // For testing, pass a comma-separated arg with no spaces, for example:
-  // node scripts/send-email-to-unresolved-breach-subscribers.js test1@test.com,test2@test.com,...
-  const subscribers = []
-  const emails = argv[2].split(',')
+async function init () {
+  LocaleUtils.init()
+  await EmailUtils.init()
+  await DB.createConnection()
+}
 
-  console.log('Testing job for monthly unresolved breach emails...')
-  console.log('- sending test emails to', emails)
+async function runScript (argv = []) {
+  let subscribers = null
+  const limit = AppConstants.MONTHLY_CRON_LIMIT
+  if (argv[2]) {
+    console.log('Testing job for monthly unresolved breach emails...')
+    const res = await prepareTestSubscribers(argv[2])
+    subscribers = res.subscribers
+    console.log('- Sending test emails to', res.emails)
+  } else if (AppConstants.MONTHLY_CRON_ENABLED === 'true') {
+    console.log('Running job for monthly unresolved breach emails...')
+  } else {
+    console.log('Job for monthly unresolved breach emails was not run. MONTHLY_CRON_ENABLED expects the string "true".')
+    return
+  }
+  return await sendUnresolvedBreachEmails(subscribers, limit)
+}
+
+async function prepareTestSubscribers (emailCsv = '') {
+  // Create subscriber records from a comma-separated list of emails
+  const subscribers = []
+  const emails = emailCsv.split(',')
 
   emails.forEach(email => {
     subscribers.push({
@@ -72,10 +105,28 @@ if (argv[2]) {
       }
     })
   })
-  sendUnresolvedBreachEmails(subscribers)
-} else if (AppConstants.MONTHLY_CRON_ENABLED === 'true') {
-  console.log('Running job for monthly unresolved breach emails...')
-  sendUnresolvedBreachEmails()
-} else {
-  console.log('Job for monthly unresolved breach emails was not run. MONTHLY_CRON_ENABLED expects the string "true".')
+  return {
+    subscribers,
+    emails
+  }
+}
+
+async function teardown () {
+  await DB.destroyConnection()
+}
+
+async function main () {
+  if (env.NODE_ENV !== 'tests') {
+    await init()
+    try {
+      await runScript(argv)
+    } finally {
+      await teardown()
+    }
+  }
+}
+main()
+
+module.exports = {
+  sendUnresolvedBreachEmails
 }

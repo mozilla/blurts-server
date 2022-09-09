@@ -57,7 +57,8 @@ const optionalEnvVars = [
   'EDUCATION_VIDEO_URL_RELAY',
   'EDUCATION_VIDEO_URL_VPN',
   'ADMINS',
-  'MONTHLY_CRON_ENABLED'
+  'MONTHLY_CRON_ENABLED',
+  'MONTHLY_CRON_LIMIT'
 ]
 
 const AppConstants = { }
