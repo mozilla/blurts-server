@@ -102,6 +102,7 @@ email-2022-hibp-attribution = İhlal verileri <a { $hibp-link-attr }>{ -brand-HI
 email-unresolved-heading = Çözümlenmemiş ihlalleriniz var
 email-unresolved-subhead = E-postanız açığa çıktı. <br>{ -product-name } ile hemen düzeltin.
 email-is-affected = { $email-address } adresiniz en az bir veri ihlalinden etkileniyor
+email-more-detail = İhlallerinizle ilgili daha fazla ayrıntı (ne zaman meydana geldiği ve hangi verilerin ifşa edildiği dahil) görmek için hemen { -product-name }’de oturum açın ve e-postanız bir veri ihlaline maruz kaldığında ne yapmanız gerektiğini öğrenin.
 email-breach-status = İhlal durumu
 # table row 1 label
 email-monitored = İzlenen toplam e-posta sayısı:

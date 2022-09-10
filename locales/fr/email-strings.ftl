@@ -96,3 +96,26 @@ more-products-vpn = Protection complète de votre appareil, pour chacun de vos a
 more-products-cta-vpn = Installez { -product-name-vpn }
 more-products-relay = Masquez votre véritable adresse e-mail pour protéger votre identité
 more-products-cta-relay = Installez { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Vous recevez cet e-mail automatique en tant qu’abonné·e de { -product-name }. <br>Vous pouvez modifier vos préférences de de messagerie à tout moment <a { $unsubscribe-link-attr }>ici</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Les informations sur les fuites de données sont fournies par <a { $hibp-link-Attribute }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Vous avez des fuites de données non résolues
+email-unresolved-subhead = Votre adresse e-mail figure dans une fuite de données. <br>Réglez cela tout de suite avec { -product-name }.
+email-is-affected = Votre adresse e-mail, { $email-address }, est affectée par au moins une fuite de données
+email-more-detail = Connectez-vous à { -product-name } maintenant pour obtenir plus de détails sur vos fuites de données (y compris quand elles se sont produites et quelles données ont été divulguées), et découvrez ce qu’il faut faire lorsque votre adresse e-mail figure dans une fuite de données.
+email-breach-status = État actuel de la fuite de données
+# table row 1 label
+email-monitored = Nombre d’adresses e-mail surveillées :
+# table row 2 label
+email-breach-total = Nombre total de fuites de données :
+# table row 3 label
+email-resolved = Fuites de données résolues :
+# table row 4 label
+email-unresolved = Fuites de données non résolues :
+email-resolve-cta = Régler vos fuites de données

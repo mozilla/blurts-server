@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -568,9 +571,9 @@ known-data-breaches-resolved =
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Új
-mobile-promo-headline = Hozza el a { -brand-name }ot telefonjára és táblagépére
-mobile-promo-body = Gyors, privát és biztonságos böngészés bárhová is menjen. Keresse meg a { -brand-name }ot a Google Play és az App Store áruházban.
-mobile-promo-cta = Szerezze meg a { -brand-name }ot Androidra és iOS-re
+mobile-promo-headline = Hozza el a { -brand-name(case: "accusative") } telefonjára és táblagépére
+mobile-promo-body = Gyors, privát és biztonságos böngészés bárhová is menjen. Keresse meg a { -brand-name(case: "accusative") } a Google Play és az App Store áruházban.
+mobile-promo-cta = Szerezze meg a { -brand-name(case: "accusative") } Androidra és iOS-re
 promo-lockwise-headline = Vigye magával a jelszavait bárhová
 lockwise-promo-body = Kövesse nyomon bejelentkezéseit az összes eszközén. Érje el azokat biztonságosan a számítógépéről, telefonjáról vagy táblagépéről.
 promo-lockwise-cta = { -brand-lockwise } beszerzése
