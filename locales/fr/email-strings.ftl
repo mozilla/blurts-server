@@ -104,4 +104,16 @@ email-2022-unsubscribe = Vous recevez cet e-mail automatique en tant qu’abonn�
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Vous avez des fuites de données non résolues
+email-unresolved-subhead = Votre adresse e-mail figure dans une fuite de données. <br>Réglez cela tout de suite avec { -product-name }.
 email-is-affected = Votre adresse e-mail, { $email-address }, est affectée par au moins une fuite de données
+email-more-detail = Connectez-vous à { -product-name } maintenant pour obtenir plus de détails sur vos fuites de données (y compris quand elles se sont produites et quelles données ont été divulguées), et découvrez ce qu’il faut faire lorsque votre adresse e-mail figure dans une fuite de données.
+email-breach-status = État actuel de la fuite de données
+# table row 1 label
+email-monitored = Nombre d’adresses e-mail surveillées :
+# table row 2 label
+email-breach-total = Nombre total de fuites de données :
+# table row 3 label
+email-resolved = Fuites de données résolues :
+# table row 4 label
+email-unresolved = Fuites de données non résolues :
+email-resolve-cta = Régler vos fuites de données
