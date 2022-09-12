@@ -62,7 +62,7 @@ async function init () {
   await DB.createConnection()
 }
 
-async function runScript (argv = []) {
+async function runScript () {
   let subscribers = null
   const limit = parseInt(AppConstants.MONTHLY_CRON_LIMIT)
   if (argv[2]) {
@@ -119,7 +119,7 @@ async function main () {
   if (AppConstants.NODE_ENV !== 'tests') {
     await init()
     try {
-      await runScript(argv)
+      await runScript()
     } finally {
       await teardown()
     }
