@@ -449,7 +449,7 @@ const DB = {
   async getSubscribersWithUnresolvedBreaches (limit = 0) {
     let query = this.getSubscribersWithUnresolvedBreachesQuery()
       .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
-    if (limit && limit > 0) {
+    if (limit) {
       query = query.limit(limit).orderBy('created_at')
     }
     return await query
