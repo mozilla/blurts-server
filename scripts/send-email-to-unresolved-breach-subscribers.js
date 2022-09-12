@@ -2,7 +2,7 @@ const DB = require('../db/DB')
 const EmailUtils = require('../email-utils')
 const { LocaleUtils } = require('../locale-utils')
 const AppConstants = require('../app-constants')
-const { env, argv } = require('node:process')
+const { argv } = require('node:process')
 
 /* Send a monthly email to each subscriber with unresolved breaches
  *
@@ -64,7 +64,7 @@ async function init () {
 
 async function runScript (argv = []) {
   let subscribers = null
-  const limit = AppConstants.MONTHLY_CRON_LIMIT
+  const limit = parseInt(AppConstants.MONTHLY_CRON_LIMIT)
   if (argv[2]) {
     console.log('Testing job for monthly unresolved breach emails...')
     const res = await prepareTestSubscribers(argv[2])
@@ -116,7 +116,7 @@ async function teardown () {
 }
 
 async function main () {
-  if (env.NODE_ENV !== 'tests') {
+  if (AppConstants.NODE_ENV !== 'tests') {
     await init()
     try {
       await runScript(argv)
