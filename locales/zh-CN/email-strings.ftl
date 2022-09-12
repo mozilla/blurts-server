@@ -94,8 +94,10 @@ email-2022-hibp-attribution = 数据外泄事件信息由 <a { $hibp-link-attr }
 
 email-unresolved-heading = 您有未处理的数据外泄事件
 email-breach-status = 当前事件状态
+# table row 1 label
+email-monitored = 监控邮箱总数：
 # table row 2 label
-email-breach-total = 数据外泄事件总量：
+email-breach-total = 数据外泄事件总数：
 # table row 3 label
 email-resolved = 已处理的事件：
 # table row 4 label
