@@ -443,7 +443,6 @@ const DB = {
     return knex('subscribers')
       .whereRaw('monthly_email_optout IS NOT TRUE')
       .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
-      // .whereJsonPath('breach_stats', '$.numBreaches.numUnresolved', '>', 0)  // Requires psql 11
       .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
   },
 
