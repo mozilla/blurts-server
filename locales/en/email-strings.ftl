@@ -152,3 +152,21 @@ email-resolved = Resolved breaches:
 # table row 4 label
 email-unresolved = Unresolved breaches:
 email-resolve-cta = Resolve breaches
+
+## Verification email
+
+email-verify-heading = Safeguard your data, starting right now
+email-verify-subhead = Verify your email to start protecting your data after a breach.
+email-verify-simply-click = Simply click the link below to finish verifying your account.
+
+## Breach report
+
+email-breach-summary = Here’s your data breach summary
+email-breach-detected = Search results for your { $email-address } account have detected that your email may have been exposed. We recommend you act now to resolve this breach.
+email-no-breach-detected = Great news! We’ve found no data breaches that affect your email, { $email-address }. 
+email-dashboard-cta = Go to Dashboard
+
+## Breach alert
+
+email-may-have-been-exposed = Your email may have been exposed in a data breach
+email-spotted-new-breach = We’ve spotted a new data breach
