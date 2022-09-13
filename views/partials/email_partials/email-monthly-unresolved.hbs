@@ -1,0 +1,36 @@
+<tr>
+  <td style="background: #F9F9FA; padding-top: 36px;">
+    <p>{{{ getString "email-is-affected" email-address=( concat "<strong>" primaryEmail "</strong>" ) }}}</p>
+    <p>{{ getString "email-more-detail" }}</p>
+  </td>
+</tr>
+<tr style="background: #F9F9FA;">
+  <td style="padding: 24px 0;">
+    <p>
+      <strong>{{ getString "email-breach-status" }}</strong>
+    </p>
+    <table
+      style="background-color: white; border: 1px solid #ddd; box-shadow: 0 0 6px #ddd; border-radius: 8px; padding: 24px; width: auto; margin: auto; text-align: left;"
+      role="presentation" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="padding: 3px 12px;">{{ getString "email-monitored" }}</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.monitoredEmails.count }}</td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 12px;">{{ getString "email-breach-total" }}</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.numBreaches.count }}</td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 12px;">{{ getString "email-resolved" }}</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.numBreaches.numResolved }}</td>
+      </tr>
+      <tr>
+        <td style="padding: 3px 12px;">{{ getString "email-unresolved" }}</td>
+        <td style="border-left: 1px solid #ccc; padding: 3px 12px;">{{ breachStats.numBreaches.numUnresolved }}</td>
+      </tr>
+    </table>
+    <a href="{{ SERVER_URL }}?utm_source=fx-monitor&utm_medium=email&utm_campaign=monthly-unresolved&utm_content=resolve-breaches-cta"
+      style="display: inline-block; margin: auto; color: white; background-color: #0060DF; border-radius: 4px; padding: 12px 24px; margin: 24px 0">{{
+      getString "email-resolve-cta" }}</a>
+  </td>
+</tr>

@@ -65,6 +65,12 @@ function getRedisStore () {
 }
 
 const app = express()
+app.use(
+  Sentry.Handlers.requestHandler({
+    request: ['headers', 'method', 'url'], // omit cookies, data, query_string
+    user: ['id'] // omit username, email
+  })
+)
 
 function devOrHeroku () {
   return ['dev', 'heroku'].includes(AppConstants.NODE_ENV)
@@ -189,7 +195,7 @@ const hbs = exphbs.create({
   extname: '.hbs',
   layoutsDir: path.join(__dirname, '/views/layouts'),
   defaultLayout: 'default',
-  partialsDir: path.join(__dirname, '/views/partials'),
+  partialsDir: [path.join(__dirname, '/views/layouts'), path.join(__dirname, '/views/partials')],
   helpers: HBSHelpers.helpers
 })
 app.engine('hbs', hbs.engine)
@@ -238,6 +244,7 @@ if (devOrHeroku) app.use('/email-l10n', EmailL10nRoutes)
 app.use('/breach-details', BreachRoutes)
 app.use('/', HomeRoutes)
 
+app.use(Sentry.Handlers.errorHandler())
 app.use(logErrors)
 app.use(localizeErrorMessages)
 app.use(clientErrorHandler)
