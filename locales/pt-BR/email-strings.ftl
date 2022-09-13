@@ -119,3 +119,21 @@ email-resolved = Vazamentos resolvidos:
 # table row 4 label
 email-unresolved = Vazamentos não resolvidos:
 email-resolve-cta = Resolver vazamentos
+
+## Verification email
+
+email-verify-heading = Proteja seus dados, começando agora mesmo
+email-verify-subhead = Verifique seu email para começar a proteger seus dados após um vazamento.
+email-verify-simply-click = Basta clicar no link abaixo para concluir a verificação da sua conta.
+
+## Breach report
+
+email-breach-summary = Aqui está o resumo de vazamento de dados
+email-breach-detected = Os resultados da pesquisa da sua conta { $email-address } detectaram que seu email pode ter sido exposto. Recomendamos você agir agora para resolver este vazamento.
+email-no-breach-detected = Boas notícias! Não encontramos nenhum vazamento de dados que afete seu email, { $email-address }.
+email-dashboard-cta = Ir para o painel
+
+## Breach alert
+
+email-may-have-been-exposed = Seu email pode ter sido exposto em um vazamento de dados
+email-spotted-new-breach = Detectamos um novo vazamento de dados
