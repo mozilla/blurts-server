@@ -119,3 +119,13 @@ email-resolved = Fuites de données résolues :
 # table row 4 label
 email-unresolved = Fuites de données non résolues :
 email-resolve-cta = Régler vos fuites de données
+
+## Verification email
+
+
+## Breach report
+
+email-dashboard-cta = Accéder au tableau de bord
+
+## Breach alert
+
