@@ -125,3 +125,21 @@ email-resolved = Behobene Datenlecks:
 # table row 4 label
 email-unresolved = Nicht behobene Datenlecks:
 email-resolve-cta = Datenlecks beheben
+
+## Verification email
+
+email-verify-heading = Schützen Sie Ihre Daten ab sofort
+email-verify-subhead = Bestätigen Sie Ihre E-Mail-Adresse, um Ihre Daten nach einem Leck zu schützen.
+email-verify-simply-click = Klicken Sie einfach auf den folgenden Link, um die Verifizierung Ihres Kontos abzuschließen.
+
+## Breach report
+
+email-breach-summary = Hier ist die Zusammenfassung Ihrer Datenlecks
+email-breach-detected = Suchergebnisse für Ihr Konto { $email-address } haben gezeigt, dass Ihre E-Mail-Adresse möglicherweise offengelegt wurde. Wir empfehlen Ihnen, jetzt zu handeln, um dieses Datenleck zu beheben.
+email-no-breach-detected = Großartige Neuigkeiten! Wir haben keine Datenlecks gefunden, die Ihre E-Mail-Adresse { $email-address } betreffen.
+email-dashboard-cta = Zur Übersicht
+
+## Breach alert
+
+email-may-have-been-exposed = Ihre E-Mail-Adresse wurde möglicherweise durch ein Datenleck offengelegt
+email-spotted-new-breach = Wir haben ein neues Datenleck entdeckt
