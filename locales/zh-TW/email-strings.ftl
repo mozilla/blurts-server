@@ -105,3 +105,13 @@ email-resolved = 處理過的事件數量：
 # table row 4 label
 email-unresolved = 未處理的事件數量：
 email-resolve-cta = 處理此事件
+
+## Verification email
+
+
+## Breach report
+
+email-dashboard-cta = 前往儀錶板
+
+## Breach alert
+
