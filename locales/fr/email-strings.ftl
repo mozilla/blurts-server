@@ -101,7 +101,7 @@ more-products-cta-relay = Installez { -product-name-relay }
 
 email-2022-unsubscribe = Vous recevez cet e-mail automatique en tant qu’abonné·e de { -product-name }. <br>Vous pouvez modifier vos préférences de de messagerie à tout moment <a { $unsubscribe-link-attr }>ici</a>.
 # Have I Been Pwned attribution
-email-2022-hibp-attribution = Les informations sur les fuites de données sont fournies par <a { $hibp-link-Attribute }>{ -brand-HIBP }</a>
+email-2022-hibp-attribution = Les informations sur les fuites de données sont fournies par <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
