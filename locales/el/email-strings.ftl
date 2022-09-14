@@ -128,10 +128,15 @@ email-resolve-cta = Επίλυση παραβιάσεων
 
 ## Verification email
 
+email-verify-heading = Προστατέψτε τα δεδομένα σας, ξεκινώντας από τώρα
+email-verify-subhead = Επαληθεύστε το email σας για να αρχίσετε να προστατεύετε τα δεδομένα σας μετά από παραβίαση.
+email-verify-simply-click = Κάντε απλώς κλικ στον παρακάτω σύνδεσμο για να ολοκληρώσετε την επαλήθευση του λογαριασμού σας.
 
 ## Breach report
 
 email-breach-summary = Ακολουθεί η σύνοψη παραβίασης δεδομένων σας
+email-breach-detected = Τα αποτελέσματα αναζήτησης για το { $email-address } δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
+email-no-breach-detected = Θαυμάσια νέα! Δεν βρήκαμε παραβιάσεις δεδομένων που να επηρεάζουν το email σας, { $email-address }.
 email-dashboard-cta = Μετάβαση στον πίνακα
 
 ## Breach alert
