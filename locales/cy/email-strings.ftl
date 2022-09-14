@@ -113,3 +113,19 @@ email-resolved = Tor-data a ddatryswyd:
 # table row 4 label
 email-unresolved = Tor-data heb eu datrys:
 email-resolve-cta = Datrys tor-data
+
+## Verification email
+
+email-verify-heading = Diogelwch eich data, gan ddechrau nawr
+email-verify-subhead = Dilyswch eich e-bost i ddechrau diogelu eich data ar ôl tor-data.
+email-verify-simply-click = Cliciwch ar y ddolen isod i orffen dilysu'ch cyfrif.
+
+## Breach report
+
+email-breach-summary = Dyma eich crynodeb tor-data
+email-breach-detected = Mae canlyniadau chwilio eich cyfrif { $email-address } wedi canfod y gallai eich e-bost fod wedi'i ddatgelu. Rydym yn argymell eich bod yn gweithredu nawr i ddatrys y tor-data hwn.
+email-no-breach-detected = Newyddion da! Nid ydym wedi canfod unrhyw doriadau data sy'n effeithio ar eich e-bost, { $email-address }.
+email-dashboard-cta = Mynd i'r Bwrdd Gwaith
+
+## Breach alert
+
