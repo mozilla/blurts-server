@@ -18,7 +18,7 @@ the "what" and "why" of data breach alerts.
 
 ### Requirements
 
-* [Node](https://nodejs.org/) (with npm)
+* [Node](https://nodejs.org/) (with NPM): we recommend using [Node Version Manager](https://github.com/nvm-sh/nvm) to install and manage Node/NPM.
 * [Postgres](https://www.postgresql.org/)
 
 ### Code style
@@ -96,7 +96,7 @@ To create the database tables ...
    credentials:
 
    ```
-   DATABASE_URL="postgres://<username>@localhost:<port>/blurts"
+   DATABASE_URL="postgres://<username>:<password>@localhost:<port>/blurts"
    ```
 
 3. Run the migrations:
@@ -151,6 +151,8 @@ the `OAUTH_CLIENT_SECRET` value from someone in #fxmonitor-engineering.
 ## Testing
 
 The full test suite can be run via `npm test`.  
+
+At the beginning of a test suite run, the `test-blurts` database will be populated with test tables and seed data found in `db/seeds/`
 
 At the end of a test suite run, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge.  For this step to complete locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.  Alternatively, without the token you can simply ignore the `coveralls` error.  
 
