@@ -125,3 +125,17 @@ email-resolved = Opgeloste datalekken:
 # table row 4 label
 email-unresolved = Onopgeloste datalekken:
 email-resolve-cta = Datalekken oplossen
+
+## Verification email
+
+email-verify-heading = Bescherm uw gegevens, per direct
+email-verify-subhead = Verifieer uw e-mailadres om uw gegevens te beschermen na een datalek.
+email-verify-simply-click = Klik op de onderstaande koppeling om de verificatie van uw account te voltooien.
+
+## Breach report
+
+email-breach-summary = Hier is uw samenvatting van uw datalek
+email-breach-detected = Zoekresultaten voor uw account { $email-address } hebben gedetecteerd dat uw e-mailadres mogelijk is gelekt. We raden u aan nu actie te ondernemen om dit datalek op te lossen.
+
+## Breach alert
+
