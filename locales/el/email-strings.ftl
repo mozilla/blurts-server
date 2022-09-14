@@ -125,3 +125,16 @@ email-resolved = Επιλυμένες παραβιάσεις:
 # table row 4 label
 email-unresolved = Μη επιλυμένες παραβιάσεις:
 email-resolve-cta = Επίλυση παραβιάσεων
+
+## Verification email
+
+
+## Breach report
+
+email-breach-summary = Ακολουθεί η σύνοψη παραβίασης δεδομένων σας
+email-dashboard-cta = Μετάβαση στον πίνακα
+
+## Breach alert
+
+email-may-have-been-exposed = Το email σας ενδέχεται να έχει εκτεθεί σε παραβίαση δεδομένων
+email-spotted-new-breach = Εντοπίσαμε μια νέα παραβίαση δεδομένων
