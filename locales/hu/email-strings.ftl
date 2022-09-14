@@ -125,3 +125,20 @@ email-resolved = Megoldott adatsértések:
 # table row 4 label
 email-unresolved = Meg nem oldott adatsértések:
 email-resolve-cta = Adatsértések megoldása
+
+## Verification email
+
+email-verify-heading = Védje meg az adatait, már most
+email-verify-subhead = Igazolja vissza az e-mail-címét, hogy megkezdhesse adatai védelmét az adatsértés után.
+email-verify-simply-click = Egyszerűen kattintson az alábbi hivatkozásra a fiókja ellenőrzésének befejezéséhez.
+
+## Breach report
+
+email-breach-summary = Íme az adatvédelmi incidens összefoglalója
+email-no-breach-detected = Jó hír! Nem találtunk olyan adatvédelmi incidenst, amely érintené az Ön e-mail-címét ({ $email-address }).
+email-dashboard-cta = Ugrás a vezérlőpultra
+
+## Breach alert
+
+email-may-have-been-exposed = Előfordulhat, hogy az e-mail-címe nyilvánosságra került egy adatvédelmi incidens miatt
+email-spotted-new-breach = Új adatvédelmi incidenst észleltünk

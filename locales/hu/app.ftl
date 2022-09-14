@@ -59,7 +59,7 @@ signup-modal-sent = Elküldve
 sign-up = Regisztráció
 form-signup-error = Érvényes e-mail-címnek kell lennie
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Az adatsértés dátuma:
+breach-date = Az adatvédelmi incidens dátuma:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Veszélyeztetett fiókok:
 # compromised-data = the kind of user data exposed to hackers in data breach.
@@ -68,11 +68,11 @@ unsub-headline = Leiratkozás a { -product-name-nowrap }ról
 unsub-blurb = Ez eltávolítja az e-mail-címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatsértéseket jelentenek be.
 unsub-button = Leiratkozás
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Az adatsértési adatokat a { $hibp-link } biztosítja
-share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy adatsértéskor? Tudja meg.
-share-facebook-headline = Tudja meg, hogy része volt-e adatsértésnek
-share-facebook-blurb = Kikerült-e online fiókja egy adatsértés miatt?
-og-site-description = Tudja meg, hogy része volt-e adatsértésnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+hibp-attribution = Az adatvédelmi incidensek adatait a { $hibp-link } biztosítja
+share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy adatvédelmi incidens során? Tudja meg.
+share-facebook-headline = Tudja meg, hogy része volt-e adatvédelmi incidensnek
+share-facebook-blurb = Kikerült-e online fiókja egy adatvédelmi incidens miatt?
+og-site-description = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
 show-all = Összes megjelenítése
 fxa-scan-another-email = Szeretne ellenőrizni egy másik e-mail-címet is?
 sign-in = Bejelentkezés
@@ -87,7 +87,7 @@ fxa-pwt-summary-4 =
     A jelszókezelők, mint a 1Password, a LastPass, a Dashlane és a Bitwarden tárolják a
     jelszavait, és kitöltik azokat Önnnek a weboldalakon. Még az erős jelszavak létrehozásában is segítenek.
 fxa-pwt-summary-6 =
-    Az adatsértések száma nő. Ha a személyes adatai megjelennek egy új adatsértésben,
+    Az adatvédelmi incidensek száma nő. Ha a személyes adatai megjelennek egy új adatvédelmi incidensben,
     akkor a { -product-name } figyelmeztetést küld – így lépéseket tehet, és megvédheti a fiókjait.
 fxa-what-to-do-blurb-1 =
     Ha nem tud bejelentkezni, lépjen kapcsolatba a weboldallal, és
