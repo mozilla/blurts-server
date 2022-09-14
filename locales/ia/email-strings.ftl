@@ -121,7 +121,9 @@ email-resolve-cta = Resolver violationes
 
 ## Breach report
 
+email-breach-summary = Ecce tu summario de violationes de datos
 email-dashboard-cta = Ir al quadro de controlo
 
 ## Breach alert
 
+email-may-have-been-exposed = Tu email pote haber essite exponite in un violation de datos
