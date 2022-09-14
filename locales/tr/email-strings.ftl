@@ -113,3 +113,17 @@ email-resolved = Çözülen ihlaller:
 # table row 4 label
 email-unresolved = Çözülmemiş ihlaller:
 email-resolve-cta = İhlalleri çöz
+
+## Verification email
+
+
+## Breach report
+
+email-breach-summary = İşte veri ihlali özetiniz
+email-no-breach-detected = Her şey yolunda! { $email-address } e-postanızı etkileyen hiçbir veri ihlali bulamadık.
+email-dashboard-cta = Panoya git
+
+## Breach alert
+
+email-may-have-been-exposed = E-postanız bir veri ihlali nedeniyle açığa çıkmış olabilir
+email-spotted-new-breach = Yeni bir veri ihlali tespit ettik
