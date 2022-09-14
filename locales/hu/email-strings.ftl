@@ -34,13 +34,13 @@ see-all-breaches = Az összes adatsértés megtekintése
 email-link-expires = Ez a hivatkozás 24 óra múlva lejár
 email-verify-blurb = Erősítse meg az e-mail-címét a { -product-name }hoz hozzáadáshoz, és iratkozzon fel az adatsértési figyelmeztetésekre.
 # Email headline
-email-found-breaches-hl = Íme a múltbeli adatsértéseinek összefoglalása
+email-found-breaches-hl = Íme a múltbeli adatvédelmi incidenseinek összefoglalása
 # Email headline
 email-breach-summary-for-email = A(z) { $userEmail } adatsértési összefoglalója
 # Email headline
-email-no-breaches-hl = A(z) { $userEmail } cím 0 ismert adatsértésben jelent meg
+email-no-breaches-hl = A(z) { $userEmail } cím 0 ismert adatvédelmi incidensben jelent meg
 # Email headline
-email-alert-hl = A(z) { $userEmail } cím egy adatsértésben jelent meg
+email-alert-hl = A(z) { $userEmail } cím egy adatvédelmi incidensben jelent meg
 # Subject line of email
 email-subject-found-breaches = A { -product-name } ezekben az adatsértésekben találta meg az információit
 # Subject line of email
@@ -53,14 +53,14 @@ email-sensitive-disclaimer =
     Az adatsértés érzékeny jellege miatt, az érintett e-mail-címek nem nyilvánosak.
     Azért kapja ezt a figyelmeztetést, mert megerősítette, hogy Ön az e-mail-cím tulajdonosa.
 fxm-warns-you-no-breaches =
-    A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
-    Eddig egyetlen adatsértés sem található. Figyelmeztetést küldünk Önnek, ha az e-mail-címe új adatsértésben jelenik meg.
+    A { -product-name } figyelmezteti az Ön személyes információit érintő adatvédelmi incidensekről.
+    Eddig egyetlen adatvédelmi incidens sem található. Figyelmeztetést küldünk Önnek, ha az e-mail-címe új adatvédelmi incidensben jelenik meg.
 fxm-warns-you-found-breaches =
-    A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
-    Arra is feliratkozott, hogy figyelmeztetést kapjon, ha az e-mail-címe új adatsértésben jelenik meg.
+    A { -product-name } figyelmezteti az Ön személyes információit érintő adatvédelmi incidensekről.
+    Arra is feliratkozott, hogy figyelmeztetést kapjon, ha az e-mail-címe új adatvédelmi incidensben jelenik meg.
 email-breach-alert-blurb =
-    A { -product-name } figyelmezteti az Ön személyes információit érintő adatsértésekről.
-    Épp most kaptunk részleteket egy másik céget érintő adatsértésről.
+    A { -product-name } figyelmezteti az Ön személyes információit érintő adatvédelmi incidensekről.
+    Épp most kaptunk részleteket egy másik céget érintő adatvédelmi incidensről.
 # List headline
 faq-list-headline = Gyakran ismételt kérdések
 # Link Title
@@ -68,7 +68,7 @@ faq-v2-1 = Nem ismerem ezeket a cégeket vagy weboldalakat? Miért szerepelek eb
 # Link Title
 faq-v2-2 = Kell-e valamit tennem, ha ez az adatsértés évekkel ezelőtt történt vagy egy régi fiókomat érinti?
 # Link Title
-faq-v2-3 = Észrevettem, hogy szereplek egy adatsértésben. Mit legyen a következő lépésem?
+faq-v2-3 = Észrevettem, hogy szereplek egy adatvédelmi incidensben. Mit legyen a következő lépésem?
 # Link Title
 faq-v2-4 = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
 # This string contains nested markup that becomes a link to Firefox Monitor
@@ -81,19 +81,19 @@ pre-fxa-subject = Frissítés a { -product-name }tól
 pre-fxa-headline = Mi változik a { -product-name }ban
 pre-fxa-blurb =
     Ezek változtak, mióta feliratkozott a { -product-name }ra, a szolgáltatásra, amely 
-    az ismert adatsértéseket figyeli az Ön személyes adatait keresve. Ezt összekötjük a Firefox fiókokkal.
+    az ismert adatvédelmi incidenseket figyeli az Ön személyes adatait keresve. Ezt összekötjük a Firefox fiókokkal.
 pre-fxa-tout-1 = Figyeljen a további adatsértésekre
 pre-fxa-p-1 =
     <a>Hozzon létre egy fiókot</a>, amellyel akár 15 e-mail-címet figyelhet meg, 
-    adatsértést keresve. Javasoljuk, hogy minden olyan e-mail-címet adjon hozzá, amelyet online fiókok létrehozásához használt.
+    adatvédelmi incidenst keresve. Javasoljuk, hogy minden olyan e-mail-címet adjon hozzá, amelyet online fiókok létrehozásához használt.
 pre-fxa-tout-2 = Vezérlőpult nézet beszerzése
 pre-fxa-p-2 =
-    Tekintse meg az összes adatsértést egy helyen, hogy tudja, mely jelszavakat kell megváltoztatnia. 
-    Az adatsértés vezérlőpult csak akkor érhető el, ha rendelkezik fiókkal.
+    Tekintse meg az összes adatvédelmi incidenst egy helyen, hogy tudja, mely jelszavakat kell megváltoztatnia. 
+    Az adatvédelmi incidensek vezérlőpultja csak akkor érhető el, ha rendelkezik fiókkal.
 pre-fxa-tout-3 = E-mail értesítések fenntartása
 pre-fxa-p-3 =
     A { -product-name }tól továbbra is kap értesítéseket. Értesíteni fogjuk, ha az Ön adatai 
-    új adatsértésben jelentek meg.
+    új adatvédelmi incidensben jelentek meg.
 # Button at the bottom of pre-fxa email.
 create-account = Fiók létrehozása
 # More security products
@@ -107,14 +107,14 @@ more-products-cta-relay = { -product-name-relay } beszerzése
 
 email-2022-unsubscribe = Ezt az automatikus e-mailt a { -product-name } feliratkozójaként kapja. <br>Bármikor módosíthatja az e-mail-beállításait <a { $unsubscribe-link-attr }>itt</a>.
 # Have I Been Pwned attribution
-email-2022-hibp-attribution = Az adatsértési adatokat a <a { $hibp-link-attr }>{ -brand-HIBP }</a> szolgáltatta
+email-2022-hibp-attribution = Az adatvédelmi incidensek adatait a <a { $hibp-link-attr }>{ -brand-HIBP }</a> szolgáltatta
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Meg nem oldott adatsértései vannak
 email-unresolved-subhead = Kikerült az Ön e-mail-címe. <br>Javítsa azonnal a { -product-name } segítségével.
 email-is-affected = Az Ön ({ $email-address }) e-mail-címét legalább egy adatvédelmi incidens érintette
-email-more-detail = Jelentkezzen be most a { -product-name } szolgáltatásba, hogy további részleteket tudjon meg az adatsértésekről (beleértve, hogy mikor történtek és milyen adatok kerültek nyilvánosságra), és hogy megtudja, mit kell tennie, ha az e-mail-címe adatvédelmi incidens miatt került nyilvánosságra.
+email-more-detail = Jelentkezzen be most a { -product-name } szolgáltatásba, hogy további részleteket tudjon meg az adatvédelmi incidensekről (beleértve, hogy mikor történtek és milyen adatok kerültek nyilvánosságra), és hogy megtudja, mit kell tennie, ha az e-mail-címe adatvédelmi incidens miatt került nyilvánosságra.
 email-breach-status = Az adatsértés jelenlegi állapota
 # table row 1 label
 email-monitored = Összes megfigyelt e-mail-cím:
@@ -129,7 +129,7 @@ email-resolve-cta = Adatsértések megoldása
 ## Verification email
 
 email-verify-heading = Védje meg az adatait, már most
-email-verify-subhead = Igazolja vissza az e-mail-címét, hogy megkezdhesse adatai védelmét az adatsértés után.
+email-verify-subhead = Igazolja vissza az e-mail-címét, hogy megkezdhesse adatai védelmét az adatvédelmi incidens után.
 email-verify-simply-click = Egyszerűen kattintson az alábbi hivatkozásra a fiókja ellenőrzésének befejezéséhez.
 
 ## Breach report
