@@ -121,3 +121,19 @@ email-resolved = Filtraciones resueltas:
 # table row 4 label
 email-unresolved = Filtraciones sin resolver:
 email-resolve-cta = Resolver filtraciones:
+
+## Verification email
+
+email-verify-heading = Protege tus datos, comenzando ahora mismo
+email-verify-subhead = Verifica tu correo electrónico para comenzar a proteger tus datos después de una infracción.
+email-verify-simply-click = Simplemente haz clic en el siguiente enlace para terminar de verificar tu cuenta.
+
+## Breach report
+
+email-no-breach-detected = ¡Grandiosas noticias! No hemos encontrado filtraciones de datos que afecten tu correo electrónico, { $email-address }.
+email-dashboard-cta = Ir al panel de control
+
+## Breach alert
+
+email-may-have-been-exposed = Tu correo electrónico puede haber estado expuesto en una filtración de datos
+email-spotted-new-breach = Hemos detectado una nueva filtración de datos
