@@ -136,6 +136,10 @@ email-verify-simply-click = Klik op de onderstaande koppeling om de verificatie 
 
 email-breach-summary = Hier is uw samenvatting van uw datalek
 email-breach-detected = Zoekresultaten voor uw account { $email-address } hebben gedetecteerd dat uw e-mailadres mogelijk is gelekt. We raden u aan nu actie te ondernemen om dit datalek op te lossen.
+email-no-breach-detected = Geweldig nieuws! We hebben geen datalekken gevonden die van invloed zijn op uw e-mailadres, { $email-address }.
+email-dashboard-cta = Naar het dashboard
 
 ## Breach alert
 
+email-may-have-been-exposed = Uw e-mailadres is mogelijk gelekt bij een datalek
+email-spotted-new-breach = We hebben een nieuw datalek ontdekt
