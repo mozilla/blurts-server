@@ -108,10 +108,18 @@ email-resolve-cta = 處理此事件
 
 ## Verification email
 
+email-verify-heading = 從現在起保護您的資料
+email-verify-subhead = 確認您的 E-Mail 即可在發生資料外洩事件後保護您的資料。
+email-verify-simply-click = 只要點擊下列鏈結，即可完成帳號確認。
 
 ## Breach report
 
+email-breach-summary = 以下是您的資料外洩情況摘要
+email-breach-detected = 我們偵測到您的 { $email-address } 帳號可能已遭到洩露。建議您立即採取行動，處理此資料外洩事件。
+email-no-breach-detected = 好消息！我們並未找到任何與您的信箱 { $email-address } 有關的資料外洩事件。
 email-dashboard-cta = 前往儀錶板
 
 ## Breach alert
 
+email-may-have-been-exposed = 您的信箱可能已於資料外洩事件中遭到暴露
+email-spotted-new-breach = 我們發現新的資料外洩事件
