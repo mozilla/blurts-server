@@ -129,3 +129,5 @@ email-dashboard-cta = Mynd i'r Bwrdd Gwaith
 
 ## Breach alert
 
+email-may-have-been-exposed = Mae'n bosibl bod eich e-bost wedi'i ddatgelu mewn tor-data
+email-spotted-new-breach = Rydym wedi gweld tor-data newydd
