@@ -115,3 +115,13 @@ email-resolved = Violationes resolvite:
 # table row 4 label
 email-unresolved = Violationes non resolvite:
 email-resolve-cta = Resolver violationes
+
+## Verification email
+
+
+## Breach report
+
+email-dashboard-cta = Ir al quadro de controlo
+
+## Breach alert
+
