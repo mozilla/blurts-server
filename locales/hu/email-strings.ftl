@@ -135,6 +135,7 @@ email-verify-simply-click = Egyszerűen kattintson az alábbi hivatkozásra a fi
 ## Breach report
 
 email-breach-summary = Íme az adatvédelmi incidens összefoglalója
+email-breach-detected = Az Ön { $email-address } fiókjához tartozó keresési találatok azt észlelték, hogy e-mail-címe nyilvánosságra került. Javasoljuk, hogy azonnal intézkedjen az adatvédelmi incidens megszüntetése érdekében.
 email-no-breach-detected = Jó hír! Nem találtunk olyan adatvédelmi incidenst, amely érintené az Ön e-mail-címét ({ $email-address }).
 email-dashboard-cta = Ugrás a vezérlőpultra
 
