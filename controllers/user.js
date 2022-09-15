@@ -52,13 +52,15 @@ async function resendEmail (req, res) {
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat('email-subject-verify'),
-    'default_email',
+    'email-2022',
     {
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, 'account-verification-email'),
-      whichPartial: 'email_partials/email_verify'
+      whichPartial: 'email_partials/email_verify',
+      heading: req.fluentFormat('email-verify-heading'),
+      subheading: req.fluentFormat('email-verify-subhead')
     }
   )
 
@@ -120,14 +122,16 @@ async function add (req, res) {
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat('email-subject-verify'),
-    'default_email',
+    'email-2022',
     {
       breachedEmail: email,
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, 'account-verification-email'),
-      whichPartial: 'email_partials/email_verify'
+      whichPartial: 'email_partials/email_verify',
+      heading: req.fluentFormat('email-verify-heading'),
+      subheading: req.fluentFormat('email-verify-subhead')
     }
   )
 
@@ -268,20 +272,21 @@ async function _verify (req) {
   )
 
   const utmID = 'report'
-  const emailSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req)
+  const reportSubject = unsafeBreachesForEmail.length ? req.fluentFormat('email-subject-found-breaches') : req.fluentFormat('email-subject-no-breaches')
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
-    emailSubject,
-    'default_email',
+    reportSubject,
+    'email-2022',
     {
       breachedEmail: verifiedEmailHash.email,
       recipientEmail: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail,
-      ctaHref: EmailUtils.getEmailCtaHref(utmID, 'go-to-dashboard-link'),
+      ctaHref: EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta'),
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
-      whichPartial: 'email_partials/report'
+      whichPartial: 'email_partials/report',
+      heading: req.fluentFormat('email-breach-summary')
     }
   )
 }

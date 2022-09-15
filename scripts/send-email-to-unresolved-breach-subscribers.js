@@ -35,9 +35,12 @@ async function sendUnresolvedBreachEmails (subscribers = null, limit = 0) {
         {
           whichPartial: 'email_partials/email-monthly-unresolved',
           supportedLocales,
-          primaryEmail: subscriber.primary_email,
           breachStats: subscriber.breach_stats,
-          unsubscribeUrl
+          unsubscribeUrl,
+          heading: LocaleUtils('email-unresolved-heading'),
+          subheading: LocaleUtils('email-unresolved-subhead'),
+          breachedEmail: subscriber.primary_email,
+          ctaHref: EmailUtils.getEmailCtaHref('email-monthly-unresolved', 'dashboard-cta')
         }
       )
       count++

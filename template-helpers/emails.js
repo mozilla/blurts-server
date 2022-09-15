@@ -5,7 +5,7 @@ const { URL } = require('url')
 const { LocaleUtils } = require('./../locale-utils')
 
 const { makeBreachCards } = require('./breaches')
-const { prettyDate, vpnPromoBlocked } = require('./hbs-helpers')
+const { prettyDate } = require('./hbs-helpers')
 
 function emailBreachStats (args) {
   const locales = args.data.root.supportedLocales
@@ -186,41 +186,8 @@ function getBreachAlert (args) {
   return args.fn(breachAlertCard[0])
 }
 
-// Show FAQs if the email type is a report with breaches, or a breach alert.
-function showFaqs (args) {
-  if (args.data.root.whichPartial === 'email_partials/email_verify') {
-    return
-  }
-
-  if (args.data.root.breachAlert || (args.data.root.unsafeBreachesForEmail && args.data.root.unsafeBreachesForEmail.length > 0)) {
-    return args.fn()
-  }
-}
-
-function ifPreFxaSubscriber (args) {
-  if (args.data.root.preFxaSubscriber) {
-    return args.fn()
-  }
-}
-
 function getServerUrlForNestedEmailPartial (args) {
   return args.data.root.SERVER_URL
-}
-
-function showProducts (args) {
-  const { whichPartial, breachAlert } = args.data.root
-
-  switch (true) {
-    case whichPartial === 'email_partials/email_verify':
-    case vpnPromoBlocked(args):
-      return // don't show products partial for the cases above
-  }
-
-  return args.fn({
-    strings: {
-      campaign: breachAlert ? `monitor-alert-emails&utm_content=${breachAlert.Name}` : 'report'
-    }
-  })
 }
 
 module.exports = {
@@ -233,8 +200,5 @@ module.exports = {
   getEmailCTA,
   getReportHeader,
   getServerUrlForNestedEmailPartial,
-  getUnsafeBreachesForEmailReport,
-  ifPreFxaSubscriber,
-  showFaqs,
-  showProducts
+  getUnsafeBreachesForEmailReport
 }

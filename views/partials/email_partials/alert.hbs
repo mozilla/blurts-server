@@ -1,37 +1,13 @@
 <tr>
   <td style="color: black; background: #F9F9FA; padding: 36px 0 24px;">
     <p>
-      {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
-      {{ getString "fxm-warns-you-no-breaches" }}
-      {{else}}
       {{{ getString "email-breach-detected" email-address=( concat "<strong>" breachedEmail "</strong>" ) }}}
-      {{/ifCompare}}
     </p>
-    <table style="max-width: 600px; margin: auto;">
-      <tr>
-        <td>
-          <!-- gray breach summary cards -->
-          {{#each (emailBreachStats)}}
-          <table
-            style="background: #eee; border-radius: 6px; margin: 12px auto; padding: 12px; width: 100%; table-layout: auto;">
-            <tr>
-              <td style="width: 72px; font-size: 48px; font-weight: bold;">
-                {{ statNumber }}
-              </td>
-              <td style="text-align: left;">
-                {{ statTitle }}
-              </td>
-              </tr>
-              </table>
-          {{/each}}
-        </td>
-      </tr>
-    </table>
     <table style="margin: auto">
       <tr>
         <td>
           <!-- breach cards -->
-          {{#each (getUnsafeBreachesForEmailReport)}}
+          {{#getBreachAlert}}
           <table
             style="width: 30%; min-width: 240px; border-radius: 6px; border: 1px solid #eee; box-shadow: 0 0 6px #ddd; background: white; margin: 12px; display: inline-table; border-spacing: 0;">
             <tr>
@@ -57,16 +33,16 @@
                   }}</span>
                 {{/if}}
               </td>
-              </tr>
+            </tr>
           </table>
-          {{/each}}
+          {{/getBreachAlert}}
 
         </td>
-        </tr>
+      </tr>
     </table>
 
     <a href="{{ ctaHref }}"
       style="display: inline-block; margin: auto; color: white; background-color: #0060DF; border-radius: 4px; padding: 12px 24px; margin: 24px 0">{{
       getString "email-dashboard-cta" }}</a>
-    </td>
-    </tr>
+  </td>
+</tr>
