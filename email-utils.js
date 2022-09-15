@@ -17,7 +17,7 @@ const hbsOptions = {
   viewEngine: {
     extname: '.hbs',
     layoutsDir: path.join(__dirname, '/views/layouts'),
-    defaultLayout: 'default_email',
+    defaultLayout: 'email-2022',
     partialsDir: path.join(__dirname, '/views/partials'),
     helpers: HBSHelpers.helpers
   },

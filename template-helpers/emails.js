@@ -147,7 +147,7 @@ function getEmailFooterCopy (args) {
   let faqLink = LocaleUtils.fluentFormat(locales, 'frequently-asked-questions')
   faqLink = `<a href="https://support.mozilla.org/kb/firefox-monitor-faq">${faqLink}</a>`
 
-  if (args.data.root.whichPartial === 'email_partials/email_verify') {
+  if (!(args.data.root.whichPartial === 'email_partials/email-monthly-unresolved')) {
     return LocaleUtils.fluentFormat(locales, 'email-verify-footer-copy', { faqLink })
   }
 
