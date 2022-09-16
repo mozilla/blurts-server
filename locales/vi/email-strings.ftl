@@ -125,3 +125,21 @@ email-resolved = Rò rỉ dữ liệu đã giải quyết:
 # table row 4 label
 email-unresolved = Rò rỉ dữ liệu chưa được giải quyết:
 email-resolve-cta = Giải quyết rò rỉ dữ liệu
+
+## Verification email
+
+email-verify-heading = Bảo vệ dữ liệu của bạn, bắt đầu ngay bây giờ
+email-verify-subhead = Xác minh email của bạn để bắt đầu bảo vệ dữ liệu của bạn sau một vụ rò rỉ.
+email-verify-simply-click = Chỉ cần nhấp vào liên kết bên dưới để hoàn tất việc xác minh tài khoản của bạn.
+
+## Breach report
+
+email-breach-summary = Đây là tóm tắt về rò rỉ dữ liệu của bạn
+email-breach-detected = Kết quả tìm kiếm cho tài khoản { $email-address } của bạn đã phát hiện ra rằng email của bạn có thể đã bị lộ. Chúng tôi khuyên bạn nên hành động ngay bây giờ để giải quyết rò rỉ này.
+email-no-breach-detected = Tin tốt! Chúng tôi không tìm thấy vụ rò rỉ dữ liệu nào ảnh hưởng đến email của bạn, { $email-address }.
+email-dashboard-cta = Đi đến bảng điều khiển
+
+## Breach alert
+
+email-may-have-been-exposed = Email của bạn có thể đã bị lộ trong một vụ rò rỉ dữ liệu
+email-spotted-new-breach = Chúng tôi đã phát hiện một lỗ hổng dữ liệu mới
