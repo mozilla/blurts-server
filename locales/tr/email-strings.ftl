@@ -116,6 +116,9 @@ email-resolve-cta = İhlalleri çöz
 
 ## Verification email
 
+email-verify-heading = Verilerinizi korumaya hemen şimdi başlayın
+email-verify-subhead = Veri ihlallerinin ardından verilerinizi korumaya başlamak için e-postanızı doğrulayın.
+email-verify-simply-click = Hesabınızı doğrulamak için aşağıdaki bağlantıya tıklamanız yeterli.
 
 ## Breach report
 
