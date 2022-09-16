@@ -123,6 +123,7 @@ email-verify-simply-click = Hesabınızı doğrulamak için aşağıdaki bağlan
 ## Breach report
 
 email-breach-summary = İşte veri ihlali özetiniz
+email-breach-detected = { $email-address } hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
 email-no-breach-detected = Her şey yolunda! { $email-address } e-postanızı etkileyen hiçbir veri ihlali bulamadık.
 email-dashboard-cta = Panoya git
 
