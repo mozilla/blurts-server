@@ -130,6 +130,8 @@ email-verify-simply-click = Simplemente haz clic en el siguiente enlace para ter
 
 ## Breach report
 
+email-breach-summary = Aquí está el resumen de tu filtración de datos
+email-breach-detected = Los resultados de búsqueda de tu cuenta { $email-address } han detectado que tu correo electrónico puede haber sido expuesto. Te recomendamos que actúes ahora para resolver esta violación.
 email-no-breach-detected = ¡Grandiosas noticias! No hemos encontrado filtraciones de datos que afecten tu correo electrónico, { $email-address }.
 email-dashboard-cta = Ir al panel de control
 
