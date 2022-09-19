@@ -115,7 +115,11 @@ email-verify-simply-click = Fai clic sul link sottostante per completare il proc
 ## Breach report
 
 email-breach-summary = Sommario delle violazioni dati che hanno coinvolto il tuo account
+email-breach-detected = I risultati della ricerca per il tuo account { $email-address } indicano che il tuo indirizzo email potrebbe essere stato esposto. Ti consigliamo di agire ora per risolvere questa violazione.
+email-no-breach-detected = Buone notizie! Non abbiamo trovato alcuna violazione di dati che include il tuo indirizzo email, { $email-address }.
 email-dashboard-cta = Vai al pannello utente
 
 ## Breach alert
 
+email-may-have-been-exposed = Il tuo indirizzo email potrebbe essere stato esposto in una violazione di dati
+email-spotted-new-breach = Abbiamo individuato una nuova violazione di dati
