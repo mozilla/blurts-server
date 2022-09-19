@@ -200,13 +200,6 @@ test('removeEmail accepts email and removes from email_addresses table', async (
   expect(noMoreEmailAddress).toBeUndefined()
 })
 
-test('getPreFxaSubscribersPage returns subscribers without an FxA ID', async () => {
-  const subscribersPageResult = await DB.getPreFxaSubscribersPage({ perPage: 10, isLengthAware: true })
-  expect(subscribersPageResult.data.length).toEqual(3)
-  const expectedPagination = {"currentPage": 1, "from": 0, "lastPage": 1, "perPage": 10, "to": 3, "total": 3}
-  expect(subscribersPageResult.pagination).toEqual(expectedPagination)
-})
-
 test('getSubscribersWithUnresolvedBreaches returns subscribers', async () => {
   const subscribersResult = await DB.getSubscribersWithUnresolvedBreaches();
   expect(subscribersResult.length).toEqual(1)

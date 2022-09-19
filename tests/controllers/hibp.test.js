@@ -53,7 +53,7 @@ async function checkNotifyCallsEverythingItShould (breachedEmail, recipientEmail
   await hibp.notify(mockRequest, mockResponse)
 
   const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls
-  expect(mockFluentFormatCalls.length).toBe(1)
+  expect(mockFluentFormatCalls.length).toBe(2)
   const mockFluentFormatCallArgs = mockFluentFormatCalls[0]
   expect(mockFluentFormatCallArgs[0]).toEqual(['en'])
   expect(mockFluentFormatCallArgs[1]).toBe('breach-alert-subject')
@@ -62,7 +62,7 @@ async function checkNotifyCallsEverythingItShould (breachedEmail, recipientEmail
   expect(mockSendEmailCalls.length).toBe(1)
   const mockSendEmailCallArgs = mockSendEmailCalls[0]
   expect(mockSendEmailCallArgs[0]).toBe(recipientEmail)
-  expect(mockSendEmailCallArgs[2]).toBe('default_email')
+  expect(mockSendEmailCallArgs[2]).toBe('email-2022')
   const mockStatusCallArgs = mockResponse.status.mock.calls[0]
   expect(mockStatusCallArgs[0]).toBe(200)
   const mockJsonCallArgs = mockResponse.json.mock.calls[0]
@@ -125,7 +125,7 @@ test('notify POST for subscriber with no signup_language should default to en', 
   expect(mockSendEmailCalls.length).toBe(1)
   const mockSendEmailCallArgs = mockSendEmailCalls[0]
   expect(mockSendEmailCallArgs[0]).toBe(testEmail)
-  expect(mockSendEmailCallArgs[2]).toBe('default_email')
+  expect(mockSendEmailCallArgs[2]).toBe('email-2022')
   const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls
   const mockFluentFormatCallArgs = mockFluentFormatCalls[0]
   expect(mockFluentFormatCallArgs[0]).toEqual(['en'])
