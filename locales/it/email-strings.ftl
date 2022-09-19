@@ -105,3 +105,17 @@ email-resolved = Violazioni risolte:
 # table row 4 label
 email-unresolved = Violazioni non risolte:
 email-resolve-cta = Risolvi violazioni
+
+## Verification email
+
+email-verify-heading = Proteggi i tuoi dati, a partire da adesso
+email-verify-subhead = Verifica il tuo indirizzo email per iniziare a proteggere i tuoi dati dopo una violazione.
+email-verify-simply-click = Fai clic sul link sottostante per completare il processo di verifica del tuo account.
+
+## Breach report
+
+email-breach-summary = Sommario delle violazioni dati che hanno coinvolto il tuo account
+email-dashboard-cta = Vai al pannello utente
+
+## Breach alert
+
