@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -555,7 +558,7 @@ return-to-breach-details-link = Späť na podrobnosti o úniku
 go-to-dashboard-link = Prejsť na nástenku
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
-progress-percent-complete = Hotovo na { $percentComplete } %
+progress-percent-complete = Dokončené na { $percentComplete } %
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
 num-resolved =
