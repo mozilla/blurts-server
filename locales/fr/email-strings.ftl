@@ -122,10 +122,18 @@ email-resolve-cta = Régler vos fuites de données
 
 ## Verification email
 
+email-verify-heading = Protégez vos données dès maintenant
+email-verify-subhead = Vérifiez votre adresse électronique pour commencer à protéger vos données après une fuite de données.
+email-verify-simply-click = Cliquez simplement sur le lien ci-dessous pour terminer la vérification de votre compte.
 
 ## Breach report
 
+email-breach-summary = Voici le résumé de vos fuites de données
+email-breach-detected = Les résultats de la recherche pour votre compte { $email-address } indiquent que votre adresse e-mail a peut-être été divulguée. Nous vous recommandons d’agir maintenant pour résoudre cette fuite de données.
+email-no-breach-detected = Bonne nouvelle ! Nous n’avons trouvé aucune fuite de données concernant votre adresse e-mail, { $email-address }.
 email-dashboard-cta = Accéder au tableau de bord
 
 ## Breach alert
 
+email-may-have-been-exposed = Votre adresse e-mail figure peut-être dans une fuite de données
+email-spotted-new-breach = Nous avons détecté une nouvelle fuite de données
