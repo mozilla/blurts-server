@@ -107,6 +107,7 @@ email-resolve-cta = 处理此事件
 ## Verification email
 
 email-verify-heading = 立即行动，保护您的个人数据
+email-verify-simply-click = 请尽快点击下方链接，完成账户验证。
 
 ## Breach report
 
