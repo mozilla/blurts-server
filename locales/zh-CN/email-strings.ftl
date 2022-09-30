@@ -103,3 +103,15 @@ email-resolved = 已处理的事件：
 # table row 4 label
 email-unresolved = 未处理的事件：
 email-resolve-cta = 处理此事件
+
+## Verification email
+
+email-verify-heading = 立即行动，保护您的个人数据
+
+## Breach report
+
+email-dashboard-cta = 前往面板
+
+## Breach alert
+
+email-spotted-new-breach = 我们发现新的数据外泄事件
