@@ -1,7 +1,5 @@
 'use strict'
 
-const { URL } = require('url')
-
 const { LocaleUtils } = require('./../locale-utils')
 
 const { makeBreachCards } = require('./breaches')
@@ -78,52 +76,6 @@ function getEmailHeader (args) {
   return LocaleUtils.fluentFormat(locales, 'email-found-breaches-hl')
 }
 
-function makeFaqLink (target, campaign) {
-  const url = new URL(`https://support.mozilla.org/kb/firefox-monitor-faq${target}`)
-  const utmParameters = {
-    utm_source: 'fx-monitor',
-    utm_medium: 'email',
-    utm_campaign: campaign
-  }
-
-  for (const param in utmParameters) {
-    url.searchParams.append(param, utmParameters[param])
-  }
-  return url
-}
-
-function getBreachAlertFaqs (args) {
-  const supportedLocales = args.data.root.supportedLocales
-  const faqs = [
-    {
-      linkTitle: LocaleUtils.fluentFormat(supportedLocales, 'faq-v2-1', args),
-      stringDescription: 'I don’t recognize one of these companies or websites. Why am I in this breach?',
-      href: makeFaqLink('#w_i-donaot-recognize-this-company-or-website-why-am-i-receiving-notifications-about-this-breach', 'faq1')
-    },
-    {
-      linkTitle: LocaleUtils.fluentFormat(supportedLocales, 'faq-v2-2', args),
-      stringDescription: 'Do I need to do anything if a breach happened years ago or this is an old account?',
-      href: makeFaqLink('#w_do-i-need-to-do-anything-if-a-breach-happened-years-ago-or-in-an-old-account', 'faq2')
-    },
-    {
-      linkTitle: LocaleUtils.fluentFormat(supportedLocales, 'faq-v2-3', args),
-      stringDescription: 'I just found out I’m in a data breach. What do I do next?',
-      href: makeFaqLink('#w_i-just-found-out-im-in-a-data-breach-what-do-i-do-next', 'faq3')
-    }
-  ]
-
-  if (args.data.root.breachAlert && args.data.root.breachAlert.IsSensitive) {
-    faqs.push({
-      linkTitle: LocaleUtils.fluentFormat(supportedLocales, 'faq-v2-4', args),
-      stringDescription: 'How does Firefox Monitor treat sensitive sites?',
-      href: makeFaqLink('#w_how-does-firefox-monitor-treat-sensitive-sites', 'faq4')
-    })
-  }
-
-  const functionedFaqs = faqs.map(faq => args.fn(faq))
-  return ''.concat(...functionedFaqs)
-}
-
 function getReportHeader (args) {
   const locales = args.data.root.supportedLocales
   const reportHeader = {
@@ -193,7 +145,6 @@ function getServerUrlForNestedEmailPartial (args) {
 module.exports = {
   emailBreachStats,
   getBreachAlert,
-  getBreachAlertFaqs,
   getBreachSummaryHeadline,
   getEmailHeader,
   getEmailFooterCopy,
