@@ -107,6 +107,7 @@ async function notify (req, res) {
           SERVER_URL: AppConstants.SERVER_URL,
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
           ctaHref,
+          utmCampaign: utmID,
           whichPartial: 'email_partials/alert',
           heading
         }

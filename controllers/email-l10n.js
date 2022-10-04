@@ -34,6 +34,7 @@ async function getEmailMockup (req, res) {
   const emailStr = await readFile(path.resolve('views/layouts/email-2022.hbs'), { encoding: 'utf-8' })
   const emailStyle = emailStr.substring(emailStr.indexOf('<style>'), emailStr.indexOf('</style>') + 8)
   const { unsafeBreachesForEmail, emailSubject, breachAlert, unsubscribeUrl, heading, subheading } = getPartialData(req.query.type, req.app.locals.breaches)
+  const utmCampaign = req.query.type
 
   res.render('email_l10n', {
     layout: 'email_l10n_mockups.hbs',
@@ -46,7 +47,8 @@ async function getEmailMockup (req, res) {
     emailSubject: req.fluentFormat(emailSubject),
     heading: req.fluentFormat(heading),
     subheading: req.fluentFormat(subheading),
-    ctaHref: EmailUtils.getEmailCtaHref(req.query.type, 'dashboard-cta'),
+    ctaHref: EmailUtils.getEmailCtaHref(utmCampaign, 'dashboard-cta'),
+    utmCampaign,
     emailStyle,
     unsubscribeUrl,
     csrfToken: req.csrfToken(),
@@ -101,6 +103,7 @@ async function sendTestEmail (req, res) {
   const supportedLocales = req.supportedLocales
 
   const unsubscribeUrl = EmailUtils.getMonthlyUnsubscribeUrl(req.user, 'monthly-unresolved', 'unsubscribe-cta')
+  const utmCampaign = req.body.partialType
   const context = {
     whichPartial: req.body.whichPartial,
     supportedLocales,
@@ -111,7 +114,8 @@ async function sendTestEmail (req, res) {
     breachAlert,
     breachStats: req.user.breach_stats,
     unsubscribeUrl,
-    ctaHref: EmailUtils.getEmailCtaHref(req.body.partialType, 'dashboard-cta')
+    ctaHref: EmailUtils.getEmailCtaHref(utmCampaign, 'dashboard-cta'),
+    utmCampaign
   }
 
   console.log(context)

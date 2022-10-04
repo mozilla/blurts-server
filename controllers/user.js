@@ -57,6 +57,7 @@ async function resendEmail (req, res) {
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
+      utmCampaign: 'email_verify',
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, 'account-verification-email'),
       whichPartial: 'email_partials/email_verify',
       heading: req.fluentFormat('email-verify-heading'),
@@ -128,6 +129,7 @@ async function add (req, res) {
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
+      utmCampaign: 'email_verify',
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, 'account-verification-email'),
       whichPartial: 'email_partials/email_verify',
       heading: req.fluentFormat('email-verify-heading'),
@@ -284,6 +286,7 @@ async function _verify (req) {
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail,
       ctaHref: EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta'),
+      utmCampaign: utmID,
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
       whichPartial: 'email_partials/report',
       heading: req.fluentFormat('email-breach-summary')

@@ -92,6 +92,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail,
         ctaHref: EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta'),
+        utmCampaign: utmID,
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
         whichPartial: 'email_partials/report',
         heading: req.fluentFormat('email-breach-summary')
