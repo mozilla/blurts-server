@@ -1,7 +1,7 @@
 'use strict'
 
 /**
- * An one-off script for firefox remote settings integration
+ * One-off script for firefox remote settings integration
  * Periodically, this script should be ran by an admin to
  * update the data source for about:protections page
  */
