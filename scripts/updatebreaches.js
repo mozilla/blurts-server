@@ -1,9 +1,9 @@
 'use strict'
 
 /**
- * One-off script for firefox remote settings integration
- * Periodically, this script should be ran by an admin to
- * update the data source for about:protections page
+ * Cron: Daily
+ * From all the HIBP breaches, we parse out the new breaches that are not already present
+ * in firefox remote settings, and update the data source accordingly
  */
 const AppConstants = require('../app-constants')
 const HIBP = require('../hibp')

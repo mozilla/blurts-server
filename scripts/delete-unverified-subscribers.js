@@ -3,7 +3,8 @@
 const DB = require('../db/DB');
 
 /**
- * A cron job that runs nightly to delete any records not verified within 24 hrs
+ * Cron: Hourly
+ * Delete any records of subscribers not verified within 24 hrs
  */
 (async () => {
   await DB.deleteUnverifiedSubscribers()
