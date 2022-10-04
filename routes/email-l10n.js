@@ -13,6 +13,7 @@ const cspUnsafeInline = {
     scriptSrc: ["'self'"],
     styleSrc: ["'self'", "'unsafe-inline'"],
     imgSrc: ["'self'", 'https://monitor.cdn.mozilla.net/'],
+    objectSrc: ["'none'"],
     formAction: ["'self'"]
   }
 }
