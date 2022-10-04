@@ -118,8 +118,6 @@ async function sendTestEmail (req, res) {
     utmCampaign
   }
 
-  console.log(context)
-
   await EmailUtils.sendEmail(req.body.recipientEmail, req.fluentFormat(emailSubject), 'email-2022', context)
 
   res.send(`
