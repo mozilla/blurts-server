@@ -54,9 +54,10 @@ async function checkNotifyCallsEverythingItShould (breachedEmail, recipientEmail
 
   const mockFluentFormatCalls = LocaleUtils.fluentFormat.mock.calls
   expect(mockFluentFormatCalls.length).toBe(2)
-  const mockFluentFormatCallArgs = mockFluentFormatCalls[0]
-  expect(mockFluentFormatCallArgs[0]).toEqual(['en'])
-  expect(mockFluentFormatCallArgs[1]).toBe('breach-alert-subject')
+  expect(mockFluentFormatCalls[0][0]).toEqual(['en'])
+  expect(mockFluentFormatCalls[0][1]).toBe('breach-alert-subject')
+  expect(mockFluentFormatCalls[1][0]).toEqual(['en'])
+  expect(mockFluentFormatCalls[1][1]).toBe('email-spotted-new-breach')
 
   const mockSendEmailCalls = EmailUtils.sendEmail.mock.calls
   expect(mockSendEmailCalls.length).toBe(1)
