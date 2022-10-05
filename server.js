@@ -55,13 +55,13 @@ const BreachRoutes = require('./routes/breach-details')
 const log = mozlog('server')
 
 function getRedisStore () {
-  const redisStoreConstructor = connectRedis(session)
+  const RedisStoreConstructor = connectRedis(session)
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
     const redis = require('redis-mock')
-    return new redisStoreConstructor({ client: redis.createClient() })
+    return new RedisStoreConstructor({ client: redis.createClient() })
   }
   const redis = require('redis')
-  return new redisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
+  return new RedisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
 }
 
 const app = express()

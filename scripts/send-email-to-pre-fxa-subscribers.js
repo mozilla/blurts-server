@@ -10,6 +10,11 @@ const EmailHelpers = require('../template-helpers/emails.js')
 const EmailUtils = require('../email-utils')
 const { LocaleUtils } = require('../locale-utils')
 
+/**
+ * OBSOLETE
+ * One-off script to find all subscribers without FXA account (id),
+ * send an email to each subscribers for FXA account creation
+ */
 const PAGE_SIZE = process.env.PAGE_SIZE
 const START_PAGE = process.env.START_PAGE
 

@@ -7,6 +7,11 @@ const knex = Knex(knexConfig)
 const HIBP = require('../hibp')
 const getSha1 = require('../sha1-utils')
 
+/**
+ * OBSOLETE
+ * One-off script to find all non-lowercase email addresses
+ * and lowercase them before hashing
+ */
 async function subscribeLowercaseHashToHIBP (emailAddress) {
   const lowerCasedEmail = emailAddress.toLowerCase()
   const lowerCasedSha1 = getSha1(lowerCasedEmail)
