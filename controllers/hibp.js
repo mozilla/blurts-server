@@ -47,7 +47,7 @@ function getAddressesAndLanguageForEmail (recipient) {
  * A breach notification contains the following parameters:
  * - breachName
  * - hashPrefix
- * - hasSuffixes
+ * - hashSuffixes
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
 async function notify (req, res) {
