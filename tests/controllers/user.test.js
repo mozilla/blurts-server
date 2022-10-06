@@ -136,7 +136,7 @@ test('user add POST with email adds unverified subscriber and sends verification
   expect(mockCalls.length).toEqual(1)
   const mockCallArgs = mockCalls[0]
   expect(mockCallArgs).toContain(testUserAddEmail)
-  expect(mockCallArgs).toContain('default_email')
+  expect(mockCallArgs).toContain('email-2022')
 })
 
 test('user add POST with upperCaseAddress adds email_address record with lowercaseaddress sha1', async () => {

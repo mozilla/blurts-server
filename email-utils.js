@@ -17,7 +17,7 @@ const hbsOptions = {
   viewEngine: {
     extname: '.hbs',
     layoutsDir: path.join(__dirname, '/views/layouts'),
-    defaultLayout: 'default_email',
+    defaultLayout: 'email-2022',
     partialsDir: path.join(__dirname, '/views/partials'),
     helpers: HBSHelpers.helpers
   },
@@ -92,17 +92,10 @@ const EmailUtils = {
     return url
   },
 
-  getReportSubject (breaches, req) {
-    if (breaches.length === 0) {
-      return req.fluentFormat('email-subject-no-breaches')
-    }
-    return req.fluentFormat('email-subject-found-breaches')
-  },
-
-  getEmailCtaHref (emailType, campaign, subscriberId = null) {
+  getEmailCtaHref (emailType, content, subscriberId = null) {
     const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : '/'
     const url = new URL(subscriberParamPath, AppConstants.SERVER_URL)
-    return this.appendUtmParams(url, campaign, emailType)
+    return this.appendUtmParams(url, emailType, content)
   },
 
   getVerificationUrl (subscriber) {

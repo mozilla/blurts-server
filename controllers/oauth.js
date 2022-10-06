@@ -79,21 +79,23 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
     )
 
     const utmID = 'report'
-    const reportSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req)
+    const reportSubject = unsafeBreachesForEmail.length ? req.fluentFormat('email-subject-found-breaches') : req.fluentFormat('email-subject-no-breaches')
 
     await EmailUtils.sendEmail(
       email,
       reportSubject,
-      'default_email',
+      'email-2022',
       {
         supportedLocales: req.supportedLocales,
         breachedEmail: email,
         recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail,
-        ctaHref: EmailUtils.getEmailCtaHref(utmID, 'go-to-dashboard-link'),
+        ctaHref: EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta'),
+        utmCampaign: utmID,
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
-        whichPartial: 'email_partials/report'
+        whichPartial: 'email_partials/report',
+        heading: req.fluentFormat('email-breach-summary')
       }
     )
     req.session.user = verifiedSubscriber

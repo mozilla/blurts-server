@@ -31,14 +31,19 @@ async function sendUnresolvedBreachEmails (subscribers = null, limit = 0) {
       const supportedLocales = [subscriber.signup_language, 'en'].filter(Boolean) // filter potential nullish signup_language, fallback to en
       const subject = LocaleUtils.fluentFormat(supportedLocales, 'email-unresolved-heading')
       const unsubscribeUrl = EmailUtils.getMonthlyUnsubscribeUrl(subscriber, 'monthly-unresolved', 'unsubscribe-cta')
+      const utmCampaign = 'email-monthly-unresolved'
 
       await EmailUtils.sendEmail(subscriber.primary_email, subject, 'email-2022',
         {
           whichPartial: 'email_partials/email-monthly-unresolved',
           supportedLocales,
-          primaryEmail: subscriber.primary_email,
           breachStats: subscriber.breach_stats,
-          unsubscribeUrl
+          unsubscribeUrl,
+          heading: subject,
+          subheading: LocaleUtils.fluentFormat(supportedLocales, 'email-unresolved-subhead'),
+          breachedEmail: subscriber.primary_email,
+          ctaHref: EmailUtils.getEmailCtaHref(utmCampaign, 'dashboard-cta'),
+          utmCampaign
         }
       )
       count++
