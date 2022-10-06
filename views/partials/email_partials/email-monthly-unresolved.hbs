@@ -1,6 +1,7 @@
 <tr>
   <td style="color: black; background: #F9F9FA; padding-top: 36px;">
-    <p>{{{ getString "email-is-affected" email-address=( concat "<strong>" breachedEmail "</strong>" ) }}}</p>
+    <p>{{{ getString "email-is-affected" email-address=( concat "<strong>" ( escapeExpression breachedEmail ) "</strong>" )
+      }}}</p>
     <p>{{ getString "email-more-detail" }}</p>
   </td>
 </tr>

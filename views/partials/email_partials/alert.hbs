@@ -1,7 +1,8 @@
 <tr>
   <td style="color: black; background: #F9F9FA; padding: 36px 0 24px;">
     <p>
-      {{{ getString "email-breach-detected" email-address=( concat "<strong>" breachedEmail "</strong>" ) }}}
+      {{{ getString "email-breach-detected" email-address=( concat "<strong>" ( escapeExpression breachedEmail ) "</strong>" )
+      }}}
     </p>
     <table style="margin: auto">
       <tr>

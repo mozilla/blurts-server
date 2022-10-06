@@ -4,7 +4,8 @@
       {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
       {{ getString "fxm-warns-you-no-breaches" }}
       {{else}}
-      {{{ getString "email-breach-detected" email-address=( concat "<strong>" breachedEmail "</strong>" ) }}}
+      {{{ getString "email-breach-detected" email-address=( concat "<strong>" ( escapeExpression breachedEmail ) "</strong>" )
+      }}}
       {{/ifCompare}}
     </p>
     <table style="max-width: 600px; margin: auto;">
