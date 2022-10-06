@@ -1,9 +1,11 @@
-{{!< default_email }}
-
-  <table align="center" class="verify-email" width="100%" style="max-width: 400px; text-align: center; padding-bottom: 30px;">
-    <tr>
-      <td align="center">
-        <p class="email-subhead" style="font-weight: 300; font-size: 17px; margin: 0px; color: #20123a; font-family: sans-serif; line-height: 1.5;">{{ getString "email-verify-blurb" }}</p>
-      </td>
-    </tr>
-  </table>
+<tr>
+  <td style="color: black; background: #F9F9FA; padding: 36px 0 24px;">
+    <p>{{ getString "email-verify-simply-click" }}</p>
+    <a href="{{ ctaHref }}"
+      style="display: inline-block; margin: auto; color: white; background-color: #0060DF; border-radius: 4px; padding: 12px 24px; margin: 24px 0">{{
+      getString "verify-email-cta" }}</a>
+    <p>
+      <strong>{{ getString "email-link-expires" }}</strong>
+    </p>
+  </td>
+  </tr>

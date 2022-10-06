@@ -8,6 +8,9 @@ const hibp = require('../controllers/hibp')
 const { LocaleUtils } = require('../locale-utils')
 const sha1 = require('../sha1-utils')
 
+/**
+ * One-off script to send a breach email (test) to a subscriber
+ */
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout

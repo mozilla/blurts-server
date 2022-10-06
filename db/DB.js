@@ -2,7 +2,6 @@
 
 const uuidv4 = require('uuid/v4')
 const Knex = require('knex')
-const { attachPaginate } = require('knex-paginate')
 
 const { FluentError } = require('../locale-utils')
 const AppConstants = require('../app-constants')
@@ -14,7 +13,6 @@ const mozlog = require('../log')
 const knexConfig = require('./knexfile')
 
 let knex = Knex(knexConfig)
-attachPaginate()
 
 const log = mozlog('DB')
 
@@ -76,12 +74,6 @@ const DB = {
     })
     const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber)
     return subscriberAndEmails
-  },
-
-  async getPreFxaSubscribersPage (pagination) {
-    return await knex('subscribers')
-      .whereRaw("(fxa_uid = '') IS NOT FALSE")
-      .paginate(pagination)
   },
 
   async getSubscriberByEmail (email) {

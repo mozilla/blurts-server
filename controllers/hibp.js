@@ -15,7 +15,6 @@ const log = mozlog('controllers.hibp')
 // email_addresses fields
 
 function getAddressesAndLanguageForEmail (recipient) {
-  const preFxaSubscriber = !recipient.fxa_uid
   const signupLanguage = recipient.signup_language
   if (recipient.hasOwnProperty('email') && recipient.email) {
     // email_addresses record, check all_emails_to_primary
@@ -23,25 +22,30 @@ function getAddressesAndLanguageForEmail (recipient) {
       return {
         recipientEmail: recipient.primary_email,
         breachedEmail: recipient.email,
-        signupLanguage,
-        preFxaSubscriber
+        signupLanguage
       }
     }
     return {
       recipientEmail: recipient.email,
       breachedEmail: recipient.email,
-      signupLanguage,
-      preFxaSubscriber
+      signupLanguage
     }
   }
   return {
     recipientEmail: recipient.primary_email,
     breachedEmail: recipient.primary_email,
-    signupLanguage,
-    preFxaSubscriber
+    signupLanguage
   }
 }
 
+/**
+ * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
+ * A breach notification contains the following parameters:
+ * - breachName
+ * - hashPrefix
+ * - hashSuffixes
+ * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
+ */
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
     const errorMessage = 'HIBP notify endpoint requires valid authorization token.'
@@ -86,9 +90,8 @@ async function notify (req, res) {
     // Get subscriber ID from "subscriber_id" property (if email_addresses record)
     // or from "id" property (if subscribers record)
     const subscriberId = recipient.subscriber_id || recipient.id
-    const { recipientEmail, breachedEmail, signupLanguage, preFxaSubscriber } = getAddressesAndLanguageForEmail(recipient)
-    const campaignId = 'go-to-dashboard-link'
-    const ctaHref = EmailUtils.getEmailCtaHref(utmID, campaignId, subscriberId)
+    const { recipientEmail, breachedEmail, signupLanguage } = getAddressesAndLanguageForEmail(recipient)
+    const ctaHref = EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta', subscriberId)
 
     const requestedLanguage = signupLanguage ? acceptedLanguages(signupLanguage) : ''
     const supportedLocales = negotiateLanguages(
@@ -98,7 +101,8 @@ async function notify (req, res) {
     )
 
     const subject = LocaleUtils.fluentFormat(supportedLocales, 'breach-alert-subject')
-    const template = 'default_email'
+    const heading = LocaleUtils.fluentFormat(supportedLocales, 'email-spotted-new-breach')
+    const template = 'email-2022'
     if (!notifiedRecipients.includes(breachedEmail)) {
       await EmailUtils.sendEmail(
         recipientEmail, subject, template,
@@ -111,8 +115,9 @@ async function notify (req, res) {
           SERVER_URL: AppConstants.SERVER_URL,
           unsubscribeUrl: EmailUtils.getUnsubscribeUrl(recipient, utmID),
           ctaHref,
-          whichPartial: 'email_partials/report',
-          preFxaSubscriber
+          utmCampaign: utmID,
+          whichPartial: 'email_partials/alert',
+          heading
         }
       )
       notifiedRecipients.push(breachedEmail)
