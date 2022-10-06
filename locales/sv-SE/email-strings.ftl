@@ -125,3 +125,21 @@ email-resolved = Lösta intrång:
 # table row 4 label
 email-unresolved = Olösta intrång:
 email-resolve-cta = Åtgärda intrång
+
+## Verification email
+
+email-verify-heading = Skydda dina data, från och med nu
+email-verify-subhead = Verifiera din e-post för att börja skydda din data efter ett intrång.
+email-verify-simply-click = Klicka på länken nedan för att slutföra verifieringen av ditt konto.
+
+## Breach report
+
+email-breach-summary = Här är din sammanfattning av dataintrång
+email-breach-detected = Sökresultat för ditt { $email-address }-konto har upptäckt att din e-post kan ha blivit avslöjad. Vi rekommenderar att du agerar nu för att lösa detta intrång.
+email-no-breach-detected = Goda nyheter! Vi har inte hittat några dataintrång som påverkar din e-post, { $email-address }.
+email-dashboard-cta = Gå till översikten
+
+## Breach alert
+
+email-may-have-been-exposed = Din e-post kan ha avslöjats i ett dataintrång
+email-spotted-new-breach = Vi har upptäckt ett nytt dataintrång

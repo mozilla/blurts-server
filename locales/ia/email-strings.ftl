@@ -115,3 +115,21 @@ email-resolved = Violationes resolvite:
 # table row 4 label
 email-unresolved = Violationes non resolvite:
 email-resolve-cta = Resolver violationes
+
+## Verification email
+
+email-verify-heading = Salveguarda tu datos, desde subito
+email-verify-subhead = Verifica tu email pro initiar a proteger tu datos post un violation.
+email-verify-simply-click = Simplemente clicca le ligamine infra pro finir de verificar tu conto.
+
+## Breach report
+
+email-breach-summary = Ecce tu summario de violationes de datos
+email-breach-detected = Le resultatos del recerca pro tu conto { $email-address } ha disvelate que tu email forsan ha essite exponite. Nos consilia que tu ora age pro resolver iste violation.
+email-no-breach-detected = Formidabile novas! Nos ha trovate nulle violationes de datos que affice tu email, { $email-address }.
+email-dashboard-cta = Ir al quadro de controlo
+
+## Breach alert
+
+email-may-have-been-exposed = Tu email pote haber essite exponite in un violation de datos
+email-spotted-new-breach = Nos ha individuate un nove violation de datos

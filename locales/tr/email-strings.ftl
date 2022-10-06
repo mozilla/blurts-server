@@ -113,3 +113,21 @@ email-resolved = Çözülen ihlaller:
 # table row 4 label
 email-unresolved = Çözülmemiş ihlaller:
 email-resolve-cta = İhlalleri çöz
+
+## Verification email
+
+email-verify-heading = Verilerinizi korumaya hemen şimdi başlayın
+email-verify-subhead = Veri ihlallerinin ardından verilerinizi korumaya başlamak için e-postanızı doğrulayın.
+email-verify-simply-click = Hesabınızı doğrulamak için aşağıdaki bağlantıya tıklamanız yeterli.
+
+## Breach report
+
+email-breach-summary = İşte veri ihlali özetiniz
+email-breach-detected = { $email-address } hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
+email-no-breach-detected = Her şey yolunda! { $email-address } e-postanızı etkileyen hiçbir veri ihlali bulamadık.
+email-dashboard-cta = Panoya git
+
+## Breach alert
+
+email-may-have-been-exposed = E-postanız bir veri ihlali nedeniyle açığa çıkmış olabilir
+email-spotted-new-breach = Yeni bir veri ihlali tespit ettik

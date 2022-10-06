@@ -126,3 +126,21 @@ email-resolved = Ratkaistut vuodot:
 # table row 4 label
 email-unresolved = Ratkaisemattomat vuodot:
 email-resolve-cta = Selvitä vuodot
+
+## Verification email
+
+email-verify-heading = Suojaa tietosi heti
+email-verify-subhead = Vahvista sähköpostiosoitteesi, jotta voit aloittaa tietojesi suojaamisen tietovuodon jälkeen.
+email-verify-simply-click = Viimeistele tilisi vahvistaminen napsauttamalla alla olevaa linkkiä.
+
+## Breach report
+
+email-breach-summary = Tässä on yhteenveto tietovuodosta
+email-breach-detected = Tiliäsi { $email-address } koskevissa hakutuloksissa havaittiin, että sähköpostiosoitteesi on saattanut paljastua. Suosittelemme, että toimit nyt tämän vuodon ratkaisemiseksi.
+email-no-breach-detected = Hyviä uutisia! Emme ole havainneet tietovuotoja, jotka koskisivat sähköpostiosoitettasi { $email-address }.
+email-dashboard-cta = Siirry kojelaudalle
+
+## Breach alert
+
+email-may-have-been-exposed = Sähköpostiosoitteesi on saattanut paljastua tietovuodossa
+email-spotted-new-breach = Olemme havainneet uuden tietovuodon

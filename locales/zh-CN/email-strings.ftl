@@ -93,8 +93,26 @@ email-2022-hibp-attribution = 数据外泄事件信息由 <a { $hibp-link-attr }
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = 您有未处理的数据外泄事件
+email-breach-status = 当前事件状态
+# table row 1 label
+email-monitored = 监控邮箱总数：
+# table row 2 label
+email-breach-total = 数据外泄事件总数：
 # table row 3 label
 email-resolved = 已处理的事件：
 # table row 4 label
 email-unresolved = 未处理的事件：
 email-resolve-cta = 处理此事件
+
+## Verification email
+
+email-verify-heading = 立即行动，保护您的个人数据
+email-verify-simply-click = 请尽快点击下方链接，完成账户验证。
+
+## Breach report
+
+email-dashboard-cta = 前往面板
+
+## Breach alert
+
+email-spotted-new-breach = 我们发现新的数据外泄事件

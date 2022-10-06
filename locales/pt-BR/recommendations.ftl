@@ -110,7 +110,7 @@ rec-gen-1 =
 # Recommendation subhead
 rec-gen-2-subhead = Armazene senhas em um lugar seguro
 # Link title
-rec-gen-2-cta = Mitos sobre gerenciadores de senhas
+rec-gen-2-cta = Lendas sobre gerenciadores de senhas
 rec-gen-2 =
     Coloque os detalhes de suas contas em um lugar seguro que só você pode acessar, como um 
     gerenciador de senhas. Isso também facilita o controle de todas as suas diferentes senhas.

@@ -102,3 +102,44 @@ more-products-vpn = Защита всего вашего устройства н
 more-products-cta-vpn = Получите { -product-name-vpn }
 more-products-relay = Скройте ваш настоящий адрес электронной почты, чтобы лучше защитить свою личность.
 more-products-cta-relay = Получите { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Вы получаете это автоматическое электронное письмо как подписчик { -product-name }. <br>Вы можете в любое время изменить настройки электронной почты <a { $unsubscribe-link-attr }>здесь</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Данные об утечке данных предоставлены <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = У вас есть неустраненные утечки
+email-unresolved-subhead = Ваша электронная почта была раскрыта. <br>Немедленно исправьте это с помощью { -product-name }.
+email-is-affected = Ваш адрес электронной почты { $email-address } затронут как минимум одной утечкой данных
+email-more-detail = Войдите в { -product-name } сейчас, чтобы увидеть более подробную информацию о ваших утечках (в том числе, когда они произошли и какие данные были раскрыты), и узнать, что вы должны сделать, когда ваша электронная почта была раскрыта в результате утечки данных.
+email-breach-status = Текущий статус утечки
+# table row 1 label
+email-monitored = Всего отслеживаемых ящиков:
+# table row 2 label
+email-breach-total = Общее число утечек:
+# table row 3 label
+email-resolved = Устранённые утечки:
+# table row 4 label
+email-unresolved = Неустранённые утечки:
+email-resolve-cta = Устранение утечек
+
+## Verification email
+
+email-verify-heading = Защитите свои данные, начните прямо сейчас
+email-verify-subhead = Подтвердите свою электронную почту, чтобы начать защищать свои данные после утечки.
+email-verify-simply-click = Просто нажмите на ссылку ниже, чтобы завершить проверку своей учётной записи.
+
+## Breach report
+
+email-breach-summary = Вот сводка ваших утечек данных
+email-breach-detected = Результаты поиска для вашей учётной записи { $email-address } обнаружили, что ваша электронная почта могла быть раскрыта. Мы рекомендуем вам действовать сейчас, чтобы устранить эту утечку.
+email-no-breach-detected = Отличные новости! Мы не обнаружили утечек данных, влияющих на вашу электронную почту { $email-address }.
+email-dashboard-cta = Перейти в панель управления
+
+## Breach alert
+
+email-may-have-been-exposed = Ваша электронная почта могла быть раскрыта в результате утечки данных
+email-spotted-new-breach = Мы обнаружили новую утечку данных

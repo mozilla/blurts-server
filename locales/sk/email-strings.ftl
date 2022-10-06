@@ -119,3 +119,21 @@ email-resolved = Vyriešené úniky:
 # table row 4 label
 email-unresolved = Nevyriešené úniky:
 email-resolve-cta = Vyriešiť úniky dát
+
+## Verification email
+
+email-verify-heading = Chráňte svoje údaje, začnite hneď teraz
+email-verify-subhead = Overte svoj e-mail a začnite chrániť svoje údaje po úniku dát.
+email-verify-simply-click = Overenie účtu dokončíte kliknutím na odkaz nižšie.
+
+## Breach report
+
+email-breach-summary = Tu je sumár únikov údajov
+email-breach-detected = Výsledky vyhľadávania pre váš účet { $email-address } zistili, že váš e-mail mohol byť odhalený. Odporúčame vám, aby ste okamžite začali daný únik riešiť.
+email-no-breach-detected = Skvelá správa! Nenašli sme žiadne úniky údajov, ktoré by ovplyvnili váš e-mail, { $email-address }.
+email-dashboard-cta = Prejsť na nástenku
+
+## Breach alert
+
+email-may-have-been-exposed = Váš e-mail mohol byť odhalený pri úniku údajov
+email-spotted-new-breach = Zistili sme nový únik údajov

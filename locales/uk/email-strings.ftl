@@ -125,3 +125,21 @@ email-resolved = Розв'язані витоки:
 # table row 4 label
 email-unresolved = Нерозв'язані витоки:
 email-resolve-cta = Розв'язати витоки
+
+## Verification email
+
+email-verify-heading = Захистіть свої дані прямо зараз
+email-verify-subhead = Підтвердьте свою електронну адресу, щоб почати захищати свої дані після витоку даних.
+email-verify-simply-click = Просто клацніть посилання нижче, щоб завершити перевірку свого облікового запису.
+
+## Breach report
+
+email-breach-summary = Ось стислий огляд ваших витоків даних
+email-breach-detected = Результати пошуку для вашого облікового запису { $email-address } виявили, що вашу електронну адресу могли розкрити. Ми радимо діяти зараз, щоб усунути цю проблему.
+email-no-breach-detected = Чудова новина! Ми не виявили жодних витоків даних, які б зачіпали вашу електронну адресу { $email-address }.
+email-dashboard-cta = Перейти до панелі стану
+
+## Breach alert
+
+email-may-have-been-exposed = Можливо, ваша електронна пошта була розкрита внаслідок витоку даних
+email-spotted-new-breach = Ми помітили новий витік даних
