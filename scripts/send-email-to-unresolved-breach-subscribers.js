@@ -4,7 +4,8 @@ const { LocaleUtils } = require('../locale-utils')
 const AppConstants = require('../app-constants')
 const { argv } = require('node:process')
 
-/* Send a monthly email to each subscriber with unresolved breaches
+/* Cron: Hourly
+ * Send a monthly email to each subscriber with unresolved breaches
  *
  * Usage:
  * node scripts/send-email-to-unresolved-breach-subscribers.js

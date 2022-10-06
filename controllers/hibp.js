@@ -38,6 +38,14 @@ function getAddressesAndLanguageForEmail (recipient) {
   }
 }
 
+/**
+ * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
+ * A breach notification contains the following parameters:
+ * - breachName
+ * - hashPrefix
+ * - hashSuffixes
+ * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
+ */
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
     const errorMessage = 'HIBP notify endpoint requires valid authorization token.'
