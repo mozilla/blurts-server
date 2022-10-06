@@ -52,16 +52,9 @@
 <body style="font: normal 16px/1.2 sans-serif; color: black">
   <table style="width: 100%; max-width:1080px; margin: auto; text-align: center;" role="presentation" border="0"
     cellpadding="0" cellspacing="0">
-    <tr class="logo">
-      <td height="100"
-        style="height: 100px; background: #F9F9FA url('{{ SERVER_URL }}/img/email_images/monitor-logo-bg-f9f9fa.png') no-repeat 50%; background-size: 240px 50px;">
-      </td>
-    </tr>
-
     {{> email_partials/email-header }}
     {{> (lookup . 'whichPartial') }}
     {{> email_partials/email-footer }}
-
   </table>
 </body>
 
