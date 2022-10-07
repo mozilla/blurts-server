@@ -8,10 +8,16 @@ const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require('../db/seeds/test_sub
 
 jest.mock('nodemailer')
 
-test('EmailUtils.init with empty host uses jsonTransport', () => {
+test('EmailUtils.sendEmail before .init() fails', async () => {
+  const sendMailArgs = ['test@example.com', 'subject', 'template.hbs', { breach: 'Test' }]
+  const expectedError = new Error('SMTP transport not initialized')
+  await expect(EmailUtils.sendEmail(...sendMailArgs)).rejects.toEqual(expectedError)
+})
+
+test('EmailUtils.init with empty host uses jsonTransport', async () => {
   nodemailer.createTransport = jest.fn()
 
-  EmailUtils.init('')
+  await expect(EmailUtils.init('')).resolves.toBe(true)
 
   expect(nodemailer.createTransport).toHaveBeenCalledWith({ jsonTransport: true })
 })
@@ -65,6 +71,77 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
   })
 })
 
+test('EmailUtils.sendEmail rejects with error', async () => {
+  const testSmtpUrl = 'smtps://test:test@test:1'
+  const sendMailArgs = ['test@example.com', 'subject', 'template.hbs', { breach: 'Test' }]
+  const mockTransporter = {
+    verify: jest.fn().mockReturnValueOnce("verified"),
+    use: jest.fn(),
+    sendMail: jest.fn((options, cb) => cb("error", null)),
+    transporter: {name: 'MockTransporter'}
+  }
+  nodemailer.createTransport = jest.fn().mockReturnValueOnce(mockTransporter)
+
+  await expect(EmailUtils.init('smtps://test:test@test:1')).resolves.toBe("verified")
+  await expect(EmailUtils.sendEmail(...sendMailArgs)).rejects.toBe("error")
+})
+
+test('EmailUtils.init with empty host uses jsonTransport. logs messages', async () => {
+  const sendMailArgs = ['test@example.com', 'subject', 'template.hbs', { breach: 'Test' }]
+  const sendMailInfo = {message: "sent"}
+  const mockTransporter = {
+    sendMail: jest.fn((options, cb) => cb(null, sendMailInfo)),
+    transporter: {name: 'JSONTransport'}
+  }
+  nodemailer.createTransport = jest.fn().mockReturnValueOnce(mockTransporter)
+
+  await expect(EmailUtils.init('')).resolves.toBe(true)
+  expect(nodemailer.createTransport).toHaveBeenCalledWith({ jsonTransport: true })
+  await expect(EmailUtils.sendEmail(...sendMailArgs)).resolves.toEqual(sendMailInfo)
+})
+
+test('EmailUtils.getEmailCtaHref works without a subscriber ID', () => {
+  const emailCtaHref = EmailUtils.getEmailCtaHref('email-type', 'content')
+  expect(emailCtaHref.pathname).toBe('/')
+  emailCtaHref.searchParams.sort()
+  expect(Array.from(emailCtaHref.searchParams.entries())).toEqual(
+    [
+      ['utm_campaign', 'email-type'],
+      ['utm_content', 'content'],
+      ['utm_medium', 'email'],
+      ['utm_source', 'fx-monitor'],
+    ])
+})
+
+test('EmailUtils.getEmailCtaHref works with a subscriber ID', () => {
+  const emailCtaHref = EmailUtils.getEmailCtaHref('email-type-2', 'content-2', 1234)
+  expect(emailCtaHref.pathname).toBe('/')
+  emailCtaHref.searchParams.sort()
+  expect(Array.from(emailCtaHref.searchParams.entries())).toEqual(
+    [
+      ['subscriber_id', '1234'],
+      ['utm_campaign', 'email-type-2'],
+      ['utm_content', 'content-2'],
+      ['utm_medium', 'email'],
+      ['utm_source', 'fx-monitor'],
+    ])
+})
+
+test('EmailUtils.getVerificationUrl returns a URL', () => {
+  const fakeSubscriber = {"verification_token": "SubscriberVerificationToken"}
+  const verificationUrl = EmailUtils.getVerificationUrl(fakeSubscriber)
+  expect(verificationUrl.pathname).toBe('/user/verify')
+  verificationUrl.searchParams.sort()
+  expect(Array.from(verificationUrl.searchParams.entries())).toEqual(
+    [
+      ['token', 'SubscriberVerificationToken'],
+      ['utm_campaign', 'verified-subscribers'],
+      ['utm_content', 'account-verification-email'],
+      ['utm_medium', 'email'],
+      ['utm_source', 'fx-monitor'],
+    ])
+})
+
 test('EmailUtils.getUnsubscribeUrl works with subscriber record', () => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
@@ -81,4 +158,20 @@ test('EmailUtils.getUnsubscribeUrl works with email_address record', () => {
 
   expect(unsubUrl).toMatch(emailAddressRecord.sha1)
   expect(unsubUrl).toMatch(emailAddressRecord.verification_token)
+})
+
+test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', () => {
+  const fakeSubscriber = {'primary_verification_token': 'PrimaryVerificationToken'}
+
+  const unsubUrl = EmailUtils.getMonthlyUnsubscribeUrl(fakeSubscriber, 'campaign', 'content')
+  expect(unsubUrl.pathname).toBe('/user/unsubscribe-monthly/')
+  unsubUrl.searchParams.sort()
+  expect(Array.from(unsubUrl.searchParams.entries())).toEqual(
+    [
+      ['token', 'PrimaryVerificationToken'],
+      ['utm_campaign', 'campaign'],
+      ['utm_content', 'content'],
+      ['utm_medium', 'email'],
+      ['utm_source', 'fx-monitor'],
+    ])
 })
