@@ -3,6 +3,7 @@
 const nodemailer = require('nodemailer')
 
 const EmailUtils = require('../email-utils')
+const { EMAIL_FROM, SERVER_URL, SES_CONFIG_SET } = require('../app-constants')
 const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require('../db/seeds/test_subscribers')
 
 jest.mock('nodemailer')
@@ -15,26 +16,53 @@ test('EmailUtils.init with empty host uses jsonTransport', () => {
   expect(nodemailer.createTransport).toHaveBeenCalledWith({ jsonTransport: true })
 })
 
-test.skip('EmailUtils.init with user, pass, host, port invokes nodemailer.createTransport', () => {
+test('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async () => {
   const testSmtpUrl = 'smtps://test:test@test:1'
-  nodemailer.createTransport = jest.fn()
+  const mockTransporter = {
+    verify: jest.fn().mockReturnValueOnce("✓"),
+    use: jest.fn(),
+  }
+  nodemailer.createTransport = jest.fn().mockReturnValueOnce(mockTransporter)
 
-  EmailUtils.init(testSmtpUrl)
+  await expect(EmailUtils.init(testSmtpUrl)).resolves.toBe("✓")
 
-  const mockCreateTransport = nodemailer.createTransport.mock
-  expect(mockCreateTransport.calls.length).toBe(1)
-  expect(mockCreateTransport.calls[0][0]).toBe(testSmtpUrl)
+  expect(nodemailer.createTransport).toHaveBeenCalledWith(testSmtpUrl)
+  expect(mockTransporter.verify).toHaveBeenCalledWith()
+  expect(mockTransporter.use.mock.calls.length).toBe(1)
+  expect(mockTransporter.use.mock.calls[0].length).toEqual(2)
+  expect(mockTransporter.use.mock.calls[0][0]).toBe('compile')
 })
 
-test.skip('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', () => {
+
+test('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async () => {
   const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = ['test@example.com', 'subject', 'template.hbs', { breach: 'Test' }]
-  nodemailer.createTransport = jest.fn()
+  const mockTransporter = {
+    verify: jest.fn().mockReturnValueOnce("verified"),
+    use: jest.fn(),
+    sendMail: jest.fn((options, cb) => cb(null, "sent")),
+    transporter: {name: 'MockTransporter'}
+  }
+  nodemailer.createTransport = jest.fn().mockReturnValueOnce(mockTransporter)
 
-  EmailUtils.init(testSmtpUrl)
-  EmailUtils.sendEmail(...sendMailArgs)
+  await expect(EmailUtils.init(testSmtpUrl)).resolves.toBe("verified")
+  await expect(EmailUtils.sendEmail(...sendMailArgs)).resolves.toBe("sent")
 
-  // TODO: find a way to expect gTransporter.sendMail
+  expect(mockTransporter.sendMail.mock.calls.length).toBe(1)
+  expect(mockTransporter.sendMail.mock.calls[0].length).toBe(2)
+  expect(mockTransporter.sendMail.mock.calls[0][0]).toEqual(
+  {
+    context: {
+      SERVER_URL,
+      layout: 'template.hbs',
+      breach: 'Test',
+    },
+    from: EMAIL_FROM,
+    headers: {"x-ses-configuration-set": SES_CONFIG_SET},
+    subject: "subject",
+    template: "template.hbs",
+    to: "test@example.com",
+  })
 })
 
 test('EmailUtils.getUnsubscribeUrl works with subscriber record', () => {
