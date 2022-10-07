@@ -54,6 +54,7 @@ family-structure = Familie-struktur
 financial-investments = Finansielle investeringer
 financial-transactions = Finansielle transaktioner
 fitness-levels = Konditions-niveauer
+flights-taken = Flyvninger foretaget
 genders = Køn
 geographic-locations = Geografiske placeringer
 government-issued-ids = ID-kort udstedt af regeringer

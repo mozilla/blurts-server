@@ -44,7 +44,7 @@ rec-cc =
     Bodite pozorni na nenavadne stroške svoje kreditne kartice. Morda boste želeli 
     pri izdajatelju kartice zahtevati novo številko kartice.
 # Recommendation subhead
-rec-email-subhead = Uporabljajte pomožne e-poštne naslove
+rec-email-mask-subhead = Uporabite e-poštno masko
 rec-email-cta = Preskusite { -brand-relay }
 rec-email =
     Izpostavljenost vašega pravega e-poštnega naslova olajšuje napadalcem, da

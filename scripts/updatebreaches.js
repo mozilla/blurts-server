@@ -1,5 +1,10 @@
 'use strict'
 
+/**
+ * Cron: Daily
+ * From all the HIBP breaches, we parse out the new breaches that are not already present
+ * in firefox remote settings, and update the data source accordingly
+ */
 const AppConstants = require('../app-constants')
 const HIBP = require('../hibp')
 const RemoteSettings = require('../lib/remote-settings')

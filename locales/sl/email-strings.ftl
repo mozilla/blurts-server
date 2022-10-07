@@ -94,6 +94,27 @@ pre-fxa-p-3 =
     pojavili v novi kraji podatkov.
 # Button at the bottom of pre-fxa email.
 create-account = Ustvarite račun
+# More security products
+more-products-headline = Zaščitite se z našimi ostalimi izdelki
+more-products-vpn = Zaščita za celotno vašo napravo – katerokoli napravo.
 more-products-cta-vpn = Pridobite { -product-name-vpn }
 more-products-relay = Skrijte svoj pravi e-poštni naslov in zavarujte svojo identiteto.
 more-products-cta-relay = Pridobite { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = To samodejno e-poštno sporočilo ste prejeli, ker ste naročeni na { -product-name }. <br>Svoje nastavitve e-pošte lahko kadar koli spremenite <a { $unsubscribe-link-attr }>tukaj</a>.
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Imate nerazrešene kraje podatkov
+email-breach-status = Trenutno stanje kraje
+# table row 1 label
+email-monitored = Skupaj nadzorovanih e-poštnih naslovov:
+# table row 2 label
+email-breach-total = Skupno število kraj:
+# table row 3 label
+email-resolved = Razrešene kraje:
+# table row 4 label
+email-unresolved = Nerazrešene kraje:
+email-resolve-cta = Razreši kraje

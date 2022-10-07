@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Balansau cyfrifon
 address-book-contacts = Cysylltiadau llyfr cyfeiriadau
@@ -54,6 +54,7 @@ family-structure = Strwythur teuluol
 financial-investments = Buddsoddiadau ariannol
 financial-transactions = Trafodion ariannol
 fitness-levels = Lefelau ffitrwydd
+flights-taken = Hediadau a gymerwyd
 genders = Gender
 geographic-locations = Lleoliadau daearyddol
 government-issued-ids = IDau a gyhoeddwyd gan y Llywodraeth

@@ -3,7 +3,7 @@ version: 2.1
 executors:
     node:
         docker:
-            - image: cimg/node:16.15
+            - image: cimg/node:16.17
               auth:
                 username: $DOCKER_USER
                 password: $DOCKER_PASS
@@ -17,9 +17,29 @@ executors:
         machine:
             image: ubuntu-2004:202107-02
 
+    node_with_postgres:
+        parameters:
+            postgres_version:
+                description: "Which cimg/postgres tag to use"
+                type: string
+        docker:
+            - image: cimg/node:16.17
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+            - image: cimg/postgres:<< parameters.postgres_version >>
+              environment:
+                  POSTGRES_USER: postgres
+                  POSTGRES_PASSWORD: 93e389316eaf4ea2be4010d526cc1468
+                  POSTGRES_DB: test-circle
+              auth:
+                  username: $DOCKER_USER
+                  password: $DOCKER_PASS
+
 orbs:
     node: circleci/node@5.0.2
     python: circleci/python@1.4.0
+    heroku: circleci/heroku@1.2.6
 
 jobs:
     lint-js:
@@ -50,7 +70,7 @@ jobs:
             DATABASE_URL: postgresql://postgres:test-pass@localhost/blurts
         steps:
             - checkout
-            - run: 
+            - run:
                 name: Install Postgres
                 # Installing Postgres on a host machine. 
                 # Originally attempted to use a container, but communication between container-within-a-container is not well supported currently
@@ -80,6 +100,41 @@ jobs:
                     -e COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
                     blurts-server npm test
 
+    unit-tests-psql:
+        parameters:
+            postgres_version:
+                description: "Which cimg/postgres tag to use"
+                type: string
+        executor:
+            name: node_with_postgres
+            postgres_version: << parameters.postgres_version >>
+        steps:
+            - checkout
+            - node/install-packages
+            - run: sudo apt-get update
+            - run: sudo apt-get install postgresql-client
+            - run:
+                name: install dockerize
+                command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+                environment:
+                    DOCKERIZE_VERSION: v0.6.1
+            - run:
+                name: Wait for db
+                command: dockerize -wait tcp://localhost:5432 -timeout 1m
+            - run:
+                name: Use default .env
+                command: cp .env-dist .env
+            - run:
+                name: Test Code
+                command: |
+                    NODE_ENV=tests \
+                    DATABASE_URL=postgresql://postgres:93e389316eaf4ea2be4010d526cc1468@localhost/circle \
+                    HIBP_KANON_API_TOKEN=$HIBP_KANON_API_TOKEN \
+                    COVERALLS_SERVICE_NAME=circleci \
+                    COVERALLS_REPO_TOKEN=$COVERALLS_REPO_TOKEN \
+                    COVERALLS_GIT_BRANCH=$CIRCLE_BRANCH \
+                    npm test
+
     deploy:
         docker:
             - image: docker:stable-git
@@ -102,7 +157,10 @@ jobs:
                     "$CIRCLE_BUILD_URL" > version.json
             - run:
                 name: Build Docker image
-                command: docker build -t blurts-server .
+                command: |
+                  docker build --tag blurts-server \
+                  --build-arg SENTRY_RELEASE="$CIRCLE_TAG" \
+                  .
             - run:
                 name: Deploy to Dockerhub
                 command: |
@@ -130,6 +188,29 @@ jobs:
                   name: Sync static content to S3
                   command: ./.circleci/scripts/sync-static
 
+    deploy_heroku:
+        # Attempt to deploy, but do not fail job if the push fails. The push will fail if a
+        # developer has manually pushed a branch, usually for review purposes. This command
+        # is based on:
+        # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
+        # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
+        executor: heroku/default
+        parameters:
+            app-name:
+                description: "The name of the Heroku App"
+                type: string
+        steps:
+            - heroku/install
+            - heroku/check-authentication
+            - checkout
+            - run:
+                  name: Attempt to deploy to Heroku via git push
+                  command: |
+                      set -x
+                      heroku_url="https://heroku:${HEROKU_API_KEY}@git.heroku.com/<< parameters.app-name >>.git"
+                      git push $heroku_url $CIRCLE_BRANCH:main ||
+                      echo "*** git push failed, but it is allowed to fail. ***"
+
 workflows:
     lint-and-test:
         jobs:
@@ -137,6 +218,18 @@ workflows:
             - lint-css
             - lint-l10n
             - unit-tests:
+                filters:
+                    tags:
+                        only: /.*/
+            - unit-tests-psql:
+                name: "unit-tests on psql 9.6"
+                postgres_version: "9.6.24"
+                filters:
+                    tags:
+                        only: /.*/
+            - unit-tests-psql:
+                name: "unit-tests on psql 13.7"
+                postgres_version: "13.7"
                 filters:
                     tags:
                         only: /.*/
@@ -154,3 +247,20 @@ workflows:
                     branches:
                         only: 
                             - main
+            - deploy_heroku:
+                name: Deploy main to Heroku
+                app-name: $HEROKU_MAIN_APP_NAME
+                requires:
+                    - unit-tests
+                filters:
+                    branches:
+                        only: main
+
+            - deploy_heroku:
+                name: Deploy l10n to Heroku
+                app-name: $HEROKU_LOCALIZATION_APP_NAME
+                requires:
+                    - unit-tests
+                filters:
+                    branches:
+                        only: localization

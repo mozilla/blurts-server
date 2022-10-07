@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Számlaegyenlegek
 address-book-contacts = Címjegyzék-kapcsolatok
@@ -54,6 +54,7 @@ family-structure = Családszerkezet
 financial-investments = Pénzügyi befektetések
 financial-transactions = Pénzügyi tranzakciók
 fitness-levels = Fizikai állapot
+flights-taken = Repülések
 genders = Nemek
 geographic-locations = Földrajzi helyek
 government-issued-ids = Kormány által kiállított igazolványok

@@ -102,3 +102,44 @@ more-products-vpn = Πλήρης προστασία, σε κάθε συσκευ�
 more-products-cta-vpn = Λήψη του { -product-name-vpn }
 more-products-relay = Αποκρύψτε το πραγματικό σας email και προστατέψετε την ταυτότητά σας.
 more-products-cta-relay = Λήψη του { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Λαμβάνετε αυτό το αυτοματοποιημένο email επειδή εγγραφήκατε στο { -product-name }. <br>Μπορείτε να αλλάξετε τις προτιμήσεις email σας ανά πάσα στιγμή <a { $unsubscribe-link-attr }>εδώ</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Έχετε μη επιλυμένες παραβιάσεις
+email-unresolved-subhead = Το email σας έχει εκτεθεί. <br>Διορθώστε το αμέσως με το { -product-name }.
+email-is-affected = Το email σας, { $email-address }, επηρεάζεται από τουλάχιστον μία παραβίαση δεδομένων
+email-more-detail = Συνδεθείτε τώρα στο { -product-name } για να δείτε περισσότερες λεπτομέρειες σχετικά με τις παραβιάσεις σας (όπως την ημερομηνία που σημειώθηκαν και τα δεδομένα που διέρρευσαν) και για να μάθετε τι πρέπει να κάνετε εάν εκτεθεί το email σας σε κάποια παραβίαση δεδομένων.
+email-breach-status = Τρέχουσα κατάσταση παραβίασης
+# table row 1 label
+email-monitored = Σύνολο email υπό εποπτεία:
+# table row 2 label
+email-breach-total = Συνολικός αριθμός παραβιάσεων:
+# table row 3 label
+email-resolved = Επιλυμένες παραβιάσεις:
+# table row 4 label
+email-unresolved = Μη επιλυμένες παραβιάσεις:
+email-resolve-cta = Επίλυση παραβιάσεων
+
+## Verification email
+
+email-verify-heading = Προστατέψτε τα δεδομένα σας, ξεκινώντας από τώρα
+email-verify-subhead = Επαληθεύστε το email σας για να αρχίσετε να προστατεύετε τα δεδομένα σας μετά από παραβίαση.
+email-verify-simply-click = Κάντε απλώς κλικ στον παρακάτω σύνδεσμο για να ολοκληρώσετε την επαλήθευση του λογαριασμού σας.
+
+## Breach report
+
+email-breach-summary = Ακολουθεί η σύνοψη παραβίασης δεδομένων σας
+email-breach-detected = Τα αποτελέσματα αναζήτησης για το { $email-address } δείχνουν ότι το email σας μπορεί να έχει εκτεθεί. Σας συνιστούμε να ενεργήσετε τώρα για να επιλύσετε αυτήν την παραβίαση.
+email-no-breach-detected = Θαυμάσια νέα! Δεν βρήκαμε παραβιάσεις δεδομένων που να επηρεάζουν το email σας, { $email-address }.
+email-dashboard-cta = Μετάβαση στον πίνακα
+
+## Breach alert
+
+email-may-have-been-exposed = Το email σας ενδέχεται να έχει εκτεθεί σε παραβίαση δεδομένων
+email-spotted-new-breach = Εντοπίσαμε μια νέα παραβίαση δεδομένων

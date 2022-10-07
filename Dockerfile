@@ -1,4 +1,4 @@
-FROM node:16.15-alpine
+FROM node:16.17.1-alpine
 
 RUN addgroup -g 10001 app && \
     adduser -D -G app -h /app -u 10001 app
@@ -18,5 +18,8 @@ COPY --chown=app:app . /app
 COPY .env-dist ./.env
 
 RUN npm run build
+
+ARG SENTRY_RELEASE
+ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
 CMD node server.js

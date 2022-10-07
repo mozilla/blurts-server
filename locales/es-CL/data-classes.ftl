@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Estados de cuentas
 address-book-contacts = Contactos de la libreta de direcciones
@@ -54,6 +54,7 @@ family-structure = Estructura familiar
 financial-investments = Inversiones financieras
 financial-transactions = Transacciones financieras
 fitness-levels = Niveles de condición física
+flights-taken = Vuelos tomados
 genders = Géneros
 geographic-locations = Ubicaciones geográficas
 government-issued-ids = Documentos de identidad emitidos por el Gobierno

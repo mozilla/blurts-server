@@ -3,7 +3,8 @@
 const AppConstants = require('./../app-constants')
 const { LocaleUtils } = require('./../locale-utils')
 const mozlog = require('./../log')
-
+const { create } = require('express-handlebars')
+const hbs = create({ /* config */ })
 const log = mozlog('template-helpers/hbs-helpers')
 
 function getSupportedLocales (args) {
@@ -23,6 +24,14 @@ function getFirstItem (arr) {
   if (!arr) return
   if (typeof arr === 'string') return arr.split(',')[0]
   return arr[0]
+}
+
+function concat (...args) {
+  return args.slice(0, -1).join('')
+}
+
+function escapeExpression (exp) {
+  return hbs.handlebars.Utils.escapeExpression(exp)
 }
 
 function vpnPromoBlocked (args) {
@@ -230,5 +239,7 @@ module.exports = {
   loop,
   showCsatBanner,
   getAppConstant,
-  vpnPromoBlocked
+  vpnPromoBlocked,
+  concat,
+  escapeExpression
 }

@@ -102,3 +102,17 @@ more-products-vpn = Ammesten ummid n yiben-ik·im, n yal ibenk-ik·im
 more-products-cta-vpn = Awi { -product-name-vpn }
 more-products-relay = Ffer tansa-inek·inem n yimayl taḥeqqanit i ummesten n timagit-ik·im.
 more-products-cta-relay = Awi { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-breach-status = Addad n trewla tamirant
+# table row 2 label
+email-breach-total = Amḍan asemday n wanfalen:
+# table row 3 label
+email-resolved = Anfalen yefran:
+# table row 4 label
+email-unresolved = Tirewliwin ur nefri ara:
+email-resolve-cta = Fru tirewliwin

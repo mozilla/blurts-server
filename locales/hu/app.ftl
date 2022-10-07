@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -27,7 +30,7 @@ error-could-not-add-email = Nem sikerült hozzáadni az e-mail-címet az adatbá
 error-not-subscribed = Ez az e-mail-cím nincs feliratkozva a { -product-name }ra.
 error-hibp-throttled = Túl sok kapcsolat a { -brand-HIBP } felé.
 error-hibp-connect = Hiba a { -brand-HIBP }hoz kapcsolódáskor.
-error-hibp-load-breaches = A adatsértések nem tölthetőek be.
+error-hibp-load-breaches = A adatvédelmi incidensek nem tölthetőek be.
 error-must-be-signed-in = Be kell jelentkeznie a { -brand-fxa }jába.
 error-to-finish-verifying = Az e-mail ellenőrzésének befejezéséhez a { -product-name }ban, be kell jelentkeznie az elsődleges e-mail címéhez tartozó fiókjába.
 home-title = { -product-name }
@@ -56,20 +59,20 @@ signup-modal-sent = Elküldve
 sign-up = Regisztráció
 form-signup-error = Érvényes e-mail-címnek kell lennie
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Az adatsértés dátuma:
+breach-date = Az adatvédelmi incidens dátuma:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Veszélyeztetett fiókok:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Veszélyeztetett adatok:
 unsub-headline = Leiratkozás a { -product-name-nowrap }ról
-unsub-blurb = Ez eltávolítja az e-mail-címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatsértéseket jelentenek be.
+unsub-blurb = Ez eltávolítja az e-mail-címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatvédelmi incidenseket jelentenek be.
 unsub-button = Leiratkozás
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Az adatsértési adatokat a { $hibp-link } biztosítja
-share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy adatsértéskor? Tudja meg.
-share-facebook-headline = Tudja meg, hogy része volt-e adatsértésnek
-share-facebook-blurb = Kikerült-e online fiókja egy adatsértés miatt?
-og-site-description = Tudja meg, hogy része volt-e adatsértésnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+hibp-attribution = Az adatvédelmi incidensek adatait a { $hibp-link } biztosítja
+share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy adatvédelmi incidens során? Tudja meg.
+share-facebook-headline = Tudja meg, hogy része volt-e adatvédelmi incidensnek
+share-facebook-blurb = Kikerült-e online fiókja egy adatvédelmi incidens miatt?
+og-site-description = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
 show-all = Összes megjelenítése
 fxa-scan-another-email = Szeretne ellenőrizni egy másik e-mail-címet is?
 sign-in = Bejelentkezés
@@ -84,7 +87,7 @@ fxa-pwt-summary-4 =
     A jelszókezelők, mint a 1Password, a LastPass, a Dashlane és a Bitwarden tárolják a
     jelszavait, és kitöltik azokat Önnnek a weboldalakon. Még az erős jelszavak létrehozásában is segítenek.
 fxa-pwt-summary-6 =
-    Az adatsértések száma nő. Ha a személyes adatai megjelennek egy új adatsértésben,
+    Az adatvédelmi incidensek száma nő. Ha a személyes adatai megjelennek egy új adatvédelmi incidensben,
     akkor a { -product-name } figyelmeztetést küld – így lépéseket tehet, és megvédheti a fiókjait.
 fxa-what-to-do-blurb-1 =
     Ha nem tud bejelentkezni, lépjen kapcsolatba a weboldallal, és
@@ -97,7 +100,7 @@ fxa-wtd-blurb-2 =
     fiókokba jussanak be. Hozzon létre különböző jelszót minden fiókhoz, különösen a bankszámlájához,
     e-mail fiókjához és más weboldalakon, ahol személyes adatokat ment el.
 fxa-what-to-do-blurb-3 =
-    A legtöbb adatsértés csak e-mail-címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
+    A legtöbb adatvédelmi incidens csak e-mail-címek és jelszavak kikerülését okozza, de néhány érzékeny pénzügyi adatokat is tartalmaz.
     Ha kikerült a bankszámlaszáma vagy hitelkártyaszáma, akkor értesítse a bankját a lehetséges csalásról.
     Kövesse azokat a levonásokat, melyeket nem ismer fel.
 fxa-what-to-do-subhead-4 = Szerezzen segítséget, hogy megjegyezze az összes jelszavát, és biztonságban tartsa azokat.
@@ -115,87 +118,87 @@ preferences = Beállítások
 # Link title
 home = Kezdőlap
 # Link title
-breaches = Adatsértések
+breaches = Adatvédelmi incidensek
 # Link title
 security-tips = Biztonsági tippek
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = A { -brand-fxa } navigáció megnyitása
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = LEGUTÓBB HOZZÁADOTT ADATSÉRTÉS
+latest-breach = LEGUTÓBB HOZZÁADOTT ADATVÉDELMI INCIDENS
 # Link title
-more-about-this-breach = További tudnivalók erről az adatsértésről
+more-about-this-breach = További tudnivalók erről az adatvédelmi incidensről
 take-control = Szerezze vissza a személyes adatai feletti ellenőrzést.
 cant-stop-hackers = A hackereket nem tudja megállítani. De elkerülheti a rossz szokásokat, amelyek megkönnyítik a dolgukat.
 read-more-tips = Olvasson további biztonsági tippeket
 how-hackers-work = Értse meg, hogyan dolgoznak a hackerek
-monitor-your-online-accounts = Iratkozzon fel az adatsértések figyelésére egy { -brand-fxa }kal.
-stay-alert = Figyeljen az új adatsértésekre
-if-your-info = Ha az Ön információi megjelennek egy új adatsértésben, akkor figyelmeztetést küldünk Önnek.
-search-all-emails = Keresse meg az összes e-mail-címét az adatsértésekben, és kapjon figyelmeztetéseket az új fenyegetésekről.
+monitor-your-online-accounts = Iratkozzon fel az adatvédelmi incidensek figyelésére egy { -brand-fxa }kal.
+stay-alert = Figyeljen az új adatvédelmi incidensekre
+if-your-info = Ha az Ön információi megjelennek egy új adatvédelmi incidensben, akkor figyelmeztetést küldünk Önnek.
+search-all-emails = Keresse meg az összes e-mail-címét az adatvédelmi incidensekben, és kapjon figyelmeztetéseket az új fenyegetésekről.
 monitor-several-emails = Több e-mail-cím figyelése
 take-action = Tegyen lépéseket a fiókjai védelmére
 keep-your-data-safe = Tudja meg, mit kell tennie, hogy az adatait biztonságban tudja tartani a számítógépes bűnözőktől.
-website-breach = Weboldalon történt adatsértés
-sensitive-breach = Weboldalon történt érzékeny adatsértés
-data-aggregator-breach = Adatgyűjtőben történt adatsértés
-unverified-breach = Nem megerősített adatsértés
-spam-list-breach = Levélszemét-lista adatsértés
-website-breach-plural = Weboldalon történt adatsértések
-sensitive-breach-plural = Érzékeny adatsértések
-data-aggregator-breach-plural = Adatgyűjtőkben történt adatsértések
-unverified-breach-plural = Nem megerősített adatsértések
-spam-list-breach-plural = Levélszemétlista adatsértések
+website-breach = Weboldalon történt adatvédelmi incidensek
+sensitive-breach = Weboldalon történt érzékeny adatvédelmi incidens
+data-aggregator-breach = Adatgyűjtőben történt adatvédelmi incidens
+unverified-breach = Nem megerősített adatvédelmi incidens
+spam-list-breach = Levélszemét-lista adatvédelmi incidens
+website-breach-plural = Weboldalon történt adatvédelmi incidens
+sensitive-breach-plural = Bizalmas adatvédelmi incidensek
+data-aggregator-breach-plural = Adatgyűjtőkben történt adatvédelmi incidensek
+unverified-breach-plural = Nem megerősített adatvédelmi incidensek
+spam-list-breach-plural = Levélszemétlista adatvédelmi incidensek
 what-data = Milyen adatok kerültek veszélybe:
 sensitive-sites = Hogyan kezeli a { -product-name } az érzékeny webhelyeket?
 sensitive-sites-copy =
-    A { -product-name } csak akkor fedi fel az ezekkel az adatsértésekkel kapcsolatos
-    fiókokat, ha az e-mail-cím megerősítésre került. Ez azt jelenti, hogy csak Ön
-    láthatja, hogy szerepelt-e ebben az adatsértésben (hacsak valaki más nem fér
-    hozzá az e-mail fiókjához).
-delayed-reporting-headline = Miért tartott ilyen sokáig az adatsértés jelentése?
+    A { -product-name } csak akkor fedi fel az ezekkel az adatvédelmi incidensekkel
+    kapcsolatos fiókokat, ha az e-mail-cím megerősítésre került. Ez azt jelenti, hogy
+    csak Ön láthatja, hogy szerepelt-e ebben az adatvédelmi incidensben (hacsak valaki
+    más nem fér hozzá az e-mail-fiókjához).
+delayed-reporting-headline = Miért tartott ilyen sokáig az adatvédelmi incidens jelentése?
 delayed-reporting-copy =
-    Néha hónapokra vagy évekre is szükség lehet, amíg az adatsértésekben
-    kikerült adatok megjelennek a sötét weben. Az adatsértések akkor kerülnek az adatbázisunkba,
-    ha felfedezték és megerősítették őket.
+    Néha hónapokra vagy évekre is szükség lehet, amíg az adatvédelmi incidensekben
+    kikerült adatok megjelennek a sötét weben. Az adatvédelmi incidensek akkor kerülnek
+    az adatbázisunkba, ha felfedezték és megerősítették őket.
 about-fxm-headline = A { -product-name } névjegye
 about-fxm-blurb =
-    A { -product-name } figyelmezteti, ha az online fiókja szerepelnek egy adatsértésben.
-    Tudja meg, hogy adatsértés áldozata lett-e, kapjon figyelmeztetéseket az 
-    új adatsértésekről, és tegyen lépéseket az online fiókjai védelmére.
-    A { -product-name }t a { -brand-Mozilla } szolgáltatja.
+    A { -product-name } figyelmezteti, ha az online fiókja szerepelnek egy adatvédelmi
+    incidensben. Tudja meg, hogy adatvédelmi incidens áldozata lett-e, kapjon
+    figyelmeztetéseket az új adatvédelmi incidensekről, és tegyen lépéseket az online
+    fiókjai védelmére. A { -product-name }t a { -brand-Mozilla } szolgáltatja.
 fxm-warns-you =
     A { -product-name } figyelmezteti, ha az e-mail-címe kikerült egy online
-    adatsértésnél. Lássa a kikerült adatait, és tudja meg, hogyan védheti meg jobban
-    az online fiókjait, és kapjon figyelmeztetést, ha az e-mail címe egy új
-    adatsértésben jelenik meg.
+    adatvédelmi incidensnél. Lássa a kikerült adatait, és tudja meg, hogyan
+    védheti meg jobban az online fiókjait, és kapjon figyelmeztetést, ha az
+    e-mail-címe egy új adatvédelmi incidensben jelenik meg.
 # How Firefox Monitor works
 how-fxm-works = Hogyan működik a { -product-name }
 how-fxm-1-headline = Végezzen egy alapvető keresést
 how-fxm-1-blurb =
-    Keresse ki az e-mail-címét a nyilvánosságra került adatsértésekben
-    egészen 2007-ig. Az alapvető keresés felfedi a legtöbb adatsértést, de
-    azokat nem, melyek érzékeny adatokat tartalmaznak.
-how-fxm-2-headline = Iratkozzon fel az adatsértések figyelésére
+    Keresse ki az e-mail-címét a nyilvánosságra került adatvédelmi incidensekben
+    egészen 2007-ig. Az alapvető keresés felfedi a legtöbb adatvédelmi incidenst,
+    de azokat nem, melyek bizalmas adatokat tartalmaznak.
+how-fxm-2-headline = Iratkozzon fel az adatvédelmi incidensek figyelésére
 how-fxm-2-blurb =
-    Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail-címét az adatsértésekben.
-    Ha megerősíti az e-mail címét, akkor teljes jelentést kap a múltbeli adatsértésekről is,
-    beleértve az érzékeny adatsértéseket is.
+    Hozzon létre egy { -brand-fxa }ot, és figyelje az e-mail-címét az adatvédelmi
+    incidensekben. Ha megerősíti az e-mail-címét, akkor teljes jelentést kap a múltbeli
+    adatvédelmi incidensekről is, beleértve a bizalmas adatvédelmi incidenseket is.
 how-fxm-3-headline = Kapjon értesítéseket a böngészőjében
 how-fxm-3-blurb =
     Ha a { -brand-name }t használja, akkor figyelmeztetést fog kapni, ha
-    egy adatsértésben érintett webhelyet keres fel. Tudja meg, hogy részese volt-e
-    az adatsértésnek, és hogy mit tehet emiatt.
-wtd-after-website = Mi a teendő egy webhelyen történő adatsértés után
-wtd-after-data-agg = Mi a teendő egy adatgyűjtőben történt adatsértés után
+    egy adatvédelmi incidensben érintett webhelyet keres fel. Tudja meg, hogy részese volt-e
+    az adatvédelmi incidensnek, és hogy mit tehet emiatt.
+wtd-after-website = Mi a teendő egy webhelyen történő adatvédelmi incidens után
+wtd-after-data-agg = Mi a teendő egy adatgyűjtőben történt adatvédelmi incidens után
 what-is-data-agg = Mi egy adatgyűjtő?
 what-is-data-agg-blurb =
-    Az adatgyűjtők vagy adatbrókerek információkat gyűjtenek nyilvános rekordokból,
-    és megveszik őket más cégektől. Összeválogatják ezeket az adatokat, és más cégeknek
-    adják el, marketing célokra. Az ilyen adatsértések ritkán eredményeznek pénzügyi csalást,
+    Az adatgyűjtők vagy adatbrókerek információkat gyűjtenek nyilvános rekordokból, és
+    megveszik őket más cégektől. Összeválogatják ezeket az adatokat, és más cégeknek adják el,
+    marketing célokra. Az ilyen adatvédelmi incidensek ritkán eredményeznek pénzügyi csalást,
     de a hackerek profilozásra és megszemélyesítésre használhatják az adatokat.
 protect-your-privacy = Védje meg az online magánszféráját
-no-pw-to-change = A webhelyen történő adatsértésekkel ellentétben, itt nincs jelszó amit megváltoztathatna.
+no-pw-to-change = A webhelyen történő adatvédelmi incidensekkel ellentétben, itt nincs jelszó amit megváltoztathatna.
 avoid-personal-info = Ne használjon személyes információkat a jelszavakban
 avoid-personal-info-blurb = A születésnapok, a címek és a családtagok nevei könnyen megtalálhatók online. Ne használja ezeket a szavakat a jelszavakban.
 
@@ -210,24 +213,24 @@ create-strong-passwords = Hogyan hozzon létre erős jelszavakat
 stop-reusing-pw = Ne használja újra ugyanazt a jelszót
 create-unique-pw = Hozzon létre egyedi jelszavakat, és mentse el őket biztonságosan, például egy jelszókezelőben.
 five-myths = 5 mítosz a jelszókezelőkről
-create-a-fxa = Hozzon létre egy { -brand-fxa }ot a teljes adatsértési jelentésért, és hogy figyelmeztetéseket kapjon.
+create-a-fxa = Hozzon létre egy { -brand-fxa }ot a adatvédelmi incidensek teljes jelentéséért, és hogy figyelmeztetéseket kapjon.
 feat-security-tips = Biztonsági tippek a fiókjai védelméhez
-feat-sensitive = Speciális keresés az érzékeny adatsértésekben
-feat-enroll-multiple = Több e-mail-cím beállítása az adatsértés-figyelésnél
+feat-sensitive = Speciális keresés a bizalmas adatvédelmi incidensekben
+feat-enroll-multiple = Több e-mail-cím beállítása az adatvédelmi incidensek figyelésénél
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
     { $breachCount ->
-        [one] { $breachCount } ismert adatsértésben szerepel.
-       *[other] { $breachCount } ismert adatsértésben szerepel.
+        [one] { $breachCount } ismert adatvédelmi incidensben szerepel.
+       *[other] { $breachCount } ismert adatvédelmi incidensben szerepel.
     }
-check-for-breaches = Adatsértések keresése
+check-for-breaches = Adatvédelmi incidensek keresése
 find-out-what-hackers-know = Tudja meg, hogy a hackerek mit tudnak már Önről. Ismerje meg, hogyan tarthat egy lépéssel előttük.
-get-email-alerts = Maradjon biztonságban: e-mail értesítéseket kap, ha adatai ismert adatsértésben érintettek
-search-for-your-email = Keresse meg az e-mail-címét a nyilvánosságra került adatsértésekben, egészen 2007-ig.
+get-email-alerts = Maradjon biztonságban: e-mail értesítéseket kap, ha adatai ismert adatvédelmi incidensben érintettek
+search-for-your-email = Keresse meg az e-mail-címét a nyilvánosságra került adatvédelmi incidensekben, egészen 2007-ig.
 back-to-top = Vissza a tetejére
-comm-opt-0 = Küldjenek nekem e-mailt, ha az e-mail-címem megjelenik egy adatsértésben.
-comm-opt-1 = Az összes adatsértési figyelmeztetés elküldései erre a címre: { $primaryEmail }.
+comm-opt-0 = Küldjenek nekem e-mailt, ha az e-mail-címem megjelenik egy adatvédelmi incidensben.
+comm-opt-1 = Az összes adatvédelmi incidens figyelmeztetésének elküldései erre a címre: { $primaryEmail }.
 stop-monitoring-this = Az e-mail-cím figyelésének leállítása.
 resend-verification = Ellenőrző e-mail újraküldése
 add-new-email = Új e-mail-cím hozzáadása
@@ -237,8 +240,8 @@ send-verification = Ellenőrző e-mail küldése
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-summary = Adatsértés összefoglalója
-show-breaches-for-this-email = Az e-mail-címhez tartozó összes adatsértés megjelenítése.
+breach-summary = Adatvédelmi incidens összefoglalója
+show-breaches-for-this-email = Az e-mail-címhez tartozó összes adatvédelmi incidens megjelenítése.
 link-change-primary = Elsődleges e-mail-cím módosítása
 remove-fxm = { -product-name } eltávolítása
 remove-fxm-blurb =
@@ -247,15 +250,15 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = E-mail-címek kezelése
 # Link title
-latest-breach-link = Nézze meg, hogy szerepel-e ebben az adatsértésben
+latest-breach-link = Nézze meg, hogy szerepel-e ebben az adatvédelmi incidensben
 welcome-back = Üdvözöljük újra, { $userName }!
 welcome-user = Üdvözöljük, { $userName }!
-breach-alert-subject = A { -product-name } megtalálta az e-mail-címét egy új adatsértésben.
-your-info-was-discovered-headline = Felfedezték az Ön adatait egy új adatsértés során.
+breach-alert-subject = A { -product-name } megtalálta az e-mail-címét egy új adatvédelmi incidensben.
+your-info-was-discovered-headline = Felfedezték az Ön adatait egy új adatvédelmi incidens során.
 your-info-was-discovered-blurb =
     Ön feliratkozott a { -product-name } figyelmeztetéseire,
-    ha megjelenik az e-mail-címe egy adatsértésben. Itt van amit erről az esetről tudunk.
-what-to-do-after-breach = Mi a teendő egy adatsértés után
+    ha megjelenik az e-mail-címe egy adatvédelmi incidensben. Itt van amit erről az esetről tudunk.
+what-to-do-after-breach = Mi a teendő egy adatvédelmi incidens után
 ba-next-step-1 = Cserélje le jelszavát egy erős, egyedi jelszóra.
 ba-next-step-blurb-1 =
     Egy erős jelszó kis- és nagybetűk kombinációját használja,
@@ -270,34 +273,34 @@ ba-next-step-3 = Kapjon segítséget a jobb jelszavak létrehozásához és azok
 ba-next-step-blurb-3 =
     Használjon egy jelszókezelőt, hogy erős, egyedi jelszavakat hozzon létre. A jelszókezelők biztonságosan tárolják
     a bejelentkezéseit, így elérheti azokat az összes eszközén.
-faq1 = Nem ismerem ezt a céget vagy weboldalt? Miért szerepelek ebben az adatsértésben?
-faq2 = Miért tartott ilyen sokáig, hogy értesüljek erről az adatsértésről?
+faq1 = Nem ismerem ezt a céget vagy weboldalt? Miért szerepelek ebben az adatvédelmi incidensben?
+faq2 = Miért tartott ilyen sokáig, hogy értesüljek erről az adatvédelmi incidensről?
 faq3 = Honnan tudom, hogy ez az e-mail valóban a { -product-name }tól érkezett?
 new-breaches-found =
     { $breachCount ->
-        [one] { $breachCount } ÚJ ADATSÉRTÉS TALÁLHATÓ
-       *[other] { $breachCount } ÚJ ADATSÉRTÉS TALÁLHATÓ
+        [one] { $breachCount } ÚJ ADATVÉDELMI INCIDENS TALÁLHATÓ
+       *[other] { $breachCount } ÚJ ADATVÉDELMI INCIDENS TALÁLHATÓ
     }
 sign-up-headline-1 = Kapjon folyamatos figyelmeztetéseket a { -brand-fxa }jával.
 account-not-required = A { -brand-name } böngésző sem szükséges a { -brand-fxa }hoz. Információkat kaphat a { -brand-Mozilla } szolgáltatásokról.
-was-your-info-exposed = Kikerültek-e az adatai a(z) { $breachName } adatsértésben?
-find-out-if = Tudja meg, hogy kikerültek-e az adatai ebben az adatsértésben.
-fb-not-comp = Ez az e-mail-cím nem szerepelt a(z) { $breachName } adatsértésben.
+was-your-info-exposed = Kikerültek-e az adatai a(z) { $breachName } adatvédelmi incidensben?
+find-out-if = Tudja meg, hogy kikerültek-e az adatai ebben az adatvédelmi incidensben.
+fb-not-comp = Ez az e-mail-cím nem szerepelt a(z) { $breachName } adatvédelmi incidensben.
 other-breaches-found =
     { $breachCount ->
-        [one] Azonban { $breachCount } másik adatsértésben szerepelt.
-       *[other] Azonban { $breachCount } másik adatsértésben szerepelt.
+        [one] Azonban { $breachCount } másik adatvédelmi incidensben szerepelt.
+       *[other] Azonban { $breachCount } másik adatvédelmi incidensben szerepelt.
     }
-fb-comp-only = Ez az e-mail-cím megjelent a(z) { $breachName } adatsértésben.
+fb-comp-only = Ez az e-mail-cím megjelent a(z) { $breachName } adatvédelmi incidensben.
 fb-comp-and-others =
     { $breachCount ->
-        [one] Ez az e-mail-cím { $breachCount } adatsértésben jelent meg, köztük ebben is: { $breachName }.
-       *[other] Ez az e-mail-cím { $breachCount } adatsértésben jelent meg, köztük ebben is: { $breachName }.
+        [one] Ez az e-mail-cím { $breachCount } adatvédelmi incidensben jelent meg, köztük ebben is: { $breachName }.
+       *[other] Ez az e-mail-cím { $breachCount } adatvédelmi incidensben jelent meg, köztük ebben is: { $breachName }.
     }
-no-other-breaches-found = Az alapvető keresés nem talált más adatsértést.
-no-results-blurb = Sajnáljuk, ez az adatsértés nem szerepel az adatbázisunkban.
-all-breaches-headline = Az összes adatsértés a { -product-name }ban
-search-breaches = Adatsértések keresése
+no-other-breaches-found = Az alapvető keresés nem talált más adatvédelmi incidenst.
+no-results-blurb = Sajnáljuk, ez az adatvédelmi incidens nem szerepel az adatbázisunkban.
+all-breaches-headline = Az összes adatvédelmi incidens a { -product-name }ban
+search-breaches = Adatvédelmi incidensek keresése
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -355,23 +358,23 @@ email-addresses-being-monitored =
 # your localization, because it would result in the number showing twice.
 passwords-exposed =
     { $passwords ->
-        [one] Jelszó került ki adatsértés miatt
-       *[other] Jelszó került ki adatsértés miatt
+        [one] Jelszó került ki adatvédelmi incidens miatt
+       *[other] Jelszó került ki adatvédelmi incidens miatt
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that have exposed the user’s information. Don’t add $breaches to
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] Ismert adatsértésben kerültek ki az információi
-       *[other] Ismert adatsértésben kerültek ki az információi
+        [one] Ismert adatvédelmi incidensben kerültek ki az információi
+       *[other] Ismert adatvédelmi incidensben kerültek ki az információi
     }
 # Button
-see-additional-breaches = További adatsértések megtekintése
+see-additional-breaches = További adatvédelmi incidensek megtekintése
 scan-results-known-breaches =
     { $breachCount ->
-        [one] Ez az e-mail cím 1 ismert adatsértésben jelent meg.
-       *[other] Ez az e-mail cím { $breachCount } ismert adatsértésben jelent meg.
+        [one] Ez az e-mail cím 1 ismert adatvédelmi incidensben jelent meg.
+       *[other] Ez az e-mail cím { $breachCount } ismert adatvédelmi incidensben jelent meg.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
@@ -380,21 +383,21 @@ results-for = Találatok erre: { $userEmail }
 other-monitored-emails = Egyéb megfigyelt e-mail-címek
 email-verification-required = E-mail ellenőrzés szükséges
 fxa-primary-email = { -brand-fxa } e-mail-cím – Elsődleges
-what-is-a-website-breach = Mi az a weboldalon történt adatsértés?
-website-breach-blurb = Weboldalon történő adatsértés akkor történik, ha számítógépes bűnözők ellopják, lemásolják vagy nyilvánosságra hozzák az online fiókok személyes adatait. Ez általában annak a következménye, hogy a hackerek gyenge pontot találnak a weboldal biztonságában. Adatsértések akkor is előfordulhatnak, ha a fiókadatok véletlenül szivárognak ki.
+what-is-a-website-breach = Mi az a weboldalon történt adatvédelmi incidens?
+website-breach-blurb = Weboldalon történő adatvédelmi incidens akkor történik, ha számítógépes bűnözők ellopják, lemásolják vagy nyilvánosságra hozzák az online fiókok személyes adatait. Ez általában annak a következménye, hogy a hackerek gyenge pontot találnak a weboldal biztonságában. Adatvédelmi incidensek akkor is előfordulhatnak, ha a fiókadatok véletlenül szivárognak ki.
 security-tips-headline = Biztonsági tippek, hogy megvédje magát a hackerekkel szemben
 steps-to-protect = Lépések az online személyazonossága megvédéséhez
 take-further-steps = Tegyen további lépéseket a személyazonossága megvédéséhez
-alert-about-new-breaches = Értesítsen a jövőbeli adatsértésekről
-see-if-youve-been-part = Nézze meg, hogy szerepel-e online adatsértésben.
-get-ongoing-breach-monitoring = Kapjon rendszeres adatsértési jelentéseket több e-mail-címről.
+alert-about-new-breaches = Értesítsen a jövőbeli adatvédelmi incidensekről
+see-if-youve-been-part = Nézze meg, hogy szerepel-e online adatvédelmi incidensben.
+get-ongoing-breach-monitoring = Kapjon rendszeres adatvédelmi incidensjelentéseket több e-mail-címről.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Tudja meg
 new-unsub-error = Le kell iratkoznia egy a { -product-name }tól érkezett e-mailen.
 other-known-breaches-found =
     { $breachCount ->
-        [one] Azonban { $breachCount } egyéb ismert adatsértésben is megjelent.
-       *[other] Azonban { $breachCount } egyéb ismert adatsértésben is megjelent.
+        [one] Azonban { $breachCount } egyéb ismert adatvédelmi incidensben is megjelent.
+       *[other] Azonban { $breachCount } egyéb ismert adatvédelmi incidensben is megjelent.
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
@@ -407,7 +410,7 @@ breach-overview-title = Áttekintés
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = A(z) { $breachTitle } adatsértés áldozata lett ekkor: { $breachDate }. Amint az adatsértés felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
+breach-overview-new = A(z) { $breachTitle } adatvédelmi incidens áldozata lett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
 # Title appearing on the Preferences dashboard. 
 monitor-preferences = { -product-short-name } beállítások
 # When a user is signed in, this appears in the drop down menu 
@@ -418,7 +421,7 @@ signed-in-as = Bejelentkezett, mint { $userEmail }
 filter-by = Szűrés kategória szerint:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menü
-to-affected-email = Adatsértési figyelmeztetések elküldése az érintett e-mail címre
+to-affected-email = Adatvédelmi incidensfigyelmeztetések elküldése az érintett e-mail-címre
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Megvédheti a magánszféráját. Csatlakozzon a { -brand-name }hoz.
 # Link title
@@ -434,7 +437,7 @@ verify-the-link = Erősítse meg a(z) { $userEmail } címre küldött hivatkozá
 ## an additional email to Firefox Monitor.
 
 email-verified = E-mail-cím sikeresen megerősítve.
-email-added-to-subscription = Értesítjük, ha a(z) { $email } megjelenik egy adatsértésben.
+email-added-to-subscription = Értesítjük, ha a(z) { $email } megjelenik egy adatvédelmi incidensben.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = Hogy megtekintse és kezelje az összes e-mail-címet, amelynél figyelésre iratkozott fel, { $nestedSignInLink }.
@@ -453,10 +456,10 @@ manage-all-emails = Az e-mail-címeit a { $preferencesLink }ban kezelheti.
 # the user to choose whether or not they want to receive breach
 # alerts for all of their monitored email addresses to a single 
 # email address.
-breach-alert-notifications = Adatsértési riasztási értesítések
+breach-alert-notifications = Adatvédelmi incidensek riasztási értesítései
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
-breach-added-label = Adatsértés hozzáadva:
+breach-added-label = Adatvédelmi incidens hozzáadva:
 how-hackers-work-desc = Védje a jelszavakat a számítógépes bűnözőktől, mert ez az, ami a legjobban érdekli őket.
 what-to-do-after-breach-desc = Zárolja a fiókjait, hogy ne kerüljenek rossz kezekbe az adatai.
 create-strong-passwords-desc = Válasszon erős, biztonságos és nehezen kitalálható jelszavakat.
@@ -466,37 +469,37 @@ take-further-steps-desc = Tudja meg hogyan csökkentheti a személyazonosság-lo
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Módosítások mentve.
 # Section headline
-rec-section-headline = Mi a teendő ezzel az adatsértéssel?
+rec-section-headline = Mi a teendő ezzel az adatvédelmi incidenssel?
 rec-section-subhead = Javasoljuk, hogy tegye meg ezeket a lépéseket a személyes adatai biztonságának és a digitális személyazonosságának védelme érdekében.
 # Section headline
 rec-section-headline-no-pw = Mit tegyen a személyes adatainak védelme érdekében?
-rec-section-subhead-no-pw = Bár a jelszavak nem kerültek ki ebben az adatsértésben, még mindig tehet többet a személyes adatai védelme érdekében.
+rec-section-subhead-no-pw = Bár a jelszavak nem kerültek ki ebben az adatvédelmi incidensben, még mindig tehet többet a személyes adatai védelme érdekében.
 # Button
 see-additional-recs = További javaslatok megtekintése
 
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
-resolve-top-notification = A(z) { $affectedEmail } megjelent ebben az adatsértésben. <a>Mik a további teendők?</a>
+resolve-top-notification = A(z) { $affectedEmail } megjelent ebben az adatvédelmi incidensben. <a>Mik a további teendők?</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] { $numAffectedEmails } e-mail-címe jelent meg ebben az adatsértésben. <a>Mik a további teendők?</a>
-       *[other] { $numAffectedEmails } e-mail-címe jelent meg ebben az adatsértésben. <a>Mik a további teendők?</a>
+        [one] { $numAffectedEmails } e-mail-címe jelent meg ebben az adatvédelmi incidensben. <a>Mik a további teendők?</a>
+       *[other] { $numAffectedEmails } e-mail-címe jelent meg ebben az adatvédelmi incidensben. <a>Mik a további teendők?</a>
     }
 
 ##
 
-marking-this-subhead = Az adatsértés megjelölése megoldottként
+marking-this-subhead = Az adatvédelmi incidens megjelölése megoldottként
 # This string contains nested markup that is later used to style the text inside of it.
 # Please do not modify or remove "<span>" and "</span>".
 marking-this-body =
-    <span>Amint megtette a lépéseket, kezelheti ezt az adatsértést</span>,
+    <span>Amint megtette a lépéseket, kezelheti ezt az adatvédelmi incidenst</span>,
     megjelölheti megoldottként. A saját vezérlőpultjáról továbbra is elérheti 
-    az adatsértés részleteit.
+    az adatvédelmi incidens részleteit.
 mark-as-resolve-button = Megjelölés megoldottként
 marked-as-resolved-label = Megjelölve megoldottként
 undo-button = Visszavonás
-confirmation-1-subhead = Szép! Most oldotta meg az első adatsértését.
+confirmation-1-subhead = Szép! Most oldotta meg az első adatvédelmi incidensét.
 confirmation-1-body = Tartsa meg a lendületet. Nézze meg a vezérlőpultot, hogy van-e még tennivaló.
 confirmation-2-subhead = Nesze nektek hackerek!
 confirmation-2-body = Fontos lépéseket tesz az online fiókjai védelmének érdekében.
@@ -504,13 +507,13 @@ confirmation-3-subhead = Még egy lecsapva. Szép munka!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Az új jelszava egyedi, erős és nehezen kitalálható? <a>Tudja meg</a>
-generic-confirmation-subhead = Ez az adatsértés megoldottként lett megjelölve
+generic-confirmation-subhead = Ez az adatvédelmi incidens megoldottként lett megjelölve
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
-        [one] A fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
-       *[other] Az összes fennmaradt adatsértés megtekintéséhez ugorjon az irányítópulthoz.
+        [one] A fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
+       *[other] Az összes fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
     }
-return-to-breach-details-link = Vissza az adatsértés részleteihez
+return-to-breach-details-link = Vissza az adatvédelmi incidens részleteihez
 go-to-dashboard-link = Ugrás a vezérlőpultra
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
@@ -522,27 +525,27 @@ num-resolved =
         [one] { $numResolvedBreaches } megoldva
        *[other] { $numResolvedBreaches } megoldva
     }
-progress-intro-subhead = Új a { -product-name }ban: Adatsértések megjelölése megoldottként
+progress-intro-subhead = Új a { -product-name }ban: Adatvédelmi incidensek megjelölése megoldottként
 progress-intro-message =
-    Az adatsértés részleteinek áttekintése és a személyes információi érdekében 
-    tett védelmi lépések megtétele után, megjelölheti az adatsértéseket megoldottként.
+    Az adatvédelmi incidens részleteinek áttekintése és a személyes információi érdekében 
+    tett védelmi lépések megtétele után, megjelölheti az adatvédelmi incidenseket megoldottként.
 progress-status =
     { $numTotalBreaches ->
-        [one] { $numResolvedBreaches } / { $numTotalBreaches } adatsértés megjelölve megoldottként
-       *[other] { $numResolvedBreaches } / { $numTotalBreaches } adatsértés megjelölve megoldottként
+        [one] { $numResolvedBreaches } / { $numTotalBreaches } adatvédelmi incidens megjelölve megoldottként
+       *[other] { $numResolvedBreaches } / { $numTotalBreaches } adatvédelmi incidens megjelölve megoldottként
     }
-progress-complete = Az összes ismert adatsértés megjelölve megoldottként
+progress-complete = Az összes ismert adatvédelmi incidens megjelölve megoldottként
 
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
 progress-message-1 =
-    <span>Nagyszerű kezdés!</span> Nézze meg a fennmaradó adatsértéseket, és 
+    <span>Nagyszerű kezdés!</span> Nézze meg a fennmaradó adatvédelmi incidenseket, és 
     tudja meg milyen lépéseket kell tennie.
 progress-message-2 =
     <span>Csak így tovább!</span> Az apró változtatások, mint a jelszavai frissítése, nagy hatással 
     vannak a személyes adatai biztonságban tartására.
-progress-message-3 = <span>Szép munka, az adatsértések megoldva!</span> Csak így tovább, még néhány van hátra.
+progress-message-3 = <span>Szép munka, az adatvédelmi incidensek megoldva!</span> Csak így tovább, még néhány van hátra.
 progress-message-4 = <span>Már majdnem kész!</span> Közel a célvonal.
 progress-complete-message =
     <span>Jó érzés, ugye?</span> Ha folytatni akarja, akkor itt az alkalom, hogy frissítse 
@@ -550,7 +553,7 @@ progress-complete-message =
 
 ##
 
-resolve-this-breach-link = Ezen adatsértés megoldása
+resolve-this-breach-link = Ezen adatvédelmi incidens megoldása
 # This string appears in resolved breach cards and is followed by 
 # the date the user marked the breach as resolved.
 marked-resolved = Megjelölve megoldottként:
@@ -558,31 +561,31 @@ hide-resolved-button = Megoldottak elrejtése
 show-resolved-button = Megoldottak megjelenítése
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] Megoldatlan adatsértésekben kikerült jelszó
-       *[other] Megoldatlan adatsértésekben kikerült jelszó
+        [one] Megoldatlan adatvédelmi incidensekben kikerült jelszó
+       *[other] Megoldatlan adatvédelmi incidensekben kikerült jelszó
     }
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] Megoldottként megjelölt adatsértés
-       *[other] Megoldottként megjelölt adatsértés
+        [one] Megoldottként megjelölt adatvédelmi incidens
+       *[other] Megoldottként megjelölt adatvédelmi incidens
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Új
-mobile-promo-headline = Hozza el a { -brand-name }ot telefonjára és táblagépére
-mobile-promo-body = Gyors, privát és biztonságos böngészés bárhová is menjen. Keresse meg a { -brand-name }ot a Google Play és az App Store áruházban.
-mobile-promo-cta = Szerezze meg a { -brand-name }ot Androidra és iOS-re
+mobile-promo-headline = Hozza el a { -brand-name(case: "accusative") } telefonjára és táblagépére
+mobile-promo-body = Gyors, privát és biztonságos böngészés bárhová is menjen. Keresse meg a { -brand-name(case: "accusative") } a Google Play és az App Store áruházban.
+mobile-promo-cta = Szerezze meg a { -brand-name(case: "accusative") } Androidra és iOS-re
 promo-lockwise-headline = Vigye magával a jelszavait bárhová
 lockwise-promo-body = Kövesse nyomon bejelentkezéseit az összes eszközén. Érje el azokat biztonságosan a számítógépéről, telefonjáról vagy táblagépéről.
 promo-lockwise-cta = { -brand-lockwise } beszerzése
 fpn-promo-headline = Rejtse el a helyét a weboldalak és nyomkövetők elől
 promo-fpn-body = A { -brand-fpn } félrevezeti a weboldalakat és adatgyűjtőket, melyek profilozzák Önt a hirdetésekkel, azáltal, hogy elrejti a valódi IP-címét.
 promo-fpn-cta = { -brand-fpn } beszerzése
-monitor-promo-headline = Tudjon meg többet az új adatsértésekről
-monitor-promo-body = Kapjon értesítést, ha a személyes adatai kikerülnek egy ismert adatsértésben.
+monitor-promo-headline = Tudjon meg többet az új adatvédelmi incidensekről
+monitor-promo-body = Kapjon értesítést, ha a személyes adatai kikerülnek egy ismert adatvédelmi incidensben.
 ecosystem-promo-headline = Védje meg az online életét az adatvédelmet előre helyező termékeinkkel
 ecosystem-promo-body = Az összes { -brand-name } termék betartja a személyes adatokra vonatkozó ígéretünket: Gyűjts kevesebbet. Tartsd biztonságban. Nincsenek titkok.
 promo-ecosystem-cta = Összes termék megtekintése
-steps-to-resolve-headline = Lépések az adatsértés megoldása érdekében
+steps-to-resolve-headline = Lépések az adatvédelmi incidens megoldása érdekében
 vpn-promo-headline = Itt az ideje, hogy felturbózza az online biztonságát.
 vpn-promo-copy = A { -brand-Mozilla } virtuális magánhálózata segít megvédeni az internetkapcsolatát a hackerek és kémek ellen.
 vpn-promo-cta = { -brand-mozilla-vpn } beszerzése

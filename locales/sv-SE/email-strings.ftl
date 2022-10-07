@@ -102,3 +102,44 @@ more-products-vpn = Skydd för hela din enhet, på varje enhet.
 more-products-cta-vpn = Hämta { -product-name-vpn }
 more-products-relay = Dölj din riktiga e-postadress för att skydda din identitet.
 more-products-cta-relay = Hämta { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Du får detta automatiska e-postmeddelande som prenumerant på { -product-name }. <br>Ändra dina e-postinställningar när som helst <a { $unsubscribe-link-attr }>här</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Intrångsdata tillhandahållen av <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Du har olösta intrång
+email-unresolved-subhead = Din e-postadress var inblandad i ett dataintrång. <br>Åtgärda det direkt med { -product-name }.
+email-is-affected = Din e-postadress, { $email-address }, påverkas av minst ett dataintrång
+email-more-detail = Logga in på { -product-name } nu för att se mer information om dina intrång (inklusive när de inträffade och vilken data som avslöjades), och ta reda på vad du ska göra när din e-postadress har avslöjats i ett dataintrång.
+email-breach-status = Aktuell intrångsstatus
+# table row 1 label
+email-monitored = Totalt antal övervakade e-postadresser:
+# table row 2 label
+email-breach-total = Totalt antal intrång:
+# table row 3 label
+email-resolved = Lösta intrång:
+# table row 4 label
+email-unresolved = Olösta intrång:
+email-resolve-cta = Åtgärda intrång
+
+## Verification email
+
+email-verify-heading = Skydda dina data, från och med nu
+email-verify-subhead = Verifiera din e-post för att börja skydda din data efter ett intrång.
+email-verify-simply-click = Klicka på länken nedan för att slutföra verifieringen av ditt konto.
+
+## Breach report
+
+email-breach-summary = Här är din sammanfattning av dataintrång
+email-breach-detected = Sökresultat för ditt { $email-address }-konto har upptäckt att din e-post kan ha blivit avslöjad. Vi rekommenderar att du agerar nu för att lösa detta intrång.
+email-no-breach-detected = Goda nyheter! Vi har inte hittat några dataintrång som påverkar din e-post, { $email-address }.
+email-dashboard-cta = Gå till översikten
+
+## Breach alert
+
+email-may-have-been-exposed = Din e-post kan ha avslöjats i ett dataintrång
+email-spotted-new-breach = Vi har upptäckt ett nytt dataintrång

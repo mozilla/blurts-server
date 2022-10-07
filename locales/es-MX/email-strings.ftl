@@ -98,3 +98,44 @@ more-products-vpn = Protección para todo tu dispositivo, en todos los dispositi
 more-products-cta-vpn = Obtener { -product-name-vpn }
 more-products-relay = Oculta tu dirección de correo electrónico real para ayudar a proteger tu identidad.
 more-products-cta-relay = Obtener { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Estás recibiendo este mensaje de correo automático como suscriptor de { -product-name }. <br>No dudes en cambiar tus preferencias de correo en cualquier momento <a { $unsubscribe-link-attr }>aquí</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Filtración de datos proporcionada por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Tienes filtraciones de correo sin resolver
+email-unresolved-subhead = Tu correo ha quedado expuesto. <br>Soluciónalo ahora mismo { -product-name }.
+email-is-affected = Tu correo, { $email-address }, se vio afectado por al menos una filtración de datos
+email-more-detail = Inicia sesión en { -product-name } ahora para ver más detalles sobre tus filtraciones de correo (incluido cuando ocurrieron y que datos se expusieron) y conoce que debes hacer cuando tu correo ha sido expuesto en una filtración de datos.
+email-breach-status = Estado de la filtración actual
+# table row 1 label
+email-monitored = Total de correos monitoreados:
+# table row 2 label
+email-breach-total = Número total de filtraciones:
+# table row 3 label
+email-resolved = Filtraciones resueltas:
+# table row 4 label
+email-unresolved = Filtraciones sin resolver:
+email-resolve-cta = Resolver filtraciones:
+
+## Verification email
+
+email-verify-heading = Protege tus datos, comenzando ahora mismo
+email-verify-subhead = Verifica tu correo electrónico para comenzar a proteger tus datos después de una infracción.
+email-verify-simply-click = Simplemente haz clic en el siguiente enlace para terminar de verificar tu cuenta.
+
+## Breach report
+
+email-breach-summary = Aquí está el resumen de tu filtración de datos
+email-breach-detected = Los resultados de búsqueda de tu cuenta { $email-address } han detectado que tu correo electrónico puede haber sido expuesto. Te recomendamos que actúes ahora para resolver esta violación.
+email-no-breach-detected = ¡Grandiosas noticias! No hemos encontrado filtraciones de datos que afecten tu correo electrónico, { $email-address }.
+email-dashboard-cta = Ir al panel de control
+
+## Breach alert
+
+email-may-have-been-exposed = Tu correo electrónico puede haber estado expuesto en una filtración de datos
+email-spotted-new-breach = Hemos detectado una nueva filtración de datos

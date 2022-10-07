@@ -599,7 +599,11 @@ ecosystem-promo-headline = Zaščitite svoje spletno življenje z izdelki, ki na
 ecosystem-promo-body = Vsi izdelki { -brand-name } sledijo naši obljubi o ravnanju z osebnimi podatki: Vzemi manj. Ohrani na varnem. Brez skrivnosti.
 promo-ecosystem-cta = Oglejte si vse izdelke
 steps-to-resolve-headline = Koraki za razrešitev te kraje podatkov
+vpn-promo-headline = Zdaj je čas, da okrepite svojo varnost na spletu.
+vpn-promo-copy = Navidezno zasebno omrežje { -brand-Mozilla(sklon: "rodilnik") } vam pomaga zaščititi internetno povezavo pred napadalci in vohuni.
 vpn-promo-cta = Namestite { -brand-mozilla-vpn }
+vpn-promo-headline-new = Prihranite 50 % s celoletno naročnino
+vpn-promo-copy-new = Zaščitite svoje podatke na spletu – in izberite naročnino za VPN, ki vam ustreza.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
@@ -627,8 +631,13 @@ vpn-banner-cta-close = Zapri
 
 ad-unit-relay-cta = Več o { -brand-relay }u
 ad-unit-vpn-cta = Več o { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Kako ohranite svoj e-poštni naslov skrivnost?
 # ad 2 heading
 ad-unit-2-do-you-worry = Vas skrbi varnost na javnih omrežjih Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Ostanite v igri!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vam ponuja varno in stabilno povezavo med igranjem iger ali pretakanjem filmov.
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Bodite kjerkoli na svetu
 # ad 3 list item 3
@@ -636,5 +645,7 @@ ad-unit-3-access-more = Več dostopa
 # ad 4 heading
 ad-unit-4-shopping-with = Nakupovanje z e-poštnimi maskami
 ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali popolnoma zaupate trgovini?
+# ad 5 heading
+ad-unit-5-on-the-go = Na poti s { -brand-relay }
 # ad 6 heading
 ad-unit-6-worry-free = Brezskrbna registracija

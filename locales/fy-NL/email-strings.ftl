@@ -102,3 +102,44 @@ more-products-vpn = Beskerming foar jo folsleine apparaat, op elk apparaat.
 more-products-cta-vpn = Download { -product-name-vpn }
 more-products-relay = Ferbergje jo echte e-mailadres om jo identiteit te beskermjen
 more-products-cta-relay = Download { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Jo ûntfange dit automatyske e-mailberjocht as abonnee fan { -product-name }. <br>Fiel jo frij om jo e-mailfoarkar op elk momint <a { $unsubscribe-link-attr }>hjir</a> te wizigjen.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datalek oanlevere troch <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Jo hawwe net oploste datalekken
+email-unresolved-subhead = Jo e-mailadres is bleatsteld. <br>Los it daliks op mei { -product-name }.
+email-is-affected = Jo e-mailadres, { $email-address }, wurdt beynfloede troch op syn minst ien datalek
+email-more-detail = Meld jo no oan by { -product-name } om mear details te sjen oer jo datalekken (ynklusyf wannear’t se bard binne en hokker gegevens bleatsteld binne), en lear wat jo dwaan moatte as jo e-mailadres bleatsteld is yn in datalek.
+email-breach-status = Aktuele dataleksteat
+# table row 1 label
+email-monitored = Totaal oantal kontrolearre e-mailberjochten:
+# table row 2 label
+email-breach-total = Totaal oantal datalekken:
+# table row 3 label
+email-resolved = Oploste datalekken:
+# table row 4 label
+email-unresolved = Net oploste datalekken:
+email-resolve-cta = Datalekken oplosse
+
+## Verification email
+
+email-verify-heading = Beskermje jo gegevens, daliks
+email-verify-subhead = Ferifiearje jo e-mailadres om jo gegevens te beskermjen nei in datalek.
+email-verify-simply-click = Klik op de ûndersteande keppeling om de ferifikaasje fan jo account te foltôgjen.
+
+## Breach report
+
+email-breach-summary = Hjir is jo gearfetting fan jo datalek
+email-breach-detected = Sykresultaten foar jo account { $email-address } hawwe ûntdutsen dat jo e-mailadres mooglik lekt is. Wy rekommandearje oan dat jo no hannelje om dit datalek op te lossen.
+email-no-breach-detected = Geweldich nijs! Wy hawwe gjin datalekken fûn dy’t ynfloed hawwe op jo e-mailadres, { $email-address }.
+email-dashboard-cta = Nei it dashboerd
+
+## Breach alert
+
+email-may-have-been-exposed = Jo e-mailadres is mooglik lekt by in datalek
+email-spotted-new-breach = Wy hawwe in nije datalek ûntdekt

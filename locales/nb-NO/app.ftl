@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -615,3 +618,22 @@ ad-unit-vpn-cta = Les mer om { -brand-mozilla-vpn }
 ad-unit-1-how-do-you-keep = Hvordan holder du e-postadressen din hemmelig?
 # ad 2 heading
 ad-unit-2-do-you-worry = Bekymrer du deg for sikkerheten på offentlig Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Hold deg oppdatert!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Forhindre begrensning
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Vær hvor som helst i verden
+# ad 3 list item 3
+ad-unit-3-access-more = Få tilgang til mer
+# ad 4 heading
+ad-unit-4-shopping-with = Masker din e-postadresse når du shopper
+ad-unit-4-want-to-buy = Vil du kjøpe noe på nettet og ikke kjenner eller stoler helt på butikken?
+ad-unit-4-shop-online = Masker din e-postadresse når du handler på nettet. Få bekreftelsen sendt til din ekte e-postadresse, og slå deretter enkelt av aliaset når som helst senere.
+# ad 5 heading
+ad-unit-5-on-the-go = På farten med { -brand-relay }
+ad-unit-5-instantly-make = Masker din e-postadresse umiddelbart hvor som helst og overalt hvor du går!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Koble til mens du er på farten
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Bruk det på din telefon

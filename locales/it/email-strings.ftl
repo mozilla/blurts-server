@@ -82,3 +82,44 @@ more-products-vpn = Protezione completa del dispositivo, per ogni dispositivo.
 more-products-cta-vpn = Ottieni { -product-name-vpn }
 more-products-relay = Nascondi il tuo indirizzo email reale per mantenere la tua identità al sicuro.
 more-products-cta-relay = Ottieni { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Ricevi questa email da un servizio automatico in quanto abbonato a { -product-name }. <br>Puoi modificare le tue preferenze email in qualsiasi momento <a { $unsubscribe-link-attr }>qui</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Dati sulle violazioni forniti da <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Hai delle violazioni non risolte
+email-unresolved-subhead = Il tuo indirizzo email è stato coinvolto in una violazione di dati. <br>Risolvila subito con { -product-name }.
+email-is-affected = Il tuo indirizzo email { $email-address }, è stato coinvolto in almeno una violazione di dati
+email-more-detail = Accedi ora a { -product-name } per visualizzare ulteriori dettagli sulle violazioni che ti riguardano (incluso quando si sono verificate e quali dati sono stati esposti) e per scoprire quali procedure adottare quando il tuo indirizzo email risulta coinvolto in una violazione di dati.
+email-breach-status = Stato attuale della violazione
+# table row 1 label
+email-monitored = Totale indirizzi email monitorati:
+# table row 2 label
+email-breach-total = Numero totale di violazioni:
+# table row 3 label
+email-resolved = Violazioni risolte:
+# table row 4 label
+email-unresolved = Violazioni non risolte:
+email-resolve-cta = Risolvi violazioni
+
+## Verification email
+
+email-verify-heading = Proteggi i tuoi dati, a partire da adesso
+email-verify-subhead = Verifica il tuo indirizzo email per iniziare a proteggere i tuoi dati dopo una violazione.
+email-verify-simply-click = Fai clic sul link sottostante per completare il processo di verifica del tuo account.
+
+## Breach report
+
+email-breach-summary = Sommario delle violazioni dati che hanno coinvolto il tuo account
+email-breach-detected = I risultati della ricerca per il tuo account { $email-address } indicano che il tuo indirizzo email potrebbe essere stato esposto. Ti consigliamo di agire ora per risolvere questa violazione.
+email-no-breach-detected = Buone notizie! Non abbiamo trovato alcuna violazione di dati che include il tuo indirizzo email, { $email-address }.
+email-dashboard-cta = Vai al pannello utente
+
+## Breach alert
+
+email-may-have-been-exposed = Il tuo indirizzo email potrebbe essere stato esposto in una violazione di dati
+email-spotted-new-breach = Abbiamo individuato una nuova violazione di dati

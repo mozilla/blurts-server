@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -196,50 +199,6 @@ security-tips = Bezpečnostní tipy
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Otevřít nabídku { -brand-fxa(case: "gen", capitalization: "lower") }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Na stupnici od 1 do 10, jako moc byste doporučili { -product-short-name(case: "acc") } svým přátelům nebo kolegům?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Spíše ne
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Určitě ano
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = Používá se vám { -product-short-name } snadno?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = Je podle vás { -product-short-name } důvěryhodný?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = Prezentuje se { -product-short-name } jednoduše a srozumitelně?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Rozhodně nesouhlasím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Nesouhlasím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Nevím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Souhlasím
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Rozhodně souhlasím
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Jak byste si cítili, kdybyste { -product-short-name(case: "acc") } najednou nemohli používat?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Velké zklamání
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Lehké zklamání
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Nechyběl by mi
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = NAPOSLEDY PŘIDANÝ ÚNIK
 # Link title
@@ -715,9 +674,40 @@ vpn-banner-cta-expand = Rozbalit
 # button to close panel
 vpn-banner-cta-close = Zavřít
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Jak uchovávat svou e-mailovou adresu v tajnosti?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = Máte obavy o bezpečnost na veřejných Wi-Fi?
+ad-unit-relay-cta = Zjistěte více o { -brand-relay(case: "loc") }
+ad-unit-vpn-cta = Zjistěte více o { -brand-mozilla-vpn(case: "loc") }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Jak uchovávat svou e-mailovou adresu v tajnosti?
+# ad 2 heading
+ad-unit-2-do-you-worry = Máte obavy o bezpečnost na veřejných Wi-Fi?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Zůstaňte ve hře!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vám umožňuje udržovat stabilní připojení v bezpečí při hraní her nebo streamování filmů.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Zabraňte zpomalování
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Buďte kdekoli na světě
+# ad 3 list item 3
+ad-unit-3-access-more = Mějte víc možností přístupu
+# ad 4 heading
+ad-unit-4-shopping-with = Nakupování s e-mailovými maskami
+ad-unit-4-want-to-buy = Chcete si něco koupit v online obchodě, který ještě neznáte, nebo mu plně nedůvěřujete?
+ad-unit-4-shop-online = Používejte e-mailovou masku při každém nákupu. Nechte si přeposlat potvrzení na svůj skutečný e-mail a poté masku kdykoli snadno vypněte.
+# ad 5 heading
+ad-unit-5-on-the-go = Cestování s { -brand-relay(case: "ins") }
+ad-unit-5-instantly-make = E-mailovou masku si vytvoříte kdykoliv a kdekoliv potřebujete.
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Připojení na cestách
+ad-unit-5-privately-sign-in = Když se chcete soukromě přihlásit do své oblíbené kavárny nebo veřejné sítě Wi-Fi, použijte svou e-mailovou masku.
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Příjem e-mailových účtenek
+ad-unit-5-share-custom-email = Sdílejte vámi zvolenou e-mailovou masku pro obdržení účtenek z nákupů v obchodech, bez nutnosti sdílet váš skutečný e-mail.
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Použití i v telefonu
+ad-unit-5-no-matter-where = Ať jste kdekoli, vytvořte si během několika sekund vlastní e-mailovou masku pro cokoli, co chcete udělat.
+# ad 6 heading
+ad-unit-6-worry-free = Registrace bez obav
+ad-unit-6-want-to-start = Chcete si zřídit nové předplatné, odpovědět na pozvánku nebo získat výhodný promo kód bez toho, aby vám e-mailovou schránku zaplavil spam?
+ad-unit-6-before-you-complete = Během své další registrace použijte místo svého skutečného e-mailu masku, abyste ochránili své údaje a udržovali si kontrolu nad doručenou poštou.

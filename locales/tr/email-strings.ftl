@@ -90,3 +90,44 @@ more-products-vpn = Her cihazınız için komple koruma.
 more-products-cta-vpn = { -product-name-vpn }’i edinin
 more-products-relay = Gerçek e-posta adresinizi gizleyerek kimliğinizi koruyun.
 more-products-cta-relay = { -product-name-relay }’i edinin
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Bu otomatik e-postayı { -product-name } abonesi olduğunuz için alıyorsunuz. <br>E-posta tercihlerinizi istediğiniz zaman <a { $unsubscribe-link-attr }>buradan</a> değiştirebilirsiniz.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = İhlal verileri <a { $hibp-link-attr }>{ -brand-HIBP }</a> tarafından sağlanmaktadır
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Çözümlenmemiş ihlalleriniz var
+email-unresolved-subhead = E-postanız açığa çıktı. <br>{ -product-name } ile hemen düzeltin.
+email-is-affected = { $email-address } adresiniz en az bir veri ihlalinden etkileniyor
+email-more-detail = İhlallerinizle ilgili daha fazla ayrıntı (ne zaman meydana geldiği ve hangi verilerin ifşa edildiği dahil) görmek için hemen { -product-name }’de oturum açın ve e-postanız bir veri ihlaline maruz kaldığında ne yapmanız gerektiğini öğrenin.
+email-breach-status = İhlal durumu
+# table row 1 label
+email-monitored = İzlenen toplam e-posta sayısı:
+# table row 2 label
+email-breach-total = Toplam ihlal sayısı:
+# table row 3 label
+email-resolved = Çözülen ihlaller:
+# table row 4 label
+email-unresolved = Çözülmemiş ihlaller:
+email-resolve-cta = İhlalleri çöz
+
+## Verification email
+
+email-verify-heading = Verilerinizi korumaya hemen şimdi başlayın
+email-verify-subhead = Veri ihlallerinin ardından verilerinizi korumaya başlamak için e-postanızı doğrulayın.
+email-verify-simply-click = Hesabınızı doğrulamak için aşağıdaki bağlantıya tıklamanız yeterli.
+
+## Breach report
+
+email-breach-summary = İşte veri ihlali özetiniz
+email-breach-detected = { $email-address } hesabınızın arama sonuçları, e-postanızın açığa çıkmış olabileceğini tespit etti. Bu ihlali çözmek için hemen harekete geçmenizi öneririz.
+email-no-breach-detected = Her şey yolunda! { $email-address } e-postanızı etkileyen hiçbir veri ihlali bulamadık.
+email-dashboard-cta = Panoya git
+
+## Breach alert
+
+email-may-have-been-exposed = E-postanız bir veri ihlali nedeniyle açığa çıkmış olabilir
+email-spotted-new-breach = Yeni bir veri ihlali tespit ettik

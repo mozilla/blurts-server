@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Banksaldo’s
 address-book-contacts = Adresboekkontakten
@@ -54,6 +54,7 @@ family-structure = Famyljestruktuer
 financial-investments = Finansjele ynfestearingen
 financial-transactions = Finansjele transaksjes
 fitness-levels = Fitheidsnivo's
+flights-taken = Nommen fluchten
 genders = Geslachten
 geographic-locations = Geografyske lokaasjes
 government-issued-ids = Troch de oerheid útjûne ID’s

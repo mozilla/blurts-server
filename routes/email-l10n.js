@@ -1,9 +1,27 @@
 'use strict'
 const express = require('express')
-const { getEmailMockUps, notFound } = require('../controllers/email-l10n')
-const router = express.Router()
+const helmet = require('helmet')
+const { getEmailMockup, sendTestEmail, notFound } = require('../controllers/email-l10n')
+const { requireAdminUser } = require('../middleware')
+const csrf = require('csurf')
 
-router.get('/', getEmailMockUps)
+const csrfProtection = csrf()
+const router = express.Router()
+const cspUnsafeInline = {
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'"],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    imgSrc: ["'self'", 'https://monitor.cdn.mozilla.net/'],
+    objectSrc: ["'none'"],
+    formAction: ["'self'"]
+  }
+}
+
+// Route needs unsafe-inline because inline styles are required as best-practice for HTML email styling.
+// Route requires admin user and is not enabled for production.
+router.get('/', requireAdminUser, csrfProtection, helmet.contentSecurityPolicy(cspUnsafeInline), getEmailMockup)
+router.post('/send-test-email', express.urlencoded({ extended: false }), csrfProtection, requireAdminUser, sendTestEmail)
 router.use(notFound)
 
 module.exports = router

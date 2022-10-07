@@ -1,67 +1,73 @@
-{{!< default_email}}
-
-  <!--report subhead-->
-  <table width="100%">
-    <tr>
-      <td align="center" style="max-width: 450px;">
-        <p class="email-subhead" style="color: rgb(32, 18, 58); font-size: 16px; font-weight: 400; font-family: sans-serif; text-align: center; margin: 0; padding: 0 0 20px 0; line-height: 1.5;">
-          {{#if breachAlert}}
-            {{ getString "email-breach-alert-blurb" }}
-          {{else}}
-            {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
-              {{ getString "fxm-warns-you-no-breaches" }}
-            {{else}}
-              {{ getString "fxm-warns-you-found-breaches" }}
-            {{/ifCompare}}
-          {{/if}}
-        </p>
-      </td>
-    </tr>
-  </table>
-  
-  {{#if breachAlert}}
-    <!--breach alert -->
-    <table width="100%" style="max-width: 460px;">
+<tr>
+  <td style="color: black; background: #F9F9FA; padding: 36px 0 24px;">
+    <p>
+      {{#ifCompare unsafeBreachesForEmail.length "===" 0}}
+      {{ getString "fxm-warns-you-no-breaches" }}
+      {{else}}
+      {{{ getString "email-breach-detected" email-address=( concat "<strong>" ( escapeExpression breachedEmail ) "</strong>" )
+      }}}
+      {{/ifCompare}}
+    </p>
+    <table style="max-width: 600px; margin: auto;">
       <tr>
-        <td align="center" style="padding-bottom: 20px;">
-          {{#getBreachAlert}}
-            {{> email_partials/email_single_breach SERVER_URL=../SERVER_URL breachAlert=../breachAlert subscriberId=../subscriberId}}
-          {{/getBreachAlert}}
+        <td>
+          <!-- gray breach summary cards -->
+          {{#each (emailBreachStats)}}
+          <table
+            style="background: #eee; border-radius: 6px; margin: 12px auto; padding: 12px; width: 100%; table-layout: auto;">
+            <tr>
+              <td style="width: 72px; font-size: 48px; font-weight: bold;">
+                {{ statNumber }}
+              </td>
+              <td style="text-align: left;">
+                {{ statTitle }}
+              </td>
+              </tr>
+              </table>
+          {{/each}}
         </td>
       </tr>
     </table>
-  {{else}}
+    <table style="margin: auto">
+      <tr>
+        <td>
+          <!-- breach cards -->
+          {{#each (getUnsafeBreachesForEmailReport)}}
+          <table
+            style="width: 30%; min-width: 240px; border-radius: 6px; border: 1px solid #eee; box-shadow: 0 0 6px #ddd; background: white; margin: 12px; display: inline-table; border-spacing: 0;">
+            <tr>
+              <td style="padding: 12px; border-top-left-radius: 6px; border-top-right-radius: 6px; background: #eee;">
+                <img src="{{ LogoUrl }}" width="25" height="25" style="vertical-align: bottom;"> {{ Title }}
+              </td>
+            </tr>
+            <tr>
+              <td style="padding: 24px;">
+                <p class="text-light"
+                  style="font-weight: 300; color: #5e5e72; font-size: 13px; font-family: sans-serif; margin: 0px; padding-bottom: 4px;">
+                  {{ LocalizedBreachCardStrings.BreachAdded }}</p>
+                <p class="text-medium"
+                  style="font-weight: 600; color: #20123a; font-size: 15px; padding-bottom: 15px; font-family: sans-serif; margin: 0px;">
+                  {{ AddedDate }}</p>
+                {{#if DataClasses }}
+                <p class="text-light"
+                  style="font-weight: 300; color: #5e5e72; font-size: 13px; font-family: sans-serif; margin: 0px; padding-bottom: 4px;">
+                  {{ LocalizedBreachCardStrings.CompromisedData }}</p>
+                <span class="text-medium"
+                  style="font-weight:600; font-size: 15px; font-family: sans-serif; margin: 0px; color: #20123a;">{{
+                  DataClasses
+                  }}</span>
+                {{/if}}
+              </td>
+              </tr>
+          </table>
+          {{/each}}
 
-    <!-- report -->
-    {{#ifCompare unsafeBreachesForEmail.length ">" 0}}
-      <table width="100%" style="max-width: 460px;" align="center">
-        <tr>
-          <td align="center" width="100%" style="padding-bottom: 15px; border-bottom: 1px solid rgb(238, 238, 238);">
-            <p class="breach-summary-for" style="font-weight: 500; font-family: sans-serif; font-size: 18px; margin: 0;">{{{ getBreachSummaryHeadline }}}</p>
-          </td>
+        </td>
         </tr>
-      </table>
+    </table>
 
-      <!-- gray breach summary cards -->
-      <table class="breach-stats" align="center" width="100%" style="max-width: 460px; padding: 20px 0;">
-        {{#each (emailBreachStats)}}
-          <tr>
-            <td align="center" valign="center" class="breach-stat-wrapper" width="100%" style="width: 100%; padding: 0 5px 20px 5px;">
-              {{> email_partials/email_breach_stat }}
-            </td>
-          </tr>
-        {{/each}}
-      </table>
-
-      <!-- breach cards -->
-      <table align="center" width="100%" style="max-width: 400px;">
-        {{#each (getUnsafeBreachesForEmailReport)}}
-          <tr>
-            <td width="100%" style="padding-bottom: 20px;">
-              {{> email_partials/email_single_breach SERVER_URL=../SERVER_URL subscriberId=../subscriberId}}
-            </td>
-          </tr>
-        {{/each}}
-      </table>
-    {{/ifCompare}}
-  {{/if}}
+    <a href="{{ ctaHref }}"
+      style="display: inline-block; margin: auto; color: white; background-color: #0060DF; border-radius: 4px; padding: 12px 24px; margin: 24px 0">{{
+      getString "email-dashboard-cta" }}</a>
+    </td>
+    </tr>

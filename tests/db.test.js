@@ -199,3 +199,16 @@ test('removeEmail accepts email and removes from email_addresses table', async (
   const noMoreEmailAddress = await DB.getEmailById(testEmailAddress.id)
   expect(noMoreEmailAddress).toBeUndefined()
 })
+
+test('getSubscribersWithUnresolvedBreaches returns subscribers', async () => {
+  const subscribersResult = await DB.getSubscribersWithUnresolvedBreaches();
+  expect(subscribersResult.length).toEqual(1)
+  expect(subscribersResult[0].primary_email).toEqual('has-breaches@example.com')
+  expect(subscribersResult[0].breach_stats.monitoredEmails).toEqual({"count": 1})
+})
+
+test('getSubscribersWithUnresolvedBreaches with null breach_stats returns', async () => {
+  await DB.updateBreachStats(12346, null)
+  const subscribersResult = await DB.getSubscribersWithUnresolvedBreaches();
+  expect(subscribersResult.length).toEqual(0)
+})

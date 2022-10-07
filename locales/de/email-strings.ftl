@@ -102,3 +102,44 @@ more-products-vpn = Schutz für Ihr gesamtes Gerät auf allen Geräten.
 more-products-cta-vpn = Holen sie sich { -product-name-vpn }
 more-products-relay = Verbergen Sie Ihre echte E-Mail-Adresse, um Ihre Identität zu schützen.
 more-products-cta-relay = Holen Sie sich { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Sie erhalten diese automatische E-Mail als Abonnent von { -product-name }. <br>Sie können Ihre E-Mail-Einstellungen jederzeit <a { $unsubscribe-link-attr }>hier</a> ändern.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Die Informationen zu Datenlecks wurden bereitgestellt von <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Sie haben noch nicht behobene Datenlecks
+email-unresolved-subhead = Ihre E-Mail-Adresse wurde offengelegt. <br>Beheben Sie das Problem sofort mit { -product-name }.
+email-is-affected = Ihre E-Mail-Adresse { $email-address } ist von mindestens einem Datenleck betroffen
+email-more-detail = Melden Sie sich jetzt bei { -product-name } an, um weitere Details über Ihre Datenlecks zu erfahren (auch wann diese aufgetreten sind und welche Daten offen gelegt wurden) und zu erfahren, was Sie tun sollten, wenn Ihre E-Mail-Adresse von einem Datenleck betroffen ist.
+email-breach-status = Aktueller Datenleck-Status
+# table row 1 label
+email-monitored = Überwachte E-Mail-Adressen insgesamt:
+# table row 2 label
+email-breach-total = Gesamtzahl der Datenlecks:
+# table row 3 label
+email-resolved = Behobene Datenlecks:
+# table row 4 label
+email-unresolved = Nicht behobene Datenlecks:
+email-resolve-cta = Datenlecks beheben
+
+## Verification email
+
+email-verify-heading = Schützen Sie Ihre Daten ab sofort
+email-verify-subhead = Bestätigen Sie Ihre E-Mail-Adresse, um Ihre Daten nach einem Leck zu schützen.
+email-verify-simply-click = Klicken Sie einfach auf den folgenden Link, um die Verifizierung Ihres Kontos abzuschließen.
+
+## Breach report
+
+email-breach-summary = Hier ist die Zusammenfassung Ihrer Datenlecks
+email-breach-detected = Suchergebnisse für Ihr Konto { $email-address } haben gezeigt, dass Ihre E-Mail-Adresse möglicherweise offengelegt wurde. Wir empfehlen Ihnen, jetzt zu handeln, um dieses Datenleck zu beheben.
+email-no-breach-detected = Großartige Neuigkeiten! Wir haben keine Datenlecks gefunden, die Ihre E-Mail-Adresse { $email-address } betreffen.
+email-dashboard-cta = Zur Übersicht
+
+## Breach alert
+
+email-may-have-been-exposed = Ihre E-Mail-Adresse wurde möglicherweise durch ein Datenleck offengelegt
+email-spotted-new-breach = Wir haben ein neues Datenleck entdeckt

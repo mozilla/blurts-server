@@ -618,3 +618,8 @@ ad-unit-1-how-do-you-keep = Korleis held du e-postadressa di hemmeleg?
 ad-unit-2-do-you-worry = Er du bekymra for sikkerheita på offentleg Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Hald deg oppdatert!
+# ad 3 list item 3
+ad-unit-3-access-more = Få tilgang til meir
+# ad 4 heading
+ad-unit-4-shopping-with = Masker e-postadressa di når du shoppar
+ad-unit-4-shop-online = Masker e-postadressa di når du handlar på nettet. Få stadfestinga sendt til den ekte e-postadressa di, og slå deretter enkelt av aliaset når som helst seinare.

@@ -55,6 +55,11 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   req.session.user = existingUser
 
   const returnURL = new URL('/user/dashboard', AppConstants.SERVER_URL)
+  const originalURL = new URL(req.originalUrl, AppConstants.SERVER_URL)
+
+  for (const [key, value] of originalURL.searchParams.entries()) {
+    if (key.startsWith('utm_')) returnURL.searchParams.append(key, value)
+  }
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
@@ -74,28 +79,32 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
     )
 
     const utmID = 'report'
-    const reportSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req)
+    const reportSubject = unsafeBreachesForEmail.length ? req.fluentFormat('email-subject-found-breaches') : req.fluentFormat('email-subject-no-breaches')
 
     await EmailUtils.sendEmail(
       email,
       reportSubject,
-      'default_email',
+      'email-2022',
       {
         supportedLocales: req.supportedLocales,
         breachedEmail: email,
         recipientEmail: email,
         date: req.fluentFormat(new Date()),
         unsafeBreachesForEmail,
-        ctaHref: EmailUtils.getEmailCtaHref(utmID, 'go-to-dashboard-link'),
+        ctaHref: EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta'),
+        utmCampaign: utmID,
         unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedSubscriber, utmID),
-        whichPartial: 'email_partials/report'
+        whichPartial: 'email_partials/report',
+        heading: req.fluentFormat('email-breach-summary')
       }
     )
     req.session.user = verifiedSubscriber
+
     return res.redirect(returnURL.pathname + returnURL.search)
   }
   // Update existing user's FxA data
   await DB._updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData)
+
   res.redirect(returnURL.pathname + returnURL.search)
 }
 

@@ -103,3 +103,44 @@ more-products-vpn = Suojausta koko laitteellesi, jokaiselle laitteellesi.
 more-products-cta-vpn = Hanki { -product-name-vpn }
 more-products-relay = Piilota todellinen sähköpostiosoitteesi henkilöytesi suojaamiseksi.
 more-products-cta-relay = Hanki { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Saat tämän automaattisen sähköpostin tuotteen { -product-name } tilaajana. <br>Voit muuttaa sähköpostiasetuksiasi milloin tahansa <a { $unsubscribe-link-attr }>täällä</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Vuototiedot tarjoaa <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Sinulla on ratkaisemattomia vuotoja
+email-unresolved-subhead = Sähköpostiosoitteesi on paljastunut. <br>Korjaa asia käyttämällä { -product-name }.
+email-is-affected = Sähköpostiosoitteeseesi { $email-address } on kohdistunut ainakin yksi tietovuoto
+email-more-detail = Kirjaudu sisään { -product-name } -palveluun nyt, niin näet lisätietoja tietovuodoista (mukaan lukien vuotojen ajankohdat ja mitä tietoa paljastui) ja katso, mitä sinun tulee tehdä, jos sähköpostiosoitteesi on paljastunut tietovuodossa.
+email-breach-status = Vuotojen nykyinen tila
+# table row 1 label
+email-monitored = Valvottuja sähköpostiosoitteita yhteensä:
+# table row 2 label
+email-breach-total = Vuotojen kokonaismäärä:
+# table row 3 label
+email-resolved = Ratkaistut vuodot:
+# table row 4 label
+email-unresolved = Ratkaisemattomat vuodot:
+email-resolve-cta = Selvitä vuodot
+
+## Verification email
+
+email-verify-heading = Suojaa tietosi heti
+email-verify-subhead = Vahvista sähköpostiosoitteesi, jotta voit aloittaa tietojesi suojaamisen tietovuodon jälkeen.
+email-verify-simply-click = Viimeistele tilisi vahvistaminen napsauttamalla alla olevaa linkkiä.
+
+## Breach report
+
+email-breach-summary = Tässä on yhteenveto tietovuodosta
+email-breach-detected = Tiliäsi { $email-address } koskevissa hakutuloksissa havaittiin, että sähköpostiosoitteesi on saattanut paljastua. Suosittelemme, että toimit nyt tämän vuodon ratkaisemiseksi.
+email-no-breach-detected = Hyviä uutisia! Emme ole havainneet tietovuotoja, jotka koskisivat sähköpostiosoitettasi { $email-address }.
+email-dashboard-cta = Siirry kojelaudalle
+
+## Breach alert
+
+email-may-have-been-exposed = Sähköpostiosoitteesi on saattanut paljastua tietovuodossa
+email-spotted-new-breach = Olemme havainneet uuden tietovuodon

@@ -96,3 +96,44 @@ more-products-vpn = Ochrana pre celé vaše zariadenie, na každom zariadení.
 more-products-cta-vpn = Získajte { -product-name-vpn }
 more-products-relay = Skryte svoju skutočnú e-mailovú adresu, aby ste chránili svoju identitu.
 more-products-cta-relay = Získajte { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Tento automatický e-mail dostávate ako odberateľ služby { -product-name }. <br>Predvoľby e-mailu môžete kedykoľvek zmeniť <a { $unsubscribe-link-attr }>tu</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Údaje o úniku poskytuje <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Máte nevyriešené úniky
+email-unresolved-subhead = Váš e-mail bol odhalený. <br>Poďme to vyriešiť pomocou služby { -product-name }.
+email-is-affected = Vaša e-mailová adresa { $email-address } je obsiahnutá v najmenej jednom úniku údajov
+email-more-detail = Prihláste sa do služby { -product-name } a pozrite si ďalšie podrobnosti o únikoch (vrátane toho, kedy k nim došlo a aké údaje boli odhalené) a zistite, čo by ste mali urobiť, keď bol váš e-mail odhalený pri porušení ochrany údajov.
+email-breach-status = Stav aktuálneho úniku
+# table row 1 label
+email-monitored = Celkový počet sledovaných e-mailov:
+# table row 2 label
+email-breach-total = Celkový počet únikov:
+# table row 3 label
+email-resolved = Vyriešené úniky:
+# table row 4 label
+email-unresolved = Nevyriešené úniky:
+email-resolve-cta = Vyriešiť úniky dát
+
+## Verification email
+
+email-verify-heading = Chráňte svoje údaje, začnite hneď teraz
+email-verify-subhead = Overte svoj e-mail a začnite chrániť svoje údaje po úniku dát.
+email-verify-simply-click = Overenie účtu dokončíte kliknutím na odkaz nižšie.
+
+## Breach report
+
+email-breach-summary = Tu je sumár únikov údajov
+email-breach-detected = Výsledky vyhľadávania pre váš účet { $email-address } zistili, že váš e-mail mohol byť odhalený. Odporúčame vám, aby ste okamžite začali daný únik riešiť.
+email-no-breach-detected = Skvelá správa! Nenašli sme žiadne úniky údajov, ktoré by ovplyvnili váš e-mail, { $email-address }.
+email-dashboard-cta = Prejsť na nástenku
+
+## Breach alert
+
+email-may-have-been-exposed = Váš e-mail mohol byť odhalený pri úniku údajov
+email-spotted-new-breach = Zistili sme nový únik údajov

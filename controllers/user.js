@@ -5,7 +5,7 @@ const isemail = require('isemail')
 
 const DB = require('../db/DB')
 const EmailUtils = require('../email-utils')
-const { FluentError } = require('../locale-utils')
+const { FluentError, LocaleUtils } = require('../locale-utils')
 const { FXA } = require('../lib/fxa')
 const HIBP = require('../hibp')
 const { resultsSummary } = require('../scan-results')
@@ -52,13 +52,16 @@ async function resendEmail (req, res) {
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat('email-subject-verify'),
-    'default_email',
+    'email-2022',
     {
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
+      utmCampaign: 'email_verify',
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedEmailAddressRecord, 'account-verification-email'),
-      whichPartial: 'email_partials/email_verify'
+      whichPartial: 'email_partials/email_verify',
+      heading: req.fluentFormat('email-verify-heading'),
+      subheading: req.fluentFormat('email-verify-subhead')
     }
   )
 
@@ -120,14 +123,17 @@ async function add (req, res) {
   await EmailUtils.sendEmail(
     email,
     req.fluentFormat('email-subject-verify'),
-    'default_email',
+    'email-2022',
     {
       breachedEmail: email,
       recipientEmail: email,
       supportedLocales: req.supportedLocales,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedSubscriber),
+      utmCampaign: 'email_verify',
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(unverifiedSubscriber, 'account-verification-email'),
-      whichPartial: 'email_partials/email_verify'
+      whichPartial: 'email_partials/email_verify',
+      heading: req.fluentFormat('email-verify-heading'),
+      subheading: req.fluentFormat('email-verify-subhead')
     }
   )
 
@@ -238,6 +244,12 @@ async function getDashboard (req, res) {
 
   const adUnitNum = setAdUnitCookie(req, res)
 
+  if (!req.session.statsUpdated) {
+    // update user's breach stats in DB once per session without blocking render
+    DB.updateBreachStats(user.id, resultsSummary(verifiedEmails))
+    req.session.statsUpdated = true
+  }
+
   res.render('dashboards', {
     title: req.fluentFormat('Firefox Monitor'),
     csrfToken: req.csrfToken(),
@@ -262,20 +274,22 @@ async function _verify (req) {
   )
 
   const utmID = 'report'
-  const emailSubject = EmailUtils.getReportSubject(unsafeBreachesForEmail, req)
+  const reportSubject = unsafeBreachesForEmail.length ? req.fluentFormat('email-subject-found-breaches') : req.fluentFormat('email-subject-no-breaches')
 
   await EmailUtils.sendEmail(
     verifiedEmailHash.email,
-    emailSubject,
-    'default_email',
+    reportSubject,
+    'email-2022',
     {
       breachedEmail: verifiedEmailHash.email,
       recipientEmail: verifiedEmailHash.email,
       supportedLocales: req.supportedLocales,
       unsafeBreachesForEmail,
-      ctaHref: EmailUtils.getEmailCtaHref(utmID, 'go-to-dashboard-link'),
+      ctaHref: EmailUtils.getEmailCtaHref(utmID, 'dashboard-cta'),
+      utmCampaign: utmID,
       unsubscribeUrl: EmailUtils.getUnsubscribeUrl(verifiedEmailHash, utmID),
-      whichPartial: 'email_partials/report'
+      whichPartial: 'email_partials/report',
+      heading: req.fluentFormat('email-breach-summary')
     }
   )
 }
@@ -422,6 +436,8 @@ async function postResolveBreach (req, res) {
   const numTotalBreaches = userBreachStats.numBreaches.count
   const numResolvedBreaches = userBreachStats.numBreaches.numResolved
 
+  DB.updateBreachStats(sessionUser.id, userBreachStats)
+
   const localizedModalStrings = {
     headline: '',
     progressMessage: '',
@@ -496,6 +512,25 @@ async function postUnsubscribe (req, res) {
   await FXA.revokeOAuthTokens(unsubscribedUser)
   req.session.destroy()
   res.redirect('/')
+}
+
+async function getUnsubscribeMonthly (req, res) {
+  if (!req.query.token) return res.redirect('/')
+
+  await DB.updateMonthlyEmailOptout(req.query.token)
+  return res.send(`
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="/dist/app.js" defer></script>
+    <title>${LocaleUtils.fluentFormat(req.supportedLocales, 'home-title')}</title>
+  </head>
+  <body>
+    <h2>${LocaleUtils.fluentFormat(req.supportedLocales, 'changes-saved')}</h2>
+  </body>
+  </html>
+  `)
 }
 
 async function getPreferences (req, res) {
@@ -586,6 +621,7 @@ module.exports = {
   verify,
   getUnsubscribe,
   postUnsubscribe,
+  getUnsubscribeMonthly,
   getRemoveFxm,
   postRemoveFxm,
   postResolveBreach,

@@ -19,7 +19,7 @@ rec-pw-2-subhead = Frissítse a többi bejelentkezését, amelyek ugyanazt a jel
 # Link title
 rec-pw-2-cta-fx = Bejelentkezések megtekintése a { -brand-name }ban
 rec-pw-2 =
-    A jelszavak újbóli felhasználása azt okozza, hogy egy adatsértésből több lesz.
+    A jelszavak újbóli felhasználása azt okozza, hogy egy adatvédelmi incidensből több lesz.
     Mivel a jelszava már kikerült, így a hackerek más fiókjaiba is megpróbálhatnak belépni.
 # Recommendation subhead
 rec-pw-3-subhead = Használjon egy jelszókezelőt, és vigye el a jelszavait bárhová
@@ -78,7 +78,7 @@ rec-hist-pw-subhead = Kerülje a jelszavak újbóli felhasználását
 rec-hist-pw-cta-fx = Bejelentkezések megtekintése a { -brand-name }ban
 rec-hist-pw =
     Használjon egyedi, erős jelszavakat minden fiókhoz. Ha kikerül egy jelszava
-    egy adatsértés esetén, akkor csak azt a bejelentkezést kell frissítenie.
+    egy adatvédelmi incidens esetén, akkor csak azt a bejelentkezést kell frissítenie.
 # Recommendation subhead
 rec-sec-qa-subhead = Hozzon létre egyedi válaszokat a biztonsági kérdésekhez
 rec-sec-qa =
