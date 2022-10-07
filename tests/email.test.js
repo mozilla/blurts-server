@@ -142,6 +142,12 @@ test('EmailUtils.getVerificationUrl returns a URL', () => {
     ])
 })
 
+test('EmailUtils.getVerificationUrl throws when subscriber has no token', () => {
+  const fakeSubscriber = {"verification_token": null}
+  const expected = 'subscriber has no verification_token'
+  expect(() => EmailUtils.getVerificationUrl(fakeSubscriber)).toThrow(expected)
+})
+
 test('EmailUtils.getUnsubscribeUrl works with subscriber record', () => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
@@ -174,4 +180,10 @@ test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', () => {
       ['utm_medium', 'email'],
       ['utm_source', 'fx-monitor'],
     ])
+})
+
+test('EmailUtils.getMonthlyUnsubscribeUrl throws when subscriber has no token', () => {
+  const fakeSubscriber = {'primary_verification_token': null}
+  const expected = 'subscriber has no primary verification_token'
+  expect(() => EmailUtils.getMonthlyUnsubscribeUrl(fakeSubscriber, 'campaign', 'content')).toThrow(expected)
 })
