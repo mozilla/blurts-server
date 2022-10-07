@@ -1,3 +1,5 @@
+// TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
+
 import 'dotenv/config.js'
 
 const requiredEnvVars = [

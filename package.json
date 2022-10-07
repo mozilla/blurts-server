@@ -80,7 +80,7 @@
   },
   "scripts": {
     "start": "npm run build & node server.js",
-    "dev": "nodemon server/app.js",
+    "dev": "nodemon src/app.js",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",

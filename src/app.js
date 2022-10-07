@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 
 // routing
 app.use('/', indexRouter)
-app.use(express.static('client/dist'))
+app.use(express.static('dist'))
 
 app.listen(port, function () {
   console.log(`Server ready: listening at ${this.address().port}`)
