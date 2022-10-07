@@ -7,14 +7,12 @@ const { TEST_SUBSCRIBERS, TEST_EMAIL_ADDRESSES } = require('../db/seeds/test_sub
 
 jest.mock('nodemailer')
 
-test('EmailUtils.init with empty host doesnt invoke nodemailer', () => {
+test('EmailUtils.init with empty host uses jsonTransport', () => {
   nodemailer.createTransport = jest.fn()
 
   EmailUtils.init('')
 
-  const mockCreateTransport = nodemailer.createTransport.mock
-  expect(mockCreateTransport.calls.length).toBe(1)
-  expect(mockCreateTransport.calls[0][0]).toEqual({ jsonTransport: true })
+  expect(nodemailer.createTransport).toHaveBeenCalledWith({ jsonTransport: true })
 })
 
 test.skip('EmailUtils.init with user, pass, host, port invokes nodemailer.createTransport', () => {
