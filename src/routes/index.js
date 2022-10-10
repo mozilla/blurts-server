@@ -1,6 +1,6 @@
 import express from 'express'
 import { landingPage } from '../controllers/index.js'
-import { breachDetailsPage } from '../controllers/breach/breach-details.js'
+import { breachDetailsPage } from '../controllers/breach-details.js'
 const router = express.Router()
 
 router.get('/', landingPage)

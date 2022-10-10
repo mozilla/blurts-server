@@ -1,5 +1,5 @@
-import mainLayout from '../../views/layouts/main.js'
-import breachDetailsPartial from '../../views/partials/breach-details.js'
+import mainLayout from '../views/layouts/main.js'
+import breachDetailsPartial from '../views/partials/breach-details.js'
 
 function breachDetailsPage (req, res) {
   const data = {
