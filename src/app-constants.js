@@ -1,6 +1,7 @@
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
+import * as dotenv from 'dotenv'
 
-import 'dotenv/config.js'
+dotenv.config({ path: '../.env' })
 
 const requiredEnvVars = [
   'NODE_ENV',
@@ -51,7 +52,8 @@ const optionalEnvVars = [
   'GEOIP_GEOLITE2_CITY_FILENAME',
   'GEOIP_GEOLITE2_COUNTRY_FILENAME',
   'VPN_PROMO_BLOCKED_LOCALES',
-  'EDUCATION_VIDEO_URL_RELAY'
+  'EDUCATION_VIDEO_URL_RELAY',
+  'MONITOR_V2'
 ]
 
 const AppConstants = { }
