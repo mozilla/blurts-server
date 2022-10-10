@@ -1,0 +1,25 @@
+{
+  "name": "monitor",
+  "version": "1.0.0",
+  "description": "Monitor V2",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "./*",
+      "../.env",
+      "../.env-dist"
+    ],
+    "ext": "js,css,json,ftl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mozilla/blurts-server.git"
+  },
+  "homepage": "https://github.com/mozilla/blurts-server",
+  "license": "MPL-2.0"
+}

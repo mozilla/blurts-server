@@ -46,7 +46,7 @@
     "eslint-plugin-promise": "^6.0.1",
     "jest": "^27.2.5",
     "node-mocks-http": "1.11.0",
-    "nodemon": "2.0.19",
+    "nodemon": "2.0.20",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
@@ -57,8 +57,6 @@
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
-  "main": "server/app.js",
-  "type": "module",
   "jest": {
     "collectCoverageFrom": [
       "**/*.js",
@@ -80,8 +78,8 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
-    "start": "npm run build & node server.js",
-    "dev": "nodemon src/app.js",
+    "start": "source .env && if [[ $MONITOR_V2 == 'true' ]]; then npm start --workspace=src; else npm run build & node server.js; fi;",
+    "dev": "source .env && if [[ $MONITOR_V2 == 'true' ]]; then npm run dev --workspace=src; else nodemon server.js; fi;",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
@@ -100,5 +98,24 @@
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
     "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls"
-  }
+  },
+  "workspaces": [
+    "src"
+  ],
+  "nodemonConfig": {
+    "events": {
+      "restart": "npm run build"
+    },
+    "watch": [
+      "./*",
+      ".env",
+      ".env-dist"
+    ],
+    "ignore": [
+      "public/dist/*",
+      "tests/*"
+    ],
+    "ext": "js,css,hbs,json,ftl"
+  },
+  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
 }
