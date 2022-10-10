@@ -46,6 +46,16 @@ To run linting/formatting as you type or upon save, add the ESLint and Stylelint
 ```
 See here for more on Stylelint config with VSCode: https://github.com/stylelint/vscode-stylelint#editorcodeactionsonsave
 
+### GIT
+
+We track commits that are largely style/formatting via `.git-blame-ignore-revs`.  This allows Git Blame to ignore the format commit author and show the original code author.  In order to enable this in GitLens, add the following to VS Code `settings.json`:
+```
+"gitlens.advanced.blame.customArguments": [
+   "--ignore-revs-file",
+   ".git-blame-ignore-revs"
+],
+```
+
 ### Install
 
 1. Clone and change to the directory:
