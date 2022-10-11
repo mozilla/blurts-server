@@ -86,9 +86,17 @@ email-resolve-cta = Løs datalæk
 ## Verification email
 
 email-verify-heading = Beskyt dine data med det samme
+email-verify-subhead = Bekræft din mailadresse for at beskytte dine data efter en datalæk.
+email-verify-simply-click = Klik på linket nedenfor for at færdiggøre bekræften af din konto.
 
 ## Breach report
 
+email-breach-summary = Her er din oversigt over datalæk
+email-breach-detected = Resultatet af en søgning efter { $email-address } viser, at din mailadresse kan være involveret i en datalæk. Vi anbefaler, at du reagerer med det samme for at løse denne datalæk.
+email-no-breach-detected = Gode nyheder! Vi har ikke fundet nogen datalæk, der påvirker din mailadresse, { $email-address }.
+email-dashboard-cta = Gå til oversigten
 
 ## Breach alert
 
+email-may-have-been-exposed = Din mailadresse kan have været involveret i en datalæk.
+email-spotted-new-breach = Vi har opdaget en ny datalæk
