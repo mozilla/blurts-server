@@ -1,11 +1,19 @@
 import express from 'express'
 import accepts from 'accepts'
 
+import AppConstants from '../app-constants.js'
 import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
-const port = process.env.NODE_ENV !== 'development' ? 3333 : null
+const port = AppConstants.NODE_ENV === 'dev' ? 3333 : null
+
+/**
+* Determine from where to serve client code/assets.
+* Build script is triggered for `npm start` – code/assets are served from /dist.
+* Build script is not run for `npm run dev` – code/assets are served from /src and nodemon restarts server without build.
+*/
+const staticPath = process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
 
 await initFluentBundles()
 
@@ -19,8 +27,9 @@ app.use((req, res, next) => {
 
 // routing
 app.use('/', indexRouter)
-app.use(express.static('../dist'))
+app.use(express.static(staticPath))
 
 app.listen(port, function () {
-  console.log(`Server ready: listening at ${this.address().port}`)
+  console.log(`MONITOR V2: Server listening at ${this.address().port}`)
+  console.log(`Static files served from ${staticPath}`)
 })
