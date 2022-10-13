@@ -57,43 +57,8 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } advarer dig om datalæk, der omfatter dine personlige data.
     Vi har lige modtaget detaljer om et andet firmas datalæk.
-# List headline
-faq-list-headline = Ofte stillede spørgsmål
-# Link Title
-faq-v2-1 = Jeg genkender ikke nogle af disse firma eller websteder. Hvorfor er jeg i denne datalæk?
-# Link Title
-faq-v2-2 = Behøver jeg at foretage mig noget, hvis en datalæk skete for år tilbage eller hvis det er en gammel konto?
-# Link Title
-faq-v2-3 = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg nu?
-# Link Title
-faq-v2-4 = Hvordan behandler { -product-name } websteder, der har følsomme data om sine brugere?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Opret en gratis { -brand-fxa }</a> , så du kan tilføje op til 15 mailadresser.
 # Section headline
 monitor-another-email = Vil du overvåge en anden mailadresse?
-# Subject line of email
-pre-fxa-subject = Nyheder fra { -product-name }
-pre-fxa-headline = Ændringer i { -product-name }
-pre-fxa-blurb = Vi har ændret noget, siden du tilmeldte dig { -product-name } - en service der holder øje med, om dine personlige data optræder i kendte datalæk. Din profil er nu tilknyttet din Firefox-konto.
-pre-fxa-tout-1 = Få advarsler om flere datalæk
-pre-fxa-p-1 = <a>Opret en konto</a> for at holde øje med op til 15 mailadresser og få besked, hvis de er ramt af datalæk. Vi anbefaler, at du tilføjer alle mailadresser, du bruger til at oprette online-konti.
-pre-fxa-tout-2 = Få et bedre overblik
-pre-fxa-p-2 =
-    Se alle datalæk på ét sted, så du ved, hvilke adgangskoder der skal skiftes. 
-    Oversigten med datalæk er kun tilgængelig med en konto.
-pre-fxa-tout-3 = Fortsæt med at modtage advarsler via mail
-pre-fxa-p-3 =
-    Du vil stadig modtage advarsler fra { -product-name }. Vi informerer dig, hvis dine personlige data 
-    optræder i en ny datalæk.
-# Button at the bottom of pre-fxa email.
-create-account = Opret konto
-# More security products
-more-products-headline = Beskyt dig selv med flere af vores produkter
-more-products-vpn = Fuld beskyttelse af alle dine enheder.
-more-products-cta-vpn = Hent { -product-name-vpn }
-more-products-relay = Skjul din rigtige mailadresse for at beskytte din identitet.
-more-products-cta-relay = Hent { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -117,3 +82,21 @@ email-resolved = Løste datalæk:
 # table row 4 label
 email-unresolved = Uløste datalæk:
 email-resolve-cta = Løs datalæk
+
+## Verification email
+
+email-verify-heading = Beskyt dine data med det samme
+email-verify-subhead = Bekræft din mailadresse for at beskytte dine data efter en datalæk.
+email-verify-simply-click = Klik på linket nedenfor for at færdiggøre bekræften af din konto.
+
+## Breach report
+
+email-breach-summary = Her er din oversigt over datalæk
+email-breach-detected = Resultatet af en søgning efter { $email-address } viser, at din mailadresse kan være involveret i en datalæk. Vi anbefaler, at du reagerer med det samme for at løse denne datalæk.
+email-no-breach-detected = Gode nyheder! Vi har ikke fundet nogen datalæk, der påvirker din mailadresse, { $email-address }.
+email-dashboard-cta = Gå til oversigten
+
+## Breach alert
+
+email-may-have-been-exposed = Din mailadresse kan have været involveret i en datalæk.
+email-spotted-new-breach = Vi har opdaget en ny datalæk
