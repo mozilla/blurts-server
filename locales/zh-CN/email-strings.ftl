@@ -79,7 +79,7 @@ email-verify-simply-click = 请尽快点击下方链接，完成账户验证。
 ## Breach report
 
 email-breach-summary = 以下是您的数据外泄情况概览
-email-no-breach-detected = 好消息！我们并未发现您邮箱 { $email-address } 有关的数据外泄事件。
+email-no-breach-detected = 好消息！我们并未发现与您邮箱 { $email-address } 有关的数据外泄事件。
 email-dashboard-cta = 前往面板
 
 ## Breach alert
