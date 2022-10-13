@@ -49,41 +49,8 @@ email-sensitive-disclaimer = 由于该数据外泄事件的敏感性，相关的
 fxm-warns-you-no-breaches = { -product-name } 会在有与您相关的个人信息外泄事件发生时警告您。目前为止，未发生过外泄事件。我们会在您的电子邮件地址出现在新事件中时通知您。
 fxm-warns-you-found-breaches = { -product-name } 会在有与您相关的个人信息外泄事件发生时警告您。当您的电子邮件地址出现在新事件中时，您会收到订阅的警报。
 email-breach-alert-blurb = { -product-name } 会在有与您相关的个人信息外泄事件发生时警告您。我们刚收到其他公司的数据外泄事件。
-# List headline
-faq-list-headline = 常见问题
-# Link Title
-faq-v2-1 = 我不认识其中的一家公司或网站，为什么我与该外泄事件有关？
-# Link Title
-faq-v2-2 = 如果外泄事件发生在几年前，或是已经不用的账号，我还需要做什么吗？
-# Link Title
-faq-v2-3 = 我刚刚发现自己遭受了数据外泄。接下来我该怎么做？
-# Link Title
-faq-v2-4 = { -product-name } 如何处理这些敏感网站？
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>创建免费的 { -brand-fxa }</a>，您最多可添加 15 个电子邮件地址。
 # Section headline
 monitor-another-email = 要监控其他电子邮件地址吗？
-# Subject line of email
-pre-fxa-subject = { -product-name } 的更新
-pre-fxa-headline = { -product-name } 的变化
-pre-fxa-blurb = { -product-name } —— 保障个人信息的数据泄露监控服务，在您注册之后已经有一些改变。我们已将它与 Firefox 账号相连。
-pre-fxa-tout-1 = 警惕新发生的数据泄露
-pre-fxa-p-1 = <a>创建一个账号</a>，监控最多 15 个电子邮件地址是否涉及到数据泄露。我们推荐您添加常用于网上账号的所有电子邮件地址。
-pre-fxa-tout-2 = 获得概况面板
-pre-fxa-p-2 =
-    同一个地方检查已知的所有数据泄露，了解您需要更换哪些密码。
-    该面板仅供注册用户使用。
-pre-fxa-tout-3 = 接收电子邮件通知
-pre-fxa-p-3 = 您仍然会收到 { -product-name } 的警讯。如果您的信息出现在新发生的数据泄漏中，我们会通知您。
-# Button at the bottom of pre-fxa email.
-create-account = 创建账号
-# More security products
-more-products-headline = 用我们的系列产品保护自己
-more-products-vpn = 全方位保护您的每台设备
-more-products-cta-vpn = 下载 { -product-name-vpn }
-more-products-relay = 隐藏您的的真实邮箱地址，保护身份信息。
-more-products-cta-relay = 下载 { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -111,6 +78,8 @@ email-verify-simply-click = 请尽快点击下方链接，完成账户验证。
 
 ## Breach report
 
+email-breach-summary = 以下是您的数据外泄情况概览
+email-no-breach-detected = 好消息！我们并未发现您邮箱 { $email-address } 有关的数据外泄事件。
 email-dashboard-cta = 前往面板
 
 ## Breach alert
