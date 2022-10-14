@@ -1,13 +1,34 @@
 import express from 'express'
+import session from 'express-session'
+import connectRedis from 'connect-redis'
+// import Helmet from 'helmet'
 import accepts from 'accepts'
+import redis from 'redis'
 
+import AppConstants from './app-constants.js'
 import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
-const port = process.env.NODE_ENV !== 'development' ? 3333 : null
+const port = process.env.NODE_ENV !== 'development' ? 6060 : null
 
 await initFluentBundles()
+
+function getRedisStore () {
+  const RedisStoreConstructor = connectRedis(session)
+  // if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
+  //   const redis = require('redis-mock')
+  //   return new RedisStoreConstructor({ client: redis.createClient() })
+  // }
+  return new RedisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
+}
+
+// if (AppConstants.FXA_ENABLED) {
+//   const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
+//   [imgSrc, connectSrc].forEach(arr => {
+//     arr.push(fxaSrc)
+//   })
+// }
 
 // middleware
 app.use(express.json())
@@ -16,6 +37,22 @@ app.use((req, res, next) => {
   req.appLocale = updateAppLocale(accept.languages())
   next()
 })
+
+// session
+const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48
+app.use(session({
+  cookie: {
+    httpOnly: true,
+    maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
+    rolling: true,
+    sameSite: 'lax',
+    secure: AppConstants.NODE_ENV !== 'dev'
+  },
+  resave: false,
+  saveUninitialized: true,
+  secret: AppConstants.COOKIE_SECRET,
+  store: getRedisStore()
+}))
 
 // routing
 app.use('/', indexRouter)
