@@ -4,8 +4,12 @@
   "description": "Monitor V2",
   "type": "module",
   "scripts": {
+    "prestart": "npm run build",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "build": "node esbuild.js & npm run build:png && npm run build:svg",
+    "build:png": "squoosh-cli --oxipng '{level: 2}' --quant '{numColors: 255}' -d ../dist/images ./client/images/*.png",
+    "build:svg": "svgo -f ./client/images/ -o ../dist/images"
   },
   "nodemonConfig": {
     "watch": [
@@ -22,6 +26,9 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "dependencies": {
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "@squoosh/cli": "^0.7.2",
+    "esbuild": "^0.15.10",
+    "svgo": "^2.8.0"
   }
 }

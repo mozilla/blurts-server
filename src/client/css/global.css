@@ -1,0 +1,21 @@
+body {
+  background: #444;
+}
+
+button {
+  border: 0;
+  border-radius: var(--border-radius);
+  background: transparent;
+  color: black;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: none;
+  padding: var(--space-sm), var(--space-md);
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--blue-50);
+}

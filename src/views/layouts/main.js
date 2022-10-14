@@ -4,15 +4,15 @@ export default data => `
   <!doctype html>
   <html lang=${data.locale}>
     <head>
-      <meta charset="utf-8">
+      <meta charset='utf-8'>
       <title>${getMessage('take-control')}</title>
-      <link href="app.css" type="text/css" rel='stylesheet'>
-      <script src="app.js" type="text/javascript" defer></script>
+      <link href='css/index.css' type='text/css' rel='stylesheet'>
+      <script src='js/index.js' type='text/javascript' defer></script>
     </head>
     <body>
       <header>
-        <h1>${getMessage('terms-and-privacy')}</h1>
-        <h2>${getMessage('take-control')}</h2>
+        <img src='images/monitor-logo-transparent.png' width='240' height='50'>
+        <button>Sign Up</button>
       </header>
       <nav>
       </nav>
