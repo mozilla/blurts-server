@@ -1,19 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: #444;
+  font: normal 1rem/1.2 Inter, sans-serif;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: var(--padding-md) var(--padding-lg);
+  box-shadow: 0 4px 8px -8px #0000;
+  transition: box-shadow 0.3s;
+}
+
+html.scrolled header {
+  box-shadow: 0 4px 8px -8px black;
+}
+
+footer {
+  background: black;
 }
 
 button {
   border: 0;
   border-radius: var(--border-radius);
   background: transparent;
-  color: black;
+  color: var(--blue-50);
   font-family: inherit;
-  font-size: inherit;
-  font-weight: bold;
-  line-height: 1;
-  text-decoration: none;
-  padding: var(--space-sm), var(--space-md);
+  font-size: 0.875rem;
+  font-weight: normal;
+  line-height: 40px;
+  padding: 0 var(--padding-lg);
   cursor: pointer;
+  box-shadow: inset 0 0 0 1px;
 }
 
 .button-primary {
