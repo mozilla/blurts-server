@@ -1,7 +1,7 @@
 :root {
-  --border-radius: 8px;
-  --padding-sm: 4px;
-  --padding-md: 8px;
-  --padding-lg: 16px;
+  --border-radius: 4px;
+  --padding-sm: 8px;
+  --padding-md: 16px;
+  --padding-lg: 32px;
   --blue-50: #0060df;
 }
