@@ -61,44 +61,45 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } te advierte sobre las filtraciones de datos que afectan a tu información personal.
     Acabamos de recibir información sobre la filtración de datos de otra empresa.
-# List headline
-faq-list-headline = Preguntas más frecuentes
-# Link Title
-faq-v2-1 = No reconozco alguna empresa o sitio web. ¿Por qué aparezco en la filtración?
-# Link Title
-faq-v2-2 = ¿Debo hacer algo si la filtración se produjo hace años o si es una cuenta antigua?
-# Link Title
-faq-v2-3 = Acabo de ver que mis datos aparecen en una filtración. ¿Qué hago ahora?
-# Link Title
-faq-v2-4 = ¿Cómo gestiona { -product-name } los sitios sensibles?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Crea una { -brand-fxa } gratuita</a> y podrás añadir hasta 15 direcciones de correo electrónico.
 # Section headline
 monitor-another-email = ¿Quieres consultar otro correo electrónico?
-# Subject line of email
-pre-fxa-subject = Una actualización de { -product-name }
-pre-fxa-headline = Qué está cambiando en { -product-name }
-pre-fxa-blurb =
-    Esto es lo que se ha cambiado desde que te registraste en { -product-name }, el servicio que
-    controla las filtraciones de datos conocidas para tu información personal. Lo estamos vinculando a las cuentas de Firefox.
-pre-fxa-tout-1 = Mantente alerta a nuevas filtraciones
-pre-fxa-p-1 =
-    <a>Crear una cuenta</a> para controlar hasta 15 direcciones de correo electrónico para
-    detectar filtraciones de datos. Recomendamos añadir cualquier dirección de correo electrónico que hayas usado para crear cuentas en línea.
-pre-fxa-tout-2 = Obtén un panel con la vista general
-pre-fxa-p-2 =
-    Mira en un solo lugar todas las filtraciones de datos para saber qué contraseñas te conviene cambiar.
-    El panel de filtraciones solo está disponible con una cuenta.
-pre-fxa-tout-3 = Sigue recibiendo alertas por correo electrónico
-pre-fxa-p-3 =
-    Seguirás recibiendo alertas de { -product-name }. Te informaremos si tu información
-    aparece en una nueva filtración de datos.
-# Button at the bottom of pre-fxa email.
-create-account = Crear cuenta
-# More security products
-more-products-headline = Protégete con otros de nuestros productos
-more-products-vpn = Protección para todo tu dispositivo, en cada dispositivo.
-more-products-cta-vpn = Obtén { -product-name-vpn }
-more-products-relay = Oculta tu dirección de correo electrónico real para ayudar a proteger tu identidad.
-more-products-cta-relay = Obtén { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Estás recibiendo este correo electrónico automático como suscriptor de { -product-name }. <br>Puedes cambiar tus preferencias de correo electrónico en cualquier momento <a { $unsubscribe-link-attr }>aquí</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datos de filtración proporcionados por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Tienes filtraciones sin resolver
+email-unresolved-subhead = Tu correo electrónico ha sido expuesto. <br>Resuélvelo de inmediato con { -product-name }.
+email-is-affected = Tu correo electrónico, { $email-address }, está afectado por al menos una filtración de datos
+email-more-detail = Inicia sesión en { -product-name } ahora para ver más detalles sobre tus filtraciones (incluido cuándo ocurrieron y qué datos se expusieron) y aprende qué se debe hacer cuando tu correo electrónico se ha visto expuesto en una filtración de datos.
+email-breach-status = Estado actual de filtración
+# table row 1 label
+email-monitored = Total de correos electrónicos supervisados:
+# table row 2 label
+email-breach-total = Número total de filtraciones:
+# table row 3 label
+email-resolved = Filtraciones resueltas:
+# table row 4 label
+email-unresolved = Filtraciones sin resolver:
+email-resolve-cta = Resolver filtraciones
+
+## Verification email
+
+email-verify-heading = Protege tus datos, empieza ahora mismo
+email-verify-subhead = Verifica tu correo electrónico para empezar a proteger tus datos después de una filtración.
+email-verify-simply-click = Simplemente haz clic en el enlace a continuación para terminar de verificar tu cuenta.
+
+## Breach report
+
+email-breach-summary = Aquí está el resumen de tu filtración de datos
+email-breach-detected = Los resultados de búsqueda de tu cuenta { $email-address } han detectado que tu correo electrónico podría haber sido expuesto. Te recomendamos que actúes ahora para resolver esta filtración.
+email-no-breach-detected = ¡Buenas noticias! No hemos encontrado filtraciones de datos que afecten tu correo electrónico, { $email-address }.
+email-dashboard-cta = Ir al panel de control
+
+## Breach alert
+
+email-may-have-been-exposed = Tu correo electrónico puede haber quedado expuesto en una filtración de datos
