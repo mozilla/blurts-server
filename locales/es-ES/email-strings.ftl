@@ -103,3 +103,4 @@ email-dashboard-cta = Ir al panel de control
 ## Breach alert
 
 email-may-have-been-exposed = Tu correo electrónico puede haber quedado expuesto en una filtración de datos
+email-spotted-new-breach = Hemos detectado una nueva filtración de datos
