@@ -39,36 +39,23 @@ email-sensitive-disclaimer = Ruma nim ucholajil we retztaqan, le nik'aj chi taq 
 fxm-warns-you-no-breaches = { -product-name } kuya' ub'ixik chi awech we k'o taq retztaqan chi rij le awinaqilal q'alajisanem. Chech we chanim man k'o retztaqan riqom. Kqataqn ju na'b'anem awuk' we kq'alajin le ataqoqxa'nib'al pa jun k'ak' retztaqan.
 fxm-warns-you-found-breaches = { -product-name } kuya' ub'ixik chi awech chi rij taq retztaqan le k'o chi rij le awinaqilal q'alajisanem. Attz'ib'atalik are chi kopan na'b'anem awuk' we kq'alajin le akemriqonib'al pa jun k'ak' retztaqan.
 email-breach-alert-blurb = { -product-name } kuya' ub'ixik chi awech we k'o retztaqan chi rij le awinaqilal q'alalajisam. K'ate xul taq ucholajil quk' chi rij jun k'ak' retztaqan rech juq'attzij rech k'aywoka.j
-# List headline
-faq-list-headline = Amaq'el chata' k'otb'al chi'aj.
-# Link Title
-faq-v2-1 = Man kinch'ob' ta rij jun chi kech we taq k'aywokaj on uk'olib'al web'. Jas che ink'o pa we jun retztaqan?
-# Link Title
-faq-v2-2 = La k'o rajawaxik kinb'ano we k'o jun retztaqan xajtajik ojer kanoq, xuquje' we ojer kemb'i'aj wa'?
-# Link Title
-faq-v2-3 = K'ate xinriqo chi in k'o pa jun retztaqan rech juq'attzij. Jas rajawaxik kinb'ano?
-# Link Title
-faq-v2-4 = Jas kub'an le { -product-name } chech taq nim ucholajiñ uk'olib'al web'?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>chawinaqirisaj jun sipatal { -brand-fxa }</a>, chi'l utz katiq k'a pa 15 kemriqonib'al rech taqoqxa'nib'al.
 # Section headline
 monitor-another-email = Kawaj kawilawachij jun chi taqoqxa'nib'al?
-# Subject line of email
-pre-fxa-subject = Jun k'ak'arisanem pa { -product-name }
-pre-fxa-headline = Jas uk'exom ruk' { -product-name }
-pre-fxa-blurb = Are wa' jastaq xk'extajik are taq xatz'ib'aj awib' pa { -product-name }. le pataninem le  kuq'atuj taq chayub'al rech eta'matal juq'attzij rech aq'alajisanem
-pre-fxa-tout-1 = Chawilawachij nik'aj chi taq retztaqan
-pre-fxa-p-1 = <a>Chawinaqirisaj jun k'ak' akemb'i'aj</a>chech rilawachixik kq'ax pa uwi' 15 keriqonib'al rech taqoqxa'nb'al chech  taq juq'attzij rech retztaqan. Kqab'ij chi utz kaya' apachike taqoqxa'nib'al le akojom chik chech uwinaqirisaxik taq kemb'i'aj pa nimk'atz.
-pre-fxa-tout-2 = Chariqa' jun ilwach
-pre-fxa-p-2 = Chawila' ronojel taq retztaqan rech juq'attzij xa pa jun k'olib'al are chi kawilo jachike retokib'al kak'exo.
-pre-fxa-tout-3 = Chariqa' na taq kemriqonib'al rech na'b'anem
-pre-fxa-p-3 = Kopan na taq na'b'anem awuk' pa { -product-name }. Kqaya' ub'ixik chi awech we  kq'alajin le aq'alajisanem pa jun k'ak' retztaqan rech q'alajisanem.
-# Button at the bottom of pre-fxa email.
-create-account = Chawinaqirisaj jun kemb'i'aj
-# More security products
-more-products-headline = Caq'alajisaj awib' ruk' nik'aj chi qak'ay
-more-products-vpn = Chajinem chi rij le wiqkemchakub'al awech, pa ronojel wiqkemchakub'al.
-more-products-cta-vpn = Chariqa' { -product-name-vpn }
-more-products-relay = Chawowaj le akemriqonib'al rech ataqoqxa'nib'al chech tob'anem che uchajixik le awinaqilal.
-more-products-cta-relay = Chariqa' { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Ktajin kopan we taqoqxa'nib'al pa utukelam awuk' rech utz'ib'axik ib' pa { -product-name }<br>Chak'exa' le ajawatal taqoqxa'nib'al we kawaj xaq jampa' aq'anoq <a { $unsubscribe-link-attr }>waral</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Retztaqan rech juq'attzij ya'om rumal <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+
+## Verification email
+
+
+## Breach report
+
+
+## Breach alert
+
