@@ -57,9 +57,19 @@ email-more-detail = Chamajij chak pa { -product-name } chanim chech rilik nik'aj
 email-breach-status = kemub'antajik retztaqan chanim
 # table row 1 label
 email-monitored = Chi ronojel taqoqxa'nib'al ilawachim:
+# table row 2 label
+email-breach-total = Chi ronojel rajilab'alil retztaqan:
+# table row 3 label
+email-resolved = Taq retztaqan utzirisam:
+# table row 4 label
+email-unresolved = Taq retztaqan k'a maja' kutzirisaxik:
+email-resolve-cta = Taq retztaqan xutzirisaxik
 
 ## Verification email
 
+email-verify-heading = Chachajij le ajuq'attzij, chamajij chanim
+email-verify-subhead = Chawilawachij le ataqoqxa'nib'al chech umajixik uchajixik le ajuq'attzij are taq kxajtaj jun retztaqan.
+email-verify-simply-click = Xew chapitz'a' le kemwiqb'al chi uxe' chech uk'isik ronojel le akemb'i'aj.
 
 ## Breach report
 
