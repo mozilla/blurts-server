@@ -73,6 +73,8 @@ email-verify-simply-click = Xew chapitz'a' le kemwiqb'al chi uxe' chech uk'isik 
 
 ## Breach report
 
+email-breach-summary = Are wa' nitz'irisanem chi rij le retztaqan rech juq'attzij
+email-breach-detected = Chatzukuj taq uwachinem { $email-address } xriqitaj rumal le akemb'i'aj chi xlik'ib'ax le ataqoqxa'nib'al. Kqaya' utz na'oj chi awech chi kawutzirisaj chanim.
 
 ## Breach alert
 
