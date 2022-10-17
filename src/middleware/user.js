@@ -14,7 +14,7 @@ export async function requireSessionUser (req, res, next) {
   const user = await _getRequestSessionUser(req)
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
-    return res.redirect(`/auth/init?${queryParams}`)
+    return res.redirect(`/oauth/init?${queryParams}`)
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
   if (fxaProfileData.hasOwnProperty('name') && fxaProfileData.name === 'HTTPError') {
@@ -31,7 +31,7 @@ export async function requireAdminUser (req, res, next) {
   const user = await _getRequestSessionUser(req)
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
-    return res.redirect(`/auth/init?${queryParams}`)
+    return res.redirect(`/oauth/init?${queryParams}`)
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
   const admins = AppConstants.ADMINS?.split(',') || []

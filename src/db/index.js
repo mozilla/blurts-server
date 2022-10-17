@@ -2,7 +2,7 @@ import * as uuid from 'uuid'
 import Knex from 'knex'
 // import { FluentError } from '../locale-utils'
 import AppConstants from '../app-constants.js'
-// import { subscribeHash } from '../hibp'
+import { subscribeHash } from '../utils/hibp.js'
 import { destroyOAuthToken, getSha1 } from '../utils/fxa.js'
 import mozlog from '../utils/log.js'
 
@@ -61,7 +61,7 @@ export async function getSubscriberById (id) {
   const [subscriber] = await knex('subscribers').where({
     id
   })
-  const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber)
+  const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
 
@@ -69,7 +69,7 @@ export async function getSubscriberByFxaUid (uid) {
   const [subscriber] = await knex('subscribers').where({
     fxa_uid: uid
   })
-  const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber)
+  const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
 
@@ -78,7 +78,7 @@ export async function getSubscriberByEmail (email) {
     primary_email: email,
     primary_verified: true
   })
-  const subscriberAndEmails = await this.joinEmailAddressesToSubscriber(subscriber)
+  const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
 
@@ -120,11 +120,11 @@ export async function resetUnverifiedEmailAddress (emailAddressId) {
 }
 
 export async function verifyEmailHash (token) {
-  const unverifiedEmail = await this.getEmailByToken(token)
+  const unverifiedEmail = await getEmailByToken(token)
   if (!unverifiedEmail) {
     throw new FluentError('Error message for this verification email timed out or something went wrong.')
   }
-  const verifiedEmail = await this._verifyNewEmail(unverifiedEmail)
+  const verifiedEmail = await _verifyNewEmail(unverifiedEmail)
   return verifiedEmail[0]
 }
 
@@ -146,7 +146,7 @@ export async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallbac
 // Used internally.
 export async function _addEmailHash (sha1, email, signup_language, verified = false) {
   try {
-    return await this._getSha1EntryAndDo(sha1, async aEntry => {
+    return await _getSha1EntryAndDo(sha1, async aEntry => {
       // Entry existed, patch the email value if supplied.
       if (email) {
         const res = await knex('subscribers')
@@ -189,11 +189,11 @@ export async function _addEmailHash (sha1, email, signup_language, verified = fa
    * @returns {object} subscriber knex object added to DB
    */
 export async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
-  const emailHash = await this._addEmailHash(getSha1(email), email, signupLanguage, true)
-  const verified = await this._verifySubscriber(emailHash)
+  const emailHash = await _addEmailHash(getSha1(email), email, signupLanguage, true)
+  const verified = await _verifySubscriber(emailHash)
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null
   if (fxaRefreshToken || fxaProfileData) {
-    return this._updateFxAData(verifiedSubscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData)
+    return updateFxAData(verifiedSubscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData)
   }
   return verifiedSubscriber
 }
@@ -276,7 +276,7 @@ export async function updateFxAProfileData (subscriber, fxaProfileData) {
     .update({
       fxa_profile_json: fxaProfileData
     })
-  return this.getSubscriberById(subscriber.id)
+  return getSubscriberById(subscriber.id)
 }
 
 export async function setBreachesLastShownNow (subscriber) {
@@ -288,7 +288,7 @@ export async function setBreachesLastShownNow (subscriber) {
     .update({
       breaches_last_shown: nowTimeStamp
     })
-  return this.getSubscriberByEmail(subscriber.primary_email)
+  return getSubscriberByEmail(subscriber.primary_email)
 }
 
 export async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
@@ -309,7 +309,7 @@ export async function setBreachesResolved (options) {
     .update({
       breaches_resolved: updatedResolvedBreaches
     })
-  return this.getSubscriberByEmail(user.primary_email)
+  return getSubscriberByEmail(user.primary_email)
 }
 
 export async function setWaitlistsJoined (options) {
@@ -319,7 +319,7 @@ export async function setWaitlistsJoined (options) {
     .update({
       waitlists_joined: updatedWaitlistsJoined
     })
-  return this.getSubscriberByEmail(user.primary_email)
+  return getSubscriberByEmail(user.primary_email)
 }
 
 export async function removeSubscriber (subscriber) {
@@ -331,9 +331,9 @@ export async function removeSubscriber (subscriber) {
 // perma-bounce or mark our emails as spam
 // Removes from either subscribers or email_addresses as necessary
 export async function removeEmail (email) {
-  const subscriber = await this.getSubscriberByEmail(email)
+  const subscriber = await getSubscriberByEmail(email)
   if (!subscriber) {
-    const emailAddress = await this.getEmailAddressRecordByEmail(email)
+    const emailAddress = await getEmailAddressRecordByEmail(email)
     if (!emailAddress) {
       log.warn('removed-subscriber-not-found')
       return
@@ -358,7 +358,7 @@ export async function removeEmail (email) {
 }
 
 export async function removeSubscriberByToken (token, emailSha1) {
-  const subscriber = await this.getSubscriberByTokenAndHash(token, emailSha1)
+  const subscriber = await getSubscriberByTokenAndHash(token, emailSha1)
   if (!subscriber) {
     return false
   }
@@ -436,7 +436,7 @@ export function getSubscribersWithUnresolvedBreachesQuery () {
 }
 
 export async function getSubscribersWithUnresolvedBreaches (limit = 0) {
-  let query = this.getSubscribersWithUnresolvedBreachesQuery()
+  let query = getSubscribersWithUnresolvedBreachesQuery()
     .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
   if (limit) {
     query = query.limit(limit).orderBy('created_at')
@@ -445,7 +445,7 @@ export async function getSubscribersWithUnresolvedBreaches (limit = 0) {
 }
 
 export async function getSubscribersWithUnresolvedBreachesCount () {
-  const query = this.getSubscribersWithUnresolvedBreachesQuery()
+  const query = getSubscribersWithUnresolvedBreachesQuery()
   const count = parseInt((await query.count({ count: '*' }))[0].count)
   return count
 }

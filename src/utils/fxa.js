@@ -19,7 +19,7 @@ export const FxAOAuthClient = new ClientOAuth2({
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
   accessTokenUri: FxAOAuthUtils.tokenUri,
   authorizationUri: FxAOAuthUtils.authorizationUri,
-  redirectUri: AppConstants.SERVER_URL + '/auth/confirmed',
+  redirectUri: AppConstants.SERVER_URL + '/oauth/confirmed',
   scopes: ['profile']
 })
 

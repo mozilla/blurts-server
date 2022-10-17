@@ -7,7 +7,7 @@ const router = express.Router()
 
 router.get('/', landingPage)
 router.get('/breach-details', requireSessionUser, breachDetailsPage)
-router.use('/auth', AuthRoutes)
+router.use('/oauth', AuthRoutes)
 // router.use(notFound)
 
 export default router
