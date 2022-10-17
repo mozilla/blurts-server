@@ -50,6 +50,8 @@ email-2022-hibp-attribution = Retztaqan rech juq'attzij ya'om rumal <a { $hibp-l
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = K'o taq retztaqan k'a maja' kawutzirisaj
+email-unresolved-subhead = Le ataqoqxa'nib'al xlik'ib'axik.  <br>Chawutzirisaj ruk' { -product-name }.
 
 ## Verification email
 
