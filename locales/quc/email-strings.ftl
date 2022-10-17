@@ -52,6 +52,11 @@ email-2022-hibp-attribution = Retztaqan rech juq'attzij ya'om rumal <a { $hibp-l
 
 email-unresolved-heading = K'o taq retztaqan k'a maja' kawutzirisaj
 email-unresolved-subhead = Le ataqoqxa'nib'al xlik'ib'axik.  <br>Chawutzirisaj ruk' { -product-name }.
+email-is-affected = Le ataqoqxa'nib'al, { $email-address }, b'anom k'ax chech rumal jun on nik'aj chi retztaqan rech juq'attzij.
+email-more-detail = Chamajij chak pa { -product-name } chanim chech rilik nik'aj chi ucholajil chi rij taq retztaqan (rachi'l are taq xajtajik chi'l jachike juq'attzij xlik'ib'axik), chaweta'maj jas rajawaxik kab'ano are taq klik'ib'ax le ataqoqxa'nib'al pa jun retztaqan rech juq'attzij.
+email-breach-status = kemub'antajik retztaqan chanim
+# table row 1 label
+email-monitored = Chi ronojel taqoqxa'nib'al ilawachim:
 
 ## Verification email
 
