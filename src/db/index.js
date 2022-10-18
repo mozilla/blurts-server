@@ -1,4 +1,4 @@
-import * as uuid from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 import Knex from 'knex'
 // import { FluentError } from '../locale-utils'
 import AppConstants from '../app-constants.js'
@@ -10,7 +10,6 @@ import knexConfig from './knexfile.js'
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
 
 let knex = Knex(knexConfig)
-const uuidv4 = uuid.v4()
 
 const log = mozlog('DB')
 
@@ -144,7 +143,8 @@ export async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallbac
 }
 
 // Used internally.
-export async function _addEmailHash (sha1, email, signup_language, verified = false) {
+export async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
+  log.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
   try {
     return await _getSha1EntryAndDo(sha1, async aEntry => {
       // Entry existed, patch the email value if supplied.
@@ -164,9 +164,9 @@ export async function _addEmailHash (sha1, email, signup_language, verified = fa
       return aEntry
     }, async () => {
       // Always add a verification_token value
-      const verification_token = uuidv4()
+      const verificationToken = uuidv4()
       const res = await knex('subscribers')
-        .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
+        .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signupLanguage, primary_verification_token: verificationToken, primary_verified: verified })
         .returning('*')
       return res[0]
     })
@@ -189,6 +189,8 @@ export async function _addEmailHash (sha1, email, signup_language, verified = fa
    * @returns {object} subscriber knex object added to DB
    */
 export async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
+  console.log({ email })
+  console.log({ signupLanguage })
   const emailHash = await _addEmailHash(getSha1(email), email, signupLanguage, true)
   const verified = await _verifySubscriber(emailHash)
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null
