@@ -23,8 +23,11 @@ export default data => `
         ${data.partial}
       </main>
       <footer>
-        <img src='images/moz-logo-1color-white-rgb-01.svg' width='100'>
-        <p>MOZILLA footer image</p>
+        <a href='https://www.mozilla.org' target='_blank'><img src='images/moz-logo-1color-white-rgb-01.svg' width='100'></a>
+        <menu>
+          <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>Terms & Privacy</a></li>
+          <li><a href='https://github.com/mozilla/blurts-server' target='_blank' rel='noreferrer'>GitHub</a></li>
+        </menu>
       </footer>
     </body>
   </html>
