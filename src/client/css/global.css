@@ -25,10 +25,27 @@ html.scrolled header {
 }
 
 footer {
+  display: flex;
+  justify-content: space-between;
+  color: white;
   background: black;
+  padding: var(--padding-md) var(--padding-lg);
 }
 
-button {
+menu {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-md);
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+.button {
   border: 0;
   border-radius: var(--border-radius);
   background: transparent;
