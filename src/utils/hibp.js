@@ -97,7 +97,16 @@ export async function loadBreachesIntoApp (app) {
   }
   log.info('done-loading-breaches', 'great success 👍')
 }
+/**
+A range of hashes can be searched by passing the hash prefix in a GET request:
+GET /breachedaccount/range/[hash prefix]
 
+ * @param {string} sha1 first 6 chars of email sha1
+ * @param {*} allBreaches 
+ * @param {*} includeSensitive 
+ * @param {*} filterBreaches 
+ * @returns 
+ */
 export async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
   let foundBreaches = []
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
@@ -172,7 +181,18 @@ export function getLatestBreach (breaches) {
   }
   return latestBreach
 }
-
+/**
+A range can be subscribed for callbacks with the following request:
+POST /range/subscribe
+{
+  hashPrefix:"[hash prefix]"
+}
+There are two possible response codes that will be returned:
+1. HTTP 201: New range subscription has been created
+2. HTTP 200: Range subscription already exists
+ * @param {string} sha1 first 6 chars of sha1 of the email being subscribed
+ * @returns 200 or 201 response codes
+ */
 export async function subscribeHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = '/range/subscribe'
