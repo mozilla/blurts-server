@@ -1,5 +1,7 @@
 # Firefox Monitor Server
 
+[![Coverage Status](https://coveralls.io/repos/github/mozilla/blurts-server/badge.svg?branch=main)](https://coveralls.io/github/mozilla/blurts-server?branch=main)
+
 ## Summary
 
 Firefox Monitor notifies users when their credentials have been compromised in a data breach.
