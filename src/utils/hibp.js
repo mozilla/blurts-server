@@ -1,13 +1,11 @@
-'use strict'
-
 import got from 'got'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
-// import { name, version } from '../package.json'
 // const { FluentError } = require('./locale-utils')
 
-// const HIBP_USER_AGENT = `${name}/${version}`
+// TODO: fix hardcode
+const HIBP_USER_AGENT = 'monitor/1.0.0'
 // When HIBP "re-names" a breach, it keeps its old 'Name' value but gets a new 'Title'
 // We use 'Name' in Firefox (via Remote Settings), so we have to maintain our own mapping of re-named breaches.
 const RENAMED_BREACHES = ['covve']
@@ -16,15 +14,15 @@ const RENAMED_BREACHES_MAP = {
 }
 const log = mozlog('hibp')
 
-// function _addStandardOptions (options = {}) {
-//   const hibpOptions = {
-//     headers: {
-//       'User-Agent': HIBP_USER_AGENT
-//     },
-//     responseType: 'json'
-//   }
-//   return Object.assign(options, hibpOptions)
-// }
+function _addStandardOptions (options = {}) {
+  const hibpOptions = {
+    headers: {
+      'User-Agent': HIBP_USER_AGENT
+    },
+    responseType: 'json'
+  }
+  return Object.assign(options, hibpOptions)
+}
 
 export async function _throttledGot (url, reqOptions, tryCount = 1) {
   let response
@@ -44,7 +42,7 @@ export async function _throttledGot (url, reqOptions, tryCount = 1) {
       } else {
         tryCount++
         await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
-        return await this._throttledGot(url, reqOptions, tryCount)
+        return await _throttledGot(url, reqOptions, tryCount)
       }
     } else {
       throw new FluentError('error-hibp-connect')
@@ -54,15 +52,15 @@ export async function _throttledGot (url, reqOptions, tryCount = 1) {
 
 export async function req (path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
-  const reqOptions = this._addStandardOptions(options)
-  return await this._throttledGot(url, reqOptions)
+  const reqOptions = _addStandardOptions(options)
+  return await _throttledGot(url, reqOptions)
 }
 
 export async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
-  const reqOptions = this._addStandardOptions(options)
-  return await this._throttledGot(url, reqOptions)
+  const reqOptions = _addStandardOptions(options)
+  return await _throttledGot(url, reqOptions)
 }
 
 export function matchFluentID (dataCategory) {
@@ -75,24 +73,24 @@ export function matchFluentID (dataCategory) {
 export function formatDataClassesArray (dataCategories) {
   const formattedArray = []
   dataCategories.forEach(category => {
-    formattedArray.push(this.matchFluentID(category))
+    formattedArray.push(matchFluentID(category))
   })
   return formattedArray
 }
 
 export async function loadBreachesIntoApp (app) {
   try {
-    const breachesResponse = await this.req('/breaches')
+    const breachesResponse = await req('/breaches')
     const breaches = []
 
     for (const breach of breachesResponse.body) {
-      breach.DataClasses = this.formatDataClassesArray(breach.DataClasses)
+      breach.DataClasses = formatDataClassesArray(breach.DataClasses)
       breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
       breaches.push(breach)
     }
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
-    app.locals.latestBreach = this.getLatestBreach(breaches)
+    app.locals.latestBreach = getLatestBreach(breaches)
     app.locals.mostRecentBreachDateTime = app.locals.latestBreach.AddedDate
   } catch (error) {
     throw new FluentError('error-hibp-load-breaches')
@@ -105,7 +103,7 @@ export async function getBreachesForEmail (sha1, allBreaches, includeSensitive =
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/breachedaccount/range/${sha1Prefix}`
 
-  const response = await this.kAnonReq(path)
+  const response = await kAnonReq(path)
   if (!response) {
     return []
   }
@@ -118,7 +116,7 @@ export async function getBreachesForEmail (sha1, allBreaches, includeSensitive =
     if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
       foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name))
       if (filterBreaches) {
-        foundBreaches = this.filterBreaches(foundBreaches)
+        foundBreaches = filterBreaches(foundBreaches)
       }
 
       // NOTE: DO NOT CHANGE THIS SORT LOGIC
@@ -183,5 +181,5 @@ export async function subscribeHash (sha1) {
     json: { hashPrefix: sha1Prefix }
   }
 
-  return await this.kAnonReq(path, options)
+  return await kAnonReq(path, options)
 }
