@@ -21,7 +21,7 @@ const rl = readline.createInterface({
         process.exit(1)
       }
 
-      const subscriber = await DB.getSubscriberByEmail(second_answer)
+      const subscriber = await DB.getSubscriberByEmail(secondAnswer)
       if (!subscriber) {
         console.error('Could not find subscriber.')
         process.exit(1)
