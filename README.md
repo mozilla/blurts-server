@@ -85,9 +85,7 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
     npm start
     ```
 
-Note: `npm start` uses `onchange` and `nodemon` to automatically detect file
-changes, re-compile static assets, and restart the express process. If you want
-more control, see the `scripts` section of `package.json` for more commands.
+Note: You might run the server using `npm run dev` instead, which uses `nodemon` to detect file changes, re-compile static assets, and restart the express process. 
 
 2. Navigate to [localhost:6060/](http://localhost:6060/)
 
