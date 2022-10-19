@@ -102,10 +102,10 @@ A range of hashes can be searched by passing the hash prefix in a GET request:
 GET /breachedaccount/range/[hash prefix]
 
  * @param {string} sha1 first 6 chars of email sha1
- * @param {*} allBreaches 
- * @param {*} includeSensitive 
- * @param {*} filterBreaches 
- * @returns 
+ * @param {*} allBreaches
+ * @param {*} includeSensitive
+ * @param {*} filterBreaches
+ * @returns
  */
 export async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
   let foundBreaches = []

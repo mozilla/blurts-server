@@ -166,11 +166,12 @@ export async function _addEmailHash (sha1, email, signupLanguage, verified = fal
       // Always add a verification_token value
       const verificationToken = uuidv4()
       const res = await knex('subscribers')
-        .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signupLanguage, primary_verification_token: verificationToken, primary_verified: verified })
+        .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language: signupLanguage, primary_verification_token: verificationToken, primary_verified: verified })
         .returning('*')
       return res[0]
     })
   } catch (e) {
+    log.error(e)
     throw new FluentError('error-could-not-add-email')
   }
 }
@@ -267,7 +268,7 @@ export async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken
     })
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
-  if (updatedSubscriber) {
+  if (updatedSubscriber && subscriber.fxa_refresh_token) {
     destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
   }
   return updatedSubscriber
