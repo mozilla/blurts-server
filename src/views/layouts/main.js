@@ -5,6 +5,7 @@ export default data => `
   <html lang=${data.locale}>
     <head>
       <meta charset='utf-8'>
+      <meta name="viewport" content="width=320, initial-scale=1">
       <title>${getPattern('home-title')}</title>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +15,8 @@ export default data => `
     </head>
     <body>
       <header>
-        <a href='/'><img src='images/monitor-logo-transparent.png' width='220' height='40'></a>
-        <a href='/user/login' class='button'>${getMessage('sign-up')}</a>
+        <a href='/'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
+        <a href='/breach-details' class='button'>${getMessage('sign-up')}</a>
       </header>
       <nav>
       </nav>
