@@ -1,7 +1,7 @@
 import express from 'express'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
-// import Helmet from 'helmet'
+import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
 
@@ -29,15 +29,9 @@ function getRedisStore () {
   return new RedisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
 }
 
-// if (AppConstants.FXA_ENABLED) {
-//   const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin;
-//   [imgSrc, connectSrc].forEach(arr => {
-//     arr.push(fxaSrc)
-//   })
-// }
-
 // middleware
 app.use(express.json())
+app.use(helmet())
 app.use((req, res, next) => {
   const accept = accepts(req)
   req.appLocale = updateAppLocale(accept.languages())
@@ -48,7 +42,6 @@ app.use((req, res, next) => {
 const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48
 app.use(session({
   cookie: {
-    httpOnly: true,
     maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
     rolling: true,
     sameSite: 'lax',
