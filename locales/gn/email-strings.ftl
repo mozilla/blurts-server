@@ -62,47 +62,8 @@ email-breach-alert-blurb =
     { -product-name } omombe’u ndéve mba’ekuaarã ñembyai ne mba’eteéva rehegua. 
     
     Og̃uahẽramo mba’emimi mba’ekuaarã ñembyai rehegua ambue mba’apohaguasu guive.
-# List headline
-faq-list-headline = Porandu py’ỹiguáva
-# Link Title
-faq-v2-1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
-# Link Title
-faq-v2-2 = ¿Ajapova’erã mba’e oiko rire ñembyai heta arýma, térã kóva ha’e mba’ete itujáva?
-# Link Title
-faq-v2-3 = Ajuhu ramoite peteĩ mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
-# Link Title
-faq-v2-4 = ¿Mba’éicha oipuru { -product-name } tendakuéra imarandu ñemívape?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Emoheñói { -brand-fxa }</a>, reigua ha ikatúta embojuaju 15 ñanduti veve peve.
 # Section headline
 monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
-# Subject line of email
-pre-fxa-subject = { -product-name } mbohekopyahu
-pre-fxa-headline = ¿Mba’e pe iñambuéva { -product-name } ndive
-pre-fxa-blurb =
-    Kóva ha’e iñambuéva eñemboheraguapy guive { -product-name }-pe, pe mba’epuru 
-    ohechaa mba’ekuaarã ñembyai ojekuaáva ne marandurãite. Rombojuajuhína Firefox mba’ete ndive.
-pre-fxa-tout-1 = Ejesarekóke ñembyai pyahúre
-pre-fxa-p-1 =
-    <a>Emoheñói mba’ete</a> ehecha hag̃ua 15 ñanduti veve 
-    ehechakuaa hag̃ua mba’ekuaarã ñembyai. Pembojuaju hag̃ua oimeraẽva ñandutiveve eipuruva’ekue emoheñói hag̃ua ñandutípe.
-pre-fxa-tout-2 = Ereko mba’erupa tuichaháicha
-pre-fxa-p-2 =
-    Ejuhu opaite mba’ekuaarã ñembyai peteĩ tendápe año eikuaa hag̃ua mba’e ñe’ẽñemípa emoambuéta. 
-    Pe ñembyai kora ehechakuaa peteĩ mba’ete rupive.
-pre-fxa-tout-3 = Og̃uahẽ meméta kyhyjerã ñanduti vevépe
-pre-fxa-p-3 =
-    Og̃uahẽta ndéve kyhyjerã { -product-name } guive. Reñemomarandúta ne marandu 
-    osẽramo mba’ekuaarã ñembyai pyahúpe.
-# Button at the bottom of pre-fxa email.
-create-account = Emoheñói mba’ete
-# More security products
-more-products-headline = Eñemo’ã ambue ore apopyre ndive
-more-products-vpn = Ñemo’ã opaite ne mba’e’okápe, peteĩteĩva mba’e’okápe.
-more-products-cta-vpn = Erekóke { -product-name-vpn }
-more-products-relay = Eñomi ne ñanduti veve kundaharape emo’ã hag̃ua nde reraite.
-more-products-cta-relay = Erekóke { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -124,3 +85,14 @@ email-resolved = Ñembogua moĩporãmbyre:
 # table row 4 label
 email-unresolved = Ñembogua oĩporã’ỹva:
 email-resolve-cta = Emoĩporã ñembogua
+
+## Verification email
+
+
+## Breach report
+
+email-dashboard-cta = Eho ñangarekoha rupápe
+
+## Breach alert
+
+email-spotted-new-breach = Rohecha oĩha mba’ekuaarã ñembogua pyahu
