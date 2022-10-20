@@ -36,12 +36,12 @@ export function init (req, res, next, client = FxAOAuthClient) {
 
 export async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
-    log.error('Oauth invalid session: req.session.state mission');
+    log.error('Oauth invalid session: req.session.state mission')
     throw new FluentError('oauth-invalid-session')
   }
 
   if (req.session.state !== req.query.state) {
-    log.error('Oauth invalid session: req.session does not match req.query');
+    log.error('Oauth invalid session: req.session does not match req.query')
     throw new FluentError('oauth-invalid-session')
   }
 
