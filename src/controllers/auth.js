@@ -36,13 +36,13 @@ export function init (req, res, next, client = FxAOAuthClient) {
 
 export async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
-    // TODO:
-    // throw new FluentError('oauth-invalid-session')
+    log.error('Oauth invalid session: req.session.state mission');
+    throw new FluentError('oauth-invalid-session')
   }
 
   if (req.session.state !== req.query.state) {
-    // TODO:
-    // throw new FluentError('oauth-invalid-session')
+    log.error('Oauth invalid session: req.session does not match req.query');
+    throw new FluentError('oauth-invalid-session')
   }
 
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state })
@@ -109,4 +109,9 @@ export async function confirmed (req, res, next, client = FxAOAuthClient) {
   await updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData)
 
   res.redirect(returnURL.pathname + returnURL.search)
+}
+
+export function logout (req, res) {
+  req.session.destroy()
+  res.redirect('/')
 }

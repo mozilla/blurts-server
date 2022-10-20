@@ -274,6 +274,12 @@ export async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken
   return updatedSubscriber
 }
 
+/**
+ * Update fxa_profile_json for subscriber
+ * @param {object} subscriber knex object in DB
+ * @param {string} fxaProfileData from Firefox Account
+ * @returns {object} updated subscriber knex object in DB
+ */
 export async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
