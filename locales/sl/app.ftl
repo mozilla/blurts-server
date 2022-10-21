@@ -319,6 +319,9 @@ no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
 all-breaches-headline = Vse kraje podatkov v { -product-name }ju
 search-breaches = Iskanje kraj podatkov
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>V <a>svojem profilu na Facebooku</a> nastavite svoje podatke na "Samo jaz" ali drugo nejavno nastavitev.</span>
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Prikazano:
 

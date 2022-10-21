@@ -54,6 +54,7 @@ family-structure = sestava družine
 financial-investments = finančne naložbe
 financial-transactions = finančne transakcije
 fitness-levels = stopnje telesne pripravljenosti
+flights-taken = opravljeni leti
 genders = spoli
 geographic-locations = geografske lokacije
 government-issued-ids = osebni dokumenti
