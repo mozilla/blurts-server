@@ -1,8 +1,8 @@
 import got from 'got'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
+import { fluentError } from './fluent.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
-// const { FluentError } = require('./locale-utils')
 
 // TODO: fix hardcode
 const HIBP_USER_AGENT = 'monitor/1.0.0'
@@ -38,14 +38,14 @@ export async function _throttledGot (url, reqOptions, tryCount = 1) {
       log.info('_throttledGot', { err: 'got a 429, tryCount: ' + tryCount })
       if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
         log.error('_throttledGot', { err })
-        throw new FluentError('error-hibp-throttled')
+        throw fluentError('error-hibp-throttled')
       } else {
         tryCount++
         await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
         return await _throttledGot(url, reqOptions, tryCount)
       }
     } else {
-      throw new FluentError('error-hibp-connect')
+      throw fluentError('error-hibp-connect')
     }
   }
 }
@@ -93,7 +93,7 @@ export async function loadBreachesIntoApp (app) {
     app.locals.latestBreach = getLatestBreach(breaches)
     app.locals.mostRecentBreachDateTime = app.locals.latestBreach.AddedDate
   } catch (error) {
-    throw new FluentError('error-hibp-load-breaches')
+    throw fluentError('error-hibp-load-breaches')
   }
   log.info('done-loading-breaches', 'great success 👍')
 }

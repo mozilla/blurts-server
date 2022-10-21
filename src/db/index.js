@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 import Knex from 'knex'
-// import { FluentError } from '../locale-utils'
+import { fluentError } from '../utils/fluent.js'
 import AppConstants from '../app-constants.js'
 import { subscribeHash } from '../utils/hibp.js'
 import { destroyOAuthToken, getSha1 } from '../utils/fxa.js'
@@ -121,7 +121,7 @@ export async function resetUnverifiedEmailAddress (emailAddressId) {
 export async function verifyEmailHash (token) {
   const unverifiedEmail = await getEmailByToken(token)
   if (!unverifiedEmail) {
-    throw new FluentError('Error message for this verification email timed out or something went wrong.')
+    throw fluentError('Error message for this verification email timed out or something went wrong.')
   }
   const verifiedEmail = await _verifyNewEmail(unverifiedEmail)
   return verifiedEmail[0]
@@ -172,7 +172,7 @@ export async function _addEmailHash (sha1, email, signupLanguage, verified = fal
     })
   } catch (e) {
     log.error(e)
-    throw new FluentError('error-could-not-add-email')
+    throw fluentError('error-could-not-add-email')
   }
 }
 

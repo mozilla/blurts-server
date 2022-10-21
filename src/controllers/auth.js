@@ -1,14 +1,12 @@
-'use strict'
 import { URL } from 'url'
-
 import { randomBytes } from 'crypto'
 
 import AppConstants from '../app-constants.js'
 import { getSubscriberByEmail, addSubscriber, updateFxAData } from '../db/index.js'
 // import { sendEmail, getEmailCtaHref, getUnsubscribeUrl } from '../email-utils'
 import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
-// import { FluentError } from '../locale-utils'
-// import { getBreachesForEmail } from '../hibp'
+// import { getBreachesForEmail } from '../utils/hibp.js'
+import { fluentError } from '../utils/fluent.js'
 import mozlog from '../utils/log.js'
 const { SERVER_URL } = AppConstants
 
@@ -37,12 +35,12 @@ export function init (req, res, next, client = FxAOAuthClient) {
 export async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
     log.error('Oauth invalid session: req.session.state mission')
-    throw new FluentError('oauth-invalid-session')
+    throw fluentError('oauth-invalid-session')
   }
 
   if (req.session.state !== req.query.state) {
     log.error('Oauth invalid session: req.session does not match req.query')
-    throw new FluentError('oauth-invalid-session')
+    throw fluentError('oauth-invalid-session')
   }
 
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state })
