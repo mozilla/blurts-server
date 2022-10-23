@@ -4,12 +4,20 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
+  min-width: 320px;
+  height: 100%;
+  padding-top: var(--header-h);
   font: normal 1rem/1.2 Inter, sans-serif;
 }
 
 header {
   position: fixed;
+  top: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -20,23 +28,35 @@ header {
   transition: box-shadow 0.3s;
 }
 
+header .monitor-logo {
+  transform: scale(var(--multiplier));
+  transform-origin: left;
+}
+
 html.scrolled header {
   box-shadow: 0 4px 8px -8px black;
 }
 
 footer {
+  position: sticky;
+  top: 100%;
   display: flex;
   justify-content: space-between;
   color: white;
   background: black;
-  padding: var(--padding-md) var(--padding-lg);
+  padding: var(--padding-lg);
+}
+
+footer img {
+  display: block;
 }
 
 menu {
   display: flex;
   align-items: center;
-  gap: var(--padding-md);
+  gap: var(--padding-lg);
   list-style-type: none;
+  font-size: 0.875rem;
 }
 
 a {
@@ -53,10 +73,11 @@ button,
   font-family: inherit;
   font-size: 0.875rem;
   font-weight: normal;
-  line-height: 40px;
-  padding: 0 var(--padding-lg);
+  line-height: 0.75;
+  padding: var(--padding-lg);
   cursor: pointer;
   box-shadow: inset 0 0 0 1px;
+  white-space: nowrap;
 }
 
 .button-primary {
