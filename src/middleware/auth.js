@@ -2,7 +2,7 @@ import AppConstants from '../app-constants.js'
 import { getSubscriberById, updateFxAProfileData } from '../db/index.js'
 import * as FXA from '../utils/fxa.js'
 
-async function _getRequestSessionUser (req, res, next) {
+async function getRequestSessionUser (req, res, next) {
   if (req.session && req.session.user) {
     // make sure the user object has all subscribers and email_addresses properties
     return getSubscriberById(req.session.user.id)
@@ -11,7 +11,7 @@ async function _getRequestSessionUser (req, res, next) {
 }
 
 export async function requireSessionUser (req, res, next) {
-  const user = await _getRequestSessionUser(req)
+  const user = await getRequestSessionUser(req)
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
     return res.redirect(`/oauth/init?${queryParams}`)
@@ -28,7 +28,7 @@ export async function requireSessionUser (req, res, next) {
 }
 
 export async function requireAdminUser (req, res, next) {
-  const user = await _getRequestSessionUser(req)
+  const user = await getRequestSessionUser(req)
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
     return res.redirect(`/oauth/init?${queryParams}`)
