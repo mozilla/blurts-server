@@ -20,12 +20,12 @@ const staticPath = process.env.npm_lifecycle_event === 'start' ? '../dist' : './
 
 await initFluentBundles()
 
-function getRedisStore () {
+async function getRedisStore () {
   const RedisStoreConstructor = connectRedis(session)
-  // if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
-  //   const redis = require('redis-mock')
-  //   return new RedisStoreConstructor({ client: redis.createClient() })
-  // }
+  if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
+    const redisMock = await import('redis-mock') // for devs without local redis
+    return new RedisStoreConstructor({ client: redisMock.default.createClient() })
+  }
   return new RedisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
 }
 
@@ -50,7 +50,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: AppConstants.COOKIE_SECRET,
-  store: getRedisStore()
+  store: await getRedisStore()
 }))
 
 // routing
