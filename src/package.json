@@ -26,9 +26,12 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "dependencies": {
-    "uuid": "^9.0.0",
     "@squoosh/cli": "^0.7.2",
     "esbuild": "^0.15.10",
-    "svgo": "^2.8.0"
+    "svgo": "^2.8.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "redis-mock": "^0.56.3"
   }
 }
