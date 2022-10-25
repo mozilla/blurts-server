@@ -14,7 +14,7 @@ const FxAOAuthUtils = {
   get profileUri () { return AppConstants.OAUTH_PROFILE_URI }
 }
 
-export const FxAOAuthClient = new ClientOAuth2({
+const FxAOAuthClient = new ClientOAuth2({
   clientId: AppConstants.OAUTH_CLIENT_ID,
   clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
   accessTokenUri: FxAOAuthUtils.tokenUri,
@@ -42,7 +42,7 @@ async function postTokenRequest (path, token) {
   }
 }
 
-export async function verifyOAuthToken (token) {
+async function verifyOAuthToken (token) {
   try {
     const response = await postTokenRequest('/v1/verify', token)
     return response
@@ -51,7 +51,7 @@ export async function verifyOAuthToken (token) {
   }
 }
 
-export async function destroyOAuthToken (token) {
+async function destroyOAuthToken (token) {
   try {
     const response = await postTokenRequest('/v1/destroy', token)
     return response
@@ -60,12 +60,12 @@ export async function destroyOAuthToken (token) {
   }
 }
 
-export async function revokeOAuthTokens (subscriber) {
+async function revokeOAuthTokens (subscriber) {
   await destroyOAuthToken({ token: subscriber.fxa_access_token })
   await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
 }
 
-export async function getProfileData (accessToken) {
+async function getProfileData (accessToken) {
   try {
     const data = await got(FxAOAuthUtils.profileUri,
       { headers: { Authorization: `Bearer ${accessToken}` } }
@@ -77,7 +77,7 @@ export async function getProfileData (accessToken) {
   }
 }
 
-export async function sendMetricsFlowPing (path) {
+async function sendMetricsFlowPing (path) {
   const fxaMetricsFlowUrl = new URL(path, AppConstants.FXA_SETTINGS_URL)
   const fxaMetricsFlowOptions = {
     method: 'GET',
@@ -94,6 +94,16 @@ export async function sendMetricsFlowPing (path) {
   }
 }
 
-export function getSha1 (email) {
+function getSha1 (email) {
   return crypto.createHash('sha1').update(email).digest('hex')
+}
+
+export {
+  FxAOAuthClient,
+  verifyOAuthToken,
+  destroyOAuthToken,
+  revokeOAuthTokens,
+  getProfileData,
+  sendMetricsFlowPing,
+  getSha1
 }

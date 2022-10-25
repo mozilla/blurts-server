@@ -24,7 +24,7 @@ function _addStandardOptions (options = {}) {
   return Object.assign(options, hibpOptions)
 }
 
-export async function _throttledGot (url, reqOptions, tryCount = 1) {
+async function _throttledGot (url, reqOptions, tryCount = 1) {
   let response
   try {
     response = await got(url, reqOptions)
@@ -50,27 +50,27 @@ export async function _throttledGot (url, reqOptions, tryCount = 1) {
   }
 }
 
-export async function req (path, options = {}) {
+async function req (path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
   return await _throttledGot(url, reqOptions)
 }
 
-export async function kAnonReq (path, options = {}) {
+async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
   const reqOptions = _addStandardOptions(options)
   return await _throttledGot(url, reqOptions)
 }
 
-export function matchFluentID (dataCategory) {
+function matchFluentID (dataCategory) {
   return dataCategory.toLowerCase()
     .replace(/[^-a-z0-9]/g, '-')
     .replace(/-{2,}/g, '-')
     .replace(/(^-|-$)/g, '')
 }
 
-export function formatDataClassesArray (dataCategories) {
+function formatDataClassesArray (dataCategories) {
   const formattedArray = []
   dataCategories.forEach(category => {
     formattedArray.push(matchFluentID(category))
@@ -78,7 +78,7 @@ export function formatDataClassesArray (dataCategories) {
   return formattedArray
 }
 
-export async function loadBreachesIntoApp (app) {
+async function loadBreachesIntoApp (app) {
   try {
     const breachesResponse = await req('/breaches')
     const breaches = []
@@ -107,7 +107,7 @@ GET /breachedaccount/range/[hash prefix]
  * @param {*} filterBreaches
  * @returns
  */
-export async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
+async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
   let foundBreaches = []
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/breachedaccount/range/${sha1Prefix}`
@@ -147,7 +147,7 @@ export async function getBreachesForEmail (sha1, allBreaches, includeSensitive =
   )
 }
 
-export function getBreachByName (allBreaches, breachName) {
+function getBreachByName (allBreaches, breachName) {
   breachName = breachName.toLowerCase()
   if (RENAMED_BREACHES.includes(breachName)) {
     breachName = RENAMED_BREACHES_MAP[breachName]
@@ -156,7 +156,7 @@ export function getBreachByName (allBreaches, breachName) {
   return foundBreach
 }
 
-export function filterBreaches (breaches) {
+function filterBreaches (breaches) {
   return breaches.filter(
     breach => !breach.IsRetired &&
                 !breach.IsSpamList &&
@@ -166,7 +166,7 @@ export function filterBreaches (breaches) {
   )
 }
 
-export function getLatestBreach (breaches) {
+function getLatestBreach (breaches) {
   let latestBreach = {}
   let latestBreachDateTime = new Date(0)
   for (const breach of breaches) {
@@ -193,7 +193,7 @@ There are two possible response codes that will be returned:
  * @param {string} sha1 first 6 chars of sha1 of the email being subscribed
  * @returns 200 or 201 response codes
  */
-export async function subscribeHash (sha1) {
+async function subscribeHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = '/range/subscribe'
   const options = {
@@ -202,4 +202,17 @@ export async function subscribeHash (sha1) {
   }
 
   return await kAnonReq(path, options)
+}
+
+export {
+  req,
+  kAnonReq,
+  matchFluentID,
+  formatDataClassesArray,
+  loadBreachesIntoApp,
+  getBreachesForEmail,
+  getBreachByName,
+  filterBreaches,
+  getLatestBreach,
+  subscribeHash
 }

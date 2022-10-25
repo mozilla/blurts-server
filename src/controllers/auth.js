@@ -12,7 +12,7 @@ const { SERVER_URL } = AppConstants
 
 const log = mozlog('controllers.auth')
 
-export function init (req, res, next, client = FxAOAuthClient) {
+function init (req, res, next, client = FxAOAuthClient) {
   // Set a random state string in a cookie so that we can verify
   // the user when they're redirected back to us after auth.
   const state = randomBytes(40).toString('hex')
@@ -32,7 +32,7 @@ export function init (req, res, next, client = FxAOAuthClient) {
   res.redirect(url)
 }
 
-export async function confirmed (req, res, next, client = FxAOAuthClient) {
+async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
     log.error('Oauth invalid session: req.session.state missing')
     throw fluentError('oauth-invalid-session')
@@ -109,7 +109,9 @@ export async function confirmed (req, res, next, client = FxAOAuthClient) {
   res.redirect(returnURL.pathname + returnURL.search)
 }
 
-export function logout (req, res) {
+function logout (req, res) {
   req.session.destroy()
   res.redirect('/')
 }
+
+export { init, confirmed, logout }

@@ -13,28 +13,28 @@ let knex = Knex(knexConfig)
 
 const log = mozlog('DB')
 
-export async function getSubscriberByToken (token) {
+async function getSubscriberByToken (token) {
   const res = await knex('subscribers')
     .where('primary_verification_token', '=', token)
 
   return res[0]
 }
 
-export async function getEmailByToken (token) {
+async function getEmailByToken (token) {
   const res = await knex('email_addresses')
     .where('verification_token', '=', token)
 
   return res[0]
 }
 
-export async function getEmailById (emailAddressId) {
+async function getEmailById (emailAddressId) {
   const res = await knex('email_addresses')
     .where('id', '=', emailAddressId)
 
   return res[0]
 }
 
-export async function getSubscriberByTokenAndHash (token, emailSha1) {
+async function getSubscriberByTokenAndHash (token, emailSha1) {
   const res = await knex.table('subscribers')
     .first()
     .where({
@@ -44,7 +44,7 @@ export async function getSubscriberByTokenAndHash (token, emailSha1) {
   return res
 }
 
-export async function joinEmailAddressesToSubscriber (subscriber) {
+async function joinEmailAddressesToSubscriber (subscriber) {
   if (subscriber) {
     const emailAddressRecords = await knex('email_addresses').where({
       subscriber_id: subscriber.id
@@ -56,7 +56,7 @@ export async function joinEmailAddressesToSubscriber (subscriber) {
   return subscriber
 }
 
-export async function getSubscriberById (id) {
+async function getSubscriberById (id) {
   const [subscriber] = await knex('subscribers').where({
     id
   })
@@ -64,7 +64,7 @@ export async function getSubscriberById (id) {
   return subscriberAndEmails
 }
 
-export async function getSubscriberByFxaUid (uid) {
+async function getSubscriberByFxaUid (uid) {
   const [subscriber] = await knex('subscribers').where({
     fxa_uid: uid
   })
@@ -72,7 +72,7 @@ export async function getSubscriberByFxaUid (uid) {
   return subscriberAndEmails
 }
 
-export async function getSubscriberByEmail (email) {
+async function getSubscriberByEmail (email) {
   const [subscriber] = await knex('subscribers').where({
     primary_email: email,
     primary_verified: true
@@ -81,7 +81,7 @@ export async function getSubscriberByEmail (email) {
   return subscriberAndEmails
 }
 
-export async function getEmailAddressRecordByEmail (email) {
+async function getEmailAddressRecordByEmail (email) {
   const emailAddresses = await knex('email_addresses').where({
     email, verified: true
   })
@@ -95,7 +95,7 @@ export async function getEmailAddressRecordByEmail (email) {
   return emailAddresses[0]
 }
 
-export async function addSubscriberUnverifiedEmailHash (user, email) {
+async function addSubscriberUnverifiedEmailHash (user, email) {
   const res = await knex('email_addresses').insert({
     subscriber_id: user.id,
     email,
@@ -106,7 +106,7 @@ export async function addSubscriberUnverifiedEmailHash (user, email) {
   return res[0]
 }
 
-export async function resetUnverifiedEmailAddress (emailAddressId) {
+async function resetUnverifiedEmailAddress (emailAddressId) {
   const newVerificationToken = uuidv4()
   const res = await knex('email_addresses')
     .update({
@@ -118,7 +118,7 @@ export async function resetUnverifiedEmailAddress (emailAddressId) {
   return res[0]
 }
 
-export async function verifyEmailHash (token) {
+async function verifyEmailHash (token) {
   const unverifiedEmail = await getEmailByToken(token)
   if (!unverifiedEmail) {
     throw fluentError('Error message for this verification email timed out or something went wrong.')
@@ -129,7 +129,7 @@ export async function verifyEmailHash (token) {
 
 // TODO: refactor into an upsert? https://jaketrent.com/post/upsert-knexjs/
 // Used internally, ideally should not be called by consumers.
-export async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
+async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
   const existingEntries = await knex('subscribers')
     .where('primary_sha1', sha1)
 
@@ -143,7 +143,7 @@ export async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallbac
 }
 
 // Used internally.
-export async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
+async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
   log.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
   try {
     return await _getSha1EntryAndDo(sha1, async aEntry => {
@@ -189,7 +189,7 @@ export async function _addEmailHash (sha1, email, signupLanguage, verified = fal
    * @param {string} fxaProfileData from Firefox Account
    * @returns {object} subscriber knex object added to DB
    */
-export async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
+async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
   console.log({ email })
   console.log({ signupLanguage })
   const emailHash = await _addEmailHash(getSha1(email), email, signupLanguage, true)
@@ -210,7 +210,7 @@ export async function addSubscriber (email, signupLanguage, fxaAccessToken = nul
    * @param {object} emailHash knex object in DB
    * @returns {object} verified subscriber knex object in DB
    */
-export async function _verifySubscriber (emailHash) {
+async function _verifySubscriber (emailHash) {
   // TODO: move this "up" into controllers/users ?
   await subscribeHash(emailHash.primary_sha1)
 
@@ -226,7 +226,7 @@ export async function _verifySubscriber (emailHash) {
 }
 
 // Verifies new emails added by existing users
-export async function _verifyNewEmail (emailHash) {
+async function _verifyNewEmail (emailHash) {
   await subscribeHash(emailHash.sha1)
 
   const verifiedEmail = await knex('email_addresses')
@@ -239,7 +239,7 @@ export async function _verifyNewEmail (emailHash) {
   return verifiedEmail
 }
 
-export async function getUserEmails (userId) {
+async function getUserEmails (userId) {
   const userEmails = await knex('email_addresses')
     .where('subscriber_id', '=', userId)
     .returning('*')
@@ -256,7 +256,7 @@ export async function getUserEmails (userId) {
    * @param {string} fxaProfileData from Firefox Account
    * @returns {object} updated subscriber knex object in DB
    */
-export async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
+async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
   const fxaUID = JSON.parse(fxaProfileData).uid
   const updated = await knex('subscribers')
     .where('id', '=', subscriber.id)
@@ -280,7 +280,7 @@ export async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken
  * @param {string} fxaProfileData from Firefox Account
  * @returns {object} updated subscriber knex object in DB
  */
-export async function updateFxAProfileData (subscriber, fxaProfileData) {
+async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
       fxa_profile_json: fxaProfileData
@@ -288,7 +288,7 @@ export async function updateFxAProfileData (subscriber, fxaProfileData) {
   return getSubscriberById(subscriber.id)
 }
 
-export async function setBreachesLastShownNow (subscriber) {
+async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
   const nowDateTime = new Date()
   const nowTimeStamp = nowDateTime.toISOString()
@@ -300,7 +300,7 @@ export async function setBreachesLastShownNow (subscriber) {
   return getSubscriberByEmail(subscriber.primary_email)
 }
 
-export async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
+async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   const updated = await knex('subscribers')
     .where('id', subscriber.id)
     .update({
@@ -311,7 +311,7 @@ export async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   return updatedSubscriber
 }
 
-export async function setBreachesResolved (options) {
+async function setBreachesResolved (options) {
   const { user, updatedResolvedBreaches } = options
   await knex('subscribers')
     .where('id', user.id)
@@ -321,7 +321,7 @@ export async function setBreachesResolved (options) {
   return getSubscriberByEmail(user.primary_email)
 }
 
-export async function setWaitlistsJoined (options) {
+async function setWaitlistsJoined (options) {
   const { user, updatedWaitlistsJoined } = options
   await knex('subscribers')
     .where('id', user.id)
@@ -331,7 +331,7 @@ export async function setWaitlistsJoined (options) {
   return getSubscriberByEmail(user.primary_email)
 }
 
-export async function removeSubscriber (subscriber) {
+async function removeSubscriber (subscriber) {
   await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
   await knex('subscribers').where({ id: subscriber.id }).del()
 }
@@ -339,7 +339,7 @@ export async function removeSubscriber (subscriber) {
 // This is used by SES callbacks to remove email addresses when recipients
 // perma-bounce or mark our emails as spam
 // Removes from either subscribers or email_addresses as necessary
-export async function removeEmail (email) {
+async function removeEmail (email) {
   const subscriber = await getSubscriberByEmail(email)
   if (!subscriber) {
     const emailAddress = await getEmailAddressRecordByEmail(email)
@@ -366,7 +366,7 @@ export async function removeEmail (email) {
     .del()
 }
 
-export async function removeSubscriberByToken (token, emailSha1) {
+async function removeSubscriberByToken (token, emailSha1) {
   const subscriber = await getSubscriberByTokenAndHash(token, emailSha1)
   if (!subscriber) {
     return false
@@ -380,7 +380,7 @@ export async function removeSubscriberByToken (token, emailSha1) {
   return subscriber
 }
 
-export async function removeOneSecondaryEmail (emailId) {
+async function removeOneSecondaryEmail (emailId) {
   await knex('email_addresses')
     .where({
       id: emailId
@@ -388,18 +388,18 @@ export async function removeOneSecondaryEmail (emailId) {
     .del()
 }
 
-export async function getSubscribersByHashes (hashes) {
+async function getSubscribersByHashes (hashes) {
   return await knex('subscribers').whereIn('primary_sha1', hashes).andWhere('primary_verified', '=', true)
 }
 
-export async function getEmailAddressesByHashes (hashes) {
+async function getEmailAddressesByHashes (hashes) {
   return await knex('email_addresses')
     .join('subscribers', 'email_addresses.subscriber_id', '=', 'subscribers.id')
     .whereIn('email_addresses.sha1', hashes)
     .andWhere('email_addresses.verified', '=', true)
 }
 
-export async function deleteUnverifiedSubscribers () {
+async function deleteUnverifiedSubscribers () {
   const expiredDateTime = new Date(Date.now() - DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000)
   const expiredTimeStamp = expiredDateTime.toISOString()
   const numDeleted = await knex('subscribers')
@@ -409,15 +409,15 @@ export async function deleteUnverifiedSubscribers () {
   log.info('deleteUnverifiedSubscribers', { msg: `Deleted ${numDeleted} rows.` })
 }
 
-export async function deleteSubscriberByFxAUID (fxaUID) {
+async function deleteSubscriberByFxAUID (fxaUID) {
   await knex('subscribers').where('fxa_uid', fxaUID).del()
 }
 
-export async function deleteEmailAddressesByUid (uid) {
+async function deleteEmailAddressesByUid (uid) {
   await knex('email_addresses').where({ subscriber_id: uid }).del()
 }
 
-export async function updateBreachStats (id, stats) {
+async function updateBreachStats (id, stats) {
   await knex('subscribers')
     .where('id', id)
     .update({
@@ -425,7 +425,7 @@ export async function updateBreachStats (id, stats) {
     })
 }
 
-export async function updateMonthlyEmailTimestamp (email) {
+async function updateMonthlyEmailTimestamp (email) {
   const res = await knex('subscribers').update({ monthly_email_at: 'now' })
     .where('primary_email', email)
     .returning('monthly_email_at')
@@ -433,18 +433,18 @@ export async function updateMonthlyEmailTimestamp (email) {
   return res
 }
 
-export async function updateMonthlyEmailOptout (token) {
+async function updateMonthlyEmailOptout (token) {
   await knex('subscribers').update('monthly_email_optout', true).where('primary_verification_token', token)
 }
 
-export function getSubscribersWithUnresolvedBreachesQuery () {
+function getSubscribersWithUnresolvedBreachesQuery () {
   return knex('subscribers')
     .whereRaw('monthly_email_optout IS NOT TRUE')
     .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
     .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
 }
 
-export async function getSubscribersWithUnresolvedBreaches (limit = 0) {
+async function getSubscribersWithUnresolvedBreaches (limit = 0) {
   let query = getSubscribersWithUnresolvedBreachesQuery()
     .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
   if (limit) {
@@ -453,21 +453,61 @@ export async function getSubscribersWithUnresolvedBreaches (limit = 0) {
   return await query
 }
 
-export async function getSubscribersWithUnresolvedBreachesCount () {
+async function getSubscribersWithUnresolvedBreachesCount () {
   const query = getSubscribersWithUnresolvedBreachesQuery()
   const count = parseInt((await query.count({ count: '*' }))[0].count)
   return count
 }
 
-export async function createConnection () {
+async function createConnection () {
   if (knex === null) {
     knex = Knex(knexConfig)
   }
 }
 
-export async function destroyConnection () {
+async function destroyConnection () {
   if (knex !== null) {
     await knex.destroy()
     knex = null
   }
+}
+
+export {
+  getSubscriberByToken,
+  getEmailByToken,
+  getEmailById,
+  getSubscriberByTokenAndHash,
+  joinEmailAddressesToSubscriber,
+  getSubscriberById,
+  getSubscriberByFxaUid,
+  getSubscriberByEmail,
+  getEmailAddressRecordByEmail,
+  addSubscriberUnverifiedEmailHash,
+  resetUnverifiedEmailAddress,
+  verifyEmailHash,
+  addSubscriber,
+  getUserEmails,
+  updateFxAData,
+  updateFxAProfileData,
+  setBreachesLastShownNow,
+  setAllEmailsToPrimary,
+  setBreachesResolved,
+  setWaitlistsJoined,
+  removeSubscriber,
+  removeEmail,
+  removeSubscriberByToken,
+  removeOneSecondaryEmail,
+  getSubscribersByHashes,
+  getEmailAddressesByHashes,
+  deleteUnverifiedSubscribers,
+  deleteSubscriberByFxAUID,
+  deleteEmailAddressesByUid,
+  updateBreachStats,
+  updateMonthlyEmailTimestamp,
+  updateMonthlyEmailOptout,
+  getSubscribersWithUnresolvedBreachesQuery,
+  getSubscribersWithUnresolvedBreaches,
+  getSubscribersWithUnresolvedBreachesCount,
+  createConnection,
+  destroyConnection
 }

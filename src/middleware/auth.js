@@ -10,7 +10,7 @@ async function getRequestSessionUser (req, res, next) {
   return null
 }
 
-export async function requireSessionUser (req, res, next) {
+async function requireSessionUser (req, res, next) {
   const user = await getRequestSessionUser(req)
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
@@ -27,7 +27,7 @@ export async function requireSessionUser (req, res, next) {
   next()
 }
 
-export async function requireAdminUser (req, res, next) {
+async function requireAdminUser (req, res, next) {
   const user = await getRequestSessionUser(req)
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
@@ -50,3 +50,5 @@ export async function requireAdminUser (req, res, next) {
   req.user = user
   next()
 }
+
+export { requireSessionUser, requireAdminUser }
