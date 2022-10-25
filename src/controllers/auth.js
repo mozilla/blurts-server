@@ -34,7 +34,7 @@ export function init (req, res, next, client = FxAOAuthClient) {
 
 export async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
-    log.error('Oauth invalid session: req.session.state mission')
+    log.error('Oauth invalid session: req.session.state missing')
     throw fluentError('oauth-invalid-session')
   }
 
