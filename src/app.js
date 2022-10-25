@@ -1,5 +1,9 @@
 import express from 'express'
+import session from 'express-session'
+import connectRedis from 'connect-redis'
+import helmet from 'helmet'
 import accepts from 'accepts'
+import redis from 'redis'
 
 import AppConstants from './app-constants.js'
 import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
@@ -16,13 +20,38 @@ const staticPath = process.env.npm_lifecycle_event === 'start' ? '../dist' : './
 
 await initFluentBundles()
 
+async function getRedisStore () {
+  const RedisStoreConstructor = connectRedis(session)
+  if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
+    const redisMock = await import('redis-mock') // for devs without local redis
+    return new RedisStoreConstructor({ client: redisMock.default.createClient() })
+  }
+  return new RedisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
+}
+
 // middleware
 app.use(express.json())
+app.use(helmet())
 app.use((req, res, next) => {
   const accept = accepts(req)
   req.appLocale = updateAppLocale(accept.languages())
   next()
 })
+
+// session
+const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48
+app.use(session({
+  cookie: {
+    maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
+    rolling: true,
+    sameSite: 'lax',
+    secure: AppConstants.NODE_ENV !== 'dev'
+  },
+  resave: false,
+  saveUninitialized: true,
+  secret: AppConstants.COOKIE_SECRET,
+  store: await getRedisStore()
+}))
 
 // routing
 app.use('/', indexRouter)

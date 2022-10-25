@@ -86,4 +86,8 @@ function getPattern (id, args) {
   return id
 }
 
-export { initFluentBundles, updateAppLocale, getMessage, getPattern }
+function fluentError (id) {
+  return new Error(getMessage(id))
+}
+
+export { initFluentBundles, updateAppLocale, getMessage, getPattern, fluentError }
