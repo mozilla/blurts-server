@@ -64,7 +64,7 @@ monitor-another-email = Quer monitorizar outro e-mail?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
-email-2022-unsubscribe = Está a receber este e-mail automático como subscritor de { -product-name }. <br>Sinta-se à vontade para alterar as suas preferências de e-mail { $unsubscribe-link-attr }aqui</a> a qualquer momento.
+email-2022-unsubscribe = Está a receber este e-mail automático como subscritor de { -product-name }. <br>Sinta-se à vontade para alterar as suas preferências de e-mail <a { $unsubscribe-link-attr }>aqui</a> a qualquer momento.
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = Dados de violação de dados fornecidos por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
