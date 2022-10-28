@@ -4,8 +4,8 @@ import knexConfig from '../knexfile.js'
 import mozlog from '../../utils/log.js'
 import { fluentError } from '../../utils/fluent.js'
 import { subscribeHash } from '../../utils/hibp.js'
-import { updateFxAData, getSha1 } from '../../utils/fxa.js'
-import { getSubscriberByEmail } from './subscribers.js'
+import { getSha1 } from '../../utils/fxa.js'
+import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
 const knex = Knex(knexConfig)
 const log = mozlog('DB.email_addresses')
 

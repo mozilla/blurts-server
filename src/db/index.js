@@ -1,7 +1,5 @@
 import Knex from 'knex'
 import knexConfig from './knexfile.js'
-import * as subscribers from './tables/subscribers.js'
-import * as emailAddresses from './tables/email_addresses.js'
 let knex = Knex(knexConfig)
 
 async function createConnection () {
@@ -19,7 +17,8 @@ async function destroyConnection () {
 
 export {
   createConnection,
-  destroyConnection,
-  subscribers,
-  emailAddresses
+  destroyConnection
 }
+
+export * from './tables/subscribers.js'
+export * from './tables/email_addresses.js'
