@@ -126,6 +126,23 @@ async function setBreachesResolved (options) {
   return getSubscriberByEmail(user.primary_email)
 }
 
+/**
+ * Set "breach_resolution" column with the latest breach resolution object
+ * This column is meant to replace "breach_resolved" column, which was used
+ * for v1.
+ * @param {object} user
+ * @param {object} updatedBreaches {email_id: [{recencyIndex: {allBreachTypes: [BreachType], resolved: [BreachType], isInProgress: bool}}, {}...]}
+ * @returns subscriber
+ */
+async function setBreachResolution (user, updatedBreaches) {
+  await knex('subscribers')
+    .where('id', user.id)
+    .update({
+      breach_resolution: updatedBreaches
+    })
+  return getSubscriberByEmail(user.primary_email)
+}
+
 async function setWaitlistsJoined (options) {
   const { user, updatedWaitlistsJoined } = options
   await knex('subscribers')
@@ -239,6 +256,7 @@ export {
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
   setBreachesResolved,
+  setBreachResolution,
   setWaitlistsJoined,
   updateBreachStats,
   updateMonthlyEmailTimestamp,
