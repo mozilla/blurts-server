@@ -1,9 +1,29 @@
 /**
+ * Equivalent of Typescript "enum"
+ * All breach data types. Always use enum to avoid spelling error / typos
+ */
+const BreachDataTypes = {
+  Password: 'Password',
+  Email: 'Email',
+  SSN: 'Social Security Number',
+  CreditCard: 'Credit Card',
+  Bank: 'Bank Account',
+  PIN: 'PIN',
+  IP: 'IP address',
+  Address: 'Address',
+  DOB: 'Date of Birth',
+  Phone: 'Phone',
+  SecurityQuestions: 'Security Questions',
+  HistoricalPasswords: 'Historical Passwords',
+  General: 'General'
+}
+
+/**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
  * Hardcoded map of breach resolution data types
  */
 const breachResolutionDataTypes = {
-  password: {
+  [BreachDataTypes.Password]: {
     priority: 1,
     header: '',
     body: ''
@@ -21,4 +41,4 @@ function getBreachResolutionRecs (dataTypes) {
   return breachResolutionDataTypes
 }
 
-export { getBreachResolutionRecs }
+export { BreachDataTypes, getBreachResolutionRecs }
