@@ -54,7 +54,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   const existingUser = await getSubscriberByEmail(email)
   req.session.user = existingUser
 
-  const returnURL = new URL('/breach-details', SERVER_URL)
+  const returnURL = new URL('/breaches', SERVER_URL)
   const originalURL = new URL(req.originalUrl, SERVER_URL)
 
   for (const [key, value] of originalURL.searchParams.entries()) {

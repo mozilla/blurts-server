@@ -1,12 +1,3 @@
-export default data => `
-<h1>This is the landing</h1>
-<section style='height: 200px; background: #fff'>Test section</section>
-<section style='height: 200px; background: #ccc'>Test section</section>
-<section style='height: 200px; background: #fff'>Test section</section>
-<section style='height: 200px; background: #ccc'>Test section</section>
-<section style='height: 200px; background: #fff'>Test section</section>
-<section style='height: 200px; background: #ccc'>Test section</section>
-<section style='height: 200px; background: #fff'>Test section</section>
-<section style='height: 200px; background: #ccc'>Test section</section>
-<section style='height: 200px; background: #fff'>Test section</section>
+export const landing = data => `
+<img src='images/landing-temp.png' style='width: 100%; height: auto; object-fit: cover;' width=1440 height=3103>
 `
