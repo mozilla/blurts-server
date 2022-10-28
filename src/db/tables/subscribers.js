@@ -116,6 +116,12 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   return updatedSubscriber
 }
 
+/**
+ * OBSOLETE, preserved for backwards compatibility
+ * TODO: Delete after monitor v2, only use setBreachResolution for v2
+ * @param {*} options {user, updatedResolvedBreaches}
+ * @returns subscriber
+ */
 async function setBreachesResolved (options) {
   const { user, updatedResolvedBreaches } = options
   await knex('subscribers')
@@ -130,15 +136,15 @@ async function setBreachesResolved (options) {
  * Set "breach_resolution" column with the latest breach resolution object
  * This column is meant to replace "breach_resolved" column, which was used
  * for v1.
- * @param {object} user
- * @param {object} updatedBreaches {email_id: [{recencyIndex: {allBreachTypes: [BreachType], resolved: [BreachType], isInProgress: bool}}, {}...]}
+ * @param {object} user user object that contains the id of a user
+ * @param {object} updatedBreachesResolution {email_id: [{recencyIndex: {allBreachTypes: [BreachType], resolved: [BreachType], isInProgress: bool}}, {}...]}
  * @returns subscriber
  */
-async function setBreachResolution (user, updatedBreaches) {
+async function setBreachResolution (user, updatedBreachesResolution) {
   await knex('subscribers')
     .where('id', user.id)
     .update({
-      breach_resolution: updatedBreaches
+      breach_resolution: updatedBreachesResolution
     })
   return getSubscriberByEmail(user.primary_email)
 }
