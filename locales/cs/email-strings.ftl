@@ -99,3 +99,4 @@ email-dashboard-cta = Přejít na nástěnku
 ## Breach alert
 
 email-may-have-been-exposed = Vaše e-mailová adresa mohla být vyzrazena při úniku dat
+email-spotted-new-breach = Zjistili jsme nový únik dat
