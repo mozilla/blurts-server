@@ -92,6 +92,10 @@ email-verify-simply-click = Ověření účtu dokončíte kliknutím na odkaz n�
 ## Breach report
 
 email-breach-summary = Zde jsou vaše souhrnné informace
+email-breach-detected = Z výsledků vyhledávání pro váš účet { $email-address } bylo zjištěno, že vaše e-mailová adresa mohla být vyzrazena. Doporučujeme vám, abyste okamžitě začali daný únik řešit.
+email-no-breach-detected = Skvělá zpráva! Nenašli jsme žádný únik dat, který by se týkal vaší e-mailové adresy { $email-address }.
+email-dashboard-cta = Přejít na nástěnku
 
 ## Breach alert
 
+email-may-have-been-exposed = Vaše e-mailová adresa mohla být vyzrazena při úniku dat
