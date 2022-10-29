@@ -86,9 +86,12 @@ email-resolve-cta = Vyřešit úniky
 ## Verification email
 
 email-verify-heading = Chraňte svá data, začněte hned teď.
+email-verify-subhead = Ověřte svůj e-mail a začněte chránit své údaje po úniku dat.
+email-verify-simply-click = Ověření účtu dokončíte kliknutím na odkaz níže.
 
 ## Breach report
 
+email-breach-summary = Zde jsou vaše souhrnné informace
 
 ## Breach alert
 
