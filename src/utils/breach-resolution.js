@@ -8,11 +8,11 @@ const BreachDataTypes = {
   Email: 'email-addresses',
   SSN: 'social-security-numbers',
   CreditCard: 'partial-credit-card-data',
-  Bank: 'bank-account-numbers',
+  BankAccount: 'bank-account-numbers',
   PIN: 'pins',
   IP: 'ip-addresses',
   Address: 'physical-addresses',
-  DOB: 'dates-of-birth',
+  DoB: 'dates-of-birth',
   Phone: 'phone-numbers',
   SecurityQuestions: 'security-questions-and-answers',
   HistoricalPasswords: 'historical-passwords',
@@ -26,6 +26,66 @@ const BreachDataTypes = {
 const breachResolutionDataTypes = {
   [BreachDataTypes.Password]: {
     priority: 1,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.Email]: {
+    priority: 2,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.SSN]: {
+    priority: 3,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.CreditCard]: {
+    priority: 4,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.BankAccount]: {
+    priority: 5,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.PIN]: {
+    priority: 6,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.IP]: {
+    priority: 7,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.Address]: {
+    priority: 8,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.DoB]: {
+    priority: 9,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.Phone]: {
+    priority: 10,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.SecurityQuestions]: {
+    priority: 11,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.HistoricalPasswords]: {
+    priority: 12,
+    header: '',
+    body: ''
+  },
+  [BreachDataTypes.General]: {
+    priority: 13,
     header: '',
     body: ''
   }
