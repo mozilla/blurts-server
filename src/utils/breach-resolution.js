@@ -1,21 +1,22 @@
 /**
  * Equivalent of Typescript "enum"
- * All breach data types. Always use enum to avoid spelling error / typos
+ * These enum types map to HIBP's breach data types, defined in HIBP's API
+ * Always reference enum instead of strings to avoid spelling error / typos (ie. BreachDataTypes.Passwords)
  */
 const BreachDataTypes = {
-  Password: 'Password',
-  Email: 'Email',
-  SSN: 'Social Security Number',
-  CreditCard: 'Credit Card',
-  Bank: 'Bank Account',
-  PIN: 'PIN',
-  IP: 'IP address',
-  Address: 'Address',
-  DOB: 'Date of Birth',
-  Phone: 'Phone',
-  SecurityQuestions: 'Security Questions',
-  HistoricalPasswords: 'Historical Passwords',
-  General: 'General'
+  Passwords: 'passwords',
+  Email: 'email-addresses',
+  SSN: 'social-security-numbers',
+  CreditCard: 'partial-credit-card-data',
+  Bank: 'bank-account-numbers',
+  PIN: 'pins',
+  IP: 'ip-addresses',
+  Address: 'physical-addresses',
+  DOB: 'dates-of-birth',
+  Phone: 'phone-numbers',
+  SecurityQuestions: 'security-questions-and-answers',
+  HistoricalPasswords: 'historical-passwords',
+  General: 'general'
 }
 
 /**
@@ -38,6 +39,7 @@ const breachResolutionDataTypes = {
  */
 function getBreachResolutionRecs (dataTypes) {
   // TODO: filter based on dataTypes array
+  // if datatypes is empty or null, return general only.
   return breachResolutionDataTypes
 }
 
