@@ -1,3 +1,3 @@
-export default data => `
-<h1>This is the breach dashboard page</h1>
+export const dashboard = data => `
+<h1>This is the dashboard partial</h1>
 `

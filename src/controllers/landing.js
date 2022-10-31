@@ -1,10 +1,10 @@
-import mainLayout from '../views/layouts/main.js'
-import landingPartial from '../views/partials/landing.js'
+import { mainLayout } from '../views/layouts/main.js'
+import { landing } from '../views/partials/landing.js'
 
 function landingPage (req, res) {
   const data = {
     locale: req.appLocale,
-    partial: landingPartial()
+    partial: landing
   }
 
   res.send(mainLayout(data))
