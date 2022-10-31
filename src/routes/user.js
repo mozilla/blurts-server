@@ -1,13 +1,17 @@
 import { Router } from 'express'
 
 // import { asyncMiddleware } from '../middleware/util.js'
-import { breachDetailsPage } from '../controllers/breach-details.js'
 import { requireSessionUser } from '../middleware/auth.js'
+import { dashboardPage } from '../controllers/dashboard.js'
+import { breachesPage } from '../controllers/breaches.js'
+import { dataRemovalPage } from '../controllers/data-removal.js'
+import { settingsPage } from '../controllers/settings.js'
 
 const router = Router()
 
-router.get('/breaches', requireSessionUser, breachDetailsPage)
-// router.get('/dashboard', requireSessionUser, asyncMiddleware(dashboardPage))
-// router.get('/settings', requireSessionUser, asyncMiddleware(settingsPage))
+router.get('/dashboard', requireSessionUser, dashboardPage)
+router.get('/breaches', requireSessionUser, breachesPage)
+router.get('/data-removal', requireSessionUser, dataRemovalPage)
+router.get('/settings', requireSessionUser, settingsPage)
 
 export default router
