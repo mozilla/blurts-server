@@ -109,6 +109,11 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   res.redirect(returnURL.pathname + returnURL.search)
 }
 
+/**
+ * Controller to trigger a logout for user
+ * @param {object} req contains session.user
+ * @param {object} res redirects to homepage
+ */
 async function logout (req, res) {
   log.debug('logout', req.session)
   const subscriber = req.session?.user
