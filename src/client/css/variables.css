@@ -1,11 +1,14 @@
 :root {
   --multiplier: 1;
-  --header-h: 76px; /* set in resize-observer.js and added here for discovery */
+  --max-width: 1200px;
   --border-radius: 4px;
   --padding-sm: calc(4px * var(--multiplier));
   --padding-md: calc(8px * var(--multiplier));
   --padding-lg: calc(16px * var(--multiplier));
+  --padding-xl: calc(32px * var(--multiplier));
+  --gray-10: #e7e7e7;
   --blue-50: #0060df;
+  --purple-70: #592acb;
 }
 
 @media (max-width: 480px) {

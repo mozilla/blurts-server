@@ -1,6 +1,5 @@
 import express from 'express'
-import { landingPage } from '../controllers/index.js'
-
+import { landingPage } from '../controllers/landing.js'
 import AuthRoutes from './auth.js'
 import userRoutes from './user.js'
 // import adminRoutes from './admin.js'
