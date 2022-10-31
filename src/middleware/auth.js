@@ -12,11 +12,8 @@ async function getRequestSessionUser (req, res, next) {
 
 async function requireSessionUser (req, res, next) {
   const user = await getRequestSessionUser(req)
-  console.log('requireSessionUser-user', JSON.stringify(user))
-
   if (!user) {
     const queryParams = new URLSearchParams(req.query).toString()
-    console.log('requireSessionUser-queryParams', JSON.stringify(queryParams))
     return res.redirect(`/oauth/init?${queryParams}`)
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
