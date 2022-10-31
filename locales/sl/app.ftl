@@ -257,7 +257,7 @@ show-breaches-for-this-email = Pokaži vse kraje podatkov za ta e-poštni naslov
 link-change-primary = Spremeni glavni e-poštni naslov
 remove-fxm = Odstrani { -product-name }
 remove-fxm-blurb =
-    Izklopite opozorila { -product-name }a. Vaš { -brand-fxa } bo ostal aktiven in morda
+    Izklopite opozorila { -product-name }ja. Vaš { -brand-fxa } bo ostal aktiven in morda
     boste prejeli sporočila, povezana z računom.
 # Button title
 manage-email-addresses = Upravljanje e-poštnih naslovov
@@ -270,7 +270,7 @@ your-info-was-discovered-headline = Vaši podatki so bili odkriti v novi kraji p
 your-info-was-discovered-blurb =
     Prijavili ste se na prejemanje opozoril { -product-name }ja,
     ko se vaš e-poštni naslov znajde med ukradenimi podatki. Do sedaj o tej kraji podatkov vemo sledeče.
-what-to-do-after-breach = Kaj storiti po kraji podatkov:
+what-to-do-after-breach = Kaj storiti po kraji podatkov
 ba-next-step-1 = Spremenite geslo v močno, edinstveno geslo.
 ba-next-step-blurb-1 =
     Močno geslo uporablja kombinacijo velikih in malih črk, 
