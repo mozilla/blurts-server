@@ -10,44 +10,17 @@ html {
 
 body {
   min-width: 320px;
-  height: 100%;
+  min-height: 100%;
   padding-top: var(--header-h);
   font: normal 1rem/1.2 Inter, sans-serif;
 }
 
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  padding: var(--padding-md) var(--padding-lg);
-  box-shadow: 0 4px 8px -8px #0000;
-  transition: box-shadow 0.3s;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-header .monitor-logo {
-  transform: scale(var(--multiplier));
-  transform-origin: left;
-}
-
-html.scrolled header {
-  box-shadow: 0 4px 8px -8px black;
-}
-
-footer {
-  position: sticky;
-  top: 100%;
-  display: flex;
-  justify-content: space-between;
-  color: white;
-  background: black;
-  padding: var(--padding-lg);
-}
-
-footer img {
+img {
   display: block;
 }
 
@@ -59,27 +32,88 @@ menu {
   font-size: 0.875rem;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  box-shadow: 0 6px 6px -8px #0000;
+  padding: var(--padding-lg) var(--padding-xl);
+  transition: box-shadow 0.3s;
+  z-index: 1;
+}
+
+.scrolled header {
+  box-shadow: 0 5px 6px -8px #000;
+}
+
+header .monitor-logo {
+  transform: scale(var(--multiplier));
+  transform-origin: left;
+}
+
+main {
+  width: calc(100vw - var(--nav-w));
+  margin-left: auto;
+  padding: var(--padding-lg);
+}
+
+main > * {
+  max-width: var(--max-width);
+  margin: auto;
+}
+
+.mobile main {
+  width: 100vw;
+  margin-left: initial;
+}
+
+footer {
+  position: sticky;
+  top: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: var(--padding-lg);
+  background: black;
+  box-shadow: 0 -6px 6px -8px #000;
+  z-index: 1;
 }
 
 button,
 .button {
-  border: 0;
-  border-radius: var(--border-radius);
-  background: transparent;
-  color: var(--blue-50);
-  font-family: inherit;
+  all: unset;
   font-size: 0.875rem;
-  font-weight: normal;
   line-height: 0.75;
-  padding: var(--padding-lg);
   cursor: pointer;
-  box-shadow: inset 0 0 0 1px;
   white-space: nowrap;
+  border-radius: var(--border-radius);
 }
 
-.button-primary {
+button * {
+  pointer-events: none;
+}
+
+button:active,
+.button:active {
+  box-shadow: inset 0 0 64px #80808011;
+}
+
+button.primary,
+.button.primary {
+  color: white;
   background: var(--blue-50);
+  border: 1px solid;
+  padding: var(--padding-lg);
+}
+
+button.secondary,
+.button.secondary {
+  color: var(--blue-50);
+  border: 1px solid;
+  padding: var(--padding-lg);
 }
