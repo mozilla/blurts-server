@@ -618,12 +618,20 @@ ad-unit-1-how-do-you-keep = Korleis held du e-postadressa di hemmeleg?
 ad-unit-2-do-you-worry = Er du bekymra for sikkerheita på offentleg Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Hald deg oppdatert!
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Hindre avgrensing
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Ver kvar som helst i verda
 # ad 3 list item 3
 ad-unit-3-access-more = Få tilgang til meir
 # ad 4 heading
 ad-unit-4-shopping-with = Masker e-postadressa di når du shoppar
+ad-unit-4-want-to-buy = Vil du kjøpe noko på nettet, sjølv om du ikkje kjenner eller stolar heilt på butikken?
 ad-unit-4-shop-online = Masker e-postadressa di når du handlar på nettet. Få stadfestinga sendt til den ekte e-postadressa di, og slå deretter enkelt av aliaset når som helst seinare.
 # ad 5 heading
 ad-unit-5-on-the-go = På farten med { -brand-relay }
+ad-unit-5-instantly-make = Masker e-postadressa di med ein gong, kvar som helst, og overalt der du går!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Kople til medan du er på farten
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Bruk det på din telefon
