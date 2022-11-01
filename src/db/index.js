@@ -292,12 +292,10 @@ async function removeFxAData (subscriber) {
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
   if (updatedSubscriber && subscriber.fxa_refresh_token) {
-    log.debug('removeFxAData.destroy-refresh-token', subscriber.fxa_refresh_token)
-    log.debug('removeFxAData.destroy-refresh-token', await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token }))
+    await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
   }
   if (updatedSubscriber && subscriber.fxa_access_token) {
-    log.debug('removeFxAData.destroy-access-token', subscriber.fxa_access_token)
-    log.debug('removeFxAData.destroy-access-token', await destroyOAuthToken({ token: subscriber.fxa_access_token }))
+    await destroyOAuthToken({ token: subscriber.fxa_access_token })
   }
   return updatedSubscriber
 }

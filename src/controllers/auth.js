@@ -115,9 +115,8 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
  * @param {object} res redirects to homepage
  */
 async function logout (req, res) {
-  log.debug('logout', req.session)
   const subscriber = req.session?.user
-  log.debug('logout', subscriber?.primary_email)
+  log.info('logout', subscriber?.primary_email)
 
   // delete oauth session info in database
   await removeFxAData(subscriber)
