@@ -61,44 +61,25 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } åtvarar deg om datalekkasjer som involverer din personlege informasjon. 
     Vi har nettopp fått detaljer om ein datalekkasje til eit anna selskap.
-# List headline
-faq-list-headline = Vanlege spørsmål
-# Link Title
-faq-v2-1 = Eg kjenner ikkje att nokon av desse selskapa eller nettstadane. Kvifor er eg i denne datalekkasjen?
-# Link Title
-faq-v2-2 = Må eg gjere noko dersom ein datalekkasje skjedde for mange år sidan, eller dersom det er ein gammal konto?
-# Link Title
-faq-v2-3 = Eg fann nettopp ut at eg er omfatta av ein datalekkasje. Kva gjer eg no?
-# Link Title
-faq-v2-4 = Korleis behandlar { -product-name } sensitive nettstadar?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Opprett ein gratis { -brand-fxa }</a>, og du kan leggje til opptil 15 e-postadresser.
 # Section headline
 monitor-another-email = Vil du overvake ei anna e-postadresse?
-# Subject line of email
-pre-fxa-subject = Ei oppdatering frå { -product-name }
-pre-fxa-headline = Endringar i { -product-name }
-pre-fxa-blurb =
-    Dette er det som er endra sidan du registrerte deg for { -product-name }, tenesta som 
-    overvakar kjende datalekkasjar for din personlige informasjon. Vi koplar det til Firefox-kontoear.
-pre-fxa-tout-1 = Ver merksam på fleire dataalekkasjar
-pre-fxa-p-1 =
-    <a>Opprett ein konto</a> for å overvake opptil 15 e-postadresser for
-    datalekkasjar. Vi tilrår å leggje til e-postadresser du har brukt for å opprette kontoar på nettet.
-pre-fxa-tout-2 = Få eit oversyn
-pre-fxa-p-2 =
-    Sjå alle datalekkasjar ein stad slik at du veit kva for passord du bør endre. 
-    Oversikta med datalekkasja er berre tilgjengeleg med ein konto.
-pre-fxa-tout-3 = Fortset med å få e-postvarsel
-pre-fxa-p-3 =
-    Du vil framleis få varsel frå { -product-name }. Vi gir beskjed om informasjonen din 
-    er i ein ny datalekkasje.
-# Button at the bottom of pre-fxa email.
-create-account = Opprett ein konto
-# More security products
-more-products-headline = Beskytt deg sjølv med fleire av produkta våre
-more-products-vpn = Vern for heile eininga di, på alle einingar.
-more-products-cta-vpn = Få { -product-name-vpn }
-more-products-relay = Skjul den verkelege e-postadressa di for å verne identiteten din.
-more-products-cta-relay = Få { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+# table row 3 label
+email-resolved = Løyste datalekkasjar:
+# table row 4 label
+email-unresolved = Uløyste datalekkasjar:
+email-resolve-cta = Løys datalekkasjar
+
+## Verification email
+
+
+## Breach report
+
+
+## Breach alert
+
