@@ -623,3 +623,7 @@ ad-unit-3-access-more = Få tilgang til meir
 # ad 4 heading
 ad-unit-4-shopping-with = Masker e-postadressa di når du shoppar
 ad-unit-4-shop-online = Masker e-postadressa di når du handlar på nettet. Få stadfestinga sendt til den ekte e-postadressa di, og slå deretter enkelt av aliaset når som helst seinare.
+# ad 5 heading
+ad-unit-5-on-the-go = På farten med { -brand-relay }
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Kople til medan du er på farten
