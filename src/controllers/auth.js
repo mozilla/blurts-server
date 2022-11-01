@@ -2,7 +2,7 @@ import { URL } from 'url'
 import { randomBytes } from 'crypto'
 
 import AppConstants from '../app-constants.js'
-import { getSubscriberByEmail, addSubscriber, updateFxAData } from '../db/index.js'
+import { getSubscriberByEmail, addSubscriber, updateFxAData, removeFxAData } from '../db/index.js'
 // import { sendEmail, getEmailCtaHref, getUnsubscribeUrl } from '../email-utils'
 import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
 // import { getBreachesForEmail } from '../utils/hibp.js'
@@ -34,12 +34,12 @@ function init (req, res, next, client = FxAOAuthClient) {
 
 async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
-    log.error('Oauth invalid session: req.session.state missing')
+    log.error('oauth-invalid-session', 'req.session.state missing')
     throw fluentError('oauth-invalid-session')
   }
 
   if (req.session.state !== req.query.state) {
-    log.error('Oauth invalid session: req.session does not match req.query')
+    log.error('oauth-invalid-session', 'req.session does not match req.query')
     throw fluentError('oauth-invalid-session')
   }
 
@@ -109,9 +109,23 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   res.redirect(returnURL.pathname + returnURL.search)
 }
 
-function logout (req, res) {
-  req.session.destroy()
-  res.redirect('/')
+/**
+ * Controller to trigger a logout for user
+ * @param {object} req contains session.user
+ * @param {object} res redirects to homepage
+ */
+async function logout (req, res) {
+  const subscriber = req.session?.user
+  log.info('logout', subscriber?.primary_email)
+
+  // delete oauth session info in database
+  await removeFxAData(subscriber)
+
+  // clear session cache
+  req.session.destroy(s => {
+    delete req.session
+    res.redirect('/')
+  })
 }
 
 export { init, confirmed, logout }

@@ -7,6 +7,6 @@ const router = Router()
 
 router.get('/init', init)
 router.get('/confirmed', asyncMiddleware(confirmed))
-router.get('/logout', logout)
+router.get('/logout', asyncMiddleware(logout))
 
 export default router

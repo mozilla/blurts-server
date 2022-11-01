@@ -248,7 +248,7 @@ async function getUserEmails (userId) {
 }
 
 /**
-   * Update fxa_refresh_token and fxa_profile_json for subscriber
+   * Update fxa tokens and profile data for subscriber
    *
    * @param {object} subscriber knex object in DB
    * @param {string} fxaAccessToken from Firefox Account Oauth
@@ -270,6 +270,32 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
   if (updatedSubscriber && subscriber.fxa_refresh_token) {
     destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
+  }
+  return updatedSubscriber
+}
+
+/**
+   * Remove fxa tokens and profile data for subscriber
+   *
+   * @param {object} subscriber knex object in DB
+   * @returns {object} updated subscriber knex object in DB
+   */
+async function removeFxAData (subscriber) {
+  log.debug('removeFxAData', subscriber)
+  const updated = await knex('subscribers')
+    .where('id', '=', subscriber.id)
+    .update({
+      fxa_access_token: null,
+      fxa_refresh_token: null,
+      fxa_profile_json: null
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  if (updatedSubscriber && subscriber.fxa_refresh_token) {
+    await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
+  }
+  if (updatedSubscriber && subscriber.fxa_access_token) {
+    await destroyOAuthToken({ token: subscriber.fxa_access_token })
   }
   return updatedSubscriber
 }
@@ -488,6 +514,7 @@ export {
   addSubscriber,
   getUserEmails,
   updateFxAData,
+  removeFxAData,
   updateFxAProfileData,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
