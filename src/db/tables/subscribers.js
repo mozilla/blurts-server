@@ -93,6 +93,32 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
   return getSubscriberById(subscriber.id)
 }
 
+/**
+   * Remove fxa tokens and profile data for subscriber
+   *
+   * @param {object} subscriber knex object in DB
+   * @returns {object} updated subscriber knex object in DB
+   */
+async function removeFxAData (subscriber) {
+  log.debug('removeFxAData', subscriber)
+  const updated = await knex('subscribers')
+    .where('id', '=', subscriber.id)
+    .update({
+      fxa_access_token: null,
+      fxa_refresh_token: null,
+      fxa_profile_json: null
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  if (updatedSubscriber && subscriber.fxa_refresh_token) {
+    await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
+  }
+  if (updatedSubscriber && subscriber.fxa_access_token) {
+    await destroyOAuthToken({ token: subscriber.fxa_access_token })
+  }
+  return updatedSubscriber
+}
+
 async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
   const nowDateTime = new Date()
@@ -258,6 +284,7 @@ export {
   getSubscribersWithUnresolvedBreaches,
   getSubscribersWithUnresolvedBreachesCount,
   updateFxAData,
+  removeFxAData,
   updateFxAProfileData,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
