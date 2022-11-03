@@ -9,9 +9,16 @@ import { settingsPage } from '../controllers/settings.js'
 
 const router = Router()
 
+// dashboard page
 router.get('/dashboard', requireSessionUser, dashboardPage)
+
+// data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
+
+// data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)
+
+// settings page
 router.get('/settings', requireSessionUser, settingsPage)
 
 export default router
