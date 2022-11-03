@@ -7,7 +7,7 @@
     "prestart": "npm run build",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node esbuild.js & npm run build:png && npm run build:svg",
+    "build": "node esbuild & npm run build:png && npm run build:svg",
     "build:png": "squoosh-cli --oxipng '{level: 2}' --quant '{numColors: 255}' -d ../dist/images ./client/images/*.png",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images"
   },

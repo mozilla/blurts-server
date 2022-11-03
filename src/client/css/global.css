@@ -12,7 +12,11 @@ body {
   min-width: 320px;
   min-height: 100%;
   padding-top: var(--header-h);
-  font: normal 1rem/1.2 Inter, sans-serif;
+  font: normal 1rem/1.2 Inter, Inter-fallback, sans-serif;
+}
+
+h1 {
+  font: 700 3rem/1 Metropolis, sans-serif;
 }
 
 a {
