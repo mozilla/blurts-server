@@ -1,11 +1,13 @@
 :root {
   --multiplier: 1;
   --max-width: 1200px;
+  --min-width: 320px;
   --border-radius: 4px;
   --padding-sm: calc(4px * var(--multiplier));
   --padding-md: calc(8px * var(--multiplier));
   --padding-lg: calc(16px * var(--multiplier));
   --padding-xl: calc(32px * var(--multiplier));
+  --gap: calc(32px * var(--multiplier));
   --gray-10: #e7e7e7;
   --blue-50: #0060df;
   --purple-70: #592acb;

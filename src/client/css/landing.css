@@ -1,0 +1,21 @@
+.hero {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: var(--gap);
+}
+
+.hero > :first-child {
+  flex-basis: 0;
+  flex-grow: 999;
+  min-inline-size: var(--min-width);
+}
+
+.hero > :last-child {
+  flex-basis: 50%;
+  flex-grow: 1;
+}
+
+.mobile .hero .button {
+  display: block;
+}

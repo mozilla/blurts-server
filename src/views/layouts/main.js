@@ -2,7 +2,7 @@ import { getMessage, getPattern } from '../../utils/fluent.js'
 
 const landingHeader = data => `
 <header>
-  <a href='/'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
+  <a href='/'><img class='monitor-logo' srcset='images/monitor-logo-transparent.png 213w, images/monitor-logo-transparent@2x.png 425w'></a>
   <menu>
     <li><a href='/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
@@ -11,7 +11,7 @@ const landingHeader = data => `
 
 const mainHeader = data => `
 <header>
-  <a href='/breaches'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
+  <a href='/breaches'><img class='monitor-logo' srcset='images/monitor-logo-transparent.png 213w, images/monitor-logo-transparent@2x.png 425w'></a>
   <menu>
     <li>
       <button class='nav-toggle'>

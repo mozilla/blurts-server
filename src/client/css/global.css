@@ -6,17 +6,22 @@
 
 html {
   height: 100%;
+  min-width: var(--min-width);
 }
 
 body {
-  min-width: 320px;
   min-height: 100%;
   padding-top: var(--header-h);
-  font: normal 1rem/1.2 Inter, Inter-fallback, sans-serif;
+  font: normal 1rem/1.5 Inter, Inter-fallback, sans-serif;
 }
 
 h1 {
   font: 700 3rem/1 Metropolis, sans-serif;
+  margin: var(--padding-lg) 0;
+}
+
+p {
+  margin: var(--padding-lg) 0;
 }
 
 a {
@@ -26,6 +31,7 @@ a {
 
 img {
   display: block;
+  max-width: 100%;
 }
 
 menu {
@@ -55,24 +61,19 @@ header {
 }
 
 header .monitor-logo {
-  transform: scale(var(--multiplier));
-  transform-origin: left;
+  width: calc(220px * var(--multiplier));
+  object-fit: contain;
 }
 
 main {
-  width: calc(100vw - var(--nav-w));
-  margin-left: auto;
-  padding: var(--padding-lg);
-}
+  --max-width-margin: calc(50% - var(--max-width)/2);
 
-main > * {
-  max-width: var(--max-width);
-  margin: auto;
+  margin-inline: max(var(--nav-w, 0px), var(--max-width-margin)) max(0px, var(--max-width-margin));
+  padding: var(--padding-xl);
 }
 
 .mobile main {
-  width: 100vw;
-  margin-left: initial;
+  margin-inline: auto;
 }
 
 footer {
@@ -91,8 +92,10 @@ footer {
 button,
 .button {
   all: unset;
+  display: inline-block;
   font-size: 0.875rem;
   line-height: 0.75;
+  text-align: center;
   cursor: pointer;
   white-space: nowrap;
   border-radius: var(--border-radius);
