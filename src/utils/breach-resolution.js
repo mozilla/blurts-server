@@ -103,4 +103,14 @@ function getBreachResolutionRecs (dataTypes) {
   return breachResolutionDataTypes
 }
 
-export { BreachDataTypes, getBreachResolutionRecs }
+/**
+ * Take breach DataTypes array from HIBP and filter based on BreachDataTypes enums above
+ * @param {array} originalDataTypes breach DataTypes array from HIBP
+ * @returns {array} filtered breach data types
+ */
+function filterBreachDataTypes (originalDataTypes) {
+  const relevantDataTypes = Object.values(BreachDataTypes)
+  return originalDataTypes.filter(d => relevantDataTypes.includes(d))
+}
+
+export { BreachDataTypes, getBreachResolutionRecs, filterBreachDataTypes }
