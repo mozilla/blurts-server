@@ -2,7 +2,7 @@ import express from 'express'
 import { landingPage } from '../controllers/landing.js'
 import authRoutes from './auth.js'
 import userRoutes from './user.js'
-import userApiRoutes from './user-api.js'
+import userApiRoutes from './api/v1/user.js'
 // import adminRoutes from './admin.js'
 const router = express.Router()
 
