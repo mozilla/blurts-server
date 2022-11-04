@@ -3,7 +3,6 @@ import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, setBreachesResolved, updateBreachStats, getUserEmails } from '../db/index.js'
 import { getBreachesForEmail, filterBreaches, getSha1 } from '../utils/index.js'
 async function breachesPage (req, res) {
-
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   const data = {
