@@ -1,7 +1,7 @@
 import { mainLayout } from '../views/layouts/main.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, setBreachesResolved, updateBreachStats, getUserEmails } from '../db/index.js'
-import { getBreachesForEmail, filterBreaches, getSha1 } from '../utils/index.js'
+import { getBreachesForEmail, filterBreaches, filterBreachDataTypes, getSha1 } from '../utils/index.js'
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
@@ -71,9 +71,7 @@ async function putBreachResolution (req, res) {
       recencyIndexNumber
     })
 
-    await setBreachesResolved(
-      { user: sessionUser, oldBreachResolution }
-    )
+    await setBreachesResolved({ user: sessionUser, oldBreachResolution })
   }
 
   /* new JsonB:
@@ -155,27 +153,6 @@ async function getAllEmailsAndBreaches (user, allBreaches) {
   return { verifiedEmails, unverifiedEmails }
 }
 
-function addResolvedOrNotV1 (foundBreaches, resolvedBreaches) {
-  const annotatedBreaches = []
-  for (const breach of foundBreaches) {
-    const IsResolved = !!resolvedBreaches.includes(breach.recencyIndex)
-    annotatedBreaches.push(Object.assign({ IsResolved }, breach))
-  }
-  return annotatedBreaches
-}
-
-function addResolveOrNotV2 (foundBreaches, breachResolutionV2) {
-  for (const breach of foundBreaches) {
-    console.log({ breach })
-    if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
-      const IsResolved = !breachResolutionV2[breach.recencyIndex].isActive
-      breach.IsResolved = breach.IsResolved || IsResolved
-      breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex].resolutionsChecked ?? []
-    }
-  }
-  return foundBreaches
-}
-
 function addRecencyIndex (foundBreaches) {
   const annotatedBreaches = []
   // slice() the array to make a copy so before reversing so we don't
@@ -198,20 +175,33 @@ async function bundleVerifiedEmails (options) {
   // adding index to breaches based on recency
   const foundBreachesWithRecency = addRecencyIndex(foundBreaches)
 
-  // get resolved breaches
+  // get v1 "breaches_resolved" object
   const resolvedBreachesV1 = user.breaches_resolved
     ? user.breaches_resolved[email] ? user.breaches_resolved[email] : []
     : []
 
-  // get breach_resolution for v2
+  // get v2 "breach_resolution" object
   const breachResolutionV2 = user.breach_resolution
     ? user.breach_resolution[email] ? user.breach_resolution[email] : {}
     : []
 
-  const foundBreachesWithResolutions = addResolveOrNotV2(addResolvedOrNotV1(foundBreachesWithRecency, resolvedBreachesV1), breachResolutionV2)
+  for (const breach of foundBreachesWithRecency) {
+    // add resolved status from v1: breach_resolved
+    breach.IsResolved = !!resolvedBreachesV1.includes(breach.recencyIndex)
 
-  // filter out irrelevant breaches
-  const filteredAnnotatedFoundBreaches = filterBreaches(foundBreachesWithResolutions)
+    // add resolved status from v2: breach_resolution
+    if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
+      const IsResolved = !breachResolutionV2[breach.recencyIndex].isActive
+      breach.IsResolved = breach.IsResolved || IsResolved
+      breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex].resolutionsChecked ?? []
+    }
+
+    // filter breach types based on the 13 types we care about
+    breach.DataClasses = filterBreachDataTypes(breach.DataClasses)
+  }
+
+  // filter out irrelevant breaches based on HIBP
+  const filteredAnnotatedFoundBreaches = filterBreaches(foundBreachesWithRecency)
 
   const emailEntry = {
     email,
