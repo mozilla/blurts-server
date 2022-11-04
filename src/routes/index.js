@@ -10,7 +10,7 @@ router.get('/', landingPage)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)
 // router.use('/admin', adminRoutes)
-router.use('/v1/api/user/', userApiRoutes)
+router.use('/api/v1/user/', userApiRoutes)
 // router.use(notFound)
 
 export default router

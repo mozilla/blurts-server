@@ -3,7 +3,9 @@ import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, setBreachesResolved, updateBreachStats, getUserEmails } from '../db/index.js'
 import { getBreachesForEmail, filterBreaches, getSha1 } from '../utils/index.js'
 async function breachesPage (req, res) {
-  const breachesData = await getBreaches(req, res)
+
+  // TODO: remove: to test out getBreaches call with JSON returns
+  const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   const data = {
     locale: req.appLocale,
     breachesData,
@@ -15,7 +17,7 @@ async function breachesPage (req, res) {
 
 /**
  * Get breaches from the database and return a JSON object
- * Takes in additional query parameters:
+ * TODO: Takes in additional query parameters:
  *
  * status: enum (resolved, unresolved)
  * email: string
@@ -23,14 +25,10 @@ async function breachesPage (req, res) {
  * @param {object} res
  */
 async function getBreaches (req, res) {
-  // const { status, email } = req.query
   const allBreaches = req.app.locals.breaches
   const sessionUser = req.user
-  console.log('length: ', allBreaches.length)
   const resp = await getAllEmailsAndBreaches(sessionUser, allBreaches)
-  // console.log({ status } + { email })
-  // return res.json(resp)
-  return resp
+  return res.json(resp)
 }
 
 /**
