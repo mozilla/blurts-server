@@ -170,6 +170,7 @@ function addResolveOrNotV2 (foundBreaches, breachResolutionV2) {
     if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
       const IsResolved = !breachResolutionV2[breach.recencyIndex].isActive
       breach.IsResolved = breach.IsResolved || IsResolved
+      breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex].resolutionsChecked ?? []
     }
   }
   return foundBreaches
