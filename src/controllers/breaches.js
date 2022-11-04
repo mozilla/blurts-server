@@ -134,8 +134,6 @@ async function putBreachResolution (req, res) {
  */
 async function getAllEmailsAndBreaches (user, allBreaches) {
   const monitoredEmails = await getUserEmails(user.id)
-
-  console.debug({ monitoredEmails })
   const verifiedEmails = []
   const unverifiedEmails = []
   verifiedEmails.push(await bundleVerifiedEmails({ user, email: user.primary_email, recordId: user.id, recordVerified: user.primary_verified, allBreaches }))
@@ -160,20 +158,24 @@ async function getAllEmailsAndBreaches (user, allBreaches) {
   return { verifiedEmails, unverifiedEmails }
 }
 
-function getResolvedBreachesForEmail (user, email) {
-  if (user.breaches_resolved === null) {
-    return []
-  }
-  return user.breaches_resolved.hasOwnProperty(email) ? user.breaches_resolved[email] : []
-}
-
-function addResolvedOrNot (foundBreaches, resolvedBreaches) {
+function addResolvedOrNotV1 (foundBreaches, resolvedBreaches) {
   const annotatedBreaches = []
   for (const breach of foundBreaches) {
     const IsResolved = !!resolvedBreaches.includes(breach.recencyIndex)
     annotatedBreaches.push(Object.assign({ IsResolved }, breach))
   }
   return annotatedBreaches
+}
+
+function addResolveOrNotV2 (foundBreaches, breachResolutionV2) {
+  for (const breach of foundBreaches) {
+    console.log({ breach })
+    if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
+      const IsResolved = !breachResolutionV2[breach.recencyIndex].isActive
+      breach.IsResolved = breach.IsResolved || IsResolved
+    }
+  }
+  return foundBreaches
 }
 
 function addRecencyIndex (foundBreaches) {
@@ -191,10 +193,26 @@ function addRecencyIndex (foundBreaches) {
 async function bundleVerifiedEmails (options) {
   const { user, email, recordId, recordVerified, allBreaches } = options
   const lowerCaseEmailSha = getSha1(email.toLowerCase())
+
+  // find all breaches relevant to the current email
   const foundBreaches = await getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false)
+
+  // adding index to breaches based on recency
   const foundBreachesWithRecency = addRecencyIndex(foundBreaches)
-  const resolvedBreaches = getResolvedBreachesForEmail(user, email)
-  const foundBreachesWithResolutions = addResolvedOrNot(foundBreachesWithRecency, resolvedBreaches)
+
+  // get resolved breaches
+  const resolvedBreachesV1 = user.breaches_resolved
+    ? user.breaches_resolved[email] ? user.breaches_resolved[email] : []
+    : []
+
+  // get breach_resolution for v2
+  const breachResolutionV2 = user.breach_resolution
+    ? user.breach_resolution[email] ? user.breach_resolution[email] : {}
+    : []
+
+  const foundBreachesWithResolutions = addResolveOrNotV2(addResolvedOrNotV1(foundBreachesWithRecency, resolvedBreachesV1), breachResolutionV2)
+
+  // filter out irrelevant breaches
   const filteredAnnotatedFoundBreaches = filterBreaches(foundBreachesWithResolutions)
 
   const emailEntry = {
@@ -207,18 +225,6 @@ async function bundleVerifiedEmails (options) {
 
   return emailEntry
 }
-
-// function getNewBreachesForEmailEntriesSinceDate (emailEntries, date) {
-//   for (const emailEntry of emailEntries) {
-//     const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= date)
-
-//     for (const newBreachForEmail of newBreachesForEmail) {
-//       newBreachForEmail.NewBreach = true // add "NewBreach" property to the new breach.
-//       emailEntry.hasNewBreaches = newBreachesForEmail.length // add the number of new breaches to the email
-//     }
-//   }
-//   return emailEntries
-// }
 
 /**
  * TODO: DEPRECATE
