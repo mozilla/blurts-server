@@ -30,6 +30,7 @@ function handleResize (entries) {
 
 function handleMediaQuery (e = mediaQueryMobile) {
   document.documentElement.classList.toggle('mobile', e.matches)
+  nav.toggleAttribute('hidden', e.matches)
 }
 
 if (header) resizeObserver.observe(header)

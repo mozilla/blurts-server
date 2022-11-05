@@ -16,7 +16,7 @@ body {
 }
 
 h1 {
-  font: 700 3rem/1 Metropolis, sans-serif;
+  font: 700 2.5rem/1 Metropolis, sans-serif;
   margin: var(--padding-lg) 0;
 }
 
@@ -57,7 +57,7 @@ header {
 }
 
 .scrolled header {
-  box-shadow: 0 5px 6px -8px #000;
+  box-shadow: 0 6px 6px -8px #000;
 }
 
 header .monitor-logo {

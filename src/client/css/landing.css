@@ -8,7 +8,7 @@
 .hero > :first-child {
   flex-basis: 0;
   flex-grow: 999;
-  min-inline-size: var(--min-width);
+  min-width: calc(var(--min-width) - var(--padding-xl) * 2);
 }
 
 .hero > :last-child {
