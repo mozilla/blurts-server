@@ -58,7 +58,9 @@ function updateAppLocale (requestedLocales) {
 * @param {string} id - The Fluent message id.
 */
 function getMessage (id) {
-  const bundle = fluentBundles[appLocale]
+  let bundle = fluentBundles[appLocale]
+
+  if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
   if (bundle.hasMessage(id)) return bundle.getMessage(id).value
 
@@ -75,13 +77,11 @@ function getMessage (id) {
 * // Returns "Hello, Jane!"
 */
 function getPattern (id, args) {
-  const bundle = fluentBundles[appLocale]
+  let bundle = fluentBundles[appLocale]
 
-  if (bundle.hasMessage(id)) {
-    const message = bundle.getMessage(id)
+  if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
-    return bundle.formatPattern(message.value, args)
-  }
+  if (bundle.hasMessage(id)) return bundle.formatPattern(bundle.getMessage(id).value, args)
 
   return id
 }

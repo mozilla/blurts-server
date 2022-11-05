@@ -36,7 +36,7 @@ export const mainLayout = data => `
   <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=320, initial-scale=1">
-    <title>${getPattern('home-title')}</title>
+    <title>${getPattern('firefox-monitor')}</title>
     <link href='css/index.css' type='text/css' rel='stylesheet'>
     <script src='js/index.js' type='module'></script>
   </head>
@@ -50,7 +50,7 @@ export const mainLayout = data => `
       <menu>
         <li><a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>FAQ</a></li>
         <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>${getMessage('terms-and-privacy')}</a></li>
-        <li><a href='https://github.com/mozilla/blurts-server' target='_blank' rel='noreferrer'>GitHub</a></li>
+        <li><a href='https://github.com/mozilla/blurts-server' target='_blank' rel='noreferrer'>${getPattern('github')}</a></li>
       </menu>
     </footer>
   </body>

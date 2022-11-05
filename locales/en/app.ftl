@@ -16,6 +16,7 @@
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
+-brand-github = GitHub
 
 ##
 
@@ -804,3 +805,14 @@ ad-unit-5-no-matter-where = No matter where you are, create a custom email mask 
 ad-unit-6-worry-free = Worry-Free Signups
 ad-unit-6-want-to-start = Want to start a new subscription, respond to an invitation, or get a bargain promo code without having spam flooding your inbox?
 ad-unit-6-before-you-complete = Before you complete that next signup, use an email mask instead of your real one to protect your info and keep control over your inbox
+
+# Monitor V2
+
+## Header
+
+firefox-monitor = {-product-name}
+sign-in = Sign In
+
+## Footer
+terms-and-privacy = Terms & Privacy
+github = {-brand-github}

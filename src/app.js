@@ -33,6 +33,7 @@ async function getRedisStore () {
 app.use(express.json())
 app.use(helmet())
 app.use((req, res, next) => {
+  if (!req.headers.accept.startsWith('text/html')) return next() // only update for html req
   const accept = accepts(req)
   req.appLocale = updateAppLocale(accept.languages())
   next()
