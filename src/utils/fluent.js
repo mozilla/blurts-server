@@ -55,6 +55,7 @@ function updateAppLocale (requestedLocales) {
 
 /**
 * Translate a message by id
+* Defaults to en if message id not found in requested locale
 * @param {string} id - The Fluent message id.
 */
 function getMessage (id) {
@@ -69,6 +70,7 @@ function getMessage (id) {
 
 /**
 * Translate and transform a message pattern
+* Defaults to en if message id not found in requested locale
 * @param {string} id - The Fluent message id.
 * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
 * @example

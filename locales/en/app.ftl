@@ -24,8 +24,6 @@
 # and kept in English.
 -brand-fx-account = Firefox account
 
-terms-and-privacy = Terms & Privacy
-
 GitHub-link-title = GitHub
 
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
@@ -99,7 +97,6 @@ show-all = Show All
 
 fxa-scan-another-email = Want to check another email?
 
-sign-in = Sign In
 sign-out = Sign Out
 
 # Manage Firefox Account, link to page where account holders can change their account settings.
