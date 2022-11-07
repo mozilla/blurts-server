@@ -17,11 +17,21 @@ body {
 
 h1 {
   font: 700 2.5rem/1 Metropolis, sans-serif;
-  margin: var(--padding-lg) 0;
+  margin: var(--padding-md) 0;
+}
+
+h2 {
+  font: 700 1.75rem/1 Metropolis, sans-serif;
+  margin: var(--padding-md) 0;
+}
+
+h3 {
+  font: 700 1.125rem/1 Metropolis, sans-serif;
+  margin: var(--padding-md) 0;
 }
 
 p {
-  margin: var(--padding-lg) 0;
+  margin: var(--padding-md) 0;
 }
 
 a {
@@ -37,7 +47,7 @@ img {
 menu {
   display: flex;
   align-items: center;
-  gap: var(--padding-lg);
+  gap: var(--padding-md);
   list-style-type: none;
   font-size: 0.875rem;
 }
@@ -51,7 +61,7 @@ header {
   align-items: center;
   background: white;
   box-shadow: 0 6px 6px -8px #0000;
-  padding: var(--padding-lg) var(--padding-xl);
+  padding: var(--padding-md) var(--padding-lg);
   transition: box-shadow 0.3s;
   z-index: 1;
 }
@@ -69,11 +79,18 @@ main {
   --max-width-margin: calc(50% - var(--max-width)/2);
 
   margin-inline: max(var(--nav-w, 0px), var(--max-width-margin)) max(0px, var(--max-width-margin));
-  padding: var(--padding-xl);
 }
 
 .mobile main {
   margin-inline: auto;
+}
+
+section {
+  padding: var(--padding-lg);
+}
+
+section + section {
+  padding-top: var(--padding-xl);
 }
 
 footer {
@@ -85,14 +102,14 @@ footer {
   justify-content: space-between;
   gap: var(--gap);
   color: white;
-  padding: var(--padding-lg) var(--padding-xl);
+  padding: var(--padding-md) var(--padding-lg);
   background: black;
   box-shadow: 0 -6px 6px -8px #000;
   z-index: 1;
 }
 
 .mobile footer {
-  padding: var(--padding-xl);
+  padding: var(--padding-lg);
 }
 
 footer > :first-child {
@@ -131,12 +148,12 @@ button.primary,
   color: white;
   background: var(--blue-50);
   border: 1px solid;
-  padding: var(--padding-lg);
+  padding: var(--padding-md);
 }
 
 button.secondary,
 .button.secondary {
   color: var(--blue-50);
   border: 1px solid;
-  padding: var(--padding-lg);
+  padding: var(--padding-md);
 }

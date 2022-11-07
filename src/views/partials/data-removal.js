@@ -1,3 +1,5 @@
 export const dataRemoval = data => `
-<h1>This is the data removal partial</h1>
+<section>
+  <h1>This is the data removal partial</h1>
+</section>
 `

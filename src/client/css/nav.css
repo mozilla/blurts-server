@@ -5,7 +5,7 @@ nav {
   height: calc(100vh - var(--header-h));
   display: inline-flex;
   flex-flow: column nowrap;
-  padding: var(--padding-xl) 0 var(--footer-h);
+  padding: var(--padding-lg) 0 var(--footer-h);
   background: white;
   border-right: 1px solid var(--gray-10);
   border-image: linear-gradient(#0000 3%, var(--gray-10) 5%, var(--gray-10) 95%, #0000 97%) 1;
@@ -16,7 +16,7 @@ nav[hidden] {
 }
 
 nav > a {
-  padding: var(--padding-md) var(--padding-xl);
+  padding: var(--padding-sm) var(--padding-lg);
 }
 
 nav > a + a {

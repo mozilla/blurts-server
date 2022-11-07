@@ -6,9 +6,8 @@
 }
 
 .hero > :first-child {
-  flex-basis: 0;
+  flex-basis: calc(var(--min-width) - var(--padding-lg) * 2);
   flex-grow: 999;
-  min-width: calc(var(--min-width) - var(--padding-xl) * 2);
 }
 
 .hero > :last-child {
@@ -18,4 +17,47 @@
 
 .mobile .hero .button {
   display: block;
+}
+
+.why-use-monitor > h2,
+.why-use-monitor > p {
+  text-align: center;
+}
+
+.why-use-monitor > ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  list-style: none;
+  margin: var(--padding-lg) 0;
+}
+
+.why-use-monitor li {
+  flex-grow: 1;
+  flex-basis: calc((800px - 100%) * 999);
+}
+
+.why-use-monitor li > :first-child {
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  padding-left: 48px;
+  margin: 0 0 var(--padding-md);
+  background: no-repeat left center / 40px;
+}
+
+.why-use-monitor li > :last-child {
+  margin: 0;
+}
+
+.why-use-monitor li:nth-of-type(1) > :first-child {
+  background-image: url('../images/icon-shield.svg');
+}
+
+.why-use-monitor li:nth-of-type(2) > :first-child {
+  background-image: url('../images/icon-mask.svg');
+}
+
+.why-use-monitor li:nth-of-type(3) > :first-child {
+  background-image: url('../images/icon-megaphone.svg');
 }
