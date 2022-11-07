@@ -43,35 +43,27 @@ async function getBreaches (req, res) {
 async function putBreachResolution (req, res) {
   const sessionUser = req.user
   const { affectedEmail, recencyIndex, resolutionsChecked } = req.body
-  const isResolved = false
-  const resp = {}
   const recencyIndexNumber = Number(recencyIndex)
   const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail
   const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => ea.email === affectedEmail)
 
+  // check if current user's emails array contain affectedEmail
   if (!affectedEmailIsSubscriberRecord && !affectedEmailInEmailAddresses) {
     return res.json('Error: affectedEmail is not valid for this subscriber')
   }
 
-  // first fetch the affectEmail's breaches, check if recencyIndex / resolutionsChecked make sense
-  // 1. check if recency index is a part of affectEmail's breaches
+  // check if recency index is a part of affectEmail's breaches
   const allBreaches = req.app.locals.breaches
   const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
+  const currentBreaches = affectedEmailInEmailAddresses[0].breaches?.filter(b => b.recencyIndex === recencyIndex)
+  if (!currentBreaches) {
+    return res.json('Error: the recencyIndex provided does not exist')
+  }
 
-  // 2. check if resolutionsChecked array is a subset of the breaches' datatypes
-
-  // update old breach_resolved for backwards compatibility when a breach is resolved
-  // TODO: deprecate
-
-  if (isResolved) {
-    const oldBreachResolution = breachResolvedJSON({
-      user: sessionUser,
-      affectedEmail,
-      isResolved,
-      recencyIndexNumber
-    })
-
-    await setBreachesResolved({ user: sessionUser, oldBreachResolution })
+  // check if resolutionsChecked array is a subset of the breaches' datatypes
+  const isSubset = resolutionsChecked.every(val => currentBreaches[0].DataClasses.includes(val))
+  if (!isSubset) {
+    return res.json(`Error: the resolutionChecked param contains more than allowed data types: ${resolutionsChecked}`)
   }
 
   /* new JsonB:
@@ -83,21 +75,41 @@ async function putBreachResolution (req, res) {
       }
     }
   }
-*/
+  */
 
-  const currentBreachDataTypes = [] // get this from existing breaches
-  const currentBreachResolution = {} // get this from existing breach resolution if available
+  const currentBreachDataTypes = currentBreaches[0].DataClasses // get this from existing breaches
+  const currentBreachResolution = req.user.breach_resolution || {} // get this from existing breach resolution if available
+  const isActive = resolutionsChecked.length < currentBreachDataTypes.length
   currentBreachResolution[affectedEmail] = {
-    [recencyIndexNumber]: {
-      resolutions: resolutionsChecked,
-      isActive: resolutionsChecked.length < currentBreachDataTypes.length,
-      status: this.isActive ? 'unresolved' : 'resolved'
+    ...(currentBreachResolution[affectedEmail] || {}),
+    ...{
+      [recencyIndexNumber]: {
+        resolutionsChecked,
+        isActive,
+        status: this.isActive ? 'unresolved' : 'resolved'
+      }
     }
   }
 
-  const updatedSubscriber = await setBreachResolution({
+  let updatedSubscriber = await setBreachResolution({
     user: sessionUser, currentBreachResolution
   })
+
+  // TODO: remove after breaches_resolve is deprecated
+  // backwards compatibility: need to write to both columns
+  if (!isActive) {
+    let currentBreachesResolved = req.user.breaches_resolved
+    if (currentBreachesResolved[affectedEmail]) {
+      currentBreachesResolved[affectedEmail] = [
+        ...currentBreachesResolved[affectedEmail] || [],
+        ...[recencyIndex]
+      ]
+    } else {
+      currentBreachesResolved = { [affectedEmail]: [recencyIndex] }
+    }
+
+    updatedSubscriber = await setBreachesResolved({ user: sessionUser, currentBreachesResolved })
+  }
 
   req.session.user = updatedSubscriber
   // return res.json("Breach marked as resolved.");
@@ -109,11 +121,11 @@ async function putBreachResolution (req, res) {
   //   return res.redirect('/')
   // }
 
-  const userBreachStats = oldBreachStats(verifiedEmails)
+  const userBreachStats = breachStatsV1(verifiedEmails)
 
   await updateBreachStats(sessionUser.id, userBreachStats)
 
-  res.json(resp)
+  res.json(updatedSubscriber)
 }
 
 // PRIVATE
@@ -186,7 +198,7 @@ async function bundleVerifiedEmails (options) {
     : []
 
   for (const breach of foundBreachesWithRecency) {
-    // add resolved status from v1: breach_resolved
+    // add resolved status from v1: breaches_resolved
     breach.IsResolved = !!resolvedBreachesV1.includes(breach.recencyIndex)
 
     // add resolved status from v2: breach_resolution
@@ -235,7 +247,7 @@ async function bundleVerifiedEmails (options) {
     }
   }
  */
-function oldBreachStats (verifiedEmails) {
+function breachStatsV1 (verifiedEmails) {
   const breachStats = {
     monitoredEmails: {
       count: 0
@@ -283,28 +295,28 @@ function oldBreachStats (verifiedEmails) {
 
 /**
  * TODO: deprecate
- * Create JSON object for column 'breach_resolved'
+ * Create JSON object for column 'breaches_resolved'
  * @param {object} options { user, affectedEmail, isResolved, recencyIndexNumber}
- * @returns {object} json object for 'breach_resolved' column
+ * @returns {object} json object for 'breaches_resolved' column
  */
-function breachResolvedJSON (options) {
-  const {
-    user,
-    affectedEmail,
-    isResolved,
-    recencyIndexNumber
-  } = options
-  const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved
-  if (isResolved === 'false') {
-    if (Array.isArray(userBreachesResolved[affectedEmail])) {
-      userBreachesResolved[affectedEmail].push(recencyIndexNumber)
-      return userBreachesResolved
-    }
-    userBreachesResolved[affectedEmail] = [recencyIndexNumber]
-    return userBreachesResolved
-  }
-  userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter(el => el !== recencyIndexNumber)
-  return userBreachesResolved
-}
+// function breachResolvedJSON (options) {
+//   const {
+//     user,
+//     affectedEmail,
+//     isResolved,
+//     recencyIndexNumber
+//   } = options
+//   const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved
+//   if (isResolved === 'false') {
+//     if (Array.isArray(userBreachesResolved[affectedEmail])) {
+//       userBreachesResolved[affectedEmail].push(recencyIndexNumber)
+//       return userBreachesResolved
+//     }
+//     userBreachesResolved[affectedEmail] = [recencyIndexNumber]
+//     return userBreachesResolved
+//   }
+//   userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter(el => el !== recencyIndexNumber)
+//   return userBreachesResolved
+// }
 
 export { breachesPage, putBreachResolution, getBreaches }
