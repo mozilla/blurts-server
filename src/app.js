@@ -54,13 +54,11 @@ app.use(session({
 }))
 
 // Load breaches into namespaced cache
-await (async () => {
-  try {
-    await loadBreachesIntoApp(app)
-  } catch (error) {
-    console.error('Error loading breaches into app.locals', error)
-  }
-})()
+try {
+  await loadBreachesIntoApp(app)
+} catch (error) {
+  console.error('Error loading breaches into app.locals', error)
+}
 
 // routing
 app.use('/', indexRouter)

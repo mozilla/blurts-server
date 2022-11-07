@@ -160,7 +160,7 @@ async function setBreachesResolved (options) {
 
 /**
  * Set "breach_resolution" column with the latest breach resolution object
- * This column is meant to replace "breach_resolved" column, which was used
+ * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
  * @param {object} user user object that contains the id of a user
  * @param {object} updatedBreachesResolution {email_id: [{recencyIndex: {allBreachTypes: [BreachType], resolved: [BreachType], isInProgress: bool}}, {}...]}
