@@ -81,12 +81,28 @@ footer {
   top: 100%;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: var(--gap);
   color: white;
-  padding: var(--padding-lg);
+  padding: var(--padding-lg) var(--padding-xl);
   background: black;
   box-shadow: 0 -6px 6px -8px #000;
   z-index: 1;
+}
+
+.mobile footer {
+  padding: var(--padding-xl);
+}
+
+footer > :first-child {
+  flex-grow: 999;
+  flex-basis: fit-content;
+}
+
+footer > menu {
+  flex-basis: fit-content;
+  flex-grow: 1;
 }
 
 button,
