@@ -8,7 +8,7 @@ export const landing = data => `
     <a class='button primary' href='/breaches'>${getMessage('sign-up-free')}</a>
   </div>
   <div>
-    <img srcset="images/landing-hero.png 530w, images/landing-hero@2x.png 1059w" alt=''>
+    <img srcset='images/landing-hero.png 530w, images/landing-hero@2x.png 1059w' alt=''>
   </div>
 </section>
 <section class='why-use-monitor'>
@@ -27,6 +27,26 @@ export const landing = data => `
       <h3>${getMessage('get-alerts')}</h3>
       <p>${getMessage('get-alerts-find-out')}</p>
     </li>
-</ul>
+  </ul>
+</section>
+<section class='how-it-works'>
+  <h2>${getMessage('how-it-works')}</h2>
+  <ol>
+    <li>
+      <img srcset='images/landing-laptop.png 250w, images/landing-laptop@2x.png 500w' alt=''>
+      <h3>${getMessage('check-for-breaches')}</h3>
+      <p>${getMessage('check-for-breaches-we-search')}</p>
+    </li>
+    <li>
+      <img srcset='images/landing-lock.png 204w, images/landing-lock@2x.png 408w' alt=''>
+      <h3>${getMessage('take-action')}</h3>
+      <p>${getMessage('take-action-clear-steps')}</p>
+    </li>
+    <li>
+      <img srcset='images/landing-mail.png 170w, images/landing-mail@2x.png 340w' alt=''>
+      <h3>${getMessage('alerts-for-breaches')}</h3>
+      <p>${getMessage('alerts-for-breaches-monitor-new')}</p>
+    </li>
+  </ol>
 </section>
 `

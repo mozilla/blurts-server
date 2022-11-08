@@ -16,3 +16,13 @@ prevent-fraud = Prevent fraud & cybercrimes
 prevent-fraud-keep-info = Keep your info away from hackers who want to impersonate you and commit crimes.
 get-alerts = Get alerts for new breaches
 get-alerts-find-out = Find out whenever your personal information is compromised in a new breach.
+
+## Here's how it works
+
+how-it-works = Here’s how it works
+check-for-breaches = Check for breaches
+check-for-breaches-we-search = We’ll search all known data breaches since 2007 to see if your info was compromised.
+take-action = Take action
+take-action-clear-steps = We’ll give you clear steps on what to do next for any data breach you’ve been involved in.
+alerts-for-breaches = Get alerts for new breaches
+alerts-for-breaches-monitor-new = We’ll continually monitor for new data breaches and let you know if you’ve been affected.

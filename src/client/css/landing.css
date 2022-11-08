@@ -61,3 +61,46 @@
 .why-use-monitor li:nth-of-type(3) > :first-child {
   background-image: url('../images/icon-megaphone.svg');
 }
+
+.how-it-works > h2 {
+  text-align: center;
+}
+
+.how-it-works > ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: var(--padding-lg) 0;
+  gap: var(--gap);
+  list-style: none;
+  counter-reset: li;
+}
+
+.how-it-works li {
+  --img-h: 150px;
+
+  position: relative;
+  flex-grow: 1;
+  flex-basis: calc((800px - 100%) * 999);
+  padding: 0 48px;
+}
+
+.how-it-works li::before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  top: calc(var(--img-h) - 16px);
+  left: 0;
+  line-height: 24px;
+  width: 24px;
+  color: var(--purple-70);
+  border: 1px solid;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.how-it-works li > img {
+  height: var(--img-h);
+  margin: 0 auto var(--padding-lg);
+  object-fit: contain;
+  object-position: bottom;
+}
