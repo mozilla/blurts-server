@@ -1,6 +1,6 @@
 import { mainLayout } from '../views/layouts/main.js'
 import { breaches } from '../views/partials/breaches.js'
-import { setBreachResolution, setBreachesResolved, updateBreachStats, getUserEmails } from '../db/index.js'
+import { setBreachResolution, updateBreachStats, getUserEmails } from '../db/index.js'
 import { getBreachesForEmail, filterBreaches, filterBreachDataTypes, getSha1 } from '../utils/index.js'
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
@@ -55,7 +55,8 @@ async function putBreachResolution (req, res) {
   // check if recency index is a part of affectEmail's breaches
   const allBreaches = req.app.locals.breaches
   const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
-  const currentBreaches = affectedEmailInEmailAddresses[0].breaches?.filter(b => b.recencyIndex === recencyIndex)
+  const currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailInEmailAddresses[0].email)
+  const currentBreaches = currentEmail.breaches?.filter(b => b.recencyIndex === recencyIndexNumber)
   if (!currentBreaches) {
     return res.json('Error: the recencyIndex provided does not exist')
   }
@@ -86,40 +87,14 @@ async function putBreachResolution (req, res) {
       [recencyIndexNumber]: {
         resolutionsChecked,
         isActive,
-        status: this.isActive ? 'unresolved' : 'resolved'
+        status: isActive ? 'unresolved' : 'resolved'
       }
     }
   }
 
-  let updatedSubscriber = await setBreachResolution({
-    user: sessionUser, currentBreachResolution
-  })
-
-  // TODO: remove after breaches_resolve is deprecated
-  // backwards compatibility: need to write to both columns
-  if (!isActive) {
-    let currentBreachesResolved = req.user.breaches_resolved
-    if (currentBreachesResolved[affectedEmail]) {
-      currentBreachesResolved[affectedEmail] = [
-        ...currentBreachesResolved[affectedEmail] || [],
-        ...[recencyIndex]
-      ]
-    } else {
-      currentBreachesResolved = { [affectedEmail]: [recencyIndex] }
-    }
-
-    updatedSubscriber = await setBreachesResolved({ user: sessionUser, currentBreachesResolved })
-  }
+  const updatedSubscriber = await setBreachResolution(sessionUser, currentBreachResolution)
 
   req.session.user = updatedSubscriber
-  // return res.json("Breach marked as resolved.");
-  // Currently we're sending { affectedEmail, recencyIndex, isResolved, passwordsExposed } in req.body
-  // Not sure if we need all of these or need to send other/additional values?
-
-  // if (isResolved === 'true') {
-  //   // the user clicked "Undo" so mark the breach as unresolved
-  //   return res.redirect('/')
-  // }
 
   const userBreachStats = breachStatsV1(verifiedEmails)
 
@@ -204,7 +179,7 @@ async function bundleVerifiedEmails (options) {
     // add resolved status from v2: breach_resolution
     if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
       const IsResolved = !breachResolutionV2[breach.recencyIndex].isActive
-      breach.IsResolved = breach.IsResolved || IsResolved
+      breach.IsResolved = breach.IsResolved || IsResolved // if either v1 or v2 is marked as resolved, breach is resolved
       breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex].resolutionsChecked ?? []
     }
 
