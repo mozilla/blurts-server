@@ -100,7 +100,7 @@ async function putBreachResolution (req, res) {
 
   await updateBreachStats(sessionUser.id, userBreachStats)
 
-  res.json(updatedSubscriber)
+  res.json(updatedSubscriber.breach_resolution)
 }
 
 // PRIVATE

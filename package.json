@@ -78,8 +78,8 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
-    "start": "source .env && if [[ $MONITOR_V2 == 'true' ]]; then npm start --workspace=src; else npm run build & node server.js; fi;",
-    "dev": "source .env && if [[ $MONITOR_V2 == 'true' ]]; then npm run dev --workspace=src; else nodemon server.js; fi;",
+    "start": ". .env && if [[ $MONITOR_V2 == 'true' ]]; then npm start --workspace=src; else npm run build & node server.js; fi;",
+    "dev": ". .env && if [[ $MONITOR_V2 == 'true' ]]; then npm run dev --workspace=src; else nodemon server.js; fi;",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
