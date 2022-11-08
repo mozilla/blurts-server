@@ -32,7 +32,7 @@ async function getBreaches (req, res) {
 
 /**
  * Modify breach resolution for a user
- * @param {object} req containing {user, body: {affectedEmail, recencyIndex, resolutionsChecked, isUnresolve}}
+ * @param {object} req containing {user, body: {affectedEmail, recencyIndex, resolutionsChecked}}
  *
  * recencyIndex: corresponds to the relevant breach from HIBP
  *
