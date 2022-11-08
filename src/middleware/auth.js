@@ -1,5 +1,5 @@
 import AppConstants from '../app-constants.js'
-import { getSubscriberById, updateFxAProfileData } from '../db/index.js'
+import { getSubscriberById, updateFxAProfileData } from '../db/tables/subscribers.js'
 import * as FXA from '../utils/fxa.js'
 
 async function getRequestSessionUser (req, res, next) {

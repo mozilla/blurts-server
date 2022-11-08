@@ -4,14 +4,14 @@ const landingHeader = data => `
 <header>
   <a href='/'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
   <menu>
-    <li><a href='/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
+    <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
 </header>
 `
 
 const mainHeader = data => `
 <header>
-  <a href='/breaches'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
+  <a href='/user/breaches'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
   <menu>
     <li>
       <button class='nav-toggle'>
@@ -23,10 +23,10 @@ const mainHeader = data => `
   </menu>
 </header>
 <nav>
-  <a href='/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
-  <a href='/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
-  <a href='/data-removal' class='nav-item ${data.partial.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
-  <a href='/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>Settings</a>
+  <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
+  <a href='/user/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
+  <a href='/user/data-removal' class='nav-item ${data.partial.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
+  <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>Settings</a>
 </nav>
 `
 
