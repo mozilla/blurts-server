@@ -76,7 +76,7 @@ async function putBreachResolution (req, res) {
     email_id: {
       recency_index: {
         resolutions: ['email', ...],
-        isActive: true
+        isResolved: true
       }
     }
   }
@@ -84,14 +84,13 @@ async function putBreachResolution (req, res) {
 
   const currentBreachDataTypes = currentBreaches[0].DataClasses // get this from existing breaches
   const currentBreachResolution = req.user.breach_resolution || {} // get this from existing breach resolution if available
-  const isActive = resolutionsChecked.length < currentBreachDataTypes.length
+  const isResolved = resolutionsChecked.length === currentBreachDataTypes.length
   currentBreachResolution[affectedEmail] = {
     ...(currentBreachResolution[affectedEmail] || {}),
     ...{
       [recencyIndexNumber]: {
         resolutionsChecked,
-        isActive,
-        status: isActive ? 'unresolved' : 'resolved'
+        isResolved
       }
     }
   }
@@ -182,7 +181,7 @@ async function bundleVerifiedEmails (options) {
 
     // add resolved status from v2: breach_resolution
     if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
-      const IsResolved = !breachResolutionV2[breach.recencyIndex].isActive
+      const IsResolved = breachResolutionV2[breach.recencyIndex].isResolved
       breach.IsResolved = breach.IsResolved || IsResolved // if either v1 or v2 is marked as resolved, breach is resolved
       breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex].resolutionsChecked ?? []
     }
