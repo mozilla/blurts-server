@@ -1,7 +1,11 @@
 import { mainLayout } from '../views/layouts/main.js'
 import { breaches } from '../views/partials/breaches.js'
-import { setBreachResolution, updateBreachStats, getUserEmails } from '../db/index.js'
-import { getBreachesForEmail, filterBreaches, filterBreachDataTypes, getSha1 } from '../utils/index.js'
+import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
+import { getUserEmails } from '../db/tables/email_addresses.js'
+import { getBreachesForEmail, filterBreaches } from '../utils/hibp.js'
+import { filterBreachDataTypes } from '../utils/breach-resolution.js'
+import { getSha1 } from '../utils/fxa.js'
+
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)

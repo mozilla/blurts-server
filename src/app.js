@@ -6,7 +6,8 @@ import accepts from 'accepts'
 import redis from 'redis'
 
 import AppConstants from './app-constants.js'
-import { initFluentBundles, updateAppLocale, loadBreachesIntoApp } from './utils/index.js'
+import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
+import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
