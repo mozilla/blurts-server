@@ -3,7 +3,6 @@ console.log('breaches update test')
 // update button
 const b = document.getElementById('update-breaches')
 b.addEventListener('click', async _ => {
-  console.log('haha')
   try {
     const resp = await fetch('http://localhost:6060/api/v1/user/breaches', {
       method: 'PUT',
