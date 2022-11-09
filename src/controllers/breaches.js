@@ -176,15 +176,9 @@ async function bundleVerifiedEmails (options) {
     : []
 
   for (const breach of foundBreachesWithRecency) {
-    // add resolved status from v1: breaches_resolved
-    breach.IsResolved = !!resolvedBreachesV1.includes(breach.recencyIndex)
-
-    // add resolved status from v2: breach_resolution
-    if (breachResolutionV2[breach.recencyIndex] && !breach.IsResolved) {
-      const IsResolved = breachResolutionV2[breach.recencyIndex].isResolved
-      breach.IsResolved = breach.IsResolved || IsResolved // if either v1 or v2 is marked as resolved, breach is resolved
-      breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex].resolutionsChecked ?? []
-    }
+    // if either v1 or v2 is marked as resolved, breach is resolved
+    breach.IsResolved = !!resolvedBreachesV1.includes(breach.recencyIndex) || !!breachResolutionV2[breach.recencyIndex]?.isResolved
+    breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || []
 
     // filter breach types based on the 13 types we care about
     breach.DataClasses = filterBreachDataTypes(breach.DataClasses)
