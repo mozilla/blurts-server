@@ -271,30 +271,4 @@ function breachStatsV1 (verifiedEmails) {
   return breachStats
 }
 
-/**
- * TODO: deprecate
- * Create JSON object for column 'breaches_resolved'
- * @param {object} options { user, affectedEmail, isResolved, recencyIndexNumber}
- * @returns {object} json object for 'breaches_resolved' column
- */
-// function breachResolvedJSON (options) {
-//   const {
-//     user,
-//     affectedEmail,
-//     isResolved,
-//     recencyIndexNumber
-//   } = options
-//   const userBreachesResolved = user.breaches_resolved === null ? {} : user.breaches_resolved
-//   if (isResolved === 'false') {
-//     if (Array.isArray(userBreachesResolved[affectedEmail])) {
-//       userBreachesResolved[affectedEmail].push(recencyIndexNumber)
-//       return userBreachesResolved
-//     }
-//     userBreachesResolved[affectedEmail] = [recencyIndexNumber]
-//     return userBreachesResolved
-//   }
-//   userBreachesResolved[affectedEmail] = userBreachesResolved[affectedEmail].filter(el => el !== recencyIndexNumber)
-//   return userBreachesResolved
-// }
-
 export { breachesPage, putBreachResolution, getBreaches }
