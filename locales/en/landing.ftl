@@ -26,3 +26,10 @@ take-action = Take action
 take-action-clear-steps = We’ll give you clear steps on what to do next for any data breach you’ve been involved in.
 alerts-for-breaches = Get alerts for new breaches
 alerts-for-breaches-monitor-new = We’ll continually monitor for new data breaches and let you know if you’ve been affected.
+
+## Your privacy is safe with us
+
+safe-with-us = Your privacy is safe with us
+parent-company = At {-brand-Mozilla}, the parent company of {-brand-firefox} and {-product-fx-monitor}, we believe individuals’ security and privacy on the internet is fundamental and must not be treated as optional.
+our-mission = Our mission is to build a better internet — one where people can shape their own experiences, feel empowered and stay safe. We’re wholly owned by the {-brand-mozilla-foundation}, a non-profit, which enables us to put individual and public benefit over profit.
+learn-more-mission = Learn more about our mission

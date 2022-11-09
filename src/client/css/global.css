@@ -36,7 +36,8 @@ p {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-position: under;
 }
 
 img {
@@ -120,6 +121,10 @@ footer > :first-child {
 footer > menu {
   flex-basis: fit-content;
   flex-grow: 1;
+}
+
+footer a {
+  text-decoration: none;
 }
 
 button,

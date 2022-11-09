@@ -3,11 +3,14 @@
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
+-product-fx-monitor = Firefox Monitor
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{-product-name}</span>
 -product-short-name = Monitor
+-brand-firefox = Firefox
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
@@ -807,7 +810,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ## Header
 
-firefox-monitor = {-product-name}
+product-fx-monitor = {-product-fx-monitor}
 sign-in = Sign In
 
 ## Footer

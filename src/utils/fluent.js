@@ -54,11 +54,11 @@ function updateAppLocale (requestedLocales) {
 }
 
 /**
-* Translate a message by id
+* Translate a message and return the raw string
 * Defaults to en if message id not found in requested locale
 * @param {string} id - The Fluent message id.
 */
-function getMessage (id) {
+function getRawMessage (id) {
   let bundle = fluentBundles[appLocale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
@@ -75,10 +75,10 @@ function getMessage (id) {
 * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
 * @example
 * // Given FluentResource("hello = Hello, {$name}!")
-* getPattern (hello, {name: "Jane"})
+* getMessage (hello, {name: "Jane"})
 * // Returns "Hello, Jane!"
 */
-function getPattern (id, args) {
+function getMessage (id, args) {
   let bundle = fluentBundles[appLocale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
@@ -92,4 +92,4 @@ function fluentError (id) {
   return new Error(getMessage(id))
 }
 
-export { initFluentBundles, updateAppLocale, getMessage, getPattern, fluentError }
+export { initFluentBundles, updateAppLocale, getMessage, getRawMessage, fluentError }
