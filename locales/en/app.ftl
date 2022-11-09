@@ -3,14 +3,11 @@
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
--product-fx-monitor = Firefox Monitor
 -product-name = Firefox Monitor
 -product-name-nowrap = <span class="nowrap">{-product-name}</span>
 -product-short-name = Monitor
--brand-firefox = Firefox
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
--brand-mozilla-foundation = Mozilla Foundation
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
@@ -19,7 +16,6 @@
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
 -brand-relay = Firefox Relay
--brand-github = GitHub
 
 ##
 
@@ -808,11 +804,20 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 # Monitor V2
 
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
 ## Header
 
-product-fx-monitor = {-product-fx-monitor}
+brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
 
 ## Footer
+mozilla = {-brand-mozilla}
 terms-and-privacy = Terms & Privacy
 github = {-brand-github}

@@ -148,6 +148,7 @@
   position: relative;
   color: white;
   text-align: center;
+  padding: var(--padding-xl) var(--padding-lg);
 }
 
 .see-if-data-breach::before {
