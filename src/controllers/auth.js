@@ -2,7 +2,8 @@ import { URL } from 'url'
 import { randomBytes } from 'crypto'
 
 import AppConstants from '../app-constants.js'
-import { getSubscriberByEmail, addSubscriber, updateFxAData, removeFxAData } from '../db/index.js'
+import { getSubscriberByEmail, updateFxAData, removeFxAData } from '../db/tables/subscribers.js'
+import { addSubscriber } from '../db/tables/email_addresses.js'
 // import { sendEmail, getEmailCtaHref, getUnsubscribeUrl } from '../email-utils'
 import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
 // import { getBreachesForEmail } from '../utils/hibp.js'
@@ -54,7 +55,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   const existingUser = await getSubscriberByEmail(email)
   req.session.user = existingUser
 
-  const returnURL = new URL('/breaches', SERVER_URL)
+  const returnURL = new URL('user/breaches', SERVER_URL)
   const originalURL = new URL(req.originalUrl, SERVER_URL)
 
   for (const [key, value] of originalURL.searchParams.entries()) {

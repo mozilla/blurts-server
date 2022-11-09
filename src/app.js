@@ -7,6 +7,7 @@ import redis from 'redis'
 
 import AppConstants from './app-constants.js'
 import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
+import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
@@ -54,10 +55,18 @@ app.use(session({
   store: await getRedisStore()
 }))
 
+// Load breaches into namespaced cache
+try {
+  await loadBreachesIntoApp(app)
+} catch (error) {
+  console.error('Error loading breaches into app.locals', error)
+}
+
 // routing
 app.use('/', indexRouter)
 app.use(express.static(staticPath))
 
+// start server
 app.listen(AppConstants.PORT, function () {
   console.log(`MONITOR V2: Server listening at ${this.address().port}`)
   console.log(`Static files served from ${staticPath}`)
