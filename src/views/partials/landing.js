@@ -60,4 +60,12 @@ export const landing = data => `
     <img srcset='images/landing-nature-phone.png 539w, images/landing-nature-phone@2x.png 1078w' loading='lazy' alt=''>
   </figure>
 </section>
+<section class='top-questions-about-monitor'>
+  <h2>${getMessage('top-questions-about-monitor')}</h2>
+  <a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>${getMessage('see-all-faq')}</a>
+</section>
+<section class='see-if-data-breach'>
+  <h2>${getMessage('see-if-data-breach')}</h2>
+  <a class='button primary' href='/user/breaches'>${getMessage('sign-up-free')}</a>
+</section>
 `

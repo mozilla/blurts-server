@@ -118,7 +118,7 @@
 .safe-with-us::before {
   content: '';
   position: absolute;
-  left: calc(50% - 50vw);
+  left: min(0px, 50% - 50vw);
   top: 0;
   width: 100vw;
   height: 100%;
@@ -134,4 +134,29 @@
 .safe-with-us > :last-child {
   flex: 1 1 48%;
   max-width: 539px;
+}
+
+.top-questions-about-monitor {
+  text-align: center;
+}
+
+.top-questions-about-monitor > a {
+  color: var(--blue-50);
+}
+
+.see-if-data-breach {
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.see-if-data-breach::before {
+  content: '';
+  position: absolute;
+  left: min(0px, 50% - 50vw);
+  top: 0;
+  width: 100vw;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
 }
