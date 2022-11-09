@@ -5,7 +5,7 @@ export const landing = data => `
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
     <p>${getMessage('stay-safe-with-tool')}</p>
-    <a class='button primary' href='/breaches'>${getMessage('sign-up-free')}</a>
+    <a class='button primary' href='/user/breaches'>${getMessage('sign-up-free')}</a>
   </div>
   <figure>
     <img srcset='images/landing-hero.png 530w, images/landing-hero@2x.png 1059w' alt=''>

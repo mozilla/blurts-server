@@ -17,6 +17,7 @@ nav[hidden] {
 
 nav > a {
   padding: var(--padding-sm) var(--padding-lg);
+  text-decoration: none;
 }
 
 nav > a + a {
