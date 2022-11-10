@@ -7,7 +7,7 @@
     "prestart": "npm run build",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node esbuild.js & npm run build:png && npm run build:svg",
+    "build": "node esbuild & npm run build:png && npm run build:svg",
     "build:png": "squoosh-cli --oxipng '{level: 2}' --quant '{numColors: 255}' -d ../dist/images ./client/images/*.png",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images"
   },
@@ -15,7 +15,8 @@
     "watch": [
       "./*",
       "../.env",
-      "../.env-dist"
+      "../.env-dist",
+      "../locales/en/*"
     ],
     "ext": "js,css,json,ftl"
   },
@@ -28,6 +29,7 @@
   "dependencies": {
     "@squoosh/cli": "^0.7.2",
     "esbuild": "^0.15.10",
+    "helmet": "^6.0.0",
     "svgo": "^2.8.0",
     "uuid": "^9.0.0"
   },

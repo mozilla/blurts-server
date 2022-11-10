@@ -23,8 +23,6 @@
 # and kept in English.
 -brand-fx-account = Firefox account
 
-terms-and-privacy = Terms & Privacy
-
 GitHub-link-title = GitHub
 
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
@@ -98,7 +96,6 @@ show-all = Show All
 
 fxa-scan-another-email = Want to check another email?
 
-sign-in = Sign In
 sign-out = Sign Out
 
 # Manage Firefox Account, link to page where account holders can change their account settings.
@@ -804,3 +801,23 @@ ad-unit-5-no-matter-where = No matter where you are, create a custom email mask 
 ad-unit-6-worry-free = Worry-Free Signups
 ad-unit-6-want-to-start = Want to start a new subscription, respond to an invitation, or get a bargain promo code without having spam flooding your inbox?
 ad-unit-6-before-you-complete = Before you complete that next signup, use an email mask instead of your real one to protect your info and keep control over your inbox
+
+# Monitor V2
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Header
+
+brand-fx-monitor = {-brand-fx-monitor}
+sign-in = Sign In
+
+## Footer
+mozilla = {-brand-mozilla}
+terms-and-privacy = Terms & Privacy
+github = {-brand-github}

@@ -1,8 +1,10 @@
-import { getMessage, getPattern } from '../../utils/fluent.js'
+import { getMessage } from '../../utils/fluent.js'
 
 const landingHeader = data => `
 <header>
-  <a href='/'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
+  <a href='/'>
+    <img class='monitor-logo' srcset='/images/monitor-logo-transparent.png 213w, /images/monitor-logo-transparent@2x.png 425w' alt='${getMessage('brand-fx-monitor')}'>
+  </a>
   <menu>
     <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
@@ -11,7 +13,7 @@ const landingHeader = data => `
 
 const mainHeader = data => `
 <header>
-  <a href='/user/breaches'><img class='monitor-logo' src='images/monitor-logo-transparent.png' width='220' height='40'></a>
+  <a href='/user/breaches'><img class='monitor-logo' srcset='/images/monitor-logo-transparent.png 213w, /images/monitor-logo-transparent@2x.png 425w'></a>
   <menu>
     <li>
       <button class='nav-toggle'>
@@ -36,12 +38,9 @@ export const mainLayout = data => `
   <head>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=320, initial-scale=1">
-    <title>${getPattern('home-title')}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"> 
-    <link href='css/index.css' type='text/css' rel='stylesheet'>
-    <script src='js/index.js' type='module'></script>
+    <title>${getMessage('brand-fx-monitor')}</title>
+    <link href='/css/index.css' type='text/css' rel='stylesheet'>
+    <script src='/js/index.js' type='module'></script>
   </head>
   <body>
     ${data.partial.name === 'landing' ? landingHeader(data) : mainHeader(data)}
@@ -49,11 +48,13 @@ export const mainLayout = data => `
       ${data.partial(data)}
     </main>
     <footer>
-      <a href='https://www.mozilla.org' target='_blank'><img src='images/moz-logo-1color-white-rgb-01.svg' width='100'></a>
+      <a href='https://www.mozilla.org' target='_blank'>
+        <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' loading='lazy' alt='${getMessage('mozilla')}'>
+      </a>
       <menu>
         <li><a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>FAQ</a></li>
         <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>${getMessage('terms-and-privacy')}</a></li>
-        <li><a href='https://github.com/mozilla/blurts-server' target='_blank' rel='noreferrer'>GitHub</a></li>
+        <li><a href='https://github.com/mozilla/blurts-server' target='_blank' rel='noreferrer'>${getMessage('github')}</a></li>
       </menu>
     </footer>
   </body>
