@@ -1,3 +1,4 @@
+// TODO: to be deprecated
 'use strict'
 
 const crypto = require('crypto')
