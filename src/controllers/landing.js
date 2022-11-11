@@ -7,6 +7,13 @@ function landingPage (req, res) {
     partial: landing
   }
 
+  console.log('DEBUG HEROKU LOCALES PATH')
+  console.log(import.meta.url)
+  console.log(new URL('../', import.meta.url))
+  console.log(new URL('../../', import.meta.url))
+  console.log(new URL('../../locales/', import.meta.url))
+  console.log(new URL('../../locales/en', import.meta.url))
+
   res.send(mainLayout(data))
 }
 
