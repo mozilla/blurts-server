@@ -16,13 +16,13 @@ let appLocale // set during a request
 async function initFluentBundles () {
   const promises = supportedLocales.map(async locale => {
     const bundle = new FluentBundle(locale, { useIsolating: false })
-    const dirname = `../locales/${locale}`
+    const dirname = new URL(`../../locales/${locale}`, import.meta.url)
 
     try {
       const filenames = readdirSync(dirname).filter(item => item.endsWith('.ftl'))
 
       await Promise.all(filenames.map(async filename => {
-        const str = await readFile(join(dirname, filename), 'utf8')
+        const str = await readFile(join(dirname.pathname, filename), 'utf8')
 
         bundle.addResource(new FluentResource(str))
       }))
