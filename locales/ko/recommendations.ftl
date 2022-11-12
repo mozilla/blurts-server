@@ -24,6 +24,7 @@ rec-pw-2 =
 rec-pw-3-subhead = 암호 관리자를 사용하여 어디서든 암호를 가져오기
 # Link title
 rec-pw-3-cta = { -brand-lockwise } 받기
+rec-pw-3-fx = { -brand-lockwise }를 사용하여 어디에서나 { -brand-name }에 저장된 비밀번호에 안전하게 접근할 수 있습니다.
 rec-pw-3-non-fx =
     { -brand-lockwise }를 사용하여 휴대전화나 태블릿에서 
     사용자의 비밀번호를 살펴보고 안전하게 접근할 수 있습니다.
@@ -46,6 +47,7 @@ rec-cc =
     신용카드에 이상한 청구가 있지는 않은지 확인하세요.
     신용 카드 발급 기관으로부터 새 카드를 발급받아야 할 지도 모릅니다.
 rec-email-cta = { -brand-relay } 써보기
+rec-email = 실제 이메일 주소를 제공하는 것은 해커나 추적기가 여러분의 비밀번호를 알아내거나 또는 추적 대상이 되도록 만들 수 있습니다. { -brand-relay }와 같은 서비스는 고객의 실제 수신함으로 이메일을 전송해주는 서비스로 실제 이메일 주소를 숨겨줍니다.
 # Recommendation subhead
 rec-ip-subhead = IP 주소를 숨기는 서비스 사용
 # Link title
