@@ -15,6 +15,7 @@ let appLocale // set during a request
 */
 async function initFluentBundles () {
   const promises = supportedLocales.map(async locale => {
+    console.log('initFluentBundles - locale:', locale)
     const bundle = new FluentBundle(locale, { useIsolating: false })
     const dirname = new URL(`../../locales/${locale}`, import.meta.url)
 
