@@ -17,7 +17,6 @@ async function initFluentBundles () {
   const promises = supportedLocales.map(async locale => {
     const bundle = new FluentBundle(locale, { useIsolating: false })
     const dirname = resolve('../locales', locale)
-    console.log('dirname:', dirname)
 
     try {
       const filenames = readdirSync(dirname).filter(item => item.endsWith('.ftl'))
