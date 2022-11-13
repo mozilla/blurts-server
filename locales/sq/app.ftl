@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -112,50 +115,6 @@ security-tips = Ndihmëza Sigurie
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Hapni lëvizjen nëpër { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Sipas një shkalle vlerësimi nga 1 deri në 10, sa gjasa ka t’ia rekomandoni { -product-short-name }-in një shoku apo kolegu?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = S’ka gjasa
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Shumë
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = A është { -product-short-name } i lehtë për t’u përdorur?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = A ju duket { -product-short-name }-i i besueshëm?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = A ka { -product-short-name }-i një paraqitje të qëruar dhe të thjeshtë?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Nuk pajtohem fare
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Nuk pajtohem
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = I pasigurt
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Pajtohem
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Pajtohem fort
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Si do të ndiheshit, po të mos mundnit ta përdornit më { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Shumë i zhgënjyer
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Disi i zhgënjyer
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = S’më  bëhet vonë
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SHKELJA MË E RE E SHTUAR
 # Link title
@@ -598,9 +557,17 @@ vpn-banner-cta-expand = Zgjeroje
 # button to close panel
 vpn-banner-cta-close = Mbylle
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Si ta mbani të fshehtë adresën tuaj email?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = A shqetësoheni për sigurinë në një Wi-Fi publik?
+ad-unit-relay-cta = Mësoni më tepër mbi { -brand-relay }
+ad-unit-vpn-cta = Mësoni më tepër mbi { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Si ta mbani të fshehtë adresën tuaj email?
+# ad 2 heading
+ad-unit-2-do-you-worry = A shqetësoheni për sigurinë në një Wi-Fi publik?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Jini brenda gjërave
+ad-unit-4-want-to-buy = Doni të blini diçka në internet dhe nuk e njihni, ose nuk e besoni plotësisht shitoren?
+ad-unit-4-shop-online = Përdorni një maskë email-i, kurdo që blini në internet. Merreni ripohimin e blerjes te email-i juaj faktik dhe mandej hiqeni kollaj maskën, kur të doni.
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Merrni dëftesa email-i
