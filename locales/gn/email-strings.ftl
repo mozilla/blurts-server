@@ -90,6 +90,7 @@ email-resolve-cta = Emoĩporã ñembogua
 
 email-verify-heading = Emo’ã ne mba’ekuaarã, eñepyrũ ko’ag̃aite
 email-verify-subhead = Ehechajey ne ñanduti veve emo’ãkuaa hag̃ua mba’ekuaarã ñembogua rire.
+email-verify-simply-click = Eikutu pe juajuha emohu’ã hag̃ua ne mbaéte jehechajey.
 
 ## Breach report
 
