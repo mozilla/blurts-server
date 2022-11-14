@@ -66,6 +66,8 @@ monitor-another-email = Vil du overvake ei anna e-postadresse?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datalekkasjedataa er levert av <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
@@ -74,6 +76,8 @@ email-unresolved-subhead = E-postadressa di er utsett. <br>Løys det med ein gon
 email-is-affected = E-posten din, { $email-address }, er påverka av minst ein datalekkasje
 email-more-detail = Logg inn no på { -product-name } for å sjå meir om datalekkasjane dine (inkludert når dei skjedde, og kva for data som vart avslørt), og les kva du skal gjere når e-postadressa di er utsett for ein datalekkasje.
 email-breach-status = Gjeldande datalekkasjestatus
+# table row 1 label
+email-monitored = Totalt antal overvaka e-postadreser:
 # table row 2 label
 email-breach-total = Totalt antal datalekkasjar:
 # table row 3 label
