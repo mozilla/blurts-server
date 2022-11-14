@@ -70,6 +70,7 @@ monitor-another-email = Vil du overvake ei anna e-postadresse?
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Du har uløyste datalekkasjar
+email-unresolved-subhead = E-postadressa di er utsett. <br>Løys det med ein gong { -product-name }.
 email-is-affected = E-posten din, { $email-address }, er påverka av minst ein datalekkasje
 # table row 2 label
 email-breach-total = Totalt antal datalekkasjar:
@@ -84,7 +85,9 @@ email-resolve-cta = Løys datalekkasjar
 
 ## Breach report
 
+email-breach-detected = Søkjeresultat for { $email-address }-kontoen din har oppdaga at e-posten din kan vere utsett. Vil tilrår at du handlar no for å løyse denne datalekkasjen.
 email-dashboard-cta = Gå til oversynet
 
 ## Breach alert
 
+email-may-have-been-exposed = E-postadressa di har vore utsett for ein datalekkasje
