@@ -213,7 +213,6 @@ https://discourse.mozilla.org/t/metropolis-font-repo-missing/69415
   font-weight: 700;
   font-display: optional;
   src:
-    local('Metropolis'),
     local('Metropolis-Bold'),
     url('../fonts/Metropolis-Bold.woff2') format('woff2');
 }
