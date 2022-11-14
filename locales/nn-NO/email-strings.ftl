@@ -69,6 +69,10 @@ monitor-another-email = Vil du overvake ei anna e-postadresse?
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Du har uløyste datalekkasjar
+email-is-affected = E-posten din, { $email-address }, er påverka av minst ein datalekkasje
+# table row 2 label
+email-breach-total = Totalt antal datalekkasjar:
 # table row 3 label
 email-resolved = Løyste datalekkasjar:
 # table row 4 label
@@ -80,6 +84,7 @@ email-resolve-cta = Løys datalekkasjar
 
 ## Breach report
 
+email-dashboard-cta = Gå til oversynet
 
 ## Breach alert
 
