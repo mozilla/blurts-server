@@ -66,6 +66,7 @@ monitor-another-email = Vil du overvake ei anna e-postadresse?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = Du får denne automatiske e-postmeldinga fordi du abonnerer på { -product-name }. <br>Endre e-postinnstillingane når som helst <a { $unsubscribe-link-attr }>her</a>.
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = Datalekkasjedataa er levert av <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
@@ -88,6 +89,9 @@ email-resolve-cta = Løys datalekkasjar
 
 ## Verification email
 
+email-verify-heading = Sikre dataa dine frå no av
+email-verify-subhead = Stadfest e-postadressa di for å byrje å verne dine data etter ein datalekkasje.
+email-verify-simply-click = Trykk på lenka nedanfor for å fullføre stadfestinga av kontoen din.
 
 ## Breach report
 
