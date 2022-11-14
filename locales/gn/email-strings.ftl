@@ -89,6 +89,7 @@ email-resolve-cta = Emoĩporã ñembogua
 ## Verification email
 
 email-verify-heading = Emo’ã ne mba’ekuaarã, eñepyrũ ko’ag̃aite
+email-verify-subhead = Ehechajey ne ñanduti veve emo’ãkuaa hag̃ua mba’ekuaarã ñembogua rire.
 
 ## Breach report
 
@@ -97,4 +98,5 @@ email-dashboard-cta = Eho ñangarekoha rupápe
 
 ## Breach alert
 
+email-may-have-been-exposed = Ne ñanduti veve iñapañuãikuaa mba’ekuaarã ñembogua rupi
 email-spotted-new-breach = Rohecha oĩha mba’ekuaarã ñembogua pyahu
