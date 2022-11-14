@@ -95,9 +95,12 @@ email-verify-simply-click = Trykk på lenka nedanfor for å fullføre stadfestin
 
 ## Breach report
 
+email-breach-summary = Her er oversynet ditt over datalekkasjar
 email-breach-detected = Søkjeresultat for { $email-address }-kontoen din har oppdaga at e-posten din kan vere utsett. Vil tilrår at du handlar no for å løyse denne datalekkasjen.
+email-no-breach-detected = Gode nyheiter! Vi har ikkje funne nokon datalekkasje som påverkar e-postadressa di, { $email-address }.
 email-dashboard-cta = Gå til oversynet
 
 ## Breach alert
 
 email-may-have-been-exposed = E-postadressa di har vore utsett for ein datalekkasje
+email-spotted-new-breach = Vi har oppdaga ein ny datalekkasje
