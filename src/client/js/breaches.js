@@ -10,7 +10,7 @@ b.addEventListener('click', async _ => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        affectedEmail: 'josephyzhou@gmail.com',
+        affectedEmail: 'affectedEmail@gmail.com',
         recencyIndex: '13',
         resolutionsChecked: ['passwords',
           'dates-of-birth', 'email-addresses']
