@@ -97,6 +97,7 @@ email-verify-simply-click = Eikutu pe juajuha emohu’ã hag̃ua ne mbaéte jehe
 ## Breach report
 
 email-breach-summary = Na’ápe ne mba’ekuaarã ñembogua rapykuere
+email-breach-detected = Ne mba’ete jeheka rapykuere { $email-address } ohechakuaa ne ñanduti veve oñembyaikuaaha. Romombe’u ndéve emyatyrõ hag̃ua ko ñembogua rehegua.
 email-no-breach-detected = ¡Marandu neporãva! Ndorojuhúi mba’ekuaarã ñembogua ombyaikuaáva ne ñanduti veve, { $email-address }.
 email-dashboard-cta = Eho ñangarekoha rupápe
 
