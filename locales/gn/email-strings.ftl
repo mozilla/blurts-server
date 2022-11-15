@@ -76,6 +76,7 @@ email-2022-hibp-attribution = Mba’ekuaarã ñembogua ome’ẽva <a { $hibp-li
 email-unresolved-heading = Eguereko ñembogua oĩporã’ỹva
 email-unresolved-subhead = Ne ñanduti veve ikatu oñembyai. <br>Emoĩporã ko’ag̃aite { -product-name }.
 email-is-affected = Ne ñanduti veve, { $email-address }, oñembyai sa’ivéramo peteĩ mba’ekuaarã ñemboguápe
+email-more-detail = Eñepyrũ tembiapo { -product-name } ndive ehecha porã hag̃ua mba’emimi ñembogua rehegua (oikehápe oikórõguare ha mba’e mba’ekuaarã ivaikuaa) ha eikuaa mba’épa ejapóta ne ñanduti veve ivaikuaárõ mba’ekuaarã ñembogua rupive.
 email-breach-status = Mba’éicha oĩ ñembogua
 # table row 1 label
 email-monitored = Ñanduti vevekuéra jehechapyre:
@@ -96,6 +97,7 @@ email-verify-simply-click = Eikutu pe juajuha emohu’ã hag̃ua ne mbaéte jehe
 ## Breach report
 
 email-breach-summary = Na’ápe ne mba’ekuaarã ñembogua rapykuere
+email-no-breach-detected = ¡Marandu neporãva! Ndorojuhúi mba’ekuaarã ñembogua ombyaikuaáva ne ñanduti veve, { $email-address }.
 email-dashboard-cta = Eho ñangarekoha rupápe
 
 ## Breach alert
