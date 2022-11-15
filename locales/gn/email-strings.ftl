@@ -67,6 +67,7 @@ monitor-another-email = ¿Eporanduse ambue ñanduti veve rupive?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = Og̃uahẽ ko ñanduti veve jeheguíva eñemboheraguapýgui { -product-name } ndive. <br>Emoambuekuaa rehayhuvéva ñanduti veve ejapose vove <a { $unsubscribe-link-attr }>ápe</a>.
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = Mba’ekuaarã ñembogua ome’ẽva <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
