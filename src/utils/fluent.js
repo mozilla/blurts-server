@@ -1,4 +1,4 @@
-import { resolve, join } from 'node:path'
+import { join, resolve } from 'node:path'
 import { readdirSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { FluentBundle, FluentResource } from '@fluent/bundle'
@@ -16,7 +16,7 @@ let appLocale // set during a request
 async function initFluentBundles () {
   const promises = supportedLocales.map(async locale => {
     const bundle = new FluentBundle(locale, { useIsolating: false })
-    const dirname = resolve(`../locales/${locale}`)
+    const dirname = resolve('../locales', locale)
 
     try {
       const filenames = readdirSync(dirname).filter(item => item.endsWith('.ftl'))

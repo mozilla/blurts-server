@@ -46,7 +46,7 @@
     "eslint-plugin-promise": "^6.0.1",
     "jest": "^27.2.5",
     "node-mocks-http": "1.11.0",
-    "nodemon": "2.0.20",
+    "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
@@ -78,8 +78,8 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
-    "start": ". .env && if [[ $MONITOR_V2 == 'true' ]]; then npm start --workspace=src; else npm run build & node server.js; fi;",
-    "dev": ". .env && if [[ $MONITOR_V2 == 'true' ]]; then npm run dev --workspace=src; else nodemon server.js; fi;",
+    "start": "node is-v2.js && npm start -w src || npm run build && node server.js",
+    "dev": "node is-v2.js && (cd src && nodemon app.js || exit 0) || nodemon server.js",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
