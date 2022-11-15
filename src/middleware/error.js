@@ -31,11 +31,13 @@ const errorHandler = (err, req, res, next) => {
  * Used as a 404 default for routes
  */
 const notFound = () => {
+  // TODO: when there's a 404 page to be rendered here,
+  // replace the json return with html
   throw new NotFoundError('Page not found!')
 }
 
 const methodNotAllowed = (req) => {
-  throw new MethodNotAllowedError(`Method is not allowed: ${req.method} ${req.originalUrl}`)
+  throw new MethodNotAllowedError(`Method not allowed: ${req.method} ${req.originalUrl}`)
 }
 
 export {
