@@ -6,12 +6,12 @@
 }
 
 .hero > :first-child {
-  flex-basis: calc(var(--min-width) - var(--padding-lg) * 2);
+  flex-basis: 51%;
   flex-grow: 999;
 }
 
 .hero > :last-child {
-  flex-basis: 50%;
+  flex-basis: 44%;
   flex-grow: 1;
 }
 
