@@ -1,3 +1,4 @@
+import { MethodNotAllowedError, NotFoundError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 const log = mozlog('middleware')
 
@@ -30,12 +31,15 @@ const errorHandler = (err, req, res, next) => {
  * Used as a 404 default for routes
  */
 const notFound = () => {
-  const e = new Error('Page not found!')
-  e.statusCode = 404
-  throw e
+  throw new NotFoundError('Page not found!')
+}
+
+const methodNotAllowed = (req) => {
+  throw new MethodNotAllowedError(`Method is not allowed: ${req.method} ${req.originalUrl}`)
 }
 
 export {
   errorHandler,
-  notFound
+  notFound,
+  methodNotAllowed
 }
