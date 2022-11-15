@@ -1,20 +1,25 @@
 import mozlog from '../utils/log.js'
 const log = mozlog('middleware')
 
-function logErrors (err, req, res, next) {
+const errorHandler = (err, req, res, next) => {
   log.error('error', { stack: err.stack })
-  next(err)
+  const errStatus = err.statusCode || 500
+  const errMsg = err.message || 'Something went wrong'
+  res.status(errStatus).json({
+    success: false,
+    status: errStatus,
+    message: errMsg,
+    stack: process.env.NODE_ENV === 'dev' ? err.stack : {}
+  })
 }
 
-function errorHandler (err, req, res, next) {
-  if (req.xhr || req.headers['content-type'] === 'application/json') {
-    res.status(err.status || 500).send({ message: err.message })
-  } else {
-    next(err)
-  }
+function notFound (req, res) {
+  const e = new Error('Page not found!')
+  e.statusCode = 404
+  throw e
 }
 
 export {
-  logErrors,
-  errorHandler
+  errorHandler,
+  notFound
 }
