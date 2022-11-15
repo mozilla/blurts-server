@@ -127,13 +127,14 @@
 }
 
 .safe-with-us > :first-child {
-  flex-basis: calc(var(--min-width) - var(--padding-lg) * 2);
+  flex-basis: 47%;
   flex-grow: 999;
 }
 
 .safe-with-us > :last-child {
   flex: 1 1 48%;
   max-width: 539px;
+  padding: var(--padding-lg) 0;
 }
 
 .top-questions-about-monitor {
