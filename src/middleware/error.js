@@ -1,4 +1,4 @@
-const mozlog = require('./log')
+import mozlog from '../utils/log.js'
 const log = mozlog('middleware')
 
 function logErrors (err, req, res, next) {
