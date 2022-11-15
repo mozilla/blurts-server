@@ -3,11 +3,11 @@ const log = mozlog('middleware')
 
 /**
  * Generic error handling function that takes in an error with
- * 
+ *
  * message: error message
- * 
+ *
  * statusCode: http status code
- * 
+ *
  * and returns a json response
  * @param {object} err error object [ message, statusCode ]
  * @param {object} req request object
@@ -21,8 +21,8 @@ const errorHandler = (err, req, res, next) => {
   res.status(errStatus).json({
     success: false,
     status: errStatus,
-    message: process.env.NODE_ENV !== 'production' ? errMsg : 'Something went wrong',
-    stack: process.env.NODE_ENV === 'dev' ? err.stack : {}
+    message: process.env.NODE_ENV !== 'production' ? errMsg : 'Something went wrong', // hide error message when in production
+    stack: process.env.NODE_ENV === 'dev' ? err.stack : {} // hide stack when not in dev
   })
 }
 
