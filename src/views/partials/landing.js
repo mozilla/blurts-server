@@ -5,7 +5,7 @@ export const landing = data => `
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
     <p>${getMessage('stay-safe-with-tool')}</p>
-    <a class='button primary' href='/user/breaches'>${getMessage('sign-up-free')}</a>
+    <a class='button primary' href='/user/breaches'>${getMessage('get-started')}</a>
   </div>
   <figure>
     <img srcset='images/landing-hero.png 530w, images/landing-hero@2x.png 1059w' alt=''>
@@ -39,8 +39,8 @@ export const landing = data => `
     </li>
     <li>
       <img srcset='images/landing-lock.png 204w, images/landing-lock@2x.png 408w' loading='lazy' alt=''>
-      <h3>${getMessage('take-action')}</h3>
-      <p>${getMessage('take-action-clear-steps')}</p>
+      <h3>${getMessage('protect-accounts')}</h3>
+      <p>${getMessage('protect-accounts-clear-steps')}</p>
     </li>
     <li>
       <img srcset='images/landing-mail.png 170w, images/landing-mail@2x.png 340w' loading='lazy' alt=''>
@@ -66,6 +66,6 @@ export const landing = data => `
 </section>
 <section class='see-if-data-breach'>
   <h2>${getMessage('see-if-data-breach')}</h2>
-  <a class='button primary' href='/user/breaches'>${getMessage('sign-up-free')}</a>
+  <a class='button primary' href='/user/breaches'>${getMessage('get-started')}</a>
 </section>
 `

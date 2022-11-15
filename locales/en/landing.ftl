@@ -4,7 +4,7 @@
 
 find-out-if-breached = Find out if you’ve been in a data breach
 stay-safe-with-tool = Stay safe with a simple yet powerful tool that tracks whether your personal information has been exposed in a data breach. We’ll help you understand what to do next and continuously monitor for any new breaches — all at no cost to you.
-sign-up-free = Sign up for free
+get-started = Get started
 
 ## Why use Firefox Monitor?
 
@@ -15,15 +15,15 @@ protect-account-prevent-hackers = Prevent hackers from getting into your account
 prevent-fraud = Prevent fraud and cybercrimes
 prevent-fraud-keep-info = Keep your info away from hackers who want to impersonate you and commit crimes.
 get-alerts = Get alerts for new breaches
-get-alerts-find-out = Find out whenever your personal information is compromised in a new breach.
+get-alerts-find-out = Find out whenever your personal information is compromised in a new known breach.
 
 ## Here's how it works
 
 how-it-works = Here’s how it works
 check-for-breaches = Check for breaches
 check-for-breaches-we-search = We’ll search all known data breaches since 2007 to see if your info was compromised.
-take-action = Take action
-take-action-clear-steps = We’ll give you clear steps on what to do next for any data breach you’ve been involved in.
+protect-accounts = Protect your accounts
+protect-accounts-clear-steps = We’ll give you clear steps on what to do next for any data breach you’ve been involved in.
 alerts-for-breaches = Get alerts for new breaches
 alerts-for-breaches-monitor-new = We’ll continually monitor for new data breaches and let you know if you’ve been affected.
 
