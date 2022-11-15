@@ -6,7 +6,7 @@ import accepts from 'accepts'
 import redis from 'redis'
 
 import AppConstants from './app-constants.js'
-import { logErrors, errorHandler } from './middleware/error.js'
+import { errorHandler } from './middleware/error.js'
 import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
@@ -72,9 +72,8 @@ try {
 }
 
 // routing
-app.use('/', indexRouter)
 app.use(express.static(staticPath))
-app.use(logErrors)
+app.use('/', indexRouter)
 app.use(errorHandler)
 
 // start server
