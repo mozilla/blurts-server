@@ -567,16 +567,30 @@ ad-unit-1-how-do-you-keep = Si ta mbani të fshehtë adresën tuaj email?
 ad-unit-2-do-you-worry = A shqetësoheni për sigurinë në një Wi-Fi publik?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Jini brenda gjërave
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } ju lejon ta ruani të parrezik dhe të siguruar një lidhje të përhershme në internet, teksa luani lojëra, apo shihni filma në linjë.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Parandaloni “throttling”
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Jini kudo qoftë në botë
+# ad 3 list item 3
+ad-unit-3-access-more = Hyni në më shumë gjëra
 # ad 4 heading
 ad-unit-4-shopping-with = Pazare me Maska Email-esh
 ad-unit-4-want-to-buy = Doni të blini diçka në internet dhe nuk e njihni, ose nuk e besoni plotësisht shitoren?
 ad-unit-4-shop-online = Përdorni një maskë email-i, kurdo që blini në internet. Merreni ripohimin e blerjes te email-i juaj faktik dhe mandej hiqeni kollaj maskën, kur të doni.
 # ad 5 heading
 ad-unit-5-on-the-go = Në Lëvizje me { -brand-relay }
+ad-unit-5-instantly-make = Krijoni menjëherë një maskë vetjake email kudo dhe kurdo që shkoni!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Lidhuni prej ngado
+ad-unit-5-privately-sign-in = Përdoreni maskën tuaj email kur doni të hyni privatisht në kafenë tuaj të parapëlqyer, apo në Wi-Fi publik
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Merrni dëftesa email-i
+ad-unit-5-share-custom-email = Jepni një maskë email vetjake për dëftesa blerjesh, pa dhënë email-in tuaj të njëmendtë
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Përdoreni në telefonin tuaj
 ad-unit-5-no-matter-where = Pavarësisht se ku gjendeni, krijoni një maskë vetjake email brenda pak sekondash, për çfarëdo që dëshironi të bëni
 # ad 6 heading
 ad-unit-6-worry-free = Regjistrime Pa Kokëçarje
+ad-unit-6-want-to-start = Doni të filloni një pajtim të ri, t’i përgjigjeni një ftese apo të merrni një kod promocional okazioni pa pasur përmbytje të email-it me mesazhe të padëshiruar?
+ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të radhës, përdorni një maskë email-i, në vend të vetëm email-it, që të mbroni të dhënat tuaja dhe që ta keni kutinë tuaj postare nën kontroll
