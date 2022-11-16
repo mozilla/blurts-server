@@ -57,38 +57,21 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } ju sinjalizon rreth shkeljesh të dhënash që prekin të dhëna tuajat personale. 
     Sapo morëm hollësi rreth një shkelje tjetër të të dhënave të shoqërisë.
-# List headline
-faq-list-headline = Pyetje të bëra shpesh
-# Link Title
-faq-v2-1 = Nuk e njoh një prej këtyre shoqërive apo sajteve. Çne unë në këtë shkelje?
-# Link Title
-faq-v2-2 = Më duhet të bëj ndonjë gjë, nëse kjo shkelje ka ndodhur vite më parë ose nëse kjo është një llogari e dikurshme?
-# Link Title
-faq-v2-3 = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të bëj më tej?
-# Link Title
-faq-v2-4 = Si i trajton { -product-name } sajtet me të dhëna rezervat?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Krijoni një { -brand-fxa } falas</a>, dhe mund të shtoni deri në 15 adresa email.
 # Section headline
 monitor-another-email = Doni të mbikëqyret tjetër email?
-# Subject line of email
-pre-fxa-subject = Një përditësim nga { -product-name }
-pre-fxa-headline = Ç’po ndryshon me { -product-name }
-pre-fxa-blurb = Ja se ç’ka ndryshuar që kur u regjistruat për { -product-name }, shërbimi që mbikëqyr cenime të ditur të dhënash për të dhënat tuaja personale. Po e lidhim me llogaritë Firefox.
-pre-fxa-tout-1 = Jini i njoftuar për më tepër ceinme
-pre-fxa-p-1 = <a>Krijoni një llogari</a> që të mbikëqyrni deri në 15 adresa email për cenime të dhënash. Këshillojmë shtimin e çfarëdo adresash që keni përdorur për të krijuar llogari në internet.
-pre-fxa-tout-2 = Merrni një pamje si pult
-pre-fxa-p-2 =
-    Shihni krejt të dhënat në një vend, që kështu të dini se cilët fjalëkalime të ndryshoni. 
-    Pulti i cenimeve mund të kihet vetëm me një llogari.
-pre-fxa-tout-3 = Vazhdoni të merrni sinjalizime me email
-pre-fxa-p-3 = Do të merrni ende sinjalizime prej { -product-name }. Do t’ju bëjmë të ditur, nëse të dhënat tuaja shfaqen në një cenim të ri të dhënash.
-# Button at the bottom of pre-fxa email.
-create-account = Krijoje Llogarinë
-# More security products
-more-products-headline = Mbrojeni veten me më tepër produkte tonat
-more-products-vpn = Mbrojtje për krejt pajisjen tuaj, në çdo pajisje
-more-products-cta-vpn = Merrni { -product-name-vpn }
-more-products-relay = Fshiheni adresën tuaj reale email, që të ndihmoni në mbrojtjen e identitetit tuaj.
-more-products-cta-relay = Merrni { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-subhead = Email-i juaj është ekspozuar. <br>Ndreqeni që tani me { -product-name }.
+
+## Verification email
+
+
+## Breach report
+
+
+## Breach alert
+

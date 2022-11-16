@@ -567,7 +567,16 @@ ad-unit-1-how-do-you-keep = Si ta mbani të fshehtë adresën tuaj email?
 ad-unit-2-do-you-worry = A shqetësoheni për sigurinë në një Wi-Fi publik?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Jini brenda gjërave
+# ad 4 heading
+ad-unit-4-shopping-with = Pazare me Maska Email-esh
 ad-unit-4-want-to-buy = Doni të blini diçka në internet dhe nuk e njihni, ose nuk e besoni plotësisht shitoren?
 ad-unit-4-shop-online = Përdorni një maskë email-i, kurdo që blini në internet. Merreni ripohimin e blerjes te email-i juaj faktik dhe mandej hiqeni kollaj maskën, kur të doni.
+# ad 5 heading
+ad-unit-5-on-the-go = Në Lëvizje me { -brand-relay }
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Merrni dëftesa email-i
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Përdoreni në telefonin tuaj
+ad-unit-5-no-matter-where = Pavarësisht se ku gjendeni, krijoni një maskë vetjake email brenda pak sekondash, për çfarëdo që dëshironi të bëni
+# ad 6 heading
+ad-unit-6-worry-free = Regjistrime Pa Kokëçarje

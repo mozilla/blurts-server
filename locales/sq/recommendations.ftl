@@ -38,7 +38,7 @@ rec-bank-acc = Kontrollojini shkresat tuaja bankare për veprimtari të dyshimt�
 rec-cc-subhead = Mbikëqyrni shkresa rreth kartës tuaj të kreditit
 rec-cc = Shihni për pagesa të çuditshme në kartën tuaj të kreditit. Mund të doni të kërkoni një kartë të re me një numër të ri prej emetuesit të kartës tuaj të kreditit.
 # Recommendation subhead
-rec-email-subhead = Përdor aliase email-esh
+rec-email-mask-subhead = Përdorni një maskë email-i
 rec-email-cta = Provoni { -brand-relay }
 rec-email =
     Dhënia e adresës tuaj reale email e bën më të lehtë për hacker-a apo gjurmues të gjejnë fjalëkalimet tuaja ose t’ju bëjnë objektiv në internet. Një shërbim si { -brand-relay }
