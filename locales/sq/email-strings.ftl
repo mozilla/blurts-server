@@ -62,10 +62,15 @@ monitor-another-email = Doni të mbikëqyret tjetër email?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = Po e merrni këtë email të automatizuar si një pajtimtar i { -product-name }. <br>Mos ngurroni të ndryshoni kurdo parapëlqimet tuaja për email-et <a { $unsubscribe-link-attr }>këtu</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Të dhëna cenimesh sjellë nga <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
+email-unresolved-heading = Keni cenime të pazgjidhura
 email-unresolved-subhead = Email-i juaj është ekspozuar. <br>Ndreqeni që tani me { -product-name }.
+email-is-affected = Email-i juaj, { $email-address }, është prekur të paktën nga një cenim të dhënash
 email-more-detail = Bëni hyrjen në llogarinë tuaj { -product-name } tani që të shihni më tepër hollësi rreth cenimeve që ju prekin (përfshi kur ndodhën dhe ç’të dhëna u ekspozuan) dhe mësoni se ç’duhet të bëni, kur email-i juaj është ekspozuar në një cenim të dhënash.
 email-breach-status = Gjendje e tanishme cenimi
 # table row 1 label
@@ -86,6 +91,12 @@ email-verify-simply-click = Thjesht klikoni mbi lidhjen më poshtë që të për
 
 ## Breach report
 
+email-breach-summary = Ja përmbledhja për cenimin e të dhënave tuaja
+email-breach-detected = Përfundime kërkimesh për llogarinë tuaj { $email-address } kanë pikasur se email-i juaj mund të jetë ekspozuar. Rekomandojmë që të veproni që tani për ta zgjidhur këtë cenim.
+email-no-breach-detected = Lajme të mbara! S’gjetën cenime të dhënash që prekin email-in tuaj, { $email-address }.
+email-dashboard-cta = Kaloni te Pulti
 
 ## Breach alert
 
+email-may-have-been-exposed = Email-i juaj mund të ketë qenë ekspozuar në një cenim të dhënash
+email-spotted-new-breach = Vumë re një cenim të ri të dhënash
