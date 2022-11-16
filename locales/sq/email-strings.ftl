@@ -66,9 +66,23 @@ monitor-another-email = Doni të mbikëqyret tjetër email?
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-subhead = Email-i juaj është ekspozuar. <br>Ndreqeni që tani me { -product-name }.
+email-more-detail = Bëni hyrjen në llogarinë tuaj { -product-name } tani që të shihni më tepër hollësi rreth cenimeve që ju prekin (përfshi kur ndodhën dhe ç’të dhëna u ekspozuan) dhe mësoni se ç’duhet të bëni, kur email-i juaj është ekspozuar në një cenim të dhënash.
+email-breach-status = Gjendje e tanishme cenimi
+# table row 1 label
+email-monitored = Email-e të mbikëqyrur gjithsej:
+# table row 2 label
+email-breach-total = Numër cenimesh gjithsej:
+# table row 3 label
+email-resolved = Cenime të zgjidhura:
+# table row 4 label
+email-unresolved = Cenime të pazgjidhura:
+email-resolve-cta = Zgjidhni cenime
 
 ## Verification email
 
+email-verify-heading = Ruani të dhënat tuaja, duke filluar që tani
+email-verify-subhead = Që të filloni të mbroni të dhënat tuaja pas një cenimi, verifikoni email-in tuaj.
+email-verify-simply-click = Thjesht klikoni mbi lidhjen më poshtë që të përfundojë verifikimi i llogarisë tuaj.
 
 ## Breach report
 
