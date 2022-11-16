@@ -39,7 +39,7 @@ const t0 = performance.now()
 // }))
 
 // This function uses an undocumented API to fetch favicons, and appears to have a 100% success rate.
-// A similar API is also available via https://s2.googleusercontent.com/s2/favicons?domain=mozilla.org&sz=32
+// A similar API is also available via https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://mozilla.org&size=32
 //
 await Promise.allSettled(data.map(async item => {
   const res = await fetch(`https://icons.duckduckgo.com/ip3/${item.Domain}.ico`, {
