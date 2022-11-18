@@ -61,8 +61,24 @@ export const landing = data => `
   </figure>
 </section>
 <section class='top-questions-about-monitor'>
-  <h2>${getMessage('top-questions-about-monitor')}</h2>
-  <a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>${getMessage('see-all-faq')}</a>
+  <div>
+    <h2>${getMessage('top-questions-about-monitor')}</h2>
+    <a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>${getMessage('see-all-faq')}</a>
+  </div>
+  <div>
+    <details>
+      <summary>${getMessage('what-is-breach')}</summary>
+      <p>${getMessage('when-info-exposed')}</p>
+    </details>
+    <details>
+      <summary>${getMessage('what-do-i-do')}</summary>
+      <p>${getMessage('visit-monitor-to-learn')}</p>
+    </details>
+    <details>
+      <summary>${getMessage('what-gets-exposed')}</summary>
+      <p>${getMessage('depends-on-hackers')}</p>
+    </details>
+  </div>
 </section>
 <section class='see-if-data-breach'>
   <h2>${getMessage('see-if-data-breach')}</h2>

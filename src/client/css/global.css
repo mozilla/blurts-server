@@ -162,3 +162,9 @@ button.secondary,
   border: 1px solid;
   padding: var(--padding-md);
 }
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
