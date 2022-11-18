@@ -1,11 +1,11 @@
 name: Lint Reference Files
 on:
   push:
-    paths: ['en/**.ftl' ]
-    branches: [ main, main-kanary, localization ]
+    paths: ['locales/en/**.ftl' ]
+    branches: [ main, localization ]
   pull_request:
-    paths: ['en/**.ftl' ]
-    branches: [ main, main-kanary, localization ]
+    paths: ['locales/en/**.ftl' ]
+    branches: [ main, localization ]
   workflow_dispatch:
 jobs:
   linter:
@@ -23,4 +23,4 @@ jobs:
           pip install -r .github/requirements.txt
       - name: Lint reference
         run: |
-          moz-fluent-lint ./en --config .github/linter_config.yml
+          moz-fluent-lint ./locales/en --config .github/linter_config.yml

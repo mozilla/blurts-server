@@ -818,6 +818,7 @@ brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
 
 ## Footer
+
 mozilla = {-brand-mozilla}
 terms-and-privacy = Terms & Privacy
 github = {-brand-github}
