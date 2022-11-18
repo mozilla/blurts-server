@@ -1,3 +1,5 @@
+import { getMessage } from './fluent.js'
+
 /**
  * Equivalent of Typescript "enum"
  * These enum types map to HIBP's breach data types, defined in HIBP's API
@@ -24,70 +26,68 @@ const BreachDataTypes = {
  * Hardcoded map of breach resolution data types
  */
 const breachResolutionDataTypes = {
-  [BreachDataTypes.Password]: {
+  [BreachDataTypes.Passwords]: {
     priority: 1,
-    header: '',
-    body: ''
+    header: 'breach-checklist-pw-header',
+    body: 'breach-checklist-pw-body'
   },
   [BreachDataTypes.Email]: {
     priority: 2,
-    header: '',
-    body: ''
+    header: 'breach-checklist-email-header',
+    body: 'breach-checklist-email-body'
   },
   [BreachDataTypes.SSN]: {
     priority: 3,
-    header: '',
-    body: ''
+    header: 'breach-checklist-ssn-header',
+    body: 'breach-checklist-ssn-body'
   },
   [BreachDataTypes.CreditCard]: {
     priority: 4,
-    header: '',
-    body: ''
+    header: 'breach-checklist-cc-header',
+    body: 'breach-checklist-cc-body'
   },
   [BreachDataTypes.BankAccount]: {
     priority: 5,
-    header: '',
-    body: ''
+    header: 'breach-checklist-bank-header',
+    body: 'breach-checklist-bank-body'
   },
   [BreachDataTypes.PIN]: {
     priority: 6,
-    header: '',
-    body: ''
+    header: 'breach-checklist-pin-header',
+    body: 'breach-checklist-pin-body'
   },
   [BreachDataTypes.IP]: {
     priority: 7,
-    header: '',
-    body: ''
+    header: 'breach-checklist-ip-header',
+    body: 'breach-checklist-ip-body'
   },
   [BreachDataTypes.Address]: {
     priority: 8,
-    header: '',
-    body: ''
+    header: 'breach-checklist-address-header',
+    body: 'breach-checklist-address-body'
   },
   [BreachDataTypes.DoB]: {
     priority: 9,
-    header: '',
-    body: ''
+    header: 'breach-checklist-dob-header',
+    body: 'breach-checklist-dob-body'
   },
   [BreachDataTypes.Phone]: {
     priority: 10,
-    header: '',
-    body: ''
+    header: 'breach-checklist-phone-header'
   },
   [BreachDataTypes.SecurityQuestions]: {
     priority: 11,
-    header: '',
-    body: ''
+    header: 'breach-checklist-sq-header',
+    body: 'breach-checklist-sq-body'
   },
   [BreachDataTypes.HistoricalPasswords]: {
     priority: 12,
-    header: '',
-    body: ''
+    header: 'breach-checklist-hp-header',
+    body: 'breach-checklist-hp-body'
   },
   [BreachDataTypes.General]: {
     priority: 13,
-    header: '',
-    body: ''
+    header: 'breach-checklist-general-header'
   }
 }
 
@@ -97,10 +97,27 @@ const breachResolutionDataTypes = {
  * @param {Array} dataTypes datatypes leaked during the breach
  * @returns {Map} map of relevant breach resolution recommendations
  */
-function getBreachResolutionRecs (dataTypes) {
-  // TODO: filter based on dataTypes array
+function getBreachResolutionRecs (dataTypes, args) {
+  let filteredBreachRecs = {}
+
   // if datatypes is empty or null, return general only.
-  return breachResolutionDataTypes
+  if (!dataTypes || dataTypes.length < 1) {
+    filteredBreachRecs = breachResolutionDataTypes[BreachDataTypes.General]
+  }
+
+  // filter breachResolutionDataTypes based on relevant data types passed in
+  for (const [key, value] of Object.entries(breachResolutionDataTypes)) {
+    if (dataTypes.includes(key)) {
+      // find fluent text based on fluent ids
+      let { header, body, priority } = value
+      header = header ? getMessage(header, args) : ''
+      body = body ? getMessage(body, args) : ''
+      filteredBreachRecs[key] = { header, body, priority }
+    }
+  }
+
+  // loop through the breach recs
+  return filteredBreachRecs
 }
 
 /**
