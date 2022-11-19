@@ -23,12 +23,12 @@
 
 ---
 ID01:
-    enabled: true
+    enabled: false
     exclusions:
         messages: []
         files: []
 ID02:
-    enabled: true
+    enabled: false
     min_length: 6
     exclusions:
         messages: []
