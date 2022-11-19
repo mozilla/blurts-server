@@ -17,7 +17,7 @@ prevent-fraud-keep-info = Keep your info away from hackers who want to impersona
 get-alerts = Get alerts for new breaches
 get-alerts-find-out = Find out whenever your personal information is compromised in a new known breach.
 
-## Here's how it works
+## Here’s how it works
 
 how-it-works = Here’s how it works
 check-for-breaches = Check for breaches
@@ -41,11 +41,11 @@ see-all-faq = See all FAQs
 
 # question and answer
 what-is-breach = What exactly is a data breach?
-when-info-exposed = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can be a result of cyber attacks to websites, apps or any database where people's personal information resides. A data breach can also happen by accident like if someone's login credentials accidentally get posted publicly.
+when-info-exposed = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can be a result of cyber attacks to websites, apps or any database where people’s personal information resides. A data breach can also happen by accident like if someone’s login credentials accidentally get posted publicly.
 
 # question and answer
-what-do-i-do = I just found out I'm in a data breach. What do I do?
-visit-monitor-to-learn = Visit {-brand-fx-monitor} to learn what to do after a data breach. Hackers rely on people reusing passwords, so it's important to create strong, unique passwords for all your accounts. Keep your passwords in a safe place that only you have access to; this could be the same place where you store important documents or a password manager. 
+what-do-i-do = I just found out I’m in a data breach. What do I do?
+visit-monitor-to-learn = Visit {-brand-fx-monitor} to learn what to do after a data breach. Hackers rely on people reusing passwords, so it’s important to create strong, unique passwords for all your accounts. Keep your passwords in a safe place that only you have access to; this could be the same place where you store important documents or a password manager. 
 
 # question and answer
 what-gets-exposed = What information gets exposed in data breaches?
