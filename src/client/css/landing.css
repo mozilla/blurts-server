@@ -138,11 +138,59 @@
 }
 
 .top-questions-about-monitor {
-  text-align: center;
+  display: flex;
+  flex-flow: wrap;
+  gap: var(--gap);
 }
 
-.top-questions-about-monitor > a {
+.top-questions-about-monitor > * {
+  flex: 1 1 var(--min-width);
+}
+
+.top-questions-about-monitor a {
   color: var(--blue-50);
+}
+
+.top-questions-about-monitor details {
+  padding: var(--padding-md) 0;
+  border-bottom: 1px solid var(--gray-10);
+}
+
+.top-questions-about-monitor details > summary {
+  position: relative;
+  font-size: 1.25rem;
+  padding-right: var(--padding-xl);
+  list-style: none;
+  cursor: pointer;
+}
+
+.top-questions-about-monitor details > summary::-webkit-details-marker {
+  /* Safari 16 */
+  display: none;
+}
+
+.top-questions-about-monitor details > summary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url('../images/icon-plus.svg') no-repeat 50% 50%/30px 30px;
+  width: 30px;
+  height: 100%;
+  transition: transform 0.2s ease-out;
+}
+
+.top-questions-about-monitor details[open] > summary::after {
+  transform: rotate(45deg);
+}
+
+.top-questions-about-monitor details > p {
+  margin: var(--padding-md) 0 var(--padding-sm);
+  color: var(--gray-40);
+}
+
+.top-questions-about-monitor details[open] > p {
+  animation: fade-in 0.5s ease-out;
 }
 
 .see-if-data-breach {
