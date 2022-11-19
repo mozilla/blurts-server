@@ -164,12 +164,9 @@
   cursor: pointer;
 }
 
-.top-questions-about-monitor details[open] > summary {
-  position: relative;
-  font-size: 1.25rem;
-  padding-right: var(--padding-xl);
-  list-style: none;
-  cursor: pointer;
+.top-questions-about-monitor details > summary::-webkit-details-marker {
+  /* Safari 16 */
+  display: none;
 }
 
 .top-questions-about-monitor details > summary::after {
@@ -190,6 +187,9 @@
 .top-questions-about-monitor details > p {
   margin: var(--padding-md) 0 var(--padding-sm);
   color: var(--gray-40);
+}
+
+.top-questions-about-monitor details[open] > p {
   animation: fade-in 0.5s ease-out;
 }
 
