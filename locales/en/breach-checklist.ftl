@@ -16,7 +16,7 @@ breach-checklist-email-body = This can hide your true email address while forwar
 
 # social security number
 breach-checklist-ssn-header = Monitor your credit report for accounts, loans, or credit cards you don't recognize.
-breach-checklist-ssn-body = You can also consider freezing your credit on {-link-equifax}, {-link-experian} and {-link-transunion} to stop scammers from opening new accounts in your name. It’s free and won’t affect your credit score.
+breach-checklist-ssn-body = You can also consider freezing your credit on {-link-equifax}, {-link-experian} and {-link-transunion} to stop scammers from opening new accounts in your name. It's free and won't affect your credit score.
 
 # credit card
 breach-checklist-cc-header = Report this breach to your credit card issuer and request a new card with a new number.
@@ -24,7 +24,7 @@ breach-checklist-cc-body = You should also review your credit card statements fo
 
 # bank account
 breach-checklist-bank-header = Notify your bank immediately that your account number has been compromised.
-breach-checklist-bank-body = Doing so faster could give you more legal protections to help you recover any losses. You’ll also want to check your accounts for any unrecognized charges.
+breach-checklist-bank-body = Doing so faster could give you more legal protections to help you recover any losses. You'll also want to check your accounts for any unrecognized charges.
 
 # pin
 breach-checklist-pin-header = Notify your card issuer and change your PIN immediately.
@@ -47,10 +47,10 @@ breach-checklist-phone-header = Protect your phone number with a masking service
 
 # security questions
 breach-checklist-sq-header = Update your security questions on {$companyLink}. 
-breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
+breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you've used the same security questions.
 
 # historical passwords
-breach-checklist-hp-header = Create unique, strong passwords for any account where you’ve re-used passwords.
+breach-checklist-hp-header = Create unique, strong passwords for any account where you've re-used passwords.
 breach-checklist-hp-body = A password manager like {-link-firefox-password-manager} (which is free and built-in to the Firefox browser) can help you keep track of all your passwords and access them securely from all your devices. 
 
 # general
