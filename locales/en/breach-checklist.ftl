@@ -1,4 +1,5 @@
 # Strings for the breach details checklists
+
 ## Prompts the user for changes when there is a breach detected of password
 
 # NOTE: { $companyLink } is a placeholder for the URL to the password change page of the company where the breach occurred 
