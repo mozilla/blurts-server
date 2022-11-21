@@ -92,12 +92,35 @@ const breachResolutionDataTypes = {
 }
 
 /**
+ * Append a field "breachChecklist" to the breaches array of each verified emails
+ * The checklist serves the UI with relevant recommendations based on the array of datatypes leaked during a breach.
+ * @param {Array} userBreachData contains monitored verified emails array. Each email may contain a breaches array
+ * @returns {*} void
+ */
+function appendBreachResolutionChecklist (userBreachData) {
+  const { verifiedEmails } = userBreachData
+  for (const { breaches } of verifiedEmails) {
+    breaches.forEach(b => {
+      const dataClasses = b.DataClasses
+      const args = {
+        companyName: b.Name,
+        companyLink: `https://${b.Domain}`
+      }
+      b.breachChecklist = getResolutionRecsPerBreach(dataClasses, args)
+    })
+  }
+}
+
+/**
  * Get a subset of the breach resolution data types map
  * based on the array of datatypes leaked during a breach
  * @param {Array} dataTypes datatypes leaked during the breach
+ * @param {Object} args contains necessary variables for the fluent file
+ *  - companyName
+ *  - companyLink
  * @returns {Map} map of relevant breach resolution recommendations
  */
-function getBreachResolutionRecs (dataTypes, args) {
+function getResolutionRecsPerBreach (dataTypes, args) {
   let filteredBreachRecs = {}
 
   // if datatypes is empty or null, return general only.
@@ -130,4 +153,4 @@ function filterBreachDataTypes (originalDataTypes) {
   return originalDataTypes.filter(d => relevantDataTypes.includes(d))
 }
 
-export { BreachDataTypes, getBreachResolutionRecs, filterBreachDataTypes }
+export { BreachDataTypes, appendBreachResolutionChecklist, filterBreachDataTypes }

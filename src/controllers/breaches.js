@@ -3,17 +3,16 @@ import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
 import { getUserEmails } from '../db/tables/email_addresses.js'
 import { getBreachesForEmail, filterBreaches } from '../utils/hibp.js'
-import { filterBreachDataTypes, getBreachResolutionRecs } from '../utils/breach-resolution.js'
+import { filterBreachDataTypes, appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
 import { getSha1 } from '../utils/fxa.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
-  const resolutionRecs = getBreachResolutionRecs(['email-addresses', 'passwords'], { companyLink: 'http://company.com', companyName: 'My Co.' })
+  appendBreachResolutionChecklist(breachesData)
   const data = {
     locale: req.appLocale,
     breachesData,
-    resolutionRecs,
     partial: breaches
   }
 
