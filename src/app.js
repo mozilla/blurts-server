@@ -32,7 +32,6 @@ async function getRedisStore () {
 }
 
 // middleware
-app.use(express.json())
 app.use(helmet())
 app.use((req, res, next) => {
   if (!req.headers.accept.startsWith('text/html')) return next() // only update for html req
@@ -74,6 +73,7 @@ try {
 // routing
 app.use(express.static(staticPath))
 app.use('/', indexRouter)
+app.use(express.json())
 app.use(errorHandler)
 
 // start server
