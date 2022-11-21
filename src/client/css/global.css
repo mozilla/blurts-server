@@ -117,9 +117,10 @@ footer {
 footer > :first-child {
   flex-grow: 999;
   flex-basis: fit-content;
+  display: flex;
 }
 
-footer > menu {
+footer > :last-child {
   flex-basis: fit-content;
   flex-grow: 1;
 }

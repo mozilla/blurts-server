@@ -46,6 +46,13 @@ app.use(
   })
 )
 
+// fallback to default 'no-referrer' only when 'strict-origin-when-cross-origin' not available
+app.use(
+  helmet.referrerPolicy({
+    policy: ['no-referrer', 'strict-origin-when-cross-origin']
+  })
+)
+
 app.use((req, res, next) => {
   if (!req.headers.accept.startsWith('text/html')) return next() // only update for html req
   const accept = accepts(req)

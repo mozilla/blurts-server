@@ -210,3 +210,7 @@
   z-index: -1;
   background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
 }
+
+.mobile .see-if-data-breach .button {
+  display: block;
+}
