@@ -7,6 +7,7 @@
 html {
   height: 100%;
   min-width: var(--min-width);
+  overflow-x: hidden;
 }
 
 body {
@@ -116,9 +117,10 @@ footer {
 footer > :first-child {
   flex-grow: 999;
   flex-basis: fit-content;
+  display: flex;
 }
 
-footer > menu {
+footer > :last-child {
   flex-basis: fit-content;
   flex-grow: 1;
 }
@@ -161,4 +163,10 @@ button.secondary,
   color: var(--blue-50);
   border: 1px solid;
   padding: var(--padding-md);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
 }

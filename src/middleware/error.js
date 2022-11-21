@@ -15,7 +15,7 @@ const log = mozlog('middleware')
  * @param {object} res response object
  * @param {object} next middleware callback
  */
-const errorHandler = (err, req, res, next) => {
+function errorHandler (err, req, res, next) {
   log.error('error', { stack: err.stack })
   const errStatus = err.statusCode || 500
   const errMsg = err.message || 'Empty error message'
@@ -30,13 +30,13 @@ const errorHandler = (err, req, res, next) => {
 /**
  * Used as a 404 default for routes
  */
-const notFound = () => {
+function notFound () {
   // TODO: when there's a 404 page to be rendered here,
   // replace the json return with html
   throw new NotFoundError('Page not found!')
 }
 
-const methodNotAllowed = (req) => {
+function methodNotAllowed (req) {
   throw new MethodNotAllowedError(`Method not allowed: ${req.method} ${req.originalUrl}`)
 }
 

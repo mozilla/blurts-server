@@ -16,6 +16,5 @@ esbuild.build({
   minify: AppConstants.NODE_ENV !== 'dev',
   sourcemap: AppConstants.NODE_ENV !== 'dev',
   splitting: true,
-  treeShaking: true,
-  platform: 'node'
+  treeShaking: true
 })
