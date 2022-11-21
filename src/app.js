@@ -12,6 +12,7 @@ import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
+const isDev = AppConstants.NODE_ENV === 'dev'
 
 /**
 * Determine from where to serve client code/assets.
@@ -33,6 +34,23 @@ async function getRedisStore () {
 
 // middleware
 app.use(helmet())
+
+// disable forced https to allow localhost on Safari
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      upgradeInsecureRequests: isDev ? null : []
+    }
+  })
+)
+
+// fallback to default 'no-referrer' only when 'strict-origin-when-cross-origin' not available
+app.use(
+  helmet.referrerPolicy({
+    policy: ['no-referrer', 'strict-origin-when-cross-origin']
+  })
+)
+
 app.use((req, res, next) => {
   if (!req.headers.accept.startsWith('text/html')) return next() // only update for html req
   const accept = accepts(req)
@@ -55,7 +73,7 @@ app.use(session({
     maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
     rolling: true,
     sameSite: 'lax',
-    secure: AppConstants.NODE_ENV !== 'dev'
+    secure: !isDev
   },
   resave: false,
   saveUninitialized: true,

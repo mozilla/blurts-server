@@ -280,7 +280,7 @@ appears-in-x-breaches =
        *[other] Appears in { $breachCount } known breaches.
   }
 
-check-for-breaches = Check for Breaches
+check-for-breaches = Check for breaches
 find-out-what-hackers-know = Find out what hackers already know about you. Learn how to stay a step ahead of them.
 get-email-alerts = Stay safe: Get email alerts when your info appears in a known breach
 search-for-your-email = Search for your email address in public data breaches going back to 2007.
@@ -818,6 +818,7 @@ brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
 
 ## Footer
+
 mozilla = {-brand-mozilla}
 terms-and-privacy = Terms & Privacy
 github = {-brand-github}
