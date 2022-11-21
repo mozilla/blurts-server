@@ -59,7 +59,7 @@ breach-checklist-sq-body = Use long, random answers, and store them somewhere sa
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Create unique, strong passwords for any account where you’ve re-used passwords.
-breach-checklist-hp-body = A password manager like <a>{-brand-name} Password Manager</a> (which is free and built-in to the Firefox browser) can help you keep track of all your passwords and access them securely from all your devices. 
+breach-checklist-hp-body = A password manager like <a>{-brand-name} Password Manager</a> (which is free and built-in to the {-brand-name} browser) can help you keep track of all your passwords and access them securely from all your devices. 
 
 ## Prompts the user for changes when there is a breach detected of other types
 
