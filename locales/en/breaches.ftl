@@ -4,7 +4,7 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Go to <a>{$breachedCompanyUrl}</a> to change your password and enable two-factor authentication (2FA). 
-breach-checklist-pw-body = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. <a>{-brand-name} Password Manager</a> can help you securely keep track of all of your passwords.
+breach-checklist-pw-body = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. <a>{-brand-firefox} Password Manager</a> can help you securely keep track of all of your passwords.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -64,7 +64,7 @@ breach-checklist-sq-body = Use long, random answers, and store them somewhere sa
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Create unique, strong passwords for any account where you’ve re-used passwords.
-breach-checklist-hp-body = A password manager like <a>{-brand-name} Password Manager</a> (which is free and built-in to the {-brand-name} browser) can help you keep track of all your passwords and access them securely from all your devices. 
+breach-checklist-hp-body = A password manager like <a>{-brand-firefox} Password Manager</a> (which is free and built-in to the {-brand-firefox} browser) can help you keep track of all your passwords and access them securely from all your devices. 
 
 ## Prompts the user for changes when there is a breach detected of other types
 
