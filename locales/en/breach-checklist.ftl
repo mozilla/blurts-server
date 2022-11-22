@@ -2,8 +2,8 @@
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $companyWebsite } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Go to <a>{$companyWebsite}</a> to change your password and enable two-factor authentication (2FA). 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-pw-header = Go to <a>{$breachedCompanyUrl}</a> to change your password and enable two-factor authentication (2FA). 
 breach-checklist-pw-body = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. <a>{-brand-name} Password Manager</a> can help you securely keep track of all of your passwords.
 
 ## Prompts the user for changes when there is a breach detected of email
@@ -57,8 +57,8 @@ breach-checklist-phone-header = Protect your phone number with a masking service
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $companyWebsite } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Update your security questions on <a>{$companyWebsite}</a>. 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Update your security questions on <a>{$breachedCompanyUrl}</a>. 
 breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
 
 ## Prompts the user for changes when there is a breach detected of historical password

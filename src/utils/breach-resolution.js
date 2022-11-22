@@ -104,7 +104,7 @@ function appendBreachResolutionChecklist (userBreachData) {
       const dataClasses = b.DataClasses
       const args = {
         companyName: b.Name,
-        companyWebsite: `https://${b.Domain}`
+        breachedCompanyUrl: `https://${b.Domain}`
       }
       b.breachChecklist = getResolutionRecsPerBreach(dataClasses, args)
     })
@@ -117,7 +117,7 @@ function appendBreachResolutionChecklist (userBreachData) {
  * @param {Array} dataTypes datatypes leaked during the breach
  * @param {Object} args contains necessary variables for the fluent file
  *  - companyName
- *  - companyWebsite
+ *  - breachedCompanyUrl
  * @returns {Map} map of relevant breach resolution recommendations
  */
 function getResolutionRecsPerBreach (dataTypes, args) {
