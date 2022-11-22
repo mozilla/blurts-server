@@ -124,7 +124,7 @@ function getResolutionRecsPerBreach (dataTypes, args) {
   let filteredBreachRecs = {}
 
   // if datatypes is empty or null, return general only.
-  if (!dataTypes || dataTypes.length < 1) {
+  if (!dataTypes?.length) {
     filteredBreachRecs = breachResolutionDataTypes[BreachDataTypes.General]
   }
 
