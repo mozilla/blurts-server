@@ -14,11 +14,9 @@ import indexRouter from './routes/index.js'
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
 
-/**
-* Determine from where to serve client code/assets.
-* Build script is triggered for `npm start` – code/assets are served from /dist.
-* Build script is NOT run for `npm run dev` – code/assets are served from /src and nodemon restarts server without build (faster dev).
-*/
+// Determine from where to serve client code/assets:
+// Build script is triggered for `npm start` and assets are served from /dist.
+// Build script is NOT run for `npm run dev`, assets are served from /src, and nodemon restarts server without build (faster dev).
 const staticPath = process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
 
 await initFluentBundles()
@@ -51,6 +49,7 @@ app.use(
   })
 )
 
+// when a text/html request is received, get the requested language and update the app accordingly
 app.use((req, res, next) => {
   if (!req.headers.accept.startsWith('text/html')) return next() // only update for html req
   const accept = accepts(req)
