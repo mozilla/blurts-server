@@ -48,11 +48,9 @@ export const mainLayout = data => `
       ${data.partial(data)}
     </main>
     <footer>
-      <div>
-        <a href='https://www.mozilla.org' target='_blank'>
-          <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' loading='lazy' alt='${getMessage('mozilla')}'>
-        </a>
-      </div>
+      <a href='https://www.mozilla.org' target='_blank'>
+        <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' loading='lazy' alt='${getMessage('mozilla')}'>
+      </a>
       <menu>
         <li><a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>FAQ</a></li>
         <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>${getMessage('terms-and-privacy')}</a></li>
