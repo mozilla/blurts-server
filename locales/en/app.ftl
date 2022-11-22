@@ -63,7 +63,7 @@ scan-placeholder = Enter Email Address
 scan-submit = Search Your Email
 scan-error = Must be a valid email.
 
-download-firefox-banner-button = Download {-brand-firefox}
+download-firefox-banner-button = Download {-brand-name}
 
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Sent!
@@ -233,7 +233,7 @@ how-fxm-2-blurb = Create a {-brand-fxa} to monitor your email for ongoing breach
   including sensitive breaches. 
 
 how-fxm-3-headline = Get notifications in your browser
-how-fxm-3-blurb = If you use {-brand-firefox}, you’ll receive a notification if you visit a 
+how-fxm-3-blurb = If you use {-brand-name}, you’ll receive a notification if you visit a 
   site that’s been breached. Find out right away if you were part of that breach 
   and what you can do about it.
 
@@ -359,7 +359,7 @@ new-breaches-found =
   }
 
 sign-up-headline-1 = Get ongoing alerts with a {-brand-fxa}.
-account-not-required = {-brand-firefox} browser not required for a {-brand-fxa}. You may receive info about {-brand-Mozilla} services.
+account-not-required = {-brand-name} browser not required for a {-brand-fxa}. You may receive info about {-brand-Mozilla} services.
 
 was-your-info-exposed = Was your info exposed in the { $breachName } data breach?
 find-out-if = Find out if your data was exposed in this breach.
@@ -533,7 +533,7 @@ menu = Menu
 to-affected-email = Send breach alerts to the affected email address
 
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
-join-firefox = There is a way to protect your privacy. Join {-brand-firefox}.
+join-firefox = There is a way to protect your privacy. Join {-brand-name}.
 
 # Link title
 learn-more-link = Learn more.
