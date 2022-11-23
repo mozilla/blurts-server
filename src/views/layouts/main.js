@@ -40,6 +40,9 @@ export const mainLayout = data => `
     <meta name="viewport" content="width=320, initial-scale=1">
     <title>${getMessage('brand-fx-monitor')}</title>
     <link href='/css/index.css' type='text/css' rel='stylesheet'>
+    <link rel="icon" href="/images/favicon-64.png" sizes="64x64" />
+    <link rel="icon" href="/images/favicon-128.png" sizes="128x128" />
+    <link rel="icon" href="/images/favicon-256.png" sizes="256x256" />
     <script src='/js/index.js' type='module'></script>
   </head>
   <body>
