@@ -33,3 +33,18 @@ ID02:
     exclusions:
         messages: []
         files: []
+CO01:
+    enabled: true
+    brands:
+        - Firefox
+        - Mozilla
+        - Relay
+        - Monitor
+    exclusions:
+        messages:
+            - breach-checklist-ssn-header
+            - fxa-what-to-do-blurb-3
+            - monitor-several-emails
+            - rec-bank-acc-subhead
+            - rec-cc-subhead
+        files: []
