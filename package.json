@@ -87,6 +87,7 @@
     "lint": "npm run lint:css && npm run lint:js",
     "lint:js": "eslint .",
     "lint:css": "stylelint public/css/",
+    "lint:fluent": "moz-fluent-lint ./locales/en --config .github/linter_config.yml",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
     "fix:css": "stylelint public/css/ --fix",
