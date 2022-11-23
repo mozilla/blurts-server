@@ -79,6 +79,15 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
     cp .env-dist .env
     ```
 
+4. Install fluent linter
+   ```sh
+   pip install -r .github/requirements.txt
+
+   OR 
+
+   pip3 install -r .github/requirements.txt
+   ```
+
 ### Run
 
 1. Run the server:
