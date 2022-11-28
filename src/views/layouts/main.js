@@ -40,9 +40,16 @@ export const mainLayout = data => `
     <meta name="viewport" content="width=320, initial-scale=1">
     <title>${getMessage('brand-fx-monitor')}</title>
     <link href='/css/index.css' type='text/css' rel='stylesheet'>
-    <link rel="icon" href="/images/favicon-64.png" sizes="64x64" />
-    <link rel="icon" href="/images/favicon-128.png" sizes="128x128" />
-    <link rel="icon" href="/images/favicon-256.png" sizes="256x256" />
+    <link rel="icon" href="/images/favicon-16.png" sizes="16x16">
+    <link rel="icon" href="/images/favicon-32.png" sizes="32x32">
+    <link rel="icon" href="/images/favicon-48.png" sizes="48x48">
+    <link rel="icon" href="/images/favicon-96.png" sizes="96x96">
+    <link rel="icon" href="/images/favicon-144.png" sizes="144x144">
+    <link rel="icon" href="/images/favicon-256.png" sizes="256x256">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" sizes="180x180">
+
+
+
     <script src='/js/index.js' type='module'></script>
   </head>
   <body>
