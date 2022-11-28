@@ -30,10 +30,10 @@ function errorHandler (err, req, res, next) {
 /**
  * Used as a 404 default for routes
  */
-function notFound () {
+function notFound (req) {
   // TODO: when there's a 404 page to be rendered here,
   // replace the json return with html
-  throw new NotFoundError('Page not found!')
+  throw new NotFoundError(`Page not found! ${req.method} ${req.originalUrl}`)
 }
 
 function methodNotAllowed (req) {
