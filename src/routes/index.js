@@ -1,5 +1,6 @@
 import express from 'express'
 import { landingPage } from '../controllers/landing.js'
+import { robotsTxt } from '../middleware/robots.js'
 import authRoutes from './auth.js'
 import userRoutes from './user.js'
 import userApiRoutes from './api/v1/user.js'
@@ -9,6 +10,7 @@ import { notFound } from '../middleware/error.js'
 const router = express.Router()
 
 router.get('/', landingPage)
+router.get('/robots.txt', robotsTxt)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)
 // router.use('/admin', adminRoutes)
