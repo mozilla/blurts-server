@@ -44,6 +44,7 @@ a {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 menu {
@@ -69,7 +70,7 @@ header {
 }
 
 header .monitor-logo {
-  width: calc(220px * var(--multiplier));
+  width: calc(213px * var(--multiplier));
   object-fit: contain;
 }
 
