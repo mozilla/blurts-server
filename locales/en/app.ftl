@@ -812,6 +812,10 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+## Search Engine Optimization
+
+meta-desc = Find out if you’ve been part of a data breach with {-brand-fx-monitor}. Sign up for alerts about future breaches and get tips to keep your accounts safe. 
+
 ## Header
 
 brand-fx-monitor = {-brand-fx-monitor}

@@ -1,13 +1,21 @@
+import AppConstants from '../../app-constants.js'
 import { getMessage } from '../../utils/fluent.js'
+
+const { SERVER_URL } = AppConstants
 
 const mainLayout = data => `
 <!doctype html>
 <html lang=${data.locale}>
   <head>
+    <title>${getMessage('brand-fx-monitor')}</title>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=320, initial-scale=1'>
-    <meta name='description' content='Find out if you’ve been part of a data breach with Firefox Monitor. Sign up for alerts about future breaches and get tips to keep your accounts safe.'>
-    <title>${getMessage('brand-fx-monitor')}</title>
+    <meta name='description' content='${getMessage('meta-desc')}'>
+    <meta name='twitter:card' content='summary_large_image'>
+    <meta property='og:title' content='${getMessage('brand-fx-monitor')}'>
+    <meta property='og:type' content='website'>
+    <meta property='og:url' content='${SERVER_URL}'>
+    <meta property='og:image' content='${SERVER_URL}/images/og-image.png'>
     <link href='/css/index.css' type='text/css' rel='stylesheet'>
     <link rel='icon' href='/images/favicon-16.png' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.png' sizes='32x32'>
