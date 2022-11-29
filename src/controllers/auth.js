@@ -22,7 +22,8 @@ function init (req, res, next, client = FxAOAuthClient) {
   const fxaParams = new URL(req.url, SERVER_URL)
 
   req.session.utmContents = {}
-
+  url.searchParams.append('prompt', 'login')
+  url.searchParams.append('max_age', 0)
   url.searchParams.append('access_type', 'offline')
   url.searchParams.append('action', 'email')
 
@@ -64,7 +65,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
-  if (!existingUser || existingUser.fxa_refresh_token === null) {
+  if (!existingUser) {
     // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
     req.session.newUser = true
     const signupLanguage = req.headers['accept-language']
