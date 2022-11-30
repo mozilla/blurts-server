@@ -39,6 +39,10 @@ async function initFluentBundles () {
   console.log('Fluent bundles created:', Object.keys(fluentBundles))
 }
 
+function getAppLocale () {
+  return appLocale || 'en'
+}
+
 /**
 * Set the locale used for translations negotiated between requested and available
 * @param {Array} requestedLocales - Locales requested by client.
@@ -92,4 +96,4 @@ function fluentError (id) {
   return new Error(getMessage(id))
 }
 
-export { initFluentBundles, updateAppLocale, getMessage, getRawMessage, fluentError }
+export { initFluentBundles, getAppLocale, updateAppLocale, getMessage, getRawMessage, fluentError }
