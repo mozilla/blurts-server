@@ -1,5 +1,7 @@
 // TODO: this is a build/config file and should probably live in the root, after the old esbuild.js file is removed.
 
+// ESBuild is used to concat and compress the 'client' folder into the 'dist' folder (front-end only)
+
 import esbuild from 'esbuild'
 import AppConstants from './app-constants.js'
 

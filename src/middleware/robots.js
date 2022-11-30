@@ -2,14 +2,12 @@ import AppConstants from '../app-constants.js'
 
 const { NODE_ENV } = AppConstants
 
-const allow = `
-User-agent: *
-Allow: /
+const allow = `user-agent: *
+allow: /
 `
 
-const disallow = `
-User-agent: *
-Disallow: /
+const disallow = `user-agent: *
+disallow: /
 `
 
 const rules = ['dev', 'heroku', 'stage'].includes(NODE_ENV) ? disallow : allow

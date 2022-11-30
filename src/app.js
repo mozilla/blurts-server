@@ -51,9 +51,9 @@ app.use(
 
 // when a text/html request is received, get the requested language and update the app accordingly
 app.use((req, res, next) => {
-  if (!req.headers.accept.startsWith('text/html')) return next() // only update for html req
-  const accept = accepts(req)
-  req.appLocale = updateAppLocale(accept.languages())
+  if (req.headers.accept?.startsWith('text/html')) {
+    req.appLocale = updateAppLocale(accepts(req).languages())
+  }
   next()
 })
 
