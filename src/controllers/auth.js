@@ -68,7 +68,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!existingUser) {
     // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
     req.session.newUser = true
-    const signupLanguage = req.headers['accept-language']
+    const signupLanguage = req.appLocale
     const verifiedSubscriber = await addSubscriber(email, signupLanguage, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData)
 
     // TODO:
