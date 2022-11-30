@@ -5,6 +5,7 @@
 }
 
 html {
+  display: block;
   height: 100%;
   min-width: var(--min-width);
   overflow-x: hidden;
@@ -78,6 +79,7 @@ main {
   --max-width-margin: calc(50% - var(--max-width)/2);
 
   margin-inline: max(var(--nav-w, 0px), var(--max-width-margin)) max(0px, var(--max-width-margin));
+  animation: fade-in 0.2s ease-out;
 }
 
 .mobile main {
