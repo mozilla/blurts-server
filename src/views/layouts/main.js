@@ -8,6 +8,8 @@ const mainLayout = data => `
 <html lang=${data.locale}>
   <head>
     <title>${getMessage('brand-fx-monitor')}</title>
+    <style>html {display: none;}</style>
+
     <meta charset='utf-8'>
     <meta name='viewport' content='width=320, initial-scale=1'>
     <meta name='description' content='${getMessage('meta-desc')}'>
@@ -16,7 +18,10 @@ const mainLayout = data => `
     <meta property='og:type' content='website'>
     <meta property='og:url' content='${SERVER_URL}'>
     <meta property='og:image' content='${SERVER_URL}/images/og-image.png'>
-    <link href='/css/index.css' type='text/css' rel='stylesheet'>
+
+    <link rel="preload" href="/fonts/Metropolis-Bold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/fonts/Inter-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel='stylesheet' href='/css/index.css' type='text/css'>
     <link rel='icon' href='/images/favicon-16.png' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.png' sizes='32x32'>
     <link rel='icon' href='/images/favicon-48.png' sizes='48x48'>
@@ -24,6 +29,7 @@ const mainLayout = data => `
     <link rel='icon' href='/images/favicon-144.png' sizes='144x144'>
     <link rel='icon' href='/images/favicon-256.png' sizes='256x256'>
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.png' sizes='180x180'>
+
     <script src='/js/index.js' type='module'></script>
   </head>
   <body>
