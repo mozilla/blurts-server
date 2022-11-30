@@ -1,4 +1,4 @@
-import { initFluentBundles, updateAppLocale, getMessage, fluentError } from './fluent.js'
+import { initFluentBundles, updateAppLocale, getMessage, getRawMessage, fluentError } from './fluent.js'
 
 describe('utils:fluent', () => {
   beforeAll(async () => {
@@ -6,12 +6,17 @@ describe('utils:fluent', () => {
     updateAppLocale('en')
   })
 
-  it('getMessage', () => {
+  test('getMessage', () => {
     const resp = getMessage('home-not-found')
     expect(resp).toBe('Page not found.')
   })
 
-  it('fluentError', () => {
+  test('getRawMessage', () => {
+    const resp = getRawMessage('home-not-found')
+    expect(resp).toBe('Page not found.')
+  })
+
+  test('fluentError', () => {
     const resp = fluentError('home-not-found')
     expect(resp.message).toBe('Page not found.')
     expect(resp.name).toBe('Error')
