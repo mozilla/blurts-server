@@ -4,10 +4,10 @@ import { readFile } from 'node:fs/promises'
 import { FluentBundle, FluentResource } from '@fluent/bundle'
 import { negotiateLanguages } from '@fluent/langneg'
 import AppConstants from '../app-constants.js'
+import { localStorage } from './local-storage.js'
 
 const supportedLocales = AppConstants.SUPPORTED_LOCALES?.split(',')
 const fluentBundles = {}
-let appLocale // set during a request
 
 /**
 * Create Fluent bundles for all supported locales.
@@ -43,14 +43,12 @@ async function initFluentBundles () {
 * Set the locale used for translations negotiated between requested and available
 * @param {Array} requestedLocales - Locales requested by client.
 */
-function updateAppLocale (requestedLocales) {
-  appLocale = negotiateLanguages(
+function updateLocale (requestedLocales) {
+  return negotiateLanguages(
     requestedLocales,
     supportedLocales,
     { strategy: 'lookup', defaultLocale: 'en' }
   )
-
-  return appLocale
 }
 
 /**
@@ -59,7 +57,8 @@ function updateAppLocale (requestedLocales) {
 * @param {string} id - The Fluent message id.
 */
 function getRawMessage (id) {
-  let bundle = fluentBundles[appLocale]
+  const locale = localStorage.getStore().get('locale')
+  let bundle = fluentBundles[locale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
@@ -79,7 +78,8 @@ function getRawMessage (id) {
 * // Returns "Hello, Jane!"
 */
 function getMessage (id, args) {
-  let bundle = fluentBundles[appLocale]
+  const locale = localStorage.getStore().get('locale')
+  let bundle = fluentBundles[locale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
@@ -92,4 +92,4 @@ function fluentError (id) {
   return new Error(getMessage(id))
 }
 
-export { initFluentBundles, updateAppLocale, getMessage, getRawMessage, fluentError }
+export { initFluentBundles, updateLocale, getMessage, getRawMessage, fluentError }
