@@ -121,12 +121,10 @@ function appendBreachResolutionChecklist (userBreachData) {
  * @returns {Map} map of relevant breach resolution recommendations
  */
 function getResolutionRecsPerBreach (dataTypes, args) {
-  let filteredBreachRecs = {}
+  const filteredBreachRecs = {}
 
   // if datatypes is empty or null, return general only.
-  if (!dataTypes?.length) {
-    filteredBreachRecs = breachResolutionDataTypes[BreachDataTypes.General]
-  }
+  if (!dataTypes?.length) dataTypes = [BreachDataTypes.General]
 
   // filter breachResolutionDataTypes based on relevant data types passed in
   for (const [key, value] of Object.entries(breachResolutionDataTypes)) {
