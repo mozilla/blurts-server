@@ -6,8 +6,9 @@ import accepts from 'accepts'
 import redis from 'redis'
 
 import AppConstants from './app-constants.js'
+import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
-import { initFluentBundles, updateAppLocale } from './utils/fluent.js'
+import { initFluentBundles, updateLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
 
@@ -49,12 +50,16 @@ app.use(
   })
 )
 
-// when a text/html request is received, get the requested language and update the app accordingly
+// When a text/html request is received, negotiate and store the requested language
+// Using asyncLocalStorage avoids having to pass req context down through every function (e.g. getMessage())
 app.use((req, res, next) => {
-  if (req.headers.accept?.startsWith('text/html')) {
-    req.appLocale = updateAppLocale(accepts(req).languages())
-  }
-  next()
+  if (!req.headers.accept?.startsWith('text/html')) return next()
+
+  localStorage.run(new Map(), () => {
+    req.locale = updateLocale(accepts(req).languages())
+    localStorage.getStore().set('locale', req.locale)
+    next()
+  })
 })
 
 // MNTOR-1009:

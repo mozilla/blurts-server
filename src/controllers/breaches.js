@@ -11,7 +11,7 @@ async function breachesPage (req, res) {
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
   const data = {
-    locale: req.appLocale,
+    locale: req.locale,
     breachesData,
     partial: breaches
   }
