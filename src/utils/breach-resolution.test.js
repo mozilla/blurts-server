@@ -1,10 +1,10 @@
-import { initFluentBundles, updateAppLocale } from './fluent.js'
+import { initFluentBundles, updateLocale } from './fluent.js'
 import { filterBreachDataTypes, appendBreachResolutionChecklist, BreachDataTypes } from './breach-resolution.js'
 
 describe('utils:breach-resolution', () => {
   beforeAll(async () => {
     await initFluentBundles()
-    updateAppLocale('en')
+    updateLocale('en')
   })
 
   test('filterBreachDataTypes', () => {

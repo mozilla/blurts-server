@@ -57,7 +57,7 @@ function updateLocale (requestedLocales) {
 * @param {string} id - The Fluent message id.
 */
 function getRawMessage (id) {
-  const locale = localStorage.getStore().get('locale')
+  const locale = localStorage?.getStore()?.get('locale') || 'en'
   let bundle = fluentBundles[locale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
@@ -78,7 +78,7 @@ function getRawMessage (id) {
 * // Returns "Hello, Jane!"
 */
 function getMessage (id, args) {
-  const locale = localStorage.getStore().get('locale')
+  const locale = localStorage?.getStore()?.get('locale') || 'en'
   let bundle = fluentBundles[locale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en

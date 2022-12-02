@@ -1,9 +1,9 @@
-import { initFluentBundles, updateAppLocale, getMessage, getRawMessage, fluentError } from './fluent.js'
+import { initFluentBundles, updateLocale, getMessage, getRawMessage, fluentError } from './fluent.js'
 
 describe('utils:fluent', () => {
   beforeAll(async () => {
     await initFluentBundles()
-    updateAppLocale('en')
+    updateLocale('en')
   })
 
   test('getMessage', () => {
