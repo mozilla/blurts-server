@@ -3,7 +3,7 @@ import { dataRemoval } from '../views/partials/data-removal.js'
 
 function dataRemovalPage (req, res) {
   const data = {
-    locale: req.appLocale,
+    locale: req.locale,
     partial: dataRemoval
   }
 

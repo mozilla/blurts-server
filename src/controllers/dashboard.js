@@ -3,7 +3,7 @@ import { dashboard } from '../views/partials/dashboard.js'
 
 function dashboardPage (req, res) {
   const data = {
-    locale: req.appLocale,
+    locale: req.locale,
     partial: dashboard
   }
 
