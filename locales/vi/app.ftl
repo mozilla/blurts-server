@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Tài khoản Firefox
-terms-and-privacy = Điều khoản & quyền riêng tư
 GitHub-link-title = GitHub
 error-scan-page-token = Bạn đang cố quét quá nhiều địa chỉ email trong một khoảng thời gian ngắn. Vì lý do bảo mật, chúng tôi đã tạm thời chặn bạn khỏi các tìm kiếm mới. Bạn có thể thử lại sau.
 error-could-not-add-email = Không thể thêm địa chỉ email vào cơ sở dữ liệu.
@@ -72,7 +74,6 @@ share-facebook-blurb = Các tài khoản trực tuyến của bạn đã bị l�
 og-site-description = Tìm hiểu xem bạn có phải ở trong một phần của rò rỉ dữ liệu không với { -product-name }. Đăng ký nhận thông báo về các rò rỉ dữ liệu trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
 show-all = Hiện tất cả
 fxa-scan-another-email = Bạn muốn kiểm tra một email khác?
-sign-in = Đăng nhập
 sign-out = Đăng xuất
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Quản lý { -brand-fxa }
@@ -635,3 +636,29 @@ ad-unit-5-no-matter-where = Cho dù bạn ở đâu, hãy tạo mặt nạ email
 ad-unit-6-worry-free = Đăng ký mà không gặp rắc rối
 ad-unit-6-want-to-start = Bạn muốn bắt đầu đăng ký mới, trả lời lời mời hoặc nhận mã khuyến mãi hời mà không bị spam tràn ngập hộp thư đến của bạn?
 ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký tiếp theo, hãy sử dụng mặt nạ email thay vì email thật để bảo vệ thông tin của bạn và giữ quyền kiểm soát hộp thư đến của bạn
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Tìm hiểu xem bạn có phải là một phần của rò rỉ dữ liệu với { -brand-fx-monitor } hay không. Đăng ký nhận thông báo về các rò rỉ trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Đăng nhập
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Điều khoản & quyền riêng tư
+github = { -brand-github }
