@@ -51,15 +51,15 @@
 }
 
 .why-use-monitor > ul > li:nth-of-type(1) > :first-child {
-  background-image: url('../images/icon-shield.svg');
+  background-image: url('../../images/icon-shield.svg');
 }
 
 .why-use-monitor > ul > li:nth-of-type(2) > :first-child {
-  background-image: url('../images/icon-mask.svg');
+  background-image: url('../../images/icon-mask.svg');
 }
 
 .why-use-monitor > ul > li:nth-of-type(3) > :first-child {
-  background-image: url('../images/icon-megaphone.svg');
+  background-image: url('../../images/icon-megaphone.svg');
 }
 
 .how-it-works > h2 {
@@ -174,7 +174,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: url('../images/icon-plus.svg') no-repeat 50% 50%/30px 30px;
+  background: url('../../images/icon-plus.svg') no-repeat 50% 50%/30px 30px;
   width: 30px;
   height: 100%;
   transition: transform 0.2s ease-out;

@@ -1,11 +1,11 @@
-import AppConstants from '../../app-constants.js'
-import { getMessage } from '../../utils/fluent.js'
+import AppConstants from '../app-constants.js'
+import { getMessage, getLocale } from '../utils/fluent.js'
 
 const { SERVER_URL } = AppConstants
 
 const mainLayout = data => `
 <!doctype html>
-<html lang=${data.locale}>
+<html lang=${getLocale()}>
   <head>
     <title>${getMessage('brand-fx-monitor')}</title>
     <style>html {display: none;}</style>
@@ -22,6 +22,7 @@ const mainLayout = data => `
     <link rel="preload" href="/fonts/Metropolis-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Inter-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel='stylesheet' href='/css/index.css' type='text/css'>
+    <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
     <link rel='icon' href='/images/favicon-16.png' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.png' sizes='32x32'>
     <link rel='icon' href='/images/favicon-48.png' sizes='48x48'>
