@@ -41,7 +41,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox Račun
-terms-and-privacy = Pogoji in zasebnost
 GitHub-link-title = GitHub
 error-scan-page-token = V kratkem časovnem obdobju ste skušali preveriti preveč e-poštnih naslovov. Iz varnostnih razlogov smo vam začasno onemogočili nova iskanja. Znova lahko poskusite kasneje.
 error-could-not-add-email = E-poštnega naslova ni bilo mogoče dodati v bazo podatkov.
@@ -93,7 +92,6 @@ share-facebook-blurb = Ali so bili vaši spletni računi izpostavljeni v kraji p
 og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
 show-all = Prikaži vse
 fxa-scan-another-email = Ali želite preveriti še kakšen račun?
-sign-in = Prijavite se
 sign-out = Odjava
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Upravljaj { -brand-fxa }
@@ -652,3 +650,51 @@ ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali po
 ad-unit-5-on-the-go = Na poti s { -brand-relay }
 # ad 6 heading
 ad-unit-6-worry-free = Brezskrbna registracija
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox =
+    { $sklon ->
+       *[imenovalnik] Firefox
+        [rodilnik] Firefoxa
+        [dajalnik] Firefoxu
+        [tozilnik] Firefox
+        [mestnik] Firefoxu
+        [orodnik] Firefoxom
+    }
+-brand-mozilla =
+    { $sklon ->
+       *[imenovalnik] Mozilla
+        [rodilnik] Mozille
+        [dajalnik] Mozilli
+        [tozilnik] Mozillo
+        [mestnik] Mozilli
+        [orodnik] Mozillo
+    }
+-brand-github =
+    { $sklon ->
+       *[imenovalnik] GitHub
+        [rodilnik] GitHuba
+        [dajalnik] GitHubu
+        [tozilnik] GitHub
+        [mestnik] GitHubu
+        [orodnik] GitHubom
+    }
+
+## Search Engine Optimization
+
+meta-desc = S { -brand-fx-monitor(sklon: "orodnik") } preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Prijavite se
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Pogoji in zasebnost
+github = { -brand-github }
