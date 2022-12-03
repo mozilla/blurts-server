@@ -567,9 +567,15 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 
 ## The following messages are brands and should be kept entirely in English
 
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Le fundation Mozilla
+-brand-github = GitHub
 
 ## Search Engine Optimization
 
+meta-desc = Discoperi si tu ha essite parte de un violation de datos con { -brand-fx-monitor }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
 
 ## Header
 
