@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-konto
-terms-and-privacy = Villkor och sekretess
 GitHub-link-title = GitHub
 error-scan-page-token = Du försökte skanna för många e-postadresser inom en kort tidsperiod. Av säkerhetsskäl har vi tillfälligt blockerat dig från nya sökningar. Du kommer att kunna försöka igen senare.
 error-could-not-add-email = Kunde inte lägga till e-postadress i databasen.
@@ -72,7 +74,6 @@ share-facebook-blurb = Har dina konton på nätet blivit utsatta för ett datain
 og-site-description = Ta reda på om du har blivit utsatt för ett dataintrång med { -product-name }. Registrera dig för varningar om framtida intrång och få tips för att hålla dina konton säkra.
 show-all = Visa alla
 fxa-scan-another-email = Vill du kontrollera en annan e-postadress?
-sign-in = Logga in
 sign-out = Logga ut
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Hantera { -brand-fxa }
@@ -648,3 +649,28 @@ ad-unit-5-no-matter-where = Oavsett var du är, skapa ett anpassat e-postalias p
 ad-unit-6-worry-free = Bekymmersfria registreringar
 ad-unit-6-want-to-start = Vill du starta en ny prenumeration, svara på en inbjudan eller få en fyndkampanjkod utan att skräpposten svämmar över din inkorg?
 ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd ett e-postalias istället för din riktiga för att skydda din information och behålla kontrollen över din inkorg
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Logga in
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Villkor och sekretess
+github = { -brand-github }
