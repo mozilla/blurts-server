@@ -24,3 +24,4 @@ what-is-breach = O que é exatamente um vazamento de dados?
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Veja se você foi vítima de um vazamento de dados
