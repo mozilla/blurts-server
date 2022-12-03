@@ -16,7 +16,7 @@ const log = mozlog('middleware')
  * @param {object} next middleware callback
  */
 function errorHandler (err, req, res, next) {
-  log.error('error', { stack: err.stack })
+  log.error('error', err.stack)
   const errStatus = err.statusCode || 500
   const errMsg = err.message || 'Empty error message'
   res.status(errStatus).json({
