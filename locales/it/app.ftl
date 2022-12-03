@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -28,7 +31,6 @@
        *[lowercase] account Firefox
         [uppercase] Account Firefox
     }
-terms-and-privacy = Termini di utilizzo e privacy
 GitHub-link-title = GitHub
 error-scan-page-token = Hai cercato troppi indirizzi email in un breve lasso di tempo. Per motivi di sicurezza la funzione di ricerca è stata temporaneamente sospesa. Potrai riprovare più tardi.
 error-could-not-add-email = Impossibile aggiungere l’indirizzo email al database.
@@ -80,7 +82,6 @@ share-facebook-blurb = I tuoi account online sono stati esposti a una violazione
 og-site-description = Scopri se hai subito una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
 show-all = Mostra tutto
 fxa-scan-another-email = Vuoi controllare un altro indirizzo email?
-sign-in = Accedi
 sign-out = Disconnetti
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestisci l’{ -brand-fxa }
@@ -574,3 +575,28 @@ ad-unit-5-no-matter-where = Non importa dove ti trovi, crea un alias di posta el
 ad-unit-6-worry-free = Registrazioni senza pensieri
 ad-unit-6-want-to-start = Vuoi sottoscrivere un nuovo abbonamento, rispondere a un invito o ottenere un codice promozionale vantaggioso senza che lo spam invada la tua casella di posta?
 ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza un alias di posta elettronica invece del tuo indirizzo email reale. In questo modo potrai proteggere le tue informazioni e rimanere in controllo della tua casella di posta
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Accedi
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Termini di utilizzo e privacy
+github = { -brand-github }
