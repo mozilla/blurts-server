@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Conto Firefox
-terms-and-privacy = Conditiones de uso e confidentialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Tu ha probate a analysar troppo de adresses email in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
 error-could-not-add-email = Impossibile adder le adresse de e-mail al base de datos.
@@ -72,7 +74,6 @@ share-facebook-blurb = Ha tu contos in linea essite exponite post un violation d
 og-site-description = Discoperi si tu ha essite parte de un violation de datos con { -product-name }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
 show-all = Monstrar toto
 fxa-scan-another-email = Vole tu verificar un altere adresse de e-mail?
-sign-in = Aperir session
 sign-out = Clauder session
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerer { -brand-fxa }
@@ -560,3 +561,23 @@ ad-unit-5-no-matter-where = Non importa ubi tu es, crea un masca email personali
 ad-unit-6-worry-free = Registrationes sin anxietate
 ad-unit-6-want-to-start = Vole tu initiar un nove subscription, responder a un invitation, o reciper un codice de promotion de compras sin que le SPAM inunda tu cassa de ingresso?
 ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, usa un masca email in vice de tu real adresse pro proteger tu information e mantener le controlo sur tu cassa de ingresso
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Aperir session
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Conditiones de uso e confidentialitate
+github = { -brand-github }
