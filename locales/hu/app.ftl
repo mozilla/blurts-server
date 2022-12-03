@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-fiók
-terms-and-privacy = Feltételek és adatvédelem
 GitHub-link-title = GitHub
 error-scan-page-token = Túl sok e-mail-címet próbált ellenőrizni rövid idő alatt. Biztonsági okokból ideiglenesen letiltottuk az új kereséseket. Később újra próbálkozhat.
 error-could-not-add-email = Nem sikerült hozzáadni az e-mail-címet az adatbázishoz.
@@ -75,7 +74,6 @@ share-facebook-blurb = Kikerült-e online fiókja egy adatvédelmi incidens miat
 og-site-description = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -product-name } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
 show-all = Összes megjelenítése
 fxa-scan-another-email = Szeretne ellenőrizni egy másik e-mail-címet is?
-sign-in = Bejelentkezés
 sign-out = Kijelentkezés
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } kezelése
@@ -651,3 +649,29 @@ ad-unit-5-no-matter-where = Nem számít, hol van, pillanatok alatt hozzon létr
 ad-unit-6-worry-free = Gondtalan regisztrációk
 ad-unit-6-want-to-start = Új előfizetést szeretne indítani, válaszolna egy meghívásra, vagy akciós promóciós kódot szeretne kapni anélkül, hogy levélszemét árasztaná el a postaládáját?
 ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztrációt, használjon egy e-mail maszkot a valódi címe helyett, hogy megvédje adatait és megtartsa a levelesládája feletti irányítást.
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -brand-fx-monitor } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Bejelentkezés
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Feltételek és adatvédelem
+github = { -brand-github }
