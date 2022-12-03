@@ -29,30 +29,50 @@ breach-checklist-ssn-body = Du kan också överväga att frysa din kredit på <a
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Rapportera intrånget till din kreditkortsutgivare och begär ett nytt kort med ett nytt nummer.
+breach-checklist-cc-body = Du bör också granska dina kreditkortsutdrag för okända debiteringar.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Meddela omedelbart din bank att ditt kontonummer har blivit utsatt för intrång.
+breach-checklist-bank-body = Om du gör det snabbare kan du få mer juridiskt skydd som hjälper dig att återställa eventuella förluster. Du vill också kontrollera dina konton för okända debiteringar.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Meddela din kortutgivare och ändra din PIN-kod omedelbart.
+breach-checklist-pin-body = Se till att din nya PIN-kod, eller någon annan PIN-kod, inte innehåller lättgissade siffror som ditt födelsedatum eller adress.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Använd internet privat med ett VPN, till exempel <a>{ -brand-mozilla-vpn }</a>.
+breach-checklist-ip-body = Din IP-adress (internetprotokoll-adress) pekar ut din plats och din internetleverantör. Ett VPN kan dölja din riktiga IP-adress så att du kan använda internet privat.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Ändra alla lösenord eller PIN-koder som innehåller någon del av din adress.
+breach-checklist-address-body = Adresser är lätta att hitta i offentliga register och kan göra dessa lösenord och PIN-koder lätta att gissa.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Ändra eventuella lösenord eller PIN-koder som inkluderar ditt födelsedatum.
+breach-checklist-dob-body = Födelsedatum är lätta att hitta i offentliga register, och människor som hittar det kan lätt gissa din PIN-kod.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Skydda ditt telefonnummer med en aliastjänst som <a>{ -brand-relay }</a>, som döljer ditt riktiga telefonnummer.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Uppdatera dina säkerhetsfrågor på <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Använd långa, slumpmässiga svar och förvara dem på ett säkert ställe. Gör detta på alla ställen där du har använt samma säkerhetsfrågor.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Skapa unika, starka lösenord för alla konton där du har återanvänt lösenord.
+breach-checklist-hp-body = En lösenordshanterare som <a>{ -brand-firefox } Lösenordshanterare</a> (som är gratis och inbyggd i webbläsaren { -brand-firefox }) kan hjälpa dig att hålla reda på alla dina lösenord och komma åt dem på ett säkert sätt från alla dina enheter.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Kontakta { $companyName } för att informera dem om detta intrång och be om specifika åtgärder du kan vidta.
