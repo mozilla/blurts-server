@@ -1,5 +1,7 @@
 # Firefox Monitor Server
 
+[![Coverage Status](https://coveralls.io/repos/github/mozilla/blurts-server/badge.svg?branch=main)](https://coveralls.io/github/mozilla/blurts-server?branch=main)
+
 ## Summary
 
 Firefox Monitor notifies users when their credentials have been compromised in a data breach.
@@ -46,6 +48,16 @@ To run linting/formatting as you type or upon save, add the ESLint and Stylelint
 ```
 See here for more on Stylelint config with VSCode: https://github.com/stylelint/vscode-stylelint#editorcodeactionsonsave
 
+### GIT
+
+We track commits that are largely style/formatting via `.git-blame-ignore-revs`.  This allows Git Blame to ignore the format commit author and show the original code author.  In order to enable this in GitLens, add the following to VS Code `settings.json`:
+```
+"gitlens.advanced.blame.customArguments": [
+   "--ignore-revs-file",
+   ".git-blame-ignore-revs"
+],
+```
+
 ### Install
 
 1. Clone and change to the directory:
@@ -67,6 +79,15 @@ See here for more on Stylelint config with VSCode: https://github.com/stylelint/
     cp .env-dist .env
     ```
 
+4. Install fluent linter
+   ```sh
+   pip install -r .github/requirements.txt
+
+   OR 
+
+   pip3 install -r .github/requirements.txt
+   ```
+
 ### Run
 
 1. Run the server:
@@ -75,9 +96,7 @@ See here for more on Stylelint config with VSCode: https://github.com/stylelint/
     npm start
     ```
 
-Note: `npm start` uses `onchange` and `nodemon` to automatically detect file
-changes, re-compile static assets, and restart the express process. If you want
-more control, see the `scripts` section of `package.json` for more commands.
+Note: You might run the server using `npm run dev` instead, which uses `nodemon` to detect file changes, re-compile static assets, and restart the express process. 
 
 2. Navigate to [localhost:6060/](http://localhost:6060/)
 
@@ -150,13 +169,11 @@ the `OAUTH_CLIENT_SECRET` value from someone in #fxmonitor-engineering.
 
 ## Testing
 
-The full test suite can be run via `npm test`.  
+The full test suite can be run via `npm test`.
 
 At the beginning of a test suite run, the `test-blurts` database will be populated with test tables and seed data found in `db/seeds/`
 
-At the end of a test suite run, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge.  For this step to complete locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.  Alternatively, without the token you can simply ignore the `coveralls` error.  
-
-*TODO:* Disable Coveralls step for local testing?
+At the end of a test suite run in CircleCI, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge.  To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
 
 ### Individual tests
 

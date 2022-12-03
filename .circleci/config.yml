@@ -208,8 +208,7 @@ jobs:
                   command: |
                       set -x
                       heroku_url="https://heroku:${HEROKU_API_KEY}@git.heroku.com/<< parameters.app-name >>.git"
-                      git push $heroku_url $CIRCLE_BRANCH:main ||
-                      echo "*** git push failed, but it is allowed to fail. ***"
+                      git push -f $heroku_url $CIRCLE_BRANCH:main
 
 workflows:
     lint-and-test:

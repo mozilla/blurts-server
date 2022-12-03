@@ -6,6 +6,8 @@
     "url": "https://github.com/mozilla/blurts-server/issues"
   },
   "dependencies": {
+    "@fluent/bundle": "^0.17.1",
+    "@fluent/langneg": "^0.6.2",
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "7.12.0",
     "body-parser": "1.19.0",
@@ -44,7 +46,7 @@
     "eslint-plugin-promise": "^6.0.1",
     "jest": "^27.2.5",
     "node-mocks-http": "1.11.0",
-    "nodemon": "2.0.19",
+    "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
     "stylelint-config-standard": "^26.0.0"
@@ -55,7 +57,6 @@
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
-  "main": "server.js",
   "jest": {
     "collectCoverageFrom": [
       "**/*.js",
@@ -77,8 +78,8 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
-    "start": "npm run build & node server.js",
-    "dev": "npm run build & nodemon server.js",
+    "start": "node is-v2.js && npm start -w src || npm run build && node server.js",
+    "dev": "node is-v2.js && (cd src && nodemon app.js || exit 0) || nodemon server.js",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "docker:build": "docker build -t blurts-server .",
@@ -86,6 +87,7 @@
     "lint": "npm run lint:css && npm run lint:js",
     "lint:js": "eslint .",
     "lint:css": "stylelint public/css/",
+    "lint:fluent": "moz-fluent-lint ./locales/en --config .github/linter_config.yml",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
     "fix:css": "stylelint public/css/ --fix",
@@ -96,7 +98,25 @@
     "test:integration-headless": "MOZ_HEADLESS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-headless-ci": "MOZ_HEADLESS=1 ERROR_SHOTS=1 wdio tests/integration/wdio.conf.js",
     "test:integration-docker": "MOZ_HEADLESS=1 wdio tests/integration/wdio.docker.js",
-    "test": "npm run test:db:migrate && npm run test:tests && npm run test:coveralls"
+    "test": "npm run test:db:migrate && npm run test:tests && (node scripts/is-coveralls-configured.js && npm run test:coveralls || echo 'Skipping coveralls.')"
+  },
+  "workspaces": [
+    "src"
+  ],
+  "nodemonConfig": {
+    "events": {
+      "restart": "npm run build"
+    },
+    "watch": [
+      "./*",
+      ".env",
+      ".env-dist"
+    ],
+    "ignore": [
+      "public/dist/*",
+      "tests/*"
+    ],
+    "ext": "js,css,hbs,json,ftl"
   },
   "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
 }

@@ -1,0 +1,21 @@
+:root {
+  --multiplier: 1;
+  --max-width: 1200px;
+  --min-width: 320px;
+  --border-radius: 4px;
+  --padding-sm: calc(8px * var(--multiplier));
+  --padding-md: calc(16px * var(--multiplier));
+  --padding-lg: calc(32px * var(--multiplier));
+  --padding-xl: calc(64px * var(--multiplier));
+  --gap: calc(32px * var(--multiplier));
+  --gray-10: #e7e7e7;
+  --gray-40: #6d6d6e;
+  --blue-50: #0060df;
+  --purple-70: #592acb;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --multiplier: 0.75;
+  }
+}
