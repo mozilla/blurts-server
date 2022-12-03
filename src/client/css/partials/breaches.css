@@ -8,6 +8,10 @@
 .breach-rows details > summary {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  height: 1.5rem; /* required to hide cells that don't fit */
+  align-items: center;
   gap: var(--gap);
   padding-right: var(--padding-xl);
   list-style: none;
@@ -15,15 +19,18 @@
 }
 
 .breach-rows details > summary > .company {
-  flex: 2;
-  white-space: nowrap;
+  flex: 2 0 100px;
   font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .breach-rows details > summary > .data-types {
-  flex: 4;
-  text-overflow: ellipsis;
+  flex: 4 1 100px;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
   overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -33,6 +40,7 @@
 
 .breach-rows details > summary > .date {
   flex: 1;
+  font-size: clamp(0.75rem, 1.5vw, 1rem);
   white-space: nowrap;
 }
 
