@@ -31,7 +31,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-tili
-terms-and-privacy = Ehdot ja tietosuoja
 GitHub-link-title = GitHub
 error-scan-page-token = Yrität tarkistaa liian montaa sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
 error-could-not-add-email = Sähköpostiosoitetta ei voitu lisätä tietokantaan.
@@ -83,7 +82,6 @@ share-facebook-blurb = Ovatko tilisi tiedot paljastuneet tietovuodon yhteydessä
 og-site-description = Selvitä nyt { -product-name }illa, oletko ollut osa tietovuotoa. Tilaa hälytyksiä tulevista tietovuodoista ja saa vinkkejä tilien suojaamiseksi.
 show-all = Näytä kaikki
 fxa-scan-another-email = Haluatko tarkistaa toisenkin sähköpostin?
-sign-in = Kirjaudu sisään
 sign-out = Kirjaudu ulos
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Hallinnoi { -brand-fxa(case: "partitive") }
@@ -653,3 +651,29 @@ ad-unit-5-no-matter-where = Missä tahansa oletkin, luo mukautettu sähköpostim
 ad-unit-6-worry-free = Huolettomat ilmoittautumiset
 ad-unit-6-want-to-start = Haluatko aloittaa uuden tilauksen, vastata kutsuun tai saada tarjouskoodin ilman, että postilaatikkosi tulvii roskapostia?
 ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen, käytä sähköpostimaskia oikean sähköpostiosoitteesi sijaan tietojesi suojaamiseksi ja postilaatikkosi hallitsemiseksi.
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla-säätiö
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Selvitä { -brand-fx-monitor }illa, oletko ollut osa tietovuotoa. Tilaa hälytyksiä tulevista tietovuodoista ja saa vinkkejä tilien suojaamiseksi.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Kirjaudu sisään
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Ehdot ja tietosuoja
+github = { -brand-github }
