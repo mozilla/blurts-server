@@ -610,11 +610,15 @@ ad-unit-6-before-you-complete = Bevor Sie die nächste Registrieren abschließen
 
 ## Search Engine Optimization
 
+meta-desc = Überprüfen Sie mit { -brand-fx-monitor }, ob Sie von einem Datenleck betroffen sind. Melden Sie sich für Warnungen zu zukünftigen Datenlecks an und erhalten Sie Tipps zum Schutz Ihrer Online-Konten.
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Einloggen
 
 ## Footer
 
+mozilla = { -brand-mozilla }
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
+github = { -brand-github }
