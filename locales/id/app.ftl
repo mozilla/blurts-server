@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -13,13 +16,13 @@
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
 -brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Akun Firefox
-terms-and-privacy = Ketentuan dan Privasi
 GitHub-link-title = GitHub
 error-scan-page-token = Anda telah coba memindah terlalu banyak alamat surel dalam periode singkat. Demi alasan keamanan, kami memblokir Anda sementara dari pencarian baru. Anda akan dapat mencobanya nanti kembali.
 error-could-not-add-email = Tidak dapat menambahkan alamat surel ke basis data.
@@ -71,7 +74,6 @@ share-facebook-blurb = Apakah akun daring Anda sudah terpapar dalam pembobolan d
 og-site-description = Temukan apakah Anda telah menjadi bagian dari pembobolan data dengan { -product-name }. Daftarkan diri Anda untuk mendapatkan pemberitahuan tentang pembobolan di masa depan dan dapatkan kiat-kiat menjaga akun Anda tetap aman.
 show-all = Tampilkan Semua
 fxa-scan-another-email = Ingin memeriksa surel lainnya?
-sign-in = Masuk
 sign-out = Keluar
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Kelola { -brand-fxa }
@@ -536,3 +538,26 @@ ecosystem-promo-headline = Lindungi kehidupan daring Anda dengan produk yang men
 ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Pribadi kami: Ambil lebih sedikit. Jaga agar tetap aman. Tidak ada rahasia.
 promo-ecosystem-cta = Lihat Semua Produk
 steps-to-resolve-headline = Langkah-langkah untuk mengatasi pelanggaran ini
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+
+## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = Masuk
+
+## Footer
+
+terms-and-privacy = Ketentuan dan Privasi
