@@ -1,9 +1,9 @@
 import { formatDate } from '../../utils/date-time.js'
 
 const rowHtml = data => `
-<details style='border: 1px solid gray;'>
+<details>
   <summary>
-    <span>${data.Title}</span> <span>${data.DataClasses.join(', ')}</span> <span>${formatDate(data.AddedDate)}</span>
+    <span class='company'>${data.Title}</span><span class='data-types'>${data.DataClasses.join(', ')}</span><span class='date'>${formatDate(data.AddedDate)}</span>
   </summary>
   <div>
     ${data.Description}
@@ -18,10 +18,11 @@ function createRows (data) {
 }
 
 export const breaches = data => `
-<section>
-  <h1>This is the breaches partial</h1>
+<section class='breach-rows'>
   ${createRows(data.breachesData)}
-  <button id="update-breaches">Update Breaches</button>
-  <pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
+</section>
+<section>
+<button id="update-breaches">Update Breaches</button>
+<pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
 </section>
 `

@@ -1,0 +1,66 @@
+.breach-rows details {
+  margin: var(--padding-md) 0;
+  padding: var(--padding-md);
+  border: 1px solid var(--gray-10);
+  border-radius: var(--border-radius);
+}
+
+.breach-rows details > summary {
+  position: relative;
+  display: flex;
+  gap: var(--gap);
+  padding-right: var(--padding-xl);
+  list-style: none;
+  cursor: pointer;
+}
+
+.breach-rows details > summary > .company {
+  flex: 2;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.breach-rows details > summary > .data-types {
+  flex: 4;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.mobile .breach-rows details > summary > .data-types {
+  display: none;
+}
+
+.breach-rows details > summary > .date {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.breach-rows details > summary::-webkit-details-marker {
+  /* Safari 16 */
+  display: none;
+}
+
+.breach-rows details > summary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url('../../images/icon-plus.svg') no-repeat 50% 50%/30px 30px;
+  width: 30px;
+  height: 100%;
+  transition: transform 0.2s ease-out;
+}
+
+.breach-rows details[open] > summary::after {
+  transform: rotate(45deg);
+}
+
+.breach-rows details > p {
+  margin: var(--padding-md) 0 var(--padding-sm);
+  color: var(--gray-40);
+}
+
+.breach-rows details[open] > p {
+  animation: fade-in 0.5s ease-out;
+}

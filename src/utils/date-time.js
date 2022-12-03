@@ -1,4 +1,4 @@
-import { getAppLocale } from './fluent.js'
+import { getLocale } from './fluent.js'
 
 /**
 * Format date according to app locale
@@ -9,9 +9,9 @@ import { getAppLocale } from './fluent.js'
 */
 function formatDate (str, args) {
   const date = new Date(str)
-  const options = args || { dateStyle: 'medium', timeZone: 'UTC' }
+  const options = args || { year: 'numeric', month: 'short', day: '2-digit', timeZone: 'UTC' }
 
-  return date.toLocaleString(getAppLocale(), options)
+  return date.toLocaleString(getLocale(), options)
 }
 
 export { formatDate }
