@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-account
-terms-and-privacy = Voorwaarden en Privacy
 GitHub-link-title = GitHub
 error-scan-page-token = U hebt te veel e-mailadressen in een korte tijdsperiode geprobeerd te scannen. Om beveiligingsredenen hebben we uw zoekmogelijkheid tijdelijk geblokkeerd. U kunt het later weer proberen.
 error-could-not-add-email = Kon e-mailadres niet aan database toevoegen.
@@ -72,7 +74,6 @@ share-facebook-blurb = Zijn uw online accounts getroffen door een datalek?
 og-site-description = Ontdek met { -product-name } of u bent getroffen door een datalek. Schrijf u in voor waarschuwingen over toekomstige lekken en ontvang tips over hoe u uw accounts veilig houdt.
 show-all = Alles tonen
 fxa-scan-another-email = Wilt u een ander e-mailadres controleren?
-sign-in = Aanmelden
 sign-out = Afmelden
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } beheren
@@ -643,3 +644,28 @@ ad-unit-5-no-matter-where = Waar u ook bent, maak binnen enkele seconden een aan
 ad-unit-6-worry-free = Zorgeloos aanmelden
 ad-unit-6-want-to-start = Wilt u een nieuw abonnement starten, reageren op een uitnodiging of een voordelige promocode krijgen zonder dat spam uw Postvak IN overspoelt?
 ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie voltooit, een e-mailmasker in plaats van uw echte adres om uw gegevens te beschermen en controle te houden over uw Postvak IN
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Aanmelden
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Voorwaarden en Privacy
+github = { -brand-github }
