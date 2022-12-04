@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Conta Firefox
-terms-and-privacy = Termos e privacidade
 GitHub-link-title = GitHub
 error-scan-page-token = Tentou verificar muitos endereços de email num curto período de tempo. Por motivos de segurança, bloqueámos-lhe de novas pesquisas. Irá poder tentar novamente mais tarde.
 error-could-not-add-email = Não foi possível adicionar o endereço de email à base de dados.
@@ -75,7 +74,6 @@ share-facebook-blurb = Alguma das suas contas na Internet foi exposta numa viola
 og-site-description = Descubra se fez parte de uma violação de dados com o { -product-name }. Registe-se para receber alertas acerca de futuras violações de dados e receba dicas para manter as suas contas seguras.
 show-all = Mostrar todas
 fxa-scan-another-email = Pretende verificar outro email?
-sign-in = Iniciar sessão
 sign-out = Terminar sessão
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerir { -brand-fxa }
@@ -647,3 +645,25 @@ ad-unit-5-no-matter-where = Não importa onde esteja, crie um e-mail virtual per
 ad-unit-6-worry-free = Inscrições sem preocupações
 ad-unit-6-want-to-start = Deseja iniciar uma nova subscrição, responder a um convite ou obter um código promocional sem ter SPAM a inundar a sua caixa de entrada?
 ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utilize um e-mail virtual em vez do real para proteger os seus dados e manter o controlo sobre a sua caixa de entrada
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fundação Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = Iniciar sessão
+
+## Footer
+
+terms-and-privacy = Termos e privacidade
