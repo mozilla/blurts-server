@@ -12,15 +12,22 @@ get-started = Kom igång
 why-use-monitor = Varför använda { -brand-fx-monitor }?
 identifying-breaches = Att identifiera och lösa dataintrång är ett viktigt steg för att säkerställa din integritet online.
 protect-account = Skydda dina konton
+prevent-fraud = Förhindra bedrägeri och cyberbrott
+get-alerts = Få varningar om nya intrång
 
 ## Here’s how it works
 
+how-it-works = Så här fungerar det
+check-for-breaches = Sök efter dataintrång
 
 ## Your privacy is safe with us
 
+learn-more-mission = Lär dig mer om vårt uppdrag
 
 ## Top questions about Firefox Monitor
 
+# question and answer
+what-is-breach = Vad exakt är ett dataintrång?
 
 ## See if you’ve been in a data breach
 
