@@ -720,6 +720,7 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
 
 ## Search Engine Optimization
 
+meta-desc = { -brand-fx-monitor } zistí, či boli vaše dáta súčasťou nejakého úniku. Prihláste sa na odber upozornení o budúcich porušeniach a získajte tipy, ako udržať svoje účty v bezpečí.
 
 ## Header
 
