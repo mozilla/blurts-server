@@ -12,13 +12,18 @@ get-started = Kom igång
 why-use-monitor = Varför använda { -brand-fx-monitor }?
 identifying-breaches = Att identifiera och lösa dataintrång är ett viktigt steg för att säkerställa din integritet online.
 protect-account = Skydda dina konton
+protect-account-prevent-hackers = Förhindra hackare från att komma in på dina konton med lösenord som har läckt.
 prevent-fraud = Förhindra bedrägeri och cyberbrott
+prevent-fraud-keep-info = Håll din information borta från hackare som vill utge sig för dig och begå brott.
 get-alerts = Få varningar om nya intrång
+get-alerts-find-out = Ta reda på när din personliga information äventyras i ett nytt känt intrång.
 
 ## Here’s how it works
 
 how-it-works = Så här fungerar det
 check-for-breaches = Sök efter dataintrång
+check-for-breaches-we-search = Vi kommer att genomsöka alla kända dataintrång sedan 2007 för att se om din information har äventyrats.
+protect-accounts = Skydda dina konton
 
 ## Your privacy is safe with us
 
