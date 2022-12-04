@@ -26,6 +26,8 @@ learn-more-mission = Lär dig mer om vårt uppdrag
 
 ## Top questions about Firefox Monitor
 
+top-questions-about-monitor = De vanligaste frågorna om { -brand-fx-monitor }
+see-all-faq = Se alla vanliga frågor
 # question and answer
 what-is-breach = Vad exakt är ett dataintrång?
 
