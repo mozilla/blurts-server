@@ -662,8 +662,11 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Iniciar sessão
 
 ## Footer
 
+mozilla = { -brand-mozilla }
 terms-and-privacy = Termos e privacidade
+github = { -brand-github }
