@@ -63,7 +63,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = účet Firefox
-terms-and-privacy = Podmienky a ochrana súkromia
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
 error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
@@ -115,7 +114,6 @@ share-facebook-blurb = Bol niektorý z vašich účtov súčasťou nejakého ún
 og-site-description = { -product-name(case: "nom") } zistí, či boli vaše dáta súčasťou nejakého úniku. Pre väčšiu bezpečnosť sa taktiež prihláste k zasielaniu výstrah o únikoch v budúcnosti.
 show-all = Zobraziť všetko
 fxa-scan-another-email = Chcete skontrolovať ďalšiu e-mailovú adresu?
-sign-in = Prihlásiť sa
 sign-out = Odhlásiť sa
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Spravovať { -brand-fxa(case: "acc") }
@@ -692,3 +690,44 @@ ad-unit-5-no-matter-where = Bez ohľadu na to, kde sa nachádzate, vytvorte si z
 ad-unit-6-worry-free = Bezstarostné registrácie
 ad-unit-6-want-to-start = Chcete začať nové predplatné, odpovedať na pozvánku alebo získať výhodný propagačný kód bez toho, aby vašu e-mailovú schránku zaplavovala nevyžiadaná pošta?
 ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie použite e-mailovú masku namiesto svojej skutočnej adresy, aby ste ochránili svoje informácie a mali kontrolu nad svojou e-mailovou schránkou
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox =
+    { $case ->
+       *[nom] Firefox
+        [gen] Firefoxu
+        [dat] Firefoxu
+        [acc] Firefox
+        [loc] Firefoxe
+        [ins] Firefoxom
+    }
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla =
+    { $case ->
+       *[nom] Mozilla
+        [gen] Mozilly
+        [dat] Mozille
+        [acc] Mozillu
+        [loc] Mozille
+        [ins] Mozillou
+    }
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Prihlásiť sa
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Podmienky a ochrana súkromia
+github = { -brand-github }
