@@ -8,27 +8,37 @@
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-pw-header = Parolanızı değiştirmek ve iki aşamalı kimlik doğrulamayı (2FA) etkinleştirmek için <a>{ $breachedCompanyUrl }</a> adresine gidin.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = <a>{ -brand-relay }</a> gibi bir e-posta maskeleme hizmetiyle e-postanızı koruyun.
+breach-checklist-email-body = Böylece e-postaları gelen kutunuza yönlendirirken gerçek e-posta adresinizi gizleyebilirsiniz.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Bu ihlali kredi kartınızı aldığınız kuruluşa bildirerek yeni bir numaraya sahip yeni bir kart isteyin.
+breach-checklist-cc-body = Kredi kartı ekstrelerinizde tanımadığınız masraflar olup olmadığını da gözden geçirmelisiniz.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Hesap numaranızın ele geçirildiğini hemen bankanıza bildirin.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Kartınızı aldığınız kuruluşa hemen haber verip PIN’inizi değiştirin.
+breach-checklist-pin-body = Yeni PIN’inizin ve diğer PIN’leriniz, doğum tarihiniz veya adresiniz gibi kolayca tahmin edilebilecek rakamlar içermemelidir.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Adresinizin herhangi bir bölümünü içeren parolaları veya PIN’leri değiştirin.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
