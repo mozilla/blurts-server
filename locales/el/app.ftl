@@ -680,8 +680,11 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Σύνδεση
 
 ## Footer
 
+mozilla = { -brand-mozilla }
 terms-and-privacy = Όροι και απόρρητο
+github = { -brand-github }
