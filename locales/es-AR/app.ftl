@@ -627,11 +627,15 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá un
 
 ## Search Engine Optimization
 
+meta-desc = Descubrí fuiste parte de una violación de datos con { -brand-fx-monitor }. Registrate para recibir alertas sobre futuras infracciones y obtené consejos para mantener tus cuentas seguras.
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Iniciar la sesión
 
 ## Footer
 
+mozilla = { -brand-mozilla }
 terms-and-privacy = Términos y privacidad
+github = { -brand-github }
