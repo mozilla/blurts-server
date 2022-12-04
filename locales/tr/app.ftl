@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox hesabı
-terms-and-privacy = Şartlar ve gizlilik
 GitHub-link-title = GitHub
 error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
 error-could-not-add-email = E-posta adresi veritabanına eklenemedi.
@@ -75,7 +74,6 @@ share-facebook-blurb = İnternet hesaplarınız veri ihallerine karışmış ola
 og-site-description = { -product-name } ile verilerinizin çalınıp çalınmadığını öğrenin. Gelecekteki ihlallere yönelik uyarılara kaydolun ve hesaplarınızı güvende tutmaya dair ipuçları alın.
 show-all = Tümünü göster
 fxa-scan-another-email = Başka bir adresi kontrol etmek ister misiniz?
-sign-in = Giriş yap
 sign-out = Çıkış
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa }mı yönet
@@ -586,3 +584,29 @@ ad-unit-5-no-matter-where = Nerede olursanız olun, yapmak istediğiniz her şey
 ad-unit-6-worry-free = Kaydolurken endişe etmeyin
 ad-unit-6-want-to-start = Gelen kutunuzu spam mesajlarla doldurmadan bir siteye üye olmak, bir davete yanıt vermek veya promosyon kodu almak mı istiyorsunuz?
 ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gelen kutunuzun kontrolünü elinizde tutmak için gerçek e-posta adresiniz yerine e-posta maskenizi kullanabilirsiniz.
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Vakfı
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = { -brand-fx-monitor } ile verilerinizin çalınıp çalınmadığını öğrenin. Gelecekteki ihlallere yönelik uyarılara kaydolun ve hesaplarınızı güvende tutmaya dair ipuçları alın.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Giriş yap
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Şartlar ve gizlilik
+github = { -brand-github }
