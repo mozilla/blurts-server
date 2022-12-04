@@ -3,6 +3,7 @@
 
 ## Hero
 
+find-out-if-breached = Zistite, či ste boli súčasťou úniku údajov
 get-started = Začíname
 
 ## Why use Firefox Monitor?
@@ -11,6 +12,10 @@ why-use-monitor = Prečo používať { -brand-fx-monitor }?
 identifying-breaches = Identifikácia a vyriešenie úniku údajov je dôležitým krokom k zaisteniu vášho súkromia online.
 protect-account = Chráňte svoje účty
 protect-account-prevent-hackers = Zabráňte hackerom dostať sa do vašich účtov s prelomenými heslami.
+prevent-fraud = Bráňte podvodom a počítačovým zločinom
+prevent-fraud-keep-info = Chráňte svoje informácie pred hackermi, ktorí sa chcú za vás vydávať a páchať zločiny.
+get-alerts = Získajte upozornenia na nové úniky
+get-alerts-find-out = Zistite, keď dôjde k ohrozeniu vašich osobných údajov pri novom známom úniku.
 
 ## Here’s how it works
 
@@ -18,6 +23,9 @@ how-it-works = Funguje to takto
 check-for-breaches = Skontrolujte úniky
 check-for-breaches-we-search = Preskúmame všetky známe úniky údajov od roku 2007, aby sme zistili, či vaše informácie neboli napadnuté.
 protect-accounts = Ochráňte svoje účty
+protect-accounts-clear-steps = Poskytneme vám jasné kroky, ako ďalej postupovať v prípade akéhokoľvek úniku údajov, ktorého ste boli súčasťou.
+alerts-for-breaches = Získajte upozornenia na nové úniky
+alerts-for-breaches-monitor-new = Budeme neustále monitorovať nové úniky údajov a budeme vás informovať, ak sa vás to týka.
 
 ## Your privacy is safe with us
 
