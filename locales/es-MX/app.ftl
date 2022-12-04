@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Cuenta de Firefox
-terms-and-privacy = Términos y Privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto periodo de tiempo. Por cuestiones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes intentarlo de nuevo más tarde.
 error-could-not-add-email = No se pudo agregar la dirección de correo electrónico a la base de datos.
@@ -72,7 +74,6 @@ share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas a una violación
 og-site-description = Encuentra si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y obtén consejos para mantener tus cuentas seguras.
 show-all = Mostrar todo
 fxa-scan-another-email = ¿Quieres revisar otro correo electrónico?
-sign-in = Inicia sesión
 sign-out = Salir de la sesión
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Administrar { -brand-fxa }
@@ -606,3 +607,23 @@ ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de corre
 ad-unit-6-worry-free = Regístrate sin preocupaciones
 ad-unit-6-want-to-start = ¿Quieres iniciar una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
 ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar de la real para proteger tu información y mantener el control sobre tu bandeja de entrada
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-mozilla = Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = Inicia sesión
+
+## Footer
+
+terms-and-privacy = Términos y Privacidad
