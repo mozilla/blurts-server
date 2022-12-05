@@ -19,10 +19,15 @@ function createRows (data) {
 
 export const breaches = data => `
 <section class='breach-rows'>
+  <header>
+    <div>
+      <span>COMPANY</span><span>BREACHED DATA</span><span>DETECTED</span>
+    </div>
+  </header>
   ${createRows(data.breachesData)}
 </section>
-<section>
-<button id="update-breaches">Update Breaches</button>
-<pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
+<section style='display:none'>
+  <button id="update-breaches">Update Breaches</button>
+  <pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
 </section>
 `

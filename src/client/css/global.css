@@ -52,7 +52,7 @@ menu {
   list-style-type: none;
 }
 
-header {
+body > header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -66,11 +66,11 @@ header {
   z-index: 1;
 }
 
-.scrolled header {
+.scrolled body > header {
   box-shadow: 0 6px 6px -8px #000;
 }
 
-header .monitor-logo {
+body > header .monitor-logo {
   width: calc(213px * var(--multiplier));
   object-fit: contain;
 }

@@ -1,74 +1,104 @@
-.breach-rows details {
-  margin: var(--padding-md) 0;
-  padding: var(--padding-md);
-  border: 1px solid var(--gray-10);
-  border-radius: var(--border-radius);
+.breach-rows > header {
+  border-bottom: 1px solid var(--gray-10);
+  font-size: 0.75rem;
+  font-weight: bold;
 }
 
-.breach-rows details > summary {
+.breach-rows > details {
+  border: 1px solid var(--gray-10);
+  border-radius: var(--border-radius);
+  margin: var(--padding-md) 0;
+}
+
+.breach-rows > header > div,
+.breach-rows > details > summary {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  height: 1.5rem; /* required to hide cells that don't fit */
-  align-items: center;
+  align-items: baseline;
   gap: var(--gap);
+  height: calc(1.5rem + var(--padding-md) * 2); /* required to hide cells that don't fit */
+  padding: var(--padding-md);
   padding-right: var(--padding-xl);
+}
+
+.breach-rows > header > div {
+  height: calc(1.125rem + var(--padding-sm) * 2);
+  padding: var(--padding-sm) var(--padding-md);
+  padding-right: var(--padding-xl);
+}
+
+.breach-rows > details > summary {
   list-style: none;
   cursor: pointer;
 }
 
-.breach-rows details > summary > .company {
-  flex: 2 0 100px;
+.breach-rows > header > div > *,
+.breach-rows > details > summary > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.breach-rows > header > div > :nth-child(1),
+.breach-rows > details > summary > :nth-child(1) {
+  flex: 1 1 100px;
+}
+
+.breach-rows > header > div > :nth-child(2),
+.breach-rows > details > summary > :nth-child(2) {
+  flex: 2 1 200px;
+}
+
+.breach-rows > header > div > :nth-child(3),
+.breach-rows > details > summary > :nth-child(3) {
+  flex-basis: 110px;
+}
+
+.breach-rows > details > summary > :nth-child(1) {
   font-weight: bold;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
-.breach-rows details > summary > .data-types {
-  flex: 4 1 100px;
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.breach-rows > details > summary > :nth-child(2),
+.breach-rows > details > summary > :nth-child(3) {
+  font-size: clamp(0.75rem, 1.25vw, 1rem);
 }
 
-.mobile .breach-rows details > summary > .data-types {
+.mobile .breach-rows > header > div > :nth-child(2),
+.mobile .breach-rows > details > summary > :nth-child(2) {
   display: none;
 }
 
-.breach-rows details > summary > .date {
-  flex: 1;
-  font-size: clamp(0.75rem, 1.5vw, 1rem);
-  white-space: nowrap;
+.breach-rows > details > summary::-webkit-details-marker {
+  display: none; /* Safari 16 */
 }
 
-.breach-rows details > summary::-webkit-details-marker {
-  /* Safari 16 */
-  display: none;
-}
-
-.breach-rows details > summary::after {
+.breach-rows > details > summary::after {
   content: '';
   position: absolute;
   top: 0;
-  right: 0;
-  background: url('../../images/icon-chevron-down.svg') no-repeat 50% 50%/16px 16px;
+  right: var(--padding-md);
+  background: url('../../images/icon-chevron-down.svg') no-repeat 0% 50%/16px 16px;
   width: 16px;
   height: 100%;
   transition: transform 0.2s ease-out;
 }
 
-.breach-rows details[open] > summary::after {
+.breach-rows > details[open] > summary::after {
   transform: rotate(-180deg);
 }
 
-.breach-rows details > div {
-  margin: var(--padding-md) 0 var(--padding-sm);
+.breach-rows > details > div {
+  padding: var(--padding-md);
+  border-top: 1px solid var(--gray-10);
   color: var(--gray-40);
 }
 
-.breach-rows details[open] > div {
+.breach-rows > details > div a {
+  text-decoration: none;
+}
+
+.breach-rows > details[open] > div {
   animation: fade-in 0.5s ease-out;
 }
