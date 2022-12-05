@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Cyfrif Firefox
-terms-and-privacy = Telerau a Phreifatrwydd
 GitHub-link-title = GitHub
 error-scan-page-token = Rydych wedi ceisio sganio gormod o gyfeiriadau e-bost mewn cyfnod byr. Am resymau diogelwch, rydym wedi eich rhwystro dros dro rhag chwiliadau newydd. Fe gewch chi geisio eto yn ddiweddarach.
 error-could-not-add-email = Methu ychwanegu cyfeiriad e-bost i gronfa ddata.
@@ -72,7 +74,6 @@ share-facebook-blurb = A yw eich cyfrifon ar-lein wedi bod yn agored i dor-data?
 og-site-description = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -product-name }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
 show-all = Dangos y cyfan
 fxa-scan-another-email = Eisiau gwirio e-bost arall?
-sign-in = Mewngofnodi
 sign-out = Allgofnodi
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Rheoli { -brand-fxa }
@@ -674,3 +675,29 @@ ad-unit-5-no-matter-where = Does dim gwahaniaeth lle rydych chi, crëwch arllenw
 ad-unit-6-worry-free = Cofrestriadau Di-bryder
 ad-unit-6-want-to-start = Eisiau cychwyn tanysgrifiad newydd, ymateb i wahoddiad, neu gael cod hyrwyddo bargen heb gael sbam yn gorlifo'ch blwch derbyn?
 ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, defnyddiwch arallenw e-bost yn lle'ch un go iawn i ddiogelu eich manylion a chadw rheolaeth dros eich blwch derbyn
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Mewngofnodi
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Telerau a Phreifatrwydd
+github = { -brand-github }
