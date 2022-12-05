@@ -20,9 +20,7 @@ function createRows (data) {
 export const breaches = data => `
 <section class='breach-rows'>
   <header>
-    <div>
-      <span>COMPANY</span><span>BREACHED DATA</span><span>DETECTED</span>
-    </div>
+    <span>COMPANY</span><span>BREACHED DATA</span><span>DETECTED</span>
   </header>
   ${createRows(data.breachesData)}
 </section>
