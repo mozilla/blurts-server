@@ -34,27 +34,45 @@ breach-checklist-cc-body = You should also review your credit card statements fo
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Notify your bank immediately that your account number has been compromised.
+breach-checklist-bank-body = Doing so faster could give you more legal protections to help you recover any losses. You’ll also want to check your accounts for any unrecognised charges.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Notify your card issuer and change your PIN immediately.
+breach-checklist-pin-body = Make sure your new PIN, or any other PIN, doesn’t include easily guessed numbers such as your birth date or address.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Use the internet privately with a VPN, such as <a>{ -brand-mozilla-vpn }</a>.
+breach-checklist-ip-body = Your IP address (Internet Protocol address) pinpoints your location and internet service provider. A VPN can hide your real IP address so you can use the internet privately.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Change any passwords or PINs that include any part of your address.
+breach-checklist-address-body = Addresses are easy to find in public records and can make those passwords and PINs easy to guess.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Change any passwords or PINs that include your date of birth.
+breach-checklist-dob-body = Birth dates are easy to find in public records, and people who find it could easily guess your PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Protect your phone number with a masking service like <a>{ -brand-relay }</a>, which hides your true phone number.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Update your security questions on <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Create unique, strong passwords for any account where you’ve re-used passwords.
+breach-checklist-hp-body = A password manager like <a>{ -brand-firefox } Password Manager</a> (which is free and built-in to the { -brand-firefox } browser) can help you keep track of all your passwords and access them securely from all your devices.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Reach out to { $companyName } to inform them about this breach and ask for specific steps you can take.
