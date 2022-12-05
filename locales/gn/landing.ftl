@@ -33,3 +33,4 @@ what-is-breach = ¿Mba’épa pe mba’ekuaarã ñembyai?
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Ehecha eimépara’e mba’ekuaarã ñembyaípe
