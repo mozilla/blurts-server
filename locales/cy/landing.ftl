@@ -3,8 +3,8 @@
 
 ## Hero
 
-find-out-if-breached = Darganfyddwch a ydych wedi bod mewn tor-data
-stay-safe-with-tool = Cadwch yn ddiogel gyda theclyn syml ond pwerus sy'n olrhain a yw eich manylion personol wedi'i datgelu mewn achos o dor-data. Byddwn yn eich helpu i ddeall beth i'w wneud nesaf ac yn monitro unrhyw doriadau newydd yn barhaus — y cyfan heb gost i chi.
+find-out-if-breached = Gweld a ydych wedi bod mewn tor-data
+stay-safe-with-tool = Cadwch yn ddiogel gyda theclyn syml ond pwerus sy'n dangos a yw eich manylion personol wedi'i datgelu mewn achos o dor-data. Byddwn yn eich helpu i ddeall beth i'w wneud nesaf ac yn monitro unrhyw doriadau newydd yn barhaus — y cyfan am ddim.
 get-started = Cychwyn arni
 
 ## Why use Firefox Monitor?
@@ -41,10 +41,10 @@ top-questions-about-monitor = Y prif gwestiynau am { -brand-fx-monitor }
 see-all-faq = Gweld yr holl gwestiynau cyffredin
 # question and answer
 what-is-breach = Beth yn union yw tor-data?
-when-info-exposed = Mae tor-data'n digwydd pan fydd manylion personol neu breifat yn cael ei ddatgelu, ei dwyn neu ei gopïo heb ganiatâd. Gall y digwyddiadau diogelwch hyn fod o ganlyniad i ymosodiadau seiber ar wefannau, apiau neu unrhyw gronfa ddata lle mae manylion personol pobl yn cael eu cadw. Gall tor-data ddigwydd ar ddamwain hefyd, fel pan mae manylion mewngofnodi rhywun yn cael eu postio'n gyhoeddus yn ddamweiniol.
+when-info-exposed = Mae tor-data'n digwydd pan fydd manylion personol neu breifat yn cael eu datgelu, eu dwyn neu eu copïo heb ganiatâd. Gall y digwyddiadau diogelwch hyn fod o ganlyniad i ymosodiadau seiber ar wefannau, apiau neu unrhyw gronfa ddata lle mae manylion personol pobl yn cael eu cadw. Gall tor-data ddigwydd ar ddamwain hefyd, fel pan mae manylion mewngofnodi rhywun yn cael eu postio'n gyhoeddus yn ddamweiniol.
 # question and answer
 what-do-i-do = Rwyf newydd ddeall fy mod i mewn tor-data. Beth ddylwn i ei wneud nesaf?
-visit-monitor-to-learn = Ewch i { -brand-fx-monitor } i ddysgu beth i'w wneud ar ôl tor-data. Mae hacwyr yn dibynnu ar bobl yn ailddefnyddio cyfrineiriau, felly mae'n bwysig creu cyfrineiriau cryf, unigryw ar gyfer eich holl gyfrifon. Cadwch eich cyfrineiriau mewn man diogel, a dim ond  chi sydd â mynediad iddo; gall hwn fod yr un man lle rydych yn storio dogfennau pwysig neu reolwr cyfrinair.
+visit-monitor-to-learn = Ewch i { -brand-fx-monitor } i ddysgu beth i'w wneud ar ôl tor-data. Mae hacwyr yn dibynnu ar bobl yn ailddefnyddio cyfrineiriau, felly mae'n bwysig creu cyfrineiriau cryf, unigryw ar gyfer eich holl gyfrifon. Cadwch eich cyfrineiriau mewn man diogel, a dim ond  chi sydd â mynediad iddo; gall hwn fod yr un man lle rydych yn storio dogfennau pwysig neu reolwr cyfrinair.mewnforio
 # question and answer
 what-gets-exposed = Pa wybodaeth sy'n cael ei datgelu mewn achosion o dorri data?
 depends-on-hackers = Nid yw pob tor-data'n amlygu'r un wybodaeth. Mae'n dibynnu ar yr hyn y gall hacwyr gael mynediad ato. Mae llawer o achosion o dor-data yn amlygu cyfeiriadau e-bost a chyfrineiriau. Mae eraill yn datgelu manylion mwy sensitif fel rhifau cardiau credyd, rhifau pasbort a rhifau nawdd cymdeithasol.
