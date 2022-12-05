@@ -34,24 +34,33 @@ breach-checklist-bank-header = Ilmoita pankillesi välittömästi, että tilinum
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Ilmoita kortin myöntäjälle ja vaihda PIN-koodi välittömästi.
+breach-checklist-pin-body = Varmista, että uusi PIN-koodisi tai mikään muu PIN-koodi ei sisällä helposti arvattavia numeroita, kuten syntymäaikaasi tai osoitettasi.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Käytä Internetiä yksityisesti VPN:llä, palvelulla kuten <a>{ -brand-mozilla-vpn }</a>.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Vaihda salasanat tai PIN-koodit, jotka sisältävät minkä tahansa osan osoitteestasi.
+breach-checklist-address-body = Osoitetiedot on verrattain helppo löytää julkisista tiedoista, ja niiden avulla näitä tietoja sisältävät salasanat ja PIN-koodit on helppo arvata.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Vaihda kaikki salasanat tai PIN-koodit, jotka sisältävät syntymäaikasi.
+breach-checklist-dob-body = Syntymäaika on verrattain helppo löytää julkisista tiedoista, ja sen löytäneet voivat helposti arvata PIN-koodisi.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Suojaa puhelinnumerosi peittopalvelulla, kuten <a>{ -brand-relay }</a>, joka piilottaa oikean puhelinnumerosi.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Luo ainutlaatuisia, vahvoja salasanoja kaikille tileille, joilla olet käyttänyt samaa salasanaa kuin jossain muussa palvelussa.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
