@@ -31,6 +31,7 @@ breach-checklist-cc-body = Tarkista luottokorttisi tiliotteet tunnistamattomien 
 ## Prompts the user for changes when there is a breach detected of bank account
 
 breach-checklist-bank-header = Ilmoita pankillesi välittömästi, että tilinumerosi on vaarantunut.
+breach-checklist-bank-body = Mitä nopeammin sen teet, sitä enemmän voit saada oikeudellista suojaa, joka auttaa sinua korvaamaan tappiot. Tarkista myös, onko tililläsi tuntemattomia veloituksia.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
@@ -40,6 +41,7 @@ breach-checklist-pin-body = Varmista, että uusi PIN-koodisi tai mikään muu PI
 ## Prompts the user for changes when there is a breach detected of IP address
 
 breach-checklist-ip-header = Käytä Internetiä yksityisesti VPN:llä, palvelulla kuten <a>{ -brand-mozilla-vpn }</a>.
+breach-checklist-ip-body = IP-osoitteesi (Internet Protocol -osoite) voi kertoa tietoa sijannistasi ja Internet-palveluntarjoajastasi. VPN voi piilottaa todellisen IP-osoitteesi, jotta voit käyttää Internetiä aiempaa yksityisemmin.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
@@ -57,6 +59,9 @@ breach-checklist-phone-header = Suojaa puhelinnumerosi peittopalvelulla, kuten <
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Päivitä turvakysymyksesi osoitteessa <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Käytä pitkiä, satunnaisia vastauksia ja säilytä ne turvallisessa paikassa. Tee tämä myös muualla, missä olet käyttänyt samoja turvakysymyksiä.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -64,3 +69,5 @@ breach-checklist-hp-header = Luo ainutlaatuisia, vahvoja salasanoja kaikille til
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Ota yhteys yritykseen { $companyName } kertoaksesi heille tästä tietovuodosta ja kysyäksesi, mitä voit tehdä.
