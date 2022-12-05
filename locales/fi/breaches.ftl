@@ -22,6 +22,10 @@ breach-checklist-email-body = Tämä voi piilottaa todellisen sähköpostiosoitt
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Tarkkaile luottotietojasi sellaisten tilien, lainojen tai luottokorttien varalta, joita et tunnista.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Riippuen kansalaisuudestasi ja asuinpaikastasi, voit mahdollisesti jäädyttää luototuskelpoisuutesi <a>Equifaxissa</a>, <a>Experianissa</a> tai <a>TransUnionissa</a> estääksesi huijareita avaamasta uusia tilejä nimissäsi. Se on ilmaista eikä vaikuta luottotietoihisi.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
