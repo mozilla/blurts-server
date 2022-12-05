@@ -70,7 +70,7 @@ breach-checklist-sq-body = Defnyddiwch atebion hir, ar hap, a storiwch nhw yn rh
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crëwch gyfrineiriau unigryw, cryf ar gyfer unrhyw gyfrif lle rydych chi wedi ailddefnyddio cyfrinair.
-breach-checklist-hp-body = Gall rheolwr cyfrinair fel <a>Reolwr Cyfrineiriau { -brand-firefox }</a> (sy'n rhad ac am ddim ac yn rhan annatod o borwr { -brand-firefox }) eich helpu i gadw golwg ar eich holl gyfrineiriau a chael mynediad diogel iddo o'ch holl ddyfeisiau.
+breach-checklist-hp-body = Gall rheolwr cyfrinair fel <a>Rheolwr Cyfrineiriau { -brand-firefox }</a> (sy'n rhad ac am ddim ac yn rhan annatod o borwr { -brand-firefox }) eich helpu i gadw golwg ar eich holl gyfrineiriau a chael mynediad diogel iddo o'ch holl ddyfeisiau.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
