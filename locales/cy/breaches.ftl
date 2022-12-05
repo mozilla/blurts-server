@@ -45,21 +45,32 @@ breach-checklist-pin-body = Gwnewch yn siŵr nad yw eich PIN newydd, nac unrhyw 
 ## Prompts the user for changes when there is a breach detected of IP address
 
 breach-checklist-ip-header = Defnyddiwch y rhyngrwyd yn breifat gyda VPN, megis <a>{ -brand-mozilla-vpn }</a>.
+breach-checklist-ip-body = Mae eich cyfeiriad IP (cyfeiriad Protocol Rhyngrwyd) yn nodi'ch lleoliad a'ch darparwr gwasanaeth rhyngrwyd. Gall VPN guddio'ch cyfeiriad IP go iawn fel y gallwch ddefnyddio'r rhyngrwyd yn breifat.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Newidiwch unrhyw gyfrineiriau neu PIN sy'n cynnwys unrhyw ran o'ch cyfeiriad.
+breach-checklist-address-body = Mae'n hawdd dod o hyd i gyfeiriadau mewn cofnodion cyhoeddus a gallan nhw wneud y cyfrineiriau a'r PINau hynny'n hawdd eu dyfalu.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Newidiwch unrhyw gyfrineiriau neu PIN sy'n cynnwys eich dyddiad geni.
+breach-checklist-dob-body = Mae'n hawdd dod o hyd i ddyddiadau geni mewn cofnodion cyhoeddus, a gall pobl sy'n dod o hyd iddo ddyfalu eich PIN yn hawdd.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Diogelwch eich rhif ffôn gyda gwasanaeth cuddio fel <a>{ -brand-relay }</a>, sy'n cuddio'ch gwir rif ffôn.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Diweddarwch eich cwestiynau diogelwch ar <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Defnyddiwch atebion hir, ar hap, a storiwch nhw yn rhywle diogel. Gwnewch hyn yn unrhyw le arall rydych chi wedi defnyddio'r un cwestiynau diogelwch.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Crëwch gyfrineiriau unigryw, cryf ar gyfer unrhyw gyfrif lle rydych chi wedi ailddefnyddio cyfrinair.
+breach-checklist-hp-body = Gall rheolwr cyfrinair fel <a>Reolwr Cyfrineiriau { -brand-firefox }</a> (sy'n rhad ac am ddim ac yn rhan annatod o borwr { -brand-firefox }) eich helpu i gadw golwg ar eich holl gyfrineiriau a chael mynediad diogel iddo o'ch holl ddyfeisiau.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
