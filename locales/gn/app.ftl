@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox mba’ete
-terms-and-privacy = Mboguatarã ha ñemigua
 GitHub-link-title = GitHub
 error-scan-page-token = Eñeha’ãkuri emoha’ãnda heta ñanduti veve kundaharape ndahetái árape. Tekorosã rupi, rojoko nde jeheka sapy’ami. Ikatu eha’ãjey uperire.
 error-could-not-add-email = Ndaikatúi embojuaju ñanduti veve kundaharape mba’ekuaarã rendápe.
@@ -75,7 +74,6 @@ share-facebook-blurb = ¿Ne mba’ete ñandutípe ojehechauka mba’ekuaarã ñe
 og-site-description = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -product-name } ndive. Eñemboheraguapy og̃uahẽ hag̃ua ndéve kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosã.
 show-all = Ehechaukapa
 fxa-scan-another-email = ¿Ehechase ambue ñanduti veve?
-sign-in = Eñepyrũ tembiapo
 sign-out = Emboty tembiapo
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Eñangareko { -brand-fxa }
@@ -632,3 +630,28 @@ ad-unit-5-no-matter-where = Tereime reimehápe, emoheñói peteĩ ñanduti veve 
 ad-unit-6-worry-free = Eñemboheraguapy apañuãi’ỹre
 ad-unit-6-want-to-start = Eñemboheraguapysépa, embohovái pe ñepepirũ térã ejerurekuaa ñemyasãirã ayvu pe spam oñuã’ỹre ne ñe’ẽmondo g̃uahẽha
 ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñanduti veve rovara’ãnga ne ñanduti vevetéva rendaguépe emo’ã hag̃ua ne marandu ha ehechamemekuaa hag̃ua ne ñe’ẽmondo g̃uahẽha
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fundación Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Eñepyrũ tembiapo
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Mboguatarã ha ñemigua
+github = { -brand-github }
