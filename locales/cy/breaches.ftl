@@ -74,3 +74,5 @@ breach-checklist-hp-body = Gall rheolwr cyfrinair fel <a>Reolwr Cyfrineiriau { -
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Cysylltwch â { $companyName } i roi gwybod iddyn nhw am y tor-data hwn a gofyn am gamau penodol y gallwch eu cymryd.
