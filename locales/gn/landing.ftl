@@ -27,6 +27,9 @@ learn-more-mission = Eñemomaranduve ore rembipotáre
 ## Top questions about Firefox Monitor
 
 top-questions-about-monitor = Porandu { -brand-fx-monitor } rehegua
+see-all-faq = Ehechapa FAQs
+# question and answer
+what-is-breach = ¿Mba’épa pe mba’ekuaarã ñembyai?
 
 ## See if you’ve been in a data breach
 
