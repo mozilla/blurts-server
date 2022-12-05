@@ -10,6 +10,7 @@ get-started = Başlayalım
 
 identifying-breaches = Veri ihlallerini tespit etmek ve çözmek, çevrimiçi gizliliğinizi sağlamada önemli bir adımdır.
 protect-account = Hesaplarınızı koruyun
+protect-account-prevent-hackers = Bilgisayar korsanlarının ele geçirdikleri parolalarla hesaplarınıza girmesini engelleyin.
 prevent-fraud = Dolandırıcılığı ve siber suçları önleyin
 get-alerts = Yeni ihlallerden haberdar olun
 
@@ -37,6 +38,7 @@ what-is-breach = Veri ihlali tam olarak nedir?
 what-do-i-do = Bilgilerimin ele geçirildiğini öğrendim. Ne yapmalıyım?
 # question and answer
 what-gets-exposed = Veri ihlallerinde hangi bilgiler açığa çıkar?
+depends-on-hackers = Tüm ihlallerde aynı bilgiler açığa çıkmaz. Sonuç, bilgisayar korsanlarının hangi bilgilere erişebildiğine bağlıdır. Birçok veri ihlalinde e-posta adresleri ve parolalar ele geçirilir. Bazılarında kredi kartı numaraları, pasaport numaraları ve sosyal güvenlik numaraları gibi daha hassas bilgiler de ele geçirilebilir.
 
 ## See if you’ve been in a data breach
 

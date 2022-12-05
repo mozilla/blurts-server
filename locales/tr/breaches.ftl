@@ -10,6 +10,7 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Parolanızı değiştirmek ve iki aşamalı kimlik doğrulamayı (2FA) etkinleştirmek için <a>{ $breachedCompanyUrl }</a> adresine gidin.
+breach-checklist-pw-body = Parolanız benzersiz ve tahmin edilmesi zor olmalı. Bu parolayı başka hesaplarda da kullanıyorsanız o hesapların parolasını da değiştirin. <a>{ -brand-firefox } parola yöneticisi</a>, tüm parolalarınızı güvenli bir şekilde kaydetmenize yardımcı olabilir.
 
 ## Prompts the user for changes when there is a breach detected of email
 
