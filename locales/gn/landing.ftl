@@ -21,9 +21,12 @@ alerts-for-breaches = Emog̃uahẽuka opaite kyhyjerã pyahu
 
 ## Your privacy is safe with us
 
+safe-with-us = Ne rekoñemi hekorosãta ore ndive
+learn-more-mission = Eñemomaranduve ore rembipotáre
 
 ## Top questions about Firefox Monitor
 
+top-questions-about-monitor = Porandu { -brand-fx-monitor } rehegua
 
 ## See if you’ve been in a data breach
 
