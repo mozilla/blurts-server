@@ -66,6 +66,7 @@ breach-checklist-sq-body = Käytä pitkiä, satunnaisia vastauksia ja säilytä 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Luo ainutlaatuisia, vahvoja salasanoja kaikille tileille, joilla olet käyttänyt samaa salasanaa kuin jossain muussa palvelussa.
+breach-checklist-hp-body = Salasanojen hallintapalvelu, kuten <a>{ -brand-firefox }in salasanojen hallinta</a> (joka on ilmainen ja on sisäänrakennettu { -brand-firefox }-selaimeen), auttaa sinua pitämään kirjaa kaikista salasanoistasi ja käyttämään niitä turvallisesti kaikilla laitteillasi.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
