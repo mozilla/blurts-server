@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Monitor V2",
   "type": "module",
+  "engines": {
+    "node": "18.12.x",
+    "npm": "8.x"
+  },
   "scripts": {
     "prestart": "npm run build",
     "start": "node app.js",
