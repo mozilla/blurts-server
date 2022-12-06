@@ -54,9 +54,12 @@ breach-checklist-address-body = Adresat është e lehtë të gjenden në regjist
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Ndryshoni çfarëdo fjalëkalimi apo PIN-i që përfshin datëlindjen tuaj.
+breach-checklist-dob-body = Datëlindjen është e lehtë të gjenden në regjistra publikë dhe njerëzit që i gjejnë mund të hamendësojnë kollaj PIN-in tuaj.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Mbrojeni numrin tuaj të telefonit me një shërbim maskimi, të tillë si <a>{ -brand-relay }</a>, i cili fsheh numrin tuaj të vërtetë të telefonit.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
