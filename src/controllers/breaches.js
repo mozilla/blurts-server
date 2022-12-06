@@ -1,4 +1,4 @@
-import { mainLayout } from '../views/layouts/main.js'
+import { mainLayout } from '../views/main.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
 import { getUserEmails } from '../db/tables/email_addresses.js'
@@ -11,7 +11,6 @@ async function breachesPage (req, res) {
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
   const data = {
-    locale: req.locale,
     breachesData,
     partial: breaches
   }

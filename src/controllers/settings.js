@@ -1,9 +1,8 @@
-import { mainLayout } from '../views/layouts/main.js'
+import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 
 function settingsPage (req, res) {
   const data = {
-    locale: req.locale,
     partial: settings
   }
 

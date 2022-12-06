@@ -9,6 +9,7 @@ nav {
   background: white;
   border-right: 1px solid var(--gray-10);
   border-image: linear-gradient(#0000 3%, var(--gray-10) 5%, var(--gray-10) 95%, #0000 97%) 1;
+  z-index: 1;
 }
 
 nav[hidden] {

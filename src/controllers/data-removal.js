@@ -1,9 +1,8 @@
-import { mainLayout } from '../views/layouts/main.js'
+import { mainLayout } from '../views/main.js'
 import { dataRemoval } from '../views/partials/data-removal.js'
 
 function dataRemovalPage (req, res) {
   const data = {
-    locale: req.locale,
     partial: dataRemoval
   }
 

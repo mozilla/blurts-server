@@ -52,13 +52,20 @@ function updateLocale (requestedLocales) {
 }
 
 /**
+* Return the locale negotiated between requested and supported locales.
+* Default 'en' if localStorage hasn't initialized (called without client request)
+*/
+function getLocale () {
+  return localStorage.getStore()?.get('locale') || 'en'
+}
+
+/**
 * Translate a message and return the raw string
 * Defaults to en if message id not found in requested locale
 * @param {string} id - The Fluent message id.
 */
 function getRawMessage (id) {
-  const locale = localStorage.getStore()?.get('locale') || 'en'
-  let bundle = fluentBundles[locale]
+  let bundle = fluentBundles[getLocale()]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
@@ -78,8 +85,7 @@ function getRawMessage (id) {
 * // Returns "Hello, Jane!"
 */
 function getMessage (id, args) {
-  const locale = localStorage.getStore()?.get('locale') || 'en'
-  let bundle = fluentBundles[locale]
+  let bundle = fluentBundles[getLocale()]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
@@ -92,4 +98,4 @@ function fluentError (id) {
   return new Error(getMessage(id))
 }
 
-export { initFluentBundles, updateLocale, getMessage, getRawMessage, fluentError }
+export { initFluentBundles, updateLocale, getLocale, getMessage, getRawMessage, fluentError }
