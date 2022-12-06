@@ -1,4 +1,3 @@
-import got from 'got'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
@@ -18,49 +17,49 @@ function _addStandardOptions (options = {}) {
   const hibpOptions = {
     headers: {
       'User-Agent': HIBP_USER_AGENT
-    },
-    responseType: 'json'
+    }
   }
   return Object.assign(options, hibpOptions)
 }
 
-async function _throttledGot (url, reqOptions, tryCount = 1) {
-  let response
+async function _throttledFetch (url, reqOptions, tryCount = 1) {
   try {
-    response = await got(url, reqOptions)
-    return response
-  } catch (err) {
-    log.error('_throttledGot', { err })
-    if (err.statusCode === 404) {
-      // 404 can mean "no results", return undefined response; sorry calling code
-      return response
-    } else if (err.statusCode === 429) {
-      log.info('_throttledGot', { err: 'got a 429, tryCount: ' + tryCount })
-      if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
-        log.error('_throttledGot', { err })
-        throw fluentError('error-hibp-throttled')
-      } else {
-        tryCount++
-        await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
-        return await _throttledGot(url, reqOptions, tryCount)
-      }
-    } else {
-      throw fluentError('error-hibp-connect')
+    const response = await fetch(url, reqOptions)
+    if (response.ok) return await response.json()
+
+    switch (response.status) {
+      case 404:
+        // 404 can mean "no results", return undefined response
+        return undefined
+      case 429:
+        log.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
+        if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
+          throw fluentError('error-hibp-throttled')
+        } else {
+          tryCount++
+          await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
+          return await _throttledFetch(url, reqOptions, tryCount)
+        }
+      default:
+        throw new Error(`bad response: ${response.status}`)
     }
+  } catch (err) {
+    log.error('_throttledFetch', { err })
+    throw fluentError('error-hibp-connect')
   }
 }
 
 async function req (path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
-  return await _throttledGot(url, reqOptions)
+  return await _throttledFetch(url, reqOptions)
 }
 
 async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
   const reqOptions = _addStandardOptions(options)
-  return await _throttledGot(url, reqOptions)
+  return await _throttledFetch(url, reqOptions)
 }
 
 function matchFluentID (dataCategory) {
@@ -83,7 +82,7 @@ async function loadBreachesIntoApp (app) {
     const breachesResponse = await req('/breaches')
     const breaches = []
 
-    for (const breach of breachesResponse.body) {
+    for (const breach of breachesResponse) {
       breach.DataClasses = formatDataClassesArray(breach.DataClasses)
       breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
       breaches.push(breach)
@@ -121,7 +120,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
   //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
   //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
   // ]
-  for (const breachedAccount of response.body) {
+  for (const breachedAccount of response) {
     if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
       foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name))
       if (filterBreaches) {
