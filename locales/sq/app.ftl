@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Llogari Firefox
-terms-and-privacy = Kushte & Privatësi
 GitHub-link-title = GitHub
 error-scan-page-token = Provuat të skanoni shumë adresa email brenda një kohe të shkurtër. Për arsye sigurie, kemi bllokuar përkohësisht kërkime të reja prej jush. Do të jeni në gjendje të riprovoni më vonë.
 error-could-not-add-email = S’u shtua dot adresë email te baza e të dhënave.
@@ -75,7 +74,6 @@ share-facebook-blurb = Keni llogari internetore që kanë qenë ekspozuar në sh
 og-site-description = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -product-name }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
 show-all = Shfaqi krejt
 fxa-scan-another-email = Doni të kontrolloni një email tjetër?
-sign-in = Hyni
 sign-out = Dilni
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Administroni { -brand-fxa }
@@ -594,3 +592,29 @@ ad-unit-5-no-matter-where = Pavarësisht se ku gjendeni, krijoni një maskë vet
 ad-unit-6-worry-free = Regjistrime Pa Kokëçarje
 ad-unit-6-want-to-start = Doni të filloni një pajtim të ri, t’i përgjigjeni një ftese apo të merrni një kod promocional okazioni pa pasur përmbytje të email-it me mesazhe të padëshiruar?
 ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të radhës, përdorni një maskë email-i, në vend të vetëm email-it, që të mbroni të dhënat tuaja dhe që ta keni kutinë tuaj postare nën kontroll
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -brand-fx-monitor }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Hyni
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Kushte & Privatësi
+github = { -brand-github }
