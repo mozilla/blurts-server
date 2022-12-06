@@ -644,6 +644,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 
 ## Search Engine Optimization
 
+meta-desc = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -brand-fx-monitor } ndive. Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosãrã.
 
 ## Header
 
