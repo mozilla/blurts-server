@@ -34,12 +34,17 @@ breach-checklist-pw-header = Visitá <a>{ $breachedCompanyUrl }</a> para cambiar
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Cambiá cualquier contraseña o PIN que incluya tu fecha de nacimiento.
+breach-checklist-dob-body = Las fechas de nacimiento son fáciles de encontrar en registros públicos y las personas que las encuentren podrían adivinar fácilmente tu PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Actualizá tus preguntas de seguridad en <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Usá respuestas largas y aleatorias y guardalas en un lugar seguro. Hacé esto en cualquier otro lugar donde hayás usado las mismas preguntas de seguridad.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
