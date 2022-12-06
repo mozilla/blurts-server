@@ -14,6 +14,7 @@ breach-checklist-pw-header = Eike <a>{ $breachedCompanyUrl }</a> emoambue hag̃u
 ## Prompts the user for changes when there is a breach detected of email
 
 breach-checklist-email-header = Emo’ã ne ñanduti veve mba’epuru rovamo’ãha <a>{ -brand-relay }</a> rehegua ndive.
+breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omondojeývo ñanduti veve ig̃uahẽhaitépe.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -26,6 +27,7 @@ breach-checklist-email-header = Emo’ã ne ñanduti veve mba’epuru rovamo’�
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Emomarandu ne Kuatia’atã me’ẽhápe ha emoambue ne PIN pya’e.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
