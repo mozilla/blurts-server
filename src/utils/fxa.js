@@ -1,6 +1,5 @@
 import ClientOAuth2 from 'client-oauth2'
 import crypto from 'crypto'
-import got from 'got'
 import { URL } from 'url'
 
 import AppConstants from '../app-constants.js'
@@ -29,13 +28,16 @@ async function postTokenRequest (path, token) {
   const tokenBody = (typeof token === 'object') ? token : { token }
   const tokenOptions = {
     method: 'POST',
-    json: tokenBody,
-    responseType: 'json'
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(tokenBody)
   }
 
   try {
-    const response = await got(tokenUrl, tokenOptions)
-    return response
+    const response = await fetch(tokenUrl, tokenOptions)
+    if (!response.ok) throw new Error(`bad response: ${response.status}`)
+    return await response.json()
   } catch (e) {
     console.error('postTokenRequest', { stack: e.stack })
     return e
@@ -67,10 +69,11 @@ async function revokeOAuthTokens (subscriber) {
 
 async function getProfileData (accessToken) {
   try {
-    const data = await got(FxAOAuthUtils.profileUri,
-      { headers: { Authorization: `Bearer ${accessToken}` } }
-    )
-    return data.body
+    const response = await fetch(FxAOAuthUtils.profileUri, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    })
+    if (!response.ok) throw new Error(`bad response: ${response.status}`)
+    return await response.text()
   } catch (e) {
     console.warn('getProfileData', { stack: e.stack })
     return e
@@ -79,15 +82,13 @@ async function getProfileData (accessToken) {
 
 async function sendMetricsFlowPing (path) {
   const fxaMetricsFlowUrl = new URL(path, AppConstants.FXA_SETTINGS_URL)
-  const fxaMetricsFlowOptions = {
-    method: 'GET',
-    headers: { Origin: AppConstants.SERVER_URL }
-  }
   try {
-    console.info(`GETting ${fxaMetricsFlowUrl}, with options: ${JSON.stringify(fxaMetricsFlowOptions)}`)
-    const fxaResp = await got(fxaMetricsFlowUrl, fxaMetricsFlowOptions)
+    const response = await fetch(fxaMetricsFlowUrl, {
+      headers: { Origin: AppConstants.SERVER_URL }
+    })
+    if (!response.ok) throw new Error(`bad response: ${response.status}`)
     console.info('pinged FXA metrics flow.')
-    return fxaResp
+    return response
   } catch (e) {
     console.error('sendMetricsFlowPing', { stack: e.stack })
     return false
