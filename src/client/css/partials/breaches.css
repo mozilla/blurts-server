@@ -1,0 +1,98 @@
+.breach-rows details {
+  box-shadow: 0 0 0 1px var(--gray-10); /* use shadow to avoid extra width – disrupts responsive sync between rows */
+  border-radius: var(--border-radius);
+  margin: var(--padding-md) 0;
+}
+
+.breach-rows header,
+.breach-rows summary {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  align-items: baseline;
+  gap: var(--gap);
+}
+
+.breach-rows header {
+  height: calc(1.125rem + var(--padding-sm) * 2);
+  padding: var(--padding-sm) var(--padding-md);
+  padding-right: var(--padding-xl);
+  border-bottom: 1px solid var(--gray-10);
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.breach-rows summary {
+  position: relative;
+  height: calc(1.5rem + var(--padding-md) * 2); /* required to hide cells that don't fit */
+  padding: var(--padding-md);
+  padding-right: var(--padding-xl);
+  list-style: none;
+  cursor: pointer;
+}
+
+.breach-rows header > *,
+.breach-rows summary > * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.breach-rows header > :nth-child(1),
+.breach-rows summary > :nth-child(1) {
+  flex: 1 1 100px;
+  font-weight: bold;
+}
+
+.breach-rows header > :nth-child(2),
+.breach-rows summary > :nth-child(2) {
+  flex: 2 1 200px;
+}
+
+.breach-rows header > :nth-child(3),
+.breach-rows summary > :nth-child(3) {
+  flex-basis: 110px;
+}
+
+.breach-rows summary > :nth-child(2),
+.breach-rows summary > :nth-child(3) {
+  font-size: clamp(0.75rem, 1.25vw, 1rem);
+}
+
+.mobile .breach-rows header > :nth-child(2),
+.mobile .breach-rows summary > :nth-child(2) {
+  display: none;
+}
+
+.breach-rows summary::-webkit-details-marker {
+  display: none; /* Safari 16 */
+}
+
+.breach-rows summary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: var(--padding-md);
+  background: url('../../images/icon-chevron-down.svg') no-repeat 0% 50%/16px 16px;
+  width: 16px;
+  height: 100%;
+  transition: transform 0.2s ease-out;
+}
+
+.breach-rows details[open] > summary::after {
+  transform: rotate(-180deg);
+}
+
+.breach-rows details > div {
+  padding: var(--padding-md);
+  border-top: 1px solid var(--gray-10);
+  color: var(--gray-40);
+}
+
+.breach-rows details > div a {
+  text-decoration: none; /* TODO: remove this when updated copy is added */
+}
+
+.breach-rows details[open] > div {
+  animation: fade-in 0.5s ease-out;
+}
