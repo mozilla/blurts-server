@@ -8,9 +8,12 @@
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-pw-header = Eike <a>{ $breachedCompanyUrl }</a> emoambue hag̃ua ne ñe’ẽñemi ha embojuruja mokõi factor ñemoneĩ (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Emo’ã ne ñanduti veve mba’epuru rovamo’ãha <a>{ -brand-relay }</a> rehegua ndive.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
