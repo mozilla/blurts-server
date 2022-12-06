@@ -30,6 +30,10 @@ top-questions-about-monitor = Porandu { -brand-fx-monitor } rehegua
 see-all-faq = Ehechapa FAQs
 # question and answer
 what-is-breach = ¿Mba’épa pe mba’ekuaarã ñembyai?
+# question and answer
+what-do-i-do = Ajuhu ramoite mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
+# question and answer
+what-gets-exposed = ¿Mba’e marandu ojehecha mba’ekuaarã ñemboguápe?
 
 ## See if you’ve been in a data breach
 
