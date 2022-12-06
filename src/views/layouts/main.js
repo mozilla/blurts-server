@@ -17,18 +17,18 @@ const mainLayout = data => `
     <meta property='og:title' content='${getMessage('brand-fx-monitor')}'>
     <meta property='og:type' content='website'>
     <meta property='og:url' content='${SERVER_URL}'>
-    <meta property='og:image' content='${SERVER_URL}/images/og-image.png'>
+    <meta property='og:image' content='${SERVER_URL}/images/og-image.webp'>
 
     <link rel="preload" href="/fonts/Metropolis-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Inter-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel='stylesheet' href='/css/index.css' type='text/css'>
-    <link rel='icon' href='/images/favicon-16.png' sizes='16x16'>
-    <link rel='icon' href='/images/favicon-32.png' sizes='32x32'>
-    <link rel='icon' href='/images/favicon-48.png' sizes='48x48'>
-    <link rel='icon' href='/images/favicon-96.png' sizes='96x96'>
-    <link rel='icon' href='/images/favicon-144.png' sizes='144x144'>
-    <link rel='icon' href='/images/favicon-256.png' sizes='256x256'>
-    <link rel='apple-touch-icon' href='/images/apple-touch-icon.png' sizes='180x180'>
+    <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
+    <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
+    <link rel='icon' href='/images/favicon-48.webp' sizes='48x48'>
+    <link rel='icon' href='/images/favicon-96.webp' sizes='96x96'>
+    <link rel='icon' href='/images/favicon-144.webp' sizes='144x144'>
+    <link rel='icon' href='/images/favicon-256.webp' sizes='256x256'>
+    <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
   </head>
@@ -54,7 +54,7 @@ const mainLayout = data => `
 const mainHeader = data => `
 <header>
   <a href='/user/breaches'>
-    <img class='monitor-logo' srcset='/images/monitor-logo-transparent.png 213w, /images/monitor-logo-transparent@2x.png 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+    <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
   </a>
   <menu>
     <li>
@@ -77,7 +77,7 @@ const mainHeader = data => `
 const landingHeader = data => `
 <header>
   <a href='/'>
-    <img class='monitor-logo' srcset='/images/monitor-logo-transparent.png 213w, /images/monitor-logo-transparent@2x.png 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+    <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
   </a>
   <menu>
     <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>

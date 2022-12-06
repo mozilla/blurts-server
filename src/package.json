@@ -11,10 +11,11 @@
     "prestart": "npm run build",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node esbuild & npm run build:png && npm run build:svg && npm run copy:root",
-    "build:png": "squoosh-cli --oxipng '{level: 2}' --quant '{numColors: 255}' -d ../dist/images ./client/images/*.png",
+    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run build:svg",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
+    "copy:webp": "rsync -d --include='*.webp' ./client/images/ ../dist/images/",
     "copy:root": "rsync -d ./client/ ../dist/",
+    "convert:webp": "sh ./utils/webp.sh",
     "test": "node --experimental-vm-modules ../node_modules/jest/bin/jest.js --runInBand --coverage ."
   },
   "nodemonConfig": {
@@ -33,7 +34,6 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "dependencies": {
-    "@squoosh/cli": "^0.7.2",
     "esbuild": "^0.15.10",
     "helmet": "^6.0.0",
     "svgo": "^2.8.0",
