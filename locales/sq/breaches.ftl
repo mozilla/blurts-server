@@ -70,6 +70,9 @@ breach-checklist-sq-body = Përdorni përgjigje të gjata, të zgjedhura kuturu 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Krijoni fjalëkalime unikë, të fortë, për çdo llogari ku keni ripërdorur fjalëkalime.
+breach-checklist-hp-body = Një përgjegjës fjalëkalimesh, bie fjala, <a>Përgjegjës Fjalëkalimesh { -brand-firefox }</a> (i cili është i lirë dhe i brendshëm në shfletuesin { -brand-firefox }) mund t’ju ndihmojë të ndiqni krejt fjalëkalimet tuaj t’i përdorni pa rrezik që nga krejt pajisjet tuaja.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Lidhuni me { $companyName } për t’u bërë të ditur këtë cenim dhe kërkojuni për hapa specifikë që mund të ndërmerrni.
