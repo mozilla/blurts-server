@@ -2,34 +2,34 @@
 class UserInputError extends Error {
   constructor (...params) {
     super(...params)
-    this.statusCode = '400'
+    this.statusCode = 400
   }
 }
 
 class UnauthorizedError extends Error {
   constructor (...params) {
     super(...params)
-    this.statusCode = '403'
+    this.statusCode = 403
   }
 }
 
 class NotFoundError extends Error {
   constructor (...params) {
     super(...params)
-    this.statusCode = '404'
+    this.statusCode = 404
   }
 }
 class MethodNotAllowedError extends Error {
   constructor (...params) {
     super(...params)
-    this.statusCode = '405'
+    this.statusCode = 405
   }
 }
 
 class RateLimitError extends Error {
   constructor (...params) {
     super(...params)
-    this.statusCode = '429'
+    this.statusCode = 429
   }
 }
 
