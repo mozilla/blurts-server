@@ -47,6 +47,8 @@ what-do-i-do = Sapo pashë se jam pjesë e një cenimi të dhënash. Ç’të b�
 visit-monitor-to-learn = Që të mësoni ç’të bëhet pas një cenimi të dhënash, vizitoni { -brand-fx-monitor }. Hacker-at bazohen te fakti që njerëzit ripërdorin fjalëkalime, ndaj është e rëndësishme të krijohen fjalëkalime të fuqishëm, unikë për krejt llogaritë tuaja. Ruajini fjalëkalimet tuaj në një vend të parrezik, ku mund të hyni vetëm ju; ky mund të jetë i njëjti vend me atë ku depozitoni dokumente të rëndësishëm, ose një përgjegjës fjalëkalimesh.
 # question and answer
 what-gets-exposed = Ç’hollësi ekspozohen në cenime të dhënash?
+depends-on-hackers = Jo krejt cenimet ekspozojnë të njëjtat hollësi. Kjo varet thjesht nga fakti se ku mund të hyjnë hacker-at. Mjaft cenime të dhënash ekspozojnë adresa email dhe fjalëkalime. Të tjera ekspozojnë informacion më rezervat, bie fjala, numra kartash krediti, numra pasaportash dhe numra sigurimesh shoqërore.
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Shihni nëse jeni përfshirë në shkelje të dhënash
