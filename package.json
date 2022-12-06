@@ -10,14 +10,14 @@
     "@fluent/langneg": "^0.6.2",
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "7.12.0",
-    "body-parser": "1.19.0",
+    "body-parser": "^1.20.1",
     "client-oauth2": "4.3.3",
     "connect-redis": "6.1.3",
     "cookie-parser": "^1.4.6",
     "csurf": "1.11.0",
     "dotenv": "16.0.2",
     "esbuild": "^0.14.39",
-    "express": "4.17.1",
+    "express": "^4.18.2",
     "express-bearer-token": "2.4.0",
     "express-handlebars": "6.0.6",
     "express-session": "1.17.1",
@@ -52,7 +52,7 @@
     "stylelint-config-standard": "^26.0.0"
   },
   "engines": {
-    "node": "16.17.x",
+    "node": "18.12.x",
     "npm": "8.x"
   },
   "homepage": "https://github.com/mozilla/blurts-server",

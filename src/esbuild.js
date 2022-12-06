@@ -17,7 +17,7 @@ esbuild.build({
   entryNames: '[dir]/[name]',
   loader: { '.woff2': 'copy' },
   assetNames: '[dir]/[name]',
-  external: ['*.png', '*.svg'],
+  external: ['*.webp', '*.svg'],
   outdir: '../dist',
   format: 'esm',
   minify: AppConstants.NODE_ENV !== 'dev',
