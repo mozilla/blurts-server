@@ -28,9 +28,12 @@ breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Értesítse a kártyakibocsátót, és azonnal változtassa meg a PIN-kódját.
+breach-checklist-pin-body = Győződjön meg arról, hogy az új PIN-kód vagy bármely más PIN-kód nem tartalmaz könnyen kitalálható számokat, például a születési dátumát vagy a címét.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Használja privát módon az internetet egy VPN-nel, például a <a>{ -brand-mozilla-vpn }-nel</a>.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
