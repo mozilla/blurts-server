@@ -63,9 +63,13 @@ breach-checklist-phone-header = Mbrojeni numrin tuaj të telefonit me një shër
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Përditësoni pyetjen tuaj të sigurisë te <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Përdorni përgjigje të gjata, të zgjedhura kuturu dhe depozitojini diku në një vend të parrezik. Bëjeni këtë kudo tjetër ku keni përdorur të njëjtat pyetje sigurie.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Krijoni fjalëkalime unikë, të fortë, për çdo llogari ku keni ripërdorur fjalëkalime.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
