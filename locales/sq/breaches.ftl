@@ -10,12 +10,18 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Që të ndryshoni fjalëkalimin tuaj dhe të aktivizoni mirëfilltësimin dyfaktorësh, kaloni te <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-pw-body = Sigurohuni që fjalëkalimi juaj të jetë unik dhe i zorshëm të hamendësohet. Nëse ky fjalëkalim është përdorur në çfarëdo llogarie tjetër, sigurohuni se e ndryshoni edhe atje. <a>{ -brand-firefox } Përgjegjësi i Fjalëkalimeve</a> mund t’ju ndihmojë të ndiqni në mënyrë të sigurt krejt fjalëkalimet tuaja.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Mbrojeni email-in tuaj me një shërbim maskimi email-sh, bie fjala <a>{ -brand-relay }</a>.
+breach-checklist-email-body = Ky mund të fshehë adresën tuaj të vërtetë email, teksa ju sjell email-et te posta juaj e njëmendtë.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Mbikëqyrni raportin tuaj të kreditit për llogari, hua apo karta krediti që nuk i njihni.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
