@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-account
-terms-and-privacy = Betingsten en privacy
 GitHub-link-title = GitHub
 error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te scannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
 error-could-not-add-email = Koe e-mailadres net oan database tafoegje.
@@ -72,7 +74,6 @@ share-facebook-blurb = Binne jo online accounts troffen troch in datalek?
 og-site-description = Untdek mei { -product-name } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe’t jo jo accounts feilich hâlde.
 show-all = Alles toane
 fxa-scan-another-email = Wolle jo in oar e-mailadres kontrolearje?
-sign-in = Oanmelde
 sign-out = Ofmelde
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } beheare
@@ -643,3 +644,28 @@ ad-unit-5-no-matter-where = Wêr’t jo ek binne, meitsje binnen inkelde sekonde
 ad-unit-6-worry-free = Soargeleas oanmelde
 ad-unit-6-want-to-start = Wolle jo in nij abonnemint starte, reagearje op in útnûging of in promokoade mei foardiel krije sûnder dat spam jo Postfek YN oerrint?
 ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje foltôgje, in e-mailmasker yn stee fan jo echte adres om jo gegevens te beskermjen en kontrôle te hâlden oer jo Postfek YN
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Oanmelde
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Betingsten en privacy
+github = { -brand-github }

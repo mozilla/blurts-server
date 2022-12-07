@@ -40,7 +40,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Λογαριασμός Firefox
-terms-and-privacy = Όροι και απόρρητο
 GitHub-link-title = GitHub
 error-scan-page-token = Προσπαθήσατε να σαρώσετε πάρα πολλές διευθύνσεις email σε μικρό χρονικό διάστημα. Για λόγους ασφαλείας, σας έχουμε αποκλείσει προσωρινά από νέες αναζητήσεις. Θα μπορέσετε να δοκιμάσετε ξανά αργότερα.
 error-could-not-add-email = Αδυναμία προσθήκης διεύθυνσης email στη βάση δεδομένων.
@@ -92,7 +91,6 @@ share-facebook-blurb = Έχουν εκτεθεί οι διαδικτυακοί �
 og-site-description = Μάθετε αν υπήρξατε θύμα παραβίασης δεδομένων με το { -product-name }. Εγγραφείτε για ειδοποιήσεις σχετικά με μελλοντικές παραβιάσεις και λάβετε συμβουλές για να προστατέψετε τους λογαριασμούς σας.
 show-all = Προβολή όλων
 fxa-scan-another-email = Θέλετε να ελέγξετε άλλο email;
-sign-in = Σύνδεση
 sign-out = Αποσύνδεση
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Διαχείριση { -brand-fxa(case: "gen", capitalization: "lower") }
@@ -665,3 +663,28 @@ ad-unit-5-no-matter-where = Όπου κι αν βρίσκεστε, δημιου�
 ad-unit-6-worry-free = Εγγραφές χωρίς ανησυχία
 ad-unit-6-want-to-start = Θέλετε να ξεκινήσετε μια νέα συνδρομή, να απαντήσετε σε μια πρόσκληση ή να λάβετε έναν εκπτωτικό κωδικό, χωρίς να «πλημμυρίσουν» τα εισερχόμενά σας με ανεπιθύμητα μηνύματα;
 ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επόμενη εγγραφή, χρησιμοποιήστε μια μάσκα email αντί του πραγματικού σας, ώστε να προστατέψετε τις πληροφορίες σας και να διατηρήσετε τον έλεγχο των εισερχομένων σας
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Σύνδεση
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Όροι και απόρρητο
+github = { -brand-github }

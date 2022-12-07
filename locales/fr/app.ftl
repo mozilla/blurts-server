@@ -31,7 +31,6 @@
        *[lowercase] compte Firefox
         [uppercase] Compte Firefox
     }
-terms-and-privacy = Confidentialité et conditions d’utilisation
 GitHub-link-title = GitHub
 error-scan-page-token = Vous avez essayé d’analyser trop d’adresses électroniques en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
 error-could-not-add-email = Impossible d’ajouter l’adresse électronique à la base de données.
@@ -83,7 +82,6 @@ share-facebook-blurb = Vos comptes en ligne ont-ils été compromis suite à une
 og-site-description = Vérifiez avec { -product-name } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
 show-all = Tout afficher
 fxa-scan-another-email = Souhaitez-vous vérifier une autre adresse électronique ?
-sign-in = Se connecter
 sign-out = Se déconnecter
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gérer le { -brand-fxa }
@@ -589,3 +587,29 @@ ad-unit-5-no-matter-where = Peu importe où vous vous trouvez, créez une adress
 ad-unit-6-worry-free = Inscriptions sans souci
 ad-unit-6-want-to-start = Vous voulez commencer un nouvel abonnement, répondre à une invitation ou un obtenir un code de réduction sans que les spams n’inondent votre boîte de réception ?
 ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias de messagerie à la place de votre véritable adresse e-mail pour protéger vos informations et garder le contrôle de votre boîte de réception.
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fondation Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Se connecter
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Confidentialité et conditions d’utilisation
+github = { -brand-github }

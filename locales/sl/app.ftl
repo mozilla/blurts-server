@@ -41,7 +41,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox Račun
-terms-and-privacy = Pogoji in zasebnost
 GitHub-link-title = GitHub
 error-scan-page-token = V kratkem časovnem obdobju ste skušali preveriti preveč e-poštnih naslovov. Iz varnostnih razlogov smo vam začasno onemogočili nova iskanja. Znova lahko poskusite kasneje.
 error-could-not-add-email = E-poštnega naslova ni bilo mogoče dodati v bazo podatkov.
@@ -93,7 +92,6 @@ share-facebook-blurb = Ali so bili vaši spletni računi izpostavljeni v kraji p
 og-site-description = S { -product-name }jem preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
 show-all = Prikaži vse
 fxa-scan-another-email = Ali želite preveriti še kakšen račun?
-sign-in = Prijavite se
 sign-out = Odjava
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Upravljaj { -brand-fxa }
@@ -257,7 +255,7 @@ show-breaches-for-this-email = Pokaži vse kraje podatkov za ta e-poštni naslov
 link-change-primary = Spremeni glavni e-poštni naslov
 remove-fxm = Odstrani { -product-name }
 remove-fxm-blurb =
-    Izklopite opozorila { -product-name }a. Vaš { -brand-fxa } bo ostal aktiven in morda
+    Izklopite opozorila { -product-name }ja. Vaš { -brand-fxa } bo ostal aktiven in morda
     boste prejeli sporočila, povezana z računom.
 # Button title
 manage-email-addresses = Upravljanje e-poštnih naslovov
@@ -270,7 +268,7 @@ your-info-was-discovered-headline = Vaši podatki so bili odkriti v novi kraji p
 your-info-was-discovered-blurb =
     Prijavili ste se na prejemanje opozoril { -product-name }ja,
     ko se vaš e-poštni naslov znajde med ukradenimi podatki. Do sedaj o tej kraji podatkov vemo sledeče.
-what-to-do-after-breach = Kaj storiti po kraji podatkov:
+what-to-do-after-breach = Kaj storiti po kraji podatkov
 ba-next-step-1 = Spremenite geslo v močno, edinstveno geslo.
 ba-next-step-blurb-1 =
     Močno geslo uporablja kombinacijo velikih in malih črk, 
@@ -319,6 +317,9 @@ no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
 all-breaches-headline = Vse kraje podatkov v { -product-name }ju
 search-breaches = Iskanje kraj podatkov
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>V <a>svojem profilu na Facebooku</a> nastavite svoje podatke na "Samo jaz" ali drugo nejavno nastavitev.</span>
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Prikazano:
 
@@ -649,3 +650,51 @@ ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali po
 ad-unit-5-on-the-go = Na poti s { -brand-relay }
 # ad 6 heading
 ad-unit-6-worry-free = Brezskrbna registracija
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox =
+    { $sklon ->
+       *[imenovalnik] Firefox
+        [rodilnik] Firefoxa
+        [dajalnik] Firefoxu
+        [tozilnik] Firefox
+        [mestnik] Firefoxu
+        [orodnik] Firefoxom
+    }
+-brand-mozilla =
+    { $sklon ->
+       *[imenovalnik] Mozilla
+        [rodilnik] Mozille
+        [dajalnik] Mozilli
+        [tozilnik] Mozillo
+        [mestnik] Mozilli
+        [orodnik] Mozillo
+    }
+-brand-github =
+    { $sklon ->
+       *[imenovalnik] GitHub
+        [rodilnik] GitHuba
+        [dajalnik] GitHubu
+        [tozilnik] GitHub
+        [mestnik] GitHubu
+        [orodnik] GitHubom
+    }
+
+## Search Engine Optimization
+
+meta-desc = S { -brand-fx-monitor(sklon: "orodnik") } preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Prijavite se
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Pogoji in zasebnost
+github = { -brand-github }

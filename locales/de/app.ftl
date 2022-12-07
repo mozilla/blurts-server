@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-Konto
-terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
 GitHub-link-title = GitHub
 error-scan-page-token = Du hast versucht, zu viele E-Mail-Adressen in kurzer Zeit zu überprüfen. Aus Sicherheitsgründen haben wir dich vorübergehend für neue Suchanfragen gesperrt. Du kannst es später erneut versuchen.
 error-could-not-add-email = E-Mail-Adresse konnte nicht zur Datenbank hinzugefügt werden.
@@ -72,7 +74,6 @@ share-facebook-blurb = Wurden deine Online-Konten bei einem Datenleck geknackt?
 og-site-description = Überprüfe mit { -product-name }, ob du von einem Datenleck betroffen bist. Melde dich für Warnungen zu zukünftigen Datenlecks an und erhalte Tipps zum Schutz deiner Online-Konten.
 show-all = Alle anzeigen
 fxa-scan-another-email = Soll noch eine andere E-Mail-Adresse überprüft werden?
-sign-in = Einloggen
 sign-out = Ausloggen
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } verwalten
@@ -595,3 +596,29 @@ ad-unit-5-no-matter-where = Egal wo Sie sind, erstellen Sie in Sekundenschnelle 
 ad-unit-6-worry-free = Sorgenfreies Registrieren
 ad-unit-6-want-to-start = Möchten Sie ein neues Abonnement abschließen, auf eine Einladung antworten oder einen günstigen Rabatt-Code erhalten, ohne dass Spam Ihren Posteingang überschwemmt?
 ad-unit-6-before-you-complete = Bevor Sie die nächste Registrieren abschließen, verwenden Sie eine E-Mail-Maske anstelle Ihrer echten, um Ihre Daten zu schützen und die Kontrolle über Ihren Posteingang zu behalten
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Überprüfen Sie mit { -brand-fx-monitor }, ob Sie von einem Datenleck betroffen sind. Melden Sie sich für Warnungen zu zukünftigen Datenlecks an und erhalten Sie Tipps zum Schutz Ihrer Online-Konten.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Einloggen
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
+github = { -brand-github }

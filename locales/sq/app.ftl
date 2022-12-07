@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Llogari Firefox
-terms-and-privacy = Kushte & Privatësi
 GitHub-link-title = GitHub
 error-scan-page-token = Provuat të skanoni shumë adresa email brenda një kohe të shkurtër. Për arsye sigurie, kemi bllokuar përkohësisht kërkime të reja prej jush. Do të jeni në gjendje të riprovoni më vonë.
 error-could-not-add-email = S’u shtua dot adresë email te baza e të dhënave.
@@ -72,7 +74,6 @@ share-facebook-blurb = Keni llogari internetore që kanë qenë ekspozuar në sh
 og-site-description = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -product-name }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
 show-all = Shfaqi krejt
 fxa-scan-another-email = Doni të kontrolloni një email tjetër?
-sign-in = Hyni
 sign-out = Dilni
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Administroni { -brand-fxa }
@@ -112,50 +113,6 @@ security-tips = Ndihmëza Sigurie
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Hapni lëvizjen nëpër { -brand-fxa }
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Sipas një shkalle vlerësimi nga 1 deri në 10, sa gjasa ka t’ia rekomandoni { -product-short-name }-in një shoku apo kolegu?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = S’ka gjasa
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Shumë
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = A është { -product-short-name } i lehtë për t’u përdorur?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = A ju duket { -product-short-name }-i i besueshëm?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = A ka { -product-short-name }-i një paraqitje të qëruar dhe të thjeshtë?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Nuk pajtohem fare
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Nuk pajtohem
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = I pasigurt
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Pajtohem
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Pajtohem fort
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = Si do të ndiheshit, po të mos mundnit ta përdornit më { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Shumë i zhgënjyer
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = Disi i zhgënjyer
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = S’më  bëhet vonë
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = SHKELJA MË E RE E SHTUAR
 # Link title
@@ -598,9 +555,66 @@ vpn-banner-cta-expand = Zgjeroje
 # button to close panel
 vpn-banner-cta-close = Mbylle
 
-## VPN and Relay educational videos
+## Relay and VPN educational/ad units
 
-# Relay video headline for placement on Monitor home page
-relay-video-headline = Si ta mbani të fshehtë adresën tuaj email?
-# VPN video headline for placement on Monitor user's dashboard
-vpn-video-headline = A shqetësoheni për sigurinë në një Wi-Fi publik?
+ad-unit-relay-cta = Mësoni më tepër mbi { -brand-relay }
+ad-unit-vpn-cta = Mësoni më tepër mbi { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Si ta mbani të fshehtë adresën tuaj email?
+# ad 2 heading
+ad-unit-2-do-you-worry = A shqetësoheni për sigurinë në një Wi-Fi publik?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Jini brenda gjërave
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } ju lejon ta ruani të parrezik dhe të siguruar një lidhje të përhershme në internet, teksa luani lojëra, apo shihni filma në linjë.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Parandaloni “throttling”
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Jini kudo qoftë në botë
+# ad 3 list item 3
+ad-unit-3-access-more = Hyni në më shumë gjëra
+# ad 4 heading
+ad-unit-4-shopping-with = Pazare me Maska Email-esh
+ad-unit-4-want-to-buy = Doni të blini diçka në internet dhe nuk e njihni, ose nuk e besoni plotësisht shitoren?
+ad-unit-4-shop-online = Përdorni një maskë email-i, kurdo që blini në internet. Merreni ripohimin e blerjes te email-i juaj faktik dhe mandej hiqeni kollaj maskën, kur të doni.
+# ad 5 heading
+ad-unit-5-on-the-go = Në Lëvizje me { -brand-relay }
+ad-unit-5-instantly-make = Krijoni menjëherë një maskë vetjake email kudo dhe kurdo që shkoni!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Lidhuni prej ngado
+ad-unit-5-privately-sign-in = Përdoreni maskën tuaj email kur doni të hyni privatisht në kafenë tuaj të parapëlqyer, apo në Wi-Fi publik
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Merrni dëftesa email-i
+ad-unit-5-share-custom-email = Jepni një maskë email vetjake për dëftesa blerjesh, pa dhënë email-in tuaj të njëmendtë
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Përdoreni në telefonin tuaj
+ad-unit-5-no-matter-where = Pavarësisht se ku gjendeni, krijoni një maskë vetjake email brenda pak sekondash, për çfarëdo që dëshironi të bëni
+# ad 6 heading
+ad-unit-6-worry-free = Regjistrime Pa Kokëçarje
+ad-unit-6-want-to-start = Doni të filloni një pajtim të ri, t’i përgjigjeni një ftese apo të merrni një kod promocional okazioni pa pasur përmbytje të email-it me mesazhe të padëshiruar?
+ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të radhës, përdorni një maskë email-i, në vend të vetëm email-it, që të mbroni të dhënat tuaja dhe që ta keni kutinë tuaj postare nën kontroll
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, përmes { -brand-fx-monitor }. Regjistrohuni për sinjalizime rreth shkeljesh në të ardhmen dhe merrni ndihmëza si t’i mbani llogaritë tuaja të parrezikuara.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Hyni
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Kushte & Privatësi
+github = { -brand-github }

@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Konto-saldoar
 address-book-contacts = Adressebokskontaktar
@@ -54,11 +54,13 @@ family-structure = Familiestruktur
 financial-investments = Finansielle investeringar
 financial-transactions = Finansielle transaksjonar
 fitness-levels = Fitnessnivå
+flights-taken = Flyreiser tekne
 genders = Kjønn
 geographic-locations = Geografiske plasseringar
 government-issued-ids = ID-kort skrivne ut av styremakter
 health-insurance-information = Informasjon om helseforsikring
 historical-passwords = Tidlegare passord
+hiv-statuses = HIV-status
 home-loan-information = Informasjon om bustadlån
 home-ownership-statuses = Bustadsstatus
 homepage-urls = Heimesideadresser

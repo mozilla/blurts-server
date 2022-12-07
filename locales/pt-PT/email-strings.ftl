@@ -59,44 +59,46 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     O { -product-name } alerta sobre violações de dados que envolvam os seus dados pessoais. 
     Acabámos de receber detalhes sobre uma violação de dados de outra empresa.
-# List headline
-faq-list-headline = Perguntas frequentes
-# Link Title
-faq-v2-1 = Eu não reconheço nenhuma destas empresas ou sites. Porque estou envolvido nesta violação de dados?
-# Link Title
-faq-v2-2 = Preciso de fazer alguma coisa se a violação de dados aconteceu há vários anos ou se esta é uma conta antiga?
-# Link Title
-faq-v2-3 = Acabei de descobrir que estou numa violação de dados. O que preciso de fazer a seguir?
-# Link Title
-faq-v2-4 = Como é que { -product-name } trata sites sensíveis?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Crie uma { -brand-fxa } gratuitamente</a> e pode adicionar até 15 endereços de e-mail.
 # Section headline
 monitor-another-email = Quer monitorizar outro e-mail?
-# Subject line of email
-pre-fxa-subject = Uma atualização do { -product-name }
-pre-fxa-headline = O que está a mudar com o { -product-name }
-pre-fxa-blurb =
-    Aqui tem o que mudou desde que se registou no { -product-name }, o serviço que 
-    monitoriza as violações de dados conhecidas para sua informação pessoal. Nós estamos a associar o serviço às contas do Firefox.
-pre-fxa-tout-1 = Fique atento a mais violações de dados
-pre-fxa-p-1 =
-    <a>Crie uma conta</a> para monitorizar até 15 endereços de e-mail para 
-    as violações de dados. Nós recomendamos que adicione quaisquer endereços de e-mail que utilizou para criar contas na Internet.
-pre-fxa-tout-2 = Obter uma visualização do painel
-pre-fxa-p-2 =
-    Consulte todas as violações de dados num único local, para saber quais as palavras-passe a alterar. 
-    O painel de violações de dados só está disponível com uma conta.
-pre-fxa-tout-3 = Continue a receber alertas por e-mail
-pre-fxa-p-3 =
-    Irá continuar a receber alertas do { -product-name }. Nós iremos informá-lo 
-    se a sua informação aparecer numa nova violação de dados.
-# Button at the bottom of pre-fxa email.
-create-account = Criar conta
-# More security products
-more-products-headline = Proteja-se com mais produtos nossos
-more-products-vpn = Proteção completa para o seu dispositivo, em todos os dispositivos.
-more-products-cta-vpn = Obter a { -product-name-vpn }
-more-products-relay = Oculte o seu endereço de e-mail real para ajudar a proteger sua identidade.
-more-products-cta-relay = Obter o { -product-name-relay }
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+email-2022-unsubscribe = Está a receber este e-mail automático como subscritor de { -product-name }. <br>Sinta-se à vontade para alterar as suas preferências de e-mail <a { $unsubscribe-link-attr }>aqui</a> a qualquer momento.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Dados de violação de dados fornecidos por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+email-unresolved-heading = Tem violações de dados não resolvidas
+email-unresolved-subhead = O seu e-mail foi exposto. <br>Corrija a situação imediatamente com { -product-name }.
+email-is-affected = O seu e-mail { $email-address } é afetado por, pelo menos, uma violação de dados
+email-more-detail = Inicie sessão em { -product-name } imediatamente para consultar mais detalhes sobre as suas violações de dados (incluindo quando estas ocorreram e quais dados que foram expostos) e saiba o que deve fazer quando o seu e-mail for exposto numa violação de dados.
+email-breach-status = Estado atual da violação de dados
+# table row 1 label
+email-monitored = Total de e-mails monitorizados:
+# table row 2 label
+email-breach-total = Número total de violações de dados:
+# table row 3 label
+email-resolved = Violações de dados resolvidas:
+# table row 4 label
+email-unresolved = Violações de dados não resolvidas:
+email-resolve-cta = Resolver violações de dados
+
+## Verification email
+
+email-verify-heading = Proteja os seus dados, a partir de agora
+email-verify-subhead = Confirme o seu e-mail para começar a proteger os seus dados após uma violação de dados.
+email-verify-simply-click = Basta clicar na ligação abaixo para concluir a confirmação da sua conta.
+
+## Breach report
+
+email-breach-summary = Eis o resumo da sua violação de dados
+email-breach-detected = Os resultados da pesquisa para a sua conta { $email-address } detetaram que o seu e-mail pode ter sido exposto. Recomendamos que atue imediatamente para resolver esta violação de dados.
+email-no-breach-detected = Boas notícias! Não encontrámos nenhuma violação de dados que afete o seu e-mail, { $email-address }.
+email-dashboard-cta = Ir para o painel
+
+## Breach alert
+
+email-may-have-been-exposed = O seu e-mail pode ter sido exposto numa violação de dados
+email-spotted-new-breach = Detetámos uma nova violação de dados

@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -47,7 +50,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Обліковий запис Firefox
-terms-and-privacy = Умови та приватність
 GitHub-link-title = GitHub
 error-scan-page-token = Ви намагалися сканувати забагато адрес електронної пошти за короткий проміжок часу. З міркувань безпеки ми тимчасово заблокували вам доступ до нових пошуків. Ви зможете спробувати знову пізніше.
 error-could-not-add-email = Не вдалося додати адресу електронної пошти до бази даних.
@@ -99,7 +101,6 @@ share-facebook-blurb = Чи виявлено ваші дані у викритт
 og-site-description = Дізнайтеся за допомогою { -product-name }, чи ваші дані не було викрито. Підпишіться на отримання попереджень про майбутні порушення та отримання порад щодо безпеки ваших облікових записів.
 show-all = Показати все
 fxa-scan-another-email = Хочете перевірити іншу електронну пошту?
-sign-in = Увійти
 sign-out = Вийти
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Керувати { -brand-fxa(case: "abl") }
@@ -687,3 +688,29 @@ ad-unit-5-no-matter-where = Незалежно від того, де ви зна
 ad-unit-6-worry-free = Реєстрація без турбот
 ad-unit-6-want-to-start = Хочете розпочати нову підписку, відповісти на запрошення або отримати вигідний промокод без спаму в теці «Вхідні»?
 ad-unit-6-before-you-complete = Перш ніж здійснити наступну реєстрацію, використовуйте маску електронної пошти замість справжньої, щоб захистити свою інформацію та зберегти контроль над своєю поштою
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Дізнайтеся, чи ваші дані не було викрито за допомогою { -brand-fx-monitor }. Підпишіться на отримання попереджень про майбутні порушення та отримання порад щодо безпеки ваших облікових записів.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Увійти
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Умови та приватність
+github = { -brand-github }

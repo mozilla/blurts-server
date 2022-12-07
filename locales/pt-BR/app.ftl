@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Conta Firefox
-terms-and-privacy = Termos e Privacidade
 GitHub-link-title = GitHub
 error-scan-page-token = Você tentou analisar endereços de email demais em um curto espaço de tempo. Por motivos de segurança, bloqueamos temporariamente novas buscas suas. Você poderá tentar novamente mais tarde.
 error-could-not-add-email = Não foi possível adicionar endereço de email ao banco de dados.
@@ -75,7 +74,6 @@ share-facebook-blurb = Suas contas online foram expostas em um vazamento de dado
 og-site-description = Descubra se você foi vítima de um vazamento de dados com o { -product-name }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
 show-all = Mostrar tudo
 fxa-scan-another-email = Quer verificar outro email?
-sign-in = Entre
 sign-out = Sair
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gerenciar { -brand-fxa }
@@ -617,3 +615,29 @@ ad-unit-5-no-matter-where = Não importa onde você esteja, crie uma máscara de
 ad-unit-6-worry-free = Cadastro de contas sem preocupações
 ad-unit-6-want-to-start = Quer iniciar uma nova inscrição, responder a um convite ou obter um código promocional de pechincha sem ter spam inundando sua caixa de entrada?
 ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma máscara de email em vez do email real para proteger suas informações e manter o controle sobre sua caixa de entrada
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fundação Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -brand-fx-monitor }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Entre
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Termos e Privacidade
+github = { -brand-github }

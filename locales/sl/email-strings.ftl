@@ -61,45 +61,8 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } vas opozarja o krajah podatkov, ki vključujejo vaše osebne podatke.
     Pravkar smo prejeli podrobnosti o novi kraji podatkov.
-# List headline
-faq-list-headline = Pogosto zastavljena vprašanja
-# Link Title
-faq-v2-1 = Enega od teh podjetij ali spletne strani ne poznam. Zakaj sem del te kraje podatkov?
-# Link Title
-faq-v2-2 = Ali moram kaj storiti, če se je kraja zgodila pred leti ali če je to stari račun?
-# Link Title
-faq-v2-3 = Pravkar sem ugotovil, da sem vpleten v krajo podatkov. Kaj naj storim?
-# Link Title
-faq-v2-4 = Kako { -product-name } obravnava občutljive strani?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Ustvarite brezplačen { -brand-fxa }</a> in dodajte do 15 e-poštnih naslovov.
 # Section headline
 monitor-another-email = Želite spremljati še en e-poštni naslov?
-# Subject line of email
-pre-fxa-subject = Posodobitev { -product-name }ja
-pre-fxa-headline = Kaj je novega v { -product-name }ju
-pre-fxa-blurb = Tukaj so novosti od vaše prijave v storitev { -product-name }, ki spremlja znane kraje podatkov za vaše osebne podatke. Povezali smo ga s Firefox Računi.
-pre-fxa-tout-1 = Bodite pozorni na več kraj podatkov
-pre-fxa-p-1 =
-    <a>Ustvarite račun</a> in spremljajte do 15 e-poštnih naslovov 
-    za kraje podatkov. Priporočamo vam, da dodate vse e-poštne naslove, ki ste jih uporabili za ustvarjanje spletnih računov.
-pre-fxa-tout-2 = Nadzorna plošča kraj podatkov
-pre-fxa-p-2 =
-    Oglejte si vse kraje podatkov na enem mestu, tako boste vedeli, katera gesla spremeniti. 
-    Nadzorna plošča kraj podatkov je na voljo samo ob prijavi z računom.
-pre-fxa-tout-3 = Še naprej prejemajte opozorila po e-pošti
-pre-fxa-p-3 =
-    Še vedno boste prejemali opozorila { -product-name }ja. Obvestili vas bomo, če se bodo vaši podatki 
-    pojavili v novi kraji podatkov.
-# Button at the bottom of pre-fxa email.
-create-account = Ustvarite račun
-# More security products
-more-products-headline = Zaščitite se z našimi ostalimi izdelki
-more-products-vpn = Zaščita za celotno vašo napravo – katerokoli napravo.
-more-products-cta-vpn = Pridobite { -product-name-vpn }
-more-products-relay = Skrijte svoj pravi e-poštni naslov in zavarujte svojo identiteto.
-more-products-cta-relay = Pridobite { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
@@ -118,3 +81,17 @@ email-resolved = Razrešene kraje:
 # table row 4 label
 email-unresolved = Nerazrešene kraje:
 email-resolve-cta = Razreši kraje
+
+## Verification email
+
+email-verify-simply-click = Preprosto kliknite spodnjo povezavo, da dokončate preverjanje računa.
+
+## Breach report
+
+email-no-breach-detected = Odlična novica! Odkrili nismo nobene kraje podatkov, ki bi vplivale na vaš e-poštni naslov { $email-address }.
+email-dashboard-cta = Pojdi na nadzorno ploščo
+
+## Breach alert
+
+email-may-have-been-exposed = Vaš e-poštni naslov je bil morda razkrit v kraji podatkov
+email-spotted-new-breach = Zaznali smo novo krajo podatkov

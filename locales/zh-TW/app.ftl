@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox 帳號
-terms-and-privacy = 使用條款及隱私權
 GitHub-link-title = GitHub
 error-scan-page-token = 您在短時間內嘗試搜尋太多電子郵件地址，由於安全因素，我們暫時無法讓您進行新搜尋。請稍候再試一次。
 error-could-not-add-email = 無法將電子郵件地址新增到資料庫。
@@ -72,7 +74,6 @@ share-facebook-blurb = 您的帳號也出現在資料外洩事件當中嗎？
 og-site-description = 使用 { -product-name }，看看您的帳號是否也在資料外洩事件當中。註冊在未來有與您相關的資料外洩事故時，收到警報與祕訣以確保帳號安全。
 show-all = 顯示全部
 fxa-scan-another-email = 想要檢查另一個電子郵件地址嗎？
-sign-in = 登入
 sign-out = 登出
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
@@ -542,3 +543,28 @@ ad-unit-5-no-matter-where = 不論您在哪裡，只要花幾秒就可以建立�
 ad-unit-6-worry-free = 註冊帳號免煩惱
 ad-unit-6-want-to-start = 想要開始新訂閱、回覆邀請函或接收折扣碼，但又不想要收到一堆垃圾信嗎？
 ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱而非實際信箱，來保護您的個資，也可更加掌握您的收件匣。
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = 登入
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = 使用條款及隱私權
+github = { -brand-github }

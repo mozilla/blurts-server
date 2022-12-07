@@ -1,9 +1,11 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = 계좌 잔고
 address-book-contacts = 주소록 연락처
 age-groups = 연령대
 ages = 나이
+# Refers to medical appointments.
+appointments = 예약
 apps-installed-on-devices = 기기에 설치된 앱
 astrological-signs = 점성술의 별자리
 audio-recordings = 녹음된 오디오
@@ -52,11 +54,13 @@ family-structure = 가족 구성
 financial-investments = 금융 투자
 financial-transactions = 금융거래 내역
 fitness-levels = 피트니스 수준
+flights-taken = 탑승한 항공편
 genders = 성별
 geographic-locations = 지리적 위치
 government-issued-ids = 정부가 발급한 신분증
 health-insurance-information = 건강보험 정보
 historical-passwords = 비밀번호 이력
+hiv-statuses = HIV 상태
 home-loan-information = 주택 융자 정보
 home-ownership-statuses = 주택 소유 여부
 homepage-urls = 홈페이지 URL
@@ -67,6 +71,8 @@ instant-messenger-identities = 인스턴트 메신저 ID
 ip-addresses = IP 주소
 job-applications = 입사 지원서
 job-titles = 직위
+# This string refers to vehicle license plates. 
+licence-plates = 번호판
 living-costs = 생활비
 login-histories = 로그인 기록
 mac-addresses = MAC 주소
