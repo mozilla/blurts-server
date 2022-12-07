@@ -70,6 +70,7 @@ breach-checklist-sq-body = 使用長度夠長、內容隨機的答案，並保�
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = 對您使用過重複密碼的網站，設定不同而安全的密碼。
+breach-checklist-hp-body = 這類密碼管理工具，例如 <a>{ -brand-firefox } 密碼管理員</a>（免費，又直接內建於 { -brand-firefox } ㄌ瀏覽器）可幫助您管理所有密碼，並於您的所有裝置上安全地使用。
 
 ## Prompts the user for changes when there is a breach detected of other types
 
