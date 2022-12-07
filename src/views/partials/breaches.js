@@ -4,7 +4,7 @@ import { formatDate } from '../../utils/date-time.js'
 const rowHtml = data => `
 <details>
   <summary>
-    <span class='company'>${data.Title}</span><span class='data-types'>${data.dataClassesFormatted}</span><span class='date'>${data.addedDateShort}</span>
+    <span class='company'>${data.Title}</span><span class='data-types'>${data.dataClassesFormatted}</span><span class='date'>${data.breachDateShort}</span>
   </summary>
   <div>
     ${data.descriptionFormatted}
@@ -17,7 +17,7 @@ function createRows (data) {
 
   allEmailBreaches.forEach(breach => {
     breach.dataClassesFormatted = breach.DataClasses.map(item => getMessage(item)).join(', ')
-    breach.addedDateShort = formatDate(breach.AddedDate)
+    breach.breachDateShort = formatDate(breach.BreachDate)
     breach.descriptionFormatted = getMessage('breach-description', {
       companyName: breach.Title,
       dateBreached: formatDate(breach.BreachDate, { month: 'long' }),
