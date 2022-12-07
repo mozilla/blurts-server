@@ -15,6 +15,7 @@ protect-account-prevent-hackers = 防止駭客透過遭外洩的密碼，登入�
 prevent-fraud = 防止詐騙與網路犯罪
 prevent-fraud-keep-info = 確保您的資訊不被想要冒充您來犯罪的駭客接觸。
 get-alerts = 訂閱資料外洩事件警示
+get-alerts-find-out = 看看您的個人資訊，是否遭到新的資料外洩事件影響。
 
 ## Here’s how it works
 
@@ -41,6 +42,7 @@ what-is-breach = 「資料洩漏事件」究竟是什麼？
 what-do-i-do = 我剛發現某場資料外洩事件當中包含我的資料。接下來該怎麼做？
 # question and answer
 what-gets-exposed = 發生資料外洩事件時，會洩露哪些資訊？
+depends-on-hackers = 每場事件外洩的資訊不一定相同，要視駭客獲得了哪些資訊而定。許多資訊外洩事件會洩露電子郵件信箱與密碼，而有的是會洩露信用卡卡號、護照號碼、社會安全號碼或身分證字號等敏感資訊。
 
 ## See if you’ve been in a data breach
 
