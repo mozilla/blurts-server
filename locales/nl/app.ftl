@@ -658,6 +658,7 @@ ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie volto
 
 ## Search Engine Optimization
 
+meta-desc = Ontdek met { -brand-fx-monitor } of u bent getroffen door een datalek. Schrijf u in voor waarschuwingen over toekomstige lekken en ontvang tips over hoe u uw accounts veilig houdt.
 
 ## Header
 
