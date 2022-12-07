@@ -74,3 +74,5 @@ breach-checklist-hp-body = 這類密碼管理工具，例如 <a>{ -brand-firefox
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = 請聯絡 { $companyName }，通知他們這場資安事件，並詢問可以採取哪些行動保護您的權益。
