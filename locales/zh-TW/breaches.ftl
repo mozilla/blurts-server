@@ -53,17 +53,22 @@ breach-checklist-address-body = 很容易就能從公開紀錄中找到您的地
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = 更改任何包含您生日的密碼或 PIN 碼。
+breach-checklist-dob-body = 很容易就能從公開紀錄中找到您的生日，會導致密碼與 PIN 碼容易被猜到。
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = 使用諸如 <a>{ -brand-relay }</a> 的電話轉接服務，來保護您的實際號碼。
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-sq-header = 到 <a>{ $breachedCompanyUrl }</a> 更新您的安全問題。
+breach-checklist-sq-body = 使用長度夠長、內容隨機的答案，並保存在安全的地方。對您有設定過相同安全問題的網站都做相同的步驟來保護。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = 對您使用過重複密碼的網站，設定不同而安全的密碼。
 
 ## Prompts the user for changes when there is a breach detected of other types
 

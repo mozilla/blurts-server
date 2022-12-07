@@ -3,9 +3,14 @@
 
 ## Hero
 
+get-started = 開始使用
 
 ## Why use Firefox Monitor?
 
+why-use-monitor = 為什麼要使用 { -brand-fx-monitor }？
+protect-account = 保護您的帳號
+prevent-fraud = 防止詐騙與網路犯罪
+get-alerts = 訂閱資料外洩事件警示
 
 ## Here’s how it works
 
@@ -26,3 +31,4 @@ what-is-breach = 「資料洩漏事件」究竟是什麼？
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = 看看您是否已身處資料外洩事件之中。
