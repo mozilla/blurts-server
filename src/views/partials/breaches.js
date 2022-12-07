@@ -1,9 +1,10 @@
+import { getMessage } from '../../utils/fluent.js'
 import { formatDate } from '../../utils/date-time.js'
 
 const rowHtml = data => `
 <details>
   <summary>
-    <span class='company'>${data.Title}</span><span class='data-types'>${data.DataClasses.join(', ')}</span><span class='date'>${formatDate(data.AddedDate)}</span>
+    <span class='company'>${data.Title}</span><span class='data-types'>${data.DataClassesFormatted.join(', ')}</span><span class='date'>${formatDate(data.AddedDate)}</span>
   </summary>
   <div>
     ${data.Description}
@@ -13,6 +14,9 @@ const rowHtml = data => `
 
 function createRows (data) {
   const allEmailBreaches = data.verifiedEmails.flatMap(item => item.breaches)
+  allEmailBreaches.forEach(breach => {
+    breach.DataClassesFormatted = breach.DataClasses.map(item => getMessage(item))
+  })
   const html = allEmailBreaches.map(breach => rowHtml(breach)).join('')
   return html
 }
