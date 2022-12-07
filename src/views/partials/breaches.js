@@ -4,21 +4,29 @@ import { formatDate } from '../../utils/date-time.js'
 const rowHtml = data => `
 <details>
   <summary>
-    <span class='company'>${data.Title}</span><span class='data-types'>${data.DataClassesFormatted.join(', ')}</span><span class='date'>${formatDate(data.AddedDate)}</span>
+    <span class='company'>${data.Title}</span><span class='data-types'>${data.dataClassesFormatted}</span><span class='date'>${data.addedDateShort}</span>
   </summary>
   <div>
-    ${data.Description}
+    ${data.descriptionFormatted}
   </div>
 </details>
 `
 
 function createRows (data) {
   const allEmailBreaches = data.verifiedEmails.flatMap(item => item.breaches)
+
   allEmailBreaches.forEach(breach => {
-    breach.DataClassesFormatted = breach.DataClasses.map(item => getMessage(item))
+    breach.dataClassesFormatted = breach.DataClasses.map(item => getMessage(item)).join(', ')
+    breach.addedDateShort = formatDate(breach.AddedDate)
+    breach.descriptionFormatted = getMessage('breach-description', {
+      companyName: breach.Title,
+      dateBreached: formatDate(breach.BreachDate, { month: 'long' }),
+      dateAdded: formatDate(breach.AddedDate, { month: 'long' }),
+      dataClasses: breach.dataClassesFormatted
+    })
   })
-  const html = allEmailBreaches.map(breach => rowHtml(breach)).join('')
-  return html
+
+  return allEmailBreaches.map(breach => rowHtml(breach)).join('')
 }
 
 export const breaches = data => `
