@@ -10,6 +10,7 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = 請前往 <a>{ $breachedCompanyUrl }</a> 更改密碼，並開啟兩階段驗證（2FA）。
+breach-checklist-pw-body = 確保您的密碼獨特、不重複使用並且難以被猜到。若此密碼也用在其他地方的帳號上，也請一併更換。<a>{ -brand-firefox } 密碼管理員</a>可幫助您安全地管理密碼。
 
 ## Prompts the user for changes when there is a breach detected of email
 
