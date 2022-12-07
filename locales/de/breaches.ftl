@@ -15,7 +15,7 @@ breach-checklist-pw-body = Stellen Sie sicher, dass Ihr Passwort einzigartig und
 ## Prompts the user for changes when there is a breach detected of email
 
 breach-checklist-email-header = Schützen Sie Ihre E-Mail-Adressen mit einem E-Mail-Maskierungsdienst wie <a>{ -brand-relay }</a>.
-breach-checklist-email-body = Dadurch kann Ihre wahre E-Mail-Adresse verborgen werden, während E-Mails an Ihren echten Posteingang weitergeleitet werden.
+breach-checklist-email-body = Dadurch bleibt Ihre echte E-Mail-Adresse verborgen, während E-Mails an Ihren echten Posteingang weitergeleitet werden.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -59,7 +59,7 @@ breach-checklist-dob-body = Geburtsdaten sind in öffentlichen Aufzeichnungen le
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Schützen Sie Ihre Telefonnummer mit einem Maskierungsdienst wie <a>{ -brand-relay }</a>, der Ihre wahre Telefonnummer verbirgt.
+breach-checklist-phone-header = Schützen Sie Ihre Telefonnummer mit einem Maskierungsdienst wie <a>{ -brand-relay }</a>, der Ihre echte Telefonnummer verbirgt.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
