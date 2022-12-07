@@ -614,7 +614,9 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 
 ## Search Engine Optimization
@@ -622,8 +624,11 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Inicia sesión
 
 ## Footer
 
+mozilla = { -brand-mozilla }
 terms-and-privacy = Términos y Privacidad
+github = { -brand-github }
