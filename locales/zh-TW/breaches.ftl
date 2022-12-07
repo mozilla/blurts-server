@@ -38,12 +38,18 @@ breach-checklist-bank-body = 處理得越快，您就有越多的法律保障能
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = 通知您的發卡機構並立即更改卡片密碼。
+breach-checklist-pin-body = 請確保您的新密碼，以及任何其他密碼，當中不含容易被猜到的資訊，例如您的生日或地址資訊。
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = 使用諸如 <a>{ -brand-mozilla-vpn }</a> 之類的 VPN，在上網時保護隱私。
+breach-checklist-ip-body = 您的 IP 地址能夠反推出您的所在位置與電信業者。透過 VPN 能夠隱藏您的實際 IP 地址，讓上網更有隱私。
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = 更改任何可能包含您的地址的密碼或 PIN 碼。
+breach-checklist-address-body = 很容易就能從公開紀錄中找到您的地址，會導致密碼與 PIN 碼容易被猜到。
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
@@ -53,6 +59,8 @@ breach-checklist-bank-body = 處理得越快，您就有越多的法律保障能
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = 到 <a>{ $breachedCompanyUrl }</a> 更新您的安全問題。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

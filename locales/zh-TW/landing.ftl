@@ -9,6 +9,9 @@
 
 ## Here’s how it works
 
+how-it-works = 工作原理：
+check-for-breaches = 檢查是否有外洩事件
+protect-accounts = 保護您的帳號
 
 ## Your privacy is safe with us
 
