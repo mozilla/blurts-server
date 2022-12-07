@@ -9,6 +9,7 @@ get-started = 開始使用
 
 why-use-monitor = 為什麼要使用 { -brand-fx-monitor }？
 protect-account = 保護您的帳號
+protect-account-prevent-hackers = 防止駭客透過遭外洩的密碼，登入您的其他帳號。
 prevent-fraud = 防止詐騙與網路犯罪
 get-alerts = 訂閱資料外洩事件警示
 
