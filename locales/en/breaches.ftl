@@ -2,7 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-### Strings for the breach details checklists
+## Breaches table
+
+column-company = COMPANY
+column-breached-data = BREACHED DATA
+column-detected = DETECTED
+
 
 ## Prompts the user for changes when there is a breach detected of password
 
