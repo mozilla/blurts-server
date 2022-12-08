@@ -15,6 +15,7 @@ breach-checklist-pw-body = Assecura te que tu contrasigno es unic e difficile a 
 ## Prompts the user for changes when there is a breach detected of email
 
 breach-checklist-email-header = Protege tu adresse de e-mail con un servicio de mascas de e-mail como <a>{ -brand-relay }</a>.
+breach-checklist-email-body = Isto pote celar tu ver adresse de e-mail, reinviante le messages a tu ver cassa de entrata.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
