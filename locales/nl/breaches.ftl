@@ -29,7 +29,7 @@ breach-checklist-ssn-body = U kunt ook overwegen uw tegoed op <a>Equifax</a>, <a
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
-breach-checklist-cc-header = Meld deze inbreuk bij uw creditcardmaatschappij en vraag een nieuwe kaart aan met een nieuw nummer.
+breach-checklist-cc-header = Meld dit lek bij uw creditcardmaatschappij en vraag een nieuwe kaart aan met een nieuw nummer.
 breach-checklist-cc-body = Controleer ook uw creditcardafschriften op onbekende afschrijvingen.
 
 ## Prompts the user for changes when there is a breach detected of bank account
