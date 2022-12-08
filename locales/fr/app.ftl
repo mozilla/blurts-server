@@ -32,39 +32,39 @@
         [uppercase] Compte Firefox
     }
 GitHub-link-title = GitHub
-error-scan-page-token = Vous avez essayé d’analyser trop d’adresses électroniques en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
-error-could-not-add-email = Impossible d’ajouter l’adresse électronique à la base de données.
-error-not-subscribed = Cette adresse électronique n’est pas inscrite aux alertes { -product-name }.
+error-scan-page-token = Vous avez essayé d’analyser trop d’adresses e-mail en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
+error-could-not-add-email = Impossible d’ajouter l’adresse e-mail à la base de données.
+error-not-subscribed = Cette adresse e-mail n’est pas inscrite aux alertes { -product-name }.
 error-hibp-throttled = Connexions trop nombreuses à { -brand-HIBP }.
 error-hibp-connect = Erreur de connexion à { -brand-HIBP }.
 error-hibp-load-breaches = Impossible de charger les failles de sécurité.
 error-must-be-signed-in = Vous devez vous connecter à votre { -brand-fxa }.
-error-to-finish-verifying = Pour terminer la vérification de cette adresse électronique pour { -product-name }, vous devez vous connecter à l’aide de l’adresse électronique principale de votre compte.
+error-to-finish-verifying = Pour terminer la vérification de cette adresse e-mail pour { -product-name }, vous devez vous connecter à l’aide de l’adresse e-mail principale de votre compte.
 home-title = { -product-name }
 home-not-found = Page non trouvée
 oauth-invalid-session = Session invalide
 scan-title = { -product-name } : résultats de l’analyse
-user-add-invalid-email = Adresse électronique invalide
-user-add-too-many-emails = Vous surveillez le nombre maximal d’adresses électroniques.
+user-add-invalid-email = Adresse e-mail invalide
+user-add-too-many-emails = Vous surveillez le nombre maximal d’adresses e-mail.
 user-add-email-verify-subject = Vérifiez votre inscription à { -product-name }.
-user-add-duplicate-email = Cette adresse électronique a déjà été ajoutée à { -product-name }.
+user-add-duplicate-email = Cette adresse e-mail a déjà été ajoutée à { -product-name }.
 user-add-duplicate-email-part-2 = Consultez les { $preferencesLink } pour vérifier l’état de { $userEmail }.
 error-headline = Erreur
 user-verify-token-error = Un jeton de vérification est nécessaire.
 user-verify-email-report-subject = Votre rapport { -product-name }
 user-unsubscribe-token-error = La désinscription nécessite un jeton.
-user-unsubscribe-token-email-error = La désinscription nécessite un jeton ainsi qu’une empreinte issue de la valeur du courriel.
+user-unsubscribe-token-email-error = La désinscription nécessite un jeton ainsi qu’une empreinte issue de la valeur de l’e-mail.
 user-unsubscribe-title = { -product-name } : désinscription
 pwt-section-headline = Mots de passe robustes = protection renforcée
 landing-headline = C’est maintenant que commence votre droit d’être à l’abri du piratage informatique.
-scan-placeholder = Saisissez votre adresse électronique
-scan-submit = Vérifier votre adresse électronique
-scan-error = L’adresse électronique doit être valide.
+scan-placeholder = Saisissez votre adresse e-mail
+scan-submit = Vérifier votre adresse e-mail
+scan-error = L’adresse e-mail doit être valide.
 download-firefox-banner-button = Télécharger { -brand-name }
 # Appears after Firefox Monitor has sent a verification email to a new user. 
 signup-modal-sent = Envoyé !
 sign-up = S’inscrire
-form-signup-error = L’adresse électronique doit être valide
+form-signup-error = L’adresse e-mail doit être valide
 # breach-date = the calendar date a particular data theft occurred. 
 breach-date = Date de la fuite de données :
 # compromised accounts = the total number of user accounts exposed in data breach
@@ -72,7 +72,7 @@ compromised-accounts = Comptes compromis :
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Données compromises :
 unsub-headline = Se désabonner de { -product-name-nowrap }
-unsub-blurb = Cela supprimera votre adresse électronique de la liste { -product-name-nowrap } et vous ne recevrez plus d’alertes lorsque de nouvelles fuites de données seront annoncées.
+unsub-blurb = Cela supprimera votre adresse e-mail de la liste { -product-name-nowrap } et vous ne recevrez plus d’alertes lorsque de nouvelles fuites de données seront annoncées.
 unsub-button = Se désabonner
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
@@ -81,7 +81,7 @@ share-facebook-headline = Vérifiez si vous êtes concerné·e par une fuite de 
 share-facebook-blurb = Vos comptes en ligne ont-ils été compromis suite à une fuite de données ?
 og-site-description = Vérifiez avec { -product-name } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
 show-all = Tout afficher
-fxa-scan-another-email = Souhaitez-vous vérifier une autre adresse électronique ?
+fxa-scan-another-email = Souhaitez-vous vérifier une autre adresse e-mail ?
 sign-out = Se déconnecter
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gérer le { -brand-fxa }
@@ -95,8 +95,8 @@ fxa-what-to-do-blurb-1 =
     Si vous ne parvenez pas à vous connecter, contactez le site web pour savoir comment changer vos identifiants.
     Vous apercevez un compte que vous ne reconnaissez pas ? Vos données ont pu être vendues ou redistribuées. Cela pourrait aussi être un compte que vous avez oublié avoir créé ou une entreprise qui a changé de nom.
 fxa-what-to-do-subhead-2 = Arrêtez d’utiliser le mot de passe compromis et changez-le partout où vous l’avez utilisé.
-fxa-wtd-blurb-2 = Des pirates peuvent essayer de réutiliser ce même mot de passe et votre adresse électronique pour accéder à d’autres comptes. Créez un mot de passe unique pour chaque site web, en particulier pour votre compte bancaire, votre messagerie en ligne et les autres sites web où sont enregistrées vos données personnelles.
-fxa-what-to-do-blurb-3 = La plupart des fuites de données compromettent les adresses électroniques et les mots de passe, mais certaines impliquent des informations financières sensibles. Si vos numéros de compte bancaire ou de carte bancaire ont été compromis, prévenez votre banque de toute fraude éventuelle. Assurez-vous qu’aucun paiement frauduleux n’ait lieu en surveillant vos relevés de comptes.
+fxa-wtd-blurb-2 = Des pirates peuvent essayer de réutiliser ce même mot de passe et votre adresse e-mail pour accéder à d’autres comptes. Créez un mot de passe unique pour chaque site web, en particulier pour votre compte bancaire, votre messagerie en ligne et les autres sites web où sont enregistrées vos données personnelles.
+fxa-what-to-do-blurb-3 = La plupart des fuites de données compromettent les adresses e-mail et les mots de passe, mais certaines impliquent des informations financières sensibles. Si vos numéros de compte bancaire ou de carte bancaire ont été compromis, prévenez votre banque de toute fraude éventuelle. Assurez-vous qu’aucun paiement frauduleux n’ait lieu en surveillant vos relevés de comptes.
 fxa-what-to-do-subhead-4 = Obtenez de l’aide pour retenir tous vos mots de passe et les protéger.
 fxa-what-to-do-blurb-4 = Les gestionnaires de mots de passe tels que 1Password, LastPass, Dashlane et Bitwarden conservent vos mots de passe en toute sécurité et les remplissent dans les sites web pour vous. Utilisez un gestionnaire de mots de passe sur votre téléphone et votre ordinateur pour ne pas avoir à tous les retenir.
 # Alerts is a noun
@@ -126,8 +126,8 @@ how-hackers-work = Comprendre le mode opératoire des pirates
 monitor-your-online-accounts = Créez un { -brand-fxa } pour garder un œil sur les fuites de données.
 stay-alert = Tenez-vous au courant des dernières fuites de données
 if-your-info = Si vos informations apparaissent dans une nouvelle fuite de données, nous vous enverrons une alerte.
-search-all-emails = Vérifiez si vos adresses électroniques apparaissent dans des fuites de données et recevez des alertes lors de nouvelles menaces.
-monitor-several-emails = Surveillez plusieurs adresses électroniques
+search-all-emails = Vérifiez si vos adresses e-mail apparaissent dans des fuites de données et recevez des alertes lors de nouvelles menaces.
+monitor-several-emails = Surveillez plusieurs adresses e-mail
 take-action = Prenez des mesures pour protéger vos comptes
 keep-your-data-safe = Apprenez ce que vous devez faire pour protéger vos données des cybercriminels.
 website-breach = Fuite de site web
@@ -142,20 +142,20 @@ unverified-breach-plural = Fuites non vérifiées
 spam-list-breach-plural = Fuites de listes de courriers indésirables
 what-data = Quelles données ont été compromises :
 sensitive-sites = Comment { -product-name } traite-t-il les sites sensibles ?
-sensitive-sites-copy = { -product-name } signale les comptes associés à ce type de fuite seulement si une adresse électronique a été vérifiée. Cela signifie que vous êtes la seule personne qui puisse savoir si vos données étaient impactées par la fuite (sauf si quelqu’un d’autre a accès à votre compte de courrier électronique).
+sensitive-sites-copy = { -product-name } signale les comptes associés à ce type de fuite seulement si une adresse e-mail a été vérifiée. Cela signifie que vous êtes la seule personne qui puisse savoir si vos données étaient impactées par la fuite (sauf si quelqu’un d’autre a accès à votre compte de courrier électronique).
 delayed-reporting-headline = Pourquoi a-t-il fallu autant de temps pour signaler cette fuite de données ?
 delayed-reporting-copy = Cela peut parfois prendre des mois ou des années pour que des identifiants compromis dans une fuite de données apparaissent sur le darkweb. Les fuites sont ajoutées à notre base de données dès qu’elles ont été découvertes et vérifiées.
 about-fxm-headline = À propos de { -product-name }
 about-fxm-blurb = { -product-name } vous avertit si vos comptes en ligne ont été compromis dans une fuite de données. Découvrez si vous en êtes victime, recevez des alertes sur les nouvelles fuites de données, et prenez des mesures pour protéger vos comptes en ligne. { -product-name } est fourni par { -brand-Mozilla }.
-fxm-warns-you = { -product-name } vous avertit si votre adresse électronique a été compromise dans une fuite de données. Découvrez si vous en êtes victime, apprenez comment mieux protéger vos comptes et recevez une alerte si votre adresse électronique apparaît dans une nouvelle fuite de données.
+fxm-warns-you = { -product-name } vous avertit si votre adresse e-mail a été compromise dans une fuite de données. Découvrez si vous en êtes victime, apprenez comment mieux protéger vos comptes et recevez une alerte si votre adresse e-mail apparaît dans une nouvelle fuite de données.
 # How Firefox Monitor works
 how-fxm-works = Fonctionnement de { -product-name }
 how-fxm-1-headline = Effectuez une recherche basique
-how-fxm-1-blurb = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
+how-fxm-1-blurb = Recherchez votre adresse e-mail parmi les fuites de données publiques remontant jusqu’à 2007. Une recherche basique fera apparaître la plupart des fuites de données, à l’exception de celles qui contiennent des données personnelles sensibles.
 how-fxm-2-headline = Inscrivez-vous pour surveiller les fuites de données
 how-fxm-2-blurb =
-    Créez un { -brand-fxa } pour surveiller en continu les fuites de données qui concernent votre adresse électronique.
-    Après avoir confirmé votre adresse électronique, vous recevrez un rapport complet des précédentes fuites, y compris les fuites de données sensibles.
+    Créez un { -brand-fxa } pour surveiller en continu les fuites de données qui concernent votre adresse e-mail.
+    Après avoir confirmé votre adresse e-mail, vous recevrez un rapport complet des précédentes fuites, y compris les fuites de données sensibles.
 how-fxm-3-headline = Recevez des notifications dans votre navigateur
 how-fxm-3-blurb = Si vous utilisez { -brand-name }, vous recevrez une notification lorsque vous visiterez un site qui a été victime d’une fuite de données. Découvrez immédiatement si cette fuite vous concerne et ce que vous pouvez faire.
 wtd-after-website = Que faire après une fuite de données de site web
@@ -181,7 +181,7 @@ five-myths = 5 idées reçues sur les gestionnaires de mots de passe
 create-a-fxa = Créez un { -brand-fxa } pour recevoir votre rapport complet sur les fuites de données et pour recevoir des alertes.
 feat-security-tips = Conseils de sécurité pour protéger vos comptes
 feat-sensitive = Recherche avancée dans les fuites de données sensibles
-feat-enroll-multiple = Surveillance des fuites de données pour plusieurs adresses électroniques
+feat-enroll-multiple = Surveillance des fuites de données pour plusieurs adresses e-mail
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in. 
 appears-in-x-breaches =
@@ -191,14 +191,14 @@ appears-in-x-breaches =
     }
 check-for-breaches = Vérifier les fuites de données
 find-out-what-hackers-know = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux.
-get-email-alerts = Restez en sécurité : recevez des alertes par courriel lorsque vos informations apparaissent dans une fuite de données connue
-search-for-your-email = Recherchez votre adresse électronique parmi les fuites de données publiques remontant jusqu’à 2007.
+get-email-alerts = Restez en sécurité : recevez des alertes par e-mail lorsque vos informations apparaissent dans une fuite de données connue
+search-for-your-email = Recherchez votre adresse e-mail parmi les fuites de données publiques remontant jusqu’à 2007.
 back-to-top = Haut de la page
-comm-opt-0 = M’envoyer un courriel si l’une de mes adresses électroniques ci-dessous apparaît dans une fuite de données.
+comm-opt-0 = M’envoyer un e-mail si l’une de mes adresses e-mail ci-dessous apparaît dans une fuite de données.
 comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
-stop-monitoring-this = Arrêter de surveiller cette adresse électronique.
-resend-verification = Renvoyer le courriel de vérification
-add-new-email = Ajouter une nouvelle adresse électronique
+stop-monitoring-this = Arrêter de surveiller cette adresse e-mail.
+resend-verification = Renvoyer l’e-mail de vérification
+add-new-email = Ajouter une nouvelle adresse e-mail
 send-verification = Envoyer le lien de vérification
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -206,19 +206,19 @@ send-verification = Envoyer le lien de vérification
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Récapitulatif des fuites de données
-show-breaches-for-this-email = Afficher toutes les fuites de données pour cette adresse électronique.
-link-change-primary = Modifier l’adresse électronique principale
+show-breaches-for-this-email = Afficher toutes les fuites de données pour cette adresse e-mail.
+link-change-primary = Modifier l’adresse e-mail principale
 remove-fxm = Supprimer { -product-name }
 remove-fxm-blurb = Désactive les alertes { -product-name }. Votre { -brand-fxa } restera actif, et vous pourrez recevoir d’autres messages liés à votre compte.
 # Button title
-manage-email-addresses = Gérer les adresses électroniques
+manage-email-addresses = Gérer les adresses e-mail
 # Link title
 latest-breach-link = Vérifiez si cette fuite de données vous concerne
 welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $userName } !
-breach-alert-subject = { -product-name } a détecté votre adresse électronique dans une nouvelle fuite de données.
+breach-alert-subject = { -product-name } a détecté votre adresse e-mail dans une nouvelle fuite de données.
 your-info-was-discovered-headline = Vos données ont été découvertes dans une nouvelle fuite.
-your-info-was-discovered-blurb = Vous êtes abonné·e aux alertes { -product-name } et en recevez lorsque votre adresse électronique apparaît dans des fuites de données. Voici ce que nous savons de cette fuite.
+your-info-was-discovered-blurb = Vous êtes abonné·e aux alertes { -product-name } et en recevez lorsque votre adresse e-mail apparaît dans des fuites de données. Voici ce que nous savons de cette fuite.
 what-to-do-after-breach = Que faire après une fuite de données ?
 ba-next-step-1 = Remplacez votre mot de passe par un mot de passe unique et robuste.
 ba-next-step-blurb-1 =
@@ -234,7 +234,7 @@ ba-next-step-3 = Obtenez de l’aide pour créer de meilleurs mots de passe et l
 ba-next-step-blurb-3 = Utilisez un gestionnaire de mots de passe pour créer des mots de passe forts et uniques. Les gestionnaires de mots de passe conservent en toute sécurité l’ensemble de vos identifiants afin que vous puissiez y accéder sur tous vos appareils.
 faq1 = Je ne reconnais pas cette société ou ce site web. Pourquoi cette fuite me concerne-t-elle ?
 faq2 = Pourquoi a-t-il fallu si longtemps pour me prévenir de cette fuite de données ?
-faq3 = Comment puis-je savoir si ce courriel de { -product-name } est authentique ?
+faq3 = Comment puis-je savoir si cet e-mail de { -product-name } est authentique ?
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NOUVELLE FUITE DE DONNÉES DÉCOUVERTE
@@ -244,14 +244,14 @@ sign-up-headline-1 = Recevez des alertes en continu avec un { -brand-fxa }.
 account-not-required = Le navigateur { -brand-name } n’est pas requis pour créer un { -brand-fxa }. Vous pourrez recevoir des informations à propos des services de { -brand-Mozilla }.
 was-your-info-exposed = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
 find-out-if = Vérifiez si vos données ont été compromises dans cette fuite de données.
-fb-not-comp = Cette adresse électronique n’apparaît pas dans la fuite de données { $breachName }.
+fb-not-comp = Cette adresse e-mail n’apparaît pas dans la fuite de données { $breachName }.
 other-breaches-found =
     { $breachCount ->
         [one] Cependant, elle apparaît dans une autre fuite.
        *[other] Cependant, elle apparaît dans { $breachCount } autres fuites.
     }
-fb-comp-only = Cette adresse électronique apparaît dans la fuite de données { $breachName }.
-fb-comp-and-others = Cette adresse électronique apparaît dans { $breachCount } fuites de données connues, fuite { $breachName } comprise.
+fb-comp-only = Cette adresse e-mail apparaît dans la fuite de données { $breachName }.
+fb-comp-and-others = Cette adresse e-mail apparaît dans { $breachCount } fuites de données connues, fuite { $breachName } comprise.
 no-other-breaches-found = Aucune autre fuite trouvée via une recherche basique.
 no-results-blurb = Désolé, cette fuite ne figure pas dans notre base de données.
 all-breaches-headline = Toutes les fuites de données dans { -product-name }
@@ -259,8 +259,8 @@ search-breaches = Rechercher des fuites de données
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
-    <span>Votre adresse électronique n’apparait pas dans cette fuite de données, mais votre numéro de téléphone, lui, peut toujours être vulnérable.</span> Certains des comptes compromis dans la fuite de Facebook incluaient les numéros de téléphone et d’autres
-    informations personnelles mais pas d’adresses électroniques. Si vous avez déjà ouvert un compte Facebook — même si vous ne l’utilisez pas actuellement — nous vous recommandons de prendre les mesures suivantes pour vous protéger
+    <span>Votre adresse e-mail n’apparait pas dans cette fuite de données, mais votre numéro de téléphone, lui, peut toujours être vulnérable.</span> Certains des comptes compromis dans la fuite de Facebook incluaient les numéros de téléphone et d’autres
+    informations personnelles mais pas d’adresses e-mail. Si vous avez déjà ouvert un compte Facebook — même si vous ne l’utilisez pas actuellement — nous vous recommandons de prendre les mesures suivantes pour vous protéger
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>Définissez vos informations personnelles sur « Moi uniquement » ou tout autre paramètre non public dans <a>votre profil Facebook</a>.</span>
@@ -273,7 +273,7 @@ facebook-breach-what-to-do-2-headline =
 facebook-breach-what-to-do-2-copy =
     L’échange de carte SIM, également appelé détournement de SIM,
     se produit lorsqu’un pirate utilise les numéros de téléphone, la date de naissance et d’autres données d’une personne
-    pour prendre le contrôle de son numéro de téléphone mobile, et ensuite pirater son adresse électronique, ses comptes de médias sociaux ou même d’institutions financières.
+    pour prendre le contrôle de son numéro de téléphone mobile, et ensuite pirater son adresse e-mail, ses comptes de médias sociaux ou même d’institutions financières.
 facebook-breach-what-to-do-3 = Voir toutes les recommandations sur notre page consacrée aux fuites de Facebook
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Fuites visibles :
@@ -283,7 +283,7 @@ currently-showing = Fuites visibles :
 error-bot-headline = Recherches temporairement suspendues
 error-bot-blurb =
     Nous pensons que vous pourriez être un robot parce que vous avez recherché
-    plusieurs adresses électroniques dans un court laps de temps. Pour l’instant, vous ne pouvez plus effectuer
+    plusieurs adresses e-mail dans un court laps de temps. Pour l’instant, vous ne pouvez plus effectuer
     de nouvelles recherches. Vous pourrez réessayer plus tard.
 error-csrf-headline = Session expirée
 error-csrf-blurb = Cliquez sur le bouton Précédent de votre navigateur, actualisez la page et réessayez.
@@ -294,8 +294,8 @@ error-invalid-unsub-blurb = Vous devrez vous désabonner depuis l’un des messa
 # your localization, because it would result in the number showing twice.
 email-addresses-being-monitored =
     { $emails ->
-        [one] adresse électronique surveillée
-       *[other] adresses électroniques surveillées
+        [one] adresse e-mail surveillée
+       *[other] adresses e-mail surveillées
     }
 # This string is displayed under a large numeral that indicates the total number
 # of data breaches that exposed a user’s password. Don’t add $passwords to
@@ -317,17 +317,17 @@ known-data-breaches-exposed =
 see-additional-breaches = Voir les fuites supplémentaires
 scan-results-known-breaches =
     { $breachCount ->
-        [0] Cette adresse électronique n’apparaît dans aucune fuite de données connue.
-        [one] Cette adresse électronique apparaît dans une fuite de données connue.
-       *[other] Cette adresse électronique apparaît dans { $breachCount } fuites de données connues.
+        [0] Cette adresse e-mail n’apparaît dans aucune fuite de données connue.
+        [one] Cette adresse e-mail apparaît dans une fuite de données connue.
+       *[other] Cette adresse e-mail apparaît dans { $breachCount } fuites de données connues.
     }
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
 results-for = Résultats pour : { $userEmail }
-other-monitored-emails = Autres adresses électroniques surveillées
-email-verification-required = Vérification de l’adresse électronique nécessaire
-fxa-primary-email = Adresse électronique du { -brand-fxa } (principale)
+other-monitored-emails = Autres adresses e-mail surveillées
+email-verification-required = Vérification de l’adresse e-mail nécessaire
+fxa-primary-email = Adresse e-mail du { -brand-fxa } (principale)
 what-is-a-website-breach = Qu’est-ce qu’une fuite de données de site web ?
 website-breach-blurb = Une fuite de données de site web se produit lorsque des cybercriminels volent, copient ou compromettent des informations à caractère personnel de comptes en ligne. Cela arrive généralement lorsque des pirates informatiques trouvent une faille dans la sécurité du site web. Des fuites peuvent également se produire lorsque des informations de compte sont divulguées par accident.
 security-tips-headline = Conseils de sécurité pour vous protéger des pirates informatiques
@@ -335,10 +335,10 @@ steps-to-protect = Mesures à prendre pour protéger votre identité en ligne
 take-further-steps = Prenez des mesures supplémentaires pour protéger votre identité
 alert-about-new-breaches = M’alerter lors de nouvelles fuites de données
 see-if-youve-been-part = Vérifiez si une fuite de données en ligne vous concerne.
-get-ongoing-breach-monitoring = Surveillez en continu les fuites de données pour plusieurs adresses électroniques.
+get-ongoing-breach-monitoring = Surveillez en continu les fuites de données pour plusieurs adresses e-mail.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Vérifier
-new-unsub-error = Vous devrez vous désabonner depuis l’un des courriels envoyés par { -product-name }.
+new-unsub-error = Vous devrez vous désabonner depuis l’un des e-mail envoyés par { -product-name }.
 other-known-breaches-found =
     { $breachCount ->
         [one] Cependant, elle apparaît dans une autre fuite connue.
@@ -348,7 +348,7 @@ other-known-breaches-found =
 # of data classes that the breach exposed.
 additional-information-including = Informations supplémentaires, notamment :
 # Title
-email-addresses-title = Adresses électroniques
+email-addresses-title = Adresses e-mail
 # This is a section headline on the breach detail page that appears above
 # a short summary about the breach.
 breach-overview-title = Vue d’ensemble
@@ -366,14 +366,14 @@ signed-in-as = Connecté·e en tant que : { $userEmail }
 filter-by = Filtrer par catégorie :
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Menu
-to-affected-email = Envoyer les alertes à l’adresse électronique concernée
+to-affected-email = Envoyer les alertes à l’adresse e-mail concernée
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Il existe un moyen de protéger votre vie privée. Rejoignez { -brand-name }.
 # Link title
 learn-more-link = En savoir plus.
-email-sent = Courriel envoyé !
+email-sent = E-mail envoyé !
 # Form title
-want-to-add = Voulez-vous ajouter une autre adresse électronique ?
+want-to-add = Voulez-vous ajouter une autre adresse e-mail ?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
 verify-the-link = Vérifiez le lien envoyé à { $userEmail } pour l’ajouter à { -product-name }.
@@ -381,11 +381,11 @@ verify-the-link = Vérifiez le lien envoyé à { $userEmail } pour l’ajouter �
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
-email-verified = Adresse électronique vérifiée !
+email-verified = Adresse e-mail vérifiée !
 email-added-to-subscription = Nous vous préviendrons si { $email } apparaît dans une fuite de données.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pour consulter et gérer toutes les adresses électroniques que vous avez inscrites pour la surveillance des fuites de données, { $nestedSignInLink }.
+email-verified-view-dashboard = Pour consulter et gérer toutes les adresses e-mail que vous avez inscrites pour la surveillance des fuites de données, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = connectez-vous
 
@@ -395,7 +395,7 @@ sign-in-nested = connectez-vous
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
-manage-all-emails = Gérez toutes les adresses électroniques dans les { $preferencesLink }.
+manage-all-emails = Gérez toutes les adresses e-mail dans les { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
@@ -428,8 +428,8 @@ see-additional-recs = Voir les recommandations supplémentaires
 resolve-top-notification = { $affectedEmail } est apparu dans cette fuite de données. <a>Que faire ?</a>
 resolve-top-notification-plural =
     { $numAffectedEmails ->
-        [one] Une de vos adresses électroniques est apparue dans cette fuite de données. <a>Que faire ?</a>
-       *[other] { $numAffectedEmails } de vos adresses électroniques sont apparues dans cette fuite de données. <a>Que faire ?</a>
+        [one] Une de vos adresses e-mail est apparue dans cette fuite de données. <a>Que faire ?</a>
+       *[other] { $numAffectedEmails } de vos adresses e-mail sont apparues dans cette fuite de données. <a>Que faire ?</a>
     }
 
 ##

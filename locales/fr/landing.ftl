@@ -3,9 +3,12 @@
 
 ## Hero
 
+find-out-if-breached = Vérifiez si vous êtes concerné·e par une fuite de données
 
 ## Why use Firefox Monitor?
 
+why-use-monitor = Pourquoi utiliser { -brand-fx-monitor } ?
+protect-account = Protéger vos comptes
 
 ## Here’s how it works
 

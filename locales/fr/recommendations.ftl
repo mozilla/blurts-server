@@ -38,7 +38,7 @@ rec-cc = Vérifiez l’absence de dépenses inhabituelles effectuées avec votre
 # Recommendation subhead
 rec-email-mask-subhead = Utilisez un alias de messagerie
 rec-email-cta = Essayer { -brand-relay }
-rec-email = Fournir votre adresse électronique réelle permet aux pirates informatiques ou aux traqueurs de trouver vos mots de passe ou de vous cibler en ligne plus facilement. Un service comme { -brand-relay } masque votre adresse électronique réelle tout en transmettant les messages à votre boîte de réception réelle.
+rec-email = Fournir votre adresse e-mail réelle permet aux pirates informatiques ou aux traqueurs de trouver vos mots de passe ou de vous cibler en ligne plus facilement. Un service comme { -brand-relay } masque votre adresse e-mail réelle tout en transmettant les messages à votre boîte de réception réelle.
 # Recommendation subhead
 rec-ip-subhead = Utilisez un service qui masque votre adresse IP
 # Link title
@@ -96,7 +96,7 @@ rec-gen-3-subhead = Soyez prudent·e lorsque vous divulguez des informations per
 rec-gen-3-cta = Découvrir davantage de conseils pour votre sécurité
 rec-gen-3 =
     Ne communiquez pas de données personnelles si ce n’est pas indispensable. Si on vous demande de
-    saisir ou donner votre adresse électronique, votre code postal ou votre numéro de téléphone, vous pouvez dire NON.
+    saisir ou donner votre adresse e-mail, votre code postal ou votre numéro de téléphone, vous pouvez dire NON.
 # Recommendation subhead
 rec-gen-4-subhead = Mettez régulièrement à jour les logiciels et les applications
 rec-gen-4 = Les mises à jour des applications, du navigateur et du système d’exploitation sont bonnes pour votre smartphone. Elles corrigent des bogues, des vulnérabilités logicielles et des problèmes de sécurité.
