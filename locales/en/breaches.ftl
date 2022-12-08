@@ -8,8 +8,8 @@ column-company = COMPANY
 column-breached-data = BREACHED DATA
 column-detected = DETECTED
 
-# Summary of each breach. $dateBreached and $dateAdded are dates that should be localized via Javascript DateTimeFormat(). $dataClasses is a comma separated list of strings from data-classes.ftl
-breach-description = On { $dateBreached }, { $companyName } was breached. Once the breach was discovered and verified, it was added to our database on { $dateAdded }. This breach included: { $dataClasses }
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = On { $breachDate }, { $companyName } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }. This breach included: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 

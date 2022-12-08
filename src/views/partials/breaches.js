@@ -1,32 +1,40 @@
-import { getMessage } from '../../utils/fluent.js'
-import { formatDate } from '../../utils/date-time.js'
+import { getMessage, getLocale } from '../../utils/fluent.js'
 
 const rowHtml = data => `
 <details>
   <summary>
-    <span class='company'>${data.Title}</span><span class='data-types'>${data.dataClassesFormatted}</span><span class='date'>${data.breachDateShort}</span>
+    <span>${data.companyName}</span><span>${data.dataClasses}</span><span>${data.breachDate}</span>
   </summary>
   <div>
-    ${data.descriptionFormatted}
+    ${data.description}
   </div>
 </details>
 `
 
 function createRows (data) {
+  const locale = getLocale()
   const allEmailBreaches = data.verifiedEmails.flatMap(item => item.breaches)
+  let breachDate, addedDate, dataClassesTranslated
 
-  allEmailBreaches.forEach(breach => {
-    breach.dataClassesFormatted = breach.DataClasses.map(item => getMessage(item)).join(', ')
-    breach.breachDateShort = formatDate(breach.BreachDate)
-    breach.descriptionFormatted = getMessage('breach-description', {
+  const formattedBreaches = allEmailBreaches.map(breach => {
+    breachDate = Date.parse(breach.BreachDate)
+    addedDate = Date.parse(breach.AddedDate)
+    dataClassesTranslated = breach.DataClasses.map(item => getMessage(item))
+
+    return {
       companyName: breach.Title,
-      dateBreached: formatDate(breach.BreachDate, { month: 'long' }),
-      dateAdded: formatDate(breach.AddedDate, { month: 'long' }),
-      dataClasses: breach.dataClassesFormatted
-    })
+      breachDate: new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).format(breachDate),
+      dataClasses: new Intl.ListFormat(locale, { style: 'narrow' }).format(dataClassesTranslated),
+      description: getMessage('breach-description', {
+        companyName: breach.Title,
+        breachDate: new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' }).format(breachDate),
+        addedDate: new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' }).format(addedDate),
+        dataClasses: new Intl.ListFormat(locale, { style: 'long' }).format(dataClassesTranslated)
+      })
+    }
   })
 
-  return allEmailBreaches.map(breach => rowHtml(breach)).join('')
+  return formattedBreaches.map(breach => rowHtml(breach)).join('')
 }
 
 export const breaches = data => `
