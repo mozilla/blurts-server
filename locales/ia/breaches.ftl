@@ -40,24 +40,36 @@ breach-checklist-bank-body = Facer lo plus velocemente poterea dar te plus prote
 ## Prompts the user for changes when there is a breach detected of pin
 
 breach-checklist-pin-header = Notifica tu emissor de carta e cambia tu PIN immediatemente.
+breach-checklist-pin-body = Verifica que tu nove PIN, o omne altere PIN, non include numeros facilemente divinabile, tal como tu data de nascentia o adresse.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Usa internet reservatemente con un VPN, tal como <a>{ -brand-mozilla-vpn }</a>.
+breach-checklist-ip-body = Tu adresse IP (adresse de Protocollo Internet) indica tu position e tu fornitor del servicio internet. Un VPN pote celar tu real adresse IP assi que tu pote usar internet reservatemente.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Cambia ulle contrasignos o PINs que include ulle parte de tu adresse.
+breach-checklist-address-body = Le adresses es facile a trovar in le registros public e pote render facile divinar ille contrasignos e PINs.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Cambia ulle contrasignos o PINs que include tu data de nascentia.
+breach-checklist-dob-body = Le datas de nascentia es facile a trovar in registros public, e illes qui lo trova poterea facilemente divinar tu PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Protege tu numero de telephono con un servicio disguisante como <a>{ -brand-relay }</a>, que cela tu ver numero de telephono.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Actualisa tu demandas de securitate sur <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Usa longe, aleatori responsas, e conserva los in un loco secur. Face lo ubique tu ha usate le mesme demandas de securitate.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Crea unic, contrasignos forte pro ulle conto ubi tu ha re-usate contrasignos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
