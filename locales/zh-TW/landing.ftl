@@ -30,6 +30,8 @@ alerts-for-breaches-monitor-new = 我們將持續監控新的資料外洩事件�
 ## Your privacy is safe with us
 
 safe-with-us = 您的隱私在我們這裡很安全
+parent-company = 在 { -brand-firefox } 與 { -brand-fx-monitor } 的母公司 { -brand-Mozilla }，我們相信每個人在網際網路上的安全與隱私相當重要，不可視為選配。
+our-mission = 我們的使命是要打造更好的網路環境：一個讓人們能夠自行塑造上網體驗、受到賦權並且感到安全的地方。我們是由非營利組織 { -brand-mozilla-foundation } 所全資擁有，讓我們能將個人與大眾的利益，放在自己的獲利之前。
 learn-more-mission = 更加了解我們的使命
 
 ## Top questions about Firefox Monitor
