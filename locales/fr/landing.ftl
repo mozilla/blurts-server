@@ -28,6 +28,8 @@ alerts-for-breaches-monitor-new = Nous surveillerons en permanence les nouvelles
 
 ## Your privacy is safe with us
 
+safe-with-us = Votre vie privée est entre de bonnes mains
+parent-company = Chez { -brand-Mozilla }, la société mère de { -brand-firefox } et { -brand-fx-monitor }, nous pensons que la sécurité et la vie privée des personnes sur Internet sont fondamentales et ne doivent pas être facultatives.
 our-mission = Notre mission est de créer un meilleur Internet, un Internet où chacun peut modeler l’usage qu’il en fait, se sentir autonome et rester en sécurité. Nous appartenons à 100 % à la { -brand-mozilla-foundation }, une organisation à but non lucratif, ce qui nous permet de faire passer les intérêts individuels et publics avant les intérêts financiers.
 learn-more-mission = En savoir plus sur notre mission
 
