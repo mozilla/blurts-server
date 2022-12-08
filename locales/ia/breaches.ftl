@@ -19,15 +19,27 @@ breach-checklist-email-body = Isto pote celar tu ver adresse de e-mail, reinvian
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Survelia tu reporto de credito pro contos, prestos, o cartas de credito que tu non recognosce.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Tu alsi pote considerar de gelar tu credito sur <a>Equifax</a>, <a>Experian</a> e <a>TransUnion</a> pro stoppar scammers de aperir nove contos in tu nomine.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Reporta iste violation al emissor de tu carta de credito e requesta un nove carta con un nove numero.
+breach-checklist-cc-body = Tu deberea alsi revider le transactiones de tu carta de credito pro cargas non recognoscite.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Notifica tu banca immediatemente que tu numero de conto ha essite compromittite.
+breach-checklist-bank-body = Facer lo plus velocemente poterea dar te plus protectiones legal pro adjutar te a recuperar ulle perditas.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Notifica tu emissor de carta e cambia tu PIN immediatemente.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
