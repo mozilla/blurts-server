@@ -99,4 +99,4 @@ rec-gen-3 =
     saisir ou donner votre adresse e-mail, votre code postal ou votre numéro de téléphone, vous pouvez dire NON.
 # Recommendation subhead
 rec-gen-4-subhead = Mettez régulièrement à jour les logiciels et les applications
-rec-gen-4 = Les mises à jour des applications, du navigateur et du système d’exploitation sont bonnes pour votre smartphone. Elles corrigent des bogues, des vulnérabilités logicielles et des problèmes de sécurité.
+rec-gen-4 = Les mises à jour des applications, du navigateur et du système d’exploitation sont bonnes pour votre smartphone. Elles corrigent des bugs, des vulnérabilités logicielles et des problèmes de sécurité.
