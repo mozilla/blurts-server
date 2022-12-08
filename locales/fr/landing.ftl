@@ -4,6 +4,7 @@
 ## Hero
 
 find-out-if-breached = Vérifiez si vous êtes concerné·e par une fuite de données
+get-started = Lancez-vous
 
 ## Why use Firefox Monitor?
 
@@ -27,6 +28,7 @@ alerts-for-breaches-monitor-new = Nous surveillerons en permanence les nouvelles
 
 ## Your privacy is safe with us
 
+our-mission = Notre mission est de créer un meilleur Internet, un Internet où chacun peut modeler l’usage qu’il en fait, se sentir autonome et rester en sécurité. Nous appartenons à 100 % à la { -brand-mozilla-foundation }, une organisation à but non lucratif, ce qui nous permet de faire passer les intérêts individuels et publics avant les intérêts financiers.
 learn-more-mission = En savoir plus sur notre mission
 
 ## Top questions about Firefox Monitor
