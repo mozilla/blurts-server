@@ -4,12 +4,16 @@
 ## Hero
 
 find-out-if-breached = Discoperi si tu ha essite in un violation de datos
+stay-safe-with-tool = Sta secur con un simple e totevia potente instrumento que tracia si tu informationes personal ha essite exponite a un violation de datos. Nos te adjutara a comprender que facer postea e continuemente survelia pro ulle nove violationes, toto a nulle costo pro te.
 get-started = Comenciar
 
 ## Why use Firefox Monitor?
 
 why-use-monitor = Perque usar { -brand-fx-monitor }?
+identifying-breaches = Identificar e resolver violationes de datos es un importante passo pro assecurar tu vita private online.
 protect-account = Defende tu contos
+protect-account-prevent-hackers = Impedi le piratas informatic de poner se in tu contos con contrasignos violate.
+prevent-fraud = Impedi fraudes e cybercrimines
 get-alerts = Recipe avisos re nove violationes
 
 ## Here’s how it works
