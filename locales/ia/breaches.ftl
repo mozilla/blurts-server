@@ -70,6 +70,9 @@ breach-checklist-sq-body = Usa longe, aleatori responsas, e conserva los in un l
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crea unic, contrasignos forte pro ulle conto ubi tu ha re-usate contrasignos.
+breach-checklist-hp-body = Un gestor de contrasignos como le  <a>Gestor de contrasignos de { -brand-firefox }</a> (que es gratuite e integrate al navigator { -brand-firefox }) pote adjutar te a tener tracia de tote tu contrasignos e a acceder los con securitate ab tote tu apparatos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Contacta { $companyName } pro informar les re iste violation e querer specific passos que tu pote facer.
