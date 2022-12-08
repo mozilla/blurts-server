@@ -10,9 +10,11 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Va a <a>{ $breachedCompanyUrl }</a> pro cambiar tu contrasigno e activar le authentication a duo factores (A2F).
+breach-checklist-pw-body = Assecura te que tu contrasigno es unic e difficile a divinar. Si iste contrasigno es usate con altere contos, non oblida de cambiar lo in illos tamben. Le <a>gestor de contrasignos de { -brand-firefox }</a> pote adjutar te a guardar tracia de tote tu contrasignos in securitate.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Protege tu adresse de e-mail con un servicio de mascas de e-mail como <a>{ -brand-relay }</a>.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
