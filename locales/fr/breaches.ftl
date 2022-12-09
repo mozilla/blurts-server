@@ -19,6 +19,13 @@ breach-checklist-email-body = Cela masquera votre véritable adresse e-mail tout
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Surveillez votre rapport de crédit et vérifiez tout compte, prêt ou carte de crédit que vous ne reconnaitriez pas.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Vous pouvez également envisager de geler votre crédit sur <a>Equifax</a>, <a>Experian</a> et <a>TransUnion</a> pour empêcher les escrocs d’ouvrir de nouveaux comptes à votre nom. C’est gratuit et n’affectera pas votre score de crédit.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
