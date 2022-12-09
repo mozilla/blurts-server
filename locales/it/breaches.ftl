@@ -39,15 +39,20 @@ breach-checklist-address-header = Modifica le password o i PIN che includono par
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Modifica le password o i PIN che includono la tua data di nascita.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Aggiorna le tue domande di sicurezza su <a>{ $breachedCompanyUrl }</a>.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Contatta { $companyName } per informarli di questa violazione e chiedi loro quali sono le misure specifiche da intraprendere.
