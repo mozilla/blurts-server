@@ -51,7 +51,7 @@
 
 .breach-rows header > :nth-child(3),
 .breach-rows summary > :nth-child(3) {
-  flex-basis: 110px;
+  flex-basis: 100px;
 }
 
 .breach-rows summary > :nth-child(2),
