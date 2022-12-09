@@ -37,14 +37,17 @@ breach-checklist-pin-body = Assurez-vous que votre nouveau code PIN, ou tout aut
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-body = Votre adresse IP (adresse de protocole Internet) identifie votre emplacement et votre fournisseur d’accès à Internet. Un VPN peut masquer votre véritable adresse IP afin que vous puissiez utiliser Internet en privé.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
 breach-checklist-address-header = Changez tout mot de passe ou code PIN qui inclut une partie de votre adresse.
+breach-checklist-address-body = Les adresses sont faciles à trouver dans les archives publiques et peuvent rendre ces mots de passe et codes PIN faciles à deviner.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
 breach-checklist-dob-header = Changez tout mot de passe ou code PIN qui inclut votre date de naissance.
+breach-checklist-dob-body = Les dates de naissance sont faciles à trouver dans les archives publiques, et les personnes qui les trouvent pourraient facilement deviner votre code PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
