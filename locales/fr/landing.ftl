@@ -45,6 +45,7 @@ when-info-exposed = Une fuite de données se produit lorsque des données person
 what-do-i-do = Je viens de découvrir qu’une fuite de données me concerne. Que dois-je faire ?
 # question and answer
 what-gets-exposed = Quelles informations sont compromises dans les fuites de données ?
+depends-on-hackers = Toutes les fuites de données n’exposent pas toutes les mêmes informations. Cela dépend simplement de ce à quoi les pirates peuvent accéder. De nombreuses fuites de données exposent les adresses e-mail et les mots de passe. D’autres exposent des informations plus sensibles telles que les numéros de carte bancaire, les numéros de passeport et les numéros de sécurité sociale.
 
 ## See if you’ve been in a data breach
 
