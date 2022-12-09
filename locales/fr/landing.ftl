@@ -40,6 +40,7 @@ top-questions-about-monitor = Questions fréquentes à propos de { -brand-fx-mon
 see-all-faq = Voir toute la FAQ
 # question and answer
 what-is-breach = Qu’est-ce qu’une fuite de données exactement ?
+when-info-exposed = Une fuite de données se produit lorsque des données personnelles ou privées sont exposées, dérobées ou copiées sans autorisation. Ces incidents de sécurité peuvent être le résultat de cyberattaques contre des sites web, des applications ou toute base de données où sont conservées les données personnelles des personnes. Une fuite de données peut également se produire par accident, comme lorsque les identifiants de connexion de quelqu’un sont accidentellement publiés publiquement.
 # question and answer
 what-do-i-do = Je viens de découvrir qu’une fuite de données me concerne. Que dois-je faire ?
 # question and answer
