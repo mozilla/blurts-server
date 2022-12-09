@@ -37,6 +37,7 @@ breach-checklist-pin-body = Assurez-vous que votre nouveau code PIN, ou tout aut
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Utilisez Internet en privé avec un VPN, tel que <a>{ -brand-mozilla-vpn }</a>.
 breach-checklist-ip-body = Votre adresse IP (adresse de protocole Internet) identifie votre emplacement et votre fournisseur d’accès à Internet. Un VPN peut masquer votre véritable adresse IP afin que vous puissiez utiliser Internet en privé.
 
 ## Prompts the user for changes when there is a breach detected of physical address
