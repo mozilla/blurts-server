@@ -26,3 +26,4 @@ depends-on-hackers = No todas las filtraciones exponen la misma información. So
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Revisa si has estado presente en una filtración de datos.
