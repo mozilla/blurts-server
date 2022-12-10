@@ -77,9 +77,9 @@ unsub-button = Annulla iscrizione
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dati sulle violazioni forniti da { $hibp-link }
 share-twitter = La maggior parte delle persone ha un centinaio di account online. Scopri se alcuni dei tuoi sono stati esposti a una violazione dei dati.
-share-facebook-headline = Scopri se hai subito una violazione dei dati
+share-facebook-headline = Scopri se sei stato coinvolto in una violazione di dati
 share-facebook-blurb = I tuoi account online sono stati esposti a una violazione dei dati?
-og-site-description = Scopri se hai subito una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
+og-site-description = Scopri se sei stato coinvolto in una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
 show-all = Mostra tutto
 fxa-scan-another-email = Vuoi controllare un altro indirizzo email?
 sign-out = Disconnetti
