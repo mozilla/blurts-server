@@ -65,9 +65,12 @@ breach-checklist-phone-header = Beskermje jo telefoannûmer mei in maskearstsjin
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-sq-header = Wurkje jo befeiligingsfragen by op <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Brûk lange, willekeurige antwurden en bewarje se op in feilich plak. Doch dit oeral wêr’t jo deselde befeiligingsfragen brûkt hawwe.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Meitsje unike, sterke wachtwurden foar elk account wêr’t jo wachtwurden opnij brûkt hawwe.
+breach-checklist-hp-body = In wachtwurdenbehearder lykas de <a>{ -brand-firefox }-wachtwurdenbehearder</a> (dy’t fergees is en ynboud is yn de { -brand-firefox }-browser) kin jo helpe om al jo wachtwurden by te hâlden en der feilich tagong ta te krijen fan al jo apparaten ôf.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
