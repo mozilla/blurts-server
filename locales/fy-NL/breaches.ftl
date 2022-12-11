@@ -45,18 +45,26 @@ breach-checklist-pin-body = Soargje derfoar dat jo nije pinkoade, of in oare pin
 ## Prompts the user for changes when there is a breach detected of IP address
 
 breach-checklist-ip-header = Brûk it ynternet privee mei in VPN, lykas <a>{ -brand-mozilla-vpn }</a>.
+breach-checklist-ip-body = Jo IP-adres (Internet Protocol-adres) jout jo lokaasje en ynternetprovider oan. In VPN kin jo echte IP-adres ferstopje, sadat jo privee ynternet brûke kinne.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Wizigje wachtwurden of pinkoaden dy’t in part fan jo adres befetsje.
+breach-checklist-address-body = Adressen binne maklik te finen yn iepenbiere dossiers en kinne derfoar soargje dat dy wachtwurden en pinkoaden maklik te rieden binne.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Wizigje wachtwurden of pinkoaden dy’t jo bertedatum befetsje.
+breach-checklist-dob-body = Bertedata binne maklik te finen yn iepenbiere dossiers en minsken dy’t jo bertedatum fine, kinne jo pinkoade maklik riede.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Beskermje jo telefoannûmer mei in maskearstsjinst lykas <a>{ -brand-relay }</a>, dy’t jo wiere telefoannûmer ferberget.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Wurkje jo befeiligingsfragen by op <a>{ $breachedCompanyUrl }</a>.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
