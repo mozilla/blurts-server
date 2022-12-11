@@ -14,21 +14,37 @@ breach-checklist-pw-body = Soargje derfoar dat jo wachtwurd unyk en dreech te ri
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Beskermje jo e-mail mei in tsjinst foar it maskearjen fan e-mail, lykas <a>{ -brand-relay }</a>.
+breach-checklist-email-body = Dit kin jo echte e-mailadres ferbergje, wylst e-mailberjochten nei jo echte Postfek YN trochstjoerd wurde.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Kontrolearje jo bankôfskrift op rekkeningen, lieningen of creditcards dy’t jo net werkenne.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Jo kinne ek oerweagje jo tegoed op <a>Equifax</a>, <a>Experian</a> en <a>TransUnion</a> te befriezen, om foar te kommen dat oplichters nije accounts op jo namme iepenje. It is fergees en hat gjin ynfloed op jo kredytskoare.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Meld dit lek by jo creditcardmaatskippij en freegje in nije kaart oan mei in nij nûmer.
+breach-checklist-cc-body = Kontrolearje ek jo creditcardôfskriften op ûnbekende ôfskriuwingen.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Bring jo bank daliks op de hichte dat jo rekkeningnûmer hackt is.
+breach-checklist-bank-body = As jo dit flugger dogge, kinne jo mear juridyske beskerming krije om eventuele ferliezen te ferheljen. Kontrolearje ek jo rekkeningen op net-herkende ôfskriuwingen.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Bring jo kaartferstrekker op de hichte en wizigje jo pinkoade daliks.
+breach-checklist-pin-body = Soargje derfoar dat jo nije pinkoade, of in oare pinkoade, gjin maklik te rieden sifers befettet, lykas jo bertedatum of adres.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Brûk it ynternet privee mei in VPN, lykas <a>{ -brand-mozilla-vpn }</a>.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
