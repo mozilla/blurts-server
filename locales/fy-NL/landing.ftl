@@ -47,6 +47,8 @@ what-do-i-do = Ik kaam der krekt efter dat ik yn in datalek foar kom. Wat moat i
 visit-monitor-to-learn = Gean nei { -brand-fx-monitor } foar mear ynformaasje oer wat jo dwaan moatte nei in datalek. Hackers rekkenje derop dat minsken wachtwurden opnij brûke, dus it is wichtich om sterke, unike wachtwurden te meitsjen foar al jo accounts. Bewarje jo wachtwurden op in feilich plak wêr’t allinnich jo tagong ta hawwe; dit kin itselde plak wêze wêr’t jo wichtige dokuminten bewarje of in wachtwurdenbehearder.
 # question and answer
 what-gets-exposed = Hokker gegevens wurde lekt by datalekken?
+depends-on-hackers = Net alle lekken litte allegearre deselde ynformaasje sjen. It hinget der mar fan ôf wêr’t hackers tagong ta hawwe. In protte datalekken litte e-mailadressen en wachtwurden sjen. Oare jouwe mear gefoelige ynformaasje frij, lykas creditcardnûmers, paspoartnûmers en burgerservicenûmers.
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Besjoch oft jo troffen binne troch in datalek
