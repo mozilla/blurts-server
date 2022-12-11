@@ -74,3 +74,5 @@ breach-checklist-hp-body = In wachtwurdenbehearder lykas de <a>{ -brand-firefox 
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Nim kontakt op mei { $companyName } om harren te ynformearjen oer dizze ynbrek en freegje hokker spesifike stappen jo ûndernimme kinne.
