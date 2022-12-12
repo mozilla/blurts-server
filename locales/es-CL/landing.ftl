@@ -4,6 +4,7 @@
 ## Hero
 
 find-out-if-breached = Averigua si has estado presente en una filtración de datos.
+stay-safe-with-tool = Manténte seguro con una herramienta simple pero poderosa que rastrea si tu información personal ha sido expuesta en una filtración de datos. Te ayudaremos a comprender qué hacer a continuación y monitorearemos continuamente cualquier nueva filtración, todo sin costo alguno para ti.
 get-started = Empezar
 
 ## Why use Firefox Monitor?
@@ -30,6 +31,8 @@ alerts-for-breaches-monitor-new = Supervisaremos continuamente nuevas filtracion
 ## Your privacy is safe with us
 
 safe-with-us = Tu privacidad esta segura con nosotros
+parent-company = En { -brand-Mozilla }, la empresa matriz de { -brand-firefox } y { -brand-fx-monitor }, creemos que la seguridad y la privacidad de las personas en Internet son fundamentales y no deben considerarse opcionales.
+our-mission = Nuestra misión es construir un mejor Internet, uno en la que las personas puedan dar forma a sus propias experiencias, sentirse empoderadas y mantenerse seguras. Pertenecemos de forma exclusiva a { -brand-mozilla-foundation }, una organización sin fines de lucro, lo que nos permite anteponer el beneficio individual y público a las ganancias.
 learn-more-mission = Aprender más sobre nuestra misión
 
 ## Top questions about Firefox Monitor
@@ -38,8 +41,10 @@ top-questions-about-monitor = Principales preguntas acerca de { -brand-fx-monito
 see-all-faq = Ver todas las preguntas frecuentes
 # question and answer
 what-is-breach = ¿Qué es exactamente una filtración de datos?
+when-info-exposed = Una filtración de datos ocurre cuando la información personal o privada se expone, se roba o se copia sin permiso. Estos incidentes de seguridad pueden ser el resultado de ataques cibernéticos a sitios web, aplicaciones o cualquier base de datos donde resida la información personal de las personas. Una filtración de datos también puede ocurrir por accidente, como si las credenciales de conexión de alguien se publicaran accidentalmente.
 # question and answer
 what-do-i-do = Acabo de enterarme de que estoy en una filtración de datos. ¿Qué hago?
+visit-monitor-to-learn = Visita { -brand-fx-monitor } para saber qué hacer después de una filtración de datos. Los piratas informáticos confían en que las personas reutilizan las contraseñas, por lo que es importante crear contraseñas seguras y únicas para todas tus cuentas. Guarda tus contraseñas en un lugar seguro al que solo tu tengas acceso; este podría ser el mismo lugar donde almacenas documentos importantes o un administrador de contraseñas.
 # question and answer
 what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de datos?
 depends-on-hackers = No todas las filtraciones exponen la misma información. Solo depende de a qué puedan acceder los hackers. Muchas filtraciones de datos exponen direcciones de correo electrónico y contraseñas. Otras exponen información más confidencial, como números de tarjetas de crédito, números de pasaporte y números de seguridad social.
