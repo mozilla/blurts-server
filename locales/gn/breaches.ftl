@@ -21,6 +21,7 @@ breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omon
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Emomarandu ñembogua nde kuatia’atã ñemurã me’ẽhápe ha ejerure kuatia’atã papapy pyahu reheve.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
