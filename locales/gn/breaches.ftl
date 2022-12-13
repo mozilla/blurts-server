@@ -22,6 +22,7 @@ breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omon
 ## Prompts the user for changes when there is a breach detected of credit card
 
 breach-checklist-cc-header = Emomarandu ñembogua nde kuatia’atã ñemurã me’ẽhápe ha ejerure kuatia’atã papapy pyahu reheve.
+breach-checklist-cc-body = Avei ehechajey nde kuatia’atã ñemurã reko eikuaasérõ mba’etépa ehepyme’ẽva.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
@@ -36,6 +37,7 @@ breach-checklist-ip-header = Eipuru Ñanduti teko ñemíme VPN ndive,<a>{ -brand
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Emoambue oimeraẽva ñe’ẽñemi térã PIN orekóva nde kundaharape vore.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
