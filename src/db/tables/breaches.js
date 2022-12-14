@@ -4,12 +4,21 @@ import mozlog from '../../utils/log.js'
 const knex = Knex(knexConfig)
 const log = mozlog('DB.breaches')
 
+/**
+ * Get all records from "breaches" table
+ * @returns Array of all records from "breaches" table
+ */
 async function getAllBreaches () {
   log.debug('getAllBreaches')
   return knex('breaches')
     .returning()
 }
 
+/**
+ * Upsert breaches into "breaches" table
+ * @param {Array} hibpBreaches breaches array from HIBP API
+ * @returns
+ */
 async function upsertBreaches (hibpBreaches) {
   log.debug('upsertBreaches', hibpBreaches[0])
 
