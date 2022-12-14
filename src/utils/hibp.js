@@ -1,6 +1,7 @@
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
+import { getAllBreaches } from '../db/tables/breaches.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -75,6 +76,33 @@ function formatDataClassesArray (dataCategories) {
     formattedArray.push(matchFluentID(category))
   })
   return formattedArray
+}
+
+/**
+ * Get all breaches from the database table "breaches",
+ * sanitize it, and return a javascript array
+ * @returns formatted all breaches array
+ */
+async function getAllBreachesFromDb () {
+  const dbBreaches = await getAllBreaches()
+  return dbBreaches.map(breach => ({
+    name: breach.name,
+    title: breach.title,
+    domain: breach.domain,
+    breachDate: breach.breach_date,
+    addedDate: breach.added_date,
+    modifiedDate: breach.modified_date,
+    pwnCount: breach.pwn_count,
+    description: breach.description,
+    logoPath: breach.logo_path,
+    dataClasses: breach.data_classes,
+    isVerified: breach.is_verified,
+    isFabricated: breach.is_fabricated,
+    isSensitive: breach.is_sensitive,
+    isRetired: breach.is_retired,
+    isSpamList: breach.is_spam_list,
+    isMalware: breach.is_malware
+  }))
 }
 
 async function loadBreachesIntoApp (app) {
@@ -211,6 +239,7 @@ export {
   loadBreachesIntoApp,
   getBreachesForEmail,
   getBreachByName,
+  getAllBreachesFromDb,
   filterBreaches,
   getLatestBreach,
   subscribeHash
