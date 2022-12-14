@@ -1,11 +1,52 @@
-.breach-rows details {
+.breaches-header {
+  width: fit-content;
+  margin: auto;
+  padding: var(--padding-md);
+  border: 1px solid var(--gray-10);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.breaches-header > h1 {
+  font: var(--h3-font);
+  margin: var(--padding-md);
+  line-height: 1.2;
+}
+
+.breaches-header > figure {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75rem;
+  margin: var(--padding-md) var(--padding-lg);
+  vertical-align: middle;
+  text-align: left;
+}
+
+.breaches-header > figure:nth-of-type(2) {
+  flex-direction: column;
+  text-align: center;
+}
+
+.breaches-header figcaption > * {
+  display: block;
+}
+
+.breaches-header figcaption > strong {
+  white-space: nowrap;
+}
+
+.breaches-header figcaption > a {
+  color: var(--blue-50);
+}
+
+.breaches-table details {
   box-shadow: 0 0 0 1px var(--gray-10); /* use shadow to avoid extra width – disrupts responsive sync between rows */
   border-radius: var(--border-radius);
   margin: var(--padding-md) 0;
 }
 
-.breach-rows header,
-.breach-rows summary {
+.breaches-table header,
+.breaches-table summary {
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -13,7 +54,7 @@
   gap: var(--gap);
 }
 
-.breach-rows header {
+.breaches-table header {
   height: calc(1.125rem + var(--padding-sm) * 2);
   padding: var(--padding-sm) var(--padding-md);
   padding-right: var(--padding-xl);
@@ -22,7 +63,7 @@
   font-weight: bold;
 }
 
-.breach-rows summary {
+.breaches-table summary {
   position: relative;
   height: calc(1.5rem + var(--padding-md) * 2); /* required to hide cells that don't fit */
   padding: var(--padding-md);
@@ -31,44 +72,44 @@
   cursor: pointer;
 }
 
-.breach-rows header > *,
-.breach-rows summary > * {
+.breaches-table header > *,
+.breaches-table summary > * {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.breach-rows header > :nth-child(1),
-.breach-rows summary > :nth-child(1) {
+.breaches-table header > :nth-child(1),
+.breaches-table summary > :nth-child(1) {
   flex: 1 1 100px;
   font-weight: bold;
 }
 
-.breach-rows header > :nth-child(2),
-.breach-rows summary > :nth-child(2) {
+.breaches-table header > :nth-child(2),
+.breaches-table summary > :nth-child(2) {
   flex: 2 1 200px;
 }
 
-.breach-rows header > :nth-child(3),
-.breach-rows summary > :nth-child(3) {
+.breaches-table header > :nth-child(3),
+.breaches-table summary > :nth-child(3) {
   flex-basis: 100px;
 }
 
-.breach-rows summary > :nth-child(2),
-.breach-rows summary > :nth-child(3) {
+.breaches-table summary > :nth-child(2),
+.breaches-table summary > :nth-child(3) {
   font-size: clamp(0.75rem, 1.25vw, 1rem);
 }
 
-.mobile .breach-rows header > :nth-child(2),
-.mobile .breach-rows summary > :nth-child(2) {
+.mobile .breaches-table header > :nth-child(2),
+.mobile .breaches-table summary > :nth-child(2) {
   display: none;
 }
 
-.breach-rows summary::-webkit-details-marker {
+.breaches-table summary::-webkit-details-marker {
   display: none; /* Safari 16 */
 }
 
-.breach-rows summary::after {
+.breaches-table summary::after {
   content: '';
   position: absolute;
   top: 0;
@@ -79,20 +120,20 @@
   transition: transform 0.2s ease-out;
 }
 
-.breach-rows details[open] > summary::after {
+.breaches-table details[open] > summary::after {
   transform: rotate(-180deg);
 }
 
-.breach-rows details > div {
+.breaches-table details > div {
   padding: var(--padding-md);
   border-top: 1px solid var(--gray-10);
   color: var(--gray-40);
 }
 
-.breach-rows details > div a {
+.breaches-table details > div a {
   text-decoration: none; /* TODO: remove this when updated copy is added */
 }
 
-.breach-rows details[open] > div {
+.breaches-table details[open] > div {
   animation: fade-in 0.5s ease-out;
 }

@@ -38,7 +38,27 @@ function createRows (data) {
 }
 
 export const breaches = data => `
-<section class='breach-rows'>
+<section>
+  <header class='breaches-header'>
+    <h1>Data breaches for <custom-select>${['john@doe.com', 'longnamemagee@longlastname.com', 'short@name.com'].map(option => `<option>${option}</option>`).join('')}</custom-select></h1>
+    <figure>
+      <img src='/images/temp-diagram.png' width='80' height='80'>
+      <figcaption class='breach-stats'>
+        <strong>10 total breaches</strong>
+        <label>Resolved</label>
+        <label>Unresolved</label>
+      </figcaption>
+    </figure>
+    <figure class='email-stats'>
+      <img src='/images/icon-email.svg' width='55' height='30'>
+      <figcaption>
+        <strong>2 of 5 emails monitored</strong>
+        <a href='http://mozilla.org'>Add email address</a>
+      </figcaption>
+    </figure>
+  </header>
+</section>
+<section class='breaches-table'>
   <header>
     <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
   </header>
