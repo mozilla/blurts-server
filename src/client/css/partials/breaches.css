@@ -1,5 +1,6 @@
 .breaches-header {
   width: fit-content;
+  max-width: 100%;
   margin: auto;
   padding: var(--padding-md);
   border: 1px solid var(--gray-10);

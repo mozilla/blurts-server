@@ -1,26 +1,32 @@
 const html = `
 <style>
-  span{
-    --chevron-w: 16px;
+  :host{
+    contain: style paint;
     position: relative;
-    display: inline-flex;
+    display: inline-block;
+    width: min(100%, var(--option-w) + 20px);
     color: var(--purple-70);
   }
 
   select{
-    box-sizing: content-box;
     appearance: none;
     background: none;
     border: none;
     outline: none;
-    padding: 0 calc(var(--chevron-w) + 4px) 0 0;
+    width: 100%;
+    margin: 0;
+    padding: 0 20px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font: inherit;
     color: inherit;
  }
 
- select.hidden{
-    visibility: hidden;
+  select.hidden{
     position: absolute;
+    visibility: hidden;
+    width: auto;
+    padding: 0;
     pointer-events: none;
  }
 
@@ -28,19 +34,17 @@ const html = `
     position: absolute;
     top: 0;
     right: 0;
-    width: var(--chevron-w);
+    width: 16px;
     height: 100%;
     color: inherit;
     pointer-events: none;
   }
 </style>
 
-<span>
-  <select></select>
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
-    <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
-  </svg>
-</span>  
+<select></select>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+  <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"/>
+</svg>
 `
 
 customElements.define('custom-select', class extends HTMLElement {
@@ -73,7 +77,7 @@ customElements.define('custom-select', class extends HTMLElement {
     temp.className = 'hidden'
     temp.append(selectedOption.cloneNode(true))
     this.shadowRoot.append(temp)
-    this.select.style.width = `${temp.offsetWidth}px`
+    this.style.setProperty('--option-w', `${temp.offsetWidth}px`)
     temp.remove()
   }
 })
