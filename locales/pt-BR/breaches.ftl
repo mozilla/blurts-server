@@ -18,16 +18,23 @@ breach-checklist-email-body = Isso pode ocultar seu endereço de email verdadeir
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Monitore seu relatório de crédito, verifique se há contas, empréstimos ou cartões de crédito que você não reconhece.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
 breach-checklist-cc-header = Relate este vazamento para o emissor do seu cartão de crédito e solicite um novo cartão com outro número.
+breach-checklist-cc-body = Você também deve verificar se há cobranças não reconhecidas nos extratos de seus cartões de crédito.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Notifique o banco imediatamente que o número da sua conta foi comprometido.
+breach-checklist-bank-body = Fazer isso mais rápido pode fornecer mais proteções legais para te ajudar a recuperar quaisquer perdas. Você também deve verificar se há cobranças não reconhecidas em suas contas.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = Notifique o emissor do seu cartão e altere seu PIN imediatamente.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
