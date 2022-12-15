@@ -11,6 +11,13 @@ const rowHtml = data => `
 </details>
 `
 
+function createEmailOptions (data) {
+  const emails = data.verifiedEmails.map(obj => obj.email)
+  const optionElements = emails.map(email => `<option>${email}</option>`)
+
+  return optionElements.join('')
+}
+
 function createRows (data) {
   const locale = getLocale()
   const allEmailBreaches = data.verifiedEmails.flatMap(item => item.breaches)
@@ -40,7 +47,7 @@ function createRows (data) {
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
-    <h1>Data breaches for <custom-select>${['john@doe.com', 'longnamemagee@longlastname.com', 'short@name.com'].map(option => `<option>${option}</option>`).join('')}</custom-select></h1>
+    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
     <figure>
       <img src='/images/temp-diagram.png' width='80' height='80'>
       <figcaption class='breach-stats'>

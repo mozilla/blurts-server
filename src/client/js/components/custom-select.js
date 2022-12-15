@@ -74,10 +74,12 @@ customElements.define('custom-select', class extends HTMLElement {
     // update <select> width based on selected <option> (override fixed width based on largest <option>)
     const temp = document.createElement('select')
     const selectedOption = this.options[this.select.selectedIndex]
+
     temp.className = 'hidden'
     temp.append(selectedOption.cloneNode(true))
     this.shadowRoot.append(temp)
-    this.style.setProperty('--option-w', `${temp.offsetWidth}px`)
+    temp.w = Math.ceil(temp.getBoundingClientRect().width)
+    this.style.setProperty('--option-w', `${temp.w}px`)
     temp.remove()
   }
 })
