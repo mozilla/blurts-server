@@ -38,18 +38,27 @@ breach-checklist-pin-header = Notifique o emissor do seu cartão e altere seu PI
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-body = Seu endereço IP (endereço de protocolo da internet) identifica sua localização e o provedor de serviços de internet. Uma VPN pode ocultar seu endereço IP real para você poder usar a internet com privacidade.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = Altere senhas ou PINs que incluam qualquer parte do seu endereço.
+breach-checklist-address-body = Endereços são fáceis de encontrar em registros públicos, podendo tornar essas senhas e PINs fáceis de adivinhar.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Altere senhas ou PINs que incluam sua data de nascimento.
+breach-checklist-dob-body = Datas de nascimento são fáceis de encontrar em registros públicos, quem as encontra pode facilmente adivinhar seu PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Proteja seu número de celular com um serviço de máscaras como o <a>{ -brand-relay }</a>, que oculta seu número de celular verdadeiro.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Atualize suas perguntas de segurança em <a>{ $breachedCompanyUrl }</a>.
+breach-checklist-sq-body = Use respostas longas e aleatórias e guarde em algum lugar seguro. Faça isso em qualquer outro lugar em que você usou as mesmas perguntas de segurança.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
