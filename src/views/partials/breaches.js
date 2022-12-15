@@ -11,6 +11,13 @@ const rowHtml = data => `
 </details>
 `
 
+function createEmailOptions (data) {
+  const emails = data.verifiedEmails.map(obj => obj.email)
+  const optionElements = emails.map(email => `<option>${email}</option>`)
+
+  return optionElements.join('')
+}
+
 function createRows (data) {
   const locale = getLocale()
   const allEmailBreaches = data.verifiedEmails.flatMap(item => item.breaches)
@@ -38,7 +45,27 @@ function createRows (data) {
 }
 
 export const breaches = data => `
-<section class='breach-rows'>
+<section>
+  <header class='breaches-header'>
+    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
+    <figure>
+      <img src='/images/temp-diagram.png' width='80' height='80'>
+      <figcaption class='breach-stats'>
+        <strong>10 total breaches</strong>
+        <label>Resolved</label>
+        <label>Unresolved</label>
+      </figcaption>
+    </figure>
+    <figure class='email-stats'>
+      <img src='/images/icon-email.svg' width='55' height='30'>
+      <figcaption>
+        <strong>2 of 5 emails monitored</strong>
+        <a href='http://mozilla.org'>Add email address</a>
+      </figcaption>
+    </figure>
+  </header>
+</section>
+<section class='breaches-table'>
   <header>
     <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
   </header>

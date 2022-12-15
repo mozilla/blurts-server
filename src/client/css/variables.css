@@ -8,6 +8,10 @@
   --padding-lg: calc(32px * var(--multiplier));
   --padding-xl: calc(64px * var(--multiplier));
   --gap: calc(32px * var(--multiplier));
+  --h1-font: 700 2.5rem/1 metropolis, sans-serif;
+  --h2-font: 700 1.75rem/1 metropolis, sans-serif;
+  --h3-font: 700 1.125rem/1 metropolis, sans-serif;
+  --h4-font: 700 1rem/1 metropolis, sans-serif;
   --gray-10: #e7e7e7;
   --gray-40: #6d6d6e;
   --blue-50: #0060df;
