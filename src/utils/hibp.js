@@ -84,7 +84,12 @@ function formatDataClassesArray (dataCategories) {
  * @returns formatted all breaches array
  */
 async function getAllBreachesFromDb () {
-  const dbBreaches = await getAllBreaches()
+  let dbBreaches = []
+  try {
+    dbBreaches = await getAllBreaches()
+  } catch {
+    return dbBreaches
+  }
 
   // TODO: we can do some filtering here for the most commonly used fields
   // TODO: change field names to camel case
