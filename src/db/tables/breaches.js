@@ -9,7 +9,6 @@ const log = mozlog('DB.breaches')
  * @returns Array of all records from "breaches" table
  */
 async function getAllBreaches () {
-  log.debug('getAllBreaches')
   return knex('breaches')
     .returning()
 }

@@ -86,34 +86,41 @@ function formatDataClassesArray (dataCategories) {
 async function getAllBreachesFromDb () {
   const dbBreaches = await getAllBreaches()
   return dbBreaches.map(breach => ({
-    name: breach.name,
-    title: breach.title,
-    domain: breach.domain,
-    breachDate: breach.breach_date,
-    addedDate: breach.added_date,
-    modifiedDate: breach.modified_date,
-    pwnCount: breach.pwn_count,
-    description: breach.description,
-    logoPath: breach.logo_path,
-    dataClasses: breach.data_classes,
-    isVerified: breach.is_verified,
-    isFabricated: breach.is_fabricated,
-    isSensitive: breach.is_sensitive,
-    isRetired: breach.is_retired,
-    isSpamList: breach.is_spam_list,
-    isMalware: breach.is_malware
+    Name: breach.name,
+    Title: breach.title,
+    Domain: breach.domain,
+    BreachDate: breach.breach_date,
+    AddedDate: breach.added_date,
+    ModifiedDate: breach.modified_date,
+    PwnCount: breach.pwn_count,
+    Description: breach.description,
+    LogoPath: breach.logo_path,
+    DataClasses: breach.data_classes,
+    IsVerified: breach.is_verified,
+    IsFabricated: breach.is_fabricated,
+    IsSensitive: breach.is_sensitive,
+    IsRetired: breach.is_retired,
+    IsSpamList: breach.is_spam_list,
+    IsMalware: breach.is_malware
   }))
 }
 
 async function loadBreachesIntoApp (app) {
   try {
-    const breachesResponse = await req('/breaches')
-    const breaches = []
+    // attempt to fetch breaches from the "breaches" database table
+    const breaches = await getAllBreachesFromDb()
+    log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
 
-    for (const breach of breachesResponse) {
-      breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
-      breaches.push(breach)
+    // if "breaches" table does not return results, fall back to HIBP request
+    if (breaches?.length < 1) {
+      const breachesResponse = await req('/breaches')
+      log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
+
+      for (const breach of breachesResponse) {
+        breach.DataClasses = formatDataClassesArray(breach.DataClasses)
+        breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
+        breaches.push(breach)
+      }
     }
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
