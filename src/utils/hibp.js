@@ -87,7 +87,8 @@ async function getAllBreachesFromDb () {
   let dbBreaches = []
   try {
     dbBreaches = await getAllBreaches()
-  } catch {
+  } catch (e) {
+    log.error('getAllBreachesFromDb', 'No breaches exist in the database: ' + e)
     return dbBreaches
   }
 
