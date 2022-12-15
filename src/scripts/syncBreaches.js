@@ -33,6 +33,7 @@ if (seen.size !== breaches.length) {
   // get
   const result = await getAllBreaches()
   console.log(result.length)
+  process.exit()
 }
 
 /**
