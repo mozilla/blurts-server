@@ -1,3 +1,16 @@
+const select = document.querySelector('custom-select')
+let breaches
+
+if (select) {
+  console.log('custom-select has been found')
+  breaches = document.querySelectorAll('.breach-row')
+  select.addEventListener('change', handleChange)
+
+  function handleChange (e) {
+    breaches.forEach(breach => breach.toggleAttribute('hidden', breach.dataset.email !== e.target.value))
+  }
+}
+
 // TODO: REMOVE -- this is just an example of updating breach resolution
 // update button
 const b = document.getElementById('update-breaches')
