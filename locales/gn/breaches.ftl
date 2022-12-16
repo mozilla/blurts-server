@@ -29,6 +29,7 @@ breach-checklist-cc-body = Avei ehechajey nde kuatia’atã ñemurã reko eikuaa
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Emomarandu pya’e banco-pe ne mba’ete papapy ojepurukuaátaramo.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
