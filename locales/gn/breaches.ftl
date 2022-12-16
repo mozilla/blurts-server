@@ -56,6 +56,7 @@ breach-checklist-sq-header = Embopyahu porandu tekorosãgua <a>{ $breachedCompan
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Emoheñói mba’ete hekorosã ha ha’eñóva oimeraẽva mbaétépe g̃uarã eipurujeyhague ñe’ẽñemi.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
