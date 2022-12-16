@@ -1,6 +1,7 @@
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
+import { getAllBreaches } from '../db/tables/breaches.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -77,15 +78,58 @@ function formatDataClassesArray (dataCategories) {
   return formattedArray
 }
 
+/**
+ * Get all breaches from the database table "breaches",
+ * sanitize it, and return a javascript array
+ * @returns formatted all breaches array
+ */
+async function getAllBreachesFromDb () {
+  let dbBreaches = []
+  try {
+    dbBreaches = await getAllBreaches()
+  } catch (e) {
+    log.error('getAllBreachesFromDb', 'No breaches exist in the database: ' + e)
+    return dbBreaches
+  }
+
+  // TODO: we can do some filtering here for the most commonly used fields
+  // TODO: change field names to camel case
+  return dbBreaches.map(breach => ({
+    Name: breach.name,
+    Title: breach.title,
+    Domain: breach.domain,
+    BreachDate: breach.breach_date,
+    AddedDate: breach.added_date,
+    ModifiedDate: breach.modified_date,
+    PwnCount: breach.pwn_count,
+    Description: breach.description,
+    LogoPath: breach.logo_path,
+    DataClasses: breach.data_classes,
+    IsVerified: breach.is_verified,
+    IsFabricated: breach.is_fabricated,
+    IsSensitive: breach.is_sensitive,
+    IsRetired: breach.is_retired,
+    IsSpamList: breach.is_spam_list,
+    IsMalware: breach.is_malware
+  }))
+}
+
 async function loadBreachesIntoApp (app) {
   try {
-    const breachesResponse = await req('/breaches')
-    const breaches = []
+    // attempt to fetch breaches from the "breaches" database table
+    const breaches = await getAllBreachesFromDb()
+    log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
 
-    for (const breach of breachesResponse) {
-      breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
-      breaches.push(breach)
+    // if "breaches" table does not return results, fall back to HIBP request
+    if (breaches?.length < 1) {
+      const breachesResponse = await req('/breaches')
+      log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
+
+      for (const breach of breachesResponse) {
+        breach.DataClasses = formatDataClassesArray(breach.DataClasses)
+        breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
+        breaches.push(breach)
+      }
     }
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
@@ -211,6 +255,7 @@ export {
   loadBreachesIntoApp,
   getBreachesForEmail,
   getBreachByName,
+  getAllBreachesFromDb,
   filterBreaches,
   getLatestBreach,
   subscribeHash
