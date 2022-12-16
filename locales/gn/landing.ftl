@@ -12,6 +12,7 @@ why-use-monitor = ¿Mba’ére eipurúta { -brand-fx-monitor }?
 protect-account = Emo’ã ne mba’ete
 prevent-fraud = Ehenonde’a ñemonda térã mba’evai’apo ñandutiguáva
 get-alerts = Emog̃uahẽuka kyhyjerã pyahu
+get-alerts-find-out = Eikuaáke ne maranduete oñemboguakuaátaramo.
 
 ## Here’s how it works
 

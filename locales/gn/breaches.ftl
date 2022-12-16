@@ -18,6 +18,9 @@ breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omon
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Ehechameme ne mba’ete reko banco pegua, virujepuru térã kuatia’atã ñemurã emoneĩ’ỹva.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
