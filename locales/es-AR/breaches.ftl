@@ -10,15 +10,19 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Visitá <a>{ $breachedCompanyUrl }</a> para cambiar tu contraseña y habilitar la autenticación de dos factores (2FA).
+breach-checklist-pw-body = Asegurate de que tu contraseña sea única y difícil de adivinar. Si esta contraseña se usa en otras cuentas, asegurate de cambiarla allá también. <a>El administrador de contraseñas de { -brand-firefox }</a> puede ayudarte a realizar un seguimiento seguro de todas tus contraseñas.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Protegé tu correo electrónico con un servicio de enmascaramiento de correo electrónico como <a>{ -brand-relay }</a>.
+breach-checklist-email-body = Esto puede ocultar tu verdadera dirección de correo electrónico mientras reenvía correos electrónicos a tu bandeja de entrada real.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Informá esta filtración al emisor de tu tarjeta de crédito y pedí una nueva tarjeta con un nuevo número.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
