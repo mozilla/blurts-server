@@ -7,9 +7,9 @@ function asyncMiddleware (fn) {
 }
 
 function bearerToken (req, res, next) {
-  const authHeaderArr = req.headers.authorization?.split(' ') || []
-  if (authHeaderArr?.[0] === 'Bearer') {
-    req.token = authHeaderArr?.[1]
+  const [type, token] = req.headers.authorization?.split(' ') || []
+  if (type && type === 'Bearer') {
+    req.token = token
   } else if (req.query && req.query.token) {
     req.token = req.query.token
   }
