@@ -23,15 +23,18 @@ breach-checklist-email-body = Esto puede ocultar tu verdadera dirección de corr
 ## Prompts the user for changes when there is a breach detected of credit card
 
 breach-checklist-cc-header = Informá esta filtración al emisor de tu tarjeta de crédito y pedí una nueva tarjeta con un nuevo número.
+breach-checklist-cc-body = También deberías revisar los estados de cuenta de tu tarjeta de crédito en busca de cargos no reconocidos.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Notificá inmediatamente a tu banco que su número de cuenta ha sido comprometido.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Usá Internet de forma privada con una VPN, como <a>{ -brand-mozilla-vpn }</a>.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
