@@ -22,18 +22,19 @@ async function notify (req, res) {
     throw new Error('Breach notification requires breachName, hashPrefix, and hashSuffixes.')
   }
 
-  const reqBreachName = req.body.breachName.toLowerCase()
+  const { breachName } = req.body
+
   //   const reqHashPrefix = req.body.hashPrefix.toLowerCase()
-  let breachAlert = getBreachByName(req.app.locals.breaches, reqBreachName)
+  let breachAlert = getBreachByName(req.app.locals.breaches, breachName)
 
   if (!breachAlert) {
     // If breach isn't found, try to reload breaches from HIBP
     log.debug('notify', 'Breach is not found, reloading breaches...')
     await loadBreachesIntoApp(req.app)
-    breachAlert = getBreachByName(req.app.locals.breaches, reqBreachName)
+    breachAlert = getBreachByName(req.app.locals.breaches, breachName)
     if (!breachAlert) {
       // If breach *still* isn't found, we have a real error
-      throw new Error('Unrecognized breach: ' + reqBreachName)
+      throw new Error('Unrecognized breach: ' + breachName)
     }
   }
 
