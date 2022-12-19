@@ -94,8 +94,8 @@ try {
 
 // routing
 app.use(express.static(staticPath))
-app.use('/', indexRouter)
 app.use(express.json())
+app.use('/', indexRouter)
 app.use(errorHandler)
 
 // start server

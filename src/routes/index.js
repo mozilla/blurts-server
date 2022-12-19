@@ -3,6 +3,7 @@ import { landingPage } from '../controllers/landing.js'
 import { robotsTxt } from '../middleware/robots.js'
 import authRoutes from './auth.js'
 import userRoutes from './user.js'
+import hibpApiRoutes from './api/v1/hibp.js'
 import userApiRoutes from './api/v1/user.js'
 // import adminRoutes from './admin.js'
 import { notFound } from '../middleware/error.js'
@@ -15,6 +16,7 @@ router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)
 // router.use('/admin', adminRoutes)
 router.use('/api/v1/user/', userApiRoutes)
+router.use('/api/v1/hibp/', hibpApiRoutes)
 router.use(notFound)
 
 export default router
