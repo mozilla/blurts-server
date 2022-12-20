@@ -8,6 +8,10 @@ const html = `
     color: var(--purple-70);
   }
 
+  :host([hidden]) {
+    display: none 
+  }
+
   select{
     appearance: none;
     background: none;
@@ -58,14 +62,20 @@ customElements.define('custom-select', class extends HTMLElement {
     // move <option> elements into <select> (<slot> not permitted as <select> child)
     this.select.append(...this.options)
     this.select.addEventListener('change', this)
-
+    this.setAttribute('value', this.select.value)
     this.matchOptionWidth()
+  }
+
+  get value () {
+    return this.getAttribute('value')
   }
 
   handleEvent (e) {
     switch (e.type) {
       case 'change':
         this.matchOptionWidth()
+        this.setAttribute('value', e.target.value)
+        this.dispatchEvent(new Event('change'))
         break
     }
   }

@@ -1,3 +1,23 @@
+const select = document.querySelector('.breaches-header custom-select')
+let breaches
+
+function handleChange (e) {
+  let i = 0
+
+  breaches.forEach(breach => {
+    const hidden = breach.toggleAttribute('hidden', breach.dataset.email !== e.target.value)
+    if (!hidden) {
+      breach.style.setProperty('--delay', `${i}ms`)
+      i += 50
+    }
+  })
+}
+
+if (select) {
+  breaches = document.querySelectorAll('.breach-row')
+  select.addEventListener('change', handleChange)
+}
+
 // TODO: REMOVE -- this is just an example of updating breach resolution
 // update button
 const b = document.getElementById('update-breaches')
