@@ -1,14 +1,21 @@
-const select = document.querySelector('custom-select')
+const select = document.querySelector('.breaches-header custom-select')
 let breaches
 
+function handleChange (e) {
+  let i = 0
+
+  breaches.forEach(breach => {
+    const hidden = breach.toggleAttribute('hidden', breach.dataset.email !== e.target.value)
+    if (!hidden) {
+      breach.style.setProperty('--delay', `${i}ms`)
+      i += 50
+    }
+  })
+}
+
 if (select) {
-  console.log('custom-select has been found')
   breaches = document.querySelectorAll('.breach-row')
   select.addEventListener('change', handleChange)
-
-  function handleChange (e) {
-    breaches.forEach(breach => breach.toggleAttribute('hidden', breach.dataset.email !== e.target.value))
-  }
 }
 
 // TODO: REMOVE -- this is just an example of updating breach resolution
