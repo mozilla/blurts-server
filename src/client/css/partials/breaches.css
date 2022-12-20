@@ -44,6 +44,8 @@
   box-shadow: 0 0 0 1px var(--gray-10); /* use shadow to avoid extra width – disrupts responsive sync between rows */
   border-radius: var(--border-radius);
   margin: var(--padding-md) 0;
+  opacity: 0;
+  animation: fade-in 0.5s var(--delay) ease-out forwards;
 }
 
 .breaches-table header,
