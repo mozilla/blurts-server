@@ -1,7 +1,7 @@
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
-import { getAllBreaches } from '../db/tables/breaches.js'
+import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -130,11 +130,12 @@ async function loadBreachesIntoApp (app) {
         breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
         breaches.push(breach)
       }
+
+      // sync the "breaches" table with the latest from HIBP
+      await upsertBreaches(breaches)
     }
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
-    app.locals.latestBreach = getLatestBreach(breaches)
-    app.locals.mostRecentBreachDateTime = app.locals.latestBreach.AddedDate
   } catch (error) {
     throw fluentError('error-hibp-load-breaches')
   }
@@ -209,21 +210,6 @@ function filterBreaches (breaches) {
   )
 }
 
-function getLatestBreach (breaches) {
-  let latestBreach = {}
-  let latestBreachDateTime = new Date(0)
-  for (const breach of breaches) {
-    if (breach.IsSensitive) {
-      continue
-    }
-    const breachAddedDate = new Date(breach.AddedDate)
-    if (breachAddedDate > latestBreachDateTime) {
-      latestBreachDateTime = breachAddedDate
-      latestBreach = breach
-    }
-  }
-  return latestBreach
-}
 /**
 A range can be subscribed for callbacks with the following request:
 POST /range/subscribe
@@ -257,6 +243,5 @@ export {
   getBreachByName,
   getAllBreachesFromDb,
   filterBreaches,
-  getLatestBreach,
   subscribeHash
 }
