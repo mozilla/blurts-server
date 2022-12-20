@@ -19,7 +19,7 @@ async function notify (req, res) {
     throw new Error(errorMessage)
   }
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
-    throw new Error('Breach notification requires breachName, hashPrefix, and hashSuffixes.')
+    throw new Error('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
   }
 
   const { breachName } = req.body
