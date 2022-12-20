@@ -6,4 +6,14 @@ function asyncMiddleware (fn) {
   }
 }
 
-export { asyncMiddleware }
+function bearerToken (req, res, next) {
+  const [type, token] = req.headers.authorization?.split(' ') || []
+  if (type && type === 'Bearer') {
+    req.token = token
+  } else if (req.query && req.query.token) {
+    req.token = req.query.token
+  }
+  next()
+}
+
+export { asyncMiddleware, bearerToken }
