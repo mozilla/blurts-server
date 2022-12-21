@@ -15,6 +15,7 @@ async function getAllBreaches () {
 
 /**
  * Upsert breaches into "breaches" table
+ * Skip inserting when 'name' field (unique) has a conflict
  * @param {Array} hibpBreaches breaches array from HIBP API
  * @returns
  */
