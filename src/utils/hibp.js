@@ -63,19 +63,19 @@ async function kAnonReq (path, options = {}) {
   return await _throttledFetch(url, reqOptions)
 }
 
-function matchFluentID (dataCategory) {
-  return dataCategory.toLowerCase()
-    .replace(/[^-a-z0-9]/g, '-')
-    .replace(/-{2,}/g, '-')
-    .replace(/(^-|-$)/g, '')
-}
-
-function formatDataClassesArray (dataCategories) {
-  const formattedArray = []
-  dataCategories.forEach(category => {
-    formattedArray.push(matchFluentID(category))
-  })
-  return formattedArray
+/**
+ * Sanitize data classes
+ * ie. "Email Addresses" -> "email-addresses"
+ * @param {Array} dataClasses
+ * @returns Array sanitized data classes array
+ */
+function formatDataClassesArray (dataClasses) {
+  return dataClasses.map(dataClass =>
+    dataClass.toLowerCase()
+      .replace(/[^-a-z0-9]/g, '-')
+      .replace(/-{2,}/g, '-')
+      .replace(/(^-|-$)/g, '')
+  )
 }
 
 /**
@@ -236,7 +236,6 @@ async function subscribeHash (sha1) {
 export {
   req,
   kAnonReq,
-  matchFluentID,
   formatDataClassesArray,
   loadBreachesIntoApp,
   getBreachesForEmail,
