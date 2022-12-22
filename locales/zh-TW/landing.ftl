@@ -4,6 +4,7 @@
 ## Hero
 
 find-out-if-breached = 看看您是否已身處資料外洩事件之中
+stay-safe-with-tool = 使用簡單而強大的工具，來追蹤您的個人資訊是否已在資料外洩事件中發生洩露。我們會幫助您了解接下來應採取哪些行動，並持續監控任何新發生的事件， 一切免費。
 get-started = 開始使用
 
 ## Why use Firefox Monitor?
