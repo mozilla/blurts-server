@@ -62,6 +62,9 @@ breach-checklist-sq-body = Use respostas longas e aleatórias e guarde em algum 
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Crie senhas fortes e exclusivas em contas onde você reusou a mesma senha.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Entre em contato com { $companyName } para informar sobre este vazamento e peça instruções específicas do que você pode fazer.

@@ -3,6 +3,7 @@
 
 ## Hero
 
+find-out-if-breached = Descubra se você foi vítima de um vazamento de dados
 get-started = Introdução
 
 ## Why use Firefox Monitor?
