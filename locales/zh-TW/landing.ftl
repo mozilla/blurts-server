@@ -41,8 +41,10 @@ top-questions-about-monitor = { -brand-fx-monitor } 的熱門問題
 see-all-faq = 檢視所有常見問題
 # question and answer
 what-is-breach = 「資料洩漏事件」究竟是什麼？
+when-info-exposed = 「資料外洩事件」的意思是當個人或私人的資料發生洩露、遭竊或未經授權遭到複製。這可能是有人攻擊任何存放了個人資訊的網站、應用程式或資料庫所發生的結果。此類事件也有可能是因某人的登入資訊意外公開而發生。
 # question and answer
 what-do-i-do = 我剛發現某場資料外洩事件當中包含我的資料。接下來該怎麼做？
+visit-monitor-to-learn = 請到 { -brand-fx-monitor } 了解發生資料外洩事件後應該採取哪些行動。如果使用者重複使用密碼，駭客們通常會依靠在一個網站外洩的資料，嘗試登入另一個網站。所以，針對您的每一個帳號設定足夠強大而不重複的密碼就相當重要。請將您的密碼存放在只有您能存取的位置，例如您會儲存重要文件或密碼管理員資料的地方。
 # question and answer
 what-gets-exposed = 發生資料外洩事件時，會洩露哪些資訊？
 depends-on-hackers = 每場事件外洩的資訊不一定相同，要視駭客獲得了哪些資訊而定。許多資訊外洩事件會洩露電子郵件信箱與密碼，而有的是會洩露信用卡卡號、護照號碼、社會安全號碼或身分證字號等敏感資訊。
