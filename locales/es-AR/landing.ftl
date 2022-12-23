@@ -13,6 +13,9 @@ why-use-monitor = ¿Por qué usar { -brand-fx-monitor }?
 identifying-breaches = Identificar y resolver filtraciones de datos es un paso importante para garantizar tu privacidad en línea.
 protect-account = Protegé tus cuentas
 protect-account-prevent-hackers = Evitá que los piratas informáticos ingresen a tus cuentas con contraseñas filtradas.
+prevent-fraud = Evitar fraude y cibercrimen
+prevent-fraud-keep-info = Mantiene la información lejos de los hackers que quieren hacerse pasar por vos y cometer crímenes.
+get-alerts = Recibir alertas de nuevas filtraciones
 
 ## Here’s how it works
 
@@ -20,6 +23,7 @@ how-it-works = Así es como funciona
 check-for-breaches = Verificá si hay filtraciones
 check-for-breaches-we-search = Buscaremos todas las violaciones de datos conocidas desde 2007 para ver si tu información se vio comprometida.
 protect-accounts = Protegé tus cuentas
+alerts-for-breaches = Recibir alertas de nuevas filtraciones
 
 ## Your privacy is safe with us
 
