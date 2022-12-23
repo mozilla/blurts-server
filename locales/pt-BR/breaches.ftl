@@ -63,6 +63,7 @@ breach-checklist-sq-body = Use respostas longas e aleatórias e guarde em algum 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crie senhas fortes e exclusivas em contas onde você reusou a mesma senha.
+breach-checklist-hp-body = Um gerenciador de senhas, como o <a>gerenciador de senhas do { -brand-firefox }</a> (gratuito e integrado ao navegador { -brand-firefox }), pode ajudar a controlar todas as suas senhas e acessar com segurança em todos os seus dispositivos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
