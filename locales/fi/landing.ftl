@@ -4,6 +4,7 @@
 ## Hero
 
 find-out-if-breached = Selvitä, oletko ollut osa tietovuotoa
+get-started = Aloitetaan
 
 ## Why use Firefox Monitor?
 
