@@ -4,6 +4,7 @@
 ## Hero
 
 find-out-if-breached = Selvitä, oletko ollut osa tietovuotoa
+stay-safe-with-tool = Pysy turvassa yksinkertaisella mutta tehokkaalla työkalulla, joka seuraa, ovatko henkilökohtaiset tietosi paljastuneet tietovuodon yhteydessä. Autamme sinua ymmärtämään, mitä sinun tulee tehdä seuraavaksi, ja seuraamme jatkuvasti uusia tietovuotoja – ilman minkäänlaista veloitusta.
 get-started = Aloitetaan
 
 ## Why use Firefox Monitor?
@@ -30,17 +31,21 @@ alerts-for-breaches-monitor-new = Seuraamme jatkuvasti uusia tietovuotoja ja ilm
 ## Your privacy is safe with us
 
 safe-with-us = Yksityisyytesi on turvassa kanssamme
+parent-company = Me { -brand-Mozilla }lla, joka on { -brand-firefox }in ja { -brand-fx-monitor } -palvelun emoyhtiö, uskomme, että yksilöiden turvallisuus ja yksityisyys Internetissä ovat perustavanlaatuisia oikeuksia, eikä niitä saa kohdella valinnaisena.
 learn-more-mission = Lue lisää tehtävästämme
 
 ## Top questions about Firefox Monitor
 
 top-questions-about-monitor = Yleisimmät { -brand-fx-monitor }iin liittyvät kysymykset
+see-all-faq = Katso kaikki UKK:t
 # question and answer
 what-is-breach = Mitä tietomurto oikein on?
+when-info-exposed = Tietovuoto tapahtuu, kun henkilökohtaisia tai yksityisiä tietoja paljastetaan, varastetaan tai kopioidaan ilman lupaa. Nämä tietoturvarikkomukset voivat johtua kyberhyökkäyksistä verkkosivustoille, sovelluksiin tai mihin tahansa tietokantaan, jossa ihmisten henkilökohtaisia tietoja on. Tietovuoto voi tapahtua myös vahingossa, jos esimerkiksi jonkun kirjautumistiedot julkaistaan vahingossa verkossa.
 # question and answer
 what-do-i-do = Minulle selvisi juuri, että olen osallisena tietovuodossa. Mitä teen seuraavaksi?
 # question and answer
 what-gets-exposed = Mitä tietoja tietovuodoissa paljastuu?
+depends-on-hackers = Kaikki tietovuodot eivät sisällä samoja tietoja. Paljon riippuu siitä, mihin pahantahtoinen tekijä pääsee käsiksi. Monet tietovuodot sisältävät sähköpostiosoitteet ja salasanat. Jotkin tietovuodot sisältävät arkaluontoisempia tietoja, kuten luottokorttinumeroita, passinumeroita ja henkilötunnuksia.
 
 ## See if you’ve been in a data breach
 
