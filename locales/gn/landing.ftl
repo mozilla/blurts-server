@@ -20,6 +20,7 @@ how-it-works = Péicha omba’apo
 check-for-breaches = Ehechajey ñembyai rehegua
 protect-accounts = Emo’ã ne mba’ete
 alerts-for-breaches = Emog̃uahẽuka opaite kyhyjerã pyahu
+alerts-for-breaches-monitor-new = Rohechamemetéta mba’ekuaarã ñembyai ipyahúva ha romomarandúta nderupytýtaramo.
 
 ## Your privacy is safe with us
 
