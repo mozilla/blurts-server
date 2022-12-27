@@ -3,7 +3,7 @@ import { getMessage, getLocale } from '../../utils/fluent.js'
 const rowHtml = data => `
 <details class='breach-row' data-email=${data.affectedEmail} hidden=${!data.primaryEmail}>
   <summary>
-    <span>${data.companyName}</span><span>${data.dataClasses}</span><span>${data.breachDate}</span>
+    <span>${data.companyName}</span><span>${data.dataClasses}</span><span>${data.addedDate}</span>
   </summary>
   <div>
     ${data.description}
@@ -29,7 +29,7 @@ function createBreachRows (data) {
         affectedEmail: account.email,
         primaryEmail: account.primary,
         companyName: breach.Title,
-        breachDate: new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).format(breachDate),
+        addedDate: new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).format(addedDate),
         dataClasses: new Intl.ListFormat(locale, { style: 'narrow' }).format(dataClassesTranslated),
         description: getMessage('breach-description', {
           companyName: breach.Title,
