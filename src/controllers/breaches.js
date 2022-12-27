@@ -7,11 +7,13 @@ import { filterBreachDataTypes, appendBreachResolutionChecklist } from '../utils
 import { getSha1 } from '../utils/fxa.js'
 
 async function breachesPage (req, res) {
+  const emailCount = 1 + (req.user.email_addresses?.length || 0)
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
   const data = {
     breachesData,
+    emailCount,
     partial: breaches
   }
 
