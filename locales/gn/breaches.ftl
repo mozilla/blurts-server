@@ -47,6 +47,8 @@ breach-checklist-address-body = Kundaharape ndahasýi ijuhu teraguapy opavavegu�
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Emoambue oimeraẽva ñe’ẽñemi térã PIN orekóva ne reñoihague arange.
+breach-checklist-dob-body = Umi teñoihague ára ndahasýi ijejuhu teraguapyhápe ha tapichakuéra ojuhúva ikatu oikuaa ne PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
