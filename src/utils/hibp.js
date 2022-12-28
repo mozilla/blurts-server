@@ -216,10 +216,10 @@ POST /range/subscribe
 {
   hashPrefix:"[hash prefix]"
 }
-There are two possible response codes that will be returned:
+There are two possible response codes that can be returned:
 1. HTTP 201: New range subscription has been created
 2. HTTP 200: Range subscription already exists
- * @param {string} sha1 first 6 chars of sha1 of the email being subscribed
+ * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 or 201 response codes
  */
 async function subscribeHash (sha1) {
@@ -227,6 +227,29 @@ async function subscribeHash (sha1) {
   const path = '/range/subscribe'
   const options = {
     method: 'POST',
+    json: { hashPrefix: sha1Prefix }
+  }
+
+  return await kAnonReq(path, options)
+}
+
+/**
+A range subscription can be deleted with the following request:
+DELETE /range/
+{
+  hashPrefix:"[hash prefix]"
+}
+There is one possible response code that can be returned:
+1. HTTP 200: Range subscription already exists
+
+ * @param {string} sha1 sha1 of the email being subscribed
+ * @returns 200 response codes
+ */
+async function deleteSubscribedHash (sha1) {
+  const sha1Prefix = sha1.slice(0, 6).toUpperCase()
+  const path = '/range'
+  const options = {
+    method: 'DELETE',
     json: { hashPrefix: sha1Prefix }
   }
 
@@ -242,5 +265,6 @@ export {
   getBreachByName,
   getAllBreachesFromDb,
   filterBreaches,
-  subscribeHash
+  subscribeHash,
+  deleteSubscribedHash
 }
