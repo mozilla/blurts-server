@@ -34,6 +34,7 @@ breach-checklist-bank-header = Emomarandu pya’e banco-pe ne mba’ete papapy o
 ## Prompts the user for changes when there is a breach detected of pin
 
 breach-checklist-pin-header = Emomarandu ne Kuatia’atã me’ẽhápe ha emoambue ne PIN pya’e.
+breach-checklist-pin-body = Aníke ne PIN pyahu, térã oimeraẽva ambue PIN, ndogueroikéi hasy’ỹva ijekuaa, ikatúva ne reñoihague térã kundaharape.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
@@ -42,6 +43,7 @@ breach-checklist-ip-header = Eipuru Ñanduti teko ñemíme VPN ndive,<a>{ -brand
 ## Prompts the user for changes when there is a breach detected of physical address
 
 breach-checklist-address-header = Emoambue oimeraẽva ñe’ẽñemi térã PIN orekóva nde kundaharape vore.
+breach-checklist-address-body = Kundaharape ndahasýi ijuhu teraguapy opavaveguápe ha ikatu ajapo ko’ã ñe’ẽñemi ha PINS hasy’ỹ hag̃ua ijepuru.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
