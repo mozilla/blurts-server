@@ -1,41 +1,53 @@
-const select = document.querySelector('.breaches-header custom-select')
-const statusFilter = document.querySelector('.breaches-filter')
-const breaches = document.querySelectorAll('.breach-row')
-const stateHandler = {
+const breachesPartial = document.querySelector("[data-partial='breaches']")
+const state = new Proxy({
+  selectedEmail: null,
+  selectedStatus: 'unresolved'
+}, {
   set (target, key, value) {
-    const oldValue = target[key]
+    if (target[key] !== value) {
+      target[key] = value
+      render()
+    }
 
-    if (value === oldValue) return true
-
-    target[key] = value
-    render()
     return true
   }
-}
+})
 
-const state = new Proxy({
-  selectedEmail: select?.value,
-  statusFilter: 'unresolved'
-}, stateHandler)
+let breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
+
+function init () {
+  breachRows = breachesPartial.querySelectorAll('.breach-row')
+  emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
+  statusFilter = breachesPartial.querySelector('.breaches-filter')
+  resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
+  unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
+
+  state.selectedEmail = emailSelect.value
+  emailSelect.addEventListener('change', handleChange)
+  statusFilter.addEventListener('change', handleChange)
+  render()
+}
 
 function handleChange (e) {
   switch (e.currentTarget) {
-    case select:
-      state.selectedEmail = select.value
+    case emailSelect:
+      state.selectedEmail = e.target.value
       break
     case statusFilter:
-      state.statusFilter = e.target.value
+      state.selectedStatus = e.target.value
       break
   }
-  console.log('handleChange', e)
 }
 
 function render () {
   let delay = 0
   let hidden
 
-  breaches.forEach(breach => {
-    hidden = (breach.dataset.email !== state.selectedEmail) || (breach.dataset.status !== state.statusFilter)
+  resolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
+  unresolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
+
+  breachRows.forEach(breach => {
+    hidden = (breach.dataset.email !== state.selectedEmail) || (breach.dataset.status !== state.selectedStatus)
     breach.toggleAttribute('hidden', hidden)
     if (!hidden) {
       breach.style.setProperty('--delay', `${delay}ms`)
@@ -44,8 +56,7 @@ function render () {
   })
 }
 
-if (select) select.addEventListener('change', handleChange)
-if (statusFilter) statusFilter.addEventListener('change', handleChange)
+if (breachesPartial) init()
 
 // TODO: REMOVE -- this is just an example of updating breach resolution
 // update button
