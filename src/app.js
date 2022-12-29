@@ -4,6 +4,7 @@ import connectRedis from 'connect-redis'
 import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
+import csurf from 'tiny-csrf'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
@@ -92,9 +93,14 @@ try {
   console.error('Error loading breaches into app.locals', error)
 }
 
-// routing
 app.use(express.static(staticPath))
 app.use(express.json())
+
+// csurf protection, secret needs to have length == 32
+// defaults to POST, PUT, PATCH
+app.use(csurf(AppConstants.CSURF_SECRET))
+
+// routing
 app.use('/', indexRouter)
 app.use(errorHandler)
 

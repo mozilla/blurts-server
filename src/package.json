@@ -37,6 +37,7 @@
     "esbuild": "^0.15.10",
     "helmet": "^6.0.0",
     "svgo": "^2.8.0",
+    "tiny-csrf": "^1.1.3",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
