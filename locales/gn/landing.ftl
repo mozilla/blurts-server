@@ -10,7 +10,9 @@ get-started = Eñepyrũ
 
 why-use-monitor = ¿Mba’ére eipurúta { -brand-fx-monitor }?
 protect-account = Emo’ã ne mba’ete
+protect-account-prevent-hackers = Emboyke ani mba’evai apoha oike ne mba’etépe ñe’ẽñemi mboguapyre rupive.
 prevent-fraud = Ehenonde’a ñemonda térã mba’evai’apo ñandutiguáva
+prevent-fraud-keep-info = Ereko marandu mombyry ndehegui mba’evai apohágui ne myengoviaséva ha oporojuka.
 get-alerts = Emog̃uahẽuka kyhyjerã pyahu
 get-alerts-find-out = Eikuaáke ne maranduete oñemboguakuaátaramo.
 
