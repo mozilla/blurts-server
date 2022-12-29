@@ -5,6 +5,7 @@ import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
 import csurf from 'tiny-csrf'
+import cookieParser from 'cookie-parser'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
@@ -98,6 +99,7 @@ app.use(express.json())
 
 // csurf protection, secret needs to have length == 32
 // defaults to POST, PUT, PATCH
+app.use(cookieParser())
 app.use(csurf(AppConstants.CSURF_SECRET))
 
 // routing
