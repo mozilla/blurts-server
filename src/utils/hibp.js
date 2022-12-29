@@ -235,10 +235,8 @@ async function subscribeHash (sha1) {
 
 /**
 A range subscription can be deleted with the following request:
-DELETE /range/
-{
-  hashPrefix:"[hash prefix]"
-}
+DELETE /range/[hash prefix]
+
 There is one possible response code that can be returned:
 1. HTTP 200: Range subscription already exists
 
@@ -247,10 +245,9 @@ There is one possible response code that can be returned:
  */
 async function deleteSubscribedHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
-  const path = '/range'
+  const path = `/range${sha1Prefix}`
   const options = {
-    method: 'DELETE',
-    json: { hashPrefix: sha1Prefix }
+    method: 'DELETE'
   }
 
   return await kAnonReq(path, options)
