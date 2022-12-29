@@ -10,6 +10,7 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Eike <a>{ $breachedCompanyUrl }</a> emoambue hag̃ua ne ñe’ẽñemi ha embojuruja mokõi factor ñemoneĩ (2FA).
+breach-checklist-pw-body = Embohasýke ne ñe’ẽñemi ani hag̃ua avave oikuaa. Ko ñe’ẽñemi eipurúramo ambue mba’etépe, eñeha’ã emoambue avei. <a>Pe ñe’ẽñemi ñangarekohára { -brand-firefox }</a> ne pytyvõkuaa ehapykuehokuaa hag̃ua tekorosãme opaite ne ñe’ẽñemi.
 
 ## Prompts the user for changes when there is a breach detected of email
 
