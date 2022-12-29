@@ -22,6 +22,10 @@ breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omon
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Ehechameme ne mba’ete reko banco pegua, virujepuru térã kuatia’atã ñemurã emoneĩ’ỹva.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Ikatu avei ejoko nde deveha <a>Equifax</a> ndive, <a>Experian</a> ha <a>TransUnion</a> emboyke hag̃ua umi mba’evaiapoha ombojurujávo mba’ete pyahu nde rérape. Reiete ha nombyaimo’ãi nde jedeve raperã.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -31,6 +35,7 @@ breach-checklist-cc-body = Avei ehechajey nde kuatia’atã ñemurã reko eikuaa
 ## Prompts the user for changes when there is a breach detected of bank account
 
 breach-checklist-bank-header = Emomarandu pya’e banco-pe ne mba’ete papapy ojepurukuaátaramo.
+breach-checklist-bank-body = Ejapo pya’evéramo ikatu ne mo’ãve nepytyvõkuaáva oimeraẽva mba’evaígui. Avei ehechajeykuaa ne mba’ete ehekahápe oimeraẽva mba’e nemba’e’ỹva.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
