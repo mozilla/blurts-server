@@ -8,7 +8,12 @@
 breach-heading-email = Data breaches for { $email-select }
 
 # $count is the number of emails a user has added out of $total allowed
-emails-monitored = { $count } of { $total } emails monitored
+emails-monitored = 
+  {
+    $total ->
+      [one] { $count } of { $total } email monitored
+     *[other] { $count } of { $total } emails monitored
+  }
 
 ## Breaches table
 
