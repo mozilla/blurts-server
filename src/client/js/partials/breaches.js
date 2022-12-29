@@ -1,22 +1,51 @@
 const select = document.querySelector('.breaches-header custom-select')
-let breaches
+const statusFilter = document.querySelector('.breaches-filter')
+const breaches = document.querySelectorAll('.breach-row')
+const stateHandler = {
+  set (target, key, value) {
+    const oldValue = target[key]
+
+    if (value === oldValue) return true
+
+    target[key] = value
+    render()
+    return true
+  }
+}
+
+const state = new Proxy({
+  selectedEmail: select?.value,
+  statusFilter: 'unresolved'
+}, stateHandler)
 
 function handleChange (e) {
-  let i = 0
+  switch (e.currentTarget) {
+    case select:
+      state.selectedEmail = select.value
+      break
+    case statusFilter:
+      state.statusFilter = e.target.value
+      break
+  }
+  console.log('handleChange', e)
+}
+
+function render () {
+  let delay = 0
+  let hidden
 
   breaches.forEach(breach => {
-    const hidden = breach.toggleAttribute('hidden', breach.dataset.email !== e.target.value)
+    hidden = (breach.dataset.email !== state.selectedEmail) || (breach.dataset.status !== state.statusFilter)
+    breach.toggleAttribute('hidden', hidden)
     if (!hidden) {
-      breach.style.setProperty('--delay', `${i}ms`)
-      i += 50
+      breach.style.setProperty('--delay', `${delay}ms`)
+      delay += 50
     }
   })
 }
 
-if (select) {
-  breaches = document.querySelectorAll('.breach-row')
-  select.addEventListener('change', handleChange)
-}
+if (select) select.addEventListener('change', handleChange)
+if (statusFilter) statusFilter.addEventListener('change', handleChange)
 
 // TODO: REMOVE -- this is just an example of updating breach resolution
 // update button

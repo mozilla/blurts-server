@@ -1,7 +1,7 @@
 import { getMessage, getLocale } from '../../utils/fluent.js'
 
 const rowHtml = data => `
-<details class='breach-row' data-email=${data.affectedEmail} hidden=${!data.primaryEmail}>
+<details class='breach-row' data-status=${data.status} data-email=${data.affectedEmail} hidden=${data.isHidden}>
   <summary>
     <span>${data.companyName}</span><span>${data.dataClasses}</span><span>${data.addedDate}</span>
   </summary>
@@ -26,8 +26,9 @@ function createBreachRows (data) {
       const addedDate = Date.parse(breach.AddedDate)
       const dataClassesTranslated = breach.DataClasses.map(item => getMessage(item))
       const formattedBreach = {
+        isHidden: !account.primary || breach.IsResolved, // initial breach hidden state
+        status: breach.IsResolved ? 'resolved' : 'unresolved',
         affectedEmail: account.email,
-        primaryEmail: account.primary,
         companyName: breach.Title,
         addedDate: new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).format(addedDate),
         dataClasses: new Intl.ListFormat(locale, { style: 'narrow' }).format(dataClassesTranslated),
@@ -66,6 +67,12 @@ export const breaches = data => `
       </figcaption>
     </figure>
   </header>
+</section>
+<section class='breaches-filter'>
+  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
+  <label for='breaches-unresolved'><output>40</output>Unresolved breaches</label>
+  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
+  <label for='breaches-resolved'><output>10</output>Resolved breaches</label>
 </section>
 <section class='breaches-table'>
   <header>
