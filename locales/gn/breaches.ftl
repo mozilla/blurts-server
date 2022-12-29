@@ -58,6 +58,7 @@ breach-checklist-dob-body = Umi teñoihague ára ndahasýi ijejuhu teraguapyháp
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = Emo’ã ne pumbyry papapy mba’epuru rovamo’ãha <a>{ -brand-relay }</a> reheguáva, oñomíva añetehápe ne pumbyry papapy.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
@@ -70,3 +71,5 @@ breach-checklist-hp-header = Emoheñói mba’ete hekorosã ha ha’eñóva oime
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Eñe’ẽ { $companyName } ndive emombe’u hag̃ua ko ñembogua rehegua ha ejerure mba’e tapére eguatase.
