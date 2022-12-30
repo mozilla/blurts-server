@@ -23,12 +23,12 @@ function init () {
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
 
   state.selectedEmail = emailSelect.value
-  emailSelect.addEventListener('change', handleChange)
-  statusFilter.addEventListener('change', handleChange)
+  emailSelect.addEventListener('change', handleEvent)
+  statusFilter.addEventListener('change', handleEvent)
   render()
 }
 
-function handleChange (e) {
+function handleEvent (e) {
   switch (e.currentTarget) {
     case emailSelect:
       state.selectedEmail = e.target.value

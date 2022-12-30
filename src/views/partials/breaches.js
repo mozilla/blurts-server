@@ -71,9 +71,9 @@ export const breaches = data => `
 </section>
 <section class='breaches-filter'>
   <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
-  <label for='breaches-unresolved'><output>&nbsp;</output>Unresolved breaches</label>
+  <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('label-unresolved')}</label>
   <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
-  <label for='breaches-resolved'><output>&nbsp;</output>Resolved breaches</label>
+  <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('label-resolved')}</label>
 </section>
 <section class='breaches-table'>
   <header>
