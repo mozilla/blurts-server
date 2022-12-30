@@ -1,11 +1,6 @@
 import { breachSummary } from './breach-summary'
 
 describe('utils:breach-resolution', () => {
-  // beforeAll(async () => {
-  //   await initFluentBundles()
-  //   updateLocale('en')
-  // })
-
   test('breachSummary: handles null input', () => {
     const verifiedEmails = null
     const resp = breachSummary(verifiedEmails)
