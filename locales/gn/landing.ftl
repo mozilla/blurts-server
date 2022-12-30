@@ -20,7 +20,9 @@ get-alerts-find-out = Eikuaáke ne maranduete oñemboguakuaátaramo.
 
 how-it-works = Péicha omba’apo
 check-for-breaches = Ehechajey ñembyai rehegua
+check-for-breaches-we-search = Rohekáta opaite mba’ekuaarã ñembyai osẽva 2007 guive ehecha hag̃ua ne marandúpa imarãkuaa.
 protect-accounts = Emo’ã ne mba’ete
+protect-accounts-clear-steps = Rome’ẽta ndéve mba’etépa ejapokuaa oimeraẽva mba’ekuaarã ñembyai oikóramo g̃uarã.
 alerts-for-breaches = Emog̃uahẽuka opaite kyhyjerã pyahu
 alerts-for-breaches-monitor-new = Rohechamemetéta mba’ekuaarã ñembyai ipyahúva ha romomarandúta nderupytýtaramo.
 
