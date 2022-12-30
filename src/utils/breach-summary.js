@@ -36,16 +36,22 @@ function breachSummary (verifiedEmails) {
       if (breach.IsResolved) {
         breachSummary.numBreaches.numResolved++
       }
+      let isOther = true
 
       if (breach.DataClasses.includes(BreachDataTypes.Passwords)) {
         breachSummary.breachedDataTypes[BreachDataTypes.Passwords]++
-      } else if (breach.DataClasses.includes(BreachDataTypes.Email)) {
-        breachSummary.breachedDataTypes[BreachDataTypes.Email]++
-      } else if (breach.DataClasses.includes(BreachDataTypes.IP)) {
-        breachSummary.breachedDataTypes[BreachDataTypes.IP]++
-      } else {
-        breachSummary.breachedDataTypes.other++
+        isOther = false
       }
+      if (breach.DataClasses.includes(BreachDataTypes.Email)) {
+        breachSummary.breachedDataTypes[BreachDataTypes.Email]++
+        isOther = false
+      }
+      if (breach.DataClasses.includes(BreachDataTypes.IP)) {
+        breachSummary.breachedDataTypes[BreachDataTypes.IP]++
+        isOther = false
+      }
+
+      if (isOther) breachSummary.breachedDataTypes.other++
     })
 
     // update breaches count
