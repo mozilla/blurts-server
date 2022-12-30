@@ -9,6 +9,7 @@ get-started = Eñepyrũ
 ## Why use Firefox Monitor?
 
 why-use-monitor = ¿Mba’ére eipurúta { -brand-fx-monitor }?
+identifying-breaches = Ehechakuaa ha emoĩporã mba’ekuaarã ñembogua ha’e mba’eporã nde rekoñemi hag̃ua ñandutípe.
 protect-account = Emo’ã ne mba’ete
 protect-account-prevent-hackers = Emboyke ani mba’evai apoha oike ne mba’etépe ñe’ẽñemi mboguapyre rupive.
 prevent-fraud = Ehenonde’a ñemonda térã mba’evai’apo ñandutiguáva
