@@ -1,4 +1,5 @@
 import { getMessage, getLocale } from '../../utils/fluent.js'
+import AppConstants from '../../app-constants.js'
 
 const rowHtml = data => `
 <details class='breach-row' data-status=${data.status} data-email=${data.affectedEmail} hidden=${data.isHidden}>
@@ -62,7 +63,7 @@ export const breaches = data => `
     <figure class='email-stats'>
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>
-        <strong>2 of 5 emails monitored</strong>
+        <strong>${getMessage('emails-monitored', { count: data.emailCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
         <a href='http://mozilla.org'>Add email address</a>
       </figcaption>
     </figure>

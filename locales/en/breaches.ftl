@@ -7,6 +7,14 @@
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Data breaches for { $email-select }
 
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored = 
+  {
+    $total ->
+      [one] { $count } of { $total } email monitored
+     *[other] { $count } of { $total } emails monitored
+  }
+
 ## Breaches table
 
 column-company = COMPANY
