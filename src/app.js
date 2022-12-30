@@ -4,12 +4,11 @@ import connectRedis from 'connect-redis'
 import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
-import csurf from 'tiny-csrf'
-import cookieParser from 'cookie-parser'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
+import { csrfProtection } from './middleware/csurf.js'
 import { initFluentBundles, updateLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
@@ -96,11 +95,7 @@ try {
 
 app.use(express.static(staticPath))
 app.use(express.json())
-
-// csurf protection, secret needs to have length == 32
-// defaults to POST, PUT, PATCH
-app.use(cookieParser())
-app.use(csurf(AppConstants.CSURF_SECRET))
+app.use(csrfProtection())
 
 // routing
 app.use('/', indexRouter)

@@ -211,14 +211,14 @@ function filterBreaches (breaches) {
 }
 
 /**
-A range can be subscribed for callbacks with the following request:
-POST /range/subscribe
-{
-  hashPrefix:"[hash prefix]"
-}
-There are two possible response codes that can be returned:
-1. HTTP 201: New range subscription has been created
-2. HTTP 200: Range subscription already exists
+ * A range can be subscribed for callbacks with the following request:
+ * POST /range/subscribe
+ * {
+ *   hashPrefix:"[hash prefix]"
+ * }
+ * There are two possible response codes that can be returned:
+ * 1. HTTP 201: New range subscription has been created
+ * 2. HTTP 200: Range subscription already exists
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 or 201 response codes
  */
@@ -234,11 +234,11 @@ async function subscribeHash (sha1) {
 }
 
 /**
-A range subscription can be deleted with the following request:
-DELETE /range/[hash prefix]
+ * A range subscription can be deleted with the following request:
+ * DELETE /range/[hash prefix]
 
-There is one possible response code that can be returned:
-1. HTTP 200: Range subscription already exists
+ * There is one possible response code that can be returned:
+ * HTTP 200: Range subscription successfully deleted
 
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 response codes
