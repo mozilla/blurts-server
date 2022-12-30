@@ -19,6 +19,15 @@ function createEmailOptions (data) {
   return optionElements.join('')
 }
 
+function createEmailCTA (count) {
+  const total = parseInt(AppConstants.MAX_NUM_ADDRESSES)
+
+  if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
+
+  // TODO: link "add email" flow
+  return `<a href='http://mozilla.org'>${getMessage('cta-add-email')}</a>`
+}
+
 function createBreachRows (data) {
   const locale = getLocale()
   const formattedBreaches = data.verifiedEmails.flatMap(account => {
@@ -63,7 +72,7 @@ export const breaches = data => `
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>
         <strong>${getMessage('emails-monitored', { count: data.emailCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
-        <a href='http://mozilla.org'>Add email address</a>
+        ${createEmailCTA(data.emailCount)}
       </figcaption>
     </figure>
   </header>
@@ -75,6 +84,7 @@ export const breaches = data => `
   ${createBreachRows(data.breachesData)}
 </section>
 <section style='display:none'>
+  <!--This is a temp section/button to test breach update post-->
   <button id="update-breaches">Update Breaches</button>
   <pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
 </section>
