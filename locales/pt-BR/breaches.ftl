@@ -10,6 +10,7 @@
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-pw-header = Acesse <a>{ $breachedCompanyUrl }</a> para alterar sua senha e ativar a autenticação em duas etapas.
+breach-checklist-pw-body = Garanta que sua senha seja única e difícil de adivinhar. Se esta senha for usada em qualquer outra conta, certifique-se de alterar lá também. O <a>gerenciador de senhas do { -brand-firefox }</a> pode ajudar a manter o controle de todas as suas senhas com segurança.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -21,6 +22,10 @@ breach-checklist-email-body = Isso pode ocultar seu endereço de email verdadeir
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Monitore seu relatório de crédito, verifique se há contas, empréstimos ou cartões de crédito que você não reconhece.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Você também pode congelar seu crédito em <a>Equifax</a>, <a>Experian</a> e <a>TransUnion</a> para impedir que golpistas abram novas contas em seu nome. É gratuito e não afeta sua avaliação de crédito.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -35,9 +40,11 @@ breach-checklist-bank-body = Fazer isso mais rápido pode fornecer mais proteç�
 ## Prompts the user for changes when there is a breach detected of pin
 
 breach-checklist-pin-header = Notifique o emissor do seu cartão e altere seu PIN imediatamente.
+breach-checklist-pin-body = Certifique-se de que seu novo PIN, ou qualquer outro PIN, não inclua números fáceis de adivinhar, como sua data de nascimento ou endereço físico.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = Use a internet de forma privativa com uma VPN, como o <a>{ -brand-mozilla-vpn }</a>.
 breach-checklist-ip-body = Seu endereço IP (endereço de protocolo da internet) identifica sua localização e o provedor de serviços de internet. Uma VPN pode ocultar seu endereço IP real para você poder usar a internet com privacidade.
 
 ## Prompts the user for changes when there is a breach detected of physical address
