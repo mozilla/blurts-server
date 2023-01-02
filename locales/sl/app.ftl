@@ -260,7 +260,7 @@ remove-fxm-blurb =
 # Button title
 manage-email-addresses = Upravljanje e-poštnih naslovov
 # Link title
-latest-breach-link = Preverite, če ste bili vpleteni v to krajo podatkov
+latest-breach-link = Preverite, ali ste bili žrtev te kraje podatkov
 welcome-back = Dobrodošli nazaj, { $userName }!
 welcome-user = Dobrodošli, { $userName }!
 breach-alert-subject = { -product-name } je našel vaš e-poštni naslov v novi kraji podatkov.
@@ -403,7 +403,7 @@ other-known-breaches-found =
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
-additional-information-including = Dodatne informacije, vključno z:
+additional-information-including = Dodatne informacije, med drugim:
 # Title
 email-addresses-title = E-poštni naslovi
 # This is a section headline on the breach detail page that appears above
@@ -665,6 +665,7 @@ ad-unit-6-worry-free = Brezskrbna registracija
         [mestnik] Firefoxu
         [orodnik] Firefoxom
     }
+-brand-fx-monitor = Firefox Monitor
 -brand-mozilla =
     { $sklon ->
        *[imenovalnik] Mozilla
@@ -674,6 +675,7 @@ ad-unit-6-worry-free = Brezskrbna registracija
         [mestnik] Mozilli
         [orodnik] Mozillo
     }
+-brand-mozilla-foundation = Mozilla Foundation
 -brand-github =
     { $sklon ->
        *[imenovalnik] GitHub
