@@ -365,6 +365,12 @@ const DB = {
     if (!subscriber) {
       return false
     }
+
+    // Delete subscriber's emails
+    // TODO issue 2744: Replace this code with a DB migration to add cascading deletion
+    await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
+
+    // Delete the subscriber
     await knex('subscribers')
       .where({
         primary_verification_token: subscriber.primary_verification_token,
