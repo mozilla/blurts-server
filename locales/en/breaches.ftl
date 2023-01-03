@@ -15,6 +15,11 @@ emails-monitored =
      *[other] { $count } of { $total } emails monitored
   }
 
+## Breaches resolved filter
+
+filter-label-unresolved = Unresolved breaches
+filter-label-resolved = Resolved breaches
+
 ## Breaches table
 
 column-company = COMPANY
