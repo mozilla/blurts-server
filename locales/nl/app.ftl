@@ -181,7 +181,7 @@ how-fxm-2-blurb =
 how-fxm-3-headline = Ontvang meldingen in uw browser
 how-fxm-3-blurb =
     Als u { -brand-name } gebruikt, ontvangt u een melding als u een bezoek brengt aan een
-    site die is geschonden. Ontdek het meteen als u in het datalek voor komt en
+    website waar een lek is opgetreden. Ontdek het meteen als u in het datalek voor komt en
     wat u er aan kunt doen.
 wtd-after-website = Wat te doen na een datalek van de website
 wtd-after-data-agg = Wat te doen na een datalek van een gegevensverzamelaar
@@ -235,7 +235,7 @@ send-verification = Verificatiekoppeling versturen
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = Samenvatting datalek
-show-breaches-for-this-email = Toon alle datalekken voor dit e-mailadres.
+show-breaches-for-this-email = Alle datalekken voor dit e-mailadres tonen.
 link-change-primary = Primaire e-mailadres wijzigen
 remove-fxm = { -product-name } verwijderen
 remove-fxm-blurb =
