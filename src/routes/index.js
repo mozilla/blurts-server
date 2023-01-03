@@ -1,7 +1,6 @@
 import express from 'express'
 import { landingPage } from '../controllers/landing.js'
 import { robotsTxt } from '../middleware/robots.js'
-import { generateToken } from '../middleware/csrf.js'
 import authRoutes from './auth.js'
 import userRoutes from './user.js'
 import hibpApiRoutes from './api/v1/hibp.js'
