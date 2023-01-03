@@ -17,8 +17,8 @@ emails-monitored =
 
 ## Breaches resolved filter
 
-label-unresolved = Unresolved breaches
-label-resolved = Resolved breaches
+filter-label-unresolved = Unresolved breaches
+filter-label-resolved = Resolved breaches
 
 ## Breaches table
 
