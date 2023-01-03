@@ -14,7 +14,7 @@ function createEmailCTA (count) {
   if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
 
   // TODO: link "add email" flow
-  return `<a href='http://mozilla.org'>${getMessage('cta-add-email')}</a>`
+  return `<a href='http://mozilla.org'>${getMessage('add-email-link')}</a>`
 }
 
 function createBreachRows (data) {

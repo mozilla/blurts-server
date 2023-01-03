@@ -15,7 +15,7 @@ emails-monitored =
      *[other] { $count } of { $total } emails monitored
   }
 
-cta-add-email = Add email address
+add-email-link = Add email address
 
 ## Breaches table
 
