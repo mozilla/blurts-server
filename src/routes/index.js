@@ -12,11 +12,6 @@ import { notFound } from '../middleware/error.js'
 const router = express.Router()
 
 router.get('/', landingPage)
-router.get('/csrf-token', (req, res) => {
-  return res.json({
-    token: generateToken(res, req)
-  })
-})
 router.get('/robots.txt', robotsTxt)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)
