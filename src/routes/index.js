@@ -1,6 +1,7 @@
 import express from 'express'
 import { landingPage } from '../controllers/landing.js'
 import { robotsTxt } from '../middleware/robots.js'
+import { generateToken } from '../middleware/csurf.js'
 import authRoutes from './auth.js'
 import userRoutes from './user.js'
 import hibpApiRoutes from './api/v1/hibp.js'
@@ -11,6 +12,11 @@ import { notFound } from '../middleware/error.js'
 const router = express.Router()
 
 router.get('/', landingPage)
+router.get('/csrf-token', (req, res) => {
+  return res.json({
+    token: generateToken(res, req)
+  })
+})
 router.get('/robots.txt', robotsTxt)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)

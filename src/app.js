@@ -4,11 +4,12 @@ import connectRedis from 'connect-redis'
 import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
+import cookieParser from 'cookie-parser'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
-import { csrfProtection } from './middleware/csurf.js'
+import { doubleCsrfProtection, generateToken } from './middleware/csurf.js'
 import { initFluentBundles, updateLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import indexRouter from './routes/index.js'
@@ -95,10 +96,13 @@ try {
 
 app.use(express.static(staticPath))
 app.use(express.json())
-app.use(csrfProtection())
+app.use(cookieParser(AppConstants.COOKIE_SECRET))
 
 // routing
-app.use('/', indexRouter)
+app.use('/', (req, res, next) => {
+  res.set('x-csrf-token', generateToken(res, req))
+  next()
+}, doubleCsrfProtection, indexRouter)
 app.use(errorHandler)
 
 // start server

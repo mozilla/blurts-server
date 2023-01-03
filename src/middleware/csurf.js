@@ -1,20 +1,13 @@
-import { csrfSync } from 'csrf-sync'
+import { doubleCsrf } from 'csrf-csrf'
+import * as AppConstants from '../app-constants.js'
 
 // defaults to ignore GET, HEAD, OPTIONS
-const { csrfSynchronisedProtection, generateToken } = csrfSync()
-
-const csrfProtection = () => {
-  const ignoredMethods = new Set(['GET', 'HEAD', 'OPTIONS'])
-  return (req, res, next) => {
-    if (ignoredMethods.has(req.method)) {
-      next()
-    } else {
-      csrfSynchronisedProtection(req, res, next)
-    }
-  }
-}
+const { doubleCsrfProtection, generateToken } = doubleCsrf({
+  getSecret: (req) => req.secret || AppConstants.CSURF_SECRET,
+  cookieName: 'monitor.x-csrf-token'
+})
 
 export {
-  csrfProtection,
+  doubleCsrfProtection,
   generateToken
 }
