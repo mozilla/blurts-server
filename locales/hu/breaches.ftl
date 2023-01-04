@@ -22,6 +22,8 @@ breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = Jelentse ezt az adatvédelmi incidenst a hitelkártya-kibocsátójának, és kérjen új kártyát új számmal.
+breach-checklist-cc-body = Tekintse át a számlakivonatait is, hogy nincsenek-e fel nem ismert levonások.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
