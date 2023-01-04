@@ -34,6 +34,7 @@
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
   "dependencies": {
+    "csrf-csrf": "^2.2.2",
     "esbuild": "^0.15.10",
     "helmet": "^6.0.0",
     "svgo": "^2.8.0",
