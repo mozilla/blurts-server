@@ -1,6 +1,6 @@
 import { breachedDataTypes, breachSummary } from './breach-summary.js'
 
-describe('utils:breach-resolution', () => {
+describe('utils:breach-summary', () => {
   test('breachSummary: handles null input', () => {
     const verifiedEmails = null
     const resp = breachSummary(verifiedEmails)
@@ -121,7 +121,7 @@ describe('utils:breach-resolution', () => {
     expect(resp.numBreaches.numUnresolved).toEqual(2)
   })
 
-  test('breachedDataTypes: ', () => {
+  test('breachedDataTypes', () => {
     const verifiedEmails = [{
       email: 'test@test.com',
       breaches: [{
