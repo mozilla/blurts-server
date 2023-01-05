@@ -1,4 +1,4 @@
-import { BreachDataTypes } from './breach-resolution'
+import { BreachDataTypes } from './breach-resolution.js'
 
 /**
  * Returns a breach summary JSON that contains the following attributes
@@ -18,12 +18,6 @@ function breachSummary (verifiedEmails) {
       count: 0,
       numResolved: 0,
       numUnresolved: 0
-    },
-    breachedDataTypes: {
-      [BreachDataTypes.Passwords]: 0,
-      [BreachDataTypes.Email]: 0,
-      [BreachDataTypes.IP]: 0,
-      other: 0
     }
   }
 
@@ -36,22 +30,6 @@ function breachSummary (verifiedEmails) {
       if (breach.IsResolved) {
         breachSummary.numBreaches.numResolved++
       }
-      let isOther = true
-
-      if (breach.DataClasses.includes(BreachDataTypes.Passwords)) {
-        breachSummary.breachedDataTypes[BreachDataTypes.Passwords]++
-        isOther = false
-      }
-      if (breach.DataClasses.includes(BreachDataTypes.Email)) {
-        breachSummary.breachedDataTypes[BreachDataTypes.Email]++
-        isOther = false
-      }
-      if (breach.DataClasses.includes(BreachDataTypes.IP)) {
-        breachSummary.breachedDataTypes[BreachDataTypes.IP]++
-        isOther = false
-      }
-
-      if (isOther) breachSummary.breachedDataTypes.other++
     })
 
     // update breaches count
@@ -67,4 +45,39 @@ function breachSummary (verifiedEmails) {
   return breachSummary
 }
 
-export { breachSummary }
+function breachedDataTypes (verifiedEmails) {
+  const breachedDataTypes = {}
+  if (!verifiedEmails) return breachedDataTypes
+
+  verifiedEmails.forEach(email => {
+    breachedDataTypes[email.email] = {
+      [BreachDataTypes.Passwords]: 0,
+      [BreachDataTypes.Email]: 0,
+      [BreachDataTypes.IP]: 0,
+      other: 0
+    }
+
+    email.breaches.forEach(breach => {
+      let isOther = true
+
+      if (breach.DataClasses.includes(BreachDataTypes.Passwords)) {
+        breachedDataTypes[email.email][BreachDataTypes.Passwords]++
+        isOther = false
+      }
+      if (breach.DataClasses.includes(BreachDataTypes.Email)) {
+        breachedDataTypes[email.email][BreachDataTypes.Email]++
+        isOther = false
+      }
+      if (breach.DataClasses.includes(BreachDataTypes.IP)) {
+        breachedDataTypes[email.email][BreachDataTypes.IP]++
+        isOther = false
+      }
+
+      if (isOther) breachedDataTypes[email.email].other++
+    })
+  })
+
+  return breachedDataTypes
+}
+
+export { breachSummary, breachedDataTypes }
