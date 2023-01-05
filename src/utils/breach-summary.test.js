@@ -185,6 +185,9 @@ describe('utils:breach-resolution', () => {
       primary: false
     }]
     const resp = breachedDataTypes(verifiedEmails, 'test2@test.com')
-    console.log(resp)
+    expect(resp['test@test.com']?.passwords).toEqual(1)
+    expect(resp['test@test.com']['email-addresses']).toEqual(1)
+    expect(resp['test2@test.com']?.passwords).toEqual(1)
+    expect(resp['test2@test.com']['email-addresses']).toEqual(2)
   })
 })
