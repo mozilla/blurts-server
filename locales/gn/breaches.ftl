@@ -45,6 +45,7 @@ breach-checklist-pin-body = Aníke ne PIN pyahu, térã oimeraẽva ambue PIN, n
 ## Prompts the user for changes when there is a breach detected of IP address
 
 breach-checklist-ip-header = Eipuru Ñanduti teko ñemíme VPN ndive,<a>{ -brand-mozilla-vpn }</a> ramo.
+breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’epuru me’ẽhára. VPN omokañykuaa nde IP kundaharape eipurukuaa hag̃ua Ñanduti teko ñemíme.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
@@ -64,6 +65,7 @@ breach-checklist-phone-header = Emo’ã ne pumbyry papapy mba’epuru rovamo’
 
 # NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
 breach-checklist-sq-header = Embopyahu porandu tekorosãgua <a>{ $breachedCompanyUrl }</a>-pe.
+breach-checklist-sq-body = Eipuru mbohovái puku ha jereguáva ha eñongatu tenda hekorosãvape. Ejapo kóva tenda eipuruhápe ko’ã porandu tekorosãgua.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
