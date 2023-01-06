@@ -33,6 +33,8 @@ see-all-faq = See all FAQs
 # question and answer
 what-is-breach = What exactly is a data breach?
 when-info-exposed = A data breach happens when personal or private information gets exposed, stolen or copied without permission. These security incidents can be a result of cyber attacks to websites, apps or any database where people’s personal information resides. A data breach can also happen by accident like if someone’s login credentials accidentally get posted publicly.
+# question and answer
+what-do-i-do = I just found out I’m in a data breach. What do I do?
 
 ## See if you’ve been in a data breach
 
