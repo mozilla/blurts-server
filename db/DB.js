@@ -349,9 +349,14 @@ const DB = {
         .del()
       return
     }
-    // This can fail if a subscriber has more email_addresses and marks
-    // a primary email as spam, but we should let it fail so we can see it
-    // in the logs
+    // If the subscriber has more email_addresses, log the deletion failure
+    if (subscriber.email_addresses.length !== 0) {
+      log.error('removeEmail', {
+        msg: `Unable to delete subscriber ${subscriber.id} with ${subscriber.email_addresses.length} additional email(s).`
+      })
+      return
+    }
+
     await knex('subscribers')
       .where({
         primary_verification_token: subscriber.primary_verification_token,
