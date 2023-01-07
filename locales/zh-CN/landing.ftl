@@ -14,7 +14,7 @@ identifying-breaches = 监测及应对数据外泄事件是保护在线隐私的
 protect-account = 保护您的账户
 protect-account-prevent-hackers = 防范黑客使用泄露的密码侵入您的账户。
 prevent-fraud = 防止欺诈和网络犯罪
-prevent-fraud-keep-info = 让试图冒充并侵害您的黑客休想染指您的信息。
+prevent-fraud-keep-info = 让企图冒充并侵害您的黑客休想染指您的信息。
 get-alerts = 在发生新的外泄事件时接收警报
 
 ## Here’s how it works
