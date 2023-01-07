@@ -59,12 +59,17 @@ breach-checklist-dob-body = 出生日期在公开记录中很容易找到，获�
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+breach-checklist-phone-header = 使用 <a>{ -brand-relay }</a> 等马甲服务来保护您的电话号码，其可掩藏您的真实电话号码。
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = 在 <a>{ $breachedCompanyUrl }</a> 上更新您的密保问题。
+breach-checklist-sq-body = 使用长且随机的答案，并将答案存放在安全的地方。在其他使用相同密保问题的地方也应这样做。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = 为重复使用密码的账户改用独一无二的强密码。
 
 ## Prompts the user for changes when there is a breach detected of other types
 
