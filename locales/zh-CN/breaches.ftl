@@ -30,21 +30,32 @@ breach-checklist-ssn-body = 您还可以考虑冻结您在 <a>Equifax</a>、<a>E
 ## Prompts the user for changes when there is a breach detected of credit card
 
 breach-checklist-cc-header = 向您的信用卡发卡机构报告此次泄露事件，并申请一张新卡号的信用卡。
+breach-checklist-cc-body = 您还应该检查您的信用卡对账单，关注是否有不熟悉的消费记录。
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = 立即通知银行您的账户已被盗用。
+breach-checklist-bank-body = 尽快行动可以为您提供更多法律保护并挽回损失。 您还需要检查账户中是否有不熟悉的消费记录。
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-header = 立即通知您的发卡行并更改 PIN。
+breach-checklist-pin-body = 确保您的新 PIN 以及任何其他 PIN 都不包含容易猜到的数字组合，例如您的出生日期或地址。
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = 使用 <a>{ -brand-mozilla-vpn }</a> 等 VPN 来私密访问互联网 。
+breach-checklist-ip-body = 您的 IP 地址（互联网协议地址）可精准反映您的位置和互联网服务提供商，而 VPN 可以隐藏您的真实 IP 地址，因此您可以私密访问互联网。
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = 更改包含您地址的任何部分的密码或 PIN。
+breach-checklist-address-body = 地址在公开记录中很容易找到，使这类密码和 PIN 很容易被猜到。
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = 更改所有包含您出生日期的密码或 PIN。
+breach-checklist-dob-body = 出生日期在公开记录中很容易找到，获知它的人很容易就能猜出您的 PIN。
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
