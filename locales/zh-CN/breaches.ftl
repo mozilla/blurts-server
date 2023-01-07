@@ -19,9 +19,17 @@ breach-checklist-email-body = 这可以将电子邮件转发到您的真实收�
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = 关注您的信用报告，查找不认识的银行账户、贷款和信用卡。
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = 您还可以考虑冻结您在 <a>Equifax</a>、<a>Experian</a> 和 <a>TransUnion</a> 上的信用，以阻止诈骗者以您的名义开设新账户。该服务免费提供，不会影响您的信用评分。
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
+breach-checklist-cc-header = 向您的信用卡发卡机构报告此次泄露事件，并申请一张新卡号的信用卡。
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
