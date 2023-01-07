@@ -19,6 +19,8 @@ get-alerts = 在发生新的外泄事件时接收警报
 
 ## Here’s how it works
 
+how-it-works = 工作原理
+check-for-breaches = 检查是否有外泄事件
 
 ## Your privacy is safe with us
 
