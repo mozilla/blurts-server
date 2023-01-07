@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox 账户
-terms-and-privacy = 使用条款和隐私
 GitHub-link-title = GitHub
 error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
 error-could-not-add-email = 无法将电子邮件地址添加到数据库。
@@ -75,7 +74,6 @@ share-facebook-blurb = 您的账号也出现在数据外泄事件当中吗？
 og-site-description = 使用 { -product-name }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
 show-all = 全部显示
 fxa-scan-another-email = 想要检查其他电子邮件地址？
-sign-in = 登录
 sign-out = 退出
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
@@ -549,3 +547,29 @@ ad-unit-5-no-matter-where = 无论您身居何处，只需几秒就可为想做�
 ad-unit-6-worry-free = 注册全无忧
 ad-unit-6-want-to-start = 想要开始新订阅、回复邀请或获得优惠促销代码，而不让垃圾邮件充斥您的收件箱吗？
 ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮箱而非真实邮箱，保护您的个人信息并更好地管理收件箱
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla 基金会
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = 使用 { -brand-fx-monitor }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = 登录
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = 使用条款和隐私
+github = { -brand-github }

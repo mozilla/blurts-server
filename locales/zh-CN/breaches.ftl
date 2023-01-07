@@ -35,7 +35,7 @@ breach-checklist-cc-body = 您还应该检查您的信用卡对账单，关注�
 ## Prompts the user for changes when there is a breach detected of bank account
 
 breach-checklist-bank-header = 立即通知银行您的账户已被盗用。
-breach-checklist-bank-body = 尽快行动可以为您提供更多法律保护并挽回损失。 您还需要检查账户中是否有不熟悉的消费记录。
+breach-checklist-bank-body = 尽快采取行动可以为您争取更多法律保护并挽回损失。 您还需要检查账户中是否有不熟悉的消费记录。
 
 ## Prompts the user for changes when there is a breach detected of pin
 
@@ -70,6 +70,9 @@ breach-checklist-sq-body = 使用长且随机的答案，并将答案存放在�
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = 为重复使用密码的账户改用独一无二的强密码。
+breach-checklist-hp-body = <a>{ -brand-firefox } 密码管理器</a>（内置于 { -brand-firefox } 浏览器中且可免费使用）等密码管理器可以帮助您保存全部密码并在您的所有设备间安全同步。
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = 联系 { $companyName } 告知他们此次泄露事件，并询问您可以采取的具体步骤。
