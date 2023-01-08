@@ -8,6 +8,8 @@ rec-pw-2-subhead = 同じパスワードを使用している他のサイトの�
 # Link title
 rec-pw-2-cta-fx = { -brand-name } のログイン情報を見る
 rec-pw-2 = パスワードを再利用すると、たった 1 つのデータ侵害が多くに影響を及ぼします。今、このパスワードが外部に漏れてしまったので、ハッカーがこれを利用してアカウントに侵入する可能性があります。
+# Recommendation subhead
+rec-pw-3-subhead = パスワードマネージャーを使用して、パスワードをどこでも使えるようにしましょう
 # Link title
 rec-pw-3-cta = { -brand-lockwise } を入手
 # Recommendation subhead
@@ -15,8 +17,6 @@ rec-pw-4-subhead = 二要素認証 (2FA) をセットアップする
 # Link title
 rec-pw-4-cta = 二要素認証を提供するサイトを見る
 rec-pw-4 = 多くのウェブサイトは、追加のセキュリティ対策として二要素認証 (2 Factor Authentication) を提供しています。これは、ショートメッセージで受け取る一度限りのセキュリティコードなど、アカウントにログインするための別の情報を必要とします。
-# Recommendation subhead
-rec-email-subhead = 別名のメールアドレスを使う
 rec-email-cta = { -brand-relay } を試す
 rec-email = 本物のメールアドレスを外部に渡すと、ハッカーやトラッカーがあなたのパスワードを見つけやすくなり、オンラインでのターゲットになるかもしれません。{ -brand-relay } のようなサービスを利用して別名のメールアドレスを使い、本物のメールアドレスの受信トレイに転送しましょう。
 # Link title

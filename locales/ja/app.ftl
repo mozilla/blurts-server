@@ -167,6 +167,7 @@ create-strong-passwords = 強力なパスワードの作り方
 stop-reusing-pw = 同じパスワードの使い回しをやめる
 create-unique-pw = ユニークなパスワードを作成し、パスワードマネージャーのような安全な場所に保存してください。
 five-myths = パスワードマネージャーに関する 5 つの話題
+create-a-fxa = { -brand-fxa }を作成してデータ侵害の完全なレポートとアラートメールを受け取りましょう。
 feat-security-tips = セキュリティの秘訣であなたのアカウントを保護しましょう
 feat-sensitive = 機密情報の侵害について詳しい検索をしましょう
 feat-enroll-multiple = 複数のメールアドレスを登録して侵害を監視しましょう
@@ -178,6 +179,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = あなたのことがハッカーに知られていないか調査しましょう。一歩先に行く方法を学んでください。
+get-email-alerts = 安全のため、既知の侵害にあなたの情報が含まれていた場合にメールアラートを受け取るようにしましょう。
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 comm-opt-1 = すべての通知を { $primaryEmail } に送る。
@@ -203,6 +205,10 @@ welcome-user = ようこそ、{ $userName } さん！
 breach-alert-subject = { -product-name } が、あなたのメールアドレスの新しいデータ侵害を発見しました。
 what-to-do-after-breach = データ侵害があった後にするべきこと
 ba-next-step-1 = パスワードを強力で一意のパスワードに変更する。
+new-breaches-found =
+    { $breachCount ->
+       *[other] 新たな侵害が { $breachCount } 件みつかりました
+    }
 sign-up-headline-1 = { -brand-fxa } で継続して警告を受け取りましょう。
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
 was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
