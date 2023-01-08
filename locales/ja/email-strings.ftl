@@ -2,6 +2,10 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Firefox Relay is a product name and should not be translated.
+-product-name-relay = Firefox Relay
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = { -product-name } レポート
 report-date = レポート日:
@@ -24,6 +28,33 @@ see-all-breaches = すべてのデータ侵害を見る
 # Headline of verification email
 email-link-expires = このリンクは 24 時間で有効期限が切れます
 # Email headline
+email-found-breaches-hl = 過去のデータ侵害の概要は次のとおりです
+# Email headline
+email-breach-summary-for-email = { $userEmail } についての侵害の概要
+# Email headline
+email-no-breaches-hl = { $userEmail } に既知のデータ侵害はありませんでした。
+# Email headline
 email-alert-hl = { $userEmail } に新しいデータ侵害がありました
-# List headline
-faq-list-headline = よくある質問
+# Subject line of email
+email-subject-found-breaches = { -product-name } が、これらのデータ侵害であなたの情報を発見しました。
+# Subject line of email
+email-subject-no-breaches = { -product-name } は既知のデータ侵害を検出しませんでした
+# Subject line of email
+email-subject-verify = { -product-name } のメールを確認してください
+# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+learn-more-about-fxm = { $fxmLink } についての詳細
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+
+## Verification email
+
+
+## Breach report
+
+
+## Breach alert
+

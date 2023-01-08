@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox アカウント
-terms-and-privacy = 利用規約と個人情報保護方針
 GitHub-link-title = GitHub
 error-scan-page-token = 短期間に多くのメールアドレスを検索しようとしています。セキュリティ上の理由から、一時的に新たな検索をブロックしました。後ほどまた試してください。
 error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
@@ -72,7 +74,6 @@ share-facebook-blurb = あなたのオンラインアカウントはデータ侵
 og-site-description = { -product-name } でデータ侵害に巻き込まれていないか確認しましょう。登録すると、新たな侵害についての警告やアカウントを安全に保つ秘訣を知ることができます。
 show-all = すべて表示
 fxa-scan-another-email = 他のメールアドレスをチェックしますか？
-sign-in = ログイン
 sign-out = ログアウト
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa }の管理
@@ -115,50 +116,6 @@ security-tips = セキュリティの秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } ナビゲーションを開く
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 1〜10のスケールで、友人や同僚に { -product-short-name } を勧める可能性はどのくらいありますか。1～10 人の間でお答えください。
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = そう思わない
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = そう思う
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } は使いやすいですか？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = { -product-short-name } は信頼できると思いますか？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } にはすっきりとしてシンプルな印象がありますか？
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = 全く同意しない
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = 同意しない
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = 分からない
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = 同意する
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = 強く同意する
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = { -product-short-name } が利用できなくなったらどう思いますか？
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = とてもがっかりする
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = 残念に思う
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = 気にしない
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最近追加されたデータ侵害
 # Link title
@@ -175,10 +132,13 @@ monitor-several-emails = 複数のメールアドレスを監視する
 take-action = アカウントを保護するための行動を起こしましょう
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 website-breach = ウェブサイト侵害
+sensitive-breach = 注意を要するウェブサイト侵害
 unverified-breach = 未確認の侵害
 spam-list-breach = スパムリスト侵害
 website-breach-plural = ウェブサイト侵害
+sensitive-breach-plural = 注意を要する侵害
 unverified-breach-plural = 未確認の侵害
+spam-list-breach-plural = スパムリスト侵害
 what-data = 漏洩したデータ:
 sensitive-sites = { -product-name } は機密性の高いサイトをどのように扱いますか？
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
@@ -186,11 +146,15 @@ about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } の仕組み
+how-fxm-1-headline = 基本的な検索を行う
 how-fxm-1-blurb = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けていないか検索します。この基本的な検索でほとんどのデータ侵害が明らかにされますが、機密性の高い個人情報を含むものではありません。
 how-fxm-2-headline = アカウント登録して侵害を監視する
 how-fxm-3-headline = ブラウザーで通知を受け取る
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
 protect-your-privacy = オンラインプライバシーを保護する
+no-pw-to-change = ウェブサイトの侵害とは異なり、パスワードを変更する必要はありません。
+avoid-personal-info = パスワードに個人情報を使用しないでください
+avoid-personal-info-blurb = 誕生日、住所、家族の名前はオンラインで簡単に見つけることができます。これらをパスワードに含めないでください。
 
 ## What to do after data breach tips
 
@@ -405,3 +369,23 @@ promo-ecosystem-cta = すべての製品を見る
 
 # user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
 vpn-banner-location = あなたの現在地: { $ip-location }
+
+## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = ログイン
+
+## Footer
+
+terms-and-privacy = 利用規約と個人情報保護方針
