@@ -24,9 +24,14 @@ how-it-works = 工作原理
 check-for-breaches = 检查是否有外泄事件
 check-for-breaches-we-search = 我们将搜索自 2007 年以来所有已知的数据外泄事件，以检查您的信息是否遭到泄露。
 protect-accounts = 保护您的账户
+protect-accounts-clear-steps = 如果发现有影响到您的任何数据外泄事件，我们将提供明晰的应对措施。
+alerts-for-breaches = 在发生新的外泄事件时接收警报
+alerts-for-breaches-monitor-new = 我们将持续监控新的数据外泄事件，并在您受影响时通知您。
 
 ## Your privacy is safe with us
 
+safe-with-us = 我们全力保障您的隐私
+parent-company = 身为 { -brand-firefox } 和 { -brand-fx-monitor } 的母公司 { -brand-Mozilla }，我们坚信互联网上的安全和隐私事关根本，绝不是可有可无。
 
 ## Top questions about Firefox Monitor
 
