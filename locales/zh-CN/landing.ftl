@@ -41,6 +41,8 @@ top-questions-about-monitor = 关于 { -brand-fx-monitor } 的热门问题
 see-all-faq = 参阅全部常见问题
 # question and answer
 what-is-breach = 数据外泄到底是什么？
+# question and answer
+what-do-i-do = 我刚刚发现自己遭受了数据外泄。我该怎么办？
 
 ## See if you’ve been in a data breach
 
