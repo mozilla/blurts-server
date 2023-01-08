@@ -44,6 +44,11 @@ what-is-breach = 数据外泄到底是什么？
 when-info-exposed = 个人和隐私信息未经许可被暴露、盗窃、复制，即为发生数据外泄。这些安全事件可能是由对网站、应用或者存放个人信息的数据库的攻击造成的。数据外泄也可能在无意中发生，例如某人不小心把登录凭据泄露出去。
 # question and answer
 what-do-i-do = 我刚刚发现自己遭受了数据外泄。我该怎么办？
+visit-monitor-to-learn = 访问 { -brand-fx-monitor } 了解数据外泄后的应对措施。为不同账户使用相同密码会给黑客可乘之机，因此请务必为您的所有账户创建强大且唯一的密码。将密码保存在只有您能够访问的安全位置，可以是您存储其他重要文件的地方，也可以使用密码管理器。
+# question and answer
+what-gets-exposed = 数据外泄会暴露哪些信息？
+depends-on-hackers = 并非所有外泄事件都会泄露同样的信息，这具体取决于黑客取得了哪些信息。许多数据外泄会泄露电子邮件地址和密码，有些还会泄露更敏感的信息，例如信用卡号、护照号和社保号。
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = 看看您是否受到数据外泄事件影响
