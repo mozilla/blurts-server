@@ -32,9 +32,15 @@ alerts-for-breaches-monitor-new = 我们将持续监控新的数据外泄事件�
 
 safe-with-us = 我们全力保障您的隐私
 parent-company = 身为 { -brand-firefox } 和 { -brand-fx-monitor } 的母公司 { -brand-Mozilla }，我们坚信互联网上的安全和隐私事关根本，绝不是可有可无。
+our-mission = 我们以建设更好的互联网为使命，让人人都能在互联网上打造属于自己的体验，在借助互联网给自己赋能的同时保证安全。我们是非营利组织 { -brand-mozilla-foundation }的全资子公司，因此我们将个人与公共利益看得高于盈利。
+learn-more-mission = 进一步了解我们的使命
 
 ## Top questions about Firefox Monitor
 
+top-questions-about-monitor = 关于 { -brand-fx-monitor } 的热门问题
+see-all-faq = 参阅全部常见问题
+# question and answer
+what-is-breach = 数据外泄到底是什么？
 
 ## See if you’ve been in a data breach
 
