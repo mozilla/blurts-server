@@ -634,7 +634,7 @@ meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -bran
 ## Header
 
 brand-fx-monitor = { -brand-fx-monitor }
-sign-in = Entre
+sign-in = Entrar
 
 ## Footer
 
