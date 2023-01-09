@@ -5,16 +5,20 @@ import { getUserEmails } from '../db/tables/email_addresses.js'
 import { getBreachesForEmail, filterBreaches } from '../utils/hibp.js'
 import { filterBreachDataTypes, appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
 import { getSha1 } from '../utils/fxa.js'
+import { getUserMenuData } from '../utils/user-menu.js'
 
 async function breachesPage (req, res) {
   const emailCount = 1 + (req.user.email_addresses?.length || 0) // +1 because user.email_addresses does not include primary
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
+  const userMenuData = getUserMenuData(req.user.fxa_profile_json)
+
   const data = {
     breachesData,
     emailCount,
-    partial: breaches
+    partial: breaches,
+    userMenuData
   }
 
   res.send(mainLayout(data))

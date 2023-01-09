@@ -1,49 +1,41 @@
-const userMenuButton = `
+const userMenuButton = data => `
 <button id='user-menu-button' class='user-menu-button' aria-label='Open menu'>
-  <img src='' alt='Open menu' aria-label='User avatar' />
+  <img src='${data.avatar.src}' alt='${data.avatar.alt}' />
 </button>
 `
 
-const userMenuPopover = `
-<div class='user-menu-popover'>
-  <a href='#' class='user-menu-header'>
-    <b class='user-menu-email'>lee@gmail.com</b>
-    <div class='user-menu-subtitle'>
-      Manage your Firefox account
-      <img src='/images/icon-open-in.svg' />
+const menuItem = data => {
+  const { iconSrc, linkTarget, linkText } = data
+  return `
+    <li>
+      <a href='${linkTarget}' class='user-menu-link'>
+        <img src='${iconSrc}' />
+        ${linkText}
+      </a>
+    </li>
+  `
+}
+
+const userMenuPopover = data => {
+  console.log('lol', data)
+  const { linkTarget, email, iconSrc, items } = data
+  return `
+    <div class='user-menu-popover'>
+      <a href='${linkTarget}' class='user-menu-header'>
+        <b class='user-menu-email'>${email}</b>
+        <div class='user-menu-subtitle'>
+          Manage your Firefox account
+          <img src='${iconSrc}' />
+        </div>
+      </a>
+      <ul class='user-menu-list'>
+        ${items.map(menuItem).join('')}
+      </ul>
     </div>
-  </a>
+  `
+}
 
-  <ul class='user-menu-list'>
-    <li>
-      <a href='/user/settings' class='user-menu-link'>
-        <img src='/images/icon-settings.svg' />
-        Settings
-      </a>
-    </li>
-    <li>
-      <a href='https://accounts.firefox.com/settings' class='user-menu-link'>
-        <img src='/images/icon-contact.svg' />
-        Contact us
-      </a>
-    </li>
-    <li>
-      <a href='https://support.mozilla.org/en-US/kb/firefox-monitor' class='user-menu-link'>
-        <img src='/images/icon-help.svg' />
-        Help and support
-      </a>
-    </li>
-    <li>
-      <a href='/logout' class='user-menu-link'>
-        <img src='/images/icon-signout.svg' />
-        Sign out
-      </a>
-    </li>
-  </ul>
-</div>
-`
-
-const html = `
+const html = data => `
   <style>
     .user-menu-wrapper {
       font: normal 14px/1.5 Inter, Inter-fallback, sans-serif;
@@ -96,11 +88,11 @@ const html = `
     }
 
     .user-menu-header::after {
-      background: linear-gradient(-90deg,#ff9100,#f10366 50%,#6173ff);
+      background: var(--monitor-gradient);
       bottom: 0;
       content: "";
       display: block;
-      height: 4px;
+      height: 2px;
       left: 0;
       position: absolute;
       width: 100%;
@@ -143,27 +135,39 @@ const html = `
     }
   </style>
 
-  <div id='user-menu-wrapper' class='user-menu-wrapper'>${userMenuButton}</div>
+  <div id='user-menu-wrapper' class='user-menu-wrapper'>
+    ${userMenuButton(data)}
+  </div>
 `
 class UserMenu extends HTMLElement {
   constructor () {
     super()
+    this.attachShadow({ mode: 'open' })
 
     this.handleEvent = this.handleEvent.bind(this)
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot.innerHTML = html
+    this.addEventListeners = this.addEventListeners.bind(this)
+    this.render = this.render.bind(this)
 
+    this.popover = null
+    this.data = {}
+  }
+
+  connectedCallback () {
+    if (this.hasAttribute('profile-data')) {
+      this.data = JSON.parse(this.getAttribute('profile-data'))
+    }
+
+    this.render()
+    this.addEventListeners()
+    this.handleEvent()
+  }
+
+  addEventListeners () {
     this.menuWrapper = this.shadowRoot.getElementById('user-menu-wrapper')
     this.menuWrapper.addEventListener('blur', this.handleEvent)
 
     const triggerButton = this.shadowRoot.getElementById('user-menu-button')
     triggerButton.addEventListener('click', this.handleEvent)
-
-    this.popover = null
-  }
-
-  connectedCallback () {
-    this.handleEvent()
   }
 
   handleEvent () {
@@ -172,11 +176,14 @@ class UserMenu extends HTMLElement {
       this.popover = null
     } else {
       this.popover = document.createElement('div')
-      this.popover.innerHTML = userMenuPopover
+      this.popover.innerHTML = userMenuPopover(this.data)
 
       this.menuWrapper.appendChild(this.popover)
-      this.menuWrapper.focus()
     }
+  }
+
+  render () {
+    this.shadowRoot.innerHTML = html(this.data)
   }
 }
 

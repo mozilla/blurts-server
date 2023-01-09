@@ -1,7 +1,13 @@
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { getUserMenuData } from '../utils/user-menu.js'
 
 const { SERVER_URL } = AppConstants
+
+const menuData = getUserMenuData({
+  email: 'test@email.com',
+  avatar: { src: '', alt: '' }
+})
 
 const mainLayout = data => `
 <!doctype html>
@@ -66,7 +72,7 @@ const mainHeader = data => `
       </button>
     </li>
   </menu>
-  <user-menu></user-menu>
+  <user-menu profile-data='${JSON.stringify(data.userMenuData)}' />
 </header>
 <nav>
   <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
@@ -84,7 +90,7 @@ const landingHeader = data => `
   <menu>
     <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
-  <user-menu></user-menu>
+  <user-menu profile-data='${JSON.stringify(menuData)}'></user-menu>
 </header>
 `
 
