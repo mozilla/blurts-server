@@ -66,6 +66,7 @@ const mainHeader = data => `
       </button>
     </li>
   </menu>
+  <user-menu></user-menu>
 </header>
 <nav>
   <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
@@ -83,6 +84,7 @@ const landingHeader = data => `
   <menu>
     <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
+  <user-menu></user-menu>
 </header>
 `
 
