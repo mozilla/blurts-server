@@ -1,20 +1,28 @@
 const userMenuButton = document.querySelector('.user-menu-button')
+const userMenuPopover = document.querySelector('.user-menu-popover')
 
-function handleEvent (e) {
-  const popover = document.querySelector('.user-menu-popover')
-  if (!popover) {
+function handleMenuButton () {
+  if (!userMenuPopover) {
     return
   }
 
-  if (popover.hasAttribute('hidden')) {
-    e.target.setAttribute('aria-expanded', true)
-    popover.removeAttribute('hidden')
+  if (userMenuPopover.hasAttribute('hidden')) {
+    // Show popover
+    userMenuPopover.setAttribute('aria-expanded', true)
+    userMenuPopover.removeAttribute('hidden')
+
+    // Hide popover onblur
+    userMenuPopover.addEventListener('blur', handleMenuButton)
+    userMenuPopover.focus()
   } else {
-    e.target.setAttribute('aria-expanded', false)
-    popover.setAttribute('hidden', '')
+    // Hide popover
+    userMenuPopover.setAttribute('aria-expanded', false)
+    userMenuPopover.setAttribute('hidden', '')
+
+    userMenuButton.focus()
   }
 }
 
 if (userMenuButton) {
-  userMenuButton.addEventListener('click', handleEvent)
+  userMenuButton.addEventListener('click', handleMenuButton)
 }

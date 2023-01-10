@@ -2,6 +2,7 @@
   --multiplier: 1;
   --max-width: 1200px;
   --min-width: 320px;
+  --mobile-breakpoint: 480px;
   --border-radius: 4px;
   --padding-xs: calc(4px * var(--multiplier));
   --padding-sm: calc(8px * var(--multiplier));
