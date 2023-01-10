@@ -14,7 +14,7 @@ const userMenuButton = data => `
 const userMenuPopover = data => `
   <ul class='user-menu-list user-menu-popover' role='menu' hidden>
     <li role='menuitem' tabindex='1'>
-      <a href='https://accounts.firefox.com/' class='user-menu-header'>
+      <a href='/user/settings' class='user-menu-header'>
         <b class='user-menu-email'>${data.email}</b>
         <div class='user-menu-subtitle'>
           ${getMessage('menu-item-fxa')}
@@ -29,13 +29,13 @@ const userMenuPopover = data => `
       </a>
     </li>
     <li role='menuitem'>
-      <a href='https://support.mozilla.org/en-US/kb/firefox-monitor' class='user-menu-link'>
+      <a href='https://accounts.firefox.com/settings' class='user-menu-link'>
         <img src='/images/icon-contact.svg' />
         ${getMessage('menu-item-contact')}
       </a>
     </li>
     <li role='menuitem'>
-      <a href='https://support.mozilla.org/en-US/kb/firefox-monitor' class='user-menu-link'>
+      <a href='https://support.mozilla.org/kb/firefox-monitor' class='user-menu-link'>
         <img src='/images/icon-help.svg' />
         ${getMessage('menu-item-help')}
       </a>
