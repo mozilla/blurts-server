@@ -807,6 +807,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-fx-account = Firefox account
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
