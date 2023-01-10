@@ -22,7 +22,7 @@ const mainLayout = data => `
     <link rel='preload' href='/fonts/Metropolis-Bold.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='preload' href='/fonts/Inter-Regular-latin.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='stylesheet' href='/css/index.css' type='text/css'>
-    ${data.userMenu && "<link rel='stylesheet' href='/css/partials/user-menu.css' type='text/css'></link>"}
+    ${data.userMenu ? '<link rel="stylesheet" href="/css/partials/user-menu.css" type="text/css"></link>' : ''}
     <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
     <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
@@ -85,7 +85,6 @@ const landingHeader = data => `
   <menu>
     <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
-  ${data.userMenu}
 </header>
 `
 

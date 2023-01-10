@@ -13,7 +13,6 @@ async function breachesPage (req, res) {
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
   const fxaProfileData = req.user.fxa_profile_json
-  console.log(fxaProfileData)
 
   const data = {
     breachesData,

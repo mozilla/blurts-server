@@ -1,8 +1,21 @@
 const userMenuButton = document.querySelector('.user-menu-button')
 const userMenuPopover = document.querySelector('.user-menu-popover')
+const userMenuWrapper = document.querySelector('.user-menu-wrapper')
+
+function handleBlur (event, onBlur) {
+  const currentTarget = event.currentTarget
+
+  requestAnimationFrame(() => {
+    const isChildElement = currentTarget.contains(document.activeElement)
+
+    if (!isChildElement) {
+      onBlur()
+    }
+  })
+}
 
 function handleMenuButton () {
-  if (!userMenuPopover) {
+  if (!userMenuPopover || !userMenuWrapper) {
     return
   }
 
@@ -11,9 +24,9 @@ function handleMenuButton () {
     userMenuPopover.setAttribute('aria-expanded', true)
     userMenuPopover.removeAttribute('hidden')
 
-    // Hide popover onblur
-    userMenuPopover.addEventListener('blur', handleMenuButton)
-    userMenuPopover.focus()
+    // Handle onblur
+    userMenuWrapper.addEventListener('blur', (event) => handleBlur(event, handleMenuButton))
+    userMenuWrapper.focus()
   } else {
     // Hide popover
     userMenuPopover.setAttribute('aria-expanded', false)

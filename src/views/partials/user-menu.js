@@ -12,7 +12,7 @@ const userMenuButton = data => `
 `
 
 const userMenuPopover = data => `
-  <ul class='user-menu-popover user-menu-list' role='menu' hidden tabindex='-1'>
+  <ul class='user-menu-list user-menu-popover' role='menu' hidden>
     <li role='menuitem' tabindex='1'>
       <a href='https://accounts.firefox.com/' class='user-menu-header'>
         <b class='user-menu-email'>${data.email}</b>
@@ -50,7 +50,7 @@ const userMenuPopover = data => `
 `
 
 export const userMenu = (data) => `
-<div class='user-menu-wrapper'>
+<div class='user-menu-wrapper' tabindex='-1'>
   ${userMenuButton(data)}
   ${userMenuPopover(data)}
 </div>
