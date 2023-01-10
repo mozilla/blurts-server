@@ -41,7 +41,7 @@ const userMenuPopover = data => `
       </a>
     </li>
     <li role='menuitem'>
-      <a href='/logout' class='user-menu-link'>
+      <a href='/user/logout' class='user-menu-link'>
         <img src='/images/icon-signout.svg' />
         ${getMessage('menu-item-logout')}
       </a>
