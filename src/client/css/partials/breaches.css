@@ -40,6 +40,42 @@
   color: var(--blue-50);
 }
 
+.breaches-filter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: min(640px, 100%);
+  margin: 0 auto;
+  border: none;
+  font-size: 0.75rem;
+}
+
+.breaches-filter output {
+  display: block;
+  font: var(--h2-font);
+}
+
+.breaches-filter input[type='radio'] {
+  display: none;
+}
+
+.breaches-filter label {
+  padding: var(--padding-sm) 0;
+  color: var(--gray-40);
+  border-bottom: 2px solid var(--gray-20);
+  text-align: center;
+  cursor: pointer;
+}
+
+.breaches-filter input[type='radio']:checked + label {
+  color: var(--purple-90);
+  border-color: currentcolor;
+  transition: border-color 0.3s ease-out;
+}
+
+.breaches-table {
+  margin-top: 0;
+}
+
 .breaches-table details {
   box-shadow: 0 0 0 1px var(--gray-10); /* use shadow to avoid extra width – disrupts responsive sync between rows */
   border-radius: var(--border-radius);

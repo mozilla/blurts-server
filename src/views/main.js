@@ -36,7 +36,7 @@ const mainLayout = data => `
   </head>
   <body>
     ${data.partial.name === 'landing' ? landingHeader(data) : mainHeader(data)}
-    <main>
+    <main data-partial='${data.partial.name}'>
       ${data.partial(data)}
     </main>
     <footer>

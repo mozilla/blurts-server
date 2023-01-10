@@ -8,6 +8,7 @@ const requiredEnvVars = [
   'SERVER_URL',
   'LOGOS_ORIGIN',
   'COOKIE_SECRET',
+  'CSRF_SECRET',
   'SESSION_DURATION_HOURS',
   'SMTP_URL',
   'EMAIL_FROM',
