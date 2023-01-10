@@ -821,6 +821,16 @@ meta-desc = Find out if you’ve been part of a data breach with {-brand-fx-moni
 brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
 
+## User menu
+
+menu-button-title = User menu
+menu-button-alt = Open user menu
+menu-item-fxa = Manage your {-brand-firefox} account
+menu-item-settings = Settings
+menu-item-contact = Contact us
+menu-item-help = Help and support
+menu-item-logout = Sign out
+
 ## Footer
 
 mozilla = {-brand-mozilla}

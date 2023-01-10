@@ -1,12 +1,13 @@
 import { mainLayout } from '../views/main.js'
 import { dashboard } from '../views/partials/dashboard.js'
-import { getUserMenuData } from '../utils/user-menu.js'
+import { userMenu } from '../views/partials/user-menu.js'
 
 function dashboardPage (req, res) {
-  const userMenuData = getUserMenuData(req.user.fxa_profile_json)
+  const fxaProfileData = req.user.fxa_profile_json
+
   const data = {
     partial: dashboard,
-    userMenuData
+    userMenu: userMenu(fxaProfileData)
   }
 
   res.send(mainLayout(data))

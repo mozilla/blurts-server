@@ -1,0 +1,106 @@
+.user-menu-wrapper {
+  font: normal 14px/1.5 Inter, Inter-fallback, sans-serif;
+  position: relative;
+}
+
+.user-menu-button {
+  border: 2px solid transparent;
+  background: var(--gray-10);
+  cursor: pointer;
+  display: block;
+  border-radius: 50%;
+  height: 42px;
+  overflow: hidden;
+  transition: border-color 150ms ease;
+  width: 42px;
+}
+
+.user-menu-button:hover {
+  border-color: var(--purple-70);
+}
+
+.user-menu-popover {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.1);
+  margin-top: var(--padding-md);
+  min-width: 320px;
+  position: absolute;
+  right: 0;
+}
+
+.user-menu-popover::after {
+  background-color: white;
+  border-top-left-radius: 1px;
+  content: '';
+  display: block;
+  height: 14px;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(-100%, -50%) rotate(45deg);
+  width: 14px;
+}
+
+.user-menu-popover.visible {
+  opacity: 1;
+}
+
+.user-menu-header {
+  align-items: flex-start;
+  display: flex;
+  gap: var(--padding-xs);
+  flex-direction: column;
+  padding: var(--padding-md) calc(var(--padding-md) * 1.5);
+  position: relative;
+  text-decoration: none;
+}
+
+.user-menu-header::after {
+  background: var(--monitor-gradient);
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.user-menu-email {
+  color: var(--purple-90);
+  font: normal 14px/1.5 Inter, Inter-fallback, sans-serif;
+  font-weight: 600;
+}
+
+.user-menu-list {
+  list-style: none;
+  padding: var(--padding-sm) 0;
+  margin: 0;
+}
+
+.user-menu-fxa {
+  align-items: center;
+  display: flex;
+  gap: var(--padding-sm);
+}
+
+.user-menu-link,
+.user-menu-subtitle {
+  align-items: center;
+  color: var(--gray-50);
+  display: flex;
+  gap: var(--padding-sm);
+  padding: calc(var(--padding-sm) * 1.5) calc(var(--padding-md) * 1.5);
+  text-decoration: none;
+}
+
+.user-menu-subtitle {
+  padding: 0;
+}
+
+.user-menu-header:hover,
+.user-menu-link:hover {
+  background-color: var(--gray-5);
+}

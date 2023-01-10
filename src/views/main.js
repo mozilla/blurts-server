@@ -1,13 +1,7 @@
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
-import { getUserMenuData } from '../utils/user-menu.js'
 
 const { SERVER_URL } = AppConstants
-
-const menuData = getUserMenuData({
-  email: 'test@email.com',
-  avatar: { src: '', alt: '' }
-})
 
 const mainLayout = data => `
 <!doctype html>
@@ -28,6 +22,7 @@ const mainLayout = data => `
     <link rel="preload" href="/fonts/Metropolis-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Inter-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel='stylesheet' href='/css/index.css' type='text/css'>
+    <link rel='stylesheet' href='/css/partials/user-menu.css' type='text/css'>
     <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
     <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
@@ -72,7 +67,7 @@ const mainHeader = data => `
       </button>
     </li>
   </menu>
-  <user-menu profile-data='${JSON.stringify(data.userMenuData)}' />
+  ${data.userMenu}
 </header>
 <nav>
   <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
@@ -90,7 +85,7 @@ const landingHeader = data => `
   <menu>
     <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
   </menu>
-  <user-menu profile-data='${JSON.stringify(menuData)}'></user-menu>
+  ${data.userMenu}
 </header>
 `
 
