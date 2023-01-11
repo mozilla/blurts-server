@@ -1,16 +1,17 @@
+import { PartialNotFoundError } from './error.js'
+
 function hasPartials (data) {
   return data.partials?.length > 0
 }
 
 function createPartial (partialName, data) {
-  const error = new Error(`Couldn’t find partial: '${partialName}'`)
   if (!hasPartials(data)) {
-    throw error
+    throw new PartialNotFoundError(partialName)
   }
 
   const partial = data.partials.find(partial => partial.name === partialName)
   if (!partial) {
-    throw error
+    throw new PartialNotFoundError(partialName)
   }
 
   return partial(data)

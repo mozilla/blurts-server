@@ -33,11 +33,18 @@ class RateLimitError extends Error {
   }
 }
 
+class PartialNotFoundError extends Error {
+  constructor (partialName) {
+    super(partialName)
+    this.message = `Couldn’t find partial: '${partialName}'`
+  }
+}
+
 export {
   UnauthorizedError,
   UserInputError,
   NotFoundError,
   MethodNotAllowedError,
-  RateLimitError
-
+  RateLimitError,
+  PartialNotFoundError
 }
