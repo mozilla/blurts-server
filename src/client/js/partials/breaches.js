@@ -1,22 +1,62 @@
-const select = document.querySelector('.breaches-header custom-select')
-let breaches
+const breachesPartial = document.querySelector("[data-partial='breaches']")
+const state = new Proxy({
+  selectedEmail: null,
+  selectedStatus: 'unresolved'
+}, {
+  set (target, key, value) {
+    if (target[key] !== value) {
+      target[key] = value
+      render()
+    }
 
-function handleChange (e) {
-  let i = 0
+    return true
+  }
+})
 
-  breaches.forEach(breach => {
-    const hidden = breach.toggleAttribute('hidden', breach.dataset.email !== e.target.value)
+let breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
+
+function init () {
+  breachRows = breachesPartial.querySelectorAll('.breach-row')
+  emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
+  statusFilter = breachesPartial.querySelector('.breaches-filter')
+  resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
+  unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
+
+  state.selectedEmail = emailSelect.value
+  emailSelect.addEventListener('change', handleEvent)
+  statusFilter.addEventListener('change', handleEvent)
+  render()
+}
+
+function handleEvent (e) {
+  switch (e.currentTarget) {
+    case emailSelect:
+      state.selectedEmail = e.target.value
+      break
+    case statusFilter:
+      state.selectedStatus = e.target.value
+      break
+  }
+}
+
+function render () {
+  let delay = 0
+  let hidden
+
+  resolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
+  unresolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
+
+  breachRows.forEach(breach => {
+    hidden = (breach.dataset.email !== state.selectedEmail) || (breach.dataset.status !== state.selectedStatus)
+    breach.toggleAttribute('hidden', hidden)
     if (!hidden) {
-      breach.style.setProperty('--delay', `${i}ms`)
-      i += 50
+      breach.style.setProperty('--delay', `${delay}ms`)
+      delay += 50
     }
   })
 }
 
-if (select) {
-  breaches = document.querySelectorAll('.breach-row')
-  select.addEventListener('change', handleChange)
-}
+if (breachesPartial) init()
 
 // TODO: REMOVE -- this is just an example of updating breach resolution
 // update button

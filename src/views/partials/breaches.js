@@ -25,6 +25,8 @@ function createBreachRows (data) {
   const longList = new Intl.ListFormat(locale, { style: 'long' })
   const breachRowsHTML = data.verifiedEmails.flatMap(account => {
     return account.breaches.map(breach => {
+      const isHidden = !account.primary || breach.IsResolved // initial breach hidden state
+      const status = breach.IsResolved ? 'resolved' : 'unresolved'
       const breachDate = Date.parse(breach.BreachDate)
       const addedDate = Date.parse(breach.AddedDate)
       const dataClassesTranslated = breach.DataClasses.map(item => getMessage(item))
@@ -36,7 +38,7 @@ function createBreachRows (data) {
       })
 
       return `
-      <details class='breach-row' data-email=${account.email} hidden=${!account.primary}>
+      <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
         <summary>
           <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
         </summary>
@@ -71,6 +73,12 @@ export const breaches = data => `
       </figcaption>
     </figure>
   </header>
+</section>
+<section class='breaches-filter'>
+  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
+  <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('filter-label-unresolved')}</label>
+  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
+  <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
 </section>
 <section class='breaches-table'>
   <header>

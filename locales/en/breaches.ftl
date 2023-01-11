@@ -17,6 +17,11 @@ emails-monitored =
 
 add-email-link = Add email address
 
+## Breaches resolved filter
+
+filter-label-unresolved = Unresolved breaches
+filter-label-resolved = Resolved breaches
+
 ## Breaches table
 
 column-company = COMPANY
