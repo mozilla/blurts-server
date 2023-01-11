@@ -3,7 +3,7 @@ import { getMessage } from '../../utils/fluent.js'
 
 export const landing = data => `
 <section class='hero'>
-  ${createPartial('testPartial', data)}
+  ${createPartial('pieChart', data)}
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
     <p>${getMessage('stay-safe-with-tool')}</p>
