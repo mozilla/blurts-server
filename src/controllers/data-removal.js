@@ -3,7 +3,7 @@ import { dataRemoval } from '../views/partials/data-removal.js'
 
 function dataRemovalPage (req, res) {
   const data = {
-    partial: dataRemoval
+    partialMain: dataRemoval
   }
 
   res.send(mainLayout(data))

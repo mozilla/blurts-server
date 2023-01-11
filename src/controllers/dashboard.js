@@ -3,7 +3,7 @@ import { dashboard } from '../views/partials/dashboard.js'
 
 function dashboardPage (req, res) {
   const data = {
-    partial: dashboard
+    partialMain: dashboard
   }
 
   res.send(mainLayout(data))

@@ -1,9 +1,13 @@
 import { mainLayout } from '../views/main.js'
 import { landing } from '../views/partials/landing.js'
+import { testPartial } from '../views/partials/test-partial.js'
 
 function landingPage (req, res) {
   const data = {
-    partial: landing
+    partialMain: landing,
+    partials: [
+      testPartial
+    ]
   }
 
   res.send(mainLayout(data))
