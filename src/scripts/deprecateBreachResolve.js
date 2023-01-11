@@ -1,0 +1,95 @@
+/**
+ * Executes once
+ * The purpose of the script is to convert all `subscriber.breaches_resolved` to `subscriber.breaches_resolution`
+ * with the goal of deprecating the column
+ */
+
+import Knex from 'knex'
+import knexConfig from '../db/knexfile.js'
+import { getAllBreachesFromDb } from '../utils/hibp.js'
+import { getAllEmailsAndBreaches } from '../utils/breaches.js'
+import { setBreachResolution } from '../db/tables/subscribers.js'
+import { BreachDataTypes } from '../utils/breach-resolution.js'
+const knex = Knex(knexConfig)
+
+const LIMIT = 2 // with millions of records, we have to load a few at a time
+let offset = 0 // looping through all records with offset
+let subscribersArr = []
+
+// load all breaches for ref
+const allBreaches = await getAllBreachesFromDb()
+if (allBreaches && allBreaches.length > 0) console.log('breaches loaded successfully! ', allBreaches.length)
+
+do {
+  console.log(`Converting breadches_resolved to breach_resolution - start: ${offset} limit: ${LIMIT}`)
+  subscribersArr = await knex
+    .select('id', 'primary_email', 'breaches_resolved', 'breach_resolution')
+    .from('subscribers')
+    .whereNotNull('breaches_resolved')
+    .limit(LIMIT)
+    .offset(offset)
+
+  console.log(JSON.stringify(subscribersArr.length))
+
+  for (const subscriber of subscribersArr) {
+    const { breaches_resolved: v1, breach_resolution: v2 } = subscriber
+    console.log({ v1 })
+    console.log({ v2 })
+
+    let isV2Changed = false // use a boolean to track if v2 has been changed, only upsert if so
+
+    // fetch subscriber all breaches / email
+    const subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+    console.log(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
+
+    for (const [email, resolvedRecencyIndices] of Object.entries(v1)) {
+      console.log({ email })
+      console.log({ resolvedRecencyIndices })
+      for (const recencyIndex of resolvedRecencyIndices) {
+        console.log({ recencyIndex })
+        // find subscriber's relevant recency index breach information
+        const ve = subscriberBreachesEmail.verifiedEmails?.filter(ve => ve.email === email)[0] || {}
+        const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
+        console.log({ subBreach })
+
+        if (!subBreach || !subBreach.DataClasses) {
+          console.warn(`SKIP: Cannot find subscribers breach and data types - recency: ${recencyIndex} email: ${email}`)
+          continue
+        }
+
+        // if email does not exist in v2, we need to add it to the object
+        // format: {email: { recencyIndex: { isResolved: true, resolutionsChecked: [DataTypes]}}}
+        if (!v2[email]) {
+          v2[email] = {
+            [recencyIndex]: {
+              isResolved: true,
+              resolutionsChecked: subBreach?.DataClasses || [BreachDataTypes.General]
+            }
+          }
+
+          isV2Changed = true
+        }
+        if (v2[email][recencyIndex]?.isResolved) {
+          console.log(`recencyIndex ${recencyIndex} exists in v2 and is resolved, no changes`)
+        } else {
+          console.log(`recencyIndex ${recencyIndex} either does not exist or is not resolved, overwriting`)
+          v2[email][recencyIndex] = {
+            isResolved: true,
+            resolutionsChecked: subBreach?.DataClasses
+          }
+          isV2Changed = true
+        }
+      }
+    }
+
+    // check if v2 is changed, if so, upsert the new v2
+    if (isV2Changed) {
+      await setBreachResolution(subscriber, v2)
+    }
+  }
+  offset += LIMIT
+} while (subscribersArr.length === LIMIT)
+
+// breaking out of do..while loop
+console.log('Reaching the end of the table')
+process.exit()
