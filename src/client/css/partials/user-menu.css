@@ -1,5 +1,5 @@
 .user-menu-wrapper {
-  font: normal 14px/1.5 Inter, Inter-fallback, sans-serif;
+  font: normal 0.875rem/1.5 Inter, Inter-fallback, sans-serif;
   outline: none;
   position: relative;
 }
@@ -28,7 +28,7 @@
 .user-menu-popover {
   background: white;
   border-radius: 6px;
-  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.15);
   list-style: none;
   margin: var(--padding-md) 0 0 0;
   min-width: var(--min-width);
@@ -68,7 +68,7 @@
 .user-menu-header::after {
   background: var(--monitor-gradient);
   bottom: 0;
-  content: "";
+  content: '';
   display: block;
   height: 2px;
   left: 0;
@@ -78,7 +78,7 @@
 
 .user-menu-email {
   color: var(--purple-90);
-  font: normal 14px/1.5 Inter, Inter-fallback, sans-serif;
+  font: normal 0.875rem/1.5 Inter, Inter-fallback, sans-serif;
   font-weight: 600;
 }
 
