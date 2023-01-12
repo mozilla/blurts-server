@@ -147,7 +147,7 @@ const DB = {
   },
 
   // Used internally.
-  async _addEmailHash (sha1, email, signup_language, verified = false) {
+  async _addEmailHash (sha1, email, signupLanguage, verified = false) {
     try {
       return await this._getSha1EntryAndDo(sha1, async aEntry => {
         // Entry existed, patch the email value if supplied.
@@ -167,9 +167,15 @@ const DB = {
         return aEntry
       }, async () => {
         // Always add a verification_token value
-        const verification_token = uuidv4()
+        const verificationToken = uuidv4()
         const res = await knex('subscribers')
-          .insert({ primary_sha1: getSha1(email.toLowerCase()), primary_email: email, signup_language, primary_verification_token: verification_token, primary_verified: verified })
+          .insert({
+            primary_sha1: getSha1(email.toLowerCase()),
+            primary_email: email,
+            signup_language: signupLanguage,
+            primary_verification_token: verificationToken,
+            primary_verified: verified
+          })
           .returning('*')
         return res[0]
       })
@@ -349,9 +355,14 @@ const DB = {
         .del()
       return
     }
-    // This can fail if a subscriber has more email_addresses and marks
-    // a primary email as spam, but we should let it fail so we can see it
-    // in the logs
+    // If the subscriber has more email_addresses, log the deletion failure
+    if (subscriber.email_addresses.length !== 0) {
+      log.error('removeEmail', {
+        msg: `Unable to delete subscriber ${subscriber.id} with ${subscriber.email_addresses.length} additional email(s).`
+      })
+      return
+    }
+
     await knex('subscribers')
       .where({
         primary_verification_token: subscriber.primary_verification_token,
@@ -365,6 +376,12 @@ const DB = {
     if (!subscriber) {
       return false
     }
+
+    // Delete subscriber's emails
+    // TODO issue 2744: Replace this code with a DB migration to add cascading deletion
+    await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
+
+    // Delete the subscriber
     await knex('subscribers')
       .where({
         primary_verification_token: subscriber.primary_verification_token,

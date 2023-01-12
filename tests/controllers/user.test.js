@@ -427,6 +427,24 @@ test('user unsubscribe POST request with valid session and emailId for email_add
   expect(emailAddress).toBeUndefined()
 })
 
+test('user unsubscribe POST request with valid session and emailId for primary subscriber token removes from DB (issue 2744)', async () => {
+  const validToken = TEST_SUBSCRIBERS.firefox_account.primary_verification_token
+  const validHash = TEST_SUBSCRIBERS.firefox_account.primary_sha1
+
+  // Set up mocks
+  const req = { fluentFormat: jest.fn(), body: { token: validToken, emailHash: validHash }, session: { user: TEST_SUBSCRIBERS.firefox_account, destroy: jest.fn() } }
+  const resp = httpMocks.createResponse()
+
+  // Call code-under-test
+  await user.postUnsubscribe(req, resp)
+
+  expect(resp.statusCode).toEqual(302)
+  expect(resp._getRedirectUrl()).toEqual('/')
+  expect(req.session.destroy).toHaveBeenCalledTimes(1)
+  const subscriber = await DB.getSubscriberById(TEST_SUBSCRIBERS.firefox_account.id)
+  expect(subscriber).toBeUndefined()
+})
+
 test('user removeEmail POST request with valid session but wrong emailId for email_address throws error and doesnt remove email', async () => {
   const testEmailAddress = TEST_EMAIL_ADDRESSES.all_emails_to_primary
   const testEmailId = testEmailAddress.id
