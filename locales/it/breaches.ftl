@@ -3,8 +3,30 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Violazioni di dati per { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $totale ->
+        [one] { $count } di { $total } email monitorate
+       *[other] { $count } di { $total } email monitorate
+    }
+add-email-link = Aggiungi un indirizzo email
+
+## Breaches resolved filter
+
+filter-label-unresolved = Violazioni non risolte
+filter-label-resolved = Violazioni risolte
+
+## Breaches table
+
+column-company = AZIENDA
+column-breached-data = BREACHED DATA
+column-detected = RILEVATO
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = In data { $breachDate }, { $companyName } è stata violata. Una volta scoperta e verificata la violazione, è stata aggiunta al nostro database il { $addedDate }. Questa violazione includeva: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
