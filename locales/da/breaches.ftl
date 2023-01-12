@@ -17,9 +17,14 @@
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Beskyt din mailadresse med en tjeneste til maskering af mails som fx <a>{ -brand-relay }</a>.
+breach-checklist-email-body = På denne måde bliver din rigtige mailadresse holdt skjult, mens mails sendes videre til din indbakke.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Hold øje med, om dine kreditrapporter indeholder konti, lån eller kreditkort, du ikke genkender.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
