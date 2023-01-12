@@ -19,7 +19,7 @@ Not applicable.
 
 
 # Checklist (Definition of Done)
-- [ ] l10n changes have been submitted to the l10n repository, if any.
+- [ ] Localization strings (if needed) have been added.
 - [ ] Commits in this PR are minimal and [have descriptive commit messages](https://chris.beams.io/posts/git-commit/).
 - [ ] I've added or updated relevant docs in the docs/ directory.
 - [ ] I've added a unit test to test for potential regressions of this bug.
