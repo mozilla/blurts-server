@@ -95,6 +95,7 @@ async function getAllBreachesFromDb () {
   // TODO: we can do some filtering here for the most commonly used fields
   // TODO: change field names to camel case
   return dbBreaches.map(breach => ({
+    Id: breach.id,
     Name: breach.name,
     Title: breach.title,
     Domain: breach.domain,
