@@ -22,6 +22,7 @@ const userMenuPopover = data => `
         </div>
       </a>
     </li>
+    <hr>
     <li role='menuitem'>
       <a href='/user/settings' class='user-menu-link'>
         <img src='/images/icon-settings.svg' />

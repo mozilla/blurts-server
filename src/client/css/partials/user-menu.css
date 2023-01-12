@@ -21,7 +21,8 @@
   border-color: var(--purple-70);
 }
 
-.user-menu-list > :nth-child(1) {
+.user-menu-list > hr {
+  border-image: var(--monitor-gradient) 1;
   margin-bottom: var(--padding-sm);
 }
 
@@ -63,17 +64,6 @@
   padding: var(--padding-md) calc(var(--padding-md) * 1.5);
   position: relative;
   text-decoration: none;
-}
-
-.user-menu-header::after {
-  background: var(--monitor-gradient);
-  bottom: 0;
-  content: '';
-  display: block;
-  height: 2px;
-  left: 0;
-  position: absolute;
-  width: 100%;
 }
 
 .user-menu-email {
