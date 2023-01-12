@@ -3,8 +3,17 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+add-email-link = E-posta adresi ekle
+
+## Breaches resolved filter
+
+
+## Breaches table
+
+column-company = ŞİRKET
+column-detected = TESPİT EDİLDİ
 
 ## Prompts the user for changes when there is a breach detected of password
 
