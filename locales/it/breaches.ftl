@@ -23,10 +23,10 @@ filter-label-resolved = Violazioni risolte
 ## Breaches table
 
 column-company = AZIENDA
-column-breached-data = BREACHED DATA
-column-detected = RILEVATO
+column-breached-data = DATI VIOLATI
+column-detected = RILEVATA
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-breach-description = In data { $breachDate }, { $companyName } è stata violata. Una volta scoperta e verificata la violazione, è stata aggiunta al nostro database il { $addedDate }. Questa violazione includeva: { $dataClasses }
+breach-description = In data { $breachDate } si è verificata una violazione di dati per { $companyName }. Una volta scoperta e verificata la violazione, è stata aggiunta al nostro database il giorno { $addedDate }. Questa violazione includeva: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
