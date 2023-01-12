@@ -29,12 +29,6 @@ const userMenuPopover = data => `
       </a>
     </li>
     <li role='menuitem'>
-      <a href='https://accounts.firefox.com/settings' class='user-menu-link'>
-        <img src='/images/icon-contact.svg' />
-        ${getMessage('menu-item-contact')}
-      </a>
-    </li>
-    <li role='menuitem'>
       <a href='https://support.mozilla.org/kb/firefox-monitor' class='user-menu-link'>
         <img src='/images/icon-help.svg' />
         ${getMessage('menu-item-help')}

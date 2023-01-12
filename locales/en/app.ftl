@@ -829,7 +829,6 @@ menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-item-fxa = Manage your {-brand-fx-account}
 menu-item-settings = Settings
-menu-item-contact = Contact us
 menu-item-help = Help and support
 menu-item-logout = Sign out
 
