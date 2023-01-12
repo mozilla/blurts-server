@@ -54,6 +54,9 @@ img {
 }
 
 menu {
+  align-items: center;
+  display: flex;
+  gap: var(--padding-sm);
   list-style-type: none;
 }
 

@@ -66,8 +66,8 @@ const mainHeader = data => `
         </svg>
       </button>
     </li>
+    ${data.userMenu}
   </menu>
-  ${data.userMenu}
 </header>
 <nav>
   <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
