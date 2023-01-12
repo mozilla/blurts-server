@@ -1,3 +1,31 @@
 .pie-chart {
   color: var(--purple-70);
 }
+
+.pie-chart svg {
+  display: block;
+}
+
+.chart-wrapper {
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  width: 50%;
+}
+
+.chart-labels {
+}
+
+.chart-labels-item {
+  align-items: center;
+  color: var(--gray-40);
+  display: flex;
+  gap: var(--padding-sm);
+  position: relative;
+}
+
+.chart-labels-item::before {
+  color: inherit;
+  content: '\2B24'; /* Black Large Circle */
+  font-size: 0.75em;
+}

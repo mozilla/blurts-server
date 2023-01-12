@@ -40,7 +40,8 @@ app.use(helmet())
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      upgradeInsecureRequests: isDev ? null : []
+      upgradeInsecureRequests: isDev ? null : [],
+      scriptSrc: ["'self'", 'cdn.jsdelivr.net']
     }
   })
 )

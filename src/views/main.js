@@ -38,6 +38,7 @@ const mainLayout = data => `
     <link rel='icon' href='/images/favicon-256.webp' sizes='256x256'>
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
+    <script src="https://cdn.jsdelivr.net/npm/d3"></script>
     <script src='/js/index.js' type='module'></script>
   </head>
   <body>

@@ -1,9 +1,42 @@
 import { createPartial } from '../../utils/partials.js'
 import { getMessage } from '../../utils/fluent.js'
 
+const chartData = {
+  data: [
+    {
+      key: 'email',
+      name: 'Email',
+      count: 4,
+      color: '#ff0000'
+    },
+    {
+      key: 'password',
+      name: 'Password',
+      count: 8,
+      color: '#00ff00'
+    },
+    {
+      key: 'ip',
+      name: 'IP address',
+      count: 5,
+      color: '#fff000'
+    },
+    {
+      key: 'other',
+      name: 'Other',
+      count: 15,
+      color: '#000fff'
+    }
+  ],
+  isDonut: true
+}
+
 export const landing = data => `
 <section class='hero'>
-  ${createPartial('pieChart', data)}
+  <div>
+    ${createPartial('pieChart', { ...data, chartData })}
+    ${createPartial('pieChart', { ...data, chartData })}
+  </div>
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
     <p>${getMessage('stay-safe-with-tool')}</p>
