@@ -8,7 +8,7 @@ export const landing = data => `
     <a class='button primary' href='/user/breaches'>${getMessage('get-started')}</a>
   </div>
   <figure>
-    <img srcset='images/landing-hero.png 530w, images/landing-hero@2x.png 1059w' width='530' height='406' alt=''>
+    <img srcset='images/landing-hero.webp 530w, images/landing-hero@2x.webp 1059w' width='530' height='406' alt=''>
   </figure>
 </section>
 <section class='why-use-monitor'>
@@ -33,17 +33,17 @@ export const landing = data => `
   <h2>${getMessage('how-it-works')}</h2>
   <ol>
     <li>
-      <img srcset='images/landing-laptop.png 250w, images/landing-laptop@2x.png 500w' width='250' height='139' loading='lazy' alt=''>
+      <img srcset='images/landing-laptop.webp 250w, images/landing-laptop@2x.webp 500w' width='250' height='139' loading='lazy' alt=''>
       <h3>${getMessage('check-for-breaches')}</h3>
       <p>${getMessage('check-for-breaches-we-search')}</p>
     </li>
     <li>
-      <img srcset='images/landing-lock.png 204w, images/landing-lock@2x.png 408w' width='204' height='148' loading='lazy' alt=''>
+      <img srcset='images/landing-lock.webp 204w, images/landing-lock@2x.webp 408w' width='204' height='148' loading='lazy' alt=''>
       <h3>${getMessage('protect-accounts')}</h3>
       <p>${getMessage('protect-accounts-clear-steps')}</p>
     </li>
     <li>
-      <img srcset='images/landing-mail.png 170w, images/landing-mail@2x.png 340w' width='170' height='148' loading='lazy' alt=''>
+      <img srcset='images/landing-mail.webp 170w, images/landing-mail@2x.webp 340w' width='170' height='148' loading='lazy' alt=''>
       <h3>${getMessage('alerts-for-breaches')}</h3>
       <p>${getMessage('alerts-for-breaches-monitor-new')}</p>
     </li>
@@ -57,7 +57,7 @@ export const landing = data => `
     <p><a href='https://www.mozilla.org/mission/' target='_blank'>${getMessage('learn-more-mission')}</a></p>
   </div>
   <figure>
-    <img srcset='images/landing-nature-phone.png 539w, images/landing-nature-phone@2x.png 1078w' width='539' height='503' loading='lazy' alt=''>
+    <img srcset='images/landing-nature-phone.webp 539w, images/landing-nature-phone@2x.webp 1078w' width='539' height='503' loading='lazy' alt=''>
   </figure>
 </section>
 <section class='top-questions-about-monitor'>

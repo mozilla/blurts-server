@@ -1,4 +1,4 @@
-import { mainLayout } from '../views/layouts/main.js'
+import { mainLayout } from '../views/main.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
 import { getUserEmails } from '../db/tables/email_addresses.js'
@@ -7,12 +7,13 @@ import { filterBreachDataTypes, appendBreachResolutionChecklist } from '../utils
 import { getSha1 } from '../utils/fxa.js'
 
 async function breachesPage (req, res) {
+  const emailCount = 1 + (req.user.email_addresses?.length || 0) // +1 because user.email_addresses does not include primary
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
   const data = {
-    locale: req.locale,
     breachesData,
+    emailCount,
     partial: breaches
   }
 

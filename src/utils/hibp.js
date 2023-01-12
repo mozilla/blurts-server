@@ -1,7 +1,7 @@
-import got from 'got'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
+import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -18,80 +18,124 @@ function _addStandardOptions (options = {}) {
   const hibpOptions = {
     headers: {
       'User-Agent': HIBP_USER_AGENT
-    },
-    responseType: 'json'
+    }
   }
   return Object.assign(options, hibpOptions)
 }
 
-async function _throttledGot (url, reqOptions, tryCount = 1) {
-  let response
+async function _throttledFetch (url, reqOptions, tryCount = 1) {
   try {
-    response = await got(url, reqOptions)
-    return response
-  } catch (err) {
-    log.error('_throttledGot', { err })
-    if (err.statusCode === 404) {
-      // 404 can mean "no results", return undefined response; sorry calling code
-      return response
-    } else if (err.statusCode === 429) {
-      log.info('_throttledGot', { err: 'got a 429, tryCount: ' + tryCount })
-      if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
-        log.error('_throttledGot', { err })
-        throw fluentError('error-hibp-throttled')
-      } else {
-        tryCount++
-        await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
-        return await _throttledGot(url, reqOptions, tryCount)
-      }
-    } else {
-      throw fluentError('error-hibp-connect')
+    const response = await fetch(url, reqOptions)
+    if (response.ok) return await response.json()
+
+    switch (response.status) {
+      case 404:
+        // 404 can mean "no results", return undefined response
+        return undefined
+      case 429:
+        log.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
+        if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
+          throw fluentError('error-hibp-throttled')
+        } else {
+          tryCount++
+          await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
+          return await _throttledFetch(url, reqOptions, tryCount)
+        }
+      default:
+        throw new Error(`bad response: ${response.status}`)
     }
+  } catch (err) {
+    log.error('_throttledFetch', { err })
+    throw fluentError('error-hibp-connect')
   }
 }
 
 async function req (path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
-  return await _throttledGot(url, reqOptions)
+  return await _throttledFetch(url, reqOptions)
 }
 
 async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
   const reqOptions = _addStandardOptions(options)
-  return await _throttledGot(url, reqOptions)
+  return await _throttledFetch(url, reqOptions)
 }
 
-function matchFluentID (dataCategory) {
-  return dataCategory.toLowerCase()
-    .replace(/[^-a-z0-9]/g, '-')
-    .replace(/-{2,}/g, '-')
-    .replace(/(^-|-$)/g, '')
+/**
+ * Sanitize data classes
+ * ie. "Email Addresses" -> "email-addresses"
+ * @param {Array} dataClasses
+ * @returns Array sanitized data classes array
+ */
+function formatDataClassesArray (dataClasses) {
+  return dataClasses.map(dataClass =>
+    dataClass.toLowerCase()
+      .replace(/[^-a-z0-9]/g, '-')
+      .replace(/-{2,}/g, '-')
+      .replace(/(^-|-$)/g, '')
+  )
 }
 
-function formatDataClassesArray (dataCategories) {
-  const formattedArray = []
-  dataCategories.forEach(category => {
-    formattedArray.push(matchFluentID(category))
-  })
-  return formattedArray
+/**
+ * Get all breaches from the database table "breaches",
+ * sanitize it, and return a javascript array
+ * @returns formatted all breaches array
+ */
+async function getAllBreachesFromDb () {
+  let dbBreaches = []
+  try {
+    dbBreaches = await getAllBreaches()
+  } catch (e) {
+    log.error('getAllBreachesFromDb', 'No breaches exist in the database: ' + e)
+    return dbBreaches
+  }
+
+  // TODO: we can do some filtering here for the most commonly used fields
+  // TODO: change field names to camel case
+  return dbBreaches.map(breach => ({
+    Name: breach.name,
+    Title: breach.title,
+    Domain: breach.domain,
+    BreachDate: breach.breach_date,
+    AddedDate: breach.added_date,
+    ModifiedDate: breach.modified_date,
+    PwnCount: breach.pwn_count,
+    Description: breach.description,
+    LogoPath: breach.logo_path,
+    DataClasses: breach.data_classes,
+    IsVerified: breach.is_verified,
+    IsFabricated: breach.is_fabricated,
+    IsSensitive: breach.is_sensitive,
+    IsRetired: breach.is_retired,
+    IsSpamList: breach.is_spam_list,
+    IsMalware: breach.is_malware
+  }))
 }
 
 async function loadBreachesIntoApp (app) {
   try {
-    const breachesResponse = await req('/breaches')
-    const breaches = []
+    // attempt to fetch breaches from the "breaches" database table
+    const breaches = await getAllBreachesFromDb()
+    log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
 
-    for (const breach of breachesResponse.body) {
-      breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
-      breaches.push(breach)
+    // if "breaches" table does not return results, fall back to HIBP request
+    if (breaches?.length < 1) {
+      const breachesResponse = await req('/breaches')
+      log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
+
+      for (const breach of breachesResponse) {
+        breach.DataClasses = formatDataClassesArray(breach.DataClasses)
+        breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
+        breaches.push(breach)
+      }
+
+      // sync the "breaches" table with the latest from HIBP
+      await upsertBreaches(breaches)
     }
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
-    app.locals.latestBreach = getLatestBreach(breaches)
-    app.locals.mostRecentBreachDateTime = app.locals.latestBreach.AddedDate
   } catch (error) {
     throw fluentError('error-hibp-load-breaches')
   }
@@ -121,7 +165,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
   //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
   //   {"hashSuffix":<suffix>,"websites":[<breach1Name>,...]},
   // ]
-  for (const breachedAccount of response.body) {
+  for (const breachedAccount of response) {
     if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
       foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name))
       if (filterBreaches) {
@@ -166,31 +210,16 @@ function filterBreaches (breaches) {
   )
 }
 
-function getLatestBreach (breaches) {
-  let latestBreach = {}
-  let latestBreachDateTime = new Date(0)
-  for (const breach of breaches) {
-    if (breach.IsSensitive) {
-      continue
-    }
-    const breachAddedDate = new Date(breach.AddedDate)
-    if (breachAddedDate > latestBreachDateTime) {
-      latestBreachDateTime = breachAddedDate
-      latestBreach = breach
-    }
-  }
-  return latestBreach
-}
 /**
-A range can be subscribed for callbacks with the following request:
-POST /range/subscribe
-{
-  hashPrefix:"[hash prefix]"
-}
-There are two possible response codes that will be returned:
-1. HTTP 201: New range subscription has been created
-2. HTTP 200: Range subscription already exists
- * @param {string} sha1 first 6 chars of sha1 of the email being subscribed
+ * A range can be subscribed for callbacks with the following request:
+ * POST /range/subscribe
+ * {
+ *   hashPrefix:"[hash prefix]"
+ * }
+ * There are two possible response codes that can be returned:
+ * 1. HTTP 201: New range subscription has been created
+ * 2. HTTP 200: Range subscription already exists
+ * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 or 201 response codes
  */
 async function subscribeHash (sha1) {
@@ -204,15 +233,35 @@ async function subscribeHash (sha1) {
   return await kAnonReq(path, options)
 }
 
+/**
+ * A range subscription can be deleted with the following request:
+ * DELETE /range/[hash prefix]
+
+ * There is one possible response code that can be returned:
+ * HTTP 200: Range subscription successfully deleted
+
+ * @param {string} sha1 sha1 of the email being subscribed
+ * @returns 200 response codes
+ */
+async function deleteSubscribedHash (sha1) {
+  const sha1Prefix = sha1.slice(0, 6).toUpperCase()
+  const path = `/range${sha1Prefix}`
+  const options = {
+    method: 'DELETE'
+  }
+
+  return await kAnonReq(path, options)
+}
+
 export {
   req,
   kAnonReq,
-  matchFluentID,
   formatDataClassesArray,
   loadBreachesIntoApp,
   getBreachesForEmail,
   getBreachByName,
+  getAllBreachesFromDb,
   filterBreaches,
-  getLatestBreach,
-  subscribeHash
+  subscribeHash,
+  deleteSubscribedHash
 }

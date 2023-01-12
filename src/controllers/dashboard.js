@@ -1,9 +1,8 @@
-import { mainLayout } from '../views/layouts/main.js'
+import { mainLayout } from '../views/main.js'
 import { dashboard } from '../views/partials/dashboard.js'
 
 function dashboardPage (req, res) {
   const data = {
-    locale: req.locale,
     partial: dashboard
   }
 

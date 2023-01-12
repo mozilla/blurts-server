@@ -8,6 +8,7 @@ const requiredEnvVars = [
   'SERVER_URL',
   'LOGOS_ORIGIN',
   'COOKIE_SECRET',
+  'CSRF_SECRET',
   'SESSION_DURATION_HOURS',
   'SMTP_URL',
   'EMAIL_FROM',
@@ -72,9 +73,5 @@ for (const v of requiredEnvVars) {
 optionalEnvVars.forEach(key => {
   if (key in process.env) AppConstants[key] = process.env[key]
 })
-
-AppConstants.VPN_PROMO_BLOCKED_LOCALES = AppConstants.VPN_PROMO_BLOCKED_LOCALES?.split(',')
-
-// AppConstants.AD_UNIT_TOTAL = fs.readdirSync(new URL('./views/partials/ad-units', import.meta.url).length
 
 export default Object.freeze(AppConstants)

@@ -18,17 +18,22 @@ body {
 }
 
 h1 {
-  font: 700 2.5rem/1 Metropolis, sans-serif;
+  font: var(--h1-font);
   margin: var(--padding-md) 0;
 }
 
 h2 {
-  font: 700 1.75rem/1 Metropolis, sans-serif;
+  font: var(--h2-font);
   margin: var(--padding-md) 0;
 }
 
 h3 {
-  font: 700 1.125rem/1 Metropolis, sans-serif;
+  font: var(--h3-font);
+  margin: var(--padding-md) 0;
+}
+
+h4 {
+  font: var(--h4-font);
   margin: var(--padding-md) 0;
 }
 
@@ -52,7 +57,7 @@ menu {
   list-style-type: none;
 }
 
-header {
+body > header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -66,11 +71,11 @@ header {
   z-index: 1;
 }
 
-.scrolled header {
+.scrolled body > header {
   box-shadow: 0 6px 6px -8px #000;
 }
 
-header .monitor-logo {
+body > header .monitor-logo {
   width: calc(213px * var(--multiplier));
   object-fit: contain;
 }
@@ -170,5 +175,9 @@ button.secondary,
 @keyframes fade-in {
   from {
     opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

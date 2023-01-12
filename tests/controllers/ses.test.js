@@ -85,6 +85,31 @@ test('ses notification with Complaint unsubscribes recipient from email_addresse
   expect(noMoreEmailAddressRecord).toBeUndefined()
 })
 
+test('ses notification with Permanent bounce for subscriber with additional email logs (issue 2744)', async () => {
+  const testEmail = 'bounce@simulator.amazonses.com'
+  const testHashes = [getSha1(testEmail)]
+
+  await DB.addSubscriber(testEmail)
+  let subscribers = await DB.getSubscribersByHashes(testHashes)
+  expect(subscribers.length).toEqual(1)
+  let email1 = await DB.addSubscriberUnverifiedEmailHash(subscribers[0], 'other@example.com')
+  await DB.verifyEmailHash(email1.verification_token)
+
+  const req = httpMocks.createRequest({
+    method: 'POST',
+    url: '/ses/notification',
+    body: createRequestBody('bounce')
+  })
+  const resp = httpMocks.createResponse()
+
+  await ses.notification(req, resp)
+  expect(resp.statusCode).toEqual(200)
+
+  subscribers = await DB.getSubscribersByHashes(testHashes)
+  expect(subscribers.length).toEqual(1)
+})
+
+
 test("ses notification with invalid signature responds with error and doesn't change subscribers", async () => {
   const testEmail = 'complaint@simulator.amazonses.com'
 
