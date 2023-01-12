@@ -1,41 +1,59 @@
 import { createPartial } from '../../utils/partials.js'
 import { getMessage } from '../../utils/fluent.js'
 
-const chartData = {
+const chartData1 = {
   data: [
     {
-      key: 'email',
-      name: 'Email',
+      key: 'resolved',
+      name: 'Resolved',
       count: 4,
-      color: '#ff0000'
+      color: '#9059ff',
+      showPercentage: true
     },
     {
-      key: 'password',
-      name: 'Password',
+      key: 'unresolved',
+      name: 'Unresolved',
       count: 8,
-      color: '#00ff00'
-    },
-    {
-      key: 'ip',
-      name: 'IP address',
-      count: 5,
-      color: '#fff000'
-    },
-    {
-      key: 'other',
-      name: 'Other',
-      count: 15,
-      color: '#000fff'
+      color: '#321c64'
     }
   ],
   isDonut: true
 }
 
+const chartData2 = {
+  data: [
+    {
+      key: 'password',
+      name: 'Password',
+      count: 8,
+      color: '#321c64'
+    },
+    {
+      key: 'email',
+      name: 'Email',
+      count: 4,
+      color: '#ab71ff'
+    },
+    {
+      key: 'ip',
+      name: 'IP address',
+      count: 5,
+      color: '#952bb9'
+    },
+    {
+      key: 'other',
+      name: 'Other',
+      count: 15,
+      color: '#d74cf0'
+    }
+  ]
+}
+
 export const landing = data => `
 <section class='hero'>
-  <div>
-    ${createPartial('pieChart', { ...data, chartData })}
-    ${createPartial('pieChart', { ...data, chartData })}
+  <div style='display: grid; grid-template-columns: 1fr 1fr;'>
+    ${createPartial('pieChart', { ...data, chartData: chartData1 })}
+    ${createPartial('pieChart', { ...data, chartData: chartData2 })}
   </div>
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>

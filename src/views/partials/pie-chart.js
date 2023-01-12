@@ -1,9 +1,12 @@
 const chartLabels = ({ data }) => `
-  <ul class='chart-labels'>
-    ${data.map(({ name, color }) => (
-      `<li class='chart-labels-item' style='color: ${color}'>${color} - ${name} test</li>`
-    )).join('')}
-  </ul>
+  <div class='chart-labels'>
+    <h3 class='chart-title'>Labels title</h3>
+    <ul class='chart-list'>
+      ${data.map(({ name, color }) => (
+        `<li class='chart-list-item' style='color: ${color}'>${name}</li>`
+      )).join('')}
+    </ul>
+  </div>
 `
 
 export const pieChart = ({ chartData }) => {
@@ -13,7 +16,6 @@ export const pieChart = ({ chartData }) => {
 
   return `
     <div class='pie-chart'>
-      Pie chart
       <div class='chart-wrapper' data-chart='${JSON.stringify(chartData)}'></div>
       ${chartLabels(chartData)}
     </div>
