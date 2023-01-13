@@ -25,6 +25,8 @@ filter-label-resolved = Vazamentos resolvidos
 column-company = EMPRESA
 column-breached-data = DADOS VAZADOS
 column-detected = DETECTADO
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Em { $breachDate }, houve vazamento em { $companyName }. Depois que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }. Este vazamento incluiu: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
