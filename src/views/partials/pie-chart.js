@@ -7,11 +7,11 @@ const calcPercentage = (total, value) => {
 }
 
 const chartLabels = chartData => `
-  <div class='chart-labels'>
-    <h3 class='chart-title'>${chartData.title}</h3>
-    <ul class='chart-list'>
+  <div class='pie-chart-labels'>
+    <h3 class='pie-chart-title'>${chartData.title}</h3>
+    <ul class='pie-chart-list'>
       ${chartData.data.map(({ name, color }) => (
-        `<li class='chart-list-item' style='color: ${color}'>${name}</li>`
+        `<li class='pie-chart-item' style='color: ${color}'>${name}</li>`
       )).join('')}
     </ul>
   </div>
@@ -19,22 +19,21 @@ const chartLabels = chartData => `
 
 const getCircleLabel = (data, total) => {
   const relevantItem = data.find(d => d.showPercentage)
-  const percentageParsed = Math.round(calcPercentage(total, relevantItem.count) * 100)
 
   if (!relevantItem) {
     return ''
   }
 
+  const percentage = calcPercentage(total, relevantItem.count)
   return `
     <text
-      class='chart-percentage'
       fill='${relevantItem.color}'
       font-size='0.2'
       x='0.5'
       y='0.5'
       dy='0.065'
     >
-        ${percentageParsed}%
+        ${Math.round(percentage * 100)}%
     </text>
   `
 }
@@ -52,8 +51,7 @@ export const pieChart = ({ chartData }) => {
 
   return `
     <div class='pie-chart'>
-      <div class='chart-wrapper' data-chart='${JSON.stringify(chartData)}'></div>
-      <div class='test-chart'>
+      <div class='pie-chart-wrapper'>
         <svg viewBox='0 0 1 1'>
           <g>
             ${chartData.data.reduce((acc, curr) => {
@@ -70,7 +68,7 @@ export const pieChart = ({ chartData }) => {
               sliceOffset += percentage
 
               return acc
-            }, []).join()}
+            }, []).join('')}
           </g>
 
           ${isDonut ? getCircleLabel(chartData.data, total) : ''}
