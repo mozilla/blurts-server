@@ -3,8 +3,18 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+add-email-link = Lisää sähköpostiosoite
+
+## Breaches resolved filter
+
+filter-label-unresolved = Selvittämättömät vuodot
+filter-label-resolved = Selvitetyt vuodot
+
+## Breaches table
+
+column-detected = HAVAITTU
 
 ## Prompts the user for changes when there is a breach detected of password
 
