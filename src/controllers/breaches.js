@@ -1,6 +1,5 @@
 import { mainLayout } from '../views/main.js'
 import { breaches } from '../views/partials/breaches.js'
-import { userMenu } from '../views/partials/user-menu.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
 import { getUserEmails } from '../db/tables/email_addresses.js'
 import { getBreachesForEmail, filterBreaches } from '../utils/hibp.js'
@@ -12,13 +11,12 @@ async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
-  const fxaProfileData = req.user.fxa_profile_json
 
   const data = {
     breachesData,
     emailCount,
-    partial: breaches,
-    userMenu: userMenu(fxaProfileData)
+    fxaProfile: req.user.fxa_profile_json,
+    partial: breaches
   }
 
   res.send(mainLayout(data))
