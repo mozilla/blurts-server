@@ -189,7 +189,7 @@ appears-in-x-breaches =
         [one] Apparaît dans { $breachCount } fuite de données connue.
        *[other] Apparaît dans { $breachCount } fuites de données connues.
     }
-check-for-breaches = Vérifier les fuites de données
+check-for-breaches = Vérifiez les fuites de données
 find-out-what-hackers-know = Découvrez ce que les pirates informatiques savent déjà de vous, et apprenez à garder une longueur d’avance sur eux.
 get-email-alerts = Restez en sécurité : recevez des alertes par e-mail lorsque vos informations apparaissent dans une fuite de données connue
 search-for-your-email = Recherchez votre adresse e-mail parmi les fuites de données publiques remontant jusqu’à 2007.

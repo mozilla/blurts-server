@@ -88,6 +88,7 @@ occupations = professions
 parenting-plans = ententes parentales
 partial-credit-card-data = données partielles de cartes bancaires
 partial-dates-of-birth = dates de naissance partielles
+partial-phone-numbers = numéros de téléphone partiels
 passport-numbers = numéros de passeport
 password-hints = indices de mots de passe
 password-strengths = robustesse des mots de passe
