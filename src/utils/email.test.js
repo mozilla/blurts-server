@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-'use strict'
-
 import test from 'ava'
 import * as td from 'testdouble'
 
@@ -73,7 +71,7 @@ test.serial('EmailUtils.sendEmail with recipient, subject, template, context cal
   const sendMailArgs = [
     'test@example.com',
     'subject',
-    'template.hbs',
+    { html: '<html>test</html>' },
     { breach: 'Test' }
   ]
 
@@ -107,7 +105,7 @@ test.serial('EmailUtils.sendEmail rejects with error', async t => {
   const sendMailArgs = [
     'test@example.com',
     'subject',
-    'template.hbs',
+    { html: '<html>test</html>' },
     { breach: 'Test' }
   ]
 
@@ -142,7 +140,7 @@ test.serial('EmailUtils.init with empty host uses jsonTransport. logs messages',
   const sendMailArgs = [
     'test@example.com',
     'subject',
-    'template.hbs',
+    { html: '<html>test</html>' },
     { breach: 'Test' }
   ]
   const sendMailInfo = { message: 'sent' }
