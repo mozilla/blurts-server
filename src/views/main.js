@@ -64,7 +64,7 @@ const userMenu = data => `
   </button>
   <ul class='user-menu-list user-menu-popover' role='menu' hidden>
     <li role='menuitem' tabindex='1'>
-      <a href='https://accounts.firefox.com/' target='_blank' class='user-menu-header'>
+      <a href='${AppConstants.FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
         <div class='user-menu-subtitle'>
           ${getMessage('menu-item-fxa')}
