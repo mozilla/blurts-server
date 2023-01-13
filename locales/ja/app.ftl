@@ -156,7 +156,11 @@ how-fxm-1-blurb = 2007 年までさかのぼって、メールアドレスがデ
 how-fxm-2-headline = アカウント登録して侵害を監視する
 how-fxm-2-blurb = { -brand-fxa }を作成し、進行中の侵害についてメールアドレスの監視を行います。メールアドレスを確認すると、注意を要する侵害を含む過去の侵害についての完全なレポートも届きます。
 how-fxm-3-headline = ブラウザーで通知を受け取る
+how-fxm-3-blurb = { -brand-name } を利用すると、侵害されたサイトを訪問した際に通知が届きます。あなたがその侵害に含まれていたか、何ができるのかをすぐに確認してください。
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
+wtd-after-data-agg = データアグリゲーター侵害の後にするべきこと:
+what-is-data-agg = データアグリゲーターとは？
+what-is-data-agg-blurb = データアグリゲーター (データブローカー) は、公的記録から情報を収集したり他社から情報を購入したりします。彼らはこのデータを編集し、マーケティング目的で企業に販売します。このような情報漏洩の被害者が金銭的な詐欺にあう可能性は低いですが、ハッカーはこのデータを使って被害者になりすましたり、被害者を分析したりする可能性があります。
 protect-your-privacy = オンラインプライバシーを保護する
 no-pw-to-change = ウェブサイトの侵害とは異なり、パスワードを変更する必要はありません。
 avoid-personal-info = パスワードに個人情報を使用しないでください
@@ -199,6 +203,7 @@ send-verification = 認証リンクを送信する
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = データ侵害概要
+show-breaches-for-this-email = このメールアドレスのすべてのデータ侵害を表示する。
 link-change-primary = 主要メールアドレスを変更する
 remove-fxm = { -product-name } の登録を解除する。
 remove-fxm-blurb = { -product-name } の警告をオフにします。{ -brand-fxa } は有効のまま残り、他の通知は受信を続けるでしょう。
@@ -209,8 +214,12 @@ latest-breach-link = この侵害を受けているか確認する
 welcome-back = おかえりなさい、{ $userName } さん！
 welcome-user = ようこそ、{ $userName } さん！
 breach-alert-subject = { -product-name } が、あなたのメールアドレスの新しいデータ侵害を発見しました。
+your-info-was-discovered-headline = あなたの情報が新しいデータ侵害に含まれています。
+your-info-was-discovered-blurb = あなたのメールアドレスがデータ侵害に含まれていた場合に { -product-name } アラートが届くよう登録されています。この侵害についてわかっていることは次のとおりです。
 what-to-do-after-breach = データ侵害があった後にするべきこと
 ba-next-step-1 = パスワードを強力で一意のパスワードに変更する。
+ba-next-step-blurb-1 = 強力なパスワードは、大文字と小文字、記号などの特殊文字、数字を組み合わせたものです。住所や誕生日、家族の名前などの個人情報を含めてはいけません。
+ba-next-step-2 = 漏洩したパスワードの利用を完全に停止してください。
 new-breaches-found =
     { $breachCount ->
        *[other] 新たな侵害が { $breachCount } 件みつかりました
