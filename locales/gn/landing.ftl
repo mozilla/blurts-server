@@ -30,6 +30,7 @@ alerts-for-breaches-monitor-new = Rohechamemetéta mba’ekuaarã ñembyai ipyah
 ## Your privacy is safe with us
 
 safe-with-us = Ne rekoñemi hekorosãta ore ndive
+parent-company = { -brand-Mozilla }-pe, { -brand-firefox } tendaguasu ha { -brand-fx-monitor }, roguerovia avakuéra rekorosã ha rekoñemi ñandutípe tuichamba’eha ha upéva ndaikatúi eheja emomba’eguasu’ỹre.
 learn-more-mission = Eñemomaranduve ore rembipotáre
 
 ## Top questions about Firefox Monitor
