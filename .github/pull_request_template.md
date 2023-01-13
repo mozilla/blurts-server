@@ -22,7 +22,7 @@ Not applicable.
 # Checklist (Definition of Done)
 - [ ] Localization strings (if needed) have been added.
 - [ ] Commits in this PR are minimal and [have descriptive commit messages](https://chris.beams.io/posts/git-commit/).
-- [ ] I've added or updated relevant docs in the docs/ directory.
+- [ ] I've added or updated the relevant sections in readme and/or code comments
 - [ ] I've added a unit test to test for potential regressions of this bug.
 - [ ] Product Owner accepted the User Story (demo of functionality completed) or waived the privilege.
 - [ ] All acceptance criteria are met.
