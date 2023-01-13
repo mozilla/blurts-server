@@ -60,12 +60,12 @@ const userMenu = data => `
   class='user-menu-button'
   title='${getMessage('menu-button-title')}'
   >
-    <img src='${data.fxaProfile.avatar}' alt='${getMessage('menu-button-alt')}' />
+    <img src='${data.fxaProfile?.avatar}' alt='${getMessage('menu-button-alt')}' />
   </button>
   <ul class='user-menu-list user-menu-popover' role='menu' hidden>
     <li role='menuitem' tabindex='1'>
       <a href='https://accounts.firefox.com/' target='_blank' class='user-menu-header'>
-        <b class='user-menu-email'>${data.fxaProfile.email}</b>
+        <b class='user-menu-email'>${data.fxaProfile?.email}</b>
         <div class='user-menu-subtitle'>
           ${getMessage('menu-item-fxa')}
           <img src='/images/icon-open-in.svg' />

@@ -34,13 +34,18 @@ async function getRedisStore () {
 }
 
 // middleware
-app.use(helmet())
+app.use(helmet({
+  crossOriginEmbedderPolicy: false
+}))
 
 const imgSrc = [
-  "'self'",
-  'https://profile.stage.mozaws.net',
-  'https://profile.accounts.firefox.com'
+  "'self'"
 ]
+
+if (AppConstants.FXA_ENABLED) {
+  const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin
+  imgSrc.push(fxaSrc)
+}
 
 // disable forced https to allow localhost on Safari
 app.use(
