@@ -3,8 +3,34 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Tor-data ar gyfer { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [zero] { $count } o { $total } e-byst wedi'u monitro
+        [one] { $count } o { $total } e-bost wedi'i fonitro
+        [two] { $count } o { $total } e-byst wedi'u monitro
+        [few] { $count } o { $total } e-byst wedi'u monitro
+        [many] { $count } o { $total } e-byst wedi'u monitro
+       *[other] { $count } o { $total } e-byst wedi'u monitro
+    }
+add-email-link = Ychwanegu cyfeiriad e-bost
+
+## Breaches resolved filter
+
+filter-label-unresolved = Tor-data heb eu datrys
+filter-label-resolved = Tor-data wedi'u datrys
+
+## Breaches table
+
+column-company = CWMNI
+column-breached-data = DATA WEDI'I DORRI
+column-detected = CANFOD
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Ar { $breachDate }, profodd { $companyName } dor-data. Unwaith y cafodd y tor-data ei ganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }. Mae'r tor-data hwn yn cynnwys: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
