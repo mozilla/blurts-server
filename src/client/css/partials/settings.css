@@ -1,0 +1,67 @@
+.child-right {
+  /* styleName: Web/Body/Small/Inter/Regular; */
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.monitor-button {
+  background-color: #0250BB;
+  color: white;
+  height: 40px;
+  width: 189px;
+}
+
+dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 696px;
+  height: 598px;
+  text-align: center;
+  padding: 10px;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+hr {
+  color: #E7E7E7;
+  width: 613px;
+  opacity: 0.33;
+}
+
+.parent {
+  display: flex;
+  flex-direction: row;
+}
+
+.child-one {
+  width: 30%;
+  height: 100vh;
+  text-align: center;
+}
+
+.child-two {
+  width: 70%;
+  height: 100vh;
+  text-align: left;
+}
+
+.rows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.verification-required {
+  color: #E22850;
+}
+
+.settings-resend-email {
+  color: #0060DF;
+}
