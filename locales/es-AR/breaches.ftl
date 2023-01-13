@@ -26,6 +26,8 @@ filter-label-resolved = Filtraciones resueltas
 column-company = EMPRESA
 column-breached-data = DATOS FILTRADOS
 column-detected = DETECTADO
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = El { $breachDate }, { $companyName } tuvo una filtración. Cuando se descubrió y verificó, fue agregada a nuestra base de datos el { $addedDate }. Está filtración incluía: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
