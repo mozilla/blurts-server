@@ -36,15 +36,25 @@ function createBreachRows (data) {
         addedDate: longDate.format(addedDate),
         dataClasses: longList.format(dataClassesTranslated)
       })
+      const resolveSteps = Object.entries(breach.breachChecklist).map(([key, value]) => `
+        <li class='resolve-list-item'>
+          <input name='${breach.recencyIndex}' value='${key}' type='checkbox'>
+          <p>${value.header}<br><i>${value.body}</i></p>
+        </li>
+      `).join('')
 
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
         <summary>
           <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
         </summary>
-        <div>
+        <article>
           ${description}
-        </div>
+          <p>
+            <strong>Resolve this breach:</strong>
+            <ol class='resolve-list'>${resolveSteps}</ol>
+          </p>
+        </article>
       </details>
       `
     })
@@ -56,7 +66,7 @@ function createBreachRows (data) {
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
-    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
+    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
     <figure>
       <img src='/images/temp-diagram.png' width='80' height='80'>
       <figcaption class='breach-stats'>
