@@ -3,8 +3,28 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Vazamentos de dados de { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } de { $total } email monitorado
+       *[other] { $count } de { $total } emails monitorados
+    }
+add-email-link = Adicionar endereço de email
+
+## Breaches resolved filter
+
+filter-label-unresolved = Vazamentos não resolvidos
+filter-label-resolved = Vazamentos resolvidos
+
+## Breaches table
+
+column-company = EMPRESA
+column-breached-data = DADOS VAZADOS
+column-detected = DETECTADO
 
 ## Prompts the user for changes when there is a breach detected of password
 
