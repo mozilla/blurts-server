@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = { $email-select } için veri ihlalleri
 add-email-link = E-posta adresi ekle
 
 ## Breaches resolved filter
