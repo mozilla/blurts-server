@@ -7,12 +7,25 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Mba’ekuaarã ñembogua { $email-select } peg̃uarã
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } { $total } ñanduti veve jehechapyre
+        [many] { $count } { $total } ñanduti veve jehechapyre
+       *[other] { $count } { $total } ñanduti veve jehechapyre
+    }
+add-email-link = Embojuaju ñanduti veve kundaharape
 
 ## Breaches resolved filter
 
+filter-label-unresolved = Ñembogua oĩporã’ỹva
+filter-label-resolved = Ñembogua moĩporãmbyre
 
 ## Breaches table
 
+column-company = MBA’APOHAGUASU
+column-breached-data = MBA’EKUAARÃ MBOGUAPYRE
+column-detected = HECHAPYRE
 
 ## Prompts the user for changes when there is a breach detected of password
 
