@@ -42,3 +42,31 @@
   font-size: 0.65em;
   padding-bottom: 0.175em;
 }
+
+.test-chart {
+  height: 150px;
+  position: relative;
+  width: 150px;
+}
+
+.test-chart svg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  transform: rotate(-90deg);
+}
+
+.test-chart svg text {
+  font-family: metropolis, sans-serif;
+  font-weight: 700;
+  text-anchor: middle;
+  transform: rotate(90deg);
+  transform-origin: center;
+}
+
+.test-chart circle {
+  fill: none;
+  r: 50%;
+  cx: 50%;
+  cy: 50%;
+}

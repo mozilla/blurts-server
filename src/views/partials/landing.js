@@ -2,6 +2,7 @@ import { createPartial } from '../../utils/partials.js'
 import { getMessage } from '../../utils/fluent.js'
 
 const chartData1 = {
+  title: 'Chart title 1',
   data: [
     {
       key: 'resolved',
@@ -21,6 +22,7 @@ const chartData1 = {
 }
 
 const chartData2 = {
+  title: 'Chart title 2',
   data: [
     {
       key: 'password',
