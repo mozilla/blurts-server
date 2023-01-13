@@ -88,6 +88,7 @@ occupations = Beroppen
 parenting-plans = Alderskipsplannen
 partial-credit-card-data = Part fan creditcardgegevens
 partial-dates-of-birth = Parten fan bertedata
+partial-phone-numbers = In part fan telefoannûmers
 passport-numbers = Paspoartnûmers
 password-hints = Wachtwurdhints
 password-strengths = Wachtwurdsterktes

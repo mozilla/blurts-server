@@ -3,8 +3,30 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Datalekken foar { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } fan { $total } monitord e-mailadres
+       *[other] { $count } fan { $total } monitorde e-mailadressen
+    }
+add-email-link = E-mailadres tafoegje
+
+## Breaches resolved filter
+
+filter-label-unresolved = Net oploste datalekken
+filter-label-resolved = Oploste datalekken
+
+## Breaches table
+
+column-company = BEDRIUW
+column-breached-data = LEKTE GEGEVENS
+column-detected = DETEKTEARRE
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Op { $breachDate } is in lek bard op { $companyName }. Nei ûntdekking en ferifikaasje fan it lek, is it op { $addedDate } tafoege oan ús database. Dit lek omfette: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
