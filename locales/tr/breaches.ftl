@@ -7,15 +7,26 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = { $email-select } için veri ihlalleri
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $total } e-postanın { $current } tanesi izleniyor
+       *[other] { $total } e-postanın { $current } tanesi izleniyor
+    }
 add-email-link = E-posta adresi ekle
 
 ## Breaches resolved filter
 
+filter-label-unresolved = Çözülmemiş ihlaller
+filter-label-resolved = Çözülmüş ihlaller
 
 ## Breaches table
 
 column-company = ŞİRKET
+column-breached-data = İHLAL EDİLMİŞ VERİLER
 column-detected = TESPİT EDİLDİ
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = { $breachDate } tarihinde { $companyName } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi. İhlal şunları içeriyordu: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
