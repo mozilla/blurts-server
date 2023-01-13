@@ -1,6 +1,5 @@
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
-import { hasPartials } from '../utils/partials.js'
 
 const { SERVER_URL } = AppConstants
 
@@ -23,13 +22,7 @@ const mainLayout = data => `
     <link rel="preload" href="/fonts/Metropolis-Bold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/Inter-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel='stylesheet' href='/css/index.css' type='text/css'>
-    ${hasPartials(data)
-      ? data.partials.map(partial => (
-          `<link rel='stylesheet' href='/css/partials/${partial.name}.css' type='text/css'>`
-        )).join()
-      : ''
-    }
-    <link rel='stylesheet' href='/css/partials/${data.partialMain.name}.css' type='text/css'>
+    <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
     <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
     <link rel='icon' href='/images/favicon-48.webp' sizes='48x48'>
@@ -41,9 +34,9 @@ const mainLayout = data => `
     <script src='/js/index.js' type='module'></script>
   </head>
   <body>
-    ${data.partialMain.name === 'landing' ? landingHeader(data) : mainHeader(data)}
-    <main data-partial='${data.partialMain.name}'>
-      ${data.partialMain(data)}
+    ${data.partial.name === 'landing' ? landingHeader(data) : mainHeader(data)}
+    <main data-partial='${data.partial.name}'>
+      ${data.partial(data)}
     </main>
     <footer>
       <a href='https://www.mozilla.org' target='_blank'>
@@ -75,10 +68,10 @@ const mainHeader = data => `
   </menu>
 </header>
 <nav>
-  <a href='/user/dashboard' class='nav-item ${data.partialMain.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
-  <a href='/user/breaches' class='nav-item ${data.partialMain.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
-  <a href='/user/data-removal' class='nav-item ${data.partialMain.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
-  <a href='/user/settings' class='nav-item ${data.partialMain.name === 'settings' ? 'current' : ''}'>Settings</a>
+  <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
+  <a href='/user/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
+  <a href='/user/data-removal' class='nav-item ${data.partial.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
+  <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>Settings</a>
 </nav>
 `
 

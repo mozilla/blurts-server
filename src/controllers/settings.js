@@ -3,7 +3,7 @@ import { settings } from '../views/partials/settings.js'
 
 function settingsPage (req, res) {
   const data = {
-    partialMain: settings
+    partial: settings
   }
 
   res.send(mainLayout(data))

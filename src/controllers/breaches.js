@@ -14,7 +14,7 @@ async function breachesPage (req, res) {
   const data = {
     breachesData,
     emailCount,
-    partialMain: breaches
+    partial: breaches
   }
 
   res.send(mainLayout(data))
