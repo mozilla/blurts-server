@@ -19,14 +19,20 @@ email-unsub-link = 登録解除
 # and uses the text from { email-unsub-link }. { $faqLink } is a link to the 
 # Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
 email-footer-blurb =
-    { -product-name } に登録したため、このアラートメールが届きます。
+    このアラートメールは、{ -product-name } に登録されている方に届きます。
     これらのメールはもう必要ありませんか？ { $unsubLink }。これは自動化されたメールです。サポートについては、{ $faqLink } にアクセスしてください。
+# This string appears in the footer of verification emails. { $faqLink } is a link
+# to the Firefox Monitor SUMO page and uses the text from { frequently-asked-questions }.
+email-verify-footer-copy =
+    このアラートメールは、{ -product-name } に登録されている方に届きます。
+    これは自動化されたメールです。サポートについては、{ $faqLink } にアクセスしてください。
 # Button text
 verify-email-cta = メールアドレスを確認
 # Button text
 see-all-breaches = すべてのデータ侵害を見る
 # Headline of verification email
 email-link-expires = このリンクは 24 時間で有効期限が切れます
+email-verify-blurb = メールを確認して { -product-name } に追加し、データ侵害アラートに登録してください。
 # Email headline
 email-found-breaches-hl = 過去のデータ侵害の概要は次のとおりです
 # Email headline
