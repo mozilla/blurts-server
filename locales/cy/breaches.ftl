@@ -12,10 +12,10 @@ emails-monitored =
     { $total ->
         [zero] { $count } o { $total } e-byst wedi'u monitro
         [one] { $count } o { $total } e-bost wedi'i fonitro
-        [two] { $count } o { $total } e-byst wedi'u monitro
-        [few] { $count } o { $total } e-byst wedi'u monitro
-        [many] { $count } o { $total } e-byst wedi'u monitro
-       *[other] { $count } o { $total } e-byst wedi'u monitro
+        [two] { $count } o { $total }  e-bostwedi'u monitro
+        [few] { $count } o { $total } e-bost wedi'u monitro
+        [many] { $count } o { $total } e-bost wedi'u monitro
+       *[other] { $count } o { $total } e-bost wedi'u monitro
     }
 add-email-link = Ychwanegu cyfeiriad e-bost
 
@@ -27,7 +27,7 @@ filter-label-resolved = Tor-data wedi'u datrys
 ## Breaches table
 
 column-company = CWMNI
-column-breached-data = DATA WEDI'I DORRI
+column-breached-data = TOR-DATA
 column-detected = CANFOD
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Ar { $breachDate }, profodd { $companyName } dor-data. Unwaith y cafodd y tor-data ei ganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }. Mae'r tor-data hwn yn cynnwys: { $dataClasses }
