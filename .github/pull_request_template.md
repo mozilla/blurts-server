@@ -1,7 +1,8 @@
 <!-- The following is intended to be helpful to you. Feel free to remove anything that is not. -->
 
 # References: 
-MNTOR-
+Jira: MNTOR-
+Figma: 
 
 
 <!-- When adding a new feature: -->
