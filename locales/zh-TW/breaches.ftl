@@ -3,8 +3,26 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = { $email-select } 的資料外洩事件
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored = 監控 { $count } 組，共 { $total } 組電子郵件信箱
+add-email-link = 新增電子郵件地址
+
+## Breaches resolved filter
+
+filter-label-unresolved = 未處理的事件
+filter-label-resolved = 處理過的事件
+
+## Breaches table
+
+column-company = 公司
+column-breached-data = 外洩資料
+column-detected = 偵測到
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = { $companyName } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。此次事件外洩了下列資料：{ $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
