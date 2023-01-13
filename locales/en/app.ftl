@@ -272,14 +272,6 @@ feat-security-tips = Security tips to protect your accounts
 feat-sensitive = Advanced search in sensitive breaches
 feat-enroll-multiple = Enroll multiple emails in breach monitoring
 
-# This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
-appears-in-x-breaches =
-  { $breachCount ->
-        [one] Appears in { $breachCount } known breach.
-       *[other] Appears in { $breachCount } known breaches.
-  }
-
 check-for-breaches = Check for breaches
 find-out-what-hackers-know = Find out what hackers already know about you. Learn how to stay a step ahead of them.
 get-email-alerts = Stay safe: Get email alerts when your info appears in a known breach
@@ -287,14 +279,7 @@ search-for-your-email = Search for your email address in public data breaches go
 
 back-to-top = Back to Top
 
-comm-opt-0 = Email me if one of my email addresses below appears in a data breach.
-comm-opt-1 = Send all breach alerts to { $primaryEmail }.
-
 stop-monitoring-this = Stop monitoring this email.
-resend-verification = Resend verification email
-
-add-new-email = Add a new email address
-send-verification = Send Verification Link
 
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
@@ -434,7 +419,7 @@ error-invalid-unsub-blurb = You’ll need to unsubscribe from one of the
 # This string is displayed under a large numeral that indicates the total number
 # of email address a user has signed up for monitoring. Don’t add $emails to
 # your localization, because it would result in the number showing twice.
-email-addresses-being-monitored = 
+email-addresses-being-monitored =
   { $emails ->
    *[one] Email address being monitored
     [other] Email addresses being monitored
@@ -527,10 +512,6 @@ signed-in-as = Signed in as: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
 filter-by = Filter by Category: 
-
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-to-affected-email = Send breach alerts to the affected email address
 
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = There is a way to protect your privacy. Join {-brand-name}.
