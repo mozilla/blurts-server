@@ -22,7 +22,7 @@
   --blue-50: #0060df;
   --purple-70: #592acb;
   --purple-90: #321c64;
-  --monitor-gradient: linear-gradient(-90deg,#ff9100,#f10366 50%,#6173ff);
+  --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 
 @media (max-width: 480px) {
