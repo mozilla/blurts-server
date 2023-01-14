@@ -293,7 +293,7 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
-results-for = { $userEmail } 的搜索结果：
+results-for = { $userEmail } 的搜索结果
 other-monitored-emails = 其他监控的邮箱地址
 email-verification-required = 需要验证邮箱地址
 fxa-primary-email = { -brand-fxa }邮件 - 主账号
