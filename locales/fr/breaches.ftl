@@ -26,7 +26,7 @@ column-company = SOCIÉTÉ
 column-breached-data = DONNÉES AYANT FUITÉ
 column-detected = DÉTECTÉE
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-breach-description = Le { $breachDate }, { $breachTitle } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }. Cette fuite inclut : { $dataClasses }
+breach-description = Le { $breachDate }, { $companyName } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }. Cette fuite inclut : { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
