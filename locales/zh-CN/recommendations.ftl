@@ -12,7 +12,7 @@ rec-pw-1-subhead = 更改您的密码
 rec-pw-1-cta = 更改该网站密码
 rec-pw-1 = 使用唯一且不重复的密码。一个好策略是把两个或多个无关的单词组成密码短语。
 # Recommendation subhead
-rec-pw-2-subhead = 更换共用相同密码的登录口令
+rec-pw-2-subhead = 在使用了相同密码的地方更换密码
 # Link title
 rec-pw-2-cta-fx = 在 { -brand-name } 查看登录信息
 rec-pw-2 = 重用同一个密码的后果是，当任意一处发生泄露，其他位置也因此陷入危险。而现在，这个密码已经暴露，黑客可能利用它“撞库”来攻破您的其他账号。

@@ -116,7 +116,7 @@ cant-stop-hackers = 您无法阻止黑客入侵，但可以通过改变习惯，
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
 monitor-your-online-accounts = 使用 { -brand-fxa }订阅数据外泄警报
-stay-alert = 警惕新的数据外泄事件
+stay-alert = 关注新的数据外泄事件
 if-your-info = 如果您的信息出现于新的数据外泄事件中，我们会向您发送警报。
 search-all-emails = 搜索您在使用的所有邮箱地址，检查是否有数据外泄事件，也在有新威胁时收到警报。
 monitor-several-emails = 监控多个电子邮件地址
@@ -373,7 +373,7 @@ breach-alert-notifications = 外泄警报通知
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 事件记录时间：
-how-hackers-work-desc = 保护您的密码不受网络犯罪侵害，这是他们最关心的议题。
+how-hackers-work-desc = 保护您的密码不受网络犯罪侵害，这正是不法分子虎视眈眈的信息。
 what-to-do-after-breach-desc = 锁定账号，让您的个人信息不落入坏人之手。
 create-strong-passwords-desc = 让您的密码更强大、更安全、更难猜测。
 steps-to-protect-desc = 了解最常见的威胁，并了解要注意哪些事项。
@@ -477,7 +477,7 @@ fpn-promo-headline = 对网站和跟踪器伪装您的位置
 promo-fpn-body = { -brand-fpn } 通过伪装您的真实 IP 地址，摆脱那些用广告定位您的网站和数据收集器。
 promo-fpn-cta = 获取 { -brand-fpn }
 monitor-promo-headline = 帮您关心数据泄露事故
-monitor-promo-body = 在您的个人信息出现在数据外泄事件时收到通知。
+monitor-promo-body = 在您的个人信息出现在数据外泄事件中时收到通知。
 ecosystem-promo-headline = 使用尊重隐私的产品保卫您的网络世界
 ecosystem-promo-body = 所有 { -brand-name } 产品，均符合我们对个人数据隐私的承诺：索取更少、确保安全、绝不隐瞒。
 promo-ecosystem-cta = 一览所有产品
