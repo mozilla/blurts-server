@@ -3,8 +3,21 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = { $email-select } 的数据外泄
+add-email-link = 添加电子邮件地址
+
+## Breaches resolved filter
+
+filter-label-unresolved = 未处理的数据外泄事件
+filter-label-resolved = 已处理的数据外泄事件
+
+## Breaches table
+
+column-company = 公司
+column-breached-data = 外泄的数据
 
 ## Prompts the user for changes when there is a breach detected of password
 
