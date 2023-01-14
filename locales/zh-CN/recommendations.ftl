@@ -44,7 +44,7 @@ rec-email =
     真实的邮箱地址容易被黑客找到密码，或被跟踪者定位。
     建议使用像 { -brand-relay } 这类的邮件中继服务，隐藏真实邮箱地址。
 # Recommendation subhead
-rec-ip-subhead = 使用一项服务掩藏您的 IP 地址
+rec-ip-subhead = 使用掩藏 IP 地址的服务
 # Link title
 rec-ip-us-cta = 试用 { -brand-fpn }
 rec-ip-us =

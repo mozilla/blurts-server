@@ -132,7 +132,7 @@ sensitive-breach-plural = 敏感信息外泄
 data-aggregator-breach-plural = 数据聚合商信息外泄
 unverified-breach-plural = 未经证实的信息外泄
 spam-list-breach-plural = 垃圾邮件列表信息外泄
-what-data = 泄露了哪些数据：
+what-data = 泄露的数据：
 sensitive-sites = { -product-name } 如何处理这些敏感网站？
 sensitive-sites-copy = { -product-name } 仅会在电子邮件地址验证后，才显示与这些数据外泄事件相关联的账号。也就是说只有您能看到您的账号是否与此事件有关（除非有他人也能使用使用您的邮箱账号。）
 delayed-reporting-headline = 为什么要这么久才公开这些事件？
@@ -314,7 +314,7 @@ other-known-breaches-found =
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
-additional-information-including = 其他信息，包含：
+additional-information-including = 其他信息，包括：
 # Title
 email-addresses-title = 电子邮件地址
 # This is a section headline on the breach detail page that appears above
