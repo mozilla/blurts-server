@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Cuenta de Firefox
-terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Has intentado escanear demasiadas direcciones de correo electrónico en un breve periodo de tiempo. Por razones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes volver a intentarlo de nuevo más tarde.
 error-could-not-add-email = No se ha podido añadir la dirección de correo electrónico a la base de datos.
@@ -75,7 +74,6 @@ share-facebook-blurb = ¿Tus cuentas en línea han sido expuestas en una filtrac
 og-site-description = Descubre si has sido parte de una filtración de datos con { -product-name }. Regístrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
 show-all = Mostrar todo
 fxa-scan-another-email = ¿Quieres comprobar otra dirección de correo?
-sign-in = Iniciar sesión
 sign-out = Cerrar sesión
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionar { -brand-fxa }
@@ -618,3 +616,28 @@ ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de corre
 ad-unit-6-worry-free = Registros sin preocupaciones
 ad-unit-6-want-to-start = ¿Quieres hacer una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
 ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar de tu correo real para proteger tu información y mantener el control sobre tu bandeja de entrada
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fundación Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Iniciar sesión
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Términos y privacidad
+github = { -brand-github }
