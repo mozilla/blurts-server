@@ -7,12 +7,28 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Утечки данных для { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } из { $total } отслеживаемого письма
+        [few] { $count } из { $total } отслеживаемых писем
+        [many] { $count } из { $total } отслеживаемых писем
+       *[other] { $count } из { $total } отслеживаемых писем
+    }
+add-email-link = Добавить адрес электронной почты
 
 ## Breaches resolved filter
 
+filter-label-unresolved = Необработанные утечки
+filter-label-resolved = Обработанные утечки
 
 ## Breaches table
 
+column-company = КОМПАНИЯ
+column-breached-data = УТЕКШИЕ ДАННЫЕ
+column-detected = ОБНАРУЖЕНА
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = { $breachDate } произошла утечка данных { $companyName }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }. Эта утечка включает в себя: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
