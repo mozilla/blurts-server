@@ -630,6 +630,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 
 ## Search Engine Optimization
 
+meta-desc = Descubre si has sido parte de una filtración de datos con { -brand-fx-monitor }. Regístrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
 
 ## Header
 
