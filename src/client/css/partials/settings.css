@@ -1,18 +1,15 @@
-.child-right {
-  /* styleName: Web/Body/Small/Inter/Regular; */
+.settings-content {
   font-family: Inter;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  letter-spacing: 0px;
   text-align: left;
 }
 
-.monitor-button {
-  background-color: #0250BB;
+.monitor-button-primary {
+  background-color: #0250bb;
   color: white;
   height: 40px;
-  width: 189px;
 }
 
 dialog {
@@ -31,7 +28,7 @@ dialog::backdrop {
 }
 
 hr {
-  color: #E7E7E7;
+  color: #e7e7e7;
   width: 613px;
   opacity: 0.33;
 }
@@ -59,9 +56,9 @@ hr {
 }
 
 .verification-required {
-  color: #E22850;
+  color: #e22850;
 }
 
 .settings-resend-email {
-  color: #0060DF;
+  color: #0060df;
 }
