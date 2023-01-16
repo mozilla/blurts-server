@@ -19,7 +19,7 @@ import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 import AppConstants from '../app-constants.js'
 import { getBreachesForEmail } from '../utils/hibp.js'
-import { getTemplate } from '../views/email-2022.js'
+// import { getTemplate } from '../views/email-2022.js'
 import { generateToken } from '../utils/csrf.js'
 
 async function settingsPage (req, res) {
@@ -133,7 +133,8 @@ async function _sendVerificationEmail (emailId) {
   await EmailUtils.sendEmail(
     recipientEmail,
     getMessage('email-subject-verify'),
-    getTemplate,
+    // getTemplate,
+    '<html>placeholder</html>',
     {
       recipientEmail,
       ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),

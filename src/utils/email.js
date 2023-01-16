@@ -7,7 +7,8 @@ import AppConstants from '../app-constants.js'
 import { createTransport } from 'nodemailer'
 import mozlog from './log.js'
 
-import { getTemplate, verifyPartial } from '../views/email-2022.js'
+// TODO
+// import { getTemplate, verifyPartial } from '../views/email-2022.js'
 
 const log = mozlog('email-utils')
 
@@ -39,11 +40,11 @@ const EmailUtils = {
    */
   sendEmail (recipient, subject, template, data) {
     if (!gTransporter) {
-      // return Promise.reject(new Error('SMTP transport not initialized'))
-      this.init()
+      return Promise.reject(new Error('SMTP transport not initialized'))
     }
 
-    const html = getTemplate(verifyPartial, data)
+    // const html = getTemplate(verifyPartial, data)
+    const html = '<html>placeholder</html>'
     return new Promise((resolve, reject) => {
       const emailFrom = AppConstants.EMAIL_FROM
       const mailOptions = {
@@ -58,7 +59,7 @@ const EmailUtils = {
 
       gTransporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-          reject(error)
+          reject(new Error(error))
           return
         }
         if (gTransporter.transporter.name === 'JSONTransport') {

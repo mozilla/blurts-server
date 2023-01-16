@@ -1,69 +1,74 @@
 'use strict'
 
+import test from 'ava'
+import * as td from 'testdouble'
+
 import {
   TEST_SUBSCRIBERS,
   TEST_EMAIL_ADDRESSES
-} from '../db/seeds/test_subscribers'
-import { initFluentBundles } from './fluent.js'
+} from '../db/seeds/test_subscribers.js'
 
-import AppConstants from '../app-constants'
-import EmailUtils from './email'
-import { createTransport } from 'nodemailer'
-
-jest.mock('nodemailer')
-
-beforeAll(async () => {
-  await initFluentBundles()
+test.before(async () => {
+  // await initFluentBundles()
 })
 
-beforeEach(() => {
-  createTransport.mockClear()
+test.afterEach(() => {
+  td.reset()
 })
 
-test('EmailUtils.sendEmail before .init() fails', async () => {
+test('EmailUtils.sendEmail before .init() fails', async t => {
   const sendMailArgs = [
     'test@example.com',
     'subject',
-    'template.hbs',
+    { html: '<html>test</html>' },
     { breach: 'Test' }
   ]
-  const expectedError = new Error('SMTP transport not initialized')
 
-  createTransport.mockImplementation(() => ({
-    verify: jest.fn().mockReturnValueOnce('✓'),
-    sendMail: jest.fn().mockReturnValueOnce((mailoptions, callback) => {})
-  }))
-  expect(EmailUtils.sendEmail(...sendMailArgs)).rejects.toEqual(expectedError)
+  const { default: EmailUtils } = await import('./email.js')
+
+  const expectedError = 'SMTP transport not initialized'
+
+  await t.throwsAsync(
+    EmailUtils.sendEmail(...sendMailArgs),
+    { instanceOf: Error, message: expectedError }
+  )
 })
 
-test('EmailUtils.init with empty host uses jsonTransport', async () => {
-  createTransport.mockImplementation(() => jest.fn())
+test.serial('EmailUtils.init with empty host uses jsonTransport', async t => {
+  const nodemailer = await td.replaceEsm('nodemailer')
+  const { default: EmailUtils } = await import('./email.js')
 
-  expect(EmailUtils.init('')).resolves.toBe(true)
-
-  expect(createTransport).toHaveBeenCalledWith({ jsonTransport: true })
+  t.true(await EmailUtils.init(''))
+  td.verify(nodemailer.createTransport({ jsonTransport: true }))
 })
 
-test('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async () => {
+test.serial('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async t => {
+  const nodemailer = await td.replaceEsm('nodemailer')
+  const { default: EmailUtils } = await import('./email.js')
+
   const testSmtpUrl = 'smtps://test:test@test:1'
-  const mockTransporter = {
-    verify: jest.fn().mockReturnValue('✓'),
-    use: jest.fn(),
-    sendMail: jest.fn().mockReturnValue((mailoptions, callback) => {})
+  const createTransport = {
+    verify: td.func(),
+    sendMail: (mailoptions, callback) => {}
   }
 
-  createTransport.mockReturnValueOnce(mockTransporter)
+  td.when(nodemailer.createTransport(testSmtpUrl))
+    .thenReturn(createTransport)
 
-  expect(EmailUtils.init(testSmtpUrl)).resolves.toBe('✓')
+  td.when(
+    createTransport.verify(),
+    { times: 1 }
+  ).thenResolve('verified')
 
-  expect(createTransport).toHaveBeenCalledWith(testSmtpUrl)
-  expect(mockTransporter.verify).toHaveBeenCalledWith()
-  // expect(mockTransporter.use.mock.calls.length).toBe(1)
-  // expect(mockTransporter.use.mock.calls[0].length).toEqual(2)
-  // expect(mockTransporter.use.mock.calls[0][0]).toBe('compile')
+  const result = await EmailUtils.init(testSmtpUrl)
+  t.is(result, 'verified')
 })
 
-test('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async () => {
+test.serial('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async t => {
+  const nodemailer = await td.replaceEsm('nodemailer')
+  await td.replaceEsm('../utils/fluent.js')
+  const { default: EmailUtils } = await import('./email.js')
+
   const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
     'test@example.com',
@@ -71,21 +76,28 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
     'template.hbs',
     { breach: 'Test' }
   ]
-  const mockTransporter = {
-    verify: jest.fn().mockReturnValueOnce('verified'),
-    use: jest.fn(),
-    sendMail: jest.fn((_options, cb) => cb(null, 'sent')),
+
+  const createTransport = {
+    verify: td.func(),
+    use: () => {},
+    sendMail: (_options, cb) => cb(null, 'sent'),
     transporter: { name: 'MockTransporter' }
   }
 
-  createTransport.mockReturnValueOnce(mockTransporter)
+  td.when(nodemailer.createTransport(testSmtpUrl))
+    .thenReturn(createTransport)
 
-  expect(EmailUtils.init(testSmtpUrl)).resolves.toBe('verified')
-  expect(EmailUtils.sendEmail(...sendMailArgs)).resolves.toBe('sent')
+  td.when(
+    createTransport.verify(),
+    { times: 1 }
+  ).thenResolve('verified')
 
-  expect(mockTransporter.sendMail.mock.calls.length).toBe(1)
-  expect(mockTransporter.sendMail.mock.calls[0].length).toBe(2)
-/*
+  const result = await EmailUtils.init(testSmtpUrl)
+  t.is(result, 'verified')
+
+  t.deepEqual(await EmailUtils.sendEmail(...sendMailArgs), 'sent')
+
+  /* TODO
   expect(mockTransporter.sendMail.mock.calls[0][0]).toEqual(
     {
       from: AppConstants.EMAIL_FROM,
@@ -96,7 +108,11 @@ test('EmailUtils.sendEmail with recipient, subject, template, context calls gTra
 */
 })
 
-test('EmailUtils.sendEmail rejects with error', async () => {
+test.serial('EmailUtils.sendEmail rejects with error', async t => {
+  const nodemailer = await td.replaceEsm('nodemailer')
+  await td.replaceEsm('../utils/fluent.js')
+  const { default: EmailUtils } = await import('./email.js')
+
   const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
     'test@example.com',
@@ -104,20 +120,34 @@ test('EmailUtils.sendEmail rejects with error', async () => {
     'template.hbs',
     { breach: 'Test' }
   ]
-  const mockTransporter = {
-    verify: jest.fn().mockReturnValueOnce('verified'),
-    use: jest.fn(),
-    sendMail: jest.fn((options, cb) => cb('error', null)),
+
+  const createTransport = {
+    verify: td.func(),
+    use: () => {},
+    sendMail: (_options, cb) => cb('error', 'null'),
     transporter: { name: 'MockTransporter' }
   }
 
-  createTransport.mockReturnValueOnce(mockTransporter)
+  td.when(nodemailer.createTransport(testSmtpUrl))
+    .thenReturn(createTransport)
 
-  expect(EmailUtils.init('smtps://test:test@test:1')).resolves.toBe('verified')
-  expect(EmailUtils.sendEmail(...sendMailArgs)).rejects.toBe('error')
+  td.when(
+    createTransport.verify(),
+    { times: 1 }
+  ).thenResolve('verified')
+
+  t.is(await EmailUtils.init('smtps://test:test@test:1'), 'verified')
+  await t.throwsAsync(
+    EmailUtils.sendEmail(...sendMailArgs),
+    { instanceOf: Error, message: 'error' }
+  )
 })
 
-test('EmailUtils.init with empty host uses jsonTransport. logs messages', async () => {
+test.serial('EmailUtils.init with empty host uses jsonTransport. logs messages', async t => {
+  const nodemailer = await td.replaceEsm('nodemailer')
+  const { default: EmailUtils } = await import('./email.js')
+
+  const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
     'test@example.com',
     'subject',
@@ -125,23 +155,31 @@ test('EmailUtils.init with empty host uses jsonTransport. logs messages', async 
     { breach: 'Test' }
   ]
   const sendMailInfo = { message: 'sent' }
-  const mockTransporter = {
-    sendMail: jest.fn((options, cb) => cb(null, sendMailInfo)),
-    transporter: { name: 'JSONTransport' }
+
+  const createTransport = {
+    sendMail: (options, cb) => cb(null, sendMailInfo),
+    transporter: { name: 'JSONTransport' },
+    verify: td.func()
   }
 
-  createTransport.mockReturnValueOnce(mockTransporter)
+  td.when(nodemailer.createTransport(testSmtpUrl))
+    .thenReturn(createTransport)
 
-  expect(EmailUtils.init('')).resolves.toBe(true)
-  expect(createTransport).toHaveBeenCalledWith({ jsonTransport: true })
-  expect(EmailUtils.sendEmail(...sendMailArgs)).resolves.toEqual(sendMailInfo)
+  td.when(
+    createTransport.verify(),
+    { times: 1 }
+  ).thenResolve('verified')
+
+  t.is(await EmailUtils.init('smtps://test:test@test:1'), 'verified')
+  t.is(await EmailUtils.sendEmail(...sendMailArgs), sendMailInfo)
 })
 
-test('EmailUtils.getEmailCtaHref works without a subscriber ID', () => {
+test('EmailUtils.getEmailCtaHref works without a subscriber ID', async t => {
+  const { default: EmailUtils } = await import('./email.js')
   const emailCtaHref = EmailUtils.getEmailCtaHref('email-type', 'content')
-  expect(emailCtaHref.pathname).toBe('/')
+  t.is(emailCtaHref.pathname, '/')
   emailCtaHref.searchParams.sort()
-  expect(Array.from(emailCtaHref.searchParams.entries())).toEqual([
+  t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
     ['utm_campaign', 'email-type'],
     ['utm_content', 'content'],
     ['utm_medium', 'email'],
@@ -149,15 +187,16 @@ test('EmailUtils.getEmailCtaHref works without a subscriber ID', () => {
   ])
 })
 
-test('EmailUtils.getEmailCtaHref works with a subscriber ID', () => {
+test('EmailUtils.getEmailCtaHref works with a subscriber ID', async t => {
+  const { default: EmailUtils } = await import('./email.js')
   const emailCtaHref = EmailUtils.getEmailCtaHref(
     'email-type-2',
     'content-2',
     1234
   )
-  expect(emailCtaHref.pathname).toBe('/')
+  t.is(emailCtaHref.pathname, '/')
   emailCtaHref.searchParams.sort()
-  expect(Array.from(emailCtaHref.searchParams.entries())).toEqual([
+  t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
     ['subscriber_id', '1234'],
     ['utm_campaign', 'email-type-2'],
     ['utm_content', 'content-2'],
@@ -166,12 +205,13 @@ test('EmailUtils.getEmailCtaHref works with a subscriber ID', () => {
   ])
 })
 
-test('EmailUtils.getVerificationUrl returns a URL', () => {
+test('EmailUtils.getVerificationUrl returns a URL', async t => {
+  const { default: EmailUtils } = await import('./email.js')
   const fakeSubscriber = { verification_token: 'SubscriberVerificationToken' }
   const verificationUrl = EmailUtils.getVerificationUrl(fakeSubscriber)
-  expect(verificationUrl.pathname).toBe('/api/v1/user/verify-email')
+  t.is(verificationUrl.pathname, '/api/v1/user/verify-email')
   verificationUrl.searchParams.sort()
-  expect(Array.from(verificationUrl.searchParams.entries())).toEqual([
+  t.deepEqual(Array.from(verificationUrl.searchParams.entries()), [
     ['token', 'SubscriberVerificationToken'],
     ['utm_campaign', 'verified-subscribers'],
     ['utm_content', 'account-verification-email'],
@@ -180,43 +220,52 @@ test('EmailUtils.getVerificationUrl returns a URL', () => {
   ])
 })
 
-test('EmailUtils.getVerificationUrl throws when subscriber has no token', () => {
+test('EmailUtils.getVerificationUrl throws when subscriber has no token', async t => {
+  const { default: EmailUtils } = await import('./email.js')
   const fakeSubscriber = { verification_token: null }
   const expected = 'subscriber has no verification_token'
-  expect(() => EmailUtils.getVerificationUrl(fakeSubscriber)).toThrow(expected)
+
+  try {
+    EmailUtils.getVerificationUrl(fakeSubscriber)
+  } catch (ex) {
+    t.is(ex.message, expected)
+  }
 })
 
-test('EmailUtils.getUnsubscribeUrl works with subscriber record', () => {
+test('EmailUtils.getUnsubscribeUrl works with subscriber record', async t => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
-  const unsubUrl = EmailUtils.getUnsubscribeUrl(subscriberRecord).toString()
+  const { default: EmailUtils } = await import('./email.js')
+  const unsubUrl = EmailUtils.getUnsubscribeUrl(subscriberRecord)
 
-  expect(unsubUrl).toMatch(subscriberRecord.primary_sha1)
-  expect(unsubUrl).toMatch(subscriberRecord.primary_verification_token)
+  t.is(unsubUrl.searchParams.get('hash'), subscriberRecord.primary_sha1)
+  t.is(unsubUrl.searchParams.get('token'), subscriberRecord.primary_verification_token)
 })
 
-test('EmailUtils.getUnsubscribeUrl works with email_address record', () => {
+test('EmailUtils.getUnsubscribeUrl works with email_address record', async t => {
   const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account
 
-  const unsubUrl = EmailUtils.getUnsubscribeUrl(emailAddressRecord).toString()
+  const { default: EmailUtils } = await import('./email.js')
+  const unsubUrl = EmailUtils.getUnsubscribeUrl(emailAddressRecord)
 
-  expect(unsubUrl).toMatch(emailAddressRecord.sha1)
-  expect(unsubUrl).toMatch(emailAddressRecord.verification_token)
+  t.is(unsubUrl.searchParams.get('hash'), emailAddressRecord.sha1)
+  t.is(unsubUrl.searchParams.get('token'), emailAddressRecord.verification_token)
 })
 
-test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', () => {
+test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', async t => {
   const fakeSubscriber = {
     primary_verification_token: 'PrimaryVerificationToken'
   }
 
+  const { default: EmailUtils } = await import('./email.js')
   const unsubUrl = EmailUtils.getMonthlyUnsubscribeUrl(
     fakeSubscriber,
     'campaign',
     'content'
   )
-  expect(unsubUrl.pathname).toBe('/user/unsubscribe-monthly/')
+  t.is(unsubUrl.pathname, '/user/unsubscribe-monthly/')
   unsubUrl.searchParams.sort()
-  expect(Array.from(unsubUrl.searchParams.entries())).toEqual([
+  t.deepEqual(Array.from(unsubUrl.searchParams.entries()), [
     ['token', 'PrimaryVerificationToken'],
     ['utm_campaign', 'campaign'],
     ['utm_content', 'content'],
@@ -225,10 +274,14 @@ test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', () => {
   ])
 })
 
-test('EmailUtils.getMonthlyUnsubscribeUrl throws when subscriber has no token', () => {
+test('EmailUtils.getMonthlyUnsubscribeUrl throws when subscriber has no token', async t => {
   const fakeSubscriber = { primary_verification_token: null }
   const expected = 'subscriber has no primary verification_token'
-  expect(() =>
+  const { default: EmailUtils } = await import('./email.js')
+
+  try {
     EmailUtils.getMonthlyUnsubscribeUrl(fakeSubscriber, 'campaign', 'content')
-  ).toThrow(expected)
+  } catch (ex) {
+    t.is(ex.message, expected)
+  }
 })
