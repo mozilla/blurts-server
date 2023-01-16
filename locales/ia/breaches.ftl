@@ -25,8 +25,6 @@ filter-label-resolved = Violationes resolvite
 column-company = COMPANIA
 column-breached-data = DATOS VIOLATE
 column-detected = DISCOPERITE
-# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-breach-description = Le { $breachDate }, { $companyName } era violate. Post le discoperta e verification de iste violation, nos lo ha addite a nostre base de datos le { $addedDate }.
 
 ## Prompts the user for changes when there is a breach detected of password
 
