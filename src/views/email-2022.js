@@ -35,8 +35,8 @@ const emailFooter = (data) => `
 <tr class="footer">
   <td style="border-top: 1px solid #ddd; padding: 24px 0; background: #F9F9FA;">
     <p>${getEmailFooterCopy(data)}</p>
-    <p>${getMessage('email-2022-hibp-attribution',
-      { 'hibp-link-attr': 'href="https://haveibeenpwned.com/" rel="noopener"'
+    <p>${getMessage('email-2022-hibp-attribution', {
+      'hibp-link-attr': 'href="https://haveibeenpwned.com/" rel="noopener"'
     })}
     </p>
     <img src="${
