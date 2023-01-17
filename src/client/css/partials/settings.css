@@ -125,8 +125,8 @@
 }
 
 .verification-required {
-  background-image: url('/images/required.png');
-  background-position: 0 50%;
+  background-image: url('/images/icon-error.svg');
+  background-position: -0.2em 50%;
   background-repeat: no-repeat;
   color: var(--red-60);
   padding-left: 1.75em;
