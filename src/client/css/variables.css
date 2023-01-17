@@ -12,12 +12,16 @@
   --h2-font: 700 1.75rem/1 metropolis, sans-serif;
   --h3-font: 700 1.125rem/1 metropolis, sans-serif;
   --h4-font: 700 1rem/1 metropolis, sans-serif;
+  --main-dark: #2e2c34;
+  --gray-5: #f9f9fa;
   --gray-10: #e7e7e7;
   --gray-20: #cececf;
   --gray-40: #6d6d6e;
   --blue-50: #0060df;
+  --purple-5: #e7dfff;
   --purple-70: #592acb;
   --purple-90: #321c64;
+  --red-60: #e22850;
 }
 
 @media (max-width: 480px) {
