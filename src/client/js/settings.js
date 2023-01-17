@@ -96,7 +96,7 @@ if (settingsAddVerification) {
   })
 }
 
-const settingsRemoveEmail = document.getElementsByClassName('remove-email')
+const settingsRemoveEmail = document.getElementsByClassName('js-remove-email')
 if (settingsRemoveEmail.length) {
   console.log('settings remove email')
   for (const el of settingsRemoveEmail) {
