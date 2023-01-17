@@ -1,34 +1,34 @@
+import test from 'ava'
+
 import { initFluentBundles, updateLocale, getMessage, getRawMessage, fluentError } from './fluent.js'
 
-describe('utils:fluent', () => {
-  beforeAll(async () => {
-    await initFluentBundles()
-    updateLocale('en')
-  })
+test.before(async () => {
+  await initFluentBundles()
+  updateLocale('en')
+})
 
-  test('getMessage', () => {
-    const resp = getMessage('home-not-found')
-    expect(resp).toBe('Page not found.')
-  })
+test('getMessage', t => {
+  const resp = getMessage('home-not-found')
+  t.is(resp, 'Page not found.')
+})
 
-  test('getMessage: id cannot be found', () => {
-    const resp = getMessage('invalid id')
-    expect(resp).toBe('invalid id')
-  })
+test('getMessage: id cannot be found', t => {
+  const resp = getMessage('invalid id')
+  t.is(resp, 'invalid id')
+})
 
-  test('getRawMessage', () => {
-    const resp = getRawMessage('home-not-found')
-    expect(resp).toBe('Page not found.')
-  })
+test('getRawMessage', t => {
+  const resp = getRawMessage('home-not-found')
+  t.is(resp, 'Page not found.')
+})
 
-  test('getRawMessage: id cannot be found', () => {
-    const resp = getRawMessage('invalid id')
-    expect(resp).toBe('invalid id')
-  })
+test('getRawMessage: id cannot be found', t => {
+  const resp = getRawMessage('invalid id')
+  t.is(resp, 'invalid id')
+})
 
-  test('fluentError', () => {
-    const resp = fluentError('home-not-found')
-    expect(resp.message).toBe('Page not found.')
-    expect(resp.name).toBe('Error')
-  })
+test('fluentError', t => {
+  const resp = fluentError('home-not-found')
+  t.is(resp.message, 'Page not found.')
+  t.is(resp.name, 'Error')
 })
