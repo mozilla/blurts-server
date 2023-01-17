@@ -34,7 +34,7 @@ do {
   console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
 
   for (const subscriber of subscribersArr) {
-    const { breaches_resolved: v1, breach_resolution: v2 } = subscriber
+    let { breaches_resolved: v1, breach_resolution: v2 } = subscriber
     console.debug({ v1 })
     console.debug({ v2 })
 
@@ -61,6 +61,7 @@ do {
 
         // if email does not exist in v2, we need to add it to the object
         // format: {email: { recencyIndex: { isResolved: true, resolutionsChecked: [DataTypes]}}}
+        if (!v2) v2 = {}
         if (!v2[email]) {
           v2[email] = {
             [recencyIndex]: {
