@@ -1,30 +1,39 @@
+# Settings page
+
+settings-page-title = { -product-short-name } Settings
+
+## Breach alert preferences
+
+settings-alert-preferences-title = Breach alert preferences
+settings-alert-preferences-option-one = Send breach alerts to the affected email address
+settings-alert-preferences-option-two = Send all breach alerts to the primary email address
+
+## Monitored email addresses
+
+settings-email-label-primary = { $email } (primary)
+settings-email-list-title = Monitored email addresses
+settings-email-limit-info = Your account includes monitoring of up to { $limit } emails.
+settings-email-verification-callout = Email verification required
+settings-resend-email-verification = Resend verification email
+settings-add-email-button = Add email address
+
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
-appears-in-x-breaches =
+settings-email-number-of-breaches-info =
   { $breachCount ->
         [one] Appears in { $breachCount } known breach.
        *[other] Appears in { $breachCount } known breaches.
   }
 
-resend-verification = Resend verification email
+## Deactivate account
 
-# Title that appears in the mobile menu bar and opens the mobile menu when clicked.
-menu = Menu
-to-affected-email = Send breach alerts to the affected email address
+settings-deactivate-account-title = Deactivate account
+settings-deactivate-account-info = You can deactivate Firefox Monitor by deleting your Firefox account.
+settings-fxa-link-label = Go to Firefox Settings
 
-comm-opt-0 = Email me if one of my email addresses below appears in a data breach.
-comm-opt-1 = Send all breach alerts to { $primaryEmail }
+## Add email dialog
 
-send-verification = Send Verification Link
-add-new-email = Add a new email address
-email-verification-required = Email verification required
-settings-title = { -product-short-name } Settings
-settings-preferences-title = Breach alert preferences
-monitored-email-addresses = Monitored email addresses
-email-address-limit = Your account includes monitoring of up to { $limit } emails.
-add-another-email = Add a new email address to see if it’s been involved in a breach.
-email-address = Email Address
-email-address-primary = { $email } (primary)
-deactivate-account-title = Deactivate account
-deactivate-account = You can deactivate Firefox Monitor by deleting your Firefox account.
-firefox-settings = Go to Firefox Settings
+settings-email-dialog-title = Add another email address
+settings-add-email-text = Add a new email address to see if it’s been involved in a breach.
+settings-email-input-label = Email Address
+settings-send-email-verification = Send verification link

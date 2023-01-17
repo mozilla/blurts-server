@@ -3,11 +3,11 @@ import { getMessage } from '../../utils/fluent.js'
 
 const emailNeedsVerificationSub = email => `
   <span class='verification-required'>
-    ${getMessage('email-verification-required')}
+    ${getMessage('settings-email-verification-callout')}
   </span>
 
   <a class='settings-resend-email' data-email-id='${email.id}' href='#'>
-    ${getMessage('resend-verification')}
+    ${getMessage('settings-resend-email-verification')}
   </a>
 `
 
@@ -25,11 +25,11 @@ const createEmailItem = (email, breachCounts) => `
   <li class='settings-email-item'>
     <strong>
       ${email.primary
-          ? `${getMessage('email-address-primary', { email: email.email })}`
+          ? `${getMessage('settings-email-label-primary', { email: email.email })}`
           : email.email}
     </strong>
     ${email.verified
-        ? getMessage('appears-in-x-breaches', {
+        ? getMessage('settings-email-number-of-breaches-info', {
             breachCount: breachCounts.get(email.email)
           })
         : emailNeedsVerificationSub(email)}
@@ -76,7 +76,7 @@ const alertOptions = (csrfToken, emails) => `
       isChecked: true
     })}
     <span class='settings-radio-label'>
-      ${getMessage('to-affected-email')}
+      ${getMessage('settings-alert-preferences-option-one')}
     </span>
   </label>
 
@@ -87,9 +87,7 @@ const alertOptions = (csrfToken, emails) => `
       isChecked: false
     })}
     <span class='settings-radio-label'>
-      ${getMessage('comm-opt-1', {
-        primaryEmail: emails.find(a => a.primary === true)?.email
-      })}
+      ${getMessage('settings-alert-preferences-option-two')}
     </span>
   </label>
   </div>
@@ -102,19 +100,19 @@ const addEmailModal = limit => `
     </button>
     <img src='/images/email.png'>
 
-    <h3 class='settings-section-title'>${getMessage('add-another-email')}</h3>
+    <h3 class='settings-section-title'>${getMessage('settings-email-dialog-title')}</h3>
     <div id='add-email-modal-content'>
-      ${getMessage('email-address-limit', { limit })}
-      ${getMessage('add-another-email')}
+      ${getMessage('settings-email-limit-info', { limit })}
+      ${getMessage('settings-add-email-text')}
     </div>
 
     <div id='add-email-modal-controls'>
       <label>
-        ${getMessage('email-address')}
+        ${getMessage('settings-email-input-label')}
         <input id='email' type='text'>
       </label>
       <button id='send-verification' class='primary'>
-        ${getMessage('send-verification')}
+        ${getMessage('settings-send-email-verification')}
       </button>
     </div>
   </dialog>
@@ -125,13 +123,13 @@ export const settings = data => {
 
   return `
     <div id='settings' class='settings' data-csrf-token='${csrfToken}'>
-      <h2 class='settings-title'>${getMessage('settings-title')}</h2>
+      <h2 class='settings-title'>${getMessage('settings-page-title')}</h2>
 
       <div class='settings-content'>
         <!-- Breach alert preferences -->
         <section>
           <h3 class='settings-section-title'>
-            ${getMessage('settings-preferences-title')}
+            ${getMessage('settings-alert-preferences-title')}
           </h3>
           ${alertOptions(csrfToken, emails)}
         </section>
@@ -141,16 +139,16 @@ export const settings = data => {
         <!-- Monitored email addresses -->
         <section>
           <h3 class='settings-section-title'>
-            ${getMessage('monitored-email-addresses')}
+            ${getMessage('settings-email-list-title')}
           </h3>
-          <p>${getMessage('email-address-limit', { limit })}</p>
+          <p>${getMessage('settings-email-limit-info', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
           <button
             id='settings-add-email'
             class='settings-add-email-button primary'
           >
-            ${getMessage('add-new-email')}
+            ${getMessage('settings-add-email-button')}
           </button>
 
           ${addEmailModal(limit)}
@@ -161,15 +159,15 @@ export const settings = data => {
         <!-- Deactivate account -->
         <section>
           <h3 class='settings-section-title'>
-            ${getMessage('deactivate-account-title')}
+            ${getMessage('settings-deactivate-account-title')}
           </h3>
-          <p>${getMessage('deactivate-account')}</p>
+          <p>${getMessage('settings-deactivate-account-info')}</p>
           <a
             class='settings-link-fxa'
             href='${AppConstants.FXA_SETTINGS_URL}'
             target='_blank'
           >
-            ${getMessage('firefox-settings')}
+            ${getMessage('settings-fxa-link-label')}
           </a>
         </section>
       </div>
