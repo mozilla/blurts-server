@@ -185,6 +185,12 @@ button.primary,
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
   padding: var(--padding-md);
+  transition: background 150ms ease;
+}
+
+button.primary:hover,
+.button.primary:hover {
+  background: var(--blue-60);
 }
 
 button.secondary,
