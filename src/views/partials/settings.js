@@ -1,8 +1,5 @@
+import AppConstants from '../../app-constants.js'
 import { getMessage } from '../../utils/fluent.js'
-
-const breachAlertTitle = 'Breach alert preferences'
-const primaryEmailLabel = email => `${email} (primary)`
-const fxaSettingsLink = 'https://accounts.firefox.com/settings'
 
 const emailNeedsVerificationSub = email => `
   <span class='verification-required'>
@@ -27,7 +24,9 @@ const deleteButton = email => `
 const createEmailItem = (email, breachCounts) => `
   <li class='settings-email-item'>
     <strong>
-      ${email.primary ? `${primaryEmailLabel(email.email)}` : email.email}
+      ${email.primary
+          ? `${getMessage('email-address-primary', { email: email.email })}`
+          : email.email}
     </strong>
     ${email.verified
         ? getMessage('appears-in-x-breaches', {
@@ -110,7 +109,10 @@ const addEmailModal = limit => `
     </div>
 
     <div id='add-email-modal-controls'>
-      <label>${getMessage('email-address')}<input id='email' type='text'></label>
+      <label>
+        ${getMessage('email-address')}
+        <input id='email' type='text'>
+      </label>
       <button id='send-verification' class='primary'>
         ${getMessage('send-verification')}
       </button>
@@ -128,7 +130,9 @@ export const settings = data => {
       <div class='settings-content'>
         <!-- Breach alert preferences -->
         <section>
-          <h3 class='settings-section-title'>${breachAlertTitle}</h3>
+          <h3 class='settings-section-title'>
+            ${getMessage('settings-preferences-title')}
+          </h3>
           ${alertOptions(csrfToken, emails)}
         </section>
 
@@ -142,7 +146,10 @@ export const settings = data => {
           <p>${getMessage('email-address-limit', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
-          <button id='settings-add-email' class='settings-add-email-button primary'>
+          <button
+            id='settings-add-email'
+            class='settings-add-email-button primary'
+          >
             ${getMessage('add-new-email')}
           </button>
 
@@ -157,7 +164,11 @@ export const settings = data => {
             ${getMessage('deactivate-account-title')}
           </h3>
           <p>${getMessage('deactivate-account')}</p>
-          <a class='settings-link-fxa' href='${fxaSettingsLink}' target='_blank'>
+          <a
+            class='settings-link-fxa'
+            href='${AppConstants.FXA_SETTINGS_URL}'
+            target='_blank'
+          >
             ${getMessage('firefox-settings')}
           </a>
         </section>
