@@ -1,0 +1,20 @@
+name: Unit Tests
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.12.x'
+      - run: npm ci --workspace=src
+      - run: npm ci
+      - run: cp .env-dist .env
+      - run: npm run build --if-present --workspace=src
+      - run: npm test --workspace=src

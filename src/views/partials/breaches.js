@@ -1,17 +1,6 @@
 import { getMessage, getLocale } from '../../utils/fluent.js'
 import AppConstants from '../../app-constants.js'
 
-const rowHtml = data => `
-<details class='breach-row' data-status=${data.status} data-email=${data.affectedEmail} hidden=${data.isHidden}>
-  <summary>
-    <span>${data.companyName}</span><span>${data.dataClasses}</span><span>${data.addedDate}</span>
-  </summary>
-  <div>
-    ${data.description}
-  </div>
-</details>
-`
-
 function createEmailOptions (data) {
   const emails = data.verifiedEmails.map(obj => obj.email)
   const optionElements = emails.map(email => `<option>${email}</option>`)
@@ -19,33 +8,49 @@ function createEmailOptions (data) {
   return optionElements.join('')
 }
 
+function createEmailCTA (count) {
+  const total = parseInt(AppConstants.MAX_NUM_ADDRESSES)
+
+  if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
+
+  // TODO: link "add email" flow
+  return `<a href='http://mozilla.org'>${getMessage('add-email-link')}</a>`
+}
+
 function createBreachRows (data) {
   const locale = getLocale()
-  const formattedBreaches = data.verifiedEmails.flatMap(account => {
+  const shortDate = new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })
+  const shortList = new Intl.ListFormat(locale, { style: 'narrow' })
+  const longDate = new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' })
+  const longList = new Intl.ListFormat(locale, { style: 'long' })
+  const breachRowsHTML = data.verifiedEmails.flatMap(account => {
     return account.breaches.map(breach => {
+      const isHidden = !account.primary || breach.IsResolved // initial breach hidden state
+      const status = breach.IsResolved ? 'resolved' : 'unresolved'
       const breachDate = Date.parse(breach.BreachDate)
       const addedDate = Date.parse(breach.AddedDate)
       const dataClassesTranslated = breach.DataClasses.map(item => getMessage(item))
-      const formattedBreach = {
-        isHidden: !account.primary || breach.IsResolved, // initial breach hidden state
-        status: breach.IsResolved ? 'resolved' : 'unresolved',
-        affectedEmail: account.email,
+      const description = getMessage('breach-description', {
         companyName: breach.Title,
-        addedDate: new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' }).format(addedDate),
-        dataClasses: new Intl.ListFormat(locale, { style: 'narrow' }).format(dataClassesTranslated),
-        description: getMessage('breach-description', {
-          companyName: breach.Title,
-          breachDate: new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' }).format(breachDate),
-          addedDate: new Intl.DateTimeFormat(locale, { dateStyle: 'long', timeZone: 'UTC' }).format(addedDate),
-          dataClasses: new Intl.ListFormat(locale, { style: 'long' }).format(dataClassesTranslated)
-        })
-      }
+        breachDate: longDate.format(breachDate),
+        addedDate: longDate.format(addedDate),
+        dataClasses: longList.format(dataClassesTranslated)
+      })
 
-      return rowHtml(formattedBreach)
+      return `
+      <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
+        <summary>
+          <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
+        </summary>
+        <div>
+          ${description}
+        </div>
+      </details>
+      `
     })
   })
 
-  return formattedBreaches.join('')
+  return breachRowsHTML.join('')
 }
 
 export const breaches = data => `
@@ -64,7 +69,7 @@ export const breaches = data => `
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>
         <strong>${getMessage('emails-monitored', { count: data.emailCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
-        <a href='http://mozilla.org'>Add email address</a>
+        ${createEmailCTA(data.emailCount)}
       </figcaption>
     </figure>
   </header>
@@ -82,6 +87,7 @@ export const breaches = data => `
   ${createBreachRows(data.breachesData)}
 </section>
 <section style='display:none'>
+  <!--This is a temp section/button to test breach update post-->
   <button id="update-breaches">Update Breaches</button>
   <pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
 </section>
