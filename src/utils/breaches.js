@@ -57,6 +57,7 @@ async function bundleVerifiedEmails (options) {
   // find all breaches relevant to the current email
   const foundBreaches = await getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false)
 
+  // TODO: remove after migration MNTOR-978
   // adding index to breaches based on recency
   const foundBreachesWithRecency = addRecencyIndex(foundBreaches)
 
@@ -72,10 +73,12 @@ async function bundleVerifiedEmails (options) {
     // we will use breach id as the key. Otherwise, we fallback to using recency index for backwards compatibility
     if (useBreachId) {
       breach.IsResolved = breachResolutionV2[breach.Id]?.isResolved
+      breach.ResolutionsChecked = breachResolutionV2[breach.Id]?.resolutionsChecked || []
     } else {
+      // TODO: remove after MNTOR-978
       breach.IsResolved = breachResolutionV2[breach.recencyIndex]?.isResolved
+      breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || []
     }
-    breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || []
 
     // filter breach types based on the 13 types we care about
     breach.DataClasses = filterBreachDataTypes(breach.DataClasses)
