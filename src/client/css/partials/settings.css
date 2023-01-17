@@ -1,6 +1,7 @@
 .settings {
   display: flex;
   flex-direction: row;
+  padding: var(--padding-lg);
 }
 
 .settings-title,
@@ -9,8 +10,11 @@
 }
 
 .settings-title {
-  padding: var(--padding-sm) var(--padding-md);
   flex: 1;
+}
+
+.settings-section-title {
+  margin: var(--padding-sm) 0 var(--padding-md) 0;
 }
 
 .settings-content {
@@ -20,7 +24,7 @@
 }
 
 .settings-content > section {
-  padding: var(--padding-md) var(--padding-lg) var(--padding-lg) 0;
+  padding: var(--padding-md) 0 var(--padding-lg) 0;
 }
 
 .settings-radio-input {
@@ -33,6 +37,7 @@
   border-radius: 50%;
   border: 2px solid var(--purple-90);
   height: 1.2rem;
+  min-width: 1.2rem;
   outline: none;
   width: 1.2rem;
   -webkit-appearance: none;
@@ -58,12 +63,16 @@
 }
 
 .settings-alert-options,
+.settings-email-list,
 .settings-email-item {
   display: flex;
   flex-direction: column;
   gap: var(--padding-md);
-  padding-right: calc(var(--padding-lg) * 1.5);
   position: relative;
+}
+
+.settings-alert-options {
+  margin-top: var(--padding-lg);
 }
 
 .settings-email-item {
@@ -71,6 +80,7 @@
   border-radius: var(--border-radius);
   gap: var(--padding-sm);
   padding: calc(var(--padding-lg) * 0.75);
+  padding-right: var(--padding-lg);
 }
 
 .settings-email-item strong {
@@ -119,7 +129,7 @@
   background-position: 0 50%;
   background-repeat: no-repeat;
   color: var(--red-60);
-  padding-left: calc(var(--padding-md) * 1.2);
+  padding-left: 1.75em;
 }
 
 .settings-resend-email {
@@ -128,7 +138,7 @@
 
 button.primary.settings-add-email-button {
   padding-left: var(--padding-lg);
-  margin-top: calc(var(--padding-lg) + var(--padding-md));
+  margin-top: var(--padding-lg);
   position: relative;
 }
 
@@ -141,4 +151,8 @@ button.primary.settings-add-email-button {
   line-height: 0.35em;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.mobile .settings {
+  flex-direction: column;
 }
