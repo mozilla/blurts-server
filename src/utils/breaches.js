@@ -60,19 +60,21 @@ async function bundleVerifiedEmails (options) {
   // adding index to breaches based on recency
   const foundBreachesWithRecency = addRecencyIndex(foundBreaches)
 
-  // get v1 "breaches_resolved" object
-  const resolvedBreachesV1 = user.breaches_resolved
-    ? user.breaches_resolved[email] ? user.breaches_resolved[email] : []
-    : []
-
   // get v2 "breach_resolution" object
   const breachResolutionV2 = user.breach_resolution
     ? user.breach_resolution[email] ? user.breach_resolution[email] : {}
     : []
 
+  const { useBreachId } = user.breach_resolution
+
   for (const breach of foundBreachesWithRecency) {
-    // if either v1 or v2 is marked as resolved, breach is resolved
-    breach.IsResolved = !!resolvedBreachesV1.includes(breach.recencyIndex) || !!breachResolutionV2[breach.recencyIndex]?.isResolved
+    // if breach resolution json has `useBreachId` boolean, that means the migration has taken place
+    // we will use breach id as the key. Otherwise, we fallback to using recency index for backwards compatibility
+    if (useBreachId) {
+      breach.IsResolved = breachResolutionV2[breach.Id]?.isResolved
+    } else {
+      breach.IsResolved = breachResolutionV2[breach.recencyIndex]?.isResolved
+    }
     breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || []
 
     // filter breach types based on the 13 types we care about
