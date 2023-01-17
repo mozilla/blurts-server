@@ -4,21 +4,21 @@ import { getMessage } from '../utils/fluent.js'
 const emailHeader = (data) => `
 <tr class="logo">
   <td height="100"
-    style="height: 100px; background: #F9F9FA url('${
+    style="height: 100px; background: #f9f9fa url('${
       AppConstants.SERVER_URL
     }/img/email_images/monitor-logo-bg-f9f9fa.png') no-repeat 50%; background-size: 240px 50px;">
   </td>
 </tr>
 <tr class="header">
   <td>
-    <table style="width: 100%; height: 331px; background-color: #321C64; color: white; text-align: left;"
+    <table style="width: 100%; height: 331px; background-color: #321c64; color: white; text-align: left;"
       role="presentation" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td>
           <h1>${getMessage(data.heading)}</h1>
           <p>${getMessage(data.subhead)}</p>
         </td>
-        <td class="header-image" style="width: 50%; background-color: #321C64; vertical-align: bottom;">
+        <td class="header-image" style="width: 50%; background-color: #321c64; vertical-align: bottom;">
           <img src="${
             AppConstants.SERVER_URL
           }/img/email_images/person-at-desk.png" width="476" height="331"
@@ -33,7 +33,7 @@ const emailHeader = (data) => `
 
 const emailFooter = (data) => `
 <tr class="footer">
-  <td style="border-top: 1px solid #ddd; padding: 24px 0; background: #F9F9FA;">
+  <td style="border-top: 1px solid #dddddd; padding: 24px 0; background: #f9f9fa;">
     <p>${getEmailFooterCopy(data)}</p>
     <p>${getMessage('email-2022-hibp-attribution', {
       'hibp-link-attr': 'href="https://haveibeenpwned.com/" rel="noopener"'
@@ -87,10 +87,10 @@ function getEmailFooterCopy (data) {
 
 const verifyPartial = (data) => `
 <tr>
-  <td style="color: black; background: #F9F9FA; padding: 36px 0 24px;">
+  <td style="color: black; background: #f9f9fa; padding: 36px 0 24px;">
     <p>${getMessage('email-verify-simply-click')}</p>
     <a href="${data.ctaHref}"
-      style="display: inline-block; margin: auto; color: white; background-color: #0060DF; border-radius: 4px; padding: 12px 24px; margin: 24px 0">${getMessage(
+      style="display: inline-block; margin: auto; color: white; background-color: #0060df; border-radius: 4px; padding: 12px 24px; margin: 24px 0">${getMessage(
         'verify-email-cta'
       )}</a>
     <p>
@@ -108,7 +108,7 @@ const getTemplate = (whichPartial, data) => `
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-  <title>Firefox Monitor</title>
+  <title>${getMessage('brand-fx-monitor')}</title>
 
   <style>
     * {
@@ -129,7 +129,7 @@ const getTemplate = (whichPartial, data) => `
     }
 
     a {
-      color: #592ACB;
+      color: #592acb;
       text-decoration: none;
     }
 
