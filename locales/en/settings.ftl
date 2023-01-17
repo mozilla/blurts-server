@@ -1,6 +1,6 @@
 # Settings page
 
-settings-page-title = { -product-short-name } Settings
+settings-page-title = {-product-short-name} Settings
 
 ## Breach alert preferences
 
@@ -10,9 +10,9 @@ settings-alert-preferences-option-two = Send all breach alerts to the primary em
 
 ## Monitored email addresses
 
-settings-email-label-primary = { $email } (primary)
+settings-email-label-primary = {$email} (primary)
 settings-email-list-title = Monitored email addresses
-settings-email-limit-info = Your account includes monitoring of up to { $limit } emails.
+settings-email-limit-info = Your account includes monitoring of up to {$limit} emails.
 settings-email-verification-callout = Email verification required
 settings-resend-email-verification = Resend verification email
 settings-add-email-button = Add email address
@@ -20,9 +20,10 @@ settings-add-email-button = Add email address
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 settings-email-number-of-breaches-info =
-  { $breachCount ->
-        [one] Appears in { $breachCount } known breach.
-       *[other] Appears in { $breachCount } known breaches.
+  {
+    $breachCount ->
+        [one] Appears in {$breachCount} known breach.
+       *[other] Appears in {$breachCount} known breaches.
   }
 
 ## Deactivate account

@@ -17,7 +17,7 @@ const deleteButton = email => `
     data-email-id='${email.id}'
     class='settings-email-remove-button js-remove-email'
   >
-    <img src='/images/icon-delete.png'>
+    <img src='/images/icon-delete.svg'>
   </button>
 `
 
@@ -67,7 +67,7 @@ const optionInput = (csrfToken, { commOption, name, isChecked }) => `
   >
 `
 
-const alertOptions = (csrfToken, emails) => `
+const alertOptions = csrfToken => `
   <div class='settings-alert-options'>
     <label class='settings-radio-input'>
     ${optionInput(csrfToken, {
@@ -96,9 +96,9 @@ const alertOptions = (csrfToken, emails) => `
 const addEmailModal = limit => `
   <dialog id='add-email-modal' class='add-email-modal'>
     <button id='settings-close'>
-      <img src='/images/close.png'>
+      <img src='/images/icon-close.svg'>
     </button>
-    <img src='/images/email.png'>
+    <img src='/images/settings-dialog-email.svg'>
 
     <h3 class='settings-section-title'>${getMessage('settings-email-dialog-title')}</h3>
     <div id='add-email-modal-content'>
@@ -131,7 +131,7 @@ export const settings = data => {
           <h3 class='settings-section-title'>
             ${getMessage('settings-alert-preferences-title')}
           </h3>
-          ${alertOptions(csrfToken, emails)}
+          ${alertOptions(csrfToken)}
         </section>
 
         <hr>
