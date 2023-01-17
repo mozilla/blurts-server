@@ -2,7 +2,6 @@ const settingsUpdateCommOption = document.getElementsByClassName(
   'radio-comm-option'
 )
 if (settingsUpdateCommOption.length) {
-  console.log('settings update comm option')
   for (const el of settingsUpdateCommOption) {
     el.addEventListener('click', async (event) => {
       try {
@@ -35,7 +34,6 @@ if (settingsUpdateCommOption.length) {
 
 const settingsAddEmail = document.getElementById('settings-add-email')
 if (settingsAddEmail) {
-  console.log('settings add email')
   settingsAddEmail.addEventListener('click', async (_) => {
     try {
       const addEmailDialog = document.getElementById('add-email-modal')
@@ -48,8 +46,7 @@ if (settingsAddEmail) {
 
 const settingsClose = document.getElementById('settings-close')
 if (settingsClose) {
-  console.log('settings close')
-  settingsAddEmail.addEventListener('click', async (_) => {
+  settingsClose.addEventListener('click', async (_) => {
     try {
       const addEmailDialog = document.getElementById('add-email-modal')
       addEmailDialog.close()
@@ -61,7 +58,6 @@ if (settingsClose) {
 
 const settingsAddVerification = document.getElementById('send-verification')
 if (settingsAddVerification) {
-  console.log('settings send verification email')
   settingsAddVerification.addEventListener('click', async (_) => {
     const email = document.getElementById('email').value
     const csrfToken = document
@@ -98,7 +94,6 @@ if (settingsAddVerification) {
 
 const settingsRemoveEmail = document.getElementsByClassName('js-remove-email')
 if (settingsRemoveEmail.length) {
-  console.log('settings remove email')
   for (const el of settingsRemoveEmail) {
     el.addEventListener('click', async (event) => {
       try {
@@ -132,7 +127,6 @@ const settingsResendEmail = document.getElementsByClassName(
   'settings-resend-email'
 )
 if (settingsResendEmail.length) {
-  console.log('settings resend email')
   for (const el of settingsResendEmail) {
     el.addEventListener('click', async (event) => {
       try {

@@ -93,14 +93,14 @@
 }
 
 .add-email-modal {
-  position: absolute;
+  height: 75vh;
   left: 50%;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 696px;
-  height: 598px;
-  text-align: center;
-  padding: 10px;
+  width: 75vw;
 }
 
 .add-email-modal::backdrop {
