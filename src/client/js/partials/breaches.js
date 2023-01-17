@@ -72,9 +72,8 @@ if (b) {
         },
         body: JSON.stringify({
           affectedEmail: 'affected@email.com',
-          recencyIndex: '13',
-          resolutionsChecked: ['passwords',
-            'dates-of-birth', 'email-addresses']
+          breachId: '0',
+          resolutionsChecked: ['email-addresses', 'ip-addresses', 'names', 'passwords']
         })
       })
 
