@@ -89,7 +89,7 @@ async function putBreachResolution (req, res) {
   currentBreachResolution[affectedEmail] = {
     ...(currentBreachResolution[affectedEmail] || {}),
     ...{
-      [breachId]: {
+      [breachIdNumber]: {
         resolutionsChecked,
         isResolved
       }
