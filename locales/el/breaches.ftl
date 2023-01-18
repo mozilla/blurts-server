@@ -5,6 +5,9 @@
 
 ## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Παραβιάσεις δεδομένων για το { $email-select }
+add-email-link = Προσθήκη διεύθυνσης email
 
 ## Breaches resolved filter
 
@@ -14,6 +17,8 @@ filter-label-resolved = Επιλυμένες παραβιάσεις
 ## Breaches table
 
 column-company = ΕΤΑΙΡΕΙΑ
+column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
+column-detected = ΑΝΙΧΝΕΥΣΗ
 
 ## Prompts the user for changes when there is a breach detected of password
 
