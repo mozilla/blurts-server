@@ -13,10 +13,11 @@ const state = new Proxy({
   }
 })
 
-let breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
+let breachesTable, breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
 
 function init () {
-  breachRows = breachesPartial.querySelectorAll('.breach-row')
+  breachesTable = breachesPartial.querySelector('.breaches-table')
+  breachRows = breachesTable.querySelectorAll('.breach-row')
   emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
   statusFilter = breachesPartial.querySelector('.breaches-filter')
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
@@ -25,17 +26,46 @@ function init () {
   state.selectedEmail = emailSelect.value
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
+  breachesTable.addEventListener('change', handleEvent)
   render()
 }
 
 function handleEvent (e) {
-  switch (e.currentTarget) {
-    case emailSelect:
+  switch (true) {
+    case e.target.matches('custom-select[name="email-account"]'):
       state.selectedEmail = e.target.value
       break
-    case statusFilter:
+    case e.target.matches('input[name="breaches-status"]'):
       state.selectedStatus = e.target.value
       break
+    case e.target.matches('.resolve-list-item [type="checkbox"]'):
+      console.log(e.target.name, e.target.value, e.target.checked)
+      e.target.closest('li').setAttribute('data-checked', e.target.checked)
+      console.log(e.target.closest('.resolve-list').querySelectorAll('[type="checkbox"]:checked'))
+      updateResolved(e.target)
+      break
+  }
+}
+
+async function updateResolved (checkbox) {
+  const checkedItems = Array.from(checkbox.closest('.resolve-list').querySelectorAll(':checked'))
+  try {
+    const resp = await fetch('api/v1/user/breaches', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-csrf-token': breachesTable.dataset.token
+      },
+      body: JSON.stringify({
+        affectedEmail: state.selectedEmail,
+        recencyIndex: checkbox.name,
+        resolutionsChecked: checkedItems.map(item => item.value)
+      })
+    })
+
+    console.log('completed: ', resp.json())
+  } catch (err) {
+    console.error(`Error: ${err}`)
   }
 }
 

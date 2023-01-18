@@ -5,6 +5,7 @@ import { getUserEmails } from '../db/tables/email_addresses.js'
 import { getBreachesForEmail, filterBreaches } from '../utils/hibp.js'
 import { filterBreachDataTypes, appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
 import { getSha1 } from '../utils/fxa.js'
+import { generateToken } from '../utils/csrf.js'
 
 async function breachesPage (req, res) {
   const emailCount = 1 + (req.user.email_addresses?.length || 0) // +1 because user.email_addresses does not include primary
@@ -14,7 +15,8 @@ async function breachesPage (req, res) {
   const data = {
     breachesData,
     emailCount,
-    partial: breaches
+    partial: breaches,
+    csrfToken: generateToken(res)
   }
 
   res.send(mainLayout(data))

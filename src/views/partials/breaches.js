@@ -90,7 +90,7 @@ export const breaches = data => `
   <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
   <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
 </section>
-<section class='breaches-table'>
+<section class='breaches-table' data-token=${data.csrfToken}>
   <header>
     <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
   </header>
