@@ -19,6 +19,7 @@ import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 import AppConstants from '../app-constants.js'
 import { getBreachesForEmail } from '../utils/hibp.js'
+// TODO when email verification template lands
 // import { getTemplate } from '../views/email-2022.js'
 import { generateToken } from '../utils/csrf.js'
 
@@ -133,6 +134,7 @@ async function _sendVerificationEmail (emailId) {
   await EmailUtils.sendEmail(
     recipientEmail,
     getMessage('email-subject-verify'),
+    // TODO when email verification template lands
     // getTemplate,
     '<html>placeholder</html>',
     {

@@ -44,6 +44,7 @@ const EmailUtils = {
     }
 
     // const html = getTemplate(verifyPartial, data)
+    // TODO implement when email template is ready
     const html = '<html>placeholder</html>'
     return new Promise((resolve, reject) => {
       const emailFrom = AppConstants.EMAIL_FROM

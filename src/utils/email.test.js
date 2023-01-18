@@ -3,14 +3,12 @@
 import test from 'ava'
 import * as td from 'testdouble'
 
+import AppConstants from '../app-constants.js'
+
 import {
   TEST_SUBSCRIBERS,
   TEST_EMAIL_ADDRESSES
 } from '../db/seeds/test_subscribers.js'
-
-test.before(async () => {
-  // await initFluentBundles()
-})
 
 test.afterEach(() => {
   td.reset()
@@ -96,8 +94,7 @@ test.serial('EmailUtils.sendEmail with recipient, subject, template, context cal
   t.is(result, 'verified')
 
   t.deepEqual(await EmailUtils.sendEmail(...sendMailArgs), 'sent')
-
-  /* TODO
+ /*
   expect(mockTransporter.sendMail.mock.calls[0][0]).toEqual(
     {
       from: AppConstants.EMAIL_FROM,

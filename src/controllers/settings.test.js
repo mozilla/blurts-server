@@ -1,13 +1,14 @@
 'use strict'
 
 import test from 'ava'
-import quibble from 'quibble'
 
 import { createResponse, createRequest } from 'node-mocks-http'
 
 import EmailUtils from '../utils/email.js'
 
 import { initFluentBundles } from '../utils/fluent.js'
+
+import { before, beforeEach, after } from '../tests/resetDB.js'
 
 import {
   getSubscriberByEmail,
@@ -36,6 +37,15 @@ const mockRequest = { fluentFormat: () => {} }
 
 test.before(async () => {
   await initFluentBundles()
+  before()
+})
+
+test.beforeEach(async () => {
+  beforeEach()
+})
+
+test.after(async () => {
+  after()
 })
 
 test('user add POST with email adds unverified subscriber and sends verification email', async t => {
@@ -154,7 +164,7 @@ test('user resendEmail with valid session and email id resets email_address reco
   const resetTestEmailAddress = await getEmailById(testEmailAddressId)
   t.not(startingTestEmailAddress.verification_token, resetTestEmailAddress.verification_token)
 })
-/*
+
 test('user updateCommunicationOptions request with valid session updates DB', async () => {
   const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email
   const testSubscriber = await getSubscriberByEmail(testSubscriberEmail)
@@ -186,7 +196,7 @@ test('user updateCommunicationOptions request with valid session updates DB', as
   )
   expect(againUpdatedTestSubscriber.all_emails_to_primary).toBeTruthy()
 })
-*/
+
 // TODO: more tests of resendEmail failure scenarios
 
 test('user add request with invalid email throws error', async t => {
@@ -212,9 +222,7 @@ test('user verify request with valid token but no session renders email verified
     TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.verification_token
   const mockReturnedBreaches = testBreaches.slice(0, 2)
   // subscribeHash = () => {}
-  quibble.esm('../utils/hibp.js', {
-    getBreachesForEmail: () => console.debug('mock ran')
-  })
+  // getBreachesForEmail: () => console.debug('mock ran')
 
   const req = createRequest({
     method: 'GET',
