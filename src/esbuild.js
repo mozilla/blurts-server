@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 // TODO: this is a build/config file and should probably live in the root, after the old esbuild.js file is removed.
 
 // ESBuild is used to concat and compress the 'client' folder into the 'dist' folder (front-end only)
