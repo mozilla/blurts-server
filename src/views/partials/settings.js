@@ -6,7 +6,7 @@ const emailNeedsVerificationSub = email => `
     ${getMessage('settings-email-verification-callout')}
   </span>
 
-  <a class='settings-resend-email' data-email-id='${email.id}' href='#'>
+  <a class='js-settings-resend-email' data-email-id='${email.id}' href='#'>
     ${getMessage('settings-resend-email-verification')}
   </a>
 `
@@ -15,7 +15,7 @@ const deleteButton = email => `
   <button
     data-subscriber-id='${email.subscriber_id}'
     data-email-id='${email.id}'
-    class='settings-email-remove-button js-remove-email'
+    class='settings-email-remove-button js-remove-email-button'
   >
     <img src='/images/icon-delete.svg'>
   </button>
@@ -55,14 +55,13 @@ const createEmailList = (emails, breachCounts) => `
   </ul>
 `
 
-const optionInput = (csrfToken, { commOption, name, isChecked }) => `
+const optionInput = (csrfToken, { isChecked, option }) => `
   <input
     checked='${isChecked}'
-    class='radio-comm-option'
-    data-comm-option='${commOption}'
+    class='js-settings-alert-options-input'
+    data-alert-option='${option}'
     data-csrf-token='${csrfToken}'
-    data-form-action='update-comm-option'
-    name='${name}'
+    name='settings-alert-options'
     type='radio'
   >
 `
@@ -71,9 +70,8 @@ const alertOptions = csrfToken => `
   <div class='settings-alert-options'>
     <label class='settings-radio-input'>
     ${optionInput(csrfToken, {
-      commOption: 0,
-      name: '1',
-      isChecked: true
+      isChecked: true,
+      option: 0
     })}
     <span class='settings-radio-label'>
       ${getMessage('settings-alert-preferences-option-one')}
@@ -82,9 +80,8 @@ const alertOptions = csrfToken => `
 
   <label class='settings-radio-input'>
     ${optionInput(csrfToken, {
-      commOption: 1,
-      name: '1',
-      isChecked: false
+      isChecked: false,
+      option: 1
     })}
     <span class='settings-radio-label'>
       ${getMessage('settings-alert-preferences-option-two')}
@@ -93,25 +90,27 @@ const alertOptions = csrfToken => `
   </div>
 `
 
-const addEmailModal = limit => `
-  <dialog id='add-email-modal' class='add-email-modal'>
-    <button id='settings-close'>
+const createAddEmailModal = limit => `
+  <dialog id='js-settings-modal' class='settings-email-modal'>
+    <button id='js-settings-close'>
       <img src='/images/icon-close.svg'>
     </button>
     <img src='/images/settings-dialog-email.svg'>
 
-    <h3 class='settings-section-title'>${getMessage('settings-email-dialog-title')}</h3>
-    <div id='add-email-modal-content'>
+    <h3 class='settings-section-title'>
+      ${getMessage('settings-email-dialog-title')}
+    </h3>
+    <div id='js-settings-modal-content'>
       ${getMessage('settings-email-limit-info', { limit })}
       ${getMessage('settings-add-email-text')}
     </div>
 
-    <div id='add-email-modal-controls'>
+    <div id='js-settings-modal-controls'>
       <label>
         ${getMessage('settings-email-input-label')}
-        <input id='email' type='text'>
+        <input id='js-settings-email-modal-input' type='text'>
       </label>
-      <button id='send-verification' class='primary'>
+      <button id='js-settings-modal-send-verification' class='primary'>
         ${getMessage('settings-send-email-verification')}
       </button>
     </div>
@@ -122,7 +121,7 @@ export const settings = data => {
   const { breachCounts, csrfToken, emails, limit } = data
 
   return `
-    <div id='settings' class='settings' data-csrf-token='${csrfToken}'>
+    <div id='js-settings' class='settings' data-csrf-token='${csrfToken}'>
       <h2 class='settings-title'>${getMessage('settings-page-title')}</h2>
 
       <div class='settings-content'>
@@ -145,13 +144,13 @@ export const settings = data => {
 
           ${createEmailList(emails, breachCounts)}
           <button
-            id='settings-add-email'
+            id='js-settings-add-email-opener'
             class='settings-add-email-button primary'
           >
             ${getMessage('settings-add-email-button')}
           </button>
 
-          ${addEmailModal(limit)}
+          ${createAddEmailModal(limit)}
         </section>
 
         <hr>
