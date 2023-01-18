@@ -36,5 +36,5 @@ settings-fxa-link-label = Go to Firefox Settings
 
 settings-email-dialog-title = Add another email address
 settings-add-email-text = Add a new email address to see if it’s been involved in a breach.
-settings-email-input-label = Email Address
+settings-email-input-label = Email address
 settings-send-email-verification = Send verification link
