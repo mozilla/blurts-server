@@ -88,6 +88,7 @@ occupations = Заняття
 parenting-plans = Планування батьківства
 partial-credit-card-data = Частини даних про кредитні картки
 partial-dates-of-birth = Частини дат народження
+partial-phone-numbers = Частини номерів телефонів
 passport-numbers = Номери паспортів
 password-hints = Підказки паролів
 password-strengths = Надійність пароля

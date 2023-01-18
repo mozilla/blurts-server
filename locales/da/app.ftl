@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-konto
-terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 GitHub-link-title = GitHub
 error-scan-page-token = Du har forsøgt at skanne for mange mail-adresser inden for et kort tidsrum. Vi har af sikkerhedsgrunde blokeret din mulighed for at søge indtil videre. Du kan prøve igen senere.
 error-could-not-add-email = Kunne ikke tilføje mailadressen til databasen.
@@ -75,7 +74,6 @@ share-facebook-blurb = Er dine online-konti blevet ramt i en datalæk?
 og-site-description = Brug { -product-name } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
 show-all = Vis alle
 fxa-scan-another-email = Vil du tjekke en anden mailadresse?
-sign-in = Log ind
 sign-out = Log ud
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Håndter { -brand-fxa }
@@ -652,3 +650,29 @@ ad-unit-5-no-matter-where = Maskér lynhurtigt din mailadresse, uanset hvor du e
 ad-unit-6-worry-free = Tilmelding uden bekymringer
 ad-unit-6-want-to-start = Vil du starte et nyt abonnement, svare på en indbydelse eller få en rabatkode uden at din indbakke bliver fyldt med spam?
 ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine oplysninger og behold kontrollen over din indbakke, næste gang du skal oprette dig som bruger et sted
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Brug { -brand-fx-monitor } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Log ind
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
+github = { -brand-github }

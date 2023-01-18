@@ -3,8 +3,32 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Úniky údajov pre { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] Monitorované e-maily: { $count } z { $total }
+        [few] Monitorované e-maily: { $count } z { $total }
+        [many] Monitorované e-maily: { $count } z { $total }
+       *[other] Monitorované e-maily: { $count } z { $total }
+    }
+add-email-link = Pridať e-mailovú adresu
+
+## Breaches resolved filter
+
+filter-label-unresolved = Nevyriešené úniky
+filter-label-resolved = Vyriešené úniky
+
+## Breaches table
+
+column-company = SPOLOČNOSŤ
+column-breached-data = UNIKNUTÉ ÚDAJE
+column-detected = ZISTENÉ
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Dňa { $breachDate } došlo k úniku dát spoločnosti { $companyName }. Akonáhle bol únik objavený a overený, bol dňa { $addedDate } pridaný do našej databázy. Tento únik zahŕňal: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 

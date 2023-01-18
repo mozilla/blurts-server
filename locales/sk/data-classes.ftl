@@ -88,6 +88,7 @@ occupations = zamestnania
 parenting-plans = rodičovské plány
 partial-credit-card-data = čiastočné údaje o platobných kartách
 partial-dates-of-birth = čiastočné dátumy narodenia
+partial-phone-numbers = Čiastočné telefónne čísla
 passport-numbers = čísla cestovných pasov
 password-hints = pomôcky k heslám
 password-strengths = sila hesla

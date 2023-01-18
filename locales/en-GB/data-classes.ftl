@@ -88,6 +88,7 @@ occupations = Occupations
 parenting-plans = Parenting plans
 partial-credit-card-data = Partial credit card data
 partial-dates-of-birth = Partial dates of birth
+partial-phone-numbers = Partial phone numbers
 passport-numbers = Passport numbers
 password-hints = Password hints
 password-strengths = Password strengths
