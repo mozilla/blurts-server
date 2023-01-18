@@ -64,7 +64,7 @@ function getEmailFooterCopy (data) {
   )
   faqLink = `<a href="https://support.mozilla.org/kb/firefox-monitor-faq">${faqLink}</a>`
 
-  if (!(data.whichPartial === 'email_partials/email-monthly-unresolved')) {
+  if (data.whichPartial !== 'email_partials/email-monthly-unresolved') {
     return getMessage('email-verify-footer-copy', {
       faqLink
     })

@@ -74,8 +74,8 @@ if (settingsAddVerification) {
       body: JSON.stringify({ email })
     })
 
-    if (!response || !response.ok) {
-      throw new Error(`sending verification email failed: ${response.error}`)
+    if (!response?.ok) {
+      throw new Error(`Sending verification email failed: ${response?.error}`)
     }
 
     const addEmailDialogContent = document.getElementById('add-email-modal-content')
