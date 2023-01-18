@@ -1,13 +1,12 @@
-const settingsUpdateCommOption = document.getElementsByClassName(
-  'radio-comm-option'
-)
-if (settingsUpdateCommOption.length) {
-  for (const el of settingsUpdateCommOption) {
-    el.addEventListener('click', async (event) => {
+const settingsAlertOptionsInputs = document.getElementsByClassName('js-settings-alert-options-input')
+
+if (settingsAlertOptionsInputs?.length) {
+  for (const inputElement of settingsAlertOptionsInputs) {
+    inputElement.addEventListener('change', async event => {
       try {
-        const communicationOption = event.target.getAttribute('data-comm-option')
+        const communicationOption = event.target.getAttribute('data-alert-option')
         const csrfToken = document
-          .getElementById('settings')
+          .getElementById('js-settings')
           .getAttribute('data-csrf-token')
 
         const response = await fetch('/api/v1/user/update-comm-option', {
@@ -32,11 +31,11 @@ if (settingsUpdateCommOption.length) {
   }
 }
 
-const settingsAddEmail = document.getElementById('settings-add-email')
+const settingsAddEmail = document.getElementById('js-settings-add-email-opener')
 if (settingsAddEmail) {
-  settingsAddEmail.addEventListener('click', async (_) => {
+  settingsAddEmail.addEventListener('click', async _ => {
     try {
-      const addEmailDialog = document.getElementById('add-email-modal')
+      const addEmailDialog = document.getElementById('js-settings-modal')
       addEmailDialog.showModal()
     } catch (err) {
       console.error(`Error: ${err}`)
@@ -44,11 +43,11 @@ if (settingsAddEmail) {
   })
 }
 
-const settingsClose = document.getElementById('settings-close')
+const settingsClose = document.getElementById('js-settings-close')
 if (settingsClose) {
-  settingsClose.addEventListener('click', async (_) => {
+  settingsClose.addEventListener('click', async _ => {
     try {
-      const addEmailDialog = document.getElementById('add-email-modal')
+      const addEmailDialog = document.getElementById('js-settings-modal')
       addEmailDialog.close()
     } catch (err) {
       console.error(`Error: ${err}`)
@@ -56,12 +55,12 @@ if (settingsClose) {
   })
 }
 
-const settingsAddVerification = document.getElementById('send-verification')
+const settingsAddVerification = document.getElementById('js-settings-modal-send-verification')
 if (settingsAddVerification) {
-  settingsAddVerification.addEventListener('click', async (_) => {
-    const email = document.getElementById('email').value
+  settingsAddVerification.addEventListener('click', async _ => {
+    const email = document.getElementById('js-settings-email-modal-input').value
     const csrfToken = document
-      .getElementById('settings')
+      .getElementById('js-settings')
       .getAttribute('data-csrf-token')
 
     const response = await fetch('/api/v1/user/email', {
@@ -78,13 +77,14 @@ if (settingsAddVerification) {
       throw new Error(`Sending verification email failed: ${response?.error}`)
     }
 
-    const addEmailDialogContent = document.getElementById('add-email-modal-content')
+    const addEmailDialogContent = document.getElementById('js-settings-modal-content')
+    // TODO: Localize string below
     addEmailDialogContent.textContent = `Verify the link sent to ${email} to add it to Firefox Monitor. Manage all email addresses in Settings.`
 
-    const addEmailDialogControls = document.getElementById('add-email-modal-controls')
+    const addEmailDialogControls = document.getElementById('js-settings-modal-controls')
     addEmailDialogControls.hidden = true
 
-    const addEmailDialog = document.getElementById('add-email-modal')
+    const addEmailDialog = document.getElementById('js-settings-modal')
     addEmailDialog.addEventListener('close', _ => {
       addEmailDialogControls.hidden = false
       return window.location.reload(true)
@@ -92,15 +92,15 @@ if (settingsAddVerification) {
   })
 }
 
-const settingsRemoveEmail = document.getElementsByClassName('js-remove-email')
-if (settingsRemoveEmail.length) {
-  for (const el of settingsRemoveEmail) {
-    el.addEventListener('click', async (event) => {
+const settingsRemoveEmailButtons = document.getElementsByClassName('js-remove-email-button')
+if (settingsRemoveEmailButtons?.length) {
+  for (const removeEmailButton of settingsRemoveEmailButtons) {
+    removeEmailButton.addEventListener('click', async event => {
       try {
         const subscriberId = event.target.getAttribute('data-subscriber-id')
         const emailId = event.target.getAttribute('data-email-id')
         const csrfToken = document
-          .getElementById('settings')
+          .getElementById('js-settings')
           .getAttribute('data-csrf-token')
 
         const response = await fetch('/api/v1/user/remove-email', {
@@ -123,16 +123,14 @@ if (settingsRemoveEmail.length) {
   }
 }
 
-const settingsResendEmail = document.getElementsByClassName(
-  'settings-resend-email'
-)
-if (settingsResendEmail.length) {
-  for (const el of settingsResendEmail) {
-    el.addEventListener('click', async (event) => {
+const settingsResendEmailLinks = document.getElementsByClassName('js-settings-resend-email')
+if (settingsResendEmailLinks?.length) {
+  for (const resendEmailLink of settingsResendEmailLinks) {
+    resendEmailLink.addEventListener('click', async event => {
       try {
         const emailId = event.target.getAttribute('data-email-id')
         const csrfToken = document
-          .getElementById('settings')
+          .getElementById('js-settings')
           .getAttribute('data-csrf-token')
 
         const response = await fetch('/api/v1/user/resend-email', {
@@ -145,11 +143,11 @@ if (settingsResendEmail.length) {
           body: JSON.stringify({ emailId })
         })
 
-        if (response && response.redirected === true) {
+        if (response?.redirected) {
           throw response.error
         }
       } catch (err) {
-        throw new Error(`re-sending verification email failed: ${err}`)
+        throw new Error(`Re-sending verification email failed: ${err}`)
       }
       event.preventDefault()
       return false
