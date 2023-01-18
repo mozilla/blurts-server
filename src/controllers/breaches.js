@@ -5,10 +5,9 @@
 import { mainLayout } from '../views/main.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
-import { getUserEmails } from '../db/tables/email_addresses.js'
-import { getBreachesForEmail, filterBreaches } from '../utils/hibp.js'
-import { filterBreachDataTypes, appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
-import { getSha1 } from '../utils/fxa.js'
+
+import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
+import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 
 async function breachesPage (req, res) {
   const emailCount = 1 + (req.user.email_addresses?.length || 0) // +1 because user.email_addresses does not include primary
@@ -113,96 +112,6 @@ async function putBreachResolution (req, res) {
 }
 
 // PRIVATE
-
-/**
- * TODO: deprecate
- * Get all emails and breaches for a user via app.locals
- * This function will be replaced after 'breaches" table is created
- * and all records can be retrieved from the one table
- * @param {*} user
- * @param {*} allBreaches
- * @returns
- */
-async function getAllEmailsAndBreaches (user, allBreaches) {
-  const monitoredEmails = await getUserEmails(user.id)
-  const verifiedEmails = []
-  const unverifiedEmails = []
-  verifiedEmails.push(await bundleVerifiedEmails({ user, email: user.primary_email, recordId: user.id, recordVerified: user.primary_verified, allBreaches }))
-  for (const email of monitoredEmails) {
-    if (email.verified) {
-      verifiedEmails.push(await bundleVerifiedEmails({ user, email: email.email, recordId: email.id, recordVerified: email.verified, allBreaches }))
-    } else {
-      unverifiedEmails.push(email)
-    }
-  }
-
-  // get new breaches since last shown
-  for (const emailEntry of verifiedEmails) {
-    const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= user.breaches_last_shown)
-
-    for (const newBreachForEmail of newBreachesForEmail) {
-      newBreachForEmail.NewBreach = true // add "NewBreach" property to the new breach.
-      emailEntry.hasNewBreaches = newBreachesForEmail.length // add the number of new breaches to the email
-    }
-  }
-
-  return { verifiedEmails, unverifiedEmails }
-}
-
-function addRecencyIndex (foundBreaches) {
-  const annotatedBreaches = []
-  // slice() the array to make a copy so before reversing so we don't
-  // reverse foundBreaches in-place
-  const oldestToNewestFoundBreaches = foundBreaches.slice().reverse()
-  oldestToNewestFoundBreaches.forEach((annotatingBreach, index) => {
-    const foundBreach = foundBreaches.find(foundBreach => foundBreach.Name === annotatingBreach.Name)
-    annotatedBreaches.push(Object.assign({ recencyIndex: index }, foundBreach))
-  })
-  return annotatedBreaches.reverse()
-}
-
-async function bundleVerifiedEmails (options) {
-  const { user, email, recordId, recordVerified, allBreaches } = options
-  const lowerCaseEmailSha = getSha1(email.toLowerCase())
-
-  // find all breaches relevant to the current email
-  const foundBreaches = await getBreachesForEmail(lowerCaseEmailSha, allBreaches, true, false)
-
-  // adding index to breaches based on recency
-  const foundBreachesWithRecency = addRecencyIndex(foundBreaches)
-
-  // get v1 "breaches_resolved" object
-  const resolvedBreachesV1 = user.breaches_resolved
-    ? user.breaches_resolved[email] ? user.breaches_resolved[email] : []
-    : []
-
-  // get v2 "breach_resolution" object
-  const breachResolutionV2 = user.breach_resolution
-    ? user.breach_resolution[email] ? user.breach_resolution[email] : {}
-    : []
-
-  for (const breach of foundBreachesWithRecency) {
-    // if either v1 or v2 is marked as resolved, breach is resolved
-    breach.IsResolved = !!resolvedBreachesV1.includes(breach.recencyIndex) || !!breachResolutionV2[breach.recencyIndex]?.isResolved
-    breach.ResolutionsChecked = breachResolutionV2[breach.recencyIndex]?.resolutionsChecked || []
-
-    // filter breach types based on the 13 types we care about
-    breach.DataClasses = filterBreachDataTypes(breach.DataClasses)
-  }
-
-  // filter out irrelevant breaches based on HIBP
-  const filteredAnnotatedFoundBreaches = filterBreaches(foundBreachesWithRecency)
-
-  const emailEntry = {
-    email,
-    breaches: filteredAnnotatedFoundBreaches,
-    primary: email === user.primary_email,
-    id: recordId,
-    verified: recordVerified
-  }
-
-  return emailEntry
-}
 
 /**
  * TODO: DEPRECATE
