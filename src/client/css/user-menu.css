@@ -20,7 +20,7 @@
   border-color: var(--purple-70);
 }
 
-.user-menu-list > hr {
+.user-menu-container > hr {
   border-image: var(--monitor-gradient) 1;
   margin-bottom: var(--padding-sm);
 }

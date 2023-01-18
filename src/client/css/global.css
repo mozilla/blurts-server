@@ -54,9 +54,6 @@ img {
 }
 
 menu {
-  align-items: center;
-  display: flex;
-  gap: var(--padding-sm);
   list-style-type: none;
 }
 
@@ -81,6 +78,12 @@ body > header {
 body > header .monitor-logo {
   width: calc(213px * var(--multiplier));
   object-fit: contain;
+}
+
+body > header .nav-wrapper {
+  align-items: center;
+  display: flex;
+  gap: var(--padding-sm);
 }
 
 main {
