@@ -91,7 +91,6 @@
   padding: 0;
 }
 
-.user-menu-header:hover,
 .user-menu-link:hover {
   background-color: var(--gray-5);
 }
