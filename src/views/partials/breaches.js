@@ -36,12 +36,6 @@ function createBreachRows (data) {
         addedDate: longDate.format(addedDate),
         dataClasses: longList.format(dataClassesTranslated)
       })
-      const resolveSteps = Object.entries(breach.breachChecklist).map(([key, value]) => `
-        <li class='resolve-list-item'>
-          <input name='${breach.recencyIndex}' value='${key}' type='checkbox'>
-          <p>${value.header}<br><i>${value.body}</i></p>
-        </li>
-      `).join('')
 
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
@@ -52,7 +46,9 @@ function createBreachRows (data) {
           ${description}
           <p>
             <strong>Resolve this breach:</strong>
-            <ol class='resolve-list'>${resolveSteps}</ol>
+            <ol class='resolve-list'>
+              ${createResolveSteps(breach)}
+            </ol>
           </p>
         </article>
       </details>
@@ -61,6 +57,18 @@ function createBreachRows (data) {
   })
 
   return breachRowsHTML.join('')
+}
+
+function createResolveSteps (breach) {
+  const checkedArr = breach.ResolutionsChecked || []
+  const resolveStepsHTML = Object.entries(breach.breachChecklist).map(([key, value]) => `
+  <li class='resolve-list-item'>
+    <input name='${breach.recencyIndex}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
+    <p>${value.header}<br><i>${value.body}</i></p>
+  </li>
+  `)
+
+  return resolveStepsHTML.join('')
 }
 
 export const breaches = data => `
