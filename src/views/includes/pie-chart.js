@@ -102,20 +102,23 @@ export const pieChart = (chartData) => {
 
   const total = chartData.data.reduce((acc, curr) => acc + curr.count, 0)
   let sliceOffset = 0
+  const diameter = 100
+  const circumference = Math.PI * diameter
 
   return `
     ${styles}
     <figure class='pie-chart'>
-      <svg viewBox='0 0 1 1'>
+      <svg viewBox='0 0 ${diameter} ${diameter}'>
         <g>
           ${chartData.data.reduce((acc, curr) => {
             const percentage = calcPercentage(total, curr.count)
+            const strokeLength = circumference * percentage
             const circle = `
               <circle
                 stroke='${curr.color}'
-                stroke-dasharray='${Math.PI * percentage} ${Math.PI}'
-                stroke-dashoffset='${-Math.PI * sliceOffset}'
-                stroke-width='${100 - 100 * innerRadius}%'
+                stroke-dasharray='${strokeLength} ${circumference}'
+                stroke-dashoffset='${-1 * circumference * sliceOffset}'
+                stroke-width='${diameter * (1 - innerRadius)}%'
               ></circle>
             `
             acc.push(circle)
