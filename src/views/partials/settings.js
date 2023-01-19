@@ -7,7 +7,7 @@ const emailNeedsVerificationSub = email => `
   </span>
 
   <a class='js-settings-resend-email' data-email-id='${email.id}' href='#'>
-    ${getMessage('settings-resend-email-verification')}
+    ${getMessage('settings-resend-email-verification-link')}
   </a>
 `
 
@@ -111,7 +111,7 @@ const createAddEmailModal = limit => `
         <input id='js-settings-email-modal-input' type='text'>
       </label>
       <button id='js-settings-modal-send-verification' class='primary'>
-        ${getMessage('settings-send-email-verification')}
+        ${getMessage('settings-send-email-verification-button')}
       </button>
     </div>
   </dialog>
