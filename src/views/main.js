@@ -70,7 +70,8 @@ const userMenu = data => `
     aria-label='${getMessage('menu-list-accessible-label')}'
     class='user-menu-container user-menu-popover'
     role='navigation'
-    hidden>
+    hidden
+  >
     <li tabindex='1'>
       <a href='${AppConstants.FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
