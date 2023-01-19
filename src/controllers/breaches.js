@@ -14,9 +14,11 @@ async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
+
   const data = {
     breachesData,
     emailCount,
+    fxaProfile: req.user.fxa_profile_json,
     partial: breaches
   }
 

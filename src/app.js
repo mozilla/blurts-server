@@ -38,12 +38,26 @@ async function getRedisStore () {
 }
 
 // middleware
-app.use(helmet())
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false
+  })
+)
+
+const imgSrc = [
+  "'self'"
+]
+
+if (AppConstants.FXA_ENABLED) {
+  const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin
+  imgSrc.push(fxaSrc)
+}
 
 // disable forced https to allow localhost on Safari
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
+      imgSrc,
       upgradeInsecureRequests: isDev ? null : []
     }
   })

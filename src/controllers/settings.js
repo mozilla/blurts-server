@@ -7,6 +7,7 @@ import { settings } from '../views/partials/settings.js'
 
 function settingsPage (req, res) {
   const data = {
+    fxaProfile: req.user.fxa_profile_json,
     partial: settings
   }
 
