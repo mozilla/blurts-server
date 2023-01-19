@@ -416,7 +416,7 @@ email-added-to-subscription = Alertaremos você, caso { $email } apareça em um 
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
 email-verified-view-dashboard = Para ver e gerenciar todos os emails que você cadastrou para monitoramento de vazamentos, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
-sign-in-nested = entre
+sign-in-nested = entrar
 
 ##
 
@@ -634,7 +634,7 @@ meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -bran
 ## Header
 
 brand-fx-monitor = { -brand-fx-monitor }
-sign-in = Entre
+sign-in = Entrar
 
 ## Footer
 

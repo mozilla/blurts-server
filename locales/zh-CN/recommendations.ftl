@@ -12,7 +12,7 @@ rec-pw-1-subhead = 更改您的密码
 rec-pw-1-cta = 更改该网站密码
 rec-pw-1 = 使用唯一且不重复的密码。一个好策略是把两个或多个无关的单词组成密码短语。
 # Recommendation subhead
-rec-pw-2-subhead = 更换共用相同密码的登录口令
+rec-pw-2-subhead = 在使用了相同密码的地方更换密码
 # Link title
 rec-pw-2-cta-fx = 在 { -brand-name } 查看登录信息
 rec-pw-2 = 重用同一个密码的后果是，当任意一处发生泄露，其他位置也因此陷入危险。而现在，这个密码已经暴露，黑客可能利用它“撞库”来攻破您的其他账号。
@@ -44,7 +44,7 @@ rec-email =
     真实的邮箱地址容易被黑客找到密码，或被跟踪者定位。
     建议使用像 { -brand-relay } 这类的邮件中继服务，隐藏真实邮箱地址。
 # Recommendation subhead
-rec-ip-subhead = 使用一项服务掩藏您的 IP 地址
+rec-ip-subhead = 使用掩藏 IP 地址的服务
 # Link title
 rec-ip-us-cta = 试用 { -brand-fpn }
 rec-ip-us =

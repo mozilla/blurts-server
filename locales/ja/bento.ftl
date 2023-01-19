@@ -15,5 +15,7 @@ fx-mobile = モバイル向け { -brand-name } Browser
 bento-button-title = { -brand-name } アプリとサービス
 # Bento headline
 fx-makes-tech = { -brand-name } は、オンラインプライバシーに立ち向かう技術です。
+# A link at the bottom of the Bento menu
+made-by-mozilla = Made by { -brand-Mozilla }
 # Aria label for button that closes the Bento menu
 mobile-close-bento-button-title = メニューを閉じる

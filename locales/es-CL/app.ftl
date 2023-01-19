@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Cuenta de Firefox
-terms-and-privacy = Términos y privacidad
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo en un periodo de tiempo muy corto. Por razones de seguridad, hemos bloqueado temporalmente nuevas búsquedas de tu parte. Podrás volver a intentarlo más tarde.
 error-could-not-add-email = No se pudo añadir el correo a la base de datos
@@ -72,7 +74,6 @@ share-facebook-blurb = ¿Han sido tus cuentas en línea expuestas a una filtraci
 og-site-description = Averigua si has sido parte de una filtración de datos con { -product-name }. Registrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
 show-all = Mostrar todo
 fxa-scan-another-email = ¿Quieres revisar otro correo?
-sign-in = Conectarse
 sign-out = Salir
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionar { -brand-fxa }
@@ -616,3 +617,29 @@ ad-unit-5-no-matter-where = No importa dónde estés, crea una máscara de corre
 ad-unit-6-worry-free = Regístrate sin preocupaciones
 ad-unit-6-want-to-start = ¿Quieres iniciar una nueva suscripción, responder a una invitación u obtener un código de promoción sin que el spam inunde tu bandeja de entrada?
 ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una máscara de correo en lugar del real para proteger tu información y mantener el control sobre tu bandeja de entrada
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Fundación Mozilla
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = Averigua si has sido parte de una filtración de datos con { -brand-fx-monitor }. Registrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Conectarse
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Términos y privacidad
+github = { -brand-github }

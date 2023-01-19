@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import express from 'express'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
@@ -34,12 +38,26 @@ async function getRedisStore () {
 }
 
 // middleware
-app.use(helmet())
+app.use(
+  helmet({
+    crossOriginEmbedderPolicy: false
+  })
+)
+
+const imgSrc = [
+  "'self'"
+]
+
+if (AppConstants.FXA_ENABLED) {
+  const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin
+  imgSrc.push(fxaSrc)
+}
 
 // disable forced https to allow localhost on Safari
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
+      imgSrc,
       upgradeInsecureRequests: isDev ? null : []
     }
   })

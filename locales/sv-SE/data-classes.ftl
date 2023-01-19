@@ -88,6 +88,7 @@ occupations = Yrken
 parenting-plans = Föräldraplaner
 partial-credit-card-data = Delvis kreditkortsdata
 partial-dates-of-birth = Delar av födelsedatum
+partial-phone-numbers = Partiella telefonnummer
 passport-numbers = Passnummer
 password-hints = Lösenordstips
 password-strengths = Lösenordsstyrka

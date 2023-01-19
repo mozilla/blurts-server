@@ -557,6 +557,7 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 ## Search Engine Optimization
 
+meta-desc = 使用 { -brand-fx-monitor }，看看您的帳號是否也在資料外洩事件當中。註冊在未來有與您相關的資料外洩事故時，收到警報與祕訣以確保帳號安全。
 
 ## Header
 

@@ -67,10 +67,13 @@ monitor-another-email = Želite spremljati še en e-poštni naslov?
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 email-2022-unsubscribe = To samodejno e-poštno sporočilo ste prejeli, ker ste naročeni na { -product-name }. <br>Svoje nastavitve e-pošte lahko kadar koli spremenite <a { $unsubscribe-link-attr }>tukaj</a>.
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Podatke o krajah zagotavlja <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = Imate nerazrešene kraje podatkov
+email-is-affected = Vaš e-poštni naslov { $email-address } je odkrit v vsaj eni kraji podatkov
 email-breach-status = Trenutno stanje kraje
 # table row 1 label
 email-monitored = Skupaj nadzorovanih e-poštnih naslovov:

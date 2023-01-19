@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -20,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox アカウント
-terms-and-privacy = 利用規約と個人情報保護方針
 GitHub-link-title = GitHub
 error-scan-page-token = 短期間に多くのメールアドレスを検索しようとしています。セキュリティ上の理由から、一時的に新たな検索をブロックしました。後ほどまた試してください。
 error-could-not-add-email = メールアドレスをデータベースに追加できませんでした。
@@ -72,7 +74,6 @@ share-facebook-blurb = あなたのオンラインアカウントはデータ侵
 og-site-description = { -product-name } でデータ侵害に巻き込まれていないか確認しましょう。登録すると、新たな侵害についての警告やアカウントを安全に保つ秘訣を知ることができます。
 show-all = すべて表示
 fxa-scan-another-email = 他のメールアドレスをチェックしますか？
-sign-in = ログイン
 sign-out = ログアウト
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa }の管理
@@ -115,50 +116,6 @@ security-tips = セキュリティの秘訣
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = { -brand-fxa } ナビゲーションを開く
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = 1〜10のスケールで、友人や同僚に { -product-short-name } を勧める可能性はどのくらいありますか。1～10 人の間でお答えください。
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = そう思わない
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = そう思う
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = { -product-short-name } は使いやすいですか？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = { -product-short-name } は信頼できると思いますか？
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = { -product-short-name } にはすっきりとしてシンプルな印象がありますか？
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = 全く同意しない
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = 同意しない
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = 分からない
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = 同意する
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = 強く同意する
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = { -product-short-name } が利用できなくなったらどう思いますか？
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = とてもがっかりする
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = 残念に思う
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = 気にしない
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = 最近追加されたデータ侵害
 # Link title
@@ -175,22 +132,39 @@ monitor-several-emails = 複数のメールアドレスを監視する
 take-action = アカウントを保護するための行動を起こしましょう
 keep-your-data-safe = サイバー犯罪からデータを安全に保つために必要なことを見つけましょう。
 website-breach = ウェブサイト侵害
+sensitive-breach = 注意を要するウェブサイト侵害
+data-aggregator-breach = データアグリゲーターの侵害
 unverified-breach = 未確認の侵害
 spam-list-breach = スパムリスト侵害
 website-breach-plural = ウェブサイト侵害
+sensitive-breach-plural = 注意を要する侵害
+data-aggregator-breach-plural = データアグリゲーターの侵害
 unverified-breach-plural = 未確認の侵害
+spam-list-breach-plural = スパムリスト侵害
 what-data = 漏洩したデータ:
 sensitive-sites = { -product-name } は機密性の高いサイトをどのように扱いますか？
+sensitive-sites-copy = { -product-name } は、メールアドレスが確認できた場合にのみ、この種類の侵害に関連付けられたアカウントを明らかにします。つまり、あなたの情報がこの侵害にあったかどうかを確認できるのは (誰かほかのユーザーがあなたのメールアカウントにアクセスできるのでなければ) あなただけです。
 delayed-reporting-headline = なぜ、この侵害の報告に時間がかかったのですか？
+delayed-reporting-copy = データ侵害にさらされた認証情報がダークウェブに現れるまで数か月または数年かかる場合があります。侵害は発見され、確認され次第データベースに追加されます。
 about-fxm-headline = { -product-name } について
 about-fxm-blurb = あなたのオンラインアカウントがデータ侵害に巻き込まれている場合、{ -product-name } が警告します。データ侵害を受けていないか確認し、新しい侵害についての警告を受け取り、オンラインアカウントを保護する措置を取りましょう。{ -product-name } は、{ -brand-Mozilla } によって提供されています。
+fxm-warns-you = { -product-name } は、あなたのメールアドレスがオンラインデータ侵害で公開されている場合に警告します。あなたの情報が公開されているかどうかを確認し、オンラインアカウントの保護を強化する方法を学び、あなたのメールアドレスが新しい侵害で見つかった場合に警告を受け取りましょう。
 # How Firefox Monitor works
 how-fxm-works = { -product-name } の仕組み
+how-fxm-1-headline = 基本的な検索を行う
 how-fxm-1-blurb = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けていないか検索します。この基本的な検索でほとんどのデータ侵害が明らかにされますが、機密性の高い個人情報を含むものではありません。
 how-fxm-2-headline = アカウント登録して侵害を監視する
+how-fxm-2-blurb = { -brand-fxa }を作成し、進行中の侵害についてメールアドレスの監視を行います。メールアドレスを確認すると、注意を要する侵害を含む過去の侵害についての完全なレポートも届きます。
 how-fxm-3-headline = ブラウザーで通知を受け取る
+how-fxm-3-blurb = { -brand-name } を利用すると、侵害されたサイトを訪問した際に通知が届きます。あなたがその侵害に含まれていたか、何ができるのかをすぐに確認してください。
 wtd-after-website = ウェブサイト侵害の後にするべきこと:
+wtd-after-data-agg = データアグリゲーター侵害の後にするべきこと:
+what-is-data-agg = データアグリゲーターとは？
+what-is-data-agg-blurb = データアグリゲーター (データブローカー) は、公的記録から情報を収集したり他社から情報を購入したりします。彼らはこのデータを編集し、マーケティング目的で企業に販売します。このような情報漏洩の被害者が金銭的な詐欺にあう可能性は低いですが、ハッカーはこのデータを使って被害者になりすましたり、被害者を分析したりする可能性があります。
 protect-your-privacy = オンラインプライバシーを保護する
+no-pw-to-change = ウェブサイトの侵害とは異なり、パスワードを変更する必要はありません。
+avoid-personal-info = パスワードに個人情報を使用しないでください
+avoid-personal-info-blurb = 誕生日、住所、家族の名前はオンラインで簡単に見つけることができます。これらをパスワードに含めないでください。
 
 ## What to do after data breach tips
 
@@ -203,6 +177,7 @@ create-strong-passwords = 強力なパスワードの作り方
 stop-reusing-pw = 同じパスワードの使い回しをやめる
 create-unique-pw = ユニークなパスワードを作成し、パスワードマネージャーのような安全な場所に保存してください。
 five-myths = パスワードマネージャーに関する 5 つの話題
+create-a-fxa = { -brand-fxa }を作成してデータ侵害の完全なレポートとアラートメールを受け取りましょう。
 feat-security-tips = セキュリティの秘訣であなたのアカウントを保護しましょう
 feat-sensitive = 機密情報の侵害について詳しい検索をしましょう
 feat-enroll-multiple = 複数のメールアドレスを登録して侵害を監視しましょう
@@ -214,6 +189,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = データ侵害を確認する
 find-out-what-hackers-know = あなたのことがハッカーに知られていないか調査しましょう。一歩先に行く方法を学んでください。
+get-email-alerts = 安全のため、既知の侵害にあなたの情報が含まれていた場合にメールアラートを受け取るようにしましょう。
 search-for-your-email = 2007 年までさかのぼって、メールアドレスがデータ侵害を受けているか検索します。
 back-to-top = トップに戻る
 comm-opt-1 = すべての通知を { $primaryEmail } に送る。
@@ -227,6 +203,7 @@ send-verification = 認証リンクを送信する
 # alerts for all of their monitored email addresses to a single 
 # email address.
 breach-summary = データ侵害概要
+show-breaches-for-this-email = このメールアドレスのすべてのデータ侵害を表示する。
 link-change-primary = 主要メールアドレスを変更する
 remove-fxm = { -product-name } の登録を解除する。
 remove-fxm-blurb = { -product-name } の警告をオフにします。{ -brand-fxa } は有効のまま残り、他の通知は受信を続けるでしょう。
@@ -237,8 +214,17 @@ latest-breach-link = この侵害を受けているか確認する
 welcome-back = おかえりなさい、{ $userName } さん！
 welcome-user = ようこそ、{ $userName } さん！
 breach-alert-subject = { -product-name } が、あなたのメールアドレスの新しいデータ侵害を発見しました。
+your-info-was-discovered-headline = あなたの情報が新しいデータ侵害に含まれています。
+your-info-was-discovered-blurb = あなたのメールアドレスがデータ侵害に含まれていた場合に { -product-name } アラートが届くよう登録されています。この侵害についてわかっていることは次のとおりです。
 what-to-do-after-breach = データ侵害があった後にするべきこと
 ba-next-step-1 = パスワードを強力で一意のパスワードに変更する。
+ba-next-step-blurb-1 = 強力なパスワードは、大文字と小文字、記号などの特殊文字、数字を組み合わせたものです。住所や誕生日、家族の名前などの個人情報を含めてはいけません。
+ba-next-step-2 = 漏洩したパスワードの利用を完全に停止してください。
+ba-next-step-blurb-2 = サイバー犯罪者がダークウェブであなたのパスワードを見つけ、あなたの他のアカウントにログインするために利用する可能性があります。あなたのアカウントを保護する最善の方法は、同じパスワードを使いまわさず、アカウントごとに固有のパスワードを使用することです。
+new-breaches-found =
+    { $breachCount ->
+       *[other] 新たな侵害が { $breachCount } 件みつかりました
+    }
 sign-up-headline-1 = { -brand-fxa } で継続して警告を受け取りましょう。
 account-not-required = { -brand-name } ブラウザーは { -brand-fxa }には必要ありません。{ -brand-Mozilla } サービスについての情報を受け取るでしょう。
 was-your-info-exposed = { $breachName } のデータ侵害にさらされていますか？
@@ -405,3 +391,23 @@ promo-ecosystem-cta = すべての製品を見る
 
 # user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
 vpn-banner-location = あなたの現在地: { $ip-location }
+
+## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = ログイン
+
+## Footer
+
+terms-and-privacy = 利用規約と個人情報保護方針

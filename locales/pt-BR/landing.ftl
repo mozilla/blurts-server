@@ -3,6 +3,8 @@
 
 ## Hero
 
+find-out-if-breached = Descubra se você foi vítima de um vazamento de dados
+stay-safe-with-tool = Fique seguro com uma ferramenta simples, mas poderosa, que verifica se suas informações pessoais foram expostas em um vazamento de dados. Caso aconteça, te ajudamos a entender o que deve fazer a seguir. Monitoramos novos vazamentos continuamente. Tudo isso sem nenhum custo para você.
 get-started = Introdução
 
 ## Why use Firefox Monitor?

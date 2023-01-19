@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
@@ -19,8 +23,8 @@ const mainLayout = data => `
     <meta property='og:url' content='${SERVER_URL}'>
     <meta property='og:image' content='${SERVER_URL}/images/og-image.webp'>
 
-    <link rel="preload" href="/fonts/Metropolis-Bold.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/fonts/Inter-Regular-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel='preload' href='/fonts/Metropolis-Bold.woff2' as='font' type='font/woff2' crossorigin>
+    <link rel='preload' href='/fonts/Inter-Regular-latin.woff2' as='font' type='font/woff2' crossorigin>
     <link rel='stylesheet' href='/css/index.css' type='text/css'>
     <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
     <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
@@ -52,20 +56,67 @@ const mainLayout = data => `
 </html>
 `
 
+const userMenu = data => `
+<div class='user-menu-wrapper' tabindex='-1'>
+  <button
+    aria-expanded='false'
+    aria-haspopup='true'
+    class='user-menu-button'
+    title='${getMessage('menu-button-title')}'
+  >
+    <img src='${data.fxaProfile?.avatar}' alt='${getMessage('menu-button-alt')}' />
+  </button>
+  <menu
+    aria-label='${getMessage('menu-list-accessible-label')}'
+    class='user-menu-container user-menu-popover'
+    role='navigation'
+    hidden
+  >
+    <li tabindex='1'>
+      <a href='${AppConstants.FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
+        <b class='user-menu-email'>${data.fxaProfile?.email}</b>
+        <div class='user-menu-subtitle'>
+          ${getMessage('menu-item-fxa')}
+          <img src='/images/icon-open-in.svg' />
+        </div>
+      </a>
+    </li>
+    <hr>
+    <li>
+      <a href='/user/settings' class='user-menu-link'>
+        <img src='/images/icon-settings.svg' />
+        ${getMessage('menu-item-settings')}
+      </a>
+    </li>
+    <li>
+      <a href='https://support.mozilla.org/kb/firefox-monitor' target='_blank' class='user-menu-link'>
+        <img src='/images/icon-help.svg' />
+        ${getMessage('menu-item-help')}
+      </a>
+    </li>
+    <li>
+      <a href='/user/logout' class='user-menu-link'>
+        <img src='/images/icon-signout.svg' />
+        ${getMessage('menu-item-logout')}
+      </a>
+    </li>
+  </menu>
+</div>
+`
+
 const mainHeader = data => `
 <header>
   <a href='/user/breaches'>
     <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
   </a>
-  <menu>
-    <li>
-      <button class='nav-toggle'>
-        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' width='20'>
-          <path d='M1 1h8M1 4h8M1 7h8' stroke='#000' stroke-width='1' stroke-linecap='round'/>
-        </svg>
-      </button>
-    </li>
-  </menu>
+  <div class='nav-wrapper'>
+    <button class='nav-toggle'>
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' width='20'>
+        <path d='M1 1h8M1 4h8M1 7h8' stroke='#000' stroke-width='1' stroke-linecap='round'/>
+      </svg>
+    </button>
+    ${userMenu(data)}
+  </div>
 </header>
 <nav>
   <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
