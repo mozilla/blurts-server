@@ -50,7 +50,7 @@ function handleEvent (e) {
 async function updateResolved (checkbox) {
   const checkedItems = Array.from(checkbox.closest('.resolve-list').querySelectorAll(':checked'))
   try {
-    const resp = await fetch('api/v1/user/breaches', {
+    const resp = await fetch('/api/v1/user/breaches', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
