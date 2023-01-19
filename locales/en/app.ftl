@@ -827,6 +827,7 @@ sign-in = Sign In
 
 menu-button-title = User menu
 menu-button-alt = Open user menu
+menu-list-accessible-label = Account menu
 menu-item-fxa = Manage your {-brand-fx-account}
 menu-item-settings = Settings
 menu-item-help = Help and support

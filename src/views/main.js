@@ -59,15 +59,19 @@ const mainLayout = data => `
 const userMenu = data => `
 <div class='user-menu-wrapper' tabindex='-1'>
   <button
-  aria-expanded='false'
-  aria-haspopup='true'
-  class='user-menu-button'
-  title='${getMessage('menu-button-title')}'
+    aria-expanded='false'
+    aria-haspopup='true'
+    class='user-menu-button'
+    title='${getMessage('menu-button-title')}'
   >
     <img src='${data.fxaProfile?.avatar}' alt='${getMessage('menu-button-alt')}' />
   </button>
-  <menu class='user-menu-container user-menu-popover' role='navigation' hidden>
-    <li role='menuitem' tabindex='1'>
+  <menu
+    aria-label='${getMessage('menu-list-accessible-label')}'
+    class='user-menu-container user-menu-popover'
+    role='navigation'
+    hidden>
+    <li tabindex='1'>
       <a href='${AppConstants.FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
         <div class='user-menu-subtitle'>
@@ -77,19 +81,19 @@ const userMenu = data => `
       </a>
     </li>
     <hr>
-    <li role='menuitem'>
+    <li>
       <a href='/user/settings' class='user-menu-link'>
         <img src='/images/icon-settings.svg' />
         ${getMessage('menu-item-settings')}
       </a>
     </li>
-    <li role='menuitem'>
+    <li>
       <a href='https://support.mozilla.org/kb/firefox-monitor' target='_blank' class='user-menu-link'>
         <img src='/images/icon-help.svg' />
         ${getMessage('menu-item-help')}
       </a>
     </li>
-    <li role='menuitem'>
+    <li>
       <a href='/user/logout' class='user-menu-link'>
         <img src='/images/icon-signout.svg' />
         ${getMessage('menu-item-logout')}
