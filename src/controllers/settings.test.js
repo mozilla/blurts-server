@@ -173,7 +173,7 @@ test('user resendEmail with valid session and email id resets email_address reco
     resetTestEmailAddress.verification_token
   )
 })
-/*
+
 test('user updateCommunicationOptions request with valid session updates DB', async () => {
   const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email
   const testSubscriber = await getSubscriberByEmail(testSubscriberEmail)
@@ -205,7 +205,7 @@ test('user updateCommunicationOptions request with valid session updates DB', as
   )
   expect(againUpdatedTestSubscriber.all_emails_to_primary).toBeTruthy()
 })
-*/
+
 // TODO: more tests of resendEmail failure scenarios
 
 test('user add request with invalid email throws error', async () => {
@@ -217,7 +217,7 @@ test('user add request with invalid email throws error', async () => {
     method: 'POST',
     url: '/user/add',
     body: { email: 'a' },
-    session: { user: testSubscriber, email_addresses: []},
+    session: { user: testSubscriber, email_addresses: [] },
     fluentFormat: jest.fn()
   })
   const resp = createResponse()
@@ -340,7 +340,6 @@ test('user verify request with invalid token returns error', async () => {
   await expect(verifyEmail(req, resp)).rejects.toThrow('Error message for this verification email timed out or something went wrong.')
 })
 
-/*
 test('user unsubscribe GET request with valid token and hash for primary/subscriber record returns 302 to preferences', async () => {
   // from db/seeds/test_subscribers.js
   const subscriberToken =
@@ -677,4 +676,3 @@ test('user breach-stats POST request with includeResolved returns breach stats j
     passwordsResolved: expect.anything()
   })
 })
-*/
