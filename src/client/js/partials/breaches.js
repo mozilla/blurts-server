@@ -23,11 +23,11 @@ function init () {
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
 
-  state.selectedEmail = emailSelect.value
+  state.selectedEmail = emailSelect.value // triggers render
+
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
-  render()
 }
 
 function handleEvent (e) {
@@ -39,46 +39,53 @@ function handleEvent (e) {
       state.selectedStatus = e.target.value
       break
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
-      console.log(e.target.name, e.target.value, e.target.checked)
-      e.target.closest('li').setAttribute('data-checked', e.target.checked)
-      console.log(e.target.closest('.resolve-list').querySelectorAll('[type="checkbox"]:checked'))
-      updateResolved(e.target)
+      updateBreachStatus(e.target)
       break
   }
 }
 
-async function updateResolved (checkbox) {
-  const checkedItems = Array.from(checkbox.closest('.resolve-list').querySelectorAll(':checked'))
+async function updateBreachStatus (input) {
+  const affectedEmail = state.selectedEmail
+  const breachId = input.name
+  const checkedInputs = Array.from(input.closest('.resolve-list').querySelectorAll('input:checked'))
+
   try {
-    const resp = await fetch('/api/v1/user/breaches', {
+    const res = await fetch('/api/v1/user/breaches', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'x-csrf-token': breachesTable.dataset.token
       },
       body: JSON.stringify({
-        affectedEmail: state.selectedEmail,
-        recencyIndex: checkbox.name,
-        resolutionsChecked: checkedItems.map(item => item.value)
+        affectedEmail,
+        recencyIndex: breachId,
+        resolutionsChecked: checkedInputs.map(input => input.value)
       })
     })
 
-    console.log('completed: ', resp.json())
-  } catch (err) {
-    console.error(`Error: ${err}`)
+    if (!res.ok) throw new Error('Bad fetch response')
+
+    const data = await res.json()
+    input.closest('.breach-row').dataset.status = data[affectedEmail][breachId].isResolved ? 'resolved' : 'unresolved'
+    renderResolvedCounts()
+  } catch (e) {
+    console.error('Could not update user breach resolve status:', e)
   }
 }
 
-function render () {
-  let delay = 0
-  let hidden
-
+function renderResolvedCounts () {
   resolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
   unresolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
+}
+
+function renderBreachRows () {
+  let delay = 0
+  let hidden
 
   breachRows.forEach(breach => {
     hidden = (breach.dataset.email !== state.selectedEmail) || (breach.dataset.status !== state.selectedStatus)
     breach.toggleAttribute('hidden', hidden)
+    breach.removeAttribute('open')
     if (!hidden) {
       breach.style.setProperty('--delay', `${delay}ms`)
       delay += 50
@@ -86,31 +93,11 @@ function render () {
   })
 }
 
-if (breachesPartial) init()
-
-// TODO: REMOVE -- this is just an example of updating breach resolution
-// update button
-const b = document.getElementById('update-breaches')
-if (b) {
-  console.log('breaches update test')
-  b.addEventListener('click', async _ => {
-    try {
-      const resp = await fetch('api/v1/user/breaches', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          affectedEmail: 'affected@email.com',
-          recencyIndex: '13',
-          resolutionsChecked: ['passwords',
-            'dates-of-birth', 'email-addresses']
-        })
-      })
-
-      console.log('completed: ', resp.json())
-    } catch (err) {
-      console.error(`Error: ${err}`)
-    }
-  })
+function render () {
+  // render split into separate functions to allow independed trigger
+  // e.g. if user marks all steps resolved – update the count, but leave the breach in place for further user interaction
+  renderResolvedCounts()
+  renderBreachRows()
 }
+
+if (breachesPartial) init()

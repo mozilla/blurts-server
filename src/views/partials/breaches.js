@@ -104,9 +104,4 @@ export const breaches = data => `
   </header>
   ${createBreachRows(data.breachesData)}
 </section>
-<section style='display:none'>
-  <!--This is a temp section/button to test breach update post-->
-  <button id="update-breaches">Update Breaches</button>
-  <pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
-</section>
 `
