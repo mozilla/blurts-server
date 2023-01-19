@@ -174,7 +174,11 @@
 }
 
 .breaches-table details > article a {
-  text-decoration: none; /* TODO: remove this when updated copy is added */
+  text-decoration: none; /* TODO: remove this when anchor tags are fixed with localization changes */
+}
+
+.breaches-table details > article p:first-of-type {
+  margin-top: 0;
 }
 
 .breaches-table details .resolve-list {

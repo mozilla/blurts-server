@@ -47,13 +47,9 @@ function createBreachRows (data) {
           <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
         </summary>
         <article>
-          ${description}
-          <p>
-            <strong>Resolve this breach:</strong>
-            <ol class='resolve-list'>
-              ${createResolveSteps(breach)}
-            </ol>
-          </p>
+          <p>${description}</p>
+          <p><strong>Resolve this breach:</strong></p>
+          <ol class='resolve-list'>${createResolveSteps(breach)}</ol>
         </article>
       </details>
       `

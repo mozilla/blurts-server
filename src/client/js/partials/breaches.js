@@ -98,7 +98,7 @@ function renderBreachRows () {
 }
 
 function render () {
-  // render split into separate functions to allow independed trigger
+  // render split into separate functions to allow independent trigger
   // e.g. if user marks all steps resolved – update the count, but leave the breach in place for further user interaction
   renderResolvedCounts()
   renderBreachRows()
