@@ -62,7 +62,7 @@ const userMenu = data => `
   >
     <img src='${data.fxaProfile?.avatar}' alt='${getMessage('menu-button-alt')}' />
   </button>
-  <menu class='user-menu-container user-menu-popover' hidden>
+  <menu class='user-menu-container user-menu-popover' role='navigation' hidden>
     <li role='menuitem' tabindex='1'>
       <a href='${AppConstants.FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
