@@ -95,9 +95,8 @@ async function getAllBreachesFromDb () {
     log.error('getAllBreachesFromDb', 'No breaches exist in the database: ' + e)
     return dbBreaches
   }
-
-  // TODO: we can do some filtering here for the most commonly used fields
-  // TODO: change field names to camel case
+  // keep naming consistent with HIBP API's output
+  // change to camelcase in sanitizeBreaches
   return dbBreaches.map(breach => ({
     Name: breach.name,
     Title: breach.title,
@@ -204,14 +203,35 @@ function getBreachByName (allBreaches, breachName) {
   return foundBreach
 }
 
+/**
+ * Filter and sanitize breaches output for better API
+ * @param {Object} breaches found breaches with verified emails
+ * @returns sanitized breaches with fewer attributes
+ */
 function filterBreaches (breaches) {
-  return breaches.filter(
+  const filteredBreaches = breaches.filter(
     breach => !breach.IsRetired &&
                 !breach.IsSpamList &&
                 !breach.IsFabricated &&
                 breach.IsVerified &&
                 breach.Domain !== ''
-  )
+  ).map(b => {
+    console.log(JSON.stringify(b))
+    const sanitizedBreach = {}
+    sanitizedBreach.title = b.Title
+    sanitizedBreach.breachId = b.Id
+    sanitizedBreach.recencyIndex = b.recencyIndex
+    sanitizedBreach.domain = b.Domain
+    sanitizedBreach.breachDate = b.BreachDate
+    sanitizedBreach.addedDate = b.AddedDate
+    sanitizedBreach.logoPath = b.LogoPath
+    sanitizedBreach.dataClasses = b.DataClasses
+    sanitizedBreach.isResolved = b.IsResolved
+    sanitizedBreach.resolutionsChecked = b.ResolutionsChecked
+    return sanitizedBreach
+  })
+
+  return filteredBreaches
 }
 
 /**
