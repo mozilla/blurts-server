@@ -74,6 +74,7 @@ monitor-another-email = Vrei să monitorizezi altă adresă de e-mail?
 ## Breach report
 
 email-breach-detected = Rezultatele căutării pentru contul { $email-address } au detectat că este posibil ca e-mailul tău să fi fost expus. Îți recomandăm să acționezi de îndată pentru a rezolva această încălcare a securității datelor.
+email-dashboard-cta = Mergi la tabloul de bord
 
 ## Breach alert
 
