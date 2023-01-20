@@ -29,13 +29,13 @@ function createBreachRows (data) {
   const longList = new Intl.ListFormat(locale, { style: 'long' })
   const breachRowsHTML = data.verifiedEmails.flatMap(account => {
     return account.breaches.map(breach => {
-      const isHidden = !account.primary || breach.IsResolved // initial breach hidden state
-      const status = breach.IsResolved ? 'resolved' : 'unresolved'
-      const breachDate = Date.parse(breach.BreachDate)
-      const addedDate = Date.parse(breach.AddedDate)
-      const dataClassesTranslated = breach.DataClasses.map(item => getMessage(item))
+      const isHidden = !account.primary || breach.isResolved // initial breach hidden state
+      const status = breach.isResolved ? 'resolved' : 'unresolved'
+      const breachDate = Date.parse(breach.breachDate)
+      const addedDate = Date.parse(breach.addedDate)
+      const dataClassesTranslated = breach.dataClasses.map(item => getMessage(item))
       const description = getMessage('breach-description', {
-        companyName: breach.Title,
+        companyName: breach.title,
         breachDate: longDate.format(breachDate),
         addedDate: longDate.format(addedDate),
         dataClasses: longList.format(dataClassesTranslated)
@@ -44,7 +44,7 @@ function createBreachRows (data) {
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
         <summary>
-          <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
+          <span>${breach.title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
         </summary>
         <div>
           ${description}
