@@ -24,27 +24,27 @@ test('EmailUtils.sendEmail before .init() fails', async t => {
     { breach: 'Test' }
   ]
 
-  const { default: EmailUtils } = await import('./email.js')
+  const { sendEmail } = await import('./email.js')
 
   const expectedError = 'SMTP transport not initialized'
 
   await t.throwsAsync(
-    EmailUtils.sendEmail(...sendMailArgs),
+    sendEmail(...sendMailArgs),
     { instanceOf: Error, message: expectedError }
   )
 })
 
 test.serial('EmailUtils.init with empty host uses jsonTransport', async t => {
   const nodemailer = await td.replaceEsm('nodemailer')
-  const { default: EmailUtils } = await import('./email.js')
+  const { initEmail } = await import('./email.js')
 
-  t.true(await EmailUtils.init(''))
+  t.true(await initEmail(''))
   td.verify(nodemailer.createTransport({ jsonTransport: true }))
 })
 
 test.serial('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async t => {
   const nodemailer = await td.replaceEsm('nodemailer')
-  const { default: EmailUtils } = await import('./email.js')
+  const { initEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
   const createTransport = {
@@ -60,14 +60,14 @@ test.serial('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', 
     { times: 1 }
   ).thenResolve('verified')
 
-  const result = await EmailUtils.init(testSmtpUrl)
+  const result = await initEmail(testSmtpUrl)
   t.is(result, 'verified')
 })
 
 test.serial('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async t => {
   const nodemailer = await td.replaceEsm('nodemailer')
   await td.replaceEsm('../utils/fluent.js')
-  const { default: EmailUtils } = await import('./email.js')
+  const { initEmail, sendEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
@@ -92,16 +92,16 @@ test.serial('EmailUtils.sendEmail with recipient, subject, template, context cal
     { times: 1 }
   ).thenResolve('verified')
 
-  const result = await EmailUtils.init(testSmtpUrl)
+  const result = await initEmail(testSmtpUrl)
   t.is(result, 'verified')
 
-  t.deepEqual(await EmailUtils.sendEmail(...sendMailArgs), 'sent')
+  t.deepEqual(await sendEmail(...sendMailArgs), 'sent')
 })
 
 test.serial('EmailUtils.sendEmail rejects with error', async t => {
   const nodemailer = await td.replaceEsm('nodemailer')
   await td.replaceEsm('../utils/fluent.js')
-  const { default: EmailUtils } = await import('./email.js')
+  const { initEmail, sendEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
@@ -127,16 +127,16 @@ test.serial('EmailUtils.sendEmail rejects with error', async t => {
     { times: 1 }
   ).thenResolve('verified')
 
-  t.is(await EmailUtils.init('smtps://test:test@test:1'), 'verified')
+  t.is(await initEmail('smtps://test:test@test:1'), 'verified')
   await t.throwsAsync(
-    EmailUtils.sendEmail(...sendMailArgs),
+    sendEmail(...sendMailArgs),
     { instanceOf: Error, message: 'error' }
   )
 })
 
 test.serial('EmailUtils.init with empty host uses jsonTransport. logs messages', async t => {
   const nodemailer = await td.replaceEsm('nodemailer')
-  const { default: EmailUtils } = await import('./email.js')
+  const { initEmail, sendEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
@@ -161,13 +161,14 @@ test.serial('EmailUtils.init with empty host uses jsonTransport. logs messages',
     { times: 1 }
   ).thenResolve('verified')
 
-  t.is(await EmailUtils.init('smtps://test:test@test:1'), 'verified')
-  t.is(await EmailUtils.sendEmail(...sendMailArgs), sendMailInfo)
+  t.is(await initEmail('smtps://test:test@test:1'), 'verified')
+  t.is(await sendEmail(...sendMailArgs), sendMailInfo)
 })
 
 test('EmailUtils.getEmailCtaHref works without a subscriber ID', async t => {
-  const { default: EmailUtils } = await import('./email.js')
-  const emailCtaHref = EmailUtils.getEmailCtaHref('email-type', 'content')
+  const { getEmailCtaHref } = await import('./email.js')
+
+  const emailCtaHref = getEmailCtaHref('email-type', 'content')
   t.is(emailCtaHref.pathname, '/')
   emailCtaHref.searchParams.sort()
   t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
@@ -179,8 +180,8 @@ test('EmailUtils.getEmailCtaHref works without a subscriber ID', async t => {
 })
 
 test('EmailUtils.getEmailCtaHref works with a subscriber ID', async t => {
-  const { default: EmailUtils } = await import('./email.js')
-  const emailCtaHref = EmailUtils.getEmailCtaHref(
+  const { getEmailCtaHref } = await import('./email.js')
+  const emailCtaHref = getEmailCtaHref(
     'email-type-2',
     'content-2',
     1234
@@ -197,9 +198,9 @@ test('EmailUtils.getEmailCtaHref works with a subscriber ID', async t => {
 })
 
 test('EmailUtils.getVerificationUrl returns a URL', async t => {
-  const { default: EmailUtils } = await import('./email.js')
+  const { getVerificationUrl } = await import('./email.js')
   const fakeSubscriber = { verification_token: 'SubscriberVerificationToken' }
-  const verificationUrl = EmailUtils.getVerificationUrl(fakeSubscriber)
+  const verificationUrl = getVerificationUrl(fakeSubscriber)
   t.is(verificationUrl.pathname, '/api/v1/user/verify-email')
   verificationUrl.searchParams.sort()
   t.deepEqual(Array.from(verificationUrl.searchParams.entries()), [
@@ -212,12 +213,12 @@ test('EmailUtils.getVerificationUrl returns a URL', async t => {
 })
 
 test('EmailUtils.getVerificationUrl throws when subscriber has no token', async t => {
-  const { default: EmailUtils } = await import('./email.js')
+  const { getVerificationUrl } = await import('./email.js')
   const fakeSubscriber = { verification_token: null }
   const expected = 'subscriber has no verification_token'
 
   try {
-    EmailUtils.getVerificationUrl(fakeSubscriber)
+    getVerificationUrl(fakeSubscriber)
   } catch (ex) {
     t.is(ex.message, expected)
   }
@@ -226,8 +227,8 @@ test('EmailUtils.getVerificationUrl throws when subscriber has no token', async 
 test('EmailUtils.getUnsubscribeUrl works with subscriber record', async t => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
-  const { default: EmailUtils } = await import('./email.js')
-  const unsubUrl = EmailUtils.getUnsubscribeUrl(subscriberRecord)
+  const { getUnsubscribeUrl } = await import('./email.js')
+  const unsubUrl = getUnsubscribeUrl(subscriberRecord)
 
   t.is(unsubUrl.searchParams.get('hash'), subscriberRecord.primary_sha1)
   t.is(unsubUrl.searchParams.get('token'), subscriberRecord.primary_verification_token)
@@ -236,8 +237,8 @@ test('EmailUtils.getUnsubscribeUrl works with subscriber record', async t => {
 test('EmailUtils.getUnsubscribeUrl works with email_address record', async t => {
   const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account
 
-  const { default: EmailUtils } = await import('./email.js')
-  const unsubUrl = EmailUtils.getUnsubscribeUrl(emailAddressRecord)
+  const { getUnsubscribeUrl } = await import('./email.js')
+  const unsubUrl = getUnsubscribeUrl(emailAddressRecord)
 
   t.is(unsubUrl.searchParams.get('hash'), emailAddressRecord.sha1)
   t.is(unsubUrl.searchParams.get('token'), emailAddressRecord.verification_token)
@@ -248,8 +249,8 @@ test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', async t => {
     primary_verification_token: 'PrimaryVerificationToken'
   }
 
-  const { default: EmailUtils } = await import('./email.js')
-  const unsubUrl = EmailUtils.getMonthlyUnsubscribeUrl(
+  const { getMonthlyUnsubscribeUrl } = await import('./email.js')
+  const unsubUrl = getMonthlyUnsubscribeUrl(
     fakeSubscriber,
     'campaign',
     'content'
@@ -268,10 +269,10 @@ test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', async t => {
 test('EmailUtils.getMonthlyUnsubscribeUrl throws when subscriber has no token', async t => {
   const fakeSubscriber = { primary_verification_token: null }
   const expected = 'subscriber has no primary verification_token'
-  const { default: EmailUtils } = await import('./email.js')
+  const { getMonthlyUnsubscribeUrl } = await import('./email.js')
 
   try {
-    EmailUtils.getMonthlyUnsubscribeUrl(fakeSubscriber, 'campaign', 'content')
+    getMonthlyUnsubscribeUrl(fakeSubscriber, 'campaign', 'content')
   } catch (ex) {
     t.is(ex.message, expected)
   }
