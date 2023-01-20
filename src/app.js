@@ -16,7 +16,7 @@ import { errorHandler } from './middleware/error.js'
 import { doubleCsrfProtection } from './utils/csrf.js'
 import { initFluentBundles, updateLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
-import EmailUtils from './utils/email.js'
+import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
@@ -133,7 +133,7 @@ app.listen(AppConstants.PORT, async function () {
   console.info(`MONITOR V2: Server listening at ${this.address().port}`)
   console.info(`Static files served from ${staticPath}`)
   try {
-    await EmailUtils.init()
+    await initEmail()
     console.info('Email initialized')
   } catch (ex) {
     console.error('try-initialize-email-error', { ex })
