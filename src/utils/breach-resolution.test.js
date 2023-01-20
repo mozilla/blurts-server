@@ -23,9 +23,9 @@ test('appendBreachResolutionChecklist: two data classes', t => {
     verifiedEmails: [{
       email: 'affected@email.com',
       breaches: [{
-        DataClasses: [BreachDataTypes.Passwords, BreachDataTypes.Email],
-        Name: 'companyName',
-        Domain: 'companyName.com'
+        dataClasses: [BreachDataTypes.Passwords, BreachDataTypes.Email],
+        name: 'companyName',
+        domain: 'companyName.com'
       }]
     }],
     unverifiedEmails: []
@@ -43,9 +43,9 @@ test('appendBreachResolutionChecklist: no data classes', t => {
     verifiedEmails: [{
       email: 'affected@email.com',
       breaches: [{
-        DataClasses: [],
-        Name: 'companyName',
-        Domain: 'companyName.com'
+        dataClasses: [],
+        name: 'companyName',
+        domain: 'companyName.com'
       }]
     }],
     unverifiedEmails: []

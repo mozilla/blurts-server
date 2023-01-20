@@ -105,10 +105,10 @@ function appendBreachResolutionChecklist (userBreachData) {
   const { verifiedEmails } = userBreachData
   for (const { breaches } of verifiedEmails) {
     breaches.forEach(b => {
-      const dataClasses = b.DataClasses
+      const dataClasses = b.dataClasses
       const args = {
-        companyName: b.Name,
-        breachedCompanyUrl: `https://${b.Domain}`
+        companyName: b.name,
+        breachedCompanyUrl: `https://${b.domain}`
       }
       b.breachChecklist = getResolutionRecsPerBreach(dataClasses, args)
     })
