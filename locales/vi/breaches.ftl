@@ -3,8 +3,26 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Rò rỉ dữ liệu đến { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored = { $count } trong tổng số { $total } email được giám sát
+add-email-link = Thêm địa chỉ email
+
+## Breaches resolved filter
+
+filter-label-unresolved = Rò rỉ dữ liệu chưa được giải quyết
+filter-label-resolved = Rò rỉ dữ liệu đã giải quyết
+
+## Breaches table
+
+column-company = CÔNG TY
+column-breached-data = DỮ LIỆU BỊ XÂM PHẠM
+column-detected = PHÁT HIỆN
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Vào { $breachDate }, { $companyName } đã bị xâm phạm. Sau khi rò rỉ dữ liệu được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi vào { $addedDate }. Rò rỉ này bao gồm: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
