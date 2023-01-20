@@ -64,6 +64,8 @@ monitor-another-email = Vrei să monitorizezi altă adresă de e-mail?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+# Have I Been Pwned attribution
+email-2022-hibp-attribution = Datele privind încălcările securității datelor sunt furnizate de <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
@@ -78,3 +80,4 @@ email-dashboard-cta = Mergi la tabloul de bord
 
 ## Breach alert
 
+email-spotted-new-breach = Am identificat o nouă încălcare a securității datelor
