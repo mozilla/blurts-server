@@ -1,12 +1,15 @@
 import { getMessage } from '../../utils/fluent.js'
-import { pieChart } from '../includes/pie-chart.js'
-import chartTestData from '../includes/pie-chart-test-data.js'
+import chartTestData from '../../../src/client/js/components/pie-chart-test-data.js'
 
 export const landing = data => `
+<div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
+  ${chartTestData.map(data => `
+    <pie-chart-component class='chart-test' data-chart='${JSON.stringify(data)}'></pie-chart-component>
+  `).join('')}
+</div>
+<div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
+</div>
 <section class='hero'>
-  <div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
-    ${chartTestData.map(d => pieChart(d)).join('')}
-  </div>
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
     <p>${getMessage('stay-safe-with-tool')}</p>
