@@ -38,14 +38,18 @@ const createEmailItem = (email, breachCounts) => `
   </li>
 `
 
-// Sort first by presence of `primary` key, then by email address.
-const getSortedEmails = emails => [...emails].sort((a, b) => (
-  a.primary
-    ? -1
-    : b.primary
-      ? 1
-      : 0 || a.email.localeCompare(b.email)
-))
+// Moves the primary email to the front and sorts the rest alphabeticaly.
+const getSortedEmails = emails => [...emails].sort((a, b) => {
+  if (a.primary) {
+    return -1
+  }
+
+  if (b.primary) {
+    return 1
+  }
+
+  return a.email.localeCompare(b.email)
+})
 
 const createEmailList = (emails, breachCounts) => `
   <ul class='settings-email-list'>
