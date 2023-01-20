@@ -4,7 +4,7 @@
 
 'use strict'
 
-import getSha1 from '../../utils/sha1.js'
+import getSha1 from '../../utils/fxa.js'
 
 export const TEST_SUBSCRIBERS = {
   firefox_account: {
