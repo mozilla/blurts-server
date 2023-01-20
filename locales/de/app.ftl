@@ -595,7 +595,7 @@ ad-unit-5-no-matter-where = Egal wo Sie sind, erstellen Sie in Sekundenschnelle 
 # ad 6 heading
 ad-unit-6-worry-free = Sorgenfreies Registrieren
 ad-unit-6-want-to-start = Möchten Sie ein neues Abonnement abschließen, auf eine Einladung antworten oder einen günstigen Rabatt-Code erhalten, ohne dass Spam Ihren Posteingang überschwemmt?
-ad-unit-6-before-you-complete = Bevor Sie die nächste Registrieren abschließen, verwenden Sie eine E-Mail-Maske anstelle Ihrer echten, um Ihre Daten zu schützen und die Kontrolle über Ihren Posteingang zu behalten
+ad-unit-6-before-you-complete = Bevor Sie die nächste Registrierung abschließen, verwenden Sie eine E-Mail-Maske anstelle Ihrer echten E-Mail-Adresse, um Ihre Daten zu schützen und die Kontrolle über Ihren Posteingang zu behalten
 
 # Monitor V2
 
