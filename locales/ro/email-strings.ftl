@@ -2,6 +2,10 @@
 -product-name = Firefox Monitor
 # Firefox is a brand name and should not be translated.
 -brand-name = Firefox
+# Firefox Relay is a product name and should not be translated.
+-product-name-relay = Firefox Relay
+# Mozilla VPN is a product name and should not be translated.
+-product-name-vpn = Mozilla VPN
 # A Firefox Monitor Report is an emailed statement from Firefox Monitor containing a list of known data breaches where the user’s email address was found amongst the stolen data.
 firefox-monitor-report = Raport { -product-name }
 report-date = Data raportului:
@@ -55,38 +59,21 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } te avertizează cu privire la încălcările securității datelor în care sunt implicate informațiile tale cu caracter personal.
     Tocmai am primit detalii despre o încălcare a securității datelor suferită de o altă companie.
-# List headline
-faq-list-headline = Întrebări adresate frecvent
-# Link Title
-faq-v2-1 = Nu recunosc una (unul) dintre aceste companii sau site-uri web. De ce apar în această încălcare?
-# Link Title
-faq-v2-2 = Trebuie să fac ceva dacă o încălcare a securității datelor a avut loc cu ani în urmă sau dacă este implicat un cont vechi?
-# Link Title
-faq-v2-3 = Tocmai am aflat că am fost implicat(ă) într-o încălcare a securității datelor. Ce să fac în continuare?
-# Link Title
-faq-v2-4 = Cum tratează { -product-name } site-urile sensibile?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Creează gratuit un { -brand-fxa }</a> și poți adăuga până la 15 adrese de e-mail.
 # Section headline
 monitor-another-email = Vrei să monitorizezi altă adresă de e-mail?
-# Subject line of email
-pre-fxa-subject = O actualizare de la { -product-name }
-pre-fxa-headline = Ce se schimbă cu { -product-name }
-pre-fxa-blurb =
-    Iată ce s-a schimbat de când te-ai înscris pentru { -product-name }, serviciul care 
-    monitorizează încălcările cunoscute ale securității datelor pentru informațiile tale cu caracter personal. Îl legăm de conturile Firefox.
-pre-fxa-tout-1 = Rămâi la curent cu mai multe încălcări ale securității datelor
-pre-fxa-p-1 =
-    <a>Creează un cont</a> ca să monitorizezi până la 15 adrese de e-mail pentru 
-    încălcări ale securității datelor. Îți recomandăm să adaugi orice adrese de e-mail pe care le-ai folosit ca să creezi conturi online.
-pre-fxa-tout-2 = Obține o vizualizare pe tabloul de bord
-pre-fxa-p-2 =
-    Vezi toate încălcările securității datelor într-un singur loc pentru a ști ce parole să schimbi. 
-    Tabloul de bord pentru încălcările securității datelor este disponibil numai cu un cont.
-pre-fxa-tout-3 = Continuă să primești alerte pe e-mail
-pre-fxa-p-3 =
-    Vei primi în continuare alerte de la { -product-name }. Te vom anunța dacă informațiile tale 
-    apar într-o nouă încălcare a securității datelor.
-# Button at the bottom of pre-fxa email.
-create-account = Creează cont
+
+## 2022 email template. HTML tags should not be translated, e.g. `<a>`
+
+
+## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+
+
+## Verification email
+
+
+## Breach report
+
+email-breach-detected = Rezultatele căutării pentru contul { $email-address } au detectat că este posibil ca e-mailul tău să fi fost expus. Îți recomandăm să acționezi de îndată pentru a rezolva această încălcare a securității datelor.
+
+## Breach alert
+
