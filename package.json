@@ -49,8 +49,7 @@
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0",
-    "testdouble": "^3.16.8"
+    "stylelint-config-standard": "^26.0.0"
   },
   "engines": {
     "node": "18.12.x",
