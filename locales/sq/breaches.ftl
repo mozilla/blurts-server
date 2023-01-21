@@ -3,8 +3,28 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Cenime të dhënash për { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } nga { $total } email i mbikëqyrur
+       *[other] { $count } nga { $total } email-e të mbikëqyrur
+    }
+add-email-link = Shtoni adresë email
+
+## Breaches resolved filter
+
+filter-label-unresolved = Cenime të pazgjidhura
+filter-label-resolved = Cenime të zgjidhura
+
+## Breaches table
+
+column-company = SHOQËRI
+column-breached-data = TË DHËNA TË CENUARA
+column-detected = TË PIKASURA
 
 ## Prompts the user for changes when there is a breach detected of password
 
