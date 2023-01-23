@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import chartTestData from './pie-chart-test-data.js'
-
 const CHART_RADIUS = 50
 const CHART_DIAMETER = CHART_RADIUS * 2
 const CHART_CIRCUMFERENCE = Math.PI * CHART_DIAMETER
@@ -11,7 +9,7 @@ const CHART_UPDATE_DURATION = 250
 
 const styles = `
 <style>
-  .pie-chart {
+  .circle-chart {
     align-items: center;
     display: flex;
     gap: var(--padding-md);
@@ -19,17 +17,17 @@ const styles = `
     transition: opacity ${CHART_UPDATE_DURATION * 0.5}ms ease;
   }
 
-  .pie-chart.updating {
+  .circle-chart.updating {
     opacity: 0
   }
 
-  .pie-chart-title {
+  .circle-chart-title {
     display: block;
     font-family: Inter, Inter-fallback, sans-serif;
     margin-bottom: var(--padding-xs);
   }
 
-  .pie-chart-label {
+  .circle-chart-label {
     align-items: center;
     color: var(--gray-40);
     display: flex;
@@ -38,14 +36,14 @@ const styles = `
     position: relative;
   }
 
-  .pie-chart-label::before {
+  .circle-chart-label::before {
     color: inherit;
     content: '\\2B24'; /* Black Large Circle */
     font-size: 0.65em;
     padding-bottom: 0.175em;
   }
 
-  .pie-chart svg {
+  .circle-chart svg {
     border-radius: 50%;
     height: 10vw;
     min-height: 100px;
@@ -54,14 +52,14 @@ const styles = `
     width: 10vw;
   }
 
-  .pie-chart circle {
+  .circle-chart circle {
     cx: 50%;
     cy: 50%;
     fill: none;
     r: 50%;
   }
 
-  .pie-chart text {
+  .circle-chart text {
     font-family: metropolis, sans-serif;
     font-weight: 700;
     text-anchor: middle;
@@ -81,10 +79,10 @@ const calcPercentage = (total, value) => {
 
 const html = () => `
   ${styles}
-  <figure class='pie-chart'></figure>
+  <figure class='circle-chart'></figure>
 `
 
-customElements.define('pie-chart-component', class extends HTMLElement {
+customElements.define('circle-chart', class extends HTMLElement {
   static get observedAttributes () { return ['data-chart'] }
 
   constructor () {
@@ -103,27 +101,12 @@ customElements.define('pie-chart-component', class extends HTMLElement {
     this.render()
   }
 
-  connectedCallback () {
-    console.log('connectedCallback')
-  }
-
-  disconnectedCallback () {
-    console.log('disconnectedCallback')
-  }
-
   attributeChangedCallback (name, oldValue, newValue) {
     // Update cirles when chart data changes
     if (name === 'data-chart' && newValue !== oldValue) {
       this.data = JSON.parse(newValue)
       this.createOrUpdateChart()
     }
-  }
-
-  handleEvent () {
-    const updatedData = chartTestData[Math.floor(Math.random() * chartTestData.length)]
-    this.data = updatedData
-
-    this.setAttribute('data-chart', JSON.stringify(this.data))
   }
 
   composeCircles () {
@@ -151,9 +134,9 @@ customElements.define('pie-chart-component', class extends HTMLElement {
 
   createChartLabels () {
     return `
-      <strong class='pie-chart-title'>${this.data.title}</strong>
+      <strong class='circle-chart-title'>${this.data.title}</strong>
       ${this.data.data.map(({ name, color }) => (
-        `<label class='pie-chart-label' style='color: ${color}'>${name}</label>`
+        `<label class='circle-chart-label' style='color: ${color}'>${name}</label>`
       )).join('')}
     `
   }
@@ -166,11 +149,12 @@ customElements.define('pie-chart-component', class extends HTMLElement {
     const percentage = calcPercentage(this.total, relevantItem.count)
     return `
       <text
+        dy='${CHART_RADIUS * 0.15}'
         fill='${relevantItem.color}'
         font-size='${CHART_RADIUS * 0.4}'
+        font-size='50'
         x='${CHART_RADIUS}'
         y='${CHART_RADIUS}'
-        dy='${CHART_RADIUS * 0.15}'
       >
           ${Math.round(percentage * 100)}%
       </text>
@@ -181,7 +165,7 @@ customElements.define('pie-chart-component', class extends HTMLElement {
     // Create SVG with circles
     const circles = this.composeCircles()
     this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-    this.svg.setAttribute('viewBox', `0 0 ${100} ${100}`)
+    this.svg.setAttribute('viewBox', `0 0 ${CHART_DIAMETER} ${CHART_DIAMETER}`)
     this.svg.innerHTML = `
       ${circles}
       ${this.createCircleLabel()}
@@ -234,7 +218,6 @@ customElements.define('pie-chart-component', class extends HTMLElement {
 
   render () {
     this.shadowRoot.innerHTML = html()
-    this.chartElement = this.shadowRoot.querySelector('.pie-chart')
-    this.chartElement.addEventListener('click', this)
+    this.chartElement = this.shadowRoot.querySelector('.circle-chart')
   }
 })

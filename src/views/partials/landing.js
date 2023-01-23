@@ -1,13 +1,15 @@
 import { getMessage } from '../../utils/fluent.js'
-import chartTestData from '../../../src/client/js/components/pie-chart-test-data.js'
+import chartTestData from '../../../src/client/js/components/circle-chart-test-data.js'
 
 export const landing = data => `
 <div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
   ${chartTestData.map(data => `
-    <pie-chart-component class='chart-test' data-chart='${JSON.stringify(data)}'></pie-chart-component>
+    <circle-chart
+      class='chart-test'
+      data-chart='${JSON.stringify(data)}'
+    >
+    </circle-chart>
   `).join('')}
-</div>
-<div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
 </div>
 <section class='hero'>
   <div>
