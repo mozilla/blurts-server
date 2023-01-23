@@ -48,7 +48,6 @@ const styles = `
     height: 10vw;
     min-height: 100px;
     min-width: 100px;
-    transform: rotate(-90deg);
     width: 10vw;
   }
 
@@ -57,14 +56,14 @@ const styles = `
     cy: 50%;
     fill: none;
     r: 50%;
+    transform: rotate(-90deg);
+    transform-origin: center;
   }
 
   .circle-chart text {
     font-family: metropolis, sans-serif;
     font-weight: 700;
     text-anchor: middle;
-    transform: rotate(90deg);
-    transform-origin: center;
   }
 </style>
 `
