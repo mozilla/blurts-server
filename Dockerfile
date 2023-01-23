@@ -11,13 +11,13 @@ USER app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
+COPY src/package.json ./src/package.json
+
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY --chown=app:app . /app
 
 COPY .env-dist ./.env
-
-RUN npm run build
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
