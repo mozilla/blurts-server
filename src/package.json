@@ -13,8 +13,8 @@
     "dev": "nodemon app.js",
     "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run build:svg",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
-    "copy:webp": "rsync -d --include='*.webp' ./client/images/ ../dist/images/",
-    "copy:root": "rsync -d ./client/ ../dist/",
+    "copy:root": "mkdir -p ../dist/ && cp ./client/*.* ../dist/",
+    "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
     "convert:webp": "sh ./utils/webp.sh",
     "test": "c8 ava"
   },
