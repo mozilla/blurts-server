@@ -223,7 +223,6 @@ customElements.define('circle-chart', class extends HTMLElement {
       return
     }
 
-    // Set chart properties from data
     this.total = this.data.reduce((acc, curr) => acc + curr.count, 0)
 
     this.chartElement.classList.add('updating')
