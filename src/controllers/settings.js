@@ -14,12 +14,12 @@ import {
 import { setAllEmailsToPrimary } from '../db/tables/subscribers.js'
 
 import { fluentError, getMessage } from '../utils/fluent.js'
-import EmailUtils from '../utils/email.js'
+import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email.js'
 import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 import AppConstants from '../app-constants.js'
 import { getBreachesForEmail } from '../utils/hibp.js'
-import { getTemplate } from '../views/email-2022.js'
+// import { getTemplate } from '../views/email-2022.js'
 import { generateToken } from '../utils/csrf.js'
 
 async function settingsPage (req, res) {
@@ -60,14 +60,18 @@ async function settingsPage (req, res) {
 async function addEmail (req, res) {
   const sessionUser = await req.user
   const email = req.body.email
-  // FIXME what should we use in v2 for email address validation?
-  if (!email) {
+  // Use the same regex as HTML5 email input type
+  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+
+  if (!email || !email.match(emailRegex)) {
     throw fluentError('user-add-invalid-email')
   }
 
   if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES) {
     throw fluentError('user-add-too-many-emails')
   }
+
   _checkForDuplicateEmail(sessionUser, email)
 
   const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
@@ -130,15 +134,16 @@ async function _sendVerificationEmail (emailId) {
     emailId
   )
   const recipientEmail = unverifiedEmailAddressRecord.email
-  await EmailUtils.sendEmail(
+  await sendEmail(
     recipientEmail,
     getMessage('email-subject-verify'),
-    getTemplate,
+    // getTemplate,
+    '<html>placeholder</html>', // TODO https://github.com/mozilla/blurts-server/pull/2765
     {
       recipientEmail,
-      ctaHref: EmailUtils.getVerificationUrl(unverifiedEmailAddressRecord),
+      ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
       utmCampaign: 'email_verify',
-      unsubscribeUrl: EmailUtils.getUnsubscribeUrl(
+      unsubscribeUrl: getUnsubscribeUrl(
         unverifiedEmailAddressRecord,
         'account-verification-email'
       ),
