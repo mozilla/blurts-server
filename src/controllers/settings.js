@@ -22,6 +22,8 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 // import { getTemplate } from '../views/email-2022.js'
 import { generateToken } from '../utils/csrf.js'
 
+import { getTemplate, verifyPartial } from '../src/views/email-2022.js'
+
 async function settingsPage (req, res) {
   const emails = await getUserEmails(req.session.user.id)
   // Add primary subscriber email to the list
