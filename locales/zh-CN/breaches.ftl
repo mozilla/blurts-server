@@ -7,6 +7,8 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = { $email-select } 的数据外泄
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored = 已监控 { $count } 个邮箱，共 { $total } 个邮箱
 add-email-link = 添加电子邮件地址
 
 ## Breaches resolved filter
