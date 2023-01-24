@@ -28,7 +28,7 @@
     "helmet": "4.2.0",
     "intl-pluralrules": "1.2.1",
     "isemail": "3.2.0",
-    "knex": "^2.2.0",
+    "knex": "^2.4.2",
     "mozlog": "3.0.2",
     "nodemailer": "^6.7.8",
     "nodemailer-express-handlebars": "5.0.0",
