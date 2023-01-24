@@ -8,6 +8,7 @@ get-started = Başlayalım
 
 ## Why use Firefox Monitor?
 
+why-use-monitor = Neden { -brand-fx-monitor } kullanmalısınız?
 identifying-breaches = Veri ihlallerini tespit etmek ve çözmek, çevrimiçi gizliliğinizi sağlamada önemli bir adımdır.
 protect-account = Hesaplarınızı koruyun
 protect-account-prevent-hackers = Bilgisayar korsanlarının ele geçirdikleri parolalarla hesaplarınıza girmesini engelleyin.

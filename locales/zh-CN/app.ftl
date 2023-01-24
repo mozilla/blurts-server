@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox 账户
-terms-and-privacy = 使用条款和隐私
 GitHub-link-title = GitHub
 error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
 error-could-not-add-email = 无法将电子邮件地址添加到数据库。
@@ -75,7 +74,6 @@ share-facebook-blurb = 您的账号也出现在数据外泄事件当中吗？
 og-site-description = 使用 { -product-name }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
 show-all = 全部显示
 fxa-scan-another-email = 想要检查其他电子邮件地址？
-sign-in = 登录
 sign-out = 退出
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = 管理 { -brand-fxa }
@@ -118,7 +116,7 @@ cant-stop-hackers = 您无法阻止黑客入侵，但可以通过改变习惯，
 read-more-tips = 阅读更多安全提示
 how-hackers-work = 了解黑客的手段
 monitor-your-online-accounts = 使用 { -brand-fxa }订阅数据外泄警报
-stay-alert = 警惕新的数据外泄事件
+stay-alert = 时刻留意新的数据外泄事件
 if-your-info = 如果您的信息出现于新的数据外泄事件中，我们会向您发送警报。
 search-all-emails = 搜索您在使用的所有邮箱地址，检查是否有数据外泄事件，也在有新威胁时收到警报。
 monitor-several-emails = 监控多个电子邮件地址
@@ -134,7 +132,7 @@ sensitive-breach-plural = 敏感信息外泄
 data-aggregator-breach-plural = 数据聚合商信息外泄
 unverified-breach-plural = 未经证实的信息外泄
 spam-list-breach-plural = 垃圾邮件列表信息外泄
-what-data = 泄露了哪些数据：
+what-data = 泄露的数据：
 sensitive-sites = { -product-name } 如何处理这些敏感网站？
 sensitive-sites-copy = { -product-name } 仅会在电子邮件地址验证后，才显示与这些数据外泄事件相关联的账号。也就是说只有您能看到您的账号是否与此事件有关（除非有他人也能使用使用您的邮箱账号。）
 delayed-reporting-headline = 为什么要这么久才公开这些事件？
@@ -295,7 +293,7 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
-results-for = { $userEmail } 的搜索结果：
+results-for = { $userEmail } 的搜索结果
 other-monitored-emails = 其他监控的邮箱地址
 email-verification-required = 需要验证邮箱地址
 fxa-primary-email = { -brand-fxa }邮件 - 主账号
@@ -316,7 +314,7 @@ other-known-breaches-found =
     }
 # This string appears on breach detail pages and is followed by a list
 # of data classes that the breach exposed.
-additional-information-including = 其他信息，包含：
+additional-information-including = 其他信息，包括：
 # Title
 email-addresses-title = 电子邮件地址
 # This is a section headline on the breach detail page that appears above
@@ -375,7 +373,7 @@ breach-alert-notifications = 外泄警报通知
 # This string is a label for the calendar date a breach is added to the database
 # and is followed by that date. 
 breach-added-label = 事件记录时间：
-how-hackers-work-desc = 保护您的密码不受网络犯罪侵害，这是他们最关心的议题。
+how-hackers-work-desc = 保护您的密码不受网络犯罪侵害，这正是不法分子虎视眈眈的信息。
 what-to-do-after-breach-desc = 锁定账号，让您的个人信息不落入坏人之手。
 create-strong-passwords-desc = 让您的密码更强大、更安全、更难猜测。
 steps-to-protect-desc = 了解最常见的威胁，并了解要注意哪些事项。
@@ -479,7 +477,7 @@ fpn-promo-headline = 对网站和跟踪器伪装您的位置
 promo-fpn-body = { -brand-fpn } 通过伪装您的真实 IP 地址，摆脱那些用广告定位您的网站和数据收集器。
 promo-fpn-cta = 获取 { -brand-fpn }
 monitor-promo-headline = 帮您关心数据泄露事故
-monitor-promo-body = 在您的个人信息出现在数据外泄事件时收到通知。
+monitor-promo-body = 在您的个人信息出现在数据外泄事件中时收到通知。
 ecosystem-promo-headline = 使用尊重隐私的产品保卫您的网络世界
 ecosystem-promo-body = 所有 { -brand-name } 产品，均符合我们对个人数据隐私的承诺：索取更少、确保安全、绝不隐瞒。
 promo-ecosystem-cta = 一览所有产品
@@ -549,3 +547,29 @@ ad-unit-5-no-matter-where = 无论您身居何处，只需几秒就可为想做�
 ad-unit-6-worry-free = 注册全无忧
 ad-unit-6-want-to-start = 想要开始新订阅、回复邀请或获得优惠促销代码，而不让垃圾邮件充斥您的收件箱吗？
 ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮箱而非真实邮箱，保护您的个人信息并更好地管理收件箱
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla 基金会
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+meta-desc = 使用 { -brand-fx-monitor }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = 登录
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = 使用条款和隐私
+github = { -brand-github }

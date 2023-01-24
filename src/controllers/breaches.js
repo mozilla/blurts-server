@@ -1,8 +1,12 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import { mainLayout } from '../views/main.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
-
 import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
+import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 
 async function breachesPage (req, res) {
@@ -10,10 +14,13 @@ async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   appendBreachResolutionChecklist(breachesData)
+
   const data = {
     breachesData,
     emailCount,
-    partial: breaches
+    partial: breaches,
+    csrfToken: generateToken(res),
+    fxaProfile: req.user.fxa_profile_json
   }
 
   res.send(mainLayout(data))

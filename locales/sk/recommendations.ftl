@@ -23,7 +23,7 @@ rec-pw-2 =
 # Recommendation subhead
 rec-pw-3-subhead = So správcom hesiel máte svoje heslá vždy poruke
 # Link title
-rec-pw-3-cta = Prevziať { -brand-lockwise }
+rec-pw-3-cta = Získať { -brand-lockwise }
 rec-pw-3-fx =
     { -brand-lockwise } vám dáva bezpečný prístup k vašim heslám uloženým vo 
     { -brand-name(case: "loc") }, a to kdekoľvek - aj mimo prehliadača.

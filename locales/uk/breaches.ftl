@@ -3,8 +3,31 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Витоки даних для { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] Відстежується { $count } адреса е-пошти з { $total }
+        [few] Відстежується { $count } адреси е-пошти з { $total }
+       *[many] Відстежується { $count } адрес е-пошти з { $total }
+    }
+add-email-link = Додайте адресу електронної пошти
+
+## Breaches resolved filter
+
+filter-label-unresolved = Нерозв'язані витоки
+filter-label-resolved = Розв'язані витоки
+
+## Breaches table
+
+column-company = КОМПАНІЯ
+column-breached-data = УРАЖЕНІ ДАНІ
+column-detected = ВИЯВЛЕНО
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = { $breachDate }, у { $companyName } стався витік даних. Одразу після виявлення та підтвердження, цей витік було додано до нашої бази даних на { $addedDate }. До цього витоку входять: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 

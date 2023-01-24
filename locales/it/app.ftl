@@ -77,9 +77,9 @@ unsub-button = Annulla iscrizione
 # Breach data provided by Have I Been Pwned.
 hibp-attribution = Dati sulle violazioni forniti da { $hibp-link }
 share-twitter = La maggior parte delle persone ha un centinaio di account online. Scopri se alcuni dei tuoi sono stati esposti a una violazione dei dati.
-share-facebook-headline = Scopri se hai subito una violazione dei dati
+share-facebook-headline = Scopri se sei stato coinvolto in una violazione di dati
 share-facebook-blurb = I tuoi account online sono stati esposti a una violazione dei dati?
-og-site-description = Scopri se hai subito una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
+og-site-description = Scopri se sei stato coinvolto in una violazione dei dati con { -product-name }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
 show-all = Mostra tutto
 fxa-scan-another-email = Vuoi controllare un altro indirizzo email?
 sign-out = Disconnetti
@@ -88,7 +88,7 @@ manage-fxa = Gestisci l’{ -brand-fxa }
 have-an-account = Hai già un account?
 fxa-pwt-summary-2 = Le password brevi che contengono una singola parola sono facili da indovinare per gli hacker. Usare almeno due parole e una combinazione di lettere, numeri e caratteri speciali.
 fxa-pwt-summary-4 = I gestori di password come 1Password, LastPass, Dashlane e Bitwarden conservano le tue password e le inseriscono nei siti web per te. Ti aiutano persino a creare password sicure.
-fxa-pwt-summary-6 = Le violazioni dei dati sono in aumento. Se le tue informazioni personali sono coinvolte in una nuova violazioni di dati, { -product-name } ti invia un avviso, così puoi attivarti per proteggere i tuoi account.
+fxa-pwt-summary-6 = Le violazioni di dati sono in aumento. Se le tue informazioni personali sono coinvolte in una nuova violazioni di dati, { -product-name } ti invia un avviso, così puoi attivarti per proteggere i tuoi account.
 fxa-what-to-do-blurb-1 = Se non riesci più ad accedere, contatta il sito web e chiedi come aggiornare le tue credenziali. Hai trovato nel rapporto un account che non riconosci?  I tuoi dati potrebbero essere stati venduti o ridistribuiti. Potrebbe anche trattarsi di un account che ti eri dimenticato di aver creato, oppure non lo riconosci perché la società che fornisce il servizio ha ne ha modificato il nome.
 fxa-what-to-do-subhead-2 = Non usare più la password compromessa e modificala ovunque tu l’abbia utilizzata.
 fxa-wtd-blurb-2 = Gli hacker potrebbero provare la stessa password in combinazione con il tuo indirizzo email per entrare in altri account. Imposta una password diversa e unica per ciascun account, in particolare per il tuo conto in banca, il tuo account email e altri siti che registrano informazioni personali.
@@ -589,6 +589,7 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 
 ## Search Engine Optimization
 
+meta-desc = Scopri se sei stato coinvolto in una violazione dei dati con { -brand-fx-monitor }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
 
 ## Header
 

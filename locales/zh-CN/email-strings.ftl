@@ -54,12 +54,16 @@ monitor-another-email = 要监控其他电子邮件地址吗？
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+email-2022-unsubscribe = 我们向您自动发送这封电子邮件，是因为您订阅了 { -product-name }。 <br>您可随时在<a { $unsubscribe-link-attr }>此处</a>更改您的电子邮件偏好。
 # Have I Been Pwned attribution
 email-2022-hibp-attribution = 数据外泄事件信息由 <a { $hibp-link-attr }>{ -brand-HIBP }</a> 提供
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 
 email-unresolved-heading = 您有未处理的数据外泄事件
+email-unresolved-subhead = 您的电子邮件地址已泄露。 <br>立即使用 { -product-name } 来修复。
+email-is-affected = 您的电子邮件地址 { $email-address } 受到至少一次数据泄露的影响
+email-more-detail = 立即登录 { -product-name } 以查看有关您的数据泄露的更多详情（包括它们发生的时间以及泄露了哪些数据），并了解当您的电子邮件在数据泄露中暴露时应该怎么做。
 email-breach-status = 当前事件状态
 # table row 1 label
 email-monitored = 监控邮箱总数：
@@ -74,14 +78,17 @@ email-resolve-cta = 处理此事件
 ## Verification email
 
 email-verify-heading = 立即行动，保护您的个人数据
+email-verify-subhead = 验证您的电子邮件地址以在泄露事件发生后保护您的数据。
 email-verify-simply-click = 请尽快点击下方链接，完成账户验证。
 
 ## Breach report
 
 email-breach-summary = 以下是您的数据外泄情况概览
+email-breach-detected = 您的 { $email-address } 账户的搜索结果显示您的电子邮件地址可能已被泄露。我们建议您立即采取行动来应对此次泄露。
 email-no-breach-detected = 好消息！我们并未发现与您邮箱 { $email-address } 有关的数据外泄事件。
 email-dashboard-cta = 前往面板
 
 ## Breach alert
 
+email-may-have-been-exposed = 您的电子邮件地址可能在数据泄露事件中暴露了
 email-spotted-new-breach = 我们发现新的数据外泄事件

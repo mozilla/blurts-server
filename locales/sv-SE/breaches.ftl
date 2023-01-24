@@ -3,8 +3,30 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Dataintrång för { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } av { $total } e-postadress övervakad
+       *[other] { $count } av { $total } e-postadresser övervakade
+    }
+add-email-link = Lägg till e-postadress
+
+## Breaches resolved filter
+
+filter-label-unresolved = Olösta intrång
+filter-label-resolved = Lösta intrång
+
+## Breaches table
+
+column-company = FÖRETAG
+column-breached-data = INTRÅNGSDATA
+column-detected = UPPTÄCKT
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Den { $breachDate } hade { $companyName } intrång. När intrånget upptäcktes och verifierades lades det till i vår databas den { $addedDate }. Detta intrång inkluderade: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 

@@ -88,6 +88,7 @@ occupations = Beroepen
 parenting-plans = Ouderschapsplannen
 partial-credit-card-data = Gedeeltelijke creditcardgegevens
 partial-dates-of-birth = Gedeeltelijke geboortedata
+partial-phone-numbers = Gedeeltelijke telefoonnummers
 passport-numbers = Paspoortnummers
 password-hints = Wachtwoordhints
 password-strengths = Wachtwoordsterktes
