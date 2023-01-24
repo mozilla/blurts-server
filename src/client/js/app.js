@@ -9,14 +9,13 @@ circleCharts.forEach(chart => {
         {
           key: 'resolved',
           name: 'Resolved',
-          count: 1,
-          color: '#9059ff',
-          showPercentage: true
+          count: 5,
+          color: '#9059ff'
         },
         {
           key: 'unresolved',
           name: 'Unresolved',
-          count: 5,
+          count: 0,
           color: '#321c64'
         }
       ],

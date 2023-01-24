@@ -82,7 +82,14 @@ const html = () => `
 `
 
 customElements.define('circle-chart', class extends HTMLElement {
-  static get observedAttributes () { return ['data-chart'] }
+  static get observedAttributes () {
+    return [
+      'data',
+      'is-donut',
+      'show-percentage-for',
+      'title'
+    ]
+  }
 
   constructor () {
     super()
@@ -90,29 +97,47 @@ customElements.define('circle-chart', class extends HTMLElement {
 
     // Chart properties
     this.data = null
-    this.innerRadius = 0
     this.isDonut = false
+    this.showPercentageFor = ''
+    this.title = ''
+
     this.svg = null
     this.total = 0
-
     this.updateTimeout = null
 
     this.render()
   }
 
   attributeChangedCallback (name, oldValue, newValue) {
-    // Update cirles when chart data changes
-    if (name === 'data-chart' && newValue !== oldValue) {
-      this.data = JSON.parse(newValue)
-      this.createOrUpdateChart()
+    if (newValue === 'undefined' || newValue === oldValue) {
+      return
+    }
+
+    switch (name) {
+      case 'data':
+        this.data = JSON.parse(newValue)
+        this.createOrUpdateChart()
+        break
+      case 'is-donut':
+        this.isDonut = JSON.parse(newValue)
+        break
+      case 'show-percentage-for':
+        this.showPercentageFor = newValue
+        break
+      case 'title':
+        this.title = newValue
+        break
+      default:
+        console.warning(`Unhandled attribute: ${name}`)
     }
   }
 
   composeCircles () {
     let sliceOffset = 0
     return `
-      ${this.data.data.reduce((acc, curr) => {
+      ${this.data.reduce((acc, curr) => {
         const percentage = calcPercentage(this.total, curr.count)
+        const innerRadius = this.isDonut ? 0.85 : 0
         const strokeLength = CHART_CIRCUMFERENCE * percentage
 
         const circle = `
@@ -120,7 +145,7 @@ customElements.define('circle-chart', class extends HTMLElement {
             stroke='${curr.color}'
             stroke-dasharray='${strokeLength} ${CHART_CIRCUMFERENCE}'
             stroke-dashoffset='${-1 * CHART_CIRCUMFERENCE * sliceOffset}'
-            stroke-width='${CHART_DIAMETER * (1 - this.innerRadius)}%'
+            stroke-width='${CHART_DIAMETER * (1 - innerRadius)}%'
           ></circle>
         `
         acc.push(circle)
@@ -133,15 +158,17 @@ customElements.define('circle-chart', class extends HTMLElement {
 
   createChartLabels () {
     return `
-      <strong class='circle-chart-title'>${this.data.title}</strong>
-      ${this.data.data.map(({ name, color }) => (
+      ${this.title !== ''
+        ? `<strong class='circle-chart-title'>${this.title}</strong>`
+        : ''}
+      ${this.data.map(({ name, color }) => (
         `<label class='circle-chart-label' style='color: ${color}'>${name}</label>`
       )).join('')}
     `
   }
 
   createCircleLabel () {
-    const relevantItem = this.data.data.find(d => d.showPercentage)
+    const relevantItem = this.data.find(d => d.key === this.showPercentageFor)
     if (!relevantItem) {
       return ''
     }
@@ -196,12 +223,8 @@ customElements.define('circle-chart', class extends HTMLElement {
       return
     }
 
-    const { data, isDonut } = this.data
-
     // Set chart properties from data
-    this.innerRadius = isDonut ? 0.85 : 0
-    this.isDonut = isDonut
-    this.total = data.reduce((acc, curr) => acc + curr.count, 0)
+    this.total = this.data.reduce((acc, curr) => acc + curr.count, 0)
 
     this.chartElement.classList.add('updating')
     this.updateTimeout = setTimeout(() => {

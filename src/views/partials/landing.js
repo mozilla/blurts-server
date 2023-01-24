@@ -5,10 +5,11 @@ export const landing = data => `
 <div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
   ${chartTestData.map(data => `
     <circle-chart
-      class='chart-test'
-      data-chart='${JSON.stringify(data)}'
-    >
-    </circle-chart>
+      data='${JSON.stringify(data.data)}'
+      is-donut='${JSON.stringify(data.isDonut)}'
+      show-percentage-for='${data.showPercentageFor}'
+      title='${data.title}'
+    ></circle-chart>
   `).join('')}
 </div>
 <section class='hero'>

@@ -6,8 +6,7 @@ export default [
         key: 'resolved',
         name: 'Resolved',
         count: 0,
-        color: '#9059ff',
-        showPercentage: true
+        color: '#9059ff'
       },
       {
         key: 'unresolved',
@@ -16,6 +15,7 @@ export default [
         color: '#321c64'
       }
     ],
+    showPercentageFor: 'resolved',
     isDonut: true
   },
   {
@@ -25,8 +25,7 @@ export default [
         key: 'resolved',
         name: 'Resolved',
         count: 1,
-        color: '#9059ff',
-        showPercentage: true
+        color: '#9059ff'
       },
       {
         key: 'unresolved',
@@ -35,6 +34,7 @@ export default [
         color: '#321c64'
       }
     ],
+    showPercentageFor: 'resolved',
     isDonut: true
   },
   {
@@ -44,8 +44,7 @@ export default [
         key: 'resolved',
         name: 'Resolved',
         count: 2,
-        color: '#9059ff',
-        showPercentage: true
+        color: '#9059ff'
       },
       {
         key: 'unresolved',
@@ -54,6 +53,7 @@ export default [
         color: '#321c64'
       }
     ],
+    showPercentageFor: 'resolved',
     isDonut: true
   },
   {
@@ -63,8 +63,7 @@ export default [
         key: 'resolved',
         name: 'Resolved',
         count: 1,
-        color: '#9059ff',
-        showPercentage: true
+        color: '#9059ff'
       },
       {
         key: 'unresolved',
@@ -73,6 +72,7 @@ export default [
         color: '#321c64'
       }
     ],
+    showPercentageFor: 'resolved',
     isDonut: true
   },
   {
@@ -82,8 +82,7 @@ export default [
         key: 'resolved',
         name: 'Resolved',
         count: 7,
-        color: '#9059ff',
-        showPercentage: true
+        color: '#9059ff'
       },
       {
         key: 'unresolved',
@@ -92,6 +91,7 @@ export default [
         color: '#321c64'
       }
     ],
+    showPercentageFor: 'resolved',
     isDonut: true
   },
   {
@@ -101,8 +101,7 @@ export default [
         key: 'resolved',
         name: 'Resolved',
         count: 1,
-        color: '#9059ff',
-        showPercentage: true
+        color: '#9059ff'
       },
       {
         key: 'unresolved',
@@ -111,6 +110,7 @@ export default [
         color: '#321c64'
       }
     ],
+    showPercentageFor: 'resolved',
     isDonut: true
   },
   {
