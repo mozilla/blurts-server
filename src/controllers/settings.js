@@ -22,7 +22,7 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 // import { getTemplate } from '../views/email-2022.js'
 import { generateToken } from '../utils/csrf.js'
 
-import { getTemplate, verifyPartial } from '../src/views/email-2022.js'
+import { getTemplate, verifyPartial } from '../views/email-2022.js'
 
 async function settingsPage (req, res) {
   const emails = await getUserEmails(req.session.user.id)
@@ -139,20 +139,20 @@ async function _sendVerificationEmail (emailId) {
   await sendEmail(
     recipientEmail,
     getMessage('email-subject-verify'),
-    // getTemplate,
-    '<html>placeholder</html>', // TODO https://github.com/mozilla/blurts-server/pull/2765
-    {
-      recipientEmail,
-      ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
-      utmCampaign: 'email_verify',
-      unsubscribeUrl: getUnsubscribeUrl(
-        unverifiedEmailAddressRecord,
-        'account-verification-email'
-      ),
-      whichPartial: 'email_partials/email_verify',
-      heading: getMessage('email-verify-heading'),
-      subheading: getMessage('email-verify-subhead')
-    }
+    getTemplate(verifyPartial,
+      {
+        recipientEmail,
+        ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
+        utmCampaign: 'email_verify',
+        unsubscribeUrl: getUnsubscribeUrl(
+          unverifiedEmailAddressRecord,
+          'account-verification-email'
+        ),
+        whichPartial: 'email_partials/email_verify',
+        heading: getMessage('email-verify-heading'),
+        subheading: getMessage('email-verify-subhead')
+      }
+    )
   )
 }
 
