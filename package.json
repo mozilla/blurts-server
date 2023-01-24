@@ -78,10 +78,8 @@
     "url": "git+https://github.com/mozilla/blurts-server.git"
   },
   "scripts": {
-    "start": "npm start -w src",
-    "start:legacy": "npm run build && node server.js",
-    "dev": "cd src && nodemon app.js",
-    "dev:legacy": "nodemon server.js",
+    "start": "node is-v2.js && npm start -w src || npm run build && node server.js",
+    "dev": "node is-v2.js && (cd src && nodemon app.js || exit 0) || nodemon server.js",
     "build": "node esbuild.js",
     "db:migrate": "knex migrate:latest --knexfile db/knexfile.js",
     "db:rollback": "knex migrate:rollback --knexfile db/knexfile.js",
