@@ -182,6 +182,11 @@ button.secondary,
   padding: var(--padding-md);
 }
 
+input[type='checkbox'] {
+  width: var(--checkbox-w);
+  height: var(--checkbox-w);
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;

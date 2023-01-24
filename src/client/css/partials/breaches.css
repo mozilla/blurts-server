@@ -189,20 +189,19 @@
 
 .breaches-table details .resolve-list-item {
   position: relative;
-  padding-right: 60px;
+  padding-right: calc(var(--padding-lg) * 2 + var(--checkbox-w));
 }
 
 .breaches-table details .resolve-list-item input {
   position: absolute;
-  right: 20px;
-  width: 20px;
-  height: 20px;
+  right: var(--padding-lg);
   accent-color: var(--green-80);
 }
 
 .breaches-table details .resolve-list-item input:checked + p {
   text-decoration-line: line-through;
-  opacity: 0.5;
+  opacity: 0.33;
+  transition: opacity 0.5s;
 }
 
 .breaches-table details .resolve-list-item i {
