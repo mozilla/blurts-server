@@ -5,8 +5,8 @@
 import { mainLayout } from '../views/main.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
-
 import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
+import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 
 async function breachesPage (req, res) {
@@ -18,8 +18,9 @@ async function breachesPage (req, res) {
   const data = {
     breachesData,
     emailCount,
-    fxaProfile: req.user.fxa_profile_json,
-    partial: breaches
+    partial: breaches,
+    csrfToken: generateToken(res),
+    fxaProfile: req.user.fxa_profile_json
   }
 
   res.send(mainLayout(data))
