@@ -88,13 +88,11 @@ app.use((req, res, next) => {
   })
 })
 
-// MNTOR-1009:
-// Because of heroku's proxy settings, request / cookies are not persisted between calls
+// MNTOR-1009, 1117:
+// Because of proxy settings, request / cookies are not persisted between calls
 // Setting the trust proxy to high and securing the cookie allowed the cookie to persist
 // If cookie.secure is set as true, for nodejs behind proxy, "trust proxy" needs to be set
-if (AppConstants.NODE_ENV === 'heroku') {
-  app.set('trust proxy', 1)
-}
+app.set('trust proxy', 1)
 
 // session
 const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48
