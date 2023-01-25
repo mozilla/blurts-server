@@ -132,7 +132,6 @@ async function resendEmail (req, res) {
 }
 
 async function _sendVerificationEmail (emailId) {
-  console.debug('debug1:', emailId)
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId
   )
