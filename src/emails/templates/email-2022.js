@@ -6,12 +6,13 @@ import AppConstants from '../../app-constants.js'
 import { getMessage } from '../../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
-const links = {
+const links = (data) => ({
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',
-  legal: 'https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=&utm_content=email-footer-link',
-  termsAndPrivacy: 'https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=&utm_content=email-footer-link'
-}
+  legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
+  termsAndPrivacy: `https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`
+})
+
 const images = {
   header: `${AppConstants.SERVER_URL}/img/email_images/person-at-desk.png`,
   footer: `${AppConstants.SERVER_URL}/img/email_images/mozilla-logo-bw-rgb.png`,
@@ -154,7 +155,6 @@ function getEmailFooterCopy (data) {
       ${getMessage('email-unsub-link')}
     </a>
   `
-  /*
   const faqLink = `
     <a href='${links.faq}'>
       ${isMonthlyUnresolved
@@ -162,8 +162,7 @@ function getEmailFooterCopy (data) {
         : getMessage('email-verify-footer-copy')}
     </a>
   `
-  */
-  const faqLink = 'test'
+
   return getMessage('email-footer-blurb', {
     unsubLink,
     faqLink
