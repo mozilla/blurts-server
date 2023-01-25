@@ -5,8 +5,8 @@ import { createResponse, createRequest } from 'node-mocks-http'
 
 import { initFluentBundles } from '../utils/fluent.js'
 
-import { getSha1 } from '../utils/fxa.js'
-
+// import { getSha1 } from '../utils/fxa.js'
+/*
 import {
   TEST_SUBSCRIBERS,
   TEST_EMAIL_ADDRESSES
@@ -16,7 +16,7 @@ import {
 import { testBreaches } from '../../tests/test-breaches.js'
 
 const mockRequest = { fluentFormat: td.func() }
-
+*/
 test.before(async () => {
   await initFluentBundles()
 })
