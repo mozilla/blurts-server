@@ -640,14 +640,21 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 ## The following messages are brands and should be kept entirely in English
 
 -brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
 
 ## Search Engine Optimization
 
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Logg inn
 
 ## Footer
 
+mozilla = { -brand-mozilla }
 terms-and-privacy = Vilkår og personvern
+github = { -brand-github }
