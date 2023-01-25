@@ -137,23 +137,23 @@ async function _sendVerificationEmail (emailId) {
     emailId
   )
   const recipientEmail = unverifiedEmailAddressRecord.email
+  const data = {
+    recipientEmail,
+    ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
+    utmCampaign: 'email_verify',
+    unsubscribeUrl: getUnsubscribeUrl(
+      unverifiedEmailAddressRecord,
+      'account-verification-email'
+    ),
+    whichPartial: 'email_partials/email_verify',
+    heading: getMessage('email-verify-heading'),
+    subheading: getMessage('email-verify-subhead'),
+    partial: { name: 'verify' }
+  }
   await sendEmail(
     recipientEmail,
     getMessage('email-subject-verify'),
-    getTemplate(verifyPartial,
-      {
-        recipientEmail,
-        ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
-        utmCampaign: 'email_verify',
-        unsubscribeUrl: getUnsubscribeUrl(
-          unverifiedEmailAddressRecord,
-          'account-verification-email'
-        ),
-        whichPartial: 'email_partials/email_verify',
-        heading: getMessage('email-verify-heading'),
-        subheading: getMessage('email-verify-subhead')
-      }
-    )
+    getTemplate(data, verifyPartial(data))
   )
 }
 

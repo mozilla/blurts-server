@@ -9,8 +9,8 @@ const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA
 const links = {
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',
-  legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
-  termsAndPrivacy: `https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`
+  legal: 'https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=&utm_content=email-footer-link',
+  termsAndPrivacy: 'https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=&utm_content=email-footer-link'
 }
 const images = {
   header: `${AppConstants.SERVER_URL}/img/email_images/person-at-desk.png`,
@@ -154,6 +154,7 @@ function getEmailFooterCopy (data) {
       ${getMessage('email-unsub-link')}
     </a>
   `
+  /*
   const faqLink = `
     <a href='${links.faq}'>
       ${isMonthlyUnresolved
@@ -161,14 +162,15 @@ function getEmailFooterCopy (data) {
         : getMessage('email-verify-footer-copy')}
     </a>
   `
-
+  */
+  const faqLink = 'test'
   return getMessage('email-footer-blurb', {
     unsubLink,
     faqLink
   })
 }
 
-const getTemplate = data => `
+const getTemplate = (data, partial) => `
   <!doctype html>
   <html>
     <head>
@@ -232,8 +234,7 @@ const getTemplate = data => `
           heading: 'email-verify-heading',
           subhead: 'email-verify-subhead'
         })}
-        <!-- TODO: Pass or get partial -->
-        ${data.partial}
+        ${partial}
         ${emailFooter(data)}
       </table>
     </body>
