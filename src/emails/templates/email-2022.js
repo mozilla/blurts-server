@@ -123,7 +123,7 @@ const emailFooter = (data) => `
       </p>
       <p>
         ${getMessage('email-2022-hibp-attribution', {
-          'hibp-link-attr': `href='${links.hibp}' rel='noopener'`
+          'hibp-link-attr': `href='${links(data).hibp}' rel='noopener'`
         })}
       </p>
       <img
@@ -136,11 +136,11 @@ const emailFooter = (data) => `
         ${companyAddress}
       </p>
       <p>
-        <a href='${links.legal}'>
+        <a href='${links(data).legal}'>
           ${getMessage('legal')}
         </a>
         ${' • '}
-        <a href='${links.termsAndPrivacy}'>
+        <a href='${links(data).termsAndPrivacy}'>
           ${getMessage('terms-and-privacy')}
         </a>
       </p>
@@ -156,11 +156,7 @@ function getEmailFooterCopy (data) {
     </a>
   `
   const faqLink = `
-    <a href='${links.faq}'>
-      ${isMonthlyUnresolved
-        ? getMessage('frequently-asked-questions')
-        : getMessage('email-verify-footer-copy')}
-    </a>
+    <a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>
   `
 
   return getMessage('email-footer-blurb', {
