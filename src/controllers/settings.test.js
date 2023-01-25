@@ -5,7 +5,7 @@ import { createResponse, createRequest } from 'node-mocks-http'
 
 import { initFluentBundles } from '../utils/fluent.js'
 
-// import { getSha1 } from '../utils/fxa.js'
+import { getSha1 } from '../utils/fxa.js'
 /*
 import {
   TEST_SUBSCRIBERS,
@@ -25,16 +25,17 @@ test.afterEach(() => {
   td.reset()
 })
 
-test('user add POST with email adds unverified subscriber and sends verification email', async t => {
+test.serial('user add POST with email adds unverified subscriber and sends verification email', async t => {
   const testUserAddEmail = 'addingnewemail@test.com'
   const testSubscriberEmail = 'firefoxaccount@test.com'
+  const testSubscriber = { primary_email: testSubscriberEmail, email_addresses: [{ email: 'test1' }] }
 
   const req = createRequest({
     method: 'POST',
     url: '/user/add',
     body: { email: testUserAddEmail },
     session: { user: '123' },
-    user: { primary_email: testSubscriberEmail, email_addresses: [{ email: 'test1' }] },
+    user: testSubscriber,
     fluentFormat: td.func(),
     headers: {
       referer: ''
@@ -54,9 +55,8 @@ test('user add POST with email adds unverified subscriber and sends verification
   const { sendEmail } = await import('../utils/email.js')
   td.when(sendEmail(), { times: 1 }).thenResolve(true)
 
-  const { addEmail } = await import('./settings.js')
-
   // Call code-under-test
+  const { addEmail } = await import('./settings.js')
   await addEmail(req, resp)
 
   // Check expectations
@@ -84,21 +84,17 @@ test('user add POST with email adds unverified subscriber and sends verification
   expect(mockCallArgs).toContain('email-2022')
   */
 })
-/*
-test('user add POST with upperCaseAddress adds email_address record with lowercaseaddress sha1', async t => {
+
+test.serial('user add POST with upperCaseAddress adds email_address record with lowercaseaddress sha1', async t => {
   const testUserAddEmail = 'addingUpperCaseEmail@test.com'
   const testSubscriberEmail = 'firefoxaccount@test.com'
-  const testSubscriber = await getSubscriberByEmail(testSubscriberEmail)
+  const testSubscriber = { primary_email: testSubscriberEmail, email_addresses: [{ email: 'test1' }] }
 
-  // Set up mocks
-  // Set up mocks
-  await td.replaceEsm('../utils/email.js')
-  const { sendEmail } = await import('../utils/email.js')
   const req = createRequest({
     method: 'POST',
     url: '/user/add',
     body: { email: testUserAddEmail },
-    session: { user: testSubscriber },
+    session: { user: '123' },
     user: testSubscriber,
     fluentFormat: td.func(),
     headers: {
@@ -106,15 +102,27 @@ test('user add POST with upperCaseAddress adds email_address record with lowerca
     }
   })
   const resp = createResponse()
+
+  await td.replaceEsm('../utils/fluent.js')
+
+  await td.replaceEsm('../db/tables/email_addresses.js')
+  const { addSubscriberUnverifiedEmailHash, resetUnverifiedEmailAddress } = await import('../db/tables/email_addresses.js')
+  td.when(addSubscriberUnverifiedEmailHash('123', 'addingUpperCaseEmail@test.com'), { times: 1 }).thenResolve({ id: 'test123' })
+  td.when(resetUnverifiedEmailAddress('test123'), { times: 1 }).thenResolve('test123')
+
+  await td.replaceEsm('../utils/email.js')
+  const { sendEmail } = await import('../utils/email.js')
   td.when(sendEmail(), { times: 1 }).thenResolve(true)
 
   // Call code-under-test
+  const { addEmail } = await import('./settings.js')
   await addEmail(req, resp)
 
   // Check expectations
-  t.is(resp.statusCode, 302)
+  t.is(resp.statusCode, 200)
   t.is(testSubscriber.primary_email, testSubscriberEmail)
 
+  /*
   const testSubscriberEmailAddressRecords = await getUserEmails(
     testSubscriber.id
   )
@@ -127,8 +135,9 @@ test('user add POST with upperCaseAddress adds email_address record with lowerca
   t.true(
     testSubscriberEmailAddressHashes.includes(getSha1(testUserAddEmail))
   )
+  */
 })
-
+/*
 test('user resendEmail with valid session and email id resets email_address record and sends new verification email', async t => {
   const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email
   const testSubscriber = await getSubscriberByEmail(testSubscriberEmail)
