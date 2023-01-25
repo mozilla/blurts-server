@@ -1,24 +1,53 @@
 import AppConstants from '../../app-constants.js'
 import { getMessage } from '../../utils/fluent.js'
 
-const headeLogoInlineStyle = `
+const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
+const links = {
+  faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
+  hibp: 'https://haveibeenpwned.com/',
+  legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
+  termsAndPrivacy: `https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`
+}
+const images = {
+  header: `${AppConstants.SERVER_URL}/img/email_images/person-at-desk.png`,
+  footer: `${AppConstants.SERVER_URL}/img/email_images/mozilla-logo-bw-rgb.png`,
+  logoDark: `${AppConstants.SERVER_URL}/img/email_images/monitor-logo-transparent-dark-mode.png`,
+  logoLight: `${AppConstants.SERVER_URL}/img/email_images/monitor-logo-bg-f9f9fa.png`
+}
+
+const bodyStyle = `
+  color: black;
+  font: normal 16px/1.2 sans-serif;
+`
+
+const tableStyle = `
+  margin: auto;
+  max-width: 1080px;
+  text-align: center;
+  width: 100%;
+`
+
+const headeLogoStyle = `
   background-size: 240px 50px;
-  background: #f9f9fa url('${AppConstants.SERVER_URL}/img/email_images/monitor-logo-bg-f9f9fa.png')
+  background: #f9f9fa url('${images.logoLight}')
   height: 100px;
   no-repeat 50%;
 `
-const headeTableInlineStyle = `
+
+const headeTableStyle = `
   background-color: #321c64;
   color: white;
   height: 331px;
   text-align: left;
   width: 100%;
 `
-const headerImageContainerInlineStyle = `
+
+const headerImageContainerStyle = `
   vertical-align: bottom;
   width: 50%;
 `
-const headerImageInlineStyle = `
+
+const headerImageStyle = `
   display: block;
   margin-left: auto;
   max-width: 100%;
@@ -26,11 +55,23 @@ const headerImageInlineStyle = `
   object-position: left;
 `
 
+const footerContainerStyle = `
+  background: #f9f9fa;
+  border-top: 1px solid #dddddd;
+  padding: 24px 0;
+`
+
+const footerImageStyle = `
+  display: block;
+  margin: 24px auto 0;
+`
+
 const emailHeader = (data) => `
   <tr class='logo'>
-    <td height='100'
-      style='${headeLogoInlineStyle}'>
-    </td>
+    <td
+      height='100'
+      style='${headeLogoStyle}'
+    ></td>
   </tr>
   <tr class='header'>
     <td>
@@ -39,23 +80,27 @@ const emailHeader = (data) => `
         cellpadding='0'
         cellspacing='0'
         role='presentation'
-        style='${headeTableInlineStyle}'
+        style='${headeTableStyle}'
       >
         <tr>
           <td>
-            <h1>${getMessage(data.heading)}</h1>
-            <p>${getMessage(data.subhead)}</p>
+            <h1>
+              ${getMessage(data.heading)}
+            </h1>
+            <p>
+              ${getMessage(data.subhead)}
+            </p>
           </td>
           <td
             background-color: #321c64;
             class='header-image'
-            style='${headerImageContainerInlineStyle}'
+            style='${headerImageContainerStyle}'
           >
             <img
               alt=''
               height='331'
-              src='${AppConstants.SERVER_URL}/img/email_images/person-at-desk.png'
-              style='${headerImageInlineStyle}'
+              src='${images.header}'
+              style='${headerImageStyle}'
               width='476'
             >
           </td>
@@ -65,79 +110,59 @@ const emailHeader = (data) => `
   </tr>
 `
 
-const footerContainerInlineStyle = `
-  background: #f9f9fa;
-  border-top: 1px solid #dddddd;
-  padding: 24px 0;
-`
-
-const footerImageInlineStyle = `
-  display: block;
-  margin: 24px auto 0;
-`
-
 const emailFooter = (data) => `
   <tr class='footer'>
-    <td style='${footerContainerInlineStyle}'>
-      <p>${getEmailFooterCopy(data)}</p>
+    <td style='${footerContainerStyle}'>
+      <p>
+        ${getEmailFooterCopy(data)}
+      </p>
       <p>
         ${getMessage('email-2022-hibp-attribution', {
-          'hibp-link-attr': "href='https://haveibeenpwned.com/' rel='noopener'"
+          'hibp-link-attr': `href='${links.hibp}' rel='noopener'`
         })}
       </p>
       <img
         alt='${getMessage('mozilla')}'
-        src='${AppConstants.SERVER_URL}/img/email_images/mozilla-logo-bw-rgb.png'
-        style='${footerImageInlineStyle}'
+        src='${images.footer}'
+        style='${footerImageStyle}'
         width='130px'
       >
       <p>
-        2 Harrison St. #175, San Francisco, California 94105 USA
+        ${companyAddress}
       </p>
       <p>
-        <a href='https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link'>
+        <a href='${links.legal}'>
           ${getMessage('legal')}
         </a>
         ${' • '}
-        <a href='https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link'>
+        <a href='${links.termsAndPrivacy}'>
           ${getMessage('terms-and-privacy')}
         </a>
       </p>
     </td>
   </tr>
 `
-function getEmailFooterCopy (data) {
-  const unsubUrl = data.unsubscribeUrl
-  const unsubLinkText = getMessage('email-unsub-link')
-  const unsubLink = `<a href='${unsubUrl}'>${unsubLinkText}</a>`
 
-  const getFaqLink = linkContent => `
-    <a href='https://support.mozilla.org/kb/firefox-monitor-faq'>
-      ${linkContent}
+function getEmailFooterCopy (data) {
+  const isMonthlyUnresolved = data.partial.name === 'email-monthly-unresolved'
+  const unsubLink = `
+    <a href='${data.unsubscribeUrl}'>
+      ${getMessage('email-unsub-link')}
     </a>
   `
-  const faqLink = getFaqLink(data.whichPartial !== 'email_partials/email-monthly-unresolved'
-    ? getMessage('email-verify-footer-copy')
-    : getMessage('frequently-asked-questions'))
+  const faqLink = `
+    <a href='${links.faq}'>
+      ${isMonthlyUnresolved
+        ? getMessage('frequently-asked-questions')
+        : getMessage('email-verify-footer-copy')}
+    </a>
+  `
 
-  const localizedFooterCopy = getMessage('email-footer-blurb', {
+  return getMessage('email-footer-blurb', {
     unsubLink,
     faqLink
   })
-
-  return localizedFooterCopy
 }
-
-const bodyInlineStyle = `
-  color: black;
-  font: normal 16px/1.2 sans-serif;
-`
-const tableInlineStyle = `
-  margin: auto;
-  max-width: 1080px;
-  text-align: center;
-  width: 100%;
-`
 
 const getTemplate = data => `
   <!doctype html>
@@ -146,7 +171,9 @@ const getTemplate = data => `
       <meta name='viewport' content='width=device-width, initial-scale=1.0' />
       <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
-      <title>${getMessage('brand-fx-monitor')}</title>
+      <title>
+        ${getMessage('brand-fx-monitor')}
+      </title>
 
       <style>
         * {
@@ -155,14 +182,14 @@ const getTemplate = data => `
         }
 
         body {
-          font: normal 16px/1.2 sans-serif;
           color: black;
+          font: normal 16px/1.2 sans-serif;
         }
 
         h1,
         p {
-          max-width: 600px;
           margin: 12px auto;
+          max-width: 600px;
           padding: 0 24px;
         }
 
@@ -183,22 +210,19 @@ const getTemplate = data => `
 
         @media (prefers-color-scheme: dark) {
           .logo > td {
-            background-image: url(${
-              AppConstants.SERVER_URL
-            }/img/email_images/monitor-logo-transparent-dark-mode.png)
+            background-image: url('${images.logoDark}')
           }
         }
       </style>
-
     </head>
 
-    <body style='${bodyInlineStyle}'>
+    <body style='${bodyStyle}'>
       <table
         border='0'
         cellpadding='0'
         cellspacing='0'
         role='presentation'
-        style='${tableInlineStyle}'
+        style='${tableStyle}'
       >
         ${emailHeader({
           heading: 'email-verify-heading',
