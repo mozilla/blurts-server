@@ -75,7 +75,6 @@ async function addEmail (req, res) {
 
   _checkForDuplicateEmail(sessionUser, email)
 
-  console.debug('debug1:', addSubscriberUnverifiedEmailHash, req.session.user, email)
   const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
     req.session.user,
     email
