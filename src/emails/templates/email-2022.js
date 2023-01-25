@@ -149,7 +149,6 @@ const emailFooter = (data) => `
 `
 
 function getEmailFooterCopy (data) {
-  const isMonthlyUnresolved = data.partial.name === 'email-monthly-unresolved'
   const unsubLink = `
     <a href='${data.unsubscribeUrl}'>
       ${getMessage('email-unsub-link')}
