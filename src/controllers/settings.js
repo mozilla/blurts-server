@@ -19,7 +19,6 @@ import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 import AppConstants from '../app-constants.js'
 import { getBreachesForEmail } from '../utils/hibp.js'
-// import { getTemplate } from '../views/email-2022.js'
 import { generateToken } from '../utils/csrf.js'
 
 import { getTemplate, verifyPartial } from '../views/email-2022.js'
@@ -92,6 +91,7 @@ function _checkForDuplicateEmail (sessionUser, email) {
   if (email === sessionUser.primary_email.toLowerCase()) {
     throw fluentError('user-add-duplicate-email')
   }
+
   for (const secondaryEmail of sessionUser.email_addresses) {
     if (email === secondaryEmail.email.toLowerCase()) {
       throw fluentError('user-add-duplicate-email')
@@ -132,6 +132,7 @@ async function resendEmail (req, res) {
 }
 
 async function _sendVerificationEmail (emailId) {
+  console.debug('debug1:', emailId)
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId
   )
