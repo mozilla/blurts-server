@@ -21,7 +21,8 @@ import AppConstants from '../app-constants.js'
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { generateToken } from '../utils/csrf.js'
 
-import { getTemplate, verifyPartial } from '../views/email-2022.js'
+import { getTemplate } from '../emails/templates/email-2022.js'
+import { verifyPartial } from '../emails/partials/email-verify.js'
 
 async function settingsPage (req, res) {
   const emails = await getUserEmails(req.session.user.id)

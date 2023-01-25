@@ -20,7 +20,7 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
-export default (data) => `
+const verifiyPartial = (data) => `
   <tr>
     <td style='${containerStyle}'>
       <p>
@@ -40,3 +40,4 @@ export default (data) => `
     </td>
   </tr>
 `
+export { verifiyPartial }
