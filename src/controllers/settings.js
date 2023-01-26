@@ -84,8 +84,11 @@ async function addEmail (req, res) {
 
   await _sendVerificationEmail(unverifiedSubscriber.id)
 
-  // TODO: what should we return to the client?
-  return res.json('Resent the email')
+  return res.json({
+    success: true,
+    status: 200,
+    message: 'Sent the verification email'
+  })
 }
 
 function _checkForDuplicateEmail (sessionUser, email) {
@@ -129,8 +132,11 @@ async function resendEmail (req, res) {
 
   await _sendVerificationEmail(emailId)
 
-  // TODO: what should we return to the client?
-  return res.json('Resent the email')
+  return res.json({
+    success: true,
+    status: 200,
+    message: 'Sent the verification email'
+  })
 }
 
 async function _sendVerificationEmail (emailId) {
@@ -166,21 +172,21 @@ async function verifyEmail (req, res) {
 }
 
 async function updateCommunicationOptions (req, res) {
-  try {
-    const sessionUser = req.user
-    // 0 = Send breach alerts to the email address found in brew breach.
-    // 1 = Send all breach alerts to user's primary email address.
-    const allEmailsToPrimary = Number(req.body.communicationOption) === 1
-    const updatedSubscriber = await setAllEmailsToPrimary(
-      sessionUser,
-      allEmailsToPrimary
-    )
-    req.session.user = updatedSubscriber
+  const sessionUser = req.user
+  // 0 = Send breach alerts to the email address found in brew breach.
+  // 1 = Send all breach alerts to user's primary email address.
+  const allEmailsToPrimary = Number(req.body.communicationOption) === 1
+  const updatedSubscriber = await setAllEmailsToPrimary(
+    sessionUser,
+    allEmailsToPrimary
+  )
+  req.session.user = updatedSubscriber
 
-    return res.json('Comm options updated')
-  } catch (ex) {
-    return res.json('Error updating comm options')
-  }
+  return res.json({
+    success: true,
+    status: 200,
+    message: 'Communications options updated'
+  })
 }
 
 export {
