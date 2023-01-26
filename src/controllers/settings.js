@@ -50,6 +50,7 @@ async function settingsPage (req, res) {
   }
 
   const data = {
+    fxaProfile: req.user.fxa_profile_json,
     partial: settings,
     emails,
     breachCounts,
