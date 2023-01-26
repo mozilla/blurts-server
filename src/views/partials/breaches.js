@@ -76,7 +76,7 @@ export const breaches = data => `
   <header class='breaches-header'>
     <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
     <figure>
-      <img src='/images/temp-diagram.png' width='80' height='80'>
+      <img src='/images/temp-diagram.webp' width='80' height='80'>
       <figcaption class='breach-stats'>
         <strong>10 total breaches</strong>
         <label>Resolved</label>
