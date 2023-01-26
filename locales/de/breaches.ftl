@@ -3,8 +3,30 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Datenlecks für { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } von { $total } überwachten E-Mail-Adresse
+       *[other] { $count } von { $total } überwachten E-Mail-Adressen
+    }
+add-email-link = E-Mail-Adresse hinzufügen
+
+## Breaches resolved filter
+
+filter-label-unresolved = Nicht behobene Datenlecks
+filter-label-resolved = Behobene Datenlecks
+
+## Breaches table
+
+column-company = UNTERNEHMEN
+column-breached-data = VOM LECK BETROFFENE DATEN
+column-detected = ENTDECKT
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Am { $breachDate } gab es bei { $companyName } ein Datenleck. Nachdem das Datenleck entdeckt und bestätigt wurde, wurde es am { $addedDate } unserer Datenbank hinzugefügt. Von diesem Datenleck sind betroffen: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
@@ -15,7 +37,7 @@ breach-checklist-pw-body = Stellen Sie sicher, dass Ihr Passwort einzigartig und
 ## Prompts the user for changes when there is a breach detected of email
 
 breach-checklist-email-header = Schützen Sie Ihre E-Mail-Adressen mit einem E-Mail-Maskierungsdienst wie <a>{ -brand-relay }</a>.
-breach-checklist-email-body = Dadurch kann Ihre wahre E-Mail-Adresse verborgen werden, während E-Mails an Ihren echten Posteingang weitergeleitet werden.
+breach-checklist-email-body = Dadurch bleibt Ihre echte E-Mail-Adresse verborgen, während E-Mails an Ihren echten Posteingang weitergeleitet werden.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -59,7 +81,7 @@ breach-checklist-dob-body = Geburtsdaten sind in öffentlichen Aufzeichnungen le
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Schützen Sie Ihre Telefonnummer mit einem Maskierungsdienst wie <a>{ -brand-relay }</a>, der Ihre wahre Telefonnummer verbirgt.
+breach-checklist-phone-header = Schützen Sie Ihre Telefonnummer mit einem Maskierungsdienst wie <a>{ -brand-relay }</a>, der Ihre echte Telefonnummer verbirgt.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 

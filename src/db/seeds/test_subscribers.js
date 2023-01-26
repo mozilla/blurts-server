@@ -1,8 +1,12 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 'use strict'
 
-const getSha1 = require('../../sha1-utils')
+import { getSha1 } from '../../utils/fxa.js'
 
-exports.TEST_SUBSCRIBERS = {
+export const TEST_SUBSCRIBERS = {
   firefox_account: {
     id: 12345,
     primary_sha1: getSha1('firefoxaccount@test.com'),
@@ -72,7 +76,7 @@ exports.TEST_SUBSCRIBERS = {
   }
 }
 
-exports.TEST_EMAIL_ADDRESSES = {
+export const TEST_EMAIL_ADDRESSES = {
   firefox_account: {
     id: 11111,
     subscriber_id: 12345,

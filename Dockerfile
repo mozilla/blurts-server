@@ -11,15 +11,15 @@ USER app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
+COPY src/package.json ./src/package.json
 
 COPY --chown=app:app . /app
 
-COPY .env-dist ./.env
+RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
-RUN npm run build
+COPY .env-dist ./.env
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
 
-CMD node server.js
+CMD ["npm", "start"]

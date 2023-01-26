@@ -19,10 +19,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox account
-
 GitHub-link-title = GitHub
 
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
@@ -812,6 +808,12 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox account
+
 ## Search Engine Optimization
 
 meta-desc = Find out if you’ve been part of a data breach with {-brand-fx-monitor}. Sign up for alerts about future breaches and get tips to keep your accounts safe. 
@@ -820,6 +822,16 @@ meta-desc = Find out if you’ve been part of a data breach with {-brand-fx-moni
 
 brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
+
+## User menu
+
+menu-button-title = User menu
+menu-button-alt = Open user menu
+menu-list-accessible-label = Account menu
+menu-item-fxa = Manage your {-brand-fx-account}
+menu-item-settings = Settings
+menu-item-help = Help and support
+menu-item-logout = Sign out
 
 ## Footer
 

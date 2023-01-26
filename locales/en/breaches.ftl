@@ -15,6 +15,8 @@ emails-monitored =
      *[other] { $count } of { $total } emails monitored
   }
 
+add-email-link = Add email address
+
 ## Breaches resolved filter
 
 filter-label-unresolved = Unresolved breaches

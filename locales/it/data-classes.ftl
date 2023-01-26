@@ -88,6 +88,7 @@ occupations = occupazioni
 parenting-plans = piani di affido minori
 partial-credit-card-data = dati parziali della carta di credito
 partial-dates-of-birth = Date di nascita parziali
+partial-phone-numbers = Numeri di telefono parziali
 passport-numbers = numeri di passaporto
 password-hints = suggerimenti per la password
 password-strengths = complessità delle password

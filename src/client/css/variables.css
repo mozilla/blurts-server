@@ -1,8 +1,14 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 :root {
   --multiplier: 1;
   --max-width: 1200px;
   --min-width: 320px;
+  --mobile-breakpoint: 480px;
   --border-radius: 4px;
+  --checkbox-w: 20px;
   --padding-xs: calc(4px * var(--multiplier));
   --padding-sm: calc(8px * var(--multiplier));
   --padding-md: calc(16px * var(--multiplier));
@@ -13,12 +19,16 @@
   --h2-font: 700 1.75rem/1 metropolis, sans-serif;
   --h3-font: 700 1.125rem/1 metropolis, sans-serif;
   --h4-font: 700 1rem/1 metropolis, sans-serif;
+  --gray-5: #f9f9fa;
   --gray-10: #e7e7e7;
   --gray-20: #cececf;
   --gray-40: #6d6d6e;
+  --gray-50: #3d3d3d;
   --blue-50: #0060df;
   --purple-70: #592acb;
   --purple-90: #321c64;
+  --green-80: #00a49a;
+  --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 
 @media (max-width: 480px) {

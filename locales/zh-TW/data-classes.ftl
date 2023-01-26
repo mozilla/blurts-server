@@ -88,6 +88,7 @@ occupations = 職業
 parenting-plans = 育兒計劃
 partial-credit-card-data = 信用卡部分資料
 partial-dates-of-birth = 部分生日日期
+partial-phone-numbers = 部分手機號碼
 passport-numbers = 護照號碼
 password-hints = 密碼提示
 password-strengths = 密碼強度
