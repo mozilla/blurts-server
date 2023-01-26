@@ -65,7 +65,7 @@ const breachAlertCtaStyle = `
   padding: 12px 24px;
 `
 
-export default (data) => `
+const breachAlertEmailPartial = (data) => `
   <tr>
     <td style='${breachAlertContainerStyle}'>
       <p>
@@ -144,3 +144,5 @@ export default (data) => `
     </td>
   </tr>
 `
+
+export { breachAlertEmailPartial }

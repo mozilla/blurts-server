@@ -168,7 +168,7 @@ function getEmailFooterCopy (data) {
   })
 }
 
-const getTemplate = data => `
+const getEmailTemplate = data => `
   <!doctype html>
   <html>
     <head>
@@ -240,4 +240,4 @@ const getTemplate = data => `
   </html>
 `
 
-export { getTemplate }
+export { getEmailTemplate }
