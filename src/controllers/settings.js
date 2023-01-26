@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import AppConstants from '../app-constants.js'
+
 import {
   getUserEmails,
   resetUnverifiedEmailAddress,
@@ -15,12 +17,12 @@ import { setAllEmailsToPrimary } from '../db/tables/subscribers.js'
 
 import { fluentError, getMessage } from '../utils/fluent.js'
 import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email.js'
-import { mainLayout } from '../views/main.js'
-import { settings } from '../views/partials/settings.js'
-import AppConstants from '../app-constants.js'
+
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { generateToken } from '../utils/csrf.js'
 
+import { mainLayout } from '../views/main.js'
+import { settings } from '../views/partials/settings.js'
 import { getTemplate } from '../emails/templates/email-2022.js'
 import { verifyPartial } from '../emails/partials/email-verify.js'
 
