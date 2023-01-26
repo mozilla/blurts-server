@@ -37,7 +37,6 @@ async function settingsPage (req, res) {
   })
 
   const breachCounts = new Map()
-  emails.forEach((email) => breachCounts.set(email.email, 0))
 
   const allBreaches = req.app.locals.breaches
   for (const email of emails) {
@@ -47,7 +46,7 @@ async function settingsPage (req, res) {
       true,
       false
     )
-    breachCounts.set(email.email, breaches.length)
+    breachCounts.set(email.email, breaches?.length || 0)
   }
 
   const data = {
