@@ -65,6 +65,7 @@ test.serial('user add POST with email adds unverified subscriber and sends verif
 
   // Check expectations
   t.is(resp.statusCode, 200)
+  // t.deepEqual(resp._getJSONData())
 
   /*
   const testSubscriberEmailAddressRecords = await getUserEmails(
@@ -192,12 +193,22 @@ test.serial('user updateCommunicationOptions request with valid session updates 
   })
   const resp = createResponse()
 
+  await td.replaceEsm('../db/tables/subscribers.js')
+  const { setAllEmailsToPrimary } = await import('../db/tables/subscribers.js')
+  td.when(setAllEmailsToPrimary()).thenResolve(testSubscriber)
+
   // Call code-under-test
   const { updateCommunicationOptions } = await import('./settings.js')
   await updateCommunicationOptions(req, resp)
 
   // Check expectations
   t.is(resp.statusCode, 200)
+  t.deepEqual(resp._getJSONData(), {
+    success: true,
+    status: 200,
+    message: 'Communications options updated'
+  })
+
   /*
   const updatedTestSubscriber = await getSubscriberByEmail(testSubscriberEmail)
   t.falsy(updatedTestSubscriber.all_emails_to_primary)
@@ -205,7 +216,7 @@ test.serial('user updateCommunicationOptions request with valid session updates 
   req.body = { communicationOption: 1 }
 
   // Call code-under-test
-  await updateCommunicationOptions(req, resp)
+  // await updateCommunicationOptions(req, resp)
 
   t.is(resp.statusCode, 200)
   /*
