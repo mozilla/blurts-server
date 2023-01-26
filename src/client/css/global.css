@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 * {
   margin: 0;
   padding: 0;
@@ -68,7 +72,7 @@ body > header {
   box-shadow: 0 6px 6px -8px #0000;
   padding: var(--padding-md) var(--padding-lg);
   transition: box-shadow 0.3s;
-  z-index: 1;
+  z-index: 2;
 }
 
 .scrolled body > header {
@@ -78,6 +82,12 @@ body > header {
 body > header .monitor-logo {
   width: calc(213px * var(--multiplier));
   object-fit: contain;
+}
+
+body > header .nav-wrapper {
+  align-items: center;
+  display: flex;
+  gap: var(--padding-sm);
 }
 
 main {
@@ -170,6 +180,11 @@ button.secondary,
   color: var(--blue-50);
   border: 1px solid;
   padding: var(--padding-md);
+}
+
+input[type='checkbox'] {
+  width: var(--checkbox-w);
+  height: var(--checkbox-w);
 }
 
 @keyframes fade-in {

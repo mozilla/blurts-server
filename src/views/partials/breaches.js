@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import { getMessage, getLocale } from '../../utils/fluent.js'
 import AppConstants from '../../app-constants.js'
 
@@ -42,9 +46,11 @@ function createBreachRows (data) {
         <summary>
           <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
         </summary>
-        <div>
-          ${description}
-        </div>
+        <article>
+          <p>${description}</p>
+          <p><strong>Resolve this breach:</strong></p>
+          <ol class='resolve-list'>${createResolveSteps(breach)}</ol>
+        </article>
       </details>
       `
     })
@@ -53,12 +59,24 @@ function createBreachRows (data) {
   return breachRowsHTML.join('')
 }
 
+function createResolveSteps (breach) {
+  const checkedArr = breach.ResolutionsChecked || []
+  const resolveStepsHTML = Object.entries(breach.breachChecklist).map(([key, value]) => `
+  <li class='resolve-list-item'>
+    <input name='${breach.recencyIndex}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
+    <p>${value.header}<br><i>${value.body}</i></p>
+  </li>
+  `)
+
+  return resolveStepsHTML.join('')
+}
+
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
-    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
+    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
     <figure>
-      <img src='/images/temp-diagram.png' width='80' height='80'>
+      <img src='/images/temp-diagram.webp' width='80' height='80'>
       <figcaption class='breach-stats'>
         <strong>10 total breaches</strong>
         <label>Resolved</label>
@@ -80,15 +98,10 @@ export const breaches = data => `
   <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
   <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
 </section>
-<section class='breaches-table'>
+<section class='breaches-table' data-token=${data.csrfToken}>
   <header>
     <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
   </header>
   ${createBreachRows(data.breachesData)}
-</section>
-<section style='display:none'>
-  <!--This is a temp section/button to test breach update post-->
-  <button id="update-breaches">Update Breaches</button>
-  <pre>${JSON.stringify(data.breachesData, null, 2)}</pre>
 </section>
 `

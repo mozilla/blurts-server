@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
@@ -95,6 +99,7 @@ async function getAllBreachesFromDb () {
   // TODO: we can do some filtering here for the most commonly used fields
   // TODO: change field names to camel case
   return dbBreaches.map(breach => ({
+    Id: breach.id,
     Name: breach.name,
     Title: breach.title,
     Domain: breach.domain,
