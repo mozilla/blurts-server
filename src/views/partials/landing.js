@@ -3,19 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getMessage } from '../../utils/fluent.js'
-import chartTestData from '../../../src/client/js/components/circle-chart-test-data.js'
 
 export const landing = data => `
-<div style='display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--padding-lg);'>
-  ${chartTestData.map(data => `
-    <circle-chart
-      class='chart-test'
-      data='${JSON.stringify(data.data)}'
-      show-percent-for='${data.showPercentageFor}'
-      title='${data.title}'
-    ></circle-chart>
-  `).join('')}
-</div>
 <section class='hero'>
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
