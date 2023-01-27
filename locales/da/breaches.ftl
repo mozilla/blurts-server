@@ -34,6 +34,7 @@ breach-checklist-ssn-header = Hold øje med, om dine kreditrapporter indeholder 
 
 ## Prompts the user for changes when there is a breach detected of pin
 
+breach-checklist-pin-body = Sørg for, at din nye pin-kode (og dine pin-koder i det hele taget) ikke indeholder tal, der er nemme at gætte - som fx din fødselsdato eller dit postnummer.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
