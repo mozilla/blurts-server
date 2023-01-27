@@ -19,16 +19,18 @@
   --h2-font: 700 1.75rem/1 metropolis, sans-serif;
   --h3-font: 700 1.125rem/1 metropolis, sans-serif;
   --h4-font: 700 1rem/1 metropolis, sans-serif;
+  --main-dark: #2e2c34;
   --gray-5: #f9f9fa;
   --gray-10: #e7e7e7;
   --gray-20: #cececf;
   --gray-40: #6d6d6e;
   --gray-50: #3d3d3d;
   --blue-50: #0060df;
+  --blue-60: #0250bb;
+  --purple-5: #e7dfff;
   --purple-70: #592acb;
   --purple-90: #321c64;
-  --green-80: #00a49a;
-  --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
+  --red-60: #e22850;
 }
 
 @media (max-width: 480px) {
