@@ -3,8 +3,20 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+add-email-link = Agregar dirección de correo
+
+## Breaches resolved filter
+
+filter-label-unresolved = Filtraciones sin resolver
+filter-label-resolved = Filtraciones resueltos
+
+## Breaches table
+
+column-company = EMPRESA
+column-breached-data = DATOS FILTRADOS
+column-detected = DETECTADO
 
 ## Prompts the user for changes when there is a breach detected of password
 
