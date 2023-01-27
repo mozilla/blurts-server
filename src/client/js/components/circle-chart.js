@@ -2,6 +2,65 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * Circle chart
+ *
+ * Example usage:
+ * ```
+ * <circle-chart
+ *   title='Circle chart'
+ *   data=`${JSON.stringify([
+ *     {
+ *       key: 'resolved',
+ *       name: 'Resolved',
+ *       count: 0,
+ *       color: '#9059ff'
+ *     },
+ *     {
+ *       key: 'unresolved',
+ *       name: 'Unresolved',
+ *       count: 10,
+ *       color: '#321c64'
+ *     }
+ *   ])}`
+ *   show-percent-for='resolved'
+ * >
+ * </circle-chart>
+ * ```
+ *
+ * Circle chart JSON schema:
+ * ```
+ * {
+ *   "title": {
+ *     "type": "string",
+ *     "required": "false"
+ *   },
+ *   "data": {
+ *     "type": "array",
+ *     "items": {
+ *       "type": "object",
+ *       "properties": {
+ *         "key": "string",
+ *         "name": "string",
+ *         "count": "number",
+ *         "color": "hexcolor"
+ *       },
+ *       "required": [
+ *         "key",
+ *         "name",
+ *         "count"
+ *       ],
+ *       "additionalProperties": false
+ *     }
+ *   },
+ *   "show-percent-for": {
+ *     "type": "string", // has to match key of an item in `data.items`
+ *     "required": false,
+ *   }
+ * }
+ * ```
+ */
+
 const CHART_RADIUS = 50
 const CHART_DIAMETER = CHART_RADIUS * 2
 const CHART_CIRCUMFERENCE = Math.PI * CHART_DIAMETER
