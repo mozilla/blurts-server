@@ -86,7 +86,7 @@ customElements.define('circle-chart', class extends HTMLElement {
     return [
       'data',
       'is-donut',
-      'show-percentage-for',
+      'show-percent-for',
       'title'
     ]
   }
@@ -97,8 +97,7 @@ customElements.define('circle-chart', class extends HTMLElement {
 
     // Chart properties
     this.data = null
-    this.isDonut = false
-    this.showPercentageFor = ''
+    this.showPercentFor = ''
     this.title = ''
 
     this.svg = null
@@ -118,11 +117,8 @@ customElements.define('circle-chart', class extends HTMLElement {
         this.data = JSON.parse(newValue)
         this.createOrUpdateChart()
         break
-      case 'is-donut':
-        this.isDonut = JSON.parse(newValue)
-        break
-      case 'show-percentage-for':
-        this.showPercentageFor = newValue
+      case 'show-percent-for':
+        this.showPercentFor = newValue
         break
       case 'title':
         this.title = newValue
@@ -137,7 +133,7 @@ customElements.define('circle-chart', class extends HTMLElement {
     return `
       ${this.data.reduce((acc, curr) => {
         const percentage = calcPercentage(this.total, curr.count)
-        const innerRadius = this.isDonut ? 0.85 : 0
+        const innerRadius = this.showPercentFor !== '' ? 0.85 : 0
         const strokeLength = CHART_CIRCUMFERENCE * percentage
 
         const circle = `
@@ -168,7 +164,7 @@ customElements.define('circle-chart', class extends HTMLElement {
   }
 
   createCircleLabel () {
-    const relevantItem = this.data.find(d => d.key === this.showPercentageFor)
+    const relevantItem = this.data.find(d => d.key === this.showPercentFor)
     if (!relevantItem) {
       return ''
     }

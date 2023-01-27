@@ -11,8 +11,7 @@ export const landing = data => `
     <circle-chart
       class='chart-test'
       data='${JSON.stringify(data.data)}'
-      is-donut='${JSON.stringify(data.isDonut)}'
-      show-percentage-for='${data.showPercentageFor}'
+      show-percent-for='${data.showPercentageFor}'
       title='${data.title}'
     ></circle-chart>
   `).join('')}

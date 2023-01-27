@@ -15,8 +15,7 @@ export default [
         color: '#321c64'
       }
     ],
-    showPercentageFor: 'resolved',
-    isDonut: true
+    showPercentageFor: 'resolved'
   },
   {
     title: 'Chart title 2',
@@ -34,8 +33,7 @@ export default [
         color: '#321c64'
       }
     ],
-    showPercentageFor: 'resolved',
-    isDonut: true
+    showPercentageFor: 'resolved'
   },
   {
     title: 'Chart title 3',
@@ -53,8 +51,7 @@ export default [
         color: '#321c64'
       }
     ],
-    showPercentageFor: 'resolved',
-    isDonut: true
+    showPercentageFor: 'resolved'
   },
   {
     title: 'Chart title 4',
@@ -72,8 +69,7 @@ export default [
         color: '#321c64'
       }
     ],
-    showPercentageFor: 'resolved',
-    isDonut: true
+    showPercentageFor: 'resolved'
   },
   {
     title: 'Chart title 5',
@@ -91,8 +87,7 @@ export default [
         color: '#321c64'
       }
     ],
-    showPercentageFor: 'resolved',
-    isDonut: true
+    showPercentageFor: 'resolved'
   },
   {
     title: 'Chart title 6',
@@ -110,8 +105,7 @@ export default [
         color: '#321c64'
       }
     ],
-    showPercentageFor: 'resolved',
-    isDonut: true
+    showPercentageFor: 'resolved'
   },
   {
     title: 'Chart title 7',
@@ -214,8 +208,7 @@ export default [
         count: 4,
         color: '#d74cf0'
       }
-    ],
-    isDonut: true
+    ]
   },
   {
     title: 'Chart title 12',
@@ -244,7 +237,6 @@ export default [
         count: 1,
         color: '#d74cf0'
       }
-    ],
-    isDonut: true
+    ]
   }
 ]
