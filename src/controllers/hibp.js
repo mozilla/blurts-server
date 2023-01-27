@@ -5,9 +5,10 @@
 import { acceptedLanguages, negotiateLanguages } from 'fluent-langneg'
 import AppConstants from '../app-constants.js'
 
-import { getSubscribersByHashes, getEmailAddressesByHashes } from '../db/DB'
+import { getSubscribersByHashes } from '../db/tables/subscribers.js'
+import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
 import { getEmailTemplate } from '../emails/templates/email-2022.js'
-import { breachAlertEmailPartial } from '../emails/partials/email-2022.js'
+import { breachAlertEmailPartial } from '../emails/partials/email-breach-alert.js'
 
 import { getMessage } from '../utils/fluent.js'
 import {
