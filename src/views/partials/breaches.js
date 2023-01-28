@@ -93,9 +93,9 @@ export const breaches = data => `
   </header>
 </section>
 <section class='breaches-filter'>
-  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
+  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' autocomplete='off' checked>
   <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('filter-label-unresolved')}</label>
-  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
+  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved' autocomplete='off'>
   <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
 </section>
 <section class='breaches-table' data-token=${data.csrfToken}>
