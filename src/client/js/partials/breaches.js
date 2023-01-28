@@ -27,6 +27,7 @@ function init () {
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
 
+  statusFilter.querySelector('form').reset() // resets status to "unresolved" on reload
   state.selectedEmail = emailSelect.value // triggers render
 
   emailSelect.addEventListener('change', handleEvent)

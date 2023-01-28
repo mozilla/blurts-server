@@ -53,6 +53,10 @@
   font-size: 0.75rem;
 }
 
+.breaches-filter form {
+  display: contents;
+}
+
 .breaches-filter output {
   display: block;
   font: var(--h2-font);

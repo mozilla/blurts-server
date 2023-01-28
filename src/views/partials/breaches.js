@@ -93,10 +93,12 @@ export const breaches = data => `
   </header>
 </section>
 <section class='breaches-filter'>
-  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
-  <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('filter-label-unresolved')}</label>
-  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
-  <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
+  <form>
+    <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
+    <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('filter-label-unresolved')}</label>
+    <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
+    <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
+  </form>
 </section>
 <section class='breaches-table' data-token=${data.csrfToken}>
   <header>
