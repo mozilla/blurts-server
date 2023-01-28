@@ -62,7 +62,7 @@ async function updateBreachStatus (input) {
       },
       body: JSON.stringify({
         affectedEmail,
-        recencyIndex: breachId,
+        breachId,
         resolutionsChecked: checkedInputs.map(input => input.value)
       })
     })
