@@ -66,7 +66,7 @@ async function bundleVerifiedEmails (options) {
     ? user.breach_resolution[email] ? user.breach_resolution[email] : {}
     : []
 
-  const { useBreachId } = user.breach_resolution
+  const useBreachId = user.breach_resolution?.useBreachId
 
   for (const breach of foundBreachesWithRecency) {
     // if breach resolution json has `useBreachId` boolean, that means the migration has taken place
