@@ -99,7 +99,6 @@ async function notify (req, res) {
     })
   }
 
-  // TODO: Send email notification to affected subscribers after loading new breaches.
   try {
     const reqHashPrefix = hashPrefix.toLowerCase()
     const hashes = hashSuffixes.map(suffix => reqHashPrefix + suffix.toLowerCase())
@@ -108,7 +107,6 @@ async function notify (req, res) {
     const recipients = subscribers.concat(emailAddresses)
 
     log.info('notification', {
-      // TODO: Should we convert HIBP response keys to lowercase
       breachAlertName: breachAlert.Name,
       length: recipients.length
     })
@@ -143,6 +141,7 @@ async function notify (req, res) {
       // TODO: Add localized strings
       if (!notifiedRecipients.includes(breachedEmail)) {
         const data = {
+          breachAlert,
           ctaHref: 'ctaHref',
           heading: getMessage('email-spotted-new-breach'),
           partial: {

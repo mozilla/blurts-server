@@ -76,61 +76,52 @@ const breachAlertEmailPartial = (data) => `
       <table style='${breachAlertTableStyle}'>
         <tr>
           <td>
-            <!-- Breach cards -->
-            ${data.getBreachAlert().map(breachAlert => `
-              <table
-                style='${breachAlertCardsContainerStyle}'
-              >
-                <tr>
-                  <td style='${breachAlertCardsTitleStyle}'>
-                    <img
-                      height='25'
-                      src='${breachAlert.logoUrl}'
-                      style='${breachAlertCardsTitleImageStyle}'
-                      width='25'
-                    >
-                    ${breachAlert.title}
-                  </td>
-                </tr>
-                <tr>
-                  <td style='padding: 24px;'>
-                    <p
-                      class='text-light'
-                      style='${breachAlertLabelStyle}'
-                    >
-                      <!-- TODO: Check how we’ll get those strings  -->
-                      ${breachAlert.localizedStrings.breachAdded}
-                    </p>
-                    <p
-                      class='text-medium'
-                      style='${breachAlertValueStyle}'
-                    >
-                      ${breachAlert.addedDate}
-                    </p>
+            <table style='${breachAlertCardsContainerStyle}'>
+              <tr>
+                <td style='${breachAlertCardsTitleStyle}'>
+                  <img
+                    height='25'
+                    src='${data.breachAlert.logoUrl}'
+                    style='${breachAlertCardsTitleImageStyle}'
+                    width='25'
+                  >
+                  ${data.breachAlert.title}
+                </td>
+              </tr>
+              <tr>
+                <td style='padding: 24px;'>
+                  <p
+                    class='text-light'
+                    style='${breachAlertLabelStyle}'
+                  >
+                    ${data.breachAlert.localizedStrings.breachAdded}
+                  </p>
+                  <p
+                    class='text-medium'
+                    style='${breachAlertValueStyle}'
+                  >
+                    ${data.breachAlert.addedDate}
+                  </p>
 
-                    ${
-                      breachAlert.dataClasses
-                        ? `
-                            <p
-                              class='text-light'
-                              style='${breachAlertLabelStyle}'
-                            >
-                              <!-- TODO: Check how we’ll get those strings  -->
-                              ${breachAlert.localizedStrings.compromisedData}
-                            </p>
-                            <span
-                              class='text-medium'
-                              style='${breachAlertValueStyle}'
-                            >
-                              ${breachAlert.dataClasses}
-                            </span>
-                          `
-                        : ''
-                    }
-                  </td>
-                </tr>
-              </table>
-            `).join('')}
+                  ${data.breachAlert.dataClasses
+                    ? `
+                        <p
+                          class='text-light'
+                          style='${breachAlertLabelStyle}'
+                        >
+                          ${data.breachAlert.localizedStrings.compromisedData}
+                        </p>
+                        <span
+                          class='text-medium'
+                          style='${breachAlertValueStyle}'
+                        >
+                          ${data.breachAlert.dataClasses}
+                        </span>
+                      `
+                    : ''}
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
       </table>

@@ -6,12 +6,14 @@ import AppConstants from '../../app-constants.js'
 import { getMessage } from '../../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
-const links = {
+
+const links = data => ({
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',
   legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
   termsAndPrivacy: `https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`
-}
+})
+
 const images = {
   header: `${AppConstants.SERVER_URL}/img/email_images/person-at-desk.png`,
   footer: `${AppConstants.SERVER_URL}/img/email_images/mozilla-logo-bw-rgb.png`,
@@ -122,7 +124,7 @@ const emailFooter = (data) => `
       </p>
       <p>
         ${getMessage('email-2022-hibp-attribution', {
-          'hibp-link-attr': `href='${links.hibp}' rel='noopener'`
+          'hibp-link-attr': `href='${links(data).hibp}' rel='noopener'`
         })}
       </p>
       <img
@@ -135,11 +137,11 @@ const emailFooter = (data) => `
         ${companyAddress}
       </p>
       <p>
-        <a href='${links.legal}'>
+        <a href='${links(data).legal}'>
           ${getMessage('legal')}
         </a>
         ${' • '}
-        <a href='${links.termsAndPrivacy}'>
+        <a href='${links(data).termsAndPrivacy}'>
           ${getMessage('terms-and-privacy')}
         </a>
       </p>
@@ -155,7 +157,7 @@ function getEmailFooterCopy (data) {
     </a>
   `
   const faqLink = `
-    <a href='${links.faq}'>
+    <a href='${links(data).faq}'>
       ${isMonthlyUnresolved
         ? getMessage('frequently-asked-questions')
         : getMessage('email-verify-footer-copy')}
