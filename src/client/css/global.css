@@ -56,11 +56,6 @@ hr {
   border: none;
   color: var(--gray-10);
   height: 1px;
-  width: 100%;
-}
-
-strong {
-  color: var(--dark-main);
 }
 
 img {

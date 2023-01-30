@@ -4,6 +4,11 @@
   padding: var(--padding-lg);
 }
 
+.settings-title,
+.settings-section-title {
+  color: black;
+}
+
 .settings-title {
   flex: 1;
 }
@@ -79,6 +84,7 @@
 }
 
 .settings-email-item strong {
+  color: black;
   font: 600 1em/1.2 inter, sans-serif;
 }
 
