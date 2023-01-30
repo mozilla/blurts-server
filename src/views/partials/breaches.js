@@ -63,7 +63,7 @@ function createResolveSteps (breach) {
   const checkedArr = breach.ResolutionsChecked || []
   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(([key, value]) => `
   <li class='resolve-list-item'>
-    <input name='${breach.recencyIndex}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
+    <input name='${breach.Id}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
     <p>${value.header}<br><i>${value.body}</i></p>
   </li>
   `)
