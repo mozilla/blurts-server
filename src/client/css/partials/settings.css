@@ -1,16 +1,13 @@
 .settings {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--padding-md) var(--padding-xl);
   padding: var(--padding-lg);
 }
 
 .settings-title,
 .settings-section-title {
-  color: black;
-}
-
-.settings-title {
-  flex: 1;
+  color: var(--main-dark);
 }
 
 .settings-section-title {
@@ -20,7 +17,7 @@
 .settings-content {
   color: var(--gray-40);
   font-size: 0.875rem;
-  flex: 2;
+  flex: 1 1 66%;
 }
 
 .settings-content > section {
@@ -151,8 +148,4 @@ button.primary.settings-add-email-button {
   line-height: 0.35em;
   top: 50%;
   transform: translateY(-50%);
-}
-
-.mobile .settings {
-  flex-direction: column;
 }
