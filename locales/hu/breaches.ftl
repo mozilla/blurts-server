@@ -3,7 +3,15 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
+
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Adatvédelmi incidensek a következőnél: { $email-select }
+
+## Breaches resolved filter
+
+
+## Breaches table
 
 
 ## Prompts the user for changes when there is a breach detected of password
