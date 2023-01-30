@@ -65,7 +65,7 @@ const createEmailList = (emails, breachCounts) => `
 
 const optionInput = (csrfToken, { isChecked, option }) => `
   <input
-    checked=${isChecked ? 'checked' : ''}
+    ${isChecked ? 'checked' : ''}
     class='js-settings-alert-options-input'
     data-alert-option='${option}'
     data-csrf-token='${csrfToken}'
@@ -74,11 +74,11 @@ const optionInput = (csrfToken, { isChecked, option }) => `
   >
 `
 
-const alertOptions = csrfToken => `
+const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   <div class='settings-alert-options'>
     <label class='settings-radio-input'>
     ${optionInput(csrfToken, {
-      isChecked: true,
+      isChecked: !allEmailsToPrimary,
       option: 0
     })}
     <span class='settings-radio-label'>
@@ -88,7 +88,7 @@ const alertOptions = csrfToken => `
 
   <label class='settings-radio-input'>
     ${optionInput(csrfToken, {
-      isChecked: false,
+      isChecked: allEmailsToPrimary,
       option: 1
     })}
     <span class='settings-radio-label'>
@@ -126,7 +126,7 @@ const createAddEmailModal = limit => `
 `
 
 export const settings = data => {
-  const { breachCounts, csrfToken, emails, limit } = data
+  const { allEmailsToPrimary, breachCounts, csrfToken, emails, limit } = data
 
   return `
     <div class='settings js-settings' data-csrf-token='${csrfToken}'>
@@ -138,7 +138,7 @@ export const settings = data => {
           <h3 class='settings-section-title'>
             ${getMessage('settings-alert-preferences-title')}
           </h3>
-          ${alertOptions(csrfToken)}
+          ${alertOptions({ csrfToken, allEmailsToPrimary })}
         </section>
 
         <hr>

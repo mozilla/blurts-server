@@ -6,8 +6,14 @@ import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 
 function settingsPage (req, res) {
+  const {
+    all_emails_to_primary: allEmailsToPrimary,
+    fxa_profile_json: fxaProfile
+  } = req.user
+
   const data = {
-    fxaProfile: req.user.fxa_profile_json,
+    allEmailsToPrimary,
+    fxaProfile,
     partial: settings
   }
 
