@@ -10,7 +10,6 @@ if (settingsAlertOptionsInputs?.length) {
       try {
         const communicationOption = event.target.getAttribute('data-alert-option')
         const csrfToken = document.querySelector('.js-settings[data-csrf-token]')
-        console.log('csrfToken', csrfToken)
 
         const response = await fetch('/api/v1/user/update-comm-option', {
           headers: {
