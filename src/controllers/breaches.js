@@ -64,7 +64,7 @@ async function putBreachResolution (req, res) {
     return res.json('Error: affectedEmail is not valid for this subscriber')
   }
 
-  // check if recency index is a part of affectEmail's breaches
+  // check if breach id is a part of affectEmail's breaches
   const allBreaches = req.app.locals.breaches
   const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
   const currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailInEmailAddresses[0].email)
@@ -102,6 +102,10 @@ async function putBreachResolution (req, res) {
       }
     }
   }
+
+  // set useBreachId to mark latest version of breach resolution
+  // without this line, the get call might assume recency index
+  currentBreachResolution.useBreachId = true
 
   const updatedSubscriber = await setBreachResolution(sessionUser, currentBreachResolution)
 
