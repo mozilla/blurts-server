@@ -16,6 +16,7 @@ import { errorHandler } from './middleware/error.js'
 import { doubleCsrfProtection } from './utils/csrf.js'
 import { initFluentBundles, updateLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
+import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
@@ -24,7 +25,8 @@ const isDev = AppConstants.NODE_ENV === 'dev'
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
 // Build script is NOT run for `npm run dev`, assets are served from /src, and nodemon restarts server without build (faster dev).
-const staticPath = process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
+const staticPath =
+  process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
 
 await initFluentBundles()
 
@@ -32,9 +34,13 @@ async function getRedisStore () {
   const RedisStoreConstructor = connectRedis(session)
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
     const redisMock = await import('redis-mock') // for devs without local redis
-    return new RedisStoreConstructor({ client: redisMock.default.createClient() })
+    return new RedisStoreConstructor({
+      client: redisMock.default.createClient()
+    })
   }
-  return new RedisStoreConstructor({ client: redis.createClient({ url: AppConstants.REDIS_URL }) })
+  return new RedisStoreConstructor({
+    client: redis.createClient({ url: AppConstants.REDIS_URL })
+  })
 }
 
 // middleware
@@ -82,28 +88,28 @@ app.use((req, res, next) => {
   })
 })
 
-// MNTOR-1009:
-// Because of heroku's proxy settings, request / cookies are not persisted between calls
+// MNTOR-1009, 1117:
+// Because of proxy settings, request / cookies are not persisted between calls
 // Setting the trust proxy to high and securing the cookie allowed the cookie to persist
 // If cookie.secure is set as true, for nodejs behind proxy, "trust proxy" needs to be set
-if (AppConstants.NODE_ENV === 'heroku') {
-  app.set('trust proxy', 1)
-}
+app.set('trust proxy', 1)
 
 // session
 const SESSION_DURATION_HOURS = AppConstants.SESSION_DURATION_HOURS || 48
-app.use(session({
-  cookie: {
-    maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
-    rolling: true,
-    sameSite: 'lax',
-    secure: !isDev
-  },
-  resave: false,
-  saveUninitialized: true,
-  secret: AppConstants.COOKIE_SECRET,
-  store: await getRedisStore()
-}))
+app.use(
+  session({
+    cookie: {
+      maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
+      rolling: true,
+      sameSite: 'lax',
+      secure: !isDev
+    },
+    resave: false,
+    saveUninitialized: true,
+    secret: AppConstants.COOKIE_SECRET,
+    store: await getRedisStore()
+  })
+)
 
 // Load breaches into namespaced cache
 try {
@@ -121,8 +127,13 @@ app.use(doubleCsrfProtection)
 app.use('/', indexRouter)
 app.use(errorHandler)
 
-// start server
-app.listen(AppConstants.PORT, function () {
-  console.log(`MONITOR V2: Server listening at ${this.address().port}`)
-  console.log(`Static files served from ${staticPath}`)
+app.listen(AppConstants.PORT, async function () {
+  console.info(`MONITOR V2: Server listening at ${this.address().port}`)
+  console.info(`Static files served from ${staticPath}`)
+  try {
+    await initEmail()
+    console.info('Email initialized')
+  } catch (ex) {
+    console.error('try-initialize-email-error', { ex })
+  }
 })

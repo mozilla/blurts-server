@@ -98,6 +98,7 @@ async function getAllBreachesFromDb () {
   // keep naming consistent with HIBP API's output
   // change to camelcase in sanitizeBreaches
   return dbBreaches.map(breach => ({
+    Id: breach.id,
     Name: breach.name,
     Title: breach.title,
     Domain: breach.domain,
