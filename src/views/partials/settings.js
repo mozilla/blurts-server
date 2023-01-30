@@ -129,7 +129,7 @@ export const settings = data => {
   const { breachCounts, csrfToken, emails, limit } = data
 
   return `
-    <div id='js-settings' class='settings' data-csrf-token='${csrfToken}'>
+    <div class='settings js-settings' data-csrf-token='${csrfToken}'>
       <h2 class='settings-title'>${getMessage('settings-page-title')}</h2>
 
       <div class='settings-content'>
@@ -151,10 +151,7 @@ export const settings = data => {
           <p>${getMessage('settings-email-limit-info', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
-          <button
-            id='js-settings-add-email-opener'
-            class='settings-add-email-button primary'
-          >
+          <button class='settings-add-email-button primary js-settings-add-email-opener'>
             ${getMessage('settings-add-email-button')}
           </button>
 
