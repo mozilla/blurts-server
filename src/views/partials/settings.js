@@ -65,7 +65,7 @@ const createEmailList = (emails, breachCounts) => `
 
 const optionInput = (csrfToken, { isChecked, option }) => `
   <input
-    checked='${isChecked}'
+    checked=${isChecked ? 'checked' : ''}
     class='js-settings-alert-options-input'
     data-alert-option='${option}'
     data-csrf-token='${csrfToken}'
