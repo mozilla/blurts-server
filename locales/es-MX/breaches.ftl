@@ -7,6 +7,13 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Filtraciones de datos para { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } de { $total } correo electrónico monitoreado
+        [many] { $count } de { $total } correos electrónicos monitoreados
+       *[other] { $count } de { $total } correos electrónicos monitoreados
+    }
 add-email-link = Agregar dirección de correo
 
 ## Breaches resolved filter
