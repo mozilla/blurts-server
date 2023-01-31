@@ -62,7 +62,7 @@ async function settingsPage (req, res) {
 }
 
 async function addEmail (req, res) {
-  const sessionUser = await req.user
+  const sessionUser = req.user
   const email = req.body.email
   // Use the same regex as HTML5 email input type
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
