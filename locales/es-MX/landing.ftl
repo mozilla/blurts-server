@@ -46,3 +46,4 @@ what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de da
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Ver si has sido parte de una filtración de datos
