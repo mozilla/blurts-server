@@ -157,7 +157,6 @@ async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaR
      * @returns {object} verified subscriber knex object in DB
      */
 async function _verifySubscriber (emailHash) {
-  // TODO: move this "up" into controllers/users ?
   await subscribeHash(emailHash.primary_sha1)
 
   const verifiedSubscriber = await knex('subscribers')
