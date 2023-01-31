@@ -18,6 +18,6 @@ router.post('/email', requireSessionUser, asyncMiddleware(addEmail))
 router.post('/resend-email', requireSessionUser, asyncMiddleware(resendEmail))
 router.post('/remove-email', requireSessionUser, asyncMiddleware(removeEmail))
 router.get('/verify-email', asyncMiddleware(verifyEmail))
-router.post('/update-comm-option', json(), requireSessionUser, asyncMiddleware(updateCommunicationOptions))
+router.post('/update-comm-option', requireSessionUser, asyncMiddleware(updateCommunicationOptions))
 router.use(methodNotAllowed)
 export default router
