@@ -10,6 +10,11 @@ import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
 import { getEmailTemplate } from '../emails/templates/email-2022.js'
 import { breachAlertEmailPartial } from '../emails/partials/email-breach-alert.js'
 
+import {
+  getEmailCtaHref,
+  getUnsubscribeUrl,
+  sendEmail
+} from '../utils/email.js'
 import { getMessage } from '../utils/fluent.js'
 import {
   getAddressesAndLanguageForEmail,
@@ -79,8 +84,9 @@ async function notify (req, res) {
   ]
 
   const unsatisfiedConditions = emailDeliveryConditions.filter(condition => (
-    !condition.condition
+    condition.condition
   ))
+
   const doNotSendEmail = unsatisfiedConditions?.length > 0
 
   if (doNotSendEmail) {
@@ -138,20 +144,21 @@ async function notify (req, res) {
         { defaultLocale: 'en' }
       )
 
-      // TODO: Add localized strings
       if (!notifiedRecipients.includes(breachedEmail)) {
         const data = {
           breachAlert,
-          ctaHref: 'ctaHref',
+          ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
           heading: getMessage('email-spotted-new-breach'),
           partial: {
             name: 'email-breach-alert'
           },
           recipientEmail,
-          subheading: 'subheading',
           subscriberId,
           supportedLocales,
-          unsubscribeUrl: 'unsubscribeUrl',
+          unsubscribeUrl: getUnsubscribeUrl(
+            recipientEmail,
+            'account-verification-email'
+          ),
           utmCampaign: utmCampaignId
         }
 
@@ -159,7 +166,6 @@ async function notify (req, res) {
         const emailTemplate = getEmailTemplate(data, emailPartial)
         const subject = getMessage('breach-alert-subject')
 
-        // TODO: Use new email util
         await sendEmail(recipientEmail, subject, emailTemplate)
 
         notifiedRecipients.push(breachedEmail)
@@ -168,7 +174,6 @@ async function notify (req, res) {
 
     log.info('notified', { length: notifiedRecipients.length })
 
-    // TODO: Use unified success and error responses
     res.status(200)
     res.json({
       info: 'Notified subscribers of breach.'

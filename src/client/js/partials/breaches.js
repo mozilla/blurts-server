@@ -104,4 +104,30 @@ function render () {
   renderBreachRows()
 }
 
+const sendAlertTestButton = document.getElementById('sendAlertTestButton')
+sendAlertTestButton.addEventListener('click', () => sendBreachAlertEmail())
+async function sendBreachAlertEmail () {
+  try {
+    const res = await fetch('/api/v1/hibp/notify', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer <HIBP_KANON_API_TOKEN>',
+        'Content-Type': 'application/json',
+        'x-csrf-token': breachesTable.dataset.token
+      },
+      body: JSON.stringify({
+        breachName: 'Adobe',
+        hashPrefix: '365050',
+        hashSuffixes: ['53cbb89874fc738c0512daf12bc4d91765']
+      })
+    })
+
+    if (!res.ok) throw new Error('Bad fetch response')
+
+    console.log('Sent breach alert email')
+  } catch (e) {
+    console.error('Could not send breach alert email:', e)
+  }
+}
+
 if (breachesPartial) init()

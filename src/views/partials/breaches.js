@@ -75,6 +75,9 @@ export const breaches = data => `
 <section>
   <header class='breaches-header'>
     <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
+    <button id='sendAlertTestButton' class='primary'>
+      Send test breach alert
+    </button>
     <figure>
       <img src='/images/temp-diagram.png' width='80' height='80'>
       <figcaption class='breach-stats'>

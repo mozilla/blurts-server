@@ -65,7 +65,7 @@ const breachAlertCtaStyle = `
   padding: 12px 24px;
 `
 
-const breachAlertEmailPartial = (data) => `
+const breachAlertEmailPartial = data => `
   <tr>
     <td style='${breachAlertContainerStyle}'>
       <p>
@@ -81,11 +81,11 @@ const breachAlertEmailPartial = (data) => `
                 <td style='${breachAlertCardsTitleStyle}'>
                   <img
                     height='25'
-                    src='${data.breachAlert.logoUrl}'
+                    src='${data.breachAlert.LogoPath}'
                     style='${breachAlertCardsTitleImageStyle}'
                     width='25'
                   >
-                  ${data.breachAlert.title}
+                  ${data.breachAlert.Title}
                 </td>
               </tr>
               <tr>
@@ -94,28 +94,28 @@ const breachAlertEmailPartial = (data) => `
                     class='text-light'
                     style='${breachAlertLabelStyle}'
                   >
-                    ${data.breachAlert.localizedStrings.breachAdded}
+                    ${'data.breachAlert.localizedStrings.breachAdded'}
                   </p>
                   <p
                     class='text-medium'
                     style='${breachAlertValueStyle}'
                   >
-                    ${data.breachAlert.addedDate}
+                    ${data.breachAlert.AddedDate}
                   </p>
 
-                  ${data.breachAlert.dataClasses
+                  ${data.breachAlert.DataClasses
                     ? `
                         <p
                           class='text-light'
                           style='${breachAlertLabelStyle}'
                         >
-                          ${data.breachAlert.localizedStrings.compromisedData}
+                          ${'data.breachAlert.localizedStrings.compromisedData'}
                         </p>
                         <span
                           class='text-medium'
                           style='${breachAlertValueStyle}'
                         >
-                          ${data.breachAlert.dataClasses}
+                          ${data.breachAlert.DataClasses}
                         </span>
                       `
                     : ''}
