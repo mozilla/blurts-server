@@ -180,7 +180,7 @@ button.primary,
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
   padding: var(--padding-md);
-  transition: background 150ms ease;
+  transition: background 150ms;
 }
 
 button.primary:hover,
