@@ -49,8 +49,14 @@ async function settingsPage (req, res) {
     breachCounts.set(email.email, breaches?.length || 0)
   }
 
+  const {
+    all_emails_to_primary: allEmailsToPrimary,
+    fxa_profile_json: fxaProfile
+  } = req.user
+
   const data = {
-    fxaProfile: req.user.fxa_profile_json,
+    allEmailsToPrimary,
+    fxaProfile,
     partial: settings,
     emails,
     breachCounts,

@@ -51,6 +51,13 @@ a {
   text-underline-position: under;
 }
 
+hr {
+  background-color: var(--gray-10);
+  border: none;
+  color: var(--gray-10);
+  height: 1px;
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -173,6 +180,12 @@ button.primary,
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
   padding: var(--padding-md);
+  transition: background 150ms;
+}
+
+button.primary:hover,
+.button.primary:hover {
+  background: var(--blue-60);
 }
 
 button.secondary,
