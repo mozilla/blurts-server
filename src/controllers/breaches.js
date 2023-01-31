@@ -44,9 +44,9 @@ async function getBreaches (req, res) {
 
 /**
  * Modify breach resolution for a user
- * @param {object} req containing {user, body: {affectedEmail, recencyIndex, resolutionsChecked}}
+ * @param {object} req containing {user, body: {affectedEmail, breachId, resolutionsChecked}}
  *
- * recencyIndex: corresponds to the relevant breach from HIBP
+ * breachId: id of the breach in the `breaches` table
  *
  * resolutionsChecked: has the following structure [DataTypes]
  *
@@ -54,8 +54,8 @@ async function getBreaches (req, res) {
  */
 async function putBreachResolution (req, res) {
   const sessionUser = req.user
-  const { affectedEmail, recencyIndex, resolutionsChecked } = req.body
-  const recencyIndexNumber = Number(recencyIndex)
+  const { affectedEmail, breachId, resolutionsChecked } = req.body
+  const breachIdNumber = Number(breachId)
   const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail
   const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => ea.email === affectedEmail)
 
@@ -64,13 +64,13 @@ async function putBreachResolution (req, res) {
     return res.json('Error: affectedEmail is not valid for this subscriber')
   }
 
-  // check if recency index is a part of affectEmail's breaches
+  // check if breach id is a part of affectEmail's breaches
   const allBreaches = req.app.locals.breaches
   const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
   const currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailInEmailAddresses[0].email)
-  const currentBreaches = currentEmail.breaches?.filter(b => b.recencyIndex === recencyIndexNumber)
+  const currentBreaches = currentEmail.breaches?.filter(b => b.Id === breachIdNumber)
   if (!currentBreaches) {
-    return res.json('Error: the recencyIndex provided does not exist')
+    return res.json('Error: breachId provided does not exist')
   }
 
   // check if resolutionsChecked array is a subset of the breaches' datatypes
@@ -96,12 +96,16 @@ async function putBreachResolution (req, res) {
   currentBreachResolution[affectedEmail] = {
     ...(currentBreachResolution[affectedEmail] || {}),
     ...{
-      [recencyIndexNumber]: {
+      [breachIdNumber]: {
         resolutionsChecked,
         isResolved
       }
     }
   }
+
+  // set useBreachId to mark latest version of breach resolution
+  // without this line, the get call might assume recency index
+  currentBreachResolution.useBreachId = true
 
   const updatedSubscriber = await setBreachResolution(sessionUser, currentBreachResolution)
 

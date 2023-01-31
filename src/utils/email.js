@@ -9,9 +9,6 @@ import AppConstants from '../app-constants.js'
 import { createTransport } from 'nodemailer'
 import mozlog from './log.js'
 
-// TODO
-// import { getTemplate, verifyPartial } from '../views/email-2022.js'
-
 const log = mozlog('email-utils')
 
 // The SMTP transport object. This is initialized to a nodemailer transport
@@ -35,18 +32,14 @@ async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
  * Send Email
  * @param {string} recipient
  * @param {string} subject
- * @param {function} template
- * @param {object} data
+ * @param {string} html
  * @returns <Promise>
  */
-function sendEmail (recipient, subject, template, data) {
+function sendEmail (recipient, subject, html) {
   if (!gTransporter) {
     return Promise.reject(new Error('SMTP transport not initialized'))
   }
 
-  // const html = getTemplate(verifyPartial, data)
-  // TODO implement when email template is ready
-  const html = '<html>placeholder</html>'
   return new Promise((resolve, reject) => {
     const emailFrom = AppConstants.EMAIL_FROM
     const mailOptions = {
