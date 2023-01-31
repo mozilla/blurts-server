@@ -9,7 +9,9 @@ if (settingsAlertOptionsInputs?.length) {
     inputElement.addEventListener('change', async event => {
       try {
         const communicationOption = event.target.getAttribute('data-alert-option')
-        const csrfToken = document.querySelector('.js-settings[data-csrf-token]')
+        const csrfToken = document
+          .querySelector('.js-settings[data-csrf-token]')
+          .getAttribute('data-csrf-token')
 
         const response = await fetch('/api/v1/user/update-comm-option', {
           headers: {
@@ -61,7 +63,9 @@ const settingsAddVerification = document.getElementById('js-settings-modal-send-
 if (settingsAddVerification) {
   settingsAddVerification.addEventListener('click', async _ => {
     const email = document.getElementById('js-settings-email-modal-input').value
-    const csrfToken = document.querySelector('.js-settings[data-csrf-token]')
+    const csrfToken = document
+      .querySelector('.js-settings[data-csrf-token]')
+      .getAttribute('data-csrf-token')
 
     const response = await fetch('/api/v1/user/email', {
       headers: {
@@ -99,7 +103,9 @@ if (settingsRemoveEmailButtons?.length) {
       try {
         const subscriberId = event.target.getAttribute('data-subscriber-id')
         const emailId = event.target.getAttribute('data-email-id')
-        const csrfToken = document.querySelector('.js-settings[data-csrf-token]')
+        const csrfToken = document
+          .querySelector('.js-settings[data-csrf-token]')
+          .getAttribute('data-csrf-token')
 
         const response = await fetch('/api/v1/user/remove-email', {
           headers: {
@@ -127,7 +133,9 @@ if (settingsResendEmailLinks?.length) {
     resendEmailLink.addEventListener('click', async event => {
       try {
         const emailId = event.target.getAttribute('data-email-id')
-        const csrfToken = document.querySelector('.js-settings[data-csrf-token]')
+        const csrfToken = document
+          .querySelector('.js-settings[data-csrf-token]')
+          .getAttribute('data-csrf-token')
 
         const response = await fetch('/api/v1/user/resend-email', {
           headers: {
