@@ -9,6 +9,8 @@ import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
 import cookieParser from 'cookie-parser'
+import Sentry from '@sentry/node'
+
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
@@ -18,6 +20,24 @@ import { initFluentBundles, updateLocale } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
+
+Sentry.init({
+  dsn: AppConstants.SENTRY_DSN,
+  environment: AppConstants.NODE_ENV,
+  beforeSend (event, hint) {
+    if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english
+
+    // try {
+    //   if (hint.originalException.fluentID) {
+    //     event.exception.values[0].value = LocaleUtils.fluentFormat(['en'], hint.originalException.fluentID)
+    //   }
+    // } catch (e) {
+    //   return event
+    // }
+
+    return event
+  }
+})
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
@@ -47,6 +67,13 @@ async function getRedisStore () {
 app.use(
   helmet({
     crossOriginEmbedderPolicy: false
+  })
+)
+
+app.use(
+  Sentry.Handlers.requestHandler({
+    request: ['headers', 'method', 'url'], // omit cookies, data, query_string
+    user: ['id'] // omit username, email
   })
 )
 
@@ -125,6 +152,7 @@ app.use(doubleCsrfProtection)
 
 // routing
 app.use('/', indexRouter)
+app.use(Sentry.Handlers.errorHandler())
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
