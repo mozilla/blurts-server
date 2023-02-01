@@ -78,7 +78,8 @@ async function addEmail (req, res) {
     throw fluentError('user-add-invalid-email')
   }
 
-  if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES) {
+  // Total max number of email addresses minus one to account for the primary email
+  if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES - 1) {
     throw fluentError('user-add-too-many-emails')
   }
 
