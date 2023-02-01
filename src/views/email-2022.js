@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import AppConstants from '../app-constants.js'
 import { getMessage } from '../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
@@ -13,10 +14,10 @@ const links = (data) => ({
 })
 
 const images = {
-  header: 'images/person-at-desk.webp',
-  footer: 'images/mozilla-logo-bw.webp',
-  logoDark: 'images/monitor-logo-transparent-dark-mode.webp',
-  logoLight: 'images/monitor-logo-bg-light.webp'
+  header: `${AppConstants.SERVER_URL}/images/person-at-desk.webp`,
+  footer: `${AppConstants.SERVER_URL}/images/mozilla-logo-bw.webp`,
+  logoDark: `${AppConstants.SERVER_URL}/images/monitor-logo-transparent-dark-mode.webp`,
+  logoLight: `${AppConstants.SERVER_URL}/images/monitor-logo-bg-light.webp`
 }
 
 const bodyStyle = `
