@@ -13,9 +13,16 @@ stay-safe-with-tool = Hold dig sikker med et enkelt, men stærkt værktøj, der 
 
 ## Your privacy is safe with us
 
+learn-more-mission = Læs mere om vores mission
 
 ## Top questions about Firefox Monitor
 
+top-questions-about-monitor = De almindeligste spørgsmål om { -brand-fx-monitor }
+see-all-faq = Se alle ofte stillede spørgsmål
+# question and answer
+what-is-breach = Hvad er en datalæk helt præcist?
+# question and answer
+what-do-i-do = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg?
 
 ## See if you’ve been in a data breach
 
