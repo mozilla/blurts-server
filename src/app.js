@@ -11,7 +11,6 @@ import redis from 'redis'
 import cookieParser from 'cookie-parser'
 import Sentry from '@sentry/node'
 
-
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
