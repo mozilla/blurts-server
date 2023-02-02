@@ -67,11 +67,11 @@ unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
 unsub-blurb = Esto eliminará tu dirección de correo electrónico de la lista { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas filtraciones.
 unsub-button = Cancelar suscripción
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datos de violación proporcionados por { $hibp-link }
-share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos tuvo   una violación de datos? Descubrilo
-share-facebook-headline = Averiguá si fusite parte de una violación de datos.
-share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas en una violación de datos?
-og-site-description = Averiguá si fuiste parte de una violación de datos con { -product-name }. Registrate para recibir alertas sobre futuras infracciones y obtené consejos para mantener tus cuentas seguras.
+hibp-attribution = Datos de filtración proporcionados por { $hibp-link }
+share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguna de los tuyas tuvo una filtración de datos? Descubrilo.
+share-facebook-headline = Averiguá si fusite parte de una filtración de datos.
+share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas en una filtración de datos?
+og-site-description = Averiguá si fuiste parte de una filtración de datos con { -product-name }. Registrate para recibir alertas sobre futuras filtraciones y obtené consejos para mantener tus cuentas seguras.
 show-all = Mostrar todo
 fxa-scan-another-email = ¿Querés consultar por otro correo electrónico?
 sign-out = Cerrar la sesión
@@ -82,7 +82,7 @@ fxa-pwt-summary-2 =
     Las contraseñas cortas de una sola palabra son fáciles de adivinar por parte de los piratas informáticos.
     Usá al menos dos palabras y una combinación de letras, dígitos y caracteres especiales.
 fxa-pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tus  contraseñas y te las ingresan en los sitios web. Incluso te ayudarán a crear contraseñas seguras.
-fxa-pwt-summary-6 = Las violaciones de datos van en aumento. Si tu información personal aparece en una nueva violación de datos, { -product-name } te envía una alerta para que puedas tomar medidas y proteger tus cuentas.
+fxa-pwt-summary-6 = Las filtraciones de datos van en aumento. Si tu información personal aparece en una nueva filtración de datos, { -product-name } te envía una alerta para que podás tomar medidas y proteger tus cuentas.
 fxa-what-to-do-blurb-1 =
     Si no podés iniciar la sesión, contactate con el sitio web para preguntar cómo actualizarlo.
     ¿Ves una cuenta que no reconocés? Tus datos podrían haberse vendido.
