@@ -22,6 +22,7 @@ filter-label-resolved = Løste datalæk
 
 ## Breaches table
 
+column-company = VIRKSOMHED
 column-breached-data = KOMPROMITTEREDE DATA
 column-detected = OPDAGET
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
