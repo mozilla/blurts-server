@@ -63,7 +63,7 @@ function createResolveSteps (breach) {
   const checkedArr = breach.ResolutionsChecked || []
   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(([key, value]) => `
   <li class='resolve-list-item'>
-    <input name='${breach.recencyIndex}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
+    <input name='${breach.Id}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
     <p>${value.header}<br><i>${value.body}</i></p>
   </li>
   `)
@@ -79,7 +79,7 @@ export const breaches = data => `
       Send test breach alert
     </button>
     <figure>
-      <img src='/images/temp-diagram.png' width='80' height='80'>
+      <img src='/images/temp-diagram.webp' width='80' height='80'>
       <figcaption class='breach-stats'>
         <strong>10 total breaches</strong>
         <label>Resolved</label>
@@ -96,9 +96,9 @@ export const breaches = data => `
   </header>
 </section>
 <section class='breaches-filter'>
-  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
+  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' autocomplete='off' checked>
   <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('filter-label-unresolved')}</label>
-  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
+  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved' autocomplete='off'>
   <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
 </section>
 <section class='breaches-table' data-token=${data.csrfToken}>

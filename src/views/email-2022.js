@@ -2,21 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../../app-constants.js'
-import { getMessage } from '../../utils/fluent.js'
+import AppConstants from '../app-constants.js'
+import { getMessage } from '../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
-const links = data => ({
+const links = (data) => ({
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',
   legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
   termsAndPrivacy: `https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`
 })
+
 const images = {
-  header: `${AppConstants.SERVER_URL}/img/email_images/person-at-desk.png`,
-  footer: `${AppConstants.SERVER_URL}/img/email_images/mozilla-logo-bw-rgb.png`,
-  logoDark: `${AppConstants.SERVER_URL}/img/email_images/monitor-logo-transparent-dark-mode.png`,
-  logoLight: `${AppConstants.SERVER_URL}/img/email_images/monitor-logo-bg-f9f9fa.png`
+  header: `${AppConstants.SERVER_URL}/images/person-at-desk.webp`,
+  footer: `${AppConstants.SERVER_URL}/images/mozilla-logo-bw.webp`,
+  logoDark: `${AppConstants.SERVER_URL}/images/monitor-logo-transparent-dark-mode.webp`,
+  logoLight: `${AppConstants.SERVER_URL}/images/monitor-logo-bg-light.webp`
 }
 
 const bodyStyle = `
@@ -153,17 +154,17 @@ function getEmailFooterCopy (data) {
       ${getMessage('email-unsub-link')}
     </a>
   `
-
   const faqLink = `
     <a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>
   `
+
   return getMessage('email-footer-blurb', {
     unsubLink,
     faqLink
   })
 }
 
-const getEmailTemplate = data => `
+const getTemplate = (data, partial) => `
   <!doctype html>
   <html>
     <head>
@@ -227,12 +228,11 @@ const getEmailTemplate = data => `
           heading: 'email-verify-heading',
           subhead: 'email-verify-subhead'
         })}
-        <!-- TODO: Pass or get partial -->
-        ${data.partial}
+        ${partial}
         ${emailFooter(data)}
       </table>
     </body>
   </html>
 `
 
-export { getEmailTemplate }
+export { getTemplate }

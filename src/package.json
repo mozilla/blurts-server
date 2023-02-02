@@ -15,7 +15,7 @@
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
     "copy:root": "mkdir -p ../dist/ && cp ./client/*.* ../dist/",
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
-    "convert:webp": "sh ./utils/webp.sh",
+    "convert:webp": "sh ./scripts/webp.sh",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava"
   },
   "nodemonConfig": {
