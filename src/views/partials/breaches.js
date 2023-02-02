@@ -17,8 +17,7 @@ function createEmailCTA (count) {
 
   if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
 
-  // TODO: link "add email" flow
-  return `<a href='http://mozilla.org'>${getMessage('add-email-link')}</a>`
+  return `<button class='anchor' data-dialog='add-email'>${getMessage('add-email-link')}</button>`
 }
 
 function createBreachRows (data) {
@@ -104,4 +103,5 @@ export const breaches = data => `
   </header>
   ${createBreachRows(data.breachesData)}
 </section>
+<div id='content'></div>
 `
