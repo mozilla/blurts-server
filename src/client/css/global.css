@@ -172,6 +172,12 @@ button * {
   pointer-events: none;
 }
 
+button:disabled,
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 button.primary,
 .button.primary {
   color: white;
@@ -179,11 +185,6 @@ button.primary,
   border: 1px solid var(--blue-50);
   padding: var(--padding-md);
   transition: background 150ms;
-}
-
-button.primary:hover,
-.button.primary:hover {
-  background: var(--blue-60);
 }
 
 button.secondary,
@@ -198,6 +199,11 @@ button.primary:active,
 button.secondary:active,
 .button.secondary:active {
   box-shadow: inset 0 0 64px #80808011;
+}
+
+button.primary:hover:enabled,
+.button.primary:hover:enabled {
+  background: var(--blue-60);
 }
 
 button.close {
