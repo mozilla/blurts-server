@@ -23,6 +23,8 @@ see-all-faq = Se alle ofte stillede spørgsmål
 what-is-breach = Hvad er en datalæk helt præcist?
 # question and answer
 what-do-i-do = Jeg har lige fundet ud af, at jeg er omfattet af en datalæk. Hvad gør jeg?
+# question and answer
+what-gets-exposed = Hvilke oplysninger bliver kompromitteret i datalæk?
 
 ## See if you’ve been in a data breach
 
