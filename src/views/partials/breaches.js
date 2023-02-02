@@ -103,5 +103,4 @@ export const breaches = data => `
   </header>
   ${createBreachRows(data.breachesData)}
 </section>
-<div id='content'></div>
 `
