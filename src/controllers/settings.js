@@ -167,7 +167,7 @@ async function sendVerificationEmail (emailId) {
   await sendEmail(
     recipientEmail,
     getMessage('email-subject-verify'),
-    getTemplate(data, verifyPartial(data))
+    getTemplate(data, verifyPartial)
   )
 }
 

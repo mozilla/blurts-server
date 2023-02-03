@@ -147,11 +147,9 @@ async function notify (req, res) {
       if (!notifiedRecipients.includes(breachedEmail)) {
         const data = {
           breachAlert,
+          breachedEmail,
           ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
           heading: getMessage('email-spotted-new-breach'),
-          partial: {
-            name: 'email-breach-alert'
-          },
           recipientEmail,
           subscriberId,
           supportedLocales,
@@ -162,8 +160,7 @@ async function notify (req, res) {
           utmCampaign: utmCampaignId
         }
 
-        const emailPartial = breachAlertEmailPartial(data)
-        const emailTemplate = getTemplate(data, emailPartial)
+        const emailTemplate = getTemplate(data, breachAlertEmailPartial)
         const subject = getMessage('breach-alert-subject')
 
         await sendEmail(recipientEmail, subject, emailTemplate)

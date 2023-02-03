@@ -94,7 +94,7 @@ const breachAlertEmailPartial = data => `
                     class='text-light'
                     style='${breachAlertLabelStyle}'
                   >
-                    ${'data.breachAlert.localizedStrings.breachAdded'}
+                    ${getMessage('breach-added-label')}
                   </p>
                   <p
                     class='text-medium'
@@ -109,7 +109,7 @@ const breachAlertEmailPartial = data => `
                           class='text-light'
                           style='${breachAlertLabelStyle}'
                         >
-                          ${'data.breachAlert.localizedStrings.compromisedData'}
+                          ${getMessage('compromised-data')}
                         </p>
                         <span
                           class='text-medium'

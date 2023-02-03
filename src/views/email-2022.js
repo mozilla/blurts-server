@@ -83,9 +83,10 @@ const emailHeader = (data) => `
             <h1>
               ${getMessage(data.heading)}
             </h1>
-            <p>
-              ${getMessage(data.subhead)}
-            </p>
+            ${data.subhead !== ''
+              ? `<p>${getMessage(data.subhead)}</p>`
+              : ''
+            }
           </td>
           <td
             class='header-image'
@@ -154,85 +155,91 @@ function getEmailFooterCopy (data) {
   })
 }
 
-const getTemplate = (data, partial) => `
-  <!doctype html>
-  <html>
-    <head>
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+const getTemplate = (data, partial) => {
+  const isBreachAlertEmail = partial.name === 'breachAlertEmailPartial'
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 
-      <title>
-        ${getMessage('brand-fx-monitor')}
-      </title>
+        <title>
+          ${getMessage('brand-fx-monitor')}
+        </title>
 
-      <style>
-        * {
-          margin: 0;
-          padding: 0;
-        }
-
-        body {
-          color: black;
-          font: normal 16px/1.2 sans-serif;
-        }
-
-        h1,
-        p {
-          margin: 12px auto;
-          max-width: 600px;
-          padding: 0 24px;
-        }
-
-        a {
-          color: #592acb;
-          text-decoration: none;
-        }
-
-        table {
-          table-layout: fixed;
-        }
-
-        .logo > td {
-          height: 100px;
-          background-color: #f9f9fa;
-          background-position: 50%;
-          background-image: url('${images.logoLight}');
-          background-repeat: no-repeat;
-          background-size: 240px 50px;
-          width: 100%;
-        }
-
-        @media screen and (max-width:600px) {
-          .header-image {
-            display: none;
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
           }
-        }
 
-        @media (prefers-color-scheme: dark) {
+          body {
+            color: black;
+            font: normal 16px/1.2 sans-serif;
+          }
+
+          h1,
+          p {
+            margin: 12px auto;
+            max-width: 600px;
+            padding: 0 24px;
+          }
+
+          a {
+            color: #592acb;
+            text-decoration: none;
+          }
+
+          table {
+            table-layout: fixed;
+          }
+
           .logo > td {
-            background-image: url('${images.logoDark}')
+            height: 100px;
+            background-color: #f9f9fa;
+            background-position: 50%;
+            background-image: url('${images.logoLight}');
+            background-repeat: no-repeat;
+            background-size: 240px 50px;
+            width: 100%;
           }
-        }
-      </style>
-    </head>
 
-    <body style='${bodyStyle}'>
-      <table
-        border='0'
-        cellpadding='0'
-        cellspacing='0'
-        role='presentation'
-        style='${tableStyle}'
-      >
-        ${emailHeader({
-          heading: 'email-verify-heading',
-          subhead: 'email-verify-subhead'
-        })}
-        ${partial}
-        ${emailFooter(data)}
-      </table>
-    </body>
-  </html>
-`
+          @media screen and (max-width:600px) {
+            .header-image {
+              display: none;
+            }
+          }
+
+          @media (prefers-color-scheme: dark) {
+            .logo > td {
+              background-image: url('${images.logoDark}')
+            }
+          }
+        </style>
+      </head>
+
+      <body style='${bodyStyle}'>
+        <table
+          border='0'
+          cellpadding='0'
+          cellspacing='0'
+          role='presentation'
+          style='${tableStyle}'
+        >
+          ${partial.name}
+          ${emailHeader({
+            heading: isBreachAlertEmail
+              ? 'email-spotted-new-breach'
+              : 'email-verify-heading',
+            subhead: isBreachAlertEmail ? '' : 'email-verify-subhead'
+          })}
+          ${partial(data)}
+          ${emailFooter(data)}
+        </table>
+      </body>
+    </html>
+  `
+}
 
 export { getTemplate }
