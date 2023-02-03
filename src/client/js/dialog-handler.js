@@ -19,22 +19,22 @@ function handleEvent (e) {
       openDialog(e.target.dataset.dialog)
       break
     case e.target.matches('dialog button.close'):
-    case e.target === dialogEl: // ::backdrop click
-      closeDialog()
+      dialogEl.close()
       break
   }
 }
 
 async function openDialog (partialName) {
-  dialogEl.showModal() // provide immediate UI response by showing ::backdrop regardless of dialog content
+  dialogEl.showModal() // provide immediate UI response by showing ::backdrop regardless of content load
   dialogEl.addEventListener('click', handleEvent)
+  dialogEl.addEventListener('close', resetDialog)
 
   const content = contentMap.get(partialName) ?? await fetchContent(partialName)
 
   if (content) {
     dialogEl.insertAdjacentHTML('beforeend', content)
   } else {
-    closeDialog()
+    dialogEl.close()
   }
 }
 
@@ -53,9 +53,9 @@ async function fetchContent (partialName) {
   return content
 }
 
-function closeDialog () {
+function resetDialog () {
   dialogEl.removeEventListener('click', handleEvent)
-  dialogEl.close()
+  dialogEl.removeEventListener('close', resetDialog)
   dialogEl.replaceChildren()
 }
 
