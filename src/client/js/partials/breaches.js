@@ -18,8 +18,10 @@ const state = new Proxy({
 })
 
 let breachesTable, breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
+let sendAlertTestButton
 
 function init () {
+  sendAlertTestButton = document.getElementById('sendAlertTestButton')
   breachesTable = breachesPartial.querySelector('.breaches-table')
   breachRows = breachesTable.querySelectorAll('.breach-row')
   emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
@@ -29,6 +31,7 @@ function init () {
 
   state.selectedEmail = emailSelect.value // triggers render
 
+  sendAlertTestButton.addEventListener('click', sendBreachAlertEmail)
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
@@ -104,14 +107,12 @@ function render () {
   renderBreachRows()
 }
 
-const sendAlertTestButton = document.getElementById('sendAlertTestButton')
-sendAlertTestButton.addEventListener('click', () => sendBreachAlertEmail())
 async function sendBreachAlertEmail () {
   try {
     const res = await fetch('/api/v1/hibp/notify', {
       method: 'POST',
       headers: {
-        Authorization: 'Bearer <HIBP_KANON_API_TOKEN>',
+        Authorization: 'Bearer <HIBP_NOTIFY_TOKEN>',
         'Content-Type': 'application/json',
         'x-csrf-token': breachesTable.dataset.token
       },
