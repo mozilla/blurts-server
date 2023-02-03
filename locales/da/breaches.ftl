@@ -30,6 +30,8 @@ breach-description = Den { $breachDate } blev { $companyName } udsat for en data
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-pw-header = Besøg <a>{ $breachedCompanyUrl }</a> for at ændre din adgangskode og slå tofaktor-godkendelse til.
 breach-checklist-pw-body = Sørg for, at din adgangskode er unik og svær at gætte. Hvis adgangskoden bruges til andre konti, så skal du sørge for at ændre den dér også. <a>Adgangskode-håndtering i { -brand-firefox }</a> kan hjælpe dig med at holde styr på alle dine adgangskoder på en sikker måde.
 
 ## Prompts the user for changes when there is a breach detected of email
@@ -42,6 +44,10 @@ breach-checklist-email-body = På denne måde bliver din rigtige mailadresse hol
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Hold øje med, om dine kreditrapporter indeholder konti, lån eller kreditkort, du ikke genkender.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+breach-checklist-ssn-body = Du kan også overveje, at indefryse din kredit på <a>Equifax</a>, <a>Experian</a> og <a>TransUnion</a> for at forhindre svindlere i at åbne nye konti i dit navn. Det er gratis og påvirker ikke dine kreditværdighed.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
