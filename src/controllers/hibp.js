@@ -7,8 +7,8 @@ import AppConstants from '../app-constants.js'
 
 import { getSubscribersByHashes } from '../db/tables/subscribers.js'
 import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
-import { getEmailTemplate } from '../emails/templates/email-2022.js'
-import { breachAlertEmailPartial } from '../emails/partials/email-breach-alert.js'
+import { getTemplate } from '../views/email-2022.js'
+import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
 
 import {
   getEmailCtaHref,
@@ -163,7 +163,7 @@ async function notify (req, res) {
         }
 
         const emailPartial = breachAlertEmailPartial(data)
-        const emailTemplate = getEmailTemplate(data, emailPartial)
+        const emailTemplate = getTemplate(data, emailPartial)
         const subject = getMessage('breach-alert-subject')
 
         await sendEmail(recipientEmail, subject, emailTemplate)
