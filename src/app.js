@@ -10,6 +10,7 @@ import accepts from 'accepts'
 import redis from 'redis'
 import cookieParser from 'cookie-parser'
 import Sentry from '@sentry/node'
+import '@sentry/tracing'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
@@ -20,9 +21,14 @@ import { loadBreachesIntoApp } from './utils/hibp.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
+const app = express()
+const isDev = AppConstants.NODE_ENV === 'dev'
+
+// init sentry
 Sentry.init({
   dsn: AppConstants.SENTRY_DSN,
   environment: AppConstants.NODE_ENV,
+  debug: isDev,
   beforeSend (event, hint) {
     if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english
 
@@ -37,9 +43,6 @@ Sentry.init({
     return event
   }
 })
-
-const app = express()
-const isDev = AppConstants.NODE_ENV === 'dev'
 
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
