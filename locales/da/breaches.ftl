@@ -57,6 +57,7 @@ breach-checklist-cc-body = Du bør også gennemgå dine kontoudtog for debiterin
 ## Prompts the user for changes when there is a breach detected of bank account
 
 breach-checklist-bank-header = Giv straks din bank besked om, at dit kontonummer er blevet kompromitteret.
+breach-checklist-bank-body = Jo hurtigere du gør det, jo bedre kan du være beskyttet i forhold til at få dækket eventuelle tab. Du bør også undersøge din konto for transaktioner, du ikke kan genkende.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
