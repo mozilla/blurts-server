@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getMessage } from '../../utils/fluent.js'
+import { prettyDate } from '../../utils/pretty-date.js'
 
 const breachAlertContainerStyle = `
   background: #f9f9fa;
@@ -65,75 +66,73 @@ const breachAlertCtaStyle = `
   padding: 12px 24px;
 `
 
-const breachAlertEmailPartial = data => `
-  <tr>
-    <td style='${breachAlertContainerStyle}'>
-      <p>
-        ${getMessage('email-breach-detected', {
-          'email-address': `<strong>${data.breachedEmail}</strong>`
-        })}
-      </p>
-      <table style='${breachAlertTableStyle}'>
-        <tr>
-          <td>
-            <table style='${breachAlertCardsContainerStyle}'>
-              <tr>
-                <td style='${breachAlertCardsTitleStyle}'>
-                  <img
-                    height='25'
-                    src='${data.breachAlert.LogoPath}'
-                    style='${breachAlertCardsTitleImageStyle}'
-                    width='25'
-                  >
-                  ${data.breachAlert.Title}
-                </td>
-              </tr>
-              <tr>
-                <td style='padding: 24px;'>
-                  <p
-                    class='text-light'
-                    style='${breachAlertLabelStyle}'
-                  >
-                    ${getMessage('breach-added-label')}
-                  </p>
-                  <p
-                    class='text-medium'
-                    style='${breachAlertValueStyle}'
-                  >
-                    ${data.breachAlert.AddedDate}
-                  </p>
+const breachAlertEmailPartial = data => {
+  const { breachAlert, breachedEmail, supportedLocales } = data
+  const { LogoPath, AddedDate, DataClasses, Title } = breachAlert
 
-                  ${data.breachAlert.DataClasses
-                    ? `
-                        <p
-                          class='text-light'
-                          style='${breachAlertLabelStyle}'
-                        >
-                          ${getMessage('compromised-data')}
-                        </p>
-                        <span
-                          class='text-medium'
-                          style='${breachAlertValueStyle}'
-                        >
-                          ${data.breachAlert.DataClasses}
-                        </span>
-                      `
-                    : ''}
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+  return `
+    <tr>
+      <td style='${breachAlertContainerStyle}'>
+        <p>
+          ${getMessage('email-breach-detected', {
+            'email-address': `<strong>${breachedEmail}</strong>`
+          })}
+        </p>
+        <table style='${breachAlertTableStyle}'>
+          <tr>
+            <td>
+              <table style='${breachAlertCardsContainerStyle}'>
+                <tr>
+                  <td style='${breachAlertCardsTitleStyle}'>
+                    <img
+                      height='25'
+                      src='${LogoPath}'
+                      style='${breachAlertCardsTitleImageStyle}'
+                      width='25'
+                    >
+                    ${Title}
+                  </td>
+                </tr>
+                <tr>
+                  <td style='padding: 24px;'>
+                    <p style='${breachAlertLabelStyle}'>
+                      ${getMessage('breach-added-label')}
+                    </p>
+                    <p
+                      class='text-medium'
+                      style='${breachAlertValueStyle}'
+                    >
+                      ${prettyDate(AddedDate, supportedLocales)}
+                    </p>
 
-      <a
-        href='{{ ctaHref }}'
-        style='${breachAlertCtaStyle}'
-      >
-        ${getMessage('email-dashboard-cta')}
-      </a>
-    </td>
-  </tr>
-`
+                    ${DataClasses
+                      ? `
+                          <p style='${breachAlertLabelStyle}'>
+                            ${getMessage('compromised-data')}
+                          </p>
+                          <span
+                            class='text-medium'
+                            style='${breachAlertValueStyle}'
+                          >
+                            ${DataClasses}
+                          </span>
+                        `
+                      : ''}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <a
+          href='{{ ctaHref }}'
+          style='${breachAlertCtaStyle}'
+        >
+          ${getMessage('email-dashboard-cta')}
+        </a>
+      </td>
+    </tr>
+  `
+}
 
 export { breachAlertEmailPartial }
