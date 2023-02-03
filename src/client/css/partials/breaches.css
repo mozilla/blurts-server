@@ -40,8 +40,9 @@
   white-space: nowrap;
 }
 
-.breaches-header figcaption > a {
+.breaches-header .email-stats button[data-dialog] {
   color: var(--blue-50);
+  margin: auto;
 }
 
 .breaches-filter {
