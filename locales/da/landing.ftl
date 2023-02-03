@@ -12,6 +12,8 @@ get-started = Kom i gang
 why-use-monitor = Hvorfor bruge { -brand-fx-monitor }?
 protect-account = Beskyt dine konti
 prevent-fraud = Forebyg bedrageri og cyberkriminalitet
+get-alerts = Få advarsler om nye datalæk
+get-alerts-find-out = Få besked, hvis det bliver opdaget, at dine personlige oplysninger er blevet kompromitteret i et nyt datalæk.
 
 ## Here’s how it works
 
@@ -19,9 +21,12 @@ how-it-works = Sådan fungerer det
 check-for-breaches = Undersøg for datalæk
 check-for-breaches-we-search = Vi vil gennemsøge alle kendte datalæk siden 2007 for at se, om dine oplysninger er blevet kompromitteret.
 protect-accounts = Beskyt dine konti
+protect-accounts-clear-steps = Vi vejleder dig trin for trin, hvis du bliver udsat for en datalæk. Så ved du, hvordan du skal håndtere det.
+alerts-for-breaches = Få advarsler om nye datalæk
 
 ## Your privacy is safe with us
 
+safe-with-us = Vi beskytter dit privatliv på nettet
 learn-more-mission = Læs mere om vores mission
 
 ## Top questions about Firefox Monitor
