@@ -227,7 +227,6 @@ const getTemplate = (data, partial) => {
           role='presentation'
           style='${tableStyle}'
         >
-          ${partial.name}
           ${emailHeader({
             heading: isBreachAlertEmail
               ? 'email-spotted-new-breach'

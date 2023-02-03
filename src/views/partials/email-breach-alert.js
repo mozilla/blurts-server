@@ -98,23 +98,19 @@ const breachAlertEmailPartial = data => {
                     <p style='${breachAlertLabelStyle}'>
                       ${getMessage('breach-added-label')}
                     </p>
-                    <p
-                      class='text-medium'
-                      style='${breachAlertValueStyle}'
-                    >
+                    <p style='${breachAlertValueStyle}'>
                       ${prettyDate(AddedDate, supportedLocales)}
                     </p>
 
-                    ${DataClasses
+                    ${DataClasses?.length > 0
                       ? `
                           <p style='${breachAlertLabelStyle}'>
                             ${getMessage('compromised-data')}
                           </p>
-                          <span
-                            class='text-medium'
-                            style='${breachAlertValueStyle}'
-                          >
-                            ${DataClasses}
+                          <span style='${breachAlertValueStyle}'>
+                            ${DataClasses.map(classKey => getMessage(classKey))
+                              .join(', ')
+                              .trim()}
                           </span>
                         `
                       : ''}
