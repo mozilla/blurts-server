@@ -32,14 +32,7 @@ const tableStyle = `
   width: 100%;
 `
 
-const headeLogoStyle = `
-  background-size: 240px 50px;
-  background: #f9f9fa url('${images.logoLight}')
-  height: 100px;
-  no-repeat 50%;
-`
-
-const headeTableStyle = `
+const headerTableStyle = `
   background-color: #321c64;
   color: white;
   height: 331px;
@@ -48,6 +41,7 @@ const headeTableStyle = `
 `
 
 const headerImageContainerStyle = `
+  background-color: #321c64;
   vertical-align: bottom;
   width: 50%;
 `
@@ -73,10 +67,7 @@ const footerImageStyle = `
 
 const emailHeader = (data) => `
   <tr class='logo'>
-    <td
-      height='100'
-      style='${headeLogoStyle}'
-    ></td>
+    <td height='100'></td>
   </tr>
   <tr class='header'>
     <td>
@@ -85,7 +76,7 @@ const emailHeader = (data) => `
         cellpadding='0'
         cellspacing='0'
         role='presentation'
-        style='${headeTableStyle}'
+        style='${headerTableStyle}'
       >
         <tr>
           <td>
@@ -97,7 +88,6 @@ const emailHeader = (data) => `
             </p>
           </td>
           <td
-            background-color: #321c64;
             class='header-image'
             style='${headerImageContainerStyle}'
           >
@@ -200,6 +190,16 @@ const getTemplate = (data, partial) => `
 
         table {
           table-layout: fixed;
+        }
+
+        .logo > td {
+          height: 100px;
+          background-color: #f9f9fa;
+          background-position: 50%;
+          background-image: url('${images.logoLight}');
+          background-repeat: no-repeat;
+          background-size: 240px 50px;
+          width: 100%;
         }
 
         @media screen and (max-width:600px) {

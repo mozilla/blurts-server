@@ -262,8 +262,8 @@ async function subscribeHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = '/range/subscribe'
   const options = {
-    method: 'POST',
-    json: { hashPrefix: sha1Prefix }
+    Method: 'POST',
+    Body: { hashPrefix: sha1Prefix }
   }
 
   return await kAnonReq(path, options)
@@ -281,9 +281,9 @@ async function subscribeHash (sha1) {
  */
 async function deleteSubscribedHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
-  const path = `/range${sha1Prefix}`
+  const path = `/range/${sha1Prefix}`
   const options = {
-    method: 'DELETE'
+    Method: 'DELETE'
   }
 
   return await kAnonReq(path, options)
