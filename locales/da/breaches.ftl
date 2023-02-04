@@ -26,7 +26,7 @@ column-company = VIRKSOMHED
 column-breached-data = KOMPROMITTEREDE DATA
 column-detected = OPDAGET
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
-breach-description = Den { $breachDate } blev { $companyName } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }. Denne datalæk omfattede:
+breach-description = Den { $breachDate } blev { $companyName } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }. Denne datalæk omfattede: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
