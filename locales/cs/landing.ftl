@@ -4,6 +4,7 @@
 ## Hero
 
 find-out-if-breached = Zjistěte, zda jste byli součástí úniku dat
+stay-safe-with-tool = Zůstaňte v bezpečí s jednoduchým, ale výkonným nástrojem, který sleduje, zda byly vaše osobní údaje součástí úniku dat. Pomůžeme vám porozumět tomu, co dělat dále, a budeme neustále sledovat jakékoli nové úniky – to vše bez nákladů pro vás.
 get-started = Začínáme
 
 ## Why use Firefox Monitor?
@@ -25,6 +26,7 @@ check-for-breaches-we-search = Prohledáme všechny známé úniky údajů od ro
 protect-accounts = Chraňte své účty
 protect-accounts-clear-steps = Poskytneme vám jasné kroky, jak postupovat v případě jakéhokoli úniků údajů, kterého jste byli součástí.
 alerts-for-breaches = Získejte upozornění na nové úniky
+alerts-for-breaches-monitor-new = Budeme průběžně monitorovat nové úniky dat a dáme vám vědět, pokud se vás to bude týkat.
 
 ## Your privacy is safe with us
 
