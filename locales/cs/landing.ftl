@@ -31,6 +31,8 @@ alerts-for-breaches-monitor-new = Budeme průběžně monitorovat nové úniky d
 ## Your privacy is safe with us
 
 safe-with-us = Vaše soukromí je u nás v bezpečí
+parent-company = V { -brand-Mozilla(case: "loc") },  mateřské společnosti prohlížeče { -brand-firefox } a služby { -brand-fx-monitor }, věříme, že bezpečnost a soukromí jednotlivců na internetu je zásadní a nesmí být považováno za volitelné.
+our-mission = Naším posláním je vybudovat lepší internet – takový, kde si lidé mohou utvářet své vlastní zkušenosti, cítit se zmocněni a jsou v bezpečí. Jsme stoprocentně vlastněni { -brand-mozilla-foundation(case: "ins") }, neziskovou organizací, která nám umožňuje upřednostňovat individuální a veřejný prospěch nad ziskem.
 learn-more-mission = Zjistěte více o naší misi
 
 ## Top questions about Firefox Monitor
@@ -39,8 +41,14 @@ top-questions-about-monitor = Nejčastější otázky o { -brand-fx-monitor(case
 see-all-faq = Prohlédněte si všechny často kladené otázky
 # question and answer
 what-is-breach = Co přesně je únik údajů?
+when-info-exposed = K porušení zabezpečení dat dochází, když dojde k odhalení, odcizení nebo zkopírování osobních nebo soukromých informací bez udělení souhlasu. Tyto bezpečnostní incidenty mohou být výsledkem kybernetických útoků na webové stránky, aplikace nebo jakoukoli databázi, kde jsou uloženy osobní údaje lidí. K porušení dat může dojít také náhodou, například když se něčí přihlašovací údaje náhodně zveřejní.
+# question and answer
+what-do-i-do = Právě jsem zjistil(a), že byly mé údaje součástí úniku dat. Co mám dělat?
+visit-monitor-to-learn = Navštivte { -brand-fx-monitor(case: "acc") } a zjistěte, co dělat po úniku dat. Hackeři spoléhají na to, že lidé budou hesla opakovaně používat, proto je důležité vytvořit silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy. Může to být stejné místo, kam ukládáte důležité dokumenty nebo správce hesel.
 # question and answer
 what-gets-exposed = Jaké informace jsou odhaleny při únicích údajů?
+depends-on-hackers = Ne všechny úniky odhalí stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho úniků dat odhaluje e-mailové adresy a hesla. Jiné odhalují citlivější informace, jako jsou čísla platebních karet, čísla pasů či čísla sociálního pojištění.
 
 ## See if you’ve been in a data breach
 
+see-if-data-breach = Podívejte se, jestli jste součástí nějakého úniku dat.

@@ -94,6 +94,7 @@ breach-checklist-sq-body = Použijte dlouhé, náhodné odpovědi a uložte je n
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Vytvořte jedinečná, silná hesla pro jakýkoli účet, kde jste hesla znovu použili.
+breach-checklist-hp-body = Správce hesel, jako je <a>Správce hesel { -brand-firefox(case: "gen") }</a> (který je zdarma a vestavěný do prohlížeče { -brand-firefox }), vám může pomoci sledovat všechna vaše hesla a mít k nim bezpečný přístup ze všech vašich zařízení.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
