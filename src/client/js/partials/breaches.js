@@ -18,10 +18,8 @@ const state = new Proxy({
 })
 
 let breachesTable, breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
-let sendAlertTestButton
 
 function init () {
-  sendAlertTestButton = document.getElementById('sendAlertTestButton')
   breachesTable = breachesPartial.querySelector('.breaches-table')
   breachRows = breachesTable.querySelectorAll('.breach-row')
   emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
@@ -31,7 +29,6 @@ function init () {
 
   state.selectedEmail = emailSelect.value // triggers render
 
-  sendAlertTestButton.addEventListener('click', sendBreachAlertEmail)
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
@@ -105,30 +102,6 @@ function render () {
   // e.g. if user marks all steps resolved – update the count, but leave the breach in place for further user interaction
   renderResolvedCounts()
   renderBreachRows()
-}
-
-async function sendBreachAlertEmail () {
-  try {
-    const res = await fetch('/api/v1/hibp/notify', {
-      method: 'POST',
-      headers: {
-        Authorization: 'Bearer <HIBP_NOTIFY_TOKEN>',
-        'Content-Type': 'application/json',
-        'x-csrf-token': breachesTable.dataset.token
-      },
-      body: JSON.stringify({
-        breachName: 'Adobe',
-        hashPrefix: '365050',
-        hashSuffixes: ['53cbb89874fc738c0512daf12bc4d91765']
-      })
-    })
-
-    if (!res.ok) throw new Error('Bad fetch response')
-
-    console.log('Sent breach alert email')
-  } catch (e) {
-    console.error('Could not send breach alert email:', e)
-  }
 }
 
 if (breachesPartial) init()

@@ -10,6 +10,7 @@ import { logout } from '../controllers/auth.js'
 import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
 import { dataRemovalPage } from '../controllers/data-removal.js'
+import { emailsPage } from '../controllers/emails-page.js'
 import { settingsPage } from '../controllers/settings.js'
 
 const router = Router()
@@ -22,6 +23,9 @@ router.get('/breaches', requireSessionUser, breachesPage)
 
 // data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)
+
+// emails page
+router.get('/emails', requireSessionUser, emailsPage)
 
 // settings page
 router.get('/settings', requireSessionUser, settingsPage)
