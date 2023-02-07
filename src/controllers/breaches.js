@@ -56,19 +56,24 @@ async function putBreachResolution (req, res) {
   const sessionUser = req.user
   const { affectedEmail, breachId, resolutionsChecked } = req.body
   const breachIdNumber = Number(breachId)
-  const affectedEmailIsSubscriberRecord = sessionUser.primary_email === affectedEmail
-  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => ea.email === affectedEmail)
+  const affectedEmailAsSubscriber = sessionUser.primary_email === affectedEmail ? sessionUser.primary_email : false
+  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => ea.email === affectedEmail)?.[0]?.email || false
 
   // check if current user's emails array contain affectedEmail
-  if (!affectedEmailIsSubscriberRecord && !affectedEmailInEmailAddresses) {
+  if (!affectedEmailAsSubscriber && !affectedEmailInEmailAddresses) {
     return res.json('Error: affectedEmail is not valid for this subscriber')
   }
 
   // check if breach id is a part of affectEmail's breaches
   const allBreaches = req.app.locals.breaches
   const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
-  const currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailInEmailAddresses[0].email)
-  const currentBreaches = currentEmail.breaches?.filter(b => b.Id === breachIdNumber)
+  let currentEmail
+  if (affectedEmailAsSubscriber) {
+    currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailAsSubscriber)
+  } else {
+    currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailInEmailAddresses)
+  }
+  const currentBreaches = currentEmail?.breaches?.filter(b => b.Id === breachIdNumber)
   if (!currentBreaches) {
     return res.json('Error: breachId provided does not exist')
   }
