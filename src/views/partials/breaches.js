@@ -43,7 +43,13 @@ function createBreachRows (data) {
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
+          <span>${breach.Title}</span>
+          <span>${shortList.format(dataClassesTranslated)}</span>
+          <span>
+            <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
+            <span class='resolution-badge is-active'>${getMessage('column-status-badge-active')}</span>
+          </span>
+          <span>${shortDate.format(addedDate)}</span>
         </summary>
         <article>
           <p>${description}</p>
@@ -99,7 +105,17 @@ export const breaches = data => `
 </section>
 <section class='breaches-table' data-token=${data.csrfToken}>
   <header>
-    <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
+    <span>${getMessage('column-company')}</span>
+    <span>${getMessage('column-breached-data')}</span>
+    ${
+      /*
+       * The active/resolved badge does not have a column header, but by
+       * including an empty <span>, we can re-use the `nth-child`-based
+       * selectors for the content columns.
+       */
+      '<span></span>'
+    }
+    <span>${getMessage('column-detected')}</span>
   </header>
   ${createBreachRows(data.breachesData)}
 </section>

@@ -136,11 +136,19 @@
 
 .breaches-table header > :nth-child(3),
 .breaches-table summary > :nth-child(3) {
+  flex: 1 0 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.breaches-table header > :nth-child(4),
+.breaches-table summary > :nth-child(4) {
   flex-basis: 100px;
 }
 
 .breaches-table summary > :nth-child(2),
-.breaches-table summary > :nth-child(3) {
+.breaches-table summary > :nth-child(3),
+.breaches-table summary > :nth-child(4) {
   font-size: clamp(0.75rem, 1.25vw, 1rem);
 }
 
@@ -166,6 +174,38 @@
 
 .breaches-table details[open] > summary::after {
   transform: rotate(-180deg);
+}
+
+.resolution-badge {
+  display: inline-block;
+  padding: var(--padding-xs) var(--padding-md);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+
+  /* Ensure the badge is not taller than the rest of the text in a `summary`,
+     so that everything remains vertically-aligned, and the badge still
+     disappears when getting flex-wrapped on small screens.
+  */
+  font-size: 11px;
+}
+
+.resolution-badge.is-active {
+  /* #99bff2 is var(--blue-50) with an alpha value of 0.4 */
+  background-color: #99bff2;
+  color: var(--blue-90);
+}
+
+.resolution-badge.is-resolved {
+  background-color: var(--green-05);
+  color: var(--green-90);
+}
+
+.breach-row[data-status='resolved'] .resolution-badge.is-active {
+  display: none;
+}
+
+.breach-row[data-status='unresolved'] .resolution-badge.is-resolved {
+  display: none;
 }
 
 .breaches-table details > article {
