@@ -10,7 +10,7 @@ import { logout } from '../controllers/auth.js'
 import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
 import { dataRemovalPage } from '../controllers/data-removal.js'
-import { emailsPage } from '../controllers/emails-page.js'
+import { emailsPage, sendTestEmail } from '../controllers/emails-page.js'
 import { settingsPage } from '../controllers/settings.js'
 
 const router = Router()
@@ -32,5 +32,12 @@ router.get('/settings', requireSessionUser, settingsPage)
 
 // sign the user out
 router.get('/logout', asyncMiddleware(logout))
+
+// send test email
+router.post(
+  '/send-test-email',
+  requireSessionUser,
+  asyncMiddleware(sendTestEmail)
+)
 
 export default router

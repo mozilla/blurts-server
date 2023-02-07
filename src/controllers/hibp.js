@@ -40,6 +40,7 @@ async function notify (req, res) {
     const errorMessage = 'HIBP notify endpoint requires valid authorization token.'
     throw new Error(errorMessage)
   }
+
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
     throw new Error('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
   }

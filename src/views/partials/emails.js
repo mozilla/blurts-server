@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export const emails = data => `
-  <section class="emails-section" data-token=${data.csrfToken}>
+  <section class="js-emails" data-csrf-token=${data.csrfToken}>
     <h1>Emails partial</h1>
     <button id='sendAlertTestButton' class='primary'>
       Send test breach alert

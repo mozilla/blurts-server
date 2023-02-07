@@ -3,37 +3,36 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const breachesPartial = document.querySelector("[data-partial='emails']")
-let emailsSection
 let sendAlertTestButton
 
 function init () {
   sendAlertTestButton = document.getElementById('sendAlertTestButton')
-  emailsSection = breachesPartial.querySelector('.emails-section')
 
   sendAlertTestButton.addEventListener('click', sendBreachAlertEmail)
 }
 
 async function sendBreachAlertEmail () {
+  const emailId = 'test-email-id'
   try {
-    const res = await fetch('/api/v1/hibp/notify', {
-      method: 'POST',
+    const csrfToken = document
+      .querySelector('.js-emails[data-csrf-token]')
+      .getAttribute('data-csrf-token')
+
+    const response = await fetch('/user/send-test-email', {
       headers: {
-        Authorization: 'Bearer <HIBP_NOTIFY_TOKEN>',
         'Content-Type': 'application/json',
-        'x-csrf-token': emailsSection.dataset.token
+        'x-csrf-token': csrfToken
       },
-      body: JSON.stringify({
-        breachName: 'Adobe',
-        hashPrefix: '365050',
-        hashSuffixes: ['53cbb89874fc738c0512daf12bc4d91765']
-      })
+      mode: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify({ emailId })
     })
 
-    if (!res.ok) throw new Error('Bad fetch response')
-
-    console.log('Sent breach alert email')
-  } catch (e) {
-    console.error('Could not send breach alert email:', e)
+    if (response?.redirected) {
+      throw response.error
+    }
+  } catch (err) {
+    throw new Error(`Sending test email (${emailId}) failed: ${err}`)
   }
 }
 
