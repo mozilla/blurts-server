@@ -20,7 +20,8 @@ async function breachesPage (req, res) {
     emailCount,
     partial: breaches,
     csrfToken: generateToken(res),
-    fxaProfile: req.user.fxa_profile_json
+    fxaProfile: req.user.fxa_profile_json,
+    nonce: res.locals.nonce
   }
 
   res.send(mainLayout(data))
