@@ -36,6 +36,7 @@
   "dependencies": {
     "csrf-csrf": "^2.2.2",
     "esbuild": "^0.15.10",
+    "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.0",
     "svgo": "^2.8.0",
     "uuid": "^9.0.0"

@@ -138,6 +138,7 @@ user-website-urls = User website URLs
 usernames = Usernames
 utility-bills = Utility bills
 vehicle-details = Vehicle details
+vehicle-identification-numbers-vins = Vehicle identification numbers (VINs)
 website-activity = Website activity
 work-habits = Work habits
 years-of-birth = Years of birth

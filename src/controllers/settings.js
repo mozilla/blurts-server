@@ -20,6 +20,7 @@ import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { generateToken } from '../utils/csrf.js'
+import { RateLimitError } from '../utils/error.js'
 
 import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
@@ -79,7 +80,7 @@ async function addEmail (req, res) {
     throw new UserInputError(getMessage('user-add-invalid-email'))
   }
 
-  if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES) {
+  if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES - 1) {
     throw new UserInputError(getMessage('user-add-too-many-emails'))
   }
 
@@ -148,27 +149,35 @@ async function resendEmail (req, res) {
 }
 
 async function sendVerificationEmail (emailId) {
-  const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
-    emailId
-  )
-  const recipientEmail = unverifiedEmailAddressRecord.email
-  const data = {
-    recipientEmail,
-    ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
-    utmCampaign: 'email_verify',
-    unsubscribeUrl: getUnsubscribeUrl(
-      unverifiedEmailAddressRecord,
-      'account-verification-email'
-    ),
-    heading: getMessage('email-verify-heading'),
-    subheading: getMessage('email-verify-subhead'),
-    partial: { name: 'verify' }
+  try {
+    const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
+      emailId
+    )
+    const recipientEmail = unverifiedEmailAddressRecord.email
+    const data = {
+      recipientEmail,
+      ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
+      utmCampaign: 'email_verify',
+      unsubscribeUrl: getUnsubscribeUrl(
+        unverifiedEmailAddressRecord,
+        'account-verification-email'
+      ),
+      heading: getMessage('email-verify-heading'),
+      subheading: getMessage('email-verify-subhead'),
+      partial: { name: 'verify' }
+    }
+    await sendEmail(
+      recipientEmail,
+      getMessage('email-subject-verify'),
+      getTemplate(data, verifyPartial(data))
+    )
+  } catch (err) {
+    if (err.message === 'error-email-validation-pending') {
+      throw new RateLimitError('Verification email recently sent, try again later')
+    } else {
+      throw err
+    }
   }
-  await sendEmail(
-    recipientEmail,
-    getMessage('email-subject-verify'),
-    getTemplate(data, verifyPartial(data))
-  )
 }
 
 async function verifyEmail (req, res) {

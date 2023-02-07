@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import AppConstants from '../app-constants.js'
 import { getMessage } from '../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
@@ -13,10 +14,10 @@ const links = (data) => ({
 })
 
 const images = {
-  header: 'images/person-at-desk.webp',
-  footer: 'images/mozilla-logo-bw.webp',
-  logoDark: 'images/monitor-logo-transparent-dark-mode.webp',
-  logoLight: 'images/monitor-logo-bg-light.webp'
+  header: `${AppConstants.SERVER_URL}/images/person-at-desk.webp`,
+  footer: `${AppConstants.SERVER_URL}/images/mozilla-logo-bw.webp`,
+  logoDark: `${AppConstants.SERVER_URL}/images/monitor-logo-transparent-dark-mode.webp`,
+  logoLight: `${AppConstants.SERVER_URL}/images/monitor-logo-bg-light.webp`
 }
 
 const bodyStyle = `
@@ -31,14 +32,7 @@ const tableStyle = `
   width: 100%;
 `
 
-const headeLogoStyle = `
-  background-size: 240px 50px;
-  background: #f9f9fa url('${images.logoLight}')
-  height: 100px;
-  no-repeat 50%;
-`
-
-const headeTableStyle = `
+const headerTableStyle = `
   background-color: #321c64;
   color: white;
   height: 331px;
@@ -47,6 +41,7 @@ const headeTableStyle = `
 `
 
 const headerImageContainerStyle = `
+  background-color: #321c64;
   vertical-align: bottom;
   width: 50%;
 `
@@ -72,10 +67,7 @@ const footerImageStyle = `
 
 const emailHeader = (data) => `
   <tr class='logo'>
-    <td
-      height='100'
-      style='${headeLogoStyle}'
-    ></td>
+    <td height='100'></td>
   </tr>
   <tr class='header'>
     <td>
@@ -84,7 +76,7 @@ const emailHeader = (data) => `
         cellpadding='0'
         cellspacing='0'
         role='presentation'
-        style='${headeTableStyle}'
+        style='${headerTableStyle}'
       >
         <tr>
           <td>
@@ -96,7 +88,6 @@ const emailHeader = (data) => `
             </p>
           </td>
           <td
-            background-color: #321c64;
             class='header-image'
             style='${headerImageContainerStyle}'
           >
@@ -199,6 +190,16 @@ const getTemplate = (data, partial) => `
 
         table {
           table-layout: fixed;
+        }
+
+        .logo > td {
+          height: 100px;
+          background-color: #f9f9fa;
+          background-position: 50%;
+          background-image: url('${images.logoLight}');
+          background-repeat: no-repeat;
+          background-size: 240px 50px;
+          width: 100%;
         }
 
         @media screen and (max-width:600px) {
