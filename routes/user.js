@@ -9,7 +9,7 @@ const { asyncMiddleware, requireSessionUser } = require('../middleware')
 const {
   add, verify, logout,
   getDashboard, getPreferences, getBreachStats,
-  removeEmail, resendEmail, sendTestEmail, updateCommunicationOptions,
+  removeEmail, resendEmail, updateCommunicationOptions,
   getUnsubscribe, postUnsubscribe, getRemoveFxm, postRemoveFxm, postResolveBreach, getUnsubscribeMonthly
 } = require('../controllers/user')
 
