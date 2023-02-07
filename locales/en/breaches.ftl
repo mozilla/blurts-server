@@ -28,6 +28,11 @@ column-company = COMPANY
 column-breached-data = BREACHED DATA
 column-detected = DETECTED
 
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resolved
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Active
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = On { $breachDate }, { $companyName } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }. This breach included: { $dataClasses }
 
