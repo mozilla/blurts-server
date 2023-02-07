@@ -11,7 +11,8 @@ import { addSubscriber } from '../db/tables/email_addresses.js'
 // import { sendEmail, getEmailCtaHref, getUnsubscribeUrl } from '../email-utils'
 import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
 // import { getBreachesForEmail } from '../utils/hibp.js'
-import { fluentError } from '../utils/fluent.js'
+import { getMessage } from '../utils/fluent.js'
+import { UnauthorizedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 const { SERVER_URL } = AppConstants
 
@@ -41,12 +42,12 @@ function init (req, res, next, client = FxAOAuthClient) {
 async function confirmed (req, res, next, client = FxAOAuthClient) {
   if (!req.session.state) {
     log.error('oauth-invalid-session', 'req.session.state missing')
-    throw fluentError('oauth-invalid-session')
+    throw new UnauthorizedError(getMessage('oauth-invalid-session'))
   }
 
   if (req.session.state !== req.query.state) {
     log.error('oauth-invalid-session', 'req.session does not match req.query')
-    throw fluentError('oauth-invalid-session')
+    throw new UnauthorizedError(getMessage('oauth-invalid-session'))
   }
 
   const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state })
