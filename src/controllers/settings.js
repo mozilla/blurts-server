@@ -20,13 +20,12 @@ import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { generateToken } from '../utils/csrf.js'
-import { RateLimitError } from '../utils/error.js'
+import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
 
 import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
 import { getTemplate } from '../views/email-2022.js'
 import { verifyPartial } from '../views/partials/email-verify.js'
-import { UnauthorizedError, UserInputError } from '../utils/error.js'
 
 async function settingsPage (req, res) {
   const emails = await getUserEmails(req.session.user.id)
