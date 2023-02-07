@@ -17,7 +17,7 @@ import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
 import { doubleCsrfProtection } from './utils/csrf.js'
-import { initFluentBundles, updateLocale } from './utils/fluent.js'
+import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
@@ -33,13 +33,10 @@ Sentry.init({
   beforeSend (event, hint) {
     if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english
 
-    // try {
-    //   if (hint.originalException.fluentID) {
-    //     event.exception.values[0].value = LocaleUtils.fluentFormat(['en'], hint.originalException.fluentID)
-    //   }
-    // } catch (e) {
-    //   return event
-    // }
+    // try to force an english translation for the error message if localized
+    if (hint.originalException.fluentID) {
+      event.exception.values[0].value = getMessageWithLocale(hint.originalException.fluentID, 'en') || getMessage(hint.originalException.fluentID)
+    }
 
     return event
   }
