@@ -2,21 +2,21 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const triggerBtns = document.querySelectorAll('button[data-dialog]')
-let contentMap, dialogEl // expect a single dialog on page at any time
+const triggerLinks = Array.from(document.querySelectorAll('a[href*="dialog/"]'))
+let dialogEl
 
 function init () {
-  contentMap = new Map()
   dialogEl = document.createElement('dialog')
   document.body.append(dialogEl)
 
-  triggerBtns.forEach(btn => btn.addEventListener('click', handleEvent))
+  triggerLinks.forEach(link => link.addEventListener('click', handleEvent))
 }
 
 function handleEvent (e) {
   switch (true) {
-    case e.target.matches('button[data-dialog]'):
-      openDialog(e.target.dataset.dialog)
+    case triggerLinks.includes(e.target):
+      e.preventDefault()
+      openDialog(e.target.href)
       break
     case e.target.matches('dialog button.close'):
       dialogEl.close()
@@ -24,39 +24,30 @@ function handleEvent (e) {
   }
 }
 
-async function openDialog (partialName) {
+async function openDialog (path) {
   dialogEl.showModal() // provide immediate UI response by showing ::backdrop regardless of content load
+  dialogEl.setAttribute('data-partial', path.substring(path.lastIndexOf('/') + 1))
   dialogEl.addEventListener('click', handleEvent)
   dialogEl.addEventListener('close', resetDialog)
 
-  const content = contentMap.get(partialName) ?? await fetchContent(partialName)
-
-  if (content) {
-    dialogEl.insertAdjacentHTML('beforeend', content)
-  } else {
-    dialogEl.close()
-  }
-}
-
-async function fetchContent (partialName) {
-  let content
   try {
-    const res = await fetch(`/dialog/${partialName}`)
+    const res = await fetch(path)
 
     if (!res.ok) throw new Error('Bad fetch response')
 
-    content = await res.text()
-    contentMap.set(partialName, content)
+    const content = await res.text()
+    dialogEl.insertAdjacentHTML('beforeend', content)
   } catch (e) {
     console.error('Could not load dialog:', e)
+    dialogEl.close()
   }
-  return content
 }
 
 function resetDialog () {
   dialogEl.removeEventListener('click', handleEvent)
   dialogEl.removeEventListener('close', resetDialog)
+  dialogEl.removeAttribute('data-partial')
   dialogEl.replaceChildren()
 }
 
-if (triggerBtns.length) init()
+if (triggerLinks.length) init()

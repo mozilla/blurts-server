@@ -11,13 +11,14 @@ import { readdirSync } from 'node:fs'
 import AppConstants from './app-constants.js'
 
 const cssPartialDir = 'client/css/partials/'
-const cssPartialEntryPoints = readdirSync(cssPartialDir, { withFileTypes: true })
-  .map(item => cssPartialDir + item.name)
+const cssPartialPaths = readdirSync(cssPartialDir, { withFileTypes: true })
+  .filter(dirent => dirent.isFile())
+  .map(dirent => cssPartialDir + dirent.name)
 
 esbuild.build({
   logLevel: 'info',
   bundle: true,
-  entryPoints: ['client/js/index.js', 'client/css/index.css', ...cssPartialEntryPoints],
+  entryPoints: ['client/js/index.js', 'client/css/index.css', ...cssPartialPaths],
   entryNames: '[dir]/[name]',
   loader: { '.woff2': 'copy' },
   assetNames: '[dir]/[name]',

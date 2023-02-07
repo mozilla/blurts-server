@@ -17,7 +17,7 @@ function createEmailCTA (count) {
 
   if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
 
-  return `<button class='anchor' data-dialog='add-email'>${getMessage('add-email-link')}</button>`
+  return `<a href='dialog/add-email' target='_blank'>${getMessage('add-email-link')}</a>`
 }
 
 function createBreachRows (data) {
