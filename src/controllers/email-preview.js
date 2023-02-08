@@ -13,90 +13,46 @@ import { verifyPartial } from '../views/partials/email-verify.js'
 
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
-import { sendEmail } from '../utils/email.js'
+import {
+  getNotifictionDummyData,
+  getVerificationDummyData,
+  sendEmail
+} from '../utils/email.js'
 
-const recipientEmail = AppConstants.EMAIL_RECIPIENT_DUMMY
+const { EMAIL_RECIPIENT_DUMMY } = AppConstants
 
 function emailsPage (req, res) {
   const { params } = req
-  const isVerifyTemplate = params.template === 'verify'
+  const template = params.template || 'verification'
 
-  const dataEmailVerification = {
-    recipientEmail,
-    ctaHref: '',
-    utmCampaign: 'email_verify',
-    unsubscribeUrl: '',
-    heading: getMessage('email-verify-heading'),
-    subheading: getMessage('email-verify-subhead')
-  }
-
-  const dataEmailNotifiction = {
-    breachAlert: {
-      Id: 1,
-      Name: 'Adobe',
-      Title: 'Adobe',
-      Domain: 'adobe.com',
-      BreachDate: '2013-01-01T22:00:00.000Z',
-      AddedDate: '2013-01-02T00:00:00.000Z',
-      ModifiedDate: '2023-01-01T00:00:00.000Z',
-      PwnCount: 123,
-      Description: 'Example description',
-      LogoPath: '/images/favicon-16.webp',
-      DataClasses: [
-        'email-addresses',
-        'password-hints',
-        'passwords',
-        'usernames'
-      ],
-      IsVerified: true,
-      IsFabricated: false,
-      IsSensitive: false,
-      IsRetired: false,
-      IsSpamList: false,
-      IsMalware: false
+  const emailTemplates = {
+    verification: {
+      label: 'Email verification',
+      template: getPreviewTemplate(
+        getVerificationDummyData(EMAIL_RECIPIENT_DUMMY),
+        verifyPartial
+      )
     },
-    breachedEmail: recipientEmail,
-    ctaHref: '',
-    heading: getMessage('email-spotted-new-breach'),
-    recipientEmail,
-    subscriberId: 123,
-    supportedLocales: ['en'],
-    unsubscribeUrl: '',
-    utmCampaign: ''
+    notification: {
+      label: 'Breach notification',
+      template: getPreviewTemplate(
+        getNotifictionDummyData(EMAIL_RECIPIENT_DUMMY),
+        breachAlertEmailPartial
+      )
+    }
   }
-
-  const emailTemplate = isVerifyTemplate
-    ? getPreviewTemplate(dataEmailVerification, verifyPartial)
-    : getPreviewTemplate(dataEmailNotifiction, breachAlertEmailPartial)
 
   const data = {
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,
     partial: emailPreview,
     email: {
-      templateId: params.template,
-      template: emailTemplate
+      data: emailTemplates,
+      template
     }
   }
 
   res.send(mainLayout(data))
-}
-
-async function sendTestVerification (req, res) {
-  const dataEmailVerification = {
-    recipientEmail,
-    ctaHref: '',
-    utmCampaign: 'email_verify',
-    unsubscribeUrl: '',
-    heading: getMessage('email-verify-heading'),
-    subheading: getMessage('email-verify-subhead')
-  }
-
-  await sendEmail(
-    recipientEmail,
-    getMessage('email-subject-verify'),
-    getTemplate(dataEmailVerification, verifyPartial)
-  )
 }
 
 async function sendTestNotification (req, res) {
@@ -122,22 +78,31 @@ async function sendTestNotification (req, res) {
 async function sendTestEmail (req, res) {
   const { emailId } = req.body
 
-  try {
-    switch (emailId) {
-      case 'verify':
-        await sendTestVerification(req, res)
-        break
-      case 'notify':
-        await sendTestNotification(req, res)
-        break
-      default:
-        throw new Error(`No test email found for ${emailId}`)
+  switch (emailId) {
+    case 'verification': {
+      // Send test verification email
+      const emailTemplate = getTemplate(
+        getVerificationDummyData(EMAIL_RECIPIENT_DUMMY),
+        verifyPartial
+      )
+      await sendEmail(
+        EMAIL_RECIPIENT_DUMMY,
+        getMessage('email-subject-verify'),
+        emailTemplate
+      )
+      break
     }
-
-    console.info(`Sent test email: ${emailId}`)
-  } catch (error) {
-    console.error(`Could not send test email with ID ${emailId}`, error)
+    case 'notification': {
+      // Send test breach notification email
+      await sendTestNotification(req, res)
+      break
+    }
+    default: {
+      throw new Error(`No test email found for ${emailId}`)
+    }
   }
+
+  console.info(`Sent test email: ${emailId}`)
 }
 
 export { emailsPage, sendTestEmail }

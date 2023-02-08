@@ -3,5 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .email-preview hr {
-  margin: var(--padding-md) 0 var(--padding-lg) 0;
+  margin: var(--padding-md) 0;
+}
+
+.email-preview-controls {
+  align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
 }

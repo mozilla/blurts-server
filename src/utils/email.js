@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { createTransport } from 'nodemailer'
 import { URL } from 'url'
 
-import AppConstants from '../app-constants.js'
-
-import { createTransport } from 'nodemailer'
 import mozlog from './log.js'
+import AppConstants from '../app-constants.js'
+import { getMessage } from '../utils/fluent.js'
 
 const log = mozlog('email-utils')
 
@@ -114,11 +114,69 @@ function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
   return url
 }
 
+/**
+ * Dummy data for populating the breach notification email preview
+ *
+ * @param {string} recipient
+ * @returns {object} Breach dummy data
+ */
+const getNotifictionDummyData = (recipient) => ({
+  breachAlert: {
+    Id: 1,
+    Name: 'Adobe',
+    Title: 'Adobe',
+    Domain: 'adobe.com',
+    BreachDate: '2013-01-01T22:00:00.000Z',
+    AddedDate: '2013-01-02T00:00:00.000Z',
+    ModifiedDate: '2023-01-01T00:00:00.000Z',
+    PwnCount: 123,
+    Description: 'Example description',
+    LogoPath: '/images/favicon-144.webp',
+    DataClasses: [
+      'email-addresses',
+      'password-hints',
+      'passwords',
+      'usernames'
+    ],
+    IsVerified: true,
+    IsFabricated: false,
+    IsSensitive: false,
+    IsRetired: false,
+    IsSpamList: false,
+    IsMalware: false
+  },
+  breachedEmail: recipient,
+  ctaHref: '',
+  heading: getMessage('email-spotted-new-breach'),
+  recipientEmail: recipient,
+  subscriberId: 123,
+  supportedLocales: ['en'],
+  unsubscribeUrl: '',
+  utmCampaign: ''
+})
+
+/**
+ * Dummy data for populating the email verification preview
+ *
+ * @param {string} recipient
+ * @returns {object} Email verification dummy data
+ */
+const getVerificationDummyData = (recipient) => ({
+  recipientEmail: recipient,
+  ctaHref: '',
+  utmCampaign: 'email_verify',
+  unsubscribeUrl: '',
+  heading: getMessage('email-verify-heading'),
+  subheading: getMessage('email-verify-subhead')
+})
+
 export {
   initEmail,
   sendEmail,
   getEmailCtaHref,
   getVerificationUrl,
   getUnsubscribeUrl,
-  getMonthlyUnsubscribeUrl
+  getMonthlyUnsubscribeUrl,
+  getNotifictionDummyData,
+  getVerificationDummyData
 }

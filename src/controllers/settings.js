@@ -162,7 +162,6 @@ async function sendVerificationEmail (emailId) {
     ),
     heading: getMessage('email-verify-heading'),
     subheading: getMessage('email-verify-subhead'),
-    partial: { name: 'verify' }
   }
   await sendEmail(
     recipientEmail,

@@ -67,7 +67,7 @@ const breachAlertCtaStyle = `
 `
 
 const breachAlertEmailPartial = data => {
-  const { breachAlert, breachedEmail, supportedLocales } = data
+  const { breachAlert, breachedEmail, ctaHref, supportedLocales } = data
   const { LogoPath, AddedDate, DataClasses, Title } = breachAlert
 
   return `
@@ -121,7 +121,7 @@ const breachAlertEmailPartial = data => {
           </tr>
         </table>
         <a
-          href='{{ ctaHref }}'
+          href='${ctaHref}'
           style='${breachAlertCtaStyle}'
         >
           ${getMessage('email-dashboard-cta')}
