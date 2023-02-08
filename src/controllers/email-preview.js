@@ -100,6 +100,9 @@ async function sendTestVerification (req, res) {
 }
 
 async function sendTestNotification (req, res) {
+  // The test breach notification can be viewed in the public Mailinator inbox
+  // as documented in the README:
+  // https://github.com/mozilla/blurts-server#trigger-breach-alert-email
   const breachNotificationData = {
     breachName: 'Adobe',
     // Hash for dummy email `localmonitor20200827@mailinator.com`
