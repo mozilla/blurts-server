@@ -57,7 +57,7 @@ async function putBreachResolution (req, res) {
   const { affectedEmail, breachId, resolutionsChecked } = req.body
   const breachIdNumber = Number(breachId)
   const affectedEmailAsSubscriber = sessionUser.primary_email === affectedEmail ? sessionUser.primary_email : false
-  const affectedEmailInEmailAddresses = sessionUser.email_addresses.filter(ea => ea.email === affectedEmail)?.[0]?.email || false
+  const affectedEmailInEmailAddresses = sessionUser.email_addresses.find(ea => ea.email === affectedEmail)?.email || false
 
   // check if current user's emails array contain affectedEmail
   if (!affectedEmailAsSubscriber && !affectedEmailInEmailAddresses) {
