@@ -96,8 +96,3 @@ In the meantime, this means the dev workflow looks like:
   * good unit tests can help
 * there is some evidence that batching unrelated changes increases risk vs CD
 * devs have an extra burden of setting up / tearing down dev environments, until Heroku is ready (or a replacement is found)
-
-## Links <!-- optional -->
-
-* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
-* … <!-- numbers of links can vary -->
