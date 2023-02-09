@@ -34,6 +34,7 @@ customer-interactions = Customer interactions
 dates-of-birth = Dates of birth
 deceased-date = Deceased date
 deceased-statuses = Deceased statuses
+delivery-instructions = Delivery instructions
 device-information = Device information
 device-serial-numbers = Device serial numbers
 device-usage-tracking-data = Device usage tracking data
