@@ -61,7 +61,7 @@ Decision 3 (release) - how often to release?
 
 1a - run automated playwright tests on PR and against stage + prod
 2a - devs ensure regression tests have run before merge
-3a - release is prepared at regular intervals, bundling multiple changesets
+3b - release is prepared at regular intervals, bundling multiple changesets
 
 Developers need to ensure that their feature passes regressions tests,
 and that all other sign-offs required sign-offs are done, before merging to
