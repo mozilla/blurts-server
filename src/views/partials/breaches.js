@@ -17,8 +17,7 @@ function createEmailCTA (count) {
 
   if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
 
-  // TODO: link "add email" flow
-  return `<a href='http://mozilla.org'>${getMessage('add-email-link')}</a>`
+  return `<button class='anchor' data-dialog='add-email'>${getMessage('add-email-link')}</button>`
 }
 
 function createBreachRows (data) {
@@ -42,7 +41,7 @@ function createBreachRows (data) {
       })
 
       return `
-      <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
+      <details class='breach-row' data-status=${status} data-email=${account.email} ${isHidden ? 'hidden' : ''}>
         <summary>
           <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
         </summary>

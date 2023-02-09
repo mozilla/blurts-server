@@ -54,6 +54,20 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
 
 async function resetUnverifiedEmailAddress (emailAddressId) {
   const newVerificationToken = uuidv4()
+
+  // Time in ms to require between verification reset.
+  const verificationWait = 5 * 60 * 1000 // 5 minutes
+
+  const verificationRecentlyUpdated = await knex('email_addresses')
+    .select('id')
+    .whereRaw('"updated_at" > NOW() - INTERVAL \'1 MILLISECOND\' * ?', verificationWait)
+    .andWhere('id', emailAddressId)
+    .first()
+
+  if (verificationRecentlyUpdated?.id === parseInt(emailAddressId)) {
+    throw fluentError('error-email-validation-pending')
+  }
+
   const res = await knex('email_addresses')
     .update({
       verification_token: newVerificationToken,
