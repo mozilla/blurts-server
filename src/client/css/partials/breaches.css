@@ -54,6 +54,10 @@
   font-size: 0.75rem;
 }
 
+.breaches-filter[hidden] {
+  display: none;
+}
+
 .breaches-filter output {
   display: block;
   font: var(--h2-font);
@@ -251,4 +255,43 @@
 
 .breaches-table details[open] > article {
   animation: fade-in 0.5s ease-out;
+}
+
+.breaches-table .no-unresolved-breaches-message > .no-breaches-message,
+.breaches-table .no-unresolved-breaches-message > .all-breaches-resolved-message {
+  display: none;
+}
+
+.breaches-table[data-nr-unresolved='0'][data-nr-resolved='0'] .no-unresolved-breaches-message .no-breaches-message {
+  display: flex;
+}
+
+.breaches-filter:not([data-selected='resolved']) + .breaches-table[data-nr-unresolved='0']:not([data-nr-resolved='0']) .no-unresolved-breaches-message .all-breaches-resolved-message {
+  display: flex;
+}
+
+.no-breaches-message,
+.all-breaches-resolved-message {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--padding-sm);
+  padding: var(--padding-xl) var(--padding-md);
+  text-align: center;
+}
+
+.no-breaches-message h2,
+.all-breaches-resolved-message h2 {
+  font-weight: 600;
+}
+
+.no-breaches-message p,
+.all-breaches-resolved-message p {
+  font: var(--h3-font);
+  font-weight: 500;
+  max-width: 800px;
+}
+
+.no-breaches-message p b,
+.all-breaches-resolved-message p b {
+  font-weight: 700;
 }
