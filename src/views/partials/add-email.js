@@ -9,7 +9,8 @@ export const addEmail = data => `
 </header>
 <section>
   <p>Your account includes monitoring of up to ${data.emailLimit} email addresses. Add a new email address to see if it’s been involved in a breach.</p>
-  <form name='add-email-form'>
+  <form>
+    <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
     <label>Email address<input type='email' name='email-address'></label>
     <button class='primary' type='submit'>Send verification link</button>
   </form>

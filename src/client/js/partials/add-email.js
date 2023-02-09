@@ -1,8 +1,31 @@
-const form = document.querySelector('input[name="email-address"]')?.closest('form')
+const form = document.querySelector('dialog[data-partial="add-email"] form')
 
 function init () {
   console.log('add email init')
-  form.addEventListener('submit', e => console.log(e))
+  form.addEventListener('submit', handleSubmit)
+}
+
+async function handleSubmit (e) {
+  e.preventDefault()
+
+  try {
+    const res = await fetch('/api/v1/user/email', {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-csrf-token': form.elements['csrf-token'].value
+      },
+      mode: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify({
+        email: form.elements['email-address'].value
+      })
+    })
+
+    if (!res.ok) throw new Error('Bad fetch response')
+    alert('email added')
+  } catch (e) {
+    console.error('Could not add new email.', e)
+  }
 }
 
 if (form) init()

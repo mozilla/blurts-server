@@ -2,13 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import AppConstants from '../app-constants.js'
 import { camelize } from '../utils/string-helpers.js'
 import { dialogLayout } from '../views/dialog.js'
-import AppConstants from '../app-constants.js'
+import { generateToken } from '../utils/csrf.js'
 
 async function dialog (req, res) {
   const data = {
     partialName: req.params.name,
+    csrfToken: generateToken(res),
     stylesheetPath: `/css/partials/${req.params.name}.css` // stylesheet derived from kebab-case partial name, e.g. /css/partials/add-email.css
   }
 
