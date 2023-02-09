@@ -119,5 +119,9 @@
     ],
     "ext": "js,css,hbs,json,ftl"
   },
-  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
+  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW",
+  "volta": {
+    "node": "18.12.1",
+    "npm": "8.19.3"
+  }
 }
