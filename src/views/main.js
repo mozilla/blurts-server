@@ -123,7 +123,11 @@ const mainHeader = data => `
   <a href='/user/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
   <a href='/user/data-removal' class='nav-item ${data.partial.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
   <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>Settings</a>
-  <a href='/user/emails' class='nav-item ${data.partial.name === 'emails' ? 'current' : ''}'>Emails</a>
+  ${
+    AppConstants.EMAIL_PREVIEW_ENABLED
+      ? `<a href='/user/emails' class='nav-item ${data.partial.name === 'emails' ? 'current' : ''}'>Emails</a>`
+      : ''
+  }
 </nav>
 `
 

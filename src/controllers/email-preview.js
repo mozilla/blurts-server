@@ -11,6 +11,7 @@ import { getTemplate, getPreviewTemplate } from '../views/email-2022.js'
 import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
 import { verifyPartial } from '../views/partials/email-verify.js'
 
+import { UnauthorizedError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
 import {
@@ -22,6 +23,10 @@ import {
 const { EMAIL_RECIPIENT_DUMMY } = AppConstants
 
 function emailsPage (req, res) {
+  if (!AppConstants.EMAIL_PREVIEW_ENABLED) {
+    throw new UnauthorizedError(`${req.method} ${req.originalUrl}`)
+  }
+
   const { params } = req
   const template = params.template || 'verification'
 
