@@ -167,7 +167,6 @@ app.use('/', indexRouter)
 app.use(Sentry.Handlers.errorHandler({
   shouldHandleError (error) {
     if (error instanceof RateLimitError) return true
-    return true
   }
 }))
 
