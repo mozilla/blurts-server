@@ -1,7 +1,7 @@
-# [short title of solved problem and solution]
+# Test and release process for Monitor V2
 
-* Status: proposed
-* Deciders:
+* Status: accepted
+* Deciders: Amri, Vincent, Joe, Emmett
 * Date: 2022-02-06
 
 Technical Story: https://mozilla-hub.atlassian.net/browse/MNTOR-1162
