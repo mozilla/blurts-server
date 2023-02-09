@@ -19,6 +19,7 @@ import { errorHandler } from './middleware/error.js'
 import { doubleCsrfProtection } from './utils/csrf.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
+import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
@@ -161,7 +162,16 @@ app.use('/api', apiLimiter)
 
 // routing
 app.use('/', indexRouter)
-app.use(Sentry.Handlers.errorHandler())
+
+// sentry error handler
+app.use(Sentry.Handlers.errorHandler({
+  shouldHandleError (error) {
+    if (error instanceof RateLimitError) return true
+    return true
+  }
+}))
+
+// app error handler
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
