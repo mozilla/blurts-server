@@ -4,6 +4,7 @@
 
 import { camelize } from '../utils/string-helpers.js'
 import { dialogLayout } from '../views/dialog.js'
+import AppConstants from '../app-constants.js'
 
 async function dialog (req, res) {
   const data = {
@@ -18,9 +19,9 @@ async function dialog (req, res) {
     return res.sendStatus(404)
   }
 
-  switch (data.name) {
+  switch (data.partialName) {
     case 'add-email':
-      // add or overwrite data, e.g. data.stylesheetPath = null
+      data.emailLimit = AppConstants.MAX_NUM_ADDRESSES
       break
   }
 

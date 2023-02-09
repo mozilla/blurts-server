@@ -25,8 +25,10 @@ function handleEvent (e) {
 }
 
 async function openDialog (path) {
+  const partialName = path.substring(path.lastIndexOf('/') + 1)
+
   dialogEl.showModal() // provide immediate UI response by showing ::backdrop regardless of content load
-  dialogEl.setAttribute('data-partial', path.substring(path.lastIndexOf('/') + 1))
+  dialogEl.setAttribute('data-partial', partialName) // allow selector access, e.g. dialog[data-partial='add-email']
   dialogEl.addEventListener('click', handleEvent)
   dialogEl.addEventListener('close', resetDialog)
 
@@ -37,9 +39,15 @@ async function openDialog (path) {
 
     const content = await res.text()
     dialogEl.insertAdjacentHTML('beforeend', content)
+
+    try {
+      await import(`./partials/${partialName}.js`) // try to import module associated with dialog content
+    } catch (e) {
+      console.log(`Dialog module "${partialName}.js" not found.`, e)
+    }
   } catch (e) {
-    console.error('Could not load dialog:', e)
     dialogEl.close()
+    console.error(`Could not load dialog content for ${partialName}.`, e)
   }
 }
 

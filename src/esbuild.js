@@ -15,10 +15,15 @@ const cssPartialPaths = readdirSync(cssPartialDir, { withFileTypes: true })
   .filter(dirent => dirent.isFile())
   .map(dirent => cssPartialDir + dirent.name)
 
+const jsPartialDir = 'client/js/partials/'
+const jsPartialPaths = readdirSync(jsPartialDir, { withFileTypes: true })
+  .filter(dirent => dirent.isFile())
+  .map(dirent => jsPartialDir + dirent.name)
+
 esbuild.build({
   logLevel: 'info',
   bundle: true,
-  entryPoints: ['client/js/index.js', 'client/css/index.css', ...cssPartialPaths],
+  entryPoints: ['client/js/index.js', 'client/css/index.css', ...cssPartialPaths, ...jsPartialPaths],
   entryNames: '[dir]/[name]',
   loader: { '.woff2': 'copy' },
   assetNames: '[dir]/[name]',
