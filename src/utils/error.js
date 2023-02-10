@@ -42,5 +42,4 @@ export {
   NotFoundError,
   MethodNotAllowedError,
   RateLimitError
-
 }

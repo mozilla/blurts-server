@@ -10,6 +10,7 @@ import { logout } from '../controllers/auth.js'
 import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
 import { dataRemovalPage } from '../controllers/data-removal.js'
+import { emailsPage, sendTestEmail } from '../controllers/email-preview.js'
 import { settingsPage } from '../controllers/settings.js'
 
 const router = Router()
@@ -23,10 +24,20 @@ router.get('/breaches', requireSessionUser, breachesPage)
 // data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)
 
+// emails page
+router.get(['/emails', '/emails/:template'], requireSessionUser, emailsPage)
+
 // settings page
 router.get('/settings', requireSessionUser, settingsPage)
 
 // sign the user out
 router.get('/logout', asyncMiddleware(logout))
+
+// send test email
+router.post(
+  '/send-test-email',
+  requireSessionUser,
+  asyncMiddleware(sendTestEmail)
+)
 
 export default router
