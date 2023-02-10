@@ -148,9 +148,7 @@ async function loadBreachesIntoApp (app) {
 }
 
 /**
-Get addresses and language from either subscribers or email_addresses fields:
-TODO: Add route
-
+ * Get addresses and language from either subscribers or email_addresses fields:
  * @param {*} recipient
  * @returns
  */
