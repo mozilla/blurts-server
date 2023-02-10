@@ -58,7 +58,8 @@ const optionalEnvVars = [
   'GEOIP_GEOLITE2_COUNTRY_FILENAME',
   'VPN_PROMO_BLOCKED_LOCALES',
   'EDUCATION_VIDEO_URL_RELAY',
-  'MONITOR_V2'
+  'MONITOR_V2',
+  'SENTRY_DSN_LEGACY'
 ]
 
 const AppConstants = { }

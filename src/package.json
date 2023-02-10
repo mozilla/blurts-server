@@ -11,11 +11,12 @@
     "prestart": "npm run build",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run build:svg",
+    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
     "copy:root": "mkdir -p ../dist/ && cp ./client/*.* ../dist/",
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
-    "convert:webp": "sh ./utils/webp.sh",
+    "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",
+    "convert:webp": "sh ./scripts/webp.sh",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava"
   },
   "nodemonConfig": {
@@ -36,6 +37,7 @@
   "dependencies": {
     "csrf-csrf": "^2.2.2",
     "esbuild": "^0.15.10",
+    "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.0",
     "svgo": "^2.8.0",
     "uuid": "^9.0.0"

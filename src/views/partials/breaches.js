@@ -17,8 +17,7 @@ function createEmailCTA (count) {
 
   if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
 
-  // TODO: link "add email" flow
-  return `<a href='http://mozilla.org'>${getMessage('add-email-link')}</a>`
+  return `<button class='anchor' data-dialog='add-email'>${getMessage('add-email-link')}</button>`
 }
 
 function createBreachRows (data) {
@@ -42,9 +41,15 @@ function createBreachRows (data) {
       })
 
       return `
-      <details class='breach-row' data-status=${status} data-email=${account.email} hidden=${!account.primary} hidden=${isHidden}>
+      <details class='breach-row' data-status=${status} data-email=${account.email} ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
+          <span>${breach.Title}</span>
+          <span>${shortList.format(dataClassesTranslated)}</span>
+          <span>
+            <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
+            <span class='resolution-badge is-active'>${getMessage('column-status-badge-active')}</span>
+          </span>
+          <span>${shortDate.format(addedDate)}</span>
         </summary>
         <article>
           <p>${description}</p>
@@ -63,7 +68,7 @@ function createResolveSteps (breach) {
   const checkedArr = breach.ResolutionsChecked || []
   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(([key, value]) => `
   <li class='resolve-list-item'>
-    <input name='${breach.recencyIndex}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
+    <input name='${breach.Id}' value='${key}' type='checkbox' ${checkedArr.includes(key) ? 'checked' : ''}>
     <p>${value.header}<br><i>${value.body}</i></p>
   </li>
   `)
@@ -71,12 +76,32 @@ function createResolveSteps (breach) {
   return resolveStepsHTML.join('')
 }
 
+/**
+ * @param {*} data
+ * @param {'none' | 'all-resolved'} status
+ * @returns string
+ */
+function createAddEmailButton (data, status) {
+  if (data.emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
+    return ''
+  }
+
+  return `
+    <p>
+      ${getMessage(`breaches-${status}-cta-blurb`)}
+    </p>
+    <button class="primary" data-dialog='add-email'>
+      ${getMessage(`breaches-${status}-cta-button`)}
+    </button>
+  `
+}
+
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
     <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
     <figure>
-      <img src='/images/temp-diagram.png' width='80' height='80'>
+      <img src='/images/temp-diagram.webp' width='80' height='80'>
       <figcaption class='breach-stats'>
         <strong>10 total breaches</strong>
         <label>Resolved</label>
@@ -93,15 +118,55 @@ export const breaches = data => `
   </header>
 </section>
 <section class='breaches-filter'>
-  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' checked>
+  <input id='breaches-unresolved' type='radio' name='breaches-status' value='unresolved' autocomplete='off' checked>
   <label for='breaches-unresolved'><output>&nbsp;</output>${getMessage('filter-label-unresolved')}</label>
-  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved'>
+  <input id='breaches-resolved' type='radio' name='breaches-status' value='resolved' autocomplete='off'>
   <label for='breaches-resolved'><output>&nbsp;</output>${getMessage('filter-label-resolved')}</label>
 </section>
 <section class='breaches-table' data-token=${data.csrfToken}>
   <header>
-    <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
+    <span>${getMessage('column-company')}</span>
+    <span>${getMessage('column-breached-data')}</span>
+    ${
+      /*
+       * The active/resolved badge does not have a column header, but by
+       * including an empty <span>, we can re-use the `nth-child`-based
+       * selectors for the content columns.
+       */
+      '<span></span>'
+    }
+    <span>${getMessage('column-detected')}</span>
   </header>
   ${createBreachRows(data.breachesData)}
+  <div class="no-unresolved-breaches-message">
+    <div class="no-breaches-message">
+      <img src='/images/breaches-none.svg' alt='' width="136" height="102" />
+      <h2>
+        ${getMessage('breaches-none-headline')}
+      </h2>
+      <p>
+        ${
+          data.breachesData.verifiedEmails.map(account => {
+            return `<span data-email="${account.email}" ${account.primary ? '' : 'hidden'}>${getMessage('breaches-none-copy', { email: `<b>${account.email}</b>` })}</span>`
+          }).join('')
+        }
+      </p>
+      ${createAddEmailButton(data, 'none')}
+    </div>
+    <div class="all-breaches-resolved-message">
+      <img src='/images/breaches-all-resolved.svg' alt='' width="136" height="102" />
+      <h2>
+        ${getMessage('breaches-all-resolved-headline')}
+      </h2>
+      <p>
+        ${
+          data.breachesData.verifiedEmails.map(account => {
+            return `<span data-email="${account.email}" ${account.primary ? '' : 'hidden'}>${getMessage('breaches-all-resolved-copy', { email: `<b>${account.email}</b>` })}</span>`
+          }).join('')
+        }
+      </p>
+      ${createAddEmailButton(data, 'all-resolved')}
+    </div>
+  </div>
 </section>
 `

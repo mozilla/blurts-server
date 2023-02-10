@@ -38,9 +38,11 @@ function handleEvent (e) {
   switch (true) {
     case e.target.matches('custom-select[name="email-account"]'):
       state.selectedEmail = e.target.value
+      breachesTable.querySelectorAll('span[data-email]').forEach(message => message.toggleAttribute('hidden', message.dataset.email !== e.target.value))
       break
     case e.target.matches('input[name="breaches-status"]'):
       state.selectedStatus = e.target.value
+      statusFilter.dataset.selected = e.target.value
       break
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
       updateBreachStatus(e.target)
@@ -62,7 +64,7 @@ async function updateBreachStatus (input) {
       },
       body: JSON.stringify({
         affectedEmail,
-        recencyIndex: breachId,
+        breachId,
         resolutionsChecked: checkedInputs.map(input => input.value)
       })
     })
@@ -78,8 +80,11 @@ async function updateBreachStatus (input) {
 }
 
 function renderResolvedCounts () {
-  resolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
-  unresolvedCountOutput.textContent = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
+  const nrResolved = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
+  const nrUnresolved = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
+  resolvedCountOutput.textContent = nrResolved
+  unresolvedCountOutput.textContent = nrUnresolved
+  statusFilter.toggleAttribute('hidden', nrResolved === 0 && nrUnresolved === 0)
 }
 
 function renderBreachRows () {
@@ -95,6 +100,15 @@ function renderBreachRows () {
       delay += 50
     }
   })
+
+  const nrOfUnresolvedBreaches = Array.from(breachRows)
+    .filter(breachRow => breachRow.dataset.email === state.selectedEmail && breachRow.dataset.status === 'unresolved')
+    .length
+  const nrOfResolvedBreaches = Array.from(breachRows)
+    .filter(breachRow => breachRow.dataset.email === state.selectedEmail && breachRow.dataset.status === 'resolved')
+    .length
+  breachesTable.dataset.nrUnresolved = nrOfUnresolvedBreaches
+  breachesTable.dataset.nrResolved = nrOfResolvedBreaches
 }
 
 function render () {

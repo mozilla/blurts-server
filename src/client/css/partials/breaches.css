@@ -40,8 +40,9 @@
   white-space: nowrap;
 }
 
-.breaches-header figcaption > a {
+.breaches-header .email-stats button[data-dialog] {
   color: var(--blue-50);
+  margin: auto;
 }
 
 .breaches-filter {
@@ -51,6 +52,10 @@
   margin: 0 auto;
   border: none;
   font-size: 0.75rem;
+}
+
+.breaches-filter[hidden] {
+  display: none;
 }
 
 .breaches-filter output {
@@ -135,11 +140,19 @@
 
 .breaches-table header > :nth-child(3),
 .breaches-table summary > :nth-child(3) {
+  flex: 1 0 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.breaches-table header > :nth-child(4),
+.breaches-table summary > :nth-child(4) {
   flex-basis: 100px;
 }
 
 .breaches-table summary > :nth-child(2),
-.breaches-table summary > :nth-child(3) {
+.breaches-table summary > :nth-child(3),
+.breaches-table summary > :nth-child(4) {
   font-size: clamp(0.75rem, 1.25vw, 1rem);
 }
 
@@ -165,6 +178,38 @@
 
 .breaches-table details[open] > summary::after {
   transform: rotate(-180deg);
+}
+
+.resolution-badge {
+  display: inline-block;
+  padding: var(--padding-xs) var(--padding-md);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+
+  /* Ensure the badge is not taller than the rest of the text in a `summary`,
+     so that everything remains vertically-aligned, and the badge still
+     disappears when getting flex-wrapped on small screens.
+  */
+  font-size: 11px;
+}
+
+.resolution-badge.is-active {
+  /* #99bff2 is var(--blue-50) with an alpha value of 0.4 */
+  background-color: #99bff2;
+  color: var(--blue-90);
+}
+
+.resolution-badge.is-resolved {
+  background-color: var(--green-05);
+  color: var(--green-90);
+}
+
+.breach-row[data-status='resolved'] .resolution-badge.is-active {
+  display: none;
+}
+
+.breach-row[data-status='unresolved'] .resolution-badge.is-resolved {
+  display: none;
 }
 
 .breaches-table details > article {
@@ -210,4 +255,47 @@
 
 .breaches-table details[open] > article {
   animation: fade-in 0.5s ease-out;
+}
+
+.breaches-table .no-unresolved-breaches-message > .no-breaches-message,
+.breaches-table .no-unresolved-breaches-message > .all-breaches-resolved-message {
+  display: none;
+}
+
+/* Show the "No breaches found!" message when the breaches table has no resolved
+ * nor unresolved breaches: */
+.breaches-table[data-nr-unresolved='0'][data-nr-resolved='0'] .no-unresolved-breaches-message .no-breaches-message {
+  display: flex;
+}
+
+/* Show the "All breaches resolved!" message when the breaches table has no
+ * unresolved but more than 0 resolved breaches: */
+.breaches-filter:not([data-selected='resolved']) + .breaches-table[data-nr-unresolved='0']:not([data-nr-resolved='0']) .no-unresolved-breaches-message .all-breaches-resolved-message {
+  display: flex;
+}
+
+.no-breaches-message,
+.all-breaches-resolved-message {
+  flex-direction: column;
+  align-items: center;
+  gap: var(--padding-sm);
+  padding: var(--padding-xl) var(--padding-md);
+  text-align: center;
+}
+
+.no-breaches-message h2,
+.all-breaches-resolved-message h2 {
+  font-weight: 600;
+}
+
+.no-breaches-message p,
+.all-breaches-resolved-message p {
+  font: var(--h3-font);
+  font-weight: 500;
+  max-width: 800px;
+}
+
+.no-breaches-message p b,
+.all-breaches-resolved-message p b {
+  font-weight: 700;
 }

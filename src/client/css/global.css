@@ -45,10 +45,20 @@ p {
   margin: var(--padding-md) 0;
 }
 
-a {
+a,
+.anchor {
   color: inherit;
+  font-size: inherit;
+  line-height: inherit;
   text-decoration: underline;
   text-underline-position: under;
+}
+
+hr {
+  background-color: var(--gray-10);
+  border: none;
+  color: var(--gray-10);
+  height: 1px;
 }
 
 img {
@@ -162,9 +172,10 @@ button * {
   pointer-events: none;
 }
 
-button:active,
-.button:active {
-  box-shadow: inset 0 0 64px #80808011;
+button:disabled,
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 button.primary,
@@ -173,6 +184,7 @@ button.primary,
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
   padding: var(--padding-md);
+  transition: background 150ms;
 }
 
 button.secondary,
@@ -182,9 +194,49 @@ button.secondary,
   padding: var(--padding-md);
 }
 
+button.primary:active,
+.button.primary:active,
+button.secondary:active,
+.button.secondary:active {
+  box-shadow: inset 0 0 64px #80808011;
+}
+
+button.primary:hover:enabled,
+.button.primary:hover:enabled {
+  background: var(--blue-60);
+}
+
+button.close {
+  width: 24px;
+  height: 24px;
+  padding: var(--padding-md);
+  background: url('../images/icon-close.svg') no-repeat 50%;
+}
+
 input[type='checkbox'] {
   width: var(--checkbox-w);
   height: var(--checkbox-w);
+}
+
+dialog {
+  margin: auto;
+  padding: var(--padding-xl);
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+dialog[open] {
+  animation: fade-in 0.3s;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.8);
+}
+
+dialog button.close {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 @keyframes fade-in {

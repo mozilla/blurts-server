@@ -4,6 +4,7 @@
 
 import express from 'express'
 import { landingPage } from '../controllers/landing.js'
+import { dialog } from '../controllers/dialog.js'
 import { robotsTxt } from '../middleware/robots.js'
 import dockerFlowRoutes from './dockerflow.js'
 import authRoutes from './auth.js'
@@ -17,6 +18,7 @@ const router = express.Router()
 
 router.use('/', dockerFlowRoutes)
 router.get('/', landingPage)
+router.get('/dialog/:partial', dialog)
 router.get('/robots.txt', robotsTxt)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)

@@ -9,18 +9,39 @@ import helmet from 'helmet'
 import accepts from 'accepts'
 import redis from 'redis'
 import cookieParser from 'cookie-parser'
+import rateLimit from 'express-rate-limit'
+import Sentry from '@sentry/node'
+import '@sentry/tracing'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
 import { doubleCsrfProtection } from './utils/csrf.js'
-import { initFluentBundles, updateLocale } from './utils/fluent.js'
+import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
+import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
+
+// init sentry
+Sentry.init({
+  dsn: AppConstants.SENTRY_DSN,
+  environment: AppConstants.NODE_ENV,
+  debug: isDev,
+  beforeSend (event, hint) {
+    if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english
+
+    // try to force an english translation for the error message if localized
+    if (hint.originalException.fluentID) {
+      event.exception.values[0].value = getMessageWithLocale(hint.originalException.fluentID, 'en') || getMessage(hint.originalException.fluentID)
+    }
+
+    return event
+  }
+})
 
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
@@ -47,6 +68,13 @@ async function getRedisStore () {
 app.use(
   helmet({
     crossOriginEmbedderPolicy: false
+  })
+)
+
+app.use(
+  Sentry.Handlers.requestHandler({
+    request: ['headers', 'method', 'url'], // omit cookies, data, query_string
+    user: ['id'] // omit username, email
   })
 )
 
@@ -123,8 +151,26 @@ app.use(express.json())
 app.use(cookieParser(AppConstants.COOKIE_SECRET))
 app.use(doubleCsrfProtection)
 
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false // Disable the `X-RateLimit-*` headers
+})
+
+app.use('/api', apiLimiter)
+
 // routing
 app.use('/', indexRouter)
+
+// sentry error handler
+app.use(Sentry.Handlers.errorHandler({
+  shouldHandleError (error) {
+    if (error instanceof RateLimitError) return true
+  }
+}))
+
+// app error handler
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
