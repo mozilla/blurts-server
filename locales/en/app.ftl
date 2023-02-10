@@ -823,6 +823,12 @@ meta-desc = Find out if you’ve been part of a data breach with {-brand-fx-moni
 brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
 
+## Site navigation
+
+site-nav-breaches-link = Resolve Data Breaches
+site-nav-settings-link = Settings
+site-nav-help-link = Help and Support
+
 ## User menu
 
 menu-button-title = User menu
