@@ -4,6 +4,7 @@
 
 import AppConstants from '../app-constants.js'
 import { getBreachByName, loadBreachesIntoApp } from '../utils/hibp.js'
+import { UnauthorizedError, UserInputError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 const log = mozlog('controllers.hibp')
 
@@ -20,10 +21,10 @@ const log = mozlog('controllers.hibp')
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
     const errorMessage = 'HIBP notify endpoint requires valid authorization token.'
-    throw new Error(errorMessage)
+    throw new UnauthorizedError(errorMessage)
   }
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
-    throw new Error('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
+    throw new UserInputError('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
   }
 
   const { breachName } = req.body
