@@ -262,10 +262,14 @@
   display: none;
 }
 
+/* Show the "No breaches found!" message when the breaches table has no resolved
+ * nor unresolved breaches: */
 .breaches-table[data-nr-unresolved='0'][data-nr-resolved='0'] .no-unresolved-breaches-message .no-breaches-message {
   display: flex;
 }
 
+/* Show the "All breaches resolved!" message when the breaches table has no
+ * unresolved but more than 0 resolved breaches: */
 .breaches-filter:not([data-selected='resolved']) + .breaches-table[data-nr-unresolved='0']:not([data-nr-resolved='0']) .no-unresolved-breaches-message .all-breaches-resolved-message {
   display: flex;
 }
