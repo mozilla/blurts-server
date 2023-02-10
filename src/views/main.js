@@ -127,11 +127,27 @@ const mainHeader = data => `
     ${userMenu(data)}
   </div>
 </header>
-<nav>
-  <a href='/user/dashboard' class='nav-item ${data.partial.name === 'dashboard' ? 'current' : ''}'>Dashboard</a>
-  <a href='/user/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
-  <a href='/user/data-removal' class='nav-item ${data.partial.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
-  <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>Settings</a>
+<nav class='site-nav'>
+  <div class='pages-nav'>
+    <a href='/user/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5942 20.049C9.87439 21.3816 10.8394 22.9996 12.3539 22.9996H19.657C21.1692 22.9996 22.1344 21.3862 21.4193 20.0538L17.7796 13.2724C17.0264 11.8689 15.0148 11.8662 14.2577 13.2676L10.5942 20.049Z" fill="white" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 21C16.5523 21 17 20.5523 17 20C17 19.4477 16.5523 19 16 19C15.4477 19 15 19.4477 15 20C15 20.5523 15.4477 21 16 21Z" fill="currentcolor"/>
+        <path d="M16 17V16" stroke="currentcolor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M7 22H5C3.89543 22 3 21.1046 3 20V11C3 9.89543 3.89543 9 5 9H19C20.1046 9 21 9.89543 21 11V13" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 9V7C7 4.23858 9.23858 2 12 2C14.7614 2 17 4.23858 17 7V9" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      ${getMessage('site-nav-breaches-link')}
+    </a>
+  </div>
+  <div class='meta-nav'>
+    <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>
+      ${getMessage('site-nav-settings-link')}
+    </a>
+    <a target="_blank" rel="noopener noreferrer" href='https://support.mozilla.org/kb/firefox-monitor' class='nav-item'>
+      ${getMessage('site-nav-help-link')}
+    </a>
+  </div>
 </nav>
 `
 
