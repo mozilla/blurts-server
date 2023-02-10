@@ -186,7 +186,7 @@
      so that everything remains vertically-aligned, and the badge still
      disappears when getting flex-wrapped on small screens.
   */
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
 }
 
 .resolution-badge.is-active {
