@@ -28,7 +28,7 @@ function emailsPage (req, res) {
   }
 
   const { params } = req
-  const template = params.template || 'verification'
+  const template = params.template ?? 'verification'
 
   const emailTemplates = {
     verification: {

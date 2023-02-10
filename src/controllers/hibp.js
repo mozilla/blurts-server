@@ -87,7 +87,7 @@ async function notify (req, res) {
     condition.condition
   ))
 
-  const doNotSendEmail = unsatisfiedConditions?.length > 0
+  const doNotSendEmail = unsatisfiedConditions.length > 0
 
   if (doNotSendEmail) {
     // Get a list of the failed condition `logId`s
@@ -126,7 +126,7 @@ async function notify (req, res) {
       // Get subscriber ID from:
       // - `subscriber_id`: if `email_addresses` record
       // - `id`: if `subscribers` record
-      const subscriberId = recipient.subscriber_id || recipient.id
+      const subscriberId = recipient.subscriber_id ?? recipient.id
       const {
         recipientEmail,
         breachedEmail,
@@ -135,7 +135,7 @@ async function notify (req, res) {
 
       const requestedLanguage = signupLanguage
         ? acceptedLanguages(signupLanguage)
-        : ''
+        : []
 
       const availableLanguages = req.app.locals.AVAILABLE_LANGUAGES
       const supportedLocales = negotiateLanguages(
