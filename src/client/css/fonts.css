@@ -200,6 +200,26 @@ https://discourse.mozilla.org/t/metropolis-font-repo-missing/69415
 @font-face {
   font-family: Metropolis;
   font-style: normal;
+  font-weight: 500;
+  font-display: optional;
+  src:
+    local('Metropolis-Medium'),
+    url('../fonts/Metropolis-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Metropolis;
+  font-style: normal;
+  font-weight: 600;
+  font-display: optional;
+  src:
+    local('Metropolis-SemiBold'),
+    url('../fonts/Metropolis-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Metropolis;
+  font-style: normal;
   font-weight: 700;
   font-display: optional;
   src:

@@ -226,15 +226,15 @@ test.serial('user add request with invalid email throws error', async t => {
   })
   const resp = createResponse()
 
-  const { fluentError } = await import('../utils/fluent.js')
-  td.when(fluentError('user-add-invalid-email')).thenThrow(new Error('user-add-invalid-email'))
+  const { getMessage } = await import('../utils/fluent.js')
+  td.when(getMessage('user-add-invalid-email')).thenReturn('invalid email')
 
   // Call code-under-test
   const { addEmail } = await import('./settings.js')
 
   await t.throwsAsync(
     addEmail(req, resp),
-    { instanceOf: Error, message: 'user-add-invalid-email' }
+    { instanceOf: Error, message: 'invalid email' }
   )
 })
 

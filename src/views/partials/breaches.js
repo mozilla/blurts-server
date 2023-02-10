@@ -43,7 +43,13 @@ function createBreachRows (data) {
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span>${breach.Title}</span><span>${shortList.format(dataClassesTranslated)}</span><span>${shortDate.format(addedDate)}</span>
+          <span>${breach.Title}</span>
+          <span>${shortList.format(dataClassesTranslated)}</span>
+          <span>
+            <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
+            <span class='resolution-badge is-active'>${getMessage('column-status-badge-active')}</span>
+          </span>
+          <span>${shortDate.format(addedDate)}</span>
         </summary>
         <article>
           <p>${description}</p>
@@ -68,6 +74,26 @@ function createResolveSteps (breach) {
   `)
 
   return resolveStepsHTML.join('')
+}
+
+/**
+ * @param {*} data
+ * @param {'none' | 'all-resolved'} status
+ * @returns string
+ */
+function createAddEmailButton (data, status) {
+  if (data.emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
+    return ''
+  }
+
+  return `
+    <p>
+      ${getMessage(`breaches-${status}-cta-blurb`)}
+    </p>
+    <button class="primary" data-dialog='add-email'>
+      ${getMessage(`breaches-${status}-cta-button`)}
+    </button>
+  `
 }
 
 export const breaches = data => `
@@ -99,8 +125,48 @@ export const breaches = data => `
 </section>
 <section class='breaches-table' data-token=${data.csrfToken}>
   <header>
-    <span>${getMessage('column-company')}</span><span>${getMessage('column-breached-data')}</span><span>${getMessage('column-detected')}</span>
+    <span>${getMessage('column-company')}</span>
+    <span>${getMessage('column-breached-data')}</span>
+    ${
+      /*
+       * The active/resolved badge does not have a column header, but by
+       * including an empty <span>, we can re-use the `nth-child`-based
+       * selectors for the content columns.
+       */
+      '<span></span>'
+    }
+    <span>${getMessage('column-detected')}</span>
   </header>
   ${createBreachRows(data.breachesData)}
+  <div class="no-unresolved-breaches-message">
+    <div class="no-breaches-message">
+      <img src='/images/breaches-none.svg' alt='' width="136" height="102" />
+      <h2>
+        ${getMessage('breaches-none-headline')}
+      </h2>
+      <p>
+        ${
+          data.breachesData.verifiedEmails.map(account => {
+            return `<span data-email="${account.email}" ${account.primary ? '' : 'hidden'}>${getMessage('breaches-none-copy', { email: `<b>${account.email}</b>` })}</span>`
+          }).join('')
+        }
+      </p>
+      ${createAddEmailButton(data, 'none')}
+    </div>
+    <div class="all-breaches-resolved-message">
+      <img src='/images/breaches-all-resolved.svg' alt='' width="136" height="102" />
+      <h2>
+        ${getMessage('breaches-all-resolved-headline')}
+      </h2>
+      <p>
+        ${
+          data.breachesData.verifiedEmails.map(account => {
+            return `<span data-email="${account.email}" ${account.primary ? '' : 'hidden'}>${getMessage('breaches-all-resolved-copy', { email: `<b>${account.email}</b>` })}</span>`
+          }).join('')
+        }
+      </p>
+      ${createAddEmailButton(data, 'all-resolved')}
+    </div>
+  </div>
 </section>
 `

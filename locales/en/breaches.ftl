@@ -28,6 +28,25 @@ column-company = COMPANY
 column-breached-data = BREACHED DATA
 column-detected = DETECTED
 
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resolved
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Active
+
+breaches-none-headline = No breaches found
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Good news! No known breaches were reported for { $email }. We’ll keep monitoring this email and will let you know if any new breaches occur.
+breaches-none-cta-blurb = Would you like to monitor another email?
+breaches-none-cta-button = Add email address
+
+breaches-all-resolved-headline = All breaches resolved
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Nicely done! You’ve resolved all breaches for { $email }. We’ll keep monitoring this email and will let you know if any new breaches occur.
+breaches-all-resolved-cta-blurb = Would you like to monitor another email?
+breaches-all-resolved-cta-button = Add email address
+
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = On { $breachDate }, { $companyName } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }. This breach included: { $dataClasses }
 
