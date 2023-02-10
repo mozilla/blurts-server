@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getMessage } from '../../utils/fluent.js'
-import { prettyDate } from '../../utils/pretty-date.js'
+import { formatDate } from '../../utils/format-date.js'
 
 const breachAlertContainerStyle = `
   background: #f9f9fa;
@@ -99,7 +99,7 @@ const breachAlertEmailPartial = data => {
                       ${getMessage('breach-added-label')}
                     </p>
                     <p style='${breachAlertValueStyle}'>
-                      ${prettyDate(AddedDate, supportedLocales)}
+                      ${formatDate(AddedDate, supportedLocales)}
                     </p>
 
                     ${DataClasses?.length > 0
