@@ -1,7 +1,6 @@
 const form = document.querySelector('dialog[data-partial="add-email"] form')
 
 function init () {
-  console.log('add email init')
   form.addEventListener('submit', handleSubmit)
 }
 
@@ -9,6 +8,7 @@ async function handleSubmit (e) {
   e.preventDefault()
 
   try {
+    form.elements['email-submit'].toggleAttribute('disabled', true)
     const res = await fetch('/api/v1/user/email', {
       headers: {
         'Content-Type': 'application/json',
@@ -25,6 +25,8 @@ async function handleSubmit (e) {
     alert('email added')
   } catch (e) {
     console.error('Could not add new email.', e)
+  } finally {
+    form.elements['email-submit'].toggleAttribute('disabled', false)
   }
 }
 

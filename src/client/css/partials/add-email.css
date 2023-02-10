@@ -1,3 +1,7 @@
 [data-partial='add-email'] {
-  background-color: green;
+  text-align: center;
+}
+
+[data-partial='add-email'] section {
+  padding: 0;
 }

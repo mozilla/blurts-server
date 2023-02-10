@@ -4,15 +4,19 @@
 
 export const addEmail = data => `
 <header>
-  <h1>Add another email address</h1>
   <button class='close'></button>
+  <img src='/images/dialog-email-clouds.svg'>
+  <h2>Add another email address</h2>
 </header>
 <section>
   <p>Your account includes monitoring of up to ${data.emailLimit} email addresses. Add a new email address to see if it’s been involved in a breach.</p>
   <form>
     <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
-    <label>Email address<input type='email' name='email-address'></label>
-    <button class='primary' type='submit'>Send verification link</button>
+    <label class='text-field'>
+      <span>Email address</span>
+      <input type='email' name='email-address' required>
+    </label>
+    <button class='primary' type='submit' name='email-submit'>Send verification link</button>
   </form>
 </section>
 `
