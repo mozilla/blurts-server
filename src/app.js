@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import crypto from 'node:crypto'
+
 import express from 'express'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
@@ -87,15 +89,31 @@ if (AppConstants.FXA_ENABLED) {
   imgSrc.push(fxaSrc)
 }
 
+// Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+imgSrc.push('www.googletagmanager.com')
+
 // disable forced https to allow localhost on Safari
-app.use(
+app.use((_req, res, _next) => {
+  res.locals.nonce = crypto.randomBytes(16).toString('hex')
   helmet.contentSecurityPolicy({
     directives: {
+      upgradeInsecureRequests: isDev ? null : [],
+      scriptSrc: [
+        "'self'",
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+        `'nonce-${res.locals.nonce}'`
+      ],
       imgSrc,
-      upgradeInsecureRequests: isDev ? null : []
+      connectSrc: [
+        "'self'",
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+        'https://*.google-analytics.com',
+        'https://*.analytics.google.com',
+        'https://*.googletagmanager.com'
+      ]
     }
-  })
-)
+  })(_req, res, _next)
+})
 
 // fallback to default 'no-referrer' only when 'strict-origin-when-cross-origin' not available
 app.use(
