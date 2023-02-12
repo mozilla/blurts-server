@@ -8,7 +8,8 @@ import { dashboard } from '../views/partials/dashboard.js'
 function dashboardPage (req, res) {
   const data = {
     fxaProfile: req.user.fxa_profile_json,
-    partial: dashboard
+    partial: dashboard,
+    nonce: res.locals.nonce
   }
 
   res.send(mainLayout(data))

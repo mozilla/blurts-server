@@ -7,7 +7,8 @@ import { landing } from '../views/partials/landing.js'
 
 function landingPage (req, res) {
   const data = {
-    partial: landing
+    partial: landing,
+    nonce: res.locals.nonce
   }
 
   res.send(mainLayout(data))

@@ -31,23 +31,6 @@ ESLint rules are based on [eslint-config-standard](https://github.com/standard/e
 
 Stylelint rules are based on [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard). To fix all auto-fixable problems, run `npx stylelint public/css/ --fix`
 
-To run linting/formatting as you type or upon save, add the ESLint and Stylelint extensions and configure both to be the default formatter.  For VS Code, you may want to add properties to your personal settings.json file, similar to:
-```
-"[javascript]": {
-   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-   "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-   }
-},
-"[css]": {
-   "editor.defaultFormatter": "stylelint.vscode-stylelint",
-   "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": true
-   }
-}
-```
-See here for more on Stylelint config with VSCode: https://github.com/stylelint/vscode-stylelint#editorcodeactionsonsave
-
 ### GIT
 
 We track commits that are largely style/formatting via `.git-blame-ignore-revs`.  This allows Git Blame to ignore the format commit author and show the original code author.  In order to enable this in GitLens, add the following to VS Code `settings.json`:
