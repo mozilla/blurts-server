@@ -5,14 +5,17 @@
 const breachesPartial = document.querySelector("[data-partial='breaches']")
 const state = new Proxy({
   selectedEmail: null,
-  selectedStatus: 'unresolved'
+  selectedStatus: 'unresolved',
+  resolvedCount: null,
+  unresolvedCount: null,
+  emailCount: null,
+  emailTotal: null
 }, {
   set (target, key, value) {
-    if (target[key] !== value) {
-      target[key] = value
-      render()
-    }
+    if (target[key] === value) return true
 
+    target[key] = value
+    if (key === 'selectedEmail' || key === 'selectedStatus') render()
     return true
   }
 })
@@ -27,6 +30,8 @@ function init () {
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
 
+  state.emailCount = Number(breachesPartial.querySelector('.email-stats').dataset.count)
+  state.emailTotal = Number(breachesPartial.querySelector('.email-stats').dataset.total)
   state.selectedEmail = emailSelect.value // triggers render
 
   emailSelect.addEventListener('change', handleEvent)
@@ -80,11 +85,10 @@ async function updateBreachStatus (input) {
 }
 
 function renderResolvedCounts () {
-  const nrResolved = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
-  const nrUnresolved = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
-  resolvedCountOutput.textContent = nrResolved
-  unresolvedCountOutput.textContent = nrUnresolved
-  statusFilter.toggleAttribute('hidden', nrResolved === 0 && nrUnresolved === 0)
+  state.resolvedCount = breachesPartial.querySelectorAll(`[data-status='resolved'][data-email='${state.selectedEmail}']`).length
+  state.unresolvedCount = breachesPartial.querySelectorAll(`[data-status='unresolved'][data-email='${state.selectedEmail}']`).length
+  resolvedCountOutput.textContent = state.resolvedCount
+  unresolvedCountOutput.textContent = state.unresolvedCount
 }
 
 function renderBreachRows () {
@@ -100,15 +104,30 @@ function renderBreachRows () {
       delay += 50
     }
   })
+}
 
-  const nrOfUnresolvedBreaches = Array.from(breachRows)
-    .filter(breachRow => breachRow.dataset.email === state.selectedEmail && breachRow.dataset.status === 'unresolved')
-    .length
-  const nrOfResolvedBreaches = Array.from(breachRows)
-    .filter(breachRow => breachRow.dataset.email === state.selectedEmail && breachRow.dataset.status === 'resolved')
-    .length
-  breachesTable.dataset.nrUnresolved = nrOfUnresolvedBreaches
-  breachesTable.dataset.nrResolved = nrOfResolvedBreaches
+function renderZeroState () {
+  let temp
+
+  breachesTable.querySelector('.zero-state')?.remove()
+  statusFilter.toggleAttribute('hidden', state.resolvedCount === 0 && state.unresolvedCount === 0)
+
+  switch (true) {
+    case state.resolvedCount === 0 && state.unresolvedCount === 0:
+      temp = breachesPartial.querySelector('template.no-breaches')
+      break
+    case state.resolvedCount > 0 && state.unresolvedCount === 0:
+      if (state.selectedStatus !== 'unresolved') return // only show zero-state on empty unresolved screen
+      temp = breachesPartial.querySelector('template.all-breaches-resolved')
+      break
+    default:
+      return
+  }
+
+  const content = temp.content.cloneNode(true)
+  content.querySelector('.current-email').textContent = state.selectedEmail
+  content.querySelector('.add-email-cta').toggleAttribute('hidden', state.emailCount >= state.emailTotal)
+  breachesTable.append(content)
 }
 
 function render () {
@@ -116,6 +135,7 @@ function render () {
   // e.g. if user marks all steps resolved – update the count, but leave the breach in place for further user interaction
   renderResolvedCounts()
   renderBreachRows()
+  renderZeroState()
 }
 
 if (breachesPartial) init()

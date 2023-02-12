@@ -76,26 +76,6 @@ function createResolveSteps (breach) {
   return resolveStepsHTML.join('')
 }
 
-/**
- * @param {*} data
- * @param {'none' | 'all-resolved'} status
- * @returns string
- */
-function createAddEmailButton (data, status) {
-  if (data.emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
-    return ''
-  }
-
-  return `
-    <p>
-      ${getMessage(`breaches-${status}-cta-blurb`)}
-    </p>
-    <button class="primary" data-dialog='add-email'>
-      ${getMessage(`breaches-${status}-cta-button`)}
-    </button>
-  `
-}
-
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
@@ -108,7 +88,7 @@ export const breaches = data => `
         <label>Unresolved</label>
       </figcaption>
     </figure>
-    <figure class='email-stats'>
+    <figure class='email-stats' data-count=${data.emailCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>
         <strong>${getMessage('emails-monitored', { count: data.emailCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
@@ -138,35 +118,27 @@ export const breaches = data => `
     <span>${getMessage('column-detected')}</span>
   </header>
   ${createBreachRows(data.breachesData)}
-  <div class="no-unresolved-breaches-message">
-    <div class="no-breaches-message">
+  <template class='no-breaches'>
+    <div class="zero-state no-breaches-message">
       <img src='/images/breaches-none.svg' alt='' width="136" height="102" />
-      <h2>
-        ${getMessage('breaches-none-headline')}
-      </h2>
-      <p>
-        ${
-          data.breachesData.verifiedEmails.map(account => {
-            return `<span data-email="${account.email}" ${account.primary ? '' : 'hidden'}>${getMessage('breaches-none-copy', { email: `<b>${account.email}</b>` })}</span>`
-          }).join('')
-        }
+      <h2>${getMessage('breaches-none-headline')}</h2>
+      <p>${getMessage('breaches-none-copy', { email: '<b class="current-email"></b>' })}</p>
+      <p class='add-email-cta'>
+        <span>${getMessage('breaches-none-cta-blurb')}</span>
+        <button class="primary" data-dialog='add-email'>${getMessage('breaches-none-cta-button')}</button>
       </p>
-      ${createAddEmailButton(data, 'none')}
     </div>
-    <div class="all-breaches-resolved-message">
+  </template>
+  <template class='all-breaches-resolved'>
+    <div class="zero-state all-breaches-resolved-message">
       <img src='/images/breaches-all-resolved.svg' alt='' width="136" height="102" />
-      <h2>
-        ${getMessage('breaches-all-resolved-headline')}
-      </h2>
-      <p>
-        ${
-          data.breachesData.verifiedEmails.map(account => {
-            return `<span data-email="${account.email}" ${account.primary ? '' : 'hidden'}>${getMessage('breaches-all-resolved-copy', { email: `<b>${account.email}</b>` })}</span>`
-          }).join('')
-        }
+      <h2>${getMessage('breaches-all-resolved-headline')}</h2>
+      <p>${getMessage('breaches-all-resolved-copy', { email: '<b class="current-email"></b>' })}</p>
+      <p class='add-email-cta'>
+        <span>${getMessage('breaches-all-resolved-cta-blurb')}</span>
+        <button class="primary" data-dialog='add-email'>${getMessage('breaches-all-resolved-cta-button')}</button>
       </p>
-      ${createAddEmailButton(data, 'all-resolved')}
     </div>
-  </div>
+  </template>
 </section>
 `
