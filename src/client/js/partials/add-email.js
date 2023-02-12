@@ -1,7 +1,12 @@
-const form = document.querySelector('dialog[data-partial="add-email"] form')
+let dialogEl, form
 
 function init () {
+  dialogEl = document.querySelector('dialog[data-partial="add-email"]')
+  if (!dialogEl) return
+
+  form = dialogEl.querySelector('form')
   form.addEventListener('submit', handleSubmit)
+  dialogEl.addEventListener('close', kill)
 }
 
 async function handleSubmit (e) {
@@ -22,7 +27,8 @@ async function handleSubmit (e) {
     })
 
     if (!res.ok) throw new Error('Bad fetch response')
-    alert('email added')
+
+    renderSuccess(form.elements['email-address'].value)
   } catch (e) {
     console.error('Could not add new email.', e)
   } finally {
@@ -30,41 +36,18 @@ async function handleSubmit (e) {
   }
 }
 
-if (form) init()
+function renderSuccess (email) {
+  const content = dialogEl.querySelector('template[data-success]').content.cloneNode(true)
+  const messageEl = content.querySelector('p.add-email-success')
 
-// const settingsAddVerification = document.getElementById('js-settings-modal-send-verification')
-// if (settingsAddVerification) {
-//   settingsAddVerification.addEventListener('click', async _ => {
-//     const email = document.getElementById('js-settings-email-modal-input').value
-//     const csrfToken = document
-//       .querySelector('.js-settings[data-csrf-token]')
-//       .getAttribute('data-csrf-token')
+  messageEl.style.setProperty('--form-height', `${form.clientHeight}px`)
+  messageEl.querySelector('.current-email').textContent = email
+  form.replaceWith(content)
+}
 
-//     const response = await fetch('/api/v1/user/email', {
-//       headers: {
-//         'Content-Type': 'application/json',
-//         'x-csrf-token': csrfToken
-//       },
-//       mode: 'same-origin',
-//       method: 'POST',
-//       body: JSON.stringify({ email })
-//     })
+function kill () {
+  form.removeEventListener('submit', handleSubmit)
+  dialogEl.removeEventListener('close', kill)
+}
 
-//     if (!response?.ok) {
-//       throw new Error(`Sending verification email failed: ${response?.error}`)
-//     }
-
-//     const addEmailDialogContent = document.getElementById('js-settings-modal-content')
-//     // TODO: Localize string below
-//     addEmailDialogContent.textContent = `Verify the link sent to ${email} to add it to Firefox Monitor. Manage all email addresses in Settings.`
-
-//     const addEmailDialogControls = document.getElementById('js-settings-modal-controls')
-//     addEmailDialogControls.hidden = true
-
-//     const addEmailDialog = document.getElementById('js-settings-modal')
-//     addEmailDialog.addEventListener('close', _ => {
-//       addEmailDialogControls.hidden = false
-//       return window.location.reload(true)
-//     }, { once: true })
-//   })
-// }
+export default init
