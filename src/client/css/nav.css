@@ -42,7 +42,7 @@ nav.site-nav a {
   /* Then restore the inline padding: */
   padding: var(--padding-sm) var(--padding-md);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: normal;
   color: var(--gray-40);
   font-size: 0.875rem;
 }
