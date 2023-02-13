@@ -11,6 +11,7 @@ import { getTemplate } from '../views/email-2022.js'
 import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
 
 import {
+  EmailTemplateType,
   getEmailCtaHref,
   getUnsubscribeUrl,
   sendEmail
@@ -113,7 +114,7 @@ async function notify (req, res) {
     const emailAddresses = await getEmailAddressesByHashes(hashes)
     const recipients = subscribers.concat(emailAddresses)
 
-    log.info('notification', {
+    log.info(EmailTemplateType.Notification, {
       breachAlertName: breachAlert.Name,
       length: recipients.length
     })
@@ -151,7 +152,8 @@ async function notify (req, res) {
           breachedEmail,
           ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
           heading: getMessage('email-spotted-new-breach'),
-          recipientEmail,
+          // Override recipient if explicitly set in req
+          recipientEmail: req.body.recipient ?? recipientEmail,
           subscriberId,
           supportedLocales,
           unsubscribeUrl: getUnsubscribeUrl(
@@ -164,7 +166,7 @@ async function notify (req, res) {
         const emailTemplate = getTemplate(data, breachAlertEmailPartial)
         const subject = getMessage('breach-alert-subject')
 
-        await sendEmail(recipientEmail, subject, emailTemplate)
+        await sendEmail(data.recipientEmail, subject, emailTemplate)
 
         notifiedRecipients.push(breachedEmail)
       }

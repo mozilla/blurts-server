@@ -11,37 +11,33 @@ import { getTemplate, getPreviewTemplate } from '../views/email-2022.js'
 import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
 import { verifyPartial } from '../views/partials/email-verify.js'
 
-import { UnauthorizedError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
 import {
+  EmailTemplateType,
   getNotifictionDummyData,
   getVerificationDummyData,
   sendEmail
 } from '../utils/email.js'
 
-const { EMAIL_RECIPIENT_DUMMY } = AppConstants
+const { EMAIL_TEST_RECIPIENT } = AppConstants
 
 function emailsPage (req, res) {
-  if (!AppConstants.EMAIL_PREVIEW_ENABLED) {
-    throw new UnauthorizedError(`${req.method} ${req.originalUrl}`)
-  }
-
   const { params } = req
-  const template = params.template ?? 'verification'
+  const template = params.template ?? EmailTemplateType.Verification
 
   const emailTemplates = {
-    verification: {
+    [EmailTemplateType.Verification]: {
       label: 'Email verification',
       template: getPreviewTemplate(
-        getVerificationDummyData(EMAIL_RECIPIENT_DUMMY),
+        getVerificationDummyData(EMAIL_TEST_RECIPIENT),
         verifyPartial
       )
     },
-    notification: {
+    [EmailTemplateType.Notification]: {
       label: 'Breach notification',
       template: getPreviewTemplate(
-        getNotifictionDummyData(EMAIL_RECIPIENT_DUMMY),
+        getNotifictionDummyData(EMAIL_TEST_RECIPIENT),
         breachAlertEmailPartial
       )
     }
@@ -53,6 +49,10 @@ function emailsPage (req, res) {
     partial: emailPreview,
     email: {
       data: emailTemplates,
+      recipients: [
+        req.session.user.primary_email,
+        AppConstants.EMAIL_TEST_RECIPIENT
+      ],
       template
     }
   }
@@ -73,7 +73,10 @@ async function sendTestNotification (req, res) {
 
   const notifyReq = {
     app: req.app,
-    body: breachNotificationData,
+    body: {
+      ...req.body,
+      ...breachNotificationData
+    },
     token: AppConstants.HIBP_NOTIFY_TOKEN
   }
 
@@ -81,23 +84,23 @@ async function sendTestNotification (req, res) {
 }
 
 async function sendTestEmail (req, res) {
-  const { emailId } = req.body
+  const { emailId, recipient } = req.body
 
   switch (emailId) {
-    case 'verification': {
+    case EmailTemplateType.Verification: {
       // Send test verification email
       const emailTemplate = getTemplate(
-        getVerificationDummyData(EMAIL_RECIPIENT_DUMMY),
+        getVerificationDummyData(recipient),
         verifyPartial
       )
       await sendEmail(
-        EMAIL_RECIPIENT_DUMMY,
+        recipient,
         getMessage('email-subject-verify'),
         emailTemplate
       )
       break
     }
-    case 'notification': {
+    case EmailTemplateType.Notification: {
       // Send test breach notification email
       await sendTestNotification(req, res)
       break

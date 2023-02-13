@@ -14,10 +14,10 @@ const links = (data) => ({
 })
 
 const images = {
-  header: `${AppConstants.SERVER_URL}/images/person-at-desk.webp`,
-  footer: `${AppConstants.SERVER_URL}/images/mozilla-logo-bw.webp`,
-  logoDark: `${AppConstants.SERVER_URL}/images/monitor-logo-transparent-dark-mode.webp`,
-  logoLight: `${AppConstants.SERVER_URL}/images/monitor-logo-bg-light.webp`
+  header: `${AppConstants.SERVER_URL}/images/email/person-at-desk.png`,
+  footer: `${AppConstants.SERVER_URL}/images/email/mozilla-logo-bw.png`,
+  logoDark: `${AppConstants.SERVER_URL}/images/email/monitor-logo-transparent-dark-mode.png`,
+  logoLight: `${AppConstants.SERVER_URL}/images/email/monitor-logo-bg-light.png`
 }
 
 const bodyStyle = `

@@ -68,7 +68,7 @@ hr.monitor-gradient {
   border-image: var(--monitor-gradient) 1;
 }
 
-img {
+img:not(.email-preview img) {
   display: block;
   max-width: 100%;
   height: auto;

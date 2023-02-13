@@ -3,14 +3,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const emailsPartial = document.querySelector("[data-partial='emailPreview']")
-let sendAlertTestButton
+let emailPreviewForm
 let emailTemplateSelect
 
 function init () {
-  sendAlertTestButton = document.querySelector('.js-send-email-button')
+  emailPreviewForm = document.querySelector('.js-email-preview-form')
   emailTemplateSelect = emailsPartial.querySelector('.js-email custom-select')
 
-  sendAlertTestButton.addEventListener('click', sendBreachAlertEmail)
+  emailPreviewForm.addEventListener('submit', sendTestEmail)
   emailTemplateSelect.addEventListener('change', handleEvent)
 }
 
@@ -20,27 +20,35 @@ function handleEvent (event) {
   )
 
   if (templateSelectChanged) {
-    const updatedPath = `/user/emails/${event.target.value}`
+    const updatedPath = `/admin/emails/${event.target.value}`
     if (window.location.pathname !== updatedPath) {
       window.location.replace(updatedPath)
     }
   }
 }
 
-async function sendBreachAlertEmail () {
+async function sendTestEmail (event) {
+  event.preventDefault()
+  const selectedRecipient = event.target.querySelector(
+    'input[name="email-recipient-option"]:checked'
+  ).value
+
   try {
     const csrfToken = document
       .querySelector('.js-email[data-csrf-token]')
       .getAttribute('data-csrf-token')
 
-    const response = await fetch('/user/send-test-email', {
+    const response = await fetch('/admin/send-test-email', {
       headers: {
         'Content-Type': 'application/json',
         'x-csrf-token': csrfToken
       },
       mode: 'same-origin',
       method: 'POST',
-      body: JSON.stringify({ emailId: emailTemplateSelect.value })
+      body: JSON.stringify({
+        emailId: emailTemplateSelect.value,
+        recipient: selectedRecipient
+      })
     })
 
     if (response?.redirected) {

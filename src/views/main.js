@@ -36,6 +36,11 @@ const mainLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
+    ${
+      data.partial.name === 'emailPreview'
+        ? '<script src="/js/partials/email-preview.js" type="module"></script>'
+        : ''
+    }
   </head>
   <body>
     ${data.partial.name === 'landing' ? landingHeader(data) : mainHeader(data)}
@@ -123,11 +128,6 @@ const mainHeader = data => `
   <a href='/user/breaches' class='nav-item ${data.partial.name === 'breaches' ? 'current' : ''}'>Data breaches</a>
   <a href='/user/data-removal' class='nav-item ${data.partial.name === 'dataRemoval' ? 'current' : ''}'>Data removal</a>
   <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>Settings</a>
-  ${
-    AppConstants.EMAIL_PREVIEW_ENABLED
-      ? `<a href='/user/emails' class='nav-item ${data.partial.name === 'emails' ? 'current' : ''}'>Emails</a>`
-      : ''
-  }
 </nav>
 `
 
