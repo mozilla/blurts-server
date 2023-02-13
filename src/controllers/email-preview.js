@@ -14,6 +14,7 @@ import { verifyPartial } from '../views/partials/email-verify.js'
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
 import {
+  EmailTemplateType,
   getNotifictionDummyData,
   getVerificationDummyData,
   sendEmail
@@ -23,17 +24,17 @@ const { EMAIL_TEST_RECIPIENT } = AppConstants
 
 function emailsPage (req, res) {
   const { params } = req
-  const template = params.template ?? 'verification'
+  const template = params.template ?? EmailTemplateType.Verification
 
   const emailTemplates = {
-    verification: {
+    [EmailTemplateType.Verification]: {
       label: 'Email verification',
       template: getPreviewTemplate(
         getVerificationDummyData(EMAIL_TEST_RECIPIENT),
         verifyPartial
       )
     },
-    notification: {
+    [EmailTemplateType.Notification]: {
       label: 'Breach notification',
       template: getPreviewTemplate(
         getNotifictionDummyData(EMAIL_TEST_RECIPIENT),
@@ -79,7 +80,7 @@ async function sendTestEmail (req, res) {
   const { emailId } = req.body
 
   switch (emailId) {
-    case 'verification': {
+    case EmailTemplateType.Verification: {
       // Send test verification email
       const emailTemplate = getTemplate(
         getVerificationDummyData(EMAIL_TEST_RECIPIENT),
@@ -92,7 +93,7 @@ async function sendTestEmail (req, res) {
       )
       break
     }
-    case 'notification': {
+    case EmailTemplateType.Notification: {
       // Send test breach notification email
       await sendTestNotification(req, res)
       break

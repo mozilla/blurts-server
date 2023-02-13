@@ -11,6 +11,7 @@ import { getTemplate } from '../views/email-2022.js'
 import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
 
 import {
+  EmailTemplateType,
   getEmailCtaHref,
   getUnsubscribeUrl,
   sendEmail
@@ -113,7 +114,7 @@ async function notify (req, res) {
     const emailAddresses = await getEmailAddressesByHashes(hashes)
     const recipients = subscribers.concat(emailAddresses)
 
-    log.info('notification', {
+    log.info(EmailTemplateType.Notification, {
       breachAlertName: breachAlert.Name,
       length: recipients.length
     })

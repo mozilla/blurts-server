@@ -15,6 +15,11 @@ const log = mozlog('email-utils')
 // object while reading SMTP credentials, or to a dummy function in debug mode.
 let gTransporter
 
+const EmailTemplateType = {
+  Notification: 'verification',
+  Verification: 'notification'
+}
+
 async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
   // Allow a debug mode that will log JSON instead of sending emails.
   if (!smtpUrl) {
@@ -171,6 +176,7 @@ const getVerificationDummyData = (recipient) => ({
 })
 
 export {
+  EmailTemplateType,
   initEmail,
   sendEmail,
   getEmailCtaHref,
