@@ -16,12 +16,13 @@ function getPreviewOptions (currentTemplateKey, data) {
 }
 
 function getRecipientInputs (recipients) {
-  const recipientInputElements = recipients.map(recipient => (`
+  const recipientInputElements = recipients.map((recipient, index) => (`
     <label>
       <input
         name="email-recipient-option"
         type="radio"
         value="${recipient}"
+        ${index === 0 ? 'checked' : ''}
       >
       ${recipient}
     </label>
