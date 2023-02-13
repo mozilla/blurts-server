@@ -49,6 +49,10 @@ function emailsPage (req, res) {
     partial: emailPreview,
     email: {
       data: emailTemplates,
+      recipients: [
+        req.session.user.primary_email,
+        AppConstants.EMAIL_TEST_RECIPIENT
+      ],
       template
     }
   }
@@ -69,7 +73,10 @@ async function sendTestNotification (req, res) {
 
   const notifyReq = {
     app: req.app,
-    body: breachNotificationData,
+    body: {
+      ...req.body,
+      ...breachNotificationData
+    },
     token: AppConstants.HIBP_NOTIFY_TOKEN
   }
 
@@ -77,17 +84,17 @@ async function sendTestNotification (req, res) {
 }
 
 async function sendTestEmail (req, res) {
-  const { emailId } = req.body
+  const { emailId, recipient } = req.body
 
   switch (emailId) {
     case EmailTemplateType.Verification: {
       // Send test verification email
       const emailTemplate = getTemplate(
-        getVerificationDummyData(EMAIL_TEST_RECIPIENT),
+        getVerificationDummyData(recipient),
         verifyPartial
       )
       await sendEmail(
-        EMAIL_TEST_RECIPIENT,
+        recipient,
         getMessage('email-subject-verify'),
         emailTemplate
       )

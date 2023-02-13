@@ -15,10 +15,30 @@ function getPreviewOptions (currentTemplateKey, data) {
   return optionsElements
 }
 
+function getRecipientInputs (recipients) {
+  const recipientInputElements = recipients.map(recipient => (`
+    <label>
+      <input
+        name="email-recipient-option"
+        type="radio"
+        value="${recipient}"
+      >
+      ${recipient}
+    </label>
+  `)).join('')
+
+  return `
+    <fieldset>
+      ${recipientInputElements}
+    </fieldset>
+  `
+}
+
 export const emailPreview = data => {
   const {
     template: currentTemplateKey,
-    data: emailTemplates
+    data: emailTemplates,
+    recipients
   } = data.email
   const selectedPreviewTemplate = emailTemplates[currentTemplateKey]?.template
 
@@ -29,9 +49,14 @@ export const emailPreview = data => {
         <custom-select name='email-template'>
           ${getPreviewOptions(currentTemplateKey, emailTemplates)}
         </custom-select>
-        <button class='primary js-send-email-button'>
-          Send test email
-        </button>
+
+        <form class='js-email-preview-form email-preview-form'>
+          ${getRecipientInputs(recipients)}
+
+          <button class='primary' type='submit'>
+            Send test email
+          </button>
+        </form>
       </div>
       <hr class='monitor-gradient'>
       ${selectedPreviewTemplate}

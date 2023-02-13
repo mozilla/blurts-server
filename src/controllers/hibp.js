@@ -152,7 +152,8 @@ async function notify (req, res) {
           breachedEmail,
           ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
           heading: getMessage('email-spotted-new-breach'),
-          recipientEmail,
+          // Override recipient if explicitly set in req
+          recipientEmail: req.body.recipient ?? recipientEmail,
           subscriberId,
           supportedLocales,
           unsubscribeUrl: getUnsubscribeUrl(
@@ -165,7 +166,7 @@ async function notify (req, res) {
         const emailTemplate = getTemplate(data, breachAlertEmailPartial)
         const subject = getMessage('breach-alert-subject')
 
-        await sendEmail(recipientEmail, subject, emailTemplate)
+        await sendEmail(data.recipientEmail, subject, emailTemplate)
 
         notifiedRecipients.push(breachedEmail)
       }
