@@ -62,7 +62,8 @@ async function settingsPage (req, res) {
     emails,
     breachCounts,
     limit: AppConstants.MAX_NUM_ADDRESSES,
-    csrfToken: generateToken(res)
+    csrfToken: generateToken(res),
+    nonce: res.locals.nonce
   }
 
   res.send(mainLayout(data))

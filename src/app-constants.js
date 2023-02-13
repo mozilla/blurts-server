@@ -47,7 +47,8 @@ const requiredEnvVars = [
   'SES_NOTIFICATION_LOG_ONLY',
   'SESSION_DURATION_HOURS',
   'SMTP_URL',
-  'SUPPORTED_LOCALES'
+  'SUPPORTED_LOCALES',
+  'GA4_MEASUREMENT_ID'
 ]
 
 const optionalEnvVars = [
