@@ -41,6 +41,9 @@ breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Figyelje a bankszámlakivonatait, és keressen olyan számlákat, kölcsönöket vagy hitelkártyákat, melyeket nem ismer fel.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
