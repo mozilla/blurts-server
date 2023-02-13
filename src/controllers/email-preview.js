@@ -23,10 +23,6 @@ import {
 const { EMAIL_RECIPIENT_DUMMY } = AppConstants
 
 function emailsPage (req, res) {
-  if (!AppConstants.EMAIL_PREVIEW_ENABLED) {
-    throw new UnauthorizedError(`${req.method} ${req.originalUrl}`)
-  }
-
   const { params } = req
   const template = params.template ?? 'verification'
 

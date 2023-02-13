@@ -20,7 +20,7 @@ function handleEvent (event) {
   )
 
   if (templateSelectChanged) {
-    const updatedPath = `/user/emails/${event.target.value}`
+    const updatedPath = `/admin/emails/${event.target.value}`
     if (window.location.pathname !== updatedPath) {
       window.location.replace(updatedPath)
     }
@@ -33,7 +33,7 @@ async function sendBreachAlertEmail () {
       .querySelector('.js-email[data-csrf-token]')
       .getAttribute('data-csrf-token')
 
-    const response = await fetch('/user/send-test-email', {
+    const response = await fetch('/admin/send-test-email', {
       headers: {
         'Content-Type': 'application/json',
         'x-csrf-token': csrfToken
