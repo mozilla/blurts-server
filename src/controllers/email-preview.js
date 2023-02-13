@@ -20,7 +20,7 @@ import {
   sendEmail
 } from '../utils/email.js'
 
-const { EMAIL_RECIPIENT_DUMMY } = AppConstants
+const { EMAIL_TEST_RECIPIENT } = AppConstants
 
 function emailsPage (req, res) {
   const { params } = req
@@ -30,14 +30,14 @@ function emailsPage (req, res) {
     verification: {
       label: 'Email verification',
       template: getPreviewTemplate(
-        getVerificationDummyData(EMAIL_RECIPIENT_DUMMY),
+        getVerificationDummyData(EMAIL_TEST_RECIPIENT),
         verifyPartial
       )
     },
     notification: {
       label: 'Breach notification',
       template: getPreviewTemplate(
-        getNotifictionDummyData(EMAIL_RECIPIENT_DUMMY),
+        getNotifictionDummyData(EMAIL_TEST_RECIPIENT),
         breachAlertEmailPartial
       )
     }
@@ -83,11 +83,11 @@ async function sendTestEmail (req, res) {
     case 'verification': {
       // Send test verification email
       const emailTemplate = getTemplate(
-        getVerificationDummyData(EMAIL_RECIPIENT_DUMMY),
+        getVerificationDummyData(EMAIL_TEST_RECIPIENT),
         verifyPartial
       )
       await sendEmail(
-        EMAIL_RECIPIENT_DUMMY,
+        EMAIL_TEST_RECIPIENT,
         getMessage('email-subject-verify'),
         emailTemplate
       )
