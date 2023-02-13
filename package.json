@@ -25,7 +25,7 @@
     "fluent": "0.13.0",
     "fluent-langneg": "0.2.0",
     "git-rev-sync": "^3.0.2",
-    "got": "11.8.5",
+    "got": "12.5.3",
     "helmet": "4.2.0",
     "intl-pluralrules": "1.2.1",
     "isemail": "3.2.0",
