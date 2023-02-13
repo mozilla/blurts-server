@@ -17,7 +17,8 @@ let gTransporter
 
 const EmailTemplateType = {
   Notification: 'verification',
-  Verification: 'notification'
+  Verification: 'notification',
+  Monthly: 'monthly'
 }
 
 async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
@@ -175,11 +176,36 @@ const getVerificationDummyData = (recipient) => ({
   subheading: getMessage('email-verify-subhead')
 })
 
+/**
+ * Dummy data for populating the monthly unresolved breaches email
+ *
+ * @param {string} recipient
+ * @returns {object} Monthly unresolved breaches dummy data
+ */
+const getMonthlyDummyData = (recipient) => ({
+  recipientEmail: recipient,
+  ctaHref: '',
+  utmCampaign: '',
+  unsubscribeUrl: '',
+  heading: getMessage('email-unresolved-heading'),
+  subheading: getMessage('email-unresolved-subhead'),
+  breachedEmail: 'breached@email.com',
+  monitoredEmails: {
+    count: 2
+  },
+  numBreaches: {
+    count: 3,
+    numResolved: 2,
+    numUnresolved: 1
+  }
+})
+
 export {
   EmailTemplateType,
   initEmail,
   sendEmail,
   getEmailCtaHref,
+  getMonthlyDummyData,
   getVerificationUrl,
   getUnsubscribeUrl,
   getMonthlyUnsubscribeUrl,

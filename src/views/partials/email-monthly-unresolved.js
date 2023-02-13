@@ -42,7 +42,6 @@ const ctaStyle = `
   color: white;
   display: inline-block;
   margin: 24px 0;
-  margin: auto;
   padding: 12px 24px;
 `
 
