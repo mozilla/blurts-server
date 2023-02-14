@@ -100,6 +100,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
       fxaProfileData
     )
 
+    // Get breaches for email the user signed-up with
     const allBreaches = req.app.locals.breaches
     const unsafeBreachesForEmail = await getBreachesForEmail(
       email.sha1,
@@ -108,17 +109,19 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
       false
     )
 
+    // Send report email
     const utmCampaignId = 'report'
-    const reportSubject = unsafeBreachesForEmail?.length
+    const heading = unsafeBreachesForEmail?.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches')
 
     const data = {
       breachedEmail: email,
       ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
-      heading: reportSubject,
+      heading,
       recipientEmail: email,
       subscriberId: verifiedSubscriber,
+      unsafeBreachesForEmail,
       unsubscribeUrl: getUnsubscribeUrl(email, 'account-verification-email'),
       utmCampaign: utmCampaignId
     }

@@ -22,6 +22,7 @@ import {
   getNotifictionDummyData,
   getVerificationDummyData,
   getMonthlyDummyData,
+  getSignupReportDummyData,
   sendEmail
 } from '../utils/email.js'
 
@@ -56,7 +57,7 @@ function emailsPage (req, res) {
     [EmailTemplateType.SignupReport]: {
       label: 'Signup report',
       template: getPreviewTemplate(
-        getMonthlyDummyData(EMAIL_TEST_RECIPIENT),
+        getSignupReportDummyData(EMAIL_TEST_RECIPIENT),
         signupReportEmailPartial
       )
     }
@@ -140,7 +141,7 @@ async function sendTestEmail (req, res) {
     case EmailTemplateType.SignupReport: {
       // Send test sign-up report email
       const emailTemplate = getTemplate(
-        getMonthlyDummyData(EMAIL_TEST_RECIPIENT),
+        getSignupReportDummyData(EMAIL_TEST_RECIPIENT),
         signupReportEmailPartial
       )
       await sendEmail(

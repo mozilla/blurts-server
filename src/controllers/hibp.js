@@ -148,7 +148,7 @@ async function notify (req, res) {
 
       if (!notifiedRecipients.includes(breachedEmail)) {
         const data = {
-          breachAlert,
+          breachData: breachAlert,
           breachedEmail,
           ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
           heading: getMessage('email-spotted-new-breach'),

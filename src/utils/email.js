@@ -128,7 +128,7 @@ function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
  * @returns {object} Breach dummy data
  */
 const getNotifictionDummyData = (recipient) => ({
-  breachAlert: {
+  breachData: {
     Id: 1,
     Name: 'Adobe',
     Title: 'Adobe',
@@ -201,15 +201,60 @@ const getMonthlyDummyData = (recipient) => ({
   }
 })
 
+/**
+ * Dummy data for populating the signup report email
+ *
+ * @param {string} recipient
+ * @returns {object} Signup report email dummy data
+ */
+
+const getSignupReportDummyData = (recipient) => {
+  const unsafeBreachesForEmail = [
+    getNotifictionDummyData(recipient)
+  ]
+  const breachesCount = unsafeBreachesForEmail.length
+  const numPasswordsExposed = 1
+
+  const emailBreachStats = [
+    {
+      statNumber: breachesCount,
+      statTitle: getMessage('known-data-breaches-exposed', {
+        breaches: breachesCount
+      })
+    },
+    {
+      statNumber: numPasswordsExposed,
+      statTitle: getMessage('passwords-exposed', {
+        passwords: numPasswordsExposed
+      })
+    }
+  ]
+
+  return {
+    breachedEmail: recipient,
+    ctaHref: '',
+    heading: unsafeBreachesForEmail.length
+      ? getMessage('email-subject-found-breaches')
+      : getMessage('email-subject-no-breaches'),
+    emailBreachStats,
+    recipientEmail: recipient,
+    subscriberId: 123,
+    unsafeBreachesForEmail,
+    unsubscribeUrl: '',
+    utmCampaign: ''
+  }
+}
+
 export {
   EmailTemplateType,
-  initEmail,
-  sendEmail,
   getEmailCtaHref,
   getMonthlyDummyData,
-  getVerificationUrl,
-  getUnsubscribeUrl,
   getMonthlyUnsubscribeUrl,
   getNotifictionDummyData,
-  getVerificationDummyData
+  getSignupReportDummyData,
+  getUnsubscribeUrl,
+  getVerificationDummyData,
+  getVerificationUrl,
+  initEmail,
+  sendEmail
 }
