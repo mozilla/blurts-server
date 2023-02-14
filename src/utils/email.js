@@ -11,6 +11,8 @@ import { getMessage } from '../utils/fluent.js'
 
 const log = mozlog('email-utils')
 
+const { SERVER_URL } = AppConstants
+
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
 let gTransporter
@@ -18,7 +20,8 @@ let gTransporter
 const EmailTemplateType = {
   Notification: 'notification',
   Verification: 'verification',
-  Monthly: 'monthly'
+  Monthly: 'monthly',
+  SignupReport: 'signup-report'
 }
 
 async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
@@ -86,13 +89,13 @@ function appendUtmParams (url, campaign, content) {
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
   const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : '/'
-  const url = new URL(subscriberParamPath, AppConstants.SERVER_URL)
+  const url = new URL(subscriberParamPath, SERVER_URL)
   return appendUtmParams(url, emailType, content)
 }
 
 function getVerificationUrl (subscriber) {
   if (!subscriber.verification_token) throw new Error('subscriber has no verification_token')
-  let url = new URL(`${AppConstants.SERVER_URL}/api/v1/user/verify-email`)
+  let url = new URL(`${SERVER_URL}/api/v1/user/verify-email`)
   url = appendUtmParams(url, 'verified-subscribers', 'account-verification-email')
   url.searchParams.append('token', encodeURIComponent(subscriber.verification_token))
   return url
@@ -100,7 +103,7 @@ function getVerificationUrl (subscriber) {
 
 function getUnsubscribeUrl (subscriber, emailType) {
   // TODO: email unsubscribe is broken for most emails
-  let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`)
+  let url = new URL(`${SERVER_URL}/user/unsubscribe`)
   const token = (Object.prototype.hasOwnProperty.call(subscriber, 'verification_token')) ? subscriber.verification_token : subscriber.primary_verification_token
   const hash = (Object.prototype.hasOwnProperty.call(subscriber, 'sha1')) ? subscriber.sha1 : subscriber.primary_sha1
   url.searchParams.append('token', encodeURIComponent(token))
@@ -112,7 +115,7 @@ function getUnsubscribeUrl (subscriber, emailType) {
 function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
   // TODO: create new subscriptions section in settings to manage all emails and avoid one-off routes like this
   if (!subscriber.primary_verification_token) throw new Error('subscriber has no primary verification_token')
-  let url = new URL('user/unsubscribe-monthly/', AppConstants.SERVER_URL)
+  let url = new URL('user/unsubscribe-monthly/', SERVER_URL)
 
   url = appendUtmParams(url, campaign, content)
   url.searchParams.append('token', encodeURIComponent(subscriber.primary_verification_token))
@@ -127,7 +130,7 @@ function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
  * @returns {object} Breach dummy data
  */
 const getNotifictionDummyData = (recipient) => ({
-  breachAlert: {
+  breachData: {
     Id: 1,
     Name: 'Adobe',
     Title: 'Adobe',
@@ -152,12 +155,12 @@ const getNotifictionDummyData = (recipient) => ({
     IsMalware: false
   },
   breachedEmail: recipient,
-  ctaHref: '',
+  ctaHref: SERVER_URL,
   heading: getMessage('email-spotted-new-breach'),
   recipientEmail: recipient,
   subscriberId: 123,
   supportedLocales: ['en'],
-  unsubscribeUrl: '',
+  unsubscribeUrl: SERVER_URL,
   utmCampaign: ''
 })
 
@@ -169,9 +172,9 @@ const getNotifictionDummyData = (recipient) => ({
  */
 const getVerificationDummyData = (recipient) => ({
   recipientEmail: recipient,
-  ctaHref: '',
+  ctaHref: SERVER_URL,
   utmCampaign: 'email_verify',
-  unsubscribeUrl: '',
+  unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-verify-heading'),
   subheading: getMessage('email-verify-subhead')
 })
@@ -184,9 +187,9 @@ const getVerificationDummyData = (recipient) => ({
  */
 const getMonthlyDummyData = (recipient) => ({
   recipientEmail: recipient,
-  ctaHref: '',
+  ctaHref: SERVER_URL,
   utmCampaign: '',
-  unsubscribeUrl: '',
+  unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-unresolved-heading'),
   subheading: getMessage('email-unresolved-subhead'),
   breachedEmail: 'breached@email.com',
@@ -200,15 +203,60 @@ const getMonthlyDummyData = (recipient) => ({
   }
 })
 
+/**
+ * Dummy data for populating the signup report email
+ *
+ * @param {string} recipient
+ * @returns {object} Signup report email dummy data
+ */
+
+const getSignupReportDummyData = (recipient) => {
+  const unsafeBreachesForEmail = [
+    getNotifictionDummyData(recipient)
+  ]
+  const breachesCount = unsafeBreachesForEmail.length
+  const numPasswordsExposed = 1
+
+  const emailBreachStats = [
+    {
+      statNumber: breachesCount,
+      statTitle: getMessage('known-data-breaches-exposed', {
+        breaches: breachesCount
+      })
+    },
+    {
+      statNumber: numPasswordsExposed,
+      statTitle: getMessage('passwords-exposed', {
+        passwords: numPasswordsExposed
+      })
+    }
+  ]
+
+  return {
+    breachedEmail: recipient,
+    ctaHref: SERVER_URL,
+    heading: unsafeBreachesForEmail.length
+      ? getMessage('email-subject-found-breaches')
+      : getMessage('email-subject-no-breaches'),
+    emailBreachStats,
+    recipientEmail: recipient,
+    subscriberId: 123,
+    unsafeBreachesForEmail,
+    unsubscribeUrl: SERVER_URL,
+    utmCampaign: ''
+  }
+}
+
 export {
   EmailTemplateType,
-  initEmail,
-  sendEmail,
   getEmailCtaHref,
   getMonthlyDummyData,
-  getVerificationUrl,
-  getUnsubscribeUrl,
   getMonthlyUnsubscribeUrl,
   getNotifictionDummyData,
-  getVerificationDummyData
+  getSignupReportDummyData,
+  getUnsubscribeUrl,
+  getVerificationDummyData,
+  getVerificationUrl,
+  initEmail,
+  sendEmail
 }

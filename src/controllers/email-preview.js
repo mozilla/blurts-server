@@ -9,6 +9,7 @@ import { mainLayout } from '../views/main.js'
 import { emailPreview } from '../views/partials/email-preview.js'
 import { getTemplate, getPreviewTemplate } from '../views/email-2022.js'
 import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
+import { signupReportEmailPartial } from '../views/partials/email-signup-report.js'
 import { verifyPartial } from '../views/partials/email-verify.js'
 import {
   monthlyUnresolvedEmailPartial
@@ -21,6 +22,7 @@ import {
   getNotifictionDummyData,
   getVerificationDummyData,
   getMonthlyDummyData,
+  getSignupReportDummyData,
   sendEmail
 } from '../utils/email.js'
 
@@ -50,6 +52,13 @@ function emailsPage (req, res) {
       template: getPreviewTemplate(
         getMonthlyDummyData(EMAIL_TEST_RECIPIENT),
         monthlyUnresolvedEmailPartial
+      )
+    },
+    [EmailTemplateType.SignupReport]: {
+      label: 'Signup report',
+      template: getPreviewTemplate(
+        getSignupReportDummyData(EMAIL_TEST_RECIPIENT),
+        signupReportEmailPartial
       )
     }
   }
@@ -125,6 +134,19 @@ async function sendTestEmail (req, res) {
       await sendEmail(
         recipient,
         getMessage('email-unresolved-heading'),
+        emailTemplate
+      )
+      break
+    }
+    case EmailTemplateType.SignupReport: {
+      // Send test sign-up report email
+      const emailTemplate = getTemplate(
+        getSignupReportDummyData(EMAIL_TEST_RECIPIENT),
+        signupReportEmailPartial
+      )
+      await sendEmail(
+        recipient,
+        getMessage('email-subject-found-breaches'),
         emailTemplate
       )
       break
