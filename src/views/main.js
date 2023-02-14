@@ -47,7 +47,7 @@ const mainLayout = data => `
     <!-- End Google Tag Manager -->
     </head>
   <body>
-    ${data.partial.name === 'landing' ? landingHeader(data) : mainHeader(data)}
+    ${['landing', 'notFound'].includes(data.partial.name) ? landingHeader(data) : mainHeader(data)}
     <main data-partial='${data.partial.name}'>
       ${data.partial(data)}
     </main>

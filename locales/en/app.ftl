@@ -844,3 +844,11 @@ menu-item-logout = Sign out
 mozilla = {-brand-mozilla}
 terms-and-privacy = Terms & Privacy
 github = {-brand-github}
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Page not found
+error-page-error-404-copy = We’re sorry, the page you’re looking for no longer exists.
+error-page-error-404-cta-button = Go back

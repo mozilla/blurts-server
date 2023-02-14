@@ -181,6 +181,11 @@ button,
   border-radius: var(--border-radius);
 }
 
+button[hidden],
+.button[hidden] {
+  display: none;
+}
+
 button * {
   pointer-events: none;
 }
