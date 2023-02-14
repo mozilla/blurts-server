@@ -6,14 +6,29 @@ import { URL } from 'url'
 import { randomBytes } from 'crypto'
 
 import AppConstants from '../app-constants.js'
-import { getSubscriberByEmail, updateFxAData, removeFxAData } from '../db/tables/subscribers.js'
+import {
+  getSubscriberByEmail,
+  removeFxAData,
+  updateFxAData
+} from '../db/tables/subscribers.js'
 import { addSubscriber } from '../db/tables/email_addresses.js'
-// import { sendEmail, getEmailCtaHref, getUnsubscribeUrl } from '../email-utils'
-import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
-// import { getBreachesForEmail } from '../utils/hibp.js'
+
+import { getTemplate } from '../views/email-2022.js'
+import {
+  signupReportEmailPartial
+} from '../views/partials/email-signup-report.js'
+
+import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
+import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
+import {
+  getEmailCtaHref,
+  getUnsubscribeUrl,
+  sendEmail
+} from '../utils/email.js'
 import { UnauthorizedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
+
 const { SERVER_URL } = AppConstants
 
 const log = mozlog('controllers.auth')
@@ -50,7 +65,9 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
     throw new UnauthorizedError(getMessage('oauth-invalid-session'))
   }
 
-  const fxaUser = await client.code.getToken(req.originalUrl, { state: req.session.state })
+  const fxaUser = await client.code.getToken(req.originalUrl, {
+    state: req.session.state
+  })
   // Clear the session.state to clean up and avoid any replays
   req.session.state = null
   log.debug('fxa-confirmed-fxaUser', fxaUser)
@@ -71,47 +88,52 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
   // Check if user is signing up or signing in,
   // then add new users to db and send email.
   if (!existingUser) {
-    // req.session.newUser determines whether or not we show "fxa_new_user_bar" in template
+    // req.session.newUser determines whether or not we show `fxa_new_user_bar`
+    // in template
     req.session.newUser = true
     const signupLanguage = req.locale
-    const verifiedSubscriber = await addSubscriber(email, signupLanguage, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData)
+    const verifiedSubscriber = await addSubscriber(
+      email,
+      signupLanguage,
+      fxaUser.accessToken,
+      fxaUser.refreshToken,
+      fxaProfileData
+    )
 
-    // TODO:
-    // duping some of user/verify for now
-    // let unsafeBreachesForEmail = []
+    const allBreaches = req.app.locals.breaches
+    const unsafeBreachesForEmail = await getBreachesForEmail(
+      email.sha1,
+      allBreaches,
+      true,
+      false
+    )
 
-    // unsafeBreachesForEmail = await getBreachesForEmail(
-    //   sha1(email),
-    //   req.app.locals.breaches,
-    //   true
-    // )
+    const utmCampaignId = 'report'
+    const reportSubject = unsafeBreachesForEmail?.length
+      ? getMessage('email-subject-found-breaches')
+      : getMessage('email-subject-no-breaches')
 
-    // const utmID = 'report'
-    // const reportSubject = unsafeBreachesForEmail.length ? req.fluentFormat('email-subject-found-breaches') : req.fluentFormat('email-subject-no-breaches')
+    const data = {
+      breachedEmail: email,
+      ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
+      heading: reportSubject,
+      recipientEmail: email,
+      subscriberId: verifiedSubscriber,
+      unsubscribeUrl: getUnsubscribeUrl(email, 'account-verification-email'),
+      utmCampaign: utmCampaignId
+    }
+    const emailTemplate = getTemplate(data, signupReportEmailPartial)
+    const subject = getMessage('breach-alert-subject')
 
-    // await sendEmail(
-    //   email,
-    //   reportSubject,
-    //   'email-2022',
-    //   {
-    //     supportedLocales: req.supportedLocales,
-    //     breachedEmail: email,
-    //     recipientEmail: email,
-    //     date: req.fluentFormat(new Date()),
-    //     unsafeBreachesForEmail,
-    //     ctaHref: getEmailCtaHref(utmID, 'dashboard-cta'),
-    //     utmCampaign: utmID,
-    //     unsubscribeUrl: getUnsubscribeUrl(verifiedSubscriber, utmID),
-    //     whichPartial: 'email_partials/report',
-    //     heading: req.fluentFormat('email-breach-summary')
-    //   }
-    // )
+    await sendEmail(data.recipientEmail, subject, emailTemplate)
+
     req.session.user = verifiedSubscriber
 
     return res.redirect(returnURL.pathname + returnURL.search)
   }
   // Update existing user's FxA data
-  await updateFxAData(existingUser, fxaUser.accessToken, fxaUser.refreshToken, fxaProfileData)
+  const { accessToken, refreshToken } = fxaUser
+  await updateFxAData(existingUser, accessToken, refreshToken, fxaProfileData)
 
   res.redirect(returnURL.pathname + returnURL.search)
 }

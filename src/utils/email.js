@@ -18,7 +18,8 @@ let gTransporter
 const EmailTemplateType = {
   Notification: 'notification',
   Verification: 'verification',
-  Monthly: 'monthly'
+  Monthly: 'monthly',
+  SignupReport: 'signup-report'
 }
 
 async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
