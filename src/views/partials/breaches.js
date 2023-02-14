@@ -125,7 +125,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-none-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-none-cta-blurb')}</span>
-        <a class='button primary' href='dialog/add-email'>${getMessage('breaches-none-cta-button')}</a>
+        <button class='primary' data-dialog='add-email'>${getMessage('breaches-none-cta-button')}</button>
       </p>
     </div>
   </template>
@@ -136,7 +136,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-all-resolved-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-all-resolved-cta-blurb')}</span>
-        <a class='button primary' href='dialog/add-email'>${getMessage('breaches-all-resolved-cta-button')}</a>
+        <button class='primary' data-dialog='add-email'>${getMessage('breaches-all-resolved-cta-button')}</button>
       </p>
     </div>
   </template>

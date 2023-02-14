@@ -151,9 +151,11 @@ export const settings = data => {
           <p>${getMessage('settings-email-limit-info', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
-          <a class='button primary settings-add-email-button' href='dialog/add-email'>${getMessage('settings-add-email-button')}</a>
-
-          ${createAddEmailModal(limit)}
+          <button
+            class='primary settings-add-email-button' 
+            data-dialog='add-email' 
+            ${emails.length >= limit ? 'disabled' : ''}
+          >${getMessage('settings-add-email-button')}</a>
         </section>
 
         <hr>
