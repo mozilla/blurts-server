@@ -44,6 +44,7 @@ export const emailPreview = data => {
   const selectedPreviewTemplate = emailTemplates[currentTemplateKey]?.template
 
   return `
+    <script src="/js/partials/email-preview.js" type="module"></script>
     <section class='email-preview js-email' data-csrf-token=${data.csrfToken}>
       <h1>Email preview</h1>
       <div class='email-preview-controls'>

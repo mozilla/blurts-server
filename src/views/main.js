@@ -36,11 +36,6 @@ const mainLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
-    ${
-      data.partial.name === 'emailPreview'
-        ? '<script src="/js/partials/email-preview.js" type="module"></script>'
-        : ''
-    }
 
     <!-- Google Tag Manager -->
     <script nonce='${data.nonce}'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
