@@ -24,6 +24,7 @@ body {
 h1 {
   font: var(--h1-font);
   margin: var(--padding-md) 0;
+  line-height: 1.2;
 }
 
 h2 {
@@ -52,6 +53,11 @@ a,
   line-height: inherit;
   text-decoration: underline;
   text-underline-position: under;
+}
+
+b,
+strong {
+  font-weight: 600;
 }
 
 hr {

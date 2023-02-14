@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .breaches-header {
-  width: fit-content;
+  width: min(720px, 100%);
   max-width: 100%;
   margin: auto;
   padding: var(--padding-md);
@@ -14,8 +14,6 @@
 
 .breaches-header > h1 {
   font: var(--h3-font);
-  margin: var(--padding-md);
-  line-height: 1.2;
 }
 
 .breaches-header > figure {
@@ -50,12 +48,9 @@
   grid-template-columns: 1fr 1fr;
   width: min(640px, 100%);
   margin: 0 auto;
+  padding: var(--padding-lg);
   border: none;
   font-size: 0.75rem;
-}
-
-.breaches-filter[hidden] {
-  display: none;
 }
 
 .breaches-filter output {
@@ -75,10 +70,15 @@
   cursor: pointer;
 }
 
-.breaches-filter input[type='radio']:checked + label {
+.breaches-filter:disabled label {
+  cursor: default;
+}
+
+.breaches-filter:not(:disabled) input[type='radio']:checked + label {
   color: var(--purple-90);
   border-color: currentcolor;
   transition: border-color 0.3s ease-out;
+  cursor: default;
 }
 
 .breaches-table {
@@ -257,45 +257,24 @@
   animation: fade-in 0.5s ease-out;
 }
 
-.breaches-table .no-unresolved-breaches-message > .no-breaches-message,
-.breaches-table .no-unresolved-breaches-message > .all-breaches-resolved-message {
-  display: none;
-}
-
-/* Show the "No breaches found!" message when the breaches table has no resolved
- * nor unresolved breaches: */
-.breaches-table[data-nr-unresolved='0'][data-nr-resolved='0'] .no-unresolved-breaches-message .no-breaches-message {
+.zero-state {
   display: flex;
-}
-
-/* Show the "All breaches resolved!" message when the breaches table has no
- * unresolved but more than 0 resolved breaches: */
-.breaches-filter:not([data-selected='resolved']) + .breaches-table[data-nr-unresolved='0']:not([data-nr-resolved='0']) .no-unresolved-breaches-message .all-breaches-resolved-message {
-  display: flex;
-}
-
-.no-breaches-message,
-.all-breaches-resolved-message {
   flex-direction: column;
   align-items: center;
-  gap: var(--padding-sm);
-  padding: var(--padding-xl) var(--padding-md);
+  padding: var(--padding-lg);
   text-align: center;
+  animation: fade-in 0.5s ease-out;
 }
 
-.no-breaches-message h2,
-.all-breaches-resolved-message h2 {
-  font-weight: 600;
-}
-
-.no-breaches-message p,
-.all-breaches-resolved-message p {
+.zero-state h2 {
   font: var(--h3-font);
-  font-weight: 500;
-  max-width: 800px;
 }
 
-.no-breaches-message p b,
-.all-breaches-resolved-message p b {
-  font-weight: 700;
+.zero-state p {
+  max-width: var(--max-width-p);
+}
+
+.zero-state .add-email-cta > span:first-of-type {
+  display: block;
+  padding-bottom: var(--padding-md);
 }

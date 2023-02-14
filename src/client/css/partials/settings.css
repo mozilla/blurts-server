@@ -11,6 +11,7 @@
 }
 
 .settings-section-title {
+  font: var(--h4-font);
   margin: var(--padding-sm) 0 var(--padding-md) 0;
 }
 

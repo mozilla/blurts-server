@@ -17,7 +17,7 @@
     "cookie-parser": "^1.4.6",
     "csurf": "1.11.0",
     "dotenv": "16.0.2",
-    "esbuild": "^0.14.39",
+    "esbuild": "^0.17.8",
     "express": "^4.18.2",
     "express-bearer-token": "2.4.0",
     "express-handlebars": "6.0.6",
@@ -120,5 +120,9 @@
     ],
     "ext": "js,css,hbs,json,ftl"
   },
-  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
+  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW",
+  "volta": {
+    "node": "18.12.1",
+    "npm": "8.19.3"
+  }
 }

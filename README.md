@@ -20,7 +20,7 @@ the "what" and "why" of data breach alerts.
 
 ### Requirements
 
-* [Node](https://nodejs.org/) (with NPM): we recommend using [Node Version Manager](https://github.com/nvm-sh/nvm) to install and manage Node/NPM.
+* [Volta](https://volta.sh/) (installs the correct version of Node and npm)
 * [Postgres](https://www.postgresql.org/)
 
 ### Code style
