@@ -11,6 +11,8 @@ import { getMessage } from '../utils/fluent.js'
 
 const log = mozlog('email-utils')
 
+const { SERVER_URL } = AppConstants
+
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
 let gTransporter
@@ -87,13 +89,13 @@ function appendUtmParams (url, campaign, content) {
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
   const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : '/'
-  const url = new URL(subscriberParamPath, AppConstants.SERVER_URL)
+  const url = new URL(subscriberParamPath, SERVER_URL)
   return appendUtmParams(url, emailType, content)
 }
 
 function getVerificationUrl (subscriber) {
   if (!subscriber.verification_token) throw new Error('subscriber has no verification_token')
-  let url = new URL(`${AppConstants.SERVER_URL}/api/v1/user/verify-email`)
+  let url = new URL(`${SERVER_URL}/api/v1/user/verify-email`)
   url = appendUtmParams(url, 'verified-subscribers', 'account-verification-email')
   url.searchParams.append('token', encodeURIComponent(subscriber.verification_token))
   return url
@@ -101,7 +103,7 @@ function getVerificationUrl (subscriber) {
 
 function getUnsubscribeUrl (subscriber, emailType) {
   // TODO: email unsubscribe is broken for most emails
-  let url = new URL(`${AppConstants.SERVER_URL}/user/unsubscribe`)
+  let url = new URL(`${SERVER_URL}/user/unsubscribe`)
   const token = (Object.prototype.hasOwnProperty.call(subscriber, 'verification_token')) ? subscriber.verification_token : subscriber.primary_verification_token
   const hash = (Object.prototype.hasOwnProperty.call(subscriber, 'sha1')) ? subscriber.sha1 : subscriber.primary_sha1
   url.searchParams.append('token', encodeURIComponent(token))
@@ -113,7 +115,7 @@ function getUnsubscribeUrl (subscriber, emailType) {
 function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
   // TODO: create new subscriptions section in settings to manage all emails and avoid one-off routes like this
   if (!subscriber.primary_verification_token) throw new Error('subscriber has no primary verification_token')
-  let url = new URL('user/unsubscribe-monthly/', AppConstants.SERVER_URL)
+  let url = new URL('user/unsubscribe-monthly/', SERVER_URL)
 
   url = appendUtmParams(url, campaign, content)
   url.searchParams.append('token', encodeURIComponent(subscriber.primary_verification_token))
@@ -153,12 +155,12 @@ const getNotifictionDummyData = (recipient) => ({
     IsMalware: false
   },
   breachedEmail: recipient,
-  ctaHref: '',
+  ctaHref: SERVER_URL,
   heading: getMessage('email-spotted-new-breach'),
   recipientEmail: recipient,
   subscriberId: 123,
   supportedLocales: ['en'],
-  unsubscribeUrl: '',
+  unsubscribeUrl: SERVER_URL,
   utmCampaign: ''
 })
 
@@ -170,9 +172,9 @@ const getNotifictionDummyData = (recipient) => ({
  */
 const getVerificationDummyData = (recipient) => ({
   recipientEmail: recipient,
-  ctaHref: '',
+  ctaHref: SERVER_URL,
   utmCampaign: 'email_verify',
-  unsubscribeUrl: '',
+  unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-verify-heading'),
   subheading: getMessage('email-verify-subhead')
 })
@@ -185,9 +187,9 @@ const getVerificationDummyData = (recipient) => ({
  */
 const getMonthlyDummyData = (recipient) => ({
   recipientEmail: recipient,
-  ctaHref: '',
+  ctaHref: SERVER_URL,
   utmCampaign: '',
-  unsubscribeUrl: '',
+  unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-unresolved-heading'),
   subheading: getMessage('email-unresolved-subhead'),
   breachedEmail: 'breached@email.com',
@@ -232,7 +234,7 @@ const getSignupReportDummyData = (recipient) => {
 
   return {
     breachedEmail: recipient,
-    ctaHref: '',
+    ctaHref: SERVER_URL,
     heading: unsafeBreachesForEmail.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches'),
@@ -240,7 +242,7 @@ const getSignupReportDummyData = (recipient) => {
     recipientEmail: recipient,
     subscriberId: 123,
     unsafeBreachesForEmail,
-    unsubscribeUrl: '',
+    unsubscribeUrl: SERVER_URL,
     utmCampaign: ''
   }
 }
