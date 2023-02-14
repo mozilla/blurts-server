@@ -105,8 +105,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
     const unsafeBreachesForEmail = await getBreachesForEmail(
       email.sha1,
       allBreaches,
-      true,
-      false
+      true
     )
 
     // Send report email
