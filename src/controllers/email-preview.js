@@ -10,6 +10,9 @@ import { emailPreview } from '../views/partials/email-preview.js'
 import { getTemplate, getPreviewTemplate } from '../views/email-2022.js'
 import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
 import { verifyPartial } from '../views/partials/email-verify.js'
+import {
+  monthlyUnresolvedEmailPartial
+} from '../views/partials/email-monthly-unresolved.js'
 
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
@@ -17,6 +20,7 @@ import {
   EmailTemplateType,
   getNotifictionDummyData,
   getVerificationDummyData,
+  getMonthlyDummyData,
   sendEmail
 } from '../utils/email.js'
 
@@ -39,6 +43,13 @@ function emailsPage (req, res) {
       template: getPreviewTemplate(
         getNotifictionDummyData(EMAIL_TEST_RECIPIENT),
         breachAlertEmailPartial
+      )
+    },
+    [EmailTemplateType.Monthly]: {
+      label: 'Monthly unresolved breaches',
+      template: getPreviewTemplate(
+        getMonthlyDummyData(EMAIL_TEST_RECIPIENT),
+        monthlyUnresolvedEmailPartial
       )
     }
   }
@@ -103,6 +114,19 @@ async function sendTestEmail (req, res) {
     case EmailTemplateType.Notification: {
       // Send test breach notification email
       await sendTestNotification(req, res)
+      break
+    }
+    case EmailTemplateType.Monthly: {
+      // Send test monthly unresolved breaches email
+      const emailTemplate = getTemplate(
+        getMonthlyDummyData(EMAIL_TEST_RECIPIENT),
+        monthlyUnresolvedEmailPartial
+      )
+      await sendEmail(
+        recipient,
+        getMessage('email-unresolved-heading'),
+        emailTemplate
+      )
       break
     }
     default: {
