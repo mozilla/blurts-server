@@ -144,7 +144,7 @@ const mainHeader = data => `
     <a href='/user/settings' class='nav-item ${data.partial.name === 'settings' ? 'current' : ''}'>
       ${getMessage('site-nav-settings-link')}
     </a>
-    <a target="_blank" rel="noopener noreferrer" href='https://support.mozilla.org/kb/firefox-monitor' class='nav-item'>
+    <a target="_blank" href='https://support.mozilla.org/kb/firefox-monitor' class='nav-item'>
       ${getMessage('site-nav-help-link')}
     </a>
   </div>
