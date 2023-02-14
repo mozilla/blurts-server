@@ -2,19 +2,31 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const triggerLinks = Array.from(document.querySelectorAll('a[href*="dialog/"]'))
+const main = document.querySelector('body > main')
+const observer = new MutationObserver(handleMutation)
+const triggerLinks = main.querySelectorAll('a[href*="dialog/"]')
 let dialogEl
 
-function init () {
-  dialogEl = document.createElement('dialog')
-  document.body.append(dialogEl)
+function init (links) {
+  if (!dialogEl) {
+    dialogEl = document.createElement('dialog')
+    document.body.append(dialogEl)
+  }
 
-  triggerLinks.forEach(link => link.addEventListener('click', handleEvent))
+  links.forEach(link => link.addEventListener('click', handleEvent))
+}
+
+function handleMutation (mutationList) {
+  for (const mutation of mutationList) {
+    if (!mutation.addedNodes.length) continue // ignore removed-node mutations
+    const triggerLink = mutation.target.querySelector('a[href*="dialog/"]')
+    if (triggerLink) init([triggerLink])
+  }
 }
 
 function handleEvent (e) {
   switch (true) {
-    case triggerLinks.includes(e.target):
+    case e.target.matches('a[href*="dialog/"]'):
       e.preventDefault()
       openDialog(e.target.href)
       break
@@ -59,4 +71,5 @@ function resetDialog () {
   dialogEl.replaceChildren()
 }
 
-if (triggerLinks.length) init()
+if (triggerLinks.length) init(triggerLinks) // adds event listeners for dialog links already in DOM
+observer.observe(main, { attributes: false, childList: true, subtree: true }) // watches for new dialog links dynamically added to DOM

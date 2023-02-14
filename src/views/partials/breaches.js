@@ -17,7 +17,7 @@ function createEmailCTA (count) {
 
   if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
 
-  return `<a href='dialog/add-email' target='_blank'>${getMessage('add-email-link')}</a>`
+  return `<a href='dialog/add-email'>${getMessage('add-email-link')}</a>`
 }
 
 function createBreachRows (data) {
@@ -125,7 +125,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-none-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-none-cta-blurb')}</span>
-        <button class="primary" data-dialog='add-email'>${getMessage('breaches-none-cta-button')}</button>
+        <a class='button primary' href='dialog/add-email'>${getMessage('breaches-none-cta-button')}</a>
       </p>
     </div>
   </template>
@@ -136,7 +136,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-all-resolved-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-all-resolved-cta-blurb')}</span>
-        <button class="primary" data-dialog='add-email'>${getMessage('breaches-all-resolved-cta-button')}</button>
+        <a class='button primary' href='dialog/add-email'>${getMessage('breaches-all-resolved-cta-button')}</a>
       </p>
     </div>
   </template>
