@@ -4,7 +4,7 @@
 
 const main = document.querySelector('body > main')
 const observer = new MutationObserver(handleMutation)
-const triggerLinks = main.querySelectorAll('a[href*="dialog/"]')
+const triggerLinks = main.querySelectorAll('a[href*="dialog/"], button[data-dialog]')
 let dialogEl
 
 function init (links) {
@@ -19,7 +19,7 @@ function init (links) {
 function handleMutation (mutationList) {
   for (const mutation of mutationList) {
     if (!mutation.addedNodes.length) continue // ignore removed-node mutations
-    const triggerLink = mutation.target.querySelector('a[href*="dialog/"]')
+    const triggerLink = mutation.target.querySelector('a[href*="dialog/"], button[data-dialog]')
     if (triggerLink) init([triggerLink])
   }
 }
@@ -29,6 +29,9 @@ function handleEvent (e) {
     case e.target.matches('a[href*="dialog/"]'):
       e.preventDefault()
       openDialog(e.target.href)
+      break
+    case e.target.matches('button[data-dialog]'):
+      openDialog(`dialog/${e.target.dataset.dialog}`)
       break
     case e.target.matches('dialog button.close'):
       dialogEl.close()
