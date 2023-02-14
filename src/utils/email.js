@@ -16,8 +16,8 @@ const log = mozlog('email-utils')
 let gTransporter
 
 const EmailTemplateType = {
-  Notification: 'verification',
-  Verification: 'notification',
+  Notification: 'notification',
+  Verification: 'verification',
   Monthly: 'monthly'
 }
 

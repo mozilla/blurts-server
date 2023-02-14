@@ -136,11 +136,14 @@ async function sendTestEmail (req, res) {
 
   console.info(`Sent test email: ${emailId}`)
 
-  return res.json({
-    success: true,
-    status: 200,
-    message: `Sent test ${emailId} email`
-  })
+  // The notify function has its own response
+  if (emailId !== EmailTemplateType.Notification) {
+    return res.json({
+      success: true,
+      status: 200,
+      message: `Sent test ${emailId} email`
+    })
+  }
 }
 
 export { emailsPage, sendTestEmail }

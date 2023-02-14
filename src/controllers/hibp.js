@@ -174,10 +174,11 @@ async function notify (req, res) {
 
     log.info('notified', { length: notifiedRecipients.length })
 
-    res.status(200)
-    res.json({
-      info: 'Notified subscribers of breach.'
-    })
+    res
+      .status(200)
+      .json({
+        info: 'Notified subscribers of breach.'
+      })
   } catch (error) {
     throw new Error(`Notifying subscribers of breach failed: ${error}`)
   }
