@@ -5,6 +5,7 @@
 :root {
   --multiplier: 1;
   --max-width: 1200px;
+  --max-width-p: 800px;
   --min-width: 320px;
   --mobile-breakpoint: 480px;
   --border-radius: 4px;
@@ -17,8 +18,8 @@
   --gap: calc(32px * var(--multiplier));
   --h1-font: 700 2.5rem/1 metropolis, sans-serif;
   --h2-font: 700 1.75rem/1 metropolis, sans-serif;
-  --h3-font: 700 1.125rem/1 metropolis, sans-serif;
-  --h4-font: 700 1rem/1 metropolis, sans-serif;
+  --h3-font: 700 1.25rem/1 metropolis, sans-serif;
+  --h4-font: 700 1.125rem/1 metropolis, sans-serif;
   --gray-5: #f9f9fa;
   --gray-10: #e7e7e7;
   --gray-20: #cececf;
