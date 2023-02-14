@@ -5,6 +5,8 @@
 import express from 'express'
 import { landingPage } from '../controllers/landing.js'
 import { dialog } from '../controllers/dialog.js'
+import { notFoundPage } from '../controllers/notFound.js'
+import { notFound } from '../middleware/error.js'
 import { robotsTxt } from '../middleware/robots.js'
 import dockerFlowRoutes from './dockerflow.js'
 import authRoutes from './auth.js'
@@ -12,7 +14,6 @@ import userRoutes from './user.js'
 import hibpApiRoutes from './api/v1/hibp.js'
 import userApiRoutes from './api/v1/user.js'
 import adminRoutes from './admin.js'
-import { notFound } from '../middleware/error.js'
 
 const router = express.Router()
 
@@ -26,5 +27,6 @@ router.use('/admin', adminRoutes)
 router.use('/api/v1/user/', userApiRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)
 router.use(notFound)
+router.use(notFoundPage)
 
 export default router

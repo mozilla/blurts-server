@@ -16,12 +16,6 @@ class UnauthorizedError extends Error {
   }
 }
 
-class NotFoundError extends Error {
-  constructor (...params) {
-    super(...params)
-    this.statusCode = 404
-  }
-}
 class MethodNotAllowedError extends Error {
   constructor (...params) {
     super(...params)
@@ -39,7 +33,6 @@ class RateLimitError extends Error {
 export {
   UnauthorizedError,
   UserInputError,
-  NotFoundError,
   MethodNotAllowedError,
   RateLimitError
 }
