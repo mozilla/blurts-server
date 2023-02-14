@@ -146,8 +146,7 @@ async function sendTestEmail (req, res) {
       )
       await sendEmail(
         recipient,
-        // TODO: Localize string
-        'Sign-up report email subject',
+        getMessage('email-subject-found-breaches'),
         emailTemplate
       )
       break
