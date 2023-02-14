@@ -54,6 +54,8 @@ async function sendTestEmail (event) {
     if (response?.redirected) {
       throw response.error
     }
+
+    window.alert('Email sent!')
   } catch (err) {
     throw new Error(`Sending test email failed: ${err}`)
   }
