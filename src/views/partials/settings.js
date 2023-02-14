@@ -151,12 +151,7 @@ export const settings = data => {
           <p>${getMessage('settings-email-limit-info', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
-          <button
-            class='settings-add-email-button primary js-settings-add-email-opener'
-            ${emails.length >= AppConstants.MAX_NUM_ADDRESSES ? 'disabled' : ''}
-          >
-            ${getMessage('settings-add-email-button')}
-          </button>
+          <a class='button primary settings-add-email-button' href='dialog/add-email'>${getMessage('settings-add-email-button')}</a>
 
           ${createAddEmailModal(limit)}
         </section>
