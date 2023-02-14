@@ -20,6 +20,9 @@ export const addEmail = data => `
   <button class='primary' type='submit' name='email-submit'>${getMessage('add-email-send-verification-button')}</button>
 </form>
 <template data-success>
-  <p class='add-email-success'>${getMessage('add-email-verify-the-link', { email: '<b class="current-email"></b>', 'settings-href': 'href="/user/settings"' })}</p>
+  <p class='add-email-success'>${getMessage('add-email-verify-the-link', {
+     email: '<b class="current-email"></b>',
+     'settings-href': 'href="/user/settings"'
+    })}</p>
 </template>
 `
