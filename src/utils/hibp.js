@@ -146,6 +146,35 @@ async function loadBreachesIntoApp (app) {
   }
   log.info('done-loading-breaches', 'great success 👍')
 }
+
+/**
+ * Get addresses and language from either subscribers or email_addresses fields:
+ * @param {*} recipient
+ * @returns
+ */
+function getAddressesAndLanguageForEmail (recipient) {
+  const {
+    all_emails_to_primary: allEmailsToPrimary,
+    email: breachedEmail,
+    primary_email: primaryEmail,
+    signup_language: signupLanguage
+  } = recipient
+
+  if (breachedEmail) {
+    return {
+      breachedEmail,
+      recipientEmail: allEmailsToPrimary ? primaryEmail : breachedEmail,
+      signupLanguage
+    }
+  }
+
+  return {
+    breachedEmail: primaryEmail,
+    recipientEmail: primaryEmail,
+    signupLanguage
+  }
+}
+
 /**
 A range of hashes can be searched by passing the hash prefix in a GET request:
 GET /breachedaccount/range/[hash prefix]
@@ -263,6 +292,7 @@ export {
   kAnonReq,
   formatDataClassesArray,
   loadBreachesIntoApp,
+  getAddressesAndLanguageForEmail,
   getBreachesForEmail,
   getBreachByName,
   getAllBreachesFromDb,

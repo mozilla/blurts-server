@@ -14,10 +14,10 @@ const links = (data) => ({
 })
 
 const images = {
-  header: `${AppConstants.SERVER_URL}/images/person-at-desk.webp`,
-  footer: `${AppConstants.SERVER_URL}/images/mozilla-logo-bw.webp`,
-  logoDark: `${AppConstants.SERVER_URL}/images/monitor-logo-transparent-dark-mode.webp`,
-  logoLight: `${AppConstants.SERVER_URL}/images/monitor-logo-bg-light.webp`
+  header: `${AppConstants.SERVER_URL}/images/email/person-at-desk.png`,
+  footer: `${AppConstants.SERVER_URL}/images/email/mozilla-logo-bw.png`,
+  logoDark: `${AppConstants.SERVER_URL}/images/email/monitor-logo-transparent-dark-mode.png`,
+  logoLight: `${AppConstants.SERVER_URL}/images/email/monitor-logo-bg-light.png`
 }
 
 const bodyStyle = `
@@ -83,9 +83,10 @@ const emailHeader = (data) => `
             <h1>
               ${getMessage(data.heading)}
             </h1>
-            <p>
-              ${getMessage(data.subhead)}
-            </p>
+            ${data.subhead !== ''
+              ? `<p>${getMessage(data.subhead)}</p>`
+              : ''
+            }
           </td>
           <td
             class='header-image'
@@ -154,85 +155,108 @@ function getEmailFooterCopy (data) {
   })
 }
 
-const getTemplate = (data, partial) => `
-  <!doctype html>
-  <html>
-    <head>
-      <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+const getStyles = () => `
+  <style>
+    .email-body,
+    .email-body * {
+      margin: 0;
+      padding: 0;
+    }
 
-      <title>
-        ${getMessage('brand-fx-monitor')}
-      </title>
+    body.email-body,
+    .email-container {
+      color: black;
+      font: normal 16px/1.2 sans-serif;
+    }
 
-      <style>
-        * {
-          margin: 0;
-          padding: 0;
-        }
+    .email-container h1,
+    .email-container p {
+      margin: 12px auto;
+      max-width: 600px;
+      padding: 0 24px;
+    }
 
-        body {
-          color: black;
-          font: normal 16px/1.2 sans-serif;
-        }
+    .email-container a {
+      color: #592acb;
+      text-decoration: none;
+    }
 
-        h1,
-        p {
-          margin: 12px auto;
-          max-width: 600px;
-          padding: 0 24px;
-        }
+    .email-container table {
+      table-layout: fixed;
+    }
 
-        a {
-          color: #592acb;
-          text-decoration: none;
-        }
+    .email-container .logo > td {
+      height: 100px;
+      background-color: #f9f9fa;
+      background-position: 50%;
+      background-image: url('${images.logoLight}');
+      background-repeat: no-repeat;
+      background-size: 240px 50px;
+      width: 100%;
+    }
 
-        table {
-          table-layout: fixed;
-        }
+    @media screen and (max-width:600px) {
+      .email-container .header-image {
+        display: none;
+      }
+    }
 
-        .logo > td {
-          height: 100px;
-          background-color: #f9f9fa;
-          background-position: 50%;
-          background-image: url('${images.logoLight}');
-          background-repeat: no-repeat;
-          background-size: 240px 50px;
-          width: 100%;
-        }
-
-        @media screen and (max-width:600px) {
-          .header-image {
-            display: none;
-          }
-        }
-
-        @media (prefers-color-scheme: dark) {
-          .logo > td {
-            background-image: url('${images.logoDark}')
-          }
-        }
-      </style>
-    </head>
-
-    <body style='${bodyStyle}'>
-      <table
-        border='0'
-        cellpadding='0'
-        cellspacing='0'
-        role='presentation'
-        style='${tableStyle}'
-      >
-        ${emailHeader({
-          heading: 'email-verify-heading',
-          subhead: 'email-verify-subhead'
-        })}
-        ${partial}
-        ${emailFooter(data)}
-      </table>
-    </body>
-  </html>
+    @media (prefers-color-scheme: dark) {
+      .email-container .logo > td {
+        background-image: url('${images.logoDark}')
+      }
+    }
+  </style>
 `
 
-export { getTemplate }
+const getEmailContent = (data, partial) => {
+  const isBreachAlertEmail = partial.name === 'breachAlertEmailPartial'
+  return `
+    <table
+      border='0'
+      class='email-container'
+      cellpadding='0'
+      cellspacing='0'
+      role='presentation'
+      style='${tableStyle}'
+    >
+      ${emailHeader({
+        heading: isBreachAlertEmail
+          ? 'email-spotted-new-breach'
+          : 'email-verify-heading',
+        subhead: isBreachAlertEmail ? '' : 'email-verify-subhead'
+      })}
+      ${partial(data)}
+      ${emailFooter(data)}
+    </table>
+  `
+}
+
+const getPreviewTemplate = (data, partial) => `
+  ${getStyles()}
+  ${getEmailContent(data, partial)}
+`
+
+const getTemplate = (data, partial) => {
+  return `
+    <!doctype html>
+    <html>
+      <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+
+        <title>
+          ${getMessage('brand-fx-monitor')}
+        </title>
+
+        ${getStyles()}
+      </head>
+
+      <body class='email-body' style='${bodyStyle}'>
+        ${getEmailContent(data, partial)}
+      </body>
+    </html>
+  `
+}
+
+export { getPreviewTemplate, getTemplate }

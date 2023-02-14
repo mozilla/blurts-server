@@ -36,6 +36,7 @@ const mainLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
+
     <!-- Google Tag Manager -->
     <script nonce='${data.nonce}'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

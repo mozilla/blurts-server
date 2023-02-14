@@ -62,12 +62,19 @@ strong {
 
 hr {
   background-color: var(--gray-10);
-  border: none;
   color: var(--gray-10);
   height: 1px;
 }
 
-img {
+hr:not(.monitor-gradient) {
+  border: none;
+}
+
+hr.monitor-gradient {
+  border-image: var(--monitor-gradient) 1;
+}
+
+img:not(.email-preview img) {
   display: block;
   max-width: 100%;
   height: auto;
