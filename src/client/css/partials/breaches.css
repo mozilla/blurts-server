@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .breaches-header {
-  width: fit-content;
+  width: min(720px, 100%);
   max-width: 100%;
   margin: auto;
   padding: var(--padding-md);
@@ -14,8 +14,6 @@
 
 .breaches-header > h1 {
   font: var(--h3-font);
-  margin: var(--padding-md);
-  line-height: 1.2;
 }
 
 .breaches-header > figure {
@@ -261,23 +259,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--padding-sm);
-  padding: var(--padding-xl) var(--padding-md);
+  padding: var(--padding-lg);
   text-align: center;
 }
 
 .zero-state h2 {
-  font-weight: 600;
+  font: var(--h3-font);
 }
 
 .zero-state p {
-  font: var(--h3-font);
-  font-weight: 500;
-  max-width: 800px;
-}
-
-.zero-state p b {
-  font-weight: 700;
+  max-width: var(--max-width-p);
 }
 
 .zero-state .add-email-cta > span:first-of-type {
