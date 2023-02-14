@@ -18,7 +18,7 @@ const router = express.Router()
 
 router.use('/', dockerFlowRoutes)
 router.get('/', landingPage)
-router.get('/dialog/:partial', dialog)
+router.get('*/dialog/:name', dialog)
 router.get('/robots.txt', robotsTxt)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)

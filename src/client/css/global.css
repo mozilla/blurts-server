@@ -224,7 +224,33 @@ input[type='checkbox'] {
   height: var(--checkbox-w);
 }
 
+label.text-field {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  text-align: left;
+}
+
+label.text-field > span {
+  font-size: 0.75rem;
+  color: var(--gray-30);
+}
+
+label.text-field > input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--gray-20);
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.2s linear;
+}
+
+label.text-field > input:focus {
+  border-bottom-color: var(--gray-30);
+}
+
 dialog {
+  width: min(640px, 100%);
   margin: auto;
   padding: var(--padding-xl);
   border: none;

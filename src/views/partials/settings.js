@@ -98,33 +98,6 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   </div>
 `
 
-const createAddEmailModal = limit => `
-  <dialog id='js-settings-modal' class='settings-email-modal'>
-    <button id='js-settings-close'>
-      <img src='/images/icon-close.svg'>
-    </button>
-    <img src='/images/settings-dialog-email.svg'>
-
-    <h3 class='settings-section-title'>
-      ${getMessage('settings-email-dialog-title')}
-    </h3>
-    <div id='js-settings-modal-content'>
-      ${getMessage('settings-email-limit-info', { limit })}
-      ${getMessage('settings-add-email-text')}
-    </div>
-
-    <div id='js-settings-modal-controls'>
-      <label>
-        ${getMessage('settings-email-input-label')}
-        <input id='js-settings-email-modal-input' type='text'>
-      </label>
-      <button id='js-settings-modal-send-verification' class='primary'>
-        ${getMessage('settings-send-email-verification-button')}
-      </button>
-    </div>
-  </dialog>
-`
-
 export const settings = data => {
   const { allEmailsToPrimary, breachCounts, csrfToken, emails, limit } = data
 
@@ -152,13 +125,10 @@ export const settings = data => {
 
           ${createEmailList(emails, breachCounts)}
           <button
-            class='settings-add-email-button primary js-settings-add-email-opener'
-            ${emails.length >= AppConstants.MAX_NUM_ADDRESSES ? 'disabled' : ''}
-          >
-            ${getMessage('settings-add-email-button')}
-          </button>
-
-          ${createAddEmailModal(limit)}
+            class='primary settings-add-email-button' 
+            data-dialog='add-email' 
+            ${emails.length >= limit ? 'disabled' : ''}
+          >${getMessage('settings-add-email-button')}</a>
         </section>
 
         <hr>
