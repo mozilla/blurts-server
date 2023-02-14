@@ -110,7 +110,7 @@ function renderZeroState () {
   let temp
 
   breachesTable.querySelector('.zero-state')?.remove()
-  statusFilter.toggleAttribute('hidden', state.resolvedCount === 0 && state.unresolvedCount === 0)
+  statusFilter.toggleAttribute('disabled', state.resolvedCount === 0 && state.unresolvedCount === 0)
 
   switch (true) {
     case state.resolvedCount === 0 && state.unresolvedCount === 0:
