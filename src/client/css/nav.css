@@ -56,7 +56,7 @@ nav.site-nav a.current {
 }
 
 nav.site-nav a:not(.current):hover {
-  color: var(--blue-50);
+  color: var(--purple-40);
 }
 
 .mobile nav.site-nav {
