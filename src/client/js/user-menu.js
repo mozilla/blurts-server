@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 const userMenuButton = document.querySelector('.user-menu-button')
 const userMenuPopover = document.querySelector('.user-menu-popover')
 const userMenuWrapper = document.querySelector('.user-menu-wrapper')
