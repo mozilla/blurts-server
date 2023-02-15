@@ -1,5 +1,5 @@
 import { getUserEmails } from '../db/tables/email_addresses.js'
-import { getBreachesForEmail, filterBreaches } from './hibp.js'
+import { getBreachesForEmail, getFilteredBreaches } from './hibp.js'
 import { getSha1 } from './fxa.js'
 import { filterBreachDataTypes } from './breach-resolution.js'
 
@@ -85,7 +85,7 @@ async function bundleVerifiedEmails (options) {
   }
 
   // filter out irrelevant breaches based on HIBP
-  const filteredAnnotatedFoundBreaches = filterBreaches(foundBreachesWithRecency)
+  const filteredAnnotatedFoundBreaches = getFilteredBreaches(foundBreachesWithRecency)
 
   const emailEntry = {
     email,
