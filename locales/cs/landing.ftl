@@ -22,7 +22,7 @@ get-alerts-find-out = Zjistěte, kdykoli dojde k ohrožení vašich osobních ú
 
 how-it-works = Funguje to následovně
 check-for-breaches = Zkontrolujte úniky
-check-for-breaches-we-search = Prohledáme všechny známé úniky údajů od roku 2007, abychom zjistili, zda nebyly vaše informace prozrazeny.
+check-for-breaches-we-search = Prohledáme všechny známé úniky dat od roku 2007, abychom zjistili, zda nebyly vaše údaje vyzrazeny.
 protect-accounts = Chraňte své účty
 protect-accounts-clear-steps = Poskytneme vám jasné kroky, jak postupovat v případě jakéhokoli úniků údajů, kterého jste byli součástí.
 alerts-for-breaches = Získejte upozornění na nové úniky
