@@ -9,7 +9,7 @@ nav.site-nav {
   height: calc(100vh - var(--header-h));
   display: inline-flex;
   flex-flow: column nowrap;
-  padding: var(--padding-lg) var(--padding-lg) var(--footer-h);
+  padding: var(--padding-lg) var(--padding-md) var(--footer-h);
   background: white;
   border-right: 1px solid var(--gray-10);
   border-image: linear-gradient(#0000 3%, var(--gray-10) 5%, var(--gray-10) 95%, #0000 97%) 1;
@@ -39,8 +39,11 @@ nav.site-nav a {
    * left-hand side border is flush with the left-hand side of the nav: */
   margin-inline: calc(-1 * var(--padding-md));
 
-  /* Then restore the inline padding: */
-  padding: var(--padding-sm) var(--padding-md);
+  /* Then restore the inline padding, adding 5px for the `nav-indicator`
+   * "shadow"/line on the lef-thand side: */
+  padding-left: calc(5px + var(--padding-md));
+  padding-right: var(--padding-md);
+  padding-block: var(--padding-sm);
   text-decoration: none;
   font-weight: normal;
   color: var(--gray-40);
