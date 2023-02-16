@@ -20,7 +20,7 @@ import {
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
-import { getProfileData, FxAOAuthClient } from '../utils/fxa.js'
+import { getProfileData, FxAOAuthClient, getSha1 } from '../utils/fxa.js'
 import {
   getEmailCtaHref,
   getUnsubscribeUrl,
@@ -103,7 +103,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
     // Get breaches for email the user signed-up with
     const allBreaches = req.app.locals.breaches
     const unsafeBreachesForEmail = await getBreachesForEmail(
-      email.sha1,
+      getSha1(email),
       allBreaches,
       true
     )
