@@ -5,6 +5,7 @@
 import AppConstants from '../app-constants.js'
 import { getSubscriberById, updateFxAProfileData } from '../db/tables/subscribers.js'
 import * as FXA from '../utils/fxa.js'
+import { UnauthorizedError } from '../utils/error.js'
 
 async function getRequestSessionUser (req, res, next) {
   if (req.session && req.session.user) {
@@ -38,15 +39,14 @@ async function requireAdminUser (req, res, next) {
     return res.redirect(`/oauth/init?${queryParams}`)
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
+  if (Object.prototype.hasOwnProperty.call(fxaProfileData, 'name') && fxaProfileData.name === 'HTTPError') {
+    delete req.session.user
+    return res.redirect('/')
+  }
   const admins = AppConstants.ADMINS?.split(',') || []
   const isAdmin = admins.includes(JSON.parse(fxaProfileData).email)
-
-  const hasFxaError = Object.prototype.hasOwnProperty.call(fxaProfileData, 'name') && fxaProfileData.name
-  if (hasFxaError) {
-    delete req.session.user
-  }
-  if (!isAdmin || hasFxaError) {
-    return res.sendStatus(401)
+  if (!isAdmin) {
+    next(new UnauthorizedError('User is not an admin'))
   }
 
   await updateFxAProfileData(user, fxaProfileData)
