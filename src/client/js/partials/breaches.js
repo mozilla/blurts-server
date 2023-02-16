@@ -32,7 +32,7 @@ function init () {
 
   state.emailCount = parseInt(breachesPartial.querySelector('.email-stats').dataset.count)
   state.emailTotal = parseInt(breachesPartial.querySelector('.email-stats').dataset.total)
-  state.selectedEmail = emailSelect.value // triggers render
+  state.selectedEmail = emailSelect.value ?? emailSelect.querySelector('option:first-child')?.textContent.trim() // triggers render
 
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
