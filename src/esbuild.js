@@ -31,7 +31,7 @@ esbuild.build({
   outdir: '../dist',
   format: 'esm',
   minify: AppConstants.NODE_ENV !== 'dev',
-  sourcemap: AppConstants.NODE_ENV !== 'dev',
+  sourcemap: 'linked',
   splitting: true,
   treeShaking: true,
   platform: 'neutral'
