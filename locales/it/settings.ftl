@@ -5,11 +5,11 @@
 
 # Settings page
 
-settings-page-title = { -product-short-name } Impostazioni
+settings-page-title = Impostazioni di { -product-short-name }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Violazione preferenze avvisi
+settings-alert-preferences-title = Preferenze per gli avvisi relativi alle violazioni
 settings-alert-preferences-option-one = Invia avvisi relativi alle violazioni all’indirizzo email coinvolto
 settings-alert-preferences-option-two = Invia tutti gli avvisi di violazione all’indirizzo email principale
 
@@ -18,15 +18,15 @@ settings-alert-preferences-option-two = Invia tutti gli avvisi di violazione all
 # Variables:
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (principale)
-settings-email-list-title = Indirizzi email monitorati
+settings-email-list-title = Indirizzi email controllati
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Il tuo account include il monitoraggio di un massimo di { $limit } email.
-       *[other] Il tuo account include il monitoraggio di un massimo di { $limit } email.
+        [one] Il tuo account include il controllo di un massimo di { $limit } email.
+       *[other] Il tuo account include il controllo di un massimo di { $limit } email.
     }
-settings-email-verification-callout = Verifica email richiesta
+settings-email-verification-callout = Richiesta verifica email
 settings-resend-email-verification-link = Invia nuovamente l’email di conferma
 settings-add-email-button = Aggiungi un indirizzo email
 # This string is shown beneath each of the user’s email addresses to indicate
@@ -35,8 +35,8 @@ settings-add-email-button = Aggiungi un indirizzo email
 #   $breachCount (numer) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
-        [one] Appare in { $breachCount } violazione nota.
-       *[other] Appare in { $breachCount } violazioni note.
+        [one] Appare in { $breachCount } violazione conosciuta.
+       *[other] Appare in { $breachCount } violazioni conosciute.
     }
 
 ## Deactivate account

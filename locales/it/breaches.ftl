@@ -27,20 +27,20 @@ column-company = AZIENDA
 column-breached-data = DATI VIOLATI
 column-detected = RILEVATA
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Risolto
+column-status-badge-resolved = Risolta
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
-column-status-badge-active = Attivo
+column-status-badge-active = Attiva
 breaches-none-headline = Nessuna violazione rilevata
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
-breaches-none-copy = Buone notizie! Non sono state segnalate violazioni note per { $email }. Continueremo a monitorare questa email e ti faremo sapere se si verificano nuove violazioni.
-breaches-none-cta-blurb = Monitorare un'altra email?
+breaches-none-copy = Buone notizie! Non sono state segnalate violazioni conosciute per { $email }. Continueremo a controllare questa email e ti faremo sapere se si verificano nuove violazioni.
+breaches-none-cta-blurb = Controllare un’altra email?
 breaches-none-cta-button = Aggiungi un indirizzo email
 breaches-all-resolved-headline = Tutte le violazioni sono state risolte
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Ben fatto! Hai risolto tutte le violazioni per { $email }. Continueremo a monitorare questa email e ti faremo sapere se si verificano nuove violazioni.
-breaches-all-resolved-cta-blurb = Monitorare un'altra email?
+breaches-all-resolved-copy = Ben fatto! Hai risolto tutte le violazioni per { $email }. Continueremo a controllare questa email e ti faremo sapere se si verificano nuove violazioni.
+breaches-all-resolved-cta-blurb = Controllare un’altra email?
 breaches-all-resolved-cta-button = Aggiungi un indirizzo email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = In data { $breachDate } si è verificata una violazione di dati per { $companyName }. Una volta scoperta e verificata la violazione, è stata aggiunta al nostro database il giorno { $addedDate }. Questa violazione includeva: { $dataClasses }
