@@ -24,7 +24,6 @@ router.get('/', landingPage)
 router.get('/robots.txt', robotsTxt)
 router.get('*/dialog/:name', dialog)
 
-
 router.use('/', dockerFlowRoutes)
 router.use('/admin', adminRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)

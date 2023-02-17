@@ -56,14 +56,14 @@ export const emailPreview = (data) => {
         ${
           isAdminPreview
             ? `
-              <form class='js-email-preview-form email-preview-form'>
-                ${getRecipientInputs(recipients)}
+                <form class='js-email-preview-form email-preview-form'>
+                  ${getRecipientInputs(recipients)}
 
-                <button class='primary' type='submit'>
-                  Send test email
-                </button>
-              </form>
-            `
+                  <button class='primary' type='submit'>
+                    Send test email
+                  </button>
+                </form>
+              `
             : ''
         }
       </div>
