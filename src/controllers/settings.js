@@ -42,7 +42,7 @@ async function settingsPage (req, res) {
 
   const allBreaches = req.app.locals.breaches
   for (const email of emails) {
-    const breaches = await getBreachesForEmail(getSha1(email), allBreaches, true)
+    const breaches = await getBreachesForEmail(getSha1(email.email), allBreaches, true)
     breachCounts.set(email.email, breaches?.length || 0)
   }
 
