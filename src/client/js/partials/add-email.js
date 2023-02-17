@@ -53,10 +53,9 @@ function renderSuccess (data) {
   messageEl.querySelector('.current-email').textContent = data.email
   form.replaceWith(content)
   dialogEl.dispatchEvent(new CustomEvent('email-added', {
-    bubbles: true, 
+    bubbles: true,
     detail: data
   }))
-
 }
 
 function kill () {
