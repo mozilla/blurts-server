@@ -66,7 +66,7 @@ const signupReportEmailPartial = data => {
         <table style='${breachSummaryTableStyle}'>
           <tr>
             <td>
-              ${emailBreachStats.map(breachStat => `
+              ${emailBreachStats?.map(breachStat => `
                 <table style='${breachSummaryCardStyle}'>
                   <tr>
                     <td style='${statNumberStyle}'>

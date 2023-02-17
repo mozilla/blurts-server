@@ -19,6 +19,7 @@ import { getMessage } from '../utils/fluent.js'
 import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
+import { getSha1 } from '../utils/fxa.js'
 import { generateToken } from '../utils/csrf.js'
 import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
 
@@ -41,12 +42,7 @@ async function settingsPage (req, res) {
 
   const allBreaches = req.app.locals.breaches
   for (const email of emails) {
-    const breaches = await getBreachesForEmail(
-      email.sha1,
-      allBreaches,
-      true,
-      false
-    )
+    const breaches = await getBreachesForEmail(getSha1(email.email), allBreaches, true)
     breachCounts.set(email.email, breaches?.length || 0)
   }
 

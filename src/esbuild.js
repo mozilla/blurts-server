@@ -32,7 +32,7 @@ esbuild.build({
   format: 'esm',
   minify: AppConstants.NODE_ENV !== 'dev',
   sourcemap: AppConstants.NODE_ENV !== 'dev',
-  splitting: true,
+  splitting: false,
   treeShaking: true,
   platform: 'neutral'
 })
