@@ -12,14 +12,6 @@ function createEmailOptions (data) {
   return optionElements.join('')
 }
 
-function createEmailCTA (count) {
-  const total = parseInt(AppConstants.MAX_NUM_ADDRESSES)
-
-  if (count >= total) return '' // don't show CTA if additional emails are not available for monitor
-
-  return `<a href='/user/settings'>${getMessage('add-email-link')}</a>`
-}
-
 function createBreachRows (data) {
   const locale = getLocale()
   const shortDate = new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })
@@ -92,7 +84,7 @@ export const breaches = data => `
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>
         <strong>${getMessage('emails-monitored', { count: data.emailVerifiedCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
-        ${createEmailCTA(data.emailTotalCount)}
+        <a href='/user/settings'>${getMessage('manage-emails-link')}</a>
       </figcaption>
     </figure>
   </header>
