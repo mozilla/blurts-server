@@ -15,7 +15,8 @@ emails-monitored =
      *[other] { $count } of { $total } emails monitored
   }
 
-add-email-link = Add email address
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Manage emails
 
 ## Breaches resolved filter
 
