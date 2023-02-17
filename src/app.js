@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import crypto from 'node:crypto'
+
 import express from 'express'
 import session from 'express-session'
 import connectRedis from 'connect-redis'
@@ -10,18 +12,38 @@ import accepts from 'accepts'
 import redis from 'redis'
 import cookieParser from 'cookie-parser'
 import rateLimit from 'express-rate-limit'
+import Sentry from '@sentry/node'
+import '@sentry/tracing'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
 import { doubleCsrfProtection } from './utils/csrf.js'
-import { initFluentBundles, updateLocale } from './utils/fluent.js'
+import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
+import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
+
+// init sentry
+Sentry.init({
+  dsn: AppConstants.SENTRY_DSN,
+  environment: AppConstants.NODE_ENV,
+  debug: isDev,
+  beforeSend (event, hint) {
+    if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english
+
+    // try to force an english translation for the error message if localized
+    if (hint.originalException.fluentID) {
+      event.exception.values[0].value = getMessageWithLocale(hint.originalException.fluentID, 'en') || getMessage(hint.originalException.fluentID)
+    }
+
+    return event
+  }
+})
 
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
@@ -51,6 +73,13 @@ app.use(
   })
 )
 
+app.use(
+  Sentry.Handlers.requestHandler({
+    request: ['headers', 'method', 'url'], // omit cookies, data, query_string
+    user: ['id'] // omit username, email
+  })
+)
+
 const imgSrc = [
   "'self'"
 ]
@@ -60,15 +89,31 @@ if (AppConstants.FXA_ENABLED) {
   imgSrc.push(fxaSrc)
 }
 
+// Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+imgSrc.push('www.googletagmanager.com')
+
 // disable forced https to allow localhost on Safari
-app.use(
+app.use((_req, res, _next) => {
+  res.locals.nonce = crypto.randomBytes(16).toString('hex')
   helmet.contentSecurityPolicy({
     directives: {
+      upgradeInsecureRequests: isDev ? null : [],
+      scriptSrc: [
+        "'self'",
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+        `'nonce-${res.locals.nonce}'`
+      ],
       imgSrc,
-      upgradeInsecureRequests: isDev ? null : []
+      connectSrc: [
+        "'self'",
+        // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+        'https://*.google-analytics.com',
+        'https://*.analytics.google.com',
+        'https://*.googletagmanager.com'
+      ]
     }
-  })
-)
+  })(_req, res, _next)
+})
 
 // fallback to default 'no-referrer' only when 'strict-origin-when-cross-origin' not available
 app.use(
@@ -135,6 +180,15 @@ app.use('/api', apiLimiter)
 
 // routing
 app.use('/', indexRouter)
+
+// sentry error handler
+app.use(Sentry.Handlers.errorHandler({
+  shouldHandleError (error) {
+    if (error instanceof RateLimitError) return true
+  }
+}))
+
+// app error handler
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {

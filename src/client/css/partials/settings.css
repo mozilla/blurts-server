@@ -11,6 +11,7 @@
 }
 
 .settings-section-title {
+  font: var(--h4-font);
   margin: var(--padding-sm) 0 var(--padding-md) 0;
 }
 
@@ -133,19 +134,12 @@
   margin-top: var(--padding-md);
 }
 
-button.primary.settings-add-email-button {
+.settings-add-email-button {
   padding-left: var(--padding-lg);
   margin-top: var(--padding-lg);
-  position: relative;
 }
 
 .settings-add-email-button::before {
-  content: '+';
-  position: absolute;
-  display: block;
-  font-size: 2em;
-  left: var(--padding-sm);
-  line-height: 0.35em;
-  top: 50%;
-  transform: translateY(-50%);
+  content: '＋ ';
+  font-weight: 600;
 }

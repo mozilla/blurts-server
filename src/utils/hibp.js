@@ -146,14 +146,59 @@ async function loadBreachesIntoApp (app) {
   }
   log.info('done-loading-breaches', 'great success 👍')
 }
+
+/**
+ * Get addresses and language from either subscribers or email_addresses fields:
+ * @param {*} recipient
+ * @returns
+ */
+function getAddressesAndLanguageForEmail (recipient) {
+  const {
+    all_emails_to_primary: allEmailsToPrimary,
+    email: breachedEmail,
+    primary_email: primaryEmail,
+    signup_language: signupLanguage
+  } = recipient
+
+  if (breachedEmail) {
+    return {
+      breachedEmail,
+      recipientEmail: allEmailsToPrimary ? primaryEmail : breachedEmail,
+      signupLanguage
+    }
+  }
+
+  return {
+    breachedEmail: primaryEmail,
+    recipientEmail: primaryEmail,
+    signupLanguage
+  }
+}
+
+/**
+ * Filter breaches that we would not like to show.
+ *
+ * @param {Array} breaches
+ * @returns {Array} filteredBreaches
+ */
+function getFilteredBreaches (breaches) {
+  return breaches.filter(breach => (
+    !breach.IsRetired &&
+    !breach.IsSpamList &&
+    !breach.IsFabricated &&
+    breach.IsVerified &&
+    breach.Domain !== ''
+  ))
+}
+
 /**
 A range of hashes can be searched by passing the hash prefix in a GET request:
 GET /breachedaccount/range/[hash prefix]
 
  * @param {string} sha1 first 6 chars of email sha1
- * @param {*} allBreaches
- * @param {*} includeSensitive
- * @param {*} filterBreaches
+ * @param {Array} allBreaches
+ * @param {Boolean} includeSensitive
+ * @param {Boolean} filterBreaches
  * @returns
  */
 async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
@@ -174,7 +219,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
     if (sha1.toUpperCase() === sha1Prefix + breachedAccount.hashSuffix) {
       foundBreaches = allBreaches.filter(breach => breachedAccount.websites.includes(breach.Name))
       if (filterBreaches) {
-        foundBreaches = filterBreaches(foundBreaches)
+        foundBreaches = getFilteredBreaches(foundBreaches)
       }
 
       // NOTE: DO NOT CHANGE THIS SORT LOGIC
@@ -203,16 +248,6 @@ function getBreachByName (allBreaches, breachName) {
   }
   const foundBreach = allBreaches.find(breach => breach.Name.toLowerCase() === breachName)
   return foundBreach
-}
-
-function filterBreaches (breaches) {
-  return breaches.filter(
-    breach => !breach.IsRetired &&
-                !breach.IsSpamList &&
-                !breach.IsFabricated &&
-                breach.IsVerified &&
-                breach.Domain !== ''
-  )
 }
 
 /**
@@ -263,10 +298,11 @@ export {
   kAnonReq,
   formatDataClassesArray,
   loadBreachesIntoApp,
+  getAddressesAndLanguageForEmail,
   getBreachesForEmail,
   getBreachByName,
   getAllBreachesFromDb,
-  filterBreaches,
+  getFilteredBreaches,
   subscribeHash,
   deleteSubscribedHash
 }

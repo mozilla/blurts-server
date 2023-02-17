@@ -8,7 +8,8 @@ import { dataRemoval } from '../views/partials/data-removal.js'
 function dataRemovalPage (req, res) {
   const data = {
     fxaProfile: req.user.fxa_profile_json,
-    partial: dataRemoval
+    partial: dataRemoval,
+    nonce: res.locals.nonce
   }
 
   res.send(mainLayout(data))

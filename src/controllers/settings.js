@@ -15,12 +15,13 @@ import {
 
 import { setAllEmailsToPrimary } from '../db/tables/subscribers.js'
 
-import { fluentError, getMessage } from '../utils/fluent.js'
+import { getMessage } from '../utils/fluent.js'
 import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
+import { getSha1 } from '../utils/fxa.js'
 import { generateToken } from '../utils/csrf.js'
-import { RateLimitError } from '../utils/error.js'
+import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
 
 import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
@@ -41,12 +42,7 @@ async function settingsPage (req, res) {
 
   const allBreaches = req.app.locals.breaches
   for (const email of emails) {
-    const breaches = await getBreachesForEmail(
-      email.sha1,
-      allBreaches,
-      true,
-      false
-    )
+    const breaches = await getBreachesForEmail(getSha1(email.email), allBreaches, true)
     breachCounts.set(email.email, breaches?.length || 0)
   }
 
@@ -62,7 +58,8 @@ async function settingsPage (req, res) {
     emails,
     breachCounts,
     limit: AppConstants.MAX_NUM_ADDRESSES,
-    csrfToken: generateToken(res)
+    csrfToken: generateToken(res),
+    nonce: res.locals.nonce
   }
 
   res.send(mainLayout(data))
@@ -76,12 +73,11 @@ async function addEmail (req, res) {
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
 
   if (!email || !emailRegex.test(email)) {
-    throw fluentError('user-add-invalid-email')
+    throw new UserInputError(getMessage('user-add-invalid-email'))
   }
 
-  // Total max number of email addresses minus one to account for the primary email
   if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES - 1) {
-    throw fluentError('user-add-too-many-emails')
+    throw new UserInputError(getMessage('user-add-too-many-emails'))
   }
 
   checkForDuplicateEmail(sessionUser, email)
@@ -103,12 +99,12 @@ async function addEmail (req, res) {
 function checkForDuplicateEmail (sessionUser, email) {
   const emailLowerCase = email.toLowerCase()
   if (emailLowerCase === sessionUser.primary_email.toLowerCase()) {
-    throw fluentError('user-add-duplicate-email')
+    throw new UserInputError(getMessage('user-add-duplicate-email'))
   }
 
   for (const secondaryEmail of sessionUser.email_addresses) {
     if (emailLowerCase === secondaryEmail.email.toLowerCase()) {
-      throw fluentError('user-add-duplicate-email')
+      throw new UserInputError(getMessage('user-add-duplicate-email'))
     }
   }
 }
@@ -119,7 +115,7 @@ async function removeEmail (req, res) {
   const existingEmail = await getEmailById(emailId)
 
   if (existingEmail.subscriber_id !== sessionUser.id) {
-    throw fluentError('error-not-subscribed')
+    throw new UserInputError(getMessage('error-not-subscribed'))
   }
 
   removeOneSecondaryEmail(emailId)
@@ -136,7 +132,7 @@ async function resendEmail (req, res) {
   )
 
   if (!filteredEmail) {
-    throw fluentError('user-verify-token-error')
+    throw new UnauthorizedError(getMessage('user-verify-token-error'))
   }
 
   await sendVerificationEmail(emailId)
@@ -169,7 +165,7 @@ async function sendVerificationEmail (emailId) {
     await sendEmail(
       recipientEmail,
       getMessage('email-subject-verify'),
-      getTemplate(data, verifyPartial(data))
+      getTemplate(data, verifyPartial)
     )
   } catch (err) {
     if (err.message === 'error-email-validation-pending') {

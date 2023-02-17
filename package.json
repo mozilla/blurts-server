@@ -9,14 +9,15 @@
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@maxmind/geoip2-node": "^3.1.0",
-    "@sentry/node": "7.12.0",
+    "@sentry/node": "7.36.0",
+    "@sentry/tracing": "^7.36.0",
     "body-parser": "^1.20.1",
     "client-oauth2": "4.3.3",
     "connect-redis": "6.1.3",
     "cookie-parser": "^1.4.6",
     "csurf": "1.11.0",
     "dotenv": "16.0.2",
-    "esbuild": "^0.14.39",
+    "esbuild": "^0.17.8",
     "express": "^4.18.2",
     "express-bearer-token": "2.4.0",
     "express-handlebars": "6.0.6",
@@ -121,5 +122,9 @@
     ],
     "ext": "js,css,hbs,json,ftl"
   },
-  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW"
+  "supportedLocales": "cak,cs,cy,da,de,el,en,en-CA,en-GB,es-AR,es-CL,es-ES,es-MX,fi,fr,fy-NL,gn,hu,kab,ia,id,it,ja,nb-NO,nl,nn-NO,pt-BR,pt-PT,ro,ru,sk,sl,sq,sv-SE,tr,uk,vi,zh-CN,zh-TW",
+  "volta": {
+    "node": "18.12.1",
+    "npm": "8.19.3"
+  }
 }

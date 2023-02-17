@@ -823,6 +823,12 @@ meta-desc = Find out if you’ve been part of a data breach with {-brand-fx-moni
 brand-fx-monitor = {-brand-fx-monitor}
 sign-in = Sign In
 
+## Site navigation
+
+site-nav-breaches-link = Resolve Data Breaches
+site-nav-settings-link = Settings
+site-nav-help-link = Help and Support
+
 ## User menu
 
 menu-button-title = User menu
@@ -838,3 +844,11 @@ menu-item-logout = Sign out
 mozilla = {-brand-mozilla}
 terms-and-privacy = Terms & Privacy
 github = {-brand-github}
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Page not found
+error-page-error-404-copy = We’re sorry, the page you’re looking for no longer exists.
+error-page-error-404-cta-button = Go back

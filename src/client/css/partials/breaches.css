@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 .breaches-header {
-  width: fit-content;
+  width: min(720px, 100%);
   max-width: 100%;
   margin: auto;
   padding: var(--padding-md);
@@ -14,8 +14,6 @@
 
 .breaches-header > h1 {
   font: var(--h3-font);
-  margin: var(--padding-md);
-  line-height: 1.2;
 }
 
 .breaches-header > figure {
@@ -50,6 +48,7 @@
   grid-template-columns: 1fr 1fr;
   width: min(640px, 100%);
   margin: 0 auto;
+  padding: var(--padding-lg);
   border: none;
   font-size: 0.75rem;
 }
@@ -71,10 +70,15 @@
   cursor: pointer;
 }
 
-.breaches-filter input[type='radio']:checked + label {
+.breaches-filter:disabled label {
+  cursor: default;
+}
+
+.breaches-filter:not(:disabled) input[type='radio']:checked + label {
   color: var(--purple-90);
   border-color: currentcolor;
   transition: border-color 0.3s ease-out;
+  cursor: default;
 }
 
 .breaches-table {
@@ -186,7 +190,7 @@
      so that everything remains vertically-aligned, and the badge still
      disappears when getting flex-wrapped on small screens.
   */
-  font-size: 11px;
+  font-size: 0.6875rem;
 }
 
 .resolution-badge.is-active {
@@ -251,4 +255,26 @@
 
 .breaches-table details[open] > article {
   animation: fade-in 0.5s ease-out;
+}
+
+.zero-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--padding-lg);
+  text-align: center;
+  animation: fade-in 0.5s ease-out;
+}
+
+.zero-state h2 {
+  font: var(--h3-font);
+}
+
+.zero-state p {
+  max-width: var(--max-width-p);
+}
+
+.zero-state .add-email-cta > span:first-of-type {
+  display: block;
+  padding-bottom: var(--padding-md);
 }

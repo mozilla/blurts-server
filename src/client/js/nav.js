@@ -17,7 +17,7 @@ function handleEvent (e) {
     case e.target.matches('.nav-toggle'):
       nav.toggleAttribute('hidden')
       break
-    case e.target.matches('.nav-item'):
+    case e.target.matches('.nav-item:not([target="_blank"])'):
       e.target.style.setProperty('color', 'var(--purple-70)')
       nav.querySelector('.nav-item.current')?.classList.remove('current')
       break

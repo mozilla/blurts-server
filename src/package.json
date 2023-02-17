@@ -11,10 +11,11 @@
     "prestart": "npm run build",
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run build:svg",
+    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
     "copy:root": "mkdir -p ../dist/ && cp ./client/*.* ../dist/",
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
+    "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",
     "convert:webp": "sh ./scripts/webp.sh",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava"
   },
@@ -33,9 +34,13 @@
   },
   "homepage": "https://github.com/mozilla/blurts-server",
   "license": "MPL-2.0",
+  "volta": {
+    "node": "18.12.1",
+    "npm": "8.19.3"
+  },
   "dependencies": {
     "csrf-csrf": "^2.2.2",
-    "esbuild": "^0.15.10",
+    "esbuild": "^0.17.8",
     "express-rate-limit": "^6.7.0",
     "helmet": "^6.0.0",
     "svgo": "^2.8.0",
@@ -44,6 +49,9 @@
   "devDependencies": {
     "ava": "^5.1.0",
     "c8": "^7.12.0",
+    "eslint": "^8.32.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-header": "^3.1.1",
     "redis-mock": "^0.56.3",
     "testdouble": "^3.16.8"
   }

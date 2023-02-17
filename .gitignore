@@ -5,7 +5,6 @@ src/.env
 coverage
 .coveralls.yml
 .DS_Store
-.vscode
 breach_hashsets
 version.json
 loadtests/__pycache__
