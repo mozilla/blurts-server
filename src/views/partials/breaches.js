@@ -88,11 +88,11 @@ export const breaches = data => `
         <label>Unresolved</label>
       </figcaption>
     </figure>
-    <figure class='email-stats' data-count=${data.emailCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
+    <figure class='email-stats' data-count=${data.emailTotalCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>
-        <strong>${getMessage('emails-monitored', { count: data.emailCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
-        ${createEmailCTA(data.emailCount)}
+        <strong>${getMessage('emails-monitored', { count: data.emailVerifiedCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
+        ${createEmailCTA(data.emailTotalCount)}
       </figcaption>
     </figure>
   </header>
