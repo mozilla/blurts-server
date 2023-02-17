@@ -24,13 +24,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account =
-    { $capitalization ->
-       *[lowercase] account Firefox
-        [uppercase] Account Firefox
-    }
 GitHub-link-title = GitHub
 error-scan-page-token = Hai cercato troppi indirizzi email in un breve lasso di tempo. Per motivi di sicurezza la funzione di ricerca è stata temporaneamente sospesa. Potrai riprovare più tardi.
 error-could-not-add-email = Impossibile aggiungere l’indirizzo email al database.
@@ -587,6 +580,16 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account =
+    { $capitalization ->
+       *[lowercase] account Firefox
+        [uppercase] Account Firefox
+    }
+
 ## Search Engine Optimization
 
 meta-desc = Scopri se sei stato coinvolto in una violazione dei dati con { -brand-fx-monitor }. Iscriviti per ricevere notifiche su future violazioni e ottenere suggerimenti per mantenere i tuoi account al sicuro.
@@ -596,8 +599,32 @@ meta-desc = Scopri se sei stato coinvolto in una violazione dei dati con { -bran
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Accedi
 
+## Site navigation
+
+site-nav-breaches-link = Risolvi le violazioni di dati
+site-nav-settings-link = Impostazioni
+site-nav-help-link = Guida e supporto
+
+## User menu
+
+menu-button-title = Menu utente
+menu-button-alt = Apri il menu utente
+menu-list-accessible-label = Menu dell’account
+menu-item-fxa = Gestisci il tuo { -brand-fx-account }
+menu-item-settings = Impostazioni
+menu-item-help = Guida e supporto
+menu-item-logout = Disconnetti
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Termini di utilizzo e privacy
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Pagina non trovata
+error-page-error-404-copy = Siamo spiacenti, la pagina che stai cercando non esiste più.
+error-page-error-404-cta-button = Torna indietro
