@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } adresse e-mail surveillée sur { $total }
        *[other] { $count } adresses e-mail surveillées sur { $total }
     }
-add-email-link = Ajouter une adresse e-mail
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Gérer les adresses e-mail
 
 ## Breaches resolved filter
 
