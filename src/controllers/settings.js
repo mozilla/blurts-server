@@ -71,12 +71,13 @@ async function addEmail (req, res) {
   // Use the same regex as HTML5 email input type
   // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
   const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+  const emailCount = 1 + (req.user.email_addresses?.length ?? 0) // primary + verified + unverified emails
 
   if (!email || !emailRegex.test(email)) {
     throw new UserInputError(getMessage('user-add-invalid-email'))
   }
 
-  if (sessionUser.email_addresses.length >= AppConstants.MAX_NUM_ADDRESSES - 1) {
+  if (emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
     throw new UserInputError(getMessage('user-add-too-many-emails'))
   }
 
@@ -92,6 +93,7 @@ async function addEmail (req, res) {
   return res.json({
     success: true,
     status: 200,
+    newEmailCount: emailCount + 1,
     message: 'Sent the verification email'
   })
 }

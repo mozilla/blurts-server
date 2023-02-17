@@ -32,7 +32,12 @@ async function handleSubmit (e) {
 
     if (!res.ok) throw new Error('Bad fetch response')
 
-    renderSuccess(form.elements['email-address'].value)
+    const { newEmailCount } = await res.json()
+
+    renderSuccess({
+      email: form.elements['email-address'].value,
+      newEmailCount
+    })
   } catch (e) {
     console.error('Could not add new email.', e)
   } finally {
@@ -40,13 +45,18 @@ async function handleSubmit (e) {
   }
 }
 
-function renderSuccess (email) {
+function renderSuccess (data) {
   const content = dialogEl.querySelector('template[data-success]').content.cloneNode(true)
   const messageEl = content.querySelector('p.add-email-success')
 
   messageEl.style.setProperty('--form-height', `${form.clientHeight}px`)
-  messageEl.querySelector('.current-email').textContent = email
+  messageEl.querySelector('.current-email').textContent = data.email
   form.replaceWith(content)
+  dialogEl.dispatchEvent(new CustomEvent('email-added', {
+    bubbles: true, 
+    detail: data
+  }))
+
 }
 
 function kill () {
