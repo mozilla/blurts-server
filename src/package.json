@@ -17,7 +17,8 @@
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
     "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",
     "convert:webp": "sh ./scripts/webp.sh",
-    "test": "NODE_OPTIONS=--loader=testdouble c8 ava"
+    "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
+    "e2e": "npx playwright test /e2e"
   },
   "nodemonConfig": {
     "watch": [
@@ -50,6 +51,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.30.0",
     "ava": "^5.1.0",
     "c8": "^7.12.0",
     "eslint": "^8.32.0",
