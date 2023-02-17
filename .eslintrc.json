@@ -6,14 +6,16 @@
         "jest": true
     },
     "extends": [
-        "standard"
+        "standard",
+        "plugin:jsdoc/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
-        "header"
+        "header",
+        "jsdoc"
     ],
     "rules": {
         "no-prototype-builtins": "warn",
