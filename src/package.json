@@ -32,6 +32,11 @@
     ],
     "ext": "js,css,json,ftl"
   },
+  "ava": {
+    "files": [
+      "!e2e/"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mozilla/blurts-server.git"
