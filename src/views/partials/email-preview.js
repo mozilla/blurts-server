@@ -35,40 +35,40 @@ function getRecipientInputs (recipients) {
   `
 }
 
-// export const emailPreview = data => {
-//   const {
-//     template: currentTemplateKey,
-//     data: emailTemplates,
-//     recipients
-//   } = data.email
-//   const selectedPreviewTemplate = emailTemplates[currentTemplateKey]?.template
+export const emailPreview = (data) => {
+  const { isAdminPreview = false } = data
+  const {
+    template: currentTemplateKey,
+    data: emailTemplates,
+    recipients
+  } = data.email
+  const selectedPreviewTemplate = emailTemplates[currentTemplateKey]?.template
 
-//   return `
-//     <script src="/js/partials/email-preview.js" type="module"></script>
-//     <section class='email-preview js-email' data-csrf-token=${data.csrfToken}>
-//       <h1>Email preview</h1>
-//       <div class='email-preview-controls'>
-//         <custom-select name='email-template'>
-//           ${getPreviewOptions(currentTemplateKey, emailTemplates)}
-//         </custom-select>
-
-//         <form class='js-email-preview-form email-preview-form'>
-//           ${getRecipientInputs(recipients)}
-
-//           <button class='primary' type='submit'>
-//             Send test email
-//           </button>
-//         </form>
-//       </div>
-//       <hr class='monitor-gradient'>
-//       ${selectedPreviewTemplate}
-//     </section>
-//   `
-// }
-export const emailPreview = data => {
   return `
+    <script src="/js/partials/email-preview.js" type="module"></script>
     <section class='email-preview js-email' data-csrf-token=${data.csrfToken}>
       <h1>Email preview</h1>
+      <div class='email-preview-controls'>
+        <custom-select name='email-template'>
+          ${getPreviewOptions(currentTemplateKey, emailTemplates)}
+        </custom-select>
+
+        ${
+          isAdminPreview
+            ? `
+              <form class='js-email-preview-form email-preview-form'>
+                ${getRecipientInputs(recipients)}
+
+                <button class='primary' type='submit'>
+                  Send test email
+                </button>
+              </form>
+            `
+            : ''
+        }
+      </div>
+      <hr class='monitor-gradient'>
+      ${selectedPreviewTemplate}
     </section>
   `
 }

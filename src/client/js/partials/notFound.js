@@ -4,7 +4,7 @@
 
 if (window.history.length > 1) {
   const backCta = document.getElementById('back-cta')
-  backCta.addEventListener('click', () => {
+  backCta?.addEventListener('click', () => {
     window.history.back()
 
     // The call to `window.history.back()` might do nothing; for example, if the
@@ -19,5 +19,5 @@ if (window.history.length > 1) {
     }, 500)
   })
   document.getElementById('home-cta')?.toggleAttribute('hidden', true)
-  backCta.toggleAttribute('hidden', false)
+  backCta?.toggleAttribute('hidden', false)
 }

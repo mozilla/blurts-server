@@ -28,11 +28,8 @@ import {
 
 const { EMAIL_TEST_RECIPIENT } = AppConstants
 
-function emailsPage (req, res) {
-  const { params } = req
-  const template = params.template ?? EmailTemplateType.Verification
-
-  const emailTemplates = {
+function getTemplatesData () {
+  return {
     [EmailTemplateType.Verification]: {
       label: 'Email verification',
       template: getPreviewTemplate(
@@ -62,17 +59,38 @@ function emailsPage (req, res) {
       )
     }
   }
+}
+
+function emailsPage (req, res) {
+  const { params } = req
+  const template = params.template ?? EmailTemplateType.Verification
 
   const data = {
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,
     partial: emailPreview,
     email: {
-      data: emailTemplates,
+      data: getTemplatesData(),
       recipients: [
         req.session.user.primary_email,
         AppConstants.EMAIL_TEST_RECIPIENT
       ],
+      template
+    },
+    isAdminPreview: true
+  }
+
+  res.send(mainLayout(data))
+}
+
+function emailsPreviewPage (req, res) {
+  const { params } = req
+  const template = params.template ?? EmailTemplateType.Verification
+
+  const data = {
+    partial: emailPreview,
+    email: {
+      data: getTemplatesData(),
       template
     }
   }
@@ -168,4 +186,4 @@ async function sendTestEmail (req, res) {
   }
 }
 
-export { emailsPage, sendTestEmail }
+export { emailsPage, emailsPreviewPage, sendTestEmail }
