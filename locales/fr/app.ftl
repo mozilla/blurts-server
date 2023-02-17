@@ -24,13 +24,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account =
-    { $capitalization ->
-       *[lowercase] compte Firefox
-        [uppercase] Compte Firefox
-    }
 GitHub-link-title = GitHub
 error-scan-page-token = Vous avez essayé d’analyser trop d’adresses e-mail en peu de temps. Pour des raisons de sécurité, nous avons temporairement bloqué vos nouvelles recherches. Vous pourrez réessayer plus tard.
 error-could-not-add-email = Impossible d’ajouter l’adresse e-mail à la base de données.
@@ -599,6 +592,16 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 -brand-mozilla-foundation = Fondation Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account =
+    { $capitalization ->
+       *[lowercase] compte Firefox
+        [uppercase] Compte Firefox
+    }
+
 ## Search Engine Optimization
 
 meta-desc = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
@@ -608,8 +611,23 @@ meta-desc = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Se connecter
 
+## Site navigation
+
+site-nav-settings-link = Paramètres
+site-nav-help-link = Aide et assistance
+
+## User menu
+
+menu-item-settings = Paramètres
+menu-item-help = Aide et assistance
+menu-item-logout = Déconnexion
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Confidentialité et conditions d’utilisation
 github = { -brand-github }
+
+## Error page
+
+error-page-error-404-cta-button = Retour
