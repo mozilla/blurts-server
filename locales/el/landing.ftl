@@ -9,6 +9,8 @@
 
 ## Here’s how it works
 
+how-it-works = Δείτε πώς λειτουργεί
+check-for-breaches = Έλεγχος για παραβιάσεις
 
 ## Your privacy is safe with us
 
@@ -20,6 +22,8 @@ top-questions-about-monitor = Κορυφαίες ερωτήσεις για το 
 see-all-faq = Δείτε όλες τις συχνές ερωτήσεις
 # question and answer
 what-is-breach = Τι ακριβώς είναι μια παραβίαση δεδομένων;
+# question and answer
+what-do-i-do = Μόλις έμαθα ότι έχω επηρεαστεί από παραβίαση δεδομένων. Τι κάνω;
 # question and answer
 what-gets-exposed = Ποιες πληροφορίες εκτίθενται σε παραβιάσεις δεδομένων;
 

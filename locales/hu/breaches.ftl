@@ -3,8 +3,30 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 
-### Strings for the breach details checklists
+## Breaches header
 
+# $email-select is an interactive <select> element displaying the current email address
+breach-heading-email = Adatvédelmi incidensek a következőnél: { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } / { $total } e-mail figyelve
+       *[other] { $count } / { $total } e-mail figyelve
+    }
+add-email-link = E-mail-cím hozzáadása
+
+## Breaches resolved filter
+
+filter-label-unresolved = Meg nem oldott adatvédelmi incidensek
+filter-label-resolved = Megoldott adatvédelmi incidensek
+
+## Breaches table
+
+column-company = VÁLLALAT
+column-breached-data = KIKERÜLT ADATOK
+column-detected = ÉSZLELVE
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = A(z) { $companyName } adatvédelmi incidensben volt érintett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }. Ez az incidens a következőket tartalmazta: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
@@ -19,6 +41,9 @@ breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
+# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
+breach-checklist-ssn-header = Figyelje a bankszámlakivonatait, és keressen olyan számlákat, kölcsönöket vagy hitelkártyákat, melyeket nem ismer fel.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 

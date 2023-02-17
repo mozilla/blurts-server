@@ -21,7 +21,7 @@ rec-pw-2 =
     Používanie rovnakého hesla na viacerých miestach môže viesť k úniku vašich dát 
     zo všetkých týchto miest naraz.
 # Recommendation subhead
-rec-pw-3-subhead = So správcom hesiel máte svoje heslá vždy poruke
+rec-pw-3-subhead = So správcom hesiel máte svoje heslá všade so sebou
 # Link title
 rec-pw-3-cta = Získať { -brand-lockwise }
 rec-pw-3-fx =
