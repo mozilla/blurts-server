@@ -26,6 +26,9 @@
       "../.env-dist",
       "../locales/en/*"
     ],
+    "ignore": [
+      "src/client/*"
+    ],
     "ext": "js,css,json,ftl"
   },
   "repository": {
