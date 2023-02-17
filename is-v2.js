@@ -1,3 +1,5 @@
+// TODO: Delete this file – obsolete after Refresh V1 launch and legacy site retired
+
 'use strict'
 
 const path = require('path')

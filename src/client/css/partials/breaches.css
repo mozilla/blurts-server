@@ -1,5 +1,9 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 .breaches-header {
-  width: fit-content;
+  width: min(720px, 100%);
   max-width: 100%;
   margin: auto;
   padding: var(--padding-md);
@@ -10,8 +14,6 @@
 
 .breaches-header > h1 {
   font: var(--h3-font);
-  margin: var(--padding-md);
-  line-height: 1.2;
 }
 
 .breaches-header > figure {
@@ -36,8 +38,9 @@
   white-space: nowrap;
 }
 
-.breaches-header figcaption > a {
+.breaches-header .email-stats button[data-dialog] {
   color: var(--blue-50);
+  margin: auto;
 }
 
 .breaches-filter {
@@ -45,6 +48,7 @@
   grid-template-columns: 1fr 1fr;
   width: min(640px, 100%);
   margin: 0 auto;
+  padding: var(--padding-lg);
   border: none;
   font-size: 0.75rem;
 }
@@ -66,10 +70,15 @@
   cursor: pointer;
 }
 
-.breaches-filter input[type='radio']:checked + label {
+.breaches-filter:disabled label {
+  cursor: default;
+}
+
+.breaches-filter:not(:disabled) input[type='radio']:checked + label {
   color: var(--purple-90);
   border-color: currentcolor;
   transition: border-color 0.3s ease-out;
+  cursor: default;
 }
 
 .breaches-table {
@@ -131,11 +140,19 @@
 
 .breaches-table header > :nth-child(3),
 .breaches-table summary > :nth-child(3) {
+  flex: 1 0 80px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.breaches-table header > :nth-child(4),
+.breaches-table summary > :nth-child(4) {
   flex-basis: 100px;
 }
 
 .breaches-table summary > :nth-child(2),
-.breaches-table summary > :nth-child(3) {
+.breaches-table summary > :nth-child(3),
+.breaches-table summary > :nth-child(4) {
   font-size: clamp(0.75rem, 1.25vw, 1rem);
 }
 
@@ -163,16 +180,101 @@
   transform: rotate(-180deg);
 }
 
-.breaches-table details > div {
+.resolution-badge {
+  display: inline-block;
+  padding: var(--padding-xs) var(--padding-md);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+
+  /* Ensure the badge is not taller than the rest of the text in a `summary`,
+     so that everything remains vertically-aligned, and the badge still
+     disappears when getting flex-wrapped on small screens.
+  */
+  font-size: 0.6875rem;
+}
+
+.resolution-badge.is-active {
+  /* #99bff2 is var(--blue-50) with an alpha value of 0.4 */
+  background-color: #99bff2;
+  color: var(--blue-90);
+}
+
+.resolution-badge.is-resolved {
+  background-color: var(--green-05);
+  color: var(--green-90);
+}
+
+.breach-row[data-status='resolved'] .resolution-badge.is-active {
+  display: none;
+}
+
+.breach-row[data-status='unresolved'] .resolution-badge.is-resolved {
+  display: none;
+}
+
+.breaches-table details > article {
   padding: var(--padding-md);
   border-top: 1px solid var(--gray-10);
+  font-size: 0.875rem;
+}
+
+.breaches-table details > article a {
+  text-decoration: none; /* TODO: remove this when anchor tags are fixed with localization changes */
+}
+
+.breaches-table details > article p:first-of-type {
+  margin-top: 0;
+}
+
+.breaches-table details .resolve-list {
+  list-style-position: outside;
+  margin-left: 1rem;
+  padding-left: 0;
+}
+
+.breaches-table details .resolve-list-item {
+  position: relative;
+  padding-right: calc(var(--padding-lg) * 2 + var(--checkbox-w));
+}
+
+.breaches-table details .resolve-list-item input {
+  position: absolute;
+  right: var(--padding-lg);
+  accent-color: var(--green-80);
+}
+
+.breaches-table details .resolve-list-item input:checked + p {
+  text-decoration-line: line-through;
+  opacity: 0.33;
+  transition: opacity 0.5s;
+}
+
+.breaches-table details .resolve-list-item i {
   color: var(--gray-40);
 }
 
-.breaches-table details > div a {
-  text-decoration: none; /* TODO: remove this when updated copy is added */
+.breaches-table details[open] > article {
+  animation: fade-in 0.5s ease-out;
 }
 
-.breaches-table details[open] > div {
+.zero-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--padding-lg);
+  text-align: center;
   animation: fade-in 0.5s ease-out;
+}
+
+.zero-state h2 {
+  font: var(--h3-font);
+}
+
+.zero-state p {
+  max-width: var(--max-width-p);
+}
+
+.zero-state .add-email-cta > span:first-of-type {
+  display: block;
+  padding-bottom: var(--padding-md);
 }

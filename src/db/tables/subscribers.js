@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import { destroyOAuthToken } from '../../utils/fxa.js'
 import Knex from 'knex'
 import knexConfig from '../knexfile.js'
@@ -163,7 +167,7 @@ async function setBreachesResolved (options) {
  * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
  * @param {object} user user object that contains the id of a user
- * @param {object} updatedBreachesResolution {email_id: [{recencyIndex: {allBreachTypes: [BreachType], resolved: [BreachType], isInProgress: bool}}, {}...]}
+ * @param {object} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
 async function setBreachResolution (user, updatedBreachesResolution) {

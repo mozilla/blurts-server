@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import { join, resolve } from 'node:path'
 import { readdirSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
@@ -75,7 +79,7 @@ function getRawMessage (id) {
 }
 
 /**
-* Translate and transform a message pattern
+* Translate and transform a message pattern with current locale
 * Defaults to en if message id not found in requested locale
 * @param {string} id - The Fluent message id.
 * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
@@ -85,7 +89,22 @@ function getRawMessage (id) {
 * // Returns "Hello, Jane!"
 */
 function getMessage (id, args) {
-  let bundle = fluentBundles[getLocale()]
+  return getMessageWithLocale(id, getLocale(), args)
+}
+
+/**
+* Translate and transform a message pattern
+* Can pass in any locale
+* Defaults to en if message id not found in requested locale
+* @param {string} id - The Fluent message id.
+* @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+* @example
+* // Given FluentResource("hello = Hello, {$name}!")
+* getMessage (hello, {name: "Jane"})
+* // Returns "Hello, Jane!"
+*/
+function getMessageWithLocale (id, locale, args) {
+  let bundle = fluentBundles[locale]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
@@ -98,4 +117,4 @@ function fluentError (id) {
   return new Error(getMessage(id))
 }
 
-export { initFluentBundles, updateLocale, getLocale, getMessage, getRawMessage, fluentError }
+export { initFluentBundles, updateLocale, getLocale, getMessage, getMessageWithLocale, getRawMessage, fluentError }

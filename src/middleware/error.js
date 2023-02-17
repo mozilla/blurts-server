@@ -1,4 +1,8 @@
-import { MethodNotAllowedError, NotFoundError } from '../utils/error.js'
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import { MethodNotAllowedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 const log = mozlog('middleware')
 
@@ -28,12 +32,11 @@ function errorHandler (err, req, res, next) {
 }
 
 /**
- * Used as a 404 default for routes
+ * Log 404 errors, but don't send a response - they're handled by the `notFound` view
  */
-function notFound (req) {
-  // TODO: when there's a 404 page to be rendered here,
-  // replace the json return with html
-  throw new NotFoundError(`Page not found! ${req.method} ${req.originalUrl}`)
+function notFound (req, _res, next) {
+  log.info('http-error', { statusCode: 404, method: req.method, originalUrl: req.originalUrl })
+  next()
 }
 
 function methodNotAllowed (req) {

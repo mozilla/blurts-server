@@ -4,7 +4,7 @@
 const Sentry = require('@sentry/node')
 const AppConstants = require('./app-constants')
 Sentry.init({
-  dsn: AppConstants.SENTRY_DSN,
+  dsn: AppConstants.SENTRY_DSN_LEGACY,
   environment: AppConstants.NODE_ENV,
   beforeSend (event, hint) {
     if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english

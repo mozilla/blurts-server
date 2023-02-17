@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 * {
   margin: 0;
   padding: 0;
@@ -20,6 +24,7 @@ body {
 h1 {
   font: var(--h1-font);
   margin: var(--padding-md) 0;
+  line-height: 1.2;
 }
 
 h2 {
@@ -41,13 +46,35 @@ p {
   margin: var(--padding-md) 0;
 }
 
-a {
+a,
+.anchor {
   color: inherit;
+  font-size: inherit;
+  line-height: inherit;
   text-decoration: underline;
   text-underline-position: under;
 }
 
-img {
+b,
+strong {
+  font-weight: 600;
+}
+
+hr {
+  background-color: var(--gray-10);
+  color: var(--gray-10);
+  height: 1px;
+}
+
+hr:not(.monitor-gradient) {
+  border: none;
+}
+
+hr.monitor-gradient {
+  border-image: var(--monitor-gradient) 1;
+}
+
+img:not(.email-preview img) {
   display: block;
   max-width: 100%;
   height: auto;
@@ -68,7 +95,7 @@ body > header {
   box-shadow: 0 6px 6px -8px #0000;
   padding: var(--padding-md) var(--padding-lg);
   transition: box-shadow 0.3s;
-  z-index: 1;
+  z-index: 2;
 }
 
 .scrolled body > header {
@@ -78,6 +105,12 @@ body > header {
 body > header .monitor-logo {
   width: calc(213px * var(--multiplier));
   object-fit: contain;
+}
+
+body > header .nav-wrapper {
+  align-items: center;
+  display: flex;
+  gap: var(--padding-sm);
 }
 
 main {
@@ -148,13 +181,19 @@ button,
   border-radius: var(--border-radius);
 }
 
+button[hidden],
+.button[hidden] {
+  display: none;
+}
+
 button * {
   pointer-events: none;
 }
 
-button:active,
-.button:active {
-  box-shadow: inset 0 0 64px #80808011;
+button:disabled,
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 button.primary,
@@ -163,6 +202,7 @@ button.primary,
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
   padding: var(--padding-md);
+  transition: background 150ms;
 }
 
 button.secondary,
@@ -170,6 +210,77 @@ button.secondary,
   color: var(--blue-50);
   border: 1px solid;
   padding: var(--padding-md);
+}
+
+button.primary:active,
+.button.primary:active,
+button.secondary:active,
+.button.secondary:active {
+  box-shadow: inset 0 0 64px #80808011;
+}
+
+button.primary:hover:enabled,
+.button.primary:hover:enabled {
+  background: var(--blue-60);
+}
+
+button.close {
+  width: 24px;
+  height: 24px;
+  padding: var(--padding-md);
+  background: url('../images/icon-close.svg') no-repeat 50%;
+}
+
+input[type='checkbox'] {
+  width: var(--checkbox-w);
+  height: var(--checkbox-w);
+}
+
+label.text-field {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  text-align: left;
+}
+
+label.text-field > span {
+  font-size: 0.75rem;
+  color: var(--gray-30);
+}
+
+label.text-field > input {
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--gray-20);
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: border-color 0.2s linear;
+}
+
+label.text-field > input:focus {
+  border-bottom-color: var(--gray-30);
+}
+
+dialog {
+  width: min(640px, 100%);
+  margin: auto;
+  padding: var(--padding-xl);
+  border: none;
+  border-radius: var(--border-radius);
+}
+
+dialog[open] {
+  animation: fade-in 0.3s;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 0.8);
+}
+
+dialog button.close {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 @keyframes fade-in {

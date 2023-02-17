@@ -1,37 +1,65 @@
-nav {
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+nav.site-nav {
   position: fixed;
   top: var(--header-h);
   left: 0;
   height: calc(100vh - var(--header-h));
   display: inline-flex;
   flex-flow: column nowrap;
-  padding: var(--padding-lg) 0 var(--footer-h);
+  padding: var(--padding-lg) var(--padding-md) var(--footer-h);
   background: white;
   border-right: 1px solid var(--gray-10);
   border-image: linear-gradient(#0000 3%, var(--gray-10) 5%, var(--gray-10) 95%, #0000 97%) 1;
   z-index: 1;
 }
 
-nav[hidden] {
+nav.site-nav[hidden] {
   display: none;
 }
 
-nav > a {
-  padding: var(--padding-sm) var(--padding-lg);
+nav.site-nav .pages-nav,
+nav.site-nav .meta-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-evenly;
+  padding-block: var(--padding-md);
+  border-bottom: 1px solid var(--gray-10);
+}
+
+nav.site-nav a {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+
+  /* Break out of the inline padding of .pages-nav and .meta-nav, so that the
+   * left-hand side border is flush with the left-hand side of the nav: */
+  margin-inline: calc(-1 * var(--padding-md));
+
+  /* Then restore the inline padding, adding 5px for the `nav-indicator`
+   * "shadow"/line on the lef-thand side: */
+  padding-left: calc(5px + var(--padding-md));
+  padding-right: var(--padding-md);
+  padding-block: var(--padding-sm);
   text-decoration: none;
+  font-weight: normal;
+  color: var(--gray-40);
+  font-size: 0.875rem;
 }
 
-nav > a + a {
-  border-top: 1px solid  var(--gray-10);
-  border-image: linear-gradient(90deg, #0000 3%, var(--gray-10) 5%, var(--gray-10) 95%, #0000 97%) 1;
-}
-
-nav > a.current {
+nav.site-nav a.current {
   color: var(--purple-70);
   animation: nav-indicator 0.2s ease-out forwards;
 }
 
-.mobile nav {
+nav.site-nav a:not(.current):hover {
+  color: var(--purple-40);
+}
+
+.mobile nav.site-nav {
   width: 100%;
   border: none;
 }
