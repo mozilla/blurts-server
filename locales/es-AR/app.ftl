@@ -661,3 +661,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Página no encontrada
+error-page-error-404-copy = Lo sentimos, la página que estás buscando no existe más.
+error-page-error-404-cta-button = Atrás
