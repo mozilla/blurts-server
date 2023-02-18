@@ -34,6 +34,9 @@ customer-interactions = interactiones del clientes
 dates-of-birth = Datas de nascentia
 deceased-date = Data de decesso
 deceased-statuses = Statos de decesso
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Instructiones pro le delivration
 device-information = informationes sur le apparatos
 device-serial-numbers = Numeros serial del apparato
 device-usage-tracking-data = Datos de uso del apparato
@@ -138,6 +141,7 @@ user-website-urls = URLs del sito web del usator
 usernames = Nomines de usator
 utility-bills = Facturas
 vehicle-details = Detalios del auto
+vehicle-identification-numbers-vins = Numeros de identification del vehiculo (VIN)
 website-activity = Activitate del sito web
 work-habits = Habitudes de labor
 years-of-birth = Annos de nascentia

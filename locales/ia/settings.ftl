@@ -9,10 +9,16 @@ settings-page-title = Parametros de { -product-short-name }
 
 ## Breach alert preferences
 
+settings-alert-preferences-title = Preferentias de alerta violation
 settings-alert-preferences-option-one = Inviar avisos de violation al adresse de email afficite
+settings-alert-preferences-option-two = Inviar tote le avisos de violation al adresse email primari
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
+settings-email-label-primary = { $email } (primari)
+settings-email-list-title = Adresses email surveliate
 settings-email-verification-callout = Verification del email requirite.
 settings-resend-email-verification-link = Reinviar email de verification
 settings-add-email-button = Adder adresse email

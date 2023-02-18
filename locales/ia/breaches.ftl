@@ -31,7 +31,10 @@ column-status-badge-resolved = Resolvite
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Active
 breaches-none-headline = Nulle violationes trovate
+breaches-none-cta-blurb = Vole tu surveliar un altere adresse email?
 breaches-none-cta-button = Adder adresse email
+breaches-all-resolved-headline = Tote le violationes resolvite
+breaches-all-resolved-cta-blurb = Vole tu surveliar un altere adresse email?
 breaches-all-resolved-cta-button = Adder adresse email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Le { $breachDate }, { $companyName } era violate. Post le discoperta e verification de iste violation, nos lo ha addite a nostre base de datos le { $addedDate }. Iste violation include: { $dataClasses }
