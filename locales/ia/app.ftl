@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Conto Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Tu ha probate a analysar troppo de adresses email in un curte periodo de tempore. Pro rationes de securitate, nos te ha temporarimente blocate pro nove recercas. Tu potera probar de novo plus tarde.
 error-could-not-add-email = Impossibile adder le adresse de e-mail al base de datos.
@@ -573,6 +570,12 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 -brand-mozilla-foundation = Le fundation Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conto Firefox
+
 ## Search Engine Optimization
 
 meta-desc = Discoperi si tu ha essite parte de un violation de datos con { -brand-fx-monitor }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
@@ -582,8 +585,31 @@ meta-desc = Discoperi si tu ha essite parte de un violation de datos con { -bran
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Aperir session
 
+## Site navigation
+
+site-nav-breaches-link = Resolver violationes de datos
+site-nav-settings-link = Parametros
+site-nav-help-link = Adjuta e assistentia
+
+## User menu
+
+menu-button-title = Menu de usator
+menu-button-alt = Aperir le menu de usator
+menu-list-accessible-label = Menu de conto
+menu-item-fxa = Gere tu { -brand-fx-account }
+menu-item-settings = Parametros
+menu-item-help = Adjuta e supporto
+menu-item-logout = Clauder session
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Conditiones de uso e confidentialitate
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Pagina non trovate
+error-page-error-404-cta-button = Retornar

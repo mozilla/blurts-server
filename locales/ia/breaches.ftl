@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } de { $total } email surveliate
        *[other] { $count } de { $total } emails surveliate
     }
-add-email-link = Adder adresse email
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Gerer emails
 
 ## Breaches resolved filter
 
@@ -25,6 +26,13 @@ filter-label-resolved = Violationes resolvite
 column-company = COMPANIA
 column-breached-data = DATOS VIOLATE
 column-detected = DISCOPERITE
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resolvite
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Active
+breaches-none-headline = Nulle violationes trovate
+breaches-none-cta-button = Adder adresse email
+breaches-all-resolved-cta-button = Adder adresse email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Le { $breachDate }, { $companyName } era violate. Post le discoperta e verification de iste violation, nos lo ha addite a nostre base de datos le { $addedDate }. Iste violation include: { $dataClasses }
 
