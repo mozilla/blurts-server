@@ -8,3 +8,5 @@
 add-email-add-another-heading = Lägg till ytterligare en e-postadress
 add-email-address-input-label = E-postadress
 add-email-send-verification-button = Skicka verifieringslänk
+# $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+add-email-verify-the-link = Verifiera länken som skickades till { $email } för att lägga till den i { -brand-fx-monitor }. Hantera alla e-postadresser i <a { $settings-href }>Inställningar</a>.

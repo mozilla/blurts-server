@@ -686,6 +686,8 @@ menu-button-alt = Öppna användarmenyn
 menu-list-accessible-label = Kontomeny
 menu-item-fxa = Hantera ditt { -brand-fx-account }
 menu-item-settings = Inställningar
+menu-item-help = Hjälp och support
+menu-item-logout = Logga ut
 
 ## Footer
 
@@ -695,3 +697,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } sidan hittades inte
+error-page-error-404-copy = Vi är ledsna, sidan du letar efter finns inte längre.
+error-page-error-404-cta-button = Gå tillbaka
