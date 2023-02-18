@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Conta Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Você tentou analisar endereços de email demais em um curto espaço de tempo. Por motivos de segurança, bloqueamos temporariamente novas buscas suas. Você poderá tentar novamente mais tarde.
 error-could-not-add-email = Não foi possível adicionar endereço de email ao banco de dados.
@@ -627,6 +624,12 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 -brand-mozilla-foundation = Fundação Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conta Firefox
+
 ## Search Engine Optimization
 
 meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -brand-fx-monitor }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
@@ -636,8 +639,22 @@ meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -bran
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Entrar
 
+## Site navigation
+
+site-nav-breaches-link = Resolver vazamentos de dados
+site-nav-settings-link = Configurações
+site-nav-help-link = Ajuda e suporte
+
+## User menu
+
+menu-button-title = Menu do usuário
+menu-button-alt = Abrir menu do usuário
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Termos e Privacidade
 github = { -brand-github }
+
+## Error page
+
