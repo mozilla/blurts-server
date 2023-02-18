@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-konto
 GitHub-link-title = GitHub
 error-scan-page-token = Du försökte skanna för många e-postadresser inom en kort tidsperiod. Av säkerhetsskäl har vi tillfälligt blockerat dig från nya sökningar. Du kommer att kunna försöka igen senare.
 error-could-not-add-email = Kunde inte lägga till e-postadress i databasen.
@@ -661,6 +658,12 @@ ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd e
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
+
 ## Search Engine Optimization
 
 meta-desc = Ta reda på om du har varit en del av ett dataintrång med { -brand-fx-monitor }. Registrera dig för varningar om framtida intrång och få tips för att hålla dina konton säkra.
@@ -670,8 +673,25 @@ meta-desc = Ta reda på om du har varit en del av ett dataintrång med { -brand-
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Logga in
 
+## Site navigation
+
+site-nav-breaches-link = Åtgärda dataintrång
+site-nav-settings-link = Inställningar
+site-nav-help-link = Hjälp och support
+
+## User menu
+
+menu-button-title = Användarmeny
+menu-button-alt = Öppna användarmenyn
+menu-list-accessible-label = Kontomeny
+menu-item-fxa = Hantera ditt { -brand-fx-account }
+menu-item-settings = Inställningar
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Villkor och sekretess
 github = { -brand-github }
+
+## Error page
+
