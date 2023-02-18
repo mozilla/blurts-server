@@ -581,6 +581,11 @@ site-nav-help-link = 帮助和支持
 
 menu-button-title = 用户菜单
 menu-button-alt = 打开用户菜单
+menu-list-accessible-label = 帐户菜单
+menu-item-fxa = 管理您的 { -brand-fx-account }
+menu-item-settings = 设置
+menu-item-help = 帮助和支持
+menu-item-logout = 登出
 
 ## Footer
 
@@ -590,3 +595,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } 找不到页面
+error-page-error-404-copy = 很抱歉，您要查找的页面不存在。
+error-page-error-404-cta-button = 返回
