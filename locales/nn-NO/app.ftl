@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-konto
 GitHub-link-title = GitHub
 error-scan-page-token = Du freista å skanne for mange e-postadresser på kort tid. Av tryggingsårsaker har vi mellombels blokkert deg frå nye søk. Du vil kunne gjere nye søk seinare.
 error-could-not-add-email = Klarte ikkje å leggje til e-postadressa i databasen.
@@ -645,6 +642,12 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
+
 ## Search Engine Optimization
 
 
@@ -653,8 +656,22 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Logg inn
 
+## Site navigation
+
+site-nav-settings-link = Innstillingar
+site-nav-help-link = Hjelp og brukarstøtte
+
+## User menu
+
+menu-button-title = Bruklarmeny
+menu-button-alt = Opne brukarmeny
+menu-list-accessible-label = Kontomeny
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Vilkår og personvern
 github = { -brand-github }
+
+## Error page
+
