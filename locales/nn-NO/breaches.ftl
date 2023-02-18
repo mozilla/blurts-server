@@ -7,7 +7,8 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Datalekkasjar for { $email-select }
-add-email-link = Legg til e-postadresser
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Handsam e-postadresser
 
 ## Breaches resolved filter
 
@@ -18,6 +19,12 @@ filter-label-resolved = Løyste datalekkasjar
 
 column-company = VERKSEMD
 column-detected = OPPDAGA
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Løyst
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktiv
+breaches-none-headline = Fann ingen datalekkasjar
+breaches-all-resolved-cta-button = Legg til e-postadresse
 
 ## Prompts the user for changes when there is a breach detected of password
 

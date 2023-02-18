@@ -3,9 +3,11 @@
 
 ## Hero
 
+get-started = Kom i gang
 
 ## Why use Firefox Monitor?
 
+why-use-monitor = Kvifor bruke { -brand-fx-monitor }?
 protect-account = Beskytt kontoane dine
 
 ## Here’s how it works

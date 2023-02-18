@@ -666,6 +666,10 @@ site-nav-help-link = Hjelp og brukarstøtte
 menu-button-title = Bruklarmeny
 menu-button-alt = Opne brukarmeny
 menu-list-accessible-label = Kontomeny
+menu-item-fxa = Hasndsam { -brand-fx-account }-en din
+menu-item-settings = Innstillingar
+menu-item-help = Hjelp og brukarstøtte
+menu-item-logout = Logg ut
 
 ## Footer
 
@@ -675,3 +679,7 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Fann ikkje sida
+error-page-error-404-cta-button = Gå tilbake
