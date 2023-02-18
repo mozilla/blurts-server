@@ -34,6 +34,9 @@ customer-interactions = Müşteri etkileşimleri
 dates-of-birth = Doğum tarihleri
 deceased-date = Ölüm tarihi
 deceased-statuses = Ölüm durumları
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Teslimat talimatları
 device-information = Cihaz bilgileri
 device-serial-numbers = Cihaz seri numaraları
 device-usage-tracking-data = Cihaz kullanımı izleme verileri

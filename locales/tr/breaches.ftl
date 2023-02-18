@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $total } e-postanın { $count } tanesi izleniyor
        *[other] { $total } e-postanın { $count } tanesi izleniyor
     }
-add-email-link = E-posta adresi ekle
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = E-postaları yönet
 
 ## Breaches resolved filter
 
@@ -25,6 +26,16 @@ filter-label-resolved = Çözülmüş ihlaller
 column-company = ŞİRKET
 column-breached-data = İHLAL EDİLMİŞ VERİLER
 column-detected = TESPİT EDİLDİ
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Çözüldü
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Etkin
+breaches-none-headline = İhlal bulunamadı
+breaches-none-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
+breaches-none-cta-button = E-posta adresi ekle
+breaches-all-resolved-headline = Tüm ihlaller çözüldü
+breaches-all-resolved-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
+breaches-all-resolved-cta-button = E-posta adresi ekle
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $breachDate } tarihinde { $companyName } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi. İhlal şunları içeriyordu: { $dataClasses }
 
