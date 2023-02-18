@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Cuenta de Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto período de tiempo. Por razones de seguridad, bloqueamos tus búsquedas temporariamente. Podés probar de nuevo dentro de un rato.
 error-could-not-add-email = No se pudo agregar la dirección de correo electrónico a la base de datos.
@@ -625,6 +622,12 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá un
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta de Firefox
+
 ## Search Engine Optimization
 
 meta-desc = Descubrí fuiste parte de una violación de datos con { -brand-fx-monitor }. Registrate para recibir alertas sobre futuras infracciones y obtené consejos para mantener tus cuentas seguras.
@@ -634,8 +637,27 @@ meta-desc = Descubrí fuiste parte de una violación de datos con { -brand-fx-mo
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Iniciar la sesión
 
+## Site navigation
+
+site-nav-breaches-link = Resolver filtraciones de datos
+site-nav-settings-link = Opciones
+site-nav-help-link = Ayuda y soporte
+
+## User menu
+
+menu-button-title = Menú de usuario
+menu-button-alt = Abrir menú de usuario
+menu-list-accessible-label = Menú de cuenta
+menu-item-fxa = Administrar tu { -brand-fx-account }
+menu-item-settings = Opciones
+menu-item-help = Ayuda y soporte
+menu-item-logout = Cerrar sesión
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Términos y privacidad
 github = { -brand-github }
+
+## Error page
+
