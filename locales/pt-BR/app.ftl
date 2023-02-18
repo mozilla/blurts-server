@@ -649,6 +649,11 @@ site-nav-help-link = Ajuda e suporte
 
 menu-button-title = Menu do usuário
 menu-button-alt = Abrir menu do usuário
+menu-list-accessible-label = Menu da conta
+menu-item-fxa = Gerencie sua { -brand-fx-account }
+menu-item-settings = Configurações
+menu-item-help = Ajuda e suporte
+menu-item-logout = Sair
 
 ## Footer
 
@@ -658,3 +663,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Página não encontrada
+error-page-error-404-copy = Desculpe, a página que procura não existe mais.
+error-page-error-404-cta-button = Voltar
