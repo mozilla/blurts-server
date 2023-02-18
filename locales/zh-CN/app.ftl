@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox 账户
 GitHub-link-title = GitHub
 error-scan-page-token = 您试图在短时间内扫描过多的电子邮件地址。出于安全原因，我们暂时阻止您进行新的搜索。请您稍后再试。
 error-could-not-add-email = 无法将电子邮件地址添加到数据库。
@@ -559,6 +556,12 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 -brand-mozilla-foundation = Mozilla 基金会
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 账户
+
 ## Search Engine Optimization
 
 meta-desc = 使用 { -brand-fx-monitor }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
@@ -568,8 +571,22 @@ meta-desc = 使用 { -brand-fx-monitor }，看看您的账号是否也在数据�
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 登录
 
+## Site navigation
+
+site-nav-breaches-link = 解决数据泄露
+site-nav-settings-link = 设置
+site-nav-help-link = 帮助和支持
+
+## User menu
+
+menu-button-title = 用户菜单
+menu-button-alt = 打开用户菜单
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = 使用条款和隐私
 github = { -brand-github }
+
+## Error page
+
