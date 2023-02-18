@@ -9,6 +9,7 @@ settings-page-title = Inställningar { -product-short-name }
 
 ## Breach alert preferences
 
+settings-alert-preferences-title = Inställningar för intrångsvarning
 settings-alert-preferences-option-one = Skicka intrångsvarningar till den drabbade e-postadressen
 settings-alert-preferences-option-two = Skicka alla intrångsvarningar till den primära e-postadressen
 
@@ -47,4 +48,6 @@ settings-fxa-link-label = Gå till { -brand-firefox }-inställningar
 ## Add email dialog
 
 settings-email-dialog-title = Lägg till ytterligare en e-postadress
+settings-add-email-text = Lägg till en ny e-postadress för att se om den har varit inblandad i ett intrång.
 settings-email-input-label = E-postadress
+settings-send-email-verification-button = Skicka verifieringslänk
