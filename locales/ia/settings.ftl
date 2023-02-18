@@ -19,6 +19,13 @@ settings-alert-preferences-option-two = Inviar tote le avisos de violation al ad
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (primari)
 settings-email-list-title = Adresses email surveliate
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Tu conto include surveliantia pro usque { $limit } email.
+       *[other] Tu conto include surveliantia pro usque { $limit } emails.
+    }
 settings-email-verification-callout = Verification del email requirite.
 settings-resend-email-verification-link = Reinviar email de verification
 settings-add-email-button = Adder adresse email
@@ -34,6 +41,7 @@ settings-email-number-of-breaches-info =
 
 ## Deactivate account
 
+settings-deactivate-account-title = Disactivar le conto
 settings-fxa-link-label = Ir a parametros de { -brand-firefox }
 
 ## Add email dialog
