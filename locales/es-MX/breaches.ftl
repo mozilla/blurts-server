@@ -45,6 +45,7 @@ breach-checklist-pw-header = Ve a <a>{ $breachedCompanyUrl }</a> para cambiar tu
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Protege tu correo electrónico con un servicio de enmascaramiento de correo electrónico como <a>{ -brand-relay }</a>.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -71,12 +72,15 @@ breach-checklist-address-header = Cambia cualquier contraseña o PINs que incluy
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Cambia cualquier contraseña o PIN que incluya tu fecha de cumpleaños.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Actualiza tus preguntas de seguridad en <a>{ $breachedCompanyUrl }</a>.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
