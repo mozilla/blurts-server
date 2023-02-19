@@ -39,6 +39,11 @@ breaches-none-copy = Dobré zprávy! Pro adresu { $email } nebyly hlášeny žá
 breaches-none-cta-blurb = Chcete monitorovat další e-mailovou adresu?
 breaches-none-cta-button = Přidat e-mailové adresy
 breaches-all-resolved-headline = Všechny úniky dát byly vyřešeny
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Výborně! Vyřešili jste všechny úniky dat pro adresu { $email }. Tuto adresu budeme nadále monitorovat a dojde-li k novému úniku dat, dáme vám vědět.
+breaches-all-resolved-cta-blurb = Chcete monitorovat další e-mailovou adresu?
+breaches-all-resolved-cta-button = Přidat e-mailové adresy
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Dne { $breachDate } došlo k úniku dat společnosti { $companyName }. Jakmile byl únik objevený a ověřený, byl dne { $addedDate } přidán do naší databáze. Tento únik zahrnoval: { $dataClasses }
 
