@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Cuenta de Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Intentaste escanear demasiadas direcciones de correo electrónico en un corto periodo de tiempo. Por cuestiones de seguridad, hemos bloqueado tus búsquedas temporalmente. Puedes intentarlo de nuevo más tarde.
 error-could-not-add-email = No se pudo agregar la dirección de correo electrónico a la base de datos.
@@ -619,6 +616,12 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cuenta de Firefox
+
 ## Search Engine Optimization
 
 
@@ -627,8 +630,31 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Inicia sesión
 
+## Site navigation
+
+site-nav-breaches-link = Resolver filtraciones de datos
+site-nav-settings-link = Ajustes
+site-nav-help-link = Ayuda y soporte
+
+## User menu
+
+menu-button-title = Menú de usuario
+menu-button-alt = Abrir menú de usuario
+menu-list-accessible-label = Menú de cuenta
+menu-item-fxa = Administra tu { -brand-fx-account }
+menu-item-settings = Ajustes
+menu-item-help = Ayuda y soporte
+menu-item-logout = Cerrar sesión
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Términos y Privacidad
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Página no encontrada
+error-page-error-404-cta-button = Regresar

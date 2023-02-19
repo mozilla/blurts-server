@@ -14,7 +14,8 @@ emails-monitored =
         [many] { $count } de { $total } correos electrónicos monitoreados
        *[other] { $count } de { $total } correos electrónicos monitoreados
     }
-add-email-link = Agregar dirección de correo
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Administrar correos electrónicos
 
 ## Breaches resolved filter
 
@@ -26,6 +27,16 @@ filter-label-resolved = Filtraciones resueltos
 column-company = EMPRESA
 column-breached-data = DATOS FILTRADOS
 column-detected = DETECTADO
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resuelto
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Activo
+breaches-none-headline = No se encontraron filtraciones
+breaches-none-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
+breaches-none-cta-button = Agregar dirección de correo electrónico
+breaches-all-resolved-headline = Todas las filtraciones resueltas
+breaches-all-resolved-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
+breaches-all-resolved-cta-button = Agregar dirección de correo electrónico
 
 ## Prompts the user for changes when there is a breach detected of password
 
