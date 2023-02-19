@@ -19,6 +19,14 @@ settings-alert-preferences-option-two = Enviar todas las alertas de filtraciones
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (principal)
 settings-email-list-title = Direcciones de correo electrónico monitoreadas
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Tu cuenta incluye monitoreo de hasta { $limit } correo electrónico.
+        [many] Tu cuenta incluye monitoreo de hasta { $limit } correos electrónicos.
+       *[other] Tu cuenta incluye monitoreo de hasta { $limit } correo electrónico.
+    }
 settings-email-verification-callout = Se requiere verificación de correo electrónico
 settings-resend-email-verification-link = Reenviar correo electrónico de verificación
 settings-add-email-button = Agregar dirección de correo electrónico
