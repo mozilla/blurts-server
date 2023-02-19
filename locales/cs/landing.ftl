@@ -47,7 +47,7 @@ what-do-i-do = Právě jsem zjistil(a), že byly mé údaje součástí úniku d
 visit-monitor-to-learn = Navštivte { -brand-fx-monitor(case: "acc") } a zjistěte, co dělat po úniku dat. Hackeři spoléhají na to, že lidé budou hesla opakovaně používat, proto je důležité vytvořit silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy. Může to být stejné místo, kam ukládáte důležité dokumenty nebo správce hesel.
 # question and answer
 what-gets-exposed = Jaké informace jsou při únicích dat vyzrazeny?
-depends-on-hackers = Ne všechny úniky odhalí stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho úniků dat odhaluje e-mailové adresy a hesla. Jiné odhalují citlivější informace, jako jsou čísla platebních karet, čísla pasů či čísla sociálního pojištění.
+depends-on-hackers = Ne všechny úniky vyzrazují stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho úniků dat vyzrazuje e-mailové adresy a hesla. Jiné vyzrazují citlivější informace, jako jsou čísla platebních karet, čísla pasů či rodná čísla.
 
 ## See if you’ve been in a data breach
 
