@@ -33,6 +33,12 @@ column-status-badge-resolved = Vyřešený
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktivní
 breaches-none-headline = Nebyly nalezeny žádné úniky dat
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Dobré zprávy! Pro adresu { $email } nebyly hlášeny žádné známé úniky dat. Tuto adresu budeme nadále monitorovat a dojde-li k novému úniku dat, dáme vám vědět.
+breaches-none-cta-blurb = Chcete monitorovat další e-mailovou adresu?
+breaches-none-cta-button = Přidat e-mailové adresy
+breaches-all-resolved-headline = Všechny úniky dát byly vyřešeny
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Dne { $breachDate } došlo k úniku dat společnosti { $companyName }. Jakmile byl únik objevený a ověřený, byl dne { $addedDate } přidán do naší databáze. Tento únik zahrnoval: { $dataClasses }
 
