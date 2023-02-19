@@ -42,10 +42,12 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Disactivar le conto
+settings-deactivate-account-info = Tu pote disactivar { -product-short-name } delente tu { -brand-fx-account }.
 settings-fxa-link-label = Ir a parametros de { -brand-firefox }
 
 ## Add email dialog
 
 settings-email-dialog-title = Adder altere adresse email
+settings-add-email-text = Adde un nove adresse email pro vider si illo ha essite implicate in violationes.
 settings-email-input-label = Adresse email
 settings-send-email-verification-button = Inviar ligamine de verification
