@@ -14,7 +14,8 @@ emails-monitored =
         [few] Відстежується { $count } адреси е-пошти з { $total }
        *[many] Відстежується { $count } адрес е-пошти з { $total }
     }
-add-email-link = Додайте адресу електронної пошти
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Керуйте електронними адресами
 
 ## Breaches resolved filter
 
@@ -26,6 +27,22 @@ filter-label-resolved = Розв'язані витоки
 column-company = КОМПАНІЯ
 column-breached-data = УРАЖЕНІ ДАНІ
 column-detected = ВИЯВЛЕНО
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Розв'язано
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Активний
+breaches-none-headline = Витоків не знайдено
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Гарні новини! Немає повідомлень про відомі витоки для { $email }. Ми продовжуватимемо стежити за цією електронною поштою і повідомимо вас, якщо стануться нові витоки.
+breaches-none-cta-blurb = Бажаєте здійснювати моніторинг іншої електронної адреси?
+breaches-none-cta-button = Додати адресу електронної пошти
+breaches-all-resolved-headline = Усі витоки розв'язано
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Чудова робота! Ви розв'язали всі витоки для { $email }. Ми продовжуватимемо стежити за цією електронною адресою і повідомимо вас, якщо стануться нові витоки.
+breaches-all-resolved-cta-blurb = Бажаєте здійснювати моніторинг іншої електронної адреси?
+breaches-all-resolved-cta-button = Додати адресу електронної пошти
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $breachDate }, у { $companyName } стався витік даних. Одразу після виявлення та підтвердження, цей витік було додано до нашої бази даних на { $addedDate }. До цього витоку входять: { $dataClasses }
 
