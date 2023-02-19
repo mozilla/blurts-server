@@ -31,8 +31,12 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Hesabı devre dışı bırak
+settings-deactivate-account-info = { -product-short-name }’ü { -brand-fx-account }nızı silerek devre dışı bırakabilirsiniz.
+settings-fxa-link-label = { -brand-firefox } ayarlarına git
 
 ## Add email dialog
 
+settings-email-dialog-title = Başka bir e-posta adresi ekle
+settings-add-email-text = Bir ihlale karışıp karışmadığını görmek için yeni bir e-posta adresi ekleyin.
 settings-email-input-label = E-posta adresi
 settings-send-email-verification-button = Doğrulama bağlantısını gönder
