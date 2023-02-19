@@ -549,7 +549,7 @@ ad-unit-3-be-anywhere = Puoi risultare ovunque nel mondo, senza esserti mosso da
 # ad 3 list item 3
 ad-unit-3-access-more = Accedi a più contenuti
 # ad 4 heading
-ad-unit-4-shopping-with = Fai acquisti con gli alias
+ad-unit-4-shopping-with = Fai acquisti con gli alias di posta elettronica
 ad-unit-4-want-to-buy = Vuoi acquistare qualcosa online e non conosci o non ti fidi completamente del negozio?
 ad-unit-4-shop-online = Utilizza un alias di posta elettronica ogni volta che fai acquisti online. Ricevi la conferma al tuo indirizzo email reale e disattiva facilmente l’alias in qualsiasi momento.
 # ad 5 heading
