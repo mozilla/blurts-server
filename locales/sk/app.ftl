@@ -719,7 +719,39 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = účet Firefox
+-brand-fx-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] účtu Firefox
+               *[upper] Účtu Firefox
+            }
+        [dat]
+            { $capitalization ->
+                [lower] účtu Firefox
+               *[upper] Účtu Firefox
+            }
+        [acc]
+            { $capitalization ->
+                [lower] účet Firefox
+               *[upper] Účet Firefox
+            }
+        [loc]
+            { $capitalization ->
+                [lower] účte Firefox
+               *[upper] Účte Firefox
+            }
+        [ins]
+            { $capitalization ->
+                [lower] účtom Firefox
+               *[upper] Účtom Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] účet Firefox
+               *[upper] Účet Firefox
+            }
+    }
 
 ## Search Engine Optimization
 
@@ -741,7 +773,7 @@ site-nav-help-link = Pomoc a podpora
 menu-button-title = Ponuka používateľa
 menu-button-alt = Otvoriť používateľskú ponuku
 menu-list-accessible-label = Ponuka účtu
-menu-item-fxa = Spravovať { -brand-fx-account }
+menu-item-fxa = Spravovať { -brand-fx-account(case: "acc", capitalization: "lower") }
 menu-item-settings = Nastavenia
 menu-item-help = Pomoc a podpora
 menu-item-logout = Odhlásiť sa
