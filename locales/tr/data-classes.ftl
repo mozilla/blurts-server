@@ -141,6 +141,7 @@ user-website-urls = Kullanıcı web sitesi adresleri
 usernames = Kullanıcı adları
 utility-bills = Hizmet faturaları
 vehicle-details = Taşıt ayrıntıları
+vehicle-identification-numbers-vins = Araç şasi numaraları (VIN’ler)
 website-activity = Web sitesi etkinliği
 work-habits = İş alışkanlıkları
 years-of-birth = Doğum yılları

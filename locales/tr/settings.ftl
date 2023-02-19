@@ -11,9 +11,13 @@ settings-page-title = { -product-short-name } Ayarları
 
 settings-alert-preferences-title = İhlal uyarısı tercihleri
 settings-alert-preferences-option-one = İhlal uyarılarını etkilenen e-posta adresine gönder
+settings-alert-preferences-option-two = Tüm ihlal uyarılarını birinci e-posta adresine gönder
 
 ## Monitored email addresses
 
+# Variables:
+#   $email (string) - Email address
+settings-email-label-primary = { $email } (birinci)
 settings-email-list-title = İzlenen e-posta adresleri
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder

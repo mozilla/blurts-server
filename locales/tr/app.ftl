@@ -610,6 +610,7 @@ sign-in = Giriş yap
 
 ## Site navigation
 
+site-nav-breaches-link = Veri ihlallerini çöz
 site-nav-settings-link = Ayarlar
 
 ## User menu
