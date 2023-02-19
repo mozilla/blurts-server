@@ -795,6 +795,9 @@ menu-button-title = Nabídka uživatele
 menu-button-alt = Otevřít nabídku uživatele
 menu-list-accessible-label = Nabídka účtu
 menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
+menu-item-settings = Nastavení
+menu-item-help = Nápověda a podpora
+menu-item-logout = Odhlásit se
 
 ## Footer
 
@@ -804,3 +807,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Stránka nebyla nalezena
+error-page-error-404-copy = Je nám líto, ale stránka, kterou hledáte, již neexistuje.
+error-page-error-404-cta-button = Přejít zpět

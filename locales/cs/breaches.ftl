@@ -15,7 +15,8 @@ emails-monitored =
         [many] { $count } z { $total } sledovaných e-mailů
        *[other] { $count } z { $total } sledovaných e-mailů
     }
-add-email-link = Přidat e-mailové adresy
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Spravovat e-mailové adresy
 
 ## Breaches resolved filter
 
@@ -27,6 +28,11 @@ filter-label-resolved = Vyřešené úniky
 column-company = SPOLEČNOST
 column-breached-data = ÚNIKLÁ DATA
 column-detected = ZJIŠTĚNO
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Vyřešený
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktivní
+breaches-none-headline = Nebyly nalezeny žádné úniky dat
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Dne { $breachDate } došlo k úniku dat společnosti { $companyName }. Jakmile byl únik objevený a ověřený, byl dne { $addedDate } přidán do naší databáze. Tento únik zahrnoval: { $dataClasses }
 
