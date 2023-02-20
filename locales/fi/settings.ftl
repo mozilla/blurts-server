@@ -9,6 +9,9 @@ settings-page-title = { -product-short-name } -asetukset
 
 ## Breach alert preferences
 
+settings-alert-preferences-title = Tietovuotoilmoitusten asetukset
+settings-alert-preferences-option-one = Lähetä tietovuotoilmoitukset vuodettuun sähköpostiosoitteeseen
+settings-alert-preferences-option-two = Lähetä kaikki tietovuotoilmoitukset ensisijaiseen sähköpostiosoitteeseen
 
 ## Monitored email addresses
 

@@ -6,5 +6,11 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Lisää toinen sähköpostiosoite
+# $total is the number of emails a user is allowed to add
+add-email-your-account-includes =
+    { $total ->
+        [one] Tilisi sisältää enintään { $total } sähköpostiosoitteen valvonnan. Lisää uusi sähköpostiosoite nähdäksesi, onko se ollut osallisena tietovuodossa.
+       *[other] Tilisi sisältää enintään { $total } sähköpostiosoitteen valvonnan. Lisää uusi sähköpostiosoite nähdäksesi, onko se ollut osallisena tietovuodossa.
+    }
 add-email-address-input-label = Sähköpostiosoite
 add-email-send-verification-button = Lähetä vahvistuslinkki
