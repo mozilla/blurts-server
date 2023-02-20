@@ -621,6 +621,7 @@ site-nav-help-link = Aide et assistance
 
 menu-button-title = Menu utilisateur
 menu-button-alt = Ouvrir le menu utilisateur
+menu-list-accessible-label = Menu du compte
 menu-item-fxa = Gérer votre { -brand-fx-account }
 menu-item-settings = Paramètres
 menu-item-help = Aide et assistance
@@ -634,4 +635,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } - Page introuvable
+error-page-error-404-copy = Nous sommes désolés, la page que vous recherchez n’existe plus.
 error-page-error-404-cta-button = Retour

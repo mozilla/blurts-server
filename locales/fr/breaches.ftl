@@ -31,9 +31,15 @@ column-status-badge-resolved = Résolue
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Active
 breaches-none-headline = Aucune fuite de données trouvée
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Bonne nouvelle ! Aucune fuite de données connue n’a été signalée pour { $email }. Nous continuerons à surveiller cette adresse e-mail et vous informerons si de nouvelles fuites ont lieu.
 breaches-none-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
 breaches-none-cta-button = Ajouter une adresse e-mail
 breaches-all-resolved-headline = Toutes les fuites de données résolues
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Bien joué ! Vous avez résolu toutes les fuites de données pour { $email }. Nous continuerons à surveiller cette adresse e-mail et vous informerons si de nouvelles fuites ont lieu.
 breaches-all-resolved-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
 breaches-all-resolved-cta-button = Ajouter une adresse e-mail
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
