@@ -60,10 +60,14 @@ function handleEvent (e) {
   }
 }
 
+/**
+ * @param {HTMLInputElement} input
+ */
 async function updateBreachStatus (input) {
   const affectedEmail = state.selectedEmail
   const breachId = input.name
   const checkedInputs = Array.from(input.closest('.resolve-list').querySelectorAll('input:checked'))
+  input.disabled = true
 
   try {
     const res = await fetch('/api/v1/user/breaches', {
@@ -86,6 +90,8 @@ async function updateBreachStatus (input) {
     renderResolvedCounts()
   } catch (e) {
     console.error('Could not update user breach resolve status:', e)
+  } finally {
+    input.disabled = false
   }
 }
 
