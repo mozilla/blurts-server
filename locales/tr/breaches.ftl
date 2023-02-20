@@ -31,9 +31,15 @@ column-status-badge-resolved = Çözüldü
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Etkin
 breaches-none-headline = İhlal bulunamadı
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Her şey yolunda! { $email } için bilinen bir ihlal bildirilmedi. Bu e-postayı izlemeye devam edeceğiz ve herhangi bir yeni ihlal olursa size haber vereceğiz.
 breaches-none-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
 breaches-none-cta-button = E-posta adresi ekle
 breaches-all-resolved-headline = Tüm ihlaller çözüldü
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = { $email } için tüm ihlalleri çözdünüz. Bu e-postayı izlemeye devam edeceğiz ve herhangi bir yeni ihlal olursa size haber vereceğiz.
 breaches-all-resolved-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
 breaches-all-resolved-cta-button = E-posta adresi ekle
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
