@@ -19,6 +19,13 @@ settings-alert-preferences-option-two = Envoyer toutes les alertes de fuites de 
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (principale)
 settings-email-list-title = Adresses e-mail surveillées
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Votre compte permet de surveiller jusqu’à { $limit } adresse e-mail.
+       *[other] Votre compte permet de surveiller jusqu’à { $limit } adresses e-mail.
+    }
 settings-email-verification-callout = Vérification de l’adresse e-mail nécessaire
 settings-resend-email-verification-link = Renvoyer l’e-mail de vérification
 settings-add-email-button = Ajouter une adresse e-mail
