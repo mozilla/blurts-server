@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-account
 GitHub-link-title = GitHub
 error-scan-page-token = Jo hawwe te folle e-mailadressen yn in koart tiidrek probearre te scannen. Om befeiligingsredenen hawwe wy jo sykmooglikheid tydlik blokkearre. Jo kinne it letter wer probearje.
 error-could-not-add-email = Koe e-mailadres net oan database tafoegje.
@@ -656,6 +653,12 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-account
+
 ## Search Engine Optimization
 
 meta-desc = Untdek mei { -brand-fx-monitor } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe’t jo jo accounts feilich hâlde.
@@ -665,8 +668,30 @@ meta-desc = Untdek mei { -brand-fx-monitor } oft jo troffen binne troch in datal
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Oanmelde
 
+## Site navigation
+
+site-nav-settings-link = Ynstellingen
+site-nav-help-link = Help en stipe
+
+## User menu
+
+menu-button-title = Brûkersmenu
+menu-button-alt = Brûkersmenu iepenje
+menu-list-accessible-label = Accountmenu
+menu-item-fxa = Jo { -brand-fx-account } beheare
+menu-item-settings = Ynstellingen
+menu-item-help = Help en stipe
+menu-item-logout = Ofmelde
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Betingsten en privacy
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Side net fûn
+error-page-error-404-cta-button = Tebek
