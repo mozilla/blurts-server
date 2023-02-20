@@ -14,7 +14,8 @@ emails-monitored =
         [many] { $count } { $total } ñanduti veve jehechapyre
        *[other] { $count } { $total } ñanduti veve jehechapyre
     }
-add-email-link = Embojuaju ñanduti veve kundaharape
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Eñangareko ñanduti vevére
 
 ## Breaches resolved filter
 
@@ -26,6 +27,15 @@ filter-label-resolved = Ñembogua moĩporãmbyre
 column-company = MBA’APOHAGUASU
 column-breached-data = MBA’EKUAARÃ MBOGUAPYRE
 column-detected = HECHAPYRE
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Japopáma
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Hendýva
+breaches-none-headline = Ndojejuhúi ñembogua
+breaches-none-cta-blurb = ¿Ehechamemese ambue ñanduti veve?
+breaches-none-cta-button = Embojuaju ñanduti veve kundaharape
+breaches-all-resolved-headline = Opaite umi ñembogua oĩporãma
+breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
 
 ## Prompts the user for changes when there is a breach detected of password
 

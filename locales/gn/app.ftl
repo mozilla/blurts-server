@@ -667,6 +667,8 @@ menu-button-alt = Embojuruja puruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
 menu-item-fxa = Eñangareko nde { -brand-fx-account }
 menu-item-settings = Ñemboheko
+menu-item-help = Ñepytvõ ha Pytyvõha
+menu-item-logout = Emboty tembiapo
 
 ## Footer
 
@@ -676,3 +678,7 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Kuatiarogue ojejuhu’ỹva
+error-page-error-404-cta-button = Guevijey
