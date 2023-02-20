@@ -42,6 +42,7 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Poista tili käytöstä
+settings-deactivate-account-info = Voit poistaa { -product-short-name }in käytöstä poistamalla { -brand-fx-account }n.
 settings-fxa-link-label = Siirry { -brand-firefox }-asetuksiin
 
 ## Add email dialog
