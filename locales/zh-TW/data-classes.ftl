@@ -34,6 +34,9 @@ customer-interactions = 顧客互動
 dates-of-birth = 生日
 deceased-date = 死亡日期
 deceased-statuses = 死亡狀態
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = 出貨資訊
 device-information = 裝置資訊
 device-serial-numbers = 裝置序號
 device-usage-tracking-data = 裝置使用追蹤資料
@@ -138,6 +141,7 @@ user-website-urls = 使用者網址
 usernames = 帳號名稱
 utility-bills = 水電費帳單
 vehicle-details = 車輛詳細資訊
+vehicle-identification-numbers-vins = 車身號碼（VIN）
 website-activity = 網站使用紀錄
 work-habits = 工作習慣
 years-of-birth = 出生年分
