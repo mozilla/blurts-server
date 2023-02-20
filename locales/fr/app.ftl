@@ -613,11 +613,14 @@ sign-in = Se connecter
 
 ## Site navigation
 
+site-nav-breaches-link = Régler vos fuites de données
 site-nav-settings-link = Paramètres
 site-nav-help-link = Aide et assistance
 
 ## User menu
 
+menu-button-title = Menu utilisateur
+menu-button-alt = Ouvrir le menu utilisateur
 menu-item-settings = Paramètres
 menu-item-help = Aide et assistance
 menu-item-logout = Déconnexion

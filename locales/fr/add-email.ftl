@@ -5,5 +5,6 @@
 
 ### Dialog window that allows a user to add a new email address to be monitored
 
+add-email-add-another-heading = Ajouter une autre adresse e-mail
 add-email-address-input-label = Adresse e-mail
 add-email-send-verification-button = Envoyer le lien de vérification
