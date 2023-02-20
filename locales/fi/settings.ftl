@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-page-title = { -product-short-name } -asetukset
 
 ## Breach alert preferences
 
@@ -14,11 +15,23 @@
 # Variables:
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (ensisijainen)
+settings-email-list-title = Valvottavat sähköpostiosoitteet
+settings-email-verification-callout = Sähköpostiosoitteen vahvistus vaaditaan
 settings-resend-email-verification-link = Lähetä uudelleen vahvistussähköposti
 settings-add-email-button = Lisää sähköpostiosoite
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (numer) - Number of breaches
+settings-email-number-of-breaches-info =
+    { $breachCount ->
+        [one] Esiintyy { $breachCount } tunnetussa tietovuodossa.
+       *[other] Esiintyy { $breachCount } tunnetussa tietovuodossa.
+    }
 
 ## Deactivate account
 
+settings-deactivate-account-title = Poista tili käytöstä
 
 ## Add email dialog
 

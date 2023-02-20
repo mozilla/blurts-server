@@ -27,7 +27,7 @@ column-company = YHTIÖ
 column-breached-data = VUODETUT TIEDOT
 column-detected = HAVAITTU
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Ratkaistu
+column-status-badge-resolved = Selvitetty
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiivinen
 breaches-none-headline = Tietovuotoja ei löytynyt
@@ -36,10 +36,10 @@ breaches-none-headline = Tietovuotoja ei löytynyt
 breaches-none-copy = Hyviä uutisia! Sähköpostiosoitetta { $email } ei löytynyt tunnettuista tietovuodoista. Seuraamme tätä sähköpostiosoitetta ja ilmoitamme sinulle, jos tietovuotoja havaitaan.
 breaches-none-cta-blurb = Haluatko seurata myös muita sähköpostiosoitteita?
 breaches-none-cta-button = Lisää sähköpostiosoite
-breaches-all-resolved-headline = Kaikki tietovuodot ratkaistu
+breaches-all-resolved-headline = Kaikki tietovuodot selvitetty
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Hyvin toimittu! Olet ratkaissut kaikki sähköpostiosoitetta { $email } koskevat tietovuodot. Seuraamme tätä sähköpostia ja ilmoitamme sinulle, jos tietovuotoja havaitaan.
+breaches-all-resolved-copy = Hyvin toimittu! Olet selvittänyt kaikki sähköpostiosoitetta { $email } koskevat tietovuodot. Seuraamme tätä sähköpostia ja ilmoitamme sinulle, jos tietovuotoja havaitaan.
 breaches-all-resolved-cta-blurb = Haluatko seurata myös muita sähköpostiosoitteita?
 breaches-all-resolved-cta-button = Lisää sähköpostiosoite
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
