@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Cyfrif Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Rydych wedi ceisio sganio gormod o gyfeiriadau e-bost mewn cyfnod byr. Am resymau diogelwch, rydym wedi eich rhwystro dros dro rhag chwiliadau newydd. Fe gewch chi geisio eto yn ddiweddarach.
 error-could-not-add-email = Methu ychwanegu cyfeiriad e-bost i gronfa ddata.
@@ -687,6 +684,12 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Cyfrif Firefox
+
 ## Search Engine Optimization
 
 meta-desc = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
@@ -696,8 +699,32 @@ meta-desc = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -brand-f
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Mewngofnodi
 
+## Site navigation
+
+site-nav-breaches-link = Datrys Tor-data
+site-nav-settings-link = Gosodiadau
+site-nav-help-link = Cymorth a Chefnogaeth
+
+## User menu
+
+menu-button-title = Dewislen defnyddiwr
+menu-button-alt = Agor dewislen defnyddiwr
+menu-list-accessible-label = Dewislen cyfrif
+menu-item-fxa = Rheolwch eich { -brand-fx-account }
+menu-item-settings = Gosodiadau
+menu-item-help = Cymorth a chefnogaeth
+menu-item-logout = Allgofnodi
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Telerau a Phreifatrwydd
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Tudalen heb ei chanfod
+error-page-error-404-copy = Ymddiheuriadau, nid yw'r dudalen rydych yn chwilio amdani yn bodoli bellach.
+error-page-error-404-cta-button = Nôl

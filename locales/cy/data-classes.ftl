@@ -34,6 +34,9 @@ customer-interactions = Rhyngweithio cwsmeriaid
 dates-of-birth = Dyddiadau geni
 deceased-date = Dyddiad marw
 deceased-statuses = Statws ymadawedig
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Cyfarwyddiadau anfon
 device-information = Manylion dyfais
 device-serial-numbers = Rhifau cyfresol dyfeisiau
 device-usage-tracking-data = Data tracio defnydd y ddyfais
@@ -138,6 +141,7 @@ user-website-urls = URLau gwefan defnyddwyr
 usernames = Enwau Defnyddwyr
 utility-bills = Biliau cyfleustodau
 vehicle-details = Manylion cerbyd
+vehicle-identification-numbers-vins = Rhifau adnabod cerbydau (VINs)
 website-activity = Gweithgaredd gwefan
 work-habits = Arferion gwaith
 years-of-birth = Blynyddoedd geni
