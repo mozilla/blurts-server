@@ -19,6 +19,13 @@ settings-alert-preferences-option-two = Lähetä kaikki tietovuotoilmoitukset en
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (ensisijainen)
 settings-email-list-title = Valvottavat sähköpostiosoitteet
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Tilisi sisältää enintään { $limit } sähköpostiosoitteen valvonnan.
+       *[other] Tilisi sisältää enintään { $limit } sähköpostiosoitteen valvonnan.
+    }
 settings-email-verification-callout = Sähköpostiosoitteen vahvistus vaaditaan
 settings-resend-email-verification-link = Lähetä uudelleen vahvistussähköposti
 settings-add-email-button = Lisää sähköpostiosoite
@@ -35,9 +42,11 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Poista tili käytöstä
+settings-fxa-link-label = Siirry { -brand-firefox }-asetuksiin
 
 ## Add email dialog
 
 settings-email-dialog-title = Lisää toinen sähköpostiosoite
+settings-add-email-text = Lisää uusi sähköpostiosoite nähdäksesi, onko se ollut osallisena tietovuodossa.
 settings-email-input-label = Sähköpostiosoite
 settings-send-email-verification-button = Lähetä vahvistuslinkki
