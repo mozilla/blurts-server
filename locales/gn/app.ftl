@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox mba’ete
 GitHub-link-title = GitHub
 error-scan-page-token = Eñeha’ãkuri emoha’ãnda heta ñanduti veve kundaharape ndahetái árape. Tekorosã rupi, rojoko nde jeheka sapy’ami. Ikatu eha’ãjey uperire.
 error-could-not-add-email = Ndaikatúi embojuaju ñanduti veve kundaharape mba’ekuaarã rendápe.
@@ -642,6 +639,12 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox mba’ete
+
 ## Search Engine Optimization
 
 meta-desc = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -brand-fx-monitor } ndive. Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosãrã.
@@ -651,8 +654,25 @@ meta-desc = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -brand-fx-monitor } 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Eñepyrũ tembiapo
 
+## Site navigation
+
+site-nav-breaches-link = Emoĩporã mba’ekuaarã ñembogua
+site-nav-settings-link = Ñemboheko
+site-nav-help-link = Ñepytvõ ha Pytyvõha
+
+## User menu
+
+menu-button-title = Puruhára jeporavoha
+menu-button-alt = Embojuruja puruhára jeporavoha
+menu-list-accessible-label = Mba’ete jeporavoha
+menu-item-fxa = Eñangareko nde { -brand-fx-account }
+menu-item-settings = Ñemboheko
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Mboguatarã ha ñemigua
 github = { -brand-github }
+
+## Error page
+
