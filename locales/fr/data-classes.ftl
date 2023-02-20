@@ -34,6 +34,9 @@ customer-interactions = interactions des clients
 dates-of-birth = dates de naissance
 deceased-date = date de décès
 deceased-statuses = statuts de décès
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = instructions de livraison
 device-information = informations sur les appareils
 device-serial-numbers = numéros de série des appareils
 device-usage-tracking-data = données de suivi de l’utilisation des appareils
@@ -138,6 +141,7 @@ user-website-urls = sites web des utilisateurs
 usernames = noms d’utilisateurs et utilisatrices
 utility-bills = factures
 vehicle-details = détails des véhicules
+vehicle-identification-numbers-vins = numéro d’identification du véhicule (VIN)
 website-activity = activité du site web
 work-habits = habitudes de travail
 years-of-birth = années de naissance

@@ -26,6 +26,16 @@ filter-label-resolved = Fuites de données résolues
 column-company = SOCIÉTÉ
 column-breached-data = DONNÉES AYANT FUITÉ
 column-detected = DÉTECTÉE
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Résolue
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Active
+breaches-none-headline = Aucune fuite de données trouvée
+breaches-none-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
+breaches-none-cta-button = Ajouter une adresse e-mail
+breaches-all-resolved-headline = Toutes les fuites de données résolues
+breaches-all-resolved-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
+breaches-all-resolved-cta-button = Ajouter une adresse e-mail
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Le { $breachDate }, { $companyName } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }. Cette fuite inclut : { $dataClasses }
 

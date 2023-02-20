@@ -621,6 +621,7 @@ site-nav-help-link = Aide et assistance
 
 menu-button-title = Menu utilisateur
 menu-button-alt = Ouvrir le menu utilisateur
+menu-item-fxa = Gérer votre { -brand-fx-account }
 menu-item-settings = Paramètres
 menu-item-help = Aide et assistance
 menu-item-logout = Déconnexion
