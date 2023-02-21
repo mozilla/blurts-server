@@ -1,4 +1,4 @@
-## Breach Data Classes
+# Breach Data Classes
 
 account-balances = Llogari bankare
 address-book-contacts = Kontakte libri adresash
@@ -83,6 +83,7 @@ nicknames = Nofka
 occupations = Punësime
 partial-credit-card-data = Të dhëna të pjesshme karte krediti
 partial-dates-of-birth = Datëlindje të pjesshme
+partial-phone-numbers = Numra telefoni të pjesshëm
 passport-numbers = Numra pasaportash
 password-hints = Ndihmëza fjalëkalimesh
 password-strengths = Fortësi fjalëkalimi

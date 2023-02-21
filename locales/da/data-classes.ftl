@@ -88,6 +88,7 @@ occupations = Erhverv
 parenting-plans = Forældre-planer
 partial-credit-card-data = Delvis betalingskorts-data
 partial-dates-of-birth = Delvise fødselsdatoer
+partial-phone-numbers = Delvise telefonnumre
 passport-numbers = Pasnumre
 password-hints = Adgangskode-tips
 password-strengths = Adgangskode-styrke

@@ -32,7 +32,16 @@ esbuild.build({
   format: 'esm',
   minify: AppConstants.NODE_ENV !== 'dev',
   sourcemap: AppConstants.NODE_ENV !== 'dev',
-  splitting: false,
+  splitting: false, // see note below
   treeShaking: true,
   platform: 'neutral'
 })
+
+/*
+ESBuild automatic code-splitting is disabled for the following reasons:
+- As of this writing, ESBuild code-splitting is suggested to be experimental/WIP: https://esbuild.github.io/api/#splitting
+- There is a known bug with ESBuild that loads chunks out of order: https://github.com/evanw/esbuild/issues/399
+- The complete client bundle is currently only ~10kB transferred; splitting this down further is unlikely to result in significant load speed gains
+- A ticket exists (MNTOR-1171) to set up logical code-splitting depending on partial. Once complete, the conflict/redundancy with ESBuild code-splitting will increase
+- see also https://github.com/mozilla/blurts-server/pull/2844
+*/

@@ -6,14 +6,16 @@
         "jest": true
     },
     "extends": [
-        "standard"
+        "standard",
+        "plugin:jsdoc/recommended"
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
-        "header"
+        "header",
+        "jsdoc"
     ],
     "rules": {
         "no-prototype-builtins": "warn",
@@ -25,6 +27,8 @@
             "block",
             " This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
             2
-        ]
+        ],
+        "jsdoc/require-jsdoc": "off",
+        "jsdoc/require-param-description": "off"
     }
 }

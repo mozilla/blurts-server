@@ -88,6 +88,7 @@ occupations = Meslekler
 parenting-plans = Ebeveynlik planları
 partial-credit-card-data = Kısmi kredi kartı verileri
 partial-dates-of-birth = Kısmi doğum tarihleri
+partial-phone-numbers = Kısmi telefon numaraları
 passport-numbers = Pasaport numaraları
 password-hints = Parola ipuçları
 password-strengths = Parola güçleri

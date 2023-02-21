@@ -37,6 +37,7 @@ function init () {
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
+  document.body.addEventListener('email-added', handleEvent)
 }
 
 function handleEvent (e) {
@@ -51,6 +52,10 @@ function handleEvent (e) {
       break
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
       updateBreachStatus(e.target)
+      break
+    case e.type === 'email-added':
+      state.emailCount = e.detail.newEmailCount
+      renderZeroState()
       break
   }
 }
