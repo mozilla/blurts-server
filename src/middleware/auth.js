@@ -49,16 +49,21 @@ async function requireAdminUser (req, res, next) {
     delete req.session.user
     return res.redirect('/')
   }
-  const admins = AppConstants.ADMINS?.split(',') || []
-  const isAdmin = admins.includes(JSON.parse(fxaProfileData).email)
-  if (!isAdmin) {
-    next(new UnauthorizedError('User is not an admin'))
-  }
 
-  await updateFxAProfileData(user, fxaProfileData)
-  req.session.user = user
-  req.user = user
-  next()
+  try {
+    const admins = AppConstants.ADMINS?.split(',') || []
+    const isAdmin = admins.includes(JSON.parse(fxaProfileData).email)
+    if (!isAdmin) {
+      next(new UnauthorizedError('User is not an admin'))
+    }
+
+    await updateFxAProfileData(user, fxaProfileData)
+    req.session.user = user
+    req.user = user
+    next()
+  } catch (e) {
+    next(e)
+  }
 }
 
 export { requireSessionUser, requireAdminUser }
