@@ -681,4 +681,5 @@ github = { -brand-github }
 # Variables:
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } Kuatiarogue ojejuhu’ỹva
+error-page-error-404-copy = Rombyasy, pe kuatiarogue rehekáva ndaiporivéima.
 error-page-error-404-cta-button = Guevijey

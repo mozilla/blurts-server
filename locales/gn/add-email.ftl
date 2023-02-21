@@ -5,5 +5,6 @@
 
 ### Dialog window that allows a user to add a new email address to be monitored
 
+add-email-add-another-heading = Emoĩve ambue ñanduti veve kundaharape
 add-email-address-input-label = Ñanduti veve kundaharape
 add-email-send-verification-button = Emondo juajuha jehechajeyrã
