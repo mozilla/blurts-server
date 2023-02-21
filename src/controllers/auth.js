@@ -110,14 +110,14 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
     // Send report email
     const utmCampaignId = 'report'
-    const heading = unsafeBreachesForEmail?.length
+    const subject = unsafeBreachesForEmail?.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches')
 
     const data = {
       breachedEmail: email,
       ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
-      heading,
+      heading: getMessage('email-breach-summary'),
       recipientEmail: email,
       subscriberId: verifiedSubscriber,
       unsafeBreachesForEmail,
@@ -125,7 +125,6 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
       utmCampaign: utmCampaignId
     }
     const emailTemplate = getTemplate(data, signupReportEmailPartial)
-    const subject = getMessage('breach-alert-subject')
 
     await sendEmail(data.recipientEmail, subject, emailTemplate)
 
