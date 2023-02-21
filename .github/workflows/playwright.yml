@@ -8,13 +8,43 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container: node:18.12.1
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18.12.1
     - name: Install dependencies
       run: npm ci --workspace=src
+    # - name: Run the App
+    #   run: npm start --workspace=src
+    #   env:
+    #     POSTGRES_HOST: postgres
+    #     POSTGRES_PORT: 5432
+    #     REDIS_HOST: redis
+    #     REDIS_PORT: 6379
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
