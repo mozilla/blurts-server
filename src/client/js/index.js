@@ -5,6 +5,7 @@
 import './app.js'
 import './scroll-observer.js'
 import './resize-observer.js'
+import './components/circle-chart.js'
 import './components/custom-select.js'
 import './nav.js'
 import './user-menu.js'
