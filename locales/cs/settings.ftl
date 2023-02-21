@@ -19,6 +19,18 @@ settings-alert-preferences-option-two = Posílat všechna upozornění na úniky
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (primární)
 settings-email-list-title = Monitorované e-mailové adresy
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Váš účet nabízí možnost monitorování { $limit } e-mailové adresy.
+        [few] Váš účet nabízí možnost monitorování až { $limit } e-mailových adres.
+        [many] Váš účet nabízí možnost monitorování až { $limit } e-mailových adres.
+       *[other] Váš účet nabízí možnost monitorování { $limit } e-mailových adres.
+    }
+settings-email-verification-callout = Vyžadováno ověření e-mailové adresy
+settings-resend-email-verification-link = Znovu poslat ověřovací e-mail
+settings-add-email-button = Přidat e-mailové adresy
 
 ## Deactivate account
 
