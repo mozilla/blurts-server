@@ -19,6 +19,9 @@ settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (ñepyrũha)
 settings-email-list-title = Ñanduti veve kundaharape ojehechameméva
+settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
+settings-resend-email-verification-link = Emondojey ñanduti veve jehechajeyrã
+settings-add-email-button = Embojuaju ñanduti veve kundaharape
 
 ## Deactivate account
 
