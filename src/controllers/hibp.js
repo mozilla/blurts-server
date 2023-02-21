@@ -7,8 +7,8 @@ import AppConstants from '../app-constants.js'
 
 import { getSubscribersByHashes } from '../db/tables/subscribers.js'
 import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
-import { getTemplate } from '../views/email-2022.js'
-import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
+import { getTemplate } from '../views/emails/email-2022.js'
+import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
 
 import {
   EmailTemplateType,
