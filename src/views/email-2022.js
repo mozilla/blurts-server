@@ -210,7 +210,6 @@ const getStyles = () => `
 `
 
 const getEmailContent = (data, partial) => {
-  const isBreachAlertEmail = partial.name === 'breachAlertEmailPartial'
   return `
     <table
       border='0'
@@ -221,10 +220,8 @@ const getEmailContent = (data, partial) => {
       style='${tableStyle}'
     >
       ${emailHeader({
-        heading: isBreachAlertEmail
-          ? 'email-spotted-new-breach'
-          : 'email-verify-heading',
-        subhead: isBreachAlertEmail ? '' : 'email-verify-subhead'
+        heading: data.heading,
+        subhead: data.subheading ?? ''
       })}
       ${partial(data)}
       ${emailFooter(data)}
