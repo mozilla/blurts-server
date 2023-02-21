@@ -2,6 +2,8 @@
 
 ## Email types
 
+The different types of templates for emails are located in `src/views/emails`. Data for populating the templates is passed by the respective controllers they are used in.
+
 ### Email verification
 
 We send this email to users in order to verify that is indeed them that are adding their email address to be monitored.
