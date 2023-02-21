@@ -80,14 +80,26 @@ export const breaches = data => `
 <section>
   <header class='breaches-header'>
     <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
-    <figure>
-      <img src='/images/temp-diagram.webp' width='80' height='80'>
-      <figcaption class='breach-stats'>
-        <strong>10 total breaches</strong>
-        <label>Resolved</label>
-        <label>Unresolved</label>
-      </figcaption>
-    </figure>
+    <circle-chart 
+      class='breach-stats'
+      title='Circle chart'
+      data=${JSON.stringify([
+        {
+          key: 'resolved',
+          name: 'Resolved',
+          count: 0,
+          color: '#9059ff'
+        },
+        {
+          key: 'unresolved',
+          name: 'Unresolved',
+          count: 10,
+          color: '#321c64'
+        }
+      ])}
+      show-percent-for='resolved'
+    >
+    </circle-chart>
     <figure class='email-stats' data-count=${data.emailCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>

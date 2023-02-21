@@ -16,7 +16,8 @@
   font: var(--h3-font);
 }
 
-.breaches-header > figure {
+.breaches-header > .breach-stats,
+.breaches-header > .email-stats {
   display: inline-flex;
   align-items: center;
   font-size: 0.75rem;
@@ -25,7 +26,11 @@
   text-align: left;
 }
 
-.breaches-header > figure:nth-of-type(2) {
+.breaches-header > .breach-stats {
+
+}
+
+.breaches-header > .email-stats {
   flex-direction: column;
   text-align: center;
 }

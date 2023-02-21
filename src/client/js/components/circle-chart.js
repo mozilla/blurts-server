@@ -9,7 +9,7 @@
  * ```
  * <circle-chart
  *   title='Circle chart'
- *   data=`${JSON.stringify([
+ *   data=${JSON.stringify([
  *     {
  *       key: 'resolved',
  *       name: 'Resolved',
@@ -22,7 +22,7 @@
  *       count: 10,
  *       color: '#321c64'
  *     }
- *   ])}`
+ *   ])}
  *   show-percent-for='resolved'
  * >
  * </circle-chart>
@@ -144,7 +144,6 @@ customElements.define('circle-chart', class extends HTMLElement {
   static get observedAttributes () {
     return [
       'data',
-      'is-donut',
       'show-percent-for',
       'title'
     ]
