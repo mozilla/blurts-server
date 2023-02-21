@@ -1,22 +1,25 @@
-// @ts-check
-const { defineConfig, devices } = require('@playwright/test')
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { defineConfig, devices } from '@playwright/test'
+import * as globalSetup from './e2e/globalSetup.js'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config()
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
-module.exports = defineConfig({
-  testDir: './tests/e2e',
+export default defineConfig({
+  testDir: './e2e',
   /* Maximum time one test can run for. */
   timeout: 60_000,
 
   /* Global setup */
-  globalSetup: require.resolve('./tests/e2e/globalSetup.js'),
+  globalSetup,
 
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
   globalTimeout: 360_000,

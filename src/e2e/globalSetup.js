@@ -2,15 +2,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { setEnvVariables } from './utils/helpers'
-import { AuthPage } from './pages/authPage'
-import { LandingPage } from './pages/landingPage'
+import { setEnvVariables } from './utils/helpers.js'
+import { AuthPage } from './pages/authPage.js'
+import { LandingPage } from './pages/landingPage.js'
 
-const { chromium } = require('@playwright/test')
+import { chromium } from '@playwright/test'
 
 async function globalSetup () {
   // playwright setup
-  const browser = await chromium.launch()
+  const browser = await chromium.launch({
+    headless: false
+  })
   const page = await browser.newPage()
 
   // generate email and set env variables
