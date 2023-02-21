@@ -13,10 +13,10 @@ import {
 } from '../db/tables/subscribers.js'
 import { addSubscriber } from '../db/tables/email_addresses.js'
 
-import { getTemplate } from '../views/email-2022.js'
+import { getTemplate } from '../views/emails/email-2022.js'
 import {
   signupReportEmailPartial
-} from '../views/partials/email-signup-report.js'
+} from '../views/emails/email-signup-report.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'

@@ -25,8 +25,8 @@ import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/erro
 
 import { mainLayout } from '../views/main.js'
 import { settings } from '../views/partials/settings.js'
-import { getTemplate } from '../views/email-2022.js'
-import { verifyPartial } from '../views/partials/email-verify.js'
+import { getTemplate } from '../views/emails/email-2022.js'
+import { verifyPartial } from '../views/emails/email-verify.js'
 
 async function settingsPage (req, res) {
   const emails = await getUserEmails(req.session.user.id)
