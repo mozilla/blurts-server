@@ -110,7 +110,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
     // Send report email
     const utmCampaignId = 'report'
-    const heading = unsafeBreachesForEmail?.length
+    const heading = unsafeBreachesForEmail?.length > 0
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches')
 
@@ -142,8 +142,9 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
 /**
  * Controller to trigger a logout for user
- * @param {object} req contains session.user
- * @param {object} res redirects to homepage
+ *
+ * @param {object} req Contains session.user
+ * @param {object} res Redirects to homepage
  */
 async function logout (req, res) {
   const subscriber = req.session?.user
