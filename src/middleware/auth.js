@@ -39,7 +39,13 @@ async function requireAdminUser (req, res, next) {
     return res.redirect(`/oauth/init?${queryParams}`)
   }
   const fxaProfileData = await FXA.getProfileData(user.fxa_access_token)
-  if (Object.prototype.hasOwnProperty.call(fxaProfileData, 'name') && fxaProfileData.name === 'HTTPError') {
+
+  // log for better debugging
+  console.info('requireAdminUser - fxaProfileData:' + JSON.stringify(fxaProfileData))
+
+  // https://stackoverflow.com/questions/30469261/checking-for-typeof-error-in-js
+  // duck typing and instanceof check to make sure it's an error type
+  if (fxaProfileData instanceof Error || (fxaProfileData && fxaProfileData.stack && fxaProfileData.message)) {
     delete req.session.user
     return res.redirect('/')
   }
