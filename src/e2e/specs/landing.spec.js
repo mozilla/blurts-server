@@ -11,10 +11,14 @@ test.describe('Check landing page', () => {
 
   test('Verify landing page elements', async ({ page }) => {
     // Click the get started link.
-    await page.getByRole('link', { name: 'Breaches' }).click()
+    const sec1 = await page.isVisible('.why-use-monitor')
+    const sec2 = await page.isVisible('.how-it-works')
+    const sec3 = await page.isVisible('.top-questions-about-monitor')
+    const sec4 = await page.isVisible('.see-if-data-breach')
+
     await page.waitForTimeout(2000)
 
     // Expects the URL to contain intro.
-    await expect(page).toHaveURL(/breaches/)
+    expect(sec1 && sec2 && sec3 && sec4).toBeTruthy()
   })
 })

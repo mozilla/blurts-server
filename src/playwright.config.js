@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { defineConfig, devices } from '@playwright/test'
-import * as globalSetup from './e2e/globalSetup.js'
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -19,7 +18,7 @@ export default defineConfig({
   timeout: 60_000,
 
   /* Global setup */
-  globalSetup,
+  globalSetup: './e2e/globalSetup.js',
 
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
   globalTimeout: 360_000,
