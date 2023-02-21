@@ -141,6 +141,7 @@ user-website-urls = Puruhára ñanduti renda URLs
 usernames = Puruhára réra
 utility-bills = Mba’epurupyre kuatia
 vehicle-details = Mba’yruguata mba’emimi
+vehicle-identification-numbers-vins = Papapy mba’yrumýi jekuaarã (VINs)
 website-activity = Ñanduti renda rembiapo
 work-habits = Mba’apohápe japomeméva
 years-of-birth = Mba’e arýpe nereñói

@@ -11,6 +11,7 @@ settings-page-title = { -product-short-name } Ñemboheko
 
 settings-alert-preferences-title = Kyhyjerã ñembogua erohoryvéva
 settings-alert-preferences-option-one = Emondo ñembogua kyhyjerã ñanduti veve imarãkuapavape
+settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti veve kundaharape ñepyrũguápe
 
 ## Monitored email addresses
 

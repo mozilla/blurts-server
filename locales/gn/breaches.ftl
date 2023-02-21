@@ -35,6 +35,7 @@ breaches-none-headline = Ndojejuhúi ñembogua
 breaches-none-cta-blurb = ¿Ehechamemese ambue ñanduti veve?
 breaches-none-cta-button = Embojuaju ñanduti veve kundaharape
 breaches-all-resolved-headline = Opaite umi ñembogua oĩporãma
+breaches-all-resolved-cta-blurb = ¿Ehechamemesépa ambue ñanduti veve?
 breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
 
 ## Prompts the user for changes when there is a breach detected of password
