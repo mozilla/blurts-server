@@ -110,7 +110,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
     // Send report email
     const utmCampaignId = 'report'
-    const heading = unsafeBreachesForEmail?.length > 0
+    const heading = unsafeBreachesForEmail?.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches')
 

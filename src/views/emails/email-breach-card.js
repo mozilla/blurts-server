@@ -79,7 +79,7 @@ const breachCardPartial = data => {
                   ${formatDate(AddedDate, supportedLocales)}
                 </p>
 
-                ${DataClasses?.length > 0
+                ${DataClasses?.length
                   ? `
                       <p style='${breachAlertLabelStyle}'>
                         ${getMessage('compromised-data')}

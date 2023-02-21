@@ -51,14 +51,12 @@ const signupReportEmailPartial = data => {
     unsafeBreachesForEmail
   } = data
 
-  const hasUnsafeBreaches = unsafeBreachesForEmail?.length > 0
-
   return `
     <tr>
       <td style='${emailStyle}'>
         <p>
           ${
-            hasUnsafeBreaches
+            unsafeBreachesForEmail?.length
               ? getMessage('email-breach-detected', {
                   'email-address': `<strong>${breachedEmail}</strong>`
                 })
@@ -66,7 +64,7 @@ const signupReportEmailPartial = data => {
           }
         </p>
         ${
-          emailBreachStats?.length > 0
+          emailBreachStats?.length
             ? `
                 <table style='${breachSummaryTableStyle}'>
                   <tr>
@@ -90,7 +88,7 @@ const signupReportEmailPartial = data => {
             : ''
         }
         ${
-          hasUnsafeBreaches
+          unsafeBreachesForEmail?.length
             ? unsafeBreachesForEmail.map(unsafeBreach => (
                 breachCardPartial(unsafeBreach)
               )).join('')
