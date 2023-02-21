@@ -4,6 +4,8 @@
 
 import { MethodNotAllowedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
+import { mainLayout } from '../views/main.js'
+import { error } from '../views/partials/error.js'
 const log = mozlog('middleware')
 
 /**
@@ -23,6 +25,16 @@ function errorHandler (err, req, res, next) {
   log.error('error', err.stack)
   const errStatus = err.statusCode || 500
   const errMsg = err.message || 'Empty error message'
+
+  if (req.accepts('text/html') === 'text/html') {
+    res.status(errStatus).send(mainLayout({
+      partial: error,
+      nonce: res.locals.nonce,
+      statusCode: errStatus
+    }))
+    return
+  }
+
   res.status(errStatus).json({
     success: false,
     status: errStatus,
