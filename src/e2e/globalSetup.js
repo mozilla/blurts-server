@@ -10,9 +10,7 @@ import { chromium } from '@playwright/test'
 
 async function globalSetup () {
   // playwright setup
-  const browser = await chromium.launch({
-    headless: false
-  })
+  const browser = await chromium.launch()
   const page = await browser.newPage()
 
   // generate email and set env variables

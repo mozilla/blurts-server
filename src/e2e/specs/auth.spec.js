@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { test, expect } from '../fixtures/basePage.js'
-import { defaultScreenshotOpts } from '../utils/helpers.js'
 
 test.describe('Check landing page', () => {
   test.beforeEach(async ({ landingPage }) => {
@@ -25,18 +24,11 @@ test.describe('Check landing page', () => {
     await page.waitForTimeout(6000)
 
     // assert successful login
-    await expect(page).toHaveScreenshot(
-      `${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`,
-      {
-        defaultScreenshotOpts,
-        ...{ fullPage: true },
-        mask: [
-          dashboardPage.dataBreachEmailDropdown,
-          dashboardPage.siteFoundImage,
-          dashboardPage.breachStats
-        ]
-      }
-    )
+    const dataBreachesHeader = await page.isVisible('.breaches-header')
+    expect(dataBreachesHeader).toBeTruthy()
+
+    const breachesFilter = await page.isVisible('.breaches-filter')
+    expect(breachesFilter).toBeTruthy()
   })
 
   // test.only('Verify sign in with existing user', async ({

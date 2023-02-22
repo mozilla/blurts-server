@@ -41,7 +41,7 @@ jobs:
     - name: Install dependencies
       run: npm ci --workspace=src
     # - name: Run the App
-    #   run: npm start --workspace=src
+    #   run: cp .env-dist .env && npm run build --if-present --workspace=src && npm start --workspace=src
     #   env:
     #     POSTGRES_HOST: postgres
     #     POSTGRES_PORT: 5432
