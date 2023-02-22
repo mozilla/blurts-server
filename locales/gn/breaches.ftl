@@ -32,9 +32,15 @@ column-status-badge-resolved = Japopáma
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Hendýva
 breaches-none-headline = Ndojejuhúi ñembogua
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = ¡Marandu iporãva! Ndaipóri ñembogua ojehecháva oñemomarandúva { $email }-pe. Rohecháta ko ñanduti veve ha roikuaaukáta osẽramo ñembogua pyahu.
 breaches-none-cta-blurb = ¿Ehechamemese ambue ñanduti veve?
 breaches-none-cta-button = Embojuaju ñanduti veve kundaharape
 breaches-all-resolved-headline = Opaite umi ñembogua oĩporãma
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = ¡Ejapoporã! Emoĩporãma opaite ñembogua { $email }-pe g̃uarã. Rohecháta ko ñanduti veve ha roikuaaukáta ndéve osẽramo ñembogua ipyahúva.
 breaches-all-resolved-cta-blurb = ¿Ehechamemesépa ambue ñanduti veve?
 breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()

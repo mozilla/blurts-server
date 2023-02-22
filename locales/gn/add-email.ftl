@@ -8,3 +8,5 @@
 add-email-add-another-heading = Emoĩve ambue ñanduti veve kundaharape
 add-email-address-input-label = Ñanduti veve kundaharape
 add-email-send-verification-button = Emondo juajuha jehechajeyrã
+# $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
+add-email-verify-the-link = Ehechajey juajuha emondóva { $email }-pe embojuaju { -brand-fx-monitor } rehe. Eñangareko ñanduti veve kundaharapére <a { $settings-href }>Moĩporã</a>.
