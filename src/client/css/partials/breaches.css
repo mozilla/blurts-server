@@ -16,18 +16,16 @@
   font: var(--h3-font);
 }
 
-.breaches-header > .breach-stats,
+.breaches-header > .breach-chart,
 .breaches-header > .email-stats {
+  --chart-diameter: 100px;
+
   display: inline-flex;
   align-items: center;
   font-size: 0.75rem;
-  margin: var(--padding-md) var(--padding-lg);
+  margin: var(--padding-lg);
   vertical-align: middle;
   text-align: left;
-}
-
-.breaches-header > .breach-stats {
-
 }
 
 .breaches-header > .email-stats {

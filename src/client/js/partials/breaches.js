@@ -154,19 +154,19 @@ function renderPieChart () {
   const classesTotal = classesForSelectedEmail.length
   const chartData = []
 
-  switch(true){
+  switch (true) {
     case classesMap.size === 0:
       chartData.push({
-        key: pieChart.dataset.txtNone, 
-        name: pieChart.dataset.txtNone, 
+        key: pieChart.dataset.txtNone,
+        name: pieChart.dataset.txtNone,
         count: 1,
         color: chartColors[4]
       })
       break
     case classesMap.size >= 4:
       chartData[3] = {
-        key: pieChart.dataset.txtOther, 
-        name: pieChart.dataset.txtOther, 
+        key: pieChart.dataset.txtOther,
+        name: pieChart.dataset.txtOther,
         count: classesTotal - classesMap.get(classesTop3[0]) - classesMap.get(classesTop3[1]) - classesMap.get(classesTop3[2]),
         color: chartColors[3]
       }
@@ -174,8 +174,8 @@ function renderPieChart () {
     default:
       classesTop3.forEach((name, i) => {
         chartData[i] = {
-          key: name, 
-          name, 
+          key: name,
+          name,
           count: classesMap.get(name),
           color: chartColors[i]
         }
@@ -191,7 +191,7 @@ function render () {
   renderResolvedCounts()
   renderBreachRows()
   renderZeroState()
-  renderPieChart ()
+  renderPieChart()
 }
 
 if (breachesPartial) init()

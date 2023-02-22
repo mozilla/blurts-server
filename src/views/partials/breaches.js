@@ -73,7 +73,7 @@ export const breaches = data => `
   <header class='breaches-header'>
     <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
     <circle-chart 
-      class='breach-stats' 
+      class='breach-chart' 
       title='${getMessage('breach-chart-title')}' 
       data-txt-other='${getMessage('breach-chart-other')}' 
       data-txt-none='${getMessage('breach-chart-none')}'>

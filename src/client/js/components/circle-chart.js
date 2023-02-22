@@ -90,7 +90,6 @@ const styles = `
     align-items: center;
     color: var(--gray-40);
     display: flex;
-    font-size: 0.875rem;
     gap: var(--padding-sm);
     position: relative;
   }
@@ -104,10 +103,10 @@ const styles = `
 
   .circle-chart svg {
     border-radius: 50%;
-    height: 10vw;
+    height: var(--chart-diameter, 10vw);
     min-height: 100px;
     min-width: 100px;
-    width: 10vw;
+    width: var(--chart-diameter, 10vw);
   }
 
   .circle-chart circle {
