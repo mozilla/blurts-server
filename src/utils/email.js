@@ -39,6 +39,7 @@ async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
 
 /**
  * Send Email
+ *
  * @param {string} recipient
  * @param {string} subject
  * @param {string} html
@@ -212,7 +213,7 @@ const getMonthlyDummyData = (recipient) => ({
 
 const getSignupReportDummyData = (recipient) => {
   const unsafeBreachesForEmail = [
-    getNotifictionDummyData(recipient)
+    getNotifictionDummyData(recipient).breachData
   ]
   const breachesCount = unsafeBreachesForEmail.length
   const numPasswordsExposed = 1
