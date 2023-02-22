@@ -29,7 +29,7 @@ error-could-not-add-email = No se pudo agregar la dirección de correo electrón
 error-not-subscribed = Esta dirección de correo electrónico no está suscrita a { -product-name }.
 error-hibp-throttled = Demasiadas conexiones a { -brand-HIBP }.
 error-hibp-connect = Error al conectar con { -brand-HIBP }.
-error-hibp-load-breaches = No se pudieron cargar las violaciones de seguridad.
+error-hibp-load-breaches = No se pudieron cargar las filtraciones de seguridad.
 error-must-be-signed-in = Tenés que iniciar la sesión en tu { -brand-fxa }.
 error-to-finish-verifying = Para finalizar la verificación de este correo electrónico para { -product-name }, tenés que iniciar la sesión en el correo electrónico de tu cuenta principal de correo electrónico.
 home-title = { -product-name }
@@ -58,20 +58,20 @@ signup-modal-sent = ¡Enviado!
 sign-up = Registrate
 form-signup-error = Debe ser una dirección de correo electrónico válida
 # breach-date = the calendar date a particular data theft occurred. 
-breach-date = Fecha de violación:
+breach-date = Fecha de filtración:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Cuentas comprometidas:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Datos comprometidos:
 unsub-headline = Cancelar la suscripción de { -product-name-nowrap }
-unsub-blurb = Esto eliminará tu dirección de correo electrónico de la lista { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas violaciones.
+unsub-blurb = Esto eliminará tu dirección de correo electrónico de la lista { -product-name-nowrap } y ya no recibirás alertas cuando se anuncien nuevas filtraciones.
 unsub-button = Cancelar suscripción
 # Breach data provided by Have I Been Pwned.
-hibp-attribution = Datos de violación proporcionados por { $hibp-link }
-share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguno de los tuyos tuvo   una violación de datos? Descubrilo
-share-facebook-headline = Averiguá si fusite parte de una violación de datos.
-share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas en una violación de datos?
-og-site-description = Averiguá si fuiste parte de una violación de datos con { -product-name }. Registrate para recibir alertas sobre futuras infracciones y obtené consejos para mantener tus cuentas seguras.
+hibp-attribution = Datos de filtración proporcionados por { $hibp-link }
+share-twitter = La mayoría de las personas tienen alrededor de 100 cuentas en línea. ¿Alguna de los tuyas tuvo una filtración de datos? Descubrilo.
+share-facebook-headline = Averiguá si fusite parte de una filtración de datos.
+share-facebook-blurb = ¿Tus cuentas en línea fueron expuestas en una filtración de datos?
+og-site-description = Averiguá si fuiste parte de una filtración de datos con { -product-name }. Registrate para recibir alertas sobre futuras filtraciones y obtené consejos para mantener tus cuentas seguras.
 show-all = Mostrar todo
 fxa-scan-another-email = ¿Querés consultar por otro correo electrónico?
 sign-out = Cerrar la sesión
@@ -82,14 +82,14 @@ fxa-pwt-summary-2 =
     Las contraseñas cortas de una sola palabra son fáciles de adivinar por parte de los piratas informáticos.
     Usá al menos dos palabras y una combinación de letras, dígitos y caracteres especiales.
 fxa-pwt-summary-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tus  contraseñas y te las ingresan en los sitios web. Incluso te ayudarán a crear contraseñas seguras.
-fxa-pwt-summary-6 = Las violaciones de datos van en aumento. Si tu información personal aparece en una nueva violación de datos, { -product-name } te envía una alerta para que puedas tomar medidas y proteger tus cuentas.
+fxa-pwt-summary-6 = Las filtraciones de datos van en aumento. Si tu información personal aparece en una nueva filtración de datos, { -product-name } te envía una alerta para que podás tomar medidas y proteger tus cuentas.
 fxa-what-to-do-blurb-1 =
     Si no podés iniciar la sesión, contactate con el sitio web para preguntar cómo actualizarlo.
     ¿Ves una cuenta que no reconocés? Tus datos podrían haberse vendido.
     O redistribuido. Esta también podría ser una cuenta que te olvidaste de haber creado o una empresa que cambió de nombre.
 fxa-what-to-do-subhead-2 = Dejá de usar la contraseña expuesta y cambiala en todos los lugares en los que la usaste.
 fxa-wtd-blurb-2 = Los piratas informáticos pueden intentar reutilizar tu contraseña expuesta para ingresar a otras cuentas. Creá una contraseña diferente y única para cada sitio web, especialmente para tu cuenta bancaria, tu correo electrónico y otros sitios web en los que guardás información personal.
-fxa-what-to-do-blurb-3 = La mayoría de las violaciones solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si tu cuenta bancaria o los números de tu tarjeta de crédito se incluyeron en una violación, avisá a tu banco de posibles fraudes y supervisá los estados de cuenta de los cargos que no reconozcas.
+fxa-what-to-do-blurb-3 = La mayoría de las filtraciones solo exponen correos electrónicos y contraseñas, pero algunas incluyen información financiera confidencial. Si tu cuenta bancaria o los números de tu tarjeta de crédito se incluyeron en una filtración, avisá a tu banco de posibles fraudes y supervisá los estados de cuenta de los cargos que no reconozcás.
 fxa-what-to-do-subhead-4 = Obtené ayuda para recordar todas sus contraseñas y mantenerlas seguras.
 fxa-what-to-do-blurb-4 = Los administradores de contraseñas como 1Password, LastPass, Dashlane y Bitwarden almacenan tu contraseñas de forma segura y te la ingresan en los sitios web. Usa un administrador de contraseñas en tu teléfono y computadora para que no tengas que recordarlas todas.
 # Alerts is a noun
@@ -109,29 +109,29 @@ fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Abrir la navegación de { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = ÚLTIMA VIOLACIÓN AGREGADA
+latest-breach = ÚLTIMA FILTRACIÓN AGREGADA
 # Link title
-more-about-this-breach = Más acerca de esta violación
+more-about-this-breach = Más acerca de esta filtración
 take-control = Recuperá el control de tu información personal.
 cant-stop-hackers = No podés evitar que te pirateen los piratas, pero sí podés evitar la malas prácticas que les facilitan el trabajo.
 read-more-tips = Ver más consejos de seguridad
 how-hackers-work = Entender cómo trabajan los piratas
-monitor-your-online-accounts = Registrate para el control de violaciones con { -brand-fxa }.
-stay-alert = Mantenete alerta a las nuevas violaciones
-if-your-info = Si tu información aparece en una nueva violación de datos, te enviaremos una alerta.
-search-all-emails = Averiguá si tus direcciones de correo aparecieron en violaciones y recibí alertas sobre nuevas amenazas.
+monitor-your-online-accounts = Registrate para monitorear filtraciones con { -brand-fxa }.
+stay-alert = Mantenete alerta a las nuevas filtraciones
+if-your-info = Si tu información aparece en una nueva filtración de datos, te enviaremos una alerta.
+search-all-emails = Averiguá si tus direcciones de correo aparecieron en filtraciones y recibí alertas sobre nuevas amenazas.
 monitor-several-emails = Controlá varias direcciones de correo
 take-action = Actuá para proteger tus cuentas.
 keep-your-data-safe = Averiguá qué tenés que hacer para mantener tus datos a salvo de los delincuentes cibernéticos.
-website-breach = Violación del sitio web
-sensitive-breach = Violación delicada del sitio web
-data-aggregator-breach = Violación del agregador de datos
-unverified-breach = Violación no verificada
-spam-list-breach = Violación del listado de correo no deseado
-website-breach-plural = Violaciones de sitios web
-sensitive-breach-plural = Violaciones delicadas
-data-aggregator-breach-plural = Violaciones de agregadores de datos
-unverified-breach-plural = Violaciones no verificadas
+website-breach = Filtración de sitio web
+sensitive-breach = Filtración delicada de sitio web
+data-aggregator-breach = Filtración del agregador de datos
+unverified-breach = Filtración no verificada
+spam-list-breach = Filtración de lista de correo no deseado
+website-breach-plural = Filtraciones de sitios web
+sensitive-breach-plural = Filtraciones delicadas
+data-aggregator-breach-plural = Filtraciones de agregadores de datos
+unverified-breach-plural = Filtraciones no verificadas
 spam-list-breach-plural = Violaciones del listado de correos no deseados
 what-data = Qué datos fueron comprometidos:
 sensitive-sites = ¿Cómo trata { -product-name } a los sitios sensibles?

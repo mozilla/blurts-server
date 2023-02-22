@@ -58,6 +58,8 @@ breach-checklist-pin-body = Yeni PIN’inizin ve diğer PIN’leriniz, doğum ta
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+breach-checklist-ip-header = <a>{ -brand-mozilla-vpn }</a> gibi bir VPN hizmetiyle internetteki gizliliğinizi artırın.
+breach-checklist-ip-body = IP adresiniz konumunuzu ve internet servis sağlayıcınızı ifşa edebilir. VPN kullanarak gerçek IP adresinizi gizleyebilirsiniz.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 

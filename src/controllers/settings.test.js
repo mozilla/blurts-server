@@ -66,6 +66,7 @@ test.serial('user add POST with email adds unverified subscriber and sends verif
   t.deepEqual(resp._getJSONData(), {
     message: 'Sent the verification email',
     status: 200,
+    newEmailCount: 3,
     success: true
   })
 })

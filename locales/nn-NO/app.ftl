@@ -23,7 +23,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Firefox-konto
-terms-and-privacy = Vilkår og personvern
 GitHub-link-title = GitHub
 error-scan-page-token = Du freista å skanne for mange e-postadresser på kort tid. Av tryggingsårsaker har vi mellombels blokkert deg frå nye søk. Du vil kunne gjere nye søk seinare.
 error-could-not-add-email = Klarte ikkje å leggje til e-postadressa i databasen.
@@ -75,7 +74,6 @@ share-facebook-blurb = Har kontoane dine på nettet blitt utsett for datalekkasj
 og-site-description = Finn ut om du har vore del av ein datalekkasje med { -product-name }. Registrer deg for varsel om nye datalekkasjar og få tips for å sikre kontoane dine.
 show-all = Vis alle
 fxa-scan-another-email = Vil du kontrollere ei anna e-postadresse?
-sign-in = Logg inn
 sign-out = Logg ut
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Handter { -brand-fxa }
@@ -635,3 +633,28 @@ ad-unit-5-instantly-make = Masker e-postadressa di med ein gong, kvar som helst,
 ad-unit-5-connect-on-the-go = Kople til medan du er på farten
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Bruk det på din telefon
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Logg inn
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Vilkår og personvern
+github = { -brand-github }

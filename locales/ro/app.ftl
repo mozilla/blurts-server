@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -52,7 +55,6 @@
                *[lower] contului Firefox
             }
     }
-terms-and-privacy = Termeni și confidențialitate
 GitHub-link-title = GitHub
 error-scan-page-token = Ai încercat să scanezi prea multe adrese de e-mail într-un timp prea scurt. Din motive de securitate, ți-am blocat accesul la căutări noi. Poți încerca mai târziu.
 error-could-not-add-email = Adresa de e-mail nu a putut fi adăugată în baza de date.
@@ -104,7 +106,6 @@ share-facebook-blurb = Au fost expuse conturile tale online într-o încălcare 
 og-site-description = Află dacă ai fost implicat(ă) într-o încălcare a securității datelor cu { -product-name }. Înscrie-te pentru alerte despre viitoare încălcări ale securității datelor și obține ponturi pentru a-ți păstra conturile în siguranță.
 show-all = Afișează toate
 fxa-scan-another-email = Vrei să verifici altă adresă de e-mail?
-sign-in = Autentificare
 sign-out = Deconectare
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestionează { -brand-fxa(case: "definite-article") }.
@@ -188,7 +189,7 @@ fxm-warns-you = { -product-name } te avertizează dacă adresa ta de e-mail a fo
 # How Firefox Monitor works
 how-fxm-works = Cum funcționează { -product-name }
 how-fxm-1-headline = Efectuează o căutare de bază
-how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale securității datelor încă din anul 2007. Această căutare de bază va accesa majoritatea încălcărilor securității datelor, dar nu și pe cele care conțin informații cu caracter personal sensibile.
+how-fxm-1-blurb = Caută-ți adresa de e-mail în încălcările publice ale securității datelor începând cu anul 2007. Această căutare de bază va accesa majoritatea încălcărilor securității datelor, dar nu și pe cele care conțin informații cu caracter personal sensibile.
 how-fxm-2-headline = Înscrie-te pentru monitorizarea încălcării securității datelor
 how-fxm-2-blurb = Creează un { -brand-fxa } ca să îți monitorizezi adresa de e-mail pentru încălcările curente ale securității datelor. Odată ce ți-ai verificat adresa de e-mail, vei primi și un raport complet cu încălcările anterioare, inclusiv încălcările securității datelor sensibile.
 how-fxm-3-headline = Primește notificări în browser
@@ -228,7 +229,7 @@ appears-in-x-breaches =
 check-for-breaches = Caută încălcări ale securității datelor
 find-out-what-hackers-know = Află ce știu hackerii despre tine. Află cum să fii cu un pas înaintea lor.
 get-email-alerts = Rămâi în siguranță: Primește alerte pe e-mail când informațiile tale apar într-o încălcare cunoscută a securității datelor
-search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor datând încă din 2007.
+search-for-your-email = Caută-ți adresa de e-mail în încălcările publice ale securității datelor începând cu anul 2007.
 back-to-top = Înapoi în partea de sus
 comm-opt-0 = Trimite-mi un mesaj pe e-mail dacă adresele mele de e-mail de mai jos apar într-o încălcare a securității datelor.
 comm-opt-1 = Trimite toate alertele privind încălcările securității datelor la { $primaryEmail }.
@@ -552,3 +553,31 @@ monitor-promo-body = Primești notificări data viitoare când informațiile tal
 ecosystem-promo-headline = Îți protejezi viața online cu produse care pun confidențialitatea pe primul loc
 ecosystem-promo-body = Toate produsele { -brand-name } onorează promisiunea noastră privind datele cu caracter personal: Luăm mai puțin. Le păstrăm în siguranță. Fără secrete.
 promo-ecosystem-cta = Vezi toate produsele
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+vpn-banner-location = Locația ta: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Protejează-te</em> cu { -brand-mozilla-vpn }.
+
+## Relay and VPN educational/ad units
+
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Cum îți păstrezi secretă adresa de e-mail?
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = Autentificare
+
+## Footer
+
+terms-and-privacy = Termeni și confidențialitate

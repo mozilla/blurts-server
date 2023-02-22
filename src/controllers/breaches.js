@@ -10,14 +10,16 @@ import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 
 async function breachesPage (req, res) {
-  const emailCount = 1 + (req.user.email_addresses?.length || 0) // +1 because user.email_addresses does not include primary
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
+  const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0
+  const emailTotalCount = emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0)
   appendBreachResolutionChecklist(breachesData)
 
   const data = {
     breachesData,
-    emailCount,
+    emailVerifiedCount,
+    emailTotalCount,
     partial: breaches,
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,

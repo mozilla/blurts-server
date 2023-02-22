@@ -7,6 +7,8 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = { $email-select } 的数据外泄
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored = 已监控 { $count } 个邮箱，共 { $total } 个邮箱
 add-email-link = 添加电子邮件地址
 
 ## Breaches resolved filter
@@ -18,6 +20,7 @@ filter-label-resolved = 已处理的数据外泄事件
 
 column-company = 公司
 column-breached-data = 外泄的数据
+column-detected = 监测到
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $companyName } 在 { $breachDate } 遭遇了数据外泄。我们发现并确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。泄露的数据包括 { $dataClasses }
 

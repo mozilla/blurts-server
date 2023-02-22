@@ -88,6 +88,7 @@ occupations = Ocupaciones
 parenting-plans = Planes familiares
 partial-credit-card-data = Datos parciales de la tarjeta de crédito
 partial-dates-of-birth = Fechas parciales de nacimiento
+partial-phone-numbers = Números de teléfono parciales
 passport-numbers = Números de pasaporte
 password-hints = Recordatorios de contraseñas
 password-strengths = Fortaleza de la contraseña

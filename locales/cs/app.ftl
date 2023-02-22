@@ -115,7 +115,6 @@
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
 -brand-fx-account = Účet Firefoxu
-terms-and-privacy = Podmínky a ochrana soukromí
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
 error-could-not-add-email = E-mailovou adresu se nepodařilo přidat do databáze.
@@ -167,7 +166,6 @@ share-facebook-blurb = Byl některý z vašich účtů součástí nějakého ú
 og-site-description = { -product-name } zjistí, jestli byla vaše data součástí nějakého úniku. Pro větší bezpečí se také přihlaste k zasílání výstrah o budoucích únicích.
 show-all = Zobrazit vše
 fxa-scan-another-email = Chcete zkontrolovat další e-mailovou adresu?
-sign-in = Přihlásit se
 sign-out = Odhlášení
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Správa { -brand-fxa(case: "gen", capitalization: "lower") }
@@ -711,3 +709,79 @@ ad-unit-5-no-matter-where = Ať jste kdekoli, vytvořte si během několika seku
 ad-unit-6-worry-free = Registrace bez obav
 ad-unit-6-want-to-start = Chcete si zřídit nové předplatné, odpovědět na pozvánku nebo získat výhodný promo kód bez toho, aby vám e-mailovou schránku zaplavil spam?
 ad-unit-6-before-you-complete = Během své další registrace použijte místo svého skutečného e-mailu masku, abyste ochránili své údaje a udržovali si kontrolu nad doručenou poštou.
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox =
+    { $case ->
+        [gen] Firefoxu
+        [dat] Firefoxu
+        [acc] Firefox
+        [voc] Firefoxe
+        [loc] Firefoxu
+        [ins] Firefoxem
+       *[nom] Firefox
+    }
+    .gender = masculine
+-brand-fx-monitor =
+    { $case ->
+        [gen] Firefox Monitoru
+        [dat] Firefox Monitoru
+        [acc] Firefox Monitor
+        [voc] Firefox Monitore
+        [loc] Firefox Monitoru
+        [ins] Firefox Monitorem
+       *[nom] Firefox Monitor
+    }
+    .gender = masculine
+-brand-mozilla =
+    { $case ->
+        [gen] Mozilly
+        [dat] Mozille
+        [acc] Mozillu
+        [voc] Mozillo
+        [loc] Mozille
+        [ins] Mozillou
+       *[nom] Mozilla
+    }
+    .gender = feminine
+-brand-mozilla-foundation =
+    { $case ->
+        [gen] Mozilly Foundation
+        [dat] Mozille Foundation
+        [acc] Mozillu Foundation
+        [voc] Mozillo Foundation
+        [loc] Mozille Foundation
+        [ins] Mozillou Foundation
+       *[nom] Mozilla Foundation
+    }
+    .gender = feminine
+-brand-github =
+    { $case ->
+        [gen] GitHubu
+        [dat] GitHubu
+        [acc] GitHub
+        [voc] GitHube
+        [loc] GitHubu
+        [ins] GitHubem
+       *[nom] GitHub
+    }
+    .gender = masculine
+
+## Search Engine Optimization
+
+meta-desc = { -brand-fx-monitor } zjistí, zda byla vaše data součástí nějakého úniku. Přihlaste si odběr upozornění o budoucích únicích a získejte tipy, jak udržovat své účty v bezpečí.
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Přihlásit se
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Podmínky a ochrana soukromí
+github = { -brand-github }

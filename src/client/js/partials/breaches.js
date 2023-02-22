@@ -37,6 +37,7 @@ function init () {
   emailSelect.addEventListener('change', handleEvent)
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
+  document.body.addEventListener('email-added', handleEvent)
 }
 
 function handleEvent (e) {
@@ -52,13 +53,21 @@ function handleEvent (e) {
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
       updateBreachStatus(e.target)
       break
+    case e.type === 'email-added':
+      state.emailCount = e.detail.newEmailCount
+      renderZeroState()
+      break
   }
 }
 
+/**
+ * @param {HTMLInputElement} input
+ */
 async function updateBreachStatus (input) {
   const affectedEmail = state.selectedEmail
   const breachId = input.name
   const checkedInputs = Array.from(input.closest('.resolve-list').querySelectorAll('input:checked'))
+  input.disabled = true
 
   try {
     const res = await fetch('/api/v1/user/breaches', {
@@ -81,6 +90,8 @@ async function updateBreachStatus (input) {
     renderResolvedCounts()
   } catch (e) {
     console.error('Could not update user breach resolve status:', e)
+  } finally {
+    input.disabled = false
   }
 }
 
