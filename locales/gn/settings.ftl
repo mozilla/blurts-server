@@ -25,6 +25,8 @@ settings-add-email-button = Embojuaju ñanduti veve kundaharape
 
 ## Deactivate account
 
+settings-deactivate-account-title = Emboguete mba’ete
+settings-deactivate-account-info = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-fx-account }.
 
 ## Add email dialog
 

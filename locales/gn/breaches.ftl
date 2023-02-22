@@ -37,6 +37,8 @@ breaches-none-cta-button = Embojuaju ñanduti veve kundaharape
 breaches-all-resolved-headline = Opaite umi ñembogua oĩporãma
 breaches-all-resolved-cta-blurb = ¿Ehechamemesépa ambue ñanduti veve?
 breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
+# $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+breach-description = Ko { $breachDate }, { $companyName } oñembogua. Ojejuhu rire ha ojehechajey pe ñembogua, rombojuajúma ore mba’ekuaarã rendápe { $addedDate }. Ko ñembogua ogueroike: { $dataClasses }
 
 ## Prompts the user for changes when there is a breach detected of password
 
