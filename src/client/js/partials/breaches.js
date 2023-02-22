@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const breachesPartial = document.querySelector("[data-partial='breaches']")
+const chartColors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0', '#9e9e9e']
 const state = new Proxy({
   selectedEmail: null,
   selectedStatus: 'unresolved',
@@ -143,14 +144,13 @@ function renderZeroState () {
 }
 
 function renderPieChart () {
-  const colors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0']
-  const visibleRows = Array.from(breachesTable.querySelectorAll('.breach-row:not([hidden])'))
-  const classesForSelectedEmail = visibleRows.flatMap(row => row.dataset.classes.split(','))
+  const rowsForSelectedEmail = Array.from(breachesTable.querySelectorAll(`[data-email='${state.selectedEmail}']`))
+  const classesForSelectedEmail = rowsForSelectedEmail.flatMap(row => row.dataset.classes.split(','))
   const classesMap = classesForSelectedEmail.reduce((acc, cur) => {
     acc.set(cur, (acc.get(cur) ?? 0) + 1) // set count for each class key
     return acc
   }, new Map())
-  const top3Classes = [...classesMap.keys()].sort((a, b) => classesMap.get(b) - classesMap.get(a)).slice(0, 3)
+  const classesTop3 = [...classesMap.keys()].sort((a, b) => classesMap.get(b) - classesMap.get(a)).slice(0, 3)
   const classesTotal = classesForSelectedEmail.length
   const chartData = []
 
@@ -160,24 +160,24 @@ function renderPieChart () {
         key: 'None', 
         name: 'None', 
         count: 100,
-        color: '#9e9e9e'
+        color: chartColors[4]
       })
       break
     case classesMap.size >= 4:
       chartData[3] = {
         key: 'Other', 
         name: 'Other', 
-        count: classesTotal - classesMap.get(top3Classes[0]) - classesMap.get(top3Classes[1]) - classesMap.get(top3Classes[2]),
-        color: colors[3]
+        count: classesTotal - classesMap.get(classesTop3[0]) - classesMap.get(classesTop3[1]) - classesMap.get(classesTop3[2]),
+        color: chartColors[3]
       }
       // falls through
     default:
-      top3Classes.forEach((name, i) => {
+      classesTop3.forEach((name, i) => {
         chartData[i] = {
           key: name, 
           name, 
           count: classesMap.get(name),
-          color: colors[i]
+          color: chartColors[i]
         }
       })
   }
