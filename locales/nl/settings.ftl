@@ -48,3 +48,6 @@ settings-fxa-link-label = Naar { -brand-firefox }-instellingen
 ## Add email dialog
 
 settings-email-dialog-title = Nog een e-mailadres toevoegen
+settings-add-email-text = Voeg een nieuw e-mailadres toe om te bekijken of het getroffen is door een datalek.
+settings-email-input-label = E-mailadres
+settings-send-email-verification-button = Verificatiekoppeling versturen
