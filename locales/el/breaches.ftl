@@ -7,7 +7,8 @@
 
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Παραβιάσεις δεδομένων για το { $email-select }
-add-email-link = Προσθήκη διεύθυνσης email
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Διαχείριση email
 
 ## Breaches resolved filter
 
@@ -19,6 +20,7 @@ filter-label-resolved = Επιλυμένες παραβιάσεις
 column-company = ΕΤΑΙΡΕΙΑ
 column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
 column-detected = ΑΝΙΧΝΕΥΣΗ
+breaches-none-cta-button = Προσθήκη διεύθυνσης email
 
 ## Prompts the user for changes when there is a breach detected of password
 
