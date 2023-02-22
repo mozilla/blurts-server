@@ -167,7 +167,7 @@ test('EmailUtils.getEmailCtaHref works without a subscriber ID', async t => {
   const { getEmailCtaHref } = await import('./email.js')
 
   const emailCtaHref = getEmailCtaHref('email-type', 'content')
-  t.is(emailCtaHref.pathname, '/')
+  t.is(emailCtaHref.pathname, '/user/breaches')
   emailCtaHref.searchParams.sort()
   t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
     ['utm_campaign', 'email-type'],
