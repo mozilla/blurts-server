@@ -37,6 +37,10 @@ breaches-none-copy = Goed nijs! Der binne gjin bekende datalekken meld foar { $e
 breaches-none-cta-blurb = Wolle jo in oar e-mailadres kontrolearje?
 breaches-none-cta-button = E-mailadres tafoegje
 breaches-all-resolved-headline = Alle datalekken binne oplost
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Kreas! Jo hawwe alle datalekken foar { $email } oplost. Wy sille dizze e-mailadres monitoare en sille jo witte litte as der nije datalekken barre.
+breaches-all-resolved-cta-blurb = Wolle jo in oar e-mailadres kontrolearje?
 breaches-all-resolved-cta-button = E-mailadres tafoegje
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Op { $breachDate } is in lek bard op { $companyName }. Nei ûntdekking en ferifikaasje fan it lek, is it op { $addedDate } tafoege oan ús database. Dit lek omfette: { $dataClasses }
