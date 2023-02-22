@@ -141,6 +141,28 @@ function renderZeroState () {
   breachesTable.append(content)
 }
 
+function renderPieChart () {
+  const visibleRows = Array.from(breachesTable.querySelectorAll('.breach-row:not([hidden])'))
+  const classesForSelectedEmail = visibleRows.flatMap(row => row.dataset.classes.split(','))
+  const classesMap = classesForSelectedEmail.reduce((acc, cur) => {
+    acc.set(cur, (acc.get(cur) ?? 0) + 1) // set count for each class key
+    return acc
+  }, new Map())
+  const classesDesc = [...classesMap.keys()].sort((a, b) => classesMap.get(b) - classesMap.get(a))
+  const otherClassesTotal = classesForSelectedEmail.length - classesMap.get(classesDesc[0]) - classesMap.get(classesDesc[1]) - classesMap.get(classesDesc[2])
+  const chartData = [
+    {key: classesDesc[0], name: classesDesc[0], count: classesMap.get(classesDesc[0]), color: '#321C64'},
+    {key: classesDesc[1], name: classesDesc[1], count: classesMap.get(classesDesc[1]), color: '#AB71FF'},
+    {key: classesDesc[2], name: classesDesc[2], count: classesMap.get(classesDesc[2]), color: '#952BB9'},
+    {key: 'Other', name: 'Other', count: otherClassesTotal, color: '#D74CF0'}
+  ]
+
+  pieChart.setAttribute('data', JSON.stringify(chartData))
+  console.log(classesMap)
+  console.log(classesDesc)
+  console.log(chartData)
+}
+
 function render () {
   // render split into separate functions to allow independent trigger
   // e.g. if user marks all steps resolved – update the count, but leave the breach in place for further user interaction

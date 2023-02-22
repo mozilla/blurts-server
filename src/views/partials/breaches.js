@@ -33,7 +33,7 @@ function createBreachRows (data) {
       })
 
       return `
-      <details class='breach-row' data-status=${status} data-email=${account.email} ${isHidden ? 'hidden' : ''}>
+      <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
           <span>${breach.Title}</span>
           <span>${shortList.format(dataClassesTranslated)}</span>
