@@ -2,6 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { access } from 'node:fs/promises'
+import { constants } from 'node:fs'
 import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
@@ -22,6 +26,7 @@ async function breachesPage (req, res) {
 
   const data = {
     breachesData,
+    breachLogos: await getBreachLogos(req.app.locals.breaches),
     emailVerifiedCount,
     emailTotalCount,
     selectedEmailIndex,
@@ -32,6 +37,21 @@ async function breachesPage (req, res) {
   }
 
   res.send(mainLayout(data))
+}
+
+async function getBreachLogos (breaches) {
+  const breachLogos = new Map()
+  await Promise.all(breaches.map(async breach => {
+    const logoPath = resolve(dirname(fileURLToPath(import.meta.url)), '../client/images/logo_cache/', breach.Domain + '.ico')
+    try {
+      await access(logoPath, constants.F_OK)
+      breachLogos.set(breach.Domain, `/images/logo_cache/${breach.Domain}.ico`)
+    } catch {
+      // Do nothing; we don't have a cached version of the logo,
+      // so we don't add it to the Map.
+    }
+  }))
+  return breachLogos
 }
 
 /**

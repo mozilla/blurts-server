@@ -12,7 +12,7 @@ function createEmailOptions (data, selectedEmailIndex) {
   return optionElements.join('')
 }
 
-function createBreachRows (data) {
+function createBreachRows (data, logos) {
   const locale = getLocale()
   const shortDate = new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })
   const shortList = new Intl.ListFormat(locale, { style: 'narrow' })
@@ -31,11 +31,17 @@ function createBreachRows (data) {
         addedDate: longDate.format(addedDate),
         dataClasses: longList.format(dataClassesTranslated)
       })
+      const logoPath = logos.get(breach.Domain) ?? '/images/fallback-logo.svg'
 
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span>${breach.Title}</span>
+          <span>
+            <a href='https://${breach.Domain}' target='_blank' class='breach-company'>
+              <img src='${logoPath}' alt='' class='breach-logo' height='32' />
+              ${breach.Title}
+            </a>
+          </span>
           <span>${shortList.format(dataClassesTranslated)}</span>
           <span>
             <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
@@ -107,7 +113,7 @@ export const breaches = data => `
     }
     <span>${getMessage('column-detected')}</span>
   </header>
-  ${createBreachRows(data.breachesData)}
+  ${createBreachRows(data.breachesData, data.breachLogos)}
   <template class='no-breaches'>
     <div class="zero-state no-breaches-message">
       <img src='/images/breaches-none.svg' alt='' width="136" height="102" />
