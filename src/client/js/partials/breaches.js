@@ -157,16 +157,16 @@ function renderPieChart () {
   switch(true){
     case classesMap.size === 0:
       chartData.push({
-        key: 'None', 
-        name: 'None', 
-        count: 100,
+        key: pieChart.dataset.txtNone, 
+        name: pieChart.dataset.txtNone, 
+        count: 1,
         color: chartColors[4]
       })
       break
     case classesMap.size >= 4:
       chartData[3] = {
-        key: 'Other', 
-        name: 'Other', 
+        key: pieChart.dataset.txtOther, 
+        name: pieChart.dataset.txtOther, 
         count: classesTotal - classesMap.get(classesTop3[0]) - classesMap.get(classesTop3[1]) - classesMap.get(classesTop3[2]),
         color: chartColors[3]
       }

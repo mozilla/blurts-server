@@ -4,6 +4,13 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Breached data
+# Legend item for various data classes grouped together
+breach-chart-other = Other
+# Legend item for no data classes
+breach-chart-none = None
+
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Data breaches for { $email-select }
 
