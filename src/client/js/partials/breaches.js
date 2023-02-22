@@ -20,12 +20,13 @@ const state = new Proxy({
   }
 })
 
-let breachesTable, breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
+let breachesTable, breachRows, emailSelect, pieChart, statusFilter, resolvedCountOutput, unresolvedCountOutput
 
 function init () {
   breachesTable = breachesPartial.querySelector('.breaches-table')
   breachRows = breachesTable.querySelectorAll('.breach-row')
   emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
+  pieChart = breachesPartial.querySelector('.breaches-header circle-chart')
   statusFilter = breachesPartial.querySelector('.breaches-filter')
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
@@ -142,25 +143,46 @@ function renderZeroState () {
 }
 
 function renderPieChart () {
+  const colors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0']
   const visibleRows = Array.from(breachesTable.querySelectorAll('.breach-row:not([hidden])'))
   const classesForSelectedEmail = visibleRows.flatMap(row => row.dataset.classes.split(','))
   const classesMap = classesForSelectedEmail.reduce((acc, cur) => {
     acc.set(cur, (acc.get(cur) ?? 0) + 1) // set count for each class key
     return acc
   }, new Map())
-  const classesDesc = [...classesMap.keys()].sort((a, b) => classesMap.get(b) - classesMap.get(a))
-  const otherClassesTotal = classesForSelectedEmail.length - classesMap.get(classesDesc[0]) - classesMap.get(classesDesc[1]) - classesMap.get(classesDesc[2])
-  const chartData = [
-    {key: classesDesc[0], name: classesDesc[0], count: classesMap.get(classesDesc[0]), color: '#321C64'},
-    {key: classesDesc[1], name: classesDesc[1], count: classesMap.get(classesDesc[1]), color: '#AB71FF'},
-    {key: classesDesc[2], name: classesDesc[2], count: classesMap.get(classesDesc[2]), color: '#952BB9'},
-    {key: 'Other', name: 'Other', count: otherClassesTotal, color: '#D74CF0'}
-  ]
+  const top3Classes = [...classesMap.keys()].sort((a, b) => classesMap.get(b) - classesMap.get(a)).slice(0, 3)
+  const classesTotal = classesForSelectedEmail.length
+  const chartData = []
+
+  switch(true){
+    case classesMap.size === 0:
+      chartData.push({
+        key: 'None', 
+        name: 'None', 
+        count: 100,
+        color: '#9e9e9e'
+      })
+      break
+    case classesMap.size >= 4:
+      chartData[3] = {
+        key: 'Other', 
+        name: 'Other', 
+        count: classesTotal - classesMap.get(top3Classes[0]) - classesMap.get(top3Classes[1]) - classesMap.get(top3Classes[2]),
+        color: colors[3]
+      }
+      // falls through
+    default:
+      top3Classes.forEach((name, i) => {
+        chartData[i] = {
+          key: name, 
+          name, 
+          count: classesMap.get(name),
+          color: colors[i]
+        }
+      })
+  }
 
   pieChart.setAttribute('data', JSON.stringify(chartData))
-  console.log(classesMap)
-  console.log(classesDesc)
-  console.log(chartData)
 }
 
 function render () {
@@ -169,6 +191,7 @@ function render () {
   renderResolvedCounts()
   renderBreachRows()
   renderZeroState()
+  renderPieChart ()
 }
 
 if (breachesPartial) init()
