@@ -19,6 +19,14 @@ settings-alert-preferences-option-two = Emondopaite kyhyjerã ñembogua ñanduti
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (ñepyrũha)
 settings-email-list-title = Ñanduti veve kundaharape ojehechameméva
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Ne mba’etépe oike jehechameme { $limit } peve ñanduti veve.
+        [many] Ne mba’etépe oike jehechameme { $limit } peve ñanduti veve.
+       *[other] Ne mba’etépe oike jehechameme { $limit } peve ñanduti veve.
+    }
 settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
 settings-resend-email-verification-link = Emondojey ñanduti veve jehechajeyrã
 settings-add-email-button = Embojuaju ñanduti veve kundaharape
