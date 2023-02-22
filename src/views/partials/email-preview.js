@@ -35,7 +35,8 @@ function getRecipientInputs (recipients) {
   `
 }
 
-export const emailPreview = data => {
+export const emailPreview = (data) => {
+  const { isAdminPreview = false } = data
   const {
     template: currentTemplateKey,
     data: emailTemplates,
@@ -52,13 +53,19 @@ export const emailPreview = data => {
           ${getPreviewOptions(currentTemplateKey, emailTemplates)}
         </custom-select>
 
-        <form class='js-email-preview-form email-preview-form'>
-          ${getRecipientInputs(recipients)}
+        ${
+          isAdminPreview
+            ? `
+                <form class='js-email-preview-form email-preview-form'>
+                  ${getRecipientInputs(recipients)}
 
-          <button class='primary' type='submit'>
-            Send test email
-          </button>
-        </form>
+                  <button class='primary' type='submit'>
+                    Send test email
+                  </button>
+                </form>
+              `
+            : ''
+        }
       </div>
       <hr class='monitor-gradient'>
       ${selectedPreviewTemplate}
