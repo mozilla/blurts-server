@@ -6,7 +6,7 @@ import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
 const { SERVER_URL } = AppConstants
-const showLandingHeaderFor = ['emailPreview', 'landing', 'notFound']
+const showLandingHeaderFor = ['emailPreview', 'error', 'landing', 'notFound']
 
 const mainLayout = data => `
 <!doctype html>
