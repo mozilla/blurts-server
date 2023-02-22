@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } van { $total } gemonitord e-mailadres
        *[other] { $count } van { $total } gemonitorde e-mailadressen
     }
-add-email-link = E-mailadres toevoegen
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = E-mailadressen beheren
 
 ## Breaches resolved filter
 
@@ -25,6 +26,11 @@ filter-label-resolved = Opgeloste datalekken
 column-company = BEDRIJF
 column-breached-data = GELEKTE GEGEVENS
 column-detected = GEDETECTEERD
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Opgelost
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Actief
+breaches-none-headline = Geen datalekken gevonden
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Op { $breachDate } is een lek opgetreden bij { $companyName }. Na ontdekking en verificatie van het lek, is het op { $addedDate } toegevoegd aan onze database. Dit lek omvatte: { $dataClasses }
 
