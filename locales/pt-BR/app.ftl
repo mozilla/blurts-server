@@ -220,7 +220,7 @@ comm-opt-1 = Enviar todos os alertas de vazamento para { $primaryEmail }.
 stop-monitoring-this = Parar de monitorar este email.
 resend-verification = Enviar email de verificação novamente
 add-new-email = Adicionar um novo endereço de email
-send-verification = Enviar link de confirmação
+send-verification = Enviar link de verificação
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
