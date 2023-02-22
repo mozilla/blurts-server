@@ -2,10 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { get } from 'node:https'
+import { createWriteStream } from 'node:fs'
+import { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
+import { mkdir } from 'node:fs/promises'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -141,12 +146,36 @@ async function loadBreachesIntoApp (app) {
       // sync the "breaches" table with the latest from HIBP
       await upsertBreaches(breaches)
     }
+    downloadBreachIcons(breaches)
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
   } catch (error) {
     throw fluentError('error-hibp-load-breaches')
   }
   log.info('done-loading-breaches', 'great success 👍')
+}
+
+async function downloadBreachIcons (breaches) {
+  const breachDomains = breaches.map(breach => breach.Domain)
+  const logoFolder = resolve(dirname(fileURLToPath(import.meta.url)), '../client/images/logo_cache/')
+  try {
+    await mkdir(logoFolder)
+  } catch {
+    // Do nothing; if the directory already exists, that's fine.
+  }
+  breachDomains.forEach(breachDomain => {
+    get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
+      if (response.statusCode !== 200) {
+        return
+      }
+
+      const file = createWriteStream(resolve(logoFolder, breachDomain.toLowerCase() + '.ico'))
+      response.pipe(file)
+      file.on('finish', () => {
+        file.close()
+      })
+    })
+  })
 }
 
 /**

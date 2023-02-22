@@ -101,7 +101,7 @@
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
-  align-items: baseline;
+  align-items: center;
   gap: var(--gap);
 }
 
@@ -215,6 +215,25 @@
   display: none;
 }
 
+.breach-row .breach-company {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+  text-decoration: none;
+}
+
+.breach-row a.breach-company:hover {
+  text-decoration: underline;
+}
+
+.breach-row .breach-company .breach-logo {
+  height: 1.5rem;
+}
+
+.breach-row .breach-company span.breach-logo {
+  width: 1.5rem;
+  border-radius: 1.5rem;
+}
 .breaches-table details > article {
   padding: var(--padding-md);
   border-top: 1px solid var(--gray-10);
