@@ -22,13 +22,26 @@ settings-email-list-title = Ñanduti veve kundaharape ojehechameméva
 settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
 settings-resend-email-verification-link = Emondojey ñanduti veve jehechajeyrã
 settings-add-email-button = Embojuaju ñanduti veve kundaharape
+# This string is shown beneath each of the user’s email addresses to indicate
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (numer) - Number of breaches
+settings-email-number-of-breaches-info =
+    { $breachCount ->
+        [one] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
+        [many] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
+       *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
+    }
 
 ## Deactivate account
 
 settings-deactivate-account-title = Emboguete mba’ete
 settings-deactivate-account-info = Eipe’aitekuaa { -product-short-name } emboguévo nde { -brand-fx-account }.
+settings-fxa-link-label = Eho { -brand-firefox } poravorãme
 
 ## Add email dialog
 
+settings-email-dialog-title = Emoĩve ambue ñanduti veve kundaharape
+settings-add-email-text = Emoĩve ñanduti veve kundaharape pyahu ehecha hag̃ua eimépa ñemboguápe.
 settings-email-input-label = Ñanduti veve
 settings-send-email-verification-button = Emondo juajuha jehechajeyrã
