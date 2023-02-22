@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import AppConstants from '../app-constants.js'
 import express from 'express'
 
 import adminRoutes from './admin.js'
@@ -29,8 +30,12 @@ router.use('/admin', adminRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)
 router.use('/api/v1/user/', userApiRoutes)
 router.use('/oauth', authRoutes)
-router.use('/preview', previewRoutes)
 router.use('/user', userRoutes)
+
+// Do not make the non-auth previews available on prod
+if (AppConstants.NODE_ENV !== 'production') {
+  router.use('/preview', previewRoutes)
+}
 
 router.use(notFound)
 router.use(notFoundPage)
