@@ -670,6 +670,7 @@ sign-in = Oanmelde
 
 ## Site navigation
 
+site-nav-breaches-link = Datalekken oplosse
 site-nav-settings-link = Ynstellingen
 site-nav-help-link = Help en stipe
 
@@ -694,4 +695,5 @@ github = { -brand-github }
 # Variables:
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } Side net fûn
+error-page-error-404-copy = It spyt ús, de side dêr’t jo nei sykje bestiet net mear.
 error-page-error-404-cta-button = Tebek

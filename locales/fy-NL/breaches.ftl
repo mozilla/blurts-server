@@ -30,6 +30,7 @@ column-detected = DETEKTEARRE
 column-status-badge-resolved = Oplost
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktyf
+breaches-none-headline = Gjin datalekken fûn
 breaches-none-cta-blurb = Wolle jo in oar e-mailadres kontrolearje?
 breaches-none-cta-button = E-mailadres tafoegje
 breaches-all-resolved-cta-button = E-mailadres tafoegje
