@@ -122,7 +122,7 @@ open-fxa-menu = Abrir navegação na { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = ÚLTIMO VAZAMENTO ADICIONADO
 # Link title
-more-about-this-breach = Mais sobre este vazamento
+more-about-this-breach = Mais informações sobre este vazamento
 take-control = Assuma de volta o controle sobre seus dados pessoais.
 cant-stop-hackers = Você não pode impedir hackers de hackear. Mas pode evitar hábitos ruins que facilitam o trabalho deles.
 read-more-tips = Leia mais dicas de segurança
