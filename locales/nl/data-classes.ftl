@@ -34,6 +34,9 @@ customer-interactions = Interactie met klanten
 dates-of-birth = Geboortedata
 deceased-date = Overlijdensdatum
 deceased-statuses = Overlijdensstatussen
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Afleverinstructies
 device-information = Apparaatgegevens
 device-serial-numbers = Serienummers van apparaten
 device-usage-tracking-data = Volggegevens over apparaatgebruik
@@ -138,6 +141,7 @@ user-website-urls = URL’s van gebruikerswebsites
 usernames = Gebruikersnamen
 utility-bills = Nutsrekeningen
 vehicle-details = Details van vervoermiddel
+vehicle-identification-numbers-vins = Voertuigidentificatienummers (VIN’s)
 website-activity = Website-activiteit
 work-habits = Werkgewoonten
 years-of-birth = Geboortejaren
