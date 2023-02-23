@@ -60,9 +60,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = účet Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Vo veľmi krátkom čase ste sa pokúsili skontrolovať príliš mnoho e-mailových adries. Z bezpečnostných dôvodov sme vám ďalšie vyhľadávanie dočasne zablokovali. Skúste to, prosím, neskôr.
 error-could-not-add-email = E-mailovú adresu sa nepodarilo pridať do databázy.
@@ -425,7 +422,7 @@ security-tips-headline = Bezpečnostné tipy na ochranu pred hackermi
 steps-to-protect = Aké kroky podniknúť na ochranu svojej internetovej identity
 take-further-steps = Podniknite ďalšie kroky na ochranu svojej internetovej identity
 alert-about-new-breaches = Upozorniť ma na nové úniky
-see-if-youve-been-part = Pozrite sa, či ste neboli súčasťou internetového úniku dát.
+see-if-youve-been-part = Pozrite sa, či ste neboli súčasťou internetového úniku dát
 get-ongoing-breach-monitoring = Nechajte si priebežne monitorovať viacero e-mailových adries.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Zistiť
@@ -718,6 +715,44 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] účtu Firefox
+               *[upper] Účtu Firefox
+            }
+        [dat]
+            { $capitalization ->
+                [lower] účtu Firefox
+               *[upper] Účtu Firefox
+            }
+        [acc]
+            { $capitalization ->
+                [lower] účet Firefox
+               *[upper] Účet Firefox
+            }
+        [loc]
+            { $capitalization ->
+                [lower] účte Firefox
+               *[upper] Účte Firefox
+            }
+        [ins]
+            { $capitalization ->
+                [lower] účtom Firefox
+               *[upper] Účtom Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] účet Firefox
+               *[upper] Účet Firefox
+            }
+    }
+
 ## Search Engine Optimization
 
 meta-desc = { -brand-fx-monitor } zistí, či boli vaše dáta súčasťou nejakého úniku. Prihláste sa na odber upozornení o budúcich porušeniach a získajte tipy, ako udržať svoje účty v bezpečí.
@@ -727,8 +762,32 @@ meta-desc = { -brand-fx-monitor } zistí, či boli vaše dáta súčasťou nejak
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Prihlásiť sa
 
+## Site navigation
+
+site-nav-breaches-link = Vyriešiť úniky dát
+site-nav-settings-link = Nastavenia
+site-nav-help-link = Pomoc a podpora
+
+## User menu
+
+menu-button-title = Ponuka používateľa
+menu-button-alt = Otvoriť používateľskú ponuku
+menu-list-accessible-label = Ponuka účtu
+menu-item-fxa = Spravovať { -brand-fx-account(case: "acc", capitalization: "lower") }
+menu-item-settings = Nastavenia
+menu-item-help = Pomoc a podpora
+menu-item-logout = Odhlásiť sa
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Podmienky a ochrana súkromia
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Stránka sa nenašla
+error-page-error-404-copy = Ľutujeme, stránka, ktorú hľadáte, už neexistuje.
+error-page-error-404-cta-button = Prejsť naspäť

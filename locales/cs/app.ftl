@@ -112,9 +112,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Účet Firefoxu
 GitHub-link-title = GitHub
 error-scan-page-token = Pokusili jste se zkontrolovat příliš mnoho e-mailových adres ve velmi krátkém čase. Z bezpečnostních důvodů jsme další vyhledávání dočasně zablokovali. Zkuste to prosím znovu později.
 error-could-not-add-email = E-mailovou adresu se nepodařilo přidat do databáze.
@@ -771,6 +768,12 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
     }
     .gender = masculine
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Účet Firefoxu
+
 ## Search Engine Optimization
 
 meta-desc = { -brand-fx-monitor } zjistí, zda byla vaše data součástí nějakého úniku. Přihlaste si odběr upozornění o budoucích únicích a získejte tipy, jak udržovat své účty v bezpečí.
@@ -780,8 +783,32 @@ meta-desc = { -brand-fx-monitor } zjistí, zda byla vaše data součástí něja
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Přihlásit se
 
+## Site navigation
+
+site-nav-breaches-link = Vyřešit úniky dat
+site-nav-settings-link = Nastavení
+site-nav-help-link = Nápověda a podpora
+
+## User menu
+
+menu-button-title = Nabídka uživatele
+menu-button-alt = Otevřít nabídku uživatele
+menu-list-accessible-label = Nabídka účtu
+menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
+menu-item-settings = Nastavení
+menu-item-help = Nápověda a podpora
+menu-item-logout = Odhlásit se
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Podmínky a ochrana soukromí
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Stránka nebyla nalezena
+error-page-error-404-copy = Je nám líto, ale stránka, kterou hledáte, již neexistuje.
+error-page-error-404-cta-button = Přejít zpět

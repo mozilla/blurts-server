@@ -34,6 +34,9 @@ customer-interactions = Αλληλεπιδράσεις πελάτη
 dates-of-birth = Ημερομηνίες γέννησης
 deceased-date = Ημερομηνία θανάτου
 deceased-statuses = Καταστάσεις θανάτου
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Οδηγίες παράδοσης
 device-information = Πληροφορίες συσκευής
 device-serial-numbers = Σειριακοί αριθμοί συσκευών
 device-usage-tracking-data = Δεδομένα καταγραφής χρήσης συσκευής

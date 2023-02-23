@@ -34,6 +34,9 @@ customer-interactions = Kundinteraktioner
 dates-of-birth = Födelsedatum
 deceased-date = Dödsdatum
 deceased-statuses = Dödsannonser
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Leveransinstruktioner
 device-information = Enhetsinformation
 device-serial-numbers = Serienummer på enheter
 device-usage-tracking-data = Spårningsdata för enhetsanvändning
@@ -138,6 +141,7 @@ user-website-urls = Adresser till användarwebbplatser
 usernames = Användarnamn
 utility-bills = Elräkningar
 vehicle-details = Fordonsdetaljer
+vehicle-identification-numbers-vins = Fordonsidentifikationsnummer (VIN)
 website-activity = Webbplatsaktivitet
 work-habits = Arbetsvanor
 years-of-birth = Födelseår

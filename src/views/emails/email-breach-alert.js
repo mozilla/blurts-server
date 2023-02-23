@@ -22,7 +22,7 @@ const breachAlertCtaStyle = `
 `
 
 const breachAlertEmailPartial = data => {
-  const { breachedEmail, ctaHref } = data
+  const { breachData, breachedEmail, ctaHref } = data
 
   return `
     <tr>
@@ -32,7 +32,7 @@ const breachAlertEmailPartial = data => {
             'email-address': `<strong>${breachedEmail}</strong>`
           })}
         </p>
-        ${breachCardPartial(data)}
+        ${breachCardPartial(breachData)}
         <a
           href='${ctaHref}'
           style='${breachAlertCtaStyle}'

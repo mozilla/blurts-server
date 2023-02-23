@@ -6,6 +6,7 @@ import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
 const { SERVER_URL } = AppConstants
+const showLandingHeaderFor = ['emailPreview', 'error', 'landing', 'notFound']
 
 const mainLayout = data => `
 <!doctype html>
@@ -47,7 +48,11 @@ const mainLayout = data => `
     <!-- End Google Tag Manager -->
     </head>
   <body>
-    ${['landing', 'notFound', 'error'].includes(data.partial.name) ? landingHeader(data) : mainHeader(data)}
+    ${
+      showLandingHeaderFor.includes(data.partial.name)
+        ? landingHeader(data)
+        : mainHeader(data)
+    }
     <main data-partial='${data.partial.name}'>
       ${data.partial(data)}
     </main>

@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } van { $total } gemonitord e-mailadres
        *[other] { $count } van { $total } gemonitorde e-mailadressen
     }
-add-email-link = E-mailadres toevoegen
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = E-mailadressen beheren
 
 ## Breaches resolved filter
 
@@ -25,6 +26,22 @@ filter-label-resolved = Opgeloste datalekken
 column-company = BEDRIJF
 column-breached-data = GELEKTE GEGEVENS
 column-detected = GEDETECTEERD
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Opgelost
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Actief
+breaches-none-headline = Geen datalekken gevonden
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Goed nieuws! Er zijn geen bekende datalekken gemeld voor { $email }. We blijven dit e-mailadres monitoren en laten het u weten als er datalekken optreden.
+breaches-none-cta-blurb = Wilt u een ander e-mailadres volgen?
+breaches-none-cta-button = E-mailadres toevoegen
+breaches-all-resolved-headline = Alle datalekken zijn opgelost
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Netjes! U hebt alle inbreuken voor { $email } opgelost. We monitoren dit e-mailadres en laten het u weten als er nieuwe datalekken optreden.
+breaches-all-resolved-cta-blurb = Wilt u een ander e-mailadres volgen?
+breaches-all-resolved-cta-button = E-mailadres toevoegen
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Op { $breachDate } is een lek opgetreden bij { $companyName }. Na ontdekking en verificatie van het lek, is het op { $addedDate } toegevoegd aan onze database. Dit lek omvatte: { $dataClasses }
 
