@@ -5,9 +5,9 @@
 import { getMessage, getLocale } from '../../utils/fluent.js'
 import AppConstants from '../../app-constants.js'
 
-function createEmailOptions (data) {
+function createEmailOptions (data, selectedEmailIndex) {
   const emails = data.verifiedEmails.map(obj => obj.email)
-  const optionElements = emails.map(email => `<option>${email}</option>`)
+  const optionElements = emails.map((email, index) => `<option ${selectedEmailIndex === index ? 'selected' : ''}>${email}</option>`)
 
   return optionElements.join('')
 }
@@ -71,7 +71,7 @@ function createResolveSteps (breach) {
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
-    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
+    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData, data.selectedEmailIndex)}</custom-select>` })}</h1>
     <circle-chart 
       class='breach-chart' 
       title='${getMessage('breach-chart-title')}' 

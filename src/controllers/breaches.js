@@ -15,11 +15,16 @@ async function breachesPage (req, res) {
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0
   const emailTotalCount = emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0)
   appendBreachResolutionChecklist(breachesData)
+  const cookies = req.cookies
+  const selectedEmailIndex = typeof cookies['monitor.selected-email-index'] !== 'undefined'
+    ? Number.parseInt(cookies['monitor.selected-email-index'], 10)
+    : 0
 
   const data = {
     breachesData,
     emailVerifiedCount,
     emailTotalCount,
+    selectedEmailIndex,
     partial: breaches,
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,
