@@ -89,39 +89,53 @@ function appendUtmParams (url, campaign, content) {
 }
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
-  const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : '/'
+  const subscriberParamPath = subscriberId
+    ? `/?subscriber_id=${subscriberId}`
+    : '/'
   const url = new URL(subscriberParamPath, SERVER_URL)
+
   return appendUtmParams(url, emailType, content)
 }
 
 function getVerificationUrl (subscriber) {
-  if (!subscriber.verification_token) throw new Error('subscriber has no verification_token')
-  let url = new URL(`${SERVER_URL}/api/v1/user/verify-email`)
-  url = appendUtmParams(url, 'verified-subscribers', 'account-verification-email')
-  url.searchParams.append('token', encodeURIComponent(subscriber.verification_token))
-  return url
+  if (!subscriber.verification_token) {
+    throw new Error('subscriber has no verification_token')
+  }
+
+  const params = `/?token=${encodeURIComponent(subscriber.verification_token)}`
+  const url = new URL(params, `${SERVER_URL}/api/v1/user/verify-email`)
+
+  return appendUtmParams(url, 'verified-subscribers', 'account-verification-email')
 }
 
 function getUnsubscribeUrl (subscriber, emailType) {
   // TODO: email unsubscribe is broken for most emails
-  let url = new URL(`${SERVER_URL}/user/unsubscribe`)
-  const token = (Object.prototype.hasOwnProperty.call(subscriber, 'verification_token')) ? subscriber.verification_token : subscriber.primary_verification_token
-  const hash = (Object.prototype.hasOwnProperty.call(subscriber, 'sha1')) ? subscriber.sha1 : subscriber.primary_sha1
-  url.searchParams.append('token', encodeURIComponent(token))
-  url.searchParams.append('hash', encodeURIComponent(hash))
-  url = appendUtmParams(url, 'unsubscribe', emailType)
-  return url
+  const token = Object.hasOwn(subscriber, 'verification_token')
+    ? subscriber.verification_token
+    : subscriber.primary_verification_token
+  const hash = Object.hasOwn(subscriber, 'sha1')
+    ? subscriber.sha1
+    : subscriber.primary_sha1
+
+  const path = `${SERVER_URL}/user/unsubscribe`
+  const params = `/?token=${encodeURIComponent(token)}&hash=${encodeURIComponent(hash)}`
+  const url = new URL(params, path)
+
+  return appendUtmParams(url, 'unsubscribe', emailType)
 }
 
 function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
-  // TODO: create new subscriptions section in settings to manage all emails and avoid one-off routes like this
-  if (!subscriber.primary_verification_token) throw new Error('subscriber has no primary verification_token')
-  let url = new URL('user/unsubscribe-monthly/', SERVER_URL)
+  // TODO: create new subscriptions section in settings to manage
+  // all emails and avoid one-off routes like this
+  if (!subscriber.primary_verification_token) {
+    throw new Error('subscriber has no primary verification_token')
+  }
 
-  url = appendUtmParams(url, campaign, content)
-  url.searchParams.append('token', encodeURIComponent(subscriber.primary_verification_token))
+  const path = `${SERVER_URL}/user/unsubscribe-monthly/`
+  const params = `/?token=${encodeURIComponent(subscriber.primary_verification_token)}`
+  const url = new URL(params, path)
 
-  return url
+  return appendUtmParams(url, campaign, content)
 }
 
 /**
