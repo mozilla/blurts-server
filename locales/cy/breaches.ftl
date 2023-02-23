@@ -17,7 +17,8 @@ emails-monitored =
         [many] { $count } o { $total } e-bost wedi'u monitro
        *[other] { $count } o { $total } e-bost wedi'u monitro
     }
-add-email-link = Ychwanegu cyfeiriad e-bost
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Rheoli arallenwau
 
 ## Breaches resolved filter
 
@@ -29,6 +30,22 @@ filter-label-resolved = Tor-data wedi'u datrys
 column-company = CWMNI
 column-breached-data = TOR-DATA
 column-detected = CANFOD
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Datryswyd
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Gweithredol
+breaches-none-headline = Heb ganfod tor-data
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Newyddion da! Nid oes adroddiad am unrhyw dor-data hysbys am { $email }. Byddwn yn parhau i fonitro'r e-bost hwn a byddwn yn rhoi gwybod i chi os bydd unrhyw dor-data newydd yn digwydd.
+breaches-none-cta-blurb = Hoffech chi fonitro e-bost arall?
+breaches-none-cta-button = Ychwanegwch gyfeiriad e-bost
+breaches-all-resolved-headline = Mae pob tor-data wedi'u datrys
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Da iawn! Rydych chi wedi datrys pob tor-data ar gyfer { $email }. Byddwn yn parhau i fonitro'r e-bost hwn a byddwn yn rhoi gwybod i chi os bydd unrhyw dor-data newydd yn digwydd.
+breaches-all-resolved-cta-blurb = Hoffech chi fonitro e-bost arall?
+breaches-all-resolved-cta-button = Ychwanegwch gyfeiriad e-bost
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Ar { $breachDate }, profodd { $companyName } dor-data. Unwaith y cafodd y tor-data ei ganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }. Mae'r tor-data hwn yn cynnwys: { $dataClasses }
 

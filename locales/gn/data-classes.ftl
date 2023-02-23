@@ -34,6 +34,9 @@ customer-interactions = Ñomongeta ñemuhára ndive
 dates-of-birth = Teñoiha ára
 deceased-date = Ñemanoha ára
 deceased-statuses = Ñemanoha rekotee
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Delivery jejapo rape
 device-information = Mba’e’oka marandu
 device-serial-numbers = Mba’e’oka papapy hekoetáva
 device-usage-tracking-data = Mba’e’oka jepuru mba’ekuaarã rapykuehoha
@@ -138,6 +141,7 @@ user-website-urls = Puruhára ñanduti renda URLs
 usernames = Puruhára réra
 utility-bills = Mba’epurupyre kuatia
 vehicle-details = Mba’yruguata mba’emimi
+vehicle-identification-numbers-vins = Papapy mba’yrumýi jekuaarã (VINs)
 website-activity = Ñanduti renda rembiapo
 work-habits = Mba’apohápe japomeméva
 years-of-birth = Mba’e arýpe nereñói

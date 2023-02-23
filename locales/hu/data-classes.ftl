@@ -34,6 +34,9 @@ customer-interactions = Vásárlói interakciók
 dates-of-birth = Születési idők
 deceased-date = Halálozási idők
 deceased-statuses = Halálozási állapotok
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Kiszállítási utasítások
 device-information = Eszközinformációk
 device-serial-numbers = Eszköz sorozatszámok
 device-usage-tracking-data = Eszközhasználati követési adatok
@@ -88,6 +91,7 @@ occupations = Foglalkozások
 parenting-plans = Családtervezési tervek
 partial-credit-card-data = Részleges hitelkártyaadatok
 partial-dates-of-birth = Részleges születési dátumok
+partial-phone-numbers = Részleges telefonszámok
 passport-numbers = Útlevélszámok
 password-hints = Jelszóemlékeztetők
 password-strengths = Jelszóerősségek
@@ -137,6 +141,7 @@ user-website-urls = Felhasználó weboldalainak URL-címei
 usernames = Felhasználónevek
 utility-bills = Rezsiszámlák
 vehicle-details = Gépjármű részletek
+vehicle-identification-numbers-vins = Rendszámok
 website-activity = Weboldalon végzett tevékenységek
 work-habits = Munkaszokások
 years-of-birth = Születési évek

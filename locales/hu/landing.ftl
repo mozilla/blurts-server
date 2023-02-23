@@ -3,6 +3,7 @@
 
 ## Hero
 
+find-out-if-breached = Tudja meg, hogy szerepelt-e adatvédelmi incidensben
 get-started = Kezdő lépések
 
 ## Why use Firefox Monitor?

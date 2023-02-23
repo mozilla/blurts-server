@@ -28,9 +28,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-tili
 GitHub-link-title = GitHub
 error-scan-page-token = Yrität tarkistaa liian montaa sähköpostiosoitetta todella lyhyessä ajassa. Turvallisuussyistä olemme väliaikaisesti estäneet sinut uusilta hauilta. Voit yrittää myöhemmin uudelleen.
 error-could-not-add-email = Sähköpostiosoitetta ei voitu lisätä tietokantaan.
@@ -585,7 +582,7 @@ monitor-promo-body = Vastaanota ilmoitus, kun henkilökohtaisia tietojasi paljas
 ecosystem-promo-headline = Suojaa elämääsi verkossa yksityisyyden ensisijaiseksi asettavilla tuotteilla
 ecosystem-promo-body = Kaikki { -brand-name }-tuotteet kunnioittavat henkilötietolupaustamme: Kerää vähemmän. Pidä ne turvassa. Ei salaisuuksia.
 promo-ecosystem-cta = Katso kaikki tuotteet
-steps-to-resolve-headline = Vaiheet tämän vuodon ratkaisemiseksi
+steps-to-resolve-headline = Vaiheet tämän vuodon selvittämiseksi
 vpn-promo-headline = Nyt on aika parantaa turvallisuuttasi verkossa.
 vpn-promo-copy = { -brand-Mozilla }n Virtual Private Network auttaa suojaamaan internetyhteyttäsi hakkereilta ja vakoojilta.
 vpn-promo-cta = Hanki { -brand-mozilla-vpn }
@@ -663,6 +660,12 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 -brand-mozilla-foundation = Mozilla-säätiö
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-tili
+
 ## Search Engine Optimization
 
 meta-desc = Selvitä { -brand-fx-monitor }illa, oletko ollut osa tietovuotoa. Tilaa hälytyksiä tulevista tietovuodoista ja saa vinkkejä tilien suojaamiseksi.
@@ -672,8 +675,32 @@ meta-desc = Selvitä { -brand-fx-monitor }illa, oletko ollut osa tietovuotoa. Ti
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Kirjaudu sisään
 
+## Site navigation
+
+site-nav-breaches-link = Selvitä tietovuodot
+site-nav-settings-link = Asetukset
+site-nav-help-link = Ohjeet ja tuki
+
+## User menu
+
+menu-button-title = Käyttäjävalikko
+menu-button-alt = Avaa käyttäjävalikko
+menu-list-accessible-label = Tilivalikko
+menu-item-fxa = Hallitse { -brand-fx-account }äsi
+menu-item-settings = Asetukset
+menu-item-help = Ohjeet ja tuki
+menu-item-logout = Kirjaudu ulos
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Ehdot ja tietosuoja
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Sivua ei löydy
+error-page-error-404-copy = Valitettavasti etsimääsi sivua ei enää ole.
+error-page-error-404-cta-button = Takaisin

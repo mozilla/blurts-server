@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } von { $total } überwachten E-Mail-Adresse
        *[other] { $count } von { $total } überwachten E-Mail-Adressen
     }
-add-email-link = E-Mail-Adresse hinzufügen
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = E-Mail-Adressen verwalten
 
 ## Breaches resolved filter
 
@@ -25,6 +26,22 @@ filter-label-resolved = Behobene Datenlecks
 column-company = UNTERNEHMEN
 column-breached-data = VOM LECK BETROFFENE DATEN
 column-detected = ENTDECKT
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Gelöst
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktiv
+breaches-none-headline = Keine Datenlecks gefunden
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Gute Nachrichten! Für { $email } wurden keine bekannten Datenlecks gemeldet. Wir werden diese E-Mail-Adresse weiter überwachen und Ihnen mitteilen, ob neue Datenlecks auftreten.
+breaches-none-cta-blurb = Möchten Sie eine weitere E-Mail-Adresse überwachen?
+breaches-none-cta-button = E-Mail-Adresse hinzufügen
+breaches-all-resolved-headline = Alle Datenlecks wurden behoben
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Gut gemacht! Sie haben alle Datenlecks für { $email } behoben. Wir werden diese E-Mail weiter überwachen und Ihnen mitteilen, ob neue Datenlecks auftreten.
+breaches-all-resolved-cta-blurb = Möchten Sie eine weitere E-Mail-Adresse überwachen?
+breaches-all-resolved-cta-button = E-Mail-Adresse hinzufügen
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Am { $breachDate } gab es bei { $companyName } ein Datenleck. Nachdem das Datenleck entdeckt und bestätigt wurde, wurde es am { $addedDate } unserer Datenbank hinzugefügt. Von diesem Datenleck sind betroffen: { $dataClasses }
 

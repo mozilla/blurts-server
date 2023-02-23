@@ -40,14 +40,14 @@ learn-more-mission = Zjistěte více o naší misi
 top-questions-about-monitor = Nejčastější otázky o { -brand-fx-monitor(case: "loc") }
 see-all-faq = Prohlédněte si všechny často kladené otázky
 # question and answer
-what-is-breach = Co přesně je únik údajů?
+what-is-breach = Co přesně je únik dat?
 when-info-exposed = K porušení zabezpečení dat dochází, když dojde k odhalení, odcizení nebo zkopírování osobních nebo soukromých informací bez udělení souhlasu. Tyto bezpečnostní incidenty mohou být výsledkem kybernetických útoků na webové stránky, aplikace nebo jakoukoli databázi, kde jsou uloženy osobní údaje lidí. K porušení dat může dojít také náhodou, například když se něčí přihlašovací údaje náhodně zveřejní.
 # question and answer
 what-do-i-do = Právě jsem zjistil(a), že byly mé údaje součástí úniku dat. Co mám dělat?
 visit-monitor-to-learn = Navštivte { -brand-fx-monitor(case: "acc") } a zjistěte, co dělat po úniku dat. Hackeři spoléhají na to, že lidé budou hesla opakovaně používat, proto je důležité vytvořit silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy. Může to být stejné místo, kam ukládáte důležité dokumenty nebo správce hesel.
 # question and answer
-what-gets-exposed = Jaké informace jsou odhaleny při únicích údajů?
-depends-on-hackers = Ne všechny úniky odhalí stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho úniků dat odhaluje e-mailové adresy a hesla. Jiné odhalují citlivější informace, jako jsou čísla platebních karet, čísla pasů či čísla sociálního pojištění.
+what-gets-exposed = Jaké informace jsou při únicích dat vyzrazeny?
+depends-on-hackers = Ne všechny úniky vyzrazují stejné informace. Záleží jen na tom, k čemu mají hackeři přístup. Mnoho úniků dat vyzrazuje e-mailové adresy a hesla. Jiné vyzrazují citlivější informace, jako jsou čísla platebních karet, čísla pasů či rodná čísla.
 
 ## See if you’ve been in a data breach
 
