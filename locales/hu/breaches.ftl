@@ -35,6 +35,13 @@ breaches-none-headline = Nem találhatók adatvédelmi incidensek
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Jó hírek! Nem jelentettek a(z) { $email } címéhez köthető ismert adatvédelmi incidenseket. Folyamatosan figyelemmel kísérjük ezt az e-mail-címet, és értesíteni fogjuk, ha bármilyen új adatvédelmi incidens történik.
 breaches-none-cta-blurb = Szeretne egy másik e-mail-címet is figyelni?
+breaches-none-cta-button = E-mail-cím hozzáadása
+breaches-all-resolved-headline = Összes adatvédelmi incidens megoldva
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Szép munka! Megoldotta a(z) { $email } címéhez köthető összes adatvédelmi incidenst. Folyamatosan figyelemmel kísérjük ezt az e-mail-címet, és értesíteni fogjuk, ha bármilyen új adatvédelmi incidens történik.
+breaches-all-resolved-cta-blurb = Szeretne egy másik e-mail-címet is figyelni?
+breaches-all-resolved-cta-button = E-mail-cím hozzáadása
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = A(z) { $companyName } adatvédelmi incidensben volt érintett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }. Ez az incidens a következőket tartalmazta: { $dataClasses }
 
