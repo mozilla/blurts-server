@@ -36,7 +36,7 @@ deceased-date = data di decesso
 deceased-statuses = stato di decesso
 # Instructions that you can set up in online shopping services to get your orders 
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
-delivery-instructions = Istruzioni per la consegna
+delivery-instructions = istruzioni per la consegna
 device-information = informazioni sul dispositivo
 device-serial-numbers = numeri di serie dei dispositivi
 device-usage-tracking-data = dati di tracciamento sull’utilizzo del dispositivo
