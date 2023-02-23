@@ -9,7 +9,7 @@
 breach-heading-email = Violazioni di dati per { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
-    { $totale ->
+    { $total ->
         [one] { $count } di { $total } email monitorata
        *[other] { $count } di { $total } email monitorate
     }

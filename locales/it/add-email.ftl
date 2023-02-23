@@ -8,7 +8,7 @@
 add-email-add-another-heading = Aggiungi un altro indirizzo email
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
-    { $totale ->
+    { $total ->
         [one] Il tuo account include il controllo di { $total } indirizzi email. Aggiungi un nuovo indirizzo per verificare se è stato coinvolto in una violazione.
        *[other] Il tuo account include il controllo di un massimo di { $total } indirizzi email. Aggiungi un nuovo indirizzo per verificare se è stato coinvolto in una violazione.
     }
