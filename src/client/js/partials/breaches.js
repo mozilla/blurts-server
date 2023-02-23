@@ -49,6 +49,7 @@ function handleEvent (e) {
     case e.target.matches('custom-select[name="email-account"]'):
       state.selectedEmail = e.target.value
       breachesTable.querySelectorAll('span[data-email]').forEach(message => message.toggleAttribute('hidden', message.dataset.email !== e.target.value))
+      document.cookie = `monitor.selected-email-index=${Array.from(e.target.shadowRoot.querySelectorAll('option')).findIndex(optionEl => optionEl.value === e.target.value)}`
       break
     case e.target.matches('input[name="breaches-status"]'):
       state.selectedStatus = e.target.value
