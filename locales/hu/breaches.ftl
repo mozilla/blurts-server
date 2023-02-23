@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } / { $total } e-mail figyelve
        *[other] { $count } / { $total } e-mail figyelve
     }
-add-email-link = E-mail-cím hozzáadása
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = E-mail-címek kezelése
 
 ## Breaches resolved filter
 
@@ -25,6 +26,15 @@ filter-label-resolved = Megoldott adatvédelmi incidensek
 column-company = VÁLLALAT
 column-breached-data = KIKERÜLT ADATOK
 column-detected = ÉSZLELVE
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Megoldva
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktív
+breaches-none-headline = Nem találhatók adatvédelmi incidensek
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Jó hírek! Nem jelentettek a(z) { $email } címéhez köthető ismert adatvédelmi incidenseket. Folyamatosan figyelemmel kísérjük ezt az e-mail-címet, és értesíteni fogjuk, ha bármilyen új adatvédelmi incidens történik.
+breaches-none-cta-blurb = Szeretne egy másik e-mail-címet is figyelni?
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = A(z) { $companyName } adatvédelmi incidensben volt érintett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }. Ez az incidens a következőket tartalmazta: { $dataClasses }
 
