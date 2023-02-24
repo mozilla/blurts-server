@@ -13,7 +13,7 @@ dotenv.config()
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './e2e',
+  testDir: './e2e/specs',
   /* Maximum time one test can run for. */
   timeout: 60_000,
 
@@ -77,9 +77,9 @@ export default defineConfig({
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] }
-    // },
+    // }
 
-    // /* Test against mobile viewports. */
+    /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] }
