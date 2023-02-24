@@ -59,8 +59,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: cd ${{runner.temp}}/src && npm run e2e
-        run: echo =========== ${{runner.temp}} ===================
+        run: |
+          cd ${{runner.temp}}/src && npm run e2e
+          echo =========== ${{runner.temp}} ===================
 
       - uses: actions/upload-artifact@v3
         if: always()
