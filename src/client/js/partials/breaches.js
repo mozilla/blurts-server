@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { capitalFirstLetter } from '../utils.js'
+
 const breachesPartial = document.querySelector("[data-partial='breaches']")
 const chartColors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0', '#9e9e9e']
 const state = new Proxy({
@@ -158,7 +160,7 @@ function renderPieChart () {
     case classesMap.size === 0:
       chartData.push({
         key: pieChart.dataset.txtNone,
-        name: pieChart.dataset.txtNone,
+        name: capitalFirstLetter(pieChart.dataset.txtNone),
         count: 1,
         color: chartColors[4]
       })
@@ -166,7 +168,7 @@ function renderPieChart () {
     case classesMap.size >= 4:
       chartData[3] = {
         key: pieChart.dataset.txtOther,
-        name: pieChart.dataset.txtOther,
+        name: capitalFirstLetter(pieChart.dataset.txtOther),
         count: classesTotal - classesMap.get(classesTop3[0]) - classesMap.get(classesTop3[1]) - classesMap.get(classesTop3[2]),
         color: chartColors[3]
       }
@@ -175,7 +177,7 @@ function renderPieChart () {
       classesTop3.forEach((name, i) => {
         chartData[i] = {
           key: name,
-          name,
+          name: capitalFirstLetter(name),
           count: classesMap.get(name),
           color: chartColors[i]
         }

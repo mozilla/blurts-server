@@ -3,19 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /**
- * Convert kebab-case to camelCase
- *
- * @param {string} str - a kebab-case string
- * @example
- * camelize ('two-hump-camel')
- * // returns 'twoHumpCamel'
- */
-
-function camelize (str) {
-  return str.replace(/-./g, substr => substr[1].toUpperCase())
-}
-
-/**
  * Capitalize the first letter of a string, taking into account localization
  *
  * @param {string} str
@@ -31,4 +18,4 @@ function capitalFirstLetter (str) {
   return str[0].toLocaleUpperCase() + str.slice(1)
 }
 
-export { camelize, capitalFirstLetter }
+export { capitalFirstLetter }
