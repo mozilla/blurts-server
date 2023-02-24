@@ -88,14 +88,14 @@ const styles = `
 
   .circle-chart-label {
     align-items: center;
-    color: var(--gray-40);
+    color: var(--gray-50);
     display: flex;
     gap: var(--padding-sm);
     position: relative;
   }
 
   .circle-chart-label::before {
-    color: inherit;
+    color: var(--color);
     content: '\\2B24'; /* Black Large Circle */
     font-size: 0.65em;
     padding-bottom: 0.175em;
@@ -215,7 +215,7 @@ customElements.define('circle-chart', class extends HTMLElement {
         ? `<strong class='circle-chart-title'>${this.title}</strong>`
         : ''}
       ${this.data.map(({ name, color }) => (
-        `<label class='circle-chart-label' style='color: ${color}'>${name}</label>`
+        `<label class='circle-chart-label' style='--color: ${color}'>${name}</label>`
       )).join('')}
     `
   }
