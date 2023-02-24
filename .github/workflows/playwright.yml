@@ -42,17 +42,17 @@ jobs:
       run: npm ci --workspace=src
     - name: Install dependencies root
       run: npm ci
-    - name: Copy env var
-      run: cp .env-dist .env 
-    - name: Build app
-      run: npm run build --if-present --workspace=src
-    - name: Run the app
-      run: npm start --workspace=src
-      env:
-        POSTGRES_HOST: postgres
-        POSTGRES_PORT: 5432
-        REDIS_HOST: redis
-        REDIS_PORT: 6379
+    # - name: Copy env var
+    #   run: cp .env-dist .env 
+    # - name: Build app
+    #   run: npm run build --if-present --workspace=src
+    # - name: Run the app
+    #   run: npm start --workspace=src
+    #   env:
+    #     POSTGRES_HOST: postgres
+    #     POSTGRES_PORT: 5432
+    #     REDIS_HOST: redis
+    #     REDIS_PORT: 6379
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests
