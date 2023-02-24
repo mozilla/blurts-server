@@ -25,6 +25,9 @@ jobs:
       postgres:
         # Docker Hub image
         image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -56,6 +59,8 @@ jobs:
         run: cp .env-dist .env
       - name: Setting up postgres
         run: npm run db:migrate
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
