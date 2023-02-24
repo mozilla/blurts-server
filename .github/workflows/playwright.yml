@@ -59,10 +59,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: |
-          cd src && npm run e2e
-          echo ======2===== ${{github.workspace}} ===================
-          echo =====1====== ${{runner.work}} ===================
+        run: npm run e2e --workspace=src
 
       - uses: actions/upload-artifact@v3
         if: always()

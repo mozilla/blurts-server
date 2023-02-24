@@ -18,7 +18,7 @@
     "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",
     "convert:webp": "sh ./scripts/webp.sh",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
-    "e2e": "playwright test --config=./e2e/playwright.config.js"
+    "e2e": "playwright test e2e/"
   },
   "nodemonConfig": {
     "watch": [
