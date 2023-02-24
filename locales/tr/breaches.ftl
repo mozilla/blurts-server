@@ -81,10 +81,12 @@ breach-checklist-ip-body = IP adresiniz konumunuzu ve internet servis sağlayıc
 ## Prompts the user for changes when there is a breach detected of physical address
 
 breach-checklist-address-header = Adresinizin herhangi bir bölümünü içeren parolaları veya PIN’leri değiştirin.
+breach-checklist-address-body = Kamuya açık kayıtlarda adresler kolayca bulunabilir ve adresleriniz parolaların ve PIN’lerin tahmin edilmesini kolaylaştırabilir.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
 breach-checklist-dob-header = Doğum tarihinizi içeren parolaları veya PIN’leri değiştirin.
+breach-checklist-dob-body = Doğum tarihleri kamuya açık kayıtlarda kolayca bulunabilir ve bunları bulan kişiler PIN’inizi kolayca tahmin edebilir.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
