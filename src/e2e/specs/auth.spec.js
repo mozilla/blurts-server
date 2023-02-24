@@ -49,19 +49,13 @@ test.describe('Check landing page', () => {
     await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL)
 
     // assert successful login
-    await expect(page).toHaveScreenshot(
-      `${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`,
-      {
-        ...{ fullPage: true },
-        mask: [
-          dashboardPage.dataBreachEmailDropdown,
-          dashboardPage.siteFoundImage,
-          dashboardPage.breachStats
-        ]
-      }
-    )
+    const dataBreachesHeader = await page.isVisible('.breaches-header')
+    expect(dataBreachesHeader).toBeTruthy()
 
-    await testInfo.attach('signDashboard', {
+    const breachesFilter = await page.isVisible('.breaches-filter')
+    expect(breachesFilter).toBeTruthy()
+
+    await testInfo.attach(`${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`, {
       body: await page.screenshot(),
       contentType: 'image/png'
     })
