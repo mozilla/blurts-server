@@ -2,20 +2,42 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/**
+ * Toast alert
+ *
+ * Displays a short message towards the top of user's screen,
+ * and auto removes itself after a period of time (default ~6s)
+ *
+ * Client JS example:
+ * ```
+ * const toast = document.createElement('toast-alert')
+ * toast.textContent = 'Alert message here'
+ * document.body.append(toast)
+ * ```
+ *
+ * SSR/HTML example:
+ * ```
+ * <toast-alert>Alert message here</toast-alert>
+ * ```
+ */
+
 const html = (ttl, fadeDuration) => `
 <style>
   :host{
     contain: content;
     position: fixed;
     top: var(--padding-md);
-    left: 50%;
-    transform: translate(-50%, var(--toast-y, 0));
-    border-radius: var(--border-radius);
-    background-color: var(--red-70);
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: .875rem;
     color: white;
-    z-index: 2;
+    transform: translateY(var(--toast-y, 0));
+    transform-origin: top;
     transition: transform 300ms;
-    animation: fly-in 500ms, fade-out ${fadeDuration}ms ${ttl}ms forwards;
+    animation: fly-in 300ms, fade-out ${fadeDuration}ms ${ttl}ms forwards;
+    z-index: 2;
+    pointer-events: none;
   }
 
   :host([hidden]) {
@@ -23,8 +45,13 @@ const html = (ttl, fadeDuration) => `
   }
 
   output{
+    position: relative;
     display: inline-block;
     padding: var(--padding-sm) var(--padding-xl);
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 6px -2px black;
+    background-color: var(--red-70);
+    pointer-events: auto;
   }
 
   button{
@@ -35,8 +62,8 @@ const html = (ttl, fadeDuration) => `
     padding: 0 var(--padding-md);
     border: none;
     cursor: pointer;
-    font-size: 1rem;
-    color: white;
+    font: inherit;
+    color: inherit;
     background-color: transparent;
   }
 
@@ -44,7 +71,7 @@ const html = (ttl, fadeDuration) => `
   @keyframes fly-in{
     from{
       opacity: 0;
-      transform: translate(-50%, -100%);
+      transform: translateY(-30%);
     }
     to{
       opacity: 1;
@@ -60,8 +87,7 @@ const html = (ttl, fadeDuration) => `
     }
   }
 </style>
-<output><slot></slot></output>
-<button>✕</button>
+<output><slot></slot><button>✕</button></output>
 `
 
 customElements.define('toast-alert', class extends HTMLElement {
@@ -69,17 +95,20 @@ customElements.define('toast-alert', class extends HTMLElement {
     super()
     this.ttl = 6000 // ms before fade-out starts
     this.fadeDuration = 600 // ms duration of fade-out animation
+    this.gap = 10 // px space between toasts
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
-    this.siblingToasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
 
     this.addEventListener('click', this)
   }
 
   connectedCallback () {
-    this.siblingToasts.forEach((toast, i) => {
-      toast.style.setProperty('--toast-y', `${110 * (i + 1)}%`)
+    const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
+    let y = 0
+    toasts.forEach((toast, i, arr) => {
+      y += (arr[i - 1]?.getBoundingClientRect().height ?? 0) + this.gap
+      toast.style.setProperty('--toast-y', `${y}px`)
     })
 
     this.timeout = setTimeout(() => this.kill(), this.ttl + this.fadeDuration)
@@ -97,6 +126,7 @@ customElements.define('toast-alert', class extends HTMLElement {
 
   kill () {
     clearTimeout(this.timeout)
+    this.removeEventListener('click', this)
     this.remove()
   }
 })
