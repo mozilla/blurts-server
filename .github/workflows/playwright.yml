@@ -39,7 +39,7 @@ jobs:
       with:
         node-version: 18.12.1
     - name: Install dependencies
-      run: npm ci --workspace=src
+      run: npm ci --workspace=src && npm ci
     - name: Run the App
       run: cp .env-dist .env && npm run build --if-present --workspace=src && npm start --workspace=src
       env:
