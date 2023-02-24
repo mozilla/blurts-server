@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -17,10 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox taqoya'l
-terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 GitHub-link-title = GitHub
 error-scan-page-token = Xatojtob'ej xatz'ajwachib'ej yalan k'ïy kochochib'al taqoya'l pa jun ti mej. Richin ajikomal xeqaq'ät ri k'a nimakoj xe'akanoj. Yatikïr natojtob'ej chik pa jun ti ramaj.
 error-could-not-add-email = Man xya' ta qa ri rochochib'al taqoya'l pa kicholxe'el tzij.
@@ -72,7 +71,6 @@ share-facebook-blurb = ¿La xetz'iläx ri taq rutzij kib'i' ataqoya'l pa k'amab'
 og-site-description = Tawila' we xetz'iläx ri taq atzij rik'in { -product-name }. Tatz'ib'aj ab'i' richin xke'ak'ül taq chayub'al chuqa' richin ye'akül taq na'oj pa ruwi' rub'eyal yejike' ri kib'i' ataqoya'l.
 show-all = Tik'ut ronojel
 fxa-scan-another-email = ¿La nawajo' nanik'oj jun chik taqoya'l?
-sign-in = Tatikirisaj molojri'ïl
 sign-out = Katel pa Molojri'ïl
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Tinuk'samajïx { -brand-fxa }
@@ -119,50 +117,6 @@ security-tips = Jikom taq Na'oj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Tijaq { -brand-fxa } okem pa k'amaya'l
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled 1-10.
-micro-survey-nps-prompt = Pa jun etab'äl 1-10, ¿Jarupe' mul nachilab'ej ta ri { -product-short-name } chi re jun awachib'il o jun awachib'äl pa samaj?
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Rik'in jub'a'
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Rik'in jub'a' ke ri'
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-usability-prompt = ¿La man k'ayew ta nokisäx ri { -product-short-name }?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-credibility-prompt = ¿La natz'ët chi ri { -product-short-name } ütz nakuqub'a' ak'u'x chi rij?
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# strongly-disagree, disagree, unsure, agree, strongly-agree
-micro-survey-appearance-prompt = ¿La k'o jun ch'ajch'öj chuqa' ütz niq'alajin ruwa ri { -product-short-name }?
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Man ütz ta nitz'et
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Kan man ütz ta nitz'et
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = Man in jikïl ta
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Ütz
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Kan ütz
-# This survey question is periodically shown to signed-in users along the very
-# top of the site. It is followed by a list of clickable buttons labeled:
-# very-disappointed, somewhat-disappointed, dont-care
-micro-survey-pmf-prompt = ¿Achike ta k'a nab'än we man yatikïr ta chik nawokisaj { -product-short-name }?
-# This is a survey response that follows the pmf prompt
-micro-survey-very-disappointed-response = Itzel ninna'on
-# This is a survey response that follows the pmf prompt
-micro-survey-somewhat-disappointed-response = jub'a' itzel ninna'on
-# This is a survey response that follows the pmf prompt
-micro-survey-dont-care-response = Majun rejqalem
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
 latest-breach = RUK'ISIB'ÄL TZ'ILANEM XTZ'AQATISÄX
 # Link title
@@ -598,3 +552,58 @@ ecosystem-promo-body = Ronojel ri taq { -brand-name } tikojil, nukamelaj ri Rusu
 promo-ecosystem-cta = Ketz'et Ronojel Tikojil
 steps-to-resolve-headline = Rub'eyal richin nisol re tz'ilanem
 vpn-promo-cta = Tik'ul { -brand-mozilla-vpn }
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+vpn-banner-cta = Tik'ul { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Tirik'
+# button to close panel
+vpn-banner-cta-close = Titz'apïx
+
+## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox taqoya'l
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Tatikirisaj molojri'ïl
+
+## Site navigation
+
+site-nav-settings-link = Taq nuk'ulem
+
+## User menu
+
+menu-item-settings = Taq nuk'ulem
+menu-item-logout = Titz'apïx molojri'ïl
+
+## Footer
+
+mozilla = { -brand-mozilla }
+terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
+github = { -brand-github }
+
+## Error page
+
+error-page-error-404-cta-button = Titzolin

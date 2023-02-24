@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-fiók
 GitHub-link-title = GitHub
 error-scan-page-token = Túl sok e-mail-címet próbált ellenőrizni rövid idő alatt. Biztonsági okokból ideiglenesen letiltottuk az új kereséseket. Később újra próbálkozhat.
 error-could-not-add-email = Nem sikerült hozzáadni az e-mail-címet az adatbázishoz.
@@ -661,6 +658,12 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-fiók
+
 ## Search Engine Optimization
 
 meta-desc = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -brand-fx-monitor } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
@@ -670,8 +673,32 @@ meta-desc = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -brand-fx
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Bejelentkezés
 
+## Site navigation
+
+site-nav-breaches-link = Adatvédelmi incidensek megoldása
+site-nav-settings-link = Beállítások
+site-nav-help-link = Súgó és támogatás
+
+## User menu
+
+menu-button-title = Felhasználói menü
+menu-button-alt = Felhasználói menü megnyitása
+menu-list-accessible-label = Fiók menü
+menu-item-fxa = A { -brand-fx-account }ja kezelése
+menu-item-settings = Beállítások
+menu-item-help = Súgó és támogatás
+menu-item-logout = Kijelentkezés
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Feltételek és adatvédelem
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Az oldal nem található
+error-page-error-404-copy = Sajnáljuk, a keresett oldal már nem létezik.
+error-page-error-404-cta-button = Ugrás vissza

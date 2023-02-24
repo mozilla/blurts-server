@@ -9,7 +9,8 @@
 breach-heading-email = { $email-select } 的資料外洩事件
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored = 監控 { $count } 組，共 { $total } 組電子郵件信箱
-add-email-link = 新增電子郵件地址
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = 管理信箱
 
 ## Breaches resolved filter
 
@@ -21,6 +22,22 @@ filter-label-resolved = 處理過的事件
 column-company = 公司
 column-breached-data = 外洩資料
 column-detected = 偵測到
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = 已解決
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = 進行中
+breaches-none-headline = 找不到資料外洩事件
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = 好消息！{ $email } 沒有出現在已知的資料外洩事件中。我們將持續監控此信箱，並在有新的外洩事件發生時通知您。
+breaches-none-cta-blurb = 想要監控其它信箱嗎？
+breaches-none-cta-button = 新增電子郵件地址
+breaches-all-resolved-headline = 已處理所有資料外洩事件
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = 做得好！您已處理掉所有 { $email } 相關的資料外洩事件。我們將持續監控此信箱，並在有新的外洩事件發生時通知您。
+breaches-all-resolved-cta-blurb = 想要監控其它信箱嗎？
+breaches-all-resolved-cta-button = 新增電子郵件地址
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $companyName } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。此次事件外洩了下列資料：{ $dataClasses }
 

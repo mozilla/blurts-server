@@ -14,7 +14,8 @@ emails-monitored =
         [many] { $count } de { $total } correos monitoreados
        *[other] { $count } de { $total } correos monitoreados
     }
-add-email-link = Añadir dirección de correo electrónico
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Gestionar correos
 
 ## Breaches resolved filter
 
@@ -26,6 +27,22 @@ filter-label-resolved = Filtraciones resueltas
 column-company = EMPRESA
 column-breached-data = DATOS FILTRADOS
 column-detected = DETECTADO
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resuelta
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Activa
+breaches-none-headline = No se encontraron filtraciones
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = ¡Buenas noticias! No se reportaron filtraciones conocidas para { $email }. Seguiremos monitoreando este correo electrónico y te informaremos si se producen nuevas filtraciones.
+breaches-none-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
+breaches-none-cta-button = Añadir dirección de correo electrónico
+breaches-all-resolved-headline = Todas las filtraciones resueltas
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = ¡Bien hecho! Has resuelto todas las filtraciones de { $email }. Seguiremos monitoreando este correo electrónico y te informaremos si se producen nuevas filtraciones.
+breaches-all-resolved-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
+breaches-all-resolved-cta-button = Añadir dirección de correo electrónico
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = El { $breachDate }, { $companyName } fue vulnerada. Una vez que la filtración fue descubierta y verificada, ésta fue añadida a nuestra base de datos el { $addedDate }. Esta filtración incluyó: { $dataClasses }
 

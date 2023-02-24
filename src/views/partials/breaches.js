@@ -33,7 +33,7 @@ function createBreachRows (data) {
       })
 
       return `
-      <details class='breach-row' data-status=${status} data-email=${account.email} ${isHidden ? 'hidden' : ''}>
+      <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
           <span>${breach.Title}</span>
           <span>${shortList.format(dataClassesTranslated)}</span>
@@ -72,14 +72,12 @@ export const breaches = data => `
 <section>
   <header class='breaches-header'>
     <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
-    <figure>
-      <img src='/images/temp-diagram.webp' width='80' height='80'>
-      <figcaption class='breach-stats'>
-        <strong>10 total breaches</strong>
-        <label>Resolved</label>
-        <label>Unresolved</label>
-      </figcaption>
-    </figure>
+    <circle-chart 
+      class='breach-chart' 
+      title='${getMessage('breach-chart-title')}' 
+      data-txt-other='${getMessage('other-data-class')}' 
+      data-txt-none='${getMessage('none-data-class')}'>
+    </circle-chart>
     <figure class='email-stats' data-count=${data.emailTotalCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
       <img src='/images/icon-email.svg' width='55' height='30'>
       <figcaption>

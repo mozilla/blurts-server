@@ -34,6 +34,9 @@ customer-interactions = Asiakasteot
 dates-of-birth = Syntymäajat
 deceased-date = Kuolinpäivä
 deceased-statuses = Kuolintilatieto
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Toimitusohjeet
 device-information = Laitetiedot
 device-serial-numbers = Laitteen sarjanumerot
 device-usage-tracking-data = Laitteen käytön seurantatiedot
@@ -138,6 +141,7 @@ user-website-urls = Käyttäjien sivustojen osoitteet
 usernames = Käyttäjätunnukset
 utility-bills = Käyttökulut
 vehicle-details = Ajoneuvon tiedot
+vehicle-identification-numbers-vins = Ajoneuvon tunnistenumerot (VIN)
 website-activity = Toiminta verkkosivustolla
 work-habits = Työskentelytottumukset
 years-of-birth = Syntymävuodet

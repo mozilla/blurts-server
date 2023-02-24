@@ -14,7 +14,8 @@ emails-monitored =
         [many] { $count } de { $total } correos electrónicos monitoreados
        *[other] { $count } de { $total } correos electrónicos monitoreados
     }
-add-email-link = Agregar dirección de correo
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Administrar correos electrónicos
 
 ## Breaches resolved filter
 
@@ -26,6 +27,16 @@ filter-label-resolved = Filtraciones resueltos
 column-company = EMPRESA
 column-breached-data = DATOS FILTRADOS
 column-detected = DETECTADO
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resuelto
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Activo
+breaches-none-headline = No se encontraron filtraciones
+breaches-none-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
+breaches-none-cta-button = Agregar dirección de correo electrónico
+breaches-all-resolved-headline = Todas las filtraciones resueltas
+breaches-all-resolved-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
+breaches-all-resolved-cta-button = Agregar dirección de correo electrónico
 
 ## Prompts the user for changes when there is a breach detected of password
 
@@ -34,6 +45,7 @@ breach-checklist-pw-header = Ve a <a>{ $breachedCompanyUrl }</a> para cambiar tu
 
 ## Prompts the user for changes when there is a breach detected of email
 
+breach-checklist-email-header = Protege tu correo electrónico con un servicio de enmascaramiento de correo electrónico como <a>{ -brand-relay }</a>.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -60,12 +72,15 @@ breach-checklist-address-header = Cambia cualquier contraseña o PINs que incluy
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = Cambia cualquier contraseña o PIN que incluya tu fecha de cumpleaños.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Actualiza tus preguntas de seguridad en <a>{ $breachedCompanyUrl }</a>.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

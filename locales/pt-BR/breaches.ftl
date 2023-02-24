@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } de { $total } email monitorado
        *[other] { $count } de { $total } emails monitorados
     }
-add-email-link = Adicionar endereço de email
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Gerenciar emails
 
 ## Breaches resolved filter
 
@@ -25,6 +26,22 @@ filter-label-resolved = Vazamentos resolvidos
 column-company = EMPRESA
 column-breached-data = DADOS VAZADOS
 column-detected = DETECTADO
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Resolvido
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Ativo
+breaches-none-headline = Nenhum vazamento encontrado
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Boas notícias! Nenhum vazamento conhecido foi relatado para { $email }. Continuamos monitorando este email e informaremos se ocorrerem novos vazamentos.
+breaches-none-cta-blurb = Quer monitorar outro email?
+breaches-none-cta-button = Adicionar endereço de email
+breaches-all-resolved-headline = Todos os vazamentos resolvidos
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Muito bem! Você resolveu todos os vazamentos de { $email }. Continuamos monitorando este email e informaremos se ocorrerem novos vazamentos.
+breaches-all-resolved-cta-blurb = Quer monitorar outro email?
+breaches-all-resolved-cta-button = Adicionar endereço de email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Em { $breachDate }, houve vazamento em { $companyName }. Depois que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }. Este vazamento incluiu: { $dataClasses }
 

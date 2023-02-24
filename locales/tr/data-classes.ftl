@@ -34,6 +34,9 @@ customer-interactions = Müşteri etkileşimleri
 dates-of-birth = Doğum tarihleri
 deceased-date = Ölüm tarihi
 deceased-statuses = Ölüm durumları
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Teslimat talimatları
 device-information = Cihaz bilgileri
 device-serial-numbers = Cihaz seri numaraları
 device-usage-tracking-data = Cihaz kullanımı izleme verileri
@@ -138,6 +141,7 @@ user-website-urls = Kullanıcı web sitesi adresleri
 usernames = Kullanıcı adları
 utility-bills = Hizmet faturaları
 vehicle-details = Taşıt ayrıntıları
+vehicle-identification-numbers-vins = Araç şasi numaraları (VIN’ler)
 website-activity = Web sitesi etkinliği
 work-habits = İş alışkanlıkları
 years-of-birth = Doğum yılları

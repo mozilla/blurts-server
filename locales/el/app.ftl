@@ -37,9 +37,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Λογαριασμός Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Προσπαθήσατε να σαρώσετε πάρα πολλές διευθύνσεις email σε μικρό χρονικό διάστημα. Για λόγους ασφαλείας, σας έχουμε αποκλείσει προσωρινά από νέες αναζητήσεις. Θα μπορέσετε να δοκιμάσετε ξανά αργότερα.
 error-could-not-add-email = Αδυναμία προσθήκης διεύθυνσης email στη βάση δεδομένων.
@@ -675,6 +672,12 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Λογαριασμός Firefox
+
 ## Search Engine Optimization
 
 
@@ -683,8 +686,26 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Σύνδεση
 
+## Site navigation
+
+site-nav-settings-link = Ρυθμίσεις
+site-nav-help-link = Βοήθεια και υποστήριξη
+
+## User menu
+
+menu-button-title = Μενού χρήστη
+menu-button-alt = Άνοιγμα μενού χρήστη
+menu-list-accessible-label = Μενού λογαριασμού
+menu-item-settings = Ρυθμίσεις
+menu-item-help = Βοήθεια και υποστήριξη
+menu-item-logout = Αποσύνδεση
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Όροι και απόρρητο
 github = { -brand-github }
+
+## Error page
+
+error-page-error-404-cta-button = Επιστροφή

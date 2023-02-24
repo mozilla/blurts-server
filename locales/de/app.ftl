@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-Konto
 GitHub-link-title = GitHub
 error-scan-page-token = Du hast versucht, zu viele E-Mail-Adressen in kurzer Zeit zu überprüfen. Aus Sicherheitsgründen haben wir dich vorübergehend für neue Suchanfragen gesperrt. Du kannst es später erneut versuchen.
 error-could-not-add-email = E-Mail-Adresse konnte nicht zur Datenbank hinzugefügt werden.
@@ -608,6 +605,12 @@ ad-unit-6-before-you-complete = Bevor Sie die nächste Registrierung abschließe
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-Konto
+
 ## Search Engine Optimization
 
 meta-desc = Überprüfen Sie mit { -brand-fx-monitor }, ob Sie von einem Datenleck betroffen sind. Melden Sie sich für Warnungen zu zukünftigen Datenlecks an und erhalten Sie Tipps zum Schutz Ihrer Online-Konten.
@@ -617,8 +620,32 @@ meta-desc = Überprüfen Sie mit { -brand-fx-monitor }, ob Sie von einem Datenle
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Einloggen
 
+## Site navigation
+
+site-nav-breaches-link = Datenlecks beheben
+site-nav-settings-link = Einstellungen
+site-nav-help-link = Hilfe und Unterstützung
+
+## User menu
+
+menu-button-title = Benutzermenü
+menu-button-alt = Benutzermenü öffnen
+menu-list-accessible-label = Kontomenü
+menu-item-fxa = Verwalten Sie Ihr { -brand-fx-account }
+menu-item-settings = Einstellungen
+menu-item-help = Hilfe und Unterstützung
+menu-item-logout = Abmelden
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Seite nicht gefunden
+error-page-error-404-copy = Es tut uns leid, die von Ihnen gesuchte Seite existiert nicht mehr.
+error-page-error-404-cta-button = Zurück
