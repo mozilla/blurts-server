@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { get } from 'node:https'
-import { createWriteStream } from 'node:fs'
+import { access, constants, createWriteStream } from 'node:fs'
 import { dirname, resolve as pathResolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
@@ -170,19 +170,26 @@ async function downloadBreachIcons (breaches) {
   }
   const logoMapElems = await Promise.all(breachDomains.map(breachDomain => {
     return new Promise((resolve, reject) => {
-      get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
-        if (response.statusCode !== 200) {
-          resolve(null)
+      const logoPath = pathResolve(logoFolder, breachDomain.toLowerCase() + '.ico')
+      access(logoPath, constants.F_OK, (accessError) => {
+        if (!accessError) {
+          resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
           return
         }
+        get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
+          if (response.statusCode !== 200) {
+            resolve(null)
+            return
+          }
 
-        const file = createWriteStream(pathResolve(logoFolder, breachDomain.toLowerCase() + '.ico'))
-        response.pipe(file)
-        file.on('finish', () => {
-          file.close()
-          resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
+          const file = createWriteStream(logoPath)
+          response.pipe(file)
+          file.on('finish', () => {
+            file.close()
+            resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
+          })
+          file.on('error', (error) => reject(error))
         })
-        file.on('error', (error) => reject(error))
       })
     })
   }))
