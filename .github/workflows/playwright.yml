@@ -34,32 +34,36 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18.12.1
-    - name: Install dependencies /src
-      run: npm ci --workspace=src
-    - name: Install dependencies root
-      run: npm ci
-    # - name: Copy env var
-    #   run: cp .env-dist .env 
-    # - name: Build app
-    #   run: npm run build --if-present --workspace=src
-    # - name: Run the app
-    #   run: npm start --workspace=src
-    #   env:
-    #     POSTGRES_HOST: postgres
-    #     POSTGRES_PORT: 5432
-    #     REDIS_HOST: redis
-    #     REDIS_PORT: 6379
-    - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests
-      run: npm run e2e --workspace=src
-    - uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
-        retention-days: 30
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.1
+
+      - name: Install dependencies /src
+        run: npm ci --workspace=src
+
+      - name: Install dependencies root
+        run: npm ci
+      # - name: Copy env var
+      #   run: cp .env-dist .env
+      # - name: Build app
+      #   run: npm run build --if-present --workspace=src
+      # - name: Run the app
+      #   run: npm start --workspace=src
+      #   env:
+      #     POSTGRES_HOST: postgres
+      #     POSTGRES_PORT: 5432
+      #     REDIS_HOST: redis
+      #     REDIS_PORT: 6379
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright tests
+        run: npm run e2e --workspace=src
+
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
