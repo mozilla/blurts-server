@@ -2,7 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { capitalFirstLetter } from '../utils.js'
+
 const breachesPartial = document.querySelector("[data-partial='breaches']")
+const chartColors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0', '#9e9e9e']
 const state = new Proxy({
   selectedEmail: null,
   selectedStatus: 'unresolved',
@@ -20,12 +23,13 @@ const state = new Proxy({
   }
 })
 
-let breachesTable, breachRows, emailSelect, statusFilter, resolvedCountOutput, unresolvedCountOutput
+let breachesTable, breachRows, emailSelect, pieChart, statusFilter, resolvedCountOutput, unresolvedCountOutput
 
 function init () {
   breachesTable = breachesPartial.querySelector('.breaches-table')
   breachRows = breachesTable.querySelectorAll('.breach-row')
   emailSelect = breachesPartial.querySelector('.breaches-header custom-select')
+  pieChart = breachesPartial.querySelector('.breaches-header circle-chart')
   statusFilter = breachesPartial.querySelector('.breaches-filter')
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
@@ -141,12 +145,55 @@ function renderZeroState () {
   breachesTable.append(content)
 }
 
+function renderPieChart () {
+  const rowsForSelectedEmail = Array.from(breachesTable.querySelectorAll(`[data-email='${state.selectedEmail}']`))
+  const classesForSelectedEmail = rowsForSelectedEmail.flatMap(row => row.dataset.classes.split(','))
+  const classesMap = classesForSelectedEmail.reduce((acc, cur) => {
+    acc.set(cur, (acc.get(cur) ?? 0) + 1) // set count for each class key
+    return acc
+  }, new Map())
+  const classesTop3 = [...classesMap.keys()].sort((a, b) => classesMap.get(b) - classesMap.get(a)).slice(0, 3)
+  const classesTotal = classesForSelectedEmail.length
+  const chartData = []
+
+  switch (true) {
+    case classesMap.size === 0:
+      chartData.push({
+        key: pieChart.dataset.txtNone,
+        name: capitalFirstLetter(pieChart.dataset.txtNone),
+        count: 1,
+        color: chartColors[4]
+      })
+      break
+    case classesMap.size >= 4:
+      chartData[3] = {
+        key: pieChart.dataset.txtOther,
+        name: capitalFirstLetter(pieChart.dataset.txtOther),
+        count: classesTotal - classesMap.get(classesTop3[0]) - classesMap.get(classesTop3[1]) - classesMap.get(classesTop3[2]),
+        color: chartColors[3]
+      }
+      // falls through
+    default:
+      classesTop3.forEach((name, i) => {
+        chartData[i] = {
+          key: name,
+          name: capitalFirstLetter(name),
+          count: classesMap.get(name),
+          color: chartColors[i]
+        }
+      })
+  }
+
+  pieChart.setAttribute('data', JSON.stringify(chartData))
+}
+
 function render () {
   // render split into separate functions to allow independent trigger
   // e.g. if user marks all steps resolved – update the count, but leave the breach in place for further user interaction
   renderResolvedCounts()
   renderBreachRows()
   renderZeroState()
+  renderPieChart()
 }
 
 if (breachesPartial) init()
