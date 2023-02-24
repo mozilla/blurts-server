@@ -46,34 +46,22 @@ const html = (ttl, fadeDuration) => `
     }
   }
 </style>
-<output></output>
+<output><slot></slot></output>
 `
 
 customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
-
-    this.ttl = 6000
-    this.fadeDuration = 600
+    this.ttl = 6000 // ms before fade-out starts
+    this.fadeDuration = 600 // ms duration of fade-out animation
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
-    this.output = this.shadowRoot.querySelector('output')
-  }
-
-  get message () {
-    return this.shadowRoot.querySelector('output').textContent
-  }
-
-  set message (txt) {
-    this.output.textContent = txt
+    this.siblingToasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
   }
 
   connectedCallback () {
-    const toasts = Array.from(document.querySelectorAll('toast-alert'))
-    const otherToasts = toasts.filter(toast => toast !== this).reverse()
-
-    otherToasts.forEach((toast, i) => {
+    this.siblingToasts.forEach((toast, i) => {
       toast.style.setProperty('--toast-y', `${110 * (i + 1)}%`)
     })
 
