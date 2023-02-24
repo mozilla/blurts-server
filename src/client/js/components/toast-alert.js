@@ -24,8 +24,22 @@ const html = (ttl, fadeDuration) => `
 
   output{
     display: inline-block;
-    padding: var(--padding-sm) var(--padding-lg);
+    padding: var(--padding-sm) var(--padding-xl);
   }
+
+  button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    padding: 0 var(--padding-md);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    background-color: transparent;
+  }
+
 
   @keyframes fly-in{
     from{
@@ -47,6 +61,7 @@ const html = (ttl, fadeDuration) => `
   }
 </style>
 <output><slot></slot></output>
+<button>✕</button>
 `
 
 customElements.define('toast-alert', class extends HTMLElement {
@@ -58,6 +73,8 @@ customElements.define('toast-alert', class extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
     this.siblingToasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
+
+    this.addEventListener('click', this)
   }
 
   connectedCallback () {
@@ -66,6 +83,16 @@ customElements.define('toast-alert', class extends HTMLElement {
     })
 
     this.timeout = setTimeout(() => this.kill(), this.ttl + this.fadeDuration)
+  }
+
+  handleEvent (e) {
+    const target = e.composedPath()[0]
+
+    switch (true) {
+      case target.matches('button'):
+        this.kill()
+        break
+    }
   }
 
   kill () {
