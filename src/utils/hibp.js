@@ -4,7 +4,7 @@
 
 import { get } from 'node:https'
 import { createWriteStream } from 'node:fs'
-import { dirname, resolve } from 'node:path'
+import { dirname, resolve as pathResolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
@@ -146,7 +146,8 @@ async function loadBreachesIntoApp (app) {
       // sync the "breaches" table with the latest from HIBP
       await upsertBreaches(breaches)
     }
-    downloadBreachIcons(breaches)
+    const breachLogoMap = await downloadBreachIcons(breaches)
+    app.locals.breachLogoMap = breachLogoMap
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
   } catch (error) {
@@ -156,26 +157,37 @@ async function loadBreachesIntoApp (app) {
 }
 
 async function downloadBreachIcons (breaches) {
-  const breachDomains = breaches.map(breach => breach.Domain)
-  const logoFolder = resolve(dirname(fileURLToPath(import.meta.url)), '../client/images/logo_cache/')
+  const breachDomains = breaches
+    .map(breach => breach.Domain)
+    .filter(breachDomain => breachDomain.length > 0)
+  const logoFolder = AppConstants.LIVE_RELOAD === 'true'
+    ? pathResolve(dirname(fileURLToPath(import.meta.url)), '../client/images/logo_cache/')
+    : pathResolve(dirname(fileURLToPath(import.meta.url)), '../../dist/images/logo_cache/')
   try {
     await mkdir(logoFolder)
   } catch {
     // Do nothing; if the directory already exists, that's fine.
   }
-  breachDomains.forEach(breachDomain => {
-    get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
-      if (response.statusCode !== 200) {
-        return
-      }
+  const logoMapElems = await Promise.all(breachDomains.map(breachDomain => {
+    return new Promise((resolve, reject) => {
+      get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
+        if (response.statusCode !== 200) {
+          resolve(null)
+          return
+        }
 
-      const file = createWriteStream(resolve(logoFolder, breachDomain.toLowerCase() + '.ico'))
-      response.pipe(file)
-      file.on('finish', () => {
-        file.close()
+        const file = createWriteStream(pathResolve(logoFolder, breachDomain.toLowerCase() + '.ico'))
+        response.pipe(file)
+        file.on('finish', () => {
+          file.close()
+          resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
+        })
+        file.on('error', (error) => reject(error))
       })
     })
-  })
+  }))
+
+  return new Map(logoMapElems.filter(elm => elm !== null))
 }
 
 /**
@@ -224,9 +236,9 @@ function getFilteredBreaches (breaches) {
 }
 
 /**
-A range of hashes can be searched by passing the hash prefix in a GET request:
-GET /breachedaccount/range/[hash prefix]
-
+ * A range of hashes can be searched by passing the hash prefix in a GET request:
+ * GET /breachedaccount/range/[hash prefix]
+ *
  * @param {string} sha1 first 6 chars of email sha1
  * @param {Array} allBreaches
  * @param {boolean} includeSensitive
@@ -309,10 +321,10 @@ async function subscribeHash (sha1) {
 /**
  * A range subscription can be deleted with the following request:
  * DELETE /range/[hash prefix]
-
+ *
  * There is one possible response code that can be returned:
  * HTTP 200: Range subscription successfully deleted
-
+ *
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 response codes
  */
