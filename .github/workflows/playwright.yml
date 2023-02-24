@@ -57,10 +57,10 @@ jobs:
         run: npm ci
       - name: Copy env var
         run: cp .env-dist .env
-      - name: Setting up postgres
-        run: npm run db:migrate
-        env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
+      # - name: Setting up postgres
+      #   run: npm run db:migrate
+      #   env:
+      #     DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
