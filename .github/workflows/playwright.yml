@@ -1,9 +1,20 @@
 name: Playwright Tests
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to run the e2e against'
+        required: false
+        default: 'dev'
+        type: choice
+        options:
+          - stage
+          - prod
+          - dev
 jobs:
   test:
     timeout-minutes: 60
@@ -44,23 +55,21 @@ jobs:
 
       - name: Install dependencies root
         run: npm ci
-      # - name: Copy env var
-      #   run: cp .env-dist .env
-      # - name: Build app
-      #   run: npm run build --if-present --workspace=src
-      # - name: Run the app
-      #   run: npm start --workspace=src
-      #   env:
-      #     POSTGRES_HOST: postgres
-      #     POSTGRES_PORT: 5432
-      #     REDIS_HOST: redis
-      #     REDIS_PORT: 6379
+      - name: Copy env var
+        run: cp .env-dist .env
+      - name: Setting up postgres
+        run: npm run db:migrate
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
         run: npm run e2e --workspace=src
-
+        env:
+          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'dev' }}
+          E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
+          E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
+          E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
+          ADMINS: test@mozilla.com
       - uses: actions/upload-artifact@v3
         if: always()
         with:
