@@ -38,10 +38,16 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18.12.1
-    - name: Install dependencies
-      run: npm ci --workspace=src && npm ci
-    - name: Run the App
-      run: cp .env-dist .env && npm run build --if-present --workspace=src && npm start --workspace=src
+    - name: Install dependencies /src
+      run: npm ci --workspace=src
+    - name: Install dependencies root
+      run: npm ci
+    - name: Copy env var
+      run: cp .env-dist .env 
+    - name: Build app
+      run: npm run build --if-present --workspace=src
+    - name: Run the app
+      run: npm start --workspace=src
       env:
         POSTGRES_HOST: postgres
         POSTGRES_PORT: 5432
