@@ -36,6 +36,9 @@
     "ignore": [
       "src/client/*"
     ],
+    "env": {
+      "LIVE_RELOAD": true
+    },
     "ext": "js,css,json,ftl"
   },
   "ava": {
