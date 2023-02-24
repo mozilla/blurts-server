@@ -60,8 +60,9 @@ jobs:
 
       - name: Run Playwright tests
         run: |
-          cd ${{runner.temp}}/src && npm run e2e
-          echo =========== ${{runner.temp}} ===================
+          cd src && npm run e2e
+          echo ======2===== ${{github.workspace}} ===================
+          echo =====1====== ${{runner.work}} ===================
 
       - uses: actions/upload-artifact@v3
         if: always()
