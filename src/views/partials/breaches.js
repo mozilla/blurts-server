@@ -75,8 +75,8 @@ export const breaches = data => `
     <circle-chart 
       class='breach-chart' 
       title='${getMessage('breach-chart-title')}' 
-      data-txt-other='${getMessage('breach-chart-other')}' 
-      data-txt-none='${getMessage('breach-chart-none')}'>
+      data-txt-other='${getMessage('other-data-class')}' 
+      data-txt-none='${getMessage('none-data-class')}'>
     </circle-chart>
     <figure class='email-stats' data-count=${data.emailTotalCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
       <img src='/images/icon-email.svg' width='55' height='30'>
