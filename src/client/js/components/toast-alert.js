@@ -105,11 +105,12 @@ customElements.define('toast-alert', class extends HTMLElement {
 
   connectedCallback () {
     const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
-    let y = 0
-    toasts.forEach((toast, i, arr) => {
-      y += (arr[i - 1]?.getBoundingClientRect().height ?? 0) + this.gap
-      toast.style.setProperty('--toast-y', `${y}px`)
-    })
+
+    for (let i = 1, y = 0; i < toasts.length; i++) {
+      // aggragate toast heights to push old toasts down as needed
+      y += toasts[i - 1].getBoundingClientRect().height + this.gap
+      toasts[i].style.setProperty('--toast-y', `${y}px`)
+    }
 
     this.timeout = setTimeout(() => this.kill(), this.ttl + this.fadeDuration)
   }
