@@ -30,9 +30,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Аккаунт Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Вы пытались проверить слишком много адресов электронной почты за короткий промежуток времени. По соображениям безопасности мы временно заблокировали вам доступ к этой функции. Вы сможете попробовать позже.
 error-could-not-add-email = Не удалось добавить адрес электронной почты в базу данных.
@@ -640,6 +637,12 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Аккаунт Firefox
+
 ## Search Engine Optimization
 
 meta-desc = Узнайте, не стали ли вы жертвой утечки данных с помощью { -brand-fx-monitor }. Подпишитесь на уведомления о будущих угрозах и получайте советы по безопасности.
@@ -649,8 +652,23 @@ meta-desc = Узнайте, не стали ли вы жертвой утечк�
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Войти
 
+## Site navigation
+
+site-nav-breaches-link = Разобраться с утечками данных
+site-nav-settings-link = Настройки
+site-nav-help-link = Помощь и Поддержка
+
+## User menu
+
+menu-button-title = Пользовательское меню
+menu-button-alt = Открыть пользовательское меню
+menu-list-accessible-label = Меню аккаунта
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Условия и конфиденциальность
 github = { -brand-github }
+
+## Error page
+
