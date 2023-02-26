@@ -641,7 +641,11 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Аккаунт Firefox
+-brand-fx-account =
+    { $case ->
+        [prepositional] Аккаунтом Firefox
+       *[nominative] Аккаунт Firefox
+    }
 
 ## Search Engine Optimization
 
@@ -663,6 +667,10 @@ site-nav-help-link = Помощь и Поддержка
 menu-button-title = Пользовательское меню
 menu-button-alt = Открыть пользовательское меню
 menu-list-accessible-label = Меню аккаунта
+menu-item-fxa = Управляйте своим { -brand-fx-account(case: "prepositional") }
+menu-item-settings = Настройки
+menu-item-help = Справка и поддержка
+menu-item-logout = Выйти
 
 ## Footer
 
@@ -672,3 +680,8 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Страница не найдена
+error-page-error-404-copy = К сожалению, страница, которую вы ищете, больше не существует.
+error-page-error-404-cta-button = Вернуться назад
