@@ -612,6 +612,7 @@ sign-in = Giriş yap
 
 site-nav-breaches-link = Veri ihlallerini çöz
 site-nav-settings-link = Ayarlar
+site-nav-help-link = Yardım ve destek
 
 ## User menu
 

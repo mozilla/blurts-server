@@ -15,7 +15,8 @@ emails-monitored =
         [many] { $count } из { $total } отслеживаемых писем
        *[other] { $count } из { $total } отслеживаемых писем
     }
-add-email-link = Добавить адрес электронной почты
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Управление электронными почтовыми адресами
 
 ## Breaches resolved filter
 
@@ -27,6 +28,22 @@ filter-label-resolved = Обработанные утечки
 column-company = КОМПАНИЯ
 column-breached-data = УТЕКШИЕ ДАННЫЕ
 column-detected = ОБНАРУЖЕНА
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Решена
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Активна
+breaches-none-headline = Утечек не обнаружено
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Хорошие новости! Для { $email } не было зарегистрировано никаких известных утечках. Мы будем продолжать отслеживать эту почту и сообщим вам, если появятся новые утечки.
+breaches-none-cta-blurb = Хотите ли вы отслеживать другую электронную почту?
+breaches-none-cta-button = Добавить адрес электронной почты
+breaches-all-resolved-headline = Все утечки устранены
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Отлично сделано! Вы устранили все утечки для { $email }. Мы продолжим отслеживать электронную почту и сообщим вам, если возникнут новые утечки.
+breaches-all-resolved-cta-blurb = Хотите ли вы отслеживать другую электронную почту?
+breaches-all-resolved-cta-button = Добавить адрес электронной почты
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $breachDate } произошла утечка данных { $companyName }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }. Эта утечка включает в себя: { $dataClasses }
 

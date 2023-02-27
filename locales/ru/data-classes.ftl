@@ -34,6 +34,9 @@ customer-interactions = Взаимодействие с пользователя
 dates-of-birth = Даты рождения
 deceased-date = Даты смерти
 deceased-statuses = Свидетельства смерти
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Инструкции по доставке
 device-information = Информация об устройствах
 device-serial-numbers = Серийные номера устройств
 device-usage-tracking-data = Данные отслеживания об использовании устройств
@@ -138,6 +141,7 @@ user-website-urls = Личные веб-сайты
 usernames = Логины
 utility-bills = Счета за коммунальные услуги
 vehicle-details = Информация о транспортных средствах
+vehicle-identification-numbers-vins = Идентификационные номера транспортных средств (VINы)
 website-activity = Активность на веб-сайтах
 work-habits = Рабочие привычки
 years-of-birth = Года рождения
