@@ -94,7 +94,11 @@ const html = (ttl, fadeDuration) => `
     }
   }
 </style>
-<output><slot></slot><button>✕</button></output>
+
+<output>
+  <slot></slot>
+  <button aria-label="Close">✕</button>
+</output>
 `
 
 customElements.define('toast-alert', class extends HTMLElement {
