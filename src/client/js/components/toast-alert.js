@@ -67,6 +67,9 @@ const html = (ttl, fadeDuration) => `
     background-color: transparent;
   }
 
+  button:hover{
+    box-shadow: inset 0 0 64px #fc95;
+  }
 
   @keyframes fly-in{
     from{
