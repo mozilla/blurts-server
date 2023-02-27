@@ -87,7 +87,11 @@ names = nomi
 nationalities = nazionalità
 net-worths = patrimoni netti
 nicknames = pseudonimi (nickname)
+# no data classes found
+none-data-class = Nessuno
 occupations = occupazioni
+# various data classes grouped together
+other-data-class = Altro
 parenting-plans = piani di affido minori
 partial-credit-card-data = dati parziali della carta di credito
 partial-dates-of-birth = date di nascita parziali
