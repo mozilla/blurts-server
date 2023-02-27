@@ -93,6 +93,10 @@ async function updateBreachStatus (input) {
     input.closest('.breach-row').dataset.status = data[affectedEmail][breachId].isResolved ? 'resolved' : 'unresolved'
     renderResolvedCounts()
   } catch (e) {
+    // TODO: localize error messages
+    const toast = document.createElement('toast-alert')
+    toast.textContent = 'Could not update breach status: please try again later.'
+    document.body.append(toast)
     console.error('Could not update user breach resolve status:', e)
   } finally {
     input.disabled = false

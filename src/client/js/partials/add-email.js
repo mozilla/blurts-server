@@ -39,7 +39,11 @@ async function handleSubmit (e) {
       newEmailCount
     })
   } catch (e) {
-    console.error('Could not add new email.', e)
+    // TODO: localize error messages
+    const toast = document.createElement('toast-alert')
+    toast.textContent = `Could not add email: ${e.message}`
+    document.body.append(toast)
+    console.error('Could not add email.', e)
   } finally {
     form.elements['email-submit'].toggleAttribute('disabled', false)
   }

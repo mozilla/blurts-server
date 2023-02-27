@@ -86,6 +86,13 @@ if (settingsResendEmailLinks?.length) {
           body: JSON.stringify({ emailId })
         })
 
+        if (!response.ok) {
+          // TODO: localize error messages
+          const toast = document.createElement('toast-alert')
+          toast.textContent = `Re-sending verification email failed: ${response.statusText}`
+          document.body.append(toast)
+        }
+
         if (response?.redirected) {
           throw response.error
         }
