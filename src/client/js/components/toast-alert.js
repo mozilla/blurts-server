@@ -24,7 +24,7 @@
 const html = (ttl, fadeDuration) => `
 <style>
   :host{
-    contain: content;
+    contain: layout style;
     position: fixed;
     top: var(--padding-md);
     left: 0;
@@ -44,12 +44,16 @@ const html = (ttl, fadeDuration) => `
     display: none 
   }
 
+  :host([user-interacted]){
+    animation: none
+  }
+
   output{
     position: relative;
     display: inline-block;
     padding: var(--padding-sm) var(--padding-xl);
     border-radius: var(--border-radius);
-    box-shadow: 0 0 6px -2px black;
+    box-shadow: 0 0 6px -3px black;
     background-color: var(--red-70);
     pointer-events: auto;
   }
@@ -104,6 +108,7 @@ customElements.define('toast-alert', class extends HTMLElement {
     this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
 
     this.addEventListener('click', this)
+    this.addEventListener('mouseover', this)
   }
 
   connectedCallback () {
@@ -122,8 +127,12 @@ customElements.define('toast-alert', class extends HTMLElement {
     const target = e.composedPath()[0]
 
     switch (true) {
-      case target.matches('button'):
+      case e.type === 'click' && target.matches('button'):
         this.kill()
+        break
+      case e.type === 'mouseover':
+        clearTimeout(this.timeout)
+        this.toggleAttribute('user-interacted', true)
         break
     }
   }
