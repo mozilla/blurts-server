@@ -107,7 +107,7 @@ customElements.define('toast-alert', class extends HTMLElement {
     const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
 
     for (let i = 1, y = 0; i < toasts.length; i++) {
-      // aggragate toast heights to push old toasts down as needed
+      // aggregate toast heights to push old toasts down as needed
       y += toasts[i - 1].getBoundingClientRect().height + this.gap
       toasts[i].style.setProperty('--toast-y', `${y}px`)
     }
