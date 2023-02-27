@@ -8,6 +8,10 @@ export class LandingPage {
     this.signUpButton = page.getByRole('link', { name: 'Get Started' })
     this.signInButton = page.getByRole('link', { name: 'Sign In' })
     this.firefoxLogo = page.locator('//img[starts-with(@class, "monitor-logo")]')
+    this.whyUseMonitorSec = page.locator('.why-use-monitor')
+    this.howItWorksSec = page.locator('.how-it-works')
+    this.questionsAboutSec = page.locator('.top-questions-about-monitor')
+    this.seeIfDataBreachSec = page.locator('.see-if-data-breach')
   }
 
   async open () {

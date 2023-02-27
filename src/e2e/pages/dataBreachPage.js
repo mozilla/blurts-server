@@ -2,16 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-export class DashboardPage {
+ export class DataBreachPage {
   constructor (page) {
     this.page = page
 
-    this.dataBreachEmailDropdown = page.locator('custom-select')
-    this.siteFoundImage = page.locator('figure img')
-    this.breachStats = page.locator('breach-stats')
+    this.dataBreachesHeader = page.locator('.breaches-header')
+    this.breachesFilter = page.locator('.breaches-filter')
   }
 
   async open () {
-    await this.page.goto('/user/dashboard')
+    await this.page.goto('/user/breaches')
   }
 }

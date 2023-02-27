@@ -10,13 +10,14 @@ export const defaultScreenshotOpts = {
 }
 
 export const ENV_URLS = {
+  local: 'http://localhost:6060',
   dev: 'https://fx-breach-alerts.herokuapp.com',
   stage: 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net'
 }
 
 export const setEnvVariables = async (email) => {
-  process.env.E2E_TEST_ENV = process.env.E2E_TEST_ENV || 'dev'
-  process.env.E2E_TEST_ACCOUNT_EMAIL_FREE = email
+  process.env.E2E_TEST_ENV = process.env.E2E_TEST_ENV || 'stage'
+  process.env.E2E_TEST_ACCOUNT_EMAIL = email
   process.env.E2E_TEST_BASE_URL = ENV_URLS[process.env.E2E_TEST_ENV] || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net'
 }
 

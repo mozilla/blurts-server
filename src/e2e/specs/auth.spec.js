@@ -21,10 +21,9 @@ test.describe('Check landing page', () => {
     // Fill out sign up form
     const randomEmail = `${Date.now()}_tstact@restmail.net`
     await authPage.signUp(randomEmail, page)
-    await page.waitForTimeout(6000)
 
     // assert successful login
-    const dataBreachesHeader = await page.isVisible('.breaches-header')
+    const dataBreachesHeader = await page.isVisible('.breaches-header').toBeTruthy()
     expect(dataBreachesHeader).toBeTruthy()
 
     const breachesFilter = await page.isVisible('.breaches-filter')
@@ -35,7 +34,7 @@ test.describe('Check landing page', () => {
     page,
     authPage,
     landingPage,
-    dashboardPage
+    dataBreachPage
   }, testInfo) => {
     // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, (route) => {
@@ -49,11 +48,8 @@ test.describe('Check landing page', () => {
     await authPage.signIn(process.env.E2E_TEST_ACCOUNT_EMAIL)
 
     // assert successful login
-    const dataBreachesHeader = await page.isVisible('.breaches-header')
-    expect(dataBreachesHeader).toBeTruthy()
-
-    const breachesFilter = await page.isVisible('.breaches-filter')
-    expect(breachesFilter).toBeTruthy()
+    await expect(dataBreachPage.dataBreachesHeader).toBeVisible()
+    await expect(dataBreachPage.breachesFilter).toBeVisible()
 
     await testInfo.attach(`${process.env.E2E_TEST_ENV}-signin-monitor-dashboard.png`, {
       body: await page.screenshot(),

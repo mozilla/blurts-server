@@ -6,6 +6,8 @@ import { test as base, expect } from '@playwright/test'
 import { LandingPage } from '../pages/landingPage.js'
 import { AuthPage } from '../pages/authPage.js'
 import { DashboardPage } from '../pages/dashBoardPage.js'
+import { DataBreachPage } from '../pages/dataBreachPage.js'
+import { SettingPage } from '../pages/settingsPage.js'
 
 const test = base.extend({
   authPage: async ({ page }, use) => {
@@ -16,6 +18,12 @@ const test = base.extend({
   },
   dashboardPage: async ({ page }, use) => {
     await use(new DashboardPage(page))
+  },
+  dataBreachPage: async ({ page }, use) => {
+    await use(new DataBreachPage(page))
+  },
+  settingPage: async ({ page }, use) => {
+    await use(new SettingPage(page))
   }
 })
 

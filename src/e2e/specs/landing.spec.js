@@ -9,16 +9,15 @@ test.describe('Check landing page', () => {
     await landingPage.open()
   })
 
-  test('Verify landing page elements', async ({ page }) => {
-    // Click the get started link.
-    const sec1 = await page.isVisible('.why-use-monitor')
-    const sec2 = await page.isVisible('.how-it-works')
-    const sec3 = await page.isVisible('.top-questions-about-monitor')
-    const sec4 = await page.isVisible('.see-if-data-breach')
-
-    await page.waitForTimeout(2000)
-
-    // Expects the URL to contain intro.
-    expect(sec1 && sec2 && sec3 && sec4).toBeTruthy()
+  test.only('Verify landing page elements', async ({ page, landingPage }) => {
+    // confirm landing page elements are visible
+    await expect(async () => {
+      await expect(landingPage.whyUseMonitorSec).toBeVisible();
+      await expect(landingPage.howItWorksSec).toBeVisible();
+      await expect(landingPage.questionsAboutSec).toBeVisible();
+      await expect(landingPage.seeIfDataBreachSec).toBeVisible();
+    }).toPass({
+        timeout: 10000,
+    });
   })
 })

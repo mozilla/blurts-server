@@ -54,7 +54,7 @@ export default defineConfig({
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: process.env.E2E_TEST_ENV || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
+    baseURL: process.env.E2E_TEST_BASE_URL || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net',
     // baseURL: 'http://localhost:6060',
 
     /* automatically take screenshot only on failures */
