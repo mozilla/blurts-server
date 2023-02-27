@@ -13,10 +13,10 @@ import {
 } from '../db/tables/subscribers.js'
 import { addSubscriber } from '../db/tables/email_addresses.js'
 
-import { getTemplate } from '../views/email-2022.js'
+import { getTemplate } from '../views/emails/email-2022.js'
 import {
   signupReportEmailPartial
-} from '../views/partials/email-signup-report.js'
+} from '../views/emails/email-signup-report.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
@@ -110,14 +110,14 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
     // Send report email
     const utmCampaignId = 'report'
-    const heading = unsafeBreachesForEmail?.length
+    const subject = unsafeBreachesForEmail?.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches')
 
     const data = {
       breachedEmail: email,
       ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
-      heading,
+      heading: getMessage('email-breach-summary'),
       recipientEmail: email,
       subscriberId: verifiedSubscriber,
       unsafeBreachesForEmail,
@@ -125,7 +125,6 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
       utmCampaign: utmCampaignId
     }
     const emailTemplate = getTemplate(data, signupReportEmailPartial)
-    const subject = getMessage('breach-alert-subject')
 
     await sendEmail(data.recipientEmail, subject, emailTemplate)
 
@@ -142,8 +141,9 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
 /**
  * Controller to trigger a logout for user
- * @param {object} req contains session.user
- * @param {object} res redirects to homepage
+ *
+ * @param {object} req Contains session.user
+ * @param {object} res Redirects to homepage
  */
 async function logout (req, res) {
   const subscriber = req.session?.user

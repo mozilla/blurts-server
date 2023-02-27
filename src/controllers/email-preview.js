@@ -7,13 +7,13 @@ import AppConstants from '../app-constants.js'
 import { notify } from './hibp.js'
 import { mainLayout } from '../views/main.js'
 import { emailPreview } from '../views/partials/email-preview.js'
-import { getTemplate, getPreviewTemplate } from '../views/email-2022.js'
-import { breachAlertEmailPartial } from '../views/partials/email-breach-alert.js'
-import { signupReportEmailPartial } from '../views/partials/email-signup-report.js'
-import { verifyPartial } from '../views/partials/email-verify.js'
+import { getTemplate, getPreviewTemplate } from '../views/emails/email-2022.js'
+import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
+import { signupReportEmailPartial } from '../views/emails/email-signup-report.js'
+import { verifyPartial } from '../views/emails/email-verify.js'
 import {
   monthlyUnresolvedEmailPartial
-} from '../views/partials/email-monthly-unresolved.js'
+} from '../views/emails/email-monthly-unresolved.js'
 
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
@@ -28,11 +28,8 @@ import {
 
 const { EMAIL_TEST_RECIPIENT } = AppConstants
 
-function emailsPage (req, res) {
-  const { params } = req
-  const template = params.template ?? EmailTemplateType.Verification
-
-  const emailTemplates = {
+function getTemplatesData () {
+  return {
     [EmailTemplateType.Verification]: {
       label: 'Email verification',
       template: getPreviewTemplate(
@@ -62,17 +59,38 @@ function emailsPage (req, res) {
       )
     }
   }
+}
+
+function emailsPage (req, res) {
+  const { params } = req
+  const template = params.template ?? EmailTemplateType.Verification
 
   const data = {
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,
     partial: emailPreview,
     email: {
-      data: emailTemplates,
+      data: getTemplatesData(),
       recipients: [
         req.session.user.primary_email,
         AppConstants.EMAIL_TEST_RECIPIENT
       ],
+      template
+    },
+    isAdminPreview: true
+  }
+
+  res.send(mainLayout(data))
+}
+
+function emailsPreviewPage (req, res) {
+  const { params } = req
+  const template = params.template ?? EmailTemplateType.Verification
+
+  const data = {
+    partial: emailPreview,
+    email: {
+      data: getTemplatesData(),
       template
     }
   }
@@ -168,4 +186,4 @@ async function sendTestEmail (req, res) {
   }
 }
 
-export { emailsPage, sendTestEmail }
+export { emailsPage, emailsPreviewPage, sendTestEmail }

@@ -56,35 +56,43 @@ const signupReportEmailPartial = data => {
       <td style='${emailStyle}'>
         <p>
           ${
-            unsafeBreachesForEmail.length
-              ? getMessage('fxm-warns-you-no-breaches')
-              : getMessage('email-breach-detected', {
+            unsafeBreachesForEmail?.length
+              ? getMessage('email-breach-detected', {
                   'email-address': `<strong>${breachedEmail}</strong>`
                 })
+              : getMessage('fxm-warns-you-no-breaches')
           }
         </p>
-        <table style='${breachSummaryTableStyle}'>
-          <tr>
-            <td>
-              ${emailBreachStats?.map(breachStat => `
-                <table style='${breachSummaryCardStyle}'>
+        ${
+          emailBreachStats?.length
+            ? `
+                <table style='${breachSummaryTableStyle}'>
                   <tr>
-                    <td style='${statNumberStyle}'>
-                      ${breachStat.statNumber}
-                    </td>
-                    <td style=${statTitleStyle}>
-                      ${breachStat.statTitle}
+                    <td>
+                      ${emailBreachStats.map(breachStat => `
+                        <table style='${breachSummaryCardStyle}'>
+                          <tr>
+                            <td style='${statNumberStyle}'>
+                              ${breachStat.statNumber}
+                            </td>
+                            <td style=${statTitleStyle}>
+                              ${breachStat.statTitle}
+                            </td>
+                          </tr>
+                        </table>
+                      `).join('')}
                     </td>
                   </tr>
                 </table>
-              `).join('')}
-            </td>
-          </tr>
-        </table>
+              `
+            : ''
+        }
         ${
-          unsafeBreachesForEmail.map(unsafeBreach => (
-            breachCardPartial(unsafeBreach)
-          )).join('')
+          unsafeBreachesForEmail?.length
+            ? unsafeBreachesForEmail.map(unsafeBreach => (
+                breachCardPartial(unsafeBreach)
+              )).join('')
+            : ''
         }
         <a
           href='${data.ctaHref}'

@@ -10,8 +10,8 @@ function init () {
   emailPreviewForm = document.querySelector('.js-email-preview-form')
   emailTemplateSelect = emailsPartial.querySelector('.js-email custom-select')
 
-  emailPreviewForm.addEventListener('submit', sendTestEmail)
-  emailTemplateSelect.addEventListener('change', handleEvent)
+  emailPreviewForm?.addEventListener('submit', sendTestEmail)
+  emailTemplateSelect?.addEventListener('change', handleEvent)
 }
 
 function handleEvent (event) {
@@ -20,8 +20,18 @@ function handleEvent (event) {
   )
 
   if (templateSelectChanged) {
-    const updatedPath = `/admin/emails/${event.target.value}`
-    if (window.location.pathname !== updatedPath) {
+    const templateValue = event.target.value
+    const currentPathname = window.location.pathname
+
+    const lastSlugIndex = currentPathname.lastIndexOf('/')
+    const pathFirstPart = currentPathname.substring(0, lastSlugIndex)
+    const pathSecondPart = currentPathname.substring(lastSlugIndex + 1)
+
+    const updatedPath = pathSecondPart !== 'emails'
+      ? `${pathFirstPart}/${templateValue}`
+      : `${currentPathname}/${templateValue}`
+
+    if (currentPathname !== updatedPath) {
       window.location.replace(updatedPath)
     }
   }

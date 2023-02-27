@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from '../../utils/fluent.js'
+import { getLocale, getMessage } from '../../utils/fluent.js'
 import { formatDate } from '../../utils/format-date.js'
 
 const breachAlertTableStyle = `
@@ -50,9 +50,13 @@ const breachAlertValueStyle = `
   padding-bottom: 15px;
 `
 
-const breachCardPartial = data => {
-  const { breachData, supportedLocales } = data
-  const { LogoPath, AddedDate, DataClasses, Title } = breachData
+const breachCardPartial = breachData => {
+  const {
+    LogoPath,
+    AddedDate,
+    DataClasses,
+    Title
+  } = breachData
 
   return `
     <table style='${breachAlertTableStyle}'>
@@ -76,10 +80,10 @@ const breachCardPartial = data => {
                   ${getMessage('breach-added-label')}
                 </p>
                 <p style='${breachAlertValueStyle}'>
-                  ${formatDate(AddedDate, supportedLocales)}
+                  ${formatDate(AddedDate, getLocale())}
                 </p>
 
-                ${DataClasses?.length > 0
+                ${DataClasses?.length
                   ? `
                       <p style='${breachAlertLabelStyle}'>
                         ${getMessage('compromised-data')}
