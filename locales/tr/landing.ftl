@@ -14,6 +14,7 @@ protect-account = Hesaplarınızı koruyun
 protect-account-prevent-hackers = Bilgisayar korsanlarının ele geçirdikleri parolalarla hesaplarınıza girmesini engelleyin.
 prevent-fraud = Dolandırıcılığı ve siber suçları önleyin
 get-alerts = Yeni ihlallerden haberdar olun
+get-alerts-find-out = Yeni bir veri ihlalinde kişisel bilgilerinizin ele geçirilirse haberiniz olsun.
 
 ## Here’s how it works
 

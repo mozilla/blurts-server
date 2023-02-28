@@ -88,6 +88,8 @@ nationalities = Uyruklar
 net-worths = Net değerler
 nicknames = Takma adlar
 occupations = Meslekler
+# various data classes grouped together
+other-data-class = Diğer
 parenting-plans = Ebeveynlik planları
 partial-credit-card-data = Kısmi kredi kartı verileri
 partial-dates-of-birth = Kısmi doğum tarihleri
