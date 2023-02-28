@@ -631,4 +631,4 @@ error-page-error-404-cta-button = Torna indietro
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Si è verificato un errore
-error-page-error-other-copy = Riprova o riprova più tardi
+error-page-error-other-copy = Riprova adesso o ritorna più tardi

@@ -88,7 +88,7 @@ nationalities = nazionalità
 net-worths = patrimoni netti
 nicknames = pseudonimi (nickname)
 # no data classes found
-none-data-class = Nessuno
+none-data-class = Nessuna categoria
 occupations = occupazioni
 # various data classes grouped together
 other-data-class = Altro
