@@ -87,7 +87,11 @@ names = Namn
 nationalities = Nationaliteter
 net-worths = Nettovärden
 nicknames = Smeknamn
+# no data classes found
+none-data-class = Ingen
 occupations = Yrken
+# various data classes grouped together
+other-data-class = Annat
 parenting-plans = Föräldraplaner
 partial-credit-card-data = Delvis kreditkortsdata
 partial-dates-of-birth = Delar av födelsedatum
