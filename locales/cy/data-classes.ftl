@@ -87,7 +87,11 @@ names = Enwau
 nationalities = Cenedligrwydd
 net-worths = Gwerth net
 nicknames = Llysenwau
+# no data classes found
+none-data-class = Dim
 occupations = Galwedigaethau
+# various data classes grouped together
+other-data-class = Arall
 parenting-plans = Cynlluniau magu plant
 partial-credit-card-data = Data cerdyn credyd rhannol
 partial-dates-of-birth = Dyddiadau geni rhannol
