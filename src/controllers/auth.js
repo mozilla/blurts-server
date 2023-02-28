@@ -121,7 +121,10 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
       recipientEmail: email,
       subscriberId: verifiedSubscriber,
       unsafeBreachesForEmail,
-      unsubscribeUrl: getUnsubscribeUrl(email, 'account-verification-email'),
+      unsubscribeUrl: getUnsubscribeUrl(
+        verifiedSubscriber,
+        'account-verification-email'
+      ),
       utmCampaign: utmCampaignId
     }
     const emailTemplate = getTemplate(data, signupReportEmailPartial)

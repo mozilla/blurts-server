@@ -36,6 +36,9 @@ const log = mozlog('controllers.hibp')
  * - hashPrefix
  * - hashSuffixes
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
+ *
+ * @param {object} req
+ * @param {object} res
  */
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
@@ -157,7 +160,7 @@ async function notify (req, res) {
           subscriberId,
           supportedLocales,
           unsubscribeUrl: getUnsubscribeUrl(
-            recipientEmail,
+            recipient,
             'account-verification-email'
           ),
           utmCampaign: utmCampaignId

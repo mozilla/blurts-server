@@ -88,7 +88,7 @@ async function addEmail (req, res) {
     email
   )
 
-  await sendVerificationEmail(unverifiedSubscriber.id)
+  await sendVerificationEmail(sessionUser, unverifiedSubscriber.id)
 
   return res.json({
     success: true,
@@ -137,7 +137,7 @@ async function resendEmail (req, res) {
     throw new UnauthorizedError(getMessage('user-verify-token-error'))
   }
 
-  await sendVerificationEmail(emailId)
+  await sendVerificationEmail(sessionUser, emailId)
 
   return res.json({
     success: true,
@@ -146,7 +146,7 @@ async function resendEmail (req, res) {
   })
 }
 
-async function sendVerificationEmail (emailId) {
+async function sendVerificationEmail (user, emailId) {
   try {
     const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
       emailId
@@ -156,10 +156,7 @@ async function sendVerificationEmail (emailId) {
       recipientEmail,
       ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
       utmCampaign: 'email_verify',
-      unsubscribeUrl: getUnsubscribeUrl(
-        unverifiedEmailAddressRecord,
-        'account-verification-email'
-      ),
+      unsubscribeUrl: getUnsubscribeUrl(user, 'account-verification-email'),
       heading: getMessage('email-verify-heading'),
       subheading: getMessage('email-verify-subhead'),
       partial: { name: 'verify' }
