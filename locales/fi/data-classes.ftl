@@ -87,7 +87,11 @@ names = Nimet
 nationalities = Kansalaisuudet
 net-worths = Nettovarallisuudet
 nicknames = Nimimerkit
+# no data classes found
+none-data-class = Ei mitään
 occupations = Ammatit
+# various data classes grouped together
+other-data-class = Muu
 parenting-plans = Vanhemmuussuunnitelmat
 partial-credit-card-data = Osittaiset luottokorttitiedot
 partial-dates-of-birth = Osittaiset syntymäajat
