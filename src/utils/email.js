@@ -90,10 +90,12 @@ function appendUtmParams (url, campaign, content) {
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
   const dashboardUrl = `${SERVER_URL}/user/breaches`
-  const subscriberParamPath = subscriberId
-    ? `/?subscriber_id=${subscriberId}`
-    : ''
-  const url = new URL(subscriberParamPath, dashboardUrl)
+
+  const url = new URL(dashboardUrl)
+  if (subscriberId) {
+    url.searchParams.set('subscriber_id', subscriberId)
+  }
+
   return appendUtmParams(url, emailType, content)
 }
 

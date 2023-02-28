@@ -184,7 +184,7 @@ test('EmailUtils.getEmailCtaHref works with a subscriber ID', async t => {
     'content-2',
     1234
   )
-  t.is(emailCtaHref.pathname, '/')
+  t.is(emailCtaHref.pathname, '/user/breaches')
   emailCtaHref.searchParams.sort()
   t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
     ['subscriber_id', '1234'],
