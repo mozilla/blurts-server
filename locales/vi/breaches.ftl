@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Dữ liệu bị rò rỉ
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Rò rỉ dữ liệu đến { $email-select }
 # $count is the number of emails a user has added out of $total allowed
