@@ -109,6 +109,7 @@ function getVerificationUrl (subscriber) {
 }
 
 function getUnsubscribeUrl (subscriber, emailType) {
+  console.log('getUnsubscribeUrl')
   // TODO: email unsubscribe is broken for most emails
   const token = Object.hasOwn(subscriber, 'verification_token')
     ? subscriber.verification_token
@@ -125,6 +126,7 @@ function getUnsubscribeUrl (subscriber, emailType) {
 }
 
 function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
+  console.log('getMonthlyUnsubscribeUrl')
   // TODO: create new subscriptions section in settings to manage
   // all emails and avoid one-off routes like this
   if (!subscriber.primary_verification_token) {
@@ -136,6 +138,10 @@ function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
   const url = new URL(params, path)
 
   return appendUtmParams(url, campaign, content)
+}
+
+function postUnsubscribe () {
+  console.log('postUnsubscribe')
 }
 
 /**
@@ -175,7 +181,7 @@ const getNotifictionDummyData = (recipient) => ({
   recipientEmail: recipient,
   subscriberId: 123,
   supportedLocales: ['en'],
-  unsubscribeUrl: SERVER_URL,
+  unsubscribeUrl: getUnsubscribeUrl(recipient, 'email-type'),
   utmCampaign: ''
 })
 
@@ -186,12 +192,12 @@ const getNotifictionDummyData = (recipient) => ({
  * @returns {object} Email verification dummy data
  */
 const getVerificationDummyData = (recipient) => ({
-  recipientEmail: recipient,
   ctaHref: SERVER_URL,
-  utmCampaign: 'email_verify',
-  unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-verify-heading'),
-  subheading: getMessage('email-verify-subhead')
+  recipientEmail: recipient,
+  subheading: getMessage('email-verify-subhead'),
+  unsubscribeUrl: getUnsubscribeUrl(recipient, 'email-type'),
+  utmCampaign: 'email_verify'
 })
 
 /**
@@ -201,13 +207,9 @@ const getVerificationDummyData = (recipient) => ({
  * @returns {object} Monthly unresolved breaches dummy data
  */
 const getMonthlyDummyData = (recipient) => ({
-  recipientEmail: recipient,
-  ctaHref: SERVER_URL,
-  utmCampaign: '',
-  unsubscribeUrl: SERVER_URL,
-  heading: getMessage('email-unresolved-heading'),
-  subheading: getMessage('email-unresolved-subhead'),
   breachedEmail: 'breached@email.com',
+  ctaHref: SERVER_URL,
+  heading: getMessage('email-unresolved-heading'),
   monitoredEmails: {
     count: 2
   },
@@ -215,7 +217,11 @@ const getMonthlyDummyData = (recipient) => ({
     count: 3,
     numResolved: 2,
     numUnresolved: 1
-  }
+  },
+  recipientEmail: recipient,
+  subheading: getMessage('email-unresolved-subhead'),
+  unsubscribeUrl: getMonthlyUnsubscribeUrl(recipient, 'campaign', 'content'),
+  utmCampaign: ''
 })
 
 /**
@@ -257,7 +263,7 @@ const getSignupReportDummyData = (recipient) => {
     recipientEmail: recipient,
     subscriberId: 123,
     unsafeBreachesForEmail,
-    unsubscribeUrl: SERVER_URL,
+    unsubscribeUrl: getUnsubscribeUrl(recipient, 'email-type'),
     utmCampaign: ''
   }
 }
@@ -273,5 +279,6 @@ export {
   getVerificationDummyData,
   getVerificationUrl,
   initEmail,
+  postUnsubscribe,
   sendEmail
 }

@@ -52,6 +52,13 @@ export const emailPreview = (data) => {
         <custom-select name='email-template'>
           ${getPreviewOptions(currentTemplateKey, emailTemplates)}
         </custom-select>
+        <pre>
+          ${JSON.stringify(
+            data.email.data[currentTemplateKey].data,
+            null,
+            2
+          )}
+        </pre>
 
         ${
           isAdminPreview
