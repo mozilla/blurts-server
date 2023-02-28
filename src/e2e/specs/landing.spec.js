@@ -9,7 +9,7 @@ test.describe('Check landing page', () => {
     await landingPage.open()
   })
 
-  test.only('Verify landing page elements', async ({ page, landingPage }) => {
+  test('Verify landing page elements', async ({ page, landingPage }) => {
     // confirm landing page elements are visible
     await expect(async () => {
       await expect(landingPage.whyUseMonitorSec).toBeVisible();
@@ -17,7 +17,7 @@ test.describe('Check landing page', () => {
       await expect(landingPage.questionsAboutSec).toBeVisible();
       await expect(landingPage.seeIfDataBreachSec).toBeVisible();
     }).toPass({
-        timeout: 10000,
+        timeout: 2000,
     });
   })
 })
