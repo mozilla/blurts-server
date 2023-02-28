@@ -43,6 +43,7 @@ what-is-breach = ¿Mba’épa pe mba’ekuaarã ñembyai?
 what-do-i-do = Ajuhu ramoite mba’ekuaarã ñembyai. ¿Mba’e ajapokuaa?
 # question and answer
 what-gets-exposed = ¿Mba’e marandu ojehecha mba’ekuaarã ñemboguápe?
+depends-on-hackers = Ndahetái ñembogua ohechaukáta peteĩ marandúnte. Oikóta mba’ete og̃uahẽ mba’evaiapohape. Heta mba’ekuaarã ñembogua onohẽkuaa ñanduti veve kundaharape ha ñe’ẽñemi. Ambue onohẽ marandu ñemigua, kuatia’atã ñemurã papapy, pasaporte ha seguridad social papapy.
 
 ## See if you’ve been in a data breach
 

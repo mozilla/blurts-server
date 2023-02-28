@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox hesabı
 GitHub-link-title = GitHub
 error-scan-page-token = Kısa süre içinde çok fazla e-posta adresi taramaya çalıştınız. Güvenlik nedeniyle yeni aramalar yapmanızı geçici olarak engelledik. Daha sonra yeniden deneyebileceksiniz.
 error-could-not-add-email = E-posta adresi veritabanına eklenemedi.
@@ -596,6 +593,12 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 -brand-mozilla-foundation = Mozilla Vakfı
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox hesabı
+
 ## Search Engine Optimization
 
 meta-desc = { -brand-fx-monitor } ile verilerinizin çalınıp çalınmadığını öğrenin. Gelecekteki ihlallere yönelik uyarılara kaydolun ve hesaplarınızı güvende tutmaya dair ipuçları alın.
@@ -605,8 +608,32 @@ meta-desc = { -brand-fx-monitor } ile verilerinizin çalınıp çalınmadığın
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Giriş yap
 
+## Site navigation
+
+site-nav-breaches-link = Veri ihlallerini çöz
+site-nav-settings-link = Ayarlar
+site-nav-help-link = Yardım ve destek
+
+## User menu
+
+menu-button-title = Kullanıcı menüsü
+menu-button-alt = Kullanıcı menüsünü aç
+menu-list-accessible-label = Hesap menüsü
+menu-item-fxa = { -brand-fx-account }nızı yönetin
+menu-item-settings = Ayarlar
+menu-item-help = Yardım ve destek
+menu-item-logout = Çıkış yap
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Şartlar ve gizlilik
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Sayfa bulunamadı
+error-page-error-404-copy = Aradığınız sayfa artık mevcut değil.
+error-page-error-404-cta-button = Geri dön

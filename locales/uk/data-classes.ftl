@@ -34,6 +34,9 @@ customer-interactions = Взаємодія з користувачами
 dates-of-birth = Дати народження
 deceased-date = Дати смерті
 deceased-statuses = Свідоцтва про смерть
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Інструкція з доставлення
 device-information = Інформація про пристрої
 device-serial-numbers = Серійні номери пристрою
 device-usage-tracking-data = Дані стеження використання пристроїв
@@ -138,6 +141,7 @@ user-website-urls = Особисті вебсайти
 usernames = Імена користувачів
 utility-bills = Комунальні рахунки
 vehicle-details = Подробиці про транспортні засоби
+vehicle-identification-numbers-vins = Ідентифікаційні номери транспортних засобів (VIN)
 website-activity = Активність на вебсайтах
 work-habits = Робочі звички
 years-of-birth = Роки народження

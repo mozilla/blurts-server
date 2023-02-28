@@ -34,6 +34,9 @@ customer-interactions = 顾客互动
 dates-of-birth = 生日
 deceased-date = 死亡日期
 deceased-statuses = 死亡状态
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = 发货指导
 device-information = 设备信息
 device-serial-numbers = 设备序列号
 device-usage-tracking-data = 设备使用跟踪数据
@@ -138,6 +141,7 @@ user-website-urls = 用户网站网址
 usernames = 用户名
 utility-bills = 物业费账单
 vehicle-details = 车辆详细信息
+vehicle-identification-numbers-vins = 车辆识别号码 (VIN)
 website-activity = 网站活动
 work-habits = 工作习惯
 years-of-birth = 出生年份

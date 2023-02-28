@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Tài khoản Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Bạn đang cố quét quá nhiều địa chỉ email trong một khoảng thời gian ngắn. Vì lý do bảo mật, chúng tôi đã tạm thời chặn bạn khỏi các tìm kiếm mới. Bạn có thể thử lại sau.
 error-could-not-add-email = Không thể thêm địa chỉ email vào cơ sở dữ liệu.
@@ -648,6 +645,12 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Tài khoản Firefox
+
 ## Search Engine Optimization
 
 meta-desc = Tìm hiểu xem bạn có phải là một phần của rò rỉ dữ liệu với { -brand-fx-monitor } hay không. Đăng ký nhận thông báo về các rò rỉ trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
@@ -657,8 +660,32 @@ meta-desc = Tìm hiểu xem bạn có phải là một phần của rò rỉ d�
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Đăng nhập
 
+## Site navigation
+
+site-nav-breaches-link = Giải quyết rò rỉ dữ liệu
+site-nav-settings-link = Cài đặt
+site-nav-help-link = Trợ giúp và hỗ trợ
+
+## User menu
+
+menu-button-title = Menu người dùng
+menu-button-alt = Mở menu người dùng
+menu-list-accessible-label = Menu tài khoản
+menu-item-fxa = Quản lý { -brand-fx-account } của bạn
+menu-item-settings = Cài đặt
+menu-item-help = Trợ giúp và hỗ trợ
+menu-item-logout = Đăng xuất
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Điều khoản & quyền riêng tư
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Không tìm thấy trang
+error-page-error-404-copy = Chúng tôi xin lỗi, trang bạn đang tìm kiếm không còn tồn tại.
+error-page-error-404-cta-button = Quay lại

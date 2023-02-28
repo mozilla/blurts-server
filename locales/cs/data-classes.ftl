@@ -34,6 +34,9 @@ customer-interactions = Zákaznické interakce
 dates-of-birth = Data narození
 deceased-date = Data úmrtí
 deceased-statuses = Úmrtní oznámení
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Pokyny pro doručení
 device-information = Informace o zařízeních
 device-serial-numbers = Sériová čísla zařízení
 device-usage-tracking-data = Data o využívání zařízení
@@ -138,6 +141,7 @@ user-website-urls = URL webových stránek uživatelů
 usernames = Uživatelská jména
 utility-bills = Inkasa (poplatky k nájmu)
 vehicle-details = Údaje o vozidlech
+vehicle-identification-numbers-vins = Identifikační čísla vozidel (VIN)
 website-activity = Záznamy aktivit na webových stránkách
 work-habits = Pracovní návyky
 years-of-birth = Roky narození

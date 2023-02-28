@@ -38,9 +38,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox Račun
 GitHub-link-title = GitHub
 error-scan-page-token = V kratkem časovnem obdobju ste skušali preveriti preveč e-poštnih naslovov. Iz varnostnih razlogov smo vam začasno onemogočili nova iskanja. Znova lahko poskusite kasneje.
 error-could-not-add-email = E-poštnega naslova ni bilo mogoče dodati v bazo podatkov.
@@ -686,6 +683,12 @@ ad-unit-6-worry-free = Brezskrbna registracija
         [orodnik] GitHubom
     }
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox Račun
+
 ## Search Engine Optimization
 
 meta-desc = S { -brand-fx-monitor(sklon: "orodnik") } preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
@@ -695,8 +698,20 @@ meta-desc = S { -brand-fx-monitor(sklon: "orodnik") } preverite, ali ste bili ž
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Prijavite se
 
+## Site navigation
+
+site-nav-settings-link = Nastavitve
+
+## User menu
+
+menu-item-settings = Nastavitve
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Pogoji in zasebnost
 github = { -brand-github }
+
+## Error page
+
+error-page-error-404-cta-button = Nazaj

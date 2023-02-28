@@ -15,7 +15,8 @@ emails-monitored =
         [many] Monitorované e-maily: { $count } z { $total }
        *[other] Monitorované e-maily: { $count } z { $total }
     }
-add-email-link = Pridať e-mailovú adresu
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Spravovať e-mailové adresy
 
 ## Breaches resolved filter
 
@@ -27,6 +28,22 @@ filter-label-resolved = Vyriešené úniky
 column-company = SPOLOČNOSŤ
 column-breached-data = UNIKNUTÉ ÚDAJE
 column-detected = ZISTENÉ
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Vyriešený
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktívny
+breaches-none-headline = Neboli nájdené žiadne úniky dát
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Dobré správy! Pre adresu { $email } neboli hlásené žiadne známe úniky dát. Túto adresu budeme naďalej sledovať a budeme vás informovať, ak dôjde k novým únikom.
+breaches-none-cta-blurb = Chcete monitorovať ďalšiu e-mailovú adresu?
+breaches-none-cta-button = Pridať e-mailovú adresu
+breaches-all-resolved-headline = Všetky úniky dát vyriešené
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Paráda! Vyriešili ste všetky úniky dát pre adresu { $email }. Túto adresu budeme naďalej sledovať a budeme vás informovať, ak dôjde k novým únikom.
+breaches-all-resolved-cta-blurb = Chcete monitorovať ďalšiu e-mailovú adresu?
+breaches-all-resolved-cta-button = Pridať e-mailovú adresu
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Dňa { $breachDate } došlo k úniku dát spoločnosti { $companyName }. Akonáhle bol únik objavený a overený, bol dňa { $addedDate } pridaný do našej databázy. Tento únik zahŕňal: { $dataClasses }
 

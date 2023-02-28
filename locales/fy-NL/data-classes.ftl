@@ -34,6 +34,9 @@ customer-interactions = Ynteraksje mei klanten
 dates-of-birth = Bertedatum
 deceased-date = Datum fan ferstjerren
 deceased-statuses = Steat fan ferstjerren
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Ofleverynstruksjes
 device-information = Apparaatgegevens
 device-serial-numbers = Searjenûmers fan apparaten
 device-usage-tracking-data = Folchgegevens oer apparaatgebrûk
@@ -138,6 +141,7 @@ user-website-urls = URL’s fan brûkerswebsites
 usernames = Brûkersnammen
 utility-bills = Nutsrekkeningen
 vehicle-details = Details fan ferfiermiddel
+vehicle-identification-numbers-vins = Reau-identifikaasjenûmers (RIN’s)
 website-activity = Website-aktiviteit
 work-habits = Wurkgewoanten
 years-of-birth = Bertejierren

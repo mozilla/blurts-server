@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox account
 GitHub-link-title = GitHub
 error-scan-page-token = You tried to scan too many email addresses in a short time period. For security reasons, we’ve temporarily blocked you from new searches. You’ll be able to try again later.
 error-could-not-add-email = Could not add email address to database.
@@ -658,6 +655,12 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox account
+
 ## Search Engine Optimization
 
 meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. Sign up for alerts about future breaches and get tips to keep your accounts safe.
@@ -667,8 +670,32 @@ meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-mon
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
 
+## Site navigation
+
+site-nav-breaches-link = Resolve Data Breaches
+site-nav-settings-link = Settings
+site-nav-help-link = Help and Support
+
+## User menu
+
+menu-button-title = User menu
+menu-button-alt = Open user menu
+menu-list-accessible-label = Account menu
+menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-settings = Settings
+menu-item-help = Help and support
+menu-item-logout = Sign out
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Terms and Privacy
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Page not found
+error-page-error-404-copy = We’re sorry, the page you’re looking for no longer exists.
+error-page-error-404-cta-button = Go back

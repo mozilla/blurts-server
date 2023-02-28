@@ -9,7 +9,7 @@
  * ```
  * <circle-chart
  *   title='Circle chart'
- *   data=`${JSON.stringify([
+ *   data=${JSON.stringify([
  *     {
  *       key: 'resolved',
  *       name: 'Resolved',
@@ -22,7 +22,7 @@
  *       count: 10,
  *       color: '#321c64'
  *     }
- *   ])}`
+ *   ])}
  *   show-percent-for='resolved'
  * >
  * </circle-chart>
@@ -88,15 +88,14 @@ const styles = `
 
   .circle-chart-label {
     align-items: center;
-    color: var(--gray-40);
+    color: var(--gray-50);
     display: flex;
-    font-size: 0.875rem;
     gap: var(--padding-sm);
     position: relative;
   }
 
   .circle-chart-label::before {
-    color: inherit;
+    color: var(--color);
     content: '\\2B24'; /* Black Large Circle */
     font-size: 0.65em;
     padding-bottom: 0.175em;
@@ -104,10 +103,10 @@ const styles = `
 
   .circle-chart svg {
     border-radius: 50%;
-    height: 10vw;
+    height: var(--chart-diameter, 10vw);
     min-height: 100px;
     min-width: 100px;
-    width: 10vw;
+    width: var(--chart-diameter, 10vw);
   }
 
   .circle-chart circle {
@@ -144,7 +143,6 @@ customElements.define('circle-chart', class extends HTMLElement {
   static get observedAttributes () {
     return [
       'data',
-      'is-donut',
       'show-percent-for',
       'title'
     ]
@@ -217,7 +215,7 @@ customElements.define('circle-chart', class extends HTMLElement {
         ? `<strong class='circle-chart-title'>${this.title}</strong>`
         : ''}
       ${this.data.map(({ name, color }) => (
-        `<label class='circle-chart-label' style='color: ${color}'>${name}</label>`
+        `<label class='circle-chart-label' style='--color: ${color}'>${name}</label>`
       )).join('')}
     `
   }

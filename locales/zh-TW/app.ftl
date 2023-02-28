@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox 帳號
 GitHub-link-title = GitHub
 error-scan-page-token = 您在短時間內嘗試搜尋太多電子郵件地址，由於安全因素，我們暫時無法讓您進行新搜尋。請稍候再試一次。
 error-could-not-add-email = 無法將電子郵件地址新增到資料庫。
@@ -555,6 +552,12 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 帳號
+
 ## Search Engine Optimization
 
 meta-desc = 使用 { -brand-fx-monitor }，看看您的帳號是否也在資料外洩事件當中。註冊在未來有與您相關的資料外洩事故時，收到警報與祕訣以確保帳號安全。
@@ -564,8 +567,32 @@ meta-desc = 使用 { -brand-fx-monitor }，看看您的帳號是否也在資料�
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = 登入
 
+## Site navigation
+
+site-nav-breaches-link = 處理資料外洩事件
+site-nav-settings-link = 設定
+site-nav-help-link = 說明與技術支援
+
+## User menu
+
+menu-button-title = 使用者選單
+menu-button-alt = 開啟使用者選單
+menu-list-accessible-label = 帳號選單
+menu-item-fxa = 管理您的 { -brand-fx-account }
+menu-item-settings = 設定
+menu-item-help = 說明與技術支援
+menu-item-logout = 登出
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = 使用條款及隱私權
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } 找不到頁面
+error-page-error-404-copy = 很抱歉，您想要開啟的頁面不存在。
+error-page-error-404-cta-button = 回上一頁

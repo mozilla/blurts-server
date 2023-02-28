@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } av { $total } e-postadress övervakad
        *[other] { $count } av { $total } e-postadresser övervakade
     }
-add-email-link = Lägg till e-postadress
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Hantera e-postadresser
 
 ## Breaches resolved filter
 
@@ -25,6 +26,22 @@ filter-label-resolved = Lösta intrång
 column-company = FÖRETAG
 column-breached-data = INTRÅNGSDATA
 column-detected = UPPTÄCKT
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Löst
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktiv
+breaches-none-headline = Inga intrång hittades
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Goda nyheter! Inga kända intrång har rapporterats för { $email }. Vi kommer att fortsätta att övervaka den här e-postadressen och meddelar dig om några nya intrång inträffar.
+breaches-none-cta-blurb = Vill du övervaka en annan e-postadress?
+breaches-none-cta-button = Lägg till e-postadress
+breaches-all-resolved-headline = Alla intrång lösta
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Snyggt gjort! Du har löst alla intrång för { $email }. Vi kommer att fortsätta att övervaka den här e-postadressen och meddelar dig om några nya intrång inträffar.
+breaches-all-resolved-cta-blurb = Vill du övervaka en annan e-postadress?
+breaches-all-resolved-cta-button = Lägg till e-postadress
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Den { $breachDate } hade { $companyName } intrång. När intrånget upptäcktes och verifierades lades det till i vår databas den { $addedDate }. Detta intrång inkluderade: { $dataClasses }
 

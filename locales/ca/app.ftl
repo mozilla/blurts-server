@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -17,10 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Compte del Firefox
-terms-and-privacy = Condicions i privadesa
 GitHub-link-title = GitHub
 error-scan-page-token = Heu cercat massa adreces electròniques en un període de temps curt. Per motius de seguretat, us hem blocat temporalment i no podreu fer cerques noves. Torneu a provar-ho més tard.
 error-could-not-add-email = No s'ha pogut afegir l'adreça electrònica a la base de dades.
@@ -65,7 +64,6 @@ unsub-button = Cancel·la la subscripció
 hibp-attribution = Informació de les filtracions proporcionada per { $hibp-link }
 show-all = Mostra-ho tot
 fxa-scan-another-email = Voleu comprovar una altra adreça?
-sign-in = Inicia la sessió
 sign-out = Tanca la sessió
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Gestiona el { -brand-fxa }
@@ -84,25 +82,6 @@ security-tips = Consells de seguretat
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Obre la navegació del { -brand-fxa }
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-not-likely-response = Poc probable
-# This is a survey response to the micro-survey-nps-prompt question.
-micro-survey-very-likely-response = Molt probable
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-disagree-response = Hi estic molt en desacord
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-disagree-response = Hi estic en desacord
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-unsure-response = No n'estic segur/a
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-agree-response = Hi estic d’acord
-# This is a survey response that follows the usability, credibility, and
-# appearance prompts
-micro-survey-strongly-agree-response = Hi estic totalment d’acord
 # Link title
 more-about-this-breach = Més informació sobre aquesta filtració
 take-control = Recupereu el control de les vostres dades personals.
@@ -187,4 +166,42 @@ undo-button = Desfés
 ##
 
 promo-lockwise-headline = Accediu a les vostres contrasenyes des de qualsevol lloc
-ecosystem-promo-body = Tots els nostres productes respecten el nostre «Compromís sobre les dades personals»: recollir menys dades, mantenir-les segures i sense secrets.
+ecosystem-promo-body = Tots els productes { -brand-name } respecten el nostre «Compromís sobre les dades personals»: recollir menys dades, mantenir-les segures i sense secrets.
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+
+## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Compte del Firefox
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = Inicia la sessió
+
+## Site navigation
+
+
+## User menu
+
+
+## Footer
+
+terms-and-privacy = Condicions i privadesa
+
+## Error page
+
