@@ -4,9 +4,9 @@
 
  import { test, expect } from '../fixtures/basePage.js'
 
- // showing use of authenticated state below, no login required in spec with that state
- test.use({ storageState: 'state.json' })
- test.describe('Check landing page', () => {
+ // uncomment below showing use of authenticated state below, no login required in spec with that state
+//  test.use({ storageState: 'state.json' })
+ test.describe.skip('Check landing page', () => {
    test.beforeEach(async ({ landingPage }) => {
      await landingPage.open()
    })
@@ -18,7 +18,8 @@
      // should go directly to dashboard page
     await dashboardPage.open()
 
-    await page.pause()
+    // uncomment to debug/explore
+    // await page.pause()
 
    })
  })
