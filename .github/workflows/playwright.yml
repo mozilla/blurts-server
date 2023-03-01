@@ -27,6 +27,7 @@ jobs:
         image: postgres
         # Provide the password for postgres
         env:
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         # Set health checks to wait until postgres has started
         options: >-
@@ -34,6 +35,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+        ports:
+        - 5432:5432
       redis:
         # Docker Hub image
         image: redis
@@ -72,6 +75,7 @@ jobs:
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
           ADMINS: ${{ secrets.ADMINS }}
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
       - uses: actions/upload-artifact@v3
         if: always()
         with:
