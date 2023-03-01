@@ -33,10 +33,7 @@ export class LandingPage {
   }
 
   async goToSignIn () {
-    await Promise.all([
-      this.page.waitForNavigation(),
-      this.signInButton.click()
-    ])
+    this.signInButton.click()
   }
 
   async openFirefoxAppsServices () {
