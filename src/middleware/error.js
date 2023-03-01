@@ -16,6 +16,7 @@ const log = mozlog('middleware')
  * statusCode: http status code
  *
  * and returns a json response
+ *
  * @param {object} err error object [ message, statusCode ]
  * @param {object} req request object
  * @param {object} res response object
@@ -45,6 +46,10 @@ function errorHandler (err, req, res, next) {
 
 /**
  * Log 404 errors, but don't send a response - they're handled by the `notFound` view
+ *
+ * @param req
+ * @param _res
+ * @param next
  */
 function notFound (req, _res, next) {
   log.info('http-error', { statusCode: 404, method: req.method, originalUrl: req.originalUrl })

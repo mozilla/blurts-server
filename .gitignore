@@ -12,3 +12,8 @@ loadtests/venv
 .tmp
 public/dist
 dist
+**/test-results/
+**/playwright-report/
+**/playwright/.cache/
+**/storageState.json
+state.json

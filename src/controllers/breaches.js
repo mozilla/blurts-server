@@ -35,6 +35,7 @@ async function breachesPage (req, res) {
  *
  * status: enum (resolved, unresolved)
  * email: string
+ *
  * @param {object} req
  * @param {object} res
  */
@@ -47,12 +48,12 @@ async function getBreaches (req, res) {
 
 /**
  * Modify breach resolution for a user
+ *
  * @param {object} req containing {user, body: {affectedEmail, breachId, resolutionsChecked}}
  *
  * breachId: id of the breach in the `breaches` table
  *
  * resolutionsChecked: has the following structure [DataTypes]
- *
  * @param {object} res JSON object containing the updated breach resolution
  */
 async function putBreachResolution (req, res) {
@@ -132,6 +133,7 @@ async function putBreachResolution (req, res) {
  * TODO: DEPRECATE
  * This utiliy function is maintained to keep backwards compatibility with V1.
  * After v2 is launched, we will deprecate this function
+ *
  * @param {object} verifiedEmails [{breaches: [isResolved: true/false, dataClasses: []]}]
  * @returns {object} breachStats
  * {

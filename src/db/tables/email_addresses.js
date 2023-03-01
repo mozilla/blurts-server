@@ -137,18 +137,18 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
 }
 
 /**
-     * Add a subscriber:
-     * 1. Add a record to subscribers
-     * 2. Immediately call _verifySubscriber
-     * 3. For FxA subscriber, add refresh token and profile data
-     *
-     * @param {string} email to add
-     * @param {string} signupLanguage from Accept-Language
-     * @param {string} fxaAccessToken from Firefox Account Oauth
-     * @param {string} fxaRefreshToken from Firefox Account Oauth
-     * @param {string} fxaProfileData from Firefox Account
-     * @returns {object} subscriber knex object added to DB
-     */
+ * Add a subscriber:
+ * 1. Add a record to subscribers
+ * 2. Immediately call _verifySubscriber
+ * 3. For FxA subscriber, add refresh token and profile data
+ *
+ * @param {string} email to add
+ * @param {string} signupLanguage from Accept-Language
+ * @param {string} fxaAccessToken from Firefox Account Oauth
+ * @param {string} fxaRefreshToken from Firefox Account Oauth
+ * @param {string} fxaProfileData from Firefox Account
+ * @returns {object} subscriber knex object added to DB
+ */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
   console.log({ email })
   console.log({ signupLanguage })
@@ -162,14 +162,14 @@ async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaR
 }
 
 /**
-     * When an email is verified, convert it into a subscriber:
-     * 1. Subscribe the hash to HIBP
-     * 2. Update our subscribers record to verified
-     * 3. (if opted in) Subscribe the email to Fx newsletter
-     *
-     * @param {object} emailHash knex object in DB
-     * @returns {object} verified subscriber knex object in DB
-     */
+ * When an email is verified, convert it into a subscriber:
+ * 1. Subscribe the hash to HIBP
+ * 2. Update our subscribers record to verified
+ * 3. (if opted in) Subscribe the email to Fx newsletter
+ *
+ * @param {object} emailHash knex object in DB
+ * @returns {object} verified subscriber knex object in DB
+ */
 async function _verifySubscriber (emailHash) {
   await subscribeHash(emailHash.primary_sha1)
 
