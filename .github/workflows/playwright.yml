@@ -1,10 +1,9 @@
-name: Monitor e2e Tests
+name: Playwright Tests
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
   workflow_dispatch:
     inputs:
       environment:
@@ -17,7 +16,7 @@ on:
           - prod
           - dev
 jobs:
-  monitore2e:
+  test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`
@@ -44,6 +43,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -55,15 +55,12 @@ jobs:
 
       - name: Install dependencies root
         run: npm ci
-
       - name: Copy env var
         run: cp .env-dist .env
-
       - name: Setting up postgres
         run: npm run db:migrate
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
-
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
@@ -75,9 +72,7 @@ jobs:
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
           ADMINS: ${{ secrets.ADMINS }}
-
-      - name: Upload html report as artifact to troubleshoot failures.
-        uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
