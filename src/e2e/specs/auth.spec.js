@@ -13,8 +13,13 @@ test.describe('Check landing page', () => {
     page,
     authPage,
     landingPage,
-    dashboardPage
+    dataBreachPage
   }) => {
+    // speed up test by ignore non necessary requests
+    await page.route(/(analytics)/, (route) => {
+      route.abort()
+    })
+
     // start authentication flow
     await landingPage.goToSignIn()
 
@@ -23,11 +28,8 @@ test.describe('Check landing page', () => {
     await authPage.signUp(randomEmail, page)
 
     // assert successful login
-    const dataBreachesHeader = await page.isVisible('.breaches-header').toBeTruthy()
-    expect(dataBreachesHeader).toBeTruthy()
-
-    const breachesFilter = await page.isVisible('.breaches-filter')
-    expect(breachesFilter).toBeTruthy()
+    await expect(dataBreachPage.dataBreachesHeader).toBeVisible()
+    await expect(dataBreachPage.breachesFilter).toBeVisible()
   })
 
   test('Verify sign in with existing user', async ({
