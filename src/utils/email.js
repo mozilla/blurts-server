@@ -117,6 +117,7 @@ function getVerificationUrl (subscriber) {
 
 function getUnsubscribeUrl (subscriber, emailType) {
   const path = `${SERVER_URL}/user/unsubscribe`
+
   if (!subscriber) {
     return path
   }
@@ -137,7 +138,7 @@ function getUnsubscribeUrl (subscriber, emailType) {
 }
 
 function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
-  const path = `${SERVER_URL}/user/unsubscribe-monthly/`
+  const path = `${SERVER_URL}/user/unsubscribe-monthly`
   if (!subscriber) {
     return path
   }
@@ -157,8 +158,14 @@ function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
   return appendUtmParams(url, campaign, content)
 }
 
-function postUnsubscribe () {
+function postUnsubscribe (req, res) {
   console.log('postUnsubscribe')
+
+  return res.json({
+    success: true,
+    status: 200,
+    message: 'Unsubscribed'
+  })
 }
 
 /**
