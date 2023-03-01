@@ -12,12 +12,12 @@ test.describe('Landing Page element verification', () => {
   test('Verify landing page elements', async ({ page, landingPage }) => {
     // confirm landing page elements are visible
     await expect(async () => {
-      await expect(landingPage.whyUseMonitorSec).toBeVisible();
-      await expect(landingPage.howItWorksSec).toBeVisible();
-      await expect(landingPage.questionsAboutSec).toBeVisible();
-      await expect(landingPage.seeIfDataBreachSec).toBeVisible();
+      await expect(landingPage.whyUseMonitorSec).toBeVisible()
+      await expect(landingPage.howItWorksSec).toBeVisible()
+      await expect(landingPage.questionsAboutSec).toBeVisible()
+      await expect(landingPage.seeIfDataBreachSec).toBeVisible()
     }).toPass({
-        timeout: 2000,
-    });
+      timeout: 2000
+    })
   })
 })

@@ -5,7 +5,7 @@
 import { setEnvVariables } from './utils/helpers.js'
 // import { AuthPage } from './pages/authPage.js'
 // import { LandingPage } from './pages/landingPage.js'
-import { chromium } from '@playwright/test'
+// import { chromium } from '@playwright/test'
 
 async function globalSetup () {
   // playwright setup

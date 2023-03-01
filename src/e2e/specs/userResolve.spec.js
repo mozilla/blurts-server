@@ -2,24 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- import { test, expect } from '../fixtures/basePage.js'
+import { test } from '../fixtures/basePage.js'
 
- // uncomment below showing use of authenticated state below, no login required in spec with that state
+// uncomment below showing use of authenticated state below, no login required in spec with that state
 //  test.use({ storageState: 'state.json' })
- test.describe.skip('Dashboard user action verifications', () => {
-   test.beforeEach(async ({ landingPage }) => {
-     await landingPage.open()
-   })
+test.describe.skip('Dashboard user action verifications', () => {
+  test.beforeEach(async ({ landingPage }) => {
+    await landingPage.open()
+  })
 
-   test('Verify sign up with new user', async ({
-     page,
-     dashboardPage,
-   }) => {
-     // should go directly to dashboard page
+  test('Verify sign up with new user', async ({
+    page,
+    dashboardPage
+  }) => {
+    // should go directly to dashboard page
     await dashboardPage.open()
 
     // uncomment to debug/explore
     // await page.pause()
-
-   })
- })
+  })
+})
