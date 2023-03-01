@@ -21,7 +21,7 @@
  * ```
  */
 
-const html = (ttl, fadeDuration) => `
+const html = ttl => `
 <style>
   :host{
     contain: layout style;
@@ -33,19 +33,18 @@ const html = (ttl, fadeDuration) => `
     font-size: .875rem;
     color: white;
     transform: translateY(var(--toast-y, 0));
-    transform-origin: top;
     transition: transform 300ms;
-    animation: fly-in 300ms, fade-out ${fadeDuration}ms ${ttl}ms forwards;
+    animation: fly-in 300ms, fade-out 600ms ${ttl}ms forwards;
     z-index: 2;
     pointer-events: none;
   }
 
-  :host([hidden]) {
-    display: none 
+  :host(:hover){
+    animation-play-state: paused, paused;
   }
 
-  :host([user-interacted]){
-    animation: none
+  :host([hidden]) {
+    display: none 
   }
 
   output{
@@ -105,14 +104,10 @@ customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
     this.ttl = 6000 // ms before fade-out starts
-    this.fadeDuration = 600 // ms duration of fade-out animation
     this.gap = 10 // px space between toasts
 
     this.attachShadow({ mode: 'open' })
     this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
-
-    this.addEventListener('click', this)
-    this.addEventListener('mouseover', this)
   }
 
   connectedCallback () {
@@ -124,26 +119,25 @@ customElements.define('toast-alert', class extends HTMLElement {
       toasts[i].style.setProperty('--toast-y', `${y}px`)
     }
 
-    this.timeout = setTimeout(() => this.kill(), this.ttl + this.fadeDuration)
+    this.addEventListener('click', this)
+    this.addEventListener('animationend', this)
   }
 
   handleEvent (e) {
     const target = e.composedPath()[0]
 
     switch (true) {
-      case e.type === 'click' && target.matches('button'):
-        this.kill()
+      case target.matches('button'):
+        this.remove()
         break
-      case e.type === 'mouseover':
-        clearTimeout(this.timeout)
-        this.toggleAttribute('user-interacted', true)
+      case e.animationName === 'fade-out':
+        this.remove()
         break
     }
   }
 
-  kill () {
-    clearTimeout(this.timeout)
+  disconnectedCallback () {
     this.removeEventListener('click', this)
-    this.remove()
+    this.removeEventListener('animationend', this)
   }
 })
