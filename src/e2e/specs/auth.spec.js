@@ -14,7 +14,7 @@ test.describe('Authentication flow verification', () => {
     authPage,
     landingPage,
     dataBreachPage
-  }) => {
+  }, testInfo) => {
     // speed up test by ignore non necessary requests
     await page.route(/(analytics)/, (route) => {
       route.abort()
@@ -31,6 +31,11 @@ test.describe('Authentication flow verification', () => {
     // assert successful login
     await expect(dataBreachPage.dataBreachesHeader).toBeVisible()
     await expect(dataBreachPage.breachesFilter).toBeVisible()
+
+    await testInfo.attach(`${process.env.E2E_TEST_ENV}-signup-monitor-dashboard.png`, {
+      body: await page.screenshot(),
+      contentType: 'image/png'
+    })
   })
 
   test('Verify sign in with existing user', async ({
