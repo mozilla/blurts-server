@@ -71,7 +71,7 @@ jobs:
       - name: Run Playwright tests
         run: npm run e2e --workspace=src
         env:
-          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'dev' }}
+          E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'local' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
           E2E_TEST_ACCOUNT_EMAIL: ${{ secrets.E2E_TEST_ACCOUNT_EMAIL }}
           E2E_TEST_ACCOUNT_PASSWORD: ${{ secrets.E2E_TEST_ACCOUNT_PASSWORD }}
