@@ -4,7 +4,7 @@
 
 import { test, expect } from '../fixtures/basePage.js'
 
-test.describe('Check landing page', () => {
+test.describe('Landing Page element verification', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
   })

@@ -6,7 +6,7 @@
 
  // uncomment below showing use of authenticated state below, no login required in spec with that state
 //  test.use({ storageState: 'state.json' })
- test.describe.skip('Check landing page', () => {
+ test.describe.skip('Dashboard user action verifications', () => {
    test.beforeEach(async ({ landingPage }) => {
      await landingPage.open()
    })
