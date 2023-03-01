@@ -101,11 +101,11 @@ export default defineConfig({
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: './e2e/test-results/'
+  outputDir: './e2e/test-results/',
 
   /* Run your local dev server before starting the tests */
-  // webServer: {
-  //   command: 'npm run start',
-  //   port: 6060
-  // }
+  webServer: {
+    command: 'npm run start',
+    port: 6060
+  }
 })

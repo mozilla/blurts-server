@@ -17,7 +17,7 @@ on:
           - prod
           - dev
 jobs:
-  testprep:
+  monitore2e:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     # Service containers to run with `container-job`
@@ -44,11 +44,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
-  monitore2e:
-    name: 'Monitor Application e2e Tests'
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
