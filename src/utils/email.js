@@ -43,7 +43,7 @@ async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
  * @param {string} recipient
  * @param {string} subject
  * @param {string} html
- * @returns <Promise>
+ * @returns {Promise} <Promise>
  */
 function sendEmail (recipient, subject, html) {
   if (!gTransporter) {
@@ -89,8 +89,13 @@ function appendUtmParams (url, campaign, content) {
 }
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
-  const subscriberParamPath = (subscriberId) ? `/?subscriber_id=${subscriberId}` : '/'
-  const url = new URL(subscriberParamPath, SERVER_URL)
+  const dashboardUrl = `${SERVER_URL}/user/breaches`
+
+  const url = new URL(dashboardUrl)
+  if (subscriberId) {
+    url.searchParams.set('subscriber_id', subscriberId)
+  }
+
   return appendUtmParams(url, emailType, content)
 }
 
@@ -156,7 +161,7 @@ const getNotifictionDummyData = (recipient) => ({
     IsMalware: false
   },
   breachedEmail: recipient,
-  ctaHref: SERVER_URL,
+  ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
   heading: getMessage('email-spotted-new-breach'),
   recipientEmail: recipient,
   subscriberId: 123,
@@ -173,7 +178,7 @@ const getNotifictionDummyData = (recipient) => ({
  */
 const getVerificationDummyData = (recipient) => ({
   recipientEmail: recipient,
-  ctaHref: SERVER_URL,
+  ctaHref: getEmailCtaHref('email-test-verification', 'dashboard-cta'),
   utmCampaign: 'email_verify',
   unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-verify-heading'),
@@ -188,7 +193,7 @@ const getVerificationDummyData = (recipient) => ({
  */
 const getMonthlyDummyData = (recipient) => ({
   recipientEmail: recipient,
-  ctaHref: SERVER_URL,
+  ctaHref: getEmailCtaHref('email-test-monthly', 'dashboard-cta'),
   utmCampaign: '',
   unsubscribeUrl: SERVER_URL,
   heading: getMessage('email-unresolved-heading'),
@@ -235,7 +240,7 @@ const getSignupReportDummyData = (recipient) => {
 
   return {
     breachedEmail: recipient,
-    ctaHref: SERVER_URL,
+    ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
     heading: unsafeBreachesForEmail.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches'),
