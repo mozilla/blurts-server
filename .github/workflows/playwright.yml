@@ -55,7 +55,7 @@ jobs:
           node-version: 18.12.1
 
       - name: Install dependencies /src
-        run: npm ci --workspace=src
+        run: npm install --workspace=src
 
       - name: Install dependencies root
         run: npm ci
