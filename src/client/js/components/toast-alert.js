@@ -6,22 +6,30 @@
  * Toast alert
  *
  * Displays a short message towards the top of user's screen,
- * and auto removes itself after a period of time (default ~6s)
+ * and auto removes itself after a period of time (default ~7s)
  *
- * Client JS example:
+ * Client JS examples:
  * ```
  * const toast = document.createElement('toast-alert')
  * toast.textContent = 'Alert message here'
  * document.body.append(toast)
  * ```
  *
- * SSR/HTML example:
+ * ```
+ * const toast = document.createElement('toast-alert')
+ * toast.textContent = 'Another alert message here'
+ * toast.ttl = 10 // seconds before fade-out (defaults to 7)
+ * document.body.append(toast)
+ * ```
+ *
+ * SSR/HTML examples:
  * ```
  * <toast-alert>Alert message here</toast-alert>
+ * <toast-alert ttl='10'>Another alert message here</toast-alert>
  * ```
  */
 
-const html = ttl => `
+const html = `
 <style>
   :host{
     contain: layout style;
@@ -33,14 +41,14 @@ const html = ttl => `
     font-size: .875rem;
     color: white;
     transform: translateY(var(--toast-y, 0));
-    transition: transform 300ms;
-    animation: fly-in 300ms, fade-out 600ms ${ttl}ms forwards;
+    transition: transform 0.3s;
+    animation: fade-out 0.6s var(--ttl, 7s) forwards;
     z-index: 2;
     pointer-events: none;
   }
 
   :host(:hover){
-    animation-play-state: paused, paused;
+    animation-play-state: paused;
   }
 
   :host([hidden]) {
@@ -54,6 +62,7 @@ const html = ttl => `
     border-radius: var(--border-radius);
     box-shadow: 0 0 6px -3px black;
     background-color: var(--red-70);
+    animation: fly-in 0.3s forwards;
     pointer-events: auto;
   }
 
@@ -103,31 +112,38 @@ const html = ttl => `
 customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
-    this.ttl = 6000 // ms before fade-out starts
-    this.gap = 10 // px space between toasts
-
     this.attachShadow({ mode: 'open' })
-    this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
+    this.shadowRoot.innerHTML = html
+  }
+
+  get ttl () {
+    return this.getAttribute('ttl')
+  }
+
+  set ttl (value) {
+    this.setAttribute('ttl', value)
+    this.style.setProperty('--ttl', `${value}s`) // seconds before fade-out starts
   }
 
   connectedCallback () {
     const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
 
     for (let i = 1, y = 0; i < toasts.length; i++) {
-      // start at index 1 to push old toasts down with aggregated toast heights
-      y += toasts[i - 1].getBoundingClientRect().height + this.gap
+      // start at index 1 to push old toasts down with aggregated toast heights plus 10px gap
+      y += toasts[i - 1].getBoundingClientRect().height + 10
       toasts[i].style.setProperty('--toast-y', `${y}px`)
     }
 
-    this.addEventListener('click', this)
+    if (this.hasAttribute('ttl')) {
+      this.ttl = this.getAttribute('ttl')
+    }
+    this.shadowRoot.addEventListener('click', this)
     this.addEventListener('animationend', this)
   }
 
   handleEvent (e) {
-    const target = e.composedPath()[0]
-
     switch (true) {
-      case target.matches('button'):
+      case e.target.matches('button'):
         this.remove()
         break
       case e.animationName === 'fade-out':
@@ -137,7 +153,7 @@ customElements.define('toast-alert', class extends HTMLElement {
   }
 
   disconnectedCallback () {
-    this.removeEventListener('click', this)
+    this.shadowRoot.removeEventListener('click', this)
     this.removeEventListener('animationend', this)
   }
 })
