@@ -9,6 +9,7 @@ import { BreachDataTypes } from './breach-resolution.js'
  *  - monitoredEmails: the number of emails monitored
  *  - numBreaches: resolved, unresolved, total number of breaches
  *  - breachedDataTypes: total number of breaches for passwords, emails, ips, or others
+ *
  * @param {*} verifiedEmails verified emails array from allBreaches object
  * @returns breach summary
  */

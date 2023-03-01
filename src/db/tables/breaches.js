@@ -10,6 +10,7 @@ const log = mozlog('DB.breaches')
 
 /**
  * Get all records from "breaches" table
+ *
  * @returns Array of all records from "breaches" table
  */
 async function getAllBreaches () {
@@ -20,6 +21,7 @@ async function getAllBreaches () {
 /**
  * Upsert breaches into "breaches" table
  * Skip inserting when 'name' field (unique) has a conflict
+ *
  * @param {Array} hibpBreaches breaches array from HIBP API
  * @returns
  */
