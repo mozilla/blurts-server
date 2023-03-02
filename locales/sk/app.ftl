@@ -791,3 +791,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Stránka sa nenašla
 error-page-error-404-copy = Ľutujeme, stránka, ktorú hľadáte, už neexistuje.
 error-page-error-404-cta-button = Prejsť naspäť
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Niečo sa pokazilo
+error-page-error-other-copy = Skúste to znova alebo sa vráťte neskôr
