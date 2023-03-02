@@ -6,22 +6,30 @@
  * Toast alert
  *
  * Displays a short message towards the top of user's screen,
- * and auto removes itself after a period of time (default ~6s)
+ * and auto removes itself after a period of time (default ~7s)
  *
- * Client JS example:
+ * Client JS examples:
  * ```
  * const toast = document.createElement('toast-alert')
  * toast.textContent = 'Alert message here'
  * document.body.append(toast)
  * ```
  *
- * SSR/HTML example:
+ * ```
+ * const toast = document.createElement('toast-alert')
+ * toast.textContent = 'Another alert message here'
+ * toast.ttl = 10 // seconds before fade-out (defaults to 7)
+ * document.body.append(toast)
+ * ```
+ *
+ * SSR/HTML examples:
  * ```
  * <toast-alert>Alert message here</toast-alert>
+ * <toast-alert ttl='10'>Another alert message here</toast-alert>
  * ```
  */
 
-const html = (ttl, fadeDuration) => `
+const html = `
 <style>
   :host{
     contain: layout style;
@@ -33,19 +41,18 @@ const html = (ttl, fadeDuration) => `
     font-size: .875rem;
     color: white;
     transform: translateY(var(--toast-y, 0));
-    transform-origin: top;
-    transition: transform 300ms;
-    animation: fly-in 300ms, fade-out ${fadeDuration}ms ${ttl}ms forwards;
+    transition: transform 0.3s;
+    animation: fade-out 0.6s var(--ttl, 7s) forwards;
     z-index: 2;
     pointer-events: none;
   }
 
-  :host([hidden]) {
-    display: none 
+  :host(:hover){
+    animation-play-state: paused;
   }
 
-  :host([user-interacted]){
-    animation: none
+  :host([hidden]) {
+    display: none 
   }
 
   output{
@@ -55,6 +62,7 @@ const html = (ttl, fadeDuration) => `
     border-radius: var(--border-radius);
     box-shadow: 0 0 6px -3px black;
     background-color: var(--red-70);
+    animation: fly-in 0.3s forwards;
     pointer-events: auto;
   }
 
@@ -104,46 +112,48 @@ const html = (ttl, fadeDuration) => `
 customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
-    this.ttl = 6000 // ms before fade-out starts
-    this.fadeDuration = 600 // ms duration of fade-out animation
-    this.gap = 10 // px space between toasts
-
     this.attachShadow({ mode: 'open' })
-    this.shadowRoot.innerHTML = html(this.ttl, this.fadeDuration)
+    this.shadowRoot.innerHTML = html
+  }
 
-    this.addEventListener('click', this)
-    this.addEventListener('mouseover', this)
+  get ttl () {
+    return this.getAttribute('ttl')
+  }
+
+  set ttl (value) {
+    this.setAttribute('ttl', value)
+    this.style.setProperty('--ttl', `${value}s`) // seconds before fade-out starts
   }
 
   connectedCallback () {
     const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
 
     for (let i = 1, y = 0; i < toasts.length; i++) {
-      // start at index 1 to push old toasts down with aggregated toast heights
-      y += toasts[i - 1].getBoundingClientRect().height + this.gap
+      // start at index 1 to push old toasts down with aggregated toast heights plus 10px gap
+      y += toasts[i - 1].getBoundingClientRect().height + 10
       toasts[i].style.setProperty('--toast-y', `${y}px`)
     }
 
-    this.timeout = setTimeout(() => this.kill(), this.ttl + this.fadeDuration)
+    if (this.hasAttribute('ttl')) {
+      this.ttl = this.getAttribute('ttl')
+    }
+    this.shadowRoot.addEventListener('click', this)
+    this.addEventListener('animationend', this)
   }
 
   handleEvent (e) {
-    const target = e.composedPath()[0]
-
     switch (true) {
-      case e.type === 'click' && target.matches('button'):
-        this.kill()
+      case e.target.matches('button'):
+        this.remove()
         break
-      case e.type === 'mouseover':
-        clearTimeout(this.timeout)
-        this.toggleAttribute('user-interacted', true)
+      case e.animationName === 'fade-out':
+        this.remove()
         break
     }
   }
 
-  kill () {
-    clearTimeout(this.timeout)
-    this.removeEventListener('click', this)
-    this.remove()
+  disconnectedCallback () {
+    this.shadowRoot.removeEventListener('click', this)
+    this.removeEventListener('animationend', this)
   }
 })

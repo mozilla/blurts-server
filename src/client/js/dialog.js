@@ -48,7 +48,11 @@ async function openDialog (path) {
   dialogEl.addEventListener('close', resetDialog)
 
   try {
-    const res = await fetch(path)
+    const res = await fetch(path, {
+      headers: {
+        Accept: 'text/html' // set to request localized response
+      }
+    })
 
     if (!res.ok) throw new Error('Bad fetch response')
 

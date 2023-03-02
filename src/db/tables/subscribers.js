@@ -57,14 +57,14 @@ async function getSubscriberByEmail (email) {
   return subscriberAndEmails
 }
 /**
-   * Update fxa_refresh_token and fxa_profile_json for subscriber
-   *
-   * @param {object} subscriber knex object in DB
-   * @param {string} fxaAccessToken from Firefox Account Oauth
-   * @param {string} fxaRefreshToken from Firefox Account Oauth
-   * @param {string} fxaProfileData from Firefox Account
-   * @returns {object} updated subscriber knex object in DB
-   */
+ * Update fxa_refresh_token and fxa_profile_json for subscriber
+ *
+ * @param {object} subscriber knex object in DB
+ * @param {string} fxaAccessToken from Firefox Account Oauth
+ * @param {string} fxaRefreshToken from Firefox Account Oauth
+ * @param {string} fxaProfileData from Firefox Account
+ * @returns {object} updated subscriber knex object in DB
+ */
 async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
   const fxaUID = JSON.parse(fxaProfileData).uid
   const updated = await knex('subscribers')
@@ -84,11 +84,12 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 }
 
 /**
-   * Update fxa_profile_json for subscriber
-   * @param {object} subscriber knex object in DB
-   * @param {string} fxaProfileData from Firefox Account
-   * @returns {object} updated subscriber knex object in DB
-   */
+ * Update fxa_profile_json for subscriber
+ *
+ * @param {object} subscriber knex object in DB
+ * @param {string} fxaProfileData from Firefox Account
+ * @returns {object} updated subscriber knex object in DB
+ */
 async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
@@ -98,11 +99,11 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 }
 
 /**
-   * Remove fxa tokens and profile data for subscriber
-   *
-   * @param {object} subscriber knex object in DB
-   * @returns {object} updated subscriber knex object in DB
-   */
+ * Remove fxa tokens and profile data for subscriber
+ *
+ * @param {object} subscriber knex object in DB
+ * @returns {object} updated subscriber knex object in DB
+ */
 async function removeFxAData (subscriber) {
   log.debug('removeFxAData', subscriber)
   const updated = await knex('subscribers')
@@ -149,6 +150,7 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
 /**
  * OBSOLETE, preserved for backwards compatibility
  * TODO: Delete after monitor v2, only use setBreachResolution for v2
+ *
  * @param {*} options {user, updatedResolvedBreaches}
  * @returns subscriber
  */
@@ -166,6 +168,7 @@ async function setBreachesResolved (options) {
  * Set "breach_resolution" column with the latest breach resolution object
  * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
+ *
  * @param {object} user user object that contains the id of a user
  * @param {object} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
@@ -264,7 +267,7 @@ async function getSubscribersWithUnresolvedBreachesCount () {
   return count
 }
 
-/** Private **/
+/** Private */
 
 async function joinEmailAddressesToSubscriber (subscriber) {
   if (subscriber) {

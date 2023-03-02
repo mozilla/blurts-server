@@ -98,6 +98,7 @@ const breachResolutionDataTypes = {
 /**
  * Append a field "breachChecklist" to the breaches array of each verified emails
  * The checklist serves the UI with relevant recommendations based on the array of datatypes leaked during a breach.
+ *
  * @param {Array} userBreachData contains monitored verified emails array. Each email may contain a breaches array
  * @returns {*} void
  */
@@ -118,8 +119,9 @@ function appendBreachResolutionChecklist (userBreachData) {
 /**
  * Get a subset of the breach resolution data types map
  * based on the array of datatypes leaked during a breach
+ *
  * @param {Array} dataTypes datatypes leaked during the breach
- * @param {Object} args contains necessary variables for the fluent file
+ * @param {object} args contains necessary variables for the fluent file
  *  - companyName
  *  - breachedCompanyUrl
  * @returns {Map} map of relevant breach resolution recommendations
@@ -147,8 +149,9 @@ function getResolutionRecsPerBreach (dataTypes, args) {
 
 /**
  * Take breach DataTypes array from HIBP and filter based on BreachDataTypes enums above
- * @param {array} originalDataTypes breach DataTypes array from HIBP
- * @returns {array} filtered breach data types
+ *
+ * @param {Array} originalDataTypes breach DataTypes array from HIBP
+ * @returns {Array} filtered breach data types
  */
 function filterBreachDataTypes (originalDataTypes) {
   const relevantDataTypes = Object.values(BreachDataTypes)
