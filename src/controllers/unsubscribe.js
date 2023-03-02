@@ -5,12 +5,24 @@
 import { mainLayout } from '../views/main.js'
 import { unsubscribe } from '../views/partials/unsubscribe.js'
 import { generateToken } from '../utils/csrf.js'
+import { UnauthorizedError } from '../utils/error.js'
+
+const mandatoryParams = ['hash', 'token']
 
 function unsubscribePage (req, res) {
+  const queryParams = req.query
+  const hasMandatoryParams = mandatoryParams.every(paramKey => (
+    Object.hasOwn(queryParams, paramKey) && queryParams[paramKey] !== ''
+  ))
+
+  if (!hasMandatoryParams) {
+    throw new UnauthorizedError('Not all mandatory params were provided.')
+  }
+
   const data = {
     csrfToken: generateToken(res),
     partial: unsubscribe,
-    queryParams: req.query
+    queryParams
   }
 
   res.send(mainLayout(data))
