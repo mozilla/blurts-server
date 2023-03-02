@@ -61,6 +61,11 @@ async function getRedisStore () {
   }
 
   const redisClient = createClient({ url: AppConstants.REDIS_URL })
+  // the following event handlers are currently required for Heroku server stability: https://github.com/Shopify/shopify-app-js/issues/129
+  redisClient.on('error', err => console.error('Redis client error', err))
+  redisClient.on('connect', () => console.log('Redis client is connecting'))
+  redisClient.on('reconnecting', () => console.log('Redis client is reconnecting'))
+  redisClient.on('ready', () => console.log('Redis client is ready'))
   await redisClient.connect().catch(console.error)
   return new RedisStore({ client: redisClient })
 }
