@@ -600,3 +600,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } 找不到页面
 error-page-error-404-copy = 很抱歉，您要查找的页面不存在。
 error-page-error-404-cta-button = 返回
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = 出现问题 - { $errorCode }
+error-page-error-other-copy = 请再试一次，或者稍后再回来看看

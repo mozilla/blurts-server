@@ -596,3 +596,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } 找不到頁面
 error-page-error-404-copy = 很抱歉，您想要開啟的頁面不存在。
 error-page-error-404-cta-button = 回上一頁
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } 有些東西不對勁！
+error-page-error-other-copy = 請再試一次或稍後再回來

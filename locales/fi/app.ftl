@@ -704,3 +704,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Sivua ei löydy
 error-page-error-404-copy = Valitettavasti etsimääsi sivua ei enää ole.
 error-page-error-404-cta-button = Takaisin
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Jokin meni pieleen
+error-page-error-other-copy = Yritä uudelleen tai palaa myöhemmin

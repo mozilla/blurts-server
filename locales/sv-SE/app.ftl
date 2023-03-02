@@ -702,3 +702,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } sidan hittades inte
 error-page-error-404-copy = Vi är ledsna, sidan du letar efter finns inte längre.
 error-page-error-404-cta-button = Gå tillbaka
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Något gick fel
+error-page-error-other-copy = Försök igen eller kom tillbaka senare

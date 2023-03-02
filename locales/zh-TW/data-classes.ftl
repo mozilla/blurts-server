@@ -87,7 +87,11 @@ names = 姓名
 nationalities = 國籍
 net-worths = 淨值
 nicknames = 暱稱
+# no data classes found
+none-data-class = 無
 occupations = 職業
+# various data classes grouped together
+other-data-class = 其他
 parenting-plans = 育兒計劃
 partial-credit-card-data = 信用卡部分資料
 partial-dates-of-birth = 部分生日日期
