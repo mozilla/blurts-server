@@ -741,3 +741,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Сторінку не знайдено
 error-page-error-404-copy = На жаль, сторінки, яку ви шукаєте, більше не існує.
 error-page-error-404-cta-button = Назад
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Щось пішло не так
+error-page-error-other-copy = Спробуйте ще раз або поверніться пізніше

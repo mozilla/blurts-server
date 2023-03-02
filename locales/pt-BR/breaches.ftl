@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Dados vazados
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Vazamentos de dados de { $email-select }
 # $count is the number of emails a user has added out of $total allowed

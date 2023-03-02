@@ -87,7 +87,11 @@ names = Nombres
 nationalities = Nacionalidades
 net-worths = Nivel de ingresos
 nicknames = Apodos
+# no data classes found
+none-data-class = Ninguna
 occupations = Ocupaciones
+# various data classes grouped together
+other-data-class = Otras
 parenting-plans = Planes de crianza
 partial-credit-card-data = Datos parciales de la tarjeta de crédito
 partial-dates-of-birth = Fechas parciales de nacimiento

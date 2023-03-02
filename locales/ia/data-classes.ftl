@@ -87,7 +87,11 @@ names = Nomines
 nationalities = Nationalitates
 net-worths = Valores nette
 nicknames = Pseudonymos
+# no data classes found
+none-data-class = Nulle
 occupations = Occupationes
+# various data classes grouped together
+other-data-class = Altere
 parenting-plans = Planos de education
 partial-credit-card-data = Datos partial del carta de credito
 partial-dates-of-birth = Datas de nascentia partial

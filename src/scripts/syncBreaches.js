@@ -42,7 +42,8 @@ if (seen.size !== breaches.length) {
 
 /**
  * Null check for some required field
- * @param {Object} breach breach object from HIBP
+ *
+ * @param {object} breach breach object from HIBP
  * @returns Boolean is it a valid breach
  */
 function isValidBreach (breach) {

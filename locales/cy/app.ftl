@@ -728,3 +728,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Tudalen heb ei chanfod
 error-page-error-404-copy = Ymddiheuriadau, nid yw'r dudalen rydych yn chwilio amdani yn bodoli bellach.
 error-page-error-404-cta-button = Nôl
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Aeth rhywbeth o'i le
+error-page-error-other-copy = Ceisiwch eto neu dewch yn ôl yn nes ymlaen

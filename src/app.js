@@ -6,10 +6,10 @@ import crypto from 'node:crypto'
 
 import express from 'express'
 import session from 'express-session'
-import connectRedis from 'connect-redis'
 import helmet from 'helmet'
 import accepts from 'accepts'
-import redis from 'redis'
+import { createClient } from 'redis'
+import RedisStore from 'connect-redis'
 import cookieParser from 'cookie-parser'
 import rateLimit from 'express-rate-limit'
 import Sentry from '@sentry/node'
@@ -54,16 +54,15 @@ const staticPath =
 await initFluentBundles()
 
 async function getRedisStore () {
-  const RedisStoreConstructor = connectRedis(session)
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
-    const redisMock = await import('redis-mock') // for devs without local redis
-    return new RedisStoreConstructor({
-      client: redisMock.default.createClient()
-    })
+    // allow mock redis for setups without local redis server
+    const { redisMockClient } = await import('./utils/redis-mock.js')
+    return new RedisStore({ client: redisMockClient })
   }
-  return new RedisStoreConstructor({
-    client: redis.createClient({ url: AppConstants.REDIS_URL })
-  })
+
+  const redisClient = createClient({ url: AppConstants.REDIS_URL })
+  await redisClient.connect().catch(console.error)
+  return new RedisStore({ client: redisClient })
 }
 
 // middleware

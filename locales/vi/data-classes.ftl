@@ -34,6 +34,9 @@ customer-interactions = Tương tác của khách hàng
 dates-of-birth = Ngày sinh
 deceased-date = Ngày mất
 deceased-statuses = Tình trạng đã mất
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Hướng dẫn giao hàng
 device-information = Thông tin thiết bị
 device-serial-numbers = Số sê-ri thiết bị
 device-usage-tracking-data = Dữ liệu theo dõi sử dụng thiết bị
@@ -84,7 +87,11 @@ names = Tên
 nationalities = Quốc tịch
 net-worths = Giá trị ròng
 nicknames = Biệt danh
+# no data classes found
+none-data-class = Không có
 occupations = Nghề nghiệp
+# various data classes grouped together
+other-data-class = Khác
 parenting-plans = Kế hoạch nuôi dạy con
 partial-credit-card-data = Dữ liệu một phần thẻ tín dụng
 partial-dates-of-birth = Một phần ngày sinh
@@ -138,6 +145,7 @@ user-website-urls = URL trang web của người dùng
 usernames = Tên đăng nhập
 utility-bills = Các hóa đơn tiện ích
 vehicle-details = Chi tiết về xe cộ
+vehicle-identification-numbers-vins = Số nhận dạng phương tiện (VINs)
 website-activity = Hoạt động trang web
 work-habits = Thói quen làm việc
 years-of-birth = Năm sinh

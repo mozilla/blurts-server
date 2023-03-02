@@ -5,11 +5,14 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Dữ liệu bị rò rỉ
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Rò rỉ dữ liệu đến { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored = { $count } trong tổng số { $total } email được giám sát
-add-email-link = Thêm địa chỉ email
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Quản lý email
 
 ## Breaches resolved filter
 
@@ -21,6 +24,22 @@ filter-label-resolved = Rò rỉ dữ liệu đã giải quyết
 column-company = CÔNG TY
 column-breached-data = DỮ LIỆU BỊ XÂM PHẠM
 column-detected = PHÁT HIỆN
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Đã giải quyết
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Hoạt động
+breaches-none-headline = Không tìm thấy rò rỉ dữ liệu
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Tin tốt! Không có rò rỉ dữ liệu đã biết nào được báo cáo cho { $email }. Chúng tôi sẽ tiếp tục theo dõi email này và sẽ cho bạn biết nếu có bất kỳ rò rỉ dữ liệu mới nào xảy ra.
+breaches-none-cta-blurb = Bạn có muốn giám sát một email khác không?
+breaches-none-cta-button = Thêm địa chỉ email
+breaches-all-resolved-headline = Tất cả các rò rỉ được giải quyết
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Làm tốt lắm! Bạn đã giải quyết tất cả rò rỉ dữ liệu cho { $email }. Chúng tôi sẽ tiếp tục theo dõi email này và sẽ cho bạn biết nếu có bất kỳ rò rỉ dữ liệu mới nào xảy ra.
+breaches-all-resolved-cta-blurb = Bạn có muốn giám sát một email khác không?
+breaches-all-resolved-cta-button = Thêm địa chỉ email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Vào { $breachDate }, { $companyName } đã bị xâm phạm. Sau khi rò rỉ dữ liệu được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi vào { $addedDate }. Rò rỉ này bao gồm: { $dataClasses }
 

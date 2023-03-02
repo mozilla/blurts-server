@@ -12,6 +12,7 @@ import { filterBreachDataTypes } from './breach-resolution.js'
  * Get all emails and breaches for a user via app.locals
  * This function will be replaced after 'breaches" table is created
  * and all records can be retrieved from the one table
+ *
  * @param {*} user
  * @param {*} allBreaches
  * @returns

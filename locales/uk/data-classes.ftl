@@ -87,7 +87,11 @@ names = Імена
 nationalities = Національності
 net-worths = Фінансовий стан
 nicknames = Псевдоніми
+# no data classes found
+none-data-class = Немає
 occupations = Заняття
+# various data classes grouped together
+other-data-class = Інше
 parenting-plans = Планування батьківства
 partial-credit-card-data = Частини даних про кредитні картки
 partial-dates-of-birth = Частини дат народження

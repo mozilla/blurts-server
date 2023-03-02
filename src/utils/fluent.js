@@ -14,9 +14,9 @@ const supportedLocales = AppConstants.SUPPORTED_LOCALES?.split(',')
 const fluentBundles = {}
 
 /**
-* Create Fluent bundles for all supported locales.
-* Reads .ftl files in parallel for better server start performance.
-*/
+ * Create Fluent bundles for all supported locales.
+ * Reads .ftl files in parallel for better server start performance.
+ */
 async function initFluentBundles () {
   const promises = supportedLocales.map(async locale => {
     const bundle = new FluentBundle(locale, { useIsolating: false })
@@ -44,9 +44,10 @@ async function initFluentBundles () {
 }
 
 /**
-* Set the locale used for translations negotiated between requested and available
-* @param {Array} requestedLocales - Locales requested by client.
-*/
+ * Set the locale used for translations negotiated between requested and available
+ *
+ * @param {Array} requestedLocales - Locales requested by client.
+ */
 function updateLocale (requestedLocales) {
   return negotiateLanguages(
     requestedLocales,
@@ -56,18 +57,19 @@ function updateLocale (requestedLocales) {
 }
 
 /**
-* Return the locale negotiated between requested and supported locales.
-* Default 'en' if localStorage hasn't initialized (called without client request)
-*/
+ * Return the locale negotiated between requested and supported locales.
+ * Default 'en' if localStorage hasn't initialized (called without client request)
+ */
 function getLocale () {
   return localStorage.getStore()?.get('locale') || 'en'
 }
 
 /**
-* Translate a message and return the raw string
-* Defaults to en if message id not found in requested locale
-* @param {string} id - The Fluent message id.
-*/
+ * Translate a message and return the raw string
+ * Defaults to en if message id not found in requested locale
+ *
+ * @param {string} id - The Fluent message id.
+ */
 function getRawMessage (id) {
   let bundle = fluentBundles[getLocale()]
 
@@ -79,30 +81,33 @@ function getRawMessage (id) {
 }
 
 /**
-* Translate and transform a message pattern with current locale
-* Defaults to en if message id not found in requested locale
-* @param {string} id - The Fluent message id.
-* @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
-* @example
-* // Given FluentResource("hello = Hello, {$name}!")
-* getMessage (hello, {name: "Jane"})
-* // Returns "Hello, Jane!"
-*/
+ * Translate and transform a message pattern with current locale
+ * Defaults to en if message id not found in requested locale
+ *
+ * @param {string} id - The Fluent message id.
+ * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+ * @example
+ * // Given FluentResource("hello = Hello, {$name}!")
+ * getMessage (hello, {name: "Jane"})
+ * // Returns "Hello, Jane!"
+ */
 function getMessage (id, args) {
   return getMessageWithLocale(id, getLocale(), args)
 }
 
 /**
-* Translate and transform a message pattern
-* Can pass in any locale
-* Defaults to en if message id not found in requested locale
-* @param {string} id - The Fluent message id.
-* @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
-* @example
-* // Given FluentResource("hello = Hello, {$name}!")
-* getMessage (hello, {name: "Jane"})
-* // Returns "Hello, Jane!"
-*/
+ * Translate and transform a message pattern
+ * Can pass in any locale
+ * Defaults to en if message id not found in requested locale
+ *
+ * @param {string} id - The Fluent message id.
+ * @param locale
+ * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+ * @example
+ * // Given FluentResource("hello = Hello, {$name}!")
+ * getMessage (hello, {name: "Jane"})
+ * // Returns "Hello, Jane!"
+ */
 function getMessageWithLocale (id, locale, args) {
   let bundle = fluentBundles[locale]
 

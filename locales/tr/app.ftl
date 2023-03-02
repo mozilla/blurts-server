@@ -612,6 +612,7 @@ sign-in = Giriş yap
 
 site-nav-breaches-link = Veri ihlallerini çöz
 site-nav-settings-link = Ayarlar
+site-nav-help-link = Yardım ve destek
 
 ## User menu
 
@@ -636,3 +637,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Sayfa bulunamadı
 error-page-error-404-copy = Aradığınız sayfa artık mevcut değil.
 error-page-error-404-cta-button = Geri dön
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Bir hata oluştu
+error-page-error-other-copy = Lütfen daha sonra tekrar deneyin
