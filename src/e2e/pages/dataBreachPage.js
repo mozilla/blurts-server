@@ -11,6 +11,8 @@ export class DataBreachPage {
     this.breachesResolvedRadio = page.locator('input#breaches-resolved')
     this.breachesUnresolvedRadio = page.locator('input#breaches-unresolved')
     this.breachRows = page.locator('.breach-row')
+    this.breachesResolvedTab = page.getByText(/Resolved breaches/)
+    this.breachesUnresolvedTab = page.getByText(/Unresolved breaches/)
   }
 
   async open () {

@@ -20,26 +20,25 @@ test.describe('Breach Resolution', () => {
     await expect(dataBreachPage.breachesUnresolvedRadio).toBeChecked()
 
     // prep for test: clear all resolved
-    await page.getByText(/Resolved breaches/).click()
-    await page.waitForTimeout(100)
-    for (const r of await dataBreachPage.breachRows.all()) {
-      if (await r.isVisible()) {
-        await r.click()
-        await page.waitForTimeout(100)
-      }
-      for (const li of await r.locator('.resolve-list-item').all()) {
-        if (await li.locator('input').isVisible()) {
-          await li.locator('input').uncheck()
-          await page.waitForTimeout(100)
+    await dataBreachPage.breachesResolvedTab.waitFor()
+    await dataBreachPage.breachesResolvedTab.click()
+    if (await dataBreachPage.breachRows.count() >= 1) {
+      for (const r of (await dataBreachPage.breachRows.all())) {
+        if (await r.isVisible()) await r.click()
+        if (await r.locator('.resolve-list-item').count() >= 1) {
+          for (const li of (await r.locator('.resolve-list-item').all() || [])) {
+            if (await li.locator('input').isVisible()) await li.locator('input').uncheck()
+          }
         }
       }
     }
 
     // come back to unresolved breaches tab
-    await page.getByText(/Unresolved breaches/).click()
-    await page.waitForTimeout(500)
+    await dataBreachPage.breachesUnresolvedTab.click()
+    await dataBreachPage.breachesUnresolvedTab.waitFor()
 
     // Pick a breach
+    await dataBreachPage.breachRows.first().waitFor()
     const firstBreach = await dataBreachPage.breachRows.first()
     await firstBreach.click()
     await page.waitForTimeout(100)
