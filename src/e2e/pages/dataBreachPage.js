@@ -8,6 +8,9 @@ export class DataBreachPage {
 
     this.dataBreachesHeader = page.locator('.breaches-header')
     this.breachesFilter = page.locator('.breaches-filter')
+    this.breachesResolvedRadio = page.locator('input#breaches-resolved')
+    this.breachesUnresolvedRadio = page.locator('input#breaches-unresolved')
+    this.breachRows = page.locator('.breach-row')
   }
 
   async open () {
