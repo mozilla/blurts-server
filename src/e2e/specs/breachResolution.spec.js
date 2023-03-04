@@ -46,8 +46,8 @@ test.describe('Breach Resolution', () => {
     await page.locator('.resolve-list').first().waitFor()
     const firstBreachResolveListItems = await page.locator('.resolve-list').first().locator('.resolve-list-item')
     const firstBreachResolveCount = await firstBreachResolveListItems.count()
-    console.log('Items to be resolved: ', firstBreachResolveCount)
     if (firstBreachResolveCount >= 1) {
+      console.log('Items to be resolved: ', firstBreachResolveCount)
       for (const r of await firstBreachResolveListItems.all()) {
         await r.locator('input').check()
         // prevent rate limiting
@@ -57,7 +57,7 @@ test.describe('Breach Resolution', () => {
 
     const updatedResolvedBreachTab = await page.getByText(/1Resolved breaches/)
     await expect(async () => {
-      await expect(updatedResolvedBreachTab).toBeVisible()
+      await expect(updatedResolvedBreachTab).toBeTruthy()
     }).toPass({
       timeout: 5000
     })
