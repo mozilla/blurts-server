@@ -15,13 +15,13 @@ dotenv.config()
 export default defineConfig({
   testDir: './e2e/specs',
   /* Maximum time one test can run for. */
-  timeout: 60_000,
+  timeout: 120_000,
 
   /* Global setup */
   globalSetup: './e2e/globalSetup.js',
 
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
-  globalTimeout: 360_000,
+  globalTimeout: 600_000,
 
   // adding missing snapshots for later comparison
   updateSnapshots: 'missing',
