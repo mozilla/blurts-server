@@ -41,18 +41,18 @@ test.describe('Breach Resolution', () => {
     await page.locator('.breaches-table').waitFor()
     const firstBreach = await dataBreachPage.breachRows.first()
     await firstBreach.click()
-    await page.waitForTimeout(100)
 
     // find number of items needed to be resolved for first breach
+    await page.locator('.resolve-list').first().waitFor()
     const firstBreachResolveListItems = await page.locator('.resolve-list').first().locator('.resolve-list-item')
     const firstBreachResolveCount = await firstBreachResolveListItems.count()
     console.log('Items to be resolved: ', firstBreachResolveCount)
-    for (const r of await firstBreachResolveListItems.all()) {
-      await r.locator('input').check()
-      await page.waitForTimeout(100)
+    if (firstBreachResolveCount >= 1) {
+      for (const r of await firstBreachResolveListItems.all()) {
+        await r.locator('input').check()
+      }
     }
 
-    await page.waitForTimeout(2000)
     const updatedResolvedBreachTab = await page.getByText(/1Resolved breaches/)
     await expect(async () => {
       await expect(updatedResolvedBreachTab).toBeVisible()
