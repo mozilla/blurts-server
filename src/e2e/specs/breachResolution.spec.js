@@ -20,7 +20,7 @@ test.describe('Breach Resolution', () => {
     await expect(dataBreachPage.breachesUnresolvedRadio).toBeChecked()
 
     // prep for test: clear all resolved
-    await page.waitForTimeout(1000)
+    await dataBreachPage.breachesResolvedTab.waitFor()
     await dataBreachPage.breachesResolvedTab.click()
     if (await dataBreachPage.breachRows.count() >= 1) {
       for (const r of (await dataBreachPage.breachRows.all())) {
