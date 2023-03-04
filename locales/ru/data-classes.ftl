@@ -87,7 +87,11 @@ names = Имена
 nationalities = Национальности
 net-worths = Финансовые состояния
 nicknames = Прозвища
+# no data classes found
+none-data-class = Нет
 occupations = Профессии
+# various data classes grouped together
+other-data-class = Другое
 parenting-plans = Планы по «заведению» детей
 partial-credit-card-data = Частичные данные банковских карт
 partial-dates-of-birth = Части дней рождения

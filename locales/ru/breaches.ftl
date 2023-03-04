@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Скомпрометированные данные
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Утечки данных для { $email-select }
 # $count is the number of emails a user has added out of $total allowed
