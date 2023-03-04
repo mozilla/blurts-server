@@ -38,7 +38,7 @@ test.describe('Breach Resolution', () => {
     await dataBreachPage.breachesUnresolvedTab.waitFor()
 
     // Pick a breach
-    await dataBreachPage.breachRows.first().waitFor()
+    await page.locator('.breaches-table').waitFor()
     const firstBreach = await dataBreachPage.breachRows.first()
     await firstBreach.click()
     await page.waitForTimeout(100)
