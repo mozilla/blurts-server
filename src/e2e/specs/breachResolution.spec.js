@@ -51,7 +51,7 @@ test.describe('Breach Resolution', () => {
       for (const r of await firstBreachResolveListItems.all()) {
         await r.locator('input').check()
         // prevent rate limiting
-        page.waitForTimeout(100)
+        page.waitForTimeout(1000)
       }
     }
 
