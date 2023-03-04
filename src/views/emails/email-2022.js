@@ -2,68 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../../app-constants.js'
+import { images, links, styles } from './resources/index.js'
 import { getMessage } from '../../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
-const links = (data) => ({
-  faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
-  hibp: 'https://haveibeenpwned.com/',
-  legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
-  termsAndPrivacy: `https://www.mozilla.org/privacy/firefox-monitor?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`
-})
-
-const images = {
-  header: `${AppConstants.SERVER_URL}/images/email/person-at-desk.png`,
-  footer: `${AppConstants.SERVER_URL}/images/email/mozilla-logo-bw.png`,
-  logoDark: `${AppConstants.SERVER_URL}/images/email/monitor-logo-transparent-dark-mode.png`,
-  logoLight: `${AppConstants.SERVER_URL}/images/email/monitor-logo-bg-light.png`
-}
-
-const bodyStyle = `
-  color: black;
-  font: normal 16px/1.2 sans-serif;
-`
-
-const tableStyle = `
-  margin: auto;
-  max-width: 1080px;
-  text-align: center;
-  width: 100%;
-`
-
-const headerTableStyle = `
-  background-color: #321c64;
-  color: white;
-  height: 331px;
-  text-align: left;
-  width: 100%;
-`
-
-const headerImageContainerStyle = `
-  background-color: #321c64;
-  vertical-align: bottom;
-  width: 50%;
-`
-
-const headerImageStyle = `
-  display: block;
-  margin-left: auto;
-  max-width: 100%;
-  object-fit: cover;
-  object-position: left;
-`
-
-const footerContainerStyle = `
-  background: #f9f9fa;
-  border-top: 1px solid #dddddd;
-  padding: 24px 0;
-`
-
-const footerImageStyle = `
-  display: block;
-  margin: 24px auto 0;
-`
 
 const emailHeader = (data) => `
   <tr class='logo'>
@@ -76,7 +18,7 @@ const emailHeader = (data) => `
         cellpadding='0'
         cellspacing='0'
         role='presentation'
-        style='${headerTableStyle}'
+        style='${styles.main.headerTable}'
       >
         <tr>
           <td>
@@ -90,13 +32,13 @@ const emailHeader = (data) => `
           </td>
           <td
             class='header-image'
-            style='${headerImageContainerStyle}'
+            style='${styles.main.headerImageContainer}'
           >
             <img
               alt=''
               height='331'
               src='${images.header}'
-              style='${headerImageStyle}'
+              style='${styles.main.headerImage}'
               width='476'
             >
           </td>
@@ -108,7 +50,7 @@ const emailHeader = (data) => `
 
 const emailFooter = (data) => `
   <tr class='footer'>
-    <td style='${footerContainerStyle}'>
+    <td style='${styles.main.footerContainer}'>
       <p>
         ${getEmailFooterCopy(data)}
       </p>
@@ -120,7 +62,7 @@ const emailFooter = (data) => `
       <img
         alt='${getMessage('mozilla')}'
         src='${images.footer}'
-        style='${footerImageStyle}'
+        style='${styles.main.footerImage}'
         width='130px'
       >
       <p>
@@ -155,60 +97,6 @@ function getEmailFooterCopy (data) {
   })
 }
 
-const getStyles = () => `
-  <style>
-    .email-body,
-    .email-body * {
-      margin: 0;
-      padding: 0;
-    }
-
-    body.email-body,
-    .email-container {
-      color: black;
-      font: normal 16px/1.2 sans-serif;
-    }
-
-    .email-container h1,
-    .email-container p {
-      margin: 12px auto;
-      max-width: 600px;
-      padding: 0 24px;
-    }
-
-    .email-container a {
-      color: #592acb;
-      text-decoration: none;
-    }
-
-    .email-container table {
-      table-layout: fixed;
-    }
-
-    .email-container .logo > td {
-      height: 100px;
-      background-color: #f9f9fa;
-      background-position: 50%;
-      background-image: url('${images.logoLight}');
-      background-repeat: no-repeat;
-      background-size: 240px 50px;
-      width: 100%;
-    }
-
-    @media screen and (max-width:600px) {
-      .email-container .header-image {
-        display: none;
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      .email-container .logo > td {
-        background-image: url('${images.logoDark}')
-      }
-    }
-  </style>
-`
-
 const getEmailContent = (data, partial) => {
   return `
     <table
@@ -217,7 +105,7 @@ const getEmailContent = (data, partial) => {
       cellpadding='0'
       cellspacing='0'
       role='presentation'
-      style='${tableStyle}'
+      style='${styles.main.table}'
     >
       ${emailHeader({
         heading: data.heading,
@@ -230,7 +118,9 @@ const getEmailContent = (data, partial) => {
 }
 
 const getPreviewTemplate = (data, partial) => `
-  ${getStyles()}
+  <style>
+    ${styles.main.global}
+  </style>
   ${getEmailContent(data, partial)}
 `
 
@@ -246,10 +136,12 @@ const getTemplate = (data, partial) => {
           ${getMessage('brand-fx-monitor')}
         </title>
 
-        ${getStyles()}
+        <style>
+          ${styles.main.global}
+        </style>
       </head>
 
-      <body class='email-body' style='${bodyStyle}'>
+      <body class='email-body' style='${styles.main.body}'>
         ${getEmailContent(data, partial)}
       </body>
     </html>

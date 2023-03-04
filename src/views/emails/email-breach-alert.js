@@ -3,30 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { breachCardPartial } from './email-breach-card.js'
+import { styles } from './resources/index.js'
 import { getMessage } from '../../utils/fluent.js'
-
-const breachAlertContainerStyle = `
-  background: #f9f9fa;
-  color: black;
-  padding: 36px 0 24px;
-`
-
-const breachAlertCtaStyle = `
-  background: #0060df;
-  border-radius: 4px;
-  color: white;
-  display: inline-block;
-  margin: 24px 0;
-  margin: auto;
-  padding: 12px 24px;
-`
 
 const breachAlertEmailPartial = data => {
   const { breachData, breachedEmail, ctaHref } = data
 
   return `
     <tr>
-      <td style='${breachAlertContainerStyle}'>
+      <td style='${styles.alert.breachAlertContainerStyle}'>
         <p>
           ${getMessage('email-breach-detected', {
             'email-address': `<strong>${breachedEmail}</strong>`
@@ -35,7 +20,7 @@ const breachAlertEmailPartial = data => {
         ${breachCardPartial(breachData)}
         <a
           href='${ctaHref}'
-          style='${breachAlertCtaStyle}'
+          style='${styles.alert.breachAlertCtaStyle}'
         >
           ${getMessage('email-dashboard-cta')}
         </a>

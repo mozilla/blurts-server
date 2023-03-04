@@ -3,46 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { breachCardPartial } from './email-breach-card.js'
+import { styles } from './resources/index.js'
 import { getMessage } from '../../utils/fluent.js'
-
-const emailStyle = `
-  color: black;
-  background: #f9f9fa;
-  padding: 36px 0 24px;
-`
-
-const breachSummaryTableStyle = `
-  margin: auto;
-  max-width: 600px;
-`
-
-const breachSummaryCardStyle = `
-  background: #eeeeee;
-  border-radius: 6px;
-  margin: 12px auto;
-  padding: 12px;
-  table-layout: auto;
-  width: 100%;
-`
-
-const statNumberStyle = `
-  font-size: 48px;
-  font-weight: bold;
-  width: 72px;
-`
-
-const statTitleStyle = `
-  text-align: left;
-`
-
-const ctaStyle = `
-  background-color: #0060DF;
-  border-radius: 4px;
-  color: white;
-  display: inline-block;
-  margin: 24px 0;
-  padding: 12px 24px;
-`
 
 const signupReportEmailPartial = data => {
   const {
@@ -53,7 +15,7 @@ const signupReportEmailPartial = data => {
 
   return `
     <tr>
-      <td style='${emailStyle}'>
+      <td style='${styles.signup.emailStyle}'>
         <p>
           ${
             unsafeBreachesForEmail?.length
@@ -66,16 +28,16 @@ const signupReportEmailPartial = data => {
         ${
           emailBreachStats?.length
             ? `
-                <table style='${breachSummaryTableStyle}'>
+                <table style='${styles.signup.breachSummaryTableStyle}'>
                   <tr>
                     <td>
                       ${emailBreachStats.map(breachStat => `
-                        <table style='${breachSummaryCardStyle}'>
+                        <table style='${styles.signup.breachSummaryCardStyle}'>
                           <tr>
-                            <td style='${statNumberStyle}'>
+                            <td style='${styles.signup.statNumberStyle}'>
                               ${breachStat.statNumber}
                             </td>
-                            <td style=${statTitleStyle}>
+                            <td style=${styles.signup.statTitleStyle}>
                               ${breachStat.statTitle}
                             </td>
                           </tr>
@@ -96,7 +58,7 @@ const signupReportEmailPartial = data => {
         }
         <a
           href='${data.ctaHref}'
-          style='${ctaStyle}'
+          style='${styles.signup.ctaStyle}'
         >
           ${getMessage('email-dashboard-cta')}
         </a>

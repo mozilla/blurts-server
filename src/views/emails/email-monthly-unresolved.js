@@ -2,52 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { styles } from './resources/index.js'
 import { getMessage } from '../../utils/fluent.js'
-
-const emailStyle = `
-  color: black;
-  background: #f9f9fa;
-  padding-top: 36px;
-`
-
-const containerStyle = `
-  background: #f9f9fa;
-  color: black;
-  padding: 24px;
-`
-
-const tableStyle = `
-  background: white;
-  border-radius: 8px;
-  border: 1px solid #dddddd;
-  box-shadow: 0 0 6px #dddddd;
-  margin: auto;
-  padding: 24px;
-  text-align: left;
-  width: auto;
-`
-
-const tableLabelStyle = `
-  padding: 3px 12px;
-`
-
-const tableValueStyle = `
-  border-left: 1px solid #cccccc;
-  padding: 3px 12px;
-`
-
-const ctaStyle = `
-  background: #0060df;
-  border-radius: 4px;
-  color: white;
-  display: inline-block;
-  margin: 24px 0;
-  padding: 12px 24px;
-`
 
 const monthlyUnresolvedEmailPartial = (data) => `
   <tr>
-    <td style='${emailStyle}'>
+    <td style='${styles.monthly.emailStyle}'>
       <p>
         ${getMessage('email-is-affected', {
           'email-address': `<strong>${data.breachedEmail}</strong>`
@@ -59,7 +19,7 @@ const monthlyUnresolvedEmailPartial = (data) => `
     </td>
   </tr>
   <tr>
-    <td style='${containerStyle}'>
+    <td style='${styles.monthly.containerStyle}'>
       <p>
         <strong>
           ${getMessage('email-breach-status')}
@@ -70,44 +30,44 @@ const monthlyUnresolvedEmailPartial = (data) => `
         cellpadding='0'
         cellspacing='0'
         role='presentation'
-        style='${tableStyle}'
+        style='${styles.monthly.tableStyle}'
       >
         <tr>
-          <td style='${tableLabelStyle}'>
+          <td style='${styles.monthly.tableLabelStyle}'>
             ${getMessage('email-monitored')}
           </td>
-          <td style='${tableValueStyle}'>
+          <td style='${styles.monthly.tableValueStyle}'>
             ${data.monitoredEmails.count}
           </td>
         </tr>
         <tr>
-          <td style='${tableLabelStyle}'>
+          <td style='${styles.monthly.tableLabelStyle}'>
             ${getMessage('email-breach-total')}
           </td>
-          <td style='${tableValueStyle}'>
+          <td style='${styles.monthly.tableValueStyle}'>
             ${data.numBreaches.count}
           </td>
         </tr>
         <tr>
-          <td style='${tableLabelStyle}'>
+          <td style='${styles.monthly.tableLabelStyle}'>
             ${getMessage('email-resolved')}
           </td>
-          <td style='${tableValueStyle}'>
+          <td style='${styles.monthly.tableValueStyle}'>
             ${data.numBreaches.numResolved}
           </td>
         </tr>
         <tr>
-          <td style='${tableLabelStyle}'>
+          <td style='${styles.monthly.tableLabelStyle}'>
             ${getMessage('email-unresolved')}
           </td>
-          <td style='${tableValueStyle}'>
+          <td style='${styles.monthly.tableValueStyle}'>
             ${data.numBreaches.numUnresolved}
           </td>
         </tr>
       </table>
       <a
         href='${data.ctaHref}'
-        style='${ctaStyle}'
+        style='${styles.monthly.ctaStyle}'
       >
         ${getMessage('email-resolve-cta')}
       </a>

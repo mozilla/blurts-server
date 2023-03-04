@@ -2,53 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { styles } from './resources/index.js'
 import { getLocale, getMessage } from '../../utils/fluent.js'
 import { formatDate } from '../../utils/format-date.js'
-
-const breachAlertTableStyle = `
-  margin: auto
-`
-
-const breachAlertCardsContainerStyle = `
-  background: white;
-  border-radius: 6px;
-  border-spacing: 0;
-  border: 1px solid #eeeeee;
-  box-shadow: 0 0 6px #dddddd;
-  display: inline-table;
-  margin: 12px;
-  min-width: 240px;
-  width: 30%;
-`
-
-const breachAlertCardsTitleStyle = `
-  background: #eeeeee;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  padding: 12px;
-`
-
-const breachAlertCardsTitleImageStyle = `
-  vertical-align: bottom;
-`
-
-const breachAlertLabelStyle = `
-  color: #5e5e72;
-  font-family: sans-serif;
-  font-size: 13px;
-  font-weight: 300;
-  margin: 0px;
-  padding-bottom: 4px;
-`
-
-const breachAlertValueStyle = `
-  color: #20123a;
-  font-family: sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0px;
-  padding-bottom: 15px;
-`
 
 const breachCardPartial = breachData => {
   const {
@@ -59,16 +15,16 @@ const breachCardPartial = breachData => {
   } = breachData
 
   return `
-    <table style='${breachAlertTableStyle}'>
+    <table style='${styles.alert.breachAlertTableStyle}'>
       <tr>
         <td>
-          <table style='${breachAlertCardsContainerStyle}'>
+          <table style='${styles.alert.breachAlertCardsContainerStyle}'>
             <tr>
-              <td style='${breachAlertCardsTitleStyle}'>
+              <td style='${styles.alert.breachAlertCardsTitleStyle}'>
                 <img
                   height='25'
                   src='${LogoPath}'
-                  style='${breachAlertCardsTitleImageStyle}'
+                  style='${styles.alert.breachAlertCardsTitleImageStyle}'
                   width='25'
                 >
                 ${Title}
@@ -76,19 +32,19 @@ const breachCardPartial = breachData => {
             </tr>
             <tr>
               <td style='padding: 24px;'>
-                <p style='${breachAlertLabelStyle}'>
+                <p style='${styles.alert.breachAlertLabelStyle}'>
                   ${getMessage('breach-added-label')}
                 </p>
-                <p style='${breachAlertValueStyle}'>
+                <p style='${styles.alert.breachAlertValueStyle}'>
                   ${formatDate(AddedDate, getLocale())}
                 </p>
 
                 ${DataClasses?.length
                   ? `
-                      <p style='${breachAlertLabelStyle}'>
+                      <p style='${styles.alert.breachAlertLabelStyle}'>
                         ${getMessage('compromised-data')}
                       </p>
-                      <span style='${breachAlertValueStyle}'>
+                      <span style='${styles.alert.breachAlertValueStyle}'>
                         ${DataClasses.map(classKey => getMessage(classKey))
                           .join(', ')
                           .trim()}
