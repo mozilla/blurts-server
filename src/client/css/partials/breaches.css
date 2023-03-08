@@ -230,6 +230,15 @@
   height: 1.5rem;
 }
 
+.breach-row .breach-company span.breach-logo {
+  width: 1.5rem;
+  border-radius: 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .breaches-table details > article {
   padding: var(--padding-md);
   border-top: 1px solid var(--gray-10);

@@ -26,6 +26,7 @@
   --gray-30: #9e9e9e;
   --gray-40: #6d6d6e;
   --gray-50: #3d3d3d;
+  --blue-5: #aaf2ff;
   --blue-50: #0060df;
   --blue-60: #0250bb;
   --blue-90: #09204d;
@@ -38,8 +39,13 @@
   --green-05: #e3fff3;
   --green-80: #00a49a;
   --green-90: #00736c;
+  --violet-5: #f7e2ff;
+  --orange-5: #fff4de;
+  --yellow-5: #ffc;
+  --red-5: #ffdfe7;
   --red-60: #e22850;
   --red-70: #c50042;
+  --pink-5: #ffdef0;
   --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 
