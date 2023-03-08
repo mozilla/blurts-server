@@ -2,8 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const settingsAlertOptionsInputs = document.getElementsByClassName('js-settings-alert-options-input')
+const settingsPartial = document.querySelector("[data-partial='settings']")
 
+function init () {
+  document.body.addEventListener('email-added', handleEvent)
+}
+
+function handleEvent (e) {
+  switch (true) {
+    case e.type === 'email-added':
+      document.querySelector('dialog[data-partial="add-email"]')
+        .addEventListener('close', () => window.location.reload(), { once: true })
+      break
+  }
+}
+
+const settingsAlertOptionsInputs = document.getElementsByClassName('js-settings-alert-options-input')
 if (settingsAlertOptionsInputs?.length) {
   for (const inputElement of settingsAlertOptionsInputs) {
     inputElement.addEventListener('change', async event => {
@@ -104,3 +118,5 @@ if (settingsResendEmailLinks?.length) {
     })
   }
 }
+
+if (settingsPartial) init()
