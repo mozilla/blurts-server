@@ -23,7 +23,7 @@ import { getSha1 } from '../utils/fxa.js'
 import { generateToken } from '../utils/csrf.js'
 import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
 
-import { mainLayout } from '../views/main.js'
+import { mainLayout } from '../views/mainLayout.js'
 import { settings } from '../views/partials/settings.js'
 import { getTemplate } from '../views/emails/email-2022.js'
 import { verifyPartial } from '../views/emails/email-verify.js'
