@@ -686,3 +686,4 @@ error-page-error-404-cta-button = Guevijey
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Oĩ osẽvaíva
+error-page-error-other-copy = Eha’ã pyahujey térã ejujey ag̃amieve

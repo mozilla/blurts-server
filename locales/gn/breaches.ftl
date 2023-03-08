@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Mba’ekuaarã mboguapyre
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Mba’ekuaarã ñembogua { $email-select } peg̃uarã
 # $count is the number of emails a user has added out of $total allowed

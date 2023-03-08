@@ -87,7 +87,11 @@ names = Téra
 nationalities = Mba’etetãgua
 net-worths = Mba’aporepy
 nicknames = Teragua’u
+# no data classes found
+none-data-class = Avave
 occupations = Mba’e rejapo
+# various data classes grouped together
+other-data-class = Ambue
 parenting-plans = Pehẽnguekuéra aporã
 partial-credit-card-data = Mba’ekuaarã vore kuatia’atã ñemurã rehegua
 partial-dates-of-birth = Teñoiha arange voreguáva
