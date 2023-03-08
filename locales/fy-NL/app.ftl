@@ -697,3 +697,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Side net fûn
 error-page-error-404-copy = It spyt ús, de side dêr’t jo nei sykje bestiet net mear.
 error-page-error-404-cta-button = Tebek
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Der is wat misgien
+error-page-error-other-copy = Probearje it opnij of kom letter werom
