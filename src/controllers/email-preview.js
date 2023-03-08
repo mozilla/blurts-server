@@ -5,7 +5,7 @@
 import AppConstants from '../app-constants.js'
 
 import { notify } from './hibp.js'
-import { mainLayout } from '../views/main.js'
+import { mainLayout } from '../views/mainLayout.js'
 import { guestLayout } from '../views/guestLayout.js'
 import { emailPreview } from '../views/partials/email-preview.js'
 import { getTemplate, getPreviewTemplate } from '../views/emails/email-2022.js'
