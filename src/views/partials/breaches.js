@@ -31,13 +31,16 @@ function createBreachRows (data, logos) {
         addedDate: longDate.format(addedDate),
         dataClasses: longList.format(dataClassesTranslated)
       })
-      const logoPath = logos.get(breach.Domain) ?? '/images/fallback-logo.svg'
+
+      const logo = logos.has(breach.Domain)
+        ? `<img src='${logos.get(breach.Domain)}' alt='' class='breach-logo' height='32' />`
+        : `<span role="img" aria-hidden='true' class='breach-logo' style='background-color: var(${getColorForName(breach.Name)});'>${breach.Name.substring(0, 1)}</span>`
 
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
           <span class='breach-company'>
-            <img src='${logoPath}' alt='' class='breach-logo' height='32' />
+            ${logo}
             ${breach.Title}
           </span>
           <span>${shortList.format(dataClassesTranslated)}</span>
@@ -136,3 +139,27 @@ export const breaches = data => `
   </template>
 </section>
 `
+
+/**
+ * @param {string} name
+ * @returns string CSS variable for a string-specific color
+ */
+function getColorForName (name) {
+  const logoColors = [
+    '--blue-5',
+    '--purple-5',
+    '--green-05',
+    '--violet-5',
+    '--orange-5',
+    '--yellow-5',
+    '--red-5',
+    '--pink-5'
+  ]
+
+  const charValue = name
+    .split('')
+    .map(letter => letter.codePointAt(0))
+    .reduce((sum, codePoint) => sum + codePoint)
+
+  return logoColors[charValue % logoColors.length]
+}
