@@ -6,6 +6,7 @@ import AppConstants from '../app-constants.js'
 
 import { notify } from './hibp.js'
 import { mainLayout } from '../views/main.js'
+import { guestLayout } from '../views/guestLayout.js'
 import { emailPreview } from '../views/partials/email-preview.js'
 import { getTemplate, getPreviewTemplate } from '../views/emails/email-2022.js'
 import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
@@ -95,7 +96,7 @@ function emailsPreviewPage (req, res) {
     }
   }
 
-  res.send(mainLayout(data))
+  res.send(guestLayout(data))
 }
 
 async function sendTestNotification (req, res) {

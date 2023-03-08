@@ -4,7 +4,7 @@
 
 import { MethodNotAllowedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
-import { mainLayout } from '../views/main.js'
+import { guestLayout } from '../views/guestLayout.js'
 import { error } from '../views/partials/error.js'
 const log = mozlog('middleware')
 
@@ -28,7 +28,7 @@ function errorHandler (err, req, res, next) {
   const errMsg = err.message || 'Empty error message'
 
   if (req.accepts('text/html') === 'text/html') {
-    res.status(errStatus).send(mainLayout({
+    res.status(errStatus).send(guestLayout({
       partial: error,
       nonce: res.locals.nonce,
       statusCode: errStatus
