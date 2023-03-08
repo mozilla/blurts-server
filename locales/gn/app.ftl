@@ -683,3 +683,6 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Kuatiarogue ojejuhu’ỹva
 error-page-error-404-copy = Rombyasy, pe kuatiarogue rehekáva ndaiporivéima.
 error-page-error-404-cta-button = Guevijey
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Oĩ osẽvaíva
