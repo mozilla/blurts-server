@@ -36,11 +36,9 @@ function createBreachRows (data, logos) {
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span>
-            <a href='https://${breach.Domain}' target='_blank' class='breach-company'>
-              <img src='${logoPath}' alt='' class='breach-logo' height='32' />
-              ${breach.Title}
-            </a>
+          <span class='breach-company'>
+            <img src='${logoPath}' alt='' class='breach-logo' height='32' />
+            ${breach.Title}
           </span>
           <span>${shortList.format(dataClassesTranslated)}</span>
           <span>

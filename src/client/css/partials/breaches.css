@@ -230,10 +230,6 @@
   height: 1.5rem;
 }
 
-.breach-row .breach-company span.breach-logo {
-  width: 1.5rem;
-  border-radius: 1.5rem;
-}
 .breaches-table details > article {
   padding: var(--padding-md);
   border-top: 1px solid var(--gray-10);
