@@ -103,7 +103,7 @@ if (settingsResendEmailLinks?.length) {
         if (!response.ok) {
           // TODO: localize error messages
           const toast = document.createElement('toast-alert')
-          toast.textContent = `Re-sending verification email failed: ${response.statusText}`
+          toast.textContent = `Re-sending verification email failed. ${response.statusText}`
           document.body.append(toast)
         }
 
@@ -111,7 +111,7 @@ if (settingsResendEmailLinks?.length) {
           throw response.error
         }
       } catch (err) {
-        throw new Error(`Re-sending verification email failed: ${err}`)
+        throw new Error(`Re-sending verification email failed. ${err}`)
       }
       event.preventDefault()
       return false
