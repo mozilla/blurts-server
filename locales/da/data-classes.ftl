@@ -34,6 +34,9 @@ customer-interactions = Kunde-interaktioner
 dates-of-birth = Fødselsdatoer
 deceased-date = Dødsdato
 deceased-statuses = Status for afdøde
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Instruktioner til leverandøren
 device-information = Information om enheder
 device-serial-numbers = Serienummer på enheder
 device-usage-tracking-data = Sporingsdata for brug af enheder
