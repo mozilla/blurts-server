@@ -11,7 +11,7 @@ function makeBreachCard (breach) {
     <img style="width: 32px" alt="${breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${breach.LogoPath}" />
     <div>${breach.Title}</div>
     <div>Breach added:</div>
-    <div>${breach.AddedDate}</div>
+    <div>${new Date(breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
     <div>Compromised data:</div>
     <span>${breach.DataClasses.includes('passwords') ? 'Passwords' : ''}</span>
     <span>${breach.DataClasses.includes('email-addresses') ? 'Email addresses' : ''}</span>
@@ -66,10 +66,7 @@ export const allBreachesPartial = data => `
       </section>
     </div>
     <div class="row flx-col">
-      <!-- span id="no-results-blurb" class="no-results-blurb">${getMessage('no-results-blurb')}</span -->
-      <!-- breach cards -->
-      <div id="all-breaches" class="all-breaches flx"></div>
-      <button id="show-hidden-breaches" class="btn-violet-primary show-all-breaches" data-event-category="All Breaches: Show All Button">${getMessage('show-all')}</button>
+      <!-- TODO span id="no-results-blurb" class="no-results-blurb">${getMessage('no-results-blurb')}</span -->
     </div>
   </section>
 </main>

@@ -23,8 +23,8 @@ export const breachDetailsPartial = data => `
   <!-- Overview -->
   <section style="padding: 120px">
     <h2>Overview</h2>
-    On ${data.breach.BreachDate}, ${data.breach.Name} was breached.
-    Once the breach was discovered and verified, it was added to our database on ${data.breach.AddedDate}.
+    On ${new Date(data.breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}, ${data.breach.Name} was breached.
+    Once the breach was discovered and verified, it was added to our database on ${new Date(data.breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}.
   </section>
 
   <!--Exposed Data Classes -->
