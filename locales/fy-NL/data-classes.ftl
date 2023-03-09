@@ -87,7 +87,11 @@ names = Nammen
 nationalities = Nasjonaliteiten
 net-worths = Fermogenswearden
 nicknames = Bynammen
+# no data classes found
+none-data-class = Gjin
 occupations = Beroppen
+# various data classes grouped together
+other-data-class = Oars
 parenting-plans = Alderskipsplannen
 partial-credit-card-data = Part fan creditcardgegevens
 partial-dates-of-birth = Parten fan bertedata

@@ -87,7 +87,11 @@ names = Jména
 nationalities = Národnosti
 net-worths = Čisté jmění
 nicknames = Přezdívky
+# no data classes found
+none-data-class = Žádné
 occupations = Povolání
+# various data classes grouped together
+other-data-class = Jiné
 parenting-plans = Plány rodičovství
 partial-credit-card-data = Částečné údaje o platebních kartách
 partial-dates-of-birth = Neúplná data narození

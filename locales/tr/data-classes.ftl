@@ -87,6 +87,8 @@ names = İsimler
 nationalities = Uyruklar
 net-worths = Net değerler
 nicknames = Takma adlar
+# no data classes found
+none-data-class = Yok
 occupations = Meslekler
 # various data classes grouped together
 other-data-class = Diğer

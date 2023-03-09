@@ -87,7 +87,11 @@ names = Namen
 nationalities = Nationaliteiten
 net-worths = Vermogenswaarden
 nicknames = Bijnamen
+# no data classes found
+none-data-class = Geen
 occupations = Beroepen
+# various data classes grouped together
+other-data-class = Overig
 parenting-plans = Ouderschapsplannen
 partial-credit-card-data = Gedeeltelijke creditcardgegevens
 partial-dates-of-birth = Gedeeltelijke geboortedata
