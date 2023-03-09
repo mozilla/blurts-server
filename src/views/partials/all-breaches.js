@@ -48,7 +48,7 @@ export const allBreachesPartial = data => `
   <section>
     <div>
       <h2 style="text-align: center">
-        <form>
+        <form autocomplete="off">
           <button><svg class="search-icon " xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#5b5b66" d="M15.707 14.293l-4.822-4.822a6.019 6.019 0 1 0-1.414 1.414l4.822 4.822a1 1 0 0 0 1.414-1.414zM6 10a4 4 0 1 1 4-4 4 4 0 0 1-4 4z"></path></svg></button>
           <input id="search" type="text" style="font-size: 16px; min-height: 50px" placeholder="Search breaches"></input>
           <button><svg xmlns="http://www.w3.org/2000/svg" class="x-close" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" d="M9.061 8l3.47-3.47a.75.75 0 0 0-1.061-1.06L8 6.939 4.53 3.47a.75.75 0 1 0-1.06 1.06L6.939 8 3.47 11.47a.75.75 0 1 0 1.06 1.06L8 9.061l3.47 3.47a.75.75 0 0 0 1.06-1.061z"></path></svg></button>
@@ -73,5 +73,4 @@ export const allBreachesPartial = data => `
     </div>
   </section>
 </main>
-${JSON.stringify(data.breaches)}
 `

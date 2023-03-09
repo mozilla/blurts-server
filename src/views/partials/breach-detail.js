@@ -89,5 +89,4 @@ export const breachDetailsPartial = data => `
       information gets leaked by accident.
     </div>
   </section>
-  ${JSON.stringify(data.breach)}
 `

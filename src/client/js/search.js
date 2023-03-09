@@ -2,18 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const search = document.getElementById('search')
-search.addEventListener('keyup', (event) => {
-  const breachCards = document.querySelectorAll('.breach-card')
-  if (search.value.length === 0) {
-    breachCards.forEach(card => (card.style.display = ''))
-  } else {
-    breachCards.forEach(card => {
-      if (card.text.toLowerCase().includes(search.value.toLowerCase())) {
-        card.style.display = ''
-      } else {
-        card.style.display = 'none'
-      }
-    })
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const search = document.getElementById('search')
+  search.value = ''
+
+  search.addEventListener('keyup', (event) => {
+    const breachCards = document.querySelectorAll('.breach-card')
+    if (search.value.length === 0) {
+      breachCards.forEach(card => (card.style.display = ''))
+    } else {
+      breachCards.forEach(card => {
+        if (card.text.toLowerCase().includes(search.value.toLowerCase())) {
+          card.style.display = ''
+        } else {
+          card.style.display = 'none'
+        }
+      })
+    }
+  })
 })
