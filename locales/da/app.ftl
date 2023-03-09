@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox-konto
 GitHub-link-title = GitHub
 error-scan-page-token = Du har forsøgt at skanne for mange mail-adresser inden for et kort tidsrum. Vi har af sikkerhedsgrunde blokeret din mulighed for at søge indtil videre. Du kan prøve igen senere.
 error-could-not-add-email = Kunne ikke tilføje mailadressen til databasen.
@@ -662,6 +659,12 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox-konto
+
 ## Search Engine Optimization
 
 meta-desc = Brug { -brand-fx-monitor } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
@@ -671,8 +674,32 @@ meta-desc = Brug { -brand-fx-monitor } til at finde ud af, om du er blevet ramt 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Log ind
 
+## Site navigation
+
+site-nav-breaches-link = Løste datalæk
+site-nav-settings-link = Indstillinger
+site-nav-help-link = Hjælp og support
+
+## User menu
+
+menu-button-title = Brugermenu
+menu-button-alt = Åbn brugermenuen
+menu-list-accessible-label = Åbn kontomenuen
+menu-item-fxa = Håndter din { -brand-fx-account }
+menu-item-settings = Indstillinger
+menu-item-help = Hjælp og support
+menu-item-logout = Log ud
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Siden blev ikke fundet
+error-page-error-404-copy = Vi beklager, men siden du leder efter eksisterer ikke længere.
+error-page-error-404-cta-button = Gå tilbage

@@ -13,7 +13,8 @@ emails-monitored =
         [one] { $count } af { $total } mailadresse overvåget
        *[other] { $count } af { $total } mailadresser overvåget
     }
-add-email-link = Tilføj mailadresse
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Håndter mailadresser
 
 ## Breaches resolved filter
 
@@ -25,6 +26,15 @@ filter-label-resolved = Løste datalæk
 column-company = VIRKSOMHED
 column-breached-data = KOMPROMITTEREDE DATA
 column-detected = OPDAGET
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Løst
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktiv
+breaches-none-headline = Ingen datalæk fundet
+breaches-none-cta-blurb = Vil du overvåge endnu en mailadresse?
+breaches-none-cta-button = Tilføj mailadresse
+breaches-all-resolved-headline = Alle datalæk løst
+breaches-all-resolved-cta-button = Tilføj mailadresse
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Den { $breachDate } blev { $companyName } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }. Denne datalæk omfattede: { $dataClasses }
 

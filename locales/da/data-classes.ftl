@@ -138,6 +138,7 @@ user-website-urls = Adresser til bruger-websteder
 usernames = Brugernavne
 utility-bills = El- og varme-regninger
 vehicle-details = Detaljer om køretøjer
+vehicle-identification-numbers-vins = VIN-mærkninger (Stelnumre)
 website-activity = Websteds-aktivitet
 work-habits = Arbejdsvaner
 years-of-birth = Fødselsår
