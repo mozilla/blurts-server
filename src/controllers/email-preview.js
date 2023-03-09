@@ -32,7 +32,6 @@ function getTemplatesData () {
   return {
     [EmailTemplateType.Verification]: {
       label: 'Email verification',
-      data: getVerificationDummyData(EMAIL_TEST_RECIPIENT), // TODO: Remove - only for dev testing
       template: getPreviewTemplate(
         getVerificationDummyData(EMAIL_TEST_RECIPIENT),
         verifyPartial
@@ -40,7 +39,6 @@ function getTemplatesData () {
     },
     [EmailTemplateType.Notification]: {
       label: 'Breach notification',
-      data: getNotifictionDummyData(EMAIL_TEST_RECIPIENT), // TODO: Remove - only for dev testing
       template: getPreviewTemplate(
         getNotifictionDummyData(EMAIL_TEST_RECIPIENT),
         breachAlertEmailPartial
@@ -48,7 +46,6 @@ function getTemplatesData () {
     },
     [EmailTemplateType.Monthly]: {
       label: 'Monthly unresolved breaches',
-      data: getMonthlyDummyData(EMAIL_TEST_RECIPIENT), // TODO: Remove - only for dev testing
       template: getPreviewTemplate(
         getMonthlyDummyData(EMAIL_TEST_RECIPIENT),
         monthlyUnresolvedEmailPartial
@@ -56,7 +53,6 @@ function getTemplatesData () {
     },
     [EmailTemplateType.SignupReport]: {
       label: 'Signup report',
-      data: getSignupReportDummyData(EMAIL_TEST_RECIPIENT), // TODO: Remove - only for dev testing
       template: getPreviewTemplate(
         getSignupReportDummyData(EMAIL_TEST_RECIPIENT),
         signupReportEmailPartial

@@ -13,7 +13,6 @@ import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
 import {
   EmailTemplateType,
   getEmailCtaHref,
-  getUnsubscribeUrl,
   sendEmail
 } from '../utils/email.js'
 import { getMessage } from '../utils/fluent.js'
@@ -159,10 +158,6 @@ async function notify (req, res) {
           recipientEmail: req.body.recipient ?? recipientEmail,
           subscriberId,
           supportedLocales,
-          unsubscribeUrl: getUnsubscribeUrl(
-            recipient,
-            'account-verification-email'
-          ),
           utmCampaign: utmCampaignId
         }
 

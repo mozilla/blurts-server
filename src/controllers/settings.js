@@ -16,7 +16,7 @@ import {
 import { setAllEmailsToPrimary } from '../db/tables/subscribers.js'
 
 import { getMessage } from '../utils/fluent.js'
-import { sendEmail, getVerificationUrl, getUnsubscribeUrl } from '../utils/email.js'
+import { sendEmail, getVerificationUrl } from '../utils/email.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getSha1 } from '../utils/fxa.js'
@@ -156,7 +156,6 @@ async function sendVerificationEmail (user, emailId) {
       recipientEmail,
       ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
       utmCampaign: 'email_verify',
-      unsubscribeUrl: getUnsubscribeUrl(user, 'account-verification-email'),
       heading: getMessage('email-verify-heading'),
       subheading: getMessage('email-verify-subhead'),
       partial: { name: 'verify' }

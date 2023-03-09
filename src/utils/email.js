@@ -75,26 +75,34 @@ function sendEmail (recipient, subject, html) {
   })
 }
 
-function appendUtmParams (url, campaign, content) {
-  const utmParameters = {
+function appendUtmParams (url, utmParams) {
+  const defaultUtmParams = {
     utm_source: 'fx-monitor',
-    utm_medium: 'email',
-    utm_campaign: campaign,
-    utm_content: content
+    utm_medium: 'email'
   }
-  for (const param in utmParameters) {
-    url.searchParams.append(param, utmParameters[param])
+
+  const allUtmParams = { ...defaultUtmParams, utmParams }
+
+  for (const param in allUtmParams) {
+    const paramValue = allUtmParams[param]
+
+    if (paramValue) {
+      url.searchParams.set(param, paramValue)
+    }
   }
+
   return url
 }
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
   const url = new URL(SERVER_URL)
-  if (subscriberId) {
-    url.searchParams.set('subscriber_id', subscriberId)
+  const utmParams = {
+    campaign: emailType,
+    content,
+    subscriber_id: subscriberId
   }
 
-  return appendUtmParams(url, emailType, content)
+  return appendUtmParams(url, utmParams)
 }
 
 function getVerificationUrl (subscriber) {
@@ -103,26 +111,27 @@ function getVerificationUrl (subscriber) {
   }
 
   const url = new URL(`${SERVER_URL}/api/v1/user/verify-email`)
-  url.searchParams.set(
-    'token',
-    encodeURIComponent(subscriber.verification_token)
-  )
+  const verificationUtmParams = {
+    campaign: 'account-verification-email',
+    content: 'verified-subscribers',
+    token: encodeURIComponent(subscriber.verification_token)
+  }
 
-  return appendUtmParams(
-    url,
-    'verified-subscribers',
-    'account-verification-email'
-  )
+  return appendUtmParams(url, verificationUtmParams)
 }
 
-function getUnsubscribeUrl (subscriber, emailType) {
-  const path = `${SERVER_URL}/user/unsubscribe`
+// TODO: Unsubscribing from emails is only implemented for
+// the monthly unresolved breach report
+function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
+  const path = isMonthlyEmail
+    ? `${SERVER_URL}/user/unsubscribe-monthly`
+    : `${SERVER_URL}/user/unsubscribe`
 
   if (!subscriber) {
     return path
   }
 
-  // TODO: email unsubscribe is broken for most emails
+  const url = new URL(path)
   const token = Object.hasOwn(subscriber, 'verification_token')
     ? subscriber.verification_token
     : subscriber.primary_verification_token
@@ -130,32 +139,17 @@ function getUnsubscribeUrl (subscriber, emailType) {
     ? subscriber.sha1
     : subscriber.primary_sha1
 
-  const url = new URL(path)
-  url.searchParams.set('token', encodeURIComponent(token))
-  url.searchParams.set('hash', encodeURIComponent(hash))
-
-  return appendUtmParams(url, 'unsubscribe', emailType)
-}
-
-function getMonthlyUnsubscribeUrl (subscriber, campaign, content) {
-  const path = `${SERVER_URL}/user/unsubscribe-monthly`
-  if (!subscriber) {
-    return path
+  // Mandatory params for unsubscribing a user
+  const unsubscribeUtmParams = {
+    campaign: isMonthlyEmail
+      ? 'monthly-unresolved'
+      : 'unsubscribe',
+    content: 'unsubscribe-cta',
+    hash: encodeURIComponent(hash),
+    token: encodeURIComponent(token)
   }
 
-  // TODO: create new subscriptions section in settings to manage
-  // all emails and avoid one-off routes like this
-  if (subscriber && !subscriber.primary_verification_token) {
-    throw new Error('subscriber has no primary verification_token')
-  }
-
-  const url = new URL(path)
-  url.searchParams.set(
-    'token',
-    encodeURIComponent(subscriber.primary_verification_token)
-  )
-
-  return appendUtmParams(url, campaign, content)
+  return appendUtmParams(url, unsubscribeUtmParams)
 }
 
 function postUnsubscribe (req, res) {
@@ -205,7 +199,6 @@ const getNotifictionDummyData = (recipient) => ({
   recipientEmail: recipient,
   subscriberId: 123,
   supportedLocales: ['en'],
-  unsubscribeUrl: getUnsubscribeUrl(null, 'email-notification-test'),
   utmCampaign: ''
 })
 
@@ -220,7 +213,6 @@ const getVerificationDummyData = (recipient) => ({
   heading: getMessage('email-verify-heading'),
   recipientEmail: recipient,
   subheading: getMessage('email-verify-subhead'),
-  unsubscribeUrl: getUnsubscribeUrl(null, 'email-verification-test'),
   utmCampaign: 'email_verify'
 })
 
@@ -244,11 +236,10 @@ const getMonthlyDummyData = (recipient) => ({
   },
   recipientEmail: recipient,
   subheading: getMessage('email-unresolved-subhead'),
-  unsubscribeUrl: getMonthlyUnsubscribeUrl(
-    null,
-    'email-monthly-test',
-    ''
-  ),
+  unsubscribeUrl: getUnsubscribeCtaHref({
+    subscriber: null,
+    isMonthlyEmail: true
+  }),
   utmCampaign: ''
 })
 
@@ -291,7 +282,6 @@ const getSignupReportDummyData = (recipient) => {
     recipientEmail: recipient,
     subscriberId: 123,
     unsafeBreachesForEmail,
-    unsubscribeUrl: getUnsubscribeUrl(null, 'email-signup-test'),
     utmCampaign: ''
   }
 }
@@ -300,10 +290,9 @@ export {
   EmailTemplateType,
   getEmailCtaHref,
   getMonthlyDummyData,
-  getMonthlyUnsubscribeUrl,
   getNotifictionDummyData,
   getSignupReportDummyData,
-  getUnsubscribeUrl,
+  getUnsubscribeCtaHref,
   getVerificationDummyData,
   getVerificationUrl,
   initEmail,

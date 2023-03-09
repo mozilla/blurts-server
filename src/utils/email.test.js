@@ -222,55 +222,57 @@ test('EmailUtils.getVerificationUrl throws when subscriber has no token', async 
   }
 })
 
-test('EmailUtils.getUnsubscribeUrl works with subscriber record', async t => {
+test('EmailUtils.getUnsubscribeCtaHref works with subscriber record', async t => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
-  const { getUnsubscribeUrl } = await import('./email.js')
-  const unsubUrl = getUnsubscribeUrl(subscriberRecord)
+  const { getUnsubscribeCtaHref } = await import('./email.js')
+  const unsubUrl = getUnsubscribeCtaHref(subscriberRecord)
 
   t.is(unsubUrl.searchParams.get('hash'), subscriberRecord.primary_sha1)
   t.is(unsubUrl.searchParams.get('token'), subscriberRecord.primary_verification_token)
 })
 
-test('EmailUtils.getUnsubscribeUrl works with email_address record', async t => {
+test('EmailUtils.getUnsubscribeCtaHref works with email_address record', async t => {
   const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account
 
-  const { getUnsubscribeUrl } = await import('./email.js')
-  const unsubUrl = getUnsubscribeUrl(emailAddressRecord)
+  const { getUnsubscribeCtaHref } = await import('./email.js')
+  const unsubUrl = getUnsubscribeCtaHref(emailAddressRecord)
 
   t.is(unsubUrl.searchParams.get('hash'), emailAddressRecord.sha1)
   t.is(unsubUrl.searchParams.get('token'), emailAddressRecord.verification_token)
 })
 
-test('EmailUtils.getMonthlyUnsubscribeUrl returns unsubscribe URL', async t => {
+test('EmailUtils.getUnsubscribeCtaHref returns unsubscribe URL for monthly emails', async t => {
   const fakeSubscriber = {
     primary_verification_token: 'PrimaryVerificationToken'
   }
 
-  const { getMonthlyUnsubscribeUrl } = await import('./email.js')
-  const unsubUrl = getMonthlyUnsubscribeUrl(
-    fakeSubscriber,
-    'campaign',
-    'content'
-  )
+  const { getUnsubscribeCtaHref } = await import('./email.js')
+  const unsubUrl = getUnsubscribeCtaHref({
+    subscriber: fakeSubscriber,
+    isMonthlyEmail: true
+  })
   t.is(unsubUrl.pathname, '/user/unsubscribe-monthly/')
   unsubUrl.searchParams.sort()
   t.deepEqual(Array.from(unsubUrl.searchParams.entries()), [
     ['token', 'PrimaryVerificationToken'],
-    ['utm_campaign', 'campaign'],
-    ['utm_content', 'content'],
+    ['utm_campaign', 'monthly-unresolved'],
+    ['utm_content', 'unsubscribe-cta'],
     ['utm_medium', 'email'],
     ['utm_source', 'fx-monitor']
   ])
 })
 
-test('EmailUtils.getMonthlyUnsubscribeUrl throws when subscriber has no token', async t => {
+test('EmailUtils.getUnsubscribeCtaHref throws when subscriber has no token for monthly emails', async t => {
   const fakeSubscriber = { primary_verification_token: null }
   const expected = 'subscriber has no primary verification_token'
-  const { getMonthlyUnsubscribeUrl } = await import('./email.js')
+  const { getUnsubscribeCtaHref } = await import('./email.js')
 
   try {
-    getMonthlyUnsubscribeUrl(fakeSubscriber, 'campaign', 'content')
+    getUnsubscribeCtaHref({
+      subscriber: fakeSubscriber,
+      isMonthlyEmail: true
+    })
   } catch (ex) {
     t.is(ex.message, expected)
   }
