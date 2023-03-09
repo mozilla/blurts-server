@@ -4,7 +4,7 @@
 
 import AppConstants from '../app-constants.js'
 import { camelize } from '../utils/string-helpers.js'
-import { dialogLayout } from '../views/dialog.js'
+import { dialogLayout } from '../views/dialogLayout.js'
 import { generateToken } from '../utils/csrf.js'
 
 async function dialog (req, res) {

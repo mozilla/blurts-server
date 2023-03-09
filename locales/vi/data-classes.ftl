@@ -87,7 +87,11 @@ names = Tên
 nationalities = Quốc tịch
 net-worths = Giá trị ròng
 nicknames = Biệt danh
+# no data classes found
+none-data-class = Không có
 occupations = Nghề nghiệp
+# various data classes grouped together
+other-data-class = Khác
 parenting-plans = Kế hoạch nuôi dạy con
 partial-credit-card-data = Dữ liệu một phần thẻ tín dụng
 partial-dates-of-birth = Một phần ngày sinh

@@ -660,3 +660,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Página no encontrada
 error-page-error-404-copy = Lo sentimos, la página que buscas ya no existe.
 error-page-error-404-cta-button = Regresar
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Algo salió mal
+error-page-error-other-copy = Por favor intenta de nuevo o vuelve más tarde

@@ -95,7 +95,8 @@ function appendUtmParams (url, utmParams) {
 }
 
 function getEmailCtaHref (emailType, content, subscriberId = null) {
-  const url = new URL(SERVER_URL)
+  const dashboardUrl = `${SERVER_URL}/user/breaches`
+  const url = new URL(dashboardUrl)
   const utmParams = {
     campaign: emailType,
     content,
@@ -194,7 +195,7 @@ const getNotifictionDummyData = (recipient) => ({
     IsMalware: false
   },
   breachedEmail: recipient,
-  ctaHref: SERVER_URL,
+  ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
   heading: getMessage('email-spotted-new-breach'),
   recipientEmail: recipient,
   subscriberId: 123,
@@ -274,7 +275,7 @@ const getSignupReportDummyData = (recipient) => {
 
   return {
     breachedEmail: recipient,
-    ctaHref: SERVER_URL,
+    ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
     heading: unsafeBreachesForEmail.length
       ? getMessage('email-subject-found-breaches')
       : getMessage('email-subject-no-breaches'),

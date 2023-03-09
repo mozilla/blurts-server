@@ -689,3 +689,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Không tìm thấy trang
 error-page-error-404-copy = Chúng tôi xin lỗi, trang bạn đang tìm kiếm không còn tồn tại.
 error-page-error-404-cta-button = Quay lại
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Có gì đó không ổn
+error-page-error-other-copy = Vui lòng thử lại hoặc quay lại sau

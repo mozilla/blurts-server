@@ -70,6 +70,7 @@ async function kAnonReq (path, options = {}) {
 /**
  * Sanitize data classes
  * ie. "Email Addresses" -> "email-addresses"
+ *
  * @param {Array} dataClasses
  * @returns Array sanitized data classes array
  */
@@ -85,6 +86,7 @@ function formatDataClassesArray (dataClasses) {
 /**
  * Get all breaches from the database table "breaches",
  * sanitize it, and return a javascript array
+ *
  * @returns formatted all breaches array
  */
 async function getAllBreachesFromDb () {
@@ -149,6 +151,7 @@ async function loadBreachesIntoApp (app) {
 
 /**
  * Get addresses and language from either subscribers or email_addresses fields:
+ *
  * @param {*} recipient
  * @returns
  */
@@ -197,8 +200,8 @@ GET /breachedaccount/range/[hash prefix]
 
  * @param {string} sha1 first 6 chars of email sha1
  * @param {Array} allBreaches
- * @param {Boolean} includeSensitive
- * @param {Boolean} filterBreaches
+ * @param {boolean} includeSensitive
+ * @param {boolean} filterBreaches
  * @returns
  */
 async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
@@ -259,6 +262,7 @@ function getBreachByName (allBreaches, breachName) {
  * There are two possible response codes that can be returned:
  * 1. HTTP 201: New range subscription has been created
  * 2. HTTP 200: Range subscription already exists
+ *
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 or 201 response codes
  */

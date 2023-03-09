@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = 外泄的数据
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = { $email-select } 的数据外泄
 # $count is the number of emails a user has added out of $total allowed

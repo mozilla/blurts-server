@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { mainLayout } from '../views/main.js'
+import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
 import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
@@ -15,11 +15,16 @@ async function breachesPage (req, res) {
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0
   const emailTotalCount = emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0)
   appendBreachResolutionChecklist(breachesData)
+  const cookies = req.cookies
+  const selectedEmailIndex = typeof cookies['monitor.selected-email-index'] !== 'undefined'
+    ? Number.parseInt(cookies['monitor.selected-email-index'], 10)
+    : 0
 
   const data = {
     breachesData,
     emailVerifiedCount,
     emailTotalCount,
+    selectedEmailIndex,
     partial: breaches,
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,
@@ -35,6 +40,7 @@ async function breachesPage (req, res) {
  *
  * status: enum (resolved, unresolved)
  * email: string
+ *
  * @param {object} req
  * @param {object} res
  */
@@ -47,12 +53,12 @@ async function getBreaches (req, res) {
 
 /**
  * Modify breach resolution for a user
+ *
  * @param {object} req containing {user, body: {affectedEmail, breachId, resolutionsChecked}}
  *
  * breachId: id of the breach in the `breaches` table
  *
  * resolutionsChecked: has the following structure [DataTypes]
- *
  * @param {object} res JSON object containing the updated breach resolution
  */
 async function putBreachResolution (req, res) {
@@ -132,6 +138,7 @@ async function putBreachResolution (req, res) {
  * TODO: DEPRECATE
  * This utiliy function is maintained to keep backwards compatibility with V1.
  * After v2 is launched, we will deprecate this function
+ *
  * @param {object} verifiedEmails [{breaches: [isResolved: true/false, dataClasses: []]}]
  * @returns {object} breachStats
  * {

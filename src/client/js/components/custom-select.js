@@ -65,13 +65,21 @@ customElements.define('custom-select', class extends HTMLElement {
 
     // move <option> elements into <select> (<slot> not permitted as <select> child)
     this.select.append(...this.options)
-    this.select.addEventListener('change', this)
     this.setAttribute('value', this.select.value)
-    this.matchOptionWidth()
+    this.setAttribute('selected-index', this.select.selectedIndex)
   }
 
   get value () {
     return this.getAttribute('value')
+  }
+
+  get selectedIndex () {
+    return this.getAttribute('selected-index')
+  }
+
+  connectedCallback () {
+    this.matchOptionWidth()
+    this.select.addEventListener('change', this)
   }
 
   handleEvent (e) {
@@ -79,6 +87,7 @@ customElements.define('custom-select', class extends HTMLElement {
       case 'change':
         this.matchOptionWidth()
         this.setAttribute('value', e.target.value)
+        this.setAttribute('selected-index', e.target.selectedIndex)
         this.dispatchEvent(new Event('change'))
         break
     }
@@ -92,8 +101,12 @@ customElements.define('custom-select', class extends HTMLElement {
     temp.className = 'hidden'
     temp.append(selectedOption.cloneNode(true))
     this.shadowRoot.append(temp)
-    temp.w = Math.ceil(temp.getBoundingClientRect().width)
+    temp.w = Math.ceil(temp.getBoundingClientRect().width) + 5 // adds 5px safety for font load delay or other quirks
     this.style.setProperty('--option-w', `${temp.w}px`)
     temp.remove()
+  }
+
+  disconnectedCallback () {
+    this.select.removeEventListener('change', this)
   }
 })
