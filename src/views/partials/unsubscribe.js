@@ -7,13 +7,13 @@ import { getMessage } from '../../utils/fluent.js'
 export const unsubscribe = data => `
   <section class="unsubscribe">
     <h1>${getMessage('unsub-headline')}</h1>
-    <pre>${JSON.stringify(data, null, 2)}</pre>
     <p>
       ${getMessage('unsub-blurb')}
     </p>
     <button
       class='primary js-unsubscribe-button'
       data-csrf-token='${data.csrfToken}'
+      data-query-params='${JSON.stringify(data.queryParams)}'
     >
       ${getMessage('unsub-button')}
     </button>

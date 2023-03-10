@@ -5,8 +5,15 @@
 const unsubscribeButton = document.querySelector('.js-unsubscribe-button')
 
 unsubscribeButton.addEventListener('click', async event => {
+  // TODO: Localize error message
+  const errorMessage = 'Unsubscribing failed.'
+  const successMessage = 'Unsubscribed successfully.'
+
   try {
-    const csrfToken = event.target.getAttribute('data-csrf-token')
+    const target = event.target
+    const csrfToken = target.getAttribute('data-csrf-token')
+    const queryParams = target.getAttribute('data-query-params')
+
     const response = await fetch('/user/unsubscribe', {
       headers: {
         'Content-Type': 'application/json',
@@ -14,19 +21,25 @@ unsubscribeButton.addEventListener('click', async event => {
       },
       mode: 'same-origin',
       method: 'POST',
-      body: JSON.stringify({ test: 'test' })
+      body: queryParams
     })
-
-    if (!response.ok) {
-      const toast = document.createElement('toast-alert')
-      toast.textContent = `Unsubscribing failed: ${response.statusText}`
-      document.body.append(toast)
-    }
 
     if (response?.redirected) {
       throw response.error
     }
-  } catch (err) {
-    throw new Error(`Unsubscribing failed: ${err}`)
+
+    let toast
+    if (!response.ok) {
+      toast = document.createElement('toast-alert')
+      toast.textContent = errorMessage
+    } else {
+      toast = document.createElement('toast-alert')
+      toast.setAttribute('type', 'success')
+      toast.textContent = successMessage
+    }
+
+    document.body.append(toast)
+  } catch (error) {
+    throw new Error(errorMessage)
   }
 })

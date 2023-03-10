@@ -35,11 +35,6 @@ router.get('/logout', asyncMiddleware(logout))
 
 // unsubscribe from emails
 router.get('/unsubscribe', urlEncodedParser, asyncMiddleware(unsubscribePage))
-router.get(
-  '/unsubscribe-monthly',
-  urlEncodedParser,
-  asyncMiddleware(unsubscribePage)
-)
 router.post('/unsubscribe', asyncMiddleware(postUnsubscribe))
 
 export default router

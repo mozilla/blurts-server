@@ -19,13 +19,14 @@
  * const toast = document.createElement('toast-alert')
  * toast.textContent = 'Another alert message here'
  * toast.ttl = 10 // seconds before fade-out (defaults to 7)
+ * toast.type = 'error' // 'error' (default) or 'success'
  * document.body.append(toast)
  * ```
  *
  * SSR/HTML examples:
  * ```
  * <toast-alert>Alert message here</toast-alert>
- * <toast-alert ttl='10'>Another alert message here</toast-alert>
+ * <toast-alert ttl='10' type='error'>Another alert message here</toast-alert>
  * ```
  */
 
@@ -61,9 +62,16 @@ const html = `
     padding: var(--padding-sm) var(--padding-xl);
     border-radius: var(--border-radius);
     box-shadow: 0 0 6px -3px black;
-    background-color: var(--red-70);
     animation: fly-in 0.3s forwards;
     pointer-events: auto;
+  }
+
+  :host([type="error"]) output {
+    background-color: var(--red-70);
+  }
+
+  :host([type="success"]) output {
+    background-color: var(--green-80);
   }
 
   button{
@@ -109,6 +117,11 @@ const html = `
 </output>
 `
 
+const ToastTypes = {
+  Error: 'error',
+  Success: 'success'
+}
+
 customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
@@ -125,6 +138,19 @@ customElements.define('toast-alert', class extends HTMLElement {
     this.style.setProperty('--ttl', `${value}s`) // seconds before fade-out starts
   }
 
+  get type () {
+    return this.getAttribute('type')
+  }
+
+  set type (value) {
+    const isValidType = Object.values(ToastTypes).includes(value)
+    if (!isValidType) {
+      console.warning(`Unknown toast type ${value}.`)
+    }
+
+    this.setAttribute('type', value)
+  }
+
   connectedCallback () {
     const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
 
@@ -137,6 +163,13 @@ customElements.define('toast-alert', class extends HTMLElement {
     if (this.hasAttribute('ttl')) {
       this.ttl = this.getAttribute('ttl')
     }
+
+    if (this.hasAttribute('type')) {
+      this.type = this.getAttribute('type')
+    } else {
+      this.type = ToastTypes.Error
+    }
+
     this.shadowRoot.addEventListener('click', this)
     this.addEventListener('animationend', this)
   }

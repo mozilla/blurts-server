@@ -7,7 +7,9 @@ import { URL } from 'url'
 
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
+import { UnauthorizedError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
+import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
 
 const log = mozlog('email-utils')
 
@@ -121,13 +123,10 @@ function getVerificationUrl (subscriber) {
   return appendUtmParams(url, verificationUtmParams)
 }
 
-// TODO: Unsubscribing from emails is only implemented for
-// the monthly unresolved breach report
+// TODO: Unsubscribing from emails is currently only implemented for
+// the monthly unresolved breach report.
 function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
-  const path = isMonthlyEmail
-    ? `${SERVER_URL}/user/unsubscribe-monthly`
-    : `${SERVER_URL}/user/unsubscribe`
-
+  const path = `${SERVER_URL}/user/unsubscribe`
   if (!subscriber) {
     return path
   }
@@ -157,13 +156,59 @@ function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
   return appendUtmParams(url, unsubscribeUtmParams)
 }
 
-function postUnsubscribe (req, res) {
-  console.log('postUnsubscribe')
+/**
+ * Check if params contain all mandatory params.
+ *
+ * @param {object} params Params that we like to have checked
+ * @param {string} mandatoryParams A comma separated list of mandatory params
+ * @returns {boolean} True if all mandatory params are present in params
+ */
+function hasMandatoryParams (params, mandatoryParams) {
+  return mandatoryParams.split(',').every(paramKey => {
+    const paramKeyParsed = paramKey.trim()
+    return (
+      Object.hasOwn(params, paramKeyParsed) &&
+      params[paramKeyParsed] !== ''
+    )
+  })
+}
+
+async function postUnsubscribe (req, res) {
+  const data = req.body
+  const { token, utm_campaign: utmCampaign } = data
+
+  try {
+    switch (utmCampaign) {
+      case 'monthly-unresolved':
+        // Check if the token a token is provided.
+        if (!hasMandatoryParams(data, 'token')) {
+          throw new UnauthorizedError('user-unsubscribe-token-error')
+        }
+
+        await updateMonthlyEmailOptout(token)
+
+        break
+      case 'unsubscribe':
+        // Check if token and email hash are provided.
+        if (!hasMandatoryParams(data, 'token, hash')) {
+          throw new UnauthorizedError('user-unsubscribe-token-email-error')
+        }
+
+        break
+      default:
+        // TODO: Localize error message?
+        throw new Error('No campaign to unsubscribe from specified.')
+    }
+  } catch (error) {
+    // TODO: Localize error message?
+    throw new Error('An error occurred while unsubscribing.')
+  }
 
   return res.json({
     success: true,
     status: 200,
-    message: 'Unsubscribed'
+    // TODO: Localize success message?
+    message: 'Unsubscribed sucessfully'
   })
 }
 
