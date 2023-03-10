@@ -15,7 +15,11 @@ import { settingsPage } from '../controllers/settings.js'
 const router = Router()
 
 // dashboard page
-router.get('/dashboard', requireSessionUser, dashboardPage)
+// MNTOR-1327: for v2 release, we want to temp redirect users from dashboard
+// to breach details page for backwards compatibility reasons. Old emails still
+// have a reference to the dashboard URI.
+// TODO: remove after we have a dashboard
+router.get('/dashboard', (req, res) => res.redirect('/user/breaches'))
 
 // data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
