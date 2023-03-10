@@ -87,7 +87,7 @@ function appendUtmParams (url, utmParams) {
     const paramValue = allUtmParams[param]
 
     if (typeof paramValue !== 'undefined' && paramValue) {
-      url.searchParams.set(param, paramValue)
+      url.searchParams.set(param, encodeURIComponent(paramValue))
     }
   }
 
@@ -113,7 +113,7 @@ function getVerificationUrl (subscriber) {
 
   const url = new URL(`${SERVER_URL}/api/v1/user/verify-email`)
   const verificationUtmParams = {
-    token: encodeURIComponent(subscriber.verification_token),
+    token: subscriber.verification_token,
     utm_campaign: 'verified-subscribers',
     utm_content: 'account-verification-email'
   }
@@ -132,6 +132,10 @@ function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
     return path
   }
 
+  if (isMonthlyEmail && !subscriber.primary_verification_token) {
+    throw new Error('subscriber has no primary verification_token')
+  }
+
   const url = new URL(path)
   const token = Object.hasOwn(subscriber, 'verification_token')
     ? subscriber.verification_token
@@ -142,8 +146,8 @@ function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
 
   // Mandatory params for unsubscribing a user
   const unsubscribeUtmParams = {
-    hash: encodeURIComponent(hash),
-    token: encodeURIComponent(token),
+    hash,
+    token,
     utm_campaign: isMonthlyEmail
       ? 'monthly-unresolved'
       : 'unsubscribe',
@@ -199,8 +203,7 @@ const getNotifictionDummyData = (recipient) => ({
   heading: getMessage('email-spotted-new-breach'),
   recipientEmail: recipient,
   subscriberId: 123,
-  supportedLocales: ['en'],
-  utm_utmCampaign: ''
+  supportedLocales: ['en']
 })
 
 /**
@@ -213,8 +216,7 @@ const getVerificationDummyData = (recipient) => ({
   ctaHref: SERVER_URL,
   heading: getMessage('email-verify-heading'),
   recipientEmail: recipient,
-  subheading: getMessage('email-verify-subhead'),
-  utm_utmCampaign: 'email_verify'
+  subheading: getMessage('email-verify-subhead')
 })
 
 /**
@@ -240,8 +242,7 @@ const getMonthlyDummyData = (recipient) => ({
   unsubscribeUrl: getUnsubscribeCtaHref({
     subscriber: null,
     isMonthlyEmail: true
-  }),
-  utm_utmCampaign: ''
+  })
 })
 
 /**
@@ -282,8 +283,7 @@ const getSignupReportDummyData = (recipient) => {
     emailBreachStats,
     recipientEmail: recipient,
     subscriberId: 123,
-    unsafeBreachesForEmail,
-    utm_utmCampaign: ''
+    unsafeBreachesForEmail
   }
 }
 

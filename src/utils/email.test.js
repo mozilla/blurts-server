@@ -226,7 +226,9 @@ test('EmailUtils.getUnsubscribeCtaHref works with subscriber record', async t =>
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
   const { getUnsubscribeCtaHref } = await import('./email.js')
-  const unsubUrl = getUnsubscribeCtaHref(subscriberRecord)
+  const unsubUrl = getUnsubscribeCtaHref({
+    subscriber: subscriberRecord
+  })
 
   t.is(unsubUrl.searchParams.get('hash'), subscriberRecord.primary_sha1)
   t.is(unsubUrl.searchParams.get('token'), subscriberRecord.primary_verification_token)
@@ -236,7 +238,9 @@ test('EmailUtils.getUnsubscribeCtaHref works with email_address record', async t
   const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account
 
   const { getUnsubscribeCtaHref } = await import('./email.js')
-  const unsubUrl = getUnsubscribeCtaHref(emailAddressRecord)
+  const unsubUrl = getUnsubscribeCtaHref({
+    subscriber: emailAddressRecord
+  })
 
   t.is(unsubUrl.searchParams.get('hash'), emailAddressRecord.sha1)
   t.is(unsubUrl.searchParams.get('token'), emailAddressRecord.verification_token)
