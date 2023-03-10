@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Lækket data
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Datalæk for { $email-select }
 # $count is the number of emails a user has added out of $total allowed
@@ -31,9 +33,16 @@ column-status-badge-resolved = Løst
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiv
 breaches-none-headline = Ingen datalæk fundet
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Gode nyheder! { $email } har ikke været ramt af nogen kendte datalæk. Vi fortsætter med at overvåge mailadressen og giver dig besked, hvis der opstår nye datalæk.
 breaches-none-cta-blurb = Vil du overvåge endnu en mailadresse?
 breaches-none-cta-button = Tilføj mailadresse
 breaches-all-resolved-headline = Alle datalæk løst
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Godt gået! Du har løst alle datalæk for { $email }. Vi fortsætter med at overvåge mailadressen og giver dig besked, hvis der opstår nye datalæk.
+breaches-all-resolved-cta-blurb = Vil du overvåge en mailadresse til?
 breaches-all-resolved-cta-button = Tilføj mailadresse
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Den { $breachDate } blev { $companyName } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }. Denne datalæk omfattede: { $dataClasses }
