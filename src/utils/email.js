@@ -77,13 +77,13 @@ function sendEmail (recipient, subject, html) {
   })
 }
 
-function appendUtmParams (url, utmParams) {
+function appendUrlParams (url, urlParams) {
   const defaultUtmParams = {
     utm_source: 'fx-monitor',
     utm_medium: 'email'
   }
 
-  const allUtmParams = { ...defaultUtmParams, ...utmParams }
+  const allUtmParams = { ...defaultUtmParams, ...urlParams }
 
   for (const param in allUtmParams) {
     const paramValue = allUtmParams[param]
@@ -105,7 +105,7 @@ function getEmailCtaHref (emailType, content, subscriberId = null) {
     utm_content: content
   }
 
-  return appendUtmParams(url, utmParams)
+  return appendUrlParams(url, utmParams)
 }
 
 function getVerificationUrl (subscriber) {
@@ -120,13 +120,16 @@ function getVerificationUrl (subscriber) {
     utm_content: 'account-verification-email'
   }
 
-  return appendUtmParams(url, verificationUtmParams)
+  return appendUrlParams(url, verificationUtmParams)
 }
 
 // TODO: Unsubscribing from emails is currently only implemented for
 // the monthly unresolved breach report.
 function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
-  const path = `${SERVER_URL}/user/unsubscribe`
+  const path = isMonthlyEmail
+    ? `${SERVER_URL}/user/unsubscribe-monthly`
+    : `${SERVER_URL}/user/unsubscribe`
+
   if (!subscriber) {
     return path
   }
@@ -153,7 +156,7 @@ function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
     utm_content: 'unsubscribe-cta'
   }
 
-  return appendUtmParams(url, unsubscribeUtmParams)
+  return appendUrlParams(url, unsubscribeUtmParams)
 }
 
 /**
@@ -173,47 +176,25 @@ function hasMandatoryParams (params, mandatoryParams) {
   })
 }
 
-async function postUnsubscribe (req, res) {
+async function postUnsubscribeMonthly (req, res) {
   const data = req.body
-  const { token, utm_campaign: utmCampaign } = data
+  const { token } = data
 
-  try {
-    switch (utmCampaign) {
-      case 'monthly-unresolved':
-        // Check if the token a token is provided.
-        if (!hasMandatoryParams(data, 'token')) {
-          throw new UnauthorizedError('user-unsubscribe-token-error')
-        }
-
-        await updateMonthlyEmailOptout(token)
-
-        break
-      case 'unsubscribe':
-        // Check if token and email hash are provided.
-        if (!hasMandatoryParams(data, 'token, hash')) {
-          throw new UnauthorizedError('user-unsubscribe-token-email-error')
-        }
-
-        break
-      default:
-        // TODO: Localize error message?
-        throw new Error('No campaign to unsubscribe from specified.')
-    }
-  } catch (error) {
-    // TODO: Localize error message?
-    throw new Error('An error occurred while unsubscribing.')
+  if (!hasMandatoryParams(data, 'token')) {
+    throw new UnauthorizedError('user-unsubscribe-token-error')
   }
+
+  // Unsubscribe user from the monthly unresolved breach emails
+  await updateMonthlyEmailOptout(token)
 
   return res.json({
     success: true,
-    status: 200,
-    // TODO: Localize success message?
-    message: 'Unsubscribed sucessfully'
+    status: 200
   })
 }
 
 /**
- * Dummy data for populating the breach notification email preview
+ * Dummy data for populating the breach notification email preview.
  *
  * @param {string} recipient
  * @returns {object} Breach dummy data
@@ -342,6 +323,6 @@ export {
   getVerificationDummyData,
   getVerificationUrl,
   initEmail,
-  postUnsubscribe,
+  postUnsubscribeMonthly,
   sendEmail
 }
