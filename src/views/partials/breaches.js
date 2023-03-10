@@ -52,7 +52,7 @@ function createBreachRows (data, logos) {
         </summary>
         <article>
           <p>${description}</p>
-          <p><strong>Resolve this breach:</strong></p>
+          <p><strong>${getMessage('breaches-resolve-heading')}</strong></p>
           <ol class='resolve-list'>${createResolveSteps(breach)}</ol>
         </article>
       </details>
