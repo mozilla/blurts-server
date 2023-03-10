@@ -568,7 +568,7 @@ promo-lockwise-headline = Nim jo wachtwurden oeral mei hinne
 lockwise-promo-body = Hâld jo oanmeldingen by op alle apparaten. Benaderje se feilich fan jo kompjûter, telefoan of tablet ôf.
 promo-lockwise-cta = Download { -brand-lockwise }
 fpn-promo-headline = Maskearje jo lokaasje foar websites en trackers
-promo-fpn-body = { -brand-fpn } smyt de websites en gegevenssammelers dy’t jo mei advertinsjes profilearje fuort, troch jo echte IP-adres te maskearjen.
+promo-fpn-body = { -brand-fpn } smyt de websites en gegevenssammelers dy’t jo mei advertinsjes profilearje fuort, troch jo wiere IP-adres te maskearjen.
 promo-fpn-cta = Download { -brand-fpn }
 monitor-promo-headline = Kom mear te witten oer nije datalekken
 monitor-promo-body = Untfang de folgjende kear in melding wannear’t jo persoanlike gegevens foarkomme yn in bekend datalek.
@@ -624,7 +624,7 @@ ad-unit-3-access-more = Tagong ta mear
 # ad 4 heading
 ad-unit-4-shopping-with = Winkelje mei e-mailmaskers
 ad-unit-4-want-to-buy = Wolle jo wat online keapje en kenne jo de winkel net of fertrouwe jo dizze net folslein?
-ad-unit-4-shop-online = Brûk in e-mailmasker as jo online winkelje. Untfang de befêstiging nei jo echte e-mailadres en skeakelje dan it masker letter maklik út.
+ad-unit-4-shop-online = Brûk in e-mailmasker as jo online winkelje. Untfang de befêstiging nei jo wiere e-mailadres en skeakelje dan it masker letter maklik út.
 # ad 5 heading
 ad-unit-5-on-the-go = Underweis mei { -brand-relay }
 ad-unit-5-instantly-make = Meitsje direkt en oeral in oanpast e-mailmasker!
@@ -633,14 +633,14 @@ ad-unit-5-connect-on-the-go = Underweis ferbining meitsje
 ad-unit-5-privately-sign-in = Brûk jo e-mailmasker wannear’t jo jo privee oanmelde wolle by jo favorite hoarekagelegenheid of iepenbiere wifi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Untfang ûntfangstbewizen per e-mail
-ad-unit-5-share-custom-email = Diel in oanpast e-mailmasker foar kassabonnen yn de winkel sûnder jo echte e-mailadres te dielen
+ad-unit-5-share-custom-email = Diel in oanpast e-mailmasker foar kassabonnen yn de winkel sûnder jo wiere e-mailadres te dielen
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Brûke op jo telefoan
 ad-unit-5-no-matter-where = Wêr’t jo ek binne, meitsje binnen inkelde sekonden in oanpast e-mailmasker foar alles wat jo dwaan wolle
 # ad 6 heading
 ad-unit-6-worry-free = Soargeleas oanmelde
 ad-unit-6-want-to-start = Wolle jo in nij abonnemint starte, reagearje op in útnûging of in promokoade mei foardiel krije sûnder dat spam jo Postfek YN oerrint?
-ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje foltôgje, in e-mailmasker yn stee fan jo echte adres om jo gegevens te beskermjen en kontrôle te hâlden oer jo Postfek YN
+ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje foltôgje, in e-mailmasker yn stee fan jo wiere adres om jo gegevens te beskermjen en kontrôle te hâlden oer jo Postfek YN
 
 # Monitor V2
 

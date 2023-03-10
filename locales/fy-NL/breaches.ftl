@@ -56,7 +56,7 @@ breach-checklist-pw-body = Soargje derfoar dat jo wachtwurd unyk en dreech te ri
 ## Prompts the user for changes when there is a breach detected of email
 
 breach-checklist-email-header = Beskermje jo e-mail mei in tsjinst foar it maskearjen fan e-mail, lykas <a>{ -brand-relay }</a>.
-breach-checklist-email-body = Dit kin jo echte e-mailadres ferbergje, wylst e-mailberjochten nei jo echte Postfek YN trochstjoerd wurde.
+breach-checklist-email-body = Dit kin jo echte e-mailadres ferbergje, wylst e-mailberjochten nei jo wiere Postfek YN trochstjoerd wurde.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -86,7 +86,7 @@ breach-checklist-pin-body = Soargje derfoar dat jo nije pinkoade, of in oare pin
 ## Prompts the user for changes when there is a breach detected of IP address
 
 breach-checklist-ip-header = Brûk it ynternet privee mei in VPN, lykas <a>{ -brand-mozilla-vpn }</a>.
-breach-checklist-ip-body = Jo IP-adres (Internet Protocol-adres) jout jo lokaasje en ynternetprovider oan. In VPN kin jo echte IP-adres ferstopje, sadat jo privee ynternet brûke kinne.
+breach-checklist-ip-body = Jo IP-adres (Internet Protocol-adres) jout jo lokaasje en ynternetprovider oan. In VPN kin jo wiere IP-adres ferstopje, sadat jo privee ynternet brûke kinne.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
