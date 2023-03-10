@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-page-title = Ρυθμίσεις { -product-short-name }
 
 ## Breach alert preferences
 
@@ -14,6 +15,8 @@
 # Variables:
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (κύριο)
+settings-email-verification-callout = Απαιτείται επαλήθευση email
+settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
 
 ## Deactivate account
@@ -22,5 +25,6 @@ settings-deactivate-account-title = Απενεργοποίηση λογαρια�
 
 ## Add email dialog
 
+settings-email-dialog-title = Προσθήκη άλλης διεύθυνσης email
 settings-email-input-label = Διεύθυνση email
 settings-send-email-verification-button = Αποστολή συνδέσμου επαλήθευσης

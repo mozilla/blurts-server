@@ -688,6 +688,7 @@ sign-in = Σύνδεση
 
 ## Site navigation
 
+site-nav-breaches-link = Επίλυση παραβιάσεων δεδομένων
 site-nav-settings-link = Ρυθμίσεις
 site-nav-help-link = Βοήθεια και υποστήριξη
 
@@ -708,4 +709,10 @@ github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode }: Η σελίδα δεν βρέθηκε
 error-page-error-404-cta-button = Επιστροφή
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode }: Κάτι πήγε στραβά

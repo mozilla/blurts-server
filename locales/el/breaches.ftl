@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Παραβιασμένα δεδομένα
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Παραβιάσεις δεδομένων για το { $email-select }
 # link to Settings page where user can add/remove emails and set message preferences
@@ -20,7 +22,11 @@ filter-label-resolved = Επιλυμένες παραβιάσεις
 column-company = ΕΤΑΙΡΕΙΑ
 column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
 column-detected = ΑΝΙΧΝΕΥΣΗ
+breaches-none-headline = Δεν βρέθηκαν παραβιάσεις
+breaches-none-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 breaches-none-cta-button = Προσθήκη διεύθυνσης email
+breaches-all-resolved-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
+breaches-all-resolved-cta-button = Προσθήκη διεύθυνσης email
 
 ## Prompts the user for changes when there is a breach detected of password
 
