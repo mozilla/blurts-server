@@ -256,7 +256,7 @@ test('EmailUtils.getUnsubscribeCtaHref returns unsubscribe URL for monthly email
     subscriber: fakeSubscriber,
     isMonthlyEmail: true
   })
-  t.is(unsubUrl.pathname, '/user/unsubscribe-monthly')
+  t.is(unsubUrl.pathname, '/user/unsubscribe')
   unsubUrl.searchParams.sort()
   t.deepEqual(Array.from(unsubUrl.searchParams.entries()), [
     ['token', 'PrimaryVerificationToken'],
