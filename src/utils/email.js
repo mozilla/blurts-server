@@ -282,7 +282,7 @@ const getMonthlyDummyData = (recipient) => ({
   },
   recipientEmail: recipient,
   subheading: getMessage('email-unresolved-subhead'),
-  unsubscribeUrl: `${SERVER_URL}/user/unsubscribe?token=token_123`
+  unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
 })
 
 /**
