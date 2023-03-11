@@ -4,12 +4,10 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
-export const unsubscribe = data => `
+const unsubscribe = data => `
   <section class="unsubscribe">
     <h1>${getMessage('unsub-headline')}</h1>
-    <p>
-      ${getMessage('unsub-blurb')}
-    </p>
+    <p>${getMessage('unsub-blurb')}</p>
     <button
       class='primary js-unsubscribe-button'
       data-csrf-token='${data.csrfToken}'
@@ -19,3 +17,15 @@ export const unsubscribe = data => `
     </button>
   </section>
 `
+
+const unsubscribeMonthly = () => `
+  <section class="unsubscribe">
+    <h1>${getMessage('unsub-headline')}</h1>
+    <p>${getMessage('changes-saved')}</p>
+  </section>
+`
+
+export {
+  unsubscribe,
+  unsubscribeMonthly
+}

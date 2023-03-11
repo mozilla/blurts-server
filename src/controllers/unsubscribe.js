@@ -2,20 +2,42 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { mainLayout } from '../views/mainLayout.js'
-import { unsubscribe } from '../views/partials/unsubscribe.js'
+import { guestLayout } from '../views/guestLayout.js'
+import {
+  unsubscribe,
+  unsubscribeMonthly
+} from '../views/partials/unsubscribe.js'
 import { generateToken } from '../utils/csrf.js'
+import { unsubscribeFromMonthlyReport } from '../utils/email.js'
 
 function unsubscribePage (req, res) {
-  const queryParams = req.query
-
   const data = {
     csrfToken: generateToken(res),
     partial: unsubscribe,
-    queryParams
+    queryParams: req.query
   }
 
-  res.send(mainLayout(data))
+  res.send(guestLayout(data))
 }
 
-export { unsubscribePage }
+async function unsubscribeMonthlyPage (req, res) {
+  try {
+    await unsubscribeFromMonthlyReport(req, res)
+  } catch (error) {
+    console.log(error)
+    return res.redirect('/')
+  }
+
+  const data = {
+    csrfToken: generateToken(res),
+    partial: unsubscribeMonthly,
+    queryParams: req.query
+  }
+
+  res.send(guestLayout(data))
+}
+
+export {
+  unsubscribePage,
+  unsubscribeMonthlyPage
+}

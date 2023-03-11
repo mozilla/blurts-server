@@ -12,8 +12,11 @@ import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
 import { dataRemovalPage } from '../controllers/data-removal.js'
 import { settingsPage } from '../controllers/settings.js'
-import { unsubscribePage } from '../controllers/unsubscribe.js'
-import { postUnsubscribeMonthly } from '../utils/email.js'
+import {
+  unsubscribePage,
+  unsubscribeMonthlyPage
+} from '../controllers/unsubscribe.js'
+import { unsubscribeFromEmails } from '../utils/email.js'
 
 const router = Router()
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
@@ -35,6 +38,12 @@ router.get('/logout', asyncMiddleware(logout))
 
 // unsubscribe from emails
 router.get('/unsubscribe', urlEncodedParser, asyncMiddleware(unsubscribePage))
-router.post('/unsubscribe-monthly', asyncMiddleware(postUnsubscribeMonthly))
+router.post('/unsubscribe', asyncMiddleware(unsubscribeFromEmails))
+
+router.get(
+  '/unsubscribe-monthly',
+  urlEncodedParser,
+  asyncMiddleware(unsubscribeMonthlyPage)
+)
 
 export default router

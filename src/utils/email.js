@@ -7,8 +7,8 @@ import { URL } from 'url'
 
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
-import { UnauthorizedError } from '../utils/error.js'
-import { getMessage } from '../utils/fluent.js'
+import { MethodNotAllowedError } from '../utils/error.js'
+import { getMessage, fluentError } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
 
 const log = mozlog('email-utils')
@@ -123,8 +123,6 @@ function getVerificationUrl (subscriber) {
   return appendUrlParams(url, verificationUtmParams)
 }
 
-// TODO: Unsubscribing from emails is currently only implemented for
-// the monthly unresolved breach report.
 function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
   const path = isMonthlyEmail
     ? `${SERVER_URL}/user/unsubscribe-monthly`
@@ -176,21 +174,40 @@ function hasMandatoryParams (params, mandatoryParams) {
   })
 }
 
-async function postUnsubscribeMonthly (req, res) {
-  const data = req.body
-  const { token } = data
+/**
+ * TODO: Unsubscribing from emails is currently only implemented for the
+ * monthly unresolved breach report.
+ *
+ * Unsubscribes a user from receiving emails other than the monthly reports.
+ *
+ * @param {object} req Request should contain a `token` and `hash` query param.
+ */
+async function unsubscribeFromEmails (req) {
+  const urlQuery = req.query
 
-  if (!hasMandatoryParams(data, 'token')) {
-    throw new UnauthorizedError('user-unsubscribe-token-error')
+  // For unsubscribing from emails we need a hash and token
+  if (!hasMandatoryParams(urlQuery, 'hash,token')) {
+    throw fluentError('user-unsubscribe-token-email-error')
+  }
+
+  throw new MethodNotAllowedError()
+}
+
+/**
+ * Unsubscribe the user from receiving the monthly unresolved breach reports.
+ *
+ * @param {object} req Request that should contain a `token` query param
+ */
+async function unsubscribeFromMonthlyReport (req) {
+  const urlQuery = req.query
+
+  // For unsubscribing from the monthly emails we need a token
+  if (!hasMandatoryParams(urlQuery, 'token')) {
+    throw fluentError('user-unsubscribe-token-error')
   }
 
   // Unsubscribe user from the monthly unresolved breach emails
-  await updateMonthlyEmailOptout(token)
-
-  return res.json({
-    success: true,
-    status: 200
-  })
+  await updateMonthlyEmailOptout(urlQuery.token)
 }
 
 /**
@@ -265,10 +282,7 @@ const getMonthlyDummyData = (recipient) => ({
   },
   recipientEmail: recipient,
   subheading: getMessage('email-unresolved-subhead'),
-  unsubscribeUrl: getUnsubscribeCtaHref({
-    subscriber: null,
-    isMonthlyEmail: true
-  })
+  unsubscribeUrl: `${SERVER_URL}/user/unsubscribe?token=token_123`
 })
 
 /**
@@ -323,6 +337,7 @@ export {
   getVerificationDummyData,
   getVerificationUrl,
   initEmail,
-  postUnsubscribeMonthly,
+  unsubscribeFromEmails,
+  unsubscribeFromMonthlyReport,
   sendEmail
 }

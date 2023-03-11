@@ -5,7 +5,8 @@
 const unsubscribeButton = document.querySelector('.js-unsubscribe-button')
 
 unsubscribeButton.addEventListener('click', async event => {
-  // TODO: Localize success/error messages
+  // TODO: Use more specific messages when we reinstate
+  // unsubscribing from all emails.
   const errorMessage = 'Unsubscribing failed.'
   const successMessage = 'Unsubscribed successfully.'
 
@@ -14,7 +15,7 @@ unsubscribeButton.addEventListener('click', async event => {
     const csrfToken = target.getAttribute('data-csrf-token')
     const queryParams = target.getAttribute('data-query-params')
 
-    const response = await fetch('/user/unsubscribe-monthly', {
+    const response = await fetch('/user/unsubscribe', {
       headers: {
         'Content-Type': 'application/json',
         'x-csrf-token': csrfToken
