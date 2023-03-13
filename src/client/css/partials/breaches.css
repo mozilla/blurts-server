@@ -259,6 +259,14 @@
   padding-left: 0;
 }
 
+.breaches-table details .resolve-list a {
+  text-decoration: underline;
+}
+
+.breaches-table details .resolve-list a:hover {
+  color: var(--gray-40);
+}
+
 .breaches-table details .resolve-list-item {
   position: relative;
   padding-right: calc(var(--padding-lg) * 2 + var(--checkbox-w));
