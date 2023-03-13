@@ -8,13 +8,14 @@ import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers
 import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
 import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
+import { getCountryCode } from '../utils/country-code.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0
   const emailTotalCount = emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0)
-  appendBreachResolutionChecklist(breachesData)
+  appendBreachResolutionChecklist(breachesData, { countryCode: getCountryCode(req) })
   const cookies = req.cookies
   const selectedEmailIndex = typeof cookies['monitor.selected-email-index'] !== 'undefined'
     ? Number.parseInt(cookies['monitor.selected-email-index'], 10)

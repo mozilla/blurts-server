@@ -29,6 +29,14 @@
             2
         ],
         "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-param-description": "off"
+        "jsdoc/require-param-description": "off",
+        // Unused vars explicitly marked as such with an understore prefix are allowed:
+        "no-unused-vars": [
+            "warn",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ]
     }
 }
