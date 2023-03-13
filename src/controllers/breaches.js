@@ -10,6 +10,9 @@ import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 import { getCountryCode } from '../utils/country-code.js'
 
+import * as monitorPings from '../generated/pings.js'
+import * as userJourney from '../generated/monitor.js'
+
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
@@ -32,6 +35,10 @@ async function breachesPage (req, res) {
     fxaProfile: req.user.fxa_profile_json,
     nonce: res.locals.nonce
   }
+
+  userJourney.pageId.set('breaches')
+  userJourney.pageVisit.set(new Date())
+  monitorPings.userJourney.submit()
 
   res.send(mainLayout(data))
 }

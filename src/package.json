@@ -25,7 +25,7 @@
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
     "fix:css": "stylelint client/css/ --fix",
-    "build:glean": "glean translate ../metrics.yaml ../pings.yaml -f javascript -o dist/js/glean",
+    "build:glean": "glean translate ../metrics.yaml ../pings.yaml -f javascript -o generated",
     "lint:glean": "glean glinter ../metrics.yaml ../pings.yaml",
     "docs:glean": "glean translate ../metrics.yaml ../pings.yaml -f markdown -o ../docs"
   },

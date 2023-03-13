@@ -38,7 +38,8 @@ const requiredEnvVars = [
   'SES_CONFIG_SET',
   'SESSION_DURATION_HOURS',
   'SMTP_URL',
-  'SUPPORTED_LOCALES'
+  'SUPPORTED_LOCALES',
+  'GLEAN_DEBUG_VIEW'
 ]
 
 const optionalEnvVars = [

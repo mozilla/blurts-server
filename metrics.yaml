@@ -5,20 +5,52 @@
 ---
 $schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
 
-sample:
-  app_started:
+monitor:
+  page_id:
+    type: string
+    description: |
+      A unique ID associated with a page.
+    lifetime: ping
+    send_in_pings:
+      - user-journey
+    bugs:
+      - https://bugzilla.mozilla.org/TODO
+    data_reviews:
+      - https://bugzilla.mozilla.org/TODO
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+
+  page_visit:
     type: datetime
     lifetime: ping
     send_in_pings:
-      - execution
+      - user-journey
     description: |
-      The time the sample app was started.
+      Sent each time users visit a page.
     bugs:
-      - https://bugzilla.mozilla.org/1691365
+      - https://bugzilla.mozilla.org/TODO
     data_reviews:
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1691365#c0
+      - https://bugzilla.mozilla.org/TODO
     data_sensitivity:
       - technical
     notification_emails:
-      - glean-team@mozilla.com
+      - rhelmer@mozilla.com
+    expires: never
+
+  resolved_breach:
+    type: datetime
+    lifetime: ping
+    send_in_pings:
+      - user-visit
+    description: |
+      Sent each time a user resolves a breach.
+    bugs:
+      - https://bugzilla.mozilla.org/TODO
+    data_reviews:
+      - https://bugzilla.mozilla.org/TODO
+    data_sensitivity:
+      - technical
+    notification_emails:
+      - rhelmer@mozilla.com
     expires: never
