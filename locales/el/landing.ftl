@@ -3,6 +3,8 @@
 
 ## Hero
 
+find-out-if-breached = Μάθετε αν έχετε εμφανιστεί σε κάποια παραβίαση δεδομένων
+get-started = Έναρξη
 
 ## Why use Firefox Monitor?
 

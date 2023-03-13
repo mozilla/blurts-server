@@ -60,6 +60,8 @@ breaches-all-resolved-cta-button = Προσθήκη διεύθυνσης email
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
+breach-checklist-sq-header = Ενημερώστε τις ερωτήσεις ασφαλείας σας στο <a>{ $breachedCompanyUrl }</a>.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
