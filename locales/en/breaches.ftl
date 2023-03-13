@@ -64,20 +64,14 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# Deprecated
-breach-checklist-pw-header = Go to <a>{$breachedCompanyUrl}</a> to change your password and enable two-factor authentication (2FA). 
 # { $breachedCompanyLink } will link to the website of the company where the breach occurred
 breach-checklist-pw-header-2 = Go to the company’s website to change your password and enable two-factor authentication (2FA).
-# Deprecated
-breach-checklist-pw-body = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. <a>{-brand-firefox} Password Manager</a> can help you securely keep track of all of your passwords.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-pw-body-2 = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. { $passwordManagerLink } can help you securely keep track of all of your passwords.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-# Deprecated
-breach-checklist-email-header = Protect your email with an email masking service like <a>{-brand-relay}</a>.
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
 breach-checklist-email-header-2 = Protect your email with an email masking service like { $firefoxRelayLink }.
@@ -88,8 +82,6 @@ breach-checklist-email-body = This can hide your true email address while forwar
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Monitor your credit report for accounts, loans, or credit cards you don’t recognize.
-# Deprecated
-breach-checklist-ssn-body = You can also consider freezing your credit on <a>Equifax</a>, <a>Experian</a> and <a>TransUnion</a> to stop scammers from opening new accounts in your name. It’s free and won’t affect your credit score.
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
@@ -117,8 +109,6 @@ breach-checklist-pin-body = Make sure your new PIN, or any other PIN, doesn’t 
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-# Deprecated
-breach-checklist-ip-header = Use the internet privately with a VPN, such as <a>{-brand-mozilla-vpn}</a>.
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Use the internet privately with a VPN, such as { $mozillaVpnLink }.
@@ -136,16 +126,12 @@ breach-checklist-dob-body = Birth dates are easy to find in public records, and 
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-# Deprecated
-breach-checklist-phone-header = Protect your phone number with a masking service like <a>{-brand-relay}</a>, which hides your true phone number. 
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
 breach-checklist-phone-header-2 = Protect your phone number with a masking service like { $firefoxRelayLink }, which hides your true phone number.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# Deprecated
-breach-checklist-sq-header = Update your security questions on <a>{$breachedCompanyUrl}</a>. 
 # { $breachedCompanyLink } will link to the website of the company where the breach occurred
 breach-checklist-sq-header-2 = Update your security questions on the company’s website.
 breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
@@ -153,8 +139,6 @@ breach-checklist-sq-body = Use long, random answers, and store them somewhere sa
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Create unique, strong passwords for any account where you’ve re-used passwords.
-# Deprecated
-breach-checklist-hp-body = A password manager like <a>{-brand-firefox} Password Manager</a> (which is free and built-in to the {-brand-firefox} browser) can help you keep track of all your passwords and access them securely from all your devices. 
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-hp-body-2 = A password manager like { $passwordManagerLink } (which is free and built-in to the {-brand-firefox} browser) can help you keep track of all your passwords and access them securely from all your devices.
