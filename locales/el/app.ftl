@@ -676,10 +676,28 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Λογαριασμός Firefox
+-brand-fx-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] λογαριασμού Firefox
+               *[upper] Λογαριασμού Firefox
+            }
+        [acc]
+            { $capitalization ->
+                [lower] λογαριασμό Firefox
+               *[upper] Λογαριασμό Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] λογαριασμός Firefox
+               *[upper] Λογαριασμός Firefox
+            }
+    }
 
 ## Search Engine Optimization
 
+meta-desc = Μάθετε αν υπήρξατε θύμα παραβίασης δεδομένων με το { -brand-fx-monitor }. Εγγραφείτε για ειδοποιήσεις σχετικά με μελλοντικές παραβιάσεις και λάβετε συμβουλές για να προστατέψετε τους λογαριασμούς σας.
 
 ## Header
 
@@ -697,6 +715,7 @@ site-nav-help-link = Βοήθεια και υποστήριξη
 menu-button-title = Μενού χρήστη
 menu-button-alt = Άνοιγμα μενού χρήστη
 menu-list-accessible-label = Μενού λογαριασμού
+menu-item-fxa = Διαχείριση του { -brand-fx-account(case: "gen", capitalization: "lower") } σας
 menu-item-settings = Ρυθμίσεις
 menu-item-help = Βοήθεια και υποστήριξη
 menu-item-logout = Αποσύνδεση
@@ -712,7 +731,9 @@ github = { -brand-github }
 # Variables:
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode }: Η σελίδα δεν βρέθηκε
+error-page-error-404-copy = Δυστυχώς, η σελίδα που ψάχνετε δεν υπάρχει πλέον.
 error-page-error-404-cta-button = Επιστροφή
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode }: Κάτι πήγε στραβά
+error-page-error-other-copy = Παρακαλούμε δοκιμάστε ξανά ή επιστρέψτε αργότερα

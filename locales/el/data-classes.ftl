@@ -87,7 +87,11 @@ names = Ονόματα
 nationalities = Εθνικότητες
 net-worths = Καθαρές αξίες
 nicknames = Ψευδώνυμα
+# no data classes found
+none-data-class = Καμία
 occupations = Επαγγέλματα
+# various data classes grouped together
+other-data-class = Άλλη
 parenting-plans = Γονικά σχέδια
 partial-credit-card-data = Μερικά δεδομένα πιστωτικών καρτών
 partial-dates-of-birth = Μερικές ημερομηνίες γέννησης
