@@ -11,7 +11,7 @@ function notFoundPage (req, res) {
     nonce: res.locals.nonce
   }
 
-  res.send(guestLayout(data))
+  res.status(404).send(guestLayout(data))
 }
 
 export { notFoundPage }
