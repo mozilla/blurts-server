@@ -18,3 +18,4 @@ dist
 **/storageState.json
 state.json
 src/client/images/logo_cache/
+src/.venv

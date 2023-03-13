@@ -1,0 +1,24 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+---
+$schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
+
+sample:
+  app_started:
+    type: datetime
+    lifetime: ping
+    send_in_pings:
+      - execution
+    description: |
+      The time the sample app was started.
+    bugs:
+      - https://bugzilla.mozilla.org/1691365
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1691365#c0
+    data_sensitivity:
+      - technical
+    notification_emails:
+      - glean-team@mozilla.com
+    expires: never
