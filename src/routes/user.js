@@ -19,7 +19,7 @@ const router = Router()
 // to breach details page for backwards compatibility reasons. Old emails still
 // have a reference to the dashboard URI.
 // TODO: remove after we have a dashboard
-router.get('/dashboard', (req, res) => res.redirect('/user/breaches'))
+router.get('/dashboard', (req, res) => res.redirect(302, '/user/breaches'))
 
 // data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
