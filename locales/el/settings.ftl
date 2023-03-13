@@ -18,6 +18,7 @@ settings-alert-preferences-option-two = Αποστολή όλων των ειδ�
 # Variables:
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (κύριο)
+settings-email-list-title = Διευθύνσεις email σε εποπτεία
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
@@ -34,9 +35,11 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Απενεργοποίηση λογαριασμού
+settings-fxa-link-label = Μεταβείτε στις ρυθμίσεις του { -brand-firefox }
 
 ## Add email dialog
 
 settings-email-dialog-title = Προσθήκη άλλης διεύθυνσης email
+settings-add-email-text = Προσθέστε μια νέα διεύθυνση email για να δείτε εάν έχει εμπλακεί σε παραβίαση.
 settings-email-input-label = Διεύθυνση email
 settings-send-email-verification-button = Αποστολή συνδέσμου επαλήθευσης
