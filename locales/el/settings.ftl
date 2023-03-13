@@ -19,6 +19,13 @@ settings-alert-preferences-option-two = Αποστολή όλων των ειδ�
 #   $email (string) - Email address
 settings-email-label-primary = { $email } (κύριο)
 settings-email-list-title = Διευθύνσεις email σε εποπτεία
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+settings-email-limit-info =
+    { $limit ->
+        [one] Ο λογαριασμός σας περιλαμβάνει εποπτεία έως και { $limit } email.
+       *[other] Ο λογαριασμός σας περιλαμβάνει εποπτεία έως και { $limit } email.
+    }
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
@@ -35,6 +42,7 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Απενεργοποίηση λογαριασμού
+settings-deactivate-account-info = Μπορείτε να απενεργοποιήσετε το { -product-short-name } διαγράφοντας τον { -brand-fx-account(case: "acc", capitalization: "lower") } σας.
 settings-fxa-link-label = Μεταβείτε στις ρυθμίσεις του { -brand-firefox }
 
 ## Add email dialog
