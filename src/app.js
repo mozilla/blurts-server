@@ -73,6 +73,7 @@ async function getRedisStore () {
 // middleware
 app.use(
   helmet({
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
     crossOriginEmbedderPolicy: false
   })
 )
