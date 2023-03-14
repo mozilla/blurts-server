@@ -8,26 +8,27 @@
     "npm": "8.x"
   },
   "scripts": {
-    "prestart": "npm run build",
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
+    "prestart": "npm run build && npm run build:glean",
+    "start": "npm run build:glean && node app.js",
+    "dev": "npm run build:glean && nodemon app.js",
+    "build": "npm run build:glean && node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
+    "build:glean": "glean translate ../metrics.yaml ../pings.yaml -f javascript -o generated",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
     "copy:root": "mkdir -p ../dist/ && cp ./client/*.* ../dist/",
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
     "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",
     "convert:webp": "sh ./scripts/webp.sh",
+    "docs": "npm run docs:glean",
+    "docs:glean": "glean translate ../metrics.yaml ../pings.yaml -f markdown -o ../docs",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test e2e/",
-    "lint": "npm run lint:css && npm run lint:js",
+    "lint": "npm run lint:css && npm run lint:js && npm run lint:glean",
+    "lint:glean": "glean glinter ../metrics.yaml ../pings.yaml",
     "lint:js": "eslint .",
     "lint:css": "stylelint client/css/",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
-    "fix:css": "stylelint client/css/ --fix",
-    "build:glean": "glean translate ../metrics.yaml ../pings.yaml -f javascript -o generated",
-    "lint:glean": "glean glinter ../metrics.yaml ../pings.yaml",
-    "docs:glean": "glean translate ../metrics.yaml ../pings.yaml -f markdown -o ../docs"
+    "fix:css": "stylelint client/css/ --fix"
   },
   "nodemonConfig": {
     "watch": [

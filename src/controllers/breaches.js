@@ -42,7 +42,7 @@ async function breachesPage (req, res) {
   }
 
   // TODO could probably set this in a central place?
-  userJourneyMetrics.id.set('breaches')
+  userJourneyMetrics.pathname.set('/user/breaches')
   userJourneyMetrics.visit.set(new Date())
 
   // TODO could probably do this once on login, and put in req.locals?
