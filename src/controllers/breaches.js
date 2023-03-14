@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import AppConstants from '../app-constants.js'
 import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
@@ -9,6 +10,8 @@ import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
 import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 import { getCountryCode } from '../utils/country-code.js'
+
+import { v5 as uuidv5 } from 'uuid'
 
 import * as monitorPings from '../generated/pings.js'
 import * as userJourney from '../generated/monitor.js'
@@ -38,6 +41,10 @@ async function breachesPage (req, res) {
 
   userJourney.pageId.set('breaches')
   userJourney.pageVisit.set(new Date())
+
+  const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
+
+  userJourney.id.set(monitorId)
   monitorPings.userJourney.submit()
 
   res.send(mainLayout(data))
