@@ -241,8 +241,15 @@ async function updateMonthlyEmailTimestamp (email) {
   return res
 }
 
+/**
+ * Unsubscribe user from monthly unresolved breach emails
+ *
+ * @param {string} token User verification token
+ */
 async function updateMonthlyEmailOptout (token) {
-  await knex('subscribers').update('monthly_email_optout', true).where('primary_verification_token', token)
+  await knex('subscribers')
+    .update('monthly_email_optout', true)
+    .where('primary_verification_token', token)
 }
 
 function getSubscribersWithUnresolvedBreachesQuery () {
