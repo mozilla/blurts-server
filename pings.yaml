@@ -17,7 +17,7 @@ user-journey:
   notification_emails:
     - rhelmer@mozilla.com
 
-breach-resolution:
+breach:
   description: |
     A custom ping containing metrics regarding breach resolution.
   include_client_id: true

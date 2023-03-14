@@ -2,9 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { v5 as uuidv5 } from 'uuid'
-
-import AppConstants from '../app-constants.js'
 import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
@@ -15,7 +12,7 @@ import { getCountryCode } from '../utils/country-code.js'
 
 import * as monitorPings from '../generated/pings.js'
 import * as monitorManagementMetrics from '../generated/monitor.js'
-import * as breachMetrics from '../generated/breaches.js'
+import * as breachMetrics from '../generated/breach.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
@@ -77,9 +74,6 @@ async function putBreachResolution (req, res) {
   const affectedEmailAsSubscriber = sessionUser.primary_email === affectedEmail ? sessionUser.primary_email : false
   const affectedEmailInEmailAddresses = sessionUser.email_addresses.find(ea => ea.email === affectedEmail)?.email || false
 
-  const monitorId = req.user.monitorId
-  monitorManagementMetrics.id.set(monitorId)
-
   // check if current user's emails array contain affectedEmail
   if (!affectedEmailAsSubscriber && !affectedEmailInEmailAddresses) {
     return res.json('Error: affectedEmail is not valid for this subscriber')
@@ -129,6 +123,10 @@ async function putBreachResolution (req, res) {
     }
   }
 
+  breachMetrics.resolution.record({
+    resolved: isResolved
+  })
+
   // set useBreachId to mark latest version of breach resolution
   // without this line, the get call might assume recency index
   currentBreachResolution.useBreachId = true
@@ -141,7 +139,11 @@ async function putBreachResolution (req, res) {
 
   await updateBreachStats(sessionUser.id, userBreachStats)
 
-  monitorPings.breachResolution.submit()
+  breachMetrics.resolvedCount.set(userBreachStats.numBreaches.numResolved)
+  breachMetrics.unresolvedCount.set(userBreachStats.numBreaches.numUnresolved)
+
+  monitorManagementMetrics.id.set(req.user.monitorId)
+  monitorPings.breach.submit()
 
   res.json(updatedSubscriber.breach_resolution)
 }
@@ -192,7 +194,6 @@ function breachStatsV1 (verifiedEmails) {
     email.breaches.forEach(breach => {
       if (breach.IsResolved) {
         breachStats.numBreaches.numResolved++
-        breachMetrics.resolve.set(new Date())
       }
 
       const dataClasses = breach.DataClasses
@@ -200,10 +201,10 @@ function breachStatsV1 (verifiedEmails) {
         breachStats.passwords.count++
         if (breach.IsResolved) {
           breachStats.passwords.numResolved++
-          breachMetrics.resolvePassword.set(new Date())
         }
       }
     })
+
     foundBreaches = [...foundBreaches, ...email.breaches]
   })
 

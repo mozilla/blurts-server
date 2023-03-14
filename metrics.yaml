@@ -61,37 +61,55 @@ user_journey:
       - rhelmer@mozilla.com
     expires: never
 
-breaches:
-  resolve:
-    type: datetime
+breach:
+  unresolved_count:
+    type: quantity
+    unit: breaches
+    description: |
+      Number of breaches for this user.
     lifetime: ping
     send_in_pings:
-      - breach-resolution
-    description: |
-      Sent each time a user resolves a non-password breach.
+      - breach
     bugs:
       - https://bugzilla.mozilla.org/TODO
     data_reviews:
       - https://bugzilla.mozilla.org/TODO
-    data_sensitivity:
-      - technical
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
 
-  resolve_password:
-    type: datetime
+  resolved_count:
+    type: quantity
+    unit: breaches
+    description: |
+      Number of breaches for this user.
     lifetime: ping
     send_in_pings:
-      - breach-resolution
-    description: |
-      Sent each time a user resolves a password breach.
+      - breach
     bugs:
       - https://bugzilla.mozilla.org/TODO
     data_reviews:
       - https://bugzilla.mozilla.org/TODO
-    data_sensitivity:
-      - technical
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
+
+  resolution:
+    type: event
+    description: |
+      A breach resolution action was taken by the user.
+    lifetime: ping
+    send_in_pings:
+      - breach
+    bugs:
+      - https://bugzilla.mozilla.org/TODO
+    data_reviews:
+      - https://bugzilla.mozilla.org/TODO
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      resolved:
+        description: |
+          A breach has been resolved, or marked as unresolved.
+        type: boolean
