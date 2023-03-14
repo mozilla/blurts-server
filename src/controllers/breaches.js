@@ -81,7 +81,7 @@ async function putBreachResolution (req, res) {
 
   // check if breach id is a part of affectEmail's breaches
   const allBreaches = req.app.locals.breaches
-  const { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
+  let { verifiedEmails } = await getAllEmailsAndBreaches(req.session.user, allBreaches)
   let currentEmail
   if (affectedEmailAsSubscriber) {
     currentEmail = verifiedEmails.find(ve => ve.email === affectedEmailAsSubscriber)
@@ -135,11 +135,13 @@ async function putBreachResolution (req, res) {
 
   req.session.user = updatedSubscriber
 
+  // TODO refactor this function, for now override verifiedEmails before calling breachStatsV1
+  verifiedEmails = (await getAllEmailsAndBreaches(req.session.user, allBreaches)).verifiedEmails
+
   const userBreachStats = breachStatsV1(verifiedEmails)
 
   await updateBreachStats(sessionUser.id, userBreachStats)
 
-  // FIXME check that this is correct, it seems to be the previous not current values?
   breachMetrics.resolvedCount.set(userBreachStats.numBreaches.numResolved)
   breachMetrics.unresolvedCount.set(userBreachStats.numBreaches.numUnresolved)
 
