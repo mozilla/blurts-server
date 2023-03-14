@@ -14,7 +14,9 @@ import { getCountryCode } from '../utils/country-code.js'
 import { v5 as uuidv5 } from 'uuid'
 
 import * as monitorPings from '../generated/pings.js'
-import * as userJourney from '../generated/monitor.js'
+import * as monitorManagementMetrics from '../generated/monitor.js'
+import * as userJourneyMetrics from '../generated/userJourney.js'
+import * as breachMetrics from '../generated/breaches.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
@@ -39,12 +41,14 @@ async function breachesPage (req, res) {
     nonce: res.locals.nonce
   }
 
-  userJourney.pageId.set('breaches')
-  userJourney.pageVisit.set(new Date())
+  // TODO could probably set this in a central place?
+  userJourneyMetrics.id.set('breaches')
+  userJourneyMetrics.visit.set(new Date())
 
+  // TODO could probably do this once on login, and put in req.locals?
   const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
+  monitorManagementMetrics.id.set(monitorId)
 
-  userJourney.id.set(monitorId)
   monitorPings.userJourney.submit()
 
   res.send(mainLayout(data))
@@ -143,6 +147,8 @@ async function putBreachResolution (req, res) {
 
   const userBreachStats = breachStatsV1(verifiedEmails)
 
+  monitorPings.breachResolution.submit()
+
   await updateBreachStats(sessionUser.id, userBreachStats)
 
   res.json(updatedSubscriber.breach_resolution)
@@ -194,6 +200,7 @@ function breachStatsV1 (verifiedEmails) {
     email.breaches.forEach(breach => {
       if (breach.IsResolved) {
         breachStats.numBreaches.numResolved++
+        breachMetrics.resolve.set(new Date())
       }
 
       const dataClasses = breach.DataClasses
@@ -201,6 +208,7 @@ function breachStatsV1 (verifiedEmails) {
         breachStats.passwords.count++
         if (breach.IsResolved) {
           breachStats.passwords.numResolved++
+          breachMetrics.resolvedPasswor.set(new Date())
         }
       }
     })
