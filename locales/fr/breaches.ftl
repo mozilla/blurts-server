@@ -32,6 +32,7 @@ column-detected = DÉTECTÉE
 column-status-badge-resolved = Résolue
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Active
+breaches-resolve-heading = Régler cette fuite :
 breaches-none-headline = Aucune fuite de données trouvée
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
