@@ -139,6 +139,7 @@ async function putBreachResolution (req, res) {
 
   await updateBreachStats(sessionUser.id, userBreachStats)
 
+  // FIXME check that this is correct, it seems to be the previous not current values?
   breachMetrics.resolvedCount.set(userBreachStats.numBreaches.numResolved)
   breachMetrics.unresolvedCount.set(userBreachStats.numBreaches.numUnresolved)
 
