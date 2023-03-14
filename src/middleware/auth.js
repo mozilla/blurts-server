@@ -2,10 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { v5 as uuidv5 } from 'uuid'
+
 import AppConstants from '../app-constants.js'
 import { getSubscriberById, updateFxAProfileData } from '../db/tables/subscribers.js'
 import * as FXA from '../utils/fxa.js'
 import { UnauthorizedError } from '../utils/error.js'
+
+import * as monitorPings from '../generated/pings.js'
+import * as monitorManagementMetrics from '../generated/monitor.js'
+import * as userJourneyMetrics from '../generated/userJourney.js'
 
 async function getRequestSessionUser (req, res, next) {
   if (req.session && req.session.user) {
@@ -29,6 +35,16 @@ async function requireSessionUser (req, res, next) {
   await updateFxAProfileData(user, fxaProfileData)
   req.session.user = user
   req.user = user
+
+  userJourneyMetrics.pathname.set(req._parsedOriginalUrl.pathname)
+  userJourneyMetrics.visit.set(new Date())
+
+  const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
+  req.user.monitorId = monitorId
+
+  monitorManagementMetrics.id.set(monitorId)
+  monitorPings.userJourney.submit()
+
   next()
 }
 

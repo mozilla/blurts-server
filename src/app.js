@@ -26,6 +26,10 @@ import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 
+import * as monitorPings from './generated/pings.js'
+import * as monitorManagementMetrics from './generated/monitor.js'
+import * as userJourneyMetrics from './generated/userJourney.js'
+
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
 
@@ -66,11 +70,6 @@ Glean.initialize('monitor', sendGleanPings, {
   debug: { logPings: isDev }
 })
 console.debug('Glean initialized, sending pings:', sendGleanPings)
-
-app.use(function (req, res, next) {
-  console.log('LOGGED', req.path, req.path, res)
-  next()
-})
 
 async function getRedisStore () {
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {

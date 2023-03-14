@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { v5 as uuidv5 } from 'uuid'
+
 import AppConstants from '../app-constants.js'
 import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
@@ -11,11 +13,8 @@ import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 import { getCountryCode } from '../utils/country-code.js'
 
-import { v5 as uuidv5 } from 'uuid'
-
 import * as monitorPings from '../generated/pings.js'
 import * as monitorManagementMetrics from '../generated/monitor.js'
-import * as userJourneyMetrics from '../generated/userJourney.js'
 import * as breachMetrics from '../generated/breaches.js'
 
 async function breachesPage (req, res) {
@@ -40,16 +39,6 @@ async function breachesPage (req, res) {
     fxaProfile: req.user.fxa_profile_json,
     nonce: res.locals.nonce
   }
-
-  // TODO could probably set this in a central place?
-  userJourneyMetrics.pathname.set('/user/breaches')
-  userJourneyMetrics.visit.set(new Date())
-
-  // TODO could probably do this once on login, and put in req.locals?
-  const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
-  monitorManagementMetrics.id.set(monitorId)
-
-  monitorPings.userJourney.submit()
 
   res.send(mainLayout(data))
 }
@@ -87,6 +76,9 @@ async function putBreachResolution (req, res) {
   const breachIdNumber = Number(breachId)
   const affectedEmailAsSubscriber = sessionUser.primary_email === affectedEmail ? sessionUser.primary_email : false
   const affectedEmailInEmailAddresses = sessionUser.email_addresses.find(ea => ea.email === affectedEmail)?.email || false
+
+  const monitorId = req.user.monitorId
+  monitorManagementMetrics.id.set(monitorId)
 
   // check if current user's emails array contain affectedEmail
   if (!affectedEmailAsSubscriber && !affectedEmailInEmailAddresses) {
@@ -147,9 +139,9 @@ async function putBreachResolution (req, res) {
 
   const userBreachStats = breachStatsV1(verifiedEmails)
 
-  monitorPings.breachResolution.submit()
-
   await updateBreachStats(sessionUser.id, userBreachStats)
+
+  monitorPings.breachResolution.submit()
 
   res.json(updatedSubscriber.breach_resolution)
 }
