@@ -30,7 +30,7 @@ async function handleSubmit (e) {
       })
     })
 
-    if (!res.ok) throw new Error('Bad fetch response')
+    if (!res.ok) throw new Error()
 
     const { newEmailCount } = await res.json()
 
@@ -41,8 +41,8 @@ async function handleSubmit (e) {
   } catch (e) {
     // TODO: localize error messages
     const toast = document.createElement('toast-alert')
-    toast.textContent = `Could not add email: ${e.message}`
-    document.body.append(toast)
+    toast.textContent = `Could not add email. ${e.message}`
+    dialogEl.append(toast)
     console.error('Could not add email.', e)
   } finally {
     form.elements['email-submit'].toggleAttribute('disabled', false)

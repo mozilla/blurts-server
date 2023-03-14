@@ -36,6 +36,9 @@
     "ignore": [
       "src/client/*"
     ],
+    "env": {
+      "LIVE_RELOAD": true
+    },
     "ext": "js,css,json,ftl"
   },
   "ava": {
@@ -54,13 +57,26 @@
     "npm": "8.19.3"
   },
   "dependencies": {
+    "@fluent/bundle": "^0.17.1",
+    "@fluent/langneg": "^0.6.2",
+    "@sentry/node": "^7.40.0",
+    "@sentry/tracing": "^7.38.0",
+    "client-oauth2": "^4.3.3",
+    "connect-redis": "^7.0.0",
+    "cookie-parser": "^1.4.6",
     "csrf-csrf": "^2.2.2",
+    "dotenv": "^16.0.3",
     "esbuild": "^0.17.8",
+    "express": "^4.18.2",
     "express-rate-limit": "^6.7.0",
+    "express-session": "^1.17.3",
     "helmet": "^6.0.0",
-    "svgo": "^2.8.0",
-    "uuid": "^9.0.0",
-    "dotenv": "16.0.2"
+    "knex": "^2.4.2",
+    "mozlog": "^3.0.2",
+    "nodemailer": "^6.9.1",
+    "pg": "^8.9.0",
+    "redis": "^4.6.5",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.30.0",
@@ -70,7 +86,10 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-jsdoc": "^40.0.0",
+    "node-mocks-http": "^1.12.1",
+    "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
+    "svgo": "^3.0.2",
     "testdouble": "^3.16.8"
   }
 }

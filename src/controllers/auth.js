@@ -21,11 +21,7 @@ import {
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
 import { getProfileData, FxAOAuthClient, getSha1 } from '../utils/fxa.js'
-import {
-  getEmailCtaHref,
-  getUnsubscribeUrl,
-  sendEmail
-} from '../utils/email.js'
+import { getEmailCtaHref, sendEmail } from '../utils/email.js'
 import { UnauthorizedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 
@@ -121,7 +117,6 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
       recipientEmail: email,
       subscriberId: verifiedSubscriber,
       unsafeBreachesForEmail,
-      unsubscribeUrl: getUnsubscribeUrl(email, 'account-verification-email'),
       utmCampaign: utmCampaignId
     }
     const emailTemplate = getTemplate(data, signupReportEmailPartial)

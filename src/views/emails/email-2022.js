@@ -106,12 +106,30 @@ const emailHeader = (data) => `
   </tr>
 `
 
+function getUnsubscribeCopy (data) {
+  const unsubLink = `
+    <a href='${data.unsubscribeUrl}'>
+      ${getMessage('email-unsub-link')}
+    </a>
+  `
+  const faqLink = `
+    <a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>
+  `
+
+  return getMessage('email-footer-blurb', {
+    unsubLink,
+    faqLink
+  })
+}
+
 const emailFooter = (data) => `
   <tr class='footer'>
     <td style='${footerContainerStyle}'>
-      <p>
-        ${getEmailFooterCopy(data)}
-      </p>
+      ${
+        data.unsubscribeUrl
+          ? `<p>${getUnsubscribeCopy(data)}</p>`
+          : ''
+      }
       <p>
         ${getMessage('email-2022-hibp-attribution', {
           'hibp-link-attr': `href='${links(data).hibp}' rel='noopener'`
@@ -138,22 +156,6 @@ const emailFooter = (data) => `
     </td>
   </tr>
 `
-
-function getEmailFooterCopy (data) {
-  const unsubLink = `
-    <a href='${data.unsubscribeUrl}'>
-      ${getMessage('email-unsub-link')}
-    </a>
-  `
-  const faqLink = `
-    <a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>
-  `
-
-  return getMessage('email-footer-blurb', {
-    unsubLink,
-    faqLink
-  })
-}
 
 const getStyles = () => `
   <style>

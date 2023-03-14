@@ -2,24 +2,31 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { mainLayout } from '../views/main.js'
+import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
 import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
 import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
+import { getCountryCode } from '../utils/country-code.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0
   const emailTotalCount = emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0)
-  appendBreachResolutionChecklist(breachesData)
+  appendBreachResolutionChecklist(breachesData, { countryCode: getCountryCode(req) })
+  const cookies = req.cookies
+  const selectedEmailIndex = typeof cookies['monitor.selected-email-index'] !== 'undefined'
+    ? Number.parseInt(cookies['monitor.selected-email-index'], 10)
+    : 0
 
   const data = {
     breachesData,
+    breachLogos: req.app.locals.breachLogoMap,
     emailVerifiedCount,
     emailTotalCount,
+    selectedEmailIndex,
     partial: breaches,
     csrfToken: generateToken(res),
     fxaProfile: req.user.fxa_profile_json,

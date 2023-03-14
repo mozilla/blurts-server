@@ -5,14 +5,14 @@
 import { getMessage, getLocale } from '../../utils/fluent.js'
 import AppConstants from '../../app-constants.js'
 
-function createEmailOptions (data) {
+function createEmailOptions (data, selectedEmailIndex) {
   const emails = data.verifiedEmails.map(obj => obj.email)
-  const optionElements = emails.map(email => `<option>${email}</option>`)
+  const optionElements = emails.map((email, index) => `<option ${selectedEmailIndex === index ? 'selected' : ''}>${email}</option>`)
 
   return optionElements.join('')
 }
 
-function createBreachRows (data) {
+function createBreachRows (data, logos) {
   const locale = getLocale()
   const shortDate = new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })
   const shortList = new Intl.ListFormat(locale, { style: 'narrow' })
@@ -32,10 +32,17 @@ function createBreachRows (data) {
         dataClasses: longList.format(dataClassesTranslated)
       })
 
+      const logo = logos.has(breach.Domain)
+        ? `<img src='${logos.get(breach.Domain)}' alt='' class='breach-logo' height='32' />`
+        : `<span role="img" aria-hidden='true' class='breach-logo' style='background-color: var(${getColorForName(breach.Name)});'>${breach.Name.substring(0, 1)}</span>`
+
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span>${breach.Title}</span>
+          <span class='breach-company'>
+            ${logo}
+            ${breach.Title}
+          </span>
           <span>${shortList.format(dataClassesTranslated)}</span>
           <span>
             <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
@@ -45,7 +52,7 @@ function createBreachRows (data) {
         </summary>
         <article>
           <p>${description}</p>
-          <p><strong>Resolve this breach:</strong></p>
+          <p><strong>${getMessage('breaches-resolve-heading')}</strong></p>
           <ol class='resolve-list'>${createResolveSteps(breach)}</ol>
         </article>
       </details>
@@ -71,7 +78,7 @@ function createResolveSteps (breach) {
 export const breaches = data => `
 <section>
   <header class='breaches-header'>
-    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData)}</custom-select>` })}</h1>
+    <h1>${getMessage('breach-heading-email', { 'email-select': `<custom-select name='email-account'>${createEmailOptions(data.breachesData, data.selectedEmailIndex)}</custom-select>` })}</h1>
     <circle-chart 
       class='breach-chart' 
       title='${getMessage('breach-chart-title')}' 
@@ -107,7 +114,7 @@ export const breaches = data => `
     }
     <span>${getMessage('column-detected')}</span>
   </header>
-  ${createBreachRows(data.breachesData)}
+  ${createBreachRows(data.breachesData, data.breachLogos)}
   <template class='no-breaches'>
     <div class="zero-state no-breaches-message">
       <img src='/images/breaches-none.svg' alt='' width="136" height="102" />
@@ -132,3 +139,27 @@ export const breaches = data => `
   </template>
 </section>
 `
+
+/**
+ * @param {string} name
+ * @returns string CSS variable for a string-specific color
+ */
+function getColorForName (name) {
+  const logoColors = [
+    '--blue-5',
+    '--purple-5',
+    '--green-05',
+    '--violet-5',
+    '--orange-5',
+    '--yellow-5',
+    '--red-5',
+    '--pink-5'
+  ]
+
+  const charValue = name
+    .split('')
+    .map(letter => letter.codePointAt(0))
+    .reduce((sum, codePoint) => sum + codePoint)
+
+  return logoColors[charValue % logoColors.length]
+}

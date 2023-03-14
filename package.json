@@ -11,7 +11,7 @@
     "@maxmind/geoip2-node": "^3.1.0",
     "@sentry/node": "7.36.0",
     "@sentry/tracing": "^7.36.0",
-    "body-parser": "^1.20.1",
+    "body-parser": "^1.20.2",
     "client-oauth2": "4.3.3",
     "connect-redis": "^7.0.0",
     "cookie-parser": "^1.4.6",

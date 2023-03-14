@@ -17,3 +17,4 @@ dist
 **/playwright/.cache/
 **/storageState.json
 state.json
+src/client/images/logo_cache/

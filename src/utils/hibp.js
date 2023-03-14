@@ -2,10 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { get } from 'node:https'
+import { access, constants, createWriteStream } from 'node:fs'
+import { dirname, resolve as pathResolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
 import AppConstants from '../app-constants.js'
 import { fluentError } from './fluent.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
+import { mkdir } from 'node:fs/promises'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -141,12 +146,55 @@ async function loadBreachesIntoApp (app) {
       // sync the "breaches" table with the latest from HIBP
       await upsertBreaches(breaches)
     }
+    const breachLogoMap = await downloadBreachIcons(breaches)
+    app.locals.breachLogoMap = breachLogoMap
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
   } catch (error) {
     throw fluentError('error-hibp-load-breaches')
   }
   log.info('done-loading-breaches', 'great success 👍')
+}
+
+async function downloadBreachIcons (breaches) {
+  const breachDomains = breaches
+    .map(breach => breach.Domain)
+    .filter(breachDomain => breachDomain.length > 0)
+  const logoFolder = AppConstants.LIVE_RELOAD === 'true'
+    ? pathResolve(dirname(fileURLToPath(import.meta.url)), '../client/images/logo_cache/')
+    : pathResolve(dirname(fileURLToPath(import.meta.url)), '../../dist/images/logo_cache/')
+  try {
+    await mkdir(logoFolder)
+  } catch {
+    // Do nothing; if the directory already exists, that's fine.
+  }
+  const logoMapElems = await Promise.all(breachDomains.map(breachDomain => {
+    return new Promise((resolve, reject) => {
+      const logoPath = pathResolve(logoFolder, breachDomain.toLowerCase() + '.ico')
+      access(logoPath, constants.F_OK, (accessError) => {
+        if (!accessError) {
+          resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
+          return
+        }
+        get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
+          if (response.statusCode !== 200) {
+            resolve(null)
+            return
+          }
+
+          const file = createWriteStream(logoPath)
+          response.pipe(file)
+          file.on('finish', () => {
+            file.close()
+            resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
+          })
+          file.on('error', (error) => reject(error))
+        })
+      })
+    })
+  }))
+
+  return new Map(logoMapElems.filter(elm => elm !== null))
 }
 
 /**
@@ -195,9 +243,9 @@ function getFilteredBreaches (breaches) {
 }
 
 /**
-A range of hashes can be searched by passing the hash prefix in a GET request:
-GET /breachedaccount/range/[hash prefix]
-
+ * A range of hashes can be searched by passing the hash prefix in a GET request:
+ * GET /breachedaccount/range/[hash prefix]
+ *
  * @param {string} sha1 first 6 chars of email sha1
  * @param {Array} allBreaches
  * @param {boolean} includeSensitive
@@ -280,10 +328,10 @@ async function subscribeHash (sha1) {
 /**
  * A range subscription can be deleted with the following request:
  * DELETE /range/[hash prefix]
-
+ *
  * There is one possible response code that can be returned:
  * HTTP 200: Range subscription successfully deleted
-
+ *
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 response codes
  */
