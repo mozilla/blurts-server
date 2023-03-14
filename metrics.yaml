@@ -28,10 +28,11 @@ monitor:
     expires: never
 
 user_journey:
-  id:
+  pathname:
     type: string
     description: |
-      A unique ID associated with a page.
+      A unique HTTP pathname associated with a page.
+      See: https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname
     lifetime: ping
     send_in_pings:
       - user-journey

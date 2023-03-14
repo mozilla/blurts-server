@@ -208,7 +208,7 @@ function breachStatsV1 (verifiedEmails) {
         breachStats.passwords.count++
         if (breach.IsResolved) {
           breachStats.passwords.numResolved++
-          breachMetrics.resolvedPasswor.set(new Date())
+          breachMetrics.resolvePassword.set(new Date())
         }
       }
     })

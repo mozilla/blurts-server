@@ -67,6 +67,11 @@ Glean.initialize('monitor', sendGleanPings, {
 })
 console.debug('Glean initialized, sending pings:', sendGleanPings)
 
+app.use(function (req, res, next) {
+  console.log('LOGGED', req.path, req.path, res)
+  next()
+})
+
 async function getRedisStore () {
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
     // allow mock redis for setups without local redis server

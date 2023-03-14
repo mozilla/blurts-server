@@ -8,9 +8,9 @@
     "npm": "8.x"
   },
   "scripts": {
-    "prestart": "npm run build && npm run build:glean",
-    "start": "npm run build:glean && node app.js",
-    "dev": "npm run build:glean && nodemon app.js",
+    "prestart": "npm run build",
+    "start": "node app.js",
+    "dev": "nodemon --ignore ./generated --exec 'npm run build:glean && node app.js'",
     "build": "npm run build:glean && node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
     "build:glean": "glean translate ../metrics.yaml ../pings.yaml -f javascript -o generated",
     "build:svg": "svgo -f ./client/images/ -o ../dist/images",
