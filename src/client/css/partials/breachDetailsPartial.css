@@ -1,3 +1,7 @@
+ul {
+  list-style-type: none;
+}
+
 main.breach-detail {
   padding-left: 24px;
   padding-right: 24px;
@@ -103,7 +107,6 @@ main.breach-detail {
   min-width: 52px;
   height: 48px;
   margin: 0 auto;
-  background-position: top center;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -517,7 +520,6 @@ button.fade-out {
     height: 52px;
     width: 100%;
     margin: 0 auto 20px;
-    background-position: bottom center;
   }
 
   .rec-pw-1,

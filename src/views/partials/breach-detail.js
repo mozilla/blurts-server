@@ -90,7 +90,8 @@ function makeRecommendationCards (breach) {
       <h3>${getMessage(dataClass.recommendationCopy.subhead)}</h3>
       <div>${getMessage(dataClass.recommendationCopy.body)}</div>
       ${dataClass.cta ? `<a href="">${getMessage(dataClass.recommendationCopy.cta)}</a>` : ''}
-    </li>`).join('')
+    </li>`
+  ).join('')
 
   return output
 }
