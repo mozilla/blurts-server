@@ -77,6 +77,8 @@ job-titles = Τίτλοι επαγγελμάτων
 # This string refers to vehicle license plates. 
 licence-plates = Πινακίδες οχημάτων
 living-costs = Έξοδα διαβίωσης
+# This string refers to financial loans.
+loan-information = Πληροφορίες δανείων
 login-histories = Ιστορικά σύνδεσης
 mac-addresses = Διευθύνσεις MAC
 marital-statuses = Οικογενειακές καταστάσεις
