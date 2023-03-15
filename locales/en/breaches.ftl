@@ -11,7 +11,7 @@ breach-chart-title = Breached data
 breach-heading-email = Data breaches for { $email-select }
 
 # $count is the number of emails a user has added out of $total allowed
-emails-monitored = 
+emails-monitored =
   {
     $total ->
       [one] { $count } of { $total } email monitored
@@ -79,11 +79,11 @@ breach-checklist-email-body = This can hide your true email address while forwar
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Monitor your credit report for accounts, loans, or credit cards you don’t recognize.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
@@ -112,16 +112,16 @@ breach-checklist-pin-body = Make sure your new PIN, or any other PIN, doesn’t 
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Use the internet privately with a VPN, such as { $mozillaVpnLink }.
-breach-checklist-ip-body = Your IP address (Internet Protocol address) pinpoints your location and internet service provider. A VPN can hide your real IP address so you can use the internet privately.   
+breach-checklist-ip-body = Your IP address (Internet Protocol address) pinpoints your location and internet service provider. A VPN can hide your real IP address so you can use the internet privately.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
-breach-checklist-address-header = Change any passwords or PINs that include any part of your address.   
-breach-checklist-address-body = Addresses are easy to find in public records and can make those passwords and PINs easy to guess.   
+breach-checklist-address-header = Change any passwords or PINs that include any part of your address.
+breach-checklist-address-body = Addresses are easy to find in public records and can make those passwords and PINs easy to guess.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
-breach-checklist-dob-header = Change any passwords or PINs that include your date of birth.  
+breach-checklist-dob-header = Change any passwords or PINs that include your date of birth.
 breach-checklist-dob-body = Birth dates are easy to find in public records, and people who find it could easily guess your PIN.
 
 ## Prompts the user for changes when there is a breach detected of phone number
@@ -145,5 +145,5 @@ breach-checklist-hp-body-2 = A password manager like { $passwordManagerLink } (w
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
-breach-checklist-general-header = Reach out to {$companyName} to inform them about this breach and ask for specific steps you can take.
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred
+breach-checklist-general-header = Reach out to { $companyName } to inform them about this breach and ask for specific steps you can take.
