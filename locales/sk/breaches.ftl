@@ -34,6 +34,7 @@ column-detected = ZISTENÉ
 column-status-badge-resolved = Vyriešený
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktívny
+breaches-resolve-heading = Ako vyriešiť tento únik:
 breaches-none-headline = Neboli nájdené žiadne úniky dát
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -49,15 +50,15 @@ breaches-all-resolved-cta-button = Pridať e-mailovú adresu
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Dňa { $breachDate } došlo k úniku dát spoločnosti { $companyName }. Akonáhle bol únik objavený a overený, bol dňa { $addedDate } pridaný do našej databázy. Tento únik zahŕňal: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Prejdite na stránku <a>{ $breachedCompanyUrl }</a> a zmeňte svoje heslo a povoľte dvojstupňové overenie (2FA).
-breach-checklist-pw-body = Uistite sa, že vaše heslo je jedinečné a ťažko uhádnuteľné. Ak sa toto heslo používa na viacerých účtoch, nezabudnite ho zmeniť aj tam. <a>Správca hesiel { -brand-firefox(case: "gen") }</a> vám môže pomôcť bezpečne organizovať všetky vaše heslá.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Chráňte svoj e-mail pomocou služby maskovania e-mailov, ako je <a>{ -brand-relay }</a>.
 breach-checklist-email-body = Týmto môžete skryť vašu skutočnú e-mailovú adresu a zároveň stále dostávať e-maily do vašej skutočnej e-mailovej schránky.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -65,10 +66,6 @@ breach-checklist-email-body = Týmto môžete skryť vašu skutočnú e-mailovú
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Sledujte podozrivé pôžičky a pohyby na svojich účtoch v bankách alebo na kreditných kartách.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
-# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Môžete tiež zvážiť zmrazenie svojho kreditu na <a>Equifax</a>, <a>Experian</a> a <a>TransUnion</a>, aby ste zabránili podvodníkom otvárať si nové účty na vaše meno. Je to zadarmo a neovplyvní to vaše kreditné skóre.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -87,7 +84,6 @@ breach-checklist-pin-body = Uistite sa, že váš nový kód PIN alebo akýkoľv
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Používajte internet súkromne pomocou siete VPN, ako je napríklad <a>{ -brand-mozilla-vpn }</a>.
 breach-checklist-ip-body = Vaša IP adresa (Internet Protocol address) presne určuje vašu polohu a poskytovateľa internetových služieb. Sieť VPN môže skryť vašu skutočnú IP adresu, aby ste mohli používať internet súkromne.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -102,18 +98,14 @@ breach-checklist-dob-body = Dátumy narodenia sa dajú ľahko nájsť vo verejn�
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Chráňte svoje telefónne číslo pomocou maskovacej služby, ako je <a>{ -brand-relay }</a>, ktorá skryje vaše skutočné telefónne číslo.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Aktualizujte svoje bezpečnostné otázky na stránke <a>{ $breachedCompanyUrl }</a>.
 breach-checklist-sq-body = Použite dlhé, náhodné odpovede a uložte ich na bezpečné miesto. Urobte to kdekoľvek inde, kde ste použili rovnaké bezpečnostné otázky.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Vytvorte jedinečné a silné heslá pre každý účet, v ktorom ste použili kompromitované heslo.
-breach-checklist-hp-body = Správca hesiel, ako je <a>Správca hesiel { -brand-firefox(case: "gen") }</a> (ktorý je bezplatný a zabudovaný do prehliadača { -brand-firefox }), vám môže pomôcť sledovať všetky vaše heslá a pristupovať k nim bezpečne zo všetkých vašich zariadení.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
