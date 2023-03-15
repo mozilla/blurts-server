@@ -77,6 +77,8 @@ job-titles = 工作頭銜
 # This string refers to vehicle license plates. 
 licence-plates = 汽車牌照
 living-costs = 生活成本
+# This string refers to financial loans.
+loan-information = 貸款資訊
 login-histories = 登入紀錄
 mac-addresses = MAC 地址
 marital-statuses = 婚姻狀態
