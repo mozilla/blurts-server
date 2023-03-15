@@ -77,6 +77,8 @@ job-titles = Työnimikkeet
 # This string refers to vehicle license plates. 
 licence-plates = Rekisteritunnukset
 living-costs = Asumiskustannukset
+# This string refers to financial loans.
+loan-information = Lainatiedot
 login-histories = Kirjautumishistoria
 mac-addresses = MAC-osoitteet
 marital-statuses = Siviilisäädyt
