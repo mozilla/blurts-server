@@ -132,6 +132,9 @@ breach-checklist-sq-body = Usa respuestas largas y aleatorias y guárdalas en un
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crea contraseñas seguras y únicas para cualquier cuenta en la que hayas reutilizado contraseñas.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Un administrador de contraseñas como el { $passwordManagerLink } (que es gratuito y está integrado en el navegador { -brand-firefox }) puede ayudarte a realizar un seguimiento de todas tus contraseñas y acceder a ellas de forma segura desde todos tus dispositivos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
