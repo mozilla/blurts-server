@@ -130,8 +130,6 @@ app.use(
 // When a text/html request is received, negotiate and store the requested language
 // Using asyncLocalStorage avoids having to pass req context down through every function (e.g. getMessage())
 app.use((req, res, next) => {
-  if (!req.headers.accept?.startsWith('text/html')) return next()
-
   localStorage.run(new Map(), () => {
     req.locale = updateLocale(accepts(req).languages())
     localStorage.getStore().set('locale', req.locale)
