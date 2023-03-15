@@ -44,6 +44,9 @@ email-verify-blurb = Verify your email to add it to { -product-name } and sign u
 # Email headline
 email-found-breaches-hl = Here’s your summary of past data breaches
 
+## Variables:
+##   $userEmail (string) - User email address
+
 # Email headline
 email-breach-summary-for-email = Breach summary for { $userEmail }
 
@@ -52,6 +55,8 @@ email-no-breaches-hl = { $userEmail } appeared in 0 known data breaches
 
 # Email headline
 email-alert-hl = { $userEmail } appeared in a new data breach
+
+##
 
 # Subject line of email
 email-subject-found-breaches = { -product-name } found your info in these breaches
@@ -62,7 +67,8 @@ email-subject-no-breaches = { -product-name } found no known breaches
 # Subject line of email
 email-subject-verify = Verify your email for { -product-name }
 
-# { $fxmLink } is a link to Firefox Monitor and uses the text from { -product-name }.
+# Variables:
+#   $fxmLink (string) - Link to Firefox Monitor that uses the text from { -product-name }.
 learn-more-about-fxm = Learn more about { $fxmLink }
 
 email-sensitive-disclaimer = Due to the sensitive nature of this breach, emails involved are not publicly discoverable.
@@ -83,11 +89,17 @@ monitor-another-email = Want to monitor another email?
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
+# Variables:
+#   $unsubscribe-link-attr (string) - Link to email unsubscribe
 email-2022-unsubscribe = You’re receiving this automated email as a subscriber of { -product-name }. <br>Feel free to change your email preferences at any time <a { $unsubscribe-link-attr }>here</a>.
 # Have I Been Pwned attribution
+# Variables:
+#   $hibp-link-attr (String) - Link to Have I Been Pwned
 email-2022-hibp-attribution = Breach data provided by <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
+## Variables:
+##   $email-address (string) - Email address
 
 email-unresolved-heading = You have unresolved breaches
 email-unresolved-subhead = Your email has been exposed. <br>Fix it right away with { -product-name }.
@@ -111,6 +123,8 @@ email-verify-subhead = Verify your email to start protecting your data after a b
 email-verify-simply-click = Simply click the link below to finish verifying your account.
 
 ## Breach report
+## Variables:
+##   $email-address (string) - Email address
 
 email-breach-summary = Here’s your data breach summary
 email-breach-detected = Search results for your { $email-address } account have detected that your email may have been exposed. We recommend you act now to resolve this breach.

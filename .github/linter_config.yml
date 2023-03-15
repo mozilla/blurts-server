@@ -48,5 +48,9 @@ CO01:
             - rec-bank-acc-subhead
             - rec-cc-subhead
         files: []
+# Variable comments
+VC:
+    disabled: false
+# Placeables style
 PS01:
     disabled: false

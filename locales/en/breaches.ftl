@@ -54,6 +54,9 @@ breaches-all-resolved-cta-blurb = Would you like to monitor another email?
 breaches-all-resolved-cta-button = Add email address
 
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = On { $breachDate }, { $companyName } was breached. Once the breach was discovered and verified, it was added to our database on { $addedDate }. This breach included: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -145,5 +148,7 @@ breach-checklist-hp-body-2 = A password manager like { $passwordManagerLink } (w
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Reach out to { $companyName } to inform them about this breach and ask for specific steps you can take.

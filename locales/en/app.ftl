@@ -41,6 +41,9 @@ user-add-invalid-email = Invalid Email
 user-add-too-many-emails = You are monitoring the maximum number of email addresses.
 user-add-email-verify-subject = Verify your subscription to { -product-name }.
 user-add-duplicate-email = This email has already been added to { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Visit your { $preferencesLink } to check the status of { $userEmail }.
 
 error-headline = Error
@@ -81,6 +84,8 @@ unsub-blurb = This will remove your email from the { -product-name-nowrap } list
 unsub-button = Unsubscribe
 
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Breach data provided by { $hibp-link }
 
 share-twitter = Most people have about 100 online accounts. Have any of yours been exposed in a data breach? Find out.
@@ -270,6 +275,8 @@ feat-enroll-multiple = Enroll multiple emails in breach monitoring
 
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
   { $breachCount ->
         [one] Appears in { $breachCount } known breach.
@@ -284,6 +291,8 @@ search-for-your-email = Search for your email address in public data breaches go
 back-to-top = Back to Top
 
 comm-opt-0 = Email me if one of my email addresses below appears in a data breach.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Send all breach alerts to { $primaryEmail }.
 
 stop-monitoring-this = Stop monitoring this email.
@@ -313,10 +322,13 @@ manage-email-addresses = Manage Email Addresses
 # Link title
 latest-breach-link = See if you were in this breach
 
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Welcome back, { $userName }!
 welcome-user = Welcome, { $userName }!
 
-
+##
 
 breach-alert-subject = { -product-name } found your email in a new data breach
 
@@ -348,6 +360,8 @@ faq1 = I don’t recognize this company or website. Why am I in this breach?
 faq2 = Why did it take so long to notify me of this breach?
 faq3 = How do I know this is a legitimate email from { -product-name }?
 
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
   { $breachCount ->
      *[one] { $breachCount } NEW BREACH FOUND
@@ -357,11 +371,16 @@ new-breaches-found =
 sign-up-headline-1 = Get ongoing alerts with a { -brand-fxa }.
 account-not-required = { -brand-name } browser not required for a { -brand-fxa }. You may receive info about { -brand-Mozilla } services.
 
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Was your info exposed in the { $breachName } data breach?
 find-out-if = Find out if your data was exposed in this breach.
 
 fb-not-comp = This email did not appear in the { $breachName } breach.
 
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
   { $breachCount ->
     [one] However, it did appear in { $breachCount } other breach.
@@ -369,10 +388,14 @@ other-breaches-found =
   }
 
 fb-comp-only = This email appeared in the { $breachName } breach.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
   { $breachCount ->
    *[other] This email appeared in { $breachCount } known data breaches, including { $breachName }.
   }
+
+##
 
 no-other-breaches-found = No other breaches found from a basic search.
 
@@ -458,6 +481,8 @@ known-data-breaches-exposed =
 # Button
 see-additional-breaches = See Additional Breaches
 
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
   { $breachCount ->
       [one] This email appeared in 1 known data breach.
@@ -467,6 +492,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Results for: { $userEmail }
 
 other-monitored-emails = Other Monitored Emails
@@ -491,6 +518,8 @@ find-out = Find Out
 
 new-unsub-error = You’ll need to unsubscribe from one of the emails { -product-name } sent.
 
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
   { $breachCount ->
     [one] However, it did appear in { $breachCount } other known breach.
@@ -518,6 +547,8 @@ monitor-preferences = { -product-short-name } Preferences
 
 # When a user is signed in, this appears in the drop down menu
 # and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Signed in as: { $userEmail }
 
 # Appears on the All Breaches page and is followed by a list of filter options
@@ -541,12 +572,16 @@ want-to-add = Want to add another email?
 
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Verify the link sent to { $userEmail } to add it to { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Email Successfully Verified!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = We’ll alert you if { $email } appears in a data breach.
 
 # This message is displayed after the user has verified their email address.
@@ -561,6 +596,8 @@ sign-in-nested = sign in
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Manage all email addresses in { $preferencesLink }.
 
 # This string is a header on the user preferences page and
@@ -598,8 +635,12 @@ see-additional-recs = See Additional Recommendations
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } appeared in this breach. <a>What to do next</a>
 
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
   { $numAffectedEmails ->
     *[other] { $numAffectedEmails } of your email addresses appeared in this breach. <a>What to do next</a>
@@ -634,6 +675,8 @@ confirmation-3-subhead = Another one down. Nice work!
 confirmation-3-body = Is your new password unique, strong, and hard to guess? <a>Find out</a>
 
 generic-confirmation-subhead = This breach has been marked as resolved
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
   { $numUnresolvedBreaches ->
      [one] To see the remaining breach, go to your dashboard.
@@ -645,10 +688,14 @@ go-to-dashboard-link = Go to Dashboard
 
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% complete
 
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
   { $numResolvedBreaches ->
      *[other] { $numResolvedBreaches } Resolved
@@ -658,6 +705,9 @@ progress-intro-subhead = New in { -product-name }: Mark breaches as resolved
 progress-intro-message =
   After reviewing the details about a breach and taking steps to protect
   your personal info, you can mark breaches as resolved.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
   { $numTotalBreaches ->
      *[other] { $numResolvedBreaches } out of { $numTotalBreaches } breaches marked as resolved
@@ -690,12 +740,16 @@ marked-resolved = Marked resolved:
 hide-resolved-button = Hide Resolved
 show-resolved-button = Show Resolved
 
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
   { $numPasswords ->
     [one] Password exposed in unresolved breaches
    *[other] Passwords exposed in unresolved breaches
   }
 
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
   { $numResolvedBreaches ->
     [one] Known data breach marked as resolved
@@ -740,7 +794,10 @@ vpn-promo-copy-new = Protect your online data—and choose a VPN subscription pl
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Your location: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Protect yourself</em> with { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Protected</em> with { -brand-mozilla-vpn }.
@@ -749,7 +806,8 @@ vpn-banner-title-2 = Your location can be tracked if you don’t use a VPN.
 vpn-banner-subtitle-2 = Protect your location and browse securely in 3 steps
 vpn-banner-status-protected = Current status: <em>Protected ✓</em>
 vpn-banner-status-not-protected = Current status: <em>Not protected ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP address: { $ip-address }
 vpn-banner-step-1 = Subscribe to { -brand-mozilla-vpn }
 vpn-banner-step-2 = Select a VPN location
