@@ -8,15 +8,19 @@ function makeBreachCard (breach) {
   return `
   <a href="/breach-details/${breach.Name}" class="breach-card">
   <div>
-    <img style="width: 32px" alt="${breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${breach.LogoPath}" />
-    <div>${breach.Title}</div>
-    <div>Breach added:</div>
-    <div>${new Date(breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
-    <div>Compromised data:</div>
-    <span>${breach.DataClasses.includes('passwords') ? 'Passwords' : ''}</span>
-    <span>${breach.DataClasses.includes('email-addresses') ? 'Email addresses' : ''}</span>
-    <span>${breach.DataClasses.includes('dates-of-birth') ? 'Dates of birth' : ''}</span>
-    <div>More about this breach</div>
+    <div style="text-align: right; background-color: #F9F9FA">
+      <img style="width: 32px" alt="${breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${breach.LogoPath}" />
+      <span>${breach.Title}</span>
+    </div>
+    <div>${getMessage('breach-added-label')}</div>
+    <div style="font-weight: bold">${new Date(breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}</div>
+    <br>
+    <div>${getMessage('compromised-data')}</div>
+    <div>
+      ${breach.DataClasses.map(a => `<span style="font-weight: bold">${getMessage(a)}</span>`).join(', ')}
+    </div>
+    <br>
+    <div>${getMessage('more-about-this-breach')}</div>
   </div>
   </a>
   `
@@ -24,7 +28,6 @@ function makeBreachCard (breach) {
 
 export const allBreachesPartial = data => `
 <style>
-  /* Create a responsive, centered, three-column grid. */
   .card-container {
     align-items: start;
     display: grid;
@@ -34,7 +37,9 @@ export const allBreachesPartial = data => `
   .breach-card {
     text-decoration: none;
     border: solid;
+    border-color: grey;
     padding: 8px;
+    height: 320px;
   }
   
 </style>
@@ -54,9 +59,6 @@ export const allBreachesPartial = data => `
           <button><svg xmlns="http://www.w3.org/2000/svg" class="x-close" width="16" height="16" viewBox="0 0 16 16"><path fill="context-fill" d="M9.061 8l3.47-3.47a.75.75 0 0 0-1.061-1.06L8 6.939 4.53 3.47a.75.75 0 1 0-1.06 1.06L6.939 8 3.47 11.47a.75.75 0 1 0 1.06 1.06L8 9.061l3.47 3.47a.75.75 0 0 0 1.06-1.061z"></path></svg></button>
         </form>
       </h2>
-      <div  style="text-align: center">
-        Breach data provided by <strong>Have I Been Pwned</strong>
-      </div>
       <section class="card-container">
         ${data.breaches
           .filter(a => !a.IsSensitive)

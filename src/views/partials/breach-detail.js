@@ -2,6 +2,129 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { getMessage } from '../../utils/fluent.js'
+import { getAllPriorityDataClasses, getAllGenericRecommendations } from '../../utils/recommendations.js'
+
+function getBreachCategory (breach) {
+  if (['Exactis', 'Apollo', 'YouveBeenScraped', 'ElasticsearchSalesLeads', 'Estonia', 'MasterDeeds', 'PDL'].includes(breach.Name)) {
+    return 'data-aggregator-breach'
+  }
+  if (breach.IsSensitive) {
+    return 'sensitive-breach'
+  }
+  if (breach.Domain !== '') {
+    return 'website-breach'
+  }
+  return 'data-aggregator-breach'
+}
+
+function compareBreachDates (breach) {
+  const breachDate = new Date(breach.BreachDate)
+  const addedDate = new Date(breach.AddedDate)
+  const timeDiff = Math.abs(breachDate.getTime() - addedDate.getTime())
+  const dayDiff = Math.ceil(timeDiff / (1000 * 3600 * 24))
+  if (dayDiff > 90) {
+    return true
+  }
+  return false
+}
+
+function getSortedDataClasses (breach, isUserBrowserFirefox = false, isUserLocaleEnUs = false, isUserLocalEn = false, changePWLink = false) {
+  const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink)
+
+  const sortedDataClasses = {
+    priority: [],
+    lowerPriority: []
+  }
+
+  const dataClasses = breach.DataClasses
+  dataClasses.forEach(dataClass => {
+    const dataType = getMessage(dataClass)
+    if (priorityDataClasses[dataClass]) {
+      priorityDataClasses[dataClass].dataType = dataType
+      sortedDataClasses.priority.push(priorityDataClasses[dataClass])
+      return
+    }
+    sortedDataClasses.lowerPriority.push(dataType)
+  })
+  sortedDataClasses.priority.sort((a, b) => { return b.weight - a.weight })
+  sortedDataClasses.lowerPriority = sortedDataClasses.lowerPriority.join(', ')
+  return sortedDataClasses
+}
+
+function makeDataSection (breach) {
+  const dataClasses = getSortedDataClasses(breach)
+
+  let output = dataClasses.priority.map(dataClass =>
+    `<li>
+      <img src="${dataClass.pathToGlyph}.svg">
+      ${dataClass.dataType}
+    </li>`
+  ).join('')
+
+  output +=
+    `<li>
+      <img src="/images/more.svg">
+      ${dataClasses.lowerPriority}
+    </li>`
+
+  return output
+}
+
+function makeRecommendationCards (breach) {
+  const dataClasses = getSortedDataClasses(breach)
+
+  let output = dataClasses.priority.map(dataClass =>
+    dataClass.recommendations.map(r =>
+    `<li>
+      <h3>${getMessage(r.recommendationCopy.subhead)}</h3>
+      <div class="rec-img ${r.recIconClassName}"></div>
+      <div>${getMessage(r.recommendationCopy.body)}</div>
+      ${r.cta ? `<a href="">${getMessage(r.recommendationCopy.cta)}</a>` : ''}
+    </li>`)
+  )
+
+  output += getAllGenericRecommendations().map(dataClass =>
+    `<li>
+      <h3>${getMessage(dataClass.recommendationCopy.subhead)}</h3>
+      <div class="rec-img ${dataClass.recIconClassName}"></div>
+      <div>${getMessage(dataClass.recommendationCopy.body)}</div>
+      ${dataClass.cta ? `<a href="">${getMessage(dataClass.recommendationCopy.cta)}</a>` : ''}
+  </li>`
+  )
+
+  return output
+}
+
+function getBreachDetail (categoryId) {
+  if (categoryId === 'data-aggregator-breach') {
+    return {
+      subhead: getMessage('what-is-data-agg'),
+      body: getMessage('what-is-data-agg-blurb')
+
+    }
+  } else if (categoryId === 'sensitive-breach') {
+    return {
+      subhead: getMessage('sensitive-sites'),
+      body: getMessage('sensitive-sites-copy')
+
+    }
+  } else {
+    return {
+      subhead: getMessage('what-is-a-website-breach'),
+      body: getMessage('website-breach-blurb')
+    }
+  }
+}
+
+function makeBreachDetails (breach) {
+  const breachDetail = getBreachDetail(breach)
+  return `
+  <h2>${breachDetail.subhead}</h2>
+  <div>${breachDetail.body}</div>
+  `
+}
+
 export const breachDetailsPartial = data => `
   <style>
     li {
@@ -9,84 +132,71 @@ export const breachDetailsPartial = data => `
     }
   </style>
   <main id="breach-detail">
-    <div style="text-align: center">
-      <div style="display: block; margin-left: auto; margin-right: auto; width: 10%">
+    <div>
+      <div>
         <img class="breach-detail-logo breach-logo" alt="${data.breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
       </div>
       <h2 class="headline breach-detail-headline txt-cntr">${data.breach.Title}</h2>
-      <a class="blue-link send-ga-ping" href="https://www.${data.breach.Domain}" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">www.${data.breach.Domain}</a>
+      ${getBreachCategory(data.breach) === 'website'
+        ? `<a class="blue-link send-ga-ping" href="https://www.${data.breach.Domain}" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">www.${data.breach.Domain}</a>`
+        : ''}
       <br>
-      <a class="breach-type demi" href="#what-is-this-breach">TODO</a>
+      <a class="breach-type demi" href="#what-is-this-breach">${getMessage(getBreachCategory(data.breach))}</a>
     </div>
   </main>
 
   <!-- Overview -->
-  <section style="padding: 120px">
+  <section>
     <h2>Overview</h2>
-    On ${new Date(data.breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}, ${data.breach.Name} was breached.
-    Once the breach was discovered and verified, it was added to our database on ${new Date(data.breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}.
-  </section>
-
-  <!--Exposed Data Classes -->
-  <section style="padding: 120px">
-    <h2>What data was compromised:</h2>
-    <ul>
-      ${data.breach.DataClasses.map(a => `<li>${a}</li>`).join('')}
-    </ul>
+    <div>${getMessage('breach-overview-new', { breachDate: data.breach.AddedDate, breachTitle: data.breach.Name, addedDate: data.breach.AddedDate })}</div>
     <br>
+    ${compareBreachDates(data.breach) ? `<a href="#delayed-reporting">${getMessage('delayed-reporting-headline')}</a>` : ''}
+    <br>
+    <!--Exposed Data Classes -->
     <div>
-      Breach data provided by Have I Been Pwned
+      <h2>${getMessage('what-data')}</h2>
+      <ul>
+        ${makeDataSection(data.breach)}
+      </ul>
+      <br>
+      <div>
+      ${getMessage('email-2022-hibp-attribution', {
+        'hibp-link-attr': 'href="https://haveibeenpwned.com/ rel="noopener"'
+      })}
+      </div>
     </div>
   </section>
 
   <!-- What to do tips -->
-  <section id="what-to-do-next" style="padding: 120px">
-    <h2>What to do to protect your personal info</h2>
-    ${data.breach.DataClasses.includes('passwords') ? 'We recommend you take these steps to keep your personal info safe and protect your digital identity.' : 'Though passwords weren\'t exposed in this breach, there are still steps you can take to better protect your personal info.'}
-    <ul style="padding: 20px">
-      <li>
-        <h3>Change your password</h3>
-        <div>Make this password unique and different from any others you use. A good strategy to follow is to combine two or more unrelated words to create an entire passphrase.</div>
-      </li>
-      <li>
-        <h3>Update other logins using the same password</h3>
-        <div>Reusing passwords turns a single data breach into many. Now that this password is out there, hackers could use it to get in to other accounts.</div>
-      <li>
-        <h3>Use a service that masks your IP address</h3>
-        <div>Your Internet Protocol address (IP address) can reveal your location and internet service provider. A service like Mozilla VPN hides your IP address and location for your entire device.</div>
-        <a href="">Try Mozilla VPN</a>
-      </li>
-      <li>
-        <h3>Avoid sharing your phone number</h3>
-        Try to avoid giving out your phone number when signing up for new accounts or services. If a phone number isn't required, don't enter it.
-      </li>
-      <li>
-        <h3>Use an email mask</h3>
-        <div>Giving out your real email address makes it easier for hackers or trackers to find your passwords or target you online. A service like Firefox Relay hides your real email address while forwarding emails to your real inbox.</div>
-        <a href="">Try Firefox Relay</a>
-      </li>
-      <li>
-        <h3>Use unique, strong passwords for every account</h3>
-        <div>Password reuse puts all your accounts at risk. This means that if one password gets exposed, hackers have the keys to many accounts.</div>
-        <a href="">How to create strong passwords</a>
-      </li>
-  </section>
-
-  <!-- Sign Up Banner -->
-  <section style="padding: 120px">
-    <div>
-      <h2>Product Promo</h2>
-    </div>
+  <section id="what-to-do-next">
+    <h2>${data.breach.DataClasses.includes('passwords') ? getMessage('rec-section-headline') : getMessage('rec-section-headline-no-pw')}</h2>
+    ${data.breach.DataClasses.includes('passwords') ? getMessage('rec-section-subhead') : getMessage('rec-section-subhead-no-pw')}
+    <ul>
+    ${makeRecommendationCards(data.breach)}
+    </ul>
   </section>
 
   <!-- What is this breach? / Why did it take you so long to report it?-->
-  <section style="padding: 120px">
+  <section>
     <div id="what-is-this-breach">
-      <h2>What is a website breach?</h2>
-      A website data breach happens when cyber criminals steal, copy,
-      or expose personal information from online accounts. It's usually a result of hackers
-      finding a weak spot in the website's security. Breaches can also happen when account
-      information gets leaked by accident.
+      ${makeBreachDetails(getBreachCategory(data.breach))}
+    </div>
+${compareBreachDates(data.breach)
+  ? `
+      
+    <div id="delayed-reporting">
+      <h2>${getMessage('delayed-reporting-headline')}</h2>
+      ${getMessage('delayed-reporting-copy')}
+    </div>`
+: ''}
+  </section>
+
+  <!-- Sign Up Banner -->
+  <section>
+    <div>
+      <h2>${getMessage('find-out-if')}</h2>
+      <span>${getMessage('stay-safe-with-tool')}</span>
+      <button class="primary">${getMessage('check-for-breaches')}</button>
     </div>
   </section>
 `

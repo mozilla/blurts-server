@@ -51,7 +51,7 @@ const breachResolutionDataTypes = {
   },
   [BreachDataTypes.CreditCard]: {
     priority: 4,
-    header: 'breach-checklist-cc-header',
+    header: 'q',
     body: 'breach-checklist-cc-body'
   },
   [BreachDataTypes.BankAccount]: {
