@@ -87,9 +87,9 @@ breach-checklist-ssn-header = Monitor your credit report for accounts, loans, or
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = You can also consider freezing your credit on { $equifaxLink }, { $experianLink } and { $transUnionLink } to stop scammers from opening new accounts in your name. It’s free and won’t affect your credit score.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -141,7 +141,7 @@ breach-checklist-sq-body = Use long, random answers, and store them somewhere sa
 breach-checklist-hp-header = Create unique, strong passwords for any account where you’ve re-used passwords.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-hp-body-2 = A password manager like { $passwordManagerLink } (which is free and built-in to the {-brand-firefox} browser) can help you keep track of all your passwords and access them securely from all your devices.
+breach-checklist-hp-body-2 = A password manager like { $passwordManagerLink } (which is free and built-in to the { -brand-firefox } browser) can help you keep track of all your passwords and access them securely from all your devices.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
