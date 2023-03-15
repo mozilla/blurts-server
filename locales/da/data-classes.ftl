@@ -77,6 +77,8 @@ job-titles = Jobtitler
 # This string refers to vehicle license plates. 
 licence-plates = Nummerplader
 living-costs = Leveomkostninger
+# This string refers to financial loans.
+loan-information = Oplysninger om lån
 login-histories = Indlognings-historik
 mac-addresses = MAC-adresser
 marital-statuses = Civilstand

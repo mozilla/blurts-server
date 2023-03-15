@@ -32,6 +32,7 @@ column-detected = OPDAGET
 column-status-badge-resolved = Løst
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiv
+breaches-resolve-heading = Løs denne datalæk:
 breaches-none-headline = Ingen datalæk fundet
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -47,15 +48,25 @@ breaches-all-resolved-cta-button = Tilføj mailadresse
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Den { $breachDate } blev { $companyName } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }. Denne datalæk omfattede: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox } Adgangskodehåndtering
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Besøg <a>{ $breachedCompanyUrl }</a> for at ændre din adgangskode og slå tofaktor-godkendelse til.
-breach-checklist-pw-body = Sørg for, at din adgangskode er unik og svær at gætte. Hvis adgangskoden bruges til andre konti, så skal du sørge for at ændre den dér også. <a>Adgangskode-håndtering i { -brand-firefox }</a> kan hjælpe dig med at holde styr på alle dine adgangskoder på en sikker måde.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Besøg virksomhedens websted for at ændre din adgangskode og slå tofaktor-godkendelse (2FA) til
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Sørg for, at din adgangskode er unik og svær at gætte. Hvis adgangskoden bruges til andre konti, så skal du sørge for at ændre den dér også. { $passwordManagerLink } kan hjælpe dig med at holde styr på alle dine adgangskoder på en sikker måde.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Beskyt din mailadresse med en tjeneste til maskering af mails som fx <a>{ -brand-relay }</a>.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Beskyt din mailadresse med en tjeneste til maskering af mails som fx { $firefoxRelayLink }.
 breach-checklist-email-body = På denne måde bliver din rigtige mailadresse holdt skjult, mens mails sendes videre til din indbakke.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -66,7 +77,12 @@ breach-checklist-ssn-header = Hold øje med, om dine kreditrapporter indeholder 
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Du kan også overveje, at indefryse din kredit på <a>Equifax</a>, <a>Experian</a> og <a>TransUnion</a> for at forhindre svindlere i at åbne nye konti i dit navn. Det er gratis og påvirker ikke dine kreditværdighed.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Du kan også overveje, at indefryse din kredit på { $equifaxLink }, { $experianLink } og { $transUnionLink } for at forhindre svindlere i at åbne nye konti i dit navn. Det er gratis og påvirker ikke dine kreditværdighed.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -85,7 +101,9 @@ breach-checklist-pin-body = Sørg for, at din nye pin-kode (og dine pin-koder i 
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Beskyt din identitet på internettet ved at bruge en VPN som fx <a>{ -brand-mozilla-vpn }</a>.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Beskyt din identitet på internettet ved at bruge en VPN som fx { $mozillaVpnLink }.
 breach-checklist-ip-body = Din IP-adresse (internetprotokol-adresse) identificerer din placering og din internetudbyder. En VPN kan skjule din rigtige IP-adresse, så du kan bruge internettet uden at afsløre din identitet.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -100,18 +118,22 @@ breach-checklist-dob-body = Det er nemt at finde fødselsdatoer i offentlige reg
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Beskyt dit telefonnummer med en maskerings-tjeneste som <a>{ -brand-relay }</a>, der skjuler dit rigtige telefonnummer.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Beskyt dit telefonnummer med en maskerings-tjeneste som{ $firefoxRelayLink }, der skjuler dit rigtige telefonnummer.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Opdater dine sikkerheds-spørgsmål på <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Opdater dine sikkerhedsspørgsmål på virksomhedens websted.
 breach-checklist-sq-body = Brug lange, vilkårlige svar - og gem dem et sikkert sted. Gør dette overalt, hvor du har brugt de samme sikkerhedsspørgsmål.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Opret unikke og stærke adgangskoder for alle konti, hvor du har genbrugt adgangskoder.
-breach-checklist-hp-body = Programmer til at håndtere adgangskoder, som fx <a>adgangskodehåndteringen i { -brand-firefox }</a> (som er gratis og indbygget i browseren { -brand-firefox }), kan hjælpe dig med at holde styr på alle dine adgangskoder, så du har sikker adgang til dem på alle dine enheder.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Programmer til at håndtere adgangskoder som fx { $passwordManagerLink } (der er gratis og indbygget i browseren { -brand-firefox }) kan hjælpe dig med at holde styr på alle dine adgangskoder, så du har sikker adgang til dem på alle dine enheder.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
