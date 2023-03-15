@@ -126,24 +126,17 @@ function makeBreachDetails (breach) {
 }
 
 export const breachDetailsPartial = data => `
-  <style>
-    li {
-      padding: 12px;
-    }
-  </style>
-  <main id="breach-detail">
+  <div>
     <div>
-      <div>
-        <img class="breach-detail-logo breach-logo" alt="${data.breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
-      </div>
-      <h2 class="headline breach-detail-headline txt-cntr">${data.breach.Title}</h2>
-      ${getBreachCategory(data.breach) === 'website'
-        ? `<a class="blue-link send-ga-ping" href="https://www.${data.breach.Domain}" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">www.${data.breach.Domain}</a>`
-        : ''}
-      <br>
-      <a class="breach-type demi" href="#what-is-this-breach">${getMessage(getBreachCategory(data.breach))}</a>
+      <img class="breach-detail-logo breach-logo" alt="${data.breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
     </div>
-  </main>
+    <h2>${data.breach.Title}</h2>
+    ${getBreachCategory(data.breach) === 'website-breach'
+      ? `<a href="https://www.${data.breach.Domain}" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">www.${data.breach.Domain}</a>`
+      : ''}
+    <br>
+    <a href="#what-is-this-breach">${getMessage(getBreachCategory(data.breach))}</a>
+  </div>
 
   <!-- Overview -->
   <section>
