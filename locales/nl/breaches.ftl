@@ -32,6 +32,7 @@ column-detected = GEDETECTEERD
 column-status-badge-resolved = Opgelost
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Actief
+breaches-resolve-heading = Dit datalek oplossen:
 breaches-none-headline = Geen datalekken gevonden
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -47,15 +48,25 @@ breaches-all-resolved-cta-button = E-mailadres toevoegen
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Op { $breachDate } is een lek opgetreden bij { $companyName }. Na ontdekking en verificatie van het lek, is het op { $addedDate } toegevoegd aan onze database. Dit lek omvatte: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox }-wachtwoordenbeheerder
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Ga naar <a>{ $breachedCompanyUrl }</a> om uw wachtwoord te wijzigen en tweefactorauthenticatie (2FA) in te schakelen.
-breach-checklist-pw-body = Zorg ervoor dat uw wachtwoord uniek en moeilijk te raden is. Als dit wachtwoord voor andere accounts wordt gebruikt, moet u het daar ook wijzigen. <a>{ -brand-firefox }-wachtwoordenbeheerder</a> kan u helpen al uw wachtwoorden veilig bij te houden.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Ga naar website van het bedrijf om uw wachtwoord te wijzigen en tweefactorauthenticatie (2FA) in te schakelen.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Zorg ervoor dat uw wachtwoord uniek en moeilijk te raden is. Als dit wachtwoord voor andere accounts wordt gebruikt, moet u het daar ook wijzigen. { $passwordManagerLink } kan u helpen al uw wachtwoorden veilig bij te houden.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Bescherm uw e-mail met een service voor het maskeren van e-mail, zoals <a>{ -brand-relay }</a>.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Bescherm uw e-mail met een service voor het maskeren van e-mail, zoals { $firefoxRelayLink }.
 breach-checklist-email-body = Dit kan uw echte e-mailadres verbergen, terwijl e-mailberichten naar uw echte Postvak IN worden doorgestuurd.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -66,7 +77,12 @@ breach-checklist-ssn-header = Controleer uw bankafschrift op rekeningen, leninge
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = U kunt ook overwegen uw tegoed op <a>Equifax</a>, <a>Experian</a> en <a>TransUnion</a> te bevriezen, om te voorkomen dat oplichters nieuwe accounts op uw naam openen. Het is gratis en heeft geen invloed op uw kredietscore.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = U kunt ook overwegen uw tegoed op { $equifaxLink }, { $experianLink } en { $transUnionLink } te bevriezen, om te voorkomen dat oplichters nieuwe accounts op uw naam openen. Het is gratis en heeft geen invloed op uw kredietscore.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -85,7 +101,9 @@ breach-checklist-pin-body = Zorg ervoor dat uw nieuwe pincode, of een andere pin
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Gebruik het internet privé met een VPN, zoals <a>{ -brand-mozilla-vpn }</a>.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Gebruik het internet privé met een VPN, zoals { $mozillaVpnLink }.
 breach-checklist-ip-body = Uw IP-adres (Internet Protocol-adres) geeft uw locatie en internetprovider aan. Een VPN kan uw echte IP-adres verbergen, zodat u privé internet kunt gebruiken.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -100,18 +118,22 @@ breach-checklist-dob-body = Geboortedata zijn gemakkelijk te vinden in openbare 
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Bescherm uw telefoonnummer met een maskeerservice zoals <a>{ -brand-relay }</a>, die uw echte telefoonnummer verbergt.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Bescherm uw telefoonnummer met een maskeerservice zoals { $firefoxRelayLink }, die uw echte telefoonnummer verbergt.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Werk uw beveiligingsvragen bij op <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Werk uw beveiligingsvragen op de website van het bedrijf bij.
 breach-checklist-sq-body = Gebruik lange, willekeurige antwoorden en bewaar ze op een veilige plaats. Doe dit overal waar u dezelfde beveiligingsvragen hebt gebruikt.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Creëer unieke, sterke wachtwoorden voor elke account waarvoor u wachtwoorden opnieuw hebt gebruikt.
-breach-checklist-hp-body = Een wachtwoordenbeheerder zoals de <a>{ -brand-firefox }-wachtwoordenbeheerder</a> (die gratis is en is ingebouwd in de { -brand-firefox }-browser) kan u helpen al uw wachtwoorden bij te houden en er veilig toegang toe te krijgen vanaf al uw apparaten.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Een wachtwoordenbeheerder zoals de { $passwordManagerLink } (die gratis is en is ingebouwd in de { -brand-firefox }-browser) kan u helpen al uw wachtwoorden bij te houden en er veilig toegang toe te krijgen vanaf al uw apparaten.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
