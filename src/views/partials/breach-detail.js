@@ -80,7 +80,7 @@ function makeRecommendationCards (breach) {
       <div class="rec-img ${r.recIconClassName}"></div>
       <h3>${getMessage(r.recommendationCopy.subhead)}</h3>
       <div>${getMessage(r.recommendationCopy.body)}</div>
-      ${r.cta ? `<a href="">${getMessage(r.recommendationCopy.cta)}</a>` : ''}
+      ${r.recommendationCopy.cta ? `<a href="">${getMessage(r.recommendationCopy.cta)}</a>` : ''}
     </li>`)
   ).join('')
 
@@ -89,7 +89,7 @@ function makeRecommendationCards (breach) {
       <div class="rec-img ${dataClass.recIconClassName}"></div>
       <h3>${getMessage(dataClass.recommendationCopy.subhead)}</h3>
       <div>${getMessage(dataClass.recommendationCopy.body)}</div>
-      ${dataClass.cta ? `<a href="">${getMessage(dataClass.recommendationCopy.cta)}</a>` : ''}
+      ${dataClass.recommendationCopy.cta ? `<a href="">${getMessage(dataClass.recommendationCopy.cta)}</a>` : ''}
     </li>`
   ).join('')
 
