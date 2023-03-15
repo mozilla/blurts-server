@@ -61,7 +61,7 @@ function updateLocale (requestedLocales) {
  * Default 'en' if localStorage hasn't initialized (called without client request)
  */
 function getLocale () {
-  return localStorage.getStore()?.get('locale') || 'en'
+  return localStorage.getStore()?.get('locale') || ['en']
 }
 
 /**
@@ -101,15 +101,15 @@ function getMessage (id, args) {
  * Defaults to en if message id not found in requested locale
  *
  * @param {string} id - The Fluent message id.
- * @param locale
+ * @param {string{}} localePreferences
  * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
  * @example
  * // Given FluentResource("hello = Hello, {$name}!")
  * getMessage (hello, {name: "Jane"})
  * // Returns "Hello, Jane!"
  */
-function getMessageWithLocale (id, locale, args) {
-  let bundle = fluentBundles[locale]
+function getMessageWithLocale (id, localePreferences, args) {
+  let bundle = fluentBundles[localePreferences[0]]
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
