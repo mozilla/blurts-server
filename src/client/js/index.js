@@ -29,12 +29,14 @@ Glean.initialize('monitor', sendGleanPings, {
   debug: { logPings: true }
 })
 
-userJourneyMetrics.pathname.set(window.location.href)
+userJourneyMetrics.pathname.set(window.location.pathname)
 userJourneyMetrics.visit.set(new Date())
 
-// FIXME safely derive stable ID
-// const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
-const monitorId = uuidv4()
+let monitorId = window.localStorage.getItem('monitorId')
+if (monitorId === null) {
+  monitorId = uuidv4()
+  window.localStorage.setItem('monitorId', monitorId)
+}
 
 monitorManagementMetrics.id.set(monitorId)
 monitorPings.userJourney.submit()

@@ -27,9 +27,11 @@ const state = new Proxy({
       breachMetrics.unresolvedCount.set(value)
     }
 
-    // FIXME safely derive stable ID
-    // const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
-    const monitorId = uuidv4()
+    let monitorId = window.localStorage.getItem('monitorId')
+    if (monitorId === null) {
+      monitorId = uuidv4()
+      window.localStorage.setItem('monitorId', monitorId)
+    }
     monitorManagementMetrics.id.set(monitorId)
     monitorPings.breach.submit()
 
