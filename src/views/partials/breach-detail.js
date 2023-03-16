@@ -75,7 +75,7 @@ function makeRecommendationCards (breach) {
   const dataClasses = getSortedDataClasses(breach)
 
   let output = dataClasses.priority.map(dataClass =>
-    dataClass.recommendations.map(r =>
+    dataClass.recommendations?.map(r =>
     `<li>
       <div class="rec-img ${r.recIconClassName}"></div>
       <h3>${getMessage(r.recommendationCopy.subhead)}</h3>
