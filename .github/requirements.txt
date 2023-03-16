@@ -1,1 +1,1 @@
-moz-fluent-linter==0.2.*
+moz-fluent-linter==0.4.*

@@ -2,9 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const unsubscribeButton = document.querySelector('.js-unsubscribe-button')
+const unsubscribePartial = document.querySelector('[data-partial="unsubscribe"]')
 
-unsubscribeButton.addEventListener('click', async event => {
+function init () {
+  unsubscribePartial.querySelector('.js-unsubscribe-button').addEventListener('click', handleEvent)
+}
+
+async function handleEvent (event) {
   // TODO: Use more specific messages when we reinstate
   // unsubscribing from all emails.
   const errorMessage = 'Unsubscribing failed.'
@@ -43,4 +47,6 @@ unsubscribeButton.addEventListener('click', async event => {
   } catch (error) {
     throw new Error(errorMessage)
   }
-})
+}
+
+if (unsubscribePartial) init()
