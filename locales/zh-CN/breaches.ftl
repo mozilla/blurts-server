@@ -51,7 +51,7 @@ breach-checklist-link-password-manager = { -brand-firefox } 密码管理器
 ## Prompts the user for changes when there is a breach detected of password
 
 # { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = 前往该网站更改密码并启用双重身份验证 (2FA)。
+breach-checklist-pw-header-2 = 前往该网站更改密码并启用双因子验证（2FA）。
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-pw-body-2 = 确保您的密码独一无二且不易被猜到。如果此密码也用于其他账户，请一并更改。 { $passwordManagerLink }可以帮助您安全管理密码。
@@ -110,6 +110,9 @@ breach-checklist-sq-body = 使用长且随机的答案，并将答案存放在�
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = 为重复使用密码的账户改用独一无二的强密码。
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = 密码管理器（例如免费内置于 { -brand-firefox } 浏览器中的 { $passwordManagerLink }）可以帮助您管理所有密码，并通过您的所有设备安全访问。
 
 ## Prompts the user for changes when there is a breach detected of other types
 
