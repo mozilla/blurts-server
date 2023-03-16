@@ -54,7 +54,7 @@ breach-checklist-link-password-manager = { -brand-firefox } 密码管理器
 breach-checklist-pw-header-2 = 前往该网站更改密码并启用双重身份验证 (2FA)。
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = 确保您的密码独一无二且不易被猜到。如果此密码还用于其他账户，请一并更改。 { $passwordManagerLink }可以帮助您安全管理密码。
+breach-checklist-pw-body-2 = 确保您的密码独一无二且不易被猜到。如果此密码也用于其他账户，请一并更改。 { $passwordManagerLink }可以帮助您安全管理密码。
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -97,9 +97,14 @@ breach-checklist-dob-body = 出生日期在公开记录中很容易找到，获�
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = 使用 { $firefoxRelayLink } 等服务来保护您的手机号，此类服务可隐藏您的真实手机号。
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = 在该网站更新您的安全问题。
 breach-checklist-sq-body = 使用长且随机的答案，并将答案存放在安全的地方。在其他使用相同密保问题的地方也应这样做。
 
 ## Prompts the user for changes when there is a breach detected of historical password

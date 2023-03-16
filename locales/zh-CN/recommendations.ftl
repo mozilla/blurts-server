@@ -20,9 +20,7 @@ rec-pw-2 = 重用同一个密码的后果是，当任意一处发生泄露，其
 rec-pw-3-subhead = 使用密码管理器随身携带密码
 # Link title
 rec-pw-3-cta = 获取 { -brand-lockwise }
-rec-pw-3-fx =
-    使用 { -brand-lockwise } 确保你能随时随地、安全地访问在 
-    { -brand-name } 中保存的密码——包括浏览器以外。
+rec-pw-3-fx = 使用 { -brand-lockwise }，随时随地安全访问您在 { -brand-name } 中保存的密码，浏览器外也能用！
 rec-pw-3-non-fx = 使用 { -brand-lockwise } 存放您所有的密码，并在手机或平板电脑安全地访问。
 # Recommendation subhead
 rec-pw-4-subhead = 设置双因子验证（2FA）
