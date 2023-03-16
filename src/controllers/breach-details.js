@@ -4,7 +4,7 @@
 
 import { getBreachByName } from '../utils/hibp.js'
 
-import { mainLayout } from '../views/main.js'
+import { guestLayout } from '../views/guestLayout.js'
 import { allBreachesPartial } from '../views/partials/all-breaches.js'
 import { breachDetailsPartial } from '../views/partials/breach-detail.js'
 
@@ -14,7 +14,7 @@ async function breachesPage (req, res) {
     breaches: req.app.locals.breaches
   }
 
-  res.send(mainLayout(data))
+  res.send(guestLayout(data))
 }
 
 async function breachDetailsPage (req, res) {
@@ -31,7 +31,7 @@ async function breachDetailsPage (req, res) {
     breach: featuredBreach
   }
 
-  res.send(mainLayout(data))
+  res.send(guestLayout(data))
 }
 
 export {
