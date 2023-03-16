@@ -93,7 +93,8 @@ if (settingsResendEmailLinks?.length) {
         const response = await fetch('/api/v1/user/resend-email', {
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': csrfToken
+            'x-csrf-token': csrfToken,
+            Accept: 'text/html' // set to request localized response
           },
           mode: 'same-origin',
           method: 'POST',
