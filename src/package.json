@@ -18,8 +18,6 @@
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
     "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",
     "convert:webp": "sh ./scripts/webp.sh",
-    "docs": "npm run docs:glean",
-    "docs:glean": "glean translate ../metrics.yaml ../pings.yaml -f markdown -o ../docs",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test e2e/",
     "lint": "npm run lint:css && npm run lint:js && npm run lint:glean",
