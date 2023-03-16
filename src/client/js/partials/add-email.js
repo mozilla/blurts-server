@@ -21,7 +21,8 @@ async function handleSubmit (e) {
     const res = await fetch('/api/v1/user/email', {
       headers: {
         'Content-Type': 'application/json',
-        'x-csrf-token': form.elements['csrf-token'].value
+        'x-csrf-token': form.elements['csrf-token'].value,
+        Accept: 'text/html' // set to request localized response
       },
       mode: 'same-origin',
       method: 'POST',

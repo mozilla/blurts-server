@@ -97,12 +97,11 @@ if (AppConstants.FXA_ENABLED) {
 // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
 imgSrc.push('www.googletagmanager.com')
 
-// disable forced https to allow localhost on Safari
 app.use((_req, res, _next) => {
   res.locals.nonce = crypto.randomBytes(16).toString('hex')
   helmet.contentSecurityPolicy({
     directives: {
-      upgradeInsecureRequests: isDev ? null : [],
+      upgradeInsecureRequests: isDev ? null : [], // disable forced https to allow localhost on Safari
       scriptSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
@@ -127,15 +126,16 @@ app.use(
   })
 )
 
-// When a text/html request is received, negotiate and store the requested language
-// Using asyncLocalStorage avoids having to pass req context down through every function (e.g. getMessage())
+// For text/html or */* (if Accept has not been set), negotiate and store the requested language.
+// This filter avoids running unecessary locale functions for every image/webp request, for example.
+// Using AsyncLocalStorage avoids having to pass req context down through every function (e.g. for getMessage())
 app.use((req, res, next) => {
-  if (!req.headers.accept?.startsWith('text/html')) return next()
+  if (!['text/html', '*/*'].includes(accepts(req).types()[0])) return next()
 
+  req.locale = updateLocale(accepts(req).languages())
   localStorage.run(new Map(), () => {
-    req.locale = updateLocale(accepts(req).languages())
     localStorage.getStore().set('locale', req.locale)
-    next()
+    next() // call next() inside this function to pass asyncLocalStorage context to other middleware.
   })
 })
 
