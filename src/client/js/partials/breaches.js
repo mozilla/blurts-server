@@ -2,12 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { v4 as uuidv4 } from 'uuid'
-
 import { capitalFirstLetter } from '../utils.js'
 
 import * as monitorPings from '../generated/pings.js'
-import * as monitorManagementMetrics from '../generated/monitor.js'
 import * as breachMetrics from '../generated/breach.js'
 
 const breachesPartial = document.querySelector("[data-partial='breaches']")
@@ -27,12 +24,6 @@ const state = new Proxy({
       breachMetrics.unresolvedCount.set(value)
     }
 
-    let monitorId = window.localStorage.getItem('monitorId')
-    if (monitorId === null) {
-      monitorId = uuidv4()
-      window.localStorage.setItem('monitorId', monitorId)
-    }
-    monitorManagementMetrics.id.set(monitorId)
     monitorPings.breach.submit()
 
     if (target[key] === value) return true

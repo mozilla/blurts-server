@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Glean from '@mozilla/glean/web'
-import { v4 as uuidv4 } from 'uuid'
 
 import './scroll-observer.js'
 import './resize-observer.js'
@@ -20,7 +19,6 @@ import './dialog.js'
 import './utils.js'
 
 import * as monitorPings from './generated/pings.js'
-import * as monitorManagementMetrics from './generated/monitor.js'
 import * as userJourneyMetrics from './generated/userJourney.js'
 
 Glean.setDebugViewTag('monitor-dev')
@@ -32,11 +30,4 @@ Glean.initialize('monitor', sendGleanPings, {
 userJourneyMetrics.pathname.set(window.location.pathname)
 userJourneyMetrics.visit.set(new Date())
 
-let monitorId = window.localStorage.getItem('monitorId')
-if (monitorId === null) {
-  monitorId = uuidv4()
-  window.localStorage.setItem('monitorId', monitorId)
-}
-
-monitorManagementMetrics.id.set(monitorId)
 monitorPings.userJourney.submit()
