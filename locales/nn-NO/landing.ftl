@@ -18,6 +18,7 @@ protect-accounts = Beskytt kontoane dine
 
 ## Your privacy is safe with us
 
+safe-with-us = Personvernet dit er trygt hos oss
 learn-more-mission = Les meir om oppdraget vårt
 
 ## Top questions about Firefox Monitor

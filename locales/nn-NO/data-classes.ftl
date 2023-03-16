@@ -34,6 +34,9 @@ customer-interactions = Kundesamhandling
 dates-of-birth = Fødselsdatoar
 deceased-date = Dødsdato
 deceased-statuses = Dødsannonsar
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Leveringsinstruksjonar
 device-information = Einingsinformasjon
 device-serial-numbers = Serienummer på einingar
 device-usage-tracking-data = Sporingsdata for bruk av einingar
@@ -74,6 +77,8 @@ job-titles = Jobbtitlar
 # This string refers to vehicle license plates. 
 licence-plates = Bilskilt
 living-costs = Levekostnadar
+# This string refers to financial loans.
+loan-information = Låneinformasjon
 login-histories = Innloggingshistorikk
 mac-addresses = MAC-adresser
 marital-statuses = Sivilstand
