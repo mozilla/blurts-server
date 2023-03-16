@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const search = document.getElementById('search')
+  const search = document.getElementById('breach-search')
   search.value = ''
 
-  search.addEventListener('keyup', (event) => {
+  const filter = () => {
     const breachCards = document.querySelectorAll('.breach-card')
     if (search.value.length === 0) {
       breachCards.forEach(card => (card.style.display = ''))
@@ -19,5 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       })
     }
-  })
+  }
+
+  search.addEventListener('keyup', () => filter())
+  search.form.addEventListener('submit', () => filter())
 })

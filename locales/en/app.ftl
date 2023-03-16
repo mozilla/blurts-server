@@ -79,6 +79,9 @@ compromised-accounts = Compromised accounts:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Compromised data:
 
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Exposed data:
+
 unsub-headline = Unsubscribe from { -product-name-nowrap }
 unsub-blurb = This will remove your email from the { -product-name-nowrap } list and you will no longer receive alerts when new breaches are announced.
 unsub-button = Unsubscribe
@@ -400,7 +403,8 @@ fb-comp-and-others =
 no-other-breaches-found = No other breaches found from a basic search.
 
 no-results-blurb = Sorry, that breach is not in our database.
-all-breaches-headline = All breaches in { -product-name }
+all-breaches-headline-2 = All breaches detected by { -product-name }
+all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
 
 # This string contains nested markup that is later used to style and link the text inside of it.

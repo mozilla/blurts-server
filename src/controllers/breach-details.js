@@ -11,7 +11,8 @@ import { breachDetailsPartial } from '../views/partials/breach-detail.js'
 async function breachesPage (req, res) {
   const data = {
     partial: allBreachesPartial,
-    breaches: req.app.locals.breaches
+    breaches: req.app.locals.breaches,
+    breachLogos: req.app.locals.breachLogoMap
   }
 
   res.send(guestLayout(data))
