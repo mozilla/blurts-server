@@ -189,6 +189,8 @@ async function downloadBreachIcons (breaches) {
             resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
           })
           file.on('error', (error) => reject(error))
+        }).on('error', (_error) => {
+          resolve(null)
         })
       })
     })
