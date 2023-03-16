@@ -14,7 +14,6 @@ import cookieParser from 'cookie-parser'
 import rateLimit from 'express-rate-limit'
 import Sentry from '@sentry/node'
 import '@sentry/tracing'
-import Glean from '@mozilla/glean/node'
 
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
@@ -25,10 +24,6 @@ import { loadBreachesIntoApp } from './utils/hibp.js'
 import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
-
-import * as monitorPings from './generated/pings.js'
-import * as monitorManagementMetrics from './generated/monitor.js'
-import * as userJourneyMetrics from './generated/userJourney.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
@@ -57,19 +52,6 @@ const staticPath =
   process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
 
 await initFluentBundles()
-
-// If GLEAN_DEBUG_VIEW is true, send pings to the Glean Debug view:
-// https://mozilla.github.io/glean/book/user/debugging/index.html
-//
-// Otherwise, do not send pings if in dev mode.
-if (AppConstants.GLEAN_DEBUG_VIEW) {
-  Glean.setDebugViewTag('monitor-dev')
-}
-const sendGleanPings = (!isDev || Boolean(AppConstants.GLEAN_DEBUG_VIEW))
-Glean.initialize('monitor', sendGleanPings, {
-  debug: { logPings: isDev }
-})
-console.debug('Glean initialized, sending pings:', sendGleanPings)
 
 async function getRedisStore () {
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
@@ -131,7 +113,8 @@ app.use((_req, res, _next) => {
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
         'https://*.google-analytics.com',
         'https://*.analytics.google.com',
-        'https://*.googletagmanager.com'
+        'https://*.googletagmanager.com',
+        'https://incoming.telemetry.mozilla.org'
       ]
     }
   })(_req, res, _next)

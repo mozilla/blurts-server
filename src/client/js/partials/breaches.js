@@ -2,7 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { v4 as uuidv4 } from 'uuid'
+
 import { capitalFirstLetter } from '../utils.js'
+
+import * as monitorPings from '../generated/pings.js'
+import * as monitorManagementMetrics from '../generated/monitor.js'
+import * as breachMetrics from '../generated/breach.js'
 
 const breachesPartial = document.querySelector("[data-partial='breaches']")
 const chartColors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0', '#9e9e9e']
@@ -15,6 +21,18 @@ const state = new Proxy({
   emailTotal: null
 }, {
   set (target, key, value) {
+    if (key === 'resolvedCount') {
+      breachMetrics.resolvedCount.set(value)
+    } else if (key === 'unresolvedCount') {
+      breachMetrics.unresolvedCount.set(value)
+    }
+
+    // FIXME safely derive stable ID
+    // const monitorId = uuidv5(req.user.fxa_uid, AppConstants.GLEAN_UUID_NAMESPACE)
+    const monitorId = uuidv4()
+    monitorManagementMetrics.id.set(monitorId)
+    monitorPings.breach.submit()
+
     if (target[key] === value) return true
 
     target[key] = value
@@ -92,6 +110,7 @@ async function updateBreachStatus (input) {
 
     const data = await res.json()
     input.closest('.breach-row').dataset.status = data[affectedEmail][breachId].isResolved ? 'resolved' : 'unresolved'
+
     renderResolvedCounts()
   } catch (e) {
     // TODO: localize error messages

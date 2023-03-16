@@ -19,4 +19,4 @@ dist
 state.json
 src/client/images/logo_cache/
 src/.venv
-src/generated
+src/client/js/generated

@@ -10,10 +10,6 @@ import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 import { getCountryCode } from '../utils/country-code.js'
 
-import * as monitorPings from '../generated/pings.js'
-import * as monitorManagementMetrics from '../generated/monitor.js'
-import * as breachMetrics from '../generated/breach.js'
-
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
   const breachesData = await getAllEmailsAndBreaches(req.user, req.app.locals.breaches)
@@ -123,10 +119,6 @@ async function putBreachResolution (req, res) {
     }
   }
 
-  breachMetrics.resolution.record({
-    resolved: isResolved
-  })
-
   // set useBreachId to mark latest version of breach resolution
   // without this line, the get call might assume recency index
   currentBreachResolution.useBreachId = true
@@ -141,12 +133,6 @@ async function putBreachResolution (req, res) {
   const userBreachStats = breachStatsV1(verifiedEmails)
 
   await updateBreachStats(sessionUser.id, userBreachStats)
-
-  breachMetrics.resolvedCount.set(userBreachStats.numBreaches.numResolved)
-  breachMetrics.unresolvedCount.set(userBreachStats.numBreaches.numUnresolved)
-
-  monitorManagementMetrics.id.set(req.user.monitorId)
-  monitorPings.breach.submit()
 
   res.json(updatedSubscriber.breach_resolution)
 }
