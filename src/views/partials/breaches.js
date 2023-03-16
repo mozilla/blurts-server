@@ -39,10 +39,7 @@ function createBreachRows (data, logos) {
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span class='breach-company'>
-            ${logo}
-            ${breach.Title}
-          </span>
+          <span class='breach-company'>${logo} ${breach.Title}</span>
           <span>${shortList.format(dataClassesTranslated)}</span>
           <span>
             <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
