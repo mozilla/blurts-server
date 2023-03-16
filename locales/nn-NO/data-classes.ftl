@@ -84,7 +84,11 @@ names = Namn
 nationalities = Nasjonalitetar
 net-worths = Formue
 nicknames = Kallenamn
+# no data classes found
+none-data-class = Ingen
 occupations = Yrke
+# various data classes grouped together
+other-data-class = Anna
 parenting-plans = Foreldreplanar
 partial-credit-card-data = Delvis kreditkortdata
 partial-dates-of-birth = Delvise fødselsdatoar
