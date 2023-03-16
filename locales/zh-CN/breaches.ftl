@@ -28,6 +28,7 @@ column-detected = 监测到
 column-status-badge-resolved = 已解决
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = 未完成任务
+breaches-resolve-heading = 处理此外泄事件
 breaches-none-headline = 未发现数据泄漏
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -43,15 +44,20 @@ breaches-all-resolved-cta-button = 添加电子邮件地址
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $companyName } 在 { $breachDate } 遭遇了数据外泄。我们发现并确认了该外泄事件，并于 { $addedDate } 将其添加到数据库中。泄露的数据包括 { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-password-manager = { -brand-firefox } 密码管理器
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = 前往 <a>{ $breachedCompanyUrl }</a> 更改密码并启用双因子验证（2FA）。
-breach-checklist-pw-body = 请确保您的密码独一无二且难以猜到。如果这个密码也在其它账户上使用，请一并更换掉。<a>{ -brand-firefox } 密码管理器</a>可以帮助您安全地监控所有密码。
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = 前往该网站更改密码并启用双因子验证（2FA）。
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = 确保您的密码独一无二且不易被猜到。如果此密码也用于其他账户，请一并更改。 { $passwordManagerLink }可以帮助您安全管理密码。
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = 使用 <a>{ -brand-relay }</a> 等马甲邮箱服务来保护您的邮箱。
 breach-checklist-email-body = 这可以将电子邮件转发到您的真实收件箱，隐藏您的真实邮箱地址。
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -59,10 +65,6 @@ breach-checklist-email-body = 这可以将电子邮件转发到您的真实收�
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = 关注您的信用报告，查找不认识的银行账户、贷款和信用卡。
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
-# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = 您还可以考虑冻结您在 <a>Equifax</a>、<a>Experian</a> 和 <a>TransUnion</a> 上的信用，以阻止诈骗者以您的名义开设新账户。该服务免费提供，不会影响您的信用评分。
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -81,7 +83,6 @@ breach-checklist-pin-body = 确保您的新 PIN 以及任何其他 PIN 都不包
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = 使用 <a>{ -brand-mozilla-vpn }</a> 等 VPN 来私密访问互联网 。
 breach-checklist-ip-body = 您的 IP 地址（互联网协议地址）可精准反映您的位置和互联网服务提供商，而 VPN 可以隐藏您的真实 IP 地址，因此您可以私密访问互联网。
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -96,18 +97,22 @@ breach-checklist-dob-body = 出生日期在公开记录中很容易找到，获�
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = 使用 <a>{ -brand-relay }</a> 等马甲服务来保护您的电话号码，其可掩藏您的真实电话号码。
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = 使用 { $firefoxRelayLink } 等服务来保护您的手机号，此类服务可隐藏您的真实手机号。
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = 在 <a>{ $breachedCompanyUrl }</a> 上更新您的密保问题。
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = 在该网站更新您的安全问题。
 breach-checklist-sq-body = 使用长且随机的答案，并将答案存放在安全的地方。在其他使用相同密保问题的地方也应这样做。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = 为重复使用密码的账户改用独一无二的强密码。
-breach-checklist-hp-body = <a>{ -brand-firefox } 密码管理器</a>（内置于 { -brand-firefox } 浏览器中且可免费使用）等密码管理器可以帮助您保存全部密码并在您的所有设备间安全同步。
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = 密码管理器（例如免费内置于 { -brand-firefox } 浏览器中的 { $passwordManagerLink }）可以帮助您管理所有密码，并通过您的所有设备安全访问。
 
 ## Prompts the user for changes when there is a breach detected of other types
 

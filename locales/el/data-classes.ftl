@@ -77,6 +77,8 @@ job-titles = Τίτλοι επαγγελμάτων
 # This string refers to vehicle license plates. 
 licence-plates = Πινακίδες οχημάτων
 living-costs = Έξοδα διαβίωσης
+# This string refers to financial loans.
+loan-information = Πληροφορίες δανείων
 login-histories = Ιστορικά σύνδεσης
 mac-addresses = Διευθύνσεις MAC
 marital-statuses = Οικογενειακές καταστάσεις
@@ -87,10 +89,15 @@ names = Ονόματα
 nationalities = Εθνικότητες
 net-worths = Καθαρές αξίες
 nicknames = Ψευδώνυμα
+# no data classes found
+none-data-class = Καμία
 occupations = Επαγγέλματα
+# various data classes grouped together
+other-data-class = Άλλη
 parenting-plans = Γονικά σχέδια
 partial-credit-card-data = Μερικά δεδομένα πιστωτικών καρτών
 partial-dates-of-birth = Μερικές ημερομηνίες γέννησης
+partial-phone-numbers = Τμήματα αριθμών τηλεφώνου
 passport-numbers = Αριθμοί διαβατηρίου
 password-hints = Υποδείξεις κωδικών πρόσβασης
 password-strengths = Ισχύες κωδικών πρόσβασης
@@ -140,6 +147,7 @@ user-website-urls = URLs ιστοσελίδων χρήστη
 usernames = Ονόματα χρηστών
 utility-bills = Κοινόχρηστα
 vehicle-details = Λεπτομέρειες οχήματος
+vehicle-identification-numbers-vins = Αριθμοί αναγνώρισης οχήματος (VIN)
 website-activity = Δραστηριότητα ιστοσελίδας
 work-habits = Εργασιακές συνήθειες
 years-of-birth = Έτη γεννήσεων

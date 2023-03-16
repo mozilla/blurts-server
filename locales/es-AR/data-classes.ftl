@@ -77,6 +77,8 @@ job-titles = Cargos laborales
 # This string refers to vehicle license plates. 
 licence-plates = Chapa patente
 living-costs = Costos de vida
+# This string refers to financial loans.
+loan-information = Información del préstamo
 login-histories = Historiales de inicio de sesión
 mac-addresses = Direcciones MAC
 marital-statuses = Estados civiles

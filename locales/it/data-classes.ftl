@@ -77,6 +77,8 @@ job-titles = qualifiche lavorative
 # This string refers to vehicle license plates. 
 licence-plates = numeri di targa
 living-costs = costi della vita
+# This string refers to financial loans.
+loan-information = informazioni sui prestiti
 login-histories = cronologie degli accessi
 mac-addresses = indirizzi MAC
 marital-statuses = stati coniugali
