@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Incidensben érintett adatok
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Adatvédelmi incidensek a következőnél: { $email-select }
 # $count is the number of emails a user has added out of $total allowed
@@ -45,15 +47,14 @@ breaches-all-resolved-cta-button = E-mail-cím hozzáadása
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = A(z) { $companyName } adatvédelmi incidensben volt érintett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }. Ez az incidens a következőket tartalmazta: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Keresse fel a <a>{ $breachedCompanyUrl }</a> weboldalt, hogy módosítsa a jelszavát és engedélyezze a kétfaktoros hitelesítést (2FA).
-breach-checklist-pw-body = Győződjön meg arról, hogy a jelszava egyedi és nehezen kitalálható. Ha ezt a jelszót más fiókoknál is használja, akkor ott is változtassa meg. A <a>{ -brand-firefox } Jelszókezelő</a> segítségével biztonságosan nyomon követheti az összes jelszavát.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Védje e-mailjeit egy e-mail maszkolási szolgáltatással, például a <a>{ -brand-relay }</a> segítségével.
 breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben a leveleket a valódi postafiókjába továbbítja.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -79,7 +80,6 @@ breach-checklist-pin-body = Győződjön meg arról, hogy az új PIN-kód vagy b
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Használja privát módon az internetet egy VPN-nel, például a <a>{ -brand-mozilla-vpn }-nel</a>.
 breach-checklist-ip-body = Az Ön IP-címe (internetprotokoll címe) meghatározza a tartózkodási helyét és az internetszolgáltatót. A VPN elrejtheti a valós IP-címét, így privát módon használhatja az internetet.
 
 ## Prompts the user for changes when there is a breach detected of physical address
