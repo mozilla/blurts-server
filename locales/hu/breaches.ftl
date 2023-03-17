@@ -32,6 +32,7 @@ column-detected = ÉSZLELVE
 column-status-badge-resolved = Megoldva
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktív
+breaches-resolve-heading = Ezen adatvédelmi incidens megoldása:
 breaches-none-headline = Nem találhatók adatvédelmi incidensek
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -49,12 +50,23 @@ breach-description = A(z) { $companyName } adatvédelmi incidensben volt érinte
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox } jelszókezelő
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Keresse fel a cég weboldalát, hogy módosítsa a jelszavát és engedélyezze a kétfaktoros hitelesítést (2FA).
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Győződjön meg arról, hogy a jelszava egyedi és nehezen kitalálható. Ha ezt a jelszót más fiókoknál is használja, akkor ott is változtassa meg. A { $passwordManagerLink } segítségével biztonságosan nyomon követheti az összes jelszavát.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Védje e-mailjeit egy e-mail maszkolási szolgáltatással, például a { $firefoxRelayLink } segítségével.
 breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben a leveleket a valódi postafiókjába továbbítja.
 
 ## Prompts the user for changes when there is a breach detected of social security number
