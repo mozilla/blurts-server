@@ -46,7 +46,9 @@ breach-description = { $companyName } 在 { $breachDate } 遭遇了数据外泄�
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
+breach-checklist-link-firefox-relay = { -brand-relay }
 breach-checklist-link-password-manager = { -brand-firefox } 密码管理器
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
