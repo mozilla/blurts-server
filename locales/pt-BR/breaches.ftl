@@ -32,6 +32,7 @@ column-detected = DETECTADO
 column-status-badge-resolved = Resolvido
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Ativo
+breaches-resolve-heading = Resolver este vazamento:
 breaches-none-headline = Nenhum vazamento encontrado
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -47,15 +48,19 @@ breaches-all-resolved-cta-button = Adicionar endereço de email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Em { $breachDate }, houve vazamento em { $companyName }. Depois que o vazamento foi descoberto e confirmado, ele foi adicionado à nossa base de dados em { $addedDate }. Este vazamento incluiu: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Gerenciador de senhas do { -brand-firefox }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Acesse <a>{ $breachedCompanyUrl }</a> para alterar sua senha e ativar a autenticação em duas etapas.
-breach-checklist-pw-body = Garanta que sua senha seja única e difícil de adivinhar. Se esta senha for usada em qualquer outra conta, certifique-se de alterar lá também. O <a>gerenciador de senhas do { -brand-firefox }</a> pode ajudar a manter o controle de todas as suas senhas com segurança.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Acesse o site da empresa para alterar sua senha e ativar a autenticação em duas etapas.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Proteja seu email com um serviço de máscaras de email, como o <a>{ -brand-relay }</a>.
 breach-checklist-email-body = Isso pode ocultar seu endereço de email verdadeiro, encaminhando emails para sua caixa de entrada real.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -63,10 +68,6 @@ breach-checklist-email-body = Isso pode ocultar seu endereço de email verdadeir
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Monitore seu relatório de crédito, verifique se há contas, empréstimos ou cartões de crédito que você não reconhece.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
-# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Você também pode congelar seu crédito em <a>Equifax</a>, <a>Experian</a> e <a>TransUnion</a> para impedir que golpistas abram novas contas em seu nome. É gratuito e não afeta sua avaliação de crédito.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -85,7 +86,6 @@ breach-checklist-pin-body = Certifique-se de que seu novo PIN, ou qualquer outro
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Use a internet de forma privativa com uma VPN, como o <a>{ -brand-mozilla-vpn }</a>.
 breach-checklist-ip-body = Seu endereço IP (endereço de protocolo da internet) identifica sua localização e o provedor de serviços de internet. Uma VPN pode ocultar seu endereço IP real para você poder usar a internet com privacidade.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -100,18 +100,16 @@ breach-checklist-dob-body = Datas de nascimento são fáceis de encontrar em reg
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Proteja seu número de celular com um serviço de máscaras como o <a>{ -brand-relay }</a>, que oculta seu número de celular verdadeiro.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Atualize suas perguntas de segurança em <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Mude suas perguntas de segurança no site da empresa.
 breach-checklist-sq-body = Use respostas longas e aleatórias e guarde em algum lugar seguro. Faça isso em qualquer outro lugar em que você usou as mesmas perguntas de segurança.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crie senhas fortes e exclusivas em contas onde você reusou a mesma senha.
-breach-checklist-hp-body = Um gerenciador de senhas, como o <a>gerenciador de senhas do { -brand-firefox }</a> (gratuito e integrado ao navegador { -brand-firefox }), pode ajudar a controlar todas as suas senhas e acessar com segurança em todos os seus dispositivos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
