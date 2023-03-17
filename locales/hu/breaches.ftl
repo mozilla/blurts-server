@@ -52,7 +52,7 @@ breach-description = A(z) { $companyName } adatvédelmi incidensben volt érinte
 
 breach-checklist-link-firefox-relay = { -brand-relay }
 breach-checklist-link-password-manager = { -brand-firefox } jelszókezelő
-breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }-nel
 
 ## Prompts the user for changes when there is a breach detected of password
 
@@ -92,6 +92,9 @@ breach-checklist-pin-body = Győződjön meg arról, hogy az új PIN-kód vagy b
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Használja privát módon az internetet egy VPN-nel, például a { $mozillaVpnLink }.
 breach-checklist-ip-body = Az Ön IP-címe (internetprotokoll címe) meghatározza a tartózkodási helyét és az internetszolgáltatót. A VPN elrejtheti a valós IP-címét, így privát módon használhatja az internetet.
 
 ## Prompts the user for changes when there is a breach detected of physical address

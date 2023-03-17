@@ -9,6 +9,7 @@ get-started = Kezdő lépések
 ## Why use Firefox Monitor?
 
 why-use-monitor = Miért érdemes a { -brand-fx-monitor }t használni?
+identifying-breaches = Az adatvédelmi incidensek azonosítása és megoldása fontos lépés az online adatvédelmének biztosításában.
 protect-account = Védje meg a fiókjait
 
 ## Here’s how it works
