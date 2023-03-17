@@ -56,6 +56,9 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Cura que tu contrasigno es unic e difficile a divinar. Si iste contrasigno es usate con altere contos, non oblida de cambiar lo in illos tamben. { $passwordManagerLink } pote adjutar te a tener tracia de tote tu contrasignos in securitate.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -106,6 +109,9 @@ breach-checklist-sq-body = Usa longe, aleatori responsas, e conserva los in un l
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crea unic, contrasignos forte pro ulle conto ubi tu ha re-usate contrasignos.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Un gestor de contrasignos como { $passwordManagerLink } (que es gratuite e integrate al navigator { -brand-firefox }) pote adjutar te a tener tracia de tote tu contrasignos e acceder los con securitate ab tote tu apparatos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
