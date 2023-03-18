@@ -28,6 +28,7 @@ column-detected = PHÁT HIỆN
 column-status-badge-resolved = Đã giải quyết
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Hoạt động
+breaches-resolve-heading = Giải quyết vụ rò rỉ này:
 breaches-none-headline = Không tìm thấy rò rỉ dữ liệu
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -43,15 +44,25 @@ breaches-all-resolved-cta-button = Thêm địa chỉ email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Vào { $breachDate }, { $companyName } đã bị xâm phạm. Sau khi rò rỉ dữ liệu được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi vào { $addedDate }. Rò rỉ này bao gồm: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Trình quản lý mật khẩu { -brand-firefox }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Truy cập <a>{ $breachedCompanyUrl }</a> để thay đổi mật khẩu của bạn và bật xác thực hai yếu tố (2FA).
-breach-checklist-pw-body = Đảm bảo rằng mật khẩu của bạn là duy nhất và khó đoán. Nếu mật khẩu này được sử dụng trên bất kỳ tài khoản nào khác, hãy đảm bảo bạn cũng thay đổi mật khẩu đó. <a>Trình quản lý mật khẩu của { -brand-firefox }</a> có thể giúp bạn theo dõi tất cả mật khẩu của mình một cách an toàn.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Truy cập trang web của công ty để thay đổi mật khẩu của bạn và bật xác thực hai yếu tố (2FA).
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Đảm bảo rằng mật khẩu của bạn là duy nhất và khó đoán. Nếu mật khẩu này được sử dụng trên bất kỳ tài khoản nào khác, hãy đảm bảo bạn cũng thay đổi mật khẩu đó. { $passwordManagerLink } có thể giúp bạn theo dõi tất cả mật khẩu của mình một cách an toàn.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Bảo vệ email của bạn bằng dịch vụ tạo mặt nạ email như <a>{ -brand-relay }</a>.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Bảo vệ email của bạn bằng dịch vụ tạo mặt nạ email như { $firefoxRelayLink }.
 breach-checklist-email-body = Điều này có thể ẩn địa chỉ email thực của bạn trong khi chuyển tiếp email đến hộp thư đến thực của bạn.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -62,7 +73,12 @@ breach-checklist-ssn-header = Theo dõi báo cáo tín dụng của bạn để 
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Bạn cũng có thể xem xét đóng băng tín dụng của mình trên <a>Equifax</a>, <a>Experian</a> và <a>TransUnion</a> để ngăn những kẻ lừa đảo mở tài khoản mới dưới tên của bạn. Nó miễn phí và sẽ không ảnh hưởng đến điểm tín dụng của bạn.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Bạn cũng có thể xem xét đóng băng tín dụng của mình trên { $equifaxLink }, { $experianLink } và { $transUnionLink } để ngăn những kẻ lừa đảo mở tài khoản mới dưới tên của bạn. Nó miễn phí và sẽ không ảnh hưởng đến điểm tín dụng của bạn.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -81,7 +97,9 @@ breach-checklist-pin-body = Đảm bảo mã PIN mới của bạn hoặc bất 
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Sử dụng Internet một cách riêng tư với VPN, chẳng hạn như <a>{ -brand-mozilla-vpn }</a>.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Sử dụng internet riêng tư với VPN, chẳng hạn như { $mozillaVpnLink }.
 breach-checklist-ip-body = Địa chỉ IP của bạn (địa chỉ giao thức Internet) xác định chính xác vị trí của bạn và nhà cung cấp dịch vụ internet. VPN có thể ẩn địa chỉ IP thực của bạn để bạn có thể sử dụng Internet một cách riêng tư.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -96,18 +114,22 @@ breach-checklist-dob-body = Bạn có thể dễ dàng tìm thấy ngày sinh tr
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Bảo vệ số điện thoại của bạn bằng dịch vụ mặt nạ như <a>{ -brand-relay }</a>, dịch vụ này sẽ ẩn số điện thoại thực của bạn.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Bảo vệ số điện thoại của bạn bằng dịch vụ che giấu như { $firefoxRelayLink }, dịch vụ này sẽ ẩn số điện thoại thực của bạn.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Cập nhật các câu hỏi bảo mật của bạn trên <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Cập nhật các câu hỏi bảo mật của bạn trên trang web của công ty.
 breach-checklist-sq-body = Sử dụng các câu trả lời dài, ngẫu nhiên và cất chúng ở nơi an toàn. Làm điều này ở bất kỳ nơi nào khác mà bạn đã sử dụng cùng một câu hỏi bảo mật.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Tạo mật khẩu mạnh, duy nhất cho bất kỳ tài khoản nào mà bạn đã sử dụng lại mật khẩu.
-breach-checklist-hp-body = Trình quản lý mật khẩu như <a>của { -brand-firefox }</a> (miễn phí và được tích hợp sẵn trong trình duyệt { -brand-firefox }) có thể giúp bạn theo dõi tất cả mật khẩu của mình và truy cập chúng một cách an toàn từ tất cả các thiết bị của bạn.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Trình quản lý mật khẩu như { $passwordManagerLink } (miễn phí và được tích hợp sẵn trong trình duyệt { -brand-firefox }) có thể giúp bạn theo dõi tất cả mật khẩu của mình và truy cập chúng một cách an toàn từ tất cả các thiết bị của bạn.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
