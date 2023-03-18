@@ -56,12 +56,17 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Va al sito web del compania pro cambiar tu contrasigno e activar le authentication a duo factores (A2F).
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-pw-body-2 = Cura que tu contrasigno es unic e difficile a divinar. Si iste contrasigno es usate con altere contos, non oblida de cambiar lo in illos tamben. { $passwordManagerLink } pote adjutar te a tener tracia de tote tu contrasignos in securitate.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Protege tu email con un servicio de mascas de email como { $firefoxRelayLink }.
 breach-checklist-email-body = Isto pote celar tu ver adresse de e-mail, reinviante le messages a tu ver cassa de entrata.
 
 ## Prompts the user for changes when there is a breach detected of social security number
