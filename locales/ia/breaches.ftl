@@ -92,6 +92,9 @@ breach-checklist-pin-body = Verifica que tu nove PIN, o omne altere PIN, non inc
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Usa internet privatemente con un VPN, como { $mozillaVpnLink }.
 breach-checklist-ip-body = Tu adresse IP (adresse de Protocollo Internet) indica tu position e tu fornitor del servicio internet. Un VPN pote celar tu real adresse IP assi que tu pote usar internet reservatemente.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -106,9 +109,14 @@ breach-checklist-dob-body = Le datas de nascentia es facile a trovar in registro
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Protege tu numero de telephono con un servicio mascante como { $firefoxRelayLink }, que cela tu ver numero de telephono.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Actualisa tu questiones de securitate in le sito web del compania.
 breach-checklist-sq-body = Usa longe, aleatori responsas, e conserva los in un loco secur. Face lo ubique tu ha usate le mesme demandas de securitate.
 
 ## Prompts the user for changes when there is a breach detected of historical password
