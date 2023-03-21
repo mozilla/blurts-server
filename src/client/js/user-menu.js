@@ -32,7 +32,7 @@ function handleMenuButton () {
     userMenuWrapper.addEventListener('blur', (event) => handleBlur(event, handleMenuButton))
     userMenuWrapper.focus()
 
-    gtag('event', 'click', { event_category: 'button', event_label: 'user menu open' })
+    gtag('event', 'User Menu Open')
   } else {
     // Hide popover
     userMenuPopover.setAttribute('aria-expanded', false)
@@ -40,7 +40,7 @@ function handleMenuButton () {
 
     userMenuButton.focus()
 
-    gtag('event', 'click', { event_category: 'button', event_label: 'user menu close' })
+    gtag('event', 'User Menu Close')
   }
 }
 

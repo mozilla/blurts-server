@@ -48,7 +48,7 @@ async function handleEvent (event) {
     throw new Error(errorMessage)
   }
 
-  gtag('event', 'click', { event_category: 'button', event_label: 'unsubscribe' })
+  gtag('event', 'Unsubscribe')
 }
 
 if (unsubscribePartial) init()

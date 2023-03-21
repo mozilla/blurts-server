@@ -57,16 +57,12 @@ function handleEvent (e) {
       break
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
       updateBreachStatus(e.target)
-      gtag('event', 'click',
-        {
-          event_category: 'button',
-          event_label: e.target.checked ? 'breach item resolved' : 'breach item unresolved'
-        })
+      gtag('event', e.target.checked ? 'Breach Item Resolved' : 'Breach Item Unresolved')
       break
     case e.type === 'email-added':
       state.emailCount = e.detail.newEmailCount
       renderZeroState()
-      gtag('event', 'click', { event_category: 'form_submit', event_label: 'add email' })
+      gtag('event', 'Add Email')
       break
   }
 }
