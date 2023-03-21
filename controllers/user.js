@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 'use strict'
 
 const AppConstants = require('../app-constants')
@@ -80,7 +84,18 @@ async function updateCommunicationOptions (req, res) {
   return res.json('Comm options updated')
 }
 
+// Disable the ability to resolve breaches if we are in maintenance mode.
+function guardResolveBreach (_req, res) {
+  return res.status(403).json({
+    errorMessage: 'Ongoing maintenance: The ability to resolve breaches is temporarily disabled.'
+  })
+}
+
 async function resolveBreach (req, res) {
+  if (AppConstants.MAINTENANCE_MODE_ENABLED) {
+    guardResolveBreach(req, res)
+  }
+
   const sessionUser = req.user
   // TODO: verify that req.body.emailAddressId belongs to sessionUser
   const updatedSubscriber = await DB.setResolvedBreach({
@@ -399,6 +414,10 @@ function _updateResolvedBreaches (options) {
 }
 
 async function postResolveBreach (req, res) {
+  if (AppConstants.MAINTENANCE_MODE_ENABLED) {
+    guardResolveBreach(req, res)
+  }
+
   const sessionUser = req.user
   const { affectedEmail, recencyIndex, isResolved } = req.body
   const recencyIndexNumber = Number(recencyIndex)
