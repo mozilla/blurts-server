@@ -41,10 +41,13 @@ top-questions-about-monitor = A leggyakoribb kérdések a { -brand-fx-monitor }r
 see-all-faq = Az összes GYIK megtekintése
 # question and answer
 what-is-breach = Mi is pontosan egy adatvédelmi incidens?
+when-info-exposed = Adatvédelmi incidens akkor történik, ha személyes vagy magánjellegű adatokat engedély nélkül kikerülnek, ellopnak vagy lemásolnak. Ezek a biztonsági incidensek a webhelyek, alkalmazások vagy bármely olyan adatbázis elleni kibertámadások következményei, amelyekben emberek személyes adatai találhatók. Adatvédelmi incidens véletlenül is történhet, például ha valakinek a bejelentkezési adatai véletlenül nyilvánosságra kerülnek.
 # question and answer
 what-do-i-do = Észrevettem, hogy szereplek egy adatvédelmi incidensben. Mit tegyek?
+visit-monitor-to-learn = Keresse fel a { -brand-fx-monitor }t, hogy megtudja, mit kell tennie egy adatvédelmi incidens esetén. A hackerek arra támaszkodnak, hogy az emberek többször is használják a jelszavaikat, ezért fontos, hogy erős, egyedi jelszavakat hozzon létre minden egyes fiókjához.  Tartsa jelszavait biztonságos helyen, ahol csak Ön fér hozzá; ez lehet ugyanaz a hely, ahol a fontos dokumentumait tartja, vagy egy jelszókezelő.
 # question and answer
 what-gets-exposed = Milyen információk kerülnek nyilvánosságra egy adatvédelmi incidens során?
+depends-on-hackers = Nem minden adatvédelmi incidensben ugyanaz az információ kerül ki. Ez csak attól függ, hogy a hackerek mihez férnek hozzá. Sok adatvédelmi incidensben az e-mail-címek és jelszavak kerülnek ki. Mások érzékenyebb információkat, például hitelkártyaszámokat, útlevélszámokat és társadalombiztosítási számokat fednek fel.
 
 ## See if you’ve been in a data breach
 
