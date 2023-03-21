@@ -74,6 +74,15 @@ breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Figyelje a bankszámlakivonatait, és keressen olyan számlákat, kölcsönöket vagy hitelkártyákat, melyeket nem ismer fel.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Fontolóra veheti a hitelinformációinak befagyasztását is az { $equifaxLink }nál, { $experianLink }nál és a { $transUnionLink }nál, hogy a csalók ne nyithassanak új számlákat az Ön nevében. Ez ingyenes, és nincs hatással a hitelképességi mutatójára.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -105,15 +114,26 @@ breach-checklist-address-body = A címek könnyen megtalálhatók a nyilvános n
 ## Prompts the user for changes when there is a breach detected of date of birth
 
 breach-checklist-dob-header = Módosítson minden olyan jelszót vagy PIN-kódot, amely a születési dátumát tartalmazza.
+breach-checklist-dob-body = A születési dátumok könnyen megtalálhatók a nyilvános nyilvántartásokban, és az emberek, akik megtalálják, könnyen kitalálhatják a PIN-kódját.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Védje telefonszámát egy olyan maszkoló szolgáltatással, mint a { $firefoxRelayLink }, amely elrejti valódi telefonszámát.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Frissítse biztonsági kérdéseit a vállalat weboldalán.
+breach-checklist-sq-body = Használjon hosszú, véletlenszerű válaszokat, és tárolja azokat biztonságos helyen. Tegye ezt meg mindenhol, ahol ugyanazokat a biztonsági kérdéseket használta.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Hozzon létre egyedi, erős jelszavakat minden olyan fiókhoz, ahol ismételten használta a jelszavakat.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Egy jelszókezelő, például a { $passwordManagerLink } (amely ingyenes és be van építve a { -brand-firefox } böngészőbe) segíthet nyomon követni jelszavait, és biztonságosan hozzáférni minden eszközéről.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
