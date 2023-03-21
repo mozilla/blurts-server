@@ -69,8 +69,9 @@ function recruitmentBanner (args) {
 }
 
 function maintenanceBanner (args) {
-  // Only show banner on the breach details page if possible. Fallback to always
-  // show the banner to make sure users are aware of the on going maintenace.
+  // If possible, we only show the banner on the breach details page for users
+  // that are logged in. Fallback to showing the banner in all pages to make sure
+  // users are aware of the on going maintenace.
   const isBreachDetailPage = args.data.exphbs?.view === 'breach-detail' ?? true
 
   if (!AppConstants.MAINTENANCE_MODE_ENABLED || !isBreachDetailPage) {

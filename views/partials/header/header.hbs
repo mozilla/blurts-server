@@ -1,7 +1,9 @@
 {{> vpn-banner }}
 <header id="header" class="{{ addUpgradeClasses }}">
   {{{ recruitmentBanner }}}
+  {{#if req.session.user}}
   {{{ maintenanceBanner }}}
+  {{/if}}
   <!-- {{> csat-banner }} -->
   <div id="navigation-wrapper" class="{{ addUpgradeClasses }}">
     <section class="row-full-width fxm-branding">
