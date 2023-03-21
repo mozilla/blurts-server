@@ -30,6 +30,9 @@ alerts-for-breaches-monitor-new = Folyamatosan követjük az új adatvédelmi in
 
 ## Your privacy is safe with us
 
+safe-with-us = Az adatai biztonságban vannak nálunk
+parent-company = A { -brand-Mozilla(ending: "accented") }nál, a { -brand-firefox } és a { -brand-fx-monitor } anyavállalatánál úgy gondoljuk, hogy az egyének biztonsága és adatvédelme az interneten alapvető fontosságú, és nem szabad opcionálisnak tekinteni.
+our-mission = Küldetésünk egy jobb internet építése – egy olyané, ahol az emberek alakíthatják saját tapasztalataikat, és közben biztonságban maradhatnak. A { -brand-mozilla-foundation } leányvállalata vagyunk, egy nonprofit szervezeté, amely lehetővé teszi számunkra, hogy az egyént és a közhasznúságot a haszon elő helyezzük.
 learn-more-mission = Tudjon meg többet a küldetésünkről
 
 ## Top questions about Firefox Monitor
