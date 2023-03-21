@@ -880,6 +880,7 @@ meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-mon
 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
+banner-maintenance-info-text = Maintenance banner info text.
 
 ## Site navigation
 

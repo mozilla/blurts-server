@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 'use strict'
 
 /* eslint-disable no-process-env */
@@ -50,6 +54,7 @@ const optionalEnvVars = [
   'PORT',
   'RECRUITMENT_BANNER_LINK',
   'RECRUITMENT_BANNER_TEXT',
+  'MAINTENANCE_MODE_ENABLED',
   'GEOIP_GEOLITE2_PATH',
   'GEOIP_GEOLITE2_CITY_FILENAME',
   'GEOIP_GEOLITE2_COUNTRY_FILENAME',

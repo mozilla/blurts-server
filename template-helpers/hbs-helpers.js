@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 'use strict'
 
 const AppConstants = require('./../app-constants')
@@ -62,6 +66,18 @@ function recruitmentBanner (args) {
   }
 
   return `<div class="recruitment-banner"><a id="recruitment-banner" href="${AppConstants.RECRUITMENT_BANNER_LINK}" hidden target="_blank" rel="noopener noreferrer" data-ga-link="" data-event-category="Recruitment" data-event-label="${escapeHtmlAttributeChars(AppConstants.RECRUITMENT_BANNER_TEXT)}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a></div>`
+}
+
+function maintenanceBanner (args) {
+  // Only show banner on the breach details page if possible. Fallback to always
+  // show the banner to make sure users are aware of the on going maintenace.
+  const isBreachDetailPage = args.data.exphbs?.view === 'breach-detail' ?? true
+
+  if (!AppConstants.MAINTENANCE_MODE_ENABLED || !isBreachDetailPage) {
+    return
+  }
+
+  return `<div class="recruitment-banner">${getString('banner-maintenance-info-text', args)}</div>`
 }
 
 function showCsatBanner (args) {
@@ -219,6 +235,7 @@ function breachMath (lValue, operator = null, rValue = null) {
 
 module.exports = {
   recruitmentBanner,
+  maintenanceBanner,
   englishInAcceptLanguages,
   getString,
   getStringWithFallback,

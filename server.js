@@ -1,3 +1,7 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 'use strict'
 
 // initialize Sentry ASAP to capture fatal startup errors
@@ -210,6 +214,7 @@ app.locals.MAX_NUM_ADDRESSES = AppConstants.MAX_NUM_ADDRESSES
 app.locals.EXPERIMENT_ACTIVE = AppConstants.EXPERIMENT_ACTIVE
 app.locals.RECRUITMENT_BANNER_LINK = AppConstants.RECRUITMENT_BANNER_LINK
 app.locals.RECRUITMENT_BANNER_TEXT = AppConstants.RECRUITMENT_BANNER_TEXT
+app.locals.MAINTENANCE_MODE_ENABLED = AppConstants.MAINTENANCE_MODE_ENABLED
 app.locals.LOGOS_ORIGIN = AppConstants.LOGOS_ORIGIN
 app.locals.UTM_SOURCE = new URL(AppConstants.SERVER_URL).hostname
 
