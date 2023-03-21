@@ -29,11 +29,15 @@ function handleEvent (e) {
     case e.target.matches('a[href*="dialog/"]'):
       e.preventDefault()
       openDialog(e.target.href)
+      gtag('event', 'click', { event_category: 'form_submit', event_label: 'verify email' })
       break
     case e.target.matches('button[data-dialog]'):
       openDialog(`dialog/${e.target.dataset.dialog}`)
+      gtag('event', 'click', { event_category: 'button', event_label: 'verify email' })
       break
     case e.target.matches('dialog button.close'):
+      // TODO does this catch https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/cancel_event
+      gtag('event', 'click', { event_category: 'button', event_label: 'dialog close' })
       dialogEl.close()
       break
   }

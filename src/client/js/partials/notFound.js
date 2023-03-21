@@ -7,6 +7,8 @@ if (window.history.length > 1) {
   backCta?.addEventListener('click', () => {
     window.history.back()
 
+    gtag('event', 'click', { event_category: 'button', event_label: 'not found back' })
+
     // The call to `window.history.back()` might do nothing; for example, if the
     // user has clicked Back to get to the 404 page: while there might not be
     // another page to go back to, window.history.length will still be > 1

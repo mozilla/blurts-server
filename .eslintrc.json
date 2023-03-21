@@ -9,6 +9,9 @@
         "standard",
         "plugin:jsdoc/recommended"
     ],
+    "globals": {
+        "gtag": true
+    },
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
