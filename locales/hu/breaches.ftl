@@ -137,3 +137,5 @@ breach-checklist-hp-body-2 = Egy jelszókezelő, például a { $passwordManagerL
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+breach-checklist-general-header = Lépjen kapcsolatba a következővel: { $companyName }, tájékoztassa őket erről az adatvédelmi incidensről, és kérdezzen rá a megtehető lépésekre.
