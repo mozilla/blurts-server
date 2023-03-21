@@ -74,6 +74,15 @@ breach-checklist-email-body = Isto pote celar tu ver adresse de e-mail, reinvian
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Survelia tu reporto de credito pro contos, prestos, o cartas de credito que tu non recognosce.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Tu alsi pote considerar de gelar tu credito sur { $equifaxLink }, { $experianLink } e { $transUnionLink } pro stoppar scammers de aperir nove contos in tu nomine.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 

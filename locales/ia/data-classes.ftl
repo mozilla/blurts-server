@@ -77,6 +77,8 @@ job-titles = professiones
 # This string refers to vehicle license plates. 
 licence-plates = Placas de matriculation
 living-costs = Costos pro viver
+# This string refers to financial loans.
+loan-information = Information de presto
 login-histories = Chronologias de accesso
 mac-addresses = adresses MAC
 marital-statuses = statos conjugal
