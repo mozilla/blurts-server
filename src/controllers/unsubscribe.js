@@ -13,8 +13,7 @@ import { unsubscribeFromMonthlyReport } from '../utils/email.js'
 function unsubscribePage (req, res) {
   const data = {
     csrfToken: generateToken(res),
-    partial: unsubscribe,
-    queryParams: req.query
+    partial: unsubscribe
   }
 
   res.send(guestLayout(data))
@@ -30,8 +29,7 @@ async function unsubscribeMonthlyPage (req, res) {
 
   const data = {
     csrfToken: generateToken(res),
-    partial: unsubscribeMonthly,
-    queryParams: req.query
+    partial: unsubscribeMonthly
   }
 
   res.send(guestLayout(data))
