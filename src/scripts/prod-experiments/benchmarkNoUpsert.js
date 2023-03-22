@@ -36,12 +36,12 @@ do {
     .whereNotNull('breaches_resolved')
     .limit(LIMIT)
     .offset(offset)
+    .orderBy('updated_at', 'desc')
 
   console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
 
   for (const subscriber of subscribersArr) {
     let { breaches_resolved: v1, breach_resolution: v2 } = subscriber
-
     let isV2Changed = false // use a boolean to track if v2 has been changed, only upsert if so
 
     // fetch subscriber all breaches / email
@@ -49,14 +49,15 @@ do {
     // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
 
     for (const [email, resolvedRecencyIndices] of Object.entries(v1)) {
-      // console.debug({ email })
-      // console.debug({ resolvedRecencyIndices })
+      console.debug({ email })
+      console.debug({ resolvedRecencyIndices })
       for (const recencyIndex of resolvedRecencyIndices) {
-        // console.debug({ recencyIndex })
+        console.debug({ recencyIndex })
         // find subscriber's relevant recency index breach information
-        const ve = subscriberBreachesEmail.verifiedEmails?.filter(ve => ve.email === email)[0] || {}
+        const ve = subscriberBreachesEmail.verifiedEmails?.filter(e => e.email === email)[0] || {}
+        console.debug({ ve })
         const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
-        // console.debug({ subBreach })
+        console.debug({ subBreach })
 
         if (!subBreach || !subBreach.DataClasses) {
           console.warn(`SKIP: Cannot find subscribers breach and data types - recency: ${recencyIndex} email: ${email}`)
@@ -95,7 +96,7 @@ do {
     }
   }
   offset += LIMIT
-} while (subscribersArr.length === LIMIT && offset <= 50000)
+} while (subscribersArr.length === LIMIT && offset <= 5000)
 
 // breaking out of do..while loop
 console.log('Reaching the end of the table, offset ended at', offset)

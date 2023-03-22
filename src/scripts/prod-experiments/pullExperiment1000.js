@@ -30,6 +30,7 @@ do {
     .whereNotNull('breaches_resolved')
     .limit(LIMIT)
     .offset(offset)
+    .orderBy('updated_at', 'desc')
 
   console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
 
