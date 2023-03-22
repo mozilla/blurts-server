@@ -50,6 +50,7 @@ const guestLayout = data => `
         <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
       </a>
       <menu>
+        <li><a href='/breaches' class='secondary'>${getMessage('breaches')}</a></li>
         <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
       </menu>
     </header>
@@ -61,7 +62,7 @@ const guestLayout = data => `
         <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
       </a>
       <menu>
-        <li><a href='/user/breaches'>Breaches</a></li>
+        <li><a href='/breaches'>${getMessage('breaches')}</a></li>
         <li><a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>FAQ</a></li>
         <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>${getMessage('terms-and-privacy')}</a></li>
         <li><a href='https://github.com/mozilla/blurts-server' target='_blank'>${getMessage('github')}</a></li>
