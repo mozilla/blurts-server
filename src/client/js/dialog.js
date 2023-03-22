@@ -36,8 +36,6 @@ function handleEvent (e) {
       window.gtag('event', 'Dialog', { action: 'open', page_location: location.href })
       break
     case e.target.matches('dialog button.close'):
-      // TODO does this catch https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/cancel_event
-      window.gtag('event', 'Dialog', { action: 'close', page_location: location.href })
       dialogEl.close()
       break
   }
@@ -80,6 +78,8 @@ function resetDialog () {
   dialogEl.removeEventListener('close', resetDialog)
   dialogEl.removeAttribute('data-partial')
   dialogEl.replaceChildren()
+
+  window.gtag('event', 'Dialog', { action: 'close', page_location: location.href })
 }
 
 if (triggerLinks.length) init(triggerLinks) // adds event listeners for dialog links already in DOM
