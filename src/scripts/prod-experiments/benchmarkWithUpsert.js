@@ -29,7 +29,6 @@ let subscribersArr = []
  * @param {*} updateCollection
  */
 const batchUpdate = async (updateCollection) => {
-  console.log({ updateCollection })
   const trx = await knex.transaction()
   try {
     await Promise.all(updateCollection.map(tuple => {
@@ -45,6 +44,9 @@ const batchUpdate = async (updateCollection) => {
     await trx.commit()
   } catch (error) {
     await trx.rollback()
+    console.error('batch update failed!!')
+    console.log({ updateCollection })
+    console.error(error)
   }
 }
 
