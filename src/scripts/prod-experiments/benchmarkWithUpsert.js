@@ -13,7 +13,6 @@ import knexConfig from '../../db/knexfile.js'
 import { getAllBreachesFromDb } from '../../utils/hibp.js'
 import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
 import { BreachDataTypes } from '../../utils/breach-resolution.js'
-import { setBreachResolution } from '../../db/tables/subscribers.js'
 const knex = Knex(knexConfig)
 
 const LIMIT = 1000 // with millions of records, we have to load a few at a time
@@ -23,6 +22,31 @@ if (process.argv.length === 2) {
 }
 let offset = 0 // looping through all records with offset
 let subscribersArr = []
+
+/**
+ * Batch update
+ *
+ * @param {*} updateCollection
+ */
+const batchUpdate = async (updateCollection) => {
+  console.log({ updateCollection })
+  const trx = await knex.transaction()
+  try {
+    await Promise.all(updateCollection.map(tuple => {
+      const { user, updatedBreachesResolution } = tuple
+      return knex('subscribers')
+        .where('id', user.id)
+        .update({
+          breach_resolution: updatedBreachesResolution
+        })
+        .transacting(trx)
+    })
+    )
+    await trx.commit()
+  } catch (error) {
+    await trx.rollback()
+  }
+}
 
 const startTime = Date.now()
 console.log(`Start time is: ${startTime}`)
@@ -44,6 +68,7 @@ do {
     .orderBy('updated_at', 'desc')
 
   console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
+  const updateCollection = []
 
   for (const subscriber of subscribersArr) {
     let { breaches_resolved: v1, breach_resolution: v2 } = subscriber
@@ -98,9 +123,10 @@ do {
     // check if v2 is changed, if so, upsert the new v2
     if (isV2Changed) {
       console.log('upsert for subscriber: ', subscriber.primary_email)
-      await setBreachResolution(subscriber, v2)
+      updateCollection.push({ user: subscriber, updatedBreachesResolution: v2 })
     }
   }
+  await batchUpdate(updateCollection)
   offset += LIMIT
 } while (subscribersArr.length === LIMIT && offset <= CAP)
 
