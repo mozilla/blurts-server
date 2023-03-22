@@ -13,17 +13,16 @@ import knexConfig from '../../db/knexfile.js'
 import { getAllBreachesFromDb } from '../../utils/hibp.js'
 import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
 import { BreachDataTypes } from '../../utils/breach-resolution.js'
+import { setBreachResolution } from '../../db/tables/subscribers.js'
 const knex = Knex(knexConfig)
 
 const LIMIT = 1000 // with millions of records, we have to load a few at a time
+let CAP = 5000 // cap the experiment
+if (process.argv.length === 2) {
+  CAP = process.argv[1]
+}
 let offset = 0 // looping through all records with offset
 let subscribersArr = []
-
-let CAP = 5000 // cap the experiment
-if (process.argv.length > 2) {
-  CAP = process.argv[2]
-  console.log('using cap passed in: ', CAP)
-}
 
 const startTime = Date.now()
 console.log(`Start time is: ${startTime}`)
@@ -99,6 +98,7 @@ do {
     // check if v2 is changed, if so, upsert the new v2
     if (isV2Changed) {
       console.log('upsert for subscriber: ', subscriber.primary_email)
+      await setBreachResolution(subscriber, v2)
     }
   }
   offset += LIMIT
