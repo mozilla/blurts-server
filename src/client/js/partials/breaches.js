@@ -65,7 +65,6 @@ function handleEvent (e) {
     case e.type === 'email-added':
       state.emailCount = e.detail.newEmailCount
       renderZeroState()
-      window.gtag('event', 'Add Email', { action: 'click', page_location: location.href })
       break
   }
 }
