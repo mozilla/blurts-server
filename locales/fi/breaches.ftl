@@ -56,9 +56,14 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Siirry yrityksen verkkosivustolle vaihtaaksesi salasanasi ja ottaaksesi kaksivaiheisen todennuksen (2FA) käyttöön.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Suojaa sähköpostisi { $firefoxRelayLink }n kaltaisella sähköpostin maskipalvelulla.
 breach-checklist-email-body = Tämä voi piilottaa todellisen sähköpostiosoitteesi samalla, kun sähköpostit lähetetään edelleen oikeaan postilaatikkoosi.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -84,6 +89,9 @@ breach-checklist-pin-body = Varmista, että uusi PIN-koodisi tai mikään muu PI
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Käytä Internetiä yksityisesti { $mozillaVpnLink }:n kaltaisen VPN:n kautta.
 breach-checklist-ip-body = IP-osoitteesi (Internet Protocol -osoite) voi kertoa tietoa sijannistasi ja Internet-palveluntarjoajastasi. VPN voi piilottaa todellisen IP-osoitteesi, jotta voit käyttää Internetiä aiempaa yksityisemmin.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -98,9 +106,14 @@ breach-checklist-dob-body = Syntymäaika on verrattain helppo löytää julkisis
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Suojaa puhelinnumerosi maskipalvelulla, kuten { $firefoxRelayLink }, joka piilottaa oikean puhelinnumerosi.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Päivitä turvallisuuskysymyksesi yrityksen verkkosivustolla.
 breach-checklist-sq-body = Käytä pitkiä, satunnaisia vastauksia ja säilytä ne turvallisessa paikassa. Tee tämä myös muualla, missä olet käyttänyt samoja turvakysymyksiä.
 
 ## Prompts the user for changes when there is a breach detected of historical password
