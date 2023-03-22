@@ -57,6 +57,7 @@ async function openDialog (path) {
     })
 
     if (!res.ok) throw new Error('Bad fetch response')
+    window.gtag('event', 'Dialog', { action: 'open', result: 'success', page_location: location.href })
 
     const content = await res.text()
     dialogEl.insertAdjacentHTML('beforeend', content)
@@ -69,6 +70,7 @@ async function openDialog (path) {
     }
   } catch (e) {
     dialogEl.close()
+    window.gtag('event', 'Dialog', { action: 'open', result: 'failed', page_location: location.href })
     console.error(`Could not load dialog content for ${partialName}.`, e)
   }
 }
@@ -78,8 +80,6 @@ function resetDialog () {
   dialogEl.removeEventListener('close', resetDialog)
   dialogEl.removeAttribute('data-partial')
   dialogEl.replaceChildren()
-
-  window.gtag('event', 'Dialog', { action: 'close', page_location: location.href })
 }
 
 if (triggerLinks.length) init(triggerLinks) // adds event listeners for dialog links already in DOM
