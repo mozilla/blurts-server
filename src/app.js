@@ -87,7 +87,7 @@ app.use(
 
 const imgSrc = [
   "'self'",
-  "https://monitor.cdn.mozilla.net"
+  'https://monitor.cdn.mozilla.net'
 ]
 
 if (AppConstants.FXA_ENABLED) {
