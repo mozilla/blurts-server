@@ -13,7 +13,7 @@ function handleEvent (e) {
     case e.type === 'email-added':
       document.querySelector('dialog[data-partial="add-email"]')
         .addEventListener('close', () => {
-          gtag('event', 'Add Email')
+          gtag('event', 'Add Email', { action: 'click', page_location: location.href })
           window.location.reload()
         }, { once: true })
       break
@@ -47,7 +47,7 @@ if (settingsAlertOptionsInputs?.length) {
         throw new Error(`Updating communication option failed: ${err}`)
       }
       event.preventDefault()
-      gtag('event', 'Change Email Preference')
+      gtag('event', 'Change Email Preference', { action: 'click', page_location: location.href })
       return false
     })
   }
@@ -78,7 +78,7 @@ if (settingsRemoveEmailButtons?.length) {
           return window.location.reload(true)
         }
 
-        gtag('event', 'Remove Email')
+        gtag('event', 'Remove Email', { action: 'click', page_location: location.href })
       } catch (err) {
         console.error(`Error: ${err}`)
       }
@@ -121,7 +121,7 @@ if (settingsResendEmailLinks?.length) {
         throw new Error(`Re-sending verification email failed. ${err}`)
       }
       event.preventDefault()
-      gtag('event', 'Resend Email')
+      gtag('event', 'Resend Email', { action: 'click', page_location: location.href })
       return false
     })
   }

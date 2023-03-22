@@ -178,11 +178,11 @@ customElements.define('toast-alert', class extends HTMLElement {
     switch (true) {
       case e.target.matches('button'):
         this.remove()
-        gtag('event', 'Dismiss Toast Alert')
+        gtag('event', 'Toast Alert', { action: 'dismiss' })
         break
       case e.animationName === 'fade-out':
         this.remove()
-        gtag('event', 'Faded toast alert')
+        gtag('event', 'Toast Alert', { action: 'faded' })
         break
     }
   }

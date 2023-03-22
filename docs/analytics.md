@@ -43,31 +43,29 @@ We collect data for the following events:
 **`Email Scan Form`**  &nbsp;  **`Scan Another Email Form`**  &nbsp;  **`Add Another Email Form`**
 
 - When a form appears on the page.
-  * `eventCategory` : Form ID
-  * `eventAction` : View
-  * `eventLabel` : Page location ID.
-
+  * `category   `   : Form ID
+  * `action`        : view
+  * `page_location` : Page location ID.
 
 - When a user focuses inside a form input.
   * `eventCategory` : Form ID
-  * `eventAction` : Engage
-  * `eventLabel` : Page location ID.
-
+  * `action`        : engage
+  * `page_location` : Page location ID.
 
 - When a user submits a form.
-  * `eventCategory` : Form ID
-  * `eventAction` : Submit
-  * `eventLabel` : Page location ID.
+  * `category`      : Form ID
+  * `action`        : submit
+  * `page_location` : Page location ID.
 
 - When a user submits an invalid email.
-  * `eventCategory` : Form ID
-  * `eventAction` : Failure
-  * `eventLabel` : Page location ID.
+  * `category`      : Form ID
+  * `action`        : failure
+  * `page_location` : Page location ID.
 
 - When a user submits a valid email.
-  * `eventCategory` : Form ID
-  * `eventAction` : Success
-  * `eventLabel` : Page location ID.
+  * `category`      : Form ID
+  * `action`        : success
+  * `page_location` : Page location ID.
   
 
 ### Sign Up Buttons & Links (FxA Entrypoints)
@@ -75,52 +73,38 @@ We collect data for the following events:
 **`Sign In Button`** -&nbsp;  **`Sign Up Button`**  &nbsp;  **`Sign In Link`**&nbsp;  **`About page SignUp Button`**  &nbsp;  **`Alert Me About New Breaches`**  &nbsp;  **`Alert Me About New Breaches - Banner`**  &nbsp;
 
 - When a button appears on the page
-  * `eventCategory` : Button ID
-  * `eventAction` : View
-  * `eventLabel` : Page location ID.
+  * `category`      : Button ID
+  * `action`        : view
+  * `page_location` : Page location ID.
 
 - When a user clicks a link or button.
-  * `eventCategory` : Button or Link ID
-  * `eventAction` : Engage
-  * `eventLabel` : Page location ID.
+  * `category`      : Button or Link ID
+  * `action`        : engage
+  * `page_location` : Page location ID.
 
 ### Miscellaneous
 
 **`All Breaches: Fuzzy Finder`** &nbsp; **`All Breaches: Show All Button`** &nbsp; **`About Page: Download Firefox`** &nbsp; **`About Page: Search Your Email`** &nbsp; **`Breach Detail: Change Password Button`** &nbsp; **`Breach Detail: Website URL Link`** &nbsp; **`Remove Email Form`** &nbsp; **`Show All Breaches Button`**
 
-
 - When a user clicks a triggering element
-  * `eventCategory` : Type of Link (Outbound or Internal)
-  * `eventAction` : Click / Engage
-  * `eventLabel` : Link ID
+  * `categorty`   : Type of Link (Outbound or Internal)
+  * `action`      : click / engage
+  * `link_id`     : Link ID
   
-
-### Links
-
-**`Outbound & Utility Links`**  &nbsp;  **`Internal Links`** 
-
-- When a user clicks a link.
-  * `eventCategory` :Button or Link ID
-  * `eventAction` : Click
-  * `eventLabel` : Page location ID.
-
-
 ### User menu
 
 - When a user opens the User menu
-  * `eventCategory` : bento
-  * `eventAction` : bento-opened
-  * `eventLabel` : fx-monitor
+  * `category` : User Menu
+  * `action`   : open
 
 - When a user closes the User menu
-  * `eventCategory` : bento
-  * `eventAction` : bento-closed
-  * `eventLabel` : fx-monitor
+  * `category` : User Menu
+  * `action`   : close
 
-- When a user clicks on one of the Bento menu links
-  * `eventCategory` : bento
-  * `eventAction` : bento-app-link-click
-  * `eventLabel` : link identifier
+- When a user clicks on one of the User menu links
+  * `category` : User Menu
+  * `action`   : click
+  * `link_id`  : Link ID
 
 
 ## Opt Out of Google Analytics Tracking
