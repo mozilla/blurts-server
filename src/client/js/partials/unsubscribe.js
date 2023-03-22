@@ -48,7 +48,7 @@ async function handleEvent (event) {
     throw new Error(errorMessage)
   }
 
-  gtag('event', 'Unsubscribe', { action: 'click', page_location: location.href })
+  window.gtag('event', 'Unsubscribe', { action: 'click', page_location: location.href })
 }
 
 if (unsubscribePartial) init()

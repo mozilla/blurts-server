@@ -57,7 +57,7 @@ function handleEvent (e) {
       break
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
       updateBreachStatus(e.target)
-      gtag('event', 'Breach Item', {
+      window.gtag('event', 'Breach Item', {
         action: e.target.checked ? 'resolved' : 'unresolved',
         page_location: location.href
       })
@@ -65,7 +65,7 @@ function handleEvent (e) {
     case e.type === 'email-added':
       state.emailCount = e.detail.newEmailCount
       renderZeroState()
-      gtag('event', 'Add Email', { action: 'click', page_location: location.href })
+      window.gtag('event', 'Add Email', { action: 'click', page_location: location.href })
       break
   }
 }

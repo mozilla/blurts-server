@@ -7,7 +7,7 @@ if (window.history.length > 1) {
   backCta?.addEventListener('click', () => {
     window.history.back()
 
-    gtag('event', 'Go Back', { action: 'click', page_location: location.href })
+    window.gtag('event', 'Go Back', { action: 'click', page_location: location.href })
 
     // The call to `window.history.back()` might do nothing; for example, if the
     // user has clicked Back to get to the 404 page: while there might not be
