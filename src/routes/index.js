@@ -17,12 +17,10 @@ import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
-import { robotsTxt } from '../middleware/robots.js'
 
 const router = express.Router()
 
 router.get('/', landingPage)
-router.get('/robots.txt', robotsTxt)
 router.get('*/dialog/:name', dialog)
 
 router.use('/', dockerFlowRoutes)

@@ -24,6 +24,7 @@ import { loadBreachesIntoApp } from './utils/hibp.js'
 import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
+import { noSearchEngineIndex } from './middleware/noSearchEngineIndex.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
@@ -169,6 +170,7 @@ try {
   console.error('Error loading breaches into app.locals', error)
 }
 
+app.use(noSearchEngineIndex)
 app.use(express.static(staticPath))
 app.use(express.json())
 app.use(cookieParser(AppConstants.COOKIE_SECRET))
