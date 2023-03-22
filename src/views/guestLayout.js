@@ -37,8 +37,7 @@ const guestLayout = data => `
 
     <!-- Google tag (gtag.js) -->
     <script nonce='${data.nonce}' type='module'>
-      import { dntEnabled } from '/js/analytics_dnt-helper.js'
-      if (!dntEnabled()) {
+      if (navigator.doNotTrack !== '1') {
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
