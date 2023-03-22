@@ -13,7 +13,6 @@ function handleEvent (e) {
     case e.type === 'email-added':
       document.querySelector('dialog[data-partial="add-email"]')
         .addEventListener('close', () => {
-          window.gtag('event', 'Add Email', { action: 'click', page_location: location.href })
           window.location.reload()
         }, { once: true })
       break
