@@ -404,7 +404,7 @@ fb-comp-and-others =
 no-other-breaches-found = No other breaches found from a basic search.
 
 no-results-blurb = Sorry, that breach is not in our database.
-all-breaches-headline-2 = All breaches detected by { -product-name }
+all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
 all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
 search-breaches = Search Breaches
 
