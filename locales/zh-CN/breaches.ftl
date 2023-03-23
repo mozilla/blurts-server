@@ -46,7 +46,9 @@ breach-description = { $companyName } 在 { $breachDate } 遭遇了数据外泄�
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
+breach-checklist-link-firefox-relay = { -brand-relay }
 breach-checklist-link-password-manager = { -brand-firefox } 密码管理器
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
@@ -58,6 +60,9 @@ breach-checklist-pw-body-2 = 确保您的密码独一无二且不易被猜到。
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = 使用 { $firefoxRelayLink } 等马甲邮箱服务来保护您的邮箱。
 breach-checklist-email-body = 这可以将电子邮件转发到您的真实收件箱，隐藏您的真实邮箱地址。
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -65,6 +70,15 @@ breach-checklist-email-body = 这可以将电子邮件转发到您的真实收�
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = 关注您的信用报告，查找不认识的银行账户、贷款和信用卡。
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = 您还可以考虑冻结您在 { $equifaxLink }、{ $experianLink } 和 { $transUnionLink } 上的信用，以阻止诈骗者以您的名义开设新账户。该服务免费提供，不会影响您的信用评分。
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -83,6 +97,9 @@ breach-checklist-pin-body = 确保您的新 PIN 以及任何其他 PIN 都不包
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = 使用 { $mozillaVpnLink } 等 VPN 来私密访问互联网 。
 breach-checklist-ip-body = 您的 IP 地址（互联网协议地址）可精准反映您的位置和互联网服务提供商，而 VPN 可以隐藏您的真实 IP 地址，因此您可以私密访问互联网。
 
 ## Prompts the user for changes when there is a breach detected of physical address

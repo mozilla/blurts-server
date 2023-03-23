@@ -56,9 +56,17 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Va al sito web del compania pro cambiar tu contrasigno e activar le authentication a duo factores (A2F).
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Cura que tu contrasigno es unic e difficile a divinar. Si iste contrasigno es usate con altere contos, non oblida de cambiar lo in illos tamben. { $passwordManagerLink } pote adjutar te a tener tracia de tote tu contrasignos in securitate.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Protege tu email con un servicio de mascas de email como { $firefoxRelayLink }.
 breach-checklist-email-body = Isto pote celar tu ver adresse de e-mail, reinviante le messages a tu ver cassa de entrata.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -66,6 +74,15 @@ breach-checklist-email-body = Isto pote celar tu ver adresse de e-mail, reinvian
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Survelia tu reporto de credito pro contos, prestos, o cartas de credito que tu non recognosce.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Tu alsi pote considerar de gelar tu credito sur { $equifaxLink }, { $experianLink } e { $transUnionLink } pro stoppar scammers de aperir nove contos in tu nomine.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -84,6 +101,9 @@ breach-checklist-pin-body = Verifica que tu nove PIN, o omne altere PIN, non inc
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Usa internet privatemente con un VPN, como { $mozillaVpnLink }.
 breach-checklist-ip-body = Tu adresse IP (adresse de Protocollo Internet) indica tu position e tu fornitor del servicio internet. Un VPN pote celar tu real adresse IP assi que tu pote usar internet reservatemente.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -98,14 +118,22 @@ breach-checklist-dob-body = Le datas de nascentia es facile a trovar in registro
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Protege tu numero de telephono con un servicio mascante como { $firefoxRelayLink }, que cela tu ver numero de telephono.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Actualisa tu questiones de securitate in le sito web del compania.
 breach-checklist-sq-body = Usa longe, aleatori responsas, e conserva los in un loco secur. Face lo ubique tu ha usate le mesme demandas de securitate.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crea unic, contrasignos forte pro ulle conto ubi tu ha re-usate contrasignos.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Un gestor de contrasignos como { $passwordManagerLink } (que es gratuite e integrate al navigator { -brand-firefox }) pote adjutar te a tener tracia de tote tu contrasignos e acceder los con securitate ab tote tu apparatos.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

@@ -36,6 +36,7 @@ column-detected = CANFOD
 column-status-badge-resolved = Datryswyd
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Gweithredol
+breaches-resolve-heading = Datrys y tor-data hwn:
 breaches-none-headline = Heb ganfod tor-data
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -51,15 +52,25 @@ breaches-all-resolved-cta-button = Ychwanegwch gyfeiriad e-bost
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Ar { $breachDate }, profodd { $companyName } dor-data. Unwaith y cafodd y tor-data ei ganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }. Mae'r tor-data hwn yn cynnwys: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Rheolwr Cyfrineiriau { -brand-firefox }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Ewch i <a>{ $breachedCompanyUrl }</a> i newid eich cyfrinair a galluogi dilysiad dau ffactor (2FA).
-breach-checklist-pw-body = Gwnewch yn siŵr fod eich cyfrinair yn unigryw ac yn anodd ei ddyfalu. Os yw'r cyfrinair hwn yn cael ei ddefnyddio ar unrhyw gyfrifon eraill, gwnewch yn siŵr ei newid yno hefyd. Gall <a>Reolwr Cyfrineiriau { -brand-firefox }</a> eich helpu i gadw golwg diogel ar eich holl gyfrineiriau.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Ewch i wefan y cwmni i newid eich cyfrinair a galluogi dilysiad dau ffactor (2FA).
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Gwnewch yn siŵr fod eich cyfrinair yn unigryw ac yn anodd ei ddyfalu. Os yw'r cyfrinair hwn yn cael ei ddefnyddio ar unrhyw gyfrifon eraill, gwnewch yn siŵr ei newid yno hefyd. Gall { $passwordManagerLink } eich helpu i gadw golwg diogel ar eich holl gyfrineiriau.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Diogelwch eich e-bost gyda gwasanaeth cuddio e-byst fel <a>{ -brand-relay }</a>.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Diogelwch eich e-bost gyda gwasanaeth cuddio e-byst fel { $firefoxRelayLink }.
 breach-checklist-email-body = Gall hyn guddio'ch gwir gyfeiriad e-bost wrth anfon e-byst ymlaen i'ch blwch derbyn go iawn.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -70,7 +81,12 @@ breach-checklist-ssn-header = Adolygwch eich adroddiad cyfrifon credyd am gyfrif
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Gallwch hefyd ystyried rhewi eich credyd ar <a>Equifax</a>, <a>Experian</a> a <a>TransUnion</a> i atal sgamwyr rhag agor cyfrifon newydd yn eich enw chi. Mae am ddim ac ni fydd yn effeithio ar eich sgôr credyd.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Gallwch hefyd ystyried rhewi eich credyd ar { $equifaxLink } , { $experianLink } a { $transUnionLink } i atal sgamwyr rhag agor cyfrifon newydd yn eich enw chi. Mae am ddim ac ni fydd yn effeithio ar eich sgôr credyd.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -89,7 +105,9 @@ breach-checklist-pin-body = Gwnewch yn siŵr nad yw eich PIN newydd, nac unrhyw 
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Defnyddiwch y rhyngrwyd yn breifat gyda VPN, megis <a>{ -brand-mozilla-vpn }</a>.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Defnyddiwch y rhyngrwyd yn breifat gyda VPN, fel un { $mozillaVpnLink }.
 breach-checklist-ip-body = Mae eich cyfeiriad IP (cyfeiriad Protocol Rhyngrwyd) yn nodi'ch lleoliad a'ch darparwr gwasanaeth rhyngrwyd. Gall VPN guddio'ch cyfeiriad IP go iawn fel y gallwch ddefnyddio'r rhyngrwyd yn breifat.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -104,18 +122,22 @@ breach-checklist-dob-body = Mae'n hawdd dod o hyd i ddyddiadau geni mewn cofnodi
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Diogelwch eich rhif ffôn gyda gwasanaeth cuddio fel <a>{ -brand-relay }</a>, sy'n cuddio'ch gwir rif ffôn.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Diogelwch eich rhif ffôn gyda gwasanaeth cuddio fel un { $firefoxRelayLink }, sy'n cuddio'ch gwir rif ffôn.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Diweddarwch eich cwestiynau diogelwch ar <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Diweddarwch eich cwestiynau diogelwch ar wefan y cwmni.
 breach-checklist-sq-body = Defnyddiwch atebion hir, ar hap, a storiwch nhw yn rhywle diogel. Gwnewch hyn yn unrhyw le arall rydych chi wedi defnyddio'r un cwestiynau diogelwch.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crëwch gyfrineiriau unigryw, cryf ar gyfer unrhyw gyfrif lle rydych chi wedi ailddefnyddio cyfrinair.
-breach-checklist-hp-body = Gall rheolwr cyfrinair fel <a>Rheolwr Cyfrineiriau { -brand-firefox }</a> (sy'n rhad ac am ddim ac yn rhan annatod o borwr { -brand-firefox }) eich helpu i gadw golwg ar eich holl gyfrineiriau a chael mynediad diogel iddo o'ch holl ddyfeisiau.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Gall rheolwr cyfrineiriau fel { $passwordManagerLink } (sy'n rhad ac am ddim ac yn rhan annatod o borwr { -brand-firefox }) eich helpu i gadw golwg ar eich holl gyfrineiriau a'u darparu'n ddiogel o'ch holl ddyfeisiau.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

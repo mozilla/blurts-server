@@ -47,15 +47,25 @@ breaches-all-resolved-cta-button = E-posta adresi ekle
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $breachDate } tarihinde { $companyName } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi. İhlal şunları içeriyordu: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox } Parola Yöneticisi
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Parolanızı değiştirmek ve iki aşamalı kimlik doğrulamayı (2FA) etkinleştirmek için <a>{ $breachedCompanyUrl }</a> adresine gidin.
-breach-checklist-pw-body = Parolanız benzersiz ve tahmin edilmesi zor olmalı. Bu parolayı başka hesaplarda da kullanıyorsanız o hesapların parolasını da değiştirin. <a>{ -brand-firefox } parola yöneticisi</a>, tüm parolalarınızı güvenli bir şekilde kaydetmenize yardımcı olabilir.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Parolanızı değiştirmek ve iki aşamalı kimlik doğrulamayı (2FA) etkinleştirmek için şirketin web sitesine gidin.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Parolanız benzersiz ve tahmin edilmesi zor olmalı. Bu parolayı başka hesaplarda da kullanıyorsanız o hesapların parolasını da değiştirin. { $passwordManagerLink }, tüm parolalarınızı güvenli bir şekilde kaydetmenize yardımcı olabilir.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = <a>{ -brand-relay }</a> gibi bir e-posta maskeleme hizmetiyle e-postanızı koruyun.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = { $firefoxRelayLink } gibi bir e-posta maskeleme hizmetiyle e-postanızı koruyun.
 breach-checklist-email-body = Böylece e-postaları gelen kutunuza yönlendirirken gerçek e-posta adresinizi gizleyebilirsiniz.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -77,7 +87,9 @@ breach-checklist-pin-body = Yeni PIN’inizin ve diğer PIN’leriniz, doğum ta
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = <a>{ -brand-mozilla-vpn }</a> gibi bir VPN hizmetiyle internetteki gizliliğinizi artırın.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = { $mozillaVpnLink } gibi bir VPN hizmetiyle internetteki gizliliğinizi artırın.
 breach-checklist-ip-body = IP adresiniz konumunuzu ve internet servis sağlayıcınızı ifşa edebilir. VPN kullanarak gerçek IP adresinizi gizleyebilirsiniz.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -92,12 +104,14 @@ breach-checklist-dob-body = Doğum tarihleri kamuya açık kayıtlarda kolayca b
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Gerçek telefon numaranızı gizleyen <a>{ -brand-relay }</a> gibi bir maskeleme hizmetiyle telefon numaranızı koruyun.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Gerçek telefon numaranızı gizleyen { $firefoxRelayLink } gibi bir maskeleme hizmetiyle telefon numaranızı koruyun.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = <a>{ $breachedCompanyUrl }</a> adresindeki güvenlik sorularınızı güncelleyin.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Şirketin web sitesine gidip güvenlik sorularınızı güncelleyin.
 breach-checklist-sq-body = Uzun, rastgele yanıtlar kullanın ve bunları güvenli bir yerde saklayın. Bu işlemi aynı güvenlik sorularını kullandığınız diğer her yerde yapın.
 
 ## Prompts the user for changes when there is a breach detected of historical password

@@ -77,6 +77,8 @@ job-titles = Nerenda mba’apohápe
 # This string refers to vehicle license plates. 
 licence-plates = Ñe’ẽmboguapy
 living-costs = Tekove repy
+# This string refers to financial loans.
+loan-information = Ñemba’epuru marandu
 login-histories = Tembiapo ñepyrũ rembiasakue
 mac-addresses = MAC kundaharape
 marital-statuses = Emendávapa

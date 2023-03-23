@@ -77,6 +77,8 @@ job-titles = Chức danh công việc
 # This string refers to vehicle license plates. 
 licence-plates = Biển số xe
 living-costs = Chi phí sinh hoạt
+# This string refers to financial loans.
+loan-information = Thông tin khoản vay
 login-histories = Lịch sử đăng nhập
 mac-addresses = Địa chỉ MAC
 marital-statuses = Tình trạng hôn nhân
