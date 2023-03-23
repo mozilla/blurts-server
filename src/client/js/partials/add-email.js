@@ -33,6 +33,8 @@ async function handleSubmit (e) {
 
     if (!res.ok) throw new Error()
 
+    window.gtag('event', 'Add Email', { result: 'success' })
+
     const { newEmailCount } = await res.json()
 
     renderSuccess({
@@ -45,6 +47,7 @@ async function handleSubmit (e) {
     toast.textContent = `Could not add email. ${e.message}`
     dialogEl.append(toast)
     console.error('Could not add email.', e)
+    window.gtag('event', 'Add Email', { result: 'fail' })
   } finally {
     form.elements['email-submit'].toggleAttribute('disabled', false)
   }

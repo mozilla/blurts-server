@@ -31,12 +31,16 @@ function handleMenuButton () {
     // Handle onblur
     userMenuWrapper.addEventListener('blur', (event) => handleBlur(event, handleMenuButton))
     userMenuWrapper.focus()
+
+    window.gtag('event', 'User Menu', { action: 'open' })
   } else {
     // Hide popover
     userMenuPopover.setAttribute('aria-expanded', false)
     userMenuPopover.setAttribute('hidden', '')
 
     userMenuButton.focus()
+
+    window.gtag('event', 'User Menu', { action: 'close' })
   }
 }
 
