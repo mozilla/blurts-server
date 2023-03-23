@@ -21,11 +21,12 @@ let subscribersArr = []
 
 const selectAndLockResolutions = async () => {
   const trx = await knex.transaction()
-  let subscribersArr = []
+  let subscribers = []
   try {
-    subscribersArr = await knex.select('id', 'primary_email', 'breach_resolution')
+    subscribers = await knex.select('id', 'primary_email', 'breach_resolution')
       .from('subscribers')
       .whereNotNull('breach_resolution')
+      .whereNotNull('db_migration_1')
       .whereNull('db_migration_2')
       .limit(LIMIT)
       .orderBy('updated_at', 'desc')
@@ -33,7 +34,7 @@ const selectAndLockResolutions = async () => {
       .forUpdate()
 
     // update the lock
-    await Promise.all(subscribersArr.map(sub => {
+    await Promise.all(subscribers.map(sub => {
       const { id } = sub
       return knex('subscribers')
         .where('id', id)
@@ -46,12 +47,12 @@ const selectAndLockResolutions = async () => {
     await trx.commit()
   } catch (error) {
     await trx.rollback()
-    console.log('select & mark rows failed!! first row:')
-    console.log({ first: subscribersArr[0] })
+    console.error('select & mark rows failed!! first row:')
+    console.log({ first: subscribers[0] })
     console.error(error)
   }
 
-  return subscribersArr
+  return subscribers
 }
 
 /**
@@ -98,7 +99,6 @@ while (failedToSelect) {
     subscribersArr = await selectAndLockResolutions()
     failedToSelect = false
   } catch (e) {
-    failedToSelect = true
     console.error(e)
   }
 }
@@ -152,7 +152,6 @@ for (const subscriber of subscribersArr) {
 
 await batchUpdate(updateCollection)
 
-// breaking out of do..while loop
 console.log('Reaching the end of the table')
 const endTime = Date.now()
 console.log(`End time is: ${endTime}`)
