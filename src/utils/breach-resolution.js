@@ -114,9 +114,9 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
       const dataClasses = b.DataClasses
       const args = {
         companyName: b.Name,
-        firefoxRelayLink: `<a href="https://relay.firefox.com" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
-        passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/" target="_blank">${getMessage('breach-checklist-link-password-manager')}</a>`,
-        mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/" target="_blank">${getMessage('breach-checklist-link-mozilla-vpn')}</a>`,
+        firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
+        passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-password-manager')}</a>`,
+        mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-mozilla-vpn')}</a>`,
         equifaxLink: '<a href="https://www.equifax.com/personal/credit-report-services/credit-freeze/" target="_blank">Equifax</a>',
         experianLink: '<a href="https://www.experian.com/freeze/center.html" target="_blank">Experian</a>',
         transUnionLink: '<a href="https://www.transunion.com/credit-freeze" target="_blank">TransUnion</a>'
