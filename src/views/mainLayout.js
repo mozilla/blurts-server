@@ -82,8 +82,8 @@ const mainLayout = data => `
       </div>
       <div class='callouts'>
         <p>${getMessage('site-nav-ad-callout')}</p>
-        <a href='https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=nav-bar-global' target='blank'><img src='/images/logo-relay.svg' width='416' height='92' alt='Firefox Relay'></a>
-        <a href='https://www.mozilla.org/products/vpn?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=nav-bar-global' target='blank'><img src='/images/logo-vpn.svg' width='232' height='48' alt='Mozilla VPN'></a>
+        <a href='https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=nav-bar-global' target='blank'><img src='/images/logo-relay.svg' width='416' height='92' alt='${getMessage('brand-relay')}'></a>
+        <a href='https://www.mozilla.org/products/vpn?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=nav-bar-global' target='blank'><img src='/images/logo-vpn.svg' width='232' height='48' alt='${getMessage('brand-mozilla-vpn')}'></a>
       </div>
     </nav>
 
