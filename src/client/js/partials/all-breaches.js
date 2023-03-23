@@ -5,26 +5,24 @@
 const allBreachesPartial = document.querySelector('[data-partial="allBreachesPartial"]')
 
 if (allBreachesPartial) {
-  document.addEventListener('DOMContentLoaded', () => {
-    const search = document.getElementById('breach-search')
-    search.value = ''
+  const search = document.getElementById('breach-search')
+  search.value = ''
 
-    const filter = () => {
-      const breachCards = document.querySelectorAll('.breach-card')
-      if (search.value.length === 0) {
-        breachCards.forEach(card => (card.style.display = ''))
-      } else {
-        breachCards.forEach(card => {
-          if (card.text.toLowerCase().includes(search.value.toLowerCase())) {
-            card.style.display = ''
-          } else {
-            card.style.display = 'none'
-          }
-        })
-      }
+  const filter = () => {
+    const breachCards = document.querySelectorAll('.breach-card')
+    if (search.value.length === 0) {
+      breachCards.forEach(card => (card.style.display = ''))
+    } else {
+      breachCards.forEach(card => {
+        if (card.text.toLowerCase().includes(search.value.toLowerCase())) {
+          card.style.display = ''
+        } else {
+          card.style.display = 'none'
+        }
+      })
     }
+  }
 
-    search.addEventListener('keyup', () => filter())
-    search.form.addEventListener('submit', () => filter())
-  })
+  search.addEventListener('keyup', () => filter())
+  search.form.addEventListener('submit', () => filter())
 }
