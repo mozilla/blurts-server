@@ -135,6 +135,9 @@ breach-checklist-sq-body = Defnyddiwch atebion hir, ar hap, a storiwch nhw yn rh
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crëwch gyfrineiriau unigryw, cryf ar gyfer unrhyw gyfrif lle rydych chi wedi ailddefnyddio cyfrinair.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Gall rheolwr cyfrineiriau fel { $passwordManagerLink } (sy'n rhad ac am ddim ac yn rhan annatod o borwr { -brand-firefox }) eich helpu i gadw golwg ar eich holl gyfrineiriau a'u darparu'n ddiogel o'ch holl ddyfeisiau.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
