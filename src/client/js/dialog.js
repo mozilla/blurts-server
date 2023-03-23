@@ -29,11 +29,9 @@ function handleEvent (e) {
     case e.target.matches('a[href*="dialog/"]'):
       e.preventDefault()
       openDialog(e.target.href)
-      window.gtag('event', 'Dialog', { action: 'open', page_location: location.href })
       break
     case e.target.matches('button[data-dialog]'):
       openDialog(`dialog/${e.target.dataset.dialog}`)
-      window.gtag('event', 'Dialog', { action: 'open', page_location: location.href })
       break
     case e.target.matches('dialog button.close'):
       dialogEl.close()
