@@ -924,3 +924,5 @@ exposed-data = Exposed data:
 
 find-out-if-2 = Find out if you were involved in this breach
 find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
+
+breach-detail-cta-signup = Check for breaches

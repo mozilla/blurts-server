@@ -66,7 +66,7 @@ rec-email =
   hides your real email address while forwarding emails to your real inbox.
 
 # Recommendation subhead
-rec-ip-subhead = Use a service that masks your IP address
+rec-ip-subhead-2 = Use a VPN to mask your IP address
 # Link title
 rec-ip-us-cta = Try { -brand-fpn }
 rec-ip-us =
@@ -80,9 +80,10 @@ rec-ip-non-us =
 
 # Recommendation subhead
 rec-moz-vpn-cta = Try { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-  Your Internet Protocol address (IP address) can reveal your location and internet service provider. A service 
-  like { -brand-mozilla-vpn } hides your IP address and location for your entire device.
+rec-moz-vpn-update-2 =
+  Your Internet Protocol address (IP address) pinpoints your location
+  and internet service provider. A service like { -brand-mozilla-vpn }
+  masks your IP address to hide your location.
 
 rec-hist-pw-subhead = Avoid reusing passwords
 # Link title

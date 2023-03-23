@@ -151,9 +151,9 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
       recommendations: [
         {
           recommendationCopy: {
-            subhead: 'rec-ip-subhead',
+            subhead: 'rec-ip-subhead-2',
             cta: isUserLocaleEnUs ? 'rec-moz-vpn-cta' : '',
-            body: isUserLocaleEnUs ? 'rec-moz-vpn-update' : 'rec-ip-non-us'
+            body: isUserLocaleEnUs ? 'rec-moz-vpn-update-2' : 'rec-ip-non-us'
           },
           ctaHref: 'https://vpn.mozilla.org?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-recommendations',
           ctaShouldOpenNewTab: true,
