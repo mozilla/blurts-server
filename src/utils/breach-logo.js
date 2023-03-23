@@ -9,7 +9,7 @@
  */
 export function getBreachLogo (breach, logos) {
   const logo = logos.has(breach.Domain)
-    ? `<img src='${logos.get(breach.Domain)}' alt='' class='breach-logo' height='32' />`
+    ? `<img src='${logos.get(breach.Domain)}' alt='' loading="lazy" class='breach-logo' height='32' />`
     : `<span role="img" aria-hidden='true' class='breach-logo' style='background-color: var(${getColorForName(breach.Name)});'>${breach.Name.substring(0, 1)}</span>`
 
   return logo
