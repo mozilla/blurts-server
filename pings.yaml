@@ -11,9 +11,9 @@ user-journey:
   include_client_id: true
   send_if_empty: false
   bugs:
-    - https://bugzilla.mozilla.org/TODO
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
   data_reviews:
-    - https://bugzilla.mozilla.org/TODO
+    - https://github.com/mozilla/blurts-server/pull/2924
   notification_emails:
     - rhelmer@mozilla.com
 
@@ -23,8 +23,8 @@ breach:
   include_client_id: true
   send_if_empty: false
   bugs:
-    - https://bugzilla.mozilla.org/TODO
+    - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
   data_reviews:
-    - https://bugzilla.mozilla.org/TODO
+    - https://github.com/mozilla/blurts-server/pull/2924
   notification_emails:
     - rhelmer@mozilla.com

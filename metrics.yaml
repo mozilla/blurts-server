@@ -15,9 +15,9 @@ user_journey:
     send_in_pings:
       - user-journey
     bugs:
-      - https://bugzilla.mozilla.org/TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
-      - https://bugzilla.mozilla.org/TODO
+      - https://github.com/mozilla/blurts-server/pull/2924
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
@@ -30,11 +30,9 @@ user_journey:
     description: |
       Sent each time users visit a page.
     bugs:
-      - https://bugzilla.mozilla.org/TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
-      - https://bugzilla.mozilla.org/TODO
-    data_sensitivity:
-      - technical
+      - https://github.com/mozilla/blurts-server/pull/2924
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
@@ -49,9 +47,9 @@ breach:
     send_in_pings:
       - breach
     bugs:
-      - https://bugzilla.mozilla.org/TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
-      - https://bugzilla.mozilla.org/TODO
+      - https://github.com/mozilla/blurts-server/pull/2924
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
@@ -65,9 +63,9 @@ breach:
     send_in_pings:
       - breach
     bugs:
-      - https://bugzilla.mozilla.org/TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
-      - https://bugzilla.mozilla.org/TODO
+      - https://github.com/mozilla/blurts-server/pull/2924
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
@@ -80,9 +78,9 @@ breach:
     send_in_pings:
       - breach
     bugs:
-      - https://bugzilla.mozilla.org/TODO
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1823766
     data_reviews:
-      - https://bugzilla.mozilla.org/TODO
+      - https://github.com/mozilla/blurts-server/pull/2924
     notification_emails:
       - rhelmer@mozilla.com
     expires: never
