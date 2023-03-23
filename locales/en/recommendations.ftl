@@ -12,10 +12,10 @@ rec-ssn =
 rec-pw-1-subhead = Change your password
 # Link title
 rec-pw-1-cta = Change password for this site
-rec-pw-1 = 
-  Make this password unique and different from any others you use. 
-  A good strategy to follow is to combine two or more unrelated 
-  words to create an entire passphrase.
+rec-pw-1-2 =
+  Make this password unique and different from any others you use.
+  A good strategy to follow is to combine two or more unrelated
+  words to create an entire pass phrase, and include numbers and symbols.
 
 # Recommendation subhead
 rec-pw-2-subhead = Update other logins using the same password
@@ -67,16 +67,6 @@ rec-email =
 
 # Recommendation subhead
 rec-ip-subhead-2 = Use a VPN to mask your IP address
-# Link title
-rec-ip-us-cta = Try { -brand-fpn }
-rec-ip-us =
-  Your Internet Protocol address (IP address) pinpoints your location 
-  and internet service provider. A service like { -brand-fpn } 
-  masks your IP address to hide your location.
-rec-ip-non-us = 
-  Your Internet Protocol address (IP address) pinpoints your location 
-  and internet service provider. With a virtual private network (VPN), you can hide your location 
-  and mask your IP address.
 
 # Recommendation subhead
 rec-moz-vpn-cta = Try { -brand-mozilla-vpn }

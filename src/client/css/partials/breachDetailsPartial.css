@@ -181,10 +181,6 @@
   background-image: url('/images/recommendation-icons/monitor-credit-cards.svg');
 }
 
-.breach-detail-recommendation.rec-ip-non-us {
-  background-image: url('/images/recommendation-icons/use-mask-location-service.svg');
-}
-
 .breach-detail-recommendation.rec-ip-us {
   background-image: url('/images/recommendation-icons/use-mask-IP-service.svg');
 }

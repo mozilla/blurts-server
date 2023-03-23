@@ -81,7 +81,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
           recommendationCopy: {
             subhead: 'rec-pw-1-subhead',
             cta: changePWLink ? 'rec-pw-1-cta' : '',
-            body: 'rec-pw-1'
+            body: 'rec-pw-1-2'
           },
           ctaHref: changePWLink,
           ctaShouldOpenNewTab: true,
@@ -152,13 +152,13 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
         {
           recommendationCopy: {
             subhead: 'rec-ip-subhead-2',
-            cta: isUserLocaleEnUs ? 'rec-moz-vpn-cta' : '',
-            body: isUserLocaleEnUs ? 'rec-moz-vpn-update-2' : 'rec-ip-non-us'
+            cta: 'rec-moz-vpn-cta',
+            body: 'rec-moz-vpn-update-2'
           },
           ctaHref: 'https://vpn.mozilla.org?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-recommendations',
           ctaShouldOpenNewTab: true,
           ctaAnalyticsId: 'Try Mozilla VPN',
-          recIconClassName: isUserLocaleEnUs ? 'rec-ip-us' : 'rec-ip-non-us'
+          recIconClassName: 'rec-ip-us'
         }
       ]
     },
