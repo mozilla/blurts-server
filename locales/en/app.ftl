@@ -886,6 +886,8 @@ sign-in = Sign In
 site-nav-breaches-link = Resolve Data Breaches
 site-nav-settings-link = Settings
 site-nav-help-link = Help and Support
+# The following callout is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Try our other security tools:
 
 ## User menu
 
