@@ -85,7 +85,7 @@ nav .callouts a {
 .mobile nav.site-nav {
   width: 100%;
   border: none;
-  z-index: 2;
+  z-index: 2; /* set to overlap the footer in mobile view */
   padding-bottom: var(--padding-lg);
 }
 
