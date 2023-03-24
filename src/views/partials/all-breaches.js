@@ -16,7 +16,7 @@ function makeBreachCard (breach, logos) {
       <dl>
         <div>
           <dt>${getMessage('breach-added-label')}</dt>
-          <dd>${new Date(breach.AddedDate).toLocaleString('default', { year: 'numeric', month: 'long', day: 'numeric' })}</dd>
+          <dd>${new Date(breach.AddedDate).toLocaleString(getLocale(), { year: 'numeric', month: 'long', day: 'numeric' })}</dd>
         </div>
         <div>
           <dt>${getMessage('exposed-data')}</dt>

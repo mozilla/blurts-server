@@ -1,544 +1,270 @@
-ul {
-  list-style-type: none;
+.breach-detail-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap);
+  padding: var(--padding-xl) var(--padding-sm);
 }
 
-main.breach-detail {
-  padding-left: 24px;
-  padding-right: 24px;
-  color: var(--grey1);
+.breach-detail-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--padding-md);
 }
 
-.bg-split {
-  background-image: linear-gradient(rgb(255 255 255 / 0) 50%, #fff 0);
+.breach-detail-meta h2 {
+  font: var(--h2-font);
 }
 
-.breach-type:hover {
+.breach-detail-meta-domain {
+  font: var(--h3-font);
+  text-decoration: none;
+}
+
+.breach-detail-meta-more-info {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--blue-50);
+}
+
+.breach-detail-overview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: min(0px, 50% - 50vw);
+  width: 100vw;
+  height: 100%;
+  background-color: var(--purple-5);
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.breach-detail-overview {
+  position: relative;
+  max-width: var(--max-width-p);
+  margin-inline: auto;
+  padding: var(--padding-xl) var(--padding-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
+.breach-detail-overview-blurb {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-md);
+}
+
+.breach-detail-overview h2 {
+  font: var(--h1-font);
+}
+
+.breach-detail-compromised-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-lg);
+  padding: var(--padding-lg);
+  font-weight: 700;
+}
+
+.breach-detail-compromised-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm);
+}
+
+.breach-detail-attribution {
+  color: var(--gray-40);
+  font-size: 0.875rem;
+
+  /* .breach-detail-compromised-list's padding-inline-start + icon width + .breach-detail-compromised-list li's gap */
+  padding-left: calc(var(--padding-lg) + 24px + var(--padding-sm));
+}
+
+.breach-detail-attribution a {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.breach-detail-attribution a:hover {
   text-decoration: underline;
 }
 
-.delayed-reporting {
-  margin-top: 18px;
-  display: inline-block;
+.breach-detail-sign-up::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: min(0px, 50% - 50vw);
+  width: 100vw;
+  height: 100%;
+  background-color: var(--purple-5);
+  opacity: 0.5;
+  z-index: -1;
 }
 
-.detail-section {
-  padding: 60px 0;
-}
-
-.detail-section.bg-split {
-  padding: 0 0 20px;
-}
-
-.bg-split .mw-700 {
-  padding: 0;
-}
-
-.breach-detail-headline {
-  margin: auto auto 8px;
-  color: var(--ink);
-  max-width: 100%;
-}
-
-.breach-detail-logo-wrapper {
-  margin-bottom: var(--padding);
-}
-
-.breach-detail-logo.breach-logo {
-  max-width: 10rem;
-  max-height: 10rem;
-}
-
-.glyph {
+.breach-detail-sign-up {
+  position: relative;
+  max-width: var(--max-width-p);
+  margin-inline: auto;
+  padding: var(--padding-xl) var(--padding-lg);
   display: flex;
-  margin-right: 16px;
-}
-
-.overview,
-.overview p {
-  font-size: 16px;
-}
-
-.overview p {
-  margin: 20px 0 0;
-}
-
-.additional-data-types {
-  display: block;
-  margin: 0;
-}
-
-.additional-data-types-wrapper .source-info {
-  margin-left: 0;
-}
-
-.breach-type {
-  margin-top: 8px;
-  font-size: 14px;
-  color: var(--grey6);
-}
-
-.priority-data-classes-list {
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
   flex-wrap: wrap;
-  margin: 0;
 }
 
-.lower-priority-data-types {
-  margin-top: 0;
-  margin-bottom: 28px;
+.breach-detail-sign-up-content {
+  flex: 1 1 var(--min-width);
+  display: flex;
+  flex-direction: column;
 }
 
-.priority-data-type {
-  margin-bottom: 28px;
+.breach-detail-sign-up-content h2 {
+  font: var(--h3-font);
 }
 
-.data-type {
-  font-weight: 600;
+#what-to-do-next {
+  max-width: var(--max-width-p);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-xl);
+  padding: var(--padding-xl) var(--padding-lg);
 }
 
-.data-type,
-.data-action {
-  margin: 0;
+.breach-detail-recommendation-lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-md);
 }
 
-/* recommendations */
+.breach-detail-recommendation-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-xl);
+}
 
-.rec-img {
-  min-width: 52px;
-  height: 48px;
-  margin: 0 auto;
-  background-size: contain;
+.breach-detail-recommendation {
+  padding-left: calc(48px + var(--padding-lg));
   background-repeat: no-repeat;
+  background-size: 48px 48px;
+  background-position: top left;
 }
 
-.rec-pw-1 {
+.breach-detail-recommendation.rec-pw-1 {
   background-image: url('/images/recommendation-icons/change-password.svg');
 }
 
-.rec-pw-2 {
+.breach-detail-recommendation.rec-pw-2 {
   background-image: url('/images/recommendation-icons/update-passwords.svg');
 }
 
-.rec-pw-3 {
+.breach-detail-recommendation.rec-pw-3 {
   background-image: url('/images/recommendation-icons/store-safe-place.svg');
 }
 
-.rec-pw-4 {
+.breach-detail-recommendation.rec-pw-4 {
   background-image: url('/images/recommendation-icons/set-2FA.svg');
 }
 
-.rec-ssn {
+.breach-detail-recommendation.rec-ssn {
   background-image: url('/images/recommendation-icons/review-credit.svg');
 }
 
-.rec-bank-acc {
+.breach-detail-recommendation.rec-bank-acc {
   background-image: url('/images/recommendation-icons/monitor-bank.svg');
 }
 
-.rec-cc {
+.breach-detail-recommendation.rec-cc {
   background-image: url('/images/recommendation-icons/monitor-credit-cards.svg');
 }
 
-.rec-ip-non-us {
-  background-image: url('/images/recommendation-icons/use-mask-location-service.svg');
-}
-
-.rec-ip-us {
+.breach-detail-recommendation.rec-ip-us {
   background-image: url('/images/recommendation-icons/use-mask-IP-service.svg');
 }
 
-.rec-hist-pw {
+.breach-detail-recommendation.rec-hist-pw {
   background-image: url('/images/recommendation-icons/change-password.svg');
 }
 
-.rec-sec-qa {
+.breach-detail-recommendation.rec-sec-qa {
   background-image: url('/images/recommendation-icons/unique-answers.svg');
 }
 
-.rec-phone-num {
+.breach-detail-recommendation.rec-phone-num {
   background-image: url('/images/recommendation-icons/avoid-sharing-phone.svg');
 }
 
-.rec-dob {
+.breach-detail-recommendation.rec-dob {
   background-image: url('/images/recommendation-icons/strengthen-pin-security.svg');
 }
 
-.rec-pins {
+.breach-detail-recommendation.rec-pins {
   background-image: url('/images/recommendation-icons/strengthen-pin-security.svg');
 }
 
-.rec-address {
+.breach-detail-recommendation.rec-address {
   background-image: url('/images/recommendation-icons/avoid-address.svg');
 }
 
-.rec-gen-1 {
+.breach-detail-recommendation.rec-gen-1 {
   background-image: url('/images/recommendation-icons/unique-strong-pwds.svg');
 }
 
-.rec-gen-2 {
+.breach-detail-recommendation.rec-gen-2 {
   background-image: url('/images/recommendation-icons/store-safe-place.svg');
 }
 
-.rec-gen-3 {
+.breach-detail-recommendation.rec-gen-3 {
   background-image: url('/images/recommendation-icons/avoid-personal-info.svg');
 }
 
-.rec-gen-4 {
+.breach-detail-recommendation.rec-gen-4 {
   background-image: url('/images/recommendation-icons/update-regularly.svg');
 }
 
-.rec-email {
+.breach-detail-recommendation.rec-email {
   background-image: url('/images/recommendation-icons/masked-email.svg');
 }
 
-.overflow-recs {
-  visibility: visible;
-  transition: all 0.3s ease;
+.breach-detail-recommendation dt {
+  font: var(--h3-font);
 }
 
-button.fade-out {
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  min-height: 0;
-  border: none;
-  font-size: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
+.breach-detail-recommendation dd {
+  color: var(--gray-50);
 }
 
-.affected-email {
-  max-width: 260px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block !important;
-  margin: 0;
-  align-self: center;
+.breach-detail-recommendation dd a {
+  color: var(--blue-50);
+  font-weight: 700;
+  text-decoration: underline;
 }
 
-.affected-email-notification {
-  border-radius: 2px;
-  background-color: #ffffd1;
-  color: #89201f;
-  font-size: 14px;
-  margin: 60px auto;
+.breach-detail-recommendation dd a:hover {
+  color: var(--blue-90);
 }
 
-.affected-email-message {
-  padding: 12px;
-  margin: 0;
-  vertical-align: middle;
-  display: inline-block;
-}
-
-.resolve-breaches-wrapper {
-  background-color: #ffffd1;
-  border-radius: 8px;
-}
-
-.affected-email-message::before {
+.breach-detail-info::before {
   content: '';
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-image: url('/images/svg/notification.svg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  margin-right: 10px;
-  vertical-align: middle;
-}
-
-.blue-link.what-to-do-next {
-  margin-left: 4px;
-}
-
-.resolve-headline {
-  padding: 24px 24px 12px;
-  color: var(--purple7);
-  font-size: 24px;
-  margin: 0 auto;
-}
-
-.resolution-message {
-  color: var(--grey8);
-  margin: 0;
-}
-
-.affected-emails-list-wrapper {
-  padding: 24px 32px;
-  line-height: 1.5;
-  position: relative;
-}
-
-.affected-emails-list-wrapper::before {
-  background: var(--monitor-gradient);
-  height: 4px;
-  width: 100%;
-  content: '';
-  display: block;
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-}
-
-.resolution-message span {
-  font-style: italic;
-}
-
-.affected-emails-list {
-  max-width: 588px;
-  margin: auto;
-}
-
-.affected-email-list-item {
-  padding: 30px 40px;
-  border-bottom: 1px solid rgb(0 0 0 / 0.2);
-  color: var(--ink);
-}
-
-.affected-email-list-item:last-of-type {
-  border-bottom: 1px solid rgb(0 0 0 / 0);
-}
-
-.resolve-undo {
-  margin-top: 4px;
-  display: block;
-}
-
-.resolve-button {
-  margin-left: 8px;
-  position: relative;
-  transition: all 0.3s ease !important;
-  max-width: 200px !important;
-}
-
-.resolve-button::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  content: '';
-  display: block;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 30px;
-  opacity: 0;
-  transition: all 0.5s ease !important;
-}
-
-.resolve-button.btn-blue-primary::after {
-  background-image: url('/images/svg/new-loader.svg');
-}
-
-.resolve-button.btn-ghost::after {
-  background-image: url('/images/svg/loader-dark.svg');
-}
-
-.resolve-button.btn-ghost.loading {
-  color: rgb(0 0 0 / 0.1);
-}
-
-.resolve-button.btn-ghost.loading span {
-  color: rgb(0 96 223 / 0.102);
-}
-
-.resolve-button.btn-blue-primary.loading {
-  color: rgb(255 255 255 / 0.1);
-  transition: all 0.3s ease;
-}
-
-.resolve-button.loading::after {
-  opacity: 1;
-}
-
-.breach-resolution-modal {
-  padding: var(--padding);
-  height: 100vh;
+  left: min(0px, 50% - 50vw);
   width: 100vw;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgb(255 255 255 / 0);
-  z-index: 1000;
-  display: none;
-  visibility: hidden;
-  transition: all 0.3s ease;
+  height: 100%;
+  background-color: var(--purple-5);
+  opacity: 0.2;
+  z-index: -1;
 }
 
-.breach-resolution-modal.modal-loading {
-  background-color: rgb(255 255 255 / 0.1);
-  display: flex;
-  visibility: visible;
-  transition: all 0.3s ease;
-}
-
-.breach-resolution-modal.modal-open {
-  background-color: rgb(255 255 255 / 1);
-  transition: all 0.3s ease;
-}
-
-.confirmation-modal-wrapper {
+.breach-detail-info {
   position: relative;
-  padding: 60px var(--padding);
-  border-radius: 8px;
-  margin: auto;
-  opacity: 0;
-  transition: all 0.2s ease;
-}
-
-.modal-open .confirmation-modal-wrapper {
-  opacity: 1;
-  transition: opacity 0.2s ease;
-}
-
-.modal-content {
-  max-width: 350px;
-  width: 100%;
-  margin: auto;
-}
-
-.modal-headline {
-  color: var(--purple7);
-  font-size: 24px;
-  line-height: 1.3;
-}
-
-.overlay-resolved-first-breach::before {
-  background-image: url('/images/svg/resolution-overlays/resolved-first-breach.svg');
-}
-
-.overlay-take-that-hackers::before {
-  background-image: url('/images/svg/resolution-overlays/take-that-hackers.svg');
-}
-
-.overlay-another-breach-resolved::before {
-  background-image: url('/images/svg/resolution-overlays/another-breach-resolved.svg');
-}
-
-.overlay-marked-as-resolved::before {
-  background-image: url('/images/svg/resolution-overlays/marked-as-resolved.svg');
-}
-
-.modal-headline::before {
-  height: 200px;
-  width: auto;
-  margin: 0 auto 20px;
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  display: block;
-  content: '';
-}
-
-.modal-progress-message {
-  line-height: 1.5;
-  margin: 0 auto 24px;
-}
-
-.go-to-dash,
-.modal-content .progress-header {
-  margin: 0 auto 32px;
-}
-
-.blue-link.return-to-breach-details {
-  margin: 0 auto;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid rgb(2 80 187 / 0);
-  transition: all 0.3s ease;
-}
-
-.blue-link.return-to-breach-details:hover,
-.blue-link.return-to-breach-details:focus {
-  text-decoration: none;
-  border-bottom-color: var(--blue4);
-  transition: all 0.3s ease;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 24px;
-  width: 24px;
-  border: none;
-  background-image: url('/images/x-close-gray.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border-radius: 50%;
-}
-
-@media screen and (max-width: 800px) {
-  .bg-split .mw-700 {
-    padding: 0 24px;
-  }
-
-  .modal-headline::before {
-    height: 200px;
-  }
-
-  .confirmation-modal-wrapper {
-    height: 100%;
-  }
-
-  .affected-email-notification {
-    margin: 120px auto 60px;
-  }
-
-  .affected-email-list-item {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .affected-email {
-    margin-bottom: 12px;
-    text-align: center;
-    white-space: wrap;
-    word-break: break-all;
-    max-width: 100%;
-  }
-
-  .modal-headline::before {
-    height: 150px;
-  }
-
-  .breach-recommendations {
-    text-align: center;
-    max-width: 400px;
-  }
-
-  .rec-img {
-    height: 52px;
-    width: 100%;
-    margin: 0 auto 20px;
-  }
-
-  .rec-pw-1,
-  .rec-pw-2,
-  .rec-gen-4,
-  .rec-hist-pw,
-  .rec-ip-non-us,
-  .rec-ip-us,
-  .rec-sec-qa {
-    height: 40px;
-  }
-
-  .modal-content .progress-header {
-    display: inline-block;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .affected-email-list-item {
-    flex-direction: column;
-  }
+  max-width: var(--max-width-p);
+  margin-inline: auto;
+  padding: var(--padding-xl) var(--padding-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
 }

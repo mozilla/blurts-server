@@ -81,7 +81,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
           recommendationCopy: {
             subhead: 'rec-pw-1-subhead',
             cta: changePWLink ? 'rec-pw-1-cta' : '',
-            body: 'rec-pw-1'
+            body: 'rec-pw-1-2'
           },
           ctaHref: changePWLink,
           ctaShouldOpenNewTab: true,
@@ -92,7 +92,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
           recommendationCopy: {
             subhead: 'rec-pw-2-subhead',
             // Comment this CTA back in once monitor.firefox.com
-            // has been added to the whitelist and is able to open about:logins
+            // has been added to the allowlist and is able to open about:logins
             // https://searchfox.org/mozilla-central/source/browser/app/permissions
             // cta: isUserBrowserFirefox ? "rec-pw-2-cta-fx" : "",
             body: 'rec-pw-2'
@@ -151,14 +151,14 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
       recommendations: [
         {
           recommendationCopy: {
-            subhead: 'rec-ip-subhead',
-            cta: isUserLocaleEnUs ? 'rec-moz-vpn-cta' : '',
-            body: isUserLocaleEnUs ? 'rec-moz-vpn-update' : 'rec-ip-non-us'
+            subhead: 'rec-ip-subhead-2',
+            cta: 'rec-moz-vpn-cta',
+            body: 'rec-moz-vpn-update-2'
           },
           ctaHref: 'https://vpn.mozilla.org?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-recommendations',
           ctaShouldOpenNewTab: true,
           ctaAnalyticsId: 'Try Mozilla VPN',
-          recIconClassName: isUserLocaleEnUs ? 'rec-ip-us' : 'rec-ip-non-us'
+          recIconClassName: 'rec-ip-us'
         }
       ]
     },

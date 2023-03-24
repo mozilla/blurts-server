@@ -79,9 +79,6 @@ compromised-accounts = Compromised accounts:
 # compromised-data = the kind of user data exposed to hackers in data breach.
 compromised-data = Compromised data:
 
-# the kind of user data exposed to hackers in data breach.
-exposed-data = Exposed data:
-
 unsub-headline = Unsubscribe from { -product-name-nowrap }
 unsub-blurb = This will remove your email from the { -product-name-nowrap } list and you will no longer receive alerts when new breaches are announced.
 unsub-button = Unsubscribe
@@ -155,9 +152,6 @@ preferences = Preferences
 
 # Link title
 home = Home
-
-# Link title
-breaches = Breaches
 
 # Link title
 security-tips = Security Tips
@@ -378,7 +372,6 @@ account-not-required = { -brand-name } browser not required for a { -brand-fxa }
 ##   $breachName (String) - Number of the breach
 
 was-your-info-exposed = Was your info exposed in the { $breachName } data breach?
-find-out-if = Find out if your data was exposed in this breach.
 
 fb-not-comp = This email did not appear in the { $breachName } breach.
 
@@ -403,9 +396,6 @@ fb-comp-and-others =
 no-other-breaches-found = No other breaches found from a basic search.
 
 no-results-blurb = Sorry, that breach is not in our database.
-all-breaches-headline-2 = All breaches detected by { -product-name }
-all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
-search-breaches = Search Breaches
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
@@ -884,6 +874,8 @@ meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-mon
 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
+header-nav-all-breaches = All breaches
+footer-nav-all-breaches = All breaches
 
 ## Site navigation
 
@@ -918,3 +910,19 @@ error-page-error-404-cta-button = Go back
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Something went wrong
 error-page-error-other-copy = Please try again or come back later
+
+## Breach overview page
+
+all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
+all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
+search-breaches = Search Breaches
+
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Exposed data:
+
+## Public breach detail page
+
+find-out-if-2 = Find out if you were involved in this breach
+find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
+
+breach-detail-cta-signup = Check for breaches

@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from '../../utils/fluent.js'
+import { getLocale, getMessage } from '../../utils/fluent.js'
 import { getAllPriorityDataClasses, getAllGenericRecommendations } from '../../utils/recommendations.js'
 
 function getBreachCategory (breach) {
@@ -57,7 +57,7 @@ function makeDataSection (breach) {
 
   let output = dataClasses.priority.map(dataClass =>
     `<li>
-      <img src="${dataClass.pathToGlyph}.svg">
+      <img src="${dataClass.pathToGlyph}.svg" width="24" alt="">
       ${dataClass.dataType}
     </li>`
   ).join('')
@@ -76,21 +76,23 @@ function makeRecommendationCards (breach) {
 
   let output = dataClasses.priority.map(dataClass =>
     dataClass.recommendations?.map(r =>
-    `<li>
-      <div class="rec-img ${r.recIconClassName}"></div>
-      <h3>${getMessage(r.recommendationCopy.subhead)}</h3>
-      <div>${getMessage(r.recommendationCopy.body)}</div>
-      ${r.recommendationCopy.cta ? `<a href="">${getMessage(r.recommendationCopy.cta)}</a>` : ''}
-    </li>`)
+    `<div class="breach-detail-recommendation ${r.recIconClassName}">
+      <dt>${getMessage(r.recommendationCopy.subhead)}</dt>
+      <dd>
+        <p>${getMessage(r.recommendationCopy.body)}</p>
+        ${r.recommendationCopy.cta ? `<a href="${r.ctaHref}" target="${r.ctaShouldOpenInNewTab ? '_blank' : '_self'}">${getMessage(r.recommendationCopy.cta)}</a>` : ''}
+      </dd>
+    </div>`).join('')
   ).join('')
 
   output += getAllGenericRecommendations().map(dataClass =>
-    `<li>
-      <div class="rec-img ${dataClass.recIconClassName}"></div>
-      <h3>${getMessage(dataClass.recommendationCopy.subhead)}</h3>
-      <div>${getMessage(dataClass.recommendationCopy.body)}</div>
-      ${dataClass.recommendationCopy.cta ? `<a href="">${getMessage(dataClass.recommendationCopy.cta)}</a>` : ''}
-    </li>`
+    `<div class="breach-detail-recommendation ${dataClass.recIconClassName}">
+      <dt>${getMessage(dataClass.recommendationCopy.subhead)}</dt>
+      <dd>
+        <p>${getMessage(dataClass.recommendationCopy.body)}</p>
+        ${dataClass.recommendationCopy.cta ? `<a href="${dataClass.ctaHref}" target="${dataClass.ctaShouldOpenInNewTab ? '_blank' : '_self'}">${getMessage(dataClass.recommendationCopy.cta)}</a>` : ''}
+      </dd>
+    </div>`
   ).join('')
 
   return output
@@ -126,70 +128,79 @@ function makeBreachDetails (breach) {
 }
 
 export const breachDetailsPartial = data => `
-  <div>
-    <div>
-      <img class="breach-detail-logo breach-logo" alt="${data.breach.Name} logo" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
+  <header class="breach-detail-header">
+    <img class="breach-detail-logo breach-logo" alt="" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
+    <div class="breach-detail-meta">
+      <h1>${data.breach.Title}</h1>
+      ${getBreachCategory(data.breach) === 'website-breach'
+        ? `<a href="https://${data.breach.Domain}" class="breach-detail-meta-domain" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">${data.breach.Domain}</a>`
+        : ''}
+      <a href="#what-is-this-breach" class="breach-detail-meta-more-info">${getMessage(getBreachCategory(data.breach))}</a>
     </div>
-    <h2>${data.breach.Title}</h2>
-    ${getBreachCategory(data.breach) === 'website-breach'
-      ? `<a href="https://www.${data.breach.Domain}" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">www.${data.breach.Domain}</a>`
-      : ''}
-    <br>
-    <a href="#what-is-this-breach">${getMessage(getBreachCategory(data.breach))}</a>
-  </div>
+  </header>
 
   <!-- Overview -->
-  <section>
-    <h2>Overview</h2>
-    <div>${getMessage('breach-overview-new', { breachDate: data.breach.AddedDate, breachTitle: data.breach.Name, addedDate: data.breach.AddedDate })}</div>
-    <br>
-    ${compareBreachDates(data.breach) ? `<a href="#delayed-reporting">${getMessage('delayed-reporting-headline')}</a>` : ''}
-    <br>
+  <div class="breach-detail-overview">
+    <div class="breach-detail-overview-blurb">
+      <h2>${getMessage('breach-overview-title')}</h2>
+      <div>${getMessage(
+        'breach-overview-new',
+        {
+          breachDate: data.breach.BreachDate.toLocaleString(getLocale(), { year: 'numeric', month: 'long', day: 'numeric' }),
+          breachTitle: data.breach.Name,
+          addedDate: data.breach.AddedDate.toLocaleString(getLocale(), { year: 'numeric', month: 'long', day: 'numeric' })
+        })}</div>
+      ${compareBreachDates(data.breach) ? `<a href="#delayed-reporting">${getMessage('delayed-reporting-headline')}</a>` : ''}
+    </div>
     <!--Exposed Data Classes -->
     <div>
-      <h2>${getMessage('what-data')}</h2>
-      <ul>
+      <h3>${getMessage('what-data')}</h3>
+      <ul class="breach-detail-compromised-list">
         ${makeDataSection(data.breach)}
       </ul>
-      <br>
-      <div>
+      <p class="breach-detail-attribution">
       ${getMessage('email-2022-hibp-attribution', {
-        'hibp-link-attr': 'href="https://haveibeenpwned.com/ rel="noopener"'
+        'hibp-link-attr': 'href="https://haveibeenpwned.com/" target="_blank"'
       })}
-      </div>
+      </p>
     </div>
-  </section>
+  </div>
+
+  <!-- Sign Up Banner -->
+  <div class="breach-detail-sign-up">
+    <img alt="" src="/images/breach-detail-scan.svg" width="120" />
+    <div class="breach-detail-sign-up-content">
+        <h2>${getMessage('find-out-if-2')}</h2>
+        <span>${getMessage('find-out-if-description')}</span>
+    </div>
+    <div class="breach-detail-sign-up-cta-wrapper">
+      <a href="/user/breaches" class="button primary">${getMessage('breach-detail-cta-signup')}</a>
+    </div>
+  </div>
 
   <!-- What to do tips -->
-  <section id="what-to-do-next">
-    <h2>${data.breach.DataClasses.includes('passwords') ? getMessage('rec-section-headline') : getMessage('rec-section-headline-no-pw')}</h2>
-    ${data.breach.DataClasses.includes('passwords') ? getMessage('rec-section-subhead') : getMessage('rec-section-subhead-no-pw')}
-    <ul>
-    ${makeRecommendationCards(data.breach)}
-    </ul>
-  </section>
+  <div id="what-to-do-next">
+    <div class="breach-detail-recommendation-lead">
+      <h2>${data.breach.DataClasses.includes('passwords') ? getMessage('rec-section-headline') : getMessage('rec-section-headline-no-pw')}</h2>
+      <p>${data.breach.DataClasses.includes('passwords') ? getMessage('rec-section-subhead') : getMessage('rec-section-subhead-no-pw')}</p>
+    </div>
+    <dl class="breach-detail-recommendation-list">
+      ${makeRecommendationCards(data.breach)}
+    </dl>
+  </div>
 
   <!-- What is this breach? / Why did it take you so long to report it?-->
-  <section>
+  <div class="breach-detail-info">
     <div id="what-is-this-breach">
       ${makeBreachDetails(getBreachCategory(data.breach))}
     </div>
-${compareBreachDates(data.breach)
-  ? `
-      
-    <div id="delayed-reporting">
-      <h2>${getMessage('delayed-reporting-headline')}</h2>
-      ${getMessage('delayed-reporting-copy')}
-    </div>`
-: ''}
-  </section>
-
-  <!-- Sign Up Banner -->
-  <section>
-    <div>
-      <h2>${getMessage('find-out-if')}</h2>
-      <span>${getMessage('stay-safe-with-tool')}</span>
-      <button class="primary">${getMessage('check-for-breaches')}</button>
-    </div>
-  </section>
+    ${compareBreachDates(data.breach)
+      ? `
+        <div id="delayed-reporting">
+          <h2>${getMessage('delayed-reporting-headline')}</h2>
+          ${getMessage('delayed-reporting-copy')}
+        </div>`
+      : ''
+    }
+  </div>
 `
