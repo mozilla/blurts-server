@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 /**
- * @param {unknkown} breach
+ * @param {object} breach
  * @param {Map<string, string>} logos Map of URLs to logos indexed by the domain name of the respective company
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
