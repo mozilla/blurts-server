@@ -9,34 +9,22 @@ export function getAllGenericRecommendations () {
     {
       recommendationCopy: {
         subhead: 'rec-gen-1-subhead',
-        body: 'rec-gen-1',
-        cta: 'rec-gen-1-cta'
+        body: 'rec-gen-1'
       },
-      ctaHref: 'https://monitor.firefox.com/security-tips#strong-passwords',
-      ctaShouldOpenNewTab: false,
-      ctaAnalyticsId: 'How to create strong passwords',
       recIconClassName: 'rec-gen-1'
     },
     {
       recommendationCopy: {
         subhead: 'rec-gen-2-subhead',
-        body: 'rec-gen-2',
-        cta: 'rec-gen-2-cta'
+        body: 'rec-gen-2'
       },
-      ctaHref: 'https://monitor.firefox.com/security-tips#five-myths',
-      ctaShouldOpenNewTab: false,
-      ctaAnalyticsId: 'Myths about password managers',
       recIconClassName: 'rec-gen-2'
     },
     {
       recommendationCopy: {
         subhead: 'rec-gen-3-subhead',
-        body: 'rec-gen-3',
-        cta: 'rec-gen-3-cta'
+        body: 'rec-gen-3'
       },
-      ctaHref: 'https://monitor.firefox.com/security-tips#steps-to-protect',
-      ctaShouldOpenNewTab: false,
-      ctaAnalyticsId: 'Read more security tips',
       recIconClassName: 'rec-gen-3'
     },
     {
