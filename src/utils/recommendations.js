@@ -143,7 +143,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
             cta: 'rec-moz-vpn-cta',
             body: 'rec-moz-vpn-update-2'
           },
-          ctaHref: 'https://vpn.mozilla.org?utm_source=monitor.firefox.com&utm_medium=referral&utm_campaign=monitor-recommendations',
+          ctaHref: 'https://www.mozilla.org/products/vpn?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-detail',
           ctaShouldOpenNewTab: true,
           ctaAnalyticsId: 'Try Mozilla VPN',
           recIconClassName: 'rec-ip-us'
@@ -202,7 +202,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
             body: 'rec-email',
             cta: 'rec-email-cta'
           },
-          ctaHref: 'https://relay.firefox.com/',
+          ctaHref: 'https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-detail',
           ctaShouldOpenNewTab: true,
           ctaAnalyticsId: 'Try Firefox Relay',
           recIconClassName: 'rec-email'
