@@ -15,7 +15,7 @@ rec-pw-1-cta = Change password for this site
 rec-pw-1-2 =
   Make this password unique and different from any others you use.
   A good strategy to follow is to combine two or more unrelated
-  words to create an entire pass phrase, and include numbers and symbols.
+  words to create an entire passphrase, and include numbers and symbols.
 
 # Recommendation subhead
 rec-pw-2-subhead = Update other logins using the same password
