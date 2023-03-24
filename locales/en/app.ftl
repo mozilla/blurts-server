@@ -874,7 +874,6 @@ meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-mon
 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
-footer-nav-all-breaches = All breaches
 
 ## Site navigation
 
@@ -897,6 +896,7 @@ menu-item-logout = Sign out
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Terms & Privacy
 github = { -brand-github }
+footer-nav-all-breaches = All Breaches
 
 ## Error page
 
