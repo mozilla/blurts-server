@@ -4,6 +4,7 @@
 
 import { getMessage, getLocale } from '../../utils/fluent.js'
 import AppConstants from '../../app-constants.js'
+import { getBreachLogo } from '../../utils/breach-logo.js'
 
 function createEmailOptions (data, selectedEmailIndex) {
   const emails = data.verifiedEmails.map(obj => obj.email)
@@ -32,9 +33,7 @@ function createBreachRows (data, logos) {
         dataClasses: longList.format(dataClassesTranslated)
       })
 
-      const logo = logos.has(breach.Domain)
-        ? `<img src='${logos.get(breach.Domain)}' alt='' class='breach-logo' height='32' />`
-        : `<span role="img" aria-hidden='true' class='breach-logo' style='background-color: var(${getColorForName(breach.Name)});'>${breach.Name.substring(0, 1)}</span>`
+      const logo = getBreachLogo(breach, logos)
 
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
@@ -136,27 +135,3 @@ export const breaches = data => `
   </template>
 </section>
 `
-
-/**
- * @param {string} name
- * @returns string CSS variable for a string-specific color
- */
-function getColorForName (name) {
-  const logoColors = [
-    '--blue-5',
-    '--purple-5',
-    '--green-05',
-    '--violet-5',
-    '--orange-5',
-    '--yellow-5',
-    '--red-5',
-    '--pink-5'
-  ]
-
-  const charValue = name
-    .split('')
-    .map(letter => letter.codePointAt(0))
-    .reduce((sum, codePoint) => sum + codePoint)
-
-  return logoColors[charValue % logoColors.length]
-}
