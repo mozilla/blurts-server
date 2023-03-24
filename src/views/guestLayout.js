@@ -50,7 +50,6 @@ const guestLayout = data => `
         <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
       </a>
       <menu>
-        <li><a href='/breaches' class='secondary'>${getMessage('header-nav-all-breaches')}</a></li>
         <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
       </menu>
     </header>

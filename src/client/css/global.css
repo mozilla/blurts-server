@@ -113,25 +113,6 @@ body > header .nav-wrapper {
   gap: var(--padding-sm);
 }
 
-body > header menu {
-  display: flex;
-  gap: var(--gap);
-  align-items: center;
-}
-
-body > header menu a {
-  color: var(--blue-50);
-  text-decoration: none;
-}
-
-body > header menu a:hover {
-  text-decoration: underline;
-}
-
-.mobile body > header menu a:not(.button) {
-  display: none;
-}
-
 main {
   --max-width-margin: calc(50% - var(--max-width)/2);
 
