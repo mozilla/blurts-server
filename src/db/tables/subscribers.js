@@ -225,6 +225,19 @@ async function deleteSubscriberByFxAUID (fxaUID) {
   await knex('subscribers').where('fxa_uid', fxaUID).del()
 }
 
+async function deleteResolutionsWithEmail (id, email) {
+  const [subscriber] = await knex('subscribers').where({
+    id
+  })
+  const { breach_resolution: breachResolution } = subscriber
+  // if email exists in breach resolution, remove it
+  if (breachResolution[email]) {
+    delete breachResolution[email]
+  }
+
+  return await setBreachResolution(subscriber, breachResolution)
+}
+
 async function updateBreachStats (id, stats) {
   await knex('subscribers')
     .where('id', id)
@@ -311,5 +324,6 @@ export {
   removeSubscriber,
   removeSubscriberByToken,
   deleteUnverifiedSubscribers,
-  deleteSubscriberByFxAUID
+  deleteSubscriberByFxAUID,
+  deleteResolutionsWithEmail
 }
