@@ -88,16 +88,16 @@ app.use(
 
 const imgSrc = [
   "'self'",
-  'https://monitor.cdn.mozilla.net'
+  'https://www.googletagmanager.com', // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  'https://firefoxusercontent.com',
+  'https://mozillausercontent.com/',
+  'https://monitor.cdn.mozilla.net/'
 ]
 
 if (AppConstants.FXA_ENABLED) {
   const fxaSrc = new URL(AppConstants.OAUTH_PROFILE_URI).origin
   imgSrc.push(fxaSrc)
 }
-
-// Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-imgSrc.push('www.googletagmanager.com')
 
 app.use((_req, res, _next) => {
   res.locals.nonce = crypto.randomBytes(16).toString('hex')
