@@ -154,79 +154,79 @@
 }
 
 .breach-detail-recommendation.rec-pw-1 {
-  background-image: url('../../images/recommendation-icons/change-password.svg');
+  background-image: url('/images/recommendation-icons/change-password.svg');
 }
 
 .breach-detail-recommendation.rec-pw-2 {
-  background-image: url('../../images/recommendation-icons/update-passwords.svg');
+  background-image: url('/images/recommendation-icons/update-passwords.svg');
 }
 
 .breach-detail-recommendation.rec-pw-3 {
-  background-image: url('../../images/recommendation-icons/store-safe-place.svg');
+  background-image: url('/images/recommendation-icons/store-safe-place.svg');
 }
 
 .breach-detail-recommendation.rec-pw-4 {
-  background-image: url('../../images/recommendation-icons/set-2FA.svg');
+  background-image: url('/images/recommendation-icons/set-2FA.svg');
 }
 
 .breach-detail-recommendation.rec-ssn {
-  background-image: url('../../images/recommendation-icons/review-credit.svg');
+  background-image: url('/images/recommendation-icons/review-credit.svg');
 }
 
 .breach-detail-recommendation.rec-bank-acc {
-  background-image: url('../../images/recommendation-icons/monitor-bank.svg');
+  background-image: url('/images/recommendation-icons/monitor-bank.svg');
 }
 
 .breach-detail-recommendation.rec-cc {
-  background-image: url('../../images/recommendation-icons/monitor-credit-cards.svg');
+  background-image: url('/images/recommendation-icons/monitor-credit-cards.svg');
 }
 
 .breach-detail-recommendation.rec-ip-us {
-  background-image: url('../../images/recommendation-icons/use-mask-IP-service.svg');
+  background-image: url('/images/recommendation-icons/use-mask-IP-service.svg');
 }
 
 .breach-detail-recommendation.rec-hist-pw {
-  background-image: url('../../images/recommendation-icons/change-password.svg');
+  background-image: url('/images/recommendation-icons/change-password.svg');
 }
 
 .breach-detail-recommendation.rec-sec-qa {
-  background-image: url('../../images/recommendation-icons/unique-answers.svg');
+  background-image: url('/images/recommendation-icons/unique-answers.svg');
 }
 
 .breach-detail-recommendation.rec-phone-num {
-  background-image: url('../../images/recommendation-icons/avoid-sharing-phone.svg');
+  background-image: url('/images/recommendation-icons/avoid-sharing-phone.svg');
 }
 
 .breach-detail-recommendation.rec-dob {
-  background-image: url('../../images/recommendation-icons/strengthen-pin-security.svg');
+  background-image: url('/images/recommendation-icons/strengthen-pin-security.svg');
 }
 
 .breach-detail-recommendation.rec-pins {
-  background-image: url('../../images/recommendation-icons/strengthen-pin-security.svg');
+  background-image: url('/images/recommendation-icons/strengthen-pin-security.svg');
 }
 
 .breach-detail-recommendation.rec-address {
-  background-image: url('../../images/recommendation-icons/avoid-address.svg');
+  background-image: url('/images/recommendation-icons/avoid-address.svg');
 }
 
 .breach-detail-recommendation.rec-gen-1 {
-  background-image: url('../../images/recommendation-icons/unique-strong-pwds.svg');
+  background-image: url('/images/recommendation-icons/unique-strong-pwds.svg');
 }
 
 .breach-detail-recommendation.rec-gen-2 {
-  background-image: url('../../images/recommendation-icons/store-safe-place.svg');
+  background-image: url('/images/recommendation-icons/store-safe-place.svg');
 }
 
 .breach-detail-recommendation.rec-gen-3 {
-  background-image: url('../../images/recommendation-icons/avoid-personal-info.svg');
+  background-image: url('/images/recommendation-icons/avoid-personal-info.svg');
 }
 
 .breach-detail-recommendation.rec-gen-4 {
-  background-image: url('../../images/recommendation-icons/update-regularly.svg');
+  background-image: url('/images/recommendation-icons/update-regularly.svg');
 }
 
 .breach-detail-recommendation.rec-email {
-  background-image: url('../../images/recommendation-icons/masked-email.svg');
+  background-image: url('/images/recommendation-icons/masked-email.svg');
 }
 
 .breach-detail-recommendation dt {
