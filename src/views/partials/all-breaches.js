@@ -31,7 +31,7 @@ function makeBreachCard (breach, logos) {
   `
 }
 
-export const allBreachesPartial = data => `
+export const allBreaches = data => `
 <div id="breaches-loader" class="ab-bg breaches-loader"></div>
 <main>
   <div class="all-breaches-front-matter">

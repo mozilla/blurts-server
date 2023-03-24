@@ -5,12 +5,12 @@
 import { getBreachByName } from '../utils/hibp.js'
 
 import { guestLayout } from '../views/guestLayout.js'
-import { allBreachesPartial } from '../views/partials/all-breaches.js'
-import { breachDetailsPartial } from '../views/partials/breach-detail.js'
+import { allBreaches } from '../views/partials/all-breaches.js'
+import { breachDetails } from '../views/partials/breach-detail.js'
 
 async function breachesPage (req, res) {
   const data = {
-    partial: allBreachesPartial,
+    partial: allBreaches,
     breaches: req.app.locals.breaches,
     breachLogos: req.app.locals.breachLogoMap
   }
@@ -28,7 +28,7 @@ async function breachDetailsPage (req, res) {
   }
 
   const data = {
-    partial: breachDetailsPartial,
+    partial: breachDetails,
     breach: featuredBreach
   }
 

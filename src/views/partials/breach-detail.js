@@ -127,7 +127,7 @@ function makeBreachDetails (breach) {
   `
 }
 
-export const breachDetailsPartial = data => `
+export const breachDetails = data => `
   <header class="breach-detail-header">
     <img class="breach-detail-logo breach-logo" alt="" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
     <div class="breach-detail-meta">
