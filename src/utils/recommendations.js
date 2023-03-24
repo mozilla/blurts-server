@@ -92,7 +92,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
           recommendationCopy: {
             subhead: 'rec-pw-2-subhead',
             // Comment this CTA back in once monitor.firefox.com
-            // has been added to the whitelist and is able to open about:logins
+            // has been added to the allowlist and is able to open about:logins
             // https://searchfox.org/mozilla-central/source/browser/app/permissions
             // cta: isUserBrowserFirefox ? "rec-pw-2-cta-fx" : "",
             body: 'rec-pw-2'
