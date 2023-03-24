@@ -874,7 +874,6 @@ meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-mon
 
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Sign In
-header-nav-all-breaches = All breaches
 footer-nav-all-breaches = All breaches
 
 ## Site navigation
