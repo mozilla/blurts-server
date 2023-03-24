@@ -59,7 +59,8 @@ function handleEvent (e) {
       updateBreachStatus(e.target)
       window.gtag('event', 'Breach Item', {
         action: e.target.checked ? 'resolved' : 'unresolved',
-        page_location: location.href
+        page_location: location.href,
+        data_class: e.target.value
       })
       break
     case e.type === 'email-added':
