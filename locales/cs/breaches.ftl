@@ -58,9 +58,17 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Přejděte na web společnosti, změňte si heslo a povolte dvoufázové ověřování (2FA).
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Ujistěte se, že vaše heslo je unikátní a obtížně uhodnutelné. Pokud je toto heslo použito u více účtů, nezapomeňte ho změnit i tam. { $passwordManagerLink } vám může pomoci bezpečně spravovat všechna vaše hesla.
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Chraňte svůj e-mail pomocí služby maskování e-mailu jako je { $firefoxRelayLink }.
 breach-checklist-email-body = Tímto můžete skrýt svou skutečnou e-mailovou adresu a zároveň stále dostávat e-maily do své reálné e-mailové schránky.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -68,6 +76,15 @@ breach-checklist-email-body = Tímto můžete skrýt svou skutečnou e-mailovou 
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Sledujte podezřelé položky a pohyby na svých účtech v bance nebo na platební kartách.
+# A security freeze prevents prospective creditors from accessing your credit file. 
+# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Můžete také zvážit zmrazení svého kreditu u společností { $equifaxLink }, { $experianLink } a { $transUnionLink }, abyste zabránili podvodníkům v otevírání nových účtů na vaše jméno. Je to zdarma a neovlivní to vaše kreditní skóre.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -86,6 +103,9 @@ breach-checklist-pin-body = Ujistěte se, že váš nový PIN nebo jakýkoli jin
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Používejte internet soukromě pomocí sítě VPN, jako je třeba { $mozillaVpnLink }.
 breach-checklist-ip-body = Vaše IP adresa (adresa internetového protokolu) přesně určuje vaši polohu a poskytovatele internetových služeb. VPN může skrýt vaši skutečnou IP adresu, abyste mohli používat internet soukromě.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -100,6 +120,9 @@ breach-checklist-dob-body = Data narození lze snadno najít ve veřejných záz
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Chraňte své telefonní číslo pomocí maskovací služby jako { $firefoxRelayLink }, která skryje vaše skutečné telefonní číslo.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
