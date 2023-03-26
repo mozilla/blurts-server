@@ -53,6 +53,8 @@ breach-description = Dne { $breachDate } došlo k úniku dat společnosti { $com
 ## Links that we might refer to when prompting the user to make changes after a breach
 
 breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Správce hesel { -brand-firefox(case: "gen") }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
@@ -106,6 +108,9 @@ breach-checklist-sq-body = Použijte dlouhé, náhodné odpovědi a uložte je n
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Vytvořte jedinečná, silná hesla pro jakýkoli účet, kde jste hesla znovu použili.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Správce hesel jako { $passwordManagerLink } (který je zdarma a vestavěný do prohlížeče { -brand-firefox }) vám může pomoci sledovat všechna vaše hesla a mít k nim bezpečný přístup ze všech vašich zařízení.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

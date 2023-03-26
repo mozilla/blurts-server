@@ -77,6 +77,8 @@ job-titles = Názvy pracovních pozic
 # This string refers to vehicle license plates. 
 licence-plates = Státní poznávací značky
 living-costs = Životní náklady
+# This string refers to financial loans.
+loan-information = Informace o půjčkách
 login-histories = Historie přihlášení
 mac-addresses = MAC adresy
 marital-statuses = Rodinné stavy
