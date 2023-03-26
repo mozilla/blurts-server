@@ -126,6 +126,8 @@ breach-checklist-phone-header-2 = Chraňte své telefonní číslo pomocí masko
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Aktualizujte své bezpečnostní otázky na webových stránkách společnosti.
 breach-checklist-sq-body = Použijte dlouhé, náhodné odpovědi a uložte je na bezpečném místě. Udělejte to i všude tam, kde jste použili stejné bezpečnostní otázky.
 
 ## Prompts the user for changes when there is a breach detected of historical password
