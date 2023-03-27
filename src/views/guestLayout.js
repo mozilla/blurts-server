@@ -16,7 +16,12 @@ const guestLayout = data => `
     <meta name='viewport' content='width=320, initial-scale=1'>
     <meta name='description' content='${getMessage('meta-desc')}'>
     <meta name='twitter:card' content='summary_large_image'>
+    <meta name='twitter:title' content='${getMessage('brand-fx-monitor')}'>
+    <meta name='twitter:description' content='${getMessage('meta-desc')}'>
+    <meta name='twitter:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
     <meta property='og:title' content='${getMessage('brand-fx-monitor')}'>
+    <meta property='og:description' content='${getMessage('meta-desc')}'>
+    <meta property='og:site_name' content='${getMessage('brand-fx-monitor')}'>
     <meta property='og:type' content='website'>
     <meta property='og:url' content='${AppConstants.SERVER_URL}'>
     <meta property='og:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
