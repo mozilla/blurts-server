@@ -732,6 +732,8 @@ sign-in = Aanmelden
 site-nav-breaches-link = Datalekken oplossen
 site-nav-settings-link = Instellingen
 site-nav-help-link = Hulp en ondersteuning
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Probeer onze andere beveiligingshulpmiddelen:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -766,7 +768,14 @@ error-page-error-other-copy = Probeer het opnieuw of kom later terug
 
 ## Breach overview page
 
+all-breaches-headline-2 = Alle door { -brand-fx-monitor } gedetecteerde datalekken
+all-breaches-lead = We volgen alle bekende datalekken om erachter te komen of uw persoonlijke gegevens in gevaar zijn gebracht. Hier is een volledige lijst van alle datalekken die sinds 2007 zijn gemeld.
 search-breaches = Datalekken zoeken
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Gelekte gegevens:
 
 ## Public breach detail page
 
+find-out-if-2 = Ontdek of u getroffen bent door dit lek
+find-out-if-description = We helpen u snel te zien of uw e-mailadres is gelekt bij dit datalek en te begrijpen wat u vervolgens moet doen.
+breach-detail-cta-signup = Controleren op datalekken
