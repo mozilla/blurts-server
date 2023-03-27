@@ -174,7 +174,7 @@ export const breachDetails = data => `
         <span>${getMessage('find-out-if-description')}</span>
     </div>
     <div class="breach-detail-sign-up-cta-wrapper">
-      <a href="/user/breaches" class="button primary">${getMessage('breach-detail-cta-signup')}</a>
+      <a href="/user/breaches" data-cta-id='breaches-detail' class="button primary">${getMessage('breach-detail-cta-signup')}</a>
     </div>
   </div>
 

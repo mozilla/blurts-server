@@ -61,6 +61,11 @@ const guestLayout = data => `
         }
         window.gtag = gtag
       }
+      document.querySelectorAll('[data-cta-id]').forEach(a =>
+        a.addEventListener('click', e => {
+          gtag('event', 'cta_click', { cta_id: a.dataset.ctaId })
+        })
+      )
       </script>
     <!-- End Google tag (gtag.js) -->
   </head>
@@ -70,7 +75,7 @@ const guestLayout = data => `
         <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
       </a>
       <menu>
-        <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
+        <li><a href='/user/breaches' data-cta-id='sign-in-1' class='button secondary'>${getMessage('sign-in')}</a></li>
       </menu>
     </header>
     <main data-partial='${data.partial.name}'>
