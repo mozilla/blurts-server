@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Ändern Sie Ihr Passwort
 # Link title
 rec-pw-1-cta = Passwort für diese Website ändern
-rec-pw-1 =
+rec-pw-1-2 =
     Dies Passwort sollten Sie nur einmal verwenden und es sollte sich von Ihren anderen Passwörtern unterscheiden.
     Eine gute Strategie besteht darin, zwei oder mehr unabhängige Wörter zu kombinieren, 
-    um eine komplette Passphrase zu erstellen.
+    um eine komplette Passphrase zu erstellen, sowie Ziffern und Symbole aufzunehmen.
 # Recommendation subhead
 rec-pw-2-subhead = Ändern Sie Zugangsdaten, bei denen Sie dasselbe Passwort verwenden
 # Link title
@@ -57,20 +57,13 @@ rec-email =
     Ihre Passwörter ermitteln oder Sie im Internet verfolgen. Ein Dienst wie { -brand-relay }
     versteckt Ihre echte E-Mail-Adresse und leitet gleichzeitig E-Mails an Ihren echten Posteingang weiter.
 # Recommendation subhead
-rec-ip-subhead = Verwenden Sie einen Dienst, der Ihre IP-Adresse maskiert
-# Link title
-rec-ip-us-cta = Probieren Sie { -brand-fpn } aus
-rec-ip-us =
-    Ihre Internet-Protocol-Adresse (IP-Adresse) zeigt Ihren Standort
-    und Internet-Dienstanbieter. Ein Dienst wie { -brand-fpn }
-    verschleiert Ihre IP-Adresse, um Ihren Standort zu verbergen.
-rec-ip-non-us =
-    Ihre Internet-Protocol-Adresse (IP-Adresse) zeigt Ihren Standort
-    und Internet-Dienstanbieter. Mit einem Virtuellen Privaten Netzwerk (VPN) können Sie
-    Ihren Standort verbergen und Ihre IP-Adresse verschleiern.
+rec-ip-subhead-2 = Verwenden Sie ein VPN, um Ihre IP-Adresse zu maskieren
 # Recommendation subhead
 rec-moz-vpn-cta = Probieren Sie { -brand-mozilla-vpn } aus
-rec-moz-vpn-update = Ihre Internet-Protokoll-Adresse (IP-Adresse) kann Ihren Standort und Internetdienstanbieter verraten. Ein Dienst wie { -brand-mozilla-vpn } verbirgt Ihre IP-Adresse und Ihren Standort für Ihr gesamtes Gerät.
+rec-moz-vpn-update-2 =
+    Ihre Internet-Protocol-Adresse (IP-Adresse) zeigt Ihren Standort
+    und Internet-Dienstanbieter. Ein Dienst wie { -brand-mozilla-vpn }
+    verschleiert Ihre IP-Adresse, um Ihren Standort zu verbergen.
 rec-hist-pw-subhead = Vermeiden Sie die Wiederverwendung von Passwörtern
 # Link title
 rec-hist-pw-cta-fx = Zugangsdaten in { -brand-name } ansehen

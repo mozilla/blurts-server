@@ -77,6 +77,8 @@ job-titles = Названия должностей
 # This string refers to vehicle license plates. 
 licence-plates = Номерные знаки
 living-costs = Расходы на проживание
+# This string refers to financial loans.
+loan-information = Информация о кредитах
 login-histories = Истории логинов
 mac-addresses = MAC-адреса
 marital-statuses = Семейные положения

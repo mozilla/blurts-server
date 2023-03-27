@@ -20,9 +20,6 @@
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Conta Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Tentou verificar muitos endereços de email num curto período de tempo. Por motivos de segurança, bloqueámos-lhe de novas pesquisas. Irá poder tentar novamente mais tarde.
 error-could-not-add-email = Não foi possível adicionar o endereço de email à base de dados.
@@ -657,6 +654,12 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 -brand-mozilla-foundation = Fundação Mozilla
 -brand-github = GitHub
 
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Conta Firefox
+
 ## Search Engine Optimization
 
 
@@ -665,8 +668,35 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Iniciar sessão
 
+## Site navigation
+
+site-nav-breaches-link = Resolver Violações de Dados
+site-nav-settings-link = Definições
+site-nav-help-link = Ajuda e Apoio
+
+## User menu
+
+menu-button-title = Menu do utilizador
+menu-button-alt = Abrir menu do utilizador
+menu-list-accessible-label = Menu da conta
+menu-item-fxa = Gerir a sua { -brand-fx-account }
+menu-item-settings = Definições
+menu-item-help = Ajuda e apoio
+menu-item-logout = Terminar sessão
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Termos e privacidade
 github = { -brand-github }
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Página não encontrada
+error-page-error-404-copy = Infelizmente, a página que está à procura já não existe.
+error-page-error-404-cta-button = Voltar
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Ocorreu algo de errado

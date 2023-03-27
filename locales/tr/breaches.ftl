@@ -32,6 +32,7 @@ column-detected = TESPİT EDİLDİ
 column-status-badge-resolved = Çözüldü
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Etkin
+breaches-resolve-heading = Bu ihlali çözün:
 breaches-none-headline = İhlal bulunamadı
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`

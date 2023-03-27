@@ -55,53 +55,14 @@ fxm-warns-you-found-breaches =
 email-breach-alert-blurb =
     { -product-name } te advierte sobre filtraciones de datos que involucren información personal tuya.
     Acabamos de recibir detalles acerca de una filtración de datos de otra compañía.
-# List headline
-faq-list-headline = Preguntas frecuentes
-# Link Title
-faq-v2-1 = No reconozco una de estas compañías o sitios web. ¿Por qué estoy dentro de esta filtración?
-# Link Title
-faq-v2-2 = Tengo que hacer algo si una filtración sucedió hace años o se trata de una cuenta antigua?
-# Link Title
-faq-v2-3 = Acabo de enterarme de que estoy en una filtración de datos. ¿Qué hago ahora?
-# Link Title
-faq-v2-4 = ¿Cómo trata { -product-name } los datos sensibles?
-# This string contains nested markup that becomes a link to Firefox Monitor
-# later in the code. Please do not modify or remove "<a>" and "</a>".
-pre-fxa-message = <a>Crea una { -brand-fxa } gratuita</a>, y puedes sumar hasta 15 direcciones de correo.
 # Section headline
 monitor-another-email = ¿Quieres monitorizar otro correo?
-# Subject line of email
-pre-fxa-subject = Una actualización de { -product-name }
-pre-fxa-headline = Qué cambios están llegando a { -product-name }
-pre-fxa-blurb =
-    Esto es lo que ha cambiado desde que te registraste en { -product-name }, el servicio que
-    monitorea las filtraciones de datos conocidas para alertarte si aparece tu información personal. Lo estamos vinculando a las cuentas de Firefox.
-pre-fxa-tout-1 = Mantente al día de más filtraciones
-pre-fxa-p-1 =
-    <a>Crea una cuenta</a> para monitorear hasta 15 direcciones de correo electrónico para
-    detectar filtraciones de datos. Recomendamos que añadas toda dirección de correo electrónico que hayas usado para crear una cuenta en cualquier sitio en línea.
-pre-fxa-tout-2 = Obtén un panel de visión general
-pre-fxa-p-2 =
-    Encuentra todas las filtraciones en un solo lugar para que sepas qué contraseñas cambiar.  
-    El panel de visión general es accesible solo con una cuenta.
-pre-fxa-tout-3 = Seguir recibiendo alertas por correo electrónico
-pre-fxa-p-3 =
-    Seguirás recibiendo alertas de { -product-name }. Te informaremos si tu información
-    aparece en una nueva filtración de datos.
-# Button at the bottom of pre-fxa email.
-create-account = Crear una cuenta
-# More security products
-more-products-headline = Protegete con más de nuestros productos
-more-products-vpn = Protección para todo tu dispositivo, en cada dispositivo.
-more-products-cta-vpn = Obtén { -product-name-vpn }
-more-products-relay = Oculta tu dirección de correo electrónico real para ayudar a proteger tu identidad.
-more-products-cta-relay = Obtén { -product-name-relay }
 
 ## 2022 email template. HTML tags should not be translated, e.g. `<a>`
 
 email-2022-unsubscribe = Estás recibiendo este correo electrónico automático como suscriptor de { -product-name }. <br>Puedes cambiar tus preferencias de correo electrónico en cualquier momento <a { $unsubscribe-link-attr }>aquí</a>.
 # Have I Been Pwned attribution
-email-2022-hibp-attribution = Datos de filtración provistos por<a { $hibp-link-attr }>{ -brand-HIBP }</a>
+email-2022-hibp-attribution = Datos de filtración provistos por <a { $hibp-link-attr }>{ -brand-HIBP }</a>
 
 ## Monthly email for unresolved breaches. HTML tags should not be translated, e.g. `<br>`
 

@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Uw wachtwoord wijzigen
 # Link title
 rec-pw-1-cta = Wachtwoord voor deze website wijzigen
-rec-pw-1 =
+rec-pw-1-2 =
     Maak dit wachtwoord uniek en anders dan andere die u gebruikt. 
     Een goede te volgen strategie is om twee of meer niet-verwante woorden te combineren 
-    om een volledige wachtwoordzin te maken.
+    om een volledige wachtwoordzin te maken en cijfers en symbolen op te nemen.
 # Recommendation subhead
 rec-pw-2-subhead = Werk andere aanmeldingen met hetzelfde wachtwoord bij
 # Link title
@@ -57,22 +57,13 @@ rec-email =
     uw wachtwoorden te vinden of u online op de korrel te nemen. Een service als { -brand-relay }
     verbergt uw echte e-mailadres en stuurt e-mailberichten door naar uw echte postvak.
 # Recommendation subhead
-rec-ip-subhead = Gebruik een service die uw IP-adres maskeert
-# Link title
-rec-ip-us-cta = { -brand-fpn } proberen
-rec-ip-us =
-    Uw Internet Protocol-adres (IP-adres) onthult uw locatie 
-    en internetprovider. Een service als { -brand-fpn } 
-    maskeert uw IP-adres om uw locatie te verbergen.
-rec-ip-non-us =
-    Uw Internet Protocol-adres (IP-adres) onthult uw locatie 
-    en internetprovider. Met een virtueel particulier netwerk (VPN) kunt u uw locatie verbergen 
-    en uw IP-adres maskeren.
+rec-ip-subhead-2 = Gebruik een VPN om uw IP-adres te maskeren
 # Recommendation subhead
 rec-moz-vpn-cta = Probeer { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Uw Internet Protocol-adres (IP-adres) kan uw locatie en internetprovider onthullen. Een service
-    als { -brand-mozilla-vpn } verbergt uw IP-adres en locatie voor uw hele apparaat.
+rec-moz-vpn-update-2 =
+    Uw Internet Protocol-adres (IP-adres) onthult uw locatie 
+    en internetprovider. Een service als { -brand-mozilla-vpn } 
+    maskeert uw IP-adres om uw locatie te verbergen.
 rec-hist-pw-subhead = Vermijd hergebruik van wachtwoorden
 # Link title
 rec-hist-pw-cta-fx = Aanmeldingen bekijken in { -brand-name }

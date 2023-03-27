@@ -42,8 +42,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -64,6 +62,9 @@ user-add-invalid-email = Неправильна адреса електронн�
 user-add-too-many-emails = Ви відстежуєте максимальну кількість адрес електронної пошти.
 user-add-email-verify-subject = Підтвердьте вашу підписку на { -product-name }.
 user-add-duplicate-email = Цю адресу електронної пошти вже було додано до { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Відвідайте { $preferencesLink }, щоб перевірити стан { $userEmail }.
 error-headline = Помилка
 user-verify-token-error = Необхідний токен підтвердження.
@@ -77,11 +78,11 @@ scan-placeholder = Введіть адресу е-пошти
 scan-submit = Пошук адреси е-пошти
 scan-error = Необхідно вказати правильну адресу електронної пошти.
 download-firefox-banner-button = Завантажити { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Надіслано!
 sign-up = Підписатися
 form-signup-error = Необхідно вказати дійсну адресу електронної пошти
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Дата витоку:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Скомпрометовані облікові записи:
@@ -91,6 +92,8 @@ unsub-headline = Відписатися від { -product-name-nowrap }
 unsub-blurb = Ця дія призведе до вилучення адреси вашої електронної пошти зі списку { -product-name-nowrap } і ви надалі не будете отримувати попередження про нові вразливості.
 unsub-button = Відписатись
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Дані про загрози надано { $hibp-link }
 share-twitter = Більшість людей мають близько 100 облікових записів онлайн. Чи було викрито зловмисниками будь-які з ваших? Дізнайтеся.
 share-facebook-headline = Дізнайтеся, чи ваші дані не було викрито
@@ -138,8 +141,6 @@ about-firefox-monitor = Про { -product-name }
 preferences = Налаштування
 # Link title
 home = Домівка
-# Link title
-breaches = Витік даних
 # Link title
 security-tips = Поради щодо безпеки
 fxa-account = { -brand-fxa }
@@ -239,7 +240,9 @@ feat-security-tips = Поради щодо безпеки для захисту 
 feat-sensitive = Розширений пошук серед вразливих витоків даних
 feat-enroll-multiple = Вкажіть декілька адрес електронної пошти для стеження за витоками даних
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] З'являється в { $breachCount } відомому витоці даних.
@@ -252,6 +255,8 @@ get-email-alerts = Залишайтеся захищеними: отримуйт
 search-for-your-email = Пошукайте свою адресу електронної пошти в загальнодоступних витоках даних, починаючи з 2007 року.
 back-to-top = Нагору
 comm-opt-0 = Надсилати мені лист, якщо одна з моїх адрес електронної пошти з'явиться у витоці даних.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Надсилати сповіщення про всі витоки на { $primaryEmail }.
 stop-monitoring-this = Припинити відстежувати цю е-пошту.
 resend-verification = Надіслати лист підтвердження ще раз
@@ -260,7 +265,7 @@ send-verification = Надіслати підтвердження
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Підсумок витоку даних
 show-breaches-for-this-email = Показати всі витоки даних для цієї е-пошти.
@@ -271,8 +276,15 @@ remove-fxm-blurb = Вимкнути сповіщення { -product-name }. Ва
 manage-email-addresses = Керувати адресами е-пошти
 # Link title
 latest-breach-link = Подивіться, чи ви потрапили до цього витоку даних
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = З поверненням, { $userName }!
 welcome-user = Вітаємо, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } знайшов вашу адресу е-пошти в новому витоці даних
 your-info-was-discovered-headline = Вашу інформацію виявлено в новому витоці даних.
 your-info-was-discovered-blurb =
@@ -296,6 +308,8 @@ ba-next-step-blurb-3 =
 faq1 = Я не впізнаю цю компанію чи вебсайт. Чому мої дані потрапили до цього витоку?
 faq2 = Чому пройшло так багато часу, доки мене сповістили про цей витік даних?
 faq3 = Як мені впевнитися, що це справжній електронний лист від { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] ЗНАЙДЕНО { $breachCount } НОВИЙ ВИТІК ДАНИХ
@@ -304,9 +318,14 @@ new-breaches-found =
     }
 sign-up-headline-1 = Отримуйте сповіщення за допомогою { -brand-fxa(case: "gen") }.
 account-not-required = Браузер { -brand-name } не обов'язковий для { -brand-fxa(case: "gen") }. Ви можете отримувати інформацію про служби { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Чи була ваша інформація розкрита у витоці даних { $breachName }?
-find-out-if = Дізнайтеся, чи потрапили ваші дані до цього витоку.
 fb-not-comp = Ця адреса електронної пошти не з'являється у витоці даних { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Однак, вона з'являється в { $breachCount } іншому витоці даних.
@@ -314,16 +333,19 @@ other-breaches-found =
        *[many] Однак, вона з'являється в { $breachCount } інших витоках даних.
     }
 fb-comp-only = Ця адреса електронної пошти з'являється у витоці даних { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Ця адреса електронної пошти з'явилася в { $breachCount } відомому витоці даних, включаючи { $breachName }.
         [few] Ця адреса електронної пошти з'явилася в { $breachCount } відомих витоках даних, включаючи { $breachName }.
        *[many] Ця адреса електронної пошти з'явилася в { $breachCount } відомих витоках даних, включаючи { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Під час загального пошуку інших витоків не знайдено.
 no-results-blurb = На жаль, такого витоку даних немає в нашій базі даних.
-all-breaches-headline = Усі витоки даних в { -product-name }
-search-breaches = Пошук витоків
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -397,6 +419,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Переглянути додаткові витоки даних
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Ця електронна пошта з'явилася в 1 відомому витоці даних.
@@ -406,6 +430,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Результати для: { $userEmail }
 other-monitored-emails = Інші відстежувані адреси електронної пошти
 email-verification-required = Необхідне підтвердження електронної пошти
@@ -421,6 +447,8 @@ get-ongoing-breach-monitoring = Отримуйте постійне спосте
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Дізнатися
 new-unsub-error = Вам необхідно буде скасувати підписку в одному з листів, отриманих від { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Однак, вона з'являється в { $breachCount } іншому відомих витоці даних.
@@ -439,10 +467,12 @@ breach-overview-title = Огляд
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = { $breachDate }, відбувся витік даних { $breachTitle }. Одразу після виявлення і перевірки витоку даних, його було додано до нашої бази даних { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Налаштування { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Ви увійшли як: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -459,12 +489,16 @@ email-sent = Повідомлення надіслано!
 want-to-add = Хочете додати іншу адресу електронної пошти?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Перейдіть за посиланням, надісланим на { $userEmail } для додавання до { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Електронна пошта успішно перевірена!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Ми повідомимо вас, якщо { $email } з'явиться в новому витоку даних.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -478,15 +512,17 @@ sign-in-nested = Увійти
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Керуйте всіма адресами електронної пошти: { $preferencesLink }
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Сповіщення про витоки даних
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Витік додано:
 how-hackers-work-desc = Захистіть свої паролі від кібер-злочинців, тому що це саме те, що їм найбільше потрібно.
 what-to-do-after-breach-desc = Заблокуйте доступ до своїх облікових записів, щоб захистити свою інформацію від сторонніх осіб.
@@ -508,7 +544,11 @@ see-additional-recs = Перегляньте додаткові рекоменд
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } з'явився в цьому витоці. <a>Що робити далі?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } з ваших електронних адрес з'явилася в цьому витоці. <a>Що робити далі?</a>
@@ -537,6 +577,8 @@ confirmation-3-subhead = Ще один готовий. Гарна робота!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Ваш новий пароль унікальний, сильний та його важко вгадати? <a>Перевірте</a>
 generic-confirmation-subhead = Цей витік було позначено як вирішений
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Щоб побачити останній витік, перейдіть до вашої панелі стану.
@@ -547,9 +589,13 @@ return-to-breach-details-link = Повернутися до подробиць �
 go-to-dashboard-link = Перейти до панелі стану
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% завершено
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } вирішений
@@ -560,6 +606,9 @@ progress-intro-subhead = Нове в { -product-name }: Позначайте в�
 progress-intro-message =
     Після перегляду подробиць про витік та вжиття заходів щодо захисту 
     вашої особистої інформації, ви можете позначити витік вирішеним.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } витік з { $numTotalBreaches } позначено вирішеним
@@ -586,17 +635,21 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Позначити витік вирішеним
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Позначено вирішеним:
 hide-resolved-button = Сховати вирішені
 show-resolved-button = Показати вирішені
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Викритий пароль у невирішених витоках
         [few] Викриті паролі у невирішених витоках
        *[many] Викритих паролів у невирішених витоках
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Відомий витік даних позначено вирішеним
@@ -628,7 +681,10 @@ vpn-promo-copy-new = Захистіть свої інтернет-дані та 
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Ваше місцеперебування: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Захистіть себе</em> за допомогою { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Захищено</em> за допомогою { -brand-mozilla-vpn }.
@@ -637,7 +693,8 @@ vpn-banner-title-2 = Ваше місцеперебування може бути
 vpn-banner-subtitle-2 = Захистіть своє місцеперебування та безпечно переглядайте вебсторінки за 3 кроки
 vpn-banner-status-protected = Поточний стан: <em>Захищено ✓</em>
 vpn-banner-status-not-protected = Поточний стан: <em>Не захищено ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP-адреса: { $ip-address }
 vpn-banner-step-1 = Передплатіть { -brand-mozilla-vpn }
 vpn-banner-step-2 = Оберіть розташування VPN
@@ -696,6 +753,8 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -717,6 +776,10 @@ sign-in = Увійти
 site-nav-breaches-link = Розв'язати витоки даних
 site-nav-settings-link = Налаштування
 site-nav-help-link = Довідка та підтримка
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Спробуйте інші наші інструменти безпеки:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -733,6 +796,7 @@ menu-item-logout = Вийти
 mozilla = { -brand-mozilla }
 terms-and-privacy = Умови та приватність
 github = { -brand-github }
+footer-nav-all-breaches = Усі витоки
 
 ## Error page
 
@@ -745,3 +809,16 @@ error-page-error-404-cta-button = Назад
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Щось пішло не так
 error-page-error-other-copy = Спробуйте ще раз або поверніться пізніше
+
+## Breach overview page
+
+all-breaches-headline-2 = Усі витоки, виявлені { -brand-fx-monitor }
+search-breaches = Пошук витоків
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Дата витоку:
+
+## Public breach detail page
+
+find-out-if-2 = Дізнайтеся, чи були ваші дані в цьому витоці
+find-out-if-description = Ми допоможемо вам швидко з’ясувати, чи було розкрито вашу електронну адресу внаслідок цього витоку, і зрозуміти, що робити далі.
+breach-detail-cta-signup = Перевірити на витік даних
