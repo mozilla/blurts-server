@@ -13,7 +13,7 @@ import {
   verifyEmailHash
 } from '../db/tables/email_addresses.js'
 
-import { setAllEmailsToPrimary } from '../db/tables/subscribers.js'
+import { setAllEmailsToPrimary, deleteResolutionsWithEmail } from '../db/tables/subscribers.js'
 
 import { getMessage } from '../utils/fluent.js'
 import { sendEmail, getVerificationUrl } from '../utils/email.js'
@@ -116,11 +116,12 @@ async function removeEmail (req, res) {
   const sessionUser = req.user
   const existingEmail = await getEmailById(emailId)
 
-  if (existingEmail.subscriber_id !== sessionUser.id) {
+  if (existingEmail?.subscriber_id !== sessionUser.id) {
     throw new UserInputError(getMessage('error-not-subscribed'))
   }
 
   removeOneSecondaryEmail(emailId)
+  deleteResolutionsWithEmail(existingEmail.subscriber_id, existingEmail.email)
   res.redirect('/user/settings')
 }
 
