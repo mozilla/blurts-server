@@ -107,14 +107,8 @@ const emailHeader = (data) => `
 `
 
 function getUnsubscribeCopy (data) {
-  const unsubLink = `
-    <a href='${data.unsubscribeUrl}'>
-      ${getMessage('email-unsub-link')}
-    </a>
-  `
-  const faqLink = `
-    <a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>
-  `
+  const unsubLink = `<a href='${data.unsubscribeUrl}'>${getMessage('email-unsub-link')}</a>`
+  const faqLink = `<a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>`
 
   return getMessage('email-footer-blurb', {
     unsubLink,
