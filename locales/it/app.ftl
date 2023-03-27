@@ -700,7 +700,7 @@ error-page-error-other-copy = Riprova adesso o ritorna più tardi
 ## Breach overview page
 
 all-breaches-headline-2 = Tutte le violazioni rilevate da { -brand-fx-monitor }
-all-breaches-lead = Monitoriamo tutte le violazioni di dati note per scoprire se le tue informazioni personali sono state compromesse. Ecco un elenco completo di tutte le violazioni segnalate dal 2007.
+all-breaches-lead = Monitoriamo tutte le violazioni di dati conosciute per scoprire se le tue informazioni personali sono state compromesse. Ecco un elenco completo di tutte le violazioni segnalate dal 2007.
 search-breaches = Cerca nelle violazioni
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Dati esposti:
@@ -708,5 +708,5 @@ exposed-data = Dati esposti:
 ## Public breach detail page
 
 find-out-if-2 = Scopri se sei stato coinvolto in questa violazione
-find-out-if-description = Ti aiuteremo a vedere rapidamente se il tuo indirizzo email è stato esposto a questa violazione e a capire come procedere.
+find-out-if-description = Ti aiuteremo a verificare rapidamente se il tuo indirizzo email è stato coinvolto in questa violazione e a capire come procedere.
 breach-detail-cta-signup = Cerca nelle violazioni

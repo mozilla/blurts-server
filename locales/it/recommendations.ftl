@@ -11,9 +11,8 @@ rec-pw-1-subhead = Modifica la password
 # Link title
 rec-pw-1-cta = Modifica la password per questo sito
 rec-pw-1-2 =
-    Rendi questa password unica e diversa dalle altre che utilizzi.
-    Una buona strategia da seguire è quella di combinarne due o più non correlati
-    parole per creare un’intera passphrase e includere numeri e simboli.
+    Crea una password nuova e diversa da quelle utilizzate in precedenza.
+    Una buona strategia è combinare due o più parole non correlate in una singola passphrase, e includere numeri e simboli.
 # Recommendation subhead
 rec-pw-2-subhead = Aggiorna tutte le credenziali che utilizzano la stessa password
 # Link title
@@ -46,13 +45,10 @@ rec-email =
     scoprire le tue password o individuarti online. { -brand-relay } è un servizio
     che inoltra i messaggi alla tua casella di posta senza rivelare il tuo indirizzo email reale.
 # Recommendation subhead
-rec-ip-subhead-2 = Usa una VPN per mascherare il tuo indirizzo IP
+rec-ip-subhead-2 = Usa una VPN per nascondere il tuo indirizzo IP
 # Recommendation subhead
 rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
-rec-moz-vpn-update-2 =
-    Il tuo indirizzo IP (Internet Protocol) individua la tua posizione
-    e provider di servizi Internet. Un servizio come { -brand-mozilla-vpn }
-    maschera il tuo indirizzo IP per nascondere la tua posizione.
+rec-moz-vpn-update-2 = Il tuo indirizzo IP (Internet Protocolo) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Un servizio come { -brand-mozilla-vpn } maschera il tuo indirizzo IP per nascondere la tua posizione.
 rec-hist-pw-subhead = Evita di riutilizzare le password
 # Link title
 rec-hist-pw-cta-fx = Visualizza le credenziali in { -brand-name }
