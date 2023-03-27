@@ -19,8 +19,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -41,6 +39,9 @@ user-add-invalid-email = Adresse e-mail invalide
 user-add-too-many-emails = Vous surveillez le nombre maximal d’adresses e-mail.
 user-add-email-verify-subject = Vérifiez votre inscription à { -product-name }.
 user-add-duplicate-email = Cette adresse e-mail a déjà été ajoutée à { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Consultez les { $preferencesLink } pour vérifier l’état de { $userEmail }.
 error-headline = Erreur
 user-verify-token-error = Un jeton de vérification est nécessaire.
@@ -54,11 +55,11 @@ scan-placeholder = Saisissez votre adresse e-mail
 scan-submit = Vérifier votre adresse e-mail
 scan-error = L’adresse e-mail doit être valide.
 download-firefox-banner-button = Télécharger { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Envoyé !
 sign-up = S’inscrire
 form-signup-error = L’adresse e-mail doit être valide
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Date de la fuite de données :
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Comptes compromis :
@@ -68,6 +69,8 @@ unsub-headline = Se désabonner de { -product-name-nowrap }
 unsub-blurb = Cela supprimera votre adresse e-mail de la liste { -product-name-nowrap } et vous ne recevrez plus d’alertes lorsque de nouvelles fuites de données seront annoncées.
 unsub-button = Se désabonner
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Données des différentes fuites fournies par { $hibp-link }
 share-twitter = La plupart des gens possèdent des dizaines de comptes en ligne. L’un des vôtres a-t-il été compromis suite à une fuite de données ? Vérifiez par vous-même.
 share-facebook-headline = Vérifiez si vous êtes concerné·e par une fuite de données
@@ -101,8 +104,6 @@ about-firefox-monitor = À propos de { -product-name }
 preferences = Préférences
 # Link title
 home = Accueil
-# Link title
-breaches = Fuites de données
 # Link title
 security-tips = Conseils de sécurité
 fxa-account = { -brand-fxa(capitalization: "uppercase") }
@@ -176,7 +177,9 @@ feat-security-tips = Conseils de sécurité pour protéger vos comptes
 feat-sensitive = Recherche avancée dans les fuites de données sensibles
 feat-enroll-multiple = Surveillance des fuites de données pour plusieurs adresses e-mail
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Apparaît dans { $breachCount } fuite de données connue.
@@ -188,6 +191,8 @@ get-email-alerts = Restez en sécurité : recevez des alertes par e-mail lorsqu
 search-for-your-email = Recherchez votre adresse e-mail parmi les fuites de données publiques remontant jusqu’à 2007.
 back-to-top = Haut de la page
 comm-opt-0 = M’envoyer un e-mail si l’une de mes adresses e-mail ci-dessous apparaît dans une fuite de données.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Envoyer toutes les alertes de fuites de données à { $primaryEmail }.
 stop-monitoring-this = Arrêter de surveiller cette adresse e-mail.
 resend-verification = Renvoyer l’e-mail de vérification
@@ -196,7 +201,7 @@ send-verification = Envoyer le lien de vérification
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Récapitulatif des fuites de données
 show-breaches-for-this-email = Afficher toutes les fuites de données pour cette adresse e-mail.
@@ -207,8 +212,15 @@ remove-fxm-blurb = Désactive les alertes { -product-name }. Votre { -brand-fxa 
 manage-email-addresses = Gérer les adresses e-mail
 # Link title
 latest-breach-link = Vérifiez si cette fuite de données vous concerne
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Heureux de vous revoir, { $userName } !
 welcome-user = Bienvenue, { $userName } !
+
+##
+
 breach-alert-subject = { -product-name } a détecté votre adresse e-mail dans une nouvelle fuite de données.
 your-info-was-discovered-headline = Vos données ont été découvertes dans une nouvelle fuite.
 your-info-was-discovered-blurb = Vous êtes abonné·e aux alertes { -product-name } et en recevez lorsque votre adresse e-mail apparaît dans des fuites de données. Voici ce que nous savons de cette fuite.
@@ -228,6 +240,8 @@ ba-next-step-blurb-3 = Utilisez un gestionnaire de mots de passe pour créer des
 faq1 = Je ne reconnais pas cette société ou ce site web. Pourquoi cette fuite me concerne-t-elle ?
 faq2 = Pourquoi a-t-il fallu si longtemps pour me prévenir de cette fuite de données ?
 faq3 = Comment puis-je savoir si cet e-mail de { -product-name } est authentique ?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NOUVELLE FUITE DE DONNÉES DÉCOUVERTE
@@ -235,20 +249,28 @@ new-breaches-found =
     }
 sign-up-headline-1 = Recevez des alertes en continu avec un { -brand-fxa }.
 account-not-required = Le navigateur { -brand-name } n’est pas requis pour créer un { -brand-fxa }. Vous pourrez recevoir des informations à propos des services de { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Vos informations ont-elles été compromises dans la fuite de données { $breachName } ?
-find-out-if = Vérifiez si vos données ont été compromises dans cette fuite de données.
 fb-not-comp = Cette adresse e-mail n’apparaît pas dans la fuite de données { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Cependant, elle apparaît dans une autre fuite.
        *[other] Cependant, elle apparaît dans { $breachCount } autres fuites.
     }
 fb-comp-only = Cette adresse e-mail apparaît dans la fuite de données { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others = Cette adresse e-mail apparaît dans { $breachCount } fuites de données connues, fuite { $breachName } comprise.
+
+##
+
 no-other-breaches-found = Aucune autre fuite trouvée via une recherche basique.
 no-results-blurb = Désolé, cette fuite ne figure pas dans notre base de données.
-all-breaches-headline = Toutes les fuites de données dans { -product-name }
-search-breaches = Rechercher des fuites de données
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -308,6 +330,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Voir les fuites supplémentaires
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [0] Cette adresse e-mail n’apparaît dans aucune fuite de données connue.
@@ -317,6 +341,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Résultats pour : { $userEmail }
 other-monitored-emails = Autres adresses e-mail surveillées
 email-verification-required = Vérification de l’adresse e-mail nécessaire
@@ -332,6 +358,8 @@ get-ongoing-breach-monitoring = Surveillez en continu les fuites de données pou
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Vérifier
 new-unsub-error = Vous devrez vous désabonner depuis l’un des e-mail envoyés par { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Cependant, elle apparaît dans une autre fuite connue.
@@ -349,10 +377,12 @@ breach-overview-title = Vue d’ensemble
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Le { $breachDate }, { $breachTitle } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Préférences de { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Connecté·e en tant que : { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -369,12 +399,16 @@ email-sent = E-mail envoyé !
 want-to-add = Voulez-vous ajouter une autre adresse e-mail ?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Vérifiez le lien envoyé à { $userEmail } pour l’ajouter à { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Adresse e-mail vérifiée !
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Nous vous préviendrons si { $email } apparaît dans une fuite de données.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -388,15 +422,17 @@ sign-in-nested = connectez-vous
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Gérez toutes les adresses e-mail dans les { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Notifications en cas de fuites de données
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Fuite ajoutée le :
 how-hackers-work-desc = Protégez vos mots de passe des cybercriminels, car c’est à cela qu’ils s’intéressent le plus.
 what-to-do-after-breach-desc = Verrouillez vos comptes pour que vos informations ne tombent pas entre de mauvaises mains.
@@ -418,7 +454,11 @@ see-additional-recs = Voir les recommandations supplémentaires
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } est apparu dans cette fuite de données. <a>Que faire ?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] Une de vos adresses e-mail est apparue dans cette fuite de données. <a>Que faire ?</a>
@@ -443,6 +483,8 @@ confirmation-3-subhead = Encore un problème réglé. Bien joué !
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Votre nouveau mot de passe est-il unique, fort et compliqué à deviner ? <a>Vérifier que c’est bien le cas</a>
 generic-confirmation-subhead = Cette fuite a été marquée comme réglée
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Pour voir la fuite restante, accédez à votre tableau de bord.
@@ -452,9 +494,13 @@ return-to-breach-details-link = Revenir aux détails de la fuite
 go-to-dashboard-link = Accéder au tableau de bord
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = Terminé à { $percentComplete } %
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } fuite réglée
@@ -462,6 +508,9 @@ num-resolved =
     }
 progress-intro-subhead = Nouveauté sur { -product-name } : marquer les fuites comme réglées
 progress-intro-message = Après avoir examiné les détails d’une fuite de données et pris des mesures pour protéger vos informations personnelles, vous pouvez marquer les fuites comme réglées.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } fuite sur { $numTotalBreaches } marquée comme réglée
@@ -483,16 +532,20 @@ progress-complete-message = <span>Il semblerait que vous y preniez goût !</spa
 ##
 
 resolve-this-breach-link = Régler cette fuite
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Marquée comme réglée le :
 hide-resolved-button = Masquer les fuites réglées
 show-resolved-button = Afficher les fuites réglées
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] mot de passe compromis parmi les fuites de données non réglées
        *[other] mots de passe compromis parmi les fuites de données non réglées
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] fuite de données connue marquée comme réglée
@@ -523,7 +576,10 @@ vpn-promo-copy-new = Protégez vos données en ligne et choisissez le forfait d�
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Votre emplacement : { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Protégez-vous</em> avec { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Protégé·e</em> avec { -brand-mozilla-vpn }.
@@ -532,7 +588,8 @@ vpn-banner-title-2 = Votre position peut être pistée si vous n’utilisez pas 
 vpn-banner-subtitle-2 = Protégez votre emplacement et naviguez en toute sécurité en 3 étapes
 vpn-banner-status-protected = État actuel : <em>Protégé·e ✓</em>
 vpn-banner-status-not-protected = État actuel : <em>Non protégé·e ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Adresse IP : { $ip-address }
 vpn-banner-step-1 = Abonnez-vous à { -brand-mozilla-vpn }
 vpn-banner-step-2 = Sélectionnez un emplacement VPN
@@ -591,6 +648,8 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Fondation Mozilla
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -616,6 +675,8 @@ sign-in = Se connecter
 site-nav-breaches-link = Régler vos fuites de données
 site-nav-settings-link = Paramètres
 site-nav-help-link = Aide et assistance
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -632,6 +693,7 @@ menu-item-logout = Déconnexion
 mozilla = { -brand-mozilla }
 terms-and-privacy = Confidentialité et conditions d’utilisation
 github = { -brand-github }
+footer-nav-all-breaches = Toutes les fuites de données
 
 ## Error page
 
@@ -644,3 +706,12 @@ error-page-error-404-cta-button = Retour
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } - Une erreur s’est produite
 error-page-error-other-copy = Veuillez réessayer ou revenir plus tard
+
+## Breach overview page
+
+all-breaches-headline-2 = Toutes les fuites de données détectées par { -brand-fx-monitor }
+search-breaches = Rechercher des fuites de données
+
+## Public breach detail page
+
+breach-detail-cta-signup = Vérifier les fuites de données
