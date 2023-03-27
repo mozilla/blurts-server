@@ -690,18 +690,32 @@ menu-button-title = Menu përdoruesi
 menu-button-alt = Hap menu përdoruesi
 menu-list-accessible-label = Menu llogarish
 menu-item-fxa = Administroni { -brand-fx-account } tuaj
+menu-item-settings = Rregullime
+menu-item-help = Ndihmë dhe asistencë
+menu-item-logout = Dilni
 
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Kushte & Privatësi
 github = { -brand-github }
+footer-nav-all-breaches = Krejt Cenimet
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } S’u gjet faqe
+error-page-error-404-copy = Na ndjeni, faqja që po kërkonit, s’ekziston më.
+error-page-error-404-cta-button = Kthehu mbrapsht
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Diç shkoi ters
+error-page-error-other-copy = Ju lutemi, riprovoni, ose rikthehuni më vonë
 
 ## Breach overview page
 
+all-breaches-headline-2 = Krejt cenimet të pikasura nga { -brand-fx-monitor }
 search-breaches = Kërkoni Te Shkeljet
 
 ## Public breach detail page
