@@ -12,7 +12,9 @@ function handleEvent (e) {
   switch (true) {
     case e.type === 'email-added':
       document.querySelector('dialog[data-partial="add-email"]')
-        .addEventListener('close', () => window.location.reload(), { once: true })
+        .addEventListener('close', () => {
+          window.location.reload()
+        }, { once: true })
       break
   }
 }
@@ -44,6 +46,7 @@ if (settingsAlertOptionsInputs?.length) {
         throw new Error(`Updating communication option failed: ${err}`)
       }
       event.preventDefault()
+      window.gtag('event', 'Change Email Preference', { action: 'click', page_location: location.href })
       return false
     })
   }
@@ -73,6 +76,8 @@ if (settingsRemoveEmailButtons?.length) {
         if (response && response.redirected === true) {
           return window.location.reload(true)
         }
+
+        window.gtag('event', 'Remove Email', { action: 'click', page_location: location.href })
       } catch (err) {
         console.error(`Error: ${err}`)
       }
@@ -93,7 +98,8 @@ if (settingsResendEmailLinks?.length) {
         const response = await fetch('/api/v1/user/resend-email', {
           headers: {
             'Content-Type': 'application/json',
-            'x-csrf-token': csrfToken
+            'x-csrf-token': csrfToken,
+            Accept: 'text/html' // set to request localized response
           },
           mode: 'same-origin',
           method: 'POST',
@@ -114,6 +120,7 @@ if (settingsResendEmailLinks?.length) {
         throw new Error(`Re-sending verification email failed. ${err}`)
       }
       event.preventDefault()
+      window.gtag('event', 'Resend Email', { action: 'click', page_location: location.href })
       return false
     })
   }

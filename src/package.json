@@ -12,7 +12,7 @@
     "start": "node app.js",
     "dev": "nodemon app.js",
     "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
-    "build:svg": "svgo -f ./client/images/ -o ../dist/images",
+    "build:svg": "svgo -f ./client/images/ -r -o ../dist/images",
     "copy:root": "mkdir -p ../dist/ && cp ./client/*.* ../dist/",
     "copy:webp": "mkdir -p ../dist/images/ && cp -r ./client/images/*.webp ../dist/images/",
     "copy:png": "mkdir -p ../dist/images/email/ && cp -r ./client/images/email/*.png ../dist/images/email/",

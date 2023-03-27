@@ -35,14 +35,26 @@ const mainLayout = data => `
 
     <script src='/js/index.js' type='module'></script>
 
-    <!-- Google Tag Manager -->
-    <script nonce='${data.nonce}'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
-    n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script nonce='${data.nonce}' type='module'>
+      if (navigator.doNotTrack !== '1') {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtag/js?id='+i+dl;var n=d.querySelector('[nonce]');
+        n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date()); gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}');
+        window.gtag = gtag
+      } else {
+        function gtag() {
+          console.debug("Google Analytics disbled by DNT")
+        }
+        window.gtag = gtag
+      }
+      </script>
+    <!-- End Google tag (gtag.js) -->
   </head>
   <body>
     <header>
@@ -80,6 +92,11 @@ const mainLayout = data => `
           ${getMessage('site-nav-help-link')}
         </a>
       </div>
+      <div class='callouts'>
+        <p>${getMessage('site-nav-ad-callout')}</p>
+        <a href='https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=nav-bar-global' target='_blank'><img src='/images/logo-relay.svg' width='416' height='92' alt='${getMessage('brand-relay')}'></a>
+        <a href='https://www.mozilla.org/products/vpn?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=nav-bar-global' target='_blank'><img src='/images/logo-vpn.svg' width='232' height='48' alt='${getMessage('brand-mozilla-vpn')}'></a>
+      </div>
     </nav>
 
     <main data-partial='${data.partial.name}'>
@@ -90,6 +107,7 @@ const mainLayout = data => `
         <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
       </a>
       <menu>
+        <li><a href='/breaches'>${getMessage('footer-nav-all-breaches')}</a></li>
         <li><a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>FAQ</a></li>
         <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>${getMessage('terms-and-privacy')}</a></li>
         <li><a href='https://github.com/mozilla/blurts-server' target='_blank'>${getMessage('github')}</a></li>

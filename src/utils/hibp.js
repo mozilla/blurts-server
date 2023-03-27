@@ -146,8 +146,13 @@ async function loadBreachesIntoApp (app) {
       // sync the "breaches" table with the latest from HIBP
       await upsertBreaches(breaches)
     }
-    const breachLogoMap = await downloadBreachIcons(breaches)
-    app.locals.breachLogoMap = breachLogoMap
+    // This will be replaced by a map with the breach logos when
+    // `downloadBreachIcons` resolves, but by setting it to an empty Map first,
+    // we don't delay the server start - we just won't have breach logos yet.
+    app.locals.breachLogoMap = new Map()
+    downloadBreachIcons(breaches).then(breachLogoMap => {
+      app.locals.breachLogoMap = breachLogoMap
+    })
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
   } catch (error) {
@@ -189,6 +194,8 @@ async function downloadBreachIcons (breaches) {
             resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
           })
           file.on('error', (error) => reject(error))
+        }).on('error', (_error) => {
+          resolve(null)
         })
       })
     })

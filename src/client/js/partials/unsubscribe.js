@@ -2,10 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const unsubscribeButton = document.querySelector('.js-unsubscribe-button')
+const unsubscribePartial = document.querySelector('[data-partial="unsubscribe"]')
 
-unsubscribeButton.addEventListener('click', async event => {
-  // TODO: Use more specific messages when we reinstate
+function init () {
+  unsubscribePartial.querySelector('.js-unsubscribe-button').addEventListener('click', handleEvent)
+}
+
+async function handleEvent (event) {
+  // TODO: Use more specific and localised messages when we reinstate
   // unsubscribing from all emails.
   const errorMessage = 'Unsubscribing failed.'
   const successMessage = 'Unsubscribed successfully.'
@@ -13,7 +17,14 @@ unsubscribeButton.addEventListener('click', async event => {
   try {
     const target = event.target
     const csrfToken = target.getAttribute('data-csrf-token')
-    const queryParams = target.getAttribute('data-query-params')
+    const unsubscribeParameters = getUnsubscribeParameters()
+
+    if (unsubscribeParameters === null) {
+      const missingParametersToast = document.createElement('toast-alert')
+      missingParametersToast.textContent = errorMessage
+      document.body.append(missingParametersToast)
+      return
+    }
 
     const response = await fetch('/user/unsubscribe', {
       headers: {
@@ -22,7 +33,7 @@ unsubscribeButton.addEventListener('click', async event => {
       },
       mode: 'same-origin',
       method: 'POST',
-      body: queryParams
+      body: JSON.stringify(unsubscribeParameters)
     })
 
     if (response?.redirected) {
@@ -43,4 +54,21 @@ unsubscribeButton.addEventListener('click', async event => {
   } catch (error) {
     throw new Error(errorMessage)
   }
-})
+
+  window.gtag('event', 'Unsubscribe', { action: 'click', page_location: location.href })
+}
+
+/**
+ * @returns { null | { hash: string; token: string; } }
+ */
+function getUnsubscribeParameters () {
+  const queryParams = new URLSearchParams(document.location.search)
+  const token = queryParams.get('token')
+  const hash = queryParams.get('hash')
+  if (typeof token === 'string' && typeof hash === 'string') {
+    return { hash, token }
+  }
+  return null
+}
+
+if (unsubscribePartial) init()

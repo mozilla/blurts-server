@@ -1,4 +1,4 @@
-_Last updated: Nov 19, 2019_
+_Last updated: Mar 21, 2021_
 
 # Firefox Monitor Analytics Plan
 
@@ -33,49 +33,39 @@ This is the Analytics plan for Firefox Monitor. It documents our use of Google A
 
 ## Collection
 
-Events are reported using the [Google Analytics Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/).
+Events are reported using the [Google Analytics 4 Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/ga4).
 
 We collect data for the following events:
 
-- When the page loads (or reloads).
-  * `hitType` : pageView
-  * `page` : location.pathName
-
+- [Enhanced measurement events](https://support.google.com/analytics/answer/9216061):
 ### Scan and Add Email Forms
 
 **`Email Scan Form`**  &nbsp;  **`Scan Another Email Form`**  &nbsp;  **`Add Another Email Form`**
 
 - When a form appears on the page.
-  * `hitType` : event
-  * `eventCategory` : Form ID
-  * `eventAction` : View
-  * `eventLabel` : Page location ID.
-
+  * `category   `   : Form ID
+  * `action`        : view
+  * `page_location` : Page location ID.
 
 - When a user focuses inside a form input.
-  * `hitType` : event
   * `eventCategory` : Form ID
-  * `eventAction` : Engage
-  * `eventLabel` : Page location ID.
-
+  * `action`        : engage
+  * `page_location` : Page location ID.
 
 - When a user submits a form.
-  * `hitType` : event
-  * `eventCategory` : Form ID
-  * `eventAction` : Submit
-  * `eventLabel` : Page location ID.
+  * `category`      : Form ID
+  * `action`        : submit
+  * `page_location` : Page location ID.
 
 - When a user submits an invalid email.
-  * `hitType` : event
-  * `eventCategory` : Form ID
-  * `eventAction` : Failure
-  * `eventLabel` : Page location ID.
+  * `category`      : Form ID
+  * `action`        : failure
+  * `page_location` : Page location ID.
 
 - When a user submits a valid email.
-  * `hitType` : event
-  * `eventCategory` : Form ID
-  * `eventAction` : Success
-  * `eventLabel` : Page location ID.
+  * `category`      : Form ID
+  * `action`        : success
+  * `page_location` : Page location ID.
   
 
 ### Sign Up Buttons & Links (FxA Entrypoints)
@@ -83,59 +73,38 @@ We collect data for the following events:
 **`Sign In Button`** -&nbsp;  **`Sign Up Button`**  &nbsp;  **`Sign In Link`**&nbsp;  **`About page SignUp Button`**  &nbsp;  **`Alert Me About New Breaches`**  &nbsp;  **`Alert Me About New Breaches - Banner`**  &nbsp;
 
 - When a button appears on the page
-  * `hitType` : event
-  * `eventCategory` : Button ID
-  * `eventAction` : View
-  * `eventLabel` : Page location ID.
+  * `category`      : Button ID
+  * `action`        : view
+  * `page_location` : Page location ID.
 
 - When a user clicks a link or button.
-  * `hitType` : event
-  * `eventCategory` : Button or Link ID
-  * `eventAction` : Engage
-  * `eventLabel` : Page location ID.
+  * `category`      : Button or Link ID
+  * `action`        : engage
+  * `page_location` : Page location ID.
 
 ### Miscellaneous
 
 **`All Breaches: Fuzzy Finder`** &nbsp; **`All Breaches: Show All Button`** &nbsp; **`About Page: Download Firefox`** &nbsp; **`About Page: Search Your Email`** &nbsp; **`Breach Detail: Change Password Button`** &nbsp; **`Breach Detail: Website URL Link`** &nbsp; **`Remove Email Form`** &nbsp; **`Show All Breaches Button`**
 
-
 - When a user clicks a triggering element
-  * `hitType` : event
-  * `eventCategory` : Type of Link (Outbound or Internal)
-  * `eventAction` : Click / Engage
-  * `eventLabel` : Link ID
+  * `categorty`   : Type of Link (Outbound or Internal)
+  * `action`      : click / engage
+  * `link_id`     : Link ID
   
+### User menu
 
-### Links
+- When a user opens the User menu
+  * `category` : User Menu
+  * `action`   : open
 
-**`Outbound & Utility Links`**  &nbsp;  **`Internal Links`**  &nbsp;  **`Security Tips Links`**
+- When a user closes the User menu
+  * `category` : User Menu
+  * `action`   : close
 
-- When a user clicks a link.
-  * `hitType` : event
-  * `eventCategory` :Button or Link ID
-  * `eventAction` : Click
-  * `eventLabel` : Page location ID.
-
-
-### Bento
-
-- When a user opens the Bento menu
-  * `hitType` : event
-  * `eventCategory` : bento
-  * `eventAction` : bento-opened
-  * `eventLabel` : fx-monitor
-
-- When a user closes the Bento menu
-  * `hitType` : event
-  * `eventCategory` : bento
-  * `eventAction` : bento-closed
-  * `eventLabel` : fx-monitor
-
-- When a user clicks on one of the Bento menu links
-  * `hitType` : event
-  * `eventCategory` : bento
-  * `eventAction` : bento-app-link-click
-  * `eventLabel` : link identifier
+- When a user clicks on one of the User menu links
+  * `category` : User Menu
+  * `action`   : click
+  * `link_id`  : Link ID
 
 
 ## Opt Out of Google Analytics Tracking
