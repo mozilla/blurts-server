@@ -46,6 +46,9 @@ const mainLayout = data => `
         })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date()); gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}');
+        ${AppConstants.GA4_DEBUG_MODE
+          ? `gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}', { 'debug_mode': true })`
+          : ''}
         window.gtag = gtag
       } else {
         function gtag() {
