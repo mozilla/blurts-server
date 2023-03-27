@@ -182,7 +182,7 @@ customElements.define('toast-alert', class extends HTMLElement {
         break
       case e.animationName === 'fade-out':
         this.remove()
-        window.gtag('event', 'toast alert', { action: 'faded' })
+        window.gtag('event', 'toast_alert', { action: 'faded' })
         break
     }
   }
