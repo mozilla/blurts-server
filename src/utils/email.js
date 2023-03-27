@@ -270,7 +270,7 @@ const getVerificationDummyData = (recipient) => ({
  */
 const getMonthlyDummyData = (recipient) => ({
   breachedEmail: 'breached@email.com',
-  ctaHref: SERVER_URL,
+  ctaHref: `${SERVER_URL}/user/breaches`,
   heading: getMessage('email-unresolved-heading'),
   monitoredEmails: {
     count: 2
