@@ -10,6 +10,9 @@ rec-ssn =
 rec-pw-1-subhead = Mude sua senha
 # Link title
 rec-pw-1-cta = Mudar a senha neste site
+rec-pw-1-2 =
+    Torne essa senha exclusiva, diferente das outras que você usa.
+    Uma boa estratégia para criar uma senha é combinar duas ou mais palavras sem relação entre si e incluir números e símbolos.
 # Recommendation subhead
 rec-pw-2-subhead = Atualize outras contas de acesso que têm a mesma senha
 # Link title
@@ -53,6 +56,7 @@ rec-email =
 rec-ip-subhead-2 = Use uma VPN para mascarar seu endereço IP
 # Recommendation subhead
 rec-moz-vpn-cta = Experimente o { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 = Seu endereço de protocolo de internet (endereço IP) pode revelar sua localização e seu provedor de acesso à internet. Um serviço como o { -brand-mozilla-vpn } oculta seu endereço IP para ocultar sua localização.
 rec-hist-pw-subhead = Evite reusar senhas
 # Link title
 rec-hist-pw-cta-fx = Ver contas no { -brand-name }

@@ -742,8 +742,11 @@ error-page-error-other-copy = Tente novamente ou volte mais tarde
 all-breaches-headline-2 = Todos os vazamentos detectados pelo { -brand-fx-monitor }
 all-breaches-lead = Monitoramos todos os vazamentos de dados conhecidos para descobrir se suas informações pessoais foram comprometidas. Veja uma lista completa de todos os vazamentos relatados desde 2007.
 search-breaches = Pesquisar vazamentos
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Dados expostos:
 
 ## Public breach detail page
 
 find-out-if-2 = Descubra se você foi vítima deste vazamento
+find-out-if-description = Ajudaremos você a ver rapidamente se seu endereço de email foi exposto neste vazamento e saber o que fazer a seguir.
 breach-detail-cta-signup = Verificar se há vazamentos
