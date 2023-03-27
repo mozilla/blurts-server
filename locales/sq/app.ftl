@@ -15,14 +15,9 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Llogari Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Provuat të skanoni shumë adresa email brenda një kohe të shkurtër. Për arsye sigurie, kemi bllokuar përkohësisht kërkime të reja prej jush. Do të jeni në gjendje të riprovoni më vonë.
 error-could-not-add-email = S’u shtua dot adresë email te baza e të dhënave.
@@ -40,6 +35,9 @@ user-add-invalid-email = Email i Pavlefshëm
 user-add-too-many-emails = Po mbikëqyret për ju numri maksimum i adresave email.
 user-add-email-verify-subject = Verifikoni pajtimin tuaj te { -product-name }.
 user-add-duplicate-email = Ky email është shtuar tashmë te { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Shkoni te { $preferencesLink } tuaja që të shihni gjendjen e { $userEmail }.
 error-headline = Gabim
 user-verify-token-error = Token-i i verifikimit është i domosdoshëm.
@@ -53,11 +51,11 @@ scan-placeholder = Jepni Adresë Email
 scan-submit = Kërkoni Për Email-in Tuaj
 scan-error = Duhet të jetë një email i vlefshëm.
 download-firefox-banner-button = Shkarko { -brand-name }-in
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = U dërgua!
 sign-up = Regjistrohuni
 form-signup-error = Duhet të jetë një email i vlefshëm
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Datë shkeljeje:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Llogari të komprometuara:
@@ -67,6 +65,8 @@ unsub-headline = Shpajtohuni prej { -product-name-nowrap }
 unsub-blurb = Kjo do të shkaktojë heqjen e email-it tuaj nga lista { -product-name-nowrap } dhe s’do të merrni më sinjalizime kur ngjasin shkelje të reja.
 unsub-button = Shpajtomë
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Të dhëna shkeljesh furnizuar nga { $hibp-link }
 share-twitter = Shumica e njerëzve kanë rreth 100 llogari internetore. A është ekspozuar ndonjëra nga tuajat në shkelje të dhënash? Shiheni.
 share-facebook-headline = Shihni nëse keni qenë viktimë e ndonjë shkeljeje të dhënash
@@ -106,8 +106,6 @@ about-firefox-monitor = Mbi { -product-name }
 preferences = Parapëlqime
 # Link title
 home = Kreu
-# Link title
-breaches = Cenime
 # Link title
 security-tips = Ndihmëza Sigurie
 fxa-account = { -brand-fxa }
@@ -181,7 +179,9 @@ feat-security-tips = Ndihmëza sigurie për mbrojtjen e llogarive tuaj
 feat-sensitive = Kërkim i thelluar te shkelje të dhënash rezervat.
 feat-enroll-multiple = Regjistroni disa email-e për mbikëqyrje shkeljesh
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Shfaqet në { $breachCount } cenim të ditur.
@@ -193,6 +193,8 @@ get-email-alerts = Qëndroni i parrezikuar: Merrni sinjalizime me email, kur të
 search-for-your-email = Kërkoni për adresën tuaj email te të dhëna publike shkeljesh që shkojnë pas deri në 2007-n.
 back-to-top = Mbrapsht te Kreu
 comm-opt-0 = Dërgomëni email,  nëse një nga adresat e mia email më poshtë shfaqet në një shkelje të dhënash.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Dërgoji krejt sinjalizimet mbi shkelje te { $primaryEmail }.
 stop-monitoring-this = Ndal mbikëqyrjen e këtij email-i.
 resend-verification = Ridërgo email verifikimi
@@ -201,7 +203,7 @@ send-verification = Dërgo Lidhje Verifikimi
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Përmbledhje Cenimi
 show-breaches-for-this-email = Shfaq krejt cenimet për këtë email.
@@ -212,8 +214,15 @@ remove-fxm-blurb = Çaktivizoni sinjalizime { -product-name }. { -brand-fxa } e 
 manage-email-addresses = Administroni Adresa Email
 # Link title
 latest-breach-link = Shihni nëse qetë pjesë e këtij cenimi
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Mirë se u rikthyet, { $userName }!
 welcome-user = Mirë se vini, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } e gjeti email-in tuaj të ri në një cenim të dhënash
 your-info-was-discovered-headline = Të dhënat tuaja janë pikasur në një shkeljeje të re dhënash.
 your-info-was-discovered-blurb = Jeni regjistruar të merrni sinjalizime { -product-name }, kur email-i juaj duket në një shkelje të dhënash. Ja se ç’dimë rreth kësaj shkeljeje.
@@ -229,6 +238,8 @@ ba-next-step-blurb-3 = Përdorni një përgjegjës fjalëkalimesh, për krijim f
 faq1 = Nuk e njoh këtë shoqëri apo sajt. Çne unë në këtë shkelje?
 faq2 = Pse u desh kaq shumë kohë për të më njoftuar këtë cenim?
 faq3 = Nga ta di se ky është një email legjitim prej { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] U GJET { $breachCount } SHKELJE E RE
@@ -236,24 +247,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Merrni sinjalizime të vazhdueshëm me një { -brand-fxa }.
 account-not-required = Shfletuesi { -brand-name } s’është i domosdoshëm për një { -brand-fxa }. Mund të merrni të dhëna rreth shërbimeve { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = A janë ekspozuar të dhënat tuaja në shkeljen e të dhënave { $breachName }?
-find-out-if = Shihni nëse janë ekspozuar të dhëna tuajat në këtë shkelje.
 fb-not-comp = Ky email nuk u shfaq në shkeljen e të dhënave { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Por, u shfaq në { $breachCount } shkelje tjetër.
        *[other] Por, u shfaq në { $breachCount } shkelje të tjera.
     }
 fb-comp-only = Ky email u pa te shkelja { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Ky email u shfaq te { $breachCount } shkelje e ditur të dhënash, përfshi { $breachName }.
        *[other] Ky email u shfaq te { $breachCount } shkelje të ditura të dhënash, përfshi { $breachName }.
     }
+
+##
+
 no-other-breaches-found = S’u gjetën shkelje të tjera nga një kërkim elementar.
 no-results-blurb = Na ndjeni, ajo shkelje s’gjendet në bazën tonë të të dhënave.
-all-breaches-headline = Krejt shkeljet te { -product-name }
-search-breaches = Kërkoni Te Shkeljet
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -321,6 +340,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Shihni Shkelje të Tjera
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Ky email i shfaq në 1 shkelje të ditur të dhënash.
@@ -329,6 +350,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Përfundime për: { $userEmail }
 other-monitored-emails = Email-e të Tjerë të Mbikëqyrur
 email-verification-required = Lypset Verifikim Email-i
@@ -344,6 +367,8 @@ get-ongoing-breach-monitoring = Përfitoni mbikëqyrje të vazhdueshme rreth shk
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Shiheni
 new-unsub-error = Do t’ju duhet të shpajtoheni që prej një nga email-et e dërguar nga  { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Por u shfaq në { $breachCount } shkelje tjetër të ditur.
@@ -361,10 +386,12 @@ breach-overview-title = Përmbledhje
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Më { $breachDate } ndodhi { $breachTitle }. Pasi u zbulua dhe u verifikua shkelja, u shtua te baza jonë e të dhënave më { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Parapëlqime { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = I futur si: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -381,12 +408,16 @@ email-sent = Email-i u Dërgua!
 want-to-add = Doni të shtoni tjetër email?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Verifikoni lidhjen e dërguar te { $userEmail } që të shtohet te { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Email-i u Verifikua Me Sukses!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Do t’ju sinjalizojmë, nëse { $email } shfaqet te një shkelje të dhënash.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -400,15 +431,17 @@ sign-in-nested = hyni
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Administroni krejt adresat email te { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Njoftime Sinjalizimi Shkeljesh
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Shkelje e shtuar më:
 how-hackers-work-desc = Mbroni fjalëkalimet tuaja nga keqbërësit kibernetikë, ngaqë kjo është ajo që kanë më për zemër.
 what-to-do-after-breach-desc = Kyçini llogaritë tuaja për t’i mbajtur të dhënat tuaja larg duarsh ku s’duhet të bien.
@@ -430,7 +463,11 @@ see-additional-recs = Shihni Rekomandime Shtesë
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } u duk në këtë cenim. <a>Ç’të bëhet më pas</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
        *[other] { $numAffectedEmails } nga adresat tuaja email u dukën në këtë cenim. <a>Ç’të bëhet më pas</a>
@@ -457,6 +494,8 @@ confirmation-3-subhead = Iku edhe një. Punë e paqme!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = A është fjalëkalimi juaj unik, i fuqishëm, dhe i zorshëm për t’u marrë me mend? <a>Shiheni</a>
 generic-confirmation-subhead = Këtij cenimi i është vënë shenjë si i zgjidhur
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Që të shihni cenimin e mbetur, shkoni te pulti juaj.
@@ -466,9 +505,13 @@ return-to-breach-details-link = Kthehuni te hollësi cenimi
 go-to-dashboard-link = Kaloni te Pulti
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% i plotësuar
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } i Zgjidhur
@@ -476,6 +519,9 @@ num-resolved =
     }
 progress-intro-subhead = E re në { -product-name }: Vëruni shenjë cenimeve si të zgjidhur
 progress-intro-message = Pasi të shqyrtoni hollësitë rreth një cenimi dhe ndërmerrni hapat për të mbrojtur të dhënat tuaja personale, mund t’u vini shenjë cenimeve si të zgjidhur.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } nga { $numTotalBreaches } cenime iu vu shenjë si i zgjidhur
@@ -495,16 +541,20 @@ progress-complete-message = <span>Ju vjen mirë, hë?</span> Nëse doni të vazh
 ##
 
 resolve-this-breach-link = Zgjidheni këtë cenim
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Iu vu shenjë si i zgjidhur më:
 hide-resolved-button = Fshihi të Zgjidhurit
 show-resolved-button = Shfaq të Zgjidhurit
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Fjalëkalim i ekspozuar në cenime të pazgjidhur
        *[other] Fjalëkalime të ekspozuar në cenime të pazgjidhur
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Cenim i ditur të dhënash, shënuar si i zgjidhur
@@ -535,7 +585,10 @@ vpn-promo-copy-new = Mbroni të dhënat tuaja internetore—dhe zgjidhni një pl
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Vendndodhja juaj: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Mbroni veten</em> me { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>I mbrojtur</em> me { -brand-mozilla-vpn }.
@@ -544,7 +597,8 @@ vpn-banner-title-2 = Vendndodhja juaj mund të gjurmohet, nëse s’përdorni VP
 vpn-banner-subtitle-2 = Mbroni vendndodhjen tuaj dhe sfhletoni të parrezik, me 3 hapa
 vpn-banner-status-protected = Gjendje e tanishme: <em>I mbrojtur ✓</em>
 vpn-banner-status-not-protected = Gjendje e tanishme: <em>Jo i mbrojtur ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Adresë IP: { $ip-address }
 vpn-banner-step-1 = Pajtohuni te { -brand-mozilla-vpn }
 vpn-banner-step-2 = Përzgjidhni një vend VPN-je
@@ -603,6 +657,14 @@ ad-unit-6-before-you-complete = Para se të plotësoni regjistrimin tuaj të rad
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Llogari Firefox
 
 ## Search Engine Optimization
 
@@ -613,8 +675,34 @@ meta-desc = Shihni nëse keni qenë pjesë e ndonjë shkeljeje të dhënash, pë
 brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Hyni
 
+## Site navigation
+
+site-nav-settings-link = Rregullime
+site-nav-help-link = Ndihmë dhe Asistencë
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Provoni mjete sigurie të tjera tonat:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
+
+## User menu
+
+menu-button-title = Menu përdoruesi
+menu-button-alt = Hap menu përdoruesi
+menu-list-accessible-label = Menu llogarish
+menu-item-fxa = Administroni { -brand-fx-account } tuaj
+
 ## Footer
 
 mozilla = { -brand-mozilla }
 terms-and-privacy = Kushte & Privatësi
 github = { -brand-github }
+
+## Error page
+
+
+## Breach overview page
+
+search-breaches = Kërkoni Te Shkeljet
+
+## Public breach detail page
+
