@@ -25,8 +25,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -47,6 +45,9 @@ user-add-invalid-email = Некорректный адрес электронн�
 user-add-too-many-emails = Вы отслеживаете максимальное количество адресов электронной почты.
 user-add-email-verify-subject = Подтвердите вашу подписку на { -product-name }.
 user-add-duplicate-email = Этот адрес электронной почты уже был добавлен в { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Посетите { $preferencesLink }, чтобы проверить статус { $userEmail }.
 error-headline = Ошибка
 user-verify-token-error = Требуется токен подтверждения.
@@ -60,11 +61,11 @@ scan-placeholder = Введите адрес электронной почты
 scan-submit = Проверить мой адрес электронной почты
 scan-error = Должен быть действительным адресом электронной почты.
 download-firefox-banner-button = Загрузить { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Отправлено!
 sign-up = Подписаться
 form-signup-error = Должен быть действительным адресом электронной почты
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Дата компрометации:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Скомпрометированные аккаунты:
@@ -74,6 +75,8 @@ unsub-headline = Отписаться от уведомлений { -product-nam
 unsub-blurb = Это действие удалит ваш адрес электронной почты из списка { -product-name-nowrap } и вы больше не будет получать уведомления о новых угрозах.
 unsub-button = Отписаться
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Данные об утечках предоставлены { $hibp-link }
 share-twitter = Многие люди имеют по 100 аккаунтов. Затронули ли какой-либо из ваших утечки данных? Узнайте это.
 share-facebook-headline = Узнайте, не стали ли вы жертвой утечки данных
@@ -121,8 +124,6 @@ about-firefox-monitor = О { -product-name }
 preferences = Настройки
 # Link title
 home = Домой
-# Link title
-breaches = Утечки
 # Link title
 security-tips = Советы по безопасности
 fxa-account = { -brand-fxa }
@@ -196,7 +197,9 @@ feat-security-tips = Советы по безопасности для защи�
 feat-sensitive = Продвинутый поиск по важным взломам
 feat-enroll-multiple = Укажите несколько адресов электронной почты для отслеживания взломов
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Найден в { $breachCount } известной утечке.
@@ -209,6 +212,8 @@ get-email-alerts = Оставайтесь в безопасности: полу�
 search-for-your-email = Поищите свой адрес электронной почты в утечках, ставших публичными, начиная с 2007 года.
 back-to-top = Вернуться наверх
 comm-opt-0 = Отправлять мне письмо, если один из этих адресов попадёт в утечку.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Отправлять уведомления обо всех утечках на { $primaryEmail }.
 stop-monitoring-this = Перестать отслеживать эту электронную почту.
 resend-verification = Отправить письмо подтверждения заново
@@ -217,7 +222,7 @@ send-verification = Отправить ссылку для подтвержде�
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Сводка об утечке
 show-breaches-for-this-email = Показать все утечки для этого адреса электронной почты.
@@ -228,8 +233,15 @@ remove-fxm-blurb = Выключить предупреждения { -product-na
 manage-email-addresses = Управление адресами электронной почты
 # Link title
 latest-breach-link = Узнайте, были ли вы затронуты этой утечкой
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = С возвращением, { $userName }!
 welcome-user = Добро пожаловать, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } обнаружил ваш адрес электронной почты в новой утечке данных.
 your-info-was-discovered-headline = Ваша информация была раскрыта новой утечкой данных.
 your-info-was-discovered-blurb = Вы подписались на получение предупреждений от { -product-name }, когда ваша электронная почта появится в утечке данных. Вот что мы знаем об этой утечке.
@@ -243,6 +255,8 @@ ba-next-step-blurb-3 = Используйте менеджер паролей д
 faq1 = Я не узнаю эту компанию или веб-сайт. Почему эта утечка меня затронула?
 faq2 = Почему потребовалось так много времени, чтобы уведомить меня об этой утечке?
 faq3 = Как я узнаю, что это письмо действительно пришло от { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] ОБНАРУЖЕНА { $breachCount } НОВАЯ УТЕЧКА
@@ -251,9 +265,14 @@ new-breaches-found =
     }
 sign-up-headline-1 = Получайте быстрые уведомления с помощью { -brand-fxa(case: "genitive") }.
 account-not-required = Браузер { -brand-name } не обязателен для создания { -brand-fxa(case: "genitive") }. Вы можете получать информацию о других службах { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Были ли ваши данные затронуты утечкой данных { $breachName }?
-find-out-if = Узнайте, были ли ваши данные затронуты этой утечкой данных.
 fb-not-comp = Этот адрес электронной почты не обнаружен в утечке данных { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Однако, он затронут { $breachCount } другой атакой.
@@ -261,16 +280,19 @@ other-breaches-found =
        *[many] Однако, он затронут { $breachCount } другими атаками.
     }
 fb-comp-only = Этот адрес электронной почты затронут утечкой { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Этот адрес электронной почты затронут { $breachCount } известной утечкой данных, включая { $breachName }.
         [few] Этот адрес электронной почты затронут { $breachCount } известными утечками данных, включая { $breachName }.
        *[many] Этот адрес электронной почты затронут { $breachCount } известными утечками данных, включая { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Простой поиск не нашёл новых утечек.
 no-results-blurb = Извините, этой утечки нет в нашей базе данных.
-all-breaches-headline = Все утечки в { -product-name }
-search-breaches = Поиск утечек
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -338,6 +360,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Посмотреть дополнительные утечки
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Этот адрес электронной почты затронут { $breachCount } известной утечкой данных.
@@ -347,6 +371,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Результаты для: { $userEmail }
 other-monitored-emails = Другие отслеживаемые адреса электронной почты
 email-verification-required = Требуется верификация электронной почты
@@ -362,6 +388,8 @@ get-ongoing-breach-monitoring = Постоянно следите за появ�
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Узнать
 new-unsub-error = Вам нужно отписаться через одно из писем, отправленных вам { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Тем не менее, он обнаружен в { $breachCount } другой известной утечке.
@@ -380,10 +408,12 @@ breach-overview-title = Обзор
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = { $breachDate } произошла утечка данных { $breachTitle }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Настройки { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Вы вошли как: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -400,12 +430,16 @@ email-sent = Письмо отправлено!
 want-to-add = Хотите добавить ещё один адрес электронной почты?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Ссылка подтверждения на добавление в { -product-name } отправлена на { $userEmail }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Электронная почта успешно подтверждена!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Мы сообщим вам, если { $email } будет затронут утечками данных.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -419,15 +453,17 @@ sign-in-nested = войдите
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Управляйте всеми адресами электронной почты: { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Уведомления о утечках данных
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Утечка добавлена:
 how-hackers-work-desc = Защитите свои пароли от киберпреступников, ведь это то, что волнует их больше всего.
 what-to-do-after-breach-desc = Заблокируйте доступ к своим аккаунтам, чтобы ваша информация не попала в чужие руки.
@@ -449,7 +485,11 @@ see-additional-recs = Посмотреть дополнительные реко
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } затронут этой утечкой данных. <a>Что делать дальше</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } из ваших адресов электронной почты был затронут этой утечкой данных. <a>Что делать дальше</a>
@@ -477,6 +517,8 @@ confirmation-3-subhead = Ещё одна решена. Отличная рабо
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Является ли ваш пароль уникальным, надёжным и трудно угадываемым? <a>Узнать</a>
 generic-confirmation-subhead = Эта утечка отмечена как решённая
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Чтобы просмотреть оставшиеся утечки, перейти в вашу панель.
@@ -487,9 +529,13 @@ return-to-breach-details-link = Вернуться к деталям утечк�
 go-to-dashboard-link = Перейти в панель
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% завершено
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } решена
@@ -500,6 +546,9 @@ progress-intro-subhead = Новинка в { -product-name }: Отмечайте
 progress-intro-message =
     После просмотра подробностей об утечке и принятия шагов для защиты 
     вашей личной информации, вы можете отметить её как решённую.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } из { $numTotalBreaches } утечек отмечены как решённые
@@ -526,17 +575,21 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Разобраться с этой утечкой
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Отмеченные решёнными:
 hide-resolved-button = Скрыть решённые
 show-resolved-button = Показать решённые
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Раскрытый пароль в нерешённых утечках
         [few] Раскрытых пароля в нерешённых утечках
        *[many] Раскрытых паролей в нерешённых утечках
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Известная утечка отмечена как решённая
@@ -568,7 +621,10 @@ vpn-promo-copy-new = Защитите свои данные в Интернет�
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Ваше местоположение: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Защитите себя</em> с помощью { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Защищено</em> с помощью { -brand-mozilla-vpn }.
@@ -577,7 +633,8 @@ vpn-banner-title-2 = Ваше местоположение может быть �
 vpn-banner-subtitle-2 = Защитите своё местоположение и работу в Интернете за 3 шага
 vpn-banner-status-protected = Текущий статус: <em>Защищено ✓</em>
 vpn-banner-status-not-protected = Текущий статус: <em>Не защищено ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP-адрес: { $ip-address }
 vpn-banner-step-1 = Подпишитесь на { -brand-mozilla-vpn }
 vpn-banner-step-2 = Выберите местоположение VPN
@@ -636,6 +693,8 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -661,6 +720,10 @@ sign-in = Войти
 site-nav-breaches-link = Разобраться с утечками данных
 site-nav-settings-link = Настройки
 site-nav-help-link = Помощь и Поддержка
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Попробуйте другие наши инструменты безопасности:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -677,6 +740,7 @@ menu-item-logout = Выйти
 mozilla = { -brand-mozilla }
 terms-and-privacy = Условия и конфиденциальность
 github = { -brand-github }
+footer-nav-all-breaches = Все утечки
 
 ## Error page
 
@@ -689,3 +753,15 @@ error-page-error-404-cta-button = Вернуться назад
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Что-то пошло не так
 error-page-error-other-copy = Пожалуйста, попробуйте ещё раз или вернитесь позже
+
+## Breach overview page
+
+all-breaches-headline-2 = Все утечки, обнаруженные { -brand-fx-monitor }
+search-breaches = Поиск утечек
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Раскрытые данные:
+
+## Public breach detail page
+
+find-out-if-2 = Узнайте, были ли вы затронуты этой утечкой
+breach-detail-cta-signup = Проверить на утечки
