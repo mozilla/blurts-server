@@ -54,7 +54,13 @@ rec-email =
     Mae rhoi eich cyfeiriad e-bost go iawn yn ei gwneud hi'n haws i hacwyr neu dracwyr ddod o hyd i'ch cyfrineiriau neu eich targedu ar-lein. Mae gwasanaeth fel { -brand-relay }
     yn cuddio'ch cyfeiriad e-bost go iawn wrth anfon e-byst i'ch mewnflwch go iawn.
 # Recommendation subhead
+rec-ip-subhead-2 = Defnyddiwch VPN i guddio'ch cyfeiriad IP
+# Recommendation subhead
 rec-moz-vpn-cta = Rhowch gynnig ar { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 =
+    Mae eich cyfeiriad Protocol Rhyngrwyd (cyfeiriad IP) yn amlygu'ch
+    lleoliad a'ch darparwr gwasanaeth rhyngrwyd. Mae gwasanaeth
+    fel { -brand-mozilla-vpn } yn cuddio'ch cyfeiriad IP er mwyn cuddio'ch lleoliad.
 rec-hist-pw-subhead = Peidio ailddefnyddio cyfrineiriau
 # Link title
 rec-hist-pw-cta-fx = Gweld mewngofnodi yn { -brand-name }
