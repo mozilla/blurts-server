@@ -42,10 +42,10 @@ if (settingsAlertOptionsInputs?.length) {
         if (response && response.redirected === true) {
           throw response.error
         } else {
-          window.gtag('event', 'change_email_preference', { action: 'click', page_location: location.href, result: 'success' })
+          window.gtag('event', 'changed_email_preference', { action: 'click', page_location: location.href, result: 'success' })
         }
       } catch (err) {
-        window.gtag('event', 'change_email_preference', { action: 'click', page_location: location.href, result: 'fail' })
+        window.gtag('event', 'changed_email_preference', { action: 'click', page_location: location.href, result: 'fail' })
         throw new Error(`Updating communication option failed: ${err}`)
       }
       event.preventDefault()
@@ -79,7 +79,7 @@ if (settingsRemoveEmailButtons?.length) {
           return window.location.reload(true)
         }
 
-        window.gtag('event', 'remove_email', { action: 'click', page_location: location.href })
+        window.gtag('event', 'removed_email', { action: 'click', page_location: location.href })
       } catch (err) {
         console.error(`Error: ${err}`)
       }

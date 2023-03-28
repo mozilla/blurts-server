@@ -63,7 +63,7 @@ const guestLayout = data => `
       }
       document.querySelectorAll('[data-cta-id]').forEach(a =>
         a.addEventListener('click', e => {
-          gtag('event', 'cta_click', { cta_id: a.dataset.ctaId })
+          gtag('event', 'clicked_cta', { cta_id: a.dataset.ctaId })
         })
       )
       </script>
