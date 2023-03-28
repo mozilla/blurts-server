@@ -22,7 +22,7 @@
     "lint": "npm run lint:css && npm run lint:js && npm run lint:ts",
     "lint:js": "eslint .",
     "lint:css": "stylelint client/css/",
-    "lint:ts": "tsc --target es6",
+    "lint:ts": "tsc",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
     "fix:css": "stylelint client/css/ --fix"

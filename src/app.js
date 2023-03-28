@@ -153,7 +153,6 @@ app.use(
   session({
     cookie: {
       maxAge: SESSION_DURATION_HOURS * 60 * 60 * 1000, // 48 hours
-      rolling: true,
       sameSite: 'lax',
       secure: !isDev
     },
@@ -192,7 +191,7 @@ app.use('/', indexRouter)
 // sentry error handler
 app.use(Sentry.Handlers.errorHandler({
   shouldHandleError (error) {
-    if (error instanceof RateLimitError) return true
+    return (error instanceof RateLimitError)
   }
 }))
 
