@@ -668,8 +668,13 @@ error-page-error-other-copy = 請再試一次或稍後再回來
 ## Breach overview page
 
 all-breaches-headline-2 = { -brand-fx-monitor } 偵測到的所有資料外洩事件
+all-breaches-lead = 我們會監控所有已知的資料外洩事件，檢查您的個人資訊是否已遭外流。以下是自 2007 年起，所有通報過的資料外洩事件的完整清單。
 search-breaches = 搜尋資料外洩事件
+# the kind of user data exposed to hackers in data breach.
+exposed-data = 外洩資料：
 
 ## Public breach detail page
 
+find-out-if-2 = 看看是否您也遭此資料外洩事件影響
+find-out-if-description = 我們會幫助您快速確認電子郵件信箱是否也在此事件中外洩，並且了解接下來該做什麼。
 breach-detail-cta-signup = 檢查是否有外洩事件
