@@ -691,7 +691,7 @@ menu-item-logout = Kijelentkezés
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Feltételek és adatvédelem
 github = { -brand-github }
 

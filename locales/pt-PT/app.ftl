@@ -686,7 +686,7 @@ menu-item-logout = Terminar sessão
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Termos e privacidade
 github = { -brand-github }
 

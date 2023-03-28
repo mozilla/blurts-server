@@ -672,7 +672,7 @@ menu-item-logout = Emboty tembiapo
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Mboguatarã ha ñemigua
 github = { -brand-github }
 

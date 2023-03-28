@@ -603,7 +603,7 @@ menu-item-logout = Clauder session
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Conditiones de uso e confidentialitate
 github = { -brand-github }
 

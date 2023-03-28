@@ -722,7 +722,7 @@ menu-item-logout = Αποσύνδεση
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Όροι και απόρρητο
 github = { -brand-github }
 

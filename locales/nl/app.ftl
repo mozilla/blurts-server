@@ -749,7 +749,7 @@ menu-item-logout = Afmelden
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Voorwaarden en Privacy
 github = { -brand-github }
 footer-nav-all-breaches = Alle datalekken

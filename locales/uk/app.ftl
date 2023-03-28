@@ -793,7 +793,7 @@ menu-item-logout = Вийти
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Умови та приватність
 github = { -brand-github }
 footer-nav-all-breaches = Усі витоки

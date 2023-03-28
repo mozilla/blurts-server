@@ -717,7 +717,7 @@ menu-item-logout = Allgofnodi
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Telerau a Phreifatrwydd
 github = { -brand-github }
 

@@ -648,7 +648,7 @@ menu-item-logout = 登出
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = 使用條款及隱私權
 github = { -brand-github }
 footer-nav-all-breaches = 所有資料外洩事件

@@ -696,7 +696,7 @@ menu-item-logout = Dilni
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Kushte & Privatësi
 github = { -brand-github }
 footer-nav-all-breaches = Krejt Cenimet

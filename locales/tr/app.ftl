@@ -626,7 +626,7 @@ menu-item-logout = Çıkış yap
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Şartlar ve gizlilik
 github = { -brand-github }
 

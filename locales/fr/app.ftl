@@ -690,7 +690,7 @@ menu-item-logout = Déconnexion
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Confidentialité et conditions d’utilisation
 github = { -brand-github }
 footer-nav-all-breaches = Toutes les fuites de données
