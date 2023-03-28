@@ -26,7 +26,6 @@ const selectAndLockResolutions = async () => {
     subscribers = await knex.select('id', 'primary_email', 'breach_resolution')
       .from('subscribers')
       .whereNotNull('breach_resolution')
-      .whereNotNull('db_migration_1')
       .whereNull('db_migration_2')
       .limit(LIMIT)
       .orderBy('updated_at', 'desc')
