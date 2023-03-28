@@ -16,7 +16,7 @@ import { getAllBreachesFromDb } from '../../utils/hibp.js'
 import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
 const knex = Knex(knexConfig)
 
-const LIMIT = 2000 // with millions of records, we have to load a few at a time
+const LIMIT = 1000 // with millions of records, we have to load a few at a time
 let subscribersArr = []
 
 const selectAndLockResolutions = async () => {
