@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "lib": ["es2020", "DOM"],
     "moduleResolution": "node",
     "module": "esnext",
     "resolveJsonModule": true,
