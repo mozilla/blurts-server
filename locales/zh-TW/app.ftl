@@ -672,3 +672,4 @@ search-breaches = 搜尋資料外洩事件
 
 ## Public breach detail page
 
+breach-detail-cta-signup = 檢查是否有外洩事件
