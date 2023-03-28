@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Newidiwch eich cyfrinair
 # Link title
 rec-pw-1-cta = Newid cyfrinair y wefan hon
-rec-pw-1 =
+rec-pw-1-2 =
     Gwnewch y cyfrinair hwn yn unigryw ac yn wahanol i unrhyw rai eraill rydych chi'n eu defnyddio.
-    Strategaeth dda i'w dilyn yw cyfuno dau neu fwy o eiriau
-    digyswllt er mwyn creu cyfrinymadrodd cyfan.
+    Syniad dda yw cyfuno dau neu fwy o eiriau digyswllt er mwyn
+    creu cyfrinymadrodd cyfan a chynnwys rhifau a symbolau.
 # Recommendation subhead
 rec-pw-2-subhead = Diweddarwch fewngofnodion eraill sy'n defnyddio'r un cyfrinair
 # Link title
@@ -54,22 +54,7 @@ rec-email =
     Mae rhoi eich cyfeiriad e-bost go iawn yn ei gwneud hi'n haws i hacwyr neu dracwyr ddod o hyd i'ch cyfrineiriau neu eich targedu ar-lein. Mae gwasanaeth fel { -brand-relay }
     yn cuddio'ch cyfeiriad e-bost go iawn wrth anfon e-byst i'ch mewnflwch go iawn.
 # Recommendation subhead
-rec-ip-subhead = Defnyddiwch wasanaeth sy'n cuddio'ch cyfeiriad IP
-# Link title
-rec-ip-us-cta = Rhowch gynnig ar { -brand-fpn }
-rec-ip-us =
-    Mae eich cyfeiriad Protocol Rhyngrwyd (cyfeiriad IP) yn nodi'ch lleoliad
-    a'ch darparwr gwasanaeth rhyngrwyd. Mae gwasanaeth fel { -brand-fpn }
-    yn cuddio'ch cyfeiriad IP er mwyn cuddio'ch lleoliad.
-rec-ip-non-us =
-    Mae eich cyfeiriad Protocol Rhyngrwyd (cyfeiriad IP) yn nodi'ch lleoliad
-    a'ch darparwr gwasanaeth rhyngrwyd. Gyda rhwydwaith preifat rhithwir (VPN), gallwch guddio'ch lleoliad
-    a chuddio'ch cyfeiriad IP.
-# Recommendation subhead
 rec-moz-vpn-cta = Rhowch gynnig ar { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Gall eich cyfeiriad Protocol Rhyngrwyd (cyfeiriad IP) yn nodi'ch lleoliad
-    a'ch darparwr gwasanaeth rhyngrwyd. Mae gwasanaeth fel { -brand-mozilla-vpn } yn cuddio cyfeiriad IP a lleoliad eich dyfais.
 rec-hist-pw-subhead = Peidio ailddefnyddio cyfrineiriau
 # Link title
 rec-hist-pw-cta-fx = Gweld mewngofnodi yn { -brand-name }
