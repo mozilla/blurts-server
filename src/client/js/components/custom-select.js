@@ -101,9 +101,13 @@ customElements.define('custom-select', class extends HTMLElement {
     temp.className = 'hidden'
     temp.append(selectedOption.cloneNode(true))
     this.shadowRoot.append(temp)
-    temp.w = Math.ceil(temp.getBoundingClientRect().width) + 5 // adds 5px safety for font load delay or other quirks
-    this.style.setProperty('--option-w', `${temp.w}px`)
-    temp.remove()
+
+    // let’s wait for the next tick to make sure that the dimensions of temp are available
+    window.requestAnimationFrame(() => {
+      temp.w = Math.ceil(temp.getBoundingClientRect().width) + 5 // adds 5px safety for font load delay or other quirks
+      this.style.setProperty('--option-w', `${temp.w}px`)
+      temp.remove()
+    })
   }
 
   disconnectedCallback () {
