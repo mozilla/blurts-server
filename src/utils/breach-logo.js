@@ -34,7 +34,7 @@ function getColorForName (name) {
   const charValue = name
     .split('')
     .map(letter => letter.codePointAt(0))
-    .reduce((sum, codePoint) => sum + codePoint)
+    .reduce((sum, codePoint) => (sum || 0) + (codePoint || 0))
 
-  return logoColors[charValue % logoColors.length]
+  return logoColors[(charValue || 0) % logoColors.length]
 }

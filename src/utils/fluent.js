@@ -30,9 +30,9 @@ async function initFluentBundles () {
 
         bundle.addResource(new FluentResource(str))
       }))
-    } catch (e) {
-      console.error('Could not read Fluent file:', e)
-      throw new Error(e)
+    } catch (ex) {
+      console.error('Could not read Fluent file:', ex)
+      throw ex
     }
 
     fluentBundles[locale] = bundle
@@ -103,8 +103,8 @@ function getMessage (id, args) {
  * Defaults to en if message id not found in requested locale
  *
  * @param {string} id - The Fluent message id.
- * @param {string{}} localePreferences
- * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+ * @param {string{}} [localePreferences]
+ * @param {object} [args] - key/value pairs corresponding to pattern in Fluent resource.
  * @example
  * // Given FluentResource("hello = Hello, {$name}!")
  * getMessage (hello, {name: "Jane"})

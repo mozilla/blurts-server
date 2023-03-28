@@ -22,7 +22,7 @@ for (const breach of breachesResponse) {
   seen.add(breach.Name + breach.BreachDate)
 
   // sanity check: corrupt data structure
-  if (!isValidBreach(breach)) throw new Error('Breach data structure is not valid', JSON.stringify(breach))
+  if (!isValidBreach(breach)) throw new Error(`Breach data structure is not valid: ${JSON.stringify(breach)}`)
 }
 
 console.log('Breaches found: ', breaches.length)

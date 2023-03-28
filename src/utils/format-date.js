@@ -4,8 +4,10 @@
 
 function formatDate (date, locales) {
   const jsDate = new Date(date)
-  const options = { year: 'numeric', month: 'long', day: 'numeric' }
-  const intlDateTimeFormatter = new Intl.DateTimeFormat(locales, options)
+  // FIXME this doesn't appear to be the valid options type?
+  // const options = { year: 'numeric', month: 'long', day: 'numeric' }
+  // const intlDateTimeFormatter = new Intl.DateTimeFormat(locales, options)
+  const intlDateTimeFormatter = new Intl.DateTimeFormat(locales)
 
   return intlDateTimeFormatter.format(jsDate)
 }

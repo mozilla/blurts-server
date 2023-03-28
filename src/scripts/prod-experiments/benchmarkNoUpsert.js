@@ -21,7 +21,7 @@ let subscribersArr = []
 
 let CAP = 5000 // cap the experiment
 if (process.argv.length > 2) {
-  CAP = process.argv[2]
+  CAP = parseInt(process.argv[2])
   console.log('using cap passed in: ', CAP)
 }
 

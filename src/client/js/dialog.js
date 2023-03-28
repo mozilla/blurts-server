@@ -5,17 +5,26 @@
 const main = document.querySelector('body > main')
 const observer = new MutationObserver(handleMutation)
 const triggerLinks = main.querySelectorAll('a[href*="dialog/"], button[data-dialog]')
+/**
+ * @type {string | Node}
+ */
 let dialogEl
 
+/**
+ * @param {any[] | NodeListOf<Element> | undefined} [links]
+ */
 function init (links) {
   if (!dialogEl) {
     dialogEl = document.createElement('dialog')
     document.body.append(dialogEl)
   }
 
-  links.forEach(link => link.addEventListener('click', handleEvent))
+  links?.forEach((/** @type {{ addEventListener: (arg0: string, arg1: { (e: any): void; (e: any): void; (e: any): void; (event: any): Promise<void>; (event: any): void; }) => any; }} */ link) => link.addEventListener('click', handleEvent))
 }
 
+/**
+ * @param {any} mutationList
+ */
 function handleMutation (mutationList) {
   for (const mutation of mutationList) {
     if (!mutation.addedNodes.length) continue // ignore removed-node mutations
@@ -24,6 +33,9 @@ function handleMutation (mutationList) {
   }
 }
 
+/**
+ * @param {{ target: { matches: (arg0: string) => boolean; href: any; dataset: { dialog: any; }; }; preventDefault: () => void; }} e
+ */
 function handleEvent (e) {
   switch (true) {
     case e.target.matches('a[href*="dialog/"]'):
@@ -39,6 +51,9 @@ function handleEvent (e) {
   }
 }
 
+/**
+ * @param {RequestInfo | URL} path
+ */
 async function openDialog (path) {
   const partialName = path.substring(path.lastIndexOf('/') + 1)
 

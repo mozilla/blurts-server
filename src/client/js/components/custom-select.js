@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const html = `
+var html = `
 <style>
   :host{
     contain: style paint;
@@ -58,15 +58,17 @@ const html = `
 customElements.define('custom-select', class extends HTMLElement {
   constructor () {
     super()
-    this.attachShadow({ mode: 'open' })
-    this.shadowRoot.innerHTML = html
-    this.select = this.shadowRoot.querySelector('select')
-    this.options = this.querySelectorAll('option')
+    if (this.shadowRoot) {
+      this.attachShadow({ mode: 'open' })
+      this.shadowRoot.innerHTML = html()
+      this.select = this.shadowRoot.querySelector('select')
+      this.options = this.querySelectorAll('option')
 
-    // move <option> elements into <select> (<slot> not permitted as <select> child)
-    this.select.append(...this.options)
-    this.setAttribute('value', this.select.value)
-    this.setAttribute('selected-index', this.select.selectedIndex)
+      // move <option> elements into <select> (<slot> not permitted as <select> child)
+      this.select?.append(...this.options)
+      this.setAttribute('value', this.select?.value)
+      this.setAttribute('selected-index', this.select?.selectedIndex)
+    }
   }
 
   get value () {
@@ -79,15 +81,18 @@ customElements.define('custom-select', class extends HTMLElement {
 
   connectedCallback () {
     this.matchOptionWidth()
-    this.select.addEventListener('change', this)
+    this.select?.addEventListener('change', this)
   }
 
+  /**
+   * @param {event} e
+   */
   handleEvent (e) {
-    switch (e.type) {
+    switch (e?.type) {
       case 'change':
         this.matchOptionWidth()
-        this.setAttribute('value', e.target.value)
-        this.setAttribute('selected-index', e.target.selectedIndex)
+        this.setAttribute('value', e?.target?.value)
+        this.setAttribute('selected-index', e.target?.selectedIndex)
         this.dispatchEvent(new Event('change'))
         break
     }

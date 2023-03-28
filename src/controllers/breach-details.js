@@ -8,6 +8,10 @@ import { guestLayout } from '../views/guestLayout.js'
 import { allBreaches } from '../views/partials/all-breaches.js'
 import { breachDetails } from '../views/partials/breach-detail.js'
 
+/**
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ */
 async function breachesPage (req, res) {
   const data = {
     partial: allBreaches,
@@ -19,6 +23,10 @@ async function breachesPage (req, res) {
   res.send(guestLayout(data))
 }
 
+/**
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ */
 async function breachDetailsPage (req, res) {
   const allBreaches = req.app.locals.breaches
   const breachName = req.params.breachName

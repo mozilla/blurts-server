@@ -7,11 +7,17 @@ import { camelize } from '../utils/string-helpers.js'
 import { dialogLayout } from '../views/dialogLayout.js'
 import { generateToken } from '../utils/csrf.js'
 
+/**
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ */
 async function dialog (req, res) {
   const data = {
     partialName: req.params.name,
-    csrfToken: generateToken(res),
-    stylesheetPath: `/css/partials/${req.params.name}.css` // stylesheet derived from kebab-case partial name, e.g. /css/partials/add-email.css
+    csrfToken: generateToken(res, req),
+    stylesheetPath: `/css/partials/${req.params.name}.css`, // stylesheet derived from kebab-case partial name, e.g. /css/partials/add-email.css
+    partial: '',
+    emailLimit: 0
   }
 
   try {

@@ -126,15 +126,15 @@ const styles = `
 </style>
 `
 
-const calcPercentage = (total, value) => {
+const calcPercentage = (/** @type {number} */ total, /** @type {number} */ value) => {
   if (!total) {
     return 0
   }
 
-  return parseFloat((value / total).toFixed(3, 10))
+  return parseFloat((value / total).toFixed(3))
 }
 
-const html = () => `
+var html = () => `
   ${styles}
   <figure class='circle-chart'></figure>
 `
@@ -164,6 +164,14 @@ customElements.define('circle-chart', class extends HTMLElement {
     this.render()
   }
 
+  /**
+   * Callback that fires when attributes change.
+   *
+   * @param {string} name
+   * @param {string} oldValue
+   * @param {string} newValue
+   * @returns {undefined}
+   */
   attributeChangedCallback (name, oldValue, newValue) {
     if (newValue === 'undefined' || newValue === oldValue) {
       return
@@ -181,14 +189,14 @@ customElements.define('circle-chart', class extends HTMLElement {
         this.title = newValue
         break
       default:
-        console.warning(`Unhandled attribute: ${name}`)
+        console.warn(`Unhandled attribute: ${name}`)
     }
   }
 
   composeCircles () {
     let sliceOffset = 0
     return `
-      ${this.data.reduce((acc, curr) => {
+      ${this.data.reduce((/** @type {string[]} */ acc, /** @type {{ count: any; color: any; }} */ curr) => {
         const percentage = calcPercentage(this.total, curr.count)
         const innerRadius = this.showPercentFor !== '' ? 0.85 : 0
         const strokeLength = CHART_CIRCUMFERENCE * percentage
@@ -221,7 +229,7 @@ customElements.define('circle-chart', class extends HTMLElement {
   }
 
   createCircleLabel () {
-    const relevantItem = this.data.find(d => d.key === this.showPercentFor)
+    const relevantItem = this.data.find((/** @type {{ key: string; }} */ d) => d.key === this.showPercentFor)
     if (!relevantItem) {
       return ''
     }
@@ -255,16 +263,23 @@ customElements.define('circle-chart', class extends HTMLElement {
     this.labels.innerHTML = this.createChartLabels()
 
     // Add chart elements to DOM
-    this.chartElement.append(this.svg)
-    this.chartElement.append(this.labels)
+    if (this.chartElement) {
+      this.chartElement.append(this.svg)
+      this.chartElement.append(this.labels)
+    }
   }
 
   updateChart () {
-    this.svg.innerHTML = `
+    if (this.svg) {
+      this.svg.innerHTML = `
       ${this.composeCircles()}
       ${this.createCircleLabel()}
     `
-    this.labels.innerHTML = this.createChartLabels()
+    }
+
+    if (this.labels) {
+      this.labels.innerHTML = this.createChartLabels()
+    }
   }
 
   createOrUpdateChart () {
@@ -276,9 +291,9 @@ customElements.define('circle-chart', class extends HTMLElement {
       return
     }
 
-    this.total = this.data.reduce((acc, curr) => acc + curr.count, 0)
+    this.total = this.data.reduce((/** @type {any} */ acc, /** @type {{ count: any; }} */ curr) => acc + curr.count, 0)
 
-    this.chartElement.classList.add('updating')
+    this.chartElement?.classList.add('updating')
     this.updateTimeout = setTimeout(() => {
       if (!this.svg) {
         this.createChart()
@@ -286,12 +301,14 @@ customElements.define('circle-chart', class extends HTMLElement {
         this.updateChart()
       }
 
-      this.chartElement.classList.remove('updating')
+      this.chartElement?.classList.remove('updating')
     }, this.svg ? CHART_UPDATE_DURATION : 0)
   }
 
   render () {
-    this.shadowRoot.innerHTML = html()
-    this.chartElement = this.shadowRoot.querySelector('.circle-chart')
+    if (this.shadowRoot) {
+      this.shadowRoot.innerHTML = html()
+      this.chartElement = this.shadowRoot.querySelector('.circle-chart')
+    }
   }
 })

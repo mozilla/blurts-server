@@ -8,7 +8,8 @@
     "noEmit": true,
     "strict": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es2020"
+    "target": "es2022",
+    "noImplicitAny": false
   },
   "include": ["src/**/*.js"],
   "exclude": ["node_modules"]

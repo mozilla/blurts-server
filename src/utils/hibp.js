@@ -283,9 +283,8 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
       // NOTE: DO NOT CHANGE THIS SORT LOGIC
       // We store breach resolutions by recency indices,
       // so that our DB does not contain any part of any user's list of accounts
-      foundBreaches.sort((a, b) => {
-        return new Date(b.AddedDate) - new Date(a.AddedDate)
-      })
+      foundBreaches.sort((a, b) =>
+        new Date(b.AddedDate).valueOf() - new Date(a.AddedDate).valueOf())
 
       break
     }

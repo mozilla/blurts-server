@@ -43,7 +43,7 @@ async function postTokenRequest (path, token) {
     if (!response.ok) throw new Error(`bad response: ${response.status}`)
     return await response.json()
   } catch (e) {
-    console.error('postTokenRequest', { stack: e.stack })
+    console.trace('postTokenRequest', e)
     return e
   }
 }
@@ -53,7 +53,7 @@ async function verifyOAuthToken (token) {
     const response = await postTokenRequest('/v1/verify', token)
     return response
   } catch (e) {
-    console.error('verifyOAuthToken', { stack: e.stack })
+    console.trace('verifyOAuthToken', e)
   }
 }
 
@@ -62,7 +62,7 @@ async function destroyOAuthToken (token) {
     const response = await postTokenRequest('/v1/destroy', token)
     return response
   } catch (e) {
-    console.error('destroyOAuthToken', { stack: e.stack })
+    console.trace('destroyOAuthToken', e)
   }
 }
 
@@ -79,7 +79,7 @@ async function getProfileData (accessToken) {
     if (!response.ok) throw new Error(`bad response: ${response.status}`)
     return await response.text()
   } catch (e) {
-    console.warn('getProfileData', { stack: e.stack })
+    console.trace('getProfileData', e)
     return e
   }
 }
@@ -94,7 +94,7 @@ async function sendMetricsFlowPing (path) {
     console.info('pinged FXA metrics flow.')
     return response
   } catch (e) {
-    console.error('sendMetricsFlowPing', { stack: e.stack })
+    console.trace('sendMetricsFlowPing', e)
     return false
   }
 }

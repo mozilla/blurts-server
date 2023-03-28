@@ -5,6 +5,14 @@
 import { getLocale, getMessage } from '../../utils/fluent.js'
 import { getAllPriorityDataClasses, getAllGenericRecommendations } from '../../utils/recommendations.js'
 
+/**
+ * @typedef {{ AddedDate: string; BreachDate: string; Name: string; IsSensitive: any; Domain: string; }} breach Breach object from HIBP.
+ */
+
+/**
+ * @param {breach} breach
+ * @returns {string} Breach category.
+ */
 function getBreachCategory (breach) {
   if (['Exactis', 'Apollo', 'YouveBeenScraped', 'ElasticsearchSalesLeads', 'Estonia', 'MasterDeeds', 'PDL'].includes(breach.Name)) {
     return 'data-aggregator-breach'
@@ -18,6 +26,10 @@ function getBreachCategory (breach) {
   return 'data-aggregator-breach'
 }
 
+/**
+ * @param {breach} breach
+ * @returns {boolean} True if breach is delayed.
+ */
 function compareBreachDates (breach) {
   const breachDate = new Date(breach.BreachDate)
   const addedDate = new Date(breach.AddedDate)
@@ -29,6 +41,14 @@ function compareBreachDates (breach) {
   return false
 }
 
+/**
+ * @param {{ DataClasses: any; }} breach
+ * @param isUserBrowserFirefox
+ * @param isUserLocaleEnUs
+ * @param isUserLocalEn
+ * @param changePWLink
+ * @returns {Array<string>} sorted data classes.
+ */
 function getSortedDataClasses (breach, isUserBrowserFirefox = false, isUserLocaleEnUs = false, isUserLocalEn = false, changePWLink = false) {
   const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink)
 
@@ -38,7 +58,7 @@ function getSortedDataClasses (breach, isUserBrowserFirefox = false, isUserLocal
   }
 
   const dataClasses = breach.DataClasses
-  dataClasses.forEach(dataClass => {
+  dataClasses.forEach((/** @type {string} */ dataClass) => {
     const dataType = getMessage(dataClass)
     if (priorityDataClasses[dataClass]) {
       priorityDataClasses[dataClass].dataType = dataType
@@ -52,6 +72,9 @@ function getSortedDataClasses (breach, isUserBrowserFirefox = false, isUserLocal
   return sortedDataClasses
 }
 
+/**
+ * @param {any} breach
+ */
 function makeDataSection (breach) {
   const dataClasses = getSortedDataClasses(breach)
 
@@ -71,11 +94,14 @@ function makeDataSection (breach) {
   return output
 }
 
+/**
+ * @param {any} breach
+ */
 function makeRecommendationCards (breach) {
   const dataClasses = getSortedDataClasses(breach)
 
   let output = dataClasses.priority.map(dataClass =>
-    dataClass.recommendations?.map(r =>
+    dataClass.recommendations?.map((/** @type {{ recIconClassName: any; recommendationCopy: { subhead: string; body: string; cta: string; }; ctaHref: any; ctaShouldOpenInNewTab: any; }} */ r) =>
     `<div class="breach-detail-recommendation ${r.recIconClassName}">
       <dt>${getMessage(r.recommendationCopy.subhead)}</dt>
       <dd>
@@ -98,6 +124,9 @@ function makeRecommendationCards (breach) {
   return output
 }
 
+/**
+ * @param {string} categoryId
+ */
 function getBreachDetail (categoryId) {
   if (categoryId === 'data-aggregator-breach') {
     return {
@@ -119,6 +148,9 @@ function getBreachDetail (categoryId) {
   }
 }
 
+/**
+ * @param {string} breach
+ */
 function makeBreachDetails (breach) {
   const breachDetail = getBreachDetail(breach)
   return `
@@ -127,7 +159,7 @@ function makeBreachDetails (breach) {
   `
 }
 
-export const breachDetails = data => `
+export const breachDetails = (/** @type {{ breach: { LogoPath: any; Title: any; Domain: any; BreachDate: { toLocaleString: (arg0: any, arg1: { year: string; month: string; day: string; }) => any; }; Name: any; AddedDate: { toLocaleString: (arg0: any, arg1: { year: string; month: string; day: string; }) => any; }; DataClasses: string | string[]; }; }} */ data) => `
   <header class="breach-detail-header">
     <img class="breach-detail-logo breach-logo" alt="" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
     <div class="breach-detail-meta">
@@ -174,7 +206,8 @@ export const breachDetails = data => `
         <span>${getMessage('find-out-if-description')}</span>
     </div>
     <div class="breach-detail-sign-up-cta-wrapper">
-      <a href="/user/breaches" data-cta-id='breaches-detail' class="button primary">${getMessage('breach-detail-cta-signup')}</a>
+      <a href="/user/breaches" data-ct
+      a-id='breaches-detail' class="button primary">${getMessage('breach-detail-cta-signup')}</a>
     </div>
   </div>
 

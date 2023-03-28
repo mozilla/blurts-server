@@ -4,7 +4,7 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
-export const addEmail = data => `
+export const addEmail = (/** @type {{ emailLimit: any; csrfToken: any; }} */ data) => `
 <header>
   <button class='close'></button>
   <img src='/images/dialog-email-clouds.svg'>

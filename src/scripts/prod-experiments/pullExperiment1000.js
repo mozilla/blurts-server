@@ -15,7 +15,7 @@ const knex = Knex(knexConfig)
 const LIMIT = 1000 // with millions of records, we have to load a few at a time
 let CAP = 1500000
 if (process.argv.length > 2) {
-  CAP = process.argv[2]
+  CAP = parseInt(process.argv[2])
   console.log('using cap passed in: ', CAP)
 }
 let offset = 0 // looping through all records with offset

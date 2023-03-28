@@ -4,7 +4,7 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
-const unsubscribe = data => `
+const unsubscribe = (/** @type {{ csrfToken: any; }} */ data) => `
   <section class="unsubscribe">
     <h1>${getMessage('unsub-headline')}</h1>
     <p>${getMessage('unsub-blurb')}</p>

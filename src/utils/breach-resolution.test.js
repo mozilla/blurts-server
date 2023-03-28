@@ -9,7 +9,7 @@ import { filterBreachDataTypes, appendBreachResolutionChecklist, BreachDataTypes
 
 test.before(async () => {
   await initFluentBundles()
-  updateLocale('en')
+  updateLocale(['en'])
 })
 
 test('filterBreachDataTypes', t => {
@@ -30,7 +30,7 @@ test('appendBreachResolutionChecklist: two data classes', t => {
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData)
+  appendBreachResolutionChecklist([userBreachData])
   t.truthy(userBreachData.verifiedEmails[0].breaches[0].breachChecklist)
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].header,
     'Go to the company’s website to change your password and enable two-factor authentication (2FA).')
@@ -49,7 +49,7 @@ test('appendBreachResolutionChecklist: no data classes', t => {
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData)
+  appendBreachResolutionChecklist([userBreachData])
   t.truthy(userBreachData.verifiedEmails[0].breaches[0].breachChecklist)
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.General].header,
     'Reach out to companyName to inform them about this breach and ask for specific steps you can take.')
@@ -68,7 +68,7 @@ test('appendBreachResolutionChecklist: only non-applicable data classes', t => {
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData, { countryCode: 'not-us' })
+  appendBreachResolutionChecklist([userBreachData], { countryCode: 'not-us' })
   t.truthy(userBreachData.verifiedEmails[0].breaches[0].breachChecklist)
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.General].header,
     'Reach out to companyName to inform them about this breach and ask for specific steps you can take.')
@@ -87,7 +87,7 @@ test('appendBreachResolutionChecklist: data class with a resolution not applicab
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData, { countryCode: 'not-us-or-ca' })
+  appendBreachResolutionChecklist([userBreachData], { countryCode: 'not-us-or-ca' })
   // There should only be a resolution for `BreachDataTypes.Email`, as
   // `BreachDataTypes.SSN` refers to American companies like Equifax:
   t.deepEqual(
@@ -108,7 +108,7 @@ test('appendBreachResolutionChecklist: data class with a resolution applicable t
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData, { countryCode: 'ca' })
+  appendBreachResolutionChecklist([userBreachData], { countryCode: 'ca' })
   t.deepEqual(
     Object.keys(userBreachData.verifiedEmails[0].breaches[0].breachChecklist),
     [BreachDataTypes.Email, BreachDataTypes.Phone]
@@ -127,7 +127,7 @@ test('appendBreachResolutionChecklist: data class with a resolution applicable t
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData, { countryCode: 'us' })
+  appendBreachResolutionChecklist([userBreachData], { countryCode: 'us' })
   t.deepEqual(
     Object.keys(userBreachData.verifiedEmails[0].breaches[0].breachChecklist),
     [BreachDataTypes.Email, BreachDataTypes.SSN, BreachDataTypes.Phone]
@@ -146,7 +146,7 @@ test('appendBreachResolutionChecklist: data class with a resolution referring to
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData)
+  appendBreachResolutionChecklist([userBreachData])
   // There should only be a resolution for `BreachDataTypes.Phone`, as
   // `BreachDataTypes.Passwords` and `BreachDataTypes.SecurityQuestions` refer
   // to the breached company's domain, which we don't know:
@@ -168,7 +168,7 @@ test('appendBreachResolutionChecklist: data class with a resolution referring to
     }],
     unverifiedEmails: []
   }
-  appendBreachResolutionChecklist(userBreachData)
+  appendBreachResolutionChecklist([userBreachData])
   t.deepEqual(
     Object.keys(userBreachData.verifiedEmails[0].breaches[0].breachChecklist),
     [BreachDataTypes.Passwords, BreachDataTypes.Phone, BreachDataTypes.SecurityQuestions]

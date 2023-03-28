@@ -5,6 +5,10 @@
 import { mainLayout } from '../views/mainLayout.js'
 import { admin } from '../views/partials/admin.js'
 
+/**
+ * @param {Express.Request} req
+ * @param {Express.Response} res
+ */
 function adminPage (req, res) {
   const data = {
     fxaProfile: req.user.fxa_profile_json,

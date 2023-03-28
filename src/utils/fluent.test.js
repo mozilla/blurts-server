@@ -8,7 +8,7 @@ import { initFluentBundles, updateLocale, getMessage, getRawMessage, fluentError
 
 test.before(async () => {
   await initFluentBundles()
-  updateLocale('en')
+  updateLocale(['en'])
 })
 
 test('getMessage', t => {

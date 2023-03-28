@@ -189,7 +189,7 @@ test('breachedDataTypes', t => {
     }],
     primary: false
   }]
-  const resp = breachedDataTypes(verifiedEmails, 'test2@test.com')
+  const resp = breachedDataTypes(verifiedEmails)
   t.is(resp['test@test.com']?.passwords, 1)
   t.is(resp['test@test.com']['email-addresses'], 1)
   t.is(resp['test2@test.com']?.passwords, 1)
