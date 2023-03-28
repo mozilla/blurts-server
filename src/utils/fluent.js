@@ -69,6 +69,7 @@ function getLocale () {
  * Defaults to en if message id not found in requested locale
  *
  * @param {string} id - The Fluent message id.
+ * @returns {string} - the translated string.
  */
 function getRawMessage (id) {
   let bundle = fluentBundles[getLocale()]
@@ -85,7 +86,8 @@ function getRawMessage (id) {
  * Defaults to en if message id not found in requested locale
  *
  * @param {string} id - The Fluent message id.
- * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+ * @param {object} [args] - key/value pairs corresponding to pattern in Fluent resource.
+ * @returns {string} - the translated string.
  * @example
  * // Given FluentResource("hello = Hello, {$name}!")
  * getMessage (hello, {name: "Jane"})

@@ -53,6 +53,7 @@ const optionalEnvVars = [
   'SENTRY_DSN_LEGACY'
 ]
 
+/** @type {any} */
 const AppConstants = { }
 
 if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
