@@ -15,7 +15,7 @@ import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
 import { BreachDataTypes } from '../../utils/breach-resolution.js'
 const knex = Knex(knexConfig)
 
-const LIMIT = 2000 // with millions of records, we have to load a few at a time
+const LIMIT = 3000 // with millions of records, we have to load a few at a time
 let subscribersArr = []
 
 /**
