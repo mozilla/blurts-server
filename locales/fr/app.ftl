@@ -710,8 +710,10 @@ error-page-error-other-copy = Veuillez réessayer ou revenir plus tard
 ## Breach overview page
 
 all-breaches-headline-2 = Toutes les fuites de données détectées par { -brand-fx-monitor }
+all-breaches-lead = Nous surveillons toutes les fuites de données connues pour savoir si vos informations personnelles ont été compromises. Voici une liste complète de toutes les fuites de données qui ont été signalées depuis 2007.
 search-breaches = Rechercher des fuites de données
 
 ## Public breach detail page
 
+find-out-if-2 = Vérifiez si cette fuite de données vous concerne
 breach-detail-cta-signup = Vérifier les fuites de données
