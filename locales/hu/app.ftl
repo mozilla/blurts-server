@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Érvénytelen e-mail-cím
 user-add-too-many-emails = A lehető legnagyobb számú e-mail-címet figyeli.
 user-add-email-verify-subject = A { -product-name } feliratkozásának megerősítése.
 user-add-duplicate-email = Ez az e-mail-cím már hozzáadásra került a { -product-name }hoz.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Keresse fel a { $preferencesLink } oldalt, és ellenőrizze a(z) { $userEmail } állapotát.
 error-headline = Hiba
 user-verify-token-error = Az ellenőrzési token lejárt.
@@ -50,11 +51,11 @@ scan-placeholder = Adja meg az e-mail-címét
 scan-submit = Az e-mail-címének keresése
 scan-error = Érvényes e-mail-címnek kell lennie.
 download-firefox-banner-button = A { -brand-name } letöltése
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Elküldve
 sign-up = Regisztráció
 form-signup-error = Érvényes e-mail-címnek kell lennie
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Az adatvédelmi incidens dátuma:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Veszélyeztetett fiókok:
@@ -64,6 +65,8 @@ unsub-headline = Leiratkozás a { -product-name-nowrap }ról
 unsub-blurb = Ez eltávolítja az e-mail-címét a { -product-name-nowrap } listáról, és nem fog több figyelmeztetést kapni, ha új adatvédelmi incidenseket jelentenek be.
 unsub-button = Leiratkozás
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Az adatvédelmi incidensek adatait a { $hibp-link } biztosítja
 share-twitter = A legtöbb embernek körülbelül 100 online fiókja van. Vannak olyanok, amelyek kikerültek egy adatvédelmi incidens során? Tudja meg.
 share-facebook-headline = Tudja meg, hogy része volt-e adatvédelmi incidensnek
@@ -112,8 +115,6 @@ about-firefox-monitor = A { -product-name } névjegye
 preferences = Beállítások
 # Link title
 home = Kezdőlap
-# Link title
-breaches = Adatvédelmi incidensek
 # Link title
 security-tips = Biztonsági tippek
 fxa-account = { -brand-fxa }
@@ -213,7 +214,9 @@ feat-security-tips = Biztonsági tippek a fiókjai védelméhez
 feat-sensitive = Speciális keresés a bizalmas adatvédelmi incidensekben
 feat-enroll-multiple = Több e-mail-cím beállítása az adatvédelmi incidensek figyelésénél
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] { $breachCount } ismert adatvédelmi incidensben szerepel.
@@ -225,6 +228,8 @@ get-email-alerts = Maradjon biztonságban: e-mail értesítéseket kap, ha adata
 search-for-your-email = Keresse meg az e-mail-címét a nyilvánosságra került adatvédelmi incidensekben, egészen 2007-ig.
 back-to-top = Vissza a tetejére
 comm-opt-0 = Küldjenek nekem e-mailt, ha az e-mail-címem megjelenik egy adatvédelmi incidensben.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Az összes adatvédelmi incidens figyelmeztetésének elküldései erre a címre: { $primaryEmail }.
 stop-monitoring-this = Az e-mail-cím figyelésének leállítása.
 resend-verification = Ellenőrző e-mail újraküldése
@@ -233,7 +238,7 @@ send-verification = Ellenőrző e-mail küldése
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Adatvédelmi incidens összefoglalója
 show-breaches-for-this-email = Az e-mail-címhez tartozó összes adatvédelmi incidens megjelenítése.
@@ -246,8 +251,15 @@ remove-fxm-blurb =
 manage-email-addresses = E-mail-címek kezelése
 # Link title
 latest-breach-link = Nézze meg, hogy szerepel-e ebben az adatvédelmi incidensben
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Üdvözöljük újra, { $userName }!
 welcome-user = Üdvözöljük, { $userName }!
+
+##
+
 breach-alert-subject = A { -product-name } megtalálta az e-mail-címét egy új adatvédelmi incidensben.
 your-info-was-discovered-headline = Felfedezték az Ön adatait egy új adatvédelmi incidens során.
 your-info-was-discovered-blurb =
@@ -271,6 +283,8 @@ ba-next-step-blurb-3 =
 faq1 = Nem ismerem ezt a céget vagy weboldalt? Miért szerepelek ebben az adatvédelmi incidensben?
 faq2 = Miért tartott ilyen sokáig, hogy értesüljek erről az adatvédelmi incidensről?
 faq3 = Honnan tudom, hogy ez az e-mail valóban a { -product-name }tól érkezett?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } ÚJ ADATVÉDELMI INCIDENS TALÁLHATÓ
@@ -278,24 +292,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Kapjon folyamatos figyelmeztetéseket a { -brand-fxa }jával.
 account-not-required = A { -brand-name } böngésző sem szükséges a { -brand-fxa }hoz. Információkat kaphat a { -brand-Mozilla } szolgáltatásokról.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Kikerültek-e az adatai a(z) { $breachName } adatvédelmi incidensben?
-find-out-if = Tudja meg, hogy kikerültek-e az adatai ebben az adatvédelmi incidensben.
 fb-not-comp = Ez az e-mail-cím nem szerepelt a(z) { $breachName } adatvédelmi incidensben.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Azonban { $breachCount } másik adatvédelmi incidensben szerepelt.
        *[other] Azonban { $breachCount } másik adatvédelmi incidensben szerepelt.
     }
 fb-comp-only = Ez az e-mail-cím megjelent a(z) { $breachName } adatvédelmi incidensben.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Ez az e-mail-cím { $breachCount } adatvédelmi incidensben jelent meg, köztük ebben is: { $breachName }.
        *[other] Ez az e-mail-cím { $breachCount } adatvédelmi incidensben jelent meg, köztük ebben is: { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Az alapvető keresés nem talált más adatvédelmi incidenst.
 no-results-blurb = Sajnáljuk, ez az adatvédelmi incidens nem szerepel az adatbázisunkban.
-all-breaches-headline = Az összes adatvédelmi incidens a { -product-name }ban
-search-breaches = Adatvédelmi incidensek keresése
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -366,6 +388,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = További adatvédelmi incidensek megtekintése
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Ez az e-mail cím 1 ismert adatvédelmi incidensben jelent meg.
@@ -374,6 +398,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Találatok erre: { $userEmail }
 other-monitored-emails = Egyéb megfigyelt e-mail-címek
 email-verification-required = E-mail ellenőrzés szükséges
@@ -389,6 +415,8 @@ get-ongoing-breach-monitoring = Kapjon rendszeres adatvédelmi incidensjelentés
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Tudja meg
 new-unsub-error = Le kell iratkoznia egy a { -product-name }tól érkezett e-mailen.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Azonban { $breachCount } egyéb ismert adatvédelmi incidensben is megjelent.
@@ -406,10 +434,12 @@ breach-overview-title = Áttekintés
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = A(z) { $breachTitle } adatvédelmi incidens áldozata lett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } beállítások
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Bejelentkezett, mint { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -426,12 +456,16 @@ email-sent = E-mail elküldve!
 want-to-add = Hozzáad egy másik e-mail-címet?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Erősítse meg a(z) { $userEmail } címre küldött hivatkozást, hogy hozzáadja a { -product-name }hoz.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = E-mail-cím sikeresen megerősítve.
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Értesítjük, ha a(z) { $email } megjelenik egy adatvédelmi incidensben.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -445,15 +479,17 @@ sign-in-nested = jelentkezzen be
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Az e-mail-címeit a { $preferencesLink }ban kezelheti.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Adatvédelmi incidensek riasztási értesítései
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Adatvédelmi incidens hozzáadva:
 how-hackers-work-desc = Védje a jelszavakat a számítógépes bűnözőktől, mert ez az, ami a legjobban érdekli őket.
 what-to-do-after-breach-desc = Zárolja a fiókjait, hogy ne kerüljenek rossz kezekbe az adatai.
@@ -475,7 +511,11 @@ see-additional-recs = További javaslatok megtekintése
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = A(z) { $affectedEmail } megjelent ebben az adatvédelmi incidensben. <a>Mik a további teendők?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } e-mail-címe jelent meg ebben az adatvédelmi incidensben. <a>Mik a további teendők?</a>
@@ -503,6 +543,8 @@ confirmation-3-subhead = Még egy lecsapva. Szép munka!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Az új jelszava egyedi, erős és nehezen kitalálható? <a>Tudja meg</a>
 generic-confirmation-subhead = Ez az adatvédelmi incidens megoldottként lett megjelölve
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] A fennmaradt adatvédelmi incidens megtekintéséhez ugorjon az irányítópulthoz.
@@ -512,9 +554,13 @@ return-to-breach-details-link = Vissza az adatvédelmi incidens részleteihez
 go-to-dashboard-link = Ugrás a vezérlőpultra
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% kész
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } megoldva
@@ -524,6 +570,9 @@ progress-intro-subhead = Új a { -product-name }ban: Adatvédelmi incidensek meg
 progress-intro-message =
     Az adatvédelmi incidens részleteinek áttekintése és a személyes információi érdekében 
     tett védelmi lépések megtétele után, megjelölheti az adatvédelmi incidenseket megoldottként.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } / { $numTotalBreaches } adatvédelmi incidens megjelölve megoldottként
@@ -549,16 +598,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Ezen adatvédelmi incidens megoldása
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Megjelölve megoldottként:
 hide-resolved-button = Megoldottak elrejtése
 show-resolved-button = Megoldottak megjelenítése
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Megoldatlan adatvédelmi incidensekben kikerült jelszó
        *[other] Megoldatlan adatvédelmi incidensekben kikerült jelszó
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Megoldottként megjelölt adatvédelmi incidens
@@ -589,7 +642,10 @@ vpn-promo-copy-new = Védje meg online adatait – és válasszon egy Önnek meg
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Az Ön tartózkodási helye: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Védje meg magát</em> a { -brand-mozilla-vpn } segítségével.
 vpn-banner-protected-with-vpn = A { -brand-mozilla-vpn } által <em>védve</em>.
@@ -598,7 +654,8 @@ vpn-banner-title-2 = A tartózkodási helye nyomon követhető, ha nem használ 
 vpn-banner-subtitle-2 = Védje meg tartózkodási helyét és böngésszen biztonságosan 3 lépésben
 vpn-banner-status-protected = Jelenlegi állapot: <em>Védett ✓</em>
 vpn-banner-status-not-protected = Jelenlegi állapot: <em>Nem védett ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP-cím: { $ip-address }
 vpn-banner-step-1 = Feliratkozás a { -brand-mozilla-vpn }-re
 vpn-banner-step-2 = Válasszon egy VPN helyet
@@ -657,6 +714,8 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -678,6 +737,10 @@ sign-in = Bejelentkezés
 site-nav-breaches-link = Adatvédelmi incidensek megoldása
 site-nav-settings-link = Beállítások
 site-nav-help-link = Súgó és támogatás
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Próbálja ki többi biztonsági eszközünket:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -694,6 +757,7 @@ menu-item-logout = Kijelentkezés
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Feltételek és adatvédelem
 github = { -brand-github }
+footer-nav-all-breaches = Összes adatvédelmi incidens
 
 ## Error page
 
@@ -706,3 +770,17 @@ error-page-error-404-cta-button = Ugrás vissza
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Hiba történt
 error-page-error-other-copy = Próbálja újra, vagy térjen vissza később
+
+## Breach overview page
+
+all-breaches-headline-2 = Az összes { -brand-fx-monitor } által észlelt adatvédelmi incidens
+all-breaches-lead = Minden ismert adatvédelmi incidenst monitorozunk, hogy megtudjuk, hogy kikerültek-e személyes adatai. Itt van a 2007 óta jelentett adatvédelmi incidensek teljes listája.
+search-breaches = Adatvédelmi incidensek keresése
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Kikerült adatok:
+
+## Public breach detail page
+
+find-out-if-2 = Tudja meg, hogy érintett-e ebben az adatvédelmi incidensben
+find-out-if-description = Segítünk gyorsan megnézni, hogy kikerült-e az e-mail-címe ebben az adatvédelmi incidensben, és hogy mi legyen a következő teendője.
+breach-detail-cta-signup = Adatvédelmi incidensek keresése
