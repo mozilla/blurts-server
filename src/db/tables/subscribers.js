@@ -236,7 +236,7 @@ async function deleteResolutionsWithEmail (id, email) {
     console.info(`Deleting resolution with email: ${email}`)
     await setBreachResolution(subscriber, breachResolution)
   }
-  console.info(`No resolution with ${email} found, no need to delete`)
+  console.info(`No resolution with ${email} found, skip`)
 }
 
 async function updateBreachStats (id, stats) {
