@@ -21,7 +21,8 @@ async function handleSubmit (e) {
     const res = await fetch('/api/v1/user/email', {
       headers: {
         'Content-Type': 'application/json',
-        'x-csrf-token': form.elements['csrf-token'].value
+        'x-csrf-token': form.elements['csrf-token'].value,
+        Accept: 'text/html' // set to request localized response
       },
       mode: 'same-origin',
       method: 'POST',
@@ -31,6 +32,8 @@ async function handleSubmit (e) {
     })
 
     if (!res.ok) throw new Error()
+
+    window.gtag('event', 'added_email', { result: 'success' })
 
     const { newEmailCount } = await res.json()
 
@@ -44,6 +47,7 @@ async function handleSubmit (e) {
     toast.textContent = `Could not add email. ${e.message}`
     dialogEl.append(toast)
     console.error('Could not add email.', e)
+    window.gtag('event', 'added_email', { result: 'fail' })
   } finally {
     form.elements['email-submit'].toggleAttribute('disabled', false)
   }

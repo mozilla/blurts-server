@@ -6,7 +6,7 @@ nav.site-nav {
   position: fixed;
   top: var(--header-h);
   left: 0;
-  height: calc(100vh - var(--header-h));
+  height: calc(100% - var(--header-h));
   display: inline-flex;
   flex-flow: column nowrap;
   padding: var(--padding-lg) var(--padding-md) var(--footer-h);
@@ -59,9 +59,34 @@ nav.site-nav a:not(.current):hover {
   color: var(--purple-40);
 }
 
+nav .callouts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--padding-sm);
+  margin-top: auto;
+  padding: var(--padding-md) 0;
+  font-size: 0.75rem;
+}
+
+nav .callouts p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--gray-40);
+}
+
+nav .callouts a {
+  max-width: 180px;
+  border: 2px solid var(--purple-5);
+  border-radius: 8px;
+  padding: var(--padding-sm) var(--padding-lg);
+}
+
 .mobile nav.site-nav {
   width: 100%;
   border: none;
+  z-index: 2; /* set to overlap the footer in mobile view */
+  padding-bottom: var(--padding-lg);
 }
 
 .nav-toggle {

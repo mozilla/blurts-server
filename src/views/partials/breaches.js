@@ -4,6 +4,7 @@
 
 import { getMessage, getLocale } from '../../utils/fluent.js'
 import AppConstants from '../../app-constants.js'
+import { getBreachLogo } from '../../utils/breach-logo.js'
 
 function createEmailOptions (data, selectedEmailIndex) {
   const emails = data.verifiedEmails.map(obj => obj.email)
@@ -32,17 +33,12 @@ function createBreachRows (data, logos) {
         dataClasses: longList.format(dataClassesTranslated)
       })
 
-      const logo = logos.has(breach.Domain)
-        ? `<img src='${logos.get(breach.Domain)}' alt='' class='breach-logo' height='32' />`
-        : `<span role="img" aria-hidden='true' class='breach-logo' style='background-color: var(${getColorForName(breach.Name)});'>${breach.Name.substring(0, 1)}</span>`
+      const logo = getBreachLogo(breach, logos)
 
       return `
       <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
-          <span class='breach-company'>
-            ${logo}
-            ${breach.Title}
-          </span>
+          <span class='breach-company'>${logo} ${breach.Title}</span>
           <span>${shortList.format(dataClassesTranslated)}</span>
           <span>
             <span class='resolution-badge is-resolved'>${getMessage('column-status-badge-resolved')}</span>
@@ -122,7 +118,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-none-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-none-cta-blurb')}</span>
-        <button class='primary' data-dialog='add-email'>${getMessage('breaches-none-cta-button')}</button>
+        <button class='primary' data-cta-id='breaches-none' data-dialog='add-email'>${getMessage('breaches-none-cta-button')}</button>
       </p>
     </div>
   </template>
@@ -133,33 +129,9 @@ export const breaches = data => `
       <p>${getMessage('breaches-all-resolved-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-all-resolved-cta-blurb')}</span>
-        <button class='primary' data-dialog='add-email'>${getMessage('breaches-all-resolved-cta-button')}</button>
+        <button class='primary' data-cta-id='breaches-all-resolved' data-dialog='add-email'>${getMessage('breaches-all-resolved-cta-button')}</button>
       </p>
     </div>
   </template>
 </section>
 `
-
-/**
- * @param {string} name
- * @returns string CSS variable for a string-specific color
- */
-function getColorForName (name) {
-  const logoColors = [
-    '--blue-5',
-    '--purple-5',
-    '--green-05',
-    '--violet-5',
-    '--orange-5',
-    '--yellow-5',
-    '--red-5',
-    '--pink-5'
-  ]
-
-  const charValue = name
-    .split('')
-    .map(letter => letter.codePointAt(0))
-    .reduce((sum, codePoint) => sum + codePoint)
-
-  return logoColors[charValue % logoColors.length]
-}

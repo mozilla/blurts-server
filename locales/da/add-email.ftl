@@ -5,6 +5,13 @@
 
 ### Dialog window that allows a user to add a new email address to be monitored
 
+add-email-add-another-heading = Tilføj en mailadresse til
+# $total is the number of emails a user is allowed to add
+add-email-your-account-includes =
+    { $total ->
+        [one] Din konto inkluderer overvågning af { $total } mailadresse. Tilføj en ny mailadresse for at se, om den har været involveret i en datalæk.
+       *[other] Din konto inkluderer overvågning af { $total } mailadresser. Tilføj en ny mailadresse for at se, om den har været involveret i en datalæk.
+    }
 add-email-address-input-label = Mailadresse
 add-email-send-verification-button = Send bekræftelseslink
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`

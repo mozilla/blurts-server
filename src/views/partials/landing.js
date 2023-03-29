@@ -9,7 +9,7 @@ export const landing = data => `
   <div>
     <h1>${getMessage('find-out-if-breached')}</h1>
     <p>${getMessage('stay-safe-with-tool')}</p>
-    <a class='button primary' href='/user/breaches'>${getMessage('get-started')}</a>
+    <a class='button primary' data-cta-id='landing-1' href='/user/breaches'>${getMessage('get-started')}</a>
   </div>
   <figure>
     <img srcset='images/landing-hero.webp 530w, images/landing-hero@2x.webp 1059w' width='530' height='406' alt=''>
@@ -86,6 +86,6 @@ export const landing = data => `
 </section>
 <section class='see-if-data-breach'>
   <h2>${getMessage('see-if-data-breach')}</h2>
-  <a class='button primary' href='/user/breaches'>${getMessage('get-started')}</a>
+  <a class='button primary' data-cta-id='landing-2' href='/user/breaches'>${getMessage('get-started')}</a>
 </section>
 `

@@ -3,9 +3,12 @@
 
 ## Hero
 
+find-out-if-breached = Μάθετε αν έχετε εμφανιστεί σε κάποια παραβίαση δεδομένων
+get-started = Έναρξη
 
 ## Why use Firefox Monitor?
 
+why-use-monitor = Γιατί να χρησιμοποιήσω το { -brand-fx-monitor };
 
 ## Here’s how it works
 
@@ -14,6 +17,7 @@ check-for-breaches = Έλεγχος για παραβιάσεις
 
 ## Your privacy is safe with us
 
+safe-with-us = Το απόρρητό σας είναι ασφαλές μαζί μας
 learn-more-mission = Μάθετε περισσότερα σχετικά με την αποστολή μας
 
 ## Top questions about Firefox Monitor

@@ -77,6 +77,8 @@ job-titles = Job titles
 # This string refers to vehicle license plates. 
 licence-plates = Licence Plates
 living-costs = Living costs
+# This string refers to financial loans.
+loan-information = Loan information
 login-histories = Login histories
 mac-addresses = MAC addresses
 marital-statuses = Marital statuses

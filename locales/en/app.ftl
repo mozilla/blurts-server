@@ -14,8 +14,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -152,9 +150,6 @@ preferences = Preferences
 
 # Link title
 home = Home
-
-# Link title
-breaches = Breaches
 
 # Link title
 security-tips = Security Tips
@@ -375,7 +370,6 @@ account-not-required = { -brand-name } browser not required for a { -brand-fxa }
 ##   $breachName (String) - Number of the breach
 
 was-your-info-exposed = Was your info exposed in the { $breachName } data breach?
-find-out-if = Find out if your data was exposed in this breach.
 
 fb-not-comp = This email did not appear in the { $breachName } breach.
 
@@ -400,8 +394,6 @@ fb-comp-and-others =
 no-other-breaches-found = No other breaches found from a basic search.
 
 no-results-blurb = Sorry, that breach is not in our database.
-all-breaches-headline = All breaches in { -product-name }
-search-breaches = Search Breaches
 
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
@@ -865,6 +857,8 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -886,6 +880,10 @@ sign-in = Sign In
 site-nav-breaches-link = Resolve Data Breaches
 site-nav-settings-link = Settings
 site-nav-help-link = Help and Support
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Try our other security tools:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -902,6 +900,7 @@ menu-item-logout = Sign out
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Terms & Privacy
 github = { -brand-github }
+footer-nav-all-breaches = All Breaches
 
 ## Error page
 
@@ -914,3 +913,19 @@ error-page-error-404-cta-button = Go back
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Something went wrong
 error-page-error-other-copy = Please try again or come back later
+
+## Breach overview page
+
+all-breaches-headline-2 = All breaches detected by { -brand-fx-monitor }
+all-breaches-lead = We monitor all known data breaches to find out if your personal information was compromised. Here’s a complete list of all of the breaches that have been reported since 2007.
+search-breaches = Search Breaches
+
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Exposed data:
+
+## Public breach detail page
+
+find-out-if-2 = Find out if you were involved in this breach
+find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
+
+breach-detail-cta-signup = Check for breaches

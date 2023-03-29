@@ -32,6 +32,7 @@ column-detected = RILEVATA
 column-status-badge-resolved = Risolta
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Attiva
+breaches-resolve-heading = Risolvi questa violazione:
 breaches-none-headline = Nessuna violazione rilevata
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -47,15 +48,25 @@ breaches-all-resolved-cta-button = Aggiungi un indirizzo email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = In data { $breachDate } si è verificata una violazione di dati per { $companyName }. Una volta scoperta e verificata la violazione, è stata aggiunta al nostro database il giorno { $addedDate }. Questa violazione includeva: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Gestore password di { -brand-firefox }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Visita <a>{ $breachedCompanyUrl }</a> per cambiare la tua password e attivare l’autenticazione a due fattori (2FA).
-breach-checklist-pw-body = Assicurati che la tua password sia unica e difficile da indovinare. Se questa password è utilizzata in altri account, assicurati di cambiarla anche lì. <a>Il gestore password di { -brand-firefox }</a> può aiutarti a tenere traccia di tutte le tue password in modo sicuro.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Visita il sito web dell’azienda per cambiare la tua password e attivare l’autenticazione a due fattori (2FA).
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Assicurati che la tua password sia unica e difficile da indovinare. Se questa password è utilizzata in altri account, assicurati di cambiarla anche lì. Il { $passwordManagerLink } può aiutarti a tenere traccia di tutte le tue password in modo sicuro.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Proteggi la tua email con un servizio che fornisce alias di posta elettronica come <a>{ -brand-relay }</a>.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Proteggi la tua email con un servizio che fornisce alias di posta elettronica come { $firefoxRelayLink }.
 breach-checklist-email-body = Questo permette di inoltrare messaggi alla tua casella di posta senza rivelare il tuo indirizzo email reale.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -66,7 +77,12 @@ breach-checklist-ssn-header = Tieni sotto controllo il tuo credit report verific
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Puoi anche considerare la possibilità di bloccare il credito su <a>Equifax</a>, <a>Experian</a> e <a>TransUnion</a> per impedire a eventuali truffatori di aprire nuovi account a tuo nome. È gratuito e non influirà sul tuo punteggio di credito.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = Puoi anche considerare la possibilità di bloccare il credito su { $equifaxLink }, { $experianLink } e { $transUnionLink } per impedire a eventuali truffatori di aprire nuovi account a tuo nome. È gratuito e non influirà sul tuo punteggio di credito.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -85,7 +101,9 @@ breach-checklist-pin-body = Assicurati che il nuovo PIN, o qualsiasi altro PIN, 
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Naviga su Internet proteggendo la tua privacy con una VPN, come <a>{ -brand-mozilla-vpn }</a>.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Naviga su Internet proteggendo la tua privacy con una VPN, come { $mozillaVpnLink }.
 breach-checklist-ip-body = Il tuo indirizzo IP (Internet Protocol address) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Una VPN può nascondere il tuo indirizzo IP reale consentendoti di utilizzare Internet in modo privato.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -100,18 +118,22 @@ breach-checklist-dob-body = Trovare la tua data di nascita in registri pubblici 
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Proteggi il tuo numero di telefono con un servizio di alias come <a>{ -brand-relay }</a> che nasconde il tuo numero di telefono reale.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Proteggi il tuo numero di telefono con un servizio di alias come { $firefoxRelayLink } che nasconde il tuo numero di telefono reale.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Aggiorna le tue domande di sicurezza su <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Aggiorna le risposte alle domande di sicurezza sul sito web dell’azienda.
 breach-checklist-sq-body = Scegli risposte lunghe e casuali e conservale in un posto sicuro. Ripeti questa operazione ovunque tu abbia utilizzato le stesse domande di sicurezza.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Crea password uniche e sicure per ogni account in cui hai riutilizzato le password.
-breach-checklist-hp-body = Un sistema di gestione password come il <a>gestore di password di { -brand-firefox }</a> (gratuito e integrato nel browser { -brand-firefox }) può aiutarti a tenere traccia di tutte le tue password e ad accedervi in modo sicuro da tutti i tuoi dispositivi.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Un sistema di gestione password come il { $passwordManagerLink } (gratuito e integrato nel browser { -brand-firefox }) può aiutarti a tenere traccia di tutte le tue password e ad accedervi in modo sicuro da tutti i tuoi dispositivi.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

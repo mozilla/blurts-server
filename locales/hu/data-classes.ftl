@@ -77,6 +77,8 @@ job-titles = Beosztások
 # This string refers to vehicle license plates. 
 licence-plates = Rendszámtáblák
 living-costs = Megélhetési költségek
+# This string refers to financial loans.
+loan-information = Hitelinformációk
 login-histories = Bejelentkezési előzmények
 mac-addresses = MAC-címek
 marital-statuses = Családi állapotok
@@ -87,7 +89,11 @@ names = Nevek
 nationalities = Nemzetiségek
 net-worths = Nettó bevételek
 nicknames = Becenevek
+# no data classes found
+none-data-class = Nincs
 occupations = Foglalkozások
+# various data classes grouped together
+other-data-class = Egyéb
 parenting-plans = Családtervezési tervek
 partial-credit-card-data = Részleges hitelkártyaadatok
 partial-dates-of-birth = Részleges születési dátumok

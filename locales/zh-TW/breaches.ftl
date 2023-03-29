@@ -28,6 +28,7 @@ column-detected = 偵測到
 column-status-badge-resolved = 已解決
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = 進行中
+breaches-resolve-heading = 處理此次事件了：
 breaches-none-headline = 找不到資料外洩事件
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -43,15 +44,25 @@ breaches-all-resolved-cta-button = 新增電子郵件地址
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = { $companyName } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。此次事件外洩了下列資料：{ $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox } 密碼管理員
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = 請前往 <a>{ $breachedCompanyUrl }</a> 更改密碼，並開啟兩階段驗證（2FA）。
-breach-checklist-pw-body = 確保您的密碼獨特、不重複使用並且難以被猜到。若此密碼也用在其他地方的帳號上，也請一併更換。<a>{ -brand-firefox } 密碼管理員</a>可幫助您安全地管理密碼。
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = 請前往該公司網站更改密碼，並開啟兩階段驗證（2FA）。
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = 確保您的密碼獨特、不重複使用並且難以被猜到。若此密碼也用在其他地方的帳號上，也請一併更換。{ $passwordManagerLink } 可幫助您安全地管理密碼。
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = 使用諸如 <a>{ -brand-relay }</a> 的電子郵件轉寄服務，來保護您的實際電子郵件信箱。
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = 使用諸如 { $firefoxRelayLink } 的電子郵件轉寄服務，來保護您的實際電子郵件信箱。
 breach-checklist-email-body = 這樣就可以隱藏您的實際信箱，交由服務轉寄。
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -62,7 +73,12 @@ breach-checklist-ssn-header = 監控您的信用報告當中是否有您不記�
 # A security freeze prevents prospective creditors from accessing your credit file. 
 # Creditors typically won't offer you credit if they can't access your credit reporting file, 
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = 您也可以考慮在 <a>Equifax</a>、<a>Experian</a>、<a>TransUnion</a> 凍結信用資訊，防止詐騙者使用您的個資開立帳號。此服務免費，也不會影響您的信用分數。
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
+#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
+#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+breach-checklist-ssn-body-2 = 您也可以考慮在 { $equifaxLink }、{ $experianLink } 或 { $transUnionLink } 凍結信用資訊，防止詐騙者使用您的個資開立帳號。此服務免費，也不會影響您的信用分數。
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -81,7 +97,9 @@ breach-checklist-pin-body = 請確保您的新密碼，以及任何其他密碼�
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = 使用諸如 <a>{ -brand-mozilla-vpn }</a> 之類的 VPN，在上網時保護隱私。
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = 使用諸如 { $mozillaVpnLink } 之類的 VPN，在上網時保護隱私。
 breach-checklist-ip-body = 您的 IP 地址能夠反推出您的所在位置與電信業者。透過 VPN 能夠隱藏您的實際 IP 地址，讓上網更有隱私。
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -96,18 +114,22 @@ breach-checklist-dob-body = 很容易就能從公開紀錄中找到您的生日�
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = 使用諸如 <a>{ -brand-relay }</a> 的電話轉接服務，來保護您的實際號碼。
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = 使用諸如 { $firefoxRelayLink } 的電話轉接服務，來保護您的實際號碼。
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = 到 <a>{ $breachedCompanyUrl }</a> 更新您的安全問題。
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = 到該公司網站更新安全性問題。
 breach-checklist-sq-body = 使用長度夠長、內容隨機的答案，並保存在安全的地方。對您有設定過相同安全問題的網站都做相同的步驟來保護。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = 對您使用過重複密碼的網站，設定不同而安全的密碼。
-breach-checklist-hp-body = 這類密碼管理工具，例如 <a>{ -brand-firefox } 密碼管理員</a>（免費，又直接內建於 { -brand-firefox } ㄌ瀏覽器）可幫助您管理所有密碼，並於您的所有裝置上安全地使用。
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = 這類密碼管理工具，例如 { $passwordManagerLink }（免費，又直接內建於 { -brand-firefox } 瀏覽器）可幫助您管理所有密碼，並於您的所有裝置上安全地使用。
 
 ## Prompts the user for changes when there is a breach detected of other types
 

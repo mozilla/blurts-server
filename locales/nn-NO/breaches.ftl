@@ -24,7 +24,14 @@ column-status-badge-resolved = Løyst
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiv
 breaches-none-headline = Fann ingen datalekkasjar
+breaches-none-cta-button = Legg til e-postadresse
 breaches-all-resolved-cta-button = Legg til e-postadresse
+
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox } passordhandsamar
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 

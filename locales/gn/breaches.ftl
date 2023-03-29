@@ -33,6 +33,7 @@ column-detected = HECHAPYRE
 column-status-badge-resolved = Japopáma
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Hendýva
+breaches-resolve-heading = Emoĩporã ko ñembogua:
 breaches-none-headline = Ndojejuhúi ñembogua
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
@@ -48,15 +49,16 @@ breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 breach-description = Ko { $breachDate }, { $companyName } oñembogua. Ojejuhu rire ha ojehechajey pe ñembogua, rombojuajúma ore mba’ekuaarã rendápe { $addedDate }. Ko ñembogua ogueroike: { $dataClasses }
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Eike <a>{ $breachedCompanyUrl }</a> emoambue hag̃ua ne ñe’ẽñemi ha embojuruja mokõi factor ñemoneĩ (2FA).
-breach-checklist-pw-body = Embohasýke ne ñe’ẽñemi ani hag̃ua avave oikuaa. Ko ñe’ẽñemi eipurúramo ambue mba’etépe, eñeha’ã emoambue avei. <a>Pe ñe’ẽñemi ñangarekohára { -brand-firefox }</a> ne pytyvõkuaa ehapykuehokuaa hag̃ua tekorosãme opaite ne ñe’ẽñemi.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Emo’ã ne ñanduti veve mba’epuru rovamo’ãha <a>{ -brand-relay }</a> rehegua ndive.
 breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omondojeývo ñanduti veve ig̃uahẽhaitépe.
 
 ## Prompts the user for changes when there is a breach detected of social security number
@@ -64,10 +66,6 @@ breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omon
 # Credit reports list your bill payment history, loans, current debt, and other financial information. 
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Ehechameme ne mba’ete reko banco pegua, virujepuru térã kuatia’atã ñemurã emoneĩ’ỹva.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
-# so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Ikatu avei ejoko nde deveha <a>Equifax</a> ndive, <a>Experian</a> ha <a>TransUnion</a> emboyke hag̃ua umi mba’evaiapoha ombojurujávo mba’ete pyahu nde rérape. Reiete ha nombyaimo’ãi nde jedeve raperã.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -86,7 +84,6 @@ breach-checklist-pin-body = Aníke ne PIN pyahu, térã oimeraẽva ambue PIN, n
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Eipuru Ñanduti teko ñemíme VPN ndive,<a>{ -brand-mozilla-vpn }</a> ramo.
 breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’epuru me’ẽhára. VPN omokañykuaa nde IP kundaharape eipurukuaa hag̃ua Ñanduti teko ñemíme.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -101,12 +98,9 @@ breach-checklist-dob-body = Umi teñoihague ára ndahasýi ijejuhu teraguapyháp
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Emo’ã ne pumbyry papapy mba’epuru rovamo’ãha <a>{ -brand-relay }</a> reheguáva, oñomíva añetehápe ne pumbyry papapy.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Embopyahu porandu tekorosãgua <a>{ $breachedCompanyUrl }</a>-pe.
 breach-checklist-sq-body = Eipuru mbohovái puku ha jereguáva ha eñongatu tenda hekorosãvape. Ejapo kóva tenda eipuruhápe ko’ã porandu tekorosãgua.
 
 ## Prompts the user for changes when there is a breach detected of historical password

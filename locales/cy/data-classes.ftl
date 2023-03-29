@@ -77,6 +77,8 @@ job-titles = Teitlau swyddi
 # This string refers to vehicle license plates. 
 licence-plates = Platiau Trwyddedau
 living-costs = Costau byw
+# This string refers to financial loans.
+loan-information = Manylion benthyciad
 login-histories = Hanesion mewngofnodi
 mac-addresses = Cyfeiriadau MAC
 marital-statuses = Statws priodasol

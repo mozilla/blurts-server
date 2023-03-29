@@ -77,6 +77,8 @@ job-titles = Functietitels
 # This string refers to vehicle license plates. 
 licence-plates = Kentekens
 living-costs = Kosten levensonderhoud
+# This string refers to financial loans.
+loan-information = Leningsgegevens
 login-histories = Aanmeldgeschiedenissen
 mac-addresses = MAC-adressen
 marital-statuses = Huwelijkse staten

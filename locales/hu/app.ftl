@@ -702,3 +702,7 @@ github = { -brand-github }
 error-page-error-404-title = { $errorCode } Az oldal nem található
 error-page-error-404-copy = Sajnáljuk, a keresett oldal már nem létezik.
 error-page-error-404-cta-button = Ugrás vissza
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Hiba történt
+error-page-error-other-copy = Próbálja újra, vagy térjen vissza később

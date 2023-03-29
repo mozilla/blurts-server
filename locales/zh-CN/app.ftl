@@ -585,7 +585,7 @@ menu-list-accessible-label = 帐户菜单
 menu-item-fxa = 管理您的 { -brand-fx-account }
 menu-item-settings = 设置
 menu-item-help = 帮助和支持
-menu-item-logout = 登出
+menu-item-logout = 退出
 
 ## Footer
 

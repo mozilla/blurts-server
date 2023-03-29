@@ -77,6 +77,8 @@ job-titles = Jobtitler
 # This string refers to vehicle license plates. 
 licence-plates = Nummerplader
 living-costs = Leveomkostninger
+# This string refers to financial loans.
+loan-information = Oplysninger om lån
 login-histories = Indlognings-historik
 mac-addresses = MAC-adresser
 marital-statuses = Civilstand
@@ -87,7 +89,11 @@ names = Navne
 nationalities = Nationaliteter
 net-worths = Formue
 nicknames = Tilnavne
+# no data classes found
+none-data-class = Ingen
 occupations = Erhverv
+# various data classes grouped together
+other-data-class = Andet
 parenting-plans = Forældre-planer
 partial-credit-card-data = Delvis betalingskorts-data
 partial-dates-of-birth = Delvise fødselsdatoer

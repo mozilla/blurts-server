@@ -16,7 +16,12 @@ const guestLayout = data => `
     <meta name='viewport' content='width=320, initial-scale=1'>
     <meta name='description' content='${getMessage('meta-desc')}'>
     <meta name='twitter:card' content='summary_large_image'>
+    <meta name='twitter:title' content='${getMessage('brand-fx-monitor')}'>
+    <meta name='twitter:description' content='${getMessage('meta-desc')}'>
+    <meta name='twitter:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
     <meta property='og:title' content='${getMessage('brand-fx-monitor')}'>
+    <meta property='og:description' content='${getMessage('meta-desc')}'>
+    <meta property='og:site_name' content='${getMessage('brand-fx-monitor')}'>
     <meta property='og:type' content='website'>
     <meta property='og:url' content='${AppConstants.SERVER_URL}'>
     <meta property='og:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
@@ -35,14 +40,34 @@ const guestLayout = data => `
 
     <script src='/js/index.js' type='module'></script>
 
-    <!-- Google Tag Manager -->
-    <script nonce='${data.nonce}'>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;var n=d.querySelector('[nonce]');
-    n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');</script>
-    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script nonce='${data.nonce}' type='module'>
+      if (navigator.doNotTrack !== '1') {
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtag/js?id='+i+dl;var n=d.querySelector('[nonce]');
+        n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date()); gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}');
+        ${AppConstants.GA4_DEBUG_MODE
+          ? `gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}', { 'debug_mode': true })`
+          : ''}
+        window.gtag = gtag
+      } else {
+        function gtag() {
+          console.debug("Google Analytics disbled by DNT")
+        }
+        window.gtag = gtag
+      }
+      document.querySelectorAll('[data-cta-id]').forEach(a =>
+        a.addEventListener('click', e => {
+          gtag('event', 'clicked_cta', { cta_id: a.dataset.ctaId })
+        })
+      )
+      </script>
+    <!-- End Google tag (gtag.js) -->
   </head>
   <body>
     <header>
@@ -50,7 +75,7 @@ const guestLayout = data => `
         <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
       </a>
       <menu>
-        <li><a href='/user/breaches' class='button secondary'>${getMessage('sign-in')}</a></li>
+        <li><a href='/user/breaches' data-cta-id='sign-in-1' class='button secondary'>${getMessage('sign-in')}</a></li>
       </menu>
     </header>
     <main data-partial='${data.partial.name}'>
@@ -61,6 +86,7 @@ const guestLayout = data => `
         <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
       </a>
       <menu>
+        <li><a href='/breaches'>${getMessage('footer-nav-all-breaches')}</a></li>
         <li><a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>FAQ</a></li>
         <li><a href='https://www.mozilla.org/privacy/firefox-monitor' target='_blank'>${getMessage('terms-and-privacy')}</a></li>
         <li><a href='https://github.com/mozilla/blurts-server' target='_blank'>${getMessage('github')}</a></li>

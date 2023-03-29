@@ -12,17 +12,17 @@ import hibpApiRoutes from './api/v1/hibp.js'
 import previewRoutes from './preview.js'
 import userApiRoutes from './api/v1/user.js'
 import userRoutes from './user.js'
+import breachesRoutes from './breaches.js'
+import breachDetailsRoutes from './breach-details.js'
 
 import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
-import { robotsTxt } from '../middleware/robots.js'
 
 const router = express.Router()
 
 router.get('/', landingPage)
-router.get('/robots.txt', robotsTxt)
 router.get('*/dialog/:name', dialog)
 
 router.use('/', dockerFlowRoutes)
@@ -31,6 +31,8 @@ router.use('/api/v1/hibp/', hibpApiRoutes)
 router.use('/api/v1/user/', userApiRoutes)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)
+router.use('/breaches', breachesRoutes)
+router.use('/breach-details', breachDetailsRoutes)
 
 // Do not make the non-auth previews available on prod
 if (AppConstants.NODE_ENV !== 'production') {

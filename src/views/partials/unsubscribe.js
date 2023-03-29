@@ -11,7 +11,6 @@ const unsubscribe = data => `
     <button
       class='primary js-unsubscribe-button'
       data-csrf-token='${data.csrfToken}'
-      data-query-params='${JSON.stringify(data.queryParams)}'
     >
       ${getMessage('unsub-button')}
     </button>

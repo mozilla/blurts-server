@@ -9,7 +9,7 @@ function init () {
 }
 
 async function handleEvent (event) {
-  // TODO: Use more specific messages when we reinstate
+  // TODO: Use more specific and localised messages when we reinstate
   // unsubscribing from all emails.
   const errorMessage = 'Unsubscribing failed.'
   const successMessage = 'Unsubscribed successfully.'
@@ -17,7 +17,14 @@ async function handleEvent (event) {
   try {
     const target = event.target
     const csrfToken = target.getAttribute('data-csrf-token')
-    const queryParams = target.getAttribute('data-query-params')
+    const unsubscribeParameters = getUnsubscribeParameters()
+
+    if (unsubscribeParameters === null) {
+      const missingParametersToast = document.createElement('toast-alert')
+      missingParametersToast.textContent = errorMessage
+      document.body.append(missingParametersToast)
+      return
+    }
 
     const response = await fetch('/user/unsubscribe', {
       headers: {
@@ -26,7 +33,7 @@ async function handleEvent (event) {
       },
       mode: 'same-origin',
       method: 'POST',
-      body: queryParams
+      body: JSON.stringify(unsubscribeParameters)
     })
 
     if (response?.redirected) {
@@ -47,6 +54,21 @@ async function handleEvent (event) {
   } catch (error) {
     throw new Error(errorMessage)
   }
+
+  window.gtag('event', 'unsubscribed', { action: 'click', page_location: location.href })
+}
+
+/**
+ * @returns { null | { hash: string; token: string; } }
+ */
+function getUnsubscribeParameters () {
+  const queryParams = new URLSearchParams(document.location.search)
+  const token = queryParams.get('token')
+  const hash = queryParams.get('hash')
+  if (typeof token === 'string' && typeof hash === 'string') {
+    return { hash, token }
+  }
+  return null
 }
 
 if (unsubscribePartial) init()
