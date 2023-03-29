@@ -32,8 +32,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -54,6 +52,9 @@ user-add-invalid-email = Άκυρο email
 user-add-too-many-emails = Παρακολουθείτε τον μέγιστο αριθμό διευθύνσεων email.
 user-add-email-verify-subject = Επαληθεύστε τη συνδρομή σας στο { -product-name }.
 user-add-duplicate-email = Αυτό το email έχει ήδη προστεθεί στο { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Επισκεφθείτε τις { $preferencesLink } σας για να ελέγξετε την κατάσταση του { $userEmail }.
 error-headline = Σφάλμα
 user-verify-token-error = Απαιτείται διακριτικό επαλήθευσης.
@@ -67,11 +68,11 @@ scan-placeholder = Εισαγάγετε διεύθυνση email
 scan-submit = Αναζήτηση email
 scan-error = Πρέπει να είναι ένα έγκυρο email.
 download-firefox-banner-button = Λήψη του { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Απεστάλη!
 sign-up = Εγγραφή
 form-signup-error = Πρέπει να είναι ένα έγκυρο email
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Ημερομηνία παραβίασης:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Παραβιασμένοι λογαριασμοί:
@@ -81,6 +82,8 @@ unsub-headline = Κατάργησης εγγραφής από το { -product-na
 unsub-blurb = Το email σας θα αφαιρεθεί από τη λίστα του { -product-name-nowrap } και δεν θα λαμβάνετε πλέον ειδοποιήσεις όταν ανακοινώνονται νέες παραβιάσεις.
 unsub-button = Κατάργηση εγγραφής
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το { $hibp-link }
 share-twitter = Οι περισσότεροι άνθρωποι έχουν περίπου 100 διαδικτυακούς λογαριασμούς. Έχει εκτεθεί κάποιος από τους δικούς σας σε παραβίαση δεδομένων; Μάθετε.
 share-facebook-headline = Μάθετε αν υπήρξατε θύμα της παραβίασης δεδομένων
@@ -129,8 +132,6 @@ about-firefox-monitor = Σχετικά με το { -product-name }
 preferences = Προτιμήσεις
 # Link title
 home = Αρχική
-# Link title
-breaches = Παραβιάσεις
 # Link title
 security-tips = Συμβουλές ασφαλείας
 fxa-account = { -brand-fxa }
@@ -230,7 +231,9 @@ feat-security-tips = Συμβουλές ασφάλειας για την προ�
 feat-sensitive = Σύνθετη αναζήτηση σε ευαίσθητες διαρροές
 feat-enroll-multiple = Καταχωρήστε πολλαπλά email για εποπτεία παραβιάσεων
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Εμφανίζεται σε { $breachCount } γνωστή παραβίαση.
@@ -242,6 +245,8 @@ get-email-alerts = Μείνετε ασφαλείς: Λάβετε ειδοποι�
 search-for-your-email = Αναζητήστε τη διεύθυνση email σας σε παραβιάσεις δημόσιων δεδομένων από το 2007.
 back-to-top = Πίσω στην κορυφή
 comm-opt-0 = Να ειδοποιηθώ σε περίπτωση που κάποια από τις εξής διευθύνσεις email εμφανιστεί σε παραβίαση δεδομένων.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Αποστολή όλων των ειδοποιήσεων παραβιάσεων στο { $primaryEmail }.
 stop-monitoring-this = Διακοπή εποπτείας αυτού του email.
 resend-verification = Εκ νέου αποστολή email επαλήθευσης
@@ -250,7 +255,7 @@ send-verification = Αποστολή συνδέσμου επαλήθευσης
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Περίληψη παραβίασης
 show-breaches-for-this-email = Εμφάνιση όλων των παραβιάσεων για αυτό το email.
@@ -263,8 +268,15 @@ remove-fxm-blurb =
 manage-email-addresses = Διαχείριση διευθύνσεων email
 # Link title
 latest-breach-link = Δείτε αν επηρεαστήκατε από αυτήν την παραβίαση
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Καλώς ορίσατε και πάλι, { $userName }!
 welcome-user = Καλώς ορίσατε, { $userName }!
+
+##
+
 breach-alert-subject = Το { -product-name } βρήκε το email σας σε νέα παραβίαση δεδομένων
 your-info-was-discovered-headline = Οι πληροφορίες σας ανακαλύφθηκαν σε μια νέα παραβίαση δεδομένων.
 your-info-was-discovered-blurb =
@@ -288,6 +300,8 @@ ba-next-step-blurb-3 =
 faq1 = Δεν αναγνωρίζω αυτήν την εταιρεία ή τον ιστότοπο. Γιατί είμαι σε αυτήν την παραβίαση;
 faq2 = Γιατί πέρασε τόσος καιρός μέχρι να ενημερωθώ για αυτή την παραβίαση;
 faq3 = Πώς ξέρω αν αυτό είναι ένα γνήσιο email από το { -product-name };
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] ΒΡΕΘΗΚΕ { $breachCount } ΝΕΑ ΠΑΡΑΒΙΑΣΗ
@@ -295,24 +309,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Λάβετε συνεχείς ειδοποιήσεις με έναν { -brand-fxa(case: "acc", capitalization: "lower") }.
 account-not-required = Δεν απαιτείται το { -brand-name } για ένα { -brand-fxa }. Μπορείτε να λάβετε πληροφορίες σχετικά με τις υπηρεσίες { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Εκτέθηκαν οι πληροοφορίες σας στην παραβίαση δεδομένων { $breachName };
-find-out-if = Μάθετε αν τα δεδομένα σας εκτέθηκαν σε αυτή την παραβίαση.
 fb-not-comp = Αυτό το email δεν εμφανίστηκε στην παραβίαση { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Ωστόσο, εμφανίστηκε σε άλλη { $breachCount } παραβίαση.
        *[other] Ωστόσο, εμφανίστηκε σε άλλες { $breachCount } παραβιάσεις.
     }
 fb-comp-only = Αυτό το email εμφανίστηκε στην παραβίαση { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Αυτό το email εμφανίστηκε σε { $breachCount } γνωστές παραβιάσεις δεδομένων, όπως το { $breachName }.
        *[other] Αυτά τα email εμφανίστηκαν σε { $breachCount } γνωστές παραβιάσεις δεδομένων, όπως το { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Δεν βρέθηκαν άλλες παραβιάσεις με τη βασική αναζήτηση.
 no-results-blurb = Λυπούμαστε, αυτή η παραβίαση δεν είναι στη βάση δεδομένων μας.
-all-breaches-headline = Όλες οι παραβιάσεις στο { -product-name }
-search-breaches = Αναζήτηση παραβιάσεων
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -383,6 +405,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Προβολή επιπρόσθετων παραβιάσεων
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Αυτό το email εμφανίστηκε σε 1 γνωστή παραβίαση δεδομένων.
@@ -391,6 +415,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Αποτελέσματα για: { $userEmail }
 other-monitored-emails = Άλλα εποπτευμένα email
 email-verification-required = Απαιτείται επαλήθευση email
@@ -406,6 +432,8 @@ get-ongoing-breach-monitoring = Λάβετε συνεχή εποπτεία πα�
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Μάθετε
 new-unsub-error = Θα πρέπει να καταργήσετε την εγγραφή σας από ένα από τα email που έστειλε το { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Ωστόσο, εμφανίστηκε σε άλλη { $breachCount } γνωστή παραβίαση.
@@ -423,10 +451,12 @@ breach-overview-title = Επισκόπηση
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Στις { $breachDate }, το { $breachTitle } παραβιάστηκε. Μόλις ανακαλύφθηκε και επαληθεύτηκε η παραβίαση, προστέθηκε στη βάση δεδομένων μας στις { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Προτιμήσεις { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Σε σύνδεση ως: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -443,12 +473,16 @@ email-sent = Απεστάλη email!
 want-to-add = Θέλετε να προσθέσετε ένα άλλο email;
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Επαληθεύστε το σύνδεσμο που απεστάλη στο { $userEmail } για να το προσθέσετε στο { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Επιτυχής επαλήθευση email!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Θα σας ειδοποιήσουμε αν το { $email } εμφανιστεί σε νέα διαρροή δεδομένων.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -462,15 +496,17 @@ sign-in-nested = σύνδεση
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Διαχείριση όλων των διευθύνσεων email στις { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Ειδοποιήσεις παραβιάσεων
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Ημερομηνία προσθήκης:
 how-hackers-work-desc = Προστατέψτε τους κωδικούς πρόσβασής σας από κυβερνοεγκληματίες, καθώς αυτοί τους ενδιαφέρουν περισσότερο.
 what-to-do-after-breach-desc = Κλειδώστε τους λογαριασμούς σας για να μην πέσουν τα στοιχεία σας σε λάθος χέρια.
@@ -492,7 +528,11 @@ see-additional-recs = Προβολή επιπρόσθετων προτάσεων
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = Το { $affectedEmail } εμφανίστηκε σε αυτή την παραβίαση. <a>Τι να κάνετε στη συνέχεια</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
        *[other] { $numAffectedEmails } από τις διευθύνσεις email σας εμφανίστηκαν σε αυτή την παραβίαση. <a>Τι να κάνετε στη συνέχεια</a>
@@ -519,6 +559,8 @@ confirmation-3-subhead = Αντιμετωπίστηκε ακόμη ένα. Κα�
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Είναι ο νέος σας κωδικός πρόσβασης μοναδικός, ισχυρός και δύσκολος; <a>Μάθετε εδώ</a>
 generic-confirmation-subhead = Αυτή η παραβίαση έχει επισημανθεί ως επιλυμένη
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Για να δείτε την εναπομείνουσα διαρροή, μεταβείτε στον πίνακα ελέγχου.
@@ -528,9 +570,13 @@ return-to-breach-details-link = Επιστροφή στις λεπτομέρει
 go-to-dashboard-link = Μετάβαση στον πίνακα
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% ολοκλήρωση
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
        *[other] Επιλύθηκαν { $numResolvedBreaches }
@@ -539,6 +585,9 @@ progress-intro-subhead = Νέο στο { -product-name }: Επισήμανση �
 progress-intro-message =
     Αφού ελέγξετε τα στοιχεία μιας παραβίασης και λάβετε μέτρα για την προστασία 
     των δεδομένων σας, μπορείτε να επισημάνετε τις παραβιάσεις ως επιλυμένες.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } από { $numTotalBreaches } παραβιάσεις έχουν επισημανθεί ως επιλυμένες
@@ -563,16 +612,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Επίλυση παραβίασης
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Επισημασμένα ως επιλυμένα:
 hide-resolved-button = Απόκρυψη επιλυμένων
 show-resolved-button = Εμφάνιση επιλυμένων
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Εκτεθειμένος κωδικός πρόσβασης σε μη επιλυμένες παραβιάσεις
        *[other] Εκτεθειμένοι κωδικοί πρόσβασης σε μη επιλυμένες παραβιάσεις
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Γνωστή παραβίαση δεδομένων επισημάνθηκε ως επιλυμένη
@@ -603,7 +656,10 @@ vpn-promo-copy-new = Προστατέψτε τα διαδικτυακά σας �
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Η τοποθεσία σας: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Προστατευτείτε</em> με το { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Προστατεύεστε</em> με το { -brand-mozilla-vpn }.
@@ -612,7 +668,8 @@ vpn-banner-title-2 = Η τοποθεσία σας μπορεί να καταγρ
 vpn-banner-subtitle-2 = Προστατεύστε την τοποθεσία σας και περιηγηθείτε με ασφάλεια σε 3 βήματα.
 vpn-banner-status-protected = Τρέχουσα κατάσταση: <em>Υπό προστασία ✓</em>
 vpn-banner-status-not-protected = Τρέχουσα κατάσταση: <em>Χωρίς προστασία ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Διεύθυνση IP: { $ip-address }
 vpn-banner-step-1 = Εγγραφείτε στο { -brand-mozilla-vpn }
 vpn-banner-step-2 = Επιλέξτε μια τοποθεσία VPN
@@ -671,6 +728,8 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -709,6 +768,8 @@ sign-in = Σύνδεση
 site-nav-breaches-link = Επίλυση παραβιάσεων δεδομένων
 site-nav-settings-link = Ρυθμίσεις
 site-nav-help-link = Βοήθεια και υποστήριξη
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -725,6 +786,7 @@ menu-item-logout = Αποσύνδεση
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Όροι και απόρρητο
 github = { -brand-github }
+footer-nav-all-breaches = Όλες οι παραβιάσεις
 
 ## Error page
 
@@ -737,3 +799,10 @@ error-page-error-404-cta-button = Επιστροφή
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode }: Κάτι πήγε στραβά
 error-page-error-other-copy = Παρακαλούμε δοκιμάστε ξανά ή επιστρέψτε αργότερα
+
+## Breach overview page
+
+search-breaches = Αναζήτηση παραβιάσεων
+
+## Public breach detail page
+
