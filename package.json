@@ -50,7 +50,8 @@
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0"
+    "stylelint-config-standard": "^26.0.0",
+    "typescript": "^5.0.2"
   },
   "engines": {
     "node": "18.12.x",
@@ -90,6 +91,7 @@
     "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm run lint:css && npm run lint:js",
     "lint:js": "eslint .",
+    "lint:ts": "tsc --noEmit",
     "lint:css": "stylelint public/css/",
     "lint:fluent": "moz-fluent-lint ./locales/en --config .github/linter_config.yml",
     "fix": "npm run fix:css && npm run fix:js",
