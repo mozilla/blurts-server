@@ -750,4 +750,5 @@ exposed-data = Datos expuestos:
 ## Public breach detail page
 
 find-out-if-2 = Averigua si te viste involucrado en esta filtración
+find-out-if-description = Te ayudaremos a comprobar rápidamente si tu dirección de correo electrónico se vio expuesta en esta filtración y saber qué hacer a continuación.
 breach-detail-cta-signup = Busca filtraciones
