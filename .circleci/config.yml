@@ -48,6 +48,7 @@ jobs:
             - checkout
             - node/install-packages
             - run: npm run lint:js
+            - run: npm run lint:ts
     lint-css:
         executor: node
         steps:
