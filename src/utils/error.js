@@ -3,6 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 class UserInputError extends Error {
+  /**
+   * @param {[string?]} params
+   */
   constructor (...params) {
     super(...params)
     this.statusCode = 400
@@ -10,6 +13,9 @@ class UserInputError extends Error {
 }
 
 class UnauthorizedError extends Error {
+  /**
+   * @param {[string?]} params
+   */
   constructor (...params) {
     super(...params)
     this.statusCode = 403
@@ -17,6 +23,9 @@ class UnauthorizedError extends Error {
 }
 
 class MethodNotAllowedError extends Error {
+  /**
+   * @param {[string?]} params
+   */
   constructor (...params) {
     super(...params)
     this.statusCode = 405
@@ -24,6 +33,9 @@ class MethodNotAllowedError extends Error {
 }
 
 class RateLimitError extends Error {
+  /**
+   * @param {[string?]} params
+   */
   constructor (...params) {
     super(...params)
     this.statusCode = 429
