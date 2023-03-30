@@ -6,6 +6,21 @@
   padding: var(--padding-xl) var(--padding-sm);
 }
 
+.breach-detail-header .breach-logo {
+  height: 5rem;
+  display: inline-block;
+}
+
+.breach-detail-header span.breach-logo {
+  line-height: 5rem;
+  width: 5rem;
+  border-radius: 5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .breach-detail-meta {
   display: flex;
   flex-direction: column;

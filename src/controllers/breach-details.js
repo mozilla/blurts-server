@@ -31,6 +31,7 @@ async function breachDetailsPage (req, res) {
   const data = {
     partial: breachDetails,
     breach: featuredBreach,
+    breachLogos: req.app.locals.breachLogoMap,
     nonce: res.locals.nonce
   }
 
