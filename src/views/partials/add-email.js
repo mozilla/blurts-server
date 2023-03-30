@@ -4,6 +4,16 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
+/**
+ * @typedef {object} PartialData
+ * @property {string} csrfToken
+ * @property {number} emailLimit
+ */
+
+/**
+ * @param {PartialData} data
+ * @returns string
+ */
 export const addEmail = data => `
 <header>
   <button class='close'></button>

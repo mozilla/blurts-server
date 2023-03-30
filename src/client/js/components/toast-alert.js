@@ -117,7 +117,7 @@ const html = `
 </output>
 `
 
-const ToastTypes = {
+const ToastTypes = /** @type {const} */ {
   Error: 'error',
   Success: 'success'
 }
@@ -126,6 +126,7 @@ customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
+    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.innerHTML = html
   }
 
@@ -133,8 +134,9 @@ customElements.define('toast-alert', class extends HTMLElement {
     return this.getAttribute('ttl')
   }
 
+  /** @param {string | null} value */
   set ttl (value) {
-    this.setAttribute('ttl', value)
+    this.setAttribute('ttl', value ?? '')
     this.style.setProperty('--ttl', `${value}s`) // seconds before fade-out starts
   }
 
@@ -142,17 +144,19 @@ customElements.define('toast-alert', class extends HTMLElement {
     return this.getAttribute('type')
   }
 
+  /** @param {string | null} value */
   set type (value) {
-    const isValidType = Object.values(ToastTypes).includes(value)
+    const isValidType = typeof value === 'string' && Object.values(ToastTypes).includes(value)
     if (!isValidType) {
-      console.warning(`Unknown toast type ${value}.`)
+      console.warn(`Unknown toast type ${value}.`)
+      return
     }
 
     this.setAttribute('type', value)
   }
 
   connectedCallback () {
-    const toasts = Array.from(document.querySelectorAll('toast-alert')).reverse()
+    const toasts = /** @type {HTMLElement[]} */ (Array.from(document.querySelectorAll('toast-alert')).reverse())
 
     for (let i = 1, y = 0; i < toasts.length; i++) {
       // start at index 1 to push old toasts down with aggregated toast heights plus 10px gap
@@ -170,17 +174,19 @@ customElements.define('toast-alert', class extends HTMLElement {
       this.type = ToastTypes.Error
     }
 
+    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow in the constructor
     this.shadowRoot.addEventListener('click', this)
     this.addEventListener('animationend', this)
   }
 
+  /** @param {Event} e */
   handleEvent (e) {
     switch (true) {
-      case e.target.matches('button'):
+      case e.target instanceof HTMLElement && e.target.matches('button'):
         this.remove()
         window.gtag('event', 'toast_alert', { action: 'dismiss' })
         break
-      case e.animationName === 'fade-out':
+      case e instanceof AnimationEvent && e.animationName === 'fade-out':
         this.remove()
         window.gtag('event', 'toast_alert', { action: 'faded' })
         break
@@ -188,6 +194,7 @@ customElements.define('toast-alert', class extends HTMLElement {
   }
 
   disconnectedCallback () {
+    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow in the constructor
     this.shadowRoot.removeEventListener('click', this)
     this.removeEventListener('animationend', this)
   }

@@ -53,6 +53,7 @@ const optionalEnvVars = [
   'SENTRY_DSN_LEGACY'
 ]
 
+/** @type {Record<string, string>} */
 const AppConstants = { }
 
 if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
@@ -60,14 +61,16 @@ if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
 }
 
 for (const v of requiredEnvVars) {
-  if (process.env[v] === undefined) {
+  const value = process.env[v]
+  if (value === undefined) {
     throw new Error(`Required environment variable was not set: ${v}`)
   }
-  AppConstants[v] = process.env[v]
+  AppConstants[v] = value
 }
 
 optionalEnvVars.forEach(key => {
-  if (key in process.env) AppConstants[key] = process.env[key]
+  const value = process.env[key]
+  if (value) AppConstants[key] = value
 })
 
 export default Object.freeze(AppConstants)

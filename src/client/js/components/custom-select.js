@@ -56,17 +56,22 @@ const html = `
 `
 
 customElements.define('custom-select', class extends HTMLElement {
+  /** @type {HTMLSelectElement} */
+  select
+
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
+    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.innerHTML = html
+    // @ts-ignore We know that this will not return null:
     this.select = this.shadowRoot.querySelector('select')
     this.options = this.querySelectorAll('option')
 
     // move <option> elements into <select> (<slot> not permitted as <select> child)
     this.select.append(...this.options)
     this.setAttribute('value', this.select.value)
-    this.setAttribute('selected-index', this.select.selectedIndex)
+    this.setAttribute('selected-index', this.select.selectedIndex.toString())
   }
 
   get value () {
@@ -79,15 +84,18 @@ customElements.define('custom-select', class extends HTMLElement {
 
   connectedCallback () {
     this.matchOptionWidth()
-    this.select.addEventListener('change', this)
+    this.select?.addEventListener('change', this)
   }
 
+  /**
+   * @param {InputEvent & { target: HTMLSelectElement }} e
+   */
   handleEvent (e) {
     switch (e.type) {
       case 'change':
         this.matchOptionWidth()
         this.setAttribute('value', e.target.value)
-        this.setAttribute('selected-index', e.target.selectedIndex)
+        this.setAttribute('selected-index', e.target.selectedIndex.toString())
         this.dispatchEvent(new Event('change'))
         break
     }
@@ -95,11 +103,13 @@ customElements.define('custom-select', class extends HTMLElement {
 
   matchOptionWidth () {
     // update <select> width based on selected <option> (override fixed width based on largest <option>)
+    /** @type {HTMLSelectElement & { w?: number }} */
     const temp = document.createElement('select')
     const selectedOption = this.options[this.select.selectedIndex]
 
     temp.className = 'hidden'
     temp.append(selectedOption.cloneNode(true))
+    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.append(temp)
 
     // let’s wait for the next tick to make sure that the dimensions of temp are available
