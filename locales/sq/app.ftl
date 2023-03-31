@@ -720,3 +720,4 @@ search-breaches = Kërkoni Te Shkeljet
 
 ## Public breach detail page
 
+breach-detail-cta-signup = Kontrolloni për cenime
