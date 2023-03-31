@@ -692,6 +692,7 @@ menu-item-logout = Çıkış yap
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Şartlar ve gizlilik
 github = { -brand-github }
+footer-nav-all-breaches = Tüm ihlaller
 
 ## Error page
 
@@ -715,3 +716,4 @@ exposed-data = Ele geçirilen veriler:
 ## Public breach detail page
 
 find-out-if-2 = Bu ihlale karışıp karışmadığınızı öğrenin
+breach-detail-cta-signup = İhlalleri kontrol et
