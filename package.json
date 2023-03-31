@@ -93,7 +93,7 @@
     "docker:build": "docker build -t blurts-server .",
     "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:js": "eslint .",
+    "lint:js": "eslint src",
     "lint:ts": "tsc --noEmit",
     "lint:css": "stylelint public/css/",
     "lint:fluent": "moz-fluent-lint ./locales/en --config .github/linter_config.yml",
