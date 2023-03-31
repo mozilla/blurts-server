@@ -47,6 +47,8 @@ test.serial('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', 
   const testSmtpUrl = 'smtps://test:test@test:1'
   const createTransport = {
     verify: td.func(),
+    // A mocked function can be empty:
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     sendMail: (mailoptions, callback) => {}
   }
 
@@ -77,6 +79,8 @@ test.serial('EmailUtils.sendEmail with recipient, subject, template, context cal
 
   const createTransport = {
     verify: td.func(),
+    // A mocked function can be empty:
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     use: () => {},
     sendMail: (_options, cb) => cb(null, 'sent'),
     transporter: { name: 'MockTransporter' }
@@ -111,6 +115,8 @@ test.serial('EmailUtils.sendEmail rejects with error', async t => {
 
   const createTransport = {
     verify: td.func(),
+    // A mocked function can be empty:
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     use: () => {},
     // eslint-disable-next-line n/no-callback-literal
     sendMail: (_options, cb) => cb('error', 'null'),
