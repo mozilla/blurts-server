@@ -717,6 +717,7 @@ error-page-error-other-copy = Ju lutemi, riprovoni, ose rikthehuni më vonë
 ## Breach overview page
 
 all-breaches-headline-2 = Krejt cenimet të pikasura nga { -brand-fx-monitor }
+all-breaches-lead = Mbikëqyrim krejt cenimet e ditura të të dhënave, për të parë nëse hollësitë tuaja personale qenë komprometuar. Ja një listë e plotë e krejt cenimeve që janë njoftuar që nga 2007-a.
 search-breaches = Kërkoni Te Shkeljet
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Të dhëna të ekspozuara:
