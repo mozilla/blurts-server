@@ -64,7 +64,7 @@ customElements.define('custom-select', class extends HTMLElement {
     this.attachShadow({ mode: 'open' })
     // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.innerHTML = html
-    // @ts-ignore We know that this will not return null:
+    // @ts-ignore: We know that this will not return null
     this.select = this.shadowRoot.querySelector('select')
     this.options = this.querySelectorAll('option')
 
