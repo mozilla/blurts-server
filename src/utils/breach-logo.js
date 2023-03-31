@@ -7,21 +7,20 @@ import AppConstants from '../app-constants.js'
 /**
  * @param {object} breach
  * @param {Map<string, string>} logos Map of URLs to logos indexed by the domain name of the respective company
- * @param {boolean} isEmail Is the icon being used in an email template?
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
-export function getBreachLogo (breach, logos, isEmail = false) {
+export function getBreachLogo (breach, logos) {
   const logoIsAvailable = logos?.has(breach.Domain)
 
   if (logoIsAvailable) {
     return `<img src='${AppConstants.SERVER_URL}${logos.get(breach.Domain)}' alt='' loading="lazy" class='breach-logo' height='32' />`
   }
 
+  // Add CSS variable and a dedicated class for the logo placeholder
+  // as fallback for emails
   const { className, variableName } = getColorForName(breach.Name)
-  const backgroundStyle = !isEmail
-    ? `background-color: var(${variableName});`
-    : ''
-  const classNames = `breach-logo ${isEmail ? `breach-logo-email ${className}` : ''}`
+  const classNames = `breach-logo breach-logo-email ${className}`
+  const backgroundStyle = `background-color: var(${variableName});`
 
   return `<span role="img" aria-hidden='true' class='${classNames}' style='${backgroundStyle}'>${breach.Name.substring(0, 1)}</span>`
 }

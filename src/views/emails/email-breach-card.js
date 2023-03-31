@@ -76,7 +76,7 @@ const breachCardPartial = (breachData, breachLogos) => {
                 class='breachLogoWrapper'
                 style='${breachAlertCardsTitleImageStyle}'
               >
-                ${getBreachLogo(breachData, breachLogos, true)}
+                ${getBreachLogo(breachData, breachLogos)}
               </span>
               ${Title}
             </td>
