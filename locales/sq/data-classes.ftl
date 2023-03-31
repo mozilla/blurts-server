@@ -33,6 +33,9 @@ customer-interactions = Ndërveprime klienti
 dates-of-birth = Data lindjesh
 deceased-date = Data vdekjesh
 deceased-statuses = Gjendje vdekjeje
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Udhëzime dorëzimi
 device-information = Të dhëna pajisjeje
 device-serial-numbers = Numra serialë pajisjesh
 device-usage-tracking-data = Të dhëna gjurmimi përdorimi pajisjeje
@@ -52,11 +55,13 @@ family-plans = Plane familjare
 family-structure = Strukturë familjare
 financial-investments = Investime financiare
 financial-transactions = Transaksione financiare
+flights-taken = Fluturime të bëra
 genders = Gjini
 geographic-locations = Vendndodhje gjeografike
 government-issued-ids = ID të lëshuara nga qeveri
 health-insurance-information = Të dhëna sigurimesh shëndetësore
 historical-passwords = Fjalëkalime të dikurshëm
+hiv-statuses = Gjendje HIV
 home-loan-information = Të dhëna kredie për shtëpi
 home-ownership-statuses = Gjendje pronësie shtëpish
 homepage-urls = URL faqesh hyrëse
@@ -70,6 +75,8 @@ job-titles = Emërtesa vendi pune
 # This string refers to vehicle license plates. 
 licence-plates = Targa
 living-costs = Kosto jetese
+# This string refers to financial loans.
+loan-information = Hollësi kredie
 login-histories = Kronologji hyrjesh
 mac-addresses = Adresa MAC
 marital-statuses = Gjendje martesore
@@ -80,7 +87,11 @@ names = Emra
 nationalities = Shtetësi
 net-worths = Pasuri neto
 nicknames = Nofka
+# no data classes found
+none-data-class = Asnjë
 occupations = Punësime
+# various data classes grouped together
+other-data-class = Të tjera
 partial-credit-card-data = Të dhëna të pjesshme karte krediti
 partial-dates-of-birth = Datëlindje të pjesshme
 partial-phone-numbers = Numra telefoni të pjesshëm
@@ -132,6 +143,7 @@ user-website-urls = URL sajtesh përdoruesi
 usernames = Emra përdoruesish
 utility-bills = Fatura
 vehicle-details = Hollësi automjeti
+vehicle-identification-numbers-vins = Numra identifikimi automjetesh (VIN-e)
 website-activity = Veprimtari në sajt
 work-habits = Zakone pune
 years-of-birth = Vite lindjesh
