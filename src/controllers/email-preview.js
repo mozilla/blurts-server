@@ -20,7 +20,7 @@ import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'
 import {
   EmailTemplateType,
-  getNotifictionDummyData,
+  getNotificationDummyData,
   getVerificationDummyData,
   getMonthlyDummyData,
   getSignupReportDummyData,
@@ -41,7 +41,7 @@ function getTemplatesData () {
     [EmailTemplateType.Notification]: {
       label: 'Breach notification',
       template: getPreviewTemplate(
-        getNotifictionDummyData(EMAIL_TEST_RECIPIENT),
+        getNotificationDummyData(EMAIL_TEST_RECIPIENT),
         breachAlertEmailPartial
       )
     },

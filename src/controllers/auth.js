@@ -112,6 +112,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
     const data = {
       breachedEmail: email,
+      breachLogos: req.app.locals.breachLogoMap,
       ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
       heading: getMessage('email-breach-summary'),
       recipientEmail: email,

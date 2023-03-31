@@ -47,6 +47,7 @@ const ctaStyle = `
 const signupReportEmailPartial = data => {
   const {
     breachedEmail,
+    breachLogos,
     emailBreachStats,
     unsafeBreachesForEmail
   } = data
@@ -90,7 +91,7 @@ const signupReportEmailPartial = data => {
         ${
           unsafeBreachesForEmail?.length
             ? unsafeBreachesForEmail.map(unsafeBreach => (
-                breachCardPartial(unsafeBreach)
+                breachCardPartial(unsafeBreach, breachLogos)
               )).join('')
             : ''
         }

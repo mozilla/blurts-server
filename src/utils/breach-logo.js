@@ -5,30 +5,63 @@
 /**
  * @param {object} breach
  * @param {Map<string, string>} logos Map of URLs to logos indexed by the domain name of the respective company
+ * @param {boolean} isEmail Is the icon being used in an email template?
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
-export function getBreachLogo (breach, logos) {
-  const logo = logos.has(breach.Domain)
-    ? `<img src='${logos.get(breach.Domain)}' alt='' loading="lazy" class='breach-logo' height='32' />`
-    : `<span role="img" aria-hidden='true' class='breach-logo' style='background-color: var(${getColorForName(breach.Name)});'>${breach.Name.substring(0, 1)}</span>`
+export function getBreachLogo (breach, logos, isEmail = false) {
+  const logoIsAvailable = logos?.has(breach.Domain)
 
-  return logo
+  if (logoIsAvailable) {
+    return `<img src='${logos.get(breach.Domain)}' alt='' loading="lazy" class='breach-logo' height='32' />`
+  }
+
+  const { className, variableName } = getColorForName(breach.Name)
+  const backgroundStyle = !isEmail
+    ? `background-color: var(${variableName});`
+    : ''
+  const classNames = `breach-logo ${isEmail ? `breach-logo-email ${className}` : ''}`
+
+  return `<span role="img" aria-hidden='true' class='${classNames}' style='${backgroundStyle}'>${breach.Name.substring(0, 1)}</span>`
 }
 
 /**
  * @param {string} name
- * @returns string CSS variable for a string-specific color
+ * @returns {string} CSS variable for a string-specific color
  */
 function getColorForName (name) {
   const logoColors = [
-    '--blue-5',
-    '--purple-5',
-    '--green-05',
-    '--violet-5',
-    '--orange-5',
-    '--yellow-5',
-    '--red-5',
-    '--pink-5'
+    {
+      className: 'bg-blue-5',
+      variableName: '--blue-5'
+    },
+    {
+      className: 'bg-purple-5',
+      variableName: '--purple-5'
+    },
+    {
+      className: 'bg-green-05',
+      variableName: '--green-05'
+    },
+    {
+      className: 'bg-violet-5',
+      variableName: '--violet-5'
+    },
+    {
+      className: 'bg-orange-5',
+      variableName: '--orange-5'
+    },
+    {
+      className: 'bg-yellow-5',
+      variableName: '--yellow-5'
+    },
+    {
+      className: 'bg-red-5',
+      variableName: '--red-5'
+    },
+    {
+      className: 'bg-pink-5',
+      variableName: '--pink-5'
+    }
   ]
 
   const charValue = name

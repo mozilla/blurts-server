@@ -202,6 +202,51 @@ const getStyles = () => `
         background-image: url('${images.logoDark}')
       }
     }
+
+    .bg-blue-5 {
+      background-color: #aaf2ff;
+    }
+
+    .bg-purple-5 {
+      background-color: #e7dfff;
+    }
+
+    .bg-green-05 {
+      background-color: #e3fff3;
+    }
+
+    .bg-violet-5 {
+      background-color: #f7e2ff;
+    }
+
+    .bg-orange-5 {
+      background-color: #fff4de;
+    }
+
+    .bg-yellow-5 {
+      background-color: #ffc;
+    }
+
+    .bg-red-5 {
+      background-color: #ffdfe7;
+    }
+
+    .bg-pink-5 {
+      background-color: #ffdef0;
+    }
+
+    .breach-logo {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+
+    .breach-logo-email {
+      border-radius: 50%;
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
   </style>
 `
 

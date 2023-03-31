@@ -4,6 +4,7 @@
 
 import { getLocale, getMessage } from '../../utils/fluent.js'
 import { formatDate } from '../../utils/format-date.js'
+import { getBreachLogo } from '../../utils/breach-logo.js'
 
 const breachAlertTableStyle = `
   margin: auto
@@ -29,7 +30,14 @@ const breachAlertCardsTitleStyle = `
 `
 
 const breachAlertCardsTitleImageStyle = `
-  vertical-align: bottom;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 2rem;
+  overflow: hidden;
+  margin-right: 0.5rem;
+  text-align: center;
+  vertical-align: middle;
+  width: 2rem;
 `
 
 const breachAlertLabelStyle = `
@@ -50,9 +58,8 @@ const breachAlertValueStyle = `
   padding-bottom: 15px;
 `
 
-const breachCardPartial = breachData => {
+const breachCardPartial = (breachData, breachLogos) => {
   const {
-    LogoPath,
     AddedDate,
     DataClasses,
     Title
@@ -64,15 +71,15 @@ const breachCardPartial = breachData => {
         <td>
           <table style='${breachAlertCardsContainerStyle}'>
             <tr>
-              <td style='${breachAlertCardsTitleStyle}'>
-                <img
-                  height='25'
-                  src='${LogoPath}'
-                  style='${breachAlertCardsTitleImageStyle}'
-                  width='25'
-                >
-                ${Title}
-              </td>
+            <td style='${breachAlertCardsTitleStyle}'>
+              <span
+                class='breachLogoWrapper'
+                style='${breachAlertCardsTitleImageStyle}'
+              >
+                ${getBreachLogo(breachData, breachLogos, true)}
+              </span>
+              ${Title}
+            </td>
             </tr>
             <tr>
               <td style='padding: 24px;'>
