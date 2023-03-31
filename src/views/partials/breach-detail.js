@@ -130,9 +130,11 @@ function makeBreachDetails (breach) {
 
 export const breachDetails = data => `
   <header class="breach-detail-header">
-    ${getBreachLogo(data.breach, data.breachLogos)}
     <div class="breach-detail-meta">
-      <h1>${data.breach.Title}</h1>
+      <h1>
+        ${getBreachLogo(data.breach, data.breachLogos)}
+        ${data.breach.Title}
+      </h1>
       ${getBreachCategory(data.breach) === 'website-breach'
         ? `<a href="https://${data.breach.Domain}" class="breach-detail-meta-domain" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">${data.breach.Domain}</a>`
         : ''}
