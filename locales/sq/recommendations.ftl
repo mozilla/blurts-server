@@ -10,9 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Ndryshoni fjalëkalimin tuaj
 # Link title
 rec-pw-1-cta = Ndryshoni fjalëkalim për këtë sajt
-rec-pw-1 =
-    Bëjeni këtë fjalëkalim unik dhe të ndryshëm nga cilido tjetër që përdorni. 
-    Një strategji për t’u ndjekur është të ndërthuren dy ose më tepër fjalë që s’kanë lidhje, për të krijuar një togfjalësh të tërë.
+rec-pw-1-2 =
+    Bëjeni këtë fjalëkalim unik dhe të ndryshëm nga cilido tjetër që përdorni.
+    Një strategji e mirë për t’u ndjekur është të ndërthuren dy ose më tepër
+    fjalë që s’kanë lidhje, për të krijuar një togfjalësh të tërë dhe të përfshihen numra dhe simbole.
 # Recommendation subhead
 rec-pw-2-subhead = Përditësoni kredenciale të tjerë hyrjesh duke përdorur të njëjtin fjalëkalim
 # Link title
@@ -44,20 +45,13 @@ rec-email =
     Dhënia e adresës tuaj reale email e bën më të lehtë për hacker-a apo gjurmues të gjejnë fjalëkalimet tuaja ose t’ju bëjnë objektiv në internet. Një shërbim si { -brand-relay }
     e fsheh adresën tuaj reale email teksa përcjell email-et te kutia juaj reale.
 # Recommendation subhead
-rec-ip-subhead = Përdorni një shërbim që maskon adresën tuaj IP
-# Link title
-rec-ip-us-cta = Provoni { -brand-fpn }
-rec-ip-us =
-    Adresa juaj e Protokollit Internet (adresë IP) lejon të përcaktohet me saktësi vendndodhja juaj dhe furnizuesi i shërbimit internet për ju. Një shërbim si { -brand-fpn } 
-    e maskon adresën tuaj IP për të fshehur vendndodhjen tuaj.
-rec-ip-non-us =
-    Adresa juaj e Protokollit Internet (adresë IP) lejon të përcaktohet me saktësi vendndodhja juaj dhe furnizuesi i shërbimit internet për ju. Me një rrjet virtual privat (VPN), mund të fshihni vendndodhjen tuaj
-    dhe të maskoni adresën tuaj IP.
+rec-ip-subhead-2 = Përdorni një VPN që të maskoni adresën tuaj IP
 # Recommendation subhead
 rec-moz-vpn-cta = Provoni { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Adresa juaj e Protokollit Internet (adresë IP) mund të lërë të zbulohet vendndodhja juaj dhe furnizuesi i shërbimit internet. Një shërbim 
-    si { -brand-mozilla-vpn } e fsheh adresën IP dhe vendndodhjen për krejt pajisjen tuaj.
+rec-moz-vpn-update-2 =
+    Adresa juaj e Protokollit Internet (adresë IP) lejon të përcaktohet me saktësi vendndodhja juaj
+    dhe furnizuesi i shërbimit internet për ju. Një shërbim si { -brand-mozilla-vpn }
+    e maskon adresën tuaj IP, për fshehje të vendndodhjes tuaj.
 rec-hist-pw-subhead = Shmangni ripërdorim fjalëkalimesh
 # Link title
 rec-hist-pw-cta-fx = Shihni kredenciale hyrjesh te { -brand-name }
