@@ -34,7 +34,7 @@ const BreachDataTypes = {
 const breachResolutionDataTypes = {
   [BreachDataTypes.Passwords]: {
     priority: 1,
-    header: 'breach-checklist-pw-header-2',
+    header: 'breach-checklist-pw-header-3',
     body: 'breach-checklist-pw-body-2'
   },
   [BreachDataTypes.Email]: {
@@ -85,7 +85,7 @@ const breachResolutionDataTypes = {
   },
   [BreachDataTypes.SecurityQuestions]: {
     priority: 11,
-    header: 'breach-checklist-sq-header-2',
+    header: 'breach-checklist-sq-header-3',
     body: 'breach-checklist-sq-body'
   },
   [BreachDataTypes.HistoricalPasswords]: {
@@ -114,6 +114,7 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
       const dataClasses = b.DataClasses
       const args = {
         companyName: b.Name,
+        breachedCompanyLink: `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`,
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
         passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-password-manager')}</a>`,
         mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-mozilla-vpn')}</a>`,

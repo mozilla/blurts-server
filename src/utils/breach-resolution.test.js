@@ -33,7 +33,7 @@ test('appendBreachResolutionChecklist: two data classes', t => {
   appendBreachResolutionChecklist(userBreachData)
   t.truthy(userBreachData.verifiedEmails[0].breaches[0].breachChecklist)
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].header,
-    'Go to the company’s website to change your password and enable two-factor authentication (2FA).')
+    'Go to <a href="https://companyName.com" target="_blank">companyName.com</a> to change your password and enable two-factor authentication (2FA).')
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].priority, 1)
 })
 

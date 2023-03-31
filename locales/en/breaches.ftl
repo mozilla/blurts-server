@@ -68,7 +68,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 # { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Go to the company’s website to change your password and enable two-factor authentication (2FA).
+breach-checklist-pw-header-3 = Go to { $breachedCompanyLink } to change your password and enable two-factor authentication (2FA).
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-pw-body-2 = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. { $passwordManagerLink } can help you securely keep track of all of your passwords.
@@ -136,7 +136,7 @@ breach-checklist-phone-header-2 = Protect your phone number with a masking servi
 ## Prompts the user for changes when there is a breach detected of security questions
 
 # { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Update your security questions on the company’s website.
+breach-checklist-sq-header-3 = Update your security questions on { $breachedCompanyLink }.
 breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
 
 ## Prompts the user for changes when there is a breach detected of historical password
