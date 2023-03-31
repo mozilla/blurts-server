@@ -5,6 +5,8 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Të dhëna cenimesh
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Cenime të dhënash për { $email-select }
 # $count is the number of emails a user has added out of $total allowed
@@ -13,7 +15,8 @@ emails-monitored =
         [one] { $count } nga { $total } email i mbikëqyrur
        *[other] { $count } nga { $total } email-e të mbikëqyrur
     }
-add-email-link = Shtoni adresë email
+# link to Settings page where user can add/remove emails and set message preferences
+manage-emails-link = Administroni email
 
 ## Breaches resolved filter
 
@@ -25,29 +28,64 @@ filter-label-resolved = Cenime të zgjidhura
 column-company = SHOQËRI
 column-breached-data = TË DHËNA TË CENUARA
 column-detected = TË PIKASURA
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = I zgjidhur
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Aktiv
+breaches-resolve-heading = Zgjidheni këtë cenim:
+breaches-none-headline = S’u gjetën cenime
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Lajme të mbara! Për { $email } s’u raportuan cenime. Do të vazhdojmë ta mbikëqyrim këtë email dhe t’ju bëjmë të ditur, nëse ndodhin cenime të reja.
+breaches-none-cta-blurb = Do të donit të mbikëqyret tjetër email?
+breaches-none-cta-button = Shtoni adresë email
+breaches-all-resolved-headline = Krejt cenimet janë zgjidhur
+# Variables:
+#   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
+breaches-all-resolved-copy = Punë e paqme! Keni zgjidhur krejt cenimet për { $email }. Do të vazhdojmë ta mbikëqyrim këtë email dhe t’ju bëjmë të ditur, nëse ndodhin cenime të reja.
+breaches-all-resolved-cta-blurb = Do të donit të mbikëqyret tjetër email?
+breaches-all-resolved-cta-button = Shtoni adresë email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Më { $breachDate } u cenua { $companyName }. Pasi u zbulua dhe u verifikua cenimi, u shtua te baza jonë e të dhënave më { $addedDate }. Ky cenim përfshinte: { $dataClasses }
+
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Përgjegjës Fjalëkalimesh { -brand-firefox }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Që të ndryshoni fjalëkalimin tuaj dhe të aktivizoni mirëfilltësimin dyfaktorësh, kaloni te <a>{ $breachedCompanyUrl }</a>.
-breach-checklist-pw-body = Sigurohuni që fjalëkalimi juaj të jetë unik dhe i zorshëm të hamendësohet. Nëse ky fjalëkalim është përdorur në çfarëdo llogarie tjetër, sigurohuni se e ndryshoni edhe atje. <a>{ -brand-firefox } Përgjegjësi i Fjalëkalimeve</a> mund t’ju ndihmojë të ndiqni në mënyrë të sigurt krejt fjalëkalimet tuaja.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-pw-header-2 = Që të ndryshoni fjalëkalimin tuaj dhe të aktivizoni mirëfilltësimin dyfaktorësh (2FA), kaloni te sajti i shoqërisë.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-2 = Sigurohuni që fjalëkalimi juaj të jetë unik dhe i zorshëm të hamendësohet. Nëse ky fjalëkalim është përdorur në çfarëdo llogarie tjetër, sigurohuni se e ndryshoni edhe atje. { $passwordManagerLink } mund t’ju ndihmojë të ndiqni në mënyrë të sigurt krejt fjalëkalimet tuaja.
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Mbrojeni email-in tuaj me një shërbim maskimi email-sh, bie fjala <a>{ -brand-relay }</a>.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Mbrojeni email-in tuaj me një shërbim maskimi email-sh, bie fjala, { $firefoxRelayLink }.
 breach-checklist-email-body = Ky mund të fshehë adresën tuaj të vërtetë email, teksa ju sjell email-et te posta juaj e njëmendtë.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Mbikëqyrni raportin tuaj të kreditit për llogari, hua apo karta krediti që nuk i njihni.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
-breach-checklist-ssn-body = Mund të shihni edhe mundësinë e ngrirjes së kreditit tuaj në <a>Equifax</a>, <a>Experian</a> dhe <a>TransUnion</a>, për t’u ndaluar mashtruesve të hapin llogari të reja në emrin tuaj. Është falas dhe s’do të prekë vlerësimin e kreditit tuaj.
+# This will only be shown to users in the US.
+# Variables:
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
+breach-checklist-ssn-body-2 = Mund të shihni edhe mundësinë e ngrirjes së kreditit tuaj në { $equifaxLink }, { $experianLink } dhe { $transUnionLink }, për t’u ndaluar mashtruesve të hapin llogari të reja në emrin tuaj. Është falas dhe s’do të prekë vlerësimin e kreditit tuaj.
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
@@ -66,7 +104,9 @@ breach-checklist-pin-body = Sigurohuni se PIN-i juaj i ri, ose çfarëdo PIN-i t
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Përdoreni internetin privatisht, me një VPN, bie fjala, <a>{ -brand-mozilla-vpn }</a>.
+# Variables:
+#   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
+breach-checklist-ip-header-2 = Përdoreni internetin privatisht, me një VPN, bie fjala, { $mozillaVpnLink }.
 breach-checklist-ip-body = Adresa juaj IP (adresë Protokolli Internet) tregon me përpikëri vendndodhjen tuaj dhe shërbimin internet. Një VPN mund ta fshehë adresën tuaj të njëmendtë IP, që kështu të mund ta përdorni internetin privatisht.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -81,20 +121,26 @@ breach-checklist-dob-body = Datëlindjen është e lehtë të gjenden në regjis
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
-breach-checklist-phone-header = Mbrojeni numrin tuaj të telefonit me një shërbim maskimi, të tillë si <a>{ -brand-relay }</a>, i cili fsheh numrin tuaj të vërtetë të telefonit.
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Mbrojeni numrin tuaj të telefonit me një shërbim maskimi, të tillë si { $firefoxRelayLink }, i cili fsheh numrin tuaj të vërtetë të telefonit.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Përditësoni pyetjen tuaj të sigurisë te <a>{ $breachedCompanyUrl }</a>.
+# { $breachedCompanyLink } will link to the website of the company where the breach occurred
+breach-checklist-sq-header-2 = Përditësoni pyetjet tuaja të sigurisë te sajti i shoqërisë.
 breach-checklist-sq-body = Përdorni përgjigje të gjata, të zgjedhura kuturu dhe depozitojini diku në një vend të parrezik. Bëjeni këtë kudo tjetër ku keni përdorur të njëjtat pyetje sigurie.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Krijoni fjalëkalime unikë, të fortë, për çdo llogari ku keni ripërdorur fjalëkalime.
-breach-checklist-hp-body = Një përgjegjës fjalëkalimesh, bie fjala, <a>Përgjegjës Fjalëkalimesh { -brand-firefox }</a> (i cili është i lirë dhe i brendshëm në shfletuesin { -brand-firefox }) mund t’ju ndihmojë të ndiqni krejt fjalëkalimet tuaj t’i përdorni pa rrezik që nga krejt pajisjet tuaja.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Një përgjegjës fjalëkalimesh, bie fjala, { $passwordManagerLink } (i cili është i lirë dhe i brendshëm në shfletuesin { -brand-firefox }) mund t’ju ndihmojë të ndiqni krejt fjalëkalimet tuaj dhe t’i përdorni pa rrezik që nga krejt pajisjet tuaja.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Lidhuni me { $companyName } për t’u bërë të ditur këtë cenim dhe kërkojuni për hapa specifikë që mund të ndërmerrni.

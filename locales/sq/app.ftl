@@ -677,6 +677,7 @@ sign-in = Hyni
 
 ## Site navigation
 
+site-nav-breaches-link = Zgjidhni Cenime të Dhënash
 site-nav-settings-link = Rregullime
 site-nav-help-link = Ndihmë dhe Asistencë
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
@@ -696,7 +697,7 @@ menu-item-logout = Dilni
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Kushte & Privatësi
 github = { -brand-github }
 footer-nav-all-breaches = Krejt Cenimet
@@ -716,7 +717,13 @@ error-page-error-other-copy = Ju lutemi, riprovoni, ose rikthehuni më vonë
 ## Breach overview page
 
 all-breaches-headline-2 = Krejt cenimet të pikasura nga { -brand-fx-monitor }
+all-breaches-lead = Mbikëqyrim krejt cenimet e ditura të të dhënave, për të parë nëse hollësitë tuaja personale qenë komprometuar. Ja një listë e plotë e krejt cenimeve që janë njoftuar që nga 2007-a.
 search-breaches = Kërkoni Te Shkeljet
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Të dhëna të ekspozuara:
 
 ## Public breach detail page
 
+find-out-if-2 = Shihni nëse jeni përfshirë në këtë cenim
+find-out-if-description = Do t’ju ndihmojmë të shihni shpejt e shpejt nëse adresa juaj email qe ekspozuar në këtë cenim dhe të kuptoni ç’të bëhet më pas.
+breach-detail-cta-signup = Kontrolloni për cenime

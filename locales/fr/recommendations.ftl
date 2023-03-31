@@ -7,6 +7,9 @@ rec-ssn = Vous obtenez trois rapports de crédit gratuits par an selon la loi. L
 rec-pw-1-subhead = Modifiez votre mot de passe
 # Link title
 rec-pw-1-cta = Modifier votre mot de passe pour ce site
+rec-pw-1-2 =
+    Rendez ce mot de passe unique et différent de tous vos autres mots de passe. 
+    Une bonne stratégie consiste à combiner deux ou plusieurs mots sans rapport entre eux, ainsi que des chiffres et des symboles, afin de créer une phrase de passe plus sécurisée.
 # Recommendation subhead
 rec-pw-2-subhead = Modifiez les identifiants qui utilisent le même mot de passe
 # Link title
@@ -35,6 +38,8 @@ rec-cc = Vérifiez l’absence de dépenses inhabituelles effectuées avec votre
 rec-email-mask-subhead = Utilisez un alias de messagerie
 rec-email-cta = Essayer { -brand-relay }
 rec-email = Fournir votre adresse e-mail réelle permet aux pirates informatiques ou aux traqueurs de trouver vos mots de passe ou de vous cibler en ligne plus facilement. Un service comme { -brand-relay } masque votre adresse e-mail réelle tout en transmettant les messages à votre boîte de réception réelle.
+# Recommendation subhead
+rec-ip-subhead-2 = Utilisez un VPN pour masquer votre adresse IP
 # Recommendation subhead
 rec-moz-vpn-cta = Essayer { -brand-mozilla-vpn }
 rec-moz-vpn-update-2 = Votre adresse de protocole Internet (adresse IP) identifie votre emplacement et votre fournisseur de services internet. Un service comme { -brand-mozilla-vpn } masque votre adresse IP pour cacher votre emplacement.

@@ -667,6 +667,6 @@ sign-in = Sign In
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Terms and Privacy
 github = { -brand-github }

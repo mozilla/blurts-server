@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Cambiá la contraseña
 # Link title
 rec-pw-1-cta = Cambiá contraseña para este sitio
-rec-pw-1 =
+rec-pw-1-2 =
     Hacé que esta contraseña sea única y diferente de cualquier otra que uses.
     Una buena estrategia a seguir es combinar dos o más 
-    palabras no relacionadas para crear una frase de contraseña completa.
+    palabras no relacionadas para crear una frase de contraseña completa e incluir números y símbolos.
 # Recommendation subhead
 rec-pw-2-subhead = Actualizá otros inicios de sesión con la misma contraseña
 # Link title
@@ -55,23 +55,13 @@ rec-email =
     encuentren tus contraseñas o te encuentren en línea. Un servicio como { -brand-relay }
     oculta tu dirección de correo electrónico real mientras reenvía correos a tu bandeja de entrada real.
 # Recommendation subhead
-rec-ip-subhead = Usá un servicio que oculte tu dirección IP
-# Link title
-rec-ip-us-cta = Probá  { -brand-fpn }
-rec-ip-us =
-    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
-    y tu proveedor de servicios de internet. Un servicio como { -brand-fpn }
-    enmascara tu dirección IP para ocultar tu ubicación.
-rec-ip-non-us =
-    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
-    y tu proveedor de servicios de internet. Con una red privada virtual (VPN), podés ocultar tu ubicación
-    y enmascarar tu dirección IP.
+rec-ip-subhead-2 = Usá una VPN para enmascarar tu dirección IP
 # Recommendation subhead
 rec-moz-vpn-cta = Pruobá { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Tu dirección de protocolo de Internet (dirección IP) puede revelar tu ubicación
+rec-moz-vpn-update-2 =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación
     y tu proveedor de servicios de internet. Un servicio como { -brand-mozilla-vpn }
-    oculta tu dirección IP y tu ubicación en tu dispositivo.
+    enmascara tu dirección IP para ocultar tu ubicación.
 rec-hist-pw-subhead = Evitá reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }

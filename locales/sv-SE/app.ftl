@@ -754,7 +754,7 @@ menu-item-logout = Logga ut
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Villkor och sekretess
 github = { -brand-github }
 footer-nav-all-breaches = Alla intrång
