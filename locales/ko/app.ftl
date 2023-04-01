@@ -15,15 +15,9 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Firefox 계정
-terms-and-privacy = 약관 및 개인 정보 보호 정책
 GitHub-link-title = GitHub
 error-scan-page-token = 단기간에 너무 많은 이메일 주소를 검색했습니다. 보안 상의 이유로 일시적으로 새로운 검색을 차단했습니다. 나중에 다시 시도 할 수 있습니다.
 error-could-not-add-email = 데이터베이스에 이메일 주소를 추가 할 수 없습니다.
@@ -41,6 +35,9 @@ user-add-invalid-email = 잘못된 이메일
 user-add-too-many-emails = 최대 이메일 주소 수를 모니터링하고 있습니다.
 user-add-email-verify-subject = { -product-name } 구독을 확인하세요.
 user-add-duplicate-email = 이 이메일은 이미 { -product-name }에 추가되었습니다.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = { $preferencesLink }를 방문하여 { $userEmail }의 상태를 확인하세요.
 error-headline = 오류
 user-verify-token-error = 확인 토큰이 필요합니다.
@@ -54,11 +51,11 @@ scan-placeholder = 이메일 주소 입력
 scan-submit = 이메일 검색
 scan-error = 유효한 이메일이어야합니다.
 download-firefox-banner-button = { -brand-name } 다운로드
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = 보냈습니다!
 sign-up = 가입하기
 form-signup-error = 유효한 이메일 필수
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = 유출 날짜 :
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = 유출된 계정 :
@@ -68,6 +65,8 @@ unsub-headline = { -product-name-nowrap } 구독 취소
 unsub-blurb = 그러면 { -product-name-nowrap } 목록에서 이메일이 제거되고 새로운 유출 사고가 발표 될 때, 더 이상 알림을 받지 않습니다.
 unsub-button = 구독 취소
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = { $hibp-link }에서 제공한 침해 데이터
 share-twitter = 대부분의 사람들은 약 100여개의 온라인 계정을 가지고 있습니다. 데이터 유출에 노출 된 적이 있습니까? 한번 찾아보세요.
 share-facebook-headline = 여러분의 데이터가 유출되었는지 알아보세요.
@@ -75,7 +74,6 @@ share-facebook-blurb = 여러분의 온라인 계정이 데이터 유출로 노�
 og-site-description = { -product-name }의 데이터 유출에 포함되어 있는지 알아보세요. 향후 데이이 유출 사고가 나는 웹사이트가 있다면, 알림에 가입한 경우 포함 여부를 바로 고지해 드립니다.
 show-all = 모두 보기
 fxa-scan-another-email = 다른 이메일을 확인 하시겠습니까?
-sign-in = 로그인
 sign-out = 로그아웃
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = { -brand-fxa } 관리
@@ -115,8 +113,6 @@ about-firefox-monitor = { -product-name } 소개
 preferences = 환경 설정
 # Link title
 home = 첫화면
-# Link title
-breaches = 유출 내역
 # Link title
 security-tips = 보안 정보
 fxa-account = { -brand-fxa }
@@ -213,7 +209,9 @@ feat-security-tips = 계정 보호를 위한 보안 팁
 feat-sensitive = 민감한 유출 내역에 대한 고급 검색
 feat-enroll-multiple = 침해 모니터링을 위해 여러 이메일 등록하기
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
        *[other] { $breachCount }개의  유출 내역이 있습니다.
@@ -224,6 +222,8 @@ get-email-alerts = 보안 방법 : 유출이 일어난 것인 확인될 때 이�
 search-for-your-email = 2007년부터 외부에 공개된 전체 데이터 침해 내역에서 여러분의 이메일 주소를 검색하세요.
 back-to-top = 맨 위로
 comm-opt-0 = 아래 이메일 주소 중 하나가 유출이 된 것이 확인되면 알림을 보내주세요.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = 모든 유출 내역을 { $primaryEmail }로 보냅니다.
 stop-monitoring-this = 이메일 모니터링을 중지합니다.
 resend-verification = 확인 이메일 재전송
@@ -232,7 +232,7 @@ send-verification = 확인 링크 보내기
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = 유출 내역 요약
 show-breaches-for-this-email = 이 이메일에 대한 모든 유출 내역을 표시합니다.
@@ -245,8 +245,15 @@ remove-fxm-blurb =
 manage-email-addresses = 이메일 주소 관리
 # Link title
 latest-breach-link = 유출 여부 확인 하기
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = { $userName }님, 다시 오신 것을 환영합니다!
 welcome-user = { $userName }님, 환영합니다!
+
+##
+
 breach-alert-subject = { -product-name }가 새로 유출된 자료에서 일치하는 이메일을 찾았습니다
 your-info-was-discovered-headline = 새로 유출된 자료에서 일치하는 정보를 발견하였습니다.
 your-info-was-discovered-blurb =
@@ -268,28 +275,38 @@ ba-next-step-blurb-3 =
 faq1 = 현재 회사와 웹 사이트에 가입한 적이 없습니다. 왜 제 데이터가 유출된건가요?
 faq2 = 왜 유출 사실을 고지해 주는데 이렇게 오래 걸렸습니까?
 faq3 = { -product-name }에서 보낸 합법적인 이메일인지 어떻게 알 수 있나요?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
        *[other] 신규 { $breachCount } 개의 유출 발견
     }
 sign-up-headline-1 = { -brand-fxa }로 지속적인 알림을 받으세요.
 account-not-required = { -brand-fxa }에는 { -brand-name } 브라우저가 필요하지 않습니다. { -brand-Mozilla } 서비스에 대한 정보를 받을 수 있습니다.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = 여러분의 정보가 { $breachName } 데이터 유출로 노출 되었습니까?
-find-out-if = 여러분의 데이터가 유출로 노출되었는지 확인하세요.
 fb-not-comp = 본 이메일은 { $breachName }에 유출되지 않았습니다.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
        *[other] 그러나, { $breachCount }개의 다른 유출 내역이 있습니다.
     }
 fb-comp-only = 본 이메일은 { $breachName } 유출에 포함되어 있습니다.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
        *[other] 본 이메일은 { $breachName }을 포함하여 { $breachCount }개의 알려진 데이터 유출이 있습니다.
     }
+
+##
+
 no-other-breaches-found = 기본 검색에서 발견된 다른 유출은 없습니다.
 no-results-blurb = 죄송합니다. 해당 유출은 데이터베이스에 없습니다.
-all-breaches-headline = { -product-name } 모든 유출 내역
-search-breaches = 유출 내역 검색하기
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -343,6 +360,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = 추가 유출 사항 보기
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
        *[other] 현재 이메일 주소는 { $breachCount }건의 유출이 있었습니다.
@@ -350,6 +369,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = 결과 : { $userEmail }
 other-monitored-emails = 모니터링 중인 기타 이메일
 email-verification-required = 이메일 확인 필요
@@ -365,6 +386,8 @@ get-ongoing-breach-monitoring = 여러 이메일 주소에 대한 지속적인 �
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = 찾아보기
 new-unsub-error = { -product-name }에서 보낸 이메일 중 하나를 수신 거부해야 합니다.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
        *[other] 그러나, { $breachCount }개의 다른 유출 내역이 있습니다.
@@ -381,10 +404,12 @@ breach-overview-title = 개요
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = { $breachDate }에 { $breachTitle }이 위반되었읍니다. 위반이 발견되고 확인되면 { $addedDate }에 우리의 데이터베이스에 추가되었습니다.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } 설정
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = { $userEmail } 주소로 로그인
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -401,12 +426,16 @@ email-sent = 이메일을 보냈습니다!
 want-to-add = 다를 이메일을 추가 하겠습니까?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = { $userEmail }으로 보낸 링크를 확인해서 { -product-name }에 추가하세요.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = 이메일이 성공적으로 확인되었습니다!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = 데이터 유출에 { $email }이 나오면 알려드리겠습니다.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -420,15 +449,17 @@ sign-in-nested = 로그인
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = { $preferencesLink }의 모든 이메일 주소를 관리하세요.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = 유출 경고 알림
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = 추가된 유출:
 how-hackers-work-desc = 사이버 범죄자가 가장 아끼는 암호를 보호해 주세요.
 what-to-do-after-breach-desc = 계정을 잠궈서 개인 정보를 잘못된 사람으로서부터 보호하세요.
@@ -450,6 +481,8 @@ see-additional-recs = 추가 권장 사항보기
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = 이 침해에 { $affectedEmail }이 포함되었습니다. <a>다음</a>
 
 ##
@@ -470,6 +503,8 @@ confirmation-3-subhead = 또 하나가 해결되었습니다. 잘 했어요!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = 당신의 새 비밀번호가 독특하고 강력하며 추측하기 어렵습니까? <a> 찾아보기</a>
 generic-confirmation-subhead = 이 침해는 해결 된 것으로 표시됨
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
        *[other] 남아있는 모든 침해 사항을 보시려면 대시보드로 이동하세요.
@@ -478,9 +513,13 @@ return-to-breach-details-link = 침해 정보로 돌아가기
 go-to-dashboard-link = 대시보드로 가기
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% 완료
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
        *[other] { $numResolvedBreaches } 해결됨
@@ -489,6 +528,9 @@ progress-intro-subhead = { -product-name }의 새로운 기능: 침해 해결 �
 progress-intro-message =
     유출에 대한 세부사항을 검토하고 개인 정보를 보호가기 위한 조치를 취한 후, 
     유출을 해결 된 것으로 표시할 수 있습니다.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } 중 { $numTotalBreaches } 침해가 해결됨으로 표시됨
@@ -506,15 +548,19 @@ progress-message-4 = <span>거의 다 됐습니다!</ span> 결승선이 바로 
 ##
 
 resolve-this-breach-link = 위반사항 해결
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = 해결됨으로 표시:
 hide-resolved-button = 해결 된 항목 숨기기
 show-resolved-button = 해결된 항목 표시
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
        *[other] 비밀번호가 해결되지 않은 위반 사항에  노출됨
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
        *[other] 해결된 것으로 표시된 알려진 데이터 유출
@@ -541,11 +587,15 @@ vpn-promo-headline-new = 1년 구독으로 50% 할인
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = 현재 위치: { $ip-location }
 vpn-banner-status-protected = 현재 상태: <em>보호됨 ✓</em>
 vpn-banner-status-not-protected = 현재 상태: <em>보호되지 않음 ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP 주소: { $ip-address }
 vpn-banner-step-1 = { -brand-mozilla-vpn } 구독하기
 vpn-banner-step-2 = VPN 위치 선택
@@ -557,4 +607,52 @@ vpn-banner-cta-expand = 펼치기
 vpn-banner-cta-close = 닫기
 
 ## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla 재단
+-brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Firefox 계정
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = 로그인
+
+## Site navigation
+
+site-nav-settings-link = 설정
+
+## User menu
+
+
+## Footer
+
+terms-and-privacy = 약관 및 개인 정보 보호 정책
+
+## Error page
+
+
+## Breach overview page
+
+search-breaches = 유출 내역 검색하기
+
+## Public breach detail page
 
