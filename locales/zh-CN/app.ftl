@@ -526,7 +526,7 @@ promo-lockwise-cta = 获取 { -brand-lockwise }
 fpn-promo-headline = 对网站和跟踪器伪装您的位置
 promo-fpn-body = { -brand-fpn } 通过伪装您的真实 IP 地址，摆脱那些用广告定位您的网站和数据收集器。
 promo-fpn-cta = 获取 { -brand-fpn }
-monitor-promo-headline = 帮您关心数据泄露事故
+monitor-promo-headline = 帮您关心数据外泄事件
 monitor-promo-body = 在您的个人信息出现在数据外泄事件中时收到通知。
 ecosystem-promo-headline = 使用尊重隐私的产品保卫您的网络世界
 ecosystem-promo-body = 所有 { -brand-name } 产品，均符合我们对个人数据隐私的承诺：索取更少、确保安全、绝不隐瞒。
@@ -672,7 +672,13 @@ error-page-error-other-copy = 请再试一次，或者稍后再回来看看
 ## Breach overview page
 
 all-breaches-headline-2 = { -brand-fx-monitor } 检测到的所有数据外泄事件
+all-breaches-lead = 我们会监控所有已知的数据外泄事件，并检查是否牵涉到您的个人信息。这是自 2007 年以来所有被报告的数据外泄事件的清单。
 search-breaches = 搜索数据外泄事件
+# the kind of user data exposed to hackers in data breach.
+exposed-data = 外泄的数据：
 
 ## Public breach detail page
 
+find-out-if-2 = 查看自己是否受此外泄事件影响
+find-out-if-description = 我们将帮助您快速了解自己的邮箱地址是否遭到外泄，并指导您进行接下来的操作。
+breach-detail-cta-signup = 检查是否有外泄事件
