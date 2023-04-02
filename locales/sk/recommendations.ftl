@@ -9,6 +9,10 @@ rec-ssn =
 rec-pw-1-subhead = Zmeňte svoje heslo
 # Link title
 rec-pw-1-cta = Zmeňte si na tejto stránke heslo
+rec-pw-1-2 =
+    Používajte jedinečné heslá, vždy iné pre každú stránku. 
+    Dobrým spôsobom je napríklad kombinácia viacerých, 
+    spolu nesúvisiacich slov, vrátane číslic a iných symbolov.
 # Recommendation subhead
 rec-pw-2-subhead = Aktualizujte svoje prihlasovacie údaje všade, kde používate rovnaké heslo
 # Link title
@@ -50,7 +54,13 @@ rec-email =
     sledovacím prvkom pri zisťovaní vášho hesla. Služby ako { -brand-relay } skrývajú
     vašu skutočnú e-mailovú adresu, pričom e-maily budú preposielané do vašej skutočnej e-mailovej schránky.
 # Recommendation subhead
+rec-ip-subhead-2 = Na maskovanie vašej IP adresy použite sieť VPN
+# Recommendation subhead
 rec-moz-vpn-cta = Vyskúšajte { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 =
+    Vaša internetová adresa (IP adresa) prezrádza vašu polohu 
+    a informácie o poskytovateľovi internetového pripojenia. 
+    Služby ako { -brand-mozilla-vpn } skrývajú vašu IP adresu a tým aj vašu polohu.
 rec-hist-pw-subhead = Vyhnite sa opakovanému použitiu hesiel
 # Link title
 rec-hist-pw-cta-fx = Zobraziť prihlasovacie údaje vo { -brand-name(case: "loc") }
