@@ -52,6 +52,6 @@ settings-fxa-link-label = Prejsť do Nastavení { -brand-firefox(case: "gen") }
 ## Add email dialog
 
 settings-email-dialog-title = Pridanie ďalšej e-mailovej adresy
-settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku dát.
+settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku údajov.
 settings-email-input-label = E-mailová adresa
 settings-send-email-verification-button = Odoslať overovací odkaz
