@@ -15,14 +15,9 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Akun Firefox
 GitHub-link-title = GitHub
 error-scan-page-token = Anda telah coba memindah terlalu banyak alamat surel dalam periode singkat. Demi alasan keamanan, kami memblokir Anda sementara dari pencarian baru. Anda akan dapat mencobanya nanti kembali.
 error-could-not-add-email = Tidak dapat menambahkan alamat surel ke basis data.
@@ -40,6 +35,9 @@ user-add-invalid-email = Surel Tidak Valid
 user-add-too-many-emails = Anda memantau alamat email dengan jumlah maksimum.
 user-add-email-verify-subject = Verifikasi langganan { -product-name } Anda.
 user-add-duplicate-email = Surel ini telah ditambahkan ke { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Kunjungi { $preferencesLink } Anda untuk memeriksa status { $userEmail }.
 error-headline = Masalah
 user-verify-token-error = Token verifikasi diperlukan.
@@ -53,11 +51,11 @@ scan-placeholder = Masukkan Alamat Surel
 scan-submit = Cari Surel Anda
 scan-error = Harus surel yang valid.
 download-firefox-banner-button = Unduh { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Terkirim!
 sign-up = Daftar
 form-signup-error = Harus surel yang valid
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Tanggal kebocoran:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Akun yang telah diketahui orang lain:
@@ -67,6 +65,8 @@ unsub-headline = Berhenti berlangganan { -product-name-nowrap }
 unsub-blurb = Ini akan menghapus surel Anda dari daftar { -product-name-nowrap } dan Anda tidak akan menerima peringatan lagi ketika ada pengumuman kebocoran yang baru.
 unsub-button = Berhenti Berlangganan
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Data kebocoran disediakan oleh { $hibp-link }
 share-twitter = Kebanyakan orang memiliki sekitar 100 akun daring. Apakah salah satu dari akun Anda terkena pembobolan data? Temukan segera.
 share-facebook-headline = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data
@@ -113,8 +113,6 @@ about-firefox-monitor = Tentang { -product-name }
 preferences = Pengaturan
 # Link title
 home = Beranda
-# Link title
-breaches = Pelanggaran
 # Link title
 security-tips = Tips Keamanan
 fxa-account = { -brand-fxa }
@@ -214,7 +212,9 @@ feat-security-tips = Tips keamanan untuk melindungi akun Anda
 feat-sensitive = Pencarian lanjutan dalam pembobolan sensitif
 feat-enroll-multiple = Daftarkan beberapa surel dalam pemantauan kebocoran
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
        *[other] Muncul dalam { $breachCount } pembobolan yang diketahui.
@@ -225,6 +225,8 @@ get-email-alerts = Tetap aman: Dapatkan lansiran surel saat info Anda muncul dal
 search-for-your-email = Cari alamat surel Anda yang tersangkut kebocoran data publik sejak 2007.
 back-to-top = Kembali ke Atas
 comm-opt-0 = Kirim saya surel jika salah satu alamat surel saya di bawah ini tersangkut dalam kebocoran data.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Kirim semua peringatan kebocoran ke { $primaryEmail }.
 stop-monitoring-this = Hentikan pemantauan surel ini.
 resend-verification = Kirim ulang verifikasi surel
@@ -233,7 +235,7 @@ send-verification = Kirim Tautan Verifikasi
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Ringkasan Pembobolan
 show-breaches-for-this-email = Tampilkan semua pembobolan untuk surel ini.
@@ -246,8 +248,15 @@ remove-fxm-blurb =
 manage-email-addresses = Kelola Alamat Surel
 # Link title
 latest-breach-link = Lihat apakah Anda tersangkut dalam pembobolan ini.
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Selamat datang kembali, { $userName }!
 welcome-user = Selamat datang, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } menemukan surel Anda dalam kebocoran data terkini.
 your-info-was-discovered-headline = Informasi Anda ditemukan dalam kebocoran data terkini.
 your-info-was-discovered-blurb =
@@ -269,28 +278,65 @@ ba-next-step-blurb-3 = Gunakan pengelola kata sandi untuk membuat kata sandi yan
 faq1 = Saya tidak mengenali perusahaan atau situs web ini. Mengapa saya tersangkut pembobolan ini?
 faq2 = Mengapa butuh waktu lama untuk memberi tahu saya tentang pembobolan ini?
 faq3 = Bagaimana saya tahu ini adalah surel yang sah dari { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
        *[other] { $breachCount } PEMBOBOLAN BARU DITEMUKAN
     }
 sign-up-headline-1 = Dapatkan peringatan berkelanjutan dengan { -brand-fxa }.
 account-not-required = Peramban { -brand-name } tidak dibutuhkan untuk sebuah { -brand-fxa }. Anda dapat menerima info tentang layanan { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Apakah informasi Anda terungkap dalam kebocoran data { $breachName }?
-find-out-if = Cari tahu apakah data Anda terungkap dalam pembobolan ini.
 fb-not-comp = Surel ini tidak muncul dalam pembobolan { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
        *[other] Namun, itu muncul dalam { $breachCount } pembobolan lainnya yang diketahui.
     }
 fb-comp-only = Surel ini muncul di pembobolan { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
        *[other] Surel ini muncul di { $breachCount } kebocoran data yang diketahui, termasuk { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Tidak ada pembobolan lain yang ditemukan dari pencarian dasar.
 no-results-blurb = Maaf, kebocoran tersebut tidak ada dalam basis data kami.
-all-breaches-headline = Semua pembobolan di { -product-name }
-search-breaches = Cari Pembobolan
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Email Anda tidak muncul dalam kebocoran ini,
+    tetapi nomor telepon Anda mungkin masih rentan.</span> Beberapa akun
+    dikompromikan dalam kebocoran Facebook termasuk nomor telepon dan lainnya
+    informasi pribadi tetapi bukan alamat surel. Jika Anda pernah mendaftar
+    untuk akun Facebook — bahkan jika Anda tidak menggunakannya sekarang — kami sarankan Anda
+    ambil langkah-langkah ini untuk melindungi diri Anda sendiri
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-1-headline = <span>Setel informasi Anda ke “Hanya saya” atau pengaturan non-publik lainnya di <a>profil Facebook Anda</a>.</span>
+facebook-breach-what-to-do-1-copy =
+    Selama kebocoran ini, peretas mengambil profil
+    informasi yang ditetapkan sebagai “terbuka untuk umum” atau “dibagikan dengan teman.”
+    Informasi ini dapat digabungkan dengan data lain untuk mengakses lebih banyak lagi
+    informasi pribadi dan akun Anda.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Ubah sandi, PIN, atau kredensial keamanan lainnya di <a>ponsel Anda
+    akun operator telepon</a> untuk mencegah pertukaran SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Pertukaran SIM, yang juga disebut pembajakan SIM,
+    adalah saat peretas menggunakan nomor telepon, tanggal lahir, dan data lainnya untuk mengambil alih
+    nomor ponsel seseorang dan kemudian meretas ke surel, media sosial, dan bahkan akun keuangan mereka.
+facebook-breach-what-to-do-3 = Lihat semua rekomendasi di laman kebocoran Facebook kami
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Menampilkan:
 
@@ -331,6 +377,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Lihat Pembobolan Tambahan
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
        *[other] Surel ini muncul di { $breachCount } kebocoran data yang diketahui.
@@ -338,6 +386,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Hasil untuk: { $userEmail }
 other-monitored-emails = Surel Terpantau Lainnya
 email-verification-required = Verifikasi Surel Diperlukan
@@ -353,6 +403,8 @@ get-ongoing-breach-monitoring = Dapatkan pemantauan yang sedang berlangsung atas
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Temukan
 new-unsub-error = Anda harus berhenti berlangganan dari salah satu surel { -product-name } yang dikirim.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
        *[other] Namun, itu muncul dalam { $breachCount } pembobolan lainnya yang diketahui.
@@ -369,10 +421,12 @@ breach-overview-title = Ringkasan
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Pada { $breachDate }, { $breachTitle } mengalami pembobolan. Setelah pembobolan ditemukan dan diverifikasi, maka informasi ini ditambahkan ke basis data kami pada { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Pengaturan { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Masuk sebagai: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -389,12 +443,16 @@ email-sent = Surel Terkirim!
 want-to-add = Ingin tambahkan alamat surel lainnya?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Verifikasi tautan terkirim ke { $userEmail } untuk menambahkannya ke { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Surel Telah Sukses Diverifikasi!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Kami akan memberitahu Anda jika { $email } muncul dalam pelanggaran data.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -408,15 +466,17 @@ sign-in-nested = masuk
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Kelola semua alamat surel di { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Notifikasi Pemberitahuan Pembobolan
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Pembobolan ditambahkan pada:
 how-hackers-work-desc = Lindungi kata sandi Anda dari penjahat dunia maya, karena itulah yang paling mereka pedulikan.
 what-to-do-after-breach-desc = Kunci akun Anda untuk menjaga informasi Anda dari tangan yang salah.
@@ -438,7 +498,11 @@ see-additional-recs = Lihat Rekomendasi Tambahan
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } muncul dalam pelanggaran ini. <a>Apa yang harus dilakukan selanjutnya</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
        *[other] { $numAffectedEmails } dari alamat surel Anda muncul dalam pelanggaran ini. <a>Apa yang harus dilakukan selanjutnya</a>
@@ -465,6 +529,8 @@ confirmation-3-subhead = Satu lagi jatuh. Kerja bagus!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Apakah kata sandi baru Anda unik, kuat, dan sulit ditebak? <a>Cari tahu</a>
 generic-confirmation-subhead = Pelanggaran ini telah ditandai sebagai teratasi
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
        *[other] Untuk melihat semua pelanggaran yang tersisa, buka dasbor Anda.
@@ -473,9 +539,13 @@ return-to-breach-details-link = Kembali ke rincian pelanggaran
 go-to-dashboard-link = Buka Dasbor
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% selesai
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
        *[other] { $numResolvedBreaches } Teratasi
@@ -484,6 +554,9 @@ progress-intro-subhead = Baru di { -product-name }: Tandai pelanggaran sebagai t
 progress-intro-message =
     Setelah meninjau rincian pelanggaran dan mengambil langkah untuk melindungi
     info pribadi Anda, Anda dapat menandai pelanggaran sebagai teratasi.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } dari { $numTotalBreaches } pelanggaran ditandai sebagai teratasi
@@ -508,15 +581,19 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Atasi pelanggaran ini
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Tandai telah diatasi:
 hide-resolved-button = Sembunyikan yang Teratasi
 show-resolved-button = Tampilkan yang Teratasi
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
        *[other] Kata sandi terbongkar dalam pelanggaran yang belum teratasi
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
        *[other] Pelanggaran data yang dikenal ditandai sebagai teratasi
@@ -538,26 +615,153 @@ ecosystem-promo-headline = Lindungi kehidupan daring Anda dengan produk yang men
 ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Pribadi kami: Ambil lebih sedikit. Jaga agar tetap aman. Tidak ada rahasia.
 promo-ecosystem-cta = Lihat Semua Produk
 steps-to-resolve-headline = Langkah-langkah untuk mengatasi pelanggaran ini
+vpn-promo-headline = Sekaranglah waktunya untuk meningkatkan keamanan Anda saat daring.
+vpn-promo-copy = Jaringan Pribadi Virtual { -brand-Mozilla } membantu melindungi koneksi internet Anda dari peretas dan mata-mata.
+vpn-promo-cta = Dapatkan { -brand-mozilla-vpn }
+vpn-promo-headline-new = Hemat 50% dengan berlangganan setahun penuh
+vpn-promo-copy-new = Lindungi data daring Anda—dan pilih paket langganan VPN yang sesuai untuk Anda.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
+vpn-banner-location = Lokasi Anda: { $ip-location }
+vpn-banner-protect-yourself-with-vpn = <em>Lindungi diri Anda</em> dengan { -brand-mozilla-vpn }.
+vpn-banner-protected-with-vpn = <em>Dilindungi</em> dengan { -brand-mozilla-vpn }.
+vpn-banner-title-1 = Anda terlindungi — terima kasih telah menggunakan { -brand-mozilla-vpn }.
+vpn-banner-title-2 = Lokasi Anda dapat dilacak jika Anda tidak menggunakan VPN.
+vpn-banner-subtitle-2 = Lindungi lokasi Anda dan jelajahi dengan aman dalam 3 langkah
+vpn-banner-status-protected = Status saat ini: <em>Dilindungi </em>
+vpn-banner-status-not-protected = Status saat ini: <em>Tidak dilindungi </em>
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+vpn-banner-ip-address = Alamat IP: { $ip-address }
+vpn-banner-step-1 = Berlangganan { -brand-mozilla-vpn }
+vpn-banner-step-2 = Pilih lokasi VPN
+vpn-banner-step-3 = Aktifkan VPN dan jelajahi dengan aman
+vpn-banner-cta = Dapatkan { -brand-mozilla-vpn }
+# button to expand panel
+vpn-banner-cta-expand = Bentangkan
+# button to close panel
+vpn-banner-cta-close = Tutup
 
 ## Relay and VPN educational/ad units
 
+ad-unit-relay-cta = Pelajari lebih lanjut tentang { -brand-relay }
+ad-unit-vpn-cta = Pelajari lebih lanjut tentang { -brand-mozilla-vpn }
+# ad 1 heading
+ad-unit-1-how-do-you-keep = Bagaimana Anda merahasiakan alamat surel Anda?
+# ad 2 heading
+ad-unit-2-do-you-worry = Apakah Anda khawatir tentang keamanan di Wi-Fi publik?
+# ad 3 heading
+ad-unit-3-stay-in-the-game = Tetap dalam permainan!
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } memungkinkan Anda menjaga koneksi yang stabil dan aman saat Anda bermain game atau streaming film.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Cegah pelambatan
+# ad 3 list item 2
+ad-unit-3-be-anywhere = Jadilah di mana saja di dunia
+# ad 3 list item 3
+ad-unit-3-access-more = Akses lebih banyak
+# ad 4 heading
+ad-unit-4-shopping-with = Berbelanja dengan Masker Email
+ad-unit-4-want-to-buy = Ingin membeli sesuatu secara daring dan tidak tahu atau tidak percaya sepenuhnya dengan tokonya?
+ad-unit-4-shop-online = Gunakan topeng surel kapan saat Anda berbelanja daring. Dapatkan pesan konfirmasi dikirim ke surel Anda yang sebenarnya dan kemudian matikan topeng kapan saja suatu saat.
+# ad 5 heading
+ad-unit-5-on-the-go = Saat Dalam Perjalanan dengan { -brand-relay }
+ad-unit-5-instantly-make = Langsung buat topeng surel kustom di mana saja dan ke mana pun saat Anda bepergian!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Sambungkan di mana saja
+ad-unit-5-privately-sign-in = Gunakan topeng surel saat Anda ingin masuk secara pribadi ke kedai kopi favorit atau Wi-Fi publik
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Dapatkan tanda terima surel
+ad-unit-5-share-custom-email = Bagikan topeng surel kustom untuk tanda terima belanja tanpa membagikan surel asli Anda
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Gunakan di ponsel Anda
+ad-unit-5-no-matter-where = Di mana pun Anda berada, buat topeng surel khusus dalam hitungan detik untuk apa pun yang ingin Anda lakukan
+# ad 6 heading
+ad-unit-6-worry-free = Pendaftaran Bebas Khawatir
+ad-unit-6-want-to-start = Ingin memulai langganan baru, merespon undangan, atau mendapatkan kode promo tawar-menawar tanpa spam membanjiri kotak masuk Anda?
+ad-unit-6-before-you-complete = Sebelum Anda menyelesaikan pendaftaran berikutnya, gunakan topeng surel alih-alih topeng asli Anda untuk melindungi info Anda dan tetap mengendalikan kotak masuk Anda
 
 # Monitor V2
 
 
 ## The following messages are brands and should be kept entirely in English
 
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Mozilla Foundation
+-brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Akun Firefox
 
 ## Search Engine Optimization
 
+meta-desc = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data dengan { -brand-fx-monitor }. Daftar untuk peringatan tentang pembobolan di masa mendatang dan dapatkan kiat untuk menjaga akun Anda tetap aman.
 
 ## Header
 
+brand-fx-monitor = { -brand-fx-monitor }
 sign-in = Masuk
+
+## Site navigation
+
+site-nav-breaches-link = Atasi Pembobolan Data
+site-nav-settings-link = Pengaturan
+site-nav-help-link = Bantuan dan Dukungan
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Coba alat keamanan kami yang lain:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
+
+## User menu
+
+menu-button-title = Menu pengguna
+menu-button-alt = Buka menu pengguna
+menu-list-accessible-label = Menu akun
+menu-item-fxa = Kelola { -brand-fx-account } Anda
+menu-item-settings = Pengaturan
+menu-item-help = Bantuan dan dukungan
+menu-item-logout = Keluar
 
 ## Footer
 
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Ketentuan dan Privasi
+github = { -brand-github }
+footer-nav-all-breaches = Semua Pembobolan
+
+## Error page
+
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Laman tidak ditemukan
+error-page-error-404-copy = Maaf, laman yang Anda cari sudah tidak ada lagi.
+error-page-error-404-cta-button = Kembali
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Ada yang tidak beres
+error-page-error-other-copy = Silakan coba lagi atau kembali lagi nanti
+
+## Breach overview page
+
+all-breaches-headline-2 = Semua pembobolan terdeteksi oleh { -brand-fx-monitor }
+all-breaches-lead = Kami memantau semua pembobolan data yang diketahui untuk mengetahui apakah informasi pribadi Anda telah disusupi. Berikut daftar lengkap semua pembobolan yang telah dilaporkan sejak 2007.
+search-breaches = Cari Pembobolan
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Data terbuka:
+
+## Public breach detail page
+
+find-out-if-2 = Cari tahu apakah Anda terlibat dalam pelanggaran ini
+find-out-if-description = Kami akan membantu Anda dengan cepat melihat apakah alamat surel Anda terungkap dalam pelanggaran ini, dan memahami apa yang harus dilakukan selanjutnya.
+breach-detail-cta-signup = Periksa pelanggaran data
