@@ -419,9 +419,9 @@ passwords-exposed =
 # your localization, because it would result in the number showing twice.
 known-data-breaches-exposed =
     { $breaches ->
-        [one] známy únik dát vyzradil vaše údaje
-        [few] známe úniky dát vyzradili vaše údaje
-       *[other] známych únikov dát vyzradilo vaše údaje
+        [one] známy únik údajov vyzradil vaše údaje
+        [few] známe úniky údajov vyzradili vaše údaje
+       *[other] známych únikov údajov vyzradilo vaše údaje
     }
 # Button
 see-additional-breaches = Zobraziť ďalšie úniky
@@ -443,12 +443,12 @@ other-monitored-emails = Ďalšie monitorované e-mailové adresy
 email-verification-required = Vyžaduje sa overenie e-mailovej adresy
 fxa-primary-email = E-mailová adresa { -brand-fxa(case: "gen") } (primárna)
 what-is-a-website-breach = Čo je únik údajov z webovej stránky?
-website-breach-blurb = Únik dát z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
+website-breach-blurb = Únik údajov z webovej stránky sa odohrá, keď kybernetickí zločinci odcudzia, skopírujú alebo zverejnia osobné údaje z internetových účtov. Spravidla je to výsledkom činnosti hackerov, ktorí našli slabé miesto v zabezpečení webu. K úniku osobných údajov z účtov však môže dôjsť aj nedopatrením.
 security-tips-headline = Bezpečnostné tipy na ochranu pred hackermi
 steps-to-protect = Aké kroky podniknúť na ochranu svojej internetovej identity
 take-further-steps = Podniknite ďalšie kroky na ochranu svojej internetovej identity
 alert-about-new-breaches = Upozorniť ma na nové úniky
-see-if-youve-been-part = Pozrite sa, či ste neboli súčasťou internetového úniku dát
+see-if-youve-been-part = Pozrite sa, či ste neboli súčasťou internetového úniku údajov
 get-ongoing-breach-monitoring = Nechajte si priebežne monitorovať viacero e-mailových adries.
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Zistiť
@@ -472,7 +472,7 @@ breach-overview-title = Prehľad
 # This is a standardized breach overview blurb that appears on all breach detail pages.
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
-breach-overview-new = Dňa { $breachDate } došlo k úniku dát { $breachTitle }. Ihneď po odhalení a potvrdení bol dňa { $addedDate } pridaný do našej databázy.
+breach-overview-new = Dňa { $breachDate } došlo k úniku údajov { $breachTitle }. Ihneď po odhalení a potvrdení bol dňa { $addedDate } pridaný do našej databázy.
 # Title appearing on the Preferences dashboard.
 monitor-preferences = Nastavenia { -product-short-name(case: "gen") }
 # When a user is signed in, this appears in the drop down menu
@@ -505,10 +505,10 @@ verify-the-link = Pre pridanie e-mailovej adresy { $userEmail } do { -product-na
 email-verified = E-mailová adresa bola úspešne overená!
 # Variables:
 #   $email (String) - User email address
-email-added-to-subscription = Ak sa e-mailová adresa { $email } objaví v nejakom úniku dát, dostanete upozornenie.
+email-added-to-subscription = Ak sa e-mailová adresa { $email } objaví v nejakom úniku údajov, dostanete upozornenie.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
-email-verified-view-dashboard = Pre zobrazenie a správu adries, ktoré ste prihlásili na odber informácií o únikoch dát, { $nestedSignInLink }.
+email-verified-view-dashboard = Pre zobrazenie a správu adries, ktoré ste prihlásili na odber informácií o únikoch údajov, { $nestedSignInLink }.
 # This message is used as a text for the subscribe link in email-verified-view-dashboard
 sign-in-nested = sa prihláste
 
@@ -539,7 +539,7 @@ take-further-steps-desc = Zistite, ako znížiť riziko krádeže identity a pre
 # This message appears after a user has successfully updated their communication settings.
 changes-saved = Zmeny boli uložené!
 # Section headline
-rec-section-headline = Čo robiť s týmto únikom dát
+rec-section-headline = Čo robiť s týmto únikom údajov
 rec-section-subhead = Pre ochranu vašich osobných údajov a vašej digitálnej identity odporúčame nasledujúce kroky.
 # Section headline
 rec-section-headline-no-pw = Čo robiť pre ochranu vašich osobných údajov
@@ -574,7 +574,7 @@ marking-this-body =
 mark-as-resolve-button = Označiť ako vyriešené
 marked-as-resolved-label = Označené ako vyriešené
 undo-button = Späť
-confirmation-1-subhead = Super! Práve ste vyriešili svoj prvý únik dát.
+confirmation-1-subhead = Super! Práve ste vyriešili svoj prvý únik údajov.
 confirmation-1-body = Nepoľavujte. Vaša nástenka vám povie, či vás čaká ešte nejaká práca.
 confirmation-2-subhead = Toto hackeri určite nečakali.
 confirmation-2-body = Robíte dôležité kroky k ochrane svojich online účtov.
@@ -582,7 +582,7 @@ confirmation-3-subhead = Vyriešili ste ďalší únik. Skvelá práca!
 # This string contains nested markup that becomes a link later in the code.
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Je vaše nové heslo jedinečné, silné a ťažko uhádnuteľné? <a>Zistite to</a>
-generic-confirmation-subhead = Tento únik dát bol označený ako vyriešený
+generic-confirmation-subhead = Tento únik údajov bol označený ako vyriešený
 # Variables:
 #   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
@@ -626,7 +626,7 @@ progress-complete = Všetky známe úniky boli označené ako vyriešené
 ## These strings contain nested markup that is later used to style the text inside of it.
 ## Please do not modify or remove "<span>" and "</span>".
 
-progress-message-1 = <span>Toto je vynikajúci začiatok!</span> Skontrolujte aj ostatné úniky dát.
+progress-message-1 = <span>Toto je vynikajúci začiatok!</span> Skontrolujte aj ostatné úniky údajov.
 progress-message-2 = <span>Len do toho!</span> Malé zmeny, ako napríklad zmena hesla majú veľký vplyv na bezpečnosť vašich údajov.
 progress-message-3 = <span>Pekná práca s tými únikmi!</span> Ešte vám ich však pár zostáva.
 progress-message-4 = <span>Už máte takmer hotovo!</span> Od cieľovej rovinky ste naozaj blízko.
@@ -646,17 +646,17 @@ show-resolved-button = Zobraziť vyriešené
 #   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
-        [one] heslo uniklo v nevyriešených únikoch dát
-        [few] heslá unikli v nevyriešených únikoch dát
-       *[other] hesiel uniklo v nevyriešených únikoch dát
+        [one] heslo uniklo v nevyriešených únikoch údajov
+        [few] heslá unikli v nevyriešených únikoch údajov
+       *[other] hesiel uniklo v nevyriešených únikoch údajov
     }
 # Variables:
 #   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
-        [one] známy únik dát označený ako vyriešený
-        [few] známe úniky dát označené ako vyriešené
-       *[other] známych únikov dát označených ako vyriešených
+        [one] známy únik údajov označený ako vyriešený
+        [few] známe úniky údajov označené ako vyriešené
+       *[other] známych únikov údajov označených ako vyriešených
     }
 # A status indicator that appears in the top right corner of new breach cards
 new-breach = Nový
@@ -669,17 +669,17 @@ promo-lockwise-cta = Získať { -brand-lockwise }
 fpn-promo-headline = Skryte svoju polohu pred webovými stránkami a sledovacími prvkami
 promo-fpn-body = { -brand-fpn } maskuje vašu skutočnú ID adresu a bráni webovým stránkam vo vašom profilovaní kvôli lepšiemu cieleniu reklamy.
 promo-fpn-cta = Získať { -brand-fpn }
-monitor-promo-headline = Buďte informovaní o nových únikoch dát
-monitor-promo-body = Pošleme vám upozornenie vždy, keď sa vaše údaje objavia v známom úniku dát.
+monitor-promo-headline = Buďte informovaní o nových únikoch údajov
+monitor-promo-body = Pošleme vám upozornenie vždy, keď sa vaše údaje objavia v známom úniku údajov.
 ecosystem-promo-headline = Celý rad produktov zameraných na súkromie
-ecosystem-promo-body = Všetky produkty s označením { -brand-name } vychádzajú zo zásady, že menej dát je niekedy viac. Vaše dáta udržiavame v bezpečí a nemáme pred vami žiadne tajomstvá.
+ecosystem-promo-body = Všetky produkty s označením { -brand-name } vychádzajú zo zásady, že menej údajov je niekedy viac. Vaše údaje udržiavame v bezpečí a nemáme pred vami žiadne tajomstvá.
 promo-ecosystem-cta = Zobraziť všetky produkty
 steps-to-resolve-headline = Kroky vedúce k vyriešeniu tohto úniku
 vpn-promo-headline = Teraz je ten správny čas na zvýšenie vašej bezpečnosti online.
 vpn-promo-copy = Virtuálna súkromná sieť spoločnosti { -brand-Mozilla } pomáha chrániť vaše internetové pripojenie pred hackermi a špiónmi.
 vpn-promo-cta = Vyskúšajte { -brand-mozilla-vpn }
 vpn-promo-headline-new = Ušetrite 50% pri celoročnom predplatnom
-vpn-promo-copy-new = Chráňte svoje online dáta - a vyberte si plán predplatného VPN, ktorý vám vyhovuje.
+vpn-promo-copy-new = Chráňte svoje online údaje - a vyberte si plán predplatného VPN, ktorý vám vyhovuje.
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
@@ -759,7 +759,15 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
         [loc] Firefoxe
         [ins] Firefoxom
     }
--brand-fx-monitor = Firefox Monitor
+-brand-fx-monitor =
+    { $case ->
+        [gen] Firefox Monitora
+        [dat] Firefox Monitoru
+        [acc] Firefox Monitor
+        [loc] Firefox Monitore
+        [ins] Firefox Monitorom
+       *[nom] Firefox Monitor
+    }
 -brand-mozilla =
     { $case ->
        *[nom] Mozilla
@@ -814,7 +822,7 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
 
 ## Search Engine Optimization
 
-meta-desc = { -brand-fx-monitor } zistí, či boli vaše dáta súčasťou nejakého úniku. Prihláste sa na odber upozornení o budúcich porušeniach a získajte tipy, ako udržať svoje účty v bezpečí.
+meta-desc = { -brand-fx-monitor } zistí, či boli vaše údaje súčasťou nejakého úniku. Prihláste sa na odber upozornení o budúcich porušeniach a získajte tipy, ako udržať svoje účty v bezpečí.
 
 ## Header
 
@@ -823,7 +831,7 @@ sign-in = Prihlásiť sa
 
 ## Site navigation
 
-site-nav-breaches-link = Vyriešiť úniky dát
+site-nav-breaches-link = Vyriešiť úniky údajov
 site-nav-settings-link = Nastavenia
 site-nav-help-link = Pomoc a podpora
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
@@ -846,7 +854,7 @@ menu-item-logout = Odhlásiť sa
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Podmienky a ochrana súkromia
 github = { -brand-github }
-footer-nav-all-breaches = Všetky únik dát
+footer-nav-all-breaches = Všetky únik údajov
 
 ## Error page
 
@@ -862,8 +870,14 @@ error-page-error-other-copy = Skúste to znova alebo sa vráťte neskôr
 
 ## Breach overview page
 
-all-breaches-headline-2 = Všetky úniky dát zistené pomocou { -brand-fx-monitor }
+all-breaches-headline-2 = Všetky úniky údajov zistené pomocou { -brand-fx-monitor(case: "gen") }
+all-breaches-lead = Monitorujeme všetky známe úniky údajov, aby sme zistili, či nedošlo k ohrozeniu vašich osobných údajov. Tu je úplný zoznam všetkých únikov, ktoré boli nahlásené od roku 2007.
 search-breaches = Hľadať
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Odhalené údaje:
 
 ## Public breach detail page
 
+find-out-if-2 = Zistite, či ste boli súčasťou tohto úniku
+find-out-if-description = Pomôžeme vám rýchlo zistiť, či bola pri tomto úniku odhalená vaša e-mailová adresa, a takisto vám pomôžeme pochopiť, čo robiť ďalej.
+breach-detail-cta-signup = Skontrolovať úniky

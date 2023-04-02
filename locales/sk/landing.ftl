@@ -43,7 +43,7 @@ see-all-faq = Pozrite si všetky často kladené otázky
 what-is-breach = Čo presne je únik údajov?
 when-info-exposed = K úniku údajov dochádza, keď sú osobné alebo súkromné informácie vystavené, odcudzené alebo skopírované bez povolenia. Tieto bezpečnostné incidenty môžu byť výsledkom kybernetických útokov na webové stránky, aplikácie alebo akúkoľvek databázu, kde sa nachádzajú osobné informácie ľudí. K úniku môže dôjsť aj náhodne, napríklad ak sa niekoho prihlasovacie údaje náhodne zverejnia.
 # question and answer
-what-do-i-do = Moje údaje boli súčasťou úniku dát. Čo teraz?
+what-do-i-do = Moje údaje boli súčasťou úniku údajov. Čo teraz?
 visit-monitor-to-learn = Navštívte stránku služby { -brand-fx-monitor } a zistite, čo robiť po úniku údajov. Hackeri sa spoliehajú na to, že ľudia opakovane používajú heslá, preto je dôležité vytvárať silné a jedinečné heslá pre každý váš účet. Uchovávajte svoje heslá na bezpečnom mieste, ku ktorému máte prístup iba vy; mohlo by to byť rovnaké miesto, kam ukladáte dôležité dokumenty alebo správcu hesiel.
 # question and answer
 what-gets-exposed = Aké informácie sú odhalené pri úniku údajov?
