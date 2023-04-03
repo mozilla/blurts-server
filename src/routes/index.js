@@ -17,12 +17,14 @@ import breachDetailsRoutes from './breach-details.js'
 
 import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
+import { exposureScanPage } from '../controllers/exposureScan.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
 
 const router = express.Router()
 
 router.get('/', landingPage)
+router.get('/scan', exposureScanPage)
 router.get('*/dialog/:name', dialog)
 
 router.use('/', dockerFlowRoutes)

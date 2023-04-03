@@ -27,6 +27,20 @@
   display: block;
 }
 
+.hero form.exposure-scan {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--padding-md);
+}
+
+.hero form.exposure-scan input[type='email'] {
+  width: 100%;
+  padding: var(--padding-sm) var(--padding-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-30);
+}
+
 .why-use-monitor > h2,
 .why-use-monitor > p {
   text-align: center;

@@ -5,16 +5,7 @@
 import { getMessage } from '../../utils/fluent.js'
 
 export const landing = data => `
-<section class='hero'>
-  <div>
-    <h1>${getMessage('find-out-if-breached')}</h1>
-    <p>${getMessage('stay-safe-with-tool')}</p>
-    <a class='button primary' data-cta-id='landing-1' href='/user/breaches'>${getMessage('get-started')}</a>
-  </div>
-  <figure>
-    <img srcset='images/landing-hero.webp 530w, images/landing-hero@2x.webp 1059w' width='530' height='406' alt=''>
-  </figure>
-</section>
+${hero(data)}
 <section class='why-use-monitor'>
   <h2>${getMessage('why-use-monitor')}</h2>
   <p>${getMessage('identifying-breaches')}</p>
@@ -88,4 +79,51 @@ export const landing = data => `
   <h2>${getMessage('see-if-data-breach')}</h2>
   <a class='button primary' data-cta-id='landing-2' href='/user/breaches'>${getMessage('get-started')}</a>
 </section>
+`
+
+const hero = data => data.countryCode === 'us' ? usHero(data) : defaultHero(data)
+
+const defaultHero = data => `
+  <section class='hero'>
+    <div>
+      <h1>${getMessage('find-out-if-breached')}</h1>
+      <p>${getMessage('stay-safe-with-tool')}</p>
+      <a class='button primary' data-cta-id='landing-1' href='/user/breaches'>${getMessage('get-started')}</a>
+    </div>
+    <figure>
+      <img srcset='images/landing-hero.webp 530w, images/landing-hero@2x.webp 1059w' width='530' height='406' alt=''>
+    </figure>
+  </section>
+`
+
+const usHero = data => `
+  <section class='hero'>
+    <div>
+      <h1>${getMessage('exposure-landing-hero-heading')}</h1>
+      <p>${getMessage('exposure-landing-hero-lead')}</p>
+      <form method="POST" action="/scan/" class="exposure-scan">
+        <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
+        <label for="scsan_email_adddress" class="visually-hidden">
+          ${getMessage('exposure-landing-hero-email-label')}
+        </label>
+        <input
+          id="scan_email_address"
+          name="email"
+          type="email"
+          placeholder="${getMessage('exposure-landing-hero-email-placeholder')}"
+          required
+        />
+        <button
+          type="submit"
+          class='button primary'
+          data-cta-id='exposure-landing-1'
+        >
+          ${getMessage('exposure-landing-hero-cta-label')}
+        </button>
+      </form>
+    </div>
+    <figure>
+      <img srcset='images/landing-hero.webp 530w, images/landing-hero@2x.webp 1059w' width='530' height='406' alt=''>
+    </figure>
+  </section>
 `

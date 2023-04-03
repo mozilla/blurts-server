@@ -40,6 +40,23 @@ async function initFluentBundles () {
 
   await Promise.allSettled(promises)
 
+  // Fluent files in this directory are not currently localized, but might be
+  // moved to `/locales/` later to submit them for localization:
+  const unlocalizedDirname = resolve('../unlocalized/en')
+
+  try {
+    const filenames = readdirSync(unlocalizedDirname).filter(item => item.endsWith('.ftl'))
+
+    await Promise.all(filenames.map(async filename => {
+      const str = await readFile(join(unlocalizedDirname, filename), 'utf8')
+
+      fluentBundles.en.addResource(new FluentResource(str))
+    }))
+  } catch (e) {
+    console.error('Could not read Fluent file:', e)
+    throw new Error(e)
+  }
+
   console.log('Fluent bundles created:', Object.keys(fluentBundles))
 }
 
