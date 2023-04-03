@@ -147,7 +147,7 @@ const html = () => `
 customElements.define('circle-chart', class extends HTMLElement {
   /** @type {Array<{ key: string; name: string; color: string; count: number; }> | null} */
   data
-  /** @type {HTMLElement | null | undefined} */
+  /** @type {Element | null | undefined} */
   chartElement
   /** @type {string} */
   showPercentFor
@@ -321,6 +321,6 @@ customElements.define('circle-chart', class extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = html()
     }
-    this.chartElement = this.shadowRoot?.querySelector('.circle-chart')
+    this.chartElement = this.shadowRoot.querySelector('.circle-chart')
   }
 })

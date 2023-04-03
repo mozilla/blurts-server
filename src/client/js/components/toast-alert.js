@@ -126,7 +126,6 @@ customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
-    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.innerHTML = html
   }
 
@@ -174,7 +173,6 @@ customElements.define('toast-alert', class extends HTMLElement {
       this.type = ToastTypes.Error
     }
 
-    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow in the constructor
     this.shadowRoot.addEventListener('click', this)
     this.addEventListener('animationend', this)
   }
@@ -194,7 +192,6 @@ customElements.define('toast-alert', class extends HTMLElement {
   }
 
   disconnectedCallback () {
-    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow in the constructor
     this.shadowRoot.removeEventListener('click', this)
     this.removeEventListener('animationend', this)
   }

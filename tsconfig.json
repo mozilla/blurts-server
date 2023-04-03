@@ -1,5 +1,6 @@
 {
   "include": [
+    "src/custom-types.d.ts",
     "src/client/js/components/**/*",
     "src/views/partials/add-email.js",
     "src/views/partials/admin.js",
