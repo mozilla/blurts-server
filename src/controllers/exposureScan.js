@@ -2,20 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { guestLayout } from '../views/guestLayout.js'
-import { exposureScan } from '../views/partials/exposureScan.js'
-
-function exposureScanPage (req, res, next) {
+function exposureScan (req, res, next) {
   if (req.method !== 'POST') {
     return next()
   }
 
-  const data = {
-    partial: exposureScan,
-    nonce: res.locals.nonce
-  }
+  const allBreaches = req.app.locals.breaches
 
-  res.send(JSON.stringify({ success: true }))
+  const publicBreaches = allBreaches.filter(a => !a.IsSensitive)
+
+  res.send(JSON.stringify({ success: true, breaches: publicBreaches }))
 }
 
-export { exposureScanPage }
+export { exposureScan }
