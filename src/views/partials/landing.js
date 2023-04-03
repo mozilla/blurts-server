@@ -101,15 +101,16 @@ const usHero = data => `
     <div>
       <h1>${getMessage('exposure-landing-hero-heading')}</h1>
       <p>${getMessage('exposure-landing-hero-lead')}</p>
-      <form method="POST" action="/scan/" class="exposure-scan">
+      <form>
         <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
-        <label for="scsan_email_adddress" class="visually-hidden">
+        <label for="scan_email_adddress" class="visually-hidden">
           ${getMessage('exposure-landing-hero-email-label')}
         </label>
         <input
-          id="scan_email_address"
+          id="email-address"
           name="email"
           type="email"
+          data-partial="scan-email"
           placeholder="${getMessage('exposure-landing-hero-email-placeholder')}"
           required
         />

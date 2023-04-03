@@ -24,11 +24,11 @@ import { notFound } from '../middleware/error.js'
 const router = express.Router()
 
 router.get('/', landingPage)
-router.get('/scan', exposureScanPage)
 router.get('*/dialog/:name', dialog)
 
 router.use('/', dockerFlowRoutes)
 router.use('/admin', adminRoutes)
+router.use('/api/v1/scan', exposureScanPage)
 router.use('/api/v1/hibp/', hibpApiRoutes)
 router.use('/api/v1/user/', userApiRoutes)
 router.use('/oauth', authRoutes)

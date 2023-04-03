@@ -15,7 +15,7 @@ function exposureScanPage (req, res, next) {
     nonce: res.locals.nonce
   }
 
-  res.send(guestLayout(data))
+  res.send(JSON.stringify({ success: true }))
 }
 
 export { exposureScanPage }
