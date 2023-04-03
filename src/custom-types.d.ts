@@ -10,3 +10,11 @@ interface HTMLElement {
   // pretend that shadowRoot is always set.
   shadowRoot: ShadowRoot;
 }
+
+// This lint rule does not apply to type definitions:
+// eslint-disable-next-line no-unused-vars
+type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams) => string;
+type ViewPartialData<ViewPartialParams = object> = {
+    partial: ViewPartial<ViewPartialParams>,
+    nonce: string
+  } & ViewPartialParams;
