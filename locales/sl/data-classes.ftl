@@ -34,6 +34,9 @@ customer-interactions = interakcije s strankami
 dates-of-birth = datumi rojstva
 deceased-date = datumi smrti
 deceased-statuses = statusi umrlih
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Navodila za dostavo
 device-information = podatki o napravah
 device-serial-numbers = serijske številke naprav
 device-usage-tracking-data = podatki o sledenju uporabe naprav
@@ -74,6 +77,8 @@ job-titles = službeni nazivi
 # This string refers to vehicle license plates. 
 licence-plates = registrske tablice
 living-costs = življenjski stroški
+# This string refers to financial loans.
+loan-information = Podatki o posojilu
 login-histories = zgodovine prijav
 mac-addresses = naslovi MAC
 marital-statuses = zakonski statusi
@@ -84,10 +89,15 @@ names = imena
 nationalities = državljanstva
 net-worths = neto prihodki
 nicknames = vzdevki
+# no data classes found
+none-data-class = Brez
 occupations = poklici
+# various data classes grouped together
+other-data-class = Drugo
 parenting-plans = načrti za starševstvo
 partial-credit-card-data = delni podatki o kreditnih karticah
 partial-dates-of-birth = delni rojstni datumi
+partial-phone-numbers = Delne telefonske številke
 passport-numbers = številke potnih listov
 password-hints = namigi za gesla
 password-strengths = moči gesel
@@ -137,6 +147,7 @@ user-website-urls = URL-ji uporabniških spletnih strani
 usernames = uporabniška imena
 utility-bills = uporabniški računi
 vehicle-details = podrobnosti o vozilih
+vehicle-identification-numbers-vins = Identifikacijske številke vozil (VIN)
 website-activity = dejavnost spletnih strani
 work-habits = delovne navade
 years-of-birth = leta rojstva
