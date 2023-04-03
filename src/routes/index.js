@@ -26,7 +26,6 @@ const router = express.Router()
 router.get('/', landingPage)
 router.get('*/dialog/:name', dialog)
 
-router.use('/', doubleCsrfProtection, dockerFlowRoutes)
 router.use('/admin', doubleCsrfProtection, adminRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)
 router.use('/api/v1/user/', doubleCsrfProtection, userApiRoutes)
@@ -34,6 +33,7 @@ router.use('/oauth', doubleCsrfProtection, authRoutes)
 router.use('/user', doubleCsrfProtection, userRoutes)
 router.use('/breaches', doubleCsrfProtection, breachesRoutes)
 router.use('/breach-details', doubleCsrfProtection, breachDetailsRoutes)
+router.use('/', doubleCsrfProtection, dockerFlowRoutes)
 
 // Do not make the non-auth previews available on prod
 if (AppConstants.NODE_ENV !== 'production') {
