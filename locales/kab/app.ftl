@@ -642,16 +642,28 @@ sign-in = Kcem
 
 ## Site navigation
 
+site-nav-settings-link = Iɣewwaren
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
+menu-button-title = Umuɣ n useqdac
+menu-button-alt = Ldi umuɣ n useqdac
+menu-list-accessible-label = Umuɣ n umiḍan
+menu-item-settings = Iɣewwaren
+menu-item-logout = Ffeɣ
 
 ## Footer
 
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Tiwtilin akked tbaḍnit
+github = { -brand-github }
+footer-nav-all-breaches = Meṛṛa tirewliwin
 
 ## Error page
 
+error-page-error-404-cta-button = Uɣal
 
 ## Breach overview page
 
