@@ -62,7 +62,6 @@ customElements.define('custom-select', class extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
-    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.innerHTML = html
     // @ts-ignore: We know that this will not return null
     this.select = this.shadowRoot.querySelector('select')
@@ -109,7 +108,6 @@ customElements.define('custom-select', class extends HTMLElement {
 
     temp.className = 'hidden'
     temp.append(selectedOption.cloneNode(true))
-    // @ts-ignore: this.shadowRoot exists, as per this.attachShadow above
     this.shadowRoot.append(temp)
 
     // let’s wait for the next tick to make sure that the dimensions of temp are available
