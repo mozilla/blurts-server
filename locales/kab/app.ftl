@@ -671,3 +671,4 @@ search-breaches = Nadi tirewliwin n yisefka
 
 ## Public breach detail page
 
+breach-detail-cta-signup = Senqed tarewla n yisefka
