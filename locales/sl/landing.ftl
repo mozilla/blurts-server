@@ -31,13 +31,13 @@ alerts-for-breaches-monitor-new = Nenehno bomo spremljali morebitne nove kraje p
 ## Your privacy is safe with us
 
 safe-with-us = Vaša zasebnost je z nami varna
-parent-company = V { -brand-Mozilli }, krovni družbi { -brand-firefox }a in { -brand-fx-monitorja }a, verjamemo, da sta varnost in zasebnost posameznikov na internetu temeljnega pomena in ju ne smemo jemati kot izbirno.
+parent-company = V { -brand-Mozilla }, krovni družbi { -brand-firefox }a in { -brand-fx-monitor }ja, verjamemo, da sta varnost in zasebnost posameznikov na internetu temeljnega pomena in ju ne smemo jemati kot izbirno.
 our-mission = Naše poslanstvo je zgraditi boljši internet, kjer lahko ljudje sami oblikujejo svoje izkušnje, se počutijo močne in varne. Smo v 100-odstotni lasti { -brand-mozilla-foundation(sklon: "rodilnik") }, neprofitne organizacije, ki nam omogoča, da postavljamo korist posameznika in javnost pred dobiček.
 learn-more-mission = Spoznajte naše poslanstvo
 
 ## Top questions about Firefox Monitor
 
-top-questions-about-monitor = Pogosta vprašanja o { -brand-fx-monitorju }
+top-questions-about-monitor = Pogosta vprašanja o { -brand-fx-monitor }
 see-all-faq = Oglejte si vsa pogosta vprašanja
 # question and answer
 what-is-breach = Kaj pravzaprav je varnost podatkov?
