@@ -41,7 +41,7 @@ const guestLayout = data => `
     <script src='/js/index.js' type='module'></script>
 
     <!-- Google tag (gtag.js) -->
-    <script nonce='${data.nonce}' type='module'>
+    <script nonce='${data.nonce}'>
       if (navigator.doNotTrack !== '1') {
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -50,10 +50,13 @@ const guestLayout = data => `
         n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date()); gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}');
         ${AppConstants.GA4_DEBUG_MODE
           ? `gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}', { 'debug_mode': true })`
           : ''}
+        gtag('js', new Date());
+        gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}',
+          { cookie_domain: window.location.hostname, cookie_flags: "SameSite=None;Secure" }
+        );
         window.gtag = gtag
       } else {
         function gtag() {
@@ -68,6 +71,7 @@ const guestLayout = data => `
       )
       </script>
     <!-- End Google tag (gtag.js) -->
+
   </head>
   <body>
     <header>
