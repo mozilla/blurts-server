@@ -21,6 +21,7 @@ import { exposureScanPage } from '../controllers/exposureScan.js'
 import { requestBreachScan } from '../controllers/requestBreachScan.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
+import { doubleCsrfProtection } from '../utils/csrf.js'
 
 const router = express.Router()
 
@@ -28,15 +29,15 @@ router.get('/', landingPage)
 router.get('/scan', exposureScanPage)
 router.get('*/dialog/:name', dialog)
 
-router.use('/', dockerFlowRoutes)
-router.use('/admin', adminRoutes)
+router.use('/admin', doubleCsrfProtection, adminRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)
-router.use('/api/v1/scan/', requestBreachScan)
-router.use('/api/v1/user/', userApiRoutes)
-router.use('/oauth', authRoutes)
-router.use('/user', userRoutes)
-router.use('/breaches', breachesRoutes)
-router.use('/breach-details', breachDetailsRoutes)
+router.use('/api/v1/scan/', doubleCsrfProtection, requestBreachScan)
+router.use('/api/v1/user/', doubleCsrfProtection, userApiRoutes)
+router.use('/oauth', doubleCsrfProtection, authRoutes)
+router.use('/user', doubleCsrfProtection, userRoutes)
+router.use('/breaches', doubleCsrfProtection, breachesRoutes)
+router.use('/breach-details', doubleCsrfProtection, breachDetailsRoutes)
+router.use('/', doubleCsrfProtection, dockerFlowRoutes)
 
 // Do not make the non-auth previews available on prod
 if (AppConstants.NODE_ENV !== 'production') {

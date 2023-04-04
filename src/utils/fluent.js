@@ -11,6 +11,7 @@ import AppConstants from '../app-constants.js'
 import { localStorage } from './local-storage.js'
 
 const supportedLocales = AppConstants.SUPPORTED_LOCALES?.split(',')
+/** @type {Record<string, FluentBundle>} */
 const fluentBundles = {}
 
 /**
@@ -30,7 +31,7 @@ async function initFluentBundles () {
 
         bundle.addResource(new FluentResource(str))
       }))
-    } catch (e) {
+    } catch (/** @type {any} */ e) {
       console.error('Could not read Fluent file:', e)
       throw new Error(e)
     }
@@ -63,7 +64,7 @@ async function initFluentBundles () {
 /**
  * Set the locale used for translations negotiated between requested and available
  *
- * @param {Array} requestedLocales - Locales requested by client.
+ * @param {string[]} requestedLocales - Locales requested by client.
  */
 function updateLocale (requestedLocales) {
   return negotiateLanguages(
@@ -92,7 +93,7 @@ function getRawMessage (id) {
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
-  if (bundle.hasMessage(id)) return bundle.getMessage(id).value
+  if (bundle.hasMessage(id)) return bundle.getMessage(id)?.value
 
   return id
 }
@@ -102,7 +103,7 @@ function getRawMessage (id) {
  * Defaults to en if message id not found in requested locale
  *
  * @param {string} id - The Fluent message id.
- * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+ * @param {Record<string, import('@fluent/bundle').FluentVariable>} [args] - key/value pairs corresponding to pattern in Fluent resource.
  * @example
  * // Given FluentResource("hello = Hello, {$name}!")
  * getMessage (hello, {name: "Jane"})
@@ -118,8 +119,9 @@ function getMessage (id, args) {
  * Defaults to en if message id not found in requested locale
  *
  * @param {string} id - The Fluent message id.
- * @param {string{}} localePreferences
- * @param {object} args - key/value pairs corresponding to pattern in Fluent resource.
+ * @param {string[]} localePreferences
+ * @param {Record<string, import('@fluent/bundle').FluentVariable>} [args] - key/value pairs corresponding to pattern in Fluent resource.
+ * @returns {string}
  * @example
  * // Given FluentResource("hello = Hello, {$name}!")
  * getMessage (hello, {name: "Jane"})
@@ -130,11 +132,16 @@ function getMessageWithLocale (id, localePreferences, args) {
 
   if (!bundle.hasMessage(id)) bundle = fluentBundles.en
 
-  if (bundle.hasMessage(id)) return bundle.formatPattern(bundle.getMessage(id).value, args)
+  if (!bundle.hasMessage(id)) {
+    return id
+  }
 
-  return id
+  return bundle.formatPattern(bundle.getMessage(id)?.value ?? '', args)
 }
 
+/**
+ * @param {string} id
+ */
 function fluentError (id) {
   return new Error(getMessage(id))
 }

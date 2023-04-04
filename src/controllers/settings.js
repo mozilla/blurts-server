@@ -29,6 +29,7 @@ import { getTemplate } from '../views/emails/email-2022.js'
 import { verifyPartial } from '../views/emails/email-verify.js'
 
 async function settingsPage (req, res) {
+  /** @type {Array<import('../db/tables/email_addresses.js').EmailRow>} */
   const emails = await getUserEmails(req.session.user.id)
   // Add primary subscriber email to the list
   emails.push({
