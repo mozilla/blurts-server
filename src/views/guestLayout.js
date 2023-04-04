@@ -5,6 +5,11 @@
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
+/**
+ * @template {object} PartialParameters
+ * @param {ViewPartialData<PartialParameters>} data
+ * @returns {string}
+ */
 const guestLayout = data => `
 <!doctype html>
 <html lang=${getLocale()}>

@@ -4,6 +4,14 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
+/**
+ * @typedef {object} PartialParameters
+ * @property {string} csrfToken
+ */
+
+/**
+ * @type {ViewPartial<PartialParameters>}
+ */
 export const exposureScan = data => `
   <template id="data" data-csrf-token="${data.csrfToken}"/>
 `

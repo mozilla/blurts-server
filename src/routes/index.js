@@ -17,7 +17,7 @@ import breachDetailsRoutes from './breach-details.js'
 
 import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
-import { exposureScanPage } from '../controllers/exposureScan.js'
+import { exposureScanPage } from '../controllers/exposure-scan.js'
 import { requestBreachScan } from '../controllers/requestBreachScan.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'

@@ -4,18 +4,24 @@
 
 import { generateToken } from '../utils/csrf.js'
 import { guestLayout } from '../views/guestLayout.js'
-import { exposureScan } from '../views/partials/exposureScan.js'
+import { exposureScan } from '../views/partials/exposure-scan.js'
 
-function exposureScanPage (req, res, next) {
+/**
+ * @type {import('express').RequestHandler}
+ */
+const exposureScanPage = (req, res, next) => {
   if (req.method !== 'GET' || typeof req.query.email !== 'string') {
     next()
     return
   }
 
+  /**
+   * @type {ViewPartialData<import('../views/partials/exposure-scan.js').PartialParameters>}
+   */
   const data = {
     partial: exposureScan,
     nonce: res.locals.nonce,
-    csrfToken: generateToken(res)
+    csrfToken: generateToken(res, req)
   }
 
   res.send(guestLayout(data))
