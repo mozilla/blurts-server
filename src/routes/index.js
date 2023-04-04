@@ -17,19 +17,21 @@ import breachDetailsRoutes from './breach-details.js'
 
 import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
-import { exposureScan } from '../controllers/exposureScan.js'
+import { exposureScanPage } from '../controllers/exposureScan.js'
+import { requestBreachScan } from '../controllers/requestBreachScan.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
 
 const router = express.Router()
 
 router.get('/', landingPage)
+router.get('/scan', exposureScanPage)
 router.get('*/dialog/:name', dialog)
 
 router.use('/', dockerFlowRoutes)
 router.use('/admin', adminRoutes)
-router.use('/api/v1/scan', exposureScan)
 router.use('/api/v1/hibp/', hibpApiRoutes)
+router.use('/api/v1/scan/', requestBreachScan)
 router.use('/api/v1/user/', userApiRoutes)
 router.use('/oauth', authRoutes)
 router.use('/user', userRoutes)

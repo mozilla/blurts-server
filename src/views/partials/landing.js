@@ -80,7 +80,6 @@ ${hero(data)}
   <a class='button primary' data-cta-id='landing-2' href='/user/breaches'>${getMessage('get-started')}</a>
 </section>
 `
-
 const hero = data => data.countryCode === 'us' ? usHero(data) : defaultHero(data)
 
 const defaultHero = data => `
@@ -101,16 +100,14 @@ const usHero = data => `
     <div>
       <h1>${getMessage('exposure-landing-hero-heading')}</h1>
       <p>${getMessage('exposure-landing-hero-lead')}</p>
-      <form>
-        <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
-        <label for="scan_email_adddress" class="visually-hidden">
+      <form method="GET" action="/scan/" class="exposure-scan">
+        <label for="scan-email-adddress" class="visually-hidden">
           ${getMessage('exposure-landing-hero-email-label')}
         </label>
         <input
-          id="email-address"
+          id="scan-email-address"
           name="email"
           type="email"
-          data-partial="scan-email"
           placeholder="${getMessage('exposure-landing-hero-email-placeholder')}"
           required
         />
