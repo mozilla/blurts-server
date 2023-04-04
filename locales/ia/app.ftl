@@ -649,6 +649,8 @@ sign-in = Aperir session
 site-nav-breaches-link = Resolver violationes de datos
 site-nav-settings-link = Parametros
 site-nav-help-link = Adjuta e assistentia
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Proba nostre altere utensiles de securitate:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
