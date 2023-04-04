@@ -684,6 +684,8 @@ error-page-error-other-copy = Retenta o reveni plus tarde
 ## Breach overview page
 
 search-breaches = Cercar violationes
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Datos exponite:
 
 ## Public breach detail page
 
