@@ -12,76 +12,75 @@ import knexConfig from '../db/knexfile.js'
 import { getAllBreachesFromDb } from '../utils/hibp.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
 import { setBreachResolution } from '../db/tables/subscribers.js'
+import mozlog from '../utils/log.js'
+const log = mozlog('script.migrationCleanup')
 const knex = Knex(knexConfig)
 
-const LIMIT = 1000 // with millions of records, we have to load a few at a time
-let offset = 0 // looping through all records with offset
 let subscribersArr = []
-
 // load all breaches for ref
 const allBreaches = await getAllBreachesFromDb()
-if (allBreaches && allBreaches.length > 0) console.log('breaches loaded successfully! ', allBreaches.length)
-console.log(JSON.stringify(allBreaches[0]))
+if (allBreaches && allBreaches.length > 0) log.info('breach_count', 'breaches loaded successfully! ', allBreaches.length)
+
+const count = await knex
+  .from('subscribers')
+  .whereRaw('NOT ((breach_resolution)::jsonb \\? \'useBreachId\')')
+  .count('*')
+
+log.info('total_to_be_executed', count[0])
 
 // find all subscribers who resolved any breaches in the past,
 // replace recency index with breach id
-do {
-  console.log(`Converting breach_resolution to use breach Id - start: ${offset} limit: ${LIMIT}`)
-  subscribersArr = await knex
-    .select('id', 'primary_email', 'breach_resolution')
-    .from('subscribers')
-    .whereRaw('NOT ((breach_resolution)::jsonb \\? \'useBreachId\')')
-    .limit(LIMIT)
-    .offset(offset)
 
-  console.log(`Loaded # of subscribers: ${subscribersArr.length}`)
+subscribersArr = await knex
+  .select('id', 'primary_email', 'breach_resolution')
+  .from('subscribers')
+  .whereRaw('NOT ((breach_resolution)::jsonb \\? \'useBreachId\')')
 
-  for (const subscriber of subscribersArr) {
-    const { breach_resolution: v2 } = subscriber
-    console.debug({ v2 })
+log.info('job', `Loaded # of subscribers: ${subscribersArr.length}`)
 
-    // if useBreachId is set, skip because this breach_resolution has already been worked on
-    if (v2.useBreachId) {
-      console.log('Skipping since `useBreachId` is set already, this breach resolution is already converted')
-      continue
-    }
+for (const subscriber of subscribersArr) {
+  const { breach_resolution: v2 } = subscriber
+  // console.debug({ v2 })
 
-    const newResolutions = {}
-
-    // fetch subscriber all breaches / email
-    const subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
-    // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
-
-    for (const email in v2) {
-      // console.debug({ email })
-      const resolutions = v2[email]
-      // console.debug({ resolutions })
-      newResolutions[email] = {}
-
-      for (const recencyIndex in resolutions) {
-        console.debug({ recencyIndex })
-
-        // find subscriber's relevant recency index breach information
-        const ve = subscriberBreachesEmail.verifiedEmails?.filter(ve => ve.email === email)[0] || {}
-        const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
-        const breachName = subBreach?.Name
-        console.debug({ breachName })
-
-        // find breach id for the breach
-        const breachId = allBreaches.find(b => b.Name === breachName)?.Id
-        console.log({ breachId })
-        newResolutions[email][breachId] = v2[email][recencyIndex]
-      }
-    }
-
-    // check if v2 is changed, if so, upsert the new v2
-    newResolutions.useBreachId = true
-    // console.log(JSON.stringify(newResolutions))
-    await setBreachResolution(subscriber, newResolutions)
+  // if useBreachId is set, skip because this breach_resolution has already been worked on
+  if (v2.useBreachId) {
+    log.warn('job', 'Skipping since `useBreachId` is set already, this breach resolution is already converted')
+    continue
   }
-  offset += LIMIT
-} while (subscribersArr.length === LIMIT)
+
+  const newResolutions = {}
+
+  // fetch subscriber all breaches / email
+  const subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+  // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
+
+  for (const email in v2) {
+    // console.debug({ email })
+    const resolutions = v2[email]
+    // console.debug({ resolutions })
+    newResolutions[email] = {}
+
+    for (const recencyIndex in resolutions) {
+      console.debug({ recencyIndex })
+
+      // find subscriber's relevant recency index breach information
+      const ve = subscriberBreachesEmail.verifiedEmails?.filter(ve => ve.email === email)[0] || {}
+      const subBreach = ve.breaches?.filter(b => Number(b.recencyIndex) === Number(recencyIndex))[0] || null
+      const breachName = subBreach?.Name
+      console.debug({ breachName })
+
+      // find breach id for the breach
+      const breachId = allBreaches.find(b => b.Name === breachName)?.Id
+      log.info('job', { breachId })
+      newResolutions[email][breachId] = v2[email][recencyIndex]
+    }
+  }
+
+  // check if v2 is changed, if so, upsert the new v2
+  newResolutions.useBreachId = true
+  await setBreachResolution(subscriber, newResolutions)
+}
 
 // breaking out of do..while loop
-console.log('Reaching the end of the table, offset ended at', offset)
+log.info('job', 'Reaching the end of the table')
 process.exit()
