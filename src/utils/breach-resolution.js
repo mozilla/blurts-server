@@ -112,9 +112,13 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
   for (const { breaches } of verifiedEmails) {
     breaches.forEach(b => {
       const dataClasses = b.DataClasses
+      // TODO: Add condition for hiding breach links
+      const hideBreachLink = false
       const args = {
         companyName: b.Name,
-        breachedCompanyLink: `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`,
+        breachedCompanyLink: b.Domain
+          ? `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`
+          : '',
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
         passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-password-manager')}</a>`,
         mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-mozilla-vpn')}</a>`,
@@ -122,7 +126,7 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
         experianLink: '<a href="https://www.experian.com/freeze/center.html" target="_blank">Experian</a>',
         transUnionLink: '<a href="https://www.transunion.com/credit-freeze" target="_blank">TransUnion</a>'
       }
-      b.breachChecklist = getResolutionRecsPerBreach(dataClasses, args, { ...options, hideBreachLink: b.Domain.length <= 0 })
+      b.breachChecklist = getResolutionRecsPerBreach(dataClasses, args, { ...options, hideBreachLink })
     })
   }
 }
@@ -145,8 +149,8 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
   for (const [key, value] of Object.entries(breachResolutionDataTypes)) {
     if (
       dataTypes.includes(key) &&
-      // Hide the security question or password resolution if we can't link to the breached site:
-      (![BreachDataTypes.Passwords, BreachDataTypes.SecurityQuestions].includes(key) || !options.hideBreachLink) &&
+      // Hide the security question or password resolution if we decided to not link to the breached site:
+      !options.hideBreachLink &&
       // Hide resolutions that apply to other countries than the user's:
       (!options.countryCode || !Array.isArray(value.applicableCountryCodes) || value.applicableCountryCodes.includes(options.countryCode.toLowerCase()))
     ) {
