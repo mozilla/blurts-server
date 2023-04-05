@@ -148,7 +148,7 @@ section + section {
   margin-top: var(--padding-xl);
 }
 
-footer {
+.site-footer {
   position: sticky;
   top: 100%;
   width: 100%;
@@ -163,11 +163,11 @@ footer {
   z-index: 1;
 }
 
-footer a {
+.site-footer a {
   text-decoration: none;
 }
 
-footer > menu {
+.site-footer > menu {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -175,11 +175,11 @@ footer > menu {
   font-size: 0.875rem;
 }
 
-.mobile footer {
+.mobile .site-footer {
   padding: var(--padding-lg);
 }
 
-.mobile footer > menu {
+.mobile .site-footer > menu {
   flex-basis: 100%;
   flex-direction: column;
   align-items: start;

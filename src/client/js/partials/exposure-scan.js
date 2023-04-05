@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+/** @type {HTMLDivElement} */
+// @ts-ignore: We guard against a null value by not calling init():
 const exposureScanPartial = document.querySelector("[data-partial='exposureScan']")
 
 if (exposureScanPartial) {
@@ -28,4 +30,80 @@ async function init () {
       email: sanitisedEmail
     })
   })
+
+  if (!res.ok) {
+    return
+  }
+
+  /** @type {import("../../../controllers/request-breach-scan").RequestBreachScanResponse} */
+  const responseBody = await res.json()
+
+  if (!responseBody.success) {
+    return
+  }
+
+  if (responseBody.total > 6) {
+    showOverflowingBreachResults(responseBody)
+  } else if (responseBody.total > 0) {
+    showSomeBreachResults(responseBody)
+  } else {
+    showNoBreachesResult(responseBody)
+  }
+}
+
+/**
+ * @param {import("../../../controllers/request-breach-scan").RequestBreachScanSuccessResponse} response
+ */
+function showOverflowingBreachResults (response) {
+  const heading = document.createElement('h1')
+  heading.innerHTML = response.heading
+  exposureScanPartial.querySelector('#exposure-scan-results-overflow .exposure-scan-hero-content').insertAdjacentElement('afterbegin', heading)
+  const breachCards = response.breaches.map((breach, index) => getBreachCard(breach, response.logos[index], response.dataClassStrings[index]))
+  const breachContainer = exposureScanPartial.querySelector('#exposure-scan-results-overflow .exposure-scan-breaches')
+  breachCards.forEach(card => breachContainer.appendChild(card))
+  exposureScanPartial.querySelector('#exposure-scan-loading').hidden = true
+  exposureScanPartial.querySelector('#exposure-scan-results-overflow').hidden = false
+}
+
+/**
+ * @param {import("../../../controllers/request-breach-scan").RequestBreachScanSuccessResponse} response
+ */
+function showSomeBreachResults (response) {
+  const heading = document.createElement('h1')
+  heading.innerHTML = response.heading
+  exposureScanPartial.querySelector('#exposure-scan-results-some .exposure-scan-hero-content').insertAdjacentElement('afterbegin', heading)
+  const breachCards = response.breaches.map((breach, index) => getBreachCard(breach, response.logos[index], response.dataClassStrings[index]))
+  const breachContainer = exposureScanPartial.querySelector('#exposure-scan-results-some .exposure-scan-breaches')
+  breachCards.forEach(card => breachContainer.appendChild(card))
+  exposureScanPartial.querySelector('#exposure-scan-loading').hidden = true
+  exposureScanPartial.querySelector('#exposure-scan-results-some').hidden = false
+}
+
+/**
+ * @param {import("../../../controllers/request-breach-scan").RequestBreachScanSuccessResponse} response
+ */
+function showNoBreachesResult (response) {
+  const heading = document.createElement('h1')
+  heading.innerHTML = response.heading
+  exposureScanPartial.querySelector('#exposure-scan-results-none .exposure-scan-hero-content').insertAdjacentElement('afterbegin', heading)
+  exposureScanPartial.querySelector('#exposure-scan-loading').hidden = true
+  exposureScanPartial.querySelector('#exposure-scan-results-none').hidden = false
+}
+
+function getBreachCard (breach, logo, dataClassStrings) {
+  const newCard = document.getElementById('breach-template').content.cloneNode(true)
+  newCard.querySelector('.exposure-scan-breach-company-logo').innerHTML = logo
+  newCard.querySelector('.exposure-scan-breach-company-name').textContent = breach.Title
+  newCard.querySelector('.exposure-scan-breach-added dd').textContent = new Date(breach.AddedDate).toLocaleString(navigator.languages, { year: 'numeric', month: 'long', day: 'numeric' })
+  newCard.querySelector('.exposure-scan-breach-data dd').textContent = formatList(dataClassStrings)
+
+  return newCard
+}
+
+function formatList (list) {
+  if (typeof Intl.ListFormat === 'undefined') {
+    return list.join(', ')
+  }
+
+  return (new Intl.ListFormat(navigator.languages, { type: 'unit', style: 'short' })).format(list)
 }

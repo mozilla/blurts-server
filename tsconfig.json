@@ -6,6 +6,7 @@
     "src/views/partials/admin.js",
     "src/views/partials/exposure-scan.js",
     "src/controllers/exposure-scan.js",
+    "src/controllers/request-breach-scan.js",
     // Replace the above with the following when our entire codebase has type annotations:
     // "src/**/*",
   ],
