@@ -147,13 +147,18 @@ test('appendBreachResolutionChecklist: data class with a resolution referring to
     unverifiedEmails: []
   }
   appendBreachResolutionChecklist(userBreachData)
-  // There should only be a resolution for `BreachDataTypes.Phone`, as
-  // `BreachDataTypes.Passwords` and `BreachDataTypes.SecurityQuestions` refer
-  // to the breached company's domain, which we don't know:
+  // There should be a resolution for `BreachDataTypes.Phone`,
+  // `BreachDataTypes.Passwords` and `BreachDataTypes.SecurityQuestions`.
+  // The last two should fallback to a more generic header string that does not
+  // include the breached company's domain, which we don't know:
   t.deepEqual(
     Object.keys(userBreachData.verifiedEmails[0].breaches[0].breachChecklist),
-    [BreachDataTypes.Phone]
+    [BreachDataTypes.Passwords, BreachDataTypes.Phone, BreachDataTypes.SecurityQuestions]
   )
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].header,
+    'Go to the company’s website to change your password and enable two-factor authentication (2FA).')
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].header,
+    'Update your security questions on the company’s website.')
 })
 
 test('appendBreachResolutionChecklist: data class with a resolution referring to the breach\'s domain, which is available', t => {

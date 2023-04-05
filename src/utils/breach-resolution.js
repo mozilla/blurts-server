@@ -116,11 +116,9 @@ async function appendBreachResolutionChecklist (userBreachData, options = {}) {
       const showLink = b.Domain &&
         !AppConstants.HIBP_BREACH_LINK_BLOCKLIST.includes(b.Domain)
 
-      console.log(b.Domain, showLink)
-
       const args = {
         companyName: b.Name,
-        breachedCompanyLink: !showLink
+        breachedCompanyLink: showLink
           ? `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`
           : 'empty',
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
