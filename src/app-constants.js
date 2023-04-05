@@ -59,39 +59,58 @@ const optionalEnvVars = [
   'SENTRY_DSN_LEGACY'
 ]
 
-const AppConstants = {}
+/** @type {Record<string, string>} */
+const AppConstants = { }
 
 if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
   process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
 }
 
 for (const v of requiredEnvVars) {
-  if (process.env[v] === undefined) {
+  const value = process.env[v]
+  if (value === undefined) {
     throw new Error(`Required environment variable was not set: ${v}`)
   }
-  AppConstants[v] = process.env[v]
+  AppConstants[v] = value
 }
 
 optionalEnvVars.forEach(key => {
-  if (key in process.env) AppConstants[key] = process.env[key]
+  const value = process.env[key]
+  if (value) AppConstants[key] = value
 })
 
 // Create HIBP breach link blocklist
-const linkStatusList = JSON.parse(readFileSync(path.join(
+const linkListData = readFileSync(path.join(
   __dirname,
   './hibp-breach-link-status-list.json'
-)))
+))
+const linkStatusList = JSON.parse(linkListData.toString()).links
 
-const linkBlockList = linkStatusList.links
-  .reduce((blockList, breachLink) => {
-    const { status, statusCode } = breachLink
+/**
+ * @typedef {object} BreachLink
+ * @property {string} link
+ * @property {number} statusCode
+ * @property {object} err
+ * @property {string} status
+ */
 
-    if (status !== 'alive' || statusCode !== 200) {
-      blockList.push(breachLink.link)
-    }
+const linkBlockList = linkStatusList
+  .reduce(
+    /**
+     * @param {Array<Object>} blockList
+     * @param {BreachLink} breachLink
+     */
+    (blockList, breachLink) => {
+      const { status, statusCode } = breachLink
 
-    return blockList
-  }, [])
+      if (status !== 'alive' || statusCode !== 200) {
+        blockList.push(breachLink.link)
+      }
+
+      return blockList
+    },
+    []
+  )
   .join(',')
 
 AppConstants.HIBP_BREACH_LINK_BLOCKLIST = linkBlockList

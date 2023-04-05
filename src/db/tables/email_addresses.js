@@ -198,6 +198,17 @@ async function _verifyNewEmail (emailHash) {
   return verifiedEmail
 }
 
+/**
+ * @typedef {object} EmailRow Email data, as returned from the database table `email_addresses`
+ * @property {string} email
+ * @property {string} sha1
+ * @property {boolean} verified
+ */
+
+/**
+ * @param {number} userId
+ * @returns {Promise<EmailRow[]>}
+ */
 async function getUserEmails (userId) {
   const userEmails = await knex('email_addresses')
     .where('subscriber_id', '=', userId)

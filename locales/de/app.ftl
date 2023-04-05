@@ -701,7 +701,7 @@ menu-item-logout = Abmelden
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Nutzungsbedingungen und Datenschutzerklärung
 github = { -brand-github }
 footer-nav-all-breaches = Alle Datenlecks

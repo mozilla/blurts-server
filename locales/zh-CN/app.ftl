@@ -589,7 +589,7 @@ menu-item-logout = 退出
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = 使用条款和隐私
 github = { -brand-github }
 

@@ -10,9 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Cambia tu contrasigno
 # Link title
 rec-pw-1-cta = Modifica contrasigno pro iste sito
-rec-pw-1 =
-    Face le contrasigno unic e differente de tote le alteres que tu usa.
-    Un bon strategia a sequer es de combinar duo o plus parolas sin relation inter se pro crear un phrase-clave complete.
+rec-pw-1-2 =
+    Rende iste contrasigno unic e differente de tote le alteros que tu usa. 
+    Un bon strategia a sequer es de combinar duo o plus parolas sin relation 
+    pro crear un phrase-clave complete, e includer numeros e symbolos.
 # Recommendation subhead
 rec-pw-2-subhead = Renova le altere credentiales que usa le mesme contrasigno
 # Link title
@@ -40,16 +41,11 @@ rec-email-mask-subhead = Usa un masca email
 rec-email-cta = Prova { -brand-relay }
 rec-email = Divulgar tu adresse de e-mail real rende plus facile pro piratas informatic o traciatores trovar tu contrasignos o attaccar te in linea. Un servicio como { -brand-relay } cela tu adresse de e-mail real e reexpedi le messages a tu cassa de entrata real.
 # Recommendation subhead
-rec-ip-subhead = Usa un servicio que masca tu adresse IP
-# Link title
-rec-ip-us-cta = Prova { -brand-fpn }
-rec-ip-us = Tu adresse de protocollo internet (IP) indica tu position geographic e fornitor de servicio internet. Un servicio como { -brand-fpn } masca tu adresse IP e cela tu position.
-rec-ip-non-us = Tu adresse de protocollo internet (IP) indica tu position geographic e fornitor de servicio internet. Con un rete virtual private (VPN), tu pote celar tu position e mascar tu adresse IP.
-# Recommendation subhead
 rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Tu adresse del protocollo Internet (IP) identifica tu position geographic e tu fornitor de servicio internet. Un servicio 
-    como { -brand-mozilla-vpn } cela tu adresse IP e tu position pro tu integre apparato.
+rec-moz-vpn-update-2 =
+    Tu adresse de Protocollo Internet (IP) identifica tu position geographic 
+    e fornitor de servicio internet. Un servicio como { -brand-mozilla-vpn } 
+    masca tu adresse IP e cela tu position.
 rec-hist-pw-subhead = Non reusa contrasignos
 # Link title
 rec-hist-pw-cta-fx = Vide le credentiales in { -brand-name }

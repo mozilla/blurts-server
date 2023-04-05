@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = VPN Mozilla
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Email non valide
 user-add-too-many-emails = Tu jam survelia le maxime numero de adresses email.
 user-add-email-verify-subject = Verifica tu subscription a { -product-name }.
 user-add-duplicate-email = Iste email ha jam essite addite a { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Vade sur { $preferencesLink } pro controlar le stato de { $userEmail }.
 error-headline = Error
 user-verify-token-error = Un token de verification es necessari.
@@ -50,11 +51,11 @@ scan-placeholder = Insere le adresse de e-mail
 scan-submit = Cerca tu adresse de e-mail
 scan-error = Debe esser un adresse de e-mail valide.
 download-firefox-banner-button = Discarga { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Inviate!
 sign-up = Inscriber se
 form-signup-error = Debe esser un adresse de email valide
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Data del violation de securitate:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Contos compromittite:
@@ -64,6 +65,8 @@ unsub-headline = Remover le subscription de { -product-name-nowrap }
 unsub-blurb = Isto removera tu email ab le lista de { -product-name-nowrap } e tu non recipera plus alertas quando nove violationes es annunciate.
 unsub-button = Remover le subscription
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Datos sur le violation fornite per { $hibp-link }
 share-twitter = Le major parte del gente ha circa 100 contos in linea. Ha un del tues essite exponite in un violation de datos? Verifica lo.
 share-facebook-headline = Discoperi si tu ha essite parte de un violation de datos
@@ -93,8 +96,6 @@ about-firefox-monitor = A proposito de { -product-name }
 preferences = Preferentias
 # Link title
 home = Initio
-# Link title
-breaches = Violationes
 # Link title
 security-tips = Consilios de securitate
 fxa-account = { -brand-fxa }
@@ -166,7 +167,9 @@ feat-security-tips = Consilios de securitate pro proteger tu contos
 feat-sensitive = Recerca avantiate in le violationes de datos sensibile
 feat-enroll-multiple = Inscribe plure emails in le controlo del violationes
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Appare in { $breachCount } violation cognoscite.
@@ -178,6 +181,8 @@ get-email-alerts = Sta secur: recipe avisos email quando tu informationes appare
 search-for-your-email = Cerca tu adresse email in violationes public de datos a partir de 2007.
 back-to-top = Receder al apice
 comm-opt-0 = Adverti me per email si un de mi adresses listate hic infra appare in un violation de datos.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Invia tote le avisos de violation a { $primaryEmail }.
 stop-monitoring-this = Cessa de controlar iste email.
 resend-verification = Reinviar email de verification
@@ -186,7 +191,7 @@ send-verification = Inviar ligamine de verification
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Summario del violationes
 show-breaches-for-this-email = Monstrar tote le violationes pro iste email.
@@ -197,8 +202,15 @@ remove-fxm-blurb = Disactivar le avisos de { -product-name }. Tu { -brand-fxa } 
 manage-email-addresses = Gerer adresses email
 # Link title
 latest-breach-link = Vide si tu era in iste violation
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Benvenite retro, { $userName }!
 welcome-user = Benvenite, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } ha trovate tu email in un nove violation de datos.
 your-info-was-discovered-headline = Tu informationes ha essite discoperite in un nove violation de datos.
 your-info-was-discovered-blurb = Tu te ha inscribite pro reciper avisos de { -product-name } quando tu adresse de e-mail appare in un violation de datos. Ecce lo que nos sape sur iste violation.
@@ -212,6 +224,8 @@ ba-next-step-blurb-3 = Usa un gestor de contrasignos pro crear contrasignos fort
 faq1 = Io non recognosce iste compania o sito web. Proque me concerne iste violation?
 faq2 = Proque ha il prendite tante tempore notificar me de iste violation?
 faq3 = Como sape io si isto es un email legitime de { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NOVE VIOLATION TROVATE
@@ -219,24 +233,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Recipe avisos in corso con un { -brand-fxa }.
 account-not-required = { -brand-name } navigator non necessari a un { -brand-fxa }. Tu pote reciper information re le servicios de { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Ha tu information essite exponite in le violation de datos de { $breachName }?
-find-out-if = Discoperi si tu datos era exponite in iste violation.
 fb-not-comp = Iste email non appareva in le violation { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Comocunque, illo appareva in { $breachCount } altere violation.
        *[other] Comocunque, illo appareva in { $breachCount } altere violationes.
     }
 fb-comp-only = Iste email appareva in le violation de datos { $breachName }.Iste email appareva in le violation { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Iste e-mail appareva in { $breachCount } violation cognoscite de datos, includite { $breachName }.
        *[other] Iste e-mail appareva in { $breachCount } violationes cognoscite de datos, includite { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Nulle altere violation ha essite trovate in un recerca basic.
 no-results-blurb = Nos lo regretta, ille violation non es in nostre base de datos.
-all-breaches-headline = Tote le violationes in { -product-name }
-search-breaches = Cercar violationes
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note = <span>Tu e-mail non appare in iste fuga, ma tu numero de telephono pote ancora esser vulnerabile.</span> Parte del contos ha essite compromittite in le fuga de Facebook, includite numeros de telephono e altere informationes personal, ma non adresses email.
@@ -289,6 +311,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Vider altere violationes
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Iste e-mail appareva in 1 violation cognoscite de datos.
@@ -297,6 +321,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Resultatos pro: { $userEmail }
 other-monitored-emails = Altere emails spiate
 email-verification-required = Verification del email obligatori.
@@ -312,6 +338,8 @@ get-ongoing-breach-monitoring = Survelia continuemente le violationes de datos p
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Discoperir.
 new-unsub-error = Tu debera remover te del inscription per un del emails inviate ab { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Nonobstante, illo appareva in { $breachCount } altere violation cognoscite.
@@ -329,10 +357,12 @@ breach-overview-title = Vision general
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Le { $breachDate }, { $breachTitle } ha essite violate. Post le discoperta e verification de iste violation, nos lo ha addite a nostre base de datos le { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } Preferentias
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = In session como: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -349,12 +379,16 @@ email-sent = Message inviate!
 want-to-add = Vole adder un altere adresse de e-mail?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Verifica le ligamine inviate a { $userEmail } pro adder lo a { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Email verificate con successo!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Nos te avisara si tu { $email } essera involvite in un nove violation de datos.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -368,15 +402,17 @@ sign-in-nested = aperir session
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Gere tote le adresses email in { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Notificationes de alerta de violation
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Violation addite:
 how-hackers-work-desc = Protege tu contrasignos ab cybercriminales, pois que es illos que illes desira plus.
 what-to-do-after-breach-desc = Bloca tu contos pro evitar que tu informationes cade in manos improprie.
@@ -398,7 +434,11 @@ see-additional-recs = Vide altere recommendationes
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } appareva in iste violation. <a>Que facer?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } de tu adresses email appareva in iste violation. <a>Que facer?</a>
@@ -423,6 +463,8 @@ confirmation-3-subhead = Un altere resolvite. Optimo!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Es tu nove contrasigno unic, forte e difficile a divinar? <a>Discoperi lo</a>
 generic-confirmation-subhead = Isto violation ha essite marcate como resolvite
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Pro vider le violation restante, va a tu pannello de controlo.
@@ -432,9 +474,13 @@ return-to-breach-details-link = Retornar al detalios del violation
 go-to-dashboard-link = Ir al pannello de controlo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% complete
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } resolvite
@@ -442,6 +488,9 @@ num-resolved =
     }
 progress-intro-subhead = Nova in { -product-name }: marcar violationes como resolvite
 progress-intro-message = Post revider le detalios re un violation e prender mesuras pro proteger tu informationes personal, tu pote marcar violationes como resolvite
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } de { $numTotalBreaches } violationes marcate como resolvite
@@ -461,16 +510,20 @@ progress-complete-message = <span>Prende gusto, justo?</span> Si tu desira facer
 ##
 
 resolve-this-breach-link = Resolver iste violation
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Marcate le resolvite:
 hide-resolved-button = Celar le resolvite
 show-resolved-button = Monstrar resolvites
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Contrasigno exponite in violationes non resolvite
        *[other] Contrasignos exponite in violationes non resolvite
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Violation de datos cognoscite marcate como resolvite
@@ -501,7 +554,10 @@ vpn-promo-copy-new = Protege tu datos in linea – e selige un plano de subscrip
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Tu ubication: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Protege te</em> con { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Protegite</em> con { -brand-mozilla-vpn }.
@@ -510,7 +566,8 @@ vpn-banner-title-2 = Tu ubication pote esser traciate si tu non usa un VPN.
 vpn-banner-subtitle-2 = Protege tu position e naviga con securitate in 3 passos
 vpn-banner-status-protected = Stato actual: <em>Protegite ✓</em>
 vpn-banner-status-not-protected = Stato actual: <em>Non protegite ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Adresse IP: { $ip-address }
 vpn-banner-step-1 = Abona te a { -brand-mozilla-vpn }
 vpn-banner-step-2 = Eliger le position del VPN
@@ -569,6 +626,8 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Le fundation Mozilla
 -brand-github = GitHub
+-brand-mozilla-vpn = VPN Mozilla
+-brand-relay = Firefox Relay
 
 ##
 
@@ -590,6 +649,8 @@ sign-in = Aperir session
 site-nav-breaches-link = Resolver violationes de datos
 site-nav-settings-link = Parametros
 site-nav-help-link = Adjuta e assistentia
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -603,9 +664,10 @@ menu-item-logout = Clauder session
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Conditiones de uso e confidentialitate
 github = { -brand-github }
+footer-nav-all-breaches = Tote le violationes
 
 ## Error page
 
@@ -618,3 +680,11 @@ error-page-error-404-cta-button = Retornar
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = Alco errate eveniva { $errorCode }
 error-page-error-other-copy = Retenta o reveni plus tarde
+
+## Breach overview page
+
+search-breaches = Cercar violationes
+
+## Public breach detail page
+
+breach-detail-cta-signup = Verificar si il ha violationes

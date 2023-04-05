@@ -708,7 +708,7 @@ menu-item-settings = Nastavitve
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Pogoji in zasebnost
 github = { -brand-github }
 

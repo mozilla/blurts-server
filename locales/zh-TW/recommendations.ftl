@@ -10,7 +10,7 @@ rec-ssn =
 rec-pw-1-subhead = 更改密碼
 # Link title
 rec-pw-1-cta = 更改此網站的密碼
-rec-pw-1 = 使用獨特而不重複的密碼。一個好方式是結合多組不相關的文字成為密碼詞組。
+rec-pw-1-2 = 使用獨特而不重複的密碼。一個好方式是結合多組不相關的字母、英文詞彙、數字、特殊符號，成為密碼詞組。
 # Recommendation subhead
 rec-pw-2-subhead = 更新其他使用相同密碼的網站的登入資訊
 # Link title
@@ -38,14 +38,10 @@ rec-email-mask-subhead = 使用轉寄信箱
 rec-email-cta = 試用 { -brand-relay }
 rec-email = 給出您的實際電子郵件地址，會讓駭客或追蹤器更容易在網路上找到您或追蹤您。諸如 { -brand-relay } 的服務，可先代收電子郵件，再轉寄到您實際的信箱。
 # Recommendation subhead
-rec-ip-subhead = 使用可隱藏您的 IP 位置的服務
-# Link title
-rec-ip-us-cta = 試用 { -brand-fpn }
-rec-ip-us = 您的 IP 地址可以對映到所在位置與網路公司。使用類似 { -brand-fpn } 的服務則可以將 IP 位置隱藏起來，藉以隱藏您的所在位置。
-rec-ip-non-us = 您的 IP 地址可以對映到所在位置與網路公司。使用 VPN 服務則可以將 IP 位置隱藏起來，藉以隱藏您的所在位置。
+rec-ip-subhead-2 = 使用 VPN 來隱藏您的實際 IP 位置
 # Recommendation subhead
 rec-moz-vpn-cta = 試用 { -brand-mozilla-vpn }
-rec-moz-vpn-update = 您的 IP 地址可以對映到所在位置與網路公司。使用類似 { -brand-mozilla-vpn } 的服務則可以將 IP 位置隱藏起來，藉以隱藏您的所在位置。
+rec-moz-vpn-update-2 = 您的 IP 地址可以對映到所在位置與使用的網路業者。使用類似 { -brand-mozilla-vpn } 的服務則可以將 IP 位置隱藏起來，藉以隱藏您的實際所在位置。
 rec-hist-pw-subhead = 避免重複使用密碼
 # Link title
 rec-hist-pw-cta-fx = 到 { -brand-name } 檢視登入資訊

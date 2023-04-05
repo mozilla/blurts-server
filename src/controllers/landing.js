@@ -11,6 +11,12 @@ function landingPage (req, res) {
     nonce: res.locals.nonce
   }
 
+  // Backward-compatibility with Monitor V1, for SEO.
+  if (req.query.breach) {
+    const breach = encodeURIComponent(req.query.breach)
+    return res.redirect(`/breach-details/${breach}`)
+  }
+
   res.send(guestLayout(data))
 }
 

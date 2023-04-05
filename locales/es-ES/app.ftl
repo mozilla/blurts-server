@@ -639,6 +639,6 @@ sign-in = Iniciar sesión
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Términos y privacidad
 github = { -brand-github }

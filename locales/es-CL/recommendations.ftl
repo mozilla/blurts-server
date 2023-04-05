@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Cambia tu contraseña
 # Link title
 rec-pw-1-cta = Cambia tu contraseña para este sitio
-rec-pw-1 =
+rec-pw-1-2 =
     Haz que esta contraseña sea única y diferente a otras que usas 
     Una buena estrategia a seguir es combinar dos o más palabras 
-    no relacionadas para crear una contraseña entera.
+    no relacionadas para crear una contraseña entera, e incluir números y símbolos.
 # Recommendation subhead
 rec-pw-2-subhead = Actualiza otras credenciales en las que usas la misma contraseña
 # Link title
@@ -54,23 +54,13 @@ rec-email =
     encontrar tus contraseñas o tenerte en la mira mientras estás en línea. Un servicio como { -brand-relay }
     oculta tu dirección de correo electrónico real mientras reenvía correos a tu bandeja de entrada real.
 # Recommendation subhead
-rec-ip-subhead = Usa un servicio que enmascare tu dirección IP
-# Link title
-rec-ip-us-cta = Prueba { -brand-fpn }
-rec-ip-us =
-    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
-    y tu proveedor de servicios de internet. Un servicio como { -brand-fpn } 
-    enmascara tu dirección IP para ocultar tu ubicación.
-rec-ip-non-us =
-    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
-    y tu proveedor de servicios de internet. Con una red privada virtual (VPN), puedes ocultar tu ubicación 
-    y enmascarar tu dirección IP.
+rec-ip-subhead-2 = Usa un VPN para enmascarar tu dirección IP
 # Recommendation subhead
 rec-moz-vpn-cta = Prueba { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Tu dirección de protocolo de Internet (dirección IP) puede revelar tu ubicación 
-    y tu proveedor de servicios de internet. Un servicio como { -brand-mozilla-vpn }
-    oculta tu dirección IP y ubicación para todo tu dispositivo.
+rec-moz-vpn-update-2 =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
+    y tu proveedor de servicios de internet. Un servicio como{ -brand-mozilla-vpn } 
+    enmascara tu dirección IP para ocultar tu ubicación.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver credenciales en { -brand-name }
