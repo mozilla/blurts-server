@@ -4,6 +4,12 @@
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 import * as dotenv from 'dotenv'
+import { readFileSync } from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 dotenv.config({ path: '../.env' })
 
@@ -53,7 +59,7 @@ const optionalEnvVars = [
   'SENTRY_DSN_LEGACY'
 ]
 
-const AppConstants = { }
+const AppConstants = {}
 
 if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
   process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
@@ -69,5 +75,25 @@ for (const v of requiredEnvVars) {
 optionalEnvVars.forEach(key => {
   if (key in process.env) AppConstants[key] = process.env[key]
 })
+
+// Create HIBP breach link blocklist
+const linkStatusList = JSON.parse(readFileSync(path.join(
+  __dirname,
+  './hibp-breach-link-status-list.json'
+)))
+
+const linkBlockList = linkStatusList.links
+  .reduce((blockList, breachLink) => {
+    const { status, statusCode } = breachLink
+
+    if (status !== 'alive' || statusCode !== 200) {
+      blockList.push(breachLink.link)
+    }
+
+    return blockList
+  }, [])
+  .join(',')
+
+AppConstants.HIBP_BREACH_LINK_BLOCKLIST = linkBlockList
 
 export default Object.freeze(AppConstants)

@@ -71,7 +71,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 breach-checklist-pw-header-3 =
   {
     $breachedCompanyLink ->
-      [zero] Go to the company’s website to change your password and enable two-factor authentication (2FA).
+      [empty] Go to the company’s website to change your password and enable two-factor authentication (2FA).
      *[other] Go to { $breachedCompanyLink } to change your password and enable two-factor authentication (2FA).
   }
 
@@ -145,7 +145,7 @@ breach-checklist-phone-header-2 = Protect your phone number with a masking servi
 breach-checklist-sq-header-3 =
   {
     $breachedCompanyLink ->
-      [zero] Update your security questions on the company’s website.
+      [empty] Update your security questions on the company’s website.
      *[other] Update your security questions on { $breachedCompanyLink }.
   }
 
