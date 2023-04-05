@@ -685,10 +685,14 @@ error-page-error-other-copy = Retenta o reveni plus tarde
 
 ## Breach overview page
 
+all-breaches-headline-2 = Tote le violationes disvelate per { -brand-fx-monitor }
+all-breaches-lead = Nos survelia tote le note violationes de datos pro discoperir si tu informationes personal era compromittite. Ecce un lista complete de tote le violationes que ha essite signalate desde 2007.
 search-breaches = Cercar violationes
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Datos exponite:
 
 ## Public breach detail page
 
+find-out-if-2 = Discoperi si tu era implicate in iste violation
+find-out-if-description = Nos te adjutara a presto vider si tu adresse email era exponite in iste violationes, e a comprender que facer postea.
 breach-detail-cta-signup = Verificar si il ha violationes
