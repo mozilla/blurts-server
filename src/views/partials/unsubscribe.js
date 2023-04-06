@@ -4,6 +4,15 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
+/**
+ * @typedef {object} PartialData
+ * @property {string} csrfToken
+ */
+
+/**
+ * @param {PartialData} data
+ * @returns string
+ */
 const unsubscribe = data => `
   <section class="unsubscribe">
     <h1>${getMessage('unsub-headline')}</h1>

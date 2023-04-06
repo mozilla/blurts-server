@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Geçersiz e-posta
 user-add-too-many-emails = Azami sayıda e-posta adresini gözlemliyorsunuz.
 user-add-email-verify-subject = { -product-name } aboneliğinizi doğrulayın.
 user-add-duplicate-email = Bu e-posta zaten { -product-name }'e eklenmiş.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = { $userEmail } adresinin durumunu kontrol etmek için { $preferencesLink }inizi ziyaret edin.
 error-headline = Hata
 user-verify-token-error = Doğrulama jetonu gerekli.
@@ -50,11 +51,11 @@ scan-placeholder = E-posta adresinizi yazın
 scan-submit = E-postamı ara
 scan-error = Geçerli bir e-posta adresi olmalı.
 download-firefox-banner-button = { -brand-name }’u indir
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Gönderildi!
 sign-up = Kaydol
 form-signup-error = Geçerli bir e-posta adresi olmalı
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = İhlal tarihi:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Ele geçirilen hesap sayısı:
@@ -64,6 +65,8 @@ unsub-headline = { -product-name-nowrap } aboneliğinden çık
 unsub-blurb = E-posta adresiniz { -product-name-nowrap } listesinden kaldırılacak ve bundan sonraki ihlallerle ilgili uyarı almayacaksınız.
 unsub-button = Abonelikten çık
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = İhlal verileri { $hibp-link } tarafından sağlanmaktadır
 share-twitter = Çoğu kişinin yaklaşık 100 çevrimiçi hesabı var. Hesaplarınızdan birisi veri ihlaline maruz kalmış olabilir mi? Hemen öğrenin.
 share-facebook-headline = Verilerinizin çalınıp çalınmadığını öğrenin
@@ -105,8 +108,6 @@ about-firefox-monitor = { -product-name } hakkında
 preferences = Tercihler
 # Link title
 home = Ana sayfa
-# Link title
-breaches = İhlaller
 # Link title
 security-tips = Güvenlik ipuçları
 fxa-account = { -brand-fxa }
@@ -184,7 +185,9 @@ feat-security-tips = Hesaplarınızı korumanız için güvenlik ipuçları
 feat-sensitive = Hassas veri ihlalerinde gelişmiş arama
 feat-enroll-multiple = İhlal izlemesine birden fazla e-posta ekleyin
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Bilinen { $breachCount } ihlalde yer alıyor.
@@ -196,6 +199,8 @@ get-email-alerts = Güvende kalın: Bilgileriniz yeni bir ihlalde yer alırsa e-
 search-for-your-email = 2007’ye uzanan bilindik veri ihlallerinde e-posta adresinizi arayın.
 back-to-top = Başa dön
 comm-opt-0 = Aşağıdaki e-posta adreslerimden birisi bir veri ihlalinde tespit edilirse bana e-posta gönder.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Tüm ihlal uyarılarını { $primaryEmail } adresine gönder.
 stop-monitoring-this = Bu e-postayı izlemeyi durdur.
 resend-verification = Doğrulama e-postasını yeniden gönder
@@ -204,7 +209,7 @@ send-verification = Doğrulama bağlantısını gönder
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = İhlal özeti
 show-breaches-for-this-email = Bu e-postayı içeren tüm ihlalleri göster.
@@ -215,8 +220,15 @@ remove-fxm-blurb = { -product-name } bildirimlerini kapatın. { -brand-fxa } etk
 manage-email-addresses = E-posta adreslerini yönet
 # Link title
 latest-breach-link = Bu ihlale dahil olup olmadığınızı öğrenin
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Yeniden hoş geldin { $userName }!
 welcome-user = Hoş geldin { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } yeni bir veri ihlalinde e-posta adresinizi buldu
 your-info-was-discovered-headline = Bilgileriniz yeni bir veri ihlalinde tespit edildi.
 your-info-was-discovered-blurb = E-posta adresiniz bir veri ihlalinde karşımıza çıkarsa size haber vermemiz için { -product-name }’e kaydolmuştunuz. İşte bu ihlal hakkında öğrendiklerimiz…
@@ -230,6 +242,8 @@ ba-next-step-blurb-3 = Güçlü ve benzersiz parolalar oluşturmak için bir par
 faq1 = Bu şirketi veya web sitesini tanımıyorum. Neden bu ihlalde yer alıyorum?
 faq2 = Bu ihlali bana bildirmeniz neden bu kadar uzun sürdü?
 faq3 = Bu e-postanın gerçekten { -product-name } tarafından gönderildiğini nasıl anlayabilirim?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } YENİ İHLAL BULUNDU
@@ -237,24 +251,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = { -brand-fxa } ile düzenli uyarılar alabilirsiniz.
 account-not-required = { -brand-fxa } için { -brand-name } tarayıcısı gerekmez. Size { -brand-Mozilla } hizmetleri hakkında bilgi gönderebiliriz.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Bilgileriniz { $breachName } ihlalinde açığa çıktı mı?
-find-out-if = Bilgilerinizin bu veri ihlalinde açığa çıkıp çıkmadığını öğrenin.
 fb-not-comp = Bu e-posta { $breachName } ihlalinde yer almıyor.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Ancak başka { $breachCount } ihlalde yer alıyor.
        *[other] Ancak başka { $breachCount } ihlalde yer alıyor.
     }
 fb-comp-only = Bu e-posta adresi { $breachName } ihlalinde yer alıyor.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Bu e-posta adresi { $breachName } dahil { $breachCount } başka bilinen ihlalde bulundu.
        *[other] Bu e-posta adresi { $breachName } dahil { $breachCount } başka bilinen ihlalde bulundu.
     }
+
+##
+
 no-other-breaches-found = Temel aramada başka bir ihlal bulunamadı.
 no-results-blurb = Üzgünüz, bu ihlal veritabanımızda yok.
-all-breaches-headline = { -product-name }’deki tüm ihlaller
-search-breaches = İhlallerde ara
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note = <span>E-posta adresiniz bu sızıntıda yer almıyor ama telefon numaranız yine de ele geçirilmiş olabilir.</span> Facebook sızıntısında ele geçirilen bazı hesaplarda e-posta adresleri yer almamasına rağmen telefon numaraları ve başka kişisel bilgiler yer alıyordu. Daha önce Facebook hesabı açtıysanız -şu anda kullanmıyor olsanız bile- kendini korumak için şu adımları atmanızı öneririz
@@ -304,6 +326,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Diğer ihlallere bakın
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Bu e-posta, bilinen 1 veri ihlalinde yer alıyor.
@@ -312,6 +336,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Sonuçlar: { $userEmail }
 other-monitored-emails = İzlenen diğer e-postalar
 email-verification-required = E-posta doğrulaması gerekiyor
@@ -327,6 +353,8 @@ get-ongoing-breach-monitoring = İstediğiniz sayıda e-posta adresinin ihlaller
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Öğrenin
 new-unsub-error = { -product-name } tarafından gönderilen e-postalardaki linkleri kullanarak üyelikten çıkabilirsiniz.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Ancak başka { $breachCount } ihlalde yer alıyor.
@@ -344,10 +372,12 @@ breach-overview-title = Genel Bakış
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = { $breachDate } tarihinde { $breachTitle } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } tercihleri
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = { $userEmail } olarak giriş yapıldı
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -364,12 +394,16 @@ email-sent = E-posta gönderildi!
 want-to-add = Başka bir e-posta eklemek ister misiniz?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = { $userEmail } adresine gönderilen bağlantıyı onaylarak adresinizi { -product-name }'e ekleyin.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = E-posta başarıyla doğrulandı!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Bir veri ihlalinde { $email } adresine rastlarsak sizi uyaracağız.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -383,15 +417,17 @@ sign-in-nested = giriş yapın
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = { $preferencesLink } üzerinden tüm e-postalarınızı yönetebilirsiniz.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = İhlal uyarısı bildirimleri
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Eklenme tarihi:
 how-hackers-work-desc = Parolalarınızı siber suçlulardan koruyun çünkü bu onların en çok umursadığı şey.
 what-to-do-after-breach-desc = Hesaplarınızı kilitleyerek bilgilerinizin yanlış kişilerin eline geçmesini önleyin.
@@ -413,7 +449,11 @@ see-additional-recs = Ek tavsiyelere bakın
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } e-posta adresiniz bu ihlalde yer alıyor. <a>Şimdi ne yapmalıyım?</a>
@@ -440,6 +480,8 @@ confirmation-3-subhead = Biri daha gitti. İyi iş!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Yeni parolanız benzersiz, güçlü ve tahmin edilmesi zor mu? <a>Öğrenin</a>
 generic-confirmation-subhead = Bu ihlal çözüldü olarak işaretlendi
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Kalan ihlali görmek için kontrol panelinize gidin.
@@ -449,9 +491,13 @@ return-to-breach-details-link = İhlal ayrıntılarına dön
 go-to-dashboard-link = Panoya git
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = %{ $percentComplete } tamamlandı
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } çözüldü
@@ -461,6 +507,9 @@ progress-intro-subhead = Yeni { -product-name } özelliği: İhlalleri "çözül
 progress-intro-message =
     Bir ihlalle ilgili ayrıntıları inceleyip kişisel bilgilerinizi korumak için gereken adımları attıktan sonra 
     o ihlali “çözüldü” olarak işaretleyebilirsiniz.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numTotalBreaches } ihlalden { $numResolvedBreaches } tanesi çözüldü olarak işaretlendi
@@ -484,16 +533,20 @@ progress-complete-message = <span>Hoşunuza gitti mi?</span> Vaktiniz varsa şim
 ##
 
 resolve-this-breach-link = Bu ihlali çöz
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Çözüldü olarak işaretlendi:
 hide-resolved-button = Çözülenleri gizle
 show-resolved-button = Çözülenleri göster
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] parola çözülmemiş ihlallerde ele geçirildi
        *[other] parola çözülmemiş ihlallerde ele geçirildi
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] veri ihlali “çözüldü” olarak işaretlendi
@@ -524,7 +577,10 @@ vpn-promo-copy-new = Çevrimiçi verilerinizi koruyun. Size en uygun VPN aboneli
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Konumunuz: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = { -brand-mozilla-vpn } ile <em>kendinizi koruyun</em>.
 vpn-banner-protected-with-vpn = { -brand-mozilla-vpn } ile <em>korunuyorsunuz</em>.
@@ -533,7 +589,8 @@ vpn-banner-title-2 = VPN kullanmıyorsanız konumunuz takip edilebilir.
 vpn-banner-subtitle-2 = 3 adımda konumunuzu gizleyin ve güvenle gezinin
 vpn-banner-status-protected = Mevcut durum: <em>Korunuyor ✓</em>
 vpn-banner-status-not-protected = Mevcut durum: <em>Korunmuyor ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP adresi: { $ip-address }
 vpn-banner-step-1 = { -brand-mozilla-vpn }’e abone olun
 vpn-banner-step-2 = VPN konumunu seçin
@@ -592,6 +649,8 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Vakfı
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -613,6 +672,10 @@ sign-in = Giriş yap
 site-nav-breaches-link = Veri ihlallerini çöz
 site-nav-settings-link = Ayarlar
 site-nav-help-link = Yardım ve destek
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Diğer güvenlik araçlarımızı deneyin:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -626,9 +689,10 @@ menu-item-logout = Çıkış yap
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Şartlar ve gizlilik
 github = { -brand-github }
+footer-nav-all-breaches = Tüm ihlaller
 
 ## Error page
 
@@ -641,3 +705,15 @@ error-page-error-404-cta-button = Geri dön
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Bir hata oluştu
 error-page-error-other-copy = Lütfen daha sonra tekrar deneyin
+
+## Breach overview page
+
+all-breaches-headline-2 = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
+search-breaches = İhlallerde ara
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Ele geçirilen veriler:
+
+## Public breach detail page
+
+find-out-if-2 = Bu ihlale karışıp karışmadığınızı öğrenin
+breach-detail-cta-signup = İhlalleri kontrol et

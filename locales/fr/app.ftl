@@ -675,6 +675,8 @@ sign-in = Se connecter
 site-nav-breaches-link = Régler vos fuites de données
 site-nav-settings-link = Paramètres
 site-nav-help-link = Aide et assistance
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Essayez nos autres outils de sécurité :
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -690,7 +692,7 @@ menu-item-logout = Déconnexion
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Confidentialité et conditions d’utilisation
 github = { -brand-github }
 footer-nav-all-breaches = Toutes les fuites de données
@@ -710,8 +712,13 @@ error-page-error-other-copy = Veuillez réessayer ou revenir plus tard
 ## Breach overview page
 
 all-breaches-headline-2 = Toutes les fuites de données détectées par { -brand-fx-monitor }
+all-breaches-lead = Nous surveillons toutes les fuites de données connues pour savoir si vos informations personnelles ont été compromises. Voici une liste complète de toutes les fuites de données qui ont été signalées depuis 2007.
 search-breaches = Rechercher des fuites de données
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Données ayant fuité :
 
 ## Public breach detail page
 
+find-out-if-2 = Vérifiez si cette fuite de données vous concerne
+find-out-if-description = Nous vous aiderons à vérifier rapidement si votre adresse e-mail a été compromise dans cette fuite de données et à comprendre ce qu’il faut faire ensuite.
 breach-detail-cta-signup = Vérifier les fuites de données

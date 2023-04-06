@@ -737,7 +737,7 @@ menu-item-logout = Выйти
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Условия и конфиденциальность
 github = { -brand-github }
 footer-nav-all-breaches = Все утечки

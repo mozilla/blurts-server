@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { getBreachLogo } from '../../utils/breach-logo.js'
 import { getLocale, getMessage } from '../../utils/fluent.js'
 import { getAllPriorityDataClasses, getAllGenericRecommendations } from '../../utils/recommendations.js'
 
@@ -129,9 +130,11 @@ function makeBreachDetails (breach) {
 
 export const breachDetails = data => `
   <header class="breach-detail-header">
-    <img class="breach-detail-logo breach-logo" alt="" src="https://monitor.cdn.mozilla.net/img/logos/${data.breach.LogoPath}" />
     <div class="breach-detail-meta">
-      <h1>${data.breach.Title}</h1>
+      <h1>
+        ${getBreachLogo(data.breach, data.breachLogos)}
+        ${data.breach.Title}
+      </h1>
       ${getBreachCategory(data.breach) === 'website-breach'
         ? `<a href="https://${data.breach.Domain}" class="breach-detail-meta-domain" rel="nofollow noopener noreferrer" data-event-label="${data.breach.Domain}" data-event-action="Engage" data-event-category="Breach Detail: Website URL Link" target="_blank">${data.breach.Domain}</a>`
         : ''}

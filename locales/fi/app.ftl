@@ -693,7 +693,7 @@ menu-item-logout = Kirjaudu ulos
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Ehdot ja tietosuoja
 github = { -brand-github }
 

@@ -12,9 +12,6 @@ rec-ssn =
 rec-pw-1-subhead = Parolanızı değiştirin
 # Link title
 rec-pw-1-cta = Bu sitedeki parolanızı değiştirin
-rec-pw-1 =
-    Benzersiz ve başka yerlerde kullanmadığınız bir parola seçin. 
-    Birbiriyle ilgisiz iki veya daha fazla kelimeyi birleştirerek iyi bir parola oluşturabilirsiniz.
 # Recommendation subhead
 rec-pw-2-subhead = Aynı parolayı kullanan diğer hesaplarınızı güncelleyin
 # Link title
@@ -51,21 +48,9 @@ rec-email-mask-subhead = Bir e-posta maskesi kullanın
 rec-email-cta = { -brand-relay }’i deneyin
 rec-email = Gerçek e-posta adresinizi vermek, hacker’ların ve botların parolalarınızı bulmasını ve sizi hedef almasını kolaylaştırır { -brand-relay } gerçek e-posta adresinizi gizler ve gelen e-postaları gerçek gelen kutunuza iletir.
 # Recommendation subhead
-rec-ip-subhead = IP adresinizi gizleyen bir servis kullanın
-# Link title
-rec-ip-us-cta = { -brand-fpn }'i deneyin
-rec-ip-us =
-    IP adresiniz konumunuzu ve internet servis sağlayıcısınızı açığa çıkarır. { -brand-fpn } gibi bir hizmeti kullanarak
-    IP adresinizi maskeleyip konumunuzu gizleyebilirsiniz.
-rec-ip-non-us =
-    İnternet Protokolü adresiniz (IP adresi) konumunuzu ve internet servis 
-    sağlayıcınızı belirler. Sanal özel ağ (VPN) ile konumunuzu gizleyebilir ve 
-    IP adresinizi maskeleyebilirsiniz.
+rec-ip-subhead-2 = VPN kullanarak IP adresinizi gizleyin
 # Recommendation subhead
 rec-moz-vpn-cta = { -brand-mozilla-vpn }’i deneyin
-rec-moz-vpn-update =
-    IP adresiniz konumunuzu ve internet servis sağlayıcısınızı açığa çıkarabilir. { -brand-mozilla-vpn } gibi bir hizmeti kullanarak
-    IP adresinizi ve cihazınızın konumunu gizleyebilirsiniz.
 rec-hist-pw-subhead = Aynı parolayı başka yerlerde kullanmayın
 # Link title
 rec-hist-pw-cta-fx = { -brand-name } hesaplarınızı görüntüleyin

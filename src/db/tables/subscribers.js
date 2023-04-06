@@ -231,11 +231,12 @@ async function deleteResolutionsWithEmail (id, email) {
   })
   const { breach_resolution: breachResolution } = subscriber
   // if email exists in breach resolution, remove it
-  if (breachResolution[email]) {
+  if (breachResolution && breachResolution[email]) {
     delete breachResolution[email]
+    console.info(`Deleting resolution with email: ${email}`)
+    return await setBreachResolution(subscriber, breachResolution)
   }
-
-  return await setBreachResolution(subscriber, breachResolution)
+  console.info(`No resolution with ${email} found, skip`)
 }
 
 async function updateBreachStats (id, stats) {

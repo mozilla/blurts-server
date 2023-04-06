@@ -600,7 +600,7 @@ menu-item-logout = Titz'apïx molojri'ïl
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Taq Ojqanem chuqa' Ichinanem
 github = { -brand-github }
 

@@ -793,7 +793,7 @@ menu-item-logout = Вийти
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Умови та приватність
 github = { -brand-github }
 footer-nav-all-breaches = Усі витоки
@@ -813,6 +813,7 @@ error-page-error-other-copy = Спробуйте ще раз або поверн
 ## Breach overview page
 
 all-breaches-headline-2 = Усі витоки, виявлені { -brand-fx-monitor }
+all-breaches-lead = Ми відстежуємо всі відомі витоки даних, щоб з’ясувати, чи була скомпрометована ваша особиста інформація. Ось повний список усіх витоків, про які було повідомлено з 2007 року.
 search-breaches = Пошук витоків
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Дата витоку:

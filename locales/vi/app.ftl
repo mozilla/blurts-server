@@ -678,7 +678,7 @@ menu-item-logout = Đăng xuất
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Điều khoản & quyền riêng tư
 github = { -brand-github }
 

@@ -63,6 +63,11 @@ const createEmailList = (emails, breachCounts) => `
   </ul>
 `
 
+/**
+ * @param {string} csrfToken
+ * @param {{ isChecked: boolean; option: unknown; }} options
+ * @returns string
+ */
 const optionInput = (csrfToken, { isChecked, option }) => `
   <input
     ${isChecked ? 'checked' : ''}
@@ -74,6 +79,10 @@ const optionInput = (csrfToken, { isChecked, option }) => `
   >
 `
 
+/**
+ * @param {{ csrfToken: string; allEmailsToPrimary: boolean }} options
+ * @returns string
+ */
 const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   <div class='settings-alert-options'>
     <label class='settings-radio-input'>
@@ -98,6 +107,16 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   </div>
 `
 
+/**
+ * @typedef {object} PartialData
+ * @property {string} csrfToken
+ * @property {boolean} allEmailsToPrimary
+ */
+
+/**
+ * @param {PartialData} data
+ * @returns string
+ */
 export const settings = data => {
   const { allEmailsToPrimary, breachCounts, csrfToken, emails, limit } = data
 

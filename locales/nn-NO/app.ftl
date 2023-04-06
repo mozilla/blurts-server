@@ -673,7 +673,7 @@ menu-item-logout = Logg ut
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Vilkår og personvern
 github = { -brand-github }
 

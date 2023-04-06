@@ -720,7 +720,7 @@ menu-item-logout = Sair
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Termos e Privacidade
 github = { -brand-github }
 footer-nav-all-breaches = Todos os vazamentos

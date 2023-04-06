@@ -48,7 +48,7 @@ rec-email =
 rec-ip-subhead-2 = Usa una VPN per nascondere il tuo indirizzo IP
 # Recommendation subhead
 rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
-rec-moz-vpn-update-2 = Il tuo indirizzo IP (Internet Protocolo) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Un servizio come { -brand-mozilla-vpn } maschera il tuo indirizzo IP per nascondere la tua posizione.
+rec-moz-vpn-update-2 = Il tuo indirizzo IP (Internet Protocol) permette di risalire alla tua posizione e al tuo fornitore di servizi internet. Un servizio come { -brand-mozilla-vpn } maschera il tuo indirizzo IP per nascondere la tua posizione.
 rec-hist-pw-subhead = Evita di riutilizzare le password
 # Link title
 rec-hist-pw-cta-fx = Visualizza le credenziali in { -brand-name }

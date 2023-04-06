@@ -801,7 +801,7 @@ menu-item-logout = Odhlásit se
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Podmínky a ochrana soukromí
 github = { -brand-github }
 

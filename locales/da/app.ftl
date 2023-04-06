@@ -692,7 +692,7 @@ menu-item-logout = Log ud
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 github = { -brand-github }
 

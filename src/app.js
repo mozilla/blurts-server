@@ -18,7 +18,6 @@ import '@sentry/tracing'
 import AppConstants from './app-constants.js'
 import { localStorage } from './utils/local-storage.js'
 import { errorHandler } from './middleware/error.js'
-import { doubleCsrfProtection } from './utils/csrf.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import { RateLimitError } from './utils/error.js'
@@ -175,7 +174,6 @@ app.use(noSearchEngineIndex)
 app.use(express.static(staticPath))
 app.use(express.json())
 app.use(cookieParser(AppConstants.COOKIE_SECRET))
-app.use(doubleCsrfProtection)
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes

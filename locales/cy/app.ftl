@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Rhwydwaith Preifat Firefox
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = E-bost Annilys
 user-add-too-many-emails = Rydych yn monitro'r nifer mwyaf o gyfeiriadau e-byst.
 user-add-email-verify-subject = Dilysu eich tanysgrifiad i { -product-name }.
 user-add-duplicate-email = Mae'r e-bost hwn eisoes wedi'i ychwanegu at { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Ewch i'ch { $preferencesLink } i wirio statws { $userEmail }.
 error-headline = Gwall
 user-verify-token-error = Mae angen tocyn dilysu.
@@ -50,11 +51,11 @@ scan-placeholder = Rhowch eich Cyfeiriad E-bost
 scan-submit = Chwilio am eich E-bost
 scan-error = Rhaid ei fod yn e-bost dilys.
 download-firefox-banner-button = Llwytho { -brand-name } i Lawr
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Anfonwyd!
 sign-up = Ymuno
 form-signup-error = Rhaid ei fod yn e-bost dilys
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Dyddiad tor-data:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Cyfrifon wedi eu cyfaddawdu:
@@ -64,6 +65,8 @@ unsub-headline = Dad-danysgrifio o { -product-name-nowrap }
 unsub-blurb = Bydd hyn yn dileu'ch e-bost o'r rhestr { -product-name-nowrap } ac ni fyddwch yn derbyn rhybuddion pan fydd achosion o tor-data'n cael eu cyhoeddi.
 unsub-button = Dad-danysgrifio
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Mae data tor-data wedi ei ddarparu gan { $hibp-link }
 share-twitter = Mae gan y rhan fwyaf o bobl tua 100 o gyfrifon ar-lein. A oes unrhyw un o'ch rhai chi wedi dioddef tor-data? Dewch i ni gael gweld.
 share-facebook-headline = Dewch i weld a ydych chi wedi bod yn rhan o dor-data
@@ -107,8 +110,6 @@ about-firefox-monitor = Ynghylch { -product-name }
 preferences = Dewisiadau
 # Link title
 home = Cartref
-# Link title
-breaches = Tor-data
 # Link title
 security-tips = Awgrymiadau Diogelwch
 fxa-account = { -brand-fxa }
@@ -190,7 +191,9 @@ feat-security-tips = Awgrymiadau diogelwch i ddiogelu eich cyfrifon
 feat-sensitive = Chwilio uwch mewn tor-data sensitif
 feat-enroll-multiple = Cofrestru nifer o e-byst ar gyfer monitro tor-data
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [zero] Nid yw'n ymddangos mewn unrhyw dor-data.
@@ -206,6 +209,8 @@ get-email-alerts = Cadwch yn ddiogel: Sicrhewch rybuddion e-bost pan fydd eich m
 search-for-your-email = Chwiliwch am eich cyfeiriad e-bost mewn tor-data cyhoeddus sy'n mynd yn ôl i 2007.
 back-to-top = Nôl i'r Brig
 comm-opt-0 = E-bostiwch fi os yw un o'm cyfeiriadau e-bost isod yn ymddangos mewn achos o dor-data.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Anfonwch yr holl rybuddion tor-data i { $primaryEmail }.
 stop-monitoring-this = Peidio monitro'r e-bost hwn.
 resend-verification = Ail-anfon yr e-bost dilysu
@@ -214,7 +219,7 @@ send-verification = Anfon Dolen Dilysu
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Crynodeb o'r Tor-data
 show-breaches-for-this-email = Dangos bob achos o dor-data'r e-bost hwn.
@@ -225,8 +230,15 @@ remove-fxm-blurb = Diffodd rybuddion { -product-name }. Bydd eich { -brand-fxa }
 manage-email-addresses = Rheoli Cyfeiriadau E-bost
 # Link title
 latest-breach-link = Gweld os oeddech yn rhan o'r tor-data hyn
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Croeso nôl, { $userName }!
 welcome-user = Croeso, { $userName }!
+
+##
+
 breach-alert-subject = Mae { -product-name } wedi canfod eich e-bost mewn tor-data newydd.
 your-info-was-discovered-headline = Cafodd eich manylion eu darganfod mewn tor-data newydd.
 your-info-was-discovered-blurb =
@@ -248,6 +260,8 @@ ba-next-step-blurb-3 = Defnyddiwch reolwr cyfrinair i greu cyfrineiriau cryf ac 
 faq1 = Dw i ddim yn adnabod y cwmni neu'r wefan hon. Pam ydw i yn y tor-data hwn?
 faq2 = Pam y cymerodd gymaint o amser i mi gael gwybod am y tor-data hwn?
 faq3 = Sut ydw i'n gwybod bod hwn yn e-bost dilys o { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [zero] HEB GANFOD UNRHYW DOR-DATA
@@ -259,9 +273,14 @@ new-breaches-found =
     }
 sign-up-headline-1 = Derbyn rhybuddion parhaus gyda { -brand-fxa }.
 account-not-required = Nid oes angen porwr { -brand-name } ar gyfer { -brand-fxa }. Efallai y cewch wybodaeth am wasanaethau { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = A oedd eich manylion wedi'i datgelu yn y tor-data { $breachName }
-find-out-if = Gweld a oedd eich data wedi'i ddatgelu yn y tor-data hwn.
 fb-not-comp = Nid yw'r e-bost hwn wedi ymddangos yn y tor-data { $breachName }
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [zero] Nid yw wedi ymddangos mewn unrhyw dor-data.
@@ -272,6 +291,8 @@ other-breaches-found =
        *[other] Er hynny, mae wedi ymddangos mewn { $breachCount } tor-data arall.
     }
 fb-comp-only = Ymddangosodd yr e-bost hwn yn y tor-data { $breachName }
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [zero] Nid yw'r e-bost wedi ymddangos mewn unrhyw dor-data.
@@ -281,10 +302,11 @@ fb-comp-and-others =
         [many] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
        *[other] Ymddangosodd yr e-bost mewn { $breachCount } tor-data hysbys, gan gynnwys { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Heb ddarganfod  unrhyw dor-data arall o'r chwilio cychwynnol.
 no-results-blurb = Ymddiheuriadau, nid yw'r tor-data hwnnw yn ein cronfa ddata.
-all-breaches-headline = Pob tor-data yn { -product-name }
-search-breaches = Chwilio am Dor-data
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -359,6 +381,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Gweld Tor-data Ychwanegol
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [zero] Nid yw'r e-bost wedi ymddangos mewn tor-data.
@@ -371,6 +395,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Canlyniadau ar gyfer:{ $userEmail }
 other-monitored-emails = E-byst eraill sy'n Cael eu Monitro
 email-verification-required = Mae Angen Dilysu
@@ -386,6 +412,8 @@ get-ongoing-breach-monitoring = Derbyn monitro tor-data parhaus ar gyfeiriadau e
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Canfod
 new-unsub-error = Bydd angen i chi ddad-danysgrifio o un o'r e-byst { -product-name } a anfonwyd.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [zero] Nid yw wedi ymddangos mewn unrhyw dor-data hysbys.
@@ -407,10 +435,12 @@ breach-overview-title = Trosolwg
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Ar { $breachDate }, profodd { $breachTitle } dor-data. Unwaith y cafodd y tor-data ei ddarganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Dewisiadau { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Mewngofnodwyd fel: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -427,12 +457,16 @@ email-sent = E-bost wedi ei Anfon!
 want-to-add = Eisiau ychwanegu e-bost arall?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Gwiriwch y ddolen a anfonwyd at { $userEmail } i'w hychwanegu at { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = E-bost Wedi'i Wirio'n Llwyddiannus!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Byddwn yn eich hysbysu os yw { $email } yn ymddangos mewn tor-data newydd.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -446,15 +480,17 @@ sign-in-nested = mewngofnodi
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Rheoli pob cyfeiriad e-bost yn { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Hysbysiadau Rhybudd Tor-data
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Ychwanegwyd y tor-data:
 how-hackers-work-desc = Diogelwch eich cyfrineiriau gan seiber droseddwyr, gan mai dyna beth maen nhw'n poeni amdano fwyaf.
 what-to-do-after-breach-desc = Clowch eich cyfrifon i gadw'ch manylion allan o'r dwylo anghywir.
@@ -476,7 +512,11 @@ see-additional-recs = Gweler yr Argymhellion Ychwanegol
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = Ymddangosodd { $affectedEmail } yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [zero] Ymddangosodd { $numAffectedEmails } o'ch cyfeiriadau e-bost yn y tor-data hwn. <a>Beth i'w wneud nesaf</a>
@@ -508,6 +548,8 @@ confirmation-3-subhead = Un arall wedi mynd. Gwaith da!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = A yw'ch cyfrinair newydd yn unigryw, yn gryf, ac yn anodd ei ddyfalu? <a>Gweld</a>
 generic-confirmation-subhead = Mae'r tor-data hwn wedi'i nodi fel wedi'i ddatrys
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [zero] I weld yr holl dor-data sy'n weddill, ewch i'ch bwrdd gwaith.
@@ -521,9 +563,13 @@ return-to-breach-details-link = Nol i fanylion y tor-data
 go-to-dashboard-link = Mynd i'r Bwrdd Gwaith
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% wedi'i gwblhau
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [zero] { $numResolvedBreaches } Wedi'u Datrys
@@ -537,6 +583,9 @@ progress-intro-subhead = Newydd yn { -product-name }: Nodi datrys tor-data
 progress-intro-message =
     Ar ôl adolygu'r manylion am dor-data a chymryd camau i ddiogelu
     eich manylion personol, gallwch nodi eich bod wedi datrys y tor-data.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [zero] { $numResolvedBreaches } allan o { $numTotalBreaches } wedi'u nodi eu bod wedi'u datrys
@@ -567,11 +616,13 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Datrys y tor-data hwn
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Nodi wedi'u Datrys:
 hide-resolved-button = Cuddio wedi'u Datrys
 show-resolved-button = Dangos wedi'u Datrys
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [zero] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
@@ -581,6 +632,8 @@ unresolved-passwords-exposed =
         [many] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
        *[other] Cyfrineiriau wedi'u hamlygu mewn tor-data heb eu datrys
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [zero] Tor-data hysbys wedi'u nodi fel wedi'u datrys
@@ -615,7 +668,10 @@ vpn-promo-copy-new = Diogelwch eich data ar-lein - a dewis cynllun tanysgrifio V
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Eich lleoliad: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Diogelwch eich hun</em> gyda { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Diogelwyd</em> gan { -brand-mozilla-vpn }.
@@ -624,7 +680,8 @@ vpn-banner-title-2 = Mae modd olrhain eich lleoliad os nad ydych yn defnyddio VP
 vpn-banner-subtitle-2 = Diogelwch eich lleoliad a phori'n ddiogel mewn 3 cham
 vpn-banner-status-protected = Statws cyfredol: <em>Diogelwyd ✓</em>
 vpn-banner-status-not-protected = Statws cyfredol: <em>Heb ei ddiogelu ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Cyfeiriad IP: { $ip-address }
 vpn-banner-step-1 = Tanysgrifiwch i { -brand-mozilla-vpn }
 vpn-banner-step-2 = Dewiswch leoliad i'r VPN
@@ -683,6 +740,8 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -704,6 +763,10 @@ sign-in = Mewngofnodi
 site-nav-breaches-link = Datrys Tor-data
 site-nav-settings-link = Gosodiadau
 site-nav-help-link = Cymorth a Chefnogaeth
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Rhowch gynnig ar ein hoffer diogelwch eraill:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -717,9 +780,10 @@ menu-item-logout = Allgofnodi
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Telerau a Phreifatrwydd
 github = { -brand-github }
+footer-nav-all-breaches = Pob Tor-data
 
 ## Error page
 
@@ -732,3 +796,17 @@ error-page-error-404-cta-button = Nôl
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Aeth rhywbeth o'i le
 error-page-error-other-copy = Ceisiwch eto neu dewch yn ôl yn nes ymlaen
+
+## Breach overview page
+
+all-breaches-headline-2 = Pob tor-data canfuwyd gan { -brand-fx-monitor }
+all-breaches-lead = Rydym yn monitro'r holl achosion hysbys o dor-data i ganfod a gafodd eich manylion personol eu peryglu. Dyma restr lawn o’r holl dor-data sydd wedi’u hadrodd ers 2007.
+search-breaches = Chwilio am Dor-data
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Data datgeledig:
+
+## Public breach detail page
+
+find-out-if-2 = Darganfyddwch a oeddech yn gysylltiedig â'r tor-data hwn
+find-out-if-description = Byddwn yn eich helpu i weld yn gyflym a oedd eich cyfeiriad e-bost wedi'i ddatgelu drwy'r tor-data hwn, a gwybod beth i'w wneud nesaf.
+breach-detail-cta-signup = Gwiriwch am dor-data

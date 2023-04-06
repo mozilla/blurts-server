@@ -680,7 +680,7 @@ menu-item-logout = Disconnetti
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Termini di utilizzo e privacy
 github = { -brand-github }
 footer-nav-all-breaches = Tutte le violazioni

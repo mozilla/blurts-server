@@ -780,7 +780,7 @@ menu-item-logout = Odhlásiť sa
 
 ## Footer
 
-mozilla = { -brand-mozilla }
+mozilla = { -brand-Mozilla }
 terms-and-privacy = Podmienky a ochrana súkromia
 github = { -brand-github }
 
