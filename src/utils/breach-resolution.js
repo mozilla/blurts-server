@@ -37,7 +37,7 @@ const breachResolutionDataTypes = {
     priority: 1,
     header: {
       default: 'breach-checklist-pw-header-2',
-      withCompanyLink: 'breach-checklist-pw-header-3'
+      withCompanyLink: 'breach-checklist-pw-header-link'
     },
     body: 'breach-checklist-pw-body-2'
   },
@@ -109,7 +109,7 @@ const breachResolutionDataTypes = {
     priority: 11,
     header: {
       default: 'breach-checklist-sq-header-2',
-      withCompanyLink: 'breach-checklist-sq-header-3'
+      withCompanyLink: 'breach-checklist-sq-header-link'
     },
     body: 'breach-checklist-sq-body'
   },
