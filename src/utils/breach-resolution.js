@@ -37,21 +37,21 @@ const breachResolutionDataTypes = {
     priority: 1,
     header: {
       default: 'breach-checklist-pw-header-2',
-      withCompanyLink: 'breach-checklist-pw-header-3',
+      withCompanyLink: 'breach-checklist-pw-header-3'
     },
     body: 'breach-checklist-pw-body-2'
   },
   [BreachDataTypes.Email]: {
     priority: 2,
     header: {
-      default: 'breach-checklist-email-header-2',
+      default: 'breach-checklist-email-header-2'
     },
     body: 'breach-checklist-email-body'
   },
   [BreachDataTypes.SSN]: {
     priority: 3,
     header: {
-      default: 'breach-checklist-ssn-header',
+      default: 'breach-checklist-ssn-header'
     },
     body: 'breach-checklist-ssn-body-2',
     // The resolution involves American companies, and thus does not apply in other countries:
@@ -60,70 +60,70 @@ const breachResolutionDataTypes = {
   [BreachDataTypes.CreditCard]: {
     priority: 4,
     header: {
-      default: 'breach-checklist-cc-header',
+      default: 'breach-checklist-cc-header'
     },
     body: 'breach-checklist-cc-body'
   },
   [BreachDataTypes.BankAccount]: {
     priority: 5,
     header: {
-      default: 'breach-checklist-bank-header',
+      default: 'breach-checklist-bank-header'
     },
     body: 'breach-checklist-bank-body'
   },
   [BreachDataTypes.PIN]: {
     priority: 6,
     header: {
-      default: 'breach-checklist-pin-header',
+      default: 'breach-checklist-pin-header'
     },
     body: 'breach-checklist-pin-body'
   },
   [BreachDataTypes.IP]: {
     priority: 7,
     header: {
-      default: 'breach-checklist-ip-header-2',
+      default: 'breach-checklist-ip-header-2'
     },
     body: 'breach-checklist-ip-body'
   },
   [BreachDataTypes.Address]: {
     priority: 8,
     header: {
-      default: 'breach-checklist-address-header',
+      default: 'breach-checklist-address-header'
     },
     body: 'breach-checklist-address-body'
   },
   [BreachDataTypes.DoB]: {
     priority: 9,
     header: {
-      default: 'breach-checklist-dob-header',
+      default: 'breach-checklist-dob-header'
     },
     body: 'breach-checklist-dob-body'
   },
   [BreachDataTypes.Phone]: {
     priority: 10,
     header: {
-      default: 'breach-checklist-phone-header-2',
+      default: 'breach-checklist-phone-header-2'
     }
   },
   [BreachDataTypes.SecurityQuestions]: {
     priority: 11,
     header: {
       default: 'breach-checklist-sq-header-2',
-      withCompanyLink: 'breach-checklist-sq-header-3',
+      withCompanyLink: 'breach-checklist-sq-header-3'
     },
     body: 'breach-checklist-sq-body'
   },
   [BreachDataTypes.HistoricalPasswords]: {
     priority: 12,
     header: {
-      default: 'breach-checklist-hp-header',
+      default: 'breach-checklist-hp-header'
     },
     body: 'breach-checklist-hp-body-2'
   },
   [BreachDataTypes.General]: {
     priority: 13,
     header: {
-      default: 'breach-checklist-general-header',
+      default: 'breach-checklist-general-header'
     }
   }
 }
@@ -146,7 +146,7 @@ async function appendBreachResolutionChecklist (userBreachData, options = {}) {
 
       const args = {
         companyName: b.Name,
-        breachedCompanyLink: !showLink
+        breachedCompanyLink: showLink
           ? `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`
           : '',
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
@@ -210,7 +210,7 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
  * @param {object} args
  * @returns {string} header string
  */
-function getHeaderMessage(header, args) {
+function getHeaderMessage (header, args) {
   const { resolutionType, stringArgs } = args
   const { default: defaultId, withCompanyLink } = header
 
@@ -232,10 +232,7 @@ function getRecommendationFromResolution (resolution, args) {
   let { header, body, priority } = resolutionContent
 
   header = header
-    ? getHeaderMessage(header, {
-        resolutionType,
-        stringArgs: args
-      })
+    ? getHeaderMessage(header, { resolutionType, stringArgs: args })
     : ''
   body = body ? getMessage(body, args) : ''
   return { header, body, priority }
