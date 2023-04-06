@@ -35,68 +35,96 @@ const BreachDataTypes = {
 const breachResolutionDataTypes = {
   [BreachDataTypes.Passwords]: {
     priority: 1,
-    header: 'breach-checklist-pw-header-3',
+    header: {
+      default: 'breach-checklist-pw-header-2',
+      withCompanyLink: 'breach-checklist-pw-header-3',
+    },
     body: 'breach-checklist-pw-body-2'
   },
   [BreachDataTypes.Email]: {
     priority: 2,
-    header: 'breach-checklist-email-header-2',
+    header: {
+      default: 'breach-checklist-email-header-2',
+    },
     body: 'breach-checklist-email-body'
   },
   [BreachDataTypes.SSN]: {
     priority: 3,
-    header: 'breach-checklist-ssn-header',
+    header: {
+      default: 'breach-checklist-ssn-header',
+    },
     body: 'breach-checklist-ssn-body-2',
     // The resolution involves American companies, and thus does not apply in other countries:
     applicableCountryCodes: ['us']
   },
   [BreachDataTypes.CreditCard]: {
     priority: 4,
-    header: 'breach-checklist-cc-header',
+    header: {
+      default: 'breach-checklist-cc-header',
+    },
     body: 'breach-checklist-cc-body'
   },
   [BreachDataTypes.BankAccount]: {
     priority: 5,
-    header: 'breach-checklist-bank-header',
+    header: {
+      default: 'breach-checklist-bank-header',
+    },
     body: 'breach-checklist-bank-body'
   },
   [BreachDataTypes.PIN]: {
     priority: 6,
-    header: 'breach-checklist-pin-header',
+    header: {
+      default: 'breach-checklist-pin-header',
+    },
     body: 'breach-checklist-pin-body'
   },
   [BreachDataTypes.IP]: {
     priority: 7,
-    header: 'breach-checklist-ip-header-2',
+    header: {
+      default: 'breach-checklist-ip-header-2',
+    },
     body: 'breach-checklist-ip-body'
   },
   [BreachDataTypes.Address]: {
     priority: 8,
-    header: 'breach-checklist-address-header',
+    header: {
+      default: 'breach-checklist-address-header',
+    },
     body: 'breach-checklist-address-body'
   },
   [BreachDataTypes.DoB]: {
     priority: 9,
-    header: 'breach-checklist-dob-header',
+    header: {
+      default: 'breach-checklist-dob-header',
+    },
     body: 'breach-checklist-dob-body'
   },
   [BreachDataTypes.Phone]: {
     priority: 10,
-    header: 'breach-checklist-phone-header-2'
+    header: {
+      default: 'breach-checklist-phone-header-2',
+    }
   },
   [BreachDataTypes.SecurityQuestions]: {
     priority: 11,
-    header: 'breach-checklist-sq-header-3',
+    header: {
+      default: 'breach-checklist-sq-header-2',
+      withCompanyLink: 'breach-checklist-sq-header-3',
+    },
     body: 'breach-checklist-sq-body'
   },
   [BreachDataTypes.HistoricalPasswords]: {
     priority: 12,
-    header: 'breach-checklist-hp-header',
+    header: {
+      default: 'breach-checklist-hp-header',
+    },
     body: 'breach-checklist-hp-body-2'
   },
   [BreachDataTypes.General]: {
     priority: 13,
-    header: 'breach-checklist-general-header'
+    header: {
+      default: 'breach-checklist-general-header',
+    }
   }
 }
 
@@ -118,9 +146,9 @@ async function appendBreachResolutionChecklist (userBreachData, options = {}) {
 
       const args = {
         companyName: b.Name,
-        breachedCompanyLink: showLink
+        breachedCompanyLink: !showLink
           ? `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`
-          : 'empty',
+          : '',
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
         passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-password-manager')}</a>`,
         mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-mozilla-vpn')}</a>`,
@@ -148,29 +176,67 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
   const filteredBreachRecs = {}
 
   // filter breachResolutionDataTypes based on relevant data types passed in
-  for (const [key, value] of Object.entries(breachResolutionDataTypes)) {
+  for (const resolution of Object.entries(breachResolutionDataTypes)) {
+    const [key, value] = resolution
     if (
       dataTypes.includes(key) &&
       // Hide resolutions that apply to other countries than the user's:
       (!options.countryCode || !Array.isArray(value.applicableCountryCodes) || value.applicableCountryCodes.includes(options.countryCode.toLowerCase()))
     ) {
-      filteredBreachRecs[key] = getRecommendationFromResolution(value, args)
+      filteredBreachRecs[key] = getRecommendationFromResolution(resolution, args)
     }
   }
 
   // If we did not have any recommendations, add a generic recommendation:
   if (Object.keys(filteredBreachRecs).length === 0) {
-    filteredBreachRecs[BreachDataTypes.General] = getRecommendationFromResolution(breachResolutionDataTypes[BreachDataTypes.General], args)
+    const resolutionTypeGeneral = BreachDataTypes.General
+    filteredBreachRecs[resolutionTypeGeneral] = getRecommendationFromResolution(
+      [
+        resolutionTypeGeneral,
+        breachResolutionDataTypes[resolutionTypeGeneral]
+      ],
+      args
+    )
   }
 
   // loop through the breach recs
   return filteredBreachRecs
 }
 
+/**
+ * Get the fluent string for the header
+ *
+ * @param {string} header for the fluent header string
+ * @param {object} args
+ * @returns {string} header string
+ */
+function getHeaderMessage(header, args) {
+  const { resolutionType, stringArgs } = args
+  const { default: defaultId, withCompanyLink } = header
+
+  switch (resolutionType) {
+    case BreachDataTypes.Passwords:
+    case BreachDataTypes.SecurityQuestions:
+      if (stringArgs.breachedCompanyLink) {
+        return getMessage(withCompanyLink, stringArgs)
+      }
+      // fallthrough
+    default:
+      return getMessage(defaultId, stringArgs)
+  }
+}
+
 // find fluent text based on fluent ids
 function getRecommendationFromResolution (resolution, args) {
-  let { header, body, priority } = resolution
-  header = header ? getMessage(header, args) : ''
+  const [resolutionType, resolutionContent] = resolution
+  let { header, body, priority } = resolutionContent
+
+  header = header
+    ? getHeaderMessage(header, {
+        resolutionType,
+        stringArgs: args
+      })
+    : ''
   body = body ? getMessage(body, args) : ''
   return { header, body, priority }
 }
