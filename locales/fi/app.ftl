@@ -23,8 +23,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -45,6 +43,9 @@ user-add-invalid-email = Virheellinen sähköpostiosoite
 user-add-too-many-emails = Seuraat enimmäismäärää sähköpostiosoitteita.
 user-add-email-verify-subject = Varmista tilauksesi tuotteelle { -product-name }.
 user-add-duplicate-email = Tämä sähköposti on jo lisätty tuotteeseen { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Tarkista sähköpostiosoitteen { $userEmail } tila { $preferencesLink }-sivulta.
 error-headline = Virhe
 user-verify-token-error = Vahvistuspoletti vaaditaan.
@@ -58,11 +59,11 @@ scan-placeholder = Kirjoita sähköpostiosoite
 scan-submit = Hae sähköpostiosoittettasi
 scan-error = On oltava kelvollinen sähköposti.
 download-firefox-banner-button = Lataa { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Lähetetty!
 sign-up = Rekisteröidy
 form-signup-error = On oltava kelvollinen sähköposti
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Vuotopäivä:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Paljastuneet tilit:
@@ -72,6 +73,8 @@ unsub-headline = Lopeta tilaus tuotteelle { -product-name-nowrap }
 unsub-blurb = Tämä poistaa sähköpostisi { -product-name-nowrap } -listalta, jolloin et enää saa hälytyksiä, kun uusista vuodoista ilmoitetaan.
 unsub-button = Lopeta tilaus
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Vuototiedot tarjoaa { $hibp-link }
 share-twitter = Useimmilla ihmisillä on noin 100 tiliä verkossa. Onko jokin tileistäsi paljastunut tietovuodoissa? Selvitä asia.
 share-facebook-headline = Selvitä nyt, oletko ollut osa tietovuotoa
@@ -120,8 +123,6 @@ about-firefox-monitor = Tietoja { -product-name }ista
 preferences = Asetukset
 # Link title
 home = Etusivu
-# Link title
-breaches = Tietovuodot
 # Link title
 security-tips = Turvallisuusvinkit
 fxa-account = { -brand-fxa }
@@ -219,7 +220,9 @@ feat-security-tips = Turvallisuuteen liittyvät vinkit tilisi suojaamiseksi
 feat-sensitive = Edistynyt haku arkaluonteisissa vuodoissa
 feat-enroll-multiple = Saata useita sähköpostiosoitteita vuotoseurantaan
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] ilmenee { $breachCount } tunnetussa vuodossa.
@@ -231,6 +234,8 @@ get-email-alerts = Pysy turvassa: Vastaanota sähköpostitse tieto, kun tietojas
 search-for-your-email = Etsi sähköpostiosoitettasi vuoteen 2007 ulottuvista julkisista tietovuodoista.
 back-to-top = Takaisin ylös
 comm-opt-0 = Lähetä minulle sähköpostia, jos jokin alla olevista sähköpostiosoitteistani on osallisena tietovuodossa.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Lähetä kaikki vuotoilmoitukset osoitteeseen { $primaryEmail }.
 stop-monitoring-this = Lopeta tämän sähköpostiosoitteen seuraaminen.
 resend-verification = Lähetä uudelleen vahvistussähköposti
@@ -239,7 +244,7 @@ send-verification = Lähetä vahvistuslinkki
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Vuotojen yhteenveto
 show-breaches-for-this-email = Näytä kaikki tätä sähköpostiosoitetta koskevat vuodot.
@@ -252,8 +257,15 @@ remove-fxm-blurb =
 manage-email-addresses = Hallitse sähköpostiosoitteita
 # Link title
 latest-breach-link = Katso jouduitko osalliseksi tässä vuodossa
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Tervetuloa takaisin, { $userName }!
 welcome-user = Tervetuloa, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } löysi sähköpostiosoitteesi uudesta tietovuodosta
 your-info-was-discovered-headline = Tietojasi paljastettiin uudessa tietovuodossa.
 your-info-was-discovered-blurb =
@@ -277,6 +289,8 @@ ba-next-step-blurb-3 =
 faq1 = En tunnista tätä yritystä tai verkkosivustoa. Miksi olen osallisena vuodossa?
 faq2 = Miksi minua huomautettiin vuodosta näin pitkän ajan jälkeen?
 faq3 = Kuinka tiedän, että tämä on aito sähköposti { -product-name }lta?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } UUSI VUOTO LÖYTYNYT
@@ -284,24 +298,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Vastaanota hälytyksiä { -brand-fxa(case: "adessive") }.
 account-not-required = { -brand-name }-selain ei ole pakollinen { -brand-fxa }n käyttämiseksi. Saatat saada tietoja { -brand-Mozilla }-palveluista.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Paljastuiko sinun tietojasi ”{ $breachName }”-tietovuodossa?
-find-out-if = Ota selvää, paljastuiko tietojasi tässä vuodossa.
 fb-not-comp = Tämä sähköpostiosoite ei esiintynyt { $breachName }-vuodossa.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Kuitenkin se löytyy { $breachCount } tunnetusta vuodosta.
        *[other] Kuitenkin se löytyy { $breachCount } tunnetusta vuodosta.
     }
 fb-comp-only = Sähköposti löytyi { $breachName }-vuodosta.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Sähköposti löytyi { $breachCount } tunnetusta tietovuodosta, mukaan lukien { $breachName }.
        *[other] Sähköposti löytyi { $breachCount } tunnetusta tietovuodosta, mukaan lukien { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Muita vuotoja ei löytynyt perushaulla.
 no-results-blurb = Valitettavasti tästä vuodosta ei ole merkintää tietokannassamme.
-all-breaches-headline = Kaikki { -product-name }in tuntemat tietovuodot
-search-breaches = Etsi vuotoja
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -371,6 +393,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Tutustu muihin vuotoihin
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Tämä sähköpostiosoite löytyi 1 tunnetusta tietovuodosta.
@@ -379,6 +403,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Tulokset haulla: { $userEmail }
 other-monitored-emails = Muut seurattavat sähköpostiosoitteet
 email-verification-required = Sähköpostiosoitteen vahvistus vaaditaan
@@ -394,6 +420,8 @@ get-ongoing-breach-monitoring = Aseta jatkuva vuotoseuranta useille sähköposti
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Selvitä
 new-unsub-error = Sinun on peruutettava tilauksesi yhdestä sähköpostiosoitteesta, johon { -product-name } lähetti viestiä.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Se esiintyi kuitenkin { $breachCount } muussa tunnetussa vuodossa.
@@ -411,10 +439,12 @@ breach-overview-title = Yhteenveto
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = { $breachTitle } vuodettiin { $breachDate }. Kun tietovuoto oli löydetty  ja vahvistettu, se lisättiin tietokantaamme { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name }-asetukset
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Kirjautuneena käyttäjänä: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -431,12 +461,16 @@ email-sent = Sähköposti lähetetty!
 want-to-add = Haluatko lisätä toisen sähköpostiosoitteen?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Vahvista linkki, joka lähetettiin osoitteeseen { $userEmail }, lisätäksesi sen { -product-name }iin.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Sähköposti vahvistettu onnistuneesti!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Ilmoitamme sinulle, jos { $email } löytyy tietovuodoista.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -450,15 +484,17 @@ sign-in-nested = Kirjaudu sisään
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Hallitse kaikkia sähköpostiosoitteita { $preferencesLink }-kohdassa.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Tietovuotoilmoitukset
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Vuoto lisätty:
 how-hackers-work-desc = Suojaa salasanasi verkkorikollisilta, koska niistä he välittävät eniten.
 what-to-do-after-breach-desc = Lukitse tilisi ja pidä tietosi pois vääristä käsistä.
@@ -480,7 +516,11 @@ see-additional-recs = Katso lisäsuositukset
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } ilmeni tässä vuodossa. <a>Mitä tehdä seuraavaksi</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
        *[other] { $numAffectedEmails } sähköpostiosoitteistasi ilmeni tässä vuodossa. <a>Mitä tehdä seuraavaksi</a>
@@ -507,6 +547,8 @@ confirmation-3-subhead = Taas yksi hoidettu, hienoa työtä!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Onko uusi salasanasi yksilöllinen, vahva ja vaikeasti arvattava? <a>Ota selvää</a>
 generic-confirmation-subhead = Tämä vuoto on merkitty selvitetyksi
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Näet jäljellä olevan vuodon kojelaudalta.
@@ -516,9 +558,13 @@ return-to-breach-details-link = Palaa vuodon tietoihin
 go-to-dashboard-link = Siirry kojelaudalle
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete } % valmiina
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
        *[other] { $numResolvedBreaches } selvitetty
@@ -527,6 +573,9 @@ progress-intro-subhead = Uutta { -product-name }issa: Merkitse vuodot selvitetyi
 progress-intro-message =
     Kun olet tutustunut vuodon tietoihin ja ottanut henkilökohtaisia 
     tietojasi suojaavia askelia, voit merkitä vuodot selvitetyiksi.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches }/{ $numTotalBreaches } vuotoa merkitty selvitetyiksi
@@ -551,16 +600,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Selvitä tämä vuoto
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Merkitty selvitetyksi:
 hide-resolved-button = Piilota selvitetyt
 show-resolved-button = Näytä selvitetyt
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Salasana paljastunut selvittämättömissä vuodoissa
        *[other] Salasana paljastunut selvittämättömissä vuodoissa
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Tunnettu tietovuoto merkitty selvitetyksi
@@ -591,7 +644,10 @@ vpn-promo-copy-new = Suojaa tietojasi verkossa — ja valitse sinulle sopiva VPN
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Sijaintisi: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Suojaa itsesi</em> käyttäen { -brand-mozilla-vpn }:ää.
 vpn-banner-protected-with-vpn = <em>Suojattu</em> käyttäen { -brand-mozilla-vpn }:ää.
@@ -600,7 +656,8 @@ vpn-banner-title-2 = Sijaintiasi voidaan seurata, jos et käytä VPN:ää.
 vpn-banner-subtitle-2 = Suojaa sijaintisi ja selaa turvallisesti kolmen vaiheen kautta
 vpn-banner-status-protected = Nykyinen tila: <em>Suojattu ✓</em>
 vpn-banner-status-not-protected = Nykyinen tila: <em>Ei suojattu ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP-osoite: { $ip-address }
 vpn-banner-step-1 = Tilaa { -brand-mozilla-vpn }
 vpn-banner-step-2 = Valitse VPN:n sijainti
@@ -659,6 +716,8 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla-säätiö
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -680,6 +739,10 @@ sign-in = Kirjaudu sisään
 site-nav-breaches-link = Selvitä tietovuodot
 site-nav-settings-link = Asetukset
 site-nav-help-link = Ohjeet ja tuki
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Kokeile muita suojaustyökalujamme:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -696,6 +759,7 @@ menu-item-logout = Kirjaudu ulos
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Ehdot ja tietosuoja
 github = { -brand-github }
+footer-nav-all-breaches = Kaikki tietovuodot
 
 ## Error page
 
@@ -708,3 +772,17 @@ error-page-error-404-cta-button = Takaisin
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Jokin meni pieleen
 error-page-error-other-copy = Yritä uudelleen tai palaa myöhemmin
+
+## Breach overview page
+
+all-breaches-headline-2 = Kaikki { -brand-fx-monitor }in havaitsemat tietovuodot
+all-breaches-lead = Valvomme kaikkia tunnettuja tietovuotoja selvittääksemme, ovatko henkilökohtaiset tietosi vaarantuneet. Tässä on täydellinen luettelo kaikista tietovuodoista, jotka on raportoitu vuoden 2007 jälkeen.
+search-breaches = Etsi vuotoja
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Paljastuneet tiedot:
+
+## Public breach detail page
+
+find-out-if-2 = Ota selvää, jouduitko osalliseksi tässä tietovuodossa
+find-out-if-description = Autamme sinua nopeasti selvittämään, paljastuiko sähköpostiosoitteesi tässä tietovuodossa, ja autamme ymmärtämään, mitä tehdä seuraavaksi.
+breach-detail-cta-signup = Tarkista vuotojen varalta
