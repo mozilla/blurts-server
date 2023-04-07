@@ -42,7 +42,7 @@ const mainLayout = data => `
 
     <!-- Google tag (gtag.js) -->
     <script nonce='${data.nonce}'>
-      if (!navigator.doNotTrack || navigator.doNotTrack !== '1') {
+      if (navigator.doNotTrack !== '1') {
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -57,7 +57,7 @@ const mainLayout = data => `
           debug_mode: ${Boolean(AppConstants.GA4_DEBUG_MODE)}
         });
       } else {
-        function gtag() {q
+        function gtag() {
           console.debug("Google Analytics disbled by DNT")
         }
       }

@@ -42,7 +42,7 @@ const guestLayout = data => `
 
     <!-- Google tag (gtag.js) -->
     <script nonce='${data.nonce}'>
-      if (!navigator.doNotTrack || navigator.doNotTrack !== '1') {
+      if (navigator.doNotTrack !== '1') {
         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
         j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -56,19 +56,19 @@ const guestLayout = data => `
           cookie_flags: "SameSite=None;Secure",
           debug_mode: ${Boolean(AppConstants.GA4_DEBUG_MODE)}
         });
-        window.gtag = gtag
 
         // Detect CTA clicks on public pages.
         document.querySelectorAll('[data-cta-id]').forEach(a =>
           a.addEventListener('click', e => {
             gtag('event', 'clicked_cta', { cta_id: a.dataset.ctaId })
-          })
-        )
+          }))
       } else {
         function gtag() {
           console.debug("Google Analytics disbled by DNT")
+        }
       }
-      </script>
+      window.gtag = gtag
+    </script>
     <!-- End Google tag (gtag.js) -->
 
   </head>
