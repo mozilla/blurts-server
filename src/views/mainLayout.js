@@ -41,7 +41,7 @@ const mainLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
-    <script nonce='${data.nonce}'>${analytics}</script>
+    ${analytics(data.nonce)}
   </head>
   <body>
     <header>
