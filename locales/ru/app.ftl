@@ -757,6 +757,7 @@ error-page-error-other-copy = Пожалуйста, попробуйте ещё 
 ## Breach overview page
 
 all-breaches-headline-2 = Все утечки, обнаруженные { -brand-fx-monitor }
+all-breaches-lead = Мы отслеживаем все известные утечки данных, чтобы выяснить, была ли скомпрометирована ваша персональная информация. Вот полный список всех утечек, о которых сообщалось с 2007 года.
 search-breaches = Поиск утечек
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Раскрытые данные:
@@ -764,4 +765,5 @@ exposed-data = Раскрытые данные:
 ## Public breach detail page
 
 find-out-if-2 = Узнайте, были ли вы затронуты этой утечкой
+find-out-if-description = Мы поможем вам быстро узнать, был ли ваш адрес электронной почты раскрыт в результате этой утечки, и понять, что делать дальше.
 breach-detail-cta-signup = Проверить на утечки
