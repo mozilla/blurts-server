@@ -17,7 +17,7 @@ settings-alert-preferences-option-two = Pošlji vsa opozorila o vdorih podatkov 
 
 # Variables:
 #   $email (string) - Email address
-settings-email-label-primary = { $email } (primarni)
+settings-email-label-primary = { $email } (glavni)
 settings-email-list-title = Nadzorovani e-poštni naslovi
 # Variables:
 #   $limit (number) - Number of email addresses included in the plan
