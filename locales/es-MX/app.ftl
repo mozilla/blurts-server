@@ -738,4 +738,5 @@ exposed-data = Datos expuestos:
 
 ## Public breach detail page
 
+find-out-if-2 = Averigua si has estado involucrado en esta filtración
 breach-detail-cta-signup = Consulta las filtraciones

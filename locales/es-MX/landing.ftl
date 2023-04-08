@@ -15,6 +15,7 @@ protect-account-prevent-hackers = Evita que los piratas informáticos ingresen a
 prevent-fraud = Prevenir el fraude y los delitos cibernéticos
 prevent-fraud-keep-info = Mantén tu información alejada de los piratas informáticos que quieren hacerse pasar por ti y cometer delitos.
 get-alerts = Recibe alertas de nuevas filtraciones
+get-alerts-find-out = Averigua cada vez que tu información personal es comprometida en una nueva filtración de datos conocida.
 
 ## Here’s how it works
 
