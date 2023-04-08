@@ -5,7 +5,7 @@
 import AppConstants from '../app-constants.js'
 
 import { getMessage, getLocale } from '../utils/fluent.js'
-import { analytics} from './partials/analytics.js'
+import { analytics } from './partials/analytics.js'
 
 const guestLayout = data => `
 <!doctype html>
