@@ -3,7 +3,7 @@
 
 ## Hero
 
-find-out-if-breached = Encuentra si has estado en una filtración de datos
+find-out-if-breached = Averigua si has estado en una filtración de datos
 get-started = Comenzar
 
 ## Why use Firefox Monitor?
@@ -46,4 +46,4 @@ what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de da
 
 ## See if you’ve been in a data breach
 
-see-if-data-breach = Ver si has sido parte de una filtración de datos
+see-if-data-breach = Descubre si has sido parte de una filtración de datos
