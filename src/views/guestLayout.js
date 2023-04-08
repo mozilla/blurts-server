@@ -64,7 +64,7 @@ const guestLayout = data => `
           }))
       } else {
         function gtag() {
-          console.debug("Google Analytics disbled by DNT")
+          console.debug("Google Analytics disabled by DNT")
         }
       }
       window.gtag = gtag
