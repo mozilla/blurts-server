@@ -5,15 +5,16 @@
 import AppConstants from '../../app-constants.js'
 
 export const analytics = nonce => `
-  <script nonce='${nonce}' async
-    src="https://www.googletagmanager.com/gtag/js?id=${AppConstants.GA4_MEASUREMENT_ID}">
-  </script>
+  <script id='gtag' nonce='${nonce}'></script>
   <script nonce='${nonce}'>
     if (navigator.doNotTrack === '1') {
       function gtag() {
         console.debug("Google Analytics disabled by DNT")
       }
     } else {
+      // Load gtag.js dynamically, so we can avoid loading it when DNT is set.
+      document.getElementById('gtag').src = "https://www.googletagmanager.com/gtag/js?id=${AppConstants.GA4_MEASUREMENT_ID}"
+
       window.dataLayer = window.dataLayer || []
       function gtag() {
         dataLayer.push(arguments)
