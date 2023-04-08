@@ -36,7 +36,7 @@ deceased-date = datumi smrti
 deceased-statuses = statusi umrlih
 # Instructions that you can set up in online shopping services to get your orders 
 # delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
-delivery-instructions = Navodila za dostavo
+delivery-instructions = navodila za dostavo
 device-information = podatki o napravah
 device-serial-numbers = serijske številke naprav
 device-usage-tracking-data = podatki o sledenju uporabe naprav
@@ -78,7 +78,7 @@ job-titles = službeni nazivi
 licence-plates = registrske tablice
 living-costs = življenjski stroški
 # This string refers to financial loans.
-loan-information = Podatki o posojilu
+loan-information = podatki o posojilih
 login-histories = zgodovine prijav
 mac-addresses = naslovi MAC
 marital-statuses = zakonski statusi
@@ -90,7 +90,7 @@ nationalities = državljanstva
 net-worths = neto prihodki
 nicknames = vzdevki
 # no data classes found
-none-data-class = Brez
+none-data-class = brez
 occupations = poklici
 # various data classes grouped together
 other-data-class = Drugo

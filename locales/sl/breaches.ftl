@@ -56,7 +56,7 @@ breach-description = Dne { $breachDate } je prišlo do kršitve podjetja { $comp
 ## Links that we might refer to when prompting the user to make changes after a breach
 
 breach-checklist-link-firefox-relay = { -brand-relay }
-breach-checklist-link-password-manager = { -brand-firefox } Upravitelj gesel
+breach-checklist-link-password-manager = { -brand-firefox }ov upravitelj gesel
 breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password

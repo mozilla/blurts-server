@@ -810,7 +810,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 menu-button-title = Uporabniški meni
 menu-button-alt = Odpri uporabniški meni
-menu-list-accessible-label = Meni Računa
+menu-list-accessible-label = Meni računa
 menu-item-fxa = Upravljajte svoj { -brand-fx-account }
 menu-item-settings = Nastavitve
 menu-item-help = Pomoč in podpora
