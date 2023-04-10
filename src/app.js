@@ -87,7 +87,9 @@ app.use(
 
 const imgSrc = [
   "'self'",
-  'https://www.googletagmanager.com', // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  'https://*.google-analytics.com',
+  'https://*.googletagmanager.com', 
   'https://firefoxusercontent.com',
   'https://mozillausercontent.com/',
   'https://monitor.cdn.mozilla.net/'
@@ -106,7 +108,7 @@ app.use((_req, res, _next) => {
       scriptSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-        `'nonce-${res.locals.nonce}'`
+        'https://*.googletagmanager.com'
       ],
       imgSrc,
       connectSrc: [

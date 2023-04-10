@@ -5,7 +5,6 @@
 import AppConstants from '../app-constants.js'
 
 import { getMessage, getLocale } from '../utils/fluent.js'
-import { analytics } from './partials/analytics.js'
 
 const mainLayout = data => `
 <!doctype html>
@@ -41,7 +40,6 @@ const mainLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
-    ${analytics(data.nonce)}
   </head>
   <body>
     <header>
