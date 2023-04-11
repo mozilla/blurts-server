@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--gap);
-  padding: var(--padding-xl) var(--padding-sm);
+  padding: var(--padding-xl) var(--padding-lg);
 }
 
 .breach-detail-meta {
@@ -16,7 +16,9 @@
 .breach-detail-meta h1 {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: var(--padding-md);
+  padding: 0 2vw 0 4vw;
 }
 
 .breach-detail-meta .breach-logo {
