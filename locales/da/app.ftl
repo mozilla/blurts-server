@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Ugyldig mailadresse
 user-add-too-many-emails = Du overvåger det maksimale antal mailadresser.
 user-add-email-verify-subject = Bekræft din tilmelding til { -product-name }.
 user-add-duplicate-email = Denne mailadresse er allerede føjet til { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Besøg { $preferencesLink } for at kontrollere status af { $userEmail }.
 error-headline = Fejl
 user-verify-token-error = Der kræves et bekræftelses-token.
@@ -50,11 +51,11 @@ scan-placeholder = Indtast en mailadresse
 scan-submit = Søg efter din mailadresse
 scan-error = Mailadressen skal være gyldig.
 download-firefox-banner-button = Hent { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Sendt!
 sign-up = Tilmeld dig
 form-signup-error = Mailadressen skal være gyldig
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Dato for datalæk:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Kompromitterede konti:
@@ -64,6 +65,8 @@ unsub-headline = Afmeld { -product-name-nowrap }
 unsub-blurb = Dette vil fjerne din mailadresse fra { -product-name-nowrap }s database, og du vil ikke længere modtage advarsler, når nye datalæk opdages.
 unsub-button = Stop abonnement
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Information om datalæk stammer fra { $hibp-link }
 share-twitter = De fleste mennesker har omkring 100 online-konti. Er nogle af dine konti blevet kompromitteret i en datalæk? Find ud af det.
 share-facebook-headline = Find ud af, om du er blevet udsat for en datalæk.
@@ -112,8 +115,6 @@ about-firefox-monitor = Om { -product-name }
 preferences = Indstillinger
 # Link title
 home = Hjem
-# Link title
-breaches = Datalæk
 # Link title
 security-tips = Sikkerhedstips
 fxa-account = { -brand-fxa }
@@ -214,7 +215,9 @@ feat-security-tips = Sikkerhedstips til at beskytte dine konti
 feat-sensitive = Avanceret søgning i datalæk af følsomme data
 feat-enroll-multiple = Få overvåget flere mailadresser for datalæk
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Optræder i { $breachCount } kendt datalæk.
@@ -226,6 +229,8 @@ get-email-alerts = Beskyt dig selv: Få advarsler via mail, når dine data optr�
 search-for-your-email = Søg efter din mailadresse i offentlige datalæk helt tilbage fra 2007.
 back-to-top = Tilbage til toppen
 comm-opt-0 = Send mig en mail, hvis en af mine nedenstående mailadresser optræder i en datalæk.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Send alle advarsler om datalæk til { $primaryEmail }.
 stop-monitoring-this = Stop med at overvåge denne mailadresse.
 resend-verification = Send bekræftelsesmail igen
@@ -234,7 +239,7 @@ send-verification = Send bekræftelseslink
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Opsummering af datalæk
 show-breaches-for-this-email = Vis alle datalæk for denne mailadresse.
@@ -245,8 +250,15 @@ remove-fxm-blurb = Slå { -product-name }-advarsler fra. Din { -brand-fxa } vil 
 manage-email-addresses = Håndter mailadresser
 # Link title
 latest-breach-link = Se, om du er ramt af denne datalæk
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Velkommen tilbage, { $userName }!
 welcome-user = Velkommen { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } fandt din mailadresse i en ny datalæk.
 your-info-was-discovered-headline = Dine informationer er blevet fundet i en ny datalæk.
 your-info-was-discovered-blurb =
@@ -271,6 +283,8 @@ ba-next-step-blurb-3 =
 faq1 = Jeg genkender ikke dette firma eller websted. Hvorfor er jeg i denne datalæk?
 faq2 = Hvorfor tog det så lang tid at give mig besked om denne datalæk?
 faq3 = Hvordan ved jeg, at dette er en legitim mail fra { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } NY DATALÆK FUNDET
@@ -278,24 +292,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Få de nyeste advarsler med en { -brand-fxa }.
 account-not-required = Du behøver ikke at have { -brand-name } for at bruge en { -brand-fxa }. Ved at tilmelde dig kan du modtage information om tjenester fra { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Er dine oplysninger blevet kompromitteret i { $breachName }-datalækken?
-find-out-if = Find ud af, om dine data er blevet kompromitteret i denne datalæk.
 fb-not-comp = Denne mailadresse optrådte ikke i { $breachName }-datalækken.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Men den optrådte i { $breachCount } anden datalæk.
        *[other] Men den optrådte i { $breachCount } andre datalæk.
     }
 fb-comp-only = Denne mailadresse optrådte i { $breachName }-datalækken.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Denne mailadresse optrådte i { $breachCount } kendt datalæk, herunder { $breachName }.
        *[other] Denne mailadresse optrådte i { $breachCount } kendte datalæk, herunder { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Den grundlæggende søgning fandt ikke andre datalæk.
 no-results-blurb = Beklager, men den datalæk er ikke i vores database.
-all-breaches-headline = Alle datalæk i { -product-name }
-search-breaches = Søg efter datalæk
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -367,6 +389,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Se yderligere datalæk
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Denne mailadresse optrådte i 1 kendt datalæk.
@@ -375,6 +399,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Resultater for: { $userEmail }
 other-monitored-emails = Andre overvågede mailadresser
 email-verification-required = Bekræftelse af mailadresse påkrævet
@@ -390,6 +416,8 @@ get-ongoing-breach-monitoring = Få løbende overvågning af flere mailadresser 
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Undersøg
 new-unsub-error = Du skal framelde dig i én af de mails, { -product-name } har sendt dig.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Men den optrådte i { $breachCount } anden kendt datalæk.
@@ -407,10 +435,12 @@ breach-overview-title = Oversigt
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Den { $breachDate } blev { $breachTitle } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name }-indstillinger
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Logget ind som: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -427,12 +457,16 @@ email-sent = Mailen blev sendt!
 want-to-add = Vil du tilføje en mailadresse mere?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Bekræft linket sendt til { $userEmail } for at føje mailadressen til { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Mailadresse bekræftet!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Vi vil advare dig, hvis { $email } optræder i en datalæk.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -446,15 +480,17 @@ sign-in-nested = Log ind
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Håndter alle mailadresser i { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Advarsler om datalæk
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Datalæk tilføjet:
 how-hackers-work-desc = Beskyt dine adgangskoder mod kriminelle på nettet – det er dem, de er mest interesserede i.
 what-to-do-after-breach-desc = Skift adgangskoder til dine konti, så dine informationer ikke falder i de forkerte hænder.
@@ -476,7 +512,11 @@ see-additional-recs = Se flere anbefalinger
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } optrådte i denne datalæk. <a>Hvad skal jeg gøre?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } af dine mailadresser optrådte i denne datalæk. <a>Hvad skal jeg gøre?</a>
@@ -504,6 +544,8 @@ confirmation-3-subhead = Endnu én klaret. Godt arbejde!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Er din nye adgangskode unik, stærk og svær at gætte? <a>Find ud af det</a>
 generic-confirmation-subhead = Denne datalæk er blevet markeret som løst
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Gå til din oversigt for at se den tilbageværende datalæk.
@@ -513,9 +555,13 @@ return-to-breach-details-link = Vend tilbage til detaljer om datalæk
 go-to-dashboard-link = Gå til oversigten
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% fuldført
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } løst
@@ -525,6 +571,9 @@ progress-intro-subhead = Nyt i { -product-name }: Markér datalæk som løst
 progress-intro-message =
     Når du har gennemgået detaljerne om en datalæk og taget skridt til at beskytte 
     dine personlige oplysninger, kan du markere lækken som løst.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } ud af { $numTotalBreaches } datalæk markeret som løst
@@ -550,16 +599,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Løs denne datalæk
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Markeret som løst:
 hide-resolved-button = Skjul løste
 show-resolved-button = Vis løste
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Adgangskode kompromitteret i uløste datalæk
        *[other] Adgangskoder kompromitteret i uløste datalæk
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Kendt datalæk markeret som løst
@@ -590,7 +643,10 @@ vpn-promo-copy-new = Beskyt dine online-data - vælg et VPN-abonnement, der pass
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Din placering: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Beskyt dig selv</em> med { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Beskyttet</em> med { -brand-mozilla-vpn }.
@@ -599,7 +655,8 @@ vpn-banner-title-2 = Din placering kan spores, hvis du ikke bruger en VPN.
 vpn-banner-subtitle-2 = Beskyt din placering og surf sikkert i 3 trin
 vpn-banner-status-protected = Nuværende status: <em>Beskyttet ✓</em>
 vpn-banner-status-not-protected = Nuværende status: <em>Ikke beskyttet ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP-adresse: { $ip-address }
 vpn-banner-step-1 = Abonner på { -brand-mozilla-vpn }
 vpn-banner-step-2 = Vælg en VPN-placering
@@ -658,6 +715,8 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -679,6 +738,8 @@ sign-in = Log ind
 site-nav-breaches-link = Løste datalæk
 site-nav-settings-link = Indstillinger
 site-nav-help-link = Hjælp og support
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -695,6 +756,7 @@ menu-item-logout = Log ud
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 github = { -brand-github }
+footer-nav-all-breaches = Alla datalæk
 
 ## Error page
 
@@ -707,3 +769,10 @@ error-page-error-404-cta-button = Gå tilbage
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Noget gik galt
 error-page-error-other-copy = Prøv igen eller kom tilbage senere
+
+## Breach overview page
+
+search-breaches = Søg efter datalæk
+
+## Public breach detail page
+
