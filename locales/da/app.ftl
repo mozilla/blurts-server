@@ -772,6 +772,8 @@ error-page-error-other-copy = Prøv igen eller kom tilbage senere
 
 ## Breach overview page
 
+all-breaches-headline-2 = Alle datalæk opdaget af { -brand-fx-monitor }
+all-breaches-lead = Vi holder øje med alle kendte datalæk for at finde ud af, om dine personlige oplysninger er blevet kompromitteret. Her er en komplet liste over alle rapporterede datalæk siden 2007.
 search-breaches = Søg efter datalæk
 
 ## Public breach detail page
