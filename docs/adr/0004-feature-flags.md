@@ -19,9 +19,26 @@ release. Feature flags can be used in a few scenarios:
 
 ## Decision Drivers <!-- optional -->
 
-* [driver 1, e.g., a force, facing concern, …]
-* [driver 2, e.g., a force, facing concern, …]
-* … <!-- numbers of drivers can vary -->
+When applying feature flagging, we often have a choice between making that toggle on the frontend or the backend. Here are a few factors that we should keep in mind while making that decision
+
+### UI Performance
+By moving flagging decisions to the server side, we are reducing code bloat on the frontend, gaining performance that's immediately noticeable by the user. If we decide to move Monitor frontend to SPA in the future, Single-page applications are already making a API call to render the data needed for the UI. With the same payload, we can make a call to a feature-flag service, so one network call can contain all feature-flag configs with the server-side data.
+
+### Config Cache Lag 
+There are two general approaches:
+
+1. An app can proactively request flagging decisions based on runtime-context
+
+> This approach consumes a lot more bandwidth (every context changes = new feature flag decision being made by the backend). It's a lot more flexible and prevents cache lag
+2. An app can request general config and use client-side router
+
+> With this approach, we essentially cache the config. In the case of a kill switch, the frontend may not be able to react quickly to the changes from the backend.
+
+### Security
+One key consideration when deciding where to implement a feature flag is security. If a feature is highly sensitive or critical to the security of the application, it may be safer to implement the toggle on the backend. This can help ensure that the feature is properly secured and that user data is protected.
+
+### Sync Complexity
+Implementing feature flagging on the server side reduces the complexity of synchronizing feature toggle logic between the frontend and backend, as there is a single central location to manage the toggle settings. This simplifies development and ensures that the system runs smoothly, as dependencies flow in one direction.
 
 ## Considered Options
 
