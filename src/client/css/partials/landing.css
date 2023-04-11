@@ -6,6 +6,17 @@
   font: var(--h4-font);
 }
 
+.section-transition {
+  opacity: 0;
+  transition: opacity 750ms ease-in-out, transform 500ms ease-in-out;
+  transform: translateY(10vh);
+}
+
+.section-transition-entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero {
   display: flex;
   flex-wrap: wrap-reverse;

@@ -4,6 +4,7 @@
 
 import './scroll-observer.js'
 import './resize-observer.js'
+import './section-observer.js'
 import './components/circle-chart.js'
 import './components/custom-select.js'
 import './components/toast-alert.js'
