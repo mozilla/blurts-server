@@ -16,7 +16,7 @@ const exposureScanPage = (req, res, next) => {
   }
 
   /**
-   * @type {ViewPartialData<import('../views/partials/exposure-scan.js').PartialParameters>}
+   * @type {GuestViewPartialData<import('../views/partials/exposure-scan.js').PartialParameters>}
    */
   const data = {
     partial: exposureScan,
