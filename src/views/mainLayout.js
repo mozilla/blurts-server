@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { isSubscribed } from '../utils/subscriber.js'
 
 /**
  * @type {ViewPartial<MainViewPartialData<any>>}
@@ -110,6 +111,7 @@ const mainLayout = data => `
  */
 const userMenu = data => `
 <div class='user-menu-wrapper' tabindex='-1'>
+  ${premiumButton(data)}
   <button
     aria-expanded='false'
     aria-haspopup='true'
@@ -155,5 +157,17 @@ const userMenu = data => `
   </menu>
 </div>
 `
+
+/**
+ * @type {ViewPartial<MainViewPartialData>}
+ */
+const premiumButton = data => {
+  if (!AppConstants.FXA_SUBSCRIPTION_ENABLED) { return '' }
+
+  if (isSubscribed(data.fxaProfile)) {
+    return 'Premium subscriber'
+  }
+  return '<a href="/oauth/premium/upgrade">Upgrade to Premium</a>'
+}
 
 export { mainLayout }

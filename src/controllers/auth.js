@@ -9,7 +9,8 @@ import AppConstants from '../appConstants.js'
 import {
   getSubscriberByEmail,
   removeFxAData,
-  updateFxAData
+  updateFxAData,
+  updateFxAProfileData
 } from '../db/tables/subscribers.js'
 import { addSubscriber } from '../db/tables/emailAddresses.js'
 
@@ -22,10 +23,17 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
 import { getProfileData, FxAOAuthClient, getSha1 } from '../utils/fxa.js'
 import { getEmailCtaHref, sendEmail } from '../utils/email.js'
+import { isSubscribed } from '../utils/subscriber.js'
 import { UnauthorizedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 
-const { SERVER_URL } = AppConstants
+const {
+  FXA_SUBSCRIPTION_ENABLED,
+  FXA_SUBSCRIPTION_PLAN_ID,
+  FXA_SUBSCRIPTION_PRODUCT_ID,
+  FXA_SUBSCRIPTION_URL,
+  SERVER_URL
+} = AppConstants
 
 const log = mozlog('controllers.auth')
 
@@ -155,4 +163,48 @@ async function logout (req, res) {
   })
 }
 
-export { init, confirmed, logout }
+/**
+ * Controller that initiates the premium upgrade flow.
+ *
+ * Redirects to subplat. If the user is already subscribed, they are redirected
+ * back to the dashboard.
+ *
+ * @param {object} req The express request object
+ * @param {object} res The express response object
+ */
+async function premiumUpgrade (req, res) {
+  if (!FXA_SUBSCRIPTION_ENABLED) {
+    return res.sendStatus(404)
+  }
+
+  if (
+    isSubscribed(req.user.fxa_profile_json)) {
+    return res.redirect('/user/breaches')
+  }
+
+  const subscribeUrl = `${FXA_SUBSCRIPTION_URL}/${FXA_SUBSCRIPTION_PRODUCT_ID}?plan=${FXA_SUBSCRIPTION_PLAN_ID}`
+
+  res.redirect(subscribeUrl)
+}
+
+/**
+ * Controller that completes the premium upgrade flow.
+ *
+ * Pulls down updated profile data from FxA (which should now contain a
+ * subscription) and redirects the user back to the dashboard.
+ *
+ * @param {object} req The express request object
+ * @param {object} res The express response object
+ */
+async function premiumConfirmed (req, res) {
+  if (!FXA_SUBSCRIPTION_ENABLED) {
+    return res.sendStatus(404)
+  }
+
+  const fxaProfileData = await getProfileData(req.user.fxa_access_token)
+  await updateFxAProfileData(req.user, fxaProfileData)
+
+  res.redirect('/user/breaches')
+}
+
+export { init, confirmed, logout, premiumUpgrade, premiumConfirmed }
