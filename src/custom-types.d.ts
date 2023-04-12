@@ -13,8 +13,23 @@ interface HTMLElement {
 
 // This lint rule does not apply to type definitions:
 // eslint-disable-next-line no-unused-vars
-type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams) => string;
-type ViewPartialData<ViewPartialParams = object> = {
-    partial: ViewPartial<ViewPartialParams>,
-    nonce: string
+type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams & { partial: { name: string } }) => string;
+type GuestViewPartialData<ViewPartialParams = object> = {
+    partial: ViewPartial<ViewPartialParams>;
+    nonce: string;
   } & ViewPartialParams;
+type MainViewPartialData<ViewPartialParams = object> = {
+    fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
+  } & GuestViewPartialData<ViewPartialParams>;
+
+declare namespace Express {
+  export interface Request {
+    user?: {
+      // TODO: Finish the type definition of the user object
+      fxa_profile_json?: {
+        avatar: string;
+        email: string;
+      }
+    };
+  }
+}

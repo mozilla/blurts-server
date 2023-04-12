@@ -5,7 +5,10 @@
     "src/views/partials/add-email.js",
     "src/views/partials/admin.js",
     "src/views/partials/exposure-scan.js",
+    "src/views/partials/exposures-setup.js",
+    "src/views/partials/exposures-list.js",
     "src/controllers/exposure-scan.js",
+    "src/controllers/exposures.js",
     "src/utils/emailAddress.js",
     // Replace the above with the following when our entire codebase has type annotations:
     // "src/**/*",

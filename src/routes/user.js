@@ -10,6 +10,7 @@ import { requireSessionUser } from '../middleware/auth.js'
 import { logout } from '../controllers/auth.js'
 // import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
+import { exposuresPage } from '../controllers/exposures.js'
 import { dataRemovalPage } from '../controllers/data-removal.js'
 import { settingsPage } from '../controllers/settings.js'
 import {
@@ -30,6 +31,9 @@ router.get('/dashboard', (req, res) => res.redirect(302, '/user/breaches'))
 
 // data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
+
+// data exposures detail page
+router.get('/exposures', requireSessionUser, exposuresPage)
 
 // data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)

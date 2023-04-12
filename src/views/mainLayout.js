@@ -5,6 +5,9 @@
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
+/**
+ * @type {ViewPartial<MainViewPartialData<any>>}
+ */
 const mainLayout = data => `
 <!doctype html>
 <html lang=${getLocale()}>
@@ -126,6 +129,9 @@ const mainLayout = data => `
 </html>
 `
 
+/**
+ * @type {ViewPartial<MainViewPartialData>}
+ */
 const userMenu = data => `
 <div class='user-menu-wrapper' tabindex='-1'>
   <button
