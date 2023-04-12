@@ -223,6 +223,7 @@ async function deleteUnverifiedSubscribers () {
 /**
  * Delete subscriber when a FxA user id is provided
  * Also deletes all the additional email addresses associated with the account
+ *
  * @param {string} fxaUID FxA user ID
  */
 async function deleteSubscriberByFxAUID (fxaUID) {
