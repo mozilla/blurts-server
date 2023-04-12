@@ -8,7 +8,7 @@ const debugMode = AppConstants.NODE_ENV !== 'production'
 
 if (navigator.doNotTrack === '1') {
   window.gtag = function () {
-    console.debug('Google Analytics disabled by DNT')
+    console.debug('Analytics disabled by DNT')
   }
   window.gtag()
 } else {

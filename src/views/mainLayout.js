@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import AppConstants from '../app-constants.js'
-
 import { getMessage, getLocale } from '../utils/fluent.js'
 
 const mainLayout = data => `
