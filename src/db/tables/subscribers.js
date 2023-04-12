@@ -220,9 +220,14 @@ async function deleteUnverifiedSubscribers () {
     .del()
   log.info('deleteUnverifiedSubscribers', { msg: `Deleted ${numDeleted} rows.` })
 }
-
+/**
+ * Delete subscriber when a FxA user id is provided
+ * Also deletes all the additional email addresses associated with the account
+ * @param {string} fxaUID FxA user ID
+ */
 async function deleteSubscriberByFxAUID (fxaUID) {
-  await knex('subscribers').where('fxa_uid', fxaUID).del()
+  const subscriberId = await knex('subscribers').where('fxa_uid', fxaUID).del().returning('id')
+  await knex('email_addresses').where({ subscriber_id: subscriberId }).del()
 }
 
 async function deleteResolutionsWithEmail (id, email) {
