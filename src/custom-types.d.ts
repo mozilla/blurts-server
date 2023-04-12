@@ -22,14 +22,27 @@ type MainViewPartialData<ViewPartialParams = object> = {
     fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
   } & GuestViewPartialData<ViewPartialParams>;
 
+/**
+ * See https://github.com/mozilla/fxa/blob/564949dfc69f0f675ebb4e5f267282c2546a5767/packages/fxa-profile-server/lib/routes/profile.js#L63-L77
+ */
+type FxaProfile = {
+  email?: string;
+  uid?: string;
+  avatar?: string;
+  avatarDefault?: boolean;
+  displayName?: string;
+  locale?: string;
+  amrValues?: string[];
+  twoFactorAuthentication?: boolean;
+  subscriptions?: string[];
+  metricsEnabled?: boolean;
+  sub?: string;
+}
 declare namespace Express {
   export interface Request {
     user?: {
       // TODO: Finish the type definition of the user object
-      fxa_profile_json?: {
-        avatar: string;
-        email: string;
-      }
+      fxa_profile_json?: FxaProfile;
     };
   }
 }
