@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import crypto from 'node:crypto'
-
 import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
@@ -87,7 +85,9 @@ app.use(
 
 const imgSrc = [
   "'self'",
-  'https://www.googletagmanager.com', // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  'https://*.google-analytics.com',
+  'https://*.googletagmanager.com',
   'https://firefoxusercontent.com',
   'https://mozillausercontent.com/',
   'https://monitor.cdn.mozilla.net/'
@@ -99,14 +99,13 @@ if (AppConstants.FXA_ENABLED) {
 }
 
 app.use((_req, res, _next) => {
-  res.locals.nonce = crypto.randomBytes(16).toString('hex')
   helmet.contentSecurityPolicy({
     directives: {
       upgradeInsecureRequests: isDev ? null : [], // disable forced https to allow localhost on Safari
       scriptSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-        `'nonce-${res.locals.nonce}'`
+        'https://*.googletagmanager.com'
       ],
       imgSrc,
       connectSrc: [

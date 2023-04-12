@@ -7,8 +7,7 @@ import { notFound } from '../views/partials/notFound.js'
 
 function notFoundPage (req, res) {
   const data = {
-    partial: notFound,
-    nonce: res.locals.nonce
+    partial: notFound
   }
 
   res.status(404).send(guestLayout(data))

@@ -10,7 +10,6 @@ import { landing } from '../views/partials/landing.js'
 function landingPage (req, res) {
   const data = {
     partial: landing,
-    nonce: res.locals.nonce,
     csrfToken: generateToken(res),
     countryCode: getCountryCode(req)
   }
