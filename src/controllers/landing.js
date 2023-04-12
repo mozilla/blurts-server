@@ -7,8 +7,7 @@ import { landing } from '../views/partials/landing.js'
 
 function landingPage (req, res) {
   const data = {
-    partial: landing,
-    nonce: res.locals.nonce
+    partial: landing
   }
 
   // Backward-compatibility with Monitor V1, for SEO.

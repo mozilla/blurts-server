@@ -29,8 +29,7 @@ async function breachesPage (req, res) {
     selectedEmailIndex,
     partial: breaches,
     csrfToken: generateToken(res),
-    fxaProfile: req.user.fxa_profile_json,
-    nonce: res.locals.nonce
+    fxaProfile: req.user.fxa_profile_json
   }
 
   res.send(mainLayout(data))

@@ -12,8 +12,7 @@ async function breachesPage (req, res) {
   const data = {
     partial: allBreaches,
     breaches: req.app.locals.breaches,
-    breachLogos: req.app.locals.breachLogoMap,
-    nonce: res.locals.nonce
+    breachLogos: req.app.locals.breachLogoMap
   }
 
   res.send(guestLayout(data))
@@ -31,8 +30,7 @@ async function breachDetailsPage (req, res) {
   const data = {
     partial: breachDetails,
     breach: featuredBreach,
-    breachLogos: req.app.locals.breachLogoMap,
-    nonce: res.locals.nonce
+    breachLogos: req.app.locals.breachLogoMap
   }
 
   res.send(guestLayout(data))
