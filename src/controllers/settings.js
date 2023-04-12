@@ -20,6 +20,7 @@ import { sendEmail, getVerificationUrl } from '../utils/email.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getSha1 } from '../utils/fxa.js'
+import { validateEmailAddress } from '../utils/emailAddress.js'
 import { generateToken } from '../utils/csrf.js'
 import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
 
@@ -67,13 +68,10 @@ async function settingsPage (req, res) {
 
 async function addEmail (req, res) {
   const sessionUser = req.user
-  const email = req.body.email
-  // Use the same regex as HTML5 email input type
-  // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/email#basic_validation
-  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
   const emailCount = 1 + (req.user.email_addresses?.length ?? 0) // primary + verified + unverified emails
+  const validatedEmail = validateEmailAddress(req.body.email)
 
-  if (!email || !emailRegex.test(email)) {
+  if (validatedEmail === null) {
     throw new UserInputError(getMessage('user-add-invalid-email'))
   }
 
@@ -81,11 +79,11 @@ async function addEmail (req, res) {
     throw new UserInputError(getMessage('user-add-too-many-emails'))
   }
 
-  checkForDuplicateEmail(sessionUser, email)
+  checkForDuplicateEmail(sessionUser, validatedEmail.email)
 
   const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
     req.session.user,
-    email
+    validatedEmail.email
   )
 
   await sendVerificationEmail(sessionUser, unverifiedSubscriber.id)

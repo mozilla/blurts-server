@@ -17,6 +17,8 @@ import breachDetailsRoutes from './breach-details.js'
 
 import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
+import { exposureScanPage } from '../controllers/exposure-scan.js'
+import { requestBreachScan } from '../controllers/request-breach-scan.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
 import { doubleCsrfProtection } from '../utils/csrf.js'
@@ -24,10 +26,12 @@ import { doubleCsrfProtection } from '../utils/csrf.js'
 const router = express.Router()
 
 router.get('/', landingPage)
+router.get('/scan', exposureScanPage)
 router.get('*/dialog/:name', dialog)
 
 router.use('/admin', doubleCsrfProtection, adminRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)
+router.use('/api/v1/scan', doubleCsrfProtection, requestBreachScan)
 router.use('/api/v1/user/', doubleCsrfProtection, userApiRoutes)
 router.use('/oauth', doubleCsrfProtection, authRoutes)
 router.use('/user', doubleCsrfProtection, userRoutes)

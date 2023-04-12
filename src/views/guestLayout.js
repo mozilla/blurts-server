@@ -6,6 +6,11 @@ import AppConstants from '../app-constants.js'
 
 import { getMessage, getLocale } from '../utils/fluent.js'
 
+/**
+ * @template {object} PartialParameters
+ * @param {ViewPartialData<PartialParameters>} data
+ * @returns {string}
+ */
 const guestLayout = data => `
 <!doctype html>
 <html lang=${getLocale()}>
@@ -53,7 +58,7 @@ const guestLayout = data => `
     <main data-partial='${data.partial.name}'>
       ${data.partial(data)}
     </main>
-    <footer>
+    <footer class='site-footer'>
       <a href='https://www.mozilla.org' target='_blank'>
         <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
       </a>
