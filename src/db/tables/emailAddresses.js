@@ -42,14 +42,21 @@ async function getEmailAddressRecordByEmail (email) {
 }
 
 async function addSubscriberUnverifiedEmailHash (user, email) {
-  const res = await knex('email_addresses').insert({
-    subscriber_id: user.id,
-    email,
-    sha1: getSha1(email),
-    verification_token: uuidv4(),
-    verified: false
-  }).returning('*')
-  return res[0]
+  const res = await knex.transaction(trx => {
+    return trx('email_addresses')
+      .forUpdate()
+      .select({
+        subscriber_id: user.id
+      })
+      .insert({
+        subscriber_id: user.id,
+        email,
+        sha1: getSha1(email),
+        verification_token: uuidv4(),
+        verified: false
+      }).returning('*')
+  })
+  return await res[0]
 }
 
 async function resetUnverifiedEmailAddress (emailAddressId) {
