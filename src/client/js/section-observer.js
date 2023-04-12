@@ -4,9 +4,8 @@
 
 const classNameToObserve = 'section-transition'
 const classNameEntered = `${classNameToObserve}-entered`
-
-const CUE_INTERVAL = 150
-const SECTION_SCROLL_THRESHOLD = 0.1
+const cueIntervalDuration = 150
+const sectionThreshold = 0.1
 
 let observers
 let cueInterval
@@ -24,7 +23,7 @@ function handleShowSection () {
 }
 
 function setCueInterval () {
-  cueInterval = setInterval(handleShowSection, CUE_INTERVAL)
+  cueInterval = setInterval(handleShowSection, cueIntervalDuration)
 }
 
 function handleScroll (entries) {
@@ -49,7 +48,7 @@ function handleScroll (entries) {
 
 function init (sections) {
   const observer = new IntersectionObserver(handleScroll, {
-    threshold: SECTION_SCROLL_THRESHOLD
+    threshold: sectionThreshold
   })
 
   observers = [...sections].map(section => {
