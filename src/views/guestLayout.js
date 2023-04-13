@@ -5,6 +5,9 @@
 import AppConstants from '../app-constants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
+/**
+ * @type {ViewPartial<GuestViewPartialData<any>>}
+ */
 const guestLayout = data => `
 <!doctype html>
 <html lang=${getLocale()}>
@@ -39,38 +42,6 @@ const guestLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
-
-    <!-- Google tag (gtag.js) -->
-    <script nonce='${data.nonce}'>
-      if (!navigator.doNotTrack || navigator.doNotTrack !== '1') {
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtag/js?id='+i+dl;var n=d.querySelector('[nonce]');
-        n&&j.setAttribute('nonce',n.nonce||n.getAttribute('nonce'));f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','${AppConstants.GA4_MEASUREMENT_ID}');
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '${AppConstants.GA4_MEASUREMENT_ID}', {
-          cookie_domain: window.location.hostname,
-          cookie_flags: "SameSite=None;Secure",
-          debug_mode: ${Boolean(AppConstants.GA4_DEBUG_MODE)}
-        });
-        window.gtag = gtag
-
-        // Detect CTA clicks on public pages.
-        document.querySelectorAll('[data-cta-id]').forEach(a =>
-          a.addEventListener('click', e => {
-            gtag('event', 'clicked_cta', { cta_id: a.dataset.ctaId })
-          })
-        )
-      } else {
-        function gtag() {
-          console.debug("Google Analytics disbled by DNT")
-      }
-      </script>
-    <!-- End Google tag (gtag.js) -->
-
   </head>
   <body>
     <header>
@@ -84,7 +55,7 @@ const guestLayout = data => `
     <main data-partial='${data.partial.name}'>
       ${data.partial(data)}
     </main>
-    <footer>
+    <footer class='site-footer'>
       <a href='https://www.mozilla.org' target='_blank'>
         <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
       </a>
