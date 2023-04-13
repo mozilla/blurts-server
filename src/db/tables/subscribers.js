@@ -124,6 +124,18 @@ async function removeFxAData (subscriber) {
   return updatedSubscriber
 }
 
+/**
+ * @param {import('./subscribers_types').SubscriberRow} subscriber
+ * @param {number} onerepProfileId
+ */
+async function setOnerepProfileId (subscriber, onerepProfileId) {
+  await knex('subscribers')
+    .where('id', subscriber.id)
+    .update({
+      onerep_profile_id: onerepProfileId
+    })
+}
+
 async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
   const nowDateTime = new Date()
@@ -314,6 +326,7 @@ export {
   updateFxAData,
   removeFxAData,
   updateFxAProfileData,
+  setOnerepProfileId,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
   setBreachesResolved,

@@ -40,7 +40,7 @@ type FxaProfile = {
 }
 declare namespace Express {
   export interface Request {
-    user?: {
+    user?: (import('./db/tables/subscribers_types').SubscriberRow) & {
       // TODO: Finish the type definition of the user object
       fxa_profile_json?: FxaProfile;
     };

@@ -4,6 +4,8 @@
 
 import AppConstants from '../appConstants.js'
 import mozlog from '../utils/log.js'
+import { parseE164PhoneNumber, parseIso8601Datetime } from '../utils/parse.js'
+import { usStates } from '../utils/states.js'
 const log = mozlog('external.onerep')
 
 /**
@@ -14,11 +16,13 @@ async function onerepFetch (path, options = {}) {
   const url = 'https://api.onerep.com' + path
   const headers = new Headers(options.headers)
   headers.set('Authorization', `Basic ${Buffer.from(`${AppConstants.ONEREP_API_KEY}:`).toString('base64')}`)
+  headers.set('Accept', 'application/json')
+  headers.set('Content-Type', 'application/json')
   return fetch(url, { ...options, headers })
 }
 
 /**
- * @typedef {object} OneRepProfile
+ * @typedef {object} ProfileData
  * @property {string} first_name
  * @property {string} last_name
  * @property {string} city
@@ -28,7 +32,7 @@ async function onerepFetch (path, options = {}) {
  */
 
 /**
- * @param {OneRepProfile} profileData
+ * @param {ProfileData} profileData
  * @returns {Promise<number>} Profile ID
  */
 export async function createProfile (profileData) {
@@ -76,6 +80,38 @@ export async function createProfile (profileData) {
    */
   const savedProfile = await response.json()
   return savedProfile.id
+}
+
+/**
+ * @param {any} body
+ * @returns {ProfileData | null}
+ */
+export function parseExposureScanData (body) {
+  const state = usStates.find(state => typeof body === 'object' && state === body.state)
+  if (
+    typeof body !== 'object' ||
+    typeof body.first_name !== 'string' ||
+    body.first_name.length === 0 ||
+    typeof body.last_name !== 'string' ||
+    body.last_name.length === 0 ||
+    typeof body.city !== 'string' ||
+    body.city.length === 0 ||
+    typeof body.state !== 'string' ||
+    typeof state !== 'string' ||
+    (typeof body.birth_date !== 'string' && typeof body.birth_date !== 'undefined') ||
+    (typeof body.phone_number !== 'string' && typeof body.phone_number !== 'undefined')
+  ) {
+    return null
+  }
+
+  return {
+    first_name: body.first_name,
+    last_name: body.last_name,
+    city: body.city,
+    state,
+    birth_date: parseIso8601Datetime(body.birth_date)?.toISOString(),
+    phone_number: parseE164PhoneNumber(body.phone_number) ?? undefined
+  }
 }
 
 /**

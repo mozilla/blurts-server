@@ -11,6 +11,7 @@
     "src/controllers/exposures.js",
     "src/external/onerep.js",
     "src/utils/emailAddress.js",
+    "src/utils/log.js",
     "src/utils/states.js",
     "src/utils/parse.js",
     // Replace the above with the following when our entire codebase has type annotations:
