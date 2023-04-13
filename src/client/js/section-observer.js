@@ -12,7 +12,7 @@ let cueInterval
 const entryCue = []
 
 function handleShowSection () {
-  if (!entryCue?.length && cueInterval) {
+  if (!entryCue.length && cueInterval) {
     clearInterval(cueInterval)
     cueInterval = null
     return
