@@ -8,6 +8,7 @@ import { asyncMiddleware } from '../../../middleware/util.js'
 import { requireSessionUser } from '../../../middleware/auth.js'
 import { methodNotAllowed } from '../../../middleware/error.js'
 import { putBreachResolution, getBreaches } from '../../../controllers/breaches.js'
+import { storeExposureScanData } from '../../../controllers/storeExposureScanData.js'
 import {
   addEmail,
   resendEmail,
@@ -20,6 +21,7 @@ const router = Router()
 // breaches
 router.put('/breaches', requireSessionUser, asyncMiddleware(putBreachResolution))
 router.get('/breaches', requireSessionUser, asyncMiddleware(getBreaches))
+router.post('/exposures', requireSessionUser, asyncMiddleware(storeExposureScanData))
 router.post('/email', requireSessionUser, asyncMiddleware(addEmail))
 router.post('/resend-email', requireSessionUser, asyncMiddleware(resendEmail))
 router.post('/remove-email', requireSessionUser, asyncMiddleware(removeEmail))
