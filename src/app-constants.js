@@ -4,12 +4,6 @@
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 import * as dotenv from 'dotenv'
-import { readFileSync } from 'fs'
-import path from 'path'
-import { fileURLToPath } from 'url'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 dotenv.config({ path: '../.env' })
 
@@ -48,12 +42,13 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
+  'EMAIL_TEST_RECIPIENT',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',
-  'EMAIL_TEST_RECIPIENT',
-  'GA4_MEASUREMENT_ID',
   'GA4_DEBUG_MODE',
+  'GA4_MEASUREMENT_ID',
+  'HIBP_BREACH_DOMAIN_BLOCKLIST',
   'LIVE_RELOAD',
   'PORT',
   'SENTRY_DSN_LEGACY'
@@ -78,41 +73,5 @@ optionalEnvVars.forEach(key => {
   const value = process.env[key]
   if (value) AppConstants[key] = value
 })
-
-// Create HIBP breach link blocklist
-const linkListData = readFileSync(path.join(
-  __dirname,
-  './hibp-breach-link-status-list.json'
-))
-const linkStatusList = JSON.parse(linkListData.toString()).links
-
-/**
- * @typedef {object} BreachLink
- * @property {string} link
- * @property {number} statusCode
- * @property {object} err
- * @property {string} status
- */
-
-const linkBlockList = linkStatusList
-  .reduce(
-    /**
-     * @param {Array<Object>} blockList
-     * @param {BreachLink} breachLink
-     */
-    (blockList, breachLink) => {
-      const { status, statusCode } = breachLink
-
-      if (status !== 'alive' || statusCode !== 200) {
-        blockList.push(breachLink.link)
-      }
-
-      return blockList
-    },
-    []
-  )
-  .join(',')
-
-AppConstants.HIBP_BREACH_LINK_BLOCKLIST = linkBlockList
 
 export default Object.freeze(AppConstants)
