@@ -5,6 +5,13 @@
 import { getMessage } from '../../utils/fluent.js'
 
 export const landing = () => `
+<noscript>
+  <style>
+    .section-transition {
+      opacity: 1;
+    }
+  </style>
+</noscript>
 <section class='hero section-transition'>
   <div>
     <h1>${getMessage('exposure-landing-hero-heading')}</h1>
