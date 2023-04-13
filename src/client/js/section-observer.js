@@ -5,10 +5,13 @@
 const classNameToObserve = 'section-transition'
 const classNameEntered = `${classNameToObserve}-entered`
 const queueIntervalDuration = 150
+
+// percentage a section that has to be in view in order to appear
 const sectionThreshold = 0.1
 
 let observers
 let queueInterval
+// holds the sections so they can appear one after another
 const entryQueue = []
 
 function handleShowSection () {
@@ -63,6 +66,8 @@ if (!observers) {
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)')
   const allowMotion = mediaQuery && mediaQuery.matches
 
+  // Handle the following edge case: A user has the Monitor landing page open
+  // and is setting their preferences.
   const sections = document.getElementsByClassName(classNameToObserve)
   mediaQuery.addEventListener('change', () => {
     [...sections].forEach(section => section.classList.add(classNameEntered))
