@@ -4,26 +4,26 @@
 
 const classNameToObserve = 'section-transition'
 const classNameEntered = `${classNameToObserve}-entered`
-const cueIntervalDuration = 150
+const queueIntervalDuration = 150
 const sectionThreshold = 0.1
 
 let observers
-let cueInterval
-const entryCue = []
+let queueInterval
+const entryQueue = []
 
 function handleShowSection () {
-  if (entryCue.length === 0 && cueInterval) {
-    clearInterval(cueInterval)
-    cueInterval = null
+  if (!entryQueue.length && queueInterval) {
+    clearInterval(queueInterval)
+    queueInterval = null
     return
   }
 
-  const nextEntry = entryCue.shift()
+  const nextEntry = entryQueue.shift()
   nextEntry.target.classList.add(classNameEntered)
 }
 
-function setCueInterval () {
-  cueInterval = setInterval(handleShowSection, cueIntervalDuration)
+function setQueueInterval () {
+  queueInterval = setInterval(handleShowSection, queueIntervalDuration)
 }
 
 function handleScroll (entries) {
@@ -37,11 +37,11 @@ function handleScroll (entries) {
 
     const isInViewport = entry.isIntersecting
     if (isInViewport) {
-      entryCue.push(entry)
+      entryQueue.push(entry)
     }
 
-    if (!cueInterval) {
-      setCueInterval()
+    if (!queueInterval) {
+      setQueueInterval()
     }
   })
 }
@@ -56,7 +56,7 @@ function init (sections) {
     return observer
   })
 
-  setCueInterval()
+  setQueueInterval()
 }
 
 if (!observers) {
