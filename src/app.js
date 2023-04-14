@@ -13,8 +13,8 @@ import rateLimit from 'express-rate-limit'
 import Sentry from '@sentry/node'
 import '@sentry/tracing'
 
-import AppConstants from './app-constants.js'
-import { localStorage } from './utils/local-storage.js'
+import AppConstants from './appConstants.js'
+import { localStorage } from './utils/localStorage.js'
 import { errorHandler } from './middleware/error.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
@@ -54,7 +54,7 @@ await initFluentBundles()
 async function getRedisStore () {
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
     // allow mock redis for setups without local redis server
-    const { redisMockClient } = await import('./utils/redis-mock.js')
+    const { redisMockClient } = await import('./utils/redisMock.js')
     return new RedisStore({ client: redisMockClient })
   }
 

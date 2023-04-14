@@ -5,7 +5,7 @@
 let dialogEl, form
 
 function init () {
-  dialogEl = document.querySelector('dialog[data-partial="add-email"]')
+  dialogEl = document.querySelector('dialog[data-partial="addEmail"]')
   if (!dialogEl) return
 
   form = dialogEl.querySelector('form')

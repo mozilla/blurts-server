@@ -4,7 +4,7 @@
 
 import pgConnectionStr from 'pg-connection-string'
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 const { DATABASE_URL, NODE_ENV } = AppConstants
 const connectionObj = pgConnectionStr.parse(DATABASE_URL)
 if (NODE_ENV === 'heroku') {

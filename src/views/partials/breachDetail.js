@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getBreachLogo } from '../../utils/breach-logo.js'
+import { getBreachLogo } from '../../utils/breachLogo.js'
 import { getLocale, getMessage } from '../../utils/fluent.js'
 import { getAllPriorityDataClasses, getAllGenericRecommendations } from '../../utils/recommendations.js'
 
@@ -120,7 +120,7 @@ function getBreachDetail (categoryId) {
   }
 }
 
-function makeBreachDetails (breach) {
+function makeBreachDetail (breach) {
   const breachDetail = getBreachDetail(breach)
   return `
   <h2>${breachDetail.subhead}</h2>
@@ -128,7 +128,7 @@ function makeBreachDetails (breach) {
   `
 }
 
-export const breachDetails = data => `
+export const breachDetail = data => `
   <header class="breach-detail-header">
     <div class="breach-detail-meta">
       <h1>
@@ -195,7 +195,7 @@ export const breachDetails = data => `
   <!-- What is this breach? / Why did it take you so long to report it?-->
   <div class="breach-detail-info">
     <div id="what-is-this-breach">
-      ${makeBreachDetails(getBreachCategory(data.breach))}
+      ${makeBreachDetail(getBreachCategory(data.breach))}
     </div>
     ${compareBreachDates(data.breach)
       ? `

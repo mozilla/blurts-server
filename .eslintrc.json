@@ -18,7 +18,8 @@
     "plugins": [
         "header",
         "jsdoc",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "check-file"
     ],
     "rules": {
         "no-prototype-builtins": "warn",
@@ -45,6 +46,15 @@
             "error",
             {
                 "ts-ignore": "allow-with-description"
+            }
+        ],
+        "check-file/filename-naming-convention": [
+            "error",
+            {
+                "**/*.{js,css}": "CAMEL_CASE"
+            },
+            {
+                "ignoreMiddleExtensions": true
             }
         ]
     }

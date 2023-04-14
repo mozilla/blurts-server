@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { mainLayout } from '../views/mainLayout.js'
-import { dataRemoval } from '../views/partials/data-removal.js'
+import { dataRemoval } from '../views/partials/dataRemoval.js'
 
 function dataRemovalPage (req, res) {
   const data = {

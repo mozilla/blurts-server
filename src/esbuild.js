@@ -8,7 +8,7 @@
 
 import esbuild from 'esbuild'
 import { readdirSync } from 'node:fs'
-import AppConstants from './app-constants.js'
+import AppConstants from './appConstants.js'
 
 const cssPartialDir = 'client/css/partials/'
 const cssPartialPaths = readdirSync(cssPartialDir, { withFileTypes: true })

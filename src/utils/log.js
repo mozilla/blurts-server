@@ -4,7 +4,7 @@
 
 import mozlog from 'mozlog'
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 
 const log = mozlog({
   app: 'fx-monitor',
