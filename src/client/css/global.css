@@ -310,8 +310,8 @@ dialog button.close {
 }
 
 [data-enter-transition] {
-  opacity: var(--section-animation-opacity, 1);
-  transform: translateY(var(--section-animation-y, 0));
+  opacity: var(--enter-transition-opacity, 1);
+  transform: translateY(var(--enter-transition-y, 0));
 }
 
 [data-enter-transition='visible'] {

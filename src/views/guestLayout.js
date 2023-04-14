@@ -46,8 +46,8 @@ const guestLayout = data => `
     <noscript>
       <style>
         :root {
-          --section-animation-opacity: 1;
-          --section-animation-y: 0;
+          --enter-transition-opacity: 1;
+          --enter-transition-y: 0;
         }
       </style>
     </noscript>

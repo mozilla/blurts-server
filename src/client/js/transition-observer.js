@@ -2,10 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const queueIntervalDuration = 150
-
 // percentage a section that has to be in view in order to appear
 const sectionThreshold = 0.1
+const queueIntervalDuration = 150
 
 let observers
 let queueInterval
@@ -66,12 +65,12 @@ if (!observers) {
 
   const sections = document.querySelectorAll('[data-enter-transition]')
 
-  // Handle the following edge case: A user has the Monitor landing page open
-  // and is setting their preferences.
+  // Don’t hide elements that are marked for entering transitions
+  // while users set their motion preferences.
   mediaQuery.addEventListener('change', () => {
-    [...sections].forEach(section => {
-      section.dataset.enterTransition = 'visible'
-    })
+    const documentStyle = document.documentElement.style
+    documentStyle.setProperty('--enter-transition-opacity', '1')
+    documentStyle.setProperty('--enter-transition-y', '0')
   })
 
   if (allowMotion) {
