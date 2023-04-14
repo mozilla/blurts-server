@@ -42,10 +42,26 @@ Implementing feature flagging on the server side reduces the complexity of synch
 
 ## Considered Options
 
-* [option 1]
-* [option 2]
-* [option 3]
-* … <!-- numbers of options can vary -->
+### Environment Variables
+From Vincent:
+```
+ENABLED_FEATURE_FLAGS = "premium,party-mode,etc"
+
+function isFlagEnabled(flag: string): boolean {
+  return (process.env.ENABLED_FEATURE_FLAGS ?? '').split(',').includes(flag);
+}
+
+const confettiScript = isFlagEnabled('party-mode')
+  ? '<script src="confetti.js"></script>'
+  : "";
+```
+
+### Unleashed Open Source Feature Flag (self host)
+
+### Unleased (managed cloud)
+
+
+...
 
 ## Decision Outcome
 
