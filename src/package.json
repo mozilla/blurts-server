@@ -87,7 +87,7 @@
     "eslint-plugin-check-file": "^2.2.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-jsdoc": "^40.0.0",
-    "node-mocks-http": "^1.12.1",
+    "node-mocks-http": "^1.12.2",
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
     "svgo": "^3.0.2",
