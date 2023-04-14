@@ -32,6 +32,7 @@ const requiredEnvVars = [
   'OAUTH_CLIENT_SECRET',
   'OAUTH_PROFILE_URI',
   'OAUTH_TOKEN_URI',
+  'ONEREP_API_KEY',
   'REDIS_URL',
   'SENTRY_DSN',
   'SERVER_URL',
