@@ -18,6 +18,7 @@ import {
   unsubscribeMonthlyPage
 } from '../controllers/unsubscribe.js'
 import { unsubscribeFromEmails } from '../utils/email.js'
+import AppConstants from '../appConstants.js'
 
 const router = Router()
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
@@ -32,8 +33,11 @@ router.get('/dashboard', (req, res) => res.redirect(302, '/user/breaches'))
 // data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
 
-// data exposures detail page
-router.get('/exposures', requireSessionUser, exposuresPage)
+// Not ready yet, so don't expose in production:
+if (AppConstants.NODE_ENV === 'dev') {
+  // data exposures detail page
+  router.get('/exposures', requireSessionUser, exposuresPage)
+}
 
 // data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)
