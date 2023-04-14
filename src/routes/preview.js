@@ -4,9 +4,11 @@
 
 import { Router } from 'express'
 import { emailsPreviewPage } from '../controllers/email-preview.js'
+import { animationsPreviewPage } from '../controllers/animations-preview.js'
 
 const router = Router()
 
 router.get(['/emails', '/emails/:template'], emailsPreviewPage)
+router.get(['/animations', '/animations/:id'], animationsPreviewPage)
 
 export default router
