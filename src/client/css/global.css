@@ -308,3 +308,19 @@ dialog button.close {
     opacity: 1;
   }
 }
+
+[data-enter-transition] {
+  opacity: var(--section-animation-opacity, 1);
+  transform: translateY(var(--section-animation-y, 0));
+}
+
+[data-enter-transition='visible'] {
+  animation: section-animation ease-out 350ms forwards;
+}
+
+@keyframes section-animation {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const classNameToObserve = 'section-transition'
-const classNameEntered = `${classNameToObserve}-entered`
 const queueIntervalDuration = 150
 
 // percentage a section that has to be in view in order to appear
@@ -22,7 +20,7 @@ function handleShowSection () {
   }
 
   const nextEntry = entryQueue.shift()
-  nextEntry.target.classList.add(classNameEntered)
+  nextEntry.target.dataset.enterTransition = 'visible'
 }
 
 function setQueueInterval () {
@@ -32,7 +30,7 @@ function setQueueInterval () {
 function handleScroll (entries) {
   entries.forEach(entry => {
     const sectionElement = entry.target
-    const hasEntered = sectionElement.classList.contains(classNameEntered)
+    const hasEntered = sectionElement.getAttribute('data-enter-transition') === 'visible'
 
     if (hasEntered) {
       return
@@ -66,11 +64,14 @@ if (!observers) {
   const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)')
   const allowMotion = mediaQuery && mediaQuery.matches
 
+  const sections = document.querySelectorAll('[data-enter-transition]')
+
   // Handle the following edge case: A user has the Monitor landing page open
   // and is setting their preferences.
-  const sections = document.getElementsByClassName(classNameToObserve)
   mediaQuery.addEventListener('change', () => {
-    [...sections].forEach(section => section.classList.add(classNameEntered))
+    [...sections].forEach(section => {
+      section.dataset.enterTransition = 'visible'
+    })
   })
 
   if (allowMotion) {

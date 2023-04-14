@@ -5,14 +5,7 @@
 import { getMessage } from '../../utils/fluent.js'
 
 export const landing = () => `
-<noscript>
-  <style>
-    .section-transition {
-      opacity: 1;
-    }
-  </style>
-</noscript>
-<section class='hero section-transition'>
+<section class='hero' data-enter-transition>
   <div>
     <h1>${getMessage('exposure-landing-hero-heading')}</h1>
     <p>${getMessage('exposure-landing-hero-lead')}</p>
@@ -40,7 +33,7 @@ export const landing = () => `
     <img srcset='images/landing-hero.webp 530w, images/landing-hero@2x.webp 1059w' width='530' height='406' alt=''>
   </figure>
 </section>
-<section class='why-use-monitor section-transition'>
+<section class='why-use-monitor' data-enter-transition>
   <h2>${getMessage('why-use-monitor')}</h2>
   <p>${getMessage('identifying-breaches')}</p>
   <ul>
@@ -58,7 +51,7 @@ export const landing = () => `
     </li>
   </ul>
 </section>
-<section class='how-it-works section-transition'>
+<section class='how-it-works' data-enter-transition>
   <h2>${getMessage('how-it-works')}</h2>
   <ol>
     <li>
@@ -78,7 +71,7 @@ export const landing = () => `
     </li>
   </ol>
 </section>
-<section class='safe-with-us section-transition'>
+<section class='safe-with-us' data-enter-transition>
   <div>
     <h2>${getMessage('safe-with-us')}</h2>
     <p>${getMessage('parent-company')}</p>
@@ -89,7 +82,7 @@ export const landing = () => `
     <img srcset='images/landing-nature-phone.webp 539w, images/landing-nature-phone@2x.webp 1078w' width='539' height='503' loading='lazy' alt=''>
   </figure>
 </section>
-<section class='top-questions-about-monitor section-transition'>
+<section class='top-questions-about-monitor' data-enter-transition>
   <div>
     <h2>${getMessage('top-questions-about-monitor')}</h2>
     <a href='https://support.mozilla.org/kb/firefox-monitor-faq' target='_blank'>${getMessage('see-all-faq')}</a>
@@ -109,7 +102,7 @@ export const landing = () => `
     </details>
   </div>
 </section>
-<section class='see-if-data-breach section-transition'>
+<section class='see-if-data-breach' data-enter-transition>
   <h2>${getMessage('see-if-data-breach')}</h2>
   <a class='button primary' data-cta-id='landing-2' href='/user/breaches'>${getMessage('get-started')}</a>
 </section>

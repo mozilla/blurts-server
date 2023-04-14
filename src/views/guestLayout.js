@@ -42,6 +42,15 @@ const guestLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
+
+    <noscript>
+      <style>
+        :root {
+          --section-animation-opacity: 1;
+          --section-animation-y: 0;
+        }
+      </style>
+    </noscript>
   </head>
   <body>
     <header>
