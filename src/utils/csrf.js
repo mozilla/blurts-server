@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { doubleCsrf } from 'csrf-csrf'
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 
 // defaults to ignore GET, HEAD, OPTIONS
 const { doubleCsrfProtection, generateToken } = doubleCsrf({

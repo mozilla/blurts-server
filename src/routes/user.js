@@ -11,7 +11,7 @@ import { logout } from '../controllers/auth.js'
 // import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
 import { exposuresPage } from '../controllers/exposures.js'
-import { dataRemovalPage } from '../controllers/data-removal.js'
+import { dataRemovalPage } from '../controllers/dataRemoval.js'
 import { settingsPage } from '../controllers/settings.js'
 import {
   unsubscribePage,

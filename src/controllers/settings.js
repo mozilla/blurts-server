@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 
 import {
   getUserEmails,
@@ -26,8 +26,8 @@ import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/erro
 
 import { mainLayout } from '../views/mainLayout.js'
 import { settings } from '../views/partials/settings.js'
-import { getTemplate } from '../views/emails/email-2022.js'
-import { verifyPartial } from '../views/emails/email-verify.js'
+import { getTemplate } from '../views/emails/email2022.js'
+import { verifyPartial } from '../views/emails/emailVerify.js'
 
 async function settingsPage (req, res) {
   /** @type {Array<import('../db/tables/email_addresses.js').EmailRow>} */

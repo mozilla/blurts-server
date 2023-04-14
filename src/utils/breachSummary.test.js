@@ -4,7 +4,7 @@
 
 import test from 'ava'
 
-import { breachedDataTypes, breachSummary } from './breach-summary.js'
+import { breachedDataTypes, breachSummary } from './breachSummary.js'
 
 test('breachSummary: handles null input', t => {
   const verifiedEmails = null

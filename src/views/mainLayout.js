@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
 /**
@@ -42,6 +42,7 @@ const mainLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
+    ${data.skipPartialModule ? '' : `<script src='/js/partials/${data.partial.name}.js' type='module'></script>`}
   </head>
   <body>
     <header>

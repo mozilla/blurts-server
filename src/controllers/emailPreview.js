@@ -2,19 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 
 import { notify } from './hibp.js'
 import { mainLayout } from '../views/mainLayout.js'
 import { guestLayout } from '../views/guestLayout.js'
-import { emailPreview } from '../views/partials/email-preview.js'
-import { getTemplate, getPreviewTemplate } from '../views/emails/email-2022.js'
-import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
-import { signupReportEmailPartial } from '../views/emails/email-signup-report.js'
-import { verifyPartial } from '../views/emails/email-verify.js'
+import { emailPreview } from '../views/partials/emailPreview.js'
+import { getTemplate, getPreviewTemplate } from '../views/emails/email2022.js'
+import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
+import { signupReportEmailPartial } from '../views/emails/emailSignupReport.js'
+import { verifyPartial } from '../views/emails/emailVerify.js'
 import {
   monthlyUnresolvedEmailPartial
-} from '../views/emails/email-monthly-unresolved.js'
+} from '../views/emails/emailMonthlyUnresolved.js'
 
 import { getMessage } from '../utils/fluent.js'
 import { generateToken } from '../utils/csrf.js'

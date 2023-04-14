@@ -5,7 +5,7 @@
 import { getUserEmails } from '../db/tables/email_addresses.js'
 import { getBreachesForEmail, getFilteredBreaches } from './hibp.js'
 import { getSha1 } from './fxa.js'
-import { filterBreachDataTypes } from './breach-resolution.js'
+import { filterBreachDataTypes } from './breachResolution.js'
 
 /**
  * TODO: deprecate

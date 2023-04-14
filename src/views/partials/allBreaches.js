@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getLocale, getMessage } from '../../utils/fluent.js'
-import { getBreachLogo } from '../../utils/breach-logo.js'
+import { getBreachLogo } from '../../utils/breachLogo.js'
 
 function makeBreachCard (breach, logos) {
   return `

@@ -2,27 +2,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
-import { camelize } from '../utils/string-helpers.js'
+import AppConstants from '../appConstants.js'
 import { dialogLayout } from '../views/dialogLayout.js'
 import { generateToken } from '../utils/csrf.js'
 
 async function dialog (req, res) {
+  const partialName = req.params.name
+
   const data = {
-    partialName: req.params.name,
-    csrfToken: generateToken(res),
-    stylesheetPath: `/css/partials/${req.params.name}.css` // stylesheet derived from kebab-case partial name, e.g. /css/partials/add-email.css
+    csrfToken: generateToken(res)
   }
 
   try {
-    const module = await import(`../views/partials/${data.partialName}.js`)
-    data.partial = module[camelize(data.partialName)] // kebab-case filename maps to camelCase function export: `add-email.js` -> `addEmail()`
+    const module = await import(`../views/partials/${partialName}.js`)
+    data.partial = module[partialName]
   } catch (e) {
     return res.sendStatus(404)
   }
 
-  switch (data.partialName) {
-    case 'add-email':
+  switch (partialName) {
+    case 'addEmail':
       data.emailLimit = AppConstants.MAX_NUM_ADDRESSES
       break
   }
