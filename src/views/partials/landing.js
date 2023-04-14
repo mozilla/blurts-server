@@ -5,7 +5,7 @@
 import { getMessage } from '../../utils/fluent.js'
 
 export const landing = () => `
-<section class='hero' data-enter-transition>
+<section class='hero'>
   <div>
     <h1>${getMessage('exposure-landing-hero-heading')}</h1>
     <p>${getMessage('exposure-landing-hero-lead')}</p>
