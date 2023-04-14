@@ -109,7 +109,7 @@ breach-checklist-pin-body = Prepričajte se, da vaša nova ali katera koli druga
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Uporabljajte zasebno zasebno omrežje VPN, kot je { $mozillaVpnLink }.
-breach-checklist-ip-body = Vaš naslov IP (naslov internetnega protokola) natančno pove vašo lokacijo in ponudnika internetnih storitev. VPN lahko skrije vaš pravi naslov IP, tako da lahko internet uporabljate zasebno.
+breach-checklist-ip-body = Iz vašega naslova IP (naslova internetnega protokola) je mogoče razbrati vašo lokacijo in ponudnika internetnih storitev. VPN lahko skrije vaš pravi naslov IP in vam omogoči zasebno uporabo interneta.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 

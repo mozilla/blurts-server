@@ -5,7 +5,7 @@
 
 # Settings page
 
-settings-page-title = Nastavitve { -product-short-name }
+settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 
 ## Breach alert preferences
 
@@ -47,11 +47,11 @@ settings-email-number-of-breaches-info =
 
 settings-deactivate-account-title = Deaktiviraj račun
 settings-deactivate-account-info = { -product-short-name } lahko deaktivirate tako, da izbrišete svoj { -brand-fx-account }.
-settings-fxa-link-label = Pojdite v Nastavitve { -brand-firefox }a
+settings-fxa-link-label = Odpri nastavitve { -brand-firefox(sklon: "rodilnik") }
 
 ## Add email dialog
 
 settings-email-dialog-title = Dodajte drug e-poštni naslov
 settings-add-email-text = Dodajte nov e-poštni naslov in preverite, ali je bil vpleten v krajo podatkov.
 settings-email-input-label = E-poštni naslov
-settings-send-email-verification-button = Pošlji povezavo za preverjanje
+settings-send-email-verification-button = Pošlji potrditveno povezavo
