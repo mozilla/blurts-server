@@ -314,6 +314,10 @@ dialog button.close {
   transform: translateY(var(--enter-transition-y, 0));
 }
 
+[data-enter-transition=''] {
+  animation: section-animation ease-out 350ms forwards 350ms;
+}
+
 [data-enter-transition='visible'] {
   animation: section-animation ease-out 350ms forwards;
 }

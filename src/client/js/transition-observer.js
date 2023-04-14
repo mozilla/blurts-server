@@ -52,6 +52,8 @@ function init (sections) {
   })
 
   observers = [...sections].map(section => {
+    section.dataset.enterTransition = 'entering'
+
     observer.observe(section)
     return observer
   })
