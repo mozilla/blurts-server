@@ -11,7 +11,7 @@ import {
   removeOneSecondaryEmail,
   getEmailById,
   verifyEmailHash
-} from '../db/tables/email_addresses.js'
+} from '../db/tables/emailAddresses.js'
 
 import { setAllEmailsToPrimary, deleteResolutionsWithEmail } from '../db/tables/subscribers.js'
 
@@ -30,7 +30,7 @@ import { getTemplate } from '../views/emails/email2022.js'
 import { verifyPartial } from '../views/emails/emailVerify.js'
 
 async function settingsPage (req, res) {
-  /** @type {Array<import('../db/tables/email_addresses.js').EmailRow>} */
+  /** @type {Array<import('../db/tables/emailAddresses.js').EmailRow>} */
   const emails = await getUserEmails(req.session.user.id)
   // Add primary subscriber email to the list
   emails.push({

@@ -11,7 +11,7 @@ import {
   removeFxAData,
   updateFxAData
 } from '../db/tables/subscribers.js'
-import { addSubscriber } from '../db/tables/email_addresses.js'
+import { addSubscriber } from '../db/tables/emailAddresses.js'
 
 import { getTemplate } from '../views/emails/email2022.js'
 import {

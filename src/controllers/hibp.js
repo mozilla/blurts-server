@@ -6,7 +6,7 @@ import { acceptedLanguages, negotiateLanguages } from '@fluent/langneg'
 import AppConstants from '../appConstants.js'
 
 import { getSubscribersByHashes } from '../db/tables/subscribers.js'
-import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
+import { getEmailAddressesByHashes } from '../db/tables/emailAddresses.js'
 import { getTemplate } from '../views/emails/email2022.js'
 import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
 
