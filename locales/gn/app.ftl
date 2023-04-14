@@ -754,7 +754,11 @@ error-page-error-other-copy = Eha’ã pyahujey térã ejujey ag̃amieve
 
 ## Breach overview page
 
+all-breaches-headline-2 = Opaite ñembogua ohecháva { -brand-fx-monitor }
 search-breaches = Ñembyai jeheka
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Mba’ekuaarã imarãkuaáva:
 
 ## Public breach detail page
 
+breach-detail-cta-signup = Ehechajey oĩpa ñembogua

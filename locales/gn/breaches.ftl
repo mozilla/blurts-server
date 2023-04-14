@@ -47,11 +47,15 @@ breaches-all-resolved-copy = ¡Ejapoporã! Emoĩporãma opaite ñembogua { $emai
 breaches-all-resolved-cta-blurb = ¿Ehechamemesépa ambue ñanduti veve?
 breaches-all-resolved-cta-button = Embojuaju ñanduti veve kundaharape
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Ko { $breachDate }, { $companyName } oñembogua. Ojejuhu rire ha ojehechajey pe ñembogua, rombojuajúma ore mba’ekuaarã rendápe { $addedDate }. Ko ñembogua ogueroike: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
 breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = { -brand-firefox } Ñe’ẽñemi Ñangartekoha
 breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
@@ -63,7 +67,7 @@ breach-checklist-email-body = Kóva oñomikuaa ne ñanduti veve kundaharape omon
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Ehechameme ne mba’ete reko banco pegua, virujepuru térã kuatia’atã ñemurã emoneĩ’ỹva.
 
@@ -109,5 +113,7 @@ breach-checklist-hp-header = Emoheñói mba’ete hekorosã ha ha’eñóva oime
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Eñe’ẽ { $companyName } ndive emombe’u hag̃ua ko ñembogua rehegua ha ejerure mba’e tapére eguatase.
