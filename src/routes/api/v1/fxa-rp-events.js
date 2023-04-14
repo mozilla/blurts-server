@@ -8,6 +8,6 @@ import { fxaRpEvents } from '../../../controllers/fxa-rp-events.js'
 
 const router = Router()
 
-router.post('/fxa-rp-events', asyncMiddleware(fxaRpEvents))
+router.post('/', asyncMiddleware(fxaRpEvents))
 
 export default router
