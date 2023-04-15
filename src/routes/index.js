@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import express from 'express'
 
 import adminRoutes from './admin.js'
@@ -14,12 +14,12 @@ import previewRoutes from './preview.js'
 import userApiRoutes from './api/v1/user.js'
 import userRoutes from './user.js'
 import breachesRoutes from './breaches.js'
-import breachDetailsRoutes from './breach-details.js'
+import breachDetailRoutes from './breachDetail.js'
 
 import { dialog } from '../controllers/dialog.js'
 import { landingPage } from '../controllers/landing.js'
-import { exposureScanPage } from '../controllers/exposure-scan.js'
-import { requestBreachScan } from '../controllers/request-breach-scan.js'
+import { exposureScanPage } from '../controllers/exposureScan.js'
+import { requestBreachScan } from '../controllers/requestBreachScan.js'
 import { notFoundPage } from '../controllers/notFound.js'
 import { notFound } from '../middleware/error.js'
 import { doubleCsrfProtection } from '../utils/csrf.js'
@@ -38,7 +38,7 @@ router.use('/api/v1/user/', doubleCsrfProtection, userApiRoutes)
 router.use('/oauth', doubleCsrfProtection, authRoutes)
 router.use('/user', doubleCsrfProtection, userRoutes)
 router.use('/breaches', doubleCsrfProtection, breachesRoutes)
-router.use('/breach-details', doubleCsrfProtection, breachDetailsRoutes)
+router.use('/breach-details', doubleCsrfProtection, breachDetailRoutes)
 router.use('/', doubleCsrfProtection, dockerFlowRoutes)
 
 // Do not make the non-auth previews available on prod

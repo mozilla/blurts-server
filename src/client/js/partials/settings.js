@@ -11,7 +11,7 @@ function init () {
 function handleEvent (e) {
   switch (true) {
     case e.type === 'email-added':
-      document.querySelector('dialog[data-partial="add-email"]')
+      document.querySelector('dialog[data-partial="addEmail"]')
         .addEventListener('close', () => {
           window.location.reload()
         }, { once: true })

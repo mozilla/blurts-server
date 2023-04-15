@@ -36,7 +36,7 @@ async function init () {
       throw new Error('Immediately caught to show an error message.')
     }
 
-    /** @type {import("../../../controllers/request-breach-scan").RequestBreachScanResponse} */
+    /** @type {import("../../../controllers/requestBreachScan").RequestBreachScanResponse} */
     const responseBody = await res.json()
 
     if (!responseBody.success) {
@@ -57,7 +57,7 @@ async function init () {
 }
 
 /**
- * @param {import("../../../controllers/request-breach-scan").RequestBreachScanSuccessResponse} response
+ * @param {import("../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} response
  * @param { sanitizedEmail: string } params
  */
 function showOverflowingBreachResults (response, params) {
@@ -77,7 +77,7 @@ function showOverflowingBreachResults (response, params) {
 }
 
 /**
- * @param {import("../../../controllers/request-breach-scan").RequestBreachScanSuccessResponse} response
+ * @param {import("../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} response
  * @param { sanitizedEmail: string } params
  */
 function showSomeBreachResults (response, params) {
@@ -96,7 +96,7 @@ function showSomeBreachResults (response, params) {
 }
 
 /**
- * @param {import("../../../controllers/request-breach-scan").RequestBreachScanSuccessResponse} response
+ * @param {import("../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} response
  * @param { sanitizedEmail: string } params
  */
 function showNoBreachesResult (response, params) {

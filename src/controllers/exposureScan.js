@@ -4,7 +4,7 @@
 
 import { generateToken } from '../utils/csrf.js'
 import { guestLayout } from '../views/guestLayout.js'
-import { exposureScan } from '../views/partials/exposure-scan.js'
+import { exposureScan } from '../views/partials/exposureScan.js'
 
 /**
  * @type {import('express').RequestHandler}
@@ -16,7 +16,7 @@ const exposureScanPage = (req, res, next) => {
   }
 
   /**
-   * @type {ViewPartialData<import('../views/partials/exposure-scan.js').PartialParameters>}
+   * @type {GuestViewPartialData<import('../views/partials/exposureScan.js').PartialParameters>}
    */
   const data = {
     partial: exposureScan,

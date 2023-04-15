@@ -3,13 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { mainLayout } from '../views/mainLayout.js'
-import { dataRemoval } from '../views/partials/data-removal.js'
+import { dataRemoval } from '../views/partials/dataRemoval.js'
 
 function dataRemovalPage (req, res) {
   const data = {
     fxaProfile: req.user.fxa_profile_json,
-    partial: dataRemoval,
-    nonce: res.locals.nonce
+    partial: dataRemoval
   }
 
   res.send(mainLayout(data))

@@ -8,7 +8,7 @@ import * as td from 'testdouble'
 import {
   TEST_SUBSCRIBERS,
   TEST_EMAIL_ADDRESSES
-} from '../db/seeds/test_subscribers.js'
+} from '../db/seeds/testSubscribers.js'
 
 test.afterEach(() => {
   td.reset()
