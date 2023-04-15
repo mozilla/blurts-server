@@ -15,6 +15,11 @@ const FXA_PROFILE_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/pro
 const FXA_SUBSCRIPTION_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/subscription-state-change'
 const FXA_DELETE_USER_EVENT = 'https://schemas.accounts.firefox.com/event/delete-user'
 
+/**
+ * Fetch FxA JWT Public for verification
+ *
+ * @returns {Array} keys an array of FxA JWT keys
+ */
 const getJwtPubKey = async () => {
   jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwt`
   try {
@@ -31,6 +36,12 @@ const getJwtPubKey = async () => {
   }
 }
 
+/**
+ * Authenticate FxA JWT for FxA relay event requests
+ *
+ * @param {*} req
+ * @returns {object} decoded JWT data, which should contain FxA events
+ */
 const authenticateFxaJWT = async (req) => {
   // Assuming this is how you retrieve your auth header.
   const authHeader = req?.headers?.authorization
@@ -69,9 +80,6 @@ const authenticateFxaJWT = async (req) => {
   const decoded = jwt.verify(headerToken, jwkPem, {
     algorithms: ['RS256']
   })
-  // if (!isIdToken(decoded)) {
-  //   throw UnauthorizedError('Invalid token format: ' + decoded);
-  // }
   // This is the JWT data itself.
   return decoded
 }
@@ -85,7 +93,15 @@ const authenticateFxaJWT = async (req) => {
  * @returns
  */
 const fxaRpEvents = async (req, res) => {
-  const decodedJWT = authenticateFxaJWT(req)
+  let decodedJWT
+  try {
+    decodedJWT = await authenticateFxaJWT(req)
+  } catch (e) {
+    log.error('fxaRpEvents', e)
+    captureException(e)
+    res.status(202)
+  }
+
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
