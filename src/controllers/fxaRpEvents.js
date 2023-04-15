@@ -137,7 +137,7 @@ const fxaRpEvents = async (req, res) => {
         })
 
         // get current profiledata
-        const { fxa_profile_json: currentFxAProfile} = subscriber
+        const { fxa_profile_json: currentFxAProfile } = subscriber
 
         // merge new event into existing profile data
         for (const key in updatedProfileFromEvent) {
