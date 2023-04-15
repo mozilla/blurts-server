@@ -4,7 +4,7 @@
 
 import { Router } from 'express'
 import { asyncMiddleware } from '../../../middleware/util.js'
-import { fxaRpEvents } from '../../../controllers/fxa-rp-events.js'
+import { fxaRpEvents } from '../../../controllers/fxaRpEvents.js'
 
 const router = Router()
 

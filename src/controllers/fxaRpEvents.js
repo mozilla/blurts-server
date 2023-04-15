@@ -8,18 +8,36 @@ import { captureException } from '@sentry/node'
 import { UnauthorizedError } from '../utils/error.js'
 import { deleteSubscriberByFxAUID, getSubscriberByFxaUid, updateFxAProfileData } from '../db/tables/subscribers.js'
 import mozlog from '../utils/log.js'
+import appConstants from '../appConstants.js'
 const log = mozlog('controllers.fxa-rp-events')
 
 const FXA_PROFILE_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/profile-change'
 const FXA_SUBSCRIPTION_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/subscription-state-change'
 const FXA_DELETE_USER_EVENT = 'https://schemas.accounts.firefox.com/event/delete-user'
 
-function authenticateFxaJWT (req) {
+const getJwtPubKey = async () => {
+  jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwt`
+  try {
+    const res = await fetch(jwtKeyUri, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const { keys } = res
+    log.info('getJwtPubKey', `fetched jwt public keys from: ${jwtKeyUri} - ${keys}`)
+    return keys
+  } catch (e) {
+    captureException('Could not get JWT public key', jwtKeyUri)
+  }
+}
+
+const authenticateFxaJWT = async (req) => {
   // Assuming this is how you retrieve your auth header.
   const authHeader = req?.headers?.authorization
 
   // Require an auth header
   if (!authHeader) {
+    captureException('No auth header found', req?.headers)
     throw UnauthorizedError('No auth header found')
   }
 
@@ -40,6 +58,7 @@ function authenticateFxaJWT (req) {
 
   // Verify we have a key for this kid, this assumes that you have fetched
   // the publicJwks from FxA and put both them in an Array.
+  const publicJwks = await getJwtPubKey()
   const jwk = publicJwks.find(j => j.kid === token.header.kid)
   if (!jwk) {
     throw UnauthorizedError('No jwk found for this kid: ' + token.header.kid)
