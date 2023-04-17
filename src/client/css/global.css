@@ -247,6 +247,11 @@ button.close {
   background: url('../images/icon-close.svg') no-repeat 50%;
 }
 
+input {
+  /* https://css-tricks.com/16px-or-larger-text-prevents-ios-form-zoom/ */
+  font-size: 1rem;
+}
+
 input[type='checkbox'] {
   width: var(--checkbox-w);
   height: var(--checkbox-w);
