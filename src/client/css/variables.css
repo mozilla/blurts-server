@@ -55,3 +55,10 @@
     --multiplier: 0.75;
   }
 }
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  :root {
+    --enter-transition-opacity: 0;
+    --enter-transition-y: var(--padding-lg);
+  }
+}

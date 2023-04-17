@@ -313,3 +313,23 @@ dialog button.close {
     opacity: 1;
   }
 }
+
+[data-enter-transition] {
+  opacity: var(--enter-transition-opacity, 1);
+  transform: translateY(var(--enter-transition-y, 0));
+}
+
+[data-enter-transition=''] {
+  animation: section-animation ease-out 350ms forwards 350ms;
+}
+
+[data-enter-transition='visible'] {
+  animation: section-animation ease-out 350ms forwards;
+}
+
+@keyframes section-animation {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

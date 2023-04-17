@@ -42,6 +42,15 @@ const guestLayout = data => `
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
     <script src='/js/index.js' type='module'></script>
+
+    <noscript>
+      <style>
+        :root {
+          --enter-transition-opacity: 1;
+          --enter-transition-y: 0;
+        }
+      </style>
+    </noscript>
     ${data.skipPartialModule ? '' : `<script src='/js/partials/${data.partial.name}.js' type='module'></script>`}
   </head>
   <body>
