@@ -4,3 +4,4 @@ loadtests
 public/dist
 tests
 dist
+lib
