@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Router } from 'express'
-import { emailsPreviewPage } from '../controllers/email-preview.js'
-import { animationsPreviewPage } from '../controllers/animations-preview.js'
+import { emailsPreviewPage } from '../controllers/emailPreview.js'
+import { animationsPreviewPage } from '../controllers/animationsPreview.js'
 
 const router = Router()
 

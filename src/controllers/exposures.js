@@ -4,8 +4,8 @@
 
 import { mainLayout } from '../views/mainLayout.js'
 import { generateToken } from '../utils/csrf.js'
-import { exposuresSetup } from '../views/partials/exposures-setup.js'
-import { exposuresList } from '../views/partials/exposures-list.js'
+import { exposuresSetup } from '../views/partials/exposuresSetup.js'
+import { exposuresList } from '../views/partials/exposuresList.js'
 
 /**
  * @type {import('express').RequestHandler}
@@ -15,7 +15,7 @@ async function exposuresPage (req, res) {
 
   if (!showDashboard) {
     /**
-     * @type {MainViewPartialData<import('../views/partials/exposures-setup').PartialParameters>}
+     * @type {MainViewPartialData<import('../views/partials/exposuresSetup').PartialParameters>}
      */
     const data = {
       partial: exposuresSetup,
@@ -28,7 +28,7 @@ async function exposuresPage (req, res) {
   }
 
   /**
-   * @type {MainViewPartialData<import('../views/partials/exposures-list').PartialParameters>}
+   * @type {MainViewPartialData<import('../views/partials/exposuresList').PartialParameters>}
    */
   const data = {
     partial: exposuresList,

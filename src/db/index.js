@@ -25,4 +25,4 @@ export {
 }
 
 export * from './tables/subscribers.js'
-export * from './tables/email_addresses.js'
+export * from './tables/emailAddresses.js'

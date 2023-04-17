@@ -6,7 +6,7 @@ import ClientOAuth2 from 'client-oauth2'
 import crypto from 'crypto'
 import { URL } from 'url'
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 
 // This object exists instead of inlining the env vars to make it easy
 // to abstract fetching API endpoints from the OAuth server (instead
