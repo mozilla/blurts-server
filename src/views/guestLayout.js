@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
 
 /**
@@ -51,6 +51,7 @@ const guestLayout = data => `
         }
       </style>
     </noscript>
+    ${data.skipPartialModule ? '' : `<script src='/js/partials/${data.partial.name}.js' type='module'></script>`}
   </head>
   <body>
     <header>

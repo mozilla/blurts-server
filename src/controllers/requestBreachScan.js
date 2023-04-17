@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getMessage } from '../utils/fluent.js'
-import { getBreachLogo } from '../utils/breach-logo.js'
+import { getBreachLogo } from '../utils/breachLogo.js'
 import { UserInputError } from '../utils/error.js'
 import { getSha1 } from '../utils/fxa.js'
 import { getBreachesForEmail } from '../utils/hibp.js'

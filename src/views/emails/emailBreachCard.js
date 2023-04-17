@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getLocale, getMessage } from '../../utils/fluent.js'
-import { formatDate } from '../../utils/format-date.js'
-import { getBreachLogo } from '../../utils/breach-logo.js'
+import { formatDate } from '../../utils/formatDate.js'
+import { getBreachLogo } from '../../utils/breachLogo.js'
 
 const breachAlertTableStyle = `
   margin: auto

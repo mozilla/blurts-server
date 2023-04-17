@@ -22,7 +22,7 @@ if (typeof buildConstants === 'object') {
   Object.assign(AppConstants, {
     GA4_MEASUREMENT_ID: 'G-CXG8K4KW4P'
   })
-  console.log('Skipped build-phase. Using default/fallback values for AppConstants.', AppConstants)
+  console.log('Running dev-mode with fallback values for AppConstants.')
 }
 
 export default Object.freeze(AppConstants)

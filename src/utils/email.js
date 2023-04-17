@@ -6,7 +6,7 @@ import { createTransport } from 'nodemailer'
 import { URL } from 'url'
 
 import mozlog from './log.js'
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import { MethodNotAllowedError } from '../utils/error.js'
 import { getMessage, fluentError } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'

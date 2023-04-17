@@ -4,7 +4,7 @@
 
 import test from 'ava'
 
-import { getCountryCode } from './country-code.js'
+import { getCountryCode } from './countryCode.js'
 
 test('getCountryCode: GCP-detected country', t => {
   const getHeader = (header) => {

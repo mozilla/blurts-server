@@ -84,7 +84,7 @@
   box-shadow: 0 2px 8px var(--gray-20);
   border-radius: calc(2 * var(--border-radius));
   text-decoration: none;
-  height: 100%;
+  height: auto;
 }
 
 #exposure-scan-results-none .exposure-scan-breach {
