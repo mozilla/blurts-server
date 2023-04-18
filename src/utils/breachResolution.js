@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import { getMessage } from './fluent.js'
 
 /**
@@ -35,96 +35,68 @@ const BreachDataTypes = {
 const breachResolutionDataTypes = {
   [BreachDataTypes.Passwords]: {
     priority: 1,
-    header: {
-      default: 'breach-checklist-pw-header-2',
-      withCompanyLink: 'breach-checklist-pw-header-link'
-    },
-    body: 'breach-checklist-pw-body-2'
+    header: 'breach-checklist-pw-header-text',
+    body: 'breach-checklist-pw-body-text'
   },
   [BreachDataTypes.Email]: {
     priority: 2,
-    header: {
-      default: 'breach-checklist-email-header-2'
-    },
+    header: 'breach-checklist-email-header-2',
     body: 'breach-checklist-email-body'
   },
   [BreachDataTypes.SSN]: {
     priority: 3,
-    header: {
-      default: 'breach-checklist-ssn-header'
-    },
+    header: 'breach-checklist-ssn-header',
     body: 'breach-checklist-ssn-body-2',
     // The resolution involves American companies, and thus does not apply in other countries:
     applicableCountryCodes: ['us']
   },
   [BreachDataTypes.CreditCard]: {
     priority: 4,
-    header: {
-      default: 'breach-checklist-cc-header'
-    },
+    header: 'breach-checklist-cc-header',
     body: 'breach-checklist-cc-body'
   },
   [BreachDataTypes.BankAccount]: {
     priority: 5,
-    header: {
-      default: 'breach-checklist-bank-header'
-    },
+    header: 'breach-checklist-bank-header',
     body: 'breach-checklist-bank-body'
   },
   [BreachDataTypes.PIN]: {
     priority: 6,
-    header: {
-      default: 'breach-checklist-pin-header'
-    },
+    header: 'breach-checklist-pin-header',
     body: 'breach-checklist-pin-body'
   },
   [BreachDataTypes.IP]: {
     priority: 7,
-    header: {
-      default: 'breach-checklist-ip-header-2'
-    },
+    header: 'breach-checklist-ip-header-2',
     body: 'breach-checklist-ip-body'
   },
   [BreachDataTypes.Address]: {
     priority: 8,
-    header: {
-      default: 'breach-checklist-address-header'
-    },
+    header: 'breach-checklist-address-header',
     body: 'breach-checklist-address-body'
   },
   [BreachDataTypes.DoB]: {
     priority: 9,
-    header: {
-      default: 'breach-checklist-dob-header'
-    },
+    header: 'breach-checklist-dob-header',
     body: 'breach-checklist-dob-body'
   },
   [BreachDataTypes.Phone]: {
     priority: 10,
-    header: {
-      default: 'breach-checklist-phone-header-2'
-    }
+    header: 'breach-checklist-phone-header-2'
   },
   [BreachDataTypes.SecurityQuestions]: {
     priority: 11,
-    header: {
-      default: 'breach-checklist-sq-header-2',
-      withCompanyLink: 'breach-checklist-sq-header-link'
-    },
-    body: 'breach-checklist-sq-body'
+    header: 'breach-checklist-sq-header-text',
+    body: 'breach-checklist-sq-body-text'
   },
   [BreachDataTypes.HistoricalPasswords]: {
     priority: 12,
-    header: {
-      default: 'breach-checklist-hp-header'
-    },
+    header: 'breach-checklist-hp-header',
     body: 'breach-checklist-hp-body-2'
   },
   [BreachDataTypes.General]: {
     priority: 13,
-    header: {
-      default: 'breach-checklist-general-header'
-    }
+    header: 'breach-checklist-general-header'
   }
 }
 
@@ -147,9 +119,7 @@ async function appendBreachResolutionChecklist (userBreachData, options = {}) {
 
       const args = {
         companyName: b.Name,
-        breachedCompanyLink: showLink
-          ? `<a href="https://${b.Domain}" target="_blank">${b.Domain}</a>`
-          : '',
+        breachedCompanyLink: showLink ? `https://${b.Domain}` : '',
         firefoxRelayLink: `<a href="https://relay.firefox.com/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-firefox-relay')}</a>`,
         passwordManagerLink: `<a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-password-manager')}</a>`,
         mozillaVpnLink: `<a href="https://www.mozilla.org/products/vpn/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">${getMessage('breach-checklist-link-mozilla-vpn')}</a>`,
@@ -205,25 +175,32 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
 }
 
 /**
- * Get the fluent string for the header
+ * Get the fluent string for the body
  *
- * @param {string} header for the fluent header string
+ * @param {string} body for the fluent body string
  * @param {object} args
- * @returns {string} header string
+ * @returns {string} body string
  */
-function getHeaderMessage (header, args) {
+function getBodyMessage (body, args) {
   const { resolutionType, stringArgs } = args
-  const { default: defaultId, withCompanyLink } = header
 
   switch (resolutionType) {
     case BreachDataTypes.Passwords:
-    case BreachDataTypes.SecurityQuestions:
-      if (stringArgs.breachedCompanyLink) {
-        return getMessage(withCompanyLink, stringArgs)
-      }
-      // fallthrough
+    case BreachDataTypes.SecurityQuestions: {
+      const companyLink = stringArgs.breachedCompanyLink
+
+      return getMessage(body, stringArgs)
+        .replace(
+          '<breached-company-link>',
+          companyLink ? `<a href="${companyLink}" target="_blank">` : ''
+        )
+        .replace(
+          '</breached-company-link>',
+          companyLink ? '</a>' : ''
+        )
+    }
     default:
-      return getMessage(defaultId, stringArgs)
+      return getMessage(body, stringArgs)
   }
 }
 
@@ -232,10 +209,10 @@ function getRecommendationFromResolution (resolution, args) {
   const [resolutionType, resolutionContent] = resolution
   let { header, body, priority } = resolutionContent
 
-  header = header
-    ? getHeaderMessage(header, { resolutionType, stringArgs: args })
+  header = header ? getMessage(header, args) : ''
+  body = body
+    ? getBodyMessage(body, { resolutionType, stringArgs: args })
     : ''
-  body = body ? getMessage(body, args) : ''
   return { header, body, priority }
 }
 

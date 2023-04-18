@@ -68,12 +68,14 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-2 = Go to the company’s website to change your password and enable two-factor authentication (2FA).
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-link = Go to { $breachedCompanyLink } to change your password and enable two-factor authentication (2FA).
+breach-checklist-pw-header-text = Update your passwords.
 
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-pw-body-2 = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. { $passwordManagerLink } can help you securely keep track of all of your passwords.
+
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-pw-body-text = In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <breached-company-link>visit the site</breached-company-link>. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -138,10 +140,12 @@ breach-checklist-phone-header-2 = Protect your phone number with a masking servi
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-2 = Update your security questions on the company’s website.
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-link = Update your security questions on { $breachedCompanyLink }.
+breach-checklist-sq-header-text = Update your security questions.
 
 breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
+
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = In most cases, we’d recommend that you update your security questions on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <breached-company-link>visit the site</breached-company-link>. For added protection, update these security questions on any important accounts where you’ve used them, and create unique passwords for all accounts.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
