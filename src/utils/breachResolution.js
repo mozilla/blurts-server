@@ -108,7 +108,7 @@ const breachResolutionDataTypes = {
  * @param {Partial<{ countryCode: string }>} options
  * @returns {*} void
  */
-async function appendBreachResolutionChecklist (userBreachData, options = {}) {
+function appendBreachResolutionChecklist (userBreachData, options = {}) {
   const { verifiedEmails } = userBreachData
 
   for (const { breaches } of verifiedEmails) {
