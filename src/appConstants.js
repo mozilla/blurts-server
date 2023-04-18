@@ -74,4 +74,6 @@ optionalEnvVars.forEach(key => {
   if (value) AppConstants[key] = value
 })
 
-export default Object.freeze(AppConstants)
+export default AppConstants.NODE_ENV === 'test'
+  ? AppConstants
+  : Object.freeze(AppConstants)
