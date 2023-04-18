@@ -33,7 +33,9 @@ test('appendBreachResolutionChecklist: two data classes', t => {
   appendBreachResolutionChecklist(userBreachData)
   t.truthy(userBreachData.verifiedEmails[0].breaches[0].breachChecklist)
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].header,
-    'Go to <a href="https://companyName.com" target="_blank">companyName.com</a> to change your password and enable two-factor authentication (2FA).')
+    'Update your passwords.')
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].body,
+    'In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <a href="https://companyName.com" target="_blank">visit the site</a>. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts.')
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].priority, 1)
 })
 
@@ -156,9 +158,13 @@ test('appendBreachResolutionChecklist: data class with a resolution referring to
     [BreachDataTypes.Passwords, BreachDataTypes.Phone, BreachDataTypes.SecurityQuestions]
   )
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].header,
-    'Go to the company’s website to change your password and enable two-factor authentication (2FA).')
+    'Update your passwords.')
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].body,
+    'In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you visit the site. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts.')
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].header,
-    'Update your security questions on the company’s website.')
+    'Update your security questions.')
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].body,
+    'In most cases, we’d recommend that you update your security questions on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you visit the site. For added protection, update these security questions on any important accounts where you’ve used them, and create unique passwords for all accounts.')
 })
 
 test('appendBreachResolutionChecklist: data class with a resolution referring to the breach\'s domain, which is available', t => {
