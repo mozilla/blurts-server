@@ -182,26 +182,18 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
  * @returns {string} body string
  */
 function getBodyMessage (body, args) {
-  const { resolutionType, stringArgs } = args
+  const { stringArgs } = args
 
-  switch (resolutionType) {
-    case BreachDataTypes.Passwords:
-    case BreachDataTypes.SecurityQuestions: {
-      const companyLink = stringArgs.breachedCompanyLink
-
-      return getMessage(body, stringArgs)
-        .replace(
-          '<breached-company-link>',
-          companyLink ? `<a href="${companyLink}" target="_blank">` : ''
-        )
-        .replace(
-          '</breached-company-link>',
-          companyLink ? '</a>' : ''
-        )
-    }
-    default:
-      return getMessage(body, stringArgs)
-  }
+  const companyLink = stringArgs.breachedCompanyLink
+  return getMessage(body, stringArgs)
+    .replace(
+      '<breached-company-link>',
+      companyLink ? `<a href="${companyLink}" target="_blank">` : ''
+    )
+    .replace(
+      '</breached-company-link>',
+      companyLink ? '</a>' : ''
+    )
 }
 
 // find fluent text based on fluent ids
