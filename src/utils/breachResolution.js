@@ -140,7 +140,7 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
  * @param {object} args contains necessary variables for the fluent file
  *  - companyName
  *  - breachedCompanyUrl
- * @param {Partial<{ countryCode: string, hideBreachLink: boolean }>} options
+ * @param {Partial<{ countryCode: string }>} options
  * @returns {Map} map of relevant breach resolution recommendations
  */
 function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
