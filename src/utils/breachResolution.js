@@ -114,8 +114,8 @@ async function appendBreachResolutionChecklist (userBreachData, options = {}) {
   for (const { breaches } of verifiedEmails) {
     breaches.forEach(b => {
       const dataClasses = b.DataClasses
-      const blockList = AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST
-      const showLink = b.Domain && (blockList && !blockList.includes(b.Domain))
+      const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? '').split(',')
+      const showLink = b.Domain && !blockList.includes(b.Domain)
 
       const args = {
         companyName: b.Name,
