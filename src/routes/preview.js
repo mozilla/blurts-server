@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Router } from 'express'
-import { emailsPreviewPage } from '../controllers/email-preview.js'
+import { emailsPreviewPage } from '../controllers/emailPreview.js'
 
 const router = Router()
 

@@ -8,7 +8,7 @@
 
 import esbuild from 'esbuild'
 import { readdirSync } from 'node:fs'
-import AppConstants from './app-constants.js'
+import AppConstants from './appConstants.js'
 
 const cssPartialDir = 'client/css/partials/'
 const cssPartialPaths = readdirSync(cssPartialDir, { withFileTypes: true })
@@ -34,7 +34,13 @@ esbuild.build({
   sourcemap: AppConstants.NODE_ENV !== 'dev',
   splitting: false, // see note below
   treeShaking: true,
-  platform: 'neutral'
+  platform: 'neutral',
+  define: {
+    buildConstants: JSON.stringify({
+      NODE_ENV: AppConstants.NODE_ENV,
+      GA4_MEASUREMENT_ID: AppConstants.GA4_MEASUREMENT_ID
+    })
+  }
 })
 
 /*

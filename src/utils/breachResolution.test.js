@@ -5,7 +5,7 @@
 import test from 'ava'
 
 import { initFluentBundles, updateLocale } from './fluent.js'
-import { filterBreachDataTypes, appendBreachResolutionChecklist, BreachDataTypes } from './breach-resolution.js'
+import { filterBreachDataTypes, appendBreachResolutionChecklist, BreachDataTypes } from './breachResolution.js'
 
 test.before(async () => {
   await initFluentBundles()

@@ -5,10 +5,10 @@
 import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
-import { appendBreachResolutionChecklist } from '../utils/breach-resolution.js'
+import { appendBreachResolutionChecklist } from '../utils/breachResolution.js'
 import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
-import { getCountryCode } from '../utils/country-code.js'
+import { getCountryCode } from '../utils/countryCode.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns
@@ -29,8 +29,7 @@ async function breachesPage (req, res) {
     selectedEmailIndex,
     partial: breaches,
     csrfToken: generateToken(res),
-    fxaProfile: req.user.fxa_profile_json,
-    nonce: res.locals.nonce
+    fxaProfile: req.user.fxa_profile_json
   }
 
   res.send(mainLayout(data))

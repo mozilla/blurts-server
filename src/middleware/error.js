@@ -30,7 +30,6 @@ function errorHandler (err, req, res, next) {
   if (req.accepts('text/html') === 'text/html') {
     res.status(errStatus).send(guestLayout({
       partial: error,
-      nonce: res.locals.nonce,
       statusCode: errStatus
     }))
     return

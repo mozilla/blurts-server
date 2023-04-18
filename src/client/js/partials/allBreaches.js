@@ -8,7 +8,7 @@ let search, breachCards
 function init () {
   search = document.getElementById('breach-search')
   search.value = ''
-  search.addEventListener('keyup', filter)
+  search.addEventListener('input', filter)
   search.form.addEventListener('submit', filter)
   breachCards = allBreaches.querySelectorAll('.breach-card')
 }

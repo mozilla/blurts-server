@@ -7,7 +7,7 @@ import { Router } from 'express'
 import { asyncMiddleware } from '../middleware/util.js'
 import { adminPage } from '../controllers/admin.js'
 import { requireAdminUser } from '../middleware/auth.js'
-import { emailsPage, sendTestEmail } from '../controllers/email-preview.js'
+import { emailsPage, sendTestEmail } from '../controllers/emailPreview.js'
 
 const router = Router()
 

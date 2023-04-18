@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../../app-constants.js'
+import AppConstants from '../../appConstants.js'
 import { getMessage } from '../../utils/fluent.js'
 
 const emailNeedsVerificationSub = email => `
@@ -145,7 +145,7 @@ export const settings = data => {
           ${createEmailList(emails, breachCounts)}
           <button
             class='primary settings-add-email-button' 
-            data-dialog='add-email' 
+            data-dialog='addEmail' 
             ${emails.length >= limit ? 'disabled' : ''}
           >${getMessage('settings-add-email-button')}</a>
         </section>

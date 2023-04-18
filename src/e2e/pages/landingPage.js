@@ -28,12 +28,14 @@ export class LandingPage {
   async goToSignUp () {
     await Promise.all([
       this.page.waitForNavigation(),
-      this.signUpButton.click()
+      this.signUpButton.click(),
+      this.page.waitForURL('**/oauth/**')
     ])
   }
 
   async goToSignIn () {
     this.signInButton.click()
+    await this.page.waitForURL('**/oauth/**')
   }
 
   async openFirefoxAppsServices () {

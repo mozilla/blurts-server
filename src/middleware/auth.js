@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import { getSubscriberById, updateFxAProfileData } from '../db/tables/subscribers.js'
 import * as FXA from '../utils/fxa.js'
 import { UnauthorizedError } from '../utils/error.js'

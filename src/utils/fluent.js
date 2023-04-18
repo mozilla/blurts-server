@@ -7,8 +7,8 @@ import { readdirSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { FluentBundle, FluentResource } from '@fluent/bundle'
 import { negotiateLanguages } from '@fluent/langneg'
-import AppConstants from '../app-constants.js'
-import { localStorage } from './local-storage.js'
+import AppConstants from '../appConstants.js'
+import { localStorage } from './localStorage.js'
 
 const supportedLocales = AppConstants.SUPPORTED_LOCALES?.split(',')
 /** @type {Record<string, FluentBundle>} */

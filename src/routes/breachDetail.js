@@ -5,10 +5,10 @@
 import { Router } from 'express'
 
 import { asyncMiddleware } from '../middleware/util.js'
-import { breachDetailsPage } from '../controllers/breach-details.js'
+import { breachDetailPage } from '../controllers/breachDetail.js'
 
 const router = Router()
 
-router.get('/:breachName', asyncMiddleware(breachDetailsPage))
+router.get('/:breachName', asyncMiddleware(breachDetailPage))
 
 export default router
