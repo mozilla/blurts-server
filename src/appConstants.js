@@ -32,6 +32,7 @@ const requiredEnvVars = [
   'OAUTH_CLIENT_SECRET',
   'OAUTH_PROFILE_URI',
   'OAUTH_TOKEN_URI',
+  'ONEREP_API_KEY',
   'REDIS_URL',
   'SENTRY_DSN',
   'SERVER_URL',
@@ -74,4 +75,6 @@ optionalEnvVars.forEach(key => {
   if (value) AppConstants[key] = value
 })
 
-export default Object.freeze(AppConstants)
+export default AppConstants.NODE_ENV === 'test'
+  ? AppConstants
+  : Object.freeze(AppConstants)

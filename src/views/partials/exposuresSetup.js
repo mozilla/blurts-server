@@ -11,5 +11,7 @@
  * @type {ViewPartial<PartialParameters>}
  */
 export const exposuresSetup = data => `
+<template id="data" data-csrf-token="${data.csrfToken}"></template>
  This page will allow the user to enter their information to do a scan for public data exposures.
+ <button id='storeMockData' class='primary'>Store mock data</button>
 `

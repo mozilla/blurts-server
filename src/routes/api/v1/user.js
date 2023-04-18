@@ -8,6 +8,7 @@ import { asyncMiddleware } from '../../../middleware/util.js'
 import { requireSessionUser } from '../../../middleware/auth.js'
 import { methodNotAllowed } from '../../../middleware/error.js'
 import { putBreachResolution, getBreaches } from '../../../controllers/breaches.js'
+import { storeExposureScanData } from '../../../controllers/storeExposureScanData.js'
 import {
   addEmail,
   resendEmail,
@@ -15,11 +16,16 @@ import {
   verifyEmail,
   updateCommunicationOptions
 } from '../../../controllers/settings.js'
+import AppConstants from '../../../appConstants.js'
 
 const router = Router()
 // breaches
 router.put('/breaches', requireSessionUser, asyncMiddleware(putBreachResolution))
 router.get('/breaches', requireSessionUser, asyncMiddleware(getBreaches))
+// Not ready yet, so don't expose in production:
+if (AppConstants.NODE_ENV === 'dev') {
+  router.post('/exposures', requireSessionUser, asyncMiddleware(storeExposureScanData))
+}
 router.post('/email', requireSessionUser, asyncMiddleware(addEmail))
 router.post('/resend-email', requireSessionUser, asyncMiddleware(resendEmail))
 router.post('/remove-email', requireSessionUser, asyncMiddleware(removeEmail))
