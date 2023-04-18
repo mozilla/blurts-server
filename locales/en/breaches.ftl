@@ -67,10 +67,12 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-breach-checklist-pw-header-text = Update your passwords.
+breach-checklist-pw-header-text = Update your passwords and enable two-factor authentication (2FA).
 
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-pw-body-text = In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <breached-company-link>visit the site</breached-company-link>. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <breached-company-link>visit the site</breached-company-link>. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts. { $passwordManagerLink } can help you securely keep track of all of your passwords.
 
 ## Prompts the user for changes when there is a breach detected of email
 
