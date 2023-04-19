@@ -63,7 +63,7 @@ breach-checklist-pw-header-text = Aggiorna le password e attiva l’autenticazio
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = Nella maggior parte dei casi, ti consigliamo di modificare la password sul sito web dell’azienda. Tuttavia, <b>il sito web potrebbe non essere disponibile o contenere contenuti dannosi</b>, quindi fai attenzione se <breached-company-link> visiti il sito</breached-company-link>. Per una maggiore protezione, assicurati di utilizzare password univoche per tutti gli account, in modo che le password trapelate non possano essere utilizzate per accedere ad altri account. { $passwordManagerLink } può aiutarti a tenere traccia di tutte le tue password in modo sicuro.
+breach-checklist-pw-body-text = Nella maggior parte dei casi, ti consigliamo di modificare la password sul sito web dell’azienda. Tuttavia, <b>il sito web potrebbe non essere più disponibile o contenere contenuti dannosi</b>, quindi fai attenzione quando <breached-company-link>visiti il sito</breached-company-link>. Per una maggiore protezione, assicurati di utilizzare password univoche per tutti gli account, in modo che le password compromesse non possano essere utilizzate per accedere ad altri account. { $passwordManagerLink } può aiutarti a tenere traccia di tutte le tue password in modo sicuro.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -129,7 +129,7 @@ breach-checklist-phone-header-2 = Proteggi il tuo numero di telefono con un serv
 
 breach-checklist-sq-header-text = Aggiorna le domande di sicurezza.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = Nella maggior parte dei casi, ti consigliamo di aggiornare le domande di sicurezza sul sito web dell’azienda. Tuttavia, <b>il sito web potrebbe non essere disponibile o contenere contenuti dannosi</b>, quindi fai attenzione se <breached-company-link> visiti il sito</breached-company-link>. Per una maggiore protezione, aggiorna queste domande di sicurezza su tutti gli account importanti in cui li hai utilizzati e crea password univoche per tutti gli account.
+breach-checklist-sq-body-text = Nella maggior parte dei casi, ti consigliamo di aggiornare le domande di sicurezza sul sito web dell’azienda. Tuttavia, <b>il sito web potrebbe non essere più disponibile o contenere contenuti dannosi</b>, quindi fai attenzione quando <breached-company-link>visiti il sito</breached-company-link>. Per una maggiore protezione, aggiorna queste domande di sicurezza su tutti gli account importanti in cui le hai utilizzate e crea password univoche per tutti gli account.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
