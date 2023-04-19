@@ -61,11 +61,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Obiščite spletno stran podjetja, kjer lahko spremenite geslo in omogočite dvostopenjsko preverjanje pristnosti (2FA).
+breach-checklist-pw-header-text = Posodobite gesla in omogočite dvofaktorsko overjanje (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Poskrbite, da bo vaše geslo edinstveno in težko uganljivo. Če se to geslo uporablja v katerem koli drugem računu, ga ne pozabite spremeniti tudi tam. { $passwordManagerLink } vam lahko pomaga pri varnem spremljanju vseh vaših gesel.
+breach-checklist-pw-body-text = V večini primerov vam priporočamo, da spremenite geslo na spletni strani podjetja. Toda <b>njihova spletna stran morda ne deluje ali pa vsebuje zlonamerno vsebino</b>, zato bodite previdni, če <breached-company-link>jo obiščete</breached-company-link>. Za dodatno zaščito poskrbite, da za vse račune uporabljate edinstvena gesla, da razkritih gesel ne bo mogoče uporabiti za dostop do drugih računov. { $passwordManagerLink } vam lahko pomaga pri varnem spremljanju vseh vaših gesel.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -129,9 +129,9 @@ breach-checklist-phone-header-2 = Zaščitite svojo telefonsko številko s stori
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Posodobite varnostna vprašanja na spletni strani podjetja.
-breach-checklist-sq-body = Uporabite dolge naključne odgovore in jih shranite na varno mesto. To storite povsod drugje, kjer ste uporabili ista varnostna vprašanja.
+breach-checklist-sq-header-text = Posodobite varnostna vprašanja.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = V večini primerov vam priporočamo, da posodobite varnostna vprašanja na spletni strani podjetja. Toda <b>njihova spletna stran morda ne deluje ali pa vsebuje zlonamerno vsebino</b>, zato bodite previdni, če <breached-company-link>jo obiščete</breached-company-link>. Za dodatno zaščito posodobite ta varnostna vprašanja za vse pomembne račune, kjer ste jih uporabljali, in ustvarite edinstvena gesla za vse račune.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
