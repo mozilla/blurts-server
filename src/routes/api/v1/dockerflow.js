@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Router } from 'express'
-import { heartbeat } from '../controllers/dockerflow.js'
+import { heartbeat } from '../../../controllers/dockerflow.js'
 
 const router = Router()
 

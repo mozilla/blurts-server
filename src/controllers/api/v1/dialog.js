@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../appConstants.js'
-import { dialogLayout } from '../views/dialogLayout.js'
-import { generateToken } from '../utils/csrf.js'
+import AppConstants from '../../../appConstants.js'
+import { dialogLayout } from '../../../views/dialogLayout.js'
+import { generateToken } from '../../../utils/csrf.js'
 
 async function dialog (req, res) {
   const partialName = req.params.name

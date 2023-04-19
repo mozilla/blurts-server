@@ -2,12 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from '../utils/fluent.js'
-import { getBreachLogo } from '../utils/breachLogo.js'
-import { UserInputError } from '../utils/error.js'
-import { getSha1 } from '../utils/fxa.js'
-import { getBreachesForEmail } from '../utils/hibp.js'
-import { validateEmailAddress } from '../utils/emailAddress.js'
+import { getMessage } from '../../../utils/fluent.js'
+import { getBreachLogo } from '../../../utils/breachLogo.js'
+import { getSha1 } from '../../../utils/fxa.js'
+import { getBreachesForEmail } from '../../../utils/hibp.js'
+import { validateEmailAddress } from '../../../utils/emailAddress.js'
 
 /**
  * @typedef {{ success: false }} RequestBreachScanErrorResponse

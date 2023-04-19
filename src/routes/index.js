@@ -7,7 +7,7 @@ import express from 'express'
 
 import adminRoutes from './admin.js'
 import authRoutes from './auth.js'
-import dockerFlowRoutes from './dockerflow.js'
+import dockerFlowRoutes from './api/v1/dockerflow.js'
 import hibpApiRoutes from './api/v1/hibp.js'
 import previewRoutes from './preview.js'
 import userApiRoutes from './api/v1/user.js'
@@ -15,11 +15,11 @@ import userRoutes from './user.js'
 import breachesRoutes from './breaches.js'
 import breachDetailRoutes from './breachDetail.js'
 
-import { dialog } from '../controllers/dialog.js'
-import { landingPage } from '../controllers/landing.js'
-import { exposureScanPage } from '../controllers/exposureScan.js'
-import { requestBreachScan } from '../controllers/requestBreachScan.js'
-import { notFoundPage } from '../controllers/notFound.js'
+import { dialog } from '../controllers/api/v1/dialog.js'
+import { landingPage } from '../controllers/api/v1/landing.js'
+import { exposureScanPage } from '../controllers/api/v1/exposureScan.js'
+import { requestBreachScan } from '../controllers/api/v1/requestBreachScan.js'
+import { notFoundPage } from '../controllers/api/v1/notFound.js'
 import { notFound } from '../middleware/error.js'
 import { doubleCsrfProtection } from '../utils/csrf.js'
 
@@ -37,7 +37,7 @@ router.use('/oauth', doubleCsrfProtection, authRoutes)
 router.use('/user', doubleCsrfProtection, userRoutes)
 router.use('/breaches', doubleCsrfProtection, breachesRoutes)
 router.use('/breach-details', doubleCsrfProtection, breachDetailRoutes)
-router.use('/', doubleCsrfProtection, dockerFlowRoutes)
+router.use('/api/v1/', doubleCsrfProtection, dockerFlowRoutes)
 
 // Do not make the non-auth previews available on prod
 if (AppConstants.NODE_ENV !== 'production') {
