@@ -42,6 +42,9 @@ breaches-all-resolved-copy = 做得好！您已處理掉所有 { $email } 相關
 breaches-all-resolved-cta-blurb = 想要監控其它信箱嗎？
 breaches-all-resolved-cta-button = 新增電子郵件地址
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = { $companyName } 於 { $breachDate } 發生了資料外洩事件。事件發生並經過驗證後，已於 { $addedDate } 列入我們的資料庫。此次事件外洩了下列資料：{ $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -52,11 +55,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = 請前往該公司網站更改密碼，並開啟兩階段驗證（2FA）。
+breach-checklist-pw-header-text = 更新您的密碼並開啟兩階段驗證2FA。
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = 確保您的密碼獨特、不重複使用並且難以被猜到。若此密碼也用在其他地方的帳號上，也請一併更換。{ $passwordManagerLink } 可幫助您安全地管理密碼。
+breach-checklist-pw-body-text = 大部分情況我們都會建議您到該公司網站修改密碼。但<b>他們的網站可能已經關機或是包含惡意內容</b>請您<breached-company-link>造訪這些網站</breached-company-link>。為了更加保護所有帳號請確保您為所有帳號使用不同密碼這樣洩漏的密碼就無法用來登入其他帳號。 { $passwordManagerLink } 可幫助您安全地管理密碼。
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -67,17 +70,17 @@ breach-checklist-email-body = 這樣就可以隱藏您的實際信箱，交由�
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = 監控您的信用報告當中是否有您不記得申辦過的帳號、貸款、信用卡。
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = 您也可以考慮在 { $equifaxLink }、{ $experianLink } 或 { $transUnionLink } 凍結信用資訊，防止詐騙者使用您的個資開立帳號。此服務免費，也不會影響您的信用分數。
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -120,9 +123,9 @@ breach-checklist-phone-header-2 = 使用諸如 { $firefoxRelayLink } 的電話�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = 到該公司網站更新安全性問題。
-breach-checklist-sq-body = 使用長度夠長、內容隨機的答案，並保存在安全的地方。對您有設定過相同安全問題的網站都做相同的步驟來保護。
+breach-checklist-sq-header-text = 更新您的安全問題。
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = 大部分情況下我們建議您到該公司網站更新安全性問題。但<b>他們的網站可能已經關機或是包含惡意內容</b>請您<breached-company-link>造訪這些網站</breached-company-link>。若有使用過重要帳號的地方請更新安全問題並為所有帳號設定不同密碼以加強保護。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -133,5 +136,7 @@ breach-checklist-hp-body-2 = 這類密碼管理工具，例如 { $passwordManage
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = 請聯絡 { $companyName }，通知他們這場資安事件，並詢問可以採取哪些行動保護您的權益。
