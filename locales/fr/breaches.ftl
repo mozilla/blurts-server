@@ -129,7 +129,7 @@ breach-checklist-phone-header-2 = Protégez votre numéro de téléphone avec un
 
 breach-checklist-sq-header-text = Mettez à jour vos questions de sécurité.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = Dans la plupart des cas, nous vous recommandons de mettre à jour vos questions de sécurité sur le site de l’entreprise. Cependant, <b>leur site web peut ne pas fonctionner correctement ou contenir du contenu malveillant</b>, faites donc attention si vous <breached-company-link>visitez ce site</breached-company-link>. Pour une protection renforcée, mettez à jour ces questions de sécurité pour tous les comptes importants où vous les avez utilisés, et créez des mots de passe uniques pour tous les comptes.
+breach-checklist-sq-body-text = Dans la plupart des cas, nous vous recommandons de mettre à jour vos questions de sécurité sur le site de l’entreprise. Cependant, <b>leur site web peut ne pas fonctionner correctement ou contenir du contenu malveillant</b>, faites donc attention si vous <breached-company-link>visitez ce site</breached-company-link>. Pour une protection renforcée, mettez à jour ces questions de sécurité pour tous les comptes importants où vous les avez utilisées, et créez des mots de passe uniques pour tous les comptes.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
