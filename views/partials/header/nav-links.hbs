@@ -1,3 +1,0 @@
-{{#each (navLinks)}}
-  <a class="nav-link {{#if activeLink}} active-link {{/if}}" {{> analytics/internal-link eventLabel=this.title }} href="{{ this.href }}"><span>{{ this.stringId }}</span></a>
-{{/each}}
