@@ -60,7 +60,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-breach-checklist-pw-header-text = Actualiza tus contraseñas y habilita la autenticación de dos factores (2FA).
+breach-checklist-pw-header-text = Actualizá tus contraseñas y habilitá la autenticación de dos factores (2FA).
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -128,9 +128,9 @@ breach-checklist-phone-header-2 = Protegé tu número de teléfono con un servic
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-breach-checklist-sq-header-text = Actualiza tus preguntas de seguridad.
+breach-checklist-sq-header-text = Actualizá tus preguntas de seguridad.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = En la mayoría de los casos, le recomendamos que actualice sus preguntas de seguridad en el sitio web de la empresa. Pero <b> su sitio web puede estar inactivo o contener contenido malicioso </b>, así que tenga cuidado si <breaches-company-link> visita el sitio </breaches-company-link>. Para mayor protección, actualiza estas preguntas de seguridad en cualquier cuenta importante donde las hayas usado y crea contraseñas únicas para todas las cuentas.
+breach-checklist-sq-body-text = En la mayoría de los casos, te recomendamos que actualices tus preguntas de seguridad en el sitio web de la empresa. Pero <b> ese sitio web puede estar inactivo o contener contenido malicioso </b>, así que tené cuidado si visitás el sitio. Para mayor protección, actualizá estas preguntas de seguridad en cualquier cuenta importante donde las hayas usado y creá contraseñas únicas para todas las cuentas.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
