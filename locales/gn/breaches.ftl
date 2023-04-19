@@ -105,7 +105,7 @@ breach-checklist-dob-body = Umi teñoihague ára ndahasýi ijejuhu teraguapyháp
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-breach-checklist-sq-body = Eipuru mbohovái puku ha jereguáva ha eñongatu tenda hekorosãvape. Ejapo kóva tenda eipuruhápe ko’ã porandu tekorosãgua.
+breach-checklist-sq-header-text = Embopyahu porandu tekorosãgua.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

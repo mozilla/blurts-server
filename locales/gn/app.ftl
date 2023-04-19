@@ -761,4 +761,5 @@ exposed-data = Mba’ekuaarã imarãkuaáva:
 
 ## Public breach detail page
 
+find-out-if-2 = Ehechaporãke eimépara’e ko ñemboguápe
 breach-detail-cta-signup = Ehechajey oĩpa ñembogua
