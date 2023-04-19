@@ -46,6 +46,9 @@ breaches-all-resolved-copy = Bien joué ! Vous avez résolu toutes les fuites d
 breaches-all-resolved-cta-blurb = Souhaitez-vous surveiller une autre adresse e-mail ?
 breaches-all-resolved-cta-button = Ajouter une adresse e-mail
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Le { $breachDate }, { $companyName } a été victime d’une fuite de données. Une fois cette fuite découverte et vérifiée, elle a été ajoutée à notre base de données le { $addedDate }. Cette fuite inclut : { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +59,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Allez sur le site de l’entreprise pour changer votre mot de passe et activer l’authentification à deux facteurs (2FA).
+breach-checklist-pw-header-text = Mettez à jour vos mots de passe et activez l’authentification à deux facteurs (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Assurez-vous que votre mot de passe est unique et difficile à deviner. S’il est utilisé avec d’autres comptes, veillez à le modifier également pour ceux-ci. Le { $passwordManagerLink } peut vous aider à garder une trace de tous vos mots de passe en toute sécurité.
+breach-checklist-pw-body-text = Dans la plupart des cas, nous vous recommandons de changer votre mot de passe sur le site web de l’entreprise. Cependant, <b>leur site web peut ne pas fonctionner correctement ou contenir du contenu malveillant</b>, faites donc attention si vous <breached-company-link>visitez ce site</breached-company-link>. Pour une protection renforcée, assurez-vous d’utiliser des mots de passe uniques pour tous les comptes, afin que les mots de passe divulgués ne puissent pas être utilisés pour accéder à d’autres comptes. { $passwordManagerLink } peut vous aider à garder une trace de tous vos mots de passe en toute sécurité.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -71,17 +74,17 @@ breach-checklist-email-body = Cela masquera votre véritable adresse e-mail tout
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Surveillez votre rapport de crédit et vérifiez tout compte, prêt ou carte de crédit que vous ne reconnaitriez pas.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Vous pouvez également envisager de geler votre crédit sur { $equifaxLink }, { $experianLink } et { $transUnionLink } pour empêcher les escrocs d’ouvrir de nouveaux comptes à votre nom. C’est gratuit et n’affectera pas votre score de crédit.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -124,9 +127,9 @@ breach-checklist-phone-header-2 = Protégez votre numéro de téléphone avec un
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Mettez à jour vos questions de sécurité sur le site de l’entreprise.
-breach-checklist-sq-body = Utilisez des réponses longues et aléatoires et conservez-les en lieu sûr. Faites-le partout où vous avez utilisé les mêmes questions de sécurité.
+breach-checklist-sq-header-text = Mettez à jour vos questions de sécurité.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Dans la plupart des cas, nous vous recommandons de mettre à jour vos questions de sécurité sur le site de l’entreprise. Cependant, <b>leur site web peut ne pas fonctionner correctement ou contenir du contenu malveillant</b>, faites donc attention si vous <breached-company-link>visitez ce site</breached-company-link>. Pour une protection renforcée, mettez à jour ces questions de sécurité pour tous les comptes importants où vous les avez utilisés, et créez des mots de passe uniques pour tous les comptes.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -137,5 +140,7 @@ breach-checklist-hp-body-2 = Un gestionnaire de mots de passe comme le { $passwo
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Contactez { $companyName } pour les informer de cette fuite et demander quelles mesures spécifiques vous pouvez prendre.
