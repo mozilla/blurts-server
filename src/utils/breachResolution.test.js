@@ -4,6 +4,7 @@
 
 import test from 'ava'
 
+import AppConstants from '../appConstants.js'
 import { initFluentBundles, updateLocale } from './fluent.js'
 import { filterBreachDataTypes, appendBreachResolutionChecklist, BreachDataTypes } from './breachResolution.js'
 
@@ -163,6 +164,50 @@ test('appendBreachResolutionChecklist: data class with a resolution referring to
     'In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you visit the site. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts. <a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">Firefox Password Manager</a> can help you securely keep track of all of your passwords.')
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].header,
     'Update your security questions.')
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].body,
+    'In most cases, we’d recommend that you update your security questions on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you visit the site. For added protection, update these security questions on any important accounts where you’ve used them, and create unique passwords for all accounts.')
+})
+
+test('appendBreachResolutionChecklist: data classes with resolutions referring to the breach\'s domain, which is available', t => {
+  const userBreachData = {
+    verifiedEmails: [{
+      email: 'affected@email.com',
+      breaches: [{
+        DataClasses: [BreachDataTypes.Passwords, BreachDataTypes.SecurityQuestions],
+        Name: 'companyName',
+        Domain: 'companyName.com'
+      }]
+    }],
+    unverifiedEmails: []
+  }
+
+  appendBreachResolutionChecklist(userBreachData)
+
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].body,
+    'In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <a href="https://companyName.com" target="_blank">visit the site</a>. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts. <a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">Firefox Password Manager</a> can help you securely keep track of all of your passwords.')
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].body,
+    'In most cases, we’d recommend that you update your security questions on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <a href="https://companyName.com" target="_blank">visit the site</a>. For added protection, update these security questions on any important accounts where you’ve used them, and create unique passwords for all accounts.')
+})
+
+test('appendBreachResolutionChecklist: data classes with resolutions referring to the breach\'s domain, which is available but blocklisted', t => {
+  const userBreachData = {
+    verifiedEmails: [{
+      email: 'affected@email.com',
+      breaches: [{
+        DataClasses: [BreachDataTypes.Passwords, BreachDataTypes.SecurityQuestions],
+        Name: 'blockedCompanyName',
+        Domain: 'blockedCompanyName.com'
+      }]
+    }],
+    unverifiedEmails: []
+  }
+
+  // Set dummy domain blocklist that includes the breach’s domain
+  AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST = 'blockedDomain.com,anotherBlockedDomain.org,blockedCompanyName.com'
+  appendBreachResolutionChecklist(userBreachData)
+
+  t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.Passwords].body,
+    'In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you visit the site. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts. <a href="https://www.mozilla.org/firefox/features/password-manager/?utm_medium=mozilla-websites&utm_source=monitor&utm_campaign=&utm_content=breach-resolution" target="_blank">Firefox Password Manager</a> can help you securely keep track of all of your passwords.')
   t.is(userBreachData.verifiedEmails[0].breaches[0].breachChecklist[BreachDataTypes.SecurityQuestions].body,
     'In most cases, we’d recommend that you update your security questions on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you visit the site. For added protection, update these security questions on any important accounts where you’ve used them, and create unique passwords for all accounts.')
 })
