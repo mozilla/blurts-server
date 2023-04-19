@@ -202,8 +202,6 @@ test('appendBreachResolutionChecklist: data classes with resolutions referring t
     unverifiedEmails: []
   }
 
-  appendBreachResolutionChecklist(userBreachData)
-
   // Set dummy domain blocklist that includes the breach’s domain
   AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST = 'blockedDomain.com,anotherBlockedDomain.org,blockedCompanyName.com'
   appendBreachResolutionChecklist(userBreachData)
