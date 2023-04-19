@@ -59,6 +59,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Wurkje jo wachtwurden by en skeakelje twa-staps-autentikaasje (2FA) yn.
 
 ## Prompts the user for changes when there is a breach detected of email
 

@@ -1,3 +1,4 @@
+exposure-landing-hero-heading = Kontrolearje oft jo persoanlike ynformaasje kompromittearre is
 exposure-landing-hero-email-label = E-mailadres
 exposure-landing-hero-email-placeholder = Fier e-mailadres yn
 exposure-landing-hero-cta-label = Kontrolearje op datalekken
