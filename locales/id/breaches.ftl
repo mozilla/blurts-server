@@ -58,11 +58,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Buka situs web perusahaan untuk mengubah kata sandi Anda dan mengaktifkan otentikasi dua faktor (2FA).
+breach-checklist-pw-header-text = Perbarui kata sandi Anda dan aktifkan otentikasi dua faktor (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Pastikan kata sandi Anda unik dan sulit ditebak. Jika kata sandi ini digunakan pada akun lain, pastikan untuk mengubahnya juga di sana. { $passwordManagerLink } dapat membantu Anda melacak semua kata sandi Anda dengan aman.
+breach-checklist-pw-body-text = Dalam kebanyakan kasus, kami menyarankan Anda mengubah kata sandi Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs</breached-company-link>. Untuk perlindungan tambahan, pastikan Anda menggunakan kata sandi unik untuk semua akun, sehingga kata sandi yang bocor tidak dapat digunakan untuk mengakses akun lain. { $passwordManagerLink } dapat membantu Anda melacak semua kata sandi Anda dengan aman.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -126,9 +126,9 @@ breach-checklist-phone-header-2 = Lindungi nomor telepon Anda dengan layanan pen
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Perbarui pertanyaan keamanan Anda di situs web perusahaan.
-breach-checklist-sq-body = Gunakan jawaban yang panjang dan acak, dan simpan di tempat yang aman. Lakukan ini di mana pun Anda menggunakan pertanyaan keamanan yang sama.
+breach-checklist-sq-header-text = Perbarui pertanyaan keamanan Anda.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Dalam kebanyakan kasus, kami menyarankan Anda memperbarui pertanyaan keamanan Anda di situs web perusahaan. Tetapi <b>situs web mereka mungkin sedang tidak aktif atau mengandung konten berbahaya</b>, jadi berhati-hatilah jika Anda <breached-company-link>mengunjungi situs</breached-company-link>. Untuk perlindungan tambahan, perbarui pertanyaan keamanan ini pada akun penting mana pun yang Anda gunakan, dan buat kata sandi unik untuk semua akun.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
