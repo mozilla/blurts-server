@@ -1,6 +1,6 @@
 exposure-landing-hero-heading = Découvrez si vos informations personnelles ont été compromises
 exposure-landing-hero-lead = Conçu par les créateurs de { -brand-firefox }, les outils de protection de la vie privée vous protègent contre les cybercriminels et les entreprises qui publient et vendent vos données personnelles. Nous vous alerterons de toutes les fuites de données connues, trouverons et supprimerons les informations exposées et surveillerons en permanence toute nouvelle exposition.
-exposure-landing-hero-email-label = Adresse électronique
+exposure-landing-hero-email-label = Adresse e-mail
 exposure-landing-hero-email-placeholder = Saisissez votre adresse e-mail
 exposure-landing-hero-cta-label = Vérifier les fuites de données
 exposure-landing-result-loading = Chargement, veuillez patienter…
@@ -14,12 +14,12 @@ exposure-landing-result-hero-heading =
        *[other] Nous avons trouvé <email>{ $email }</email> exposé dans <count>{ $count }</count> fuites de données.
     }
 exposure-landing-result-card-added = Fuite de données ajoutée :
-exposure-landing-result-card-data = Données exposées :
+exposure-landing-result-card-data = Données ayant fuité :
 exposure-landing-result-card-nothing = Aucune fuite de données trouvée
 exposure-landing-result-footer-attribution = Les informations sur les fuites de données sont fournies par <hibp-link>{ -brand-HIBP }</hibp-link>
 exposure-landing-result-overflow-hero-lead = Connectez-vous pour obtenir des étapes claires sur la façon de résoudre ces fuites de données, afficher toutes les fuites de données et surveiller en permanence toute nouvelle fuite de données connue.
 exposure-landing-result-overflow-hero-cta-label = Connectez-vous pour résoudre les fuites de données
-exposure-landing-result-overflow-footer-cta-label = Connectez-vous pour tout voir
+exposure-landing-result-overflow-footer-cta-label = Connectez-vous pour tout afficher
 exposure-landing-result-some-hero-lead = Connectez-vous pour obtenir des étapes claires sur la façon de résoudre ces fuites de données, afficher toutes les fuites de données et surveiller en permanence toute nouvelle fuite de données connue.
 exposure-landing-result-some-hero-cta-label = Connectez-vous pour résoudre les fuites de données
 exposure-landing-result-some-footer-cta-label = Connectez-vous pour résoudre les fuites de données
