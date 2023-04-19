@@ -1,4 +1,5 @@
 exposure-landing-hero-heading = Discoperi si tu informationes personal ha essite compromittite
+exposure-landing-hero-lead = Sta secur con instrumentos de confidentialitate ab le autores de { -brand-firefox } que te protege de piratas informatic e companias que publica e vende tu informationes personal. Nos te avisara de ulle note violationes de datos, trovara e removera tu informationes exponite e continuemente surveliara pro nove expositiones.
 exposure-landing-hero-email-label = Adresse email
 exposure-landing-hero-email-placeholder = Insere tu adresse email
 exposure-landing-hero-cta-label = Verificar si il ha violationes
@@ -17,6 +18,7 @@ exposure-landing-result-card-data = Datos exponite:
 exposure-landing-result-card-nothing = Nulle violationes trovate
 exposure-landing-result-footer-attribution = Violation datos fornite per <hibp-link>{ -brand-HIBP }</hibp-link>
 exposure-landing-result-overflow-hero-lead = Accede pro obtener passos clar sur como resolver iste violationes, vider tote le violationes, e obtener continue surveliantia pro ulle nove violationes note.
+exposure-landing-result-overflow-hero-cta-label = Accede pro resolver violationes
 exposure-landing-result-overflow-footer-cta-label = Accede pro vider toto
 exposure-landing-result-some-hero-lead = Accede pro obtener passos clar sur como resolver iste violationes, vider tote le violationes, e obtener continue surveliantia pro ulle nove violationes note.
 exposure-landing-result-some-hero-cta-label = Accede pro resolver violationes
