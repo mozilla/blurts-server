@@ -3,12 +3,12 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { acceptedLanguages, negotiateLanguages } from '@fluent/langneg'
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 
 import { getSubscribersByHashes } from '../db/tables/subscribers.js'
-import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
-import { getTemplate } from '../views/emails/email-2022.js'
-import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
+import { getEmailAddressesByHashes } from '../db/tables/emailAddresses.js'
+import { getTemplate } from '../views/emails/email2022.js'
+import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
 
 import {
   EmailTemplateType,
@@ -151,6 +151,7 @@ async function notify (req, res) {
       if (!notifiedRecipients.includes(breachedEmail)) {
         const data = {
           breachData: breachAlert,
+          breachLogos: req.app.locals.breachLogoMap,
           breachedEmail,
           ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
           heading: getMessage('email-spotted-new-breach'),

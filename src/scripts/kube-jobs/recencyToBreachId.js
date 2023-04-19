@@ -26,7 +26,6 @@ const selectAndLockResolutions = async () => {
     subscribers = await knex.select('id', 'primary_email', 'breach_resolution')
       .from('subscribers')
       .whereNotNull('breach_resolution')
-      .whereNotNull('db_migration_1')
       .whereNull('db_migration_2')
       .limit(LIMIT)
       .orderBy('updated_at', 'desc')
@@ -119,7 +118,13 @@ for (const subscriber of subscribersArr) {
   const newResolutions = {}
 
   // fetch subscriber all breaches / email
-  const subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+  let subscriberBreachesEmail
+  try {
+    subscriberBreachesEmail = await getAllEmailsAndBreaches(subscriber, allBreaches)
+  } catch (e) {
+    console.error('Cannot fetch subscriber breaches at the moment: ', e)
+    continue
+  }
   // console.debug(JSON.stringify(subscriberBreachesEmail.verifiedEmails))
 
   for (const email in v2) {

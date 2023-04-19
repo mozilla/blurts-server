@@ -5,18 +5,18 @@
 import { URL } from 'url'
 import { randomBytes } from 'crypto'
 
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import {
   getSubscriberByEmail,
   removeFxAData,
   updateFxAData
 } from '../db/tables/subscribers.js'
-import { addSubscriber } from '../db/tables/email_addresses.js'
+import { addSubscriber } from '../db/tables/emailAddresses.js'
 
-import { getTemplate } from '../views/emails/email-2022.js'
+import { getTemplate } from '../views/emails/email2022.js'
 import {
   signupReportEmailPartial
-} from '../views/emails/email-signup-report.js'
+} from '../views/emails/emailSignupReport.js'
 
 import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
@@ -112,6 +112,7 @@ async function confirmed (req, res, next, client = FxAOAuthClient) {
 
     const data = {
       breachedEmail: email,
+      breachLogos: req.app.locals.breachLogoMap,
       ctaHref: getEmailCtaHref(utmCampaignId, 'dashboard-cta'),
       heading: getMessage('email-breach-summary'),
       recipientEmail: email,

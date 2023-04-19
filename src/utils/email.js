@@ -6,7 +6,7 @@ import { createTransport } from 'nodemailer'
 import { URL } from 'url'
 
 import mozlog from './log.js'
-import AppConstants from '../app-constants.js'
+import AppConstants from '../appConstants.js'
 import { MethodNotAllowedError } from '../utils/error.js'
 import { getMessage, fluentError } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
@@ -210,13 +210,17 @@ async function unsubscribeFromMonthlyReport (req) {
   await updateMonthlyEmailOptout(urlQuery.token)
 }
 
+const breachDummyLogo = new Map([
+  ['adobe.com', '/images/logo_cache/adobe.com.ico']
+])
+
 /**
  * Dummy data for populating the breach notification email preview.
  *
  * @param {string} recipient
  * @returns {object} Breach dummy data
  */
-const getNotifictionDummyData = (recipient) => ({
+const getNotificationDummyData = (recipient) => ({
   breachData: {
     Id: 1,
     Name: 'Adobe',
@@ -227,7 +231,6 @@ const getNotifictionDummyData = (recipient) => ({
     ModifiedDate: '2023-01-01T00:00:00.000Z',
     PwnCount: 123,
     Description: 'Example description',
-    LogoPath: '/images/favicon-144.webp',
     DataClasses: [
       'email-addresses',
       'password-hints',
@@ -242,6 +245,7 @@ const getNotifictionDummyData = (recipient) => ({
     IsMalware: false
   },
   breachedEmail: recipient,
+  breachLogos: breachDummyLogo,
   ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
   heading: getMessage('email-spotted-new-breach'),
   recipientEmail: recipient,
@@ -270,7 +274,8 @@ const getVerificationDummyData = (recipient) => ({
  */
 const getMonthlyDummyData = (recipient) => ({
   breachedEmail: 'breached@email.com',
-  ctaHref: SERVER_URL,
+  breachLogos: breachDummyLogo,
+  ctaHref: `${SERVER_URL}/user/breaches`,
   heading: getMessage('email-unresolved-heading'),
   monitoredEmails: {
     count: 2
@@ -294,7 +299,7 @@ const getMonthlyDummyData = (recipient) => ({
 
 const getSignupReportDummyData = (recipient) => {
   const unsafeBreachesForEmail = [
-    getNotifictionDummyData(recipient).breachData
+    getNotificationDummyData(recipient).breachData
   ]
   const breachesCount = unsafeBreachesForEmail.length
   const numPasswordsExposed = 1
@@ -316,6 +321,7 @@ const getSignupReportDummyData = (recipient) => {
 
   return {
     breachedEmail: recipient,
+    breachLogos: breachDummyLogo,
     ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
     heading: unsafeBreachesForEmail.length
       ? getMessage('email-subject-found-breaches')
@@ -331,7 +337,7 @@ export {
   EmailTemplateType,
   getEmailCtaHref,
   getMonthlyDummyData,
-  getNotifictionDummyData,
+  getNotificationDummyData,
   getSignupReportDummyData,
   getUnsubscribeCtaHref,
   getVerificationDummyData,

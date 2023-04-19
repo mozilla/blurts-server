@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getMessage, getLocale } from '../../utils/fluent.js'
-import AppConstants from '../../app-constants.js'
-import { getBreachLogo } from '../../utils/breach-logo.js'
+import AppConstants from '../../appConstants.js'
+import { getBreachLogo } from '../../utils/breachLogo.js'
 
 function createEmailOptions (data, selectedEmailIndex) {
   const emails = data.verifiedEmails.map(obj => obj.email)
@@ -118,7 +118,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-none-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-none-cta-blurb')}</span>
-        <button class='primary' data-dialog='add-email'>${getMessage('breaches-none-cta-button')}</button>
+        <button class='primary' data-cta-id='breaches-none' data-dialog='addEmail'>${getMessage('breaches-none-cta-button')}</button>
       </p>
     </div>
   </template>
@@ -129,7 +129,7 @@ export const breaches = data => `
       <p>${getMessage('breaches-all-resolved-copy', { email: '<b class="current-email"></b>' })}</p>
       <p class='add-email-cta'>
         <span>${getMessage('breaches-all-resolved-cta-blurb')}</span>
-        <button class='primary' data-dialog='add-email'>${getMessage('breaches-all-resolved-cta-button')}</button>
+        <button class='primary' data-cta-id='breaches-all-resolved' data-dialog='addEmail'>${getMessage('breaches-all-resolved-cta-button')}</button>
       </p>
     </div>
   </template>

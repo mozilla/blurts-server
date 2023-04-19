@@ -7,15 +7,19 @@
     },
     "extends": [
         "standard",
-        "plugin:jsdoc/recommended"
+        "plugin:jsdoc/recommended",
+        "plugin:@typescript-eslint/recommended"
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
     "plugins": [
         "header",
-        "jsdoc"
+        "jsdoc",
+        "@typescript-eslint",
+        "check-file"
     ],
     "rules": {
         "no-prototype-builtins": "warn",
@@ -36,6 +40,21 @@
             {
                 "argsIgnorePattern": "^_",
                 "varsIgnorePattern": "^_"
+            }
+        ],
+        "@typescript-eslint/ban-ts-comment": [
+            "error",
+            {
+                "ts-ignore": "allow-with-description"
+            }
+        ],
+        "check-file/filename-naming-convention": [
+            "error",
+            {
+                "**/*.{js,css}": "CAMEL_CASE"
+            },
+            {
+                "ignoreMiddleExtensions": true
             }
         ]
     }

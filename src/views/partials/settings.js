@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../../app-constants.js'
+import AppConstants from '../../appConstants.js'
 import { getMessage } from '../../utils/fluent.js'
 
 const emailNeedsVerificationSub = email => `
@@ -63,6 +63,11 @@ const createEmailList = (emails, breachCounts) => `
   </ul>
 `
 
+/**
+ * @param {string} csrfToken
+ * @param {{ isChecked: boolean; option: unknown; }} options
+ * @returns string
+ */
 const optionInput = (csrfToken, { isChecked, option }) => `
   <input
     ${isChecked ? 'checked' : ''}
@@ -74,6 +79,10 @@ const optionInput = (csrfToken, { isChecked, option }) => `
   >
 `
 
+/**
+ * @param {{ csrfToken: string; allEmailsToPrimary: boolean }} options
+ * @returns string
+ */
 const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   <div class='settings-alert-options'>
     <label class='settings-radio-input'>
@@ -98,6 +107,16 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   </div>
 `
 
+/**
+ * @typedef {object} PartialData
+ * @property {string} csrfToken
+ * @property {boolean} allEmailsToPrimary
+ */
+
+/**
+ * @param {PartialData} data
+ * @returns string
+ */
 export const settings = data => {
   const { allEmailsToPrimary, breachCounts, csrfToken, emails, limit } = data
 
@@ -126,7 +145,7 @@ export const settings = data => {
           ${createEmailList(emails, breachCounts)}
           <button
             class='primary settings-add-email-button' 
-            data-dialog='add-email' 
+            data-dialog='addEmail' 
             ${emails.length >= limit ? 'disabled' : ''}
           >${getMessage('settings-add-email-button')}</a>
         </section>

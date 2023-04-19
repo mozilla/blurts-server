@@ -43,7 +43,7 @@ async function openDialog (path) {
   const partialName = path.substring(path.lastIndexOf('/') + 1)
 
   dialogEl.showModal() // provide immediate UI response by showing ::backdrop regardless of content load
-  dialogEl.setAttribute('data-partial', partialName) // allow selector access, e.g. dialog[data-partial='add-email']
+  dialogEl.setAttribute('data-partial', partialName) // allow selector access, e.g. dialog[data-partial='addEmail']
   dialogEl.addEventListener('click', handleEvent)
   dialogEl.addEventListener('close', resetDialog)
 
@@ -55,7 +55,7 @@ async function openDialog (path) {
     })
 
     if (!res.ok) throw new Error('Bad fetch response')
-    window.gtag('event', 'Dialog', { action: 'open', result: 'success', page_location: location.href })
+    window.gtag('event', 'opened_closed_dialog', { action: 'open', result: 'success', page_location: location.href })
 
     const content = await res.text()
     dialogEl.insertAdjacentHTML('beforeend', content)
@@ -68,7 +68,7 @@ async function openDialog (path) {
     }
   } catch (e) {
     dialogEl.close()
-    window.gtag('event', 'Dialog', { action: 'open', result: 'failed', page_location: location.href })
+    window.gtag('event', 'opened_closed_dialog', { action: 'open', result: 'failed', page_location: location.href })
     console.error(`Could not load dialog content for ${partialName}.`, e)
   }
 }

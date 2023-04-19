@@ -27,7 +27,7 @@
     "git-rev-sync": "^3.0.2",
     "got": "11.8.5",
     "helmet": "4.2.0",
-    "intl-pluralrules": "1.2.1",
+    "intl-pluralrules": "1.3.1",
     "isemail": "3.2.0",
     "knex": "^2.2.0",
     "mozlog": "3.0.2",
@@ -39,6 +39,10 @@
     "uuid": "3.4.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/gtag.js": "^0.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
     "coveralls": "3.1.1",
     "eslint": "^8.15.0",
     "eslint-config-standard": "^17.0.0",
@@ -50,7 +54,8 @@
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
     "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0"
+    "stylelint-config-standard": "^26.0.0",
+    "typescript": "^5.0.2"
   },
   "engines": {
     "node": "18.12.x",
@@ -89,7 +94,8 @@
     "docker:build": "docker build -t blurts-server .",
     "docker:run": "docker run -p 6060:6060 blurts-server",
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:js": "eslint .",
+    "lint:js": "eslint src",
+    "lint:ts": "tsc --noEmit",
     "lint:css": "stylelint public/css/",
     "lint:fluent": "moz-fluent-lint ./locales/en --config .github/linter_config.yml",
     "fix": "npm run fix:css && npm run fix:js",

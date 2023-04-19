@@ -3,6 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 export const dialogLayout = data => `
-${data.stylesheetPath ? `<link rel='stylesheet' href='${data.stylesheetPath}' type='text/css'>` : ''}
+<link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
 ${data.partial(data)}
 `

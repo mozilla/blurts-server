@@ -39,7 +39,7 @@
   align-items: start;
   display: grid;
   grid-gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, minmax(calc(var(--min-width) + 2 * var(--padding-md)), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(var(--min-width), 1fr));
 }
 
 .breach-card {

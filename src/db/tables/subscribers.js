@@ -5,7 +5,7 @@
 import { destroyOAuthToken } from '../../utils/fxa.js'
 import Knex from 'knex'
 import knexConfig from '../knexfile.js'
-import AppConstants from '../../app-constants.js'
+import AppConstants from '../../appConstants.js'
 import mozlog from '../../utils/log.js'
 const knex = Knex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
@@ -124,6 +124,18 @@ async function removeFxAData (subscriber) {
   return updatedSubscriber
 }
 
+/**
+ * @param {import('./subscribers_types').SubscriberRow} subscriber
+ * @param {number} onerepProfileId
+ */
+async function setOnerepProfileId (subscriber, onerepProfileId) {
+  await knex('subscribers')
+    .where('id', subscriber.id)
+    .update({
+      onerep_profile_id: onerepProfileId
+    })
+}
+
 async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
   const nowDateTime = new Date()
@@ -225,6 +237,20 @@ async function deleteSubscriberByFxAUID (fxaUID) {
   await knex('subscribers').where('fxa_uid', fxaUID).del()
 }
 
+async function deleteResolutionsWithEmail (id, email) {
+  const [subscriber] = await knex('subscribers').where({
+    id
+  })
+  const { breach_resolution: breachResolution } = subscriber
+  // if email exists in breach resolution, remove it
+  if (breachResolution && breachResolution[email]) {
+    delete breachResolution[email]
+    console.info(`Deleting resolution with email: ${email}`)
+    return await setBreachResolution(subscriber, breachResolution)
+  }
+  console.info(`No resolution with ${email} found, skip`)
+}
+
 async function updateBreachStats (id, stats) {
   await knex('subscribers')
     .where('id', id)
@@ -300,6 +326,7 @@ export {
   updateFxAData,
   removeFxAData,
   updateFxAProfileData,
+  setOnerepProfileId,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
   setBreachesResolved,
@@ -311,5 +338,6 @@ export {
   removeSubscriber,
   removeSubscriberByToken,
   deleteUnverifiedSubscribers,
-  deleteSubscriberByFxAUID
+  deleteSubscriberByFxAUID,
+  deleteResolutionsWithEmail
 }

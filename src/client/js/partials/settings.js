@@ -11,7 +11,7 @@ function init () {
 function handleEvent (e) {
   switch (true) {
     case e.type === 'email-added':
-      document.querySelector('dialog[data-partial="add-email"]')
+      document.querySelector('dialog[data-partial="addEmail"]')
         .addEventListener('close', () => {
           window.location.reload()
         }, { once: true })
@@ -41,12 +41,14 @@ if (settingsAlertOptionsInputs?.length) {
 
         if (response && response.redirected === true) {
           throw response.error
+        } else {
+          window.gtag('event', 'changed_email_preference', { action: 'click', page_location: location.href, result: 'success' })
         }
       } catch (err) {
+        window.gtag('event', 'changed_email_preference', { action: 'click', page_location: location.href, result: 'fail' })
         throw new Error(`Updating communication option failed: ${err}`)
       }
       event.preventDefault()
-      window.gtag('event', 'Change Email Preference', { action: 'click', page_location: location.href })
       return false
     })
   }
@@ -77,7 +79,7 @@ if (settingsRemoveEmailButtons?.length) {
           return window.location.reload(true)
         }
 
-        window.gtag('event', 'Remove Email', { action: 'click', page_location: location.href })
+        window.gtag('event', 'removed_email', { action: 'click', page_location: location.href })
       } catch (err) {
         console.error(`Error: ${err}`)
       }
@@ -111,16 +113,17 @@ if (settingsResendEmailLinks?.length) {
           const toast = document.createElement('toast-alert')
           toast.textContent = `Re-sending verification email failed. ${response.statusText}`
           document.body.append(toast)
+          window.gtag('event', 'resend_email', { action: 'click', page_location: location.href, result: 'success' })
         }
 
         if (response?.redirected) {
           throw response.error
         }
       } catch (err) {
+        window.gtag('event', 'resend_email', { action: 'click', page_location: location.href, result: 'fail' })
         throw new Error(`Re-sending verification email failed. ${err}`)
       }
       event.preventDefault()
-      window.gtag('event', 'Resend Email', { action: 'click', page_location: location.href })
       return false
     })
   }

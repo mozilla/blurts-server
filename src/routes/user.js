@@ -10,13 +10,15 @@ import { requireSessionUser } from '../middleware/auth.js'
 import { logout } from '../controllers/auth.js'
 // import { dashboardPage } from '../controllers/dashboard.js'
 import { breachesPage } from '../controllers/breaches.js'
-import { dataRemovalPage } from '../controllers/data-removal.js'
+import { exposuresPage } from '../controllers/exposures.js'
+import { dataRemovalPage } from '../controllers/dataRemoval.js'
 import { settingsPage } from '../controllers/settings.js'
 import {
   unsubscribePage,
   unsubscribeMonthlyPage
 } from '../controllers/unsubscribe.js'
 import { unsubscribeFromEmails } from '../utils/email.js'
+import AppConstants from '../appConstants.js'
 
 const router = Router()
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })
@@ -30,6 +32,12 @@ router.get('/dashboard', (req, res) => res.redirect(302, '/user/breaches'))
 
 // data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
+
+// Not ready yet, so don't expose in production:
+if (AppConstants.NODE_ENV === 'dev') {
+  // data exposures detail page
+  router.get('/exposures', requireSessionUser, exposuresPage)
+}
 
 // data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)

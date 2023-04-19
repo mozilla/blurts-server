@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import crypto from 'node:crypto'
-
 import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
@@ -15,10 +13,9 @@ import rateLimit from 'express-rate-limit'
 import Sentry from '@sentry/node'
 import '@sentry/tracing'
 
-import AppConstants from './app-constants.js'
-import { localStorage } from './utils/local-storage.js'
+import AppConstants from './appConstants.js'
+import { localStorage } from './utils/localStorage.js'
 import { errorHandler } from './middleware/error.js'
-import { doubleCsrfProtection } from './utils/csrf.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
 import { RateLimitError } from './utils/error.js'
@@ -57,7 +54,7 @@ await initFluentBundles()
 async function getRedisStore () {
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
     // allow mock redis for setups without local redis server
-    const { redisMockClient } = await import('./utils/redis-mock.js')
+    const { redisMockClient } = await import('./utils/redisMock.js')
     return new RedisStore({ client: redisMockClient })
   }
 
@@ -88,7 +85,9 @@ app.use(
 
 const imgSrc = [
   "'self'",
-  'https://www.googletagmanager.com', // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  'https://*.google-analytics.com',
+  'https://*.googletagmanager.com',
   'https://firefoxusercontent.com',
   'https://mozillausercontent.com/',
   'https://monitor.cdn.mozilla.net/'
@@ -100,14 +99,13 @@ if (AppConstants.FXA_ENABLED) {
 }
 
 app.use((_req, res, _next) => {
-  res.locals.nonce = crypto.randomBytes(16).toString('hex')
   helmet.contentSecurityPolicy({
     directives: {
       upgradeInsecureRequests: isDev ? null : [], // disable forced https to allow localhost on Safari
       scriptSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-        `'nonce-${res.locals.nonce}'`
+        'https://*.googletagmanager.com'
       ],
       imgSrc,
       connectSrc: [
@@ -175,7 +173,6 @@ app.use(noSearchEngineIndex)
 app.use(express.static(staticPath))
 app.use(express.json())
 app.use(cookieParser(AppConstants.COOKIE_SECRET))
-app.use(doubleCsrfProtection)
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
