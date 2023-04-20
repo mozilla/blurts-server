@@ -19,6 +19,8 @@ column-status-badge-active = Urmid
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
