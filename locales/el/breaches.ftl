@@ -9,6 +9,12 @@
 breach-chart-title = Παραβιασμένα δεδομένα
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Παραβιάσεις δεδομένων για το { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } από { $total } email υπό εποπτεία
+       *[other] { $count } από { $total } email υπό εποπτεία
+    }
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Διαχείριση email
 
@@ -22,15 +28,20 @@ filter-label-resolved = Επιλυμένες παραβιάσεις
 column-company = ΕΤΑΙΡΕΙΑ
 column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
 column-detected = ΑΝΙΧΝΕΥΣΗ
+breaches-resolve-heading = Επίλυση παραβίασης:
 breaches-none-headline = Δεν βρέθηκαν παραβιάσεις
 breaches-none-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 breaches-none-cta-button = Προσθήκη διεύθυνσης email
+breaches-all-resolved-headline = Επιλύθηκαν όλες οι παραβιάσεις
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Ωραία! Έχετε επιλύσει όλες τις παραβιάσεις για το { $email }. Θα συνεχίσουμε να εποπτεύουμε αυτό το email και θα σας ενημερώσουμε εάν προκύψουν νέες παραβιάσεις.
 breaches-all-resolved-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 breaches-all-resolved-cta-button = Προσθήκη διεύθυνσης email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Στις { $breachDate }, η { $companyName } παραβιάστηκε. Μόλις ανακαλύφθηκε και επαληθεύτηκε η παραβίαση, προστέθηκε στη βάση δεδομένων μας στις { $addedDate }. Αυτή η παραβίαση περιλάμβανε: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -47,7 +58,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Παρακολουθήστε την έκθεση πίστωσής σας για λογαριασμούς, δάνεια ή πιστωτικές κάρτες που δεν αναγνωρίζετε.
 
@@ -82,8 +93,6 @@ breach-checklist-dob-header = Αλλάξτε τυχόν κωδικούς πρό�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Ενημερώστε τις ερωτήσεις ασφαλείας σας στον ιστότοπο της εταιρείας.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

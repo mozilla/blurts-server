@@ -768,6 +768,8 @@ sign-in = Σύνδεση
 site-nav-breaches-link = Επίλυση παραβιάσεων δεδομένων
 site-nav-settings-link = Ρυθμίσεις
 site-nav-help-link = Βοήθεια και υποστήριξη
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Δοκιμάστε τα άλλα εργαλεία ασφαλείας μας:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -803,6 +805,9 @@ error-page-error-other-copy = Παρακαλούμε δοκιμάστε ξανά
 ## Breach overview page
 
 search-breaches = Αναζήτηση παραβιάσεων
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Εκτεθειμένα δεδομένα:
 
 ## Public breach detail page
 
+breach-detail-cta-signup = Έλεγχος για παραβιάσεις
