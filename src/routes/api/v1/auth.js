@@ -4,8 +4,8 @@
 
 import { Router } from 'express'
 
-import { asyncMiddleware } from '../../middleware/util.js'
-import { init, confirmed, logout } from '../../controllers/auth.js'
+import { asyncMiddleware } from '../../../middleware/util.js'
+import { init, confirmed, logout } from '../../../controllers/api/v1/auth.js'
 
 const router = Router()
 

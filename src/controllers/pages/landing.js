@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getCountryCode } from '../../../utils/countryCode.js'
-import { guestLayout } from '../../../views/guestLayout.js'
-import { generateToken } from '../../../utils/csrf.js'
-import { landing } from '../../../views/partials/landing.js'
+import { getCountryCode } from '../../utils/countryCode.js'
+import { guestLayout } from '../../views/guestLayout.js'
+import { generateToken } from '../../utils/csrf.js'
+import { landing } from '../../views/partials/landing.js'
 
 function landingPage (req, res) {
   const data = {

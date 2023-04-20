@@ -2,32 +2,30 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../appConstants.js'
+import AppConstants from '../../appConstants.js'
 
 import {
-  getUserEmails,
-  resetUnverifiedEmailAddress,
   addSubscriberUnverifiedEmailHash,
-  removeOneSecondaryEmail,
   getEmailById,
+  getUserEmails,
+  removeOneSecondaryEmail,
+  resetUnverifiedEmailAddress,
   verifyEmailHash
-} from '../db/tables/emailAddresses.js'
+} from '../../db/tables/emailAddresses.js'
+import { deleteResolutionsWithEmail, setAllEmailsToPrimary } from '../../db/tables/subscribers.js'
 
-import { setAllEmailsToPrimary, deleteResolutionsWithEmail } from '../db/tables/subscribers.js'
+import { generateToken } from '../../utils/csrf.js'
+import { getBreachesForEmail } from '../../utils/hibp.js'
+import { getMessage } from '../../utils/fluent.js'
+import { getSha1 } from '../../utils/fxa.js'
+import { RateLimitError, UnauthorizedError, UserInputError } from '../../utils/error.js'
+import { sendEmail, getVerificationUrl } from '../../utils/email.js'
+import { validateEmailAddress } from '../../utils/emailAddress.js'
 
-import { getMessage } from '../utils/fluent.js'
-import { sendEmail, getVerificationUrl } from '../utils/email.js'
-
-import { getBreachesForEmail } from '../utils/hibp.js'
-import { getSha1 } from '../utils/fxa.js'
-import { validateEmailAddress } from '../utils/emailAddress.js'
-import { generateToken } from '../utils/csrf.js'
-import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
-
-import { mainLayout } from '../views/mainLayout.js'
-import { settings } from '../views/partials/settings.js'
-import { getTemplate } from '../views/emails/email2022.js'
-import { verifyPartial } from '../views/emails/emailVerify.js'
+import { getTemplate } from '../../views/emails/email2022.js'
+import { mainLayout } from '../../views/mainLayout.js'
+import { settings } from '../../views/partials/settings.js'
+import { verifyPartial } from '../../views/emails/emailVerify.js'
 
 async function settingsPage (req, res) {
   /** @type {Array<import('../db/tables/emailAddresses.js').EmailRow>} */

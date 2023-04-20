@@ -4,7 +4,7 @@
 
 import { Router } from 'express'
 import { asyncMiddleware, bearerToken } from '../../../middleware/util.js'
-import { notify } from '../../../controllers/hibp.js'
+import { notify } from '../../../controllers/api/v1/hibp.js'
 
 const router = Router()
 

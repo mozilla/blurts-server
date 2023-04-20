@@ -2,22 +2,22 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../appConstants.js'
+import AppConstants from '../../appConstants.js'
 
-import { notify } from './hibp.js'
-import { mainLayout } from '../views/mainLayout.js'
-import { guestLayout } from '../views/guestLayout.js'
-import { emailPreview } from '../views/partials/emailPreview.js'
-import { getTemplate, getPreviewTemplate } from '../views/emails/email2022.js'
-import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
-import { signupReportEmailPartial } from '../views/emails/emailSignupReport.js'
-import { verifyPartial } from '../views/emails/emailVerify.js'
+import { notify } from '../api/v1/hibp.js'
+import { mainLayout } from '../../views/mainLayout.js'
+import { guestLayout } from '../../views/guestLayout.js'
+import { emailPreview } from '../../views/partials/emailPreview.js'
+import { getTemplate, getPreviewTemplate } from '../../views/emails/email2022.js'
+import { breachAlertEmailPartial } from '../../views/emails/emailBreachAlert.js'
+import { signupReportEmailPartial } from '../../views/emails/emailSignupReport.js'
+import { verifyPartial } from '../../views/emails/emailVerify.js'
 import {
   monthlyUnresolvedEmailPartial
-} from '../views/emails/emailMonthlyUnresolved.js'
+} from '../../views/emails/emailMonthlyUnresolved.js'
 
-import { getMessage } from '../utils/fluent.js'
-import { generateToken } from '../utils/csrf.js'
+import { getMessage } from '../../utils/fluent.js'
+import { generateToken } from '../../utils/csrf.js'
 import {
   EmailTemplateType,
   getNotificationDummyData,
@@ -25,7 +25,7 @@ import {
   getMonthlyDummyData,
   getSignupReportDummyData,
   sendEmail
-} from '../utils/email.js'
+} from '../../utils/email.js'
 
 const { EMAIL_TEST_RECIPIENT } = AppConstants
 

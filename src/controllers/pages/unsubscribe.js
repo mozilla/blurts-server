@@ -2,13 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { guestLayout } from '../views/guestLayout.js'
+import { guestLayout } from '../../views/guestLayout.js'
 import {
   unsubscribe,
   unsubscribeMonthly
-} from '../views/partials/unsubscribe.js'
-import { generateToken } from '../utils/csrf.js'
-import { unsubscribeFromMonthlyReport } from '../utils/email.js'
+} from '../../views/partials/unsubscribe.js'
+import { generateToken } from '../../utils/csrf.js'
+import { unsubscribeFromMonthlyReport } from '../../utils/email.js'
 
 function unsubscribePage (req, res) {
   const data = {

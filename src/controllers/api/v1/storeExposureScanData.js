@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { createProfile, createScan, parseExposureScanData } from '../external/onerep.js'
-import { setOnerepProfileId } from '../db/tables/subscribers.js'
+import { createProfile, createScan, parseExposureScanData } from '../../../external/onerep.js'
+import { setOnerepProfileId } from '../../../db/tables/subscribers.js'
 
 /**
  * @typedef {{ success: false }} StoreExposureScanDataErrorResponse

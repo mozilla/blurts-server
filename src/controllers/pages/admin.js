@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { mainLayout } from '../views/mainLayout.js'
-import { admin } from '../views/partials/admin.js'
+import { mainLayout } from '../../views/mainLayout.js'
+import { admin } from '../../views/partials/admin.js'
 
 function adminPage (req, res) {
   const data = {

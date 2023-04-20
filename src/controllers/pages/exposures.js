@@ -2,11 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { mainLayout } from '../views/mainLayout.js'
-import { generateToken } from '../utils/csrf.js'
-import { exposuresSetup } from '../views/partials/exposuresSetup.js'
-import { exposuresList } from '../views/partials/exposuresList.js'
-import { listScanResults } from '../external/onerep.js'
+import { listScanResults } from '../../external/onerep.js'
+import { generateToken } from '../../utils/csrf.js'
+
+import { mainLayout } from '../../views/mainLayout.js'
+import { exposuresSetup } from '../../views/partials/exposuresSetup.js'
+import { exposuresList } from '../../views/partials/exposuresList.js'
 
 /**
  * @type {import('express').RequestHandler}

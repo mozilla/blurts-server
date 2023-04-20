@@ -3,26 +3,26 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { acceptedLanguages, negotiateLanguages } from '@fluent/langneg'
-import AppConstants from '../appConstants.js'
+import AppConstants from '../../../appConstants.js'
 
-import { getSubscribersByHashes } from '../db/tables/subscribers.js'
-import { getEmailAddressesByHashes } from '../db/tables/emailAddresses.js'
-import { getTemplate } from '../views/emails/email2022.js'
-import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
+import { getSubscribersByHashes } from '../../../db/tables/subscribers.js'
+import { getEmailAddressesByHashes } from '../../../db/tables/emailAddresses.js'
+import { getTemplate } from '../../../views/emails/email2022.js'
+import { breachAlertEmailPartial } from '../../../views/emails/emailBreachAlert.js'
 
 import {
   EmailTemplateType,
   getEmailCtaHref,
   sendEmail
-} from '../utils/email.js'
-import { getMessage } from '../utils/fluent.js'
+} from '../../../utils/email.js'
+import { getMessage } from '../../../utils/fluent.js'
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   loadBreachesIntoApp
-} from '../utils/hibp.js'
-import { UnauthorizedError, UserInputError } from '../utils/error.js'
-import mozlog from '../utils/log.js'
+} from '../../../utils/hibp.js'
+import { UnauthorizedError, UserInputError } from '../../../utils/error.js'
+import mozlog from '../../../utils/log.js'
 
 const log = mozlog('controllers.hibp')
 

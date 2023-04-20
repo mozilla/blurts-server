@@ -5,20 +5,21 @@
 import bodyParser from 'body-parser'
 import { Router } from 'express'
 
-import { asyncMiddleware } from '../middleware/util.js'
-import { requireSessionUser } from '../middleware/auth.js'
-import { logout } from '../controllers/auth.js'
-// import { dashboardPage } from '../controllers/dashboard.js'
-import { breachesPage } from '../controllers/breaches.js'
-import { exposuresPage } from '../controllers/exposures.js'
-import { dataRemovalPage } from '../controllers/dataRemoval.js'
-import { settingsPage } from '../controllers/settings.js'
+import AppConstants from '../../appConstants.js'
+
+import { asyncMiddleware } from '../../middleware/util.js'
+import { requireSessionUser } from '../../middleware/auth.js'
+import { logout } from '../../controllers/api/v1/auth.js'
+import { breachesPage } from '../../controllers/pages/breaches.js'
+import { exposuresPage } from '../../controllers/pages/exposures.js'
+import { dataRemovalPage } from '../../controllers/pages/dataRemoval.js'
+import { settingsPage } from '../../controllers/pages/settings.js'
 import {
   unsubscribePage,
   unsubscribeMonthlyPage
-} from '../controllers/unsubscribe.js'
-import { unsubscribeFromEmails } from '../utils/email.js'
-import AppConstants from '../appConstants.js'
+} from '../../controllers/pages/unsubscribe.js'
+
+import { unsubscribeFromEmails } from '../../utils/email.js'
 
 const router = Router()
 const urlEncodedParser = bodyParser.urlencoded({ extended: false })

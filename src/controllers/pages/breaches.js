@@ -2,13 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { mainLayout } from '../views/mainLayout.js'
-import { breaches } from '../views/partials/breaches.js'
-import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
-import { appendBreachResolutionChecklist } from '../utils/breachResolution.js'
-import { generateToken } from '../utils/csrf.js'
-import { getAllEmailsAndBreaches } from '../utils/breaches.js'
-import { getCountryCode } from '../utils/countryCode.js'
+import { mainLayout } from '../../views/mainLayout.js'
+import { breaches } from '../../views/partials/breaches.js'
+import { setBreachResolution, updateBreachStats } from '../../db/tables/subscribers.js'
+import { appendBreachResolutionChecklist } from '../../utils/breachResolution.js'
+import { generateToken } from '../../utils/csrf.js'
+import { getAllEmailsAndBreaches } from '../../utils/breaches.js'
+import { getCountryCode } from '../../utils/countryCode.js'
 
 async function breachesPage (req, res) {
   // TODO: remove: to test out getBreaches call with JSON returns

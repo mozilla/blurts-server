@@ -4,8 +4,8 @@
 
 import { Router } from 'express'
 
-import { asyncMiddleware } from '../middleware/util.js'
-import { breachDetailPage } from '../controllers/breachDetail.js'
+import { asyncMiddleware } from '../../middleware/util.js'
+import { breachDetailPage } from '../../controllers/pages/breachDetail.js'
 
 const router = Router()
 

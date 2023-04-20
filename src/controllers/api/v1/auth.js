@@ -5,25 +5,25 @@
 import { URL } from 'url'
 import { randomBytes } from 'crypto'
 
-import AppConstants from '../appConstants.js'
+import AppConstants from '../../../appConstants.js'
 import {
   getSubscriberByEmail,
   removeFxAData,
   updateFxAData
-} from '../db/tables/subscribers.js'
-import { addSubscriber } from '../db/tables/emailAddresses.js'
+} from '../../../db/tables/subscribers.js'
+import { addSubscriber } from '../../../db/tables/emailAddresses.js'
 
-import { getTemplate } from '../views/emails/email2022.js'
+import { getTemplate } from '../../../views/emails/email2022.js'
 import {
   signupReportEmailPartial
-} from '../views/emails/emailSignupReport.js'
+} from '../../../views/emails/emailSignupReport.js'
 
-import { getBreachesForEmail } from '../utils/hibp.js'
-import { getMessage } from '../utils/fluent.js'
-import { getProfileData, FxAOAuthClient, getSha1 } from '../utils/fxa.js'
-import { getEmailCtaHref, sendEmail } from '../utils/email.js'
-import { UnauthorizedError } from '../utils/error.js'
-import mozlog from '../utils/log.js'
+import { getBreachesForEmail } from '../../../utils/hibp.js'
+import { getMessage } from '../../../utils/fluent.js'
+import { getProfileData, FxAOAuthClient, getSha1 } from '../../../utils/fxa.js'
+import { getEmailCtaHref, sendEmail } from '../../../utils/email.js'
+import { UnauthorizedError } from '../../../utils/error.js'
+import mozlog from '../../../utils/log.js'
 
 const { SERVER_URL } = AppConstants
 

@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getBreachByName } from '../utils/hibp.js'
+import { getBreachByName } from '../../utils/hibp.js'
 
-import { guestLayout } from '../views/guestLayout.js'
-import { allBreaches } from '../views/partials/allBreaches.js'
-import { breachDetail } from '../views/partials/breachDetail.js'
+import { guestLayout } from '../../views/guestLayout.js'
+import { allBreaches } from '../../views/partials/allBreaches.js'
+import { breachDetail } from '../../views/partials/breachDetail.js'
 
 async function breachesPage (req, res) {
   const data = {

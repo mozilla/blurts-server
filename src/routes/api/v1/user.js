@@ -7,15 +7,15 @@ import { Router } from 'express'
 import { asyncMiddleware } from '../../../middleware/util.js'
 import { requireSessionUser } from '../../../middleware/auth.js'
 import { methodNotAllowed } from '../../../middleware/error.js'
-import { putBreachResolution, getBreaches } from '../../../controllers/breaches.js'
-import { storeExposureScanData } from '../../../controllers/storeExposureScanData.js'
+import { putBreachResolution, getBreaches } from '../../../controllers/pages/breaches.js'
+import { storeExposureScanData } from '../../../controllers/api/v1/storeExposureScanData.js'
 import {
   addEmail,
   resendEmail,
   removeEmail,
   verifyEmail,
   updateCommunicationOptions
-} from '../../../controllers/settings.js'
+} from '../../../controllers/pages/settings.js'
 import AppConstants from '../../../appConstants.js'
 
 const router = Router()

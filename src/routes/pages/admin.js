@@ -4,10 +4,10 @@
 
 import { Router } from 'express'
 
-import { asyncMiddleware } from '../middleware/util.js'
-import { adminPage } from '../controllers/admin.js'
-import { requireAdminUser } from '../middleware/auth.js'
-import { emailsPage, sendTestEmail } from '../controllers/emailPreview.js'
+import { adminPage } from '../../controllers/pages/admin.js'
+import { emailsPage, sendTestEmail } from '../../controllers/pages/emailPreview.js'
+import { asyncMiddleware } from '../../middleware/util.js'
+import { requireAdminUser } from '../../middleware/auth.js'
 
 const router = Router()
 
