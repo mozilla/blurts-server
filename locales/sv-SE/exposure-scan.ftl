@@ -5,6 +5,14 @@ exposure-landing-hero-email-placeholder = Ange e-postadress
 exposure-landing-hero-cta-label = Sök efter intrång
 exposure-landing-result-loading = Laddar, var god vänta…
 exposure-landing-result-error = Något gick fel när du letade efter intrång. Uppdatera sidan och försök igen.
+# Variables:
+#   $email (string) - The user's email address, used to identify their data in breaches
+#   $count (number) - Number of data breaches in which the user's data was found
+exposure-landing-result-hero-heading =
+    { $count ->
+        [one] Vi hittade <email>{ $email }</email> exponerad i <count>{ $count }</count> dataintrång.
+       *[other] Vi hittade <email>{ $email }</email> exponerad i <count>{ $count }</count> dataintrång.
+    }
 exposure-landing-result-card-added = Intrång tillagt:
 exposure-landing-result-card-data = Exponerad data:
 exposure-landing-result-card-nothing = Inga intrång hittades
