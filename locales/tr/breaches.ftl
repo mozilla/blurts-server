@@ -46,6 +46,9 @@ breaches-all-resolved-copy = { $email } için tüm ihlalleri çözdünüz. Bu e-
 breaches-all-resolved-cta-blurb = Başka bir e-postayı izlemek ister misiniz?
 breaches-all-resolved-cta-button = E-posta adresi ekle
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = { $breachDate } tarihinde { $companyName } bir veri ihlaline uğradı. İhlal keşfedildikten ve doğrulandıktan sonra { $addedDate } tarihinde veritabanımıza eklendi. İhlal şunları içeriyordu: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +59,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Parolanızı değiştirmek ve iki aşamalı kimlik doğrulamayı (2FA) etkinleştirmek için şirketin web sitesine gidin.
-# Variables:
-#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Parolanız benzersiz ve tahmin edilmesi zor olmalı. Bu parolayı başka hesaplarda da kullanıyorsanız o hesapların parolasını da değiştirin. { $passwordManagerLink }, tüm parolalarınızı güvenli bir şekilde kaydetmenize yardımcı olabilir.
+breach-checklist-pw-header-text = Parolalarınızı güncelleyip iki aşamalı kimlik doğrulamayı (2FA) etkinleştirin.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -111,9 +110,7 @@ breach-checklist-phone-header-2 = Gerçek telefon numaranızı gizleyen { $firef
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Şirketin web sitesine gidip güvenlik sorularınızı güncelleyin.
-breach-checklist-sq-body = Uzun, rastgele yanıtlar kullanın ve bunları güvenli bir yerde saklayın. Bu işlemi aynı güvenlik sorularını kullandığınız diğer her yerde yapın.
+breach-checklist-sq-header-text = Güvenlik sorularınızı güncelleyin.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
