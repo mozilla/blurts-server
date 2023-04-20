@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { getAssetPath } from '../utils/getAssetPath.js'
 
 /**
  * @type {ViewPartial<GuestViewPartialData<any>>}
@@ -29,10 +30,10 @@ const guestLayout = data => `
     <meta property='og:url' content='${AppConstants.SERVER_URL}'>
     <meta property='og:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
 
-    <link rel='preload' href='/fonts/Metropolis-Bold.woff2' as='font' type='font/woff2' crossorigin>
-    <link rel='preload' href='/fonts/Inter-Regular-latin.woff2' as='font' type='font/woff2' crossorigin>
-    <link rel='stylesheet' href='/css/index.css' type='text/css'>
-    <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
+    <link rel='preload' href='${getAssetPath('/fonts/Metropolis-Bold.woff2')}' as='font' type='font/woff2' crossorigin>
+    <link rel='preload' href='${getAssetPath('/fonts/Inter-Regular-latin.woff2')}' as='font' type='font/woff2' crossorigin>
+    <link rel='stylesheet' href='${getAssetPath('/css/index.css')}' type='text/css'>
+    <link rel='stylesheet' href='${getAssetPath(`/css/partials/${data.partial.name}.css`)}' type='text/css'>
     <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
     <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
     <link rel='icon' href='/images/favicon-48.webp' sizes='48x48'>
@@ -41,7 +42,7 @@ const guestLayout = data => `
     <link rel='icon' href='/images/favicon-256.webp' sizes='256x256'>
     <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
-    <script src='/js/index.js' type='module'></script>
+    <script src='${getAssetPath('/js/index.js')}' type='module'></script>
 
     <noscript>
       <style>
@@ -51,7 +52,7 @@ const guestLayout = data => `
         }
       </style>
     </noscript>
-    ${data.skipPartialModule ? '' : `<script src='/js/partials/${data.partial.name}.js' type='module'></script>`}
+    ${data.skipPartialModule ? '' : `<script src='${getAssetPath(`/js/partials/${data.partial.name}.js`)}' type='module'></script>`}
   </head>
   <body>
     <header>

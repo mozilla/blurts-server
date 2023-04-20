@@ -170,7 +170,16 @@ try {
 }
 
 app.use(noSearchEngineIndex)
-app.use(express.static(staticPath))
+app.use(express.static(staticPath, {
+  setHeaders: (res, path, stat) => {
+    if (path.substring(0, path.lastIndexOf('.')).endsWith('.hashed')) {
+      // Files with extensions like `.hashed.js` have a content hash in their
+      // file name, and hence will have a new filename if their content changes.
+      // Thus, it can be cached basically forever:
+      res.set('Cache-Control', 'max-age=31536000, immutable')
+    }
+  }
+}))
 app.use(express.json())
 app.use(cookieParser(AppConstants.COOKIE_SECRET))
 

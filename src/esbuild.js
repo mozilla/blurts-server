@@ -8,6 +8,7 @@
 
 import esbuild from 'esbuild'
 import { readdirSync } from 'node:fs'
+import { writeFile } from 'node:fs/promises'
 import AppConstants from './appConstants.js'
 
 const cssPartialDir = 'client/css/partials/'
@@ -20,16 +21,17 @@ const jsPartialPaths = readdirSync(jsPartialDir, { withFileTypes: true })
   .filter(dirent => dirent.isFile())
   .map(dirent => jsPartialDir + dirent.name)
 
-esbuild.build({
+const buildResult = await esbuild.build({
   logLevel: 'info',
   bundle: true,
   entryPoints: ['client/js/index.js', 'client/css/index.css', ...cssPartialPaths, ...jsPartialPaths],
-  entryNames: '[dir]/[name]',
+  entryNames: '[dir]/[name]-[hash].hashed',
   loader: { '.woff2': 'copy' },
-  assetNames: '[dir]/[name]',
+  assetNames: '[dir]/[name]-[hash].hashed',
   external: ['*.webp', '*.svg'],
   outdir: '../dist',
   format: 'esm',
+  metafile: true,
   minify: AppConstants.NODE_ENV !== 'dev',
   sourcemap: AppConstants.NODE_ENV !== 'dev',
   splitting: false, // see note below
@@ -42,6 +44,26 @@ esbuild.build({
     })
   }
 })
+
+function getPathMap (meta) {
+  /** @type {Record<string, string>} */
+  const assetPathMap = {}
+
+  Object.entries(meta.outputs).forEach(([outputPath, outputMeta]) => {
+    if (outputMeta.entryPoint) {
+      assetPathMap[outputMeta.entryPoint] = outputPath
+    } else {
+      const [onlyInput] = Object.keys(outputMeta.inputs)
+      if (onlyInput) {
+        assetPathMap[onlyInput] = outputPath
+      }
+    }
+  })
+
+  return assetPathMap
+}
+
+writeFile('../dist/meta.json', JSON.stringify(getPathMap(buildResult.metafile)))
 
 /*
 ESBuild automatic code-splitting is disabled for the following reasons:
