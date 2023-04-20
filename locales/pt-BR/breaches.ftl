@@ -60,6 +60,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Atualize suas senhas e ative a autenticação em duas etapas.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = Na maioria dos casos, recomendamos que altere sua senha no site da empresa. Mas <b>o site pode estar fora do ar ou conter conteúdo malicioso</b>, portanto tenha cuidado se você <breached-company-link>visitar o site</breached-company-link>. Para proteção adicional, certifique-se de usar uma senha exclusiva em cada conta, de forma que qualquer senha vazada não possa ser usada para acessar outras contas. O { $passwordManagerLink } pode te ajudar a manter o controle de todas as suas senhas com segurança.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -124,6 +128,8 @@ breach-checklist-phone-header-2 = Proteja seu número de celular com um serviço
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Atualize suas perguntas de segurança.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Na maioria dos casos, recomendamos que altere suas perguntas de segurança no site da empresa. Mas <b>o site pode estar fora do ar ou conter conteúdo malicioso</b>, portanto tenha cuidado se você <breached-company-link>visitar o site</breached-company-link>. Para proteção adicional, altere essas perguntas de segurança em todas as contas importantes em que as usou e crie uma senha exclusiva em cada conta.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
