@@ -42,6 +42,9 @@ breaches-all-resolved-copy = Làm tốt lắm! Bạn đã giải quyết tất c
 breaches-all-resolved-cta-blurb = Bạn có muốn giám sát một email khác không?
 breaches-all-resolved-cta-button = Thêm địa chỉ email
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Vào { $breachDate }, { $companyName } đã bị xâm phạm. Sau khi rò rỉ dữ liệu được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi vào { $addedDate }. Rò rỉ này bao gồm: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -52,11 +55,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Truy cập trang web của công ty để thay đổi mật khẩu của bạn và bật xác thực hai yếu tố (2FA).
-# Variables:
-#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Đảm bảo rằng mật khẩu của bạn là duy nhất và khó đoán. Nếu mật khẩu này được sử dụng trên bất kỳ tài khoản nào khác, hãy đảm bảo bạn cũng thay đổi mật khẩu đó. { $passwordManagerLink } có thể giúp bạn theo dõi tất cả mật khẩu của mình một cách an toàn.
+breach-checklist-pw-header-text = Cập nhật mật khẩu của bạn và bật xác thực hai yếu tố (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -67,17 +66,17 @@ breach-checklist-email-body = Điều này có thể ẩn địa chỉ email th�
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Theo dõi báo cáo tín dụng của bạn để biết các tài khoản, khoản vay hoặc thẻ tín dụng mà bạn không nhận ra.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Bạn cũng có thể xem xét đóng băng tín dụng của mình trên { $equifaxLink }, { $experianLink } và { $transUnionLink } để ngăn những kẻ lừa đảo mở tài khoản mới dưới tên của bạn. Nó miễn phí và sẽ không ảnh hưởng đến điểm tín dụng của bạn.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -120,9 +119,6 @@ breach-checklist-phone-header-2 = Bảo vệ số điện thoại của bạn b�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Cập nhật các câu hỏi bảo mật của bạn trên trang web của công ty.
-breach-checklist-sq-body = Sử dụng các câu trả lời dài, ngẫu nhiên và cất chúng ở nơi an toàn. Làm điều này ở bất kỳ nơi nào khác mà bạn đã sử dụng cùng một câu hỏi bảo mật.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -133,5 +129,7 @@ breach-checklist-hp-body-2 = Trình quản lý mật khẩu như { $passwordMana
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Hãy liên hệ với { $companyName } để thông báo cho họ về rò rỉ này và yêu cầu các bước cụ thể mà bạn có thể thực hiện.
