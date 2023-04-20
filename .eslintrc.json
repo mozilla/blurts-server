@@ -51,7 +51,7 @@
         "check-file/filename-naming-convention": [
             "error",
             {
-                "**/*.{js,css}": "CAMEL_CASE"
+                "**/*.{js,css} !src/db/migrations": "CAMEL_CASE"
             },
             {
                 "ignoreMiddleExtensions": true
