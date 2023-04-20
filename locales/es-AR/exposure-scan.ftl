@@ -5,6 +5,14 @@ exposure-landing-hero-email-placeholder = Ingresar dirección de correo electró
 exposure-landing-hero-cta-label = Verificar si hay violaciones
 exposure-landing-result-loading = Cargando, esperá…
 exposure-landing-result-error = Algo salió mal mientras se buscaban violaciones. Actualizá la página y volvé a intentarlo.
+# Variables:
+#   $email (string) - The user's email address, used to identify their data in breaches
+#   $count (number) - Number of data breaches in which the user's data was found
+exposure-landing-result-hero-heading =
+    { $count ->
+        [one] Encontramos <email>{ $email }</email> expuesto en <count>1</count> filtración de datos.
+       *[other] Encontramos <email>{ $email }</email> expuesto en <count>{ $count }</count> filtraciones de datos.
+    }
 exposure-landing-result-card-added = Violación agregada:
 exposure-landing-result-card-data = Datos expuestos:
 exposure-landing-result-card-nothing = No se encontraron violaciones
