@@ -1,4 +1,5 @@
 exposure-landing-hero-heading = Descubra se suas informações pessoais foram comprometidas
+exposure-landing-hero-lead = Fique seguro com as ferramentas de privacidade dos produtores do { -brand-firefox }, que protegem você contra hackers e empresas que publicam e vendem suas informações pessoais. Vamos te alertar sobre quaisquer vazamentos de dados conhecidos, encontrar e remover suas informações expostas e monitorar continuamente novos vazamentos.
 exposure-landing-hero-email-label = Endereço de email
 exposure-landing-hero-email-placeholder = Digite um endereço de email
 exposure-landing-hero-cta-label = Verificar se há vazamentos
