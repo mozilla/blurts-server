@@ -22,7 +22,7 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 import { getSha1 } from '../utils/fxa.js'
 import { validateEmailAddress } from '../utils/emailAddress.js'
 import { generateToken } from '../utils/csrf.js'
-import { RateLimitError, UnauthorizedError, UserInputError } from '../utils/error.js'
+import { TooManyRequestsError, UnauthorizedError, UserInputError } from '../utils/error.js'
 
 import { mainLayout } from '../views/mainLayout.js'
 import { settings } from '../views/partials/settings.js'
@@ -166,7 +166,7 @@ async function sendVerificationEmail (user, emailId) {
     )
   } catch (err) {
     if (err.message === 'error-email-validation-pending') {
-      throw new RateLimitError('Verification email recently sent, try again later')
+      throw new TooManyRequestsError('Verification email recently sent, try again later')
     } else {
       throw err
     }
