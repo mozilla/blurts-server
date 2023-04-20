@@ -5,17 +5,16 @@
 import { readFileSync } from 'fs'
 import { dirname, resolve } from 'path'
 import { fileURLToPath } from 'url'
-import AppConstants from '../appConstants.js'
 
 /** @type {Record<string, string>} */
-const assetPathMap = AppConstants.NODE_ENV === 'dev' ? {} : JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../../dist/meta.json'), 'utf-8'))
+const assetPathMap = process.env.npm_lifecycle_event === 'dev' ? {} : JSON.parse(readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), '../../dist/meta.json'), 'utf-8'))
 
 /**
  * @param {string} sourcePath
  * @returns {string | undefined}
  */
 export function getAssetPath (sourcePath) {
-  if (AppConstants.NODE_ENV === 'dev') {
+  if (process.env.npm_lifecycle_event === 'dev') {
     return sourcePath
   }
 
