@@ -30,6 +30,9 @@ column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
 column-detected = ΑΝΙΧΝΕΥΣΗ
 breaches-resolve-heading = Επίλυση παραβίασης:
 breaches-none-headline = Δεν βρέθηκαν παραβιάσεις
+# Variables:
+#   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
+breaches-none-copy = Καλά νέα! Δεν έχουν αναφερθεί παραβιάσεις για το { $email }. Θα συνεχίσουμε να εποπτεύουμε αυτό το email και θα σας ενημερώσουμε εάν προκύψουν νέες παραβιάσεις.
 breaches-none-cta-blurb = Θέλετε να παρακολουθήσετε κάποιο άλλο email;
 breaches-none-cta-button = Προσθήκη διεύθυνσης email
 breaches-all-resolved-headline = Επιλύθηκαν όλες οι παραβιάσεις
@@ -69,6 +72,7 @@ breach-checklist-cc-body = Θα πρέπει επίσης να ελέγξετε 
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
+breach-checklist-bank-header = Ειδοποιήστε αμέσως την τράπεζά σας ότι ο αριθμός λογαριασμού σας έχει παραβιαστεί.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
@@ -93,6 +97,7 @@ breach-checklist-dob-header = Αλλάξτε τυχόν κωδικούς πρό�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Ενημερώστε τις ερωτήσεις ασφαλείας σας.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
