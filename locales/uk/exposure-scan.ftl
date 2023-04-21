@@ -25,3 +25,4 @@ exposure-landing-result-some-hero-lead = Увійдіть, щоб отримат
 exposure-landing-result-some-hero-cta-label = Увійдіть для розв'язання витоків
 exposure-landing-result-some-footer-cta-label = Увійдіть для розв'язання витоків
 exposure-landing-result-none-hero-cta-label = Отримувати сповіщення про нові витоки
+exposure-landing-result-none-footer-cta-label = Підписатися на сповіщення
