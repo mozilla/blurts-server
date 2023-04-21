@@ -11,7 +11,7 @@ exposure-landing-result-error = Hiba történt az adatvédelmi incidensek keres�
 exposure-landing-result-hero-heading =
     { $count ->
         [one] A(z) <email>{ $email }</email> kikerült <count>1</count> adatvédelmi incidensben.
-       *[other] A(z) <email>{ $email }</email> kikerült <count>1</count> adatvédelmi incidensben.
+       *[other] A(z) <email>{ $email }</email> kikerült <count>{ $count }</count> adatvédelmi incidensben.
     }
 exposure-landing-result-card-added = Adatvédelmi incidens hozzáadva:
 exposure-landing-result-card-data = Kikerült adatok:
