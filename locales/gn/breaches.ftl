@@ -60,6 +60,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Embohekopyahu ñe’ẽñemi ha embojuruja mokõi papapyñemi (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
