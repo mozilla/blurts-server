@@ -61,6 +61,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Оновіть свої паролі та увімкніть двоетапну перевірку (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = У більшості випадків ми рекомендуємо вам змінити пароль на вебсайті компанії. Але <b>їхній вебсайт може бути зламаним або містити зловмисні елементи</b>, тому будьте обережні, <breached-company-link>відвідуючи сайт</breached-company-link>. Для додаткового захисту переконайтеся, що ви використовуєте унікальні паролі для всіх своїх облікових записів, щоб у разі викриття будь-якого пароля уникнути ризику стороннього доступу до інших облікових записів. { $passwordManagerLink } може допомогти вам надійно зберігати всі паролі.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -124,6 +128,9 @@ breach-checklist-phone-header-2 = Захистіть свій номер тел�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Оновіть свої секретні запитання.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Зазвичай ми рекомендуємо вам оновити секретні запитання на вебсайті компанії. Але <b>їхній вебсайт може бути зламаним або містити зловмисні елементи</b>, тому будьте обережні, <breached-company-link>відвідуючи сайт</breached-company-link>. Для додаткового захисту оновіть свої секретні запитання у всіх важливих облікових записах, а також створіть унікальні паролі для всіх облікових записів.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
