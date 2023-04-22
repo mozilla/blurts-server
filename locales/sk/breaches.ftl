@@ -62,6 +62,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aktualizujte svoje heslá a povoľte dvojfaktorové overenie (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = Vo väčšine prípadov vám odporúčame zmeniť heslo na webovej stránke danej spoločnosti. Ale <b>ich webová stránka môže byť nefunkčná alebo môže obsahovať škodlivý obsah</b>, preto buďte pri <breached-company-link>navšteve stránky</breached-company-link> opatrní. Aby ste ešte viac zvýšili svoju ochranu sa uistite, že používate jedinečné heslá pre všetky účty, aby sa žiadne uniknuté heslá nedali použiť na prístup k iným účtom. { $passwordManagerLink } vám môže pomôcť bezpečne spravovať všetky vaše heslá.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -125,6 +129,9 @@ breach-checklist-phone-header-2 = Chráňte svoje telefónne číslo pomocou mas
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
+breach-checklist-sq-header-text = Aktualizujte svoje bezpečnostné otázky.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Vo väčšine prípadov vám odporúčame aktualizovať bezpečnostné otázky na webovej stránke spoločnosti. Ale <b>ich webová stránka môže byť nefunkčná alebo môže obsahovať škodlivý obsah</b>, preto buďte pri <breached-company-link>návšteve stránky</breached-company-link> opatrní. Ak chcete zvýšiť ochranu, aktualizujte tieto bezpečnostné otázky na všetkých dôležitých účtoch, kde ste ich používali, a vytvorte jedinečné heslá pre všetky účty.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
