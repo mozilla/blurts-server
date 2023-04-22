@@ -61,11 +61,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Prejdite na webovú stránku spoločnosti, zmeňte svoje heslo a povoľte dvojstupňové overenie (2FA).
-# Variables:
-#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Uistite sa, že vaše heslo je jedinečné a ťažko uhádnuteľné. Ak sa toto heslo používa na viacerých účtoch, nezabudnite ho zmeniť aj tam. { $passwordManagerLink } vám môže pomôcť bezpečne organizovať všetky vaše heslá.
+breach-checklist-pw-header-text = Aktualizujte svoje heslá a povoľte dvojfaktorové overenie (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -129,9 +125,6 @@ breach-checklist-phone-header-2 = Chráňte svoje telefónne číslo pomocou mas
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Aktualizujte svoje bezpečnostné otázky na webovej stránke spoločnosti.
-breach-checklist-sq-body = Použite dlhé, náhodné odpovede a uložte ich na bezpečné miesto. Urobte to kdekoľvek inde, kde ste použili rovnaké bezpečnostné otázky.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
