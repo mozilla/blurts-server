@@ -3,7 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Verilerinizin çalınıp çalınmadığını kontrol edin
 get-started = Başlayalım
 
 ## Why use Firefox Monitor?
@@ -13,6 +12,7 @@ identifying-breaches = Veri ihlallerini tespit etmek ve çözmek, çevrimiçi gi
 protect-account = Hesaplarınızı koruyun
 protect-account-prevent-hackers = Bilgisayar korsanlarının ele geçirdikleri parolalarla hesaplarınıza girmesini engelleyin.
 prevent-fraud = Dolandırıcılığı ve siber suçları önleyin
+prevent-fraud-keep-info = Sizi taklit ederek suç işlemek isteyen hacker’lardan bilgilerinizi uzak tutun.
 get-alerts = Yeni ihlallerden haberdar olun
 get-alerts-find-out = Yeni bir veri ihlalinde kişisel bilgilerinizin ele geçirilirse haberiniz olsun.
 
