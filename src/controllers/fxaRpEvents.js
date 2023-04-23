@@ -39,8 +39,8 @@ const getJwtPubKey = async () => {
 /**
  * Authenticate FxA JWT for FxA relay event requests
  *
- * @param {*} req
- * @returns {object} decoded JWT data, which should contain FxA events
+ * @param {import('express').Request} req
+ * @returns {Promise<jwt.JwtPayload>} decoded JWT data, which should contain FxA events
  */
 const authenticateFxaJWT = async (req) => {
   // Assuming this is how you retrieve your auth header.
