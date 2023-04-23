@@ -37,7 +37,7 @@ settings-add-email-button = Dodaj e-poštni naslov
 #   $breachCount (numer) - Number of breaches
 settings-email-number-of-breaches-info =
     { $breachCount ->
-        [one] Pojavlja se v { $breachCount } znanih krajah.
+        [one] Pojavlja se v { $breachCount } znani kraji.
         [two] Pojavil se je v { $breachCount } znanih krajah.
         [few] Pojavil se je v { $breachCount } znanih krajah.
        *[other] Pojavil se je v { $breachCount } znanih krajah.

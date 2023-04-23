@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Ugotovite, ali ste bili deležni kraje podatkov
-stay-safe-with-tool = Ostanite varni s preprostim, a zmogljivim orodjem, ki sledi, ali so bili vaši osebni podatki izpostavljeni v kraji podatkov. Pomagali vam bomo razumeti, kaj morate storiti naprej, in nenehno spremljali morebitne nove kraje podatkov – vse to za vas brezplačno.
 get-started = Začnite
 
 ## Why use Firefox Monitor?
