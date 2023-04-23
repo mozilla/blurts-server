@@ -18,7 +18,7 @@ const FXA_DELETE_USER_EVENT = 'https://schemas.accounts.firefox.com/event/delete
 /**
  * Fetch FxA JWT Public for verification
  *
- * @returns {Array} keys an array of FxA JWT keys
+ * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
  */
 const getJwtPubKey = async () => {
   jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwt`
