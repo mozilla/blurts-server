@@ -49,7 +49,7 @@ const authenticateFxaJWT = async (req) => {
   // Require an auth header
   if (!authHeader) {
     captureException('No auth header found', req?.headers)
-    throw UnauthorizedError('No auth header found')
+    throw new UnauthorizedError('No auth header found')
   }
 
   // Extract the first portion which should be 'Bearer'
