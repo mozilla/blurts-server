@@ -1,0 +1,14 @@
+exposure-landing-hero-email-label = Адрес электронной почты
+exposure-landing-hero-email-placeholder = Введите адрес электронной почты
+exposure-landing-hero-cta-label = Проверить на утечки
+exposure-landing-result-loading = Идёт загрузка. Пожалуйста, подождите…
+exposure-landing-result-card-added = Утечка добавлена:
+exposure-landing-result-card-data = Раскрытые данные:
+exposure-landing-result-card-nothing = Утечек не обнаружено
+exposure-landing-result-footer-attribution = Данные об утечке данных предоставлены <hibp-link>{ -brand-HIBP }</hibp-link>
+exposure-landing-result-overflow-hero-cta-label = Войдите, чтобы обработать утечки
+exposure-landing-result-overflow-footer-cta-label = Войдите, чтобы просмотреть все
+exposure-landing-result-some-hero-cta-label = Войдите, чтобы обработать утечки
+exposure-landing-result-some-footer-cta-label = Войдите, чтобы обработать утечки
+exposure-landing-result-none-hero-cta-label = Получать уведомления о новых утечках.
+exposure-landing-result-none-footer-cta-label = Подписаться на уведомления
