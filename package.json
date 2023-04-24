@@ -53,8 +53,8 @@
     "node-mocks-http": "1.11.0",
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
-    "stylelint": "^14.9.1",
-    "stylelint-config-standard": "^26.0.0",
+    "stylelint": "^15.6.0",
+    "stylelint-config-standard": "^33.0.0",
     "typescript": "^5.0.2"
   },
   "engines": {
