@@ -18,7 +18,7 @@ const {
 function isSubscribed (fxaProfile) {
   if (!FXA_SUBSCRIPTION_ENABLED) { return false }
 
-  return fxaProfile?.subscriptions?.includes(FXA_SUBSCRIPTION_KEY) || false
+  return fxaProfile?.subscriptions?.includes(FXA_SUBSCRIPTION_KEY) ?? false
 }
 
 export { isSubscribed }
