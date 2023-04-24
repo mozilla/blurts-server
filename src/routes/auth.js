@@ -4,9 +4,14 @@
 
 import { Router } from 'express'
 
+import AppConstants from '../appConstants.js'
 import { requireSessionUser } from '../middleware/auth.js'
 import { asyncMiddleware } from '../middleware/util.js'
 import { init, confirmed, logout, premiumUpgrade, premiumConfirmed } from '../controllers/auth.js'
+
+const {
+  FXA_SUBSCRIPTION_ENABLED
+} = AppConstants
 
 const router = Router()
 
@@ -14,7 +19,9 @@ router.get('/init', init)
 router.get('/confirmed', asyncMiddleware(confirmed))
 router.get('/logout', asyncMiddleware(logout))
 
-router.get('/premium/upgrade', requireSessionUser, asyncMiddleware(premiumUpgrade))
-router.get('/premium/confirmed', requireSessionUser, asyncMiddleware(premiumConfirmed))
+if (FXA_SUBSCRIPTION_ENABLED) {
+  router.get('/premium/upgrade', requireSessionUser, asyncMiddleware(premiumUpgrade))
+  router.get('/premium/confirmed', requireSessionUser, asyncMiddleware(premiumConfirmed))
+}
 
 export default router
