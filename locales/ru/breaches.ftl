@@ -48,6 +48,9 @@ breaches-all-resolved-copy = Отлично сделано! Вы устрани�
 breaches-all-resolved-cta-blurb = Хотите ли вы отслеживать другую электронную почту?
 breaches-all-resolved-cta-button = Добавить адрес электронной почты
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = { $breachDate } произошла утечка данных { $companyName }. Как только утечка была обнаружена и подтверждена, она была добавлена в нашу базу данных { $addedDate }. Эта утечка включает в себя: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -58,11 +61,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Перейдите на сайт компании, чтобы сменить пароль и включить двухфакторную аутентификацию (2FA).
+breach-checklist-pw-header-text = Обновите свои пароли и включите двухфакторную аутентификацию (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Убедитесь, что ваш пароль уникален и его трудно угадать. Если этот пароль используется в каких-либо других учётных записях, обязательно измените его и там. { $passwordManagerLink } поможет вам надежно отслеживать все ваши пароли.
+breach-checklist-pw-body-text = В большинстве случаев мы рекомендуем вам сменить пароль на веб-сайте компании. Но <b>веб-сайт может быть недоступен или содержать вредоносный контент</b>, поэтому будьте осторожны, если вы <breached-company-link>посетите его</breached-company-link>. Для дополнительной защиты убедитесь, что вы используете уникальные пароли для всех учётных записей, чтобы любые утекшие пароли нельзя было использовать для доступа к другим учётным записям. { $passwordManagerLink } поможет вам надежно отслеживать все ваши пароли.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -73,17 +76,17 @@ breach-checklist-email-body = Это может скрыть ваш настоя
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Следите за своим кредитной историей на предмет появления в ней счетов, кредитов или кредитных карт, о которых не знаете.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Вы также можете подумать о заморозке своей записи кредитной истории в { $equifaxLink }, { $experianLink } и { $transUnionLink }, чтобы мошенники не смогли открыть новые счета на ваше имя. Это бесплатно и не повлияет на ваш кредитный рейтинг.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -126,9 +129,9 @@ breach-checklist-phone-header-2 = Защитите свой номер теле�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Обновите свои контрольные вопросы на сайте компании.
-breach-checklist-sq-body = Используйте длинные случайные ответы и храните их в безопасном месте. Делайте это в любом другом месте, отличном от того, что вы использовали для тех же контрольных вопросов.
+breach-checklist-sq-header-text = Обновите контрольные вопросы.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = В большинстве случаев мы рекомендуем обновить контрольные вопросы на веб-сайте компании. Но <b>веб-сайт может быть недоступен или содержать вредоносный контент</b>, поэтому будьте осторожны <breached-company-link>при его посещении</breached-company-link>. Для дополнительной защиты обновите эти контрольные вопросы во всех важных учётных записях там, где вы их использовали, и создайте уникальные пароли для всех учётных записей.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -139,5 +142,7 @@ breach-checklist-hp-body-2 = Менеджер паролей, например, 
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Свяжитесь с { $companyName }, чтобы сообщить им об этой утечке и запросить конкретные шаги, которые вы можете предпринять.
