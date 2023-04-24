@@ -192,7 +192,7 @@ async function premiumUpgrade (req, res) {
  * @param {object} res The express response object
  */
 async function premiumConfirmed (req, res) {
-  const fxaProfileData = await getProfileData(req.user.fxa_access_token)
+  const fxaProfileData = JSON.parse(await getProfileData(req.user.fxa_access_token))
 
   if (req.query.email !== fxaProfileData.email) {
     throw new Error('Email address returned by FxA does not match profile')
