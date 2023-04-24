@@ -165,9 +165,9 @@ const premiumButton = data => {
   if (!AppConstants.FXA_SUBSCRIPTION_ENABLED) { return '' }
 
   if (isSubscribed(data.fxaProfile)) {
-    return 'Premium subscriber'
+    return 'CURRENT USER IS A PREMIUM SUBSCRIBER'
   }
-  return '<a href="/oauth/premium/upgrade">Upgrade to Premium</a>'
+  return '<a href="/oauth/premium/upgrade">PREMIUM SUBSCRIPTION BUTTON</a>'
 }
 
 export { mainLayout }
