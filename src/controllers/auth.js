@@ -28,7 +28,6 @@ import { UnauthorizedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 
 const {
-  FXA_SUBSCRIPTION_ENABLED,
   FXA_SUBSCRIPTION_PLAN_ID,
   FXA_SUBSCRIPTION_PRODUCT_ID,
   FXA_SUBSCRIPTION_URL,
@@ -173,10 +172,6 @@ async function logout (req, res) {
  * @param {object} res The express response object
  */
 async function premiumUpgrade (req, res) {
-  if (!FXA_SUBSCRIPTION_ENABLED) {
-    return res.sendStatus(404)
-  }
-
   if (
     isSubscribed(req.user.fxa_profile_json)) {
     return res.redirect('/user/breaches')
@@ -197,12 +192,17 @@ async function premiumUpgrade (req, res) {
  * @param {object} res The express response object
  */
 async function premiumConfirmed (req, res) {
-  if (!FXA_SUBSCRIPTION_ENABLED) {
-    return res.sendStatus(404)
+  const fxaProfileData = await getProfileData(req.user.fxa_access_token)
+
+  if (req.query.email !== fxaProfileData.email) {
+    throw new Error('Email address returned by FxA does not match profile')
   }
 
-  const fxaProfileData = await getProfileData(req.user.fxa_access_token)
   await updateFxAProfileData(req.user, fxaProfileData)
+
+  if (!isSubscribed(fxaProfileData)) {
+    throw new Error('Cannot find subscription from FxA')
+  }
 
   res.redirect('/user/breaches')
 }
