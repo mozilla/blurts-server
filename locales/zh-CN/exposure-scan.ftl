@@ -3,7 +3,7 @@ exposure-landing-hero-lead = 使用来自 { -brand-firefox } 的隐私工具保�
 exposure-landing-hero-email-label = 电子邮件地址
 exposure-landing-hero-email-placeholder = 输入电子邮件地址
 exposure-landing-hero-cta-label = 检查是否有外泄事件
-exposure-landing-result-loading = 加载中，请稍候...
+exposure-landing-result-loading = 加载中，请稍候…
 exposure-landing-result-error = 检查数据泄漏情况时出了点问题。请刷新页面并重试。
 # Variables:
 #   $email (string) - The user's email address, used to identify their data in breaches
