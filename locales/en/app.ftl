@@ -868,7 +868,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ## Search Engine Optimization
 
-meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. Sign up for alerts about future breaches and get tips to keep your accounts safe.
+meta-desc-2 = Find out if you've been part of a data breach with { -brand-fx-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
 
 ## Header
 

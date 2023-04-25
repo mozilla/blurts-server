@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getBreachByName } from '../utils/hibp.js'
+import { getMessage } from '../utils/fluent.js'
 
 import { guestLayout } from '../views/guestLayout.js'
 import { allBreaches } from '../views/partials/allBreaches.js'
@@ -12,7 +13,12 @@ async function breachesPage (req, res) {
   const data = {
     partial: allBreaches,
     breaches: req.app.locals.breaches,
-    breachLogos: req.app.locals.breachLogoMap
+    breachLogos: req.app.locals.breachLogoMap,
+    meta: {
+      title: getMessage('breach-all-meta-title'),
+      socialTitle: getMessage('breach-all-meta-social-title'),
+      socialDescription: getMessage('breach-all-meta-social-description')
+    }
   }
 
   res.send(guestLayout(data))
@@ -31,7 +37,12 @@ async function breachDetailPage (req, res) {
     partial: breachDetail,
     skipPartialModule: true,
     breach: featuredBreach,
-    breachLogos: req.app.locals.breachLogoMap
+    breachLogos: req.app.locals.breachLogoMap,
+    meta: {
+      title: getMessage('breach-detail-meta-title', { company: featuredBreach.Name }),
+      socialTitle: getMessage('breach-detail-meta-social-title', { company: featuredBreach.Name }),
+      socialDescription: getMessage('breach-detail-meta-social-description')
+    }
   }
 
   res.send(guestLayout(data))

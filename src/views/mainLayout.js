@@ -12,18 +12,18 @@ const mainLayout = data => `
 <!doctype html>
 <html lang=${getLocale()}>
   <head>
-    <title>${getMessage('brand-fx-monitor')}</title>
+    <title>${data.meta?.title ?? getMessage('brand-fx-monitor')}</title>
     <style>html {display: none;}</style>
 
     <meta charset='utf-8'>
     <meta name='viewport' content='width=320, initial-scale=1'>
-    <meta name='description' content='${getMessage('meta-desc')}'>
+    <meta name='description' content='${data.meta?.socialDescription ?? getMessage('meta-desc-2')}'>
     <meta name='twitter:card' content='summary_large_image'>
-    <meta name='twitter:title' content='${getMessage('brand-fx-monitor')}'>
-    <meta name='twitter:description' content='${getMessage('meta-desc')}'>
+    <meta name='twitter:title' content='${data.meta?.socialTitle ?? getMessage('brand-fx-monitor')}'>
+    <meta name='twitter:description' content='${data.meta?.socialDescription ?? getMessage('meta-desc-2')}'>
     <meta name='twitter:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
-    <meta property='og:title' content='${getMessage('brand-fx-monitor')}'>
-    <meta property='og:description' content='${getMessage('meta-desc')}'>
+    <meta property='og:title' content='${data.meta?.socialTitle ?? getMessage('brand-fx-monitor')}'>
+    <meta property='og:description' content='${data.meta?.socialDescription ?? getMessage('meta-desc-2')}'>
     <meta property='og:site_name' content='${getMessage('brand-fx-monitor')}'>
     <meta property='og:type' content='website'>
     <meta property='og:url' content='${AppConstants.SERVER_URL}'>

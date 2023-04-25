@@ -17,6 +17,11 @@ type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams & { part
 type GuestViewPartialData<ViewPartialParams = object> = {
     partial: ViewPartial<ViewPartialParams>;
     nonce: string;
+    meta?: {
+      title?: string;
+      socialTitle?: string;
+      socialDescription?: string;
+    };
   } & ViewPartialParams;
 type MainViewPartialData<ViewPartialParams = object> = {
     fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
