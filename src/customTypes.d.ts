@@ -15,12 +15,12 @@ interface HTMLElement {
 // eslint-disable-next-line no-unused-vars
 type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams & { partial: { name: string } }) => string;
 type GuestViewPartialData<ViewPartialParams = object> = {
-    partial: ViewPartial<ViewPartialParams>;
-    nonce: string;
-  } & ViewPartialParams;
+  partial: ViewPartial<ViewPartialParams>;
+  nonce: string;
+} & ViewPartialParams;
 type MainViewPartialData<ViewPartialParams = object> = {
-    fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
-  } & GuestViewPartialData<ViewPartialParams>;
+  fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
+} & GuestViewPartialData<ViewPartialParams>;
 
 /**
  * See https://github.com/mozilla/fxa/blob/564949dfc69f0f675ebb4e5f267282c2546a5767/packages/fxa-profile-server/lib/routes/profile.js#L63-L77
@@ -58,4 +58,8 @@ declare module 'mozlog' {
   const defaultFunction: (_options: Options) => (_scope: string) => ({ debug: LogFunction, info: LogFunction, warn: LogFunction, error: LogFunction })
 
   export default defaultFunction
+}
+
+interface Window {
+  gtag: any
 }

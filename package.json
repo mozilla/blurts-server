@@ -22,8 +22,9 @@
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
     "lint": "npm run lint:css && npm run lint:js",
-    "lint:js": "eslint .",
     "lint:css": "stylelint src/client/css/",
+    "lint:js": "eslint .",
+    "lint:ts": "tsc --noEmit",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
     "fix:css": "stylelint src/client/css/ --fix"
