@@ -60,6 +60,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Wurkje jo wachtwurden by en skeakelje twa-staps-autentikaasje (2FA) yn.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = Yn de measte gefallen riede wy jo oan jo wachtwurd te wizigjen op de website fan it bedriuw. Mar <b>harren website kin offline wêze of skeadlike ynhâld befetsje</b>, dus wês foarsichtich as jo <breached-company-link>de website besykje</breached-company-link>. Soargje foar ekstra beskerming troch unike wachtwurden foar al jo accounts te brûken, sadat lekte wachtwurden net brûkt wurde kinne om tagong te krijen ta oare accounts. { $passwordManagerLink } kin jo helpe al jo wachtwurden feilich by te hâlden.
 
 ## Prompts the user for changes when there is a breach detected of email
 
