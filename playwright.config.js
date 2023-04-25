@@ -13,12 +13,12 @@ dotenv.config()
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './e2e/specs',
+  testDir: 'src/e2e/specs',
   /* Maximum time one test can run for. */
   timeout: 60_000,
 
   /* Global setup */
-  globalSetup: './e2e/globalSetup.js',
+  globalSetup: 'src/e2e/globalSetup.js',
 
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
   globalTimeout: 360_000,
@@ -101,7 +101,7 @@ export default defineConfig({
   ],
 
   /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  outputDir: './e2e/test-results/',
+  outputDir: 'src/e2e/test-results/',
 
   /* Run your local dev server before starting the tests */
   webServer: {
