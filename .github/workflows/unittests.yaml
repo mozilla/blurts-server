@@ -13,8 +13,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18.12.x'
-      - run: npm ci --workspace=src
       - run: npm ci
       - run: cp .env-dist .env
-      - run: npm run build --if-present --workspace=src
-      - run: npm test --workspace=src
+      - run: npm run build
+      - run: npm test
