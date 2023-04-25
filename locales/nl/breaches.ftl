@@ -63,7 +63,7 @@ breach-checklist-pw-header-text = Werk uw wachtwoorden bij en schakel tweefactor
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = In de meeste gevallen raden we u aan uw wachtwoord te wijzigen op de website van het bedrijf. Maar <b>hun website kan offline zijn of schadelijke inhoud bevatten</b>, dus wees voorzichtig als u <breached-company-link>de website bezoekt</breached-company-link>. Zorg er voor extra bescherming voor dat u unieke wachtwoorden gebruikt voor al uw accounts, zodat gelekte wachtwoorden niet kunnen worden gebruikt om toegang te krijgen tot andere accounts. { $passwordManagerLink } kan u helpen al uw wachtwoorden veilig bij te houden.
+breach-checklist-pw-body-text = In de meeste gevallen raden we u aan uw wachtwoord te wijzigen op de website van het bedrijf. Maar <b>hun website kan offline zijn of schadelijke inhoud bevatten</b>, dus wees voorzichtig als u <breached-company-link>de website bezoekt</breached-company-link>. Zorg voor extra bescherming door unieke wachtwoorden voor al uw accounts te gebruiken, zodat gelekte wachtwoorden niet kunnen worden gebruikt om toegang te krijgen tot andere accounts. { $passwordManagerLink } kan u helpen al uw wachtwoorden veilig bij te houden.
 
 ## Prompts the user for changes when there is a breach detected of email
 
