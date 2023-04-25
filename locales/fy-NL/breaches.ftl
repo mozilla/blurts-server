@@ -128,6 +128,8 @@ breach-checklist-phone-header-2 = Beskermje jo telefoannûmer mei in maskearstsj
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Wurkje jo befeiligingsfragen by.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Yn de measte gefallen riede wy jo oan jo befeiligingsfragen te wizigjen op de website fan it bedriuw. Mar <b>harren website kin offline wêze of skeadlike ynhâld befetsje</b>, dus wês foarsichtich as jo <breached-company-link>de website besykje</breached-company-link>. Wurkje foar ekstra beskerming dizze befeiligingsfragen by foar alle wichtige accounts wêrop jo se brûkt hawwe en meitsje unike wachtwurden oan foar al jo accounts.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
