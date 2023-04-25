@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import express from 'express'
-import { Router } from 'express'
 
 import { asyncMiddleware } from '../middleware/util.js'
 import { requireSessionUser } from '../middleware/auth.js'
@@ -20,7 +19,7 @@ import {
 import { unsubscribeFromEmails } from '../utils/email.js'
 import AppConstants from '../appConstants.js'
 
-const router = Router()
+const router = express.Router()
 
 // dashboard page
 // MNTOR-1327: for v2 release, we want to temp redirect users from dashboard
