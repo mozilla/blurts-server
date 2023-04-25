@@ -7,9 +7,9 @@ import { URL } from 'url'
 
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
-import { MethodNotAllowedError } from '../utils/error.js'
 import { getMessage, fluentError } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
+import { MethodNotAllowedError } from '../shared/error.js'
 
 const log = mozlog('email-utils')
 

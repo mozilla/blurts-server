@@ -22,7 +22,7 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 import { getSha1 } from '../utils/fxa.js'
 import { validateEmailAddress } from '../utils/emailAddress.js'
 import { generateToken } from '../utils/csrf.js'
-import { TooManyRequestsError, UnauthorizedError, UserInputError } from '../utils/error.js'
+import { TooManyRequestsError, UnauthorizedError, UserInputError } from '../shared/error.js'
 
 import { mainLayout } from '../views/mainLayout.js'
 import { settings } from '../views/partials/settings.js'

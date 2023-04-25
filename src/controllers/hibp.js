@@ -21,8 +21,8 @@ import {
   getBreachByName,
   loadBreachesIntoApp
 } from '../utils/hibp.js'
-import { UnauthorizedError, UserInputError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
+import { UnauthorizedError, UserInputError } from '../shared/error.js'
 
 const log = mozlog('controllers.hibp')
 
