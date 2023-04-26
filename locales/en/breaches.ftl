@@ -10,11 +10,15 @@ breach-all-meta-social-description = Browse the complete list of known breaches 
 
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { $company } - Data Breach
+breach-detail-meta-title = { -brand-fx-monitor } - { $company } Data Breach
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Were you affected by the { $company } Data Breach?
 breach-detail-meta-social-description = Use { -brand-fx-monitor } to find out if your personal information was exposed in this breach, and understand what to do next.
+
+breach-scan-meta-title = { -brand-fx-monitor } - Breach Results
+breach-scan-meta-social-title = Firefox Monitor Breach Results
+breach-scan-meta-social-description = Sign in to Monitor to resolve breaches and get continuous monitoring for any new known breaches.
 
 ## Breaches header
 

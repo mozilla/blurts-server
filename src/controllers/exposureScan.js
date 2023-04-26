@@ -5,6 +5,7 @@
 import { generateToken } from '../utils/csrf.js'
 import { guestLayout } from '../views/guestLayout.js'
 import { exposureScan } from '../views/partials/exposureScan.js'
+import { getMessage } from '../utils/fluent.js'
 
 /**
  * @type {import('express').RequestHandler}
@@ -21,7 +22,12 @@ const exposureScanPage = (req, res, next) => {
   const data = {
     partial: exposureScan,
     nonce: res.locals.nonce,
-    csrfToken: generateToken(res, req)
+    csrfToken: generateToken(res, req),
+    meta: {
+      title: getMessage('breach-scan-meta-title'),
+      socialTitle: getMessage('breach-scan-meta-social-title'),
+      socialDescription: getMessage('breach-scan-meta-social-description')
+    }
   }
 
   res.send(guestLayout(data))
