@@ -68,3 +68,22 @@ declare module 'mozlog' {
 interface Window {
   gtag: any
 }
+
+declare namespace breach {
+  let Name: string;
+  let Title: string;
+  let Domain: string;
+  let BreachDate: string;
+  let AddedDate: string;
+  let ModifiedDate: string;
+  let PwnCount: number;
+  let Description: string;
+  let LogoPath: string;
+  let DataClasses: Array<string>[];
+  let IsVerified: boolean;
+  let IsFabricated: boolean;
+  let IsSensitive: boolean;
+  let IsRetired: boolean;
+  let IsSpamList: boolean;
+  let IsMalware: boolean;
+}
