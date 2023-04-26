@@ -14,8 +14,7 @@ import {
   TEST_EMAIL_ADDRESSES
 } from '../db/seeds/testSubscribers.js'
 
-// FIXME move these to src dir
-import { testBreaches } from '../../tests/test-breaches.js'
+import { testBreaches } from '../e2e/fixtures/testBreaches.js'
 
 const mockRequest = { fluentFormat: td.func() }
 

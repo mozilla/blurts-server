@@ -1,6 +1,3 @@
-db/migration
 coverage
-loadtests
-public/dist
-tests
 dist
+scripts
