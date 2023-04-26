@@ -150,7 +150,7 @@ export const breachDetail = data => `
         'breach-overview-new',
         {
           breachDate: data.breach.BreachDate.toLocaleString(getLocale(), { year: 'numeric', month: 'long', day: 'numeric' }),
-          breachTitle: data.breach.Name,
+          breachTitle: data.breach.Title,
           addedDate: data.breach.AddedDate.toLocaleString(getLocale(), { year: 'numeric', month: 'long', day: 'numeric' })
         })}</div>
       ${compareBreachDates(data.breach) ? `<a href="#delayed-reporting">${getMessage('delayed-reporting-headline')}</a>` : ''}

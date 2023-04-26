@@ -39,8 +39,8 @@ async function breachDetailPage (req, res) {
     breach: featuredBreach,
     breachLogos: req.app.locals.breachLogoMap,
     meta: {
-      title: getMessage('breach-detail-meta-title', { company: featuredBreach.Name }),
-      socialTitle: getMessage('breach-detail-meta-social-title', { company: featuredBreach.Name }),
+      title: getMessage('breach-detail-meta-title', { company: featuredBreach.Title }),
+      socialTitle: getMessage('breach-detail-meta-social-title', { company: featuredBreach.Title }),
       socialDescription: getMessage('breach-detail-meta-social-description')
     }
   }
