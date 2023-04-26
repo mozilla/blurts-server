@@ -67,7 +67,7 @@ breach-checklist-pw-header-text = Diweddarwch eich cyfrineiriau a galluogi dilys
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = Yn y rhan fwyaf o achosion, rydym yn argymell eich bod yn newid eich cyfrinair ar wefan y cwmni. Ond <b>efallai bod eu gwefan yn is neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael amddiffyniad ychwanegol, gwnewch yn siŵr eich bod chi'n defnyddio cyfrineiriau unigryw ar gyfer pob cyfrif, fel na ellir defnyddio unrhyw gyfrineiriau sydd wedi'u gollwng i gael mynediad at gyfrifon eraill. Gall { $passwordManagerLink } eich helpu i gadw golwg ar eich holl gyfrineiriau yn ddiogel.
+breach-checklist-pw-body-text = Yn y rhan fwyaf o achosion, rydym yn argymell eich bod yn newid eich cyfrinair ar wefan y cwmni. Ond <b>efallai bod eu gwefan wedi torri neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael diogelwch ychwanegol, gwnewch yn siŵr eich bod chi'n defnyddio cyfrineiriau unigryw ar gyfer pob cyfrif, fel nad oes modd defnyddio unrhyw gyfrineiriau sydd wedi'u ryddhau ar gam i gael mynediad at gyfrifon eraill. Gall { $passwordManagerLink } eich helpu i gadw golwg diogel ar eich holl gyfrineiriau.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -133,7 +133,7 @@ breach-checklist-phone-header-2 = Diogelwch eich rhif ffôn gyda gwasanaeth cudd
 
 breach-checklist-sq-header-text = Diweddarwch eich cwestiynau diogelwch.
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = Yn y rhan fwyaf o achosion, byddem yn argymell eich bod yn diweddaru eich cwestiynau diogelwch ar wefan y cwmni. Ond <b>efallai bod eu gwefan yn is neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael amddiffyniad ychwanegol, diweddarwch y cwestiynau diogelwch hyn ar unrhyw gyfrifon pwysig lle rydych chi wedi'u defnyddio, a chreu cyfrineiriau unigryw ar gyfer pob cyfrif.
+breach-checklist-sq-body-text = Yn y rhan fwyaf o achosion, byddem yn argymell eich bod yn diweddaru eich cwestiynau diogelwch ar wefan y cwmni. Ond <b>efallai bod eu gwefan wedi torri neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael diogelwch ychwanegol, diweddarwch y cwestiynau diogelwch hyn ar unrhyw gyfrifon pwysig lle rydych chi wedi'u defnyddio, a chreu cyfrineiriau unigryw ar gyfer pob cyfrif.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

@@ -1,10 +1,10 @@
-exposure-landing-hero-heading = Darganfyddwch a yw eich gwybodaeth bersonol wedi'i pheryglu
-exposure-landing-hero-lead = Byddwch yn ddiogel gydag offer preifatrwydd gan wneuthurwyr { -brand-firefox } sy'n eich amddiffyn rhag hacwyr a chwmnïau sy'n cyhoeddi ac yn gwerthu eich gwybodaeth bersonol. Byddwn yn eich rhybuddio am unrhyw doriadau data hysbys, yn dod o hyd i'ch gwybodaeth agored ac yn ei dileu, ac yn gwylio datguddiadau newydd yn barhaus.
+exposure-landing-hero-heading = Darganfyddwch a yw eich manylion personol wedi'i pheryglu
+exposure-landing-hero-lead = Byddwch yn ddiogel gydag offer preifatrwydd gan wneuthurwr { -brand-firefox } sy'n eich diogelu rhag hacwyr a chwmnïau sy'n cyhoeddi ac yn gwerthu eich manylion personol. Byddwn yn eich rhybuddio am unrhyw doriadau data hysbys, yn dod o hyd i'ch manylion hysbys ac yn eu dileu, ac yn gwylio am ddatguddiadau newydd yn barhaus.
 exposure-landing-hero-email-label = Cyfeiriad e-bost
 exposure-landing-hero-email-placeholder = Rhowch eich cyfeiriad e-bost
 exposure-landing-hero-cta-label = Gwiriwch am dor-data
-exposure-landing-result-loading = Llwytho, arhoswch…
-exposure-landing-result-error = Aeth rhywbeth o'i le wrth wirio am doriadau. Ail-lwythwch y dudalen a cheisiwch eto.
+exposure-landing-result-loading = Yn llwytho, arhoswch…
+exposure-landing-result-error = Aeth rhywbeth o'i le wrth wirio am dor-data. Ail-lwythwch y dudalen a cheisiwch eto.
 # Variables:
 #   $email (string) - The user's email address, used to identify their data in breaches
 #   $count (number) - Number of data breaches in which the user's data was found
