@@ -3,6 +3,7 @@
     "src/custom-types.d.ts",
     "src/client/js/components/**/*",
     "src/views/guestLayout.js",
+    "src/views/mainLayout.js",
     "src/views/partials/add-email.js",
     "src/views/partials/admin.js",
     "src/views/partials/exposure-scan.js",

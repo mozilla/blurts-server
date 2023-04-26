@@ -17,8 +17,8 @@ breach-detail-meta-social-title = Were you affected by the { $company } Data Bre
 breach-detail-meta-social-description = Use { -brand-fx-monitor } to find out if your personal information was exposed in this breach, and understand what to do next.
 
 breach-scan-meta-title = { -brand-fx-monitor } - Breach Results
-breach-scan-meta-social-title = Firefox Monitor Breach Results
-breach-scan-meta-social-description = Sign in to Monitor to resolve breaches and get continuous monitoring for any new known breaches.
+breach-scan-meta-social-title = { -brand-fx-monitor } Breach Results
+breach-scan-meta-social-description = Sign in to { -brand-fx-monitor } to resolve breaches and get continuous monitoring for any new known breaches.
 
 ## Breaches header
 
