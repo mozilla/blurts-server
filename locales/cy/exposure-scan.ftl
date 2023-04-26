@@ -10,23 +10,23 @@ exposure-landing-result-error = Aeth rhywbeth o'i le wrth wirio am dor-data. Ail
 #   $count (number) - Number of data breaches in which the user's data was found
 exposure-landing-result-hero-heading =
     { $count ->
-        [zero] Canfuwyd <email>{ $email }</email> yn y tor-data <count>{ $count }</count>.
-        [one] Canfuwyd <email>{ $email }</email> yn y tor-data <count>1</count>.
-        [two] Canfuwyd <email>{ $email }</email> yn y tor-data <count>{ $count }</count>.
-        [few] Canfuwyd <email>{ $email }</email> yn y tor-data <count>{ $count }</count>.
-        [many] Canfuwyd <email>{ $email }</email> yn y tor-data <count>{ $count }</count>.
-       *[other] Canfuwyd <email>{ $email }</email> yn y tor-data <count>{ $count }</count>.
+        [zero] Canfuwyd <email>{ $email }</email> mewn <count>{ $count }</count> tor-data.
+        [one] Canfuwyd <email>{ $email }</email> mewn <count>{ $count }</count> tor-data.
+        [two] Canfuwyd <email>{ $email }</email> mewn <count>{ $count }</count> tor-data..
+        [few] Canfuwyd <email>{ $email }</email> mewn <count>{ $count }</count> tor-data.
+        [many] Canfuwyd <email>{ $email }</email> mewn <count>{ $count }</count> tor-data.
+       *[other] Canfuwyd <email>{ $email }</email> mewn <count>{ $count }</count> tor-data.
     }
-exposure-landing-result-card-added = Ychwanegwyd Torri:
-exposure-landing-result-card-data = Data sy'n Agored:
+exposure-landing-result-card-added = Ychwanegwyd Tor-data:
+exposure-landing-result-card-data = Data Hysbys:
 exposure-landing-result-card-nothing = Heb ganfod tor-data
-exposure-landing-result-footer-attribution = Darparwyd data torri amodau gan <hibp-link>{ -brand-HIBP }</hibp-link>
-exposure-landing-result-overflow-hero-lead = Mewngofnodwch i gael camau clir ar sut i ddatrys y toriadau hyn, gweld pob toriad, a chael monitro parhaus ar gyfer unrhyw doriadau hysbys newydd.
-exposure-landing-result-overflow-hero-cta-label = Mewngofnodwch i ddatrys toriadau
+exposure-landing-result-footer-attribution = Darparwyd manylion tor-data gan <hibp-link>{ -brand-HIBP }</hibp-link>
+exposure-landing-result-overflow-hero-lead = Mewngofnodwch i gael camau clir ar sut i ddatrys y tor-data hyn, gweld pob tor-data, a chael monitro parhaus am unrhyw dor-data hysbys newydd.
+exposure-landing-result-overflow-hero-cta-label = Mewngofnodwch i ddatrys tor-data
 exposure-landing-result-overflow-footer-cta-label = Mewngofnodwch i weld y cyfan
-exposure-landing-result-some-hero-lead = Mewngofnodwch i gael camau clir ar sut i ddatrys y toriadau hyn, gweld pob toriad, a chael monitro parhaus ar gyfer unrhyw doriadau hysbys newydd.
-exposure-landing-result-some-hero-cta-label = Mewngofnodwch i ddatrys toriadau
-exposure-landing-result-some-footer-cta-label = Mewngofnodwch i ddatrys toriadau
-exposure-landing-result-none-hero-lead = Newyddion da! Ni chanfuwyd unrhyw doriadau hysbys. Byddwch yn ddiogel trwy gofrestru ar gyfer rhybuddion am doriadau newydd. Byddwn yn parhau i fonitro'r e-bost hwn ac yn rhoi gwybod i chi os yw'n ymddangos mewn toriad newydd.
-exposure-landing-result-none-hero-cta-label = Cael rhybuddion am doriadau newydd
+exposure-landing-result-some-hero-lead = Mewngofnodwch i gael camau clir ar sut i ddatrys y tor-data hyn, gweld pob tor-data, a chael monitro parhaus am unrhyw dor-data hysbys newydd.
+exposure-landing-result-some-hero-cta-label = Mewngofnodwch i ddatrys tor-data
+exposure-landing-result-some-footer-cta-label = Mewngofnodwch i ddatrys tor-data
+exposure-landing-result-none-hero-lead = Newyddion da! Ni chanfuwyd unrhyw dor-data hysbys. Cadwch yn ddiogel trwy gofrestru ar gyfer rhybuddion am dor-data newydd. Byddwn yn parhau i fonitro'r e-bost hwn ac yn rhoi gwybod i chi os yw'n ymddangos mewn tor-data newydd.
+exposure-landing-result-none-hero-cta-label = Cael rhybuddion am dor-data newydd
 exposure-landing-result-none-footer-cta-label = Cofrestrwch i gael rhybuddion
