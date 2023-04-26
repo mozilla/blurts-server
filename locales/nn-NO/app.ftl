@@ -749,10 +749,18 @@ footer-nav-all-breaches = Alle datalekkasjar
 #   $errorCode (number) - "404"
 error-page-error-404-title = { $errorCode } Fann ikkje sida
 error-page-error-404-cta-button = Gå tilbake
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Noko gjekk gale
+error-page-error-other-copy = Prøv på nytt eller kom tilbake seinare
 
 ## Breach overview page
 
+all-breaches-headline-2 = Alle datalekkasjar oppdaga av { -brand-fx-monitor }
 search-breaches = Søk etter datalekkasjar
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Eksponerte data:
 
 ## Public breach detail page
 
+breach-detail-cta-signup = Sjå etter datalekkasjar
