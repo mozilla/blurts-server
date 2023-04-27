@@ -4,10 +4,14 @@
   ],
   "rules": {
     "alpha-value-notation": "number",
+    "import-notation": "string",
     "no-descending-specificity": [
       true,
       {
-        "severity": "warning"
+        "severity": "warning",
+        "ignore": [
+          "selectors-within-list"
+        ]
       }
     ],
     "property-no-vendor-prefix": null,

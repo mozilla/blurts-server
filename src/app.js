@@ -200,7 +200,7 @@ app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
   console.info(`MONITOR V2: Server listening at ${this.address().port}`)
-  console.info(`Static files served from ${staticPath}`)
+  console.info(`Client files served from ${staticPath}`)
   try {
     await initEmail()
     console.info('Email initialized')

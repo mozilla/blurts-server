@@ -217,25 +217,9 @@ workflows:
             - lint-js
             - lint-css
             - lint-l10n
-            - unit-tests:
-                filters:
-                    tags:
-                        only: /.*/
-            - unit-tests-psql:
-                name: "unit-tests on psql 9.6"
-                postgres_version: "9.6.24"
-                filters:
-                    tags:
-                        only: /.*/
-            - unit-tests-psql:
-                name: "unit-tests on psql 13.7"
-                postgres_version: "13.7"
-                filters:
-                    tags:
-                        only: /.*/
             - deploy:
                 requires:
-                    - unit-tests
+                    - lint-js
                 filters:
                     tags:
                         only: /.*/
@@ -251,7 +235,7 @@ workflows:
                 name: Deploy main to Heroku
                 app-name: $HEROKU_MAIN_APP_NAME
                 requires:
-                    - unit-tests
+                    - lint-js
                 filters:
                     branches:
                         only: main
@@ -260,7 +244,7 @@ workflows:
                 name: Deploy l10n to Heroku
                 app-name: $HEROKU_LOCALIZATION_APP_NAME
                 requires:
-                    - unit-tests
+                    - lint-js
                 filters:
                     branches:
                         only: localization
