@@ -61,6 +61,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Actualiza tus contraseñas y habilita la autenticación de dos factores (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = En la mayoría de los casos, te recomendamos que cambies tu contraseña en el sitio web de la empresa. Pero <b>su sitio web puede estar inactivo o contener contenido malicioso</b>, así que ten cuidado si <breached-company-link>visitas el sitio</breached-company-link>. Para mayor protección, asegúrate de usar una contraseña única y diferenciada para cada cuenta, de modo que las contraseñas filtradas no puedan usarse para acceder a otras cuentas. { $passwordManagerLink } puede ayudarte a realizar un seguimiento seguro de todas tus contraseñas.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -125,6 +129,8 @@ breach-checklist-phone-header-2 = Protege tu número de teléfono con un servici
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Actualiza tus preguntas de seguridad.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = En la mayoría de los casos, te recomendamos que actualices tus preguntas de seguridad en el sitio web de la empresa. Pero <b>su sitio web puede estar inactivo o contener contenido malicioso</b>, así que ten cuidado si <breached-company-link>visitas el sitio</breached-company-link>. Para mayor protección, actualiza estas preguntas de seguridad en cualquier cuenta importante donde las hayas usado, y crea contraseñas únicas y diferenciadas para cada cuenta.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
