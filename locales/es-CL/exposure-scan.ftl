@@ -1,3 +1,4 @@
+exposure-landing-hero-heading = Averigua si tu información personal se ha visto comprometida
 exposure-landing-hero-email-label = Correo electrónico
 exposure-landing-hero-email-placeholder = Ingresa tu dirección de correo
 exposure-landing-hero-cta-label = Busca filtraciones
@@ -6,6 +7,7 @@ exposure-landing-result-error = Algo salió mal mientras se buscaban filtracione
 exposure-landing-result-card-added = Filtración añadida:
 exposure-landing-result-card-data = Datos expuestos:
 exposure-landing-result-card-nothing = No se encontraron filtraciones
+exposure-landing-result-footer-attribution = Datos de filtración provistos por <hibp-link>{ -brand-HIBP }</hibp-link>
 exposure-landing-result-overflow-hero-cta-label = Conéctate para resolver filtraciones
 exposure-landing-result-overflow-footer-cta-label = Conéctate para verlo todo
 exposure-landing-result-some-hero-cta-label = Conéctate para resolver filtraciones
