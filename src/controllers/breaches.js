@@ -33,7 +33,8 @@ async function breachesPage (req, res) {
     fxaProfile: req.user.fxa_profile_json,
     meta: {
       title: getMessage('breach-meta-title')
-    }
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   res.send(mainLayout(data))

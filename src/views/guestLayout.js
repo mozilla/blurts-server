@@ -12,6 +12,7 @@ const guestLayout = data => {
   const siteTitle = data.meta?.title ?? getMessage('brand-fx-monitor')
   const metaTitle = data.meta?.socialTitle ?? getMessage('brand-fx-monitor')
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
+  const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
 
   return `
     <!doctype html>
@@ -31,7 +32,7 @@ const guestLayout = data => {
         <meta property='og:description' content='${metaDescription}'>
         <meta property='og:site_name' content='${getMessage('brand-fx-monitor')}'>
         <meta property='og:type' content='website'>
-        <meta property='og:url' content='${AppConstants.SERVER_URL}'>
+        <meta property='og:url' content='${pageUrl}'>
         <meta property='og:image' content='${AppConstants.SERVER_URL}/images/og-image.webp'>
 
         <link rel='preload' href='/fonts/Metropolis-Bold.woff2' as='font' type='font/woff2' crossorigin>

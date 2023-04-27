@@ -16,6 +16,8 @@ const exposureScanPage = (req, res, next) => {
     return
   }
 
+  console.log(req.baseUrl)
+
   /**
    * @type {GuestViewPartialData<import('../views/partials/exposureScan.js').PartialParameters>}
    */

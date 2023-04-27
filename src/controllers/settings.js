@@ -63,7 +63,8 @@ async function settingsPage (req, res) {
     csrfToken: generateToken(res),
     meta: {
       title: getMessage('settings-meta-title')
-    }
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   res.send(mainLayout(data))

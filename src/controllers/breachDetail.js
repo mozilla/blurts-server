@@ -18,7 +18,8 @@ async function breachesPage (req, res) {
       title: getMessage('breach-all-meta-title'),
       socialTitle: getMessage('breach-all-meta-social-title'),
       socialDescription: getMessage('breach-all-meta-social-description')
-    }
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   res.send(guestLayout(data))
@@ -42,7 +43,8 @@ async function breachDetailPage (req, res) {
       title: getMessage('breach-detail-meta-title', { company: featuredBreach.Title }),
       socialTitle: getMessage('breach-detail-meta-social-title', { company: featuredBreach.Title }),
       socialDescription: getMessage('breach-detail-meta-social-description')
-    }
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   res.send(guestLayout(data))

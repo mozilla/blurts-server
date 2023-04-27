@@ -17,7 +17,8 @@ function landingPage (req, res) {
       title: getMessage('brand-fx-monitor'),
       socialTitle: getMessage('brand-fx-monitor'),
       socialDescription: getMessage('meta-desc-2')
-    }
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   // Backward-compatibility with Monitor V1, for SEO.
