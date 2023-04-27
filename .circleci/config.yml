@@ -226,11 +226,12 @@ workflows:
                     branches:
                         only: 
                             - main
-            - deploy_static:
-                filters:
-                    branches:
-                        only: 
-                            - main
+            # - deploy_static:
+                # disabled because we no longer use the old logo path or CDN
+                # filters:
+                    # branches:
+                        # only: 
+                            # - main
             - deploy_heroku:
                 name: Deploy main to Heroku
                 app-name: $HEROKU_MAIN_APP_NAME
