@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es2021": true,
+        "es2022": true,
         "node": true,
         "jest": true
     },
@@ -51,7 +51,7 @@
         "check-file/filename-naming-convention": [
             "error",
             {
-                "**/*.{js,css}": "CAMEL_CASE"
+                "**/*.{js,css} !src/db/migrations": "CAMEL_CASE"
             },
             {
                 "ignoreMiddleExtensions": true

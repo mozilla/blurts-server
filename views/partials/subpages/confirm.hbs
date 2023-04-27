@@ -1,5 +1,0 @@
-<span class="dashboard-email-sent bold txt-purple7 email-confirmed txt-cntr mw-550"> {{ getString "email-verified" }}</span>
-<span class="txt-purple7 email-confirmed txt-cntr mw-550 overflow-break">{{{ makeEmailAddedToSubscriptionString email }}}</span>
-{{#unless req.session.user}}
-  <span class="txt-purple7 email-confirmed txt-cntr mw-550">{{{ makeEmailVerifiedString }}}</span>
-{{/unless}}

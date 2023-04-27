@@ -50,7 +50,7 @@
   --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   :root {
     --multiplier: 0.75;
   }

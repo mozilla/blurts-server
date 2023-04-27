@@ -4,8 +4,7 @@
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 import * as dotenv from 'dotenv'
-
-dotenv.config({ path: '../.env' })
+dotenv.config()
 
 const requiredEnvVars = [
   'ADMINS',
