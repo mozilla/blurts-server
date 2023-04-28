@@ -5,6 +5,7 @@
 /**
  * @typedef {object} PartialParameters
  * @property {string} csrfToken
+ * @property {import("../../external/onerep").ListScanResultsResponse} scanResults
  */
 
 /**
@@ -12,4 +13,5 @@
  */
 export const exposuresList = data => `
   This page will show the user's exposures dashboard, when they have already set up exposure scanning.
+  <pre>${JSON.stringify(data.scanResults, null, 2)}</pre>
 `

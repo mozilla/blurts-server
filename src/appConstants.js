@@ -4,8 +4,7 @@
 
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 import * as dotenv from 'dotenv'
-
-dotenv.config({ path: '../.env' })
+dotenv.config()
 
 const requiredEnvVars = [
   'ADMINS',
@@ -33,6 +32,7 @@ const requiredEnvVars = [
   'OAUTH_ACCOUNT_URI',
   'OAUTH_PROFILE_URI',
   'OAUTH_TOKEN_URI',
+  'ONEREP_API_KEY',
   'REDIS_URL',
   'SENTRY_DSN',
   'SERVER_URL',
@@ -43,12 +43,13 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
+  'EMAIL_TEST_RECIPIENT',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',
-  'EMAIL_TEST_RECIPIENT',
-  'GA4_MEASUREMENT_ID',
   'GA4_DEBUG_MODE',
+  'GA4_MEASUREMENT_ID',
+  'HIBP_BREACH_DOMAIN_BLOCKLIST',
   'LIVE_RELOAD',
   'PORT',
   'SENTRY_DSN_LEGACY'
@@ -74,4 +75,6 @@ optionalEnvVars.forEach(key => {
   if (value) AppConstants[key] = value
 })
 
-export default Object.freeze(AppConstants)
+export default AppConstants.NODE_ENV === 'test'
+  ? AppConstants
+  : Object.freeze(AppConstants)

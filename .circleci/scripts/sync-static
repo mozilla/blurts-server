@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script is disabled in config.yml because we no longer use logos from the path below.
+# Leaving this for reference in case we use CDN for the new logos
+
 set -o errexit -o nounset -o pipefail
 
 cd "$(dirname $0)/../.."

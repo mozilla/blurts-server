@@ -2,8 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import bodyParser from 'body-parser'
-import { Router } from 'express'
+import express from 'express'
 
 import { asyncMiddleware } from '../middleware/util.js'
 import { requireSessionUser } from '../middleware/auth.js'
@@ -18,9 +17,9 @@ import {
   unsubscribeMonthlyPage
 } from '../controllers/unsubscribe.js'
 import { unsubscribeFromEmails } from '../utils/email.js'
+import AppConstants from '../appConstants.js'
 
-const router = Router()
-const urlEncodedParser = bodyParser.urlencoded({ extended: false })
+const router = express.Router()
 
 // dashboard page
 // MNTOR-1327: for v2 release, we want to temp redirect users from dashboard
@@ -32,8 +31,11 @@ router.get('/dashboard', (req, res) => res.redirect(302, '/user/breaches'))
 // data breaches detail page
 router.get('/breaches', requireSessionUser, breachesPage)
 
-// data exposures detail page
-router.get('/exposures', requireSessionUser, exposuresPage)
+// Not ready yet, so don't expose in production:
+if (AppConstants.NODE_ENV === 'dev') {
+  // data exposures detail page
+  router.get('/exposures', requireSessionUser, exposuresPage)
+}
 
 // data removal page
 router.get('/data-removal', requireSessionUser, dataRemovalPage)
@@ -45,12 +47,12 @@ router.get('/settings', requireSessionUser, settingsPage)
 router.get('/logout', asyncMiddleware(logout))
 
 // unsubscribe from emails
-router.get('/unsubscribe', urlEncodedParser, asyncMiddleware(unsubscribePage))
+router.get('/unsubscribe', express.urlencoded({ extended: false }), asyncMiddleware(unsubscribePage))
 router.post('/unsubscribe', asyncMiddleware(unsubscribeFromEmails))
 
 router.get(
   '/unsubscribe-monthly',
-  urlEncodedParser,
+  express.urlencoded({ extended: false }),
   asyncMiddleware(unsubscribeMonthlyPage)
 )
 

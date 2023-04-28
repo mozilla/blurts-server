@@ -6,6 +6,7 @@
 // Partial-specific modules are auto-loaded based on filename and should not be added here.
 import './scrollObserver.js'
 import './resizeObserver.js'
+import './transitionObserver.js'
 import './components/circleChart.js'
 import './components/customSelect.js'
 import './components/toastAlert.js'

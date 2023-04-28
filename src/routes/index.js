@@ -39,6 +39,8 @@ router.use('/oauth', doubleCsrfProtection, authRoutes)
 router.use('/user', doubleCsrfProtection, userRoutes)
 router.use('/breaches', doubleCsrfProtection, breachesRoutes)
 router.use('/breach-details', doubleCsrfProtection, breachDetailRoutes)
+// This page no longer exists, but other websites still link there:
+router.use('/security-tips', (req, res) => res.redirect(302, 'https://support.mozilla.org/kb/how-stay-safe-web'))
 router.use('/', doubleCsrfProtection, dockerFlowRoutes)
 
 // Do not make the non-auth previews available on prod
