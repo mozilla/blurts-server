@@ -55,4 +55,4 @@ Except for the `Breach notification` email, all of the templates are populated w
 
 ### Sending test emails
 
-From the admin version, you have the ability to send emails. Admins can send emails to their primary email address or to the public Mailinator address that we can use for testing.
+From the admin version, you have the ability to send emails. Admins can send emails to their primary email address or to the [public Mailinator address](https://www.mailinator.com/v4/public/inboxes.jsp?to=localmonitor20200827#) that we can use for testing.
