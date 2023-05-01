@@ -116,7 +116,7 @@ const fxaRpEvents = async (req, res) => {
     res.status(202)
   }
 
-  const subscriber = getSubscriberByFxaUid(fxaUserId)
+  const subscriber = await getSubscriberByFxaUid(fxaUserId)
 
   // reference example events: https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md
   for (const event in decodedJWT?.events) {
