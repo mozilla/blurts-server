@@ -76,7 +76,7 @@
     "mozlog": "^3.0.2",
     "nodemailer": "^6.9.1",
     "pg": "^8.9.0",
-    "redis": "^4.6.5",
+    "redis": "^4.6.6",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
