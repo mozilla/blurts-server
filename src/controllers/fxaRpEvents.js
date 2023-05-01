@@ -4,7 +4,7 @@
 
 import * as jwt from 'jsonwebtoken'
 import jwkToPem from 'jwk-to-pem'
-import { captureException } from '@sentry/node'
+import { captureException, captureMessage } from '@sentry/node'
 import { UnauthorizedError } from '../utils/error.js'
 import { deleteSubscriberByFxAUID, getSubscriberByFxaUid, updateFxAProfileData } from '../db/tables/subscribers.js'
 import mozlog from '../utils/log.js'
@@ -23,16 +23,16 @@ const FXA_DELETE_USER_EVENT = 'https://schemas.accounts.firefox.com/event/delete
 const getJwtPubKey = async () => {
   const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwt`
   try {
-    const res = await fetch(jwtKeyUri, {
+    const response = await fetch(jwtKeyUri, {
       headers: {
         'Content-Type': 'application/json'
       }
     })
-    const { keys } = res
+    const { keys } = await response.json()
     log.info('getJwtPubKey', `fetched jwt public keys from: ${jwtKeyUri} - ${keys}`)
     return keys
   } catch (e) {
-    captureException('Could not get JWT public key', jwtKeyUri)
+    captureMessage('Could not get JWT public key', jwtKeyUri)
   }
 }
 
@@ -48,7 +48,7 @@ const authenticateFxaJWT = async (req) => {
 
   // Require an auth header
   if (!authHeader) {
-    captureException('No auth header found', req?.headers)
+    captureMessage('No auth header found', req?.headers)
     throw new UnauthorizedError('No auth header found')
   }
 
@@ -105,14 +105,14 @@ const fxaRpEvents = async (req, res) => {
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
-    captureException(new Error('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT))
+    captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
     res.status(202)
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    captureException(new Error('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT))
+    captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
     res.status(202)
   }
 
