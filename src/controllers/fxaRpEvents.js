@@ -55,7 +55,7 @@ const authenticateFxaJWT = async (req) => {
   // Extract the first portion which should be 'Bearer'
   const headerType = authHeader.substr(0, authHeader.indexOf(' '))
   if (headerType !== 'Bearer') {
-    throw UnauthorizedError('Invalid auth type')
+    throw new UnauthorizedError('Invalid auth type')
   }
 
   // The remaining portion, which should be the token
@@ -64,7 +64,7 @@ const authenticateFxaJWT = async (req) => {
   // Decode the token, require it to come out ok as an object
   const token = jwt.decode(headerToken, { complete: true })
   if (!token || typeof token === 'string') {
-    throw UnauthorizedError('Invalid token type')
+    throw new UnauthorizedError('Invalid token type')
   }
 
   // Verify we have a key for this kid, this assumes that you have fetched
@@ -72,7 +72,7 @@ const authenticateFxaJWT = async (req) => {
   const publicJwks = await getJwtPubKey()
   const jwk = publicJwks.find(j => j.kid === token.header.kid)
   if (!jwk) {
-    throw UnauthorizedError('No jwk found for this kid: ' + token.header.kid)
+    throw new UnauthorizedError('No jwk found for this kid: ' + token.header.kid)
   }
   const jwkPem = jwkToPem(jwk)
 
@@ -88,8 +88,8 @@ const authenticateFxaJWT = async (req) => {
  * Handler for FxA events, used by FxA as a callback URI endpoint
  * Example events include FxA user deletion, profile changes, and subscription changes
  *
- * @param {*} req
- * @param {*} res
+ * @param {import('express').Request} req
+ * @param {import('express').Response} res
  * @returns
  */
 const fxaRpEvents = async (req, res) => {
