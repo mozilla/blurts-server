@@ -53,13 +53,13 @@ const authenticateFxaJWT = async (req) => {
   }
 
   // Extract the first portion which should be 'Bearer'
-  const headerType = authHeader.substr(0, authHeader.indexOf(' '))
+  const headerType = authHeader.substring(0, authHeader.indexOf(' '))
   if (headerType !== 'Bearer') {
     throw new UnauthorizedError('Invalid auth type')
   }
 
   // The remaining portion, which should be the token
-  const headerToken = authHeader.substr(authHeader.indexOf(' ') + 1)
+  const headerToken = authHeader.substring(authHeader.indexOf(' ') + 1)
 
   // Decode the token, require it to come out ok as an object
   const token = jwt.decode(headerToken, { complete: true })
