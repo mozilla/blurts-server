@@ -197,8 +197,8 @@ app.use(Sentry.Handlers.errorHandler({
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
-  console.info(`MONITOR V2: Server listening at ${this.address().port}`)
-  console.info(`Client files served from ${staticPath}`)
+  console.info(`Server listening at ${this.address().port}`)
+  console.info(`Client files are served from ${staticPath}`)
   try {
     await initEmail()
     console.info('Email initialized')
