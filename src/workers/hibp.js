@@ -11,9 +11,9 @@ import {
 
 import { acceptedLanguages, negotiateLanguages } from '@fluent/langneg'
 
-import { getEmailAddressesByHashes } from '../db/tables/email_addresses.js'
-import { getTemplate } from '../views/emails/email-2022.js'
-import { breachAlertEmailPartial } from '../views/emails/email-breach-alert.js'
+import { getEmailAddressesByHashes } from '../db/tables/emailAddresses.js'
+import { getTemplate } from '../views/emails/email2022.js'
+import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
 
 import {
   EmailTemplateType,

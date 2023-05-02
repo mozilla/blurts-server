@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../appConstants.js'
-import notifyWorker from '../workers/hibp.js'
-
 import { CloudTasksClient } from '@google-cloud/tasks'
 import { credentials } from '@grpc/grpc-js'
+
+import AppConstants from '../appConstants.js'
+import { notifyWorker } from '../workers/hibp.js'
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.

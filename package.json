@@ -60,6 +60,7 @@
   "dependencies": {
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
+    "@google-cloud/tasks": "^3.1.2",
     "@sentry/node": "^7.40.0",
     "@sentry/tracing": "^7.38.0",
     "client-oauth2": "^4.3.3",
