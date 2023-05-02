@@ -2,134 +2,114 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// import { getMessage } from '../utils/fluent.js'
+import { getMessage } from '../utils/fluent.js'
 
-// General error strings
-const badRequestErrorMessage = ''
-const unauthorizedErrorMessage = 'You don’t have permission to access this content.'
-const forbiddenErrorMessage = 'You don’t have permission to access this content.'
-const methodNotAllowedErrorMessage = 'Method Not Allowed'
-const tooManyRequestsErrorMessage = 'Too many requests received. Please try again later.'
-const internalServerErrorMessage = 'Something went wrong. Please try again or come back later.'
+// Default error messages
+const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
+const permissionErrorMessage = 'You don’t have permission to access this content.'
+const tooManyRequestsErrorMessage = 'Too many requests received. Please try again later. '
 
-// Custom error strings
-const invalidSessionErrorMessage = "getMessage('oauth-invalid-session')"
-const userInputErrorMessage = 'The information provided is not valid. Please check and try again.'
-const resolveBreachErrorMessage = ''
-const oneRepErrorMessage = ''
-const duplicateEmailErrorMessage = 'This email has already been verified.'
-const addEmailErrorMessage = 'Email couldn’t be added. Please try again.'
-const emailVerificationErrorMessage = 'Email verification not sent. Please try again.'
-const breachesErrorMessage = 'We couldn’t search for the latest breaches. Please refresh or try again later.'
-
-class ServerSideError extends Error {
+class BadRequestError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = 'Server-side error', ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-
-    if (!process) {
-      console.info('This error is only supposed to be used server-side.')
-    }
-  }
-}
-
-class BadRequestError extends ServerSideError {
-  /**
-   * @param {string | undefined} message
-   * @param {Array<object>} config
-   */
-  constructor (message = badRequestErrorMessage, ...config) {
-    super(message, ...config)
-    this.statusCode = 400
+    this.message = message || genericErrorMessage
     this.name = 'Bad request'
+    this.statusCode = 400
   }
 }
 
-class UnauthorizedError extends ServerSideError {
+class UnauthorizedError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = unauthorizedErrorMessage, ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-    this.statusCode = 401
     this.name = 'Unauthorized'
+    this.statusCode = 401
+    this.message = message || permissionErrorMessage
   }
 }
 
-class ForbiddenError extends ServerSideError {
+class ForbiddenError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = forbiddenErrorMessage, ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-    this.statusCode = 403
     this.name = 'Forbidden'
+    this.statusCode = 403
+    this.message = message || permissionErrorMessage
   }
 }
 
-class MethodNotAllowedError extends ServerSideError {
+class MethodNotAllowedError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = methodNotAllowedErrorMessage, ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-    this.statusCode = 405
     this.name = 'Method Not Allowed'
+    this.statusCode = 405
+    this.message = message || genericErrorMessage
   }
 }
-class ConflictError extends ServerSideError {
+class ConflictError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = methodNotAllowedErrorMessage, ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-    this.statusCode = 409
     this.name = 'Conflict'
+    this.statusCode = 409
+    this.message = message || genericErrorMessage
   }
 }
 
-class TooManyRequestsError extends ServerSideError {
+class TooManyRequestsError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = tooManyRequestsErrorMessage, ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-    this.statusCode = 429
     this.name = 'Too Many Requests'
+    this.statusCode = 429
+    this.message = message || tooManyRequestsErrorMessage
   }
 }
 
-class InternalServerError extends ServerSideError {
+class InternalServerError extends Error {
   /**
    * @param {string | undefined} message
    * @param {Array<object>} config
    */
-  constructor (message = internalServerErrorMessage, ...config) {
+  constructor (message, ...config) {
     super(message, ...config)
-    this.statusCode = 500
     this.name = 'Internal Server Error'
+    this.statusCode = 500
+    this.message = message || genericErrorMessage
   }
 }
 
-class FluentError extends ServerSideError {
+class FluentError extends Error {
   /**
    * Fluent error
    *
-   * @param {string | undefined} message
+   * @param {string | undefined} messageId
    * @param {Array<object>} config
    */
-  constructor (message = '', ...config) {
-    super(message, ...config)
-    // this.message = getMessage(this.message)
+  constructor (messageId, ...config) {
+    super(messageId, ...config)
     this.name = 'Fluent Error'
+    this.message = messageId ? getMessage(messageId) : genericErrorMessage
   }
 }
 
@@ -140,7 +120,6 @@ export {
   ForbiddenError,
   InternalServerError,
   MethodNotAllowedError,
-  ServerSideError,
   TooManyRequestsError,
   UnauthorizedError
 }

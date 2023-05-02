@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { InternalServerError } from './utils/error.js'
-
 // TODO: these vars were copy/pasted from the old app-constants.js and should be cleaned up
 import * as dotenv from 'dotenv'
 dotenv.config()
@@ -66,7 +64,7 @@ if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
 for (const v of requiredEnvVars) {
   const value = process.env[v]
   if (value === undefined) {
-    throw new InternalServerError(`Required environment variable was not set: ${v}`)
+    throw new Error(`Required environment variable was not set: ${v}`)
   }
   AppConstants[v] = value
 }

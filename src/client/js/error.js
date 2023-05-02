@@ -2,19 +2,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-class ClientSideError extends Error {
-  /**
-   * @param {string | undefined} message
-   * @param {Array<object>} config
-   */
-  constructor (message, ...config) {
-    super(message, ...config)
-
-    if (!window && !document) {
-      console.info('This error is only supposed to be used client-side.')
-    }
-  }
-}
+// TODO: Localize error messages
+// Client error messages
+const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
+const searchBreachesErrorMessage = 'We couldn’t search for the latest breaches. Please refresh or try again later.'
+const emailVerificationErrorMessage = 'Email verification not sent. Please try again.'
+const duplicateEmailErrorMessage = 'This email has already been verified. '
+const addEmailErrorMessage = 'Email couldn’t be added. Please try again.'
+const dataBrokerErrorMessage = 'Something went wrong. Please try again or come back later.'
 
 const ErrorActionTypes = {
   None: 'none',
@@ -30,17 +25,13 @@ class ClientError extends Error {
   constructor (message, ...config) {
     super(message, ...config)
 
-    if (!window && !document) {
-      console.info('This error is only supposed to be used client-side.')
-    }
-
     const [{
       action = ErrorActionTypes.None,
       targetHref = '/'
     }] = config
 
     this.config = { action, targetHref }
-    this.message = message
+    this.message = message || genericErrorMessage
     this.toast = null
 
     this.handleConfig()
@@ -77,7 +68,4 @@ class ClientError extends Error {
   }
 }
 
-export {
-  ClientError,
-  ClientSideError
-}
+export { ClientError }
