@@ -9,6 +9,9 @@ settings-page-title = { -product-short-name }-innstillingar
 
 ## Breach alert preferences
 
+settings-alert-preferences-title = Innstillingar for datalekkasjevarsel
+settings-alert-preferences-option-one = Send alle åtvaringar om datalekkasjar til den ramma e-postadressa
+settings-alert-preferences-option-two = Send alle åtvaringar om datalekkasjar til den primære e-postadressa
 
 ## Monitored email addresses
 
