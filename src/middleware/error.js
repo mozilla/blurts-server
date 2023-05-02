@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import mozlog from '../utils/log.js'
-import { MethodNotAllowedError } from '../shared/error.js'
+import { MethodNotAllowedError } from '../utils/error.js'
 
 import { guestLayout } from '../views/guestLayout.js'
 import { error } from '../views/partials/error.js'

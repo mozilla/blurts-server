@@ -5,7 +5,7 @@
 import AppConstants from '../appConstants.js'
 import { getSubscriberById, updateFxAProfileData } from '../db/tables/subscribers.js'
 import * as FXA from '../utils/fxa.js'
-import { UnauthorizedError } from '../shared/error.js'
+import { UnauthorizedError } from '../utils/error.js'
 
 async function getRequestSessionUser (req, res, next) {
   if (req.session && req.session.user) {

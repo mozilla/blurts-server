@@ -22,7 +22,7 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 import { getMessage } from '../utils/fluent.js'
 import { getProfileData, FxAOAuthClient, getSha1 } from '../utils/fxa.js'
 import { getEmailCtaHref, sendEmail } from '../utils/email.js'
-import { UnauthorizedError } from '../shared/error.js'
+import { UnauthorizedError } from '../utils/error.js'
 import mozlog from '../utils/log.js'
 
 const { SERVER_URL } = AppConstants

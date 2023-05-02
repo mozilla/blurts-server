@@ -21,7 +21,7 @@ import { loadBreachesIntoApp } from './utils/hibp.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 import { noSearchEngineIndex } from './middleware/noSearchEngineIndex.js'
-import { TooManyRequestsError } from './shared/error.js'
+import { TooManyRequestsError } from './utils/error.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
@@ -46,9 +46,7 @@ Sentry.init({
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
 // Build script is NOT run for `npm run dev`, assets are served from /src, and nodemon restarts server without build (faster dev).
-const isRunningStart = process.env.npm_lifecycle_event === 'start'
-const staticPath = isRunningStart ? '../dist' : './client'
-const sharedPath = isRunningStart ? '../dist' : './shared'
+const staticPath = process.env.npm_lifecycle_event === 'start' ? 'dist' : 'src/client'
 
 await initFluentBundles()
 
@@ -172,7 +170,6 @@ try {
 
 app.use(noSearchEngineIndex)
 app.use(express.static(staticPath))
-app.use('/shared', express.static(sharedPath))
 app.use(express.json())
 app.use(cookieParser(AppConstants.COOKIE_SECRET))
 

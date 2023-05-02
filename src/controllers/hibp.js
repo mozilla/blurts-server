@@ -22,7 +22,7 @@ import {
   loadBreachesIntoApp
 } from '../utils/hibp.js'
 import mozlog from '../utils/log.js'
-import { UnauthorizedError, UserInputError } from '../shared/error.js'
+import { UnauthorizedError, BadRequestError, InternalServerError } from '../utils/error.js'
 
 const log = mozlog('controllers.hibp')
 
@@ -45,7 +45,7 @@ async function notify (req, res) {
     throw new UnauthorizedError(errorMessage)
   }
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
-    throw new UserInputError('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
+    throw new BadRequestError('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
   }
 
   const { breachName, hashPrefix, hashSuffixes } = req.body
@@ -59,7 +59,7 @@ async function notify (req, res) {
     breachAlert = getBreachByName(req.app.locals.breaches, breachName)
     if (!breachAlert) {
       // If breach *still* isn't found, we have a real error
-      throw new Error('Unrecognized breach: ' + breachName)
+      throw new InternalServerError('Unrecognized breach: ' + breachName)
     }
   }
 
@@ -179,7 +179,7 @@ async function notify (req, res) {
         info: 'Notified subscribers of breach.'
       })
   } catch (error) {
-    throw new Error(`Notifying subscribers of breach failed: ${error}`)
+    throw new InternalServerError(`Notifying subscribers of breach failed: ${error}`)
   }
 }
 

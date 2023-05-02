@@ -22,7 +22,7 @@ import { getBreachesForEmail } from '../utils/hibp.js'
 import { getSha1 } from '../utils/fxa.js'
 import { validateEmailAddress } from '../utils/emailAddress.js'
 import { generateToken } from '../utils/csrf.js'
-import { TooManyRequestsError, UnauthorizedError, UserInputError } from '../shared/error.js'
+import { TooManyRequestsError, UnauthorizedError, BadRequestError } from '../utils/error.js'
 
 import { mainLayout } from '../views/mainLayout.js'
 import { settings } from '../views/partials/settings.js'
@@ -72,11 +72,11 @@ async function addEmail (req, res) {
   const validatedEmail = validateEmailAddress(req.body.email)
 
   if (validatedEmail === null) {
-    throw new UserInputError(getMessage('user-add-invalid-email'))
+    throw new BadRequestError(getMessage('user-add-invalid-email'))
   }
 
   if (emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
-    throw new UserInputError(getMessage('user-add-too-many-emails'))
+    throw new BadRequestError(getMessage('user-add-too-many-emails'))
   }
 
   checkForDuplicateEmail(sessionUser, validatedEmail.email)
@@ -99,12 +99,12 @@ async function addEmail (req, res) {
 function checkForDuplicateEmail (sessionUser, email) {
   const emailLowerCase = email.toLowerCase()
   if (emailLowerCase === sessionUser.primary_email.toLowerCase()) {
-    throw new UserInputError(getMessage('user-add-duplicate-email'))
+    throw new BadRequestError(getMessage('user-add-duplicate-email'))
   }
 
   for (const secondaryEmail of sessionUser.email_addresses) {
     if (emailLowerCase === secondaryEmail.email.toLowerCase()) {
-      throw new UserInputError(getMessage('user-add-duplicate-email'))
+      throw new BadRequestError(getMessage('user-add-duplicate-email'))
     }
   }
 }
@@ -115,7 +115,7 @@ async function removeEmail (req, res) {
   const existingEmail = await getEmailById(emailId)
 
   if (existingEmail?.subscriber_id !== sessionUser.id) {
-    throw new UserInputError(getMessage('error-not-subscribed'))
+    throw new BadRequestError(getMessage('error-not-subscribed'))
   }
 
   removeOneSecondaryEmail(emailId)
