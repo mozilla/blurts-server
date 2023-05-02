@@ -26,7 +26,7 @@ import mozlog from '../utils/log.js'
 
 const log = mozlog('controllers.hibp')
 
-async function notify (req, res) {
+async function notifyWorker (req, res) {
   const { breachName, hashPrefix, hashSuffixes } = req.body
 
   let breachAlert = getBreachByName(req.app.locals.breaches, breachName)
@@ -158,4 +158,4 @@ async function notify (req, res) {
   }
 }
 
-export { notify }
+export { notifyWorker }
