@@ -9,7 +9,7 @@ add-email-add-another-heading = Tambahkan alamat surel lainnya
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
     { $total ->
-       *[other] Akun Anda mencakup pemantauan hingga { $total } alamat surel. Tambahkan alamat surel baru untuk melihat apakah itu terlibat dalam pembobolan.
+       *[other] Akun Anda mencakup pemantauan hingga { $total } alamat surel. Tambahkan alamat surel baru untuk melihat apakah alamatnya terlibat dalam pembobolan.
     }
 add-email-address-input-label = Alamat surel
 add-email-send-verification-button = Kirim tautan verifikasi
