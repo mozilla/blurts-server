@@ -15,9 +15,14 @@ interface HTMLElement {
 // eslint-disable-next-line no-unused-vars
 type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams & { partial: { name: string } }) => string;
 type GuestViewPartialData<ViewPartialParams = object> = {
-  partial: ViewPartial<ViewPartialParams>;
-  nonce: string;
-} & ViewPartialParams;
+    partial: ViewPartial<ViewPartialParams>;
+    nonce: string;
+    meta?: {
+      title?: string;
+      socialTitle?: string;
+      socialDescription?: string;
+    };
+  } & ViewPartialParams;
 type MainViewPartialData<ViewPartialParams = object> = {
   fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
 } & GuestViewPartialData<ViewPartialParams>;
