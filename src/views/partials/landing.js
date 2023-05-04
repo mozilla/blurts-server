@@ -106,5 +106,5 @@ export const landing = () => `
   <h2>${getMessage('see-if-data-breach')}</h2>
   <a class='button primary' data-cta-id='landing-2' href='/user/breaches'>${getMessage('get-started')}</a>
   <p class='hibp-attribution'>${getMessage('hibp-footer-attribution')}</p>
-  </section>
+</section>
 `
