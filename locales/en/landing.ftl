@@ -52,3 +52,5 @@ depends-on-hackers = Not all breaches expose all the same info. It just depends 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = See if you’ve been in a data breach
+hibp-footer-attribution = Breach data provided by <b>{ -brand-HIBP }</b>
+
