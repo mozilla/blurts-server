@@ -239,8 +239,8 @@ async function deleteUnverifiedSubscribers () {
  * @param {string} fxaUID FxA user ID
  */
 async function deleteSubscriberByFxAUID (fxaUID) {
-  const subscriberId = await knex('subscribers').where('fxa_uid', fxaUID).del().returning('id')
-  await knex('email_addresses').where({ subscriber_id: subscriberId }).del()
+  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
+  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
 }
 
 async function deleteResolutionsWithEmail (id, email) {

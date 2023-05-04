@@ -12,6 +12,7 @@ import appConstants from '../appConstants.js'
 const log = mozlog('controllers.fxa-rp-events')
 
 const FXA_PROFILE_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/profile-change'
+const FXA_PASSWORD_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/password-change'
 const FXA_SUBSCRIPTION_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/subscription-state-change'
 const FXA_DELETE_USER_EVENT = 'https://schemas.accounts.firefox.com/event/delete-user'
 
@@ -21,7 +22,7 @@ const FXA_DELETE_USER_EVENT = 'https://schemas.accounts.firefox.com/event/delete
  * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
  */
 const getJwtPubKey = async () => {
-  const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwt`
+  const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwks`
   try {
     const response = await fetch(jwtKeyUri, {
       headers: {
@@ -29,7 +30,7 @@ const getJwtPubKey = async () => {
       }
     })
     const { keys } = await response.json()
-    log.info('getJwtPubKey', `fetched jwt public keys from: ${jwtKeyUri} - ${keys}`)
+    log.info('getJwtPubKey', `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`)
     return keys
   } catch (e) {
     captureMessage('Could not get JWT public key', jwtKeyUri)
@@ -61,18 +62,12 @@ const authenticateFxaJWT = async (req) => {
   // The remaining portion, which should be the token
   const headerToken = authHeader.substring(authHeader.indexOf(' ') + 1)
 
-  // Decode the token, require it to come out ok as an object
-  const token = jwt.decode(headerToken, { complete: true })
-  if (!token || typeof token === 'string') {
-    throw new UnauthorizedError('Invalid token type')
-  }
-
   // Verify we have a key for this kid, this assumes that you have fetched
   // the publicJwks from FxA and put both them in an Array.
   const publicJwks = await getJwtPubKey()
-  const jwk = publicJwks.find(j => j.kid === token.header.kid)
+  const jwk = publicJwks[0]
   if (!jwk) {
-    throw new UnauthorizedError('No jwk found for this kid: ' + token.header.kid)
+    throw new UnauthorizedError('No public jwk found')
   }
   const jwkPem = jwkToPem(jwk)
 
@@ -80,6 +75,7 @@ const authenticateFxaJWT = async (req) => {
   const decoded = jwt.verify(headerToken, jwkPem, {
     algorithms: ['RS256']
   })
+
   // This is the JWT data itself.
   return decoded
 }
@@ -99,21 +95,21 @@ const fxaRpEvents = async (req, res) => {
   } catch (e) {
     log.error('fxaRpEvents', e)
     captureException(e)
-    res.status(202)
+    res.status(202).send('OK')
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
-    res.status(202)
+    res.status(202).send('OK')
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
-    res.status(202)
+    res.status(202).send('OK')
   }
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
@@ -123,6 +119,7 @@ const fxaRpEvents = async (req, res) => {
     switch (event) {
       case FXA_DELETE_USER_EVENT:
         log.debug('fxa_delete_user', {
+          fxaUserId,
           event
         })
 
@@ -132,6 +129,7 @@ const fxaRpEvents = async (req, res) => {
       case FXA_PROFILE_CHANGE_EVENT: {
         const updatedProfileFromEvent = decodedJWT.events[event]
         log.debug('fxa_profile_update', {
+          fxaUserId,
           event,
           updatedProfileFromEvent
         })
@@ -148,9 +146,25 @@ const fxaRpEvents = async (req, res) => {
         await updateFxAProfileData(subscriber, currentFxAProfile)
         break
       }
-      case FXA_SUBSCRIPTION_CHANGE_EVENT:
-        // TODO: to be implemented after subplat
+      case FXA_PASSWORD_CHANGE_EVENT: {
+        const updateFromEvent = decodedJWT.events[event]
+        log.debug('fxa_password_change', {
+          fxaUserId,
+          event,
+          updateFromEvent
+        })
         break
+      }
+      case FXA_SUBSCRIPTION_CHANGE_EVENT: {
+        // TODO: to be implemented after subplat
+        const updatedSubscriptionFromEvent = decodedJWT.events[event]
+        log.debug('fxa_subscription_change', {
+          fxaUserId,
+          event,
+          updatedSubscriptionFromEvent
+        })
+        break
+      }
       default:
         log.warn('unhandled_event', {
           event
@@ -159,7 +173,7 @@ const fxaRpEvents = async (req, res) => {
     }
   }
 
-  res.status(200)
+  res.status(200).send('OK')
 }
 
 export {
