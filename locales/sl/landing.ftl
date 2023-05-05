@@ -50,3 +50,4 @@ depends-on-hackers = Vse kršitve ne razkrijejo istih podatkov. Odvisno od tega,
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Preverite, ali ste bili deležni kraje podatkov
+hibp-footer-attribution = Podatke o varnostnih zlorabah posredoval <b>{ -brand-HIBP }</b>

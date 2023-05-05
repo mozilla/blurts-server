@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } – Nastavitve
 settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 
 ## Breach alert preferences
