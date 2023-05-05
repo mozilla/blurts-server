@@ -28,6 +28,10 @@ filter-label-resolved = Επιλυμένες παραβιάσεις
 column-company = ΕΤΑΙΡΕΙΑ
 column-breached-data = ΠΑΡΑΒΙΑΣΜΕΝΑ ΔΕΔΟΜΕΝΑ
 column-detected = ΑΝΙΧΝΕΥΣΗ
+# “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
+column-status-badge-resolved = Επιλύθηκε
+# “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
+column-status-badge-active = Ενεργή
 breaches-resolve-heading = Επίλυση παραβίασης:
 breaches-none-headline = Δεν βρέθηκαν παραβιάσεις
 # Variables:
