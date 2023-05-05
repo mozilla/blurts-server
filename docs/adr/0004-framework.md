@@ -38,7 +38,7 @@ TBD
 * Good, Accessibility: React provides ARIA support, focus management, and components are designed with accessibility best practices in mind.
 * Good, Shared knowledge: This approach shares the same structure as Firefox Relay. This would immediately allow the team to reuse and reference.
 	* Note that FxA came to a similiar decision: [FxA ADR: Refactor Subscription Platform frontend - with Next.js](https://github.com/mozilla/fxa/blob/main/docs/adr/0035-refactor-payments-frontend-with-nextjs.md) 
-* Good, Typescript: TypeScript's static typing enhances code robustness and readability by catching errors at compile-time and making code more self-explanatory.
+* Good, Enables static analysis: programmatically-generated DOM and explicit module imports enables optimal use of TypeScript to catch errors at compile-time and make code more self-explanatory.
 * Good, Industry Usage/Standard: React has a large and active community of developers, with many resources available, including libraries, tutorials, and support.
 * Good, Simpler Code: Hooks in React utilizes simpler code that implements similar functionalities faster and more effectively
 * Good, [fluent-react](https://github.com/projectfluent/fluent.js/tree/main/fluent-react) enables more dynamic localized texts and messages
