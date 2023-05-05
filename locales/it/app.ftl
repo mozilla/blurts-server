@@ -651,7 +651,7 @@ ad-unit-6-before-you-complete = La prossima volta che devi registrarti, utilizza
 
 ## Search Engine Optimization
 
-meta-desc-2 = Scopri se sei stato coinvolto in una violazione di dati con { -brand-fx-monitor }. Ti aiuteremo a capire cosa fare dopo e a monitorare costantemente eventuali nuove violazioni.
+meta-desc-2 = Scopri se sei stato coinvolto in una violazione di dati con { -brand-fx-monitor }. Ti aiuteremo a capire i passi successivi da fare e a monitorare costantemente eventuali nuove violazioni.
 
 ## Header
 
