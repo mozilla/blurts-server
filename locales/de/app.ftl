@@ -672,7 +672,7 @@ ad-unit-6-before-you-complete = Bevor Sie die nächste Registrierung abschließe
 
 ## Search Engine Optimization
 
-meta-desc = Überprüfen Sie mit { -brand-fx-monitor }, ob Sie von einem Datenleck betroffen sind. Melden Sie sich für Warnungen zu zukünftigen Datenlecks an und erhalten Sie Tipps zum Schutz Ihrer Online-Konten.
+meta-desc-2 = Überprüfen Sie mit { -brand-fx-monitor }, ob Sie von einem Datenleck betroffen sind. Wir helfen Ihnen, zu verstehen, was als Nächstes zu tun ist und überwachen Sie fortlaufend auf neue Datenlecks.
 
 ## Header
 
