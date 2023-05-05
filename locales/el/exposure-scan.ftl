@@ -2,6 +2,7 @@ exposure-landing-hero-heading = Μάθετε εάν έχουν παραβιασ�
 exposure-landing-hero-email-label = Διεύθυνση email
 exposure-landing-hero-cta-label = Έλεγχος για παραβιάσεις
 exposure-landing-result-loading = Φόρτωση, παρακαλώ περιμένετε…
+exposure-landing-result-error = Κάτι πήγε στραβά κατά τον έλεγχο για παραβιάσεις. Παρακαλούμε ανανεώστε τη σελίδα και δοκιμάστε ξανά.
 # Variables:
 #   $email (string) - The user's email address, used to identify their data in breaches
 #   $count (number) - Number of data breaches in which the user's data was found

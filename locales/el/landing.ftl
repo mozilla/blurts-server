@@ -21,6 +21,7 @@ alerts-for-breaches-monitor-new = Θα παρακολουθούμε συνεχώ
 ## Your privacy is safe with us
 
 safe-with-us = Το απόρρητό σας είναι ασφαλές μαζί μας
+parent-company = Στη { -brand-Mozilla }, τη μητρική εταιρεία των { -brand-firefox } και { -brand-fx-monitor }, πιστεύουμε ότι η διαδικτυακή ασφάλεια και η ιδιωτικότητα των ατόμων είναι θεμελιώδεις και δεν πρέπει να αντιμετωπίζονται ως προαιρετικές.
 learn-more-mission = Μάθετε περισσότερα σχετικά με την αποστολή μας
 
 ## Top questions about Firefox Monitor
