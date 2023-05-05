@@ -40,8 +40,7 @@ TBD
 	* Note that FxA came to a similiar decision: [FxA ADR: Refactor Subscription Platform frontend - with Next.js](https://github.com/mozilla/fxa/blob/main/docs/adr/0035-refactor-payments-frontend-with-nextjs.md) 
 * Good, Enables static analysis: programmatically-generated DOM and explicit module imports enables optimal use of TypeScript to catch errors at compile-time and make code more self-explanatory.
 * Good, Industry Usage/Standard: React has a large and active community of developers, with many resources available, including libraries, tutorials, and support.
-* Good, Simpler Code: Hooks in React utilizes simpler code that implements similar functionalities faster and more effectively
-* Good, [fluent-react](https://github.com/projectfluent/fluent.js/tree/main/fluent-react) enables more dynamic localized texts and messages
+* Good, [fluent-react](https://github.com/projectfluent/fluent.js/tree/main/fluent-react) enables localised messages that can be updated on the client-side
 * Bad, Tooling Overhead: React's tooling and ecosystem can be complex, which can be a disadvantage for developers who prefer a more minimalistic approach.
 * Bad, Performance cost when rendering a large number of components, may require additional optimization work
 * Bad, Learning curve: Challenging for new developers jumping into the project to understand how to debug issues or how components are interacting with each other
