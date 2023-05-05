@@ -725,7 +725,7 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 
 ## Search Engine Optimization
 
-meta-desc = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -brand-fx-monitor } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+meta-desc-2 = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -brand-fx-monitor } segítségével. Segítünk megérteni, hogy mit tegyen, és folyamatosan figyeljük az új adatvédelmi incidenseket.
 
 ## Header
 
