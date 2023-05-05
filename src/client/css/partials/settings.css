@@ -10,9 +10,14 @@
   color: black;
 }
 
+.settings-section-info {
+  margin-top: 0;
+}
 .settings-section-title {
-  font: var(--h4-font);
-  margin: var(--padding-sm) 0 var(--padding-md) 0;
+  font-family: var(--body-font);
+    margin: var(--padding-sm) 0;
+    font-weight: 700;
+    font-size: 1rem;
 }
 
 .settings-content {
@@ -74,10 +79,7 @@
 }
 
 .settings-email-item {
-  border: 1px solid var(--gray-10);
-  border-radius: var(--border-radius);
   gap: var(--padding-sm);
-  padding: calc(var(--padding-lg) * 0.75);
   padding-right: var(--padding-lg);
 }
 
