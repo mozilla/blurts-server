@@ -33,8 +33,8 @@ TBD
 ### Migrate framework to React and Next.js
 
 * Good, Component-based Architecture: This simplifies code maintenance by breaking complex UIs into reusable components.
-* Good, Virtual DOM: React's virtual DOM allows for efficient updates and rendering of the UI, which can improve performance and speed up development.
-* Good, Testing: Test components in isolation because of its modularity
+* Good, Testing: the virtual DOM makes it feasible to write non-brittle (i.e. without needing to fire up a full browser) unit tests of the front-end
+* Good, Fewer bugs: having React take care of removing, adding or changing DOM nodes removes a large surface area for bugs.
 * Good, Accessibility: React provides ARIA support, focus management, and components are designed with accessibility best practices in mind.
 * Good, Shared knowledge: This approach shares the same structure as Firefox Relay. This would immediately allow the team to reuse and reference.
 	* Note that FxA came to a similiar decision: [FxA ADR: Refactor Subscription Platform frontend - with Next.js](https://github.com/mozilla/fxa/blob/main/docs/adr/0035-refactor-payments-frontend-with-nextjs.md) 
