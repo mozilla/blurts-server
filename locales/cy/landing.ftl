@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Gweld a ydych wedi bod mewn tor-data
-stay-safe-with-tool = Cadwch yn ddiogel gyda theclyn syml ond pwerus sy'n dangos a yw eich manylion personol wedi'i datgelu mewn achos o dor-data. Byddwn yn eich helpu i ddeall beth i'w wneud nesaf ac yn monitro unrhyw doriadau newydd yn barhaus — y cyfan am ddim.
 get-started = Cychwyn arni
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Nid yw pob tor-data'n amlygu'r un wybodaeth. Mae'n dibynnu 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Gweld a ydych wedi ymddangos mewn tor-data.
+hibp-footer-attribution = Darparwyd data torri amodau gan <b>{ -brand-HIBP }</b>
