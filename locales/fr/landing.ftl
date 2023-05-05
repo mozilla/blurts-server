@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Vérifiez si vous êtes concerné·e par une fuite de données
-stay-safe-with-tool = Restez en sécurité avec un outil simple mais puissant qui permet de savoir si vos données personnelles ont été exposées lors d’une fuite de données. Nous vous aiderons à comprendre ce qu’il faut faire ensuite et à surveiller en permanence toute nouvelle fuite, le tout sans frais pour vous.
 get-started = Lancez-vous
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Toutes les fuites de données n’exposent pas toutes les m
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Vérifiez si une fuite de données vous concerne
+hibp-footer-attribution = Les informations sur les fuites de données sont fournies par <b>{ -brand-HIBP }</b>
