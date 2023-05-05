@@ -8,6 +8,7 @@
 -product-short-name = Monitor
 -brand-name = Firefox
 -brand-Mozilla = Mozilla
+-brand-premium = Premium
 -brand-HIBP = Have I Been Pwned
 -brand-fxa = Firefox Account
 -brand-pocket = Pocket
