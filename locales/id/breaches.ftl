@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Dasbor
+breach-all-meta-title = { -brand-fx-monitor } - Semua Pembobolan Data
+breach-all-meta-social-title = Semua Pembobolan Terdeteksi oleh { -brand-fx-monitor }
+breach-all-meta-social-description = Jelajahi daftar lengkap pembobolan yang diketahui terdeteksi oleh { -brand-fx-monitor }, lalu cari tahu apakah informasi Anda terungkap.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Pembobolan Data { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Apakah Anda terpengaruh oleh Pembobolan Data { $company }?
+breach-detail-meta-social-description = Gunakan { -brand-fx-monitor } untuk mengetahui apakah informasi pribadi Anda terungkap dalam pelanggaran ini, dan memahami apa yang harus dilakukan selanjutnya.
+breach-scan-meta-title = { -brand-fx-monitor } - Hasil Pembobolan
+breach-scan-meta-social-title = { -brand-fx-monitor } Hasil Pembobolan
+breach-scan-meta-social-description = Masuk ke { -brand-fx-monitor } untuk menyelesaikan pelanggaran dan mendapatkan pemantauan berkelanjutan untuk setiap pelanggaran baru yang diketahui.
 
 ## Breaches header
 

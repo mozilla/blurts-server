@@ -706,7 +706,7 @@ ad-unit-6-before-you-complete = Sebelum Anda menyelesaikan pendaftaran berikutny
 
 ## Search Engine Optimization
 
-meta-desc = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data dengan { -brand-fx-monitor }. Daftar untuk peringatan tentang pembobolan di masa mendatang dan dapatkan kiat untuk menjaga akun Anda tetap aman.
+meta-desc-2 = Cari tahu apakah Anda telah menjadi bagian dari pembobolan data dengan { -brand-fx-monitor }. Kami akan membantu Anda memahami apa yang harus dilakukan selanjutnya dan terus memantau setiap pelanggaran baru.
 
 ## Header
 

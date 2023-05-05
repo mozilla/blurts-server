@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Pengaturan
 settings-page-title = Pengaturan { -product-short-name }
 
 ## Breach alert preferences

@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Cari tahu apakah Anda pernah mengalami pembobolan data
-stay-safe-with-tool = Tetap aman dengan alat sederhana namun kuat yang melacak apakah informasi pribadi Anda telah terungkap dalam pelanggaran data. Kami akan membantu Anda memahami apa yang harus dilakukan selanjutnya dan terus memantau setiap pelanggaran baru — semuanya tanpa biaya untuk Anda.
 get-started = Memulai
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Tidak semua pembobolan mengekspos semua info yang sama. Itu
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Lihat apakah Anda pernah mengalami pembobolan data
+hibp-footer-attribution = Data pembobolan disediakan oleh <b>{ -brand-HIBP }</b>
