@@ -166,6 +166,7 @@ export const settings = data => {
           ${alertOptions({ csrfToken, allEmailsToPrimary })}
         </section>
 
+        <!-- Cancel Premium Subscription -->
         ${AppConstants.CANCEL_SUBSCRIPTION_FLOW ? cancelPremiumSubscription() : '<hr>'}
 
         <!-- Deactivate account -->
