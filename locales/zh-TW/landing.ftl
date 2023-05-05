@@ -50,4 +50,4 @@ depends-on-hackers = 每場事件外洩的資訊不一定相同，要視駭客�
 ## See if you’ve been in a data breach
 
 see-if-data-breach = 看看您是否已身處資料外洩事件之中。
-hibp-footer-attribution = 資料外洩事件資訊由 <b>{ -brand-HIBP }</b> 提供
+hibp-footer-attribution = 資料外洩事件資訊是由 <b>{ -brand-HIBP }</b> 提供
