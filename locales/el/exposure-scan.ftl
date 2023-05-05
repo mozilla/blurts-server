@@ -12,4 +12,5 @@ exposure-landing-result-hero-heading =
     }
 exposure-landing-result-card-data = Εκτεθειμένα δεδομένα:
 exposure-landing-result-card-nothing = Δεν βρέθηκαν παραβιάσεις
+exposure-landing-result-footer-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <hibp-link>{ -brand-HIBP }</hibp-link>
 exposure-landing-result-none-footer-cta-label = Εγγραφή για ειδοποιήσεις
