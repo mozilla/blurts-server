@@ -45,6 +45,7 @@ TBD
 * Good, [fluent-react](https://github.com/projectfluent/fluent.js/tree/main/fluent-react) enables localised messages that can be updated on the client-side
 * Good, Avoid snowflake configs: we won't have to manually set up tooling and make sure they work well together, like [#3003](https://github.com/mozilla/blurts-server/pull/2987) and [#2987](https://github.com/mozilla/blurts-server/pull/2987)
 * Good, Automatic code splitting, avoiding e.g. cumulative layout shift, and decreating bundle sizes.
+* Good, Poor front-end developer experience: VSCode code plugins for code completeion, error linting, etc. 
 * Bad, Tooling Overhead: React's tooling and ecosystem can be complex, which can be a disadvantage for developers who prefer a more minimalistic approach.
 * Bad, Performance cost when rendering a large number of components, may require additional optimization work
 * Bad, Learning curve: Challenging for new developers jumping into the project to understand how to debug issues or how components are interacting with each other
@@ -113,6 +114,7 @@ Cons:
 * Bad, Easy for server and client-side state to get out of sync
 * Bad, Hard to re-use code on the client-side (see: dynamic Fluent strings)
 * Bad, Hard to statically analyse, and in general doesn't make use of a lot of tooling that can help us deliver better quality code without us manually set up
+* Bad, Poor front-end developer experience: Writing in template literals removes tag coloring, auto-complete functions, etc.
 
 ### Use a different framework
 
