@@ -8,6 +8,10 @@ breach-all-meta-social-title = Todos os vazamentos detectados pelo { -brand-fx-m
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Vazamento de dados de { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Você foi afetado pelo vazamento de dados de { $company }?
+breach-detail-meta-social-description = Use o { -brand-fx-monitor } para descobrir se suas informações pessoais foram expostas neste vazamento e entender o que fazer a seguir.
 breach-scan-meta-title = { -brand-fx-monitor } - Resultados de vazamentos
 breach-scan-meta-social-title = Resultados de vazamentos do { -brand-fx-monitor }
 
