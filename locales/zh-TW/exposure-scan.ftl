@@ -1,5 +1,5 @@
 exposure-landing-hero-heading = 看看您的個人資訊是否已遭外洩
-exposure-landing-hero-lead = 使用來自 { -brand-firefox } 開發者的隱私權保護工具來保持安全。這些工具可以保護您不被公開或出賣您個人資訊的駭客或公司所侵害。我們會在有任何資料外洩事件發生時通知您、尋找並移除已洩漏的資訊並持續尋找新的洩漏資訊。
+exposure-landing-hero-lead = 使用來自 { -brand-firefox } 開發者所打造的隱私權保護工具來確保安全。這些工具可以保護您不被公開或出賣您個資的駭客或公司所侵害。我們也會在有任何資料外洩事件發生時通知您，為您尋找並移除外洩的資訊，並持續尋找新的資料外洩事件。
 exposure-landing-hero-email-label = 電子郵件地址
 exposure-landing-hero-email-placeholder = 輸入電子郵件地址
 exposure-landing-hero-cta-label = 檢查是否有外洩事件

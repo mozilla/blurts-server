@@ -59,7 +59,7 @@ breach-checklist-pw-header-text = 更新您的密碼並開啟兩階段驗證（2
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = 大部分情況我們都會建議您到該公司網站修改密碼。但<b>他們的網站可能已經關機或是包含惡意內容</b>請您<breached-company-link>造訪這些網站</breached-company-link>。為了更加保護所有帳號請確保您為所有帳號使用不同密碼這樣洩漏的密碼就無法用來登入其他帳號。 { $passwordManagerLink } 可幫助您安全地管理密碼。
+breach-checklist-pw-body-text = 大部分情況下，我們建議您到該公司網站更改密碼。但<b>他們的網站可能已經離線或包含惡意內容</b>，請您<breached-company-link>造訪網站</breached-company-link>時務必小心。為了加強保護，請勿重複使用密碼，這樣萬一外洩後，無法用於登入其他網站。{ $passwordManagerLink } 可協助您安全地記錄所有密碼。
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -125,7 +125,7 @@ breach-checklist-phone-header-2 = 使用諸如 { $firefoxRelayLink } 的電話�
 
 breach-checklist-sq-header-text = 更新您的安全問題。
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = 大部分情況下我們建議您到該公司網站更新安全性問題。但<b>他們的網站可能已經關機或是包含惡意內容</b>請您<breached-company-link>造訪這些網站</breached-company-link>。若有使用過重要帳號的地方請更新安全問題並為所有帳號設定不同密碼以加強保護。
+breach-checklist-sq-body-text = 大部分情況下，我們建議您到該公司網站更新安全性問題。但<b>他們的網站可能已經離線或包含惡意內容</b>，請您<breached-company-link>造訪網站</breached-company-link>時務必小心。為了加強保護，請對任何也設定過該問題的重要帳號，也更新安全問題，並對所有帳號使用不同密碼。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
