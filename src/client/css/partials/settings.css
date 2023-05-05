@@ -13,11 +13,10 @@
 .settings-section-info {
   margin-top: 0;
 }
+
 .settings-section-title {
-  font-family: var(--body-font);
-    margin: var(--padding-sm) 0;
-    font-weight: 700;
-    font-size: 1rem;
+  margin: var(--padding-sm) 0;
+  font: 700 1rem var(--body-font);
 }
 
 .settings-content {
