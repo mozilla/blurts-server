@@ -109,7 +109,6 @@ Cons:
 * Good, No throw away code
 * Good, Conveys our support for standards and the web standards process
 * Bad, Front-end testing requires additional set-up (using a full browser) which would impact test speeds and contribute to flakiness.
-* Bad, No Virtual DOM: Current architecture may be slower than React, as it lacks the optimizations provided by a virtual DOM.
 * Bad, Harder to learn our snowflake framework (e.g. our use of a proxy on one page to update the DOM)
 * Bad, Easy for server and client-side state to get out of sync
 * Bad, Hard to re-use code on the client-side (see: dynamic Fluent strings)
