@@ -222,6 +222,11 @@
   padding: var(--padding-xl) var(--padding-lg);
 }
 
+.see-if-data-breach .hibp-attribution {
+  margin: var(--padding-lg) 0 0;
+  font-size: 0.9rem;
+}
+
 .see-if-data-breach::before {
   content: '';
   position: absolute;
