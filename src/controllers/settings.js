@@ -60,7 +60,11 @@ async function settingsPage (req, res) {
     emails,
     breachCounts,
     limit: AppConstants.MAX_NUM_ADDRESSES,
-    csrfToken: generateToken(res)
+    csrfToken: generateToken(res),
+    meta: {
+      title: getMessage('settings-meta-title')
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   res.send(mainLayout(data))

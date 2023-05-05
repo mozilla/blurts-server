@@ -11,8 +11,6 @@ USER app
 COPY package.json package.json
 COPY package-lock.json package-lock.json
 
-COPY src/package.json ./src/package.json
-
 COPY --chown=app:app . /app
 
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*

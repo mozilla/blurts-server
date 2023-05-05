@@ -5,6 +5,7 @@
 import { mainLayout } from '../views/mainLayout.js'
 import { breaches } from '../views/partials/breaches.js'
 import { setBreachResolution, updateBreachStats } from '../db/tables/subscribers.js'
+import { getMessage } from '../utils/fluent.js'
 import { appendBreachResolutionChecklist } from '../utils/breachResolution.js'
 import { generateToken } from '../utils/csrf.js'
 import { getAllEmailsAndBreaches } from '../utils/breaches.js'
@@ -29,7 +30,11 @@ async function breachesPage (req, res) {
     selectedEmailIndex,
     partial: breaches,
     csrfToken: generateToken(res),
-    fxaProfile: req.user.fxa_profile_json
+    fxaProfile: req.user.fxa_profile_json,
+    meta: {
+      title: getMessage('breach-meta-title')
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   res.send(mainLayout(data))

@@ -47,7 +47,7 @@ Sentry.init({
 // Build script is triggered for `npm start` and assets are served from /dist.
 // Build script is NOT run for `npm run dev`, assets are served from /src, and nodemon restarts server without build (faster dev).
 const staticPath =
-  process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
+  process.env.npm_lifecycle_event === 'start' ? 'dist' : 'src/client'
 
 await initFluentBundles()
 
@@ -197,8 +197,8 @@ app.use(Sentry.Handlers.errorHandler({
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
-  console.info(`MONITOR V2: Server listening at ${this.address().port}`)
-  console.info(`Static files served from ${staticPath}`)
+  console.info(`Server listening at ${this.address().port}`)
+  console.info(`Client files are served from ${staticPath}`)
   try {
     await initEmail()
     console.info('Email initialized')

@@ -100,7 +100,7 @@
 
 @media screen and (prefers-reduced-motion: no-preference) {
   @keyframes bounce-in {
-    from {
+    0% {
       transform: scale(1);
     }
 
@@ -108,7 +108,7 @@
       transform: scale(1.05);
     }
 
-    to {
+    100% {
       transform: scale(1);
     }
   }
