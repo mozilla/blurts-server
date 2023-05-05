@@ -107,20 +107,20 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   </div>
 `
 const cancelPremiumSubscription = () => `
-    <section>
-      <h3 class='settings-section-title'>
-        ${getMessage('settings-cancel-premium-subscription-title')}
-      </h3>
-      <p class='settings-section-info'>${getMessage('settings-cancel-premium-subscription-info')}</p>
-      <a
-        class='settings-link-fxa'
-        href='${AppConstants.FXA_SETTINGS_URL}'
-        target='_blank'
-      >
-        ${getMessage('settings-cancel-premium-subscription-link-label')}
-      </a>
-    </section>
-    <hr>
+  <hr>
+  <section>
+    <h3 class='settings-section-title'>
+      ${getMessage('settings-cancel-premium-subscription-title')}
+    </h3>
+    <p class='settings-section-info'>${getMessage('settings-cancel-premium-subscription-info')}</p>
+    <a
+      class='settings-link-fxa'
+      href='${AppConstants.FXA_SETTINGS_URL}'
+      target='_blank'
+    >
+      ${getMessage('settings-cancel-premium-subscription-link-label')}
+    </a>
+  </section>
 `
 
 /**
@@ -166,7 +166,6 @@ export const settings = data => {
           ${alertOptions({ csrfToken, allEmailsToPrimary })}
         </section>
 
-        <hr>
         ${AppConstants.CANCEL_SUBSCRIPTION_FLOW ? cancelPremiumSubscription() : '<hr>'}
 
         <!-- Deactivate account -->
