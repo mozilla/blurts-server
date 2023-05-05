@@ -619,7 +619,7 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 ## Search Engine Optimization
 
-meta-desc-2 = 使用 { -brand-fx-monitor }看看您是否也處於資料外洩事件之中。我們將幫助您了解接下來應該採取哪些行動並持續監控任何新的外洩事件。
+meta-desc-2 = 使用 { -brand-fx-monitor } 看看您是否也處於資料外洩事件之中。我們將幫助您了解接下來應該採取哪些行動，並協助持續監控任何新的外洩事件。
 
 ## Header
 
