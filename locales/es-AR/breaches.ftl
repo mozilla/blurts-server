@@ -2,6 +2,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor }: Panel
+breach-all-meta-title = { -brand-fx-monitor } - Todas las violaciones de datos
+breach-all-meta-social-title = Todas las violaciones detectadas por { -brand-fx-monitor }
+breach-all-meta-social-description = Navegá por la lista completa de violaciones conocidas detectadas por { -brand-fx-monitor } y luego descubrí si tu información fue expuesta.
+breach-detail-meta-social-description = Use { -brand-fx-monitor } para averiguar si su información personal fue expuesta en esta violación y saber qué hacer a continuación.
+breach-scan-meta-title = { -brand-fx-monitor } - Resultados de violaciones
+breach-scan-meta-social-title = Resultados de la violación de { -brand-fx-monitor }
+breach-scan-meta-social-description = Inicie sesión en { -brand-fx-monitor } para resolver violaciones y obtener un monitoreo continuo para cualquier nueva violación conocida.
 
 ## Breaches header
 

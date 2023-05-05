@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Averiguá si estuviste en una filtración de datos.
-stay-safe-with-tool = Mantenete seguro con una herramienta simple pero poderosa que rastrea si tu información personal ha sido expuesta en una filtración de datos. Te ayudaremos a entender qué hacer a continuación y monitorearemos continuamente cualquier filtración nueva, todo sin costo para vos.
 get-started = Comenzar
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = No todas las filtraciones exponen la misma información. So
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Fijate si estuviste en una filtración de datos.
+hibp-footer-attribution = Datos de filtración proporcionados por <b> { -brand-HIBP } </b>
