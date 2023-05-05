@@ -804,6 +804,8 @@ error-page-error-other-copy = Παρακαλούμε δοκιμάστε ξανά
 
 ## Breach overview page
 
+all-breaches-headline-2 = Όλες οι παραβιάσεις που εντοπίστηκαν από το { -brand-fx-monitor }
+all-breaches-lead = Παρακολουθούμε όλες τις γνωστές παραβιάσεις δεδομένων για να διαπιστώσουμε εάν τα προσωπικά σας στοιχεία παραβιάστηκαν. Ακολουθεί μια πλήρης λίστα με όλες τις παραβιάσεις που έχουν αναφερθεί από το 2007.
 search-breaches = Αναζήτηση παραβιάσεων
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Εκτεθειμένα δεδομένα:

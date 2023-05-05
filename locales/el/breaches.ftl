@@ -55,9 +55,13 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Ενημερώστε τους κωδικούς πρόσβασής σας και ενεργοποιήστε την ταυτοποίηση δύο παραγόντων (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-email-header-2 = Προστατέψτε το email σας με μια υπηρεσία απόκρυψης email, όπως το { $firefoxRelayLink }.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -101,6 +105,11 @@ breach-checklist-sq-header-text = Ενημερώστε τις ερωτήσεις
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = Δημιουργήστε μοναδικούς, ισχυρούς κωδικούς πρόσβασης για οποιονδήποτε λογαριασμό έχετε ξαναχρησιμοποιήσει κωδικούς πρόσβασης.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
+breach-checklist-general-header = Επικοινωνήστε με την { $companyName } για να τους ενημερώσετε σχετικά με αυτήν την παραβίαση και να ζητήσετε συγκεκριμένα βήματα που θα πρέπει να ακολουθήσετε.

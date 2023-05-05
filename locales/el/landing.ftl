@@ -3,17 +3,19 @@
 
 ## Hero
 
-find-out-if-breached = Μάθετε αν έχετε εμφανιστεί σε κάποια παραβίαση δεδομένων
 get-started = Έναρξη
 
 ## Why use Firefox Monitor?
 
 why-use-monitor = Γιατί να χρησιμοποιήσω το { -brand-fx-monitor };
+get-alerts = Λάβετε ειδοποιήσεις για νέες παραβιάσεις
 
 ## Here’s how it works
 
 how-it-works = Δείτε πώς λειτουργεί
 check-for-breaches = Έλεγχος για παραβιάσεις
+alerts-for-breaches = Λάβετε ειδοποιήσεις για νέες παραβιάσεις
+alerts-for-breaches-monitor-new = Θα παρακολουθούμε συνεχώς τις νέες παραβιάσεις δεδομένων και θα σας ενημερώνουμε εάν επηρεαστείτε.
 
 ## Your privacy is safe with us
 
