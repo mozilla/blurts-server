@@ -37,11 +37,11 @@ TBD
 * Good, Component-based Architecture: This simplifies code maintenance by breaking complex UIs into reusable components.
 * Good, Testing: the virtual DOM makes it feasible to write non-brittle (i.e. without needing to fire up a full browser) unit tests of the front-end
 * Good, Fewer bugs: having React take care of removing, adding or changing DOM nodes removes a large surface area for bugs.
-* Good, Accessibility: React provides ARIA support, focus management, and components are designed with accessibility best practices in mind.
 * Good, Shared knowledge: This approach shares the same structure as Firefox Relay. This would immediately allow the team to reuse and reference.
 	* Note that FxA came to a similiar decision: [FxA ADR: Refactor Subscription Platform frontend - with Next.js](https://github.com/mozilla/fxa/blob/main/docs/adr/0035-refactor-payments-frontend-with-nextjs.md) 
 * Good, Enables static analysis: programmatically-generated DOM and explicit module imports enables optimal use of TypeScript to catch errors at compile-time and make code more self-explanatory.
 * Good, Industry Usage/Standard: React has a large and active community of developers, with many resources available, including libraries, tutorials, and support.
+  * Accessibility: Access to [React Aria](https://react-spectrum.adobe.com/react-aria/) (Relay also uses this library).
 * Good, [fluent-react](https://github.com/projectfluent/fluent.js/tree/main/fluent-react) enables localised messages that can be updated on the client-side
 * Good, Avoid snowflake configs: we won't have to manually set up tooling and make sure they work well together, like [#3003](https://github.com/mozilla/blurts-server/pull/2987) and [#2987](https://github.com/mozilla/blurts-server/pull/2987)
 * Good, Automatic code splitting, avoiding e.g. cumulative layout shift, and decreating bundle sizes.
