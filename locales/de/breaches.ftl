@@ -5,13 +5,13 @@
 breach-meta-title = { -brand-fx-monitor } – Übersicht
 breach-all-meta-title = { -brand-fx-monitor } – Alle Datenlecks
 breach-all-meta-social-title = Alle von { -brand-fx-monitor } erkannten Datenlecks
-breach-all-meta-social-description = Durchsuchen Sie die vollständige Liste der bekannten von { -brand-fx-monitor } erkannten Datenlecks und finden Sie heraus, ob Ihre Daten offengelegt wurden.
+breach-all-meta-social-description = Durchsuchen Sie die vollständige Liste der bekannten und von { -brand-fx-monitor } erkannten Datenlecks und finden Sie heraus, ob Ihre Daten offengelegt wurden.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } – Datenleck { $company }
+breach-detail-meta-title = { -brand-fx-monitor } – Datenleck bei { $company }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-social-title = Warst du vom Datenleck bei { $company } betroffen?
+breach-detail-meta-social-title = Waren Sie vom Datenleck bei { $company } betroffen?
 breach-detail-meta-social-description = Verwenden Sie { -brand-fx-monitor }, um herauszufinden, ob Ihre persönlichen Daten bei diesem Datenleck offengelegt wurden, und verstehen Sie, was als nächstes zu tun ist.
 breach-scan-meta-title = { -brand-fx-monitor } – Ergebnisse von Datenlecks
 breach-scan-meta-social-title = { -brand-fx-monitor } Ergebnisse von Datenlecks
