@@ -2,6 +2,9 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Painel
+breach-all-meta-title = { -brand-fx-monitor } - Todos os vazamentos de dados
+breach-all-meta-social-title = Todos os vazamentos detectados pelo { -brand-fx-monitor }
 
 ## Breaches header
 
