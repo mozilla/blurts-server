@@ -5,6 +5,11 @@
 breach-meta-title = { -brand-fx-monitor } - Painel
 breach-all-meta-title = { -brand-fx-monitor } - Todos os vazamentos de dados
 breach-all-meta-social-title = Todos os vazamentos detectados pelo { -brand-fx-monitor }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Vazamento de dados de { $company }
+breach-scan-meta-title = { -brand-fx-monitor } - Resultados de vazamentos
+breach-scan-meta-social-title = Resultados de vazamentos do { -brand-fx-monitor }
 
 ## Breaches header
 
