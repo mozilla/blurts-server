@@ -789,7 +789,7 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
 
 ## Search Engine Optimization
 
-meta-desc = S { -brand-fx-monitor(sklon: "orodnik") } preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
+meta-desc-2 = Ugotovite, ali ste bili vpleteni v krajo podatkov s { -brand-fx-monitor }jem. Pomagali vam bomo razumeti, kaj lahko storite, in nenehno spremljali morebitne nove kraje.
 
 ## Header
 
