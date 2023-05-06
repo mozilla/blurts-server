@@ -689,7 +689,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá un
 
 ## Search Engine Optimization
 
-meta-desc-2 = Averiguá si fuiste parte de una violación de datos con { -brand-fx-monitor }. Te ayudaremos a entender qué hacer a continuación y monitorearemos continuamente si hay nuevas violaciones.
+meta-desc-2 = Averiguá si fuiste parte de una filtración de datos con { -brand-fx-monitor }. Te ayudaremos a entender qué hacer a continuación y monitorearemos continuamente si hay nuevas filtraciones.
 
 ## Header
 

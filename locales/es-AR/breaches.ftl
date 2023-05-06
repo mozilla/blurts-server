@@ -2,14 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor }: Panel
-breach-all-meta-title = { -brand-fx-monitor } - Todas las violaciones de datos
-breach-all-meta-social-title = Todas las violaciones detectadas por { -brand-fx-monitor }
-breach-all-meta-social-description = Navegá por la lista completa de violaciones conocidas detectadas por { -brand-fx-monitor } y luego descubrí si tu información fue expuesta.
-breach-detail-meta-social-description = Use { -brand-fx-monitor } para averiguar si su información personal fue expuesta en esta violación y saber qué hacer a continuación.
-breach-scan-meta-title = { -brand-fx-monitor } - Resultados de violaciones
-breach-scan-meta-social-title = Resultados de la violación de { -brand-fx-monitor }
-breach-scan-meta-social-description = Inicie sesión en { -brand-fx-monitor } para resolver violaciones y obtener un monitoreo continuo para cualquier nueva violación conocida.
+breach-meta-title = { -brand-fx-monitor } - Panel
+breach-all-meta-title = { -brand-fx-monitor } - Todas las filtraciones de datos
+breach-all-meta-social-title = Todas las filtraciones detectadas por { -brand-fx-monitor }
+breach-all-meta-social-description = Navegá por la lista completa de filtraciones conocidas detectadas por { -brand-fx-monitor } y luego fijate si tu información fue expuesta.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Filtración de datos de { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = ¿Te afectó la filtración de datos de { $company }?
+breach-detail-meta-social-description = Usá { -brand-fx-monitor } para averiguar si tu información personal fue expuesta en esta filtración y saber qué hacer a continuación.
+breach-scan-meta-title = { -brand-fx-monitor } - Resultados de filtraciones
+breach-scan-meta-social-title = Resultados de filtraciones de { -brand-fx-monitor }
+breach-scan-meta-social-description = Iniciá sesión en { -brand-fx-monitor } para resolver filtraciones y obtener un monitoreo continuo para cualquier nueva filtración conocida.
 
 ## Breaches header
 
