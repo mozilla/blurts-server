@@ -4,18 +4,18 @@
 
 breach-meta-title = { -brand-fx-monitor } – Vezérlőpult
 breach-all-meta-title = { -brand-fx-monitor } – Minden adatvédelmi incidens
-breach-all-meta-social-title = Az összes adatvédelmi incidenst észlelt a { -brand-fx-monitor }
+breach-all-meta-social-title = Az összes, a { -brand-fx-monitor } által észlelt adatvédelmi incidens
 breach-all-meta-social-description = Böngéssze a { -brand-fx-monitor } által észlelt ismert adatvédelmi incidensek teljes listáját, és tudja meg, hogy kikerültek-e az információi.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } – { $company } Adatsértés
+breach-detail-meta-title = { -brand-fx-monitor } – { $company } adatvédelmi incidens
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-social-title = Érintette Önt a { $company } adatvédelmi incidens?
-breach-detail-meta-social-description = Használja a { -brand-fx-monitor }t, hogy megtudja, hogy kikerültek-e a személyes információi ebben az adatvédelmi incidensben, és tudja, hogy mit kell tennie.
+breach-detail-meta-social-title = Érintette a(z) { $company } adatvédelmi incidense?
+breach-detail-meta-social-description = Használja a { -brand-fx-monitor }t, hogy megtudja, hogy kikerültek-e a személyes információi ebben az adatvédelmi incidensben, és hogy megtudja, mit kell tennie.
 breach-scan-meta-title = { -brand-fx-monitor } – Adatvédelmi incidensek eredményei
 breach-scan-meta-social-title = { -brand-fx-monitor } adatvédelmi incidensek eredményei
-breach-scan-meta-social-description = Jelentkezzen be a { -brand-fx-monitor }ba a adatsértések megoldásához, és kapjon folyamatos ellenőrzést az új ismert adatsértések után.
+breach-scan-meta-social-description = Jelentkezzen be a { -brand-fx-monitor }ba a adatvédelmi incidensek megoldásához, és kapjon folyamatos ellenőrzést az új ismert adatvédelmi incidensekről.
 
 ## Breaches header
 
