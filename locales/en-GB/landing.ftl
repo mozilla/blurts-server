@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Find out if you’ve been in a data breach
-stay-safe-with-tool = Stay safe with a simple yet powerful tool that tracks whether your personal information has been exposed in a data breach. We’ll help you understand what to do next and continuously monitor for any new breaches — all at no cost to you.
 get-started = Get started
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Not all breaches expose all the same info. It just depends 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = See if you’ve been in a data breach
+hibp-footer-attribution = Breach data provided by <b>{ -brand-HIBP }</b>
