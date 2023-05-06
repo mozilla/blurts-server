@@ -727,7 +727,7 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 
 ## Search Engine Optimization
 
-meta-desc = Selvitä { -brand-fx-monitor }illa, oletko ollut osa tietovuotoa. Tilaa hälytyksiä tulevista tietovuodoista ja saa vinkkejä tilien suojaamiseksi.
+meta-desc-2 = Selvitä { -brand-fx-monitor }illa, oletko joutunut osalliseksi tietovuotoon. Autamme sinua ymmärtämään, mitä tehdä seuraavaksi, ja seuraamme jatkuvasti uusia tietovuotoja.
 
 ## Header
 
