@@ -13,6 +13,9 @@ breach-detail-meta-title = { -brand-fx-monitor } - dataintrång hos { $company }
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Blev du påverkad av dataintrång hos { $company } ?
 breach-detail-meta-social-description = Använd { -brand-fx-monitor } för att ta reda på om din personliga information avslöjades i det här intrånget och förstå vad du ska göra härnäst.
+breach-scan-meta-title = { -brand-fx-monitor } - Resultat över intrång
+breach-scan-meta-social-title = { -brand-fx-monitor } - Resultat över intrång
+breach-scan-meta-social-description = Logga in på { -brand-fx-monitor } för att lösa intrång och få kontinuerlig övervakning för alla nya kända intrång.
 
 ## Breaches header
 
