@@ -712,7 +712,7 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 
 ## Search Engine Optimization
 
-meta-desc = Tìm hiểu xem bạn có phải là một phần của rò rỉ dữ liệu với { -brand-fx-monitor } hay không. Đăng ký nhận thông báo về các rò rỉ trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
+meta-desc-2 = Tìm hiểu xem bạn có phải là một phần của rò rỉ dữ liệu với { -brand-fx-monitor } hay không. Chúng tôi sẽ giúp bạn hiểu những việc cần làm tiếp theo và liên tục theo dõi mọi rò rỉ mới.
 
 ## Header
 

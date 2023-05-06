@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Tìm hiểu xem bạn có bị rò rỉ dữ liệu không
-stay-safe-with-tool = Giữ an toàn với một công cụ đơn giản nhưng mạnh mẽ để theo dõi xem thông tin cá nhân của bạn có bị lộ do rò rỉ dữ liệu hay không. Chúng tôi sẽ giúp bạn hiểu những việc cần làm tiếp theo và liên tục theo dõi mọi rò rỉ mới — hoàn toàn miễn phí.
 get-started = Bắt đầu
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Không phải tất cả các rò rỉ tiết lộ tất c�
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Xem liệu bạn có bị rò rỉ dữ liệu không
+hibp-footer-attribution = Dữ liệu vụ rò rỉ do <b>{ -brand-HIBP }</b> cung cấp
