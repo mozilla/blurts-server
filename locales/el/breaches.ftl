@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Πίνακας ελέγχου
+breach-all-meta-title = { -brand-fx-monitor } - Όλες οι παραβιάσεις δεδομένων
 
 ## Breaches header
 
