@@ -880,6 +880,7 @@ error-page-error-other-copy = Zkuste to znovu nebo se vraťte později
 
 ## Breach overview page
 
+all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
 search-breaches = Prohledat úniky dat
 
 ## Public breach detail page
