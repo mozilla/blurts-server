@@ -2,6 +2,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Panel
+breach-all-meta-title = { -brand-fx-monitor } - Todas las filtraciones de datos
+breach-all-meta-social-title = Todas las filtraciones detectadas por { -brand-fx-monitor }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Filtración de datos de { $company }
+breach-scan-meta-title = { -brand-fx-monitor } - Resultados de filtraciones
+breach-scan-meta-social-title = Resultados de filtraciones de { -brand-fx-monitor }
 
 ## Breaches header
 
