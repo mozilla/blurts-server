@@ -5,6 +5,17 @@
 breach-meta-title = { -brand-fx-monitor } - Kojelauta
 breach-all-meta-title = { -brand-fx-monitor } - Kaikki tietovuodot
 breach-all-meta-social-title = Kaikki { -brand-fx-monitor }in havaitsemat tietovuodot
+breach-all-meta-social-description = Selaa täydellistä luetteloa { -brand-fx-monitor }in havaitsemista tietovuodoista, ja selvitä sitten, paljastuivatko tietosi.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Yritykseen { $company } kohdistunut tietovuoto
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Vaikuttiko yritykseen { $company } kohdistunut tietovuoto sinuun?
+breach-detail-meta-social-description = Käytä { -brand-fx-monitor }ia selvittääksesi, paljastuiko henkilökohtaisia tietojasi tämän tietovuodon yhteydessä, ja ymmärrä, mitä tehdä seuraavaksi.
+breach-scan-meta-title = { -brand-fx-monitor } - Tietovuodon tulokset
+breach-scan-meta-social-title = { -brand-fx-monitor }, tietovuodon tulokset
+breach-scan-meta-social-description = Kirjaudu sisään { -brand-fx-monitor }iin selvittääksesi tietovuodot ja saadaksesi jatkuvaa seurantaa uusien tunnettujen tietovuotojen varalta.
 
 ## Breaches header
 
