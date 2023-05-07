@@ -623,7 +623,7 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 
 ## Search Engine Optimization
 
-meta-desc = 使用 { -brand-fx-monitor }，看看您的账号是否也在数据外泄事件当中。订阅以在未来发生外泄事件时收到警报，并获取确保账号安全的小贴士。
+meta-desc-2 = 使用 { -brand-fx-monitor } 查看您是否涉及数据泄露。我们将帮助您了解下一步该做什么，并持续监控新的泄漏事件。
 
 ## Header
 

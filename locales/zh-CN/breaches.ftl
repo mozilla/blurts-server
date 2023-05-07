@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - 仪表板
+breach-all-meta-title = { -brand-fx-monitor } - 所有数据泄露
+breach-all-meta-social-title = { -brand-fx-monitor } 检测到的所有泄漏事件
+breach-all-meta-social-description = 浏览 { -brand-fx-monitor } 检测到的已知泄漏事件的完整列表，然后查明您的信息是否已泄露。
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - { $company } 的数据泄露
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = 您是否受到 { $company } 数据泄露事件的影响？
+breach-detail-meta-social-description = 使用 { -brand-fx-monitor } 查明您的个人信息是否在此泄漏事件中暴露，并了解下一步该怎么做。
+breach-scan-meta-title = { -brand-fx-monitor } - 数据泄漏结果
+breach-scan-meta-social-title = { -brand-fx-monitor } 数据泄漏结果
+breach-scan-meta-social-description = 登录 { -brand-fx-monitor } 以解决数据泄漏并持续监控任何新的已知数据泄漏事件。
 
 ## Breaches header
 
