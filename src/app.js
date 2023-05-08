@@ -90,7 +90,11 @@ const imgSrc = [
   'https://*.googletagmanager.com',
   'https://firefoxusercontent.com',
   'https://mozillausercontent.com/',
-  'https://monitor.cdn.mozilla.net/'
+  'https://monitor.cdn.mozilla.net/',
+  // Support OptinMonster Campaign Embed Code:
+  // https://optinmonster.com/docs/how-to-manually-add-an-after-post-or-inline-optin/#Campaign_Embed_Code
+  ' data:',
+  'https://*.omappapi.com'
 ]
 
 if (AppConstants.FXA_ENABLED) {
@@ -105,15 +109,33 @@ app.use((_req, res, _next) => {
       scriptSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-        'https://*.googletagmanager.com'
+        'https://*.googletagmanager.com',
+        'https://*.google-analytics.com',
+        // Support OptinMonster Campaign Embed Code:
+        // https://optinmonster.com/docs/how-to-manually-add-an-after-post-or-inline-optin/#Campaign_Embed_Code
+        'https://*.omappapi.com'
       ],
       imgSrc,
       connectSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
         'https://*.google-analytics.com',
-        'https://*.analytics.google.com',
-        'https://*.googletagmanager.com'
+        'https://*.googletagmanager.com',
+        // Support OptinMonster Campaign Embed Code:
+        // https://optinmonster.com/docs/how-to-manually-add-an-after-post-or-inline-optin/#Campaign_Embed_Code
+        'https://*.omappapi.com'
+      ],
+      styleSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        // Support OptinMonster Campaign Embed Code:
+        // https://optinmonster.com/docs/how-to-manually-add-an-after-post-or-inline-optin/#Campaign_Embed_Code
+        'https://*.omappapi.com',
+        'http://fonts.googleapis.com'
+      ],
+      fontSrc: [
+        "'self'",
+        'http://fonts.gstatic.com'
       ]
     }
   })(_req, res, _next)

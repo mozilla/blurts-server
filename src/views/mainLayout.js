@@ -48,6 +48,11 @@ const mainLayout = data => {
         <link rel='apple-touch-icon' href='/images/apple-touch-icon.webp' sizes='180x180'>
 
         <script src='/js/index.js' type='module'></script>
+        ${(AppConstants.OPTINMONSTER_USER && AppConstants.OPTINMONSTER_ACCOUNT)
+          ? `<script src='https://a.omappapi.com/app/js/api.min.js' data-user=${AppConstants.OPTINMONSTER_USER} data-account=${AppConstants.OPTINMONSTER_ACCOUNT} async></script>`
+          : ''
+        }
+
         ${data.skipPartialModule ? '' : `<script src='/js/partials/${data.partial.name}.js' type='module'></script>`}
       </head>
       <body>
