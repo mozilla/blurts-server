@@ -38,14 +38,14 @@ TBD
 * Good, Testing: the virtual DOM makes it feasible to write non-brittle (i.e. without needing to fire up a full browser) unit tests of the front-end
 * Good, Fewer bugs: having React take care of removing, adding or changing DOM nodes removes a large surface area for bugs.
 * Good, Shared knowledge: This approach shares the same structure as Firefox Relay. This would immediately allow the team to reuse and reference.
-	* Note that FxA came to a similiar decision: [FxA ADR: Refactor Subscription Platform frontend - with Next.js](https://github.com/mozilla/fxa/blob/main/docs/adr/0035-refactor-payments-frontend-with-nextjs.md) 
+	* Note that FxA came to a similar decision: [FxA ADR: Refactor Subscription Platform frontend - with Next.js](https://github.com/mozilla/fxa/blob/main/docs/adr/0035-refactor-payments-frontend-with-nextjs.md) 
 * Good, Enables static analysis: programmatically-generated DOM and explicit module imports enables optimal use of TypeScript to catch errors at compile-time and make code more self-explanatory.
 * Good, Industry Usage/Standard: React has a large and active community of developers, with many resources available, including libraries, tutorials, and support.
   * Accessibility: Access to [React Aria](https://react-spectrum.adobe.com/react-aria/) (Relay also uses this library).
 * Good, [fluent-react](https://github.com/projectfluent/fluent.js/tree/main/fluent-react) enables localised messages that can be updated on the client-side
-* Good, Avoid snowflake configs: we won't have to manually set up tooling and make sure they work well together, like [#3003](https://github.com/mozilla/blurts-server/pull/2987) and [#2987](https://github.com/mozilla/blurts-server/pull/2987)
+* Good, Avoid snowflake configs: we won't have to manually set up tooling and make sure they work well together, like [#3003](https://github.com/mozilla/blurts-server/pull/3003) and [#2987](https://github.com/mozilla/blurts-server/pull/2987)
 * Good, Automatic code splitting, avoiding e.g. cumulative layout shift, and decreating bundle sizes.
-* Good, Great front-end developer experience: VSCode code plugins for code completeion, error linting, hot reloading for rapid iteration, etc. 
+* Good, Great front-end developer experience: VSCode code plugins for code completion, error linting, hot reloading for rapid iteration, etc. 
 * Good, Reduce network roundtrip time and frequency, improves app performance
 * Bad, Tooling Overhead: React's tooling and ecosystem can be complex, which can be a disadvantage for developers who prefer a more minimalistic approach.
 * Bad, Performance cost when rendering a large number of components, may require additional optimization work
@@ -55,13 +55,13 @@ TBD
 * Bad, The client-side execution time of React is additional overhead.
 * Bad, No portability or interoperability to non-React projects.
 * Bad, React will require maintenance and periodic upgrades
-* Bad, Rendering performance cost: Inital load of React 
+* Bad, Rendering performance cost: Initial load of React 
 
 ## (Secondary Decision) Migration Plan Options
 
 There are roughly three options to migrate to React
 
-#### 1 Static-site generation (SSG)
+#### 1. Static-site generation (SSG)
 
 This is what Relay currently does. This involves a strong split between our front-end and the back-end: the front-end is compiled to a bunch of JS, HTML and CSS files, that are then served as-is by the back-end. After they get loaded by the browser, the client-side JS then makes a bunch of API calls to the server to determine what to show to the user.
 
