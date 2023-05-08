@@ -3,6 +3,9 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-all-meta-social-title = Tote le violationes disvelate per { -brand-fx-monitor }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - { $company } Violation de datos
 
 ## Breaches header
 
@@ -144,4 +147,4 @@ breach-checklist-hp-body-2 = Un gestor de contrasignos como { $passwordManagerLi
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-checklist-general-header = Contacta { $companyName } pro informar les re iste violation e querer specific passos que tu pote facer.
+breach-checklist-general-header = Continge { $companyName } pro informar les re iste violation e querer specific passos que tu pote facer.
