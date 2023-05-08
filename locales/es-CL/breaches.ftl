@@ -8,8 +8,13 @@ breach-all-meta-social-title = Todas las filtraciones detectadas por { -brand-fx
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Filtración de datos de { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = ¿Te afectó la filtración de datos de { $company }?
+breach-detail-meta-social-description = Usa { -brand-fx-monitor } para averiguar si tu información personal fue expuesta en esta filtración y saber qué hacer a continuación.
 breach-scan-meta-title = { -brand-fx-monitor } - Resultados de filtraciones
 breach-scan-meta-social-title = Resultados de filtraciones de { -brand-fx-monitor }
+breach-scan-meta-social-description = Conéctate a { -brand-fx-monitor } para resolver filtraciones y obtener un monitoreo continuo para cualquier nueva filtración conocida.
 
 ## Breaches header
 
