@@ -2,10 +2,10 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } — Tableau de bord
+breach-meta-title = { -brand-fx-monitor } – Tableau de bord
 breach-all-meta-title = { -brand-fx-monitor } – Toutes les fuites de données
 breach-all-meta-social-title = Toutes les fuites de données détectées par { -brand-fx-monitor }
-breach-all-meta-social-description = Parcourez la liste complète des fuites de données connues détectées par { -brand-fx-monitor }, puis découvrez si vos informations ont été exposées.
+breach-all-meta-social-description = Parcourez la liste complète des fuites de données connues détectées par { -brand-fx-monitor }, puis découvrez si vos informations ont été compromises.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = Fuite de données de { -brand-fx-monitor } - { $company }
