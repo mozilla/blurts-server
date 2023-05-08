@@ -2,18 +2,18 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
-breach-meta-title = { -brand-fx-monitor } – Tableau de bord
-breach-all-meta-title = { -brand-fx-monitor } – Toutes les fuites de données
+breach-meta-title = { -brand-fx-monitor } — Tableau de bord
+breach-all-meta-title = { -brand-fx-monitor } — Toutes les fuites de données
 breach-all-meta-social-title = Toutes les fuites de données détectées par { -brand-fx-monitor }
 breach-all-meta-social-description = Parcourez la liste complète des fuites de données connues détectées par { -brand-fx-monitor }, puis découvrez si vos informations ont été compromises.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = Fuite de données de { -brand-fx-monitor } - { $company }
+breach-detail-meta-title = { -brand-fx-monitor } — Fuite de données de { $company }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-social-title = Avez-vous été affecté par la fuite de données de { $company } ?
-breach-detail-meta-social-description = Utilisez { -brand-fx-monitor } pour savoir si vos informations personnelles ont été compromises dans cette fuite et quoi faire ensuite.
-breach-scan-meta-title = { -brand-fx-monitor } - Résultats des fuites
+breach-detail-meta-social-title = La fuite de données de { $company } vous concerne-t-elle ?
+breach-detail-meta-social-description = Utilisez { -brand-fx-monitor } pour savoir si vos informations personnelles ont été compromises dans cette fuite et que faire ensuite.
+breach-scan-meta-title = { -brand-fx-monitor } — Résultats des fuites
 breach-scan-meta-social-title = Résultats des fuites de données { -brand-fx-monitor }
 breach-scan-meta-social-description = Connectez-vous à { -brand-fx-monitor } pour résoudre les fuites de données et bénéficier d’une surveillance continue de toute nouvelle fuite connue.
 
