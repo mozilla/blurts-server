@@ -1,0 +1,53 @@
+[data-partial='cancelSubscriptionSurvey'] {
+  text-align: center;
+}
+
+[data-partial='cancelSubscriptionSurvey'] dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+[data-partial='cancelSubscriptionSurvey'] header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+[data-partial='cancelSubscriptionSurvey'] form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+  padding: 0 var(--padding-lg);
+  gap: var(--padding-md);
+}
+
+[data-partial='cancelSubscriptionSurvey'] textarea {
+  width: inherit;
+  font-family: var(--body-font);
+  padding: var(--padding-sm);
+  height: 100px;
+  font-size: 0.8rem;
+  margin: 0 var(--padding-md);
+}
+
+[data-partial='cancelSubscriptionSurvey'] a {
+  color: var(--blue-50);
+}
+
+[data-partial='cancelSubscriptionSurvey'] b {
+  color: var(--purple-90);
+}
+
+[data-partial='cancelSubscriptionSurvey'] p {
+  margin: 0;
+}
+
+[data-partial='cancelSubscriptionSurvey'] p.add-email-success {
+  min-height: var(--form-height);
+  animation: fade-in 0.5s ease-out;
+}

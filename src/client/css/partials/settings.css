@@ -144,3 +144,7 @@
   content: '＋ ';
   font-weight: 600;
 }
+
+.settings section+section {
+  margin-top: 0;
+}

@@ -113,13 +113,12 @@ const cancelPremiumSubscription = () => `
       ${getMessage('settings-cancel-premium-subscription-title')}
     </h3>
     <p class='settings-section-info'>${getMessage('settings-cancel-premium-subscription-info')}</p>
-    <a
+    <button
       class='settings-link-fxa'
-      href='${AppConstants.FXA_SETTINGS_URL}'
-      target='_blank'
+      data-dialog='cancelSubscriptionSurvey' 
     >
       ${getMessage('settings-cancel-premium-subscription-link-label')}
-    </a>
+    </button>
   </section>
 `
 
@@ -139,7 +138,6 @@ export const settings = data => {
   return `
     <div class='settings js-settings' data-csrf-token='${csrfToken}'>
       <h2 class='settings-title'>${getMessage('settings-page-title')}</h2>
-      
       <div class='settings-content'>
         <!-- Monitored email addresses -->
         <section>
