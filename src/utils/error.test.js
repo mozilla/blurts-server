@@ -4,10 +4,69 @@
 
 import test from 'ava'
 
-import { BadRequestError } from './error.js'
+import {
+  BadRequestError,
+  UnauthorizedError,
+  ForbiddenError,
+  MethodNotAllowedError,
+  ConflictError,
+  TooManyRequestsError,
+  InternalServerError,
+  FluentError
+} from './error.js'
 
-test('test error', t => {
-  const error = new BadRequestError()
-  console.log(error)
-  t.is('test', 'test')
+test('BadRequestError', t => {
+  const errorMessage = 'BadRequestError message'
+  const error = new BadRequestError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Bad Request')
+})
+
+test('UnauthorizedError', t => {
+  const errorMessage = 'UnauthorizedError message'
+  const error = new UnauthorizedError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Unauthorized')
+})
+
+test('ForbiddenError', t => {
+  const errorMessage = 'ForbiddenError message'
+  const error = new ForbiddenError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Forbidden')
+})
+
+test('MethodNotAllowedError', t => {
+  const errorMessage = 'MethodNotAllowedError message'
+  const error = new MethodNotAllowedError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Method Not Allowed')
+})
+
+test('ConflictError', t => {
+  const errorMessage = 'ConflictError message'
+  const error = new ConflictError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Conflict')
+})
+
+test('TooManyRequestsError', t => {
+  const errorMessage = 'TooManyRequestsError message'
+  const error = new TooManyRequestsError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Too Many Requests')
+})
+
+test('InternalServerError', t => {
+  const errorMessage = 'InternalServerError message'
+  const error = new InternalServerError(errorMessage)
+  t.is(error.message, errorMessage)
+  t.is(error.name, 'Internal Server Error')
+})
+
+test('FluentError', t => {
+  const error = new FluentError('home-not-found')
+
+  t.is(error.message, 'home-not-found')
+  t.is(error.name, 'Fluent Error')
 })

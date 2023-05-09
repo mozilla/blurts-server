@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from '../utils/fluent.js'
+import { getMessage } from './fluent.js'
 
 // Default error messages
 const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
@@ -17,7 +17,7 @@ class BadRequestError extends Error {
   constructor (message, ...config) {
     super(message, ...config)
     this.message = message || genericErrorMessage
-    this.name = 'Bad request'
+    this.name = 'Bad Request'
     this.statusCode = 400
   }
 }
@@ -115,11 +115,11 @@ class FluentError extends Error {
 
 export {
   BadRequestError,
-  ConflictError,
-  FluentError,
+  UnauthorizedError,
   ForbiddenError,
-  InternalServerError,
   MethodNotAllowedError,
+  ConflictError,
   TooManyRequestsError,
-  UnauthorizedError
+  InternalServerError,
+  FluentError
 }
