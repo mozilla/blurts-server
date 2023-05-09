@@ -132,10 +132,6 @@ app.use((_req, res, _next) => {
         // https://optinmonster.com/docs/how-to-manually-add-an-after-post-or-inline-optin/#Campaign_Embed_Code
         'https://*.omappapi.com',
         'http://fonts.googleapis.com'
-      ],
-      fontSrc: [
-        "'self'",
-        'http://fonts.gstatic.com'
       ]
     }
   })(_req, res, _next)
