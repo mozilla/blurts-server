@@ -1,7 +1,7 @@
 # Feature Flags
 
 * Status: proposed
-* Deciders: Amri Toufali, Joe Zhou, Rob Helmer, Florian Zia, Emmett Lynch, Vincent Tunru
+* Deciders: Monitor Team
 * Date: 2023-04-12
 
 Technical Story: https://mozilla-hub.atlassian.net/browse/MNTOR-24
