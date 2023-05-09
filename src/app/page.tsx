@@ -1,9 +1,15 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
 import Image from 'next/image'
 import styles from './page.module.css'
+import { SigninButton } from '../components/client/signinButton'
 
 export default function Home() {
   return (
     <main className={styles.main}>
+      <SigninButton/>
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
