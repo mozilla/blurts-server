@@ -68,4 +68,4 @@ settings-unsubscribe-dialog-info = Your experience is important to us. We read e
 settings-unsubscribe-dialog-message-placeholder = What could have gone better?
 settings-unsubscribe-dialog-warning = Please note, all of your { -brand-mozilla-premium } services will be <span>permanently deleted</span> after your current billing cycle ends.
 settings-unsubscribe-dialog-continue = Continue to cancellation
-settings-unsubscribe-dialog-cancel = Nevermind, take me back
+settings-unsubscribe-dialog-cancel = Never mind, take me back
