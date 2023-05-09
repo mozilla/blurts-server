@@ -2,6 +2,24 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Dashboard
+
+breach-all-meta-title = { -brand-fx-monitor } - All Data Breaches
+breach-all-meta-social-title = All Breaches Detected by { -brand-fx-monitor }
+breach-all-meta-social-description = Browse the complete list of known breaches detected by { -brand-fx-monitor }, then find out if your information was exposed.
+
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - { $company } Data Breach
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Were you affected by the { $company } Data Breach?
+breach-detail-meta-social-description = Use { -brand-fx-monitor } to find out if your personal information was exposed in this breach, and understand what to do next.
+
+breach-scan-meta-title = { -brand-fx-monitor } - Breach Results
+breach-scan-meta-social-title = { -brand-fx-monitor } Breach Results
+breach-scan-meta-social-description = Sign in to { -brand-fx-monitor } to resolve breaches and get continuous monitoring for any new known breaches.
+
 ## Breaches header
 
 # Data classes pie chart title
@@ -67,11 +85,12 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Go to the company’s website to change your password and enable two-factor authentication (2FA).
+breach-checklist-pw-header-text = Update your passwords and enable two-factor authentication (2FA).
+
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Make sure your password is unique and hard to guess. If this password is used on any other accounts, be sure to change it there too. { $passwordManagerLink } can help you securely keep track of all of your passwords.
+breach-checklist-pw-body-text = In most cases, we’d recommend that you change your password on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <breached-company-link>visit the site</breached-company-link>. For added protection, make sure you’re using unique passwords for all accounts, so that any leaked passwords can’t be used to access other accounts. { $passwordManagerLink } can help you securely keep track of all of your passwords.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -135,9 +154,10 @@ breach-checklist-phone-header-2 = Protect your phone number with a masking servi
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Update your security questions on the company’s website.
-breach-checklist-sq-body = Use long, random answers, and store them somewhere safe. Do this anywhere else you’ve used the same security questions.
+breach-checklist-sq-header-text = Update your security questions.
+
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = In most cases, we’d recommend that you update your security questions on the company’s website. But <b>their website may be down or contain malicious content</b>, so use caution if you <breached-company-link>visit the site</breached-company-link>. For added protection, update these security questions on any important accounts where you’ve used them, and create unique passwords for all accounts.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

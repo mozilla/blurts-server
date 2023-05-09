@@ -2,13 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { getMessage } from '../utils/fluent.js'
+import { getCountryCode } from '../utils/countryCode.js'
 import { guestLayout } from '../views/guestLayout.js'
+import { generateToken } from '../utils/csrf.js'
 import { landing } from '../views/partials/landing.js'
 
 function landingPage (req, res) {
   const data = {
     partial: landing,
-    nonce: res.locals.nonce
+    csrfToken: generateToken(res),
+    countryCode: getCountryCode(req),
+    meta: {
+      title: getMessage('brand-fx-monitor'),
+      socialTitle: getMessage('brand-fx-monitor'),
+      socialDescription: getMessage('meta-desc-2')
+    },
+    pathname: req._parsedOriginalUrl?.pathname
   }
 
   // Backward-compatibility with Monitor V1, for SEO.

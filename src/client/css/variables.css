@@ -33,6 +33,7 @@
   --purple-5: #e7dfff;
   --purple-20: #cb9eff;
   --purple-40: #ab71ff;
+  --purple-50: #9059ff;
   --purple-60: #7542e5;
   --purple-70: #592acb;
   --purple-90: #321c64;
@@ -49,8 +50,15 @@
   --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   :root {
     --multiplier: 0.75;
+  }
+}
+
+@media screen and (prefers-reduced-motion: no-preference) {
+  :root {
+    --enter-transition-opacity: 0;
+    --enter-transition-y: var(--padding-lg);
   }
 }

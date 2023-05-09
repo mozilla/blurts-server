@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import crypto from 'node:crypto'
-
 import express from 'express'
 import session from 'express-session'
 import helmet from 'helmet'
@@ -15,8 +13,8 @@ import rateLimit from 'express-rate-limit'
 import Sentry from '@sentry/node'
 import '@sentry/tracing'
 
-import AppConstants from './app-constants.js'
-import { localStorage } from './utils/local-storage.js'
+import AppConstants from './appConstants.js'
+import { localStorage } from './utils/localStorage.js'
 import { errorHandler } from './middleware/error.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
@@ -49,14 +47,14 @@ Sentry.init({
 // Build script is triggered for `npm start` and assets are served from /dist.
 // Build script is NOT run for `npm run dev`, assets are served from /src, and nodemon restarts server without build (faster dev).
 const staticPath =
-  process.env.npm_lifecycle_event === 'start' ? '../dist' : './client'
+  process.env.npm_lifecycle_event === 'start' ? 'dist' : 'src/client'
 
 await initFluentBundles()
 
 async function getRedisStore () {
   if (['', 'redis-mock'].includes(AppConstants.REDIS_URL)) {
     // allow mock redis for setups without local redis server
-    const { redisMockClient } = await import('./utils/redis-mock.js')
+    const { redisMockClient } = await import('./utils/redisMock.js')
     return new RedisStore({ client: redisMockClient })
   }
 
@@ -87,7 +85,9 @@ app.use(
 
 const imgSrc = [
   "'self'",
-  'https://www.googletagmanager.com', // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
+  'https://*.google-analytics.com',
+  'https://*.googletagmanager.com',
   'https://firefoxusercontent.com',
   'https://mozillausercontent.com/',
   'https://monitor.cdn.mozilla.net/'
@@ -99,14 +99,13 @@ if (AppConstants.FXA_ENABLED) {
 }
 
 app.use((_req, res, _next) => {
-  res.locals.nonce = crypto.randomBytes(16).toString('hex')
   helmet.contentSecurityPolicy({
     directives: {
       upgradeInsecureRequests: isDev ? null : [], // disable forced https to allow localhost on Safari
       scriptSrc: [
         "'self'",
         // Support GA4 per https://developers.google.com/tag-platform/tag-manager/web/csp
-        `'nonce-${res.locals.nonce}'`
+        'https://*.googletagmanager.com'
       ],
       imgSrc,
       connectSrc: [
@@ -198,8 +197,8 @@ app.use(Sentry.Handlers.errorHandler({
 app.use(errorHandler)
 
 app.listen(AppConstants.PORT, async function () {
-  console.info(`MONITOR V2: Server listening at ${this.address().port}`)
-  console.info(`Static files served from ${staticPath}`)
+  console.info(`Server listening at ${this.address().port}`)
+  console.info(`Client files are served from ${staticPath}`)
   try {
     await initEmail()
     console.info('Email initialized')

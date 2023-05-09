@@ -1,7 +1,7 @@
 {
     "env": {
         "browser": true,
-        "es2021": true,
+        "es2022": true,
         "node": true,
         "jest": true
     },
@@ -18,7 +18,8 @@
     "plugins": [
         "header",
         "jsdoc",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "check-file"
     ],
     "rules": {
         "no-prototype-builtins": "warn",
@@ -45,6 +46,15 @@
             "error",
             {
                 "ts-ignore": "allow-with-description"
+            }
+        ],
+        "check-file/filename-naming-convention": [
+            "error",
+            {
+                "**/*.{js,css} !src/db/migrations": "CAMEL_CASE"
+            },
+            {
+                "ignoreMiddleExtensions": true
             }
         ]
     }

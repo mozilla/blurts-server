@@ -3,10 +3,3 @@ locales/en/*.ftl @flodolo
 
 # svcops helps us review db changes
 db/migrations/* @mozilla/svcops
-
-# pdehaan as a reviewer for breach logos
-public/img/logos/* @pdehaan
-
-# toufali as a reviewer for front-end changes
-src/client/* @toufali
-src/views/* @toufali

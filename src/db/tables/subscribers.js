@@ -5,7 +5,7 @@
 import { destroyOAuthToken } from '../../utils/fxa.js'
 import Knex from 'knex'
 import knexConfig from '../knexfile.js'
-import AppConstants from '../../app-constants.js'
+import AppConstants from '../../appConstants.js'
 import mozlog from '../../utils/log.js'
 const knex = Knex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
@@ -122,6 +122,18 @@ async function removeFxAData (subscriber) {
     await destroyOAuthToken({ token: subscriber.fxa_access_token })
   }
   return updatedSubscriber
+}
+
+/**
+ * @param {import('./subscribers_types').SubscriberRow} subscriber
+ * @param {number} onerepProfileId
+ */
+async function setOnerepProfileId (subscriber, onerepProfileId) {
+  await knex('subscribers')
+    .where('id', subscriber.id)
+    .update({
+      onerep_profile_id: onerepProfileId
+    })
 }
 
 async function setBreachesLastShownNow (subscriber) {
@@ -314,6 +326,7 @@ export {
   updateFxAData,
   removeFxAData,
   updateFxAProfileData,
+  setOnerepProfileId,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
   setBreachesResolved,

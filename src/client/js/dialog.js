@@ -43,7 +43,7 @@ async function openDialog (path) {
   const partialName = path.substring(path.lastIndexOf('/') + 1)
 
   dialogEl.showModal() // provide immediate UI response by showing ::backdrop regardless of content load
-  dialogEl.setAttribute('data-partial', partialName) // allow selector access, e.g. dialog[data-partial='add-email']
+  dialogEl.setAttribute('data-partial', partialName) // allow selector access, e.g. dialog[data-partial='addEmail']
   dialogEl.addEventListener('click', handleEvent)
   dialogEl.addEventListener('close', resetDialog)
 

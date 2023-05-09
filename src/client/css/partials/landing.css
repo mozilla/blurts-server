@@ -27,6 +27,27 @@
   display: block;
 }
 
+.hero form.exposure-scan {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: var(--padding-md);
+}
+
+.hero form.exposure-scan .fx-relay-email-input-wrapper {
+  /* note: visual fix for the Relay add-on injected icon */
+  max-width: 80%;
+  position: relative;
+  overflow: hidden;  
+}
+
+.hero form.exposure-scan input[type='email'] {
+  width: 100%;
+  padding: var(--padding-sm) var(--padding-md);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--gray-30);
+}
+
 .why-use-monitor > h2,
 .why-use-monitor > p {
   text-align: center;
@@ -206,6 +227,11 @@
   color: white;
   text-align: center;
   padding: var(--padding-xl) var(--padding-lg);
+}
+
+.see-if-data-breach .hibp-attribution {
+  margin: var(--padding-lg) 0 0;
+  font-size: 0.9rem;
 }
 
 .see-if-data-breach::before {

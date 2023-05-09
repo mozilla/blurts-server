@@ -12,10 +12,9 @@ import { createResponse, createRequest } from 'node-mocks-http'
 import {
   TEST_SUBSCRIBERS,
   TEST_EMAIL_ADDRESSES
-} from '../db/seeds/test_subscribers.js'
+} from '../db/seeds/testSubscribers.js'
 
-// FIXME move these to src dir
-import { testBreaches } from '../../tests/test-breaches.js'
+import { testBreaches } from '../e2e/fixtures/testBreaches.js'
 
 const mockRequest = { fluentFormat: td.func() }
 
@@ -48,8 +47,8 @@ test.serial('user add POST with email adds unverified subscriber and sends verif
 
   const resp = createResponse()
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { addSubscriberUnverifiedEmailHash, resetUnverifiedEmailAddress } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { addSubscriberUnverifiedEmailHash, resetUnverifiedEmailAddress } = await import('../db/tables/emailAddresses.js')
   td.when(addSubscriberUnverifiedEmailHash('123', 'addingnewemail@test.com'), { times: 1 }).thenResolve({ id: 'test123' })
   td.when(resetUnverifiedEmailAddress('test123'), { times: 1 }).thenResolve('test123')
 
@@ -93,8 +92,8 @@ test.serial('user add POST with upperCaseAddress adds email_address record with 
   const { getMessage } = await import('../utils/fluent.js')
   td.when(getMessage(td.matchers.anything())).thenReturn('test')
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { addSubscriberUnverifiedEmailHash, resetUnverifiedEmailAddress } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { addSubscriberUnverifiedEmailHash, resetUnverifiedEmailAddress } = await import('../db/tables/emailAddresses.js')
   td.when(addSubscriberUnverifiedEmailHash('123', 'addingUpperCaseEmail@test.com'), { times: 1 }).thenResolve({ id: 'test123' })
   td.when(resetUnverifiedEmailAddress('test123'), { times: 1 }).thenResolve('test123')
 
@@ -128,7 +127,7 @@ test.serial('user add POST with upperCaseAddress adds email_address record with 
 /*
 test.serial('user resendEmail with valid session and email id resets email_address record and sends new verification email', async t => {
   const testSubscriberEmail = TEST_SUBSCRIBERS.firefox_account.primary_email
-  const testSubscriber = { id: 123, primary_email: testSubscriberEmail, email_addresses: [{ email: 'test1' }] }
+  const testSubscriber = { id: 123, primary_email: testSubscriberEmail, emailAddresses: [{ email: 'test1' }] }
   const testEmailAddressId = TEST_EMAIL_ADDRESSES.unverified_email_on_firefox_account.id
   const startingTestEmailAddress = 'test-starting@example.com' // await getEmailById(testEmailAddressId)
 
@@ -148,8 +147,8 @@ test.serial('user resendEmail with valid session and email id resets email_addre
 
   const resp = createResponse()
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { getUserEmails } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { getUserEmails } = await import('../db/tables/emailAddresses.js')
   td.when(getUserEmails('test'), { times: 1 }).thenResolve(['test'])
 
   const { resendEmail } = await import('./settings.js')
@@ -288,8 +287,8 @@ test.serial('user verify request with valid token verifies user and redirects to
   })
   const resp = createResponse()
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { verifyEmailHash } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { verifyEmailHash } = await import('../db/tables/emailAddresses.js')
   td.when(verifyEmailHash('test'), { times: 1 }).thenReject('error-not-subscribed')
 
   // Call code-under-test
@@ -317,8 +316,8 @@ test.serial('user verify request with valid token but wrong user session does NO
   })
   const resp = createResponse()
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { verifyEmailHash } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { verifyEmailHash } = await import('../db/tables/emailAddresses.js')
   td.when(verifyEmailHash('test'), { times: 1 }).thenReject(new Error('Error message for this verification email timed out or something went wrong.'))
 
   // Call code-under-test
@@ -349,8 +348,8 @@ test.serial("user verify request for already verified user doesn't send extra em
   const { sendEmail } = await import('../utils/email.js')
   td.when(sendEmail(), { times: 1 }).thenResolve(true)
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { verifyEmailHash } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { verifyEmailHash } = await import('../db/tables/emailAddresses.js')
   td.when(verifyEmailHash('test'), { times: 1 }).thenReject('error-not-subscribed')
 
   const { verifyEmail } = await import('./settings.js')
@@ -379,8 +378,8 @@ test.serial('user verify request with invalid token returns error', async t => {
 
   const resp = createResponse()
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { verifyEmailHash } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { verifyEmailHash } = await import('../db/tables/emailAddresses.js')
   td.when(verifyEmailHash('test'), { times: 1 }).thenReject(new Error('Error message for this verification email timed out or something went wrong.'))
 
   const { verifyEmail } = await import('./settings.js')
@@ -410,8 +409,8 @@ test.serial('user removeEmail POST request with valid session but wrong emailId 
   const { getMessage } = await import('../utils/fluent.js')
   td.when(getMessage(td.matchers.anything())).thenReturn('test')
 
-  await td.replaceEsm('../db/tables/email_addresses.js')
-  const { verifyEmailHash } = await import('../db/tables/email_addresses.js')
+  await td.replaceEsm('../db/tables/emailAddresses.js')
+  const { verifyEmailHash } = await import('../db/tables/emailAddresses.js')
   td.when(verifyEmailHash('test'), { times: 1 }).thenReject(new Error('error-not-subscribed'))
 
   const { verifyEmail } = await import('./settings.js')
