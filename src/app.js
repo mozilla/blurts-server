@@ -130,8 +130,7 @@ app.use((_req, res, _next) => {
         "'unsafe-inline'",
         // Support OptinMonster Campaign Embed Code:
         // https://optinmonster.com/docs/how-to-manually-add-an-after-post-or-inline-optin/#Campaign_Embed_Code
-        'https://*.omappapi.com',
-        'http://fonts.googleapis.com'
+        'https://*.omappapi.com'
       ]
     }
   })(_req, res, _next)
