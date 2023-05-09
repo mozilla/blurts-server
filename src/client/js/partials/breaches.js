@@ -2,8 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { ClientError } from '../error.js'
 import { capitalFirstLetter } from '../utils.js'
-import { ClientError } from '../utils/error.js'
 
 const breachesPartial = document.querySelector("[data-partial='breaches']")
 const chartColors = ['#321C64', '#AB71FF', '#952BB9', '#D74CF0', '#9e9e9e']
