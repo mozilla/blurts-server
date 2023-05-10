@@ -5,6 +5,7 @@
 breach-meta-title = { -brand-fx-monitor } - Panel
 breach-all-meta-title = { -brand-fx-monitor } - Todas las filtraciones de datos
 breach-all-meta-social-title = Todas las filtraciones detectadas por { -brand-fx-monitor }
+breach-all-meta-social-description = Explora la lista completa de filtraciones conocidas detectadas por { -brand-fx-monitor }, luego averigua si tu información estuvo expuesta.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Filtración de datos de { $company }
