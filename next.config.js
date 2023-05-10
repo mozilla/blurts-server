@@ -9,6 +9,11 @@ const nextConfig = {
       type: 'asset/source'
     })
 
+    config.externals ??= {}
+    config.externals.push({
+      knex: 'commonjs knex'
+    })
+
     return config
   }
 }
