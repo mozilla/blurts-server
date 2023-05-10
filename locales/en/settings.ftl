@@ -66,6 +66,7 @@ settings-send-email-verification-button = Send verification link
 settings-unsubscribe-dialog-title = We’re sorry to see you go. <br /> Will you tell us why you’re leaving?
 settings-unsubscribe-dialog-info = Your experience is important to us. We read every response and take it into consideration.
 settings-unsubscribe-dialog-message-placeholder = What could have gone better?
-settings-unsubscribe-dialog-warning = Please note, all of your { -brand-mozilla-premium } services will be <span>permanently deleted</span> after your current billing cycle ends.
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Please note, all of your { -brand-monitor-premium } services will be <a { $faq_href }>permanently deleted</a> after your current billing cycle ends.
 settings-unsubscribe-dialog-continue = Continue to cancellation
 settings-unsubscribe-dialog-cancel = Never mind, take me back

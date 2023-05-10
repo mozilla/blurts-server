@@ -25,8 +25,12 @@ export const cancelSubscriptionSurvey = data => `
   <p>${getMessage('settings-unsubscribe-dialog-info')}</p>
   <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
   <textarea id="unsubscribe-feedback" placeholder='${getMessage('settings-unsubscribe-dialog-message-placeholder')}'></textarea>
+  <p class='warning'>${getMessage('settings-unsubscribe-dialog-confirmation', {
+      faq_href: 'href="https://support.mozilla.org/en-US/kb/how-do-i-opt-out-firefox-monitor"'
+    })}
+  </p>
   <button class='primary' type='submit' name='email-submit'>${getMessage('settings-unsubscribe-dialog-continue')}</button>
-  <a href="#">${getMessage('settings-unsubscribe-dialog-cancel')}</a>
+  <a href="/user/breaches">${getMessage('settings-unsubscribe-dialog-cancel')}</a>
 </form>
 </div>
 `
