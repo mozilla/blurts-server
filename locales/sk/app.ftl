@@ -822,7 +822,7 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
 
 ## Search Engine Optimization
 
-meta-desc = { -brand-fx-monitor } zistí, či boli vaše údaje súčasťou nejakého úniku. Prihláste sa na odber upozornení o budúcich porušeniach a získajte tipy, ako udržať svoje účty v bezpečí.
+meta-desc-2 = Zistite, či ste boli súčasťou úniku údajov pomocou služby { -brand-fx-monitor }. Pomôžeme vám pochopiť, čo máte robiť ďalej, a budeme neustále monitorovať akékoľvek nové úniky údajov.
 
 ## Header
 
