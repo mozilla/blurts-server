@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Ontdek of u bent getroffen door een datalek
-stay-safe-with-tool = Blijf veilig met een eenvoudig maar krachtig hulpmiddel, dat bijhoudt of uw persoonlijke gegevens zijn getroffen door een datalek. We helpen u te begrijpen wat u vervolgens moet doen en controleren continu op nieuwe lekken – en dat alles zonder kosten voor u.
 get-started = Beginnen
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Niet alle lekken onthullen allemaal dezelfde informatie. He
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Bekijk of u bent getroffen door een datalek
+hibp-footer-attribution = Datalek aangeleverd door <b>{ -brand-HIBP }</b>
