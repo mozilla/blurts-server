@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } — Панель управления
+breach-all-meta-title = { -brand-fx-monitor } - Все утечки данных
+breach-all-meta-social-title = Все нарушения, обнаруженные { -brand-fx-monitor }
+breach-all-meta-social-description = Просмотрите полный список известных утечек, обнаруженных { -brand-fx-monitor }, а затем узнайте, была ли раскрыта ваша информация.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Утечка данных { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Были ли вы затронуты утечкой данных { $company }?
+breach-detail-meta-social-description = Используйте { -brand-fx-monitor }, чтобы узнать, была ли ваша личная информация раскрыта в результате этой утечки, и понять, что делать дальше.
+breach-scan-meta-title = { -brand-fx-monitor } - Результаты утечки
+breach-scan-meta-social-title = { -brand-fx-monitor } Результаты утечки
+breach-scan-meta-social-description = Войдите в { -brand-fx-monitor }, чтобы решать утечки и получать непрерывный мониторинг любых новых известных утечек.
 
 ## Breaches header
 
