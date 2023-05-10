@@ -12,10 +12,10 @@ breach-detail-meta-title = { -brand-fx-monitor } - Tor-data { $company }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = A oedd y Tor-data { $company } wedi effeithio arnoch chi?
-breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich manylion personol eu datgelu yn y tor-data hwn, a chael gwybod beth i'w wneud nesaf.
+breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich manylion personol chi eu datgelu yn y tor-data hwn, a chael gwybod beth i'w wneud nesaf.
 breach-scan-meta-title = { -brand-fx-monitor } - Canlyniadau Tor-data
 breach-scan-meta-social-title = { -brand-fx-monitor } Canlyniadau Tor-data
-breach-scan-meta-social-description = Mewngofnodwch i { -brand-fx-monitor } i ddatrys toriadau a chael monitro parhaus am unrhyw doriadau hysbys newydd.
+breach-scan-meta-social-description = Mewngofnodwch i { -brand-fx-monitor } i ddatrys unrhyw dor-data a chael monitro parhaus am unrhyw dor-data hysbys newydd.
 
 ## Breaches header
 

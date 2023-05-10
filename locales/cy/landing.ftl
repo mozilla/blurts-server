@@ -50,4 +50,4 @@ depends-on-hackers = Nid yw pob tor-data'n amlygu'r un wybodaeth. Mae'n dibynnu 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Gweld a ydych wedi ymddangos mewn tor-data.
-hibp-footer-attribution = Darparwyd data torri amodau gan <b>{ -brand-HIBP }</b>
+hibp-footer-attribution = Darparwyd data'r tor-data gan <b>{ -brand-HIBP }</b>
