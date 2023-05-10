@@ -120,6 +120,7 @@ const cancelPremiumSubscription = () => `
       ${getMessage('settings-cancel-premium-subscription-link-label')}
     </button>
   </section>
+  <hr>
 `
 
 /**

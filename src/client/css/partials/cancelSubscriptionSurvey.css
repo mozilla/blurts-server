@@ -22,7 +22,6 @@
   padding: var(--padding-sm);
   height: 100px;
   font-size: 0.8rem;
-  margin: 0 var(--padding-md);
 }
 
 [data-partial='cancelSubscriptionSurvey'] .warning {
@@ -33,15 +32,6 @@
   color: var(--blue-50);
 }
 
-[data-partial='cancelSubscriptionSurvey'] b {
-  color: var(--purple-90);
-}
-
 [data-partial='cancelSubscriptionSurvey'] p {
   margin: 0;
-}
-
-[data-partial='cancelSubscriptionSurvey'] p.add-email-success {
-  min-height: var(--form-height);
-  animation: fade-in 0.5s ease-out;
 }

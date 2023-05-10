@@ -22,14 +22,18 @@ export const cancelSubscriptionSurvey = data => `
   <h2>${getMessage('settings-unsubscribe-dialog-title')}</h2>
 </header>
 <form>
+<!-- TODO: Needs a submit endpoint for the form --->
   <p>${getMessage('settings-unsubscribe-dialog-info')}</p>
   <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
-  <textarea id="unsubscribe-feedback" placeholder='${getMessage('settings-unsubscribe-dialog-message-placeholder')}'></textarea>
-  <p class='warning'>${getMessage('settings-unsubscribe-dialog-confirmation', {
-      faq_href: 'href="https://support.mozilla.org/en-US/kb/how-do-i-opt-out-firefox-monitor"'
-    })}
+  <textarea id='unsubscribe-feedback' placeholder='${getMessage('settings-unsubscribe-dialog-message-placeholder')}'></textarea>
+  <p class='warning'>${getMessage('settings-unsubscribe-dialog-confirmation')}
   </p>
-  <button class='primary' type='submit' name='email-submit'>${getMessage('settings-unsubscribe-dialog-continue')}</button>
+  <!-- TODO: Figure out if this button is functioning as a form submission or a link to go to another page --> 
+  <a href='#'>
+    <button class='primary' type='submit'>
+      ${getMessage('settings-unsubscribe-dialog-continue')}
+    </button>
+  </a>
   <a href="/user/breaches">${getMessage('settings-unsubscribe-dialog-cancel')}</a>
 </form>
 </div>
