@@ -52,16 +52,18 @@ const mainLayout = data => {
       </head>
       <body>
         <header>
-          <a href='/user/breaches'>
-            <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
-          </a>
-          <div class='nav-wrapper'>
-            <button class='nav-toggle'>
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' width='20'>
-                <path d='M1 1h8M1 4h8M1 7h8' stroke='#000' stroke-width='1' stroke-linecap='round'/>
-              </svg>
-            </button>
-            ${userMenu(data)}
+          <div class="header-wrapper">
+            <a href='/user/breaches'>
+              <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+            </a>
+            <div class='nav-wrapper'>
+              <button class='nav-toggle'>
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' width='20'>
+                  <path d='M1 1h8M1 4h8M1 7h8' stroke='#000' stroke-width='1' stroke-linecap='round'/>
+                </svg>
+              </button>
+              ${userMenu(data)}
+            </div>
           </div>
         </header>
 
