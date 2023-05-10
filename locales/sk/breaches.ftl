@@ -5,6 +5,17 @@
 breach-meta-title = { -brand-fx-monitor } - nástenka
 breach-all-meta-title = { -brand-fx-monitor } - všetky úniky údajov
 breach-all-meta-social-title = Všetky úniky údajov zistené službou { -brand-fx-monitor }
+breach-all-meta-social-description = Prezrite si úplný zoznam známych únikov údajov zistených službou { -brand-fx-monitor } a potom zistite, či boli vaše informácie odhalené.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - únik údajov spoločnosti { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Dotýka sa vás únik údajov spoločnosti { $company }?
+breach-detail-meta-social-description = Pomocou služby { -brand-fx-monitor } zistíte, či boli pri tomto úniku odhalené vaše osobné údaje, a dozviete sa, čo robiť ďalej.
+breach-scan-meta-title = { -brand-fx-monitor } - výsledky úniku údajov
+breach-scan-meta-social-title = { -brand-fx-monitor } - výsledky úniku údajov
+breach-scan-meta-social-description = Prihláste sa do služby { -brand-fx-monitor }, aby ste vyriešili úniky údajov a získali nepretržité monitorovanie všetkých nových známych únikov.
 
 ## Breaches header
 
