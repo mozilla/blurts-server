@@ -3,18 +3,18 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Dangosfwrdd
-breach-all-meta-title = { -brand-fx-monitor } - Pob Torri Data
-breach-all-meta-social-title = Canfod pob toriad gan { -brand-fx-monitor }
-breach-all-meta-social-description = Porwch y rhestr gyflawn o doriadau hysbys a ganfuwyd gan { -brand-fx-monitor }, yna darganfyddwch a ddatgelwyd eich gwybodaeth.
+breach-all-meta-title = { -brand-fx-monitor } - Pob Tor-data
+breach-all-meta-social-title = Pob Tor-data Wedi ei Ganfod gan { -brand-fx-monitor }
+breach-all-meta-social-description = Porwch y rhestr lawn o dor-data hysbys a ganfuwyd gan { -brand-fx-monitor }, yna gweld a ddatgelwyd eich manylion chi.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } - { $company } Torri Data
+breach-detail-meta-title = { -brand-fx-monitor } - Tor-data { $company }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-social-title = A oedd y Torri Data { $company } wedi effeithio arnoch chi?
-breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich gwybodaeth bersonol ei datgelu yn y toriad hwn, a deall beth i'w wneud nesaf.
-breach-scan-meta-title = { -brand-fx-monitor } - Canlyniadau Torri
-breach-scan-meta-social-title = { -brand-fx-monitor } Canlyniadau Torri
+breach-detail-meta-social-title = A oedd y Tor-data { $company } wedi effeithio arnoch chi?
+breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich manylion personol eu datgelu yn y tor-data hwn, a chael gwybod beth i'w wneud nesaf.
+breach-scan-meta-title = { -brand-fx-monitor } - Canlyniadau Tor-data
+breach-scan-meta-social-title = { -brand-fx-monitor } Canlyniadau Tor-data
 breach-scan-meta-social-description = Mewngofnodwch i { -brand-fx-monitor } i ddatrys toriadau a chael monitro parhaus am unrhyw doriadau hysbys newydd.
 
 ## Breaches header
