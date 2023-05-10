@@ -43,9 +43,8 @@ Implementing feature flagging on the server side reduces the complexity of synch
 ## Considered Options
 
 ### Environment Variables
-From Vincent:
 ```
-ENABLED_FEATURE_FLAGS = "premium,party-mode,etc"
+ENABLED_FEATURE_FLAGS = "premium,party-mode,feature-x"
 
 function isFlagEnabled(flag: string): boolean {
   return (process.env.ENABLED_FEATURE_FLAGS ?? '').split(',').includes(flag);
@@ -65,28 +64,22 @@ const confettiScript = isFlagEnabled('party-mode')
 
 ## Decision Outcome
 
-Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
+TBD
 
-### Positive Consequences <!-- optional -->
-
-* [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-* …
-
-### Negative Consequences <!-- optional -->
-
-* [e.g., compromising quality attribute, follow-up decisions required, …]
-* …
 
 ## Pros and Cons of the Options <!-- optional -->
 
-### [option 1]
+### Environment Variable
 
 [example | description | pointer to more information | …] <!-- optional -->
 
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* … <!-- numbers of pros and cons can vary -->
+* Good, because it's the easiest/quickest way to implement feature flags
+* Good, because the changes can be easily tested in separate environments, programmatically
+* Good, because the changes can be scalable (by simply adding and subtracting from the env var array)
+* Good, because it's easy to maintain and it's centralized
+* Good, because it's easy to learn and understand
+* Bad, because we will become dependent on SRE to make any changes in stage and production environment. However, it's not too bad because we will likely have to involve SRE when releasing to production anyways, and during release is when we will be deciding and modifying the environment variables. 
+* Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
 
 ### [option 2]
 
