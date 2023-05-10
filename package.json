@@ -64,6 +64,7 @@
   "dependencies": {
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
+    "@fluent/react": "^0.15.0",
     "@sentry/node": "^7.40.0",
     "@sentry/tracing": "^7.38.0",
     "@types/node": "^20.1.1",
