@@ -42,6 +42,12 @@ settings-email-number-of-breaches-info =
        *[other] Appears in { $breachCount } known breaches.
   }
 
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Cancel { -brand-premium } subscription
+settings-cancel-premium-subscription-info = Your subscription will revert to a free account after the current billing cycle ends. Your privacy protection scan results will be permanently deleted, and you’ll only have data breach monitoring for 1 email address.
+settings-cancel-premium-subscription-link-label = Cancel from your { -brand-fx-account }
+
 ## Deactivate account
 
 settings-deactivate-account-title = Deactivate account

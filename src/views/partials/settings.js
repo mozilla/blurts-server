@@ -106,6 +106,22 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   </label>
   </div>
 `
+const cancelPremiumSubscription = () => `
+  <hr>
+  <section>
+    <h3 class='settings-section-title'>
+      ${getMessage('settings-cancel-premium-subscription-title')}
+    </h3>
+    <p class='settings-section-info'>${getMessage('settings-cancel-premium-subscription-info')}</p>
+    <a
+      class='settings-link-fxa'
+      href='${AppConstants.FXA_SETTINGS_URL}'
+      target='_blank'
+    >
+      ${getMessage('settings-cancel-premium-subscription-link-label')}
+    </a>
+  </section>
+`
 
 /**
  * @typedef {object} PartialData
@@ -123,24 +139,14 @@ export const settings = data => {
   return `
     <div class='settings js-settings' data-csrf-token='${csrfToken}'>
       <h2 class='settings-title'>${getMessage('settings-page-title')}</h2>
-
+      
       <div class='settings-content'>
-        <!-- Breach alert preferences -->
-        <section>
-          <h3 class='settings-section-title'>
-            ${getMessage('settings-alert-preferences-title')}
-          </h3>
-          ${alertOptions({ csrfToken, allEmailsToPrimary })}
-        </section>
-
-        <hr>
-
         <!-- Monitored email addresses -->
         <section>
           <h3 class='settings-section-title'>
             ${getMessage('settings-email-list-title')}
           </h3>
-          <p>${getMessage('settings-email-limit-info', { limit })}</p>
+          <p class='settings-section-info'>${getMessage('settings-email-limit-info', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
           <button
@@ -152,12 +158,23 @@ export const settings = data => {
 
         <hr>
 
+        <!-- Breach alert preferences -->
+        <section>
+          <h3 class='settings-section-title'>
+            ${getMessage('settings-alert-preferences-title')}
+          </h3>
+          ${alertOptions({ csrfToken, allEmailsToPrimary })}
+        </section>
+
+        <!-- Cancel Premium Subscription -->
+        ${AppConstants.CANCEL_SUBSCRIPTION_FLOW ? cancelPremiumSubscription() : '<hr>'}
+
         <!-- Deactivate account -->
         <section>
           <h3 class='settings-section-title'>
             ${getMessage('settings-deactivate-account-title')}
           </h3>
-          <p>${getMessage('settings-deactivate-account-info')}</p>
+          <p class='settings-section-info'>${getMessage('settings-deactivate-account-info')}</p>
           <a
             class='settings-link-fxa'
             href='${AppConstants.FXA_SETTINGS_URL}'
