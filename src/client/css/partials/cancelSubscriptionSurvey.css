@@ -29,6 +29,10 @@
   font-size: 0.8rem;
 }
 
+[data-partial='cancelSubscriptionSurvey'] .warning a {
+  font-weight: bold;
+}
+
 [data-partial='cancelSubscriptionSurvey'] a {
   color: var(--blue-50);
 }
