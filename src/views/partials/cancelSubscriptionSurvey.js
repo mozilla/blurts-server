@@ -14,7 +14,7 @@ import { getMessage } from '../../utils/fluent.js'
  * @param {PartialData} data
  * @returns string
  */
-export const cancelSubscriptionSurvey = data => `
+export const cancelSubscriptionSurvey = () => `
 <div class='dialog'>
 <header>
   <button class='close'></button>
@@ -24,7 +24,6 @@ export const cancelSubscriptionSurvey = data => `
 <form>
 <!-- TODO: Needs a submit endpoint for the form --->
   <p>${getMessage('settings-unsubscribe-dialog-info')}</p>
-  <input type='hidden' name='csrf-token' value='${data.csrfToken}'>
   <textarea id='unsubscribe-feedback' placeholder='${getMessage('settings-unsubscribe-dialog-message-placeholder')}'></textarea>
   <p class='warning'>${getMessage('settings-unsubscribe-dialog-confirmation', {faq_href: 'href="https://support.mozilla.org/kb/general-questions-about-privacy-protection-scans#w_what-happens-when-i-unsubscribe-from-premium" target="_blank"'})}
   </p>
