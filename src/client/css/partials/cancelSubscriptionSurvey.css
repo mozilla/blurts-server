@@ -2,7 +2,8 @@
   text-align: center;
 }
 
-[data-partial='cancelSubscriptionSurvey'] header, form {
+[data-partial='cancelSubscriptionSurvey'] header, 
+[data-partial='cancelSubscriptionSurvey'] form {
   display: flex;
   flex-direction: column;
   align-items: center;
