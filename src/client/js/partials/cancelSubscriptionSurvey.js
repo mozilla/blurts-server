@@ -2,17 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-let dialogEl, form, continue_btn
+let dialogEl, form, continueBtn
 
 function init () {
   dialogEl = document.querySelector('dialog[data-partial="cancelSubscriptionSurvey"]')
   if (!dialogEl) return
-  continue_btn = dialogEl.querySelector('#continue-to-unsubscribe-flow-btn')
-  
+  continueBtn = dialogEl.querySelector('#continue-to-unsubscribe-flow-btn')
   form = dialogEl.querySelector('form')
-  continue_btn.addEventListener("click", function() {
+  continueBtn.addEventListener('click', function () {
     form.addEventListener('submit', handleSubmit)
-    window.open("https://accounts.firefox.com/subscriptions", "_blank");
+    window.open('https://accounts.firefox.com/subscriptions', '_blank')
   })
   dialogEl.addEventListener('close', kill)
 }
