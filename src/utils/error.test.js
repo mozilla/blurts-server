@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import test from 'ava'
-
 import {
   BadRequestError,
   UnauthorizedError,
@@ -14,6 +13,7 @@ import {
   InternalServerError,
   FluentError
 } from './error.js'
+import { initFluentBundles, updateLocale } from './fluent.js'
 
 test('BadRequestError', t => {
   const errorMessage = 'BadRequestError message'
@@ -64,9 +64,12 @@ test('InternalServerError', t => {
   t.is(error.name, 'Internal Server Error')
 })
 
-test('FluentError', t => {
+test('FluentError', async t => {
+  await initFluentBundles()
+  updateLocale('en')
+
   const error = new FluentError('home-not-found')
 
-  t.is(error.message, 'home-not-found')
+  t.is(error.message, 'Page not found.')
   t.is(error.name, 'Fluent Error')
 })

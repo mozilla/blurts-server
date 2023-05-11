@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { request } from '@playwright/test'
-import { InternalServerError } from '../utils/error.js'
+import { InternalServerError } from '../../utils/error.js'
 
 export const defaultScreenshotOpts = {
   animations: 'disabled',

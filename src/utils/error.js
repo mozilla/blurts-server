@@ -4,7 +4,6 @@
 
 import { getMessage } from './fluent.js'
 
-// Default error messages
 const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
 const permissionErrorMessage = 'You don’t have permission to access this content.'
 const tooManyRequestsErrorMessage = 'Too many requests received. Please try again later. '
