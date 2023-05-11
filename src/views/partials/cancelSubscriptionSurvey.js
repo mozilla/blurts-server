@@ -14,6 +14,7 @@ import { getMessage } from '../../utils/fluent.js'
  * @param {PartialData} data
  * @returns string
  */
+
 export const cancelSubscriptionSurvey = () => `
 <div class='dialog'>
 <header>
@@ -21,18 +22,16 @@ export const cancelSubscriptionSurvey = () => `
   <img src='/images/dialog-unsubscribe-plane.svg'>
   <h2>${getMessage('settings-unsubscribe-dialog-title')}</h2>
 </header>
-<form>
+<form id='unsubscribe-feedback-form' action='' method=''>
 <!-- TODO: Needs a submit endpoint for the form --->
   <p>${getMessage('settings-unsubscribe-dialog-info')}</p>
   <textarea id='unsubscribe-feedback' placeholder='${getMessage('settings-unsubscribe-dialog-message-placeholder')}'></textarea>
   <p class='warning'>${getMessage('settings-unsubscribe-dialog-confirmation', {faq_href: 'href="https://support.mozilla.org/kb/general-questions-about-privacy-protection-scans#w_what-happens-when-i-unsubscribe-from-premium" target="_blank"'})}
   </p>
   <!-- TODO: Figure out if this button is functioning as a form submission or a link to go to another page --> 
-  <a href='#'>
-    <button class='primary' type='submit'>
+    <button id='continue-to-unsubscribe-flow-btn' type='submit' class='primary'>
       ${getMessage('settings-unsubscribe-dialog-continue')}
     </button>
-  </a>
   <a href="/user/breaches">${getMessage('settings-unsubscribe-dialog-cancel')}</a>
 </form>
 </div>
