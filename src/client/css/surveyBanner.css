@@ -5,7 +5,7 @@
  .recruitment-banner {
     text-align: center;
     position: relative;
-    padding: var(--padding-md) var(--padding-md) 1.5rem;
+    padding: var(--padding-md) var(--padding-md);
     background-color: var(--purple-50);
 }
 

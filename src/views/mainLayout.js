@@ -73,7 +73,7 @@ const mainLayout = data => {
       </head>
       <body>
         <header>
-          <!-- Cancel Premium Subscription -->
+          ${ /* Cancel Premium Subscription */ '' }
           ${shouldShowRecruitmentBanner() ? recruitmentBanner() : ''}
           <div class="header-wrapper">
             <a href='/user/breaches'>
