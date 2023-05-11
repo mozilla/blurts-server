@@ -39,6 +39,46 @@ One key consideration when deciding where to implement a feature flag is securit
 
 ### Sync Complexity
 Implementing feature flagging on the server side reduces the complexity of synchronizing feature toggle logic between the frontend and backend, as there is a single central location to manage the toggle settings. This simplifies development and ensures that the system runs smoothly, as dependencies flow in one direction.
+## Maintenance & Best Practices
+### Naming Flags
+Defining a pattern or naming convention is generally a good practice for keeping things organized. Engineers can quickly identify from the name what the feature is about and be able to recognize what areas of the application for which the feature is being used. I'll list a few useful examples of naming structures and demonstrate the practical benefits.
+
+A good naming **convention** I found is as follows:
+```
+section_featurepurpose_service
+```
+
+The feature name example that follows has three parts:
+1. section: we present the name of the section the feature is gating. 
+2. purpose: indicates what the feature does
+3. layer: where in the stack the feature is located
+
+An **example** of such names would be:
+```
+settings_premium_email
+```
+
+In this example, the feature is gating functionality in the "settings" section. It is a part of the "premium" feature. The main area of concern is the "email"
+service.
+
+### Retiring Flags / Zombies
+One of the worst problems when an org adopts feature flags is that the number of flags within a product can grow to become overwhelming. No one is entirely sure who’s responsible for which flags or which flags are no longer being used.
+
+We need to have a process in place where flags are retired after they serve their purpose. This can be done as a part of our agile process (grooming /planning) where we always have a task in the working backlog to clean up the feature flags that were created for the current feature. It's important to not mark this task as tech debt though, since tech debts can have a nasty tendency of being perpetually deprioritized.
+
+For more drastic measure, there are teams that opt to place a limit on the number of active flags they have under management. This incentivizes the removal of old flags to make room for a new flag.
+
+It's much easier to spot the zombie flags if our code is being maintained properly after feature complete. The if/elses that usually associate with feature flags should be deleted upon completition of a feature, and with a simple search, we should be able to quickly spot stale feature flags
+
+### Ownership
+Looking ahead, there may come a time when we need a system that enables the ability to assign ownership of a flag
+
+Feature flags offer a powerful way to directly modify the behavior of production systems, acting as a kill switch. The configuration of flags should undergo the same level of change control as the deployment of production code. Associating explicit ownership with a flag allows for the application of change control policies. For instance, individuals can be restricted from modifying flags they do not own, or approval can be required before making feature-flag configuration changes in the production environment.
+
+### Flag Tagging
+Attaching information like expiration dates and ownership to a flag are specific examples of a more general capability: the ability to tag flags.
+
+Tagging refers to the ability to attach arbitrary key:value pairs to a feature flag. This concept is employed in infrastructure systems like Kubernetes and AWS. It provides a highly adaptable method for users to associate semantic metadata with entities within the system. Tags can be used to track various aspects of a flag, such as its creation date, expiration date, life-cycle status, flag type, ownership, authorized modifier etc.
 
 ## Considered Options
 
