@@ -2,6 +2,14 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Oversigt
+breach-all-meta-title = { -brand-fx-monitor } - Alle datalæk
+breach-all-meta-social-title = Alle datalæk opdaget af { -brand-fx-monitor }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Datalæk fra { $company }
+breach-detail-meta-social-description = Brug { -brand-fx-monitor } til at finde ud af, om dine personlige oplysninger blev eksponeret i denne datalæk - og hvad du skal gøre nu.
+breach-scan-meta-social-description = Log ind på { -brand-fx-monitor } for at løse datalæk og få løbende overvågning for nye kendte datalæk.
 
 ## Breaches header
 
@@ -46,6 +54,9 @@ breaches-all-resolved-copy = Godt gået! Du har løst alle datalæk for { $email
 breaches-all-resolved-cta-blurb = Vil du overvåge en mailadresse til?
 breaches-all-resolved-cta-button = Tilføj mailadresse
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Den { $breachDate } blev { $companyName } udsat for en datalæk. Da datalækken blev opdaget og bekræftet, blev den føjet til vores database den { $addedDate }. Denne datalæk omfattede: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +67,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Besøg virksomhedens websted for at ændre din adgangskode og slå tofaktor-godkendelse (2FA) til
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Sørg for, at din adgangskode er unik og svær at gætte. Hvis adgangskoden bruges til andre konti, så skal du sørge for at ændre den dér også. { $passwordManagerLink } kan hjælpe dig med at holde styr på alle dine adgangskoder på en sikker måde.
+breach-checklist-pw-body-text = I de fleste tilfælde vil vi anbefale, at du ændrer din adgangskode på virksomhedens websted. Men <b>deres websted kan være nede eller indeholde skadeligt indhold</b>, så vær forsigtig, hvis du <breached-company-link>besøger webstedet</breached-company-link>. For ekstra beskyttelse skal du sørge for, at du bruger unikke adgangskoder til alle konti, så eventuelle lækkede adgangskoder ikke kan bruges til at få adgang til andre konti. { $passwordManagerLink } kan hjælpe dig med sikkert at holde styr på alle dine adgangskoder.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -71,17 +81,17 @@ breach-checklist-email-body = På denne måde bliver din rigtige mailadresse hol
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Hold øje med, om dine kreditrapporter indeholder konti, lån eller kreditkort, du ikke genkender.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Du kan også overveje, at indefryse din kredit på { $equifaxLink }, { $experianLink } og { $transUnionLink } for at forhindre svindlere i at åbne nye konti i dit navn. Det er gratis og påvirker ikke dine kreditværdighed.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -124,9 +134,7 @@ breach-checklist-phone-header-2 = Beskyt dit telefonnummer med en maskerings-tje
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Opdater dine sikkerhedsspørgsmål på virksomhedens websted.
-breach-checklist-sq-body = Brug lange, vilkårlige svar - og gem dem et sikkert sted. Gør dette overalt, hvor du har brugt de samme sikkerhedsspørgsmål.
+breach-checklist-sq-header-text = Opdater dine sikkerhedsspørgsmål.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -137,5 +145,7 @@ breach-checklist-hp-body-2 = Programmer til at håndtere adgangskoder som fx { $
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Kontakt { $companyName } for at informere dem om denne datalæk og bede om specifikke skridt, du kan tage.
