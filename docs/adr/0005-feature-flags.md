@@ -45,17 +45,17 @@ Defining a pattern or naming convention is generally a good practice for keeping
 
 A good naming **convention** I found is as follows:
 ```
-section_featurepurpose_service
+section_purpose_service
 ```
 
 The feature name example that follows has three parts:
-1. section: we present the name of the section the feature is gating. 
-2. purpose: indicates what the feature does
-3. layer: where in the stack the feature is located
+1. section (optional): we present the name of the section of the app the feature is gating (free/premium). 
+2. purpose: indicates what the feature does (can be tied to an epic name)
+3. service: where in the stack the feature is located (subsection of an epic)
 
 An **example** of such names would be:
 ```
-settings_premium_email
+settings_subplat_email
 ```
 
 In this example, the feature is gating functionality in the "settings" section. It is a part of the "premium" feature. The main area of concern is the "email"
@@ -84,7 +84,7 @@ Tagging refers to the ability to attach arbitrary key:value pairs to a feature f
 
 ### Environment Variables
 ```
-ENABLED_FEATURE_FLAGS = "premium,party-mode,feature-x"
+ENABLED_FEATURE_FLAGS = "premium_subplat_email, free_breaches_hibp"
 
 function isFlagEnabled(flag: string): boolean {
   return (process.env.ENABLED_FEATURE_FLAGS ?? '').split(',').includes(flag);
