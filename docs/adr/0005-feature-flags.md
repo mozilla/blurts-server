@@ -55,7 +55,7 @@ The feature name example that follows has three parts:
 
 An **example** of such names would be:
 ```
-settings_subplat_email
+premium_subplat_email
 ```
 
 In this example, the feature is gating functionality in the "settings" section. It is a part of the "premium" feature. The main area of concern is the "email"
