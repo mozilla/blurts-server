@@ -5,6 +5,7 @@
 breach-meta-title = { -brand-fx-monitor } - Oversigt
 breach-all-meta-title = { -brand-fx-monitor } - Alle datalæk
 breach-all-meta-social-title = Alle datalæk opdaget af { -brand-fx-monitor }
+breach-all-meta-social-description = Gennemse den komplette liste over kendte datalæk opdaget af { -brand-fx-monitor }, og find derefter ud af, om dine oplysninger blev eksponeret.
 breach-detail-meta-social-description = Brug { -brand-fx-monitor } til at finde ud af, om dine personlige oplysninger blev eksponeret i denne datalæk - og hvad du skal gøre nu.
 breach-scan-meta-social-description = Log ind på { -brand-fx-monitor } for at løse datalæk og få løbende overvågning for nye kendte datalæk.
 
@@ -64,6 +65,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Opdater dine adgangskoder og aktiver tofaktor-godkendelse (2FA).
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -132,6 +134,8 @@ breach-checklist-phone-header-2 = Beskyt dit telefonnummer med en maskerings-tje
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Opdater dine sikkerhedsspørgsmål.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = I de fleste tilfælde vil vi anbefale, at du opdaterer dine sikkerhedsspørgsmål på virksomhedens websted. Men <b>deres websted kan være nede eller indeholde skadeligt indhold</b>, så vær forsigtig, hvis du <breached-company-link>besøger webstedet</breached-company-link>. For ekstra beskyttelse skal du sørge for, at du opdaterer disse sikkerhedsspørgsmål på alle vigtige konti, hvor du har brugt dem, og oprette unikke adgangskoder til alle konti.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
