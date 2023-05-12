@@ -65,7 +65,7 @@ function makeDataSection (breach) {
 
   output +=
     `<li>
-      <img src="/images/more.svg">
+      <img src="/images/more.svg" width="24" alt="">
       ${dataClasses.lowerPriority}
     </li>`
 
