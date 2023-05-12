@@ -2,6 +2,12 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Pano
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = { $company } veri ihlalinden etkilendiniz mi?
+breach-detail-meta-social-description = Bu ihlalde kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek ve bundan sonra bu gibi durumlarda ne yapacağınızı anlamak için { -brand-fx-monitor } kullanın.
+breach-scan-meta-social-description = İhlalleri çözmek ve bilinen yeni ihlaller için sürekli takipte kalmak için { -brand-fx-monitor }’e giriş yapın.
 
 ## Breaches header
 

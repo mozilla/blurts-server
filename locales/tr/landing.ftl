@@ -45,3 +45,4 @@ depends-on-hackers = Tüm ihlallerde aynı bilgiler açığa çıkmaz. Sonuç, b
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Verilerinizin çalınıp çalınmadığını kontrol edin
+hibp-footer-attribution = İhlal verileri <b>{ -brand-HIBP }</b> tarafından sağlanmaktadır
