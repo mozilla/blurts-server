@@ -17,11 +17,12 @@ const emailNeedsVerificationSub = email => `
 
 const deleteButton = email => `
   <button
+    aria-label='Delete email'
     data-subscriber-id='${email.subscriber_id}'
     data-email-id='${email.id}'
     class='settings-email-remove-button js-remove-email-button'
   >
-    <img src='/images/icon-delete.svg'>
+    <img src='/images/icon-delete.svg' alt='Delete icon'>
   </button>
 `
 
