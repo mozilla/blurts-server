@@ -3,15 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from 'react'
-import { getServerSession } from 'next-auth/next'
 import { Inter } from 'next/font/google'
-import { headers } from 'next/headers'
 import './globals.css'
-import { authOptions } from './api/auth/[...nextauth]/route'
-import { SessionProvider } from '../contextProviders/session'
-import { LocalizationProvider } from '../contextProviders/localization'
-import { acceptedLanguages } from '@fluent/langneg'
-import { getL10nBundleSources } from './functions/getL10nBundles'
+import { getLocale } from './functions/server/l10n'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,19 +19,12 @@ export default async function RootLayout ({
 }: {
   children: ReactNode,
 }) {
-  const session = await getServerSession(authOptions)
-  const headersList = headers()
-  const acceptLangHeader = headersList.get('Accept-Language')
-  const l10nBundleSources = getL10nBundleSources(acceptLangHeader ? acceptedLanguages(acceptLangHeader) : undefined)
+  const currentLocale = getLocale()
 
   return (
-    <html lang={l10nBundleSources[0]?.locale ?? 'en'}>
+    <html lang={currentLocale}>
       <body className={inter.className}>
-        <LocalizationProvider bundleSources={l10nBundleSources}>
-          <SessionProvider session={session}>
-            {children}
-          </SessionProvider>
-        </LocalizationProvider>
+        {children}
       </body>
     </html>
   )

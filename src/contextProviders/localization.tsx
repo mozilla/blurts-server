@@ -6,17 +6,14 @@
 'use client'
 
 import { FluentBundle, FluentResource } from '@fluent/bundle'
-import { LocalizationProvider as OriginalLocalizationProvider, ReactLocalization, MarkupParser } from '@fluent/react'
+import { MarkupParser, LocalizationProvider, ReactLocalization } from '@fluent/react'
 import { ReactNode } from 'react'
+import { LocaleData } from '../app/functions/server/l10n'
 
-export const LocalizationProvider = (props: { bundleSources: Array<{ locale: string, bundleSources: string[] }>, children: ReactNode }) => {
-  const l10n = getL10nFromBundleSources(props.bundleSources)
-  return <OriginalLocalizationProvider l10n={l10n}>{props.children}</OriginalLocalizationProvider>
-}
-function getL10nFromBundleSources (bundleSources: Array<{ locale: string, bundleSources: string[] }>) {
+export const L10nProvider = (props: { bundleSources: LocaleData[], children: ReactNode }) => {
   const bundles: FluentBundle[] = []
 
-  bundleSources.forEach(({ locale, bundleSources }) => {
+  props.bundleSources.forEach(({ locale, bundleSources }) => {
     const bundle = new FluentBundle(locale)
     bundleSources.forEach(bundleSource => bundle.addResource(new FluentResource(bundleSource)))
     bundles.push(bundle)
@@ -34,12 +31,7 @@ function getL10nFromBundleSources (bundleSources: Array<{ locale: string, bundle
         ]
       : undefined
 
-  // The ReactLocalization instance stores and caches the sequence of generated
-  // bundles. You can store it in your app's state.
-  const l10n = new ReactLocalization(
-    bundles,
-    parseMarkup
-  )
+  const l10n = new ReactLocalization(bundles, parseMarkup)
 
-  return l10n
+  return <LocalizationProvider l10n={l10n}>{props.children}</LocalizationProvider>
 }

@@ -2,21 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-'use client'
-
 import { ReactNode } from 'react'
 import '../../../client/css/index.css'
-import { useL10n } from '../../hooks/l10n'
 import Image from 'next/image'
 import MonitorLogo from '../../../client/images/monitor-logo-transparent@2x.webp'
 import MozillaLogo from '../../../client/images/moz-logo-1color-white-rgb-01.svg'
+import { getL10n } from '../../functions/server/l10n'
 
 export type Props = {
   children: ReactNode
 }
 
 const GuestLayout = (props: Props) => {
-  const l10n = useL10n()
+  const l10n = getL10n()
 
   return (
     <>

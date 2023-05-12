@@ -17,13 +17,13 @@ import { createElement, Fragment, useEffect, useState } from 'react'
  * but it's pretty useful:
  * https://github.com/projectfluent/fluent.js/pull/595#discussion_r967011632)
  */
-type GetFragment = (
+export type GetFragment = (
   id: Parameters<ReactLocalization['getString']>[0],
   args?: Parameters<ReactLocalization['getElement']>[2],
   fallback?: Parameters<ReactLocalization['getString']>[2]
 ) => ReturnType<ReactLocalization['getElement']>;
 
-type ExtendedReactLocalization = ReactLocalization & {
+export type ExtendedReactLocalization = ReactLocalization & {
   getFragment: GetFragment;
 };
 
