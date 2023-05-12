@@ -187,7 +187,7 @@ async function unsubscribeFromEmails (req) {
 
   // For unsubscribing from emails we need a hash and token
   if (!hasMandatoryParams(urlQuery, 'hash,token')) {
-    throw FluentError('user-unsubscribe-token-email-error')
+    throw new FluentError('user-unsubscribe-token-email-error')
   }
 
   throw new MethodNotAllowedError()
@@ -203,7 +203,7 @@ async function unsubscribeFromMonthlyReport (req) {
 
   // For unsubscribing from the monthly emails we need a token
   if (!hasMandatoryParams(urlQuery, 'token')) {
-    throw FluentError('user-unsubscribe-token-error')
+    throw new FluentError('user-unsubscribe-token-error')
   }
 
   // Unsubscribe user from the monthly unresolved breach emails
