@@ -2,12 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
-
 export const ErrorActionTypes = {
   None: 'none',
   Toast: 'toast'
 }
+
+const defaultMessage = 'Something went wrong. Please try again or come back later.'
 const defaultConfig = { action: ErrorActionTypes.None }
 
 class ClientError extends Error {
@@ -16,10 +16,10 @@ class ClientError extends Error {
    * @param {Array<{ action: string, targetHref: string }>} config
    */
   constructor (message, config = defaultConfig) {
-    super(message, config)
+    super(config)
 
     this.config = config
-    this.message = message || genericErrorMessage
+    this.message = message || defaultMessage
     this.toast = null
 
     this.handleConfig()
