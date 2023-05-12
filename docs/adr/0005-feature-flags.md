@@ -118,8 +118,6 @@ const confettiScript = isFlagEnabled('party-mode')
 * Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
 
 ### Unleash (Cloud)
-
-
 * Good, because set up is minimized
 * Good, because it is manged so we have support when things fall apart, relatively worry-free
 * Good, because new features get added without costing us valuable engineering time
@@ -128,9 +126,6 @@ const confettiScript = isFlagEnabled('party-mode')
 
 
 ### Unleash (self-hosted)
-
-
-
 * Good, because we have visibility into the entire stack
 * Good, because it is more flexible, we can pick and choose what we need
 * Good, because it's open source and we can fork / modify features
