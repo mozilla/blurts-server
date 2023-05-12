@@ -83,6 +83,20 @@ Tagging refers to the ability to attach arbitrary key:value pairs to a feature f
 ## Considered Options
 
 ### Environment Variables
+
+### Unleashed Open Source Feature Flag (self host)
+
+### Unleased (managed cloud)
+
+## Decision Outcome
+
+TBD
+
+
+## Pros and Cons of the Options <!-- optional -->
+
+### Environment Variable
+
 ```
 ENABLED_FEATURE_FLAGS = "premium,party-mode,feature-x"
 
@@ -95,24 +109,6 @@ const confettiScript = isFlagEnabled('party-mode')
   : "";
 ```
 
-### Unleashed Open Source Feature Flag (self host)
-
-### Unleased (managed cloud)
-
-
-...
-
-## Decision Outcome
-
-TBD
-
-
-## Pros and Cons of the Options <!-- optional -->
-
-### Environment Variable
-
-[example | description | pointer to more information | …] <!-- optional -->
-
 * Good, because it's the easiest/quickest way to implement feature flags
 * Good, because the changes can be easily tested in separate environments, programmatically
 * Good, because the changes can be scalable (by simply adding and subtracting from the env var array)
@@ -121,25 +117,29 @@ TBD
 * Bad, because we will become dependent on SRE to make any changes in stage and production environment. However, it's not too bad because we will likely have to involve SRE when releasing to production anyways, and during release is when we will be deciding and modifying the environment variables. 
 * Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
 
-### [option 2]
+### Unleash (Cloud)
 
-[example | description | pointer to more information | …] <!-- optional -->
 
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* … <!-- numbers of pros and cons can vary -->
+* Good, because set up is minimized
+* Good, because it is manged so we have support when things fall apart, relatively worry-free
+* Good, because new features get added without costing us valuable engineering time
+* Bad, because we have to pay and probably sign a contract
+* Bad, because we adds an additonal dependency
 
-### [option 3]
 
-[example | description | pointer to more information | …] <!-- optional -->
+### Unleash (self-hosted)
 
-* Good, because [argument a]
-* Good, because [argument b]
-* Bad, because [argument c]
-* … <!-- numbers of pros and cons can vary -->
+
+
+* Good, because we have visibility into the entire stack
+* Good, because it is more flexible, we can pick and choose what we need
+* Good, because it's open source and we can fork / modify features
+* Bad, because we need more support from SRE
+* Bad, because we have to keep up with open source development
+* Bad, because we won't have the support that a paying customer would get, have to rely on Github issues mainly for support
 
 ## Links <!-- optional -->
 
-* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
-* … <!-- numbers of links can vary -->
+* [Unleash: Open source](https://github.com/Unleash/unleash)
+* [Unleash: Hosted](https://www.getunleash.io/)
+* [Feature Flags in Next.js with iron-session](https://doist.dev/posts/feature-flags-iron-session-nextjs)
