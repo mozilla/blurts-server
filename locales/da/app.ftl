@@ -726,6 +726,7 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 
 ## Search Engine Optimization
 
+meta-desc-2 = Brug { -brand-fx-monitor } til at finde ud af, om du er blevet udsat for datalæk. Vi vejleder dig i, hvad du skal gøre - og holder løbende øje med nye datalæk.
 
 ## Header
 
