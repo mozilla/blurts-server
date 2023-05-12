@@ -60,3 +60,13 @@ settings-email-dialog-title = Add another email address
 settings-add-email-text = Add a new email address to see if it’s been involved in a breach.
 settings-email-input-label = Email address
 settings-send-email-verification-button = Send verification link
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-title = We’re sorry to see you go. <br /> Will you tell us why you’re leaving?
+settings-unsubscribe-dialog-info = Your experience is important to us. We read every response and take it into consideration.
+settings-unsubscribe-dialog-message-placeholder = What could have gone better?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Please note, all of your { -brand-monitor-premium } services will be <a { $faq_href }>permanently deleted</a> after your current billing cycle ends.
+settings-unsubscribe-dialog-continue = Continue to cancellation
+settings-unsubscribe-dialog-cancel = Never mind, take me back
