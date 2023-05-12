@@ -2,17 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-'use client'
-
 import Script from 'next/script'
 import '../../../../client/css/partials/exposureScan.css'
-import { useL10n } from '../../../hooks/l10n'
 import Image from 'next/image'
 import HeroImage from '../../../../client/images/exposure-scan-hero.svg'
 import NoBreachesImage from '../../../../client/images/breaches-none.svg'
+import { getL10n } from '../../../functions/server/l10n'
 
 export default function PublicScan () {
-  const l10n = useL10n()
+  const l10n = getL10n()
 
   return (
     <div data-partial="exposureScan">
