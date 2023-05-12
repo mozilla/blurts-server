@@ -57,7 +57,7 @@ async function openDialog (path) {
     })
 
     if (!res.ok) {
-      throw new ClientError('Something went wrong. Please try again or come back later.', {
+      throw new ClientError(null, {
         action: 'toast'
       })
     }
