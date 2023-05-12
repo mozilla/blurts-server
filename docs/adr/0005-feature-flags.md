@@ -13,7 +13,7 @@ As Monitor becomes a more mature product, we need to support gradual feature rol
 The main function of feature flags is that they facilitate the decoupling of code deployment from feature
 release. Feature flags can be used in a few scenarios:
 * Operational control: create “kill switches” that can dynamically reconfigure a live production system in response to high load, mission critical bugs, or third-party outages (dependencies).
-* CICI: simpler merges into the main branch
+* CI/CD: simpler merges into the main branch
 * Environment-dependent configurations
 * Experimentations: A/B testing and different experiences for different users based on context (user, device, geolocation data etc)
 
