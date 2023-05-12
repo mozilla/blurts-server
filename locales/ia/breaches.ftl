@@ -5,9 +5,14 @@
 breach-meta-title = { -brand-fx-monitor } - Quadro de controlo
 breach-all-meta-title = { -brand-fx-monitor } - Tote le violation datos
 breach-all-meta-social-title = Tote le violationes disvelate per { -brand-fx-monitor }
+breach-all-meta-social-description = Navigar per le lista complete de violationes note disvelate per { -brand-fx-monitor }, pois discoperi si tu informationes era exponite.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - { $company } Violation de datos
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Era tu afficite per le violation de datos de { $company }?
+breach-detail-meta-social-description = Usa { -brand-fx-monitor } pro discoperir si tu informationes personal era exponite in iste violation, e comprender que facer postea.
 breach-scan-meta-title = { -brand-fx-monitor } - Resultatos de violation datos
 breach-scan-meta-social-title = { -brand-fx-monitor } Resultatos de violation datos
 breach-scan-meta-social-description = Accede a { -brand-fx-monitor } pro solver le violationes e obtener un surveliantia continue pro cata nove violation note.
