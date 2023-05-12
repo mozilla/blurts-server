@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ClientError } from '../error.js'
+import { ClientError, ErrorActionTypes } from '../error.js'
 import { capitalFirstLetter } from '../utils.js'
 
 const breachesPartial = document.querySelector("[data-partial='breaches']")
@@ -96,7 +96,7 @@ async function updateBreachStatus (input) {
 
     if (res.ok) {
       throw new ClientError('We couldn’t search for the latest breaches. Please refresh or try again later.', {
-        action: 'toast'
+        action: ErrorActionTypes.Toast
       })
     }
 

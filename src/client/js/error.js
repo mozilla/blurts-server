@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
-const ErrorActionTypes = {
+
+export const ErrorActionTypes = {
   None: 'none',
   Toast: 'toast'
 }

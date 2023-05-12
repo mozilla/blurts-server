@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ClientError } from './error.js'
+import { ErrorActionTypes } from '../error.js'
 
 const main = document.querySelector('body > main')
 const observer = new MutationObserver(handleMutation)
@@ -58,7 +59,7 @@ async function openDialog (path) {
 
     if (!res.ok) {
       throw new ClientError(null, {
-        action: 'toast'
+        action: ErrorActionTypes.Toast
       })
     }
     window.gtag('event', 'opened_closed_dialog', { action: 'open', result: 'success', page_location: location.href })
