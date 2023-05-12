@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } – Dashboerd
+breach-all-meta-title = { -brand-fx-monitor } – Alle datalekken
+breach-all-meta-social-title = Alle troch { -brand-fx-monitor } detektearre datalekken
+breach-all-meta-social-description = Blêdzje troch de folsleine list mei bekende datalekken ûntdutsen troch { -brand-fx-monitor }, fyn dan út oft jo ynformaasje bleatsteld is.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } – { $company } Datalek
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Binne jo troffen troch it datalek fan { $company }?
+breach-detail-meta-social-description = Brûk { -brand-fx-monitor } om der efter te kommen oft jo persoanlike gegevens by dit datalek lekt binne en om te begripen wat jo dernei dwaan moatte.
+breach-scan-meta-title = { -brand-fx-monitor } – Resultaten datalek
+breach-scan-meta-social-title = { -brand-fx-monitor }-datalekresultaten
+breach-scan-meta-social-description = Meld jo oan by { -brand-fx-monitor } om datalekken op te lossen en kontinu ynsjoch te krijen oer nije bekende datalekken.
 
 ## Breaches header
 
