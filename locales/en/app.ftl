@@ -893,8 +893,11 @@ menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
 menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-fxa-alt = Open { -brand-fx-account } page
 menu-item-settings = Settings
+menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
+menu-item-help-alt = Open help and support page
 menu-item-logout = Sign out
 
 ## Footer
