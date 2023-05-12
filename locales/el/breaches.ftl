@@ -4,6 +4,15 @@
 
 breach-meta-title = { -brand-fx-monitor } - Πίνακας ελέγχου
 breach-all-meta-title = { -brand-fx-monitor } - Όλες οι παραβιάσεις δεδομένων
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Παραβίαση δεδομένων { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Επηρεαστήκατε από την παραβίαση δεδομένων { $company };
+breach-scan-meta-title = { -brand-fx-monitor } - Αποτελέσματα παραβίασης
+breach-scan-meta-social-title = { -brand-fx-monitor } - Αποτελέσματα παραβίασης
+breach-scan-meta-social-description = Συνδεθείτε στο { -brand-fx-monitor } για να επιλύσετε παραβιάσεις και να έχετε συνεχή εποπτεία για τυχόν νέες παραβιάσεις.
 
 ## Breaches header
 
