@@ -81,12 +81,9 @@ Attaching information like expiration dates and ownership to a flag are specific
 Tagging refers to the ability to attach arbitrary key:value pairs to a feature flag. This concept is employed in infrastructure systems like Kubernetes and AWS. It provides a highly adaptable method for users to associate semantic metadata with entities within the system. Tags can be used to track various aspects of a flag, such as its creation date, expiration date, life-cycle status, flag type, ownership, authorized modifier etc.
 
 ## Considered Options
-
-### Environment Variables
-
-### Unleashed Open Source Feature Flag (self host)
-
-### Unleased (managed cloud)
+* Environment Variables
+* Unleashed Open Source Feature Flag (self host)
+* Unleased (managed cloud)
 
 ## Decision Outcome
 
