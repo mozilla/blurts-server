@@ -726,7 +726,6 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 
 ## Search Engine Optimization
 
-meta-desc = Brug { -brand-fx-monitor } til at finde ud af, om du er blevet ramt af en datalæk. Tilmeld dig for at få advarsler om nye datalæk og få tips til at beskytte dine konti.
 
 ## Header
 
@@ -758,7 +757,7 @@ menu-item-logout = Log ud
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Vilkår og beskyttelse af personlige oplysninger
 github = { -brand-github }
-footer-nav-all-breaches = Alla datalæk
+footer-nav-all-breaches = Alle datalæk
 
 ## Error page
 
