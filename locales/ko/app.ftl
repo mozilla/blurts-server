@@ -638,17 +638,37 @@ sign-in = 로그인
 
 ## Site navigation
 
+site-nav-breaches-link = 데이터 유출 해결
 site-nav-settings-link = 설정
+site-nav-help-link = 도움말 및 지원
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = 다른 보완 도구를 사용해보세요:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
+menu-button-title = 사용자 메뉴
+menu-button-alt = 사용자 메뉴 열기
+menu-list-accessible-label = 계정 메뉴
+menu-item-fxa = { -brand-fx-account } 관리
+menu-item-settings = 설정
+menu-item-help = 도움말 및 지원
+menu-item-logout = 로그아웃
 
 ## Footer
 
+mozilla = { -brand-Mozilla }
 terms-and-privacy = 약관 및 개인 정보 보호 정책
+github = { -brand-github }
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } 페이지를 찾을 수 없음
+error-page-error-404-copy = 죄송합니다. 찾으시는 페이지가 더 이상 존재하지 않습니다.
+error-page-error-404-cta-button = 뒤로 가기
 
 ## Breach overview page
 

@@ -6,6 +6,8 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = 다른 이메일 주소 추가
+# $total is the number of emails a user is allowed to add
+add-email-your-account-includes = 귀하의 계정에는 최대 { $total }개의 이메일 주소에 대한 모니터링이 포함됩니다. 새 이메일 주소를 추가하여 위반 여부를 확인하세요.
 add-email-address-input-label = 이메일 주소
 add-email-send-verification-button = 확인 링크 보내기
 # $email is the newly added email address. $settings-href is the URL for the Settings page. HTML tags should not be translated, e.g. `<a>`
