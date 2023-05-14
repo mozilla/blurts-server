@@ -71,18 +71,25 @@ breach-checklist-ip-body = IP 주소(인터넷 프로토콜 주소)는 사용자
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
+breach-checklist-address-header = 주소의 일부가 포함된 비밀번호나 PIN을 변경하세요.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
+breach-checklist-dob-header = 생년월일이 포함된 비밀번호나 PIN을 변경하세요.
+breach-checklist-dob-body = 생년월일은 공공 기록에서 쉽게 찾을 수 있으며, 사람들이 비밀번호를 쉽게 추측할 수 있습니다.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = 실제 전화번호를 숨기는 { $firefoxRelayLink }와 같은 마스킹 서비스로 전화번호를 보호하세요.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
+breach-checklist-hp-header = 비밀번호를 재사용한 적이 있는 모든 계정에 대해 고유하고 강력한 비밀번호를 만드세요.
 
 ## Prompts the user for changes when there is a breach detected of other types
 
