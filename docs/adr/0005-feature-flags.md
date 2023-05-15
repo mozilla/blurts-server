@@ -82,8 +82,8 @@ Tagging refers to the ability to attach arbitrary key:value pairs to a feature f
 
 ## Considered Options
 * Environment Variables
-* Unleashed Open Source Feature Flag (self host)
-* Unleased (managed cloud)
+* [Unleash](https://www.getunleash.io/) Open Source Feature Flag (self host)
+* Unleash (managed cloud)
 
 ## Decision Outcome
 
