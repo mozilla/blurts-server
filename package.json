@@ -72,6 +72,8 @@
     "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.3",
     "helmet": "^6.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwk-to-pem": "^2.0.5",
     "knex": "^2.4.2",
     "mozlog": "^3.0.2",
     "nodemailer": "^6.9.1",

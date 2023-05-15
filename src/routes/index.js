@@ -8,6 +8,7 @@ import express from 'express'
 import adminRoutes from './admin.js'
 import authRoutes from './auth.js'
 import dockerFlowRoutes from './dockerflow.js'
+import fxaRpEventsApiRoutes from './api/v1/fxaRpEvents.js'
 import hibpApiRoutes from './api/v1/hibp.js'
 import previewRoutes from './preview.js'
 import userApiRoutes from './api/v1/user.js'
@@ -31,6 +32,7 @@ router.get('*/dialog/:name', dialog)
 
 router.use('/admin', doubleCsrfProtection, adminRoutes)
 router.use('/api/v1/hibp/', hibpApiRoutes)
+router.use('/api/v1/fxa-rp-events', fxaRpEventsApiRoutes)
 router.use('/api/v1/scan', doubleCsrfProtection, requestBreachScan)
 router.use('/api/v1/user/', doubleCsrfProtection, userApiRoutes)
 router.use('/oauth', doubleCsrfProtection, authRoutes)
