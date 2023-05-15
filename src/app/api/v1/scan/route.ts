@@ -4,7 +4,7 @@
 
 import { NextResponse } from 'next/server'
 import { validateEmailAddress } from '../../../../utils/emailAddress'
-import { getBreachIcons, getBreaches } from '../../../functions/getBreaches'
+import { getBreachIcons, getBreaches } from '../../../functions/server/getBreaches'
 import { getBreachesForEmail } from '../../../../utils/hibp'
 import { getSha1 } from '../../../../utils/fxa'
 import { getBreachLogo } from '../../../../utils/breachLogo'
