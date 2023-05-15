@@ -34,8 +34,9 @@
   gap: var(--padding-md);
 }
 
-.hero form.exposure-scan .fx-relay-email-input-wrapper {
+.hero form.exposure-scan .exposure-scan-email-input {
   /* note: visual fix for the Relay add-on injected icon */
+  width: 100%;
   max-width: 80%;
   position: relative;
   overflow: hidden;  
