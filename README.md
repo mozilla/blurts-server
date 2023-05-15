@@ -177,3 +177,9 @@ If you encounter issues with Heroku deploys, be sure to check your environment v
 _**TODO:** add full deploy process similar to Relay_
 
 _**TODO:** consider whether we can re-enable Heroku Review Apps_
+
+## Preserve sessions in local development
+
+Sessions by default are stored in-memory, which means that when the server restarts (e.g. because you made a code change), you will have to log in again.
+
+To avoid this hassle, you can install and run [Redis](https://redis.io/), which by default runs on `redis://localhost:6379`. Use that value for `REDIS_URL` in your `.env` file to preserve your sessions across server restarts.
