@@ -120,6 +120,8 @@
 .settings-resend-email,
 .settings-link-fxa {
   color: var(--blue-50);
+  text-decoration: underline;
+  text-underline-position: under;
   font: 600 1em/1.2 inter, sans-serif;
 }
 
@@ -143,4 +145,8 @@
 .settings-add-email-button::before {
   content: '＋ ';
   font-weight: 600;
+}
+
+.settings section+section {
+  margin-top: 0;
 }

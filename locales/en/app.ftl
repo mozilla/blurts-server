@@ -856,6 +856,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
 -brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
