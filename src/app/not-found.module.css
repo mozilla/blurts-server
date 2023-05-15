@@ -1,0 +1,28 @@
+.wrapper {
+  background-image: url('../client/images/error-bg.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--padding-lg);
+  padding: var(--padding-xl);
+  height: 100%;
+}
+
+.wrapper h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--padding-sm);
+  font: var(--h1-font);
+}
+
+.wrapper h1 span {
+  font: var(--h3-font);
+  font-weight: bold;
+  font-size: 10rem;
+  color: var(--purple-60);
+  text-shadow: 0.75rem 0 0 var(--purple-20);
+}
