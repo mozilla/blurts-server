@@ -38,3 +38,4 @@ what-gets-exposed = Ποιες πληροφορίες εκτίθενται σε 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Δείτε αν έχετε εμφανιστεί σε κάποια παραβίαση δεδομένων
+hibp-footer-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <b>{ -brand-HIBP }</b>

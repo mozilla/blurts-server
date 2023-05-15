@@ -4,6 +4,8 @@
 
 breach-meta-title = { -brand-fx-monitor } - Πίνακας ελέγχου
 breach-all-meta-title = { -brand-fx-monitor } - Όλες οι παραβιάσεις δεδομένων
+breach-all-meta-social-title = Όλες οι παραβιάσεις που εντοπίστηκαν από το { -brand-fx-monitor }
+breach-all-meta-social-description = Περιηγηθείτε στην πλήρη λίστα των γνωστών παραβιάσεων που εντοπίστηκαν από το { -brand-fx-monitor } και μάθετε εάν αποκαλύφθηκαν οι πληροφορίες σας.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Παραβίαση δεδομένων { $company }
@@ -96,6 +98,7 @@ breach-checklist-bank-header = Ειδοποιήστε αμέσως την τρά
 ## Prompts the user for changes when there is a breach detected of pin
 
 breach-checklist-pin-header = Ειδοποιήστε τον εκδότη της κάρτας σας και αλλάξτε αμέσως το PIN σας.
+breach-checklist-pin-body = Βεβαιωθείτε ότι το νέο σας PIN, ή οποιοδήποτε άλλο PIN, δεν περιλαμβάνει αριθμούς που μπορούν να μαντευτούν εύκολα, όπως η διεύθυνση ή η ημερομηνία γέννησής σας.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
@@ -113,6 +116,9 @@ breach-checklist-dob-header = Αλλάξτε τυχόν κωδικούς πρό�
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
+# Variables:
+#   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
+breach-checklist-phone-header-2 = Προστατέψτε τον αριθμό τηλεφώνου σας με μια υπηρεσία απόκρυψης, όπως το { $firefoxRelayLink }, που κρύβει τον πραγματικό σας αριθμό τηλεφώνου.
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
