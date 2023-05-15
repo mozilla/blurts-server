@@ -3,6 +3,24 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const nextConfig = {
+  async headers () {
+    /** @type {import('next').NextConfig['headers']} */
+    const headers = []
+    const noindexEnvs = ['dev', 'development', 'heroku', 'stage']
+    const noSearchEngineIndex = noindexEnvs.includes(process.env.NODE_ENV)
+    if (noSearchEngineIndex) {
+      headers.push({
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex'
+          }
+        ]
+      })
+    }
+    return headers
+  },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.ftl/,
