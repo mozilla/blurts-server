@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- .recruitment-banner {
+.recruitment-banner {
     text-align: center;
     position: relative;
     padding: var(--padding-md) var(--padding-md);
@@ -13,7 +13,7 @@
   list-style-type: none;
 }
 
-#recruitment-banner {
+#recruitment-banner-link {
     color: white;
     text-decoration: underline;
     display: inline-block;
@@ -25,7 +25,7 @@
     margin: 0 auto;
 }
 
-#recruitment-banner:hover {
+#recruitment-banner-link:hover {
     cursor: pointer;
     text-decoration: none;
 }

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 const recruitmentBanner = document.querySelector('.recruitment-banner')
-const recruited = document.cookie.split('; ').some((item) => item.trim().startsWith('recruited='))
+const recruited = document.cookie.split('; ').some((item) => item.trim().startsWith('recruited-2023-05='))
 
 function init () {
   if (!recruitmentBanner) {
@@ -13,8 +13,8 @@ function init () {
   // Only show the banner and set event listeners if the user has not interacted with the survey
   if (!recruited) {
     recruitmentBanner.toggleAttribute('hidden')
-    const recruitmentBannerLink = document.getElementById('recruitment-banner')
-    const recruitmentDismissButton = document.getElementById('recruitment-dismiss')
+    const recruitmentBannerLink = document.getElementById('recruitment-banner-link')
+    const recruitmentDismissButton = document.getElementById('recruitment-banner-dimiss')
     recruitmentBannerLink.addEventListener('click', handleEvent)
     recruitmentDismissButton.addEventListener('click', handleEvent)
   }
@@ -23,11 +23,11 @@ function init () {
 function handleEvent (e) {
   const date = new Date()
   date.setTime(date.getTime() + 30 * 24 * 60 * 60 * 1000)
-  document.cookie = 'recruited=true; expires=' + date.toUTCString() + '; path=/'
+  document.cookie = 'recruited-2023-05=true; expires=' + date.toUTCString() + '; path=/; SameSite=Lax'
 
   switch (true) {
-    case e.target.matches('#recruitment-dismiss'):
-      document.getElementById('recruitment-banner').parentElement.remove()
+    case e.target.matches('#recruitment-banner-dimiss'):
+      document.getElementById('recruitment-banner-link').parentElement.remove()
       break
   }
 }

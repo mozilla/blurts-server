@@ -14,23 +14,24 @@ const mainLayout = data => {
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
 
-  const shouldShowRecruitmentBanner = () => {
-    // Only show if ENVs are set and user language is set to "en"
+  const showRecruitmentBanner = () => {
+    // Only show if ENVs are set and user language is set to "en".
+    // Otherwise, return empty string
     if (
       AppConstants.RECRUITMENT_BANNER_TEXT &&
       AppConstants.RECRUITMENT_BANNER_LINK &&
       getLocale().includes('en')
     ) {
-      return true
+      return recruitmentBannerMarkup()
     }
-    return false
+    return ''
   }
 
-  const recruitmentBanner = () => ` 
-    <div role="banner" class="recruitment-banner" hidden>
-      <a id="recruitment-banner" class="text-link" href="${AppConstants.RECRUITMENT_BANNER_LINK}" target="_blank" rel="noopener noreferrer" data-ga="send-ga-pings" data-event-category="Recruitment" data-event-label="${AppConstants.RECRUITMENT_BANNER_TEXT}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a>
-      <button id="recruitment-dismiss" class="dismiss-btn">
-        <svg class="x-close-icon" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+  const recruitmentBannerMarkup = () => ` 
+    <div class="recruitment-banner" hidden>
+      <a id="recruitment-banner-link" class="text-link" href="${AppConstants.RECRUITMENT_BANNER_LINK}" target="_blank" rel="noopener noreferrer" data-ga="send-ga-pings" data-event-category="Recruitment" data-event-label="${AppConstants.RECRUITMENT_BANNER_TEXT}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a>
+      <button id="recruitment-banner-dimiss" class="dismiss-btn">
+        <svg aria-label="Close" class="x-close-icon" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
       </button>
     </div>
   `
@@ -73,8 +74,8 @@ const mainLayout = data => {
       </head>
       <body>
         <header>
-          ${ /* Cancel Premium Subscription */ '' }
-          ${shouldShowRecruitmentBanner() ? recruitmentBanner() : ''}
+          ${/* Cancel Premium Subscription */ ''}
+          ${showRecruitmentBanner()}
           <div class="header-wrapper">
             <a href='/user/breaches'>
               <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
