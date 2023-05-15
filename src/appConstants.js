@@ -52,7 +52,8 @@ const optionalEnvVars = [
   'HIBP_BREACH_DOMAIN_BLOCKLIST',
   'LIVE_RELOAD',
   'PORT',
-  'SENTRY_DSN_LEGACY'
+  'SENTRY_DSN_LEGACY',
+  'CANCEL_SUBSCRIPTION_FLOW'
 ]
 
 /** @type {Record<string, string>} */

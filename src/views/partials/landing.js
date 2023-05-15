@@ -10,7 +10,7 @@ export const landing = () => `
     <h1>${getMessage('exposure-landing-hero-heading')}</h1>
     <p>${getMessage('exposure-landing-hero-lead')}</p>
     <form hidden class="exposure-scan">
-      <label for="scan-email-adddress" class="visually-hidden">
+      <label for="scan-email-address" class="visually-hidden">
         ${getMessage('exposure-landing-hero-email-label')}
       </label>
       <input
@@ -105,5 +105,6 @@ export const landing = () => `
 <section class='see-if-data-breach' data-enter-transition>
   <h2>${getMessage('see-if-data-breach')}</h2>
   <a class='button primary' data-cta-id='landing-2' href='/user/breaches'>${getMessage('get-started')}</a>
+  <p class='hibp-attribution'>${getMessage('hibp-footer-attribution')}</p>
 </section>
 `

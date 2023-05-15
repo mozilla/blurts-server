@@ -22,7 +22,6 @@
           "custom-elements"
         ]
       }
-    ],
-    "string-quotes": "single"
+    ]
   }
 }
