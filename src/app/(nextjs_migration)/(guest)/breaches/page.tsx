@@ -2,15 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getBreachIcons, getBreaches } from '../../../functions/getBreaches'
+import { getBreachIcons, getBreaches } from '../../../functions/server/getBreaches'
 import { getBreachLogo } from '../../../../utils/breachLogo'
 import Script from 'next/script'
 import '../../../../client/css/partials/allBreaches.css'
 import { getL10n, getLocale } from '../../../functions/server/l10n'
+import { BreachLogo } from '../../../components/server/BreachLogo'
 
 export default async function PublicScan () {
   const allBreaches = await getBreaches()
-  const breachLogos = await Promise.all(allBreaches.map(async breach => getBreachLogo(breach, await getBreachIcons(allBreaches))))
+  const breachLogos = await getBreachIcons(allBreaches)
   const l10n = getL10n()
 
   return (
@@ -67,7 +68,7 @@ function BreachCard (props: {breach: any, logos: any}) {
   return (
     <a href={`/breach-details/${props.breach.Name}`} className="breach-card">
       <h3>
-        {/* <span className="logo-wrapper">{getBreachLogo(props.breach, props.logos)}</span> */}
+        <span className="logo-wrapper"><BreachLogo breach={props.breach} logos={props.logos}/></span>
         <span>{props.breach.Title}</span>
       </h3>
       <div className="breach-main">
