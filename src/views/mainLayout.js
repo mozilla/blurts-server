@@ -15,12 +15,13 @@ const mainLayout = data => {
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
 
   const showRecruitmentBanner = () => {
-    // Only show if ENVs are set and user language is set to "en".
+    // Only show if ENVs are set, user language is set to "en" and user locale is set to the United States.
     // Otherwise, return empty string
     if (
       AppConstants.RECRUITMENT_BANNER_TEXT &&
       AppConstants.RECRUITMENT_BANNER_LINK &&
-      getLocale().includes('en')
+      getLocale().includes('en') &&
+      data.countryCode === 'us'
     ) {
       return recruitmentBannerMarkup()
     }
