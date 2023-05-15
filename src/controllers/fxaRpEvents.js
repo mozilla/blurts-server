@@ -6,7 +6,7 @@ import * as jwt from 'jsonwebtoken'
 import jwkToPem from 'jwk-to-pem'
 import { captureException, captureMessage } from '@sentry/node'
 import { UnauthorizedError } from '../utils/error.js'
-import { deleteSubscriberByFxAUID, getSubscriberByFxaUid, updateFxAProfileData } from '../db/tables/subscribers.js'
+import { deleteSubscriberByFxAUID, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../db/tables/subscribers.js'
 import mozlog from '../utils/log.js'
 import appConstants from '../appConstants.js'
 const log = mozlog('controllers.fxa-rp-events')
@@ -69,9 +69,9 @@ const authenticateFxaJWT = async (req) => {
   if (!jwk) {
     throw new UnauthorizedError('No public jwk found')
   }
-  const jwkPem = jwkToPem(jwk)
 
   // Verify the token is valid
+  const jwkPem = jwkToPem(jwk)
   const decoded = jwt.verify(headerToken, jwkPem, {
     algorithms: ['RS256']
   })
@@ -95,21 +95,21 @@ const fxaRpEvents = async (req, res) => {
   } catch (e) {
     log.error('fxaRpEvents', e)
     captureException(e)
-    res.status(202).send('OK')
+    res.status(202)
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
-    res.status(202).send('OK')
+    res.status(202)
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
-    res.status(202).send('OK')
+    res.status(202)
   }
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
@@ -139,7 +139,13 @@ const fxaRpEvents = async (req, res) => {
 
         // merge new event into existing profile data
         for (const key in updatedProfileFromEvent) {
-          if (currentFxAProfile[key]) currentFxAProfile[key] = updatedProfileFromEvent[key]
+          // primary email change
+          if (key === 'email') {
+            await updatePrimaryEmail(subscriber, updatedProfileFromEvent[key])
+          }
+          if (currentFxAProfile[key]) {
+            currentFxAProfile[key] = updatedProfileFromEvent[key]
+          }
         }
 
         // update fxa profile data

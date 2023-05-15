@@ -57,6 +57,24 @@ async function getSubscriberByEmail (email) {
   return subscriberAndEmails
 }
 /**
+ * Update primary email for subscriber
+ *
+ * @param {object} subscriber
+ * @param {string} updatedEmail primary email to be updated to
+ * @returns {object} updated subscriber
+ */
+async function updatePrimaryEmail (subscriber, updatedEmail) {
+  const updated = await knex('subscribers')
+    .where('id', '=', subscriber.id)
+    .update({
+      primary_email: updatedEmail
+    })
+    .returning('*')
+  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  return updatedSubscriber
+}
+
+/**
  * Update fxa_refresh_token and fxa_profile_json for subscriber
  *
  * @param {object} subscriber knex object in DB
@@ -329,6 +347,7 @@ export {
   getSubscribersWithUnresolvedBreachesQuery,
   getSubscribersWithUnresolvedBreaches,
   getSubscribersWithUnresolvedBreachesCount,
+  updatePrimaryEmail,
   updateFxAData,
   removeFxAData,
   updateFxAProfileData,
