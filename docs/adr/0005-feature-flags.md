@@ -70,6 +70,11 @@ For more drastic measure, there are teams that opt to place a limit on the numbe
 
 It's much easier to spot the zombie flags if our code is being maintained properly after feature complete. The if/elses that usually associate with feature flags should be deleted upon completition of a feature, and with a simple search, we should be able to quickly spot stale feature flags
 
+```
+From @Vinnl
+One thing that's been helpful on Relay is to define a union of strings enumerating all active feature flags in TypeScript. Then we can just remove a flag from that type, and TS will tell us which bits of code will need to be updated - because it's often not entire if/else branches you can just delete.
+```
+
 ### Ownership
 Looking ahead, there may come a time when we need a system that enables the ability to assign ownership of a flag
 
@@ -82,8 +87,9 @@ Tagging refers to the ability to attach arbitrary key:value pairs to a feature f
 
 ## Considered Options
 * Environment Variables
+* JSON
 * [Unleash](https://www.getunleash.io/) Open Source Feature Flag (self host)
-* Unleash (managed cloud)
+* [Unleash](https://www.getunleash.io/) (managed cloud)
 
 ## Decision Outcome
 
@@ -112,6 +118,33 @@ const confettiScript = isFlagEnabled('party-mode')
 * Good, because it's easy to maintain and it's centralized
 * Good, because it's easy to learn and understand
 * Bad, because we will become dependent on SRE to make any changes in stage and production environment. However, it's not too bad because we will likely have to involve SRE when releasing to production anyways, and during release is when we will be deciding and modifying the environment variables. 
+* Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
+
+### JSON
+```json
+[ 
+ "premium_subplat_email": { 
+    "name": "Premium Subplat Email", 
+    "description": "description",
+    "key": "premium_subplat_email",
+    "createdAt": "",
+    "expiresAt": "",
+    "owner": "admin.id", // fxa uid
+    "environments": [],
+    "dependencies": [],
+    "metadata": []
+  },
+  //...
+]
+```
+* Good, because it's the easiest/quickest way to implement feature flags
+* Good, because the changes can be easily tested in separate environments, programmatically (can mock)
+* Good, because the changes can be scalable (by simply adding and subtracting from the JSON array)
+* Good, because it's easy to maintain and it's centralized
+* Good, because it's easy to learn and understand
+* Good, because it more extensible and configurable than environment vars
+* Good, because we won't have SRE dependency as much for dev/stage. Production change will still require SRE deployment
+* Bad, because we also removed the safety from having SRE sanity checking changes
 * Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
 
 ### Unleash (Cloud)
