@@ -9,7 +9,12 @@ import mozlog from '../../utils/log.js'
 import { subscribeHash } from '../../utils/hibp.js'
 import { getSha1 } from '../../utils/fxa.js'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
-import { FluentError, UnauthorizedError } from '../../utils/error.js'
+import {
+  ForbiddenError,
+  InternalServerError,
+  UnauthorizedError
+} from '../../utils/error.js'
+import { getMessage } from '../../utils/fluent.js'
 const knex = Knex(knexConfig)
 const log = mozlog('DB.email_addresses')
 
@@ -72,7 +77,7 @@ async function resetUnverifiedEmailAddress (emailAddressId) {
     .first()
 
   if (verificationRecentlyUpdated?.id === parseInt(emailAddressId)) {
-    throw new FluentError('error-email-validation-pending')
+    throw new ForbiddenError(getMessage('error-email-validation-pending'))
   }
 
   const res = await knex('email_addresses')
@@ -139,7 +144,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
     })
   } catch (e) {
     log.error(e)
-    throw new FluentError('error-could-not-add-email')
+    throw new InternalServerError(getMessage('error-could-not-add-email'))
   }
 }
 

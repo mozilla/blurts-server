@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from './fluent.js'
-
 const genericErrorMessage = 'Something went wrong. Please try again or come back later.'
 const permissionErrorMessage = 'You don’t have permission to access this content.'
 const tooManyRequestsErrorMessage = 'Too many requests received. Please try again later. '
@@ -98,20 +96,6 @@ class InternalServerError extends Error {
   }
 }
 
-class FluentError extends Error {
-  /**
-   * Fluent error
-   *
-   * @param {string | undefined} messageId
-   * @param {Array<object>} config
-   */
-  constructor (messageId, ...config) {
-    super(messageId, ...config)
-    this.name = 'Fluent Error'
-    this.message = messageId ? getMessage(messageId) : genericErrorMessage
-  }
-}
-
 export {
   BadRequestError,
   UnauthorizedError,
@@ -119,6 +103,5 @@ export {
   MethodNotAllowedError,
   ConflictError,
   TooManyRequestsError,
-  InternalServerError,
-  FluentError
+  InternalServerError
 }

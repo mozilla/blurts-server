@@ -10,10 +10,8 @@ import {
   MethodNotAllowedError,
   ConflictError,
   TooManyRequestsError,
-  InternalServerError,
-  FluentError
+  InternalServerError
 } from './error.js'
-import { initFluentBundles, updateLocale } from './fluent.js'
 
 test('BadRequestError', t => {
   const errorMessage = 'BadRequestError message'
@@ -62,14 +60,4 @@ test('InternalServerError', t => {
   const error = new InternalServerError(errorMessage)
   t.is(error.message, errorMessage)
   t.is(error.name, 'Internal Server Error')
-})
-
-test('FluentError', async t => {
-  await initFluentBundles()
-  updateLocale('en')
-
-  const error = new FluentError('home-not-found')
-
-  t.is(error.message, 'Page not found.')
-  t.is(error.name, 'Fluent Error')
 })

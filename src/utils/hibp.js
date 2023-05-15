@@ -9,7 +9,8 @@ import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
-import { FluentError, InternalServerError } from '../utils/error.js'
+import { InternalServerError } from '../utils/error.js'
+import { getMessage } from '../utils/fluent.js'
 import { mkdir } from 'node:fs/promises'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
@@ -44,7 +45,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
       case 429:
         log.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
-          throw new FluentError('error-hibp-throttled')
+          throw new InternalServerError(getMessage('error-hibp-throttled'))
         } else {
           tryCount++
           await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
@@ -55,7 +56,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
     }
   } catch (err) {
     log.error('_throttledFetch', { err })
-    throw new FluentError('error-hibp-connect')
+    throw new InternalServerError(getMessage('error-hibp-connect'))
   }
 }
 
@@ -156,7 +157,7 @@ async function loadBreachesIntoApp (app) {
     app.locals.breaches = breaches
     app.locals.breachesLoadedDateTime = Date.now()
   } catch (error) {
-    throw new FluentError('error-hibp-load-breaches')
+    throw new InternalServerError(getMessage('error-hibp-load-breaches'))
   }
   log.info('done-loading-breaches', 'great success 👍')
 }
