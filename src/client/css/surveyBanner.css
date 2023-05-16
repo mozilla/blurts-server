@@ -30,18 +30,6 @@
     text-decoration: none;
 }
 
-.recruitment-banner::after {
-    height: 1px;
-    background: var(--monitor-gradient);
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    opacity: .3;
-}
-
 .recruitment-banner .dismiss-btn {
     position: absolute;
     top: 0;
