@@ -1,10 +1,12 @@
 {
   "extends": [
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": [
+    "stylelint-scss"
   ],
   "rules": {
     "media-feature-range-notation": null,
-    "alpha-value-notation": "number",
-    "import-notation": "string",
     "no-descending-specificity": [
       true,
       {
@@ -21,6 +23,12 @@
         "ignore": [
           "custom-elements"
         ]
+      }
+    ],
+    "selector-class-pattern": [
+      "^[a-z][a-zA-Z0-9]+$",
+      {
+        "message": "Expected class selector to be camelCase"
       }
     ]
   }
