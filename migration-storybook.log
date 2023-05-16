@@ -1,0 +1,26 @@
+🔎 checking possible migrations..
+
+🔎 found a 'eslintPlugin' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                      │
+│   We've detected you are not using our eslint-plugin.                                                                                │
+│                                                                                                                                      │
+│   In order to have the best experience with Storybook and follow best practices, we advise you to install eslint-plugin-storybook.   │
+│                                                                                                                                      │
+│   More info: https://github.com/storybookjs/eslint-plugin-storybook#readme                                                           │
+│                                                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'eslintPlugin' migration on your project? › (Y/n)✔ Do you want to run the 'eslintPlugin' migration on your project? … yes
+✅ Adding dependencies: eslint-plugin-storybook
+✅ Adding Storybook plugin to .eslintrc.json
+❌ error when running eslintPlugin migration
+SyntaxError: .eslintrc.json: Unexpected token / in JSON at position 1068
+    at JSON.parse (<anonymous>)
+    at _readFile (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/jsonfile/index.js:25:16)
+    at async Object.run (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/@storybook/cli/dist/generate.js:123:142)
+    at async runFixes (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/@storybook/cli/dist/generate.js:328:1144)
+    at async automigrate (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/@storybook/cli/dist/generate.js:323:676)
+    at async doInitiate (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/@storybook/cli/dist/generate.js:337:939)
+    at async withTelemetry (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/@storybook/core-server/dist/index.js:35:3422)
+    at async initiate (/Users/flozia/.npm/_npx/d28cfb4b54958d89/node_modules/@storybook/cli/dist/generate.js:348:109)
+

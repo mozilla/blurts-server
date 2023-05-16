@@ -30,7 +30,9 @@
     "lint:ts": "tsc --noEmit",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
-    "fix:css": "stylelint src/client/css/ --fix"
+    "fix:css": "stylelint src/client/css/ --fix",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "nodemonConfig": {
     "watch": [
@@ -93,6 +95,13 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.32.3",
+    "@storybook/addon-essentials": "^7.0.12",
+    "@storybook/addon-interactions": "^7.0.12",
+    "@storybook/addon-links": "^7.0.12",
+    "@storybook/blocks": "^7.0.12",
+    "@storybook/nextjs": "^7.0.12",
+    "@storybook/react": "^7.0.12",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "@types/express": "^4.17.17",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
@@ -103,9 +112,11 @@
     "eslint-plugin-check-file": "^2.2.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-jsdoc": "^40.0.0",
+    "eslint-plugin-storybook": "^0.6.12",
     "node-mocks-http": "^1.12.1",
     "nodemon": "^2.0.20",
     "redis-mock": "^0.56.3",
+    "storybook": "^7.0.12",
     "stylelint": "^15.6.0",
     "stylelint-config-standard": "^33.0.0",
     "svgo": "^3.0.2",
