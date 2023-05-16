@@ -136,26 +136,26 @@ const userMenu = data => `
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
         <div class='user-menu-subtitle'>
           ${getMessage('menu-item-fxa')}
-          <img src='/images/icon-open-in.svg' />
+          <img src='/images/icon-open-in.svg' alt='${getMessage('menu-item-fxa-alt')}' />
         </div>
       </a>
     </li>
     <hr>
     <li>
       <a href='/user/settings' class='user-menu-link'>
-        <img src='/images/icon-settings.svg' />
+        <img src='/images/icon-settings.svg' alt='${getMessage('menu-item-settings-alt')}' />
         ${getMessage('menu-item-settings')}
       </a>
     </li>
     <li>
       <a href='https://support.mozilla.org/kb/firefox-monitor' target='_blank' class='user-menu-link'>
-        <img src='/images/icon-help.svg' />
+        <img src='/images/icon-help.svg' ${getMessage('menu-item-help-alt')} />
         ${getMessage('menu-item-help')}
       </a>
     </li>
     <li>
       <a href='/user/logout' class='user-menu-link'>
-        <img src='/images/icon-signout.svg' />
+        <img src='/images/icon-signout.svg' alt='${getMessage('menu-item-logout')}' />
         ${getMessage('menu-item-logout')}
       </a>
     </li>
