@@ -3,12 +3,8 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } – Nadzorna plošča
-breach-all-meta-title = { -brand-fx-monitor } – Vse kraja podatkov
 breach-all-meta-social-title = Vse kraje podatkov, ki jih je odkril { -brand-fx-monitor }
 breach-all-meta-social-description = Prebrskajte po celotnem seznamu znanih kraj, ki jih je zaznal { -brand-fx-monitor }, in ugotovite, ali so bili vaši podatki izpostavljeni.
-# Variables:
-#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
-breach-detail-meta-title = { -brand-fx-monitor } – { $company } – Kraj podatkov
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Ste bili zaradi kraje podatkov podjetja { $company } prizadeti?
@@ -116,13 +112,13 @@ breach-checklist-bank-body = Če to storite hitreje, si lahko zagotovite večjo 
 ## Prompts the user for changes when there is a breach detected of pin
 
 breach-checklist-pin-header = Obvestite izdajatelja kartice in takoj spremenite PIN.
-breach-checklist-pin-body = Prepričajte se, da vaša nova ali katera koli druga koda PIN ne vsebuje uganljivih številk, kot sta vaš rojstni datum ali naslov.
+breach-checklist-pin-body = Naj vaša nova ali katerakoli druga koda PIN ne vsebuje uganljivih številk, kot sta vaš rojstni datum ali naslov.
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
-breach-checklist-ip-header-2 = Uporabljajte zasebno zasebno omrežje VPN, kot je { $mozillaVpnLink }.
+breach-checklist-ip-header-2 = Uporabljajte omrežje VPN, kot je { $mozillaVpnLink }.
 breach-checklist-ip-body = Iz vašega naslova IP (naslova internetnega protokola) je mogoče razbrati vašo lokacijo in ponudnika internetnih storitev. VPN lahko skrije vaš pravi naslov IP in vam omogoči zasebno uporabo interneta.
 
 ## Prompts the user for changes when there is a breach detected of physical address
