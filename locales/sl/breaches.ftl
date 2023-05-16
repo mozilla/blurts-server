@@ -127,13 +127,13 @@ breach-checklist-ip-body = Iz vašega naslova IP (naslova internetnega protokola
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
-breach-checklist-address-header = Spremenite morebitna gesla ali PIN-kode, ki vsebujejo kateri koli del vašega naslova.
-breach-checklist-address-body = Naslove je v javnih evidencah enostavno najti, zato so gesla in PIN-i lahko uganljivi.
+breach-checklist-address-header = Spremenite morebitna gesla ali kode PIN, ki vsebujejo katerikoli del vašega naslova.
+breach-checklist-address-body = Naslove je enostavno najti v javnih evidencah, zato so takšna gesla in kode PIN lahko uganljive.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
-breach-checklist-dob-header = Spremenite morebitna gesla ali PIN-e, ki vključujejo vaš rojstni datum.
-breach-checklist-dob-body = Rojstne datume je v javnih evidencah enostavno najti in ljudje, ki jih najdejo, zlahka uganejo vašo PIN.
+breach-checklist-dob-header = Zamenjajte morebitna gesla ali kode PIN, ki vsebujejo vaš rojstni datum.
+breach-checklist-dob-body = Rojstne datume je enostavno poiskati v javnih evidencah in ljudje, ki to znajo, bi zlahka uganili vašo kodo.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 

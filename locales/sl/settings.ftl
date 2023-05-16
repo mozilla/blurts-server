@@ -24,10 +24,10 @@ settings-email-list-title = Nadzorovani e-poštni naslovi
 #   $limit (number) - Number of email addresses included in the plan
 settings-email-limit-info =
     { $limit ->
-        [one] Vaš račun vključuje spremljanje do { $limit } e-pošte.
-        [two] Vaš račun vključuje spremljanje do { $limit } e-poštnih sporočil.
-        [few] Vaš račun vključuje spremljanje do { $limit } e-poštnih sporočil.
-       *[other] Vaš račun vključuje spremljanje do { $limit } e-poštnih sporočil.
+        [one] Vaš račun vključuje spremljanje do { $limit } e-poštnega naslova.
+        [two] Vaš račun vključuje spremljanje do { $limit } e-poštnih naslovov.
+        [few] Vaš račun vključuje spremljanje do { $limit } e-poštnih naslovov.
+       *[other] Vaš račun vključuje spremljanje do { $limit } e-poštnih naslovov.
     }
 settings-email-verification-callout = Zahtevana je potrditev e-poštnega naslova
 settings-resend-email-verification-link = Ponovno pošlji potrditveno e-pošto
@@ -47,7 +47,7 @@ settings-email-number-of-breaches-info =
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktiviraj račun
-settings-deactivate-account-info = { -product-short-name } lahko deaktivirate tako, da izbrišete svoj { -brand-fx-account }.
+settings-deactivate-account-info = { -product-short-name } lahko deaktivirate tako, da izbrišete { -brand-fx-account }.
 settings-fxa-link-label = Odpri nastavitve { -brand-firefox(sklon: "rodilnik") }
 
 ## Add email dialog

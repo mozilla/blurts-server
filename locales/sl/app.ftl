@@ -729,10 +729,10 @@ ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali po
 ad-unit-4-shop-online = Pri spletnem nakupovanju uporabite masko za e-pošto. Prejmite potrditveno sporočilo na pravi e-poštni naslov in masko izklopite kadarkoli pozneje.
 # ad 5 heading
 ad-unit-5-on-the-go = Na poti s { -brand-relay }
-ad-unit-5-instantly-make = V trenutku si ustvarite e-poštno masko po meri kjer koli in kamorkoli greste!
+ad-unit-5-instantly-make = V trenutku si ustvarite e-poštno masko po meri, kjerkoli ste in kamorkoli greste!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Povežite se na poti
-ad-unit-5-privately-sign-in = Uporabite svojo e-poštno masko, ko se želite zasebno prijaviti v svojo priljubljeno kavarno ali javno omrežje Wi-Fi
+ad-unit-5-privately-sign-in = Uporabite e-poštno masko, ko se želite zasebno prijaviti v svoji priljubljeni kavarni ali v javno omrežje Wi-Fi
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Prejmi e-poštna potrdila o prejemu
 ad-unit-5-share-custom-email = Delite e-poštno masko po meri za račune za nakupovanje v trgovini, ne da bi delili svoj pravi e-poštni naslov
