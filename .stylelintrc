@@ -1,6 +1,5 @@
 {
   "extends": [
-    "stylelint-config-standard"
   ],
   "rules": {
     "media-feature-range-notation": null,
