@@ -104,14 +104,18 @@ body > header {
   position: fixed;
   top: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: white;
   box-shadow: 0 6px 6px -8px #0000;
-  padding: var(--padding-md) var(--padding-lg);
   transition: box-shadow 0.3s;
   z-index: 2;
+}
+
+body > header .header-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding-md) var(--padding-lg);
+  width: 100%;
 }
 
 .scrolled body > header {
