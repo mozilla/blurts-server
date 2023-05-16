@@ -30,7 +30,8 @@
     "lint:ts": "tsc --noEmit",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
-    "fix:css": "stylelint src/client/css/ --fix"
+    "fix:css": "stylelint src/client/css/ --fix",
+    "prepare": "husky install"
   },
   "nodemonConfig": {
     "watch": [
@@ -101,15 +102,16 @@
     "ava": "^5.1.0",
     "c8": "^7.12.0",
     "eslint": "^8.40.0",
-    "eslint-config-standard": "^17.0.0",
     "eslint-plugin-check-file": "^2.2.0",
     "eslint-plugin-header": "^3.1.1",
     "eslint-plugin-jsdoc": "^40.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "node-mocks-http": "^1.12.1",
     "nodemon": "^2.0.20",
+    "prettier": "2.8.8",
     "redis-mock": "^0.56.3",
     "stylelint": "^15.6.0",
-    "stylelint-config-standard": "^33.0.0",
     "svgo": "^3.0.2",
     "testdouble": "^3.16.8",
     "typescript": "^5.0.4"

@@ -6,10 +6,12 @@
         "jest": true
     },
     "extends": [
-        "standard",
         "plugin:jsdoc/recommended",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
-        "next/core-web-vitals"
+        "next/core-web-vitals",
+        "next"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -23,10 +25,6 @@
         "check-file"
     ],
     "rules": {
-        "no-prototype-builtins": "warn",
-        "no-undef": "warn",
-        "camelcase": "warn",
-        "new-cap": "warn",
         "header/header": [
             "warn",
             "block",
@@ -37,6 +35,14 @@
         "jsdoc/require-param-description": "off",
         // Unused vars explicitly marked as such with an understore prefix are allowed:
         "no-unused-vars": [
+            "off",
+            {
+                "argsIgnorePattern": "^_",
+                "varsIgnorePattern": "^_"
+            }
+        ],
+        // Unused vars that start with an understore are allowed to be unused:
+        "@typescript-eslint/no-unused-vars": [
             "warn",
             {
                 "argsIgnorePattern": "^_",
