@@ -145,6 +145,7 @@ const confettiScript = isFlagEnabled('party-mode')
 * Good, because it's easy to learn and understand
 * Good, because it more extensible and configurable than environment vars
 * Good, because we won't have SRE dependency as much for dev/stage. Production change will still require SRE deployment
+* Bad, because we will have to spend a significant amount of time DIYing a service that manages the tags, the expiration dates, the ownerships, as well as the notification/emailing services that go with these additional features
 * Bad, because we also removed the safety from having SRE sanity checking changes
 * Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
 
