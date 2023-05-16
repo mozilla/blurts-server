@@ -7,3 +7,4 @@
 // making it easier to add proper type definitions down the road.
 
 export type Breach = any;
+export type UserData = any;

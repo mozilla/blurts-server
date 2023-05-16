@@ -82,6 +82,7 @@
     "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.3",
     "helmet": "^6.0.0",
+    "iron-session": "^6.3.1",
     "jsdom": "^22.0.0",
     "knex": "^2.4.2",
     "mozlog": "^3.0.2",
