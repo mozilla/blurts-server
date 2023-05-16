@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getBreachIcons, getBreaches } from '../../../functions/server/getBreaches'
-import { getBreachLogo } from '../../../../utils/breachLogo'
 import Script from 'next/script'
 import '../../../../client/css/partials/allBreaches.css'
 import { getL10n, getLocale } from '../../../functions/server/l10n'
