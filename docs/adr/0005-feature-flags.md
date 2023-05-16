@@ -117,6 +117,7 @@ const confettiScript = isFlagEnabled('party-mode')
 * Good, because the changes can be scalable (by simply adding and subtracting from the env var array)
 * Good, because it's easy to maintain and it's centralized
 * Good, because it's easy to learn and understand
+* Good, having SRE involved adds another level of sanity check
 * Bad, because we will become dependent on SRE to make any changes in stage and production environment. However, it's not too bad because we will likely have to involve SRE when releasing to production anyways, and during release is when we will be deciding and modifying the environment variables. 
 * Bad, because the "implementation" is limited to the current repo. In a world where we have multiple repos serving different parts of the app, there's no easy way to share
 
