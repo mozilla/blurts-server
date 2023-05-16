@@ -2,15 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-'use client'
-
 import Image from 'next/image'
 import styles from './page.module.css'
 import { SigninButton } from '../components/client/signinButton'
-import { useL10n } from './hooks/l10n'
+import { getL10n } from './functions/server/l10n'
 
 export default function Home () {
-  const l10n = useL10n()
+  const l10n = getL10n()
 
   return (
     <main className={styles.main}>

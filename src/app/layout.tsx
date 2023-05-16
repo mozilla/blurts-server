@@ -6,6 +6,8 @@ import { ReactNode } from 'react'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { getLocale } from './functions/server/l10n'
+import { getServerSession } from 'next-auth'
+import { SessionProvider } from '../contextProviders/session'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,11 +22,14 @@ export default async function RootLayout ({
   children: ReactNode,
 }) {
   const currentLocale = getLocale()
+  const session = await getServerSession()
 
   return (
     <html lang={currentLocale}>
       <body className={inter.className}>
-        {children}
+        <SessionProvider session={session}>
+          {children}
+        </SessionProvider>
       </body>
     </html>
   )

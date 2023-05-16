@@ -11,7 +11,7 @@ export const authOptions: AuthOptions = {
     {
       // As per https://mozilla.slack.com/archives/C4D36CAJW/p1683642497940629?thread_ts=1683642325.465929&cid=C4D36CAJW,
       // we should file a ticket against SVCSE with the `fxa` component to add
-      // a redirect URL of /api/auth/callback/fxa/ for Firefox Monitor,
+      // a redirect URL of /api/auth/callback/fxa for Firefox Monitor,
       // for every environment we deploy to:
       id: 'fxa',
       name: 'Firefox Accounts',
@@ -27,7 +27,6 @@ export const authOptions: AuthOptions = {
       clientId: AppConstants.OAUTH_CLIENT_ID,
       clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
       profile: async (profile) => {
-        console.log("GOT PROFILE", {profile})
         return {
           id: profile.sub
         }
