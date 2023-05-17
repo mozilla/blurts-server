@@ -34,6 +34,9 @@ customer-interactions = Interacciones con el cliente
 dates-of-birth = Fechas de nacimiento
 deceased-date = Fecha de fallecimiento
 deceased-statuses = Estados de fallecimientos
+# Instructions that you can set up in online shopping services to get your orders 
+# delivered (e.g. deliver to a specific neighbor, entrance location, etc.).
+delivery-instructions = Instrucciones de entrega
 device-information = Información del dispositivo
 device-serial-numbers = Números de serie del dispositivo
 device-usage-tracking-data = Datos de seguimiento del uso del dispositivo
@@ -74,6 +77,8 @@ job-titles = Puestos de trabajo
 # This string refers to vehicle license plates. 
 licence-plates = Matrículas de vehículos
 living-costs = Costes de vida
+# This string refers to financial loans.
+loan-information = Información de préstamos
 login-histories = Historiales de inicio de sesión
 mac-addresses = Direcciones MAC
 marital-statuses = Estados civiles
@@ -84,10 +89,15 @@ names = Nombres
 nationalities = Nacionalidades
 net-worths = Nivel de ingresos
 nicknames = Apodos
+# no data classes found
+none-data-class = Ninguno
 occupations = Ocupaciones
+# various data classes grouped together
+other-data-class = Otros
 parenting-plans = Planificaciones familiares
 partial-credit-card-data = Datos parciales de la tarjeta de crédito
 partial-dates-of-birth = Fechas parciales de nacimiento
+partial-phone-numbers = Números de teléfono parciales
 passport-numbers = Números de pasaporte
 password-hints = Sugerencias de contraseña
 password-strengths = Seguridad de la contraseña
@@ -137,6 +147,7 @@ user-website-urls = URLs del sitio web del usuario
 usernames = Nombres de usuario
 utility-bills = Facturas por servicios
 vehicle-details = Detalles de vehículos
+vehicle-identification-numbers-vins = Números de identificación del vehículo (VIN)
 website-activity = Actividad del sitio web
 work-habits = Hábitos de trabajo
 years-of-birth = Años de nacimiento

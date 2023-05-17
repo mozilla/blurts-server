@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = 看看您的账号是否也在数据外泄事件当中
-stay-safe-with-tool = 使用这款简洁但强大的工具来监控您的个人信息是否在数据外泄事件中暴露，保护信息安全。若发生数据外泄，我们可以指导您采取措施，并在将来持续监控是否有新的外泄事件发生。工具完全免费。
 get-started = 开始使用
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = 并非所有外泄事件都会泄露同样的信息，这�
 ## See if you’ve been in a data breach
 
 see-if-data-breach = 看看您是否受到数据外泄事件影响
+hibp-footer-attribution = <b>{ -brand-HIBP }</b> 提供的泄漏事件数据

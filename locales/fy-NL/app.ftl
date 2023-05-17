@@ -720,7 +720,7 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 
 ## Search Engine Optimization
 
-meta-desc = Untdek mei { -brand-fx-monitor } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe’t jo jo accounts feilich hâlde.
+meta-desc-2 = Untdek mei { -brand-fx-monitor } of jo ûnderdiel binne fan in datalek. Wy helpe jo te begripen wat jo dêrnei dwaan moatte en kontrolearje trochgeand op nije datalekken.
 
 ## Header
 

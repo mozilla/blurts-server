@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } – Übersicht
+breach-all-meta-title = { -brand-fx-monitor } – Alle Datenlecks
+breach-all-meta-social-title = Alle von { -brand-fx-monitor } erkannten Datenlecks
+breach-all-meta-social-description = Durchsuchen Sie die vollständige Liste der bekannten und von { -brand-fx-monitor } erkannten Datenlecks und finden Sie heraus, ob Ihre Daten offengelegt wurden.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } – Datenleck bei { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Waren Sie vom Datenleck bei { $company } betroffen?
+breach-detail-meta-social-description = Verwenden Sie { -brand-fx-monitor }, um herauszufinden, ob Ihre persönlichen Daten bei diesem Datenleck offengelegt wurden, und verstehen Sie, was als nächstes zu tun ist.
+breach-scan-meta-title = { -brand-fx-monitor } – Ergebnisse von Datenlecks
+breach-scan-meta-social-title = { -brand-fx-monitor } Ergebnisse von Datenlecks
+breach-scan-meta-social-description = Melden Sie sich bei { -brand-fx-monitor } an, um Datenlecks zu beheben und kontinuierlich auf neue bekannte Datenlecks überwacht zu werden.
 
 ## Breaches header
 
@@ -46,6 +60,9 @@ breaches-all-resolved-copy = Gut gemacht! Sie haben alle Datenlecks für { $emai
 breaches-all-resolved-cta-blurb = Möchten Sie eine weitere E-Mail-Adresse überwachen?
 breaches-all-resolved-cta-button = E-Mail-Adresse hinzufügen
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Am { $breachDate } gab es bei { $companyName } ein Datenleck. Nachdem das Datenleck entdeckt und bestätigt wurde, wurde es am { $addedDate } unserer Datenbank hinzugefügt. Von diesem Datenleck sind betroffen: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +73,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Besuchen Sie die Websites des Unternehmens, um Ihr Passwort zu ändern und die Zwei-Faktor-Authentifizierung (2FA) zu aktivieren.
+breach-checklist-pw-header-text = Aktualisieren Sie Ihre Passwörter und aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Stellen Sie sicher, dass Ihr Passwort einzigartig und schwer zu erraten ist. Wenn dieses Passwort für andere Konten verwendet wird, müssen Sie es auch dort ändern. Der { $passwordManagerLink } kann Ihnen dabei helfen, alle Ihre Passwörter sicher im Auge zu behalten.
+breach-checklist-pw-body-text = In den meisten Fällen empfehlen wir Ihnen, Ihr Passwort über die Website des Unternehmens zu ändern. Aber <b>die Website könnte nicht erreichbar sein oder böswillige Inhalte enthalten</b>, also seien Sie vorsichtig, wenn Sie <breached-company-link>die Website besuchen</breached-company-link>. Schützen Sie sich außerdem, indem Sie für alle Konten eindeutige Passwörter verwenden, damit offengelegte Passwörter nicht für den Zugriff auf andere Konten verwendet werden können. Der { $passwordManagerLink } kann Ihnen dabei helfen, alle Ihre Passwörter sicher im Auge zu behalten.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -71,17 +88,17 @@ breach-checklist-email-body = Dadurch bleibt Ihre echte E-Mail-Adresse verborgen
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Überwachen Sie Ihre Kreditkartenabrechnungen auf Konten, Darlehen oder Kreditkarten, die Sie nicht erkennen.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Sie können auch erwägen, Ihr Guthaben auf { $equifaxLink }, { $experianLink } und { $transUnionLink } einzufrieren, um Betrüger daran zu hindern, neue Konten in Ihrem Namen zu öffnen. Es ist kostenlos und hat keinen Einfluss auf Ihre Kreditwürdigkeit.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -124,9 +141,9 @@ breach-checklist-phone-header-2 = Schützen Sie Ihre Telefonnummer mit einem Mas
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Aktualisieren Sie Ihre Sicherheitsfragen auf der Website des Unternehmens.
-breach-checklist-sq-body = Verwenden Sie lange, zufällige Antworten und bewahren Sie diese an einem sicheren Ort auf. Tun Sie dies überall dort, wo Sie dieselben Sicherheitsfragen verwendet haben.
+breach-checklist-sq-header-text = Aktualisieren Sie Ihre Sicherheitsfragen.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = In den meisten Fällen empfehlen wir Ihnen, Ihre Sicherheitsfragen über die Website des Unternehmens zu aktualisieren. Aber <b>die Website könnte nicht erreichbar sein oder böswillige Inhalte enthalten</b>, also seien Sie vorsichtig, wenn Sie <breached-company-link>die Website besuchen</breached-company-link>. Schützen Sie sich außerdem, indem Sie diese Sicherheitsfragen auf allen Konten aktualisieren, wo sie genutzt werden und erstellen Sie eindeutige Passwörter für alle Konten.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -137,5 +154,7 @@ breach-checklist-hp-body-2 = Ein Passwort-Manager wie der { $passwordManagerLink
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Wenden Sie sich an { $companyName }, um sie über dieses Leck zu informieren, und fragen Sie nach konkreten Maßnahmen, die Sie ergreifen können.

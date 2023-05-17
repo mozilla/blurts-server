@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } – Dashboerd
+breach-all-meta-title = { -brand-fx-monitor } – Alle datalekken
+breach-all-meta-social-title = Alle troch { -brand-fx-monitor } detektearre datalekken
+breach-all-meta-social-description = Blêdzje troch de folsleine list mei bekende datalekken ûntdutsen troch { -brand-fx-monitor }, fyn dan út oft jo ynformaasje bleatsteld is.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } – { $company } Datalek
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Binne jo troffen troch it datalek fan { $company }?
+breach-detail-meta-social-description = Brûk { -brand-fx-monitor } om der efter te kommen oft jo persoanlike gegevens by dit datalek lekt binne en om te begripen wat jo dernei dwaan moatte.
+breach-scan-meta-title = { -brand-fx-monitor } – Resultaten datalek
+breach-scan-meta-social-title = { -brand-fx-monitor }-datalekresultaten
+breach-scan-meta-social-description = Meld jo oan by { -brand-fx-monitor } om datalekken op te lossen en kontinu ynsjoch te krijen oer nije bekende datalekken.
 
 ## Breaches header
 
@@ -46,6 +60,9 @@ breaches-all-resolved-copy = Kreas! Jo hawwe alle datalekken foar { $email } opl
 breaches-all-resolved-cta-blurb = Wolle jo in oar e-mailadres kontrolearje?
 breaches-all-resolved-cta-button = E-mailadres tafoegje
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Op { $breachDate } is in lek bard op { $companyName }. Nei ûntdekking en ferifikaasje fan it lek, is it op { $addedDate } tafoege oan ús database. Dit lek omfette: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +73,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Gean nei website fan it bedriuw om jo wachtwurd te wizigjen en twafaktorautentikaasje (2FA) yn te skeakeljen.
+breach-checklist-pw-header-text = Wurkje jo wachtwurden by en skeakelje twa-staps-autentikaasje (2FA) yn.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Soargje derfoar dat jo wachtwurd unyk en dreech te rieden is. As dit wachtwurd brûkt wurdt op oare accounts, wês wis dat jo it dêr ek wizigje. { $passwordManagerLink } kin jo helpe om al jo wachtwurden feilich by te hâlden.
+breach-checklist-pw-body-text = Yn de measte gefallen riede wy jo oan jo wachtwurd te wizigjen op de website fan it bedriuw. Mar <b>harren website kin offline wêze of skeadlike ynhâld befetsje</b>, dus wês foarsichtich as jo <breached-company-link>de website besykje</breached-company-link>. Soargje foar ekstra beskerming troch unike wachtwurden foar al jo accounts te brûken, sadat lekte wachtwurden net brûkt wurde kinne om tagong te krijen ta oare accounts. { $passwordManagerLink } kin jo helpe al jo wachtwurden feilich by te hâlden.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -71,17 +88,17 @@ breach-checklist-email-body = Dit kin jo echte e-mailadres ferbergje, wylst e-ma
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Kontrolearje jo bankôfskrift op rekkeningen, lieningen of creditcards dy’t jo net werkenne.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Jo kinne ek oerweagje jo tegoed op { $equifaxLink }, { $experianLink } en { $transUnionLink } te befriezen, om foar te kommen dat oplichters nije accounts op jo namme iepenje. It is fergees en hat gjin ynfloed op jo kredytskoare.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -124,9 +141,9 @@ breach-checklist-phone-header-2 = Beskermje jo telefoannûmer mei in maskearstsj
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Wurkje jo befeiligingsfragen op de website fan it bedriuw by.
-breach-checklist-sq-body = Brûk lange, willekeurige antwurden en bewarje se op in feilich plak. Doch dit oeral wêr’t jo deselde befeiligingsfragen brûkt hawwe.
+breach-checklist-sq-header-text = Wurkje jo befeiligingsfragen by.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Yn de measte gefallen riede wy jo oan jo befeiligingsfragen te wizigjen op de website fan it bedriuw. Mar <b>harren website kin offline wêze of skeadlike ynhâld befetsje</b>, dus wês foarsichtich as jo <breached-company-link>de website besykje</breached-company-link>. Wurkje foar ekstra beskerming dizze befeiligingsfragen by foar alle wichtige accounts wêrop jo se brûkt hawwe en meitsje unike wachtwurden oan foar al jo accounts.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -137,5 +154,7 @@ breach-checklist-hp-body-2 = In wachtwurdenbehearder lykas de { $passwordManager
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Nim kontakt op mei { $companyName } om harren te ynformearjen oer dizze ynbrek en freegje hokker spesifike stappen jo ûndernimme kinne.

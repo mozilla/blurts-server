@@ -3,7 +3,7 @@
 
 ## Hero
 
-find-out-if-breached = Encuentra si has estado en una filtración de datos
+find-out-if-breached = Averigua si has estado en una filtración de datos
 get-started = Comenzar
 
 ## Why use Firefox Monitor?
@@ -15,6 +15,7 @@ protect-account-prevent-hackers = Evita que los piratas informáticos ingresen a
 prevent-fraud = Prevenir el fraude y los delitos cibernéticos
 prevent-fraud-keep-info = Mantén tu información alejada de los piratas informáticos que quieren hacerse pasar por ti y cometer delitos.
 get-alerts = Recibe alertas de nuevas filtraciones
+get-alerts-find-out = Averigua cada vez que tu información personal es comprometida en una nueva filtración de datos conocida.
 
 ## Here’s how it works
 
@@ -22,6 +23,7 @@ how-it-works = Así es cómo funciona
 check-for-breaches = Consulta las filtraciones
 check-for-breaches-we-search = Buscaremos todas las filtraciones de datos conocidas desde 2007 para ver si tu información se vio comprometida.
 protect-accounts = Protege tus cuentas
+protect-accounts-clear-steps = Te daremos pasos claros sobre qué hacer a continuación para cualquier filtración de datos en la que hayas estado involucrado.
 alerts-for-breaches = Recibe alertas de nuevas filtraciones
 alerts-for-breaches-monitor-new = Supervisaremos continuamente nuevas filtraciones de datos y te informaremos si te has visto afectado.
 
@@ -46,4 +48,4 @@ what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de da
 
 ## See if you’ve been in a data breach
 
-see-if-data-breach = Ver si has sido parte de una filtración de datos
+see-if-data-breach = Descubre si has sido parte de una filtración de datos

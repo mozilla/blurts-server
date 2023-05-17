@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Gosodiadau
 settings-page-title = Gosodiadau { -product-short-name }
 
 ## Breach alert preferences
