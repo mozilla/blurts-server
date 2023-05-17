@@ -143,9 +143,12 @@ export default function Home() {
         >
           {l10n.getString("get-started")}
         </a>
-        <p className="hibp-attribution">
-          {l10n.getString("hibp-footer-attribution")}
-        </p>
+        <p
+          className="hibp-attribution"
+          dangerouslySetInnerHTML={{
+            __html: l10n.getString("hibp-footer-attribution"),
+          }}
+        />
       </section>
     </div>
   );
