@@ -58,7 +58,7 @@ function makeDataSection (breach) {
 
   let output = dataClasses.priority.map(dataClass =>
     `<li>
-      <img src="${dataClass.pathToGlyph}.svg" width="24" alt="">
+      <img src="/images/${dataClass.glyphName}.svg" width="24" alt="">
       ${dataClass.dataType}
     </li>`
   ).join('')
