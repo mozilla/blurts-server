@@ -10,10 +10,6 @@ rec-ssn =
 rec-pw-1-subhead = Emoambue ne ñe’ẽñemi
 # Link title
 rec-pw-1-cta = Emoambue ñe’ẽñemi ko tendápe g̃uarã
-rec-pw-1 =
-    Ejapo ko ñe’ẽñemi ha’eño ha iñambuéva oimeraẽva umi eipurúvagui. 
-    Mba’e iporãva ha’e emojopyru mokõi térã hetave ñe’ẽ ojuehegua’ỹva 
-    ikatuhápe ejapo peteĩ ñe’ẽsyry.
 # Recommendation subhead
 rec-pw-2-subhead = Embohekopyahu ambue tembiapo ñepyrũ ko ñe’ẽñemímente
 # Link title
@@ -57,23 +53,9 @@ rec-email =
     ojuhúvo ne ñe’ẽñemi térã ndejuhúvo ñandutípe. Ko { -brand-relay } rembiapo
     ha’e omokañývo ne ñanduti veve emondojey aja ñandutiveve ne g̃uahẽhame.
 # Recommendation subhead
-rec-ip-subhead = Eipuru mba’epuru omokañýva nde IP kundaharape
-# Link title
-rec-ip-us-cta = Eñe’ẽ { -brand-fpn }
-rec-ip-us =
-    Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite
-    ha ne ñanduti me’ẽhára. Peteĩ mba’epuru { -brand-fpn } rehegua
-    omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
-rec-ip-non-us =
-    Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite 
-    ha ne ñanduti me’ẽhára. Peteĩ red privada virtual (VPN) ndive, ikatu eñomi ne rendaite 
-    ha ehovañuvã nde IP kundaharape.
+rec-ip-subhead-2 = Eipuru VPN emoñemi hag̃ua nde IP kundaharape
 # Recommendation subhead
 rec-moz-vpn-cta = Eñe’ẽ { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Ne kundaharape ñanduti pegua (IP kundaharape) ohechauka ne rendaite
-    ha ne ñanduti me’ẽhára. Peteĩ mba’epuru { -brand-mozilla-vpn } rehegua
-    omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }

@@ -691,7 +691,7 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 
 ## Search Engine Optimization
 
-meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -brand-fx-monitor }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
+meta-desc-2 = Descubra se você foi vítima de um vazamento de dados com o { -brand-fx-monitor }. Ajudaremos você a entender o que fazer a seguir e iremos monitorar continuamente novos vazamentos.
 
 ## Header
 

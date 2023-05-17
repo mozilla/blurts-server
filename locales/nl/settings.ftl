@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } – Instellingen
 settings-page-title = { -product-short-name }-instellingen
 
 ## Breach alert preferences

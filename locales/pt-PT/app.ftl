@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Email inválido
 user-add-too-many-emails = Está a monitorizar o número máximo de endereços de email.
 user-add-email-verify-subject = Verifique a sua subscrição do { -product-name }.
 user-add-duplicate-email = Este e-mail já foi adicionado ao { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Consulte as suas { $preferencesLink } para consultar o estado para { $userEmail }.
 error-headline = Erro
 user-verify-token-error = É necessário um código de verificação.
@@ -50,11 +51,11 @@ scan-placeholder = Inserir endereço de e-mail
 scan-submit = Pesquisar pelo seu e-mail
 scan-error = Tem de ser um email válido.
 download-firefox-banner-button = Transferir o { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Enviado!
 sign-up = Registar
 form-signup-error = Tem de ser um email válido
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Data da violação de dados
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Contas comprometidas:
@@ -64,6 +65,8 @@ unsub-headline = Cancelar subscrição de { -product-name-nowrap }
 unsub-blurb = Isto irá remover o seu email da lista do { -product-name-nowrap } e não irá receber mais alertas quando novas brechas são anunciadas.
 unsub-button = Cancelar subscrição
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Dados de brechas fornecidos por { $hibp-link }
 share-twitter = A maioria das pessoas tem cerca de 100 contas na Internet. Será que alguma das suas foi exposta numa violação de dados? Vamos descobrir.
 share-facebook-headline = Descubra se fez parte de uma violação de dados
@@ -112,8 +115,6 @@ about-firefox-monitor = Acerca do { -product-name }
 preferences = Preferências
 # Link title
 home = Início
-# Link title
-breaches = Brechas
 # Link title
 security-tips = Dicas de segurança
 fxa-account = { -brand-fxa }
@@ -209,7 +210,9 @@ feat-security-tips = Dicas de segurança para proteger as suas contas
 feat-sensitive = Pesquisa avançada em violações de dados sensíveis
 feat-enroll-multiple = Registar vários e-mails para a monitorização de violações de dados
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Aparece em { $breachCount } violação de dados conhecida.
@@ -221,6 +224,8 @@ get-email-alerts = Mantenha-se seguro: receba alertas por e-mail quando a sua in
 search-for-your-email = Pesquise pelo seu endereço de e-mail em violações de dados públicas de dados desde 2007.
 back-to-top = Voltar ao topo
 comm-opt-0 = Enviar um e-mail para mim caso um dos meus endereços de e-mail abaixo aparecer numa violação de dados.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Enviar todos alertas de violações de dados para { $primaryEmail }.
 stop-monitoring-this = Pare de monitorizar este e-mail.
 resend-verification = Reenviar e-mail de verificação
@@ -229,7 +234,7 @@ send-verification = Enviar ligação de verificação
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Resumo da violação de dados
 show-breaches-for-this-email = Mostrar todas as violações de dados para este e-mail.
@@ -242,8 +247,15 @@ remove-fxm-blurb =
 manage-email-addresses = Gerir endereços de e-mail
 # Link title
 latest-breach-link = Veja se esteve nesta violação de dados
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Bem-vindo(a) de volta, { $userName }!
 welcome-user = Bem-vindo(a), { $userName }!
+
+##
+
 breach-alert-subject = O { -product-name } encontrou o seu e-mail numa nova violação de dados.
 your-info-was-discovered-headline = Os seus dados foram descobertos numa nova violação de dados.
 your-info-was-discovered-blurb =
@@ -267,6 +279,8 @@ ba-next-step-blurb-3 =
 faq1 = Eu não reconheço esta empresa ou site. Porque é que eu estou nesta violação de dados?
 faq2 = Porque é que demorou tanto para me notificarem desta violação de dados?
 faq3 = Como é que eu sei que é um e-mail legitimo do { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] ENCONTRADA { $breachCount } NOVA VIOLAÇÃO DE DADOS
@@ -274,24 +288,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Receba alertas atuais com uma { -brand-fxa }.
 account-not-required = O navegador { -brand-name } não é obrigatório para uma { -brand-fxa }. Poderá receber informações sobre os serviços da { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = A sua informação foi exposta na violação de dados de { $breachName }?
-find-out-if = Saiba se os seus dados foram expostos nesta violação de dados.
 fb-not-comp = Este e-mail não apareceu na violação de dados { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Contudo, este apareceu em { $breachCount } outra violação de dados.
        *[other] Contudo, este apareceu em { $breachCount } outras violações de dados.
     }
 fb-comp-only = Este e-mail apareceu na violação de dados { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Este e-mail apareceu em { $breachCount } violação de dados conhecida, incluindo { $breachName }.
        *[other] Este e-mail apareceu em { $breachCount } violações de dados conhecidas, incluindo { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Não foram encontradas outras violações de dados a partir de uma pesquisa básica.
 no-results-blurb = Lamentamos, mas esta violação de dados não está na nossa base de dados.
-all-breaches-headline = Todas as violações de dados no { -product-name }
-search-breaches = Procurar por violações de dados
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -362,6 +384,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Ver brechas adicionais
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Este email apareceu numa brecha de dados conhecida.
@@ -370,6 +394,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Resultados para: { $userEmail }
 other-monitored-emails = Outros emails monitorizados
 email-verification-required = Verificação de email requerida
@@ -385,6 +411,8 @@ get-ongoing-breach-monitoring = Obtenha a monitorização contínua de violaçõ
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Descobrir
 new-unsub-error = Terá de cancelar a subscrição de um dos e-mails que o { -product-name } lhe enviou.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Contudo, este apareceu em { $breachCount } outra violação de dados conhecida.
@@ -402,10 +430,12 @@ breach-overview-title = Sinopse
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = A { $breachDate }, { $breachTitle } foi comprometido. Assim que a violação de dados foi descoberta e confirmada, foi adicionada à nossa base de dados a { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } - Preferências
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Sessão iniciada como: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -422,12 +452,16 @@ email-sent = Email enviado!
 want-to-add = Quer adicionar outro email?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Verifique a ligação enviada para { $userEmail } para adicioná-la ao { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = E-mail confirmado com sucesso!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Iremos alertá-lo se { $email } aparecer numa violação de dados.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -441,15 +475,17 @@ sign-in-nested = iniciar sessão
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Gira todos os endereços de email nas { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Notificações de alerta de brecha
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Brecha adicionada:
 how-hackers-work-desc = Proteja as palavras-passe de cibercriminosos, dado que são o que mais lhes interessa.
 what-to-do-after-breach-desc = Protejas as suas contas para manter a sua informação fora das mãos erradas.
@@ -471,7 +507,11 @@ see-additional-recs = Ver recomendações adicionais
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } apareceu nesta violação de dados. <a>O que fazer a seguir</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } endereço de e-mail seu apareceu nesta violação de dados. <a>O que fazer a seguir</a>
@@ -499,6 +539,8 @@ confirmation-3-subhead = Mais uma resolvida. Bom trabalho!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = A sua nova palavra-passe é única, forte e difícil de adivinhar? <a>Descubra se sim</a>
 generic-confirmation-subhead = Esta violação de dados foi marcada como resolvida
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Para ver a violação de dados remanescente, aceda ao seu painel.
@@ -508,9 +550,13 @@ return-to-breach-details-link = Voltar aos detalhes da violação de dados
 go-to-dashboard-link = Ir para o painel
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% concluídas
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } resolvida
@@ -520,6 +566,9 @@ progress-intro-subhead = Novo no { -product-name }: marque violações de dados 
 progress-intro-message =
     Depois de analisar os detalhes sobre uma violação de dados e tomar medidas para proteger
     as suas informações pessoais, pode marcar as violações de dados como resolvidas.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } (de { $numTotalBreaches }) violação de dados de  marcada como resolvida
@@ -545,16 +594,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Resolver esta violação de dados
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Marcada como resolvida:
 hide-resolved-button = Ocultar resolvidas
 show-resolved-button = Mostrar resolvidas
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Palavra-passe exposta em violações de dados não resolvidas
        *[other] Palavras-passe expostas em violações de dados não resolvidas
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Violação de dados conhecida marcada como resolvida
@@ -585,7 +638,10 @@ vpn-promo-copy-new = Proteja os seus dados na Internet - e escolha um plano de s
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = A sua localização: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Proteja-se</em> com a { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Protegido</em> com a { -brand-mozilla-vpn }.
@@ -594,7 +650,8 @@ vpn-banner-title-2 = A sua localização pode ser monitorizada se não utilizar 
 vpn-banner-subtitle-2 = Proteja a sua localização e navegue com segurança com 3 passos
 vpn-banner-status-protected = Estado atual: <em>Protegido ✓</em>
 vpn-banner-status-not-protected = Estado atual: <em>Não protegido ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Endereço de IP: { $ip-address }
 vpn-banner-step-1 = Subscrever a { -brand-mozilla-vpn }
 vpn-banner-step-2 = Selecione uma localização para a VPN
@@ -653,6 +710,8 @@ ad-unit-6-before-you-complete = Antes de concluir a próxima inscrição, utiliz
 -brand-mozilla = Mozilla
 -brand-mozilla-foundation = Fundação Mozilla
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -673,6 +732,10 @@ sign-in = Iniciar sessão
 site-nav-breaches-link = Resolver Violações de Dados
 site-nav-settings-link = Definições
 site-nav-help-link = Ajuda e Apoio
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Experimente as nossas outras ferramentas de segurança:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -689,6 +752,7 @@ menu-item-logout = Terminar sessão
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Termos e privacidade
 github = { -brand-github }
+footer-nav-all-breaches = Todas as falhas de segurança
 
 ## Error page
 
@@ -700,3 +764,16 @@ error-page-error-404-cta-button = Voltar
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Ocorreu algo de errado
+error-page-error-other-copy = Por favor, tente novamente ou volte mais tarde
+
+## Breach overview page
+
+all-breaches-headline-2 = Todas as falhas de segurança detetadas por { -brand-fx-monitor }
+search-breaches = Procurar por violações de dados
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Dados expostos:
+
+## Public breach detail page
+
+find-out-if-2 = Saiba se esteve envolvido nesta falha de segurança
+breach-detail-cta-signup = Pesquisar por falhas de segurança

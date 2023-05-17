@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Tudja meg, hogy szerepelt-e adatvédelmi incidensben
-stay-safe-with-tool = Maradjon biztonságban egy egyszerű, de hatékony eszközzel, amely követi, hogy személyes adatai kikerültek-e egy adatvédelmi incidens során. Segítünk megérteni a következő lépést, és folyamatosan követjük az esetleges új adatvédelmi incidenseket – mindezt ingyen.
 get-started = Kezdő lépések
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Nem minden adatvédelmi incidensben ugyanaz az információ
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Nézze meg, hogy szerepelt-e adatvédelmi incidensben
+hibp-footer-attribution = Az adatvédelmi incidensek adatait a <b>{ -brand-HIBP }</b> szolgáltatta

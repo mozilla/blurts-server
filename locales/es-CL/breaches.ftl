@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Panel
+breach-all-meta-title = { -brand-fx-monitor } - Todas las filtraciones de datos
+breach-all-meta-social-title = Todas las filtraciones detectadas por { -brand-fx-monitor }
+breach-all-meta-social-description = Explora la lista completa de filtraciones conocidas detectadas por { -brand-fx-monitor }, luego averigua si tu información estuvo expuesta.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Filtración de datos de { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = ¿Te afectó la filtración de datos de { $company }?
+breach-detail-meta-social-description = Usa { -brand-fx-monitor } para averiguar si tu información personal fue expuesta en esta filtración y saber qué hacer a continuación.
+breach-scan-meta-title = { -brand-fx-monitor } - Resultados de filtraciones
+breach-scan-meta-social-title = Resultados de filtraciones de { -brand-fx-monitor }
+breach-scan-meta-social-description = Conéctate a { -brand-fx-monitor } para resolver filtraciones y obtener un monitoreo continuo para cualquier nueva filtración conocida.
 
 ## Breaches header
 
@@ -47,6 +61,9 @@ breaches-all-resolved-copy = ¡Bien hecho! Has resuelto todas las filtraciones d
 breaches-all-resolved-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
 breaches-all-resolved-cta-button = Añadir dirección de correo electrónico
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = El { $breachDate }, { $companyName } fue vulnerada. Una vez que la filtración fue descubierta y verificada, ésta fue añadida a nuestra base de datos el { $addedDate }. Esta filtración incluyó: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -57,11 +74,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Ve al sitio web de la compañía para cambiar tu contraseña y habilitar la autenticación en dos pasos (2FA).
+breach-checklist-pw-header-text = Actualiza tus contraseñas y habilita la autenticación de dos factores (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Asegúrate de que tu contraseña sea única y difícil de adivinar. Si esta contraseña se usa en otras cuentas, asegúrate de cambiarla allí también. El { $passwordManagerLink } puede ayudarte a realizar un seguimiento seguro de todas tus contraseñas.
+breach-checklist-pw-body-text = En la mayoría de los casos, te recomendamos que cambies tu contraseña en el sitio web de la empresa. Pero <b>su sitio web puede estar inactivo o contener contenido malicioso</b>, así que ten cuidado si <breached-company-link>visitas el sitio</breached-company-link>. Para mayor protección, asegúrate de usar una contraseña única y diferenciada para cada cuenta, de modo que las contraseñas filtradas no puedan usarse para acceder a otras cuentas. { $passwordManagerLink } puede ayudarte a realizar un seguimiento seguro de todas tus contraseñas.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -72,17 +89,17 @@ breach-checklist-email-body = Esto puede ocultar tu verdadera dirección de corr
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Supervisa tu estado de cuenta del banco en busca de cuentas, préstamos o tarjetas de crédito que no reconozcas.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = También puedes considerar congelar tus créditos en { $equifaxLink }, { $experianLink } y { $transUnionLink } para evitar que los estafadores abran nuevas cuentas a tu nombre. Es gratis y no afectará tu puntaje crediticio.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -125,9 +142,9 @@ breach-checklist-phone-header-2 = Protege tu número de teléfono con un servici
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Actualiza tus preguntas de seguridad en el sitio web de la compañía.
-breach-checklist-sq-body = Usa respuestas largas y aleatorias y guárdalas en un lugar seguro. Haz esto en cualquier otro lugar donde hayas usado las mismas preguntas de seguridad.
+breach-checklist-sq-header-text = Actualiza tus preguntas de seguridad.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = En la mayoría de los casos, te recomendamos que actualices tus preguntas de seguridad en el sitio web de la empresa. Pero <b>su sitio web puede estar inactivo o contener contenido malicioso</b>, así que ten cuidado si <breached-company-link>visitas el sitio</breached-company-link>. Para mayor protección, actualiza estas preguntas de seguridad en cualquier cuenta importante donde las hayas usado, y crea contraseñas únicas y diferenciadas para cada cuenta.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -138,5 +155,7 @@ breach-checklist-hp-body-2 = Un administrador de contraseñas como el { $passwor
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Comunícate con { $companyName } para informarles sobre esta filtración y solicitar los pasos específicos a tomar.

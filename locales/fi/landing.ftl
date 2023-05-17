@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Selvitä, oletko ollut osa tietovuotoa
-stay-safe-with-tool = Pysy turvassa yksinkertaisella mutta tehokkaalla työkalulla, joka seuraa, ovatko henkilökohtaiset tietosi paljastuneet tietovuodon yhteydessä. Autamme sinua ymmärtämään, mitä sinun tulee tehdä seuraavaksi, ja seuraamme jatkuvasti uusia tietovuotoja – ilman minkäänlaista veloitusta.
 get-started = Aloitetaan
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Kaikki tietovuodot eivät sisällä samoja tietoja. Paljon 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Tarkista oletko ollut osallisena tietovuodossa.
+hibp-footer-attribution = Vuototiedot tarjoaa <b>{ -brand-HIBP }</b>

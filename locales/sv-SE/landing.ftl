@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Ta reda på om du har blivit utsatt för ett dataintrång
-stay-safe-with-tool = Håll dig säker med ett enkelt men kraftfullt verktyg som spårar om din personliga information har avslöjats i ett dataintrång. Vi hjälper dig att förstå vad du ska göra härnäst och övervakar kontinuerligt efter eventuella nya intrång — allt utan kostnad för dig.
 get-started = Kom igång
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Inte alla intrång avslöjar samma information. Det beror b
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Se om du har blivit utsatt för ett dataintrång
+hibp-footer-attribution = Intrångsdata tillhandahålls av <b>{ -brand-HIBP }</b>
