@@ -40,11 +40,11 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
   return {
     'government-issued-ids': {
       weight: 101,
-      pathToGlyph: '/images/social-security-numbers'
+      glyphName: 'social-security-numbers'
     },
     'social-security-numbers': {
       weight: 101,
-      pathToGlyph: '/images/social-security-numbers',
+      glyphName: 'social-security-numbers',
       recommendations: isUserLocaleEnUs
         ? [
             {
@@ -63,7 +63,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     passwords: {
       weight: 100,
-      pathToGlyph: '/images/passwords',
+      glyphName: 'passwords',
       recommendations: [
         {
           recommendationCopy: {
@@ -92,7 +92,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'bank-account-numbers': {
       weight: 99,
-      pathToGlyph: '/images/bank-account-numbers',
+      glyphName: 'bank-account-numbers',
       recommendations: [
         {
           recommendationCopy: {
@@ -105,7 +105,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'credit-cards': {
       weight: 98,
-      pathToGlyph: '/images/credit-cards',
+      glyphName: 'credit-cards',
       recommendations: [
         {
           recommendationCopy: {
@@ -118,11 +118,11 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'credit-card-cvv': {
       weight: 97,
-      pathToGlyph: '/images/credit-card-cvvs'
+      glyphName: 'credit-card-cvvs'
     },
     'partial-credit-card-data': {
       weight: 96,
-      pathToGlyph: '/images/partial-credit-card-data',
+      glyphName: 'partial-credit-card-data',
       recommendations: [
         {
           recommendationCopy: {
@@ -135,7 +135,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'ip-addresses': {
       weight: 95,
-      pathToGlyph: '/images/ip-addresses',
+      glyphName: 'ip-addresses',
       recommendations: [
         {
           recommendationCopy: {
@@ -152,7 +152,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'historical-passwords': {
       weight: 94,
-      pathToGlyph: '/images/historical-passwords',
+      glyphName: 'historical-passwords',
       recommendations: [
         {
           recommendationCopy: {
@@ -168,7 +168,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'security-questions-and-answers': {
       weight: 93,
-      pathToGlyph: '/images/security-questions-and-answers',
+      glyphName: 'security-questions-and-answers',
       recommendations: [
         {
           recommendationCopy: {
@@ -181,7 +181,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'phone-numbers': {
       weight: 92,
-      pathToGlyph: '/images/phone-numbers',
+      glyphName: 'phone-numbers',
       recommendations: [
         {
           recommendationCopy: {
@@ -194,7 +194,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'email-addresses': {
       weight: 91,
-      pathToGlyph: '/images/email-addresses',
+      glyphName: 'email-addresses',
       recommendations: [
         {
           recommendationCopy: {
@@ -211,7 +211,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'dates-of-birth': {
       weight: 90,
-      pathToGlyph: '/images/dates-of-birth',
+      glyphName: 'dates-of-birth',
       recommendations: [
         {
           recommendationCopy: {
@@ -224,7 +224,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     pins: {
       weight: 89,
-      pathToGlyph: '/images/pins',
+      glyphName: 'pins',
       recommendations: [
         {
           recommendationCopy: {
@@ -237,7 +237,7 @@ export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserL
     },
     'physical-addresses': {
       weight: 88,
-      pathToGlyph: '/images/physical-addresses',
+      glyphName: 'physical-addresses',
       recommendations: [
         {
           recommendationCopy: {
