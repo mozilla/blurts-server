@@ -15,6 +15,7 @@ import { getTemplate } from '../views/emails/email2022.js'
 import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
 
 import { bearerToken } from '../middleware/util.js'
+import { errorHandler } from '../middleware/error.js'
 
 import {
   initEmail,
@@ -32,18 +33,19 @@ import {
 import { UnauthorizedError, UserInputError, RateLimitError } from '../utils/error.js'
 
 const app = express()
+
 app.use(bearerToken)
-
-app.post('/api/v1/hibp/notify', notify)
-
-await initFluentBundles()
-await initEmail()
 // sentry error handler
 app.use(Sentry.Handlers.errorHandler({
   shouldHandleError (error) {
     if (error instanceof RateLimitError) return true
   }
 }))
+app.use(errorHandler)
+app.post('/api/v1/hibp/notify', notify)
+
+await initFluentBundles()
+await initEmail()
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
