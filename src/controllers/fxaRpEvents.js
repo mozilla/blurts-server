@@ -33,6 +33,7 @@ const getJwtPubKey = async () => {
     log.info('getJwtPubKey', `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`)
     return keys
   } catch (e) {
+    log.error('getJwtPubKey', `Could not get JWT public key: ${jwtKeyUri}`)
     captureException(new Error(`Could not get JWT public key: ${jwtKeyUri}`, e))
   }
 }
