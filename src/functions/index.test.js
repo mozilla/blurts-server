@@ -33,12 +33,15 @@ test.serial('accepts valid payload', async t => {
 
   const resp = createResponse()
 
-  await td.replaceEsm('../utils/email.js')
-  const { sendEmail } = await import('../utils/email.js')
-  td.when(sendEmail(), { times: 1 }).thenResolve(true)
+  await td.replaceEsm('../utils/hibp.js')
+  const { getBreachByName } = await import('../utils/hibp.js')
+
+  const breachAlert = { IsVerified: true, Domain: 'test', IsFabricated: true, IsSpamList: false }
+  td.when(getBreachByName(undefined, 'Test1'), { times: 1 }).thenReturn(breachAlert)
 
   // Call code-under-test
   const { app } = await import('./index.js')
+
   await app._router(req, resp)
 
   // Check expectations
@@ -64,6 +67,5 @@ test.serial('rejects invalid bearer token', async t => {
   await app._router(req, resp)
 
   // Check expectations
-  // FIXME this should return 403
-  t.is(resp.statusCode, 200)
+  t.is(resp.statusCode, 403)
 })

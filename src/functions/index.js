@@ -63,7 +63,9 @@ await initEmail()
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
     const errorMessage = 'HIBP notify endpoint requires valid authorization token.'
-    throw new UnauthorizedError(errorMessage)
+    // FIXME
+    // throw new UnauthorizedError(errorMessage)
+    return res.status(403, errorMessage)
   }
 
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
