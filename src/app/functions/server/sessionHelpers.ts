@@ -38,4 +38,4 @@ async function getSession(
   return getIronSession(req, res, sessionConfig);
 }
 
-export { getCurrentSession, getSession };
+export { sessionConfig, getCurrentSession, getSession };
