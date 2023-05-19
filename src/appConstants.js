@@ -69,8 +69,9 @@ for (const v of requiredEnvVars) {
   const value = process.env[v]
   if (value === undefined) {
     console.warn(`Required environment variable was not set: ${v}`)
+  } else {
+    AppConstants[v] = value
   }
-  AppConstants[v] = value
 }
 
 optionalEnvVars.forEach(key => {
