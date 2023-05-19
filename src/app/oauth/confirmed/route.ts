@@ -9,7 +9,7 @@ import {
   updateFxAData,
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
-import { getSession } from "../../functions/server/getSession";
+import { getSession } from "../../functions/server/sessionHelpers";
 import { getEmailCtaHref, sendEmail } from "../../../utils/email.js";
 import mozlog from "../../../utils/log.js";
 import { UnauthorizedError } from "../../../utils/error.js";

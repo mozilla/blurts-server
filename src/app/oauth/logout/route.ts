@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextResponse } from "next/server";
-import { getSession } from "../../functions/server/getSession";
+import { getSession } from "../../functions/server/sessionHelpers";
 import mozlog from "../../../utils/log.js";
 import { removeFxAData } from "../../../db/tables/subscribers.js";
 

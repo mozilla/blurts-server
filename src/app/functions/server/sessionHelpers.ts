@@ -2,8 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getIronSession, IronSession } from "iron-session";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
+import { getIronSession, IronSession, unsealData } from "iron-session";
 import { UserData } from "../../transitionTypes";
 
 export type SessionData = Partial<{
@@ -19,9 +20,22 @@ const sessionConfig = {
   },
 };
 
-export async function getSession(
+async function getCurrentSession() {
+  const session = cookies().get(sessionConfig.cookieName);
+  if (!session) {
+    return null;
+  }
+
+  return await unsealData(session.value, {
+    password: sessionConfig.password,
+  });
+}
+
+async function getSession(
   req: Request,
   res: NextResponse
 ): Promise<IronSession & SessionData> {
   return getIronSession(req, res, sessionConfig);
 }
+
+export { getCurrentSession, getSession };

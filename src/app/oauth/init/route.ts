@@ -5,7 +5,7 @@
 import { randomBytes } from "node:crypto";
 import { NextResponse } from "next/server";
 import { FxAOAuthClient } from "../../../utils/fxa.js";
-import { getSession } from "../../functions/server/getSession";
+import { getSession } from "../../functions/server/sessionHelpers";
 
 export async function GET(request: Request) {
   // Set a random state string in a cookie so that we can verify
