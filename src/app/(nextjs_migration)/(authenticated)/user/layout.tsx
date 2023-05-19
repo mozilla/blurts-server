@@ -17,7 +17,7 @@ export type Props = {
   children: ReactNode;
 };
 
-const data = {
+const dummyData = {
   partial: {
     name: "breaches",
   },
@@ -43,10 +43,12 @@ const MainLayout = async (props: Props) => {
   const session = await getCurrentSession();
   const l10n = getL10n();
 
-  const isBreachesPage = data.partial.name === "breaches";
-  const isSettingsPage = data.partial.name === "settings";
+  const isBreachesPage = dummyData.partial.name === "breaches";
+  const isSettingsPage = dummyData.partial.name === "settings";
 
-  const UserMenu = ({ data }) => {
+  const UserMenu = ({ userData }) => {
+    const fxaUser = userData?.fxa_profile_json;
+
     return (
       <div className="user-menu-wrapper" tabIndex={-1}>
         <Script src="/nextjs_migration/client/js/userMenu.js" />
@@ -56,7 +58,7 @@ const MainLayout = async (props: Props) => {
           className="user-menu-button"
           title={l10n.getString("menu-button-title")}
         >
-          <img src={""} alt={l10n.getString("menu-button-alt")} />
+          <img src={fxaUser?.avatar} alt={l10n.getString("menu-button-alt")} />
         </button>
         <menu
           aria-label={l10n.getString("menu-list-accessible-label")}
@@ -70,7 +72,7 @@ const MainLayout = async (props: Props) => {
               target="_blank"
               className="user-menu-header"
             >
-              <b className="user-menu-email">{data.fxaProfile?.email}</b>
+              <b className="user-menu-email">{fxaUser.email}</b>
               <div className="user-menu-subtitle">
                 {l10n.getString("menu-item-fxa")}
                 <Image alt="" src={OpenInIcon} />
@@ -132,7 +134,7 @@ const MainLayout = async (props: Props) => {
               />
             </svg>
           </button>
-          <UserMenu data={data} />
+          <UserMenu userData={session?.user} />
         </div>
       </header>
 
@@ -224,10 +226,7 @@ const MainLayout = async (props: Props) => {
         </div>
       </nav>
 
-      <main>
-        {props.children}
-        <pre>{JSON.stringify(session, null, 2)}</pre>
-      </main>
+      <main>{props.children}</main>
 
       <footer className="site-footer">
         <a href="https://www.mozilla.org" target="_blank">
