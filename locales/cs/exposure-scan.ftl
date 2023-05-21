@@ -1,3 +1,4 @@
+exposure-landing-hero-heading = Zjistěte, zda vaše osobní údaje nebyly součástí úniku dat
 exposure-landing-hero-email-label = E-mailová adresa
 exposure-landing-hero-email-placeholder = Zadejte e-mailovou adresu
 exposure-landing-hero-cta-label = Prohledat úniky
