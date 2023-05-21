@@ -846,6 +846,8 @@ sign-in = Přihlásit se
 site-nav-breaches-link = Vyřešit úniky dat
 site-nav-settings-link = Nastavení
 site-nav-help-link = Nápověda a podpora
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Vyzkoušejte naše další bezpečnostní nástroje:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -882,6 +884,9 @@ error-page-error-other-copy = Zkuste to znovu nebo se vraťte později
 
 all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
 search-breaches = Prohledat úniky dat
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Odhalené údaje:
 
 ## Public breach detail page
 
+breach-detail-cta-signup = Prohledat úniky
