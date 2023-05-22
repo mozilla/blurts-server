@@ -7,9 +7,13 @@ import { URL } from 'url'
 
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
-import { MethodNotAllowedError } from '../utils/error.js'
-import { getMessage, fluentError } from '../utils/fluent.js'
+import { getMessage } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
+import {
+  BadRequestError,
+  MethodNotAllowedError,
+  UnauthorizedError
+} from '../utils/error.js'
 
 const log = mozlog('email-utils')
 
@@ -110,7 +114,7 @@ function getEmailCtaHref (emailType, content, subscriberId = null) {
 
 function getVerificationUrl (subscriber) {
   if (!subscriber.verification_token) {
-    throw new Error('subscriber has no verification_token')
+    throw new BadRequestError('subscriber has no verification_token')
   }
 
   const url = new URL(`${SERVER_URL}/api/v1/user/verify-email`)
@@ -133,7 +137,7 @@ function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
   }
 
   if (isMonthlyEmail && !subscriber.primary_verification_token) {
-    throw new Error('subscriber has no primary verification_token')
+    throw new BadRequestError('subscriber has no primary verification_token')
   }
 
   const url = new URL(path)
@@ -187,7 +191,7 @@ async function unsubscribeFromEmails (req) {
 
   // For unsubscribing from emails we need a hash and token
   if (!hasMandatoryParams(urlQuery, 'hash,token')) {
-    throw fluentError('user-unsubscribe-token-email-error')
+    throw new UnauthorizedError(getMessage('user-unsubscribe-token-email-error'))
   }
 
   throw new MethodNotAllowedError()
@@ -203,7 +207,7 @@ async function unsubscribeFromMonthlyReport (req) {
 
   // For unsubscribing from the monthly emails we need a token
   if (!hasMandatoryParams(urlQuery, 'token')) {
-    throw fluentError('user-unsubscribe-token-error')
+    throw new UnauthorizedError(getMessage('user-unsubscribe-token-error'))
   }
 
   // Unsubscribe user from the monthly unresolved breach emails

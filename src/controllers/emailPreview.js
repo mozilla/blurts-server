@@ -26,6 +26,7 @@ import {
   getSignupReportDummyData,
   sendEmail
 } from '../utils/email.js'
+import { InternalServerError } from '../utils/error.js'
 
 const { EMAIL_TEST_RECIPIENT } = AppConstants
 
@@ -171,7 +172,7 @@ async function sendTestEmail (req, res) {
       break
     }
     default: {
-      throw new Error(`No test email found for ${emailId}`)
+      throw new InternalServerError(`No test email found for ${emailId}`)
     }
   }
 
