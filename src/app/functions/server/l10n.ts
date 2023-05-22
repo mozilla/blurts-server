@@ -2,40 +2,40 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { acceptedLanguages, negotiateLanguages } from '@fluent/langneg'
-import { headers } from 'next/headers'
-import { ExtendedReactLocalization, GetFragment } from '../../hooks/l10n'
-import { FluentBundle, FluentResource } from '@fluent/bundle'
-import type { MarkupParser } from '@fluent/react'
+import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
+import { headers } from "next/headers";
+import { ExtendedReactLocalization, GetFragment } from "../../hooks/l10n";
+import { FluentBundle, FluentResource } from "@fluent/bundle";
+import type { MarkupParser } from "@fluent/react";
 // @fluent/react's default export bundles all code in a single scope, so just
 // importing <ReactLocalization> from there will run createContext,
 // which is not allowed in server components. To avoid that, we import directly
 // from the included ES module code. There is the risk that @fluent/react
 // updates break that.
-import { ReactLocalization } from '@fluent/react/esm/localization'
-import { JSDOM } from 'jsdom'
-import { Fragment, createElement } from 'react'
+import { ReactLocalization } from "@fluent/react/esm/localization";
+import { JSDOM } from "jsdom";
+import { Fragment, createElement } from "react";
 
 export type LocaleData = {
   locale: string;
   bundleSources: string[];
-}
+};
 
-export function getLocale (localeData: LocaleData[] = getL10nBundles()): string {
-  return localeData[0]?.locale ?? 'en'
+export function getLocale(localeData: LocaleData[] = getL10nBundles()): string {
+  return localeData[0]?.locale ?? "en";
 }
 
 // `require` isn't usually valid JS, so skip type checking for that:
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const translationsContext = (require as any).context(
-  '../../../../locales',
+  "../../../../locales",
   true,
   /\.ftl$/
-)
-const loadedSources: Record<string, string> = {}
-function loadSource (filename: string): string {
-  loadedSources[filename] ??= translationsContext(filename)
-  return loadedSources[filename]
+);
+const loadedSources: Record<string, string> = {};
+function loadSource(filename: string): string {
+  loadedSources[filename] ??= translationsContext(filename);
+  return loadedSources[filename];
 }
 
 /**
@@ -48,76 +48,82 @@ function loadSource (filename: string): string {
  *
  * @returns The sources for l10n bundles that can be used to construct a ReactLocalization object
  */
-export function getL10nBundles (): LocaleData[] {
-  const headersList = headers()
-  const acceptLangHeader = headersList.get('Accept-Language')
+export function getL10nBundles(): LocaleData[] {
+  const headersList = headers();
+  const acceptLangHeader = headersList.get("Accept-Language");
 
-  const bundleSources: Record<string, string[]> = {}
+  const bundleSources: Record<string, string[]> = {};
 
   for (const filename of translationsContext.keys()) {
     // Filenames are formatted as `./<locale>/<module>.ftl`.
     // Example: ./en/bundle.ftl
-    const locale = filename.split('/')[1]
+    const locale = filename.split("/")[1];
 
     if (locale) {
-      bundleSources[locale] ??= []
-      bundleSources[locale].push(loadSource(filename))
+      bundleSources[locale] ??= [];
+      bundleSources[locale].push(loadSource(filename));
+
+      if (locale === "en") {
+        // `require` isn't usually valid JS, so skip type checking for that:
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const pendingTranslationsSource = require("../../../../pendingTranslations.ftl");
+        bundleSources[locale].push(pendingTranslationsSource);
+      }
     }
   }
 
-  const languages = acceptLangHeader ? acceptedLanguages(acceptLangHeader) : []
+  const languages = acceptLangHeader ? acceptedLanguages(acceptLangHeader) : [];
   const currentLocales = negotiateLanguages(
     languages,
     Object.keys(bundleSources),
-    { defaultLocale: 'en' }
-  )
+    { defaultLocale: "en" }
+  );
 
-  const relevantBundleSources = currentLocales.map(relevantLocale => ({
+  const relevantBundleSources = currentLocales.map((relevantLocale) => ({
     locale: relevantLocale,
-    bundleSources: bundleSources[relevantLocale]
-  }))
+    bundleSources: bundleSources[relevantLocale],
+  }));
 
-  return relevantBundleSources
+  return relevantBundleSources;
 }
 
-const document = new JSDOM().window.document
+const document = new JSDOM().window.document;
 const parseMarkup: MarkupParser = (str) => {
-  if (!str.includes('<') && !str.includes('>')) {
-    return [{ nodeName: '#text', textContent: str } as Node]
+  if (!str.includes("<") && !str.includes(">")) {
+    return [{ nodeName: "#text", textContent: str } as Node];
   }
-  const wrapper = document.createElement('span')
-  wrapper.innerHTML = str
-  return Array.from(wrapper.childNodes)
-}
+  const wrapper = document.createElement("span");
+  wrapper.innerHTML = str;
+  return Array.from(wrapper.childNodes);
+};
 
-const bundles: Record<string, FluentBundle> = {}
-function getBundle (localeData: LocaleData): FluentBundle {
+const bundles: Record<string, FluentBundle> = {};
+function getBundle(localeData: LocaleData): FluentBundle {
   if (bundles[localeData.locale]) {
-    return bundles[localeData.locale]
+    return bundles[localeData.locale];
   }
-  bundles[localeData.locale] = new FluentBundle(localeData.locale)
-  localeData.bundleSources.forEach(bundleSource => {
-    bundles[localeData.locale].addResource(new FluentResource(bundleSource))
-  })
-  return bundles[localeData.locale]
+  bundles[localeData.locale] = new FluentBundle(localeData.locale);
+  localeData.bundleSources.forEach((bundleSource) => {
+    bundles[localeData.locale].addResource(new FluentResource(bundleSource));
+  });
+  return bundles[localeData.locale];
 }
 
-export function getL10n (localeData: LocaleData[] = getL10nBundles()): ExtendedReactLocalization {
-  const bundles: FluentBundle[] = localeData.map(data => getBundle(data))
+export function getL10n(
+  localeData: LocaleData[] = getL10nBundles()
+): ExtendedReactLocalization {
+  const bundles: FluentBundle[] = localeData.map((data) => getBundle(data));
 
   // The ReactLocalization instance stores and caches the sequence of generated
   // bundles. You can store it in your app's state.
-  const l10n = new ReactLocalization(
-    bundles,
-    parseMarkup
-  )
+  const l10n = new ReactLocalization(bundles, parseMarkup);
 
   const getFragment: GetFragment = (id, args, fallback) =>
-    l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args)
+    l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args);
 
   const extendedL10n: ExtendedReactLocalization =
-    l10n as ExtendedReactLocalization
-  extendedL10n.getFragment = getFragment
+    l10n as ExtendedReactLocalization;
+  extendedL10n.getFragment = getFragment;
 
-  return extendedL10n
+  return extendedL10n;
 }
