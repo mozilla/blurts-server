@@ -28,7 +28,7 @@ const rl = readline.createInterface({
       }
 
       await DB.deleteEmailAddressesByUid(subscriber.id)
-      await DB.deleteSubscriberByFxAUID(subscriber.fxa_uid)
+      await DB.deleteSubscriber(subscriber.fxa_uid)
       console.log('Deleted email_addresses and subscribers records.')
       process.exit()
     })
