@@ -96,18 +96,21 @@ const fxaRpEvents = async (req, res) => {
   } catch (e) {
     log.error('fxaRpEvents', e)
     captureException(e)
+    res.status(400).send('Bad Request')
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
+    res.status(400).send('Bad Request')
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
+    res.status(400).send('Bad Request')
   }
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
