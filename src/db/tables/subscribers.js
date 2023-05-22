@@ -64,8 +64,6 @@ async function getSubscriberByEmail (email) {
  * @returns {object} updated subscriber
  */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
-  log.debug('updatePrimaryEmail', JSON.stringify(subscriber))
-  log.debug('updatePrimaryEmail', updatedEmail)
   const trx = await knex.transaction()
   let subscriberTableUpdated, emailTableUpdated
   try {
@@ -89,6 +87,8 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
       .transacting(trx)
 
     await trx.commit()
+    log.debug('updatePrimaryEmail', { subscriberTableUpdated })
+    log.debug('updatePrimaryEmail', { emailTableUpdated })
   } catch (error) {
     await trx.rollback()
     log.error('updatePrimaryEmail', error)
