@@ -64,13 +64,37 @@ async function getSubscriberByEmail (email) {
  * @returns {object} updated subscriber
  */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
-  const updated = await knex('subscribers')
+  log.debug('updatePrimaryEmail', JSON.stringify(subscriber))
+  log.debug('updatePrimaryEmail', updatedEmail)
+  const trx = await knex.transaction()
+  let subscriberTableUpdated, emailTableUpdated
+  try{
+
+    // update subscriber primary email to updated email
+    subscriberTableUpdated = knex('subscribers')
     .where('id', '=', subscriber.id)
     .update({
       primary_email: updatedEmail
     })
     .returning('*')
-  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+    .transacting(trx)
+
+    // if email_addresses table has updatedEmail as a secondary in Monitor
+    // swap it with the current primary
+    // Fixing: MNTOR-1748
+    emailTableUpdated = knex('email_addresses')
+    .where('email', '=', updatedEmail)
+    .update({
+      email: subscriber.primary_email
+    })
+    .transacting(trx)
+
+    await trx.commit()
+  } catch (error) {
+    await trx.rollback()
+    log.error('updatePrimaryEmail', error)
+  }
+  const updatedSubscriber = Array.isArray(subscriberTableUpdated) ? subscriberTableUpdated[0] : null
   return updatedSubscriber
 }
 
