@@ -82,7 +82,11 @@ names = Ismawen
 nationalities = Taɣlent
 net-worths = Azal yeṣfan
 nicknames = Meffer ismawen
+# no data classes found
+none-data-class = Ula yiwen
 occupations = Ixeddimen
+# various data classes grouped together
+other-data-class = Wayeḍ
 parenting-plans = amtawa n yimawlan
 partial-credit-card-data = kra n yisefka n tkarḍiwin n usmad
 partial-dates-of-birth = Azemz n tlalit abruyan

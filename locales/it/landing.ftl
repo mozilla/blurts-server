@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Scopri se sei stato coinvolto in una violazione di dati
-stay-safe-with-tool = Rimani al sicuro grazie a uno strumento semplice ma potente che controlla se le tue informazioni personali sono state esposte in una violazione di dati. Ti aiutiamo a capire come procedere e monitoriamo costantemente eventuali nuove violazioni, il tutto senza alcun costo per te.
 get-started = Inizia
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Non tutte le violazioni espongono le stesse informazioni. D
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Scopri se sei stato coinvolto in una violazione di dati
+hibp-footer-attribution = Dati sulle violazioni forniti da <b>{ -brand-HIBP }</b>

@@ -3,9 +3,7 @@
 
 ## Hero
 
-find-out-if-breached = Zistite, či ste boli súčasťou úniku údajov
-stay-safe-with-tool = Zostaňte v bezpečí s jednoduchým, ale výkonným nástrojom, ktorý sleduje, či boli vaše osobné údaje odhalené pri úniku údajov. Pomôžeme vám pochopiť, čo robiť ďalej, a nepretržite monitorovať akékoľvek nové úniky – a to všetko bez nákladov na vašej strate.
-get-started = Začíname
+get-started = Poďme na to
 
 ## Why use Firefox Monitor?
 
@@ -43,7 +41,7 @@ see-all-faq = Pozrite si všetky často kladené otázky
 what-is-breach = Čo presne je únik údajov?
 when-info-exposed = K úniku údajov dochádza, keď sú osobné alebo súkromné informácie vystavené, odcudzené alebo skopírované bez povolenia. Tieto bezpečnostné incidenty môžu byť výsledkom kybernetických útokov na webové stránky, aplikácie alebo akúkoľvek databázu, kde sa nachádzajú osobné informácie ľudí. K úniku môže dôjsť aj náhodne, napríklad ak sa niekoho prihlasovacie údaje náhodne zverejnia.
 # question and answer
-what-do-i-do = Moje údaje boli súčasťou úniku dát. Čo teraz?
+what-do-i-do = Moje údaje boli súčasťou úniku údajov. Čo teraz?
 visit-monitor-to-learn = Navštívte stránku služby { -brand-fx-monitor } a zistite, čo robiť po úniku údajov. Hackeri sa spoliehajú na to, že ľudia opakovane používajú heslá, preto je dôležité vytvárať silné a jedinečné heslá pre každý váš účet. Uchovávajte svoje heslá na bezpečnom mieste, ku ktorému máte prístup iba vy; mohlo by to byť rovnaké miesto, kam ukladáte dôležité dokumenty alebo správcu hesiel.
 # question and answer
 what-gets-exposed = Aké informácie sú odhalené pri úniku údajov?
@@ -52,3 +50,4 @@ depends-on-hackers = Nie všetky úniky odhaľujú rovnaké informácie. Zálež
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Pozrite sa, či ste neboli v úniku údajov
+hibp-footer-attribution = Údaje o úniku údajov poskytuje <b>{ -brand-HIBP }</b>

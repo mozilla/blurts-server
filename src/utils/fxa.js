@@ -6,6 +6,7 @@ import ClientOAuth2 from 'client-oauth2'
 import crypto from 'crypto'
 import { URL } from 'url'
 
+import { InternalServerError } from '../utils/error.js'
 import AppConstants from '../appConstants.js'
 
 // This object exists instead of inlining the env vars to make it easy
@@ -40,7 +41,7 @@ async function postTokenRequest (path, token) {
 
   try {
     const response = await fetch(tokenUrl, tokenOptions)
-    if (!response.ok) throw new Error(`bad response: ${response.status}`)
+    if (!response.ok) throw new InternalServerError(`bad response: ${response.status}`)
     return await response.json()
   } catch (e) {
     console.error('postTokenRequest', { stack: e.stack })
@@ -76,7 +77,7 @@ async function getProfileData (accessToken) {
     const response = await fetch(FxAOAuthUtils.profileUri, {
       headers: { Authorization: `Bearer ${accessToken}` }
     })
-    if (!response.ok) throw new Error(`bad response: ${response.status}`)
+    if (!response.ok) throw new InternalServerError(`bad response: ${response.status}`)
     return await response.text()
   } catch (e) {
     console.warn('getProfileData', { stack: e.stack })
@@ -90,7 +91,7 @@ async function sendMetricsFlowPing (path) {
     const response = await fetch(fxaMetricsFlowUrl, {
       headers: { Origin: AppConstants.SERVER_URL }
     })
-    if (!response.ok) throw new Error(`bad response: ${response.status}`)
+    if (!response.ok) throw new InternalServerError(`bad response: ${response.status}`)
     console.info('pinged FXA metrics flow.')
     return response
   } catch (e) {

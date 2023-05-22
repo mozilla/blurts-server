@@ -663,7 +663,7 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 
 ## Search Engine Optimization
 
-meta-desc = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
+meta-desc-2 = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’une fuite de données. Nous vous aiderons à comprendre ce qu’il faut faire ensuite et à surveiller en permanence toute nouvelle fuite de données.
 
 ## Header
 

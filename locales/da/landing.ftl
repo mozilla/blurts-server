@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Find ud af, om du er blevet ramt af en datalæk
-stay-safe-with-tool = Hold dig sikker med et enkelt, men stærkt værktøj, der holder øje med, om dine personlige oplysninger er blevet eksponeret i en datalæk. Vi hjælper dig i gang - og når først det er sat op, så får du automatisk besked, hvis nye datalæk opstår. Alt sammen helt gratis.
 get-started = Kom i gang
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Forskellige typer af oplysninger kan blive afsløret i fors
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Se om du er blevet ramt af en datalæk
+hibp-footer-attribution = Information om datalæk stammer fra <b>{ -brand-HIBP }</b>

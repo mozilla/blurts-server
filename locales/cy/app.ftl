@@ -751,7 +751,7 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 
 ## Search Engine Optimization
 
-meta-desc = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
+meta-desc-2 = Darganfyddwch od ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Byddwn yn eich helpu i wybod beth i'w wneud nesaf ac yn monitro am unrhyw dor-data newydd yn barhaus.
 
 ## Header
 

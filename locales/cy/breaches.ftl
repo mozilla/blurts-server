@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Dangosfwrdd
+breach-all-meta-title = { -brand-fx-monitor } - Pob Tor-data
+breach-all-meta-social-title = Pob Tor-data Wedi ei Ganfod gan { -brand-fx-monitor }
+breach-all-meta-social-description = Porwch y rhestr lawn o dor-data hysbys a ganfuwyd gan { -brand-fx-monitor }, yna gweld a ddatgelwyd eich manylion chi.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Tor-data { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = A oedd y Tor-data { $company } wedi effeithio arnoch chi?
+breach-detail-meta-social-description = Defnyddiwch { -brand-fx-monitor } i ddarganfod a gafodd eich manylion personol chi eu datgelu yn y tor-data hwn, a chael gwybod beth i'w wneud nesaf.
+breach-scan-meta-title = { -brand-fx-monitor } - Canlyniadau Tor-data
+breach-scan-meta-social-title = { -brand-fx-monitor } Canlyniadau Tor-data
+breach-scan-meta-social-description = Mewngofnodwch i { -brand-fx-monitor } i ddatrys unrhyw dor-data a chael monitro parhaus am unrhyw dor-data hysbys newydd.
 
 ## Breaches header
 
@@ -50,6 +64,9 @@ breaches-all-resolved-copy = Da iawn! Rydych chi wedi datrys pob tor-data ar gyf
 breaches-all-resolved-cta-blurb = Hoffech chi fonitro e-bost arall?
 breaches-all-resolved-cta-button = Ychwanegwch gyfeiriad e-bost
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Ar { $breachDate }, profodd { $companyName } dor-data. Unwaith y cafodd y tor-data ei ganfod a'i ddilysu, cafodd ei ychwanegu at ein cronfa ddata ar { $addedDate }. Mae'r tor-data hwn yn cynnwys: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -60,11 +77,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Ewch i wefan y cwmni i newid eich cyfrinair a galluogi dilysiad dau ffactor (2FA).
+breach-checklist-pw-header-text = Diweddarwch eich cyfrineiriau a galluogi dilysu dau ffactor (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Gwnewch yn siŵr fod eich cyfrinair yn unigryw ac yn anodd ei ddyfalu. Os yw'r cyfrinair hwn yn cael ei ddefnyddio ar unrhyw gyfrifon eraill, gwnewch yn siŵr ei newid yno hefyd. Gall { $passwordManagerLink } eich helpu i gadw golwg diogel ar eich holl gyfrineiriau.
+breach-checklist-pw-body-text = Yn y rhan fwyaf o achosion, rydym yn argymell eich bod yn newid eich cyfrinair ar wefan y cwmni. Ond <b>efallai bod eu gwefan wedi torri neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael diogelwch ychwanegol, gwnewch yn siŵr eich bod chi'n defnyddio cyfrineiriau unigryw ar gyfer pob cyfrif, fel nad oes modd defnyddio unrhyw gyfrineiriau sydd wedi'u ryddhau ar gam i gael mynediad at gyfrifon eraill. Gall { $passwordManagerLink } eich helpu i gadw golwg diogel ar eich holl gyfrineiriau.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -75,17 +92,17 @@ breach-checklist-email-body = Gall hyn guddio'ch gwir gyfeiriad e-bost wrth anfo
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Adolygwch eich adroddiad cyfrifon credyd am gyfrifon, benthyciadau, neu gardiau credyd nad ydych yn eu hadnabod.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Gallwch hefyd ystyried rhewi eich credyd ar { $equifaxLink } , { $experianLink } a { $transUnionLink } i atal sgamwyr rhag agor cyfrifon newydd yn eich enw chi. Mae am ddim ac ni fydd yn effeithio ar eich sgôr credyd.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -128,9 +145,9 @@ breach-checklist-phone-header-2 = Diogelwch eich rhif ffôn gyda gwasanaeth cudd
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Diweddarwch eich cwestiynau diogelwch ar wefan y cwmni.
-breach-checklist-sq-body = Defnyddiwch atebion hir, ar hap, a storiwch nhw yn rhywle diogel. Gwnewch hyn yn unrhyw le arall rydych chi wedi defnyddio'r un cwestiynau diogelwch.
+breach-checklist-sq-header-text = Diweddarwch eich cwestiynau diogelwch.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Yn y rhan fwyaf o achosion, byddem yn argymell eich bod yn diweddaru eich cwestiynau diogelwch ar wefan y cwmni. Ond <b>efallai bod eu gwefan wedi torri neu'n cynnwys cynnwys maleisus</b>, felly byddwch yn ofalus os byddwch <breached-company-link>yn ymweld â'r wefan</breached-company-link>. I gael diogelwch ychwanegol, diweddarwch y cwestiynau diogelwch hyn ar unrhyw gyfrifon pwysig lle rydych chi wedi'u defnyddio, a chreu cyfrineiriau unigryw ar gyfer pob cyfrif.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -141,5 +158,7 @@ breach-checklist-hp-body-2 = Gall rheolwr cyfrineiriau fel { $passwordManagerLin
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Cysylltwch â { $companyName } i roi gwybod iddyn nhw am y tor-data hwn a gofyn am gamau penodol y gallwch eu cymryd.

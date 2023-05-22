@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } – Vezérlőpult
+breach-all-meta-title = { -brand-fx-monitor } – Minden adatvédelmi incidens
+breach-all-meta-social-title = Az összes, a { -brand-fx-monitor } által észlelt adatvédelmi incidens
+breach-all-meta-social-description = Böngéssze a { -brand-fx-monitor } által észlelt ismert adatvédelmi incidensek teljes listáját, és tudja meg, hogy kikerültek-e az információi.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } – { $company } adatvédelmi incidens
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Érintette a(z) { $company } adatvédelmi incidense?
+breach-detail-meta-social-description = Használja a { -brand-fx-monitor }t, hogy megtudja, hogy kikerültek-e a személyes információi ebben az adatvédelmi incidensben, és hogy megtudja, mit kell tennie.
+breach-scan-meta-title = { -brand-fx-monitor } – Adatvédelmi incidensek eredményei
+breach-scan-meta-social-title = { -brand-fx-monitor } adatvédelmi incidensek eredményei
+breach-scan-meta-social-description = Jelentkezzen be a { -brand-fx-monitor }ba a adatvédelmi incidensek megoldásához, és kapjon folyamatos ellenőrzést az új ismert adatvédelmi incidensekről.
 
 ## Breaches header
 
@@ -46,6 +60,9 @@ breaches-all-resolved-copy = Szép munka! Megoldotta a(z) { $email } címéhez k
 breaches-all-resolved-cta-blurb = Szeretne egy másik e-mail-címet is figyelni?
 breaches-all-resolved-cta-button = E-mail-cím hozzáadása
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = A(z) { $companyName } adatvédelmi incidensben volt érintett ekkor: { $breachDate }. Amint az adatvédelmi incidens felfedezésre és megerősítésre került, hozzáadásra került az adatbázisunkhoz, ekkor: { $addedDate }. Ez az incidens a következőket tartalmazta: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +73,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }-nel
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Keresse fel a cég weboldalát, hogy módosítsa a jelszavát és engedélyezze a kétfaktoros hitelesítést (2FA).
+breach-checklist-pw-header-text = Frissítse jelszavait és engedélyezze a kétfaktoros hitelesítést (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Győződjön meg arról, hogy a jelszava egyedi és nehezen kitalálható. Ha ezt a jelszót más fiókoknál is használja, akkor ott is változtassa meg. A { $passwordManagerLink } segítségével biztonságosan nyomon követheti az összes jelszavát.
+breach-checklist-pw-body-text = A legtöbb esetben azt javasoljuk, hogy a cég weboldalán változtassa meg a jelszavát. De <b>a weboldaluk lehet, hogy nem működik vagy rosszindulatú tartalmat tartalmaz</b>, ezért legyen óvatos, ha <breached-company-link>felkeresi a webhelyet</breached-company-link>. A nagyobb védelem érdekében győződjön meg róla, hogy egyedi jelszót használ az összes fiókhoz, így a kiszivárgott jelszavak nem használhatók fel más fiókok elérésére. A { $passwordManagerLink } segíthet az összes jelszavának biztonságos nyomon követésében.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -71,17 +88,17 @@ breach-checklist-email-body = Ezzel elrejtheti valódi e-mail-címét, miközben
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Figyelje a bankszámlakivonatait, és keressen olyan számlákat, kölcsönöket vagy hitelkártyákat, melyeket nem ismer fel.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Fontolóra veheti a hitelinformációinak befagyasztását is az { $equifaxLink }nál, { $experianLink }nál és a { $transUnionLink }nál, hogy a csalók ne nyithassanak új számlákat az Ön nevében. Ez ingyenes, és nincs hatással a hitelképességi mutatójára.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -124,9 +141,9 @@ breach-checklist-phone-header-2 = Védje telefonszámát egy olyan maszkoló szo
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Frissítse biztonsági kérdéseit a vállalat weboldalán.
-breach-checklist-sq-body = Használjon hosszú, véletlenszerű válaszokat, és tárolja azokat biztonságos helyen. Tegye ezt meg mindenhol, ahol ugyanazokat a biztonsági kérdéseket használta.
+breach-checklist-sq-header-text = Frissítse a biztonsági kérdéseit.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = A legtöbb esetben azt javasoljuk, hogy frissítse a biztonsági kérdéseket a cég weboldalán. De <b>a weboldaluk lehet, hogy nem működik vagy rosszindulatú tartalmat tartalmaz</b>, ezért legyen óvatos, ha <breached-company-link>felkeresi a webhelyet</breached-company-link>. A nagyobb védelem érdekében frissítse ezeket a biztonsági kérdéseket minden olyan fontos fiókban, ahol használta őket, és hozzon létre egyedi jelszavakat az összes fiókhoz.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -137,5 +154,7 @@ breach-checklist-hp-body-2 = Egy jelszókezelő, például a { $passwordManagerL
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Lépjen kapcsolatba a következővel: { $companyName }, tájékoztassa őket erről az adatvédelmi incidensről, és kérdezzen rá a megtehető lépésekre.

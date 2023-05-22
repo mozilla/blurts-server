@@ -33,6 +33,7 @@ column-detected = DETECTADO
 column-status-badge-resolved = Resuelto
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Activo
+breaches-resolve-heading = Resolver esta filtración
 breaches-none-headline = No se encontraron filtraciones
 breaches-none-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
 breaches-none-cta-button = Agregar dirección de correo electrónico
@@ -40,14 +41,17 @@ breaches-all-resolved-headline = Todas las filtraciones resueltas
 breaches-all-resolved-cta-blurb = ¿Te gustaría monitorear otro correo electrónico?
 breaches-all-resolved-cta-button = Agregar dirección de correo electrónico
 
+## Links that we might refer to when prompting the user to make changes after a breach
+
+breach-checklist-link-firefox-relay = { -brand-relay }
+breach-checklist-link-password-manager = Administrador de contraseñas { -brand-firefox }
+breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
+
 ## Prompts the user for changes when there is a breach detected of password
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-pw-header = Ve a <a>{ $breachedCompanyUrl }</a> para cambiar tu contraseña y habilitar la autenticación de dos pasos (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 
-breach-checklist-email-header = Protege tu correo electrónico con un servicio de enmascaramiento de correo electrónico como <a>{ -brand-relay }</a>.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -65,7 +69,6 @@ breach-checklist-pin-body = Asegúrate de que tu nuevo PIN, o cualquier otro PIN
 
 ## Prompts the user for changes when there is a breach detected of IP address
 
-breach-checklist-ip-header = Usa Internet de forma privada con una VPN, como <a>{ -brand-mozilla-vpn }</a>.
 breach-checklist-ip-body = Tu dirección IP (dirección de Protocolo de Internet) señala tu ubicación y proveedor de servicios de Internet. Una VPN puede ocultar tu dirección IP real para que puedas usar Internet de forma privada.
 
 ## Prompts the user for changes when there is a breach detected of physical address
@@ -81,8 +84,6 @@ breach-checklist-dob-header = Cambia cualquier contraseña o PIN que incluya tu 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# NOTE: { $breachedCompanyUrl } is a placeholder for the URL to the website of the company where the breach occurred 
-breach-checklist-sq-header = Actualiza tus preguntas de seguridad en <a>{ $breachedCompanyUrl }</a>.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

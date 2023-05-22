@@ -81,7 +81,7 @@ have-an-account = Ha tu ja un conto?
 fxa-pwt-summary-2 = Contrasignos breve, de singule parola, es facile a divinar pro hackers. Usa al minus duo parolas e un combination de litteras, digitos e characteres special.
 fxa-pwt-summary-4 = Le gestores de contrasignos, como 1Password, LastPass, Dashlane e Bitwarden, reserva tu contrasignos e stipa los in sitos web pro te. Illos te adjutara mesmo a facer contrasignos forte.
 fxa-pwt-summary-6 = Violationes de datos es in accrescimento. Si tu personal information es implicate in un nove violation de datos, { -product-name } te invia un aviso — assi que tu pote interprender action e proteger tu contos.
-fxa-what-to-do-blurb-1 = Si tu non pote acceder, contacta le sito web pro demandar como actualisar illo. Vide un conto que tu non recognosce? Tu datos poterea haber essite vendite o redistribuite. Iste poterea alsi ser un conto que tu oblidava haber create o un compania que ha cambiate nomines.
+fxa-what-to-do-blurb-1 = Si tu non pote acceder, continge le sito web pro demandar como actualisar illo. Vide un conto que tu non recognosce? Tu datos poterea haber essite vendite o redistribuite. Iste poterea alsi ser un conto que tu oblidava haber create o un compania que ha cambiate nomines.
 fxa-what-to-do-subhead-2 = Cessa de usar le contrasigno exponite e cambia lo ubique tu lo ha usate.
 fxa-wtd-blurb-2 = Piratas pote tentar de usar iste contrasigno con tu adresse de e-mail pro acceder a altere contos. Crea un contrasigno differente e unic pro cata conto, particularmente pro tu conto bancari, conto de e-mail, e altere sitos web ubi tu registra informationes personal.
 fxa-what-to-do-blurb-3 = Le major parte del violationes expone solmente adresses de e-mail e contrasignos, ma alcunes include sensibile informationes financiari. Si tu conto bancari o numeros de carta de credito ha essite exponite, alerta tu banca al possibilitate de fraude. Survelia le extractos de conto pro pagamentos que tu non recognosce.
@@ -454,7 +454,7 @@ marking-this-body = <span>Un vice que tu ha prendite le mesuras possibile pro re
 mark-as-resolve-button = Marcar como resolvite
 marked-as-resolved-label = Marcate como resolvite
 undo-button = Disfacer
-confirmation-1-subhead = Bon! Tu ha justo resolvite tu prime violation.
+confirmation-1-subhead = Bon! Tu ha justo ora resolvite tu prime violation.
 confirmation-1-body = Continua assi. Reguarda tu pannello de controlo pro vider si il ha altere cosa a facer.
 confirmation-2-subhead = Prende isto, piratas!
 confirmation-2-body = Tu prende mesuras importante verso le protection de tu contos in linea.
@@ -637,7 +637,7 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 
 ## Search Engine Optimization
 
-meta-desc = Discoperi si tu ha essite parte de un violation de datos con { -brand-fx-monitor }. Registra te pro alertas re futur violationes e obtener suggestiones pro mantener tu contos secur.
+meta-desc-2 = Discoperi si tu ha essite parte de un violation de datos con { -brand-fx-monitor }. Nos te adjutara a comprender que facer postea e continuemente survelia pro ulle nove violationes.
 
 ## Header
 
@@ -649,6 +649,8 @@ sign-in = Aperir session
 site-nav-breaches-link = Resolver violationes de datos
 site-nav-settings-link = Parametros
 site-nav-help-link = Adjuta e assistentia
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Proba nostre altere utensiles de securitate:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -683,8 +685,14 @@ error-page-error-other-copy = Retenta o reveni plus tarde
 
 ## Breach overview page
 
+all-breaches-headline-2 = Tote le violationes disvelate per { -brand-fx-monitor }
+all-breaches-lead = Nos survelia tote le note violationes de datos pro discoperir si tu informationes personal era compromittite. Ecce un lista complete de tote le violationes que ha essite signalate desde 2007.
 search-breaches = Cercar violationes
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Datos exponite:
 
 ## Public breach detail page
 
+find-out-if-2 = Discoperi si tu era implicate in iste violation
+find-out-if-description = Nos te adjutara a presto vider si tu adresse email era exponite in iste violationes, e a comprender que facer postea.
 breach-detail-cta-signup = Verificar si il ha violationes
