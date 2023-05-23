@@ -1,0 +1,28 @@
+diff --git a/node_modules/intel/lib/handlers/index.js b/node_modules/intel/lib/handlers/index.js
+index 0ee3caa..2471a4c 100644
+--- a/node_modules/intel/lib/handlers/index.js
++++ b/node_modules/intel/lib/handlers/index.js
+@@ -2,19 +2,7 @@
+  * License, v. 2.0. If a copy of the MPL was not distributed with this
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+-const fs = require('fs');
+-
+-fs.readdirSync(__dirname).forEach(function(file) {
+-  if (file === 'index.js' || file === 'handler.js') {
+-    return;
+-  }
+-
+-  var handler = file.replace('.js', '');
+-  var capital = handler[0].toUpperCase() + handler.substring(1);
+-
+-  Object.defineProperty(exports, capital, {
+-    get: function() {
+-      return require('./' + handler);
+-    }
+-  });
+-});
++exports.Console = require('./console');
++exports.File = require('./file');
++exports.Null = require('./null');
++exports.Stream = require('./stream');
