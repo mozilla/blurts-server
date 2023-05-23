@@ -30,7 +30,7 @@ import {
   getBreachByName,
   loadBreachesIntoApp
 } from '../utils/hibp.js'
-import { UnauthorizedError, UserInputError, RateLimitError } from '../utils/error.js'
+import { BadRequestError, TooManyRequestsError } from '../utils/error.js'
 
 const app = express()
 
@@ -38,7 +38,7 @@ app.use(bearerToken)
 // sentry error handler
 app.use(Sentry.Handlers.errorHandler({
   shouldHandleError (error) {
-    if (error instanceof RateLimitError) return true
+    if (error instanceof TooManyRequestsError) return true
   }
 }))
 app.use(errorHandler)
@@ -69,7 +69,7 @@ async function notify (req, res) {
   }
 
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
-    throw new UserInputError('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
+    throw new BadRequestError('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
   }
 
   const { breachName, hashPrefix, hashSuffixes } = req.body

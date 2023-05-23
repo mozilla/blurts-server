@@ -190,8 +190,7 @@ section + section {
 }
 
 button,
-.button,
-a.button {
+.button {
   all: unset;
   display: inline-block;
   font-size: 0.875rem;
@@ -218,8 +217,7 @@ button:disabled,
 }
 
 button.primary,
-.button.primary,
-a.button.primary {
+.button.primary {
   color: white;
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
