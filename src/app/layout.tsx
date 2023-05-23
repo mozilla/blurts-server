@@ -5,9 +5,10 @@
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { getServerSession } from "next-auth";
 import { getLocale } from "./functions/server/l10n";
 import { SessionProvider } from "../contextProviders/session";
-import { getCurrentSession } from "./functions/server/sessionHelpers";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,7 @@ export default async function RootLayout({
   children: ReactNode;
 }) {
   const currentLocale = getLocale();
-  const session = await getCurrentSession();
+  const session = await getServerSession(authOptions);
 
   return (
     <html lang={currentLocale}>

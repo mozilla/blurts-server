@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -11,7 +12,7 @@ import AppConstants from "../../../../appConstants.js";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { getL10n } from "../../../functions/server/l10n";
-import { getCurrentSession } from "../../../functions/server/sessionHelpers";
+import { authOptions } from "../../../api/auth/[...nextauth]/route";
 
 export type Props = {
   children: ReactNode;
@@ -21,12 +22,7 @@ const dummyData = {
   partial: {
     name: "breaches",
   },
-  meta: {
-    title: "",
-    socialTitle: "",
-    socialDescription: "",
-  },
-  pathname: "/",
+  pathname: "/breaches",
   fxaProfile: {
     avatar: "https://profile.accounts.firefox.com/v1/avatar/f",
   },
@@ -40,15 +36,13 @@ import HelpIcon from "../../../../client/images/icon-help.svg";
 import SignOutIcon from "../../../../client/images/icon-signout.svg";
 
 const MainLayout = async (props: Props) => {
-  const session = await getCurrentSession();
   const l10n = getL10n();
+  const session = await getServerSession(authOptions);
 
   const isBreachesPage = dummyData.partial.name === "breaches";
   const isSettingsPage = dummyData.partial.name === "settings";
 
-  const UserMenu = ({ userData }) => {
-    const fxaUser = userData?.fxa_profile_json;
-
+  const UserMenu = ({ user }) => {
     return (
       <div className="user-menu-wrapper" tabIndex={-1}>
         <Script src="/nextjs_migration/client/js/userMenu.js" />
@@ -58,7 +52,7 @@ const MainLayout = async (props: Props) => {
           className="user-menu-button"
           title={l10n.getString("menu-button-title")}
         >
-          <img src={fxaUser?.avatar} alt={l10n.getString("menu-button-alt")} />
+          <Image src={user.avatar} alt={l10n.getString("menu-button-alt")} />
         </button>
         <menu
           aria-label={l10n.getString("menu-list-accessible-label")}
@@ -72,7 +66,7 @@ const MainLayout = async (props: Props) => {
               target="_blank"
               className="user-menu-header"
             >
-              <b className="user-menu-email">{fxaUser.email}</b>
+              <b className="user-menu-email">{user.email}</b>
               <div className="user-menu-subtitle">
                 {l10n.getString("menu-item-fxa")}
                 <Image alt="" src={OpenInIcon} />
@@ -134,7 +128,7 @@ const MainLayout = async (props: Props) => {
               />
             </svg>
           </button>
-          <UserMenu userData={session?.user} />
+          <UserMenu user={session?.user} />
         </div>
       </header>
 
