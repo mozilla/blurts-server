@@ -56,5 +56,6 @@ async function storeMockData (csrfToken) {
       throw new Error('Immediately caught to show an error message.')
     }
   } catch (e) {
+    // ignore
   }
 }

@@ -88,5 +88,7 @@ export const checkAuthState = async (page) => {
       default:
         break
     }
-  } catch {}
+  } catch {
+    // ignore
+  }
 }
