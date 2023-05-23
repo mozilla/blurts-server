@@ -137,3 +137,49 @@ $color-pink-30: #ff6bba;
 $color-pink-20: #ff8ac5;
 $color-pink-10: #ffb4db;
 $color-pink-05: #ffdef0;
+
+// Border Radius
+$border-radius-xs: 2px;
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 16px;
+
+// Drop shadow
+$box-shadow-sm: 0 8px 12px 1px rgba(29, 17, 51, 0.04),
+  0 3px 16px 2px rgba(9, 32, 77, 0.12), 0 5px 10px -3px rgba(29, 17, 51, 0.12);
+$box-shadow-md: 0 16px 24px 2px rgba(29, 17, 51, 0.04),
+  0 6px 32px 4px rgba(9, 32, 77, 0.12), 0 8px 12px -5px rgba(29, 17, 51, 0.12);
+$box-shadow-lg: 0 24px 38px 3px rgba(29, 17, 51, 0.04),
+  0 10px 48px 8px rgba(9, 32, 77, 0.12), 0 12px 16px -6px rgba(29, 17, 51, 0.12);
+
+// Content width
+$content-xs: 304px;
+$content-sm: 432px;
+$content-md: 688px;
+$content-lg: 928px;
+$content-xl: 1152px;
+$content-max: 1440px;
+
+// Device width
+$screen-xs: 320px;
+$screen-sm: 480px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1312px;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-2xl: 48px;
+
+// Layouts
+$layout-2xs: 16px;
+$layout-xs: 24px;
+$layout-sm: 32px;
+$layout-md: 48px;
+$layout-lg: 64px;
+$layout-xl: 96px;
+$layout-2xl: 192px;
