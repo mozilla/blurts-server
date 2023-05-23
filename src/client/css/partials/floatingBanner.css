@@ -1,6 +1,6 @@
 .floating-banner {
   align-items: center;
-  background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
+  background: var(--background-gradient);
   bottom: 0;
   color: #fff;
   box-shadow: 0 -6px 6px -8px #000;

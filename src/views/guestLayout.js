@@ -41,7 +41,6 @@ const guestLayout = data => {
         <link rel='preload' href='/fonts/Inter-Regular-latin.woff2' as='font' type='font/woff2' crossorigin>
         <link rel='stylesheet' href='/css/index.css' type='text/css'>
         <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
-
         <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
         <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
         <link rel='icon' href='/images/favicon-48.webp' sizes='48x48'>
