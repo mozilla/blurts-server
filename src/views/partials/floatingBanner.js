@@ -5,7 +5,17 @@
 import AppConstants from '../../appConstants.js'
 import { getMessage } from '../../utils/fluent.js'
 
-export const floatingBanner = () => {
+/**
+ * @param {{ pathname: string; }} options
+ * @returns { string } banner
+ */
+export const floatingBanner = ({ pathname }) => {
+  const pageHasFloatingBanner = AppConstants.FLOATING_BANNER_PAGES?.split(',').includes(pathname)
+  console.log(pageHasFloatingBanner)
+  if (!pageHasFloatingBanner) {
+    return ''
+  }
+
   return `
     <link rel='stylesheet' href='/css/partials/floatingBanner.css' type='text/css'>
     <script src='/js/partials/floatingBanner.js' type='module'></script>

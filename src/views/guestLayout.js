@@ -14,7 +14,6 @@ const guestLayout = data => {
   const metaTitle = data.meta?.socialTitle ?? getMessage('brand-fx-monitor')
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
-  const pageHasFloatingBanner = AppConstants.FLOATING_BANNER_PAGES?.split(',').includes(data.pathname)
 
   return `
     <!doctype html>
@@ -75,7 +74,7 @@ const guestLayout = data => {
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}
         </main>
-        ${pageHasFloatingBanner ? floatingBanner() : ''}
+        ${floatingBanner({ pathname: data.pathname })}
         <footer class='site-footer'>
           <a href='https://www.mozilla.org' target='_blank'>
             <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
