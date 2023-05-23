@@ -3,7 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import NextAuth, { AuthOptions } from "next-auth";
+import mozlog from "../../../../utils/log.js";
 import AppConstants from "../../../../appConstants.js";
+
+const log = mozlog("controllers.auth");
 
 interface FxaProfile {
   email: string;
@@ -83,6 +86,14 @@ export const authOptions: AuthOptions = {
       session.user.avatar = token.avatar;
       session.user.avatarDefault = token.avatarDefault;
       return session;
+    },
+  },
+  events: {
+    signIn(message) {
+      log.debug("fxa-confirmed-profile-data", message.user);
+    },
+    signOut(message) {
+      log.debug("logout", message.token.email ?? undefined);
     },
   },
 };
