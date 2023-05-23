@@ -11,7 +11,6 @@ import { getMessage } from '../../utils/fluent.js'
  */
 export const floatingBanner = ({ pathname }) => {
   const pageHasFloatingBanner = AppConstants.FLOATING_BANNER_PAGES?.split(',').includes(pathname)
-  console.log(pageHasFloatingBanner)
   if (!pageHasFloatingBanner) {
     return ''
   }
