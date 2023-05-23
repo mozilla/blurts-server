@@ -936,4 +936,7 @@ find-out-if-description = We’ll help you quickly see if your email address was
 breach-detail-cta-signup = Check for breaches
 
 ## Floating banner
+
 floating-banner-text = Boost your online security with news, tips, and updates from Mozilla.
+floating-banner-link-label = Sign up
+floating-banner-dismiss-button-label = No thanks

@@ -13,8 +13,8 @@ export const floatingBanner = () => {
       <img class='floating-banner-image' src='/images/banner-icon.svg' alt='' />
       <p class='floating-banner-content'>${getMessage('floating-banner-text')}</p>
       <div class='floating-banner-buttons'>
-        <a href='${AppConstants.FLOATING_BANNER_LINK}' target='_blank' class='button primary'>Sign up</a>
-        <button class='floating-banner-dismiss secondary'>No thanks</button>
+        <a href='${AppConstants.FLOATING_BANNER_LINK}' target='_blank' class='button primary'>${getMessage('floating-banner-link-label')}</a>
+        <button class='floating-banner-dismiss secondary'>${getMessage('floating-banner-dismiss-button-label')}</button>
       </div>
     </div>
   `
