@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { floatingBanner } from '../views/partials/floatingBanner.js'
 
 /**
  * @type {ViewPartial<MainViewPartialData<any>>}
@@ -13,6 +14,7 @@ const mainLayout = data => {
   const metaTitle = data.meta?.socialTitle ?? getMessage('brand-fx-monitor')
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
+  const pageHasFloatingBanner = AppConstants.FLOATING_BANNER_PAGES?.split(',').includes(data.pathname)
 
   const showRecruitmentBanner = () => {
     // Only show if ENVs are set, user language is set to "en" and user locale is set to the United States.
@@ -123,6 +125,7 @@ const mainLayout = data => {
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}
         </main>
+        ${pageHasFloatingBanner ? floatingBanner() : ''}
         <footer class='site-footer'>
           <a href='https://www.mozilla.org' target='_blank'>
             <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>

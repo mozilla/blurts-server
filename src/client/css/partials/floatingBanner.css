@@ -1,0 +1,50 @@
+.floating-banner {
+  align-items: center;
+  background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
+  bottom: 0;
+  color: #fff;
+  box-shadow: 0 -6px 6px -8px #000;
+  gap: var(--padding-md);
+  justify-content: center;
+  font-size: 0.875rem;
+  left: 0;
+  padding: var(--padding-sm) 10vw;
+  position: sticky;
+  width: 100%;
+  z-index: 2;
+}
+
+.floating-banner:not([hidden]) {
+  display: flex;
+}
+
+.floating-banner-image {
+  max-height: 3.75rem;
+}
+
+.floating-banner-content {
+  flex: 2;
+  margin: 0;
+  max-width: calc(var(--max-width-p) * 0.5);
+  padding-right: var(--padding-sm);
+}
+
+.floating-banner-buttons {
+  display: flex;
+  gap: var(--padding-sm);
+}
+
+.floating-banner-buttons > button.secondary {
+  border: none;
+  color: #fff;
+}
+
+@media (width <= 600px) {
+  .floating-banner {
+    padding: var(--padding-sm) 10vw var(--padding-sm) 2.5vw;
+  }
+
+  .floating-banner-buttons {
+    flex-direction: column;
+  }
+}

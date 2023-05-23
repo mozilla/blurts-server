@@ -190,7 +190,8 @@ section + section {
 }
 
 button,
-.button {
+.button,
+a.button {
   all: unset;
   display: inline-block;
   font-size: 0.875rem;
@@ -217,7 +218,8 @@ button:disabled,
 }
 
 button.primary,
-.button.primary {
+.button.primary,
+a.button.primary {
   color: white;
   background: var(--blue-50);
   border: 1px solid var(--blue-50);
@@ -226,7 +228,8 @@ button.primary,
 }
 
 button.secondary,
-.button.secondary {
+.button.secondary
+a.button.secondary {
   color: var(--blue-50);
   border: 1px solid;
   padding: var(--padding-md);
@@ -240,11 +243,13 @@ button.secondary:active,
 }
 
 button.primary:hover:enabled,
-.button.primary:hover:enabled {
+.button.primary:hover:enabled,
+a.button.primary:hover {
   background: var(--blue-60);
 }
 
-button.close {
+button.close,
+a.button.close {
   width: 24px;
   height: 24px;
   padding: var(--padding-md);

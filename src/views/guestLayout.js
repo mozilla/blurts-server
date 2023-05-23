@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { floatingBanner } from '../views/partials/floatingBanner.js'
 
 /**
  * @type {ViewPartial<GuestViewPartialData<any>>}
@@ -13,6 +14,7 @@ const guestLayout = data => {
   const metaTitle = data.meta?.socialTitle ?? getMessage('brand-fx-monitor')
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
+  const pageHasFloatingBanner = AppConstants.FLOATING_BANNER_PAGES?.split(',').includes(data.pathname)
 
   return `
     <!doctype html>
@@ -39,6 +41,7 @@ const guestLayout = data => {
         <link rel='preload' href='/fonts/Inter-Regular-latin.woff2' as='font' type='font/woff2' crossorigin>
         <link rel='stylesheet' href='/css/index.css' type='text/css'>
         <link rel='stylesheet' href='/css/partials/${data.partial.name}.css' type='text/css'>
+
         <link rel='icon' href='/images/favicon-16.webp' sizes='16x16'>
         <link rel='icon' href='/images/favicon-32.webp' sizes='32x32'>
         <link rel='icon' href='/images/favicon-48.webp' sizes='48x48'>
@@ -73,6 +76,7 @@ const guestLayout = data => {
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}
         </main>
+        ${pageHasFloatingBanner ? floatingBanner() : ''}
         <footer class='site-footer'>
           <a href='https://www.mozilla.org' target='_blank'>
             <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
