@@ -226,8 +226,7 @@ button.primary,
 }
 
 button.secondary,
-.button.secondary
-a.button.secondary {
+.button.secondary {
   color: var(--blue-50);
   border: 1px solid;
   padding: var(--padding-md);
@@ -246,8 +245,7 @@ a.button.primary:hover {
   background: var(--blue-60);
 }
 
-button.close,
-a.button.close {
+button.close {
   width: 24px;
   height: 24px;
   padding: var(--padding-md);
