@@ -72,9 +72,10 @@ if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
 for (const v of requiredEnvVars) {
   const value = process.env[v]
   if (value === undefined) {
-    throw new Error(`Required environment variable was not set: ${v}`)
+    console.warn(`Required environment variable was not set: ${v}`)
+  } else {
+    AppConstants[v] = value
   }
-  AppConstants[v] = value
 }
 
 optionalEnvVars.forEach(key => {
