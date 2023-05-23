@@ -65,6 +65,26 @@ export const authOptions: AuthOptions = {
       },
     },
   ],
+  callbacks: {
+    async jwt({ token, account, profile, trigger }) {
+      if (profile) {
+        token.locale = profile.locale;
+        token.twoFactorAuthentication = profile.twoFactorAuthentication;
+        token.metricsEnabled = profile.metricsEnabled;
+        token.avatar = profile.avatar;
+        token.avatarDefault = profile.avatarDefault;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      session.user.locale = token.locale;
+      session.user.twoFactorAuthentication = token.twoFactorAuthentication;
+      session.user.metricsEnabled = token.metricsEnabled;
+      session.user.avatar = token.avatar;
+      session.user.avatarDefault = token.avatarDefault;
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
