@@ -13,7 +13,6 @@ import AppConstants from '../appConstants.js'
 //   level: AppConstants.MOZLOG_LEVEL,
 //   fmt: AppConstants.MOZLOG_FMT
 // })
-/** @type {any} */
 const log = () => console
 
 export default log
