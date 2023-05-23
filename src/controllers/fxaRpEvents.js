@@ -5,7 +5,7 @@
 import * as jwt from 'jsonwebtoken'
 import jwkToPem from 'jwk-to-pem'
 import { captureException, captureMessage } from '@sentry/node'
-import { UnauthorizedError } from '../utils/error.js'
+import { UnauthorizedError, BadRequestError } from '../utils/error.js'
 import { deleteSubscriber, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../db/tables/subscribers.js'
 import mozlog from '../utils/log.js'
 import appConstants from '../appConstants.js'
@@ -96,21 +96,21 @@ const fxaRpEvents = async (req, res) => {
   } catch (e) {
     log.error('fxaRpEvents', e)
     captureException(e)
-    res.status(400).send('Bad Request')
+    throw new BadRequestError('Bad Request')
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
-    res.status(400).send('Bad Request')
+    throw new BadRequestError('Bad Request')
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
-    res.status(400).send('Bad Request')
+    throw new BadRequestError('Bad Request')
   }
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
