@@ -173,7 +173,7 @@
   position: absolute;
   top: 0;
   right: var(--padding-md);
-  background: url('../../images/icon-chevron-down.svg') no-repeat 0% 50%/16px 16px;
+  background: url('../../images/icon-chevron-down.svg') no-repeat 0% 50% / 16px 16px;
   width: 16px;
   height: 100%;
   transition: transform 0.2s ease-out;

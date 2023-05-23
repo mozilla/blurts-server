@@ -130,7 +130,7 @@ body > header .nav-wrapper {
 }
 
 main {
-  --max-width-margin: calc(50% - var(--max-width)/2);
+  --max-width-margin: calc(50% - var(--max-width) / 2);
 
   margin-inline: max(var(--nav-w, 0px), var(--max-width-margin)) max(0px, var(--max-width-margin));
   animation: fade-in 0.2s ease-out;
