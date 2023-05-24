@@ -30,7 +30,7 @@
 }
 
 .floating-banner-content {
-  flex: 2;
+  flex: 1 1 0;
   margin: 0;
   max-width: calc(var(--max-width-p) * 0.5);
   padding-right: var(--padding-sm);
