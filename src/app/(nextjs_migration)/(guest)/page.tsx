@@ -3,19 +3,25 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image from "next/image";
+import { getServerSession } from "next-auth";
 import Script from "next/script";
 import styles from "./landing.module.scss";
-// import "./landing.module.scss";
-
+import { redirect } from "next/navigation";
+import "../../../client/css/partials/landing.css";
+import { authOptions } from "../../api/auth/[...nextauth]/route";
 import { getL10n } from "../../functions/server/l10n";
-
 import HeroImage from "../../../client/images/landing-hero@2x.webp";
 import LaptopImage from "../../../client/images/landing-laptop@2x.webp";
 import LockImage from "../../../client/images/landing-lock@2x.webp";
 import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
 
-export default function Home() {
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  if (session) {
+    redirect("/user/breaches");
+  }
+
   const l10n = getL10n();
 
   return (
