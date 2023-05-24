@@ -25,12 +25,12 @@
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
     "lint": "npm run lint:css && npm run lint:js && npm run lint:ts",
-    "lint:css": "stylelint src/client/css/",
+    "lint:css": "stylelint src/**/*.css src/**/*.scss",
     "lint:js": "next lint",
     "lint:ts": "tsc --noEmit",
     "fix": "npm run fix:css && npm run fix:js",
     "fix:js": "eslint . --fix",
-    "fix:css": "stylelint src/client/css/ --fix",
+    "fix:css": "npm run lint:css -- --fix",
     "prepare": "husky install"
   },
   "nodemonConfig": {
