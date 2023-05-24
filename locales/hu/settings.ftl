@@ -44,7 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = A { -brand-premium } előfizetés megszüntetése
-settings-cancel-premium-subscription-info = Az előfizetése visszaáll ingyenes fiókká a jelenlegi számlázási ciklus vége után. Az adatvédelmi vizsgálat eredményei véglegesen törlésre kerülnek, és csak 1 e-mail-címhez lesz adatvédelmi incidens figyelése bekapcsolva.
+settings-cancel-premium-subscription-info = Az előfizetése ingyenes fiókká változik a jelenlegi számlázási ciklus végén. Az adatvédelmi vizsgálati eredményei véglegesen törlésre kerülnek, és csak 1 e-mail-címhez lesz bekapcsolva az adatvédelmi incidensek figyelése.
 settings-cancel-premium-subscription-link-label = Lemondás a { -brand-fx-account }jából
 
 ## Deactivate account
@@ -66,6 +66,6 @@ settings-unsubscribe-dialog-title = Sajnáljuk, hogy távozik. <br /> Elmondja, 
 settings-unsubscribe-dialog-info = Az Ön tapasztalata fontos a számunkra. Minden választ elolvasunk, és figyelembe vesszük.
 settings-unsubscribe-dialog-message-placeholder = Mi alakulhatott volna jobban?
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Felhívjuk figyelmét, hogy az összes { -brand-monitor-premium } szolgáltatás <a { $faq_href }>véglegesen törölve lesz</a> a jelenlegi számlázási ciklusa vége után.
+settings-unsubscribe-dialog-confirmation = Felhívjuk figyelmét, hogy az összes { -brand-monitor-premium } szolgáltatás <a { $faq_href }>véglegesen törölve lesz</a> a jelenlegi számlázási ciklusa végén.
 settings-unsubscribe-dialog-continue = Tovább a lemondáshoz
-settings-unsubscribe-dialog-cancel = Sebaj, vigyél vissza
+settings-unsubscribe-dialog-cancel = Mégse, visszalépés
