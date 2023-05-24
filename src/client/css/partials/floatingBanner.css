@@ -15,7 +15,10 @@
   padding: var(--padding-sm) 10vw;
   position: sticky;
   width: 100%;
-  z-index: 2;
+
+  /* Prevent banner being overlapped by the sidebar
+  that is shown for authenticated users. */
+  z-index: 1;
 }
 
 .floating-banner:not([hidden]) {
