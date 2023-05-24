@@ -10,7 +10,7 @@ import Image from "next/image";
 import "../../../../client/css/index.css";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
-import UserMenu from "../../../components/client/UserMenu";
+import { UserMenu } from "../../../components/client/UserMenu";
 import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/auth/[...nextauth]/route";
 
