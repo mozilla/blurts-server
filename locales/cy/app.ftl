@@ -738,6 +738,8 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premiwm
+-brand-monitor-premium = Monitro Premiwm
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -774,8 +776,11 @@ menu-button-title = Dewislen defnyddiwr
 menu-button-alt = Agor dewislen defnyddiwr
 menu-list-accessible-label = Dewislen cyfrif
 menu-item-fxa = Rheolwch eich { -brand-fx-account }
+menu-item-fxa-alt = Agor tudalen { -brand-fx-account }
 menu-item-settings = Gosodiadau
+menu-item-settings-alt = Agor tudalen gosodiadau
 menu-item-help = Cymorth a chefnogaeth
+menu-item-help-alt = Agorwch y dudalen cymorth a chefnogaeth
 menu-item-logout = Allgofnodi
 
 ## Footer

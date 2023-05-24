@@ -693,6 +693,8 @@ ad-unit-6-before-you-complete = Sebelum Anda menyelesaikan pendaftaran berikutny
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -729,8 +731,11 @@ menu-button-title = Menu pengguna
 menu-button-alt = Buka menu pengguna
 menu-list-accessible-label = Menu akun
 menu-item-fxa = Kelola { -brand-fx-account } Anda
+menu-item-fxa-alt = Buka laman { -brand-fx-account }
 menu-item-settings = Pengaturan
+menu-item-settings-alt = Buka laman pengaturan
 menu-item-help = Bantuan dan dukungan
+menu-item-help-alt = Buka laman bantuan dan dukungan
 menu-item-logout = Keluar
 
 ## Footer

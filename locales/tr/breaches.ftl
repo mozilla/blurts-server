@@ -3,10 +3,17 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Pano
+breach-all-meta-social-title = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
+breach-all-meta-social-description = { -brand-fx-monitor } tarafından tespit edilen bilinen ihlallerin tam listesine göz atın ve bilgilerinizin ele geçirilip geçirilmediğini öğrenin.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - { $company } Veri İhlali
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = { $company } veri ihlalinden etkilendiniz mi?
 breach-detail-meta-social-description = Bu ihlalde kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek ve bundan sonra bu gibi durumlarda ne yapacağınızı anlamak için { -brand-fx-monitor } kullanın.
+breach-scan-meta-title = { -brand-fx-monitor } - İhlal Sonuçları
+breach-scan-meta-social-title = { -brand-fx-monitor } İhlal Sonuçları
 breach-scan-meta-social-description = İhlalleri çözmek ve bilinen yeni ihlaller için sürekli takipte kalmak için { -brand-fx-monitor }’e giriş yapın.
 
 ## Breaches header
