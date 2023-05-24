@@ -718,7 +718,9 @@ menu-list-accessible-label = Menu da conta
 menu-item-fxa = Gerencie sua { -brand-fx-account }
 menu-item-fxa-alt = Abrir página da { -brand-fx-account }
 menu-item-settings = Configurações
+menu-item-settings-alt = Abrir página de configurações
 menu-item-help = Ajuda e suporte
+menu-item-help-alt = Abrir página de ajuda e suporte
 menu-item-logout = Sair
 
 ## Footer
