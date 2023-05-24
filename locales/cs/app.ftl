@@ -889,4 +889,5 @@ exposed-data = Odhalené údaje:
 
 ## Public breach detail page
 
+find-out-if-2 = Zjistěte, zda jste byli součástí tohoto úniku
 breach-detail-cta-signup = Prohledat úniky
