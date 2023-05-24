@@ -12,30 +12,35 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
-       *[nom]
-            { $capitalization ->
-               *[upper] Обліковий запис Firefox
-                [lower] обліковий запис Firefox
-            }
         [gen]
             { $capitalization ->
-               *[upper] Облікового запису Firefox
                 [lower] облікового запису Firefox
+               *[upper] Облікового запису Firefox
             }
         [dat]
             { $capitalization ->
-               *[upper] Обліковому записі Firefox
-                [lower] обліковому записі Firefox
+                [lower] обліковому запису Firefox
+               *[upper] Обліковому запису Firefox
             }
         [acc]
             { $capitalization ->
-               *[upper] Обліковий запис Firefox
                 [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
             }
         [abl]
             { $capitalization ->
-               *[upper] Обліковим записом Firefox
                 [lower] обліковим записом Firefox
+               *[upper] Обліковим записом Firefox
+            }
+        [loc]
+            { $capitalization ->
+                [lower] обліковому записі Firefox
+               *[upper] Обліковому записі Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
             }
     }
 -brand-pocket = Pocket
@@ -760,7 +765,39 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Обліковий запис Firefox
+-brand-fx-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] облікового запису Firefox
+               *[upper] Облікового запису Firefox
+            }
+        [dat]
+            { $capitalization ->
+                [lower] обліковому запису Firefox
+               *[upper] Обліковому запису Firefox
+            }
+        [acc]
+            { $capitalization ->
+                [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
+            }
+        [abl]
+            { $capitalization ->
+                [lower] обліковим записом Firefox
+               *[upper] Обліковим записом Firefox
+            }
+        [loc]
+            { $capitalization ->
+                [lower] обліковому записі Firefox
+               *[upper] Обліковому записі Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
+            }
+    }
 
 ## Search Engine Optimization
 
@@ -786,7 +823,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Меню користувача
 menu-button-alt = Відкрити меню користувача
 menu-list-accessible-label = Меню облікового запису
-menu-item-fxa = Керувати своїм { -brand-fx-account }
+menu-item-fxa = Керувати своїм { -brand-fx-account(case: "abl", capitalization: "lower") }
 menu-item-settings = Налаштування
 menu-item-help = Довідка та підтримка
 menu-item-logout = Вийти
