@@ -19,7 +19,6 @@ function init () {
 
   setTimeout(() => {
     floatingBannerElement.removeAttribute('hidden')
-    floatingBannerElement.focus()
   }, parseInt(delay, 10))
 
   const buttons = floatingBannerElement.querySelector('.floating-banner-buttons')
