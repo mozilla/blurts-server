@@ -30,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Verification del email requirite.
 settings-resend-email-verification-link = Reinviar email de verification
 settings-add-email-button = Adder adresse email
+settings-delete-email-button = Deler adresse email
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -39,6 +40,11 @@ settings-email-number-of-breaches-info =
         [one] Appare in { $breachCount } violation note.
        *[other] Appare in { $breachCount } violationes note.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Cancellar abonamento { -brand-premium }
+settings-cancel-premium-subscription-link-label = Cancellar de tu { -brand-fx-account }
 
 ## Deactivate account
 
@@ -52,3 +58,7 @@ settings-email-dialog-title = Adder altere adresse email
 settings-add-email-text = Adde un nove adresse email pro vider si illo ha essite implicate in violationes.
 settings-email-input-label = Adresse email
 settings-send-email-verification-button = Inviar ligamine de verification
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-continue = Continuar le cancellation
