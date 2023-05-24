@@ -46,6 +46,11 @@
   color: #fff;
 }
 
+.floating-banner-buttons > button.secondary:hover {
+  background: rgb(255 255 255 / 0.15);
+  color: #fff;
+}
+
 @media (width <= 600px) {
   .floating-banner {
     padding: var(--padding-sm) 10vw var(--padding-sm) 2.5vw;
