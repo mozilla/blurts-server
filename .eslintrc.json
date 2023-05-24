@@ -6,6 +6,8 @@
     "jest": true
   },
   "extends": [
+    // Disabled until we actually resolve most of the warnings it points out,
+    // to avoid warning blindness:
     // "plugin:jsdoc/recommended",
     "eslint:recommended",
     "plugin:@typescript-eslint/eslint-recommended",
