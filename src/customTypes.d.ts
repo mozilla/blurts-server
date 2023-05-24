@@ -57,7 +57,7 @@ declare namespace Express {
 }
 
 declare module "mozlog" {
-  type LogFunction = (_op: string, _details?: object) => void;
+  type LogFunction = (_op: string, _details?: object | string) => void;
 
   type Options = {
     app: string;
@@ -74,4 +74,8 @@ declare module "mozlog" {
   };
 
   export default defaultFunction;
+}
+
+interface Window {
+  gtag: any;
 }
