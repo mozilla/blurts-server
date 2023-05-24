@@ -610,6 +610,8 @@ ad-unit-6-before-you-complete = 您在下次注册账号时，可使用马甲邮
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla 基金会
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -646,8 +648,11 @@ menu-button-title = 用户菜单
 menu-button-alt = 打开用户菜单
 menu-list-accessible-label = 帐户菜单
 menu-item-fxa = 管理您的 { -brand-fx-account }
+menu-item-fxa-alt = 打开 { -brand-fx-account } 页面
 menu-item-settings = 设置
+menu-item-settings-alt = 打开设置页面
 menu-item-help = 帮助和支持
+menu-item-help-alt = 打开帮助和支持页面
 menu-item-logout = 退出
 
 ## Footer
