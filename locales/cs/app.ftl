@@ -802,6 +802,8 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
        *[nom] Mozilla
     }
     .gender = feminine
+-brand-premium = Placené
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation =
     { $case ->
         [gen] Mozilly Foundation
@@ -858,6 +860,7 @@ menu-button-alt = Otevřít nabídku uživatele
 menu-list-accessible-label = Nabídka účtu
 menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
 menu-item-settings = Nastavení
+menu-item-settings-alt = Otevřít stránku nastavení
 menu-item-help = Nápověda a podpora
 menu-item-logout = Odhlásit se
 
@@ -884,7 +887,6 @@ error-page-error-other-copy = Zkuste to znovu nebo se vraťte později
 
 all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
 search-breaches = Prohledat úniky dat
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Odhalené údaje:
 
@@ -892,6 +894,3 @@ exposed-data = Odhalené údaje:
 
 find-out-if-2 = Zjistěte, zda jste byli součástí tohoto úniku
 breach-detail-cta-signup = Prohledat úniky
-
-## Public breach detail page
-
