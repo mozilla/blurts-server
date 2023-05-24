@@ -72,8 +72,8 @@ const MainLayout = async (props: Props) => {
                 <Image alt="" src={OpenInIcon} />
               </div>
             </a>
+            <hr />
           </li>
-          <hr />
           <li>
             <a href="/user/settings" className="user-menu-link">
               <Image alt="" src={SettingsIcon} />
