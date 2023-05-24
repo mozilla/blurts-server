@@ -19,7 +19,7 @@ export type Props = {
   session: Session | null;
 };
 
-const UserMenu = ({ session }: Props) => {
+export const UserMenu = ({ session }: Props) => {
   const l10n = useL10n();
   console.log("User menu");
   if (!session) {
@@ -86,5 +86,3 @@ const UserMenu = ({ session }: Props) => {
     </div>
   );
 };
-
-export default UserMenu;

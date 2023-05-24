@@ -7,7 +7,7 @@
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../hooks/l10n";
 
-const SignInButton = () => {
+export const SignInButton = () => {
   const l10n = useL10n();
 
   return (
@@ -20,5 +20,3 @@ const SignInButton = () => {
     </button>
   );
 };
-
-export default SignInButton;

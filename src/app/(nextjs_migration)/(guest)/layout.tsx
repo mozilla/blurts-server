@@ -7,7 +7,7 @@ import "../../../client/css/index.css";
 import Image from "next/image";
 import MonitorLogo from "../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../client/images/moz-logo-1color-white-rgb-01.svg";
-import SignInButton from "../../components/client/SignInButton";
+import { SignInButton } from "../../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
 
 export type Props = {
