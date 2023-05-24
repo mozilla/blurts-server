@@ -31,7 +31,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Verificación de correo electrónico requerida
 settings-resend-email-verification-link = Reenviar correo electrónico de verificación
 settings-add-email-button = Agregar dirección de correo electrónico
-settings-delete-email-button = Eliminar dirección de correo electrónico
+settings-delete-email-button = Eliminar la dirección de correo electrónico
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -45,7 +45,7 @@ settings-email-number-of-breaches-info =
 
 ## Cancel Premium subscription
 
-settings-cancel-premium-subscription-title = Cancelar suscripción { -brand-premium }
+settings-cancel-premium-subscription-title = Cancelar la suscripción de { -brand-premium }
 settings-cancel-premium-subscription-info = Tu suscripción volverá a ser una cuenta gratuita una vez que finalice el ciclo de facturación actual. Los resultados del análisis de protección de privacidad se eliminarán permanentemente y solo tendrás monitoreo de violación de datos para 1 dirección de correo electrónico.
 settings-cancel-premium-subscription-link-label = Cancelar desde tu { -brand-fx-account }
 
@@ -64,10 +64,10 @@ settings-send-email-verification-button = Enviar enlace de verificación
 
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Lamentamos que te vayas. <br /> ¿Nos contarías por qué te vas?
+settings-unsubscribe-dialog-title = Lamentamos que te vayas. <br /> ¿Nos contarías por qué?
 settings-unsubscribe-dialog-info = Tu experiencia es importante para nosotros Leemos cada respuesta y la tenemos en cuenta.
-settings-unsubscribe-dialog-message-placeholder = ¿Qué pudo haber salido mejor?
+settings-unsubscribe-dialog-message-placeholder = ¿Algo podría haber funcionado mejor?
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Tenga en cuenta que todos sus servicios de { -brand-monitor-premium } serán <a { $faq_href }> eliminados permanentemente </a> después de que finalice su ciclo de facturación actual.
+settings-unsubscribe-dialog-confirmation = Tenné en cuenta que todos tus servicios de { -brand-monitor-premium } serán <a { $faq_href }> eliminados permanentemente </a> después de que finalice tu ciclo de facturación actual.
 settings-unsubscribe-dialog-continue = Continuar hasta la cancelación
-settings-unsubscribe-dialog-cancel = No importa, llévame de vuelta
+settings-unsubscribe-dialog-cancel = No importa, volvamos
