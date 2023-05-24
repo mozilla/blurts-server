@@ -17,11 +17,11 @@ import SignOutIcon from "../../../client/images/icon-signout.svg";
 
 export type Props = {
   session: Session | null;
+  fxaSettingsUrl: string;
 };
 
-export const UserMenu = ({ session }: Props) => {
+export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
   const l10n = useL10n();
-  console.log("User menu");
   if (!session) {
     return null;
   }
@@ -47,11 +47,7 @@ export const UserMenu = ({ session }: Props) => {
         hidden
       >
         <li tabIndex={1}>
-          <a
-            href={"AppConstants.FXA_SETTINGS_URL"}
-            target="_blank"
-            className="user-menu-header"
-          >
+          <a href={fxaSettingsUrl} target="_blank" className="user-menu-header">
             <b className="user-menu-email">{session.user?.email}</b>
             <div className="user-menu-subtitle">
               {l10n.getString("menu-item-fxa")}
