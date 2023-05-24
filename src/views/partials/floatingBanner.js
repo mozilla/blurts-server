@@ -18,7 +18,7 @@ export const getFloatingBanner = ({ pathname }) => {
   return `
     <link rel='stylesheet' href='/css/partials/floatingBanner.css' type='text/css'>
     <script src='/js/partials/floatingBanner.js' type='module'></script>
-    <div class='floating-banner' data-type='${AppConstants.FLOATING_BANNER_TYPE ?? ''}' data-delay='${AppConstants.FLOATING_BANNER_DELAY ?? '0'}' hidden>
+    <div tabindex='-1' class='floating-banner' data-type='${AppConstants.FLOATING_BANNER_TYPE ?? ''}' data-delay='${AppConstants.FLOATING_BANNER_DELAY ?? '0'}'  hidden>
       <img class='floating-banner-image' src='/images/banner-icon.svg' alt='' />
       <p class='floating-banner-content'>${getMessage('floating-banner-text')}</p>
       <div class='floating-banner-buttons'>

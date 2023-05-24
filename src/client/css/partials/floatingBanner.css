@@ -21,6 +21,10 @@
   z-index: 1;
 }
 
+.floating-banner:focus {
+  outline: none;
+}
+
 .floating-banner:not([hidden]) {
   display: flex;
 }
@@ -49,6 +53,12 @@
 .floating-banner-buttons > button.secondary:hover {
   background: rgb(255 255 255 / 0.15);
   color: #fff;
+}
+
+.floating-banner-buttons > button:focus,
+.floating-banner-buttons > .button:focus {
+  outline: 5px auto Highlight;
+  outline: 5px auto -webkit-focus-ring-color;
 }
 
 @media (width <= 600px) {
