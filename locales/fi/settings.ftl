@@ -30,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Sähköpostiosoitteen vahvistus vaaditaan
 settings-resend-email-verification-link = Lähetä uudelleen vahvistussähköposti
 settings-add-email-button = Lisää sähköpostiosoite
+settings-delete-email-button = Poista sähköpostiosoite
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -39,6 +40,10 @@ settings-email-number-of-breaches-info =
         [one] Esiintyy { $breachCount } tunnetussa tietovuodossa.
        *[other] Esiintyy { $breachCount } tunnetussa tietovuodossa.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Peruuta { -brand-premium }-tilaus
 
 ## Deactivate account
 
@@ -52,3 +57,6 @@ settings-email-dialog-title = Lisää toinen sähköpostiosoite
 settings-add-email-text = Lisää uusi sähköpostiosoite nähdäksesi, onko se ollut osallisena tietovuodossa.
 settings-email-input-label = Sähköpostiosoite
 settings-send-email-verification-button = Lähetä vahvistuslinkki
+
+## Unsubscribe Dialog Survey
+
