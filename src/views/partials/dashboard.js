@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-export const dashboard = data => `
+export const dashboard = _data => `
 <section>
   <h1>This is the dashboard partial</h1>
 </section>

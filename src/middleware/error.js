@@ -22,7 +22,7 @@ const log = mozlog('middleware')
  * @param {object} res response object
  * @param {object} next middleware callback
  */
-function errorHandler (err, req, res, next) {
+function errorHandler (err, req, res, _next) {
   log.error('error', err.stack)
   const errStatus = err.statusCode || 500
   const errMsg = err.message || 'Empty error message'

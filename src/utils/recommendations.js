@@ -36,6 +36,9 @@ export function getAllGenericRecommendations () {
     }
   ]
 }
+// `isUserLocalEn` and `isUserBrowserFirefox` predate the no-unused-vars lint
+// rule, but removing positional parameters in non-TS code is risky:
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserLocaleEnUs = false, isUserLocaleEn = false, changePWLink = null) {
   return {
     'government-issued-ids': {

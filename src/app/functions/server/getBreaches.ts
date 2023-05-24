@@ -5,7 +5,7 @@
 // Directly converted from pre-TypeScript code, so `any` is acceptable while porting:
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { get } from "node:https";
-import { access, constants, createWriteStream } from "node:fs";
+import { createWriteStream } from "node:fs";
 import { dirname, resolve as pathResolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { mkdir, readdir } from "node:fs/promises";

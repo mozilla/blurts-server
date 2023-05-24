@@ -4,7 +4,7 @@
 
 // import mozlog from 'mozlog'
 
-import AppConstants from '../appConstants.js'
+// import AppConstants from '../appConstants.js'
 
 // mozlog temporarily disabled because its module system appears to not work well
 // with Next.js (uncomment this and comment out line 16 to see the errors)

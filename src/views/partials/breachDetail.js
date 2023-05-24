@@ -30,6 +30,9 @@ function compareBreachDates (breach) {
   return false
 }
 
+// `isUserLocalEn` predates the no-unused-vars lint rule, but removing
+// positional parameters in non-TS code is risky:
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function getSortedDataClasses (breach, isUserBrowserFirefox = false, isUserLocaleEnUs = false, isUserLocalEn = false, changePWLink = false) {
   const priorityDataClasses = getAllPriorityDataClasses(isUserBrowserFirefox, isUserLocaleEnUs, changePWLink)
 

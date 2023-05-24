@@ -265,6 +265,8 @@ function getSortedDataClasses(
   breach: Breach,
   isUserBrowserFirefox = false,
   isUserLocaleEnUs = false,
+  // Ported over from non-TS code, so probably accidentally unused:
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   isUserLocalEn = false,
   changePWLink = false
 ) {
@@ -302,7 +304,7 @@ function getSortedDataClasses(
 function makeDataSection(breach: Breach) {
   const dataClasses = getSortedDataClasses(breach);
 
-  const output = dataClasses.priority.map((dataClass, dataIndex) => (
+  const output = dataClasses.priority.map((dataClass) => (
     <li key={`data-class-${dataClass.glyphName}`}>
       <Image src={glyphs[dataClass.glyphName]} width="24" alt="" />
       {dataClass.dataType}

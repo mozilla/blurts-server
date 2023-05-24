@@ -30,7 +30,7 @@
     "jsdoc/require-param-description": "off",
     // Unused vars that start with an understore are allowed to be unused:
     "@typescript-eslint/no-unused-vars": [
-      "off",
+      "warn",
       {
         "argsIgnorePattern": "^_",
         "varsIgnorePattern": "^_"

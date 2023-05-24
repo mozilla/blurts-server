@@ -4,7 +4,7 @@
 
 import { getMessage } from '../../utils/fluent.js'
 
-export const notFound = data => `
+export const notFound = _data => `
 <section class='not-found'>
   <img src="/images/404.svg" alt="" />
   <h1>

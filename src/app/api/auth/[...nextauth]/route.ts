@@ -66,6 +66,8 @@ export const authOptions: AuthOptions = {
     },
   ],
   callbacks: {
+    // Unused destructured parameters indicate what other values are available:
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async jwt({ token, account, profile, trigger }) {
       if (profile) {
         token.locale = profile.locale;

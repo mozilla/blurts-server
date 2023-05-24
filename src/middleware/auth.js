@@ -7,7 +7,7 @@ import { getSubscriberById, updateFxAProfileData } from '../db/tables/subscriber
 import * as FXA from '../utils/fxa.js'
 import { UnauthorizedError } from '../utils/error.js'
 
-async function getRequestSessionUser (req, res, next) {
+async function getRequestSessionUser (req, _res, _next) {
   if (req.session && req.session.user) {
     // make sure the user object has all subscribers and email_addresses properties
     return getSubscriberById(req.session.user.id)

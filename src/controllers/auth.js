@@ -149,7 +149,7 @@ async function logout (req, res) {
   await removeFxAData(subscriber)
 
   // clear session cache
-  req.session.destroy(s => {
+  req.session.destroy(_s => {
     delete req.session
     res.redirect('/')
   })
