@@ -647,6 +647,8 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Vakfı
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -660,7 +662,6 @@ ad-unit-6-before-you-complete = Siteye kaydolurken bilgilerinizi korumak ve gele
 
 ## Search Engine Optimization
 
-meta-desc = { -brand-fx-monitor } ile verilerinizin çalınıp çalınmadığını öğrenin. Gelecekteki ihlallere yönelik uyarılara kaydolun ve hesaplarınızı güvende tutmaya dair ipuçları alın.
 
 ## Header
 
@@ -683,8 +684,11 @@ menu-button-title = Kullanıcı menüsü
 menu-button-alt = Kullanıcı menüsünü aç
 menu-list-accessible-label = Hesap menüsü
 menu-item-fxa = { -brand-fx-account }nızı yönetin
+menu-item-fxa-alt = { -brand-fx-account } sayfasını aç
 menu-item-settings = Ayarlar
+menu-item-settings-alt = Ayarlar sayfasını aç
 menu-item-help = Yardım ve destek
+menu-item-help-alt = Yardım ve destek sayfasını aç
 menu-item-logout = Çıkış yap
 
 ## Footer
