@@ -5,21 +5,86 @@
 "use client";
 
 import { Session } from "next-auth";
-import { signIn } from "next-auth/react";
+import Image from "next/image";
+import { signOut } from "next-auth/react";
+import Script from "next/script";
+
 import { useL10n } from "../../hooks/l10n";
+import OpenInIcon from "../../../client/images/icon-open-in.svg";
+import SettingsIcon from "../../../client/images/icon-settings.svg";
+import HelpIcon from "../../../client/images/icon-help.svg";
+import SignOutIcon from "../../../client/images/icon-signout.svg";
 
 export type Props = {
   session: Session | null;
 };
 
-export const UserMenu = (props: Props) => {
+const UserMenu = ({ session }: Props) => {
   const l10n = useL10n();
-
-  if (!props.session || !props.session.user) {
-    return (
-      <button onClick={() => signIn("fxa")}>{l10n.getString("sign-in")}</button>
-    );
+  console.log("User menu");
+  if (!session) {
+    return null;
   }
 
-  return <p>U R {props.session.user.email}</p>;
+  return (
+    <div className="user-menu-wrapper" tabIndex={-1}>
+      <Script src="/nextjs_migration/client/js/userMenu.js" />
+      <button
+        aria-expanded="false"
+        aria-haspopup="true"
+        className="user-menu-button"
+        title={l10n.getString("menu-button-title")}
+      >
+        <img
+          src={session.user?.avatar}
+          alt={l10n.getString("menu-button-alt")}
+        />
+      </button>
+      <menu
+        aria-label={l10n.getString("menu-list-accessible-label")}
+        className="user-menu-container user-menu-popover"
+        role="navigation"
+        hidden
+      >
+        <li tabIndex={1}>
+          <a
+            href={"AppConstants.FXA_SETTINGS_URL"}
+            target="_blank"
+            className="user-menu-header"
+          >
+            <b className="user-menu-email">{session.user?.email}</b>
+            <div className="user-menu-subtitle">
+              {l10n.getString("menu-item-fxa")}
+              <Image alt="" src={OpenInIcon} />
+            </div>
+          </a>
+          <hr />
+        </li>
+        <li>
+          <a href="/user/settings" className="user-menu-link">
+            <Image alt="" src={SettingsIcon} />
+            {l10n.getString("menu-item-settings")}
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://support.mozilla.org/kb/firefox-monitor"
+            target="_blank"
+            className="user-menu-link"
+          >
+            <Image alt="" src={HelpIcon} />
+            {l10n.getString("menu-item-help")}
+          </a>
+        </li>
+        <li>
+          <button onClick={() => signOut()} className="user-menu-link">
+            <Image alt="" src={SignOutIcon} />
+            {l10n.getString("menu-item-logout")}
+          </button>
+        </li>
+      </menu>
+    </div>
+  );
 };
+
+export default UserMenu;
