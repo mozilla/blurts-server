@@ -44,6 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Cancellar abonamento { -brand-premium }
+settings-cancel-premium-subscription-info = Tu abonamento revertera a un conto gratuite post que le currente termino de facturation fini. Le resultatos de tu scansion de protection del confidentialitate sera permanentemente delite, e tu habera solo surveliantia de violation de datos pro 1 adresse email.
 settings-cancel-premium-subscription-link-label = Cancellar de tu { -brand-fx-account }
 
 ## Deactivate account
@@ -61,4 +62,10 @@ settings-send-email-verification-button = Inviar ligamine de verification
 
 ## Unsubscribe Dialog Survey
 
+settings-unsubscribe-dialog-title = Nos regretta de vider te ir. <br /> Vole tu dicer nos perque tu exi?
+settings-unsubscribe-dialog-info = Tu experientia es importante pro nos. Nos lege cata responsa e lo prende in consideration.
+settings-unsubscribe-dialog-message-placeholder = Que poteva haber ite melio?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Nota, tote tu servicios de { -brand-monitor-premium } era <a { $faq_href }>permanentemente delit</a> post que tu actual termino de facturation fini.
 settings-unsubscribe-dialog-continue = Continuar le cancellation
+settings-unsubscribe-dialog-cancel = Non importa, tornar retro
