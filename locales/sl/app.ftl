@@ -768,6 +768,8 @@ ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e
         [mestnik] Mozilli
         [orodnik] Mozillo
     }
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github =
     { $sklon ->
@@ -812,8 +814,11 @@ menu-button-title = Uporabniški meni
 menu-button-alt = Odpri uporabniški meni
 menu-list-accessible-label = Meni računa
 menu-item-fxa = Upravljajte svoj { -brand-fx-account }
+menu-item-fxa-alt = Odpri stran { -brand-fx-account }
 menu-item-settings = Nastavitve
+menu-item-settings-alt = Odpri stran z nastavitvami
 menu-item-help = Pomoč in podpora
+menu-item-help-alt = Odpri stran za pomoč in podporo
 menu-item-logout = Odjava
 
 ## Footer
