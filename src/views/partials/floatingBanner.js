@@ -9,7 +9,7 @@ import { getMessage } from '../../utils/fluent.js'
  * @param {{ pathname: string; }} options
  * @returns { string } banner
  */
-export const floatingBanner = ({ pathname }) => {
+export const getFloatingBanner = ({ pathname }) => {
   const pageHasFloatingBanner = AppConstants.FLOATING_BANNER_PAGES?.split(',').includes(pathname)
   if (!pageHasFloatingBanner) {
     return ''
