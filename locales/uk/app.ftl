@@ -756,6 +756,8 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Преміум
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -824,8 +826,11 @@ menu-button-title = Меню користувача
 menu-button-alt = Відкрити меню користувача
 menu-list-accessible-label = Меню облікового запису
 menu-item-fxa = Керувати своїм { -brand-fx-account(case: "abl", capitalization: "lower") }
+menu-item-fxa-alt = Відкрити сторінку { -brand-fx-account(case: "gen", capitalization: "lower") }
 menu-item-settings = Налаштування
+menu-item-settings-alt = Відкрити сторінку налаштувань
 menu-item-help = Довідка та підтримка
+menu-item-help-alt = Відкрити сторінку довідки та підтримки
 menu-item-logout = Вийти
 
 ## Footer

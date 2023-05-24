@@ -32,6 +32,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Необхідне підтвердження електронної пошти
 settings-resend-email-verification-link = Надіслати лист підтвердження ще раз
 settings-add-email-button = Додати адресу електронної пошти
+settings-delete-email-button = Видалити адресу е-пошти
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -43,6 +44,12 @@ settings-email-number-of-breaches-info =
         [many] З'являється в { $breachCount } відомих витоках даних.
        *[other] З'являється в { $breachCount } відомих витоках даних.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Скасувати передплату { -brand-premium }
+settings-cancel-premium-subscription-info = Ваша передплата скасується і після завершення платіжного періоду ви перейдете на безплатний обліковий запис. Ваші результати сканування захисту приватності будуть остаточно видалені й у вас залишиться лише відстеження витоків даних для однієї адреси е-пошти.
+settings-cancel-premium-subscription-link-label = Скасуйте у своєму { -brand-fx-account(case: "loc", capitalization: "lower") }
 
 ## Deactivate account
 
@@ -56,3 +63,13 @@ settings-email-dialog-title = Додати іншу електронну адр�
 settings-add-email-text = Додайте нову адресу електронної пошти, щоб перевірити, чи була вона виявлена у витоці даних.
 settings-email-input-label = Адреса електронної пошти
 settings-send-email-verification-button = Надіслати посилання для підтвердження
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-title = Нам шкода, що ви покидаєте нас. <br /> Чи не бажаєте розповісти нам чому?
+settings-unsubscribe-dialog-info = Ваш досвід важливий для нас. Ми вивчаємо всі відповіді, щоб вдосконалити роботу.
+settings-unsubscribe-dialog-message-placeholder = Що можна покращити?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Зауважте, що усі ваші послуги { -brand-monitor-premium } будуть <a { $faq_href }>остаточно видалені</a> після завершення поточного платіжного періоду.
+settings-unsubscribe-dialog-continue = Продовжити скасування
+settings-unsubscribe-dialog-cancel = Не зважайте, повернутися
