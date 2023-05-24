@@ -1,3 +1,4 @@
+@import "./fonts/metropolis";
 // Nebula Colours //
 // Purple:
 $color-purple-90: #321c64;
@@ -185,3 +186,10 @@ $layout-md: 48px;
 $layout-lg: 64px;
 $layout-xl: 96px;
 $layout-2xl: 192px;
+
+// Fonts
+@mixin text-title-lg {
+  font-size: 56px;
+  font-family: "Metropolis", sans-serif;
+  font-weight: 700;
+}
