@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { request } from '@playwright/test'
+import { InternalServerError } from '../../utils/error.js'
 
 export const defaultScreenshotOpts = {
   animations: 'disabled',
@@ -23,7 +24,7 @@ export const setEnvVariables = async (email) => {
 
 export const getVerificationCode = async (testEmail, page, attempts = 10) => {
   if (attempts === 0) {
-    throw new Error('Unable to retrieve restmail data')
+    throw new InternalServerError('Unable to retrieve restmail data')
   }
 
   const context = await request.newContext()

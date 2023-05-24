@@ -5,8 +5,8 @@
 import * as jwt from 'jsonwebtoken'
 import jwkToPem from 'jwk-to-pem'
 import { captureException, captureMessage } from '@sentry/node'
-import { UnauthorizedError } from '../utils/error.js'
-import { deleteSubscriberByFxAUID, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../db/tables/subscribers.js'
+import { UnauthorizedError, BadRequestError } from '../utils/error.js'
+import { deleteSubscriber, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../db/tables/subscribers.js'
 import mozlog from '../utils/log.js'
 import appConstants from '../appConstants.js'
 const log = mozlog('controllers.fxa-rp-events')
@@ -33,7 +33,8 @@ const getJwtPubKey = async () => {
     log.info('getJwtPubKey', `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`)
     return keys
   } catch (e) {
-    captureMessage('Could not get JWT public key', jwtKeyUri)
+    log.error('getJwtPubKey', `Could not get JWT public key: ${jwtKeyUri}`)
+    captureException(new Error(`Could not get JWT public key: ${jwtKeyUri}`, e))
   }
 }
 
@@ -95,21 +96,21 @@ const fxaRpEvents = async (req, res) => {
   } catch (e) {
     log.error('fxaRpEvents', e)
     captureException(e)
-    res.status(202)
+    throw new BadRequestError('Bad Request')
   }
 
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     log.error('fxaRpEvents', decodedJWT)
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
-    res.status(202)
+    throw new BadRequestError('Bad Request')
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
-    res.status(202)
+    throw new BadRequestError('Bad Request')
   }
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
@@ -119,12 +120,12 @@ const fxaRpEvents = async (req, res) => {
     switch (event) {
       case FXA_DELETE_USER_EVENT:
         log.debug('fxa_delete_user', {
-          fxaUserId,
+          subscriber,
           event
         })
 
         // delete user events only have keys. Keys point to empty objects
-        await deleteSubscriberByFxAUID(fxaUserId)
+        await deleteSubscriber(subscriber)
         break
       case FXA_PROFILE_CHANGE_EVENT: {
         const updatedProfileFromEvent = decodedJWT.events[event]

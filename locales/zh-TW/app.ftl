@@ -606,6 +606,8 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = 付費版
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -619,7 +621,7 @@ ad-unit-6-before-you-complete = 您下次註冊帳號時，可使用轉寄信箱
 
 ## Search Engine Optimization
 
-meta-desc = 使用 { -brand-fx-monitor }，看看您的帳號是否也在資料外洩事件當中。註冊在未來有與您相關的資料外洩事故時，收到警報與祕訣以確保帳號安全。
+meta-desc-2 = 使用 { -brand-fx-monitor } 看看您是否也處於資料外洩事件之中。我們將幫助您了解接下來應該採取哪些行動，並協助持續監控任何新的外洩事件。
 
 ## Header
 
@@ -642,8 +644,11 @@ menu-button-title = 使用者選單
 menu-button-alt = 開啟使用者選單
 menu-list-accessible-label = 帳號選單
 menu-item-fxa = 管理您的 { -brand-fx-account }
+menu-item-fxa-alt = 開啟 { -brand-fx-account } 頁面
 menu-item-settings = 設定
+menu-item-settings-alt = 開啟設定頁面
 menu-item-help = 說明與技術支援
+menu-item-help-alt = 開啟說明與技術支援頁面
 menu-item-logout = 登出
 
 ## Footer

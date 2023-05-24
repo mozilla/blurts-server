@@ -893,8 +893,11 @@ menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
 menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-fxa-alt = Open { -brand-fx-account } page
 menu-item-settings = Settings
+menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
+menu-item-help-alt = Open help and support page
 menu-item-logout = Sign out
 
 ## Footer
@@ -931,3 +934,9 @@ find-out-if-2 = Find out if you were involved in this breach
 find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
 
 breach-detail-cta-signup = Check for breaches
+
+## Floating banner
+
+floating-banner-text = Boost your online security with news, tips, and updates from { -brand-Mozilla }.
+floating-banner-link-label = Sign up
+floating-banner-dismiss-button-label = No thanks

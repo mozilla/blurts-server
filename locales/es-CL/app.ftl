@@ -693,7 +693,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 
 ## Search Engine Optimization
 
-meta-desc = Averigua si has sido parte de una filtración de datos con { -brand-fx-monitor }. Registrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
+meta-desc-2 = Descubre si has sido parte de una filtración de datos con { -brand-fx-monitor }. Te ayudaremos a comprender qué hacer a continuación y monitorearemos continuamente cualquier nueva filtración.
 
 ## Header
 

@@ -3,6 +3,7 @@
 
 ## Hero
 
+find-out-if-breached = Find out if you’ve been in a data breach
 get-started = Get started
 
 ## Why use Firefox Monitor?

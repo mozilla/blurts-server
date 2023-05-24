@@ -5,13 +5,14 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - nastavenia
 settings-page-title = Nastavenia { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Predvoľby upozornení na únik dát
-settings-alert-preferences-option-one = Upozornenia na únik dát posielať na dotknutú e-mailovú adresu
-settings-alert-preferences-option-two = Všetky upozornenia na únik dát posielať na primárnu e-mailovú adresu
+settings-alert-preferences-title = Predvoľby upozornení na únik údajov
+settings-alert-preferences-option-one = Upozornenia na únik údajov posielať na dotknutú e-mailovú adresu
+settings-alert-preferences-option-two = Všetky upozornenia na únik údajov posielať na primárnu e-mailovú adresu
 
 ## Monitored email addresses
 
@@ -52,6 +53,6 @@ settings-fxa-link-label = Prejsť do Nastavení { -brand-firefox(case: "gen") }
 ## Add email dialog
 
 settings-email-dialog-title = Pridanie ďalšej e-mailovej adresy
-settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku dát.
+settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku údajov.
 settings-email-input-label = E-mailová adresa
 settings-send-email-verification-button = Odoslať overovací odkaz

@@ -646,6 +646,8 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Fondation Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -663,7 +665,7 @@ ad-unit-6-before-you-complete = Pour finir cette inscription, utilisez un alias 
 
 ## Search Engine Optimization
 
-meta-desc = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’une fuite de données. Inscrivez-vous pour recevoir des alertes lors de futures fuites de données et des conseils pour renforcer la sécurité de vos comptes.
+meta-desc-2 = Vérifiez avec { -brand-fx-monitor } si vous avez été victime d’une fuite de données. Nous vous aiderons à comprendre ce qu’il faut faire ensuite et à surveiller en permanence toute nouvelle fuite de données.
 
 ## Header
 
@@ -686,8 +688,11 @@ menu-button-title = Menu utilisateur
 menu-button-alt = Ouvrir le menu utilisateur
 menu-list-accessible-label = Menu du compte
 menu-item-fxa = Gérer votre { -brand-fx-account }
+menu-item-fxa-alt = Ouvrir la page du { -brand-fx-account }
 menu-item-settings = Paramètres
+menu-item-settings-alt = Ouvrir la page des paramètres
 menu-item-help = Aide et assistance
+menu-item-help-alt = Ouvrir la page d’aide et d’assistance
 menu-item-logout = Déconnexion
 
 ## Footer

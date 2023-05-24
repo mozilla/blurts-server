@@ -30,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Email verification required
 settings-resend-email-verification-link = Resend verification email
 settings-add-email-button = Add email address
+settings-delete-email-button = Delete email address
 
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.

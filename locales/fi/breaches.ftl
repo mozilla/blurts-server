@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Kojelauta
+breach-all-meta-title = { -brand-fx-monitor } - Kaikki tietovuodot
+breach-all-meta-social-title = Kaikki { -brand-fx-monitor }in havaitsemat tietovuodot
+breach-all-meta-social-description = Selaa täydellistä luetteloa { -brand-fx-monitor }in havaitsemista tietovuodoista, ja selvitä sitten, paljastuivatko tietosi.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Yritykseen { $company } kohdistunut tietovuoto
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Vaikuttiko yritykseen { $company } kohdistunut tietovuoto sinuun?
+breach-detail-meta-social-description = Käytä { -brand-fx-monitor }ia selvittääksesi, paljastuiko henkilökohtaisia tietojasi tämän tietovuodon yhteydessä, ja ymmärrä, mitä tehdä seuraavaksi.
+breach-scan-meta-title = { -brand-fx-monitor } - Tietovuodon tulokset
+breach-scan-meta-social-title = { -brand-fx-monitor }, tietovuodon tulokset
+breach-scan-meta-social-description = Kirjaudu sisään { -brand-fx-monitor }iin selvittääksesi tietovuodot ja saadaksesi jatkuvaa seurantaa uusien tunnettujen tietovuotojen varalta.
 
 ## Breaches header
 
@@ -46,6 +60,9 @@ breaches-all-resolved-copy = Hyvin toimittu! Olet selvittänyt kaikki sähköpos
 breaches-all-resolved-cta-blurb = Haluatko seurata myös muita sähköpostiosoitteita?
 breaches-all-resolved-cta-button = Lisää sähköpostiosoite
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Yhtiön { $companyName } tiedot vuodettiin { $breachDate }. Kun tietovuoto havaittiin ja vahvistettiin, se lisättiin tietokantaamme { $addedDate }. Tämä vuoto sisältää: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -56,11 +73,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Siirry yrityksen verkkosivustolle vaihtaaksesi salasanasi ja ottaaksesi kaksivaiheisen todennuksen (2FA) käyttöön.
+breach-checklist-pw-header-text = Päivitä salasanasi ja ota käyttöön kaksivaiheinen todennus (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Varmista, että salasanasi on yksilöllinen ja vaikea arvata. Jos käytät tätä salasanaa muilla tileillä, muista vaihtaa salasana kyseisillä tileillä. { $passwordManagerLink } voi auttaa sinua pitämään kirjaa kaikista salasanoistasi turvallisesti.
+breach-checklist-pw-body-text = Useimmissa tapauksissa suosittelemme, että vaihdat salasanasi yrityksen verkkosivuilla. Mutta <b>yrityksen verkkosivusto saattaa olla poissa käytöstä tai sisältää haitallista sisältöä</b>, joten ole varovainen, jos <breached-company-link>vierailet sivustolla</breached-company-link>. Saat lisää suojaa varmistamalla, että käytät yksilöllisiä salasanoja kaikille tileille, jotta vuotaneita salasanoja ei voida käyttää muille tileille kirjautumiseen. { $passwordManagerLink } auttaa sinua pitämään kaikki salasanasi turvassa.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -71,17 +88,17 @@ breach-checklist-email-body = Tämä voi piilottaa todellisen sähköpostiosoitt
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Tarkkaile luottotietojasi sellaisten tilien, lainojen tai luottokorttien varalta, joita et tunnista.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Riippuen kansalaisuudestasi ja asuinpaikastasi, voit mahdollisesti jäädyttää luottokelpoisuutesi { $equifaxLink }issa, { $experianLink }issa tai { $transUnionLink }issa estääksesi huijareita avaamasta uusia tilejä nimissäsi. Se on ilmaista eikä vaikuta luottotietoihisi.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -124,9 +141,9 @@ breach-checklist-phone-header-2 = Suojaa puhelinnumerosi maskipalvelulla, kuten 
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Päivitä turvallisuuskysymyksesi yrityksen verkkosivustolla.
-breach-checklist-sq-body = Käytä pitkiä, satunnaisia vastauksia ja säilytä ne turvallisessa paikassa. Tee tämä myös muualla, missä olet käyttänyt samoja turvakysymyksiä.
+breach-checklist-sq-header-text = Päivitä turvallisuuskysymyksesi.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Useimmissa tapauksissa suosittelemme, että päivität turvakysymyksesi yrityksen verkkosivustolla. Mutta <b>yrityksen verkkosivusto saattaa olla poissa käytöstä tai sisältää haitallista sisältöä</b>, joten ole varovainen, jos <breached-company-link>vierailet sivustolla</breached-company-link>. Saat lisää suojaa päivittämällä nämä turvakysymykset kaikilla tileillä, joilla olet käyttänyt samoja turvallisuuskysymyksiä, ja luomalla yksilölliset salasanat kaikille tileille.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -137,5 +154,7 @@ breach-checklist-hp-body-2 = Salasanojen hallinta, kuten { $passwordManagerLink 
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Ota yhteys yritykseen { $companyName } kertoaksesi heille tästä tietovuodosta ja kysyäksesi, mitä voit tehdä.

@@ -9,16 +9,16 @@ rec-ssn =
 rec-pw-1-subhead = Zmeňte svoje heslo
 # Link title
 rec-pw-1-cta = Zmeňte si na tejto stránke heslo
-rec-pw-1 =
+rec-pw-1-2 =
     Používajte jedinečné heslá, vždy iné pre každú stránku. 
     Dobrým spôsobom je napríklad kombinácia viacerých, 
-    spolu nesúvisiacich slov.
+    spolu nesúvisiacich slov, vrátane číslic a iných symbolov.
 # Recommendation subhead
 rec-pw-2-subhead = Aktualizujte svoje prihlasovacie údaje všade, kde používate rovnaké heslo
 # Link title
 rec-pw-2-cta-fx = Zobraziť prihlasovacie údaje vo { -brand-name(case: "loc") }
 rec-pw-2 =
-    Používanie rovnakého hesla na viacerých miestach môže viesť k úniku vašich dát 
+    Používanie rovnakého hesla na viacerých miestach môže viesť k úniku vašich údajov 
     zo všetkých týchto miest naraz.
 # Recommendation subhead
 rec-pw-3-subhead = So správcom hesiel máte svoje heslá všade so sebou
@@ -54,22 +54,13 @@ rec-email =
     sledovacím prvkom pri zisťovaní vášho hesla. Služby ako { -brand-relay } skrývajú
     vašu skutočnú e-mailovú adresu, pričom e-maily budú preposielané do vašej skutočnej e-mailovej schránky.
 # Recommendation subhead
-rec-ip-subhead = Používajte službu, ktorá skryje vašu IP adresu
-# Link title
-rec-ip-us-cta = Vyskúšajte { -brand-fpn }
-rec-ip-us =
-    Vaša internetová adresa (IP adresa) prezrádza vašu polohu 
-    a informácie o poskytovateľovi internetového pripojenia. 
-    Služby ako { -brand-fpn } skrývajú vašu IP adresu a tým aj vašu polohu
-rec-ip-non-us =
-    Vaša internetová adresa (IP adresa) prezrádza vašu polohu a informácie 
-    o poskytovateľovi internetového pripojenia. S použitím virtuálnej privátnej 
-    siete (VPN) môžete skryť svoju IP adresu a tým aj  svoju polohu.
+rec-ip-subhead-2 = Na maskovanie vašej IP adresy použite sieť VPN
 # Recommendation subhead
 rec-moz-vpn-cta = Vyskúšajte { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Adresa internetového protokolu (IP adresa) môže prezradiť vašu polohu a poskytovateľa internetových služieb. Služba
-    ako { -brand-mozilla-vpn } skryje vašu IP adresu a polohu pre celé vaše zariadenie.
+rec-moz-vpn-update-2 =
+    Vaša internetová adresa (IP adresa) prezrádza vašu polohu 
+    a informácie o poskytovateľovi internetového pripojenia. 
+    Služby ako { -brand-mozilla-vpn } skrývajú vašu IP adresu a tým aj vašu polohu.
 rec-hist-pw-subhead = Vyhnite sa opakovanému použitiu hesiel
 # Link title
 rec-hist-pw-cta-fx = Zobraziť prihlasovacie údaje vo { -brand-name(case: "loc") }

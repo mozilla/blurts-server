@@ -676,6 +676,8 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá un
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor premium
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = VPN de Mozilla
@@ -689,7 +691,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usá un
 
 ## Search Engine Optimization
 
-meta-desc = Descubrí fuiste parte de una violación de datos con { -brand-fx-monitor }. Registrate para recibir alertas sobre futuras infracciones y obtené consejos para mantener tus cuentas seguras.
+meta-desc-2 = Averiguá si fuiste parte de una filtración de datos con { -brand-fx-monitor }. Te ayudaremos a entender qué hacer a continuación y monitorearemos continuamente si hay nuevas filtraciones.
 
 ## Header
 
@@ -712,8 +714,11 @@ menu-button-title = Menú de usuario
 menu-button-alt = Abrir menú de usuario
 menu-list-accessible-label = Menú de cuenta
 menu-item-fxa = Administrar tu { -brand-fx-account }
+menu-item-fxa-alt = Abrir la página { -brand-fx-account }
 menu-item-settings = Opciones
+menu-item-settings-alt = Abrir página de configuración
 menu-item-help = Ayuda y soporte
+menu-item-help-alt = Abrir la página de ayuda y soporte
 menu-item-logout = Cerrar sesión
 
 ## Footer

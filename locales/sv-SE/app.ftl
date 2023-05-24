@@ -725,7 +725,7 @@ ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd e
 
 ## Search Engine Optimization
 
-meta-desc = Ta reda på om du har varit en del av ett dataintrång med { -brand-fx-monitor }. Registrera dig för varningar om framtida intrång och få tips för att hålla dina konton säkra.
+meta-desc-2 = Ta reda på om du har varit en del av ett dataintrång med { -brand-fx-monitor }. Vi hjälper dig att förstå vad du ska göra härnäst och övervakar kontinuerligt efter eventuella nya intrång.
 
 ## Header
 

@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -12,15 +15,9 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Aẓetta n tbaḍnit n Firefox
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
-# “account” can be localized, “Firefox” must be treated as a brand,
-# and kept in English.
--brand-fx-account = Amiḍan Firefox
-terms-and-privacy = Tiwtilin akked tbaḍnit
 GitHub-link-title = GitHub
 error-scan-page-token = Tɛeṛḍeḍ ad tgeḍ tasleḍt n ddeqs n tansiwin deg drus n wakud. Ɛef sebba n tɣellist, nessewḥel inadiyen imaynuten akka kra n wakud. Tzmereḍ ad tɛerḍḍ ticki.
 error-could-not-add-email = Ur izmir ara ad yernu tansa n yimayl ɣer taffa n yisefka.
@@ -38,6 +35,9 @@ user-add-invalid-email = Yir imayl
 user-add-too-many-emails = Aql-ak tessefrakeḍ amḍan afellay n tansiwin n yimayl.
 user-add-email-verify-subject = Senqed ajerred-ik { -product-name }.
 user-add-duplicate-email = Imayl-a yettwarna yakan ɣer { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Rzu ɣer { $preferencesLink } akken ad twaliḍ addad n { $userEmail }.
 error-headline = Tuccḍa
 user-verify-token-error = Ajiṭun n usentem ilaq.
@@ -51,11 +51,11 @@ scan-placeholder = Sekcem tansa imayl
 scan-submit = Nadi imayl-ik
 scan-error = Yessefk ad tili d tansa tameɣtut.
 download-firefox-banner-button = Sader { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Yettwazen!
 sign-up = Jerred
 form-signup-error = Yessefk ad yili d imayl ameɣtu
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Azemz n trewla n yisefka:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Imiḍanen yettwakren:
@@ -65,6 +65,8 @@ unsub-headline = Ffeɣ seg ujerred si { -product-name-nowrap }
 unsub-blurb = Ayagi ad yekkes tansa-ik imayl seg tebdert { -product-name-nowrap } daɣen ur tettezziḍ ara ad tremseḍ ilɣa ticki tirewliwin-nniḍen n yisefka ḍrant-d.
 unsub-button = Ffeɣ seg ujerred
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Isefka seg trewliwin yemgaraden i d-yefka { $hibp-link }
 share-twitter = Tuget n yimdanen ɣur-sen imrawen n yimiḍanen srid. Yiwen seg wayla-k tḥuza-t trewla n yisefka? Wali s timad-ik.
 share-facebook-headline = Wali ma yella tḥuza-k trewla n yisefka.
@@ -72,7 +74,6 @@ share-facebook-blurb = Imiḍanen-ik srid tḥuza-ten trewla n yisefka?
 og-site-description = Wali s { -product-name } ma yella tḥuza-k trewla n yisefka. Jerred akken ad tremseḍ ilɣa deg trewiliwin timaynutin n yisefka akked iwellihen i useǧhed n tɣellist n yimiḍanen-ik.
 show-all = Sken akk
 fxa-scan-another-email = Tebɣiḍ ad twaliḍ tansa-nniḍen?
-sign-in = Kcem
 sign-out = Ffeɣ
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Sefrek { -brand-fxa }
@@ -106,8 +107,6 @@ about-firefox-monitor = Ɣef { -product-name }
 preferences = Ismenyifen
 # Link title
 home = Asebter agejdan
-# Link title
-breaches = Tirewliwin n yisefka
 # Link title
 security-tips = Iwellihen ɣef tɣellist
 fxa-account = { -brand-fxa }
@@ -183,7 +182,9 @@ feat-security-tips = Iwellihen n tɣellist i ummesten n yimiḍanen-ik
 feat-sensitive = Anadi leqqayen deg trewla n yisefka iweɛren
 feat-enroll-multiple = Taɣessast n trewla n yisefka i ddeqs n tansiwin imayl
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Yettban-d deg { $breachCount } n trewla n yisefka yettwasnen
@@ -195,6 +196,8 @@ get-email-alerts = Qqim d aɣelsan: Ṭṭef-d ilɣa s ttawil n yimayl yal mi ar
 search-for-your-email = Nadi tansa-ik deg trewliwin n yisefka izayazen seg 2007.
 back-to-top = Uɣal d asawen
 comm-opt-0 = Azen-iyi-d imayl ma tella yiwet seg tawnsiwin-iw ddaw-a banent-d deg trewla n yisefka.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Azen meṛṛa ilɣa n trewla n yisefka ɣer { $primaryEmail }.
 stop-monitoring-this = Seḥbes taɛessast n tensa-a imayl.
 resend-verification = Ales tuzna n yimayl n usenqed
@@ -203,7 +206,7 @@ send-verification = Ales tuzna n useɣwen n usentem
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Agzul ɣef trewla n yisefka
 show-breaches-for-this-email = Sken meṛṛa tirewliwin n yisefka i tansa-a.
@@ -214,8 +217,15 @@ remove-fxm-blurb = Ssens ilɣa { -product-name }. { -brand-fxa } inek ad yeqqem 
 manage-email-addresses = Sefrek tansiwin n yimayl
 # Link title
 latest-breach-link = Wali ma yella tarewla-a n yisefka tḥuza-k
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Anṣuf yes-k i tikkelt-nniḍen, { $userName }!
 welcome-user = Anṣuf, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } yufa-d d akken tansa-ik tella deg trewla n yisefka tamaynut.
 your-info-was-discovered-headline = Talɣut-ik tettwaf-d deg trewla tamaynut n yisefka.
 your-info-was-discovered-blurb =
@@ -231,6 +241,8 @@ ba-next-step-blurb-3 = Seqdec amsefrak n wawalen uffiren akken ad ternuḍ awale
 faq1 = UR ssineɣ ara takebbanit-a neɣ asmel-a web. Acuɣer i yi-teɛna trewla-a?
 faq2 = Acuɣer yewwi aṭas n wakud akken ad ẓreɣ tarewela-a n yisefka?
 faq3 = Amek zemreɣ ad ẓreɣ ma yella imayl-a n { -product-name } n tidet?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } N TREWLA N YISEFKA TAMAYNUT
@@ -238,24 +250,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Rmes ilɣa yettkemmilen s { -brand-fxa }.
 account-not-required = Iminig { -brand-name } ur issefk ara ad yili kan d netta akken ad ternuḍ amiḍan { -brand-fxa }. Tzemreḍ ad tremseḍ talɣut ɣef yimeẓla n { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Talɣut-ik tḥuza-tt trewla n yisefka { $breachName }?
-find-out-if = Wali ma yella isefka-ik tḥuza-tent trewla n yisefka.
 fb-not-comp = Tansa-a imayl ur d-tban ara deg trewla n yisefka { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Maca, iban-d deg trewla n yisefka { $breachCount } nniḍen.
        *[other] Maca, iban-d deg trewliwin n yisefka { $breachCount } nniḍen.
     }
 fb-comp-only = Imay-a iban-d deg trewla n yisefka { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Imay-a iban-d deg  { $breachCount } n trewla n yisefka, ula d { $breachName }.
        *[other] Imay-a iban-d deg  { $breachCount } n trewliwin n yisefka, ula d { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Ula tarewla yettwafen s unadi afessas.
 no-results-blurb = Suref-aɣ, tarewla-a ur telli ara deg taffa-nneɣ n yisefka.
-all-breaches-headline = Meṛṛa tirewliwin deg { -product-name }
-search-breaches = Nadi tirewliwin n yisefka
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -306,6 +326,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Wali tirewliwin-nniḍen
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Imayl-a iban-d deg 1 trewla n yisefka.
@@ -314,6 +336,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Agmmuḍ i: { $userEmail }
 other-monitored-emails = Imaylen-nniḍen yettuɛassen
 email-verification-required = iAsenqed n yimayl ilaq
@@ -329,6 +353,8 @@ get-ongoing-breach-monitoring = Ɛass yal ass tirewliwin n yisefka n ddeqs n tan
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Senqed
 new-unsub-error = Tesriḍ ad teffɣeḍ seg ujerred seg yiwen n yimaylen-ik yettwaznen sɣur { -product-name }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Maca, iban-d deg { $breachCount } n trewla n yisefka yettwassnen.
@@ -346,10 +372,12 @@ breach-overview-title = Agzul
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Deg { $breachDate }, { $breachTitle } yerwel. Ticki tarewla tettwaf daɣen tettwasenqed, tettwasna ɣer taffa-nneɣ n yisefka deg { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Ismenyifen n { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Y(T)eqqen s yisem: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -366,12 +394,16 @@ email-sent = Imayl yettwazen!
 want-to-add = Tebɣiḍ ad ternuḍ imayl-nniḍen?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Senqed aseɣwen yettwaznen ɣer { $userEmail } akken ad ternuḍ-t ɣef { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Imayl yettwaseqed akken iwata!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Ad k-id-nelɣu ma yella tansa-a { $email } tban-d deg trewla n yisefka.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -385,15 +417,17 @@ sign-in-nested = Kcem
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Sefrek meṛṛa tansiwin n yimayl deg { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Ilɣa n trewla n yisefka
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Tarewla n yisefka tettwarna:
 how-hackers-work-desc = Mmesten awalen-ik uffiren seg yimakaren imsenselkamen, acku tuget n wakud, ɣer waya i ttwalin.
 what-to-do-after-breach-desc = Sekkeṛ imiḍanen-ik akken talɣut-ik ur d-tɣelli ara deg yir ifassen.
@@ -415,7 +449,11 @@ see-additional-recs = Wali iwellihen-nniḍen
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } iban-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] Yiwet seg tansiwin-ik tban-d deg trewla-a n yisefka. <a>Acu ara xedmeɣ?</a>
@@ -440,6 +478,8 @@ confirmation-3-subhead = Ugur-nniden yefran. Igerrez!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Awal-inek uffir amaynut d asuf, yeǧhed, yewεer i tiftin? <a>Ẓer</a>
 generic-confirmation-subhead = Tarewla-agi tettwacreḍ tefra.
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Akken ad twaliḍ tarewla i d-yeqqimen, kcem ɣer tfelwit-inek n usenqed.
@@ -449,9 +489,13 @@ return-to-breach-details-link = Uɣal ɣer trewla s telqey
 go-to-dashboard-link = Ddu ɣer tfelwit n usenqed
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete } % immed
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } yefra
@@ -459,6 +503,9 @@ num-resolved =
     }
 progress-intro-subhead = Amaynut di { -product-name }: Creḍ dakken uguren n tɣellist fran
 progress-intro-message = Mbeεd asenqed n ttfaṣil yerzan tarewla akked uḥraz n talɣut-inek tudmawant s uḍfar n yimecwaren ilaqen, tzemreḍ ad tcerḍeḍ ɣef trewliwin frant.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } seg { $numTotalBreaches } n trewla n yisefka tettwacreḍ tefra
@@ -484,16 +531,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Fru tarewla-agi.
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Creḍ tefra:
 hide-resolved-button = Ffer tifrat:
 show-resolved-button = Sken tifrat:
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Awal uffir i d-ibanen di trewliwin ur nefri ara.
        *[other] Awalen uffiren i d-ibanen di trewliwin ur nefri ara.
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Tarewla n yisefka yettwassnen, tettucreḍ tefra.
@@ -523,7 +574,10 @@ vpn-promo-copy-new = Mmesten isefka-inek•inem srid—syen fren aɣawas n umult
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Adig-ik·im: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Mmesten iman-ik·im</em> s { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Yettwammesten</em> s { -brand-mozilla-vpn }.
@@ -532,7 +586,8 @@ vpn-banner-title-2 = Adig-ine·inem yezmer ad yettwaḍfer ma yella ur tesqedce�
 vpn-banner-subtitle-2 = Mmesten adig-ik·im syen inig s wudem aɣellsan s 3 takkayin
 vpn-banner-status-protected = Addad amiran: <em>Yettwammesten ✓</em>
 vpn-banner-status-not-protected = Addad amiran: <em>Ur yettwammesten ara ✓</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Tansa IP: { $ip-address }
 vpn-banner-step-1 = Multeɣ ɣer { -brand-mozilla-vpn }
 vpn-banner-step-2 = Fren adig VPN
@@ -557,3 +612,63 @@ ad-unit-3-stay-in-the-game = Qqim deg wurar!
 ad-unit-3-be-anywhere = Ili-k·kem deg yal adeg deg umaḍal
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Seqdec ɣef tiliɣri-inek·inem
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+-brand-firefox = Firefox
+-brand-fx-monitor = Firefox Monitor
+-brand-mozilla = Mozilla
+-brand-mozilla-foundation = Tasbeddit Mozilla
+-brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
+
+##
+
+# “account” can be localized, “Firefox” must be treated as a brand,
+# and kept in English.
+-brand-fx-account = Amiḍan Firefox
+
+## Search Engine Optimization
+
+
+## Header
+
+brand-fx-monitor = { -brand-fx-monitor }
+sign-in = Kcem
+
+## Site navigation
+
+site-nav-settings-link = Iɣewwaren
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
+
+## User menu
+
+menu-button-title = Umuɣ n useqdac
+menu-button-alt = Ldi umuɣ n useqdac
+menu-list-accessible-label = Umuɣ n umiḍan
+menu-item-settings = Iɣewwaren
+menu-item-logout = Ffeɣ
+
+## Footer
+
+mozilla = { -brand-Mozilla }
+terms-and-privacy = Tiwtilin akked tbaḍnit
+github = { -brand-github }
+footer-nav-all-breaches = Meṛṛa tirewliwin
+
+## Error page
+
+error-page-error-404-cta-button = Uɣal
+
+## Breach overview page
+
+search-breaches = Nadi tirewliwin n yisefka
+
+## Public breach detail page
+
+breach-detail-cta-signup = Senqed tarewla n yisefka

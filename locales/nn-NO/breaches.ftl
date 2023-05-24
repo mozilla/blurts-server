@@ -5,8 +5,16 @@
 
 ## Breaches header
 
+# Data classes pie chart title
+breach-chart-title = Lekne data
 # $email-select is an interactive <select> element displaying the current email address
 breach-heading-email = Datalekkasjar for { $email-select }
+# $count is the number of emails a user has added out of $total allowed
+emails-monitored =
+    { $total ->
+        [one] { $count } av { $total } e-postadresse overvaka
+       *[other] { $count } of { $total } e-postadresser overvaka
+    }
 # link to Settings page where user can add/remove emails and set message preferences
 manage-emails-link = Handsam e-postadresser
 
@@ -18,13 +26,17 @@ filter-label-resolved = Løyste datalekkasjar
 ## Breaches table
 
 column-company = VERKSEMD
+column-breached-data = Lekne data
 column-detected = OPPDAGA
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
 column-status-badge-resolved = Løyst
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktiv
+breaches-resolve-heading = Løys denne datalekkasjen:
 breaches-none-headline = Fann ingen datalekkasjar
 breaches-none-cta-button = Legg til e-postadresse
+breaches-all-resolved-headline = Alle datalekkasjar løyste
+breaches-all-resolved-cta-blurb = Vil du overvake ei anna e-postadresse?
 breaches-all-resolved-cta-button = Legg til e-postadresse
 
 ## Links that we might refer to when prompting the user to make changes after a breach

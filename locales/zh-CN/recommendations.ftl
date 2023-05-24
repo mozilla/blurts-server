@@ -10,7 +10,7 @@ rec-ssn =
 rec-pw-1-subhead = 更改您的密码
 # Link title
 rec-pw-1-cta = 更改该网站密码
-rec-pw-1 = 使用唯一且不重复的密码。一个好策略是把两个或多个无关的单词组成密码短语。
+rec-pw-1-2 = 使用唯一且不重复的密码。把两个或多个无关的词语组成密码短语，并加入数字和符号。
 # Recommendation subhead
 rec-pw-2-subhead = 在使用了相同密码的地方更换密码
 # Link title
@@ -42,17 +42,10 @@ rec-email =
     真实的邮箱地址容易被黑客找到密码，或被跟踪者定位。
     建议使用像 { -brand-relay } 这类的邮件中继服务，隐藏真实邮箱地址。
 # Recommendation subhead
-rec-ip-subhead = 使用掩藏 IP 地址的服务
-# Link title
-rec-ip-us-cta = 试用 { -brand-fpn }
-rec-ip-us =
-    您的互联网协议地址（IP 地址）可用来精准定位您的所在位置
-    和互联网服务提供商。{ -brand-fpn } 这样的服务
-    可帮助您掩盖您的 IP 地址，以免您的位置泄露。
-rec-ip-non-us = 您的互联网协议地址（IP 地址）可精确定位您的位置和网络运营商。使用 VPN 则可以伪装您的 IP 地址，以此隐藏自己的位置。
+rec-ip-subhead-2 = 使用 VPN 来掩藏您的 IP 地址
 # Recommendation subhead
 rec-moz-vpn-cta = 试用 { -brand-mozilla-vpn }
-rec-moz-vpn-update = 您的互联网协议地址（IP 地址）可以对应到您的所在位置和运营商。{ -brand-mozilla-vpn } 这样的服务可帮助掩盖您的 IP 地址，避免泄露位置。
+rec-moz-vpn-update-2 = 您的互联网协议地址（IP 地址）可用来精准定位您所在的位置和互联网服务提供商。{ -brand-mozilla-vpn } 等服务可帮助您掩藏自己的 IP 地址，避免暴露自己的位置。
 rec-hist-pw-subhead = 避免重复使用密码
 # Link title
 rec-hist-pw-cta-fx = 在 { -brand-name } 中查看登录信息
