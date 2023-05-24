@@ -12,7 +12,8 @@ if (floatingBannerElement) {
 
 function init () {
   const { type, delay } = floatingBannerElement.dataset
-  if (!type || !delay || localStorage.getItem(type)) {
+  const userInteractedWithBanner = localStorage.getItem(type) === 'shown'
+  if (!type || !delay || userInteractedWithBanner) {
     return
   }
 
@@ -27,7 +28,7 @@ function init () {
 
   [...buttons.children].forEach(button => {
     button.addEventListener('click', () => {
-      localStorage.setItem(type, 1)
+      localStorage.setItem(type, 'shown')
       floatingBannerElement.remove()
     })
   })
