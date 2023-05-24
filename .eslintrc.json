@@ -28,7 +28,6 @@
     ],
     "jsdoc/require-jsdoc": "off",
     "jsdoc/require-param-description": "off",
-    "@typescript-eslint/no-explicit-any": "off",
     // Unused vars that start with an understore are allowed to be unused:
     "@typescript-eslint/no-unused-vars": [
       "off",

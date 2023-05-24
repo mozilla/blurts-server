@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// Directly converted from pre-TypeScript code, so `any` is acceptable while porting:
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Image, { StaticImageData } from "next/image";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
