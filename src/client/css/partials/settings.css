@@ -10,9 +10,13 @@
   color: black;
 }
 
+.settings-section-info {
+  margin-top: 0;
+}
+
 .settings-section-title {
-  font: var(--h4-font);
-  margin: var(--padding-sm) 0 var(--padding-md) 0;
+  margin: var(--padding-sm) 0;
+  font: 700 1rem var(--body-font);
 }
 
 .settings-content {
@@ -74,10 +78,7 @@
 }
 
 .settings-email-item {
-  border: 1px solid var(--gray-10);
-  border-radius: var(--border-radius);
   gap: var(--padding-sm);
-  padding: calc(var(--padding-lg) * 0.75);
   padding-right: var(--padding-lg);
 }
 
@@ -119,6 +120,8 @@
 .settings-resend-email,
 .settings-link-fxa {
   color: var(--blue-50);
+  text-decoration: underline;
+  text-underline-position: under;
   font: 600 1em/1.2 inter, sans-serif;
 }
 
@@ -142,4 +145,8 @@
 .settings-add-email-button::before {
   content: '＋ ';
   font-weight: 600;
+}
+
+.settings section+section {
+  margin-top: 0;
 }

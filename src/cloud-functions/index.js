@@ -2,7 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import express from 'express'
+import Sentry from '@sentry/node'
+import '@sentry/tracing'
 import { acceptedLanguages, negotiateLanguages } from '@fluent/langneg'
+
 import AppConstants from '../appConstants.js'
 
 import { getSubscribersByHashes } from '../db/tables/subscribers.js'
@@ -10,21 +14,38 @@ import { getEmailAddressesByHashes } from '../db/tables/emailAddresses.js'
 import { getTemplate } from '../views/emails/email2022.js'
 import { breachAlertEmailPartial } from '../views/emails/emailBreachAlert.js'
 
+import { bearerToken } from '../middleware/util.js'
+import { errorHandler } from '../middleware/error.js'
+
 import {
+  initEmail,
   EmailTemplateType,
   getEmailCtaHref,
   sendEmail
 } from '../utils/email.js'
-import { getMessage } from '../utils/fluent.js'
+
+import { initFluentBundles, getMessage } from '../utils/fluent.js'
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   loadBreachesIntoApp
 } from '../utils/hibp.js'
-import mozlog from '../utils/log.js'
-import { UnauthorizedError, BadRequestError, InternalServerError } from '../utils/error.js'
+import { BadRequestError, TooManyRequestsError } from '../utils/error.js'
 
-const log = mozlog('controllers.hibp')
+const app = express()
+
+app.use(bearerToken)
+// sentry error handler
+app.use(Sentry.Handlers.errorHandler({
+  shouldHandleError (error) {
+    if (error instanceof TooManyRequestsError) return true
+  }
+}))
+app.use(errorHandler)
+app.post('/api/v1/hibp/notify', notify)
+
+await initFluentBundles()
+await initEmail()
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
@@ -36,30 +57,34 @@ const log = mozlog('controllers.hibp')
  * - hashSuffixes
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  *
- * @param {object} req
- * @param {object} res
+ * @param {import('express').RequestHandler} req
+ * @param {import('express').Response} res
  */
 async function notify (req, res) {
   if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
     const errorMessage = 'HIBP notify endpoint requires valid authorization token.'
-    throw new UnauthorizedError(errorMessage)
+    // FIXME
+    // throw new UnauthorizedError(errorMessage)
+    return res.status(403, errorMessage)
   }
+
   if (!['breachName', 'hashPrefix', 'hashSuffixes'].every(req.body?.hasOwnProperty, req.body)) {
     throw new BadRequestError('HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes.')
   }
 
   const { breachName, hashPrefix, hashSuffixes } = req.body
 
+  await loadBreachesIntoApp(req.app)
   let breachAlert = getBreachByName(req.app.locals.breaches, breachName)
 
   if (!breachAlert) {
     // If breach isn't found, try to reload breaches from HIBP
-    log.debug('notify', 'Breach is not found, reloading breaches...')
+    console.debug('notify', 'Breach is not found, reloading breaches...')
     await loadBreachesIntoApp(req.app)
     breachAlert = getBreachByName(req.app.locals.breaches, breachName)
     if (!breachAlert) {
       // If breach *still* isn't found, we have a real error
-      throw new InternalServerError('Unrecognized breach: ' + breachName)
+      throw new Error('Unrecognized breach: ' + breachName)
     }
   }
 
@@ -99,7 +124,7 @@ async function notify (req, res) {
       .map(condition => condition.logId)
       .join(', ')
 
-    log.info('Breach alert email was not sent.', {
+    console.info('Breach alert email was not sent.', {
       name: breachAlert.Name,
       reason: `The following conditions were not satisfied: ${conditionLogIds}.`
     })
@@ -116,7 +141,7 @@ async function notify (req, res) {
     const emailAddresses = await getEmailAddressesByHashes(hashes)
     const recipients = subscribers.concat(emailAddresses)
 
-    log.info(EmailTemplateType.Notification, {
+    console.info(EmailTemplateType.Notification, {
       breachAlertName: breachAlert.Name,
       length: recipients.length
     })
@@ -125,7 +150,7 @@ async function notify (req, res) {
     const notifiedRecipients = []
 
     for (const recipient of recipients) {
-      log.info('notify', { recipient })
+      console.info('notify', { recipient })
 
       // Get subscriber ID from:
       // - `subscriber_id`: if `email_addresses` record
@@ -171,7 +196,7 @@ async function notify (req, res) {
       }
     }
 
-    log.info('notified', { length: notifiedRecipients.length })
+    console.info('notified', { length: notifiedRecipients.length })
 
     res
       .status(200)
@@ -179,8 +204,8 @@ async function notify (req, res) {
         info: 'Notified subscribers of breach.'
       })
   } catch (error) {
-    throw new InternalServerError(`Notifying subscribers of breach failed: ${error}`)
+    throw new Error(`Notifying subscribers of breach failed: ${error}`)
   }
 }
 
-export { notify }
+export { app }

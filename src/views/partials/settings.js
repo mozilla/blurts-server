@@ -17,11 +17,12 @@ const emailNeedsVerificationSub = email => `
 
 const deleteButton = email => `
   <button
+    aria-label='${getMessage('settings-delete-email-button')}'
     data-subscriber-id='${email.subscriber_id}'
     data-email-id='${email.id}'
     class='settings-email-remove-button js-remove-email-button'
   >
-    <img src='/images/icon-delete.svg'>
+    <img src='/images/icon-delete.svg' alt='${getMessage('settings-delete-email-button')}'>
   </button>
 `
 
@@ -106,6 +107,22 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => `
   </label>
   </div>
 `
+const cancelPremiumSubscription = () => `
+  <hr>
+  <section>
+    <h3 class='settings-section-title'>
+      ${getMessage('settings-cancel-premium-subscription-title')}
+    </h3>
+    <p class='settings-section-info'>${getMessage('settings-cancel-premium-subscription-info')}</p>
+    <button
+      class='settings-link-fxa'
+      data-dialog='cancelSubscriptionSurvey' 
+    >
+      ${getMessage('settings-cancel-premium-subscription-link-label')}
+    </button>
+  </section>
+  <hr>
+`
 
 /**
  * @typedef {object} PartialData
@@ -123,27 +140,17 @@ export const settings = data => {
   return `
     <div class='settings js-settings' data-csrf-token='${csrfToken}'>
       <h2 class='settings-title'>${getMessage('settings-page-title')}</h2>
-
       <div class='settings-content'>
-        <!-- Breach alert preferences -->
-        <section>
-          <h3 class='settings-section-title'>
-            ${getMessage('settings-alert-preferences-title')}
-          </h3>
-          ${alertOptions({ csrfToken, allEmailsToPrimary })}
-        </section>
-
-        <hr>
-
         <!-- Monitored email addresses -->
         <section>
           <h3 class='settings-section-title'>
             ${getMessage('settings-email-list-title')}
           </h3>
-          <p>${getMessage('settings-email-limit-info', { limit })}</p>
+          <p class='settings-section-info'>${getMessage('settings-email-limit-info', { limit })}</p>
 
           ${createEmailList(emails, breachCounts)}
           <button
+            aria-label='${getMessage('settings-add-email-button')}'
             class='primary settings-add-email-button' 
             data-dialog='addEmail' 
             ${emails.length >= limit ? 'disabled' : ''}
@@ -152,12 +159,23 @@ export const settings = data => {
 
         <hr>
 
+        <!-- Breach alert preferences -->
+        <section>
+          <h3 class='settings-section-title'>
+            ${getMessage('settings-alert-preferences-title')}
+          </h3>
+          ${alertOptions({ csrfToken, allEmailsToPrimary })}
+        </section>
+
+        <!-- Cancel Premium Subscription -->
+        ${AppConstants.CANCEL_SUBSCRIPTION_FLOW ? cancelPremiumSubscription() : '<hr>'}
+
         <!-- Deactivate account -->
         <section>
           <h3 class='settings-section-title'>
             ${getMessage('settings-deactivate-account-title')}
           </h3>
-          <p>${getMessage('settings-deactivate-account-info')}</p>
+          <p class='settings-section-info'>${getMessage('settings-deactivate-account-info')}</p>
           <a
             class='settings-link-fxa'
             href='${AppConstants.FXA_SETTINGS_URL}'

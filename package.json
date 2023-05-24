@@ -10,6 +10,7 @@
   "scripts": {
     "prestart": "npm run build",
     "start": "node src/app.js",
+    "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
     "dev": "nodemon src/app.js",
     "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
     "build:svg": "svgo -f src/client/images/ -r -o dist/images",
@@ -72,6 +73,8 @@
     "express-rate-limit": "^6.7.0",
     "express-session": "^1.17.3",
     "helmet": "^6.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwk-to-pem": "^2.0.5",
     "knex": "^2.4.2",
     "mozlog": "^3.0.2",
     "nodemailer": "^6.9.1",
@@ -80,6 +83,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@google-cloud/functions-framework": "^3.2.0",
     "@playwright/test": "^1.32.3",
     "@types/express": "^4.17.17",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
