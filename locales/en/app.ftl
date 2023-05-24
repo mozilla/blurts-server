@@ -855,6 +855,8 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -891,8 +893,11 @@ menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
 menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-fxa-alt = Open { -brand-fx-account } page
 menu-item-settings = Settings
+menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
+menu-item-help-alt = Open help and support page
 menu-item-logout = Sign out
 
 ## Footer

@@ -16,8 +16,8 @@ import { getMessage } from '../../utils/fluent.js'
  */
 export const addEmail = data => `
 <header>
-  <button class='close'></button>
-  <img src='/images/dialog-email-clouds.svg'>
+  <button class='close' aria-label='${getMessage('close-dialog-alt')}'></button>
+  <img src='/images/dialog-email-clouds.svg' alt=''>
   <h2>${getMessage('add-email-add-another-heading')}</h2>
 </header>
 <form>

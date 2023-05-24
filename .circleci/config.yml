@@ -147,8 +147,6 @@ workflows:
             - lint-css
             - lint-l10n
             - deploy:
-                requires:
-                    - lint-js
                 filters:
                     tags:
                         only: /.*/

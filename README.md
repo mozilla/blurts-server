@@ -88,6 +88,30 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
 2. You may receive the error `Required environment variable was not set`.  If this is the case, get the required env var(s) from another team member or ask in #fx-monitor-engineering.  Otherwise, if the server started successfully, navigate to [localhost:6060](http://localhost:6060/)
 
+### Cloud Functions
+
+User breach notifications from HIBP are handled by a [GCP Cloud Function](https://cloud.google.com/functions). This can be emulated locally:
+
+```sh
+npm run functions
+```
+
+This function serves the `/api/v1/hibp/notify` route, which is responsible for:
+
+1. receiving HTTP POST payloads with a bearer token from HIBP
+2. emailing any affected users
+
+This can be tested using curl:
+
+```sh
+curl \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer unsafe-default-token-for-dev' \
+  -X POST \
+  -d '{"breachName": "Gravatar", "hashPrefix": "...", "hashSuffixes": ["..."]}' \
+  localhost:8080/api/v1/hibp/notify
+```
+
 ### Database
 
 To create the database tables ...
@@ -177,3 +201,9 @@ If you encounter issues with Heroku deploys, be sure to check your environment v
 _**TODO:** add full deploy process similar to Relay_
 
 _**TODO:** consider whether we can re-enable Heroku Review Apps_
+
+## Preserve sessions in local development
+
+Sessions by default are stored in-memory, which means that when the server restarts (e.g. because you made a code change), you will have to log in again.
+
+To avoid this hassle, you can install and run [Redis](https://redis.io/), which by default runs on `redis://localhost:6379`. Use that value for `REDIS_URL` in your `.env` file to preserve your sessions across server restarts.

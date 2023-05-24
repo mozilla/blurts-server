@@ -25,6 +25,7 @@ async function breachesPage (req, res) {
   const data = {
     breachesData,
     breachLogos: req.app.locals.breachLogoMap,
+    countryCode: getCountryCode(req),
     emailVerifiedCount,
     emailTotalCount,
     selectedEmailIndex,

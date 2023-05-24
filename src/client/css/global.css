@@ -104,14 +104,18 @@ body > header {
   position: fixed;
   top: 0;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: white;
   box-shadow: 0 6px 6px -8px #0000;
-  padding: var(--padding-md) var(--padding-lg);
   transition: box-shadow 0.3s;
   z-index: 2;
+}
+
+body > header .header-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: var(--padding-md) var(--padding-lg);
+  width: 100%;
 }
 
 .scrolled body > header {
@@ -285,10 +289,17 @@ label.text-field > input:focus {
 dialog {
   width: min(640px, 100%);
   margin: auto;
-  padding: var(--padding-xl);
+  padding: var(--padding-lg) var(--padding-sm);
   border: none;
   border-radius: var(--border-radius);
 }
+
+@media screen and (min-width: var(--mobile-breakpoint)) {
+  dialog {
+    padding: var(--padding-xl);
+  }
+}
+
 
 dialog[open] {
   animation: fade-in 0.3s;

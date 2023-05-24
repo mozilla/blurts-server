@@ -884,6 +884,7 @@ error-page-error-other-copy = Zkuste to znovu nebo se vraťte později
 
 all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
 search-breaches = Prohledat úniky dat
+<<<<<<< HEAD
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Odhalené údaje:
 
@@ -891,3 +892,8 @@ exposed-data = Odhalené údaje:
 
 find-out-if-2 = Zjistěte, zda jste byli součástí tohoto úniku
 breach-detail-cta-signup = Prohledat úniky
+=======
+
+## Public breach detail page
+
+>>>>>>> main

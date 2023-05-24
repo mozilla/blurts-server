@@ -18,10 +18,10 @@ import { localStorage } from './utils/localStorage.js'
 import { errorHandler } from './middleware/error.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
-import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 import { noSearchEngineIndex } from './middleware/noSearchEngineIndex.js'
+import { TooManyRequestsError } from './utils/error.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
@@ -189,7 +189,7 @@ app.use('/', indexRouter)
 // sentry error handler
 app.use(Sentry.Handlers.errorHandler({
   shouldHandleError (error) {
-    if (error instanceof RateLimitError) return true
+    if (error instanceof TooManyRequestsError) return true
   }
 }))
 
