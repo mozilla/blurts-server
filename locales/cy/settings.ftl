@@ -34,6 +34,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Mae angen gwirio'r e-bost
 settings-resend-email-verification-link = Ail-anfon yr e-bost gwirio
 settings-add-email-button = Ychwanegu cyfeiriad e-bost
+settings-delete-email-button = Dileu cyfeiriad e-bost
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -48,6 +49,12 @@ settings-email-number-of-breaches-info =
        *[other] Yn ymddangos mewn { $breachCount } tor-data.
     }
 
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Canslo tanysgrifiad { -brand-premium }
+settings-cancel-premium-subscription-info = Bydd eich tanysgrifiad yn dychwelyd i gyfrif am ddim ar ôl i'r cylch bilio cyfredol ddod i ben. Bydd canlyniadau eich sgan diogelu preifatrwydd yn cael eu dileu'n barhaol, a dim ond ar gyfer 1 cyfeiriad e-bost y bydd gennych fonitro torri data.
+settings-cancel-premium-subscription-link-label = Canslo o'ch { -brand-fx-account }
+
 ## Deactivate account
 
 settings-deactivate-account-title = Analluogi cyfrif
@@ -60,3 +67,13 @@ settings-email-dialog-title = Ychwanegwch gyfeiriad e-bost arall
 settings-add-email-text = Ychwanegwch gyfeiriad e-bost newydd i weld a yw wedi bod yn rhan o dor-data.
 settings-email-input-label = Cyfeiriad e-bost
 settings-send-email-verification-button = Anfon dolen gwirio
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-title = Mae'n ddrwg gennym eich gweld yn mynd. <br /> A wnewch chi ddweud wrthym pam eich bod yn gadael?
+settings-unsubscribe-dialog-info = Mae eich profiad yn bwysig i ni. Rydym yn darllen pob ymateb ac yn ei gymryd i ystyriaeth.
+settings-unsubscribe-dialog-message-placeholder = Beth allai fod wedi mynd yn well?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Sylwch, bydd eich holl wasanaethau { -brand-monitor-premium } <a { $faq_href }>yn cael eu dileu yn barhaol</a> ar ôl i'ch cylch bilio presennol ddod i ben.
+settings-unsubscribe-dialog-continue = Parhau i ganslo
+settings-unsubscribe-dialog-cancel = Peidiwch byth â meddwl, mynd â fi yn ôl
