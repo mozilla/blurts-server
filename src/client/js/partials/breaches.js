@@ -94,7 +94,7 @@ async function updateBreachStatus (input) {
       })
     })
 
-    if (res.ok) {
+    if (!res.ok) {
       throw new ClientError('We couldn’t search for the latest breaches. Please refresh or try again later.', {
         action: ErrorActionTypes.Toast
       })
