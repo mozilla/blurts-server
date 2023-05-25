@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Nastavení
 settings-page-title = Nastavení { -product-short-name(case: "gen") }
 
 ## Breach alert preferences

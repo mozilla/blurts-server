@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Ubah kata sandi Anda
 # Link title
 rec-pw-1-cta = Ubah kata sandi untuk situs ini
-rec-pw-1 =
-    Buat kata sandi ini unik dan berbeda dari kata sandi lain yang Anda gunakan. 
-    Strategi yang baik untuk diikuti adalah menggabungkan dua atau lebih kata yang tidak terkait 
-    untuk membentuk keseluruhan frasa sandi.
+rec-pw-1-2 =
+    Jadikan kata sandi ini unik dan berbeda dari kata sandi lainnya yang Anda gunakan.
+    Strategi yang baik untuk diikuti adalah menggabungkan dua atau lebih yang tidak terkait
+    kata untuk membuat seluruh frasa sandi, dan menyertakan angka dan simbol.
 # Recommendation subhead
 rec-pw-2-subhead = Perbarui info masuk lain menggunakan kata sandi yang sama
 # Link title
@@ -50,23 +50,20 @@ rec-cc =
     Awasi tagihan ganjil pada kartu kredit Anda. Anda mungkin ingin 
     mengajukan kartu baru dengan nomor baru dari penerbit kartu kredit Anda.
 # Recommendation subhead
-rec-ip-subhead = Gunakan layanan yang menutupi alamat IP Anda
-# Link title
-rec-ip-us-cta = Coba { -brand-fpn }
-rec-ip-us =
-    Alamat Protokol Internet (alamat PI) Anda menunjukkan dengan tepat lokasi 
-    dan penyedia layanan internet Anda. Layanan seperti { -brand-fpn } 
-    menutupi alamat PI untuk menyembunyikan lokasi Anda.
-rec-ip-non-us =
-    Alamat Protokol Internet (alamat PI) Anda menunjukkan dengan tepat lokasi Anda 
-    dan penyedia layanan internet. Dengan jaringan privat maya (JPM), Anda dapat menyembunyikan lokasi 
-    dan menutupi alamat PI Anda.
+rec-email-mask-subhead = Gunakan topeng surel
+rec-email-cta = Coba { -brand-relay }
+rec-email =
+    Memberikan alamat surel asli Anda memudahkan peretas atau pelacak untuk
+    temukan kata sandi Anda atau targetkan Anda daring. Layanan seperti { -brand-relay }
+    menyembunyikan alamat surel asli Anda saat meneruskan surel ke kotak masuk asli Anda.
+# Recommendation subhead
+rec-ip-subhead-2 = Gunakan VPN untuk menutupi alamat IP Anda
 # Recommendation subhead
 rec-moz-vpn-cta = Coba { -brand-mozilla-vpn }
-rec-moz-vpn =
-    Alamat Protokol Internet (alamat IP) Anda dapat mengungkapkan lokasi dan penyedia layanan internet Anda. Sebuah layanan seperti
-    { -brand-fpn } menyembunyikan alamat IP dan lokasi Anda untuk { -brand-name } dan layanan seperti { -brand-mozilla-vpn } menyembunyikan
-    Alamat IP dan lokasi untuk seluruh perangkat Anda.
+rec-moz-vpn-update-2 =
+    Alamat Protokol Internet Anda (alamat IP) menunjukkan lokasi Anda
+    dan penyedia layanan internet. Layanan seperti { -brand-mozilla-vpn }
+    menutupi alamat IP Anda untuk menyembunyikan lokasi Anda.
 rec-hist-pw-subhead = Hindari penggunaan kembali kata sandi
 # Link title
 rec-hist-pw-cta-fx = Lihat info masuk di { -brand-name }

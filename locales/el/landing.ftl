@@ -3,21 +3,25 @@
 
 ## Hero
 
-find-out-if-breached = Μάθετε αν έχετε εμφανιστεί σε κάποια παραβίαση δεδομένων
 get-started = Έναρξη
 
 ## Why use Firefox Monitor?
 
 why-use-monitor = Γιατί να χρησιμοποιήσω το { -brand-fx-monitor };
+get-alerts = Λάβετε ειδοποιήσεις για νέες παραβιάσεις
 
 ## Here’s how it works
 
 how-it-works = Δείτε πώς λειτουργεί
 check-for-breaches = Έλεγχος για παραβιάσεις
+check-for-breaches-we-search = Θα αναζητήσουμε όλες τις γνωστές παραβιάσεις δεδομένων από το 2007 για να δούμε εάν οι πληροφορίες σας έχουν παραβιαστεί.
+alerts-for-breaches = Λάβετε ειδοποιήσεις για νέες παραβιάσεις
+alerts-for-breaches-monitor-new = Θα παρακολουθούμε συνεχώς τις νέες παραβιάσεις δεδομένων και θα σας ενημερώνουμε εάν επηρεαστείτε.
 
 ## Your privacy is safe with us
 
 safe-with-us = Το απόρρητό σας είναι ασφαλές μαζί μας
+parent-company = Στη { -brand-Mozilla }, τη μητρική εταιρεία των { -brand-firefox } και { -brand-fx-monitor }, πιστεύουμε ότι η διαδικτυακή ασφάλεια και η ιδιωτικότητα των ατόμων είναι θεμελιώδεις και δεν πρέπει να αντιμετωπίζονται ως προαιρετικές.
 learn-more-mission = Μάθετε περισσότερα σχετικά με την αποστολή μας
 
 ## Top questions about Firefox Monitor
@@ -34,3 +38,4 @@ what-gets-exposed = Ποιες πληροφορίες εκτίθενται σε 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Δείτε αν έχετε εμφανιστεί σε κάποια παραβίαση δεδομένων
+hibp-footer-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <b>{ -brand-HIBP }</b>

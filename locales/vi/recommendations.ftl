@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Thay đổi mật khẩu của bạn
 # Link title
 rec-pw-1-cta = Thay đổi mật khẩu cho trang web này
-rec-pw-1 =
-    Làm cho mật khẩu này duy nhất và khác biệt với bất kỳ người nào khác bạn sử dụng.
-    Một chiến lược tốt để làm theo là kết hợp hai hoặc nhiều từ không liên quan hơn
-    để tạo toàn bộ cụm mật khẩu.
+rec-pw-1-2 =
+    Đặt mật khẩu này là duy nhất và khác với bất kỳ mật khẩu nào khác mà bạn sử dụng.
+    Một chiến lược tốt để làm theo là kết hợp hai hoặc nhiều từ
+    để tạo cụm mật khẩu và bao gồm các số và ký tự đặc biệt.
 # Recommendation subhead
 rec-pw-2-subhead = Cập nhật thông tin đăng nhập khác bằng cùng một mật khẩu
 # Link title
@@ -57,23 +57,13 @@ rec-email =
     của bạn dễ dàng hơn hoặc nhắm mục tiêu bạn trực tuyến. Một dịch vụ như { -brand-relay }
     ẩn địa chỉ email thực của bạn trong khi chuyển tiếp email đến hộp thư đến thực của bạn.
 # Recommendation subhead
-rec-ip-subhead = Sử dụng dịch vụ che dấu địa chỉ IP của bạn
-# Link title
-rec-ip-us-cta = Hãy thử { -brand-fpn }
-rec-ip-us =
-    Địa chỉ giao thức Internet (địa chỉ IP) xác định chính xác vị trí của bạn 
-    và nhà cung cấp dịch vụ internet. Một dịch vụ như { -brand-fpn } 
-    che dấu địa chỉ IP của bạn để ẩn vị trí của bạn.
-rec-ip-non-us =
-    Địa chỉ Giao thức Internet (địa chỉ IP) xác định chính xác vị trí của bạn và nhà 
-    cung cấp dịch vụ internet. Với mạng riêng ảo (VPN), bạn có thể ẩn vị trí 
-    của mình và che dấu địa chỉ IP của bạn.
+rec-ip-subhead-2 = Sử dụng VPN để giấu địa chỉ IP của bạn
 # Recommendation subhead
 rec-moz-vpn-cta = Hãy thử { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Địa chỉ giao thức Internet (địa chỉ IP) của bạn có thể tiết lộ vị trí của bạn và
-    nhà cung cấp dịch vụ internet. Một dịch vụ như { -brand-mozilla-vpn } có thể
-    ẩn địa chỉ IP và vị trí cho toàn bộ thiết bị của bạn.
+rec-moz-vpn-update-2 =
+    Địa chỉ giao thức Internet (địa chỉ IP) xác định chính xác vị trí của bạn
+    và nhà cung cấp dịch vụ internet. Một dịch vụ như { -brand-mozilla-vpn }
+    có thể giấu địa chỉ IP của bạn để ẩn vị trí của bạn.
 rec-hist-pw-subhead = Tránh sử dụng lại mật khẩu
 # Link title
 rec-hist-pw-cta-fx = Xem thông tin đăng nhập trong { -brand-name }

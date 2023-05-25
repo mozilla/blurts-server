@@ -61,12 +61,14 @@ const guestLayout = data => {
       </head>
       <body>
         <header>
-          <a href='/'>
-            <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
-          </a>
-          <menu>
-            <li><a href='/user/breaches' data-cta-id='sign-in-1' class='button secondary'>${getMessage('sign-in')}</a></li>
-          </menu>
+          <div class="header-wrapper">
+            <a href='/'>
+              <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+            </a>
+            <menu>
+              <li><a href='/user/breaches' data-cta-id='sign-in-1' class='button secondary'>${getMessage('sign-in')}</a></li>
+            </menu>
+          </div>
         </header>
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}

@@ -12,6 +12,9 @@ rec-ssn =
 rec-pw-1-subhead = Parolanızı değiştirin
 # Link title
 rec-pw-1-cta = Bu sitedeki parolanızı değiştirin
+rec-pw-1-2 =
+    Benzersiz ve başka yerlerde kullanmadığınız bir parola seçin. 
+    Sayı ve sembol içeren birbiriyle ilgisiz iki veya daha fazla kelimeyi birleştirerek iyi bir parola oluşturabilirsiniz.
 # Recommendation subhead
 rec-pw-2-subhead = Aynı parolayı kullanan diğer hesaplarınızı güncelleyin
 # Link title
@@ -51,6 +54,10 @@ rec-email = Gerçek e-posta adresinizi vermek, hacker’ların ve botların paro
 rec-ip-subhead-2 = VPN kullanarak IP adresinizi gizleyin
 # Recommendation subhead
 rec-moz-vpn-cta = { -brand-mozilla-vpn }’i deneyin
+rec-moz-vpn-update-2 =
+    IP adresiniz konumunuzu ve internet servis sağlayıcısınızı açığa çıkarır.
+    { -brand-mozilla-vpn } gibi bir hizmeti kullanarak
+    IP adresinizi maskeleyip konumunuzu gizleyebilirsiniz.
 rec-hist-pw-subhead = Aynı parolayı başka yerlerde kullanmayın
 # Link title
 rec-hist-pw-cta-fx = { -brand-name } hesaplarınızı görüntüleyin

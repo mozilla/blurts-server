@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Finden Sie heraus, ob Sie von einem Datenleck betroffen sind
-stay-safe-with-tool = Bleiben Sie auf der sicheren Seite mit einem einfachen, aber leistungsstarken Werkzeug, das nachverfolgt, ob Ihre persönlichen Daten bei einem Datenleck offengelegt wurden. Wir helfen Ihnen zu verstehen, was als Nächstes zu tun ist, und überwachen kontinuierlich, ob es weitere Lecks gibt – all das kostet Sie nichts.
 get-started = Erste Schritte
 
 ## Why use Firefox Monitor?
@@ -52,3 +50,4 @@ depends-on-hackers = Nicht alle Datenlecks legen dieselben Informationen offen. 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Überprüfen Sie, ob Sie von einem Datenleck betroffen sind
+hibp-footer-attribution = Die Informationen zu Datenlecks wurden bereitgestellt von <b>{ -brand-HIBP }</b>

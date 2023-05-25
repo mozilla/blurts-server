@@ -43,6 +43,7 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
+  'CANCEL_SUBSCRIPTION_FLOW',
   'EMAIL_TEST_RECIPIENT',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
@@ -52,8 +53,9 @@ const optionalEnvVars = [
   'HIBP_BREACH_DOMAIN_BLOCKLIST',
   'LIVE_RELOAD',
   'PORT',
-  'SENTRY_DSN_LEGACY',
-  'CANCEL_SUBSCRIPTION_FLOW'
+  'RECRUITMENT_BANNER_TEXT',
+  'RECRUITMENT_BANNER_LINK',
+  'SENTRY_DSN_LEGACY'
 ]
 
 /** @type {Record<string, string>} */
@@ -66,9 +68,10 @@ if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
 for (const v of requiredEnvVars) {
   const value = process.env[v]
   if (value === undefined) {
-    throw new Error(`Required environment variable was not set: ${v}`)
+    console.warn(`Required environment variable was not set: ${v}`)
+  } else {
+    AppConstants[v] = value
   }
-  AppConstants[v] = value
 }
 
 optionalEnvVars.forEach(key => {

@@ -17,11 +17,12 @@ const emailNeedsVerificationSub = email => `
 
 const deleteButton = email => `
   <button
+    aria-label='${getMessage('settings-delete-email-button')}'
     data-subscriber-id='${email.subscriber_id}'
     data-email-id='${email.id}'
     class='settings-email-remove-button js-remove-email-button'
   >
-    <img src='/images/icon-delete.svg'>
+    <img src='/images/icon-delete.svg' alt='${getMessage('settings-delete-email-button')}'>
   </button>
 `
 
@@ -149,6 +150,7 @@ export const settings = data => {
 
           ${createEmailList(emails, breachCounts)}
           <button
+            aria-label='${getMessage('settings-add-email-button')}'
             class='primary settings-add-email-button' 
             data-dialog='addEmail' 
             ${emails.length >= limit ? 'disabled' : ''}
