@@ -187,6 +187,18 @@ $layout-lg: 64px;
 $layout-xl: 96px;
 $layout-2xl: 192px;
 
-// Fonts
-
+// Typeface
+// Title copy
 $text-title-lg: 700 56px / 56px "Metropolis", sans-serif;
+$text-title-md: 700 48px / 48px "Metropolis", sans-serif;
+$text-title-sm: 700 38px / 40px "Metropolis", sans-serif;
+$text-title-xs: 700 28px / 30px "Metropolis", sans-serif;
+$text-title-2xs: 700 24px / 26px "Metropolis", sans-serif;
+$text-title-3xs: 700 18px / 20px "Metropolis", sans-serif;
+
+// Body copy
+$text-body-xl: 400 21px / 32px "Metropolis", sans-serif;
+$text-body-lg: 400 18px / 27px "Metropolis", sans-serif;
+$text-body-md: 400 16px / 24px "Metropolis", sans-serif;
+$text-body-sm: 400 14px / 21px "Metropolis", sans-serif;
+$text-body-xs: 400 12px / 18px "Metropolis", sans-serif;
