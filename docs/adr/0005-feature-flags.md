@@ -93,7 +93,10 @@ Tagging refers to the ability to attach arbitrary key:value pairs to a feature f
 
 ## Decision Outcome
 
-TBD
+A team decision has been made on Thursday, May 25. We will go with the `environment variable` approach similar to Relay. 
+* We will expose the relevant feature flag env vars via a runtime data endpoint similar to [relay](https://relay.firefox.com/api/v1/runtime_data). 
+* We will name the flags according to the convention listed above. 
+* There will be a boolean attached to each flag and there won't be additional metadata attached at this moment
 
 
 ## Pros and Cons of the Options <!-- optional -->
