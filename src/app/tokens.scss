@@ -188,8 +188,5 @@ $layout-xl: 96px;
 $layout-2xl: 192px;
 
 // Fonts
-@mixin text-title-lg {
-  font-size: 56px;
-  font-family: "Metropolis", sans-serif;
-  font-weight: 700;
-}
+
+$text-title-lg: 700 56px / 56px "Metropolis", sans-serif;
