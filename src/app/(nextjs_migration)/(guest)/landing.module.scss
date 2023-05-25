@@ -1,0 +1,277 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+@import "../../tokens";
+
+.hero {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+  gap: var(--gap);
+
+  h1 {
+    font: $text-title-lg;
+  }
+
+  h3 {
+    font: var(--h4-font);
+  }
+
+  > :first-child {
+    flex-basis: 51%;
+    flex-grow: 999;
+  }
+
+  > :last-child {
+    flex-basis: 44%;
+    flex-grow: 1;
+  }
+
+  .exposureScan {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: var(--padding-md);
+
+    /* stylelint-disable-next-line selector-class-pattern */
+    .fx-relay-email-input-wrapper {
+      /* note: visual fix for the Relay add-on injected icon */
+      max-width: 80%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: var(--padding-sm) var(--padding-md);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--gray-30);
+    }
+  }
+}
+
+.howItWorks {
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    font: var(--h4-font);
+  }
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    margin: var(--padding-lg) 0;
+    gap: var(--gap);
+    list-style: none;
+    counter-reset: li;
+
+    li {
+      --img-h: 150px;
+      position: relative;
+      flex-grow: 1;
+      flex-basis: calc((800px - 100%) * 999);
+      padding: 0 48px;
+
+      &::before {
+        content: counter(li);
+        counter-increment: li;
+        position: absolute;
+        top: calc(var(--img-h) - 16px);
+        left: 0;
+        line-height: 24px;
+        width: 24px;
+        color: var(--purple-70);
+        border: 1px solid;
+        border-radius: 50%;
+        text-align: center;
+      }
+
+      img {
+        height: var(--img-h);
+        margin: 0 auto var(--padding-lg);
+        object-fit: contain;
+        object-position: bottom;
+      }
+    }
+  }
+}
+.whyUseMonitor {
+  h2,
+  p {
+    text-align: center;
+  }
+
+  h3 {
+    font: var(--h4-font);
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+    list-style: none;
+    margin: var(--padding-lg) 0;
+
+    li {
+      flex-grow: 1;
+      flex-basis: calc((800px - 100%) * 999);
+
+      :first-child {
+        display: flex;
+        align-items: center;
+        min-height: 40px;
+        padding-left: 48px;
+        margin: 0 0 var(--padding-md);
+        background: no-repeat left center / 40px;
+      }
+
+      :last-child {
+        margin: 0;
+      }
+
+      &:nth-of-type(1) {
+        :first-child {
+          background-image: url("../../../client/images/icon-shield.svg");
+        }
+      }
+
+      &:nth-of-type(2) {
+        :first-child {
+          background-image: url("../../../client/images/icon-mask.svg");
+        }
+      }
+
+      &:nth-of-type(3) {
+        :first-child {
+          background-image: url("../../../client/images/icon-megaphone.svg");
+        }
+      }
+    }
+  }
+}
+
+.safeWithUs {
+  position: relative;
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--gap);
+  color: white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: min(0px, 50% - 50vw);
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
+  }
+
+  :first-child {
+    flex-basis: 47%;
+    flex-grow: 999;
+  }
+
+  :last-child {
+    flex: 1 1 48%;
+    max-width: 539px;
+    padding: var(--padding-lg) 0;
+  }
+}
+
+.topQuestionsAboutMonitor {
+  display: flex;
+  flex-flow: wrap;
+  gap: var(--gap);
+
+  h3 {
+    font: var(--h4-font);
+  }
+
+  * {
+    flex: 1 1 var(--min-width);
+  }
+
+  a {
+    color: var(--blue-50);
+  }
+
+  details {
+    padding: var(--padding-md) 0;
+    border-bottom: 1px solid var(--gray-10);
+
+    summary {
+      position: relative;
+      font-size: 1.25rem;
+      padding-right: var(--padding-xl);
+      list-style: none;
+      cursor: pointer;
+
+      &::-webkit-details-marker {
+        /* Safari 16 */
+        display: none;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: url("../../../client/images/icon-plus.svg") no-repeat 50%
+          50% / 30px 30px;
+        width: 30px;
+        height: 100%;
+        transition: transform 0.2s ease-out;
+      }
+    }
+
+    p {
+      margin: var(--padding-md) 0 var(--padding-sm);
+      color: var(--gray-40);
+    }
+  }
+
+  details[open] {
+    summary {
+      &::after {
+        transform: rotate(45deg);
+      }
+    }
+
+    p {
+      animation: fade-in 0.5s ease-out;
+    }
+  }
+}
+
+.seeIfDataBreach {
+  position: relative;
+  color: white;
+  text-align: center;
+  padding: var(--padding-xl) var(--padding-lg);
+
+  .hibpAttribution {
+    margin: var(--padding-lg) 0 0;
+    font-size: 0.9rem;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: min(0px, 50% - 50vw);
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: -1;
+    background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
+  }
+}
+
+.mobile .seeIfDataBreach .button {
+  display: block;
+}
