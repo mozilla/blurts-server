@@ -44,6 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Peruuta { -brand-premium }-tilaus
+settings-cancel-premium-subscription-link-label = Peruuta { -brand-fx-account }ltäsi
 
 ## Deactivate account
 
@@ -60,3 +61,8 @@ settings-send-email-verification-button = Lähetä vahvistuslinkki
 
 ## Unsubscribe Dialog Survey
 
+settings-unsubscribe-dialog-title = Ikävää, että lähdet. <br /> Kerrotko meille, miksi lähdet?
+settings-unsubscribe-dialog-info = Kokemuksesi on meille tärkeä. Luemme jokaisen vastauksen ja otamme siinä kerrotut asiat huomioon.
+settings-unsubscribe-dialog-message-placeholder = Mikä olisi voinut mennä paremmin?
+settings-unsubscribe-dialog-continue = Jatka peruutukseen
+settings-unsubscribe-dialog-cancel = Unohdetaan tämä, palataan takaisin
