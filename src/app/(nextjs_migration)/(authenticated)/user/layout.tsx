@@ -8,11 +8,11 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 
 import "../../../../client/css/index.css";
+import { UserMenu } from "../../components/client/UserMenu";
+import { SiteNavigation } from "../../components/client/SiteNavigation";
 import AppConstants from "../../../../appConstants.js";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
-import { UserMenu } from "../../../components/client/UserMenu";
-import { SiteNavigation } from "../../../components/client/SiteNavigation";
 import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/auth/[...nextauth]/route";
 export type Props = {

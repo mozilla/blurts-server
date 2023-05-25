@@ -6,10 +6,10 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useL10n } from "../../hooks/l10n";
+import { useL10n } from "../../../hooks/l10n";
 
-import RelayLogo from "../../../client/images/logo-relay.svg";
-import VPNLogo from "../../../client/images/logo-vpn.svg";
+import RelayLogo from "../../../../client/images/logo-relay.svg";
+import VPNLogo from "../../../../client/images/logo-vpn.svg";
 
 export const SiteNavigation = () => {
   const l10n = useL10n();

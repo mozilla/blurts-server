@@ -9,11 +9,11 @@ import Image from "next/image";
 import { signOut } from "next-auth/react";
 import Script from "next/script";
 
-import { useL10n } from "../../hooks/l10n";
-import OpenInIcon from "../../../client/images/icon-open-in.svg";
-import SettingsIcon from "../../../client/images/icon-settings.svg";
-import HelpIcon from "../../../client/images/icon-help.svg";
-import SignOutIcon from "../../../client/images/icon-signout.svg";
+import { useL10n } from "../../../hooks/l10n";
+import OpenInIcon from "../../../../client/images/icon-open-in.svg";
+import SettingsIcon from "../../../../client/images/icon-settings.svg";
+import HelpIcon from "../../../../client/images/icon-help.svg";
+import SignOutIcon from "../../../../client/images/icon-signout.svg";
 
 export type Props = {
   session: Session | null;
