@@ -114,8 +114,8 @@ const fxaRpEvents = async (req, res) => {
   }
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
-  
-  // highly unlikely, though it is a possible edge case from QA tests. 
+
+  // highly unlikely, though it is a possible edge case from QA tests.
   // To reproduce, perform the following two actions in sequence very quickly in FxA settings portal:
   // 1. swap primary email and secondary email
   // 2. quickly follow step 1 with deleting the account
