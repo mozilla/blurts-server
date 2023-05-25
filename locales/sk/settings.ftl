@@ -32,6 +32,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Vyžaduje sa overenie e-mailovej adresy
 settings-resend-email-verification-link = Znova poslať overovací e-mail
 settings-add-email-button = Pridať e-mailovú adresu
+settings-delete-email-button = Odstrániť e-mailovú adresu
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -43,6 +44,12 @@ settings-email-number-of-breaches-info =
         [many] Vyskytuje sa v { $breachCount } známych únikoch.
        *[other] Vyskytuje sa v { $breachCount } známych únikoch.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Zrušiť predplatné { -brand-premium }
+settings-cancel-premium-subscription-info = Po skončení aktuálneho fakturačného cyklu sa vaše predplatné vráti na bezplatný účet. Vaše výsledky kontroly ochrany súkromia budú natrvalo odstránené a monitorovanie únikov údajov budete mať len na 1 e-mailovej adrese.
+settings-cancel-premium-subscription-link-label = Zrušiť z vášho { -brand-fx-account(case: "gen", capitalization: "lower") }
 
 ## Deactivate account
 
@@ -56,3 +63,12 @@ settings-email-dialog-title = Pridanie ďalšej e-mailovej adresy
 settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku údajov.
 settings-email-input-label = E-mailová adresa
 settings-send-email-verification-button = Odoslať overovací odkaz
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-title = Mrzí nás, že odchádzate.<br />Môžete nám povedať svoje dôvody?
+settings-unsubscribe-dialog-info = Vaše skúsenosti sú pre nás dôležité. Každú odpoveď čítame a berieme do úvahy.
+settings-unsubscribe-dialog-message-placeholder = Čo mohlo ísť lepšie?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Upozorňujeme, že všetky vaše služby { -brand-monitor-premium } budú <a { $faq_href }>natrvalo odstránené</a> po skončení aktuálneho fakturačného cyklu.
+settings-unsubscribe-dialog-continue = Pokračovať v zrušení

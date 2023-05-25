@@ -777,6 +777,8 @@ ad-unit-6-before-you-complete = Pred dokončením vašej ďalšej registrácie p
         [loc] Mozille
         [ins] Mozillou
     }
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -845,8 +847,11 @@ menu-button-title = Ponuka používateľa
 menu-button-alt = Otvoriť používateľskú ponuku
 menu-list-accessible-label = Ponuka účtu
 menu-item-fxa = Spravovať { -brand-fx-account(case: "acc", capitalization: "lower") }
+menu-item-fxa-alt = Otvoriť stránku { -brand-fx-account }
 menu-item-settings = Nastavenia
+menu-item-settings-alt = Otvoriť nastavenia
 menu-item-help = Pomoc a podpora
+menu-item-help-alt = Otvoriť stránku pomoci a podpory
 menu-item-logout = Odhlásiť sa
 
 ## Footer
