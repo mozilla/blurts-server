@@ -1,0 +1,11 @@
+exposure-landing-hero-heading = Averigua si tu información personal se ha visto comprometida
+exposure-landing-hero-email-label = Dirección de correo electrónico
+exposure-landing-hero-email-placeholder = Escribe tu dirección de correo
+exposure-landing-hero-cta-label = Consulta las filtraciones
+exposure-landing-result-loading = Cargando, por favor espera…
+exposure-landing-result-card-added = Filtración añadida:
+exposure-landing-result-card-data = Datos expuestos:
+exposure-landing-result-card-nothing = No se han encontrado filtraciones
+exposure-landing-result-overflow-hero-cta-label = Inicia sesión para resolver filtraciones
+exposure-landing-result-overflow-footer-cta-label = Inicia sesión para verlo todo
+exposure-landing-result-none-footer-cta-label = Suscríbete para recibir alertas

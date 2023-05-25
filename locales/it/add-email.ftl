@@ -6,6 +6,7 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Aggiungi un altro indirizzo email
+close-dialog-alt = Chiudi finestra di dialogo
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes =
     { $total ->

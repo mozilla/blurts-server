@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { getFloatingBanner } from '../views/partials/floatingBanner.js'
 
 /**
  * @type {ViewPartial<GuestViewPartialData<any>>}
@@ -73,6 +74,7 @@ const guestLayout = data => {
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}
         </main>
+        ${getFloatingBanner({ pathname: data.pathname })}
         <footer class='site-footer'>
           <a href='https://www.mozilla.org' target='_blank'>
             <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>

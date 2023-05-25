@@ -64,13 +64,36 @@ async function getSubscriberByEmail (email) {
  * @returns {object} updated subscriber
  */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
-  const updated = await knex('subscribers')
-    .where('id', '=', subscriber.id)
-    .update({
-      primary_email: updatedEmail
-    })
-    .returning('*')
-  const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
+  const trx = await knex.transaction()
+  let subscriberTableUpdated, emailTableUpdated
+  try {
+    // update subscriber primary email to updated email
+    subscriberTableUpdated = await knex('subscribers')
+      .where('id', '=', subscriber.id)
+      .update({
+        primary_email: updatedEmail
+      })
+      .returning('*')
+      .transacting(trx)
+
+    // if email_addresses table has updatedEmail as a secondary in Monitor
+    // swap it with the current primary
+    // Fixing: MNTOR-1748
+    emailTableUpdated = await knex('email_addresses')
+      .where('email', '=', updatedEmail)
+      .update({
+        email: subscriber.primary_email
+      })
+      .transacting(trx)
+
+    await trx.commit()
+    log.debug('updatePrimaryEmail', { subscriberTableUpdated })
+    log.debug('updatePrimaryEmail', { emailTableUpdated })
+  } catch (error) {
+    await trx.rollback()
+    log.error('updatePrimaryEmail', error)
+  }
+  const updatedSubscriber = Array.isArray(subscriberTableUpdated) ? subscriberTableUpdated[0] : null
   return updatedSubscriber
 }
 
@@ -254,11 +277,22 @@ async function deleteUnverifiedSubscribers () {
  * Delete subscriber when a FxA user id is provided
  * Also deletes all the additional email addresses associated with the account
  *
- * @param {string} fxaUID FxA user ID
+ * @param {object} sub subscriber object
  */
-async function deleteSubscriberByFxAUID (fxaUID) {
-  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
-  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
+async function deleteSubscriber (sub) {
+  const trx = await knex.transaction()
+  log.debug('deleteSubscriber', JSON.stringify(sub))
+
+  try {
+    await knex('email_addresses').where({ subscriber_id: sub.id }).del().transacting(trx)
+    await knex('subscribers').returning('id').where('fxa_uid', sub.fxa_uid).del().transacting(trx)
+    await trx.commit()
+  } catch (error) {
+    await trx.rollback()
+    log.error('deleteSubscriber', error)
+  }
+  //  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
+  //  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
 }
 
 async function deleteResolutionsWithEmail (id, email) {
@@ -363,6 +397,6 @@ export {
   removeSubscriber,
   removeSubscriberByToken,
   deleteUnverifiedSubscribers,
-  deleteSubscriberByFxAUID,
+  deleteSubscriber,
   deleteResolutionsWithEmail
 }

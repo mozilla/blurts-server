@@ -712,6 +712,8 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Prémium
+-brand-monitor-premium = Monitor Prémium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -748,8 +750,11 @@ menu-button-title = Felhasználói menü
 menu-button-alt = Felhasználói menü megnyitása
 menu-list-accessible-label = Fiók menü
 menu-item-fxa = A { -brand-fx-account }ja kezelése
+menu-item-fxa-alt = A { -brand-fx-account } oldal megnyitása
 menu-item-settings = Beállítások
+menu-item-settings-alt = Beállítások oldal megnyitása
 menu-item-help = Súgó és támogatás
+menu-item-help-alt = Súgó és támogatás oldal megnyitása
 menu-item-logout = Kijelentkezés
 
 ## Footer
