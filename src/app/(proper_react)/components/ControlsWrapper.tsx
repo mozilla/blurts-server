@@ -10,6 +10,7 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./ControlsWrapper.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
+import AppConstants from "../../../appConstants.js";
 import { ArrowIcon, HamburgerIcon } from "../../components/server/Icons";
 import { useL10n } from "../../hooks/l10n";
 import { UserMenu } from "../../components/client/UserMenu";
@@ -89,7 +90,10 @@ export const ControlsWrapper = (props: Props) => {
           </div>
           {/* TODO: Add an aria-label describing this menu, to distinguish it from .mainMenu */}
           <nav className={styles.metaMenu}>
-            <UserMenu session={props.session} />
+            <UserMenu
+              session={props.session}
+              fxaSettingsUrl={AppConstants.FXA_SETTINGS_URL}
+            />
           </nav>
         </header>
         <div className={styles.page}>{props.children}</div>
