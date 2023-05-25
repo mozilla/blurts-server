@@ -12,7 +12,7 @@ export const SignInButton = () => {
 
   return (
     <button
-      onClick={() => signIn("fxa")}
+      onClick={() => signIn("fxa", { callbackUrl: "/user/breaches" })}
       data-cta-id="sign-in-1"
       className="button secondary"
     >
