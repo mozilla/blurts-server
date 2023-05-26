@@ -17,7 +17,6 @@ export async function GET(req: NextRequest) {
   const token = await getToken({ req });
   if (token) {
     // Signed in
-    console.debug("JSON Web Token", JSON.stringify(token, null, 2));
     try {
       const subscriber = await getSubscriberByEmail(token.email);
       const allBreaches = await getBreaches();
@@ -43,9 +42,7 @@ export async function PUT(req: NextRequest) {
     try {
       const subscriber = await getSubscriberByEmail(token.email);
       const allBreaches = await getBreaches();
-      console.log({ subscriber });
       const j = await req.json();
-      console.log("j ", JSON.stringify(j));
       const { affectedEmail, breachId, resolutionsChecked } = j;
       const breachIdNumber = Number(breachId);
       const affectedEmailAsSubscriber =
@@ -56,8 +53,6 @@ export async function PUT(req: NextRequest) {
         subscriber.email_addresses.find((ea) => ea.email === affectedEmail)
           ?.email || false;
 
-      console.log({ affectedEmailAsSubscriber });
-      console.log({ affectedEmailInEmailAddresses });
       // check if current user's emails array contain affectedEmail
       if (!affectedEmailAsSubscriber && !affectedEmailInEmailAddresses) {
         return NextResponse.json({
