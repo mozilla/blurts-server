@@ -15,7 +15,7 @@ import ImageBreachesNone from "../../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../../client/images/breaches-all-resolved.svg";
 import "./breaches.d";
 
-const data = {
+const testData = {
   breachesData: [],
   breachLogos: [],
   csrfToken: "test123",
@@ -23,7 +23,7 @@ const data = {
   emailTotalCount: 3,
   emailVerifiedCount: 1,
   selectedEmailIndex: 0,
-  verifiedEmails: 2,
+  verifiedEmails: [],
 };
 
 export default async function UserBreaches() {
@@ -48,16 +48,19 @@ export default async function UserBreaches() {
     <>
       <Script src="/nextjs_migration/client/js/breaches.js" />
       <Script src="/nextjs_migration/client/js/circleChart.js" />
+      <Script src="/nextjs_migration/client/js/customSelect.js" />
       <section>
         <header className="breaches-header">
-          <h1>
-            {l10n.getString("breach-heading-email", {
-              "email-select": `<custom-select name='email-account'>{createEmailOptions(
-                data.breachesData,
-                data.selectedEmailIndex
-              )}</custom-select>`,
-            })}
-          </h1>
+          <h1
+            dangerouslySetInnerHTML={{
+              __html: l10n.getString("breach-heading-email", {
+                "email-select": `<custom-select name="email-account">${createEmailOptions(
+                  testData.breachesData,
+                  0
+                )}</custom-select>`,
+              }),
+            }}
+          />
 
           <circle-chart
             className="breach-chart"
@@ -69,14 +72,14 @@ export default async function UserBreaches() {
 
           <figure
             className="email-stats"
-            data-count={data.emailTotalCount}
+            data-count={testData.emailTotalCount}
             data-total={AppConstants.MAX_NUM_ADDRESSES}
           >
             <Image src={ImageIconEmail} alt="" width={55} height={30} />
             <figcaption>
               <strong>
                 {l10n.getString("emails-monitored", {
-                  count: data.emailVerifiedCount,
+                  count: testData.emailVerifiedCount,
                   total: AppConstants.MAX_NUM_ADDRESSES,
                 })}
               </strong>
@@ -114,7 +117,7 @@ export default async function UserBreaches() {
         </label>
       </fieldset>
 
-      <section className="breaches-table" data-token={data.csrfToken}>
+      <section className="breaches-table" data-token={testData.csrfToken}>
         <header>
           <span>{l10n.getString("column-company")}</span>
           <span>{l10n.getString("column-breached-data")}</span>
@@ -190,17 +193,17 @@ export default async function UserBreaches() {
   );
 }
 
-// function createEmailOptions(data, selectedEmailIndex) {
-//   const emails = data.verifiedEmails.map((obj) => obj.email);
-//   const optionElements = emails.map(
-//     (email, index) =>
-//       `<option {
-//         selectedEmailIndex === index ? "selected" : ""
-//       }>{email}</option>`
-//   );
+function createEmailOptions(data, selectedEmailIndex) {
+  const emails = data.verifiedEmails.map((obj) => obj.email);
+  const optionElements = emails.map(
+    (email, index) =>
+      `<option {
+        selectedEmailIndex === index ? "selected" : ""
+      }>{email}</option>`
+  );
 
-//   return optionElements.join("");
-// }
+  return optionElements.join("");
+}
 
 // function createBreachRows(data, logos) {
 //   const locale = getLocale();
