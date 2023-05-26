@@ -734,6 +734,7 @@ menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
 menu-item-settings = Ñemboheko
 menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
 menu-item-help = Ñepytvõ ha Pytyvõha
+menu-item-help-alt = Embojuruja kuatiarogue ñepytyvõha
 menu-item-logout = Emboty tembiapo
 
 ## Footer
