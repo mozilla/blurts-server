@@ -13,6 +13,7 @@ import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import ImageBreachesNone from "../../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../../client/images/breaches-all-resolved.svg";
+import "./breaches.d";
 
 const data = {
   breachesData: [],
@@ -28,9 +29,25 @@ const data = {
 export default async function UserBreaches() {
   const l10n = getL10n();
 
+  const circleChartData = [
+    {
+      key: "resolved",
+      name: "Resolved",
+      count: 0,
+      color: "#9059ff",
+    },
+    {
+      key: "unresolved",
+      name: "Unresolved",
+      count: 10,
+      color: "#321c64",
+    },
+  ];
+
   return (
     <>
       <Script src="/nextjs_migration/client/js/breaches.js" />
+      <Script src="/nextjs_migration/client/js/circleChart.js" />
       <section>
         <header className="breaches-header">
           <h1>
@@ -41,12 +58,14 @@ export default async function UserBreaches() {
               )}</custom-select>`,
             })}
           </h1>
-          {/* <circle-chart
-            className='breach-chart'
-            title='{l10n.getString("breach-chart-title")}'
-            data-txt-other='{l10n.getString("other-data-class")}'
-            data-txt-none='{l10n.getString("none-data-class")}'>
-          </circle-chart> */}
+
+          <circle-chart
+            className="breach-chart"
+            title={l10n.getString("breach-chart-title")}
+            data-txt-other={l10n.getString("other-data-class")}
+            data-txt-none={l10n.getString("none-data-class")}
+            data={JSON.stringify(circleChartData)}
+          ></circle-chart>
 
           <figure
             className="email-stats"

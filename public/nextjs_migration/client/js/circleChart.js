@@ -129,7 +129,7 @@ const styles = `
 /**
  * @param {number} total
  * @param {number} value
- * @returns {number} number
+ * @returns number
  */
 const calcPercentage = (total, value) => {
   if (!total) {
