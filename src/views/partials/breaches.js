@@ -111,6 +111,7 @@ export const breaches = data => `
     <span>${getMessage('column-detected')}</span>
   </header>
   ${createBreachRows(data.breachesData, data.breachLogos)}
+  ${JSON.stringify(data, null, 2)}
   <template class='no-breaches'>
     <div class="zero-state no-breaches-message">
       <img src='/images/breaches-none.svg' alt='' width="136" height="102" />
