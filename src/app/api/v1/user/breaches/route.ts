@@ -14,7 +14,6 @@ import appConstants from "../../../../../appConstants";
 
 // Get breaches data
 export async function GET(req: NextRequest) {
-  console.log("get called");
   const token = await getToken({ req });
   if (token) {
     // Signed in
@@ -39,7 +38,6 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PUT(req: NextRequest) {
-  console.log("put called");
   const token = await getToken({ req });
   if (token) {
     try {
