@@ -15,6 +15,7 @@ breach-detail-meta-social-title = Dotýká se vás únik údajů společnosti { 
 breach-detail-meta-social-description = Pomocí služby { -brand-fx-monitor } zjistíte, zda byly při tomto úniku odhaleny vaše osobní údaje a dozvíte se, co máte dělat dále.
 breach-scan-meta-title = { -brand-fx-monitor } - výsledky úniků údajů
 breach-scan-meta-social-title = { -brand-fx-monitor } - výsledky úniků údajů
+breach-scan-meta-social-description = Přihlaste se do služby { -brand-fx-monitor }, abyste vyřešili úniky údajů a získali nepřetržité monitorování všech nových známých úniků.
 
 ## Breaches header
 
@@ -74,6 +75,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
+breach-checklist-pw-header-text = Aktualizujte svá hesla a povolte dvoufázové ověření (2FA).
 
 ## Prompts the user for changes when there is a breach detected of email
 

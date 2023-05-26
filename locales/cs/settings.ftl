@@ -48,6 +48,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Zrušit předplatné { -brand-premium }
+settings-cancel-premium-subscription-link-label = Zrušit z vašeho { -brand-fx-account(case: "gen", capitalization: "lower") }
 
 ## Deactivate account
 
@@ -64,5 +65,7 @@ settings-send-email-verification-button = Zaslat ověřovací odkaz
 
 ## Unsubscribe Dialog Survey
 
+settings-unsubscribe-dialog-title = Mrzí nás, že odcházíte. <br />Můžete nám sdělit své důvody?
+settings-unsubscribe-dialog-info = Vaše zkušenosti jsou pro nás důležité. Každá odpověď se počítá a bereme je v úvahu.
 settings-unsubscribe-dialog-continue = Pokračovat v rušení
 settings-unsubscribe-dialog-cancel = Rozmyslel(a) jsem si to
