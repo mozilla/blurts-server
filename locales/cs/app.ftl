@@ -837,6 +837,7 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
 
 ## Search Engine Optimization
 
+meta-desc-2 = Zjistěte pomocí { -brand-fx-monitor }, zda jste nebyli součástí úniku dat. Pomůžeme vám porozumět tomu, co dělat dále, a budeme průběžně sledovat jakékoli nové úniky dat.
 
 ## Header
 
@@ -888,6 +889,7 @@ error-page-error-other-copy = Zkuste to znovu nebo se vraťte později
 ## Breach overview page
 
 all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
+all-breaches-lead = Monitorujeme všechny známé úniky údajů, abysme zjistili, zda nedošlo k ohrožení vašich osobních údajů. Zde je úplný seznam všech úniků, které byly nahlášeny od roku 2007.
 search-breaches = Prohledat úniky dat
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Odhalené údaje:
@@ -895,4 +897,5 @@ exposed-data = Odhalené údaje:
 ## Public breach detail page
 
 find-out-if-2 = Zjistěte, zda jste byli součástí tohoto úniku
+find-out-if-description = Pomůžeme vám rychle zjistit, zda byla při tomto úniku odhalena vaše e-mailová adresa a pomůžeme vám pochopit, co dělat dále.
 breach-detail-cta-signup = Prohledat úniky
