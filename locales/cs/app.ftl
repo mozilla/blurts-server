@@ -859,9 +859,11 @@ menu-button-title = Nabídka uživatele
 menu-button-alt = Otevřít nabídku uživatele
 menu-list-accessible-label = Nabídka účtu
 menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
+menu-item-fxa-alt = Otevřít stránku { -brand-fx-account }
 menu-item-settings = Nastavení
 menu-item-settings-alt = Otevřít stránku nastavení
 menu-item-help = Nápověda a podpora
+menu-item-help-alt = Otevřít stránku nápovědy a podpory
 menu-item-logout = Odhlásit se
 
 ## Footer

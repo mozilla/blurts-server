@@ -32,6 +32,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Vyžadováno ověření e-mailové adresy
 settings-resend-email-verification-link = Znovu poslat ověřovací e-mail
 settings-add-email-button = Přidat e-mailové adresy
+settings-delete-email-button = Smazat e-mailovou adresu
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -43,6 +44,10 @@ settings-email-number-of-breaches-info =
         [many] Vyskytuje se v { $breachCount } známých únicích.
        *[other] Vyskytuje se v { $breachCount } známých únicích.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Zrušit předplatné { -brand-premium }
 
 ## Deactivate account
 
@@ -56,3 +61,8 @@ settings-email-dialog-title = Přidání další e-mailové adresy
 settings-add-email-text = Přidejte novou e-mailovou adresu, abyste zjistili, zda nebyla součástí nějakého úniku dat.
 settings-email-input-label = E-mailová adresa
 settings-send-email-verification-button = Zaslat ověřovací odkaz
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-continue = Pokračovat v rušení
+settings-unsubscribe-dialog-cancel = Rozmyslel(a) jsem si to
