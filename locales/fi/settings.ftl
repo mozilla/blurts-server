@@ -44,6 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Peruuta { -brand-premium }-tilaus
+settings-cancel-premium-subscription-info = Tilauksesi muuttuu ilmaiseksi tiliksi nykyisen laskutusjakson päättyessä. Yksityisyyssuojauksen tarkastustulokset poistetaan pysyvästi, ja sinulla on vain yhden sähköpostiosoitteen valvonta tietovuotojen varalta.
 settings-cancel-premium-subscription-link-label = Peruuta { -brand-fx-account }ltäsi
 
 ## Deactivate account
@@ -64,5 +65,7 @@ settings-send-email-verification-button = Lähetä vahvistuslinkki
 settings-unsubscribe-dialog-title = Ikävää, että lähdet. <br /> Kerrotko meille, miksi lähdet?
 settings-unsubscribe-dialog-info = Kokemuksesi on meille tärkeä. Luemme jokaisen vastauksen ja otamme siinä kerrotut asiat huomioon.
 settings-unsubscribe-dialog-message-placeholder = Mikä olisi voinut mennä paremmin?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Huomoi, että kaikki { -brand-monitor-premium } -palvelusi <a { $faq_href }>poistetaan pysyvästi</a> nykyisen laskutusjaksosi päätyttyä.
 settings-unsubscribe-dialog-continue = Jatka peruutukseen
 settings-unsubscribe-dialog-cancel = Unohdetaan tämä, palataan takaisin
