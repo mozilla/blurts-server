@@ -693,6 +693,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Iporãvéva
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -706,7 +707,6 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 
 ## Search Engine Optimization
 
-meta-desc = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -brand-fx-monitor } ndive. Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosãrã.
 
 ## Header
 
