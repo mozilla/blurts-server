@@ -713,6 +713,7 @@ error-page-error-other-copy = Lütfen daha sonra tekrar deneyin
 ## Breach overview page
 
 all-breaches-headline-2 = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
+all-breaches-lead = Kişisel bilgilerinizin ele geçirilip geçirilmediğini öğrenmek için bilinen tüm veri ihlallerini izliyoruz. İşte 2007’den beri bildirilen tüm ihlallerin tam listesi.
 search-breaches = İhlallerde ara
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Ele geçirilen veriler:
