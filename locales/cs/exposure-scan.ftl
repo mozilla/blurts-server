@@ -8,6 +8,7 @@ exposure-landing-result-error = Nepodařilo se zkontrolovat úniky data. Zkuste 
 exposure-landing-result-card-added = Přidaný únik:
 exposure-landing-result-card-data = Uniklá data:
 exposure-landing-result-card-nothing = Nebyly nalezeny žádné úniky dat
+exposure-landing-result-overflow-hero-cta-label = Pro vyřešení úniků se přihlaste
 exposure-landing-result-some-hero-cta-label = Pro vyřešení úniků se přihlaste
 exposure-landing-result-some-footer-cta-label = Pro vyřešení úniků se přihlaste
 exposure-landing-result-none-hero-cta-label = Nechte se upozorňovat na nové úniky dat

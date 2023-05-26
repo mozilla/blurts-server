@@ -8,6 +8,11 @@ breach-all-meta-social-title = Všechny úniky dat detekované { -brand-fx-monit
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Uniklá data společnosti { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Dotýká se vás únik údajů společnosti { $company }?
+breach-scan-meta-title = { -brand-fx-monitor } - výsledky úniků údajů
+breach-scan-meta-social-title = { -brand-fx-monitor } - výsledky úniků údajů
 
 ## Breaches header
 
