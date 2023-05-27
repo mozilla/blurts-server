@@ -76,6 +76,10 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 ## Prompts the user for changes when there is a breach detected of password
 
 breach-checklist-pw-header-text = Aktualizujte svá hesla a povolte dvoufázové ověření (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-pw-body-text = Ve většině případů doporučujeme změnit heslo na webových stránkách společnosti. Ale <b>jejich webové stránky mohou být nefunkční nebo mohou obsahovat škodlivý obsah</b>, takže pokud <breached-company-link>navštívíte stránky</breached-company-link>, buďte opatrní. Pro větší ochranu se ujistěte, že používáte jedinečná hesla pro všechny účty, aby žádná uniklá hesla nemohla být použita k přístupu k jiným účtům. { $passwordManagerLink } vám může pomoci bezpečně sledovat všechna vaše hesla.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -140,6 +144,8 @@ breach-checklist-phone-header-2 = Chraňte své telefonní číslo pomocí masko
 ## Prompts the user for changes when there is a breach detected of security questions
 
 breach-checklist-sq-header-text = Aktualizujte své bezpečnostní otázky.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Ve většině případů doporučujeme aktualizovat bezpečnostní otázky na webu společnosti. Ale <b>jejich webové stránky mohou být nefunkční nebo mohou obsahovat škodlivý obsah</b>, takže pokud <breached-company-link>navštívíte stránky</breached-company-link>, buďte opatrní. Pro větší ochranu aktualizujte tyto bezpečnostní otázky u všech důležitých účtů, kde jste je používali, a pro všechny účty vytvořte jedinečná hesla.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

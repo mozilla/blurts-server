@@ -48,6 +48,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Zrušit předplatné { -brand-premium }
+settings-cancel-premium-subscription-info = Po skončení aktuálního fakturačního období se vaše předplatné vrátí na bezplatný účet. Vaše výsledky kontroly ochrany soukromí budou trvale smazány a budete mít monitorování narušení dat pouze pro 1 e-mailovou adresu.
 settings-cancel-premium-subscription-link-label = Zrušit z vašeho { -brand-fx-account(case: "gen", capitalization: "lower") }
 
 ## Deactivate account
@@ -68,5 +69,7 @@ settings-send-email-verification-button = Zaslat ověřovací odkaz
 settings-unsubscribe-dialog-title = Mrzí nás, že odcházíte. <br />Můžete nám sdělit své důvody?
 settings-unsubscribe-dialog-info = Vaše zkušenosti jsou pro nás důležité. Každá odpověď se počítá a bereme je v úvahu.
 settings-unsubscribe-dialog-message-placeholder = Co mohlo být lepší?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Upozorňujeme, že všechny vaše služby { -brand-monitor-premium } budou <a { $faq_href }>trvale smazány</a> po skončení aktuálního fakturačního období.
 settings-unsubscribe-dialog-continue = Pokračovat v rušení
 settings-unsubscribe-dialog-cancel = Rozmyslel(a) jsem si to

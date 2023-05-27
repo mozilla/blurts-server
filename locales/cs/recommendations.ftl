@@ -9,6 +9,9 @@ rec-ssn =
 rec-pw-1-subhead = Změňte si své heslo
 # Link title
 rec-pw-1-cta = Změňte si heslo na tomto serveru
+rec-pw-1-2 =
+    Používejte unikátní hesla, vždy různá pro každý server.
+    Dobrým způsobem je třeba kombinace více zcela nesouvisejících slov zahrnujících čísla a symboly.
 # Recommendation subhead
 rec-pw-2-subhead = Aktualizujte přihlašovací údaje všude, kde jste používali stejné heslo
 # Link title
