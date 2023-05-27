@@ -11,8 +11,8 @@ settings-page-title = Nastavení { -product-short-name(case: "gen") }
 ## Breach alert preferences
 
 settings-alert-preferences-title = Předvolby upozorňování na únik dat
-settings-alert-preferences-option-one = Poslat upozornění na únik na postiženou e-mailovou adresu
-settings-alert-preferences-option-two = Posílat všechna upozornění na úniky dat na primární e-mailovou adresu
+settings-alert-preferences-option-one = Upozornění poslat na postiženou e-mailovou adresu
+settings-alert-preferences-option-two = Všechna upozornění posílat na primární e-mailovou adresu
 
 ## Monitored email addresses
 

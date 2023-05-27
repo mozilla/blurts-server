@@ -498,7 +498,7 @@ signed-in-as = Přihlášen(a) jako: { $userEmail }
 filter-by = Filtrovat podle kategorie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Nabídka
-to-affected-email = Poslat upozornění na únik na postiženou e-mailovou adresu
+to-affected-email = Upozornění poslat na postiženou e-mailovou adresu
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Existuje způsob, jak ochránit své soukromí. Používejte { -brand-name(case: "acc") }.
 # Link title
