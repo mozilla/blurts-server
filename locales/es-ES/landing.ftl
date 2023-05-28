@@ -9,6 +9,7 @@ get-started = Comenzar
 
 why-use-monitor = ¿Por qué usar { -brand-fx-monitor }?
 protect-account = Protege tus cuentas
+get-alerts = Recibe alertas de nuevas filtraciones
 
 ## Here’s how it works
 
@@ -29,6 +30,12 @@ learn-more-mission = Saber más sobre nuestra misión
 
 top-questions-about-monitor = Principales preguntas acerca de { -brand-fx-monitor }
 see-all-faq = Ver todas las preguntas frecuentes
+# question and answer
+what-is-breach = ¿Qué es exactamente una filtración de datos?
+# question and answer
+what-do-i-do = Acabo de enterarme de que estoy en una filtración de datos. ¿Qué hago?
+# question and answer
+what-gets-exposed = ¿Qué información queda expuesta en las filtraciones de datos?
 
 ## See if you’ve been in a data breach
 

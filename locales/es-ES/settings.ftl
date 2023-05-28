@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Ajustes
 settings-page-title = Ajustes de { -product-short-name }
 
 ## Breach alert preferences
@@ -29,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Se requiere verificación de correo electrónico
 settings-resend-email-verification-link = Reenviar correo de verificación
 settings-add-email-button = Añadir dirección de correo electrónico
+settings-delete-email-button = Eliminar dirección de correo
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -38,6 +40,11 @@ settings-email-number-of-breaches-info =
         [one] Aparece en { $breachCount } filtración conocida.
        *[other] Aparece en { $breachCount } filtraciones conocidas.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Cancelar la suscripción de { -brand-premium }
+settings-cancel-premium-subscription-link-label = Cancela desde tu { -brand-fx-account }
 
 ## Deactivate account
 
@@ -51,3 +58,8 @@ settings-email-dialog-title = Añadir otra dirección de correo electrónico
 settings-add-email-text = Añadir una nueva dirección de correo para ver si está afectada por una filtración.
 settings-email-input-label = Correo electrónico
 settings-send-email-verification-button = Enviar enlace de verificación
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-continue = Continuar con la cancelación
+settings-unsubscribe-dialog-cancel = No importa, volvamos
