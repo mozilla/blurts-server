@@ -691,6 +691,8 @@ ad-unit-6-before-you-complete = Прежде чем завершить след�
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -731,8 +733,11 @@ menu-button-title = Пользовательское меню
 menu-button-alt = Открыть пользовательское меню
 menu-list-accessible-label = Меню аккаунта
 menu-item-fxa = Управляйте своим { -brand-fx-account(case: "prepositional") }
+menu-item-fxa-alt = Открыть страницу { -brand-fx-account }
 menu-item-settings = Настройки
+menu-item-settings-alt = Открыть страницу настроек
 menu-item-help = Справка и поддержка
+menu-item-help-alt = Открыть страницу справки и поддержки
 menu-item-logout = Выйти
 
 ## Footer
