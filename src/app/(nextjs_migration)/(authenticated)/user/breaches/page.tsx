@@ -6,279 +6,272 @@ import Image from "next/image";
 import Script from "next/script";
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
-// import { getMessage, getLocale } from "../../utils/fluent.js";
-// import { getBreachLogo } from "../../utils/breachLogo.js";
+import { getUserBreaches } from "../../../../functions/server/getUserBreaches";
+import { getLocale } from "../../../../../utils/fluent.js";
+import { getBreachLogo } from "../../../../../utils/breachLogo.js";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import "./breaches.d";
 
 import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import ImageBreachesNone from "../../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../../client/images/breaches-all-resolved.svg";
-import "./breaches.d";
 
-const testData = {
-  breachesData: [],
-  breachLogos: [],
-  csrfToken: "test123",
-  emailCount: 10,
-  emailTotalCount: 3,
-  emailVerifiedCount: 1,
-  selectedEmailIndex: 0,
-  verifiedEmails: [],
-};
-
-export default async function UserBreaches() {
-  const l10n = getL10n();
-
-  const circleChartData = [
-    {
-      key: "resolved",
-      name: "Resolved",
-      count: 0,
-      color: "#9059ff",
-    },
-    {
-      key: "unresolved",
-      name: "Unresolved",
-      count: 10,
-      color: "#321c64",
-    },
-  ];
-
-  return (
-    <>
-      <Script src="/nextjs_migration/client/js/breaches.js" />
-      <Script src="/nextjs_migration/client/js/circleChart.js" />
-      <Script src="/nextjs_migration/client/js/customSelect.js" />
-      <section>
-        <header className="breaches-header">
-          <h1
-            dangerouslySetInnerHTML={{
-              __html: l10n.getString("breach-heading-email", {
-                "email-select": `<custom-select name="email-account">${createEmailOptions(
-                  testData.breachesData,
-                  0
-                )}</custom-select>`,
-              }),
-            }}
-          />
-
-          <circle-chart
-            className="breach-chart"
-            title={l10n.getString("breach-chart-title")}
-            data-txt-other={l10n.getString("other-data-class")}
-            data-txt-none={l10n.getString("none-data-class")}
-            data={JSON.stringify(circleChartData)}
-          ></circle-chart>
-
-          <figure
-            className="email-stats"
-            data-count={testData.emailTotalCount}
-            data-total={AppConstants.MAX_NUM_ADDRESSES}
-          >
-            <Image src={ImageIconEmail} alt="" width={55} height={30} />
-            <figcaption>
-              <strong>
-                {l10n.getString("emails-monitored", {
-                  count: testData.emailVerifiedCount,
-                  total: AppConstants.MAX_NUM_ADDRESSES,
-                })}
-              </strong>
-              <a href="/user/settings">
-                {l10n.getString("manage-emails-link")}
-              </a>
-            </figcaption>
-          </figure>
-        </header>
-      </section>
-
-      <fieldset className="breaches-filter">
-        <input
-          id="breaches-unresolved"
-          type="radio"
-          name="breaches-status"
-          value="unresolved"
-          autoComplete="off"
-          defaultChecked
-        />
-        <label htmlFor="breaches-unresolved">
-          <output>&nbsp;</output>
-          {l10n.getString("filter-label-unresolved")}
-        </label>
-        <input
-          id="breaches-resolved"
-          type="radio"
-          name="breaches-status"
-          value="resolved"
-          autoComplete="off"
-        />
-        <label htmlFor="breaches-resolved">
-          <output>&nbsp;</output>
-          {l10n.getString("filter-label-resolved")}
-        </label>
-      </fieldset>
-
-      <section className="breaches-table" data-token={testData.csrfToken}>
-        <header>
-          <span>{l10n.getString("column-company")}</span>
-          <span>{l10n.getString("column-breached-data")}</span>
-          {/* The active/resolved badge does not have a column header, but by
-          including an empty <span>, we can re-use the `nth-child`-based
-          selectors for the content columns. */}
-          <span></span>
-          <span>{l10n.getString("column-detected")}</span>
-        </header>
-        {/* {createBreachRows(data.breachesData, data.breachLogos)} */}
-        <template
-          className="no-breaches"
-          dangerouslySetInnerHTML={{
-            __html: `
-              <div className="zero-state no-breaches-message">
-                <Image src="${ImageBreachesNone}" alt="" width="136" height="102" />
-                <h2>${l10n.getString("breaches-none-headline")}</h2>
-                <p>
-                  ${l10n.getString("breaches-none-copy", {
-                    email: '<b class="current-email"></b>',
-                  })}
-                </p>
-                <p className="add-email-cta">
-                  <span>${l10n.getString("breaches-none-cta-blurb")}</span>
-                  <button
-                    className="primary"
-                    data-cta-id="breaches-none"
-                    data-dialog="addEmail"
-                  >
-                    ${l10n.getString("breaches-none-cta-button")}
-                  </button>
-                </p>
-              </div>
-            `,
-          }}
-        />
-
-        <template
-          className="all-breaches-resolved"
-          dangerouslySetInnerHTML={{
-            __html: `
-              <div className="zero-state all-breaches-resolved-message">
-                <Image
-                  src="${ImageBreachesAllResolved}"
-                  alt=""
-                  width="136"
-                  height="102"
-                />
-                <h2>${l10n.getString("breaches-all-resolved-headline")}</h2>
-                <p>
-                  ${l10n.getString("breaches-all-resolved-copy", {
-                    email: '<b class="current-email"></b>',
-                  })}
-                </p>
-                <p className="add-email-cta">
-                  <span>${l10n.getString(
-                    "breaches-all-resolved-cta-blurb"
-                  )}</span>
-                  <button
-                    className="primary"
-                    data-cta-id="breaches-all-resolved"
-                    data-dialog="addEmail"
-                  >
-                    ${l10n.getString("breaches-all-resolved-cta-button")}
-                  </button>
-                </p>
-              </div>
-            `,
-          }}
-        />
-      </section>
-    </>
-  );
-}
-
-function createEmailOptions(data, selectedEmailIndex) {
+function createEmailOptions(data, selectedIndex) {
   const emails = data.verifiedEmails.map((obj) => obj.email);
   const optionElements = emails.map(
     (email, index) =>
-      `<option {
-        selectedEmailIndex === index ? "selected" : ""
-      }>{email}</option>`
+      `<option ${selectedIndex === index ? "selected" : ""}>${email}</option>`
   );
 
   return optionElements.join("");
 }
 
-// function createBreachRows(data, logos) {
-//   const locale = getLocale();
-//   const shortDate = new Intl.DateTimeFormat(locale, {
-//     year: "numeric",
-//     month: "2-digit",
-//     day: "2-digit",
-//     timeZone: "UTC",
-//   });
-//   const shortList = new Intl.ListFormat(locale, { style: "narrow" });
-//   const longDate = new Intl.DateTimeFormat(locale, {
-//     dateStyle: "long",
-//     timeZone: "UTC",
-//   });
-//   const longList = new Intl.ListFormat(locale, { style: "long" });
-//   const breachRowsHTML = data.verifiedEmails.flatMap((account) => {
-//     return account.breaches.map((breach) => {
-//       const isHidden = !account.primary || breach.IsResolved; // initial breach hidden state
-//       const status = breach.IsResolved ? "resolved" : "unresolved";
-//       const breachDate = Date.parse(breach.BreachDate);
-//       const addedDate = Date.parse(breach.AddedDate);
-//       const dataClassesTranslated = breach.DataClasses.map((item) =>
-//         getMessage(item)
-//       );
-//       const description = getMessage("breach-description", {
-//         companyName: breach.Title,
-//         breachDate: longDate.format(breachDate),
-//         addedDate: longDate.format(addedDate),
-//         dataClasses: longList.format(dataClassesTranslated),
-//       });
+function createResolveSteps(breach) {
+  const checkedArr = breach.ResolutionsChecked || [];
+  const resolveStepsHTML = Object.entries(breach.breachChecklist).map(
+    ([key, value]) => `
+    <li class="resolve-list-item">
+      <input name="${breach.Id}" value="{key}" type="checkbox" ${
+      checkedArr.includes(key) ? "checked" : ""
+    }>
+      <p>${value.header}<br><i>${value.body}</i></p>
+    </li>
+   `
+  );
 
-//       const logo = getBreachLogo(breach, logos);
+  return resolveStepsHTML.join("");
+}
 
-//       return `
-//        <details className='breach-row' data-status={status} data-email={
-//         account.email
-//       } data-classes='{dataClassesTranslated}' {isHidden ? "hidden" : ""}>
-//          <summary>
-//            <span className='breach-company'>{logo} {breach.Title}</span>
-//            <span>{shortList.format(dataClassesTranslated)}</span>
-//            <span>
-//              <span className='resolution-badge is-resolved'>{l10n.getString(
-//                "column-status-badge-resolved"
-//              )}</span>
-//              <span className='resolution-badge is-active'>{l10n.getString(
-//                "column-status-badge-active"
-//              )}</span>
-//            </span>
-//            <span>{shortDate.format(addedDate)}</span>
-//          </summary>
-//          <article>
-//            <p>{description}</p>
-//            <p><strong>{l10n.getString("breaches-resolve-heading")}</strong></p>
-//            <ol className='resolve-list'>{createResolveSteps(breach)}</ol>
-//          </article>
-//        </details>
-//        `;
-//     });
-//   });
+export default async function UserBreaches() {
+  const session = await getServerSession(authOptions);
+  const l10n = getL10n();
 
-//   return breachRowsHTML.join("");
-// }
+  const userBreachesData = await getUserBreaches({
+    user: session.user,
+  });
+  // TODO: Provide country code
 
-// function createResolveSteps(breach) {
-//   const checkedArr = breach.ResolutionsChecked || [];
-//   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(
-//     ([key, value]) => `
-//    <li className='resolve-list-item'>
-//      <input name='{breach.Id}' value='{key}' type='checkbox' {
-//       checkedArr.includes(key) ? "checked" : ""
-//     }>
-//      <p>{value.header}<br><i>{value.body}</i></p>
-//    </li>
-//    `
-//   );
+  function createBreachRows(data, logos) {
+    const locale = getLocale();
+    const shortDate = new Intl.DateTimeFormat(locale, {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      timeZone: "UTC",
+    });
+    const shortList = new Intl.ListFormat(locale, { style: "narrow" });
+    const longDate = new Intl.DateTimeFormat(locale, {
+      dateStyle: "long",
+      timeZone: "UTC",
+    });
+    const longList = new Intl.ListFormat(locale, { style: "long" });
+    const breachRowsHTML = data.verifiedEmails.flatMap((account) => {
+      return account.breaches.map((breach) => {
+        const isHidden = !account.primary || breach.IsResolved; // initial breach hidden state
+        const status = breach.IsResolved ? "resolved" : "unresolved";
+        const breachDate = Date.parse(breach.BreachDate);
+        const addedDate = Date.parse(breach.AddedDate);
+        const dataClassesTranslated = breach.DataClasses.map((item) =>
+          l10n.getString(item)
+        );
+        const description = l10n.getString("breach-description", {
+          companyName: breach.Title,
+          breachDate: longDate.format(breachDate),
+          addedDate: longDate.format(addedDate),
+          dataClasses: longList.format(dataClassesTranslated),
+        });
 
-//   return resolveStepsHTML.join("");
-// }
+        const logo = getBreachLogo(breach, logos);
+
+        return `
+         <details class='breach-row' data-status="${status}" data-email="${
+          account.email
+        }" data-classes="${dataClassesTranslated}" ${isHidden ? "hidden" : ""}>
+           <summary>
+             <span class='breach-company'>${logo} ${breach.Title}</span>
+             <span>${shortList.format(dataClassesTranslated)}</span>
+             <span>
+               <span class='resolution-badge is-resolved'>${l10n.getString(
+                 "column-status-badge-resolved"
+               )}</span>
+               <span class='resolution-badge is-active'>${l10n.getString(
+                 "column-status-badge-active"
+               )}</span>
+             </span>
+             <span>${shortDate.format(addedDate)}</span>
+           </summary>
+           <article>
+             <p>${description}</p>
+             <p><strong>${l10n.getString(
+               "breaches-resolve-heading"
+             )}</strong></p>
+             <ol class='resolve-list'>${createResolveSteps(breach)}</ol>
+           </article>
+         </details>
+         `;
+      });
+    });
+
+    return breachRowsHTML.join("");
+  }
+
+  return (
+    <>
+      <Script src="/nextjs_migration/client/js/customSelect.js" />
+      <Script src="/nextjs_migration/client/js/circleChart.js" />
+      <Script src="/nextjs_migration/client/js/breaches.js" />
+      <main data-partial="breaches">
+        <section>
+          <header className="breaches-header">
+            <h1
+              dangerouslySetInnerHTML={{
+                __html: l10n.getString("breach-heading-email", {
+                  "email-select": `<custom-select name="email-account">${createEmailOptions(
+                    userBreachesData.breachesData,
+                    userBreachesData.emailSelectIndex
+                  )}</custom-select>`,
+                }),
+              }}
+            />
+
+            <circle-chart
+              class="breach-chart"
+              title={l10n.getString("breach-chart-title")}
+              data-txt-other={l10n.getString("other-data-class")}
+              data-txt-none={l10n.getString("none-data-class")}
+            ></circle-chart>
+
+            <figure
+              className="email-stats"
+              data-count={userBreachesData.emailTotalCount}
+              data-total={AppConstants.MAX_NUM_ADDRESSES}
+            >
+              <Image src={ImageIconEmail} alt="" width={55} height={30} />
+              <figcaption>
+                <strong>
+                  {l10n.getString("emails-monitored", {
+                    count: userBreachesData.emailVerifiedCount,
+                    total: AppConstants.MAX_NUM_ADDRESSES,
+                  })}
+                </strong>
+                <a href="/user/settings">
+                  {l10n.getString("manage-emails-link")}
+                </a>
+              </figcaption>
+            </figure>
+          </header>
+        </section>
+
+        <fieldset className="breaches-filter">
+          <input
+            id="breaches-unresolved"
+            type="radio"
+            name="breaches-status"
+            value="unresolved"
+            autoComplete="off"
+            defaultChecked
+          />
+          <label htmlFor="breaches-unresolved">
+            <output>&nbsp;</output>
+            {l10n.getString("filter-label-unresolved")}
+          </label>
+          <input
+            id="breaches-resolved"
+            type="radio"
+            name="breaches-status"
+            value="resolved"
+            autoComplete="off"
+          />
+          <label htmlFor="breaches-resolved">
+            <output>&nbsp;</output>
+            {l10n.getString("filter-label-resolved")}
+          </label>
+        </fieldset>
+
+        <section className="breaches-table">
+          <header>
+            <span>{l10n.getString("column-company")}</span>
+            <span>{l10n.getString("column-breached-data")}</span>
+            {/* The active/resolved badge does not have a column header, but by
+            including an empty <span>, we can re-use the `nth-child`-based
+            selectors for the content columns. */}
+            <span></span>
+            <span>{l10n.getString("column-detected")}</span>
+          </header>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: createBreachRows(
+                userBreachesData.breachesData,
+                userBreachesData.breachLogos
+              ),
+            }}
+          />
+
+          <template
+            className="no-breaches"
+            dangerouslySetInnerHTML={{
+              __html: `
+                <div class="zero-state no-breaches-message">
+                  <img src="${
+                    ImageBreachesNone.src
+                  }" alt="" width="136" height="102" />
+                  <h2>${l10n.getString("breaches-none-headline")}</h2>
+                  <p>
+                    ${l10n.getString("breaches-none-copy", {
+                      email: '<b class="current-email"></b>',
+                    })}
+                  </p>
+                  <p class="add-email-cta">
+                    <span>${l10n.getString("breaches-none-cta-blurb")}</span>
+                    <button
+                      class="primary"
+                      data-cta-id="breaches-none"
+                      data-dialog="addEmail"
+                    >
+                      ${l10n.getString("breaches-none-cta-button")}
+                    </button>
+                  </p>
+                </div>
+              `,
+            }}
+          />
+          <template
+            className="all-breaches-resolved"
+            dangerouslySetInnerHTML={{
+              __html: `
+                <div class="zero-state all-breaches-resolved-message">
+                  <img
+                    src="${ImageBreachesAllResolved.src}"
+                    alt=""
+                    width="136"
+                    height="102"
+                  />
+                  <h2>${l10n.getString("breaches-all-resolved-headline")}</h2>
+                  <p>
+                    ${l10n.getString("breaches-all-resolved-copy", {
+                      email: '<b class="current-email"></b>',
+                    })}
+                  </p>
+                  <p class="add-email-cta">
+                    <span>${l10n.getString(
+                      "breaches-all-resolved-cta-blurb"
+                    )}</span>
+                    <button
+                      class="primary"
+                      data-cta-id="breaches-all-resolved"
+                      data-dialog="addEmail"
+                    >
+                      ${l10n.getString("breaches-all-resolved-cta-button")}
+                    </button>
+                  </p>
+                </div>
+              `,
+            }}
+          />
+        </section>
+      </main>
+    </>
+  );
+}

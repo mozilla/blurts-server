@@ -32,7 +32,7 @@ function handleMenuButton () {
     userMenuWrapper.addEventListener('blur', (event) => handleBlur(event, handleMenuButton))
     userMenuWrapper.focus()
 
-    // TODO: Re-enable event gtag events
+    // TODO: Re-enable gtag events
     // window.gtag('event', 'opened_closed_user_menu', { action: 'open' })
   } else {
     // Hide popover
