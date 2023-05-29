@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 
 import "../../../../client/css/index.css";
@@ -63,7 +63,7 @@ const MainLayout = async (props: Props) => {
 
       <SiteNavigation />
 
-      <main>{props.children}</main>
+      {props.children}
 
       <footer className="site-footer">
         <a href="https://www.mozilla.org" target="_blank">

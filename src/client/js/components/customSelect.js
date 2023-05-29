@@ -13,7 +13,7 @@ const html = `
   }
 
   :host([hidden]) {
-    display: none 
+    display: none;
   }
 
   select{
