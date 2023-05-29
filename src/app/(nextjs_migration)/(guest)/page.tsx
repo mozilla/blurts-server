@@ -5,8 +5,6 @@
 import Image from "next/image";
 import Script from "next/script";
 import styles from "./landing.module.scss";
-// import "./landing.module.scss";
-
 import { getL10n } from "../../functions/server/l10n";
 
 import HeroImage from "../../../client/images/landing-hero@2x.webp";
@@ -15,7 +13,7 @@ import LockImage from "../../../client/images/landing-lock@2x.webp";
 import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
 
-export default function Home() {
+export default async function Home() {
   const l10n = getL10n();
 
   return (

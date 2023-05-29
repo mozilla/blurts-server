@@ -2,6 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+ /* eslint @typescript-eslint/no-var-requires: "off" */
+const { withSentryConfig } = require("@sentry/nextjs");
+
 const nextConfig = {
   async headers () {
     /** @type {import('next').NextConfig['headers']} */
@@ -18,7 +21,7 @@ const nextConfig = {
               "base-uri 'self'",
               `script-src 'self' ${process.env.NODE_ENV === 'development' ? "'unsafe-eval' 'unsafe-inline'" : ''} https://*.googletagmanager.com`,
               "script-src-attr 'none'",
-              `connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'webpack://*' : ''} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com`,
+              `connect-src 'self' ${process.env.NODE_ENV === 'development' ? 'webpack://*' : ''} https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io`,
               `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${process.env.FXA_ENABLED ? new URL(process.env.OAUTH_PROFILE_URI).origin : ''}`,
               "child-src 'self'",
               `style-src 'self' ${process.env.NODE_ENV === 'development' ? "'unsafe-inline'" : ''}`,
@@ -108,4 +111,20 @@ const nextConfig = {
   }
 }
 
-module.exports = nextConfig
+const sentryWebpackPluginOptions = {
+  // Additional config options for the Sentry Webpack plugin. Keep in mind that
+  // the following options are set automatically, and overriding them is not
+  // recommended:
+  //   release, url, authToken, configFile, stripPrefix,
+  //   urlPrefix, include, ignore
+
+  org: "mozilla",
+  project: "firefox-monitor",
+
+  silent: true, // Suppresses all logs
+
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+};
+
+module.exports = withSentryConfig(nextConfig, sentryWebpackPluginOptions);
