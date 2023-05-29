@@ -62,7 +62,7 @@
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@sentry/node": "^7.40.0",
-    "@sentry/tracing": "^7.38.0",
+    "@sentry/tracing": "^7.53.1",
     "client-oauth2": "^4.3.3",
     "connect-redis": "^7.0.0",
     "cookie-parser": "^1.4.6",
