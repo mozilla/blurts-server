@@ -1,0 +1,130 @@
+@import "../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.header {
+  display: none;
+
+  @media screen and (max-width: $screen-md) {
+    position: sticky;
+    background-color: $color-white;
+    box-shadow: $box-shadow-sm;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .headerStart {
+      flex: 0 0 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      .menuToggleButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border-style: none;
+        padding: $spacing-md;
+        cursor: pointer;
+
+        svg {
+          width: auto;
+          height: 16px;
+        }
+
+        &:hover svg {
+          color: $color-blue-50;
+        }
+      }
+    }
+
+    .headerMiddle {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .headerEnd {
+      flex: 0 0 20%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.nonHeader {
+  // `overflow: auto` ensures that the stickily positioned .mainMenu sticks to
+  // this element, rather than the viewport. See
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/position#syntax
+  overflow: auto;
+  height: 100%;
+
+  .mainMenuLayer {
+    display: none;
+  }
+
+  @media screen and (max-width: $screen-md) {
+    .hasOpenMenu & .mainMenuLayer {
+      display: block;
+      position: sticky;
+      top: 0;
+      height: 0;
+      // Overlap .content
+      z-index: 1;
+
+      .mainMenu {
+        display: flex;
+        background-color: $color-white;
+        box-shadow: $box-shadow-sm;
+
+        ul {
+          list-style-type: none;
+          padding: 0;
+          width: 100%;
+        }
+
+        a,
+        a:visited {
+          display: block;
+          padding: $spacing-sm $spacing-lg;
+          color: $color-grey-40;
+          font-weight: 500;
+          border-top: 1px solid $color-grey-10;
+          text-decoration: none;
+
+          &.isActive {
+            color: $color-purple-70;
+          }
+
+          &:hover {
+            background-color: $color-purple-50;
+            color: $color-white;
+            text-decoration: underline;
+          }
+
+          &:focus {
+            background-color: $color-blue-50;
+            color: $color-white;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    height: 100%;
+    flex: 1 0 auto;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+  }
+}

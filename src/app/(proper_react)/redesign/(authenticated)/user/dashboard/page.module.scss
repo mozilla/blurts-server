@@ -1,0 +1,35 @@
+@import "../../../../../tokens";
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: $color-grey-05;
+
+  .tabBar {
+    height: $tab-bar-height;
+    border-bottom: 1px solid $color-grey-20;
+    display: flex;
+    align-items: center;
+
+    .start {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: center;
+      padding-inline: $spacing-2xl;
+    }
+
+    .end {
+      padding-inline: $spacing-xl;
+    }
+
+    @media screen and (max-width: $screen-md) {
+      .start {
+        justify-content: center;
+      }
+
+      .end {
+        display: none;
+      }
+    }
+  }
+}
