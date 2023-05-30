@@ -32,6 +32,9 @@ function init () {
   resolvedCountOutput = statusFilter.querySelector("label[for='breaches-resolved'] output")
   unresolvedCountOutput = statusFilter.querySelector("label[for='breaches-unresolved'] output")
 
+  const firstFilterInput = statusFilter.querySelector('input')
+  firstFilterInput.checked = true
+
   state.emailCount = parseInt(breachesPartial.querySelector('.email-stats').dataset.count)
   state.emailTotal = parseInt(breachesPartial.querySelector('.email-stats').dataset.total)
   state.selectedEmail = emailSelect.value // triggers render

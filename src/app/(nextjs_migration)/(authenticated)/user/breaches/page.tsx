@@ -171,7 +171,6 @@ export default async function UserBreaches() {
             name="breaches-status"
             value="unresolved"
             autoComplete="off"
-            defaultChecked
           />
           <label htmlFor="breaches-unresolved">
             <output>&nbsp;</output>
