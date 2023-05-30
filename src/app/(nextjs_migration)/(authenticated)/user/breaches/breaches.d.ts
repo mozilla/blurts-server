@@ -7,10 +7,11 @@ interface CircleChartProps
     React.HTMLAttributes<HTMLElement>,
     HTMLElement
   > {
-  title: string;
-  "data-txt-other": string;
-  "data-txt-none": string;
-  data: string;
+  class?: string;
+  title?: string;
+  "data-txt-other"?: string;
+  "data-txt-none"?: string;
+  data?: string;
 }
 
 declare namespace JSX {
