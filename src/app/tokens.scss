@@ -171,6 +171,7 @@ $screen-lg: 1024px;
 $screen-xl: 1312px;
 
 // Spacing
+// Used inside elements
 $spacing-xs: 4px;
 $spacing-sm: 8px;
 $spacing-md: 16px;
@@ -179,6 +180,7 @@ $spacing-xl: 32px;
 $spacing-2xl: 48px;
 
 // Layouts
+// Used to position elements relative to each other
 $layout-2xs: 16px;
 $layout-xs: 24px;
 $layout-sm: 32px;
@@ -202,3 +204,5 @@ $text-body-lg: 400 18px / 27px "Metropolis", sans-serif;
 $text-body-md: 400 16px / 24px "Metropolis", sans-serif;
 $text-body-sm: 400 14px / 21px "Metropolis", sans-serif;
 $text-body-xs: 400 12px / 18px "Metropolis", sans-serif;
+
+$tab-bar-height: 100px;
