@@ -93,8 +93,8 @@ async function updateBreachStatus (input) {
 
     if (!res.ok) throw new Error('Bad fetch response')
 
-    const { breachResolution } = await res.json()
-    input.closest('.breach-row').dataset.status = breachResolution[affectedEmail][breachId].isResolved ? 'resolved' : 'unresolved'
+    const { breachResolutions } = await res.json()
+    input.closest('.breach-row').dataset.status = breachResolutions[affectedEmail][breachId].isResolved ? 'resolved' : 'unresolved'
     renderResolvedCounts()
   } catch (e) {
     // TODO: localize error messages
