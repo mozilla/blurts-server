@@ -4,6 +4,13 @@
 
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
+import {
+  Breach,
+  BreachResolutionApiBody,
+  BreachStats,
+  Subscriber,
+  VerifiedEmail,
+} from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
 import { authOptions } from "../../../auth/[...nextauth]/route";
 import { getBreaches } from "../../../../functions/server/getBreaches";
@@ -14,21 +21,22 @@ import {
   updateBreachStats,
 } from "../../../../../../src/db/tables/subscribers.js";
 
-function breachStatsV1(verifiedEmails) {
-  const breachStats = {
+function breachStatsV1(verifiedEmails: Array<VerifiedEmail>) {
+  const breachStats: BreachStats = {
     monitoredEmails: {
       count: 0,
     },
     numBreaches: {
       count: 0,
       numResolved: 0,
+      numUnresolved: 0,
     },
     passwords: {
       count: 0,
       numResolved: 0,
     },
   };
-  let foundBreaches = [];
+  let foundBreaches: Array<Breach> = [];
 
   // combine the breaches for each account, breach duplicates are ok
   // since the user may have multiple accounts with different emails
@@ -51,10 +59,8 @@ function breachStatsV1(verifiedEmails) {
 
   // total number of verified emails being monitored
   breachStats.monitoredEmails.count = verifiedEmails.length;
-
   // total number of breaches across all emails
   breachStats.numBreaches.count = foundBreaches.length;
-
   breachStats.numBreaches.numUnresolved =
     breachStats.numBreaches.count - breachStats.numBreaches.numResolved;
 
@@ -68,9 +74,15 @@ export async function PUT(request: Request) {
       return NextResponse.json({ success: false }, { status: 403 });
     }
 
-    const subscriber = await getSubscriberByEmail(session.user.email);
+    const subscriber: Subscriber = await getSubscriberByEmail(
+      session.user.email
+    );
     const body = await request.json();
-    const { affectedEmail, breachId, resolutionsChecked } = body;
+    const {
+      affectedEmail,
+      breachId,
+      resolutionsChecked,
+    }: BreachResolutionApiBody = body;
 
     const breachIdNumber = Number(breachId);
     const affectedEmailAsSubscriber =

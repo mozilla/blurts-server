@@ -4,25 +4,28 @@
 
 import Image from "next/image";
 import Script from "next/script";
+import { getServerSession } from "next-auth";
+import { CircleChartProps, UserBreaches } from "./breaches.d";
+
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
 import { getUserBreaches } from "../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../utils/fluent.js";
 import { getBreachLogo } from "../../../../../utils/breachLogo.js";
-import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../api/auth/[...nextauth]/route";
-import "./breaches.d";
 
 import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import ImageBreachesNone from "../../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../../client/images/breaches-all-resolved.svg";
 
-function createEmailOptions(data, selectedIndex) {
-  const emails = data.verifiedEmails.map((obj) => obj.email);
+function createEmailOptions({ breachesData, emailSelectIndex }: UserBreaches) {
+  const emails = breachesData.verifiedEmails.map((obj) => obj.email);
   const optionElements = emails.map(
     (email, index) =>
-      `<option ${selectedIndex === index ? "selected" : ""}>${email}</option>`
+      `<option ${
+        emailSelectIndex === index ? "selected" : ""
+      }>${email}</option>`
   );
 
   return optionElements.join("");
@@ -44,16 +47,24 @@ function createResolveSteps(breach) {
   return resolveStepsHTML.join("");
 }
 
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    interface IntrinsicElements {
+      "circle-chart": CircleChartProps;
+    }
+  }
+}
+
 export default async function UserBreaches() {
   const session = await getServerSession(authOptions);
   const l10n = getL10n();
 
-  const userBreachesData = await getUserBreaches({
-    user: session.user,
+  const userBreachesData: UserBreaches = await getUserBreaches({
+    user: session?.user,
   });
-  // TODO: Provide country code
 
-  function createBreachRows(data, logos) {
+  function createBreachRows({ breachesData, breachLogos }: UserBreaches) {
     const locale = getLocale();
     const shortDate = new Intl.DateTimeFormat(locale, {
       year: "numeric",
@@ -67,7 +78,7 @@ export default async function UserBreaches() {
       timeZone: "UTC",
     });
     const longList = new Intl.ListFormat(locale, { style: "long" });
-    const breachRowsHTML = data.verifiedEmails.flatMap((account) => {
+    const breachRowsHTML = breachesData.verifiedEmails.flatMap((account) => {
       return account.breaches.map((breach) => {
         const isHidden = !account.primary || breach.IsResolved; // initial breach hidden state
         const status = breach.IsResolved ? "resolved" : "unresolved";
@@ -83,7 +94,7 @@ export default async function UserBreaches() {
           dataClasses: longList.format(dataClassesTranslated),
         });
 
-        const logo = getBreachLogo(breach, logos);
+        const logo = getBreachLogo(breach, breachLogos);
 
         return `
          <details class='breach-row' data-status="${status}" data-email="${
@@ -129,8 +140,7 @@ export default async function UserBreaches() {
               dangerouslySetInnerHTML={{
                 __html: l10n.getString("breach-heading-email", {
                   "email-select": `<custom-select name="email-account">${createEmailOptions(
-                    userBreachesData.breachesData,
-                    userBreachesData.emailSelectIndex
+                    userBreachesData
                   )}</custom-select>`,
                 }),
               }}
@@ -201,10 +211,7 @@ export default async function UserBreaches() {
           </header>
           <div
             dangerouslySetInnerHTML={{
-              __html: createBreachRows(
-                userBreachesData.breachesData,
-                userBreachesData.breachLogos
-              ),
+              __html: createBreachRows(userBreachesData),
             }}
           />
 
