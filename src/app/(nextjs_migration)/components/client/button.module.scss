@@ -2,26 +2,29 @@
 
 .button {
   font: $text-body-md;
-  font-weight: 700;
+  font-weight: 500;
   border: 0;
-  border-radius: 3em;
+  padding: $spacing-sm $spacing-md;
+    border-radius: $border-radius-sm;
   cursor: pointer;
   display: inline-block;
   line-height: 1;
 
   &.primary {
     color: white;
-    background-color: #1ea7fd;
+    background-color: $color-blue-50;
   }
 
   &.secondary {
-    color: #333;
-    background-color: transparent;
+    color: $color-blue-50;
+      border: solid 2px $color-blue-50;
+      background-color: transparent;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
   }
 
   &.large {
-    font-size: 12px;
-    padding: 10px 16px;
+    font: $text-body-lg;
+      color: white;
+      background-color: $color-blue-50;
   }
 }

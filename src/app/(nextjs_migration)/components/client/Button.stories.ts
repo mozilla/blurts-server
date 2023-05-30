@@ -32,14 +32,6 @@ export const Secondary: Story = {
   },
 };
 
-export const Tertiary: Story = {
-  args: {
-    type: "tertiary",
-    content: "Button",
-    large: false,
-  },
-};
-
 export const Large: Story = {
   args: {
     type: "tertiary",
