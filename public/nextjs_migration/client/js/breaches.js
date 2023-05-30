@@ -84,10 +84,6 @@ async function updateBreachStatus (input) {
   try {
     const res = await fetch('/api/v1/user/breaches', {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-csrf-token': breachesTable.dataset.token
-      },
       body: JSON.stringify({
         affectedEmail,
         breachId,
