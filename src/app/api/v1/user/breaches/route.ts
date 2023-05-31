@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import {
-  BreachResolutionApiBody,
+  BreachResolutionRequest,
   Subscriber,
 } from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
@@ -52,7 +52,7 @@ export async function PUT(req: NextRequest) {
         affectedEmail,
         breachId,
         resolutionsChecked,
-      }: BreachResolutionApiBody = j;
+      }: BreachResolutionRequest = j;
       const breachIdNumber = Number(breachId);
       const affectedEmailAsSubscriber =
         subscriber.primary_email === affectedEmail
