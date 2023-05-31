@@ -1,3 +1,4 @@
+exposure-landing-hero-heading = Finn ut om din personlege informasjon har blitt kompromittert
 exposure-landing-result-card-added = Datalekkasje lagt til:
 exposure-landing-result-card-data = Eksponerte data:
 exposure-landing-result-card-nothing = Fann ingen datalekkasjar
