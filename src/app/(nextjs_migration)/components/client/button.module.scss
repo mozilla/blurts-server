@@ -2,10 +2,10 @@
 
 .button {
   font: $text-body-md;
-  font-weight: 500;
+  font-weight: 600;
   border: 0;
-  padding: $spacing-sm $spacing-md;
-    border-radius: $border-radius-sm;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius-sm;
   cursor: pointer;
   display: inline-block;
   line-height: 1;
@@ -17,14 +17,14 @@
 
   &.secondary {
     color: $color-blue-50;
-      border: solid 2px $color-blue-50;
-      background-color: transparent;
+    border: solid 2px $color-blue-50;
+    background-color: transparent;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
   }
 
   &.large {
     font: $text-body-lg;
-      color: white;
-      background-color: $color-blue-50;
+    color: white;
+    background-color: $color-blue-50;
   }
 }
