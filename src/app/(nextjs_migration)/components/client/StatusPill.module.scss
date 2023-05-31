@@ -2,21 +2,26 @@
 
 .pill {
   font: $text-body-sm;
+  font-weight: 600;
   background: black;
   display: inline-block;
   color: white;
-  padding: $spacing-xs $spacing-sm;
+  padding: $spacing-sm $spacing-lg;
   border-radius: $border-radius-sm;
+  line-height: 1;
 
   &.actionNeeded {
-    background: red;
+    background: $color-red-10;
+    color: $color-red-80;
   }
 
   &.inProgress {
-    background: blue;
+    background: rgba($color-blue-50, 0.3);
+    color: $color-blue-90;
   }
 
   &.isFixed {
-    background: green;
+    background: $color-green-10;
+    color: $color-green-90;
   }
 }
