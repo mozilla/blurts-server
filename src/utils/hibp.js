@@ -128,37 +128,33 @@ async function getAllBreachesFromDb () {
 }
 
 async function loadBreachesIntoApp (app) {
-  try {
-    // attempt to fetch breaches from the "breaches" database table
-    const breaches = await getAllBreachesFromDb()
-    log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
+  // attempt to fetch breaches from the "breaches" database table
+  const breaches = await getAllBreachesFromDb()
+  log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
 
-    // if "breaches" table does not return results, fall back to HIBP request
-    if (breaches?.length < 1) {
-      const breachesResponse = await req('/breaches')
-      log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
+  // if "breaches" table does not return results, fall back to HIBP request
+  if (breaches?.length < 1) {
+    const breachesResponse = await req('/breaches')
+    log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
 
-      for (const breach of breachesResponse) {
-        breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-        breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
-        breaches.push(breach)
-      }
-
-      // sync the "breaches" table with the latest from HIBP
-      await upsertBreaches(breaches)
+    for (const breach of breachesResponse) {
+      breach.DataClasses = formatDataClassesArray(breach.DataClasses)
+      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
+      breaches.push(breach)
     }
-    // This will be replaced by a map with the breach logos when
-    // `downloadBreachIcons` resolves, but by setting it to an empty Map first,
-    // we don't delay the server start - we just won't have breach logos yet.
-    app.locals.breachLogoMap = new Map()
-    downloadBreachIcons(breaches).then(breachLogoMap => {
-      app.locals.breachLogoMap = breachLogoMap
-    })
-    app.locals.breaches = breaches
-    app.locals.breachesLoadedDateTime = Date.now()
-  } catch (error) {
-    throw new InternalServerError(getMessage('error-hibp-load-breaches'))
+
+    // sync the "breaches" table with the latest from HIBP
+    await upsertBreaches(breaches)
   }
+  // This will be replaced by a map with the breach logos when
+  // `downloadBreachIcons` resolves, but by setting it to an empty Map first,
+  // we don't delay the server start - we just won't have breach logos yet.
+  app.locals.breachLogoMap = new Map()
+  downloadBreachIcons(breaches).then(breachLogoMap => {
+    app.locals.breachLogoMap = breachLogoMap
+  })
+  app.locals.breaches = breaches
+  app.locals.breachesLoadedDateTime = Date.now()
   log.info('done-loading-breaches', 'great success 👍')
 }
 
