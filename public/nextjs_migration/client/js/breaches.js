@@ -58,12 +58,11 @@ function handleEvent (e) {
       break
     case e.target.matches('.resolve-list-item [type="checkbox"]'):
       updateBreachStatus(e.target)
-      // TODO: Re-enable gtag events
-      // window.gtag('event', 'resolved_breach_item', {
-      //   action: e.target.checked ? 'resolved' : 'unresolved',
-      //   page_location: location.href,
-      //   data_class: e.target.value
-      // })
+      window.gtag('event', 'resolved_breach_item', {
+        action: e.target.checked ? 'resolved' : 'unresolved',
+        page_location: location.href,
+        data_class: e.target.value
+      })
       break
     case e.type === 'email-added':
       state.emailCount = e.detail.newEmailCount
@@ -153,22 +152,6 @@ function renderZeroState () {
   breachesTable.append(content)
 }
 
-/**
- * Capitalize the first letter of a string, taking into account localization
- *
- * @param {string} str
- * @example
- * capitalFirstLetter ('carte di credito')
- * // returns 'Carte di credito'
- * @example
- * capitalFirstLetter ('账户余额')
- * // returns '账户余额'
- */
-
-function capitalFirstLetter (str) {
-  return str[0].toLocaleUpperCase() + str.slice(1)
-}
-
 function renderPieChart () {
   const rowsForSelectedEmail = Array.from(breachesTable.querySelectorAll(`[data-email='${state.selectedEmail}']`))
   const classesForSelectedEmail = rowsForSelectedEmail.flatMap(row => row.dataset.classes.split(','))
@@ -184,7 +167,7 @@ function renderPieChart () {
     case classesMap.size === 0:
       chartData.push({
         key: pieChart.dataset.txtNone,
-        name: capitalFirstLetter(pieChart.dataset.txtNone),
+        name: pieChart.dataset.txtNone,
         count: 1,
         color: chartColors[4]
       })
@@ -192,7 +175,7 @@ function renderPieChart () {
     case classesMap.size >= 4:
       chartData[3] = {
         key: pieChart.dataset.txtOther,
-        name: capitalFirstLetter(pieChart.dataset.txtOther),
+        name: pieChart.dataset.txtOther,
         count: classesTotal - classesMap.get(classesTop3[0]) - classesMap.get(classesTop3[1]) - classesMap.get(classesTop3[2]),
         color: chartColors[3]
       }
@@ -201,7 +184,7 @@ function renderPieChart () {
       classesTop3.forEach((name, i) => {
         chartData[i] = {
           key: name,
-          name: capitalFirstLetter(name),
+          name: name,
           count: classesMap.get(name),
           color: chartColors[i]
         }

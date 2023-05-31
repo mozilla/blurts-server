@@ -5,5 +5,3 @@
 // Type definitions in this file are used to incomplete (or just plain `any`);
 // however, they give us a single place to find all references to the same type,
 // making it easier to add proper type definitions down the road.
-
-export type Breach = any;
