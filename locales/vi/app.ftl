@@ -699,6 +699,8 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -735,8 +737,11 @@ menu-button-title = Menu người dùng
 menu-button-alt = Mở menu người dùng
 menu-list-accessible-label = Menu tài khoản
 menu-item-fxa = Quản lý { -brand-fx-account } của bạn
+menu-item-fxa-alt = Mở trang { -brand-fx-account }
 menu-item-settings = Cài đặt
+menu-item-settings-alt = Mở trang cài đặt
 menu-item-help = Trợ giúp và hỗ trợ
+menu-item-help-alt = Mở trang trợ giúp và hỗ trợ
 menu-item-logout = Đăng xuất
 
 ## Footer

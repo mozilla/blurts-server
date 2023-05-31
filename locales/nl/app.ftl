@@ -707,6 +707,8 @@ ad-unit-6-before-you-complete = Gebruik, voordat u uw volgende registratie volto
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -743,8 +745,11 @@ menu-button-title = Gebruikersmenu
 menu-button-alt = Gebruikersmenu openen
 menu-list-accessible-label = Accountmenu
 menu-item-fxa = Uw { -brand-fx-account } beheren
+menu-item-fxa-alt = { -brand-fx-account }-pagina openen
 menu-item-settings = Instellingen
+menu-item-settings-alt = Instellingenpagina openen
 menu-item-help = Hulp en ondersteuning
+menu-item-help-alt = Hulp- en ondersteuningspagina openen
 menu-item-logout = Afmelden
 
 ## Footer

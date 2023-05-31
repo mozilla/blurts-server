@@ -45,7 +45,7 @@ settings-email-number-of-breaches-info =
 
 settings-cancel-premium-subscription-title = { -brand-premium }-Abonnement kündigen
 settings-cancel-premium-subscription-info = Ihr Abonnement wird nach Ende des aktuellen Abrechnungszeitraums auf ein kostenloses Konto zurückgesetzt. Die Ergebnisse Ihrer Datenschutz-Scans werden dauerhaft gelöscht und es wird nur eine E-Mail-Adresse auf Datenlecks überwacht.
-settings-cancel-premium-subscription-link-label = Kündigung über Ihr { -brand-fx-account }
+settings-cancel-premium-subscription-link-label = Kündigen über Ihr { -brand-fx-account }
 
 ## Deactivate account
 
@@ -62,10 +62,10 @@ settings-send-email-verification-button = Bestätigungslink senden
 
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Es tut uns leid, Sie gehen zu sehen. <br /> Erzählen Sie uns, warum Sie gehen?
+settings-unsubscribe-dialog-title = Es tut uns leid, dass Sie gehen. <br /> Möchten Sie uns den Grund nennen?
 settings-unsubscribe-dialog-info = Ihre Erfahrung ist uns wichtig. Wir lesen jede Antwort und berücksichtigen sie.
 settings-unsubscribe-dialog-message-placeholder = Was hätte besser laufen können?
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
 settings-unsubscribe-dialog-confirmation = Bitte beachten Sie, dass alle Ihre { -brand-monitor-premium }-Dienste nach Ende Ihres aktuellen Abrechnungszeitraums <a { $faq_href }>dauerhaft gelöscht werden</a>.
 settings-unsubscribe-dialog-continue = Weiter zur Kündigung
-settings-unsubscribe-dialog-cancel = Egal, zurücknehmen
+settings-unsubscribe-dialog-cancel = Ich habe es mir anders überlegt – zurück zur vorherigen Seite

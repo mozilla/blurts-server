@@ -51,9 +51,9 @@ settings-email-number-of-breaches-info =
 
 ## Cancel Premium subscription
 
-settings-cancel-premium-subscription-title = Canslo tanysgrifiad { -brand-premium }
-settings-cancel-premium-subscription-info = Bydd eich tanysgrifiad yn dychwelyd i gyfrif am ddim ar ôl i'r cylch bilio cyfredol ddod i ben. Bydd canlyniadau eich sgan diogelu preifatrwydd yn cael eu dileu'n barhaol, a dim ond ar gyfer 1 cyfeiriad e-bost y bydd gennych fonitro torri data.
-settings-cancel-premium-subscription-link-label = Canslo o'ch { -brand-fx-account }
+settings-cancel-premium-subscription-title = Diddymu tanysgrifiad { -brand-premium }
+settings-cancel-premium-subscription-info = Bydd eich tanysgrifiad yn dychwelyd i gyfrif am ddim ar ôl i'r cylch bilio cyfredol ddod i ben. Bydd canlyniadau eich sgan diogelu preifatrwydd yn cael eu dileu'n barhaol, a dim ond ar gyfer 1 cyfeiriad e-bost y bydd gennych fonitro tor-data.
+settings-cancel-premium-subscription-link-label = Diddymu'ch { -brand-fx-account }
 
 ## Deactivate account
 
@@ -75,5 +75,5 @@ settings-unsubscribe-dialog-info = Mae eich profiad yn bwysig i ni. Rydym yn dar
 settings-unsubscribe-dialog-message-placeholder = Beth allai fod wedi mynd yn well?
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
 settings-unsubscribe-dialog-confirmation = Sylwch, bydd eich holl wasanaethau { -brand-monitor-premium } <a { $faq_href }>yn cael eu dileu yn barhaol</a> ar ôl i'ch cylch bilio presennol ddod i ben.
-settings-unsubscribe-dialog-continue = Parhau i ganslo
-settings-unsubscribe-dialog-cancel = Peidiwch byth â meddwl, mynd â fi yn ôl
+settings-unsubscribe-dialog-continue = Parhau i ddiddymu
+settings-unsubscribe-dialog-cancel = Dim gwahaniaeth, mynd â fi yn ôl

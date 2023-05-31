@@ -680,6 +680,8 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -716,8 +718,11 @@ menu-button-title = Menú del usuario
 menu-button-alt = Abrir menú del usuario
 menu-list-accessible-label = Menú de la cuenta
 menu-item-fxa = Gestiona tu { -brand-fx-account }
+menu-item-fxa-alt = Abrir la página de { -brand-fx-account }
 menu-item-settings = Ajustes
+menu-item-settings-alt = Abrir la página de ajustes
 menu-item-help = Ayuda y soporte
+menu-item-help-alt = Abrir la página de ayuda y soporte
 menu-item-logout = Salir
 
 ## Footer

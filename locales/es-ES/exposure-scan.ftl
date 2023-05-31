@@ -8,4 +8,6 @@ exposure-landing-result-card-data = Datos expuestos:
 exposure-landing-result-card-nothing = No se han encontrado filtraciones
 exposure-landing-result-overflow-hero-cta-label = Inicia sesión para resolver filtraciones
 exposure-landing-result-overflow-footer-cta-label = Inicia sesión para verlo todo
+exposure-landing-result-some-hero-cta-label = Inicia sesión para resolver filtraciones
+exposure-landing-result-some-footer-cta-label = Inicia sesión para resolver filtraciones
 exposure-landing-result-none-footer-cta-label = Suscríbete para recibir alertas

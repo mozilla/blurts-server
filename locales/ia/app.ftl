@@ -624,6 +624,8 @@ ad-unit-6-before-you-complete = Ante que tu completa tu proxime registration, us
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premio
+-brand-monitor-premium = Monitor Premio
 -brand-mozilla-foundation = Le fundation Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = VPN Mozilla
@@ -660,8 +662,11 @@ menu-button-title = Menu de usator
 menu-button-alt = Aperir le menu de usator
 menu-list-accessible-label = Menu de conto
 menu-item-fxa = Gere tu { -brand-fx-account }
+menu-item-fxa-alt = Aperir le pagina de { -brand-fx-account }
 menu-item-settings = Parametros
+menu-item-settings-alt = Aperir le pagina del parametros
 menu-item-help = Adjuta e supporto
+menu-item-help-alt = Aperir le pagina del  adjuta e supporto
 menu-item-logout = Clauder session
 
 ## Footer

@@ -3,6 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } - Pano
+breach-all-meta-title = { -brand-fx-monitor } - Tüm Veri İhlalleri
 breach-all-meta-social-title = { -brand-fx-monitor } tarafından tespit edilen tüm ihlaller
 breach-all-meta-social-description = { -brand-fx-monitor } tarafından tespit edilen bilinen ihlallerin tam listesine göz atın ve bilgilerinizin ele geçirilip geçirilmediğini öğrenin.
 # Variables:
