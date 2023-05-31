@@ -9,13 +9,15 @@
     "src/views/partials/exposureScan.js",
     "src/views/partials/exposuresSetup.js",
     "src/views/partials/exposuresList.js",
+    "src/views/partials/floatingBanner.js",
     "src/controllers/exposureScan.js",
     "src/controllers/exposures.js",
     "src/external/onerep.js",
     "src/utils/emailAddress.js",
     "src/utils/log.js",
     "src/utils/states.js",
-    "src/utils/parse.js"
+    "src/utils/parse.js",
+    "src/utils/utmParams.js"
     // Replace the above with the following when our entire codebase has type annotations:
     // "src/**/*",
   ],
