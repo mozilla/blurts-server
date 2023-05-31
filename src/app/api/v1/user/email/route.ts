@@ -11,12 +11,10 @@ import {
   deleteResolutionsWithEmail,
 } from "../../../../../db/tables/subscribers";
 import {
-  getUserEmails,
   resetUnverifiedEmailAddress,
   addSubscriberUnverifiedEmailHash,
   removeOneSecondaryEmail,
   getEmailById,
-  verifyEmailHash,
 } from "../../../../../db/tables/emailAddresses.js";
 
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
@@ -82,10 +80,10 @@ export async function POST(req: NextRequest) {
 
   if (token) {
     try {
-      const reqBody = await req.json();
+      const body = await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
       const emailCount = 1 + (subscriber.email_addresses?.length ?? 0); // primary + verified + unverified emails
-      const validatedEmail = validateEmailAddress(reqBody.email);
+      const validatedEmail = validateEmailAddress(body.email);
 
       if (validatedEmail === null) {
         return NextResponse.json({
