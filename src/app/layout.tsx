@@ -27,7 +27,13 @@ export default async function RootLayout({
 
   return (
     <html lang={currentLocale}>
-      <body className={inter.className}>
+      <body
+        className={inter.className}
+        // DO NOT ADD SECRETS HERE: The following data attributes expose
+        // variables that are being used in the public analytics scripts
+        data-ga4-measurement-id={process.env.GA4_MEASUREMENT_ID}
+        data-node-env={process.env.NODE_ENV}
+      >
         <SessionProvider session={session}>{children}</SessionProvider>
       </body>
     </html>
