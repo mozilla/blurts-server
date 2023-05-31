@@ -693,6 +693,8 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Iporãvéva
+-brand-monitor-premium = Mba’erechaha iporãvéva
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -706,7 +708,6 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 
 ## Search Engine Optimization
 
-meta-desc = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -brand-fx-monitor } ndive. Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosãrã.
 
 ## Header
 
@@ -729,8 +730,11 @@ menu-button-title = Puruhára jeporavoha
 menu-button-alt = Embojuruja puruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
 menu-item-fxa = Eñangareko nde { -brand-fx-account }
+menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
 menu-item-settings = Ñemboheko
+menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
 menu-item-help = Ñepytvõ ha Pytyvõha
+menu-item-help-alt = Embojuruja kuatiarogue ñepytyvõha
 menu-item-logout = Emboty tembiapo
 
 ## Footer

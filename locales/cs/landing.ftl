@@ -50,3 +50,4 @@ depends-on-hackers = Ne všechny úniky vyzrazují stejné informace. Záleží 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Podívejte se, jestli jste součástí nějakého úniku dat.
+hibp-footer-attribution = Údaje o únicích poskytuje <b>{ -brand-HIBP }</b>

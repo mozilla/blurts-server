@@ -6,6 +6,7 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = Thêm địa chỉ email khác
+close-dialog-alt = Đóng hộp thoại
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes = Tài khoản của bạn bao gồm giám sát tối đa { $total } địa chỉ email. Thêm địa chỉ email mới để xem liệu địa chỉ đó có liên quan đến rò rỉ dữ liệu hay không.
 add-email-address-input-label = Địa chỉ email

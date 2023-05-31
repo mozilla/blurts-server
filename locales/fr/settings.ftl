@@ -30,7 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Vérification de l’adresse e-mail nécessaire
 settings-resend-email-verification-link = Renvoyer l’e-mail de vérification
 settings-add-email-button = Ajouter une adresse e-mail
-settings-delete-email-button = Supprimer l'adresse électronique
+settings-delete-email-button = Supprimer l’adresse e-mail
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -44,8 +44,8 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Annuler l’abonnement à { -brand-premium }
-settings-cancel-premium-subscription-info = Votre abonnement redeviendra un compte gratuit une fois le cycle de facturation en cours terminé. Les résultats de votre scan de protection de la vie privée seront supprimés définitivement, et vous ne pourrez surveiller les fuites de données que pour 1 adresse e-mail.
-settings-cancel-premium-subscription-link-label = Annuler à partir de votre { -brand-fx-account }
+settings-cancel-premium-subscription-info = Votre abonnement redeviendra un compte gratuit une fois le cycle de facturation en cours terminé. Les résultats de vos scans de protection de la vie privée seront supprimés définitivement, et vous ne pourrez surveiller les fuites de données que pour une seule adresse e-mail.
+settings-cancel-premium-subscription-link-label = Annuler depuis votre { -brand-fx-account }
 
 ## Deactivate account
 
@@ -64,8 +64,6 @@ settings-send-email-verification-button = Envoyer le lien de vérification
 
 settings-unsubscribe-dialog-title = C’est triste de vous voir partir… <br /> Pourriez-vous nous dire pourquoi vous vous désabonnez ?
 settings-unsubscribe-dialog-info = Votre expérience est importante pour nous. Nous lisons chaque réponse et la prenons en considération.
-settings-unsubscribe-dialog-message-placeholder = Qu’est-ce qui aurait pu aller mieux ?
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
 settings-unsubscribe-dialog-confirmation = Veuillez noter que tous vos services { -brand-monitor-premium } seront <a { $faq_href }>supprimés définitivement</a> à la fin de votre cycle de facturation actuel.
 settings-unsubscribe-dialog-continue = Continuer vers l’annulation
-settings-unsubscribe-dialog-cancel = Laisse tomber, reprends-moi

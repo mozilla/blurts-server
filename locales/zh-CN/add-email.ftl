@@ -6,6 +6,7 @@
 ### Dialog window that allows a user to add a new email address to be monitored
 
 add-email-add-another-heading = 添加其他电子邮件地址
+close-dialog-alt = 关闭对话框
 # $total is the number of emails a user is allowed to add
 add-email-your-account-includes = 您的帐户包括监控 { $total } 个电子邮件地址。添加新的电子邮件地址可以查看它是否涉及数据泄漏。
 add-email-address-input-label = 电子邮件地址

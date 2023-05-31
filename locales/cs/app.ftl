@@ -498,7 +498,7 @@ signed-in-as = Přihlášen(a) jako: { $userEmail }
 filter-by = Filtrovat podle kategorie:
 # Title that appears in the mobile menu bar and opens the mobile menu when clicked.
 menu = Nabídka
-to-affected-email = Poslat upozornění na únik na postiženou e-mailovou adresu
+to-affected-email = Upozornění poslat na postiženou e-mailovou adresu
 # This string appears in a banner at the top of each page and is followed by a "Learn More" link.
 join-firefox = Existuje způsob, jak ochránit své soukromí. Používejte { -brand-name(case: "acc") }.
 # Link title
@@ -802,6 +802,8 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
        *[nom] Mozilla
     }
     .gender = feminine
+-brand-premium = Placené
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation =
     { $case ->
         [gen] Mozilly Foundation
@@ -835,6 +837,7 @@ ad-unit-6-before-you-complete = Během své další registrace použijte místo 
 
 ## Search Engine Optimization
 
+meta-desc-2 = Zjistěte pomocí { -brand-fx-monitor }, zda jste nebyli součástí úniku dat. Pomůžeme vám porozumět tomu, co dělat dále, a budeme průběžně sledovat jakékoli nové úniky dat.
 
 ## Header
 
@@ -857,8 +860,11 @@ menu-button-title = Nabídka uživatele
 menu-button-alt = Otevřít nabídku uživatele
 menu-list-accessible-label = Nabídka účtu
 menu-item-fxa = Spravovat { -brand-fx-account(case: "acc", capitalization: "lower") }
+menu-item-fxa-alt = Otevřít stránku { -brand-fx-account }
 menu-item-settings = Nastavení
+menu-item-settings-alt = Otevřít stránku nastavení
 menu-item-help = Nápověda a podpora
+menu-item-help-alt = Otevřít stránku nápovědy a podpory
 menu-item-logout = Odhlásit se
 
 ## Footer
@@ -883,15 +889,13 @@ error-page-error-other-copy = Zkuste to znovu nebo se vraťte později
 ## Breach overview page
 
 all-breaches-headline-2 = Všechny úniky zjištěné pomocí { -brand-fx-monitor(case: "gen") }
+all-breaches-lead = Monitorujeme všechny známé úniky údajů, abysme zjistili, zda nedošlo k ohrožení vašich osobních údajů. Zde je úplný seznam všech úniků, které byly nahlášeny od roku 2007.
 search-breaches = Prohledat úniky dat
-
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Odhalené údaje:
 
 ## Public breach detail page
 
 find-out-if-2 = Zjistěte, zda jste byli součástí tohoto úniku
+find-out-if-description = Pomůžeme vám rychle zjistit, zda byla při tomto úniku odhalena vaše e-mailová adresa a pomůžeme vám pochopit, co dělat dále.
 breach-detail-cta-signup = Prohledat úniky
-
-## Public breach detail page
-

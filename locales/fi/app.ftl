@@ -714,6 +714,8 @@ ad-unit-6-before-you-complete = Ennen kuin suoritat seuraavan rekisteröitymisen
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla-säätiö
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -750,8 +752,11 @@ menu-button-title = Käyttäjävalikko
 menu-button-alt = Avaa käyttäjävalikko
 menu-list-accessible-label = Tilivalikko
 menu-item-fxa = Hallitse { -brand-fx-account }äsi
+menu-item-fxa-alt = Avaa { -brand-fx-account } -sivu
 menu-item-settings = Asetukset
+menu-item-settings-alt = Avaa asetussivu
 menu-item-help = Ohjeet ja tuki
+menu-item-help-alt = Avaa ohje- ja tukisivu
 menu-item-logout = Kirjaudu ulos
 
 ## Footer

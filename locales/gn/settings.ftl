@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Ñemboheko
 settings-page-title = { -product-short-name } Ñemboheko
 
 ## Breach alert preferences
@@ -41,6 +42,9 @@ settings-email-number-of-breaches-info =
        *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
     }
 
+## Cancel Premium subscription
+
+
 ## Deactivate account
 
 settings-deactivate-account-title = Emboguete mba’ete
@@ -53,3 +57,6 @@ settings-email-dialog-title = Emoĩve ambue ñanduti veve kundaharape
 settings-add-email-text = Emoĩve ñanduti veve kundaharape pyahu ehecha hag̃ua eimépa ñemboguápe.
 settings-email-input-label = Ñanduti veve
 settings-send-email-verification-button = Emondo juajuha jehechajeyrã
+
+## Unsubscribe Dialog Survey
+

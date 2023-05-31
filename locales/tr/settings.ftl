@@ -23,6 +23,7 @@ settings-email-list-title = İzlenen e-posta adresleri
 settings-email-verification-callout = E-posta doğrulaması gerekiyor
 settings-resend-email-verification-link = Doğrulama e-postasını yeniden gönder
 settings-add-email-button = E-posta adresi ekle
+settings-delete-email-button = E-posta adresini sil
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -32,6 +33,11 @@ settings-email-number-of-breaches-info =
         [one] Bilinen { $breachCount } ihlalde yer alıyor.
        *[other] Bilinen { $breachCount } ihlalde yer alıyor.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = { -brand-premium } aboneliğini iptal et
+settings-cancel-premium-subscription-link-label = { -brand-fx-account }nızdan iptal edin
 
 ## Deactivate account
 
@@ -45,3 +51,9 @@ settings-email-dialog-title = Başka bir e-posta adresi ekle
 settings-add-email-text = Bir ihlale karışıp karışmadığını görmek için yeni bir e-posta adresi ekleyin.
 settings-email-input-label = E-posta adresi
 settings-send-email-verification-button = Doğrulama bağlantısını gönder
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-title = Ayrılmanıza üzüldük. <br /> Neden ayrıldığınızı söylemek ister misiniz?
+settings-unsubscribe-dialog-info = Deneyiminiz bizim için önemli. Her yanıtı okuyup dikkate alıyoruz.
+settings-unsubscribe-dialog-continue = İptal işlemine devam et

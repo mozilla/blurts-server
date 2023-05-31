@@ -780,7 +780,7 @@ menu-item-fxa-alt = Agor tudalen { -brand-fx-account }
 menu-item-settings = Gosodiadau
 menu-item-settings-alt = Agor tudalen gosodiadau
 menu-item-help = Cymorth a chefnogaeth
-menu-item-help-alt = Agorwch y dudalen cymorth a chefnogaeth
+menu-item-help-alt = Agor y dudalen cymorth a chefnogaeth
 menu-item-logout = Allgofnodi
 
 ## Footer
