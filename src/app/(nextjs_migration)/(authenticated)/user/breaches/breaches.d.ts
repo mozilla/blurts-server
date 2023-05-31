@@ -125,7 +125,7 @@ export interface Subscriber {
   breaches_resolved: {
     [email: string]: Array<Breach>;
   };
-  waitlists_joined: null;
+  waitlists_joined: boolean | null;
   breach_stats: BreachStats;
   monthly_email_at: Date | null;
   monthly_email_optout: boolean | null;
