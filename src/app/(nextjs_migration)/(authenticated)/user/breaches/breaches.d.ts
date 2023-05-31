@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { BreachDataTypes } from "../../../../functions/server/breachResolution.ts";
+
 export type BreachResolutionTypes = Record<
   keyof BreachDataTypes,
   BreachResolution
@@ -21,21 +23,7 @@ export interface CircleChartProps
   data?: string;
 }
 
-export interface BreachDataTypes {
-  Passwords: "passwords";
-  Email: "email-addresses";
-  SSN: "social-security-numbers";
-  CreditCard: "partial-credit-card-data";
-  BankAccount: "bank-account-numbers";
-  PIN: "pins";
-  IP: "ip-addresses";
-  Address: "physical-addresses";
-  DoB: "dates-of-birth";
-  Phone: "phone-numbers";
-  SecurityQuestions: "security-questions-and-answers";
-  HistoricalPasswords: "historical-passwords";
-  General: "general";
-}
+export type HibpBreachDataTypes = typeof BreachDataTypes;
 
 export interface BreachResolution {
   priority: number;
@@ -144,7 +132,7 @@ export interface VerifiedEmail {
 export interface BreachResolutionApiBody {
   affectedEmail: string;
   breachId: number;
-  resolutionsChecked: Array<keyof BreachDataTypes>;
+  resolutionsChecked: Array<keyof HibpBreachDataTypes>;
 }
 
 export interface UserBreaches {

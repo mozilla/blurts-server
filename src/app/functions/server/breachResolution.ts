@@ -24,7 +24,7 @@ const BreachDataTypes = {
   SecurityQuestions: "security-questions-and-answers",
   HistoricalPasswords: "historical-passwords",
   General: "general",
-};
+} as const;
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
