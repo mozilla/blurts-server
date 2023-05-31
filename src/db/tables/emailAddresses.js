@@ -215,6 +215,7 @@ async function _verifyNewEmail (emailHash) {
  * @property {string} email
  * @property {string} sha1
  * @property {boolean} verified
+ * @property {number} subscriber_id
  */
 
 /**
