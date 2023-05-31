@@ -1,4 +1,5 @@
 exposure-landing-hero-heading = Finn ut om din personlege informasjon har blitt kompromittert
+exposure-landing-hero-email-placeholder = Skriv inn e-postadresse
 exposure-landing-hero-cta-label = Sjå etter datalekkasjar
 exposure-landing-result-error = Noko gjekk gale i søket etter datalekkasjar. Oppdater sida og prøv på nytt.
 exposure-landing-result-card-added = Datalekkasje lagt til:

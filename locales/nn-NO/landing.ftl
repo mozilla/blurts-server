@@ -9,6 +9,7 @@ get-started = Kom i gang
 
 why-use-monitor = Kvifor bruke { -brand-fx-monitor }?
 protect-account = Beskytt kontoane dine
+protect-account-prevent-hackers = Hindre hackarar i å få tilgang til kontoane dine med lekne passord.
 get-alerts = Få varslingar om nye datalekkasjar
 
 ## Here’s how it works
