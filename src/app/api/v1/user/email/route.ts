@@ -11,14 +11,14 @@ import {
   deleteResolutionsWithEmail,
 } from "../../../../../db/tables/subscribers";
 import {
-  resetUnverifiedEmailAddress,
   addSubscriberUnverifiedEmailHash,
   removeOneSecondaryEmail,
   getEmailById,
 } from "../../../../../db/tables/emailAddresses.js";
 
+import { sendVerificationEmail } from "../../../util/email";
+
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
-import { sendEmail, getVerificationUrl } from "../../../../../utils/email";
 import { getL10n } from "../../../../functions/server/l10n";
 const l10n = getL10n();
 
@@ -39,38 +39,6 @@ function checkForDuplicateEmail(sessionUser, email: string) {
         status: 400,
         message: l10n.getString("user-add-duplicate-email"),
       });
-    }
-  }
-}
-
-async function sendVerificationEmail(user, emailId) {
-  try {
-    const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
-      emailId
-    );
-    const recipientEmail = unverifiedEmailAddressRecord.email;
-    const data = {
-      recipientEmail,
-      ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
-      utmCampaign: "email_verify",
-      heading: l10n.getString("email-verify-heading"),
-      subheading: l10n.getString("email-verify-subhead"),
-      partial: { name: "verify" },
-    };
-    await sendEmail(
-      recipientEmail,
-      l10n.getString("email-subject-verify"),
-      getTemplate(data, verifyPartial)
-    );
-  } catch (err) {
-    if (err.message === "error-email-validation-pending") {
-      return NextResponse.json({
-        success: false,
-        status: 400,
-        message: "Verification email recently sent, try again later",
-      });
-    } else {
-      throw err;
     }
   }
 }
@@ -118,6 +86,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json("ok");
     } catch (e) {
       console.error(e);
+      if (e.message === "error-email-validation-pending") {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Verification email recently sent, try again later",
+          },
+          { status: 429 }
+        );
+      }
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {
