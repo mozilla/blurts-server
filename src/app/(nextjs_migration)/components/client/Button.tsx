@@ -16,7 +16,7 @@ export type Props = {
 export const Button = (props: Props) => {
   const { type, content, large, destructive, onClick } = props;
 
-  const buttonClassnames = [
+  const classes = [
     styles.button,
     styles[type],
     destructive && styles.destructive,
@@ -26,7 +26,7 @@ export const Button = (props: Props) => {
     .join(" ");
 
   return (
-    <button className={buttonClassnames} onClick={onClick}>
+    <button className={classes} onClick={onClick}>
       {content}
     </button>
   );

@@ -1,0 +1,22 @@
+@import "../../../tokens";
+
+.pill {
+  font: $text-body-sm;
+  background: black;
+  display: inline-block;
+  color: white;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+
+  &.actionNeeded {
+    background: red;
+  }
+
+  &.inProgress {
+    background: blue;
+  }
+
+  &.isFixed {
+    background: green;
+  }
+}
