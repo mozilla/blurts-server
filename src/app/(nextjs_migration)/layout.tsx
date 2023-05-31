@@ -16,6 +16,7 @@ export default async function MigrationLayout({
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <Script src="/nextjs_migration/client/js/resizeObserver.js" />
+      <Script src="/nextjs_migration/client/js/analytics.js" />
       {children}
     </L10nProvider>
   );
