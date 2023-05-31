@@ -5,6 +5,7 @@
  /* eslint @typescript-eslint/no-var-requires: "off" */
 const { withSentryConfig } = require("@sentry/nextjs");
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   async headers () {
     /** @type {import('next').NextConfig['headers']} */
@@ -95,6 +96,18 @@ const nextConfig = {
     }
 
     return headers
+  },
+  async redirects() {
+    return [
+      // We used to have a page with security tips;
+      // if folks get sent there via old lnks, redirect them to the most
+      // relevant page on SuMo:
+      {
+        source: '/security-tips',
+        destination: 'https://support.mozilla.org/kb/how-stay-safe-web',
+        permanent: false,
+      },
+    ];
   },
   webpack: (config, options) => {
     config.module.rules.push({
