@@ -115,6 +115,18 @@ const fxaRpEvents = async (req, res) => {
 
   const subscriber = await getSubscriberByFxaUid(fxaUserId)
 
+  // highly unlikely, though it is a possible edge case from QA tests.
+  // To reproduce, perform the following two actions in sequence very quickly in FxA settings portal:
+  // 1. swap primary email and secondary email
+  // 2. quickly follow step 1 with deleting the account
+  // There's a chance that the fxa event from deletion gets to our service first, in which case, the user will be deleted from the db prior to the profile change event hitting our service
+  if (!subscriber) {
+    const e = new Error(`could not find subscriber with fxa user id: ${fxaUserId}`)
+    log.error('fxaRpEvents', e)
+    captureException(e)
+    res.status(200).send('OK')
+  }
+
   // reference example events: https://github.com/mozilla/fxa/blob/main/packages/fxa-event-broker/README.md
   for (const event in decodedJWT?.events) {
     switch (event) {
@@ -136,7 +148,7 @@ const fxaRpEvents = async (req, res) => {
         })
 
         // get current profiledata
-        const { fxa_profile_json: currentFxAProfile } = subscriber
+        const currentFxAProfile = subscriber?.fxa_profile_json || {}
 
         // merge new event into existing profile data
         for (const key in updatedProfileFromEvent) {
