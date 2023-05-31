@@ -6,7 +6,10 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
 
-import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
+import {
+  getSubscriberByEmail,
+  deleteResolutionsWithEmail,
+} from "../../../../../db/tables/subscribers";
 import {
   getUserEmails,
   resetUnverifiedEmailAddress,
@@ -126,5 +129,34 @@ export async function POST(req: NextRequest) {
 }
 
 export async function DELETE(req: NextRequest) {
-  return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+  const token = await getToken({ req });
+
+  if (token) {
+    try {
+      const { emailId } = await req.json();
+      const subscriber = await getSubscriberByEmail(token.email);
+      const existingEmail = await getEmailById(emailId);
+
+      if (existingEmail?.subscriber_id !== subscriber.id) {
+        return NextResponse.json({
+          success: false,
+          status: 400,
+          message: l10n.getString("error-not-subscribed"),
+        });
+      }
+
+      await removeOneSecondaryEmail(emailId);
+      deleteResolutionsWithEmail(
+        existingEmail.subscriber_id,
+        existingEmail.email
+      );
+      return NextResponse.redirect("/user/settings", 301);
+    } catch (e) {
+      console.error(e);
+      return NextResponse.json({ success: false }, { status: 500 });
+    }
+  } else {
+    // Not Signed in, redirect to home
+    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+  }
 }
