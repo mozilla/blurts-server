@@ -15,6 +15,7 @@ get-alerts = Få varslingar om nye datalekkasjar
 
 how-it-works = Slik fungerer det
 check-for-breaches = Sjå etter datalekkasjar
+check-for-breaches-we-search = Vi vil søkje gjennom alle kjende datalekkasjar sidan 2007 for å sjå om dine opplysningar har blitt kompromitterte.
 protect-accounts = Beskytt kontoane dine
 alerts-for-breaches = Få varslingar om nye datalekkasjar
 
