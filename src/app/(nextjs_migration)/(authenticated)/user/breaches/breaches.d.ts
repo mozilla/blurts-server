@@ -129,7 +129,7 @@ export interface VerifiedEmail {
   verified: boolean;
 }
 
-export interface BreachResolutionApiBody {
+export interface BreachResolutionRequest {
   affectedEmail: string;
   breachId: number;
   resolutionsChecked: Array<keyof HibpBreachDataTypes>;

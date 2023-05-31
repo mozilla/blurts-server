@@ -2,6 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import {
+  BreachResolutionRequest,
+  Subscriber,
+} from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 import { getBreaches } from "../../../../functions/server/getBreaches";
@@ -43,7 +48,11 @@ export async function PUT(req: NextRequest) {
       const subscriber = await getSubscriberByEmail(token.email);
       const allBreaches = await getBreaches();
       const j = await req.json();
-      const { affectedEmail, breachId, resolutionsChecked } = j;
+      const {
+        affectedEmail,
+        breachId,
+        resolutionsChecked,
+      }: BreachResolutionRequest = j;
       const breachIdNumber = Number(breachId);
       const affectedEmailAsSubscriber =
         subscriber.primary_email === affectedEmail
