@@ -7,12 +7,25 @@
 import { signIn } from "next-auth/react";
 import { useL10n } from "../../../hooks/l10n";
 
-export const SignInButton = () => {
+export type Props = {
+  autoSignIn?: boolean;
+};
+
+function initSignIn() {
+  signIn("fxa", { callbackUrl: "/user/breaches" });
+}
+
+export const SignInButton = ({ autoSignIn }: Props) => {
   const l10n = useL10n();
+
+  if (autoSignIn) {
+    initSignIn();
+    return null;
+  }
 
   return (
     <button
-      onClick={() => signIn("fxa", { callbackUrl: "/user/breaches" })}
+      onClick={() => initSignIn()}
       data-cta-id="sign-in-1"
       className="button secondary"
     >

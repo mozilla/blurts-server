@@ -16,7 +16,7 @@ import {
   getBreachIcons,
   getBreaches,
 } from "../../../../functions/server/getBreaches";
-import { Breach } from "../../../../transitionTypes";
+import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
 import { getLocale } from "../../../../functions/server/l10n";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";

@@ -129,7 +129,7 @@ const styles = `
 /**
  * @param {number} total
  * @param {number} value
- * @returns {number} number
+ * @returns number
  */
 const calcPercentage = (total, value) => {
   if (!total) {
@@ -254,6 +254,7 @@ customElements.define('circle-chart', class extends HTMLElement {
         dy='${CHART_RADIUS * 0.15}'
         fill='${relevantItem.color}'
         font-size='${CHART_RADIUS * 0.4}'
+        font-size='50'
         x='${CHART_RADIUS}'
         y='${CHART_RADIUS}'
       >

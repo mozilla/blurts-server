@@ -4,11 +4,11 @@
 
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
-import { redirect } from "next/navigation";
 import Image from "next/image";
 
 import "../../../../client/css/index.css";
 import { UserMenu } from "../../components/client/UserMenu";
+import { SignInButton } from "../../components/client/SignInButton";
 import { SiteNavigation } from "../../components/client/SiteNavigation";
 import AppConstants from "../../../../appConstants.js";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
@@ -22,7 +22,7 @@ export type Props = {
 const MainLayout = async (props: Props) => {
   const session = await getServerSession(authOptions);
   if (!session) {
-    redirect("/");
+    return <SignInButton autoSignIn />;
   }
 
   const l10n = getL10n();
@@ -63,7 +63,7 @@ const MainLayout = async (props: Props) => {
 
       <SiteNavigation />
 
-      <main>{props.children}</main>
+      {props.children}
 
       <footer className="site-footer">
         <a href="https://www.mozilla.org" target="_blank">
