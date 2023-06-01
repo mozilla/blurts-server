@@ -16,7 +16,7 @@ import {
   getEmailById,
 } from "../../../../../db/tables/emailAddresses.js";
 
-import { sendVerificationEmail } from "../../../util/email";
+import { sendVerificationEmail } from "../../../utils/email";
 
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/server/l10n";

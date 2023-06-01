@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
-import { sendVerificationEmail } from "../../../util/email";
+import { sendVerificationEmail } from "../../../utils/email";
 import { getL10n } from "../../../../functions/server/l10n";
 const l10n = getL10n();
 
