@@ -1,0 +1,46 @@
+@import "../../../tokens";
+
+.exposureHeader {
+  font: $text-body-md;
+  border: 2px solid rgba($color-purple-70, 0.2);
+  border-radius: $border-radius-md;
+  max-width: $content-xl;
+  padding: $spacing-sm 0;
+
+  ul.exposureHeaderList {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: $layout-md;
+    margin: 0;
+    padding: 0 $spacing-sm;
+    padding-bottom: $spacing-sm;
+
+    li {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .exposureImage {
+      max-width: 150px;
+      height: 100%;
+    }
+  }
+
+  .exposureDetailsSection {
+    border-top: 2px solid rgba($color-purple-70, 0.2);
+    margin: 0;
+    padding: 0 $spacing-sm;
+
+    ul {
+      justify-content: space-between;
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+      display: flex;
+      align-items: center;
+      gap: $layout-md;
+    }
+  }
+}
