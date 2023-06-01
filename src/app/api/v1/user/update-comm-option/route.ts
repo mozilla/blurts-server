@@ -11,16 +11,21 @@ import {
   setAllEmailsToPrimary,
 } from "../../../../../db/tables/subscribers";
 
+interface EmailUpdateCommOptionRequest {
+  communicationOption: string;
+}
+
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
 
   if (token) {
     try {
-      const body = await req.json();
+      const { communicationOption }: EmailUpdateCommOptionRequest =
+        await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
       // 0 = Send breach alerts to the email address found in brew breach.
       // 1 = Send all breach alerts to user's primary email address.
-      const allEmailsToPrimary = Number(body?.communicationOption) === 1 || 0;
+      const allEmailsToPrimary = Number(communicationOption) === 1 || 0;
       await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
 
       return NextResponse.json({

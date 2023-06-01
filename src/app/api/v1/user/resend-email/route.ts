@@ -11,7 +11,7 @@ import { sendVerificationEmail } from "../../../util/email";
 import { getL10n } from "../../../../functions/server/l10n";
 const l10n = getL10n();
 
-interface ResendEmailRequest {
+interface EmailResendRequest {
   emailId: string;
 }
 
@@ -20,8 +20,7 @@ export async function POST(req: NextRequest) {
 
   if (token) {
     try {
-      const body: ResendEmailRequest = await req.json();
-      const emailId = body?.emailId;
+      const { emailId }: EmailResendRequest = await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
       const existingEmail = await getUserEmails(subscriber.id);
 

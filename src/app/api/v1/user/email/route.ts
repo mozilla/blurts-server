@@ -22,25 +22,8 @@ import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/server/l10n";
 const l10n = getL10n();
 
-function checkForDuplicateEmail(sessionUser, email: string) {
-  const emailLowerCase = email.toLowerCase();
-  if (emailLowerCase === sessionUser.primary_email.toLowerCase()) {
-    return NextResponse.json({
-      success: false,
-      status: 400,
-      message: l10n.getString("user-add-duplicate-email"),
-    });
-  }
-
-  for (const secondaryEmail of sessionUser.email_addresses) {
-    if (emailLowerCase === secondaryEmail.email.toLowerCase()) {
-      return NextResponse.json({
-        success: false,
-        status: 400,
-        message: l10n.getString("user-add-duplicate-email"),
-      });
-    }
-  }
+interface EmailAddRequest {
+  email: string;
 }
 
 export async function POST(req: NextRequest) {
@@ -48,7 +31,7 @@ export async function POST(req: NextRequest) {
 
   if (token) {
     try {
-      const body = await req.json();
+      const body: EmailAddRequest = await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
       const emailCount = 1 + (subscriber.email_addresses?.length ?? 0); // primary + verified + unverified emails
       const validatedEmail = validateEmailAddress(body.email);
@@ -69,7 +52,25 @@ export async function POST(req: NextRequest) {
         });
       }
 
-      checkForDuplicateEmail(subscriber, validatedEmail.email);
+      // checkForDuplicateEmail
+      const emailLowerCase = validatedEmail.email.toLowerCase();
+      if (emailLowerCase === subscriber.primary_email.toLowerCase()) {
+        return NextResponse.json({
+          success: false,
+          status: 400,
+          message: l10n.getString("user-add-duplicate-email"),
+        });
+      }
+
+      for (const secondaryEmail of subscriber.email_addresses) {
+        if (emailLowerCase === secondaryEmail.email.toLowerCase()) {
+          return NextResponse.json({
+            success: false,
+            status: 400,
+            message: l10n.getString("user-add-duplicate-email"),
+          });
+        }
+      }
 
       const unverifiedSubscriber = await addSubscriberUnverifiedEmailHash(
         subscriber,
@@ -103,12 +104,16 @@ export async function POST(req: NextRequest) {
   }
 }
 
+interface EmailDeleteRequest {
+  emailId: string;
+}
+
 export async function DELETE(req: NextRequest) {
   const token = await getToken({ req });
 
   if (token) {
     try {
-      const { emailId } = await req.json();
+      const { emailId }: EmailDeleteRequest = await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
       const existingEmail = await getEmailById(emailId);
 
