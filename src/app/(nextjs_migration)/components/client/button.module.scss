@@ -11,7 +11,7 @@
   line-height: 1;
 
   &.primary {
-    color: white;
+    color: $color-white;
     background-color: $color-blue-50;
   }
 
@@ -19,12 +19,11 @@
     color: $color-blue-50;
     border: solid 2px $color-blue-50;
     background-color: transparent;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
   }
 
   &.large {
     font: $text-body-lg;
-    color: white;
+    color: $color-white;
     background-color: $color-blue-50;
   }
 }
