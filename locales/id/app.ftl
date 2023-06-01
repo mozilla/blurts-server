@@ -679,7 +679,7 @@ ad-unit-5-email-receipts = Dapatkan tanda terima surel
 ad-unit-5-share-custom-email = Bagikan topeng surel kustom untuk tanda terima belanja tanpa membagikan surel asli Anda
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Gunakan di ponsel Anda
-ad-unit-5-no-matter-where = Di mana pun Anda berada, buat topeng surel khusus dalam hitungan detik untuk apa pun yang ingin Anda lakukan
+ad-unit-5-no-matter-where = Di mana pun Anda berada, buat topeng surel khusus dalam sekejap untuk semua yang ingin Anda lakukan
 # ad 6 heading
 ad-unit-6-worry-free = Pendaftaran Bebas Khawatir
 ad-unit-6-want-to-start = Ingin memulai langganan baru, merespon undangan, atau mendapatkan kode promo tawar-menawar tanpa spam membanjiri kotak masuk Anda?
