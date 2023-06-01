@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
       const { communicationOption }: EmailUpdateCommOptionRequest =
         await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
-      // 0 = Send breach alerts to the email address found in brew breach.
+      // 0 = Send breach alerts to the corresponding affected emails.
       // 1 = Send all breach alerts to user's primary email address.
       const allEmailsToPrimary = Number(communicationOption) === 1 || 0;
       await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
