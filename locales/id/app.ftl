@@ -616,7 +616,7 @@ ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Priba
 promo-ecosystem-cta = Lihat Semua Produk
 steps-to-resolve-headline = Langkah-langkah untuk mengatasi pelanggaran ini
 vpn-promo-headline = Sekaranglah waktunya untuk meningkatkan keamanan Anda saat daring.
-vpn-promo-copy = Jaringan Pribadi Virtual { -brand-Mozilla } membantu melindungi koneksi internet Anda dari peretas dan mata-mata.
+vpn-promo-copy = Jaringan Pribadi Virtual (VPN) { -brand-Mozilla } membantu melindungi koneksi internet Anda dari peretas dan mata-mata.
 vpn-promo-cta = Dapatkan { -brand-mozilla-vpn }
 vpn-promo-headline-new = Hemat 50% dengan berlangganan setahun penuh
 vpn-promo-copy-new = Lindungi data daring Anda—dan pilih paket langganan VPN yang sesuai untuk Anda.
@@ -631,7 +631,7 @@ vpn-banner-location = Lokasi Anda: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Lindungi diri Anda</em> dengan { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Dilindungi</em> dengan { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Anda terlindungi — terima kasih telah menggunakan { -brand-mozilla-vpn }.
-vpn-banner-title-2 = Lokasi Anda dapat dilacak jika Anda tidak menggunakan VPN.
+vpn-banner-title-2 = Lokasi Anda dapat dilacak jika tidak menggunakan VPN.
 vpn-banner-subtitle-2 = Lindungi lokasi Anda dan jelajahi dengan aman dalam 3 langkah
 vpn-banner-status-protected = Status saat ini: <em>Dilindungi </em>
 vpn-banner-status-not-protected = Status saat ini: <em>Tidak dilindungi </em>
@@ -657,7 +657,7 @@ ad-unit-1-how-do-you-keep = Bagaimana Anda merahasiakan alamat surel Anda?
 ad-unit-2-do-you-worry = Apakah Anda khawatir tentang keamanan di Wi-Fi publik?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Tetap dalam permainan!
-ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } memungkinkan Anda menjaga koneksi yang stabil dan aman saat Anda bermain game atau streaming film.
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } memungkinkan Anda menjaga koneksi yang stabil dan aman saat bermain game atau streaming film.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Cegah pelambatan
 # ad 3 list item 2
@@ -665,11 +665,11 @@ ad-unit-3-be-anywhere = Jadilah di mana saja di dunia
 # ad 3 list item 3
 ad-unit-3-access-more = Akses lebih banyak
 # ad 4 heading
-ad-unit-4-shopping-with = Berbelanja dengan Masker Email
+ad-unit-4-shopping-with = Berbelanja dengan Topeng Surel
 ad-unit-4-want-to-buy = Ingin membeli sesuatu secara daring dan tidak tahu atau tidak percaya sepenuhnya dengan tokonya?
 ad-unit-4-shop-online = Gunakan topeng surel kapan saat Anda berbelanja daring. Dapatkan pesan konfirmasi dikirim ke surel Anda yang sebenarnya dan kemudian matikan topeng kapan saja suatu saat.
 # ad 5 heading
-ad-unit-5-on-the-go = Saat Dalam Perjalanan dengan { -brand-relay }
+ad-unit-5-on-the-go = Di mana saja bersama { -brand-relay }
 ad-unit-5-instantly-make = Langsung buat topeng surel kustom di mana saja dan ke mana pun saat Anda bepergian!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Sambungkan di mana saja
