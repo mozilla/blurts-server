@@ -670,7 +670,7 @@ ad-unit-4-want-to-buy = Ingin membeli sesuatu secara daring dan tidak tahu atau 
 ad-unit-4-shop-online = Gunakan topeng surel kapan saat Anda berbelanja daring. Dapatkan pesan konfirmasi dikirim ke surel Anda yang sebenarnya dan kemudian matikan topeng kapan saja suatu saat.
 # ad 5 heading
 ad-unit-5-on-the-go = Di mana saja bersama { -brand-relay }
-ad-unit-5-instantly-make = Langsung buat topeng surel kustom di mana saja dan ke mana pun saat Anda bepergian!
+ad-unit-5-instantly-make = Langsung buat topeng surel khusus di mana saja dan ke mana pun saat bepergian!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Sambungkan di mana saja
 ad-unit-5-privately-sign-in = Gunakan topeng surel saat Anda ingin masuk secara pribadi ke kedai kopi favorit atau Wi-Fi publik
