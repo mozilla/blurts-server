@@ -3,8 +3,12 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
 breach-meta-title = { -brand-fx-monitor } – Nadzorna plošča
+breach-all-meta-title = { -brand-fx-monitor } – Vse kraje podatkov
 breach-all-meta-social-title = Vse kraje podatkov, ki jih je odkril { -brand-fx-monitor }
 breach-all-meta-social-description = Prebrskajte po celotnem seznamu znanih kraj, ki jih je zaznal { -brand-fx-monitor }, in ugotovite, ali so bili vaši podatki izpostavljeni.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } – Kraja podatkov { $company }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Ste bili zaradi kraje podatkov podjetja { $company } prizadeti?
