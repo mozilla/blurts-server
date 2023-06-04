@@ -19,6 +19,11 @@ export type Props = {
   statusPillContent: string;
 };
 
+type DetailsFoundProps = {
+  whichExposed: string; // family | email | phone | address
+  num: number;
+};
+
 export const ExposureCard = (props: Props) => {
   const {
     exposureImg,
@@ -30,6 +35,51 @@ export const ExposureCard = (props: Props) => {
     statusPillType,
   } = props;
 
+  const DetailsFoundItem = (props: DetailsFoundProps) => {
+    let headline, description;
+    if (props.whichExposed === "family") {
+      headline = "Family members";
+
+      description = `We found ${props.num} family member`;
+      if (props.num > 1) {
+        description = `We found ${props.num} family members`;
+      }
+    }
+
+    if (props.whichExposed === "email") {
+      headline = "Email";
+
+      description = `We found ${props.num} email address`;
+      if (props.num > 1) {
+        description = `We found ${props.num} email addresses`;
+      }
+    }
+
+    if (props.whichExposed === "phone") {
+      headline = "Phone number";
+
+      description = `We found ${props.num} phone number`;
+      if (props.num > 1) {
+        description = `We found ${props.num} phone numbers`;
+      }
+    }
+
+    if (props.whichExposed === "address") {
+      headline = "Phone number";
+
+      description = `We found ${props.num} address`;
+      if (props.num > 1) {
+        description = `We found ${props.num} addresses`;
+      }
+    }
+
+    return (
+      <>
+        <dt>{headline}</dt>
+        <dl>{description}</dl>
+      </>
+    );
+  };
   const elementCard = (
     <div>
       <div className={styles.exposureHeader}>
@@ -52,10 +102,18 @@ export const ExposureCard = (props: Props) => {
           </p>
           <ul>
             <li>Your exposed info:</li>
-            <li>Family Members</li>
-            <li>Phone Number</li>
-            <li>Email</li>
-            <li>Address</li>
+            <li>
+              <DetailsFoundItem whichExposed="family" num={0} />
+            </li>
+            <li>
+              <DetailsFoundItem whichExposed="email" num={5} />
+            </li>
+            <li>
+              <DetailsFoundItem whichExposed="phone" num={4} />
+            </li>
+            <li>
+              <DetailsFoundItem whichExposed="address" num={0} />
+            </li>
             <li>
               <Button type={"primary"} content={"Lets fix it"} large={false} />
             </li>
