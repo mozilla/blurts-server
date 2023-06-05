@@ -41,7 +41,7 @@
 .user-menu-popover::after {
   background-color: white;
   border-top-left-radius: 1px;
-  content: '';
+  content: "";
   display: block;
   height: 14px;
   position: absolute;
