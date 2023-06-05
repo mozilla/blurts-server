@@ -92,6 +92,7 @@ function getRawMessage (id) {
  * getMessage (hello, {name: "Jane"})
  * // Returns "Hello, Jane!"
  * @deprecated Use [[getL10n]]; to ease the transition, see [[getStringLookup]].
+ * @todo Delete this function, and replace calls to it with calls to ReactLocalization.getString
  */
 function getMessage (id, args) {
   return getMessageWithLocale(id, getLocale(), args)
