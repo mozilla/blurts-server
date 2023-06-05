@@ -33,7 +33,6 @@ async function storeMockData (csrfToken) {
     state: 'OK'
   }
 
-  try {
     const res = await fetch('/api/v1/user/exposures/', {
       headers: {
         'Content-Type': 'application/json',
@@ -55,6 +54,4 @@ async function storeMockData (csrfToken) {
     if (!responseBody.success) {
       throw new Error('Immediately caught to show an error message.')
     }
-  } catch (e) {
-  }
 }
