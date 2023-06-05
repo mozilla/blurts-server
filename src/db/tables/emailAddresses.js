@@ -154,7 +154,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
  * @param {string} fxaAccessToken from Firefox Account Oauth
  * @param {string} fxaRefreshToken from Firefox Account Oauth
  * @param {string} fxaProfileData from Firefox Account
- * @returns {object} subscriber knex object added to DB
+ * @returns {Promise<import('../../app/transitionTypes.js').Subscriber>} subscriber knex object added to DB
  */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
   console.log({ email })
