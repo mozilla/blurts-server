@@ -29,7 +29,9 @@
   font-size: 1.25rem;
   height: 2.5rem;
   line-height: 2.5rem;
-  padding-left: calc(var(--padding-sm) + var(--search-icon-width) + var(--padding-sm));
+  padding-left: calc(
+    var(--padding-sm) + var(--search-icon-width) + var(--padding-sm)
+  );
   padding-right: var(--padding-sm);
   border: 1px solid var(--gray-20);
   border-radius: var(--border-radius);
