@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { breachCardPartial } from './emailBreachCard.js'
-import { getMessage } from '../../utils/fluent.js'
+import { getStringLookup } from '../../utils/fluent.js'
 
 const emailStyle = `
   color: black;
@@ -44,7 +44,8 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
-const signupReportEmailPartial = data => {
+const signupReportEmailPartial = (data, l10n) => {
+  const getMessage = getStringLookup(l10n);
   const {
     breachedEmail,
     breachLogos,
