@@ -10,8 +10,10 @@ import {
   updateFxAData,
 } from "../../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../../db/tables/emailAddresses.js";
-import { getBreaches } from "../../../functions/server/getBreaches";
-import { getBreachIcons } from "../../../functions/server/getBreaches";
+import {
+  getBreaches,
+  getBreachIcons,
+} from "../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../utils/hibp.js";
 import { getSha1 } from "../../../../utils/fxa.js";
 import {
