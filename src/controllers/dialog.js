@@ -14,8 +14,8 @@ async function dialog (req, res) {
   }
 
   try {
-    const module = await import(`../views/partials/${partialName}.js`)
-    data.partial = module[partialName]
+    const m = await import(`../views/partials/${partialName}.js`)
+    data.partial = m[partialName]
   } catch (e) {
     return res.sendStatus(404)
   }

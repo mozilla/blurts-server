@@ -64,7 +64,6 @@ const enterYourPassword = async (page) => {
 }
 
 export const checkAuthState = async (page) => {
-  try {
     const authStateTitleString = await page.locator('h1').textContent({ timeout: 4000 })
     const checkIfTitleContains = (potentialTitle) => {
       return authStateTitleString?.includes(potentialTitle)
@@ -89,5 +88,4 @@ export const checkAuthState = async (page) => {
       default:
         break
     }
-  } catch {}
 }

@@ -10,4 +10,4 @@ export type SubscriberRow = {
   verification_token: string;
   verified: boolean;
   onerep_profile_id?: number;
-}
+};

@@ -67,8 +67,8 @@ async function openDialog (path) {
     dialogEl.insertAdjacentHTML('beforeend', content)
 
     try {
-      const module = await import(`./partials/${partialName}.js`) // import module associated with dialog content
-      module.default() // TODO: refactor filenames with camelCase to allow the filename as function name instead of default
+      const m = await import(`./partials/${partialName}.js`) // import module associated with dialog content
+      m.default() // TODO: refactor filenames with camelCase to allow the filename as function name instead of default
     } catch (e) {
       console.log(`Dialog module "${partialName}.js" not found.`, e)
     }
