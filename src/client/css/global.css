@@ -130,9 +130,10 @@ body > header .nav-wrapper {
 }
 
 main {
-  --max-width-margin: calc(50% - var(--max-width)/2);
+  --max-width-margin: calc(50% - var(--max-width) / 2);
 
-  margin-inline: max(var(--nav-w, 0px), var(--max-width-margin)) max(0px, var(--max-width-margin));
+  margin-inline: max(var(--nav-w, 0px), var(--max-width-margin))
+    max(0px, var(--max-width-margin));
   animation: fade-in 0.2s ease-out;
 }
 
@@ -244,7 +245,7 @@ button.close {
   width: 24px;
   height: 24px;
   padding: var(--padding-md);
-  background: url('../images/icon-close.svg') no-repeat 50%;
+  background: url("../images/icon-close.svg") no-repeat 50%;
 }
 
 input {
@@ -252,7 +253,7 @@ input {
   font-size: 1rem;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   width: var(--checkbox-w);
   height: var(--checkbox-w);
 }
@@ -319,11 +320,11 @@ dialog button.close {
   transform: translateY(var(--enter-transition-y, 0));
 }
 
-[data-enter-transition=''] {
+[data-enter-transition=""] {
   animation: section-animation ease-out 350ms forwards 350ms;
 }
 
-[data-enter-transition='visible'] {
+[data-enter-transition="visible"] {
   animation: section-animation ease-out 350ms forwards;
 }
 
