@@ -1,11 +1,11 @@
 import * as path from 'path';
- 
+
 const buildEslintCommand = (filenames) =>
   `next lint --fix --file ${filenames
     .map((f) => path.relative(process.cwd(), f))
     .join(' --file ')}`;
  
-module.exports = {
+export default {
   '*.{js,jsx,ts,tsx}': [buildEslintCommand],
   "*.{scss,css}": "stylelint --fix",
   "*.{ts,tsx,jsx,scss}": "prettier --write",
