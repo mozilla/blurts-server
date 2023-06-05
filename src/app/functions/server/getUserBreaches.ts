@@ -3,13 +3,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { cookies } from "next/headers";
+import { Session } from "next-auth";
 
 import { getBreaches, getBreachIcons } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
 import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
 
-export async function getUserBreaches({ user }) {
+export async function getUserBreaches({ user }: { user: Session["user"] }) {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
