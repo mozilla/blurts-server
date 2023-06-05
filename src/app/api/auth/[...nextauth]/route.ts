@@ -103,7 +103,7 @@ export const authOptions: AuthOptions = {
           avatarDefault: profile.avatarDefault,
         };
       }
-      if (account) {
+      if (account && profile) {
         // We're signing in with FxA; store user in database if not present yet.
         log.debug("fxa-confirmed-fxaUser", account);
 
@@ -112,7 +112,7 @@ export const authOptions: AuthOptions = {
         //       we can also store FxA account data. We also don't have to worry
         //       about model mismatches (i.e. Next-Auth expecting one User to have
         //       multiple Accounts at multiple providers).
-        const email = profile?.email;
+        const email = profile.email;
         const existingUser = await getSubscriberByEmail(email);
 
         if (existingUser) {
