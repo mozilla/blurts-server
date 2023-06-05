@@ -61,7 +61,10 @@ export default async function UserBreaches() {
   const l10n = getL10n();
 
   const userBreachesData: UserBreaches = await getUserBreaches({
-    user: session?.user,
+    // `(authenticated)/layout.tsx` ensures that `session` is not undefined,
+    // so the type assertion should be safe:
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    user: session!.user,
   });
 
   function createBreachRows({ breachesData, breachLogos }: UserBreaches) {
