@@ -6,6 +6,7 @@
     "node": "18.12.x",
     "npm": "8.x"
   },
+  "type":"module",
   "scripts": {
     "next:dev": "next dev --port=6060",
     "next:build": "next build",
