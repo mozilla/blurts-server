@@ -1,5 +1,5 @@
 .not-found {
-  background-image: url('/images/error-bg.svg');
+  background-image: url("/images/error-bg.svg");
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
