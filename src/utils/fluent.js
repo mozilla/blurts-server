@@ -92,9 +92,32 @@ function getRawMessage (id) {
  * // Given FluentResource("hello = Hello, {$name}!")
  * getMessage (hello, {name: "Jane"})
  * // Returns "Hello, Jane!"
+ * @deprecated Use [[getL10n]]; to ease the transition, see [[getStringLookup]].
  */
 function getMessage (id, args) {
   return getMessageWithLocale(id, getLocale(), args)
+}
+
+/**
+ * Get a function that localises a string
+ *
+ * This is a transition function to make it easy to port code that still uses
+ * [[getMessage]] to the Next.js setup. If you're calling that code from a place
+ * that has a FluentLocalization object (i.e. code reachable from a Next.js
+ * requests, where its `headers` function is available and which can therefore
+ * obtain it by calling [[getL10n]]), it will use that; otherwise it will fall
+ * back to the existing `getMessage`.
+ *
+ * @param {import('@fluent/react').ReactLocalization | undefined} l10n A FluentLocalization object, if available.
+ * @returns {typeof getMessage} A function equivalent to [[getMessage]], but it'll use the FluentLocalization object if given one.
+ */
+function getStringLookup(l10n) {
+  if (l10n) {
+    return (id, vars) => {
+      return l10n.getString(id, vars)
+    };
+  }
+  return getMessage;
 }
 
 /**
@@ -123,4 +146,4 @@ function getMessageWithLocale (id, localePreferences, args) {
   return bundle.formatPattern(bundle.getMessage(id)?.value ?? '', args)
 }
 
-export { initFluentBundles, updateLocale, getLocale, getMessage, getMessageWithLocale, getRawMessage }
+export { initFluentBundles, updateLocale, getLocale, getMessage, getMessageWithLocale, getStringLookup, getRawMessage }
