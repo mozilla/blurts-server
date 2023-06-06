@@ -2,26 +2,30 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { redirect } from "next/navigation";
+import Image from "next/image";
+import Script from "next/script";
+import AppConstants from "../../../../../appConstants";
 import { getL10n } from "../../../../functions/server/l10n";
-// import { getServerSession } from "next-auth";
-// import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../../api/auth/[...nextauth]/route";
 import ImageIconDelete from "../../../../../client/images/icon-delete.svg";
 import "../../../../../client/css/partials/settings.css";
 import React from "react";
+import {
+  EmailRow,
+  getUserEmails,
+} from "../../../../../db/tables/emailAddresses";
+import { getBreaches } from "../../../../functions/server/getBreaches";
+import { getBreachesForEmail } from "../../../../../utils/hibp";
+import { getSha1 } from "../../../../../utils/fxa";
+import { getSubscriberById } from "../../../../../db/tables/subscribers";
 
-// TODO: Set EmailObject to match what comes from db/tables/emailAddresses.js
-type EmailObject = {
-  email: string;
-  verified: boolean;
-  breachCount: number;
-  primary: boolean;
-};
-
-const emailNeedsVerificationSub = (email) => {
+const emailNeedsVerificationSub = (email: EmailRow) => {
   const l10n = getL10n();
 
   return (
-    <div>
+    <>
       <span className="verification-required">
         {l10n.getString("settings-email-verification-callout")}
       </span>
@@ -29,101 +33,110 @@ const emailNeedsVerificationSub = (email) => {
       <a className="js-settings-resend-email" data-email-id={email.id} href="#">
         {l10n.getString("settings-resend-email-verification-link")}
       </a>
-    </div>
+    </>
   );
 };
 
-const deleteButton = (email) => {
+const deleteButton = (email: EmailRow) => {
+  const l10n = getL10n();
+
   return (
     <button
+      aria-label={l10n.getString("settings-delete-email-button")}
       data-subscriber-id={email.subscriber_id}
       data-email-id={email.id}
       className="settings-email-remove-button js-remove-email-button"
     >
-      <img src={ImageIconDelete} />
+      <Image
+        src={ImageIconDelete}
+        alt={l10n.getString("settings-delete-email-button")}
+      />
     </button>
   );
 };
 
-const createEmailItem = (EmailObject) => {
+const createEmailItem = (
+  email: EmailRow & { primary?: boolean },
+  breachCounts: Map<string, number>
+) => {
   const l10n = getL10n();
 
   return (
     <li className="settings-email-item">
       <strong>
-        {EmailObject.primary
+        {email.primary
           ? l10n.getString("settings-email-label-primary", {
-              email: EmailObject.email,
+              email: email.email,
             })
-          : EmailObject.email}
+          : email.email}
       </strong>
-      {EmailObject.verified
+      {email.verified
         ? l10n.getString("settings-email-number-of-breaches-info", {
-            breachCount: EmailObject.breachCount,
+            breachCount: breachCounts.get(email.email)!,
           })
-        : emailNeedsVerificationSub(EmailObject)}
-      {/* {email.primary ? "" : deleteButton(email)} */}
+        : emailNeedsVerificationSub(email)}
+      {email.primary ? null : deleteButton(email)}
     </li>
   );
 };
 
-const createEmailList = (emails: any, breachCounts: any) => {
-  // TODO: Iterate through email accounts via createEmailItem()
-  // TODO: Sort emails with primary email first via getSortedEmails()
+// Moves the primary email to the front and sorts the rest alphabeticaly.
+const getSortedEmails = (emails: any[]) =>
+  [...emails].sort((a, b) => {
+    if (a.primary) {
+      return -1;
+    }
 
-  return <ul className="settings-email-list">TEST</ul>;
-};
+    if (b.primary) {
+      return 1;
+    }
 
-/**
- * @param {string} csrfToken
- * @param {{ isChecked: boolean; option: unknown; }} options
- * @param isChecked
- * @param option
- * @returns string
- */
-const optionInput = (csrfToken: string, isChecked: boolean, option: number) => {
-  const input = (
-    <input
-      className="js-settings-alert-options-input"
-      data-alert-option={option}
-      data-csrf-token={csrfToken}
-      name="settings-alert-options"
-      type="radio"
-    ></input>
+    return a.email.localeCompare(b.email);
+  });
+
+const createEmailList = (
+  emails: EmailRow[],
+  breachCounts: Map<string, number>
+) => {
+  return (
+    <ul className="settings-email-list">
+      {getSortedEmails(emails).map((email) =>
+        createEmailItem(email, breachCounts)
+      )}
+    </ul>
   );
-
-  // TODO: SeT CHECKED
-  // input.checked = isChecked;
-
-  return input;
 };
 
-/**
- * @param {{ csrfToken: string; allEmailsToPrimary: boolean }} options
- * @returns string
- */
-const alertOptions = ({ csrfToken, allEmailsToPrimary }) => {
+const alertOptions = ({
+  allEmailsToPrimary,
+}: {
+  allEmailsToPrimary: boolean;
+}) => {
   const l10n = getL10n();
 
   return (
     <div className="settings-alert-options">
       <label className="settings-radio-input">
-        {optionInput(csrfToken, !allEmailsToPrimary, 0)}
-        {/* {optionInput(csrfToken, {
-          isChecked: !allEmailsToPrimary,
-          option: 0,
-        })} */}
+        <input
+          defaultChecked={!allEmailsToPrimary}
+          className="js-settings-alert-options-input"
+          data-alert-option={0}
+          name="settings-alert-options"
+          type="radio"
+        />
         <span className="settings-radio-label">
           {l10n.getString("settings-alert-preferences-option-one")}
         </span>
       </label>
 
       <label className="settings-radio-input">
-        {optionInput(csrfToken, allEmailsToPrimary, 1)}
-        {/* {optionInput(csrfToken, {
-          isChecked: allEmailsToPrimary,
-          option: 1,
-        })} */}
+        <input
+          defaultChecked={allEmailsToPrimary}
+          className="js-settings-alert-options-input"
+          data-alert-option={1}
+          name="settings-alert-options"
+          type="radio"
+        />
         <span className="settings-radio-label">
           {l10n.getString("settings-alert-preferences-option-two")}
         </span>
@@ -132,80 +145,69 @@ const alertOptions = ({ csrfToken, allEmailsToPrimary }) => {
   );
 };
 
-// const { allEmailsToPrimary, breachCounts, csrfToken, emails, limit } = data
-
-function MonitoredEmails() {
-  const l10n = getL10n();
-
-  return (
-    <ul class="settings-email-list">
-      $
-      {getSortedEmails(emails)
-        .map((email) => createEmailItem(email, breachCounts))
-        .join("")}
-    </ul>
-  );
-}
-
-const mockedEmailsArrayObject = [
-  {
-    email: "mcrawford@mozilla.com",
-    verified: true,
-    breachCount: 0,
-    primary: true,
-  },
-  {
-    email: "maxx.crawford@gmail.com",
-    verified: true,
-    breachCount: "25",
-    primary: false,
-  },
-];
-
-const breachCounts = new Map();
-
-for (const email of mockedEmailsArrayObject) {
-  breachCounts.set(email.email, email.breachCount);
-}
-
-// props: {
-//   mockedEmailsArray: object;
-//   breachCounts: Map<string, string>;
-// }
-
 export default async function Settings() {
   const l10n = getL10n();
-  // const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
+  if (!session || !session.user?.subscriber) {
+    return redirect("/");
+  }
+  // Re-fetch the subscriber every time, rather than reading it from `session`
+  // - if the user changes their preferences on this page, the JSON web token
+  // containing the subscriber data won't be updated until the next sign-in.
+  // (Possibly we shouldn't store subscriber data in that token in the first
+  // place, other than their ID?)
+  const subscriber = await getSubscriberById(session.user.subscriber.id);
+  const emails = await getUserEmails(session.user.subscriber.id);
+  // Add primary subscriber email to the list
+  emails.push({
+    email: session.user.subscriber.primary_email,
+    sha1: session.user.subscriber.primary_sha1,
+    primary: true,
+    verified: true,
+  } as any);
 
-  const limit = process.env.MAX_NUM_ADDRESSES;
-  const fxaUrl = process.env.FXA_SETTINGS_URL;
-
-  // console.log(props);
-
-  const csrfToken = "lorem";
-  const allEmailsToPrimary = true;
+  const breachCounts = new Map();
+  const allBreaches = await getBreaches();
+  for (const email of emails) {
+    const breaches = await getBreachesForEmail(
+      getSha1(email.email),
+      allBreaches,
+      true
+    );
+    breachCounts.set(email.email, breaches?.length || 0);
+  }
 
   return (
     <>
+      <Script src="/nextjs_migration/client/js/settings.js" />
+      <Script src="/nextjs_migration/client/js/dialog.js" />
       <main data-partial="settings">
-        <div className="settings js-settings" data-csrf-token={csrfToken}>
+        <div className="settings js-settings">
           <h2 className="settings-title">
             {l10n.getString("settings-page-title")}
           </h2>
 
           <div className="settings-content">
-            {/* <!-- Monitored email addresses --> */}
+            {/* Monitored email addresses */}
             <section>
               <h3 className="settings-section-title">
                 {l10n.getString("settings-email-list-title")}
               </h3>
-              <p>{l10n.getString("settings-email-limit-info", { limit })}</p>
+              <p className="settings-section-info">
+                {l10n.getString("settings-email-limit-info", {
+                  limit: AppConstants.MAX_NUM_ADDRESSES,
+                })}
+              </p>
 
-              {/* {createEmailList(props.mockedEmailsArray, props.breachCounts)} */}
+              {createEmailList(emails, breachCounts)}
               <button
+                aria-label={l10n.getString("settings-add-email-button")}
                 className="primary settings-add-email-button"
                 data-dialog="addEmail"
-                // ${emails.length >= limit ? 'disabled' : ''}
+                disabled={
+                  emails.length >=
+                  Number.parseInt(AppConstants.MAX_NUM_ADDRESSES, 10)
+                }
               >
                 {l10n.getString("settings-add-email-button")}
               </button>
@@ -213,23 +215,31 @@ export default async function Settings() {
 
             <hr />
 
-            {/* <!-- Breach alert preferences --> */}
+            {/* Breach alert preferences */}
             <section>
               <h3 className="settings-section-title">
                 {l10n.getString("settings-alert-preferences-title")}
               </h3>
-              {alertOptions({ csrfToken, allEmailsToPrimary })}
+              {alertOptions({
+                allEmailsToPrimary: subscriber.all_emails_to_primary,
+              })}
             </section>
 
             <hr />
 
-            {/* <!-- Deactivate account --> */}
+            {/* Deactivate account */}
             <section>
               <h3 className="settings-section-title">
                 {l10n.getString("settings-deactivate-account-title")}
               </h3>
-              <p>{l10n.getString("settings-deactivate-account-info")}</p>
-              <a className="settings-link-fxa" href={fxaUrl} target="_blank">
+              <p className="settings-section-info">
+                {l10n.getString("settings-deactivate-account-info")}
+              </p>
+              <a
+                className="settings-link-fxa"
+                href={AppConstants.FXA_SETTINGS_URL}
+                target="_blank"
+              >
                 {l10n.getString("settings-fxa-link-label")}
               </a>
             </section>

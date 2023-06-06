@@ -6,21 +6,14 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
 
-import {
-  getSubscriberByEmail,
-  deleteResolutionsWithEmail,
-} from "../../../../../db/tables/subscribers";
-import {
-  addSubscriberUnverifiedEmailHash,
-  removeOneSecondaryEmail,
-  getEmailById,
-} from "../../../../../db/tables/emailAddresses.js";
+import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
+import { addSubscriberUnverifiedEmailHash } from "../../../../../db/tables/emailAddresses.js";
 
 import { sendVerificationEmail } from "../../../utils/email";
 
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/server/l10n";
-const l10n = getL10n();
+import { initEmail } from "../../../../../utils/email";
 
 interface EmailAddRequest {
   email: string;
@@ -28,6 +21,7 @@ interface EmailAddRequest {
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
+  const l10n = getL10n();
 
   if (token) {
     try {
@@ -37,38 +31,46 @@ export async function POST(req: NextRequest) {
       const validatedEmail = validateEmailAddress(body.email);
 
       if (validatedEmail === null) {
-        return NextResponse.json({
-          success: false,
-          status: 400,
-          message: l10n.getString("user-add-invalid-email"),
-        });
+        return NextResponse.json(
+          {
+            success: false,
+            message: l10n.getString("user-add-invalid-email"),
+          },
+          { status: 400 }
+        );
       }
 
       if (emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
-        return NextResponse.json({
-          success: false,
-          status: 400,
-          message: l10n.getString("user-add-too-many-emails"),
-        });
+        return NextResponse.json(
+          {
+            success: false,
+            message: l10n.getString("user-add-too-many-emails"),
+          },
+          { status: 400 }
+        );
       }
 
       // checkForDuplicateEmail
       const emailLowerCase = validatedEmail.email.toLowerCase();
       if (emailLowerCase === subscriber.primary_email.toLowerCase()) {
-        return NextResponse.json({
-          success: false,
-          status: 400,
-          message: l10n.getString("user-add-duplicate-email"),
-        });
+        return NextResponse.json(
+          {
+            success: false,
+            message: l10n.getString("user-add-duplicate-email"),
+          },
+          { status: 400 }
+        );
       }
 
       for (const secondaryEmail of subscriber.email_addresses) {
         if (emailLowerCase === secondaryEmail.email.toLowerCase()) {
-          return NextResponse.json({
-            success: false,
-            status: 400,
-            message: l10n.getString("user-add-duplicate-email"),
-          });
+          return NextResponse.json(
+            {
+              success: false,
+              message: l10n.getString("user-add-duplicate-email"),
+            },
+            { status: 400 }
+          );
         }
       }
 
@@ -77,16 +79,15 @@ export async function POST(req: NextRequest) {
         validatedEmail.email
       );
 
-      await sendVerificationEmail(subscriber, unverifiedSubscriber.id);
+      await initEmail();
+      await sendVerificationEmail(subscriber, unverifiedSubscriber.id, l10n);
 
       return NextResponse.json({
         success: true,
         newEmailCount: emailCount + 1,
         message: "Sent the verification email",
       });
-      return NextResponse.json("ok");
     } catch (e) {
-      console.error(e);
       if (e.message === "error-email-validation-pending") {
         return NextResponse.json(
           {
@@ -96,43 +97,6 @@ export async function POST(req: NextRequest) {
           { status: 429 }
         );
       }
-      return NextResponse.json({ success: false }, { status: 500 });
-    }
-  } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
-  }
-}
-
-interface EmailDeleteRequest {
-  emailId: string;
-}
-
-export async function DELETE(req: NextRequest) {
-  const token = await getToken({ req });
-
-  if (token) {
-    try {
-      const { emailId }: EmailDeleteRequest = await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
-      const existingEmail = await getEmailById(emailId);
-
-      if (existingEmail?.subscriber_id !== subscriber.id) {
-        return NextResponse.json({
-          success: false,
-          status: 400,
-          message: l10n.getString("error-not-subscribed"),
-        });
-      }
-
-      await removeOneSecondaryEmail(emailId);
-      deleteResolutionsWithEmail(
-        existingEmail.subscriber_id,
-        existingEmail.email
-      );
-      return NextResponse.redirect("/user/settings", 301);
-    } catch (e) {
-      console.error(e);
       return NextResponse.json({ success: false }, { status: 500 });
     }
   } else {

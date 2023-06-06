@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from '../../utils/fluent.js'
+import { getStringLookup } from '../../utils/fluent.js'
 
 const containerStyle = `
   background: #f9f9fa;
@@ -20,7 +20,9 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
-const verifyPartial = (data) => `
+const verifyPartial = (data, l10n) => {
+  const getMessage = getStringLookup(l10n);
+  return `
   <tr>
     <td style='${containerStyle}'>
       <p>
@@ -40,4 +42,5 @@ const verifyPartial = (data) => `
     </td>
   </tr>
 `
+}
 export { verifyPartial }

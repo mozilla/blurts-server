@@ -4,28 +4,28 @@
 
 import { resetUnverifiedEmailAddress } from "../../../db/tables/emailAddresses.js";
 import { sendEmail, getVerificationUrl } from "../../../utils/email";
+import { getStringLookup } from "../../../utils/fluent.js";
 import { getTemplate } from "../../../views/emails/email2022.js";
 import { verifyPartial } from "../../../views/emails/emailVerify.js";
 
-import { getL10n } from "../../functions/server/l10n";
-const l10n = getL10n();
-
-export async function sendVerificationEmail(user, emailId) {
+export async function sendVerificationEmail(user, emailId, l10n) {
+  const getMessage = getStringLookup(l10n);
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
-    emailId
+    emailId,
+    l10n
   );
   const recipientEmail = unverifiedEmailAddressRecord.email;
   const data = {
     recipientEmail,
     ctaHref: getVerificationUrl(unverifiedEmailAddressRecord),
     utmCampaign: "email_verify",
-    heading: l10n.getString("email-verify-heading"),
-    subheading: l10n.getString("email-verify-subhead"),
+    heading: "email-verify-heading",
+    subheading: "email-verify-subhead",
     partial: { name: "verify" },
   };
   await sendEmail(
     recipientEmail,
-    l10n.getString("email-subject-verify"),
-    getTemplate(data, verifyPartial)
+    getMessage("email-subject-verify"),
+    getTemplate(data, verifyPartial, l10n)
   );
 }
