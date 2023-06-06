@@ -3,7 +3,8 @@ name: Unit Tests
 on: [push]
 
 jobs:
-  build:
+  test:
+    if: github.ref_name != 'l10n-premerge'
 
     runs-on: ubuntu-latest
 
