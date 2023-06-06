@@ -2,10 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React, { ReactElement } from "react";
+import React, { ReactElement, use, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "./StatusPill";
 import { StaticImageData } from "next/image";
+import { ChevronDown } from "./Icons";
 import Image from "next/image";
 import { Button } from "./Button";
 
@@ -34,6 +35,8 @@ export const ExposureCard = (props: Props) => {
     statusPillContent,
     statusPillType,
   } = props;
+
+  const [detailsOpen, setDetailsOpen] = useState(false);
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
     let headline, description;
@@ -82,19 +85,35 @@ export const ExposureCard = (props: Props) => {
   };
   const elementCard = (
     <div>
-      <div className={styles.exposureHeader}>
-        <ul className={styles.exposureHeaderList}>
-          <li className={styles.exposureImageWrapper}>
-            <Image className={styles.exposureImage} alt="" src={exposureImg} />
-          </li>
-          <li>{exposureName}</li>
-          <li>{exposureType}</li>
-          <li>{dateFound}</li>
-          <li>
-            <StatusPill type={statusPillType} content={statusPillContent} />
-          </li>
-        </ul>
-        <div className={styles.exposureDetailsSection}>
+      <div className={styles.exposureCard}>
+        <div className={styles.exposureHeader}>
+          <ul className={styles.exposureHeaderList}>
+            <li className={styles.exposureImageWrapper}>
+              <Image
+                className={styles.exposureImage}
+                alt=""
+                src={exposureImg}
+              />
+            </li>
+            <li>{exposureName}</li>
+            <li>{exposureType}</li>
+            <li>{dateFound}</li>
+            <li>
+              <StatusPill type={statusPillType} content={statusPillContent} />
+            </li>
+          </ul>
+          <span
+            className={styles.chevronDown}
+            onClick={() => setDetailsOpen(!detailsOpen)}
+          >
+            <ChevronDown alt="" width="15" height="15" />
+          </span>
+        </div>
+        <div
+          className={`${styles.exposureDetailsSection} ${
+            detailsOpen ? styles.isOpen : ""
+          }`}
+        >
           <p>
             This site is selling and publishing{" "}
             <a href={exposureDetailsLink}>details about you.</a> Remove this
