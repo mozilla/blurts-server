@@ -715,3 +715,9 @@ exposed-data = Dati esposti:
 find-out-if-2 = Scopri se sei stato coinvolto in questa violazione
 find-out-if-description = Ti aiuteremo a verificare rapidamente se il tuo indirizzo email è stato coinvolto in questa violazione e a capire come procedere.
 breach-detail-cta-signup = Cerca nelle violazioni
+
+## Floating banner
+
+floating-banner-text = Migliora la tua sicurezza online con notizie, suggerimenti e aggiornamenti da { -brand-Mozilla }.
+floating-banner-link-label = Iscriviti
+floating-banner-dismiss-button-label = No grazie

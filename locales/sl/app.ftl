@@ -853,3 +853,9 @@ exposed-data = Izpostavljeni podatki:
 find-out-if-2 = Ugotovite, ali ste bili vpleteni v to krajo
 find-out-if-description = Pomagali vam bomo hitro ugotoviti, ali je bil vaš e-poštni naslov izpostavljen v tej kraji, in razumeli, kaj morate storiti naprej.
 breach-detail-cta-signup = Preverite kraje podatkov
+
+## Floating banner
+
+floating-banner-text = Okrepite svojo spletno varnost z novicami, nasveti in posodobitvami { -brand-Mozilla(sklon: "rodilnik") }.
+floating-banner-link-label = Prijava
+floating-banner-dismiss-button-label = Ne, hvala

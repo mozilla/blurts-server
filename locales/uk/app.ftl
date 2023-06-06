@@ -865,3 +865,9 @@ exposed-data = Дата витоку:
 find-out-if-2 = Дізнайтеся, чи були ваші дані в цьому витоці
 find-out-if-description = Ми допоможемо вам швидко з’ясувати, чи було розкрито вашу електронну адресу внаслідок цього витоку, і зрозуміти, що робити далі.
 breach-detail-cta-signup = Перевірити на витік даних
+
+## Floating banner
+
+floating-banner-text = Підвищте онлайн-безпеку за допомогою новин, порад і оновлень від { -brand-Mozilla }.
+floating-banner-link-label = Зареєструватись
+floating-banner-dismiss-button-label = Ні, дякую

@@ -789,3 +789,9 @@ exposed-data = Exponerad data:
 find-out-if-2 = Ta reda på om du var inblandad i detta intrång
 find-out-if-description = Vi hjälper dig att snabbt kontrollera om din e-postadress har varit inblandad i detta intrång och hur du ska gå vidare.
 breach-detail-cta-signup = Sök efter intrång
+
+## Floating banner
+
+floating-banner-text = Öka din onlinesäkerhet med nyheter, tips och uppdateringar från { -brand-Mozilla }.
+floating-banner-link-label = Registrera dig
+floating-banner-dismiss-button-label = Nej tack

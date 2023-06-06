@@ -815,3 +815,9 @@ exposed-data = Data datgeledig:
 find-out-if-2 = Darganfyddwch a oeddech yn gysylltiedig â'r tor-data hwn
 find-out-if-description = Byddwn yn eich helpu i weld yn gyflym a oedd eich cyfeiriad e-bost wedi'i ddatgelu drwy'r tor-data hwn, a gwybod beth i'w wneud nesaf.
 breach-detail-cta-signup = Gwiriwch am dor-data
+
+## Floating banner
+
+floating-banner-text = Rhowch hwb i'ch diogelwch ar-lein gyda newyddion, awgrymiadau a diweddariadau gan { -brand-Mozilla }.
+floating-banner-link-label = Ymuno
+floating-banner-dismiss-button-label = Dim diolch

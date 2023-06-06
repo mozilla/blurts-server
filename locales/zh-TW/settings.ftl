@@ -36,7 +36,7 @@ settings-email-number-of-breaches-info = 出現在 { $breachCount } 場已知的
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = 取消 { -brand-premium } 訂閱
-settings-cancel-premium-subscription-info = 將在目前的帳務週期結束後恢復為免費帳號訂閱。將永久刪除您的隱私保護掃描結果且僅能監控 1 個信箱的資料外洩事件。
+settings-cancel-premium-subscription-info = 將在目前的帳務週期結束後恢復為免費帳號訂閱。將永久刪除您的隱私保護掃描結果，且僅能監控 1 個信箱的資料外洩事件。
 settings-cancel-premium-subscription-link-label = 從 { -brand-fx-account } 取消
 
 ## Deactivate account
@@ -54,10 +54,10 @@ settings-send-email-verification-button = 寄送驗證鏈結
 
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = 很抱歉您要離開。 <br />您願意告訴我們為什麼要離開嗎
-settings-unsubscribe-dialog-info = 您的體驗對我們來說很重要。我們閱讀並考慮了所有回應。
-settings-unsubscribe-dialog-message-placeholder = 還有什麼更好的選擇
+settings-unsubscribe-dialog-title = 很遺憾您要離開。<br />您願意告訴我們為什麼要離開嗎？
+settings-unsubscribe-dialog-info = 您的體驗對我們來說非常重要，我們會閱讀每一份填答結果並且慎重處理。
+settings-unsubscribe-dialog-message-placeholder = 我們有什麼事情能夠改善？
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = 請注意在您目前的帳務週期結束後都<a { $faq_href }>永久刪除</a>您所有的 { -brand-monitor-premium } 服務。
+settings-unsubscribe-dialog-confirmation = 請注意，在您目前帳務週期結束後，將<a { $faq_href }>永久刪除</a>您的所有 { -brand-monitor-premium } 服務。
 settings-unsubscribe-dialog-continue = 繼續取消
 settings-unsubscribe-dialog-cancel = 沒關係帶我回去

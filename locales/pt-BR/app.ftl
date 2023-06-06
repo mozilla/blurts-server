@@ -755,3 +755,9 @@ exposed-data = Dados expostos:
 find-out-if-2 = Descubra se você foi vítima deste vazamento
 find-out-if-description = Ajudaremos você a ver rapidamente se seu endereço de email foi exposto neste vazamento e saber o que fazer a seguir.
 breach-detail-cta-signup = Verificar se há vazamentos
+
+## Floating banner
+
+floating-banner-text = Aumente sua segurança online com notícias, dicas e novidades da { -brand-Mozilla }.
+floating-banner-link-label = inscrever-se
+floating-banner-dismiss-button-label = Não, obrigado

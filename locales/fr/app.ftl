@@ -727,3 +727,9 @@ exposed-data = Données ayant fuité :
 find-out-if-2 = Vérifiez si cette fuite de données vous concerne
 find-out-if-description = Nous vous aiderons à vérifier rapidement si votre adresse e-mail a été compromise dans cette fuite de données et à comprendre ce qu’il faut faire ensuite.
 breach-detail-cta-signup = Vérifier les fuites de données
+
+## Floating banner
+
+floating-banner-text = Renforcez votre sécurité en ligne avec les actualités et les conseils de { -brand-Mozilla }.
+floating-banner-link-label = Je m’inscris
+floating-banner-dismiss-button-label = Non merci

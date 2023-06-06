@@ -8,18 +8,18 @@ get-started = Memulai
 ## Why use Firefox Monitor?
 
 why-use-monitor = Mengapa menggunakan { -brand-fx-monitor }?
-identifying-breaches = Mengidentifikasi dan menyelesaikan pembobolan data adalah langkah penting dalam memastikan privasi daring Anda.
+identifying-breaches = Mengidentifikasi dan menindaklanjuti pembobolan data adalah langkah penting dalam memastikan privasi daring Anda.
 protect-account = Lindungi akun Anda
-protect-account-prevent-hackers = Cegah peretas masuk ke akun Anda dengan kata sandi yang dibobol.
+protect-account-prevent-hackers = Cegah peretas menggunakan kata sandi yang dibobol masuk ke akun Anda.
 prevent-fraud = Cegah penipuan dan kejahatan dunia maya
 prevent-fraud-keep-info = Jauhkan info Anda dari peretas yang ingin menyamar sebagai Anda dan melakukan kejahatan.
 get-alerts = Dapatkan peringatan untuk pembobolan baru
-get-alerts-find-out = Cari tahu kapan informasi pribadi Anda dikompromikan dalam pelanggaran baru yang diketahui.
+get-alerts-find-out = Cari tahu kapan informasi pribadi Anda dikompromikan dalam pembobolan baru yang diketahui.
 
 ## Here’s how it works
 
 how-it-works = Begini cara kerjanya
-check-for-breaches = Periksa pelanggaran data
+check-for-breaches = Periksa pembobolan data
 check-for-breaches-we-search = Kami akan mencari semua pembobolan data yang diketahui sejak 2007 untuk melihat apakah info Anda telah disusupi.
 protect-accounts = Lindungi akun Anda
 protect-accounts-clear-steps = Kami akan memberi Anda langkah-langkah yang jelas tentang apa yang harus dilakukan selanjutnya untuk setiap pelanggaran data yang Anda terlibat.
@@ -49,5 +49,5 @@ depends-on-hackers = Tidak semua pembobolan mengekspos semua info yang sama. Itu
 
 ## See if you’ve been in a data breach
 
-see-if-data-breach = Lihat apakah Anda pernah mengalami pembobolan data
+see-if-data-breach = Lihat apakah Anda pernah terlibat dalam pembobolan data
 hibp-footer-attribution = Data pembobolan disediakan oleh <b>{ -brand-HIBP }</b>
