@@ -9,7 +9,7 @@ import { getSubscriberByEmail } from "../../../../../db/tables/subscribers";
 import { getUserEmails } from "../../../../../db/tables/emailAddresses";
 import { sendVerificationEmail } from "../../../utils/email";
 import { getL10n } from "../../../../functions/server/l10n";
-const l10n = getL10n();
+import { initEmail } from "../../../../../utils/email";
 
 interface EmailResendRequest {
   emailId: string;
@@ -17,6 +17,7 @@ interface EmailResendRequest {
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
+  const l10n = getL10n();
 
   if (token) {
     try {
@@ -38,7 +39,8 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      await sendVerificationEmail(subscriber, emailId);
+      await initEmail();
+      await sendVerificationEmail(subscriber, emailId, l10n);
 
       return NextResponse.json({
         success: true,
