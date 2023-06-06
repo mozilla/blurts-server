@@ -6,9 +6,17 @@ import React, { ReactElement, use, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "./StatusPill";
 import { StaticImageData } from "next/image";
-import { ChevronDown } from "./Icons";
+import {
+  ChevronDown,
+  EmailIcon,
+  LocationPin,
+  MultipleUsers,
+  OpenInNew,
+  PhoneIcon,
+} from "./Icons";
 import Image from "next/image";
 import { Button } from "./Button";
+import Email from "next-auth/providers/email";
 
 export type Props = {
   exposureImg: StaticImageData;
@@ -23,6 +31,7 @@ export type Props = {
 type DetailsFoundProps = {
   whichExposed: string; // family | email | phone | address
   num: number;
+  icon: ReactElement;
 };
 
 export const ExposureCard = (props: Props) => {
@@ -68,7 +77,7 @@ export const ExposureCard = (props: Props) => {
     }
 
     if (props.whichExposed === "address") {
-      headline = "Phone number";
+      headline = "Address";
 
       description = `We found ${props.num} address`;
       if (props.num > 1) {
@@ -78,7 +87,10 @@ export const ExposureCard = (props: Props) => {
 
     return (
       <>
-        <dt>{headline}</dt>
+        <dt>
+          <span className={styles.exposureTypeIcon}>{props.icon}</span>
+          {headline}
+        </dt>
         <dl>{description}</dl>
       </>
     );
@@ -106,7 +118,12 @@ export const ExposureCard = (props: Props) => {
             className={styles.chevronDown}
             onClick={() => setDetailsOpen(!detailsOpen)}
           >
-            <ChevronDown alt="" width="15" height="15" />
+            <ChevronDown
+              className={detailsOpen ? styles.isOpen : ""}
+              alt=""
+              width="20"
+              height="20"
+            />
           </span>
         </div>
         <div
@@ -116,27 +133,50 @@ export const ExposureCard = (props: Props) => {
         >
           <p>
             This site is selling and publishing{" "}
-            <a href={exposureDetailsLink}>details about you.</a> Remove this
-            profile to protect your privacy.
+            <a href={exposureDetailsLink}>
+              details about you.{" "}
+              <span>
+                <OpenInNew alt="" width="15" height="14" />
+              </span>
+            </a>{" "}
+            Remove this profile to protect your privacy.
           </p>
-          <ul>
-            <li>Your exposed info:</li>
-            <li>
-              <DetailsFoundItem whichExposed="family" num={0} />
-            </li>
-            <li>
-              <DetailsFoundItem whichExposed="email" num={5} />
-            </li>
-            <li>
-              <DetailsFoundItem whichExposed="phone" num={4} />
-            </li>
-            <li>
-              <DetailsFoundItem whichExposed="address" num={0} />
-            </li>
-            <li>
+          <div className={styles.exposureListOfExposureTypes}>
+            <ul>
+              <li>Your exposed info:</li>
+              <li>
+                <DetailsFoundItem
+                  icon={<MultipleUsers alt="" width="15" height="15" />}
+                  whichExposed="family"
+                  num={0}
+                />
+              </li>
+              <li>
+                <DetailsFoundItem
+                  icon={<PhoneIcon alt="" width="15" height="15" />}
+                  whichExposed="phone"
+                  num={5}
+                />
+              </li>
+              <li>
+                <DetailsFoundItem
+                  icon={<EmailIcon alt="" width="15" height="15" />}
+                  whichExposed="email"
+                  num={4}
+                />
+              </li>
+              <li>
+                <DetailsFoundItem
+                  icon={<LocationPin alt="" width="15" height="15" />}
+                  whichExposed="address"
+                  num={0}
+                />
+              </li>
+            </ul>
+            <span className={styles.fixItBtn}>
               <Button type={"primary"} content={"Lets fix it"} large={false} />
-            </li>
-          </ul>
+            </span>
+          </div>
         </div>
       </div>
     </div>
