@@ -48,6 +48,7 @@
   --red-60: #e22850;
   --red-70: #c50042;
   --pink-5: #ffdef0;
+  --background-gradient: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
   --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 

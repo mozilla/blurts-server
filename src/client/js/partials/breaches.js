@@ -43,6 +43,8 @@ function init () {
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
   document.body.addEventListener('email-added', handleEvent)
+
+  breachRows.forEach(elem => elem.addEventListener('toggle', handleEvent))
 }
 
 function handleEvent (e) {
@@ -67,6 +69,13 @@ function handleEvent (e) {
     case e.type === 'email-added':
       state.emailCount = e.detail.newEmailCount
       renderZeroState()
+      break
+    case e.type === 'toggle':
+      window.gtag('event', 'toggled_breach_card', {
+        action: e.target.open ? 'opened' : 'closed',
+        page_location: (window.location.origin + window.location.pathname),
+        company_name: e.target.dataset.companyName
+      })
       break
   }
 }
@@ -94,7 +103,7 @@ async function updateBreachStatus (input) {
       })
     })
 
-    if (res.ok) {
+    if (!res.ok) {
       throw new ClientError('We couldn’t search for the latest breaches. Please refresh or try again later.', {
         action: ErrorActionTypes.Toast
       })

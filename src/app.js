@@ -43,6 +43,13 @@ Sentry.init({
   }
 })
 
+// sentry error handler
+app.use(Sentry.Handlers.errorHandler({
+  shouldHandleError (error) {
+    if (error instanceof RateLimitError) return true
+  }
+}))
+
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
 // Build script is NOT run for `npm run dev`, assets are served from /src, and nodemon restarts server without build (faster dev).
@@ -185,13 +192,6 @@ app.use('/api', apiLimiter)
 
 // routing
 app.use('/', indexRouter)
-
-// sentry error handler
-app.use(Sentry.Handlers.errorHandler({
-  shouldHandleError (error) {
-    if (error instanceof TooManyRequestsError) return true
-  }
-}))
 
 // app error handler
 app.use(errorHandler)

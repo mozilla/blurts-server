@@ -240,7 +240,8 @@ button.secondary:active,
 }
 
 button.primary:hover:enabled,
-.button.primary:hover:enabled {
+.button.primary:hover:enabled,
+a.button.primary:hover {
   background: var(--blue-60);
 }
 
