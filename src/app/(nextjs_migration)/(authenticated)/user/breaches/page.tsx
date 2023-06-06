@@ -19,6 +19,27 @@ import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import ImageBreachesNone from "../../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../../client/images/breaches-all-resolved.svg";
 
+export async function generateMetadata() {
+  const l10n = getL10n();
+  return {
+    title: l10n.getString("breach-meta-title"),
+    twitter: {
+      card: "summary_large_image",
+      title: l10n.getString("brand-fx-monitor"),
+      description: l10n.getString("meta-desc-2"),
+      images: ["/images/og-image.webp"],
+    },
+    openGraph: {
+      title: l10n.getString("brand-fx-monitor"),
+      description: l10n.getString("meta-desc-2"),
+      siteName: l10n.getString("brand-fx-monitor"),
+      type: "website",
+      url: process.env.SERVER_URL,
+      images: ["/images/og-image.webp"],
+    },
+  };
+}
+
 function createEmailOptions({ breachesData, emailSelectIndex }: UserBreaches) {
   const emails = breachesData.verifiedEmails.map((obj) => obj.email);
   const optionElements = emails.map(
