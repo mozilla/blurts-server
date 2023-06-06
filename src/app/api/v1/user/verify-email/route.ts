@@ -4,12 +4,15 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { verifyEmailHash } from "../../../../../db/tables/emailAddresses.js";
-export async function POST(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     const query = req.nextUrl.searchParams;
-    const token = query?.["token"];
+    const token = query.get("token");
     await verifyEmailHash(token);
-    return NextResponse.redirect("/user/settings", 301);
+    return NextResponse.redirect(
+      process.env.SERVER_URL + "/user/settings",
+      301
+    );
   } catch (e) {
     console.error(e);
     return NextResponse.json({ success: false }, { status: 500 });
