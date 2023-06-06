@@ -22,6 +22,11 @@ settings-email-list-title = Overvaka e-postadresser
 settings-email-verification-callout = Stadfesting av e-post påkravd
 settings-resend-email-verification-link = Send stadfestings e-posten på nytt
 settings-add-email-button = Legg til e-postadresse
+settings-delete-email-button = Slett e-postadresse
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Avslutt abonnementet på { -brand-premium }
 
 ## Deactivate account
 
@@ -34,3 +39,7 @@ settings-email-dialog-title = Legg til ei ny e-postadresse
 settings-add-email-text = Legg til ei ny e-postadresse for å sjå om ho har vore utsett for ein datalekkasje.
 settings-email-input-label = E-postadresse
 settings-send-email-verification-button = Send stadfestingslenke
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-message-placeholder = Kva kunne ha gått betre?

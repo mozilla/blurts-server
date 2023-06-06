@@ -757,3 +757,9 @@ exposed-data = Datos expuestos:
 find-out-if-2 = Averigua si te viste involucrado en esta filtración
 find-out-if-description = Te ayudaremos a comprobar rápidamente si tu dirección de correo electrónico se vio expuesta en esta filtración y saber qué hacer a continuación.
 breach-detail-cta-signup = Busca filtraciones
+
+## Floating banner
+
+floating-banner-text = Mejora tu seguridad en línea con noticias, consejos y actualizaciones de { -brand-Mozilla }.
+floating-banner-link-label = Registrarse
+floating-banner-dismiss-button-label = No, gracias

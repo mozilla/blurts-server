@@ -10,6 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Emoambue ne ñe’ẽñemi
 # Link title
 rec-pw-1-cta = Emoambue ñe’ẽñemi ko tendápe g̃uarã
+rec-pw-1-2 =
+    Ejapo ko ñe’ẽñemígui ha’eño ha iñambuéva oimeraẽva umi eipurúvagui.
+    Mba’e iporãva ha’e emojopyru mokõi térã hetave ñe’ẽ ojuehegua’ỹva
+    emoheñói hag̃ua peteĩ ñe’ẽsyry ha emoinge papapy ha ta’ãnga’i.
 # Recommendation subhead
 rec-pw-2-subhead = Embohekopyahu ambue tembiapo ñepyrũ ko ñe’ẽñemímente
 # Link title
@@ -56,6 +60,10 @@ rec-email =
 rec-ip-subhead-2 = Eipuru VPN emoñemi hag̃ua nde IP kundaharape
 # Recommendation subhead
 rec-moz-vpn-cta = Eñe’ẽ { -brand-mozilla-vpn }
+rec-moz-vpn-update-2 =
+    Ne kundaharape ñandutigua (IP kundaharape) ohechauka ne rendaite
+    ha ñanduti me’ẽha. Pe mba’epuru { -brand-mozilla-vpn } rehegua
+    omoypytũ nde IP kundaharape oñomi hag̃ua ne rendaite.
 rec-hist-pw-subhead = Aníke eipurujo’a ñe’ẽñemi
 # Link title
 rec-hist-pw-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }

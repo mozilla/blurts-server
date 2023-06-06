@@ -722,3 +722,8 @@ exposed-data = Ele geçirilen veriler:
 
 find-out-if-2 = Bu ihlale karışıp karışmadığınızı öğrenin
 breach-detail-cta-signup = İhlalleri kontrol et
+
+## Floating banner
+
+floating-banner-link-label = Kaydol
+floating-banner-dismiss-button-label = Gerek yok

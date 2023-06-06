@@ -11,9 +11,8 @@ rec-pw-1-subhead = Ubah kata sandi Anda
 # Link title
 rec-pw-1-cta = Ubah kata sandi untuk situs ini
 rec-pw-1-2 =
-    Jadikan kata sandi ini unik dan berbeda dari kata sandi lainnya yang Anda gunakan.
-    Strategi yang baik untuk diikuti adalah menggabungkan dua atau lebih yang tidak terkait
-    kata untuk membuat seluruh frasa sandi, dan menyertakan angka dan simbol.
+    Jadikan kata sandi ini unik dan berbeda dari kata sandi lain yang Anda gunakan.
+    Salah satu strategi yang baik yang bisa dilakukan adalah menggabungkan dua kata atau lebih yang tidak terkait untuk membuat sebuah sandi, dan kemudian menyertakan angka dan simbol.
 # Recommendation subhead
 rec-pw-2-subhead = Perbarui info masuk lain menggunakan kata sandi yang sama
 # Link title

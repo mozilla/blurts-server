@@ -736,3 +736,9 @@ exposed-data = Offengelegte Daten:
 find-out-if-2 = Erfahren Sie, ob Sie von diesem Datenleck betroffen waren
 find-out-if-description = Wir helfen Ihnen, schnell zu erkennen, ob Ihre E-Mail-Adresse bei diesem Datenleck offengelegt wurde, und zu verstehen, was als Nächstes zu tun ist.
 breach-detail-cta-signup = Auf Datenlecks überprüfen
+
+## Floating banner
+
+floating-banner-text = Erhöhen Sie Ihre Online-Sicherheit mit Nachrichten, Tipps und Updates von { -brand-Mozilla }.
+floating-banner-link-label = Registrieren
+floating-banner-dismiss-button-label = Nein, danke

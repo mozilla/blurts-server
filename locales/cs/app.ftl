@@ -899,3 +899,9 @@ exposed-data = Odhalené údaje:
 find-out-if-2 = Zjistěte, zda jste byli součástí tohoto úniku
 find-out-if-description = Pomůžeme vám rychle zjistit, zda byla při tomto úniku odhalena vaše e-mailová adresa a pomůžeme vám pochopit, co dělat dále.
 breach-detail-cta-signup = Prohledat úniky
+
+## Floating banner
+
+floating-banner-text = Zvyšte své online zabezpečení pomocí novinek, tipů a aktualizací od { -brand-Mozilla(case: "gen") }.
+floating-banner-link-label = Přihlásit se
+floating-banner-dismiss-button-label = Ne, díky

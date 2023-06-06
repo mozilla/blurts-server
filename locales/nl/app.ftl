@@ -784,3 +784,8 @@ exposed-data = Gelekte gegevens:
 find-out-if-2 = Ontdek of u getroffen bent door dit lek
 find-out-if-description = We helpen u snel te zien of uw e-mailadres is gelekt bij dit datalek en te begrijpen wat u vervolgens moet doen.
 breach-detail-cta-signup = Controleren op datalekken
+
+## Floating banner
+
+floating-banner-link-label = Registreren
+floating-banner-dismiss-button-label = Nee, bedankt

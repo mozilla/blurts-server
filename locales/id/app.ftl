@@ -616,7 +616,7 @@ ecosystem-promo-body = Semua produk { -brand-name } menghormati Janji Data Priba
 promo-ecosystem-cta = Lihat Semua Produk
 steps-to-resolve-headline = Langkah-langkah untuk mengatasi pelanggaran ini
 vpn-promo-headline = Sekaranglah waktunya untuk meningkatkan keamanan Anda saat daring.
-vpn-promo-copy = Jaringan Pribadi Virtual { -brand-Mozilla } membantu melindungi koneksi internet Anda dari peretas dan mata-mata.
+vpn-promo-copy = Jaringan Pribadi Virtual (VPN) { -brand-Mozilla } membantu melindungi koneksi internet Anda dari peretas dan mata-mata.
 vpn-promo-cta = Dapatkan { -brand-mozilla-vpn }
 vpn-promo-headline-new = Hemat 50% dengan berlangganan setahun penuh
 vpn-promo-copy-new = Lindungi data daring Anda—dan pilih paket langganan VPN yang sesuai untuk Anda.
@@ -631,7 +631,7 @@ vpn-banner-location = Lokasi Anda: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Lindungi diri Anda</em> dengan { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Dilindungi</em> dengan { -brand-mozilla-vpn }.
 vpn-banner-title-1 = Anda terlindungi — terima kasih telah menggunakan { -brand-mozilla-vpn }.
-vpn-banner-title-2 = Lokasi Anda dapat dilacak jika Anda tidak menggunakan VPN.
+vpn-banner-title-2 = Lokasi Anda dapat dilacak jika tidak menggunakan VPN.
 vpn-banner-subtitle-2 = Lindungi lokasi Anda dan jelajahi dengan aman dalam 3 langkah
 vpn-banner-status-protected = Status saat ini: <em>Dilindungi </em>
 vpn-banner-status-not-protected = Status saat ini: <em>Tidak dilindungi </em>
@@ -657,33 +657,31 @@ ad-unit-1-how-do-you-keep = Bagaimana Anda merahasiakan alamat surel Anda?
 ad-unit-2-do-you-worry = Apakah Anda khawatir tentang keamanan di Wi-Fi publik?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Tetap dalam permainan!
-ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } memungkinkan Anda menjaga koneksi yang stabil dan aman saat Anda bermain game atau streaming film.
+ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } memungkinkan Anda menjaga koneksi yang stabil dan aman saat bermain game atau streaming film.
 # ad 3 list item 1
 ad-unit-3-prevent-throttling = Cegah pelambatan
-# ad 3 list item 2
-ad-unit-3-be-anywhere = Jadilah di mana saja di dunia
 # ad 3 list item 3
 ad-unit-3-access-more = Akses lebih banyak
 # ad 4 heading
-ad-unit-4-shopping-with = Berbelanja dengan Masker Email
+ad-unit-4-shopping-with = Berbelanja dengan Topeng Surel
 ad-unit-4-want-to-buy = Ingin membeli sesuatu secara daring dan tidak tahu atau tidak percaya sepenuhnya dengan tokonya?
 ad-unit-4-shop-online = Gunakan topeng surel kapan saat Anda berbelanja daring. Dapatkan pesan konfirmasi dikirim ke surel Anda yang sebenarnya dan kemudian matikan topeng kapan saja suatu saat.
 # ad 5 heading
-ad-unit-5-on-the-go = Saat Dalam Perjalanan dengan { -brand-relay }
-ad-unit-5-instantly-make = Langsung buat topeng surel kustom di mana saja dan ke mana pun saat Anda bepergian!
+ad-unit-5-on-the-go = Di mana saja bersama { -brand-relay }
+ad-unit-5-instantly-make = Langsung buat topeng surel khusus di mana saja dan ke mana pun saat bepergian!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Sambungkan di mana saja
 ad-unit-5-privately-sign-in = Gunakan topeng surel saat Anda ingin masuk secara pribadi ke kedai kopi favorit atau Wi-Fi publik
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Dapatkan tanda terima surel
-ad-unit-5-share-custom-email = Bagikan topeng surel kustom untuk tanda terima belanja tanpa membagikan surel asli Anda
+ad-unit-5-share-custom-email = Bagikan topeng surel kustom untuk mendapatkan kuitansi belanja tanpa perlu membagikan surel asli Anda
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Gunakan di ponsel Anda
-ad-unit-5-no-matter-where = Di mana pun Anda berada, buat topeng surel khusus dalam hitungan detik untuk apa pun yang ingin Anda lakukan
+ad-unit-5-no-matter-where = Di mana pun Anda berada, buat topeng surel khusus dalam sekejap untuk semua yang ingin Anda lakukan
 # ad 6 heading
-ad-unit-6-worry-free = Pendaftaran Bebas Khawatir
-ad-unit-6-want-to-start = Ingin memulai langganan baru, merespon undangan, atau mendapatkan kode promo tawar-menawar tanpa spam membanjiri kotak masuk Anda?
-ad-unit-6-before-you-complete = Sebelum Anda menyelesaikan pendaftaran berikutnya, gunakan topeng surel alih-alih topeng asli Anda untuk melindungi info Anda dan tetap mengendalikan kotak masuk Anda
+ad-unit-6-worry-free = Pendaftaran Tanpa Perlu Khawatir
+ad-unit-6-want-to-start = Ingin memulai langganan baru, membalas undangan, atau mendapatkan kode promo diskon tanpa spam membanjiri kotak masuk Anda?
+ad-unit-6-before-you-complete = Sebelum menyelesaikan pendaftaran berikutnya, gunakan topeng surel alih-alih surel asli Anda untuk melindungi info Anda dan tetap mengendalikan kotak masuk Anda
 
 # Monitor V2
 
@@ -721,7 +719,7 @@ site-nav-breaches-link = Atasi Pembobolan Data
 site-nav-settings-link = Pengaturan
 site-nav-help-link = Bantuan dan Dukungan
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
-site-nav-ad-callout = Coba alat keamanan kami yang lain:
+site-nav-ad-callout = Coba alat keamanan kami lainnya:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -755,18 +753,24 @@ error-page-error-404-cta-button = Kembali
 # Variables:
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Ada yang tidak beres
-error-page-error-other-copy = Silakan coba lagi atau kembali lagi nanti
+error-page-error-other-copy = Coba lagi atau kembali lagi nanti
 
 ## Breach overview page
 
-all-breaches-headline-2 = Semua pembobolan terdeteksi oleh { -brand-fx-monitor }
+all-breaches-headline-2 = Semua pembobolan yang terdeteksi oleh { -brand-fx-monitor }
 all-breaches-lead = Kami memantau semua pembobolan data yang diketahui untuk mengetahui apakah informasi pribadi Anda telah disusupi. Berikut daftar lengkap semua pembobolan yang telah dilaporkan sejak 2007.
 search-breaches = Cari Pembobolan
 # the kind of user data exposed to hackers in data breach.
-exposed-data = Data terbuka:
+exposed-data = Data terungkap:
 
 ## Public breach detail page
 
-find-out-if-2 = Cari tahu apakah Anda terlibat dalam pelanggaran ini
-find-out-if-description = Kami akan membantu Anda dengan cepat melihat apakah alamat surel Anda terungkap dalam pelanggaran ini, dan memahami apa yang harus dilakukan selanjutnya.
-breach-detail-cta-signup = Periksa pelanggaran data
+find-out-if-2 = Cari tahu apakah Anda terlibat dalam pembobolan ini
+find-out-if-description = Kami akan membantu untuk dengan cepat melihat apakah alamat surel Anda terungkap dalam pembobolan ini, dan memahami apa yang harus dilakukan selanjutnya.
+breach-detail-cta-signup = Periksa pembobolan data
+
+## Floating banner
+
+floating-banner-text = Tingkatkan keamanan daring Anda dengan berita, kiat, dan pembaruan dari { -brand-Mozilla }.
+floating-banner-link-label = Daftar
+floating-banner-dismiss-button-label = Tidak, terima kasih
