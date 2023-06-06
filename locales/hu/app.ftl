@@ -789,3 +789,9 @@ exposed-data = Kikerült adatok:
 find-out-if-2 = Tudja meg, hogy érintett-e ebben az adatvédelmi incidensben
 find-out-if-description = Segítünk gyorsan megnézni, hogy kikerült-e az e-mail-címe ebben az adatvédelmi incidensben, és hogy mi legyen a következő teendője.
 breach-detail-cta-signup = Adatvédelmi incidensek keresése
+
+## Floating banner
+
+floating-banner-text = Növelje online biztonságát a { -brand-Mozilla } híreivel, tippjeivel és frissítéseivel.
+floating-banner-link-label = Regisztráció
+floating-banner-dismiss-button-label = Köszönöm, nem

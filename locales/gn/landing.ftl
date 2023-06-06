@@ -3,7 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Ehecha eimépara’e mba’ekuaarã ñembyaípe
 get-started = Eñepyrũ
 
 ## Why use Firefox Monitor?
@@ -48,3 +47,4 @@ depends-on-hackers = Ndahetái ñembogua ohechaukáta peteĩ marandúnte. Oikót
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Ehecha eimépara’e mba’ekuaarã ñembyaípe
+hibp-footer-attribution = Mba’ekuaarã ñembogua ome’ẽva <b>{ -brand-HIBP }</b>

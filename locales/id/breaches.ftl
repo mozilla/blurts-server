@@ -5,24 +5,24 @@
 breach-meta-title = { -brand-fx-monitor } - Dasbor
 breach-all-meta-title = { -brand-fx-monitor } - Semua Pembobolan Data
 breach-all-meta-social-title = Semua Pembobolan Terdeteksi oleh { -brand-fx-monitor }
-breach-all-meta-social-description = Jelajahi daftar lengkap pembobolan yang diketahui terdeteksi oleh { -brand-fx-monitor }, lalu cari tahu apakah informasi Anda terungkap.
+breach-all-meta-social-description = Jelajahi daftar lengkap pembobolan yang diketahui yang terdeteksi oleh { -brand-fx-monitor }, lalu cari tahu apakah informasi Anda terungkap.
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-title = { -brand-fx-monitor } - Pembobolan Data { $company }
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Apakah Anda terpengaruh oleh Pembobolan Data { $company }?
-breach-detail-meta-social-description = Gunakan { -brand-fx-monitor } untuk mengetahui apakah informasi pribadi Anda terungkap dalam pelanggaran ini, dan memahami apa yang harus dilakukan selanjutnya.
+breach-detail-meta-social-description = Gunakan { -brand-fx-monitor } untuk mengetahui apakah informasi pribadi Anda terungkap dalam pembobolan ini, dan memahami apa yang harus dilakukan selanjutnya.
 breach-scan-meta-title = { -brand-fx-monitor } - Hasil Pembobolan
 breach-scan-meta-social-title = { -brand-fx-monitor } Hasil Pembobolan
-breach-scan-meta-social-description = Masuk ke { -brand-fx-monitor } untuk menyelesaikan pelanggaran dan mendapatkan pemantauan berkelanjutan untuk setiap pelanggaran baru yang diketahui.
+breach-scan-meta-social-description = Masuk ke { -brand-fx-monitor } untuk menindaklanjuti pembobolan dan mendapatkan pemantauan berkesinambungan untuk setiap pembobolan baru yang diketahui.
 
 ## Breaches header
 
 # Data classes pie chart title
 breach-chart-title = Data yang dibobol
 # $email-select is an interactive <select> element displaying the current email address
-breach-heading-email = Kebocoran data untuk { $email-select }
+breach-heading-email = Pembobolan data untuk { $email-select }
 # $count is the number of emails a user has added out of $total allowed
 emails-monitored =
     { $total ->
@@ -33,36 +33,36 @@ manage-emails-link = Kelola surel
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Pelanggaran yang belum terselesaikan
-filter-label-resolved = Pembobolan teratasi
+filter-label-unresolved = Pembobolan yang belum ditindaklanjuti
+filter-label-resolved = Pembobolan yang telah ditindaklanjuti
 
 ## Breaches table
 
 column-company = PERUSAHAAN
-column-breached-data = DATA DIBOCOK
+column-breached-data = DATA DIBOBOL
 column-detected = TERDETEKSI
 # “Resolved” is shown next to a breach if all recommended actions in response to the breach have been taken.
-column-status-badge-resolved = Terselesaikan
+column-status-badge-resolved = Ditindaklanjuti
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktif
-breaches-resolve-heading = Selesaikan pelanggaran ini:
-breaches-none-headline = Tidak ada pelanggaran yang ditemukan
+breaches-resolve-heading = Tindaklanjuti pembobolan ini:
+breaches-none-headline = Tidak ada pembobolan yang ditemukan
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Kabar baik! Tidak ada pembobolan yang dilaporkan untuk { $email }. Kami akan terus memantau surel ini dan akan memberi tahu Anda jika ada pembobolan baru.
 breaches-none-cta-blurb = Apakah Anda ingin memantau surel lainnya?
 breaches-none-cta-button = Tambahkan alamat surel
-breaches-all-resolved-headline = Semua pelanggaran teratasi
+breaches-all-resolved-headline = Semua pembobolan telah ditindaklanjuti
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
-breaches-all-resolved-copy = Bagus! Anda telah menyelesaikan semua pelanggaran untuk { $email }. Kami akan terus memantau surel ini dan akan memberi tahu Anda jika ada pembobolan baru.
+breaches-all-resolved-copy = Bagus! Anda telah menindaklanjuti semua pembobolan untuk { $email }. Kami akan terus memantau surel ini dan akan memberi tahu Anda jika ada pembobolan baru.
 breaches-all-resolved-cta-blurb = Apakah Anda ingin memantau surel lainnya?
 breaches-all-resolved-cta-button = Tambahkan alamat surel
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-description = Pada { $breachDate }, { $companyName } dibobol. Setelah pembobolan ditemukan dan diverifikasi, itu ditambahkan ke basis data kami pada { $addedDate }. Pelanggaran ini termasuk: { $dataClasses }
+breach-description = Pada { $breachDate }, { $companyName } telah dibobol. Setelah pembobolan ditemukan dan diverifikasi, data pembobolan ditambahkan ke basis data kami pada { $addedDate }. Pembobolan ini menyertakan: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
 
@@ -72,7 +72,7 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-breach-checklist-pw-header-text = Perbarui kata sandi Anda dan aktifkan otentikasi dua faktor (2FA).
+breach-checklist-pw-header-text = Perbarui kata sandi Anda dan aktifkan autentikasi dua faktor (2FA).
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
@@ -89,7 +89,7 @@ breach-checklist-email-body = Ini dapat menyembunyikan alamat surel asli Anda sa
 
 # Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
-breach-checklist-ssn-header = Pantau laporan kredit Anda untuk akun, pinjaman, atau kartu kredit yang tidak Anda kenal.
+breach-checklist-ssn-header = Pantau laporan kredit finansial Anda termasuk akun, pinjol, atau kartu kredit yang tidak Anda kenal.
 # A security freeze prevents prospective creditors from accessing your credit file.
 # Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
@@ -102,13 +102,13 @@ breach-checklist-ssn-body-2 = Anda juga dapat mempertimbangkan untuk membekukan 
 
 ## Prompts the user for changes when there is a breach detected of credit card
 
-breach-checklist-cc-header = Laporkan pelanggaran ini ke penerbit kartu kredit Anda dan minta kartu baru dengan nomor baru.
+breach-checklist-cc-header = Laporkan pembobolan ini ke penerbit kartu kredit Anda dan minta kartu baru dengan nomor baru.
 breach-checklist-cc-body = Anda juga harus meninjau laporan kartu kredit Anda untuk tagihan yang tidak dikenali.
 
 ## Prompts the user for changes when there is a breach detected of bank account
 
 breach-checklist-bank-header = Segera beri tahu bank Anda bahwa nomor rekening Anda telah disusupi.
-breach-checklist-bank-body = Melakukannya lebih cepat dapat memberi Anda lebih banyak perlindungan hukum untuk membantu Anda memulihkan kerugian apa pun. Anda juga ingin memeriksa akun Anda untuk tagihan yang tidak dikenali.
+breach-checklist-bank-body = Melakukannya lebih cepat dapat memberi Anda lebih banyak perlindungan hukum untuk membantu Anda memulihkan kerugian. Anda mungkin juga ingin memeriksa rekening Anda tentang tagihan yang tidak dikenali.
 
 ## Prompts the user for changes when there is a breach detected of pin
 
@@ -120,17 +120,17 @@ breach-checklist-pin-body = Pastikan PIN baru Anda, atau PIN lainnya, tidak meny
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Gunakan internet secara pribadi dengan VPN, seperti { $mozillaVpnLink }.
-breach-checklist-ip-body = Alamat IP Anda (alamat Protokol Internet) menunjukkan dengan tepat lokasi dan penyedia layanan internet Anda. VPN dapat menyembunyikan alamat IP asli Anda sehingga Anda dapat menggunakan internet secara pribadi.
+breach-checklist-ip-body = Alamat IP Anda (alamat Protokol Internet) menunjukkan lokasi dan penyedia layanan internet Anda. VPN dapat menyembunyikan alamat IP asli Anda sehingga Anda dapat menggunakan internet secara pribadi.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
-breach-checklist-address-header = Ubah sandi atau PIN yang menyertakan bagian mana pun dari alamat Anda.
-breach-checklist-address-body = Alamat mudah ditemukan dalam catatan publik dan dapat membuat kata sandi dan PIN mudah ditebak.
+breach-checklist-address-header = Ubah sandi atau PIN yang menyertakan bagian alamat Anda.
+breach-checklist-address-body = Alamat mudah ditemukan dalam data publik sehingga membuat kata sandi dan PIN mudah ditebak.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
 breach-checklist-dob-header = Ubah sandi atau PIN yang menyertakan tanggal lahir Anda.
-breach-checklist-dob-body = Tanggal lahir mudah ditemukan dalam catatan publik, dan orang yang menemukannya dapat dengan mudah menebak PIN Anda.
+breach-checklist-dob-body = Tanggal lahir mudah ditemukan dalam data publik, dan orang yang menemukannya dapat dengan mudah menebak PIN Anda.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
@@ -146,7 +146,7 @@ breach-checklist-sq-body-text = Dalam kebanyakan kasus, kami menyarankan Anda me
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
-breach-checklist-hp-header = Buat kata sandi yang unik dan kuat untuk akun mana pun yang telah Anda gunakan kembali kata sandinya.
+breach-checklist-hp-header = Buat kata sandi yang unik dan kuat untuk semua akun tempat Anda menggunakan kata sandi yang sama berulang kali.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
 breach-checklist-hp-body-2 = Pengelola kata sandi seperti { $passwordManagerLink } (yang gratis dan terpasang di peramban { -brand-firefox }) dapat membantu Anda melacak semua kata sandi Anda dan mengaksesnya dengan aman dari semua perangkat Anda.
@@ -156,4 +156,4 @@ breach-checklist-hp-body-2 = Pengelola kata sandi seperti { $passwordManagerLink
 # Variables:
 #   $breachDate (String) - Date of the breach
 #   $companyName (String) - Name of the company where the breach occurred
-breach-checklist-general-header = Hubungi { $companyName } untuk memberi tahu mereka tentang pelanggaran ini dan meminta langkah spesifik yang dapat Anda ambil.
+breach-checklist-general-header = Hubungi { $companyName } untuk memberi tahu mereka tentang pembobolan ini dan meminta langkah spesifik yang dapat Anda ambil.

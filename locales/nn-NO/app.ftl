@@ -698,6 +698,8 @@ ad-unit-5-use-on-phone = Bruk det på din telefon
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -719,6 +721,7 @@ sign-in = Logg inn
 
 ## Site navigation
 
+site-nav-breaches-link = Løys datalekkasjar
 site-nav-settings-link = Innstillingar
 site-nav-help-link = Hjelp og brukarstøtte
 # This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
@@ -732,8 +735,11 @@ menu-button-title = Bruklarmeny
 menu-button-alt = Opne brukarmeny
 menu-list-accessible-label = Kontomeny
 menu-item-fxa = Hasndsam { -brand-fx-account }-en din
+menu-item-fxa-alt = Opne sida { -brand-fx-account }
 menu-item-settings = Innstillingar
+menu-item-settings-alt = Opne sida for innstillingar
 menu-item-help = Hjelp og brukarstøtte
+menu-item-help-alt = Opne hjelp- og brukarstøttesida
 menu-item-logout = Logg ut
 
 ## Footer
@@ -764,3 +770,8 @@ exposed-data = Eksponerte data:
 ## Public breach detail page
 
 breach-detail-cta-signup = Sjå etter datalekkasjar
+
+## Floating banner
+
+floating-banner-link-label = Registrer deg
+floating-banner-dismiss-button-label = Nei takk

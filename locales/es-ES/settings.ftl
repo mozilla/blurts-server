@@ -44,6 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Cancelar la suscripción de { -brand-premium }
+settings-cancel-premium-subscription-info = Tu suscripción volverá a ser una cuenta gratuita después de que finalice el ciclo de facturación actual. Los resultados del análisis de protección de la privacidad se eliminarán de forma permanente y solo podrás supervisar filtraciones de datos para 1 dirección de correo electrónico.
 settings-cancel-premium-subscription-link-label = Cancela desde tu { -brand-fx-account }
 
 ## Deactivate account
@@ -61,5 +62,10 @@ settings-send-email-verification-button = Enviar enlace de verificación
 
 ## Unsubscribe Dialog Survey
 
+settings-unsubscribe-dialog-title = Lamentamos que te vayas. <br /> ¿Puedes contarnos el motivo de tu decisión?
+settings-unsubscribe-dialog-info = Tu experiencia es importante para nosotros. Leemos cada respuesta y la tenemos en cuenta.
+settings-unsubscribe-dialog-message-placeholder = ¿Qué podría haber ido mejor?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Por favor, ten en cuenta que todos tus servicios de { -brand-monitor-premium } se <a { $faq_href }>eliminarán de forma permanente</a> después de que finalice tu ciclo de facturación actual.
 settings-unsubscribe-dialog-continue = Continuar con la cancelación
 settings-unsubscribe-dialog-cancel = No importa, volvamos

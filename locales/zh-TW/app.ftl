@@ -683,3 +683,9 @@ exposed-data = 外洩資料：
 find-out-if-2 = 看看是否您也遭此資料外洩事件影響
 find-out-if-description = 我們會幫助您快速確認電子郵件信箱是否也在此事件中外洩，並且了解接下來該做什麼。
 breach-detail-cta-signup = 檢查是否有外洩事件
+
+## Floating banner
+
+floating-banner-text = 訂閱來自 { -brand-Mozilla } 的最新資訊與使用秘訣來加強您的線上安全。
+floating-banner-link-label = 訂閱
+floating-banner-dismiss-button-label = 不要，謝謝

@@ -76,7 +76,7 @@ monitor-another-email = Ingin memantau surel lainnya?
 
 # Variables:
 #   $unsubscribe-link-attr (string) - Link to email unsubscribe
-email-2022-unsubscribe = Anda menerima surel otomatis ini sebagai pelanggan { -product-name }. <br>Jangan ragu untuk mengubah preferensi surel Anda kapan saja <a { $unsubscribe-link-attr }>di sini</a>.
+email-2022-unsubscribe = Anda menerima surel otomatis ini sebagai pelanggan { -product-name }. <br>Anda dapat selalu dapat mengubah preferensi surel Anda kapan saja <a { $unsubscribe-link-attr }>di sini</a>.
 # Have I Been Pwned attribution
 # Variables:
 #   $hibp-link-attr (String) - Link to Have I Been Pwned
@@ -86,25 +86,25 @@ email-2022-hibp-attribution = Data pembobolan disediakan oleh <a { $hibp-link-at
 ## Variables:
 ##   $email-address (string) - Email address
 
-email-unresolved-heading = Anda memiliki pelanggaran yang belum terselesaikan
-email-unresolved-subhead = Surel Anda telah diekspos. <br>Perbaiki segera dengan { -product-name }.
-email-is-affected = Surel Anda, { $email-address }, terpengaruh oleh setidaknya satu pelanggaran data
-email-more-detail = Masuk ke { -product-name } sekarang untuk melihat detail lebih lanjut tentang pembobolan Anda (termasuk kapan itu terjadi dan data apa yang terungkap), dan pelajari apa yang harus Anda lakukan ketika surel Anda terekspos dalam pembobolan data.
-email-breach-status = Status pelanggaran saat ini
+email-unresolved-heading = Anda memiliki pembobolan yang belum ditindaklanjuti
+email-unresolved-subhead = Surel Anda telah terungkap. <br>Tindaklanjuti segera dengan { -product-name }.
+email-is-affected = Surel Anda, { $email-address }, terdampak pada setidaknya satu pembobolan data
+email-more-detail = Masuk ke { -product-name } sekarang untuk melihat detail lebih lanjut tentang pembobolan Anda (termasuk waktu kejadian dan data apa yang terungkap), serta pelajari apa yang harus dilakukan ketika surel Anda terekspos dalam pembobolan data.
+email-breach-status = Status pembobolan saat ini
 # table row 1 label
 email-monitored = Total surel yang dipantau:
 # table row 2 label
-email-breach-total = Jumlah total pelanggaran:
+email-breach-total = Jumlah total pembobolan:
 # table row 3 label
-email-resolved = Pembobolan teratasi:
+email-resolved = Pembobolan ditindaklanjuti:
 # table row 4 label
-email-unresolved = Pelanggaran yang belum terselesaikan:
-email-resolve-cta = Atasi pelanggaran
+email-unresolved = Pembobolan yang belum ditindaklanjuti:
+email-resolve-cta = Tindaklanjuti pembobolan
 
 ## Verification email
 
 email-verify-heading = Lindungi data Anda, mulai sekarang
-email-verify-subhead = Verifikasi surel Anda untuk mulai melindungi data Anda setelah pembobolan.
+email-verify-subhead = Verifikasikan surel Anda untuk mulai melindungi data Anda setelah pembobolan.
 email-verify-simply-click = Cukup klik tautan di bawah ini untuk menyelesaikan verifikasi akun Anda.
 
 ## Breach report
@@ -112,11 +112,11 @@ email-verify-simply-click = Cukup klik tautan di bawah ini untuk menyelesaikan v
 ##   $email-address (string) - Email address
 
 email-breach-summary = Berikut ringkasan pembobolan data Anda
-email-breach-detected = Hasil pencarian untuk akun { $email-address } Anda telah mendeteksi bahwa surel Anda mungkin telah diekspos. Kami menyarankan Anda bertindak sekarang untuk mengatasi pelanggaran ini.
+email-breach-detected = Hasil pencarian untuk akun { $email-address } Anda telah mendeteksi bahwa surel Anda mungkin telah terekspos. Kami menyarankan Anda bertindak sekarang untuk menindaklanjuti pelanggaran ini.
 email-no-breach-detected = Berita bagus! Kami tidak menemukan pembobolan data yang memengaruhi surel Anda, { $email-address }.
 email-dashboard-cta = Buka Dasbor
 
 ## Breach alert
 
 email-may-have-been-exposed = Surel Anda mungkin telah terekspos dalam pembobolan data
-email-spotted-new-breach = Kami telah melihat pembobolan data baru
+email-spotted-new-breach = Kami telah menemukan pembobolan data baru

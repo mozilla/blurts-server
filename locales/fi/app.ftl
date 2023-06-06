@@ -791,3 +791,9 @@ exposed-data = Paljastuneet tiedot:
 find-out-if-2 = Ota selvää, jouduitko osalliseksi tässä tietovuodossa
 find-out-if-description = Autamme sinua nopeasti selvittämään, paljastuiko sähköpostiosoitteesi tässä tietovuodossa, ja autamme ymmärtämään, mitä tehdä seuraavaksi.
 breach-detail-cta-signup = Tarkista vuotojen varalta
+
+## Floating banner
+
+floating-banner-text = Paranna verkkoturvaasi { -brand-Mozilla }-uutisten, -vinkkien ja -päivitysten avulla.
+floating-banner-link-label = Rekisteröidy
+floating-banner-dismiss-button-label = Ei kiitos

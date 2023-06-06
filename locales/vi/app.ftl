@@ -776,3 +776,9 @@ exposed-data = Dữ liệu bị lộ:
 find-out-if-2 = Tìm hiểu xem bạn nằm trong vụ rò rỉ này không
 find-out-if-description = Chúng tôi sẽ giúp bạn nhanh chóng xem liệu địa chỉ email của bạn có bị lộ trong rò rỉ này hay không và hiểu những việc cần làm tiếp theo.
 breach-detail-cta-signup = Kiểm tra rò rỉ
+
+## Floating banner
+
+floating-banner-text = Tăng cường bảo mật trực tuyến của bạn với tin tức, mẹo và thông tin cập nhật từ { -brand-Mozilla }.
+floating-banner-link-label = Đăng ký
+floating-banner-dismiss-button-label = Không, cảm ơn
