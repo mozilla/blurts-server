@@ -22,25 +22,26 @@ const ctaStyle = `
 
 const verifyPartial = (data, l10n) => {
   const getMessage = getStringLookup(l10n);
+
   return `
-  <tr>
-    <td style='${containerStyle}'>
-      <p>
-        ${getMessage('email-verify-simply-click')}
-      </p>
-      <a
-        href='${data.ctaHref}'
-        style='${ctaStyle}'
-      >
-        ${getMessage('verify-email-cta')}
-      </a>
-      <p>
-        <strong>
-          ${getMessage('email-link-expires')}
-        </strong>
-      </p>
-    </td>
-  </tr>
-`
+    <tr>
+      <td style='${containerStyle}'>
+        <p>
+          ${getMessage('email-verify-simply-click')}
+        </p>
+        <a
+          href='${data.ctaHref}'
+          style='${ctaStyle}'
+        >
+          ${getMessage('verify-email-cta')}
+        </a>
+        <p>
+          <strong>
+            ${getMessage('email-link-expires')}
+          </strong>
+        </p>
+      </td>
+    </tr>
+  `
 }
 export { verifyPartial }

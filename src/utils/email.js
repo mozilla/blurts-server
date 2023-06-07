@@ -8,7 +8,7 @@ import { URL } from 'url'
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
 import { MethodNotAllowedError } from '../utils/error.js'
-import { getMessage, fluentError } from '../utils/fluent.js'
+import { fluentError, getStringLookup } from '../utils/fluent.js'
 import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
 
 const log = mozlog('email-utils')
@@ -218,77 +218,92 @@ const breachDummyLogo = new Map([
  * Dummy data for populating the breach notification email preview.
  *
  * @param {string} recipient
+ * @param l10n
  * @returns {object} Breach dummy data
  */
-const getNotificationDummyData = (recipient) => ({
-  breachData: {
-    Id: 1,
-    Name: 'Adobe',
-    Title: 'Adobe',
-    Domain: 'adobe.com',
-    BreachDate: '2013-01-01T22:00:00.000Z',
-    AddedDate: '2013-01-02T00:00:00.000Z',
-    ModifiedDate: '2023-01-01T00:00:00.000Z',
-    PwnCount: 123,
-    Description: 'Example description',
-    DataClasses: [
-      'email-addresses',
-      'password-hints',
-      'passwords',
-      'usernames'
-    ],
-    IsVerified: true,
-    IsFabricated: false,
-    IsSensitive: false,
-    IsRetired: false,
-    IsSpamList: false,
-    IsMalware: false
-  },
-  breachedEmail: recipient,
-  breachLogos: breachDummyLogo,
-  ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
-  heading: getMessage('email-spotted-new-breach'),
-  recipientEmail: recipient,
-  subscriberId: 123,
-  supportedLocales: ['en']
-})
+const getNotificationDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return ({
+    breachData: {
+      Id: 1,
+      Name: 'Adobe',
+      Title: 'Adobe',
+      Domain: 'adobe.com',
+      BreachDate: '2013-01-01T22:00:00.000Z',
+      AddedDate: '2013-01-02T00:00:00.000Z',
+      ModifiedDate: '2023-01-01T00:00:00.000Z',
+      PwnCount: 123,
+      Description: 'Example description',
+      DataClasses: [
+        'email-addresses',
+        'password-hints',
+        'passwords',
+        'usernames'
+      ],
+      IsVerified: true,
+      IsFabricated: false,
+      IsSensitive: false,
+      IsRetired: false,
+      IsSpamList: false,
+      IsMalware: false
+    },
+    breachedEmail: recipient,
+    breachLogos: breachDummyLogo,
+    ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
+    heading: getMessage('email-spotted-new-breach'),
+    recipientEmail: recipient,
+    subscriberId: 123,
+    supportedLocales: ['en']
+  })
+}
 
 /**
  * Dummy data for populating the email verification preview
  *
  * @param {string} recipient
+ * @param l10n
  * @returns {object} Email verification dummy data
  */
-const getVerificationDummyData = (recipient) => ({
-  ctaHref: SERVER_URL,
-  heading: getMessage('email-verify-heading'),
-  recipientEmail: recipient,
-  subheading: getMessage('email-verify-subhead')
-})
+const getVerificationDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return ({
+    ctaHref: SERVER_URL,
+    heading: getMessage('email-verify-heading'),
+    recipientEmail: recipient,
+    subheading: getMessage('email-verify-subhead')
+  })
+}
 
 /**
  * Dummy data for populating the monthly unresolved breaches email
  *
  * @param {string} recipient
+ * @param l10n
  * @returns {object} Monthly unresolved breaches dummy data
  */
-const getMonthlyDummyData = (recipient) => ({
-  breachedEmail: 'breached@email.com',
-  breachLogos: breachDummyLogo,
-  ctaHref: `${SERVER_URL}/user/breaches`,
-  heading: getMessage('email-unresolved-heading'),
-  monitoredEmails: {
-    count: 2
-  },
-  numBreaches: {
-    count: 3,
-    numResolved: 2,
-    numUnresolved: 1
-  },
-  recipientEmail: recipient,
-  subheading: getMessage('email-unresolved-subhead'),
-  unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
-})
+const getMonthlyDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return ({
+    breachedEmail: 'breached@email.com',
+    breachLogos: breachDummyLogo,
+    ctaHref: `${SERVER_URL}/user/breaches`,
+    heading: getMessage('email-unresolved-heading'),
+    monitoredEmails: {
+      count: 2
+    },
+    numBreaches: {
+      count: 3,
+      numResolved: 2,
+      numUnresolved: 1
+    },
+    recipientEmail: recipient,
+    subheading: getMessage('email-unresolved-subhead'),
+    unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
+  })
+}
 
 /**
  * Dummy data for populating the signup report email
@@ -297,9 +312,10 @@ const getMonthlyDummyData = (recipient) => ({
  * @returns {object} Signup report email dummy data
  */
 
-const getSignupReportDummyData = (recipient) => {
+const getSignupReportDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
   const unsafeBreachesForEmail = [
-    getNotificationDummyData(recipient).breachData
+    getNotificationDummyData(recipient, l10n).breachData
   ]
   const breachesCount = unsafeBreachesForEmail.length
   const numPasswordsExposed = 1
