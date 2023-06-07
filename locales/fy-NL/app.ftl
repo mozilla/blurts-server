@@ -784,3 +784,9 @@ exposed-data = Lekte gegevens:
 find-out-if-2 = Untdek oft jo troffen binne troch dit lek
 find-out-if-description = Wy helpe jo fluch te sjen oft jo e-mailadres lekt is by dit datalek en te begripen wat jo dêrnei dwaan moatte.
 breach-detail-cta-signup = Kontrolearje op datalekken
+
+## Floating banner
+
+floating-banner-text = Ferheegje jo online feiligens mei nijs, tips en updates fan { -brand-Mozilla }.
+floating-banner-link-label = Registrearje
+floating-banner-dismiss-button-label = Nee, tankewol

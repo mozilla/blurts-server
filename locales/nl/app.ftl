@@ -787,5 +787,6 @@ breach-detail-cta-signup = Controleren op datalekken
 
 ## Floating banner
 
+floating-banner-text = Verhoog uw online veiligheid met nieuws, tips en updates van { -brand-Mozilla }.
 floating-banner-link-label = Registreren
 floating-banner-dismiss-button-label = Nee, bedankt

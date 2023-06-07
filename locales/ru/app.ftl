@@ -772,3 +772,9 @@ exposed-data = Раскрытые данные:
 find-out-if-2 = Узнайте, были ли вы затронуты этой утечкой
 find-out-if-description = Мы поможем вам быстро узнать, был ли ваш адрес электронной почты раскрыт в результате этой утечки, и понять, что делать дальше.
 breach-detail-cta-signup = Проверить на утечки
+
+## Floating banner
+
+floating-banner-text = Повысьте свою безопасность в Интернете с помощью новостей, советов и обновлений от { -brand-Mozilla }.
+floating-banner-link-label = Зарегистрироваться
+floating-banner-dismiss-button-label = Нет, спасибо
