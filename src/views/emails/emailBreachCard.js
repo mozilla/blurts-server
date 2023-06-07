@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getLocale, getMessage } from '../../utils/fluent.js'
+import { getLocale, getStringLookup } from '../../utils/fluent.js'
 import { formatDate } from '../../utils/formatDate.js'
 import { getBreachLogo } from '../../utils/breachLogo.js'
 
@@ -58,7 +58,8 @@ const breachAlertValueStyle = `
   padding-bottom: 15px;
 `
 
-const breachCardPartial = (breachData, breachLogos) => {
+const breachCardPartial = (breachData, breachLogos, l10n) => {
+  const getMessage = getStringLookup(l10n);
   const {
     AddedDate,
     DataClasses,

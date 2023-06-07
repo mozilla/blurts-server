@@ -125,7 +125,7 @@ const emailFooter = (data, l10n) => {
   <tr class='footer'>
     <td style='${footerContainerStyle}'>
       ${data.unsubscribeUrl
-      ? `<p>${getUnsubscribeCopy(data)}</p>`
+      ? `<p>${getUnsubscribeCopy(data, l10n)}</p>`
       : ''}
       <p>
         ${getMessage('email-2022-hibp-attribution', {
