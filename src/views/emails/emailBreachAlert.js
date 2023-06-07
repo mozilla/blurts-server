@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { breachCardPartial } from './emailBreachCard.js'
-import { getMessage } from '../../utils/fluent.js'
+import { getStringLookup } from '../../utils/fluent.js'
 
 const breachAlertContainerStyle = `
   background: #f9f9fa;
@@ -21,8 +21,9 @@ const breachAlertCtaStyle = `
   padding: 12px 24px;
 `
 
-const breachAlertEmailPartial = data => {
+const breachAlertEmailPartial = (data, l10n) => {
   const { breachData, breachedEmail, breachLogos, ctaHref } = data
+  const getMessage = getStringLookup(l10n);
 
   return `
     <tr>
@@ -32,7 +33,7 @@ const breachAlertEmailPartial = data => {
             'email-address': `<strong>${breachedEmail}</strong>`
           })}
         </p>
-        ${breachCardPartial(breachData, breachLogos)}
+        ${breachCardPartial(breachData, breachLogos, l10n)}
         <a
           href='${ctaHref}'
           style='${breachAlertCtaStyle}'

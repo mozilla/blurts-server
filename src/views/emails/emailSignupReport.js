@@ -92,7 +92,7 @@ const signupReportEmailPartial = (data, l10n) => {
         ${
           unsafeBreachesForEmail?.length
             ? unsafeBreachesForEmail.map(unsafeBreach => (
-                breachCardPartial(unsafeBreach, breachLogos)
+                breachCardPartial(unsafeBreach, breachLogos, l10n)
               )).join('')
             : ''
         }
