@@ -22,6 +22,10 @@ function handleEvent (e) {
 const settingsAlertOptionsInputs = document.getElementsByClassName('js-settings-alert-options-input')
 if (settingsAlertOptionsInputs?.length) {
   for (const inputElement of settingsAlertOptionsInputs) {
+    // For some reason the `checked` property gets unset during page load;
+    // this is an ugly workaround to re-check it, in lieu of having converted
+    // the settings page to proper React.
+    inputElement.checked = inputElement.getAttribute('checked') !== null
     inputElement.addEventListener('change', async event => {
       try {
         const communicationOption = event.target.getAttribute('data-alert-option')
