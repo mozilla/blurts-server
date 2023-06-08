@@ -57,7 +57,8 @@ const optionalEnvVars = [
 /** @type {Record<string, string>} */
 const AppConstants = { }
 
-if (!process.env.SERVER_URL && process.env.NODE_ENV === 'heroku') {
+// @ts-ignore TS thinks NODE_ENV can't be "heroku". Shut up TS, you're drunk!
+if (!process.env.SERVER_URL && (process.env.NODE_ENV) === 'heroku') {
   process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
 }
 

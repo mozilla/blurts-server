@@ -58,6 +58,11 @@ const breachAlertValueStyle = `
   padding-bottom: 15px;
 `
 
+/**
+ * @param {{ AddedDate: any; DataClasses: any[]; Title: any; }} breachData
+ * @param {any} breachLogos
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const breachCardPartial = (breachData, breachLogos, l10n) => {
   const getMessage = getStringLookup(l10n);
   const {

@@ -223,7 +223,7 @@ export default async function BreachDetail(props: {
   );
 }
 
-function getBreachDetail(categoryId: Breach) {
+function getBreachDetail(categoryId: ReturnType<typeof getBreachCategory>) {
   const l10n = getL10n();
 
   if (categoryId === "data-aggregator-breach") {
@@ -244,8 +244,8 @@ function getBreachDetail(categoryId: Breach) {
   }
 }
 
-function makeBreachDetail(breach: ReturnType<typeof getBreachCategory>) {
-  const breachDetail = getBreachDetail(breach);
+function makeBreachDetail(breachCategory: ReturnType<typeof getBreachCategory>) {
+  const breachDetail = getBreachDetail(breachCategory);
   return (
     <>
       <h2>{breachDetail.subhead}</h2>
@@ -355,7 +355,7 @@ function makeRecommendationCards(breach: Breach) {
   const dataClasses = getSortedDataClasses(breach);
 
   const priorityRecs = dataClasses.priority.map((dataClass) =>
-    dataClass.recommendations?.map((r) => (
+    dataClass.recommendations?.map((r: any) => (
       <div
         key={r.ctaHref}
         className={`breach-detail-recommendation ${r.recIconClassName}`}

@@ -6,24 +6,6 @@
     "stylelint-scss"
   ],
   "rules": {
-    "no-descending-specificity": [
-      true,
-      {
-        "severity": "warning",
-        "ignore": [
-          "selectors-within-list"
-        ]
-      }
-    ],
-    "property-no-vendor-prefix": null,
-    "selector-type-no-unknown": [
-      true,
-      {
-        "ignore": [
-          "custom-elements"
-        ]
-      }
-    ],
     "selector-class-pattern": [
       "^[a-z][a-zA-Z0-9]+$",
       {

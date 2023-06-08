@@ -1,68 +1,91 @@
 {
-    "env": {
-        "browser": true,
-        "es2022": true,
-        "node": true,
-        "jest": true
-    },
-    "extends": [
-        "plugin:jsdoc/recommended",
-        "eslint:recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended",
-        "next/core-web-vitals",
-        "next"
+  "env": {
+    "browser": true,
+    "es2022": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "plugin:jsdoc/recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals",
+    "next"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["header", "jsdoc", "@typescript-eslint", "check-file"],
+  "rules": {
+    "header/header": [
+      "warn",
+      "block",
+      " This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
+      2
     ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "header",
-        "jsdoc",
-        "@typescript-eslint",
-        "check-file"
+    "jsdoc/require-jsdoc": "off",
+    "jsdoc/require-param-type": "off",
+    "jsdoc/require-param-description": "off",
+    "jsdoc/require-property-description": "off",
+    "jsdoc/require-returns": "off",
+    "jsdoc/require-returns-type": "off",
+    "jsdoc/require-returns-description": "off",
+    // Unused vars explicitly marked as such with an understore prefix are allowed:
+    "no-unused-vars": [
+      "off",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
     ],
-    "rules": {
-        "header/header": [
-            "warn",
-            "block",
-            " This Source Code Form is subject to the terms of the Mozilla Public\n * License, v. 2.0. If a copy of the MPL was not distributed with this\n * file, You can obtain one at http://mozilla.org/MPL/2.0/. ",
-            2
-        ],
-        "jsdoc/require-jsdoc": "off",
-        "jsdoc/require-param-description": "off",
-        // Unused vars explicitly marked as such with an understore prefix are allowed:
-        "no-unused-vars": [
-            "off",
-            {
-                "argsIgnorePattern": "^_",
-                "varsIgnorePattern": "^_"
-            }
-        ],
-        // Unused vars that start with an understore are allowed to be unused:
-        "@typescript-eslint/no-unused-vars": [
-            "warn",
-            {
-                "argsIgnorePattern": "^_",
-                "varsIgnorePattern": "^_"
-            }
-        ],
-        "@typescript-eslint/ban-ts-comment": [
-            "error",
-            {
-                "ts-ignore": "allow-with-description"
-            }
-        ],
-        "check-file/filename-naming-convention": [
-            "error",
-            {
-                "**/*.{js,css} !src/db/migrations": "CAMEL_CASE"
-            },
-            {
-                "ignoreMiddleExtensions": true
-            }
-        ]
+    // Unused vars that start with an understore are allowed to be unused:
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-ignore": "allow-with-description"
+      }
+    ],
+    "check-file/filename-naming-convention": [
+      "error",
+      {
+        "**/*.{js,css} !src/db/migrations": "CAMEL_CASE"
+      },
+      {
+        "ignoreMiddleExtensions": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["next-env.d.ts"],
+      "rules": {
+        "header/header": "off"
+      }
+    },
+    {
+      "files": [
+        "src/views/**/*.js",
+        "src/middleware/**/*.js",
+        "src/controllers/**/*.js",
+        "src/app/(nextjs_migration)/**/*",
+        "src/app/functions/server/breachResolution.ts"
+      ],
+      "rules": {
+        "jsdoc/no-undefined-types": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off"
+      }
     }
+  ]
 }

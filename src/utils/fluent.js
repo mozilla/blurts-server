@@ -148,7 +148,7 @@ function getMessageWithLocale (id, localePreferences, args) {
 
 /**
  * @param {string} id
- * @param l10n
+ * @param {import('@fluent/react').ReactLocalization} [l10n]
  */
 function fluentError (id, l10n) {
   const getString = getStringLookup(l10n);

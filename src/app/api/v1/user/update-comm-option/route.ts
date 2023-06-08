@@ -18,14 +18,14 @@ interface EmailUpdateCommOptionRequest {
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
 
-  if (token) {
+  if (typeof token?.email === "string") {
     try {
       const { communicationOption }: EmailUpdateCommOptionRequest =
         await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
       // 0 = Send breach alerts to the corresponding affected emails.
       // 1 = Send all breach alerts to user's primary email address.
-      const allEmailsToPrimary = Number(communicationOption) === 1 || 0;
+      const allEmailsToPrimary = Number(communicationOption) === 1 ?? false;
       await setAllEmailsToPrimary(subscriber, allEmailsToPrimary);
 
       return NextResponse.json({

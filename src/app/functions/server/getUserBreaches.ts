@@ -10,7 +10,7 @@ import { appendBreachResolutionChecklist } from "./breachResolution";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
 import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
 
-export async function getUserBreaches({ user }: { user: Session["user"] }) {
+export async function getUserBreaches({ user }: { user: Session["user"] & { email: string } }) {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);

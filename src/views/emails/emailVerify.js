@@ -20,6 +20,10 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
+/**
+ * @param {{ ctaHref: string; }} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const verifyPartial = (data, l10n) => {
   const getMessage = getStringLookup(l10n);
 

@@ -26,6 +26,10 @@ const FxAOAuthClient = new ClientOAuth2({
   scopes: ['profile']
 })
 
+/**
+ * @param {string} path
+ * @param {any} token
+ */
 async function postTokenRequest (path, token) {
   const fxaTokenOrigin = new URL(AppConstants.OAUTH_TOKEN_URI).origin
   const tokenUrl = `${fxaTokenOrigin}${path}`
@@ -43,34 +47,52 @@ async function postTokenRequest (path, token) {
     if (!response.ok) throw new Error(`bad response: ${response.status}`)
     return await response.json()
   } catch (e) {
-    console.error('postTokenRequest', { stack: e.stack })
+    if (e instanceof Error) {
+      console.error('postTokenRequest', { stack: e.stack })
+    }
     return e
   }
 }
 
+/**
+ * @param {string} token
+ */
 async function verifyOAuthToken (token) {
   try {
     const response = await postTokenRequest('/v1/verify', token)
     return response
   } catch (e) {
-    console.error('verifyOAuthToken', { stack: e.stack })
+    if (e instanceof Error) {
+      console.error('verifyOAuthToken', { stack: e.stack })
+    }
   }
 }
 
+/**
+ * @param {{ token?: any; refresh_token?: any; }} token
+ */
 async function destroyOAuthToken (token) {
   try {
     const response = await postTokenRequest('/v1/destroy', token)
     return response
   } catch (e) {
-    console.error('destroyOAuthToken', { stack: e.stack })
+    if (e instanceof Error) {
+      console.error('destroyOAuthToken', { stack: e.stack })
+    }
   }
 }
 
+/**
+ * @param {{ fxa_access_token: any; fxa_refresh_token: any; }} subscriber
+ */
 async function revokeOAuthTokens (subscriber) {
   await destroyOAuthToken({ token: subscriber.fxa_access_token })
   await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
 }
 
+/**
+ * @param {any} accessToken
+ */
 async function getProfileData (accessToken) {
   try {
     const response = await fetch(FxAOAuthUtils.profileUri, {
@@ -79,11 +101,16 @@ async function getProfileData (accessToken) {
     if (!response.ok) throw new Error(`bad response: ${response.status}`)
     return await response.text()
   } catch (e) {
-    console.warn('getProfileData', { stack: e.stack })
+    if (e instanceof Error) {
+      console.warn('getProfileData', { stack: e.stack })
+    }
     return e
   }
 }
 
+/**
+ * @param {string} path
+ */
 async function sendMetricsFlowPing (path) {
   const fxaMetricsFlowUrl = new URL(path, AppConstants.FXA_SETTINGS_URL)
   try {
@@ -94,11 +121,16 @@ async function sendMetricsFlowPing (path) {
     console.info('pinged FXA metrics flow.')
     return response
   } catch (e) {
-    console.error('sendMetricsFlowPing', { stack: e.stack })
+    if (e instanceof Error) {
+      console.error('sendMetricsFlowPing', { stack: e.stack })
+    }
     return false
   }
 }
 
+/**
+ * @param {crypto.BinaryLike} email
+ */
 function getSha1 (email) {
   return crypto.createHash('sha1').update(email).digest('hex')
 }

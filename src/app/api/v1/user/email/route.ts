@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
   const token = await getToken({ req });
   const l10n = getL10n();
 
-  if (token) {
+  if (typeof token?.email === "string") {
     try {
       const body: EmailAddRequest = await req.json();
       const subscriber = await getSubscriberByEmail(token.email);
@@ -87,8 +87,8 @@ export async function POST(req: NextRequest) {
         newEmailCount: emailCount + 1,
         message: "Sent the verification email",
       });
-    } catch (e) {
-      if (e.message === "error-email-validation-pending") {
+    } catch (e: unknown) {
+      if (e instanceof Error && e.message === "error-email-validation-pending") {
         return NextResponse.json(
           {
             success: false,

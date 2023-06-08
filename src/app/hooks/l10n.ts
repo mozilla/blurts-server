@@ -5,7 +5,7 @@
 'use client'
 
 import { ReactLocalization, useLocalization } from '@fluent/react'
-import { createElement, Fragment, useEffect, useState } from 'react'
+import { createElement, Fragment } from 'react'
 
 /**
  * Equivalent to ReactLocalization.getString, but returns a React Fragment.
