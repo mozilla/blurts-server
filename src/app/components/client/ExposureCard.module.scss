@@ -1,10 +1,11 @@
-@import "../../../tokens";
+@import "../../tokens";
 
 .exposureCard {
   font: $text-body-md;
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-md;
   max-width: $content-xl;
+
   .exposureHeader {
     display: flex;
     flex-direction: row;
@@ -24,6 +25,7 @@
       }
     }
   }
+
   ul.exposureHeaderList {
     list-style: none;
     display: flex;
@@ -55,6 +57,7 @@
     span {
       color: $color-blue-50;
     }
+
     &.isOpen {
       border-top: 2px solid rgba($color-purple-70, 0.2);
       overflow: auto;
@@ -74,6 +77,7 @@
           width: 100%;
         }
       }
+
       ul {
         font: $text-body-sm;
         justify-content: space-between;

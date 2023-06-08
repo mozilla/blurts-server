@@ -6,7 +6,7 @@
 
 import React, { ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill } from "./StatusPill";
+import { StatusPill } from "../server/StatusPill";
 import { StaticImageData } from "next/image";
 import {
   ChevronDown,
@@ -15,9 +15,9 @@ import {
   MultipleUsers,
   OpenInNew,
   PhoneIcon,
-} from "./Icons";
+} from "../server/Icons";
 import Image from "next/image";
-import { Button } from "./Button";
+import { Button } from "../server/Button";
 
 export type Props = {
   exposureImg: StaticImageData;
