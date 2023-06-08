@@ -1,0 +1,111 @@
+@import "../../tokens";
+
+.exposureCard {
+  font: $text-body-md;
+  border: 2px solid rgba($color-purple-70, 0.2);
+  border-radius: $border-radius-md;
+  max-width: $content-xl;
+
+  .exposureHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-sm 0;
+    gap: $layout-md;
+
+    .chevronDown {
+      cursor: pointer;
+      padding-right: $spacing-lg;
+      color: rgba($color-purple-70, 0.7);
+      height: 20px; //height of down chevron
+
+      .isOpen {
+        rotate: (180deg);
+      }
+    }
+  }
+
+  ul.exposureHeaderList {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: $layout-md;
+    margin: 0;
+    padding: 0 $spacing-sm;
+    width: 100%;
+
+    li {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .exposureImage {
+      max-width: 150px;
+      height: 100%;
+    }
+  }
+
+  .exposureDetailsSection {
+    margin: 0;
+    overflow: hidden;
+    padding: 0 $layout-lg;
+    height: 0;
+
+    a,
+    span {
+      color: $color-blue-50;
+    }
+
+    &.isOpen {
+      border-top: 2px solid rgba($color-purple-70, 0.2);
+      overflow: auto;
+      height: auto;
+    }
+
+    .exposureListOfExposureTypes {
+      display: flex;
+      flex-direction: row;
+      gap: $layout-md;
+      align-items: center;
+
+      .fixItBtn {
+        flex-basis: 20%;
+
+        & > * {
+          width: 100%;
+        }
+      }
+
+      ul {
+        font: $text-body-sm;
+        justify-content: space-between;
+        list-style: none;
+        margin-left: 0;
+        padding-left: 0;
+        display: flex;
+        align-items: center;
+        gap: $layout-md;
+
+        .detailsFoundItem {
+          display: flex;
+
+          svg {
+            color: $color-purple-70;
+          }
+
+          dt {
+            display: flex;
+            gap: $spacing-sm;
+            align-items: center;
+          }
+
+          dl {
+            font: $text-body-xs;
+          }
+        }
+      }
+    }
+  }
+}
