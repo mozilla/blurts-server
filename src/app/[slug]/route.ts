@@ -14,4 +14,6 @@ export async function GET(req: NextRequest) {
   // if (slug.includes("__version__")) {
   //   return NextResponse.json({ success: true, version: "1.0" });
   // }
+
+  return new NextResponse(null, { status: 404 });
 }
