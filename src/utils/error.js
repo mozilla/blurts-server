@@ -47,7 +47,7 @@ class ForbiddenError extends Error {
 
 class MethodNotAllowedError extends Error {
   /**
-   * @param {string | undefined} message
+   * @param {string} [message]
    * @param {Array<object>} config
    */
   constructor (message, ...config) {

@@ -6,7 +6,7 @@ import AppConstants from '../../appConstants.js'
 import { getStringLookup } from '../../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
-const links = (data) => ({
+const links = (/** @type {{ utmCampaign: string; }} */ data) => ({
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',
   legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
@@ -65,6 +65,10 @@ const footerImageStyle = `
   margin: 24px auto 0;
 `
 
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const emailHeader = (data, l10n) => {
   const getMessage = getStringLookup(l10n);
   return `
@@ -108,6 +112,10 @@ const emailHeader = (data, l10n) => {
   `
 }
 
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 function getUnsubscribeCopy (data, l10n) {
   const getMessage = getStringLookup(l10n);
   const unsubLink = `<a href='${data.unsubscribeUrl}'>${getMessage('email-unsub-link')}</a>`
@@ -119,6 +127,10 @@ function getUnsubscribeCopy (data, l10n) {
   })
 }
 
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const emailFooter = (data, l10n) => {
   const getMessage = getStringLookup(l10n);
   return `
@@ -254,6 +266,11 @@ const getStyles = () => `
   </style>
 `
 
+/**
+ * @param {any} data
+ * @param {(...args: any) => any} partial
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const getEmailContent = (data, partial, l10n) => {
   return `
     <table
@@ -274,11 +291,21 @@ const getEmailContent = (data, partial, l10n) => {
   `
 }
 
+/**
+ * @param {any} data
+ * @param {(...args: any) => any} partial
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const getPreviewTemplate = (data, partial, l10n) => `
   ${getStyles()}
   ${getEmailContent(data, partial, l10n)}
 `
 
+/**
+ * @param {any} data
+ * @param {(...args: any) => any} partial
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const getTemplate = (data, partial, l10n) => {
   const getMessage = getStringLookup(l10n);
   return `

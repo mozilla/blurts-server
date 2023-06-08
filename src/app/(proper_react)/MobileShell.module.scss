@@ -110,6 +110,8 @@
             text-decoration: underline;
           }
 
+                    // The `a` and `a:visited` violate this rule, but are safe:
+                    // stylelint-disable-next-line no-descending-specificity
           &:focus {
             background-color: $color-blue-50;
             color: $color-white;

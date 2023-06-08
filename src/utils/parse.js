@@ -2,10 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// The JSDoc plugin for ESLint doesn't understand TypeScripts template literal types:
+/* eslint-disable jsdoc/valid-types */
 /**
  * @typedef {string} ISO8601DateString See https://en.wikipedia.org/wiki/ISO_8601
  * @typedef {`+${string}`} E164PhoneNumberString See https://en.wikipedia.org/wiki/E.164
  */
+/* eslint-enable jsdoc/valid-types */
 
 /**
  * @param {string} phoneNumber

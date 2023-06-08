@@ -30,7 +30,7 @@ const BreachDataTypes = {
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#
  * Hardcoded map of breach resolution data types
  *
- * @type { Record<keyof BreachDataTypes, { priority: number, header: string, body?: string, applicableCountryCodes?: string[] }> }
+ * @type { Partial<Record<keyof BreachDataTypes, { priority: number, header: string, body?: string, applicableCountryCodes?: string[] }>> }
  */
 const breachResolutionDataTypes = {
   [BreachDataTypes.Passwords]: {
@@ -104,7 +104,7 @@ const breachResolutionDataTypes = {
  * Append a field "breachChecklist" to the breaches array of each verified emails
  * The checklist serves the UI with relevant recommendations based on the array of datatypes leaked during a breach.
  *
- * @param {Array} userBreachData contains monitored verified emails array. Each email may contain a breaches array
+ * @param {any} userBreachData contains monitored verified emails array. Each email may contain a breaches array
  * @param {Partial<{ countryCode: string }>} options
  * @returns {*} void
  */
@@ -112,7 +112,7 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
   const { verifiedEmails } = userBreachData
 
   for (const { breaches } of verifiedEmails) {
-    breaches.forEach(b => {
+    breaches.forEach((/** @type {any} */ b) => {
       const dataClasses = b.DataClasses
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? '').split(',')
       const showLink = b.Domain && !blockList.includes(b.Domain)
@@ -136,14 +136,15 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
  * Get a subset of the breach resolution data types map
  * based on the array of datatypes leaked during a breach
  *
- * @param {Array} dataTypes datatypes leaked during the breach
+ * @param {any} dataTypes datatypes leaked during the breach
  * @param {object} args contains necessary variables for the fluent file
  *  - companyName
  *  - breachedCompanyUrl
  * @param {Partial<{ countryCode: string }>} options
- * @returns {Map} map of relevant breach resolution recommendations
+ * @returns {Record<string, any>} map of relevant breach resolution recommendations
  */
 function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
+  /** @type {Record<string, any>} */
   const filteredBreachRecs = {}
 
   // filter breachResolutionDataTypes based on relevant data types passed in
@@ -164,6 +165,7 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
     filteredBreachRecs[resolutionTypeGeneral] = getRecommendationFromResolution(
       [
         resolutionTypeGeneral,
+        // @ts-ignore This should resolve to a correct data type
         breachResolutionDataTypes[resolutionTypeGeneral]
       ],
       args
@@ -178,7 +180,7 @@ function getResolutionRecsPerBreach (dataTypes, args, options = {}) {
  * Get the fluent string for the body
  *
  * @param {string} body for the fluent body string
- * @param {object} args
+ * @param {any} args
  * @returns {string} body string
  */
 function getBodyMessage (body, args) {
@@ -197,6 +199,10 @@ function getBodyMessage (body, args) {
 }
 
 // find fluent text based on fluent ids
+/**
+ * @param {any[]} resolution
+ * @param {any} args
+ */
 function getRecommendationFromResolution (resolution, args) {
   const [resolutionType, resolutionContent] = resolution
   let { header, body, priority } = resolutionContent
@@ -211,8 +217,8 @@ function getRecommendationFromResolution (resolution, args) {
 /**
  * Take breach DataTypes array from HIBP and filter based on BreachDataTypes enums above
  *
- * @param {Array} originalDataTypes breach DataTypes array from HIBP
- * @returns {Array} filtered breach data types
+ * @param {any[]} originalDataTypes breach DataTypes array from HIBP
+ * @returns {any[]} filtered breach data types
  */
 function filterBreachDataTypes (originalDataTypes) {
   const relevantDataTypes = Object.values(BreachDataTypes)

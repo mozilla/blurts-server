@@ -5,7 +5,7 @@
 import Image from "next/image";
 import Script from "next/script";
 import { getServerSession } from "next-auth";
-import { CircleChartProps, UserBreaches } from "./breaches.d";
+import { Breach, CircleChartProps, UserBreaches } from "./breaches.d";
 
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
@@ -52,10 +52,10 @@ function createEmailOptions({ breachesData, emailSelectIndex }: UserBreaches) {
   return optionElements.join("");
 }
 
-function createResolveSteps(breach) {
+function createResolveSteps(breach: any) {
   const checkedArr = breach.ResolutionsChecked || [];
   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(
-    ([key, value]) => `
+    ([key, value]: [string, any]) => `
     <li class="resolve-list-item">
       <input name="${breach.Id}" value="${key}" type="checkbox" ${
       checkedArr.includes(key) ? "checked" : ""
@@ -85,7 +85,7 @@ export default async function UserBreaches() {
     // `(authenticated)/layout.tsx` ensures that `session` is not undefined,
     // so the type assertion should be safe:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    user: session!.user,
+    user: session!.user as any,
   });
 
   function createBreachRows({ breachesData, breachLogos }: UserBreaches) {

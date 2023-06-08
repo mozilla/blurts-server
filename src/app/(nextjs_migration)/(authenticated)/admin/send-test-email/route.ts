@@ -100,16 +100,16 @@ async function sendTestNotification(req: NextRequest, res: NextResponse) {
     hashSuffixes: ["53cbb89874fc738c0512daf12bc4d91765"],
   };
 
-  const notifyReq = {
-    app: req.app,
-    body: {
-      ...req.body,
-      ...breachNotificationData,
-    },
-    token: AppConstants.HIBP_NOTIFY_TOKEN,
-  };
-
   // TODO Disabled for now; not sure yet how to trigger this with the functionality
   // moved to a Cloud Function.
+  // const notifyReq = {
+  //   app: req.app,
+  //   body: {
+  //     ...req.body,
+  //     ...breachNotificationData,
+  //   },
+  //   token: AppConstants.HIBP_NOTIFY_TOKEN,
+  // };
+
   // await notify(notifyReq, res);
 }

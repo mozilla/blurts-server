@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   const l10n = getL10n();
   const token = await getToken({ req });
 
-  if (token) {
+  if (typeof token?.email === "string") {
     try {
       const { emailId }: EmailDeleteRequest = await req.json();
       const subscriber = await getSubscriberByEmail(token.email);

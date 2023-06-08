@@ -15,14 +15,14 @@ const log = mozlog('DB.breaches')
  */
 async function getAllBreaches () {
   return knex('breaches')
-    .returning()
+    .returning("*")
 }
 
 /**
  * Upsert breaches into "breaches" table
  * Skip inserting when 'name' field (unique) has a conflict
  *
- * @param {Array} hibpBreaches breaches array from HIBP API
+ * @param {any[]} hibpBreaches breaches array from HIBP API
  * @returns
  */
 async function upsertBreaches (hibpBreaches) {

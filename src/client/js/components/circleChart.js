@@ -320,6 +320,7 @@ customElements.define('circle-chart', class extends HTMLElement {
     if (this.shadowRoot) {
       this.shadowRoot.innerHTML = html()
     }
+    // @ts-ignore We know this.shadowRoot is available
     this.chartElement = this.shadowRoot.querySelector('.circle-chart')
   }
 })

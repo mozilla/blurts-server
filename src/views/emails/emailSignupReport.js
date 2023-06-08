@@ -44,6 +44,10 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
+/**
+ * @param {{ breachedEmail: any; breachLogos: any; emailBreachStats: any[]; unsafeBreachesForEmail: any[]; ctaHref: string; }} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const signupReportEmailPartial = (data, l10n) => {
   const getMessage = getStringLookup(l10n);
   const {
@@ -91,7 +95,7 @@ const signupReportEmailPartial = (data, l10n) => {
         }
         ${
           unsafeBreachesForEmail?.length
-            ? unsafeBreachesForEmail.map(unsafeBreach => (
+            ? unsafeBreachesForEmail.map((/** @type {any} */ unsafeBreach) => (
                 breachCardPartial(unsafeBreach, breachLogos, l10n)
               )).join('')
             : ''

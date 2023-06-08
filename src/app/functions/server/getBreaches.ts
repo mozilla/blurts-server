@@ -3,16 +3,17 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { get } from 'node:https'
-import { access, constants, createWriteStream } from 'node:fs'
+import { createWriteStream } from 'node:fs'
 import { dirname, resolve as pathResolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { mkdir, readdir } from 'node:fs/promises'
 import mozlog from '../../../utils/log.js'
 import { formatDataClassesArray, getAllBreachesFromDb, req } from '../../../utils/hibp.js'
 import { upsertBreaches } from '../../../db/tables/breaches.js'
+import { Breach } from '../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js'
 
 const log = mozlog('hibp')
-let breaches: any[]
+let breaches: Breach[]
 
 export async function getBreaches () {
   if (breaches) {
@@ -28,7 +29,7 @@ export async function getBreaches () {
 
     for (const breach of breachesResponse) {
       breach.DataClasses = formatDataClassesArray(breach.DataClasses)
-      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
+      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)?.[0]
       breaches.push(breach)
     }
 
@@ -42,7 +43,7 @@ export async function getBreaches () {
 export type LogoMap = Map<string, string>
 let logoMap: LogoMap
 let isFetchingIcons = false
-export async function getBreachIcons (breaches: any[]): Promise<LogoMap> {
+export async function getBreachIcons (breaches: Breach[]): Promise<LogoMap> {
   if (logoMap) {
     return logoMap
   }

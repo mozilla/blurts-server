@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import Image from "next/image";
 import styles from "./BreachLogo.module.css";
 import AppConstants from "../../../appConstants";
 import { LogoMap } from "../../functions/server/getBreaches";
@@ -9,10 +10,8 @@ import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/b
 
 /**
  * @param props
- * @param {object} breach
- * @param {Map<string, string>} logos Map of URLs to logos indexed by the domain name of the respective company
- * @param props.breach
- * @param props.logos
+ * @param {object} props.breach
+ * @param {Map<string, string>} props.logos Map of URLs to logos indexed by the domain name of the respective company
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
 export function BreachLogo(props: { breach: Breach; logos: LogoMap }) {
@@ -20,11 +19,12 @@ export function BreachLogo(props: { breach: Breach; logos: LogoMap }) {
 
   if (logoIsAvailable) {
     return (
-      <img
+      <Image
         src={AppConstants.SERVER_URL + props.logos.get(props.breach.Domain)}
         alt=""
         loading="lazy"
         className={styles.breachLogo}
+        width={32}
         height={32}
       />
     );

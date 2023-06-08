@@ -9,7 +9,7 @@ test.describe('Landing Page element verification', () => {
     await landingPage.open()
   })
 
-  test('Verify landing page elements', async ({ page, landingPage }) => {
+  test('Verify landing page elements', async ({ landingPage }) => {
     // confirm landing page elements are visible
     await expect(async () => {
       await expect(landingPage.whyUseMonitorSec).toBeVisible()
