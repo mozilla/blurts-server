@@ -16,7 +16,6 @@ import {
 } from "./Icons";
 import Image from "next/image";
 import { Button } from "./Button";
-import Email from "next-auth/providers/email";
 
 export type Props = {
   exposureImg: StaticImageData;
@@ -174,7 +173,7 @@ export const ExposureCard = (props: Props) => {
               </li>
             </ul>
             <span className={styles.fixItBtn}>
-              <Button type={"primary"} content={"Lets fix it"} large={false} />
+              <Button type={"primary"} content={"Lets fix it"} />
             </span>
           </div>
         </div>

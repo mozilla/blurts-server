@@ -18,7 +18,8 @@ export const Primary: Story = {
   args: {
     type: "primary",
     content: "Button",
-    large: false,
+    destructive: false,
+    small: false,
   },
 };
 
@@ -26,6 +27,5 @@ export const Secondary: Story = {
   args: {
     type: "secondary",
     content: "Button",
-    large: false,
   },
 };
