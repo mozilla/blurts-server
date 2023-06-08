@@ -6,7 +6,8 @@ const buildEslintCommand = (filenames) =>
     .join(' --file ')}`;
  
 export default {
-  '*.{js,jsx,ts,tsx}': [buildEslintCommand],
+  "*.{js,jsx,ts,tsx}": [buildEslintCommand],
+  "*.{scss,css}": "stylelint --fix",
   "*.{ts,tsx,jsx,scss,css,md}": "prettier --write",
   // While we're migrating to Next.js, regular .js and .css files are still
   // likely to be the non-Next.js app. Thus, we scope those to /src/app:
