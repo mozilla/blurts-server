@@ -2,7 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React, { ReactElement, use, useState } from "react";
+"use client";
+
+import React, { ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "./StatusPill";
 import { StaticImageData } from "next/image";

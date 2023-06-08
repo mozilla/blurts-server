@@ -2,19 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React from "react";
+import React, { HTMLAttributes } from "react";
 import styles from "./button.module.scss";
 
 export type Props = {
-  type: string; // primary | secondary | tertiary
+  type: "primary" | "secondary";
   content: string;
   destructive?: boolean;
   small?: boolean;
   onClick?: () => void;
 };
 
-export const Button = (props: Props) => {
-  const { type, content, destructive, small, onClick } = props;
+export const Button = (props: Props & HTMLAttributes<HTMLButtonElement>) => {
+  const { type, content, destructive, small, ...otherProps } = props;
 
   const classes = [
     styles.button,
@@ -26,7 +26,7 @@ export const Button = (props: Props) => {
     .join(" ");
 
   return (
-    <button className={classes} onClick={onClick}>
+    <button {...otherProps} className={classes}>
       {content}
     </button>
   );

@@ -5,12 +5,7 @@
 import { SVGProps } from "react";
 import styles from "./Icons.module.scss";
 
-/**
- * Info button that inherits the text color of its container
- *
- * @param root0
- * @param root0.alt
- */
+// Link to icon: https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=665-3694&t=URLSlaDVXUyc57kL-4
 export const ChevronDown = ({
   alt,
   ...props
