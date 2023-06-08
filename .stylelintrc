@@ -3,6 +3,7 @@
     "stylelint-config-standard"
   ],
   "rules": {
+    "media-feature-range-notation": null,
     "alpha-value-notation": "number",
     "import-notation": "string",
     "no-descending-specificity": [

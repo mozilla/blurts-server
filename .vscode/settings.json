@@ -2,7 +2,7 @@
     "eslint.enable": true,
     "eslint.format.enable": true,
     "editor.tabSize": 2,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.formatOnSaveMode": "modificationsIfAvailable",
     "eslint.validate": [
         "javascript"
