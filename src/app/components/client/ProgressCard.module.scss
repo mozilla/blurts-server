@@ -1,0 +1,88 @@
+@import "../../tokens";
+
+.progressCard {
+  max-width: $content-sm;
+  display: flex;
+  font: $text-body-md;
+  padding: $spacing-lg;
+  flex-direction: column;
+  border: 2px solid rgba($color-purple-70, 0.4);
+  border-radius: $border-radius-md;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    justify-content: center;
+    font: $text-body-lg;
+    font-weight: 600;
+
+    button {
+      all: unset;
+      cursor: pointer;
+      height: 25px; // height of the button
+
+      svg {
+        color: $color-grey-30;
+      }
+    }
+  }
+
+  .progressStatsWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: $layout-md;
+    padding: $spacing-xs;
+    justify-content: center;
+
+    .progressItem {
+      display: flex;
+      flex-direction: column;
+
+      .progressStat {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        gap: $spacing-sm;
+
+        img {
+          width: 50px;
+          height: auto;
+        }
+      }
+
+      span {
+        font: $text-title-lg;
+        font-weight: 600;
+        color: $color-purple-70;
+      }
+    }
+  }
+}
+
+.progresBarWrapper {
+  gap: $spacing-md;
+  align-items: center;
+  display: flex;
+
+  img {
+    width: 50px;
+    height: auto;
+  }
+
+  .fullProgressBar {
+    border-radius: $border-radius-lg;
+    height: 15px;
+    background-color: $color-grey-20;
+    position: relative;
+    width: 100%;
+
+    .activeProgressBar {
+      height: 15px;
+      border-radius: $border-radius-lg;
+      position: absolute;
+      background-color: $color-purple-70;
+      width: 40%;
+    }
+  }
+}
