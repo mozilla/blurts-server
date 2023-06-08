@@ -8,19 +8,19 @@ import styles from "./button.module.scss";
 export type Props = {
   type: string; // primary | secondary | tertiary
   content: string;
-  large: boolean;
   destructive?: boolean;
+  small?: boolean;
   onClick?: () => void;
 };
 
 export const Button = (props: Props) => {
-  const { type, content, large, destructive, onClick } = props;
+  const { type, content, destructive, small, onClick } = props;
 
   const classes = [
     styles.button,
     styles[type],
     destructive && styles.destructive,
-    large && styles.large,
+    small && styles.small,
   ]
     .filter(Boolean)
     .join(" ");

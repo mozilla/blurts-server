@@ -5,7 +5,7 @@
   font-weight: 600;
   border: 0;
   padding: $spacing-md $spacing-lg;
-  border-radius: $border-radius-sm;
+  border-radius: $border-radius-md;
   cursor: pointer;
   display: inline-block;
   line-height: 1;
@@ -13,17 +13,35 @@
   &.primary {
     color: $color-white;
     background-color: $color-blue-50;
+    &:hover {
+      background-color: $color-blue-60;
+    }
+
+    &:focus {
+      outline: 3px solid $color-blue-30;
+    }
+
+    &.destructive {
+      color: $color-white;
+      background-color: $color-red-60;
+
+      &:hover {
+        background-color: $color-red-70;
+      }
+
+      &:focus {
+        outline: 3px solid $color-red-30;
+      }
+    }
+
+    &.small {
+      padding: $spacing-sm $spacing-md;
+    }
   }
 
   &.secondary {
     color: $color-blue-50;
-    border: solid 2px $color-blue-50;
+    border: solid 3px $color-blue-50;
     background-color: transparent;
-  }
-
-  &.large {
-    font: $text-body-lg;
-    color: $color-white;
-    background-color: $color-blue-50;
   }
 }
