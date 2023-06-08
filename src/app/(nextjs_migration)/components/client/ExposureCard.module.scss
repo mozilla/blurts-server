@@ -83,15 +83,20 @@
         display: flex;
         align-items: center;
         gap: $layout-md;
-        li {
+
+        .detailsFoundItem {
+          display: flex;
+
+          svg {
+            color: $color-purple-70;
+          }
+
           dt {
             display: flex;
             gap: $spacing-sm;
-
-            .exposureTypeIcon {
-              color: $color-purple-70;
-            }
+            align-items: center;
           }
+
           dl {
             font: $text-body-xs;
           }
