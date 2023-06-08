@@ -1,5 +1,5 @@
 @import "./fonts/metropolis";
-@import "./fonts/inter";
+
 // Nebula Colours //
 // Purple:
 $color-purple-90: #321c64;
@@ -200,10 +200,10 @@ $text-title-2xs: 700 24px / 26px Metropolis, sans-serif;
 $text-title-3xs: 700 18px / 20px Metropolis, sans-serif;
 
 // Body copy
-$text-body-xl: 400 21px / 32px Inter, sans-serif;
-$text-body-lg: 400 18px / 27px Inter, sans-serif;
-$text-body-md: 400 16px / 24px Inter, sans-serif;
-$text-body-sm: 400 14px / 21px Inter, sans-serif;
-$text-body-xs: 400 12px / 18px Inter, sans-serif;
+$text-body-xl: 400 21px / 32px sans-serif;
+$text-body-lg: 400 18px / 27px sans-serif;
+$text-body-md: 400 16px / 24px sans-serif;
+$text-body-sm: 400 14px / 21px sans-serif;
+$text-body-xs: 400 12px / 18px sans-serif;
 
 $tab-bar-height: 100px;
