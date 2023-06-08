@@ -73,7 +73,10 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
           </a>
         </li>
         <li>
-          <button onClick={() => signOut()} className="user-menu-link">
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="user-menu-link"
+          >
             <Image alt="" src={SignOutIcon} />
             {l10n.getString("menu-item-logout")}
           </button>

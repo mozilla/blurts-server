@@ -9,6 +9,7 @@ import styles from "./Icons.module.scss";
 //       then added to react-icons: https://react-icons.github.io/react-icons/.
 //       These manually-created components are a workaround until that is done.
 
+// Keywords: cross, X
 export const ArrowIcon = ({
   alt,
   ...props
@@ -31,7 +32,58 @@ export const ArrowIcon = ({
   );
 };
 
-export const HamburgerIcon = ({
+// Keywords: cross, X
+export const CloseBigIcon = ({
+  alt,
+  ...props
+}: SVGProps<SVGSVGElement> & { alt: string }) => {
+  return (
+    <svg
+      role="img"
+      aria-label={alt}
+      aria-hidden={alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+      width={16}
+      height={16}
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{alt}</title>
+      <path d="M9.63004 7.98596L15.6792 1.93681C15.8874 1.72127 16.0026 1.43258 16 1.13293C15.9974 0.833273 15.8772 0.54663 15.6653 0.334735C15.4534 0.12284 15.1667 0.00264711 14.8671 4.3203e-05C14.5674 -0.0025607 14.2787 0.112633 14.0632 0.320813L8.01404 6.36996L1.9649 0.320813C1.74936 0.112633 1.46067 -0.0025607 1.16101 4.3203e-05C0.86136 0.00264711 0.574717 0.12284 0.362822 0.334735C0.150927 0.54663 0.0307344 0.833273 0.0281305 1.13293C0.0255266 1.43258 0.14072 1.72127 0.348901 1.93681L6.39804 7.98596L0.348901 14.0351C0.239746 14.1405 0.152681 14.2666 0.0927849 14.4061C0.0328888 14.5455 0.0013618 14.6955 4.31505e-05 14.8472C-0.0012755 14.999 0.0276408 15.1495 0.0851046 15.2899C0.142569 15.4304 0.227429 15.558 0.334735 15.6653C0.442041 15.7726 0.569643 15.8574 0.710096 15.9149C0.850549 15.9724 1.00104 16.0013 1.15279 16C1.30454 15.9986 1.4545 15.9671 1.59393 15.9072C1.73337 15.8473 1.85948 15.7603 1.9649 15.6511L8.01404 9.60196L14.0632 15.6511C14.2787 15.8593 14.5674 15.9745 14.8671 15.9719C15.1667 15.9693 15.4534 15.8491 15.6653 15.6372C15.8772 15.4253 15.9974 15.1386 16 14.839C16.0026 14.5393 15.8874 14.2506 15.6792 14.0351L9.63004 7.98596Z" />
+    </svg>
+  );
+};
+
+// Keywords: four squares, window, dashboard
+export const UnionIcon = ({
+  alt,
+  ...props
+}: SVGProps<SVGSVGElement> & { alt: string }) => {
+  return (
+    <svg
+      role="img"
+      aria-label={alt}
+      aria-hidden={alt === ""}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 18 18"
+      width={18}
+      height={18}
+      {...props}
+      className={`${props.className ?? ""} ${styles.colorifyFill}`}
+    >
+      <title>{alt}</title>
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M2 2H6V6H2V2ZM0 2C0 0.895431 0.895431 0 2 0H6C7.10457 0 8 0.895431 8 2V6C8 7.10457 7.10457 8 6 8H2C0.895431 8 0 7.10457 0 6V2ZM12 2H16V6H12V2ZM10 2C10 0.895431 10.8954 0 12 0H16C17.1046 0 18 0.895431 18 2V6C18 7.10457 17.1046 8 16 8H12C10.8954 8 10 7.10457 10 6V2ZM6 12H2V16H6V12ZM2 10C0.895431 10 0 10.8954 0 12V16C0 17.1046 0.895431 18 2 18H6C7.10457 18 8 17.1046 8 16V12C8 10.8954 7.10457 10 6 10H2ZM12 12H16V16H12V12ZM10 12C10 10.8954 10.8954 10 12 10H16C17.1046 10 18 10.8954 18 12V16C18 17.1046 17.1046 18 16 18H12C10.8954 18 10 17.1046 10 16V12Z"
+      />
+    </svg>
+  );
+};
+
+// Keywords: menu, hamburger, list
+export const ListIcon = ({
   alt,
   ...props
 }: SVGProps<SVGSVGElement> & { alt: string }) => {

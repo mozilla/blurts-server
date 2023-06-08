@@ -16,7 +16,7 @@ import {
   getBreachIcons,
   getBreaches,
 } from "../../../../functions/server/getBreaches";
-import { Breach } from "../../../../transitionTypes";
+import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
 import { getLocale } from "../../../../functions/server/l10n";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";
@@ -51,6 +51,33 @@ const glyphs: Record<string, StaticImageData> = {
   pins: glyphPin,
   "physical-addresses": glyphAddress,
 };
+
+export async function generateMetadata(props: {
+  params: { breachName: string };
+}) {
+  const l10n = getL10n();
+  return {
+    title: `${l10n.getString("brand-fx-monitor")} - ${props.params.breachName}`,
+    twitter: {
+      card: "summary_large_image",
+      title: l10n.getString("breach-detail-meta-social-title", {
+        company: props.params.breachName,
+      }),
+      description: l10n.getString("breach-detail-meta-social-description"),
+      images: ["/images/og-image.webp"],
+    },
+    openGraph: {
+      title: l10n.getString("breach-detail-meta-social-title", {
+        company: props.params.breachName,
+      }),
+      description: l10n.getString("breach-detail-meta-social-description"),
+      siteName: l10n.getString("brand-fx-monitor"),
+      type: "website",
+      url: process.env.SERVER_URL,
+      images: ["/images/og-image.webp"],
+    },
+  };
+}
 
 export default async function BreachDetail(props: {
   params: { breachName: string };

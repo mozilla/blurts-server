@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-const html = `
+const htmlString = `
 <style>
   :host{
     contain: style paint;
@@ -62,7 +62,7 @@ customElements.define('custom-select', class extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
-    this.shadowRoot.innerHTML = html
+    this.shadowRoot.innerHTML = htmlString
     // @ts-ignore: We know that this will not return null
     this.select = this.shadowRoot.querySelector('select')
     this.options = this.querySelectorAll('option')
