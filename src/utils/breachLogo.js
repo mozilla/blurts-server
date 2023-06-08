@@ -5,7 +5,7 @@
 import AppConstants from '../appConstants.js'
 
 /**
- * @param {object} breach
+ * @param {any} breach
  * @param {Map<string, string>} logos Map of URLs to logos indexed by the domain name of the respective company
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
@@ -27,7 +27,7 @@ export function getBreachLogo (breach, logos) {
 
 /**
  * @param {string} name
- * @returns {string} CSS variable for a string-specific color
+ * @returns {{ className: string, variableName: string }} CSS variable for a string-specific color
  */
 function getColorForName (name) {
   const logoColors = [
@@ -68,7 +68,9 @@ function getColorForName (name) {
   const charValue = name
     .split('')
     .map(letter => letter.codePointAt(0))
+    // @ts-ignore This shouldn't be undefined
     .reduce((sum, codePoint) => sum + codePoint)
 
+  // @ts-ignore charValue shouldn't be undefined
   return logoColors[charValue % logoColors.length]
 }

@@ -93,6 +93,8 @@ export const authOptions: AuthOptions = {
     },
   ],
   callbacks: {
+    // Unused arguments also listed to show what's available:
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     async jwt({ token, account, profile, trigger }) {
       if (profile) {
         token.fxa = {
@@ -103,7 +105,7 @@ export const authOptions: AuthOptions = {
           avatarDefault: profile.avatarDefault,
         };
       }
-      if (account && profile) {
+      if (account && typeof profile?.email === "string") {
         // We're signing in with FxA; store user in database if not present yet.
         log.debug("fxa-confirmed-fxaUser", account);
 

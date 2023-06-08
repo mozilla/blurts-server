@@ -20,7 +20,7 @@ import appConstants from "../../../../../appConstants";
 // Get breaches data
 export async function GET(req: NextRequest) {
   const token = await getToken({ req });
-  if (token) {
+  if (typeof token?.email === "string") {
     // Signed in
     try {
       const subscriber: Subscriber = await getSubscriberByEmail(token.email);
@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
 
 export async function PUT(req: NextRequest) {
   const token = await getToken({ req });
-  if (token) {
+  if (typeof token?.email === "string") {
     try {
       const subscriber: Subscriber = await getSubscriberByEmail(token.email);
       const allBreaches = await getBreaches();

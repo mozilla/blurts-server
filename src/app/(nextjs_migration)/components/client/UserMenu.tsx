@@ -35,9 +35,13 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
         className="user-menu-button"
         title={l10n.getString("menu-button-title")}
       >
-        <img
-          src={session.user?.avatar}
+        <Image
+          // The avatar should always be provided by FxA
+          // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
+          src={session.user?.fxa?.avatar!}
           alt={l10n.getString("menu-button-alt")}
+          width={46}
+          height={46}
         />
       </button>
       <menu

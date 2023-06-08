@@ -21,6 +21,10 @@ const breachAlertCtaStyle = `
   padding: 12px 24px;
 `
 
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const breachAlertEmailPartial = (data, l10n) => {
   const { breachData, breachedEmail, breachLogos, ctaHref } = data
   const getMessage = getStringLookup(l10n);

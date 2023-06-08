@@ -43,7 +43,13 @@ async function getAllEmailsAndBreaches (user, allBreaches) {
   return { verifiedEmails, unverifiedEmails }
 }
 
+/**
+ * @param {any[]} foundBreaches
+ */
 function addRecencyIndex (foundBreaches) {
+  /**
+   * @type {any[]}
+   */
   const annotatedBreaches = []
   // slice() the array to make a copy so before reversing so we don't
   // reverse foundBreaches in-place
@@ -55,6 +61,10 @@ function addRecencyIndex (foundBreaches) {
   return annotatedBreaches.reverse()
 }
 
+/**
+ * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: any; }} options
+ * @returns {Promise<{ email: string; breaches: any[]; id: number; primary: boolean; verified: boolean; hasNewBreaches?: number; }>}
+ */
 async function bundleVerifiedEmails (options) {
   const { user, email, recordId, recordVerified, allBreaches } = options
   const lowerCaseEmailSha = getSha1(email.toLowerCase())

@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Subscriber } from "./app/(nextjs_migration)/(authenticated)/user/breaches/breaches";
+
 interface HTMLElement {
   // We access this.shadowRoot in custom elements often, and we've almost always
   // already called this.attachShadow({ mode: 'open' }). So, the default type
@@ -49,7 +51,7 @@ type FxaProfile = {
 };
 declare namespace Express {
   export interface Request {
-    user?: import("./db/tables/subscribers_types").SubscriberRow & {
+    user?: Subscriber & {
       // TODO: Finish the type definition of the user object
       fxa_profile_json?: FxaProfile;
     };
@@ -64,9 +66,7 @@ declare module "mozlog" {
     level: string;
     fmt: string;
   };
-  const defaultFunction: (
-    _options: Options
-  ) => (_scope: string) => {
+  const defaultFunction: (_options: Options) => (_scope: string) => {
     debug: LogFunction;
     info: LogFunction;
     warn: LogFunction;
@@ -77,5 +77,6 @@ declare module "mozlog" {
 }
 
 interface Window {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   gtag: any;
 }

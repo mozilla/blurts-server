@@ -4,6 +4,7 @@
 
 import { getL10n } from "./l10n";
 import AppConstants from "../../../appConstants.js";
+import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 /**
  * Equivalent of Typescript "enum"
@@ -104,16 +105,16 @@ const breachResolutionDataTypes = {
  * Append a field "breachChecklist" to the breaches array of each verified emails
  * The checklist serves the UI with relevant recommendations based on the array of datatypes leaked during a breach.
  *
- * @param {Array} userBreachData contains monitored verified emails array. Each email may contain a breaches array
- * @param {Partial<{ countryCode: string }>} options
+ * @param userBreachData contains monitored verified emails array. Each email may contain a breaches array
+ * @param options
  * @returns {*} void
  */
-function appendBreachResolutionChecklist(userBreachData, options = {}) {
+function appendBreachResolutionChecklist(userBreachData: any, options: Partial<{ countryCode: string }> = {}) {
   const l10n = getL10n();
   const { verifiedEmails } = userBreachData;
 
   for (const { breaches } of verifiedEmails) {
-    breaches.forEach((b) => {
+    breaches.forEach((b: Breach) => {
       const dataClasses = b.DataClasses;
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? "").split(
         ","
@@ -139,7 +140,7 @@ function appendBreachResolutionChecklist(userBreachData, options = {}) {
         transUnionLink:
           '<a href="https://www.transunion.com/credit-freeze" target="_blank">TransUnion</a>',
       };
-      b.breachChecklist = getResolutionRecsPerBreach(
+      (b as any).breachChecklist = getResolutionRecsPerBreach(
         dataClasses,
         args,
         options
@@ -152,19 +153,19 @@ function appendBreachResolutionChecklist(userBreachData, options = {}) {
  * Get a subset of the breach resolution data types map
  * based on the array of datatypes leaked during a breach
  *
- * @param {Array} dataTypes datatypes leaked during the breach
- * @param {object} args contains necessary variables for the fluent file
- *  - companyName
- *  - breachedCompanyUrl
- * @param {Partial<{ countryCode: string }>} options
- * @returns {Map} map of relevant breach resolution recommendations
+ * @param dataTypes datatypes leaked during the breach
+ * @param args contains necessary variables for the fluent file
+ * @param args.companyName
+ * @param args.breachedCompanyLink
+ * @param {{ countryCode: string }} options
+ * @returns map of relevant breach resolution recommendations
  */
-function getResolutionRecsPerBreach(dataTypes, args, options = {}) {
-  const filteredBreachRecs = {};
+function getResolutionRecsPerBreach(dataTypes: any[], args: { companyName: string; breachedCompanyLink: string }, options: Partial<{ countryCode: string }> = {}) {
+  const filteredBreachRecs: Record<string, ReturnType<typeof getRecommendationFromResolution>> = {};
 
   // filter breachResolutionDataTypes based on relevant data types passed in
   for (const resolution of Object.entries(breachResolutionDataTypes)) {
-    const [key, value] = resolution;
+    const [key, value]: [any, any] = resolution;
     if (
       dataTypes.includes(key) &&
       // Hide resolutions that apply to other countries than the user's:
@@ -197,11 +198,11 @@ function getResolutionRecsPerBreach(dataTypes, args, options = {}) {
 /**
  * Get the fluent string for the body
  *
- * @param {string} body for the fluent body string
- * @param {object} args
- * @returns {string} body string
+ * @param body for the fluent body string
+ * @param args
+ * @returns body string
  */
-function getBodyMessage(body, args) {
+function getBodyMessage(body: string, args: any): string {
   const l10n = getL10n();
   const { stringArgs } = args;
   const companyLink = stringArgs.breachedCompanyLink;
@@ -216,7 +217,7 @@ function getBodyMessage(body, args) {
 }
 
 // find fluent text based on fluent ids
-function getRecommendationFromResolution(resolution, args) {
+function getRecommendationFromResolution(resolution: any, args: any) {
   const l10n = getL10n();
   const [resolutionType, resolutionContent] = resolution;
   let { header, body } = resolutionContent;
@@ -230,10 +231,10 @@ function getRecommendationFromResolution(resolution, args) {
 /**
  * Take breach DataTypes array from HIBP and filter based on BreachDataTypes enums above
  *
- * @param {Array} originalDataTypes breach DataTypes array from HIBP
- * @returns {Array} filtered breach data types
+ * @param originalDataTypes breach DataTypes array from HIBP
+ * @returns filtered breach data types
  */
-function filterBreachDataTypes(originalDataTypes) {
+function filterBreachDataTypes(originalDataTypes: any[]) {
   const relevantDataTypes = Object.values(BreachDataTypes);
   return originalDataTypes.filter((d) => relevantDataTypes.includes(d));
 }

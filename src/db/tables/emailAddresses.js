@@ -13,6 +13,9 @@ import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
 const knex = Knex(knexConfig)
 const log = mozlog('DB.email_addresses')
 
+/**
+ * @param {string} token
+ */
 async function getEmailByToken (token) {
   const res = await knex('email_addresses')
     .where('verification_token', '=', token)
@@ -20,6 +23,9 @@ async function getEmailByToken (token) {
   return res[0]
 }
 
+/**
+ * @param {string} emailAddressId
+ */
 async function getEmailById (emailAddressId) {
   const res = await knex('email_addresses')
     .where('id', '=', emailAddressId)
@@ -27,6 +33,9 @@ async function getEmailById (emailAddressId) {
   return res[0]
 }
 
+/**
+ * @param {string} email
+ */
 async function getEmailAddressRecordByEmail (email) {
   const emailAddresses = await knex('email_addresses').where({
     email, verified: true
@@ -41,6 +50,10 @@ async function getEmailAddressRecordByEmail (email) {
   return emailAddresses[0]
 }
 
+/**
+ * @param {{ id: number; }} user
+ * @param {string} email
+ */
 async function addSubscriberUnverifiedEmailHash (user, email) {
   const res = await knex.transaction(trx => {
     return trx('email_addresses')
@@ -59,6 +72,10 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
   return await res[0]
 }
 
+/**
+ * @param {string} emailAddressId
+ * @param {import("@fluent/react").ReactLocalization} l10n
+ */
 async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
   const newVerificationToken = uuidv4()
 
@@ -85,6 +102,9 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
   return res[0]
 }
 
+/**
+ * @param {string} token
+ */
 async function verifyEmailHash (token) {
   const unverifiedEmail = await getEmailByToken(token)
   if (!unverifiedEmail) {
@@ -96,6 +116,11 @@ async function verifyEmailHash (token) {
 
 // TODO: refactor into an upsert? https://jaketrent.com/post/upsert-knexjs/
 // Used internally, ideally should not be called by consumers.
+/**
+ * @param {string} sha1
+ * @param {any} aFoundCallback
+ * @param {any} aNotFoundCallback
+ */
 async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
   const existingEntries = await knex('subscribers')
     .where('primary_sha1', sha1)
@@ -110,10 +135,16 @@ async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
 }
 
 // Used internally.
+/**
+ * @param {string} sha1
+ * @param {string} email
+ * @param {string} signupLanguage
+ * @param verified
+ */
 async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
   log.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
   try {
-    return await _getSha1EntryAndDo(sha1, async aEntry => {
+    return await _getSha1EntryAndDo(sha1, async (/** @type {any} */ aEntry) => {
       // Entry existed, patch the email value if supplied.
       if (email) {
         const res = await knex('subscribers')
@@ -138,6 +169,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
       return res[0]
     })
   } catch (e) {
+    // @ts-ignore Log whatever, we don't care
     log.error(e)
     throw fluentError('error-could-not-add-email')
   }
@@ -151,9 +183,9 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
  *
  * @param {string} email to add
  * @param {string} signupLanguage from Accept-Language
- * @param {string} fxaAccessToken from Firefox Account Oauth
- * @param {string} fxaRefreshToken from Firefox Account Oauth
- * @param {string} fxaProfileData from Firefox Account
+ * @param {string | null} fxaAccessToken from Firefox Account Oauth
+ * @param {string | null} fxaRefreshToken from Firefox Account Oauth
+ * @param {string | null} fxaProfileData from Firefox Account
  * @returns {Promise<import('../../app/transitionTypes.js').Subscriber>} subscriber knex object added to DB
  */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
@@ -174,8 +206,8 @@ async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaR
  * 2. Update our subscribers record to verified
  * 3. (if opted in) Subscribe the email to Fx newsletter
  *
- * @param {object} emailHash knex object in DB
- * @returns {object} verified subscriber knex object in DB
+ * @param {any} emailHash knex object in DB
+ * @returns {Promise<any>} verified subscriber knex object in DB
  */
 async function _verifySubscriber (emailHash) {
   await subscribeHash(emailHash.primary_sha1)
@@ -192,6 +224,9 @@ async function _verifySubscriber (emailHash) {
 }
 
 // Verifies new emails added by existing users
+/**
+ * @param {{ sha1: string; id: number; }} emailHash
+ */
 async function _verifyNewEmail (emailHash) {
   await subscribeHash(emailHash.sha1)
 
@@ -229,6 +264,9 @@ async function getUserEmails (userId) {
 // This is used by SES callbacks to remove email addresses when recipients
 // perma-bounce or mark our emails as spam
 // Removes from either subscribers or email_addresses as necessary
+/**
+ * @param {string} email
+ */
 async function removeEmail (email) {
   const subscriber = await getSubscriberByEmail(email)
   if (!subscriber) {
@@ -256,6 +294,9 @@ async function removeEmail (email) {
     .del()
 }
 
+/**
+ * @param {string} emailId
+ */
 async function removeOneSecondaryEmail (emailId) {
   await knex('email_addresses')
     .where({
@@ -264,6 +305,9 @@ async function removeOneSecondaryEmail (emailId) {
     .del()
 }
 
+/**
+ * @param {string[]} hashes
+ */
 async function getEmailAddressesByHashes (hashes) {
   return await knex('email_addresses')
     .join('subscribers', 'email_addresses.subscriber_id', '=', 'subscribers.id')
@@ -271,6 +315,9 @@ async function getEmailAddressesByHashes (hashes) {
     .andWhere('email_addresses.verified', '=', true)
 }
 
+/**
+ * @param {string} uid
+ */
 async function deleteEmailAddressesByUid (uid) {
   await knex('email_addresses').where({ subscriber_id: uid }).del()
 }

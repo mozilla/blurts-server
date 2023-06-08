@@ -36,6 +36,10 @@ export function getAllGenericRecommendations () {
     }
   ]
 }
+
+// It's unclear why this function has unused parameters, but since they're
+// positional parameters, removing them risks breaking things:
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function getAllPriorityDataClasses (isUserBrowserFirefox = false, isUserLocaleEnUs = false, isUserLocaleEn = false, changePWLink = null) {
   return {
     'government-issued-ids': {

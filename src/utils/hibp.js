@@ -32,6 +32,12 @@ function _addStandardOptions (options = {}) {
   return Object.assign(options, hibpOptions)
 }
 
+/**
+ * @param {string} url
+ * @param {any | undefined} reqOptions
+ * @param tryCount
+ * @returns {Promise<any>}
+ */
 async function _throttledFetch (url, reqOptions, tryCount = 1) {
   try {
     const response = await fetch(url, reqOptions)
@@ -43,10 +49,12 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         return undefined
       case 429:
         log.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
+        // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
           throw fluentError('error-hibp-throttled')
         } else {
           tryCount++
+          // @ts-ignore HIBP_THROTTLE_DELAY should be defined
           await new Promise(resolve => setTimeout(resolve, HIBP_THROTTLE_DELAY * tryCount))
           return await _throttledFetch(url, reqOptions, tryCount)
         }
@@ -59,12 +67,20 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
   }
 }
 
+/**
+ * @param {string} path
+ * @param options
+ */
 async function req (path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
   return await _throttledFetch(url, reqOptions)
 }
 
+/**
+ * @param {string} path
+ * @param options
+ */
 async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
@@ -76,7 +92,7 @@ async function kAnonReq (path, options = {}) {
  * Sanitize data classes
  * ie. "Email Addresses" -> "email-addresses"
  *
- * @param {Array} dataClasses
+ * @param {any[]} dataClasses
  * @returns Array sanitized data classes array
  */
 function formatDataClassesArray (dataClasses) {
@@ -95,6 +111,9 @@ function formatDataClassesArray (dataClasses) {
  * @returns formatted all breaches array
  */
 async function getAllBreachesFromDb () {
+  /**
+   * @type {any[]}
+   */
   let dbBreaches = []
   try {
     dbBreaches = await getAllBreaches()
@@ -126,6 +145,9 @@ async function getAllBreachesFromDb () {
   }))
 }
 
+/**
+ * @param {{ locals: { breachLogoMap: Map<any, any>; breaches: any[]; breachesLoadedDateTime: number; }; }} app
+ */
 async function loadBreachesIntoApp (app) {
   try {
     // attempt to fetch breaches from the "breaches" database table
@@ -139,6 +161,7 @@ async function loadBreachesIntoApp (app) {
 
       for (const breach of breachesResponse) {
         breach.DataClasses = formatDataClassesArray(breach.DataClasses)
+        // @ts-ignore The result should be set
         breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
         breaches.push(breach)
       }
@@ -161,6 +184,9 @@ async function loadBreachesIntoApp (app) {
   log.info('done-loading-breaches', 'great success 👍')
 }
 
+/**
+ * @param {any[]} breaches
+ */
 async function downloadBreachIcons (breaches) {
   const breachDomains = breaches
     .map(breach => breach.Domain)
@@ -236,8 +262,8 @@ function getAddressesAndLanguageForEmail (recipient) {
 /**
  * Filter breaches that we would not like to show.
  *
- * @param {Array} breaches
- * @returns {Array} filteredBreaches
+ * @param {any[]} breaches
+ * @returns {any[]} filteredBreaches
  */
 function getFilteredBreaches (breaches) {
   return breaches.filter(breach => (
@@ -254,7 +280,7 @@ function getFilteredBreaches (breaches) {
  * GET /breachedaccount/range/[hash prefix]
  *
  * @param {string} sha1 first 6 chars of email sha1
- * @param {Array} allBreaches
+ * @param {any[]} allBreaches
  * @param {boolean} includeSensitive
  * @param {boolean} filterBreaches
  * @returns
@@ -284,6 +310,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
       // We store breach resolutions by recency indices,
       // so that our DB does not contain any part of any user's list of accounts
       foundBreaches.sort((a, b) => {
+        // @ts-ignore TODO: Turn dates into a number
         return new Date(b.AddedDate) - new Date(a.AddedDate)
       })
 
@@ -299,9 +326,14 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
   )
 }
 
+/**
+ * @param {any[]} allBreaches
+ * @param {string} breachName
+ */
 function getBreachByName (allBreaches, breachName) {
   breachName = breachName.toLowerCase()
   if (RENAMED_BREACHES.includes(breachName)) {
+    // @ts-ignore Converted from regular JS
     breachName = RENAMED_BREACHES_MAP[breachName]
   }
   const foundBreach = allBreaches.find(breach => breach.Name.toLowerCase() === breachName)

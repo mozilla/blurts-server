@@ -25,7 +25,7 @@ export async function POST (request: Request) {
     const allBreaches = await getBreaches()
     const breaches = await getBreachesForEmail(getSha1(validatedEmail.email), allBreaches, false)
 
-    /** @type {RequestBreachScanSuccessResponse} */
+    /** @type {import("../../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} */
     const successResponse = {
       success: true,
       breaches: breaches.slice(0, 6),

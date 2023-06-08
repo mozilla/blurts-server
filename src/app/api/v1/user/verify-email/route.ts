@@ -8,6 +8,9 @@ export async function GET(req: NextRequest) {
   try {
     const query = req.nextUrl.searchParams;
     const token = query.get("token");
+    if (!token) {
+      throw new Error("No token given.");
+    }
     await verifyEmailHash(token);
     return NextResponse.redirect(
       process.env.SERVER_URL + "/user/settings",

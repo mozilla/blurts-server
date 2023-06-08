@@ -45,6 +45,10 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
 const monthlyUnresolvedEmailPartial = (data, l10n) => {
   const getMessage = getStringLookup(l10n);
 
