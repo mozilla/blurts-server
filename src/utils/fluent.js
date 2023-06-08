@@ -148,9 +148,11 @@ function getMessageWithLocale (id, localePreferences, args) {
 
 /**
  * @param {string} id
+ * @param l10n
  */
-function fluentError (id) {
-  return new Error(getMessage(id))
+function fluentError (id, l10n) {
+  const getString = getStringLookup(l10n);
+  return new Error(getString(id))
 }
 
 export { initFluentBundles, updateLocale, getLocale, getMessage, getMessageWithLocale, getStringLookup, getRawMessage, fluentError }

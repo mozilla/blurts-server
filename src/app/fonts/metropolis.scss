@@ -1,35 +1,26 @@
 @font-face {
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis;
   font-style: normal;
   font-weight: 700;
+  font-display: optional;
   src: local("Metropolis-Bold"),
     url("./Metropolis/Metropolis-Bold.woff2") format("woff2");
-  font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis;
   font-style: normal;
   font-weight: 600;
+  font-display: optional;
   src: local("Metropolis-SemiBold"),
     url("./Metropolis/Metropolis-SemiBold.woff2") format("woff2");
-  font-display: swap;
 }
 
 @font-face {
-  font-family: "Metropolis", sans-serif;
+  font-family: Metropolis;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
+  font-display: optional;
   src: local("Metropolis-Medium"),
     url("./Metropolis/Metropolis-Medium.woff2") format("woff2");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Metropolis", sans-serif;
-  font-style: normal;
-  font-weight: 300;
-  src: local("Metropolis-Light"),
-    url("./Metropolis/Metropolis-Light.woff2") format("woff2");
-  font-display: swap;
 }
