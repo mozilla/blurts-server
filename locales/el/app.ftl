@@ -726,6 +726,8 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -756,7 +758,6 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 ## Search Engine Optimization
 
-meta-desc = Μάθετε αν υπήρξατε θύμα παραβίασης δεδομένων με το { -brand-fx-monitor }. Εγγραφείτε για ειδοποιήσεις σχετικά με μελλοντικές παραβιάσεις και λάβετε συμβουλές για να προστατέψετε τους λογαριασμούς σας.
 
 ## Header
 
@@ -815,3 +816,8 @@ exposed-data = Εκτεθειμένα δεδομένα:
 find-out-if-2 = Μάθετε εάν εμπλακήκατε σε αυτήν την παραβίαση
 find-out-if-description = Θα σας βοηθήσουμε να δείτε γρήγορα εάν η διεύθυνση email σας αποκαλύφθηκε σε αυτήν την παραβίαση και να κατανοήσετε τι πρέπει να κάνετε στη συνέχεια.
 breach-detail-cta-signup = Έλεγχος για παραβιάσεις
+
+## Floating banner
+
+floating-banner-link-label = Εγγραφή
+floating-banner-dismiss-button-label = Όχι, ευχαριστώ
