@@ -30,6 +30,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Απαιτείται επαλήθευση email
 settings-resend-email-verification-link = Εκ νέου αποστολή email επαλήθευσης
 settings-add-email-button = Προσθήκη διεύθυνσης email
+settings-delete-email-button = Διαγραφή διεύθυνσης email
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -39,6 +40,10 @@ settings-email-number-of-breaches-info =
         [one] Εμφανίζεται σε { $breachCount } γνωστή παραβίαση.
        *[other] Εμφανίζεται σε { $breachCount } γνωστές παραβιάσεις.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Ακύρωση συνδρομής { -brand-premium }
 
 ## Deactivate account
 
@@ -52,3 +57,8 @@ settings-email-dialog-title = Προσθήκη άλλης διεύθυνσης e
 settings-add-email-text = Προσθέστε μια νέα διεύθυνση email για να δείτε εάν έχει εμπλακεί σε παραβίαση.
 settings-email-input-label = Διεύθυνση email
 settings-send-email-verification-button = Αποστολή συνδέσμου επαλήθευσης
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-message-placeholder = Τι θα μπορούσε να είχε πάει καλύτερα;
+settings-unsubscribe-dialog-continue = Συνέχεια στην ακύρωση
