@@ -60,8 +60,8 @@ export default async function EmailTemplatePage(props: {
 
   return (
     <div data-partial="emailPreview">
-      <Script src="/nextjs_migration/client/js/customSelect.js" />
-      <Script src="/nextjs_migration/client/js/emailPreview.js" />
+      <Script type="module" src="/nextjs_migration/client/js/customSelect.js" />
+      <Script type="module" src="/nextjs_migration/client/js/emailPreview.js" />
       <section className="email-preview js-email">
         <h1>Email preview</h1>
         <div className="email-preview-controls">

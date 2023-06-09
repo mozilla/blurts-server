@@ -21,7 +21,7 @@ export default function PublicScan() {
 
   return (
     <div data-partial="exposureScan">
-      <Script src="/nextjs_migration/client/js/scan.js" />
+      <Script type="module" src="/nextjs_migration/client/js/scan.js" />
       <div hidden id="data"></div>
       <div id="exposure-scan-loading">
         {l10n.getString("exposure-landing-result-loading")}
