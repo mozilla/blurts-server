@@ -35,12 +35,13 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
         className="user-menu-button"
         title={l10n.getString("menu-button-title")}
       >
-        <Image
+        {/* The avatar is an SVG, which next/image doesn't process: https://nextjs.org/docs/pages/api-reference/components/image#dangerouslyallowsvg */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           // The avatar should always be provided by FxA
           // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
           src={session.user?.fxa?.avatar!}
           alt={l10n.getString("menu-button-alt")}
-          width={46}
           height={46}
         />
       </button>
