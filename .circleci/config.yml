@@ -42,19 +42,12 @@ orbs:
     heroku: circleci/heroku@1.2.6
 
 jobs:
-    lint-js:
+    lint:
         executor: node
         steps:
             - checkout
             - node/install-packages
-            - run: npm run lint:js
-            - run: npm run lint:ts
-    lint-css:
-        executor: node
-        steps:
-            - checkout
-            - node/install-packages
-            - run: npm run lint:css
+            - run: npm run lint
     lint-l10n:
         executor: python
         steps:
@@ -143,8 +136,7 @@ jobs:
 workflows:
     lint-and-deploy:
         jobs:
-            - lint-js
-            - lint-css
+            - lint
             - lint-l10n
             - deploy:
                 filters:
@@ -157,7 +149,7 @@ workflows:
                 name: Deploy main to Heroku
                 app-name: $HEROKU_MAIN_APP_NAME
                 requires:
-                    - lint-js
+                    - lint
                 filters:
                     branches:
                         only: main
@@ -166,7 +158,7 @@ workflows:
                 name: Deploy l10n to Heroku
                 app-name: $HEROKU_LOCALIZATION_APP_NAME
                 requires:
-                    - lint-js
+                    - lint
                 filters:
                     branches:
                         only: localization
