@@ -31,8 +31,6 @@
      };
      /* eslint-enable no-process-env */
    }
-   console.log('not heroku')
-   console.log({versionJsonPath})
    return JSON.parse(fs.readFileSync(versionJsonPath, 'utf8'))
  }
 
