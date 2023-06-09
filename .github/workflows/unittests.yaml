@@ -3,7 +3,7 @@ name: Unit Tests
 on: [push]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -15,5 +15,4 @@ jobs:
           node-version: '18.12.x'
       - run: npm ci
       - run: cp .env-dist .env
-      - run: npm run build
       - run: npm test
