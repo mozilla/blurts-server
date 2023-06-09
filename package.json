@@ -8,40 +8,18 @@
   },
   "type": "module",
   "scripts": {
-    "next:dev": "next dev --port=6060",
-    "next:build": "next build",
-    "next:start": "next start",
-    "next:lint": "next lint",
-    "prestart": "npm run build",
-    "start": "node src/app.js",
-    "dev": "nodemon src/app.js",
-    "build": "node esbuild & npm run copy:root & npm run copy:webp & npm run copy:png & npm run build:svg",
-    "build:svg": "svgo -f src/client/images/ -r -o dist/images",
-    "copy:root": "mkdir -p dist/ && cp src/client/*.* dist/",
-    "copy:webp": "mkdir -p dist/images/ && cp -r src/client/images/*.webp dist/images/",
-    "copy:png": "mkdir -p dist/images/email/ && cp -r src/client/images/email/*.png dist/images/email/",
-    "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
-    "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
+    "dev": "next dev --port=6060",
+    "build": "next build",
+    "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
+    "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
+    "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
     "prepare": "husky install",
     "postinstall": "patch-package",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
-  },
-  "nodemonConfig": {
-    "watch": [
-      "*",
-      ".env"
-    ],
-    "ignore": [
-      "src/client/*"
-    ],
-    "env": {
-      "LIVE_RELOAD": true
-    },
-    "ext": "js,css,json,ftl,env"
   },
   "ava": {
     "files": [
@@ -70,15 +48,9 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "client-oauth2": "^4.3.3",
-    "connect-redis": "^7.0.0",
-    "cookie-parser": "^1.4.6",
     "csrf-csrf": "^2.2.2",
     "dotenv": "^16.0.3",
-    "esbuild": "^0.17.8",
     "eslint-config-next": "^13.4.1",
-    "express": "^4.18.2",
-    "express-rate-limit": "^6.7.0",
-    "express-session": "^1.17.3",
     "helmet": "^6.0.0",
     "jsdom": "^22.0.0",
     "knex": "^2.4.2",
@@ -90,7 +62,6 @@
     "pg": "^8.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "redis": "^4.6.5",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -102,7 +73,6 @@
     "@storybook/nextjs": "^7.0.18",
     "@storybook/react": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.2",
-    "@types/express": "^4.17.17",
     "@types/nodemailer": "^6.4.8",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
@@ -117,15 +87,12 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "node-mocks-http": "^1.12.1",
-    "nodemon": "^2.0.20",
     "prettier": "2.8.8",
-    "redis-mock": "^0.56.3",
     "sass": "^1.62.1",
     "storybook": "^7.0.18",
     "stylelint": "^15.6.0",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-scss": "^5.0.0",
-    "svgo": "^3.0.2",
     "testdouble": "^3.16.8",
     "typescript": "^5.0.4"
   }
