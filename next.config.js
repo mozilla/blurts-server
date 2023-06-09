@@ -52,7 +52,8 @@ const nextConfig = {
               `script-src 'self' ${
                 process.env.NODE_ENV === "development"
                   ? "'unsafe-eval' 'unsafe-inline'"
-                  : ""
+                  : // See https://github.com/vercel/next.js/discussions/51039
+                    "'unsafe-inline'"
               } https://*.googletagmanager.com`,
               "script-src-attr 'none'",
               `connect-src 'self' ${
@@ -64,9 +65,7 @@ const nextConfig = {
                   : ""
               }`,
               "child-src 'self'",
-              `style-src 'self' ${
-                process.env.NODE_ENV === "development" ? "'unsafe-inline'" : ""
-              }`,
+              "style-src 'self' 'unsafe-inline'",
               "font-src 'self'",
               "form-action 'self'",
               "frame-ancestors 'self'",
