@@ -2,7 +2,7 @@
 
 * Status: proposed
 * Deciders: Monitor Team, L10N Team
-* Date: 2023-06-01
+* Date: 2023-06-09
 
 Technical Story: [MNTOR-1795](https://mozilla-hub.atlassian.net/browse/MNTOR-1795)
 
