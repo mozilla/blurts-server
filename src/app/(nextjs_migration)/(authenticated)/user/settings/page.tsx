@@ -179,8 +179,8 @@ export default async function Settings() {
 
   return (
     <>
-      <Script src="/nextjs_migration/client/js/settings.js" />
-      <Script src="/nextjs_migration/client/js/dialog.js" />
+      <Script type="module" src="/nextjs_migration/client/js/settings.js" />
+      <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
       <main data-partial="settings">
         <div className="settings js-settings">
           <h2 className="settings-title">

@@ -39,7 +39,7 @@ export default async function PublicScan() {
 
   return (
     <div data-partial="allBreaches">
-      <Script src="/nextjs_migration/client/js/allBreaches.js" />
+      <Script type="module" src="/nextjs_migration/client/js/allBreaches.js" />
       <div id="breaches-loader" className="ab-bg breaches-loader"></div>
       <main>
         <div className="all-breaches-front-matter">
