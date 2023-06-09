@@ -5,19 +5,19 @@
 import Image from "next/image";
 import Script from "next/script";
 import { getServerSession } from "next-auth";
-import { Breach, CircleChartProps, UserBreaches } from "./breaches.d";
+import { CircleChartProps, UserBreaches } from "./breaches.d";
 
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
 import { getUserBreaches } from "../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../utils/fluent.js";
-import { getBreachLogo } from "../../../../../utils/breachLogo.js";
 import { authOptions } from "../../../../api/auth/[...nextauth]/route";
 
 import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import ImageBreachesNone from "../../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../../client/images/breaches-all-resolved.svg";
+import { BreachLogo } from "../../../../components/server/BreachLogo";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -118,38 +118,36 @@ export default async function UserBreaches() {
           dataClasses: longList.format(dataClassesTranslated),
         });
 
-        const logo = getBreachLogo(breach, breachLogos);
-
-        return `
-         <details class='breach-row' data-status="${status}" data-email="${
-          account.email
-        }" data-classes="${dataClassesTranslated}" ${isHidden ? "hidden" : ""}>
-           <summary>
-             <span class='breach-company'>${logo} ${breach.Title}</span>
-             <span>${shortList.format(dataClassesTranslated)}</span>
-             <span>
-               <span class='resolution-badge is-resolved'>${l10n.getString(
-                 "column-status-badge-resolved"
-               )}</span>
-               <span class='resolution-badge is-active'>${l10n.getString(
-                 "column-status-badge-active"
-               )}</span>
-             </span>
-             <span>${shortDate.format(addedDate)}</span>
-           </summary>
-           <article>
-             <p>${description}</p>
-             <p><strong>${l10n.getString(
-               "breaches-resolve-heading"
-             )}</strong></p>
-             <ol class='resolve-list'>${createResolveSteps(breach)}</ol>
-           </article>
-         </details>
-         `;
+        return (
+          <details key={breach.Name + account.email} className='breach-row' data-status={status} data-email={account.email} data-classes={dataClassesTranslated} hidden={isHidden}>
+            <summary>
+              <span className='breach-company'><BreachLogo breach={breach} logos={breachLogos} /> {breach.Title}</span>
+              <span>{shortList.format(dataClassesTranslated)}</span>
+              <span>
+                <span className='resolution-badge is-resolved'>{l10n.getString(
+                  "column-status-badge-resolved"
+                )}</span>
+                <span className='resolution-badge is-active'>{l10n.getString(
+                  "column-status-badge-active"
+                )}</span>
+              </span>
+              <span>{shortDate.format(addedDate)}</span>
+            </summary>
+            <article>
+              <p>{description}</p>
+              <p><strong>{l10n.getString(
+                "breaches-resolve-heading"
+              )}</strong></p>
+              <ol className='resolve-list'
+                dangerouslySetInnerHTML={{ __html: createResolveSteps(breach) }}
+              />
+            </article>
+          </details>
+        );
       });
     });
 
-    return breachRowsHTML.join("");
+    return breachRowsHTML;
   }
 
   return (
@@ -234,11 +232,7 @@ export default async function UserBreaches() {
             <span></span>
             <span>{l10n.getString("column-detected")}</span>
           </header>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: createBreachRows(userBreachesData),
-            }}
-          />
+          <div>{createBreachRows(userBreachesData)}</div>
 
           <template
             className="no-breaches"
