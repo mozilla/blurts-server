@@ -18,8 +18,8 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
-      <Script src="/nextjs_migration/client/js/transitionObserver.js" />
-      <Script src="/nextjs_migration/client/js/landing.js" />
+      <Script type="module" src="/nextjs_migration/client/js/transitionObserver.js" />
+      <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className={styles.hero}>
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>

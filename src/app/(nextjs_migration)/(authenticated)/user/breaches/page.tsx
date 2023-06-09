@@ -154,10 +154,10 @@ export default async function UserBreaches() {
 
   return (
     <>
-      <Script src="/nextjs_migration/client/js/customSelect.js" />
-      <Script src="/nextjs_migration/client/js/circleChart.js" />
-      <Script src="/nextjs_migration/client/js/breaches.js" />
-      <Script src="/nextjs_migration/client/js/dialog.js" />
+      <Script type="module" src="/nextjs_migration/client/js/customSelect.js" />
+      <Script type="module" src="/nextjs_migration/client/js/circleChart.js" />
+      <Script type="module" src="/nextjs_migration/client/js/breaches.js" />
+      <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
       <main data-partial="breaches">
         <section>
           <header className="breaches-header">

@@ -28,7 +28,7 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
 
   return (
     <div className="user-menu-wrapper" tabIndex={-1}>
-      <Script src="/nextjs_migration/client/js/userMenu.js" />
+      <Script type="module" src="/nextjs_migration/client/js/userMenu.js" />
       <button
         aria-expanded="false"
         aria-haspopup="true"
