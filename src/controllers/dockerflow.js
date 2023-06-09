@@ -15,7 +15,8 @@
  if (!fs.existsSync(versionJsonPath)) { 
    const versionJson = {
      source: homepage,
-     version
+     version,
+     NODE_ENV: process.env.NODE_ENV,
    }
  
    fs.writeFileSync(versionJsonPath, JSON.stringify(versionJson, null, 2) + '\n')
