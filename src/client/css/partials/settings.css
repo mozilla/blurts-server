@@ -35,7 +35,7 @@
   gap: var(--padding-sm);
 }
 
-.settings-radio-input input[type='radio'] {
+.settings-radio-input input[type="radio"] {
   border-radius: 50%;
   border: 2px solid var(--purple-90);
   height: 1.2rem;
@@ -45,18 +45,18 @@
   -webkit-appearance: none;
 }
 
-.settings-radio-input input[type='radio']::before {
+.settings-radio-input input[type="radio"]::before {
   box-sizing: border-box;
   background: none;
   border: 2px solid white;
   border-radius: 50%;
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   width: 100%;
 }
 
-.settings-radio-input input[type='radio']:checked::before {
+.settings-radio-input input[type="radio"]:checked::before {
   background: var(--purple-90);
 }
 
@@ -126,7 +126,7 @@
 }
 
 .verification-required {
-  background-image: url('/images/icon-error.svg');
+  background-image: url('../../images/icon-error.svg');
   background-position: -0.2em 50%;
   background-repeat: no-repeat;
   color: var(--red-60);
@@ -143,7 +143,7 @@
 }
 
 .settings-add-email-button::before {
-  content: '＋ ';
+  content: "＋ ";
   font-weight: 600;
 }
 

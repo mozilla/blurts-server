@@ -1,27 +1,15 @@
 {
   "extends": [
-    "stylelint-config-standard"
+    "stylelint-config-recommended-scss"
+  ],
+  "plugins": [
+    "stylelint-scss"
   ],
   "rules": {
-    "media-feature-range-notation": null,
-    "alpha-value-notation": "number",
-    "import-notation": "string",
-    "no-descending-specificity": [
-      true,
+    "selector-class-pattern": [
+      "^[a-z][a-zA-Z0-9]+$",
       {
-        "severity": "warning",
-        "ignore": [
-          "selectors-within-list"
-        ]
-      }
-    ],
-    "property-no-vendor-prefix": null,
-    "selector-type-no-unknown": [
-      true,
-      {
-        "ignore": [
-          "custom-elements"
-        ]
+        "message": "Expected class selector to be camelCase"
       }
     ]
   }

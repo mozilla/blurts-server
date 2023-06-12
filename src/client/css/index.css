@@ -4,9 +4,9 @@
 
 /* Import global styles that apply to every page.
  * Partial-specific stylesheets are auto-loaded based on filename and should not be added here */
-@import './fonts.css';
-@import './variables.css';
-@import './global.css';
-@import './nav.css';
-@import './userMenu.css';
-@import './surveyBanner.css';
+@import "./fonts.css";
+@import "./variables.css";
+@import "./global.css";
+@import "./nav.css";
+@import "./userMenu.css";
+@import "./surveyBanner.css";

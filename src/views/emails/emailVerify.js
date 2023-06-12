@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getMessage } from '../../utils/fluent.js'
+import { getStringLookup } from '../../utils/fluent.js'
 
 const containerStyle = `
   background: #f9f9fa;
@@ -20,24 +20,32 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
-const verifyPartial = (data) => `
-  <tr>
-    <td style='${containerStyle}'>
-      <p>
-        ${getMessage('email-verify-simply-click')}
-      </p>
-      <a
-        href='${data.ctaHref}'
-        style='${ctaStyle}'
-      >
-        ${getMessage('verify-email-cta')}
-      </a>
-      <p>
-        <strong>
-          ${getMessage('email-link-expires')}
-        </strong>
-      </p>
-    </td>
-  </tr>
-`
+/**
+ * @param {{ ctaHref: string; }} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const verifyPartial = (data, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return `
+    <tr>
+      <td style='${containerStyle}'>
+        <p>
+          ${getMessage('email-verify-simply-click')}
+        </p>
+        <a
+          href='${data.ctaHref}'
+          style='${ctaStyle}'
+        >
+          ${getMessage('verify-email-cta')}
+        </a>
+        <p>
+          <strong>
+            ${getMessage('email-link-expires')}
+          </strong>
+        </p>
+      </td>
+    </tr>
+  `
+}
 export { verifyPartial }

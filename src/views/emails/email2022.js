@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import AppConstants from '../../appConstants.js'
-import { getMessage } from '../../utils/fluent.js'
+import { getStringLookup } from '../../utils/fluent.js'
 
 const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
-const links = (data) => ({
+const links = (/** @type {{ utmCampaign: string; }} */ data) => ({
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',
   legal: `https://www.mozilla.org/about/legal?utm_source=fx-monitor&utm_medium=email&utm_campaign=${data.utmCampaign}&utm_content=email-footer-link`,
@@ -65,48 +65,59 @@ const footerImageStyle = `
   margin: 24px auto 0;
 `
 
-const emailHeader = (data) => `
-  <tr class='logo'>
-    <td height='100'></td>
-  </tr>
-  <tr class='header'>
-    <td>
-      <table
-        border='0'
-        cellpadding='0'
-        cellspacing='0'
-        role='presentation'
-        style='${headerTableStyle}'
-      >
-        <tr>
-          <td>
-            <h1>
-              ${getMessage(data.heading)}
-            </h1>
-            ${data.subhead !== ''
-              ? `<p>${getMessage(data.subhead)}</p>`
-              : ''
-            }
-          </td>
-          <td
-            class='header-image'
-            style='${headerImageContainerStyle}'
-          >
-            <img
-              alt=''
-              height='331'
-              src='${images.header}'
-              style='${headerImageStyle}'
-              width='476'
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const emailHeader = (data, l10n) => {
+  const getMessage = getStringLookup(l10n);
+  return `
+    <tr class='logo'>
+      <td height='100'></td>
+    </tr>
+    <tr class='header'>
+      <td>
+        <table
+          border='0'
+          cellpadding='0'
+          cellspacing='0'
+          role='presentation'
+          style='${headerTableStyle}'
+        >
+          <tr>
+            <td>
+              <h1>
+                ${getMessage(data.heading)}
+              </h1>
+              ${data.subhead !== ''
+        ? `<p>${getMessage(data.subhead)}</p>`
+        : ''}
+            </td>
+            <td
+              class='header-image'
+              style='${headerImageContainerStyle}'
             >
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-`
+              <img
+                alt=''
+                height='331'
+                src='${images.header}'
+                style='${headerImageStyle}'
+                width='476'
+              >
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  `
+}
 
-function getUnsubscribeCopy (data) {
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+function getUnsubscribeCopy (data, l10n) {
+  const getMessage = getStringLookup(l10n);
   const unsubLink = `<a href='${data.unsubscribeUrl}'>${getMessage('email-unsub-link')}</a>`
   const faqLink = `<a href='${links(data).faq}'>${getMessage('frequently-asked-questions')}</a>`
 
@@ -116,18 +127,22 @@ function getUnsubscribeCopy (data) {
   })
 }
 
-const emailFooter = (data) => `
+/**
+ * @param {any} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const emailFooter = (data, l10n) => {
+  const getMessage = getStringLookup(l10n);
+  return `
   <tr class='footer'>
     <td style='${footerContainerStyle}'>
-      ${
-        data.unsubscribeUrl
-          ? `<p>${getUnsubscribeCopy(data)}</p>`
-          : ''
-      }
+      ${data.unsubscribeUrl
+      ? `<p>${getUnsubscribeCopy(data, l10n)}</p>`
+      : ''}
       <p>
         ${getMessage('email-2022-hibp-attribution', {
-          'hibp-link-attr': `href='${links(data).hibp}' rel='noopener'`
-        })}
+        'hibp-link-attr': `href='${links(data).hibp}' rel='noopener'`
+      })}
       </p>
       <img
         alt='${getMessage('mozilla')}'
@@ -150,6 +165,7 @@ const emailFooter = (data) => `
     </td>
   </tr>
 `
+}
 
 const getStyles = () => `
   <style>
@@ -250,7 +266,12 @@ const getStyles = () => `
   </style>
 `
 
-const getEmailContent = (data, partial) => {
+/**
+ * @param {any} data
+ * @param {(...args: any) => any} partial
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const getEmailContent = (data, partial, l10n) => {
   return `
     <table
       border='0'
@@ -263,19 +284,30 @@ const getEmailContent = (data, partial) => {
       ${emailHeader({
         heading: data.heading,
         subhead: data.subheading ?? ''
-      })}
-      ${partial(data)}
-      ${emailFooter(data)}
+      }, l10n)}
+      ${partial(data, l10n)}
+      ${emailFooter(data, l10n)}
     </table>
   `
 }
 
-const getPreviewTemplate = (data, partial) => `
+/**
+ * @param {any} data
+ * @param {(...args: any) => any} partial
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const getPreviewTemplate = (data, partial, l10n) => `
   ${getStyles()}
-  ${getEmailContent(data, partial)}
+  ${getEmailContent(data, partial, l10n)}
 `
 
-const getTemplate = (data, partial) => {
+/**
+ * @param {any} data
+ * @param {(...args: any) => any} partial
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const getTemplate = (data, partial, l10n) => {
+  const getMessage = getStringLookup(l10n);
   return `
     <!doctype html>
     <html>
@@ -291,7 +323,7 @@ const getTemplate = (data, partial) => {
       </head>
 
       <body class='email-body' style='${bodyStyle}'>
-        ${getEmailContent(data, partial)}
+        ${getEmailContent(data, partial, l10n)}
       </body>
     </html>
   `

@@ -21,7 +21,7 @@ import { loadBreachesIntoApp } from './utils/hibp.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 import { noSearchEngineIndex } from './middleware/noSearchEngineIndex.js'
-import { TooManyRequestsError } from './utils/error.js'
+import { RateLimitError } from './utils/error.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'

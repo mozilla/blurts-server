@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { breachCardPartial } from './emailBreachCard.js'
-import { getMessage } from '../../utils/fluent.js'
+import { getStringLookup } from '../../utils/fluent.js'
 
 const emailStyle = `
   color: black;
@@ -44,7 +44,12 @@ const ctaStyle = `
   padding: 12px 24px;
 `
 
-const signupReportEmailPartial = data => {
+/**
+ * @param {{ breachedEmail: any; breachLogos: any; emailBreachStats: any[]; unsafeBreachesForEmail: any[]; ctaHref: string; }} data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ */
+const signupReportEmailPartial = (data, l10n) => {
+  const getMessage = getStringLookup(l10n);
   const {
     breachedEmail,
     breachLogos,
@@ -90,8 +95,8 @@ const signupReportEmailPartial = data => {
         }
         ${
           unsafeBreachesForEmail?.length
-            ? unsafeBreachesForEmail.map(unsafeBreach => (
-                breachCardPartial(unsafeBreach, breachLogos)
+            ? unsafeBreachesForEmail.map((/** @type {any} */ unsafeBreach) => (
+                breachCardPartial(unsafeBreach, breachLogos, l10n)
               )).join('')
             : ''
         }

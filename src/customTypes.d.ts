@@ -2,6 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { Subscriber } from "./app/(nextjs_migration)/(authenticated)/user/breaches/breaches";
+
 interface HTMLElement {
   // We access this.shadowRoot in custom elements often, and we've almost always
   // already called this.attachShadow({ mode: 'open' }). So, the default type
@@ -13,18 +15,22 @@ interface HTMLElement {
 
 // This lint rule does not apply to type definitions:
 // eslint-disable-next-line no-unused-vars
-type ViewPartial<ViewPartialParams = object> = (data: ViewPartialParams & { partial: { name: string } }) => string;
+type ViewPartial<ViewPartialParams = object> = (
+  data: ViewPartialParams & { partial: { name: string } }
+) => string;
 type GuestViewPartialData<ViewPartialParams = object> = {
-    partial: ViewPartial<ViewPartialParams>;
-    nonce: string;
-    meta?: {
-      title?: string;
-      socialTitle?: string;
-      socialDescription?: string;
-    };
-  } & ViewPartialParams;
+  partial: ViewPartial<ViewPartialParams>;
+  nonce: string;
+  meta?: {
+    title?: string;
+    socialTitle?: string;
+    socialDescription?: string;
+  };
+} & ViewPartialParams;
 type MainViewPartialData<ViewPartialParams = object> = {
-  fxaProfile: NonNullable<import('express').Request['user']>['fxa_profile_json'];
+  fxaProfile: NonNullable<
+    import("express").Request["user"]
+  >["fxa_profile_json"];
 } & GuestViewPartialData<ViewPartialParams>;
 
 /**
@@ -42,29 +48,35 @@ type FxaProfile = {
   subscriptions?: string[];
   metricsEnabled?: boolean;
   sub?: string;
-}
+};
 declare namespace Express {
   export interface Request {
-    user?: (import('./db/tables/subscribers_types').SubscriberRow) & {
+    user?: Subscriber & {
       // TODO: Finish the type definition of the user object
       fxa_profile_json?: FxaProfile;
     };
   }
 }
 
-declare module 'mozlog' {
-  type LogFunction = (_op: string, _details?: object) => void
+declare module "mozlog" {
+  type LogFunction = (_op: string, _details?: object | string) => void;
 
   type Options = {
     app: string;
     level: string;
     fmt: string;
   };
-  const defaultFunction: (_options: Options) => (_scope: string) => ({ debug: LogFunction, info: LogFunction, warn: LogFunction, error: LogFunction })
+  const defaultFunction: (_options: Options) => (_scope: string) => {
+    debug: LogFunction;
+    info: LogFunction;
+    warn: LogFunction;
+    error: LogFunction;
+  };
 
-  export default defaultFunction
+  export default defaultFunction;
 }
 
 interface Window {
-  gtag: any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  gtag: any;
 }

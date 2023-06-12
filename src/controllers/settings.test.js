@@ -20,8 +20,9 @@ const mockRequest = { fluentFormat: td.func() }
 
 test.beforeEach(async () => {
   await td.replaceEsm('../utils/fluent.js')
-  const { getMessage } = await import('../utils/fluent.js')
+  const { getMessage, getStringLookup } = await import('../utils/fluent.js')
   td.when(getMessage(td.matchers.anything())).thenReturn('test')
+  td.when(getStringLookup(td.matchers.anything())).thenReturn(getMessage)
 })
 
 test.afterEach(() => {
@@ -89,8 +90,9 @@ test.serial('user add POST with upperCaseAddress adds email_address record with 
   const resp = createResponse()
 
   await td.replaceEsm('../utils/fluent.js')
-  const { getMessage } = await import('../utils/fluent.js')
+  const { getMessage, getStringLookup } = await import('../utils/fluent.js')
   td.when(getMessage(td.matchers.anything())).thenReturn('test')
+  td.when(getStringLookup(td.matchers.anything())).thenReturn(getMessage)
 
   await td.replaceEsm('../db/tables/emailAddresses.js')
   const { addSubscriberUnverifiedEmailHash, resetUnverifiedEmailAddress } = await import('../db/tables/emailAddresses.js')

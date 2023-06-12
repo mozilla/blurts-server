@@ -11,6 +11,9 @@ const knex = Knex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
 const log = mozlog('DB.subscribers')
 
+/**
+ * @param {string} token
+ */
 async function getSubscriberByToken (token) {
   const res = await knex('subscribers')
     .where('primary_verification_token', '=', token)
@@ -18,6 +21,10 @@ async function getSubscriberByToken (token) {
   return res[0]
 }
 
+/**
+ * @param {string} token
+ * @param {string} emailSha1
+ */
 async function getSubscriberByTokenAndHash (token, emailSha1) {
   const res = await knex.table('subscribers')
     .first()
@@ -28,10 +35,16 @@ async function getSubscriberByTokenAndHash (token, emailSha1) {
   return res
 }
 
+/**
+ * @param {string[]} hashes
+ */
 async function getSubscribersByHashes (hashes) {
   return await knex('subscribers').whereIn('primary_sha1', hashes).andWhere('primary_verified', '=', true)
 }
 
+/**
+ * @param {number} id
+ */
 async function getSubscriberById (id) {
   const [subscriber] = await knex('subscribers').where({
     id
@@ -40,6 +53,9 @@ async function getSubscriberById (id) {
   return subscriberAndEmails
 }
 
+/**
+ * @param {string} uid
+ */
 async function getSubscriberByFxaUid (uid) {
   const [subscriber] = await knex('subscribers').where({
     fxa_uid: uid
@@ -48,6 +64,9 @@ async function getSubscriberByFxaUid (uid) {
   return subscriberAndEmails
 }
 
+/**
+ * @param {string} email
+ */
 async function getSubscriberByEmail (email) {
   const [subscriber] = await knex('subscribers').where({
     primary_email: email,
@@ -59,9 +78,9 @@ async function getSubscriberByEmail (email) {
 /**
  * Update primary email for subscriber
  *
- * @param {object} subscriber
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {string} updatedEmail primary email to be updated to
- * @returns {object} updated subscriber
+ * @returns {Promise<import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber>} updated subscriber
  */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
   const trx = await knex.transaction()
@@ -100,11 +119,11 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
 /**
  * Update fxa_refresh_token and fxa_profile_json for subscriber
  *
- * @param {object} subscriber knex object in DB
- * @param {string} fxaAccessToken from Firefox Account Oauth
- * @param {string} fxaRefreshToken from Firefox Account Oauth
- * @param {string} fxaProfileData from Firefox Account
- * @returns {object} updated subscriber knex object in DB
+ * @param {any} subscriber knex object in DB
+ * @param {string | null} fxaAccessToken from Firefox Account Oauth
+ * @param {string | null} fxaRefreshToken from Firefox Account Oauth
+ * @param {any} fxaProfileData from Firefox Account
+ * @returns {Promise<any>} updated subscriber knex object in DB
  */
 async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
   const fxaUID = JSON.parse(fxaProfileData).uid
@@ -127,9 +146,9 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 /**
  * Update fxa_profile_json for subscriber
  *
- * @param {object} subscriber knex object in DB
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
  * @param {string} fxaProfileData from Firefox Account
- * @returns {object} updated subscriber knex object in DB
+ * @returns {Promise<object>} updated subscriber knex object in DB
  */
 async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
@@ -142,8 +161,8 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
 /**
  * Remove fxa tokens and profile data for subscriber
  *
- * @param {object} subscriber knex object in DB
- * @returns {object} updated subscriber knex object in DB
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
+ * @returns {Promise<object>} updated subscriber knex object in DB
  */
 async function removeFxAData (subscriber) {
   log.debug('removeFxAData', subscriber)
@@ -166,7 +185,7 @@ async function removeFxAData (subscriber) {
 }
 
 /**
- * @param {import('./subscribers_types').SubscriberRow} subscriber
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {number} onerepProfileId
  */
 async function setOnerepProfileId (subscriber, onerepProfileId) {
@@ -177,6 +196,9 @@ async function setOnerepProfileId (subscriber, onerepProfileId) {
     })
 }
 
+/**
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ */
 async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
   const nowDateTime = new Date()
@@ -189,6 +211,10 @@ async function setBreachesLastShownNow (subscriber) {
   return getSubscriberByEmail(subscriber.primary_email)
 }
 
+/**
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ * @param {boolean} allEmailsToPrimary
+ */
 async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   const updated = await knex('subscribers')
     .where('id', subscriber.id)
@@ -222,8 +248,8 @@ async function setBreachesResolved (options) {
  * This column is meant to replace "breaches_resolved" column, which was used
  * for v1.
  *
- * @param {object} user user object that contains the id of a user
- * @param {object} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} user user object that contains the id of a user
+ * @param {any} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
 async function setBreachResolution (user, updatedBreachesResolution) {
@@ -235,6 +261,9 @@ async function setBreachResolution (user, updatedBreachesResolution) {
   return getSubscriberByEmail(user.primary_email)
 }
 
+/**
+ * @param {{ user: import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber; updatedWaitlistsJoined: any; }} options
+ */
 async function setWaitlistsJoined (options) {
   const { user, updatedWaitlistsJoined } = options
   await knex('subscribers')
@@ -245,11 +274,18 @@ async function setWaitlistsJoined (options) {
   return getSubscriberByEmail(user.primary_email)
 }
 
+/**
+ * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
+ */
 async function removeSubscriber (subscriber) {
   await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
   await knex('subscribers').where({ id: subscriber.id }).del()
 }
 
+/**
+ * @param {string} token
+ * @param {string} emailSha1
+ */
 async function removeSubscriberByToken (token, emailSha1) {
   const subscriber = await getSubscriberByTokenAndHash(token, emailSha1)
   if (!subscriber) {
@@ -265,6 +301,7 @@ async function removeSubscriberByToken (token, emailSha1) {
 }
 
 async function deleteUnverifiedSubscribers () {
+  // @ts-ignore DELETE_UNVERIFIED_SUBSCRIBERS_TIMER should not be undefined
   const expiredDateTime = new Date(Date.now() - DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000)
   const expiredTimeStamp = expiredDateTime.toISOString()
   const numDeleted = await knex('subscribers')
@@ -277,7 +314,7 @@ async function deleteUnverifiedSubscribers () {
  * Delete subscriber when a FxA user id is provided
  * Also deletes all the additional email addresses associated with the account
  *
- * @param {object} sub subscriber object
+ * @param {any} sub subscriber object
  */
 async function deleteSubscriber (sub) {
   const trx = await knex.transaction()
@@ -295,6 +332,10 @@ async function deleteSubscriber (sub) {
   //  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
 }
 
+/**
+ * @param {number} id
+ * @param {string} email
+ */
 async function deleteResolutionsWithEmail (id, email) {
   const [subscriber] = await knex('subscribers').where({
     id
@@ -309,6 +350,10 @@ async function deleteResolutionsWithEmail (id, email) {
   console.info(`No resolution with ${email} found, skip`)
 }
 
+/**
+ * @param {number} id
+ * @param {any} stats
+ */
 async function updateBreachStats (id, stats) {
   await knex('subscribers')
     .where('id', id)
@@ -317,6 +362,9 @@ async function updateBreachStats (id, stats) {
     })
 }
 
+/**
+ * @param {string} email
+ */
 async function updateMonthlyEmailTimestamp (email) {
   const res = await knex('subscribers').update({ monthly_email_at: 'now' })
     .where('primary_email', email)
@@ -354,12 +402,17 @@ async function getSubscribersWithUnresolvedBreaches (limit = 0) {
 
 async function getSubscribersWithUnresolvedBreachesCount () {
   const query = getSubscribersWithUnresolvedBreachesQuery()
+  // @ts-ignore This will return a string
   const count = parseInt((await query.count({ count: '*' }))[0].count)
   return count
 }
 
-/** Private */
 
+/**
+ * Private
+ *
+ * @param {any} subscriber
+ */
 async function joinEmailAddressesToSubscriber (subscriber) {
   if (subscriber) {
     const emailAddressRecords = await knex('email_addresses').where({

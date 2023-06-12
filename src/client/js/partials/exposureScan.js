@@ -58,7 +58,7 @@ async function init () {
 
 /**
  * @param {import("../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} response
- * @param { sanitizedEmail: string } params
+ * @param {{ sanitizedEmail: string }} params
  */
 function showOverflowingBreachResults (response, params) {
   const heading = document.createElement('h1')
@@ -78,7 +78,7 @@ function showOverflowingBreachResults (response, params) {
 
 /**
  * @param {import("../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} response
- * @param { sanitizedEmail: string } params
+ * @param {{ sanitizedEmail: string }} params
  */
 function showSomeBreachResults (response, params) {
   const heading = document.createElement('h1')
@@ -97,7 +97,7 @@ function showSomeBreachResults (response, params) {
 
 /**
  * @param {import("../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} response
- * @param { sanitizedEmail: string } params
+ * @param {{ sanitizedEmail: string }} params
  */
 function showNoBreachesResult (response, params) {
   const heading = document.createElement('h1')

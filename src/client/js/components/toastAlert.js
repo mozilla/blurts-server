@@ -53,7 +53,7 @@ const html = `
   }
 
   :host([hidden]) {
-    display: none 
+    display: none;
   }
 
   output{
@@ -126,6 +126,7 @@ customElements.define('toast-alert', class extends HTMLElement {
   constructor () {
     super()
     this.attachShadow({ mode: 'open' })
+    // @ts-ignore We know this.shadowRoot is available
     this.shadowRoot.innerHTML = html
   }
 
@@ -173,6 +174,7 @@ customElements.define('toast-alert', class extends HTMLElement {
       this.type = ToastTypes.Error
     }
 
+    // @ts-ignore We know this.shadowRoot is available
     this.shadowRoot.addEventListener('click', this)
     this.addEventListener('animationend', this)
   }
@@ -182,16 +184,19 @@ customElements.define('toast-alert', class extends HTMLElement {
     switch (true) {
       case e.target instanceof HTMLElement && e.target.matches('button'):
         this.remove()
+        // @ts-ignore We set window.gtag elsewhere
         window.gtag('event', 'toast_alert', { action: 'dismiss' })
         break
       case e instanceof AnimationEvent && e.animationName === 'fade-out':
         this.remove()
+        // @ts-ignore We set window.gtag elsewhere
         window.gtag('event', 'toast_alert', { action: 'faded' })
         break
     }
   }
 
   disconnectedCallback () {
+    // @ts-ignore We know this.shadowRoot is available
     this.shadowRoot.removeEventListener('click', this)
     this.removeEventListener('animationend', this)
   }

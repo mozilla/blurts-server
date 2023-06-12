@@ -7,13 +7,14 @@ import { URL } from 'url'
 
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
-import { getMessage } from '../utils/fluent.js'
-import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
 import {
   BadRequestError,
   MethodNotAllowedError,
   UnauthorizedError
 } from '../utils/error.js'
+import { getMessage, getStringLookup } from '../utils/fluent.js'
+import { updateMonthlyEmailOptout } from '../db/tables/subscribers.js'
+import SMTPTransport from 'nodemailer/lib/smtp-transport/index.js'
 
 const log = mozlog('email-utils')
 
@@ -21,6 +22,9 @@ const { SERVER_URL } = AppConstants
 
 // The SMTP transport object. This is initialized to a nodemailer transport
 // object while reading SMTP credentials, or to a dummy function in debug mode.
+/**
+ * @type {import("nodemailer").Transporter<import("nodemailer/lib/smtp-transport/index.js").SentMessageInfo>}
+ */
 let gTransporter
 
 const EmailTemplateType = {
@@ -49,7 +53,7 @@ async function initEmail (smtpUrl = AppConstants.SMTP_URL) {
  * @param {string} recipient
  * @param {string} subject
  * @param {string} html
- * @returns {Promise} <Promise>
+ * @returns {Promise<SMTPTransport.SentMessageInfo>} <Promise>
  */
 function sendEmail (recipient, subject, html) {
   if (!gTransporter) {
@@ -70,10 +74,12 @@ function sendEmail (recipient, subject, html) {
 
     gTransporter.sendMail(mailOptions, (error, info) => {
       if (error) {
+        // @ts-ignore Added typing later, but it disagrees with actual use:
         reject(new Error(error))
         return
       }
       if (gTransporter.transporter.name === 'JSONTransport') {
+        // @ts-ignore Added typing later, but it disagrees with actual use:
         log.info('JSONTransport', { message: info.message.toString() })
       }
       resolve(info)
@@ -81,12 +87,17 @@ function sendEmail (recipient, subject, html) {
   })
 }
 
+/**
+ * @param {URL} url
+ * @param {Record<string, any>} urlParams
+ */
 function appendUrlParams (url, urlParams) {
   const defaultUtmParams = {
     utm_source: 'fx-monitor',
     utm_medium: 'email'
   }
 
+  /** @type {Record<string, any>} */
   const allUtmParams = { ...defaultUtmParams, ...urlParams }
 
   for (const param in allUtmParams) {
@@ -100,6 +111,11 @@ function appendUrlParams (url, urlParams) {
   return url
 }
 
+/**
+ * @param {string} emailType
+ * @param {string} content
+ * @param subscriberId
+ */
 function getEmailCtaHref (emailType, content, subscriberId = null) {
   const dashboardUrl = `${SERVER_URL}/user/breaches`
   const url = new URL(dashboardUrl)
@@ -112,6 +128,9 @@ function getEmailCtaHref (emailType, content, subscriberId = null) {
   return appendUrlParams(url, utmParams)
 }
 
+/**
+ * @param {{ verification_token: any; }} subscriber
+ */
 function getVerificationUrl (subscriber) {
   if (!subscriber.verification_token) {
     throw new BadRequestError('subscriber has no verification_token')
@@ -127,32 +146,35 @@ function getVerificationUrl (subscriber) {
   return appendUrlParams(url, verificationUtmParams)
 }
 
-function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
-  const path = isMonthlyEmail
+/**
+ * @param {{ isMonthlyEmail: any; subscriber: any; }} args
+ */
+function getUnsubscribeCtaHref (args) {
+  const path = args.isMonthlyEmail
     ? `${SERVER_URL}/user/unsubscribe-monthly`
     : `${SERVER_URL}/user/unsubscribe`
 
-  if (!subscriber) {
+  if (!args.subscriber) {
     return path
   }
 
-  if (isMonthlyEmail && !subscriber.primary_verification_token) {
+  if (args.isMonthlyEmail && !args.subscriber.primary_verification_token) {
     throw new BadRequestError('subscriber has no primary verification_token')
   }
 
   const url = new URL(path)
-  const token = Object.hasOwn(subscriber, 'verification_token')
-    ? subscriber.verification_token
-    : subscriber.primary_verification_token
-  const hash = Object.hasOwn(subscriber, 'sha1')
-    ? subscriber.sha1
-    : subscriber.primary_sha1
+  const token = Object.hasOwn(args.subscriber, 'verification_token')
+    ? args.subscriber.verification_token
+    : args.subscriber.primary_verification_token
+  const hash = Object.hasOwn(args.subscriber, 'sha1')
+    ? args.subscriber.sha1
+    : args.subscriber.primary_sha1
 
   // Mandatory params for unsubscribing a user
   const unsubscribeUtmParams = {
     hash,
     token,
-    utm_campaign: isMonthlyEmail
+    utm_campaign: args.isMonthlyEmail
       ? 'monthly-unresolved'
       : 'unsubscribe',
     utm_content: 'unsubscribe-cta'
@@ -164,7 +186,7 @@ function getUnsubscribeCtaHref ({ subscriber, isMonthlyEmail }) {
 /**
  * Check if params contain all mandatory params.
  *
- * @param {object} params Params that we like to have checked
+ * @param {Record<string, string>} params Params that we like to have checked
  * @param {string} mandatoryParams A comma separated list of mandatory params
  * @returns {boolean} True if all mandatory params are present in params
  */
@@ -184,7 +206,7 @@ function hasMandatoryParams (params, mandatoryParams) {
  *
  * Unsubscribes a user from receiving emails other than the monthly reports.
  *
- * @param {object} req Request should contain a `token` and `hash` query param.
+ * @param {any} req Request should contain a `token` and `hash` query param.
  */
 async function unsubscribeFromEmails (req) {
   const urlQuery = req.query
@@ -200,7 +222,7 @@ async function unsubscribeFromEmails (req) {
 /**
  * Unsubscribe the user from receiving the monthly unresolved breach reports.
  *
- * @param {object} req Request that should contain a `token` query param
+ * @param {any} req Request that should contain a `token` query param
  */
 async function unsubscribeFromMonthlyReport (req) {
   const urlQuery = req.query
@@ -222,88 +244,105 @@ const breachDummyLogo = new Map([
  * Dummy data for populating the breach notification email preview.
  *
  * @param {string} recipient
- * @returns {object} Breach dummy data
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
+ * @returns Breach dummy data
  */
-const getNotificationDummyData = (recipient) => ({
-  breachData: {
-    Id: 1,
-    Name: 'Adobe',
-    Title: 'Adobe',
-    Domain: 'adobe.com',
-    BreachDate: '2013-01-01T22:00:00.000Z',
-    AddedDate: '2013-01-02T00:00:00.000Z',
-    ModifiedDate: '2023-01-01T00:00:00.000Z',
-    PwnCount: 123,
-    Description: 'Example description',
-    DataClasses: [
-      'email-addresses',
-      'password-hints',
-      'passwords',
-      'usernames'
-    ],
-    IsVerified: true,
-    IsFabricated: false,
-    IsSensitive: false,
-    IsRetired: false,
-    IsSpamList: false,
-    IsMalware: false
-  },
-  breachedEmail: recipient,
-  breachLogos: breachDummyLogo,
-  ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
-  heading: getMessage('email-spotted-new-breach'),
-  recipientEmail: recipient,
-  subscriberId: 123,
-  supportedLocales: ['en']
-})
+const getNotificationDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return ({
+    breachData: {
+      Id: 1,
+      Name: 'Adobe',
+      Title: 'Adobe',
+      Domain: 'adobe.com',
+      BreachDate: '2013-01-01T22:00:00.000Z',
+      AddedDate: '2013-01-02T00:00:00.000Z',
+      ModifiedDate: '2023-01-01T00:00:00.000Z',
+      PwnCount: 123,
+      Description: 'Example description',
+      DataClasses: [
+        'email-addresses',
+        'password-hints',
+        'passwords',
+        'usernames'
+      ],
+      IsVerified: true,
+      IsFabricated: false,
+      IsSensitive: false,
+      IsRetired: false,
+      IsSpamList: false,
+      IsMalware: false
+    },
+    breachedEmail: recipient,
+    breachLogos: breachDummyLogo,
+    ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
+    heading: getMessage('email-spotted-new-breach'),
+    recipientEmail: recipient,
+    subscriberId: 123,
+    supportedLocales: ['en']
+  })
+}
 
 /**
  * Dummy data for populating the email verification preview
  *
  * @param {string} recipient
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
  * @returns {object} Email verification dummy data
  */
-const getVerificationDummyData = (recipient) => ({
-  ctaHref: SERVER_URL,
-  heading: getMessage('email-verify-heading'),
-  recipientEmail: recipient,
-  subheading: getMessage('email-verify-subhead')
-})
+const getVerificationDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return ({
+    ctaHref: SERVER_URL,
+    heading: getMessage('email-verify-heading'),
+    recipientEmail: recipient,
+    subheading: getMessage('email-verify-subhead')
+  })
+}
 
 /**
  * Dummy data for populating the monthly unresolved breaches email
  *
  * @param {string} recipient
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
  * @returns {object} Monthly unresolved breaches dummy data
  */
-const getMonthlyDummyData = (recipient) => ({
-  breachedEmail: 'breached@email.com',
-  breachLogos: breachDummyLogo,
-  ctaHref: `${SERVER_URL}/user/breaches`,
-  heading: getMessage('email-unresolved-heading'),
-  monitoredEmails: {
-    count: 2
-  },
-  numBreaches: {
-    count: 3,
-    numResolved: 2,
-    numUnresolved: 1
-  },
-  recipientEmail: recipient,
-  subheading: getMessage('email-unresolved-subhead'),
-  unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
-})
+const getMonthlyDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
+
+  return ({
+    breachedEmail: 'breached@email.com',
+    breachLogos: breachDummyLogo,
+    ctaHref: `${SERVER_URL}/user/breaches`,
+    heading: getMessage('email-unresolved-heading'),
+    monitoredEmails: {
+      count: 2
+    },
+    numBreaches: {
+      count: 3,
+      numResolved: 2,
+      numUnresolved: 1
+    },
+    recipientEmail: recipient,
+    subheading: getMessage('email-unresolved-subhead'),
+    unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
+  })
+}
 
 /**
  * Dummy data for populating the signup report email
  *
  * @param {string} recipient
+ * @param {import("@fluent/react").ReactLocalization} [l10n]
  * @returns {object} Signup report email dummy data
  */
 
-const getSignupReportDummyData = (recipient) => {
+const getSignupReportDummyData = (recipient, l10n) => {
+  const getMessage = getStringLookup(l10n);
   const unsafeBreachesForEmail = [
-    getNotificationDummyData(recipient).breachData
+    getNotificationDummyData(recipient, l10n).breachData
   ]
   const breachesCount = unsafeBreachesForEmail.length
   const numPasswordsExposed = 1

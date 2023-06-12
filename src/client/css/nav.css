@@ -12,7 +12,13 @@ nav.site-nav {
   padding: var(--padding-lg) var(--padding-md) var(--footer-h);
   background: white;
   border-right: 1px solid var(--gray-10);
-  border-image: linear-gradient(#0000 3%, var(--gray-10) 5%, var(--gray-10) 95%, #0000 97%) 1;
+  border-image: linear-gradient(
+      #0000 3%,
+      var(--gray-10) 5%,
+      var(--gray-10) 95%,
+      #0000 97%
+    )
+    1;
   z-index: 1;
 }
 
@@ -101,6 +107,10 @@ nav .callouts a {
 }
 
 @keyframes nav-indicator {
-  from { box-shadow: inset 0 0 0 var(--purple-70); }
-  to { box-shadow: inset 5px 0 0 var(--purple-70); }
+  from {
+    box-shadow: inset 0 0 0 var(--purple-70);
+  }
+  to {
+    box-shadow: inset 5px 0 0 var(--purple-70);
+  }
 }
