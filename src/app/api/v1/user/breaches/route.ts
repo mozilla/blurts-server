@@ -4,6 +4,7 @@
 
 import {
   BreachResolutionRequest,
+  Subscriber,
 } from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
 import { NextRequest, NextResponse } from "next/server";
@@ -22,7 +23,7 @@ export async function GET(req: NextRequest) {
   if (typeof token?.email === "string") {
     // Signed in
     try {
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber: Subscriber = await getSubscriberByEmail(token.email);
       const allBreaches = await getBreaches();
       const breaches = await getAllEmailsAndBreaches(subscriber, allBreaches);
       const successResponse = {
@@ -44,7 +45,7 @@ export async function PUT(req: NextRequest) {
   const token = await getToken({ req });
   if (typeof token?.email === "string") {
     try {
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber: Subscriber = await getSubscriberByEmail(token.email);
       const allBreaches = await getBreaches();
       const j = await req.json();
       const {
@@ -58,7 +59,7 @@ export async function PUT(req: NextRequest) {
           ? subscriber.primary_email
           : false;
       const affectedEmailInEmailAddresses =
-        subscriber.email_addresses.find((ea: { email: string; }) => ea.email === affectedEmail)
+        subscriber.email_addresses.find((ea) => ea.email === affectedEmail)
           ?.email || false;
 
       // check if current user's emails array contain affectedEmail

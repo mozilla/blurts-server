@@ -1,3 +1,4 @@
+# TODO NEXT.JS MIGRATION:
 # These are still used, but ignored for Prettier to avoid a big-bang reformatting.
 # We can do such a reformatting later, or format them if/when we convert them to TypeScript:
 src/utils/**/*.js
@@ -6,6 +7,7 @@ src/e2e/**/*.js
 src/e2e/**/*.json
 src/db/**/*.js
 
+# TODO NEXT.JS MIGRATION:
 # These files are remnants of our Express app:
 src/app.js
 src/appConstants.js
