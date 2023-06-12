@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
   } catch (e) {
     console.error('fxaRpEvents', e)
     captureException(e)
-    return NextResponse.json({ success: false, message: e.message }, { status: 401 })
+    return NextResponse.json({ success: false }, { status: 401 })
   }
 
   if (!decodedJWT?.events) {
