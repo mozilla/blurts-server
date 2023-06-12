@@ -41,6 +41,8 @@ rec-email-mask-subhead = Usa un masca email
 rec-email-cta = Prova { -brand-relay }
 rec-email = Divulgar tu adresse de e-mail real rende plus facile pro piratas informatic o traciatores trovar tu contrasignos o attaccar te in linea. Un servicio como { -brand-relay } cela tu adresse de e-mail real e reexpedi le messages a tu cassa de entrata real.
 # Recommendation subhead
+rec-ip-subhead-2 = Usa un VPN pro mascar tu adresse IP
+# Recommendation subhead
 rec-moz-vpn-cta = Prova { -brand-mozilla-vpn }
 rec-moz-vpn-update-2 =
     Tu adresse de Protocollo Internet (IP) identifica tu position geographic 

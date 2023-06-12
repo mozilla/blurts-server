@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Cambia tu contraseña
 # Link title
 rec-pw-1-cta = Cambiar tu contraseña para este sitio
-rec-pw-1 =
+rec-pw-1-2 =
     Haz esta contraseña única y diferente de cualquier otra que uses. 
     Una buena estrategia es combinar dos o más palabras sin relación 
-    entre ellas para crear una frase.
+    entre ellas para crear una frase e incluir números y símbolos.
 # Recommendation subhead
 rec-pw-2-subhead = Actualiza otros inicios de sesión con la misma contraseña
 # Link title
@@ -57,23 +57,13 @@ rec-email =
     encuentren tus contraseñas o te encuentren en línea. Un servicio como { -brand-relay }
     oculta tu dirección de correo electrónico real mientras reenvía correos a tu bandeja de entrada real.
 # Recommendation subhead
-rec-ip-subhead = Usa un servicio que oculte tu IP
-# Link title
-rec-ip-us-cta = Prueba { -brand-fpn }
-rec-ip-us =
-    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
-    y tu proveedor de servicios de internet. Un servicio como { -brand-fpn } 
-    enmascara tu dirección IP para ocultar tu ubicación.
-rec-ip-non-us =
-    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
-    y tu proveedor de servicios de internet. Con una red privada virtual (VPN), puedes ocultar tu ubicación 
-    y enmascarar tu dirección IP.
+rec-ip-subhead-2 = Usa una VPN para enmascarar tu dirección IP
 # Recommendation subhead
 rec-moz-vpn-cta = Prueba { -brand-mozilla-vpn }
-rec-moz-vpn-update =
-    Tu dirección de protocolo de Internet (dirección IP) puede revelar tu ubicación
+rec-moz-vpn-update-2 =
+    Tu dirección de protocolo de Internet (dirección IP) señala tu ubicación 
     y tu proveedor de servicios de internet. Un servicio como { -brand-mozilla-vpn }
-    oculta la dirección IP y ubicación de tu dispositivo.
+    enmascara tu dirección IP para ocultar tu ubicación.
 rec-hist-pw-subhead = Evita reutilizar contraseñas
 # Link title
 rec-hist-pw-cta-fx = Ver inicios de sesión en { -brand-name }

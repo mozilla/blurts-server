@@ -12,30 +12,35 @@
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
     { $case ->
-       *[nom]
-            { $capitalization ->
-               *[upper] Обліковий запис Firefox
-                [lower] обліковий запис Firefox
-            }
         [gen]
             { $capitalization ->
-               *[upper] Облікового запису Firefox
                 [lower] облікового запису Firefox
+               *[upper] Облікового запису Firefox
             }
         [dat]
             { $capitalization ->
-               *[upper] Обліковому записі Firefox
-                [lower] обліковому записі Firefox
+                [lower] обліковому запису Firefox
+               *[upper] Обліковому запису Firefox
             }
         [acc]
             { $capitalization ->
-               *[upper] Обліковий запис Firefox
                 [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
             }
         [abl]
             { $capitalization ->
-               *[upper] Обліковим записом Firefox
                 [lower] обліковим записом Firefox
+               *[upper] Обліковим записом Firefox
+            }
+        [loc]
+            { $capitalization ->
+                [lower] обліковому записі Firefox
+               *[upper] Обліковому записі Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
             }
     }
 -brand-pocket = Pocket
@@ -751,6 +756,8 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Преміум
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -760,11 +767,43 @@ ad-unit-6-before-you-complete = Перш ніж здійснити наступ�
 
 # “account” can be localized, “Firefox” must be treated as a brand,
 # and kept in English.
--brand-fx-account = Обліковий запис Firefox
+-brand-fx-account =
+    { $case ->
+        [gen]
+            { $capitalization ->
+                [lower] облікового запису Firefox
+               *[upper] Облікового запису Firefox
+            }
+        [dat]
+            { $capitalization ->
+                [lower] обліковому запису Firefox
+               *[upper] Обліковому запису Firefox
+            }
+        [acc]
+            { $capitalization ->
+                [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
+            }
+        [abl]
+            { $capitalization ->
+                [lower] обліковим записом Firefox
+               *[upper] Обліковим записом Firefox
+            }
+        [loc]
+            { $capitalization ->
+                [lower] обліковому записі Firefox
+               *[upper] Обліковому записі Firefox
+            }
+       *[nom]
+            { $capitalization ->
+                [lower] обліковий запис Firefox
+               *[upper] Обліковий запис Firefox
+            }
+    }
 
 ## Search Engine Optimization
 
-meta-desc = Дізнайтеся, чи ваші дані не було викрито за допомогою { -brand-fx-monitor }. Підпишіться на отримання попереджень про майбутні порушення та отримання порад щодо безпеки ваших облікових записів.
+meta-desc-2 = Дізнайтеся за допомогою { -brand-fx-monitor }, чи були скомпрометовані ваші дані. Ми допоможемо вам зрозуміти, що робити далі, і постійно відстежуватимемо нові витоки.
 
 ## Header
 
@@ -786,9 +825,12 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 menu-button-title = Меню користувача
 menu-button-alt = Відкрити меню користувача
 menu-list-accessible-label = Меню облікового запису
-menu-item-fxa = Керувати своїм { -brand-fx-account }
+menu-item-fxa = Керувати своїм { -brand-fx-account(case: "abl", capitalization: "lower") }
+menu-item-fxa-alt = Відкрити сторінку { -brand-fx-account(case: "gen", capitalization: "lower") }
 menu-item-settings = Налаштування
+menu-item-settings-alt = Відкрити сторінку налаштувань
 menu-item-help = Довідка та підтримка
+menu-item-help-alt = Відкрити сторінку довідки та підтримки
 menu-item-logout = Вийти
 
 ## Footer
@@ -823,3 +865,9 @@ exposed-data = Дата витоку:
 find-out-if-2 = Дізнайтеся, чи були ваші дані в цьому витоці
 find-out-if-description = Ми допоможемо вам швидко з’ясувати, чи було розкрито вашу електронну адресу внаслідок цього витоку, і зрозуміти, що робити далі.
 breach-detail-cta-signup = Перевірити на витік даних
+
+## Floating banner
+
+floating-banner-text = Підвищте онлайн-безпеку за допомогою новин, порад і оновлень від { -brand-Mozilla }.
+floating-banner-link-label = Зареєструватись
+floating-banner-dismiss-button-label = Ні, дякую

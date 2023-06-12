@@ -10,10 +10,10 @@ rec-ssn =
 rec-pw-1-subhead = Vaihda salasanasi
 # Link title
 rec-pw-1-cta = Vaihda salasana tälle sivustolle
-rec-pw-1 =
+rec-pw-1-2 =
     Tee tästä salasanasta ainutlaatuinen ja erilainen kuin muut salasanasi. 
-    Hyvä strategia on yhdistää kaksi tai useampi toisiinsa liittymätön sana 
-    ja luoda siten ikään kuin tunnuslause.
+    Hyvä strategia on yhdistää kaksi tai useampi toisiinsa liittymätön sana ja
+    luoda siten ikään kuin tunnuslause, johon sisältyy myös numeroita ja merkkejä.
 # Recommendation subhead
 rec-pw-2-subhead = Päivitä muut samaa salasanaa käyttävät kirjautumistiedot
 # Link title
@@ -58,20 +58,12 @@ rec-email =
     löytää salasanasi tai maalittaa sinut verkossa. Palvelu kuten { -brand-relay }
     piilottaa todellisen sähköpostiosoitteesi ja välittää viestit todelliseen postilaatikkoosi.
 # Recommendation subhead
-rec-ip-subhead = Käytä palvelua, joka peittää IP-osoitteesi
-# Link title
-rec-ip-us-cta = Kokeile { -brand-fpn }
-rec-ip-us =
-    IP-osoitteesi saattaa osoittaa fyysiseen sijaintiisi ja internetpalveluntarjoajaasi.
-    Palvelut kuten { -brand-fpn } voivat piilottaa todellisen IP-osoitteesi ja sijaintisi.
-rec-ip-non-us =
-    IP-osoitteesi saattaa osoittaa fyysiseen sijaintiisi ja internetpalveluntarjoaajasi.
-    VPN-erillisverkon avulla voit piilottaa todellisen IP-osoitteesi ja fyysisen sijaintisi.
+rec-ip-subhead-2 = Käytä VPN:n peittääksesi IP-osoitteesi
 # Recommendation subhead
 rec-moz-vpn-cta = Kokeile { -brand-mozilla-vpn }:ää
-rec-moz-vpn-update =
-    IP-osoitteesi saattaa paljastaa sijaintisi ja internetpalveluntarjoajasi. Palvelu 
-    kuten { -brand-mozilla-vpn } piilottaa IP-osoitteesi ja sijaintisi laitteesi osalta.
+rec-moz-vpn-update-2 =
+    IP-osoitteesi saattaa osoittaa fyysiseen sijaintiisi ja internetpalveluntarjoajaasi.
+    Palvelut kuten { -brand-mozilla-vpn } voivat piilottaa todellisen IP-osoitteesi ja sijaintisi.
 rec-hist-pw-subhead = Älä käytä samaa salasanaa useamman kerran
 # Link title
 rec-hist-pw-cta-fx = Näytä kirjautumistiedot { -brand-name }-palvelussa

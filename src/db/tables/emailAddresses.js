@@ -6,10 +6,15 @@ import { v4 as uuidv4 } from 'uuid'
 import Knex from 'knex'
 import knexConfig from '../knexfile.js'
 import mozlog from '../../utils/log.js'
-import { fluentError } from '../../utils/fluent.js'
 import { subscribeHash } from '../../utils/hibp.js'
 import { getSha1 } from '../../utils/fxa.js'
 import { getSubscriberByEmail, updateFxAData } from './subscribers.js'
+import {
+  ForbiddenError,
+  InternalServerError,
+  UnauthorizedError
+} from '../../utils/error.js'
+import { getMessage } from '../../utils/fluent.js'
 const knex = Knex(knexConfig)
 const log = mozlog('DB.email_addresses')
 
@@ -89,7 +94,7 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
     .first()
 
   if (verificationRecentlyUpdated?.id === parseInt(emailAddressId)) {
-    throw fluentError('error-email-validation-pending', l10n)
+    throw new ForbiddenError(l10n.getString('error-email-validation-pending'))
   }
 
   const res = await knex('email_addresses')
@@ -108,7 +113,7 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
 async function verifyEmailHash (token) {
   const unverifiedEmail = await getEmailByToken(token)
   if (!unverifiedEmail) {
-    throw fluentError('Error message for this verification email timed out or something went wrong.')
+    throw new UnauthorizedError('Error message for this verification email timed out or something went wrong.')
   }
   const verifiedEmail = await _verifyNewEmail(unverifiedEmail)
   return verifiedEmail[0]
@@ -171,7 +176,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
   } catch (e) {
     // @ts-ignore Log whatever, we don't care
     log.error(e)
-    throw fluentError('error-could-not-add-email')
+    throw new InternalServerError(getMessage('error-could-not-add-email'))
   }
 }
 

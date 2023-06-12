@@ -33,8 +33,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -55,6 +53,9 @@ user-add-invalid-email = Neveljavna e-pošta
 user-add-too-many-emails = Spremljate največje dovoljeno število e-poštnih naslovov.
 user-add-email-verify-subject = Potrdite naročnino na { -product-name }.
 user-add-duplicate-email = Ta e-poštni naslov je že bil dodan v { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Obiščite { $preferencesLink } in preverite stanje za { $userEmail }.
 error-headline = Napaka
 user-verify-token-error = Zahtevan je potrditveni žeton.
@@ -68,11 +69,11 @@ scan-placeholder = Vnesite e-poštni naslov
 scan-submit = Poiščite vaš e-poštni naslov
 scan-error = E-poštni naslov mora biti veljaven.
 download-firefox-banner-button = Prenesite { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Poslano!
 sign-up = Prijava
 form-signup-error = E-poštni naslov mora biti veljaven
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Datum kraje:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Ogroženi računi:
@@ -82,6 +83,8 @@ unsub-headline = Odjava iz { -product-name-nowrap }ja
 unsub-blurb = S tem boste odstranili vaš e-poštni naslov iz seznama { -product-name-nowrap } in ob pojavu novih kraj podatkov ne boste več prejemali opozoril.
 unsub-button = Odjavi se
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Podatke o krajah podatkov omogoča { $hibp-link }
 share-twitter = Večina ljudi ima približno 100 spletnih računov. Je bil kateri od vaših izpostavljen v kraji podatkov? Preverite.
 share-facebook-headline = Preverite, ali ste bili žrtev kraje podatkov
@@ -122,8 +125,6 @@ about-firefox-monitor = O { -product-name }ju
 preferences = Nastavitve
 # Link title
 home = Domov
-# Link title
-breaches = Kraje podatkov
 # Link title
 security-tips = Varnostni nasveti
 fxa-account = { -brand-fxa }
@@ -223,7 +224,9 @@ feat-security-tips = Varnostni nasveti za zaščito vaših računov
 feat-sensitive = Napredno iskanje v občutljivih krajah podatkov
 feat-enroll-multiple = Vključite več e-poštnih naslovov v nadzor kraj podatkov
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Pojavil se je v eni znani kraji.
@@ -237,6 +240,8 @@ get-email-alerts = Ostanite varni: prejemajte opozorila po e-pošti, ko se vaši
 search-for-your-email = Poiščite svoj e-poštni naslov med javnimi krajami podatkov do leta 2007.
 back-to-top = Nazaj na vrh
 comm-opt-0 = Obvesti me po e-pošti, če se kateri od spodnjih e-poštnih naslovov pojavi v kraji podatkov.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Vsa opozorila o krajah podatkov pošlji na { $primaryEmail }.
 stop-monitoring-this = Ne nadzoruj več tega naslova.
 resend-verification = Ponovno pošlji potrditveno e-pošto
@@ -245,7 +250,7 @@ send-verification = Pošlji potrditveno povezavo
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Povzetek kraj podatkov
 show-breaches-for-this-email = Pokaži vse kraje podatkov za ta e-poštni naslov.
@@ -258,8 +263,15 @@ remove-fxm-blurb =
 manage-email-addresses = Upravljanje e-poštnih naslovov
 # Link title
 latest-breach-link = Preverite, ali ste bili žrtev te kraje podatkov
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Dobrodošli nazaj, { $userName }!
 welcome-user = Dobrodošli, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } je našel vaš e-poštni naslov v novi kraji podatkov.
 your-info-was-discovered-headline = Vaši podatki so bili odkriti v novi kraji podatkov.
 your-info-was-discovered-blurb =
@@ -283,6 +295,8 @@ ba-next-step-blurb-3 =
 faq1 = Tega podjetja ali spletne strani ne poznam. Zakaj sem del te kraje podatkov?
 faq2 = Zakaj je trajalo tako dolgo, da sem bil obveščen o tej kraji podatkov?
 faq3 = Kako vem, da je to sporočilo { -product-name }ja zaupanja vredno?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] NAJDENA NOVA KRAJA PODATKOV
@@ -292,9 +306,14 @@ new-breaches-found =
     }
 sign-up-headline-1 = Prejemajte opozorila s { -brand-fxa }om.
 account-not-required = Za { -brand-fxa } brskalnik { -brand-name } ni potreben. Morda boste prejeli informacije o storitvah { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Ali so bili vaši podatki izpostavljeni v kraji podatkov { $breachName }?
-find-out-if = Preverite, ali so bili vaši podatki izpostavljeni v tej kraji.
 fb-not-comp = Ta e-poštni naslov se ni pojavil v kraji podatkov { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Vendar se je pojavil v eni drugi kraji podatkov.
@@ -303,6 +322,8 @@ other-breaches-found =
        *[other] Vendar se je pojavil v { $breachCount } drugih krajah podatkov.
     }
 fb-comp-only = Ta e-poštni naslov se je pojavil v kraji podatkov { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Ta e-poštni naslov se je pojavil v { $breachCount } znani kraji podatkov, vključno z { $breachName }.
@@ -310,13 +331,38 @@ fb-comp-and-others =
         [few] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov, vključno z { $breachName }.
        *[other] Ta e-poštni naslov se je pojavil v { $breachCount } znanih krajah podatkov, vključno z { $breachName }.
     }
+
+##
+
 no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
-all-breaches-headline = Vse kraje podatkov v { -product-name }ju
-search-breaches = Iskanje kraj podatkov
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-note =
+    <span>Vaš e-poštni naslov ni prikazan v tem razkritju,
+    vendar je vaša telefonska številka morda še vedno ranljiva.</span> Nekateri računi
+    ogrožene v Facebooku razkrite telefonske številke in drugo
+    osebne podatke, ne pa e-poštnih naslovov. Če ste se kdaj prijavili
+    za Facebook račun – tudi če ga trenutno ne uporabljate – vam priporočamo
+    se zaščitite s temi koraki
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>V <a>svojem profilu na Facebooku</a> nastavite svoje podatke na "Samo jaz" ali drugo nejavno nastavitev.</span>
+facebook-breach-what-to-do-1-copy =
+    Med tem uhajanjem podatkov so se hekerji polastili profila
+    podatke, ki so bili nastavljeni kot »odprto za javnost« ali »v skupni rabi s prijatelji«.
+    Te informacije je mogoče združiti z drugimi podatki za dostop do njih še več
+    vaše osebne podatke in račune.
+# This string contains nested markup that is later used to style and link the text inside of it.
+# Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
+facebook-breach-what-to-do-2-headline =
+    <span>Spremenite geslo, PIN ali druge varnostne podatke na svojem <a>mobilnem telefonu
+    račune pri operaterju</a>, da preprečite zamenjavo SIM</span>.
+facebook-breach-what-to-do-2-copy =
+    Zamenjava SIM, imenovana tudi SIM-jacking,
+    je, ko heker s telefonskimi številkami, rojstnimi datumi drugimi podatki prevzame oblast
+    številko mobilnega telefona osebe in nato vdreti v njeno e-pošto, družbena omrežja in celo finančne račune.
+facebook-breach-what-to-do-3 = Oglejte si vsa priporočila na naši Facebook strani
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Prikazano:
 
@@ -366,6 +412,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Prikaži dodatne kraje podatkov
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Ta e-poštni naslov se je pojavil v eni znani kraji podatkov.
@@ -376,6 +424,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Rezultati za: { $userEmail }
 other-monitored-emails = Ostali nadzorovani e-poštni naslovi
 email-verification-required = Zahtevana je potrditev e-poštnega naslova
@@ -391,6 +441,8 @@ get-ongoing-breach-monitoring = Spremljajte kraje podatkov za več e-poštnih na
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Preverite
 new-unsub-error = Odjaviti se boste morali iz enega od poslanih e-poštnih sporočil { -product-name }ja.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Vendar se je pojavil v { $breachCount } drugi znani kraji podatkov.
@@ -410,10 +462,12 @@ breach-overview-title = Pregled
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Dne { $breachDate } je prišlo do kraje podatkov { $breachTitle }. Ko je bila kraja odkrita in preverjena, smo jo dne { $addedDate } dodali v našo bazo podatkov.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Nastavitve { -product-short-name }ja
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Prijavljeni kot: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -430,12 +484,16 @@ email-sent = E-pošta poslana!
 want-to-add = Želite dodati še en e-poštni naslov?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Potrdite povezavo poslano na { $userEmail }, da e-poštni naslov dodate v { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = E-poštni naslov uspešno preverjen!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Opozorili vas bomo, v kolikor se bo naslov { $email } pojavil v novi kraji podatkov.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -449,15 +507,17 @@ sign-in-nested = Prijavite se
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Upravljajte vse e-poštne naslove v { $preferencesLink }
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Obvestila opozoril o krajah
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Kraja dodana:
 how-hackers-work-desc = Zaščitite gesla pred spletnimi napadalci, saj jih gesla najbolj privlačijo.
 what-to-do-after-breach-desc = Zaklenite svoje račune, in preprečite, da bi vaši podatki pristali v napačnih rokah.
@@ -479,7 +539,11 @@ see-additional-recs = Oglejte si dodatna priporočila
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } od vaših e-poštnih naslovov se je pojavil v tej kraji podatkov. <a>Kaj storiti</a>
@@ -509,6 +573,8 @@ confirmation-3-subhead = Še ena je razrešena. Odlično!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Ali je vaše novo geslo edinstveno, močno in težko uganljivo? <a>Preverite</a>
 generic-confirmation-subhead = Ta kraja je bila označena kot razrešena
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Za ogled preostale kraje pojdite na nadzorno ploščo.
@@ -520,9 +586,13 @@ return-to-breach-details-link = Nazaj na podrobnosti o kraji
 go-to-dashboard-link = Pojdi na nadzorno ploščo
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% dokončano
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } razrešena
@@ -534,6 +604,9 @@ progress-intro-subhead = Novo v { -product-name }ju: Označite kraje podatkov ko
 progress-intro-message =
     Po pregledu podrobnosti o kraji podatkov in izvedbi ukrepov za zaščito 
     vaših osebnih podatkov lahko kraje podatkov označite kot razrešene.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } od { $numTotalBreaches } kraj podatkov je bila označena kot razrešena
@@ -561,11 +634,13 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Razreši to krajo
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Označeno kot razrešeno:
 hide-resolved-button = Skrij razrešene
 show-resolved-button = Prikaži razrešene
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] geslo je bilo izpostavljeno v nerazrešenih krajah
@@ -573,6 +648,8 @@ unresolved-passwords-exposed =
         [few] gesla so bila izpostavljena v nerazrešenih krajah
        *[other] gesel je bilo izpostavljenih v nerazrešenih krajah
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] znana kraja je bila označena kot razrešena
@@ -605,7 +682,10 @@ vpn-promo-copy-new = Zaščitite svoje podatke na spletu – in izberite naročn
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Vaša lokacija: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Zaščitite se</em> z { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Zaščiteni</em> z { -brand-mozilla-vpn }.
@@ -614,7 +694,8 @@ vpn-banner-title-2 = Vašo lokacijo je mogoče izslediti, če ne uporabljate VPN
 vpn-banner-subtitle-2 = Zaščitite svojo lokacijo in brskajte varno v 3 korakih
 vpn-banner-status-protected = Trenutno stanje: <em>Zaščiteni ✓</em>
 vpn-banner-status-not-protected = Trenutno stanje: <em>Niste zaščiteni ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Naslov IP: { $ip-address }
 vpn-banner-step-1 = Naročite se na { -brand-mozilla-vpn }
 vpn-banner-step-2 = Izberite nahajališče VPN
@@ -636,6 +717,8 @@ ad-unit-2-do-you-worry = Vas skrbi varnost na javnih omrežjih Wi-Fi?
 # ad 3 heading
 ad-unit-3-stay-in-the-game = Ostanite v igri!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vam ponuja varno in stabilno povezavo med igranjem iger ali pretakanjem filmov.
+# ad 3 list item 1
+ad-unit-3-prevent-throttling = Prepreči dušenje
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Bodite kjerkoli na svetu
 # ad 3 list item 3
@@ -643,10 +726,23 @@ ad-unit-3-access-more = Več dostopa
 # ad 4 heading
 ad-unit-4-shopping-with = Nakupovanje z e-poštnimi maskami
 ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali popolnoma zaupate trgovini?
+ad-unit-4-shop-online = Pri spletnem nakupovanju uporabite masko za e-pošto. Prejmite potrditveno sporočilo na pravi e-poštni naslov in masko izklopite kadarkoli pozneje.
 # ad 5 heading
 ad-unit-5-on-the-go = Na poti s { -brand-relay }
+ad-unit-5-instantly-make = V trenutku si ustvarite e-poštno masko po meri, kjerkoli ste in kamorkoli greste!
+# ad 5 subheading 1
+ad-unit-5-connect-on-the-go = Povežite se na poti
+ad-unit-5-privately-sign-in = Uporabite e-poštno masko, ko se želite zasebno prijaviti v svoji priljubljeni kavarni ali v javno omrežje Wi-Fi
+# ad 5 subheading 2
+ad-unit-5-email-receipts = Prejmi e-poštna potrdila o prejemu
+ad-unit-5-share-custom-email = Delite e-poštno masko po meri za račune za nakupovanje v trgovini, ne da bi delili svoj pravi e-poštni naslov
+# ad 5 subheading 3
+ad-unit-5-use-on-phone = Uporabite v telefonu
+ad-unit-5-no-matter-where = Ne glede na to, kje ste, si v nekaj sekundah ustvarite e-poštno masko po meri za kar koli želite
 # ad 6 heading
 ad-unit-6-worry-free = Brezskrbna registracija
+ad-unit-6-want-to-start = Želite skleniti novo naročnino, se odzvati na povabilo ali prejeti ugodno promocijsko kodo, ne da bi vaš e-poštni predal preplavili vsiljeno pošto?
+ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e-poštno masko namesto prave, da zaščitite svoje podatke in obdržite nadzor nad mapo »Prejeto«
 
 # Monitor V2
 
@@ -672,6 +768,8 @@ ad-unit-6-worry-free = Brezskrbna registracija
         [mestnik] Mozilli
         [orodnik] Mozillo
     }
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github =
     { $sklon ->
@@ -682,6 +780,8 @@ ad-unit-6-worry-free = Brezskrbna registracija
         [mestnik] GitHubu
         [orodnik] GitHubom
     }
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -691,7 +791,7 @@ ad-unit-6-worry-free = Brezskrbna registracija
 
 ## Search Engine Optimization
 
-meta-desc = S { -brand-fx-monitor(sklon: "orodnik") } preverite, ali ste bili žrtev kraje podatkov. Prijavite se za opozorila o prihodnjih krajah in preberite nasvete, kako ohraniti svoje račune varne.
+meta-desc-2 = Ugotovite, ali ste bili vpleteni v krajo podatkov s { -brand-fx-monitor }jem. Pomagali vam bomo razumeti, kaj lahko storite, in nenehno spremljali morebitne nove kraje.
 
 ## Header
 
@@ -700,18 +800,62 @@ sign-in = Prijavite se
 
 ## Site navigation
 
+site-nav-breaches-link = Razrešite kraje podatkov
 site-nav-settings-link = Nastavitve
+site-nav-help-link = Pomoč in podpora
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Preizkusite druga naša varnostna orodja:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
+menu-button-title = Uporabniški meni
+menu-button-alt = Odpri uporabniški meni
+menu-list-accessible-label = Meni računa
+menu-item-fxa = Upravljajte svoj { -brand-fx-account }
+menu-item-fxa-alt = Odpri stran { -brand-fx-account }
 menu-item-settings = Nastavitve
+menu-item-settings-alt = Odpri stran z nastavitvami
+menu-item-help = Pomoč in podpora
+menu-item-help-alt = Odpri stran za pomoč in podporo
+menu-item-logout = Odjava
 
 ## Footer
 
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Pogoji in zasebnost
 github = { -brand-github }
+footer-nav-all-breaches = Vse kraje podatkov
 
 ## Error page
 
+# Variables:
+#   $errorCode (number) - "404"
+error-page-error-404-title = { $errorCode } Strani ni bilo mogoče najti
+error-page-error-404-copy = Stran, ki jo iščete, žal ne obstaja več.
 error-page-error-404-cta-button = Nazaj
+# Variables:
+#   $errorCode (number) - the status code of the error, e.g. 403
+error-page-error-other-title = { $errorCode } Prišlo je do napake
+error-page-error-other-copy = Poskusite znova ali se vrnite pozneje
+
+## Breach overview page
+
+all-breaches-headline-2 = Vse kraje, ki jih je odkril { -brand-fx-monitor }
+all-breaches-lead = Spremljamo vse znane kraje podatkov, da ugotovimo, ali so bili vaši osebni podatki ogroženi. Tukaj je celoten seznam vseh kraj, prijavljenih od leta 2007 naprej.
+search-breaches = Iskanje kraj podatkov
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Izpostavljeni podatki:
+
+## Public breach detail page
+
+find-out-if-2 = Ugotovite, ali ste bili vpleteni v to krajo
+find-out-if-description = Pomagali vam bomo hitro ugotoviti, ali je bil vaš e-poštni naslov izpostavljen v tej kraji, in razumeli, kaj morate storiti naprej.
+breach-detail-cta-signup = Preverite kraje podatkov
+
+## Floating banner
+
+floating-banner-text = Okrepite svojo spletno varnost z novicami, nasveti in posodobitvami { -brand-Mozilla(sklon: "rodilnik") }.
+floating-banner-link-label = Prijava
+floating-banner-dismiss-button-label = Ne, hvala

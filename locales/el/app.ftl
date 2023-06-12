@@ -726,6 +726,8 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -756,7 +758,6 @@ ad-unit-6-before-you-complete = Πριν ολοκληρώσετε την επό�
 
 ## Search Engine Optimization
 
-meta-desc = Μάθετε αν υπήρξατε θύμα παραβίασης δεδομένων με το { -brand-fx-monitor }. Εγγραφείτε για ειδοποιήσεις σχετικά με μελλοντικές παραβιάσεις και λάβετε συμβουλές για να προστατέψετε τους λογαριασμούς σας.
 
 ## Header
 
@@ -768,6 +769,8 @@ sign-in = Σύνδεση
 site-nav-breaches-link = Επίλυση παραβιάσεων δεδομένων
 site-nav-settings-link = Ρυθμίσεις
 site-nav-help-link = Βοήθεια και υποστήριξη
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Δοκιμάστε τα άλλα εργαλεία ασφαλείας μας:
 brand-relay = { -brand-relay }
 brand-mozilla-vpn = { -brand-mozilla-vpn }
 
@@ -802,7 +805,19 @@ error-page-error-other-copy = Παρακαλούμε δοκιμάστε ξανά
 
 ## Breach overview page
 
+all-breaches-headline-2 = Όλες οι παραβιάσεις που εντοπίστηκαν από το { -brand-fx-monitor }
+all-breaches-lead = Παρακολουθούμε όλες τις γνωστές παραβιάσεις δεδομένων για να διαπιστώσουμε εάν τα προσωπικά σας στοιχεία παραβιάστηκαν. Ακολουθεί μια πλήρης λίστα με όλες τις παραβιάσεις που έχουν αναφερθεί από το 2007.
 search-breaches = Αναζήτηση παραβιάσεων
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Εκτεθειμένα δεδομένα:
 
 ## Public breach detail page
 
+find-out-if-2 = Μάθετε εάν εμπλακήκατε σε αυτήν την παραβίαση
+find-out-if-description = Θα σας βοηθήσουμε να δείτε γρήγορα εάν η διεύθυνση email σας αποκαλύφθηκε σε αυτήν την παραβίαση και να κατανοήσετε τι πρέπει να κάνετε στη συνέχεια.
+breach-detail-cta-signup = Έλεγχος για παραβιάσεις
+
+## Floating banner
+
+floating-banner-link-label = Εγγραφή
+floating-banner-dismiss-button-label = Όχι, ευχαριστώ

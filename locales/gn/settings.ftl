@@ -5,6 +5,7 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - Ñemboheko
 settings-page-title = { -product-short-name } Ñemboheko
 
 ## Breach alert preferences
@@ -30,6 +31,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Ñanduti veve jehechajey jerurepyre
 settings-resend-email-verification-link = Emondojey ñanduti veve jehechajeyrã
 settings-add-email-button = Embojuaju ñanduti veve kundaharape
+settings-delete-email-button = Embogue ñandutiveve kundaharape
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -40,6 +42,11 @@ settings-email-number-of-breaches-info =
         [many] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
        *[other] Ojekuaa { $breachCount }-pe ñembyaikuéra ojehecháva.
     }
+
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Eipe’a { -brand-premium } ñemboheraguapy
+settings-cancel-premium-subscription-link-label = Eipe’a ne { -brand-fx-account } guive
 
 ## Deactivate account
 
@@ -53,3 +60,9 @@ settings-email-dialog-title = Emoĩve ambue ñanduti veve kundaharape
 settings-add-email-text = Emoĩve ñanduti veve kundaharape pyahu ehecha hag̃ua eimépa ñemboguápe.
 settings-email-input-label = Ñanduti veve
 settings-send-email-verification-button = Emondo juajuha jehechajeyrã
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-message-placeholder = ¿Mba’épa pe ohoporãvekuaáva?
+settings-unsubscribe-dialog-continue = Emongu’ejey pe jeipe’a
+settings-unsubscribe-dialog-cancel = Marave ndoikói, jajevyjey

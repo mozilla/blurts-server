@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { getFloatingBanner } from '../views/partials/floatingBanner.js'
 
 /**
  * @type {ViewPartial<GuestViewPartialData<any>>}
@@ -61,16 +62,19 @@ const guestLayout = data => {
       </head>
       <body>
         <header>
-          <a href='/'>
-            <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
-          </a>
-          <menu>
-            <li><a href='/user/breaches' data-cta-id='sign-in-1' class='button secondary'>${getMessage('sign-in')}</a></li>
-          </menu>
+          <div class="header-wrapper">
+            <a href='/'>
+              <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+            </a>
+            <menu>
+              <li><a href='/user/breaches' data-cta-id='sign-in-1' class='button secondary'>${getMessage('sign-in')}</a></li>
+            </menu>
+          </div>
         </header>
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}
         </main>
+        ${getFloatingBanner({ pathname: data.pathname })}
         <footer class='site-footer'>
           <a href='https://www.mozilla.org' target='_blank'>
             <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>

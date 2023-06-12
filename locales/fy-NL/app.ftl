@@ -707,6 +707,8 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -720,7 +722,7 @@ ad-unit-6-before-you-complete = Brûk, eardat jo jo folgjende registraasje folt�
 
 ## Search Engine Optimization
 
-meta-desc = Untdek mei { -brand-fx-monitor } oft jo troffen binne troch in datalek. Skriuw jo yn foar warskôgingen oer takomstige lekken en ûntfang tips oer hoe’t jo jo accounts feilich hâlde.
+meta-desc-2 = Untdek mei { -brand-fx-monitor } of jo ûnderdiel binne fan in datalek. Wy helpe jo te begripen wat jo dêrnei dwaan moatte en kontrolearje trochgeand op nije datalekken.
 
 ## Header
 
@@ -743,8 +745,11 @@ menu-button-title = Brûkersmenu
 menu-button-alt = Brûkersmenu iepenje
 menu-list-accessible-label = Accountmenu
 menu-item-fxa = Jo { -brand-fx-account } beheare
+menu-item-fxa-alt = { -brand-fx-account }-side iepenje
 menu-item-settings = Ynstellingen
+menu-item-settings-alt = Ynstellingenside iepenje
 menu-item-help = Help en stipe
+menu-item-help-alt = Help- en stipeside iepenje
 menu-item-logout = Ofmelde
 
 ## Footer
@@ -779,3 +784,9 @@ exposed-data = Lekte gegevens:
 find-out-if-2 = Untdek oft jo troffen binne troch dit lek
 find-out-if-description = Wy helpe jo fluch te sjen oft jo e-mailadres lekt is by dit datalek en te begripen wat jo dêrnei dwaan moatte.
 breach-detail-cta-signup = Kontrolearje op datalekken
+
+## Floating banner
+
+floating-banner-text = Ferheegje jo online feiligens mei nijs, tips en updates fan { -brand-Mozilla }.
+floating-banner-link-label = Registrearje
+floating-banner-dismiss-button-label = Nee, tankewol

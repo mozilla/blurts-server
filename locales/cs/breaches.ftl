@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Nástěnka
+breach-all-meta-title = { -brand-fx-monitor } - Všechny úniky dat
+breach-all-meta-social-title = Všechny úniky dat detekované { -brand-fx-monitor(case: "ins") }
+breach-all-meta-social-description = Podívejte se na úplný seznam známých úniků údajů zjištěných službou { -brand-fx-monitor }. Následně zjistěte, zda nebyly vaše údaje odhaleny.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Uniklá data společnosti { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Dotýká se vás únik údajů společnosti { $company }?
+breach-detail-meta-social-description = Pomocí služby { -brand-fx-monitor } zjistíte, zda byly při tomto úniku odhaleny vaše osobní údaje a dozvíte se, co máte dělat dále.
+breach-scan-meta-title = { -brand-fx-monitor } - výsledky úniků údajů
+breach-scan-meta-social-title = { -brand-fx-monitor } - výsledky úniků údajů
+breach-scan-meta-social-description = Přihlaste se do služby { -brand-fx-monitor }, abyste vyřešili úniky údajů a získali nepřetržité monitorování všech nových známých úniků.
 
 ## Breaches header
 
@@ -48,6 +62,9 @@ breaches-all-resolved-copy = Výborně! Vyřešili jste všechny úniky dat pro 
 breaches-all-resolved-cta-blurb = Chcete monitorovat další e-mailovou adresu?
 breaches-all-resolved-cta-button = Přidat e-mailové adresy
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = Dne { $breachDate } došlo k úniku dat společnosti { $companyName }. Jakmile byl únik objevený a ověřený, byl dne { $addedDate } přidán do naší databáze. Tento únik zahrnoval: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -58,11 +75,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Přejděte na web společnosti, změňte si heslo a povolte dvoufázové ověřování (2FA).
+breach-checklist-pw-header-text = Aktualizujte svá hesla a povolte dvoufázové ověření (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Ujistěte se, že vaše heslo je unikátní a obtížně uhodnutelné. Pokud je toto heslo použito u více účtů, nezapomeňte ho změnit i tam. { $passwordManagerLink } vám může pomoci bezpečně spravovat všechna vaše hesla.
+breach-checklist-pw-body-text = Ve většině případů doporučujeme změnit heslo na webových stránkách společnosti. Ale <b>jejich webové stránky mohou být nefunkční nebo mohou obsahovat škodlivý obsah</b>, takže pokud <breached-company-link>navštívíte stránky</breached-company-link>, buďte opatrní. Pro větší ochranu se ujistěte, že používáte jedinečná hesla pro všechny účty, aby žádná uniklá hesla nemohla být použita k přístupu k jiným účtům. { $passwordManagerLink } vám může pomoci bezpečně sledovat všechna vaše hesla.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -73,17 +90,17 @@ breach-checklist-email-body = Tímto můžete skrýt svou skutečnou e-mailovou 
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Sledujte podezřelé položky a pohyby na svých účtech v bance nebo na platební kartách.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Můžete také zvážit zmrazení svého kreditu u společností { $equifaxLink }, { $experianLink } a { $transUnionLink }, abyste zabránili podvodníkům v otevírání nových účtů na vaše jméno. Je to zdarma a neovlivní to vaše kreditní skóre.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -126,9 +143,9 @@ breach-checklist-phone-header-2 = Chraňte své telefonní číslo pomocí masko
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Aktualizujte své bezpečnostní otázky na webových stránkách společnosti.
-breach-checklist-sq-body = Použijte dlouhé, náhodné odpovědi a uložte je na bezpečném místě. Udělejte to i všude tam, kde jste použili stejné bezpečnostní otázky.
+breach-checklist-sq-header-text = Aktualizujte své bezpečnostní otázky.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Ve většině případů doporučujeme aktualizovat bezpečnostní otázky na webu společnosti. Ale <b>jejich webové stránky mohou být nefunkční nebo mohou obsahovat škodlivý obsah</b>, takže pokud <breached-company-link>navštívíte stránky</breached-company-link>, buďte opatrní. Pro větší ochranu aktualizujte tyto bezpečnostní otázky u všech důležitých účtů, kde jste je používali, a pro všechny účty vytvořte jedinečná hesla.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -139,5 +156,7 @@ breach-checklist-hp-body-2 = Správce hesel jako { $passwordManagerLink } (kter�
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Obraťte se na společnost { $companyName }, informujte je o tomto úniku a požádejte je o konkrétní kroky, které můžete podniknout.

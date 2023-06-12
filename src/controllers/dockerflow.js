@@ -6,7 +6,7 @@
  import path from 'path'
 
  import AppConstants from '../appConstants.js'
- import { version, homepage } from '../../package.json'
+ import packageJson from '../../package.json';
 
  const versionJsonPath = path.join(__dirname, 'version.json')
  
@@ -14,8 +14,8 @@
  // don't need to generate it
  if (!fs.existsSync(versionJsonPath)) { 
    const versionJson = {
-     source: homepage,
-     version,
+     source: packageJson.homepage,
+     version: packageJson.version,
      NODE_ENV: process.env.NODE_ENV,
    }
  
@@ -28,13 +28,17 @@
      return {
        commit: process.env.HEROKU_SLUG_COMMIT,
        version: process.env.HEROKU_SLUG_COMMIT,
-       source: homepage,
+       source: packageJson.homepage,
      };
      /* eslint-enable no-process-env */
    }
    return JSON.parse(fs.readFileSync(versionJsonPath, 'utf8'))
  }
 
+/**
+ * @param {any} req
+ * @param {any} res
+ */
 function heartbeat (req, res) {
   return res.send('OK')
 }

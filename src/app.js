@@ -18,10 +18,10 @@ import { localStorage } from './utils/localStorage.js'
 import { errorHandler } from './middleware/error.js'
 import { initFluentBundles, updateLocale, getMessageWithLocale, getMessage } from './utils/fluent.js'
 import { loadBreachesIntoApp } from './utils/hibp.js'
-import { RateLimitError } from './utils/error.js'
 import { initEmail } from './utils/email.js'
 import indexRouter from './routes/index.js'
 import { noSearchEngineIndex } from './middleware/noSearchEngineIndex.js'
+import { RateLimitError } from './utils/error.js'
 
 const app = express()
 const isDev = AppConstants.NODE_ENV === 'dev'
@@ -42,6 +42,13 @@ Sentry.init({
     return event
   }
 })
+
+// sentry error handler
+app.use(Sentry.Handlers.errorHandler({
+  shouldHandleError (error) {
+    if (error instanceof RateLimitError) return true
+  }
+}))
 
 // Determine from where to serve client code/assets:
 // Build script is triggered for `npm start` and assets are served from /dist.
@@ -185,13 +192,6 @@ app.use('/api', apiLimiter)
 
 // routing
 app.use('/', indexRouter)
-
-// sentry error handler
-app.use(Sentry.Handlers.errorHandler({
-  shouldHandleError (error) {
-    if (error instanceof RateLimitError) return true
-  }
-}))
 
 // app error handler
 app.use(errorHandler)

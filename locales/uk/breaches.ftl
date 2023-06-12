@@ -2,6 +2,20 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+breach-meta-title = { -brand-fx-monitor } - Інформаційна панель
+breach-all-meta-title = { -brand-fx-monitor } - Усі витоки даних
+breach-all-meta-social-title = Усі витоки, виявлені { -brand-fx-monitor }
+breach-all-meta-social-description = Перегляньте список усіх відомих витоків, виявлених { -brand-fx-monitor }, а потім дізнайтеся, чи було розкрито ваші дані.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Витік даних { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Чи постраждали ви від витоку даних { $company }?
+breach-detail-meta-social-description = Користуйтеся { -brand-fx-monitor }, щоб дізнатися, чи було розкрито ваші особисті дані у цьому витоці, і зрозуміти, що робити далі.
+breach-scan-meta-title = { -brand-fx-monitor } - Результати витоку
+breach-scan-meta-social-title = Результати витоків від { -brand-fx-monitor }
+breach-scan-meta-social-description = Увійдіть до { -brand-fx-monitor }, щоб усунути наслідки витоку та отримати постійний моніторинг за будь-якими новими відомими витоками.
 
 ## Breaches header
 
@@ -47,6 +61,9 @@ breaches-all-resolved-copy = Чудова робота! Ви розв'язали
 breaches-all-resolved-cta-blurb = Бажаєте здійснювати моніторинг іншої електронної адреси?
 breaches-all-resolved-cta-button = Додати адресу електронної пошти
 # $breachDate and $addedDate are dates that should be localized via JS DateTimeFormat(). $dataClasses is a list of strings from data-classes.ftl that should be localized via JS ListFormat()
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-description = { $breachDate }, у { $companyName } стався витік даних. Одразу після виявлення та підтвердження, цей витік було додано до нашої бази даних на { $addedDate }. До цього витоку входять: { $dataClasses }
 
 ## Links that we might refer to when prompting the user to make changes after a breach
@@ -57,11 +74,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-pw-header-2 = Перейдіть на вебсайт компанії, щоб змінити пароль і ввімкнути двоетапну перевірку (2FA).
+breach-checklist-pw-header-text = Оновіть свої паролі та увімкніть двоетапну перевірку (2FA).
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-2 = Переконайтеся, що ваш пароль унікальний і його важко відгадати. Якщо цей пароль використовується в інших облікових записах, обов’язково змініть його там. { $passwordManagerLink } може допомогти вам безпечно відстежувати всі ваші паролі.
+breach-checklist-pw-body-text = У більшості випадків ми рекомендуємо вам змінити пароль на вебсайті компанії. Але <b>їхній вебсайт може бути зламаним або містити зловмисні елементи</b>, тому будьте обережні, <breached-company-link>відвідуючи сайт</breached-company-link>. Для додаткового захисту переконайтеся, що ви використовуєте унікальні паролі для всіх своїх облікових записів, щоб у разі викриття будь-якого пароля уникнути ризику стороннього доступу до інших облікових записів. { $passwordManagerLink } може допомогти вам надійно зберігати всі паролі.
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -72,17 +89,17 @@ breach-checklist-email-body = Вона може приховати вашу сп
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
-# Credit reports list your bill payment history, loans, current debt, and other financial information. 
+# Credit reports list your bill payment history, loans, current debt, and other financial information.
 # They show where you work and live and whether you've been sued, arrested, or filed for bankruptcy.
 breach-checklist-ssn-header = Перевірте свій кредитний звіт на наявність рахунків, позик або кредитних карток, які ви не розпізнаєте.
-# A security freeze prevents prospective creditors from accessing your credit file. 
-# Creditors typically won't offer you credit if they can't access your credit reporting file, 
+# A security freeze prevents prospective creditors from accessing your credit file.
+# Creditors typically won't offer you credit if they can't access your credit reporting file,
 # so a security freeze, also called a credit freeze, prevents you or others from opening accounts in your name.
 # This will only be shown to users in the US.
 # Variables:
-#   $equifaxLink (string) - a link to the Equifax website, with { -breach-checklist-link-equifax } as the label
-#   $experianLink (string) - a link to the Experian website, with { -breach-checklist-link-experian } as the label
-#   $transUnionLink (string) - a link to the TransUnion website, with { -breach-checklist-link-transunion } as the label
+#   $equifaxLink (string) - a link to the Equifax website
+#   $experianLink (string) - a link to the Experian website
+#   $transUnionLink (string) - a link to the TransUnion website
 breach-checklist-ssn-body-2 = Ви також можете заморозити свій кредит у { $equifaxLink }, { $experianLink } і { $transUnionLink }, щоб завадити шахраям відкривати нові рахунки на ваше ім’я. Це безплатно та не вплине на ваш кредитний рейтинг.
 
 ## Prompts the user for changes when there is a breach detected of credit card
@@ -125,9 +142,9 @@ breach-checklist-phone-header-2 = Захистіть свій номер тел�
 
 ## Prompts the user for changes when there is a breach detected of security questions
 
-# { $breachedCompanyLink } will link to the website of the company where the breach occurred
-breach-checklist-sq-header-2 = Оновіть запитання безпеки на вебсайті компанії.
-breach-checklist-sq-body = Використовуйте довгі довільні відповіді та зберігайте їх у безпечному місці. Зробіть це будь-де, де ви використовували ті самі таємні запитання.
+breach-checklist-sq-header-text = Оновіть свої секретні запитання.
+# The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
+breach-checklist-sq-body-text = Зазвичай ми рекомендуємо вам оновити секретні запитання на вебсайті компанії. Але <b>їхній вебсайт може бути зламаним або містити зловмисні елементи</b>, тому будьте обережні, <breached-company-link>відвідуючи сайт</breached-company-link>. Для додаткового захисту оновіть свої секретні запитання у всіх важливих облікових записах, а також створіть унікальні паролі для всіх облікових записів.
 
 ## Prompts the user for changes when there is a breach detected of historical password
 
@@ -138,5 +155,7 @@ breach-checklist-hp-body-2 = Менеджер паролів, як-от { $passw
 
 ## Prompts the user for changes when there is a breach detected of other types
 
-# NOTE: { $companyName } is a placeholder for the name of the company where the breach occurred 
+# Variables:
+#   $breachDate (String) - Date of the breach
+#   $companyName (String) - Name of the company where the breach occurred
 breach-checklist-general-header = Зверніться до компанії { $companyName }, щоб повідомити її про цей злам та попросіть про конкретні заходи, які ви можете вжити.

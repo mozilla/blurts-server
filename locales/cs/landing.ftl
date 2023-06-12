@@ -3,8 +3,6 @@
 
 ## Hero
 
-find-out-if-breached = Zjistěte, zda jste byli součástí úniku dat
-stay-safe-with-tool = Zůstaňte v bezpečí s jednoduchým, ale výkonným nástrojem, který sleduje, zda byly vaše osobní údaje součástí úniku dat. Pomůžeme vám porozumět tomu, co dělat dále, a budeme neustále sledovat jakékoli nové úniky – to vše bez nákladů pro vás.
 get-started = Začínáme
 
 ## Why use Firefox Monitor?
@@ -41,7 +39,7 @@ top-questions-about-monitor = Nejčastější otázky o { -brand-fx-monitor(case
 see-all-faq = Prohlédněte si všechny často kladené otázky
 # question and answer
 what-is-breach = Co přesně je únik dat?
-when-info-exposed = K porušení zabezpečení dat dochází, když dojde k odhalení, odcizení nebo zkopírování osobních nebo soukromých informací bez udělení souhlasu. Tyto bezpečnostní incidenty mohou být výsledkem kybernetických útoků na webové stránky, aplikace nebo jakoukoli databázi, kde jsou uloženy osobní údaje lidí. K porušení dat může dojít také náhodou, například když se něčí přihlašovací údaje náhodně zveřejní.
+when-info-exposed = Únik dat se odehraje, když dojde k vyzrazení, odcizení nebo zkopírování osobních údajů nebo soukromých informací bez udělení souhlasu. Tyto bezpečnostní incidenty mohou být důsledkem kybernetických útoků na webové stránky, aplikace nebo jakoukoli databázi, kde jsou uloženy osobní údaje lidí. K úniku dat může dojít také nedopatřením, například když se něčí přihlašovací údaje omylem zveřejní.
 # question and answer
 what-do-i-do = Právě jsem zjistil(a), že byly mé údaje součástí úniku dat. Co mám dělat?
 visit-monitor-to-learn = Navštivte { -brand-fx-monitor(case: "acc") } a zjistěte, co dělat po úniku dat. Hackeři spoléhají na to, že lidé budou hesla opakovaně používat, proto je důležité vytvořit silná a jedinečná hesla pro všechny vaše účty. Uchovávejte svá hesla na bezpečném místě, ke kterému máte přístup pouze vy. Může to být stejné místo, kam ukládáte důležité dokumenty nebo správce hesel.
@@ -52,3 +50,4 @@ depends-on-hackers = Ne všechny úniky vyzrazují stejné informace. Záleží 
 ## See if you’ve been in a data breach
 
 see-if-data-breach = Podívejte se, jestli jste součástí nějakého úniku dat.
+hibp-footer-attribution = Údaje o únicích poskytuje <b>{ -brand-HIBP }</b>

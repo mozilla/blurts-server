@@ -34,8 +34,9 @@
   gap: var(--padding-md);
 }
 
-.hero form.exposure-scan .fx-relay-email-input-wrapper {
+.hero form.exposure-scan .exposure-scan-email-input {
   /* note: visual fix for the Relay add-on injected icon */
+  width: 100%;
   max-width: 80%;
   position: relative;
   overflow: hidden;
@@ -152,7 +153,7 @@
   width: 100vw;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
+  background: var(--background-gradient);
 }
 
 .safe-with-us > :first-child {
@@ -242,7 +243,7 @@
   width: 100vw;
   height: 100%;
   z-index: -1;
-  background: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
+  background: var(--background-gradient);
 }
 
 .mobile .see-if-data-breach .button {

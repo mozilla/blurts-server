@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Private Network
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Email không hợp lệ
 user-add-too-many-emails = Bạn đã thêm tối đa số lượng địa chỉ email để theo dõi.
 user-add-email-verify-subject = Xác nhận đăng ký của bạn với { -product-name }.
 user-add-duplicate-email = Email này đã được thêm vào { -product-name } trước đó.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Truy cập { $preferencesLink } của bạn để kiểm tra trạng thái của { $userEmail }.
 error-headline = Lỗi
 user-verify-token-error = Token xác minh được yêu cầu.
@@ -50,11 +51,11 @@ scan-placeholder = Nhập địa chỉ email
 scan-submit = Tìm kiếm email của bạn
 scan-error = Yêu cầu một email hợp lệ.
 download-firefox-banner-button = Tải về { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Đã gửi!
 sign-up = Đăng ký
 form-signup-error = Yêu cầu một email hợp lệ
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Ngày xảy ra rò rỉ:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Tài khoản bị xâm phạm:
@@ -64,6 +65,8 @@ unsub-headline = Hủy đăng ký từ { -product-name-nowrap }
 unsub-blurb = Điều này sẽ xóa email của bạn khỏi danh sách { -product-name-nowrap } và bạn sẽ không còn nhận được thông báo khi rò rỉ mới được công bố.
 unsub-button = Hủy đăng ký
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Dữ liệu các vụ rò rỉ được cung cấp bởi { $hibp-link }
 share-twitter = Hầu hết mọi người có khoảng 100 tài khoản trực tuyến. Có ai trong số bạn đã bị lộ trong một rò rỉ dữ liệu? Tìm hiểu nó.
 share-facebook-headline = Tìm xem nếu bạn đã từng là một phần của rò rỉ dữ liệu
@@ -112,8 +115,6 @@ about-firefox-monitor = Giới thiệu về { -product-name }
 preferences = Tùy chỉnh
 # Link title
 home = Trang chủ
-# Link title
-breaches = Rò rỉ dữ liệu
 # Link title
 security-tips = Mẹo về bảo mật
 fxa-account = { -brand-fxa }
@@ -213,7 +214,9 @@ feat-security-tips = Mẹo về bảo mật để bảo vệ tài khoản của 
 feat-sensitive = Tìm kiếm nâng cao trong các rò rỉ dữ liệu nhạy cảm
 feat-enroll-multiple = Đăng ký nhiều email theo dõi rò rỉ
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
        *[other] Xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
@@ -224,6 +227,8 @@ get-email-alerts = Giữ an toàn: Nhận thông báo qua email khi thông tin c
 search-for-your-email = Tìm kiếm địa chỉ email của bạn trong các rò rỉ dữ liệu công khai từ năm 2007.
 back-to-top = Về đầu trang
 comm-opt-0 = Gửi email cho tôi nếu một trong những địa chỉ email của tôi dưới đây xuất hiện rò rỉ dữ liệu.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Gửi tất cả các thông báo rò rỉ dữ liệu đến { $primaryEmail }.
 stop-monitoring-this = Dừng theo dõi email này.
 resend-verification = Gửi lại email xác minh
@@ -232,7 +237,7 @@ send-verification = Gửi liên kết xác minh
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Tóm tắt rò rỉ dữ liệu
 show-breaches-for-this-email = Hiển thị tất cả các rò rỉ dữ liệu cho email này.
@@ -245,8 +250,15 @@ remove-fxm-blurb =
 manage-email-addresses = Quản lý địa chỉ email
 # Link title
 latest-breach-link = Hãy xem nếu bạn đã bị rò rỉ dữ liệu
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Chào mừng trở lại, { $userName }!
 welcome-user = Chào mừng, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } đã tìm thấy email của bạn trong một rò rỉ dữ liệu mới.
 your-info-was-discovered-headline = Thông tin của bạn đã được phát hiện trong một rò rỉ dữ liệu mới.
 your-info-was-discovered-blurb =
@@ -270,28 +282,38 @@ ba-next-step-blurb-3 =
 faq1 = Tôi không nhận ra công ty hoặc trang web này. Tại sao tôi lại nằm trong rò rỉ dữ liệu đó?
 faq2 = Tại sao phải mất rất lâu để thông báo cho tôi về báo cáo rò rỉ này?
 faq3 = Làm cách nào để biết đây là một email hợp pháp từ { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
        *[other] ĐÃ TÌM THẤY { $breachCount } RÒ RỈ DỮ LIỆU MỚI
     }
 sign-up-headline-1 = Nhận thông báo liên tục với { -brand-fxa }.
 account-not-required = Không yêu cầu trình duyệt { -brand-name } cho { -brand-fxa }. Bạn có thể nhận thông tin về các dịch vụ { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Thông tin của bạn có bị lộ trong rò rỉ dữ liệu { $breachName } không?
-find-out-if = Tìm hiểu xem nếu dữ liệu của bạn đã bị lộ trong rò rỉ dữ liệu này.
 fb-not-comp = Email này không xuất hiện trong rò rỉ dữ liệu { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
        *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } rò rỉ dữ liệu khác.
     }
 fb-comp-only = Email này đã xuất hiện trong rò rỉ dữ liệu { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
        *[other] Email này xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết, bao gồm { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Không có rò rỉ dữ liệu khác được tìm thấy từ tìm kiếm cơ bản.
 no-results-blurb = Xin lỗi, vụ rò rỉ đó không có trong cơ sở dữ liệu của chúng tôi.
-all-breaches-headline = Tất cả các rò rỉ trong { -product-name }
-search-breaches = Tìm kiếm rò rỉ dữ liệu
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -359,6 +381,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Xem các rò rỉ dữ liệu bổ sung
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
        *[other] Email này xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết.
@@ -366,6 +390,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Kết quả cho: { $userEmail }
 other-monitored-emails = Email được giám sát khác
 email-verification-required = Yêu cầu xác minh email
@@ -381,6 +407,8 @@ get-ongoing-breach-monitoring = Nhận giám sát các rò rỉ dữ liệu liê
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Kiểm tra
 new-unsub-error = Bạn cần hủy đăng ký một trong những email mà { -product-name } đã gửi.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
        *[other] Tuy nhiên, nó đã xuất hiện trong { $breachCount } rò rỉ dữ liệu đã biết khác.
@@ -397,10 +425,12 @@ breach-overview-title = Tổng quan
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Vào lúc { $breachDate }, { $breachTitle } đã bị rò rỉ. Khi vụ rò rỉ được phát hiện và xác minh, nó đã được thêm vào cơ sở dữ liệu của chúng tôi trên { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = Tùy chỉnh { -product-short-name }
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Đã đăng nhập với: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -417,12 +447,16 @@ email-sent = Đã gửi email!
 want-to-add = Bạn muốn thêm một email khác?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Liên kết xác minh được gửi tới { $userEmail } để thêm liên kết vào { -product-name }.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = Đã xác minh email thành công!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Chúng tôi sẽ thông báo cho bạn nếu { $email } xuất hiện rò rỉ dữ liệu.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -436,15 +470,17 @@ sign-in-nested = đăng nhập
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Quản lý tất cả các địa chỉ email trong { $preferencesLink }.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Thông báo rò rỉ dữ liệu
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Rò rỉ dữ liệu đã được thêm:
 how-hackers-work-desc = Bảo vệ mật khẩu của bạn khỏi tội phạm mạng, vì đó là điều mà họ quan tâm nhất.
 what-to-do-after-breach-desc = Khóa tài khoản của bạn để giữ thông tin của bạn khỏi tay kẻ xấu.
@@ -466,7 +502,11 @@ see-additional-recs = Xem các khuyến nghị bổ sung
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } đã xuất hiện trong vụ rò rỉ này. <a>Phải làm gì tiếp theo</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
        *[other] { $numAffectedEmails } địa chỉ email của bạn đã xuất hiện trong vụ rò rỉ này. <a>Phải làm gì tiếp theo</a>
@@ -493,6 +533,8 @@ confirmation-3-subhead = Một thứ khác đã xuống. Công việc đang hoà
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = Bạn muốn mật khẩu của bạn mạnh mẽ, khó đoán và duy nhất? <a>Tìm hiểu</a>
 generic-confirmation-subhead = Rò rỉ này đã được đánh dấu là đã giải quyết
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
        *[other] Để xem tất cả các rò rỉ còn lại, đi đến bảng điều khiển của bạn.
@@ -501,9 +543,13 @@ return-to-breach-details-link = Quay lại chi tiết rò rỉ
 go-to-dashboard-link = Đi đến bảng điều khiển
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% hoàn thành
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
        *[other] Đã giải quyết { $numResolvedBreaches } mục
@@ -512,6 +558,9 @@ progress-intro-subhead = Tính năng mới trong { -product-name }: Đánh dấu
 progress-intro-message =
     Sau khi xem xét các chi tiết về rò rỉ và thực hiện các bước để bảo vệ
     thông tin cá nhân của bạn, bạn có thể đánh dấu rò rỉ là đã giải quyết.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
        *[other] { $numResolvedBreaches } trong số { $numTotalBreaches } vụ rò rỉ đã được đánh dấu là giải quyết
@@ -536,15 +585,19 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Giải quyết rò rỉ dữ liệu này
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Đã đánh dấu giải quyết:
 hide-resolved-button = Ẩn mục đã giải quyết
 show-resolved-button = Hiển thị mục đã giải quyết
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
        *[other] Mật khẩu bị lộ trong các rò rỉ dữ liệu chưa được giải quyết
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
        *[other] Rò rỉ dữ liệu đã biết được đánh dấu là đã giải quyết
@@ -576,7 +629,10 @@ vpn-promo-copy-new = Bảo vệ dữ liệu trực tuyến của bạn — và c
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Vị trí của bạn: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Bảo vệ bạn</em> với { -brand-mozilla-vpn }.
 vpn-banner-protected-with-vpn = <em>Được bảo vệ</em> với { -brand-mozilla-vpn }.
@@ -585,7 +641,8 @@ vpn-banner-title-2 = Vị trí của bạn có thể được theo dõi nếu b�
 vpn-banner-subtitle-2 = Bảo vệ vị trí của bạn và duyệt web an toàn trong 3 bước
 vpn-banner-status-protected = Tình trạng hiện tại: <em>Được bảo vệ ✓</em>
 vpn-banner-status-not-protected = Tình trạng hiện tại: <em>Không được bảo vệ ⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = Địa chỉ IP: { $ip-address }
 vpn-banner-step-1 = Đăng ký { -brand-mozilla-vpn }
 vpn-banner-step-2 = Chọn một vị trí VPN
@@ -642,8 +699,12 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -653,7 +714,7 @@ ad-unit-6-before-you-complete = Trước khi bạn hoàn tất lần đăng ký 
 
 ## Search Engine Optimization
 
-meta-desc = Tìm hiểu xem bạn có phải là một phần của rò rỉ dữ liệu với { -brand-fx-monitor } hay không. Đăng ký nhận thông báo về các rò rỉ trong tương lai và nhận các mẹo để giữ an toàn cho tài khoản của bạn.
+meta-desc-2 = Tìm hiểu xem bạn có phải là một phần của rò rỉ dữ liệu với { -brand-fx-monitor } hay không. Chúng tôi sẽ giúp bạn hiểu những việc cần làm tiếp theo và liên tục theo dõi mọi rò rỉ mới.
 
 ## Header
 
@@ -665,6 +726,10 @@ sign-in = Đăng nhập
 site-nav-breaches-link = Giải quyết rò rỉ dữ liệu
 site-nav-settings-link = Cài đặt
 site-nav-help-link = Trợ giúp và hỗ trợ
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Hãy thử các công cụ bảo mật khác của chúng tôi:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -672,8 +737,11 @@ menu-button-title = Menu người dùng
 menu-button-alt = Mở menu người dùng
 menu-list-accessible-label = Menu tài khoản
 menu-item-fxa = Quản lý { -brand-fx-account } của bạn
+menu-item-fxa-alt = Mở trang { -brand-fx-account }
 menu-item-settings = Cài đặt
+menu-item-settings-alt = Mở trang cài đặt
 menu-item-help = Trợ giúp và hỗ trợ
+menu-item-help-alt = Mở trang trợ giúp và hỗ trợ
 menu-item-logout = Đăng xuất
 
 ## Footer
@@ -681,6 +749,7 @@ menu-item-logout = Đăng xuất
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Điều khoản & quyền riêng tư
 github = { -brand-github }
+footer-nav-all-breaches = Tất cả vụ rò rỉ
 
 ## Error page
 
@@ -693,3 +762,23 @@ error-page-error-404-cta-button = Quay lại
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Có gì đó không ổn
 error-page-error-other-copy = Vui lòng thử lại hoặc quay lại sau
+
+## Breach overview page
+
+all-breaches-headline-2 = Tất cả các vụ rò rỉ được phát hiện bởi { -brand-fx-monitor }
+all-breaches-lead = Chúng tôi theo dõi tất cả các rò rỉ dữ liệu đã biết để tìm hiểu xem thông tin cá nhân của bạn có bị xâm phạm hay không. Dưới đây là danh sách đầy đủ tất cả các rò rỉ đã được báo cáo từ năm 2007.
+search-breaches = Tìm kiếm rò rỉ dữ liệu
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Dữ liệu bị lộ:
+
+## Public breach detail page
+
+find-out-if-2 = Tìm hiểu xem bạn nằm trong vụ rò rỉ này không
+find-out-if-description = Chúng tôi sẽ giúp bạn nhanh chóng xem liệu địa chỉ email của bạn có bị lộ trong rò rỉ này hay không và hiểu những việc cần làm tiếp theo.
+breach-detail-cta-signup = Kiểm tra rò rỉ
+
+## Floating banner
+
+floating-banner-text = Tăng cường bảo mật trực tuyến của bạn với tin tức, mẹo và thông tin cập nhật từ { -brand-Mozilla }.
+floating-banner-link-label = Đăng ký
+floating-banner-dismiss-button-label = Không, cảm ơn

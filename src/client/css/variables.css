@@ -20,6 +20,7 @@
   --h2-font: 700 1.75rem/1 metropolis, sans-serif;
   --h3-font: 700 1.25rem/1 metropolis, sans-serif;
   --h4-font: 700 1.125rem/1 metropolis, sans-serif;
+  --body-font: inter, inter-fallback, sans-serif;
   --gray-5: #f9f9fa;
   --gray-10: #e7e7e7;
   --gray-20: #cececf;
@@ -47,6 +48,7 @@
   --red-60: #e22850;
   --red-70: #c50042;
   --pink-5: #ffdef0;
+  --background-gradient: linear-gradient(74deg, #e53fb0 15%, #a260f7 121%);
   --monitor-gradient: linear-gradient(-90deg, #ff9100, #f10366 50%, #6173ff);
 }
 

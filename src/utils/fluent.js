@@ -9,6 +9,7 @@ import { FluentBundle, FluentResource } from '@fluent/bundle'
 import { negotiateLanguages } from '@fluent/langneg'
 import AppConstants from '../appConstants.js'
 import { localStorage } from './localStorage.js'
+import { InternalServerError } from '../utils/error.js'
 
 const supportedLocales = AppConstants.SUPPORTED_LOCALES?.split(',')
 /** @type {Record<string, FluentBundle>} */
@@ -33,7 +34,7 @@ async function initFluentBundles () {
       }))
     } catch (/** @type {any} */ e) {
       console.error('Could not read Fluent file:', e)
-      throw new Error(e)
+      throw new InternalServerError(e)
     }
 
     fluentBundles[locale] = bundle
@@ -146,13 +147,4 @@ function getMessageWithLocale (id, localePreferences, args) {
   return bundle.formatPattern(bundle.getMessage(id)?.value ?? '', args)
 }
 
-/**
- * @param {string} id
- * @param {import('@fluent/react').ReactLocalization} [l10n]
- */
-function fluentError (id, l10n) {
-  const getString = getStringLookup(l10n);
-  return new Error(getString(id))
-}
-
-export { initFluentBundles, updateLocale, getLocale, getMessage, getMessageWithLocale, getStringLookup, getRawMessage, fluentError }
+export { initFluentBundles, updateLocale, getLocale, getMessage, getMessageWithLocale, getStringLookup, getRawMessage }

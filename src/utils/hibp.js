@@ -8,8 +8,9 @@ import { dirname, resolve as pathResolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
-import { fluentError } from './fluent.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
+import { InternalServerError } from '../utils/error.js'
+import { getMessage } from '../utils/fluent.js'
 import { mkdir } from 'node:fs/promises'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
@@ -51,7 +52,7 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
         log.info('_throttledFetch', { err: 'Error 429, tryCount: ' + tryCount })
         // @ts-ignore TODO: Explicitly parse into a number
         if (tryCount >= HIBP_THROTTLE_MAX_TRIES) {
-          throw fluentError('error-hibp-throttled')
+          throw new InternalServerError(getMessage('error-hibp-throttled'))
         } else {
           tryCount++
           // @ts-ignore HIBP_THROTTLE_DELAY should be defined
@@ -59,11 +60,11 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
           return await _throttledFetch(url, reqOptions, tryCount)
         }
       default:
-        throw new Error(`bad response: ${response.status}`)
+        throw new InternalServerError(`bad response: ${response.status}`)
     }
   } catch (err) {
     log.error('_throttledFetch', { err })
-    throw fluentError('error-hibp-connect')
+    throw new InternalServerError(getMessage('error-hibp-connect'))
   }
 }
 
@@ -149,38 +150,34 @@ async function getAllBreachesFromDb () {
  * @param {{ locals: { breachLogoMap: Map<any, any>; breaches: any[]; breachesLoadedDateTime: number; }; }} app
  */
 async function loadBreachesIntoApp (app) {
-  try {
-    // attempt to fetch breaches from the "breaches" database table
-    const breaches = await getAllBreachesFromDb()
-    log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
+  // attempt to fetch breaches from the "breaches" database table
+  const breaches = await getAllBreachesFromDb()
+  log.debug('loadBreachesIntoApp', `loaded breaches from database: ${breaches.length}`)
 
-    // if "breaches" table does not return results, fall back to HIBP request
-    if (breaches?.length < 1) {
-      const breachesResponse = await req('/breaches')
-      log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
+  // if "breaches" table does not return results, fall back to HIBP request
+  if (breaches?.length < 1) {
+    const breachesResponse = await req('/breaches')
+    log.debug('loadBreachesIntoApp', `loaded breaches from HIBP: ${breachesResponse.length}`)
 
-      for (const breach of breachesResponse) {
-        breach.DataClasses = formatDataClassesArray(breach.DataClasses)
+    for (const breach of breachesResponse) {
+      breach.DataClasses = formatDataClassesArray(breach.DataClasses)
         // @ts-ignore The result should be set
-        breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
-        breaches.push(breach)
-      }
-
-      // sync the "breaches" table with the latest from HIBP
-      await upsertBreaches(breaches)
+      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)[0]
+      breaches.push(breach)
     }
-    // This will be replaced by a map with the breach logos when
-    // `downloadBreachIcons` resolves, but by setting it to an empty Map first,
-    // we don't delay the server start - we just won't have breach logos yet.
-    app.locals.breachLogoMap = new Map()
-    downloadBreachIcons(breaches).then(breachLogoMap => {
-      app.locals.breachLogoMap = breachLogoMap
-    })
-    app.locals.breaches = breaches
-    app.locals.breachesLoadedDateTime = Date.now()
-  } catch (error) {
-    throw fluentError('error-hibp-load-breaches')
+
+    // sync the "breaches" table with the latest from HIBP
+    await upsertBreaches(breaches)
   }
+  // This will be replaced by a map with the breach logos when
+  // `downloadBreachIcons` resolves, but by setting it to an empty Map first,
+  // we don't delay the server start - we just won't have breach logos yet.
+  app.locals.breachLogoMap = new Map()
+  downloadBreachIcons(breaches).then(breachLogoMap => {
+    app.locals.breachLogoMap = breachLogoMap
+  })
+  app.locals.breaches = breaches
+  app.locals.breachesLoadedDateTime = Date.now()
   log.info('done-loading-breaches', 'great success 👍')
 }
 

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { vers } from "../../controllers/dockerflow";
+import { vers } from "../../controllers/dockerflow.js";
 
 export async function GET(req: NextRequest) {
   // heartbeat route for dockerflow

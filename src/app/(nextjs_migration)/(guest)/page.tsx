@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import Script from "next/script";
-import styles from "./landing.module.scss";
+import "../../../client/css/partials/landing.css";
 import { getL10n } from "../../functions/server/l10n";
 
 import HeroImage from "../../../client/images/landing-hero@2x.webp";
@@ -20,11 +20,11 @@ export default async function Home() {
     <div data-partial="landing">
       <Script type="module" src="/nextjs_migration/client/js/transitionObserver.js" />
       <Script type="module" src="/nextjs_migration/client/js/landing.js" />
-      <section className={styles.hero}>
+      <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>
           <p>{l10n.getString("exposure-landing-hero-lead")}</p>
-          <form hidden className={styles.exposureScan}>
+          <form hidden className="exposure-scan">
             <label htmlFor="scan-email-adddress" className="visually-hidden">
               {l10n.getString("exposure-landing-hero-email-label")}
             </label>
@@ -51,7 +51,7 @@ export default async function Home() {
         </figure>
       </section>
 
-      <section className={styles.whyUseMonitor} data-enter-transition>
+      <section className="why-use-monitor" data-enter-transition>
         <h2>{l10n.getString("why-use-monitor")}</h2>
         <p>{l10n.getString("identifying-breaches")}</p>
         <ul>
@@ -70,7 +70,7 @@ export default async function Home() {
         </ul>
       </section>
 
-      <section className={styles.howItWorks} data-enter-transition>
+      <section className="how-it-works" data-enter-transition>
         <h2>{l10n.getString("how-it-works")}</h2>
         <ol>
           <li>
@@ -91,7 +91,7 @@ export default async function Home() {
         </ol>
       </section>
 
-      <section className={styles.safeWithUs} data-enter-transition>
+      <section className="safe-with-us" data-enter-transition>
         <div>
           <h2>{l10n.getString("safe-with-us")}</h2>
           <p>{l10n.getString("parent-company")}</p>
@@ -108,7 +108,7 @@ export default async function Home() {
       </section>
 
       <section
-        className={styles.topQuestionsAboutMonitor}
+        className="top-questions-about-monitor"
         data-enter-transition
       >
         <div>
@@ -136,7 +136,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className={styles.seeIfDataBreach} data-enter-transition>
+      <section className="see-if-data-breach" data-enter-transition>
         <h2>{l10n.getString("see-if-data-breach")}</h2>
         <a
           className="button primary"
@@ -146,7 +146,7 @@ export default async function Home() {
           {l10n.getString("get-started")}
         </a>
         <p
-          className={styles.hibpAttribution}
+          className="hibp-attribution"
           dangerouslySetInnerHTML={{
             __html: l10n.getString("hibp-footer-attribution"),
           }}

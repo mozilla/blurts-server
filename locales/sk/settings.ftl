@@ -5,13 +5,14 @@
 
 # Settings page
 
+settings-meta-title = { -brand-fx-monitor } - nastavenia
 settings-page-title = Nastavenia { -product-short-name(case: "gen") }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Predvoľby upozornení na únik dát
-settings-alert-preferences-option-one = Upozornenia na únik dát posielať na dotknutú e-mailovú adresu
-settings-alert-preferences-option-two = Všetky upozornenia na únik dát posielať na primárnu e-mailovú adresu
+settings-alert-preferences-title = Predvoľby upozornení na únik údajov
+settings-alert-preferences-option-one = Upozornenia na únik údajov posielať na dotknutú e-mailovú adresu
+settings-alert-preferences-option-two = Všetky upozornenia na únik údajov posielať na primárnu e-mailovú adresu
 
 ## Monitored email addresses
 
@@ -31,6 +32,7 @@ settings-email-limit-info =
 settings-email-verification-callout = Vyžaduje sa overenie e-mailovej adresy
 settings-resend-email-verification-link = Znova poslať overovací e-mail
 settings-add-email-button = Pridať e-mailovú adresu
+settings-delete-email-button = Odstrániť e-mailovú adresu
 # This string is shown beneath each of the user’s email addresses to indicate
 # how many known breaches that email address was found in.
 # Variables:
@@ -43,6 +45,12 @@ settings-email-number-of-breaches-info =
        *[other] Vyskytuje sa v { $breachCount } známych únikoch.
     }
 
+## Cancel Premium subscription
+
+settings-cancel-premium-subscription-title = Zrušiť predplatné { -brand-premium }
+settings-cancel-premium-subscription-info = Po skončení aktuálneho fakturačného cyklu sa vaše predplatné vráti na bezplatný účet. Vaše výsledky kontroly ochrany súkromia budú natrvalo odstránené a monitorovanie únikov údajov budete mať len na 1 e-mailovej adrese.
+settings-cancel-premium-subscription-link-label = Zrušiť z vášho { -brand-fx-account(case: "gen", capitalization: "lower") }
+
 ## Deactivate account
 
 settings-deactivate-account-title = Deaktivovať účet
@@ -52,6 +60,16 @@ settings-fxa-link-label = Prejsť do Nastavení { -brand-firefox(case: "gen") }
 ## Add email dialog
 
 settings-email-dialog-title = Pridanie ďalšej e-mailovej adresy
-settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku dát.
+settings-add-email-text = Pridajte novú e-mailovú adresu, aby ste zistili, či nebola súčasťou nejakého úniku údajov.
 settings-email-input-label = E-mailová adresa
 settings-send-email-verification-button = Odoslať overovací odkaz
+
+## Unsubscribe Dialog Survey
+
+settings-unsubscribe-dialog-title = Mrzí nás, že odchádzate.<br />Môžete nám povedať svoje dôvody?
+settings-unsubscribe-dialog-info = Vaše skúsenosti sú pre nás dôležité. Každú odpoveď čítame a berieme do úvahy.
+settings-unsubscribe-dialog-message-placeholder = Čo mohlo ísť lepšie?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Upozorňujeme, že všetky vaše služby { -brand-monitor-premium } budú <a { $faq_href }>natrvalo odstránené</a> po skončení aktuálneho fakturačného cyklu.
+settings-unsubscribe-dialog-continue = Pokračovať v zrušení
+settings-unsubscribe-dialog-cancel = Rozmyslel som si to

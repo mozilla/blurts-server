@@ -4,6 +4,7 @@
 
 import AppConstants from '../appConstants.js'
 import { getMessage, getLocale } from '../utils/fluent.js'
+import { getFloatingBanner } from '../views/partials/floatingBanner.js'
 
 /**
  * @type {ViewPartial<MainViewPartialData<any>>}
@@ -13,6 +14,29 @@ const mainLayout = data => {
   const metaTitle = data.meta?.socialTitle ?? getMessage('brand-fx-monitor')
   const metaDescription = data.meta?.socialDescription ?? getMessage('meta-desc-2')
   const pageUrl = `${AppConstants.SERVER_URL}${data.pathname ?? '/'}`
+
+  const showRecruitmentBanner = () => {
+    // Only show if ENVs are set, user language is set to "en" and user locale is set to the United States.
+    // Otherwise, return empty string
+    if (
+      AppConstants.RECRUITMENT_BANNER_TEXT &&
+      AppConstants.RECRUITMENT_BANNER_LINK &&
+      getLocale().includes('en') &&
+      data.countryCode === 'us'
+    ) {
+      return recruitmentBannerMarkup()
+    }
+    return ''
+  }
+
+  const recruitmentBannerMarkup = () => ` 
+    <div class="recruitment-banner" hidden>
+      <a id="recruitment-banner-link" class="text-link" href="${AppConstants.RECRUITMENT_BANNER_LINK}" target="_blank" rel="noopener noreferrer" data-ga="send-ga-pings" data-event-category="Recruitment" data-event-label="${AppConstants.RECRUITMENT_BANNER_TEXT}">${AppConstants.RECRUITMENT_BANNER_TEXT}</a>
+      <button id="recruitment-banner-dimiss" class="dismiss-btn">
+        <svg aria-label="Close" class="x-close-icon" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+      </button>
+    </div>
+  `
 
   return `
     <!doctype html>
@@ -52,16 +76,20 @@ const mainLayout = data => {
       </head>
       <body>
         <header>
-          <a href='/user/breaches'>
-            <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
-          </a>
-          <div class='nav-wrapper'>
-            <button class='nav-toggle'>
-              <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' width='20'>
-                <path d='M1 1h8M1 4h8M1 7h8' stroke='#000' stroke-width='1' stroke-linecap='round'/>
-              </svg>
-            </button>
-            ${userMenu(data)}
+          ${/* Cancel Premium Subscription */ ''}
+          ${showRecruitmentBanner()}
+          <div class="header-wrapper">
+            <a href='/user/breaches'>
+              <img class='monitor-logo' srcset='/images/monitor-logo-transparent.webp 213w, /images/monitor-logo-transparent@2x.webp 425w' width='213' height='33' alt='${getMessage('brand-fx-monitor')}'>
+            </a>
+            <div class='nav-wrapper'>
+              <button class='nav-toggle'>
+                <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 8' width='20'>
+                  <path d='M1 1h8M1 4h8M1 7h8' stroke='#000' stroke-width='1' stroke-linecap='round'/>
+                </svg>
+              </button>
+              ${userMenu(data)}
+            </div>
           </div>
         </header>
 
@@ -96,6 +124,7 @@ const mainLayout = data => {
         <main data-partial='${data.partial.name}'>
           ${data.partial(data)}
         </main>
+        ${getFloatingBanner({ pathname: data.pathname })}
         <footer class='site-footer'>
           <a href='https://www.mozilla.org' target='_blank'>
             <img src='/images/moz-logo-1color-white-rgb-01.svg' width='100' height='29' loading='lazy' alt='${getMessage('mozilla')}'>
@@ -136,26 +165,26 @@ const userMenu = data => `
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
         <div class='user-menu-subtitle'>
           ${getMessage('menu-item-fxa')}
-          <img src='/images/icon-open-in.svg' />
+          <img src='/images/icon-open-in.svg' alt='${getMessage('menu-item-fxa-alt')}' />
         </div>
       </a>
     </li>
     <hr>
     <li>
       <a href='/user/settings' class='user-menu-link'>
-        <img src='/images/icon-settings.svg' />
+        <img src='/images/icon-settings.svg' alt='${getMessage('menu-item-settings-alt')}' />
         ${getMessage('menu-item-settings')}
       </a>
     </li>
     <li>
       <a href='https://support.mozilla.org/kb/firefox-monitor' target='_blank' class='user-menu-link'>
-        <img src='/images/icon-help.svg' />
+        <img src='/images/icon-help.svg' ${getMessage('menu-item-help-alt')} />
         ${getMessage('menu-item-help')}
       </a>
     </li>
     <li>
       <a href='/user/logout' class='user-menu-link'>
-        <img src='/images/icon-signout.svg' />
+        <img src='/images/icon-signout.svg' alt='${getMessage('menu-item-logout')}' />
         ${getMessage('menu-item-logout')}
       </a>
     </li>

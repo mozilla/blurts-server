@@ -15,8 +15,6 @@
 -brand-lockwise = Firefox Lockwise
 -brand-send = Firefox Send
 -brand-fpn = Firefox Ñanduti Ñemigua
--brand-mozilla-vpn = Mozilla VPN
--brand-relay = Firefox Relay
 
 ##
 
@@ -37,6 +35,9 @@ user-add-invalid-email = Ñanduti veve oiko’ỹva
 user-add-too-many-emails = Ehechahína hetavéva ñanduti veve ikatuháicha.
 user-add-email-verify-subject = Ehechajei ne ñemboheraguapy { -product-name }-pe.
 user-add-duplicate-email = Ko ñanduti veve ojuajúma { -product-name } rehe.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Eho nde { $preferencesLink }-pe ehechajey hag̃ua { $userEmail } rekotee.
 error-headline = Javy
 user-verify-token-error = Oñekotevẽ token jehechajeyrã.
@@ -50,11 +51,11 @@ scan-placeholder = Ehai ne ñanduti veve kundaharape
 scan-submit = Eheka ne ñanduti veve
 scan-error = Ñanduti veve oikova’erã.
 download-firefox-banner-button = Emboguejy { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = ¡Mondopyre!
 sign-up = Mboheraguapy
 form-signup-error = Oikova’erã ñanduti veve kundaharape
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Arange oñembyaihague:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Mba’ete ivaikuaáva:
@@ -64,6 +65,8 @@ unsub-headline = Eheja mboheraguapy { -product-name-nowrap } pegua
 unsub-blurb = Kóva omboguéta ne ñanduti veve { -product-name-nowrap } rysýigui ha nog̃uahẽvéima ndéve kyhyjerã ñembyai pyahu rehegua.
 unsub-button = Eheja ñemboheraguapy
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = Mba’ekuaarã ivaikuaáva ome’ẽ { $hibp-link }
 share-twitter = Heta tapicha oguereko 100 mba’ete rupi ñandutípe. ¿Oĩ hína ne mba’ekuaarã oñeñambyaíva? Ehecha mávapa.
 share-facebook-headline = Ehecha ndépa eiméra’e mba’ekuaarã ñembyaípe.
@@ -105,8 +108,6 @@ about-firefox-monitor = { -product-name } rehegua
 preferences = Jerohoryvéva
 # Link title
 home = Ñepyrũ
-# Link title
-breaches = Ñembyai
 # Link title
 security-tips = Ñe’ẽporã tekorosãrã
 fxa-account = { -brand-fxa }
@@ -194,7 +195,9 @@ feat-security-tips = Tekorosãrã emo’ã hag̃ua ne mba’ete
 feat-sensitive = Jeheka ha’evéva ñembyai ñemiguávape
 feat-enroll-multiple = Ehai heta ñanduti veve ñembyai jehechápe
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Ojekuaa { $breachCount }-pe ñembyai jehecháva.
@@ -206,6 +209,8 @@ get-email-alerts = Eñemohekorosã: og̃uahẽta kyhyjerã ñanduti vevépe ne m
 search-for-your-email = Eheka ne ñanduti veve mba’ekuaarã ñembyai opavaveguávape ehóvo 2007 peve.
 back-to-top = Ejevy ñepyrũhápe
 comm-opt-0 = Embou ñanduti veve peteĩva che ñanduti veve osẽramo mba’ekuaarã ñembyaípe.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Emondo opaite kyhyjerã ñembyai rehegua { $primaryEmail }-pe.
 stop-monitoring-this = Anive ehechaiterei ko ñanduti veve kundaharape.
 resend-verification = Emondojey ñandutiveve jehechajeyrã
@@ -214,7 +219,7 @@ send-verification = Emondo juajuha jehechajeyrã
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Ñembyai ñemomichĩ
 show-breaches-for-this-email = Ehechauka opaite ñembyai ko ñanduti veve rehegua.
@@ -227,8 +232,15 @@ remove-fxm-blurb =
 manage-email-addresses = Eñangareko ñanduti veve kundaharapére
 # Link title
 latest-breach-link = Ehecha oñembyaípa ne mba’ekuaarã
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = ¡Eg̃uahẽporãitejey { $userName }!
 welcome-user = ¡Eg̃uahẽporãite, { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } ojuhu ne ñanduti veve mba’ekuaarã ñembyai pyahúpe.
 your-info-was-discovered-headline = Ne marandu ojehecha mba’ekuaarã ñembyai pyahúpe.
 your-info-was-discovered-blurb =
@@ -252,6 +264,8 @@ ba-next-step-blurb-3 =
 faq1 = Ndaikuaái ko mba’apohaguasu térã ñanduti renda. ¿Mba’ére aime ko ñembyaípe?
 faq2 = ¿Mba’ére eha’arõite ko ñembyai ñemomarandu?
 faq3 = ¿Mba’éicha aikuaáta ko ñanduti veve ha’eha { -product-name } mba’e?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } ÑEMBYAI PYAHU JUHUPYRE
@@ -259,23 +273,31 @@ new-breaches-found =
     }
 sign-up-headline-1 = Og̃uahẽta kyhyjerã { -brand-fxa } ndive.
 account-not-required = Kundahára { -brand-name } natekotevẽi { -brand-fxa } peg̃uarã. Eñemomarandukuaa { -brand-Mozilla } mba’epuru rehegua.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = ¿Ne marandu oĩkuri mba’ekuaarã ñembyaípe { $breachName }?
-find-out-if = Ehecha ne mba’ekuaarãpa oñembyaikuaápara’e.
 fb-not-comp = Ko ñanduti veve ndojehechái ñembyaípe { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Upéicharamo jepe, osẽramo ambue { $breachCount } ñembyaípe.
        *[other] Upéicharamo jepe, osẽramo ambuekuéra { $breachCount } ñembyaípe.
     }
 fb-comp-only = Ko ñanduti veve ojehecha ñembyaípe { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
        *[other] Ko ñanduti veve ojeheja { $breachCount } mba’ekuaarã ñembyai ojekuaávape, oikehápe { $breachName }.
     }
+
+##
+
 no-other-breaches-found = Ndojejuhúi ambue ñembyai jeheka ñepyrũguávape.
 no-results-blurb = Rombyasy, pe ñembyai ndaipóri ore mba’ekuaarã rendápe.
-all-breaches-headline = Opaite ñembyai { -product-name }-pe.
-search-breaches = Ñembyai jeheka
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-note =
@@ -346,6 +368,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Ehecha ñembyai mbojuajupyre
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Ñanduti veve ojehecha 1 mba’ekuaarã ñembyai ojekuaávape.
@@ -354,6 +378,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Japopyre: { $userEmail } peg̃uarã
 other-monitored-emails = Ambue ñanduti veve ojehapykuehóva
 email-verification-required = Ñanduti veve jehechajey jerurepyre
@@ -369,6 +395,8 @@ get-ongoing-breach-monitoring = Eguereko mba’ekuaarã ñembyai jehecha py’�
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Jejuhu
 new-unsub-error = Eikotevẽ esẽ peteĩ ñanduti veve omondova’ekuégui { -product-name }
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Upeicharõ jepe, ojehecha { $breachCount } ñembyai kuaapyrépe.
@@ -386,10 +414,12 @@ breach-overview-title = Jehechapa
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Ko { $breachDate }, { $breachTitle } oñembyai. Ojejuhu rire ha ojehechajey ko ñembyai, oñembojuajúma ore mba’ekuaarã rendápe ko { $addedDate }.
-# Title appearing on the Preferences dashboard. 
+# Title appearing on the Preferences dashboard.
 monitor-preferences = { -product-short-name } oguerohoryvéva
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Eike: { $userEmail } ramo
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -406,12 +436,16 @@ email-sent = ¡Ñandutiveve mondopyre!
 want-to-add = ¿Embojuajuse ambue ñandutiveve?
 # This is part of a confirmation message that appears after a user has submitted
 # the form to add an additional email to Firefox Monitor.
+# Variables:
+#   $userEmail (String) - User email address
 verify-the-link = Ehechajey juajuha emondóva { $userEmail }-pe embojuaju hag̃ua { -product-name } rehe.
 
 ## These are part of a confirmation page that appears after a user has verified
 ## an additional email to Firefox Monitor.
 
 email-verified = ¡Ñanduti veve ojechajeypyréva!
+# Variables:
+#   $email (String) - User email address
 email-added-to-subscription = Romomarandúta { $email } ojehecháramo mba’ekuaarã ñembyaípe.
 # This message is displayed after the user has verified their email address.
 # { $nestedSignInLink } is replaced by a link, using sign-in-nested as text ("sign in" for English).
@@ -425,15 +459,17 @@ sign-in-nested = eñepyrũ tembiapo
 # form to add an additional email to Firefox Monitor. { $preferencesLink } is a link
 # to the Preferences page. The code and text for the link is generated elsewhere
 # using the { preferences } string.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
 manage-all-emails = Eñangareko opaite ñanduti vevére { $preferencesLink }-pe.
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-alert-notifications = Ñemomarandu kyhyjerã ojejapo’ỹva rupi
 # This string is a label for the calendar date a breach is added to the database
-# and is followed by that date. 
+# and is followed by that date.
 breach-added-label = Mboguapy mbojuajupyre:
 how-hackers-work-desc = Emo’ã ne ñe’ẽñemi mba’evai apoha ñandutiguávagui, ha’éva pe eipotavéva.
 what-to-do-after-breach-desc = Ejoko ne mba’ete eguereko hag̃ua ne marandu mombyry iñañávagui.
@@ -455,7 +491,11 @@ see-additional-recs = Ehecha ñe’ẽporã jo’apyre
 ## This string contains nested markup that becomes a link later in the code.
 ## Please do not modify or remove "<a>" and "</a>".
 
+# Variables:
+#   $affectedEmail (String) - User email address
 resolve-top-notification = { $affectedEmail } osẽ ko ñembyaípe. <a>Mba’e ejapóta ko’ág̃a</a>
+# Variables:
+#   $numAffectedEmails (Integer) - Number of affected email address
 resolve-top-notification-plural =
     { $numAffectedEmails ->
         [one] { $numAffectedEmails } osẽ ko ñembyaípe. <a>Mba’e ejapóta ko’ág̃a</a>
@@ -483,6 +523,8 @@ confirmation-3-subhead = Ambueve. ¡Iporã añete!
 # Please do not modify or remove "<a>" and "</a>".
 confirmation-3-body = ¿Ne ñe’ẽñemi pyahu oikoite, hekorosã ha hasy ojekuaa hag̃ua? <a>Eikuaasépa</a>
 generic-confirmation-subhead = Ko ñembyai oñemongurusu oĩporãmavaramo
+# Variables:
+#   $numUnresolvedBreaches (Integer) - Number of resolved breaches
 generic-confirmation-message =
     { $numUnresolvedBreaches ->
         [one] Ehecha hag̃ua ñembyai opytáva, ema’ẽ ne ñangarekoha rupáre.
@@ -492,9 +534,13 @@ return-to-breach-details-link = Ejevy pe ñembyai mba’emimíme
 go-to-dashboard-link = Eho ñangarekoha rupápe
 # This string appears above a breach resolution progress bar and indicates
 # the percentage of breaches a user has resolved. For instance, "27% complete".
+# Variables:
+#   $percentComplete (String) - Completion percentage
 progress-percent-complete = { $percentComplete }% oĩmbáma
 # This string appears in the purple callouts at the top of the user dashboard and shows
 # the total number of breaches a user has resolved. For instance, "5 Resolved".
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 num-resolved =
     { $numResolvedBreaches ->
         [one] { $numResolvedBreaches } Oĩporãma
@@ -505,6 +551,9 @@ progress-intro-message =
     Ehecha rire umi mba’emimi ñembyai rehegua ha mba’etépa ejapóta emo’ã hag̃ua 
     
     ne maranduete, ikatúma emongurusu oĩporãvaramo.
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
+#   $numTotalBreaches (Integer) - Total number of breaches
 progress-status =
     { $numTotalBreaches ->
         [one] { $numResolvedBreaches } { $numTotalBreaches } mba’e ñembyai mongurusupyre oĩporãmavaramo
@@ -530,16 +579,20 @@ progress-complete-message =
 ##
 
 resolve-this-breach-link = Emoĩporã ko ñembyai
-# This string appears in resolved breach cards and is followed by 
+# This string appears in resolved breach cards and is followed by
 # the date the user marked the breach as resolved.
 marked-resolved = Oĩporãmavaramo mongurusupyre:
 hide-resolved-button = Emokañy oĩporãpyréva
 show-resolved-button = Ehechauka oĩporãpyréva
+# Variables:
+#   $numPasswords (Integer) - Number of exposed passwords
 unresolved-passwords-exposed =
     { $numPasswords ->
         [one] Ñe’ẽñemi ojekuaareíva ñembyai oñemoĩporã’ỹva rupi
        *[other] Ñe’ẽñemikuéra ojekuaareíva ñembyai oñemoĩporã’ỹva rupi
     }
+# Variables:
+#   $numResolvedBreaches (Integer) - Number of resolved breaches
 known-data-breaches-resolved =
     { $numResolvedBreaches ->
         [one] Mba’ekuaarã ñembyai ojekuaáva oñemongurusúva oĩporãmavaramo
@@ -570,7 +623,10 @@ vpn-promo-copy-new = Emo’ã ne mba’ekuaarã ñandutípe ha eiporavo—VPN-pe
 
 ## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
 
-# user's IP location is determined dynamically by 3rd-party, eg: "Your location: Los Angeles, CA".  The 3rd-party service provides its own localization.
+# Variables:
+#   $ip-location (String) - User's IP location is determined dynamically by 3rd-party,
+#                           eg: "Your location: Los Angeles, CA".  The 3rd-party service
+#                           provides its own localization.
 vpn-banner-location = Ne rendaite: { $ip-location }
 vpn-banner-protect-yourself-with-vpn = <em>Eñemo’ã</em> { -brand-mozilla-vpn } ndive.
 vpn-banner-protected-with-vpn = <em>Mo’ãmbyre</em> { -brand-mozilla-vpn } ndive.
@@ -579,7 +635,8 @@ vpn-banner-title-2 = Ne rendaite ojehapykuehokuaa ndereipurúiramo VPN.
 vpn-banner-subtitle-2 = Emo’ã ne rendaite ha eikundaha tekorosãme 3 jeku’épe
 vpn-banner-status-protected = Nde rekoite: <em>Oĩ ñemo’ãme</em>
 vpn-banner-status-not-protected = Nde rekoite: <em>Noñemo’ãi⚠</em>
-# user's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
+# Variables:
+#   $ip-address (String) - User's IP address is determined dynamically, eg: "IP address: 192.168.1.1"
 vpn-banner-ip-address = IP kundaharape: { $ip-address }
 vpn-banner-step-1 = Eñemboheraguapy { -brand-mozilla-vpn }-pe
 vpn-banner-step-2 = Eiporavo VPN rendaite
@@ -636,8 +693,12 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Iporãvéva
+-brand-monitor-premium = Mba’erechaha iporãvéva
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
+-brand-mozilla-vpn = Mozilla VPN
+-brand-relay = Firefox Relay
 
 ##
 
@@ -647,7 +708,6 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 
 ## Search Engine Optimization
 
-meta-desc = Ehecha eĩpara’e mba’ekuaarã ñambyaípe { -brand-fx-monitor } ndive. Eñemboheraguapy og̃uahẽ hag̃ua kyhyjerã ñembyai oikokuaáva ha erekóta ñe’ẽporã ne mba’ete rekorosãrã.
 
 ## Header
 
@@ -659,6 +719,10 @@ sign-in = Eñepyrũ tembiapo
 site-nav-breaches-link = Emoĩporã mba’ekuaarã ñembogua
 site-nav-settings-link = Ñemboheko
 site-nav-help-link = Ñepytvõ ha Pytyvõha
+# This call-out is above 2 image links for Firefox Relay and Mozilla VPN 
+site-nav-ad-callout = Eipuru ore ambue rembipuru tekorosãrã:
+brand-relay = { -brand-relay }
+brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
@@ -666,8 +730,11 @@ menu-button-title = Puruhára jeporavoha
 menu-button-alt = Embojuruja puruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
 menu-item-fxa = Eñangareko nde { -brand-fx-account }
+menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
 menu-item-settings = Ñemboheko
+menu-item-settings-alt = Embojuruja kuatiarogue ñemboheko
 menu-item-help = Ñepytvõ ha Pytyvõha
+menu-item-help-alt = Embojuruja kuatiarogue ñepytyvõha
 menu-item-logout = Emboty tembiapo
 
 ## Footer
@@ -675,6 +742,7 @@ menu-item-logout = Emboty tembiapo
 mozilla = { -brand-Mozilla }
 terms-and-privacy = Mboguatarã ha ñemigua
 github = { -brand-github }
+footer-nav-all-breaches = Opaite Ñembogua
 
 ## Error page
 
@@ -687,3 +755,21 @@ error-page-error-404-cta-button = Guevijey
 #   $errorCode (number) - the status code of the error, e.g. 403
 error-page-error-other-title = { $errorCode } Oĩ osẽvaíva
 error-page-error-other-copy = Eha’ã pyahujey térã ejujey ag̃amieve
+
+## Breach overview page
+
+all-breaches-headline-2 = Opaite ñembogua ohecháva { -brand-fx-monitor }
+search-breaches = Ñembyai jeheka
+# the kind of user data exposed to hackers in data breach.
+exposed-data = Mba’ekuaarã imarãkuaáva:
+
+## Public breach detail page
+
+find-out-if-2 = Ehechaporãke eimépara’e ko ñemboguápe
+find-out-if-description = Rohechaukáta pya’e ndéve ne ñanduti renda kundaharape oñembiaikuaaha eikuaa hag̃ua mba’épa ejapóta tenondeve.
+breach-detail-cta-signup = Ehechajey oĩpa ñembogua
+
+## Floating banner
+
+floating-banner-link-label = Eñemboheraguapy
+floating-banner-dismiss-button-label = Nahániri, aguyje

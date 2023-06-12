@@ -36,7 +36,7 @@ function createBreachRows (data, logos) {
       const logo = getBreachLogo(breach, logos)
 
       return `
-      <details class='breach-row' data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
+      <details class='breach-row' data-company-name=${breach.Name} data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
         <summary>
           <span class='breach-company'>${logo} ${breach.Title}</span>
           <span>${shortList.format(dataClassesTranslated)}</span>
@@ -82,7 +82,7 @@ export const breaches = data => `
       data-txt-none='${getMessage('none-data-class')}'>
     </circle-chart>
     <figure class='email-stats' data-count=${data.emailTotalCount} data-total=${AppConstants.MAX_NUM_ADDRESSES}>
-      <img src='/images/icon-email.svg' width='55' height='30'>
+      <img src='/images/icon-email.svg' alt='' width='55' height='30'>
       <figcaption>
         <strong>${getMessage('emails-monitored', { count: data.emailVerifiedCount, total: AppConstants.MAX_NUM_ADDRESSES })}</strong>
         <a href='/user/settings'>${getMessage('manage-emails-link')}</a>

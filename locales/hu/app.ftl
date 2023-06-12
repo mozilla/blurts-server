@@ -712,6 +712,8 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -725,7 +727,7 @@ ad-unit-6-before-you-complete = Mielőtt befejezné a következő regisztráció
 
 ## Search Engine Optimization
 
-meta-desc = Tudja meg, hogy része volt-e adatvédelmi incidensnek a { -brand-fx-monitor } segítségével. Iratkozzon fel a figyelmeztetésekre, és kapjon tippeket arról, hogyan tartsa biztonságban a fiókjait.
+meta-desc-2 = Tudja meg a { -brand-fx-monitor } segítségével, hogy érintett volt-e adatvédelmi incidensben. Segítünk megérteni, hogy mit tegyen, és folyamatosan figyeljük az új adatvédelmi incidenseket.
 
 ## Header
 
@@ -748,8 +750,11 @@ menu-button-title = Felhasználói menü
 menu-button-alt = Felhasználói menü megnyitása
 menu-list-accessible-label = Fiók menü
 menu-item-fxa = A { -brand-fx-account }ja kezelése
+menu-item-fxa-alt = A { -brand-fx-account } oldal megnyitása
 menu-item-settings = Beállítások
+menu-item-settings-alt = Beállítások oldal megnyitása
 menu-item-help = Súgó és támogatás
+menu-item-help-alt = Súgó és támogatás oldal megnyitása
 menu-item-logout = Kijelentkezés
 
 ## Footer
@@ -784,3 +789,9 @@ exposed-data = Kikerült adatok:
 find-out-if-2 = Tudja meg, hogy érintett-e ebben az adatvédelmi incidensben
 find-out-if-description = Segítünk gyorsan megnézni, hogy kikerült-e az e-mail-címe ebben az adatvédelmi incidensben, és hogy mi legyen a következő teendője.
 breach-detail-cta-signup = Adatvédelmi incidensek keresése
+
+## Floating banner
+
+floating-banner-text = Növelje online biztonságát a { -brand-Mozilla } híreivel, tippjeivel és frissítéseivel.
+floating-banner-link-label = Regisztráció
+floating-banner-dismiss-button-label = Köszönöm, nem

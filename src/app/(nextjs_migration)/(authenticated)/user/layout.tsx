@@ -30,34 +30,36 @@ const MainLayout = async (props: Props) => {
   return (
     <>
       <header>
-        <a href="/user/breaches">
-          <Image
-            className="monitor-logo"
-            src={MonitorLogo}
-            width="213"
-            height="33"
-            alt={l10n.getString("brand-fx-monitor")}
-          />
-        </a>
-        <div className="nav-wrapper">
-          <button className="nav-toggle">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 10 8"
-              width="20"
-            >
-              <path
-                d="M1 1h8M1 4h8M1 7h8"
-                stroke="#000"
-                strokeWidth="1"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
-          <UserMenu
-            session={session}
-            fxaSettingsUrl={AppConstants.FXA_SETTINGS_URL}
-          />
+        <div className="header-wrapper">
+          <a href="/user/breaches">
+            <Image
+              className="monitor-logo"
+              src={MonitorLogo}
+              width="213"
+              height="33"
+              alt={l10n.getString("brand-fx-monitor")}
+            />
+          </a>
+          <div className="nav-wrapper">
+            <button className="nav-toggle">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 10 8"
+                width="20"
+              >
+                <path
+                  d="M1 1h8M1 4h8M1 7h8"
+                  stroke="#000"
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <UserMenu
+              session={session}
+              fxaSettingsUrl={AppConstants.FXA_SETTINGS_URL}
+            />
+          </div>
         </div>
       </header>
 

@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { ClientError, ErrorActionTypes } from '../error.js'
 import { capitalFirstLetter } from '../utils.js'
 
 const breachesPartial = document.querySelector("[data-partial='breaches']")
@@ -42,6 +43,8 @@ function init () {
   statusFilter.addEventListener('change', handleEvent)
   breachesTable.addEventListener('change', handleEvent)
   document.body.addEventListener('email-added', handleEvent)
+
+  breachRows.forEach(elem => elem.addEventListener('toggle', handleEvent))
 }
 
 function handleEvent (e) {
@@ -66,6 +69,13 @@ function handleEvent (e) {
     case e.type === 'email-added':
       state.emailCount = e.detail.newEmailCount
       renderZeroState()
+      break
+    case e.type === 'toggle':
+      window.gtag('event', 'toggled_breach_card', {
+        action: e.target.open ? 'opened' : 'closed',
+        page_location: (window.location.origin + window.location.pathname),
+        company_name: e.target.dataset.companyName
+      })
       break
   }
 }
@@ -93,16 +103,16 @@ async function updateBreachStatus (input) {
       })
     })
 
-    if (!res.ok) throw new Error('Bad fetch response')
+    if (!res.ok) {
+      throw new ClientError('We couldn’t search for the latest breaches. Please refresh or try again later.', {
+        action: ErrorActionTypes.Toast
+      })
+    }
 
     const data = await res.json()
     input.closest('.breach-row').dataset.status = data[affectedEmail][breachId].isResolved ? 'resolved' : 'unresolved'
     renderResolvedCounts()
   } catch (e) {
-    // TODO: localize error messages
-    const toast = document.createElement('toast-alert')
-    toast.textContent = 'Could not update breach status: please try again later.'
-    document.body.append(toast)
     console.error('Could not update user breach resolve status:', e)
   } finally {
     input.disabled = false

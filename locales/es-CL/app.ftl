@@ -680,6 +680,8 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Fundación Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -693,7 +695,7 @@ ad-unit-6-before-you-complete = Antes de completar el próximo registro, usa una
 
 ## Search Engine Optimization
 
-meta-desc = Averigua si has sido parte de una filtración de datos con { -brand-fx-monitor }. Registrate para recibir alertas de futuras filtraciones y consejos para mantener tus cuentas seguras.
+meta-desc-2 = Descubre si has sido parte de una filtración de datos con { -brand-fx-monitor }. Te ayudaremos a comprender qué hacer a continuación y monitorearemos continuamente cualquier nueva filtración.
 
 ## Header
 
@@ -716,8 +718,11 @@ menu-button-title = Menú del usuario
 menu-button-alt = Abrir menú del usuario
 menu-list-accessible-label = Menú de la cuenta
 menu-item-fxa = Gestiona tu { -brand-fx-account }
+menu-item-fxa-alt = Abrir la página de { -brand-fx-account }
 menu-item-settings = Ajustes
+menu-item-settings-alt = Abrir la página de ajustes
 menu-item-help = Ayuda y soporte
+menu-item-help-alt = Abrir la página de ayuda y soporte
 menu-item-logout = Salir
 
 ## Footer
@@ -752,3 +757,9 @@ exposed-data = Datos expuestos:
 find-out-if-2 = Averigua si te viste involucrado en esta filtración
 find-out-if-description = Te ayudaremos a comprobar rápidamente si tu dirección de correo electrónico se vio expuesta en esta filtración y saber qué hacer a continuación.
 breach-detail-cta-signup = Busca filtraciones
+
+## Floating banner
+
+floating-banner-text = Mejora tu seguridad en línea con noticias, consejos y actualizaciones de { -brand-Mozilla }.
+floating-banner-link-label = Registrarse
+floating-banner-dismiss-button-label = No, gracias

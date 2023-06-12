@@ -26,6 +26,7 @@ const requiredEnvVars = [
   'MOZLOG_FMT',
   'MOZLOG_LEVEL',
   'NODE_ENV',
+  'OAUTH_ACCOUNT_URI',
   'OAUTH_AUTHORIZATION_URI',
   'OAUTH_CLIENT_ID',
   'OAUTH_CLIENT_SECRET',
@@ -42,7 +43,12 @@ const requiredEnvVars = [
 ]
 
 const optionalEnvVars = [
+  'CANCEL_SUBSCRIPTION_FLOW',
   'EMAIL_TEST_RECIPIENT',
+  'FLOATING_BANNER_DELAY',
+  'FLOATING_BANNER_LINK',
+  'FLOATING_BANNER_PAGES',
+  'FLOATING_BANNER_TYPE',
   'FX_REMOTE_SETTINGS_WRITER_PASS',
   'FX_REMOTE_SETTINGS_WRITER_SERVER',
   'FX_REMOTE_SETTINGS_WRITER_USER',
@@ -51,6 +57,8 @@ const optionalEnvVars = [
   'HIBP_BREACH_DOMAIN_BLOCKLIST',
   'LIVE_RELOAD',
   'PORT',
+  'RECRUITMENT_BANNER_LINK',
+  'RECRUITMENT_BANNER_TEXT',
   'SENTRY_DSN_LEGACY'
 ]
 
@@ -65,9 +73,10 @@ if (!process.env.SERVER_URL && (process.env.NODE_ENV) === 'heroku') {
 for (const v of requiredEnvVars) {
   const value = process.env[v]
   if (value === undefined) {
-    throw new Error(`Required environment variable was not set: ${v}`)
+    console.warn(`Required environment variable was not set: ${v}`)
+  } else {
+    AppConstants[v] = value
   }
-  AppConstants[v] = value
 }
 
 optionalEnvVars.forEach(key => {

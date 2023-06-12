@@ -20,20 +20,22 @@ const GuestLayout = (props: Props) => {
   return (
     <>
       <header>
-        <a href="/">
-          <Image
-            className="monitor-logo"
-            src={MonitorLogo}
-            width="213"
-            height="33"
-            alt={l10n.getString("brand-fx-monitor")}
-          />
-        </a>
-        <menu>
-          <li>
-            <SignInButton />
-          </li>
-        </menu>
+        <div className="header-wrapper">
+          <a href="/">
+            <Image
+              className="monitor-logo"
+              src={MonitorLogo}
+              width="213"
+              height="33"
+              alt={l10n.getString("brand-fx-monitor")}
+            />
+          </a>
+          <menu>
+            <li>
+              <SignInButton />
+            </li>
+          </menu>
+        </div>
       </header>
       <main>{props.children}</main>
       <footer className="site-footer">

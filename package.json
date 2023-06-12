@@ -14,12 +14,23 @@
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
+    "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
     "prepare": "husky install",
     "postinstall": "patch-package",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src/cloud-functions/**/*",
+      ".env"
+    ],
+    "env": {
+      "LIVE_RELOAD": true
+    },
+    "ext": "js,css,json,ftl,env"
   },
   "ava": {
     "files": [
@@ -53,6 +64,8 @@
     "eslint-config-next": "^13.4.1",
     "helmet": "^6.0.0",
     "jsdom": "^22.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwk-to-pem": "^2.0.5",
     "knex": "^2.4.2",
     "mozlog": "^3.0.2",
     "next": "^13.4.1",
@@ -65,6 +78,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@google-cloud/functions-framework": "^3.2.0",
     "@playwright/test": "^1.32.3",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
@@ -87,6 +101,7 @@
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
     "node-mocks-http": "^1.12.1",
+    "nodemon": "^2.0.20",
     "prettier": "2.8.8",
     "sass": "^1.62.1",
     "storybook": "^7.0.18",

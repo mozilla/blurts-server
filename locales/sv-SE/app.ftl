@@ -712,6 +712,8 @@ ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd e
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -725,7 +727,7 @@ ad-unit-6-before-you-complete = Innan du slutför nästa registrering, använd e
 
 ## Search Engine Optimization
 
-meta-desc = Ta reda på om du har varit en del av ett dataintrång med { -brand-fx-monitor }. Registrera dig för varningar om framtida intrång och få tips för att hålla dina konton säkra.
+meta-desc-2 = Ta reda på om du har varit en del av ett dataintrång med { -brand-fx-monitor }. Vi hjälper dig att förstå vad du ska göra härnäst och övervakar kontinuerligt efter eventuella nya intrång.
 
 ## Header
 
@@ -748,8 +750,11 @@ menu-button-title = Användarmeny
 menu-button-alt = Öppna användarmenyn
 menu-list-accessible-label = Kontomeny
 menu-item-fxa = Hantera ditt { -brand-fx-account }
+menu-item-fxa-alt = Öppna sidan { -brand-fx-account }
 menu-item-settings = Inställningar
+menu-item-settings-alt = Öppna inställningssidan
 menu-item-help = Hjälp och support
+menu-item-help-alt = Öppna hjälp- och supportsidan
 menu-item-logout = Logga ut
 
 ## Footer
@@ -784,3 +789,9 @@ exposed-data = Exponerad data:
 find-out-if-2 = Ta reda på om du var inblandad i detta intrång
 find-out-if-description = Vi hjälper dig att snabbt kontrollera om din e-postadress har varit inblandad i detta intrång och hur du ska gå vidare.
 breach-detail-cta-signup = Sök efter intrång
+
+## Floating banner
+
+floating-banner-text = Öka din onlinesäkerhet med nyheter, tips och uppdateringar från { -brand-Mozilla }.
+floating-banner-link-label = Registrera dig
+floating-banner-dismiss-button-label = Nej tack

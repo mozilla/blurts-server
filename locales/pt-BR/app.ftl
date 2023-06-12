@@ -678,6 +678,8 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Fundação Mozilla
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -691,7 +693,7 @@ ad-unit-6-before-you-complete = Antes de concluir o próximo cadastro, use uma m
 
 ## Search Engine Optimization
 
-meta-desc = Descubra se você foi vítima de um vazamento de dados com o { -brand-fx-monitor }. Cadastre-se para receber alertas sobre futuros vazamentos e receber dicas para manter suas contas seguras.
+meta-desc-2 = Descubra se você foi vítima de um vazamento de dados com o { -brand-fx-monitor }. Ajudaremos você a entender o que fazer a seguir e iremos monitorar continuamente novos vazamentos.
 
 ## Header
 
@@ -714,8 +716,11 @@ menu-button-title = Menu do usuário
 menu-button-alt = Abrir menu do usuário
 menu-list-accessible-label = Menu da conta
 menu-item-fxa = Gerencie sua { -brand-fx-account }
+menu-item-fxa-alt = Abrir página da { -brand-fx-account }
 menu-item-settings = Configurações
+menu-item-settings-alt = Abrir página de configurações
 menu-item-help = Ajuda e suporte
+menu-item-help-alt = Abrir página de ajuda e suporte
 menu-item-logout = Sair
 
 ## Footer
@@ -750,3 +755,9 @@ exposed-data = Dados expostos:
 find-out-if-2 = Descubra se você foi vítima deste vazamento
 find-out-if-description = Ajudaremos você a ver rapidamente se seu endereço de email foi exposto neste vazamento e saber o que fazer a seguir.
 breach-detail-cta-signup = Verificar se há vazamentos
+
+## Floating banner
+
+floating-banner-text = Aumente sua segurança online com notícias, dicas e novidades da { -brand-Mozilla }.
+floating-banner-link-label = inscrever-se
+floating-banner-dismiss-button-label = Não, obrigado

@@ -709,6 +709,8 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -722,7 +724,7 @@ ad-unit-6-before-you-complete = Before you complete that next signup, use an ema
 
 ## Search Engine Optimization
 
-meta-desc = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. Sign up for alerts about future breaches and get tips to keep your accounts safe.
+meta-desc-2 = Find out if you’ve been part of a data breach with { -brand-fx-monitor }. We’ll help you understand what to do next and continuously monitor for any new breaches.
 
 ## Header
 
@@ -745,8 +747,11 @@ menu-button-title = User menu
 menu-button-alt = Open user menu
 menu-list-accessible-label = Account menu
 menu-item-fxa = Manage your { -brand-fx-account }
+menu-item-fxa-alt = Open { -brand-fx-account } page
 menu-item-settings = Settings
+menu-item-settings-alt = Open settings page
 menu-item-help = Help and support
+menu-item-help-alt = Open help and support page
 menu-item-logout = Sign out
 
 ## Footer
@@ -781,3 +786,9 @@ exposed-data = Exposed data:
 find-out-if-2 = Find out if you were involved in this breach
 find-out-if-description = We’ll help you quickly see if your email address was exposed in this breach, and understand what to do next.
 breach-detail-cta-signup = Check for breaches
+
+## Floating banner
+
+floating-banner-text = Boost your online security with news, tips, and updates from { -brand-Mozilla }.
+floating-banner-link-label = Sign up
+floating-banner-dismiss-button-label = No thanks

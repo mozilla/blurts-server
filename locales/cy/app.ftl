@@ -738,6 +738,8 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premiwm
+-brand-monitor-premium = Monitro Premiwm
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -751,7 +753,7 @@ ad-unit-6-before-you-complete = Cyn i chi gwblhau'r cofrestriad nesaf hwnnw, def
 
 ## Search Engine Optimization
 
-meta-desc = Dewch i weld a ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Cofrestrwch am rybuddion am dor-data'r dyfodol a chael awgrymiadau ar sut i gadw'ch cyfrifon yn ddiogel.
+meta-desc-2 = Darganfyddwch od ydych chi wedi bod yn rhan o dor-data gyda { -brand-fx-monitor }. Byddwn yn eich helpu i wybod beth i'w wneud nesaf ac yn monitro am unrhyw dor-data newydd yn barhaus.
 
 ## Header
 
@@ -774,8 +776,11 @@ menu-button-title = Dewislen defnyddiwr
 menu-button-alt = Agor dewislen defnyddiwr
 menu-list-accessible-label = Dewislen cyfrif
 menu-item-fxa = Rheolwch eich { -brand-fx-account }
+menu-item-fxa-alt = Agor tudalen { -brand-fx-account }
 menu-item-settings = Gosodiadau
+menu-item-settings-alt = Agor tudalen gosodiadau
 menu-item-help = Cymorth a chefnogaeth
+menu-item-help-alt = Agor y dudalen cymorth a chefnogaeth
 menu-item-logout = Allgofnodi
 
 ## Footer
@@ -810,3 +815,9 @@ exposed-data = Data datgeledig:
 find-out-if-2 = Darganfyddwch a oeddech yn gysylltiedig â'r tor-data hwn
 find-out-if-description = Byddwn yn eich helpu i weld yn gyflym a oedd eich cyfeiriad e-bost wedi'i ddatgelu drwy'r tor-data hwn, a gwybod beth i'w wneud nesaf.
 breach-detail-cta-signup = Gwiriwch am dor-data
+
+## Floating banner
+
+floating-banner-text = Rhowch hwb i'ch diogelwch ar-lein gyda newyddion, awgrymiadau a diweddariadau gan { -brand-Mozilla }.
+floating-banner-link-label = Ymuno
+floating-banner-dismiss-button-label = Dim diolch
