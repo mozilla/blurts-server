@@ -5,8 +5,8 @@
 export class LandingPage {
   constructor (page) {
     this.page = page
-    this.signUpButton = page.getByRole('link', { name: 'Get Started' })
-    this.signInButton = page.getByRole('link', { name: 'Sign In' })
+    this.signUpButton = page.getByRole('button', { name: 'Get Started' })
+    this.signInButton = page.getByRole('button', { name: 'Sign In' })
     this.firefoxLogo = page.locator('//img[starts-with(@class, "monitor-logo")]')
     this.whyUseMonitorSec = page.locator('.why-use-monitor')
     this.howItWorksSec = page.locator('.how-it-works')
@@ -29,13 +29,15 @@ export class LandingPage {
     await Promise.all([
       this.page.waitForNavigation(),
       this.signUpButton.click(),
-      this.page.waitForURL('**/oauth/**')
+      // FxA can take a while to load on stage:
+      this.page.waitForURL('**/oauth/**', { timeout: 120 * 1000 })
     ])
   }
 
   async goToSignIn () {
     this.signInButton.click()
-    await this.page.waitForURL('**/oauth/**')
+    // FxA can take a while to load on stage:
+    await this.page.waitForURL('**/oauth/**', { timeout: 120 * 1000 })
   }
 
   async openFirefoxAppsServices () {
