@@ -96,6 +96,7 @@
   "exclude": [
     "node_modules/",
     "sentry.*.config.ts",
+    // TODO NEXT.JS MIGRATION: Remove old Express files:
     "src/controllers/**/*.js",
     "src/views/**/*.js"
   ]
