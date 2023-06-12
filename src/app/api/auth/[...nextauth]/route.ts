@@ -38,6 +38,7 @@ interface FxaProfile {
   /** URL to an avatar image for the current user */
   avatar: string;
   avatarDefault: boolean;
+  subscriptions: Array<string>;
 }
 
 export const authOptions: AuthOptions = {
@@ -103,6 +104,7 @@ export const authOptions: AuthOptions = {
           metricsEnabled: profile.metricsEnabled,
           avatar: profile.avatar,
           avatarDefault: profile.avatarDefault,
+          subscriptions: profile.subscriptions,
         };
       }
       if (account && typeof profile?.email === "string") {
@@ -183,6 +185,7 @@ export const authOptions: AuthOptions = {
           metricsEnabled: token.fxa.metricsEnabled,
           avatar: token.fxa.avatar,
           avatarDefault: token.fxa.avatarDefault,
+          subscriptions: token.fxa.subscriptions,
         };
       }
       if (token.subscriber) {
