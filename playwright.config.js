@@ -106,6 +106,8 @@ export default defineConfig({
   /* Run your local dev server before starting the tests */
   webServer: {
     command: 'npm run build; npm start',
-    port: 6060
+    port: 6060,
+    // Building the app can take some time:
+    timeout: 180 * 1000,
   }
 })
