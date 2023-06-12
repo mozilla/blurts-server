@@ -83,11 +83,32 @@ const authenticateFxaJWT = async (req: NextRequest) => {
   return decoded
 }
 
+interface PasswordChangeEvent {
+  changeTime: number
+}
+
+interface ProfileChangeEvent {
+  email?: string
+}
+
+interface SubscriptionStateChangeEvent {
+  capabilities: [string]
+  isActive: boolean
+  changeTime: number
+}
+
+interface JwtPayload {
+  sub: string;
+  events: {
+    [key: string]: PasswordChangeEvent | ProfileChangeEvent | SubscriptionStateChangeEvent | null
+  };
+}
+
 export async function POST(request: NextRequest) {
 
-  let decodedJWT
+  let decodedJWT: JwtPayload
   try {
-    decodedJWT = await authenticateFxaJWT(request)
+    decodedJWT = await authenticateFxaJWT(request) as JwtPayload
   } catch (e) {
     console.error('fxaRpEvents', e)
     captureException(e)
@@ -97,14 +118,14 @@ export async function POST(request: NextRequest) {
   if (!decodedJWT?.events) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     console.error('fxaRpEvents', decodedJWT)
-    captureMessage('fxaRpEvents: decodedJWT is missing attribute "events"', decodedJWT)
+    captureMessage(`fxaRpEvents: decodedJWT is missing attribute "events", ${decodedJWT}`)
     return NextResponse.json({ success: false, message: 'fxaRpEvents: decodedJWT is missing attribute "events"' }, { status: 400 })
   }
 
   const fxaUserId = decodedJWT?.sub
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
-    captureMessage('fxaRpEvents: decodedJWT is missing attribute "sub"', decodedJWT)
+    captureMessage(`fxaRpEvents: decodedJWT is missing attribute "sub", ${decodedJWT}`)
     return NextResponse.json({ success: false, message: 'fxaRpEvents: decodedJWT is missing attribute "sub"' }, { status: 400 })
   }
 
@@ -135,7 +156,7 @@ export async function POST(request: NextRequest) {
         await deleteSubscriber(subscriber)
         break
       case FXA_PROFILE_CHANGE_EVENT: {
-        const updatedProfileFromEvent = decodedJWT.events[event]
+        const updatedProfileFromEvent = decodedJWT.events[event] as ProfileChangeEvent
         console.debug('fxa_profile_update', {
           fxaUserId,
           event,
@@ -149,10 +170,10 @@ export async function POST(request: NextRequest) {
         for (const key in updatedProfileFromEvent) {
           // primary email change
           if (key === 'email') {
-            await updatePrimaryEmail(subscriber, updatedProfileFromEvent[key])
+            await updatePrimaryEmail(subscriber, updatedProfileFromEvent[key as keyof ProfileChangeEvent] || subscriber.primary_email)
           }
           if (currentFxAProfile[key]) {
-            currentFxAProfile[key] = updatedProfileFromEvent[key]
+            currentFxAProfile[key] = updatedProfileFromEvent[key as keyof ProfileChangeEvent]
           }
         }
 
@@ -171,7 +192,7 @@ export async function POST(request: NextRequest) {
       }
       case FXA_SUBSCRIPTION_CHANGE_EVENT: {
         // TODO: to be implemented after subplat
-        const updatedSubscriptionFromEvent = decodedJWT.events[event]
+        const updatedSubscriptionFromEvent = decodedJWT.events[event] as SubscriptionStateChangeEvent
         console.debug('fxa_subscription_change', {
           fxaUserId,
           event,
