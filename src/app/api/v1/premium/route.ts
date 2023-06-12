@@ -1,0 +1,27 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import AppConstants from "../../../../appConstants";
+
+export async function GET(req: NextRequest) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const email = searchParams.get("email");
+    console.debug("Subscription redirect for:", email);
+
+    // NOTE: while the subscription redirect passes the
+    // user's email address, we must also check that the
+    // `subscriptions` claim on the FxA token.
+
+    // The user either needs to be signed in again, or the
+    // JWT from FxA refreshed, in order to see the latest
+    // subscriptions.
+
+    return NextResponse.redirect(`${AppConstants.SERVER_URL}/user/breaches`, 301);
+  } catch (e) {
+    return NextResponse.json({ success: false }, { status: 500 });
+  }
+}
