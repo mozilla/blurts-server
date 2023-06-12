@@ -87,6 +87,8 @@
     "@storybook/nextjs": "^7.0.18",
     "@storybook/react": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/jwk-to-pem": "^2.0.1",
     "@types/nodemailer": "^6.4.8",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",

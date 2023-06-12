@@ -4,7 +4,8 @@
 
 import * as jwt from 'jsonwebtoken'
 import jwkToPem from 'jwk-to-pem'
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
+import { headers } from 'next/headers'
 import { captureException, captureMessage } from '@sentry/node'
 import { deleteSubscriber, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../../../../db/tables/subscribers.js'
 import appConstants from "../../../../appConstants";
@@ -39,23 +40,25 @@ const getJwtPubKey = async () => {
 /**
  * Authenticate FxA JWT for FxA relay event requests
  *
- * @param {Request} req
+ * @param {NextRequest} req
  * @returns {Promise<jwt.JwtPayload>} decoded JWT data, which should contain FxA events
  */
-const authenticateFxaJWT = async (req) => {
+const authenticateFxaJWT = async (req: NextRequest) => {
   // Assuming this is how you retrieve your auth header.
-  const authHeader = req?.headers?.authorization
-
+  const requestHeaders = new Headers(req.headers)
+  requestHeaders.get('authorization')
+  const authHeader = requestHeaders.get('authorization')
+  
   // Require an auth header
   if (!authHeader) {
-    captureMessage('No auth header found', req?.headers)
+    captureMessage(`No auth header found, ${requestHeaders.values()}`)
     throw new Error('No auth header found');
   }
 
   // Extract the first portion which should be 'Bearer'
   const headerType = authHeader.substring(0, authHeader.indexOf(' '))
   if (headerType !== 'Bearer') {
-    captureMessage('Invalid auth type', req?.headers)
+    captureMessage(`Invalid auth type, ${requestHeaders.values()}`)
     throw new Error('Invalid auth type');
   }
 
@@ -80,8 +83,7 @@ const authenticateFxaJWT = async (req) => {
   return decoded
 }
 
-
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
 
   let decodedJWT
   try {
