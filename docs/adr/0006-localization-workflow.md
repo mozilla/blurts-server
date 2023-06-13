@@ -48,7 +48,7 @@ The proposal is to use a separate l10n repository instead of a separate branch, 
 
 *For additional sensitive considerations, see [this document](https://docs.google.com/document/d/12dRW85DNZpljmoS-U9KrZqV1nBDrT2g8WTpvTAM0HgY/edit?usp=sharing)* 
 
-* Good, there are no changes for development compared to the existing workflow:
+* Good, there are no changes for development compared to the existing workflow.
 * Good, This workflow doesn’t block developers from landing code in the main branch as part of code pull requests.
 * Good, It also allows queuing multiple changes before exposing them for localization, since strings are exposed through a pull request, which is manually reviewed by the localization EPM.
 * Good, localizers workflow, new strings will trigger localization review requests via CODEOWNERS.
