@@ -4,30 +4,41 @@
 
 "use client";
 
+import { CSSProperties } from "react";
 import { QuestionMarkCircle } from "../server/Icons";
 import styles from "./ProgressCard.module.scss";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.png";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.png";
 import SparklingCheck from "./assets/sparkling-check.png";
-
 import Image from "next/image";
 
 export type Props = {
   resolvedByYou: number;
   autoRemoved: number;
+  totalNumExposures: number;
 };
 
-export type ProgressBarProps = {
-  percentageComplete: number;
-};
+function PercentageComplete(props: Props) {
+  const percentageCompleteNum =
+    ((props.autoRemoved + props.resolvedByYou) / props.totalNumExposures) * 100;
+  return percentageCompleteNum;
+}
 
 export const ProgressCard = (props: Props) => {
-  const ProgressBar = (props: ProgressBarProps) => {
+  const percentageCompleteNum = PercentageComplete(props);
+  const activeProgressBarStyle: CSSProperties = {
+    width: `${percentageCompleteNum}%`,
+  };
+
+  const ProgressBar = () => {
     return (
       <div className={styles.progresBarWrapper}>
         <div className={styles.fullProgressBar}>
-          <div className={styles.activeProgressBar}></div>
-          <p>{props.percentageComplete}% complete</p>
+          <div
+            className={styles.activeProgressBar}
+            style={activeProgressBarStyle}
+          ></div>
+          <p>{percentageCompleteNum}% complete</p>
         </div>
         <Image src={SparklingCheck} alt="" />
       </div>
@@ -58,7 +69,7 @@ export const ProgressCard = (props: Props) => {
           <p>Auto-removed</p>
         </div>
       </div>
-      <ProgressBar percentageComplete={16} />
+      <ProgressBar />
     </div>
   );
 };

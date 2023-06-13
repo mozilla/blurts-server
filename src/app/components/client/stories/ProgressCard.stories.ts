@@ -18,5 +18,6 @@ export const ActionNeeded: Story = {
   args: {
     resolvedByYou: 3,
     autoRemoved: 5,
+    totalNumExposures: 20,
   },
 };
