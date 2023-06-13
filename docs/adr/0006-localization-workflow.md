@@ -46,7 +46,7 @@ Instead of having Pontoon read and write translations from a separate branch, Re
 
 The proposal is to use a separate l10n repository instead of a separate branch, then use automation to sync only the relevant files between the two repositories instead of a git submodule.
 
-*For additional sentistive considerations, see [this document](https://docs.google.com/document/d/12dRW85DNZpljmoS-U9KrZqV1nBDrT2g8WTpvTAM0HgY/edit?usp=sharing)* 
+*For additional sensitive considerations, see [this document](https://docs.google.com/document/d/12dRW85DNZpljmoS-U9KrZqV1nBDrT2g8WTpvTAM0HgY/edit?usp=sharing)* 
 
 * Good, there are no changes for development compared to the existing workflow:
 * Good, This workflow doesn’t block developers from landing code in the main branch as part of code pull requests.
