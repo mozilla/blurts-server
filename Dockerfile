@@ -14,6 +14,7 @@ COPY package-lock.json package-lock.json
 COPY --chown=app:app . /app
 
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
+RUN npm run build
 
 COPY .env-dist ./.env
 
