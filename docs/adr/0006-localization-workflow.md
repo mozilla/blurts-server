@@ -17,7 +17,7 @@ The current L10N workflow is a complex, multiple manual-step process to sync str
 
 ## Considered Options
 
-* Seperate Repo / git Submodules (Relay)
+* Separate Repo / git Submodules (Relay)
 * Seperate Repo / Automated Syncing 
 * Leave as-is (Dedicated branch on repo)
 
