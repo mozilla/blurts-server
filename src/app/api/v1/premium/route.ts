@@ -12,15 +12,17 @@ export async function GET(req: NextRequest) {
     const email = searchParams.get("email");
     console.debug("Subscription redirect for:", email);
 
-    // NOTE: while the subscription redirect passes the
-    // user's email address, we must also check that the
+    // NOTE: the email address passed here cannot
+    // be trusted, we must also check that the
     // `subscriptions` claim on the FxA token.
 
-    // The user either needs to be signed in again, or the
+    // TODO: The user either needs to be signed in again, or the
     // JWT from FxA refreshed, in order to see the latest
     // subscriptions.
+    //
+    // For now, redirect to the built-in sign-out.
 
-    return NextResponse.redirect(`${AppConstants.SERVER_URL}/user/breaches`, 301);
+    return NextResponse.redirect(`${AppConstants.SERVER_URL}/api/auth/signout?callbackUrl=/user/breaches`, 302);
   } catch (e) {
     return NextResponse.json({ success: false }, { status: 500 });
   }
