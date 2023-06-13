@@ -56,7 +56,7 @@ The proposal is to use a separate l10n repository instead of a separate branch, 
 
 ### Leave as-is (Dedicated branch on repo)
 
-Currently, all new translations are committed to the branch via Pontoon. To expose new English strings for localization, the updated English (en) FTL file needs to be added in this branch (manually).
+Currently, all new translations are committed to the `localization` branch via Pontoon. To expose new English strings for localization, the updated English (en) FTL file needs to be added in this branch (manually).
 
 * Good, The same branch is also used to publish a [special instance of Monitor](https://monitor-localization.herokuapp.com/) for localization for localizers to review
 * Bad, Pontoon commits every 10 minutes, and once per locale, polluting the repository’s history
