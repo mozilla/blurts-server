@@ -12,7 +12,7 @@ The current L10N workflow is a complex, multiple manual-step process to sync str
 
 ## Decision Drivers 
 
-* With the React refactor, this is a good time to revisit our processes, and determine what makes the most since
+* With the React refactor, this is a good time to revisit our processes, and determine what works the best for everyone.
   * This is also a chance to better align with other Mozilla projects
 
 ## Considered Options
@@ -51,7 +51,6 @@ The proposal is to use a separate l10n repository instead of a separate branch, 
 * Good, there are no changes for development compared to the existing workflow.
 * Good, This workflow doesn’t block developers from landing code in the main branch as part of code pull requests.
 * Good, It also allows queuing multiple changes before exposing them for localization, since strings are exposed through a pull request, which is manually reviewed by the localization EPM.
-* Good, localizers workflow, new strings will trigger localization review requests via CODEOWNERS.
 * Good, There is no need to have a separate [localization review instance](https://monitor-localization.herokuapp.com/) for localizers.
 
 ### Leave as-is (Dedicated branch on repo)
