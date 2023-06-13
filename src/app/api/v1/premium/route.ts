@@ -4,7 +4,6 @@
 
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import AppConstants from "../../../../appConstants";
 
 export async function GET(req: NextRequest) {
   try {
@@ -24,7 +23,7 @@ export async function GET(req: NextRequest) {
     // For now, redirect to the built-in sign-out, which will then
     // send the user to the dashboard.
 
-    return NextResponse.redirect(`${AppConstants.SERVER_URL}/api/auth/signout?callbackUrl=/user/breaches`, 302);
+    return NextResponse.redirect(`${process.env.SERVER_URL}/api/auth/signout?callbackUrl=/user/breaches`, 302);
   } catch (e) {
     return NextResponse.json({ success: false }, { status: 500 });
   }
