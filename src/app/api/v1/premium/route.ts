@@ -14,13 +14,15 @@ export async function GET(req: NextRequest) {
 
     // NOTE: the email address passed here cannot
     // be trusted, we must also check that the
-    // `subscriptions` claim on the FxA token.
+    // `subscriptions` claim on the FxA token contains
+    // "monitor".
 
     // TODO: The user either needs to be signed in again, or the
-    // JWT from FxA refreshed, in order to see the latest
+    // JWT from FxA refreshed, in order to read the latest
     // subscriptions.
     //
-    // For now, redirect to the built-in sign-out.
+    // For now, redirect to the built-in sign-out, which will then
+    // send the user to the dashboard.
 
     return NextResponse.redirect(`${AppConstants.SERVER_URL}/api/auth/signout?callbackUrl=/user/breaches`, 302);
   } catch (e) {
