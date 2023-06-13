@@ -27,7 +27,7 @@ Seperate Repo / Automated Syncing because is has the best experience (that proce
 
 Final process is an automated pull request workflow. The automation runs once a day, and creates a PR that needs to be manually reviewed.
 
-*See [this document](https://docs.google.com/document/d/12dRW85DNZpljmoS-U9KrZqV1nBDrT2g8WTpvTAM0HgY/edit?usp=sharing) for additional details on how additional automation is not currently possible.*
+*See [this document](https://docs.google.com/document/d/12dRW85DNZpljmoS-U9KrZqV1nBDrT2g8WTpvTAM0HgY/edit?usp=sharing) for additional details on why complete automation is not currently possible.*
 
 ## Pros and Cons of the Options <!-- optional -->
 
