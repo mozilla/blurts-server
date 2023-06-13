@@ -37,7 +37,7 @@ Final process is an automated pull request workflow. The automation runs once a 
 
 Instead of having Pontoon read and write translations from a separate branch, Relay uses a separate l10n repository, which is then imported as a git submodule in the main repository. [A GitHub action](https://github.com/mozilla/fx-private-relay/blob/main/.github/workflows/l10n-sync.yml) is used to automatically update the submodule revision once a day.
 
-* Bad, git submodules are complex and have led to complex merge conflict issues in the past 
+* Bad, git submodules are complex and have led to complex merge conflict issues in the past. 
 * Bad, The developer cannot add new English strings to the repository, they need to be added to the l10n repository.
     * This led the Relay team to create a [pendingTranslations.ftl](https://github.com/mozilla/fx-private-relay/blob/main/frontend/pendingTranslations.ftl) file to fill this gap. These strings are not tracked by L10N team and this files contents should constantly be removed/blank.
 * Bad, Adding new strings to the l10n repository is a manual process (pull request).
