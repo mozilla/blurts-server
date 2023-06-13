@@ -5,10 +5,9 @@
 import * as jwt from 'jsonwebtoken'
 import jwkToPem from 'jwk-to-pem'
 import { NextRequest, NextResponse } from 'next/server'
-import { headers } from 'next/headers'
 import { captureException, captureMessage } from '@sentry/node'
 import { deleteSubscriber, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../../../../db/tables/subscribers.js'
-import appConstants from "../../../../appConstants";
+import appConstants from "../../../../appConstants.js";
 
 const FXA_PROFILE_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/profile-change'
 const FXA_PASSWORD_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/password-change'
@@ -208,5 +207,5 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  return NextResponse.json({ success: true, message: 'OK' }, { status: 500 })
+  return NextResponse.json({ success: true, message: 'OK' }, { status: 200 })
 }
