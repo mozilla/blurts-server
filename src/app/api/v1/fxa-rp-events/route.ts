@@ -7,7 +7,9 @@ import jwkToPem from 'jwk-to-pem'
 import { NextRequest, NextResponse } from 'next/server'
 import { captureException, captureMessage } from '@sentry/node'
 import { deleteSubscriber, getSubscriberByFxaUid, updateFxAProfileData, updatePrimaryEmail } from '../../../../db/tables/subscribers.js'
-import appConstants from "../../../../appConstants.js";
+import { bearerToken } from '../../utils/auth'
+import appConstants from "../../../../appConstants";
+
 
 const FXA_PROFILE_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/profile-change'
 const FXA_PASSWORD_CHANGE_EVENT = 'https://schemas.accounts.firefox.com/event/password-change'
@@ -43,26 +45,9 @@ const getJwtPubKey = async () => {
  * @returns {Promise<jwt.JwtPayload>} decoded JWT data, which should contain FxA events
  */
 const authenticateFxaJWT = async (req: NextRequest) => {
-  // Assuming this is how you retrieve your auth header.
-  const requestHeaders = new Headers(req.headers)
-  requestHeaders.get('authorization')
-  const authHeader = requestHeaders.get('authorization')
-  
-  // Require an auth header
-  if (!authHeader) {
-    captureMessage(`No auth header found, ${requestHeaders.values()}`)
-    throw new Error('No auth header found');
-  }
 
-  // Extract the first portion which should be 'Bearer'
-  const headerType = authHeader.substring(0, authHeader.indexOf(' '))
-  if (headerType !== 'Bearer') {
-    captureMessage(`Invalid auth type, ${requestHeaders.values()}`)
-    throw new Error('Invalid auth type');
-  }
-
-  // The remaining portion, which should be the token
-  const headerToken = authHeader.substring(authHeader.indexOf(' ') + 1)
+  // bearer token
+  const headerToken = bearerToken(req)
 
   // Verify we have a key for this kid, this assumes that you have fetched
   // the publicJwks from FxA and put both them in an Array.
