@@ -7,14 +7,13 @@ import type { NextRequest } from "next/server";
 
 export async function GET(req: NextRequest) {
   try {
-    const { searchParams } = new URL(req.url);
-    const email = searchParams.get("email");
-    console.debug("Subscription redirect for:", email);
-
     // NOTE: the email address passed here cannot
     // be trusted, we must also check that the
     // `subscriptions` claim on the FxA token contains
     // "monitor".
+
+    const { searchParams } = new URL(req.url);
+    const _email = searchParams.get("email");
 
     // TODO: The user either needs to be signed in again, or the
     // JWT from FxA refreshed, in order to read the latest
