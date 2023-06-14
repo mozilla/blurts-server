@@ -14,9 +14,9 @@ COPY package-lock.json package-lock.json
 COPY --chown=app:app . /app
 
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
-RUN npm run build
 
 COPY .env-dist ./.env
+RUN npm run build
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE
