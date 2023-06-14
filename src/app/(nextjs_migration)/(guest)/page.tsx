@@ -18,7 +18,7 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
-      <Script type="module" src="/nextjs_migration/client/js/transitionObserver.js" />
+      <script type="module" src="/nextjs_migration/client/js/transitionObserver.js" async></script>
       <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className="hero">
         <div>
@@ -47,7 +47,7 @@ export default async function Home() {
           </form>
         </div>
         <figure>
-          <Image alt="" src={HeroImage} />
+          <Image alt="" src={HeroImage} priority />
         </figure>
       </section>
 
