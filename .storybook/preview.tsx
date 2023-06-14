@@ -1,6 +1,7 @@
 import React from "react";
 import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/react";
+import "../src/app/globals.css";
 import { L10nProvider } from "../src/contextProviders/localization";
 import { getL10nBundles } from "../src/app/functions/server/l10n";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
