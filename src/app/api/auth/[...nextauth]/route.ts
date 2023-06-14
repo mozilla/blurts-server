@@ -38,7 +38,7 @@ interface FxaProfile {
   /** URL to an avatar image for the current user */
   avatar: string;
   avatarDefault: boolean;
-  subscriptions: Array<string>;
+  subscriptions?: Array<string>;
 }
 
 export const authOptions: AuthOptions = {
