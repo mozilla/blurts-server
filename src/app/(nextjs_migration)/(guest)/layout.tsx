@@ -28,6 +28,7 @@ const GuestLayout = (props: Props) => {
               width="213"
               height="33"
               alt={l10n.getString("brand-fx-monitor")}
+              priority
             />
           </a>
           <menu>

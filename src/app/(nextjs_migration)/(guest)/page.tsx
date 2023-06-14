@@ -47,7 +47,7 @@ export default async function Home() {
           </form>
         </div>
         <figure>
-          <Image alt="" src={HeroImage} />
+          <Image alt="" src={HeroImage} priority />
         </figure>
       </section>
 
