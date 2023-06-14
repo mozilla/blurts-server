@@ -10,8 +10,9 @@ import { getLocale } from "./functions/server/l10n";
 import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import { getL10n } from "./functions/server/l10n";
+import { metropolis } from "./fonts/Metropolis/metropolis";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -46,7 +47,7 @@ export default async function RootLayout({
   return (
     <html lang={currentLocale}>
       <body
-        className={inter.className}
+        className={`${inter.className} ${inter.variable} ${metropolis.variable}`}
         // DO NOT ADD SECRETS HERE: The following data attributes expose
         // variables that are being used in the public analytics scripts
         data-ga4-measurement-id={process.env.GA4_MEASUREMENT_ID}
