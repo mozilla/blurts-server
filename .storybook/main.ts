@@ -13,5 +13,15 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
+  async webpackFinal(config) {
+    config.module ??= {};
+    config.module.rules ??= [];
+    config.module.rules.push({
+      test: /\.ftl/,
+      type: "asset/source",
+    });
+
+    return config;
+  },
 };
 export default config;
