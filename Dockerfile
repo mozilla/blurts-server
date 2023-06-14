@@ -16,6 +16,7 @@ COPY --chown=app:app . /app
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY .env-dist ./.env
+RUN npm run build
 
 ARG SENTRY_RELEASE
 ENV SENTRY_RELEASE=$SENTRY_RELEASE

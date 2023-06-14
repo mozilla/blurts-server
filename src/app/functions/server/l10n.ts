@@ -13,7 +13,6 @@ import type { MarkupParser } from "@fluent/react";
 // from the included ES module code. There is the risk that @fluent/react
 // updates break that.
 import { ReactLocalization } from "@fluent/react/esm/localization";
-import { JSDOM } from "jsdom";
 import { Fragment, createElement } from "react";
 
 export type LocaleData = {
@@ -49,8 +48,9 @@ function loadSource(filename: string): string {
  * @returns The sources for l10n bundles that can be used to construct a ReactLocalization object
  */
 export function getL10nBundles(): LocaleData[] {
-  const headersList = headers();
-  const acceptLangHeader = headersList.get("Accept-Language");
+  const acceptLangHeader = process.env.STORYBOOK === "true"
+    ? navigator.languages.join(",")
+    : headers().get("Accept-Language");
 
   const bundleSources: Record<string, string[]> = {};
 
@@ -87,7 +87,14 @@ export function getL10nBundles(): LocaleData[] {
   return relevantBundleSources;
 }
 
-const document = new JSDOM().window.document;
+// In Storybook, the Fluent bundle is generated in the browser, so we don't need
+// to provide `parseMarkup` (and even can't, because JSDOM won't run there):
+const document = process.env.STORYBOOK === "true"
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ? undefined as any
+  // Using require here to conditionally load JSDOM without introducing asynchronicity (i.e. Promises):
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  : new (require("jsdom").JSDOM)().window.document;
 const parseMarkup: MarkupParser = (str) => {
   if (!str.includes("<") && !str.includes(">")) {
     return [{ nodeName: "#text", textContent: str } as Node];
@@ -116,7 +123,7 @@ export function getL10n(
 
   // The ReactLocalization instance stores and caches the sequence of generated
   // bundles. You can store it in your app's state.
-  const l10n = new ReactLocalization(bundles, parseMarkup);
+  const l10n = new ReactLocalization(bundles, process.env.STORYBOOK === "true" ? undefined : parseMarkup);
 
   const getFragment: GetFragment = (id, args, fallback) =>
     l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args);
