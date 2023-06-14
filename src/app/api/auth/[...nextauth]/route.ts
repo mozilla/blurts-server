@@ -122,12 +122,13 @@ export const authOptions: AuthOptions = {
         if (existingUser) {
           token.subscriber = existingUser;
           if (account.access_token && account.refresh_token) {
-            await updateFxAData(
+            const updatedUser = await updateFxAData(
               existingUser,
               account.access_token,
               account.refresh_token,
               JSON.stringify(profile)
             );
+            token.subscriber = updatedUser;
           }
         }
         if (!existingUser && email) {
