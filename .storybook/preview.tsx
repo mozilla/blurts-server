@@ -1,13 +1,23 @@
 import React from "react";
+import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/react";
 import { L10nProvider } from "../src/contextProviders/localization";
 import { getL10nBundles } from "../src/app/functions/server/l10n";
+import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
   storyFn
 ) => {
   return (
-    <L10nProvider bundleSources={getL10nBundles()}>{storyFn()}</L10nProvider>
+    <L10nProvider bundleSources={getL10nBundles()}>
+      <div
+        className={`${inter.className} ${inter.variable} ${metropolis.variable}`}
+      >
+        {storyFn()}
+      </div>
+    </L10nProvider>
   );
 };
 
