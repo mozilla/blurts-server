@@ -18,8 +18,9 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
+      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      <script type="module" src="/nextjs_migration/client/js/transitionObserver.js" rel="preload"></script>
       <Script type="module" src="/nextjs_migration/client/js/transitionObserver.js" />
-      <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>
