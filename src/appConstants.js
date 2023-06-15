@@ -15,6 +15,7 @@ const requiredEnvVars = [
   'EMAIL_FROM',
   'FXA_ENABLED',
   'FXA_SETTINGS_URL',
+  'FEATURE_FLAGS',
   'HIBP_API_ROOT',
   'HIBP_KANON_API_ROOT',
   'HIBP_KANON_API_TOKEN',
