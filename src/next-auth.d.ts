@@ -17,6 +17,7 @@ declare module "next-auth" {
     /** URL to an avatar image for the current user */
     avatar: string;
     avatarDefault: boolean;
+    subscriptions: Array<string>;
   }
 
   /** Session data available after deserialising the JWT */
@@ -30,6 +31,7 @@ declare module "next-auth" {
         /** URL to an avatar image for the current user */
         avatar: string;
         avatarDefault: boolean;
+        subscriptions: Array<string>;
       };
       subscriber?: Subscriber;
     } & DefaultSession["user"];
@@ -47,6 +49,7 @@ declare module "next-auth/jwt" {
       /** URL to an avatar image for the current user */
       avatar: string;
       avatarDefault: boolean;
+      subscriptions: Array<string>;
     };
     subscriber?: Subscriber;
   }
