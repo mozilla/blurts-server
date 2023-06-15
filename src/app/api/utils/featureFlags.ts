@@ -5,7 +5,7 @@
 import appConstants from "../../../appConstants"
 
 type FeatureFlags = {
-  [key: string]: FeatureFlag
+  [key: string]: FeatureFlag | boolean
 }
 
 type FeatureFlag = {
