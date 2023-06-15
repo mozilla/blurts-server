@@ -17,7 +17,10 @@ type FeatureFlag = {
   dependencies?: Array<keyof FeatureFlags>;
 }
 
-const featureFlags = JSON.parse(appConstants.FEATURE_FLAGS) as FeatureFlags
+let featureFlags: FeatureFlags
+try {
+  featureFlags = JSON.parse(appConstants.FEATURE_FLAGS) as FeatureFlags
+} catch (e) { console.error(e) }
 
 export function isFeatureEnabled(flag: keyof FeatureFlags): boolean {
   return featureFlags[flag]?.enabled || false
