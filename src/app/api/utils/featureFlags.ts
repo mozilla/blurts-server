@@ -4,19 +4,17 @@
 
 import appConstants from "../../../appConstants"
 
-type FeatureFlags = {
-  [key: string]: FeatureFlag | boolean
-}
+type FeatureFlags = Record<"test" | "otherFlag" | "otherFlag", FeatureFlag | boolean>;
 
 type FeatureFlag = {
-  name?: string
-  description?: string
-  dependencies?: [string]
+  name?: keyof FeatureFlags;
+  description?: string;
+  dependencies?: Array<keyof FeatureFlags>;
 }
 
 const featureFlags = JSON.parse(appConstants.FEATURE_FLAGS) as FeatureFlags
 
-export function checkFeatureFlag(flag: string) : (FeatureFlag | boolean) {
+export function checkFeatureFlag(flag: keyof FeatureFlags) : (FeatureFlag | boolean) {
   if (featureFlags[flag]) return featureFlags[flag]
   return false
 }
