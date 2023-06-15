@@ -25,7 +25,7 @@ export default async function Home() {
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>
           <p>{l10n.getString("exposure-landing-hero-lead")}</p>
           <form hidden className="exposure-scan">
-            <label htmlFor="scan-email-adddress" className="visually-hidden">
+            <label htmlFor="scan-email-address" className="visually-hidden">
               {l10n.getString("exposure-landing-hero-email-label")}
             </label>
             <input
