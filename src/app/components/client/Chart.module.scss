@@ -1,0 +1,16 @@
+@import "../../tokens";
+
+.chartContainer {
+  width: $content-sm;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    font: $text-body-xs;
+    font-style: italic;
+  }
+}
+
+
