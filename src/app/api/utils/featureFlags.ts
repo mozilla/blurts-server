@@ -23,7 +23,7 @@ try {
 } catch (e) { console.error(e) }
 
 export function isFeatureEnabled(flag: keyof FeatureFlags): boolean {
-  return featureFlags[flag]?.enabled || false
+  return featureFlags?.[flag]?.enabled || false
 }
 
 export function checkFeatureFlag(flag: keyof FeatureFlags): (FeatureFlag | null) {
