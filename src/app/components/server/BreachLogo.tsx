@@ -14,12 +14,20 @@ import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/b
  * @param {Map<string, string>} props.logos Map of URLs to logos indexed by the domain name of the respective company
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
-export function BreachLogo(props: { breach: Breach; logos: LogoMap }) {
+
+export type Props = {
+  breach: Breach;
+  logos: LogoMap;
+  forceHtml: boolean | null;
+};
+
+export function BreachLogo(props: Props) {
   const logoIsAvailable = props.logos?.has(props.breach.Domain);
 
   if (logoIsAvailable) {
+    const ImageType = props.forceHtml ? 'img' : Image;
     return (
-      <Image
+      <ImageType
         src={AppConstants.SERVER_URL + props.logos.get(props.breach.Domain)}
         alt=""
         loading="lazy"
