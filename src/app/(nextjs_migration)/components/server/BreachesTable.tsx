@@ -106,7 +106,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           autoComplete="off"
         />
         <label htmlFor="breaches-unresolved">
-          <output suppressHydrationWarning={true}>&nbsp;</output>
+          <output suppressHydrationWarning>&nbsp;</output>
           {l10n.getString("filter-label-unresolved")}
         </label>
         <input
@@ -117,12 +117,12 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           autoComplete="off"
         />
         <label htmlFor="breaches-resolved">
-          <output suppressHydrationWarning={true}>&nbsp;</output>
+          <output suppressHydrationWarning>&nbsp;</output>
           {l10n.getString("filter-label-resolved")}
         </label>
       </fieldset>
 
-      <section suppressHydrationWarning={true} className="breaches-table">
+      <section suppressHydrationWarning className="breaches-table">
         <header>
           <span>{l10n.getString("column-company")}</span>
           <span>{l10n.getString("column-breached-data")}</span>
@@ -162,7 +162,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           }}
         />
         <template
-          suppressHydrationWarning={true}
+          suppressHydrationWarning
           className="all-breaches-resolved"
           dangerouslySetInnerHTML={{
             __html: `
