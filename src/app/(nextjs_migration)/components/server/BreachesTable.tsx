@@ -66,7 +66,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
         return (
           <details key={breach.Name + account.email} className='breach-row' data-status={status} data-email={account.email} data-classes={dataClassesTranslated} hidden={isHidden}>
             <summary>
-              <span className='breach-company'><BreachLogo breach={breach} logos={breachLogos} forceHtml /> {breach.Title}</span>
+              <span className='breach-company'><BreachLogo breach={breach} logos={breachLogos} htmlTags /> {breach.Title}</span>
               <span>{shortList.format(dataClassesTranslated)}</span>
               <span>
                 <span className='resolution-badge is-resolved'>{l10n.getString(

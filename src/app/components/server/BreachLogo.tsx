@@ -18,14 +18,14 @@ import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/b
 export type Props = {
   breach: Breach;
   logos: LogoMap;
-  forceHtml: boolean | null;
+  htmlTags?: boolean;
 };
 
 export function BreachLogo(props: Props) {
   const logoIsAvailable = props.logos?.has(props.breach.Domain);
 
   if (logoIsAvailable) {
-    const ImageType = props.forceHtml ? 'img' : Image;
+    const ImageType = props.htmlTags ? 'img' : Image;
     return (
       <ImageType
         src={AppConstants.SERVER_URL + props.logos.get(props.breach.Domain)}
