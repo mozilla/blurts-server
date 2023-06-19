@@ -21,7 +21,8 @@
   margin: 0;
 }
 
-[data-partial="addEmail"] p.addEmailSuccess {
+/* stylelint-disable-next-line selector-class-pattern */
+[data-partial="addEmail"] p.add-email-success {
   min-height: var(--form-height);
   animation: fade-in 0.5s ease-out;
 }

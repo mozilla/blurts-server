@@ -7,17 +7,15 @@ import cloudImage from "../../../../client/images/dialog-email-clouds.svg";
 import AppConstants from "../../../../appConstants";
 import { getL10n } from "../../../functions/server/l10n";
 
-// Styles and images for this component need to be included manually
-// so we can fetch it via the API
 export default function AddEmailDialog() {
   const l10n = getL10n();
   const emailLimit = AppConstants.MAX_NUM_ADDRESSES;
 
   return (
-    <div data-partial="addEmail">
+    <>
       {/* Styles need to be included manually when fetching the component via API */}
       {/* eslint-disable-next-line @next/next/no-css-tags */}
-      <link rel='stylesheet' href='/nextjs_migration/client/css/addEmail.css' />
+      <link rel="stylesheet" href="/nextjs_migration/client/css/addEmail.css" />
       <header>
         <button className="close"></button>
         {/* We can’t use next/image when we featch the component via API */}
@@ -59,6 +57,6 @@ export default function AddEmailDialog() {
       `,
         }}
       />
-    </div>
+    </>
   );
 }

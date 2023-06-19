@@ -31,7 +31,7 @@ function handleEvent (e) {
       openDialog(e.target.href)
       break
     case e.target.matches('button[data-dialog]'):
-      openDialog(`/api/v1/user/dialog/${e.target.dataset.dialog}`)
+      openDialog(`/api/v1/dialog/${e.target.dataset.dialog}`)
       break
     case e.target.matches('dialog button.close'):
       dialogEl.close()
