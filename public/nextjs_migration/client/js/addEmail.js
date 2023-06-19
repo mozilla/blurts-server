@@ -54,7 +54,7 @@ async function handleSubmit (e) {
 
 function renderSuccess (data) {
   const content = dialogEl.querySelector('template[data-success]').content.cloneNode(true)
-  const messageEl = content.querySelector('p.add-email-success')
+  const messageEl = content.querySelector('p.addEmailSuccess')
 
   messageEl.style.setProperty('--form-height', `${form.clientHeight}px`)
   messageEl.querySelector('.current-email').textContent = data.email
