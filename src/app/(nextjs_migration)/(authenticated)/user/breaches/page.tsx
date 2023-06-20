@@ -73,6 +73,8 @@ export default async function UserBreaches() {
 
   return (
     <>
+      {/* These scripts predate the use of React and thus shouldn’t wait for
+      hydration to adjust the layout. */}
       {/* eslint-disable @next/next/no-sync-scripts */}
       <script
         type="module"
