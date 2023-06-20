@@ -18,11 +18,10 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
-      <script
+      <Script
         type="module"
         src="/nextjs_migration/client/js/transitionObserver.js"
-        async
-      ></script>
+      />
       <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className="hero">
         <div>
