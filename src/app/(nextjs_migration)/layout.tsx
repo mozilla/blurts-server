@@ -15,6 +15,7 @@ export default async function MigrationLayout({
   const l10nBundles = getL10nBundles();
   return (
     <L10nProvider bundleSources={l10nBundles}>
+      {/* This script predates the use of React and thus shouldn't wait for hydration to adjust the layout. */}
       {/* eslint-disable-next-line @next/next/no-sync-scripts */}
       <script
         type="module"
