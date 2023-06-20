@@ -16,10 +16,12 @@
     }
 -brand-Mozilla =
     { $sklon ->
-       *[imenovalnik] Mozilla
         [rodilnik] Mozille
         [dajalnik] Mozilli
         [tozilnik] Mozillo
+        [mestnik] Mozilli
+        [orodnik] Mozillo
+       *[imenovalnik] Mozilla
     }
 -brand-HIBP = Have I Been Pwned
 -brand-fxa =
@@ -338,30 +340,15 @@ no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-note =
-    <span>Vaš e-poštni naslov ni prikazan v tem razkritju,
-    vendar je vaša telefonska številka morda še vedno ranljiva.</span> Nekateri računi
-    ogrožene v Facebooku razkrite telefonske številke in drugo
-    osebne podatke, ne pa e-poštnih naslovov. Če ste se kdaj prijavili
-    za Facebook račun – tudi če ga trenutno ne uporabljate – vam priporočamo
-    se zaščitite s temi koraki
+facebook-breach-note = <span>Vaš e-poštni naslov ni prikazan v tem razkritju, vendar je vaša telefonska številka morda še vedno ranljiva.</span> Nekateri računi, ki so bili ogroženi v razkritju podatkov na Facebooku, so vključevali telefonske številke in druge osebne podatke, ne pa tudi e-poštnih naslovov. Če ste se kdaj prijavili za Facebook račun – tudi če ga še ne uporabljate – vam priporočamo, da se zaščitite s temi koraki
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>V <a>svojem profilu na Facebooku</a> nastavite svoje podatke na "Samo jaz" ali drugo nejavno nastavitev.</span>
-facebook-breach-what-to-do-1-copy =
-    Med tem uhajanjem podatkov so se hekerji polastili profila
-    podatke, ki so bili nastavljeni kot »odprto za javnost« ali »v skupni rabi s prijatelji«.
-    Te informacije je mogoče združiti z drugimi podatki za dostop do njih še več
-    vaše osebne podatke in račune.
+facebook-breach-what-to-do-1-copy = Med tem razkritjem so se hekerji dokopali do podatkov profila, ki je bil nastavljen kot "odprt za javnost" ali "deljen s prijatelji". Te podatke je mogoče združiti z drugimi podatki za dostop do še več vaših osebnih podatkov in računov.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-2-headline =
-    <span>Spremenite geslo, PIN ali druge varnostne podatke na svojem <a>mobilnem telefonu
-    račune pri operaterju</a>, da preprečite zamenjavo SIM</span>.
-facebook-breach-what-to-do-2-copy =
-    Zamenjava SIM, imenovana tudi SIM-jacking,
-    je, ko heker s telefonskimi številkami, rojstnimi datumi drugimi podatki prevzame oblast
-    številko mobilnega telefona osebe in nato vdreti v njeno e-pošto, družbena omrežja in celo finančne račune.
+facebook-breach-what-to-do-2-headline = <span>Spremenite geslo, PIN ali druge varnostne podatke za svoje <a>račune pri operaterju</a>, da preprečite zamenjavo SIM</span>.
+facebook-breach-what-to-do-2-copy = Pri zamenjavi SIM, imenovani tudi SIM-jacking, heker s telefonskimi številkami, datumom rojstva in drugimi podatki prevzame mobilno številko osebe in nato vdre v njeno e-pošto, družbena omrežja in celo finančne račune.
 facebook-breach-what-to-do-3 = Oglejte si vsa priporočila na naši Facebook strani
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Prikazano:
