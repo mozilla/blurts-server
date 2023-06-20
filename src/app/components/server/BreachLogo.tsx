@@ -18,6 +18,9 @@ import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/b
 export type Props = {
   breach: Breach;
   logos: LogoMap;
+  // The prop `htmlTags` ensures compatibility for the work in
+  // `nextjs_migration` when rendering server components to strings. As soon as
+  // this component is not being used there anymore we can remove the prop.
   htmlTags?: boolean;
 };
 
