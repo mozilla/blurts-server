@@ -5,6 +5,7 @@
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import Script from "next/script";
 
 import "../../../../client/css/index.css";
 import { UserMenu } from "../../components/client/UserMenu";
@@ -29,6 +30,7 @@ const MainLayout = async (props: Props) => {
 
   return (
     <>
+      <Script type="module" src="/nextjs_migration/client/js/nav.js" />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">

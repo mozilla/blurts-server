@@ -17,7 +17,7 @@ type Story = StoryObj<typeof ShellEl>;
 export const Shell: Story = {
   render: () => (
     <ShellEl l10n={getL10n()} session={null}>
-      <div style={{height: 800}}></div>
+      <div style={{ height: 800 }}></div>
     </ShellEl>
   ),
 };

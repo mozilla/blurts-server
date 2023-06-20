@@ -5,19 +5,19 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { getComponentAsString } from '../../../../functions/server/getComponentAsString'
-import AddEmailDialog from '../../../../(nextjs_migration)/components/server/AddEmailDialog'
+import { getComponentAsString } from "../../../../functions/server/getComponentAsString";
+import AddEmailDialog from "../../../../(nextjs_migration)/components/server/AddEmailDialog";
 
-export async function GET(req: NextRequest) {  
+export async function GET(req: NextRequest) {
   try {
-    const dialogUrl = req.url
-    const dialogType = dialogUrl.split('/').slice(-1)[0]
+    const dialogUrl = req.url;
+    const dialogType = dialogUrl.split("/").slice(-1)[0];
 
-    let dialogContentString = ''
+    let dialogContentString = "";
     switch (dialogType) {
-      case 'addEmail':
+      case "addEmail":
         dialogContentString = await getComponentAsString({
-          component: AddEmailDialog()
+          component: AddEmailDialog(),
         });
         break;
       default:
@@ -26,6 +26,6 @@ export async function GET(req: NextRequest) {
 
     return new NextResponse(dialogContentString, { status: 200 });
   } catch (e) {
-    return NextResponse.json({ success: false }, { status: 500});
+    return NextResponse.json({ success: false }, { status: 500 });
   }
 }
