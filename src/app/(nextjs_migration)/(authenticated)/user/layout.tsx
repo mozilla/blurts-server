@@ -14,7 +14,7 @@ import AppConstants from "../../../../appConstants.js";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { getL10n } from "../../../functions/server/l10n";
-import { authOptions } from "../../../api/utils/authOptions";
+import { authOptions } from "../../../api/utils/auth";
 export type Props = {
   children: ReactNode;
 };

@@ -6,7 +6,7 @@ import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import { getL10n, getL10nBundles } from "../functions/server/l10n";
 import { L10nProvider } from "../../contextProviders/localization";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../api/utils/auth";
 import { Shell } from "./Shell";
 
 export default async function Layout({ children }: { children: ReactNode }) {

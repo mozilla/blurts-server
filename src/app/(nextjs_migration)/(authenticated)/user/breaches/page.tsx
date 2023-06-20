@@ -11,7 +11,7 @@ import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
 import { getUserBreaches } from "../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../utils/fluent.js";
-import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../../api/utils/auth";
 
 import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
