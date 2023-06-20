@@ -19,7 +19,7 @@ nav.site-nav {
       #0000 97%
     )
     1;
-  overflow: scroll;
+  overflow-y: scroll;
   z-index: 1;
 }
 
