@@ -20,14 +20,16 @@ import { Modal } from "./Modal";
  };
  
  function PercentageComplete(props: Props) {
+  const totalRemoved = props.autoRemoved + props.resolvedByYou;
+
    const percentageCompleteNum =
-     ((props.autoRemoved + props.resolvedByYou) / props.totalNumExposures) * 100;
-   return percentageCompleteNum;
+   (totalRemoved > 0 && props.totalNumExposures > 0) ? ((props.autoRemoved + props.resolvedByYou) / props.totalNumExposures) * 100 : 0 // Prevents the division of 0
+     return percentageCompleteNum;
  }
  
  export const ProgressCard = (props: Props) => {
-  const percentageCompleteNum = Math.max(Math.round(PercentageComplete(props)), 1); // Ensures that a minimum of 1 is returned, to guard against division of 0
-   const percentageRemainingNumber = 100 - percentageCompleteNum;
+  const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
+   const percentageRemainingNumber = 100 -  percentageCompleteNum;
 
    const [isModalOpen, setIsModalOpen] = useState(false);
 
