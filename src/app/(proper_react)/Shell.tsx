@@ -92,4 +92,4 @@ export const Shell = (props: Props) => {
       </div>
     </MobileShell>
   );
-}
+};

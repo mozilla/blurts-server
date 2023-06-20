@@ -18,7 +18,11 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
-      <script type="module" src="/nextjs_migration/client/js/transitionObserver.js" async></script>
+      <script
+        type="module"
+        src="/nextjs_migration/client/js/transitionObserver.js"
+        async
+      ></script>
       <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className="hero">
         <div>
@@ -107,10 +111,7 @@ export default async function Home() {
         </figure>
       </section>
 
-      <section
-        className="top-questions-about-monitor"
-        data-enter-transition
-      >
+      <section className="top-questions-about-monitor" data-enter-transition>
         <div>
           <h2>{l10n.getString("top-questions-about-monitor")}</h2>
           <a
