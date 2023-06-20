@@ -158,6 +158,11 @@ export default async function UserBreaches() {
       <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
       <main data-partial="breaches">
         <section>
+          {(process.env.PREMIUM_ENABLED === "true" && !session?.user.fxa?.subscriptions?.includes("monitor")) ?
+            <a className="button primary" href={process.env.SUBSCRIBE_PREMIUM_URL}>Subscribe to Premium</a>
+            : ''}
+        </section>
+        <section>
           <header className="breaches-header">
             <h1
               dangerouslySetInnerHTML={{
