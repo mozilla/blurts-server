@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest } from "next/server";
+import appConstants from "../../../appConstants";
 
 export function bearerToken(req: NextRequest) {
   const requestHeaders = new Headers(req.headers)
@@ -22,4 +23,9 @@ export function bearerToken(req: NextRequest) {
 
   // The remaining portion, which should be the token
   return authHeader.substring(authHeader.indexOf(' ') + 1)
+}
+
+export function isAdmin(email: string) {
+  const admins = appConstants.ADMINS?.split(",") ?? [];
+  return admins.includes(email);
 }
