@@ -5,8 +5,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { getComponentAsString } from '../../../functions/server/getComponentAsString'
-import AddEmailDialog from '../../../(nextjs_migration)/components/server/AddEmailDialog'
+import { getComponentAsString } from '../../../../functions/server/getComponentAsString'
+import AddEmailDialog from '../../../../(nextjs_migration)/components/server/AddEmailDialog'
 
 export async function GET(req: NextRequest) {
   const dialogUrl = req.url
