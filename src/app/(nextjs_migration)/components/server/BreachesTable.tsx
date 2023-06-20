@@ -181,7 +181,10 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           }}
         />
         <template
-          // The DOM for this element is modified by regular JavaScript files that predate our migration to Next.js. We don't use any React-specific features here, so hydration errors should not be a problem.
+          // The DOM for this element is modified by regular JavaScript
+          // files that predate our migration to Next.js. We don’t use any
+          // React-specific features here, so hydration errors should
+          // not be a problem.
           suppressHydrationWarning
           className="all-breaches-resolved"
           dangerouslySetInnerHTML={{
