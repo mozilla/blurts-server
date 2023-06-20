@@ -18,7 +18,7 @@ export default function AddEmailDialog() {
       <link rel="stylesheet" href="/nextjs_migration/client/css/addEmail.css" />
       <header>
         <button className="close"></button>
-        {/* We can’t use next/image when we featch the component via API */}
+        {/* We can’t use next/image when we fetch the component via API */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={cloudImage.src} alt="" />
         <h2>{l10n.getString("add-email-add-another-heading")}</h2>
