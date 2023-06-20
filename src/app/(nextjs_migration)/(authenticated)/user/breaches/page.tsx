@@ -10,13 +10,13 @@ import { CircleChartProps, UserBreaches } from "./breaches.d";
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
 import { getUserBreaches } from "../../../../functions/server/getUserBreaches";
-import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../../api/utils/auth";
 
 import "../../../../../client/css/partials/breaches.css";
 import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 
 import { BreachesTable } from "../../../components/server/BreachesTable";
-import { getComponentAsString } from "../../../../functions/getComponentAsString";
+import { getComponentAsString } from "../../../functions/server/getComponentAsString";
 
 export async function generateMetadata() {
   const l10n = getL10n();
