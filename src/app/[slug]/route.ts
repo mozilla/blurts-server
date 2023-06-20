@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     // Note: we do not `await` this Promise, to ensure we do not delay sending
     //       the heartbeat response while we are still fetching the data.
     // TODO: Replace with a cron job to fetch breach data and icons.
-    getBreaches().then(breaches => getBreachIcons(breaches));
+    getBreaches().then((breaches) => getBreachIcons(breaches));
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 

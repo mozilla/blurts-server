@@ -59,7 +59,7 @@ export const authOptions: AuthOptions = {
       authorization: {
         url: AppConstants.OAUTH_AUTHORIZATION_URI,
         params: {
-          scope: "profile",
+          scope: "profile https://identity.mozilla.com/account/subscriptions",
           access_type: "offline",
           action: "email",
           prompt: "login",

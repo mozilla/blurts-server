@@ -18,14 +18,17 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
-      <Script type="module" src="/nextjs_migration/client/js/transitionObserver.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/transitionObserver.js"
+      />
       <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>
           <p>{l10n.getString("exposure-landing-hero-lead")}</p>
           <form hidden className="exposure-scan">
-            <label htmlFor="scan-email-adddress" className="visually-hidden">
+            <label htmlFor="scan-email-address" className="visually-hidden">
               {l10n.getString("exposure-landing-hero-email-label")}
             </label>
             <input
@@ -107,10 +110,7 @@ export default async function Home() {
         </figure>
       </section>
 
-      <section
-        className="top-questions-about-monitor"
-        data-enter-transition
-      >
+      <section className="top-questions-about-monitor" data-enter-transition>
         <div>
           <h2>{l10n.getString("top-questions-about-monitor")}</h2>
           <a

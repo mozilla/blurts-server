@@ -64,26 +64,37 @@ export const BreachesTable = ({ userBreaches }: Props) => {
         });
 
         return (
-          <details key={breach.Name + account.email} className='breach-row' data-status={status} data-email={account.email} data-classes={dataClassesTranslated} hidden={isHidden}>
+          <details
+            key={breach.Name + account.email}
+            className="breach-row"
+            data-status={status}
+            data-email={account.email}
+            data-classes={dataClassesTranslated}
+            hidden={isHidden}
+          >
             <summary>
-              <span className='breach-company'><BreachLogo breach={breach} logos={breachLogos} htmlTags /> {breach.Title}</span>
+              <span className="breach-company">
+                <BreachLogo breach={breach} logos={breachLogos} />{" "}
+                {breach.Title}
+              </span>
               <span>{shortList.format(dataClassesTranslated)}</span>
               <span>
-                <span className='resolution-badge is-resolved'>{l10n.getString(
-                  "column-status-badge-resolved"
-                )}</span>
-                <span className='resolution-badge is-active'>{l10n.getString(
-                  "column-status-badge-active"
-                )}</span>
+                <span className="resolution-badge is-resolved">
+                  {l10n.getString("column-status-badge-resolved")}
+                </span>
+                <span className="resolution-badge is-active">
+                  {l10n.getString("column-status-badge-active")}
+                </span>
               </span>
               <span>{shortDate.format(addedDate)}</span>
             </summary>
             <article>
               <p>{description}</p>
-              <p><strong>{l10n.getString(
-                "breaches-resolve-heading"
-              )}</strong></p>
-              <ol className='resolve-list'
+              <p>
+                <strong>{l10n.getString("breaches-resolve-heading")}</strong>
+              </p>
+              <ol
+                className="resolve-list"
                 dangerouslySetInnerHTML={{ __html: createResolveSteps(breach) }}
               />
             </article>
