@@ -244,7 +244,9 @@ function getBreachDetail(categoryId: ReturnType<typeof getBreachCategory>) {
   }
 }
 
-function makeBreachDetail(breachCategory: ReturnType<typeof getBreachCategory>) {
+function makeBreachDetail(
+  breachCategory: ReturnType<typeof getBreachCategory>
+) {
   const breachDetail = getBreachDetail(breachCategory);
   return (
     <>
