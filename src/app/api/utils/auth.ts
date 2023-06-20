@@ -5,21 +5,21 @@
 import { NextRequest } from "next/server";
 
 export function bearerToken(req: NextRequest) {
-  const requestHeaders = new Headers(req.headers)
-  requestHeaders.get('authorization')
-  const authHeader = requestHeaders.get('authorization')
+  const requestHeaders = new Headers(req.headers);
+  requestHeaders.get("authorization");
+  const authHeader = requestHeaders.get("authorization");
 
   // Require an auth header
   if (!authHeader) {
-    throw new Error('No auth header found');
+    throw new Error("No auth header found");
   }
 
   // Extract the first portion which should be 'Bearer'
-  const headerType = authHeader.substring(0, authHeader.indexOf(' '))
-  if (headerType !== 'Bearer') {
-    throw new Error('Invalid auth type');
+  const headerType = authHeader.substring(0, authHeader.indexOf(" "));
+  if (headerType !== "Bearer") {
+    throw new Error("Invalid auth type");
   }
 
   // The remaining portion, which should be the token
-  return authHeader.substring(authHeader.indexOf(' ') + 1)
+  return authHeader.substring(authHeader.indexOf(" ") + 1);
 }
