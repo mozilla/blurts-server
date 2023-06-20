@@ -48,7 +48,10 @@ export async function POST(req: NextRequest) {
       });
     } catch (e) {
       console.error(e);
-      if (e instanceof Error && e.message === "error-email-validation-pending") {
+      if (
+        e instanceof Error &&
+        e.message === "error-email-validation-pending"
+      ) {
         return NextResponse.json(
           {
             success: false,

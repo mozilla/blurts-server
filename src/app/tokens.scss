@@ -139,6 +139,15 @@ $color-pink-20: #ff8ac5;
 $color-pink-10: #ffb4db;
 $color-pink-05: #ffdef0;
 
+// Gradient
+$gradient-blue: radial-gradient(
+  100% 100% at 100% 0%,
+  $color-violet-50 0%,
+  $color-purple-50 37.1%,
+  $color-blue-40 61.4%,
+  #0090ed 100%
+);
+
 // Layout //
 // Border Radius
 $border-radius-xs: 2px;
@@ -198,10 +207,10 @@ $text-title-2xs: 700 24px / 26px var(--font-metropolis), sans-serif;
 $text-title-3xs: 700 18px / 20px var(--font-metropolis), sans-serif;
 
 // Body copy
-$text-body-xl: 400 21px / 32px var(--font-inter) sans-serif;
-$text-body-lg: 400 18px / 27px var(--font-inter) sans-serif;
-$text-body-md: 400 16px / 24px var(--font-inter) sans-serif;
-$text-body-sm: 400 14px / 21px var(--font-inter) sans-serif;
-$text-body-xs: 400 12px / 18px var(--font-inter) sans-serif;
+$text-body-xl: 400 21px / 32px var(--font-inter), sans-serif;
+$text-body-lg: 400 18px / 27px var(--font-inter), sans-serif;
+$text-body-md: 400 16px / 24px var(--font-inter), sans-serif;
+$text-body-sm: 400 14px / 21px var(--font-inter), sans-serif;
+$text-body-xs: 400 12px / 18px var(--font-inter), sans-serif;
 
 $tab-bar-height: 100px;
