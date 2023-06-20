@@ -4,7 +4,7 @@
 
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../api/utils/authOptions";
 import { SignInButton } from "../../../(nextjs_migration)/components/client/SignInButton";
 
 export default async function Layout(props: { children: ReactNode }) {

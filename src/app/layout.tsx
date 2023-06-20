@@ -8,7 +8,7 @@ import "./globals.css";
 import { getServerSession } from "next-auth";
 import { getLocale } from "./functions/server/l10n";
 import { SessionProvider } from "../contextProviders/session";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./api/utils/authOptions";
 import { getL10n } from "./functions/server/l10n";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 
