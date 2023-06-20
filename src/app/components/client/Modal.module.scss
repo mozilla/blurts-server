@@ -21,21 +21,20 @@
     .modalContent {
       padding-top: $spacing-lg;
 
+      .closeButton {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: $spacing-md;
+        color: $color-grey-40;
+        background: none;
+        border: none;
+        cursor: pointer;
 
-    .closeButton {
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: $spacing-md;
-      color: $color-grey-40;
-      background: none;
-      border: none;
-      cursor: pointer;
-
-      &:hover {
-        color: $color-grey-30;
+        &:hover {
+          color: $color-grey-30;
+        }
       }
-    }
     }
   }
 }

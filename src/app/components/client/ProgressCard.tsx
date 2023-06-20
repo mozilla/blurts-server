@@ -2,15 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- "use client";
+"use client";
 
- import { CSSProperties, useState } from "react";
- import { QuestionMarkCircle } from "../server/Icons";
- import styles from "./ProgressCard.module.scss";
- import ExploringLaptopPlus from "./assets/exploring-laptop-check.png";
- import ExploringLaptopMinus from "./assets/exploring-laptop-minus.png";
- import SparklingCheck from "./assets/sparkling-check.png";
- import Image from "next/image";
+import { CSSProperties, useState } from "react";
+import { QuestionMarkCircle } from "../server/Icons";
+import styles from "./ProgressCard.module.scss";
+import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
+import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
+import SparklingCheck from "./assets/sparkling-check.svg";
+import Image from "next/image";
 import { Modal } from "./Modal";
  
  export type Props = {
@@ -26,8 +26,8 @@ import { Modal } from "./Modal";
  }
  
  export const ProgressCard = (props: Props) => {
-   const percentageCompleteNum = PercentageComplete(props);
-   const percentageRemainingNumber = 100 - PercentageComplete(props);
+  const percentageCompleteNum = Math.max(Math.round(PercentageComplete(props)), 1); // Ensures that a minimum of 1 is returned, to guard against division of 0
+   const percentageRemainingNumber = 100 - percentageCompleteNum;
 
    const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -83,8 +83,8 @@ import { Modal } from "./Modal";
      <div className={styles.progressCard}>
        <div className={styles.header}>
          Here is what we fixed
-         <button onClick={openModal}>
-           <QuestionMarkCircle alt={""} width="15" height="15" />
+         <button aria-label="Term definitions" onClick={openModal}>
+           <QuestionMarkCircle alt="" width="15" height="15" />
          </button>
        </div>
        <div className={styles.progressStatsWrapper}>

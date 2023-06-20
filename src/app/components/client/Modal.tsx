@@ -20,11 +20,11 @@ export const Modal = (props: Props) => {
   }
 
     return (
-      <div className={styles.modalOverlay}>
+      <div role="dialog" aria-modal="true" aria-label="Modal" className={styles.modalOverlay}>
         <div className={styles.modal}>
           <div className={styles.modalContent}>
             {props.content}
-            <button className={styles.closeButton} onClick={props.onClose}><CloseBtn alt="" width="14" height="14"/></button>
+            <button aria-label="Close modal" className={styles.closeButton} onClick={props.onClose}><CloseBtn alt="" width="14" height="14"/></button>
           </div>
         </div>
       </div>

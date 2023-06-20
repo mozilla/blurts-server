@@ -140,7 +140,7 @@ $color-pink-10: #ffb4db;
 $color-pink-05: #ffdef0;
 
 // Gradient
-$gradient-blue: radial-gradient(100% 100% at 100% 0%, #B833E1 0%, #9059FF 37.1%, #5B6DF8 61.4%, #0090ED 100%);
+$gradient-blue: radial-gradient(100% 100% at 100% 0%, $color-violet-50 0%, $color-purple-50 37.1%, $color-blue-40 61.4%, #0090ED 100%);
 
 // Layout //
 // Border Radius
