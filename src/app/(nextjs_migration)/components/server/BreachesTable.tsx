@@ -106,6 +106,9 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           autoComplete="off"
         />
         <label htmlFor="breaches-unresolved">
+          {/* The DOM for this element is modified by regular JavaScript files
+          that predate our migration to Next.js. We don’t use any React-specific
+          features here, so hydration errors should not be a problem. */}
           <output suppressHydrationWarning>&nbsp;</output>
           {l10n.getString("filter-label-unresolved")}
         </label>
@@ -117,11 +120,16 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           autoComplete="off"
         />
         <label htmlFor="breaches-resolved">
+          {/* The DOM for this element is modified by regular JavaScript files
+          that predate our migration to Next.js. We don’t use any React-specific
+          features here, so hydration errors should not be a problem. */}
           <output suppressHydrationWarning>&nbsp;</output>
           {l10n.getString("filter-label-resolved")}
         </label>
       </fieldset>
-
+      {/* The DOM for this element is modified by regular JavaScript files
+      that predate our migration to Next.js. We don’t use any React-specific
+      features here, so hydration errors should not be a problem. */}
       <section suppressHydrationWarning className="breaches-table">
         <header>
           <span>{l10n.getString("column-company")}</span>
@@ -162,6 +170,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           }}
         />
         <template
+          // The DOM for this element is modified by regular JavaScript files that predate our migration to Next.js. We don't use any React-specific features here, so hydration errors should not be a problem.
           suppressHydrationWarning
           className="all-breaches-resolved"
           dangerouslySetInnerHTML={{

@@ -101,6 +101,10 @@ export default async function UserBreaches() {
         <section>
           <header className="breaches-header">
             <h1
+              // The DOM for this element is modified by regular JavaScript
+              // files that predate our migration to Next.js. We don’t use any
+              // React-specific features here, so hydration errors should
+              // not be a problem.
               suppressHydrationWarning
               dangerouslySetInnerHTML={{
                 __html: l10n.getString("breach-heading-email", {
@@ -112,6 +116,10 @@ export default async function UserBreaches() {
             />
 
             <circle-chart
+              // The DOM for this element is modified by regular JavaScript
+              // files that predate our migration to Next.js. We don’t use any
+              // React-specific features here, so hydration errors should
+              // not be a problem.
               suppressHydrationWarning
               class="breach-chart"
               title={l10n.getString("breach-chart-title")}
@@ -141,6 +149,10 @@ export default async function UserBreaches() {
         </section>
 
         <div
+          // The DOM for this element is modified by regular JavaScript
+          // files that predate our migration to Next.js. We don’t use any
+          // React-specific features here, so hydration errors should
+          // not be a problem.
           suppressHydrationWarning
           dangerouslySetInnerHTML={{
             __html: await getComponentAsString({
