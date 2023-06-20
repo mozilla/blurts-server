@@ -74,7 +74,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           >
             <summary>
               <span className="breach-company">
-                <BreachLogo breach={breach} logos={breachLogos} />{" "}
+                <BreachLogo breach={breach} logos={breachLogos} htmlTags />{" "}
                 {breach.Title}
               </span>
               <span>{shortList.format(dataClassesTranslated)}</span>
