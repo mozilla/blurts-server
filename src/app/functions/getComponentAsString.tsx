@@ -9,6 +9,6 @@ export type Props = {
 };
 
 export const getComponentAsString = async ({ component }: Props) => {
-  const ReactDOMServer = (await import('react-dom/server')).default;
+  const ReactDOMServer = (await import("react-dom/server")).default;
   return ReactDOMServer.renderToString(component);
 };
