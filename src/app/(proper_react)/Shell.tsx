@@ -24,72 +24,74 @@ export const Shell = (props: Props) => {
 
   return (
     <MobileShell session={props.session}>
-      <div className={styles.wrapper}>
-        <nav className={styles.mainMenu}>
-          <Link href="/" className={styles.homeLink}>
-            <Image
-              src={monitorLogo}
-              alt={l10n.getString("main-nav-link-home-label")}
-              width={170}
-            />
-          </Link>
-          <ul>
-            {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
-            <li>
-              <PageLink
-                href="/redesign/user/dashboard"
-                activeClassName={styles.isActive}
-              >
-                {l10n.getString("main-nav-link-dashboard-label")}
-              </PageLink>
-            </li>
-            <li>
-              <a
-                href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                title={l10n.getString("main-nav-link-faq-tooltip")}
-              >
-                {l10n.getString("main-nav-link-faq-label")}
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <div className={styles.content}>
-          <div className={styles.page}>{props.children}</div>
-          <footer className={styles.footer}>
-            <a
-              href="https://www.mozilla.org"
-              className={styles.mozillaLink}
-              target="_blank"
-            >
+      <main>
+        <div className={styles.wrapper}>
+          <nav className={styles.mainMenu}>
+            <Link href="/" className={styles.homeLink}>
               <Image
-                src={mozillaLogo}
-                width={100}
-                alt={l10n.getString("mozilla")}
+                src={monitorLogo}
+                alt={l10n.getString("main-nav-link-home-label")}
+                width={170}
               />
-            </a>
-            <ul className={styles.externalLinks}>
+            </Link>
+            <ul>
+              {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
+              <li>
+                <PageLink
+                  href="/redesign/user/dashboard"
+                  activeClassName={styles.isActive}
+                >
+                  {l10n.getString("main-nav-link-dashboard-label")}
+                </PageLink>
+              </li>
               <li>
                 <a
                   href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                  title={l10n.getString("footer-external-link-faq-tooltip")}
+                  title={l10n.getString("main-nav-link-faq-tooltip")}
                 >
-                  {l10n.getString("footer-external-link-faq-label")}
-                </a>
-              </li>
-              <li>
-                <a href="https://www.mozilla.org/privacy/firefox-monitor">
-                  {l10n.getString("terms-and-privacy")}
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/mozilla/blurts-server">
-                  {l10n.getString("github")}
+                  {l10n.getString("main-nav-link-faq-label")}
                 </a>
               </li>
             </ul>
-          </footer>
+          </nav>
+          <div className={styles.content}>
+            <div className={styles.page}>{props.children}</div>
+          </div>
         </div>
-      </div>
+        <footer className={styles.footer}>
+              <a
+                href="https://www.mozilla.org"
+                className={styles.mozillaLink}
+                target="_blank"
+              >
+                <Image
+                  src={mozillaLogo}
+                  width={100}
+                  alt={l10n.getString("mozilla")}
+                />
+              </a>
+              <ul className={styles.externalLinks}>
+                <li>
+                  <a
+                    href="https://support.mozilla.org/kb/firefox-monitor-faq"
+                    title={l10n.getString("footer-external-link-faq-tooltip")}
+                  >
+                    {l10n.getString("footer-external-link-faq-label")}
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.mozilla.org/privacy/firefox-monitor">
+                    {l10n.getString("terms-and-privacy")}
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/mozilla/blurts-server">
+                    {l10n.getString("github")}
+                  </a>
+                </li>
+              </ul>
+        </footer>
+      </main>
     </MobileShell>
   );
 }
