@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "next dev --port=6060",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port=6060",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
