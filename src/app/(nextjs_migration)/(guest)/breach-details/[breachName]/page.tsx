@@ -157,10 +157,17 @@ export default async function BreachDetail(props: {
           <p
             className="breach-detail-attribution"
             dangerouslySetInnerHTML={{
-              __html: l10n.getString("email-2022-hibp-attribution", {
-                "hibp-link-attr":
-                  'href="https://haveibeenpwned.com/" target="_blank"',
-              }),
+              __html: l10n
+                .getString("email-2022-hibp-attribution", {
+                  "hibp-link-attr":
+                    'href="https://haveibeenpwned.com/" target="_blank"',
+                })
+                // The following are special characters inserted by Fluent,
+                // which break the link when inserted into the tag.
+                // (For future strings, we can just `getElement` to properly insert
+                // tags into localised strings.)
+                .replaceAll("⁩", "")
+                .replaceAll("⁨", ""),
             }}
           />
         </div>
@@ -244,7 +251,9 @@ function getBreachDetail(categoryId: ReturnType<typeof getBreachCategory>) {
   }
 }
 
-function makeBreachDetail(breachCategory: ReturnType<typeof getBreachCategory>) {
+function makeBreachDetail(
+  breachCategory: ReturnType<typeof getBreachCategory>
+) {
   const breachDetail = getBreachDetail(breachCategory);
   return (
     <>

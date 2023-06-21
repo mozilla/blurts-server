@@ -18,7 +18,7 @@ import { verifyPartial } from "../../../../../../views/emails/emailVerify";
 import { breachAlertEmailPartial } from "../../../../../../views/emails/emailBreachAlert";
 import { monthlyUnresolvedEmailPartial } from "../../../../../../views/emails/emailMonthlyUnresolved";
 import { signupReportEmailPartial } from "../../../../../../views/emails/emailSignupReport";
-import { authOptions } from "../../../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../../../api/utils/auth";
 import { getL10n } from "../../../../../functions/server/l10n";
 import { ReactLocalization } from "@fluent/react";
 

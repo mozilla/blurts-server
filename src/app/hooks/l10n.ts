@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-'use client'
+"use client";
 
-import { ReactLocalization, useLocalization } from '@fluent/react'
-import { createElement, Fragment } from 'react'
+import { ReactLocalization, useLocalization } from "@fluent/react";
+import { createElement, Fragment } from "react";
 
 /**
  * Equivalent to ReactLocalization.getString, but returns a React Fragment.
@@ -18,24 +18,24 @@ import { createElement, Fragment } from 'react'
  * https://github.com/projectfluent/fluent.js/pull/595#discussion_r967011632)
  */
 export type GetFragment = (
-  id: Parameters<ReactLocalization['getString']>[0],
-  args?: Parameters<ReactLocalization['getElement']>[2],
-  fallback?: Parameters<ReactLocalization['getString']>[2]
-) => ReturnType<ReactLocalization['getElement']>;
+  id: Parameters<ReactLocalization["getString"]>[0],
+  args?: Parameters<ReactLocalization["getElement"]>[2],
+  fallback?: Parameters<ReactLocalization["getString"]>[2]
+) => ReturnType<ReactLocalization["getElement"]>;
 
 export type ExtendedReactLocalization = ReactLocalization & {
   getFragment: GetFragment;
 };
 
 export const useL10n = (): ExtendedReactLocalization => {
-  const { l10n } = useLocalization()
+  const { l10n } = useLocalization();
 
   const getFragment: GetFragment = (id, args, fallback) =>
-    l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args)
+    l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args);
 
   const extendedL10n: ExtendedReactLocalization =
-    l10n as ExtendedReactLocalization
-  extendedL10n.getFragment = getFragment
+    l10n as ExtendedReactLocalization;
+  extendedL10n.getFragment = getFragment;
 
-  return extendedL10n
-}
+  return extendedL10n;
+};
