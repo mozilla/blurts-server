@@ -142,7 +142,12 @@ const emailFooter = (data, l10n) => {
       <p>
         ${getMessage('email-2022-hibp-attribution', {
         'hibp-link-attr': `href='${links(data).hibp}' rel='noopener'`
-      })}
+      })
+      // The following are special characters inserted by Fluent,
+      // which break the link when inserted into the tag.
+      ?.replaceAll("⁩", "")
+      .replaceAll("⁨", "")
+      }
       </p>
       <img
         alt='${getMessage('mozilla')}'
