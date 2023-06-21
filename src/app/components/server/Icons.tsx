@@ -197,7 +197,7 @@ export const EmailIcon = ({
       aria-label={alt}
       aria-hidden={alt === ""}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 14 14"
+      viewBox="0 0 15 15"
       {...props}
       className={`${props.className ?? ""} ${styles.colorifyFill}`}
     >

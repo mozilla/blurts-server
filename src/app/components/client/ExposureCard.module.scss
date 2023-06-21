@@ -1,49 +1,54 @@
 @import "../../tokens";
 
 .exposureCard {
-  font: $text-body-md;
+  font: $text-body-sm;
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-md;
-  max-width: $content-xl;
+  max-width: $content-lg;
 
   .exposureHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing-sm 0;
-    gap: $layout-md;
+    padding: $spacing-sm $spacing-md;
+    gap: $layout-xs;
+
+    @media screen and (min-width: $screen-md) {
+      gap: $layout-md;
+    }
 
     .chevronDown {
       cursor: pointer;
-      padding-right: $spacing-lg;
       color: rgba($color-purple-70, 0.7);
       height: 20px; //height of down chevron
 
       .isOpen {
+        transition: transform 0.2s ease-out;
         rotate: (180deg);
       }
     }
   }
 
   ul.exposureHeaderList {
-    list-style: none;
+    list-style-type: none;
     display: flex;
     align-items: center;
+    padding-left: 0;
     gap: $layout-md;
     margin: 0;
-    padding: 0 $spacing-sm;
     width: 100%;
+    justify-content: space-between;
 
     li {
-      flex: 1;
       display: flex;
-      align-items: center;
-    }
-
-    .exposureImage {
-      max-width: 150px;
-      height: 100%;
+      align-items: center;   
+      
+      .exposureImage {
+        width: 120px;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
@@ -56,26 +61,32 @@
     a,
     span {
       color: $color-blue-50;
+
+      svg {
+        display: inline; 
+        margin: 0 $spacing-xs;
+      }
     }
 
     &.isOpen {
       border-top: 2px solid rgba($color-purple-70, 0.2);
       overflow: auto;
       height: auto;
+      padding: $spacing-lg;
     }
 
     .exposureListOfExposureTypes {
+      padding-top: $spacing-md;
       display: flex;
       flex-direction: row;
-      gap: $layout-md;
-      align-items: center;
+      flex-direction: column;
+      gap: $layout-xs;
 
-      .fixItBtn {
-        flex-basis: 20%;
-
-        & > * {
-          width: 100%;
-        }
+      @media screen and (min-width: $screen-md) {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: $layout-md;
       }
 
       ul {
@@ -84,25 +95,46 @@
         list-style: none;
         margin-left: 0;
         padding-left: 0;
-        display: flex;
-        align-items: center;
-        gap: $layout-md;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: $spacing-sm;
+        
+        @media screen and (min-width: $screen-md) {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+
+        li + li {
+         padding-left: 23px; // offset the exposure icon
+             
+          @media screen and (min-width: $screen-md) {
+            padding-left: $layout-md;  
+          }
+        }
+
+        li:first-child {
+          grid-column: 1 / -1;
+        }
 
         .detailsFoundItem {
-          display: flex;
-
-          svg {
-            color: $color-purple-70;
-          }
-
           dt {
             display: flex;
             gap: $spacing-sm;
             align-items: center;
+            position: relative;
+
+            span {
+              color: $color-purple-60;
+              position: absolute;
+              margin-top: 2px;
+              margin-left: -23px; // offset the exposure icon
+            }
           }
 
           dl {
             font: $text-body-xs;
+            font-weight: 600;
           }
         }
       }
