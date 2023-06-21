@@ -18,13 +18,14 @@ import {
 } from "../server/Icons";
 import Image from "next/image";
 import { Button } from "../server/Button";
+import { ExposureType, ExposureTypeEl } from "../server/ExposureType";
 
 export type Props = {
   exposureImg: StaticImageData;
   exposureName: string;
-  exposureType: string;
+  exposureType: ExposureType;
   exposureDetailsLink: string;
-  dateFound: string;
+  dateFound: number;
   statusPillType: StatusPillType;
 };
 
@@ -58,6 +59,16 @@ export const ExposureCard = (props: Props) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+
+  const date = new Date(dateFound * 1000); // Multiply by 1000 to convert seconds to milliseconds
+
+  const formattedDate = date.toLocaleDateString("en-US", {
+    year: "2-digit",
+    month: "2-digit",
+    day: "2-digit",
+  });
+
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
     let headline, description;
@@ -102,8 +113,8 @@ export const ExposureCard = (props: Props) => {
                 src={exposureImg}
               /> </li>: ""}
             <li>{exposureName}</li>
-            {!isMobile ? <li>{exposureType}</li> : ""}
-            {!isMobile ? <li>{dateFound}</li> : ""}
+            {!isMobile ? <li><ExposureTypeEl type={exposureType} /></li> : ""}
+            {!isMobile ? <li>{formattedDate}</li> : ""}
             <li>
               <StatusPill type={statusPillType} />
             </li>
@@ -179,5 +190,4 @@ export const ExposureCard = (props: Props) => {
 
   return elementCard;
 };
-
 

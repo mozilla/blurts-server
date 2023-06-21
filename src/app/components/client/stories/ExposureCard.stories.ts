@@ -16,13 +16,15 @@ const meta: Meta<typeof ExposureCard> = {
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;
 
+const timeStamp = 1668144000; // Example Unix timestamp
+
 export const ActionNeeded: Story = {
   args: {
     exposureImg: FamilyTreeImage,
     exposureName: "Familytree.com",
-    exposureType: "Your info for sale",
+    exposureType: "infoForSale",
     exposureDetailsLink: "linkehere.com",
-    dateFound: "11/09/2022",
+    dateFound: timeStamp,
     statusPillType: "needAction",
   },
 };
