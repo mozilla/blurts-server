@@ -6,7 +6,7 @@
 
 import React, { ReactElement, useEffect, useState } from "react";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill } from "../server/StatusPill";
+import { StatusPill, StatusPillType } from "../server/StatusPill";
 import { StaticImageData } from "next/image";
 import {
   ChevronDown,
@@ -25,8 +25,7 @@ export type Props = {
   exposureType: string;
   exposureDetailsLink: string;
   dateFound: string;
-  statusPillType: string;
-  statusPillContent: string;
+  statusPillType: StatusPillType;
 };
 
 type DetailsFoundProps = {
@@ -42,7 +41,6 @@ export const ExposureCard = (props: Props) => {
     exposureType,
     exposureDetailsLink,
     dateFound,
-    statusPillContent,
     statusPillType,
   } = props;
 
@@ -107,7 +105,7 @@ export const ExposureCard = (props: Props) => {
             {!isMobile ? <li>{exposureType}</li> : ""}
             {!isMobile ? <li>{dateFound}</li> : ""}
             <li>
-              <StatusPill type={statusPillType} content={statusPillContent} />
+              <StatusPill type={statusPillType} />
             </li>
           </ul>
           <span

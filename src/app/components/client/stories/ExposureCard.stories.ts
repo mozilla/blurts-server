@@ -23,7 +23,6 @@ export const ActionNeeded: Story = {
     exposureType: "Your info for sale",
     exposureDetailsLink: "linkehere.com",
     dateFound: "11/09/2022",
-    statusPillType: "actionNeeded",
-    statusPillContent: "Action needed",
+    statusPillType: "needAction",
   },
 };

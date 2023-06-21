@@ -5,15 +5,30 @@
 import React from "react";
 import styles from "./StatusPill.module.scss";
 
+export type StatusPillType = "needAction" | "progress" | "fixed";
+
 export type Props = {
-  type: string; // type
-  content: string;
+  type: StatusPillType;
 };
 
 export const StatusPill = (props: Props) => {
-  const { type, content } = props;
+  const { type } = props;
 
-  const classes = [styles.pill, styles[type]].filter(Boolean).join(" ");
+  let stringContent = "";
+  let className = "";
 
-  return <div className={classes}>{content}</div>;
+  if (type === "needAction") {
+    stringContent = "Action Needed";
+    className = "actionNeeded";
+  } else if (type === "progress") {
+    stringContent = "In Progress";
+    className = "inProgress";
+  } else if (type === "fixed") {
+    stringContent = "Fixed";
+    className = "isFixed";
+  }
+
+  const classes = [styles.pill, styles[className]].filter(Boolean).join(" ");
+
+  return <div className={classes}>{stringContent}</div>;
 };
