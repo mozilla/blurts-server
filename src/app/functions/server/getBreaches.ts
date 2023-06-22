@@ -82,7 +82,10 @@ export async function getBreachIcons(breaches: Breach[]): Promise<LogoMap> {
           const logoFilename = breachDomain.toLowerCase() + ".ico";
           const logoPath = pathResolve(logoFolder, logoFilename);
           if (existingLogos.includes(logoFilename)) {
-            resolve([breachDomain, `/logo_cache/${logoFilename}`]);
+            resolve([
+              breachDomain,
+              `/api/breach-icon/${breachDomain.toLowerCase()}`,
+            ]);
             return;
           }
           get(
@@ -99,7 +102,7 @@ export async function getBreachIcons(breaches: Breach[]): Promise<LogoMap> {
                 file.close();
                 resolve([
                   breachDomain,
-                  `/logo_cache/${breachDomain.toLowerCase()}.ico`,
+                  `/api/breach-icon/${breachDomain.toLowerCase()}`,
                 ]);
               });
               file.on("error", (error) => reject(error));
