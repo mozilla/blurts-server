@@ -61,57 +61,64 @@ export async function getBreachIcons(breaches: Breach[]): Promise<LogoMap> {
     return new Map();
   }
   isFetchingIcons = true;
-  const breachDomains = breaches
-    .map((breach) => breach.Domain)
-    .filter((breachDomain) => breachDomain.length > 0);
-  const logoFolder = pathResolve(
-    dirname(fileURLToPath(import.meta.url)),
-    "../../../../public/logo_cache/"
-  );
-  try {
-    await mkdir(logoFolder);
-  } catch {
-    // Do nothing; if the directory already exists, that's fine.
-  }
-  const existingLogos = await readdir(logoFolder);
-  // TODO: Batch to limit memory use?
-  const logoMapElems = (await Promise.all(
-    breachDomains.map((breachDomain) => {
-      return new Promise((resolve, reject) => {
-        const logoFilename = breachDomain.toLowerCase() + ".ico";
-        const logoPath = pathResolve(logoFolder, logoFilename);
-        if (existingLogos.includes(logoFilename)) {
-          resolve([breachDomain, `/logo_cache/${logoFilename}`]);
-          return;
-        }
-        get(
-          `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
-          (response) => {
-            if (response.statusCode !== 200) {
-              resolve(null);
-              return;
-            }
-
-            const file = createWriteStream(logoPath);
-            response.pipe(file);
-            file.on("finish", () => {
-              file.close();
-              resolve([
-                breachDomain,
-                `/logo_cache/${breachDomain.toLowerCase()}.ico`,
-              ]);
-            });
-            file.on("error", (error) => reject(error));
+  async function fetchBreachIcons() {
+    const breachDomains = breaches
+      .map((breach) => breach.Domain)
+      .filter((breachDomain) => breachDomain.length > 0);
+    const logoFolder = pathResolve(
+      dirname(fileURLToPath(import.meta.url)),
+      "../../../../public/logo_cache/"
+    );
+    try {
+      await mkdir(logoFolder);
+    } catch {
+      // Do nothing; if the directory already exists, that's fine.
+    }
+    const existingLogos = await readdir(logoFolder);
+    // TODO: Batch to limit memory use?
+    const logoMapElems = (await Promise.all(
+      breachDomains.map((breachDomain) => {
+        return new Promise((resolve, reject) => {
+          const logoFilename = breachDomain.toLowerCase() + ".ico";
+          const logoPath = pathResolve(logoFolder, logoFilename);
+          if (existingLogos.includes(logoFilename)) {
+            resolve([breachDomain, `/logo_cache/${logoFilename}`]);
+            return;
           }
-        ).on("error", (_error) => {
-          resolve(null);
-        });
-      });
-    })
-  )) as Array<[string, string] | null>;
+          get(
+            `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
+            (response) => {
+              if (response.statusCode !== 200) {
+                resolve(null);
+                return;
+              }
 
-  logoMap = new Map(logoMapElems.filter(isNotNull));
-  return logoMap;
+              const file = createWriteStream(logoPath);
+              response.pipe(file);
+              file.on("finish", () => {
+                file.close();
+                resolve([
+                  breachDomain,
+                  `/logo_cache/${breachDomain.toLowerCase()}.ico`,
+                ]);
+              });
+              file.on("error", (error) => reject(error));
+            }
+          ).on("error", (_error) => {
+            resolve(null);
+          });
+        });
+      })
+    )) as Array<[string, string] | null>;
+
+    logoMap = new Map(logoMapElems.filter(isNotNull));
+  }
+
+  // Start fetching breach icons, but do not await it so that we do not block
+  // pending requests:
+  fetchBreachIcons();
+
+  return new Map();
 }
 
 function isNotNull<T>(value: T | null): value is T {
