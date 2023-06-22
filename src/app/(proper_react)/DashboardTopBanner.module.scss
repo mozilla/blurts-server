@@ -1,13 +1,12 @@
 @import "../tokens";
 
 .container {
- 
   display: flex;
   flex-direction: row;
   position: relative;
   border: 1px solid rgba($color-purple-50, 0.2);
   border-radius: $border-radius-md;
-  padding: $spacing-2xl $spacing-lg;
+  padding: $layout-lg $spacing-xl;
 
   .content {
     display: flex;
@@ -17,12 +16,11 @@
     h3 {
       font: $text-title-2xs;
     }
-    
-    .button {
-      margin-top: $spacing-lg;
+
+    .cta {
+      margin-top: $spacing-sm;
       align-self: start;
     }
-    
   }
 
   & > * {

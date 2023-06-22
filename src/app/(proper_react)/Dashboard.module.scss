@@ -1,20 +1,26 @@
 @import "../tokens";
 
 .container {
-
+  max-width: $content-lg;
+  margin-left: $layout-lg;
+  margin-top: $layout-sm;
   h2 {
     font: $text-body-lg;
     font-weight: 600;
   }
 
-  .exposureList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .exposuresArea {
+    margin-top: $layout-sm;
 
-    .exposureListItem {
-      margin-bottom: $spacing-sm;
-    }
+    .exposureList {
+      list-style: none;
+      padding-top: $layout-xs;
+      padding-left: 0;
+      margin: 0;
   
+      .exposureListItem {
+        margin-bottom: $spacing-md;
+      }
+    }
   }
 }

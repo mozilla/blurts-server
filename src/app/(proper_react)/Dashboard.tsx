@@ -15,8 +15,6 @@ type DashboardProps = {
 
 export const Dashboard = (props: DashboardProps) => {
 
-  const [selectCta, isSelectedCta] = useState(false);
-
   const letsFixDataContent = {
     headline: "Let's protect your data",
     description: "We found your data in 15 data breaches and 157 sites selling your personal info. We'll guide you on how to fix it.",
@@ -33,35 +31,34 @@ export const Dashboard = (props: DashboardProps) => {
     <ShellEl l10n={getL10n()} session={null}>
 
       <div className={styles.container}>
-      <DashboardTopBanner 
-        headline={letsFixDataContent.headline} 
-        description={letsFixDataContent.description} 
-        chart={<></>} 
-        cta={{
-           content: letsFixDataContent.cta,
-           onClick() {
-             selectCta
-           },
-        }
-        }
-      />
 
-      <h2>View all exposures that are fixed or in-progress</h2>
-      <p>We found your information exposed 904 times over 15 data breaches and 157 data broker sites that are selling your personal info.</p>
-      <ul className={styles.exposureList}>
-        {props.exposures.map((exposure, index) => (
-          <li key={index} className={styles.exposureListItem}>
-          <ExposureCard
-            exposureImg={exposure.exposureImg}
-            exposureName={exposure.exposureName}
-            exposureType={exposure.exposureType}
-            exposureDetailsLink={exposure.exposureDetailsLink}
-            dateFound={exposure.dateFound}
-            statusPillType={exposure.statusPillType}
-          /></li>
-        ))}
-      </ul>
-      
+        <DashboardTopBanner 
+          type={"ResumeBreachResolutionContent"}
+          data={{
+            exposures: {
+              remaining: 13
+            }
+          }}
+          chart={<></>} 
+        />
+
+      <section className={styles.exposuresArea}>
+        <h2>View all exposures that are fixed or in-progress</h2>
+        <p>We found your information exposed 904 times over 15 data breaches and 157 data broker sites that are selling your personal info.</p>
+        <ul className={styles.exposureList}>
+          {props.exposures.map((exposure, index) => (
+            <li key={index} className={styles.exposureListItem}>
+            <ExposureCard
+              exposureImg={exposure.exposureImg}
+              exposureName={exposure.exposureName}
+              exposureType={exposure.exposureType}
+              exposureDetailsLink={exposure.exposureDetailsLink}
+              dateFound={exposure.dateFound}
+              statusPillType={exposure.statusPillType}
+            /></li>
+          ))}
+        </ul>
+        </section>
       </div>
 
     </ShellEl>
