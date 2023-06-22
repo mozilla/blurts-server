@@ -4,6 +4,8 @@
   font: $text-body-xs;
   font-weight: 600;
   display: inline-block;
+  width: 120px; // keep the width fixed
+  text-align: center;
   padding: $spacing-sm $spacing-md;
   border-radius: $border-radius-sm;
   line-height: 1;

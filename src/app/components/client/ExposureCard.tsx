@@ -20,7 +20,7 @@ import Image from "next/image";
 import { Button } from "../server/Button";
 import { ExposureType, ExposureTypeEl } from "../server/ExposureType";
 
-export type Props = {
+export type ExposureCardProps = {
   exposureImg: StaticImageData;
   exposureName: string;
   exposureType: ExposureType;
@@ -35,7 +35,7 @@ type DetailsFoundProps = {
   icon: ReactElement;
 };
 
-export const ExposureCard = (props: Props) => {
+export const ExposureCard = (props: ExposureCardProps) => {
   const {
     exposureImg,
     exposureName,

@@ -42,7 +42,11 @@
 
     li {
       display: flex;
-      align-items: center;   
+      align-items: center;
+
+      @media screen and (min-width: $screen-md) {
+        flex: 1; 
+      }  
       
       .exposureImage {
         width: 120px;

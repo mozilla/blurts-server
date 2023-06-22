@@ -1,0 +1,20 @@
+@import "../tokens";
+
+.container {
+
+  h2 {
+    font: $text-body-lg;
+    font-weight: 600;
+  }
+
+  .exposureList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    .exposureListItem {
+      margin-bottom: $spacing-sm;
+    }
+  
+  }
+}
