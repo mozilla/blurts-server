@@ -88,9 +88,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
               />
             </span>
           </>
-        )}
-
-       
+        )} 
       </div>
       <div className={styles.chart}>
       Chart goes here

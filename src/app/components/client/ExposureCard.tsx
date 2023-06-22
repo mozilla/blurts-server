@@ -61,7 +61,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
   }, []);
 
 
-  const date = new Date(dateFound * 1000); // Multiply by 1000 to convert seconds to milliseconds
+  const date = new Date(dateFound * 1000); // Mocked date
 
   const formattedDate = date.toLocaleDateString("en-US", {
     year: "2-digit",
@@ -92,13 +92,13 @@ export const ExposureCard = (props: ExposureCardProps) => {
     }
 
     return (
-      <dl className={styles.detailsFoundItem}>
+      <dd className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {headline}
         </dt>
         <dl>{description}</dl>
-      </dl>
+      </dd>
     );
   };
   const elementCard = (

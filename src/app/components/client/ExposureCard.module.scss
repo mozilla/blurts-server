@@ -31,7 +31,7 @@
   }
 
   ul.exposureHeaderList {
-    list-style-type: none;
+    list-style: none;
     display: flex;
     align-items: center;
     padding-left: 0;
@@ -113,7 +113,7 @@
          padding-left: 23px; // offset the exposure icon
              
           @media screen and (min-width: $screen-md) {
-            padding-left: $layout-md;  
+            padding-left: $layout-md;
           }
         }
 

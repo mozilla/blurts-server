@@ -15,28 +15,16 @@ type DashboardProps = {
 
 export const Dashboard = (props: DashboardProps) => {
 
-  const letsFixDataContent = {
-    headline: "Let's protect your data",
-    description: "We found your data in 15 data breaches and 157 sites selling your personal info. We'll guide you on how to fix it.",
-    cta: "Let's fix it",
-  }
-
-  const dataBrokerScanUpsellContent = {
-    headline: "Monitor now protects you even more",
-    description: "We can now find exposures of your personal info on 190 data broker sites that publish and sell your personal info for a profit.",
-    cta: "Get first scan free",
-  }
-
   return (
     <ShellEl l10n={getL10n()} session={null}>
 
       <div className={styles.container}>
 
         <DashboardTopBanner 
-          type={"ResumeBreachResolutionContent"}
+          type={"DataBrokerScanUpsellContent"}
           data={{
             exposures: {
-              remaining: 13
+              remaining: 13 // TODO: consolidate all user data in a mockfile
             }
           }}
           chart={<></>} 
@@ -60,8 +48,8 @@ export const Dashboard = (props: DashboardProps) => {
         </ul>
         </section>
       </div>
-
     </ShellEl>
   );
-}
+};
+
 

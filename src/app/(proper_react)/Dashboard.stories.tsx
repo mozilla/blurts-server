@@ -32,6 +32,14 @@ const mockExposures: ExposureCardProps[] = [
     exposureType: "dataBreach",
     exposureDetailsLink: "linkhere.com",
     dateFound: timeStamp,
+    statusPillType: "needAction",
+  },
+  {
+    exposureImg: FamilyTreeImage,
+    exposureName: "Familytree.com",
+    exposureType: "dataBreach",
+    exposureDetailsLink: "linkhere.com",
+    dateFound: timeStamp,
     statusPillType: "progress",
   }
 ];

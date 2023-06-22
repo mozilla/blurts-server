@@ -59,37 +59,37 @@ export const Shell = (props: Props) => {
           </div>
         </div>
         <footer className={styles.footer}>
+          <a
+            href="https://www.mozilla.org"
+            className={styles.mozillaLink}
+            target="_blank"
+          >
+            <Image
+              src={mozillaLogo}
+              width={100}
+              alt={l10n.getString("mozilla")}
+            />
+          </a>
+          <ul className={styles.externalLinks}>
+            <li>
               <a
-                href="https://www.mozilla.org"
-                className={styles.mozillaLink}
-                target="_blank"
+                href="https://support.mozilla.org/kb/firefox-monitor-faq"
+                title={l10n.getString("footer-external-link-faq-tooltip")}
               >
-                <Image
-                  src={mozillaLogo}
-                  width={100}
-                  alt={l10n.getString("mozilla")}
-                />
+                {l10n.getString("footer-external-link-faq-label")}
               </a>
-              <ul className={styles.externalLinks}>
-                <li>
-                  <a
-                    href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                    title={l10n.getString("footer-external-link-faq-tooltip")}
-                  >
-                    {l10n.getString("footer-external-link-faq-label")}
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.mozilla.org/privacy/firefox-monitor">
-                    {l10n.getString("terms-and-privacy")}
-                  </a>
-                </li>
-                <li>
-                  <a href="https://github.com/mozilla/blurts-server">
-                    {l10n.getString("github")}
-                  </a>
-                </li>
-              </ul>
+            </li>
+            <li>
+              <a href="https://www.mozilla.org/privacy/firefox-monitor">
+                {l10n.getString("terms-and-privacy")}
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/mozilla/blurts-server">
+                {l10n.getString("github")}
+              </a>
+            </li>
+          </ul>
         </footer>
       </main>
     </MobileShell>
