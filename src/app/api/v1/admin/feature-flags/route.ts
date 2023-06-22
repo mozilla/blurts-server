@@ -13,7 +13,7 @@ import {
   updateWaitList,
 } from "../../../../../db/tables/featureFlags";
 
-import { FeatureFlag } from "../../../../../db/tables/featureFlags";
+import type { FeatureFlag } from "../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../utils/auth";
 import appConstants from "../../../../../appConstants";
 

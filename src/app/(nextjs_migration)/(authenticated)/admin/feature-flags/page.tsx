@@ -5,7 +5,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getAllFeatureFlags } from "../../../../../db/tables/featureFlags";
-import { authOptions } from "../../../../api/utils/auth";
+import { authOptions, isAdmin } from "../../../../api/utils/auth";
 
 export default async function FeatureFlagRootPage() {
   const session = await getServerSession(authOptions);
@@ -13,9 +13,6 @@ export default async function FeatureFlagRootPage() {
   if (!session?.user?.email) {
     return redirect("/");
   }
-
-  const admins = process.env.ADMINS?.split(",") ?? [];
-  const isAdmin = admins.includes(session.user.email);
 
   if (!isAdmin) {
     return notFound();

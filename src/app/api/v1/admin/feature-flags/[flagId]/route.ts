@@ -8,8 +8,6 @@ import { getFeatureFlagByName } from "../../../../../../db/tables/featureFlags";
 import { isAdmin } from "../../../../utils/auth";
 import appConstants from "../../../../../../appConstants";
 
-//  import appConstants from "../../../../../appConstants";
-
 export async function GET(req: NextRequest) {
   const token = await getToken({ req });
   if (typeof token?.email === "string" && isAdmin(token?.email)) {
