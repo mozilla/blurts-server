@@ -24,30 +24,28 @@ export default async function FeatureFlagRootPage() {
     const columns = Object.keys(data[0]);
 
     return (
-      <>
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Enabled</th>
-              <th>Dependencies</th>
-              <th>Allow List</th>
-              <th>Wait List</th>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Enabled</th>
+            <th>Dependencies</th>
+            <th>Allow List</th>
+            <th>Wait List</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => (
+            <tr key="">
+              <td>{item.name}</td>
+              <td>{String(item.is_enabled)}</td>
+              <td>{item.dependencies}</td>
+              <td>{item.allow_list.join(", ")}</td>
+              <td>{item.wait_list.join(", ")}</td>
             </tr>
-          </thead>
-          <tbody>
-            {data.map((item) => (
-              <tr key="">
-                <td>{item.name}</td>
-                <td>{String(item.is_enabled)}</td>
-                <td>{item.dependencies}</td>
-                <td>{item.allow_list.join(", ")}</td>
-                <td>{item.wait_list.join(", ")}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </>
+          ))}
+        </tbody>
+      </table>
     );
   };
 
