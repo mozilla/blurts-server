@@ -4,7 +4,6 @@
 
 import Image from "next/image";
 import Script from "next/script";
-import { getServerSession } from "next-auth";
 
 import { getL10n } from "../../../../../functions/server/l10n";
 import { getLocale } from "../../../../../../utils/fluent.js";
@@ -32,47 +31,7 @@ export async function generateMetadata() {
 }
 
 export default async function UserBreaches() {
-  const session = await getServerSession(authOptions);
   const l10n = getL10n();
-
-  // Fetch list of subscriptions.
-  const bearerToken = session?.user.subscriber?.fxa_access_token;
-  if (!bearerToken) {
-    console.error("User has no bearer token");
-  }
-  const result = await fetch(
-    `${process.env.OAUTH_API_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`,
-    {
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${bearerToken}`,
-      },
-    }
-  );
-  let subscriptions;
-  if (result.ok) {
-    subscriptions = await result.json();
-  } else {
-    console.error("Could not refresh subscriptions:", result);
-  }
-
-  function userSubscribed(subscriptions: any) {
-    if (!subscriptions) {
-      console.error("No subscription data found");
-      return false;
-    }
-    for (const subscription of subscriptions.subscriptions) {
-      if (
-        subscription.product_id === process.env.SUBSCRIBE_PREMIUM_PRODUCT &&
-        subscription.plan_id === process.env.SUBSCRIBE_PREMIUM_PLAN &&
-        subscription.status === "active"
-      ) {
-        return true;
-      }
-    }
-    console.debug("user not subscribed:", subscriptions);
-    return false;
-  }
 
   return (
     <>

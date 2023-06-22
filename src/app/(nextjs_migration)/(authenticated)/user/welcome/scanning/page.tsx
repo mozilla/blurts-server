@@ -4,11 +4,9 @@
 
 import Image from "next/image";
 import Script from "next/script";
-import { getServerSession } from "next-auth";
 
 import { getL10n } from "../../../../../functions/server/l10n";
 import { getLocale } from "../../../../../../utils/fluent.js";
-import { authOptions } from "../../../../../api/auth/[...nextauth]/route";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -32,7 +30,6 @@ export async function generateMetadata() {
 }
 
 export default async function UserWelcomeScanning() {
-  const session = await getServerSession(authOptions);
   const l10n = getL10n();
 
   const current = 1;
