@@ -5,7 +5,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getAllFeatureFlags } from "../../../../../db/tables/featureFlags";
-import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../../api/utils/auth";
 
 export default async function FeatureFlagRootPage() {
   const session = await getServerSession(authOptions);
@@ -21,8 +21,8 @@ export default async function FeatureFlagRootPage() {
     return notFound();
   }
 
-  const AllFlagsTable = (featureFlags: {data: Array<any>}) => {
-    const { data } = featureFlags
+  const AllFlagsTable = (featureFlags: { data: Array<any> }) => {
+    const { data } = featureFlags;
     // Extract column names from the first object in the data array
     const columns = Object.keys(data[0]);
 
@@ -44,17 +44,17 @@ export default async function FeatureFlagRootPage() {
                 <td>{item.name}</td>
                 <td>{String(item.is_enabled)}</td>
                 <td>{item.dependencies}</td>
-                <td>{item.allow_list.join(', ')}</td>
-                <td>{item.wait_list.join(', ')}</td>
+                <td>{item.allow_list.join(", ")}</td>
+                <td>{item.wait_list.join(", ")}</td>
               </tr>
             ))}
           </tbody>
-        </table >
+        </table>
       </>
     );
   };
 
-  const featureFlags = await getAllFeatureFlags() || null
+  const featureFlags = (await getAllFeatureFlags()) || null;
 
   return (
     <div>
