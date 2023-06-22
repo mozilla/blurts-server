@@ -6,6 +6,7 @@ import Image from "next/image";
 import Script from "next/script";
 import "../../../client/css/partials/landing.css";
 import { getL10n } from "../../functions/server/l10n";
+import ExposureScanInput from "../components/client/ExposureScanInput";
 
 import HeroImage from "../../../client/images/landing-hero@2x.webp";
 import LaptopImage from "../../../client/images/landing-laptop@2x.webp";
@@ -31,15 +32,11 @@ export default async function Home() {
             <label htmlFor="scan-email-address" className="visually-hidden">
               {l10n.getString("exposure-landing-hero-email-label")}
             </label>
-            <input
-              id="scan-email-address"
-              name="email"
-              type="email"
-              placeholder={l10n.getString(
-                "exposure-landing-hero-email-placeholder"
-              )}
-              required
-            />
+            {/* The DOM for this element is potentially modified by browser
+            extensions like for example Relay. This is causing a hydration
+            error. Even adding suppressHydrationWarning to the input does not
+            prevent the issues. */}
+            <ExposureScanInput />
             <button
               type="submit"
               className="button primary"
