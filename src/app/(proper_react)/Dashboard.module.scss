@@ -1,9 +1,7 @@
 @import "../tokens";
 
 .container {
-  max-width: $content-lg;
-  margin-left: $layout-lg;
-  margin-top: $layout-sm;
+  max-width: $content-xl;
   h2 {
     font: $text-body-lg;
     font-weight: 600;
