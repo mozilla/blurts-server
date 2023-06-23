@@ -16,13 +16,38 @@ import { resolve as pathResolve } from "node:path";
 import { finished } from 'stream/promises';
 import fs from "fs";
 import { Readable } from 'stream';
+import aws from 'aws-sdk';
+import { Upload } from "@aws-sdk/lib-storage";
 
-let logoMap;
+const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+const region = process.env.AWS_REGION;
+const Bucket = process.env.S3_BUCKET;
+
+const s3 = new aws.S3({
+  region,
+  credentials: {
+    accessKeyId,
+    secretAccessKey,
+  },
+});
+
+async function uploadToS3(fileName, fileStream) {
+  const uploadParams = {
+    Bucket,
+    Key: fileName,
+    Body: fileStream
+  }
+  try {
+  await s3.upload(uploadParams).promise()
+  console.log('Successfully uploaded data to ' + Bucket + '/' + fileName)
+} catch (err) {
+  console.error(err, err.stack)
+}
+}
 
 export async function getBreachIcons(breaches) {
-  if (logoMap) {
-    return logoMap;
-  }
+  let logoMap;
   async function fetchBreachIcons() {
     const breachDomains = breaches
       .map((breach) => breach.Domain)
@@ -49,7 +74,9 @@ export async function getBreachIcons(breaches) {
           const res = await fetch(
             `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
           const fileStream = fs.createWriteStream(logoPath, { flags: 'wx' });
-          await finished(Readable.fromWeb(res.body).pipe(fileStream));
+          const bodyReadable = Readable.fromWeb(res.body)
+          await finished(bodyReadable.pipe(fileStream));
+          await uploadToS3(logoFilename, res.fileStream)
       })
     ));
 
