@@ -12,6 +12,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
+    "fix": "prettier --write './src'",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
     "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
@@ -48,6 +49,7 @@
     "npm": "8.19.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.358.0",
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
