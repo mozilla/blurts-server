@@ -37,18 +37,6 @@ export const DoughnutChart = (props: Props) => {
     }
   };
 
-  const addPaddingBetweenChartandLegend = {
-    id: 'addPaddingBetweenChartandLegend',
-    afterInit(chart: any) {
-      const fitValue = chart.legend.fit;
-      chart.legend.fit = function fit() {
-        fitValue.bind(chart.legend)();
-         const width = this.width += 200;
-         return width;
-      }
-    }
-    
-  }
 
   ChartJS.register(ArcElement, Tooltip, Legend, textCenter);
 
@@ -69,11 +57,17 @@ export const DoughnutChart = (props: Props) => {
         align: 'center',
         labels: {
           usePointStyle: true,
-          pointStyle: 'rectRounded'
+          // Add count next to each legend item
+          generateLabels: (chart: any) => {
+            const datasets = chart.data.datasets;
+            return datasets[0].data.map((data: any, i: number) => ({
+              text: `${chart.data.labels[i]} ${data}`,
+              fillStyle: datasets[0].backgroundColor[i],
+              index: i
+          }))},
         },
       },
       [textCenter.id]: textCenter,
-      [addPaddingBetweenChartandLegend.id]: addPaddingBetweenChartandLegend,
     },
   };
   
