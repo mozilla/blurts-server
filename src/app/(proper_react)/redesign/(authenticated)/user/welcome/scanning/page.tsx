@@ -77,7 +77,7 @@ export default async function UserWelcomeScanning() {
     if (latestScanDate > lastMonth) {
       return (
         <main>
-          <h2>You&aposve already scanned this month.</h2>
+          <h2>You have already scanned this month.</h2>
         </main>
       );
     }
