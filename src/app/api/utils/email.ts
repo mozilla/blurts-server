@@ -10,7 +10,11 @@ import { getTemplate } from "../../../views/emails/email2022.js";
 import { verifyPartial } from "../../../views/emails/emailVerify.js";
 import { Subscriber } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
-export async function sendVerificationEmail(user: Subscriber, emailId: string, l10n: ReactLocalization) {
+export async function sendVerificationEmail(
+  user: Subscriber,
+  emailId: string,
+  l10n: ReactLocalization
+) {
   const getMessage = getStringLookup(l10n);
   const unverifiedEmailAddressRecord = await resetUnverifiedEmailAddress(
     emailId,

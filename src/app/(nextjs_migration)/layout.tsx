@@ -15,7 +15,15 @@ export default async function MigrationLayout({
   const l10nBundles = getL10nBundles();
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <script type="module" src="/nextjs_migration/client/js/resizeObserver.js" async />
+      {/* This script predates the use of React and thus shouldn’t wait for
+      hydration to adjust the layout. */}
+      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      <script
+        type="module"
+        src="/nextjs_migration/client/js/resizeObserver.js"
+        rel="preload"
+        crossOrigin="anonymous"
+      />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}
     </L10nProvider>

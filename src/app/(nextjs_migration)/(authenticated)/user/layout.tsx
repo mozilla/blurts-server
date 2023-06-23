@@ -5,6 +5,7 @@
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import Script from "next/script";
 
 import "../../../../client/css/index.css";
 import { UserMenu } from "../../components/client/UserMenu";
@@ -14,7 +15,7 @@ import AppConstants from "../../../../appConstants.js";
 import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.webp";
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { getL10n } from "../../../functions/server/l10n";
-import { authOptions } from "../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../api/utils/auth";
 export type Props = {
   children: ReactNode;
 };
@@ -29,6 +30,7 @@ const MainLayout = async (props: Props) => {
 
   return (
     <>
+      <Script type="module" src="/nextjs_migration/client/js/nav.js" />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">

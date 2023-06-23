@@ -59,11 +59,16 @@ const nextConfig = {
               `connect-src 'self' ${
                 process.env.NODE_ENV === "development" ? "webpack://*" : ""
               } https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.ingest.sentry.io`,
-              `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${
-                process.env.FXA_ENABLED
-                  ? new URL(process.env.OAUTH_PROFILE_URI).origin
-                  : ""
-              }`,
+              `img-src 'self' https://*.google-analytics.com https://*.googletagmanager.com https://firefoxusercontent.com https://mozillausercontent.com https://monitor.cdn.mozilla.net ${nextConfig.images.remotePatterns
+                .map(
+                  (pattern) =>
+                    `${
+                      pattern.protocol ?? "https"
+                    }://${pattern.hostname.replace("**", "*")}${
+                      pattern.port ? `:${pattern.port}` : ""
+                    }`
+                )
+                .join(" ")}`,
               "child-src 'self'",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self'",

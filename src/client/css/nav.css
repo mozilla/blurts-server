@@ -19,6 +19,7 @@ nav.site-nav {
       #0000 97%
     )
     1;
+  overflow-y: scroll;
   z-index: 1;
 }
 
@@ -99,11 +100,11 @@ nav .callouts a {
   display: none;
   width: 40px;
   height: 40px;
-  text-align: center;
 }
 
 .mobile .nav-toggle {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 @keyframes nav-indicator {

@@ -5,29 +5,39 @@
 "use client";
 
 import { ReactElement } from "react";
-import styles from "./Modal.module.scss"
+import styles from "./Modal.module.scss";
 import { CloseBtn } from "../server/Icons";
 
 export type Props = {
-  isOpen: boolean,
-  onClose: () => void,
-  content: ReactElement,
-}
+  isOpen: boolean;
+  onClose: () => void;
+  content: ReactElement;
+};
 
 export const Modal = (props: Props) => {
   if (!props.isOpen) {
     return null; // Render nothing if the modal is closed
   }
 
-    return (
-      <div className={styles.modalOverlay}>
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            {props.content}
-            <button className={styles.closeButton} onClick={props.onClose}><CloseBtn alt="" width="14" height="14"/></button>
-          </div>
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Modal"
+      className={styles.modalOverlay}
+    >
+      <div className={styles.modal}>
+        <div className={styles.modalContent}>
+          {props.content}
+          <button
+            aria-label="Close modal"
+            className={styles.closeButton}
+            onClick={props.onClose}
+          >
+            <CloseBtn alt="" width="14" height="14" />
+          </button>
         </div>
       </div>
-    );
-
+    </div>
+  );
 };
