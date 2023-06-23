@@ -37,7 +37,7 @@ export async function generateMetadata() {
 export default async function UserWelcomeScanning() {
   const session = await getServerSession(authOptions);
 
-  const current = 1;
+  const current = 0;
   const total = 672;
   const percentage = ((current / total) * 100).toFixed(1);
 

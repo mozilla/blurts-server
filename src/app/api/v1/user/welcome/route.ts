@@ -11,20 +11,7 @@ import {
   setOnerepProfileId,
 } from "../../../../../db/tables/subscribers";
 
-const body = JSON.stringify({
-  first_name: "Test",
-  last_name: "User",
-  addresses: [
-    {
-      state: "NY",
-      city: "New York",
-      zip: "11111",
-      address_line: "1st Ave 1 Apt 1",
-    },
-  ],
-});
-
-async function callOneRep(method: string, path: string) {
+async function callOneRep(method: string, path: string, body: string) {
   const bearerToken = process.env.ONEREP_API_KEY;
   const options = {
     method,
@@ -46,10 +33,34 @@ async function callOneRep(method: string, path: string) {
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
+  const params = new URLSearchParams(await req.text());
+
+  if (!params.has("firstname")) {
+    throw new Error("First name is required");
+  } else if (!params.has("lastname")) {
+    throw new Error("Last name is required");
+  } else if (!params.has("citystate")) {
+    throw new Error("City and State is required");
+  } else if (!params.has("dob")) {
+    throw new Error("Date of Birth is required");
+  }
+
+  const body = JSON.stringify({
+    first_name: params.get("firstname"),
+    last_name: params.get("lastname"),
+    addresses: [
+      {
+        state: "CA", // FIXME parse from body
+        city: "SF", // FIXME parse from body
+        zip: "90210", // FIXME we're not asking user for this, lookup?
+        address_line: "Test", // FIXME we're not asking for this, lookup?
+      },
+    ],
+  });
 
   if (typeof token?.email === "string") {
     try {
-      const profile = await callOneRep("POST", "profiles");
+      const profile = await callOneRep("POST", "profiles", body);
       const subscriber = await getSubscriberByEmail(token.email);
       setOnerepProfileId(subscriber, profile.id);
 

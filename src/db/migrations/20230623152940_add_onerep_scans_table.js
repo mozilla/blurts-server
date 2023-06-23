@@ -10,7 +10,7 @@ export function up (knex) {
   return knex.schema
     .createTable('onerep_scans', table => {
       table.increments('id').primary()
-      table.integer('onerep_profile_id') // FIXME .references('subscribers.onerep_profile_id').notNullable()
+      table.integer('onerep_profile_id').references('subscribers.onerep_profile_id').nullable()
       table.integer('onerep_scan_id')
       table.jsonb('onerep_scan_results')
       table.timestamp('created_at').defaultTo(knex.fn.now())
