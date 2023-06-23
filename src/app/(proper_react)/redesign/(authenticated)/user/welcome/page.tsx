@@ -29,24 +29,23 @@ export default async function UserBreaches() {
   const l10n = getL10n();
 
   return (
-    <>
-      <main>
-        <h1>Welcome to Monitor. Let’s find your exposed information.</h1>
-        <p>
-          To find and fix your exposed data, we’ll need to ask for your personal
-          info. Rest assured we will safeguard your information like it’s our
-          own.
-        </p>
+    <main>
+      <h1>Welcome to Monitor. Let’s find your exposed information.</h1>
+      <p>
+        To find and fix your exposed data, we’ll need to ask for your personal
+        info. Rest assured we will safeguard your information like it’s our own.
+      </p>
 
-        <p>
-          We believe in your right to privacy, so basic Monitor is always free.
-          Upgrade to Premium for continuous protection and automatic removal of
-          your personal info.
-        </p>
+      <p>
+        We believe in your right to privacy, so basic Monitor is always free.
+        Upgrade to Premium for continuous protection and automatic removal of
+        your personal info.
+      </p>
 
-        <p>See how we protect your data</p>
+      <p>See how we protect your data</p>
+      <a href="welcome/details">
         <button className="button primary">Start my free scan</button>
-      </main>
-    </>
+      </a>
+    </main>
   );
 }

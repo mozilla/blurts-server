@@ -90,14 +90,12 @@ export default async function UserWelcomeScanning() {
   }, 5000);
 
   return (
-    <>
-      <main>
-        <h2>Scanning for exposures...</h2>
-        <h1>
-          {current} of {total} known data breaches
-        </h1>
-        <h1>{percentage}%</h1>
-      </main>
-    </>
+    <main>
+      <h2>Scanning for exposures...</h2>
+      <h1>
+        {current} of {total} known data breaches
+      </h1>
+      <h1>{percentage}%</h1>
+    </main>
   );
 }
