@@ -25,9 +25,7 @@ export async function generateMetadata() {
   };
 }
 
-export default async function UserBreaches() {
-  const l10n = getL10n();
-
+export default async function UserWelcomeDetails() {
   return (
     <main>
       <h1>Enter the details you want to protect</h1>
@@ -38,21 +36,21 @@ export default async function UserBreaches() {
       </p>
 
       <section>
-        <form method="post" action="scanning">
+        <form method="post" action="http://localhost:6060/api/v1/user/welcome">
           <div>
-            <label for="firstname">First name: </label>
+            <label htmlFor="firstname">First name: </label>
             <input type="text" name="firstname" id="firstname"></input>
           </div>
           <div>
-            <label for="lastname">Last name: </label>
+            <label htmlFor="lastname">Last name: </label>
             <input type="text" name="lastname" id="lastname"></input>
           </div>
           <div>
-            <label for="citystate">City and state: </label>
+            <label htmlFor="citystate">City and state: </label>
             <input type="text" name="citystate" id="citystate"></input>
           </div>
           <div>
-            <label for="dob">Date of birth: </label>
+            <label htmlFor="dob">Date of birth: </label>
             <input type="date" name="dob" id="dob"></input>
           </div>
           <div>

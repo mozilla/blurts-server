@@ -2,7 +2,16 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { NextRequest } from "next/server";
 import { getL10n } from "../../../../../../functions/server/l10n";
+import {
+  getOnerepProfileId,
+  getLatestOnerepScan,
+  setOnerepScan,
+  setOnerepScanResults,
+} from "../../../../../../../db/tables/subscribers";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../../../../api/utils/auth";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -26,24 +35,11 @@ export async function generateMetadata() {
 }
 
 export default async function UserWelcomeScanning() {
-  const l10n = getL10n();
+  const session = await getServerSession(authOptions);
 
   const current = 1;
   const total = 672;
   const percentage = ((current / total) * 100).toFixed(1);
-
-  const body = JSON.stringify({
-    first_name: "Test",
-    last_name: "User",
-    addresses: [
-      {
-        state: "NY",
-        city: "New York",
-        zip: "11111",
-        address_line: "1st Ave 1 Apt 1",
-      },
-    ],
-  });
 
   async function callOneRep(method: string, path: string) {
     const bearerToken = process.env.ONEREP_API_KEY;
@@ -56,23 +52,47 @@ export default async function UserWelcomeScanning() {
     };
     if (method !== "GET" && method !== "HEAD") {
       //@ts-ignore FIXME
-      options.body = body;
+      // options.body = body;
     }
-    const result = await fetch(`https://api.onerep.com/${path}`, options);
+    const result = await fetch(
+      `${process.env.ONEREP_API_BASE}/${path}`,
+      options
+    );
     if (!result.ok) {
       throw new Error("Error connecting to provider");
     }
     return result.json();
   }
 
-  const profile = await callOneRep("POST", "profiles");
-  const scan = await callOneRep("POST", `profiles/${profile.id}/scans`);
+  // @ts-ignore FIXME
+  const result = await getOnerepProfileId(session?.user?.subscriber?.id);
+  const profileId = result[0]["onerep_profile_id"];
+  const scans = await getLatestOnerepScan(profileId);
+
+  if (scans.length) {
+    const latestScanDate = new Date(scans[0]["created_at"]);
+    const lastMonth = new Date();
+    lastMonth.setMonth(lastMonth.getMonth() - 1);
+
+    if (latestScanDate > lastMonth) {
+      return (
+        <main>
+          <h2>You&aposve already scanned this month.</h2>
+        </main>
+      );
+    }
+  } else {
+    console.debug("no scans");
+  }
+
+  const scan = await callOneRep("POST", `profiles/${profileId}/scans`);
+  await setOnerepScan(profileId, scan.id);
 
   let iterations = 0;
   const interval = setInterval(async () => {
     const scanDetails = await callOneRep(
       "GET",
-      `profiles/${profile.id}/scans/${scan.id}`
+      `profiles/${profileId}/scans/${scan.id}`
     );
     console.debug(scanDetails);
 
@@ -83,6 +103,8 @@ export default async function UserWelcomeScanning() {
       clearInterval(interval);
 
       const scanResults = await callOneRep("GET", `scan-results/${scan.id}`);
+      setOnerepScanResults(profileId, scan.id, scanResults);
+
       console.debug(scanResults);
     } else {
       iterations++;

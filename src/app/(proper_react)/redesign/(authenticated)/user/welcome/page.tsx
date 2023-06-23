@@ -25,9 +25,7 @@ export async function generateMetadata() {
   };
 }
 
-export default async function UserBreaches() {
-  const l10n = getL10n();
-
+export default async function UserWelcome() {
   return (
     <main>
       <h1>Welcome to Monitor. Let’s find your exposed information.</h1>

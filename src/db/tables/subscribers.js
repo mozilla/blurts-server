@@ -197,6 +197,34 @@ async function setOnerepProfileId (subscriber, onerepProfileId) {
 }
 
 /**
+ * @param {number} onerepProfileId
+ * @param {number} oneRepScanId
+ */
+async function setOnerepScan (onerepProfileId, oneRepScanId) {
+  await knex('onerep_scans')
+    .insert({
+      onerep_profile_id: onerepProfileId,
+      onerep_scan_id: oneRepScanId,
+      created_at: knex.fn.now()
+    })
+}
+
+/**
+ * @param {number} onerepProfileId
+ * @param {number} oneRepScanId
+ * @param {object} oneRepScanResults
+ */
+async function setOnerepScanResults (onerepProfileId, oneRepScanId, oneRepScanResults) {
+  await knex('onerep_scans')
+    .where('onerep_profile_id', onerepProfileId)
+    .andWhere('onerep_scan_id', oneRepScanId)
+    .update({
+      onerep_scan_results: oneRepScanResults,
+      updated_at: knex.fn.now()
+    })
+}
+
+/**
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  */
 async function setBreachesLastShownNow (subscriber) {
@@ -384,6 +412,26 @@ async function updateMonthlyEmailOptout (token) {
     .where('primary_verification_token', token)
 }
 
+/**
+ * @param {number} subscriberId
+ */
+async function getOnerepProfileId (subscriberId) {
+  return await knex('subscribers')
+    .select('onerep_profile_id')
+    .where('id', subscriberId)
+}
+
+/**
+ * @param {number} onerepProfileId
+ */
+async function getLatestOnerepScan (onerepProfileId) {
+  return await knex('onerep_scans')
+    .select('created_at', 'updated_at', 'onerep_scan_results')
+    .where('onerep_profile_id', onerepProfileId)
+    .orderBy('created_at', 'desc')
+    .limit(1)
+}
+
 function getSubscribersWithUnresolvedBreachesQuery () {
   return knex('subscribers')
     .whereRaw('monthly_email_optout IS NOT TRUE')
@@ -425,6 +473,8 @@ async function joinEmailAddressesToSubscriber (subscriber) {
   return subscriber
 }
 export {
+  getLatestOnerepScan,
+  getOnerepProfileId,
   getSubscriberByToken,
   getSubscribersByHashes,
   getSubscriberByTokenAndHash,
@@ -439,6 +489,8 @@ export {
   removeFxAData,
   updateFxAProfileData,
   setOnerepProfileId,
+  setOnerepScan,
+  setOnerepScanResults,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
   setBreachesResolved,
