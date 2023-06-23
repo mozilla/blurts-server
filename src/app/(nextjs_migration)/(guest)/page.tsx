@@ -18,9 +18,14 @@ export default async function Home() {
 
   return (
     <div data-partial="landing">
-      <Script
+      {/* These scripts predate the use of React and thus shouldn’t wait for
+      hydration to adjust the layout. */}
+      {/* eslint-disable @next/next/no-sync-scripts */}
+      <script
         type="module"
         src="/nextjs_migration/client/js/transitionObserver.js"
+        rel="preload"
+        crossOrigin="anonymous"
       />
       <Script type="module" src="/nextjs_migration/client/js/landing.js" />
       <section className="hero">
