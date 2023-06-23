@@ -19,6 +19,7 @@ import { Readable } from 'stream';
 import aws from 'aws-sdk';
 import { Upload } from "@aws-sdk/lib-storage";
 
+// Get breaches logos and uploads to s3
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const region = process.env.AWS_REGION;
@@ -82,13 +83,11 @@ export async function getBreachIcons(breaches) {
 
     logoMap = new Map(logoMapElems.filter(e => e != null));
   }
-
-  // Start fetching breach icons, but do not await it so that we do not block
-  // pending requests:
   await fetchBreachIcons();
 }
 
 
+// Get breaches and upserts to DB
 const breachesResponse = await req('/breaches')
 const breaches = []
 const seen = new Set()
