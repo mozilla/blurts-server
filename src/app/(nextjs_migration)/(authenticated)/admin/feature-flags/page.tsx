@@ -36,7 +36,7 @@ export default async function FeatureFlagRootPage() {
         </thead>
         <tbody>
           {data.map((item) => (
-            <tr key="">
+            <tr key={item.name}>
               <td>{item.name}</td>
               <td>{String(item.is_enabled)}</td>
               <td>{item.dependencies}</td>
