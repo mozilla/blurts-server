@@ -24,41 +24,38 @@ export const Shell = (props: Props) => {
 
   return (
     <MobileShell session={props.session}>
-      <main>
-        <div className={styles.wrapper}>
-          <nav className={styles.mainMenu}>
-            <Link href="/" className={styles.homeLink}>
-              <Image
-                src={monitorLogo}
-                alt={l10n.getString("main-nav-link-home-label")}
-                width={170}
-              />
-            </Link>
-            <ul>
-              {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
-              <li>
-                <PageLink
-                  href="/redesign/user/dashboard"
-                  activeClassName={styles.isActive}
-                >
-                  {l10n.getString("main-nav-link-dashboard-label")}
-                </PageLink>
-              </li>
-              <li>
-                <a
-                  href="https://support.mozilla.org/kb/firefox-monitor-faq"
-                  title={l10n.getString("main-nav-link-faq-tooltip")}
-                >
-                  {l10n.getString("main-nav-link-faq-label")}
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <div className={styles.content}>
-            <div className={styles.page}>{props.children}</div>
-          </div>
-        </div>
-        <footer className={styles.footer}>
+      <div className={styles.wrapper}>
+        <nav className={styles.mainMenu}>
+          <Link href="/" className={styles.homeLink}>
+            <Image
+              src={monitorLogo}
+              alt={l10n.getString("main-nav-link-home-label")}
+              width={170}
+            />
+          </Link>
+          <ul>
+            {/* Note: If you add elements here, also add them to <MobileShell>'s navigation */}
+            <li>
+              <PageLink
+                href="/redesign/user/dashboard"
+                activeClassName={styles.isActive}
+              >
+                {l10n.getString("main-nav-link-dashboard-label")}
+              </PageLink>
+            </li>
+            <li>
+              <a
+                href="https://support.mozilla.org/kb/firefox-monitor-faq"
+                title={l10n.getString("main-nav-link-faq-tooltip")}
+              >
+                {l10n.getString("main-nav-link-faq-label")}
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div className={styles.content}>
+          <div className={styles.page}>{props.children}</div>
+          <footer className={styles.footer}>
           <a
             href="https://www.mozilla.org"
             className={styles.mozillaLink}
@@ -90,8 +87,9 @@ export const Shell = (props: Props) => {
               </a>
             </li>
           </ul>
-        </footer>
-      </main>
+          </footer>
+        </div>
+      </div>
     </MobileShell>
   );
 }

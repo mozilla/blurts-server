@@ -1,14 +1,7 @@
 @import "../tokens";
 
-main {
-  min-height: 100vh; // ensure container takes up full viewport height
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .wrapper {
+  height: 100%;
   display: flex;
 }
 
@@ -72,6 +65,7 @@ main {
 .content {
   height: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
 
   .page {

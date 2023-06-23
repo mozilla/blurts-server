@@ -17,9 +17,7 @@ export const Dashboard = (props: DashboardProps) => {
 
   return (
     <ShellEl l10n={getL10n()} session={null}>
-
       <div className={styles.container}>
-
         <DashboardTopBanner 
           type={"DataBrokerScanUpsellContent"}
           data={{
