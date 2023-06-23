@@ -5,7 +5,7 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 import AppConstants from "../../../../../appConstants";
-import { getL10n } from "../../../../functions/server/l10n";
+// import { getL10n } from "../../../../functions/server/l10n";
 import {
   getSubscriberByEmail,
   setOnerepProfileId,
@@ -45,17 +45,18 @@ export async function POST(req: NextRequest) {
     throw new Error("Date of Birth is required");
   }
 
+  // FIXME depends on address lookup service, mock for now.
+  const address = {
+    state: "CA",
+    city: "SF",
+    zip: "90210",
+    address_line: "123 Test Street",
+  };
+
   const body = JSON.stringify({
     first_name: params.get("firstname"),
     last_name: params.get("lastname"),
-    addresses: [
-      {
-        state: "CA", // FIXME parse from body
-        city: "SF", // FIXME parse from body
-        zip: "90210", // FIXME we're not asking user for this, lookup?
-        address_line: "Test", // FIXME we're not asking for this, lookup?
-      },
-    ],
+    addresses: [address],
   });
 
   if (typeof token?.email === "string") {
