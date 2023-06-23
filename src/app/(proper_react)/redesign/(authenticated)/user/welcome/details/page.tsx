@@ -2,12 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Image from "next/image";
-import Script from "next/script";
-
-import { getL10n } from "../../../../../functions/server/l10n";
-import { getLocale } from "../../../../../../utils/fluent.js";
-import { authOptions } from "../../../../../api/utils/auth";
+import { getL10n } from "../../../../../../functions/server/l10n";
 
 export async function generateMetadata() {
   const l10n = getL10n();
