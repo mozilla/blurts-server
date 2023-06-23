@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+import { getServerSession } from "next-auth";
 import {
   getAllFeatureFlags,
   addFeatureFlag,
@@ -14,12 +14,12 @@ import {
 } from "../../../../../db/tables/featureFlags";
 
 import type { FeatureFlag } from "../../../../../db/tables/featureFlags";
-import { isAdmin } from "../../../utils/auth";
+import { isAdmin, authOptions } from "../../../utils/auth";
 import appConstants from "../../../../../appConstants";
 
-export async function GET(req: NextRequest) {
-  const token = await getToken({ req });
-  if (typeof token?.email === "string" && isAdmin(token?.email)) {
+export async function GET() {
+  const session = await getServerSession(authOptions);
+  if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
       const flags = await getAllFeatureFlags();
@@ -34,8 +34,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const token = await getToken({ req });
-  if (typeof token?.email === "string" && isAdmin(token?.email)) {
+  const session = await getServerSession(authOptions);
+  if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
       const newFlag = (await req.json()) as FeatureFlag;
@@ -59,8 +59,8 @@ type FeatureFlagPutRequest = {
 };
 
 export async function PUT(req: NextRequest) {
-  const token = await getToken({ req });
-  if (typeof token?.email === "string" && isAdmin(token?.email)) {
+  const session = await getServerSession(authOptions);
+  if (isAdmin(session?.user?.email || "")) {
     // Signed in
     try {
       const reqBody = (await req.json()) as FeatureFlagPutRequest;
