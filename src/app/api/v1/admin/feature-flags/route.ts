@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-type FeatureFlagPutRequest = {
+export type FeatureFlagPutRequest = {
   name: string;
   isEnabled?: boolean;
   allowList?: string[];
