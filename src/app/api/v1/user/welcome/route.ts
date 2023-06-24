@@ -26,9 +26,11 @@ async function callOneRep(method: string, path: string, body: string) {
   }
   const result = await fetch(`${process.env.ONEREP_API_BASE}/${path}`, options);
   if (!result.ok) {
-    throw new Error("Error connecting to provider");
+    throw new Error(
+      `Error connecting to provider: ${JSON.stringify(await result.json())}`
+    );
   }
-  return result.json();
+  return await result.json();
 }
 
 export async function POST(req: NextRequest) {
@@ -61,9 +63,11 @@ export async function POST(req: NextRequest) {
 
   if (typeof token?.email === "string") {
     try {
-      const profile = await callOneRep("POST", "profiles", body);
       const subscriber = await getSubscriberByEmail(token.email);
-      setOnerepProfileId(subscriber, profile.id);
+      if (!subscriber.onerep_profile_id) {
+        const profile = await callOneRep("POST", "profiles", body);
+        setOnerepProfileId(subscriber, profile.id);
+      }
 
       return NextResponse.redirect(
         `${AppConstants.SERVER_URL}/redesign/user/welcome/scanning`,

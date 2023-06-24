@@ -50,16 +50,15 @@ export default async function UserWelcomeScanning() {
         "Content-Type": "application/json",
       },
     };
-    if (method !== "GET" && method !== "HEAD") {
-      //@ts-ignore FIXME
-      // options.body = body;
-    }
+
     const result = await fetch(
       `${process.env.ONEREP_API_BASE}/${path}`,
       options
     );
     if (!result.ok) {
-      throw new Error("Error connecting to provider");
+      throw new Error(
+        `Error connecting to provider: ${JSON.stringify(await result.json())}`
+      );
     }
     return result.json();
   }
@@ -77,7 +76,7 @@ export default async function UserWelcomeScanning() {
     if (latestScanDate > lastMonth) {
       return (
         <main>
-          <h2>You have already scanned this month.</h2>
+          <h2>You have already used your free scan.</h2>
         </main>
       );
     }
@@ -94,7 +93,6 @@ export default async function UserWelcomeScanning() {
       "GET",
       `profiles/${profileId}/scans/${scan.id}`
     );
-    console.debug(scanDetails);
 
     // TODO give up after a certain amount of time / iterations
     if (iterations >= 5) {
@@ -102,10 +100,29 @@ export default async function UserWelcomeScanning() {
     } else if (scanDetails.status === "finished") {
       clearInterval(interval);
 
-      const scanResults = await callOneRep("GET", `scan-results/${scan.id}`);
-      setOnerepScanResults(profileId, scan.id, scanResults);
-
-      console.debug(scanResults);
+      const scanListFull = [];
+      const scanList = await callOneRep(
+        "GET",
+        `scan-results?profile_id[]=${profileId}&per_page=100`
+      );
+      // Results are paginated, use per_page maximum and collect all pages into one result.
+      if (scanList.meta.last_page > 1) {
+        let currentPage = 2;
+        while (currentPage <= scanList.meta.last_page) {
+          const nextPage = await callOneRep(
+            "GET",
+            `scan-results?profile_id[]=${profileId}&per_page=100&page=${currentPage}`
+          );
+          currentPage++;
+          nextPage.data.forEach((element: object) =>
+            scanListFull.push(element)
+          );
+        }
+      } else {
+        scanListFull.push(scanList.data);
+      }
+      // Store full list of results in the DB.
+      setOnerepScanResults(profileId, scan.id, { data: scanListFull });
     } else {
       iterations++;
     }
