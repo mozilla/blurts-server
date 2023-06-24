@@ -3,36 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { faker } from "@faker-js/faker";
+import { OneRepScanResult } from "../../customTypes";
 
 // This is a full list of scan results, all pages, and would normally be
 // stored in the `onerep_scan_results.onerep_scan_results` column
 // as `jsonb`.
-
-export type OneRepScanResult = {
-  id: number | null;
-  age: number | null;
-  url: string | URL;
-  link: string | URL;
-  emails: string[];
-  phones: string[];
-  status: "new" | "optout_in_progress" | "waiting_for_verification" | "removed";
-  scan_id: number;
-  addresses: {
-    zip: string;
-    city: string;
-    state: string;
-    street: string;
-  }[];
-  last_name: string;
-  relatives: string[];
-  created_at: string | Date;
-  first_name: string;
-  profile_id: number;
-  updated_at: string | Date;
-  data_broker: string;
-  middle_name: string | null;
-  data_broker_id: number;
-};
 
 export const mockedOneRepScanResult = {
   data: [

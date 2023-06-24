@@ -80,3 +80,29 @@ interface Window {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   gtag: any;
 }
+
+export type OneRepScanResult = {
+  id: number | null;
+  age: number | null;
+  url: string | URL;
+  link: string | URL;
+  emails: string[];
+  phones: string[];
+  status: "new" | "optout_in_progress" | "waiting_for_verification" | "removed";
+  scan_id: number;
+  addresses: {
+    zip: string;
+    city: string;
+    state: string;
+    street: string;
+  }[];
+  last_name: string;
+  relatives: string[];
+  created_at: string | Date;
+  first_name: string;
+  profile_id: number;
+  updated_at: string | Date;
+  data_broker: string;
+  middle_name: string | null;
+  data_broker_id: number;
+};
