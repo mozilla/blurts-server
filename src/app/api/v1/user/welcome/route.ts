@@ -50,15 +50,16 @@ export async function POST(req: NextRequest) {
   // FIXME depends on address lookup service, mock for now.
   const address = {
     state: "CA",
-    city: "SF",
-    zip: "90210",
-    address_line: "123 Test Street",
+    city: "San Francisco",
+    zip: "94016",
+    address_line: "123 Battery Street",
   };
 
   const body = JSON.stringify({
     first_name: params.get("firstname"),
     last_name: params.get("lastname"),
     addresses: [address],
+    birth_date: params.get("dob"),
   });
 
   if (typeof token?.email === "string") {
