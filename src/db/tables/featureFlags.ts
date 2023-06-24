@@ -65,7 +65,7 @@ async function deleteFeatureFlagByName(name: string) {
   await knex("feature_flags").where("name", "=", name).delete();
 }
 
-async function updateAllowList(name: string, allowList: [string]) {
+async function updateAllowList(name: string, allowList: string[]) {
   log.info("updateAllowList", name, allowList);
   const res = await knex("feature_flags")
     .where("name", "=", name)
@@ -78,7 +78,7 @@ async function updateAllowList(name: string, allowList: [string]) {
   return res[0];
 }
 
-async function updateWaitList(name: string, waitList: [string]) {
+async function updateWaitList(name: string, waitList: string[]) {
   log.info("updateWaitList", name, waitList);
   const res = await knex("feature_flags")
     .where("name", "=", name)

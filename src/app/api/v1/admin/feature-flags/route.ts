@@ -54,8 +54,8 @@ export async function POST(req: NextRequest) {
 type FeatureFlagPutRequest = {
   name: string;
   isEnabled?: boolean;
-  allowList?: [string];
-  waitList?: [string];
+  allowList?: string[];
+  waitList?: string[];
 };
 
 export async function PUT(req: NextRequest) {
