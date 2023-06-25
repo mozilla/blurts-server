@@ -2,7 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextRequest } from "next/server";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import {
   getOnerepProfileId,
@@ -12,6 +11,7 @@ import {
 } from "../../../../../../../db/tables/subscribers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../api/utils/auth";
+import { getOneRepResult } from "../../../../../../functions/server/getOneRepResult";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -37,32 +37,6 @@ export async function generateMetadata() {
 export default async function UserWelcomeScanning() {
   const session = await getServerSession(authOptions);
 
-  const current = 0;
-  const total = 672;
-  const percentage = ((current / total) * 100).toFixed(1);
-
-  async function callOneRep(method: string, path: string) {
-    const bearerToken = process.env.ONEREP_API_KEY;
-    const options = {
-      method,
-      headers: {
-        Authorization: `Bearer ${bearerToken}`,
-        "Content-Type": "application/json",
-      },
-    };
-
-    const result = await fetch(
-      `${process.env.ONEREP_API_BASE}/${path}`,
-      options
-    );
-    if (!result.ok) {
-      throw new Error(
-        `Error connecting to provider: ${JSON.stringify(await result.json())}`
-      );
-    }
-    return result.json();
-  }
-
   // @ts-ignore FIXME
   const result = await getOnerepProfileId(session?.user?.subscriber?.id);
   const profileId = result[0]["onerep_profile_id"];
@@ -84,12 +58,12 @@ export default async function UserWelcomeScanning() {
     console.debug("no scans");
   }
 
-  const scan = await callOneRep("POST", `profiles/${profileId}/scans`);
+  const scan = await getOneRepResult("POST", `profiles/${profileId}/scans`);
   await setOnerepScan(profileId, scan.id);
 
   let iterations = 0;
   const interval = setInterval(async () => {
-    const scanDetails = await callOneRep(
+    const scanDetails = await getOneRepResult(
       "GET",
       `profiles/${profileId}/scans/${scan.id}`
     );
@@ -101,7 +75,7 @@ export default async function UserWelcomeScanning() {
       clearInterval(interval);
 
       const scanListFull = [];
-      const scanList = await callOneRep(
+      const scanList = await getOneRepResult(
         "GET",
         `scan-results?profile_id[]=${profileId}&per_page=100`
       );
@@ -109,7 +83,7 @@ export default async function UserWelcomeScanning() {
       if (scanList.meta.last_page > 1) {
         let currentPage = 2;
         while (currentPage <= scanList.meta.last_page) {
-          const nextPage = await callOneRep(
+          const nextPage = await getOneRepResult(
             "GET",
             `scan-results?profile_id[]=${profileId}&per_page=100&page=${currentPage}`
           );
@@ -127,6 +101,10 @@ export default async function UserWelcomeScanning() {
       iterations++;
     }
   }, 5000);
+
+  const current = 0;
+  const total = 672;
+  const percentage = ((current / total) * 100).toFixed(1);
 
   return (
     <main>

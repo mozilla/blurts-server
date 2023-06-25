@@ -4,34 +4,14 @@
 
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
+
+import { getOneRepResult } from "../../../../functions/server/getOneRepResult";
 import AppConstants from "../../../../../appConstants";
 // import { getL10n } from "../../../../functions/server/l10n";
 import {
   getSubscriberByEmail,
   setOnerepProfileId,
 } from "../../../../../db/tables/subscribers";
-
-async function callOneRep(method: string, path: string, body: string) {
-  const bearerToken = process.env.ONEREP_API_KEY;
-  const options = {
-    method,
-    headers: {
-      Authorization: `Bearer ${bearerToken}`,
-      "Content-Type": "application/json",
-    },
-  };
-  if (method !== "GET" && method !== "HEAD") {
-    //@ts-ignore FIXME
-    options.body = body;
-  }
-  const result = await fetch(`${process.env.ONEREP_API_BASE}/${path}`, options);
-  if (!result.ok) {
-    throw new Error(
-      `Error connecting to provider: ${JSON.stringify(await result.json())}`
-    );
-  }
-  return await result.json();
-}
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
@@ -65,8 +45,10 @@ export async function POST(req: NextRequest) {
   if (typeof token?.email === "string") {
     try {
       const subscriber = await getSubscriberByEmail(token.email);
+      // FIXME check if scan has already been performed and return early if so.
+
       if (!subscriber.onerep_profile_id) {
-        const profile = await callOneRep("POST", "profiles", body);
+        const profile = await getOneRepResult("POST", "profiles", body);
         setOnerepProfileId(subscriber, profile.id);
       }
 
