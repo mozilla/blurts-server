@@ -49,7 +49,6 @@ async function uploadToS3(fileName, fileStream) {
 
 export async function getBreachIcons(breaches) {
   let logoMap;
-  async function fetchBreachIcons() {
     const breachDomains = breaches
       .map((breach) => breach.Domain)
       .filter((breachDomain) => breachDomain.length > 0);
@@ -82,8 +81,7 @@ export async function getBreachIcons(breaches) {
     ));
 
     logoMap = new Map(logoMapElems.filter(e => e != null));
-  }
-  await fetchBreachIcons();
+
 }
 
 
