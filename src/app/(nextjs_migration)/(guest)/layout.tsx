@@ -10,6 +10,8 @@ import MozillaLogo from "../../../client/images/moz-logo-1color-white-rgb-01.svg
 import { SignInButton } from "../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
 
+import { LocationInput } from "../../components/client/LocationInput";
+
 export type Props = {
   children: ReactNode;
 };
@@ -31,6 +33,7 @@ const GuestLayout = (props: Props) => {
               priority
             />
           </a>
+          <LocationInput />
           <menu>
             <li>
               <SignInButton />

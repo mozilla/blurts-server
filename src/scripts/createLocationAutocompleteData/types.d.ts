@@ -109,7 +109,7 @@ export type TLocationData = [
   TLocationModificationDate
 ]
 
-export interface IAlternateNamesData {
+export interface IAlternateNameData {
   alternateNameId: TAlternateNameId;
   geonameId: TGeonameId;
   alternateName: TAlternateName;
@@ -122,7 +122,7 @@ export interface IRelevantLocation {
   geonameId: string;
   name: string;
   admin1Code: string;
-  alternateNames?: IAlternateNamesData[];
+  alternateNames?: Array<IAlternateNameData>;
 }
 
 export interface IDataFileUrls {
