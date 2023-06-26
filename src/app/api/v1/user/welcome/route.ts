@@ -58,6 +58,6 @@ export async function POST(req: NextRequest) {
     }
   } else {
     // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 301);
+    return NextResponse.redirect(AppConstants.SERVER_URL, 302);
   }
 }
