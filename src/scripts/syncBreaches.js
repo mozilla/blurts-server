@@ -13,9 +13,9 @@ import { req, formatDataClassesArray } from '../utils/hibp.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
 import { mkdir, readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
-import { finished } from 'stream/promises';
+import { finished } from 'node:stream/promises';
 import fs from "node:fs";
-import { Readable } from 'stream';
+import { Readable } from 'node:stream';
 import aws from 'aws-sdk';
 
 // Get breaches logos and uploads to s3
