@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import test from 'ava'
+import { test, expect } from "@jest/globals";
 import {
   BadRequestError,
   UnauthorizedError,
@@ -13,51 +13,51 @@ import {
   InternalServerError
 } from './error.js'
 
-test('BadRequestError', t => {
+test('BadRequestError', () => {
   const errorMessage = 'BadRequestError message'
   const error = new BadRequestError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Bad Request')
-})
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Bad Request");
+});
 
-test('UnauthorizedError', t => {
+test('UnauthorizedError', () => {
   const errorMessage = 'UnauthorizedError message'
   const error = new UnauthorizedError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Unauthorized')
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Unauthorized");
 })
 
-test('ForbiddenError', t => {
+test('ForbiddenError', () => {
   const errorMessage = 'ForbiddenError message'
   const error = new ForbiddenError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Forbidden')
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Forbidden");
 })
 
-test('MethodNotAllowedError', t => {
+test('MethodNotAllowedError', () => {
   const errorMessage = 'MethodNotAllowedError message'
   const error = new MethodNotAllowedError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Method Not Allowed')
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Method Not Allowed");
 })
 
-test('ConflictError', t => {
+test('ConflictError', () => {
   const errorMessage = 'ConflictError message'
   const error = new ConflictError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Conflict')
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Conflict");
 })
 
-test('TooManyRequestsError', t => {
+test('TooManyRequestsError', () => {
   const errorMessage = 'TooManyRequestsError message'
   const error = new TooManyRequestsError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Too Many Requests')
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Too Many Requests");
 })
 
-test('InternalServerError', t => {
+test('InternalServerError', () => {
   const errorMessage = 'InternalServerError message'
   const error = new InternalServerError(errorMessage)
-  t.is(error.message, errorMessage)
-  t.is(error.name, 'Internal Server Error')
+  expect(error.message).toBe(errorMessage);
+  expect(error.name).toBe("Internal Server Error");
 })
