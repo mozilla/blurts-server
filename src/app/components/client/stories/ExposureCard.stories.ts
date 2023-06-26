@@ -28,3 +28,14 @@ export const ActionNeeded: Story = {
     statusPillType: "needAction",
   },
 };
+
+export const InProgress: Story = {
+  args: {
+    exposureImg: FamilyTreeImage,
+    exposureName: "Twitter",
+    exposureType: "dataBreach",
+    exposureDetailsLink: "linkehere.com",
+    dateFound: timeStamp,
+    statusPillType: "needAction",
+  },
+};
