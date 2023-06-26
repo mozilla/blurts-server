@@ -11,3 +11,9 @@ main-nav-link-faq-tooltip = Frequently asked questions
 
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
+
+# Status Pill
+
+status-pill-action-needed = Action Needed
+status-pill-progress = In Progress
+status-pill-fixed = Fixed

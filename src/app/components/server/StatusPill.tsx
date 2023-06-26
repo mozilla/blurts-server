@@ -4,6 +4,7 @@
 
 import React from "react";
 import styles from "./StatusPill.module.scss";
+import { useL10n } from "../../hooks/l10n";
 
 export type StatusPillType = "needAction" | "progress" | "fixed";
 
@@ -13,18 +14,19 @@ export type Props = {
 
 export const StatusPill = (props: Props) => {
   const { type } = props;
+  const l10n = useL10n();
 
   let stringContent = "";
   let className = "";
 
   if (type === "needAction") {
-    stringContent = "Action Needed";
+    stringContent = l10n.getString("status-pill-action-needed");
     className = "actionNeeded";
   } else if (type === "progress") {
-    stringContent = "In Progress";
+    stringContent = l10n.getString("status-pill-progress");
     className = "inProgress";
   } else if (type === "fixed") {
-    stringContent = "Fixed";
+    stringContent = l10n.getString("status-pill-fixed");
     className = "isFixed";
   }
 
