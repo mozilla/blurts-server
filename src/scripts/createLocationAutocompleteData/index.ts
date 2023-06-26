@@ -23,15 +23,14 @@ import {
   IDataFileUrls
 } from './types.d'
 
-const startTime = Date.now()
+const DATA_COUNTRY_CODE = 'US'
+const REMOTE_DATA_URL = 'https://download.geonames.org/export/dump/'
+const LOCATIONS_DATA_FILE = 'locationAutocompleteData.json'
 
-const refetchRemoteData = true
-const cleanupFetchedSourceData = false
-
-const dataCountryCode = 'US'
-const remoteDataUrl = 'https://download.geonames.org/export/dump/'
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// Change these variables only for debugging
+// Default values: true
+const REFETCH_REMOTE_DATA = true
+const SHOULD_CLEANUP_DOWNLOADED_DATA = true
 
 function writeFromRemoteFile({ url, writeStream }: {
   url: string,
@@ -59,6 +58,7 @@ async function fetchRemoteArchive({
   localExtractionPath
 }: IDataFileUrls) {
   console.info(`Download remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`)
+
   await writeFromRemoteFile({
     url: remoteArchiveUrl,
     writeStream: createWriteStream(localDownloadPath)
@@ -70,53 +70,51 @@ async function fetchRemoteArchive({
 }
 
 try {
+  const startTime = Date.now()
   console.info('Run create location data')
 
-  const tmpDirPath = resolve(__dirname, `tpm-${startTime}`)
+  const __dirname = dirname(fileURLToPath(import.meta.url))
+  const tmpDirPath = resolve(__dirname, 'tpm-data')
 
   console.info(`Create data directory: ${tmpDirPath}`)
   if (!existsSync(tmpDirPath)) {
-    mkdirSync(tmpDirPath);
+    mkdirSync(tmpDirPath)
   }
 
   const localDataDestinationPath = {
-    locations: `${tmpDirPath}/locations-${dataCountryCode}-extracted`,
-    alternateNames: `${tmpDirPath}/alternatenames-${dataCountryCode}-extracted`
+    locations: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}-extracted`,
+    alternateNames: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}-extracted`
   }
 
-  if (refetchRemoteData) {
+  if (REFETCH_REMOTE_DATA) {
     console.info('Download all locations')
     await fetchRemoteArchive({
-      remoteArchiveUrl: `${remoteDataUrl}${dataCountryCode}.zip`,
-      localDownloadPath: `${tmpDirPath}/locations-${dataCountryCode}.zip`,
+      remoteArchiveUrl: `${REMOTE_DATA_URL}${DATA_COUNTRY_CODE}.zip`,
+      localDownloadPath: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.locations
     })
 
     console.info('Download alternate names')
     await fetchRemoteArchive({
-      remoteArchiveUrl: `${remoteDataUrl}alternatenames/${dataCountryCode}.zip`,
-      localDownloadPath: `${tmpDirPath}/alternatenames-${dataCountryCode}.zip`,
+      remoteArchiveUrl: `${REMOTE_DATA_URL}alternatenames/${DATA_COUNTRY_CODE}.zip`,
+      localDownloadPath: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.alternateNames
     })
+  } else {
+    console.log('Skip downloading remote data')
   }
 
   console.info('Read file: Alternate location names')
   const alternateNamesData = readFileSync(
-    `${localDataDestinationPath.alternateNames}/${dataCountryCode}.txt`,
+    `${localDataDestinationPath.alternateNames}/${DATA_COUNTRY_CODE}.txt`,
     'utf8'
   )
 
-  console.info('Read file: All locations')
-  const locationData = readFileSync(
-    `${localDataDestinationPath.locations}/${dataCountryCode}.txt`,
-    'utf8'
-  )
-
-  console.info('Parse alternate names data')
+  console.info('Parse data: Alternate location names')
+  const alternateNameRows = alternateNamesData.split('\n')
   const parsedAlternateNamesData: Array<IAlternateNamesData | null> =
-    alternateNamesData
-      .split('\n') // split rows
-      .map((alternateNamesLine) => { // lines are tab delimited
+    alternateNameRows
+      .map((alternateNamesLine) => {
         const [
           alternateNameId,
           geonameId,
@@ -128,7 +126,7 @@ try {
           isHistoric,
           _from,
           _to
-        ] = alternateNamesLine.split('\t') as TAlternateNameData
+        ] = alternateNamesLine.split('\t') as TAlternateNameData // lines are tab delimited
 
         const isRelevantAlternateName = isolanguage === 'en' &&
           Number(isHistoric) !== 1
@@ -148,10 +146,20 @@ try {
       })
       .filter(alternateName => alternateName)
 
-  console.info('Parse all locations data')
-  const relevantLocationData: Array<IRelevantLocation> = locationData
-    .split('\n') // split rows
-    .reduce((relevantLocations, location) => { // lines are tab delimited
+  console.info('Read file: All locations')
+  const locationData = readFileSync(
+    `${localDataDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
+    'utf8'
+  )
+
+  console.info('Parse data: All locations')
+  const locationDataRows = locationData.split('\n')
+  const locationRowCount = locationDataRows.length
+  const relevantLocationData: Array<IRelevantLocation> = locationDataRows
+    .reduce((relevantLocations, location, rowIndex) => {
+      const progress = Math.round(((rowIndex + 1) / locationRowCount) * 100)
+      process.stdout.write(`  ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`)
+
       const [
         geonameId,
         name,
@@ -172,7 +180,7 @@ try {
         _dem,
         _timezone,
         _modificationDate,
-      ] = location.split('\t') as TLocationData
+      ] = location.split('\t') as TLocationData // lines are tab delimited
 
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
@@ -183,12 +191,13 @@ try {
         const alternateNames = parsedAlternateNamesData
           .filter(parsedAlternateNameData => (
             parsedAlternateNameData?.geonameId === geonameId
-          ));
+          ))
 
         relevantLocations.push({
           geonameId,
           name,
           admin1Code,
+          population,
           ...(alternateNames && alternateNames.length > 0 && {
             alternateNames
           })
@@ -200,11 +209,10 @@ try {
 
   console.info(`Number of relevant locations found: ${relevantLocationData.length}`)
 
-  const locationDataFilePath = resolve(__dirname, 'locations-data.json')
-  console.info(`Write location data to file: ${locationDataFilePath}`)
-  writeFileSync(locationDataFilePath, JSON.stringify(relevantLocationData))
+  console.info(`Write location data to file: ${LOCATIONS_DATA_FILE}`)
+  writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(relevantLocationData))
 
-  if (cleanupFetchedSourceData) {
+  if (SHOULD_CLEANUP_DOWNLOADED_DATA) {
     console.info('Clean up data directory')
     rmSync(tmpDirPath, {
       recursive: true,
@@ -213,7 +221,7 @@ try {
   }
 
   const endTime = Date. now()
-  console.info(`Created location data file successfully in ${endTime - startTime} ms`)
+  console.info(`Created location data file successfully: Executed in ${(endTime - startTime) / 1000}s`)
 } catch(error) {
   console.error('Creating location file failed with:', error)
 }
