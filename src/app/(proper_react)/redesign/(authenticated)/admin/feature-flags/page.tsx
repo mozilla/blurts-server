@@ -7,10 +7,10 @@ import { getServerSession } from "next-auth";
 import {
   getAllFeatureFlags,
   FeatureFlagDB,
-} from "../../../../../db/tables/featureFlags";
-import { authOptions, isAdmin } from "../../../../api/utils/auth";
+} from "../../../../../../db/tables/featureFlags";
+import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 
-export default async function FeatureFlagRootPage() {
+export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) {
@@ -27,9 +27,6 @@ export default async function FeatureFlagRootPage() {
     if (!data || data.length == 0) {
       return <p>No data</p>;
     }
-
-    // Extract column names from the first object in the data array
-    const columns = Object.keys(data[0]);
 
     return (
       <table>
