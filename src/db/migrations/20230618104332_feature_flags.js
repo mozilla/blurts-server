@@ -14,6 +14,7 @@
       table.timestamp('created_at').defaultTo(knex.fn.now())
       table.timestamp('modified_at').defaultTo(knex.fn.now())
       table.timestamp('expired_at')
+      table.timestamp('deleted_at')
       table.string('owner')
     })
     

@@ -8,7 +8,7 @@ import mozlog from "../../utils/log.js";
 const knex = Knex(knexConfig);
 const log = mozlog("DB.flags");
 
-type FeatureFlagDB = {
+export type FeatureFlagDB = {
   name: string;
   is_enabled: boolean;
   description?: string;
@@ -33,7 +33,7 @@ export type FeatureFlag = {
 };
 
 async function getAllFeatureFlags() {
-  return await knex("feature_flags").returning("*");
+  return await knex("feature_flags").whereNull("deleted_at").returning("*");
 }
 
 async function getFeatureFlagByName(name: string) {
@@ -62,7 +62,13 @@ async function addFeatureFlag(flag: FeatureFlag) {
 
 async function deleteFeatureFlagByName(name: string) {
   log.info("deleteFeatureFlagByName", name);
-  await knex("feature_flags").where("name", "=", name).delete();
+  const res = await knex("feature_flags")
+    .where("name", "=", name)
+    .update({
+      deleted_at: knex.fn.now(),
+    })
+    .returning("*");
+  return res[0];
 }
 
 async function updateAllowList(name: string, allowList: string[]) {
