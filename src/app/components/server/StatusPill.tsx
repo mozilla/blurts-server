@@ -30,7 +30,5 @@ export const StatusPill = (props: Props) => {
     className = "isFixed";
   }
 
-  const classes = [styles.pill, styles[className]].filter(Boolean).join(" ");
-
-  return <div className={classes}>{stringContent}</div>;
+  return <div className={`${styles.pill} ${styles[className]}`}>{stringContent}</div>;
 };

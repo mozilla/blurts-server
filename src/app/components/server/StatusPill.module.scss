@@ -4,9 +4,9 @@
   font: $text-body-xs;
   font-weight: 600;
   display: inline-block;
-  width: 120px; // keep the width fixed
+  min-width: 120px; // keep the width fixed
   text-align: center;
-  padding: $spacing-sm $spacing-md;
+  padding: $spacing-sm 0;
   border-radius: $border-radius-sm;
   line-height: 1;
 
