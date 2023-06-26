@@ -23,11 +23,13 @@ import {
   IDataFileUrls
 } from './types.d'
 
-const startTime = Date. now()
-const refetchRemoteData = false
+const startTime = Date.now()
+
+const refetchRemoteData = true
+const cleanupFetchedSourceData = false
 
 const dataCountryCode = 'US'
-const remoteDataUrl = 'http://download.geonames.org/export/dump/'
+const remoteDataUrl = 'https://download.geonames.org/export/dump/'
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -70,12 +72,9 @@ async function fetchRemoteArchive({
 try {
   console.info('Run create location data')
 
-  const tmpDirPath = resolve(__dirname, `tmp-${startTime}`)
+  const tmpDirPath = resolve(__dirname, `tpm-${startTime}`)
 
-  const localExtractionPath = `${tmpDirPath}/${dataCountryCode}-extracted`
-  const outputDirPathAlternateNames = `${tmpDirPath}/${dataCountryCode}-alternatenames-extracted`
-
-  console.info(`Create temporary directory: ${tmpDirPath}`)
+  console.info(`Create data directory: ${tmpDirPath}`)
   if (!existsSync(tmpDirPath)) {
     mkdirSync(tmpDirPath);
   }
@@ -86,14 +85,14 @@ try {
   }
 
   if (refetchRemoteData) {
-    // Geonames all locations
+    console.info('Download all locations')
     await fetchRemoteArchive({
       remoteArchiveUrl: `${remoteDataUrl}${dataCountryCode}.zip`,
       localDownloadPath: `${tmpDirPath}/locations-${dataCountryCode}.zip`,
       localExtractionPath: localDataDestinationPath.locations
     })
 
-    // Geonames alternate location names
+    console.info('Download alternate names')
     await fetchRemoteArchive({
       remoteArchiveUrl: `${remoteDataUrl}alternatenames/${dataCountryCode}.zip`,
       localDownloadPath: `${tmpDirPath}/alternatenames-${dataCountryCode}.zip`,
@@ -101,16 +100,23 @@ try {
     })
   }
 
-  console.info('Start reading file')
-
+  console.info('Read file: Alternate location names')
   const alternateNamesData = readFileSync(
-    `${outputDirPathAlternateNames}/${dataCountryCode}.txt`,
+    `${localDataDestinationPath.alternateNames}/${dataCountryCode}.txt`,
     'utf8'
   )
+
+  console.info('Read file: All locations')
+  const locationData = readFileSync(
+    `${localDataDestinationPath.locations}/${dataCountryCode}.txt`,
+    'utf8'
+  )
+
+  console.info('Parse alternate names data')
   const parsedAlternateNamesData: Array<IAlternateNamesData | null> =
     alternateNamesData
-      .split('\n')
-      .map((alternateNamesLine) => {
+      .split('\n') // split rows
+      .map((alternateNamesLine) => { // lines are tab delimited
         const [
           alternateNameId,
           geonameId,
@@ -142,14 +148,10 @@ try {
       })
       .filter(alternateName => alternateName)
 
-  const locationData = readFileSync(
-    `${localExtractionPath}/${dataCountryCode}.txt`,
-    'utf8'
-  )
-
+  console.info('Parse all locations data')
   const relevantLocationData: Array<IRelevantLocation> = locationData
-    .split('\n')
-    .reduce((relevantLocations, location) => {
+    .split('\n') // split rows
+    .reduce((relevantLocations, location) => { // lines are tab delimited
       const [
         geonameId,
         name,
@@ -174,8 +176,9 @@ try {
 
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
-      const hasRelevantFeature = (featureClass === 'P' && featureCode === 'PPL')
-      const hasPopulation = Number(population) === 0
+      const hasRelevantFeature = featureClass === 'P' && featureCode === 'PPL'
+      const hasPopulation = Number(population) !== 0
+
       if (hasRelevantFeature && hasPopulation) {
         const alternateNames = parsedAlternateNamesData
           .filter(parsedAlternateNameData => (
@@ -195,12 +198,14 @@ try {
       return relevantLocations
     }, Array())
 
+  console.info(`Number of relevant locations found: ${relevantLocationData.length}`)
+
   const locationDataFilePath = resolve(__dirname, 'locations-data.json')
   console.info(`Write location data to file: ${locationDataFilePath}`)
   writeFileSync(locationDataFilePath, JSON.stringify(relevantLocationData))
 
-  if (refetchRemoteData) {
-    // Clean up temporary directory
+  if (cleanupFetchedSourceData) {
+    console.info('Clean up data directory')
     rmSync(tmpDirPath, {
       recursive: true,
       force: true
@@ -208,7 +213,7 @@ try {
   }
 
   const endTime = Date. now()
-  console.info(`Created lcoation data successfully after: ${endTime - startTime}ms`)
+  console.info(`Created location data file successfully in ${endTime - startTime} ms`)
 } catch(error) {
   console.error('Creating location file failed with:', error)
 }
