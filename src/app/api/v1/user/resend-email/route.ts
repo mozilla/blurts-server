@@ -40,7 +40,11 @@ export async function POST(req: NextRequest) {
       }
 
       await initEmail();
-      await sendVerificationEmail(subscriber, emailId, l10n);
+      await sendVerificationEmail(
+        subscriber,
+        Number.parseInt(emailId, 10),
+        l10n
+      );
 
       return NextResponse.json({
         success: true,
