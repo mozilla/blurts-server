@@ -49,38 +49,38 @@ async function uploadToS3(fileName, fileStream) {
 
 export async function getBreachIcons(breaches) {
   let logoMap;
-    const breachDomains = breaches
-      .map((breach) => breach.Domain)
-      .filter((breachDomain) => breachDomain.length > 0);
+  const breachDomains = breaches
+    .map((breach) => breach.Domain)
+    .filter((breachDomain) => breachDomain.length > 0);
 
-    // make logofolder if it doesn't exist
-    const logoFolder = "public/logo_cache/";
-    if (!fs.existsSync(logoFolder)) await mkdir(logoFolder);
+  // make logofolder if it doesn't exist
+  const logoFolder = "public/logo_cache/";
+  if (!fs.existsSync(logoFolder)) await mkdir(logoFolder);
 
-    // read existing logos
-    const existingLogos = await readdir(logoFolder);
-    console.log({ existingLogos })
+  // read existing logos
+  const existingLogos = await readdir(logoFolder);
+  console.log(`existing logos: ${existingLogos.length}`)
 
-    // TODO: Batch to limit memory use?
-    const logoMapElems = (await Promise.all(
-      breachDomains.map(async (breachDomain) => {
-        const logoFilename = breachDomain.toLowerCase() + ".ico";
-        const logoPath = pathResolve(logoFolder, logoFilename);
-        if (existingLogos.includes(logoFilename)) {
-          console.log('skipping ', logoFilename)
-          return;
-        }
-        console.log(`fetching: , ${logoFilename}`)
-        const res = await fetch(
-          `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
-        await uploadToS3(logoFilename, new Buffer(await res.text()))
-        const fileStream = fs.createWriteStream(logoPath, { flags: 'wx' });
-        const bodyReadable = Readable.fromWeb(res.body)
-        await finished(bodyReadable.pipe(fileStream));
-      })
-    ));
+  // TODO: Batch to limit memory use?
+  const logoMapElems = (await Promise.all(
+    breachDomains.map(async (breachDomain) => {
+      const logoFilename = breachDomain.toLowerCase() + ".ico";
+      const logoPath = pathResolve(logoFolder, logoFilename);
+      if (existingLogos.includes(logoFilename)) {
+        console.log('skipping ', logoFilename)
+        return;
+      }
+      console.log(`fetching: , ${logoFilename}`)
+      const res = await fetch(
+        `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
+      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
+      const fileStream = fs.createWriteStream(logoPath, { flags: 'wx' });
+      const bodyReadable = Readable.fromWeb(res.body)
+      await finished(bodyReadable.pipe(fileStream));
+    })
+  ));
 
-    logoMap = new Map(logoMapElems.filter(e => e != null));
+  logoMap = new Map(logoMapElems.filter(e => e != null));
 
 }
 
@@ -101,7 +101,6 @@ for (const breach of breachesResponse) {
 
 console.log('Breaches found: ', breaches.length)
 console.log('Unique breaches based on Name + BreachDate', seen.size)
-
 await getBreachIcons(breaches)
 
 // sanity check: no duplicate breaches with Name + BreachDate
@@ -115,6 +114,7 @@ if (seen.size !== breaches.length) {
   console.log(result.length)
   process.exit()
 }
+
 
 /**
  * Null check for some required field
