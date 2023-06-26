@@ -14,10 +14,9 @@ import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
 import { mkdir, readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
 import { finished } from 'stream/promises';
-import fs from "fs";
+import fs from "node:fs";
 import { Readable } from 'stream';
 import aws from 'aws-sdk';
-import { Upload } from "@aws-sdk/lib-storage";
 
 // Get breaches logos and uploads to s3
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
@@ -34,17 +33,18 @@ const s3 = new aws.S3({
 });
 
 async function uploadToS3(fileName, fileStream) {
+  console.log('Attempt to upload to s3: ', fileName)
   const uploadParams = {
     Bucket,
     Key: fileName,
     Body: fileStream
   }
   try {
-  await s3.upload(uploadParams).promise()
-  console.log('Successfully uploaded data to ' + Bucket + '/' + fileName)
-} catch (err) {
-  console.error(err, err.stack)
-}
+    await s3.upload(uploadParams).promise()
+    console.log('Successfully uploaded data to ' + Bucket + '/' + fileName)
+  } catch (err) {
+    console.error(err, err.stack)
+  }
 }
 
 export async function getBreachIcons(breaches) {
@@ -60,24 +60,24 @@ export async function getBreachIcons(breaches) {
 
     // read existing logos
     const existingLogos = await readdir(logoFolder);
-    console.log({existingLogos})
+    console.log({ existingLogos })
 
     // TODO: Batch to limit memory use?
     const logoMapElems = (await Promise.all(
       breachDomains.map(async (breachDomain) => {
-          const logoFilename = breachDomain.toLowerCase() + ".ico";
-          const logoPath = pathResolve(logoFolder, logoFilename);
-          if (existingLogos.includes(logoFilename)) {
-            console.log('skipping ', logoFilename)
-            return;
-          }
-          console.log(`fetching: , ${logoFilename}`)
-          const res = await fetch(
-            `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
-          const fileStream = fs.createWriteStream(logoPath, { flags: 'wx' });
-          const bodyReadable = Readable.fromWeb(res.body)
-          await finished(bodyReadable.pipe(fileStream));
-          await uploadToS3(logoFilename, res.fileStream)
+        const logoFilename = breachDomain.toLowerCase() + ".ico";
+        const logoPath = pathResolve(logoFolder, logoFilename);
+        if (existingLogos.includes(logoFilename)) {
+          console.log('skipping ', logoFilename)
+          return;
+        }
+        console.log(`fetching: , ${logoFilename}`)
+        const res = await fetch(
+          `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
+        await uploadToS3(logoFilename, new Buffer(await res.text()))
+        const fileStream = fs.createWriteStream(logoPath, { flags: 'wx' });
+        const bodyReadable = Readable.fromWeb(res.body)
+        await finished(bodyReadable.pipe(fileStream));
       })
     ));
 
@@ -105,7 +105,6 @@ console.log('Breaches found: ', breaches.length)
 console.log('Unique breaches based on Name + BreachDate', seen.size)
 
 await getBreachIcons(breaches)
-console.log({logoMap})
 
 // sanity check: no duplicate breaches with Name + BreachDate
 if (seen.size !== breaches.length) {
@@ -125,7 +124,7 @@ if (seen.size !== breaches.length) {
  * @param {object} breach breach object from HIBP
  * @returns Boolean is it a valid breach
  */
-function isValidBreach (breach) {
+function isValidBreach(breach) {
   return breach.Name !== undefined &&
     breach.BreachDate !== undefined &&
     breach.Title !== undefined &&
