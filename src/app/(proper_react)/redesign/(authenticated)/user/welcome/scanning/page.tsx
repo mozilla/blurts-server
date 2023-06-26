@@ -11,7 +11,11 @@ import {
 } from "../../../../../../../db/tables/subscribers";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../api/utils/auth";
-import { getOneRepResult } from "../../../../../../functions/server/getOneRepResult";
+import {
+  createScan,
+  listScanResults,
+  showScanDetails,
+} from "../../../../../../functions/server/onerep";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -58,15 +62,13 @@ export default async function UserWelcomeScanning() {
     console.debug("no scans");
   }
 
-  const scan = await getOneRepResult("POST", `profiles/${profileId}/scans`);
+  const scan = await createScan(profileId);
   await setOnerepScan(profileId, scan.id);
 
   let iterations = 0;
   const interval = setInterval(async () => {
-    const scanDetails = await getOneRepResult(
-      "GET",
-      `profiles/${profileId}/scans/${scan.id}`
-    );
+    // FIXME
+    const scanDetails = await showScanDetails(profileId, scan.id);
 
     // TODO give up after a certain amount of time / iterations
     if (iterations >= 5) {
@@ -75,28 +77,22 @@ export default async function UserWelcomeScanning() {
       clearInterval(interval);
 
       const scanListFull = [];
-      const scanList = await getOneRepResult(
-        "GET",
-        `scan-results?profile_id[]=${profileId}&per_page=100`
-      );
+      const firstPage = await listScanResults(profileId, { per_page: 100 });
       // Results are paginated, use per_page maximum and collect all pages into one result.
-      if (scanList.meta.last_page > 1) {
+      if (firstPage.meta.last_page > 1) {
         let currentPage = 2;
-        while (currentPage <= scanList.meta.last_page) {
-          const nextPage = await getOneRepResult(
-            "GET",
-            `scan-results?profile_id[]=${profileId}&per_page=100&page=${currentPage}`
-          );
+        while (currentPage <= firstPage.meta.last_page) {
+          const nextPage = await listScanResults(profileId, { per_page: 100 });
           currentPage++;
           nextPage.data.forEach((element: object) =>
             scanListFull.push(element)
           );
         }
       } else {
-        scanListFull.push(scanList.data);
+        scanListFull.push(firstPage.data);
       }
       // Store full list of results in the DB.
-      setOnerepScanResults(profileId, scan.id, { data: scanListFull });
+      setOnerepScanResults(profileId, scan.id, { data: scanListFull[0] });
     } else {
       iterations++;
     }

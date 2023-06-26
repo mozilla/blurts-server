@@ -5,7 +5,8 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-import { getOneRepResult } from "../../../../functions/server/getOneRepResult";
+import { createProfile } from "../../../../functions/server/onerep";
+import type { ProfileData } from "../../../../functions/server/onerep.d";
 import AppConstants from "../../../../../appConstants";
 // import { getL10n } from "../../../../functions/server/l10n";
 import {
@@ -21,26 +22,21 @@ export async function POST(req: NextRequest) {
     throw new Error("First name is required");
   } else if (!params.has("lastname")) {
     throw new Error("Last name is required");
-  } else if (!params.has("citystate")) {
-    throw new Error("City and State is required");
+  } else if (!params.has("city")) {
+    throw new Error("City is required");
+  } else if (!params.has("state")) {
+    throw new Error("State is required");
   } else if (!params.has("dob")) {
     throw new Error("Date of Birth is required");
   }
 
-  // FIXME depends on address lookup service, mock for now.
-  const address = {
-    state: "CA",
-    city: "San Francisco",
-    zip: "94016",
-    address_line: "123 Battery Street",
+  const profileData: ProfileData = {
+    first_name: params.get("firstname") || "",
+    last_name: params.get("lastname") || "",
+    city: params.get("city") || "",
+    state: "CA", // FIXME
+    birth_date: params.get("dob") || "",
   };
-
-  const body = JSON.stringify({
-    first_name: params.get("firstname"),
-    last_name: params.get("lastname"),
-    addresses: [address],
-    birth_date: params.get("dob"),
-  });
 
   if (typeof token?.email === "string") {
     try {
@@ -48,8 +44,8 @@ export async function POST(req: NextRequest) {
       // FIXME check if scan has already been performed and return early if so.
 
       if (!subscriber.onerep_profile_id) {
-        const profile = await getOneRepResult("POST", "profiles", body);
-        setOnerepProfileId(subscriber, profile.id);
+        const profileId = await createProfile(profileData);
+        await setOnerepProfileId(subscriber, profileId);
       }
 
       return NextResponse.redirect(

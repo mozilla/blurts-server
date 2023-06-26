@@ -47,7 +47,8 @@ export default async function UserWelcomeDetails() {
           </div>
           <div>
             <label htmlFor="citystate">City and state: </label>
-            <input type="text" name="citystate" id="citystate"></input>
+            <input type="text" name="city" id="city"></input>
+            <input type="text" name="state" id="state"></input>
           </div>
           <div>
             <label htmlFor="dob">Date of birth: </label>

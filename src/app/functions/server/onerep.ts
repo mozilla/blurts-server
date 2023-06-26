@@ -2,17 +2,28 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from "../appConstants.js";
-import mozlog from "../utils/log.js";
-import { parseE164PhoneNumber, parseIso8601Datetime } from "../utils/parse.js";
-import { usStates } from "../utils/states.js";
+import AppConstants from "../../../appConstants.js";
+import mozlog from "../../../utils/log.js";
+import {
+  parseE164PhoneNumber,
+  parseIso8601Datetime,
+} from "../../../utils/parse.js";
+import { usStates } from "../../../utils/states.js";
 const log = mozlog("external.onerep");
+import type {
+  CreateScanResponse,
+  ListScanResultsResponse,
+  ListScansResponse,
+  ScanResult,
+  ProfileData,
+  Scan,
+  RemovalStatus,
+} from "./onerep.d";
 
-/**
- * @param {string} path
- * @param {Parameters<typeof fetch>[1]} [options]
- */
-async function onerepFetch(path, options = {}) {
+async function onerepFetch(
+  path: string,
+  options: Parameters<typeof fetch>[1] = {}
+) {
   const url = "https://api.onerep.com" + path;
   const headers = new Headers(options.headers);
   headers.set(
@@ -24,27 +35,8 @@ async function onerepFetch(path, options = {}) {
   return fetch(url, { ...options, headers });
 }
 
-/**
- * @typedef {object} ProfileData
- * @property {string} first_name
- * @property {string} last_name
- * @property {string} city
- * @property {import('../utils/states').StateAbbr} state
- * @property {import('../utils/parse.js').ISO8601DateString} [birth_date]
- * @property {import('../utils/parse.js').E164PhoneNumberString} [phone_number]
- */
-
-/**
- * @param {ProfileData} profileData
- * @returns {Promise<number>} Profile ID
- */
-export async function createProfile(profileData) {
-  /**
-   * See https://docs.onerep.com/#operation/createProfile
-   *
-   * @type {any}
-   */
-  const requestBody = {
+export async function createProfile(profileData: ProfileData): Promise<number> {
+  const requestBody: ScanResult = {
     first_name: profileData.first_name,
     last_name: profileData.last_name,
     addresses: [
@@ -72,26 +64,18 @@ export async function createProfile(profileData) {
       `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`
     );
   }
-  /**
-   * See https://docs.onerep.com/#operation/createProfile
-   *
-   * @type {{
-   *   id: number,
-   *   status: 'active' | 'inactive',
-   *   created_at: import('../utils/parse.js').ISO8601DateString,
-   *   updated_at: import('../utils/parse.js').ISO8601DateString,
-   *   url: string,
-   * }}
-   */
-  const savedProfile = await response.json();
+
+  const savedProfile: {
+    id: number;
+    status: "active" | "inactive";
+    created_at: import("../../../utils/parse.js").ISO8601DateString;
+    updated_at: import("../../../utils/parse.js").ISO8601DateString;
+    url: string;
+  } = await response.json();
   return savedProfile.id;
 }
 
-/**
- * @param {any} body
- * @returns {ProfileData | null}
- */
-export function parseExposureScanData(body) {
+export function parseExposureScanData(body: ScanResult): ProfileData | null {
   const state = usStates.find(
     (state) => typeof body === "object" && state === body.state
   );
@@ -123,19 +107,13 @@ export function parseExposureScanData(body) {
   };
 }
 
-/**
- * @param {number} profileId
- * @returns {Promise<void>}
- */
-export async function activateProfile(profileId) {
-  /**
-   * See https://docs.onerep.com/#operation/activateProfile
-   *
-   * @type {any}
-   */
-  const response = await onerepFetch(`/profiles/${profileId}/activate`, {
-    method: "PUT",
-  });
+export async function activateProfile(profileId: number): Promise<void> {
+  const response: Response = await onerepFetch(
+    `/profiles/${profileId}/activate`,
+    {
+      method: "PUT",
+    }
+  );
   if (!response.ok) {
     log.info(
       `Failed to activate OneRep profile: [${response.status}] [${response.statusText}]`
@@ -146,14 +124,7 @@ export async function activateProfile(profileId) {
   }
 }
 
-/**
- * @param {number} profileId
- * @returns {Promise<void>}
- */
-export async function optoutProfile(profileId) {
-  /**
-   * See https://docs.onerep.com/#operation/optoutProfile
-   */
+export async function optoutProfile(profileId: number): Promise<void> {
   const response = await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",
   });
@@ -166,22 +137,9 @@ export async function optoutProfile(profileId) {
     );
   }
 }
-
-/**
- * @typedef {object} CreateScanResponse
- * @property {number} id
- * @property {number} profile_id
- * @property {'in_progress'} status
- * @property {'manual'} reason
- * @property {import('../utils/parse.js').ISO8601DateString} created_at
- * @property {import('../utils/parse.js').ISO8601DateString} updated_at
- */
-
-/**
- * @param {number} profileId
- * @returns {Promise<CreateScanResponse>}
- */
-export async function createScan(profileId) {
+export async function createScan(
+  profileId: number
+): Promise<CreateScanResponse> {
   /**
    * See https://docs.onerep.com/#operation/createScan
    */
@@ -199,22 +157,10 @@ export async function createScan(profileId) {
   return response.json();
 }
 
-/**
- * @typedef {{ current_page: number; from: number; last_page: number; per_page: number; to: number; total: number; }} OneRepMeta
- * @typedef {object} Scan
- * @property {number} id
- * @property {number} profile_id
- * @property {'in_progress' | 'finished'} status
- * @property {'initial' | 'monitoring' | 'manual'} reason
- * @typedef {{ meta: OneRepMeta, data: Scan[] }} ListScansResponse
- */
-
-/**
- * @param {number} profileId
- * @param {Partial<{ page: number; per_page: number }>} [options]
- * @returns {Promise<ListScansResponse>}
- */
-export async function listScans(profileId, options = {}) {
+export async function listScans(
+  profileId: number,
+  options: Partial<{ page: number; per_page: number }> = {}
+): Promise<ListScansResponse> {
   const queryParams = new URLSearchParams();
   if (options.page) {
     queryParams.set("page", options.page.toString());
@@ -222,12 +168,7 @@ export async function listScans(profileId, options = {}) {
   if (options.per_page) {
     queryParams.set("per_page", options.per_page.toString());
   }
-  /**
-   * See https://docs.onerep.com/#operation/getScans
-   *
-   * @type {any}
-   */
-  const response = await onerepFetch(
+  const response: Response = await onerepFetch(
     `/profiles/${profileId}/scans?` + queryParams.toString(),
     {
       method: "GET",
@@ -244,33 +185,32 @@ export async function listScans(profileId, options = {}) {
   return response.json();
 }
 
-// The JSDoc plugin for ESLint doesn't understand TypeScripts template literal types:
-/* eslint-disable jsdoc/valid-types */
-/**
- * @typedef {object} ScanResult
- * @property {number} id
- * @property {number} profile_id
- * @property {string} first_name
- * @property {string} last_name
- * @property {string} middle_name
- * @property {`${number}`} age
- * @property {Array<{ city: string; state: string; street: string; zip: string; }>} addresses
- * @property {string[]} phones
- * @property {string[]} emails
- * @property {string} data_broker
- * @property {import('../utils/parse.js').ISO8601DateString} created_at
- * @property {import('../utils/parse.js').ISO8601DateString} updated_at
- * @typedef {{ meta: OneRepMeta, data: ScanResult[] }} ListScanResultsResponse
- */
-/* eslint-enable jsdoc/valid-types */
+export async function showScanDetails(
+  profileId: number,
+  scanId: number
+): Promise<Scan> {
+  const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
+    method: "GET",
+  });
+  if (!response.ok) {
+    log.info(
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+    );
+    throw new Error(
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+    );
+  }
+  return response.json();
+}
 
-/**
- * @typedef {'new' | 'optout_in_progress' | 'waiting_for_verification' | 'removed'} RemovalStatus
- * @param {number} profileId
- * @param {Partial<{ page: number; per_page: number; status: RemovalStatus }>} [options]
- * @returns {Promise<ListScanResultsResponse>}
- */
-export async function listScanResults(profileId, options = {}) {
+export async function listScanResults(
+  profileId: number,
+  options: Partial<{
+    page: number;
+    per_page: number;
+    status: RemovalStatus;
+  }> = {}
+): Promise<ListScanResultsResponse> {
   const queryParams = new URLSearchParams({
     "profile_id[]": profileId.toString(),
   });
@@ -288,12 +228,7 @@ export async function listScanResults(profileId, options = {}) {
       queryParams.append("status[]", status);
     });
   }
-  /**
-   * See https://docs.onerep.com/#operation/getScanResults
-   *
-   * @type {any}
-   */
-  const response = await onerepFetch(
+  const response: Response = await onerepFetch(
     "/scan-results/?" + queryParams.toString(),
     {
       method: "GET",

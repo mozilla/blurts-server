@@ -124,16 +124,19 @@ export default async function UserBreaches() {
         type="module"
         src="/nextjs_migration/client/js/customSelect.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       <script
         type="module"
         src="/nextjs_migration/client/js/circleChart.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       <script
         type="module"
         src="/nextjs_migration/client/js/breaches.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       {/* eslint-enable @next/next/no-sync-scripts */}
       <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
