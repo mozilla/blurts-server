@@ -12,7 +12,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
-    "fix": "prettier --write './src'",
+    "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
     "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
     "e2e": "playwright test src/e2e/",
     "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",

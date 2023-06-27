@@ -11,11 +11,12 @@
 
 import { req, formatDataClassesArray } from '../utils/hibp.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
-import { mkdir, readdir } from "node:fs/promises";
+import { readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
 import { finished } from 'node:stream/promises';
-import fs from "node:fs";
+import { createWriteStream } from "node:fs";
 import { Readable } from 'node:stream';
+import os from 'node:os';
 import aws from 'aws-sdk';
 
 // Get breaches logos and uploads to s3
@@ -48,21 +49,19 @@ async function uploadToS3(fileName, fileStream) {
 }
 
 export async function getBreachIcons(breaches) {
-  let logoMap;
   const breachDomains = breaches
     .map((breach) => breach.Domain)
     .filter((breachDomain) => breachDomain.length > 0);
 
   // make logofolder if it doesn't exist
-  const logoFolder = "public/logo_cache/";
-  if (!fs.existsSync(logoFolder)) await mkdir(logoFolder);
+  const logoFolder = os.tmpdir();
+  console.log(`Logo folder: ${logoFolder}`)
 
   // read existing logos
   const existingLogos = await readdir(logoFolder);
   console.log(`existing logos: ${existingLogos.length}`)
 
-  // TODO: Batch to limit memory use?
-  const logoMapElems = (await Promise.all(
+  (await Promise.all(
     breachDomains.map(async (breachDomain) => {
       const logoFilename = breachDomain.toLowerCase() + ".ico";
       const logoPath = pathResolve(logoFolder, logoFilename);
@@ -74,14 +73,11 @@ export async function getBreachIcons(breaches) {
       const res = await fetch(
         `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
-      const fileStream = fs.createWriteStream(logoPath, { flags: 'wx' });
+      const fileStream = createWriteStream(logoPath, { flags: 'wx' });
       const bodyReadable = Readable.fromWeb(res.body)
       await finished(bodyReadable.pipe(fileStream));
     })
   ));
-
-  logoMap = new Map(logoMapElems.filter(e => e != null));
-
 }
 
 
