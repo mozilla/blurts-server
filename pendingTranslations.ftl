@@ -35,3 +35,4 @@ exposure-card-description-info-for-sale-part-two = Remove this profile to protec
 exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }</data_breach_link>
 exposure-card-description-data-breach-part-two = We'll walk you through the steps to fix it.
 exposure-card-your-exposed-info = Your exposed info
+exposure-card-chevron-down-alt = Drop down button

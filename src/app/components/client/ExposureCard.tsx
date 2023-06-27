@@ -123,7 +123,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           >
             <ChevronDown
               className={detailsOpen ? styles.isOpen : ""}
-              alt=""
+              alt={l10n.getString("exposure-card-chevron-down-alt")}
               width="20"
               height="20"
             />
@@ -171,37 +171,37 @@ export const ExposureCard = (props: ExposureCardProps) => {
           </div>
           }
           <div className={styles.exposureListOfExposureTypes}>
-            <ul>
-              <li>{l10n.getString("exposure-card-your-exposed-info")}:</li>
-              <li>
+            <dl>
+              <div>{l10n.getString("exposure-card-your-exposed-info")}:</div>
+              <div>
                 <DetailsFoundItem
                   icon={<MultipleUsers alt="" width="13" height="13" />}
                   whichExposed="family"
                   num={0}
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <DetailsFoundItem
                   icon={<PhoneIcon alt="" width="13" height="13" />}
                   whichExposed="phone"
                   num={5}
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <DetailsFoundItem
                   icon={<EmailIcon alt="" width="13" height="13" />}
                   whichExposed="email"
                   num={4}
                 />
-              </li>
-              <li>
+              </div>
+              <div>
                 <DetailsFoundItem
                   icon={<LocationPin alt="" width="13" height="13" />}
                   whichExposed="address"
                   num={0}
                 />
-              </li>
-            </ul>
+              </div>
+            </dl>
             <span className={styles.fixItBtn}>
               <Button type={"primary"} content={"Lets fix it"} />
             </span>

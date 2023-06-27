@@ -93,10 +93,9 @@
         gap: $layout-md;
       }
 
-      ul {
+      dl {
         font: $text-body-sm;
         justify-content: space-between;
-        list-style: none;
         margin-left: 0;
         padding-left: 0;
         display: grid;
@@ -109,15 +108,15 @@
           align-items: center;
         }
 
-        li + li {
-         padding-left: 23px; // offset the exposure icon
+        div + div {
+         padding-left: 23px; // restore the offset of the exposure icon which is -23px
              
           @media screen and (min-width: $screen-md) {
             padding-left: $layout-md;
           }
         }
 
-        li:first-child {
+        div:first-child {
           grid-column: 1 / -1;
         }
 
