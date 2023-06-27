@@ -12,9 +12,9 @@ export type FeatureFlagDB = {
   name: string;
   is_enabled: boolean;
   description?: string;
-  dependencies?: [string];
-  allow_list?: [string];
-  wait_list?: [string];
+  dependencies?: string[];
+  allow_list?: string[];
+  wait_list?: string[];
   added_at?: number;
   modified_at?: number;
   expired_at?: number;
@@ -25,9 +25,9 @@ export type FeatureFlag = {
   name: string;
   isEnabled: boolean;
   description?: string;
-  dependencies?: [string];
-  allowList?: [string];
-  waitList?: [string];
+  dependencies?: string[];
+  allowList?: string[];
+  waitList?: string[];
   expiredAt?: number;
   owner?: string;
 };
