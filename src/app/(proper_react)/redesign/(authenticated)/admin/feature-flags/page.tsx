@@ -9,6 +9,8 @@ import {
   FeatureFlagDB,
 } from "../../../../../../db/tables/featureFlags";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
+import { UserMenu } from "../../../../../components/client/UserMenu";
+import styles from "./page.module.scss";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
@@ -57,9 +59,16 @@ export default async function FeatureFlagPage() {
   const featureFlags = (await getAllFeatureFlags()) || null;
 
   return (
-    <div>
-      <h1>All Feature Flags</h1>
-      <AllFlagsTable data={featureFlags} />
+    <div className={styles.wrapper}>
+      <nav className={styles.tabBar}>
+        <div className={styles.end}>
+          <UserMenu session={session} />
+        </div>
+      </nav>
+      <div className={styles.start}>
+        <h1>All Feature Flags</h1>
+        <AllFlagsTable data={featureFlags} />
+      </div>
     </div>
   );
 }
