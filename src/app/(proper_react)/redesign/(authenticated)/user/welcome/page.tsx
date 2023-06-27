@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getL10n } from "../../../../../functions/server/l10n";
+import { isEligible } from "../../../../../functions/server/onerep";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -26,6 +27,16 @@ export async function generateMetadata() {
 }
 
 export default async function UserWelcome() {
+  const eligible = await isEligible();
+
+  if (!eligible) {
+    return (
+      <main>
+        <h2>You have already used your free scan.</h2>
+      </main>
+    );
+  }
+
   return (
     <main>
       <h1>Welcome to Monitor. Let’s find your exposed information.</h1>

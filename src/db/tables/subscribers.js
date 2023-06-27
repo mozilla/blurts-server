@@ -435,7 +435,7 @@ async function getOnerepScanResults (onerepProfileId, oneRepScanId) {
 
 /**
  * @param {number} onerepProfileId
- * @returns {Promise<{created_at: number, updated_at: number, onerep_scan_results: object}>}
+ * @returns {Promise<{created_at: number, updated_at: number, onerep_scan_results: object}[]>}
  */
 async function getLatestOnerepScan (onerepProfileId) {
   return await knex('onerep_scans')

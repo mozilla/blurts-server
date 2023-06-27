@@ -15,8 +15,8 @@ import {
   createScan,
   listScanResults,
   showScanDetails,
+  isEligible,
 } from "../../../../../../functions/server/onerep";
-import { ProgressBar } from "../../../../../../components/client/ProgressBar";
 import Script from "next/script";
 
 export async function generateMetadata() {
@@ -41,33 +41,28 @@ export async function generateMetadata() {
 }
 
 export default async function UserWelcomeScanning() {
-  const session = await getServerSession(authOptions);
-  const totalIterations = 15;
-
-  // @ts-ignore FIXME
-  const result = await getOnerepProfileId(session?.user?.subscriber?.id);
-  const profileId = result[0]["onerep_profile_id"];
-  const scans = await getLatestOnerepScan(profileId);
-
-  if (scans.length) {
-    const latestScanDate = new Date(scans[0]["created_at"]);
-    const lastMonth = new Date();
-    lastMonth.setMonth(lastMonth.getMonth() - 1);
-
-    // FIXME only premium users get once monthly
-    if (latestScanDate > lastMonth) {
-      return (
-        <main>
-          <h2>You have already used your free scan.</h2>
-        </main>
-      );
-    }
+  const eligible = await isEligible();
+  if (!eligible) {
+    return (
+      <main>
+        <h2>You have already used your free scan.</h2>
+      </main>
+    );
   }
 
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    throw new Error("No session");
+  }
+
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"];
   const scan = await createScan(profileId);
   await setOnerepScan(profileId, scan.id);
 
   let iterations = 0;
+  const totalIterations = 15;
+
   const interval = setInterval(async () => {
     const scanDetails = await showScanDetails(profileId, scan.id);
 

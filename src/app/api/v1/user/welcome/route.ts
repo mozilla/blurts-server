@@ -5,7 +5,7 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-import { createProfile } from "../../../../functions/server/onerep";
+import { createProfile, isEligible } from "../../../../functions/server/onerep";
 import type { ProfileData } from "../../../../functions/server/onerep.d";
 import AppConstants from "../../../../../appConstants";
 // import { getL10n } from "../../../../functions/server/l10n";
@@ -19,6 +19,12 @@ import {
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
+
+  const eligible = await isEligible();
+  if (!eligible) {
+    throw new Error("User has no more manual scans left");
+  }
+
   const params = new URLSearchParams(await req.text());
 
   if (!params.has("firstname")) {
@@ -74,9 +80,8 @@ export async function GET(req: NextRequest) {
       const profileId = (await getOnerepProfileId(subscriber.id))[0][
         "onerep_profile_id"
       ];
-      const scanResults = await getLatestOnerepScan(profileId);
-      // FIXME check if scan has already been performed and return early if so.
 
+      const scanResults = await getLatestOnerepScan(profileId);
       return NextResponse.json(
         { success: true, scan_results: scanResults },
         { status: 200 }

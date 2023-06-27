@@ -2,6 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { getServerSession } from "next-auth";
 import AppConstants from "../../../appConstants.js";
 import mozlog from "../../../utils/log.js";
 import {
@@ -19,6 +20,11 @@ import type {
   Scan,
   RemovalStatus,
 } from "./onerep.d";
+import { authOptions } from "../../api/utils/auth";
+import {
+  getLatestOnerepScan,
+  getOnerepProfileId,
+} from "../../../db/tables/subscribers.js";
 
 async function onerepFetch(
   path: string,
@@ -243,4 +249,28 @@ export async function listScanResults(
     );
   }
   return response.json();
+}
+
+export async function isEligible() {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    throw new Error("No session");
+  }
+
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"];
+  const scanResult = await getLatestOnerepScan(profileId);
+
+  if (scanResult.length) {
+    const latestScanDate = new Date(scanResult[0]["created_at"]);
+    const lastMonth = new Date();
+    lastMonth.setMonth(lastMonth.getMonth() - 1);
+
+    // FIXME only premium users get once monthly
+    if (latestScanDate > lastMonth) {
+      return false;
+    }
+  }
+
+  return true;
 }
