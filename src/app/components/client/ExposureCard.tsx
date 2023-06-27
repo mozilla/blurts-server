@@ -18,7 +18,7 @@ import {
 } from "../server/Icons";
 import Image from "next/image";
 import { Button } from "../server/Button";
-import { ExposureType, ExposureTypeEl } from "../server/ExposureType";
+import { ExposureType, ExposureTypeEl, isScanResult } from "../server/ExposureType";
 import { useL10n } from "../../hooks/l10n";
 
 export type ExposureCardProps = {
@@ -48,15 +48,6 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   const l10n = useL10n();
   const [detailsOpen, setDetailsOpen] = useState(false);
-
-  const date = new Date(dateFound * 1000); // Mocked date
-
-  const formattedDate = date.toLocaleDateString("en-US", {
-    year: "2-digit",
-    month: "2-digit",
-    day: "2-digit",
-  });
-
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
     let headline, description;
@@ -110,7 +101,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               /> </li>
             <li>{exposureName}</li>
             <li className={styles.hideOnMobile}><ExposureTypeEl type={exposureType} /></li>
-            <li className={styles.hideOnMobile}>{formattedDate}</li>
+            <li className={styles.hideOnMobile}>{props.dateFound}</li>
             <li>
               <StatusPill type={statusPillType} />
             </li>
@@ -132,7 +123,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
             detailsOpen ? styles.isOpen : ""
           }`}
         >
-          {props.exposureType === "infoForSale" ? 
+          {isScanResult(props.exposureType) ? 
           // Data broker content
           <div>
             <p>
@@ -155,7 +146,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               {
                 vars: {
                   data_breach_company: props.exposureName,
-                  data_breach_date: formattedDate
+                  data_breach_date: props.dateFound
                 },
                 elems: {"data_breach_link": <a href={props.exposureDetailsLink}/>}
               })}
@@ -204,3 +195,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
   return elementCard;
 };
 
+
+//  function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
+//   return (obj as ScanResult) !== undefined;
+// }

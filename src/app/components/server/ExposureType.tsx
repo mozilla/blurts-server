@@ -5,8 +5,6 @@
 import { ScanResult } from '../../../../src/external/onerep';
 import { Breach } from '../../(nextjs_migration)/(authenticated)/user/breaches/breaches';
 
-// export type ExposureType = "infoForSale" | "dataBreach";
-
 export type ExposureType = ScanResult | Breach;
 
 export type Props = {
@@ -23,16 +21,9 @@ export const ExposureTypeEl = (props: Props) => {
     string = "Data breach"
   }
 
-  // if (props.type === "infoForSale") {
-  //   string = "Info for sale"
-  // }
-  // else {
-  //   string = "Data breach"
-  // }
-
   return <>{string}</>;
 };
 
-function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
-  return (obj as ScanResult) !== undefined;
+export function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
+  return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }

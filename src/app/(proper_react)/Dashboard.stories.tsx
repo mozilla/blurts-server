@@ -39,28 +39,29 @@ const ScanResultMockItem: ScanResult = {
 }
 
 const BreachMockItem: Breach = {
-AddedDate: "11/09/23",
-BreachDate: "11/09/23",
-DataClasses: [],
-Description: "",
-Domain: "",
-Id: 0,
-IsFabricated: false,
-IsMalware: false,
-IsResolved: false,
-IsRetired: false,
-IsSensitive: false,
-IsSpamList: false,
-IsVerified: false,
-LogoPath: "",
-ModifiedDate: "",
-Name: "",
-PwnCount: 0,
-recencyIndex: 0,
-ResolutionsChecked: [],
-Title: "Twitter"
+  AddedDate: "11/09/23",
+  BreachDate: "11/09/23",
+  DataClasses: [],
+  Description: "",
+  Domain: "",
+  Id: 0,
+  IsFabricated: false,
+  IsMalware: false,
+  IsResolved: false,
+  IsRetired: false,
+  IsSensitive: false,
+  IsSpamList: false,
+  IsVerified: false,
+  LogoPath: "",
+  ModifiedDate: "",
+  Name: "",
+  PwnCount: 0,
+  recencyIndex: 0,
+  ResolutionsChecked: [],
+  Title: "Twitter"
 }
 
+console.log(typeof ScanResultMockItem);
 const mockExposures: ExposureCardProps[] = [
   {
     exposureImg: FamilyTreeImage,
@@ -76,7 +77,7 @@ const mockExposures: ExposureCardProps[] = [
     exposureType: BreachMockItem,
     exposureDetailsLink: "linkehere.com",
     dateFound: BreachMockItem.AddedDate,
-    statusPillType: "needAction",
+    statusPillType: "fixed",
   },
   {
     exposureImg: FamilyTreeImage,
