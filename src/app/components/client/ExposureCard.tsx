@@ -21,14 +21,12 @@ import { Button } from "../server/Button";
 import { ExposureType, ExposureTypeEl } from "../server/ExposureType";
 import { useL10n } from "../../hooks/l10n";
 
-export type UnixTimestamp = number;
-
 export type ExposureCardProps = {
   exposureImg: StaticImageData;
   exposureName: string;
   exposureType: ExposureType;
   exposureDetailsLink: string;
-  dateFound: UnixTimestamp;
+  dateFound: string;
   statusPillType: StatusPillType;
 };
 

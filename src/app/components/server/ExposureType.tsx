@@ -2,22 +2,37 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-export type ExposureType = "infoForSale" | "dataBreach";
+import { ScanResult } from '../../../../src/external/onerep';
+import { Breach } from '../../(nextjs_migration)/(authenticated)/user/breaches/breaches';
+
+// export type ExposureType = "infoForSale" | "dataBreach";
+
+export type ExposureType = ScanResult | Breach;
 
 export type Props = {
   type: ExposureType;
 };
 
 export const ExposureTypeEl = (props: Props) => {
-  const { type } = props;
-
   let string = "";
 
-  if (type === "infoForSale") {
+  if (isScanResult(props.type)) {
     string = "Info for sale"
-  } else if (type === "dataBreach") {
+  }
+  else {
     string = "Data breach"
-  } 
+  }
+
+  // if (props.type === "infoForSale") {
+  //   string = "Info for sale"
+  // }
+  // else {
+  //   string = "Data breach"
+  // }
 
   return <>{string}</>;
 };
+
+function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
+  return (obj as ScanResult) !== undefined;
+}
