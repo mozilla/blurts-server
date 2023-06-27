@@ -90,13 +90,13 @@ export const ExposureCard = (props: ExposureCardProps) => {
     }
 
     return (
-      <dd className={styles.detailsFoundItem}>
+      <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {headline}
         </dt>
-        <dl>{description}</dl>
-      </dd>
+        <dd>{description}</dd>
+      </div>
     );
   };
   const elementCard = (
@@ -173,34 +173,26 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <div className={styles.exposureListOfExposureTypes}>
             <dl>
               <div>{l10n.getString("exposure-card-your-exposed-info")}:</div>
-              <div>
-                <DetailsFoundItem
-                  icon={<MultipleUsers alt="" width="13" height="13" />}
-                  whichExposed="family"
-                  num={0}
-                />
-              </div>
-              <div>
-                <DetailsFoundItem
-                  icon={<PhoneIcon alt="" width="13" height="13" />}
-                  whichExposed="phone"
-                  num={5}
-                />
-              </div>
-              <div>
-                <DetailsFoundItem
-                  icon={<EmailIcon alt="" width="13" height="13" />}
-                  whichExposed="email"
-                  num={4}
-                />
-              </div>
-              <div>
-                <DetailsFoundItem
-                  icon={<LocationPin alt="" width="13" height="13" />}
-                  whichExposed="address"
-                  num={0}
-                />
-              </div>
+              <DetailsFoundItem
+                icon={<MultipleUsers alt="" width="13" height="13" />}
+                whichExposed="family"
+                num={0}
+              />
+              <DetailsFoundItem
+                icon={<PhoneIcon alt="" width="13" height="13" />}
+                whichExposed="phone"
+                num={5}
+              />
+              <DetailsFoundItem
+                icon={<EmailIcon alt="" width="13" height="13" />}
+                whichExposed="email"
+                num={4}
+              />
+              <DetailsFoundItem
+                icon={<LocationPin alt="" width="13" height="13" />}
+                whichExposed="address"
+                num={0}
+              />
             </dl>
             <span className={styles.fixItBtn}>
               <Button type={"primary"} content={"Lets fix it"} />
