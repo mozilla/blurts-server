@@ -52,29 +52,55 @@ export default async function UserWelcomeDetails() {
             method="post"
             action="http://localhost:6060/api/v1/user/welcome"
           >
-            <div>
-              <label htmlFor="firstname">First name: </label>
-              <input type="text" name="firstname" id="firstname"></input>
-            </div>
-            <div>
-              <label htmlFor="lastname">Last name: </label>
-              <input type="text" name="lastname" id="lastname"></input>
-            </div>
-            <div>
-              <label htmlFor="citystate">City and state: </label>
-              <input type="text" name="city" id="city"></input>
-              <input type="text" name="state" id="state"></input>
-            </div>
-            <div>
-              <label htmlFor="dob">Date of birth: </label>
-              <input type="date" name="dob" id="dob"></input>
-            </div>
-            <div>
-              <button className="button secondary">Go back</button>
-              <button type="submit" className="button primary">
-                Start my free scan
-              </button>
-            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <label htmlFor="firstname">First name: </label>
+                  </td>
+                  <td>
+                    <input type="text" name="firstname" id="firstname"></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="lastname">Last name: </label>
+                  </td>
+                  <td>
+                    <input type="text" name="lastname" id="lastname"></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="citystate">City and state: </label>
+                  </td>
+                  <td>
+                    <input type="text" name="city" id="city"></input>
+                  </td>
+                  <td>
+                    <input type="text" name="state" id="state"></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label htmlFor="dob">Date of birth: </label>
+                  </td>
+                  <td>
+                    <input type="date" name="dob" id="dob"></input>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <button className="button secondary">Go back</button>
+                  </td>
+                  <td>
+                    <button type="submit" className="button primary">
+                      Start my free scan
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </form>
         </section>
       </main>
