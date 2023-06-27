@@ -77,6 +77,8 @@ job-titles = İş unvanları
 # This string refers to vehicle license plates. 
 licence-plates = Plaka numaraları
 living-costs = Yaşam maliyetleri
+# This string refers to financial loans.
+loan-information = Kredi bilgileri
 login-histories = Giriş geçmişleri
 mac-addresses = MAC adresleri
 marital-statuses = Medeni durumları

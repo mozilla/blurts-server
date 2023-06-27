@@ -22,6 +22,7 @@ export default async function MigrationLayout({
         type="module"
         src="/nextjs_migration/client/js/resizeObserver.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}

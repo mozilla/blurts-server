@@ -725,5 +725,6 @@ breach-detail-cta-signup = İhlalleri kontrol et
 
 ## Floating banner
 
+floating-banner-text = { -brand-Mozilla }’dan haberler ve ipuçlarıyla çevrimiçi güvenliğinizi artırın.
 floating-banner-link-label = Kaydol
 floating-banner-dismiss-button-label = Gerek yok

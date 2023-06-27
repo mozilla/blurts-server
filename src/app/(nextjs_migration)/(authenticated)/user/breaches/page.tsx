@@ -71,6 +71,50 @@ export default async function UserBreaches() {
     user: session!.user as any,
   });
 
+  type FxaSubscriptionResponse = {
+    subscriptions: Array<{
+      product_id: string;
+      plan_id: string;
+      status: "active";
+    }>;
+  };
+
+  // Fetch list of subscriptions.
+  let subscriptions;
+  const bearerToken = session?.user.subscriber?.fxa_access_token;
+  if (bearerToken) {
+    const result = await fetch(
+      `${process.env.OAUTH_API_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${bearerToken}`,
+        },
+      }
+    );
+    if (result.ok) {
+      subscriptions = await result.json();
+    }
+  } else {
+    console.error("User has no bearer token");
+  }
+
+  const isUserSubscribed = (subscriptions: FxaSubscriptionResponse) => {
+    if (!subscriptions) {
+      return false;
+    }
+    for (const subscription of subscriptions.subscriptions) {
+      if (
+        subscription.product_id === process.env.PREMIUM_PRODUCT_ID &&
+        subscription.plan_id === process.env.PREMIUM_PLAN_ID_US &&
+        subscription.status === "active"
+      ) {
+        return true;
+      }
+    }
+    return false;
+  };
+
   return (
     <>
       {/* These scripts predate the use of React and thus shouldn’t wait for
@@ -80,27 +124,30 @@ export default async function UserBreaches() {
         type="module"
         src="/nextjs_migration/client/js/customSelect.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       <script
         type="module"
         src="/nextjs_migration/client/js/circleChart.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       <script
         type="module"
         src="/nextjs_migration/client/js/breaches.js"
         rel="preload"
+        crossOrigin="anonymous"
       />
       {/* eslint-enable @next/next/no-sync-scripts */}
       <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
 
       <main data-partial="breaches">
         {process.env.PREMIUM_ENABLED === "true" &&
-        !session?.user.fxa?.subscriptions?.includes("monitor") ? (
+        !isUserSubscribed(subscriptions) ? (
           <section>
             <a
               className="button primary"
-              href={process.env.SUBSCRIBE_PREMIUM_URL}
+              href={`${process.env.FXA_SUBSCRIPTIONS_URL}/products/${process.env.PREMIUM_PRODUCT_ID}?plan=${process.env.PREMIUM_PLAN_ID_US}`}
             >
               Subscribe to Premium
             </a>
