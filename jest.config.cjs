@@ -102,7 +102,11 @@ const customJestConfig = {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  modulePathIgnorePatterns: ["e2e/", "settings.test.js"],
+  modulePathIgnorePatterns: [
+    "e2e/",
+    // These are remnants of our old Express.js app, which we have yet to remove:
+    "src/controllers",
+  ],
 
   // Activates notifications for test results
   // notify: false,
