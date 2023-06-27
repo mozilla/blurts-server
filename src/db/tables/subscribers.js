@@ -423,6 +423,19 @@ async function getOnerepProfileId (subscriberId) {
 
 /**
  * @param {number} onerepProfileId
+ * @param {number} oneRepScanId
+ * @returns {Promise<object>} oneRepScanResults
+ */
+async function getOnerepScanResults (onerepProfileId, oneRepScanId) {
+  return await knex('onerep_scans')
+    .select('onerep_scan_results')
+    .where('onerep_profile_id', onerepProfileId)
+    .andWhere('onerep_scan_id', oneRepScanId)
+}
+
+/**
+ * @param {number} onerepProfileId
+ * @returns {Promise<{created_at: number, updated_at: number, onerep_scan_results: object}>}
  */
 async function getLatestOnerepScan (onerepProfileId) {
   return await knex('onerep_scans')
@@ -475,6 +488,7 @@ async function joinEmailAddressesToSubscriber (subscriber) {
 export {
   getLatestOnerepScan,
   getOnerepProfileId,
+  getOnerepScanResults,
   getSubscriberByToken,
   getSubscribersByHashes,
   getSubscriberByTokenAndHash,

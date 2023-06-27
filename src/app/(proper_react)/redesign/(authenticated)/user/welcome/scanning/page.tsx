@@ -16,6 +16,8 @@ import {
   listScanResults,
   showScanDetails,
 } from "../../../../../../functions/server/onerep";
+import { ProgressBar } from "../../../../../../components/client/ProgressBar";
+import Script from "next/script";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -40,6 +42,7 @@ export async function generateMetadata() {
 
 export default async function UserWelcomeScanning() {
   const session = await getServerSession(authOptions);
+  const totalIterations = 15;
 
   // @ts-ignore FIXME
   const result = await getOnerepProfileId(session?.user?.subscriber?.id);
@@ -51,6 +54,7 @@ export default async function UserWelcomeScanning() {
     const lastMonth = new Date();
     lastMonth.setMonth(lastMonth.getMonth() - 1);
 
+    // FIXME only premium users get once monthly
     if (latestScanDate > lastMonth) {
       return (
         <main>
@@ -58,8 +62,6 @@ export default async function UserWelcomeScanning() {
         </main>
       );
     }
-  } else {
-    console.debug("no scans");
   }
 
   const scan = await createScan(profileId);
@@ -67,11 +69,10 @@ export default async function UserWelcomeScanning() {
 
   let iterations = 0;
   const interval = setInterval(async () => {
-    // FIXME
     const scanDetails = await showScanDetails(profileId, scan.id);
 
-    // TODO give up after a certain amount of time / iterations
-    if (iterations >= 5) {
+    // Give up after set number of iterations.
+    if (iterations >= totalIterations) {
       clearInterval(interval);
     } else if (scanDetails.status === "finished") {
       clearInterval(interval);
@@ -96,19 +97,18 @@ export default async function UserWelcomeScanning() {
     } else {
       iterations++;
     }
-  }, 5000);
-
-  const current = 0;
-  const total = 672;
-  const percentage = ((current / total) * 100).toFixed(1);
+  }, 1000);
 
   return (
-    <main>
-      <h2>Scanning for exposures...</h2>
-      <h1>
-        {current} of {total} known data breaches
-      </h1>
-      <h1>{percentage}%</h1>
-    </main>
+    <>
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/welcome.js"
+      ></Script>
+      <main>
+        <h2 id="status">Scanning for exposures...</h2>
+        <div id="progress">0%</div>
+      </main>
+    </>
   );
 }

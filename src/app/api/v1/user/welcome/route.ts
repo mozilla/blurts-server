@@ -10,6 +10,9 @@ import type { ProfileData } from "../../../../functions/server/onerep.d";
 import AppConstants from "../../../../../appConstants";
 // import { getL10n } from "../../../../functions/server/l10n";
 import {
+  getLatestOnerepScan,
+  getOnerepProfileId,
+  getOnerepScanResults,
   getSubscriberByEmail,
   setOnerepProfileId,
 } from "../../../../../db/tables/subscribers";
@@ -51,6 +54,32 @@ export async function POST(req: NextRequest) {
       return NextResponse.redirect(
         `${AppConstants.SERVER_URL}/redesign/user/welcome/scanning`,
         301
+      );
+    } catch (e) {
+      console.error(e);
+      return NextResponse.json({ success: false }, { status: 500 });
+    }
+  } else {
+    // Not Signed in, redirect to home
+    return NextResponse.redirect(AppConstants.SERVER_URL, 302);
+  }
+}
+
+export async function GET(req: NextRequest) {
+  const token = await getToken({ req });
+
+  if (typeof token?.email === "string") {
+    try {
+      const subscriber = await getSubscriberByEmail(token.email);
+      const profileId = (await getOnerepProfileId(subscriber.id))[0][
+        "onerep_profile_id"
+      ];
+      const scanResults = await getLatestOnerepScan(profileId);
+      // FIXME check if scan has already been performed and return early if so.
+
+      return NextResponse.json(
+        { success: true, scan_results: scanResults },
+        { status: 200 }
       );
     } catch (e) {
       console.error(e);
