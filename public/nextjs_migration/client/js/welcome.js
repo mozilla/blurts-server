@@ -6,16 +6,16 @@ function init() {
   let intervalCount = 1;
 
   const progress = document.querySelector("#progress");
-  const status = document.querySelector("#status");
+  let results;
 
   const interval = setInterval(async () => {
-    const response = await fetch("/api/v1/user/welcome");
-    const body = await response.json();
+    if (!results) {
+      const response = await fetch("/api/v1/user/welcome");
+      const body = await response.json();
 
-    if (response.ok && body.scan_results[0].onerep_scan_results !== null) {
-      status.textContent = JSON.stringify(
-        body.scan_results[0].onerep_scan_results
-      );
+      if (response.ok && body.scan_results[0].onerep_scan_results !== null) {
+        results = body.scan_results[0].onerep_scan_results;
+      }
     }
 
     const percentComplete = intervalCount * 6;
