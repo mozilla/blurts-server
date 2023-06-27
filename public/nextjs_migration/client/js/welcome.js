@@ -23,6 +23,8 @@ function init() {
     if (percentComplete >= 100) {
       progress.textContent = "Scan complete";
       clearInterval(interval);
+
+      window.location = "results";
     } else {
       progress.textContent = `${percentComplete}%`;
       intervalCount++;

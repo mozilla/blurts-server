@@ -3,10 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import {
-  getLatestOnerepScan,
-  getOnerepProfileId,
-} from "../../../../../../../db/tables/subscribers";
 import { authOptions } from "../../../../../../api/utils/auth";
 import { getL10n } from "../../../../../../functions/server/l10n";
 import { isEligible } from "../../../../../../functions/server/onerep";
@@ -36,7 +32,6 @@ export default async function UserWelcomeDetails() {
   const session = await getServerSession(authOptions);
   const eligible = await isEligible();
 
-  let result;
   if (!eligible) {
     return (
       <main>

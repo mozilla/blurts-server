@@ -12,7 +12,6 @@ import AppConstants from "../../../../../appConstants";
 import {
   getLatestOnerepScan,
   getOnerepProfileId,
-  getOnerepScanResults,
   getSubscriberByEmail,
   setOnerepProfileId,
 } from "../../../../../db/tables/subscribers";
