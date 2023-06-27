@@ -45,7 +45,6 @@ export default async function UserWelcomeDetails() {
         <p>
           We’ll use this to find exposures of your personal information, and
           then guide you step-by-step on how to fix it.
-          <a>Why do we need this info?</a>
         </p>
 
         <section>
