@@ -41,8 +41,6 @@ async function initFluentBundles () {
   })
 
   await Promise.allSettled(promises)
-
-  console.log('Fluent bundles created:', Object.keys(fluentBundles))
 }
 
 /**
