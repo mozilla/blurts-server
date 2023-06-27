@@ -3,23 +3,29 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 function init() {
+  let intervalCount = 1;
+
+  const progress = document.querySelector("#progress");
+  const status = document.querySelector("#status");
+
   const interval = setInterval(async () => {
     const response = await fetch("/api/v1/user/welcome");
     const body = await response.json();
+
     if (response.ok && body.scan_results[0].onerep_scan_results !== null) {
-      console.debug(
-        "Response received:",
+      status.textContent = JSON.stringify(
         body.scan_results[0].onerep_scan_results
       );
+    }
+
+    const percentComplete = intervalCount * 6;
+
+    if (percentComplete >= 100) {
+      progress.textContent = "Scan complete";
       clearInterval(interval);
-
-      const status = document.querySelector("#status");
-      status.textContent = "Results:";
-
-      const progress = document.querySelector("#progress");
-      progress.textContent = JSON.stringify(
-        body.scan_results[0].onerep_scan_results
-      );
+    } else {
+      progress.textContent = `${percentComplete}%`;
+      intervalCount++;
     }
   }, 1000);
 }
