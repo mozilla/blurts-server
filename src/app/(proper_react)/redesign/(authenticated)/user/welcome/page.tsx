@@ -50,8 +50,6 @@ export default async function UserWelcome() {
         Upgrade to Premium for continuous protection and automatic removal of
         your personal info.
       </p>
-
-      <p>See how we protect your data</p>
       <a href="welcome/details">
         <button className="button primary">Start my free scan</button>
       </a>
