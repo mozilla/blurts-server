@@ -21,12 +21,14 @@ import { Button } from "../server/Button";
 import { ExposureType, ExposureTypeEl } from "../server/ExposureType";
 import { useL10n } from "../../hooks/l10n";
 
+export type UnixTimestamp = number;
+
 export type ExposureCardProps = {
   exposureImg: StaticImageData;
   exposureName: string;
   exposureType: ExposureType;
   exposureDetailsLink: string;
-  dateFound: number;
+  dateFound: UnixTimestamp;
   statusPillType: StatusPillType;
 };
 
@@ -48,20 +50,6 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   const l10n = useL10n();
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width < 768); // $screen-md
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
 
   const date = new Date(dateFound * 1000); // Mocked date
 
@@ -116,15 +104,15 @@ export const ExposureCard = (props: ExposureCardProps) => {
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <ul className={styles.exposureHeaderList}>
-            {!isMobile ? <li className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}>
+            <li className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}>
               <Image
                 className={styles.exposureImage}
                 alt=""
                 src={exposureImg}
-              /> </li>: ""}
+              /> </li>
             <li>{exposureName}</li>
-            {!isMobile ? <li><ExposureTypeEl type={exposureType} /></li> : ""}
-            {!isMobile ? <li>{formattedDate}</li> : ""}
+            <li className={styles.hideOnMobile}><ExposureTypeEl type={exposureType} /></li>
+            <li className={styles.hideOnMobile}>{formattedDate}</li>
             <li>
               <StatusPill type={statusPillType} />
             </li>

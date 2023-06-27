@@ -145,3 +145,13 @@
     }
   }
 }
+
+.hideOnMobile {
+  display: none !important;
+  visibility: hidden;
+
+  @media screen and (min-width: $screen-md) {
+    display: block !important;
+    visibility: visible;
+  }
+}
