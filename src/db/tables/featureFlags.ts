@@ -38,7 +38,7 @@ async function getAllFeatureFlags() {
 
 async function getFeatureFlagByName(name: string) {
   log.info("getFeatureFlagByName", name);
-  const res = await knex("feature_flags").where("name", "=", name);
+  const res = await knex("feature_flags").where("name", name);
 
   return res[0] || null;
 }
@@ -63,7 +63,7 @@ async function addFeatureFlag(flag: FeatureFlag) {
 async function deleteFeatureFlagByName(name: string) {
   log.info("deleteFeatureFlagByName", name);
   const res = await knex("feature_flags")
-    .where("name", "=", name)
+    .where("name", name)
     .update({
       deleted_at: knex.fn.now(),
     })
@@ -74,7 +74,7 @@ async function deleteFeatureFlagByName(name: string) {
 async function updateAllowList(name: string, allowList: string[]) {
   log.info("updateAllowList", name, allowList);
   const res = await knex("feature_flags")
-    .where("name", "=", name)
+    .where("name", name)
     .update({
       allow_list: allowList,
       modified_at: knex.fn.now(),
@@ -87,7 +87,7 @@ async function updateAllowList(name: string, allowList: string[]) {
 async function updateWaitList(name: string, waitList: string[]) {
   log.info("updateWaitList", name, waitList);
   const res = await knex("feature_flags")
-    .where("name", "=", name)
+    .where("name", name)
     .update({
       wait_list: waitList,
       modified_at: knex.fn.now(),
@@ -100,7 +100,7 @@ async function updateWaitList(name: string, waitList: string[]) {
 async function enableFeatureFlagByName(name: string) {
   log.info("enableFeatureFlagByName", name);
   const res = await knex("feature_flags")
-    .where("name", "=", name)
+    .where("name", name)
     .update({
       is_enabled: true,
       modified_at: knex.fn.now(),
@@ -113,7 +113,7 @@ async function enableFeatureFlagByName(name: string) {
 async function disableFeatureFlagByName(name: string) {
   log.info("disableFeatureFlagByName", name);
   const res = await knex("feature_flags")
-    .where("name", "=", name)
+    .where("name", name)
     .update({
       is_enabled: false,
       modified_at: knex.fn.now(),
