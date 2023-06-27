@@ -10,7 +10,7 @@ import locationData from "../../../../../locationAutocompleteData.json";
 
 type TMatchingLocations = Array<IRelevantLocation> | [];
 
-interface ISearchLocationParams {
+export interface ISearchLocationParams {
   searchQuery: string;
   config: {
     minQueryLength: number;
@@ -18,7 +18,7 @@ interface ISearchLocationParams {
   };
 }
 
-interface ISearchLocationResults {
+export interface ISearchLocationResults {
   searchQuery: string;
   results: TMatchingLocations;
 }
@@ -54,8 +54,6 @@ function getMatchingLocations({
     maxResults: 10,
   },
 }: ISearchLocationParams): ISearchLocationResults {
-  console.log(`Get locations for: ${searchQuery}`);
-
   const { minQueryLength, maxResults } = config;
 
   const matchingLocations =

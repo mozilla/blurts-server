@@ -4,15 +4,22 @@
 
 "use client";
 
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect, useDeferredValue, useState } from "react";
+import { ISearchLocationParams } from "../../api/v1/location-autocomplete/route";
 
-const handleOnInput = async (event: ChangeEvent<HTMLInputElement>) => {
+const getLocationSuggestions = async ({
+  searchParams,
+  abortController,
+}: {
+  searchParams: ISearchLocationParams;
+  abortController: AbortController;
+}) => {
   try {
+    const { signal } = abortController;
     const response = await fetch("/api/v1/location-autocomplete", {
       method: "POST",
-      body: JSON.stringify({
-        searchQuery: event.target.value,
-      }),
+      body: JSON.stringify(searchParams),
+      signal,
     });
 
     if (!response.ok) {
@@ -20,14 +27,65 @@ const handleOnInput = async (event: ChangeEvent<HTMLInputElement>) => {
     }
 
     const locationResults = await response.json();
-    console.log(locationResults);
+    return locationResults;
   } catch (error) {
     console.error(error);
   }
 };
 
 export const LocationInput = () => {
+  const [locationData, setLocationData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const deferredSearchQuery = useDeferredValue(searchQuery);
+  const isStale = searchQuery !== deferredSearchQuery;
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    if (deferredSearchQuery) {
+      const searchParams = {
+        searchQuery: deferredSearchQuery,
+        config: {
+          minQueryLength: 2,
+          maxResults: 10,
+        },
+      };
+
+      getLocationSuggestions({
+        searchParams,
+        abortController: abortController,
+      }).then((data) => {
+        setLocationData(data);
+      });
+    }
+
+    return () => {
+      abortController.abort();
+    };
+  }, [deferredSearchQuery]);
+
+  const handleOnInput = (event: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+  };
+
   return (
-    <input onInput={handleOnInput} placeholder="Enter your location" required />
+    <div style={{ position: "relative" }}>
+      <input
+        onInput={handleOnInput}
+        placeholder="Enter your location"
+        required
+      />
+      <pre
+        style={{
+          fontSize: "10px",
+          opacity: isStale ? 0.3 : 1,
+          position: "absolute",
+          top: "50px",
+        }}
+      >
+        {JSON.stringify(locationData, null, 2)}
+      </pre>
+    </div>
   );
 };
