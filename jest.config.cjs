@@ -102,7 +102,7 @@ const customJestConfig = {
   // moduleNameMapper: {},
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-  modulePathIgnorePatterns: ["e2e/", "index.test.js", "email.test.js", "settings.test.js", "breachResolution.test.js"],
+  modulePathIgnorePatterns: ["e2e/", "index.test.js", "settings.test.js", "breachResolution.test.js"],
 
   // Activates notifications for test results
   // notify: false,
