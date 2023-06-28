@@ -17,6 +17,10 @@ import {
   AriaOverlayProps,
   useButton,
 } from "react-aria";
+import { Button } from "../server/Button";
+import { metropolis } from "../../../../src/app/fonts/Metropolis/metropolis";
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export type Props = {
   isOpen: boolean,
@@ -24,26 +28,7 @@ export type Props = {
   content: ReactElement,
 }
 
-// export const Modal = (props: Props) => {
-//   if (!props.isOpen) {
-//     return null; // Render nothing if the modal is closed
-//   }
-
-//     return (
-//       <div role="dialog" aria-modal="true" aria-label="Modal" className={styles.modalOverlay}>
-//         <div className={styles.modal}>
-//           <div className={styles.modalContent}>
-//             {props.content}
-//             <button aria-label="Close modal" className={styles.closeButton} onClick={props.onClose}><CloseBtn alt="" width="14" height="14"/></button>
-//           </div>
-//         </div>
-//       </div>
-//     );
-
-// };
-
 export const Modal = (props: Props) => {
-
   if (!props.isOpen) {
     return null; 
   }
@@ -60,7 +45,6 @@ export const Modal = (props: Props) => {
       ></DialogBox>
     </OverlayContainer>
   )
-
 };
 
 type DialogBox = {
@@ -84,29 +68,29 @@ const DialogBox = (props: DialogBox & AriaOverlayProps) => {
   );
 
   return (
-    <div className={styles.underlay} {...underlayProps}>
+    <div className={styles.modalUnderlay} {...underlayProps}>
       <FocusScope contain restoreFocus autoFocus>
         <div
           {...overlayProps}
           {...dialogProps}
           {...modalProps}
           ref={wrapperRef}
+          className={`${styles.modal} ${inter.variable} ${metropolis.variable}`}
         >
           {props.exitBtn ? (
             <button
+              className={styles.dismissButton}
               {...cancelButton.buttonProps}
               ref={cancelButtonRef}
-              className={styles["dismiss-button"]}
             >
               <CloseBtn alt="" width="14" height="14"/>
             </button>
           ) : null}
-          <div>
-            <div className={styles.hero}>
-              <h3 className={styles.headline}>{props.headline}</h3>
-            </div>
-            <div>{props.body}</div>
-          </div>
+          <dl className={styles.modalContent}>
+            <dt>{props.headline}</dt>
+            <dd>{props.body}</dd>
+          </dl>
+          <Button type={"primary"} content={"OK"} />
         </div>
       </FocusScope>
     </div>

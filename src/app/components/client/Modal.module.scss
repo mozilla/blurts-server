@@ -1,6 +1,6 @@
 @import "../../tokens";
 
-.modalOverlay {
+.modalUnderlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,29 +12,35 @@
   justify-content: center;
 
   .modal {
+    font: $text-body-md;
     background-color: $color-grey-05;
     padding: $spacing-lg;
     border-radius: $border-radius-md;
     max-width: $content-md;
     position: relative;
 
+    .dismissButton {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: $spacing-md;
+      color: $color-grey-40;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-grey-30;
+      }
+    }
+
     .modalContent {
       padding-top: $spacing-lg;
 
-      .closeButton {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: $spacing-md;
-        color: $color-grey-40;
-        background: none;
-        border: none;
-        cursor: pointer;
-
-        &:hover {
-          color: $color-grey-30;
-        }
+      dt {
+        font: $text-title-3xs;
       }
+
     }
   }
 }
