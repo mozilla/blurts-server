@@ -4,7 +4,7 @@
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const nextJest = require("next/jest");
-const createJestConfig = nextJest({ dir: "./" })
+const createJestConfig = nextJest({ dir: "./" });
 
 // See https://nextjs.org/docs/architecture/nextjs-compiler#jest
 
@@ -150,7 +150,7 @@ const customJestConfig = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
