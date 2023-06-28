@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../server/StatusPill";
 import { StaticImageData } from "next/image";
@@ -47,49 +47,53 @@ export const ExposureCard = (props: Props) => {
   } = props;
 
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      setIsMobile(width < 768); // $screen-md
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
     let headline, description;
     if (props.whichExposed === "family") {
       headline = "Family members";
-      description = `${props.num} found`;
+
+      description = `We found ${props.num} family member`;
+      if (props.num > 1) {
+        description = `We found ${props.num} family members`;
+      }
     }
+
     if (props.whichExposed === "email") {
       headline = "Email";
-      description = `${props.num} found`;
+
+      description = `We found ${props.num} email address`;
+      if (props.num > 1) {
+        description = `We found ${props.num} email addresses`;
+      }
     }
 
     if (props.whichExposed === "phone") {
       headline = "Phone number";
-      description = `${props.num} found`;
+
+      description = `We found ${props.num} phone number`;
+      if (props.num > 1) {
+        description = `We found ${props.num} phone numbers`;
+      }
     }
 
     if (props.whichExposed === "address") {
       headline = "Address";
-      description = `${props.num} found`;
+
+      description = `We found ${props.num} address`;
+      if (props.num > 1) {
+        description = `We found ${props.num} addresses`;
+      }
     }
 
     return (
-      <dl className={styles.detailsFoundItem}>
+      <>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {headline}
         </dt>
         <dl>{description}</dl>
-      </dl>
+      </>
     );
   };
   const elementCard = (
@@ -97,15 +101,16 @@ export const ExposureCard = (props: Props) => {
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <ul className={styles.exposureHeaderList}>
-            {!isMobile ? <li className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}>
+            <li className={styles.exposureImageWrapper}>
               <Image
                 className={styles.exposureImage}
                 alt=""
                 src={exposureImg}
-              /> </li>: ""}
+              />
+            </li>
             <li>{exposureName}</li>
-            {!isMobile ? <li>{exposureType}</li> : ""}
-            {!isMobile ? <li>{dateFound}</li> : ""}
+            <li>{exposureType}</li>
+            <li>{dateFound}</li>
             <li>
               <StatusPill type={statusPillType} content={statusPillContent} />
             </li>
@@ -128,14 +133,13 @@ export const ExposureCard = (props: Props) => {
           }`}
         >
           <p>
-            This site is selling and publishing {" "}
+            This site is selling and publishing{" "}
             <a href={exposureDetailsLink}>
-              details about you.
+              details about you.{" "}
               <span>
-                <OpenInNew alt="" width="13" height="13" />
+                <OpenInNew alt="" width="15" height="14" />
               </span>
-            </a>
-            {" "}
+            </a>{" "}
             Remove this profile to protect your privacy.
           </p>
           <div className={styles.exposureListOfExposureTypes}>
@@ -143,28 +147,28 @@ export const ExposureCard = (props: Props) => {
               <li>Your exposed info:</li>
               <li>
                 <DetailsFoundItem
-                  icon={<MultipleUsers alt="" width="13" height="13" />}
+                  icon={<MultipleUsers alt="" width="15" height="15" />}
                   whichExposed="family"
                   num={0}
                 />
               </li>
               <li>
                 <DetailsFoundItem
-                  icon={<PhoneIcon alt="" width="13" height="13" />}
+                  icon={<PhoneIcon alt="" width="15" height="15" />}
                   whichExposed="phone"
                   num={5}
                 />
               </li>
               <li>
                 <DetailsFoundItem
-                  icon={<EmailIcon alt="" width="13" height="13" />}
+                  icon={<EmailIcon alt="" width="15" height="15" />}
                   whichExposed="email"
                   num={4}
                 />
               </li>
               <li>
                 <DetailsFoundItem
-                  icon={<LocationPin alt="" width="13" height="13" />}
+                  icon={<LocationPin alt="" width="15" height="15" />}
                   whichExposed="address"
                   num={0}
                 />
@@ -181,5 +185,3 @@ export const ExposureCard = (props: Props) => {
 
   return elementCard;
 };
-
-

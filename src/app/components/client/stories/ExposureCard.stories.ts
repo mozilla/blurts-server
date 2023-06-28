@@ -11,7 +11,6 @@ import FamilyTreeImage from "../assets/familytree.png";
 const meta: Meta<typeof ExposureCard> = {
   title: "ExposureCard",
   component: ExposureCard,
-  tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof ExposureCard>;

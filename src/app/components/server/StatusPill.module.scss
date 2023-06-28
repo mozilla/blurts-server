@@ -1,11 +1,11 @@
 @import "../../tokens";
 
 .pill {
-  font: $text-body-xs;
+  font: $text-body-sm;
   font-weight: 600;
   display: inline-block;
-  padding: $spacing-sm $spacing-md;
-  border-radius: $border-radius-sm;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $border-radius-md;
   line-height: 1;
 
   &.actionNeeded {
