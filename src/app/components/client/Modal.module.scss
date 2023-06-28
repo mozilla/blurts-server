@@ -1,39 +1,69 @@
 @import "../../tokens";
 
-.modalOverlay {
+.modalUnderlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
 
   .modal {
+    margin: $layout-xs;
+    font: $text-body-md;
     background-color: $color-grey-05;
     padding: $spacing-lg;
     border-radius: $border-radius-md;
     max-width: $content-md;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (min-width: $screen-md) {
+      margin: $layout-md;
+    }
+
+    img {
+      display: none;
+
+      @media screen and (min-width: $screen-md) {
+        display: block;
+        max-width: 200px; // max-width of modal illustration
+      }
+    }
+
+    .dismissButton {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: $spacing-md;
+      color: $color-grey-40;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-grey-30;
+      }
+    }
 
     .modalContent {
-      padding-top: $spacing-lg;
+      padding: $spacing-lg 0;
+      display: flex;
+      gap: $spacing-md;
+      flex-direction: column;
 
-      .closeButton {
-        position: absolute;
-        top: 0;
-        right: 0;
-        padding: $spacing-md;
-        color: $color-grey-40;
-        background: none;
-        border: none;
-        cursor: pointer;
+      dt {
+        text-align: center;
+        font: $text-title-3xs;
+      }
 
-        &:hover {
-          color: $color-grey-30;
-        }
+      dd {
+        font: $text-body-sm;
       }
     }
   }

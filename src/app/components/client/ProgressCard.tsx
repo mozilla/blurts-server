@@ -12,6 +12,8 @@ import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import SparklingCheck from "./assets/sparkling-check.svg";
 import Image from "next/image";
 import { Modal } from "./Modal";
+import { getL10n } from "../../functions/server/l10n";
+import ModalImage from "../client/assets/modal-default-img.svg";
 
 export type Props = {
   resolvedByYou: number;
@@ -34,6 +36,7 @@ export const ProgressCard = (props: Props) => {
   const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
   const percentageRemainingNumber = 100 - percentageCompleteNum;
 
+  const l10n = getL10n();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
@@ -67,25 +70,23 @@ export const ProgressCard = (props: Props) => {
   };
 
   const modalContent = (
-    <>
+    <div className={styles.modalBodyContent}>
       <p>
-        <strong>Resolved by you</strong> includes anything you have manually
-        fixed. All data breaches that require access to your accounts need to be
-        fixed manually, even if you have upgraded to Premium.
-        <br />
-        <br />
-        <strong>Auto-removed</strong> includes any exposures from data broker
-        profiles that we have removed for you. This is available only for
-        Premium subscribers. Complete includes anything resolved by you or
-        auto-removed by us.
-        <br />
-        <br />
-        <strong>In Progress</strong> includes anything that we are currently
-        working on fixing. Removals typically take 7-14 days but the most
-        difficult sites could take longer. You may also start to see removals
-        happening within the same day.
+        {l10n.getFragment("modal-heres-what-we-fixed-description-part-one", {
+          elems: { b: <strong /> },
+        })}
       </p>
-    </>
+      <p>
+        {l10n.getFragment("modal-heres-what-we-fixed-description-part-two", {
+          elems: { b: <strong /> },
+        })}
+      </p>
+      <p>
+        {l10n.getFragment("modal-heres-what-we-fixed-description-part-three", {
+          elems: { b: <strong /> },
+        })}
+      </p>
+    </div>
   );
 
   return (
@@ -113,7 +114,13 @@ export const ProgressCard = (props: Props) => {
         </div>
       </div>
       <ProgressBar />
-      <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
+      <Modal
+        image={ModalImage}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        headline={l10n.getString("modal-heres-what-we-fixed-title")}
+        body={modalContent}
+      />
     </div>
   );
 };

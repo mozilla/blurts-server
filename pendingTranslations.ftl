@@ -22,3 +22,18 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
+
+# Here's What We Fixed Modal
+
+modal-heres-what-we-fixed-title = About what we fixed
+modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed. 
+  All data breaches that require access to your accounts need to be fixed manually, 
+  even if you have upgraded to { -brand-premium }.
+modal-heres-what-we-fixed-description-part-two = <b>Auto-removed</b> includes any exposures from data broker
+  profiles that we have removed for you. This is available only for
+  { -brand-premium } subscribers. Complete includes anything resolved by you or
+  auto-removed by us.
+modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes anything that we are currently
+  working on fixing. Removals typically take 7-14 days but the most
+  difficult sites could take longer. You may also start to see removals
+  happening within the same day.
