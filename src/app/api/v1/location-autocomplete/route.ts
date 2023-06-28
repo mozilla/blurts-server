@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
 import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types.d";
 import locationData from "../../../../../locationAutocompleteData.json";
