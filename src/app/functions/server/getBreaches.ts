@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { get } from "node:https";
+import { request } from "node:https";
 import { createWriteStream } from "node:fs";
 import { dirname, resolve as pathResolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -65,49 +65,21 @@ export async function getBreachIcons(breaches: Breach[]): Promise<LogoMap> {
     const breachDomains = breaches
       .map((breach) => breach.Domain)
       .filter((breachDomain) => breachDomain.length > 0);
-    const logoFolder = pathResolve(
-      dirname(fileURLToPath(import.meta.url)),
-      "../../../../public/logo_cache/"
-    );
-    try {
-      await mkdir(logoFolder);
-    } catch {
-      // Do nothing; if the directory already exists, that's fine.
-    }
-    const existingLogos = await readdir(logoFolder);
     // TODO: Batch to limit memory use?
     const logoMapElems = (await Promise.all(
-      breachDomains.map((breachDomain) => {
-        return new Promise((resolve, reject) => {
-          const logoFilename = breachDomain.toLowerCase() + ".ico";
-          const logoPath = pathResolve(logoFolder, logoFilename);
-          if (existingLogos.includes(logoFilename)) {
-            resolve([breachDomain, `/logo_cache/${logoFilename}`]);
-            return;
+      breachDomains.map(async (breachDomain) => {
+        const logoUrl = `https://s3.amazonaws.com/${
+          process.env.S3_BUCKET
+        }/${breachDomain.toLowerCase()}.ico`;
+        try {
+          const response = await fetch(logoUrl, { method: "HEAD" });
+          if (response.status === 200) {
+            return [breachDomain, logoUrl];
           }
-          get(
-            `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`,
-            (response) => {
-              if (response.statusCode !== 200) {
-                resolve(null);
-                return;
-              }
-
-              const file = createWriteStream(logoPath);
-              response.pipe(file);
-              file.on("finish", () => {
-                file.close();
-                resolve([
-                  breachDomain,
-                  `/logo_cache/${breachDomain.toLowerCase()}.ico`,
-                ]);
-              });
-              file.on("error", (error) => reject(error));
-            }
-          ).on("error", (_error) => {
-            resolve(null);
-          });
-        });
+        } catch {
+          // Do nothing, just return null after the try ... catch block
+        }
+        return null;
       })
     )) as Array<[string, string] | null>;
 
