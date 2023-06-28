@@ -9,9 +9,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
-import monitorLogo from "./images/monitor-logo.webp";
-import { CloseBigIcon, ListIcon } from "../components/server/Icons";
-import { useL10n } from "../hooks/l10n";
+import monitorLogo from "../images/monitor-logo.webp";
+import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
+import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 
 export type Props = {
