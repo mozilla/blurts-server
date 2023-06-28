@@ -18,7 +18,7 @@ import { createWriteStream } from "node:fs";
 import { Readable } from 'node:stream';
 import os from 'node:os';
 import { Upload } from "@aws-sdk/lib-storage";
-import { S3, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { S3 } from "@aws-sdk/client-s3";
 
 // Get breaches logos and uploads to s3
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
@@ -52,22 +52,6 @@ async function uploadToS3(fileName, fileStream) {
   }
 }
 
-async function deleteFromS3(fileName) {
-  console.log('Attempt to delete from s3: ', fileName)
-  /** @type {import('@aws-sdk/client-s3').DeleteObjectCommandInput} */
-  const deleteParams = {
-    Bucket,
-    Key: fileName,
-  }
-  try {
-    const command = new DeleteObjectCommand(deleteParams);
-    await s3.send(command);
-    console.log('Successfully deleted ' + fileName + ' from ' + Bucket)
-  } catch (err) {
-    console.error(err, err.stack)
-  }
-}
-
 export async function getBreachIcons(breaches) {
   const breachDomains = breaches
     .map((breach) => breach.Domain)
@@ -92,14 +76,13 @@ export async function getBreachIcons(breaches) {
       console.log(`fetching: , ${logoFilename}`)
       const res = await fetch(
         `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
-      if (res.status === 200) {
-        await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
-        const fileStream = createWriteStream(logoPath, { flags: 'wx' });
-        const bodyReadable = Readable.fromWeb(res.body)
-        await finished(bodyReadable.pipe(fileStream));
-      } else {
-        await deleteFromS3(logoFilename);
+      if (res.status !== 200) {
+        return;
       }
+      await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
+      const fileStream = createWriteStream(logoPath, { flags: 'wx' });
+      const bodyReadable = Readable.fromWeb(res.body)
+      await finished(bodyReadable.pipe(fileStream));
     })
   ));
 }
