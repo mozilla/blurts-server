@@ -10,7 +10,7 @@
  */
 
 import { req, formatDataClassesArray } from '../utils/hibp.js'
-import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
+import { getAllBreaches, upsertBreaches, updateBreachLogoPath} from '../db/tables/breaches.js'
 import { readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
 import { finished } from 'node:stream/promises';
@@ -53,9 +53,7 @@ async function uploadToS3(fileName, fileStream) {
 }
 
 export async function getBreachIcons(breaches) {
-  const breachDomains = breaches
-    .map((breach) => breach.Domain)
-    .filter((breachDomain) => breachDomain.length > 0);
+  const filteredBreaches = breaches.filter(({Domain}) => Domain.length > 0);
 
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
@@ -66,7 +64,7 @@ export async function getBreachIcons(breaches) {
   console.log(`existing logos: ${existingLogos.length}`)
 
   (await Promise.all(
-    breachDomains.map(async (breachDomain) => {
+    filteredBreaches.map(async ({Domain: breachDomain, Name: breachName}) => {
       const logoFilename = breachDomain.toLowerCase() + ".ico";
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
@@ -77,12 +75,15 @@ export async function getBreachIcons(breaches) {
       const res = await fetch(
         `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
       if (res.status !== 200) {
+        // update logo path with null
+        await updateBreachLogoPath(breachName, null)
         return;
       }
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
       const fileStream = createWriteStream(logoPath, { flags: 'wx' });
       const bodyReadable = Readable.fromWeb(res.body)
       await finished(bodyReadable.pipe(fileStream));
+      await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${breachDomain.toLowerCase()}.ico`)
     })
   ));
 }

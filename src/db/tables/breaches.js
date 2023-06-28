@@ -13,7 +13,7 @@ const log = mozlog('DB.breaches')
  *
  * @returns Array of all records from "breaches" table
  */
-async function getAllBreaches () {
+async function getAllBreaches() {
   return knex('breaches')
     .returning("*")
 }
@@ -25,7 +25,7 @@ async function getAllBreaches () {
  * @param {any[]} hibpBreaches breaches array from HIBP API
  * @returns
  */
-async function upsertBreaches (hibpBreaches) {
+async function upsertBreaches(hibpBreaches) {
   log.debug('upsertBreaches', hibpBreaches[0])
 
   return knex.transaction(async trx => {
@@ -63,7 +63,25 @@ async function upsertBreaches (hibpBreaches) {
   })
 }
 
+/**
+ * Update logo path of a breach by name
+ *
+ * @param {string} name 
+ * @param {string} logoPath 
+ */
+async function updateBreachLogoPath(name, logoPath) {
+  await knex('breaches')
+    .where("name", name)
+    .update({
+      logo_path: logoPath,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      modified_date: knex.fn.now()
+    })
+}
+
 export {
   getAllBreaches,
-  upsertBreaches
+  upsertBreaches,
+  updateBreachLogoPath
 }
