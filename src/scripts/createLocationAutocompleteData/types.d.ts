@@ -1,3 +1,18 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+/**
+ * The data that is being downloaded in this script is provided by
+ * GeoNames (https://www.geonames.org/). We are using the data to compile a set
+ * of US cities and states that match the needs of this project. Their work is
+ * licensed under a Creative Commons Attribution 4.0 License:
+ * https://creativecommons.org/licenses/by/4.0/.
+ *
+ * All database dumps and table definitions can be found here:
+ * https://download.geonames.org/export/dump/.
+ */
+
 type TAlternateNameId = string; // the id of this alternate name
 type TGeonameId = string; // geonameId referring to id in table 'geoname'
 // Iso language, varchar(7)
