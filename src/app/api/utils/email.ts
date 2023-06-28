@@ -12,7 +12,7 @@ import { Subscriber } from "../../(nextjs_migration)/(authenticated)/user/breach
 
 export async function sendVerificationEmail(
   user: Subscriber,
-  emailId: string,
+  emailId: number,
   l10n: ReactLocalization
 ) {
   const getMessage = getStringLookup(l10n);

@@ -34,6 +34,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "profile.stage.mozaws.net",
       },
+      // Stores breached companies' logos
+      {
+        protocol: "https",
+        hostname: "s3.amazonaws.com",
+      },
     ],
   },
   async headers() {
