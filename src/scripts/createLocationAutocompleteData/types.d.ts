@@ -126,21 +126,21 @@ export type TLocationData = [
   TLocationModificationDate
 ]
 
-export interface IAlternateNameData {
-  id: TAlternateNameId;
-  parentId: TGeonameId;
-  name: TAlternateName;
-  isAbbreviation: TIsAbbreviation;
-  isPreferredName: TIsPreferredName;
-  isShortName: TIsShortName;
-  isColloquial: TIsColloquial;
-}
 
 export interface IRelevantLocation {
   id: string;
   name: string;
   stateCode: string;
-  alternateNames?: Array<IAlternateNameData>;
+}
+
+export interface IRelevantLocationAlternate {
+  id: TAlternateNameId;
+  alternateOf: TGeonameId;
+  name: TAlternateName;
+  isAbbreviation: TIsAbbreviation;
+  isPreferredName: TIsPreferredName;
+  isShortName: TIsShortName;
+  isColloquial: TIsColloquial;
 }
 
 export interface IDataFileUrls {

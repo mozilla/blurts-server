@@ -29,8 +29,8 @@ import AdmZip from 'adm-zip'
 import {
   TAlternateNameData,
   TLocationData,
-  IAlternateNameData,
   IRelevantLocation,
+  IRelevantLocationAlternate,
   IDataFileUrls
 } from './types.d'
 
@@ -147,7 +147,7 @@ try {
         if (isRelevantAlternateName) {
           return {
             id: alternateNameId,
-            parentId: geonameId,
+            alternateOf: geonameId,
             name: alternateName,
             isAbbreviation: isAbbreviation ? '1' : '',
             isPreferredName,
@@ -158,7 +158,7 @@ try {
 
         return null
       })
-      .filter(alternateName => alternateName) as Array<IAlternateNameData>
+      .filter(alternateName => alternateName) as Array<IRelevantLocationAlternate>
 
   console.info('Read file: All locations')
   const locationData = readFileSync(
@@ -169,7 +169,7 @@ try {
   console.info('Parse data: All locations')
   const locationDataRows = locationData.split('\n')
   const locationRowCount = locationDataRows.length
-  const relevantLocationData: Array<IRelevantLocation> = locationDataRows
+  const relevantLocationData: Array<IRelevantLocation | IRelevantLocationAlternate> = locationDataRows
     .reduce((relevantLocations, location, rowIndex) => {
       const progress = Math.round(((rowIndex + 1) / locationRowCount) * 100)
       process.stdout.write(`  ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`)
@@ -198,30 +198,35 @@ try {
 
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
+      // TODO: Use location relations data for filtering out districts
       const hasRelevantFeature = featureClass === 'P' && (
         featureCode === 'PPL' ||
         featureCode === 'PPLA' ||
         featureCode === 'PPLA2' ||
         featureCode === 'PPLA3' ||
+        featureCode === 'PPLA4' ||
+        featureCode === 'PPLA5' ||
         featureCode === 'PPLC' ||
         featureCode === 'PPLL'
       )
       const hasPopulation = Number(population) !== 0
 
       if (hasRelevantFeature && hasPopulation) {
-        const alternateNames = parsedAlternateNames.filter(alternateName => (
-          alternateName?.parentId === geonameId && alternateName?.name !== name
-        ))
+        const alternateNames = parsedAlternateNames
+          .filter(alternateName => (
+            alternateName?.alternateOf === geonameId && alternateName?.name !== name
+          ))
+          .map(alternateName => ({ ...alternateName, population }))
 
-        relevantLocations.push({
-          id: geonameId,
-          name,
-          stateCode: admin1Code,
-          population,
-          ...(alternateNames && alternateNames.length > 0 && {
-            alternateNames
-          })
-        })
+        relevantLocations.push(
+          {
+            id: geonameId,
+            name,
+            stateCode: admin1Code,
+            population
+          },
+          ...alternateNames
+        )
       }
 
       return relevantLocations
