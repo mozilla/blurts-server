@@ -31,7 +31,7 @@ export function BreachLogo(props: Props) {
     const ImageType = props.htmlTags ? "img" : Image;
     return (
       <ImageType
-        src={AppConstants.SERVER_URL + props.logos.get(props.breach.Domain)}
+        src={props.logos.get(props.breach.Domain) as string}
         alt=""
         loading="lazy"
         className={styles.breachLogo}
