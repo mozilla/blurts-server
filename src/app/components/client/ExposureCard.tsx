@@ -256,10 +256,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
               </dl>
             </div>
             <span className={styles.fixItBtn}>
-              <Button
-                type={"primary"}
-                content={l10n.getString("exposure-card-cta")}
-              />
+              <Button type={"primary"}>
+                {l10n.getString("exposure-card-cta")}
+              </Button>
             </span>
           </div>
         </div>

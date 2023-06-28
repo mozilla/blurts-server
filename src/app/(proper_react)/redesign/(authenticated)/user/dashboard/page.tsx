@@ -5,9 +5,25 @@
 import { getServerSession } from "next-auth";
 import styles from "./page.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
+import {
+  canSubscribeToPremium,
+  hasSetupOnerep,
+} from "../../../../../functions/universal/user";
+import { redirect } from "next/navigation";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+
+  if (
+    !hasSetupOnerep(session?.user) &&
+    canSubscribeToPremium({ user: session?.user, countryCode: countryCode })
+  ) {
+    return redirect("/user/welcome/");
+  }
 
   return (
     <div className={styles.wrapper}>
