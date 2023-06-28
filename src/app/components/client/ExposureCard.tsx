@@ -174,7 +174,7 @@ export const ExposureCard = (props: Props) => {
               </li>
             </ul>
             <span className={styles.fixItBtn}>
-              <Button type={"primary"} content={"Lets fix it"} />
+              <Button type={"primary"}>Lets fix it</Button>
             </span>
           </div>
         </div>
