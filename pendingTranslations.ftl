@@ -23,6 +23,18 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
+# Here's What We Fixed Progress Card
+
+progress-card-heres-what-we-fixed-headline = Here is what we fixed
+progress-card-resolved-by-you-headline = Resolved by you
+progress-card-auto-removed-headline = Auto-removed
+# Variables:
+# $percentage is the percentage value of exposures fixed, e.g. 70%.
+progress-card-percentage-complete = { $percentage } complete
+# Variables:
+# $percentage is the percentage value of exposures remaining, e.g. 70%.
+progress-card-percentage-remaining = { $percentage } in progress
+
 # Here's What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
@@ -37,3 +49,5 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
   working on fixing. Removals typically take 7-14 days but the most
   difficult sites could take longer. You may also start to see removals
   happening within the same day.
+modal-cta-ok = OK
+

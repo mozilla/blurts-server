@@ -60,8 +60,16 @@ export const ProgressCard = (props: Props) => {
             style={activeProgressBarStyle}
           ></div>
           <div className={styles.percentageBreakdown}>
-            <p>{percentageCompleteNum}% complete</p>
-            <p>{percentageRemainingNumber}% in progress</p>
+            <p>
+              {l10n.getString("progress-card-percentage-complete", {
+                percentage: `${percentageCompleteNum}%`,
+              })}
+            </p>
+            <p>
+              {l10n.getString("progress-card-percentage-remaining", {
+                percentage: `${percentageCompleteNum}%`,
+              })}
+            </p>
           </div>
         </div>
         <Image src={SparklingCheck} alt="" />
@@ -92,7 +100,7 @@ export const ProgressCard = (props: Props) => {
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
-        Here is what we fixed
+        {l10n.getString("progress-card-heres-what-we-fixed-headline")}
         <button aria-label="Term definitions" onClick={openModal}>
           <QuestionMarkCircle alt="" width="15" height="15" />
         </button>
@@ -103,14 +111,14 @@ export const ProgressCard = (props: Props) => {
             <Image src={ExploringLaptopPlus} alt="" />
             <span>{props.resolvedByYou}</span>
           </div>
-          <p>Resolved by you</p>
+          <p>{l10n.getString("progress-card-resolved-by-you-headline")}</p>
         </div>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
             <Image src={ExploringLaptopMinus} alt="" />
             <span>{props.autoRemoved}</span>
           </div>
-          <p>Auto-removed</p>
+          <p>{l10n.getString("progress-card-auto-removed-headline")}</p>
         </div>
       </div>
       <ProgressBar />

@@ -21,6 +21,7 @@ import { Button } from "../server/Button";
 import { StaticImageData } from "next/image";
 import { metropolis } from "../../../../src/app/fonts/Metropolis/metropolis";
 import { Inter } from "next/font/google";
+import { getL10n } from "../../functions/server/l10n";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export type Props = {
@@ -71,6 +72,7 @@ const DialogBox = (props: DialogBox & AriaOverlayProps) => {
     { onPress: () => props.onClose() },
     cancelButtonRef
   );
+  const l10n = getL10n();
 
   return (
     <div className={styles.modalUnderlay} {...underlayProps}>
@@ -96,7 +98,7 @@ const DialogBox = (props: DialogBox & AriaOverlayProps) => {
             <dt>{props.headline}</dt>
             <dd>{props.body}</dd>
           </dl>
-          <Button type={"primary"} content={"OK"} />
+          <Button type={"primary"} content={l10n.getString("modal-cta-ok")} />
         </div>
       </FocusScope>
     </div>
