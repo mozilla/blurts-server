@@ -48,6 +48,37 @@ exposure-card-exposure-type-data-breach = Data breach
 
 # Dashboard
 
+dashboard-top-banner-protect-your-data-title = Let's protect your data
+# Variables:
+# $data_breach_total_num is the total number of data breaches the user has.
+# $data_broker_total_num is the total number of data brokers selling the user's data.
+dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_total_num } data breaches and { $data_broker_total_num } sites selling your personal info. We'll guide you on how to fix it.
+dashboard-top-banner-protect-your-data-cta = Let's fix it
+
+dashboard-top-banner-monitor-protects-your-even-more-title = Monitor now protects you even more
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan.
+dashboard-top-banner-monitor-protects-your-even-more-description = We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
+dashboard-top-banner-monitor-protects-your-even-more-cta = Get first scan free
+
+dashboard-top-banner-no-exposures-found-title = No exposures found
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan.
+dashboard-top-banner-no-exposures-found-description = Great news! We searched all known data breaches and { $data_broker_sites_total_num } data broker sites that sell personal info and found no exposures. Upgrade to premium and we'll monitor for any new exposures.
+dashboard-top-banner-no-exposures-found-cta = Get continuous protection
+
+dashboard-top-banner-lets-keep-protecting-title = Let's keep protecting your data
+# Variables: 
+# $remaining_exposures_total_num is the remaining number of exposures the user has to resolve.
+dashboard-top-banner-lets-keep-protecting-description = You still have { $remaining_exposures_total_num} exposures left to fix. Keepp going and protect yourself. We'll guide you step by step.
+dashboard-top-banner-lets-keep-protecting-cta = Let's keep going
+
+dashboard-top-banner-your-data-is-protected-title = Your data is protected
+# Variables: 
+# $starting_exposures_total_num is the number of exposures the user has resolved.
+dashboard-top-banner-your-data-is-protected-description = Great work, all { $starting_exposure_total_num } exposures of your data are fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
+dashboard-top-banner-your-data-is-protected-cta = See what's fixed
+
 dashboard-exposures-area-headline = View all exposures that are fixed or in-progress
 # Variables: 
 # $exposures_total_num is the total number of exposures the user has.

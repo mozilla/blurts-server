@@ -9,14 +9,12 @@ import { ExposureCardProps } from "../components/client/ExposureCard";
 import { ScanResult } from '../../../src/external/onerep';
 import { Breach } from '../(nextjs_migration)/(authenticated)/user/breaches/breaches';
 
-
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
   component: DashboardEl,
 };
 export default meta;
 type Story = StoryObj<typeof DashboardEl>;
-
 
 const ScanResultMockItem: ScanResult = {
   id: 1,

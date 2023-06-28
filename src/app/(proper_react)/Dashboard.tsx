@@ -19,12 +19,7 @@ export const Dashboard = (props: DashboardProps) => {
     <ShellEl l10n={getL10n()} session={null}>
       <div className={styles.container}>
         <DashboardTopBanner 
-          type={"DataBrokerScanUpsellContent"}
-          data={{
-            exposures: {
-              remaining: 13 // TODO: consolidate all user data in a mockfile
-            }
-          }}
+          type={"LetsFixDataContent"}
           chart={<></>} 
         />
 
