@@ -198,7 +198,14 @@ try {
 
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
-      const hasRelevantFeature = featureClass === 'P' && featureCode === 'PPL'
+      const hasRelevantFeature = featureClass === 'P' && (
+        featureCode === 'PPL' ||
+        featureCode === 'PPLA' ||
+        featureCode === 'PPLA2' ||
+        featureCode === 'PPLA3' ||
+        featureCode === 'PPLC' ||
+        featureCode === 'PPLL'
+      )
       const hasPopulation = Number(population) !== 0
 
       if (hasRelevantFeature && hasPopulation) {
