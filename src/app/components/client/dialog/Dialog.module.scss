@@ -1,0 +1,24 @@
+@import "../../../tokens";
+
+.dialog {
+  background-color: $color-white;
+  width: 95%;
+  max-width: $content-lg;
+  max-height: 95%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+  border-radius: $border-radius-md;
+  padding: $layout-sm;
+  @media screen and (min-width: $screen-lg) {
+    padding: $layout-xl;
+  }
+
+  .title {
+    font: $text-title-2xs;
+    text-align: center;
+    color: $color-grey-50;
+  }
+}
