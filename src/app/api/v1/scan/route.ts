@@ -57,7 +57,7 @@ export async function POST(request: Request) {
       // client side, where it would expose AppConstants:
       logos: await Promise.all(
         breaches.map(async (breach) =>
-          getBreachLogo(breach, await getBreachIcons(allBreaches))
+          getBreachLogo(breach, getBreachIcons(allBreaches))
         )
       ),
       // This is sent in the API response because we don't have Fluent on the

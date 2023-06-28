@@ -153,7 +153,7 @@ export const authOptions: AuthOptions = {
             ? l10n.getString("email-subject-found-breaches")
             : l10n.getString("email-subject-no-breaches");
 
-          const breachLogos = await getBreachIcons(allBreaches);
+          const breachLogos = getBreachIcons(allBreaches);
           const data = {
             breachedEmail: email,
             breachLogos: breachLogos,

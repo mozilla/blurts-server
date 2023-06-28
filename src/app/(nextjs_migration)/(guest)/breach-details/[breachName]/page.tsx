@@ -86,7 +86,7 @@ export default async function BreachDetail(props: {
   const breachName = props.params.breachName;
   const allBreaches = await getBreaches();
   const breach = getBreachByName(allBreaches, breachName);
-  const breachLogos = await getBreachIcons(allBreaches);
+  const breachLogos = getBreachIcons(allBreaches);
 
   return (
     <div data-partial="breachDetail">

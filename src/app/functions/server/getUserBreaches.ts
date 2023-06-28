@@ -20,7 +20,7 @@ export async function getUserBreaches({
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData);
 
-  const breachLogos = await getBreachIcons(allBreaches);
+  const breachLogos = getBreachIcons(allBreaches);
 
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0;
   const emailTotalCount =

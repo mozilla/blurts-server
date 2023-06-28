@@ -2,11 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { request } from "node:https";
-import { createWriteStream } from "node:fs";
-import { dirname, resolve as pathResolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import { mkdir, readdir } from "node:fs/promises";
 import mozlog from "../../../utils/log.js";
 import {
   formatDataClassesArray,
@@ -51,48 +46,19 @@ export async function getBreaches() {
 }
 
 export type LogoMap = Map<string, string>;
-let logoMap: LogoMap;
-let isFetchingIcons = false;
-export async function getBreachIcons(breaches: Breach[]): Promise<LogoMap> {
-  if (logoMap) {
-    return logoMap;
-  }
-  if (isFetchingIcons) {
-    return new Map();
-  }
-  isFetchingIcons = true;
-  async function fetchBreachIcons() {
-    const breachDomains = breaches
-      .map((breach) => breach.Domain)
-      .filter((breachDomain) => breachDomain.length > 0);
-    // TODO: Batch to limit memory use?
-    const logoMapElems = (await Promise.all(
-      breachDomains.map(async (breachDomain) => {
-        const logoUrl = `https://s3.amazonaws.com/${
-          process.env.S3_BUCKET
-        }/${breachDomain.toLowerCase()}.ico`;
-        try {
-          const response = await fetch(logoUrl, { method: "HEAD" });
-          if (response.status === 200) {
-            return [breachDomain, logoUrl];
-          }
-        } catch {
-          // Do nothing, just return null after the try ... catch block
-        }
-        return null;
-      })
-    )) as Array<[string, string] | null>;
 
-    logoMap = new Map(logoMapElems.filter(isNotNull));
-  }
-
-  // Start fetching breach icons, but do not await it so that we do not block
-  // pending requests:
-  fetchBreachIcons();
-
-  return new Map();
-}
-
-function isNotNull<T>(value: T | null): value is T {
-  return value !== null;
+export function getBreachIcons(breaches: Breach[]): LogoMap {
+  const logoMap: LogoMap = new Map();
+  const breachDomains = breaches
+    .map((breach) => breach.Domain)
+    .filter((breachDomain) => breachDomain.length > 0);
+  breachDomains.forEach((breachDomain) =>
+    logoMap.set(
+      breachDomain,
+      `https://s3.amazonaws.com/${
+        process.env.S3_BUCKET
+      }/${breachDomain.toLowerCase()}.ico`
+    )
+  );
+  return logoMap;
 }

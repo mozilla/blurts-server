@@ -34,7 +34,7 @@ export async function generateMetadata() {
 
 export default async function PublicScan() {
   const allBreaches = await getBreaches();
-  const breachLogos = await getBreachIcons(allBreaches);
+  const breachLogos = getBreachIcons(allBreaches);
   const l10n = getL10n();
 
   return (
