@@ -42,7 +42,6 @@ export const ExposureCard = (props: ExposureCardProps) => {
     exposureName,
     exposureType,
     exposureDetailsLink,
-    dateFound,
     statusPillType,
   } = props;
 
@@ -194,8 +193,3 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return elementCard;
 };
-
-
-//  function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
-//   return (obj as ScanResult) !== undefined;
-// }

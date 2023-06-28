@@ -7,14 +7,14 @@ import { getL10n } from "../functions/server/l10n";
 import { ExposureCard, ExposureCardProps } from "../components/client/ExposureCard";
 import styles from "./Dashboard.module.scss";
 import { DashboardTopBanner } from "./DashboardTopBanner";
-import { useState } from "react";
+import { useL10n } from "../hooks/l10n";
 
 type DashboardProps = {
   exposures: ExposureCardProps[];
 }
 
 export const Dashboard = (props: DashboardProps) => {
-
+  const l10n = useL10n();
   return (
     <ShellEl l10n={getL10n()} session={null}>
       <div className={styles.container}>
@@ -29,19 +29,18 @@ export const Dashboard = (props: DashboardProps) => {
         />
 
       <section className={styles.exposuresArea}>
-        <h2>View all exposures that are fixed or in-progress</h2>
-        <p>We found your information exposed 904 times over 15 data breaches and 157 data broker sites that are selling your personal info.</p>
+        <h2>{l10n.getString("dashboard-exposures-area-headline")}</h2>
+        <p>{l10n.getString("dashboard-exposures-area-description", {
+          // TODO: Use real user data 
+          exposures_total_num: 90, 
+          data_breach_total_num: 15,
+          data_broker_total_num: 75,
+        })}</p>
         <ul className={styles.exposureList}>
           {props.exposures.map((exposure, index) => (
             <li key={index} className={styles.exposureListItem}>
-            <ExposureCard
-              exposureImg={exposure.exposureImg}
-              exposureName={exposure.exposureName}
-              exposureType={exposure.exposureType}
-              exposureDetailsLink={exposure.exposureDetailsLink}
-              dateFound={exposure.dateFound}
-              statusPillType={exposure.statusPillType}
-            /></li>
+              <ExposureCard {...exposure} />
+            </li>
           ))}
         </ul>
         </section>

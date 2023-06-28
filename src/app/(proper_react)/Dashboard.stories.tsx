@@ -61,7 +61,6 @@ const BreachMockItem: Breach = {
   Title: "Twitter"
 }
 
-console.log(typeof ScanResultMockItem);
 const mockExposures: ExposureCardProps[] = [
   {
     exposureImg: FamilyTreeImage,
