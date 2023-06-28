@@ -17,6 +17,8 @@ type TGeonameId = string; // geonameId referring to id in table 'geoname'
 type TIsolanguage = string;
 // alternate name or name variant, varchar(400)
 type TAlternateName = string;
+// is an abbreviation of the name
+type TIsAbbreviation = '' | '1';
 // is an official/preferred name
 type TIsPreferredName = '' | '1';
 // is short name like 'California' for 'State of California
@@ -110,18 +112,19 @@ export type TLocationData = [
 ]
 
 export interface IAlternateNameData {
-  alternateNameId: TAlternateNameId;
-  geonameId: TGeonameId;
-  alternateName: TAlternateName;
+  id: TAlternateNameId;
+  parentId: TGeonameId;
+  name: TAlternateName;
+  isAbbreviation: TIsAbbreviation;
   isPreferredName: TIsPreferredName;
   isShortName: TIsShortName;
   isColloquial: TIsColloquial;
 }
 
 export interface IRelevantLocation {
-  geonameId: string;
+  id: string;
   name: string;
-  admin1Code: string;
+  stateCode: string;
   alternateNames?: Array<IAlternateNameData>;
 }
 

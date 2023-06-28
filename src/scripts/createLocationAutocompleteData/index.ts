@@ -18,7 +18,7 @@ import AdmZip from 'adm-zip'
 import {
   TAlternateNameData,
   TLocationData,
-  IAlternateNamesData,
+  IAlternateNameData,
   IRelevantLocation,
   IDataFileUrls
 } from './types.d'
@@ -112,7 +112,7 @@ try {
 
   console.info('Parse data: Alternate location names')
   const alternateNameRows = alternateNamesData.split('\n')
-  const parsedAlternateNamesData: Array<IAlternateNamesData | null> =
+  const parsedAlternateNames =
     alternateNameRows
       .map((alternateNamesLine) => {
         const [
@@ -128,14 +128,17 @@ try {
           _to
         ] = alternateNamesLine.split('\t') as TAlternateNameData // lines are tab delimited
 
-        const isRelevantAlternateName = isolanguage === 'en' &&
+        const isAbbreviation = isolanguage === 'abbr'
+        const isRelevantAlternateName =
+          (isolanguage === 'en' || isAbbreviation) &&
           Number(isHistoric) !== 1
 
         if (isRelevantAlternateName) {
           return {
-            alternateNameId,
-            geonameId,
-            alternateName,
+            id: alternateNameId,
+            parentId: geonameId,
+            name: alternateName,
+            isAbbreviation: isAbbreviation ? '1' : '',
             isPreferredName,
             isShortName,
             isColloquial
@@ -144,7 +147,7 @@ try {
 
         return null
       })
-      .filter(alternateName => alternateName)
+      .filter(alternateName => alternateName) as Array<IAlternateNameData>
 
   console.info('Read file: All locations')
   const locationData = readFileSync(
@@ -188,15 +191,14 @@ try {
       const hasPopulation = Number(population) !== 0
 
       if (hasRelevantFeature && hasPopulation) {
-        const alternateNames = parsedAlternateNamesData
-          .filter(parsedAlternateNameData => (
-            parsedAlternateNameData?.geonameId === geonameId
-          ))
+        const alternateNames = parsedAlternateNames.filter(alternateName => (
+          alternateName?.parentId === geonameId && alternateName?.name !== name
+        ))
 
         relevantLocations.push({
-          geonameId,
+          id: geonameId,
           name,
-          admin1Code,
+          stateCode: admin1Code,
           population,
           ...(alternateNames && alternateNames.length > 0 && {
             alternateNames

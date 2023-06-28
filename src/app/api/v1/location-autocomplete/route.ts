@@ -26,10 +26,16 @@ export interface ISearchLocationResults {
 function getLocationByQuery(searchQuery: string) {
   return locationData
     .filter((location) => {
-      const { name } = location;
+      const { name, alternateNames } = location;
 
       const matchesName = name.toLowerCase().includes(searchQuery);
-      return matchesName;
+      const matchesAlternateName =
+        alternateNames &&
+        alternateNames.some(({ name }) =>
+          name.toLowerCase().includes(searchQuery)
+        );
+
+      return matchesName || matchesAlternateName;
     })
     .sort((locationA, locationB) => {
       const { name: nameA, population: populationA } = locationA;
