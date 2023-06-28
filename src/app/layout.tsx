@@ -3,22 +3,27 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
+import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
 import { getLocale } from "./functions/server/l10n";
 import { SessionProvider } from "../contextProviders/session";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "./api/utils/auth";
 import { getL10n } from "./functions/server/l10n";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const l10n = getL10n();
   return {
     title: l10n.getString("brand-fx-monitor"),
     description: l10n.getString("meta-desc-2"),
+    metadataBase:
+      typeof process.env.SERVER_URL === "string"
+        ? new URL(process.env.SERVER_URL)
+        : undefined,
     twitter: {
       card: "summary_large_image",
       title: l10n.getString("brand-fx-monitor"),

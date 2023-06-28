@@ -94,4 +94,4 @@ export const Shell = (props: Props) => {
       </main>
     </MobileShell>
   );
-}
+};

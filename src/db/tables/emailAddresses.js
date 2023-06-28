@@ -78,7 +78,7 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
 }
 
 /**
- * @param {string} emailAddressId
+ * @param {number | string} emailAddressId
  * @param {import("@fluent/react").ReactLocalization} l10n
  */
 async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
@@ -93,13 +93,15 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
     .andWhere('id', emailAddressId)
     .first()
 
-  if (verificationRecentlyUpdated?.id === parseInt(emailAddressId)) {
+  if (verificationRecentlyUpdated?.id === (typeof emailAddressId === "number" ? emailAddressId : parseInt(emailAddressId, 10))) {
     throw new ForbiddenError(l10n.getString('error-email-validation-pending'))
   }
 
   const res = await knex('email_addresses')
     .update({
       verification_token: newVerificationToken,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
       updated_at: knex.fn.now()
     })
     .where('id', emailAddressId)
@@ -157,6 +159,8 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
             primary_email: email,
             primary_sha1: getSha1(email.toLowerCase()),
             primary_verified: verified,
+            // @ts-ignore knex.fn.now() results in it being set to a date,
+            // even if it's not typed as a JS date object:
             updated_at: knex.fn.now()
           })
           .where('id', '=', aEntry.id)
@@ -191,7 +195,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
  * @param {string | null} fxaAccessToken from Firefox Account Oauth
  * @param {string | null} fxaRefreshToken from Firefox Account Oauth
  * @param {string | null} fxaProfileData from Firefox Account
- * @returns {Promise<import('../../app/transitionTypes.js').Subscriber>} subscriber knex object added to DB
+ * @returns {Promise<import('knex/types/tables').SubscriberRow>} subscriber knex object added to DB
  */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
   console.log({ email })
@@ -221,6 +225,8 @@ async function _verifySubscriber (emailHash) {
     .where('primary_email', '=', emailHash.primary_email)
     .update({
       primary_verified: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
       updated_at: knex.fn.now()
     })
     .returning('*')
@@ -238,7 +244,10 @@ async function _verifyNewEmail (emailHash) {
   const verifiedEmail = await knex('email_addresses')
     .where('id', '=', emailHash.id)
     .update({
-      verified: true
+      verified: true,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
     .returning('*')
 
@@ -304,9 +313,7 @@ async function removeEmail (email) {
  */
 async function removeOneSecondaryEmail (emailId) {
   await knex('email_addresses')
-    .where({
-      id: emailId
-    })
+    .where("id", emailId)
     .del()
 }
 
@@ -324,7 +331,7 @@ async function getEmailAddressesByHashes (hashes) {
  * @param {string} uid
  */
 async function deleteEmailAddressesByUid (uid) {
-  await knex('email_addresses').where({ subscriber_id: uid }).del()
+  await knex('email_addresses').where("subscriber_id", uid).del()
 }
 
 export {

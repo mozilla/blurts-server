@@ -6,6 +6,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 
 import { Shell as ShellEl } from "./Shell";
 import { getL10n } from "../functions/server/l10n";
+import { Toolbar } from "../components/client/toolbar/Toolbar";
 
 const meta: Meta<typeof ShellEl> = {
   title: "Pages/Shell",
@@ -17,7 +18,9 @@ type Story = StoryObj<typeof ShellEl>;
 export const Shell: Story = {
   render: () => (
     <ShellEl l10n={getL10n()} session={null}>
-      <div style={{height: 800}}></div>
+      <div style={{ height: 800, backgroundColor: "#f9f9fa" }}>
+        <Toolbar session={null} />
+      </div>
     </ShellEl>
   ),
 };

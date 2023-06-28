@@ -11,7 +11,6 @@ src/db/**/*.js
 # These files are remnants of our Express app:
 src/app.js
 src/appConstants.js
-src/app/
 src/routes/
 src/client/
 src/views/

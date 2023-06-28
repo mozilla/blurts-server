@@ -4,20 +4,20 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 
- import { ProgressCard } from "../ProgressCard";
- 
- // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
- const meta: Meta<typeof ProgressCard> = {
-   title: "ProgressCard",
-   component: ProgressCard,
- };
- export default meta;
- type Story = StoryObj<typeof ProgressCard>;
- 
- export const ProgressCardItem: Story = {
-   args: {
-     resolvedByYou: 3,
-     autoRemoved: 5,
-     totalNumExposures: 20,
-   },
- };
+import { ProgressCard } from "../ProgressCard";
+
+// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
+const meta: Meta<typeof ProgressCard> = {
+  title: "ProgressCard",
+  component: ProgressCard,
+};
+export default meta;
+type Story = StoryObj<typeof ProgressCard>;
+
+export const ProgressCardItem: Story = {
+  args: {
+    resolvedByYou: 3,
+    autoRemoved: 5,
+    totalNumExposures: 20,
+  },
+};
