@@ -4,6 +4,7 @@
 
 import { ScanResult } from '../../../../src/external/onerep';
 import { Breach } from '../../(nextjs_migration)/(authenticated)/user/breaches/breaches';
+import { useL10n } from '../../hooks/l10n';
 
 export type ExposureType = ScanResult | Breach;
 
@@ -12,18 +13,20 @@ export type Props = {
 };
 
 export const ExposureTypeEl = (props: Props) => {
+  const l10n = useL10n();
   let string = "";
 
   if (isScanResult(props.type)) {
-    string = "Info for sale"
+    string = l10n.getString("exposure-card-exposure-type-data-broker");
   }
   else {
-    string = "Data breach"
+    string = l10n.getString("exposure-card-exposure-type-data-breach");
   }
 
   return <>{string}</>;
 };
 
+// Typeguard function
 export function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
   return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }

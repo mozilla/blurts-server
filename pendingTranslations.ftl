@@ -12,6 +12,11 @@ main-nav-link-faq-tooltip = Frequently asked questions
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
+# Icon alts / aria-labels
+chevron-down-alt = Drop down button
+open-in-new-tab-aria-label = Open link in a new tab
+open-in-new-tab-alt = Open button
+
 # Status Pill
 
 status-pill-action-needed = Action Needed
@@ -38,7 +43,8 @@ exposure-card-description-info-for-sale-part-two = Remove this profile to protec
 exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }</data_breach_link>
 exposure-card-description-data-breach-part-two = We'll walk you through the steps to fix it.
 exposure-card-your-exposed-info = Your exposed info
-exposure-card-chevron-down-alt = Drop down button
+exposure-card-exposure-type-data-broker = Info for sale
+exposure-card-exposure-type-data-breach = Data breach
 
 # Dashboard
 

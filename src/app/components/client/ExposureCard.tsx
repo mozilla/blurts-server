@@ -111,7 +111,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           >
             <ChevronDown
               className={detailsOpen ? styles.isOpen : ""}
-              alt={l10n.getString("exposure-card-chevron-down-alt")}
+              alt={l10n.getString("chevron-down-alt")}
               width="20"
               height="20"
             />
@@ -128,14 +128,14 @@ export const ExposureCard = (props: ExposureCardProps) => {
             <p>
               {l10n.getFragment("exposure-card-description-info-for-sale-part-one", 
               {
-                elems: {"data_broker_link": <a href={props.exposureDetailsLink}/>}
+                elems: {"data_broker_link": <a href={exposureDetailsLink}/>}
               })}
               <a href={exposureDetailsLink}>
                 <span>
-                  <OpenInNew alt="" width="13" height="13" />
+                  <OpenInNew alt={l10n.getString("open-in-new-tab-alt")} width="13" height="13" aria-label={l10n.getString("open-in-new-tab-aria-label")} />
                 </span>
               </a>
-              {". "}{l10n.getString("exposure-card-description-info-for-sale-part-two")}
+              {" "}{l10n.getString("exposure-card-description-info-for-sale-part-two")}
             </p>
           </div> : 
           // Data breach content
@@ -144,17 +144,17 @@ export const ExposureCard = (props: ExposureCardProps) => {
               {l10n.getFragment("exposure-card-description-data-breach-part-one", 
               {
                 vars: {
-                  data_breach_company: props.exposureName,
-                  data_breach_date: props.dateFound
+                  data_breach_company: exposureName,
+                  data_breach_date: props.exposureType.BreachDate
                 },
-                elems: {"data_breach_link": <a href={props.exposureDetailsLink}/>}
+                elems: {"data_breach_link": <a href={exposureDetailsLink}/>}
               })}
               <a href={exposureDetailsLink}>
                 <span>
-                  <OpenInNew alt="" width="13" height="13" />
+                  <OpenInNew alt={l10n.getString("open-in-new-tab-alt")} width="13" height="13" aria-label={l10n.getString("open-in-new-tab-aria-label")} />
                 </span>
               </a>
-              {". "}{l10n.getString("exposure-card-description-data-breach-part-two")}
+              {" "}{l10n.getString("exposure-card-description-data-breach-part-two")}
             </p>
           </div>
           }
