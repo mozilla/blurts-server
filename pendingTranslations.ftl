@@ -61,8 +61,8 @@ dashboard-top-banner-monitor-protects-your-even-more-title = Monitor now protect
 # $data_broker_sites_total_num is the total number of data broker sites available to scan.
 dashboard-top-banner-monitor-protects-your-even-more-description = 
   { $data_broker_sites_total_num ->
-    [one] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker site that publish and sell your personal info for a profit.
-    *[other] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
+      [one] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker site that publish and sell your personal info for a profit.
+      *[other] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
   }
 dashboard-top-banner-monitor-protects-your-even-more-cta = Get first scan free
 
