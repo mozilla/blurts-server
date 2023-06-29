@@ -2,13 +2,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Knex from 'knex'
+import initKnex from 'knex'
 import knexConfig from './knexfile.js'
-let knex = Knex(knexConfig)
+let knex = initKnex(knexConfig)
 
 async function createConnection () {
   if (knex === null) {
-    knex = Knex(knexConfig)
+    knex = initKnex(knexConfig)
   }
 }
 
