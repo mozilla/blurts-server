@@ -132,8 +132,8 @@ try {
           isolanguage,
           alternateName,
           isPreferredName,
-          isShortName,
-          isColloquial,
+          _isShortName,
+          _isColloquial,
           isHistoric,
           _from,
           _to
@@ -149,10 +149,7 @@ try {
             id: alternateNameId,
             alternateOf: geonameId,
             name: alternateName,
-            isAbbreviation: isAbbreviation ? '1' : '',
-            isPreferredName,
-            isShortName,
-            isColloquial
+            isPreferredName
           }
         }
 
@@ -169,10 +166,12 @@ try {
   console.info('Parse data: All locations')
   const locationDataRows = locationData.split('\n')
   const locationRowCount = locationDataRows.length
-  const relevantLocationData: Array<IRelevantLocation | IRelevantLocationAlternate> = locationDataRows
+  const relevantLocationData: Array<IRelevantLocation> = locationDataRows
     .reduce((relevantLocations, location, rowIndex) => {
       const progress = Math.round(((rowIndex + 1) / locationRowCount) * 100)
-      process.stdout.write(`  ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`)
+      process.stdout.write(
+        `Progress: ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`
+      )
 
       const [
         geonameId,
@@ -199,6 +198,7 @@ try {
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
       // TODO: Use location relations data for filtering out districts
+      // Feature classes and codes: http://www.geonames.org/export/codes.html
       const hasRelevantFeature = featureClass === 'P' && (
         featureCode === 'PPL' ||
         featureCode === 'PPLA' ||
@@ -213,20 +213,32 @@ try {
 
       if (hasRelevantFeature && hasPopulation) {
         const alternateNames = parsedAlternateNames
-          .filter(alternateName => (
-            alternateName?.alternateOf === geonameId && alternateName?.name !== name
+          .filter(({ alternateOf, name: alternateName }) => (
+            alternateOf === geonameId && alternateName !== name
           ))
-          .map(alternateName => ({ ...alternateName, population }))
+        const preferredName = alternateNames.find(({ isPreferredName }) => (
+          isPreferredName === '1'
+        ))
+        const alternateNamesFinal = alternateNames.map((alternateName) => {
+          // Include the original name as an alternative name if we’ll use an
+          // alternate name that is the preferred name
+          if (preferredName && preferredName.name === alternateName.name) {
+            return name
+          }
 
-        relevantLocations.push(
-          {
-            id: geonameId,
-            name,
-            stateCode: admin1Code,
-            population
-          },
-          ...alternateNames
-        )
+          return alternateName.name
+        })
+
+        relevantLocations.push({
+          id: geonameId,
+          // switch names if an alternate name is the preferred location name
+          name: preferredName ? preferredName.name : name,
+          stateCode: admin1Code,
+          population,
+          ...((alternateNames && alternateNames.length > 0) && {
+            alternateNames: alternateNamesFinal
+          })
+        })
       }
 
       return relevantLocations

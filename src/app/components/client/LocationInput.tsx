@@ -48,7 +48,7 @@ export const LocationInput = () => {
         searchQuery: deferredSearchQuery,
         config: {
           minQueryLength: 2,
-          maxResults: 5,
+          maxResults: -1,
         },
       };
 

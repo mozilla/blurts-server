@@ -25,12 +25,17 @@ export interface ISearchLocationResults {
 }
 
 async function getLocationsByQuery(searchQuery: string) {
-  const locationNames = locationData.map((location) => location.name);
+  const locationNames = locationData.map((location) => {
+    const alternateNames = location.alternateNames
+      ? location.alternateNames.join(" ")
+      : "";
+    return `${location.name} ${alternateNames}`;
+  });
 
   // For search options see: https://github.com/leeoniya/uFuzzy#options
   const fuzzySearch = new uFuzzy({
     intraMode: 1,
-    intraIns: 0,
+    intraIns: 1,
     interIns: 3,
     intraSub: 1,
     intraTrn: 1,
@@ -38,6 +43,7 @@ async function getLocationsByQuery(searchQuery: string) {
     // matches lowercase letters, whitespace or apostrophe
     intraChars: "[a-z\\s']",
     interLft: 2,
+    interRgt: 0,
   });
 
   const locationIndexes = fuzzySearch.filter(locationNames, searchQuery);
@@ -51,12 +57,23 @@ async function getLocationsByQuery(searchQuery: string) {
     (locationIndex) => locationData[locationIndex]
   );
 
-  return order
-    .map((orderIndex) => results[orderIndex])
-    .sort((a, b) => Number(b.population) - Number(a.population));
+  const resultsOrdered = order.map((orderIndex) => results[orderIndex]);
+  // Split results and only sort the firt part by population
+  const maxSortByPopulationThreshold = 0.75;
+  const locationSplitIndex = Math.ceil(
+    results.length * maxSortByPopulationThreshold
+  );
+  const resultsSortedByPopulation = [
+    ...resultsOrdered
+      .slice(0, locationSplitIndex)
+      .sort((a, b) => Number(b.population) - Number(a.population)),
+    ...resultsOrdered.slice(locationSplitIndex + 1),
+  ];
+
+  return resultsSortedByPopulation;
 }
 
-async function getMatchingLocations({
+async function getLocationsResults({
   searchQuery,
   config = {
     minQueryLength: 2,
@@ -70,12 +87,12 @@ async function getMatchingLocations({
       ? await getLocationsByQuery(searchQuery)
       : [];
 
-  const locations =
+  const locationsResults =
     maxResults > 0 ? matchingLocations.slice(0, maxResults) : matchingLocations;
 
   return {
     searchQuery,
-    results: locations as TMatchingLocations,
+    results: locationsResults as TMatchingLocations,
   };
 }
 
@@ -84,7 +101,7 @@ export async function POST(request: NextRequest) {
     const body: ISearchLocationParams = await request.json();
     const { searchQuery, config } = body;
 
-    const results = await getMatchingLocations({
+    const results = await getLocationsResults({
       searchQuery,
       config,
     });
