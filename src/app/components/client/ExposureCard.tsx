@@ -18,13 +18,39 @@ import {
 } from "../server/Icons";
 import Image from "next/image";
 import { Button } from "../server/Button";
-import { ExposureType, ExposureTypeEl, isScanResult } from "../server/ExposureType";
 import { useL10n } from "../../hooks/l10n";
+import { ScanResult  } from "../../../external/onerep";
+import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+
+export type Exposure = ScanResult | Breach;
+
+export type ExposureTypElProps = {
+  type: Exposure;
+};
+
+export const ExposureTypeEl = (props: ExposureTypElProps) => {
+  const l10n = useL10n();
+  let string = "";
+
+  if (isScanResult(props.type)) {
+    string = l10n.getString("exposure-card-exposure-type-data-broker");
+  }
+  else {
+    string = l10n.getString("exposure-card-exposure-type-data-breach");
+  }
+
+  return <>{string}</>;
+};
+
+// Typeguard function
+export function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
+  return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
+}
 
 export type ExposureCardProps = {
   exposureImg: StaticImageData;
   exposureName: string;
-  exposureData: ExposureType;
+  exposureData: Exposure;
   exposureDetailsLink: string;
   dateFound: string;
   statusPillType: StatusPillType;
@@ -193,3 +219,4 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return elementCard;
 };
+
