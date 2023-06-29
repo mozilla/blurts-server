@@ -147,7 +147,7 @@ export const OpenInNew = ({
   );
 };
 
-export const MultipleUsers = ({
+export const MultipleUsersIcon = ({
   alt,
   ...props
 }: SVGProps<SVGSVGElement> & { alt: string }) => {
@@ -208,7 +208,7 @@ export const EmailIcon = ({
   );
 };
 
-export const LocationPin = ({
+export const LocationPinIcon = ({
   alt,
   ...props
 }: SVGProps<SVGSVGElement> & { alt: string }) => {

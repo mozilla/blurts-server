@@ -11,8 +11,8 @@ import { StaticImageData } from "next/image";
 import {
   ChevronDown,
   EmailIcon,
-  LocationPin,
-  MultipleUsers,
+  LocationPinIcon,
+  MultipleUsersIcon,
   OpenInNew,
   PhoneIcon,
 } from "../server/Icons";
@@ -162,7 +162,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
             <dl>
               <div>{l10n.getString("exposure-card-your-exposed-info")}:</div>
               <DetailsFoundItem
-                icon={<MultipleUsers alt="" width="13" height="13" />}
+                icon={<MultipleUsersIcon alt="" width="13" height="13" />}
                 whichExposed="family"
                 num={0}
               />
@@ -177,7 +177,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                 num={4}
               />
               <DetailsFoundItem
-                icon={<LocationPin alt="" width="13" height="13" />}
+                icon={<LocationPinIcon alt="" width="13" height="13" />}
                 whichExposed="address"
                 num={0}
               />
