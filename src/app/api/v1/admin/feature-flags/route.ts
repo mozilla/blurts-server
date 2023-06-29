@@ -11,9 +11,9 @@ import {
   disableFeatureFlagByName,
   updateAllowList,
   updateWaitList,
+  FeatureFlag,
 } from "../../../../../db/tables/featureFlags";
 
-import type { FeatureFlag } from "../../../../../db/tables/featureFlags";
 import { isAdmin, authOptions } from "../../../utils/auth";
 import appConstants from "../../../../../appConstants";
 
