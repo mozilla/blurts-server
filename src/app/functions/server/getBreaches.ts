@@ -34,7 +34,6 @@ export async function getBreaches() {
 
     for (const breach of breachesResponse) {
       breach.DataClasses = formatDataClassesArray(breach.DataClasses);
-      breach.LogoPath = /[^/]*$/.exec(breach.LogoPath)?.[0];
       breaches.push(breach);
     }
 
