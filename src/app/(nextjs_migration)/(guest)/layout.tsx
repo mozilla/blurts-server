@@ -33,7 +33,6 @@ const GuestLayout = (props: Props) => {
               priority
             />
           </a>
-          <LocationInput />
           <menu>
             <li>
               <SignInButton />
@@ -41,7 +40,10 @@ const GuestLayout = (props: Props) => {
           </menu>
         </div>
       </header>
-      <main>{props.children}</main>
+      <main>
+        <LocationInput />
+        {props.children}
+      </main>
       <footer className="site-footer">
         <a href="https://www.mozilla.org" target="_blank">
           <Image

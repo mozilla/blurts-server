@@ -51,6 +51,7 @@
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
+    "@leeoniya/ufuzzy": "^1.0.8",
     "@sentry/nextjs": "^7.53.1",
     "@sentry/node": "^7.40.0",
     "@sentry/tracing": "^7.38.0",

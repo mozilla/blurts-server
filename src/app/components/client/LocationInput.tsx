@@ -48,7 +48,7 @@ export const LocationInput = () => {
         searchQuery: deferredSearchQuery,
         config: {
           minQueryLength: 2,
-          maxResults: 10,
+          maxResults: 5,
         },
       };
 
@@ -78,10 +78,8 @@ export const LocationInput = () => {
       />
       <pre
         style={{
-          fontSize: "10px",
+          fontSize: "12px",
           opacity: isStale ? 0.3 : 1,
-          position: "absolute",
-          top: "50px",
         }}
       >
         {JSON.stringify(locationData, null, 2)}

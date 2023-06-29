@@ -4,6 +4,7 @@
 
 import { NextResponse } from "next/server";
 import { NextRequest } from "next/server";
+import uFuzzy from "@leeoniya/ufuzzy";
 
 import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types.d";
 import locationData from "../../../../../locationAutocompleteData.json";
@@ -23,48 +24,50 @@ export interface ISearchLocationResults {
   results: TMatchingLocations;
 }
 
-function getLocationByQuery(searchQuery: string) {
-  return locationData
-    .filter((location) => {
-      const { name, alternateNames } = location;
+async function getLocationsByQuery(searchQuery: string) {
+  const locationNames = locationData.map((location) => location.name);
 
-      const matchesName = name.toLowerCase().includes(searchQuery);
-      const matchesAlternateName =
-        alternateNames &&
-        alternateNames.some(({ name }) =>
-          name.toLowerCase().includes(searchQuery)
-        );
+  // For search options see: https://github.com/leeoniya/uFuzzy#options
+  const fuzzySearch = new uFuzzy({
+    intraMode: 1,
+    intraIns: 0,
+    interIns: 3,
+    intraSub: 1,
+    intraTrn: 1,
+    intraDel: 1,
+    // matches lowercase letters, whitespace or apostrophe
+    intraChars: "[a-z\\s']",
+    interLft: 2,
+  });
 
-      return matchesName || matchesAlternateName;
-    })
-    .sort((locationA, locationB) => {
-      const { name: nameA, population: populationA } = locationA;
-      const { name: nameB, population: populationB } = locationB;
+  const locationIndexes = fuzzySearch.filter(locationNames, searchQuery);
+  if (!locationIndexes) {
+    return [];
+  }
 
-      // Move excact matches to front
-      if (nameA.toLowerCase() === searchQuery) {
-        return -1;
-      }
-      if (nameB.toLowerCase() === searchQuery) {
-        return 1;
-      }
+  const info = fuzzySearch.info(locationIndexes, locationNames, searchQuery);
+  const order = fuzzySearch.sort(info, locationNames, searchQuery);
+  const results = locationIndexes.map(
+    (locationIndex) => locationData[locationIndex]
+  );
 
-      return populationB.length - populationA.length;
-    });
+  return order
+    .map((orderIndex) => results[orderIndex])
+    .sort((a, b) => Number(b.population) - Number(a.population));
 }
 
-function getMatchingLocations({
+async function getMatchingLocations({
   searchQuery,
   config = {
     minQueryLength: 2,
-    maxResults: 10,
+    maxResults: 5,
   },
-}: ISearchLocationParams): ISearchLocationResults {
+}: ISearchLocationParams): Promise<ISearchLocationResults> {
   const { minQueryLength, maxResults } = config;
 
   const matchingLocations =
     searchQuery && searchQuery.length >= minQueryLength
-      ? getLocationByQuery(searchQuery.toLowerCase())
+      ? await getLocationsByQuery(searchQuery)
       : [];
 
   const locations =
@@ -81,7 +84,7 @@ export async function POST(request: NextRequest) {
     const body: ISearchLocationParams = await request.json();
     const { searchQuery, config } = body;
 
-    const results = getMatchingLocations({
+    const results = await getMatchingLocations({
       searchQuery,
       config,
     });
