@@ -1,5 +1,51 @@
 @import "../../tokens";
 
+.gutter {
+  stroke: $color-white;
+}
+
+.slice {
+  // We start at 2, because element 1 is .gutter
+  &:nth-child(2) {
+    stroke: $color-purple-90;
+  }
+  &:nth-child(3) {
+    stroke: $color-purple-80;
+  }
+  &:nth-child(4) {
+    stroke: $color-purple-70;
+  }
+  &:nth-child(5) {
+    stroke: $color-purple-60;
+  }
+  &:nth-child(6) {
+    stroke: $color-purple-50;
+  }
+  &:nth-child(7) {
+    stroke: $color-purple-40;
+  }
+  &:nth-child(8) {
+    stroke: $color-purple-30;
+  }
+  &:nth-child(9) {
+    stroke: $color-purple-20;
+  }
+  &:nth-child(10) {
+    stroke: $color-purple-10;
+  }
+  &:nth-child(11) {
+    stroke: $color-purple-05;
+  }
+}
+
+.headingNr {
+  font-family: var(--font-inter);
+  font-weight: 600;
+}
+.headingLabel {
+  font-family: var(--font-inter);
+}
+
 .chartContainer {
   width: $content-sm;
   text-align: center;
@@ -7,10 +53,8 @@
   flex-direction: column;
   align-items: center;
 
-  p {
+  figcaption {
     font: $text-body-xs;
     font-style: italic;
   }
 }
-
-
