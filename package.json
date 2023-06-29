@@ -58,7 +58,6 @@
     "@types/node": "^20.1.1",
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
-    "chart.js": "^4.3.0",
     "client-oauth2": "^4.3.3",
     "csrf-csrf": "^2.2.2",
     "dotenv": "^16.0.3",
@@ -75,7 +74,6 @@
     "patch-package": "^7.0.0",
     "pg": "^8.9.0",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "uuid": "^9.0.0"
   },

@@ -11,3 +11,9 @@ main-nav-link-faq-tooltip = Frequently asked questions
 
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
+
+# The number inside <nr> will be displayed in a large font,
+# the label inside <label> will be shown underneath, in a smaller font.
+# Variables:
+#   $nr (number) - Total number of exposures found for the user
+exposure-chart-heading = <nr>{ $nr }</nr> <label>exposures</label>
