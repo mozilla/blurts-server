@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Knex from "knex";
+import initKnex from "knex";
 import knexConfig from "../knexfile.js";
 import mozlog from "../../utils/log.js";
 import { FeatureFlagRow } from "knex/types/tables";
-const knex = Knex(knexConfig);
+const knex = initKnex(knexConfig);
 const log = mozlog("DB.flags");
 
 export type FeatureFlag = {
