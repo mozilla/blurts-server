@@ -39,6 +39,7 @@
     margin: 0;
     width: 100%;
     justify-content: space-between;
+    height: 30px; // fixed height to standardize image/icon heights
 
     li {
       display: flex;
@@ -49,9 +50,8 @@
       }  
       
       .exposureImage {
-        width: 120px;
+        max-width: 120px;
         height: 100%;
-        object-fit: cover;
       }
     }
   }

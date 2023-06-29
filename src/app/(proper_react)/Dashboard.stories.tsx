@@ -5,6 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Dashboard as DashboardEl } from "./Dashboard";
 import FamilyTreeImage from "../components/client/assets/familytree.png";
+import TwitterImage from "../components/client/assets/twitter-icon.png";
 import { ExposureCardProps } from "../components/client/ExposureCard";
 import { ScanResult } from '../../../src/external/onerep';
 import { Breach } from '../(nextjs_migration)/(authenticated)/user/breaches/breaches';
@@ -37,41 +38,42 @@ const ScanResultMockItem: ScanResult = {
 }
 
 const BreachMockItem: Breach = {
-  AddedDate: "11/09/23",
-  BreachDate: "11/09/23",
-  DataClasses: [],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsMalware: false,
-  IsResolved: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: "",
-  Name: "",
-  PwnCount: 0,
-  recencyIndex: 0,
-  ResolutionsChecked: [],
-  Title: "Twitter"
+AddedDate: "11/09/23",
+BreachDate: "11/09/23",
+DataClasses: [],
+Description: "",
+Domain: "",
+Id: 0,
+IsFabricated: false,
+IsMalware: false,
+IsResolved: false,
+IsRetired: false,
+IsSensitive: false,
+IsSpamList: false,
+IsVerified: false,
+LogoPath: "",
+ModifiedDate: "",
+Name: "",
+PwnCount: 0,
+recencyIndex: 0,
+ResolutionsChecked: [],
+Title: "Twitter"
 }
+
 
 const mockExposures: ExposureCardProps[] = [
   {
     exposureImg: FamilyTreeImage,
     exposureName: ScanResultMockItem.data_broker,
-    exposureType: ScanResultMockItem,
+    exposureData: ScanResultMockItem,
     exposureDetailsLink: "linkehere.com",
     dateFound: ScanResultMockItem.created_at,
     statusPillType: "needAction",
   },
   {
-    exposureImg: FamilyTreeImage,
+    exposureImg: TwitterImage,
     exposureName: BreachMockItem.Title,
-    exposureType: BreachMockItem,
+    exposureData: BreachMockItem,
     exposureDetailsLink: "linkehere.com",
     dateFound: BreachMockItem.AddedDate,
     statusPillType: "fixed",
@@ -79,7 +81,7 @@ const mockExposures: ExposureCardProps[] = [
   {
     exposureImg: FamilyTreeImage,
     exposureName: ScanResultMockItem.data_broker,
-    exposureType: ScanResultMockItem,
+    exposureData: ScanResultMockItem,
     exposureDetailsLink: "linkehere.com",
     dateFound: ScanResultMockItem.created_at,
     statusPillType: "needAction",

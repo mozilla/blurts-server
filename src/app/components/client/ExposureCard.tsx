@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill, StatusPillType } from "../server/StatusPill";
 import { StaticImageData } from "next/image";
@@ -24,7 +24,7 @@ import { useL10n } from "../../hooks/l10n";
 export type ExposureCardProps = {
   exposureImg: StaticImageData;
   exposureName: string;
-  exposureType: ExposureType;
+  exposureData: ExposureType;
   exposureDetailsLink: string;
   dateFound: string;
   statusPillType: StatusPillType;
@@ -40,7 +40,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const {
     exposureImg,
     exposureName,
-    exposureType,
+    exposureData,
     exposureDetailsLink,
     statusPillType,
   } = props;
@@ -99,7 +99,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                 src={exposureImg}
               /> </li>
             <li>{exposureName}</li>
-            <li className={styles.hideOnMobile}><ExposureTypeEl type={exposureType} /></li>
+            <li className={styles.hideOnMobile}><ExposureTypeEl type={exposureData} /></li>
             <li className={styles.hideOnMobile}>{props.dateFound}</li>
             <li>
               <StatusPill type={statusPillType} />
@@ -122,7 +122,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
             detailsOpen ? styles.isOpen : ""
           }`}
         >
-          {isScanResult(props.exposureType) ? 
+          {isScanResult(exposureData) ? 
           // Data broker content
           <div>
             <p>
@@ -145,7 +145,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               {
                 vars: {
                   data_breach_company: exposureName,
-                  data_breach_date: props.exposureType.BreachDate
+                  data_breach_date: exposureData.BreachDate
                 },
                 elems: {"data_breach_link": <a href={exposureDetailsLink}/>}
               })}
