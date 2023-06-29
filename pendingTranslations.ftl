@@ -76,8 +76,7 @@ dashboard-top-banner-lets-keep-protecting-title = Let’s keep protecting your d
 # Variables: 
 # $remaining_exposures_total_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = 
-  {
-  $remaining_exposures_total_num -> 
+  { $remaining_exposures_total_num -> 
     [one] You still have { $remaining_exposures_total_num} exposure left to fix. Keep going and protect yourself. We’ll guide you step by step.
     *[other] You still have { $remaining_exposures_total_num} exposures left to fix. Keep going and protect yourself. We’ll guide you step by step.
   }
@@ -87,8 +86,7 @@ dashboard-top-banner-your-data-is-protected-title = Your data is protected
 # Variables: 
 # $starting_exposures_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-description = 
-  {
-  $starting_exposures_total_num ->
+  { $starting_exposures_total_num ->
     [one] Great work, the exposure of your data is fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
   }
