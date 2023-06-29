@@ -4,7 +4,6 @@
 
 import Image from "next/image";
 import styles from "./BreachLogo.module.css";
-import AppConstants from "../../../appConstants";
 import { LogoMap } from "../../functions/server/getBreaches";
 import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.d";
 
