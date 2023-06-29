@@ -4,10 +4,8 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import {
-  getAllFeatureFlags,
-  FeatureFlagDB,
-} from "../../../../../../db/tables/featureFlags";
+import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { FeatureFlagRow } from "knex/types/tables";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
@@ -23,7 +21,7 @@ export default async function FeatureFlagPage() {
     return notFound();
   }
 
-  const AllFlagsTable = (featureFlags: { data: Array<FeatureFlagDB> }) => {
+  const AllFlagsTable = (featureFlags: { data: Array<FeatureFlagRow> }) => {
     const { data } = featureFlags;
 
     if (!data || data.length == 0) {
