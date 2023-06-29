@@ -217,3 +217,8 @@ export function bearerToken(req: NextRequest) {
   // The remaining portion, which should be the token
   return authHeader.substring(authHeader.indexOf(" ") + 1);
 }
+
+export function isAdmin(email: string) {
+  const admins = AppConstants.ADMINS?.split(",") ?? [];
+  return admins.includes(email);
+}
