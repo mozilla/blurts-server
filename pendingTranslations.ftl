@@ -45,6 +45,7 @@ exposure-card-description-data-breach-part-two = We'll walk you through the step
 exposure-card-your-exposed-info = Your exposed info
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
+exposure-card-cta = Let’s fix it
 
 # Dashboard
 
