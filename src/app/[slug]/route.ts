@@ -6,10 +6,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { vers } from "../../controllers/dockerflow.js";
 import { getBreaches, getBreachIcons } from "../functions/server/getBreaches";
 
-export async function GET(req: NextRequest) {
+export async function GET(
+  req: NextRequest,
+  { params }: { params: { slug: string } }
+) {
   // heartbeat route for dockerflow
-  const slug = req.nextUrl.pathname;
-  if (slug.includes("__heartbeat__") || slug.includes("__lbheartbeat__")) {
+  if (
+    params.slug.includes("__heartbeat__") ||
+    params.slug.includes("__lbheartbeat__")
+  ) {
     // Ensure breaches and their icons are loaded after app startup.
     // Note: we do not `await` this Promise, to ensure we do not delay sending
     //       the heartbeat response while we are still fetching the data.
@@ -19,7 +24,7 @@ export async function GET(req: NextRequest) {
   }
 
   // version route
-  if (slug.includes("__version__")) {
+  if (params.slug.includes("__version__")) {
     return NextResponse.json(vers());
   }
 
