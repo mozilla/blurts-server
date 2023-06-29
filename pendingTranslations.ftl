@@ -17,3 +17,8 @@ footer-external-link-faq-tooltip = Frequently asked questions
 # Variables:
 #   $nr (number) - Total number of exposures found for the user
 exposure-chart-heading = <nr>{ $nr }</nr> <label>exposures</label>
+exposure-chart-legend-heading-type = Exposure
+exposure-chart-legend-heading-nr = Number
+# Variables:
+#   $nr (number) - Number of a particular type of exposure found for the user
+exposure-chart-legend-value-nr = { $nr }x

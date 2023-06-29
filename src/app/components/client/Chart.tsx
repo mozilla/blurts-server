@@ -4,7 +4,7 @@
 
 "use client";
 
-import { Fragment, ReactNode } from "react";
+import { CSSProperties } from "react";
 import { useL10n } from "../../hooks/l10n";
 import styles from "./Chart.module.scss";
 
@@ -46,8 +46,11 @@ export const DoughnutChart = (props: Props) => {
         fill="none"
         strokeWidth={ringWidth}
         strokeDasharray={`${circumference} ${circumference}`}
-        // Length of the slice
-        strokeDashoffset={circumference * (1 - percent) + sliceBorderWidth}
+        style={
+          {
+            "--sliceLength": circumference * (1 - percent) + sliceBorderWidth,
+          } as CSSProperties
+        }
         // Rotate it to not overlap the other slices
         transform={`rotate(${-90 + 360 * percentOffset} ${diameter / 2} ${
           diameter / 2
@@ -58,52 +61,85 @@ export const DoughnutChart = (props: Props) => {
 
   return (
     <figure className={styles.chartContainer}>
-      <svg
-        // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
-        role="img"
-        aria-label={l10n
-          .getString("exposure-chart-heading", {
-            nr: sumOfFixedExposures,
-          })
-          .replace("<nr>", "")
-          .replace("</nr>", "")
-          .replace("<label>", "")
-          .replace("</label>", "")}
-        viewBox={`0 0 ${diameter} ${diameter}`}
-      >
-        <circle
-          cx={diameter / 2}
-          cy={diameter / 2}
-          r={radius}
-          fill="none"
-          strokeWidth={ringWidth}
-          className={styles.gutter}
-        />
-        {slices}
-        {l10n.getFragment("exposure-chart-heading", {
-          elems: {
-            nr: (
-              <text
-                className={styles.headingNr}
-                fontSize={headingNumberSize}
-                x={diameter / 2}
-                y={diameter / 2 - headingGap / 2}
-                textAnchor="middle"
-              />
-            ),
-            label: (
-              <text
-                className={styles.headingLabel}
-                fontSize={headingLabelSize}
-                x={diameter / 2}
-                y={diameter / 2 + headingLabelSize + headingGap / 2}
-                textAnchor="middle"
-              />
-            ),
-          },
-          vars: { nr: sumOfFixedExposures },
-        })}
-      </svg>
+      <div className={styles.chartAndLegendWrapper}>
+        <svg
+          // https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/img_role#svg_and_roleimg
+          role="img"
+          aria-label={l10n
+            .getString("exposure-chart-heading", {
+              nr: sumOfFixedExposures,
+            })
+            .replace("<nr>", "")
+            .replace("</nr>", "")
+            .replace("<label>", "")
+            .replace("</label>", "")}
+          viewBox={`0 0 ${diameter} ${diameter}`}
+          className={styles.chart}
+        >
+          <circle
+            cx={diameter / 2}
+            cy={diameter / 2}
+            r={radius}
+            fill="none"
+            strokeWidth={ringWidth}
+            className={styles.gutter}
+          />
+          {slices}
+          {l10n.getFragment("exposure-chart-heading", {
+            elems: {
+              nr: (
+                <text
+                  className={styles.headingNr}
+                  fontSize={headingNumberSize}
+                  x={diameter / 2}
+                  y={diameter / 2 - headingGap / 2}
+                  textAnchor="middle"
+                />
+              ),
+              label: (
+                <text
+                  className={styles.headingLabel}
+                  fontSize={headingLabelSize}
+                  x={diameter / 2}
+                  y={diameter / 2 + headingLabelSize + headingGap / 2}
+                  textAnchor="middle"
+                />
+              ),
+            },
+            vars: { nr: sumOfFixedExposures },
+          })}
+        </svg>
+        <div className={styles.legend}>
+          <table>
+            <thead>
+              <tr>
+                {/* The first column contains the chart colour,
+                    which is irrelevant to screen readers. */}
+                <td aria-hidden={true} />
+                <th>{l10n.getString("exposure-chart-legend-heading-type")}</th>
+                <th>{l10n.getString("exposure-chart-legend-heading-nr")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {props.data.map(([label, num]) => (
+                <tr key={label}>
+                  <td aria-hidden={true}>
+                    <svg viewBox="0 0 10 10">
+                      <rect rx={2} width="10" height="10" />
+                    </svg>
+                  </td>
+                  <td>{label}</td>
+                  <td>
+                    {l10n.getString("exposure-chart-legend-value-nr", {
+                      nr: num,
+                    })}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
       <figcaption>
         This chart shows the total number of exposures that are fixed (
         {sumOfFixedExposures} out of {props.totalExposures}).
