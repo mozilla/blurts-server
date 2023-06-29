@@ -62,12 +62,12 @@ export const ProgressCard = (props: Props) => {
           <div className={styles.percentageBreakdown}>
             <p>
               {l10n.getString("progress-card-percentage-complete", {
-                percentage: `${percentageCompleteNum}%`,
+                percentage: `${percentageCompleteNum}`,
               })}
             </p>
             <p>
               {l10n.getString("progress-card-percentage-remaining", {
-                percentage: `${percentageCompleteNum}%`,
+                percentage: `${percentageRemainingNumber}`,
               })}
             </p>
           </div>

@@ -30,10 +30,10 @@ progress-card-resolved-by-you-headline = Resolved by you
 progress-card-auto-removed-headline = Auto-removed
 # Variables:
 # $percentage is the percentage value of exposures fixed, e.g. 70%.
-progress-card-percentage-complete = { $percentage } complete
+progress-card-percentage-complete = { $percentage }% complete
 # Variables:
 # $percentage is the percentage value of exposures remaining, e.g. 70%.
-progress-card-percentage-remaining = { $percentage } in progress
+progress-card-percentage-remaining = { $percentage }% in progress
 
 # Here's What We Fixed Modal
 
