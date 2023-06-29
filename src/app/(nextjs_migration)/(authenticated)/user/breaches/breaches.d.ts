@@ -8,9 +8,6 @@ export type BreachResolutionTypes = Record<
   keyof BreachDataTypes,
   BreachResolution
 >;
-
-export type BreachLogos = Map<string, string>;
-
 export interface CircleChartProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
@@ -140,7 +137,6 @@ export interface UserBreaches {
     verifiedEmails: Array<VerifiedEmail>;
     unverifiedEmails: Array;
   };
-  breachLogos: BreachLogos;
   emailVerifiedCount: number;
   emailTotalCount: number;
   emailSelectIndex: number;

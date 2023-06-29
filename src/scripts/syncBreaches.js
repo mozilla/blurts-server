@@ -10,7 +10,7 @@
  */
 
 import { req, formatDataClassesArray } from '../utils/hibp.js'
-import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
+import { getAllBreaches, upsertBreaches, updateBreachLogoPath} from '../db/tables/breaches.js'
 import { readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
 import { finished } from 'node:stream/promises';
@@ -53,9 +53,12 @@ async function uploadToS3(fileName, fileStream) {
 }
 
 export async function getBreachIcons(breaches) {
-  const breachDomains = breaches
-    .map((breach) => breach.Domain)
-    .filter((breachDomain) => breachDomain.length > 0);
+  const filteredBreaches = breaches.filter(async ({Domain, Name}) => {
+    const domainExists = Domain.length > 0
+    // if domain does not exist, null the logo path
+    if (!domainExists) await updateBreachLogoPath(Name, null)
+    return domainExists
+  });
 
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
@@ -63,26 +66,30 @@ export async function getBreachIcons(breaches) {
 
   // read existing logos
   const existingLogos = await readdir(logoFolder);
-  console.log(`existing logos: ${existingLogos.length}`)
 
   (await Promise.all(
-    breachDomains.map(async (breachDomain) => {
+    filteredBreaches.map(async ({Domain: breachDomain, Name: breachName}) => {
       const logoFilename = breachDomain.toLowerCase() + ".ico";
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
         console.log('skipping ', logoFilename)
+        await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
         return;
       }
-      console.log(`fetching: , ${logoFilename}`)
+      console.log(`fetching: ${logoFilename}`)
       const res = await fetch(
         `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
       if (res.status !== 200) {
+        // update logo path with null
+        console.log(`Logo does not exist for: ${breachName} ${breachDomain}`)
+        await updateBreachLogoPath(breachName, null)
         return;
       }
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
       const fileStream = createWriteStream(logoPath, { flags: 'wx' });
       const bodyReadable = Readable.fromWeb(res.body)
       await finished(bodyReadable.pipe(fileStream));
+      await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
     })
   ));
 }
@@ -104,7 +111,6 @@ for (const breach of breachesResponse) {
 
 console.log('Breaches found: ', breaches.length)
 console.log('Unique breaches based on Name + BreachDate', seen.size)
-await getBreachIcons(breaches)
 
 // sanity check: no duplicate breaches with Name + BreachDate
 if (seen.size !== breaches.length) {
@@ -115,8 +121,11 @@ if (seen.size !== breaches.length) {
   // get
   const result = await getAllBreaches()
   console.log(result.length)
-  process.exit()
 }
+
+await getBreachIcons(breaches)
+process.exit()
+
 
 
 /**

@@ -26,7 +26,7 @@ const breachAlertCtaStyle = `
  * @param {import("@fluent/react").ReactLocalization} [l10n]
  */
 const breachAlertEmailPartial = (data, l10n) => {
-  const { breachData, breachedEmail, breachLogos, ctaHref } = data
+  const { breachData, breachedEmail, ctaHref } = data
   const getMessage = getStringLookup(l10n);
 
   return `
@@ -37,7 +37,7 @@ const breachAlertEmailPartial = (data, l10n) => {
             'email-address': `<strong>${breachedEmail}</strong>`
           })}
         </p>
-        ${breachCardPartial(breachData, breachLogos, l10n)}
+        ${breachCardPartial(breachData, l10n)}
         <a
           href='${ctaHref}'
           style='${breachAlertCtaStyle}'

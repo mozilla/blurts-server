@@ -13,7 +13,7 @@ function createEmailOptions (data, selectedEmailIndex) {
   return optionElements.join('')
 }
 
-function createBreachRows (data, logos) {
+function createBreachRows (data) {
   const locale = getLocale()
   const shortDate = new Intl.DateTimeFormat(locale, { year: 'numeric', month: '2-digit', day: '2-digit', timeZone: 'UTC' })
   const shortList = new Intl.ListFormat(locale, { style: 'narrow' })
@@ -33,7 +33,7 @@ function createBreachRows (data, logos) {
         dataClasses: longList.format(dataClassesTranslated)
       })
 
-      const logo = getBreachLogo(breach, logos)
+      const logo = getBreachLogo(breach)
 
       return `
       <details class='breach-row' data-company-name=${breach.Name} data-status=${status} data-email=${account.email} data-classes='${dataClassesTranslated}' ${isHidden ? 'hidden' : ''}>
@@ -110,7 +110,7 @@ export const breaches = data => `
     }
     <span>${getMessage('column-detected')}</span>
   </header>
-  ${createBreachRows(data.breachesData, data.breachLogos)}
+  ${createBreachRows(data.breachesData)}
   <template class='no-breaches'>
     <div class="zero-state no-breaches-message">
       <img src='/images/breaches-none.svg' alt='' width="136" height="102" />

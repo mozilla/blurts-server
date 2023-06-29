@@ -236,10 +236,6 @@ async function unsubscribeFromMonthlyReport (req) {
   await updateMonthlyEmailOptout(urlQuery.token)
 }
 
-const breachDummyLogo = new Map([
-  ['adobe.com', '/images/logo_cache/adobe.com.ico']
-])
-
 /**
  * Dummy data for populating the breach notification email preview.
  *
@@ -275,7 +271,6 @@ const getNotificationDummyData = (recipient, l10n) => {
       IsMalware: false
     },
     breachedEmail: recipient,
-    breachLogos: breachDummyLogo,
     ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
     heading: getMessage('email-spotted-new-breach'),
     recipientEmail: recipient,
@@ -314,7 +309,6 @@ const getMonthlyDummyData = (recipient, l10n) => {
 
   return ({
     breachedEmail: 'breached@email.com',
-    breachLogos: breachDummyLogo,
     ctaHref: `${SERVER_URL}/user/breaches`,
     heading: getMessage('email-unresolved-heading'),
     monitoredEmails: {
@@ -364,7 +358,6 @@ const getSignupReportDummyData = (recipient, l10n) => {
 
   return {
     breachedEmail: recipient,
-    breachLogos: breachDummyLogo,
     ctaHref: getEmailCtaHref('email-test-notification', 'dashboard-cta'),
     heading: unsafeBreachesForEmail.length
       ? getMessage('email-subject-found-breaches')

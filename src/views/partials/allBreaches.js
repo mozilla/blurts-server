@@ -5,11 +5,11 @@
 import { getLocale, getMessage } from '../../utils/fluent.js'
 import { getBreachLogo } from '../../utils/breachLogo.js'
 
-function makeBreachCard (breach, logos) {
+function makeBreachCard (breach) {
   return `
   <a href="/breach-details/${breach.Name}" class="breach-card">
     <h3>
-      <span class="logo-wrapper">${getBreachLogo(breach, logos)}</span>
+      <span class="logo-wrapper">${getBreachLogo(breach)}</span>
       <span>${breach.Title}</span>
     </h3>
     <div class="breach-main">
@@ -65,7 +65,7 @@ export const allBreaches = data => `
         ${data.breaches
           .filter(a => !a.IsSensitive)
           .sort((a, b) => new Date(a.AddedDate).getTime() < new Date(b.AddedDate).getTime() ? 1 : -1)
-          .map(breach => makeBreachCard(breach, data.breachLogos))
+          .map(breach => makeBreachCard(breach))
           .join('')}
       </div>
     </div>
