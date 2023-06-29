@@ -10,8 +10,6 @@ import MozillaLogo from "../../../client/images/moz-logo-1color-white-rgb-01.svg
 import { SignInButton } from "../components/client/SignInButton";
 import { getL10n } from "../../functions/server/l10n";
 
-import { LocationInput } from "../../components/client/LocationInput";
-
 export type Props = {
   children: ReactNode;
 };
@@ -40,10 +38,7 @@ const GuestLayout = (props: Props) => {
           </menu>
         </div>
       </header>
-      <main>
-        <LocationInput />
-        {props.children}
-      </main>
+      <main>{props.children}</main>
       <footer className="site-footer">
         <a href="https://www.mozilla.org" target="_blank">
           <Image

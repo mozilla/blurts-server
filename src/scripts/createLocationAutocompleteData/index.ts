@@ -35,11 +35,11 @@ import {
 } from './types.d'
 
 const DATA_COUNTRY_CODE = 'US'
-const REMOTE_DATA_URL = 'https://download.geonames.org/export/dump/'
+const REMOTE_DATA_URL = 'https://download.geonames.org/export/dump'
 const LOCATIONS_DATA_FILE = 'locationAutocompleteData.json'
 
-// Change these variables only for debugging
-// Default values: true
+// Change these variables only for debugging and the script downloaded the
+// remote resources intially at least once.
 const REFETCH_REMOTE_DATA = true
 const SHOULD_CLEANUP_DOWNLOADED_DATA = true
 
@@ -94,25 +94,25 @@ try {
 
   const localDataDestinationPath = {
     locations: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}-extracted`,
-    alternateNames: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}-extracted`
+    alternateNames: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}-extracted`,
   }
 
   if (REFETCH_REMOTE_DATA) {
     console.info('Download all locations')
     await fetchRemoteArchive({
-      remoteArchiveUrl: `${REMOTE_DATA_URL}${DATA_COUNTRY_CODE}.zip`,
+      remoteArchiveUrl: `${REMOTE_DATA_URL}/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.locations
     })
 
     console.info('Download alternate names')
     await fetchRemoteArchive({
-      remoteArchiveUrl: `${REMOTE_DATA_URL}alternatenames/${DATA_COUNTRY_CODE}.zip`,
+      remoteArchiveUrl: `${REMOTE_DATA_URL}/alternatenames/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.alternateNames
     })
   } else {
-    console.log('Skip downloading remote data')
+    console.info('Skip downloading remote data')
   }
 
   console.info('Read file: Alternate location names')
@@ -205,7 +205,6 @@ try {
         featureCode === 'PPLA2' ||
         featureCode === 'PPLA3' ||
         featureCode === 'PPLA4' ||
-        featureCode === 'PPLA5' ||
         featureCode === 'PPLC' ||
         featureCode === 'PPLL'
       )
@@ -221,7 +220,7 @@ try {
         ))
         const alternateNamesFinal = alternateNames.map((alternateName) => {
           // Include the original name as an alternative name if we’ll use an
-          // alternate name that is the preferred name
+          // alternate name that is the preferred name.
           if (preferredName && preferredName.name === alternateName.name) {
             return name
           }
