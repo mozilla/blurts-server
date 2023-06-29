@@ -49,7 +49,7 @@ export interface BreachStats {
   };
 }
 
-export interface BreachResolution {
+export interface SubscriberBreachResolution {
   useBreachId: boolean;
   [email: string]: {
     [id: number]: {
@@ -114,7 +114,7 @@ export interface Subscriber {
   breach_stats: BreachStats;
   monthly_email_at: Date | null;
   monthly_email_optout: boolean | null;
-  breach_resolution: BreachResolution;
+  breach_resolution: SubscriberBreachResolution;
   email_addresses: Array<SubscriberEmail>;
 }
 

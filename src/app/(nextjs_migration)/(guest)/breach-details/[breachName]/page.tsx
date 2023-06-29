@@ -5,7 +5,7 @@
 import Image, { StaticImageData } from "next/image";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n, getLocale } from "../../../../functions/server/l10n";
 import { getBreachByName } from "../../../../../utils/hibp";
 import {
   getAllPriorityDataClasses,
@@ -14,7 +14,6 @@ import {
 import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getBreaches } from "../../../../functions/server/getBreaches";
 import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
-import { getLocale } from "../../../../functions/server/l10n";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";
 import glyphPassword from "../../../../../client/images/passwords.svg";

@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { v4 as uuidv4 } from 'uuid'
-import Knex from 'knex'
+import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
 import mozlog from '../../utils/log.js'
 import { subscribeHash } from '../../utils/hibp.js'
@@ -15,7 +15,7 @@ import {
   UnauthorizedError
 } from '../../utils/error.js'
 import { getMessage } from '../../utils/fluent.js'
-const knex = Knex(knexConfig)
+const knex = initKnex(knexConfig)
 const log = mozlog('DB.email_addresses')
 
 /**
