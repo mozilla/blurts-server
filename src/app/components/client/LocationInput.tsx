@@ -36,9 +36,7 @@ const getLocationSuggestions = async ({
 export const LocationInput = () => {
   const [locationData, setLocationData] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-
   const deferredSearchQuery = useDeferredValue(searchQuery);
-  const isStale = searchQuery !== deferredSearchQuery;
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -47,8 +45,8 @@ export const LocationInput = () => {
       const searchParams = {
         searchQuery: deferredSearchQuery,
         config: {
-          minQueryLength: 2,
-          maxResults: -1,
+          minQueryLength: 1,
+          maxResults: 5,
         },
       };
 
@@ -58,6 +56,8 @@ export const LocationInput = () => {
       }).then((data) => {
         setLocationData(data);
       });
+    } else {
+      setLocationData([]);
     }
 
     return () => {
@@ -70,20 +70,55 @@ export const LocationInput = () => {
   };
 
   return (
-    <div style={{ position: "relative" }}>
+    <div
+      style={{
+        left: "40%",
+        position: "absolute",
+        top: "25px",
+        zIndex: 2,
+      }}
+    >
       <input
         onInput={handleOnInput}
         placeholder="Enter your location"
         required
-      />
-      <pre
         style={{
-          fontSize: "12px",
-          opacity: isStale ? 0.3 : 1,
+          padding: "0.3rem 0.5rem",
+          fontSize: "1.25rem",
         }}
-      >
-        {JSON.stringify(locationData, null, 2)}
-      </pre>
+      />
+      {locationData &&
+        locationData.results &&
+        locationData.results.length > 0 && (
+          <ul
+            style={{
+              background: "white",
+              borderRadius: "4px",
+              boxShadow: "0 1px 3px 0 #ccc",
+              display: "flex",
+              fontSize: "1rem",
+              flexDirection: "column",
+              gap: "0.5rem",
+              listStyle: "none",
+              position: "relative",
+              marginTop: "0.5rem",
+              padding: "1rem 0.75rem",
+            }}
+          >
+            {/* <pre
+            style={{
+              fontSize: "12px",
+            }}
+          >
+            {JSON.stringify(locationData, null, 2)}
+          </pre> */}
+            {locationData.results.map(({ id, name, stateCode }) => (
+              <li key={id}>
+                {name} <small style={{ color: "gray" }}>{stateCode}, USA</small>
+              </li>
+            ))}
+          </ul>
+        )}
     </div>
   );
 };

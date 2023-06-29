@@ -76,7 +76,7 @@ async function getLocationsByQuery(searchQuery: string) {
 async function getLocationsResults({
   searchQuery,
   config = {
-    minQueryLength: 2,
+    minQueryLength: 1,
     maxResults: 5,
   },
 }: ISearchLocationParams): Promise<ISearchLocationResults> {
