@@ -73,7 +73,7 @@ export async function getBreachIcons(breaches) {
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
         console.log('skipping ', logoFilename)
-        await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${breachDomain.toLowerCase()}.ico`)
+        await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
         return;
       }
       console.log(`fetching: ${logoFilename}`)
@@ -89,7 +89,7 @@ export async function getBreachIcons(breaches) {
       const fileStream = createWriteStream(logoPath, { flags: 'wx' });
       const bodyReadable = Readable.fromWeb(res.body)
       await finished(bodyReadable.pipe(fileStream));
-      await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${breachDomain.toLowerCase()}.ico`)
+      await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
     })
   ));
 }
