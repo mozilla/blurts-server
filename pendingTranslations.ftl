@@ -53,7 +53,7 @@ dashboard-top-banner-protect-your-data-title = Let's protect your data
 # Variables:
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user's data.
-dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_total_num } data breaches and { $data_broker_total_num } sites selling your personal info. We'll guide you on how to fix it.
+dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_total_num } data breaches and { $data_broker_total_num } sites selling your personal info. We’ll guide you on how to fix it.
 dashboard-top-banner-protect-your-data-cta = Let's fix it
 
 dashboard-top-banner-monitor-protects-your-even-more-title = Monitor now protects you even more
