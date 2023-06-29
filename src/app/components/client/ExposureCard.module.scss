@@ -48,8 +48,16 @@
       display: flex;
       align-items: center;
 
+      &.hideOnMobile {
+        display: none;
+      }
+
       @media screen and (min-width: $screen-lg) {
         flex: 1 1 0%; 
+
+        &.hideOnMobile {
+          display: block;
+        }
       }  
       
       .exposureImage {
@@ -139,14 +147,3 @@
     }
   }
 }
-
-.hideOnMobile {
-  display: none !important;
-  visibility: hidden;
-
-  @media screen and (min-width: $screen-lg) {
-    display: block !important;
-    visibility: visible;
-  }
-}
-
