@@ -13,9 +13,8 @@ footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
 # Icon alts / aria-labels
-chevron-down-alt = Drop down button
+chevron-down-aria-label = Collapse
 open-in-new-tab-aria-label = Open link in a new tab
-open-in-new-tab-alt = Open button
 
 # Status Pill
 
