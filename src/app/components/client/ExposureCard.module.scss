@@ -14,7 +14,7 @@
     padding: $spacing-sm $spacing-md;
     gap: $layout-xs;
 
-    @media screen and (min-width: $screen-md) {
+    @media screen and (min-width: $screen-lg) {
       gap: $layout-md;
     }
 
@@ -44,8 +44,8 @@
       display: flex;
       align-items: center;
 
-      @media screen and (min-width: $screen-md) {
-        flex: 1; 
+      @media screen and (min-width: $screen-lg) {
+        flex: 1 1 0%; 
       }  
       
       .exposureImage {
@@ -86,7 +86,7 @@
       flex-direction: column;
       gap: $layout-xs;
 
-      @media screen and (min-width: $screen-md) {
+      @media screen and (min-width: $screen-lg) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
@@ -102,7 +102,7 @@
         grid-template-columns: repeat(2, 1fr);
         grid-gap: $spacing-sm;
         
-        @media screen and (min-width: $screen-md) {
+        @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -111,7 +111,7 @@
         div + div {
          padding-left: 23px; // restore the offset of the exposure icon which is -23px
              
-          @media screen and (min-width: $screen-md) {
+          @media screen and (min-width: $screen-lg) {
             padding-left: $layout-md;
           }
         }
@@ -149,7 +149,7 @@
   display: none !important;
   visibility: hidden;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg) {
     display: block !important;
     visibility: visible;
   }

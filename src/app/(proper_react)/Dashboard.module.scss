@@ -1,8 +1,11 @@
 @import "../tokens";
 
 .container {
-  padding-left: $layout-sm;
   max-width: $content-xl;
+
+  @media screen and (min-width: $screen-md) {
+    padding-left: $layout-sm;
+  }
  
   h2 {
     font: $text-body-lg;
