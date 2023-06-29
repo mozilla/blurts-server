@@ -3,25 +3,20 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import { UserMenu } from "../../../../../components/client/UserMenu";
 import styles from "./page.module.scss";
+import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
 
   return (
     <div className={styles.wrapper}>
-      <nav className={styles.tabBar}>
-        <div className={styles.start}>
-          TODO:{" "}
-          <a href="https://react-spectrum.adobe.com/react-aria/useTabList.html">
-            add a tab list
-          </a>
-        </div>
-        <div className={styles.end}>
-          <UserMenu session={session} />
-        </div>
-      </nav>
+      <Toolbar session={session}>
+        TODO:{" "}
+        <a href="https://react-spectrum.adobe.com/react-aria/useTabList.html">
+          add a tab list
+        </a>
+      </Toolbar>
     </div>
   );
 }
