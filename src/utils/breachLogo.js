@@ -7,9 +7,7 @@
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
 export function getBreachLogo (breach) {
-  const logoIsAvailable = breach.LogoPath
-
-  if (logoIsAvailable) {
+  if (breach.LogoPath) {
     return `<img src='${breach.LogoPath}' alt='' loading="lazy" class='breach-logo' height='32' />`
   }
 
