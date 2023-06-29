@@ -3,11 +3,6 @@
 .wrapper {
   height: 100%;
   display: flex;
-  gap: 0;
-
-  @media screen and (min-width: $screen-lg) {
-    gap: $layout-md;
-  } 
 }
 
 .mainMenu {

@@ -1,6 +1,7 @@
 @import "../tokens";
 
 .container {
+  padding-left: $layout-sm;
   max-width: $content-xl;
  
   h2 {
