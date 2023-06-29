@@ -2,11 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { request } from "node:https";
-import { createWriteStream } from "node:fs";
-import { dirname, resolve as pathResolve } from "node:path";
-import { fileURLToPath } from "node:url";
-import { mkdir, readdir } from "node:fs/promises";
 import mozlog from "../../../utils/log.js";
 import {
   formatDataClassesArray,

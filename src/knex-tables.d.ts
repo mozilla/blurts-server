@@ -182,9 +182,8 @@ declare module "knex/types/tables" {
       // On updates, auto-generated columns cannot be set, and nullable columns are optional:
       Omit<BreachRow, BreachAutoInsertedColumns | BreachOptionalColumns> &
         Partial<Pick<BreachRow, BreachOptionalColumns>>,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<BreachRow, "id" | "added_date">> &
-        Pick<BreachRow, "modified_date">
+      // On updates, don't allow updating the ID; all other fields are optional:
+      Partial<Omit<BreachRow, "id">>
     >;
   }
 }

@@ -3,11 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { destroyOAuthToken } from '../../utils/fxa.js'
-import Knex from 'knex'
+import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
 import AppConstants from '../../appConstants.js'
 import mozlog from '../../utils/log.js'
-const knex = Knex(knexConfig)
+const knex = initKnex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
 const log = mozlog('DB.subscribers')
 

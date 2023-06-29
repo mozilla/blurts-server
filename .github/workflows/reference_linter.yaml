@@ -3,12 +3,14 @@ on:
   push:
     paths:
       - 'locales/en/**.ftl'
+      - 'pendingTranslations.ftl'
     branches:
       - main
       - localization
   pull_request:
     paths:
       - 'locales/en/**.ftl'
+      - 'pendingTranslations.ftl'
     branches:
       - main
       - localization
@@ -27,6 +29,9 @@ jobs:
       - name: Install Python dependencies
         run: |
           pip install -r .github/requirements.txt
-      - name: Lint reference
+      - name: Lint reference strings
         run: |
           moz-fluent-lint ./locales/en --config .github/linter_config.yml
+      - name: Lint pending strings
+        run: |
+          moz-fluent-lint ./ --config .github/linter_config.yml
