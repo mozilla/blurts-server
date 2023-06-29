@@ -4,7 +4,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { vers } from "../../controllers/dockerflow.js";
-import { getBreaches, getBreachIcons } from "../functions/server/getBreaches";
+import { getBreaches } from "../functions/server/getBreaches";
 
 export async function GET(req: NextRequest) {
   // heartbeat route for dockerflow
@@ -14,7 +14,7 @@ export async function GET(req: NextRequest) {
     // Note: we do not `await` this Promise, to ensure we do not delay sending
     //       the heartbeat response while we are still fetching the data.
     // TODO: Replace with a cron job to fetch breach data and icons.
-    getBreaches().then((breaches) => getBreachIcons(breaches));
+    getBreaches();
     return NextResponse.json({ success: true, message: "OK" }, { status: 200 });
   }
 

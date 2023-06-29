@@ -53,7 +53,12 @@ async function uploadToS3(fileName, fileStream) {
 }
 
 export async function getBreachIcons(breaches) {
-  const filteredBreaches = breaches.filter(({Domain}) => Domain.length > 0);
+  const filteredBreaches = breaches.filter(async ({Domain, Name}) => {
+    const domainExists = Domain.length > 0
+    // if domain does not exist, null the logo path
+    if (!domainExists) await updateBreachLogoPath(Name, null)
+    return domainExists
+  });
 
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
@@ -61,7 +66,6 @@ export async function getBreachIcons(breaches) {
 
   // read existing logos
   const existingLogos = await readdir(logoFolder);
-  console.log(`existing logos: ${existingLogos.length}`)
 
   (await Promise.all(
     filteredBreaches.map(async ({Domain: breachDomain, Name: breachName}) => {
@@ -69,13 +73,15 @@ export async function getBreachIcons(breaches) {
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
         console.log('skipping ', logoFilename)
+        await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${breachDomain.toLowerCase()}.ico`)
         return;
       }
-      console.log(`fetching: , ${logoFilename}`)
+      console.log(`fetching: ${logoFilename}`)
       const res = await fetch(
         `https://icons.duckduckgo.com/ip3/${breachDomain}.ico`);
       if (res.status !== 200) {
         // update logo path with null
+        console.log(`Logo does not exist for: ${breachName} ${breachDomain}`)
         await updateBreachLogoPath(breachName, null)
         return;
       }
@@ -105,7 +111,6 @@ for (const breach of breachesResponse) {
 
 console.log('Breaches found: ', breaches.length)
 console.log('Unique breaches based on Name + BreachDate', seen.size)
-await getBreachIcons(breaches)
 
 // sanity check: no duplicate breaches with Name + BreachDate
 if (seen.size !== breaches.length) {
@@ -116,8 +121,11 @@ if (seen.size !== breaches.length) {
   // get
   const result = await getAllBreaches()
   console.log(result.length)
-  process.exit()
 }
+
+await getBreachIcons(breaches)
+process.exit()
+
 
 
 /**

@@ -2,10 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import {
-  getBreachIcons,
-  getBreaches,
-} from "../../../functions/server/getBreaches";
+import { getBreaches } from "../../../functions/server/getBreaches";
 import Script from "next/script";
 import "../../../../client/css/partials/allBreaches.css";
 import { getL10n, getLocale } from "../../../functions/server/l10n";
@@ -34,7 +31,6 @@ export async function generateMetadata() {
 
 export default async function PublicScan() {
   const allBreaches = await getBreaches();
-  const breachLogos = getBreachIcons(allBreaches);
   const l10n = getL10n();
 
   return (
@@ -85,7 +81,6 @@ export default async function PublicScan() {
                   <BreachCard
                     key={breach.Name + breach.Domain}
                     breach={breach}
-                    logos={breachLogos}
                   />
                 ))}
             </div>
@@ -99,14 +94,14 @@ export default async function PublicScan() {
   );
 }
 
-function BreachCard(props: { breach: any; logos: any }) {
+function BreachCard(props: { breach: any }) {
   const l10n = getL10n();
 
   return (
     <a href={`/breach-details/${props.breach.Name}`} className="breach-card">
       <h3>
         <span className="logo-wrapper">
-          <BreachLogo breach={props.breach} logos={props.logos} />
+          <BreachLogo breach={props.breach} />
         </span>
         <span>{props.breach.Title}</span>
       </h3>

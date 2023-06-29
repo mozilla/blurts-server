@@ -4,13 +4,9 @@
 
 import { NextResponse } from "next/server";
 import { validateEmailAddress } from "../../../../utils/emailAddress";
-import {
-  getBreachIcons,
-  getBreaches,
-} from "../../../functions/server/getBreaches";
+import { getBreaches } from "../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../utils/hibp";
 import { getSha1 } from "../../../../utils/fxa";
-import { getBreachLogo } from "../../../../utils/breachLogo";
 import { getL10n } from "../../../functions/server/l10n";
 
 export async function POST(request: Request) {
@@ -53,13 +49,6 @@ export async function POST(request: Request) {
           .replace("</email>", "</span>")
           .replace("<count>", '<span class="breach-result-count">')
           .replace("</count>", "</span>"),
-      // This is sent in the API response because we can't call `getBreachLogo`
-      // client side, where it would expose AppConstants:
-      logos: await Promise.all(
-        breaches.map(async (breach) =>
-          getBreachLogo(breach, getBreachIcons(allBreaches))
-        )
-      ),
       // This is sent in the API response because we don't have Fluent on the
       // client side, and thus can't dynamically localise breached data classes:
       dataClassStrings: breaches.map((breach) =>

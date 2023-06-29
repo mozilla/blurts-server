@@ -33,7 +33,7 @@ export type Props = {
 export const BreachesTable = ({ userBreaches }: Props) => {
   const l10n = getL10n();
 
-  function createBreachRows({ breachesData, breachLogos }: UserBreaches) {
+  function createBreachRows({ breachesData }: UserBreaches) {
     const locale = getLocale();
     const shortDate = new Intl.DateTimeFormat(locale, {
       year: "numeric",
@@ -74,8 +74,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           >
             <summary>
               <span className="breach-company">
-                <BreachLogo breach={breach} logos={breachLogos} htmlTags />{" "}
-                {breach.Title}
+                <BreachLogo breach={breach} htmlTags /> {breach.Title}
               </span>
               <span>{shortList.format(dataClassesTranslated)}</span>
               <span>

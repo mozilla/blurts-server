@@ -2,18 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import AppConstants from '../appConstants.js'
-
 /**
  * @param {any} breach
- * @param {Map<string, string>} logos Map of URLs to logos indexed by the domain name of the respective company
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
-export function getBreachLogo (breach, logos) {
-  const logoIsAvailable = logos?.has(breach.Domain)
+export function getBreachLogo (breach) {
+  const logoIsAvailable = breach.LogoPath
 
   if (logoIsAvailable) {
-    return `<img src='${AppConstants.SERVER_URL}${logos.get(breach.Domain)}' alt='' loading="lazy" class='breach-logo' height='32' />`
+    return `<img src='${breach.LogoPath}' alt='' loading="lazy" class='breach-logo' height='32' />`
   }
 
   // Add CSS variable and a dedicated class for the logo placeholder

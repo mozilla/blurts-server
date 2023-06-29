@@ -44,21 +44,3 @@ export async function getBreaches() {
 
   return breaches;
 }
-
-export type LogoMap = Map<string, string>;
-
-export function getBreachIcons(breaches: Breach[]): LogoMap {
-  const logoMap: LogoMap = new Map();
-  breaches
-    .map((breach) => breach.Domain)
-    .filter((breachDomain) => breachDomain.length > 0)
-    .forEach((breachDomain) =>
-      logoMap.set(
-        breachDomain,
-        `https://s3.amazonaws.com/${
-          process.env.S3_BUCKET
-        }/${breachDomain.toLowerCase()}.ico`
-      )
-    );
-  return logoMap;
-}
