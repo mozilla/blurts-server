@@ -713,6 +713,8 @@ ad-unit-6-before-you-complete = Maskér din mailadresse for at beskytte dine opl
 -brand-firefox = Firefox
 -brand-fx-monitor = Firefox Monitor
 -brand-mozilla = Mozilla
+-brand-premium = Premium
+-brand-monitor-premium = Monitor Premium
 -brand-mozilla-foundation = Mozilla Foundation
 -brand-github = GitHub
 -brand-mozilla-vpn = Mozilla VPN
@@ -749,8 +751,11 @@ menu-button-title = Brugermenu
 menu-button-alt = Åbn brugermenuen
 menu-list-accessible-label = Åbn kontomenuen
 menu-item-fxa = Håndter din { -brand-fx-account }
+menu-item-fxa-alt = Åbn siden { -brand-fx-account }
 menu-item-settings = Indstillinger
+menu-item-settings-alt = Åbn siden Indstillinger
 menu-item-help = Hjælp og support
+menu-item-help-alt = Åbn hjælp- og supportsiden
 menu-item-logout = Log ud
 
 ## Footer
@@ -785,3 +790,9 @@ exposed-data = Berørte data:
 find-out-if-2 = Find ud af, om du var involveret i denne datalæk
 find-out-if-description = Vi hjælper dig med hurtigt at finde ud af, om din mailadresse blev eksponeret i denne datalæk - og hvad du skal gøre nu.
 breach-detail-cta-signup = Undersøg for datalæk
+
+## Floating banner
+
+floating-banner-text = Boost din sikkerhed på nettet med nyheder, tips og opdateringer fra { -brand-Mozilla }.
+floating-banner-link-label = Tilmeld dig
+floating-banner-dismiss-button-label = Nej tak
