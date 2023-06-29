@@ -73,10 +73,7 @@ async function updateBreachLogoPath(name, logoPath) {
   await knex('breaches')
     .where("name", name)
     .update({
-      logo_path: logoPath,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      modified_date: knex.fn.now()
+      logo_path: logoPath
     })
 }
 
