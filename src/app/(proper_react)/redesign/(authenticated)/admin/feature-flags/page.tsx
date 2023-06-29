@@ -9,7 +9,7 @@ import {
   FeatureFlagDB,
 } from "../../../../../../db/tables/featureFlags";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
-import { UserMenu } from "../../../../../components/client/UserMenu";
+import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
 
 export default async function FeatureFlagPage() {
@@ -62,7 +62,7 @@ export default async function FeatureFlagPage() {
     <div className={styles.wrapper}>
       <nav className={styles.tabBar}>
         <div className={styles.end}>
-          <UserMenu session={session} />
+          <Toolbar session={session} />
         </div>
       </nav>
       <div className={styles.start}>
