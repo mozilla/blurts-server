@@ -5,12 +5,8 @@
 // See https://nextjs.org/docs/getting-started/react-essentials#rendering-third-party-context-providers-in-server-components
 "use client";
 
-import { I18nProvider, SSRProvider } from "react-aria";
+import { I18nProvider } from "react-aria";
 
 export const ReactAriaI18nProvider: typeof I18nProvider = (props) => (
   <I18nProvider {...props} />
-);
-
-export const ReactAriaSsrProvider: typeof SSRProvider = (props) => (
-  <SSRProvider {...props} />
 );
