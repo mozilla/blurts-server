@@ -21,7 +21,8 @@
       gap: $layout-md;
     }
 
-    .chevronDown {
+    .chevron {
+      all: unset;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
       height: 20px; //height of down chevron

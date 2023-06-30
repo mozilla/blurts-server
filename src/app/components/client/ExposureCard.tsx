@@ -72,7 +72,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
   } = props;
 
   const l10n = useL10n();
-  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
     let headline, description;
@@ -131,21 +131,21 @@ export const ExposureCard = (props: ExposureCardProps) => {
               <StatusPill type={statusPillType} />
             </li>
           </ul>
-          <span
-            className={styles.chevronDown}
-            onClick={() => setDetailsOpen(!detailsOpen)}
+          <button
+            className={styles.chevron}
+            onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
           >
             <ChevronDown
-              className={detailsOpen ? styles.isOpen : ""}
-              alt={l10n.getString("chevron-down-alt")}
+              className={exposureCardExpanded ? styles.isOpen : ""}
+              alt={exposureCardExpanded ? l10n.getString("chevron-up-alt") : l10n.getString("chevron-down-alt")}
               width="20"
               height="20"
             />
-          </span>
+          </button>
         </div>
         <div
           className={`${styles.exposureDetailsSection} ${
-            detailsOpen ? styles.isOpen : ""
+            exposureCardExpanded ? styles.isOpen : ""
           }`}
         >
           {isScanResult(exposureData) ? 
