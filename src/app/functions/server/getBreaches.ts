@@ -4,15 +4,15 @@
 
 import mozlog from "../../../utils/log.js";
 import {
+  HibpLikeDbBreach,
   formatDataClassesArray,
   getAllBreachesFromDb,
   req,
 } from "../../../utils/hibp.js";
 import { upsertBreaches } from "../../../db/tables/breaches.js";
-import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
 const log = mozlog("hibp");
-let breaches: Breach[];
+let breaches: HibpLikeDbBreach[];
 
 export async function getBreaches() {
   if (breaches) {
