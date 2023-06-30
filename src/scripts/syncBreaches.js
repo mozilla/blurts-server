@@ -53,12 +53,6 @@ async function uploadToS3(fileName, fileStream) {
 }
 
 export async function getBreachIcons(breaches) {
-  const filteredBreaches = breaches.filter(async ({Domain, Name}) => {
-    const domainExists = Domain.length > 0
-    // if domain does not exist, null the logo path
-    if (!domainExists) await updateBreachFaviconUrl(Name, null)
-    return domainExists
-  });
 
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
@@ -68,7 +62,12 @@ export async function getBreachIcons(breaches) {
   const existingLogos = await readdir(logoFolder);
 
   (await Promise.all(
-    filteredBreaches.map(async ({Domain: breachDomain, Name: breachName}) => {
+    breaches.map(async ({Domain: breachDomain, Name: breachName}) => {
+      if (!breachDomain || breachDomain.length == 0) {
+        console.log('empty domain: ', breachName)
+        await updateBreachFaviconUrl(breachName, null)
+        return;
+      }
       const logoFilename = breachDomain.toLowerCase() + ".ico";
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
