@@ -10,7 +10,7 @@
  */
 
 import { req, formatDataClassesArray } from '../utils/hibp.js'
-import { getAllBreaches, upsertBreaches, updateBreachLogoPath} from '../db/tables/breaches.js'
+import { getAllBreaches, upsertBreaches, updateBreachFaviconUrl} from '../db/tables/breaches.js'
 import { readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
 import { finished } from 'node:stream/promises';
@@ -53,12 +53,6 @@ async function uploadToS3(fileName, fileStream) {
 }
 
 export async function getBreachIcons(breaches) {
-  const filteredBreaches = breaches.filter(async ({Domain, Name}) => {
-    const domainExists = Domain.length > 0
-    // if domain does not exist, null the logo path
-    if (!domainExists) await updateBreachLogoPath(Name, null)
-    return domainExists
-  });
 
   // make logofolder if it doesn't exist
   const logoFolder = os.tmpdir();
@@ -68,12 +62,17 @@ export async function getBreachIcons(breaches) {
   const existingLogos = await readdir(logoFolder);
 
   (await Promise.all(
-    filteredBreaches.map(async ({Domain: breachDomain, Name: breachName}) => {
+    breaches.map(async ({Domain: breachDomain, Name: breachName}) => {
+      if (!breachDomain || breachDomain.length == 0) {
+        console.log('empty domain: ', breachName)
+        await updateBreachFaviconUrl(breachName, null)
+        return;
+      }
       const logoFilename = breachDomain.toLowerCase() + ".ico";
       const logoPath = pathResolve(logoFolder, logoFilename);
       if (existingLogos.includes(logoFilename)) {
         console.log('skipping ', logoFilename)
-        await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
+        await updateBreachFaviconUrl(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
         return;
       }
       console.log(`fetching: ${logoFilename}`)
@@ -82,14 +81,14 @@ export async function getBreachIcons(breaches) {
       if (res.status !== 200) {
         // update logo path with null
         console.log(`Logo does not exist for: ${breachName} ${breachDomain}`)
-        await updateBreachLogoPath(breachName, null)
+        await updateBreachFaviconUrl(breachName, null)
         return;
       }
       await uploadToS3(logoFilename, Buffer.from(await res.arrayBuffer()))
       const fileStream = createWriteStream(logoPath, { flags: 'wx' });
       const bodyReadable = Readable.fromWeb(res.body)
       await finished(bodyReadable.pipe(fileStream));
-      await updateBreachLogoPath(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
+      await updateBreachFaviconUrl(breachName, `https://s3.amazonaws.com/${process.env.S3_BUCKET}/${logoFilename}`)
     })
   ));
 }

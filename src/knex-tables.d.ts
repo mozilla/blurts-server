@@ -135,6 +135,7 @@ declare module "knex/types/tables" {
     is_retired: boolean;
     is_spam_list: boolean;
     is_malware: boolean;
+    favicon_url: null | string;
   }
   type BreachOptionalColumns = Extract<
     keyof BreachRow,

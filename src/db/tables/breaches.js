@@ -47,7 +47,8 @@ async function upsertBreaches(hibpBreaches) {
           is_sensitive: breach.IsSensitive,
           is_retired: breach.IsRetired,
           is_spam_list: breach.IsSpamList,
-          is_malware: breach.IsMalware
+          is_malware: breach.IsMalware,
+          favicon_url: null,
         })
         .onConflict('name')
         .merge()
@@ -67,18 +68,18 @@ async function upsertBreaches(hibpBreaches) {
  * Update logo path of a breach by name
  *
  * @param {string} name 
- * @param {string} logoPath 
+ * @param {string} faviconUrl
  */
-async function updateBreachLogoPath(name, logoPath) {
+async function updateBreachFaviconUrl(name, faviconUrl) {
   await knex('breaches')
     .where("name", name)
     .update({
-      logo_path: logoPath
+      favicon_url: faviconUrl
     })
 }
 
 export {
   getAllBreaches,
   upsertBreaches,
-  updateBreachLogoPath
+  updateBreachFaviconUrl
 }

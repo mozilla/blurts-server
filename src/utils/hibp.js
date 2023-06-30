@@ -106,10 +106,20 @@ function formatDataClassesArray (dataClasses) {
 }
 
 /**
+ * The type `HibpLikeDbBreach` is roughly the same as the data we receive from
+ * HIBP, except that we added a `FaviconUrl`, and that a couple of fields are
+ * not available (because we do not store them in our database, at the time of
+ * writing).
+ *
+ * @typedef {{ FaviconUrl?: string }} WithFaviconUrl
+ * @typedef {WithFaviconUrl & Omit<import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach, "IsResolved" | "recencyIndex" | "ResolutionsChecked">} HibpLikeDbBreach
+ */
+
+/**
  * Get all breaches from the database table "breaches",
  * sanitize it, and return a javascript array
  *
- * @returns formatted all breaches array
+ * @returns {Promise<HibpLikeDbBreach[]>} formatted all breaches array
  */
 async function getAllBreachesFromDb () {
   /**
@@ -142,7 +152,8 @@ async function getAllBreachesFromDb () {
     IsSensitive: breach.is_sensitive,
     IsRetired: breach.is_retired,
     IsSpamList: breach.is_spam_list,
-    IsMalware: breach.is_malware
+    IsMalware: breach.is_malware,
+    FaviconUrl: breach.favicon_url,
   }))
 }
 
