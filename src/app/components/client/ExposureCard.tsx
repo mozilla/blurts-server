@@ -158,7 +158,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               })}
               <a href={exposureDetailsLink}>
                 <span>
-                  <OpenInNew alt={l10n.getString("chevron-down-alt")} width="13" height="13"/>
+                  <OpenInNew alt={l10n.getString("open-in-new-tab-alt")} width="13" height="13"/>
                 </span>
               </a>
               {" "}{l10n.getString("exposure-card-description-info-for-sale-part-two")}
@@ -177,7 +177,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               })}
               <a href={exposureDetailsLink}>
                 <span>
-                  <OpenInNew alt={l10n.getString("chevron-down-alt")} width="13" height="13" />
+                  <OpenInNew alt={l10n.getString("open-in-new-tab-alt")} width="13" height="13" />
                 </span>
               </a>
               {" "}{l10n.getString("exposure-card-description-data-breach-part-two")}
