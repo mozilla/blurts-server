@@ -137,8 +137,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           >
             <ChevronDown
               className={detailsOpen ? styles.isOpen : ""}
-              alt=""
-              aria-label={l10n.getString("chevron-down-alt")}
+              alt={l10n.getString("chevron-down-alt")}
               width="20"
               height="20"
             />
@@ -159,7 +158,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               })}
               <a href={exposureDetailsLink}>
                 <span>
-                  <OpenInNew alt="" width="13" height="13" aria-label={l10n.getString("open-in-new-tab-aria-label")} />
+                  <OpenInNew alt={l10n.getString("chevron-down-alt")} width="13" height="13"/>
                 </span>
               </a>
               {" "}{l10n.getString("exposure-card-description-info-for-sale-part-two")}
@@ -178,7 +177,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               })}
               <a href={exposureDetailsLink}>
                 <span>
-                  <OpenInNew alt="" width="13" height="13" aria-label={l10n.getString("open-in-new-tab-aria-label")} />
+                  <OpenInNew alt={l10n.getString("chevron-down-alt")} width="13" height="13" />
                 </span>
               </a>
               {" "}{l10n.getString("exposure-card-description-data-breach-part-two")}
