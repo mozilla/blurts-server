@@ -26,10 +26,12 @@ export interface ISearchLocationResults {
 
 async function getLocationsByQuery(searchQuery: string) {
   const locationNames = locationData.map((location) => {
-    const alternateNames = location.alternateNames
+    const { name, stateCode, countryCode, alternateNames } = location;
+    const alternateNamesJoined = alternateNames
       ? location.alternateNames.join(" ")
       : "";
-    return `${location.name} ${alternateNames}`;
+
+    return `${name} ${stateCode} ${countryCode} ${alternateNamesJoined}`;
   });
 
   // For search options see: https://github.com/leeoniya/uFuzzy#options
@@ -41,7 +43,7 @@ async function getLocationsByQuery(searchQuery: string) {
     intraTrn: 1,
     intraDel: 1,
     // matches lowercase letters, whitespace or apostrophe
-    intraChars: "[a-z\\s']",
+    intraChars: "[a-z\\s\\d']",
     interLft: 2,
     interRgt: 0,
   });

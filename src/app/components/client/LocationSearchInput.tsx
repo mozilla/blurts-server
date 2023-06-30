@@ -76,12 +76,16 @@ export const LocationSearchInput = () => {
         locationData.results &&
         locationData.results.length > 0 && (
           <ul>
-            <pre>{JSON.stringify(locationData, null, 2)}</pre>
-            {locationData.results.map(({ id, name, stateCode }) => (
+            {/* <pre style={{ fontSize: "0.75rem" }}>
+              {JSON.stringify(locationData, null, 2)}
+            </pre> */}
+            {locationData.results.map(({ id, name, population, stateCode }) => (
               <li key={id}>
                 {name}{" "}
                 <small>
-                  {stateCode}, USA ({id})
+                  {stateCode}, USA #{id}
+                  <br />
+                  {population}
                 </small>
               </li>
             ))}

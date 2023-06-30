@@ -34,14 +34,12 @@ import {
   IDataFileUrls
 } from './types.d'
 
-const DATA_COUNTRY_CODE = 'US'
 const REMOTE_DATA_URL = 'https://download.geonames.org/export/dump'
+const DATA_COUNTRY_CODE = 'US'
 const LOCATIONS_DATA_FILE = 'locationAutocompleteData.json'
 
-// Change these variables only for debugging and the script downloaded the
-// remote resources intially at least once.
-const REFETCH_REMOTE_DATA = true
-const SHOULD_CLEANUP_DOWNLOADED_DATA = true
+const FETCH_REMOTE_DATASETS = false
+const CLEANUP_TMP_DATA_AFTER_FINISHED = false
 
 function writeFromRemoteFile({ url, writeStream }: {
   url: string,
@@ -95,9 +93,10 @@ try {
   const localDataDestinationPath = {
     locations: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}-extracted`,
     alternateNames: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}-extracted`,
+    hierarchy: `${tmpDirPath}/hierarchy-extracted`
   }
 
-  if (REFETCH_REMOTE_DATA) {
+  if (FETCH_REMOTE_DATASETS) {
     console.info('Download all locations')
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/${DATA_COUNTRY_CODE}.zip`,
@@ -110,6 +109,13 @@ try {
       remoteArchiveUrl: `${REMOTE_DATA_URL}/alternatenames/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.alternateNames
+    })
+
+    console.info('Download hierachy data')
+    await fetchRemoteArchive({
+      remoteArchiveUrl: `${REMOTE_DATA_URL}/hierarchy.zip`,
+      localDownloadPath: `${tmpDirPath}/hierarchy.zip`,
+      localExtractionPath: localDataDestinationPath.hierarchy
     })
   } else {
     console.info('Skip downloading remote data')
@@ -157,6 +163,23 @@ try {
       })
       .filter(alternateName => alternateName) as Array<IRelevantLocationAlternate>
 
+  console.info('Read file: Hierarchy')
+  const hierachyData = readFileSync(
+    `${localDataDestinationPath.hierarchy}/hierarchy.txt`,
+    'utf8'
+  )
+  console.info('Parse data: Location hierarchy')
+  const hierachyDataRows = hierachyData.split('\n')
+  const hierarchyIds = hierachyDataRows.map(hierachyRow => {
+    const [
+      locationParentId,
+      locationChildId,
+      _locationType
+    ] = hierachyRow.split('\t');
+
+    return [locationParentId, locationChildId];
+  })
+
   console.info('Read file: All locations')
   const locationData = readFileSync(
     `${localDataDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
@@ -197,7 +220,7 @@ try {
 
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
-      // TODO: Use location relations data for filtering out districts
+      // TODO: Use hierachy to filter out districts (has parent with feature class P)
       // Feature classes and codes: http://www.geonames.org/export/codes.html
       const hasRelevantFeature = featureClass === 'P' && (
         featureCode === 'PPL' ||
@@ -233,6 +256,7 @@ try {
           // switch names if an alternate name is the preferred location name
           name: preferredName ? preferredName.name : name,
           stateCode: admin1Code,
+          countryCode: 'USA',
           population,
           ...((alternateNames && alternateNames.length > 0) && {
             alternateNames: alternateNamesFinal
@@ -248,7 +272,7 @@ try {
   console.info(`Write location data to file: ${LOCATIONS_DATA_FILE}`)
   writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(relevantLocationData))
 
-  if (SHOULD_CLEANUP_DOWNLOADED_DATA) {
+  if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
     console.info('Clean up data directory')
     rmSync(tmpDirPath, {
       recursive: true,

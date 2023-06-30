@@ -131,6 +131,8 @@ export interface IRelevantLocation {
   id: string;
   name: string;
   stateCode: string;
+  countryCode: string;
+  population: TLocationPopulation
 }
 
 export interface IRelevantLocationAlternate {
