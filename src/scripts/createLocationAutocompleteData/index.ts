@@ -66,26 +66,26 @@ async function fetchRemoteArchive({
   localDownloadPath,
   localExtractionPath
 }: IDataFileUrls) {
-  console.info(`Download remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`)
+  console.info(`Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`)
 
   await writeFromRemoteFile({
     url: remoteArchiveUrl,
     writeStream: createWriteStream(localDownloadPath)
   })
 
-  console.info(`Extract: ${localDownloadPath} -> ${localExtractionPath}`)
+  console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`)
   const zip = new AdmZip(localDownloadPath)
   zip.extractAllTo(localExtractionPath, true)
 }
 
 try {
   const startTime = Date.now()
-  console.info('Run create location data')
+  console.info('Create autocomplete location data')
 
   const __dirname = dirname(fileURLToPath(import.meta.url))
   const tmpDirPath = resolve(__dirname, 'tpm-data')
 
-  console.info(`Create data directory: ${tmpDirPath}`)
+  console.info(`Creating data directory: ${tmpDirPath}`)
   if (!existsSync(tmpDirPath)) {
     mkdirSync(tmpDirPath)
   }
@@ -97,37 +97,37 @@ try {
   }
 
   if (FETCH_REMOTE_DATASETS) {
-    console.info('Download all locations')
+    console.info('Downloading all locations')
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.locations
     })
 
-    console.info('Download alternate names')
+    console.info('Downloading alternate names')
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/alternatenames/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}.zip`,
       localExtractionPath: localDataDestinationPath.alternateNames
     })
 
-    console.info('Download hierachy data')
+    console.info('Downloading hierachy data')
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/hierarchy.zip`,
       localDownloadPath: `${tmpDirPath}/hierarchy.zip`,
       localExtractionPath: localDataDestinationPath.hierarchy
     })
   } else {
-    console.info('Skip downloading remote data')
+    console.info('Skipping downloading remote data')
   }
 
-  console.info('Read file: Alternate location names')
+  console.info('Reading file: Alternate location names')
   const alternateNamesData = readFileSync(
     `${localDataDestinationPath.alternateNames}/${DATA_COUNTRY_CODE}.txt`,
     'utf8'
   )
 
-  console.info('Parse data: Alternate location names')
+  console.info('Parsing data: Alternate location names')
   const alternateNameRows = alternateNamesData.split('\n')
   const parsedAlternateNames =
     alternateNameRows
@@ -163,38 +163,36 @@ try {
       })
       .filter(alternateName => alternateName) as Array<IRelevantLocationAlternate>
 
-  console.info('Read file: Hierarchy')
+  console.info('Reading file: Hierarchy')
   const hierachyData = readFileSync(
     `${localDataDestinationPath.hierarchy}/hierarchy.txt`,
     'utf8'
   )
-  console.info('Parse data: Location hierarchy')
+  console.info('Parsing data: Location hierarchy')
   const hierachyDataRows = hierachyData.split('\n')
   const hierarchyIds = hierachyDataRows.map(hierachyRow => {
     const [
       locationParentId,
       locationChildId,
-      _locationType
+      _hierachyType
     ] = hierachyRow.split('\t');
 
     return [locationParentId, locationChildId];
   })
 
-  console.info('Read file: All locations')
+  console.info('Reading file: All locations')
   const locationData = readFileSync(
     `${localDataDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
     'utf8'
   )
 
-  console.info('Parse data: All locations')
+  console.info('Parsing data: All locations')
   const locationDataRows = locationData.split('\n')
   const locationRowCount = locationDataRows.length
-  const relevantLocationData: Array<IRelevantLocation> = locationDataRows
+  const locationDataPopulated: Array<IRelevantLocation> = locationDataRows
     .reduce((relevantLocations, location, rowIndex) => {
       const progress = Math.round(((rowIndex + 1) / locationRowCount) * 100)
-      process.stdout.write(
-        `Progress: ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`
-      )
+      process.stdout.write(`-> ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`)
 
       const [
         geonameId,
@@ -220,9 +218,8 @@ try {
 
       // Only include populated place a city, town, village, or other
       // agglomeration of buildings where people live and work.
-      // TODO: Use hierachy to filter out districts (has parent with feature class P)
       // Feature classes and codes: http://www.geonames.org/export/codes.html
-      const hasRelevantFeature = featureClass === 'P' && (
+      const isPopulatedPlaceOfInterest = featureClass === 'P' && (
         featureCode === 'PPL' ||
         featureCode === 'PPLA' ||
         featureCode === 'PPLA2' ||
@@ -233,7 +230,7 @@ try {
       )
       const hasPopulation = Number(population) !== 0
 
-      if (hasRelevantFeature && hasPopulation) {
+      if (isPopulatedPlaceOfInterest && hasPopulation) {
         const alternateNames = parsedAlternateNames
           .filter(({ alternateOf, name: alternateName }) => (
             alternateOf === geonameId && alternateName !== name
@@ -257,6 +254,8 @@ try {
           name: preferredName ? preferredName.name : name,
           stateCode: admin1Code,
           countryCode: 'USA',
+          featureClass,
+          featureCode,
           population,
           ...((alternateNames && alternateNames.length > 0) && {
             alternateNames: alternateNamesFinal
@@ -267,13 +266,36 @@ try {
       return relevantLocations
     }, Array())
 
-  console.info(`Number of relevant locations found: ${relevantLocationData.length}`)
+  // Filter out locations that have another populated place as a parent.
+  // These are locations that have a parent with the feature class `P`.
+  console.info('Filtering by hierachy')
+  const locationDataPopulatedCount = locationDataPopulated.length
+  const locationDataPopulatedTopLevel = locationDataPopulated
+    .filter((locationPopulated, rowIndex) => {
+      const progress = Math.round(((rowIndex + 1) / locationDataPopulatedCount) * 100)
+      process.stdout.write(`-> ${locationDataPopulatedCount}/${rowIndex + 1} (${progress}%) \r`)
 
-  console.info(`Write location data to file: ${LOCATIONS_DATA_FILE}`)
-  writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(relevantLocationData))
+      let hasPopulatedParent = false;
+      hierarchyIds.forEach(([ parentId, childId ]) => {
+        if (locationPopulated.id === childId) {
+          locationDataPopulated.forEach(location => {
+            if (location.id === parentId && location.featureClass === 'P') {
+              hasPopulatedParent = true;
+            }
+          })
+        }
+      })
+
+      return !hasPopulatedParent
+    })
+
+  console.info(`Number of relevant locations found: ${locationDataPopulatedTopLevel.length}`)
+
+  console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`)
+  writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(locationDataPopulatedTopLevel))
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
-    console.info('Clean up data directory')
+    console.info('Cleaning up data directory')
     rmSync(tmpDirPath, {
       recursive: true,
       force: true

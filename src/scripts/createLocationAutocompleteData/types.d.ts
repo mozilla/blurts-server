@@ -126,12 +126,13 @@ export type TLocationData = [
   TLocationModificationDate
 ]
 
-
 export interface IRelevantLocation {
   id: string;
   name: string;
   stateCode: string;
   countryCode: string;
+  featureClass: TLocationFeatureClass;
+  featureCode: TLocationFeatureCode;
   population: TLocationPopulation
 }
 
