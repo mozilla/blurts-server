@@ -33,19 +33,19 @@ type TIsolanguage = string;
 // alternate name or name variant, varchar(400)
 type TAlternateName = string;
 // is an abbreviation of the name
-type TIsAbbreviation = '' | '1';
+type TIsAbbreviation = "" | "1";
 // is an official/preferred name
-type TIsPreferredName = '' | '1';
+type TIsPreferredName = "" | "1";
 // is short name like 'California' for 'State of California
-type TIsShortName = '' | '1';
+type TIsShortName = "" | "1";
 // alternate name is a colloquial or slang term
 // Example: 'Big Apple' for 'New York'
-type TIsColloquial = '' | '1'
+type TIsColloquial = "" | "1";
 // alternate name is historic and was used in the past
 // Example 'Bombay' for 'Mumbai'.
-type TIsHistoric = '' | '1';
-type TFrom = string // from period when the name was used
-type TTo = string // to period when the name was used
+type TIsHistoric = "" | "1";
+type TFrom = string; // from period when the name was used
+type TTo = string; // to period when the name was used
 
 export type TAlternateNameData = [
   TAlternateNameId,
@@ -61,48 +61,48 @@ export type TAlternateNameData = [
 ];
 
 // name of geographical point (utf8), varchar(200)
-type TLocationName = 'string';
+type TLocationName = "string";
 // name of geographical point (ascii), varchar(200)
-type TLocationAsciiname = 'string';
+type TLocationAsciiname = "string";
 // alternatenames, comma separated, ascii names automatically transliterated,
 // convenience attribute from alternatename table, varchar(10000)
-type TLocationAlternatenames = 'string';
+type TLocationAlternatenames = "string";
 // latitude in decimal degrees (wgs84)
-type TLocationLatitude = 'string';
+type TLocationLatitude = "string";
 // longitude in decimal degrees (wgs84)
-type TLocationLongitude = 'string';
+type TLocationLongitude = "string";
 // Feature classes and codes: http://www.geonames.org/export/codes.html
 // char(1)
-type TLocationFeatureClass = 'A' | 'H' | 'L' | 'P' | 'R' | 'S' | 'T' | 'U' | 'V';
+type TLocationFeatureClass = "A" | "H" | "L" | "P" | "R" | "S" | "T" | "U" | "V";
 // varchar(10)
-type TLocationFeatureCode = 'ADM1' | 'ADM1H' | 'ADM2' | 'ADM2H' | 'ADM3' | 'ADM3H' | 'ADM4' | 'ADM4H' | 'ADM5' | 'ADM5H' | 'ADMD' | 'ADMDH' | 'LTER' | 'PCL' | 'PCLD' | 'PCLF' | 'PCLH' | 'PCLI' | 'PCLIX' | 'PCLS' | 'PRSH' | 'TERR' | 'ZN' | 'ZNB' | 'AIRS' | 'ANCH' | 'BAY' | 'BAYS' | 'BGHT' | 'BNK' | 'BNKR' | 'BNKX' | 'BOG' | 'CAPG' | 'CHN' | 'CHNL' | 'CHNM' | 'CHNN' | 'CNFL' | 'CNL' | 'CNLA' | 'CNLB' | 'CNLD' | 'CNLI' | 'CNLN' | 'CNLQ' | 'CNLSB' | 'CNLX' | 'COVE' | 'CRKT' | 'CRNT' | 'CUTF' | 'DCK' | 'DCKB' | 'DOMG' | 'DPRG' | 'DTCH' | 'DTCHD' | 'DTCHI' | 'DTCHM' | 'ESTY' | 'FISH' | 'FJD' | 'FJDS' | 'FLLS' | 'FLLSX' | 'FLTM' | 'FLTT' | 'GLCR' | 'GULF' | 'GYSR' | 'HBR' | 'HBRX' | 'INLT' | 'INLTQ' | 'LBED' | 'LGN' | 'LGNS' | 'LGNX' | 'LK' | 'LKC' | 'LKI' | 'LKN' | 'LKNI' | 'LKO' | 'LKOI' | 'LKS' | 'LKSB' | 'LKSC' | 'LKSI' | 'LKSN' | 'LKSNI' | 'LKX' | 'MFGN' | 'MGV' | 'MOOR' | 'MRSH' | 'MRSHN' | 'NRWS' | 'OCN' | 'OVF' | 'PND' | 'PNDI' | 'PNDN' | 'PNDNI' | 'PNDS' | 'PNDSF' | 'PNDSI' | 'PNDSN' | 'POOL' | 'POOLI' | 'RCH' | 'RDGG' | 'RDST' | 'RF' | 'RFC' | 'RFX' | 'RPDS' | 'RSV' | 'RSVI' | 'RSVT' | 'RVN' | 'SBKH' | 'SD' | 'SEA' | 'SHOL' | 'SILL' | 'SPNG' | 'SPNS' | 'SPNT' | 'STM' | 'STMA' | 'STMB' | 'STMC' | 'STMD' | 'STMH' | 'STMI' | 'STMIX' | 'STMM' | 'STMQ' | 'STMS' | 'STMSB' | 'STMX' | 'STRT' | 'SWMP' | 'SYSI' | 'TNLC' | 'WAD' | 'WADB' | 'WADJ' | 'WADM' | 'WADS' | 'WADX' | 'WHRL' | 'WLL' | 'WLLQ' | 'WLLS' | 'WTLD' | 'WTLDI' | 'WTRC' | 'WTRH' | 'AGRC' | 'AMUS' | 'AREA' | 'BSND' | 'BSNP' | 'BTL' | 'CLG' | 'CMN' | 'CNS' | 'COLF' | 'CONT' | 'CST' | 'CTRB' | 'DEVH' | 'FLD' | 'FLDI' | 'GASF' | 'GRAZ' | 'GVL' | 'INDS' | 'LAND' | 'LCTY' | 'MILB' | 'MNA' | 'MVA' | 'NVB' | 'OAS' | 'OILF' | 'PEAT' | 'PRK' | 'PRT' | 'QCKS' | 'RES' | 'RESA' | 'RESF' | 'RESH' | 'RESN' | 'RESP' | 'RESV' | 'RESW' | 'RGN' | 'RGNE' | 'RGNH' | 'RGNL' | 'RNGA' | 'SALT' | 'SNOW' | 'TRB' | 'PPL' | 'PPLA' | 'PPLA2' | 'PPLA3' | 'PPLA4' | 'PPLA5' | 'PPLC' | 'PPLCH' | 'PPLF' | 'PPLG' | 'PPLH' | 'PPLL' | 'PPLQ' | 'PPLR' | 'PPLS' | 'PPLW' | 'PPLX' | 'STLMT' | 'CSWY' | 'OILP' | 'PRMN' | 'PTGE' | 'RD' | 'RDA' | 'RDB' | 'RDCUT' | 'RDJCT' | 'RJCT' | 'RR' | 'RRQ' | 'RTE' | 'RYD' | 'ST' | 'STKR' | 'TNL' | 'TNLN' | 'TNLRD' | 'TNLRR' | 'TNLS' | 'TRL' | 'ADMF' | 'AGRF' | 'AIRB' | 'AIRF' | 'AIRH' | 'AIRP' | 'AIRQ' | 'AIRT' | 'AMTH' | 'ANS' | 'AQC' | 'ARCH' | 'ARCHV' | 'ART' | 'ASTR' | 'ASYL' | 'ATHF' | 'ATM' | 'BANK' | 'BCN' | 'BDG' | 'BDGQ' | 'BLDA' | 'BLDG' | 'BLDO' | 'BP' | 'BRKS' | 'BRKW' | 'BSTN' | 'BTYD' | 'BUR' | 'BUSTN' | 'BUSTP' | 'CARN' | 'CAVE' | 'CH' | 'CMP' | 'CMPL' | 'CMPLA' | 'CMPMN' | 'CMPO' | 'CMPQ' | 'CMPRF' | 'CMTY' | 'COMC' | 'CRRL' | 'CSNO' | 'CSTL' | 'CSTM' | 'CTHSE' | 'CTRA' | 'CTRCM' | 'CTRF' | 'CTRM' | 'CTRR' | 'CTRS' | 'CVNT' | 'DAM' | 'DAMQ' | 'DAMSB' | 'DARY' | 'DCKD' | 'DCKY' | 'DIKE' | 'DIP' | 'DPOF' | 'EST' | 'ESTO' | 'ESTR' | 'ESTSG' | 'ESTT' | 'ESTX' | 'FCL' | 'FNDY' | 'FRM' | 'FRMQ' | 'FRMS' | 'FRMT' | 'FT' | 'FY' | 'FYT' | 'GATE' | 'GDN' | 'GHAT' | 'GHSE' | 'GOSP' | 'GOVL' | 'GRVE' | 'HERM' | 'HLT' | 'HMSD' | 'HSE' | 'HSEC' | 'HSP' | 'HSPC' | 'HSPD' | 'HSPL' | 'HSTS' | 'HTL' | 'HUT' | 'HUTS' | 'INSM' | 'ITTR' | 'JTY' | 'LDNG' | 'LEPC' | 'LIBR' | 'LNDF' | 'LOCK' | 'LTHSE' | 'MALL' | 'MAR' | 'MFG' | 'MFGB' | 'MFGC' | 'MFGCU' | 'MFGLM' | 'MFGM' | 'MFGPH' | 'MFGQ' | 'MFGSG' | 'MKT' | 'ML' | 'MLM' | 'MLO' | 'MLSG' | 'MLSGQ' | 'MLSW' | 'MLWND' | 'MLWTR' | 'MN' | 'MNAU' | 'MNC' | 'MNCR' | 'MNCU' | 'MNFE' | 'MNMT' | 'MNN' | 'MNQ' | 'MNQR' | 'MOLE' | 'MSQE' | 'MSSN' | 'MSSNQ' | 'MSTY' | 'MTRO' | 'MUS' | 'NOV' | 'NSY' | 'OBPT' | 'OBS' | 'OBSR' | 'OILJ' | 'OILQ' | 'OILR' | 'OILT' | 'OILW' | 'OPRA' | 'PAL' | 'PGDA' | 'PIER' | 'PKLT' | 'PMPO' | 'PMPW' | 'PO' | 'PP' | 'PPQ' | 'PRKGT' | 'PRKHQ' | 'PRN' | 'PRNJ' | 'PRNQ' | 'PS' | 'PSH' | 'PSN' | 'PSTB' | 'PSTC' | 'PSTP' | 'PYR' | 'PYRS' | 'QUAY' | 'RDCR' | 'RDIN' | 'RECG' | 'RECR' | 'REST' | 'RET' | 'RHSE' | 'RKRY' | 'RLG' | 'RLGR' | 'RNCH' | 'RSD' | 'RSGNL' | 'RSRT' | 'RSTN' | 'RSTNQ' | 'RSTP' | 'RSTPQ' | 'RUIN' | 'SCH' | 'SCHA' | 'SCHC' | 'SCHL' | 'SCHM' | 'SCHN' | 'SCHT' | 'SECP' | 'SHPF' | 'SHRN' | 'SHSE' | 'SLCE' | 'SNTR' | 'SPA' | 'SPLY' | 'SQR' | 'STBL' | 'STDM' | 'STNB' | 'STNC' | 'STNE' | 'STNF' | 'STNI' | 'STNM' | 'STNR' | 'STNS' | 'STNW' | 'STPS' | 'SWT' | 'SYG' | 'THTR' | 'TMB' | 'TMPL' | 'TNKD' | 'TOLL' | 'TOWR' | 'TRAM' | 'TRANT' | 'TRIG' | 'TRMO' | 'TWO' | 'UNIP' | 'UNIV' | 'USGE' | 'VETF' | 'WALL' | 'WALLA' | 'WEIR' | 'WHRF' | 'WRCK' | 'WTRW' | 'ZNF' | 'ZOO' | 'ASPH' | 'ATOL' | 'BAR' | 'BCH' | 'BCHS' | 'BDLD' | 'BLDR' | 'BLHL' | 'BLOW' | 'BNCH' | 'BUTE' | 'CAPE' | 'CFT' | 'CLDA' | 'CLF' | 'CNYN' | 'CONE' | 'CRDR' | 'CRQ' | 'CRQS' | 'CRTR' | 'CUET' | 'DLTA' | 'DPR' | 'DSRT' | 'DUNE' | 'DVD' | 'ERG' | 'FAN' | 'FORD' | 'FSR' | 'GAP' | 'GRGE' | 'HDLD' | 'HLL' | 'HLLS' | 'HMCK' | 'HMDA' | 'INTF' | 'ISL' | 'ISLET' | 'ISLF' | 'ISLM' | 'ISLS' | 'ISLT' | 'ISLX' | 'ISTH' | 'KRST' | 'LAVA' | 'LEV' | 'MESA' | 'MND' | 'MRN' | 'MT' | 'MTS' | 'NKM' | 'NTK' | 'NTKS' | 'PAN' | 'PANS' | 'PASS' | 'PEN' | 'PENX' | 'PK' | 'PKS' | 'PLAT' | 'PLATX' | 'PLDR' | 'PLN' | 'PLNX' | 'PROM' | 'PT' | 'PTS' | 'RDGB' | 'RDGE' | 'REG' | 'RK' | 'RKFL' | 'RKS' | 'SAND' | 'SBED' | 'SCRP' | 'SDL' | 'SHOR' | 'SINK' | 'SLID' | 'SLP' | 'SPIT' | 'SPUR' | 'TAL' | 'TRGD' | 'TRR' | 'UPLD' | 'VAL' | 'VALG' | 'VALS' | 'VALX' | 'VLC' | 'APNU' | 'ARCU' | 'ARRU' | 'BDLU' | 'BKSU' | 'BNKU' | 'BSNU' | 'CDAU' | 'CNSU' | 'CNYU' | 'CRSU' | 'DEPU' | 'EDGU' | 'ESCU' | 'FANU' | 'FLTU' | 'FRZU' | 'FURU' | 'GAPU' | 'GLYU' | 'HLLU' | 'HLSU' | 'HOLU' | 'KNLU' | 'KNSU' | 'LDGU' | 'LEVU' | 'MESU' | 'MNDU' | 'MOTU' | 'MTU' | 'PKSU' | 'PKU' | 'PLNU' | 'PLTU' | 'PNLU' | 'PRVU' | 'RDGU' | 'RDSU' | 'RFSU' | 'RFU' | 'RISU' | 'SCNU' | 'SCSU' | 'SDLU' | 'SHFU' | 'SHLU' | 'SHSU' | 'SHVU' | 'SILU' | 'SLPU' | 'SMSU' | 'SMU' | 'SPRU' | 'TERU' | 'TMSU' | 'TMTU' | 'TNGU' | 'TRGU' | 'TRNU' | 'VALU' | 'VLSU' | 'BUSH' | 'CULT' | 'FRST' | 'FRSTF' | 'GROVE' | 'GRSLD' | 'GRVC' | 'GRVO' | 'GRVP' | 'GRVPN' | 'HTH' | 'MDW' | 'OCH' | 'SCRB' | 'TREE' | 'TUND' | 'VIN' | 'VINS';
+type TLocationFeatureCode = "ADM1" | "ADM1H" | "ADM2" | "ADM2H" | "ADM3" | "ADM3H" | "ADM4" | "ADM4H" | "ADM5" | "ADM5H" | "ADMD" | "ADMDH" | "LTER" | "PCL" | "PCLD" | "PCLF" | "PCLH" | "PCLI" | "PCLIX" | "PCLS" | "PRSH" | "TERR" | "ZN" | "ZNB" | "AIRS" | "ANCH" | "BAY" | "BAYS" | "BGHT" | "BNK" | "BNKR" | "BNKX" | "BOG" | "CAPG" | "CHN" | "CHNL" | "CHNM" | "CHNN" | "CNFL" | "CNL" | "CNLA" | "CNLB" | "CNLD" | "CNLI" | "CNLN" | "CNLQ" | "CNLSB" | "CNLX" | "COVE" | "CRKT" | "CRNT" | "CUTF" | "DCK" | "DCKB" | "DOMG" | "DPRG" | "DTCH" | "DTCHD" | "DTCHI" | "DTCHM" | "ESTY" | "FISH" | "FJD" | "FJDS" | "FLLS" | "FLLSX" | "FLTM" | "FLTT" | "GLCR" | "GULF" | "GYSR" | "HBR" | "HBRX" | "INLT" | "INLTQ" | "LBED" | "LGN" | "LGNS" | "LGNX" | "LK" | "LKC" | "LKI" | "LKN" | "LKNI" | "LKO" | "LKOI" | "LKS" | "LKSB" | "LKSC" | "LKSI" | "LKSN" | "LKSNI" | "LKX" | "MFGN" | "MGV" | "MOOR" | "MRSH" | "MRSHN" | "NRWS" | "OCN" | "OVF" | "PND" | "PNDI" | "PNDN" | "PNDNI" | "PNDS" | "PNDSF" | "PNDSI" | "PNDSN" | "POOL" | "POOLI" | "RCH" | "RDGG" | "RDST" | "RF" | "RFC" | "RFX" | "RPDS" | "RSV" | "RSVI" | "RSVT" | "RVN" | "SBKH" | "SD" | "SEA" | "SHOL" | "SILL" | "SPNG" | "SPNS" | "SPNT" | "STM" | "STMA" | "STMB" | "STMC" | "STMD" | "STMH" | "STMI" | "STMIX" | "STMM" | "STMQ" | "STMS" | "STMSB" | "STMX" | "STRT" | "SWMP" | "SYSI" | "TNLC" | "WAD" | "WADB" | "WADJ" | "WADM" | "WADS" | "WADX" | "WHRL" | "WLL" | "WLLQ" | "WLLS" | "WTLD" | "WTLDI" | "WTRC" | "WTRH" | "AGRC" | "AMUS" | "AREA" | "BSND" | "BSNP" | "BTL" | "CLG" | "CMN" | "CNS" | "COLF" | "CONT" | "CST" | "CTRB" | "DEVH" | "FLD" | "FLDI" | "GASF" | "GRAZ" | "GVL" | "INDS" | "LAND" | "LCTY" | "MILB" | "MNA" | "MVA" | "NVB" | "OAS" | "OILF" | "PEAT" | "PRK" | "PRT" | "QCKS" | "RES" | "RESA" | "RESF" | "RESH" | "RESN" | "RESP" | "RESV" | "RESW" | "RGN" | "RGNE" | "RGNH" | "RGNL" | "RNGA" | "SALT" | "SNOW" | "TRB" | "PPL" | "PPLA" | "PPLA2" | "PPLA3" | "PPLA4" | "PPLA5" | "PPLC" | "PPLCH" | "PPLF" | "PPLG" | "PPLH" | "PPLL" | "PPLQ" | "PPLR" | "PPLS" | "PPLW" | "PPLX" | "STLMT" | "CSWY" | "OILP" | "PRMN" | "PTGE" | "RD" | "RDA" | "RDB" | "RDCUT" | "RDJCT" | "RJCT" | "RR" | "RRQ" | "RTE" | "RYD" | "ST" | "STKR" | "TNL" | "TNLN" | "TNLRD" | "TNLRR" | "TNLS" | "TRL" | "ADMF" | "AGRF" | "AIRB" | "AIRF" | "AIRH" | "AIRP" | "AIRQ" | "AIRT" | "AMTH" | "ANS" | "AQC" | "ARCH" | "ARCHV" | "ART" | "ASTR" | "ASYL" | "ATHF" | "ATM" | "BANK" | "BCN" | "BDG" | "BDGQ" | "BLDA" | "BLDG" | "BLDO" | "BP" | "BRKS" | "BRKW" | "BSTN" | "BTYD" | "BUR" | "BUSTN" | "BUSTP" | "CARN" | "CAVE" | "CH" | "CMP" | "CMPL" | "CMPLA" | "CMPMN" | "CMPO" | "CMPQ" | "CMPRF" | "CMTY" | "COMC" | "CRRL" | "CSNO" | "CSTL" | "CSTM" | "CTHSE" | "CTRA" | "CTRCM" | "CTRF" | "CTRM" | "CTRR" | "CTRS" | "CVNT" | "DAM" | "DAMQ" | "DAMSB" | "DARY" | "DCKD" | "DCKY" | "DIKE" | "DIP" | "DPOF" | "EST" | "ESTO" | "ESTR" | "ESTSG" | "ESTT" | "ESTX" | "FCL" | "FNDY" | "FRM" | "FRMQ" | "FRMS" | "FRMT" | "FT" | "FY" | "FYT" | "GATE" | "GDN" | "GHAT" | "GHSE" | "GOSP" | "GOVL" | "GRVE" | "HERM" | "HLT" | "HMSD" | "HSE" | "HSEC" | "HSP" | "HSPC" | "HSPD" | "HSPL" | "HSTS" | "HTL" | "HUT" | "HUTS" | "INSM" | "ITTR" | "JTY" | "LDNG" | "LEPC" | "LIBR" | "LNDF" | "LOCK" | "LTHSE" | "MALL" | "MAR" | "MFG" | "MFGB" | "MFGC" | "MFGCU" | "MFGLM" | "MFGM" | "MFGPH" | "MFGQ" | "MFGSG" | "MKT" | "ML" | "MLM" | "MLO" | "MLSG" | "MLSGQ" | "MLSW" | "MLWND" | "MLWTR" | "MN" | "MNAU" | "MNC" | "MNCR" | "MNCU" | "MNFE" | "MNMT" | "MNN" | "MNQ" | "MNQR" | "MOLE" | "MSQE" | "MSSN" | "MSSNQ" | "MSTY" | "MTRO" | "MUS" | "NOV" | "NSY" | "OBPT" | "OBS" | "OBSR" | "OILJ" | "OILQ" | "OILR" | "OILT" | "OILW" | "OPRA" | "PAL" | "PGDA" | "PIER" | "PKLT" | "PMPO" | "PMPW" | "PO" | "PP" | "PPQ" | "PRKGT" | "PRKHQ" | "PRN" | "PRNJ" | "PRNQ" | "PS" | "PSH" | "PSN" | "PSTB" | "PSTC" | "PSTP" | "PYR" | "PYRS" | "QUAY" | "RDCR" | "RDIN" | "RECG" | "RECR" | "REST" | "RET" | "RHSE" | "RKRY" | "RLG" | "RLGR" | "RNCH" | "RSD" | "RSGNL" | "RSRT" | "RSTN" | "RSTNQ" | "RSTP" | "RSTPQ" | "RUIN" | "SCH" | "SCHA" | "SCHC" | "SCHL" | "SCHM" | "SCHN" | "SCHT" | "SECP" | "SHPF" | "SHRN" | "SHSE" | "SLCE" | "SNTR" | "SPA" | "SPLY" | "SQR" | "STBL" | "STDM" | "STNB" | "STNC" | "STNE" | "STNF" | "STNI" | "STNM" | "STNR" | "STNS" | "STNW" | "STPS" | "SWT" | "SYG" | "THTR" | "TMB" | "TMPL" | "TNKD" | "TOLL" | "TOWR" | "TRAM" | "TRANT" | "TRIG" | "TRMO" | "TWO" | "UNIP" | "UNIV" | "USGE" | "VETF" | "WALL" | "WALLA" | "WEIR" | "WHRF" | "WRCK" | "WTRW" | "ZNF" | "ZOO" | "ASPH" | "ATOL" | "BAR" | "BCH" | "BCHS" | "BDLD" | "BLDR" | "BLHL" | "BLOW" | "BNCH" | "BUTE" | "CAPE" | "CFT" | "CLDA" | "CLF" | "CNYN" | "CONE" | "CRDR" | "CRQ" | "CRQS" | "CRTR" | "CUET" | "DLTA" | "DPR" | "DSRT" | "DUNE" | "DVD" | "ERG" | "FAN" | "FORD" | "FSR" | "GAP" | "GRGE" | "HDLD" | "HLL" | "HLLS" | "HMCK" | "HMDA" | "INTF" | "ISL" | "ISLET" | "ISLF" | "ISLM" | "ISLS" | "ISLT" | "ISLX" | "ISTH" | "KRST" | "LAVA" | "LEV" | "MESA" | "MND" | "MRN" | "MT" | "MTS" | "NKM" | "NTK" | "NTKS" | "PAN" | "PANS" | "PASS" | "PEN" | "PENX" | "PK" | "PKS" | "PLAT" | "PLATX" | "PLDR" | "PLN" | "PLNX" | "PROM" | "PT" | "PTS" | "RDGB" | "RDGE" | "REG" | "RK" | "RKFL" | "RKS" | "SAND" | "SBED" | "SCRP" | "SDL" | "SHOR" | "SINK" | "SLID" | "SLP" | "SPIT" | "SPUR" | "TAL" | "TRGD" | "TRR" | "UPLD" | "VAL" | "VALG" | "VALS" | "VALX" | "VLC" | "APNU" | "ARCU" | "ARRU" | "BDLU" | "BKSU" | "BNKU" | "BSNU" | "CDAU" | "CNSU" | "CNYU" | "CRSU" | "DEPU" | "EDGU" | "ESCU" | "FANU" | "FLTU" | "FRZU" | "FURU" | "GAPU" | "GLYU" | "HLLU" | "HLSU" | "HOLU" | "KNLU" | "KNSU" | "LDGU" | "LEVU" | "MESU" | "MNDU" | "MOTU" | "MTU" | "PKSU" | "PKU" | "PLNU" | "PLTU" | "PNLU" | "PRVU" | "RDGU" | "RDSU" | "RFSU" | "RFU" | "RISU" | "SCNU" | "SCSU" | "SDLU" | "SHFU" | "SHLU" | "SHSU" | "SHVU" | "SILU" | "SLPU" | "SMSU" | "SMU" | "SPRU" | "TERU" | "TMSU" | "TMTU" | "TNGU" | "TRGU" | "TRNU" | "VALU" | "VLSU" | "BUSH" | "CULT" | "FRST" | "FRSTF" | "GROVE" | "GRSLD" | "GRVC" | "GRVO" | "GRVP" | "GRVPN" | "HTH" | "MDW" | "OCH" | "SCRB" | "TREE" | "TUND" | "VIN" | "VINS";
 
 // ISO-3166 2-letter country code, 2 characters
-type TLocationCountryCode = 'string';
+type TLocationCountryCode = "string";
 // alternate country codes, comma separated, ISO-3166 2-letter country code, 200 characters
-type TLocationCc2 = 'string';
+type TLocationCc2 = "string";
 // fipscode (subject to change to iso code), see exceptions below,
 // see file admin1Codes.txt for display names of this code; varchar(20)
-type TLocationAdmin1Code = 'string';
+type TLocationAdmin1Code = "string";
 // code for the second administrative division, a county in the US
-// see file admin2Codes.txt; varchar(80) 
-type TLocationAdmin2Code = 'string';
+// see file admin2Codes.txt; varchar(80)
+type TLocationAdmin2Code = "string";
 // code for third level administrative division, varchar(20)
-type TLocationAdmin3Code = 'string';
+type TLocationAdmin3Code = "string";
 // code for fourth level administrative division, varchar(20)
-type TLocationAdmin4Code = 'string';
-// bigint (8 byte int) 
-type TLocationPopulation = 'string';
+type TLocationAdmin4Code = "string";
+// bigint (8 byte int)
+type TLocationPopulation = "string";
 // in meters, integer
-type TLocationElevation = 'string';
+type TLocationElevation = "string";
 // digital elevation model: srtm3 or gtopo30
 // average elevation of 3''x3'' (ca 90mx90m) or 30''x30'' (ca 900mx900m)
 // area in meters (srtm processed by cgiar/ciat)
-type TLocationDem = 'string';
+type TLocationDem = "string";
 // the iana timezone id (see file timeZone.txt) varchar(40)
-type TLocationTimezone = 'string';
+type TLocationTimezone = "string";
 // date of last modification in yyyy-MM-dd format
-type TLocationModificationDate = 'string';
+type TLocationModificationDate = "string";
 
 export type TLocationData = [
   TGeonameId,
@@ -124,7 +124,7 @@ export type TLocationData = [
   TLocationDem,
   TLocationTimezone,
   TLocationModificationDate
-]
+];
 
 export interface IRelevantLocation {
   id: string;
@@ -133,7 +133,7 @@ export interface IRelevantLocation {
   countryCode: string;
   featureClass: TLocationFeatureClass;
   featureCode: TLocationFeatureCode;
-  population: TLocationPopulation
+  population: TLocationPopulation;
 }
 
 export interface IRelevantLocationAlternate {

@@ -9,7 +9,7 @@ import uFuzzy from "@leeoniya/ufuzzy";
 import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types.d";
 import locationData from "../../../../../locationAutocompleteData.json";
 
-type TMatchingLocations = Array<IRelevantLocation> | [];
+export type TMatchingLocations = Array<IRelevantLocation> | [];
 
 export interface ISearchLocationParams {
   searchQuery: string;

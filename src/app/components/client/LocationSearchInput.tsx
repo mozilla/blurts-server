@@ -5,7 +5,11 @@
 "use client";
 
 import { ChangeEvent, useEffect, useDeferredValue, useState } from "react";
-import { ISearchLocationParams } from "../../api/v1/location-autocomplete/route";
+import {
+  TMatchingLocations,
+  ISearchLocationParams,
+  ISearchLocationResults,
+} from "../../api/v1/location-autocomplete/route";
 
 const getLocationSuggestions = async ({
   searchParams,
@@ -13,7 +17,7 @@ const getLocationSuggestions = async ({
 }: {
   searchParams: ISearchLocationParams;
   abortController: AbortController;
-}) => {
+}): Promise<ISearchLocationResults | null> => {
   try {
     const { signal } = abortController;
     const response = await fetch("/api/v1/location-autocomplete", {
@@ -23,18 +27,19 @@ const getLocationSuggestions = async ({
     });
 
     if (!response.ok) {
-      // TODO: Handle error
+      return null;
     }
 
     const locationResults = await response.json();
     return locationResults;
-  } catch (error) {
-    console.error(error);
+  } catch (_) {
+    return null;
   }
 };
 
 export const LocationSearchInput = () => {
-  const [locationData, setLocationData] = useState([]);
+  const [locationSuggestions, setLocationSuggestions] =
+    useState<TMatchingLocations>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
@@ -54,10 +59,12 @@ export const LocationSearchInput = () => {
         searchParams,
         abortController: abortController,
       }).then((data) => {
-        setLocationData(data);
+        if (data) {
+          setLocationSuggestions(data.results);
+        }
       });
     } else {
-      setLocationData([]);
+      setLocationSuggestions([]);
     }
 
     return () => {
@@ -72,25 +79,18 @@ export const LocationSearchInput = () => {
   return (
     <div>
       <input onInput={handleOnInput} placeholder="Enter city and state" />
-      {locationData &&
-        locationData.results &&
-        locationData.results.length > 0 && (
-          <ul>
-            {/* <pre style={{ fontSize: "0.75rem" }}>
-              {JSON.stringify(locationData, null, 2)}
-            </pre> */}
-            {locationData.results.map(({ id, name, population, stateCode }) => (
-              <li key={id}>
-                {name}{" "}
-                <small>
-                  {stateCode}, USA #{id}
-                  <br />
-                  {population}
-                </small>
-              </li>
-            ))}
-          </ul>
-        )}
+      {locationSuggestions && locationSuggestions.length > 0 && (
+        <ul>
+          {locationSuggestions.map(({ id, name, stateCode, countryCode }) => (
+            <li key={id}>
+              {name}{" "}
+              <small>
+                {stateCode}, {countryCode} #{id}
+              </small>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

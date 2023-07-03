@@ -13,186 +13,204 @@
  * https://download.geonames.org/export/dump/.
  */
 
-import https from 'https'
+import https from "https";
 import {
   createWriteStream,
   existsSync,
   mkdirSync,
   readFileSync,
   rmSync,
-  writeFileSync
-} from 'fs'
-import { dirname, resolve } from 'path'
-import { fileURLToPath } from 'url'
-import AdmZip from 'adm-zip'
+  writeFileSync,
+} from "fs";
+import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
+import AdmZip from "adm-zip";
 
 import {
   TAlternateNameData,
   TLocationData,
   IRelevantLocation,
   IRelevantLocationAlternate,
-  IDataFileUrls
-} from './types.d'
+  IDataFileUrls,
+} from "./types.d";
 
-const REMOTE_DATA_URL = 'https://download.geonames.org/export/dump'
-const DATA_COUNTRY_CODE = 'US'
-const LOCATIONS_DATA_FILE = 'locationAutocompleteData.json'
+const REMOTE_DATA_URL = "https://download.geonames.org/export/dump";
+const DATA_COUNTRY_CODE = "US";
+const LOCATIONS_DATA_FILE = "locationAutocompleteData.json";
+const FETCH_REMOTE_DATASETS = true;
+const CLEANUP_TMP_DATA_AFTER_FINISHED = true;
 
-const FETCH_REMOTE_DATASETS = false
-const CLEANUP_TMP_DATA_AFTER_FINISHED = false
+// Only include populated place a city, town, village, or other
+// agglomeration of buildings where people live and work.
+// Feature classes and codes: http://www.geonames.org/export/codes.html
+const allowedFeatureClass = "P";
+const allowedFeatureCodes = [
+  "PPL",
+  "PPLA",
+  "PPLA2",
+  "PPLA3",
+  "PPLA4",
+  "PPLC",
+  "PPLL",
+];
 
-function writeFromRemoteFile({ url, writeStream }: {
-  url: string,
-  writeStream: any
+function logProgress(currentCount: number, totalCount: number) {
+  const progress = Math.round(((currentCount + 1) / totalCount) * 100);
+  process.stdout.write(
+    `-> ${totalCount}/${currentCount + 1} (${progress}%) \r`
+  );
+}
+
+function writeFromRemoteFile({
+  url,
+  writeStream,
+}: {
+  url: string;
+  writeStream: any;
 }) {
   return new Promise((resolve, reject) => {
-    https.get(
-      url,
-      res => {
-        res.on('end', () => {
-          resolve(res)
-        })
-        res.on('error', error => {
-          reject(error)
-        })
-        res.pipe(writeStream)
-      }
-    )
-  })
+    https.get(url, (res) => {
+      res.on("end", () => {
+        resolve(res);
+      });
+      res.on("error", (error) => {
+        reject(error);
+      });
+      res.pipe(writeStream);
+    });
+  });
 }
 
 async function fetchRemoteArchive({
   remoteArchiveUrl,
   localDownloadPath,
-  localExtractionPath
+  localExtractionPath,
 }: IDataFileUrls) {
-  console.info(`Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`)
+  console.info(
+    `Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`
+  );
 
   await writeFromRemoteFile({
     url: remoteArchiveUrl,
-    writeStream: createWriteStream(localDownloadPath)
-  })
+    writeStream: createWriteStream(localDownloadPath),
+  });
 
-  console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`)
-  const zip = new AdmZip(localDownloadPath)
-  zip.extractAllTo(localExtractionPath, true)
+  console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`);
+  const zip = new AdmZip(localDownloadPath);
+  zip.extractAllTo(localExtractionPath, true);
 }
 
 try {
-  const startTime = Date.now()
-  console.info('Create autocomplete location data')
+  const startTime = Date.now();
+  console.info("Create autocomplete location data");
 
-  const __dirname = dirname(fileURLToPath(import.meta.url))
-  const tmpDirPath = resolve(__dirname, 'tpm-data')
+  const __dirname = dirname(fileURLToPath(import.meta.url));
+  const tmpDirPath = resolve(__dirname, "tpm-data");
 
-  console.info(`Creating data directory: ${tmpDirPath}`)
+  console.info(`Creating data directory: ${tmpDirPath}`);
   if (!existsSync(tmpDirPath)) {
-    mkdirSync(tmpDirPath)
+    mkdirSync(tmpDirPath);
   }
 
-  const localDataDestinationPath = {
+  const localDestinationPath = {
     locations: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}-extracted`,
     alternateNames: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}-extracted`,
-    hierarchy: `${tmpDirPath}/hierarchy-extracted`
-  }
+    hierarchy: `${tmpDirPath}/hierarchy-extracted`,
+  };
 
   if (FETCH_REMOTE_DATASETS) {
-    console.info('Downloading all locations')
+    console.info("Downloading all locations");
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/locations-${DATA_COUNTRY_CODE}.zip`,
-      localExtractionPath: localDataDestinationPath.locations
-    })
+      localExtractionPath: localDestinationPath.locations,
+    });
 
-    console.info('Downloading alternate names')
+    console.info("Downloading alternate names");
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/alternatenames/${DATA_COUNTRY_CODE}.zip`,
       localDownloadPath: `${tmpDirPath}/alternatenames-${DATA_COUNTRY_CODE}.zip`,
-      localExtractionPath: localDataDestinationPath.alternateNames
-    })
+      localExtractionPath: localDestinationPath.alternateNames,
+    });
 
-    console.info('Downloading hierachy data')
+    console.info("Downloading hierachy data");
     await fetchRemoteArchive({
       remoteArchiveUrl: `${REMOTE_DATA_URL}/hierarchy.zip`,
       localDownloadPath: `${tmpDirPath}/hierarchy.zip`,
-      localExtractionPath: localDataDestinationPath.hierarchy
-    })
+      localExtractionPath: localDestinationPath.hierarchy,
+    });
   } else {
-    console.info('Skipping downloading remote data')
+    console.info("Skipping downloading remote data");
   }
 
-  console.info('Reading file: Alternate location names')
+  console.info("Reading file: Alternate location names");
   const alternateNamesData = readFileSync(
-    `${localDataDestinationPath.alternateNames}/${DATA_COUNTRY_CODE}.txt`,
-    'utf8'
-  )
+    `${localDestinationPath.alternateNames}/${DATA_COUNTRY_CODE}.txt`,
+    "utf8"
+  );
 
-  console.info('Parsing data: Alternate location names')
-  const alternateNameRows = alternateNamesData.split('\n')
-  const parsedAlternateNames =
-    alternateNameRows
-      .map((alternateNamesLine) => {
-        const [
-          alternateNameId,
-          geonameId,
-          isolanguage,
-          alternateName,
+  console.info("Parsing data: Alternate location names");
+  const alternateNameRows = alternateNamesData.split("\n");
+  const parsedAlternateNames = alternateNameRows
+    .map((alternateNamesLine) => {
+      const [
+        alternateNameId,
+        geonameId,
+        isolanguage,
+        alternateName,
+        isPreferredName,
+        _isShortName,
+        _isColloquial,
+        isHistoric,
+        _from,
+        _to,
+      ] = alternateNamesLine.split("\t") as TAlternateNameData; // lines are tab delimited
+
+      const isAbbreviation = isolanguage === "abbr";
+      const isRelevantAlternateName =
+        (isolanguage === "en" || isAbbreviation) && Number(isHistoric) !== 1;
+
+      if (isRelevantAlternateName) {
+        return {
+          id: alternateNameId,
+          alternateOf: geonameId,
+          name: alternateName,
           isPreferredName,
-          _isShortName,
-          _isColloquial,
-          isHistoric,
-          _from,
-          _to
-        ] = alternateNamesLine.split('\t') as TAlternateNameData // lines are tab delimited
+        };
+      }
 
-        const isAbbreviation = isolanguage === 'abbr'
-        const isRelevantAlternateName =
-          (isolanguage === 'en' || isAbbreviation) &&
-          Number(isHistoric) !== 1
+      return null;
+    })
+    .filter(
+      (alternateName) => alternateName
+    ) as Array<IRelevantLocationAlternate>;
 
-        if (isRelevantAlternateName) {
-          return {
-            id: alternateNameId,
-            alternateOf: geonameId,
-            name: alternateName,
-            isPreferredName
-          }
-        }
-
-        return null
-      })
-      .filter(alternateName => alternateName) as Array<IRelevantLocationAlternate>
-
-  console.info('Reading file: Hierarchy')
+  console.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
-    `${localDataDestinationPath.hierarchy}/hierarchy.txt`,
-    'utf8'
-  )
-  console.info('Parsing data: Location hierarchy')
-  const hierachyDataRows = hierachyData.split('\n')
-  const hierarchyIds = hierachyDataRows.map(hierachyRow => {
-    const [
-      locationParentId,
-      locationChildId,
-      _hierachyType
-    ] = hierachyRow.split('\t');
+    `${localDestinationPath.hierarchy}/hierarchy.txt`,
+    "utf8"
+  );
+  console.info("Parsing data: Location hierarchy");
+  const hierachyDataRows = hierachyData.split("\n");
+  const hierarchyIds = hierachyDataRows.map((hierachyRow) => {
+    const [locationParentId, locationChildId, _hierachyType] =
+      hierachyRow.split("\t");
 
     return [locationParentId, locationChildId];
-  })
+  });
 
-  console.info('Reading file: All locations')
+  console.info("Reading file: All locations");
   const locationData = readFileSync(
-    `${localDataDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
-    'utf8'
-  )
+    `${localDestinationPath.locations}/${DATA_COUNTRY_CODE}.txt`,
+    "utf8"
+  );
 
-  console.info('Parsing data: All locations')
-  const locationDataRows = locationData.split('\n')
-  const locationRowCount = locationDataRows.length
-  const locationDataPopulated: Array<IRelevantLocation> = locationDataRows
-    .reduce((relevantLocations, location, rowIndex) => {
-      const progress = Math.round(((rowIndex + 1) / locationRowCount) * 100)
-      process.stdout.write(`-> ${locationRowCount}/${rowIndex + 1} (${progress}%) \r`)
+  console.info("Parsing data: All locations");
+  const locationDataRows = locationData.split("\n");
+  const locationRowCount = locationDataRows.length;
+  const locationDataPopulated: Array<IRelevantLocation> =
+    locationDataRows.reduce((relevantLocations, location, rowIndex) => {
+      logProgress(rowIndex, locationRowCount);
 
       const [
         geonameId,
@@ -214,98 +232,104 @@ try {
         _dem,
         _timezone,
         _modificationDate,
-      ] = location.split('\t') as TLocationData // lines are tab delimited
+      ] = location.split("\t") as TLocationData; // lines are tab delimited
 
-      // Only include populated place a city, town, village, or other
-      // agglomeration of buildings where people live and work.
-      // Feature classes and codes: http://www.geonames.org/export/codes.html
-      const isPopulatedPlaceOfInterest = featureClass === 'P' && (
-        featureCode === 'PPL' ||
-        featureCode === 'PPLA' ||
-        featureCode === 'PPLA2' ||
-        featureCode === 'PPLA3' ||
-        featureCode === 'PPLA4' ||
-        featureCode === 'PPLC' ||
-        featureCode === 'PPLL'
-      )
-      const hasPopulation = Number(population) !== 0
+      const isPopulatedPlaceOfInterest =
+        featureClass === allowedFeatureClass &&
+        allowedFeatureCodes.includes(featureCode);
+      const hasPopulation = Number(population) !== 0;
 
       if (isPopulatedPlaceOfInterest && hasPopulation) {
-        const alternateNames = parsedAlternateNames
-          .filter(({ alternateOf, name: alternateName }) => (
+        const alternateNames = parsedAlternateNames.filter(
+          ({ alternateOf, name: alternateName }) =>
             alternateOf === geonameId && alternateName !== name
-          ))
-        const preferredName = alternateNames.find(({ isPreferredName }) => (
-          isPreferredName === '1'
-        ))
+        );
+        const preferredName = alternateNames.find(
+          ({ isPreferredName }) => isPreferredName === "1"
+        );
         const alternateNamesFinal = alternateNames.map((alternateName) => {
           // Include the original name as an alternative name if we’ll use an
           // alternate name that is the preferred name.
           if (preferredName && preferredName.name === alternateName.name) {
-            return name
+            return name;
           }
 
-          return alternateName.name
-        })
+          return alternateName.name;
+        });
 
         relevantLocations.push({
           id: geonameId,
           // switch names if an alternate name is the preferred location name
           name: preferredName ? preferredName.name : name,
           stateCode: admin1Code,
-          countryCode: 'USA',
+          countryCode: "USA",
           featureClass,
           featureCode,
           population,
-          ...((alternateNames && alternateNames.length > 0) && {
-            alternateNames: alternateNamesFinal
-          })
-        })
+          ...(alternateNames &&
+            alternateNames.length > 0 && {
+              alternateNames: alternateNamesFinal,
+            }),
+        });
       }
 
-      return relevantLocations
-    }, Array())
+      return relevantLocations;
+    }, Array());
 
   // Filter out locations that have another populated place as a parent.
-  // These are locations that have a parent with the feature class `P`.
-  console.info('Filtering by hierachy')
-  const locationDataPopulatedCount = locationDataPopulated.length
-  const locationDataPopulatedTopLevel = locationDataPopulated
-    .filter((locationPopulated, rowIndex) => {
-      const progress = Math.round(((rowIndex + 1) / locationDataPopulatedCount) * 100)
-      process.stdout.write(`-> ${locationDataPopulatedCount}/${rowIndex + 1} (${progress}%) \r`)
+  console.info("Filtering by hierachy");
+  const locationDataPopulatedCount = locationDataPopulated.length;
+  const locationDataPopulatedTopLevel = locationDataPopulated.filter(
+    (locationPopulated, rowIndex) => {
+      logProgress(rowIndex, locationDataPopulatedCount);
 
-      let hasPopulatedParent = false;
-      hierarchyIds.forEach(([ parentId, childId ]) => {
-        if (locationPopulated.id === childId) {
-          locationDataPopulated.forEach(location => {
-            if (location.id === parentId && location.featureClass === 'P') {
-              hasPopulatedParent = true;
-            }
-          })
+      const hasPopulatedParentLocation = hierarchyIds.some(
+        ([parentId, childId]) => {
+          if (locationPopulated.id === childId) {
+            return locationDataPopulated.some((location) => {
+              if (
+                location.id === parentId &&
+                location.featureClass === allowedFeatureClass
+              ) {
+                return true;
+              }
+              return false;
+            });
+          }
+          return false;
         }
-      })
+      );
 
-      return !hasPopulatedParent
-    })
+      return !hasPopulatedParentLocation;
+    }
+  );
 
-  console.info(`Number of relevant locations found: ${locationDataPopulatedTopLevel.length}`)
+  console.info(
+    `Number of relevant locations found: ${locationDataPopulatedTopLevel.length}`
+  );
 
-  console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`)
-  writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(locationDataPopulatedTopLevel))
+  console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`);
+  writeFileSync(
+    LOCATIONS_DATA_FILE,
+    JSON.stringify(locationDataPopulatedTopLevel)
+  );
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
-    console.info('Cleaning up data directory')
+    console.info("Cleaning up data directory");
     rmSync(tmpDirPath, {
       recursive: true,
-      force: true
-    })
+      force: true,
+    });
   }
 
-  const endTime = Date. now()
-  console.info(`Created location data file successfully: Executed in ${(endTime - startTime) / 1000}s`)
-} catch(error) {
-  console.error('Creating location file failed with:', error)
+  const endTime = Date.now();
+  console.info(
+    `Created location data file successfully: Executed in ${
+      (endTime - startTime) / 1000
+    }s`
+  );
+} catch (error) {
+  console.error("Creating location file failed with:", error);
 }
 
-process.exit()
+process.exit();
