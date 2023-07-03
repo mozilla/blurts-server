@@ -1,5 +1,6 @@
 exposure-landing-hero-heading = Μάθετε εάν έχουν παραβιαστεί οι προσωπικές σας πληροφορίες
 exposure-landing-hero-email-label = Διεύθυνση email
+exposure-landing-hero-email-placeholder = Εισαγάγετε διεύθυνση email
 exposure-landing-hero-cta-label = Έλεγχος για παραβιάσεις
 exposure-landing-result-loading = Φόρτωση, παρακαλώ περιμένετε…
 exposure-landing-result-error = Κάτι πήγε στραβά κατά τον έλεγχο για παραβιάσεις. Παρακαλούμε ανανεώστε τη σελίδα και δοκιμάστε ξανά.
