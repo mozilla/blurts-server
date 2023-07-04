@@ -41,7 +41,7 @@ const LOCATIONS_DATA_FILE = "locationAutocompleteData.json";
 const FETCH_REMOTE_DATASETS = true;
 const CLEANUP_TMP_DATA_AFTER_FINISHED = true;
 
-// Only include populated place a city, town, village, or other
+// Only include populated places that are a city, town, village, or another
 // agglomeration of buildings where people live and work.
 // Feature classes and codes: http://www.geonames.org/export/codes.html
 const allowedFeatureClass = "P";
