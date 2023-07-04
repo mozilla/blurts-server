@@ -54,13 +54,13 @@
       }
 
       @media screen and (min-width: $screen-lg) {
-        flex: 1 1 0%; 
+        flex: 1 1 0%;
 
         &.hideOnMobile {
           display: block;
         }
-      }  
-      
+      }
+
       .exposureImage {
         max-width: 120px;
         height: 100%;
@@ -79,7 +79,7 @@
       color: $color-blue-50;
 
       svg {
-        display: inline; 
+        display: inline;
         margin: 0 $spacing-xs;
       }
     }
@@ -123,7 +123,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-gap: $spacing-sm;
-        
+
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;

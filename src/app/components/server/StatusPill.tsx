@@ -30,5 +30,7 @@ export const StatusPill = (props: Props) => {
     className = "isFixed";
   }
 
-  return <div className={`${styles.pill} ${styles[className]}`}>{stringContent}</div>;
+  return (
+    <div className={`${styles.pill} ${styles[className]}`}>{stringContent}</div>
+  );
 };

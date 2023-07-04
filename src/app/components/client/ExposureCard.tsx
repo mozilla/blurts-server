@@ -18,7 +18,7 @@ import {
 } from "../server/Icons";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import { ScanResult  } from "../../../external/onerep";
+import { ScanResult } from "../../../external/onerep";
 import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export type Exposure = ScanResult | Breach;
@@ -33,8 +33,7 @@ export const ExposureTypeEl = (props: ExposureTypElProps) => {
 
   if (isScanResult(props.type)) {
     string = l10n.getString("exposure-card-exposure-type-data-broker");
-  }
-  else {
+  } else {
     string = l10n.getString("exposure-card-exposure-type-data-breach");
   }
 
@@ -97,7 +96,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
     }
 
     const description = l10n.getString("exposure-card-num-found", {
-      exposure_num: props.num
+      exposure_num: props.num,
     });
 
     return (
@@ -115,20 +114,35 @@ export const ExposureCard = (props: ExposureCardProps) => {
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>
-            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-company-logo")}</dt>
-            <dd className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-company-logo")}
+            </dt>
+            <dd
+              className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}
+            >
               <Image
                 className={styles.exposureImage}
                 alt=""
                 src={exposureImg}
-              /></dd>
-            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-company")}</dt>
+              />
+            </dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-company")}
+            </dt>
             <dd>{exposureName}</dd>
-            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-exposure-type")}</dt>
-            <dd className={styles.hideOnMobile}><ExposureTypeEl type={exposureData} /></dd>
-            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-date-found")}</dt>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-exposure-type")}
+            </dt>
+            <dd className={styles.hideOnMobile}>
+              <ExposureTypeEl type={exposureData} />
+            </dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-date-found")}
+            </dt>
             <dd className={styles.hideOnMobile}>{props.dateFound}</dd>
-            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-label-status")}</dt>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-label-status")}
+            </dt>
             <dd>
               <StatusPill type={statusPillType} />
             </dd>
@@ -139,7 +153,11 @@ export const ExposureCard = (props: ExposureCardProps) => {
           >
             <ChevronDown
               className={exposureCardExpanded ? styles.isOpen : ""}
-              alt={exposureCardExpanded ? l10n.getString("chevron-up-alt") : l10n.getString("chevron-down-alt")}
+              alt={
+                exposureCardExpanded
+                  ? l10n.getString("chevron-up-alt")
+                  : l10n.getString("chevron-down-alt")
+              }
               width="20"
               height="20"
             />
@@ -150,42 +168,63 @@ export const ExposureCard = (props: ExposureCardProps) => {
             exposureCardExpanded ? styles.isOpen : ""
           }`}
         >
-          {isScanResult(exposureData) ? 
-          // Data broker content
-          <div>
-            <p>
-              {l10n.getFragment("exposure-card-description-info-for-sale-part-one", 
-              {
-                elems: {"data_broker_link": <a href={exposureDetailsLink}/>}
-              })}
-              <a href={exposureDetailsLink}>
-                <span>
-                  <OpenInNew alt={l10n.getString("open-in-new-tab-alt")} width="13" height="13"/>
-                </span>
-              </a>
-              {" "}{l10n.getString("exposure-card-description-info-for-sale-part-two")}
-            </p>
-          </div> : 
-          // Data breach content
-          <div>
-            <p>
-              {l10n.getFragment("exposure-card-description-data-breach-part-one", 
-              {
-                vars: {
-                  data_breach_company: exposureName,
-                  data_breach_date: exposureData.BreachDate
-                },
-                elems: {"data_breach_link": <a href={exposureDetailsLink}/>}
-              })}
-              <a href={exposureDetailsLink}>
-                <span>
-                  <OpenInNew alt={l10n.getString("open-in-new-tab-alt")} width="13" height="13" />
-                </span>
-              </a>
-              {" "}{l10n.getString("exposure-card-description-data-breach-part-two")}
-            </p>
-          </div>
-          }
+          {isScanResult(exposureData) ? (
+            // Data broker content
+            <div>
+              <p>
+                {l10n.getFragment(
+                  "exposure-card-description-info-for-sale-part-one",
+                  {
+                    elems: {
+                      data_broker_link: <a href={exposureDetailsLink} />,
+                    },
+                  }
+                )}
+                <a href={exposureDetailsLink}>
+                  <span>
+                    <OpenInNew
+                      alt={l10n.getString("open-in-new-tab-alt")}
+                      width="13"
+                      height="13"
+                    />
+                  </span>
+                </a>{" "}
+                {l10n.getString(
+                  "exposure-card-description-info-for-sale-part-two"
+                )}
+              </p>
+            </div>
+          ) : (
+            // Data breach content
+            <div>
+              <p>
+                {l10n.getFragment(
+                  "exposure-card-description-data-breach-part-one",
+                  {
+                    vars: {
+                      data_breach_company: exposureName,
+                      data_breach_date: exposureData.BreachDate,
+                    },
+                    elems: {
+                      data_breach_link: <a href={exposureDetailsLink} />,
+                    },
+                  }
+                )}
+                <a href={exposureDetailsLink}>
+                  <span>
+                    <OpenInNew
+                      alt={l10n.getString("open-in-new-tab-alt")}
+                      width="13"
+                      height="13"
+                    />
+                  </span>
+                </a>{" "}
+                {l10n.getString(
+                  "exposure-card-description-data-breach-part-two"
+                )}
+              </p>
+            </div>
+          )}
           <div className={styles.exposedInfoContainer}>
             <div className={styles.exposedInfoWrapper}>
               <p>{l10n.getString("exposure-card-your-exposed-info")}:</p>
@@ -214,7 +253,10 @@ export const ExposureCard = (props: ExposureCardProps) => {
               </dl>
             </div>
             <span className={styles.fixItBtn}>
-              <Button type={"primary"} content={l10n.getString("exposure-card-cta")} />
+              <Button
+                type={"primary"}
+                content={l10n.getString("exposure-card-cta")}
+              />
             </span>
           </div>
         </div>
@@ -224,4 +266,3 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return exposureCard;
 };
-
