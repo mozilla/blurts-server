@@ -57,7 +57,7 @@ export type ExposureCardProps = {
 };
 
 type DetailsFoundProps = {
-  whichExposed: string; // family | email | phone | address | credit card | password
+  whichExposed: string; // family | email | phone | address | creditcard | password
   num: number;
   icon: ReactElement;
 };
@@ -75,33 +75,31 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
-    let headline, description;
-    if (props.whichExposed === "family") {
-      headline = l10n.getString("exposure-card-family-members");
-      description = l10n.getString("exposure-card-num-found", {
-        exposure_num: props.num
-      });
-    }
-    if (props.whichExposed === "email") {
-      headline = l10n.getString("exposure-card-email");
-      description = l10n.getString("exposure-card-num-found", {
-        exposure_num: props.num
-      });
+    let headline;
+
+    switch (props.whichExposed) {
+      case "family":
+        headline = l10n.getString("exposure-card-family-members");
+        break;
+      case "email":
+        headline = l10n.getString("exposure-card-email");
+        break;
+      case "phone":
+        headline = l10n.getString("exposure-card-phone-number");
+        break;
+      case "address":
+        headline = l10n.getString("exposure-card-address");
+        break;
+      case "creditcard":
+        headline = l10n.getString("exposure-card-credit-card");
+        break;
+      default:
+        headline = l10n.getString("exposure-card-other");
     }
 
-    if (props.whichExposed === "phone") {
-      headline = l10n.getString("exposure-card-phone-number");
-      description = l10n.getString("exposure-card-num-found", {
-        exposure_num: props.num
-      });
-    }
-
-    if (props.whichExposed === "address") {
-      headline = l10n.getString("exposure-card-address");
-      description = l10n.getString("exposure-card-num-found", {
-        exposure_num: props.num
-      });
-    }
+    const description = l10n.getString("exposure-card-num-found", {
+      exposure_num: props.num
+    });
 
     return (
       <div className={styles.detailsFoundItem}>
@@ -113,7 +111,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
       </div>
     );
   };
-  const elementCard = (
+  const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
@@ -123,7 +121,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                 className={styles.exposureImage}
                 alt=""
                 src={exposureImg}
-              /> </li>
+              /></li>
             <li>{exposureName}</li>
             <li className={styles.hideOnMobile}><ExposureTypeEl type={exposureData} /></li>
             <li className={styles.hideOnMobile}>{props.dateFound}</li>
@@ -187,6 +185,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <div className={styles.exposureListOfExposureTypes}>
             <dl>
               <div>{l10n.getString("exposure-card-your-exposed-info")}:</div>
+              {/* TODO: Pass list of details found instead of hardcoding it */}
               <DetailsFoundItem
                 icon={<MultipleUsersIcon alt="" width="13" height="13" />}
                 whichExposed="family"
@@ -217,6 +216,6 @@ export const ExposureCard = (props: ExposureCardProps) => {
     </div>
   );
 
-  return elementCard;
+  return exposureCard;
 };
 
