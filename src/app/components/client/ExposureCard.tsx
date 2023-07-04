@@ -91,6 +91,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
       case "creditcard":
         headline = l10n.getString("exposure-card-credit-card");
         break;
+      case "password":
+        headline = l10n.getString("exposure-card-password");
+        break;
       default:
         headline = l10n.getString("exposure-card-other");
     }
