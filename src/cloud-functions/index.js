@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import express from "express";
-import Sentry from "@sentry/node";
+import * as Sentry from "@sentry/node";
 import "@sentry/tracing";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 

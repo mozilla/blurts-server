@@ -5,19 +5,15 @@
 import Image, { StaticImageData } from "next/image";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
-import { getL10n } from "../../../../functions/server/l10n";
+import { getL10n, getLocale } from "../../../../functions/server/l10n";
 import { getBreachByName } from "../../../../../utils/hibp";
 import {
   getAllPriorityDataClasses,
   getAllGenericRecommendations,
 } from "../../../../../utils/recommendations";
 import { BreachLogo } from "../../../../components/server/BreachLogo";
-import {
-  getBreachIcons,
-  getBreaches,
-} from "../../../../functions/server/getBreaches";
+import { getBreaches } from "../../../../functions/server/getBreaches";
 import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
-import { getLocale } from "../../../../functions/server/l10n";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";
 import glyphPassword from "../../../../../client/images/passwords.svg";
@@ -86,14 +82,13 @@ export default async function BreachDetail(props: {
   const breachName = props.params.breachName;
   const allBreaches = await getBreaches();
   const breach = getBreachByName(allBreaches, breachName);
-  const breachLogos = await getBreachIcons(allBreaches);
 
   return (
     <div data-partial="breachDetail">
       <header className="breach-detail-header">
         <div className="breach-detail-meta">
           <h1>
-            <BreachLogo breach={breach} logos={breachLogos} />
+            <BreachLogo breach={breach} />
             {breach.Title}
           </h1>
           {getBreachCategory(breach) === "website-breach" ? (

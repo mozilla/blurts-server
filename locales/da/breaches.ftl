@@ -6,7 +6,15 @@ breach-meta-title = { -brand-fx-monitor } - Oversigt
 breach-all-meta-title = { -brand-fx-monitor } - Alle datalæk
 breach-all-meta-social-title = Alle datalæk opdaget af { -brand-fx-monitor }
 breach-all-meta-social-description = Gennemse den komplette liste over kendte datalæk opdaget af { -brand-fx-monitor }, og find derefter ud af, om dine oplysninger blev eksponeret.
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-title = { -brand-fx-monitor } - Datalæk hos { $company }
+# Variables:
+#   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
+breach-detail-meta-social-title = Blev du berørt af datalækken fra { $company }?
 breach-detail-meta-social-description = Brug { -brand-fx-monitor } til at finde ud af, om dine personlige oplysninger blev eksponeret i denne datalæk - og hvad du skal gøre nu.
+breach-scan-meta-title = { -brand-fx-monitor } - Læk-resultater
+breach-scan-meta-social-title = { -brand-fx-monitor } - Læk-resultater
 breach-scan-meta-social-description = Log ind på { -brand-fx-monitor } for at løse datalæk og få løbende overvågning for nye kendte datalæk.
 
 ## Breaches header

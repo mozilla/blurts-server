@@ -7,10 +7,9 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { getServerSession } from "next-auth";
-import { getLocale } from "./functions/server/l10n";
+import { getLocale, getL10n } from "./functions/server/l10n";
 import { SessionProvider } from "../contextProviders/session";
 import { authOptions } from "./api/utils/auth";
-import { getL10n } from "./functions/server/l10n";
 import { metropolis } from "./fonts/Metropolis/metropolis";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });

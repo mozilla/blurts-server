@@ -44,6 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Ακύρωση συνδρομής { -brand-premium }
+settings-cancel-premium-subscription-link-label = Κάντε ακύρωση από τον { -brand-fx-account(case: "acc", capitalization: "lower") } σας
 
 ## Deactivate account
 
@@ -60,5 +61,10 @@ settings-send-email-verification-button = Αποστολή συνδέσμου ε
 
 ## Unsubscribe Dialog Survey
 
+settings-unsubscribe-dialog-title = Λυπούμαστε που φεύγετε. <br /> Θέλετε να μας πείτε γιατί φεύγετε;
+settings-unsubscribe-dialog-info = Η εμπειρία σας είναι σημαντική για εμάς. Διαβάζουμε κάθε απάντηση και τη λαμβάνουμε υπόψη.
 settings-unsubscribe-dialog-message-placeholder = Τι θα μπορούσε να είχε πάει καλύτερα;
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Παρακαλούμε σημειώστε ότι όλες οι υπηρεσίες σας στο { -brand-monitor-premium } <a { $faq_href }>θα διαγραφούν οριστικά</a> μετά το πέρας του τρέχοντος κύκλου χρέωσής σας.
 settings-unsubscribe-dialog-continue = Συνέχεια στην ακύρωση
+settings-unsubscribe-dialog-cancel = Άλλαξα γνώμη, θέλω να επιστρέψω

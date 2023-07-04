@@ -5,7 +5,7 @@
 import { cookies } from "next/headers";
 import { Session } from "next-auth";
 
-import { getBreaches, getBreachIcons } from "./getBreaches";
+import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
 import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
@@ -20,8 +20,6 @@ export async function getUserBreaches({
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData);
 
-  const breachLogos = await getBreachIcons(allBreaches);
-
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0;
   const emailTotalCount =
     emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0);
@@ -35,7 +33,6 @@ export async function getUserBreaches({
 
   return {
     breachesData,
-    breachLogos,
     emailVerifiedCount,
     emailTotalCount,
     emailSelectIndex,

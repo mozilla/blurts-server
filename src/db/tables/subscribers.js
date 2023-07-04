@@ -3,11 +3,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { destroyOAuthToken } from '../../utils/fxa.js'
-import Knex from 'knex'
+import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
 import AppConstants from '../../appConstants.js'
 import mozlog from '../../utils/log.js'
-const knex = Knex(knexConfig)
+const knex = initKnex(knexConfig)
 const { DELETE_UNVERIFIED_SUBSCRIBERS_TIMER } = AppConstants
 const log = mozlog('DB.subscribers')
 
@@ -80,7 +80,7 @@ async function getSubscriberByEmail (email) {
  *
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {string} updatedEmail primary email to be updated to
- * @returns {Promise<import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber>} updated subscriber
+ * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber
  */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
   const trx = await knex.transaction()
@@ -90,7 +90,10 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
     subscriberTableUpdated = await knex('subscribers')
       .where('id', '=', subscriber.id)
       .update({
-        primary_email: updatedEmail
+        primary_email: updatedEmail,
+        // @ts-ignore knex.fn.now() results in it being set to a date,
+        // even if it's not typed as a JS date object:
+        updated_at: knex.fn.now(),
       })
       .returning('*')
       .transacting(trx)
@@ -101,7 +104,10 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
     emailTableUpdated = await knex('email_addresses')
       .where('email', '=', updatedEmail)
       .update({
-        email: subscriber.primary_email
+        email: subscriber.primary_email,
+        // @ts-ignore knex.fn.now() results in it being set to a date,
+        // even if it's not typed as a JS date object:
+        updated_at: knex.fn.now(),
       })
       .transacting(trx)
 
@@ -110,6 +116,7 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
     log.debug('updatePrimaryEmail', { emailTableUpdated })
   } catch (error) {
     await trx.rollback()
+    // @ts-ignore Type annotations added later; type unknown:
     log.error('updatePrimaryEmail', error)
   }
   const updatedSubscriber = Array.isArray(subscriberTableUpdated) ? subscriberTableUpdated[0] : null
@@ -133,7 +140,10 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
       fxa_uid: fxaUID,
       fxa_access_token: fxaAccessToken,
       fxa_refresh_token: fxaRefreshToken,
-      fxa_profile_json: fxaProfileData
+      fxa_profile_json: fxaProfileData,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
@@ -153,7 +163,10 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
 async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
-      fxa_profile_json: fxaProfileData
+      fxa_profile_json: fxaProfileData,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
   return getSubscriberById(subscriber.id)
 }
@@ -162,7 +175,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
  * Remove fxa tokens and profile data for subscriber
  *
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
- * @returns {Promise<object>} updated subscriber knex object in DB
+ * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber knex object in DB
  */
 async function removeFxAData (subscriber) {
   log.debug('removeFxAData', subscriber)
@@ -171,7 +184,10 @@ async function removeFxAData (subscriber) {
     .update({
       fxa_access_token: null,
       fxa_refresh_token: null,
-      fxa_profile_json: null
+      fxa_profile_json: null,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
@@ -192,7 +208,10 @@ async function setOnerepProfileId (subscriber, onerepProfileId) {
   await knex('subscribers')
     .where('id', subscriber.id)
     .update({
-      onerep_profile_id: onerepProfileId
+      onerep_profile_id: onerepProfileId,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
 }
 
@@ -206,7 +225,10 @@ async function setBreachesLastShownNow (subscriber) {
   await knex('subscribers')
     .where('id', '=', subscriber.id)
     .update({
-      breaches_last_shown: nowTimeStamp
+      breaches_last_shown: nowTimeStamp,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
   return getSubscriberByEmail(subscriber.primary_email)
 }
@@ -219,7 +241,10 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   const updated = await knex('subscribers')
     .where('id', subscriber.id)
     .update({
-      all_emails_to_primary: allEmailsToPrimary
+      all_emails_to_primary: allEmailsToPrimary,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
     .returning('*')
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
@@ -238,7 +263,10 @@ async function setBreachesResolved (options) {
   await knex('subscribers')
     .where('id', user.id)
     .update({
-      breaches_resolved: updatedResolvedBreaches
+      breaches_resolved: updatedResolvedBreaches,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
   return getSubscriberByEmail(user.primary_email)
 }
@@ -256,7 +284,10 @@ async function setBreachResolution (user, updatedBreachesResolution) {
   await knex('subscribers')
     .where('id', user.id)
     .update({
-      breach_resolution: updatedBreachesResolution
+      breach_resolution: updatedBreachesResolution,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
   return getSubscriberByEmail(user.primary_email)
 }
@@ -269,7 +300,10 @@ async function setWaitlistsJoined (options) {
   await knex('subscribers')
     .where('id', user.id)
     .update({
-      waitlists_joined: updatedWaitlistsJoined
+      waitlists_joined: updatedWaitlistsJoined,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
   return getSubscriberByEmail(user.primary_email)
 }
@@ -326,6 +360,7 @@ async function deleteSubscriber (sub) {
     await trx.commit()
   } catch (error) {
     await trx.rollback()
+    // @ts-ignore Type annotations added later; type unknown:
     log.error('deleteSubscriber', error)
   }
   //  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
@@ -337,9 +372,11 @@ async function deleteSubscriber (sub) {
  * @param {string} email
  */
 async function deleteResolutionsWithEmail (id, email) {
+  /** @type {any} */
   const [subscriber] = await knex('subscribers').where({
     id
   })
+  /** @type {{ breach_resolution: any }} */
   const { breach_resolution: breachResolution } = subscriber
   // if email exists in breach resolution, remove it
   if (breachResolution && breachResolution[email]) {
@@ -358,7 +395,10 @@ async function updateBreachStats (id, stats) {
   await knex('subscribers')
     .where('id', id)
     .update({
-      breach_stats: stats
+      breach_stats: stats,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
     })
 }
 
@@ -366,7 +406,13 @@ async function updateBreachStats (id, stats) {
  * @param {string} email
  */
 async function updateMonthlyEmailTimestamp (email) {
-  const res = await knex('subscribers').update({ monthly_email_at: 'now' })
+  const res = await knex('subscribers')
+    .update({
+      monthly_email_at: 'now',
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      updated_at: knex.fn.now(),
+    })
     .where('primary_email', email)
     .returning('monthly_email_at')
 

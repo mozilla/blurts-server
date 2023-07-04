@@ -12,10 +12,7 @@ import {
   updateFxAData,
 } from "../../../db/tables/subscribers.js";
 import { addSubscriber } from "../../../db/tables/emailAddresses.js";
-import {
-  getBreaches,
-  getBreachIcons,
-} from "../../functions/server/getBreaches";
+import { getBreaches } from "../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../utils/hibp.js";
 import { getSha1 } from "../../../utils/fxa.js";
 import { getEmailCtaHref, initEmail, sendEmail } from "../../../utils/email.js";
@@ -153,10 +150,8 @@ export const authOptions: AuthOptions = {
             ? l10n.getString("email-subject-found-breaches")
             : l10n.getString("email-subject-no-breaches");
 
-          const breachLogos = await getBreachIcons(allBreaches);
           const data = {
             breachedEmail: email,
-            breachLogos: breachLogos,
             ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
             heading: "email-breach-summary",
             recipientEmail: email,
@@ -221,4 +216,9 @@ export function bearerToken(req: NextRequest) {
 
   // The remaining portion, which should be the token
   return authHeader.substring(authHeader.indexOf(" ") + 1);
+}
+
+export function isAdmin(email: string) {
+  const admins = AppConstants.ADMINS?.split(",") ?? [];
+  return admins.includes(email);
 }
