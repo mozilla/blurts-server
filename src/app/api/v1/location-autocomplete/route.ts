@@ -2,8 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 import uFuzzy from "@leeoniya/ufuzzy";
 
 import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types.d";
@@ -25,7 +24,7 @@ export interface ISearchLocationResults {
 }
 
 async function getLocationsByQuery(searchQuery: string) {
-  const locationNames = locationData.map((location) => {
+  const locationNames = locationData.data.map((location) => {
     const { name, stateCode, countryCode, alternateNames } = location;
     const alternateNamesJoined = alternateNames
       ? location.alternateNames.join(" ")
@@ -56,7 +55,7 @@ async function getLocationsByQuery(searchQuery: string) {
   const info = fuzzySearch.info(locationIndexes, locationNames, searchQuery);
   const order = fuzzySearch.sort(info, locationNames, searchQuery);
   const results = locationIndexes.map(
-    (locationIndex) => locationData[locationIndex]
+    (locationIndex) => locationData.data[locationIndex]
   );
 
   const resultsOrdered = order.map((orderIndex) => results[orderIndex]);

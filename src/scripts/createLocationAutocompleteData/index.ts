@@ -309,9 +309,19 @@ try {
   );
 
   console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`);
+  const locationDataFinal = {
+    name: "monitor-location-autocomplete-data",
+    description: "The data in this file is provided by GeoNames (https://www.geonames.org/). We are using the data to compile a set of US cities and states that match the needs of this project. Their work is licensed under a Creative Commons Attribution 4.0 License: https://creativecommons.org/licenses/by/4.0/. All database dumps and table definitions can be found here: https://download.geonames.org/export/dump/.",
+    created_at: startTime,
+    license: {
+      type: "CC BY 4.0",
+      url: "https://creativecommons.org/licenses/by/4.0/"
+    },
+    data: locationDataPopulatedTopLevel
+  }
   writeFileSync(
     LOCATIONS_DATA_FILE,
-    JSON.stringify(locationDataPopulatedTopLevel)
+    JSON.stringify(locationDataFinal)
   );
 
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
