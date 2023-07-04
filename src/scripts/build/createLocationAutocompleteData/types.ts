@@ -13,39 +13,49 @@
  * https://download.geonames.org/export/dump/.
  */
 
-type TAlternateNameId = string; // the id of this alternate name
-type TGeonameId = string; // geonameId referring to id in table 'geoname'
-// Iso language, varchar(7)
-//
-// 2 to 3-characters:
-// - iso 639 language codes
-//
-// 4-characters:
-// - 'post': postal codes
-// - 'iata','icao', 'faac': airport codes
-// - 'abbr': abbreviation
-// - 'link': link to a website (mostly to wikipedia)
-// - 'wkdt': wikidataid
-//
-// 7-characters:
-// - 'fr_1793': French Revolution names
+/** The id of this alternate name. */
+type TAlternateNameId = string;
+/** The geonameId is referring to id in table 'geoname'. */
+type TGeonameId = string;
+/**
+ * Iso language, varchar(7)
+ *
+ * 2 to 3-characters:
+ * - iso 639 language codes
+ *
+ * 4-characters:
+ * - 'post': postal codes
+ * - 'iata','icao', 'faac': airport codes
+ * - 'abbr': abbreviation
+ * - 'link': link to a website (mostly to wikipedia)
+ * - 'wkdt': wikidataid
+ *
+ * 7-characters:
+ * - 'fr_1793': French Revolution names
+ */
 type TIsolanguage = string;
-// alternate name or name variant, varchar(400)
+/** Alternate name or name variant, varchar(400). */
 type TAlternateName = string;
-// is an abbreviation of the name
+/** Is an abbreviation of the name. */
 type TIsAbbreviation = "" | "1";
-// is an official/preferred name
+/** Is an official/preferred name. */
 type TIsPreferredName = "" | "1";
-// is short name like 'California' for 'State of California
+/** Is short name like 'California' for 'State of California. */
 type TIsShortName = "" | "1";
-// alternate name is a colloquial or slang term
-// Example: 'Big Apple' for 'New York'
+/**
+ * Alternate name is a colloquial or slang term.
+ * Example: 'Big Apple' for 'New York'.
+ */
 type TIsColloquial = "" | "1";
-// alternate name is historic and was used in the past
-// Example 'Bombay' for 'Mumbai'.
+/**
+ * Alternate name is historic and was used in the past.
+ * Example 'Bombay' for 'Mumbai'.
+ */
 type TIsHistoric = "" | "1";
-type TFrom = string; // from period when the name was used
-type TTo = string; // to period when the name was used
+/** From period when the name was used. */
+type TFrom = string;
+/** To period when the name was used. */
+type TTo = string;
 
 export type TAlternateNameData = [
   TAlternateNameId,
@@ -60,19 +70,23 @@ export type TAlternateNameData = [
   TTo
 ];
 
-// name of geographical point (utf8), varchar(200)
+/** Name of geographical point (utf8), varchar(200). */
 type TLocationName = "string";
-// name of geographical point (ascii), varchar(200)
+/** Name of geographical point (ascii), varchar(200). */
 type TLocationAsciiname = "string";
-// alternatenames, comma separated, ascii names automatically transliterated,
-// convenience attribute from alternatename table, varchar(10000)
+/**
+ * Alternatenames, comma separated, ascii names automatically transliterated,
+ * convenience attribute from alternatename table, varchar(10000).
+ */
 type TLocationAlternatenames = "string";
-// latitude in decimal degrees (wgs84)
+/** Latitude in decimal degrees (wgs84). */
 type TLocationLatitude = "string";
-// longitude in decimal degrees (wgs84)
+/** Longitude in decimal degrees (wgs84). */
 type TLocationLongitude = "string";
-// Feature classes and codes: http://www.geonames.org/export/codes.html
-// char(1)
+/**
+ * Feature classes and codes: http://www.geonames.org/export/codes.html.
+ * char(1)
+ */
 type TLocationFeatureClass =
   | "A"
   | "H"
@@ -83,7 +97,10 @@ type TLocationFeatureClass =
   | "T"
   | "U"
   | "V";
-// varchar(10)
+/**
+ * Feature classes and codes: http://www.geonames.org/export/codes.html.
+ * varchar(10)
+ */
 type TLocationFeatureCode =
   | "ADM1"
   | "ADM1H"
@@ -766,31 +783,42 @@ type TLocationFeatureCode =
   | "VIN"
   | "VINS";
 
-// ISO-3166 2-letter country code, 2 characters
+/** ISO-3166 2-letter country code, 2 characters. */
 type TLocationCountryCode = "string";
-// alternate country codes, comma separated, ISO-3166 2-letter country code, 200 characters
+/**
+ * Alternate country codes, comma separated, ISO-3166 2-letter country code,
+ * 200 characters.
+ */
 type TLocationCc2 = "string";
-// fipscode (subject to change to iso code), see exceptions below,
-// see file admin1Codes.txt for display names of this code; varchar(20)
+/**
+ * fipscode (subject to change to iso code), see exceptions below,
+ * see file admin1Codes.txt for display names of this code, varchar(20).
+ */
 type TLocationAdmin1Code = "string";
-// code for the second administrative division, a county in the US
-// see file admin2Codes.txt; varchar(80)
+/**
+ * Code for the second administrative division, a county in the US, varchar(80).
+ *
+ * See file admin2Codes.txt.
+ */
 type TLocationAdmin2Code = "string";
-// code for third level administrative division, varchar(20)
+/** Code for third level administrative division, varchar(20). */
 type TLocationAdmin3Code = "string";
-// code for fourth level administrative division, varchar(20)
+/** Code for fourth level administrative division, varchar(20). */
 type TLocationAdmin4Code = "string";
-// bigint (8 byte int)
+/** bigint (8 byte int) */
 type TLocationPopulation = "string";
-// in meters, integer
+/** in meters, integer */
 type TLocationElevation = "string";
-// digital elevation model: srtm3 or gtopo30
-// average elevation of 3''x3'' (ca 90mx90m) or 30''x30'' (ca 900mx900m)
-// area in meters (srtm processed by cgiar/ciat)
+/**
+ * Digital elevation model:
+ * - srtm3 or gtopo30
+ * - average elevation of 3''x3'' (ca 90mx90m) or 30''x30'' (ca 900mx900m)
+ * - area in meters (srtm processed by cgiar/ciat)
+ */
 type TLocationDem = "string";
-// the iana timezone id (see file timeZone.txt) varchar(40)
+/** The iana timezone id (see file timeZone.txt), varchar(40). */
 type TLocationTimezone = "string";
-// date of last modification in yyyy-MM-dd format
+/** Date of last modification in yyyy-MM-dd format */
 type TLocationModificationDate = "string";
 
 export type TLocationData = [
