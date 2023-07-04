@@ -5,7 +5,10 @@
 import { NextResponse, NextRequest } from "next/server";
 import uFuzzy from "@leeoniya/ufuzzy";
 
-import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types";
+import { IRelevantLocation } from "../../../../build/createLocationAutocompleteData/types";
+// The location autocomplete data will be created during the build step.
+// @ts-ignore-next-line
+// eslint-disable-next-line import/no-unresolved
 import locationData from "../../../../../locationAutocompleteData.json";
 
 export type TMatchingLocations = Array<IRelevantLocation> | [];
@@ -24,11 +27,13 @@ export interface ISearchLocationResults {
 }
 
 async function getLocationsByQuery(searchQuery: string) {
-  const locationNames = locationData.data.map((location) => {
+  if (!locationData) {
+    console.error("No location data available.");
+  }
+
+  const locationNames = locationData.data.map((location: IRelevantLocation) => {
     const { name, stateCode, countryCode, alternateNames } = location;
-    const alternateNamesJoined = alternateNames
-      ? location.alternateNames.join(" ")
-      : "";
+    const alternateNamesJoined = alternateNames ? alternateNames.join(" ") : "";
 
     return `${name} ${stateCode} ${countryCode} ${alternateNamesJoined}`;
   });

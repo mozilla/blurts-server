@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
-    "build": "next build",
+    "build": "npx ts-node-esm src/build/createLocationAutocompleteData/index.ts && next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
