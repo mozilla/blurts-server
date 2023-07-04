@@ -115,20 +115,25 @@ export const ExposureCard = (props: ExposureCardProps) => {
     <div>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
-          <ul className={styles.exposureHeaderList}>
-            <li className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}>
+          <dl className={styles.exposureHeaderList}>
+            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-company-logo")}</dt>
+            <dd className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}>
               <Image
                 className={styles.exposureImage}
                 alt=""
                 src={exposureImg}
-              /></li>
-            <li>{exposureName}</li>
-            <li className={styles.hideOnMobile}><ExposureTypeEl type={exposureData} /></li>
-            <li className={styles.hideOnMobile}>{props.dateFound}</li>
-            <li>
+              /></dd>
+            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-company")}</dt>
+            <dd>{exposureName}</dd>
+            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-exposure-type")}</dt>
+            <dd className={styles.hideOnMobile}><ExposureTypeEl type={exposureData} /></dd>
+            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-date-found")}</dt>
+            <dd className={styles.hideOnMobile}>{props.dateFound}</dd>
+            <dt className={styles.visuallyHidden}>{l10n.getString("exposure-card-label-status")}</dt>
+            <dd>
               <StatusPill type={statusPillType} />
-            </li>
-          </ul>
+            </dd>
+          </dl>
           <button
             className={styles.chevron}
             onClick={() => setExposureCardExpanded(!exposureCardExpanded)}

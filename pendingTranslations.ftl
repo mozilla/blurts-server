@@ -48,6 +48,12 @@ exposure-card-your-exposed-info = Your exposed info
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
 exposure-card-cta = Let’s fix it
+exposure-card-label-company-logo = Company logo
+exposure-card-label-company = Company
+exposure-card-label-exposure-type = Exposure type
+exposure-card-label-date-found = Date found
+# Status of the exposure card, could be In Progress, Fixed or Action Needed
+exposure-card-label-status = Status
 
 # Dashboard
 
