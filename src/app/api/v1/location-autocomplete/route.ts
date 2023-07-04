@@ -5,7 +5,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import uFuzzy from "@leeoniya/ufuzzy";
 
-import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types.d";
+import { IRelevantLocation } from "../../../../scripts/createLocationAutocompleteData/types";
 import locationData from "../../../../../locationAutocompleteData.json";
 
 export type TMatchingLocations = Array<IRelevantLocation> | [];

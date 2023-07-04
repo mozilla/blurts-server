@@ -32,7 +32,7 @@ import {
   IRelevantLocation,
   IRelevantLocationAlternate,
   IDataFileUrls,
-} from "./types.d";
+} from "./types";
 
 const REMOTE_DATA_URL = "https://download.geonames.org/export/dump";
 const DATA_COUNTRY_CODE = "US";
