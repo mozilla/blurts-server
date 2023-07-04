@@ -46,8 +46,11 @@ app.use(
 app.use(errorHandler);
 app.post("/api/v1/hibp/notify", notify);
 
-await initFluentBundles();
-await initEmail();
+async function init() {
+  await initFluentBundles();
+  await initEmail();
+}
+init();
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.

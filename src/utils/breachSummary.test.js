@@ -2,23 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import test from 'ava'
+import { test, expect } from "@jest/globals";
 
 import { breachedDataTypes, breachSummary } from './breachSummary.js'
 
-test('breachSummary: handles null input', t => {
+test('breachSummary: handles null input', () => {
   const verifiedEmails = null
   const resp = breachSummary(verifiedEmails)
-  t.is(resp.monitoredEmails.count, 0)
+  expect(resp.monitoredEmails.count).toBe(0);
 })
 
-test('breachSummary: handles empty input', t => {
+test('breachSummary: handles empty input', () => {
   const verifiedEmails = []
   const resp = breachSummary(verifiedEmails)
-  t.is(resp.monitoredEmails.count, 0)
+  expect(resp.monitoredEmails.count).toBe(0);
 })
 
-test('breachSummary: unresolved breaches', t => {
+test('breachSummary: unresolved breaches', () => {
   const verifiedEmails = [{
     email: 'test@test.com',
     breaches: [],
@@ -51,12 +51,12 @@ test('breachSummary: unresolved breaches', t => {
     primary: false
   }]
   const resp = breachSummary(verifiedEmails)
-  t.is(resp.monitoredEmails.count, 2)
-  t.is(resp.numBreaches.count, 1)
-  t.is(resp.numBreaches.numResolved, 0)
-  t.is(resp.numBreaches.numUnresolved, 1)
+  expect(resp.monitoredEmails.count).toBe(2)
+  expect(resp.numBreaches.count).toBe(1)
+  expect(resp.numBreaches.numResolved).toBe(0)
+  expect(resp.numBreaches.numUnresolved).toBe(1)
 })
-test('breachSummary: resolved breaches', t => {
+test('breachSummary: resolved breaches', () => {
   const verifiedEmails = [{
     email: 'test@test.com',
     breaches: [{
@@ -120,13 +120,13 @@ test('breachSummary: resolved breaches', t => {
     primary: false
   }]
   const resp = breachSummary(verifiedEmails)
-  t.is(resp.monitoredEmails.count, 2)
-  t.is(resp.numBreaches.count, 4)
-  t.is(resp.numBreaches.numResolved, 2)
-  t.is(resp.numBreaches.numUnresolved, 2)
+  expect(resp.monitoredEmails.count).toBe(2)
+  expect(resp.numBreaches.count).toBe(4)
+  expect(resp.numBreaches.numResolved).toBe(2)
+  expect(resp.numBreaches.numUnresolved).toBe(2)
 })
 
-test('breachedDataTypes', t => {
+test('breachedDataTypes', () => {
   const verifiedEmails = [{
     email: 'test@test.com',
     breaches: [{
@@ -190,8 +190,8 @@ test('breachedDataTypes', t => {
     primary: false
   }]
   const resp = breachedDataTypes(verifiedEmails, 'test2@test.com')
-  t.is(resp['test@test.com']?.passwords, 1)
-  t.is(resp['test@test.com']['email-addresses'], 1)
-  t.is(resp['test2@test.com']?.passwords, 1)
-  t.is(resp['test2@test.com']['email-addresses'], 2)
+  expect(resp['test@test.com']?.passwords).toBe(1);
+  expect(resp['test@test.com']['email-addresses']).toBe(1);
+  expect(resp['test2@test.com']?.passwords).toBe(1);
+  expect(resp['test2@test.com']['email-addresses']).toBe(2);
 })

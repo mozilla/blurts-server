@@ -12,13 +12,15 @@ import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
 
 export async function getUserBreaches({
   user,
+  options = {},
 }: {
   user: Session["user"] & { email: string };
+  options?: Parameters<typeof appendBreachResolutionChecklist>[1];
 }) {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
-  appendBreachResolutionChecklist(breachesData);
+  appendBreachResolutionChecklist(breachesData, options);
 
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0;
   const emailTotalCount =

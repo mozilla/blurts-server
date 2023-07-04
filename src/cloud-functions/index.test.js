@@ -2,24 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import test from "ava";
-import * as td from "testdouble";
+import { test, expect, jest } from "@jest/globals";
 
 import { createResponse, createRequest } from "node-mocks-http";
 
 import AppConstants from "../appConstants.js";
 
-test.beforeEach(async () => {
-  await td.replaceEsm("../utils/fluent.js");
-  const { getMessage } = await import("../utils/fluent.js");
-  td.when(getMessage(td.matchers.anything())).thenReturn("test");
+jest.mock("@sentry/node", () => {
+  return {
+    Handlers: {
+      errorHandler: jest.fn(() => (_req, _res, next) => next()),
+    },
+  };
 });
+jest.mock("../utils/hibp.js");
+jest.mock("../utils/email.js");
 
-test.afterEach(() => {
-  td.reset();
-});
-
-test.serial("accepts valid payload", async (t) => {
+test("accepts valid payload", async () => {
   const req = createRequest({
     method: "POST",
     headers: {
@@ -28,13 +27,10 @@ test.serial("accepts valid payload", async (t) => {
     },
     url: "/api/v1/hibp/notify",
     body: { breachName: "Test1", hashPrefix: "...", hashSuffixes: ["..."] },
-    fluentFormat: td.func(),
+    fluentFormat: jest.fn(),
   });
 
   const resp = createResponse();
-
-  await td.replaceEsm("../utils/hibp.js");
-  const { getBreachByName } = await import("../utils/hibp.js");
 
   const breachAlert = {
     IsVerified: true,
@@ -42,9 +38,9 @@ test.serial("accepts valid payload", async (t) => {
     IsFabricated: true,
     IsSpamList: false,
   };
-  td.when(getBreachByName(undefined, "Test1"), { times: 1 }).thenReturn(
-    breachAlert
-  );
+
+  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  mockedUtilsHibp.getBreachByName.mockReturnValue(breachAlert);
 
   // Call code-under-test
   const { app } = await import("./index.js");
@@ -52,10 +48,15 @@ test.serial("accepts valid payload", async (t) => {
   await app._router(req, resp);
 
   // Check expectations
-  t.is(resp.statusCode, 200);
+  expect(resp.statusCode).toBe(200);
+  expect(mockedUtilsHibp.getBreachByName).toHaveBeenCalledTimes(1);
+  expect(mockedUtilsHibp.getBreachByName).toHaveBeenCalledWith(
+    undefined,
+    "Test1"
+  );
 });
 
-test.serial("rejects invalid bearer token", async (t) => {
+test("rejects invalid bearer token", async () => {
   const req = createRequest({
     method: "POST",
     headers: {
@@ -64,7 +65,7 @@ test.serial("rejects invalid bearer token", async (t) => {
     },
     url: "/api/v1/hibp/notify",
     body: { breachName: "Test1", hashPrefix: "...", hashSuffixes: ["..."] },
-    fluentFormat: td.func(),
+    fluentFormat: jest.fn(),
   });
 
   const resp = createResponse();
@@ -74,5 +75,5 @@ test.serial("rejects invalid bearer token", async (t) => {
   await app._router(req, resp);
 
   // Check expectations
-  t.is(resp.statusCode, 403);
+  expect(resp.statusCode).toBe(403);
 });
