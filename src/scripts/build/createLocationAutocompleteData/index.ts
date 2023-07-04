@@ -98,7 +98,14 @@ async function fetchRemoteArchive({
 
   console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`);
   const zip = new AdmZip(localDownloadPath);
-  zip.extractAllTo(localExtractionPath, true);
+  await new Promise<void>((resolve, reject) => {
+    zip.extractAllToAsync(
+      localExtractionPath,
+      true,
+      false,
+      error => error ? reject(error) : resolve()
+    )
+  });
 }
 
 try {

@@ -21,7 +21,7 @@ export default defineConfig({
   globalSetup: 'src/e2e/globalSetup.js',
 
   /* Max time in milliseconds the whole test suite can to prevent CI breaking. */
-  globalTimeout: 360_000,
+  globalTimeout: 720_000,
 
   // adding missing snapshots for later comparison
   updateSnapshots: 'missing',
@@ -108,6 +108,6 @@ export default defineConfig({
     command: 'npm run build; npm start',
     port: 6060,
     // Building the app can take some time:
-    timeout: 720 * 1000,
+    timeout: 1440 * 1000,
   }
 })
