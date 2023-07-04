@@ -820,9 +820,9 @@ export interface IRelevantLocation {
   name: string;
   stateCode: string;
   countryCode: string;
-  featureClass: TLocationFeatureClass;
-  featureCode: TLocationFeatureCode;
-  population: TLocationPopulation;
+  featureClass: string;
+  featureCode: string;
+  population: string;
   alternateNames?: Array<string>;
 }
 
