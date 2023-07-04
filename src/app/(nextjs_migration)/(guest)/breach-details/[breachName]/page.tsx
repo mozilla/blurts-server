@@ -13,7 +13,7 @@ import {
 } from "../../../../../utils/recommendations";
 import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getBreaches } from "../../../../functions/server/getBreaches";
-import { Breach } from "../../../(authenticated)/user/breaches/breaches";
+import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";
 import glyphPassword from "../../../../../client/images/passwords.svg";

@@ -6,7 +6,7 @@ import Image from "next/image";
 import Script from "next/script";
 import { getServerSession } from "next-auth";
 import { headers } from "next/headers";
-import { CircleChartProps, UserBreaches } from "./breaches";
+import { CircleChartProps, UserBreaches } from "./breaches.d";
 
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
