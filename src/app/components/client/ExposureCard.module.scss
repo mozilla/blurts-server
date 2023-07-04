@@ -91,17 +91,28 @@
       padding: $spacing-lg;
     }
 
-    .exposureListOfExposureTypes {
+    .exposedInfoContainer {
       padding-top: $spacing-md;
       display: flex;
       flex-direction: column;
       gap: $layout-xs;
+
+      .exposedInfoWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
+      }
 
       @media screen and (min-width: $screen-lg) {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
         gap: $layout-md;
+
+        .exposedInfoWrapper {
+          flex-direction: row;
+          gap: $spacing-lg;
+        }
       }
 
       dl {
@@ -118,10 +129,6 @@
           flex-direction: row;
           align-items: center;
           gap: $layout-xs;
-        }
-
-        div:first-child {
-          grid-column: 1 / -1;
         }
 
         .detailsFoundItem {

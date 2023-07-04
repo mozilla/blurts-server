@@ -187,31 +187,33 @@ export const ExposureCard = (props: ExposureCardProps) => {
             </p>
           </div>
           }
-          <div className={styles.exposureListOfExposureTypes}>
-            <dl>
-              <div>{l10n.getString("exposure-card-your-exposed-info")}:</div>
-              {/* TODO: Pass list of details found instead of hardcoding it */}
-              <DetailsFoundItem
-                icon={<MultipleUsersIcon alt="" width="13" height="13" />}
-                whichExposed="family"
-                num={0}
-              />
-              <DetailsFoundItem
-                icon={<PhoneIcon alt="" width="13" height="13" />}
-                whichExposed="phone"
-                num={5}
-              />
-              <DetailsFoundItem
-                icon={<EmailIcon alt="" width="13" height="13" />}
-                whichExposed="email"
-                num={4}
-              />
-              <DetailsFoundItem
-                icon={<LocationPinIcon alt="" width="13" height="13" />}
-                whichExposed="address"
-                num={0}
-              />
-            </dl>
+          <div className={styles.exposedInfoContainer}>
+            <div className={styles.exposedInfoWrapper}>
+              <p>{l10n.getString("exposure-card-your-exposed-info")}:</p>
+              <dl>
+                {/* TODO: Pass list of details found instead of hardcoding it */}
+                <DetailsFoundItem
+                  icon={<MultipleUsersIcon alt="" width="13" height="13" />}
+                  whichExposed="family"
+                  num={0}
+                />
+                <DetailsFoundItem
+                  icon={<PhoneIcon alt="" width="13" height="13" />}
+                  whichExposed="phone"
+                  num={5}
+                />
+                <DetailsFoundItem
+                  icon={<EmailIcon alt="" width="13" height="13" />}
+                  whichExposed="email"
+                  num={4}
+                />
+                <DetailsFoundItem
+                  icon={<LocationPinIcon alt="" width="13" height="13" />}
+                  whichExposed="address"
+                  num={0}
+                />
+              </dl>
+            </div>
             <span className={styles.fixItBtn}>
               <Button type={"primary"} content={l10n.getString("exposure-card-cta")} />
             </span>
