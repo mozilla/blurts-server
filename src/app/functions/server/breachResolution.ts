@@ -109,7 +109,10 @@ const breachResolutionDataTypes = {
  * @param options
  * @returns {*} void
  */
-function appendBreachResolutionChecklist(userBreachData: any, options: Partial<{ countryCode: string }> = {}) {
+function appendBreachResolutionChecklist(
+  userBreachData: any,
+  options: Partial<{ countryCode: string }> = {}
+) {
   const l10n = getL10n();
   const { verifiedEmails } = userBreachData;
 
@@ -160,8 +163,15 @@ function appendBreachResolutionChecklist(userBreachData: any, options: Partial<{
  * @param {{ countryCode: string }} options
  * @returns map of relevant breach resolution recommendations
  */
-function getResolutionRecsPerBreach(dataTypes: any[], args: { companyName: string; breachedCompanyLink: string }, options: Partial<{ countryCode: string }> = {}) {
-  const filteredBreachRecs: Record<string, ReturnType<typeof getRecommendationFromResolution>> = {};
+function getResolutionRecsPerBreach(
+  dataTypes: any[],
+  args: { companyName: string; breachedCompanyLink: string },
+  options: Partial<{ countryCode: string }> = {}
+) {
+  const filteredBreachRecs: Record<
+    string,
+    ReturnType<typeof getRecommendationFromResolution>
+  > = {};
 
   // filter breachResolutionDataTypes based on relevant data types passed in
   for (const resolution of Object.entries(breachResolutionDataTypes)) {

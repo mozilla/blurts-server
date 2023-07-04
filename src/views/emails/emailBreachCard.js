@@ -60,10 +60,9 @@ const breachAlertValueStyle = `
 
 /**
  * @param {{ AddedDate: any; DataClasses: any[]; Title: any; }} breachData
- * @param {any} breachLogos
  * @param {import("@fluent/react").ReactLocalization} [l10n]
  */
-const breachCardPartial = (breachData, breachLogos, l10n) => {
+const breachCardPartial = (breachData, l10n) => {
   const getMessage = getStringLookup(l10n);
   const {
     AddedDate,
@@ -82,7 +81,7 @@ const breachCardPartial = (breachData, breachLogos, l10n) => {
                 class='breachLogoWrapper'
                 style='${breachAlertCardsTitleImageStyle}'
               >
-                ${getBreachLogo(breachData, breachLogos)}
+                ${getBreachLogo(breachData)}
               </span>
               ${Title}
             </td>

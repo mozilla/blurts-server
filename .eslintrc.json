@@ -11,7 +11,9 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
-    "next"
+    "next",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -74,6 +76,9 @@
     },
     {
       "files": [
+        "src/app.js",
+        "src/utils/redisMock.js",
+        "src/routes/**/*.js",
         "src/views/**/*.js",
         "src/middleware/**/*.js",
         "src/controllers/**/*.js",
@@ -84,8 +89,19 @@
         "jsdoc/no-undefined-types": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "import/no-named-as-default-member": "off",
+        "import/no-unresolved": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    }
+  }
 }

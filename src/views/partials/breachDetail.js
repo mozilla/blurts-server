@@ -132,7 +132,7 @@ export const breachDetail = data => `
   <header class="breach-detail-header">
     <div class="breach-detail-meta">
       <h1>
-        ${getBreachLogo(data.breach, data.breachLogos)}
+        ${getBreachLogo(data.breach)}
         ${data.breach.Title}
       </h1>
       ${getBreachCategory(data.breach) === 'website-breach'

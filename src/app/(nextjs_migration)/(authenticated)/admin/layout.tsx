@@ -7,7 +7,7 @@ import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
 
 import "../../../../client/css/index.css";
-import { authOptions } from "../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../api/utils/auth";
 export type Props = {
   children: ReactNode;
 };

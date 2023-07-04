@@ -11,8 +11,9 @@
     "dev": "next dev --port=6060",
     "build": "next build",
     "start": "next start",
-    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
-    "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
+    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
+    "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
+    "test": "jest",
     "e2e": "playwright test src/e2e/",
     "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
@@ -32,11 +33,6 @@
     },
     "ext": "js,css,json,ftl,env"
   },
-  "ava": {
-    "files": [
-      "!src/e2e/"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mozilla/blurts-server.git"
@@ -48,6 +44,8 @@
     "npm": "8.19.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.360.0",
+    "@aws-sdk/lib-storage": "^3.360.0",
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
@@ -74,7 +72,9 @@
     "patch-package": "^7.0.0",
     "pg": "^8.9.0",
     "react": "^18.2.0",
+    "react-aria": "^3.25.0",
     "react-dom": "^18.2.0",
+    "react-stately": "^3.23.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -94,14 +94,17 @@
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
-    "ava": "^5.1.0",
     "c8": "^7.12.0",
     "eslint": "^8.40.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-check-file": "^2.2.0",
     "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^40.0.0",
     "eslint-plugin-storybook": "^0.6.12",
     "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.2",
     "node-mocks-http": "^1.12.1",
     "nodemon": "^2.0.20",
@@ -111,7 +114,7 @@
     "stylelint": "^15.6.0",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-scss": "^5.0.0",
-    "testdouble": "^3.16.8",
+    "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   }
 }

@@ -7,7 +7,7 @@
 import React, { ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill, StatusPillType } from "../server/StatusPill";
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import {
   ChevronDown,
   EmailIcon,
@@ -16,7 +16,6 @@ import {
   OpenInNew,
   PhoneIcon,
 } from "../server/Icons";
-import Image from "next/image";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { ScanResult  } from "../../../external/onerep";

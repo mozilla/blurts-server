@@ -88,7 +88,10 @@ export async function POST(req: NextRequest) {
         message: "Sent the verification email",
       });
     } catch (e: unknown) {
-      if (e instanceof Error && e.message === "error-email-validation-pending") {
+      if (
+        e instanceof Error &&
+        e.message === "error-email-validation-pending"
+      ) {
         return NextResponse.json(
           {
             success: false,

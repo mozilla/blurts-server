@@ -8,6 +8,7 @@ get-started = Έναρξη
 ## Why use Firefox Monitor?
 
 why-use-monitor = Γιατί να χρησιμοποιήσω το { -brand-fx-monitor };
+identifying-breaches = Η αναγνώριση και η επίλυση των παραβιάσεων δεδομένων είναι ένα σημαντικό βήμα για τη διασφάλιση του απορρήτου σας στο διαδίκτυο.
 get-alerts = Λάβετε ειδοποιήσεις για νέες παραβιάσεις
 
 ## Here’s how it works

@@ -5,7 +5,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { EmailTemplateType } from "../../../../../utils/email";
-import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../../api/utils/auth";
 
 export default async function EmailRootPage() {
   const session = await getServerSession(authOptions);

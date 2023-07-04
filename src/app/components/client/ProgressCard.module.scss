@@ -29,49 +29,46 @@
     }
   }
 
+  .progressBarContainer {
+    gap: $spacing-md;
+    align-items: center;
+    display: flex;
 
-.progressBarContainer {
-  gap: $spacing-md;
-  align-items: center;
-  display: flex;
+    img {
+      width: 50px; // width of laptop images
+      height: auto;
+    }
 
-  img {
-    width: 50px; // width of laptop images
-    height: auto;
-  }
-
-  .fullProgressBar {
-    border-radius: $border-radius-lg;
-    height: 15px;
-    background: repeating-linear-gradient(
-      -45deg,
-      $color-grey-20,
-      $color-grey-20 5px,
-      $color-grey-10 5px,
-      $color-grey-10 10px
-    );
-    position: relative;
-    width: 100%;
-
-    .activeProgressBar {
-      height: inherit;
+    .fullProgressBar {
       border-radius: $border-radius-lg;
-      position: absolute;
-      background: $gradient-blue;
-    }
+      height: 15px;
+      background: repeating-linear-gradient(
+        -45deg,
+        $color-grey-20,
+        $color-grey-20 5px,
+        $color-grey-10 5px,
+        $color-grey-10 10px
+      );
+      position: relative;
+      width: 100%;
 
-    .percentageBreakdown {
-      font: $text-body-sm;
-      color: $color-grey-60;
-      margin-top: 15px; // offset height of progress bar
-      padding-top: $spacing-xs;
-      display: flex;
-      justify-content: space-between;
+      .activeProgressBar {
+        height: inherit;
+        border-radius: $border-radius-lg;
+        position: absolute;
+        background: $gradient-blue;
+      }
+
+      .percentageBreakdown {
+        font: $text-body-sm;
+        color: $color-grey-60;
+        margin-top: 15px; // offset height of progress bar
+        padding-top: $spacing-xs;
+        display: flex;
+        justify-content: space-between;
+      }
     }
-  
   }
-
-}
 
   .progressStatsWrapper {
     font: $text-body-sm;

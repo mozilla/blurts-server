@@ -2,6 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+// It looks like the type definitions don't perfectly match how
+// `pg-connection-string` works, triggering a false positive for this lint rule:
+/* eslint-disable import/no-named-as-default-member */
 import pgConnectionStr from 'pg-connection-string'
 
 import AppConstants from '../appConstants.js'

@@ -40,7 +40,11 @@ export async function POST(req: NextRequest) {
       }
 
       await initEmail();
-      await sendVerificationEmail(subscriber, emailId, l10n);
+      await sendVerificationEmail(
+        subscriber,
+        Number.parseInt(emailId, 10),
+        l10n
+      );
 
       return NextResponse.json({
         success: true,
@@ -48,7 +52,10 @@ export async function POST(req: NextRequest) {
       });
     } catch (e) {
       console.error(e);
-      if (e instanceof Error && e.message === "error-email-validation-pending") {
+      if (
+        e instanceof Error &&
+        e.message === "error-email-validation-pending"
+      ) {
         return NextResponse.json(
           {
             success: false,

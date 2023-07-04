@@ -4,10 +4,14 @@
 
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
-import { getL10n, getL10nBundles } from "../functions/server/l10n";
+import { getL10n, getL10nBundles, getLocale } from "../functions/server/l10n";
 import { L10nProvider } from "../../contextProviders/localization";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../api/utils/auth";
 import { Shell } from "./Shell";
+import {
+  ReactAriaI18nProvider,
+  ReactAriaSsrProvider,
+} from "../../contextProviders/react-aria";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
@@ -16,9 +20,13 @@ export default async function Layout({ children }: { children: ReactNode }) {
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <Shell l10n={l10n} session={session}>
-        {children}
-      </Shell>
+      <ReactAriaSsrProvider>
+        <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
+          <Shell l10n={l10n} session={session}>
+            {children}
+          </Shell>
+        </ReactAriaI18nProvider>
+      </ReactAriaSsrProvider>
     </L10nProvider>
   );
 }
