@@ -66,4 +66,4 @@ next-env.d.ts
 
 # Location autocomplete data
 locationAutocompleteData.json
-src/build/createLocationAutocompleteData/tpm-data/
+src/scripts/build/createLocationAutocompleteData/tpm-data/
