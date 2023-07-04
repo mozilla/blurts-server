@@ -37,7 +37,7 @@ const getLocationSuggestions = async ({
   }
 };
 
-export const LocationSearchInput = () => {
+export const LocationAutocompleteInput = () => {
   const [locationSuggestions, setLocationSuggestions] =
     useState<TMatchingLocations>([]);
   const [searchQuery, setSearchQuery] = useState("");
