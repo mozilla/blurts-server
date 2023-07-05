@@ -6,6 +6,36 @@ import { Knex } from "knex";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
+  interface FeatureFlagRow {
+    name: string;
+    is_enabled: boolean;
+    description?: string;
+    dependencies?: string[];
+    allow_list?: string[];
+    wait_list?: string[];
+    added_at?: Date;
+    modified_at?: Date;
+    expired_at?: Date;
+    deleted_at?: Date;
+    owner?: string;
+  }
+
+  type FeatureFlagOptionalColumns = Extract<
+    keyof FeatureFlagRow,
+    | "description"
+    | "dependencies"
+    | "allow_list"
+    | "wait_list"
+    | "added_at"
+    | "modified_at"
+    | "expired_at"
+    | "owner"
+  >;
+  type FeatureFlagAutoInsertedColumns = Extract<
+    keyof FeatureFlagRow,
+    "name" | "created_at" | "modified_at"
+  >;
+
   interface SubscriberRow {
     id: number;
     primary_sha1: string;
@@ -105,6 +135,7 @@ declare module "knex/types/tables" {
     is_retired: boolean;
     is_spam_list: boolean;
     is_malware: boolean;
+    favicon_url: null | string;
   }
   type BreachOptionalColumns = Extract<
     keyof BreachRow,
@@ -113,6 +144,18 @@ declare module "knex/types/tables" {
   type BreachAutoInsertedColumns = Extract<keyof BreachRow, "id">;
 
   interface Tables {
+    feature_flags: Knex.CompositeTableType<
+      FeatureFlagRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<
+        FeatureFlagRow,
+        FeatureFlagAutoInsertedColumns | FeatureFlagOptionalColumns
+      > &
+        Partial<Pick<FeatureFlagRow, FeatureFlagOptionalColumns>>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional:
+      Partial<Omit<FeatureFlagRow, "name" | "created_at">>
+    >;
+
     subscribers: Knex.CompositeTableType<
       SubscriberRow,
       // On updates, auto-generated columns cannot be set, and nullable columns are optional:
@@ -140,9 +183,8 @@ declare module "knex/types/tables" {
       // On updates, auto-generated columns cannot be set, and nullable columns are optional:
       Omit<BreachRow, BreachAutoInsertedColumns | BreachOptionalColumns> &
         Partial<Pick<BreachRow, BreachOptionalColumns>>,
-      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
-      Partial<Omit<BreachRow, "id" | "added_date">> &
-        Pick<BreachRow, "modified_date">
+      // On updates, don't allow updating the ID; all other fields are optional:
+      Partial<Omit<BreachRow, "id">>
     >;
   }
 }

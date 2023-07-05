@@ -5,6 +5,7 @@
 import Image from "next/image";
 import Script from "next/script";
 import { getServerSession } from "next-auth";
+import { headers } from "next/headers";
 import { CircleChartProps, UserBreaches } from "./breaches.d";
 
 import AppConstants from "../../../../../appConstants.js";
@@ -17,6 +18,7 @@ import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 
 import { BreachesTable } from "../../../components/server/BreachesTable";
 import { getComponentAsString } from "../../../functions/server/getComponentAsString";
+import { getCountryCode } from "../../../../functions/server/getCountryCode";
 
 export async function generateMetadata() {
   const l10n = getL10n();
@@ -63,12 +65,16 @@ declare global {
 export default async function UserBreaches() {
   const session = await getServerSession(authOptions);
   const l10n = getL10n();
+  const headerList = headers();
 
   const userBreachesData: UserBreaches = await getUserBreaches({
     // `(authenticated)/layout.tsx` ensures that `session` is not undefined,
     // so the type assertion should be safe:
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     user: session!.user as any,
+    options: {
+      countryCode: getCountryCode(headerList),
+    },
   });
 
   type FxaSubscriptionResponse = {

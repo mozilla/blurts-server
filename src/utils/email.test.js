@@ -2,19 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import test from 'ava'
-import * as td from 'testdouble'
+import { test, expect, jest } from "@jest/globals";
 
 import {
   TEST_SUBSCRIBERS,
   TEST_EMAIL_ADDRESSES
 } from '../db/seeds/testSubscribers.js'
 
-test.afterEach(() => {
-  td.reset()
-})
 
-test('EmailUtils.sendEmail before .init() fails', async t => {
+jest.mock("nodemailer", () => {
+  return {
+    createTransport: jest.fn(),
+  };
+});
+
+test('EmailUtils.sendEmail before .init() fails', async () => {
+  expect.assertions(1);
+
   const sendMailArgs = [
     'test@example.com',
     'subject',
@@ -26,47 +30,35 @@ test('EmailUtils.sendEmail before .init() fails', async t => {
 
   const expectedError = 'SMTP transport not initialized'
 
-  await t.throwsAsync(
-    sendEmail(...sendMailArgs),
-    { instanceOf: Error, message: expectedError }
-  )
+  await expect(() => sendEmail(...sendMailArgs)).rejects.toThrow(expectedError);
 })
 
-test.serial('EmailUtils.init with empty host uses jsonTransport', async t => {
-  const nodemailer = await td.replaceEsm('nodemailer')
+test('EmailUtils.init with empty host uses jsonTransport', async () => {
+  const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail } = await import('./email.js')
 
-  t.true(await initEmail(''))
-  td.verify(nodemailer.createTransport({ jsonTransport: true }))
+  await expect(await initEmail('')).toBe(true);
+  expect(mockedNodemailer.createTransport).toHaveBeenCalledWith({ jsonTransport: true });
 })
 
-test.serial('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async t => {
-  const nodemailer = await td.replaceEsm('nodemailer')
+test('EmailUtils.init with SMTP URL invokes nodemailer.createTransport', async () => {
+  const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
-  const createTransport = {
-    verify: td.func(),
-    // A mocked function can be empty:
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    sendMail: (_mailoptions, _callback) => {}
-  }
-
-  td.when(nodemailer.createTransport(testSmtpUrl))
-    .thenReturn(createTransport)
-
-  td.when(
-    createTransport.verify(),
-    { times: 1 }
-  ).thenResolve('verified')
+  const mockedTransporter = {
+    verify: jest.fn(() => Promise.resolve('verified')),
+  };
+  mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
   const result = await initEmail(testSmtpUrl)
-  t.is(result, 'verified')
+  expect(mockedNodemailer.createTransport).toHaveBeenCalledWith(testSmtpUrl);
+  expect(mockedTransporter.verify).toHaveBeenCalledTimes(1);
+  expect(result).toBe('verified');
 })
 
-test.serial('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async t => {
-  const nodemailer = await td.replaceEsm('nodemailer')
-  await td.replaceEsm('../utils/fluent.js')
+test('EmailUtils.sendEmail with recipient, subject, template, context calls gTransporter.sendMail', async () => {
+  const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail, sendEmail } = await import('./email.js')
 
   const testSmtpUrl = 'smtps://test:test@test:1'
@@ -77,35 +69,23 @@ test.serial('EmailUtils.sendEmail with recipient, subject, template, context cal
     { breach: 'Test' }
   ]
 
-  const createTransport = {
-    verify: td.func(),
-    // A mocked function can be empty:
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    use: () => {},
-    sendMail: (_options, cb) => cb(null, 'sent'),
-    transporter: { name: 'MockTransporter' }
-  }
-
-  td.when(nodemailer.createTransport(testSmtpUrl))
-    .thenReturn(createTransport)
-
-  td.when(
-    createTransport.verify(),
-    { times: 1 }
-  ).thenResolve('verified')
+  const mockedTransporter = {
+    verify: jest.fn(() => Promise.resolve('verified')),
+    sendMail: jest.fn((_options, cb) => cb(null, "sent")),
+    transporter: { name: 'MockTransporter' },
+  };
+  mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
   const result = await initEmail(testSmtpUrl)
-  t.is(result, 'verified')
+  expect(result).toBe("verified");
 
-  t.deepEqual(await sendEmail(...sendMailArgs), 'sent')
+  expect(await sendEmail(...sendMailArgs)).toBe("sent")
 })
 
-test.serial('EmailUtils.sendEmail rejects with error', async t => {
-  const nodemailer = await td.replaceEsm('nodemailer')
-  await td.replaceEsm('../utils/fluent.js')
+test('EmailUtils.sendEmail rejects with error', async () => {
+  const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail, sendEmail } = await import('./email.js')
 
-  const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
     'test@example.com',
     'subject',
@@ -113,35 +93,21 @@ test.serial('EmailUtils.sendEmail rejects with error', async t => {
     { breach: 'Test' }
   ]
 
-  const createTransport = {
-    verify: td.func(),
-    // A mocked function can be empty:
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
-    use: () => {},
-    sendMail: (_options, cb) => cb('error', 'null'),
-    transporter: { name: 'MockTransporter' }
-  }
+  const mockedTransporter = {
+    verify: jest.fn(() => Promise.resolve('verified')),
+    sendMail: jest.fn((_options, cb) => cb("error", null)),
+    transporter: { name: 'MockTransporter' },
+  };
+  mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
-  td.when(nodemailer.createTransport(testSmtpUrl))
-    .thenReturn(createTransport)
-
-  td.when(
-    createTransport.verify(),
-    { times: 1 }
-  ).thenResolve('verified')
-
-  t.is(await initEmail('smtps://test:test@test:1'), 'verified')
-  await t.throwsAsync(
-    sendEmail(...sendMailArgs),
-    { instanceOf: Error, message: 'error' }
-  )
+  expect(await initEmail('smtps://test:test@test:1')).toBe("verified")
+  await expect(() => sendEmail(...sendMailArgs)).rejects.toThrow("error");
 })
 
-test.serial('EmailUtils.init with empty host uses jsonTransport. logs messages', async t => {
-  const nodemailer = await td.replaceEsm('nodemailer')
+test('EmailUtils.init with empty host uses jsonTransport. logs messages', async () => {
+  const mockedNodemailer = jest.requireMock('nodemailer')
   const { initEmail, sendEmail } = await import('./email.js')
 
-  const testSmtpUrl = 'smtps://test:test@test:1'
   const sendMailArgs = [
     'test@example.com',
     'subject',
@@ -150,63 +116,56 @@ test.serial('EmailUtils.init with empty host uses jsonTransport. logs messages',
   ]
   const sendMailInfo = { message: 'sent' }
 
-  const createTransport = {
-    sendMail: (options, cb) => cb(null, sendMailInfo),
-    transporter: { name: 'JSONTransport' },
-    verify: td.func()
-  }
+  const mockedTransporter = {
+    verify: jest.fn(() => Promise.resolve('verified')),
+    sendMail: jest.fn((_options, cb) => cb(null, sendMailInfo)),
+    transporter: { name: 'MockTransporter' },
+  };
+  mockedNodemailer.createTransport.mockReturnValueOnce(mockedTransporter);
 
-  td.when(nodemailer.createTransport(testSmtpUrl))
-    .thenReturn(createTransport)
-
-  td.when(
-    createTransport.verify(),
-    { times: 1 }
-  ).thenResolve('verified')
-
-  t.is(await initEmail('smtps://test:test@test:1'), 'verified')
-  t.is(await sendEmail(...sendMailArgs), sendMailInfo)
+  expect(await initEmail('smtps://test:test@test:1')).toBe('verified')
+  expect(await sendEmail(...sendMailArgs)).toBe(sendMailInfo)
 })
 
-test('EmailUtils.getEmailCtaHref works without a subscriber ID', async t => {
+test('EmailUtils.getEmailCtaHref works without a subscriber ID', async () => {
   const { getEmailCtaHref } = await import('./email.js')
 
   const emailCtaHref = getEmailCtaHref('email-type', 'content')
-  t.is(emailCtaHref.pathname, '/user/breaches')
+  expect(emailCtaHref.pathname).toBe('/user/breaches')
   emailCtaHref.searchParams.sort()
-  t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
+  expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
     ['utm_campaign', 'email-type'],
     ['utm_content', 'content'],
     ['utm_medium', 'email'],
     ['utm_source', 'fx-monitor']
-  ])
+  ]);
 })
 
-test('EmailUtils.getEmailCtaHref works with a subscriber ID', async t => {
+test('EmailUtils.getEmailCtaHref works with a subscriber ID', async () => {
   const { getEmailCtaHref } = await import('./email.js')
   const emailCtaHref = getEmailCtaHref(
     'email-type-2',
     'content-2',
     1234
   )
-  t.is(emailCtaHref.pathname, '/user/breaches')
+  expect(emailCtaHref.pathname).toBe('/user/breaches');
   emailCtaHref.searchParams.sort()
-  t.deepEqual(Array.from(emailCtaHref.searchParams.entries()), [
+  expect(Array.from(emailCtaHref.searchParams.entries())).toStrictEqual([
     ['subscriber_id', '1234'],
     ['utm_campaign', 'email-type-2'],
     ['utm_content', 'content-2'],
     ['utm_medium', 'email'],
     ['utm_source', 'fx-monitor']
-  ])
+  ]);
 })
 
-test('EmailUtils.getVerificationUrl returns a URL', async t => {
+test('EmailUtils.getVerificationUrl returns a URL', async () => {
   const { getVerificationUrl } = await import('./email.js')
   const fakeSubscriber = { verification_token: 'SubscriberVerificationToken' }
   const verificationUrl = getVerificationUrl(fakeSubscriber)
-  t.is(verificationUrl.pathname, '/api/v1/user/verify-email')
+  expect(verificationUrl.pathname).toBe('/api/v1/user/verify-email')
   verificationUrl.searchParams.sort()
-  t.deepEqual(Array.from(verificationUrl.searchParams.entries()), [
+  expect(Array.from(verificationUrl.searchParams.entries())).toStrictEqual([
     ['token', 'SubscriberVerificationToken'],
     ['utm_campaign', 'verified-subscribers'],
     ['utm_content', 'account-verification-email'],
@@ -215,19 +174,15 @@ test('EmailUtils.getVerificationUrl returns a URL', async t => {
   ])
 })
 
-test('EmailUtils.getVerificationUrl throws when subscriber has no token', async t => {
+test('EmailUtils.getVerificationUrl throws when subscriber has no token', async () => {
   const { getVerificationUrl } = await import('./email.js')
   const fakeSubscriber = { verification_token: null }
   const expected = 'subscriber has no verification_token'
 
-  try {
-    getVerificationUrl(fakeSubscriber)
-  } catch (ex) {
-    t.is(ex.message, expected)
-  }
+  expect(() => getVerificationUrl(fakeSubscriber)).toThrow(expected);
 })
 
-test('EmailUtils.getUnsubscribeCtaHref works with subscriber record', async t => {
+test('EmailUtils.getUnsubscribeCtaHref works with subscriber record', async () => {
   const subscriberRecord = TEST_SUBSCRIBERS.firefox_account
 
   const { getUnsubscribeCtaHref } = await import('./email.js')
@@ -235,11 +190,11 @@ test('EmailUtils.getUnsubscribeCtaHref works with subscriber record', async t =>
     subscriber: subscriberRecord
   })
 
-  t.is(unsubUrl.searchParams.get('hash'), subscriberRecord.primary_sha1)
-  t.is(unsubUrl.searchParams.get('token'), subscriberRecord.primary_verification_token)
+  expect(unsubUrl.searchParams.get('hash')).toBe(subscriberRecord.primary_sha1);
+  expect(unsubUrl.searchParams.get('token')).toBe(subscriberRecord.primary_verification_token);
 })
 
-test('EmailUtils.getUnsubscribeCtaHref works with email_address record', async t => {
+test('EmailUtils.getUnsubscribeCtaHref works with email_address record', async () => {
   const emailAddressRecord = TEST_EMAIL_ADDRESSES.firefox_account
 
   const { getUnsubscribeCtaHref } = await import('./email.js')
@@ -247,11 +202,11 @@ test('EmailUtils.getUnsubscribeCtaHref works with email_address record', async t
     subscriber: emailAddressRecord
   })
 
-  t.is(unsubUrl.searchParams.get('hash'), emailAddressRecord.sha1)
-  t.is(unsubUrl.searchParams.get('token'), emailAddressRecord.verification_token)
+  expect(unsubUrl.searchParams.get('hash')).toBe(emailAddressRecord.sha1);
+  expect(unsubUrl.searchParams.get('token')).toBe(emailAddressRecord.verification_token);
 })
 
-test('EmailUtils.getUnsubscribeCtaHref returns unsubscribe URL for monthly emails', async t => {
+test('EmailUtils.getUnsubscribeCtaHref returns unsubscribe URL for monthly emails', async () => {
   const fakeSubscriber = {
     primary_verification_token: 'PrimaryVerificationToken'
   }
@@ -261,28 +216,24 @@ test('EmailUtils.getUnsubscribeCtaHref returns unsubscribe URL for monthly email
     subscriber: fakeSubscriber,
     isMonthlyEmail: true
   })
-  t.is(unsubUrl.pathname, '/user/unsubscribe-monthly')
+  expect(unsubUrl.pathname).toBe('/user/unsubscribe-monthly');
   unsubUrl.searchParams.sort()
-  t.deepEqual(Array.from(unsubUrl.searchParams.entries()), [
+  expect(Array.from(unsubUrl.searchParams.entries())).toStrictEqual([
     ['token', 'PrimaryVerificationToken'],
     ['utm_campaign', 'monthly-unresolved'],
     ['utm_content', 'unsubscribe-cta'],
     ['utm_medium', 'email'],
     ['utm_source', 'fx-monitor']
-  ])
+  ]);
 })
 
-test('EmailUtils.getUnsubscribeCtaHref throws when subscriber has no token for monthly emails', async t => {
+test('EmailUtils.getUnsubscribeCtaHref throws when subscriber has no token for monthly emails', async () => {
   const fakeSubscriber = { primary_verification_token: null }
   const expected = 'subscriber has no primary verification_token'
   const { getUnsubscribeCtaHref } = await import('./email.js')
 
-  try {
-    getUnsubscribeCtaHref({
-      subscriber: fakeSubscriber,
-      isMonthlyEmail: true
-    })
-  } catch (ex) {
-    t.is(ex.message, expected)
-  }
+  expect(() => getUnsubscribeCtaHref({
+    subscriber: fakeSubscriber,
+    isMonthlyEmail: true
+  })).toThrow(expected);
 })
