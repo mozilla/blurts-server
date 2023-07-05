@@ -46,6 +46,15 @@
       width: 20px;
       height: 20px;
     }
+
+    button {
+      all: unset;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-grey-30;
+      }
+    }
   }
 
   ul.filterHeaderList {
@@ -55,7 +64,6 @@
     display: flex;
     align-items: center;
     padding-left: 0;
-    padding-bottom: $spacing-sm;
     gap: $layout-md;
     width: 100%;
     justify-content: space-between;
@@ -63,6 +71,7 @@
     li {
       display: flex;
       align-items: center;
+      gap: $spacing-xs;
 
       &.hideOnMobile {
         display: none;
@@ -72,7 +81,7 @@
         flex: 1 1 0%;
 
         &.hideOnMobile {
-          display: block;
+          display: flex;
         }
       }
     }

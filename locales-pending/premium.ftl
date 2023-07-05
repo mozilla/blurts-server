@@ -23,7 +23,7 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
-# Here's What We Fixed Progress Card
+# Here’s What We Fixed Progress Card
 
 progress-card-heres-what-we-fixed-headline = Here is what we fixed
 progress-card-resolved-by-you-headline = Resolved by you
@@ -35,7 +35,7 @@ progress-card-percentage-complete = { $percentage }% complete
 # $percentage is the percentage value of exposures remaining, e.g. 70%.
 progress-card-percentage-remaining = { $percentage }% in progress
 
-# Here's What We Fixed Modal
+# Here’s What We Fixed Modal
 
 modal-heres-what-we-fixed-title = About what we fixed
 modal-heres-what-we-fixed-description-part-one = <b>Resolved by you</b> includes anything you have manually fixed. 
@@ -52,6 +52,29 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
 modal-cta-ok = OK
 modal-open-alt = Open modal
 modal-close-alt = Close modal
+
+# About Exposure Types Modal
+
+modal-exposure-type-title = About exposure types
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
+modal-exposure-type-description = We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
+modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands. 
+  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-premium }.
+modal-exposure-type-data-broker = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info. 
+  You’ll need to manually request removal from each site. But if you’re a { -brand-premium } user, we auto-removal all profiles for you. 
+  In both cases, Removals typically take 7-14 days. Some can take longer, while others can happen within the hour.
+
+# About Exposure Types Modal
+
+modal-exposure-status-title = About exposure statuses
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
+modal-exposure-status-description = We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info.
+  Your exposures will have one of the following statuses: 
+modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
+modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-premium } feature.
+modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and theres no action for you to take.
 
 # Icon alts / aria-labels
 chevron-down-alt = Expand
