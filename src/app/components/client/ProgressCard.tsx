@@ -102,7 +102,7 @@ export const ProgressCard = (props: Props) => {
       <div className={styles.header}>
         {l10n.getString("progress-card-heres-what-we-fixed-headline")}
         <button
-          aria-label={l10n.getString("modal-term-defintions-alt")}
+          aria-label={l10n.getString("modal-open-alt")}
           onClick={handleOpen}
         >
           <QuestionMarkCircle alt="" width="15" height="15" />
@@ -127,6 +127,8 @@ export const ProgressCard = (props: Props) => {
       <ProgressBar />
       {isModalOpen && (
         <Modal
+          isOpen={isModalOpen}
+          onClose={handleClose}
           image={ModalImage}
           headline={l10n.getString("modal-heres-what-we-fixed-title")}
           body={modalContent}
@@ -134,8 +136,6 @@ export const ProgressCard = (props: Props) => {
             content: l10n.getString("modal-cta-ok"),
             link: handleClose,
           }}
-          isOpen={isModalOpen}
-          onClose={handleClose}
         />
       )}
     </div>

@@ -21,6 +21,7 @@ import { Button } from "../server/Button";
 import { StaticImageData } from "next/image";
 import { metropolis } from "../../../../src/app/fonts/Metropolis/metropolis";
 import { Inter } from "next/font/google";
+import { getL10n } from "../../functions/server/l10n";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export type ModalProps = {
@@ -34,21 +35,17 @@ export type ModalProps = {
 };
 
 export const Modal = (props: ModalProps & AriaOverlayProps) => {
-  if (!props.isOpen) {
-    return null;
-  }
-
   return (
     <OverlayContainer>
       <DialogBox
         isOpen={props.isOpen}
+        onClose={props.onClose}
         headline={props.headline}
         body={props.body}
-        onClose={() => props.onClose}
         isDismissable={true}
         image={props.image}
         cta={props.cta}
-      ></DialogBox>
+      />
     </OverlayContainer>
   );
 };
@@ -60,10 +57,8 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
   const { modalProps } = useModal();
   const { dialogProps } = useDialog({}, wrapperRef);
   const cancelButtonRef = useRef<HTMLButtonElement>(null);
-  const cancelButton = useButton(
-    { onPress: () => props.onClose },
-    cancelButtonRef
-  );
+  const cancelButton = useButton({ onPress: props.onClose }, cancelButtonRef);
+  const l10n = getL10n();
 
   return (
     <div className={styles.modalUnderlay} {...underlayProps}>
@@ -75,15 +70,17 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
           ref={wrapperRef}
           className={`${styles.modal} ${inter.variable} ${metropolis.variable}`}
         >
-          {props.isDismissable ? (
-            <button
-              className={styles.dismissButton}
-              {...cancelButton.buttonProps}
-              ref={cancelButtonRef}
-            >
-              <CloseBtn alt="" width="14" height="14" />
-            </button>
-          ) : null}
+          <button
+            className={styles.dismissButton}
+            {...cancelButton.buttonProps}
+            ref={cancelButtonRef}
+          >
+            <CloseBtn
+              alt={l10n.getString("modal-close-alt")}
+              width="14"
+              height="14"
+            />
+          </button>
           <img src={props.image.src} alt="" />
           <dl className={styles.modalContent}>
             <dt>{props.headline}</dt>
@@ -91,7 +88,7 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
           </dl>
           {props.cta && (
             <Button
-              type={"primary"}
+              type="primary"
               content={props.cta.content}
               onClick={props.cta.link}
             />
