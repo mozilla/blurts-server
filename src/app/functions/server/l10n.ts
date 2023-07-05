@@ -66,9 +66,19 @@ export function getL10nBundles(): LocaleData[] {
 
       if (locale === "en") {
         // `require` isn't usually valid JS, so skip type checking for that:
-        // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const pendingTranslationsSource = require("../../../../pendingTranslations.ftl");
-        bundleSources[locale].push(pendingTranslationsSource);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const pendingTranslationsContext = (require as any).context(
+          "../../../../locales-pending",
+          true,
+          /\.ftl$/
+        );
+        pendingTranslationsContext
+          .keys()
+          .forEach((pendingTranslationFilename: string) => {
+            bundleSources.en.push(
+              pendingTranslationsContext(pendingTranslationFilename)
+            );
+          });
       }
     }
   }
