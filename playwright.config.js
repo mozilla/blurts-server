@@ -108,6 +108,6 @@ export default defineConfig({
     command: 'npm run build; npm start',
     port: 6060,
     // Building the app can take some time:
-    timeout: 1440 * 1000,
+    timeout: 1_080_000,
   }
 })

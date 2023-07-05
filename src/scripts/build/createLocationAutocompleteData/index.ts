@@ -23,8 +23,8 @@ import {
   writeFileSync,
   WriteStream,
 } from "fs";
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
+import os from "os";
+import path from "path";
 import AdmZip from "adm-zip";
 
 import {
@@ -109,11 +109,10 @@ async function fetchRemoteArchive({
 }
 
 try {
-  const startTime = Date.now();
   console.info("Create autocomplete location data");
 
-  const __dirname = dirname(fileURLToPath(import.meta.url));
-  const tmpDirPath = resolve(__dirname, "tpm-data");
+  const startTime = Date.now();
+  const tmpDirPath = path.join(os.tmpdir(), "fx-monitor");
 
   console.info(`Creating data directory: ${tmpDirPath}`);
   if (!existsSync(tmpDirPath)) {
@@ -320,7 +319,7 @@ try {
 
   console.info(`Writing location data to file: ${LOCATIONS_DATA_FILE}`);
   const locationDataFinal = {
-    name: "monitor-location-autocomplete-data",
+    name: "fx-monitor-location-autocomplete-data",
     description:
       "The data in this file is provided by GeoNames (https://www.geonames.org/). We are using the data to compile a set of US cities and states that match the needs of this project. Their work is licensed under a Creative Commons Attribution 4.0 License: https://creativecommons.org/licenses/by/4.0/. All database dumps and table definitions can be found here: https://download.geonames.org/export/dump/.",
     created_at: startTime,
