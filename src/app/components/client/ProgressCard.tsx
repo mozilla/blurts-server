@@ -11,7 +11,7 @@ import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import SparklingCheck from "./assets/sparkling-check.svg";
 import Image from "next/image";
-import { Modal, ModalProps } from "./Modal";
+import { Modal } from "./Modal";
 import { getL10n } from "../../functions/server/l10n";
 import ModalImage from "../client/assets/modal-default-img.svg";
 
@@ -111,14 +111,14 @@ export const ProgressCard = (props: Props) => {
       <div className={styles.progressStatsWrapper}>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
-            <Image src={ExploringLaptopPlus} alt="" />
+            <Image src={ExploringLaptopPlus} alt="" width="50" height="50" />
             <span>{props.resolvedByYou}</span>
           </div>
           <p>{l10n.getString("progress-card-resolved-by-you-headline")}</p>
         </div>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
-            <Image src={ExploringLaptopMinus} alt="" />
+            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
             <span>{props.autoRemoved}</span>
           </div>
           <p>{l10n.getString("progress-card-auto-removed-headline")}</p>

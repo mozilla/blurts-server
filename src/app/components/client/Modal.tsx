@@ -7,6 +7,7 @@
 import { ReactElement, useRef } from "react";
 import styles from "./Modal.module.scss";
 import { CloseBtn } from "../server/Icons";
+import Image, { StaticImageData } from "next/image";
 import {
   OverlayContainer,
   FocusScope,
@@ -18,7 +19,6 @@ import {
   useButton,
 } from "react-aria";
 import { Button } from "../server/Button";
-import { StaticImageData } from "next/image";
 import { metropolis } from "../../../../src/app/fonts/Metropolis/metropolis";
 import { Inter } from "next/font/google";
 import { getL10n } from "../../functions/server/l10n";
@@ -81,7 +81,7 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
               height="14"
             />
           </button>
-          <img src={props.image.src} alt="" />
+          <Image src={props.image.src} alt="" width="100" height="100" />
           <div className={styles.modalContent}>
             <h3>{props.headline}</h3>
             <p>{props.body}</p>
