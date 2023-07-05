@@ -31,7 +31,7 @@ jobs:
           pip install -r .github/requirements.txt
       - name: Lint reference strings
         run: |
-          moz-fluent-lint ./locales/en --config .github/linter_config.yml
+          moz-fluent-lint ./locales/en/ --config .github/linter_config.yml
       - name: Lint pending strings
         run: |
-          moz-fluent-lint ./ --config .github/linter_config.yml
+          moz-fluent-lint ./locales-pending/ --config .github/linter_config.yml
