@@ -12,7 +12,7 @@ import styles from "./Dashboard.module.scss";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../hooks/l10n";
 import { QuestionMarkCircle } from "../components/server/Icons";
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 import { Modal } from "../components/client/Modal";
 import ModalImage from "../components/client/assets/modal-default-img.svg";
 
@@ -24,13 +24,23 @@ export const Dashboard = (props: DashboardProps) => {
   const l10n = useL10n();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpen = () => {
-    setIsModalOpen(true);
-  };
+  const [modalTitle, setModalTitle] = useState<ReactElement | string>("");
+  const [modalContent, setModalContent] = useState<ReactElement | string>("");
 
   const handleClose = () => {
     setIsModalOpen(false);
+  };
+
+  const showModalContentExposureType = () => {
+    setIsModalOpen(true);
+    setModalTitle(l10n.getString("modal-exposure-type-title"));
+    setModalContent(modalContentExposureType);
+  };
+
+  const showModalContentStatus = () => {
+    setIsModalOpen(true);
+    setModalTitle(l10n.getString("modal-exposure-status-title"));
+    setModalContent(modalContentStatus);
   };
 
   const modalContentExposureType = (
@@ -40,6 +50,7 @@ export const Dashboard = (props: DashboardProps) => {
           data_broker_sites_total_num: 190,
         })}
       </p>
+      <br />
       <ol>
         <li>
           {l10n.getFragment("modal-exposure-type-data-breach", {
@@ -109,7 +120,7 @@ export const Dashboard = (props: DashboardProps) => {
                 {l10n.getString("dashboard-exposures-filter-exposure-type")}
                 <button
                   aria-label={l10n.getString("modal-open-alt")}
-                  onClick={handleOpen}
+                  onClick={showModalContentExposureType}
                 >
                   <QuestionMarkCircle width="15" height="15" alt={""} />
                 </button>
@@ -117,7 +128,15 @@ export const Dashboard = (props: DashboardProps) => {
               <li className={styles.hideOnMobile}>
                 {l10n.getString("dashboard-exposures-filter-date-found")}
               </li>
-              <li>{l10n.getString("dashboard-exposures-filter-status")}</li>
+              <li>
+                {l10n.getString("dashboard-exposures-filter-status")}
+                <button
+                  aria-label={l10n.getString("modal-open-alt")}
+                  onClick={showModalContentStatus}
+                >
+                  <QuestionMarkCircle width="15" height="15" alt={""} />
+                </button>
+              </li>
             </ul>
             <div className={styles.rightSpace}></div>
           </div>
@@ -135,8 +154,8 @@ export const Dashboard = (props: DashboardProps) => {
             isOpen={isModalOpen}
             onClose={handleClose}
             image={ModalImage}
-            headline={l10n.getString("modal-exposure-type-title")}
-            body={modalContentStatus}
+            headline={modalTitle}
+            body={modalContent}
             cta={{
               content: l10n.getString("modal-cta-ok"),
               link: handleClose,

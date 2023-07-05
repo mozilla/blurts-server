@@ -64,6 +64,13 @@
 
       p {
         font: $text-body-sm;
+
+        ul,
+        ol {
+          display: flex;
+          flex-direction: column;
+          gap: $spacing-sm;
+        }
       }
     }
   }
