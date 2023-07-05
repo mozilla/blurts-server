@@ -99,12 +99,9 @@ async function fetchRemoteArchive({
   console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`);
   const zip = new AdmZip(localDownloadPath);
   await new Promise<void>((resolve, reject) => {
-    zip.extractAllToAsync(
-      localExtractionPath,
-      true,
-      false,
-      error => error ? reject(error) : resolve()
-    )
+    zip.extractAllToAsync(localExtractionPath, true, false, (error) =>
+      error ? reject(error) : resolve()
+    );
   });
 }
 
@@ -294,18 +291,16 @@ try {
 
       const hasPopulatedParentLocation = hierarchyIds.some(
         ([parentId, childId]) => {
-          if (locationPopulated.id === childId) {
-            return locationDataPopulated.some((location) => {
-              if (
-                location.id === parentId &&
-                location.featureClass === allowedFeatureClass
-              ) {
-                return true;
-              }
-              return false;
-            });
+          if (locationPopulated.id !== childId) {
+            return false;
           }
-          return false;
+
+          return locationDataPopulated.some((location) => {
+            return (
+              location.id === parentId &&
+              location.featureClass === allowedFeatureClass
+            );
+          });
         }
       );
 
