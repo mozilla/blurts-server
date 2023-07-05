@@ -14,9 +14,9 @@
  */
 
 /** The id of this alternate name. */
-type TAlternateNameId = string;
+type AlternateNameId = string;
 /** The geonameId is referring to id in table 'geoname'. */
-type TGeonameId = string;
+type GeonameId = string;
 /**
  * Iso language, varchar(7)
  *
@@ -33,61 +33,61 @@ type TGeonameId = string;
  * 7-characters:
  * - 'fr_1793': French Revolution names
  */
-type TIsolanguage = string;
+type Isolanguage = string;
 /** Alternate name or name variant, varchar(400). */
-type TAlternateName = string;
+type AlternateName = string;
 /** Is an abbreviation of the name. */
-type TIsAbbreviation = "" | "1";
+type IsAbbreviation = "" | "1";
 /** Is an official/preferred name. */
-type TIsPreferredName = "" | "1";
+type IsPreferredName = "" | "1";
 /** Is short name like 'California' for 'State of California. */
-type TIsShortName = "" | "1";
+type IsShortName = "" | "1";
 /**
  * Alternate name is a colloquial or slang term.
  * Example: 'Big Apple' for 'New York'.
  */
-type TIsColloquial = "" | "1";
+type IsColloquial = "" | "1";
 /**
  * Alternate name is historic and was used in the past.
  * Example 'Bombay' for 'Mumbai'.
  */
-type TIsHistoric = "" | "1";
+type IsHistoric = "" | "1";
 /** From period when the name was used. */
-type TFrom = string;
+type From = string;
 /** To period when the name was used. */
-type TTo = string;
+type To = string;
 
-export type TAlternateNameData = [
-  TAlternateNameId,
-  TGeonameId,
-  TIsolanguage,
-  TAlternateName,
-  TIsPreferredName,
-  TIsShortName,
-  TIsColloquial,
-  TIsHistoric,
-  TFrom,
-  TTo
+export type AlternateNameData = [
+  AlternateNameId,
+  GeonameId,
+  Isolanguage,
+  AlternateName,
+  IsPreferredName,
+  IsShortName,
+  IsColloquial,
+  IsHistoric,
+  From,
+  To
 ];
 
 /** Name of geographical point (utf8), varchar(200). */
-type TLocationName = "string";
+type LocationName = "string";
 /** Name of geographical point (ascii), varchar(200). */
-type TLocationAsciiname = "string";
+type LocationAsciiname = "string";
 /**
  * Alternatenames, comma separated, ascii names automatically transliterated,
  * convenience attribute from alternatename table, varchar(10000).
  */
-type TLocationAlternatenames = "string";
+type LocationAlternatenames = "string";
 /** Latitude in decimal degrees (wgs84). */
-type TLocationLatitude = "string";
+type LocationLatitude = "string";
 /** Longitude in decimal degrees (wgs84). */
-type TLocationLongitude = "string";
+type LocationLongitude = "string";
 /**
  * Feature classes and codes: http://www.geonames.org/export/codes.html.
  * char(1)
  */
-type TLocationFeatureClass =
+type LocationFeatureClass =
   | "A"
   | "H"
   | "L"
@@ -101,7 +101,7 @@ type TLocationFeatureClass =
  * Feature classes and codes: http://www.geonames.org/export/codes.html.
  * varchar(10)
  */
-type TLocationFeatureCode =
+type LocationFeatureCode =
   | "ADM1"
   | "ADM1H"
   | "ADM2"
@@ -784,66 +784,66 @@ type TLocationFeatureCode =
   | "VINS";
 
 /** ISO-3166 2-letter country code, 2 characters. */
-type TLocationCountryCode = "string";
+type LocationCountryCode = "string";
 /**
  * Alternate country codes, comma separated, ISO-3166 2-letter country code,
  * 200 characters.
  */
-type TLocationCc2 = "string";
+type LocationCc2 = "string";
 /**
  * fipscode (subject to change to iso code), see exceptions below,
  * see file admin1Codes.txt for display names of this code, varchar(20).
  */
-type TLocationAdmin1Code = "string";
+type LocationAdmin1Code = "string";
 /**
  * Code for the second administrative division, a county in the US, varchar(80).
  *
  * See file admin2Codes.txt.
  */
-type TLocationAdmin2Code = "string";
+type LocationAdmin2Code = "string";
 /** Code for third level administrative division, varchar(20). */
-type TLocationAdmin3Code = "string";
+type LocationAdmin3Code = "string";
 /** Code for fourth level administrative division, varchar(20). */
-type TLocationAdmin4Code = "string";
+type LocationAdmin4Code = "string";
 /** bigint (8 byte int) */
-type TLocationPopulation = "string";
+type LocationPopulation = "string";
 /** in meters, integer */
-type TLocationElevation = "string";
+type LocationElevation = "string";
 /**
  * Digital elevation model:
  * - srtm3 or gtopo30
  * - average elevation of 3''x3'' (ca 90mx90m) or 30''x30'' (ca 900mx900m)
  * - area in meters (srtm processed by cgiar/ciat)
  */
-type TLocationDem = "string";
+type LocationDem = "string";
 /** The iana timezone id (see file timeZone.txt), varchar(40). */
-type TLocationTimezone = "string";
+type LocationTimezone = "string";
 /** Date of last modification in yyyy-MM-dd format */
-type TLocationModificationDate = "string";
+type LocationModificationDate = "string";
 
-export type TLocationData = [
-  TGeonameId,
-  TLocationName,
-  TLocationAsciiname,
-  TLocationAlternatenames,
-  TLocationLatitude,
-  TLocationLongitude,
-  TLocationFeatureClass,
-  TLocationFeatureCode,
-  TLocationCountryCode,
-  TLocationCc2,
-  TLocationAdmin1Code,
-  TLocationAdmin2Code,
-  TLocationAdmin3Code,
-  TLocationAdmin4Code,
-  TLocationPopulation,
-  TLocationElevation,
-  TLocationDem,
-  TLocationTimezone,
-  TLocationModificationDate
+export type LocationData = [
+  GeonameId,
+  LocationName,
+  LocationAsciiname,
+  LocationAlternatenames,
+  LocationLatitude,
+  LocationLongitude,
+  LocationFeatureClass,
+  LocationFeatureCode,
+  LocationCountryCode,
+  LocationCc2,
+  LocationAdmin1Code,
+  LocationAdmin2Code,
+  LocationAdmin3Code,
+  LocationAdmin4Code,
+  LocationPopulation,
+  LocationElevation,
+  LocationDem,
+  LocationTimezone,
+  LocationModificationDate
 ];
 
-export interface IRelevantLocation {
+export interface RelevantLocation {
   id: string;
   name: string;
   stateCode: string;
@@ -854,17 +854,17 @@ export interface IRelevantLocation {
   alternateNames?: Array<string>;
 }
 
-export interface IRelevantLocationAlternate {
-  id: TAlternateNameId;
-  alternateOf: TGeonameId;
-  name: TAlternateName;
-  isAbbreviation: TIsAbbreviation;
-  isPreferredName: TIsPreferredName;
-  isShortName: TIsShortName;
-  isColloquial: TIsColloquial;
+export interface RelevantLocationAlternate {
+  id: AlternateNameId;
+  alternateOf: GeonameId;
+  name: AlternateName;
+  isAbbreviation: IsAbbreviation;
+  isPreferredName: IsPreferredName;
+  isShortName: IsShortName;
+  isColloquial: IsColloquial;
 }
 
-export interface IDataFileUrls {
+export interface DataFileUrls {
   remoteArchiveUrl: string;
   localDownloadPath: string;
   localExtractionPath: string;

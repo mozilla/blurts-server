@@ -6,18 +6,18 @@
 
 import { ChangeEvent, useEffect, useDeferredValue, useState } from "react";
 import {
-  TMatchingLocations,
-  ISearchLocationParams,
-  ISearchLocationResults,
+  MatchingLocations,
+  SearchLocationParams,
+  SearchLocationResults,
 } from "../../api/v1/location-autocomplete/route";
 
 const getLocationSuggestions = async ({
   searchParams,
   abortController,
 }: {
-  searchParams: ISearchLocationParams;
+  searchParams: SearchLocationParams;
   abortController: AbortController;
-}): Promise<ISearchLocationResults | null> => {
+}): Promise<SearchLocationResults | null> => {
   try {
     const { signal } = abortController;
     const response = await fetch("/api/v1/location-autocomplete", {
@@ -39,7 +39,7 @@ const getLocationSuggestions = async ({
 
 export const LocationAutocompleteInput = () => {
   const [locationSuggestions, setLocationSuggestions] =
-    useState<TMatchingLocations>([]);
+    useState<MatchingLocations>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
 

@@ -28,11 +28,11 @@ import path from "path";
 import AdmZip from "adm-zip";
 
 import {
-  TAlternateNameData,
-  TLocationData,
-  IRelevantLocation,
-  IRelevantLocationAlternate,
-  IDataFileUrls,
+  AlternateNameData,
+  LocationData,
+  RelevantLocation,
+  RelevantLocationAlternate,
+  DataFileUrls,
 } from "./types";
 
 const REMOTE_DATA_URL = "https://download.geonames.org/export/dump";
@@ -86,7 +86,7 @@ async function fetchRemoteArchive({
   remoteArchiveUrl,
   localDownloadPath,
   localExtractionPath,
-}: IDataFileUrls) {
+}: DataFileUrls) {
   console.info(
     `Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`
   );
@@ -168,7 +168,7 @@ try {
         isHistoric,
         _from,
         _to,
-      ] = alternateNamesLine.split("\t") as TAlternateNameData; // lines are tab delimited
+      ] = alternateNamesLine.split("\t") as AlternateNameData; // lines are tab delimited
 
       const isAbbreviation = isolanguage === "abbr";
       const isRelevantAlternateName =
@@ -187,7 +187,7 @@ try {
     })
     .filter(
       (alternateName) => alternateName
-    ) as Array<IRelevantLocationAlternate>;
+    ) as Array<RelevantLocationAlternate>;
 
   console.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
@@ -236,7 +236,7 @@ try {
         _dem,
         _timezone,
         _modificationDate,
-      ] = location.split("\t") as TLocationData; // lines are tab delimited
+      ] = location.split("\t") as LocationData; // lines are tab delimited
 
       const isPopulatedPlaceOfInterest =
         featureClass === allowedFeatureClass &&
@@ -279,7 +279,7 @@ try {
 
       return relevantLocations;
     },
-    [] as Array<IRelevantLocation>
+    [] as Array<RelevantLocation>
   );
 
   // Filter out locations that have another populated place as a parent.

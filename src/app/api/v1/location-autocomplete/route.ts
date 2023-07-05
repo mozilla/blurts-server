@@ -5,15 +5,15 @@
 import { NextResponse, NextRequest } from "next/server";
 import uFuzzy from "@leeoniya/ufuzzy";
 
-import { IRelevantLocation } from "../../../../scripts/build/createLocationAutocompleteData/types";
+import { RelevantLocation } from "../../../../scripts/build/createLocationAutocompleteData/types";
 // The location autocomplete data will be created during the build step.
 // @ts-ignore-next-line
 // eslint-disable-next-line import/no-unresolved
 import locationData from "../../../../../locationAutocompleteData.json";
 
-export type TMatchingLocations = Array<IRelevantLocation> | [];
+export type MatchingLocations = Array<RelevantLocation> | [];
 
-export interface ISearchLocationParams {
+export interface SearchLocationParams {
   searchQuery: string;
   config: {
     minQueryLength: number;
@@ -21,9 +21,9 @@ export interface ISearchLocationParams {
   };
 }
 
-export interface ISearchLocationResults {
+export interface SearchLocationResults {
   searchQuery: string;
-  results: TMatchingLocations;
+  results: MatchingLocations;
 }
 
 async function getLocationsByQuery(searchQuery: string) {
@@ -31,7 +31,7 @@ async function getLocationsByQuery(searchQuery: string) {
     console.error("No location data available.");
   }
 
-  const locationNames = locationData.data.map((location: IRelevantLocation) => {
+  const locationNames = locationData.data.map((location: RelevantLocation) => {
     const { name, stateCode, countryCode, alternateNames } = location;
     const alternateNamesJoined = alternateNames ? alternateNames.join(" ") : "";
 
@@ -87,7 +87,7 @@ async function getLocationsResults({
     minQueryLength: 1,
     maxResults: 5,
   },
-}: ISearchLocationParams): Promise<ISearchLocationResults> {
+}: SearchLocationParams): Promise<SearchLocationResults> {
   const { minQueryLength, maxResults } = config;
 
   const matchingLocations =
@@ -100,13 +100,13 @@ async function getLocationsResults({
 
   return {
     searchQuery,
-    results: locationsResults as TMatchingLocations,
+    results: locationsResults as MatchingLocations,
   };
 }
 
 export async function POST(request: NextRequest) {
   try {
-    const body: ISearchLocationParams = await request.json();
+    const body: SearchLocationParams = await request.json();
     const { searchQuery, config } = body;
 
     const results = await getLocationsResults({
