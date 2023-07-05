@@ -8,7 +8,7 @@
 .mainMenu {
   display: none;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-md) {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
