@@ -82,10 +82,10 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
             />
           </button>
           <img src={props.image.src} alt="" />
-          <dl className={styles.modalContent}>
-            <dt>{props.headline}</dt>
-            <dd>{props.body}</dd>
-          </dl>
+          <div className={styles.modalContent}>
+            <h3>{props.headline}</h3>
+            <p>{props.body}</p>
+          </div>
           {props.cta && (
             <Button
               type="primary"

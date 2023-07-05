@@ -57,12 +57,12 @@
       gap: $spacing-md;
       flex-direction: column;
 
-      dt {
+      h3 {
         text-align: center;
         font: $text-title-3xs;
       }
 
-      dd {
+      p {
         font: $text-body-sm;
       }
     }
