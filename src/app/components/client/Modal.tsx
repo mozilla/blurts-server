@@ -24,8 +24,6 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export type ModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
   image: StaticImageData;
   headline: string | ReactElement;
   body: string | ReactElement;
@@ -35,7 +33,7 @@ export type ModalProps = {
   };
 };
 
-export const Modal = (props: ModalProps) => {
+export const Modal = (props: ModalProps & AriaOverlayProps) => {
   if (!props.isOpen) {
     return null;
   }
@@ -46,7 +44,7 @@ export const Modal = (props: ModalProps) => {
         isOpen={props.isOpen}
         headline={props.headline}
         body={props.body}
-        onClose={() => props.onClose()}
+        onClose={() => props.onClose}
         isDismissable={true}
         image={props.image}
         cta={props.cta}
@@ -63,7 +61,7 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
   const { dialogProps } = useDialog({}, wrapperRef);
   const cancelButtonRef = useRef<HTMLButtonElement>(null);
   const cancelButton = useButton(
-    { onPress: () => props.onClose() },
+    { onPress: () => props.onClose },
     cancelButtonRef
   );
 
@@ -91,14 +89,12 @@ const DialogBox = (props: AriaOverlayProps & ModalProps) => {
             <dt>{props.headline}</dt>
             <dd>{props.body}</dd>
           </dl>
-          {props.cta ? (
+          {props.cta && (
             <Button
               type={"primary"}
               content={props.cta.content}
               onClick={props.cta.link}
             />
-          ) : (
-            ""
           )}
         </div>
       </FocusScope>

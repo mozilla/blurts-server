@@ -11,7 +11,7 @@ import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import SparklingCheck from "./assets/sparkling-check.svg";
 import Image from "next/image";
-import { Modal } from "./Modal";
+import { Modal, ModalProps } from "./Modal";
 import { getL10n } from "../../functions/server/l10n";
 import ModalImage from "../client/assets/modal-default-img.svg";
 
@@ -39,11 +39,11 @@ export const ProgressCard = (props: Props) => {
   const l10n = getL10n();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const openModal = () => {
+  const handleOpen = () => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
+  const handleClose = () => {
     setIsModalOpen(false);
   };
 
@@ -103,7 +103,7 @@ export const ProgressCard = (props: Props) => {
         {l10n.getString("progress-card-heres-what-we-fixed-headline")}
         <button
           aria-label={l10n.getString("modal-term-defintions-alt")}
-          onClick={openModal}
+          onClick={handleOpen}
         >
           <QuestionMarkCircle alt="" width="15" height="15" />
         </button>
@@ -125,17 +125,19 @@ export const ProgressCard = (props: Props) => {
         </div>
       </div>
       <ProgressBar />
-      <Modal
-        image={ModalImage}
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        headline={l10n.getString("modal-heres-what-we-fixed-title")}
-        body={modalContent}
-        cta={{
-          content: l10n.getString("modal-cta-ok"),
-          link: closeModal,
-        }}
-      />
+      {isModalOpen && (
+        <Modal
+          image={ModalImage}
+          headline={l10n.getString("modal-heres-what-we-fixed-title")}
+          body={modalContent}
+          cta={{
+            content: l10n.getString("modal-cta-ok"),
+            link: handleClose,
+          }}
+          isOpen={isModalOpen}
+          onClose={handleClose}
+        />
+      )}
     </div>
   );
 };
