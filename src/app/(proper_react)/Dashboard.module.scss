@@ -2,6 +2,7 @@
 
 .container {
   max-width: $content-xl;
+  padding-bottom: $layout-sm;
 
   @media screen and (min-width: $screen-md) {
     padding-left: $layout-sm;
@@ -14,13 +15,81 @@
 
   .exposuresArea {
     margin-top: $layout-sm;
+    display: flex;
+    flex-direction: column;
+    gap: $layout-xs;
 
     .exposureList {
       list-style: none;
-      padding: $layout-xs 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
       gap: $spacing-md;
     }
   }
+
+  .filterHeaderWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: $layout-xs;
+    padding: $spacing-sm $spacing-md;
+    border-bottom: 1px solid $color-grey-20;
+
+    @media screen and (min-width: $screen-lg) {
+      gap: $layout-md;
+    }
+
+    .rightSpace {
+      // Spacing to accomodate the gap where the chevron falls in the column
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  ul.filterHeaderList {
+    font: $text-body-sm;
+    font-weight: 600;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    padding-bottom: $spacing-sm;
+    gap: $layout-md;
+    width: 100%;
+    justify-content: space-between;
+
+    li {
+      display: flex;
+      align-items: center;
+
+      &.hideOnMobile {
+        display: none;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        flex: 1 1 0%;
+
+        &.hideOnMobile {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.visuallyHidden {
+  // These styles are taken from
+  // https://react-spectrum.adobe.com/react-aria/VisuallyHidden.html
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }

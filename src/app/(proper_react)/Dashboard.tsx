@@ -11,6 +11,7 @@ import {
 import styles from "./Dashboard.module.scss";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../hooks/l10n";
+import { ChevronDown } from "../components/server/Icons";
 
 type DashboardProps = {
   exposures: ExposureCardProps[];
@@ -22,17 +23,34 @@ export const Dashboard = (props: DashboardProps) => {
     <ShellEl l10n={getL10n()} session={null}>
       <div className={styles.container}>
         <DashboardTopBanner type={"LetsFixDataContent"} chart={<></>} />
-
         <section className={styles.exposuresArea}>
-          <h2>{l10n.getString("dashboard-exposures-area-headline")}</h2>
-          <p>
-            {l10n.getString("dashboard-exposures-area-description", {
-              // TODO: Use real user data
-              exposures_total_num: 90,
-              data_breach_total_num: 15,
-              data_broker_total_num: 75,
-            })}
-          </p>
+          <div>
+            <h2>{l10n.getString("dashboard-exposures-area-headline")}</h2>
+            <p>
+              {l10n.getString("dashboard-exposures-area-description", {
+                // TODO: Use real user data
+                exposures_total_num: 90,
+                data_breach_total_num: 15,
+                data_broker_total_num: 75,
+              })}
+            </p>
+          </div>
+          <div className={styles.filterHeaderWrapper}>
+            <ul className={styles.filterHeaderList}>
+              <li className={styles.hideOnMobile}>
+                {l10n.getString("dashboard-exposures-filter")}
+              </li>
+              <li>{l10n.getString("dashboard-exposures-filter-company")}</li>
+              <li className={styles.hideOnMobile}>
+                {l10n.getString("dashboard-exposures-filter-exposure-type")}
+              </li>
+              <li className={styles.hideOnMobile}>
+                {l10n.getString("dashboard-exposures-filter-date-found")}
+              </li>
+              <li>{l10n.getString("dashboard-exposures-filter-status")}</li>
+            </ul>
+            <div className={styles.rightSpace}></div>
+          </div>
           <ul className={styles.exposureList}>
             {props.exposures.map((exposure, index) => (
               <li key={index} className={styles.exposureListItem}>
