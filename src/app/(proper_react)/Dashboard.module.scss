@@ -27,65 +27,6 @@
       gap: $spacing-md;
     }
   }
-
-  .filterHeaderWrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: $layout-xs;
-    padding: $spacing-sm $spacing-md;
-    border-bottom: 1px solid $color-grey-20;
-
-    @media screen and (min-width: $screen-lg) {
-      gap: $layout-md;
-    }
-
-    .rightSpace {
-      // Spacing to accomodate the gap where the chevron falls within the alignment
-      width: 20px;
-      height: 20px;
-    }
-
-    button {
-      all: unset;
-      cursor: pointer;
-
-      &:hover {
-        color: $color-grey-30;
-      }
-    }
-  }
-
-  ul.filterHeaderList {
-    font: $text-body-sm;
-    font-weight: 600;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    padding-left: 0;
-    gap: $layout-md;
-    width: 100%;
-    justify-content: space-between;
-
-    li {
-      display: flex;
-      align-items: center;
-      gap: $spacing-xs;
-
-      &.hideOnMobile {
-        display: none;
-      }
-
-      @media screen and (min-width: $screen-lg) {
-        flex: 1 1 0%;
-
-        &.hideOnMobile {
-          display: flex;
-        }
-      }
-    }
-  }
 }
 
 .visuallyHidden {
