@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Inter } from "next/font/google";
 import type { Preview } from "@storybook/react";
 import "../src/app/globals.css";
@@ -27,14 +27,21 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
 ) => {
   const { getL10nBundles, getLocale } = loadL10nModule();
   const l10nBundles = getL10nBundles();
+
+  useEffect(() => {
+    // We have to add these classes to the body, rather than simply wrapping the
+    // storyFn in a container, because some components (most notably, the ones
+    // that use useModalOverlay()) append elements to the end of the body using
+    // a React Portal, thus breaking out of a container element.
+    document.body.classList.add(inter.className);
+    document.body.classList.add(inter.variable);
+    document.body.classList.add(metropolis.variable);
+  }, []);
+
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
-        <div
-          className={`${inter.className} ${inter.variable} ${metropolis.variable}`}
-        >
-          {storyFn()}
-        </div>
+        {storyFn()}
       </ReactAriaI18nProvider>
     </L10nProvider>
   );
