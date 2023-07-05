@@ -131,6 +131,10 @@ export const ProgressCard = (props: Props) => {
         onClose={closeModal}
         headline={l10n.getString("modal-heres-what-we-fixed-title")}
         body={modalContent}
+        cta={{
+          content: l10n.getString("modal-cta-ok"),
+          link: closeModal,
+        }}
       />
     </div>
   );
