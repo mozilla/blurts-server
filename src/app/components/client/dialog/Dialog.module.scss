@@ -2,6 +2,7 @@
 
 .dialog {
   background-color: $color-white;
+  position: relative;
   width: 95%;
   max-width: $content-lg;
   max-height: 95%;
@@ -14,6 +15,21 @@
   padding: $layout-sm;
   @media screen and (min-width: $screen-lg) {
     padding: $layout-xl;
+  }
+
+  .dismissButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $spacing-md;
+    color: $color-grey-40;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-grey-30;
+    }
   }
 
   .title {
