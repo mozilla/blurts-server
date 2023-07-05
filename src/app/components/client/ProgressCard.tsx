@@ -4,16 +4,20 @@
 
 "use client";
 
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
+import { useOverlayTriggerState } from "react-stately";
+import { useOverlayTrigger } from "react-aria";
 import { QuestionMarkCircle } from "../server/Icons";
 import styles from "./ProgressCard.module.scss";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import SparklingCheck from "./assets/sparkling-check.svg";
 import Image from "next/image";
-import { Modal } from "./Modal";
 import { getL10n } from "../../functions/server/l10n";
 import ModalImage from "../client/assets/modal-default-img.svg";
+import { Button } from "../server/Button";
+import { ModalOverlay } from "./dialog/ModalOverlay";
+import { Dialog } from "./dialog/Dialog";
 
 export type Props = {
   resolvedByYou: number;
@@ -37,15 +41,11 @@ export const ProgressCard = (props: Props) => {
   const percentageRemainingNumber = 100 - percentageCompleteNum;
 
   const l10n = getL10n();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleClose = () => {
-    setIsModalOpen(false);
-  };
+  const explainerDialogState = useOverlayTriggerState({});
+  const explainerDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    explainerDialogState
+  );
 
   const activeProgressBarStyle: CSSProperties = {
     width: `${percentageCompleteNum}%`,
@@ -94,6 +94,16 @@ export const ProgressCard = (props: Props) => {
           elems: { b: <strong /> },
         })}
       </p>
+      <div className={styles.confirmButtonWrapper}>
+        <Button
+          type="primary"
+          onClick={() => explainerDialogState.close()}
+          autoFocus={true}
+          className={styles.startButton}
+        >
+          {l10n.getString("modal-cta-ok")}
+        </Button>
+      </div>
     </div>
   );
 
@@ -103,7 +113,8 @@ export const ProgressCard = (props: Props) => {
         {l10n.getString("progress-card-heres-what-we-fixed-headline")}
         <button
           aria-label={l10n.getString("modal-open-alt")}
-          onClick={handleOpen}
+          {...explainerDialogTrigger.triggerProps}
+          onClick={() => explainerDialogState.open()}
         >
           <QuestionMarkCircle alt="" width="15" height="15" />
         </button>
@@ -125,18 +136,20 @@ export const ProgressCard = (props: Props) => {
         </div>
       </div>
       <ProgressBar />
-      {isModalOpen && (
-        <Modal
-          isOpen={isModalOpen}
-          onClose={handleClose}
-          image={ModalImage}
-          headline={l10n.getString("modal-heres-what-we-fixed-title")}
-          body={modalContent}
-          cta={{
-            content: l10n.getString("modal-cta-ok"),
-            link: handleClose,
-          }}
-        />
+      {explainerDialogState.isOpen && (
+        <ModalOverlay
+          state={explainerDialogState}
+          {...explainerDialogTrigger.overlayProps}
+          isDismissable={true}
+        >
+          <Dialog
+            title={l10n.getString("modal-heres-what-we-fixed-title")}
+            illustration={<Image src={ModalImage} alt="" />}
+            onDismiss={() => explainerDialogState.close()}
+          >
+            {modalContent}
+          </Dialog>
+        </ModalOverlay>
       )}
     </div>
   );
