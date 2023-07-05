@@ -101,7 +101,10 @@ export const ProgressCard = (props: Props) => {
     <div className={styles.progressCard}>
       <div className={styles.header}>
         {l10n.getString("progress-card-heres-what-we-fixed-headline")}
-        <button aria-label="Term definitions" onClick={openModal}>
+        <button
+          aria-label={l10n.getString("modal-term-defintions-alt")}
+          onClick={openModal}
+        >
           <QuestionMarkCircle alt="" width="15" height="15" />
         </button>
       </div>

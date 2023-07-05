@@ -50,4 +50,5 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
   difficult sites could take longer. You may also start to see removals
   happening within the same day.
 modal-cta-ok = OK
+modal-term-defintions-alt = Open modal
 
