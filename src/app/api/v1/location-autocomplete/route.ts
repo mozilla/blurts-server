@@ -65,6 +65,8 @@ async function getLocationsByQuery(searchQuery: string) {
 
   const resultsOrdered = order.map((orderIndex) => results[orderIndex]);
   // Split and only sort the first x percentage of results by population.
+  // The motivation behind this is to improve the score for matches but not all
+  // of them in order to not move up weak ones.
   const maxSortByPopulationThreshold = 0.75;
   const locationSplitIndex = Math.ceil(
     results.length * maxSortByPopulationThreshold
