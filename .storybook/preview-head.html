@@ -12,4 +12,13 @@
      */
     font-family: Inter;
   }
+  /*
+    Make sure that stories set to render fullscreen (see
+    https://storybook.js.org/docs/react/configure/story-layout) also take up the
+    full height of the page. This is especially relevant for stories that
+    demonstrate full pages.
+   */
+  .sb-main-fullscreen #storybook-root {
+    height: 100%;
+  }
 </style>

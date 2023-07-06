@@ -18,6 +18,7 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
         <div
           className={`${inter.className} ${inter.variable} ${metropolis.variable}`}
+          style={{ height: "100%" }}
         >
           {storyFn()}
         </div>
@@ -35,6 +36,8 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    // https://storybook.js.org/docs/react/configure/story-layout
+    layout: "fullscreen",
   },
   decorators: [AppDecorator],
 };
