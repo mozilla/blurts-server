@@ -8,6 +8,7 @@ import { getBreaches } from "../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../utils/hibp";
 import { getSha1 } from "../../../../utils/fxa";
 import { getL10n } from "../../../functions/server/l10n";
+import { getBreachLogo } from "../../../../utils/breachLogo";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -54,6 +55,9 @@ export async function POST(request: Request) {
       dataClassStrings: breaches.map((breach) =>
         breach.DataClasses.map((dataClass: string) => l10n.getString(dataClass))
       ),
+      // This is sent in the API response because we can't call `getBreachLogo`
+      // client side, where it would expose AppConstants:
+      logos: breaches.map((breach) => getBreachLogo(breach)),
     };
     return NextResponse.json(successResponse);
   } catch (e) {
