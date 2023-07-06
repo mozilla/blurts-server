@@ -55,7 +55,7 @@ async function openDialog (path) {
     })
 
     if (!res.ok) throw new Error('Bad fetch response')
-    window.gtag('event', 'opened_closed_dialog', { action: 'open', result: 'success', page_location: location.href })
+    window.gtag?.('event', 'opened_closed_dialog', { action: 'open', result: 'success', page_location: location.href })
 
     const content = await res.text()
     dialogEl.insertAdjacentHTML('beforeend', content)
@@ -68,7 +68,7 @@ async function openDialog (path) {
     }
   } catch (e) {
     dialogEl.close()
-    window.gtag('event', 'opened_closed_dialog', { action: 'open', result: 'failed', page_location: location.href })
+    window.gtag?.('event', 'opened_closed_dialog', { action: 'open', result: 'failed', page_location: location.href })
     console.error(`Could not load dialog content for ${partialName}.`, e)
   }
 }
