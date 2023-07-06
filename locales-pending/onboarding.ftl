@@ -11,7 +11,9 @@ onboarding-get-started-cta-label = Start my free scan
 onboarding-get-started-how-it-works-dialog-heading-line1 = We’re here to protect your personal information
 onboarding-get-started-how-it-works-dialog-heading-line2 = Here’s how it works:
 onboarding-get-started-how-it-works-dialog-step1-heading = 1. Scan for exposures
-onboarding-get-started-how-it-works-dialog-step1-content = With just a few key pieces of information, we’ll search for you in all known data breaches and 190 major data broker sites. All users get the first scan free.
+# Variables:
+#   $dataBrokerCount (number) - number of scanned data broker sites, e.g. 190
+onboarding-get-started-how-it-works-dialog-step1-content = With just a few key pieces of information, we’ll search for you in all known data breaches and { $dataBrokerCount } major data broker sites. All users get the first scan free.
 onboarding-get-started-how-it-works-dialog-step2-heading = 2. Remove your personal info
 onboarding-get-started-how-it-works-dialog-step2-content = We’ll show you what personal info each data broker site is selling. You’ll need to contact each data broker to request removal. Removal typically takes 7-10 business days, but some can take longer. Upgrade to { -brand-premium } and we’ll handle this for you.
 onboarding-get-started-how-it-works-dialog-step3-heading = 3. Resolve data breaches

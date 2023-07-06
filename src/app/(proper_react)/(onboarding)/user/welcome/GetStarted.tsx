@@ -68,7 +68,11 @@ export const GetStarted = (props: Props) => {
                   </h4>
                   <p>
                     {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step1-content"
+                      "onboarding-get-started-how-it-works-dialog-step1-content",
+                      {
+                        // TODO: Can we get this value from the OneRep API?
+                        dataBrokerCount: 190,
+                      }
                     )}
                   </p>
                 </div>
