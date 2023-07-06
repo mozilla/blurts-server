@@ -81,7 +81,9 @@ export const Steps = (props: { currentStep: StepId }) => {
           width={22}
           height={22}
         />
-        {l10n.getString("onboarding-steps-get-started-label")}
+        <div className={styles.stepLabel}>
+          {l10n.getString("onboarding-steps-get-started-label")}
+        </div>
       </li>
       <li
         aria-current={props.currentStep === "enterInfo" ? "step" : undefined}
@@ -90,7 +92,9 @@ export const Steps = (props: { currentStep: StepId }) => {
         }`}
       >
         <Image src={stepEnterInfoIcon} alt="" width={22} height={22} />
-        {l10n.getString("onboarding-steps-enter-info-label")}
+        <div className={styles.stepLabel}>
+          {l10n.getString("onboarding-steps-enter-info-label")}
+        </div>
       </li>
       <li
         aria-current={
@@ -103,7 +107,9 @@ export const Steps = (props: { currentStep: StepId }) => {
         }`}
       >
         <Image src={stepFindExposuresIcon} alt="" width={22} height={22} />
-        {l10n.getString("onboarding-steps-find-exposures-label")}
+        <div className={styles.stepLabel}>
+          {l10n.getString("onboarding-steps-find-exposures-label")}
+        </div>
       </li>
     </ul>
   );
