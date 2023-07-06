@@ -7,8 +7,8 @@
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
 export function getBreachLogo (breach) {
-  if (breach.LogoPath) {
-    return `<img src='${breach.LogoPath}' alt='' loading="lazy" class='breach-logo' height='32' />`
+  if (breach.FaviconUrl) {
+    return `<img src='${breach.FaviconUrl}' alt='' loading="lazy" class='breach-logo' height='32' />`
   }
 
   // Add CSS variable and a dedicated class for the logo placeholder
