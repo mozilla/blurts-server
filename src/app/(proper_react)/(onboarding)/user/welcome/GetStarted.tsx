@@ -7,7 +7,7 @@
 import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
-import styles from "./GetStarted.module.scss";
+import viewStyles from "./View.module.scss";
 import howItWorksHero from "./images/welcome-how-it-works.svg";
 import { useL10n } from "../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
@@ -27,7 +27,7 @@ export const GetStarted = (props: Props) => {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <div className={viewStyles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
       <p>{l10n.getString("onboarding-get-started-content-data")}</p>
       <p>{l10n.getString("onboarding-get-started-content-price")}</p>
@@ -35,6 +35,7 @@ export const GetStarted = (props: Props) => {
         <button
           {...explainerDialogTrigger.triggerProps}
           onClick={() => explainerDialogState.open()}
+          className={viewStyles.explainerTrigger}
         >
           {l10n.getString("onboarding-get-started-content-explainer")}
         </button>
@@ -42,6 +43,7 @@ export const GetStarted = (props: Props) => {
           <ModalOverlay
             state={explainerDialogState}
             {...explainerDialogTrigger.overlayProps}
+            isDismissable={true}
           >
             <Dialog
               title={
@@ -55,54 +57,67 @@ export const GetStarted = (props: Props) => {
                   )}
                 </>
               }
+              illustration={<Image src={howItWorksHero} alt="" />}
             >
-              <Image src={howItWorksHero} alt="" />
-              <h4>
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-step1-heading"
-                )}
-              </h4>
-              <p>
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-step1-content"
-                )}
-              </p>
-              <h4>
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-step2-heading"
-                )}
-              </h4>
-              <p>
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-step2-content"
-                )}
-              </p>
-              <h4>
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-step3-heading"
-                )}
-              </h4>
-              <p>
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-step3-content"
-                )}
-              </p>
-              <Button
-                type="primary"
-                onClick={() => explainerDialogState.close()}
-                autoFocus={true}
-              >
-                {l10n.getString(
-                  "onboarding-get-started-how-it-works-dialog-confirm-label"
-                )}
-              </Button>
+              <div className={viewStyles.dialogContents}>
+                <div className={viewStyles.howItWorksEntry}>
+                  <h4>
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-step1-heading"
+                    )}
+                  </h4>
+                  <p>
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-step1-content"
+                    )}
+                  </p>
+                </div>
+                <div className={viewStyles.howItWorksEntry}>
+                  <h4>
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-step2-heading"
+                    )}
+                  </h4>
+                  <p>
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-step2-content"
+                    )}
+                  </p>
+                </div>
+                <div className={viewStyles.howItWorksEntry}>
+                  <h4>
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-step3-heading"
+                    )}
+                  </h4>
+                  <p>
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-step3-content"
+                    )}
+                  </p>
+                </div>
+                <div className={viewStyles.confirmButtonWrapper}>
+                  <Button
+                    type="primary"
+                    onClick={() => explainerDialogState.close()}
+                    autoFocus={true}
+                    className={viewStyles.startButton}
+                  >
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-confirm-label"
+                    )}
+                  </Button>
+                </div>
+              </div>
             </Dialog>
           </ModalOverlay>
         )}
       </p>
-      <Button type="primary" onClick={() => props.onStart()}>
-        {l10n.getString("onboarding-get-started-cta-label")}
-      </Button>
+      <div className={viewStyles.stepButtonWrapper}>
+        <Button type="primary" onClick={() => props.onStart()}>
+          {l10n.getString("onboarding-get-started-cta-label")}
+        </Button>
+      </div>
     </div>
   );
 };

@@ -6,175 +6,259 @@
 
 import React, { ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
-import { StatusPill } from "../server/StatusPill";
+import { StatusPill, StatusPillType } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
 import {
   ChevronDown,
   EmailIcon,
-  LocationPin,
-  MultipleUsers,
+  LocationPinIcon,
+  MultipleUsersIcon,
   OpenInNew,
   PhoneIcon,
 } from "../server/Icons";
 import { Button } from "../server/Button";
+import { useL10n } from "../../hooks/l10n";
+import { ScanResult } from "../../../external/onerep";
+import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
-export type Props = {
+export type Exposure = ScanResult | Breach;
+
+export type ExposureTypElProps = {
+  type: Exposure;
+};
+
+export const ExposureTypeEl = (props: ExposureTypElProps) => {
+  const l10n = useL10n();
+  let string = "";
+
+  if (isScanResult(props.type)) {
+    string = l10n.getString("exposure-card-exposure-type-data-broker");
+  } else {
+    string = l10n.getString("exposure-card-exposure-type-data-breach");
+  }
+
+  return <>{string}</>;
+};
+
+// Typeguard function
+export function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
+  return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
+}
+
+export type ExposureCardProps = {
   exposureImg: StaticImageData;
   exposureName: string;
-  exposureType: string;
+  exposureData: Exposure;
   exposureDetailsLink: string;
   dateFound: string;
-  statusPillType: string;
-  statusPillContent: string;
+  statusPillType: StatusPillType;
 };
 
 type DetailsFoundProps = {
-  whichExposed: string; // family | email | phone | address
+  whichExposed: string; // family | email | phone | address | creditcard | password
   num: number;
   icon: ReactElement;
 };
 
-export const ExposureCard = (props: Props) => {
+export const ExposureCard = (props: ExposureCardProps) => {
   const {
     exposureImg,
     exposureName,
-    exposureType,
+    exposureData,
     exposureDetailsLink,
-    dateFound,
-    statusPillContent,
     statusPillType,
   } = props;
 
-  const [detailsOpen, setDetailsOpen] = useState(false);
+  const l10n = useL10n();
+  const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
-    let headline, description;
-    if (props.whichExposed === "family") {
-      headline = "Family members";
+    let headline;
 
-      description = `We found ${props.num} family member`;
-      if (props.num > 1) {
-        description = `We found ${props.num} family members`;
-      }
+    switch (props.whichExposed) {
+      case "family":
+        headline = l10n.getString("exposure-card-family-members");
+        break;
+      case "email":
+        headline = l10n.getString("exposure-card-email");
+        break;
+      case "phone":
+        headline = l10n.getString("exposure-card-phone-number");
+        break;
+      case "address":
+        headline = l10n.getString("exposure-card-address");
+        break;
+      case "creditcard":
+        headline = l10n.getString("exposure-card-credit-card");
+        break;
+      case "password":
+        headline = l10n.getString("exposure-card-password");
+        break;
+      default:
+        headline = l10n.getString("exposure-card-other");
     }
 
-    if (props.whichExposed === "email") {
-      headline = "Email";
-
-      description = `We found ${props.num} email address`;
-      if (props.num > 1) {
-        description = `We found ${props.num} email addresses`;
-      }
-    }
-
-    if (props.whichExposed === "phone") {
-      headline = "Phone number";
-
-      description = `We found ${props.num} phone number`;
-      if (props.num > 1) {
-        description = `We found ${props.num} phone numbers`;
-      }
-    }
-
-    if (props.whichExposed === "address") {
-      headline = "Address";
-
-      description = `We found ${props.num} address`;
-      if (props.num > 1) {
-        description = `We found ${props.num} addresses`;
-      }
-    }
+    const description = l10n.getString("exposure-card-num-found", {
+      exposure_num: props.num,
+    });
 
     return (
-      <>
+      <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {headline}
         </dt>
-        <dl>{description}</dl>
-      </>
+        <dd>{description}</dd>
+      </div>
     );
   };
-  const elementCard = (
+  const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
-          <ul className={styles.exposureHeaderList}>
-            <li className={styles.exposureImageWrapper}>
+          <dl className={styles.exposureHeaderList}>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-company-logo")}
+            </dt>
+            <dd
+              className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}
+            >
               <Image
                 className={styles.exposureImage}
                 alt=""
                 src={exposureImg}
               />
-            </li>
-            <li>{exposureName}</li>
-            <li>{exposureType}</li>
-            <li>{dateFound}</li>
-            <li>
-              <StatusPill type={statusPillType} content={statusPillContent} />
-            </li>
-          </ul>
-          <span
-            className={styles.chevronDown}
-            onClick={() => setDetailsOpen(!detailsOpen)}
+            </dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-company")}
+            </dt>
+            <dd>{exposureName}</dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-exposure-type")}
+            </dt>
+            <dd className={styles.hideOnMobile}>
+              <ExposureTypeEl type={exposureData} />
+            </dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-date-found")}
+            </dt>
+            <dd className={styles.hideOnMobile}>{props.dateFound}</dd>
+            <dt className={styles.visuallyHidden}>
+              {l10n.getString("exposure-card-label-status")}
+            </dt>
+            <dd>
+              <StatusPill type={statusPillType} />
+            </dd>
+          </dl>
+          <button
+            className={styles.chevron}
+            onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
           >
             <ChevronDown
-              className={detailsOpen ? styles.isOpen : ""}
-              alt=""
+              className={exposureCardExpanded ? styles.isOpen : ""}
+              alt={
+                exposureCardExpanded
+                  ? l10n.getString("chevron-up-alt")
+                  : l10n.getString("chevron-down-alt")
+              }
               width="20"
               height="20"
             />
-          </span>
+          </button>
         </div>
         <div
           className={`${styles.exposureDetailsSection} ${
-            detailsOpen ? styles.isOpen : ""
+            exposureCardExpanded ? styles.isOpen : ""
           }`}
         >
-          <p>
-            This site is selling and publishing{" "}
-            <a href={exposureDetailsLink}>
-              details about you.{" "}
-              <span>
-                <OpenInNew alt="" width="15" height="14" />
-              </span>
-            </a>{" "}
-            Remove this profile to protect your privacy.
-          </p>
-          <div className={styles.exposureListOfExposureTypes}>
-            <ul>
-              <li>Your exposed info:</li>
-              <li>
+          {isScanResult(exposureData) ? (
+            // Data broker content
+            <div>
+              <p>
+                {l10n.getFragment(
+                  "exposure-card-description-info-for-sale-part-one",
+                  {
+                    elems: {
+                      data_broker_link: <a href={exposureDetailsLink} />,
+                    },
+                  }
+                )}
+                <a href={exposureDetailsLink}>
+                  <span>
+                    <OpenInNew
+                      alt={l10n.getString("open-in-new-tab-alt")}
+                      width="13"
+                      height="13"
+                    />
+                  </span>
+                </a>{" "}
+                {l10n.getString(
+                  "exposure-card-description-info-for-sale-part-two"
+                )}
+              </p>
+            </div>
+          ) : (
+            // Data breach content
+            <div>
+              <p>
+                {l10n.getFragment(
+                  "exposure-card-description-data-breach-part-one",
+                  {
+                    vars: {
+                      data_breach_company: exposureName,
+                      data_breach_date: exposureData.BreachDate,
+                    },
+                    elems: {
+                      data_breach_link: <a href={exposureDetailsLink} />,
+                    },
+                  }
+                )}
+                <a href={exposureDetailsLink}>
+                  <span>
+                    <OpenInNew
+                      alt={l10n.getString("open-in-new-tab-alt")}
+                      width="13"
+                      height="13"
+                    />
+                  </span>
+                </a>{" "}
+                {l10n.getString(
+                  "exposure-card-description-data-breach-part-two"
+                )}
+              </p>
+            </div>
+          )}
+          <div className={styles.exposedInfoContainer}>
+            <div className={styles.exposedInfoWrapper}>
+              <p>{l10n.getString("exposure-card-your-exposed-info")}:</p>
+              <dl>
+                {/* TODO: Pass list of details found instead of hardcoding it */}
                 <DetailsFoundItem
-                  icon={<MultipleUsers alt="" width="15" height="15" />}
+                  icon={<MultipleUsersIcon alt="" width="13" height="13" />}
                   whichExposed="family"
                   num={0}
                 />
-              </li>
-              <li>
                 <DetailsFoundItem
-                  icon={<PhoneIcon alt="" width="15" height="15" />}
+                  icon={<PhoneIcon alt="" width="13" height="13" />}
                   whichExposed="phone"
                   num={5}
                 />
-              </li>
-              <li>
                 <DetailsFoundItem
-                  icon={<EmailIcon alt="" width="15" height="15" />}
+                  icon={<EmailIcon alt="" width="13" height="13" />}
                   whichExposed="email"
                   num={4}
                 />
-              </li>
-              <li>
                 <DetailsFoundItem
-                  icon={<LocationPin alt="" width="15" height="15" />}
+                  icon={<LocationPinIcon alt="" width="13" height="13" />}
                   whichExposed="address"
                   num={0}
                 />
-              </li>
-            </ul>
+              </dl>
+            </div>
             <span className={styles.fixItBtn}>
-              <Button type={"primary"}>Lets fix it</Button>
+              <Button type={"primary"}>
+                {l10n.getString("exposure-card-cta")}
+              </Button>
             </span>
           </div>
         </div>
@@ -182,5 +266,5 @@ export const ExposureCard = (props: Props) => {
     </div>
   );
 
-  return elementCard;
+  return exposureCard;
 };

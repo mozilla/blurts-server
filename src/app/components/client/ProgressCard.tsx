@@ -4,14 +4,20 @@
 
 "use client";
 
-import { CSSProperties, useState } from "react";
+import { CSSProperties } from "react";
+import { useOverlayTriggerState } from "react-stately";
+import { useOverlayTrigger } from "react-aria";
 import { QuestionMarkCircle } from "../server/Icons";
 import styles from "./ProgressCard.module.scss";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import SparklingCheck from "./assets/sparkling-check.svg";
 import Image from "next/image";
-import { Modal } from "./Modal";
+import { getL10n } from "../../functions/server/l10n";
+import ModalImage from "../client/assets/modal-default-img.svg";
+import { Button } from "../server/Button";
+import { ModalOverlay } from "./dialog/ModalOverlay";
+import { Dialog } from "./dialog/Dialog";
 
 export type Props = {
   resolvedByYou: number;
@@ -34,15 +40,12 @@ export const ProgressCard = (props: Props) => {
   const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
   const percentageRemainingNumber = 100 - percentageCompleteNum;
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
+  const l10n = getL10n();
+  const explainerDialogState = useOverlayTriggerState({});
+  const explainerDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    explainerDialogState
+  );
 
   const activeProgressBarStyle: CSSProperties = {
     width: `${percentageCompleteNum}%`,
@@ -57,8 +60,16 @@ export const ProgressCard = (props: Props) => {
             style={activeProgressBarStyle}
           ></div>
           <div className={styles.percentageBreakdown}>
-            <p>{percentageCompleteNum}% complete</p>
-            <p>{percentageRemainingNumber}% in progress</p>
+            <p>
+              {l10n.getString("progress-card-percentage-complete", {
+                percentage: `${percentageCompleteNum}`,
+              })}
+            </p>
+            <p>
+              {l10n.getString("progress-card-percentage-remaining", {
+                percentage: `${percentageRemainingNumber}`,
+              })}
+            </p>
           </div>
         </div>
         <Image src={SparklingCheck} alt="" />
@@ -67,53 +78,79 @@ export const ProgressCard = (props: Props) => {
   };
 
   const modalContent = (
-    <>
+    <div className={styles.modalBodyContent}>
       <p>
-        <strong>Resolved by you</strong> includes anything you have manually
-        fixed. All data breaches that require access to your accounts need to be
-        fixed manually, even if you have upgraded to Premium.
-        <br />
-        <br />
-        <strong>Auto-removed</strong> includes any exposures from data broker
-        profiles that we have removed for you. This is available only for
-        Premium subscribers. Complete includes anything resolved by you or
-        auto-removed by us.
-        <br />
-        <br />
-        <strong>In Progress</strong> includes anything that we are currently
-        working on fixing. Removals typically take 7-14 days but the most
-        difficult sites could take longer. You may also start to see removals
-        happening within the same day.
+        {l10n.getFragment("modal-heres-what-we-fixed-description-part-one", {
+          elems: { b: <strong /> },
+        })}
       </p>
-    </>
+      <p>
+        {l10n.getFragment("modal-heres-what-we-fixed-description-part-two", {
+          elems: { b: <strong /> },
+        })}
+      </p>
+      <p>
+        {l10n.getFragment("modal-heres-what-we-fixed-description-part-three", {
+          elems: { b: <strong /> },
+        })}
+      </p>
+      <div className={styles.confirmButtonWrapper}>
+        <Button
+          type="primary"
+          onClick={() => explainerDialogState.close()}
+          autoFocus={true}
+          className={styles.startButton}
+        >
+          {l10n.getString("modal-cta-ok")}
+        </Button>
+      </div>
+    </div>
   );
 
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
-        Here is what we fixed
-        <button aria-label="Term definitions" onClick={openModal}>
+        {l10n.getString("progress-card-heres-what-we-fixed-headline")}
+        <button
+          aria-label={l10n.getString("modal-open-alt")}
+          {...explainerDialogTrigger.triggerProps}
+          onClick={() => explainerDialogState.open()}
+        >
           <QuestionMarkCircle alt="" width="15" height="15" />
         </button>
       </div>
       <div className={styles.progressStatsWrapper}>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
-            <Image src={ExploringLaptopPlus} alt="" />
+            <Image src={ExploringLaptopPlus} alt="" width="50" height="50" />
             <span>{props.resolvedByYou}</span>
           </div>
-          <p>Resolved by you</p>
+          <p>{l10n.getString("progress-card-resolved-by-you-headline")}</p>
         </div>
         <div className={styles.progressItem}>
           <div className={styles.progressStat}>
-            <Image src={ExploringLaptopMinus} alt="" />
+            <Image src={ExploringLaptopMinus} alt="" width="50" height="50" />
             <span>{props.autoRemoved}</span>
           </div>
-          <p>Auto-removed</p>
+          <p>{l10n.getString("progress-card-auto-removed-headline")}</p>
         </div>
       </div>
       <ProgressBar />
-      <Modal isOpen={isModalOpen} onClose={closeModal} content={modalContent} />
+      {explainerDialogState.isOpen && (
+        <ModalOverlay
+          state={explainerDialogState}
+          {...explainerDialogTrigger.overlayProps}
+          isDismissable={true}
+        >
+          <Dialog
+            title={l10n.getString("modal-heres-what-we-fixed-title")}
+            illustration={<Image src={ModalImage} alt="" />}
+            onDismiss={() => explainerDialogState.close()}
+          >
+            {modalContent}
+          </Dialog>
+        </ModalOverlay>
+      )}
     </div>
   );
 };

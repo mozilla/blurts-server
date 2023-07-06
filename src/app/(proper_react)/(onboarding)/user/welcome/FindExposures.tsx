@@ -9,7 +9,7 @@ import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../hooks/l10n";
 
 export const FindExposures = () => {
-  const l10n = useL10n();
+  const _l10n = useL10n();
 
   return (
     <div className={styles.wrapper}>

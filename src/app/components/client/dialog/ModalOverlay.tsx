@@ -25,7 +25,7 @@ export const ModalOverlay = ({ state, children, ...otherProps }: Props) => {
   return (
     <Overlay>
       <div className={styles.underlay} {...underlayProps}>
-        <div {...modalProps} ref={modalRef}>
+        <div {...modalProps} ref={modalRef} className={styles.childrenWrapper}>
           {children}
         </div>
       </div>

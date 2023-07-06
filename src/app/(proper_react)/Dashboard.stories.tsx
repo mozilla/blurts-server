@@ -3,20 +3,19 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { ExposureCard } from "../ExposureCard";
-import FamilyTreeImage from "../assets/familytree.png";
-import TwitterImage from "../assets/twitter-icon.png";
-import { ScanResult } from "../../../../../src/external/onerep";
-import { Breach } from "../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { Dashboard as DashboardEl } from "./Dashboard";
+import FamilyTreeImage from "../components/client/assets/familytree.png";
+import TwitterImage from "../components/client/assets/twitter-icon.png";
+import { ExposureCardProps } from "../components/client/ExposureCard";
+import { ScanResult } from "../../../src/external/onerep";
+import { Breach } from "../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
-// More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof ExposureCard> = {
-  title: "ExposureCard",
-  component: ExposureCard,
-  tags: ["autodocs"],
+const meta: Meta<typeof DashboardEl> = {
+  title: "Pages/Dashboard",
+  component: DashboardEl,
 };
 export default meta;
-type Story = StoryObj<typeof ExposureCard>;
+type Story = StoryObj<typeof DashboardEl>;
 
 const ScanResultMockItem: ScanResult = {
   id: 1,
@@ -63,8 +62,8 @@ const BreachMockItem: Breach = {
   Title: "Twitter",
 };
 
-export const DataBroker: Story = {
-  args: {
+const mockExposures: ExposureCardProps[] = [
+  {
     exposureImg: FamilyTreeImage,
     exposureName: ScanResultMockItem.data_broker,
     exposureData: ScanResultMockItem,
@@ -72,15 +71,24 @@ export const DataBroker: Story = {
     dateFound: ScanResultMockItem.created_at,
     statusPillType: "needAction",
   },
-};
-
-export const DataBreach: Story = {
-  args: {
+  {
     exposureImg: TwitterImage,
-    exposureName: "Twitter",
+    exposureName: BreachMockItem.Title,
     exposureData: BreachMockItem,
     exposureDetailsLink: "linkehere.com",
-    dateFound: BreachMockItem.BreachDate,
+    dateFound: BreachMockItem.AddedDate,
+    statusPillType: "fixed",
+  },
+  {
+    exposureImg: FamilyTreeImage,
+    exposureName: ScanResultMockItem.data_broker,
+    exposureData: ScanResultMockItem,
+    exposureDetailsLink: "linkehere.com",
+    dateFound: ScanResultMockItem.created_at,
     statusPillType: "needAction",
   },
+];
+
+export const Shell: Story = {
+  render: () => <DashboardEl exposures={mockExposures} />,
 };

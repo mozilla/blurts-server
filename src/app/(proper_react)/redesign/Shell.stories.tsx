@@ -5,8 +5,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { Shell as ShellEl } from "./Shell";
-import { getL10n } from "../functions/server/l10n";
-import { Toolbar } from "../components/client/toolbar/Toolbar";
+import { getL10n } from "../../functions/server/l10n";
+import { Toolbar } from "../../components/client/toolbar/Toolbar";
 
 const meta: Meta<typeof ShellEl> = {
   title: "Pages/Shell",

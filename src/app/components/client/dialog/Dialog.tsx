@@ -3,21 +3,59 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode, useRef } from "react";
-import { AriaDialogProps, useDialog } from "react-aria";
+import { AriaDialogProps, useButton, useDialog } from "react-aria";
 import styles from "./Dialog.module.scss";
+import { CloseBtn } from "../../server/Icons";
+import { useL10n } from "../../../hooks/l10n";
 
 export type Props = {
   children: ReactNode;
+  onDismiss?: () => void;
   title?: ReactNode;
+  illustration?: ReactNode;
 } & AriaDialogProps;
 
-export const Dialog = ({ children, title, ...otherProps }: Props) => {
+export const Dialog = ({
+  children,
+  onDismiss,
+  title,
+  illustration,
+  ...otherProps
+}: Props) => {
+  const l10n = useL10n();
   const dialogRef = useRef<HTMLDivElement>(null);
   const { dialogProps, titleProps } = useDialog(otherProps, dialogRef);
 
+  const dismissButtonRef = useRef<HTMLButtonElement>(null);
+  const dismissButtonProps = useButton(
+    { onPress: onDismiss },
+    dismissButtonRef
+  ).buttonProps;
+  const dismissButton =
+    typeof onDismiss === "function" ? (
+      <button
+        {...dismissButtonProps}
+        ref={dismissButtonRef}
+        className={styles.dismissButton}
+        onClick={() => onDismiss()}
+      >
+        <CloseBtn
+          alt={l10n.getString("modal-close-alt")}
+          width="14"
+          height="14"
+        />
+      </button>
+    ) : null;
+
   return (
     <div {...dialogProps} ref={dialogRef} className={styles.dialog}>
-      {title && <h3 {...titleProps}>{title}</h3>}
+      {dismissButton}
+      {illustration ?? null}
+      {title && (
+        <h3 {...titleProps} className={styles.title}>
+          {title}
+        </h3>
+      )}
       {children}
     </div>
   );

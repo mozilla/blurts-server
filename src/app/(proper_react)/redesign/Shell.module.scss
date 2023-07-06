@@ -64,64 +64,64 @@
 
 .content {
   height: 100%;
-  flex: 1 0 auto;
   display: flex;
+  width: 100%;
   flex-direction: column;
 
   .page {
     flex: 1 0 auto;
   }
+}
 
-  .footer {
-    background-color: $color-black;
+.footer {
+  background-color: $color-black;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $spacing-xl;
+  padding-block: $spacing-xl;
+
+  .mozillaLink {
+    padding: 0 $spacing-md;
+
+    &:hover img {
+      background-color: $color-purple-50;
+    }
+  }
+
+  .externalLinks {
+    flex: 1 0 auto;
     display: flex;
+    padding: 0;
+    list-style-type: none;
     flex-direction: column;
-    align-items: stretch;
-    gap: $spacing-xl;
-    padding-block: $spacing-xl;
 
-    .mozillaLink {
-      padding: 0 $spacing-md;
+    a {
+      display: block;
+      color: $color-grey-05;
+      font-weight: 500;
+      text-decoration: none;
+      padding: $spacing-sm $spacing-md;
 
-      &:hover img {
-        background-color: $color-purple-50;
+      &:hover {
+        color: $color-purple-50;
       }
     }
+  }
+
+  @media screen and (min-width: $screen-md) {
+    flex-direction: row;
+    align-items: center;
+    padding-block: 0;
 
     .externalLinks {
-      flex: 1 0 auto;
-      display: flex;
-      padding: 0;
-      list-style-type: none;
-      flex-direction: column;
-
-      a {
-        display: block;
-        color: $color-grey-05;
-        font-weight: 500;
-        text-decoration: none;
-        padding: $spacing-sm $spacing-md;
-
-        &:hover {
-          color: $color-purple-50;
-        }
-      }
+      flex-direction: row;
+      justify-content: flex-end;
+      padding: 0 $spacing-2xl;
     }
 
-    @media screen and (min-width: $screen-md) {
-      flex-direction: row;
-      align-items: center;
-      padding-block: 0;
-
-      .externalLinks {
-        flex-direction: row;
-        justify-content: flex-end;
-        padding: 0 $spacing-2xl;
-      }
-
-      .mozillaLink {
-        padding: $spacing-md $spacing-2xl;
-      }
+    .mozillaLink {
+      padding: $spacing-md $spacing-2xl;
     }
   }
 }

@@ -1,1 +1,192 @@
 @import "../../../../tokens";
+
+.wrapper {
+  --backgroundImageWidth: 400px;
+  --sidebarWidth: 600px;
+  @media screen and (max-width: 1300px) {
+    --backgroundImageWidth: 300px;
+    --sidebarWidth: 400px;
+  }
+  @media screen and (max-width: 1000px) {
+    --backgroundImageWidth: 200px;
+    --sidebarWidth: 300px;
+  }
+  @media screen and (max-width: 800px) {
+    --sidebarWidth: 0;
+  }
+
+  height: 100%;
+  background-image: url("./images/Scanning.svg"),
+    linear-gradient(
+      to right,
+      $color-grey-05,
+      $color-grey-05 var(--sidebarWidth),
+      $color-white calc(var(--sidebarWidth) + 1px)
+    );
+  background-repeat: no-repeat;
+  background-position-y: center;
+  background-position-x: calc(
+      var(--sidebarWidth) / 2 - var(--backgroundImageWidth) / 2
+    ),
+    center;
+  background-size: var(--backgroundImageWidth) auto, auto;
+  padding-inline-start: var(--sidebarWidth);
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+
+  .homeLink {
+    margin-inline-start: calc(-1 * var(--sidebarWidth));
+    display: block;
+    padding: $spacing-md;
+
+    @media screen and (min-width: $screen-md) {
+      padding-inline: $spacing-xl;
+    }
+  }
+
+  .stepsWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+  }
+
+  .stepsWrapper,
+  .contentWrapper {
+    padding-inline: $spacing-2xl;
+
+    @media screen and (min-width: $screen-lg) {
+      padding-inline: $layout-xl;
+    }
+  }
+}
+
+.steps {
+  $stepGap: $spacing-2xl;
+  padding-inline-start: 0;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  gap: $stepGap;
+  max-width: $content-sm;
+  position: relative;
+
+  li {
+    $iconDiameter: 27px;
+    $iconBorderWidth: 4px;
+    $connectingLineHeight: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-xs;
+    text-align: center;
+    font: $text-body-xs;
+    font-weight: 600;
+    color: $color-grey-30;
+
+    img {
+      background-color: $color-grey-30;
+      padding: 5px;
+      margin-block: $iconBorderWidth;
+      width: $iconDiameter;
+      height: $iconDiameter;
+      border-radius: 100%;
+      box-sizing: content-box;
+      // Overlap the `::before` (the horizontal line)
+      z-index: 1;
+    }
+
+    &:nth-child(n + 2)::before {
+      content: "";
+      background-color: $color-grey-30;
+      width: calc(25% + $stepGap);
+      display: block;
+      height: $connectingLineHeight;
+      position: absolute;
+      top: calc(($iconDiameter + $connectingLineHeight) / 2 + $iconBorderWidth);
+    }
+    &:nth-child(2)::before {
+      left: calc(25% - $iconDiameter / 2 - $stepGap / 2);
+    }
+    &:nth-child(3)::before {
+      left: 50%;
+    }
+
+    &[aria-current="step"] {
+      img {
+        margin-block: 0;
+        border: $iconBorderWidth solid $color-purple-10;
+      }
+    }
+
+    &.isCompleted,
+    &[aria-current="step"] {
+      color: $color-purple-70;
+
+      &::before {
+        background-color: $color-purple-10;
+      }
+
+      img {
+        background-color: $color-purple-70;
+      }
+    }
+  }
+}
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-md;
+
+  h1 {
+    font: $text-title-xs;
+  }
+
+  .explainerTrigger {
+    background-color: transparent;
+    border-style: none;
+    color: $color-blue-50;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-blue-70;
+    }
+  }
+}
+
+.dialogContents {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  font: $text-body-md;
+  color: $color-grey-50;
+
+  h4 {
+    font-weight: 700;
+  }
+
+  .confirmButtonWrapper {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    min-width: $content-xs;
+    padding-block-start: $spacing-md;
+  }
+}
+
+.stepButtonWrapper {
+  align-items: stretch;
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+  padding-block: $layout-xs;
+  width: 100%;
+
+  @media screen and (min-width: $screen-md) {
+    padding-block-start: $layout-lg;
+  }
+}

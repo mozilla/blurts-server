@@ -4,7 +4,7 @@
 
 import Image from "next/image";
 import styles from "./BreachLogo.module.css";
-import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.d";
+import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 /**
  * @param props
@@ -14,7 +14,7 @@ import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/b
  */
 
 export type Props = {
-  breach: Breach;
+  breach: HibpLikeDbBreach;
   // The prop `htmlTags` ensures compatibility for the work in
   // `nextjs_migration` when rendering server components to strings. As soon as
   // this component is not being used there anymore we can remove the prop.
@@ -22,13 +22,11 @@ export type Props = {
 };
 
 export function BreachLogo(props: Props) {
-  const logoIsAvailable = props.breach?.LogoPath;
-
-  if (logoIsAvailable) {
+  if (typeof props.breach.FaviconUrl === "string") {
     const ImageType = props.htmlTags ? "img" : Image;
     return (
       <ImageType
-        src={props.breach?.LogoPath}
+        src={props.breach.FaviconUrl}
         alt=""
         loading="lazy"
         className={styles.breachLogo}
