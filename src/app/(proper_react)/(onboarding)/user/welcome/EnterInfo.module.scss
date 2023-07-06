@@ -1,1 +1,41 @@
 @import "../../../../tokens";
+
+.inputContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md $spacing-xl;
+  padding: $spacing-lg 0;
+
+  @media screen and (max-width: $content-sm) {
+    border: 1px solid red;
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputField {
+  border: 1px solid $color-grey-30;
+  border-radius: $border-radius-sm;
+  color: $color-black;
+  height: 40px;
+  padding: $spacing-sm;
+
+  &::placeholder,
+  &.noValue {
+    color: $color-grey-50;
+  }
+}
+
+.inputLabel {
+  font: 600 15px / 1.5em var(--font-inter), sans-serif;
+  margin-bottom: $spacing-sm;
+}
+
+.inputMessage {
+  color: $color-error;
+  font: $text-body-sm;
+}
