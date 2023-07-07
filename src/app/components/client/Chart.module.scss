@@ -1,0 +1,205 @@
+@import "../../tokens";
+
+.chartContainer {
+  width: $content-sm;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  figcaption {
+    font: $text-body-xs;
+    font-style: italic;
+  }
+}
+
+.gutter {
+  stroke: $color-white;
+}
+
+.chartAndLegendWrapper {
+  display: flex;
+  gap: $spacing-2xl;
+  min-width: $content-xs;
+
+  .chart {
+    flex: 1 0 $content-sm;
+
+    .headingNr {
+      font-family: var(--font-inter);
+      font-weight: 600;
+    }
+    .headingLabel {
+      font-family: var(--font-inter);
+    }
+
+    .slice {
+      @media (prefers-reduced-motion: no-preference) {
+        transition: stroke-dashoffset 1s ease;
+      }
+      // The --sliceLength custom property is set in the element's props
+      stroke-dashoffset: var(--sliceLength);
+    }
+  }
+
+  .legend {
+    flex: 0 0 $content-xs;
+    height: auto;
+    display: flex;
+    align-items: center;
+
+    thead {
+      // These styles are taken from
+      // https://react-spectrum.adobe.com/react-aria/VisuallyHidden.html
+      border: 0;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      margin: 0 -1px -1px 0;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+      white-space: nowrap;
+    }
+
+    tbody tr {
+      text-align: start;
+      color: $color-grey-40;
+      font: $text-body-xs;
+
+      td {
+        padding-inline: $spacing-xs;
+      }
+
+      svg {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+}
+
+/* stylelint-disable no-descending-specificity */
+// We start at 2, because element 1 is .gutter
+.slice:nth-child(2) {
+  stroke: $color-purple-90;
+}
+.legend tbody tr:nth-child(1) {
+  .chartAndLegendWrapper:has(.slice:nth-child(2):hover) & {
+    color: $color-purple-90;
+  }
+
+  rect {
+    fill: $color-purple-90;
+  }
+}
+.slice:nth-child(3) {
+  stroke: $color-purple-80;
+}
+.legend tbody tr:nth-child(2) {
+  .chartAndLegendWrapper:has(.slice:nth-child(3):hover) & {
+    color: $color-purple-80;
+  }
+
+  rect {
+    fill: $color-purple-80;
+  }
+}
+.slice:nth-child(4) {
+  stroke: $color-purple-70;
+}
+.legend tbody tr:nth-child(3) {
+  .chartAndLegendWrapper:has(.slice:nth-child(4):hover) & {
+    color: $color-purple-70;
+  }
+
+  rect {
+    fill: $color-purple-70;
+  }
+}
+.slice:nth-child(5) {
+  stroke: $color-purple-60;
+}
+.legend tbody tr:nth-child(4) {
+  .chartAndLegendWrapper:has(.slice:nth-child(5):hover) & {
+    color: $color-purple-60;
+  }
+
+  rect {
+    fill: $color-purple-60;
+  }
+}
+.slice:nth-child(6) {
+  stroke: $color-purple-50;
+}
+.legend tbody tr:nth-child(5) {
+  .chartAndLegendWrapper:has(.slice:nth-child(6):hover) & {
+    color: $color-purple-50;
+  }
+
+  rect {
+    fill: $color-purple-50;
+  }
+}
+.slice:nth-child(7) {
+  stroke: $color-purple-40;
+}
+.legend tbody tr:nth-child(6) {
+  .chartAndLegendWrapper:has(.slice:nth-child(7):hover) & {
+    color: $color-purple-40;
+  }
+
+  rect {
+    fill: $color-purple-40;
+  }
+}
+.slice:nth-child(8) {
+  stroke: $color-purple-30;
+}
+.legend tbody tr:nth-child(7) {
+  .chartAndLegendWrapper:has(.slice:nth-child(8):hover) & {
+    color: $color-purple-30;
+  }
+
+  rect {
+    fill: $color-purple-30;
+  }
+}
+.slice:nth-child(9) {
+  stroke: $color-purple-20;
+}
+.legend tbody tr:nth-child(8) {
+  .chartAndLegendWrapper:has(.slice:nth-child(9):hover) & {
+    color: $color-purple-20;
+  }
+
+  rect {
+    fill: $color-purple-20;
+  }
+}
+.slice:nth-child(10) {
+  stroke: $color-purple-10;
+}
+.legend tbody tr:nth-child(9) {
+  .chartAndLegendWrapper:has(.slice:nth-child(10):hover) & {
+    color: $color-purple-10;
+  }
+
+  rect {
+    fill: $color-purple-10;
+  }
+}
+.slice:nth-child(11) {
+  stroke: $color-purple-05;
+}
+.legend tbody tr:nth-child(10) {
+  .chartAndLegendWrapper:has(.slice:nth-child(11):hover) & {
+    color: $color-purple-05;
+  }
+
+  rect {
+    fill: $color-purple-05;
+  }
+}
+/* stylelint-enable no-descending-specificity */

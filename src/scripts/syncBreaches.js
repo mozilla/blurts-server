@@ -61,7 +61,7 @@ export async function getBreachIcons(breaches) {
   // read existing logos
   const existingLogos = await readdir(logoFolder);
 
-  (await Promise.all(
+  (await Promise.allSettled(
     breaches.map(async ({Domain: breachDomain, Name: breachName}) => {
       if (!breachDomain || breachDomain.length == 0) {
         console.log('empty domain: ', breachName)
