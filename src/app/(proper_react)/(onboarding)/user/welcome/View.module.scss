@@ -184,6 +184,10 @@
 
     li {
       img {
+        // On mobile, the actual step images aren't actually shown; instead, we
+        // display flat horizontal lines, which we simulate by giving the images
+        // a 0 height and a border. The images are <1kB in size, so that
+        // shouldn't matter too much.
         height: 0;
         border: 3px solid $color-grey-30;
         border-radius: 3px;
