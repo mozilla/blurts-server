@@ -4,40 +4,97 @@
 
 "use client";
 
-import { ReactElement } from "react";
+import { ReactElement, useRef } from "react";
 import styles from "./Modal.module.scss";
 import { CloseBtn } from "../server/Icons";
+import Image, { StaticImageData } from "next/image";
+import {
+  OverlayContainer,
+  FocusScope,
+  useDialog,
+  useModal,
+  useOverlay,
+  usePreventScroll,
+  AriaOverlayProps,
+  useButton,
+} from "react-aria";
+import { Button } from "../server/Button";
+import { metropolis } from "../../../../src/app/fonts/Metropolis/metropolis";
+import { Inter } from "next/font/google";
+import { getL10n } from "../../functions/server/l10n";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export type Props = {
-  isOpen: boolean;
-  onClose: () => void;
-  content: ReactElement;
+export type ModalProps = {
+  image: StaticImageData;
+  headline: string | ReactElement;
+  body: string | ReactElement;
+  cta?: {
+    content: string;
+    link: () => void;
+  };
 };
 
-export const Modal = (props: Props) => {
-  if (!props.isOpen) {
-    return null; // Render nothing if the modal is closed
-  }
+export const Modal = (props: ModalProps & AriaOverlayProps) => {
+  return (
+    <OverlayContainer>
+      <DialogBox
+        isOpen={props.isOpen}
+        onClose={props.onClose}
+        headline={props.headline}
+        body={props.body}
+        isDismissable={true}
+        image={props.image}
+        cta={props.cta}
+      />
+    </OverlayContainer>
+  );
+};
+
+const DialogBox = (props: AriaOverlayProps & ModalProps) => {
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const { overlayProps, underlayProps } = useOverlay(props, wrapperRef);
+  usePreventScroll();
+  const { modalProps } = useModal();
+  const { dialogProps } = useDialog({}, wrapperRef);
+  const cancelButtonRef = useRef<HTMLButtonElement>(null);
+  const cancelButton = useButton({ onPress: props.onClose }, cancelButtonRef);
+  const l10n = getL10n();
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Modal"
-      className={styles.modalOverlay}
-    >
-      <div className={styles.modal}>
-        <div className={styles.modalContent}>
-          {props.content}
+    <div className={styles.modalUnderlay} {...underlayProps}>
+      <FocusScope contain restoreFocus autoFocus>
+        <div
+          {...overlayProps}
+          {...dialogProps}
+          {...modalProps}
+          ref={wrapperRef}
+          className={`${styles.modal} ${inter.variable} ${metropolis.variable}`}
+        >
           <button
-            aria-label="Close modal"
-            className={styles.closeButton}
-            onClick={props.onClose}
+            className={styles.dismissButton}
+            {...cancelButton.buttonProps}
+            ref={cancelButtonRef}
           >
-            <CloseBtn alt="" width="14" height="14" />
+            <CloseBtn
+              alt={l10n.getString("modal-close-alt")}
+              width="14"
+              height="14"
+            />
           </button>
+          <Image src={props.image.src} alt="" width="100" height="100" />
+          <div className={styles.modalContent}>
+            <h3>{props.headline}</h3>
+            <p>{props.body}</p>
+          </div>
+          {props.cta && (
+            <Button
+              type="primary"
+              content={props.cta.content}
+              onClick={props.cta.link}
+            />
+          )}
         </div>
-      </div>
+      </FocusScope>
     </div>
   );
 };

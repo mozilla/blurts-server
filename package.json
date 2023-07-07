@@ -73,7 +73,7 @@
     "patch-package": "^7.0.0",
     "pg": "^8.9.0",
     "react": "^18.2.0",
-    "react-aria": "^3.25.0",
+    "react-aria": "^3.26.0",
     "react-dom": "^18.2.0",
     "react-stately": "^3.23.0",
     "uuid": "^9.0.0"
