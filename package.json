@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
-    "build": "npx ts-node-esm src/scripts/build/createLocationAutocompleteData/index.ts && next build",
+    "build": "npm run location-data && next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
@@ -21,7 +21,8 @@
     "prepare": "husky install",
     "postinstall": "patch-package",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "create-location-data": "ts-node-esm src/scripts/build/createLocationAutocompleteData/index.ts"
   },
   "nodemonConfig": {
     "watch": [
