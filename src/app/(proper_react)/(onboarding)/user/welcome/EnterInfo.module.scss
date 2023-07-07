@@ -36,7 +36,7 @@
 }
 
 .inputLabel {
-  font: 600 15px / 1.5em var(--font-inter), sans-serif;
+  font-weight: 600;
   margin-bottom: $spacing-sm;
 }
 
@@ -44,7 +44,7 @@
   background: inherit;
   bottom: 0;
   color: $color-error;
-  font: $text-body-sm;
+  font: $text-body-xs;
   left: 0;
   margin: 0 $spacing-sm;
   padding: 0 $spacing-sm;
