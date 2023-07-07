@@ -51,3 +51,15 @@
   position: absolute;
   transform: translateY(calc(100% - 0.85em));
 }
+
+.infoList {
+  columns: 2;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: $spacing-lg;
+}
+
+.infoItem {
+  padding: $spacing-sm 0;
+}

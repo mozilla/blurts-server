@@ -106,7 +106,7 @@ export const GetStarted = (props: Props) => {
                     </p>
                   </li>
                 </ol>
-                <div className={viewStyles.stepButtonWrapper}>
+                <div className={viewStyles.confirmButtonWrapper}>
                   <Button
                     type="primary"
                     onClick={() => explainerDialogState.close()}

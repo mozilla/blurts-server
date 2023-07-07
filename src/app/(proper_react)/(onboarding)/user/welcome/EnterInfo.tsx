@@ -41,7 +41,7 @@ function TextField(props: AriaTextFieldProps) {
   return (
     <div className={enterInfoStyles.input}>
       <label {...labelProps} className={enterInfoStyles.inputLabel}>
-        {label}
+        {label}*
       </label>
       <input
         {...inputProps}
@@ -64,8 +64,8 @@ export const EnterInfo = (props: Props) => {
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
   const [location, setLocation] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
 
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
 
@@ -85,44 +85,48 @@ export const EnterInfo = (props: Props) => {
 
   const userDetailsData = [
     {
-      label: "First name *",
+      label: "First name",
       key: "firstName",
       type: "text",
       placeholder: "Enter your first name",
       value: firstName,
+      displayValue: firstName,
       errorMessage: "Required to complete the scan",
       isValid: firstName !== "",
       onChange: setFirstName,
     },
     {
-      label: "Last name *",
+      label: "Last name",
       key: "lastName",
       type: "text",
       placeholder: "Enter your last name",
       value: lastName,
+      displayValue: lastName,
       errorMessage: "Required to complete the scan",
       isValid: lastName !== "",
       onChange: setLastName,
     },
     {
-      label: "City and state *",
+      label: "City and state",
       key: "location",
       type: "text",
       placeholder: "Enter your city and state",
-      value: dateOfBirth,
-      errorMessage: "Required to complete the scan",
-      isValid: dateOfBirth !== "",
-      onChange: setDateOfBirth,
-    },
-    {
-      label: "Date of birth *",
-      key: "dateOfBirth",
-      type: "date",
-      placeholder: "Enter your date of birth",
       value: location,
+      displayValue: location,
       errorMessage: "Required to complete the scan",
       isValid: location !== "",
       onChange: setLocation,
+    },
+    {
+      label: "Date of birth",
+      key: "dateOfBirth",
+      type: "date",
+      placeholder: "",
+      value: dateOfBirth,
+      displayValue: new Date(dateOfBirth).toLocaleDateString("en-US"),
+      errorMessage: "Required to complete the scan",
+      isValid: dateOfBirth !== "",
+      onChange: setDateOfBirth,
     },
   ];
 
@@ -211,10 +215,23 @@ export const EnterInfo = (props: Props) => {
 
                 <p>
                   We fully encrypt data you share with us, and we are committed
-                  to protecting it. Read our Privacy Policy, and learn more
-                  about how we protect your privacy.
+                  to protecting it. Read our{" "}
+                  <a
+                    href="https://www.mozilla.org/privacy/firefox-monitor"
+                    target="_blank"
+                  >
+                    Privacy Policy
+                  </a>
+                  , and{" "}
+                  <a
+                    href="https://www.mozilla.org/firefox/privacy"
+                    target="_blank"
+                  >
+                    learn more about how we protect your privacy
+                  </a>
+                  .
                 </p>
-                <div className={viewStyles.stepButtonWrapper}>
+                <div className={viewStyles.confirmButtonWrapper}>
                   <Button
                     type="primary"
                     onClick={() => explainerDialogState.close()}
@@ -241,13 +258,15 @@ export const EnterInfo = (props: Props) => {
                 To ensure accurate results, please confirm this is your correct
                 information. You won’t be able to update this later.
               </p>
-              <ul className={viewStyles.dialogContents}>
-                {userDetailsData.map(({ key, label, value }) => (
-                  <li key={key}>
-                    {label} <strong>{value}</strong>
-                  </li>
-                ))}
-              </ul>
+              <div className={viewStyles.dialogContents}>
+                <ul className={enterInfoStyles.infoList}>
+                  {userDetailsData.map(({ key, label, displayValue }) => (
+                    <li key={key} className={enterInfoStyles.infoItem}>
+                      {label}: <strong>{displayValue}</strong>
+                    </li>
+                  ))}
+                </ul>
+              </div>
               <div className={viewStyles.stepButtonWrapper}>
                 <Button
                   type="secondary"
