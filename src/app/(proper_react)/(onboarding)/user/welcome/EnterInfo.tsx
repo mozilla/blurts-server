@@ -5,14 +5,14 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import {
   useOverlayTrigger,
   AriaTextFieldProps,
   useTextField,
 } from "react-aria";
-import howItWorksHero from "./images/welcome-how-it-works.svg";
+import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
 import { useL10n } from "../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../components/client/dialog/Dialog";
@@ -90,7 +90,7 @@ export const EnterInfo = (props: Props) => {
       type: "text",
       placeholder: "Enter your first name",
       value: firstName,
-      errorMessage: "Required to complete the scan.",
+      errorMessage: "Required to complete the scan",
       isValid: firstName !== "",
       onChange: setFirstName,
     },
@@ -100,7 +100,7 @@ export const EnterInfo = (props: Props) => {
       type: "text",
       placeholder: "Enter your last name",
       value: lastName,
-      errorMessage: "Required to complete the scan.",
+      errorMessage: "Required to complete the scan",
       isValid: lastName !== "",
       onChange: setLastName,
     },
@@ -110,7 +110,7 @@ export const EnterInfo = (props: Props) => {
       type: "text",
       placeholder: "Enter your city and state",
       value: dateOfBirth,
-      errorMessage: "Required to complete the scan.",
+      errorMessage: "Required to complete the scan",
       isValid: dateOfBirth !== "",
       onChange: setDateOfBirth,
     },
@@ -120,7 +120,7 @@ export const EnterInfo = (props: Props) => {
       type: "date",
       placeholder: "Enter your date of birth",
       value: location,
-      errorMessage: "Required to complete the scan.",
+      errorMessage: "Required to complete the scan",
       isValid: location !== "",
       onChange: setLocation,
     },
@@ -166,19 +166,66 @@ export const EnterInfo = (props: Props) => {
             {...explainerDialogTrigger.overlayProps}
             isDismissable={true}
           >
-            <Dialog title="Why do we need this?">
-              <div className={viewStyles.dialogContents}>Dialog content</div>
-              <div className={viewStyles.confirmButtonWrapper}>
-                <Button
-                  type="primary"
-                  onClick={() => explainerDialogState.close()}
-                  autoFocus={true}
-                  className={enterInfoStyles.startButton}
-                >
-                  {l10n.getString(
-                    "onboarding-get-started-how-it-works-dialog-confirm-label"
-                  )}
-                </Button>
+            <Dialog illustration={<Image src={whyWeNeedInfoHero} alt="" />}>
+              <div
+                className={`${viewStyles.dialogContents} ${enterInfoStyles.dialogContents}`}
+              >
+                <p>
+                  There’s a $240 billion industry of data brokers that expose
+                  and sell your personal information for a profit. They scrape
+                  your data from publicly available sources to create profiles
+                  that include your name(s), current and previous addresses,
+                  family member names, criminal history, and much much more.
+                </p>
+
+                <strong>
+                  To find your profiles on these sites, we use three key pieces
+                  of information:
+                </strong>
+
+                <ol className={viewStyles.list}>
+                  <li className={viewStyles.listItem}>
+                    <h4>Name</h4>
+                    <p>
+                      Your full legal name will help us find profiles of you,
+                      but your aliases or previous names may also appear in
+                      search results.
+                    </p>
+                  </li>
+                  <li className={viewStyles.listItem}>
+                    <h4>Location</h4>
+                    <p>
+                      Your current city and state will help us narrow down the
+                      results, but your past addresses may also appear in search
+                      results.
+                    </p>
+                  </li>
+                  <li className={viewStyles.listItem}>
+                    <h4>Date of birth</h4>
+                    <p>
+                      This will reduce chances of finding profiles of people
+                      with the same name as you.
+                    </p>
+                  </li>
+                </ol>
+
+                <p>
+                  We fully encrypt data you share with us, and we are committed
+                  to protecting it. Read our Privacy Policy, and learn more
+                  about how we protect your privacy.
+                </p>
+                <div className={viewStyles.stepButtonWrapper}>
+                  <Button
+                    type="primary"
+                    onClick={() => explainerDialogState.close()}
+                    autoFocus={true}
+                    className={viewStyles.startButton}
+                  >
+                    {l10n.getString(
+                      "onboarding-get-started-how-it-works-dialog-confirm-label"
+                    )}
+                  </Button>
+                </div>
               </div>
             </Dialog>
           </ModalOverlay>

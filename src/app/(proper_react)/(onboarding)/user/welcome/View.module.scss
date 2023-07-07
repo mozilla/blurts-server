@@ -263,6 +263,20 @@
     min-width: $content-xs;
     padding-block-start: $spacing-md;
   }
+
+  .list {
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: 0;
+
+    h4,
+    li::marker {
+      display: inline-block;
+      font-weight: 700;
+    }
+  }
 }
 
 .stepButtonWrapper {

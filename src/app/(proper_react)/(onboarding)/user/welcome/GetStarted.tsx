@@ -64,8 +64,8 @@ export const GetStarted = (props: Props) => {
               <div
                 className={`${viewStyles.dialogContents} ${getStartedStyles.dialogContents}`}
               >
-                <ol className={getStartedStyles.howItWorksList}>
-                  <li className={getStartedStyles.howItWorksEntry}>
+                <ol className={viewStyles.list}>
+                  <li className={viewStyles.listItem}>
                     <h4>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-heading"
@@ -81,7 +81,7 @@ export const GetStarted = (props: Props) => {
                       )}
                     </p>
                   </li>
-                  <li className={getStartedStyles.howItWorksEntry}>
+                  <li className={viewStyles.listItem}>
                     <h4>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step2-heading"
@@ -93,7 +93,7 @@ export const GetStarted = (props: Props) => {
                       )}
                     </p>
                   </li>
-                  <li className={getStartedStyles.howItWorksEntry}>
+                  <li className={viewStyles.listItem}>
                     <h4>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step3-heading"
