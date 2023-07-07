@@ -199,6 +199,10 @@ $layout-2xl: 192px;
 
 // Typeface
 // Title copy
+// We use `svw`  (rather than just `vw`) to ensure that the fonts look good even
+// when the viewport is at its smallest (e.g. when scrollbars are visible).
+// In most cases they'll snap to one of the clamped values though, so it
+// doesn't matter too much.
 $text-title-lg: 700 clamp(48px, 5svw, 56px) / clamp(48px, 5svw, 56px)
     var(--font-metropolis),
   sans-serif;
