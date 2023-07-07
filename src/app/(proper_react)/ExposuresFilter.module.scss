@@ -73,3 +73,10 @@
   width: 1px;
   white-space: nowrap;
 }
+
+.filterPopOver {
+  padding: $spacing-xl;
+  background: $color-white;
+  border-radius: $border-radius-sm;
+  box-shadow: $box-shadow-md;
+}

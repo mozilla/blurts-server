@@ -177,3 +177,4 @@ dashboard-exposures-filter-company = Company
 dashboard-exposures-filter-exposure-type = Exposure type
 dashboard-exposures-filter-date-found = Date found
 dashboard-exposures-filter-status = Status
+popover-open-filter-settings-alt = Select filters

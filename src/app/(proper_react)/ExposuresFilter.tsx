@@ -4,16 +4,22 @@
 
 import styles from "./ExposuresFilter.module.scss";
 import { FilterIcon, QuestionMarkCircle } from "../components/server/Icons";
-import { ReactElement, useState } from "react";
+import React, { ReactElement, useRef, useState } from "react";
 import { Modal } from "../components/client/Modal";
 import ModalImage from "../components/client/assets/modal-default-img.svg";
 import { useL10n } from "../hooks/l10n";
+import {
+  AriaPopoverProps,
+  Overlay,
+  useOverlayTrigger,
+  usePopover,
+} from "react-aria";
+import { OverlayTriggerState, useOverlayTriggerState } from "react-stately";
 
 export const ExposuresFilter = () => {
   const l10n = useL10n();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isFilterPopupOpen, setIsFilterPopupOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState<ReactElement | string>("");
   const [modalContent, setModalContent] = useState<ReactElement | string>("");
 
@@ -84,16 +90,30 @@ export const ExposuresFilter = () => {
     </div>
   );
 
+  const overlayTriggerState = useOverlayTriggerState({});
+  const filterBtnRef = useRef<HTMLButtonElement>(null);
+
+  const { overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    overlayTriggerState
+  );
+
+  console.log(overlayTriggerState);
   return (
     <>
       <div className={styles.filterHeaderWrapper}>
         <ul className={styles.filterHeaderList}>
           <li className={styles.hideOnMobile}>
             <button
-              aria-label={l10n.getString("modal-open-filter-settings-alt")}
-              onClick={
-                () => setIsFilterPopupOpen(true) // TODO: Build filter popup
-              }
+              ref={filterBtnRef}
+              onClick={() => {
+                if (overlayTriggerState.isOpen) {
+                  overlayTriggerState.close();
+                } else {
+                  overlayTriggerState.open();
+                }
+              }}
+              aria-label={l10n.getString("popover-open-filter-settings-alt")}
             >
               <FilterIcon width="16" height="16" alt={""} />
             </button>
@@ -144,6 +164,47 @@ export const ExposuresFilter = () => {
             link: handleClose,
           }}
         />
+      )}
+
+      {overlayTriggerState.isOpen && (
+        <Popover state={overlayTriggerState} triggerRef={filterBtnRef}>
+          <div {...overlayProps}>Filter Content goes in here</div>
+        </Popover>
+      )}
+    </>
+  );
+};
+
+type PopoverProps = {
+  children: React.ReactNode;
+  state: OverlayTriggerState;
+} & Omit<AriaPopoverProps, "popoverRef">;
+
+const Popover = (props: PopoverProps) => {
+  const popoverRef = useRef<HTMLDivElement>(null);
+  const { popoverProps, underlayProps, placement } = usePopover(
+    {
+      ...props,
+      offset: 10,
+      crossOffset: 50,
+      popoverRef,
+    },
+    props.state
+  );
+
+  return (
+    <>
+      {props.state.isOpen && (
+        <Overlay>
+          <div {...underlayProps} className="underlay" />
+          <div
+            {...popoverProps}
+            ref={popoverRef}
+            className={styles.filterPopOver}
+          >
+            {props.children}
+          </div>
+        </Overlay>
       )}
     </>
   );
