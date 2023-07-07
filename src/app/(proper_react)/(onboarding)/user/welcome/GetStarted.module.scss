@@ -45,12 +45,22 @@
 .dialogContents {
   display: flex;
   flex-direction: column;
-  gap: $spacing-lg;
+  gap: $spacing-2xl;
   font: $text-body-md;
   color: $color-grey-50;
 
-  h4 {
-    font-weight: 700;
+  .howItWorksList {
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: 0;
+
+    h4,
+    li::marker {
+      display: inline-block;
+      font-weight: 700;
+    }
   }
 
   .confirmButtonWrapper {
@@ -58,6 +68,5 @@
     display: flex;
     flex-direction: column;
     min-width: $content-xs;
-    padding-block-start: $spacing-md;
   }
 }

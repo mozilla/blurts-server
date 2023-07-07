@@ -60,46 +60,48 @@ export const GetStarted = (props: Props) => {
               illustration={<Image src={howItWorksHero} alt="" />}
             >
               <div className={styles.dialogContents}>
-                <div className={styles.howItWorksEntry}>
-                  <h4>
-                    {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step1-heading"
-                    )}
-                  </h4>
-                  <p>
-                    {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step1-content",
-                      {
-                        // TODO: Can we get this value from the OneRep API?
-                        dataBrokerCount: 190,
-                      }
-                    )}
-                  </p>
-                </div>
-                <div className={styles.howItWorksEntry}>
-                  <h4>
-                    {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step2-heading"
-                    )}
-                  </h4>
-                  <p>
-                    {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step2-content"
-                    )}
-                  </p>
-                </div>
-                <div className={styles.howItWorksEntry}>
-                  <h4>
-                    {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step3-heading"
-                    )}
-                  </h4>
-                  <p>
-                    {l10n.getString(
-                      "onboarding-get-started-how-it-works-dialog-step3-content"
-                    )}
-                  </p>
-                </div>
+                <ol className={styles.howItWorksList}>
+                  <li className={styles.howItWorksEntry}>
+                    <h4>
+                      {l10n.getString(
+                        "onboarding-get-started-how-it-works-dialog-step1-heading"
+                      )}
+                    </h4>
+                    <p>
+                      {l10n.getString(
+                        "onboarding-get-started-how-it-works-dialog-step1-content",
+                        {
+                          // TODO: Can we get this value from the OneRep API?
+                          dataBrokerCount: 190,
+                        }
+                      )}
+                    </p>
+                  </li>
+                  <li className={styles.howItWorksEntry}>
+                    <h4>
+                      {l10n.getString(
+                        "onboarding-get-started-how-it-works-dialog-step2-heading"
+                      )}
+                    </h4>
+                    <p>
+                      {l10n.getString(
+                        "onboarding-get-started-how-it-works-dialog-step2-content"
+                      )}
+                    </p>
+                  </li>
+                  <li className={styles.howItWorksEntry}>
+                    <h4>
+                      {l10n.getString(
+                        "onboarding-get-started-how-it-works-dialog-step3-heading"
+                      )}
+                    </h4>
+                    <p>
+                      {l10n.getString(
+                        "onboarding-get-started-how-it-works-dialog-step3-content"
+                      )}
+                    </p>
+                  </li>
+                </ol>
                 <div className={styles.confirmButtonWrapper}>
                   <Button
                     type="primary"
