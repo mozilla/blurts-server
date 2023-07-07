@@ -3,9 +3,9 @@
 .dialog {
   background-color: $color-white;
   position: relative;
-  width: 95%;
+  width: calc(100% - (2 * $spacing-md));
   max-width: $content-lg;
-  max-height: 95%;
+  max-height: calc(100% - (2 * $spacing-md));
   overflow-y: auto;
   display: flex;
   flex-direction: column;

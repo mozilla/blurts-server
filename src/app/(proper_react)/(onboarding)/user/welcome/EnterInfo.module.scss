@@ -3,7 +3,7 @@
 .inputContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: $spacing-xl;
+  gap: $spacing-lg $spacing-xl;
   padding: $spacing-lg 0;
   width: 100%;
 
@@ -13,6 +13,7 @@
 }
 
 .input {
+  background: $color-white;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -22,7 +23,7 @@
   border: 1px solid $color-grey-30;
   border-radius: $border-radius-sm;
   color: $color-black;
-  padding: $spacing-sm;
+  padding: calc($spacing-sm * 1.75) $spacing-md;
 
   &::placeholder,
   &.noValue {
@@ -31,11 +32,6 @@
 
   &.hasError {
     border-color: $color-error;
-
-    &::placeholder,
-    &.noValue {
-      color: $color-error;
-    }
   }
 }
 
@@ -45,9 +41,13 @@
 }
 
 .inputMessage {
+  background: inherit;
   bottom: 0;
   color: $color-error;
   font: $text-body-sm;
+  left: 0;
+  margin: 0 $spacing-sm;
+  padding: 0 $spacing-sm;
   position: absolute;
-  transform: translateY(calc(100% + $spacing-xs));
+  transform: translateY(calc(100% - 0.85em));
 }

@@ -1,0 +1,17 @@
+@import "../../../../tokens";
+
+.dialogContents {
+  .howItWorksList {
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: 0;
+
+    h4,
+    li::marker {
+      display: inline-block;
+      font-weight: 700;
+    }
+  }
+}
