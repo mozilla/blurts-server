@@ -5,7 +5,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export async function GET(req: NextRequest) {
+export function GET(req: NextRequest) {
   try {
     // NOTE: the email address passed here cannot
     // be trusted, we must also check that the
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
     const _email = searchParams.get("email");
 
     return NextResponse.redirect(
-      `${process.env.SERVER_URL}/user/breaches`,
+      `${process.env.SERVER_URL ?? ""}/user/breaches`,
       302
     );
   } catch (e) {

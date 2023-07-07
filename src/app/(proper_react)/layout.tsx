@@ -7,7 +7,7 @@ import { getL10nBundles, getLocale } from "../functions/server/l10n";
 import { L10nProvider } from "../../contextProviders/localization";
 import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 
-export default async function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
 
   return (

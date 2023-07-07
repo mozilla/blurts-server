@@ -7,11 +7,7 @@ import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
 import { getL10nBundles } from "../functions/server/l10n";
 
-export default async function MigrationLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function MigrationLayout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   return (
     <L10nProvider bundleSources={l10nBundles}>

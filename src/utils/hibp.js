@@ -337,6 +337,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
 /**
  * @param {any[]} allBreaches
  * @param {string} breachName
+ * @returns {import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach}
  */
 function getBreachByName (allBreaches, breachName) {
   breachName = breachName.toLowerCase()

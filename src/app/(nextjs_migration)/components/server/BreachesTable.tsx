@@ -15,10 +15,10 @@ function createResolveSteps(breach: any) {
   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(
     ([key, value]: [string, any]) => `
     <li class="resolve-list-item">
-      <input name="${breach.Id}" value="${key}" type="checkbox" ${
+      <input name="${breach.Id as string}" value="${key}" type="checkbox" ${
       checkedArr.includes(key) ? "checked" : ""
     }>
-      <p>${value.header}<br><i>${value.body}</i></p>
+      <p>${value.header as string}<br><i>${value.body as string}</i></p>
     </li>
    `
   );
@@ -157,7 +157,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
             __html: `
               <div class="zero-state no-breaches-message">
                 <img src="${
-                  ImageBreachesNone.src
+                  ImageBreachesNone.src as string
                 }" alt="" width="136" height="102" />
                 <h2>${l10n.getString("breaches-none-headline")}</h2>
                 <p>
@@ -190,7 +190,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
             __html: `
               <div class="zero-state all-breaches-resolved-message">
                 <img
-                  src="${ImageBreachesAllResolved.src}"
+                  src="${ImageBreachesAllResolved.src as string}"
                   alt=""
                   width="136"
                   height="102"
