@@ -199,18 +199,29 @@ $layout-2xl: 192px;
 
 // Typeface
 // Title copy
-$text-title-lg: 700 56px / 56px var(--font-metropolis), sans-serif;
-$text-title-md: 700 48px / 48px var(--font-metropolis), sans-serif;
-$text-title-sm: 700 38px / 40px var(--font-metropolis), sans-serif;
-$text-title-xs: 700 28px / 30px var(--font-metropolis), sans-serif;
-$text-title-2xs: 700 24px / 26px var(--font-metropolis), sans-serif;
-$text-title-3xs: 700 18px / 20px var(--font-metropolis), sans-serif;
+$text-title-lg: 700 clamp(48px, 5svw, 56px) / clamp(48px, 5svw, 56px)
+    var(--font-metropolis),
+  sans-serif;
+$text-title-md: 700 clamp(38px, 4svw, 48px) / clamp(40px, 4svw, 48px)
+    var(--font-metropolis),
+  sans-serif;
+$text-title-sm: 700 clamp(28px, 3svw, 38px) / clamp(30px, 3.16svw, 40px)
+    var(--font-metropolis),
+  sans-serif;
+$text-title-xs: 700 clamp(24px, 2.5svw, 28px) / clamp(26px, 2.7svw, 30px)
+    var(--font-metropolis),
+  sans-serif;
+$text-title-2xs: 700 clamp(20px, 2svw, 24px) / clamp(20px, 2.2svw, 26px)
+    var(--font-metropolis),
+  sans-serif;
+$text-title-3xs: 700 clamp(16px, 1.5svw, 18px) / 20px var(--font-metropolis),
+  sans-serif;
 
 // Body copy
-$text-body-xl: 400 21px / 32px var(--font-inter), sans-serif;
-$text-body-lg: 400 18px / 27px var(--font-inter), sans-serif;
-$text-body-md: 400 16px / 24px var(--font-inter), sans-serif;
-$text-body-sm: 400 14px / 21px var(--font-inter), sans-serif;
-$text-body-xs: 400 12px / 18px var(--font-inter), sans-serif;
+$text-body-xl: 400 clamp(18px, 2svw, 21px) / 1.5 var(--font-inter), sans-serif;
+$text-body-lg: 400 clamp(16px, 1.5svw, 18px) / 1.5 var(--font-inter), sans-serif;
+$text-body-md: 400 clamp(14px, 1.3svw, 16px) / 1.5 var(--font-inter), sans-serif;
+$text-body-sm: 400 clamp(12px, 1svw, 14px) / 1.5 var(--font-inter), sans-serif;
+$text-body-xs: 400 clamp(10px, 0.5svw, 12px) / 1.5 var(--font-inter), sans-serif;
 
 $tab-bar-height: 100px;
