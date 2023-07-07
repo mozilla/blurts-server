@@ -19,7 +19,10 @@ import { monthlyUnresolvedEmailPartial } from "../../../../../views/emails/email
 import { signupReportEmailPartial } from "../../../../../views/emails/emailSignupReport.js";
 
 export async function POST(req: NextRequest) {
-  const { emailId, recipient } = await req.json();
+  const { emailId, recipient } = (await req.json()) as {
+    emailId: string;
+    recipient: string;
+  };
   const l10n = getL10n();
 
   switch (emailId) {
@@ -89,6 +92,8 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// Leaving the `async` for now because of the commented-out `await`:
+// eslint-disable-next-line @typescript-eslint/require-await
 async function sendTestNotification(req: NextRequest, res: NextResponse) {
   // The test breach notification can be viewed in the public Mailinator inbox
   // as documented in the README:

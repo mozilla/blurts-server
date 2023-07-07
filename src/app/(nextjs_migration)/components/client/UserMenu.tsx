@@ -40,7 +40,7 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
         <img
           // The avatar should always be provided by FxA
           // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-          src={session.user?.fxa?.avatar!}
+          src={session.user?.fxa?.avatar}
           alt={l10n.getString("menu-button-alt")}
           height={46}
         />
@@ -79,7 +79,7 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
         </li>
         <li>
           <button
-            onClick={() => signOut({ callbackUrl: "/" })}
+            onClick={() => void signOut({ callbackUrl: "/" })}
             className="user-menu-link"
           >
             <Image alt="" src={SignOutIcon} />

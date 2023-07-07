@@ -14,10 +14,10 @@ export type Props = {
 export const UserMenu = (props: Props) => {
   // Placeholder to enable login/logout until we create an actual menu
   if (!props.session) {
-    return <button onClick={() => signIn("fxa")}>Sign in</button>;
+    return <button onClick={() => void signIn("fxa")}>Sign in</button>;
   }
 
   return (
-    <button onClick={() => signOut({ callbackUrl: "/" })}>Sign out</button>
+    <button onClick={() => void signOut({ callbackUrl: "/" })}>Sign out</button>
   );
 };

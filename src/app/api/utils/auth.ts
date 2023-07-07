@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest } from "next/server";
-import { AuthOptions } from "next-auth";
+import { AuthOptions, Profile } from "next-auth";
 import mozlog from "../../../utils/log.js";
 
 import AppConstants from "../../../appConstants.js";
@@ -65,16 +65,18 @@ export const authOptions: AuthOptions = {
       userinfo: {
         request: async (context) => {
           const response = await fetch(AppConstants.OAUTH_PROFILE_URI, {
-            headers: { Authorization: `Bearer ${context.tokens.access_token}` },
+            headers: {
+              Authorization: `Bearer ${context.tokens.access_token ?? ""}`,
+            },
           });
-          const userInfo = await response.json();
+          const userInfo = (await response.json()) as Profile;
           return userInfo;
         },
       },
       clientId: AppConstants.OAUTH_CLIENT_ID,
       clientSecret: AppConstants.OAUTH_CLIENT_SECRET,
       // Parse data returned by FxA's /userinfo/
-      profile: async (profile: FxaProfile) => {
+      profile: (profile: FxaProfile) => {
         log.debug("fxa-confirmed-profile-data", profile);
         return {
           id: profile.uid,
@@ -171,7 +173,7 @@ export const authOptions: AuthOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    session({ session, token }) {
       if (token.fxa) {
         session.user.fxa = {
           locale: token.fxa.locale,

@@ -5,7 +5,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { vers } from "../../controllers/dockerflow.js";
 
-export async function GET(
+export function GET(
   req: NextRequest,
   { params }: { params: { slug: string } }
 ) {

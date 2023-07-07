@@ -102,7 +102,9 @@ export async function PUT(req: NextRequest) {
       if (!isSubset) {
         return NextResponse.json({
           success: false,
-          message: `Error: the resolutionChecked param contains more than allowed data types: ${resolutionsChecked}`,
+          message: `Error: the resolutionChecked param contains more than allowed data types: [${resolutionsChecked.join(
+            ", "
+          )}]`,
         });
       }
 

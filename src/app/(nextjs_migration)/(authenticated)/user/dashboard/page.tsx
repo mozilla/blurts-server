@@ -4,6 +4,6 @@
 
 import { redirect } from "next/navigation";
 
-export default async function UserDashboard() {
+export default function UserDashboard() {
   redirect("/user/breaches");
 }

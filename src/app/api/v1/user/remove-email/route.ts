@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
       }
 
       await removeOneSecondaryEmail(emailId);
-      deleteResolutionsWithEmail(
+      await deleteResolutionsWithEmail(
         existingEmail.subscriber_id,
         existingEmail.email
       );

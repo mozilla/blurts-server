@@ -9,7 +9,7 @@ import HeroImage from "../../../../client/images/exposure-scan-hero.svg";
 import NoBreachesImage from "../../../../client/images/breaches-none.svg";
 import { getL10n } from "../../../functions/server/l10n";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   const l10n = getL10n();
   return {
     title: l10n.getString("breach-scan-meta-title"),
