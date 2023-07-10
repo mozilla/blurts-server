@@ -34,7 +34,7 @@ declare module "next-auth" {
         subscriptions: Array<string>;
       };
       subscriber?: SubscriberRow;
-    } & DefaultSession["user"];
+    } & DefaultSession["user"] & { email: string };
   }
 }
 

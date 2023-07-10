@@ -6,11 +6,14 @@ import Image from "next/image";
 import Script from "next/script";
 import { getServerSession } from "next-auth";
 import { headers } from "next/headers";
-import { CircleChartProps, UserBreaches } from "./breaches.d";
+import { CircleChartProps } from "./breaches.d";
 
 import AppConstants from "../../../../../appConstants.js";
 import { getL10n } from "../../../../functions/server/l10n";
-import { getUserBreaches } from "../../../../functions/server/getUserBreaches";
+import {
+  getUserBreaches,
+  UserBreaches,
+} from "../../../../functions/server/getUserBreaches";
 import { authOptions } from "../../../../api/utils/auth";
 
 import "../../../../../client/css/partials/breaches.css";

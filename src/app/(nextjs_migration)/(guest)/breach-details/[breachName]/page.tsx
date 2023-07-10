@@ -6,14 +6,13 @@ import Image, { StaticImageData } from "next/image";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
 import { getL10n, getLocale } from "../../../../functions/server/l10n";
-import { getBreachByName } from "../../../../../utils/hibp";
+import { HibpLikeDbBreach, getBreachByName } from "../../../../../utils/hibp";
 import {
   getAllPriorityDataClasses,
   getAllGenericRecommendations,
 } from "../../../../../utils/recommendations";
 import { BreachLogo } from "../../../../components/server/BreachLogo";
 import { getBreaches } from "../../../../functions/server/getBreaches";
-import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";
 import glyphPassword from "../../../../../client/images/passwords.svg";
@@ -262,7 +261,7 @@ function makeBreachDetail(
   );
 }
 
-function getBreachCategory(breach: Breach) {
+function getBreachCategory(breach: HibpLikeDbBreach) {
   const dataAggregators = [
     "Exactis",
     "Apollo",
@@ -284,7 +283,7 @@ function getBreachCategory(breach: Breach) {
   return "data-aggregator-breach";
 }
 
-function compareBreachDates(breach: Breach) {
+function compareBreachDates(breach: HibpLikeDbBreach) {
   const breachDate = new Date(breach.BreachDate);
   const addedDate = new Date(breach.AddedDate);
   const timeDiff = Math.abs(breachDate.getTime() - addedDate.getTime());
@@ -295,7 +294,7 @@ function compareBreachDates(breach: Breach) {
   return false;
 }
 function getSortedDataClasses(
-  breach: Breach,
+  breach: HibpLikeDbBreach,
   isUserBrowserFirefox = false,
   isUserLocaleEnUs = false,
   isUserLocalEn = false,
@@ -332,7 +331,7 @@ function getSortedDataClasses(
   return sortedDataClasses;
 }
 
-function makeDataSection(breach: Breach) {
+function makeDataSection(breach: HibpLikeDbBreach) {
   const dataClasses = getSortedDataClasses(breach);
 
   const output = dataClasses.priority.map((dataClass, dataIndex) => (
@@ -358,7 +357,7 @@ function makeDataSection(breach: Breach) {
   );
 }
 
-function makeRecommendationCards(breach: Breach) {
+function makeRecommendationCards(breach: HibpLikeDbBreach) {
   const l10n = getL10n();
   const dataClasses = getSortedDataClasses(breach);
 
