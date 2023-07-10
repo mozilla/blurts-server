@@ -221,11 +221,50 @@ $text-title-2xs: 700 clamp(20px, 2svw, 24px) / clamp(20px, 2.2svw, 26px)
 $text-title-3xs: 700 clamp(16px, 1.5svw, 18px) / 20px var(--font-metropolis),
   sans-serif;
 
+.textTitleLg {
+  font: $text-title-lg;
+}
+.textTitleMd {
+  font: $text-title-md;
+}
+.textTitleSm {
+  font: $text-title-sm;
+}
+.textTitleXs {
+  font: $text-title-xs;
+}
+.textTitle2xs {
+  font: $text-title-2xs;
+}
+.textTitle3xs {
+  font: $text-title-3xs;
+}
+
 // Body copy
 $text-body-xl: 400 clamp(18px, 2svw, 21px) / 1.5 var(--font-inter), sans-serif;
 $text-body-lg: 400 clamp(16px, 1.5svw, 18px) / 1.5 var(--font-inter), sans-serif;
 $text-body-md: 400 clamp(14px, 1.3svw, 16px) / 1.5 var(--font-inter), sans-serif;
 $text-body-sm: 400 clamp(12px, 1svw, 14px) / 1.5 var(--font-inter), sans-serif;
 $text-body-xs: 400 clamp(10px, 0.5svw, 12px) / 1.5 var(--font-inter), sans-serif;
+
+.textBodyXl {
+  font: $text-body-xl;
+}
+
+.textBodyLg {
+  font: $text-body-lg;
+}
+
+.textBodyMd {
+  font: $text-body-md;
+}
+
+.textBodySm {
+  font: $text-body-sm;
+}
+
+.textBodyXs {
+  font: $text-body-xs;
+}
 
 $tab-bar-height: 100px;
