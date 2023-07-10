@@ -8,16 +8,13 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import { useEffect, useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
-import {
-  useOverlayTrigger,
-  AriaTextFieldProps,
-  useTextField,
-} from "react-aria";
+import { useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
 import { useL10n } from "../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
+import { TextInputField } from "../../../../components/client/TextInputField";
 
 import enterInfoStyles from "./EnterInfo.module.scss";
 import viewStyles from "./View.module.scss";
@@ -27,38 +24,6 @@ export type Props = {
   onGoBack: () => void;
   user: Session["user"];
 };
-
-// TODO: Move into separate component and add to storybook
-function TextField(props: AriaTextFieldProps) {
-  const inputRef = useRef(null);
-  const { label, value } = props;
-  const { errorMessageProps, inputProps, labelProps } = useTextField(
-    props,
-    inputRef
-  );
-  const { errorMessage, validationState } = props;
-  const showError = errorMessage && validationState === "invalid";
-
-  return (
-    <div className={enterInfoStyles.input}>
-      <label {...labelProps} className={enterInfoStyles.inputLabel}>
-        {label}*
-      </label>
-      <input
-        {...inputProps}
-        ref={inputRef}
-        className={`${enterInfoStyles.inputField} ${
-          !value ? enterInfoStyles.noValue : ""
-        } ${showError ? enterInfoStyles.hasError : ""}`}
-      />
-      {showError && (
-        <div {...errorMessageProps} className={enterInfoStyles.inputMessage}>
-          {errorMessage}
-        </div>
-      )}
-    </div>
-  );
-}
 
 // TODO: Add more sophisticated for location data
 const getIsValidInfo = (value: string) => value !== "";
@@ -165,7 +130,6 @@ export const EnterInfo = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invalidInputs]);
 
-  // TODO: Move dialogs into its own component
   const WhyDoWeNeedInfoDialog = () => (
     <Dialog illustration={<Image src={whyWeNeedInfoHero} alt="" />}>
       <div
@@ -237,7 +201,6 @@ export const EnterInfo = (props: Props) => {
     </Dialog>
   );
 
-  // TODO: Move dialogs into its own component
   const ConfirmInfoDialog = () => (
     <Dialog
       title={l10n.getString("onboarding-enter-details-comfirm-dialog-title")}
@@ -300,10 +263,11 @@ export const EnterInfo = (props: Props) => {
             type,
             value,
           }) => (
-            <TextField
+            <TextInputField
               key={key}
               errorMessage={errorMessage}
               label={label}
+              isRequired={true}
               onChange={onChange}
               placeholder={placeholder}
               type={type}

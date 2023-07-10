@@ -14,7 +14,6 @@ import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
 
 import viewStyles from "./View.module.scss";
-import getStartedStyles from "./GetStarted.module.scss";
 
 export type Props = {
   onStart: () => void;
@@ -61,9 +60,7 @@ export const GetStarted = (props: Props) => {
               }
               illustration={<Image src={howItWorksHero} alt="" />}
             >
-              <div
-                className={`${viewStyles.dialogContents} ${getStartedStyles.dialogContents}`}
-              >
+              <div className={`${viewStyles.dialogContents}`}>
                 <ol className={viewStyles.list}>
                   <li className={viewStyles.listItem}>
                     <h4>
