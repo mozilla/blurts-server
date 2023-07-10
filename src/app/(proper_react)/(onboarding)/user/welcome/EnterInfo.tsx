@@ -164,25 +164,25 @@ export const EnterInfo = (props: Props) => {
         </ol>
 
         <p>
-          {l10n.getString(
-            "onboarding-enter-details-dialog-data-protection-text"
+          {l10n.getFragment(
+            "onboarding-enter-details-dialog-data-protection-text",
+            {
+              elems: {
+                privacy_policy_link: (
+                  <a
+                    href="https://www.mozilla.org/privacy/firefox-monitor"
+                    target="_blank"
+                  />
+                ),
+                privacy_protection_link: (
+                  <a
+                    href="https://www.mozilla.org/firefox/privacy"
+                    target="_blank"
+                  />
+                ),
+              },
+            }
           )}
-          {l10n.getFragment("exposure-card-description-data-breach-part-one", {
-            elems: {
-              privacy_policy_link: (
-                <a
-                  href="https://www.mozilla.org/privacy/firefox-monitor"
-                  target="_blank"
-                />
-              ),
-              privacy_protection_link: (
-                <a
-                  href="https://www.mozilla.org/firefox/privacy"
-                  target="_blank"
-                />
-              ),
-            },
-          })}
         </p>
 
         <div className={viewStyles.confirmButtonWrapper}>
