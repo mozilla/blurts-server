@@ -28,6 +28,7 @@ export type Props = {
   user: Session["user"];
 };
 
+// TODO: Move into separate component and add to storybook
 function TextField(props: AriaTextFieldProps) {
   const inputRef = useRef(null);
   const { label, value } = props;
@@ -59,6 +60,7 @@ function TextField(props: AriaTextFieldProps) {
   );
 }
 
+// TODO: Add more sophisticated for location data
 const getIsValidInfo = (value: string) => value !== "";
 
 export const EnterInfo = (props: Props) => {
@@ -163,6 +165,7 @@ export const EnterInfo = (props: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [invalidInputs]);
 
+  // TODO: Move dialogs into its own component
   const WhyDoWeNeedInfoDialog = () => (
     <Dialog illustration={<Image src={whyWeNeedInfoHero} alt="" />}>
       <div
@@ -234,6 +237,7 @@ export const EnterInfo = (props: Props) => {
     </Dialog>
   );
 
+  // TODO: Move dialogs into its own component
   const ConfirmInfoDialog = () => (
     <Dialog
       title={l10n.getString("onboarding-enter-details-comfirm-dialog-title")}
