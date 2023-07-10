@@ -6,20 +6,21 @@
 
 import { ReactNode, useRef } from "react";
 import { AriaTextFieldProps, useTextField } from "react-aria";
-import styles from "./TextInputField.module.scss";
+import styles from "./InputField.module.scss";
 
 export type Props = {
   children: ReactNode;
 };
 
-export const TextInputField = (props: AriaTextFieldProps) => {
+export const InputField = (props: AriaTextFieldProps) => {
   const { errorMessage, isRequired, label, validationState, value } = props;
   const inputRef = useRef(null);
   const { errorMessageProps, inputProps, labelProps } = useTextField(
     props,
     inputRef
   );
-  const showError = errorMessage && validationState === "invalid";
+  const isInvalid = validationState === "invalid";
+  const showError = errorMessage && isInvalid;
 
   return (
     <div className={styles.input}>
@@ -31,7 +32,7 @@ export const TextInputField = (props: AriaTextFieldProps) => {
         {...inputProps}
         ref={inputRef}
         className={`${styles.inputField} ${!value ? styles.noValue : ""} ${
-          showError ? styles.hasError : ""
+          isInvalid ? styles.hasError : ""
         }`}
       />
       {showError && (

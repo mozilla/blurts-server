@@ -14,7 +14,7 @@ import { useL10n } from "../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
-import { TextInputField } from "../../../../components/client/TextInputField";
+import { InputField } from "../../../../components/client/InputField";
 
 import enterInfoStyles from "./EnterInfo.module.scss";
 import viewStyles from "./View.module.scss";
@@ -263,7 +263,7 @@ export const EnterInfo = (props: Props) => {
             type,
             value,
           }) => (
-            <TextInputField
+            <InputField
               key={key}
               errorMessage={errorMessage}
               label={label}
