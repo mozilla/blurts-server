@@ -49,9 +49,7 @@ function loadSource(filename: string): string {
  */
 export function getL10nBundles(): LocaleData[] {
   const acceptLangHeader =
-    process.env.STORYBOOK === "true"
-      ? navigator.languages.join(",")
-      : headers().get("Accept-Language");
+    process.env.STORYBOOK === "true" ? "en" : headers().get("Accept-Language");
 
   const bundleSources: Record<string, string[]> = {};
 

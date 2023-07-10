@@ -13,6 +13,8 @@ main-nav-link-dashboard-label = Dashboard
 main-nav-link-faq-label = FAQs
 main-nav-link-faq-tooltip = Frequently asked questions
 
+mobile-menu-label = Main menu
+
 toolbar-app-picker-trigger-title = { -brand-mozilla } apps and services
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }
 toolbar-app-picker-product-relay = { -brand-relay }

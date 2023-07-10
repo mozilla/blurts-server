@@ -63,7 +63,10 @@ export const MobileShell = (props: Props) => {
         </div>
       </header>
       <div className={styles.nonHeader}>
-        <nav className={styles.mainMenuLayer}>
+        <nav
+          className={styles.mainMenuLayer}
+          aria-label={l10n.getString("mobile-menu-label")}
+        >
           <div className={styles.mainMenu}>
             <ul>
               <li>
