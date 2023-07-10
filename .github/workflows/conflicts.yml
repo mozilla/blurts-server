@@ -1,7 +1,5 @@
 name: No unresolved conflicts
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main, localization ]
 jobs:
