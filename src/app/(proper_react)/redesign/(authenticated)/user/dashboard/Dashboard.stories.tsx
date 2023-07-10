@@ -8,8 +8,8 @@ import { View as DashboardEl } from "./View";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
-import { getL10n } from "../../../../../functions/server/l10n";
 import { StateAbbr } from "../../../../../../utils/states";
+import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
@@ -67,7 +67,7 @@ const BreachMockItem: HibpLikeDbBreach = {
 
 export const Dashboard: Story = {
   render: () => (
-    <Shell l10n={getL10n()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={{

@@ -4,56 +4,12 @@
 
 import { it, expect } from "@jest/globals";
 import { render } from "@testing-library/react";
+import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
-import { View } from "./View";
-import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
-import { L10nProvider } from "../../../../../../contextProviders/localization";
+import Meta, { Dashboard } from "./Dashboard.stories";
 
 it("passes the axe accessibility test suite", async () => {
-  const BreachMockItem: HibpLikeDbBreach = {
-    AddedDate: new Date("2023-07-10"),
-    BreachDate: "11/09/23",
-    DataClasses: [],
-    Description: "",
-    Domain: "",
-    Id: 0,
-    IsFabricated: false,
-    IsMalware: false,
-    IsRetired: false,
-    IsSensitive: false,
-    IsSpamList: false,
-    IsVerified: false,
-    LogoPath: "",
-    ModifiedDate: new Date("2023-07-10"),
-    Name: "",
-    PwnCount: 0,
-    Title: "Twitter",
-  };
-
-  const { container } = render(
-    <L10nProvider bundleSources={[]}>
-      <View
-        user={{ email: "example@example.com" }}
-        userBreaches={{
-          emailVerifiedCount: 0,
-          emailTotalCount: 0,
-          emailSelectIndex: 0,
-          breachesData: {
-            unverifiedEmails: [],
-            verifiedEmails: [
-              {
-                breaches: [BreachMockItem],
-                email: "test@example.com",
-                id: 0,
-                primary: true,
-                verified: true,
-              },
-            ],
-          },
-        }}
-        locale={"en"}
-      />
-    </L10nProvider>
-  );
+  const ComposedDashboard = composeStory(Dashboard, Meta);
+  const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
