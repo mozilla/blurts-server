@@ -13,7 +13,7 @@ import LockImage from "../../../client/images/landing-lock@2x.webp";
 import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
 
-export default async function Home() {
+export default function Home() {
   const l10n = getL10n();
 
   return (

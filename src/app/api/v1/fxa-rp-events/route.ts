@@ -37,16 +37,16 @@ const getJwtPubKey = async () => {
         "Content-Type": "application/json",
       },
     });
-    const { keys } = await response.json();
+    const { keys } = (await response.json()) as { keys: jwkToPem.JWK[] };
     console.info(
       "getJwtPubKey",
       `fetched jwt public keys from: ${jwtKeyUri} - ${keys.length}`
     );
     return keys;
-  } catch (e) {
+  } catch (e: unknown) {
     console.error("getJwtPubKey", `Could not get JWT public key: ${jwtKeyUri}`);
     captureException(
-      new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e}`)
+      new Error(`Could not get JWT public key: ${jwtKeyUri} - ${e as string}`)
     );
   }
 };
@@ -64,7 +64,7 @@ const authenticateFxaJWT = async (req: NextRequest) => {
   // Verify we have a key for this kid, this assumes that you have fetched
   // the publicJwks from FxA and put both them in an Array.
   const publicJwks = await getJwtPubKey();
-  const jwk = publicJwks[0];
+  const jwk = publicJwks?.[0];
   if (!jwk) {
     throw new Error("No public jwk found");
   }
@@ -118,7 +118,9 @@ export async function POST(request: NextRequest) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     console.error("fxaRpEvents", decodedJWT);
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "events", ${decodedJWT}`
+      `fxaRpEvents: decodedJWT is missing attribute "events", ${
+        decodedJWT as unknown as string
+      }`
     );
     return NextResponse.json(
       {
@@ -133,7 +135,9 @@ export async function POST(request: NextRequest) {
   if (!fxaUserId) {
     // capture an exception in Sentry only. Throwing error will trigger FXA retry
     captureMessage(
-      `fxaRpEvents: decodedJWT is missing attribute "sub", ${decodedJWT}`
+      `fxaRpEvents: decodedJWT is missing attribute "sub", ${
+        decodedJWT as unknown as string
+      }`
     );
     return NextResponse.json(
       {

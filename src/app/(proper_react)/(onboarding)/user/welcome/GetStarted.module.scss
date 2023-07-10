@@ -1,0 +1,68 @@
+@import "../../../../tokens";
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-md;
+
+  h1 {
+    font: $text-title-2xs;
+  }
+
+  .explainerTrigger {
+    background-color: transparent;
+    border-style: none;
+    color: $color-blue-50;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-blue-70;
+    }
+  }
+
+  .startButtonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    padding-block: $layout-sm;
+
+    @media screen and (min-width: $screen-sm) {
+      padding-block-start: $layout-lg;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.dialogContents {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-2xl;
+  font: $text-body-md;
+  color: $color-grey-50;
+
+  .howItWorksList {
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: 0;
+
+    h4,
+    li::marker {
+      display: inline-block;
+      font-weight: 700;
+    }
+  }
+
+  .confirmButtonWrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: $content-xs;
+  }
+}

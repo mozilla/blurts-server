@@ -17,7 +17,9 @@ export const PageLink = (props: Props) => {
   const pathName = usePathname();
   const activeClassSuffix = pathName === otherProps.href ? activeClassName : "";
 
-  const className = `${otherProps.className ?? ""} ${activeClassSuffix}`.trim();
+  const className = `${otherProps.className ?? ""} ${
+    activeClassSuffix ?? ""
+  }`.trim();
 
   return <Link {...otherProps} className={className} />;
 };

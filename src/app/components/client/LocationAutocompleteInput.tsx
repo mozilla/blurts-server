@@ -31,7 +31,7 @@ const getLocationSuggestions = async ({
     }
 
     const locationResults = await response.json();
-    return locationResults;
+    return locationResults as SearchLocationResults;
   } catch (_) {
     return null;
   }
@@ -58,11 +58,13 @@ export const LocationAutocompleteInput = () => {
       getLocationSuggestions({
         searchParams,
         abortController: abortController,
-      }).then((data) => {
-        if (data) {
-          setLocationSuggestions(data.results);
-        }
-      });
+      })
+        .then((data) => {
+          if (data) {
+            setLocationSuggestions(data.results);
+          }
+        })
+        .catch((error) => console.error(error));
     } else {
       setLocationSuggestions([]);
     }

@@ -26,9 +26,11 @@ export interface SearchLocationResults {
   results: MatchingLocations;
 }
 
-async function getLocationsByQuery(searchQuery: string) {
+function getLocationsByQuery(searchQuery: string) {
   if (!locationData) {
-    console.error("No location data available.");
+    throw new Error(
+      "No location data available: You may need to run `npm run create-location-data`."
+    );
   }
 
   const locationNames = locationData.data.map((location: RelevantLocation) => {
@@ -60,10 +62,11 @@ async function getLocationsByQuery(searchQuery: string) {
   const info = fuzzySearch.info(locationIndexes, locationNames, searchQuery);
   const order = fuzzySearch.sort(info, locationNames, searchQuery);
   const results = locationIndexes.map(
-    (locationIndex) => locationData.data[locationIndex]
+    (locationIndex: number) =>
+      locationData.data[locationIndex] as RelevantLocation
   );
 
-  const resultsOrdered = order.map((orderIndex) => results[orderIndex]);
+  const resultsOrdered = order.map((orderIndex: number) => results[orderIndex]);
   // Split and only sort the first x percentage of results by population.
   // The motivation behind this is to improve the score for matches but not all
   // of them in order to not move up weak ones.
@@ -74,25 +77,28 @@ async function getLocationsByQuery(searchQuery: string) {
   const resultsSortedByPopulation = [
     ...resultsOrdered
       .slice(0, locationSplitIndex)
-      .sort((a, b) => Number(b.population) - Number(a.population)),
+      .sort(
+        (a: RelevantLocation, b: RelevantLocation) =>
+          Number(b.population) - Number(a.population)
+      ),
     ...resultsOrdered.slice(locationSplitIndex + 1),
   ];
 
   return resultsSortedByPopulation;
 }
 
-async function getLocationsResults({
+function getLocationsResults({
   searchQuery,
   config = {
     minQueryLength: 1,
     maxResults: 5,
   },
-}: SearchLocationParams): Promise<SearchLocationResults> {
+}: SearchLocationParams): SearchLocationResults {
   const { minQueryLength, maxResults } = config;
 
   const matchingLocations =
     searchQuery && searchQuery.length >= minQueryLength
-      ? await getLocationsByQuery(searchQuery)
+      ? getLocationsByQuery(searchQuery)
       : [];
 
   const locationsResults =
@@ -109,7 +115,7 @@ export async function POST(request: NextRequest) {
     const body: SearchLocationParams = await request.json();
     const { searchQuery, config } = body;
 
-    const results = await getLocationsResults({
+    const results = getLocationsResults({
       searchQuery,
       config,
     });

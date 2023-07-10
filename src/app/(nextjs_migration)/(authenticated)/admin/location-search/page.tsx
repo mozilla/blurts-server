@@ -4,7 +4,7 @@
 
 import { LocationAutocompleteInput } from "../../../../components/client/LocationAutocompleteInput";
 
-export default async function LocationSearchPage() {
+export default function LocationSearchPage() {
   return (
     <section>
       <h1>Location search</h1>

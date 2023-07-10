@@ -134,7 +134,7 @@ function getPreviewOptions(currentTemplateKey: string, data: any) {
       value='${templateKey}'
       ${currentTemplateKey === templateKey ? "selected" : ""}
     >
-      ${data[templateKey].label}
+      ${data[templateKey].label as string}
     </option>
   `
     )

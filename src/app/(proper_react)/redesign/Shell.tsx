@@ -6,12 +6,12 @@ import { ReactNode } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./Shell.module.scss";
-import monitorLogo from "./images/monitor-logo.webp";
-import mozillaLogo from "./images/mozilla-logo.svg";
+import monitorLogo from "../images/monitor-logo.webp";
+import mozillaLogo from "../images/mozilla-logo.svg";
 import { MobileShell } from "./MobileShell";
 import Link from "next/link";
 import { PageLink } from "./PageLink";
-import { ExtendedReactLocalization } from "../hooks/l10n";
+import { ExtendedReactLocalization } from "../../hooks/l10n";
 
 export type Props = {
   l10n: ExtendedReactLocalization;

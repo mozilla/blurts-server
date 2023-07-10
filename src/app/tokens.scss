@@ -214,3 +214,20 @@ $text-body-sm: 400 14px / 21px var(--font-inter), sans-serif;
 $text-body-xs: 400 12px / 18px var(--font-inter), sans-serif;
 
 $tab-bar-height: 100px;
+
+@mixin visually-hidden {
+  // These styles are taken from
+  // https://react-spectrum.adobe.com/react-aria/VisuallyHidden.html
+  // They keep an element accessible to screen readers, while making them
+  // invisible in the viewport.
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: 0 -1px -1px 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
