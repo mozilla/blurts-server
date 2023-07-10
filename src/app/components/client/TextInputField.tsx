@@ -10,17 +10,11 @@ import styles from "./TextInputField.module.scss";
 
 export type Props = {
   children: ReactNode;
-  errorMessage?: string;
-  isRequired?: boolean;
-  label: string;
-  validationState: string;
-  value: string;
 };
 
 export const TextInputField = (props: AriaTextFieldProps) => {
-  const inputRef = useRef(null);
   const { errorMessage, isRequired, label, validationState, value } = props;
-
+  const inputRef = useRef(null);
   const { errorMessageProps, inputProps, labelProps } = useTextField(
     props,
     inputRef
