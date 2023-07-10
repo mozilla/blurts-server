@@ -12,6 +12,7 @@ import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
 import type { UserBreaches } from "../../../../../functions/server/getUserBreaches";
 import { ExposureCard } from "../../../../../components/client/ExposureCard";
+import { ExposuresFilter } from "../../../../../components/client/ExposuresFilter";
 
 export type Props = {
   user: Session["user"];
@@ -49,6 +50,9 @@ export const View = (props: Props) => {
               data_broker_total_num: 1337,
             })}
           </p>
+          <div className={styles.exposuresFilterWrapper}>
+            <ExposuresFilter />
+          </div>
           <ul className={styles.exposureList}>
             {props.userBreaches.breachesData.verifiedEmails
               .map((verifiedEmail) => {
