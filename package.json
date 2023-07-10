@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Firefox Monitor",
   "engines": {
-    "node": "18.12.x",
+    "node": "20.3.x",
     "npm": "8.x"
   },
   "type": "module",
