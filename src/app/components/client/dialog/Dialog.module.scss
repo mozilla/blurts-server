@@ -14,6 +14,14 @@
   border-radius: $border-radius-md;
   padding: $layout-sm;
 
+  &.left {
+    align-items: flex-start;
+  }
+
+  &.right {
+    align-items: flex-end;
+  }
+
   @media screen and (min-width: $screen-lg) {
     padding: $layout-lg $layout-xl;
   }
