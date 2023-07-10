@@ -4,7 +4,7 @@
   "description": "Firefox Monitor",
   "engines": {
     "node": "20.3.x",
-    "npm": "9.8.x"
+    "npm": "9.6.x"
   },
   "type": "module",
   "scripts": {
@@ -41,7 +41,7 @@
   "license": "MPL-2.0",
   "volta": {
     "node": "20.3.0",
-    "npm": "9.8.0"
+    "npm": "9.6.7"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.360.0",
