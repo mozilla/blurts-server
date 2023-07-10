@@ -6,11 +6,9 @@
  * Fetches the list of breaches from HIBP, sync database with the latest breaches list
  *
  * Usage:
- * node scripts/syncBreaches.js
+ * node src/scripts/syncBreaches.js
  */
 
-import { req, formatDataClassesArray } from '../utils/hibp.js'
-import { getAllBreaches, upsertBreaches, updateBreachFaviconUrl} from '../db/tables/breaches.js'
 import { readdir } from "node:fs/promises";
 import { resolve as pathResolve } from "node:path";
 import { finished } from 'node:stream/promises';
@@ -19,12 +17,16 @@ import { Readable } from 'node:stream';
 import os from 'node:os';
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3 } from "@aws-sdk/client-s3";
+import Sentry from "@sentry/nextjs"
+import { req, formatDataClassesArray } from '../utils/hibp.js'
+import { getAllBreaches, upsertBreaches, updateBreachFaviconUrl} from '../db/tables/breaches.js'
 
 // Get breaches logos and uploads to s3
 const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
 const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const region = process.env.AWS_REGION;
 const Bucket = process.env.S3_BUCKET;
+const SENTRY_SLUG = "cron-sync-breaches"
 
 const s3 = new S3({
   region,
@@ -93,6 +95,10 @@ export async function getBreachIcons(breaches) {
   ));
 }
 
+const checkInId = Sentry.captureCheckIn({
+  monitorSlug: SENTRY_SLUG,
+  status: "in_progress"
+});
 
 // Get breaches and upserts to DB
 const breachesResponse = await req('/breaches')
@@ -123,6 +129,11 @@ if (seen.size !== breaches.length) {
 }
 
 await getBreachIcons(breaches)
+Sentry.captureCheckIn({
+  checkInId,
+  monitorSlug: SENTRY_SLUG,
+  status: "ok"
+});
 process.exit()
 
 
