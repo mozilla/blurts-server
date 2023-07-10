@@ -5,16 +5,16 @@
   --exposureDetailsIconWidth: 25px;
 
   font: $text-body-sm;
+  background-color: $color-white;
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-md;
-  max-width: $content-xl;
 
   .exposureHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing-sm $spacing-md;
+    padding: $spacing-md $spacing-md;
     gap: $layout-xs;
 
     @media screen and (min-width: $screen-lg) {
@@ -22,6 +22,7 @@
     }
 
     .chevron {
+      flex-shrink: 0;
       all: unset;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);

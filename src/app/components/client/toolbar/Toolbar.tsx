@@ -9,7 +9,7 @@ import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
 
 export type Props = {
-  session: Session | null;
+  user: Session["user"] | null;
   children?: ReactNode;
 };
 
@@ -19,7 +19,7 @@ export const Toolbar = (props: Props) => {
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <AppPicker />
-        <UserMenu session={props.session} />
+        <UserMenu user={props.user} />
       </div>
     </nav>
   );

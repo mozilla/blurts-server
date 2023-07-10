@@ -4,8 +4,8 @@
 
 import styles from "./DashboardTopBanner.module.scss";
 import { ReactElement } from "react";
-import { Button } from "../components/server/Button";
-import { useL10n } from "../hooks/l10n";
+import { Button } from "../../../../../components/server/Button";
+import { useL10n } from "../../../../../hooks/l10n";
 
 export type DashboardTopBannerProps = {
   type:

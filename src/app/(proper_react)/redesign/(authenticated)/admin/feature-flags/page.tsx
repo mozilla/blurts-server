@@ -60,7 +60,7 @@ export default async function FeatureFlagPage() {
     <div className={styles.wrapper}>
       <nav className={styles.tabBar}>
         <div className={styles.end}>
-          <Toolbar session={session} />
+          <Toolbar user={session.user} />
         </div>
       </nav>
       <div className={styles.start}>
