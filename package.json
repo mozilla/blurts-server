@@ -4,7 +4,7 @@
   "description": "Firefox Monitor",
   "engines": {
     "node": "20.3.x",
-    "npm": "8.x"
+    "npm": "9.x"
   },
   "type": "module",
   "scripts": {
