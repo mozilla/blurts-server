@@ -2,6 +2,7 @@
 
 onboarding-steps-get-started-label = Get started
 onboarding-steps-enter-info-label = Enter info
+onboarding-steps-enter-info-back = Go back
 onboarding-steps-find-exposures-label = Find exposures
 onboarding-get-started-heading = Welcome to { -product-short-name }. Let’s find your exposed information.
 onboarding-get-started-content-data = To find and fix your exposed data, we’ll need to ask for your personal info. Rest assured we will safeguard your information like it’s our own.
@@ -19,3 +20,28 @@ onboarding-get-started-how-it-works-dialog-step2-content = We’ll show you what
 onboarding-get-started-how-it-works-dialog-step3-heading = Resolve data breaches
 onboarding-get-started-how-it-works-dialog-step3-content = We’ll give you clear steps on how to resolve each data breach. They’ll require access to your accounts, so you’ll need to resolve them manually even if you upgrade to { -brand-premium }.
 onboarding-get-started-how-it-works-dialog-confirm-label = OK
+
+onboarding-enter-details-title = Enter the details you want to protect
+onboarding-enter-details-text = We’ll use this to find exposures of your personal information, and then guide you step-by-step on how to fix it.
+onboarding-enter-details-why-button-label = Why do we need this info?
+onboarding-enter-details-dialog = There’s a $240 billion industry of data brokers that expose and sell your personal information for a profit. They scrape your data from publicly available sources to create profiles that include your name(s), current and previous addresses, family member names, criminal history, and much much more.
+onboarding-enter-details-diaglog-subheader = To find your profiles on these sites, we use three key pieces of information:
+onboarding-enter-details-dialog-name-label = Name
+onboarding-enter-details-dialog-name-text = Your full legal name will help us find profiles of you, but your aliases or previous names may also appear in search results.
+onboarding-enter-details-dialog-location-label = Location
+onboarding-enter-details-dialog-location-text = Your current city and state will help us narrow down the results, but your past addresses may also appear in search results.
+onboarding-enter-details-dialog-date-label = Date of birth
+onboarding-enter-details-dialog-date-text = This will reduce chances of finding profiles of people with the same name as you.
+onboarding-enter-details-dialog-data-protection-text = We fully encrypt data you share with us, and we are committed to protecting it. Read our <privacy_policy_link>Privacy Policy</privacy_policy_link>, and <privacy_protection_link>learn more about how we protect your privacy</privacy_protection_link>.
+onboarding-enter-details-comfirm-dialog-title = Is this correct?
+onboarding-enter-details-comfirm-dialog-text = To ensure accurate results, please confirm this is your correct information. You won’t be able to update this later.
+onboarding-enter-details-comfirm-dialog-button-edit = Edit
+onboarding-enter-details-comfirm-dialog-button-confirm = Confirm
+onboarding-enter-details-label-first-name = First name
+onboarding-enter-details-placeholder-first-name = Enter your first name
+onboarding-enter-details-label-last-name = Last name
+onboarding-enter-details-placeholder-last-name = Enter your last name
+onboarding-enter-details-label-location = City and state
+onboarding-enter-details-placeholder-location = Enter your city and state
+onboarding-enter-details-label-date-of-birth = Date of birth
+onboarding-enter-details-input-error-message = Required to complete the scan

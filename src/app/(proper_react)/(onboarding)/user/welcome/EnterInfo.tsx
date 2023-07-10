@@ -85,102 +85,59 @@ export const EnterInfo = (props: Props) => {
 
   const l10n = useL10n();
 
-  const welcome_enter_info_title = "Enter the details you want to protect";
-  const welcome_enter_info_text = (
-    <>
-      We’ll use this to find exposures of your personal information, and then
-      guide you step-by-step on how to fix it.{" "}
-      <button
-        {...explainerDialogTrigger.triggerProps}
-        onClick={() => explainerDialogState.open()}
-        className={viewStyles.explainerTrigger}
-      >
-        Why do we need this info?
-      </button>
-    </>
-  );
-  const welcome_navigation_button_back = "Go back";
-  const welcome_enter_info_dialog =
-    "There’s a $240 billion industry of data brokers that expose and sell your personal information for a profit. They scrape your data from publicly available sources to create profiles that include your name(s), current and previous addresses, family member names, criminal history, and much much more.";
-  const welcome_enter_info_diaglog_subheader =
-    "To find your profiles on these sites, we use three key pieces of information:";
-  const welcome_enter_info_dialog_name_label = "Name";
-  const welcome_enter_info_dialog_name_text =
-    "Your full legal name will help us find profiles of you, but your aliases or previous names may also appear in search results.";
-  const welcome_enter_info_dialog_location_label = "Location";
-  const welcome_enter_info_dialog_location_text =
-    "Your current city and state will help us narrow down the results, but your past addresses may also appear in search results.";
-  const welcome_enter_info_dialog_date_label = "Date of birth";
-  const welcome_enter_info_dialog_date_text =
-    "This will reduce chances of finding profiles of people with the same name as you.";
-  const welcome_enter_info_dialog_data_protection_text = (
-    <>
-      We fully encrypt data you share with us, and we are committed to
-      protecting it. Read our{" "}
-      <a href="https://www.mozilla.org/privacy/firefox-monitor" target="_blank">
-        Privacy Policy
-      </a>
-      , and{" "}
-      <a href="https://www.mozilla.org/firefox/privacy" target="_blank">
-        learn more about how we protect your privacy
-      </a>
-      .
-    </>
-  );
-  const welcome_enter_info_comfirm_dialog_title = "Is this correct?";
-  const welcome_enter_info_comfirm_dialog_text =
-    "To ensure accurate results, please confirm this is your correct information. You won’t be able to update this later.";
-  const welcome_enter_info_comfirm_dialog_button_edit = "Edit";
-  const welcome_enter_info_comfirm_dialog_button_confirm = "Confirm";
-  const welcome_enter_info_label_first_name = "First name";
-  const welcome_enter_info_placeholder_first_name = "Enter your first name";
-  const welcome_enter_info_label_last_name = "Last name";
-  const welcome_enter_info_placeholder_last_name = "Enter your last name";
-  const welcome_enter_info_label_location = "City and state";
-  const welcome_enter_info_placeholder_location = "Enter your city and state";
-  const welcome_enter_info_label_date_of_birth = "Date of birth";
-  const welcome_enter_info_input_error_message =
-    "Required to complete the scan";
-
   const userDetailsData = [
     {
-      label: welcome_enter_info_label_first_name,
+      label: l10n.getString("onboarding-enter-details-label-first-name"),
       key: "firstName",
       type: "text",
-      placeholder: welcome_enter_info_placeholder_first_name,
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-first-name"
+      ),
       value: firstName,
       displayValue: firstName,
-      errorMessage: welcome_enter_info_input_error_message,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message"
+      ),
       onChange: setFirstName,
     },
     {
-      label: welcome_enter_info_label_last_name,
+      label: l10n.getString("onboarding-enter-details-label-last-name"),
       key: "lastName",
       type: "text",
-      placeholder: welcome_enter_info_placeholder_last_name,
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-last-name"
+      ),
       value: lastName,
       displayValue: lastName,
-      errorMessage: welcome_enter_info_input_error_message,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message"
+      ),
       onChange: setLastName,
     },
     {
-      label: welcome_enter_info_label_location,
+      label: l10n.getString("onboarding-enter-details-label-location"),
       key: "location",
       type: "text",
-      placeholder: welcome_enter_info_placeholder_location,
+      placeholder: l10n.getString(
+        "onboarding-enter-details-placeholder-location"
+      ),
       value: location,
       displayValue: location,
-      errorMessage: welcome_enter_info_input_error_message,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message"
+      ),
       onChange: setLocation,
     },
     {
-      label: welcome_enter_info_label_date_of_birth,
+      label: l10n.getString("onboarding-enter-details-label-date-of-birth"),
       key: "dateOfBirth",
       type: "date",
       placeholder: "",
       value: dateOfBirth,
       displayValue: new Date(dateOfBirth).toLocaleDateString("en-US"),
-      errorMessage: welcome_enter_info_input_error_message,
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message"
+      ),
       onChange: setDateOfBirth,
     },
   ];
@@ -211,25 +168,55 @@ export const EnterInfo = (props: Props) => {
       <div
         className={`${viewStyles.dialogContents} ${enterInfoStyles.dialogContents}`}
       >
-        <p>{welcome_enter_info_dialog}</p>
-        <strong>{welcome_enter_info_diaglog_subheader}</strong>
+        <p>{l10n.getString("onboarding-enter-details-dialog")}</p>
+        <strong>
+          {l10n.getString("onboarding-enter-details-diaglog-subheader")}
+        </strong>
 
         <ol className={viewStyles.list}>
           <li className={viewStyles.listItem}>
-            <h4>{welcome_enter_info_dialog_name_label}</h4>
-            <p>{welcome_enter_info_dialog_name_text}</p>
+            <h4>
+              {l10n.getString("onboarding-enter-details-dialog-name-label")}
+            </h4>
+            <p>{l10n.getString("onboarding-enter-details-dialog-name-text")}</p>
           </li>
           <li className={viewStyles.listItem}>
-            <h4>{welcome_enter_info_dialog_location_label}</h4>
-            <p>{welcome_enter_info_dialog_location_text}</p>
+            <h4>
+              {l10n.getString("onboarding-enter-details-dialog-location-label")}
+            </h4>
+            <p>
+              {l10n.getString("onboarding-enter-details-dialog-location-text")}
+            </p>
           </li>
           <li className={viewStyles.listItem}>
-            <h4>{welcome_enter_info_dialog_date_label}</h4>
-            <p>{welcome_enter_info_dialog_date_text}</p>
+            <h4>
+              {l10n.getString("onboarding-enter-details-dialog-date-label")}
+            </h4>
+            <p>{l10n.getString("onboarding-enter-details-dialog-date-text")}</p>
           </li>
         </ol>
 
-        <p>{welcome_enter_info_dialog_data_protection_text}</p>
+        <p>
+          {l10n.getString(
+            "onboarding-enter-details-dialog-data-protection-text"
+          )}
+          {l10n.getFragment("exposure-card-description-data-breach-part-one", {
+            elems: {
+              privacy_policy_link: (
+                <a
+                  href="https://www.mozilla.org/privacy/firefox-monitor"
+                  target="_blank"
+                />
+              ),
+              privacy_protection_link: (
+                <a
+                  href="https://www.mozilla.org/firefox/privacy"
+                  target="_blank"
+                />
+              ),
+            },
+          })}
+        </p>
 
         <div className={viewStyles.confirmButtonWrapper}>
           <Button
@@ -248,8 +235,10 @@ export const EnterInfo = (props: Props) => {
   );
 
   const ConfirmInfoDialog = () => (
-    <Dialog title={welcome_enter_info_comfirm_dialog_title}>
-      <p>{welcome_enter_info_comfirm_dialog_text}</p>
+    <Dialog
+      title={l10n.getString("onboarding-enter-details-comfirm-dialog-title")}
+    >
+      <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
       <div className={viewStyles.dialogContents}>
         <ul className={enterInfoStyles.infoList}>
           {userDetailsData.map(({ key, label, displayValue }) => (
@@ -265,7 +254,9 @@ export const EnterInfo = (props: Props) => {
           onClick={() => confirmDialogState.close()}
           className={enterInfoStyles.startButton}
         >
-          {welcome_enter_info_comfirm_dialog_button_edit}
+          {l10n.getString(
+            "onboarding-enter-details-comfirm-dialog-button-edit"
+          )}
         </Button>
         <Button
           type="primary"
@@ -273,7 +264,9 @@ export const EnterInfo = (props: Props) => {
           autoFocus={true}
           className={enterInfoStyles.startButton}
         >
-          {welcome_enter_info_comfirm_dialog_button_confirm}
+          {l10n.getString(
+            "onboarding-enter-details-comfirm-dialog-button-confirm"
+          )}
         </Button>
       </div>
     </Dialog>
@@ -281,8 +274,17 @@ export const EnterInfo = (props: Props) => {
 
   return (
     <div className={viewStyles.stepContent}>
-      <h1>{welcome_enter_info_title}</h1>
-      <p>{welcome_enter_info_text}</p>
+      <h1>{l10n.getString("onboarding-enter-details-title")}</h1>
+      <p>
+        {l10n.getString("onboarding-enter-details-text")}
+        <button
+          {...explainerDialogTrigger.triggerProps}
+          onClick={() => explainerDialogState.open()}
+          className={viewStyles.explainerTrigger}
+        >
+          {l10n.getString("onboarding-enter-details-why-button-label")}
+        </button>
+      </p>
       <div className={enterInfoStyles.inputContainer}>
         {userDetailsData.map(
           ({
@@ -317,7 +319,7 @@ export const EnterInfo = (props: Props) => {
           onClick={() => props.onGoBack()}
           className={enterInfoStyles.startButton}
         >
-          {welcome_navigation_button_back}
+          {l10n.getString("onboarding-steps-enter-info-back")}
         </Button>
         <Button
           {...confirmDialogTrigger.triggerProps}
