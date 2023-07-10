@@ -8,7 +8,7 @@
  import AppConstants from '../appConstants.js'
  import packageJson from '../../package.json';
 
- const versionJsonPath = path.join(__dirname, 'version.json')
+ const versionJsonPath = path.join(__dirname, '../../version.json')
  
  // If the version.json file already exists (e.g., created by circle + docker),
  // don't need to generate it

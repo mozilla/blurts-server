@@ -81,7 +81,7 @@ const createEmailItem = (
 };
 
 // Moves the primary email to the front and sorts the rest alphabeticaly.
-const getSortedEmails = (emails: any[]) =>
+const getSortedEmails = (emails: Array<EmailRow & { primary?: boolean }>) =>
   [...emails].sort((a, b) => {
     if (a.primary) {
       return -1;

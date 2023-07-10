@@ -301,9 +301,9 @@ const AppPickerPopover = ({
           data-placement={placement}
           className={styles.triggerAnchor}
         />
-        <DismissButton onDismiss={state.close} />
+        <DismissButton onDismiss={() => state.close()} />
         <div className={styles.popup}>{children}</div>
-        <DismissButton onDismiss={state.close} />
+        <DismissButton onDismiss={() => state.close()} />
       </div>
     </Overlay>
   );

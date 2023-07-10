@@ -112,6 +112,8 @@
         height: $iconDiameter;
         border-radius: 100%;
         box-sizing: content-box;
+        pointer-events: none;
+        user-select: none;
         // Overlap the `::before` (the horizontal line)
         z-index: 1;
       }
@@ -193,6 +195,8 @@
         border-radius: 3px;
         min-width: $layout-sm;
         width: 100%;
+        pointer-events: none;
+        user-select: none;
       }
 
       &[aria-current="step"] img {

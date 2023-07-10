@@ -45,12 +45,7 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
   return (
     <L10nProvider bundleSources={l10nBundles}>
       <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
-        <div
-          className={`${inter.className} ${inter.variable} ${metropolis.variable}`}
-          style={{ height: "100%" }}
-        >
-          {storyFn()}
-        </div>
+        {storyFn()}
       </ReactAriaI18nProvider>
     </L10nProvider>
   );

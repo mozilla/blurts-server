@@ -20,7 +20,7 @@ import { BreachesTable } from "../../../components/server/BreachesTable";
 import { getComponentAsString } from "../../../functions/server/getComponentAsString";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   const l10n = getL10n();
   return {
     title: l10n.getString("breach-meta-title"),
@@ -90,7 +90,8 @@ export default async function UserBreaches() {
   const bearerToken = session?.user.subscriber?.fxa_access_token;
   if (bearerToken) {
     const result = await fetch(
-      `${process.env.OAUTH_API_URI}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`,
+      `${process.env
+        .OAUTH_API_URI!}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -153,7 +154,9 @@ export default async function UserBreaches() {
           <section>
             <a
               className="button primary"
-              href={`${process.env.FXA_SUBSCRIPTIONS_URL}/products/${process.env.PREMIUM_PRODUCT_ID}?plan=${process.env.PREMIUM_PLAN_ID_US}`}
+              href={`${process.env.FXA_SUBSCRIPTIONS_URL!}/products/${process
+                .env.PREMIUM_PRODUCT_ID!}?plan=${process.env
+                .PREMIUM_PLAN_ID_US!}`}
             >
               Subscribe to Premium
             </a>

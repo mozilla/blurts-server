@@ -50,7 +50,9 @@ export const Dialog = ({
   return (
     <div {...dialogProps} ref={dialogRef} className={styles.dialog}>
       {dismissButton}
-      {illustration ?? null}
+      {illustration && (
+        <div className={styles.illustrationWrapper}>{illustration}</div>
+      )}
       {title && (
         <h3 {...titleProps} className={styles.title}>
           {title}

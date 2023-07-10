@@ -33,6 +33,11 @@
     }
   }
 
+  .illustrationWrapper {
+    pointer-events: none;
+    user-select: none;
+  }
+
   .title {
     font: $text-title-2xs;
     text-align: center;
