@@ -15,6 +15,7 @@ import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay"
 import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
 import { InputField } from "../../../../components/client/InputField";
+import { LocationAutocompleteInput } from "../../../../components/client/LocationAutocompleteInput";
 
 import styles from "./EnterInfo.module.scss";
 
@@ -259,23 +260,40 @@ export const EnterInfo = (props: Props) => {
               placeholder,
               type,
               value,
-            }) => (
-              <InputField
-                key={key}
-                errorMessage={errorMessage}
-                label={label}
-                isRequired={true}
-                onChange={onChange}
-                placeholder={placeholder}
-                type={type}
-                validationState={
-                  !getIsValidInfo(value) && invalidInputs.includes(key)
-                    ? "invalid"
-                    : "valid"
-                }
-                value={value}
-              />
-            )
+            }) =>
+              key === "location" ? (
+                <LocationAutocompleteInput
+                  key={key}
+                  errorMessage={errorMessage}
+                  label={label}
+                  isRequired={true}
+                  onChange={onChange}
+                  placeholder={placeholder}
+                  type={type}
+                  validationState={
+                    !getIsValidInfo(value) && invalidInputs.includes(key)
+                      ? "invalid"
+                      : "valid"
+                  }
+                  value={value}
+                />
+              ) : (
+                <InputField
+                  key={key}
+                  errorMessage={errorMessage}
+                  label={label}
+                  isRequired={true}
+                  onChange={onChange}
+                  placeholder={placeholder}
+                  type={type}
+                  validationState={
+                    !getIsValidInfo(value) && invalidInputs.includes(key)
+                      ? "invalid"
+                      : "valid"
+                  }
+                  value={value}
+                />
+              )
           )}
         </div>
         <div className={styles.stepButtonWrapper}>

@@ -4,12 +4,15 @@
 
 "use client";
 
-import { ChangeEvent, useEffect, useDeferredValue, useState } from "react";
+import { useEffect, useDeferredValue, useState } from "react";
+import { AriaTextFieldProps } from "react-aria";
 import {
   MatchingLocations,
   SearchLocationParams,
   SearchLocationResults,
 } from "../../api/v1/location-autocomplete/route";
+import { InputField } from "../../components/client/InputField";
+import styles from "./LocationAutocompleteInput.module.scss";
 
 const getLocationSuggestions = async ({
   searchParams,
@@ -37,7 +40,7 @@ const getLocationSuggestions = async ({
   }
 };
 
-export const LocationAutocompleteInput = () => {
+export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   const [locationSuggestions, setLocationSuggestions] =
     useState<MatchingLocations>([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -74,20 +77,21 @@ export const LocationAutocompleteInput = () => {
     };
   }, [deferredSearchQuery]);
 
-  const handleOnInput = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(event.target.value);
+  const handleOnChange = (inputValue: string) => {
+    setSearchQuery(inputValue);
+    props.onChange?.(inputValue);
   };
 
   return (
-    <div>
-      <input onInput={handleOnInput} placeholder="Enter city and state" />
+    <div className={styles.locationInput}>
+      <InputField {...props} onChange={handleOnChange} value={searchQuery} />
       {locationSuggestions && locationSuggestions.length > 0 && (
-        <ul>
+        <ul className={styles.list}>
           {locationSuggestions.map(({ id, name, stateCode, countryCode }) => (
-            <li key={id}>
+            <li key={id} className={styles.item}>
               {name}{" "}
               <small>
-                {stateCode}, {countryCode} #{id}
+                {stateCode}, {countryCode}
               </small>
             </li>
           ))}
