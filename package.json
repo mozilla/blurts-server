@@ -121,7 +121,7 @@
     "prettier": "2.8.8",
     "sass": "^1.62.1",
     "storybook": "^7.0.18",
-    "stylelint": "^15.6.0",
+    "stylelint": "^15.10.1",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-scss": "^5.0.0",
     "ts-node": "^10.9.1",
