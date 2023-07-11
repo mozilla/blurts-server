@@ -18,7 +18,7 @@ import {
 } from "../server/Icons";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import { ScanResult } from "../../../external/onerep";
+import { ScanResult } from "../../functions/server/onerep";
 import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export type Exposure = ScanResult | Breach;
