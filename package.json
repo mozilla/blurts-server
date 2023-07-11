@@ -53,7 +53,7 @@
     "@leeoniya/ufuzzy": "^1.0.8",
     "@sentry/nextjs": "^7.53.1",
     "@sentry/node": "^7.40.0",
-    "@sentry/tracing": "^7.38.0",
+    "@sentry/tracing": "^7.57.0",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^20.1.1",
     "@types/react": "^18.2.6",
