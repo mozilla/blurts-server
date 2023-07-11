@@ -20,7 +20,7 @@ it("passes the axe accessibility test suite on step 2", async () => {
   const ComposedOnboarding = composeStory(Onboarding, Meta);
   const { container } = render(<ComposedOnboarding />);
   const explainerTrigger = screen.getByRole("button", {
-    name: "onboarding-get-started-cta-label",
+    name: "Start my free scan",
   });
   await user.click(explainerTrigger);
   expect(await axe(container)).toHaveNoViolations();
@@ -33,7 +33,7 @@ it("can open a dialog with more information", async () => {
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
 
   const explainerTrigger = screen.getByRole("button", {
-    name: "onboarding-get-started-content-explainer",
+    name: "See how we protect your data",
   });
   await user.click(explainerTrigger);
   expect(screen.getByRole("dialog")).toBeInTheDocument();

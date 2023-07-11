@@ -8,15 +8,29 @@ import { Session } from "next-auth";
 import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
-import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
+import {
+  BundledVerifiedEmails,
+  getAllEmailsAndBreaches,
+} from "../../../../src/utils/breaches.js";
+import { EmailRow } from "../../../db/tables/emailAddresses";
+
+export type UserBreaches = {
+  emailVerifiedCount: number;
+  emailTotalCount: number;
+  emailSelectIndex: number;
+  breachesData: {
+    unverifiedEmails: EmailRow[];
+    verifiedEmails: BundledVerifiedEmails[];
+  };
+};
 
 export async function getUserBreaches({
   user,
   options = {},
 }: {
-  user: Session["user"] & { email: string };
+  user: Session["user"];
   options?: Parameters<typeof appendBreachResolutionChecklist>[1];
-}) {
+}): Promise<UserBreaches> {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);

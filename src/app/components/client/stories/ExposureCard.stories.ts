@@ -7,7 +7,7 @@ import { ExposureCard } from "../ExposureCard";
 import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
 import { ScanResult } from "../../../functions/server/onerep";
-import { Breach } from "../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { StateAbbr } from "../../../../utils/states";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
@@ -46,8 +46,8 @@ const ScanResultMockItem: ScanResult = {
   data_broker_id: 0,
 };
 
-const BreachMockItem: Breach = {
-  AddedDate: "11/09/23",
+const BreachMockItem: HibpLikeDbBreach = {
+  AddedDate: new Date("2023-07-10"),
   BreachDate: "11/09/23",
   DataClasses: [],
   Description: "",
@@ -55,17 +55,14 @@ const BreachMockItem: Breach = {
   Id: 0,
   IsFabricated: false,
   IsMalware: false,
-  IsResolved: false,
   IsRetired: false,
   IsSensitive: false,
   IsSpamList: false,
   IsVerified: false,
   LogoPath: "",
-  ModifiedDate: "",
+  ModifiedDate: new Date("2023-07-10"),
   Name: "",
   PwnCount: 0,
-  recencyIndex: 0,
-  ResolutionsChecked: [],
   Title: "Twitter",
 };
 
@@ -75,7 +72,7 @@ export const DataBroker: Story = {
     exposureName: ScanResultMockItem.data_broker,
     exposureData: ScanResultMockItem,
     exposureDetailsLink: "linkehere.com",
-    dateFound: ScanResultMockItem.created_at,
+    dateFound: new Date(ScanResultMockItem.created_at),
     statusPillType: "needAction",
   },
 };
@@ -86,7 +83,7 @@ export const DataBreach: Story = {
     exposureName: "Twitter",
     exposureData: BreachMockItem,
     exposureDetailsLink: "linkehere.com",
-    dateFound: BreachMockItem.BreachDate,
+    dateFound: BreachMockItem.AddedDate,
     statusPillType: "needAction",
   },
 };

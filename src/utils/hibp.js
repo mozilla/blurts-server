@@ -107,12 +107,12 @@ function formatDataClassesArray (dataClasses) {
 
 /**
  * The type `HibpLikeDbBreach` is roughly the same as the data we receive from
- * HIBP, except that we added a `FaviconUrl`, and that a couple of fields are
- * not available (because we do not store them in our database, at the time of
- * writing).
+ * HIBP, except that we added a `FaviconUrl`, that AddedDate and ModifiedData
+ * are Date objects, and that a couple of fields are not available (because we
+ * do not store them in our database, at the time of writing).
  *
  * @typedef {{ FaviconUrl?: string }} WithFaviconUrl
- * @typedef {WithFaviconUrl & Omit<import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach, "IsResolved" | "recencyIndex" | "ResolutionsChecked">} HibpLikeDbBreach
+ * @typedef {WithFaviconUrl & Omit<import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach, "IsResolved" | "recencyIndex" | "ResolutionsChecked" | "AddedDate" | "ModifiedDate"> & { AddedDate: Date; ModifiedDate: Date; }} HibpLikeDbBreach
  */
 
 /**
@@ -337,7 +337,7 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
 /**
  * @param {any[]} allBreaches
  * @param {string} breachName
- * @returns {import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach}
+ * @returns {HibpLikeDbBreach}
  */
 function getBreachByName (allBreaches, breachName) {
   breachName = breachName.toLowerCase()

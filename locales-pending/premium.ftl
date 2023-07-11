@@ -7,10 +7,13 @@ main-nav-button-collapse-label = Collapse menu
 main-nav-button-collapse-tooltip = Collapse menu
 main-nav-button-expand-label = Expand menu
 main-nav-button-expand-tooltip = Expand menu
+main-nav-label = Navigation
 main-nav-link-home-label = Home
 main-nav-link-dashboard-label = Dashboard
 main-nav-link-faq-label = FAQs
 main-nav-link-faq-tooltip = Frequently asked questions
+
+mobile-menu-label = Main menu
 
 toolbar-app-picker-trigger-title = { -brand-mozilla } apps and services
 toolbar-app-picker-product-vpn = { -brand-mozilla-vpn }

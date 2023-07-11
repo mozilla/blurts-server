@@ -43,6 +43,14 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 ],
 ```
 
+### Prerequisites
+
+1. Create location data: Running the script manually is only needed for local development. The location data is being used in the onboarding exposures scan for autocompleting the “City and state” input.
+
+   ```sh
+   npm run create-location-data
+   ```
+
 ### Install
 
 1. Clone and change to the directory:
