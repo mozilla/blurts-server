@@ -7,8 +7,9 @@ import { Dashboard as DashboardEl } from "./Dashboard";
 import FamilyTreeImage from "../components/client/assets/familytree.png";
 import TwitterImage from "../components/client/assets/twitter-icon.png";
 import { ExposureCardProps } from "../components/client/ExposureCard";
-import { ScanResult } from "../../../src/external/onerep";
+import { ScanResult } from "../functions/server/onerep";
 import { Breach } from "../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { StateAbbr } from "../../utils/states";
 
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
@@ -27,7 +28,7 @@ const ScanResultMockItem: ScanResult = {
   addresses: [
     {
       city: "123",
-      state: "State",
+      state: "State" as StateAbbr,
       street: "Street",
       zip: "123456",
     },
@@ -37,6 +38,11 @@ const ScanResultMockItem: ScanResult = {
   data_broker: "Familytree.com",
   created_at: "11/09/23",
   updated_at: "11/09/23",
+  url: "",
+  link: "",
+  relatives: [],
+  status: "new",
+  data_broker_id: 0,
 };
 
 const BreachMockItem: Breach = {

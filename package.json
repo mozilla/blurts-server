@@ -80,6 +80,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@google-cloud/functions-framework": "^3.2.0",
     "@playwright/test": "^1.32.3",
     "@storybook/addon-a11y": "^7.0.21",
