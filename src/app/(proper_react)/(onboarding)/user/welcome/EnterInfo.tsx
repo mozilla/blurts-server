@@ -163,13 +163,13 @@ export const EnterInfo = (props: Props) => {
             "onboarding-enter-details-dialog-data-protection-text",
             {
               elems: {
-                privacy_policy_link: (
+                "privacy-policy-link": (
                   <a
                     href="https://www.mozilla.org/privacy/firefox-monitor"
                     target="_blank"
                   />
                 ),
-                privacy_protection_link: (
+                "privacy-protection-link": (
                   <a
                     href="https://www.mozilla.org/firefox/privacy"
                     target="_blank"
