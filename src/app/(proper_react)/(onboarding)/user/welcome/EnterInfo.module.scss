@@ -5,12 +5,12 @@
   grid-template-columns: 1fr 1fr;
   gap: $spacing-lg $spacing-xl;
   padding: $spacing-lg 0;
-  width: 100%;
 
   @media screen and (max-width: $screen-lg) {
     grid-template-columns: 1fr;
   }
 }
+
 .infoList {
   align-items: center;
   columns: 2;
