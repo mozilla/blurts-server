@@ -12,7 +12,11 @@ import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
 import type { UserBreaches } from "../../../../../functions/server/getUserBreaches";
 import { ExposureCard } from "../../../../../components/client/ExposureCard";
-import { ExposuresFilter } from "../../../../../components/client/ExposuresFilter";
+import {
+  ExposuresFilter,
+  FilterState,
+} from "../../../../../components/client/ExposuresFilter";
+import { useEffect, useState } from "react";
 
 export type Props = {
   user: Session["user"];
@@ -27,6 +31,17 @@ export const View = (props: Props) => {
     (count, emailData) => count + emailData.breaches.length,
     0
   );
+  const initialFilterState: FilterState = {
+    exposureType: "",
+    dateFound: "",
+    status: "",
+  };
+
+  const [filters, setFilters] = useState<FilterState>(initialFilterState);
+
+  useEffect(() => {
+    console.log(filters);
+  }, [filters]);
 
   return (
     <div className={styles.wrapper}>
@@ -51,7 +66,7 @@ export const View = (props: Props) => {
             })}
           </p>
           <div className={styles.exposuresFilterWrapper}>
-            <ExposuresFilter />
+            <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
             {props.userBreaches.breachesData.verifiedEmails

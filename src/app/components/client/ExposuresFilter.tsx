@@ -19,6 +19,7 @@ import {
 } from "react-aria";
 import {
   OverlayTriggerState,
+  RadioGroupState,
   useOverlayTriggerState,
   useRadioGroupState,
 } from "react-stately";
@@ -28,8 +29,19 @@ import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
+import { isDeepStrictEqual } from "util";
 
-export const ExposuresFilter = () => {
+export type FilterState = {
+  exposureType: string;
+  dateFound: string;
+  status: string;
+};
+
+type ExposuresFilterProps = {
+  setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
+};
+
+export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
   const l10n = useL10n();
   const [explainerTitle, setExplainerTitle] = useState<ReactElement | string>(
     ""
@@ -129,64 +141,118 @@ export const ExposuresFilter = () => {
     dismissButtonRef
   ).buttonProps;
 
+  const [filterState, setFilterState] = useState<FilterState>({
+    exposureType: "",
+    dateFound: "",
+    status: "",
+  });
+
+  const checkEmptyFilterState =
+    filterState.exposureType === "" &&
+    filterState.dateFound === "" &&
+    filterState.status === "";
+
+  const handleRadioChange = (type: string, value: string) => {
+    setFilterState((prevFilterState) => ({
+      ...prevFilterState,
+      [type]: value,
+    }));
+  };
+
+  const handleSaveButtonClick = () => {
+    setFilterValues(filterState);
+  };
+
   const ExposuresFilterContent = (
     <>
-      <RadioGroup
-        type="exposure-type"
-        label={l10n.getString("dashboard-exposures-filter-exposure-type")}
-      >
-        <Radio value="show-all-exposure-type">
-          {l10n.getString("dashboard-exposures-filter-show-all")}
-        </Radio>
-        <Radio value="data-broker">
-          {l10n.getString(
-            "dashboard-exposures-filter-exposure-type-info-for-sale"
-          )}
-        </Radio>
-        <Radio value="data-breach">
-          {l10n.getString(
-            "dashboard-exposures-filter-exposure-type-data-breach"
-          )}
-        </Radio>
-      </RadioGroup>
-      <RadioGroup
-        type="date-found"
-        label={l10n.getString("dashboard-exposures-filter-date-found")}
-      >
-        <Radio value="show-all-date-found">
-          {l10n.getString("dashboard-exposures-filter-show-all")}
-        </Radio>
-        <Radio value="seven-days">
-          {l10n.getString(
-            "dashboard-exposures-filter-date-found-last-seven-days"
-          )}
-        </Radio>
-        <Radio value="thirty-days">
-          {l10n.getString(
-            "dashboard-exposures-filter-date-found-last-thirty-days"
-          )}
-        </Radio>
-        <Radio value="last-year">
-          {l10n.getString("dashboard-exposures-filter-date-found-last-year")}
-        </Radio>
-      </RadioGroup>
-      <RadioGroup
-        type="status"
-        label={l10n.getString("dashboard-exposures-filter-status")}
-      >
-        <Radio value="show-all-status">
-          {l10n.getString("dashboard-exposures-filter-show-all")}
-        </Radio>
-        <Radio value="action-needed">
-          {l10n.getString("dashboard-exposures-filter-status-action-needed")}
-        </Radio>
-        <Radio value="in-progress">
-          {l10n.getString("dashboard-exposures-filter-status-in-progress")}
-        </Radio>
-        <Radio value="fixed">
-          {l10n.getString("dashboard-exposures-filter-status-fixed")}
-        </Radio>
-      </RadioGroup>
+      <div className={styles.exposuresFilterRadioButtons}>
+        <RadioGroup
+          type="exposure-type"
+          value={filterState.exposureType}
+          onChange={(value) => handleRadioChange("exposureType", value)}
+          label={l10n.getString("dashboard-exposures-filter-exposure-type")}
+        >
+          <Radio value="show-all-exposure-type">
+            {l10n.getString("dashboard-exposures-filter-show-all")}
+          </Radio>
+          <Radio value="data-broker">
+            {l10n.getString(
+              "dashboard-exposures-filter-exposure-type-info-for-sale"
+            )}
+          </Radio>
+          <Radio value="data-breach">
+            {l10n.getString(
+              "dashboard-exposures-filter-exposure-type-data-breach"
+            )}
+          </Radio>
+        </RadioGroup>
+        <RadioGroup
+          value={filterState.dateFound}
+          onChange={(value) => handleRadioChange("dateFound", value)}
+          type="date-found"
+          label={l10n.getString("dashboard-exposures-filter-date-found")}
+        >
+          <Radio value="show-all-date-found">
+            {l10n.getString("dashboard-exposures-filter-show-all")}
+          </Radio>
+          <Radio value="seven-days">
+            {l10n.getString(
+              "dashboard-exposures-filter-date-found-last-seven-days"
+            )}
+          </Radio>
+          <Radio value="thirty-days">
+            {l10n.getString(
+              "dashboard-exposures-filter-date-found-last-thirty-days"
+            )}
+          </Radio>
+          <Radio value="last-year">
+            {l10n.getString("dashboard-exposures-filter-date-found-last-year")}
+          </Radio>
+        </RadioGroup>
+        <RadioGroup
+          value={filterState.status}
+          onChange={(value) => handleRadioChange("status", value)}
+          type="status"
+          label={l10n.getString("dashboard-exposures-filter-status")}
+        >
+          <Radio value="show-all-status">
+            {l10n.getString("dashboard-exposures-filter-show-all")}
+          </Radio>
+          <Radio value="action-needed">
+            {l10n.getString("dashboard-exposures-filter-status-action-needed")}
+          </Radio>
+          <Radio value="in-progress">
+            {l10n.getString("dashboard-exposures-filter-status-in-progress")}
+          </Radio>
+          <Radio value="fixed">
+            {l10n.getString("dashboard-exposures-filter-status-fixed")}
+          </Radio>
+        </RadioGroup>
+      </div>
+      <div className={styles.filterControls}>
+        <Button
+          disabled={checkEmptyFilterState}
+          small
+          type="secondary"
+          onClick={() =>
+            setFilterState({
+              exposureType: "",
+              dateFound: "",
+              status: "",
+            })
+          }
+        >
+          {l10n.getString("dashboard-exposures-filter-reset")}
+        </Button>
+        <Button
+          disabled={checkEmptyFilterState}
+          small
+          type="primary"
+          onClick={handleSaveButtonClick}
+        >
+          {l10n.getString("dashboard-exposures-filter-show-results")}
+        </Button>
+      </div>
       <button
         {...dismissButtonProps}
         ref={dismissButtonRef}
@@ -272,7 +338,7 @@ export const ExposuresFilter = () => {
 
       {overlayTriggerState.isOpen && (
         <Popover state={overlayTriggerState} triggerRef={filterBtnRef}>
-          <div className={styles.exposuresFilterContent} {...overlayProps}>
+          <div className={styles.exposuresFilterWrapper} {...overlayProps}>
             {ExposuresFilterContent}
           </div>
         </Popover>
@@ -320,7 +386,9 @@ const Popover = (props: PopoverProps) => {
 type RadioGroupProps = {
   label: string;
   children: React.ReactNode;
+  value: string;
   type: "exposure-type" | "date-found" | "status";
+  onChange: (value: string) => void;
 };
 
 type RadioProps = {
@@ -330,7 +398,7 @@ type RadioProps = {
 const RadioContext = React.createContext<any>(null);
 
 function RadioGroup(props: RadioGroupProps) {
-  const { children, label, type } = props;
+  const { children, label, type, value, onChange } = props;
   const state = useRadioGroupState(props);
   const { radioGroupProps, labelProps } = useRadioGroup(props, state);
 
@@ -346,7 +414,9 @@ function RadioGroup(props: RadioGroupProps) {
         {label}
       </span>
       <div className={styles.radioButtonsWrapper}>
-        <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
+        <RadioContext.Provider value={{ value, onChange }}>
+          {children}
+        </RadioContext.Provider>
       </div>
     </div>
   );
@@ -356,11 +426,28 @@ function Radio(props: RadioProps & AriaRadioProps) {
   const { children } = props;
   const state = useContext(RadioContext);
   const ref = useRef<HTMLInputElement>(null);
-  const { inputProps } = useRadio(props, state, ref);
+  const checked = state ? state.value === props.value : false;
+  const radioGroupState: RadioGroupState = {
+    name: props.value,
+    selectedValue: checked ? props.value : null,
+    isDisabled: false,
+    isReadOnly: false,
+    isRequired: false,
+    validationState: "valid",
+    lastFocusedValue: null,
+    setSelectedValue: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+    setLastFocusedValue: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  };
+  const handleChange = () => {
+    if (state?.onChange) {
+      state.onChange(props.value);
+    }
+  };
+  const { inputProps } = useRadio(props, radioGroupState, ref);
 
   return (
     <label className={styles.radioItem}>
-      <input {...inputProps} ref={ref} type="radio" />
+      <input {...inputProps} ref={ref} onChange={handleChange} type="radio" />
       {children}
     </label>
   );

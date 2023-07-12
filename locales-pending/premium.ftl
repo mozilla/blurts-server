@@ -154,6 +154,8 @@ dashboard-exposures-filter-status-in-progress = In Progress
 dashboard-exposures-filter-status-fixed = Fixed
 popover-open-filter-settings-alt = Select filters
 dashboard-exposures-filter-show-all = Show all
+dashboard-exposures-filter-show-results = Show results
+dashboard-exposures-filter-reset = Reset
 
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data

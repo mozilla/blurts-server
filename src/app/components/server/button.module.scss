@@ -2,7 +2,7 @@
 
 .button {
   font: $text-body-md;
-  font-weight: 600;
+  font-weight: 500;
   border: 0;
   padding: $spacing-md $spacing-lg;
   border-radius: $border-radius-md;
@@ -34,13 +34,10 @@
         outline: $border-focus-width solid $color-red-30;
       }
     }
-
-    &.small {
-      padding: $spacing-sm $spacing-md;
-    }
   }
 
   &.secondary {
+    font-weight: 400;
     color: $color-blue-50;
     box-shadow: inset 0 0 0 2px $color-blue-50;
     background-color: transparent;
@@ -49,5 +46,14 @@
   &.isLoading {
     cursor: progress;
     opacity: 0.4;
+  }
+  
+  &.small {
+    padding: $spacing-sm $spacing-md;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    pointer-events: none;
   }
 }
