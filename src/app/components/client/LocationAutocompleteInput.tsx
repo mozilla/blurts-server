@@ -4,8 +4,16 @@
 
 "use client";
 
-import { useEffect, useDeferredValue, useState } from "react";
-import { AriaTextFieldProps } from "react-aria";
+import { useDeferredValue, useEffect, useRef, useState } from "react";
+import {
+  AriaListBoxProps,
+  AriaTextFieldProps,
+  mergeProps,
+  useFocusRing,
+  useListBox,
+  useOption,
+} from "react-aria";
+import { Item, ListState, Selection, useListState } from "react-stately";
 import {
   MatchingLocations,
   SearchLocationParams,
@@ -13,6 +21,56 @@ import {
 } from "../../api/v1/location-autocomplete/route";
 import { InputField } from "../../components/client/InputField";
 import styles from "./LocationAutocompleteInput.module.scss";
+
+function ListBox<T extends object>(props: AriaListBoxProps<T>) {
+  const state = useListState(props);
+  const ref = useRef(null);
+  const { listBoxProps } = useListBox(props, state, ref);
+
+  return (
+    <ul
+      {...listBoxProps}
+      ref={ref}
+      style={{
+        border: "1px solid black",
+        listStyle: "none",
+        margin: 0,
+        overflow: "auto",
+        padding: 0,
+      }}
+    >
+      {[...state.collection].map((item) => (
+        <div key={item.key}>
+          <Option key={item.key} item={item} state={state} />
+        </div>
+      ))}
+    </ul>
+  );
+}
+
+type OptionProps<T> = {
+  // TODO: Figure out type of item
+  item: any;
+  state: ListState<T>;
+};
+
+function Option<T extends object>({ item, state }: OptionProps<T>) {
+  const ref = useRef(null);
+  const { optionProps, isSelected } = useOption({ key: item.key }, state, ref);
+  const { focusProps } = useFocusRing();
+
+  return (
+    <li
+      {...mergeProps(optionProps, focusProps)}
+      ref={ref}
+      style={{
+        background: isSelected ? "lightgray" : "transparent",
+      }}
+    >
+      {item.rendered}
+    </li>
+  );
+}
 
 const getLocationSuggestions = async ({
   searchParams,
@@ -46,6 +104,9 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
+  const [selectedIds, setSelectedIds] = useState<Selection>(new Set());
+  const hasSelected = selectedIds instanceof Set && selectedIds.size;
+
   useEffect(() => {
     const abortController = new AbortController();
 
@@ -77,7 +138,26 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
     };
   }, [deferredSearchQuery]);
 
+  useEffect(() => {
+    if (!hasSelected) {
+      return;
+    }
+
+    const selectedLocation = locationSuggestions.find(({ id }) =>
+      selectedIds.has(id)
+    );
+    if (selectedLocation) {
+      const { name, stateCode, countryCode } = selectedLocation;
+      const locationString = `${name}, ${stateCode}, ${countryCode}`;
+      setSearchQuery(locationString);
+    }
+  }, [hasSelected, selectedIds, locationSuggestions]);
+
   const handleOnChange = (inputValue: string) => {
+    if (hasSelected) {
+      setSelectedIds(new Set());
+    }
+
     setSearchQuery(inputValue);
     props.onChange?.(inputValue);
   };
@@ -85,17 +165,24 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   return (
     <div className={styles.locationInput}>
       <InputField {...props} onChange={handleOnChange} value={searchQuery} />
+
       {locationSuggestions && locationSuggestions.length > 0 && (
-        <ul className={styles.list}>
-          {locationSuggestions.map(({ id, name, stateCode, countryCode }) => (
-            <li key={id} className={styles.item}>
+        <ListBox
+          items={locationSuggestions}
+          selectedKeys={selectedIds}
+          selectionMode="single"
+          onSelectionChange={setSelectedIds}
+        >
+          {({ id, name, stateCode, countryCode }) => (
+            <Item key={id}>
               {name}{" "}
               <small>
+                {" "}
                 {stateCode}, {countryCode}
               </small>
-            </li>
-          ))}
-        </ul>
+            </Item>
+          )}
+        </ListBox>
       )}
     </div>
   );
