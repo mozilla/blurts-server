@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     }
     await verifyEmailHash(token);
     return NextResponse.redirect(
-      process.env.SERVER_URL + "/user/settings",
+      (process.env.SERVER_URL ?? "") + "/user/settings",
       301
     );
   } catch (e) {

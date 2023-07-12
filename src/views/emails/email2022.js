@@ -5,7 +5,7 @@
 import AppConstants from '../../appConstants.js'
 import { getStringLookup } from '../../utils/fluent.js'
 
-const companyAddress = '2 Harrison St. #175, San Francisco, California 94105 USA'
+const companyAddress = '149 New Montgomery St, 4th Floor, San Francisco, CA 94105'
 const links = (/** @type {{ utmCampaign: string; }} */ data) => ({
   faq: 'https://support.mozilla.org/kb/firefox-monitor-faq',
   hibp: 'https://haveibeenpwned.com/',

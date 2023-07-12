@@ -10,9 +10,10 @@ import {
   req,
 } from "../../../utils/hibp.js";
 import { upsertBreaches } from "../../../db/tables/breaches.js";
+import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
 const log = mozlog("hibp");
-let breaches: HibpLikeDbBreach[];
+let breaches: Array<Breach | HibpLikeDbBreach>;
 
 export async function getBreaches() {
   if (breaches) {
@@ -26,7 +27,7 @@ export async function getBreaches() {
 
   // if "breaches" table does not return results, fall back to HIBP request
   if (breaches?.length < 1) {
-    const breachesResponse = await req("/breaches");
+    const breachesResponse = (await req("/breaches")) as Breach[];
     log.debug(
       "loadBreachesIntoApp",
       `loaded breaches from HIBP: ${breachesResponse.length}`

@@ -2,23 +2,25 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { UserBreaches } from "../../(authenticated)/user/breaches/breaches.d";
+import { UserBreaches } from "../../../functions/server/getUserBreaches";
 import { getL10n } from "../../../functions/server/l10n";
 import { BreachLogo } from "../../../components/server/BreachLogo";
 import { getLocale } from "../../../../utils/fluent.js";
 
 import ImageBreachesNone from "../../../../client/images/breaches-none.svg";
 import ImageBreachesAllResolved from "../../../../client/images/breaches-all-resolved.svg";
+import { HibpLikeDbBreach } from "../../../../utils/hibp";
+import { Breach } from "../../(authenticated)/user/breaches/breaches";
 
 function createResolveSteps(breach: any) {
   const checkedArr = breach.ResolutionsChecked || [];
   const resolveStepsHTML = Object.entries(breach.breachChecklist).map(
     ([key, value]: [string, any]) => `
     <li class="resolve-list-item">
-      <input name="${breach.Id}" value="${key}" type="checkbox" ${
+      <input name="${breach.Id as string}" value="${key}" type="checkbox" ${
       checkedArr.includes(key) ? "checked" : ""
     }>
-      <p>${value.header}<br><i>${value.body}</i></p>
+      <p>${value.header as string}<br><i>${value.body as string}</i></p>
     </li>
    `
   );
@@ -48,11 +50,13 @@ export const BreachesTable = ({ userBreaches }: Props) => {
     });
     const longList = new Intl.ListFormat(locale, { style: "long" });
     const breachRowsHTML = breachesData.verifiedEmails.flatMap((account) => {
-      return account.breaches.map((breach) => {
-        const isHidden = !account.primary || breach.IsResolved; // initial breach hidden state
-        const status = breach.IsResolved ? "resolved" : "unresolved";
+      return account.breaches.map((breach: HibpLikeDbBreach | Breach) => {
+        const isHidden = !account.primary || (breach as Breach).IsResolved; // initial breach hidden state
+        const status = (breach as Breach).IsResolved
+          ? "resolved"
+          : "unresolved";
         const breachDate = Date.parse(breach.BreachDate);
-        const addedDate = Date.parse(breach.AddedDate);
+        const addedDate = Date.parse((breach as Breach).AddedDate);
         const dataClassesTranslated = breach.DataClasses.map((item) =>
           l10n.getString(item)
         );
@@ -74,7 +78,8 @@ export const BreachesTable = ({ userBreaches }: Props) => {
           >
             <summary>
               <span className="breach-company">
-                <BreachLogo breach={breach} htmlTags /> {breach.Title}
+                <BreachLogo breach={breach as HibpLikeDbBreach} htmlTags />{" "}
+                {breach.Title}
               </span>
               <span>{shortList.format(dataClassesTranslated)}</span>
               <span>
@@ -157,7 +162,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
             __html: `
               <div class="zero-state no-breaches-message">
                 <img src="${
-                  ImageBreachesNone.src
+                  ImageBreachesNone.src as string
                 }" alt="" width="136" height="102" />
                 <h2>${l10n.getString("breaches-none-headline")}</h2>
                 <p>
@@ -190,7 +195,7 @@ export const BreachesTable = ({ userBreaches }: Props) => {
             __html: `
               <div class="zero-state all-breaches-resolved-message">
                 <img
-                  src="${ImageBreachesAllResolved.src}"
+                  src="${ImageBreachesAllResolved.src as string}"
                   alt=""
                   width="136"
                   height="102"

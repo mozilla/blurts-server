@@ -9,6 +9,7 @@ import { getBreachesForEmail } from "../../../../utils/hibp";
 import { getSha1 } from "../../../../utils/fxa";
 import { getL10n } from "../../../functions/server/l10n";
 import { getBreachLogo } from "../../../../utils/breachLogo";
+import { Breach } from "../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -23,11 +24,11 @@ export async function POST(request: Request) {
 
   try {
     const allBreaches = await getBreaches();
-    const breaches = await getBreachesForEmail(
+    const breaches = (await getBreachesForEmail(
       getSha1(validatedEmail.email),
       allBreaches,
       false
-    );
+    )) as Breach[];
 
     /** @type {import("../../../../controllers/requestBreachScan").RequestBreachScanSuccessResponse} */
     const successResponse = {

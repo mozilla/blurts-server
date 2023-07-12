@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
-    "build": "next build",
+    "build": "npm run create-location-data && next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
@@ -21,7 +21,8 @@
     "prepare": "husky install",
     "postinstall": "patch-package",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "create-location-data": "ts-node-esm src/scripts/build/createLocationAutocompleteData/index.ts"
   },
   "nodemonConfig": {
     "watch": [
@@ -49,6 +50,7 @@
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
+    "@leeoniya/ufuzzy": "^1.0.8",
     "@sentry/nextjs": "^7.53.1",
     "@sentry/node": "^7.40.0",
     "@sentry/tracing": "^7.38.0",
@@ -78,6 +80,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@google-cloud/functions-framework": "^3.2.0",
     "@playwright/test": "^1.32.3",
     "@storybook/addon-a11y": "^7.0.21",
@@ -88,12 +91,18 @@
     "@storybook/nextjs": "^7.0.18",
     "@storybook/react": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest-axe": "^3.5.5",
+    "@types/adm-zip": "^0.5.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/jwk-to-pem": "^2.0.1",
     "@types/nodemailer": "^6.4.8",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
+    "adm-zip": "^0.5.10",
     "c8": "^7.12.0",
     "eslint": "^8.40.0",
     "eslint-import-resolver-typescript": "^3.5.5",
@@ -104,6 +113,7 @@
     "eslint-plugin-storybook": "^0.6.12",
     "husky": "^8.0.3",
     "jest": "^29.5.0",
+    "jest-axe": "^7.0.1",
     "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.2",
     "node-mocks-http": "^1.12.1",
@@ -114,6 +124,7 @@
     "stylelint": "^15.6.0",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-scss": "^5.0.0",
+    "ts-node": "^10.9.1",
     "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   }

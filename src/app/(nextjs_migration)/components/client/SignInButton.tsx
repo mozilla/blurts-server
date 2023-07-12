@@ -12,7 +12,7 @@ export type Props = {
 };
 
 function initSignIn() {
-  signIn("fxa", { callbackUrl: "/user/breaches" });
+  void signIn("fxa", { callbackUrl: "/user/breaches" });
 }
 
 export const SignInButton = ({ autoSignIn }: Props) => {

@@ -215,7 +215,7 @@ function getResolutionRecsPerBreach(
 function getBodyMessage(body: string, args: any): string {
   const l10n = getL10n();
   const { stringArgs } = args;
-  const companyLink = stringArgs.breachedCompanyLink;
+  const companyLink = stringArgs.breachedCompanyLink as string;
 
   return l10n
     .getString(body, stringArgs)
@@ -246,6 +246,9 @@ function getRecommendationFromResolution(resolution: any, args: any) {
  */
 function filterBreachDataTypes(originalDataTypes: any[]) {
   const relevantDataTypes = Object.values(BreachDataTypes);
+  // This function predates proper use of TypeScript, so we don't have a better
+  // return type than `any` yet:
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return originalDataTypes.filter((d) => relevantDataTypes.includes(d));
 }
 

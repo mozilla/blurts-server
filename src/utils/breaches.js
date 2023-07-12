@@ -8,6 +8,13 @@ import { getSha1 } from './fxa.js'
 import { filterBreachDataTypes } from './breachResolution.js'
 
 /**
+ * @typedef {{
+ *   unverifiedEmails: import('../db/tables/emailAddresses.js').EmailRow[],
+ *   verifiedEmails: BundledVerifiedEmails[],
+ * }} AllEmailsAndBreaches
+ */
+
+/**
  * TODO: deprecate
  * Get all emails and breaches for a user via app.locals
  * This function will be replaced after 'breaches" table is created
@@ -15,7 +22,7 @@ import { filterBreachDataTypes } from './breachResolution.js'
  *
  * @param {*} user
  * @param {*} allBreaches
- * @returns
+ * @returns {Promise<AllEmailsAndBreaches>}
  */
 async function getAllEmailsAndBreaches (user, allBreaches) {
   const monitoredEmails = await getUserEmails(user.id)
@@ -32,6 +39,7 @@ async function getAllEmailsAndBreaches (user, allBreaches) {
 
   // get new breaches since last shown
   for (const emailEntry of verifiedEmails) {
+    /** @type {any[]} */
     const newBreachesForEmail = emailEntry.breaches.filter(breach => breach.AddedDate >= user.breaches_last_shown)
 
     for (const newBreachForEmail of newBreachesForEmail) {
@@ -62,8 +70,19 @@ function addRecencyIndex (foundBreaches) {
 }
 
 /**
- * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: any; }} options
- * @returns {Promise<{ email: string; breaches: any[]; id: number; primary: boolean; verified: boolean; hasNewBreaches?: number; }>}
+ * @typedef {{
+ *   email: string;
+ *   breaches: import('./hibp.js').HibpLikeDbBreach[];
+ *   id: number;
+ *   primary: boolean;
+ *   verified: boolean;
+ *   hasNewBreaches?: number;
+ * }} BundledVerifiedEmails
+ */
+
+/**
+ * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: import('./hibp.js').HibpLikeDbBreach[]; }} options
+ * @returns {Promise<BundledVerifiedEmails>}
  */
 async function bundleVerifiedEmails (options) {
   const { user, email, recordId, recordVerified, allBreaches } = options

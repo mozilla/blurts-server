@@ -3,30 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { ReactNode } from "react";
-import { getServerSession } from "next-auth";
-import { getL10n, getL10nBundles, getLocale } from "../functions/server/l10n";
+import { getL10nBundles, getLocale } from "../functions/server/l10n";
 import { L10nProvider } from "../../contextProviders/localization";
-import { authOptions } from "../api/utils/auth";
-import { Shell } from "./Shell";
-import {
-  ReactAriaI18nProvider,
-  ReactAriaSsrProvider,
-} from "../../contextProviders/react-aria";
+import { ReactAriaI18nProvider } from "../../contextProviders/react-aria";
 
-export default async function Layout({ children }: { children: ReactNode }) {
+export default function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
-  const l10n = getL10n(l10nBundles);
-  const session = await getServerSession(authOptions);
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <ReactAriaSsrProvider>
-        <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
-          <Shell l10n={l10n} session={session}>
-            {children}
-          </Shell>
-        </ReactAriaI18nProvider>
-      </ReactAriaSsrProvider>
+      <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
+        {children}
+      </ReactAriaI18nProvider>
     </L10nProvider>
   );
 }

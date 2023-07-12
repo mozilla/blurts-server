@@ -8,16 +8,16 @@ import { Session } from "next-auth";
 import { signIn, signOut } from "next-auth/react";
 
 export type Props = {
-  session: Session | null;
+  user: Session["user"] | null;
 };
 
 export const UserMenu = (props: Props) => {
   // Placeholder to enable login/logout until we create an actual menu
-  if (!props.session) {
-    return <button onClick={() => signIn("fxa")}>Sign in</button>;
+  if (!props.user) {
+    return <button onClick={() => void signIn("fxa")}>Sign in</button>;
   }
 
   return (
-    <button onClick={() => signOut({ callbackUrl: "/" })}>Sign out</button>
+    <button onClick={() => void signOut({ callbackUrl: "/" })}>Sign out</button>
   );
 };

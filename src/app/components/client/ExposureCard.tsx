@@ -18,10 +18,10 @@ import {
 } from "../server/Icons";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import { ScanResult } from "../../../external/onerep";
-import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
+import { ScanResult } from "../../functions/server/onerep";
+import { HibpLikeDbBreach } from "../../../utils/hibp";
 
-export type Exposure = ScanResult | Breach;
+export type Exposure = ScanResult | HibpLikeDbBreach;
 
 export type ExposureTypElProps = {
   type: Exposure;
@@ -41,7 +41,9 @@ export const ExposureTypeEl = (props: ExposureTypElProps) => {
 };
 
 // Typeguard function
-export function isScanResult(obj: ScanResult | Breach): obj is ScanResult {
+export function isScanResult(
+  obj: ScanResult | HibpLikeDbBreach
+): obj is ScanResult {
   return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }
 
@@ -50,8 +52,9 @@ export type ExposureCardProps = {
   exposureName: string;
   exposureData: Exposure;
   exposureDetailsLink: string;
-  dateFound: string;
+  dateFound: Date;
   statusPillType: StatusPillType;
+  locale: string;
 };
 
 type DetailsFoundProps = {
@@ -67,10 +70,15 @@ export const ExposureCard = (props: ExposureCardProps) => {
     exposureData,
     exposureDetailsLink,
     statusPillType,
+    locale,
   } = props;
 
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
+  const dateFormatter = new Intl.DateTimeFormat(locale, {
+    // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
+    dateStyle: "medium",
+  });
 
   const DetailsFoundItem = (props: DetailsFoundProps) => {
     let headline;
@@ -142,7 +150,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-date-found")}
             </dt>
-            <dd className={styles.hideOnMobile}>{props.dateFound}</dd>
+            <dd className={styles.hideOnMobile}>
+              {dateFormatter.format(props.dateFound)}
+            </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}
             </dt>
@@ -256,10 +266,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
               </dl>
             </div>
             <span className={styles.fixItBtn}>
-              <Button
-                type={"primary"}
-                content={l10n.getString("exposure-card-cta")}
-              />
+              <Button type={"primary"}>
+                {l10n.getString("exposure-card-cta")}
+              </Button>
             </span>
           </div>
         </div>

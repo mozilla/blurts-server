@@ -3,20 +3,35 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import styles from "./page.module.scss";
-import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
+import {
+  canSubscribeToPremium,
+  hasSetupOnerep,
+} from "../../../../../functions/universal/user";
+import { redirect } from "next/navigation";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { View } from "./View";
+import { getUserBreaches } from "../../../../../functions/server/getUserBreaches";
+import { getLocale } from "../../../../../functions/server/l10n";
 
 export default async function DashboardPage() {
   const session = await getServerSession();
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
 
-  return (
-    <div className={styles.wrapper}>
-      <Toolbar session={session}>
-        TODO:{" "}
-        <a href="https://react-spectrum.adobe.com/react-aria/useTabList.html">
-          add a tab list
-        </a>
-      </Toolbar>
-    </div>
-  );
+  if (
+    !hasSetupOnerep(session?.user) &&
+    canSubscribeToPremium({ user: session?.user, countryCode: countryCode })
+  ) {
+    return redirect("/user/welcome/");
+  }
+
+  if (!session?.user) {
+    return redirect("/");
+  }
+
+  const breaches = await getUserBreaches({ user: session.user });
+  const locale = getLocale();
+
+  return <View user={session.user} userBreaches={breaches} locale={locale} />;
 }

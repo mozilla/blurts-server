@@ -14,7 +14,7 @@ import { metropolis } from "./fonts/Metropolis/metropolis";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-export async function generateMetadata(): Promise<Metadata> {
+export function generateMetadata(): Metadata {
   const l10n = getL10n();
   return {
     title: l10n.getString("brand-fx-monitor"),

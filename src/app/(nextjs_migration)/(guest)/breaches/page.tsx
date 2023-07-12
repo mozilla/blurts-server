@@ -7,8 +7,10 @@ import Script from "next/script";
 import "../../../../client/css/partials/allBreaches.css";
 import { getL10n, getLocale } from "../../../functions/server/l10n";
 import { BreachLogo } from "../../../components/server/BreachLogo";
+import { HibpLikeDbBreach } from "../../../../utils/hibp";
+import { Breach } from "../../(authenticated)/user/breaches/breaches";
 
-export async function generateMetadata() {
+export function generateMetadata() {
   const l10n = getL10n();
   return {
     title: l10n.getString("breach-all-meta-title"),
@@ -94,14 +96,14 @@ export default async function PublicScan() {
   );
 }
 
-function BreachCard(props: { breach: any }) {
+function BreachCard(props: { breach: HibpLikeDbBreach | Breach }) {
   const l10n = getL10n();
 
   return (
     <a href={`/breach-details/${props.breach.Name}`} className="breach-card">
       <h3>
         <span className="logo-wrapper">
-          <BreachLogo breach={props.breach} />
+          <BreachLogo breach={props.breach as HibpLikeDbBreach} />
         </span>
         <span>{props.breach.Title}</span>
       </h3>
