@@ -4,13 +4,9 @@
 
 "use client";
 
-import { ReactNode, useRef } from "react";
+import { useRef } from "react";
 import { AriaTextFieldProps, useTextField } from "react-aria";
 import styles from "./InputField.module.scss";
-
-export type Props = {
-  children: ReactNode;
-};
 
 export const InputField = (props: AriaTextFieldProps) => {
   const { errorMessage, isRequired, label, validationState, value } = props;
@@ -26,7 +22,7 @@ export const InputField = (props: AriaTextFieldProps) => {
     <div className={styles.input}>
       <label {...labelProps} className={styles.inputLabel}>
         {label}
-        {isRequired ? "*" : ""}
+        {isRequired ? <span aria-hidden="true">*</span> : ""}
       </label>
       <input
         {...inputProps}

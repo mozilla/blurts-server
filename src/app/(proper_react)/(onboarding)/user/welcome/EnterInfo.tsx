@@ -6,7 +6,7 @@
 
 import Image from "next/image";
 import { Session } from "next-auth";
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
