@@ -262,10 +262,6 @@
   font: $text-body-md;
   color: $color-grey-50;
 
-  h4 {
-    font-weight: 700;
-  }
-
   .confirmButtonWrapper {
     align-self: center;
     display: flex;
@@ -281,7 +277,6 @@
     gap: $spacing-md;
     padding: 0;
 
-    h4,
     li::marker {
       display: inline-block;
       font-weight: 700;

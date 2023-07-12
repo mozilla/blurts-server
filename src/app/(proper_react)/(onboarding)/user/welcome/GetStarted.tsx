@@ -60,14 +60,14 @@ export const GetStarted = (props: Props) => {
               }
               illustration={<Image src={howItWorksHero} alt="" />}
             >
-              <div className={`${viewStyles.dialogContents}`}>
+              <div className={viewStyles.dialogContents}>
                 <ol className={viewStyles.list}>
                   <li>
-                    <h4>
+                    <strong>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-heading"
                       )}
-                    </h4>
+                    </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-content",
@@ -79,11 +79,11 @@ export const GetStarted = (props: Props) => {
                     </p>
                   </li>
                   <li>
-                    <h4>
+                    <strong>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step2-heading"
                       )}
-                    </h4>
+                    </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step2-content"
@@ -91,11 +91,11 @@ export const GetStarted = (props: Props) => {
                     </p>
                   </li>
                   <li>
-                    <h4>
+                    <strong>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step3-heading"
                       )}
-                    </h4>
+                    </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step3-content"

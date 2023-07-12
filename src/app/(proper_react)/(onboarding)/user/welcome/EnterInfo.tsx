@@ -137,23 +137,23 @@ export const EnterInfo = (props: Props) => {
 
         <ol className={viewStyles.list}>
           <li>
-            <h4>
+            <strong>
               {l10n.getString("onboarding-enter-details-dialog-name-label")}
-            </h4>
+            </strong>
             <p>{l10n.getString("onboarding-enter-details-dialog-name-text")}</p>
           </li>
           <li>
-            <h4>
+            <strong>
               {l10n.getString("onboarding-enter-details-dialog-location-label")}
-            </h4>
+            </strong>
             <p>
               {l10n.getString("onboarding-enter-details-dialog-location-text")}
             </p>
           </li>
           <li>
-            <h4>
+            <strong>
               {l10n.getString("onboarding-enter-details-dialog-date-label")}
-            </h4>
+            </strong>
             <p>{l10n.getString("onboarding-enter-details-dialog-date-text")}</p>
           </li>
         </ol>

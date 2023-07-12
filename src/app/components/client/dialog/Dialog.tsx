@@ -62,9 +62,9 @@ export const Dialog = ({
         <div className={styles.illustrationWrapper}>{illustration}</div>
       )}
       {title && (
-        <h3 {...titleProps} className={styles.title}>
+        <div {...titleProps} className={styles.title}>
           {title}
-        </h3>
+        </div>
       )}
       {children}
     </div>
