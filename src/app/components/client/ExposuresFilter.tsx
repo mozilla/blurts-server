@@ -29,7 +29,6 @@ import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
-import { isDeepStrictEqual } from "util";
 
 export type FilterState = {
   exposureType: string;
@@ -62,18 +61,19 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     explainerDialogState.open();
   };
 
+  // Explainer dialog
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
     explainerDialogState
   );
 
-  const overlayTriggerState = useOverlayTriggerState({});
+  // Filter Dialog
+  const filterDialogState = useOverlayTriggerState({});
   const filterBtnRef = useRef<HTMLButtonElement>(null);
-
   const { overlayProps } = useOverlayTrigger(
     { type: "dialog" },
-    overlayTriggerState
+    filterDialogState
   );
 
   const explainerContentExposureType = (
@@ -137,7 +137,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
 
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
-    { onPress: () => overlayTriggerState.close() },
+    { onPress: () => filterDialogState.close() },
     dismissButtonRef
   ).buttonProps;
 
@@ -257,7 +257,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        onClick={() => overlayTriggerState.close()}
+        onClick={() => filterDialogState.close()}
       >
         <CloseBtn
           alt={l10n.getString("modal-close-alt")}
@@ -276,7 +276,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
             <button
               ref={filterBtnRef}
               onClick={() => {
-                overlayTriggerState.open();
+                filterDialogState.open();
               }}
               aria-label={l10n.getString("popover-open-filter-settings-alt")}
             >
@@ -335,9 +335,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           </Dialog>
         </ModalOverlay>
       )}
-
-      {overlayTriggerState.isOpen && (
-        <Popover state={overlayTriggerState} triggerRef={filterBtnRef}>
+      {filterDialogState.isOpen && (
+        <Popover state={filterDialogState} triggerRef={filterBtnRef}>
           <div className={styles.exposuresFilterWrapper} {...overlayProps}>
             {ExposuresFilterContent}
           </div>
