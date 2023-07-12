@@ -136,13 +136,13 @@ export const EnterInfo = (props: Props) => {
         </strong>
 
         <ol className={viewStyles.list}>
-          <li className={viewStyles.listItem}>
+          <li>
             <h4>
               {l10n.getString("onboarding-enter-details-dialog-name-label")}
             </h4>
             <p>{l10n.getString("onboarding-enter-details-dialog-name-text")}</p>
           </li>
-          <li className={viewStyles.listItem}>
+          <li>
             <h4>
               {l10n.getString("onboarding-enter-details-dialog-location-label")}
             </h4>
@@ -150,7 +150,7 @@ export const EnterInfo = (props: Props) => {
               {l10n.getString("onboarding-enter-details-dialog-location-text")}
             </p>
           </li>
-          <li className={viewStyles.listItem}>
+          <li>
             <h4>
               {l10n.getString("onboarding-enter-details-dialog-date-label")}
             </h4>
