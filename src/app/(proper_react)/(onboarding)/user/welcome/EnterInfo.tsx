@@ -208,13 +208,16 @@ export const EnterInfo = (props: Props) => {
     >
       <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
       <div className={viewStyles.dialogContents}>
-        <ul className={enterInfoStyles.infoList}>
+        <dl className={enterInfoStyles.infoList}>
           {userDetailsData.map(({ key, label, displayValue }) => (
-            <li key={key} className={enterInfoStyles.infoItem}>
-              {label}: <strong>{displayValue}</strong>
-            </li>
+            <>
+              <dt key={key} className={enterInfoStyles.infoItem}>
+                {label}:
+              </dt>
+              <dd>{displayValue}</dd>
+            </>
           ))}
-        </ul>
+        </dl>
       </div>
       <div className={viewStyles.stepButtonWrapper}>
         <Button
