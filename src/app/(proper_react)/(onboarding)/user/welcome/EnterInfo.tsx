@@ -25,7 +25,7 @@ export type Props = {
   user: Session["user"];
 };
 
-// TODO: Add more sophisticated for location data
+// TODO: Add more sophisticated validation for location data
 const getIsValidInfo = (value: string) => value !== "";
 
 export const EnterInfo = (props: Props) => {

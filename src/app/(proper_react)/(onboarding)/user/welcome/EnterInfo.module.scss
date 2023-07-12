@@ -7,7 +7,7 @@
   padding: $spacing-lg 0;
   width: 100%;
 
-  @media screen and (max-width: $content-md) {
+  @media screen and (max-width: $screen-lg) {
     grid-template-columns: 1fr;
   }
 }
@@ -17,6 +17,10 @@
   padding: 0;
   list-style: none;
   gap: $spacing-lg;
+
+  @media screen and (max-width: $screen-sm) {
+    columns: 1;
+  }
 }
 
 .infoItem {
