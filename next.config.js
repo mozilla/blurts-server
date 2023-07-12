@@ -34,6 +34,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "profile.stage.mozaws.net",
       },
+      {
+        protocol: "https",
+        hostname: "profile.accounts.firefox.com",
+      },
       // Stores breached companies' logos
       {
         protocol: "https",
