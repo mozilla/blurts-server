@@ -210,12 +210,12 @@ export const EnterInfo = (props: Props) => {
       <div className={viewStyles.dialogContents}>
         <dl className={enterInfoStyles.infoList}>
           {userDetailsData.map(({ key, label, displayValue }) => (
-            <>
-              <dt key={key} className={enterInfoStyles.infoItem}>
-                {label}:
-              </dt>
-              <dd>{displayValue}</dd>
-            </>
+            <span key={key} className={enterInfoStyles.infoItem}>
+              <dt>{label}:</dt>
+              <dd>
+                <strong>{displayValue}</strong>
+              </dd>
+            </span>
           ))}
         </dl>
       </div>

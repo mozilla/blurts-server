@@ -12,11 +12,14 @@
   }
 }
 .infoList {
+  align-items: center;
   columns: 2;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  font: $text-body-md;
   gap: $spacing-lg;
+  list-style: none;
+  margin: 0;
+  padding-inline-start: var(--exposureDetailsIconWidth);
+  padding: 0;
 
   @media screen and (max-width: $screen-sm) {
     columns: 1;
@@ -24,5 +27,7 @@
 }
 
 .infoItem {
+  display: flex;
+  gap: $spacing-xs;
   padding: $spacing-sm 0;
 }
