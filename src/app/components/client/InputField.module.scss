@@ -36,6 +36,8 @@
     margin: 0 $spacing-sm;
     padding: 0 $spacing-sm;
     position: absolute;
+    // the negative y-offset is 50% of the line-height plus a bit extra for
+    // visual balance in relation to the input border endings left and right
     transform: translateY(calc(100% - 0.85em));
   }
 }
