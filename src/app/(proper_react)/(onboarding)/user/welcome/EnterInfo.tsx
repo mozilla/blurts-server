@@ -6,7 +6,7 @@
 
 import Image from "next/image";
 import { Session } from "next-auth";
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
@@ -29,8 +29,6 @@ export type Props = {
 const getIsValidInfo = (value: string) => value !== "";
 
 export const EnterInfo = (props: Props) => {
-  const hasMounted = useRef(false);
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
@@ -101,7 +99,9 @@ export const EnterInfo = (props: Props) => {
       type: "date",
       placeholder: "",
       value: dateOfBirth,
-      displayValue: new Date(dateOfBirth).toLocaleDateString("en-US"),
+      displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
+        dateStyle: "medium",
+      }),
       errorMessage: l10n.getString(
         "onboarding-enter-details-input-error-message"
       ),
@@ -109,26 +109,21 @@ export const EnterInfo = (props: Props) => {
     },
   ];
 
-  const validateEnteredInfo = () => {
-    const invalidInputKeys = userDetailsData
+  const getInvalidFields = () =>
+    userDetailsData
       .filter(({ value }) => !getIsValidInfo(value))
       .map(({ key }) => key);
 
-    setInvalidInputs(invalidInputKeys);
-  };
+  const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
 
-  useEffect(() => {
-    if (!hasMounted.current) {
-      hasMounted.current = true;
-      return;
-    }
-
-    if (!invalidInputs?.length) {
+    const invalidInputKeys = getInvalidFields();
+    if (!invalidInputKeys?.length) {
       confirmDialogState.open();
+    } else {
+      setInvalidInputs(invalidInputKeys);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [invalidInputs]);
+  };
 
   const WhyDoWeNeedInfoDialog = () => (
     <Dialog illustration={<Image src={whyWeNeedInfoHero} alt="" />}>
@@ -187,7 +182,7 @@ export const EnterInfo = (props: Props) => {
 
         <div className={viewStyles.confirmButtonWrapper}>
           <Button
-            type="primary"
+            variant="primary"
             onClick={() => explainerDialogState.close()}
             autoFocus={true}
             className={viewStyles.startButton}
@@ -221,7 +216,7 @@ export const EnterInfo = (props: Props) => {
       </div>
       <div className={viewStyles.stepButtonWrapper}>
         <Button
-          type="secondary"
+          variant="secondary"
           onClick={() => confirmDialogState.close()}
           className={enterInfoStyles.startButton}
         >
@@ -230,7 +225,7 @@ export const EnterInfo = (props: Props) => {
           )}
         </Button>
         <Button
-          type="primary"
+          variant="primary"
           onClick={() => props.onDataSaved()}
           autoFocus={true}
           className={enterInfoStyles.startButton}
@@ -256,53 +251,56 @@ export const EnterInfo = (props: Props) => {
           {l10n.getString("onboarding-enter-details-why-button-label")}
         </button>
       </p>
-      <div className={enterInfoStyles.inputContainer}>
-        {userDetailsData.map(
-          ({
-            key,
-            errorMessage,
-            label,
-            onChange,
-            placeholder,
-            type,
-            value,
-          }) => (
-            <InputField
-              key={key}
-              errorMessage={errorMessage}
-              label={label}
-              isRequired={true}
-              onChange={onChange}
-              placeholder={placeholder}
-              type={type}
-              validationState={
-                !getIsValidInfo(value) && invalidInputs.includes(key)
-                  ? "invalid"
-                  : "valid"
-              }
-              value={value}
-            />
-          )
-        )}
-      </div>
-      <div className={viewStyles.stepButtonWrapper}>
-        <Button
-          type="secondary"
-          onClick={() => props.onGoBack()}
-          className={enterInfoStyles.startButton}
-        >
-          {l10n.getString("onboarding-steps-enter-info-back")}
-        </Button>
-        <Button
-          {...confirmDialogTrigger.triggerProps}
-          type="primary"
-          onClick={validateEnteredInfo}
-          autoFocus={true}
-          className={enterInfoStyles.startButton}
-        >
-          {l10n.getString("onboarding-steps-find-exposures-label")}
-        </Button>
-      </div>
+
+      <form onSubmit={handleOnSubmit}>
+        <div className={enterInfoStyles.inputContainer}>
+          {userDetailsData.map(
+            ({
+              key,
+              errorMessage,
+              label,
+              onChange,
+              placeholder,
+              type,
+              value,
+            }) => (
+              <InputField
+                key={key}
+                errorMessage={errorMessage}
+                label={label}
+                isRequired={true}
+                onChange={onChange}
+                placeholder={placeholder}
+                type={type}
+                validationState={
+                  !getIsValidInfo(value) && invalidInputs.includes(key)
+                    ? "invalid"
+                    : "valid"
+                }
+                value={value}
+              />
+            )
+          )}
+        </div>
+        <div className={viewStyles.stepButtonWrapper}>
+          <Button
+            variant="secondary"
+            onClick={() => props.onGoBack()}
+            className={enterInfoStyles.startButton}
+            type="button"
+          >
+            {l10n.getString("onboarding-steps-enter-info-back")}
+          </Button>
+          <Button
+            {...confirmDialogTrigger.triggerProps}
+            variant="primary"
+            autoFocus={true}
+            className={enterInfoStyles.startButton}
+          >
+            {l10n.getString("onboarding-steps-find-exposures-label")}
+          </Button>
+        </div>
+      </form>
 
       {explainerDialogState.isOpen && (
         <ModalOverlay

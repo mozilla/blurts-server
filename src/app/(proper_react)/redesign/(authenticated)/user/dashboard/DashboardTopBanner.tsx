@@ -122,7 +122,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             <h3>{content.headline}</h3>
             <p>{content.description}</p>
             <span className={styles.cta}>
-              <Button type="primary" small onClick={content.cta.onClick}>
+              <Button variant="primary" small onClick={content.cta.onClick}>
                 {content.cta.content}
               </Button>
             </span>

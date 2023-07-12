@@ -105,7 +105,7 @@ export const GetStarted = (props: Props) => {
                 </ol>
                 <div className={viewStyles.confirmButtonWrapper}>
                   <Button
-                    type="primary"
+                    variant="primary"
                     onClick={() => explainerDialogState.close()}
                     autoFocus={true}
                     className={viewStyles.startButton}
@@ -121,7 +121,7 @@ export const GetStarted = (props: Props) => {
         )}
       </p>
       <div className={viewStyles.stepButtonWrapper}>
-        <Button type="primary" onClick={() => props.onStart()}>
+        <Button variant="primary" onClick={() => props.onStart()}>
           {l10n.getString("onboarding-get-started-cta-label")}
         </Button>
       </div>
