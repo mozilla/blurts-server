@@ -4,67 +4,155 @@
 
 "use client";
 
-import { useDeferredValue, useEffect, useRef, useState } from "react";
 import {
-  AriaListBoxProps,
+  Key,
+  ReactNode,
+  RefObject,
+  useDeferredValue,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import {
+  AriaListBoxOptions,
+  AriaPopoverProps,
   AriaTextFieldProps,
-  mergeProps,
-  useFocusRing,
+  DismissButton,
+  Overlay,
+  useComboBox,
   useListBox,
   useOption,
+  usePopover,
 } from "react-aria";
-import { Item, ListState, Selection, useListState } from "react-stately";
+import {
+  Item,
+  OverlayTriggerState,
+  useComboBoxState,
+  ListState,
+  ComboBoxStateOptions,
+} from "react-stately";
 import {
   MatchingLocations,
   SearchLocationParams,
   SearchLocationResults,
 } from "../../api/v1/location-autocomplete/route";
-import { InputField } from "../../components/client/InputField";
+import { RelevantLocation } from "../../../scripts/build/createLocationAutocompleteData/types";
+
 import styles from "./LocationAutocompleteInput.module.scss";
 
-function ListBox<T extends object>(props: AriaListBoxProps<T>) {
-  const state = useListState(props);
-  const ref = useRef(null);
-  const { listBoxProps } = useListBox(props, state, ref);
+const useInputWidth = (ref: RefObject<HTMLInputElement>) => {
+  const [width, setWidth] = useState<number>(0);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(ref?.current?.clientWidth || 0);
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [ref]);
+
+  return width;
+};
+
+interface PopoverProps extends AriaPopoverProps {
+  children: React.ReactNode;
+  state: OverlayTriggerState;
+  isVisible: boolean;
+}
+
+function Popover({ children, state, isVisible, ...props }: PopoverProps) {
+  const { popoverProps } = usePopover(props, state);
+
+  // The <DismissButton> components allow screen reader users
+  // to dismiss the popover easily.
+  return (
+    <Overlay>
+      <div
+        {...popoverProps}
+        ref={props.popoverRef as React.RefObject<HTMLDivElement>}
+        style={{
+          ...popoverProps.style,
+          background: "lightgray",
+          border: isVisible ? "1px solid green" : "none",
+        }}
+      >
+        <DismissButton onDismiss={() => state.close()} />
+        {children}
+        <DismissButton onDismiss={() => state.close()} />
+      </div>
+    </Overlay>
+  );
+}
+
+interface ListBoxProps extends AriaListBoxOptions<unknown> {
+  state: ListState<object>;
+  listBoxRef: RefObject<HTMLUListElement>;
+  inputRef: RefObject<HTMLInputElement>;
+}
+
+function ListBox(props: ListBoxProps) {
+  const { listBoxRef, inputRef, state } = props;
+  const { listBoxProps } = useListBox(props, state, listBoxRef);
+
+  const inputWidth = useInputWidth(inputRef);
 
   return (
     <ul
       {...listBoxProps}
-      ref={ref}
+      ref={listBoxRef}
       style={{
-        border: "1px solid black",
-        listStyle: "none",
         margin: 0,
-        overflow: "auto",
         padding: 0,
+        listStyle: "none",
+        width: `${inputWidth}px`,
       }}
     >
       {[...state.collection].map((item) => (
-        <div key={item.key}>
-          <Option key={item.key} item={item} state={state} />
-        </div>
+        <Option key={item.key} item={item} state={state} />
       ))}
     </ul>
   );
 }
 
-type OptionProps<T> = {
-  // TODO: Figure out type of item
-  item: any;
-  state: ListState<T>;
-};
+interface OptionProps extends AriaListBoxOptions<unknown> {
+  item: {
+    key: Key;
+    rendered: ReactNode;
+  };
+  state: ListState<object>;
+}
 
-function Option<T extends object>({ item, state }: OptionProps<T>) {
+function Option({ item, state }: OptionProps) {
   const ref = useRef(null);
-  const { optionProps, isSelected } = useOption({ key: item.key }, state, ref);
-  const { focusProps } = useFocusRing();
+  const { optionProps, isSelected, isFocused, isDisabled } = useOption(
+    { key: item.key },
+    state,
+    ref
+  );
+
+  let backgroundColor;
+  let color = "black";
+
+  if (isSelected) {
+    backgroundColor = "blueviolet";
+    color = "white";
+  } else if (isFocused) {
+    backgroundColor = "gray";
+  } else if (isDisabled) {
+    backgroundColor = "transparent";
+    color = "gray";
+  }
 
   return (
     <li
-      {...mergeProps(optionProps, focusProps)}
+      {...optionProps}
       ref={ref}
       style={{
-        background: isSelected ? "lightgray" : "transparent",
+        background: backgroundColor,
+        color: color,
+        padding: "2px 5px",
+        outline: "none",
+        cursor: "pointer",
       }}
     >
       {item.rendered}
@@ -98,14 +186,85 @@ const getLocationSuggestions = async ({
   }
 };
 
+interface ComboBoxProps extends ComboBoxStateOptions<object> {
+  items: Array<RelevantLocation>;
+}
+
+function ComboBox(props: ComboBoxProps) {
+  const { errorMessage, label, isRequired, validationState } = props;
+  const inputRef = useRef(null);
+  const listBoxRef = useRef(null);
+  const popoverRef = useRef(null);
+  const state = useComboBoxState({ ...props });
+  const { inputProps, listBoxProps, labelProps, errorMessageProps } =
+    useComboBox(
+      {
+        ...props,
+        inputRef,
+        listBoxRef,
+        popoverRef,
+      },
+      state
+    );
+  const isInvalid = validationState === "invalid";
+  const showError = errorMessage && isInvalid;
+
+  return (
+    <>
+      <div className={styles.locationInput}>
+        <label {...labelProps} className={styles.inputLabel}>
+          {label}
+          {isRequired ? <span aria-hidden="true">*</span> : ""}
+        </label>
+        <input
+          {...inputProps}
+          ref={inputRef}
+          className={`${styles.inputField} ${
+            !inputProps.value ? styles.noValue : ""
+          } ${isInvalid ? styles.hasError : ""}`}
+        />
+        {showError && (
+          <div {...errorMessageProps} className={styles.inputMessage}>
+            {errorMessage}
+          </div>
+        )}
+      </div>
+      {state.isOpen && (
+        <Popover
+          isVisible={props.items?.length > 0}
+          popoverRef={popoverRef}
+          state={state}
+          triggerRef={inputRef}
+        >
+          <ListBox
+            {...listBoxProps}
+            listBoxRef={listBoxRef}
+            inputRef={inputRef}
+            state={state}
+          />
+        </Popover>
+      )}
+    </>
+  );
+}
+
+function getLocationString(location: RelevantLocation) {
+  const { name, stateCode, countryCode } = location;
+  return `${name}, ${stateCode}, ${countryCode}`;
+}
+
+function getLocationStringByKey(locations: Array<RelevantLocation>, key: Key) {
+  const location = locations.find(({ id }) => id === key);
+  return location ? getLocationString(location) : "";
+}
+
 export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
-  const [locationSuggestions, setLocationSuggestions] =
-    useState<MatchingLocations>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
 
-  const [selectedIds, setSelectedIds] = useState<Selection>(new Set());
-  const hasSelected = selectedIds instanceof Set && selectedIds.size;
+  const [locationSuggestions, setLocationSuggestions] =
+    useState<MatchingLocations>([]);
+  const [selectedKey, setSelectedKey] = useState<Key>("");
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -139,51 +298,54 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   }, [deferredSearchQuery]);
 
   useEffect(() => {
-    if (!hasSelected) {
+    if (!selectedKey) {
       return;
     }
 
-    const selectedLocation = locationSuggestions.find(({ id }) =>
-      selectedIds.has(id)
+    const locationString = getLocationStringByKey(
+      locationSuggestions,
+      selectedKey
     );
-    if (selectedLocation) {
-      const { name, stateCode, countryCode } = selectedLocation;
-      const locationString = `${name}, ${stateCode}, ${countryCode}`;
-      setSearchQuery(locationString);
-    }
-  }, [hasSelected, selectedIds, locationSuggestions]);
+    setSearchQuery(locationString);
+  }, [selectedKey, locationSuggestions]);
 
   const handleOnChange = (inputValue: string) => {
-    if (hasSelected) {
-      setSelectedIds(new Set());
+    const locationString = getLocationStringByKey(
+      locationSuggestions,
+      selectedKey
+    );
+    if (locationString && locationString !== inputValue) {
+      setSelectedKey("");
     }
 
     setSearchQuery(inputValue);
     props.onChange?.(inputValue);
   };
 
-  return (
-    <div className={styles.locationInput}>
-      <InputField {...props} onChange={handleOnChange} value={searchQuery} />
+  const handleOnSelectionChange = (key: Key) => {
+    setSelectedKey(key);
+  };
 
-      {locationSuggestions && locationSuggestions.length > 0 && (
-        <ListBox
-          items={locationSuggestions}
-          selectedKeys={selectedIds}
-          selectionMode="single"
-          onSelectionChange={setSelectedIds}
-        >
-          {({ id, name, stateCode, countryCode }) => (
-            <Item key={id}>
-              {name}{" "}
-              <small>
-                {" "}
-                {stateCode}, {countryCode}
-              </small>
-            </Item>
-          )}
-        </ListBox>
-      )}
-    </div>
+  return (
+    <ComboBox
+      {...props}
+      allowsCustomValue={false}
+      allowsEmptyCollection={true}
+      items={locationSuggestions}
+      onInputChange={handleOnChange}
+      onSelectionChange={handleOnSelectionChange}
+      selectedKey={selectedKey}
+      shouldCloseOnBlur={true}
+    >
+      {(location) => {
+        const relevantLocation = location as RelevantLocation;
+        const textValue = getLocationString(relevantLocation);
+        return (
+          <Item key={relevantLocation.id} textValue={textValue}>
+            {textValue}
+          </Item>
+        );
+      }}
+    </ComboBox>
   );
 };
