@@ -16,8 +16,7 @@ import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
 import { InputField } from "../../../../components/client/InputField";
 
-import enterInfoStyles from "./EnterInfo.module.scss";
-import viewStyles from "./View.module.scss";
+import styles from "./EnterInfo.module.scss";
 
 export type Props = {
   onDataSaved: () => void;
@@ -127,15 +126,13 @@ export const EnterInfo = (props: Props) => {
 
   const WhyDoWeNeedInfoDialog = () => (
     <Dialog illustration={<Image src={whyWeNeedInfoHero} alt="" />}>
-      <div
-        className={`${viewStyles.dialogContents} ${enterInfoStyles.dialogContents}`}
-      >
+      <div className={styles.dialogContents}>
         <p>{l10n.getString("onboarding-enter-details-dialog")}</p>
         <strong>
           {l10n.getString("onboarding-enter-details-diaglog-subheader")}
         </strong>
 
-        <ol className={viewStyles.list}>
+        <ol className={styles.list}>
           <li>
             <strong>
               {l10n.getString("onboarding-enter-details-dialog-name-label")}
@@ -180,12 +177,12 @@ export const EnterInfo = (props: Props) => {
           )}
         </p>
 
-        <div className={viewStyles.confirmButtonWrapper}>
+        <div className={styles.confirmButtonWrapper}>
           <Button
             variant="primary"
             onClick={() => explainerDialogState.close()}
             autoFocus={true}
-            className={viewStyles.startButton}
+            className={styles.startButton}
           >
             {l10n.getString(
               "onboarding-get-started-how-it-works-dialog-confirm-label"
@@ -201,10 +198,10 @@ export const EnterInfo = (props: Props) => {
       title={l10n.getString("onboarding-enter-details-comfirm-dialog-title")}
     >
       <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
-      <div className={viewStyles.dialogContents}>
-        <dl className={enterInfoStyles.infoList}>
+      <div className={styles.dialogContents}>
+        <dl className={styles.infoList}>
           {userDetailsData.map(({ key, label, displayValue }) => (
-            <span key={key} className={enterInfoStyles.infoItem}>
+            <span key={key} className={styles.infoItem}>
               <dt>{label}:</dt>
               <dd>
                 <strong>{displayValue}</strong>
@@ -213,11 +210,11 @@ export const EnterInfo = (props: Props) => {
           ))}
         </dl>
       </div>
-      <div className={viewStyles.stepButtonWrapper}>
+      <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
           onClick={() => confirmDialogState.close()}
-          className={enterInfoStyles.startButton}
+          className={styles.startButton}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-edit"
@@ -227,7 +224,7 @@ export const EnterInfo = (props: Props) => {
           variant="primary"
           onClick={() => props.onDataSaved()}
           autoFocus={true}
-          className={enterInfoStyles.startButton}
+          className={styles.startButton}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm"
@@ -238,21 +235,21 @@ export const EnterInfo = (props: Props) => {
   );
 
   return (
-    <div className={viewStyles.stepContent}>
+    <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-enter-details-title")}</h1>
       <p>
         {l10n.getString("onboarding-enter-details-text")}
         <button
           {...explainerDialogTrigger.triggerProps}
           onClick={() => explainerDialogState.open()}
-          className={viewStyles.explainerTrigger}
+          className={styles.explainerTrigger}
         >
           {l10n.getString("onboarding-enter-details-why-button-label")}
         </button>
       </p>
 
       <form onSubmit={handleOnSubmit}>
-        <div className={enterInfoStyles.inputContainer}>
+        <div className={styles.inputContainer}>
           {userDetailsData.map(
             ({
               key,
@@ -281,11 +278,11 @@ export const EnterInfo = (props: Props) => {
             )
           )}
         </div>
-        <div className={viewStyles.stepButtonWrapper}>
+        <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
             onClick={() => props.onGoBack()}
-            className={enterInfoStyles.startButton}
+            className={styles.startButton}
             type="button"
           >
             {l10n.getString("onboarding-steps-enter-info-back")}
@@ -294,7 +291,7 @@ export const EnterInfo = (props: Props) => {
             {...confirmDialogTrigger.triggerProps}
             variant="primary"
             autoFocus={true}
-            className={enterInfoStyles.startButton}
+            className={styles.startButton}
           >
             {l10n.getString("onboarding-steps-find-exposures-label")}
           </Button>

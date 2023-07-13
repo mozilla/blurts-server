@@ -13,7 +13,7 @@ import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay"
 import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
 
-import viewStyles from "./View.module.scss";
+import styles from "./GetStarted.module.scss";
 
 export type Props = {
   onStart: () => void;
@@ -28,7 +28,7 @@ export const GetStarted = (props: Props) => {
   );
 
   return (
-    <div className={viewStyles.stepContent}>
+    <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
       <p>{l10n.getString("onboarding-get-started-content-data")}</p>
       <p>{l10n.getString("onboarding-get-started-content-price")}</p>
@@ -36,7 +36,7 @@ export const GetStarted = (props: Props) => {
         <button
           {...explainerDialogTrigger.triggerProps}
           onClick={() => explainerDialogState.open()}
-          className={viewStyles.explainerTrigger}
+          className={styles.explainerTrigger}
         >
           {l10n.getString("onboarding-get-started-content-explainer")}
         </button>
@@ -60,8 +60,8 @@ export const GetStarted = (props: Props) => {
               }
               illustration={<Image src={howItWorksHero} alt="" />}
             >
-              <div className={viewStyles.dialogContents}>
-                <ol className={viewStyles.list}>
+              <div className={styles.dialogContents}>
+                <ol className={styles.list}>
                   <li>
                     <strong>
                       {l10n.getString(
@@ -103,12 +103,12 @@ export const GetStarted = (props: Props) => {
                     </p>
                   </li>
                 </ol>
-                <div className={viewStyles.confirmButtonWrapper}>
+                <div className={styles.confirmButtonWrapper}>
                   <Button
                     variant="primary"
                     onClick={() => explainerDialogState.close()}
                     autoFocus={true}
-                    className={viewStyles.startButton}
+                    className={styles.startButton}
                   >
                     {l10n.getString(
                       "onboarding-get-started-how-it-works-dialog-confirm-label"
@@ -120,7 +120,7 @@ export const GetStarted = (props: Props) => {
           </ModalOverlay>
         )}
       </p>
-      <div className={viewStyles.stepButtonWrapper}>
+      <div className={styles.stepButtonWrapper}>
         <Button variant="primary" onClick={() => props.onStart()}>
           {l10n.getString("onboarding-get-started-cta-label")}
         </Button>
