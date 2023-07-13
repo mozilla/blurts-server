@@ -36,6 +36,7 @@ export const View = (props: Props) => {
       <EnterInfo
         user={props.user}
         onDataSaved={() => setCurrentStep("findExposures")}
+        onGoBack={() => setCurrentStep("getStarted")}
       />
     ) : (
       <GetStarted onStart={() => setCurrentStep("enterInfo")} />

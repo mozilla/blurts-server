@@ -51,7 +51,9 @@
     justify-content: center;
 
     @media screen and (min-width: $screen-md) {
-      height: 33%;
+      // Gives the steps indicator some extra white-space to match the designs
+      // on desktop
+      height: 20%;
     }
   }
 

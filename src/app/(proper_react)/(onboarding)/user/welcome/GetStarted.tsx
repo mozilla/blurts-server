@@ -7,12 +7,13 @@
 import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
-import styles from "./GetStarted.module.scss";
 import howItWorksHero from "./images/welcome-how-it-works.svg";
 import { useL10n } from "../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
 import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
+
+import styles from "./GetStarted.module.scss";
 
 export type Props = {
   onStart: () => void;
@@ -27,7 +28,7 @@ export const GetStarted = (props: Props) => {
   );
 
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
       <p>{l10n.getString("onboarding-get-started-content-data")}</p>
       <p>{l10n.getString("onboarding-get-started-content-price")}</p>
@@ -60,13 +61,13 @@ export const GetStarted = (props: Props) => {
               illustration={<Image src={howItWorksHero} alt="" />}
             >
               <div className={styles.dialogContents}>
-                <ol className={styles.howItWorksList}>
-                  <li className={styles.howItWorksEntry}>
-                    <h4>
+                <ol className={styles.list}>
+                  <li>
+                    <strong>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-heading"
                       )}
-                    </h4>
+                    </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-content",
@@ -77,24 +78,24 @@ export const GetStarted = (props: Props) => {
                       )}
                     </p>
                   </li>
-                  <li className={styles.howItWorksEntry}>
-                    <h4>
+                  <li>
+                    <strong>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step2-heading"
                       )}
-                    </h4>
+                    </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step2-content"
                       )}
                     </p>
                   </li>
-                  <li className={styles.howItWorksEntry}>
-                    <h4>
+                  <li>
+                    <strong>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step3-heading"
                       )}
-                    </h4>
+                    </strong>
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step3-content"
@@ -104,7 +105,7 @@ export const GetStarted = (props: Props) => {
                 </ol>
                 <div className={styles.confirmButtonWrapper}>
                   <Button
-                    type="primary"
+                    variant="primary"
                     onClick={() => explainerDialogState.close()}
                     autoFocus={true}
                     className={styles.startButton}
@@ -119,8 +120,8 @@ export const GetStarted = (props: Props) => {
           </ModalOverlay>
         )}
       </p>
-      <div className={styles.startButtonWrapper}>
-        <Button type="primary" onClick={() => props.onStart()}>
+      <div className={styles.stepButtonWrapper}>
+        <Button variant="primary" onClick={() => props.onStart()}>
           {l10n.getString("onboarding-get-started-cta-label")}
         </Button>
       </div>

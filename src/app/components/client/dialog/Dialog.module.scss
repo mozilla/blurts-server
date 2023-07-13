@@ -13,8 +13,9 @@
   gap: $spacing-xl;
   border-radius: $border-radius-md;
   padding: $layout-sm;
+
   @media screen and (min-width: $screen-lg) {
-    padding: $layout-xl;
+    padding: $layout-lg $layout-xl;
   }
 
   .dismissButton {
