@@ -16,32 +16,82 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { ScanResult } from "../../../../../functions/server/onerep";
 
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
+  userScannedResults?: ScanResult[];
   locale: string;
 };
 
 export const View = (props: Props) => {
   const l10n = useL10n();
 
-  const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
+  const totalBreaches = props.userBreaches?.breachesData.verifiedEmails.reduce(
     (count, emailData) => count + emailData.breaches.length,
     0
   );
+
+  const dateObject = (isoString: string): Date => {
+    return new Date(isoString);
+  };
+
   const initialFilterState: FilterState = {
     exposureType: "",
     dateFound: "",
     status: "",
   };
 
+  // TODO: Add both breaches & scan data, and filter through them with filters output
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
 
-  useEffect(() => {
-    console.log(filters);
-  }, [filters]);
+  // useEffect(() => {
+  //   console.log(filters);
+  // }, [filters]);
+
+  const exposureCards = props.userScannedResults?.map((item, index) => (
+    <li key={index} className={styles.exposureListItem}>
+      <ExposureCard
+        exposureImg={TwitterImage}
+        exposureData={item}
+        exposureName={item.data_broker}
+        exposureDetailsLink=""
+        dateFound={dateObject(item.created_at)}
+        statusPillType="fixed"
+        locale={props.locale}
+      />
+    </li>
+  ));
+
+  // Only breaches exposure cards
+  const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
+    .map((verifiedEmail) => {
+      const breachCardsForThisEmail = verifiedEmail.breaches.map((breach) => {
+        return (
+          <li
+            key={`${verifiedEmail.email}_${breach.Id.toString()}`}
+            className={styles.exposureListItem}
+          >
+            <ExposureCard
+              exposureImg={TwitterImage}
+              exposureData={breach}
+              exposureName={breach.Name}
+              exposureDetailsLink={""}
+              dateFound={breach.AddedDate}
+              statusPillType={"fixed"}
+              locale={props.locale}
+            />
+          </li>
+        );
+      });
+      // Technically a JSX.Element can be `any`, but we know it's not.
+      // (At least, I *think* that's why this rule triggers.)
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return breachCardsForThisEmail;
+    })
+    .flat();
 
   return (
     <div className={styles.wrapper}>
@@ -69,7 +119,8 @@ export const View = (props: Props) => {
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
-            {props.userBreaches.breachesData.verifiedEmails
+            {props.userScannedResults ? exposureCards : breachExposureCards}
+            {/* {props.userBreaches.breachesData.verifiedEmails
               .map((verifiedEmail) => {
                 const breachCardsForThisEmail = verifiedEmail.breaches.map(
                   (breach) => {
@@ -96,7 +147,25 @@ export const View = (props: Props) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-return
                 return breachCardsForThisEmail;
               })
-              .flat()}
+              .flat()
+            }
+            {props.userScannedResults?.map((scannedResult) =>
+              {
+                return (
+                  <>
+                  <ExposureCard 
+                      exposureImg={TwitterImage}
+                      exposureName={""}
+                      exposureDetailsLink={""}
+                      dateFound={dateObject(scannedResult.created_at)}
+                      statusPillType={"fixed"}
+                      locale={props.locale} 
+                      exposureData={scannedResult}                  
+                  />
+                  </>
+                )
+              }
+            )} */}
           </ul>
         </section>
       </div>

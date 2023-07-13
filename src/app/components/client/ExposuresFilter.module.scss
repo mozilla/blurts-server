@@ -70,6 +70,7 @@
   @media screen and (min-width: $screen-sm) {
     width: auto;
     padding: $spacing-xl;
+    overflow-y: hidden;
   }
 
   .exposuresFilterWrapper {
