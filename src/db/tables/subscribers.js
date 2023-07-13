@@ -202,21 +202,6 @@ async function removeFxAData (subscriber) {
 
 /**
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
- * @param {number} onerepProfileId
- */
-async function setOnerepProfileId (subscriber, onerepProfileId) {
-  await knex('subscribers')
-    .where('id', subscriber.id)
-    .update({
-      onerep_profile_id: onerepProfileId,
-      // @ts-ignore knex.fn.now() results in it being set to a date,
-      // even if it's not typed as a JS date object:
-      updated_at: knex.fn.now(),
-    })
-}
-
-/**
- * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  */
 async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
@@ -430,6 +415,15 @@ async function updateMonthlyEmailOptout (token) {
     .where('primary_verification_token', token)
 }
 
+/**
+ * @param {number} subscriberId
+ */
+async function getOnerepProfileId (subscriberId) {
+  return await knex('subscribers')
+    .select('onerep_profile_id')
+    .where('id', subscriberId)
+}
+
 function getSubscribersWithUnresolvedBreachesQuery () {
   return knex('subscribers')
     .whereRaw('monthly_email_optout IS NOT TRUE')
@@ -471,6 +465,7 @@ async function joinEmailAddressesToSubscriber (subscriber) {
   return subscriber
 }
 export {
+  getOnerepProfileId,
   getSubscriberByToken,
   getSubscribersByHashes,
   getSubscriberByTokenAndHash,
@@ -484,7 +479,6 @@ export {
   updateFxAData,
   removeFxAData,
   updateFxAProfileData,
-  setOnerepProfileId,
   setBreachesLastShownNow,
   setAllEmailsToPrimary,
   setBreachesResolved,
