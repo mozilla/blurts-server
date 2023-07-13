@@ -8,19 +8,15 @@ import styles from "./Dialog.module.scss";
 import { CloseBtn } from "../../server/Icons";
 import { useL10n } from "../../../hooks/l10n";
 
-type ContentAlignment = "left" | "center" | "right";
-
 export type Props = {
   children: ReactNode;
   onDismiss?: () => void;
   title?: ReactNode;
   illustration?: ReactNode;
-  contentAlignment?: ContentAlignment;
 } & AriaDialogProps;
 
 export const Dialog = ({
   children,
-  contentAlignment = "center",
   onDismiss,
   title,
   illustration,
@@ -52,11 +48,7 @@ export const Dialog = ({
     ) : null;
 
   return (
-    <div
-      {...dialogProps}
-      ref={dialogRef}
-      className={`${styles.dialog} ${styles[contentAlignment]}`}
-    >
+    <div {...dialogProps} ref={dialogRef} className={styles.dialog}>
       {dismissButton}
       {illustration && (
         <div className={styles.illustrationWrapper}>{illustration}</div>

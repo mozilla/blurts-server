@@ -199,7 +199,6 @@ export const EnterInfo = (props: Props) => {
   const ConfirmInfoDialog = () => (
     <Dialog
       title={l10n.getString("onboarding-enter-details-comfirm-dialog-title")}
-      contentAlignment="left"
     >
       <p>{l10n.getString("onboarding-enter-details-comfirm-dialog-text")}</p>
       <div className={viewStyles.dialogContents}>
