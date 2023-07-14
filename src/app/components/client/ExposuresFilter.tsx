@@ -257,7 +257,10 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
-        onClick={() => filterDialogState.close()}
+        onClick={() => {
+          filterDialogState.close();
+          setFilterState(filterState);
+        }}
       >
         <CloseBtn
           alt={l10n.getString("modal-close-alt")}

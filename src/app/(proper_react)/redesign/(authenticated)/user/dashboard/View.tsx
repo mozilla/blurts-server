@@ -19,7 +19,7 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
@@ -53,23 +53,25 @@ export const View = (props: Props) => {
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
 
   // useEffect(() => {
-  //   console.log(filters);
+  //   if (filters.exposureType === "data-breach") {
+  //      filterShowScanResults
+  //   }
   // }, [filters]);
 
-  const exposureCards =
-    props.userScannedResults?.map((item, index) => (
-      <li key={index} className={styles.exposureListItem}>
-        <ExposureCard
-          exposureImg={TwitterImage}
-          exposureData={item}
-          exposureName={item.data_broker}
-          exposureDetailsLink=""
-          dateFound={dateObject(item.created_at)}
-          statusPillType="fixed"
-          locale={props.locale}
-        />
-      </li>
-    )) || [];
+  // const exposureCards =
+  //   props.userScannedResults?.map((item, index) => (
+  //     <li key={index} className={styles.exposureListItem}>
+  //       <ExposureCard
+  //         exposureImg={TwitterImage}
+  //         exposureData={item}
+  //         exposureName={item.data_broker}
+  //         exposureDetailsLink=""
+  //         dateFound={dateObject(item.created_at)}
+  //         statusPillType="fixed"
+  //         locale={props.locale}
+  //       />
+  //     </li>
+  //   )) || [];
 
   // Only breaches exposure cards
   const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
@@ -111,6 +113,15 @@ export const View = (props: Props) => {
     ...scannedResultsDataArray,
   ];
 
+  // const filterShowScanResults = combinedArray.filter((item) => {
+  //   isScanResult(item);
+  // });
+
+  // const filterShowBreachResults = combinedArray.filter((item) => {
+  //   !isScanResult(item);
+  // });
+
+  // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
       (a as HibpLikeDbBreach).AddedDate || (a as ScanResult).created_at;
@@ -126,7 +137,58 @@ export const View = (props: Props) => {
     return timestampB - timestampA; // Sort in descending order
   });
 
-  const exposureCardElems = arraySortedByDate.map(
+  const filteredExposures = arraySortedByDate.filter(
+    (exposure: ScanResult | HibpLikeDbBreach) => {
+      const getExposureType = isScanResult(exposure)
+        ? "data-broker"
+        : "data-breach";
+
+      // Filter by exposure type
+      if (
+        filters.exposureType &&
+        filters.exposureType !== getExposureType &&
+        filters.exposureType !== "show-all-exposure-type"
+      ) {
+        return false;
+      }
+
+      // Filter by date
+      if (filters.dateFound && filters.dateFound !== "show-all-date-found") {
+        const currentDate = new Date();
+        const exposureDate = isScanResult(exposure)
+          ? new Date(exposure.created_at)
+          : exposure.AddedDate;
+
+        if (filters.dateFound === "seven-days") {
+          const sevenDaysAgo = new Date(
+            currentDate.getTime() - 7 * 24 * 60 * 60 * 1000
+          );
+          if (exposureDate < sevenDaysAgo) {
+            return false;
+          }
+        } else if (filters.dateFound === "thirty-days") {
+          const thirtyDaysAgo = new Date(
+            currentDate.getTime() - 30 * 24 * 60 * 60 * 1000
+          );
+          if (exposureDate < thirtyDaysAgo) {
+            return false;
+          }
+        } else if (filters.dateFound === "last-year") {
+          const oneYearAgo = new Date(
+            currentDate.getTime() - 365 * 24 * 60 * 60 * 1000
+          );
+          if (exposureDate < oneYearAgo) {
+            return false;
+          }
+        }
+      }
+
+      // All filters passed, include the exposure in the filtered array
+      return true;
+    }
+  );
+
+  const exposureCardElems = filteredExposures.map(
     (exposure: ScanResult | HibpLikeDbBreach, index) => {
       return (
         <>
@@ -189,52 +251,6 @@ export const View = (props: Props) => {
           </div>
           <ul className={styles.exposureList}>
             {props.userScannedResults ? exposureCardElems : breachExposureCards}
-            {/* {props.userBreaches.breachesData.verifiedEmails
-              .map((verifiedEmail) => {
-                const breachCardsForThisEmail = verifiedEmail.breaches.map(
-                  (breach) => {
-                    return (
-                      <li
-                        key={`${verifiedEmail.email}_${breach.Id.toString()}`}
-                        className={styles.exposureListItem}
-                      >
-                        <ExposureCard
-                          exposureImg={TwitterImage}
-                          exposureData={breach}
-                          exposureName={breach.Name}
-                          exposureDetailsLink={""}
-                          dateFound={breach.AddedDate}
-                          statusPillType={"fixed"}
-                          locale={props.locale}
-                        />
-                      </li>
-                    );
-                  }
-                );
-                // Technically a JSX.Element can be `any`, but we know it's not.
-                // (At least, I *think* that's why this rule triggers.)
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-                return breachCardsForThisEmail;
-              })
-              .flat()
-            }
-            {props.userScannedResults?.map((scannedResult) =>
-              {
-                return (
-                  <>
-                  <ExposureCard 
-                      exposureImg={TwitterImage}
-                      exposureName={""}
-                      exposureDetailsLink={""}
-                      dateFound={dateObject(scannedResult.created_at)}
-                      statusPillType={"fixed"}
-                      locale={props.locale} 
-                      exposureData={scannedResult}                  
-                  />
-                  </>
-                )
-              }
-            )} */}
           </ul>
         </section>
       </div>

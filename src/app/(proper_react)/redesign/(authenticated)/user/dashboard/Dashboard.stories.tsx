@@ -85,6 +85,46 @@ const BreachMockItem2: HibpLikeDbBreach = {
   Title: "Twitter",
 };
 
+const BreachMockItem3: HibpLikeDbBreach = {
+  AddedDate: new Date("2023-07-12T14:48:00.000Z"),
+  BreachDate: "11/09/23",
+  DataClasses: [],
+  Description: "",
+  Domain: "",
+  Id: 0,
+  IsFabricated: false,
+  IsMalware: false,
+  IsRetired: false,
+  IsSensitive: false,
+  IsSpamList: false,
+  IsVerified: false,
+  LogoPath: "",
+  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
+  Name: "",
+  PwnCount: 0,
+  Title: "Twitter",
+};
+
+const BreachMockItem4: HibpLikeDbBreach = {
+  AddedDate: new Date("2023-06-18T14:48:00.000Z"),
+  BreachDate: "11/09/23",
+  DataClasses: [],
+  Description: "",
+  Domain: "",
+  Id: 0,
+  IsFabricated: false,
+  IsMalware: false,
+  IsRetired: false,
+  IsSensitive: false,
+  IsSpamList: false,
+  IsVerified: false,
+  LogoPath: "",
+  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
+  Name: "",
+  PwnCount: 0,
+  Title: "Twitter",
+};
+
 const _ScanResultMockItem1: ScanResult = {
   id: 1,
   profile_id: 1,
@@ -103,7 +143,7 @@ const _ScanResultMockItem1: ScanResult = {
   phones: [""],
   emails: [""],
   data_broker: "Familytree.com",
-  created_at: "2011-10-05T14:48:00.000Z",
+  created_at: "2022-10-05T14:48:00.000Z",
   updated_at: "11/09/23",
   url: "",
   link: "",
@@ -166,15 +206,45 @@ const _ScanResultMockItem3: ScanResult = {
   data_broker_id: 0,
 };
 
+const _ScanResultMockItem4: ScanResult = {
+  id: 1,
+  profile_id: 1,
+  first_name: "John",
+  last_name: "Doe",
+  middle_name: "string",
+  age: `${30}`,
+  addresses: [
+    {
+      city: "123",
+      state: "State" as StateAbbr,
+      street: "Street",
+      zip: "123456",
+    },
+  ],
+  phones: [""],
+  emails: [""],
+  data_broker: "Familytree.com",
+  created_at: "2023-06-29T14:48:00.000Z",
+  updated_at: "11/09/23",
+  url: "",
+  link: "",
+  relatives: [],
+  status: "new",
+  data_broker_id: 0,
+};
+
 const scannedResultsArraySample: ScanResult[] = [
   _ScanResultMockItem1,
   _ScanResultMockItem2,
   _ScanResultMockItem3,
+  _ScanResultMockItem4,
 ];
 
 const breachItemArraySample: HibpLikeDbBreach[] = [
   BreachMockItem1,
   BreachMockItem2,
+  BreachMockItem3,
+  BreachMockItem4,
 ];
 
 export const Dashboard: Story = {
