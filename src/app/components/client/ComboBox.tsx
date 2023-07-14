@@ -9,11 +9,10 @@ import { useComboBox } from "react-aria";
 import { useComboBoxState, ComboBoxStateOptions } from "react-stately";
 import { ListBox } from "./ListBox";
 import { Popover } from "./Popover";
-import { RelevantLocation } from "../../../scripts/build/createLocationAutocompleteData/types";
 import styles from "./ComboBox.module.scss";
 
 interface ComboBoxProps extends ComboBoxStateOptions<object> {
-  items: Array<RelevantLocation>;
+  items: Array<object>;
 }
 
 function ComboBox(props: ComboBoxProps) {
