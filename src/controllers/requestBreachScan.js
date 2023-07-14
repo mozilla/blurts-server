@@ -56,7 +56,7 @@ async function requestBreachScan (req, res, next) {
           .replace('</count>', '</span>'),
       // This is sent in the API response because we can't call `getBreachLogo`
       // client side, where it would expose AppConstants:
-      logos: breaches.map(breach => getBreachLogo(breach, req.app.locals.breachLogoMap)),
+      logos: breaches.map(breach => getBreachLogo(breach)),
       // This is sent in the API response because we don't have Fluent on the
       // client side, and thus can't dynamically localise breached data classes:
       dataClassStrings: breaches.map(breach => breach.DataClasses.map(/** @param {string} dataClass */ dataClass => getMessage(dataClass)))
