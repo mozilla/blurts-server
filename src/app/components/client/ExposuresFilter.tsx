@@ -98,7 +98,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           {l10n.getString("modal-exposure-type-data-broker-part-two")}
         </li>
       </ol>
-      <Button type="primary" onClick={() => explainerDialogState.close()}>
+      <Button variant="primary" onClick={() => explainerDialogState.close()}>
         {l10n.getString("modal-cta-ok")}
       </Button>
     </div>
@@ -129,7 +129,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           })}
         </li>
       </ul>
-      <Button type="primary" onClick={() => explainerDialogState.close()}>
+      <Button variant="primary" onClick={() => explainerDialogState.close()}>
         {l10n.getString("modal-cta-ok")}
       </Button>
     </div>
@@ -233,7 +233,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
         <Button
           disabled={checkEmptyFilterState}
           small
-          type="secondary"
+          variant="secondary"
           onClick={() =>
             setFilterState({
               exposureType: "",
@@ -247,7 +247,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
         <Button
           disabled={checkEmptyFilterState}
           small
-          type="primary"
+          variant="primary"
           onClick={handleSaveButtonClick}
         >
           {l10n.getString("dashboard-exposures-filter-show-results")}
