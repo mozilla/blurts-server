@@ -1,6 +1,6 @@
 'use strict'
 
-import { deleteUnverifiedSubscribers } from '../db/DB';
+import { deleteUnverifiedSubscribers } from '../src/db/tables/subscribers.js';
 
 /**
  * Cron: Hourly
