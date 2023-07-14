@@ -37,22 +37,9 @@ import {
   SearchLocationResults,
 } from "../../api/v1/location-autocomplete/route";
 import { RelevantLocation } from "../../../scripts/build/createLocationAutocompleteData/types";
+import { useElementWidth } from "../../hooks/useElementWidth";
 
 import styles from "./LocationAutocompleteInput.module.scss";
-
-const useInputWidth = (ref: RefObject<HTMLInputElement>) => {
-  const [width, setWidth] = useState<number>(0);
-
-  useEffect(() => {
-    const handleResize = () => setWidth(ref?.current?.clientWidth || 0);
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, [ref]);
-
-  return width;
-};
 
 interface PopoverProps extends AriaPopoverProps {
   children: React.ReactNode;
@@ -94,7 +81,7 @@ function ListBox(props: ListBoxProps) {
   const { listBoxRef, inputRef, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
-  const inputWidth = useInputWidth(inputRef);
+  const inputWidth = useElementWidth(inputRef);
 
   return (
     <ul
