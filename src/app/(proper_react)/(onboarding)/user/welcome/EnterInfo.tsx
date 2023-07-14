@@ -260,8 +260,12 @@ export const EnterInfo = (props: Props) => {
               placeholder,
               type,
               value,
-            }) =>
-              key === "location" ? (
+            }) => {
+              const validationState =
+                !getIsValidInfo(value) && invalidInputs.includes(key)
+                  ? "invalid"
+                  : "valid";
+              return key === "location" ? (
                 <LocationAutocompleteInput
                   key={key}
                   errorMessage={errorMessage}
@@ -270,11 +274,7 @@ export const EnterInfo = (props: Props) => {
                   onChange={onChange}
                   placeholder={placeholder}
                   type={type}
-                  validationState={
-                    !getIsValidInfo(value) && invalidInputs.includes(key)
-                      ? "invalid"
-                      : "valid"
-                  }
+                  validationState={validationState}
                   value={value}
                 />
               ) : (
@@ -286,14 +286,11 @@ export const EnterInfo = (props: Props) => {
                   onChange={onChange}
                   placeholder={placeholder}
                   type={type}
-                  validationState={
-                    !getIsValidInfo(value) && invalidInputs.includes(key)
-                      ? "invalid"
-                      : "valid"
-                  }
+                  validationState={validationState}
                   value={value}
                 />
-              )
+              );
+            }
           )}
         </div>
         <div className={styles.stepButtonWrapper}>
