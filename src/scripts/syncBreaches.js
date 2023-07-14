@@ -138,11 +138,9 @@ await getBreachIcons(breaches)
 Sentry.captureCheckIn({
   checkInId,
   monitorSlug: SENTRY_SLUG,
-  status: "error"
-});
-process.exit()
-
-
+  status: "ok"
+})
+setTimeout(process.exit, 1000)
 
 /**
  * Null check for some required field
