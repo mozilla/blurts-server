@@ -21,7 +21,7 @@ export interface PopoverProps extends AriaPopoverProps {
 
 function Popover({
   children,
-  offset = 4,
+  offset,
   state,
   isVisible,
   ...props

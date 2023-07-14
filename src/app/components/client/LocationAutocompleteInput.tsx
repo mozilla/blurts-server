@@ -108,6 +108,7 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
       locationSuggestions,
       selectedKey
     );
+    // Clear current selection if the input value changes
     if (locationString && locationString !== inputValue) {
       setSelectedKey("");
     }
@@ -130,8 +131,7 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
         onInputChange={handleOnChange}
         onSelectionChange={handleOnSelectionChange}
         selectedKey={selectedKey}
-        // shouldCloseOnBlur={true}
-        shouldCloseOnBlur={false}
+        shouldCloseOnBlur={true}
       >
         {(location) => {
           const relevantLocation = location as RelevantLocation;
