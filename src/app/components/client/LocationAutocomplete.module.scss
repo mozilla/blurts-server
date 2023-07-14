@@ -2,6 +2,7 @@
 
 .locationItem {
   font: $text-body-sm;
+  // Add a bit more vertical space: The next spacing step is too much.
   padding: $spacing-sm calc($spacing-sm * 1.5);
 
   strong {
