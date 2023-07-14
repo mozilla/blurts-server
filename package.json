@@ -82,7 +82,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@google-cloud/functions-framework": "^3.2.0",
-    "@playwright/test": "^1.32.3",
+    "@playwright/test": "^1.36.0",
     "@storybook/addon-a11y": "^7.0.21",
     "@storybook/addon-essentials": "^7.0.18",
     "@storybook/addon-interactions": "^7.0.18",
