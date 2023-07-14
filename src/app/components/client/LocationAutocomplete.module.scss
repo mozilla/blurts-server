@@ -5,6 +5,7 @@
   padding: $spacing-sm calc($spacing-sm * 1.5);
 
   strong {
+    // Space small bold letters a bit wider for legibility.
     letter-spacing: 0.01em;
   }
 
