@@ -14,6 +14,7 @@ import {
   SearchLocationResults,
 } from "../../api/v1/location-autocomplete/route";
 import { RelevantLocation } from "../../../scripts/build/createLocationAutocompleteData/types";
+import styles from "./LocationAutocomplete.module.scss";
 
 const getLocationSuggestions = async ({
   searchParams,
@@ -120,25 +121,34 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
   };
 
   return (
-    <ComboBox
-      {...props}
-      allowsCustomValue={false}
-      allowsEmptyCollection={true}
-      items={locationSuggestions}
-      onInputChange={handleOnChange}
-      onSelectionChange={handleOnSelectionChange}
-      selectedKey={selectedKey}
-      shouldCloseOnBlur={true}
-    >
-      {(location) => {
-        const relevantLocation = location as RelevantLocation;
-        const textValue = getLocationString(relevantLocation);
-        return (
-          <Item key={relevantLocation.id} textValue={textValue}>
-            {textValue}
-          </Item>
-        );
-      }}
-    </ComboBox>
+    <div className={styles.locationAutocomplete}>
+      <ComboBox
+        {...props}
+        allowsCustomValue={false}
+        allowsEmptyCollection={true}
+        items={locationSuggestions}
+        onInputChange={handleOnChange}
+        onSelectionChange={handleOnSelectionChange}
+        selectedKey={selectedKey}
+        // shouldCloseOnBlur={true}
+        shouldCloseOnBlur={false}
+      >
+        {(location) => {
+          const relevantLocation = location as RelevantLocation;
+          const textValue = getLocationString(relevantLocation);
+          const [city, state, countryCode] = textValue
+            .split(",")
+            .map((item) => item.trim());
+          return (
+            <Item key={relevantLocation.id} textValue={textValue}>
+              <div className={styles.locationItem}>
+                <strong>{city}</strong>
+                <span>{`${state}, ${countryCode}`}</span>
+              </div>
+            </Item>
+          );
+        }}
+      </ComboBox>
+    </div>
   );
 };

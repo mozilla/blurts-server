@@ -1,0 +1,16 @@
+@import "../../tokens";
+
+.locationItem {
+  font: $text-body-sm;
+  padding: $spacing-sm calc($spacing-sm * 1.5);
+
+  strong {
+    letter-spacing: 0.01em;
+  }
+
+  span {
+    color: $color-grey-40;
+    font: $text-body-xs;
+    margin-left: 0.5em;
+  }
+}

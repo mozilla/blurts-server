@@ -58,6 +58,7 @@ function ComboBox(props: ComboBoxProps) {
       {state.isOpen && (
         <Popover
           isVisible={props.items?.length > 0}
+          offset={4}
           popoverRef={popoverRef}
           state={state}
           triggerRef={inputRef}
@@ -65,7 +66,7 @@ function ComboBox(props: ComboBoxProps) {
           <ListBox
             {...listBoxProps}
             listBoxRef={listBoxRef}
-            inputRef={inputRef}
+            parentRef={inputRef}
             state={state}
           />
         </Popover>

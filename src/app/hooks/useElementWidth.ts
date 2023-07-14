@@ -4,7 +4,7 @@
 
 import { RefObject, useEffect, useState } from "react";
 
-const useElementWidthImp = (ref: RefObject<HTMLElement>) => {
+const useElementWidthImp = (ref: RefObject<HTMLElement> | undefined) => {
   const [width, setWidth] = useState<number>(0);
 
   useEffect(() => {

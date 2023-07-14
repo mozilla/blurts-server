@@ -8,6 +8,7 @@ import { Key, ReactNode, RefObject, useRef } from "react";
 import { AriaListBoxOptions, useListBox, useOption } from "react-aria";
 import { ListState } from "react-stately";
 import { useElementWidth } from "../../hooks/useElementWidth";
+import styles from "./ListBox.module.scss";
 
 export interface OptionProps extends AriaListBoxOptions<unknown> {
   item: {
@@ -25,30 +26,13 @@ function Option({ item, state }: OptionProps) {
     ref
   );
 
-  let backgroundColor;
-  let color = "black";
-
-  if (isSelected) {
-    backgroundColor = "blueviolet";
-    color = "white";
-  } else if (isFocused) {
-    backgroundColor = "gray";
-  } else if (isDisabled) {
-    backgroundColor = "transparent";
-    color = "gray";
-  }
-
   return (
     <li
       {...optionProps}
       ref={ref}
-      style={{
-        background: backgroundColor,
-        color: color,
-        padding: "2px 5px",
-        outline: "none",
-        cursor: "pointer",
-      }}
+      className={`${styles.item} ${isSelected ? styles.isSelected : ""} ${
+        isFocused ? styles.isFocused : ""
+      }  ${isDisabled ? styles.isDisabled : ""}`}
     >
       {item.rendered}
     </li>
@@ -58,24 +42,23 @@ function Option({ item, state }: OptionProps) {
 export interface ListBoxProps extends AriaListBoxOptions<unknown> {
   state: ListState<object>;
   listBoxRef: RefObject<HTMLUListElement>;
-  inputRef: RefObject<HTMLInputElement>;
+  parentRef?: RefObject<HTMLInputElement>;
 }
 
 function ListBox(props: ListBoxProps) {
-  const { listBoxRef, inputRef, state } = props;
+  const { listBoxRef, parentRef, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
 
-  const inputWidth = useElementWidth(inputRef);
+  const parentWidth = useElementWidth(parentRef);
 
   return (
     <ul
       {...listBoxProps}
       ref={listBoxRef}
+      className={styles.listBox}
       style={{
-        margin: 0,
-        padding: 0,
-        listStyle: "none",
-        width: `${inputWidth}px`,
+        ...listBoxProps.style,
+        ...(parentWidth && { width: `${parentWidth}px` }),
       }}
     >
       {[...state.collection].map((item) => (

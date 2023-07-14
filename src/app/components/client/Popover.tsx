@@ -11,6 +11,7 @@ import {
   usePopover,
 } from "react-aria";
 import { OverlayTriggerState } from "react-stately";
+import styles from "./Popover.module.scss";
 
 export interface PopoverProps extends AriaPopoverProps {
   children: React.ReactNode;
@@ -18,8 +19,14 @@ export interface PopoverProps extends AriaPopoverProps {
   isVisible: boolean;
 }
 
-function Popover({ children, state, isVisible, ...props }: PopoverProps) {
-  const { popoverProps } = usePopover(props, state);
+function Popover({
+  children,
+  offset = 4,
+  state,
+  isVisible,
+  ...props
+}: PopoverProps) {
+  const { popoverProps } = usePopover({ ...props, offset }, state);
 
   // The <DismissButton> components allow screen reader users
   // to dismiss the popover easily.
@@ -28,10 +35,9 @@ function Popover({ children, state, isVisible, ...props }: PopoverProps) {
       <div
         {...popoverProps}
         ref={props.popoverRef as React.RefObject<HTMLDivElement>}
+        className={`${styles.popover} ${isVisible ? styles.isVisible : ""}`}
         style={{
           ...popoverProps.style,
-          background: "lightgray",
-          border: isVisible ? "1px solid green" : "none",
         }}
       >
         <DismissButton onDismiss={() => state.close()} />
