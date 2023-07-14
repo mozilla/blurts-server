@@ -87,7 +87,11 @@ async function onerepFetch(
   path: string,
   options: Parameters<typeof fetch>[1] = {}
 ) {
-  const url = "https://api.onerep.com" + path;
+  const onerepApiBase = process.env.ONEREP_API_BASE;
+  if (!onerepApiBase) {
+    throw new Error("ONEREP_API_BASE env var not set");
+  }
+  const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
   headers.set(
     "Authorization",
