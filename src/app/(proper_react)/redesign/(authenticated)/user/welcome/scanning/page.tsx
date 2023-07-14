@@ -7,9 +7,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../api/utils/auth";
 import {
   createScan,
-  listScanResults,
   getScanDetails,
   isEligible,
+  getAllScanResults,
 } from "../../../../../../functions/server/onerep";
 import Script from "next/script";
 import {
@@ -60,25 +60,7 @@ export default async function UserWelcomeScanning() {
           } else if (scanDetails.status === "finished") {
             clearInterval(interval);
 
-            const scanListFull = [];
-            const firstPage = await listScanResults(profileId, {
-              per_page: 100,
-            });
-            // Results are paginated, use per_page maximum and collect all pages into one result.
-            if (firstPage.meta.last_page > 1) {
-              let currentPage = 2;
-              while (currentPage <= firstPage.meta.last_page) {
-                const nextPage = await listScanResults(profileId, {
-                  per_page: 100,
-                });
-                currentPage++;
-                nextPage.data.forEach((element: object) =>
-                  scanListFull.push(element)
-                );
-              }
-            } else {
-              scanListFull.push(firstPage.data);
-            }
+            const scanListFull = await getAllScanResults(profileId);
             // Store full list of results in the DB.
             await setOnerepScanResults(profileId, scan.id, {
               data: scanListFull[0],

@@ -296,3 +296,27 @@ export async function getScanDetails(
   }
   return response.json() as Promise<Scan>;
 }
+
+export async function getAllScanResults(
+  profileId: number
+): Promise<ScanResult[]> {
+  const scanListFull = [];
+  const firstPage = await listScanResults(profileId, {
+    per_page: 100,
+  });
+  // Results are paginated, use per_page maximum and collect all pages into one result.
+  if (firstPage.meta.last_page > 1) {
+    let currentPage = 2;
+    while (currentPage <= firstPage.meta.last_page) {
+      const nextPage = await listScanResults(profileId, {
+        per_page: 100,
+      });
+      currentPage++;
+      nextPage.data.forEach((element: object) => scanListFull.push(element));
+    }
+  } else {
+    scanListFull.push(firstPage.data);
+  }
+
+  return scanListFull[0];
+}

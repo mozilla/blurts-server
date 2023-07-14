@@ -9,7 +9,7 @@ import { captureException } from "@sentry/node";
 import crypto from "crypto";
 
 import { setOnerepScanResults } from "../../../../db/tables/onerep_scans";
-import { listScanResults } from "../../../functions/server/onerep";
+import { getAllScanResults } from "../../../functions/server/onerep";
 
 interface OnerepWebhook {
   id: number;
@@ -81,26 +81,10 @@ export async function POST(req: NextApiRequest) {
     const scanId = result.data.object.id;
 
     // The webhook just tells us which scan ID finished, we need to fetch the payload.
-    const scanListFull = [];
-    const firstPage = await listScanResults(profileId, {
-      per_page: 100,
-    });
-    // Results are paginated, use per_page maximum and collect all pages into one result.
-    if (firstPage.meta.last_page > 1) {
-      let currentPage = 2;
-      while (currentPage <= firstPage.meta.last_page) {
-        const nextPage = await listScanResults(profileId, {
-          per_page: 100,
-        });
-        currentPage++;
-        nextPage.data.forEach((element: object) => scanListFull.push(element));
-      }
-    } else {
-      scanListFull.push(firstPage.data);
-    }
+    const scanListFull = await getAllScanResults(profileId);
     // Store full list of results in the DB.
     await setOnerepScanResults(profileId, scanId, {
-      data: scanListFull[0],
+      data: scanListFull,
     });
 
     return NextResponse.json({ success: true }, { status: 200 });
