@@ -11,13 +11,18 @@ import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
 import type { UserBreaches } from "../../../../../functions/server/getUserBreaches";
-import { ExposureCard } from "../../../../../components/client/ExposureCard";
+import {
+  ExposureCard,
+  isScanResult,
+} from "../../../../../components/client/ExposureCard";
 import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
 import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
+import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
+import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 
 export type Props = {
   user: Session["user"];
@@ -51,19 +56,20 @@ export const View = (props: Props) => {
   //   console.log(filters);
   // }, [filters]);
 
-  const exposureCards = props.userScannedResults?.map((item, index) => (
-    <li key={index} className={styles.exposureListItem}>
-      <ExposureCard
-        exposureImg={TwitterImage}
-        exposureData={item}
-        exposureName={item.data_broker}
-        exposureDetailsLink=""
-        dateFound={dateObject(item.created_at)}
-        statusPillType="fixed"
-        locale={props.locale}
-      />
-    </li>
-  ));
+  const exposureCards =
+    props.userScannedResults?.map((item, index) => (
+      <li key={index} className={styles.exposureListItem}>
+        <ExposureCard
+          exposureImg={TwitterImage}
+          exposureData={item}
+          exposureName={item.data_broker}
+          exposureDetailsLink=""
+          dateFound={dateObject(item.created_at)}
+          statusPillType="fixed"
+          locale={props.locale}
+        />
+      </li>
+    )) || [];
 
   // Only breaches exposure cards
   const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
@@ -93,6 +99,69 @@ export const View = (props: Props) => {
     })
     .flat();
 
+  const breachesDataArray = props.userBreaches.breachesData.verifiedEmails.map(
+    (elem: BundledVerifiedEmails) => elem.breaches
+  );
+  const scannedResultsDataArray =
+    props.userScannedResults?.map((elem: ScanResult) => elem) || [];
+
+  // Merge exposure cards
+  const combinedArray = [
+    ...breachesDataArray.flat(),
+    ...scannedResultsDataArray,
+  ];
+
+  const arraySortedByDate = combinedArray.sort((a, b) => {
+    const dateA =
+      (a as HibpLikeDbBreach).AddedDate || (a as ScanResult).created_at;
+    const dateB =
+      (b as HibpLikeDbBreach).AddedDate || (b as ScanResult).created_at;
+
+    // TODO: Streamline data type injested by both breach and data broker types (Breach accepts Date type, while Scans accepts ISO type)
+    const timestampA =
+      typeof dateA === "object" ? dateA.getTime() : new Date(dateA).getTime();
+    const timestampB =
+      typeof dateB === "object" ? dateB.getTime() : new Date(dateB).getTime();
+
+    return timestampB - timestampA; // Sort in descending order
+  });
+
+  const exposureCardElems = arraySortedByDate.map(
+    (exposure: ScanResult | HibpLikeDbBreach, index) => {
+      return (
+        <>
+          {isScanResult(exposure) ? (
+            // Scanned result
+            <li key={index} className={styles.exposureListItem}>
+              <ExposureCard
+                exposureImg={TwitterImage}
+                exposureData={exposure}
+                exposureName={exposure.data_broker}
+                exposureDetailsLink={""}
+                dateFound={dateObject(exposure.created_at)}
+                statusPillType={"fixed"}
+                locale={props.locale}
+              />
+            </li>
+          ) : (
+            // Breaches result
+            <li key={index} className={styles.exposureListItem}>
+              <ExposureCard
+                exposureImg={TwitterImage}
+                exposureData={exposure}
+                exposureName={exposure.Name}
+                exposureDetailsLink={""}
+                dateFound={exposure.AddedDate}
+                statusPillType={"fixed"}
+                locale={props.locale}
+              />
+            </li>
+          )}
+        </>
+      );
+    }
+  );
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -119,7 +188,7 @@ export const View = (props: Props) => {
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
-            {props.userScannedResults ? exposureCards : breachExposureCards}
+            {props.userScannedResults ? exposureCardElems : breachExposureCards}
             {/* {props.userBreaches.breachesData.verifiedEmails
               .map((verifiedEmail) => {
                 const breachCardsForThisEmail = verifiedEmail.breaches.map(

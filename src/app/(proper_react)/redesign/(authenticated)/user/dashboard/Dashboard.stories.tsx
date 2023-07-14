@@ -45,8 +45,8 @@ const _ScanResultMockItem: ScanResult = {
   data_broker_id: 0,
 };
 
-const BreachMockItem: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-07-10"),
+const BreachMockItem1: HibpLikeDbBreach = {
+  AddedDate: new Date("2018-11-07T14:48:00.000Z"),
   BreachDate: "11/09/23",
   DataClasses: [],
   Description: "",
@@ -59,7 +59,27 @@ const BreachMockItem: HibpLikeDbBreach = {
   IsSpamList: false,
   IsVerified: false,
   LogoPath: "",
-  ModifiedDate: new Date("2023-07-10"),
+  ModifiedDate: new Date("2011-12-15T14:48:00.000Z"),
+  Name: "",
+  PwnCount: 0,
+  Title: "Twitter",
+};
+
+const BreachMockItem2: HibpLikeDbBreach = {
+  AddedDate: new Date("2013-12-07T14:48:00.000Z"),
+  BreachDate: "11/09/23",
+  DataClasses: [],
+  Description: "",
+  Domain: "",
+  Id: 0,
+  IsFabricated: false,
+  IsMalware: false,
+  IsRetired: false,
+  IsSensitive: false,
+  IsSpamList: false,
+  IsVerified: false,
+  LogoPath: "",
+  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
   Name: "",
   PwnCount: 0,
   Title: "Twitter",
@@ -83,7 +103,7 @@ const _ScanResultMockItem1: ScanResult = {
   phones: [""],
   emails: [""],
   data_broker: "Familytree.com",
-  created_at: "11/09/23",
+  created_at: "2011-10-05T14:48:00.000Z",
   updated_at: "11/09/23",
   url: "",
   link: "",
@@ -110,7 +130,7 @@ const _ScanResultMockItem2: ScanResult = {
   phones: [""],
   emails: [""],
   data_broker: "Familytree.com",
-  created_at: "12/05/21",
+  created_at: "2021-11-05T14:48:00.000Z",
   updated_at: "11/09/23",
   url: "",
   link: "",
@@ -137,7 +157,7 @@ const _ScanResultMockItem3: ScanResult = {
   phones: [""],
   emails: [""],
   data_broker: "Familytree.com",
-  created_at: "08/10/22",
+  created_at: "2019-02-10T14:48:00.000Z",
   updated_at: "11/09/23",
   url: "",
   link: "",
@@ -150,6 +170,11 @@ const scannedResultsArraySample: ScanResult[] = [
   _ScanResultMockItem1,
   _ScanResultMockItem2,
   _ScanResultMockItem3,
+];
+
+const breachItemArraySample: HibpLikeDbBreach[] = [
+  BreachMockItem1,
+  BreachMockItem2,
 ];
 
 export const Dashboard: Story = {
@@ -165,7 +190,7 @@ export const Dashboard: Story = {
             unverifiedEmails: [],
             verifiedEmails: [
               {
-                breaches: [BreachMockItem],
+                breaches: breachItemArraySample,
                 email: "test@example.com",
                 id: 0,
                 primary: true,
