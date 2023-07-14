@@ -29,13 +29,6 @@ interface OnerepWebhook {
   created_at: string;
 }
 
-// EXPORT config to tell Next.js NOT to parse the body
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
-
 export async function POST(req: NextApiRequest) {
   let finalBuffer;
   try {
