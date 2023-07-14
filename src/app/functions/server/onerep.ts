@@ -2,22 +2,23 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import { getServerSession } from "next-auth";
 import AppConstants from "../../../appConstants.js";
+import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
 import mozlog from "../../../utils/log.js";
 import {
   E164PhoneNumberString,
   ISO8601DateString,
-  parseE164PhoneNumber,
-  parseIso8601Datetime,
 } from "../../../utils/parse.js";
-import { StateAbbr, usStates } from "../../../utils/states.js";
+import { StateAbbr } from "../../../utils/states.js";
+import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
+import { authOptions } from "../../api/utils/auth";
 const log = mozlog("external.onerep");
 
 export type ProfileData = {
   first_name: string;
   last_name: string;
-  city: string;
-  state: StateAbbr;
+  addresses: [{ city: string; state: StateAbbr }];
   birth_date?: ISO8601DateString;
   age?: ISO8601DateString;
   phone_number?: E164PhoneNumberString;
@@ -104,8 +105,8 @@ export async function createProfile(profileData: ProfileData): Promise<number> {
     birth_date: profileData.birth_date,
     addresses: [
       {
-        state: profileData.state,
-        city: profileData.city,
+        state: profileData.addresses[0].state,
+        city: profileData.addresses[0].city,
       },
     ],
   };
@@ -115,7 +116,9 @@ export async function createProfile(profileData: ProfileData): Promise<number> {
   });
   if (!response.ok) {
     log.info(
-      `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to create OneRep profile: [${response.status}] [${
+        response.statusText
+      }] [${JSON.stringify(await response.json())}]`
     );
     throw new Error(
       `Failed to create OneRep profile: [${response.status}] [${response.statusText}]`
@@ -130,36 +133,6 @@ export async function createProfile(profileData: ProfileData): Promise<number> {
     url: string;
   } = await response.json();
   return savedProfile.id;
-}
-
-export function parseExposureScanData(body: ScanResult): ProfileData | null {
-  const state = usStates.find(
-    (state) => typeof body === "object" && state === body.addresses[0].state
-  );
-  if (
-    typeof body !== "object" ||
-    typeof body.first_name !== "string" ||
-    body.first_name.length === 0 ||
-    typeof body.last_name !== "string" ||
-    body.last_name.length === 0 ||
-    typeof body.addresses[0].city !== "string" ||
-    body.addresses[0].city.length === 0 ||
-    typeof body.addresses[0].state !== "string" ||
-    typeof state !== "string" ||
-    (typeof body.age !== "string" && typeof body.age !== "undefined") ||
-    (typeof body.phones !== "string" && typeof body.phones !== "undefined")
-  ) {
-    return null;
-  }
-
-  return {
-    first_name: body.first_name,
-    last_name: body.last_name,
-    city: body.addresses[0].city,
-    state,
-    age: parseIso8601Datetime(body.age)?.toString() ?? undefined,
-    phone_number: parseE164PhoneNumber(body.phones) ?? undefined,
-  };
 }
 
 export async function activateProfile(profileId: number): Promise<void> {
@@ -280,4 +253,46 @@ export async function listScanResults(
     );
   }
   return response.json() as Promise<ListScanResultsResponse>;
+}
+
+export async function isEligible() {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    throw new Error("No session");
+  }
+
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanResult = await getLatestOnerepScan(profileId);
+
+  if (scanResult.length) {
+    const latestScanDate = new Date(scanResult[0]["created_at"]);
+    const lastMonth = new Date();
+    lastMonth.setMonth(lastMonth.getMonth() - 1);
+
+    // FIXME only premium users get once monthly
+    if (latestScanDate > lastMonth) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+export async function getScanDetails(
+  profileId: number,
+  scanId: number
+): Promise<Scan> {
+  const response = await onerepFetch(`/profiles/${profileId}/scans/${scanId}`, {
+    method: "GET",
+  });
+  if (!response.ok) {
+    log.info(
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+    );
+    throw new Error(
+      `Failed to fetch scan details: [${response.status}] [${response.statusText}]`
+    );
+  }
+  return response.json() as Promise<Scan>;
 }

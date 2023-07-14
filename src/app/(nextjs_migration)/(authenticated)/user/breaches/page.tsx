@@ -22,6 +22,7 @@ import ImageIconEmail from "../../../../../client/images/icon-email.svg";
 import { BreachesTable } from "../../../components/server/BreachesTable";
 import { getComponentAsString } from "../../../functions/server/getComponentAsString";
 import { getCountryCode } from "../../../../functions/server/getCountryCode";
+import { isUserSubscribed } from "../../../../functions/server/isUserSubscribed";
 
 export function generateMetadata() {
   const l10n = getL10n();
@@ -88,43 +89,6 @@ export default async function UserBreaches() {
     }>;
   };
 
-  // Fetch list of subscriptions.
-  let subscriptions;
-  const bearerToken = session?.user.subscriber?.fxa_access_token;
-  if (bearerToken) {
-    const result = await fetch(
-      `${process.env
-        .OAUTH_API_URI!}/oauth/mozilla-subscriptions/customer/billing-and-subscriptions`,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          authorization: `Bearer ${bearerToken}`,
-        },
-      }
-    );
-    if (result.ok) {
-      subscriptions = await result.json();
-    }
-  } else {
-    console.error("User has no bearer token");
-  }
-
-  const isUserSubscribed = (subscriptions: FxaSubscriptionResponse) => {
-    if (!subscriptions) {
-      return false;
-    }
-    for (const subscription of subscriptions.subscriptions) {
-      if (
-        subscription.product_id === process.env.PREMIUM_PRODUCT_ID &&
-        subscription.plan_id === process.env.PREMIUM_PLAN_ID_US &&
-        subscription.status === "active"
-      ) {
-        return true;
-      }
-    }
-    return false;
-  };
-
   return (
     <>
       {/* These scripts predate the use of React and thus shouldn’t wait for
@@ -153,7 +117,7 @@ export default async function UserBreaches() {
 
       <main data-partial="breaches">
         {process.env.PREMIUM_ENABLED === "true" &&
-        !isUserSubscribed(subscriptions) ? (
+        !(await isUserSubscribed()) ? (
           <section>
             <a
               className="button primary"
