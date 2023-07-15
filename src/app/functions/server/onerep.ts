@@ -304,7 +304,7 @@ export async function getScanDetails(
 export async function getAllScanResults(
   profileId: number
 ): Promise<ScanResult[]> {
-  const scanListFull = [];
+  const scanPagesAll = [];
   const firstPage = await listScanResults(profileId, {
     per_page: 100,
   });
@@ -316,11 +316,11 @@ export async function getAllScanResults(
         per_page: 100,
       });
       currentPage++;
-      nextPage.data.forEach((element: object) => scanListFull.push(element));
+      nextPage.data.forEach((element: object) => scanPagesAll.push(element));
     }
   } else {
-    scanListFull.push(firstPage.data);
+    scanPagesAll.push(firstPage.data);
   }
 
-  return scanListFull[0];
+  return scanPagesAll.flat();
 }
