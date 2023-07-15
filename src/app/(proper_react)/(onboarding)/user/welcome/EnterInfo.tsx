@@ -5,6 +5,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
@@ -19,8 +20,9 @@ import {
   LocationAutocompleteInput,
   getDetailsFromLocationString,
 } from "../../../../components/client/LocationAutocompleteInput";
+import { WelcomeScanBody } from "../../../../api/v1/user/welcome/route";
 import { StateAbbr } from "../../../../../utils/states";
-import { ISO8601DateString } from "../../../../..//utils/parse.js";
+import { ISO8601DateString } from "../../../../../utils/parse.js";
 
 import styles from "./EnterInfo.module.scss";
 
@@ -30,12 +32,6 @@ export type UserInfo = {
   city: string;
   state: StateAbbr;
   dateOfBirth: ISO8601DateString;
-};
-
-export type Props = {
-  onDataSaved: () => void;
-  onGoBack: () => void;
-  user: Session["user"];
 };
 
 const getAgeFromDateString = (dateOfBirth: ISO8601DateString): number => {
@@ -50,13 +46,38 @@ const getAgeFromDateString = (dateOfBirth: ISO8601DateString): number => {
 const meetsAgeRequirement = (dateOfBirth: ISO8601DateString): boolean =>
   getAgeFromDateString(dateOfBirth) >= 13;
 
-export const EnterInfo = ({ onDataSaved, onGoBack }: Props) => {
+const createProfileAndStartScan = async (
+  userInfo: UserInfo
+): Promise<WelcomeScanBody> => {
+  const response = await fetch("/api/v1/user/welcome", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  });
+
+  const result = await response.json();
+  if (!result?.success) {
+    throw new Error("Could not start scan");
+  }
+
+  return result as WelcomeScanBody;
+};
+
+export type Props = {
+  onScanStarted: () => void;
+  onGoBack: () => void;
+  user: Session["user"];
+};
+
+export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-  const [submittingProfile, setSubmittingProfile] = useState(false);
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
+  const [requestingScan, setRequestingScan] = useState(false);
 
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
@@ -135,35 +156,32 @@ export const EnterInfo = ({ onDataSaved, onGoBack }: Props) => {
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
 
-  const createProfile = async () => {
-    if (submittingProfile) {
+  const router = useRouter();
+  const handleRequestScan = () => {
+    if (requestingScan) {
       return;
     }
+    setRequestingScan(true);
 
-    setSubmittingProfile(true);
     const { city, state } = getDetailsFromLocationString(location);
     const userInfo = {
-      firstName,
-      lastName,
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
       city,
       state,
       dateOfBirth,
     } as UserInfo;
 
-    const response = await fetch("/api/v1/user/welcome", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userInfo),
-    });
-    const result = await response.json();
-    if (result && result.success === true) {
-      onDataSaved();
-      setSubmittingProfile(false);
-    } else {
-      throw new Error("Could not submit profile:", result);
-    }
+    void createProfileAndStartScan(userInfo)
+      .then(() => {
+        confirmDialogState.close();
+        onScanStarted();
+      })
+      .catch((error) => {
+        confirmDialogState.close();
+        console.error("Could not request scan:", error);
+        router.push("/user/dashboard/");
+      });
   };
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -275,10 +293,10 @@ export const EnterInfo = ({ onDataSaved, onGoBack }: Props) => {
         </Button>
         <Button
           variant="primary"
-          onClick={() => void createProfile()}
+          onClick={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
-          isLoading={submittingProfile}
+          isLoading={requestingScan}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm"

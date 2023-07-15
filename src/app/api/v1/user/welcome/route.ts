@@ -6,7 +6,11 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../api/utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
-import { createProfile, isEligible } from "../../../../functions/server/onerep";
+import {
+  createProfile,
+  createScan,
+  isEligible,
+} from "../../../../functions/server/onerep";
 import type { ProfileData } from "../../../../functions/server/onerep";
 import AppConstants from "../../../../../appConstants";
 import {
@@ -17,11 +21,18 @@ import {
 import {
   getLatestOnerepScan,
   setOnerepProfileId,
+  setOnerepScan,
 } from "../../../../../db/tables/onerep_scans";
 import { setProfileDetails } from "../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../utils/states";
 
-export async function POST(req: NextRequest) {
+export interface WelcomeScanBody {
+  success: boolean;
+}
+
+export async function POST(
+  req: NextRequest
+): Promise<NextResponse<WelcomeScanBody | unknown>> {
   const session = await getServerSession(authOptions);
 
   const eligible = await isEligible();
@@ -58,9 +69,26 @@ export async function POST(req: NextRequest) {
       // FIXME check if scan has already been performed and return early if so.
 
       if (!subscriber.onerep_profile_id) {
+        // Create OneRep profile
         const profileId = await createProfile(profileData);
         await setOnerepProfileId(subscriber, profileId);
         await setProfileDetails(profileId, profileData);
+
+        // Start exposure scan
+        const scan = await createScan(profileId);
+        const scanId = scan.id;
+        await setOnerepScan(profileId, scanId);
+
+        return NextResponse.json(
+          {
+            success: true,
+            resultIds: {
+              profileId,
+              scanId,
+            },
+          },
+          { status: 200 }
+        );
       }
 
       return NextResponse.json({ success: true }, { status: 200 });

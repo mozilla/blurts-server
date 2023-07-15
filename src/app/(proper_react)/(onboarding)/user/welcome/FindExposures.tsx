@@ -6,16 +6,38 @@
 
 import Link from "next/link";
 import styles from "./FindExposures.module.scss";
-import { useL10n } from "../../../../hooks/l10n";
+import { useEffect, useState } from "react";
 
 export const FindExposures = () => {
-  const _l10n = useL10n();
+  const [scanProgress, setScanProgress] = useState(0);
+
+  const progressSteps = 6;
+  const maxProgress = 100;
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      const nextProgress = scanProgress + progressSteps;
+      setScanProgress(Math.min(nextProgress, maxProgress));
+    }, 1000);
+
+    if (scanProgress >= maxProgress) {
+      clearTimeout(timeoutId);
+    }
+
+    return () => clearTimeout(timeoutId);
+  }, [scanProgress]);
 
   return (
     <div className={styles.wrapper}>
-      Here&apos;s a progress bar until we think the dashboard has filled up
-      enough, from which point we&apos;ll show a{" "}
-      <Link href="/user/dashboard">link to the dashboard</Link>.
+      <label>
+        Scanning for exposures…
+        <progress value={scanProgress} max={maxProgress}>
+          {scanProgress}%
+        </progress>
+      </label>
+
+      {scanProgress === maxProgress && (
+        <Link href="/user/dashboard">Go to dashboard</Link>
+      )}
     </div>
   );
 };
