@@ -2,8 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { NextApiRequest } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 import { captureException } from "@sentry/node";
 import crypto from "crypto";
@@ -11,7 +10,7 @@ import crypto from "crypto";
 import { setOnerepScanResults } from "../../../../db/tables/onerep_scans";
 import { getAllScanResults } from "../../../functions/server/onerep";
 
-interface OnerepWebhook {
+interface OnerepWebhookRequest {
   id: number;
   profile_id: number;
   type: "scan.completed";
@@ -29,7 +28,7 @@ interface OnerepWebhook {
   created_at: string;
 }
 
-export async function POST(req: NextApiRequest) {
+export async function POST(req: NextRequest) {
   let finalBuffer;
   try {
     if (!process.env.ONEREP_WEBHOOK_SECRET) {
@@ -37,6 +36,7 @@ export async function POST(req: NextApiRequest) {
     }
 
     const buffers = [];
+    // @ts-ignore TODO convince TypeScript req.body is not null
     for await (const data of req.body) {
       buffers.push(data);
     }
@@ -61,7 +61,7 @@ export async function POST(req: NextApiRequest) {
   }
 
   try {
-    const result: OnerepWebhook = JSON.parse(finalBuffer.toString());
+    const result: OnerepWebhookRequest = JSON.parse(finalBuffer.toString());
 
     if (result.type !== "scan.completed") {
       throw new Error("Unexpected OneRep webhook type received");
