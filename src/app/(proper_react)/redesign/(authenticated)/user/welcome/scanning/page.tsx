@@ -45,7 +45,8 @@ export default async function UserWelcomeScanning() {
 
   // Polling the OneRep API is only necessary in development environments - a webhook is used elsewhere.
   // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
-  if (process.env.NODE_ENV === "development") {
+  if (process.env.NODE_ENV === "test") {
+    // FIXME
     let iterations = 0;
     const totalIterations = 15;
 
