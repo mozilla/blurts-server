@@ -1,0 +1,32 @@
+@import "../../../tokens";
+
+.toolbar {
+  height: $tab-bar-height;
+  border-bottom: 1px solid $color-grey-20;
+  display: flex;
+  align-items: center;
+
+  .start {
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    padding-inline: $spacing-2xl;
+  }
+
+  .end {
+    padding-inline: $spacing-xl;
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  @media screen and (max-width: $screen-md) {
+    .start {
+      justify-content: center;
+    }
+
+    .end {
+      display: none;
+    }
+  }
+}

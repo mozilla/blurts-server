@@ -5,19 +5,14 @@
 import Image, { StaticImageData } from "next/image";
 import BreachDetailScanImage from "../../../../../client/images/breach-detail-scan.svg";
 import "../../../../../client/css/partials/breachDetail.css";
-import { getL10n } from "../../../../functions/server/l10n";
-import { getBreachByName } from "../../../../../utils/hibp";
+import { getL10n, getLocale } from "../../../../functions/server/l10n";
+import { HibpLikeDbBreach, getBreachByName } from "../../../../../utils/hibp";
 import {
   getAllPriorityDataClasses,
   getAllGenericRecommendations,
 } from "../../../../../utils/recommendations";
 import { BreachLogo } from "../../../../components/server/BreachLogo";
-import {
-  getBreachIcons,
-  getBreaches,
-} from "../../../../functions/server/getBreaches";
-import { Breach } from "../../../(authenticated)/user/breaches/breaches.d";
-import { getLocale } from "../../../../functions/server/l10n";
+import { getBreaches } from "../../../../functions/server/getBreaches";
 
 import glyphSsn from "../../../../../client/images/social-security-numbers.svg";
 import glyphPassword from "../../../../../client/images/passwords.svg";
@@ -52,9 +47,7 @@ const glyphs: Record<string, StaticImageData> = {
   "physical-addresses": glyphAddress,
 };
 
-export async function generateMetadata(props: {
-  params: { breachName: string };
-}) {
+export function generateMetadata(props: { params: { breachName: string } }) {
   const l10n = getL10n();
   return {
     title: `${l10n.getString("brand-fx-monitor")} - ${props.params.breachName}`,
@@ -86,14 +79,13 @@ export default async function BreachDetail(props: {
   const breachName = props.params.breachName;
   const allBreaches = await getBreaches();
   const breach = getBreachByName(allBreaches, breachName);
-  const breachLogos = await getBreachIcons(allBreaches);
 
   return (
     <div data-partial="breachDetail">
       <header className="breach-detail-header">
         <div className="breach-detail-meta">
           <h1>
-            <BreachLogo breach={breach} logos={breachLogos} />
+            <BreachLogo breach={breach} />
             {breach.Title}
           </h1>
           {getBreachCategory(breach) === "website-breach" ? (
@@ -126,17 +118,23 @@ export default async function BreachDetail(props: {
           <h2>{l10n.getString("breach-overview-title")}</h2>
           <div>
             {l10n.getString("breach-overview-new", {
-              breachDate: breach.BreachDate.toLocaleString(getLocale(), {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }),
+              breachDate: (breach.BreachDate as unknown as Date).toLocaleString(
+                getLocale(),
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              ),
               breachTitle: breach.Title,
-              addedDate: breach.AddedDate.toLocaleString(getLocale(), {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              }),
+              addedDate: (breach.AddedDate as unknown as Date).toLocaleString(
+                getLocale(),
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              ),
             })}
           </div>
           {compareBreachDates(breach) ? (
@@ -157,10 +155,17 @@ export default async function BreachDetail(props: {
           <p
             className="breach-detail-attribution"
             dangerouslySetInnerHTML={{
-              __html: l10n.getString("email-2022-hibp-attribution", {
-                "hibp-link-attr":
-                  'href="https://haveibeenpwned.com/" target="_blank"',
-              }),
+              __html: l10n
+                .getString("email-2022-hibp-attribution", {
+                  "hibp-link-attr":
+                    'href="https://haveibeenpwned.com/" target="_blank"',
+                })
+                // The following are special characters inserted by Fluent,
+                // which break the link when inserted into the tag.
+                // (For future strings, we can just `getElement` to properly insert
+                // tags into localised strings.)
+                .replaceAll("⁩", "")
+                .replaceAll("⁨", ""),
             }}
           />
         </div>
@@ -244,7 +249,9 @@ function getBreachDetail(categoryId: ReturnType<typeof getBreachCategory>) {
   }
 }
 
-function makeBreachDetail(breachCategory: ReturnType<typeof getBreachCategory>) {
+function makeBreachDetail(
+  breachCategory: ReturnType<typeof getBreachCategory>
+) {
   const breachDetail = getBreachDetail(breachCategory);
   return (
     <>
@@ -254,7 +261,7 @@ function makeBreachDetail(breachCategory: ReturnType<typeof getBreachCategory>) 
   );
 }
 
-function getBreachCategory(breach: Breach) {
+function getBreachCategory(breach: HibpLikeDbBreach) {
   const dataAggregators = [
     "Exactis",
     "Apollo",
@@ -276,7 +283,7 @@ function getBreachCategory(breach: Breach) {
   return "data-aggregator-breach";
 }
 
-function compareBreachDates(breach: Breach) {
+function compareBreachDates(breach: HibpLikeDbBreach) {
   const breachDate = new Date(breach.BreachDate);
   const addedDate = new Date(breach.AddedDate);
   const timeDiff = Math.abs(breachDate.getTime() - addedDate.getTime());
@@ -287,7 +294,7 @@ function compareBreachDates(breach: Breach) {
   return false;
 }
 function getSortedDataClasses(
-  breach: Breach,
+  breach: HibpLikeDbBreach,
   isUserBrowserFirefox = false,
   isUserLocaleEnUs = false,
   isUserLocalEn = false,
@@ -324,11 +331,11 @@ function getSortedDataClasses(
   return sortedDataClasses;
 }
 
-function makeDataSection(breach: Breach) {
+function makeDataSection(breach: HibpLikeDbBreach) {
   const dataClasses = getSortedDataClasses(breach);
 
   const output = dataClasses.priority.map((dataClass, dataIndex) => (
-    <li key={`data-class-${dataClass.glyphName}`}>
+    <li key={`data-class-${dataClass.glyphName as string}`}>
       <Image src={glyphs[dataClass.glyphName]} width="24" alt="" />
       {dataClass.dataType}
     </li>
@@ -350,15 +357,19 @@ function makeDataSection(breach: Breach) {
   );
 }
 
-function makeRecommendationCards(breach: Breach) {
+function makeRecommendationCards(breach: HibpLikeDbBreach) {
   const l10n = getL10n();
   const dataClasses = getSortedDataClasses(breach);
 
   const priorityRecs = dataClasses.priority.map((dataClass) =>
+    // This code predates TypeScript:
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
     dataClass.recommendations?.map((r: any) => (
       <div
         key={r.ctaHref}
-        className={`breach-detail-recommendation ${r.recIconClassName}`}
+        className={`breach-detail-recommendation ${
+          r.recIconClassName as string
+        }`}
       >
         <dt>{l10n.getString(r.recommendationCopy.subhead)}</dt>
         <dd>
@@ -379,7 +390,9 @@ function makeRecommendationCards(breach: Breach) {
   const genericRecs = getAllGenericRecommendations().map((dataClass: any) => (
     <div
       key={dataClass.ctaHref}
-      className={`breach-detail-recommendation ${dataClass.recIconClassName}`}
+      className={`breach-detail-recommendation ${
+        dataClass.recIconClassName as string
+      }`}
     >
       <dt>{l10n.getString(dataClass.recommendationCopy.subhead)}</dt>
       <dd>

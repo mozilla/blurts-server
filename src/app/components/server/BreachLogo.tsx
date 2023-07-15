@@ -4,9 +4,7 @@
 
 import Image from "next/image";
 import styles from "./BreachLogo.module.css";
-import AppConstants from "../../../appConstants";
-import { LogoMap } from "../../functions/server/getBreaches";
-import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.d";
+import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 /**
  * @param props
@@ -14,13 +12,21 @@ import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/b
  * @param {Map<string, string>} props.logos Map of URLs to logos indexed by the domain name of the respective company
  * @returns {string} HTML for a breach logo (either an `img`, or a `span.breach-logo` containing the breached company's first letter)
  */
-export function BreachLogo(props: { breach: Breach; logos: LogoMap }) {
-  const logoIsAvailable = props.logos?.has(props.breach.Domain);
 
-  if (logoIsAvailable) {
+export type Props = {
+  breach: HibpLikeDbBreach;
+  // The prop `htmlTags` ensures compatibility for the work in
+  // `nextjs_migration` when rendering server components to strings. As soon as
+  // this component is not being used there anymore we can remove the prop.
+  htmlTags?: boolean;
+};
+
+export function BreachLogo(props: Props) {
+  if (typeof props.breach.FaviconUrl === "string") {
+    const ImageType = props.htmlTags ? "img" : Image;
     return (
-      <Image
-        src={AppConstants.SERVER_URL + props.logos.get(props.breach.Domain)}
+      <ImageType
+        src={props.breach.FaviconUrl}
         alt=""
         loading="lazy"
         className={styles.breachLogo}

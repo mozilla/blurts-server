@@ -14,6 +14,7 @@ import { sendVerificationEmail } from "../../../utils/email";
 import { validateEmailAddress } from "../../../../../utils/emailAddress";
 import { getL10n } from "../../../../functions/server/l10n";
 import { initEmail } from "../../../../../utils/email";
+import { Subscriber } from "../../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
 interface EmailAddRequest {
   email: string;
@@ -26,7 +27,11 @@ export async function POST(req: NextRequest) {
   if (typeof token?.email === "string") {
     try {
       const body: EmailAddRequest = await req.json();
-      const subscriber = await getSubscriberByEmail(token.email);
+      const subscriber = (await getSubscriberByEmail(
+        token.email
+      )) as Subscriber & {
+        email_addresses: Array<{ id: number; email: string }>;
+      };
       const emailCount = 1 + (subscriber.email_addresses?.length ?? 0); // primary + verified + unverified emails
       const validatedEmail = validateEmailAddress(body.email);
 
@@ -40,7 +45,7 @@ export async function POST(req: NextRequest) {
         );
       }
 
-      if (emailCount >= AppConstants.MAX_NUM_ADDRESSES) {
+      if (emailCount >= Number.parseInt(AppConstants.MAX_NUM_ADDRESSES, 10)) {
         return NextResponse.json(
           {
             success: false,
@@ -88,7 +93,10 @@ export async function POST(req: NextRequest) {
         message: "Sent the verification email",
       });
     } catch (e: unknown) {
-      if (e instanceof Error && e.message === "error-email-validation-pending") {
+      if (
+        e instanceof Error &&
+        e.message === "error-email-validation-pending"
+      ) {
         return NextResponse.json(
           {
             success: false,

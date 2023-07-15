@@ -5,18 +5,36 @@
 import { cookies } from "next/headers";
 import { Session } from "next-auth";
 
-import { getBreaches, getBreachIcons } from "./getBreaches";
+import { getBreaches } from "./getBreaches";
 import { appendBreachResolutionChecklist } from "./breachResolution";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
-import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
+import {
+  BundledVerifiedEmails,
+  getAllEmailsAndBreaches,
+} from "../../../../src/utils/breaches.js";
+import { EmailRow } from "../../../db/tables/emailAddresses";
 
-export async function getUserBreaches({ user }: { user: Session["user"] & { email: string } }) {
+export type UserBreaches = {
+  emailVerifiedCount: number;
+  emailTotalCount: number;
+  emailSelectIndex: number;
+  breachesData: {
+    unverifiedEmails: EmailRow[];
+    verifiedEmails: BundledVerifiedEmails[];
+  };
+};
+
+export async function getUserBreaches({
+  user,
+  options = {},
+}: {
+  user: Session["user"];
+  options?: Parameters<typeof appendBreachResolutionChecklist>[1];
+}): Promise<UserBreaches> {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
-  appendBreachResolutionChecklist(breachesData);
-
-  const breachLogos = await getBreachIcons(allBreaches);
+  appendBreachResolutionChecklist(breachesData, options);
 
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0;
   const emailTotalCount =
@@ -31,7 +49,6 @@ export async function getUserBreaches({ user }: { user: Session["user"] & { emai
 
   return {
     breachesData,
-    breachLogos,
     emailVerifiedCount,
     emailTotalCount,
     emailSelectIndex,

@@ -9,10 +9,11 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
-    "build": "next build",
+    "build": "npm run create-location-data && next build",
     "start": "next start",
-    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint",
-    "test": "NODE_OPTIONS=--loader=testdouble c8 ava",
+    "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
+    "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
+    "test": "jest",
     "e2e": "playwright test src/e2e/",
     "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
@@ -20,7 +21,8 @@
     "prepare": "husky install",
     "postinstall": "patch-package",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "create-location-data": "ts-node-esm src/scripts/build/createLocationAutocompleteData/index.ts"
   },
   "nodemonConfig": {
     "watch": [
@@ -31,11 +33,6 @@
       "LIVE_RELOAD": true
     },
     "ext": "js,css,json,ftl,env"
-  },
-  "ava": {
-    "files": [
-      "!src/e2e/"
-    ]
   },
   "repository": {
     "type": "git",
@@ -48,12 +45,15 @@
     "npm": "8.19.3"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.360.0",
+    "@aws-sdk/lib-storage": "^3.360.0",
     "@fluent/bundle": "^0.17.1",
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
-    "@sentry/nextjs": "^7.53.1",
-    "@sentry/node": "^7.40.0",
-    "@sentry/tracing": "^7.38.0",
+    "@leeoniya/ufuzzy": "^1.0.8",
+    "@sentry/nextjs": "^7.58.1",
+    "@sentry/node": "^7.58.1",
+    "@sentry/tracing": "^7.58.1",
     "@types/jsdom": "^21.1.1",
     "@types/node": "^20.1.1",
     "@types/react": "^18.2.6",
@@ -74,10 +74,13 @@
     "patch-package": "^7.0.0",
     "pg": "^8.9.0",
     "react": "^18.2.0",
+    "react-aria": "^3.26.0",
     "react-dom": "^18.2.0",
+    "react-stately": "^3.23.0",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@google-cloud/functions-framework": "^3.2.0",
     "@playwright/test": "^1.32.3",
     "@storybook/addon-a11y": "^7.0.21",
@@ -88,20 +91,30 @@
     "@storybook/nextjs": "^7.0.18",
     "@storybook/react": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/jest-axe": "^3.5.5",
+    "@types/adm-zip": "^0.5.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/jwk-to-pem": "^2.0.1",
     "@types/nodemailer": "^6.4.8",
     "@types/uuid": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.1",
     "@typescript-eslint/parser": "^5.59.1",
-    "ava": "^5.1.0",
+    "adm-zip": "^0.5.10",
     "c8": "^7.12.0",
     "eslint": "^8.40.0",
+    "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-check-file": "^2.2.0",
     "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsdoc": "^40.0.0",
     "eslint-plugin-storybook": "^0.6.12",
     "husky": "^8.0.3",
+    "jest": "^29.5.0",
+    "jest-axe": "^7.0.1",
+    "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.2",
     "node-mocks-http": "^1.12.1",
     "nodemon": "^2.0.20",
@@ -111,7 +124,8 @@
     "stylelint": "^15.6.0",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-scss": "^5.0.0",
-    "testdouble": "^3.16.8",
+    "ts-node": "^10.9.1",
+    "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   }
 }

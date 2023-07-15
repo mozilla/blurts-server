@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { DefaultSession } from "next-auth";
-import { Subscriber } from "./app/transitionTypes";
+import { SubscriberRow } from "knex/types/tables";
 
 declare module "next-auth" {
   /** The OAuth profile extracted from Firefox Accounts */
@@ -33,8 +33,8 @@ declare module "next-auth" {
         avatarDefault: boolean;
         subscriptions: Array<string>;
       };
-      subscriber?: Subscriber;
-    } & DefaultSession["user"];
+      subscriber?: SubscriberRow;
+    } & DefaultSession["user"] & { email: string };
   }
 }
 
@@ -51,6 +51,6 @@ declare module "next-auth/jwt" {
       avatarDefault: boolean;
       subscriptions: Array<string>;
     };
-    subscriber?: Subscriber;
+    subscriber?: SubscriberRow;
   }
 }

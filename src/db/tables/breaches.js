@@ -2,10 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Knex from 'knex'
+import initKnex from 'knex'
 import knexConfig from '../knexfile.js'
 import mozlog from '../../utils/log.js'
-const knex = Knex(knexConfig)
+const knex = initKnex(knexConfig)
 const log = mozlog('DB.breaches')
 
 /**
@@ -13,7 +13,7 @@ const log = mozlog('DB.breaches')
  *
  * @returns Array of all records from "breaches" table
  */
-async function getAllBreaches () {
+async function getAllBreaches() {
   return knex('breaches')
     .returning("*")
 }
@@ -25,7 +25,7 @@ async function getAllBreaches () {
  * @param {any[]} hibpBreaches breaches array from HIBP API
  * @returns
  */
-async function upsertBreaches (hibpBreaches) {
+async function upsertBreaches(hibpBreaches) {
   log.debug('upsertBreaches', hibpBreaches[0])
 
   return knex.transaction(async trx => {
@@ -47,7 +47,8 @@ async function upsertBreaches (hibpBreaches) {
           is_sensitive: breach.IsSensitive,
           is_retired: breach.IsRetired,
           is_spam_list: breach.IsSpamList,
-          is_malware: breach.IsMalware
+          is_malware: breach.IsMalware,
+          favicon_url: null,
         })
         .onConflict('name')
         .merge()
@@ -63,7 +64,22 @@ async function upsertBreaches (hibpBreaches) {
   })
 }
 
+/**
+ * Update logo path of a breach by name
+ *
+ * @param {string} name 
+ * @param {string} faviconUrl
+ */
+async function updateBreachFaviconUrl(name, faviconUrl) {
+  await knex('breaches')
+    .where("name", name)
+    .update({
+      favicon_url: faviconUrl
+    })
+}
+
 export {
   getAllBreaches,
-  upsertBreaches
+  upsertBreaches,
+  updateBreachFaviconUrl
 }

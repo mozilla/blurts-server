@@ -1,0 +1,46 @@
+@import "../../../tokens";
+
+.dialog {
+  background-color: $color-white;
+  position: relative;
+  width: calc(100% - (2 * $spacing-md));
+  max-width: $content-lg;
+  max-height: calc(100% - (2 * $spacing-md));
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: $spacing-xl;
+  border-radius: $border-radius-md;
+  padding: $layout-sm;
+
+  @media screen and (min-width: $screen-lg) {
+    padding: $layout-lg $layout-xl;
+  }
+
+  .dismissButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $spacing-md;
+    color: $color-grey-40;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-grey-30;
+    }
+  }
+
+  .illustrationWrapper {
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .title {
+    font: $text-title-2xs;
+    text-align: center;
+    color: $color-grey-50;
+  }
+}

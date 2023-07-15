@@ -1,0 +1,109 @@
+@import "../../../../tokens";
+
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $spacing-md;
+
+  h1 {
+    font: $text-title-2xs;
+
+    @media screen and (min-width: $screen-md) {
+      font: $text-title-xs;
+    }
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .explainerTrigger {
+    background-color: transparent;
+    border-style: none;
+    color: $color-blue-50;
+    text-decoration: underline;
+    cursor: pointer;
+
+    &:hover {
+      color: $color-blue-70;
+    }
+  }
+}
+
+.dialogContents {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  font: $text-body-md;
+  color: $color-grey-50;
+
+  .confirmButtonWrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: $content-xs;
+    padding-block-start: $spacing-md;
+  }
+
+  .list {
+    list-style-position: inside;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: 0;
+
+    li::marker {
+      display: inline-block;
+      font-weight: 700;
+    }
+  }
+}
+
+.stepButtonWrapper {
+  align-items: center;
+  display: flex;
+  gap: $spacing-md;
+  justify-content: flex-end;
+  padding-block: $layout-xs;
+  width: 100%;
+
+  @media screen and (min-width: $screen-sm) {
+    padding-block-start: $layout-sm;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+.inputContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-lg $spacing-xl;
+  padding: $spacing-lg 0;
+
+  @media screen and (max-width: $screen-lg) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.infoList {
+  align-items: center;
+  columns: 2;
+  font: $text-body-lg;
+  gap: $spacing-lg;
+  list-style: none;
+  margin: 0;
+  padding-inline-start: var(--exposureDetailsIconWidth);
+  padding: 0;
+
+  @media screen and (max-width: $screen-md) {
+    columns: 1;
+  }
+}
+
+.infoItem {
+  display: flex;
+  gap: $spacing-xs;
+  padding: $spacing-sm 0;
+}

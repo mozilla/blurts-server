@@ -1,49 +1,70 @@
 @import "../../tokens";
 
 .exposureCard {
-  font: $text-body-md;
+  // Variables
+  --exposureDetailsIconWidth: 25px;
+
+  font: $text-body-sm;
+  background-color: $color-white;
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-md;
-  max-width: $content-xl;
 
   .exposureHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing-sm 0;
-    gap: $layout-md;
+    padding: $spacing-md $spacing-md;
+    gap: $layout-xs;
 
-    .chevronDown {
+    @media screen and (min-width: $screen-lg) {
+      gap: $layout-md;
+    }
+
+    .chevron {
+      flex-shrink: 0;
+      all: unset;
       cursor: pointer;
-      padding-right: $spacing-lg;
       color: rgba($color-purple-70, 0.7);
       height: 20px; //height of down chevron
 
       .isOpen {
+        transition: transform 0.2s ease-out;
         rotate: (180deg);
       }
     }
   }
 
-  ul.exposureHeaderList {
-    list-style: none;
+  dl.exposureHeaderList {
     display: flex;
     align-items: center;
+    padding-left: 0;
     gap: $layout-md;
     margin: 0;
-    padding: 0 $spacing-sm;
     width: 100%;
+    justify-content: space-between;
+    height: 30px; // fixed height to standardize image/icon heights
 
-    li {
-      flex: 1;
+    dd {
       display: flex;
       align-items: center;
-    }
 
-    .exposureImage {
-      max-width: 150px;
-      height: 100%;
+      &.hideOnMobile {
+        display: none;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        flex: 1 1 0%;
+
+        &.hideOnMobile {
+          display: block;
+        }
+      }
+
+      .exposureImage {
+        max-width: 120px;
+        height: 100%;
+      }
     }
   }
 
@@ -56,56 +77,84 @@
     a,
     span {
       color: $color-blue-50;
+
+      svg {
+        display: inline;
+        margin: 0 $spacing-xs;
+      }
     }
 
     &.isOpen {
       border-top: 2px solid rgba($color-purple-70, 0.2);
       overflow: auto;
       height: auto;
+      padding: $spacing-lg;
     }
 
-    .exposureListOfExposureTypes {
+    .exposedInfoContainer {
+      padding-top: $spacing-md;
       display: flex;
-      flex-direction: row;
-      gap: $layout-md;
-      align-items: center;
+      flex-direction: column;
+      gap: $layout-xs;
 
-      .fixItBtn {
-        flex-basis: 20%;
-
-        & > * {
-          width: 100%;
-        }
+      .exposedInfoWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-md;
       }
 
-      ul {
-        font: $text-body-sm;
+      @media screen and (min-width: $screen-lg) {
+        flex-direction: row;
         justify-content: space-between;
-        list-style: none;
-        margin-left: 0;
-        padding-left: 0;
-        display: flex;
         align-items: center;
         gap: $layout-md;
 
-        .detailsFoundItem {
+        .exposedInfoWrapper {
+          flex-direction: row;
+          gap: $spacing-lg;
+        }
+      }
+
+      dl {
+        font: $text-body-sm;
+        justify-content: space-between;
+        margin-left: 0;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: $spacing-sm;
+
+        @media screen and (min-width: $screen-lg) {
           display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: $layout-xs;
+        }
 
-          svg {
-            color: $color-purple-70;
-          }
-
+        .detailsFoundItem {
           dt {
             display: flex;
-            gap: $spacing-sm;
+            gap: $spacing-xs;
             align-items: center;
+
+            .exposureTypeIcon {
+              width: var(--exposureDetailsIconWidth);
+              color: $color-purple-60;
+              margin-top: 2px;
+            }
           }
 
-          dl {
+          dd {
+            padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
+            font-weight: 600;
           }
         }
       }
     }
   }
+}
+
+.visuallyHidden {
+  @include visually-hidden;
 }

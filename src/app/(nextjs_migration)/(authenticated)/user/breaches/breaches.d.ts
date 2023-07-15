@@ -8,9 +8,6 @@ export type BreachResolutionTypes = Record<
   keyof BreachDataTypes,
   BreachResolution
 >;
-
-export type BreachLogos = Map<string, string>;
-
 export interface CircleChartProps
   extends React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLElement>,
@@ -52,7 +49,7 @@ export interface BreachStats {
   };
 }
 
-export interface BreachResolution {
+export interface SubscriberBreachResolution {
   useBreachId: boolean;
   [email: string]: {
     [id: number]: {
@@ -117,7 +114,7 @@ export interface Subscriber {
   breach_stats: BreachStats;
   monthly_email_at: Date | null;
   monthly_email_optout: boolean | null;
-  breach_resolution: BreachResolution;
+  breach_resolution: SubscriberBreachResolution;
   email_addresses: Array<SubscriberEmail>;
 }
 
@@ -133,15 +130,4 @@ export interface BreachResolutionRequest {
   affectedEmail: string;
   breachId: number;
   resolutionsChecked: Array<keyof HibpBreachDataTypes>;
-}
-
-export interface UserBreaches {
-  breachesData: {
-    verifiedEmails: Array<VerifiedEmail>;
-    unverifiedEmails: Array;
-  };
-  breachLogos: BreachLogos;
-  emailVerifiedCount: number;
-  emailTotalCount: number;
-  emailSelectIndex: number;
 }

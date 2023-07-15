@@ -8,7 +8,7 @@ import Script from "next/script";
 import AppConstants from "../../../../../appConstants";
 import { getL10n } from "../../../../functions/server/l10n";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../api/auth/[...nextauth]/route";
+import { authOptions } from "../../../../api/utils/auth";
 import ImageIconDelete from "../../../../../client/images/icon-delete.svg";
 import "../../../../../client/css/partials/settings.css";
 import React from "react";
@@ -81,7 +81,7 @@ const createEmailItem = (
 };
 
 // Moves the primary email to the front and sorts the rest alphabeticaly.
-const getSortedEmails = (emails: any[]) =>
+const getSortedEmails = (emails: Array<EmailRow & { primary?: boolean }>) =>
   [...emails].sort((a, b) => {
     if (a.primary) {
       return -1;

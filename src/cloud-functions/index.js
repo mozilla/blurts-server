@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import express from "express";
-import Sentry from "@sentry/node";
+import * as Sentry from "@sentry/node";
 import "@sentry/tracing";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 
@@ -46,8 +46,11 @@ app.use(
 app.use(errorHandler);
 app.post("/api/v1/hibp/notify", notify);
 
-await initFluentBundles();
-await initEmail();
+async function init() {
+  await initFluentBundles();
+  await initEmail();
+}
+init();
 
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.

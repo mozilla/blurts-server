@@ -11,7 +11,9 @@
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended",
     "next/core-web-vitals",
-    "next"
+    "next",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -74,6 +76,9 @@
     },
     {
       "files": [
+        "src/app.js",
+        "src/utils/redisMock.js",
+        "src/routes/**/*.js",
         "src/views/**/*.js",
         "src/middleware/**/*.js",
         "src/controllers/**/*.js",
@@ -84,8 +89,45 @@
         "jsdoc/no-undefined-types": "off",
         "@typescript-eslint/no-unused-vars": "off",
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "import/no-named-as-default-member": "off",
+        "import/no-unresolved": "off"
+      }
+    },
+    {
+      // Only enable rules that depend on type checking on TS files,
+      // except for files that include a lot of copy-pasted pre-TypeScript code
+      // (i.e. the code inside `(nextjs_migration)`),
+      // to avoid a barrage of warnings for older code:
+      "files": ["**/*.{ts,tsx}"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parserOptions": {
+        // See https://typescript-eslint.io/linting/typed-linting/#specifying-tsconfigs
+        // Needed for `plugin:@typescript-eslint/recommended-requiring-type-checking`
+        // to avoid this error:
+        // > You have used a rule which requires parserServices to be generated.
+        // > You must therefore provide a value for the "parserOptions.project"
+        // > property for @typescript-eslint/parser.
+        "project": "tsconfig.json"
+      },
+      "rules": {
+        // These rules trigger lots of times; possibly we can enable them later:
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-call": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    }
+  }
 }

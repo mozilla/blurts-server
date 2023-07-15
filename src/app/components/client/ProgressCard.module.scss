@@ -1,0 +1,119 @@
+@import "../../tokens";
+
+.progressCard {
+  max-width: $content-sm;
+  display: flex;
+  padding: $spacing-lg;
+  padding-bottom: $spacing-xl;
+  flex-direction: column;
+  border: 2px solid rgba($color-purple-70, 0.4);
+  border-radius: $border-radius-md;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    justify-content: center;
+    font: $text-title-3xs;
+    font-weight: 600;
+
+    button {
+      all: unset;
+      cursor: pointer;
+      height: 25px; // height of the button
+      color: $color-grey-40;
+
+      &:hover {
+        color: $color-grey-30;
+      }
+    }
+  }
+
+  .progressBarContainer {
+    gap: $spacing-md;
+    align-items: center;
+    display: flex;
+
+    img {
+      width: 50px; // width of laptop images
+      height: auto;
+    }
+
+    .fullProgressBar {
+      border-radius: $border-radius-lg;
+      height: 15px;
+      background: repeating-linear-gradient(
+        -45deg,
+        $color-grey-20,
+        $color-grey-20 5px,
+        $color-grey-10 5px,
+        $color-grey-10 10px
+      );
+      position: relative;
+      width: 100%;
+
+      .activeProgressBar {
+        height: inherit;
+        border-radius: $border-radius-lg;
+        position: absolute;
+        background: $gradient-blue;
+      }
+
+      .percentageBreakdown {
+        font: $text-body-sm;
+        color: $color-grey-60;
+        margin-top: 15px; // offset height of progress bar
+        padding-top: $spacing-xs;
+        display: flex;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .progressStatsWrapper {
+    font: $text-body-sm;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    gap: $layout-md;
+    padding: $spacing-md 0;
+    justify-content: center;
+
+    .progressItem {
+      display: flex;
+      flex-direction: column;
+
+      .progressStat {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        gap: $spacing-sm;
+
+        img {
+          width: 50px;
+          height: auto;
+        }
+      }
+
+      span {
+        font: $text-title-lg;
+        font-weight: 600;
+        color: $color-purple-70;
+      }
+    }
+  }
+}
+
+.modalBodyContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .confirmButtonWrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: $content-xs;
+    padding-block-start: $spacing-md;
+  }
+}
