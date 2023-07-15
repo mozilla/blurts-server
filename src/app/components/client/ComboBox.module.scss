@@ -20,6 +20,16 @@
 
     &.hasError {
       border-color: $color-error;
+
+      &:focus {
+        border: 1px solid $color-error;
+        outline: $boder-focus-width solid $color-error-focus;
+      }
+    }
+
+    &:focus {
+      border: 1px solid $color-informational-active;
+      outline: $boder-focus-width solid $color-informational-focus;
     }
   }
 

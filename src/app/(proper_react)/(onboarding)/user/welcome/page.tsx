@@ -5,17 +5,17 @@
 import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../(nextjs_migration)/components/client/SignInButton";
 import { redirect } from "next/navigation";
-import { hasSetupOnerep } from "../../../../functions/universal/user";
+import { isEligible } from "../../../../functions/server/onerep";
 import { View } from "./View";
 
 export default async function Onboarding() {
   const session = await getServerSession();
-
   if (!session) {
     return <SignInButton autoSignIn={true} />;
   }
 
-  if (hasSetupOnerep(session.user)) {
+  const userIsEligible = await isEligible();
+  if (!userIsEligible) {
     return redirect("/user/dashboard/");
   }
 

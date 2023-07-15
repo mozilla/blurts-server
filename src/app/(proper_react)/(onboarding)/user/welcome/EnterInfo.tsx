@@ -5,8 +5,8 @@
 "use client";
 
 import Image from "next/image";
-import { Session } from "next-auth";
 import { FormEvent, useState } from "react";
+import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
@@ -15,9 +15,22 @@ import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay"
 import { Dialog } from "../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../components/server/Button";
 import { InputField } from "../../../../components/client/InputField";
-import { LocationAutocompleteInput } from "../../../../components/client/LocationAutocompleteInput";
+import {
+  LocationAutocompleteInput,
+  getDetailsFromLocationString,
+} from "../../../../components/client/LocationAutocompleteInput";
+import { StateAbbr } from "../../../../../utils/states";
+import { ISO8601DateString } from "../../../../..//utils/parse.js";
 
 import styles from "./EnterInfo.module.scss";
+
+export type UserInfo = {
+  firstName: string;
+  lastName: string;
+  city: string;
+  state: StateAbbr;
+  dateOfBirth: ISO8601DateString;
+};
 
 export type Props = {
   onDataSaved: () => void;
@@ -25,15 +38,24 @@ export type Props = {
   user: Session["user"];
 };
 
-// TODO: Add more sophisticated validation for location data
-const getIsValidInfo = (value: string) => value !== "";
+const getAgeFromDateString = (dateOfBirth: ISO8601DateString): number => {
+  const dateNow = new Date();
+  const dateBirth = new Date(dateOfBirth);
+  const dateDelta = new Date(dateNow.valueOf() - dateBirth.valueOf());
+  const unixStartDate = new Date(0);
 
-export const EnterInfo = (props: Props) => {
+  return dateDelta.getUTCFullYear() - unixStartDate.getUTCFullYear();
+};
+
+const meetsAgeRequirement = (dateOfBirth: ISO8601DateString): boolean =>
+  getAgeFromDateString(dateOfBirth) >= 13;
+
+export const EnterInfo = ({ onDataSaved, onGoBack }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-
+  const [submittingProfile, setSubmittingProfile] = useState(false);
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
 
   const explainerDialogState = useOverlayTriggerState({});
@@ -49,7 +71,6 @@ export const EnterInfo = (props: Props) => {
   );
 
   const l10n = useL10n();
-
   const userDetailsData = [
     {
       label: l10n.getString("onboarding-enter-details-label-first-name"),
@@ -63,6 +84,7 @@ export const EnterInfo = (props: Props) => {
       errorMessage: l10n.getString(
         "onboarding-enter-details-input-error-message"
       ),
+      isValid: firstName !== "",
       onChange: setFirstName,
     },
     {
@@ -77,6 +99,7 @@ export const EnterInfo = (props: Props) => {
       errorMessage: l10n.getString(
         "onboarding-enter-details-input-error-message"
       ),
+      isValid: lastName !== "",
       onChange: setLastName,
     },
     {
@@ -88,9 +111,9 @@ export const EnterInfo = (props: Props) => {
       ),
       value: location,
       displayValue: location,
-      errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
-      ),
+      // TODO: Localize string
+      errorMessage: "Search and select your location",
+      isValid: location !== "",
       onChange: setLocation,
     },
     {
@@ -102,17 +125,46 @@ export const EnterInfo = (props: Props) => {
       displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
         dateStyle: "medium",
       }),
-      errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
-      ),
+      // TODO: Localize string
+      errorMessage: "You have to be at least 13 years old",
+      isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
     },
   ];
 
   const getInvalidFields = () =>
-    userDetailsData
-      .filter(({ value }) => !getIsValidInfo(value))
-      .map(({ key }) => key);
+    userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
+
+  const createProfile = async () => {
+    if (submittingProfile) {
+      return;
+    }
+
+    setSubmittingProfile(true);
+    const { city, state } = getDetailsFromLocationString(location);
+    const userInfo = {
+      firstName,
+      lastName,
+      city,
+      state,
+      dateOfBirth,
+    } as UserInfo;
+
+    const response = await fetch("/api/v1/user/welcome", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
+    const result = await response.json();
+    if (result && result.success === true) {
+      onDataSaved();
+      setSubmittingProfile(false);
+    } else {
+      throw new Error("Could not submit profile:", result);
+    }
+  };
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -223,9 +275,10 @@ export const EnterInfo = (props: Props) => {
         </Button>
         <Button
           variant="primary"
-          onClick={() => props.onDataSaved()}
+          onClick={() => void createProfile()}
           autoFocus={true}
           className={styles.startButton}
+          isLoading={submittingProfile}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm"
@@ -258,13 +311,12 @@ export const EnterInfo = (props: Props) => {
               label,
               onChange,
               placeholder,
+              isValid,
               type,
               value,
             }) => {
               const validationState =
-                !getIsValidInfo(value) && invalidInputs.includes(key)
-                  ? "invalid"
-                  : "valid";
+                !isValid && invalidInputs.includes(key) ? "invalid" : "valid";
               return key === "location" ? (
                 <LocationAutocompleteInput
                   key={key}
@@ -296,7 +348,7 @@ export const EnterInfo = (props: Props) => {
         <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
-            onClick={() => props.onGoBack()}
+            onClick={() => onGoBack()}
             className={styles.startButton}
             type="button"
           >

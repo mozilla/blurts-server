@@ -41,18 +41,18 @@ export default async function UserWelcomeDetails() {
                 <tbody>
                   <tr>
                     <td>
-                      <label htmlFor="firstname">First name: </label>
+                      <label htmlFor="firstName">First name: </label>
                     </td>
                     <td>
-                      <input type="text" name="firstname" id="firstname" />
+                      <input type="text" name="firstName" id="firstName" />
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label htmlFor="lastname">Last name: </label>
+                      <label htmlFor="lastName">Last name: </label>
                     </td>
                     <td>
-                      <input type="text" name="lastname" id="lastname" />
+                      <input type="text" name="lastName" id="lastName" />
                     </td>
                   </tr>
                   <tr>
@@ -71,10 +71,10 @@ export default async function UserWelcomeDetails() {
                   </tr>
                   <tr>
                     <td>
-                      <label htmlFor="dob">Date of birth: </label>
+                      <label htmlFor="dateOfBirth">Date of birth: </label>
                     </td>
                     <td>
-                      <input type="date" name="dob" id="dob" />
+                      <input type="date" name="dateOfBirth" id="dateOfBirth" />
                     </td>
                   </tr>
                   <tr>

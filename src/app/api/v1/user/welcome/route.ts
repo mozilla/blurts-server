@@ -31,20 +31,25 @@ export async function POST(req: NextRequest) {
 
   const params = await req.json();
 
-  const requiredParams = ["firstname", "lastname", "city", "state", "dob"];
+  const requiredParams = [
+    "firstName",
+    "lastName",
+    "city",
+    "state",
+    "dateOfBirth",
+  ];
   requiredParams.forEach((param) => {
     if (!params[param]) {
       throw new Error(`${param} is required`);
     }
   });
 
+  const { firstName, lastName, city, state, dateOfBirth } = params;
   const profileData: ProfileData = {
-    first_name: params.firstname,
-    last_name: params.lastname,
-    addresses: [
-      { city: params.city as string, state: params.state as StateAbbr },
-    ],
-    birth_date: params.dob,
+    first_name: firstName,
+    last_name: lastName,
+    addresses: [{ city: city as string, state: state as StateAbbr }],
+    birth_date: dateOfBirth,
   };
 
   if (typeof session?.user?.email === "string") {
