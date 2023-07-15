@@ -314,6 +314,7 @@ export async function getAllScanResults(
     while (currentPage <= firstPage.meta.last_page) {
       const nextPage = await listScanResults(profileId, {
         per_page: 100,
+        page: currentPage,
       });
       currentPage++;
       nextPage.data.forEach((element: object) => scanPagesAll.push(element));
