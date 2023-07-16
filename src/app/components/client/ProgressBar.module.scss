@@ -3,7 +3,7 @@
 $progressBarHeight: 56px;
 .progressContainer {
   .labelContainer {
-    font: $text-title-sm;
+    font: $text-title-2xs;
     padding: 0 $spacing-sm;
     margin-bottom: $spacing-sm;
   }
@@ -19,7 +19,7 @@ $progressBarHeight: 56px;
     &Percentage {
       color: $color-white;
       position: absolute;
-      font: $text-title-sm;
+      font: $text-title-xs;
       left: $spacing-lg;
       top: 52%;
       transform: translateY(-50%);
@@ -27,14 +27,12 @@ $progressBarHeight: 56px;
     }
 
     &Inner {
-      background: linear-gradient(45deg, $color-violet-30, $color-purple-60);
+      background: linear-gradient(15deg, $color-violet-30, $color-purple-60);
+      border-radius: calc($progressBarHeight / 2);
       height: 100%;
       left: 0;
       position: absolute;
       top: 0;
-      transform-origin: left;
-      transform: scaleX(0);
-      width: 100%;
     }
   }
 }

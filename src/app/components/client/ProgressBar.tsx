@@ -34,7 +34,7 @@ function ProgressBar(props: ProgressBarProps) {
           </span>
         )}
         <div
-          style={{ transform: `scaleX(${percentage})` }}
+          style={{ width: `${percentage * 100}%` }}
           className={styles.progressBarInner}
         />
       </div>

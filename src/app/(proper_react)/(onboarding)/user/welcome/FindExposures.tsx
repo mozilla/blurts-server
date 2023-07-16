@@ -5,9 +5,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import styles from "./FindExposures.module.scss";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "../../../../components/client/ProgressBar";
+import styles from "./FindExposures.module.scss";
 
 export const FindExposures = () => {
   const [scanProgress, setScanProgress] = useState(0);
@@ -17,6 +17,8 @@ export const FindExposures = () => {
 
   const progressSteps = 6;
   const maxProgress = 100;
+  const totalBreachesCount = 672;
+  const scannedBreachesCount = Math.ceil((672 * scanProgress) / 100);
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       const nextProgress = scanProgress + progressSteps;
@@ -37,16 +39,28 @@ export const FindExposures = () => {
     }, 1000);
 
     if (scanProgress >= maxProgress) {
-      router.push("/user/dashboard/");
+      // router.push("/user/dashboard/");
     }
 
     return () => clearTimeout(timeoutId);
   }, [scanProgress, router, checkingScanProgress, scanFinished]);
 
+  function ProgressLabel() {
+    return (
+      <div className={styles.progressLabel}>
+        Scanning for exposures…
+        <div className={styles.progressLabelIndicator}>
+          <span>{scannedBreachesCount}</span>
+          {` of ${totalBreachesCount} known data breaches`}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.wrapper}>
       <ProgressBar
-        label="Scanning for exposures…"
+        label={<ProgressLabel />}
         value={scanProgress}
         maxValue={maxProgress}
       />

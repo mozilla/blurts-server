@@ -1,1 +1,14 @@
 @import "../../../../tokens";
+
+.progressLabel {
+  margin: $spacing-xl 0 $spacing-lg;
+
+  &Indicator {
+    font: $text-title-sm;
+    margin-top: $spacing-sm;
+
+    span {
+      color: $color-purple-70;
+    }
+  }
+}
