@@ -3,28 +3,24 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../../api/utils/auth";
+import { authOptions } from "../../../../utils/auth";
 import { NextRequest, NextResponse } from "next/server";
 
 import {
   createProfile,
   createScan,
   isEligible,
-} from "../../../../functions/server/onerep";
-import type { ProfileData } from "../../../../functions/server/onerep";
-import AppConstants from "../../../../../appConstants";
-import {
-  getOnerepProfileId,
-  getSubscriberByEmail,
-} from "../../../../../db/tables/subscribers";
+} from "../../../../../functions/server/onerep";
+import type { ProfileData } from "../../../../../functions/server/onerep";
+import AppConstants from "../../../../../../appConstants";
+import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
 
 import {
-  getLatestOnerepScan,
   setOnerepProfileId,
   setOnerepScan,
-} from "../../../../../db/tables/onerep_scans";
-import { setProfileDetails } from "../../../../../db/tables/onerep_profiles";
-import { StateAbbr } from "../../../../../utils/states";
+} from "../../../../../../db/tables/onerep_scans";
+import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
+import { StateAbbr } from "../../../../../../utils/states";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -41,7 +37,6 @@ export async function POST(
   }
 
   const params = await req.json();
-
   const requiredParams = [
     "firstName",
     "lastName",
@@ -79,43 +74,10 @@ export async function POST(
         const scanId = scan.id;
         await setOnerepScan(profileId, scanId);
 
-        return NextResponse.json(
-          {
-            success: true,
-            resultIds: {
-              profileId,
-              scanId,
-            },
-          },
-          { status: 200 }
-        );
+        return NextResponse.json({ success: true }, { status: 200 });
       }
 
       return NextResponse.json({ success: true }, { status: 200 });
-    } catch (e) {
-      console.error(e);
-      return NextResponse.json({ success: false }, { status: 500 });
-    }
-  } else {
-    // Not Signed in, redirect to home
-    return NextResponse.redirect(AppConstants.SERVER_URL, 302);
-  }
-}
-
-export async function GET(_req: NextRequest) {
-  const session = await getServerSession(authOptions);
-  if (typeof session?.user?.email === "string") {
-    try {
-      const subscriber = await getSubscriberByEmail(session.user.email);
-      const profileId = (await getOnerepProfileId(subscriber.id))[0][
-        "onerep_profile_id"
-      ] as number;
-
-      const scanResults = await getLatestOnerepScan(profileId);
-      return NextResponse.json(
-        { success: true, scan_results: scanResults },
-        { status: 200 }
-      );
     } catch (e) {
       console.error(e);
       return NextResponse.json({ success: false }, { status: 500 });

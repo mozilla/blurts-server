@@ -20,7 +20,7 @@ import {
   LocationAutocompleteInput,
   getDetailsFromLocationString,
 } from "../../../../components/client/LocationAutocompleteInput";
-import { WelcomeScanBody } from "../../../../api/v1/user/welcome/route";
+import { WelcomeScanBody } from "../../../../api/v1/user/welcome-scan/create/route";
 import { StateAbbr } from "../../../../../utils/states";
 import { ISO8601DateString } from "../../../../../utils/parse.js";
 
@@ -49,7 +49,7 @@ const meetsAgeRequirement = (dateOfBirth: ISO8601DateString): boolean =>
 const createProfileAndStartScan = async (
   userInfo: UserInfo
 ): Promise<WelcomeScanBody> => {
-  const response = await fetch("/api/v1/user/welcome", {
+  const response = await fetch("/api/v1/user/welcome-scan/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -180,8 +180,6 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         console.error("Could not request scan:", error);
         router.push("/user/dashboard/");
       });
-
-    return () => confirmDialogState.close();
   };
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
