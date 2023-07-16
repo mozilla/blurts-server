@@ -174,14 +174,14 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
 
     void createProfileAndStartScan(userInfo)
       .then(() => {
-        confirmDialogState.close();
         onScanStarted();
       })
       .catch((error) => {
-        confirmDialogState.close();
         console.error("Could not request scan:", error);
         router.push("/user/dashboard/");
       });
+
+    return () => confirmDialogState.close();
   };
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {

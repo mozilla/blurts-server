@@ -7,6 +7,7 @@
 import Link from "next/link";
 import styles from "./FindExposures.module.scss";
 import { useEffect, useState } from "react";
+import { ProgressBar } from "../../../../components/client/ProgressBar";
 
 export const FindExposures = () => {
   const [scanProgress, setScanProgress] = useState(0);
@@ -28,13 +29,11 @@ export const FindExposures = () => {
 
   return (
     <div className={styles.wrapper}>
-      <label>
-        Scanning for exposures…
-        <progress value={scanProgress} max={maxProgress}>
-          {scanProgress}%
-        </progress>
-      </label>
-
+      <ProgressBar
+        label="Scanning for exposures…"
+        value={scanProgress}
+        maxValue={maxProgress}
+      />
       {scanProgress === maxProgress && (
         <Link href="/user/dashboard">Go to dashboard</Link>
       )}

@@ -1,0 +1,40 @@
+@import "../../tokens";
+
+$progressBarHeight: 56px;
+.progressContainer {
+  .labelContainer {
+    font: $text-title-sm;
+    padding: 0 $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  .progressBar {
+    background: $color-grey-05;
+    border-radius: calc($progressBarHeight / 2);
+    height: $progressBarHeight;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &Percentage {
+      color: $color-white;
+      position: absolute;
+      font: $text-title-sm;
+      left: $spacing-lg;
+      top: 52%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    &Inner {
+      background: linear-gradient(45deg, $color-violet-30, $color-purple-60);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      width: 100%;
+    }
+  }
+}
