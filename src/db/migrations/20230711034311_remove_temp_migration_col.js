@@ -8,7 +8,7 @@
  */
 
 export async function up(knex) {
-  if (true === await knex.schema.hasColumn('subscribers', 'db_migration_1')) {
+  if (await knex.schema.hasColumn('subscribers', 'db_migration_1')) {
     await knex.schema.alterTable('subscribers', table => {
       table.dropColumn('db_migration_1')
     })
@@ -23,7 +23,7 @@ export async function up(knex) {
 
 export async function down(knex) {
   if (true === await knex.schema.hasColumn('subscribers', 'db_migration_1')) {
-    console.log('do nothing for db_migration_2')
+    console.log('do nothing for db_migration_1')
   }
 
   if (true === await knex.schema.hasColumn('subscribers', 'db_migration_2')) {
