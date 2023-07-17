@@ -15,9 +15,17 @@ export interface Props extends ComponentProps<"button"> {
   onClick?: () => void;
 }
 
-export const Button = (props: Props) => {
-  const { children, destructive, isLoading, disabled, small, variant, ...otherProps } =
-    props;
+export const Button = (props: Props & HTMLAttributes<HTMLButtonElement>) => {
+  const {
+    type,
+    children,
+    destructive,
+    disabled,
+    variant,
+    isLoading,
+    small,
+    ...otherProps
+  } = props;
 
   const classes = [
     styles.button,
