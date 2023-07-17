@@ -26,8 +26,13 @@ export const FindExposures = () => {
       const nextProgress = scanProgress + progressSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
 
-      // Check the scan progress and if it’s finished.
-      if (!checkingScanProgress && !scanFinished) {
+      // For development we are periodically checking the scan progress and set
+      // the result if finished.
+      if (
+        process.env.NODE_ENV === "development" &&
+        !checkingScanProgress &&
+        !scanFinished
+      ) {
         setCheckingScanProgress(true);
         void fetch("/api/v1/user/welcome-scan/progress")
           .then((response) => response.json())

@@ -20,7 +20,7 @@ import {
   ListScanResultsResponse,
   Scan,
   getScanDetails,
-  listScanResults,
+  getAllScanResults,
 } from "../../../../../functions/server/onerep";
 
 export interface ScanProgressBody {
@@ -29,6 +29,10 @@ export interface ScanProgressBody {
   results?: ListScanResultsResponse;
 }
 
+// For development we are periodically checking the scan progress and set the
+// result if finished. Polling the OneRep API is only necessary in development
+// environments - a webhook is used elsewhere.
+// @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
 export async function GET(
   _req: NextRequest
 ): Promise<NextResponse<ScanProgressBody | unknown>> {
@@ -46,15 +50,14 @@ export async function GET(
       if (latestScanId) {
         const scan = await getScanDetails(profileId, latestScanId);
 
-        // For development we are periodically checking the scan progress and
-        // set the result if finished.
+        // Store scan results only for development environments.
         if (
           scan.status === "finished" &&
           process.env.NODE_ENV === "development"
         ) {
-          const results = await listScanResults(profileId, { per_page: 100 });
+          const allScanResults = await getAllScanResults(profileId);
           await setOnerepScanResults(profileId, scan.id, {
-            data: results.data,
+            data: allScanResults[0],
           });
         }
 
