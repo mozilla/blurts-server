@@ -6,7 +6,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ProgressBar } from "../../../../components/client/ProgressBar";
+import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 
 export const FindExposures = () => {
@@ -39,7 +39,7 @@ export const FindExposures = () => {
     }, 1000);
 
     if (scanProgress >= maxProgress) {
-      // router.push("/user/dashboard/");
+      router.push("/user/dashboard/");
     }
 
     return () => clearTimeout(timeoutId);

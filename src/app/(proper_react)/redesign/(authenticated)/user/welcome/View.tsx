@@ -9,15 +9,15 @@ import Link from "next/link";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
-import monitorLogo from "../../../images/monitor-logo.webp";
 import stepGetStartedIcon from "./images/step-counter-get-started.svg";
 import stepEnterInfoIcon from "./images/step-counter-enter-info.svg";
 import stepFindExposuresIcon from "./images/step-counter-find-exposures.svg";
 import stepDoneIcon from "./images/step-counter-done.svg";
-import { useL10n } from "../../../../hooks/l10n";
 import { GetStarted } from "./GetStarted";
 import { FindExposures } from "./FindExposures";
 import { EnterInfo } from "./EnterInfo";
+import { useL10n } from "../../../../../hooks/l10n";
+import monitorLogo from "../../../../images/monitor-logo.webp";
 
 export type Props = {
   user: Session["user"];

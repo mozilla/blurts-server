@@ -8,10 +8,10 @@ import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import howItWorksHero from "./images/welcome-how-it-works.svg";
-import { useL10n } from "../../../../hooks/l10n";
-import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
-import { Dialog } from "../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../components/server/Button";
+import { useL10n } from "../../../../../hooks/l10n";
+import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../components/client/dialog/Dialog";
+import { Button } from "../../../../../components/server/Button";
 
 import styles from "./GetStarted.module.scss";
 

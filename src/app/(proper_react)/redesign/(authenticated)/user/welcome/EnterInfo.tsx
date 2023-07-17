@@ -11,18 +11,18 @@ import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
-import { useL10n } from "../../../../hooks/l10n";
-import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
-import { Dialog } from "../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../components/server/Button";
-import { InputField } from "../../../../components/client/InputField";
+import { useL10n } from "../../../../../hooks/l10n";
+import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../components/client/dialog/Dialog";
+import { Button } from "../../../../../components/server/Button";
+import { InputField } from "../../../../../components/client/InputField";
 import {
   LocationAutocompleteInput,
   getDetailsFromLocationString,
-} from "../../../../components/client/LocationAutocompleteInput";
-import { WelcomeScanBody } from "../../../../api/v1/user/welcome-scan/create/route";
-import { StateAbbr } from "../../../../../utils/states";
-import { ISO8601DateString } from "../../../../../utils/parse.js";
+} from "../../../../../components/client/LocationAutocompleteInput";
+import { WelcomeScanBody } from "../../../../../api/v1/user/welcome-scan/create/route";
+import { StateAbbr } from "../../../../../../utils/states";
+import { ISO8601DateString } from "../../../../../../utils/parse.js";
 
 import styles from "./EnterInfo.module.scss";
 
