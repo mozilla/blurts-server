@@ -20,9 +20,7 @@ async function getOnerepScanResults(
   >;
 }
 
-async function getLatestOnerepScan(
-  onerepProfileId: number
-): Promise<
+async function getLatestOnerepScan(onerepProfileId: number): Promise<
   {
     created_at: number;
     updated_at: number;
