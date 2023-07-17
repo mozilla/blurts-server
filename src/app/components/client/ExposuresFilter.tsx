@@ -275,6 +275,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
         <ul className={styles.filterHeaderList}>
           <li>
             <button
+              className={styles.filterBtn}
               ref={filterBtnRef}
               onClick={() => {
                 filterDialogState.open();
@@ -282,8 +283,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
               aria-label={l10n.getString("popover-open-filter-settings-alt")}
             >
               <FilterIcon width="16" height="16" alt={""} />
+              {l10n.getString("dashboard-exposures-filter")}
             </button>
-            {l10n.getString("dashboard-exposures-filter")}
           </li>
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-company")}

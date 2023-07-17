@@ -56,6 +56,13 @@
         }
       }
     }
+
+    .filterBtn {
+      display: flex;
+      flex-direction: row;
+      gap: $spacing-xs;
+      align-items: center;
+    }
   }
 }
 
