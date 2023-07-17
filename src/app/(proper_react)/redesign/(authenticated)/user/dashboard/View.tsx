@@ -34,7 +34,7 @@ export type Props = {
 export const View = (props: Props) => {
   const l10n = useL10n();
 
-  const totalBreaches = props.userBreaches?.breachesData.verifiedEmails.reduce(
+  const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
     (count, emailData) => count + emailData.breaches.length,
     0
   );
