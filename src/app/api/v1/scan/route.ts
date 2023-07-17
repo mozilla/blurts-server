@@ -11,11 +11,22 @@ import { getL10n } from "../../../functions/server/l10n";
 import { getBreachLogo } from "../../../../utils/breachLogo";
 import { Breach } from "../../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
 
-/**
- * @typedef {{ success: false }} RequestBreachScanErrorResponse
- * @typedef {{ success: true, breaches: Array<unknown>, heading: string, logos: string[], dataClassStrings: string[][], total: number }} RequestBreachScanSuccessResponse
- * @typedef {RequestBreachScanErrorResponse | RequestBreachScanSuccessResponse} RequestBreachScanResponse
- */
+export interface RequestBreachScanErrorResponse {
+  success: false;
+}
+
+export interface RequestBreachScanSuccessResponse {
+  success: true;
+  breaches: Array<unknown>;
+  heading: string;
+  logos: string[];
+  dataClassStrings: string[][];
+  total: number;
+}
+
+export type RequestBreachScanResponse =
+  | RequestBreachScanErrorResponse
+  | RequestBreachScanSuccessResponse;
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -36,8 +47,7 @@ export async function POST(request: Request) {
       false
     )) as Breach[];
 
-    /** @type {RequestBreachScanSuccessResponse} */
-    const successResponse = {
+    const successResponse: RequestBreachScanSuccessResponse = {
       success: true,
       breaches: breaches.slice(0, 6),
       total: breaches.length,
