@@ -10,14 +10,14 @@ import { getL10n, getL10nBundles } from "../../../../../functions/server/l10n";
 import { authOptions } from "../../../../../api/utils/auth";
 import { Shell } from "../../../Shell";
 
-export default async function Layout(props: { children: ReactNode }) {
+export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
   const l10n = getL10n(l10nBundles);
   const session = await getServerSession(authOptions);
 
   return (
     <Shell l10n={l10n} session={session}>
-      {props.children}
+      {children}
     </Shell>
   );
 }

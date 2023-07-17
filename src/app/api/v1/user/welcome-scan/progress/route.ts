@@ -46,7 +46,12 @@ export async function GET(
       if (latestScanId) {
         const scan = await getScanDetails(profileId, latestScanId);
 
-        if (scan.status === "finished") {
+        // For development we are periodically checking the scan progress and
+        // set the result if finished.
+        if (
+          scan.status === "finished" &&
+          process.env.NODE_ENV === "development"
+        ) {
           const results = await listScanResults(profileId, { per_page: 100 });
           await setOnerepScanResults(profileId, scan.id, {
             data: results.data,

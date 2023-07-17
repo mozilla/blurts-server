@@ -24,6 +24,7 @@ export const FindExposures = () => {
       const nextProgress = scanProgress + progressSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
 
+      // Check the scan progress and if it’s finished.
       if (!checkingScanProgress && !scanFinished) {
         setCheckingScanProgress(true);
         void fetch("/api/v1/user/welcome-scan/progress")
@@ -38,6 +39,7 @@ export const FindExposures = () => {
       }
     }, 1000);
 
+    // Go to dashboard even if the scan did not finish.
     if (scanProgress >= maxProgress) {
       router.push("/user/dashboard/");
     }
@@ -50,6 +52,7 @@ export const FindExposures = () => {
       <div className={styles.progressLabel}>
         Scanning for exposures…
         <div className={styles.progressLabelIndicator}>
+          {/* TODO: Localize string */}
           <span>{scannedBreachesCount}</span>
           {` of ${totalBreachesCount} known data breaches`}
         </div>
