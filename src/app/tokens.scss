@@ -147,6 +147,11 @@ $gradient-blue: radial-gradient(
   $color-blue-40 61.4%,
   #0090ed 100%
 );
+$gradient-linear-purple: linear-gradient(
+  15deg,
+  $color-violet-30,
+  $color-purple-60
+);
 
 // Layout //
 // Border Radius

@@ -21,13 +21,15 @@ $progressBarHeight: 56px;
       position: absolute;
       font: $text-title-xs;
       left: $spacing-lg;
+      // Center vertically plus some extra for visual balance of the label
+      // within the progress bar.
       top: 52%;
       transform: translateY(-50%);
       z-index: 1;
     }
 
     &Inner {
-      background: linear-gradient(15deg, $color-violet-30, $color-purple-60);
+      background: $gradient-linear-purple;
       border-radius: calc($progressBarHeight / 2);
       height: 100%;
       left: 0;
