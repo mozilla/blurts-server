@@ -42,9 +42,7 @@ type ExposuresFilterProps = {
 
 export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
   const l10n = useL10n();
-  const [explainerTitle, setExplainerTitle] = useState<ReactElement | string>(
-    ""
-  );
+  const [explainerTitle, setExplainerTitle] = useState<string>("");
   const [explainerContent, setExplainerContent] = useState<
     ReactElement | string
   >("");
