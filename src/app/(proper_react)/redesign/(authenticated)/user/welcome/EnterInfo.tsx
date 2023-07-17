@@ -26,10 +26,6 @@ import { ISO8601DateString } from "../../../../../../utils/parse.js";
 
 import styles from "./EnterInfo.module.scss";
 
-jest.mock("next/navigation", () => ({
-  useRouter: jest.fn(),
-}));
-
 export type UserInfo = {
   firstName: string;
   lastName: string;
