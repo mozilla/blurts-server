@@ -10,6 +10,7 @@ import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
 import { StateAbbr } from "../../../../../../utils/states";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
+import { createRandomScan } from "../../../../../../apiMocks/mockData";
 
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
@@ -86,7 +87,7 @@ const BreachMockItem2: HibpLikeDbBreach = {
 };
 
 const BreachMockItem3: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-07-12T14:48:00.000Z"),
+  AddedDate: new Date("2023-07-17T14:48:00.000Z"),
   BreachDate: "11/09/23",
   DataClasses: [],
   Description: "",
@@ -125,120 +126,10 @@ const BreachMockItem4: HibpLikeDbBreach = {
   Title: "Twitter",
 };
 
-const _ScanResultMockItem1: ScanResult = {
-  id: 1,
-  profile_id: 1,
-  first_name: "John",
-  last_name: "Doe",
-  middle_name: "string",
-  age: `${30}`,
-  addresses: [
-    {
-      city: "123",
-      state: "State" as StateAbbr,
-      street: "Street",
-      zip: "123456",
-    },
-  ],
-  phones: [""],
-  emails: [""],
-  data_broker: "Familytree.com",
-  created_at: "2022-10-05T14:48:00.000Z",
-  updated_at: "11/09/23",
-  url: "",
-  link: "",
-  relatives: [],
-  status: "new",
-  data_broker_id: 0,
-};
-
-const _ScanResultMockItem2: ScanResult = {
-  id: 1,
-  profile_id: 1,
-  first_name: "John",
-  last_name: "Doe",
-  middle_name: "string",
-  age: `${30}`,
-  addresses: [
-    {
-      city: "123",
-      state: "State" as StateAbbr,
-      street: "Street",
-      zip: "123456",
-    },
-  ],
-  phones: [""],
-  emails: [""],
-  data_broker: "Familytree.com",
-  created_at: "2021-11-05T14:48:00.000Z",
-  updated_at: "11/09/23",
-  url: "",
-  link: "",
-  relatives: [],
-  status: "new",
-  data_broker_id: 0,
-};
-
-const _ScanResultMockItem3: ScanResult = {
-  id: 1,
-  profile_id: 1,
-  first_name: "John",
-  last_name: "Doe",
-  middle_name: "string",
-  age: `${30}`,
-  addresses: [
-    {
-      city: "123",
-      state: "State" as StateAbbr,
-      street: "Street",
-      zip: "123456",
-    },
-  ],
-  phones: [""],
-  emails: [""],
-  data_broker: "Familytree.com",
-  created_at: "2019-02-10T14:48:00.000Z",
-  updated_at: "11/09/23",
-  url: "",
-  link: "",
-  relatives: [],
-  status: "new",
-  data_broker_id: 0,
-};
-
-const _ScanResultMockItem4: ScanResult = {
-  id: 1,
-  profile_id: 1,
-  first_name: "John",
-  last_name: "Doe",
-  middle_name: "string",
-  age: `${30}`,
-  addresses: [
-    {
-      city: "123",
-      state: "State" as StateAbbr,
-      street: "Street",
-      zip: "123456",
-    },
-  ],
-  phones: [""],
-  emails: [""],
-  data_broker: "Familytree.com",
-  created_at: "2023-06-29T14:48:00.000Z",
-  updated_at: "11/09/23",
-  url: "",
-  link: "",
-  relatives: [],
-  status: "new",
-  data_broker_id: 0,
-};
-
-const scannedResultsArraySample: ScanResult[] = [
-  _ScanResultMockItem1,
-  _ScanResultMockItem2,
-  _ScanResultMockItem3,
-  _ScanResultMockItem4,
-];
+const scannedResultsArraySample: ScanResult[] = Array.from(
+  { length: 5 },
+  createRandomScan
+);
 
 const breachItemArraySample: HibpLikeDbBreach[] = [
   BreachMockItem1,

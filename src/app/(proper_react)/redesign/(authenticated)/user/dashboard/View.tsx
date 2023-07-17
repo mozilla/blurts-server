@@ -19,10 +19,11 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
+import { createRandomScan } from "../../../../../../apiMocks/mockData";
 
 export type Props = {
   user: Session["user"];
@@ -49,29 +50,9 @@ export const View = (props: Props) => {
     status: "",
   };
 
-  // TODO: Add both breaches & scan data, and filter through them with filters output
+  const randomScan = createRandomScan();
+
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
-
-  // useEffect(() => {
-  //   if (filters.exposureType === "data-breach") {
-  //      filterShowScanResults
-  //   }
-  // }, [filters]);
-
-  // const exposureCards =
-  //   props.userScannedResults?.map((item, index) => (
-  //     <li key={index} className={styles.exposureListItem}>
-  //       <ExposureCard
-  //         exposureImg={TwitterImage}
-  //         exposureData={item}
-  //         exposureName={item.data_broker}
-  //         exposureDetailsLink=""
-  //         dateFound={dateObject(item.created_at)}
-  //         statusPillType="fixed"
-  //         locale={props.locale}
-  //       />
-  //     </li>
-  //   )) || [];
 
   // Only breaches exposure cards
   const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
@@ -113,14 +94,6 @@ export const View = (props: Props) => {
     ...scannedResultsDataArray,
   ];
 
-  // const filterShowScanResults = combinedArray.filter((item) => {
-  //   isScanResult(item);
-  // });
-
-  // const filterShowBreachResults = combinedArray.filter((item) => {
-  //   !isScanResult(item);
-  // });
-
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
@@ -128,7 +101,6 @@ export const View = (props: Props) => {
     const dateB =
       (b as HibpLikeDbBreach).AddedDate || (b as ScanResult).created_at;
 
-    // TODO: Streamline data type injested by both breach and data broker types (Breach accepts Date type, while Scans accepts ISO type)
     const timestampA =
       typeof dateA === "object" ? dateA.getTime() : new Date(dateA).getTime();
     const timestampB =
@@ -182,8 +154,7 @@ export const View = (props: Props) => {
           }
         }
       }
-
-      // All filters passed, include the exposure in the filtered array
+      // TODO: Filter by status
       return true;
     }
   );
