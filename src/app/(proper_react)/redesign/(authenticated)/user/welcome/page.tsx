@@ -16,7 +16,7 @@ export default async function Onboarding() {
 
   const userIsEligible = await isEligible();
   if (!userIsEligible) {
-    return redirect("/user/dashboard/");
+    return redirect("/redesign/user/dashboard/");
   }
 
   return <View user={session.user} />;
