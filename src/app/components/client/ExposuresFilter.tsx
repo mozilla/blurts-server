@@ -4,7 +4,13 @@
 
 import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
-import React, { ReactElement, useContext, useRef, useState } from "react";
+import React, {
+  ReactElement,
+  createContext,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import ModalImage from "../../components/client/assets/modal-default-img.svg";
 import {
@@ -396,7 +402,13 @@ type RadioProps = {
   children: React.ReactNode;
 };
 
-const RadioContext = React.createContext<any>(null);
+const RadioContext = createContext<{
+  value: string;
+  onChange: (value: string) => void;
+}>({
+  value: "",
+  onChange: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+});
 
 function RadioGroup(props: RadioGroupProps) {
   const { children, label, type, value, onChange } = props;

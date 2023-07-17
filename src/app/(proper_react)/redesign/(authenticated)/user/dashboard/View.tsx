@@ -23,7 +23,6 @@ import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
-import { createRandomScan } from "../../../../../../apiMocks/mockData";
 
 export type Props = {
   user: Session["user"];
@@ -49,8 +48,6 @@ export const View = (props: Props) => {
     dateFound: "",
     status: "",
   };
-
-  const randomScan = createRandomScan();
 
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
 
@@ -106,7 +103,7 @@ export const View = (props: Props) => {
     const timestampB =
       typeof dateB === "object" ? dateB.getTime() : new Date(dateB).getTime();
 
-    return timestampB - timestampA; // Sort in descending order
+    return timestampB - timestampA;
   });
 
   const filteredExposures = arraySortedByDate.filter(
