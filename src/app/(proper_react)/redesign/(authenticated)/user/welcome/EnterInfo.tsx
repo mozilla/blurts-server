@@ -5,7 +5,6 @@
 "use client";
 
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
@@ -156,7 +155,6 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
 
-  const router = useRouter();
   const handleRequestScan = () => {
     if (requestingScan) {
       return;
@@ -178,7 +176,6 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       })
       .catch((error) => {
         console.error("Could not request scan:", error);
-        router.push("/redesign/user/dashboard/");
       });
   };
 
