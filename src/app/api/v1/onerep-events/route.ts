@@ -62,6 +62,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const result: OnerepWebhookRequest = JSON.parse(finalBuffer.toString());
+    console.debug("OneRep Webhook Request received:", result);
 
     if (result.type !== "scan.completed") {
       throw new Error("Unexpected OneRep webhook type received");
