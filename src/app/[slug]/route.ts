@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { NextRequest, NextResponse } from "next/server";
-import { vers } from "../../controllers/dockerflow.js";
+import { vers } from "../../utils/dockerflow.js";
 
 export function GET(
   req: NextRequest,

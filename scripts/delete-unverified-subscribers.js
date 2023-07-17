@@ -1,12 +1,12 @@
 'use strict'
 
-const DB = require('../db/DB');
+import { deleteUnverifiedSubscribers } from '../src/db/tables/subscribers.js';
 
 /**
  * Cron: Hourly
  * Delete any records of subscribers not verified within 24 hrs
  */
 (async () => {
-  await DB.deleteUnverifiedSubscribers()
+  await deleteUnverifiedSubscribers()
   process.exit()
 })()
