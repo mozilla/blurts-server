@@ -36,6 +36,16 @@ const s3 = new S3({
   },
 });
 
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
+
+const checkInId = Sentry.captureCheckIn({
+  monitorSlug: SENTRY_SLUG,
+  status: "in_progress"
+});
+
 async function uploadToS3(fileName, fileStream) {
   console.log('Attempt to upload to s3: ', fileName)
   const uploadParams = {
@@ -95,11 +105,6 @@ export async function getBreachIcons(breaches) {
   ));
 }
 
-const checkInId = Sentry.captureCheckIn({
-  monitorSlug: SENTRY_SLUG,
-  status: "in_progress"
-});
-
 // Get breaches and upserts to DB
 const breachesResponse = await req('/breaches')
 const breaches = []
@@ -129,14 +134,13 @@ if (seen.size !== breaches.length) {
 }
 
 await getBreachIcons(breaches)
+
 Sentry.captureCheckIn({
   checkInId,
   monitorSlug: SENTRY_SLUG,
   status: "ok"
-});
-process.exit()
-
-
+})
+setTimeout(process.exit, 1000)
 
 /**
  * Null check for some required field

@@ -25,7 +25,7 @@ async function getLatestOnerepScan(onerepProfileId: number): Promise<
     onerep_scan_id: number;
     created_at: number;
     updated_at: number;
-    onerep_scan_results: ScanResult;
+    onerep_scan_results: ScanResult[];
   }[]
 > {
   return (await knex("onerep_scans")
@@ -37,7 +37,7 @@ async function getLatestOnerepScan(onerepProfileId: number): Promise<
       onerep_scan_id: number;
       created_at: number;
       updated_at: number;
-      onerep_scan_results: ScanResult;
+      onerep_scan_results: ScanResult[];
     }[]
   >;
 }
