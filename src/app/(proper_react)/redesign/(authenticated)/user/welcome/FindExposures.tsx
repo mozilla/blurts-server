@@ -43,7 +43,7 @@ export const FindExposures = () => {
 
     // Go to dashboard even if the scan did not finish.
     if (scanProgress >= maxProgress) {
-      router.push("/user/dashboard/");
+      router.push("/redesign/user/dashboard/");
     }
 
     return () => clearTimeout(timeoutId);

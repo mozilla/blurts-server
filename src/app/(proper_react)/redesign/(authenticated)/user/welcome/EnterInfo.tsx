@@ -10,7 +10,6 @@ import { FormEvent, useState } from "react";
 import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
-import { jest } from "@jest/globals";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
 import { useL10n } from "../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
@@ -183,7 +182,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       })
       .catch((error) => {
         console.error("Could not request scan:", error);
-        router.push("/user/dashboard/");
+        router.push("/redesign/user/dashboard/");
       });
   };
 
