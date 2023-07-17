@@ -7,9 +7,9 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../api/utils/auth";
 import {
   createScan,
-  listScanResults,
   getScanDetails,
   isEligible,
+  getAllScanResults,
 } from "../../../../../../functions/server/onerep";
 import Script from "next/script";
 import {
@@ -43,47 +43,35 @@ export default async function UserWelcomeScanning() {
   const scan = await createScan(profileId);
   await setOnerepScan(profileId, scan.id);
 
-  let iterations = 0;
-  const totalIterations = 15;
+  // Polling the OneRep API is only necessary in development environments - a webhook is used elsewhere.
+  // @see the onerep-events route and https://docs.onerep.com/#section/Webhooks-Endpoints
+  if (process.env.NODE_ENV === "development") {
+    let iterations = 0;
+    const totalIterations = 15;
 
-  const interval = setInterval(
-    () =>
-      void (async () => {
-        const scanDetails = await getScanDetails(profileId, scan.id);
+    const interval = setInterval(
+      () =>
+        void (async () => {
+          const scanDetails = await getScanDetails(profileId, scan.id);
 
-        // Give up after set number of iterations.
-        if (iterations >= totalIterations) {
-          clearInterval(interval);
-        } else if (scanDetails.status === "finished") {
-          clearInterval(interval);
+          // Give up after set number of iterations.
+          if (iterations >= totalIterations) {
+            clearInterval(interval);
+          } else if (scanDetails.status === "finished") {
+            clearInterval(interval);
 
-          const scanListFull = [];
-          const firstPage = await listScanResults(profileId, { per_page: 100 });
-          // Results are paginated, use per_page maximum and collect all pages into one result.
-          if (firstPage.meta.last_page > 1) {
-            let currentPage = 2;
-            while (currentPage <= firstPage.meta.last_page) {
-              const nextPage = await listScanResults(profileId, {
-                per_page: 100,
-              });
-              currentPage++;
-              nextPage.data.forEach((element: object) =>
-                scanListFull.push(element)
-              );
-            }
+            const scanListFull = await getAllScanResults(profileId);
+            // Store full list of results in the DB.
+            await setOnerepScanResults(profileId, scan.id, {
+              data: scanListFull[0],
+            });
           } else {
-            scanListFull.push(firstPage.data);
+            iterations++;
           }
-          // Store full list of results in the DB.
-          await setOnerepScanResults(profileId, scan.id, {
-            data: scanListFull[0],
-          });
-        } else {
-          iterations++;
-        }
-      })(),
-    1000
-  );
+        })(),
+      1000
+    );
+  }
 
   return (
     <>
