@@ -15,7 +15,7 @@ export default async function Onboarding() {
   }
 
   const userIsEligible = await isEligible();
-  if (!userIsEligible || process.env.PREMIUM_ENABLED !== "true") {
+  if (!userIsEligible) {
     return redirect("/user/dashboard/");
   }
 
