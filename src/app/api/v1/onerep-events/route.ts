@@ -65,10 +65,15 @@ export async function POST(req: NextRequest) {
     console.debug("OneRep Webhook Request received:", result);
 
     if (result.type !== "scan.completed") {
-      throw new Error("Unexpected OneRep webhook type received");
+      console.debug("Unexpected OneRep webhook type received:", result.type);
+      return;
     }
     if (result.data.object.status !== "finished") {
-      throw new Error("Received OneRep webhook, but scan not finished");
+      console.debug(
+        "Received OneRep webhook, but scan not finished",
+        result.data.object.status
+      );
+      return;
     }
 
     const profileId = result.data.object.profile_id;
