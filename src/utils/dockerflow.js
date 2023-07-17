@@ -6,7 +6,6 @@
 
 import fs from "fs";
 import path from "path";
-import AppConstants from "../appConstants.js";
 import packageJson from "../../package.json";
 
 
@@ -29,7 +28,7 @@ if (!fs.existsSync(versionJsonPath)) {
 }
 
 export function vers() {
-  if (AppConstants.NODE_ENV === "heroku") {
+  if (process.env.NODE_ENV === "heroku") {
     /* eslint-disable no-process-env */
     return {
       commit: process.env.HEROKU_SLUG_COMMIT,
