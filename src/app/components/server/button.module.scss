@@ -19,7 +19,7 @@
     }
 
     &:focus {
-      outline: $boder-focus-width solid $color-blue-30;
+      outline: $border-focus-width solid $color-blue-30;
     }
 
     &.destructive {
@@ -31,7 +31,7 @@
       }
 
       &:focus {
-        outline: $boder-focus-width solid $color-red-30;
+        outline: $border-focus-width solid $color-red-30;
       }
     }
 

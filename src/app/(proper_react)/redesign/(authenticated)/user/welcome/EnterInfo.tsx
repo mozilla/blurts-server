@@ -110,7 +110,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       errorMessage: l10n.getString(
         "onboarding-enter-details-input-error-message"
       ),
-      isValid: firstName !== "",
+      isValid: firstName.trim() !== "",
       onChange: setFirstName,
     },
     {
@@ -125,7 +125,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       errorMessage: l10n.getString(
         "onboarding-enter-details-input-error-message"
       ),
-      isValid: lastName !== "",
+      isValid: lastName.trim() !== "",
       onChange: setLastName,
     },
     {
@@ -139,7 +139,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       displayValue: location,
       // TODO: Localize string
       errorMessage: "Search and select your location",
-      isValid: location !== "",
+      isValid: location.trim() !== "",
       onChange: setLocation,
     },
     {

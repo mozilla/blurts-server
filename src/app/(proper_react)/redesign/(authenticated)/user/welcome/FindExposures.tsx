@@ -18,7 +18,9 @@ export const FindExposures = () => {
   const progressSteps = 6;
   const maxProgress = 100;
   const totalBreachesCount = 672;
-  const scannedBreachesCount = Math.ceil((672 * scanProgress) / 100);
+  const scannedBreachesCount = Math.ceil(
+    (totalBreachesCount * scanProgress) / 100
+  );
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       const nextProgress = scanProgress + progressSteps;
