@@ -14,5 +14,10 @@ export default meta;
 type Story = StoryObj<typeof OnboardingEl>;
 
 export const Onboarding: Story = {
-  render: () => <OnboardingEl user={{ email: "example@example.com" }} />,
+  render: () => (
+    <OnboardingEl
+      user={{ email: "example@example.com" }}
+      dataBrokerCount={190}
+    />
+  ),
 };
