@@ -4,7 +4,13 @@
 
 import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
-import React, { createContext, useContext, useRef, useState } from "react";
+import React, {
+  ReactElement,
+  createContext,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import Image from "next/image";
 import {
   AriaPopoverProps,
@@ -41,7 +47,7 @@ type ExposuresFilterProps = {
 export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
   const l10n = useL10n();
 
-  const [explainerDialog, setExplainerDialog] = useState<any>(null);
+  const [explainerDialog, setExplainerDialog] = useState<ReactElement>();
 
   // Explainer dialog
   const explainerDialogState = useOverlayTriggerState({});
