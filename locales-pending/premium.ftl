@@ -113,7 +113,50 @@ exposure-card-label-date-found = Date found
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 
+# About Exposure Types Modal
+
+modal-exposure-type-title = About exposure types
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
+modal-exposure-type-description = We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
+modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands. 
+  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-premium }.
+modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info. 
+  You’ll need to manually request removal from each site. 
+modal-exposure-type-data-broker-part-two = If you’re a { -brand-premium } user, we automatically remove all profiles for you. 
+  In both cases, removals typically take 7-14 days. Some can take longer, while others can happen within the hour.
+
+# About Exposure Statuses Modal
+
+modal-exposure-status-title = About exposure statuses
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
+modal-exposure-status-description = We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info.
+  Your exposures will have one of the following statuses: 
+modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
+modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-premium } feature.
+modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and theres no action for you to take.
+
 # Dashboard
+
+dashboard-exposures-filter = Filter
+dashboard-exposures-filter-company = Company
+dashboard-exposures-filter-exposure-type = Exposure type
+dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
+dashboard-exposures-filter-exposure-type-data-breach = Data breach
+dashboard-exposures-filter-date-found = Date found
+dashboard-exposures-filter-date-found-last-seven-days = Last 7 days
+dashboard-exposures-filter-date-found-last-thirty-days = Last 30 days
+dashboard-exposures-filter-date-found-last-year = Last year
+dashboard-exposures-filter-status = Status
+dashboard-exposures-filter-status-action-needed = Action Needed
+dashboard-exposures-filter-status-in-progress = In Progress
+dashboard-exposures-filter-status-fixed = Fixed
+popover-open-filter-settings-alt = Select filters
+dashboard-exposures-filter-show-all = Show all
+dashboard-exposures-filter-show-results = Show results
+dashboard-exposures-filter-reset = Reset
+
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
