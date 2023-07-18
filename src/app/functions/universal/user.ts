@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Session } from "next-auth";
+import { ISO8601DateString } from "../../../utils/parse.js";
 
 export function hasPremium(user?: Session["user"]): boolean {
   return user?.fxa?.subscriptions.includes("monitor") ?? false;
@@ -19,4 +20,16 @@ export function hasSetupOnerep(
   user?: Session["user"]
 ): user is Session["user"] & { subscriber: { onerep_profile_id: number } } {
   return typeof user?.subscriber?.onerep_profile_id === "number";
+}
+
+// Users need to be at least 13 years or older.
+const USER_MIN_AGE = 13;
+export function meetsAgeRequirement(dateOfBirth: ISO8601DateString): boolean {
+  const dateNow = new Date();
+  const dateBirth = new Date(dateOfBirth);
+  const dateDelta = new Date(dateNow.valueOf() - dateBirth.valueOf());
+  const unixStartDate = new Date(0);
+  const age = dateDelta.getUTCFullYear() - unixStartDate.getUTCFullYear();
+
+  return age >= USER_MIN_AGE;
 }

@@ -8,14 +8,15 @@ import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import howItWorksHero from "./images/welcome-how-it-works.svg";
-import { useL10n } from "../../../../hooks/l10n";
-import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
-import { Dialog } from "../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../components/server/Button";
+import { useL10n } from "../../../../../hooks/l10n";
+import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../components/client/dialog/Dialog";
+import { Button } from "../../../../../components/server/Button";
 
 import styles from "./GetStarted.module.scss";
 
 export type Props = {
+  dataBrokerCount: number;
   onStart: () => void;
 };
 
@@ -71,10 +72,7 @@ export const GetStarted = (props: Props) => {
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-content",
-                        {
-                          // TODO: Can we get this value from the OneRep API?
-                          dataBrokerCount: 190,
-                        }
+                        { dataBrokerTotalCount: props.dataBrokerCount }
                       )}
                     </p>
                   </li>
