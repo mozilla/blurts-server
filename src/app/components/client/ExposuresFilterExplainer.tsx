@@ -3,41 +3,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./ExposuresFilter.module.scss";
-import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
-import React, {
-  ReactElement,
-  RefObject,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 import Image from "next/image";
 import ModalImage from "../../components/client/assets/modal-default-img.svg";
-import {
-  AriaPopoverProps,
-  AriaRadioProps,
-  Overlay,
-  OverlayTriggerAria,
-  useButton,
-  useOverlayTrigger,
-  usePopover,
-  useRadio,
-  useRadioGroup,
-} from "react-aria";
-import {
-  OverlayTriggerState,
-  RadioGroupState,
-  useOverlayTriggerState,
-  useRadioGroupState,
-} from "react-stately";
+import { OverlayTriggerAria } from "react-aria";
+import { OverlayTriggerState } from "react-stately";
 import { useL10n } from "../../hooks/l10n";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
-import NoteIcon from "./assets/note.svg";
-import CalendarIcon from "./assets/calendar.svg";
 
 type ExposuresFilterExplainer = {
   content: "exposure" | "status";
