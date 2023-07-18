@@ -309,7 +309,7 @@ const Popover = (props: PopoverProps) => {
     <>
       {props.state.isOpen && (
         <Overlay>
-          <div {...underlayProps} className="underlay" />
+          <div {...underlayProps} />
           <div
             {...popoverProps}
             ref={popoverRef}
