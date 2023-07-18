@@ -24,8 +24,8 @@ async function getLatestOnerepScan(onerepProfileId: number): Promise<{
   onerep_scan_id: number;
   created_at: number;
   updated_at: number;
-  onerep_scan_results: { data: ScanResult[] };
-}> {
+  onerep_scan_results: { data: ScanResult[] } | null;
+} | null> {
   return (
     await knex("onerep_scans")
       .select(
