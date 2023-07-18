@@ -46,16 +46,16 @@ export async function POST(
   }
 
   const params: UserInfo = await req.json();
-  const requiredParams = [
+  const requiredParamKeys: Array<keyof UserInfo> = [
     "firstName",
     "lastName",
     "city",
     "state",
     "dateOfBirth",
   ];
-  requiredParams.forEach((requiredParam) => {
-    if (requiredParam in params) {
-      throw new Error(`${requiredParam} is required`);
+  requiredParamKeys.forEach((requiredParamKey) => {
+    if (!params[requiredParamKey]) {
+      throw new Error(`${requiredParamKey} is required`);
     }
   });
 
