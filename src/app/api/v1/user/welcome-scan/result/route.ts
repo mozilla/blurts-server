@@ -4,7 +4,7 @@
 
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../utils/auth";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 import AppConstants from "../../../../../../appConstants";
 import {
@@ -14,7 +14,7 @@ import {
 
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
 
-export async function GET(_req: NextRequest) {
+export async function GET() {
   const session = await getServerSession(authOptions);
   if (typeof session?.user?.email === "string") {
     try {

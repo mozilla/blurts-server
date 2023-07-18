@@ -19,31 +19,13 @@ import {
   LocationAutocompleteInput,
   getDetailsFromLocationString,
 } from "../../../../../components/client/LocationAutocompleteInput";
-import { WelcomeScanBody } from "../../../../../api/v1/user/welcome-scan/create/route";
-import { StateAbbr } from "../../../../../../utils/states";
-import { ISO8601DateString } from "../../../../../../utils/parse.js";
+import {
+  UserInfo,
+  WelcomeScanBody,
+} from "../../../../../api/v1/user/welcome-scan/create/route";
+import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 
 import styles from "./EnterInfo.module.scss";
-
-export type UserInfo = {
-  firstName: string;
-  lastName: string;
-  city: string;
-  state: StateAbbr;
-  dateOfBirth: ISO8601DateString;
-};
-
-const getAgeFromDateString = (dateOfBirth: ISO8601DateString): number => {
-  const dateNow = new Date();
-  const dateBirth = new Date(dateOfBirth);
-  const dateDelta = new Date(dateNow.valueOf() - dateBirth.valueOf());
-  const unixStartDate = new Date(0);
-
-  return dateDelta.getUTCFullYear() - unixStartDate.getUTCFullYear();
-};
-
-const meetsAgeRequirement = (dateOfBirth: ISO8601DateString): boolean =>
-  getAgeFromDateString(dateOfBirth) >= 13;
 
 const createProfileAndStartScan = async (
   userInfo: UserInfo

@@ -12,18 +12,27 @@ import {
   isEligible,
 } from "../../../../../functions/server/onerep";
 import type { ProfileData } from "../../../../../functions/server/onerep";
+import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 import AppConstants from "../../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
-
 import {
   setOnerepProfileId,
   setOnerepScan,
 } from "../../../../../../db/tables/onerep_scans";
 import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
+import { ISO8601DateString } from "../../../../../../utils/parse";
 
 export interface WelcomeScanBody {
   success: boolean;
+}
+
+export interface UserInfo {
+  firstName: string;
+  lastName: string;
+  city: string;
+  state: StateAbbr;
+  dateOfBirth: ISO8601DateString;
 }
 
 export async function POST(
@@ -36,7 +45,7 @@ export async function POST(
     throw new Error("User has no more manual scans left");
   }
 
-  const params = await req.json();
+  const params: UserInfo = await req.json();
   const requiredParams = [
     "firstName",
     "lastName",
@@ -44,24 +53,26 @@ export async function POST(
     "state",
     "dateOfBirth",
   ];
-  requiredParams.forEach((param) => {
-    if (!params[param]) {
-      throw new Error(`${param} is required`);
+  requiredParams.forEach((requiredParam) => {
+    if (requiredParam in params) {
+      throw new Error(`${requiredParam} is required`);
     }
   });
 
   const { firstName, lastName, city, state, dateOfBirth } = params;
+  if (!meetsAgeRequirement(dateOfBirth)) {
+    throw new Error(`User does not meet the age requirement: ${dateOfBirth}`);
+  }
   const profileData: ProfileData = {
     first_name: firstName,
     last_name: lastName,
-    addresses: [{ city: city as string, state: state as StateAbbr }],
+    addresses: [{ city, state }],
     birth_date: dateOfBirth,
   };
 
   if (typeof session?.user?.email === "string") {
     try {
       const subscriber = await getSubscriberByEmail(session.user.email);
-      // FIXME check if scan has already been performed and return early if so.
 
       if (!subscriber.onerep_profile_id) {
         // Create OneRep profile
