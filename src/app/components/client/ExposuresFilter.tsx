@@ -97,11 +97,13 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     dismissButtonRef
   ).buttonProps;
 
-  const [filterState, setFilterState] = useState<FilterState>({
+  const emptyFilterState = {
     exposureType: "",
     dateFound: "",
     status: "",
-  });
+  };
+
+  const [filterState, setFilterState] = useState<FilterState>(emptyFilterState);
 
   const checkEmptyFilterState =
     filterState.exposureType === "" &&
@@ -190,13 +192,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           disabled={checkEmptyFilterState}
           small
           variant="secondary"
-          onClick={() =>
-            setFilterState({
-              exposureType: "",
-              dateFound: "",
-              status: "",
-            })
-          }
+          onClick={() => setFilterState(emptyFilterState)}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
         </Button>
@@ -252,7 +248,6 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
             <button
               aria-label={l10n.getString("modal-open-alt")}
               {...explainerDialogTrigger.triggerProps}
-              // onClick={showExplainerContentExposureType}
               onClick={() => openExplainerDialog("exposure")}
             >
               <QuestionMarkCircle
