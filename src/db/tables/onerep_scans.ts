@@ -22,17 +22,19 @@ async function getOnerepScanResults(
 
 async function getLatestOnerepScan(onerepProfileId: number): Promise<
   {
+    onerep_scan_id: number;
     created_at: number;
     updated_at: number;
     onerep_scan_results: ScanResult[];
   }[]
 > {
   return (await knex("onerep_scans")
-    .select("created_at", "updated_at", "onerep_scan_results")
+    .select("onerep_scan_id", "created_at", "updated_at", "onerep_scan_results")
     .where("onerep_profile_id", onerepProfileId)
     .orderBy("created_at", "desc")
     .limit(1)) as unknown as Promise<
     {
+      onerep_scan_id: number;
       created_at: number;
       updated_at: number;
       onerep_scan_results: ScanResult[];

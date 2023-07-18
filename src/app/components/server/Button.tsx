@@ -8,19 +8,22 @@ import styles from "./button.module.scss";
 export interface Props extends ComponentProps<"button"> {
   children: ReactNode;
   destructive?: boolean;
+  isLoading?: boolean;
   small?: boolean;
   variant: "primary" | "secondary";
   onClick?: () => void;
 }
 
 export const Button = (props: Props) => {
-  const { children, destructive, small, variant, ...otherProps } = props;
+  const { children, destructive, isLoading, small, variant, ...otherProps } =
+    props;
 
   const classes = [
     styles.button,
     styles[variant],
     destructive && styles.destructive,
     small && styles.small,
+    isLoading && styles.isLoading,
   ]
     .filter(Boolean)
     .join(" ");

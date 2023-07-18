@@ -4,9 +4,9 @@
 
 import { ReactNode } from "react";
 import { getServerSession } from "next-auth";
-import { getL10n, getL10nBundles } from "../../functions/server/l10n";
-import { authOptions } from "../../api/utils/auth";
-import { Shell } from "./Shell";
+import { getL10n, getL10nBundles } from "../../../../../functions/server/l10n";
+import { authOptions } from "../../../../../api/utils/auth";
+import { Shell } from "../../../Shell";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();

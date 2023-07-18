@@ -5,36 +5,60 @@
 "use client";
 
 import Image from "next/image";
-import { Session } from "next-auth";
 import { FormEvent, useState } from "react";
+import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
-import { useL10n } from "../../../../hooks/l10n";
-import { ModalOverlay } from "../../../../components/client/dialog/ModalOverlay";
-import { Dialog } from "../../../../components/client/dialog/Dialog";
-import { Button } from "../../../../components/server/Button";
-import { InputField } from "../../../../components/client/InputField";
-import { LocationAutocompleteInput } from "../../../../components/client/LocationAutocompleteInput";
+import { useL10n } from "../../../../../hooks/l10n";
+import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../components/client/dialog/Dialog";
+import { Button } from "../../../../../components/server/Button";
+import { InputField } from "../../../../../components/client/InputField";
+import {
+  LocationAutocompleteInput,
+  getDetailsFromLocationString,
+} from "../../../../../components/client/LocationAutocompleteInput";
+import {
+  UserInfo,
+  WelcomeScanBody,
+} from "../../../../../api/v1/user/welcome-scan/create/route";
+import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 
 import styles from "./EnterInfo.module.scss";
 
+const createProfileAndStartScan = async (
+  userInfo: UserInfo
+): Promise<WelcomeScanBody> => {
+  const response = await fetch("/api/v1/user/welcome-scan/create", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userInfo),
+  });
+
+  const result = await response.json();
+  if (!result?.success) {
+    throw new Error("Could not start scan");
+  }
+
+  return result as WelcomeScanBody;
+};
+
 export type Props = {
-  onDataSaved: () => void;
+  onScanStarted: () => void;
   onGoBack: () => void;
   user: Session["user"];
 };
 
-// TODO: Add more sophisticated validation for location data
-const getIsValidInfo = (value: string) => value !== "";
-
-export const EnterInfo = (props: Props) => {
+export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [location, setLocation] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
-
   const [invalidInputs, setInvalidInputs] = useState<Array<string>>([]);
+  const [requestingScan, setRequestingScan] = useState(false);
 
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
@@ -49,7 +73,6 @@ export const EnterInfo = (props: Props) => {
   );
 
   const l10n = useL10n();
-
   const userDetailsData = [
     {
       label: l10n.getString("onboarding-enter-details-label-first-name"),
@@ -61,8 +84,9 @@ export const EnterInfo = (props: Props) => {
       value: firstName,
       displayValue: firstName,
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
+        "onboarding-enter-details-input-error-message-generic"
       ),
+      isValid: firstName.trim() !== "",
       onChange: setFirstName,
     },
     {
@@ -75,8 +99,9 @@ export const EnterInfo = (props: Props) => {
       value: lastName,
       displayValue: lastName,
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
+        "onboarding-enter-details-input-error-message-generic"
       ),
+      isValid: lastName.trim() !== "",
       onChange: setLastName,
     },
     {
@@ -89,8 +114,9 @@ export const EnterInfo = (props: Props) => {
       value: location,
       displayValue: location,
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
+        "onboarding-enter-details-input-error-message-location"
       ),
+      isValid: location.trim() !== "",
       onChange: setLocation,
     },
     {
@@ -103,16 +129,39 @@ export const EnterInfo = (props: Props) => {
         dateStyle: "medium",
       }),
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
+        "onboarding-enter-details-input-error-message-generic"
       ),
+      isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
     },
   ];
 
   const getInvalidFields = () =>
-    userDetailsData
-      .filter(({ value }) => !getIsValidInfo(value))
-      .map(({ key }) => key);
+    userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
+
+  const handleRequestScan = () => {
+    if (requestingScan) {
+      return;
+    }
+    setRequestingScan(true);
+
+    const { city, state } = getDetailsFromLocationString(location);
+    const userInfo = {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      city,
+      state,
+      dateOfBirth,
+    } as UserInfo;
+
+    void createProfileAndStartScan(userInfo)
+      .then(() => {
+        onScanStarted();
+      })
+      .catch((error) => {
+        console.error("Could not request scan:", error);
+      });
+  };
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -223,9 +272,10 @@ export const EnterInfo = (props: Props) => {
         </Button>
         <Button
           variant="primary"
-          onClick={() => props.onDataSaved()}
+          onClick={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
+          isLoading={requestingScan}
         >
           {l10n.getString(
             "onboarding-enter-details-comfirm-dialog-button-confirm"
@@ -258,13 +308,12 @@ export const EnterInfo = (props: Props) => {
               label,
               onChange,
               placeholder,
+              isValid,
               type,
               value,
             }) => {
               const validationState =
-                !getIsValidInfo(value) && invalidInputs.includes(key)
-                  ? "invalid"
-                  : "valid";
+                !isValid && invalidInputs.includes(key) ? "invalid" : "valid";
               return key === "location" ? (
                 <LocationAutocompleteInput
                   key={key}
@@ -296,7 +345,7 @@ export const EnterInfo = (props: Props) => {
         <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
-            onClick={() => props.onGoBack()}
+            onClick={() => onGoBack()}
             className={styles.startButton}
             type="button"
           >
