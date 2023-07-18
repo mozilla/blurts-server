@@ -57,7 +57,7 @@ export async function GET(
         ) {
           const allScanResults = await getAllScanResults(profileId);
           await setOnerepScanResults(profileId, scan.id, {
-            data: allScanResults[0],
+            data: allScanResults,
           });
         }
 
