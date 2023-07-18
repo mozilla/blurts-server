@@ -12,13 +12,15 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
 
-type ExposuresFilterExplainer = {
+type ExposuresFilterExplainerProps = {
   content: "exposure" | "status";
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
 };
 
-export const ExposuresFilterExplainer = (props: ExposuresFilterExplainer) => {
+export const ExposuresFilterExplainer = (
+  props: ExposuresFilterExplainerProps
+) => {
   const l10n = useL10n();
 
   const explainerContentExposureType = (
