@@ -84,7 +84,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       value: firstName,
       displayValue: firstName,
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
+        "onboarding-enter-details-input-error-message-generic"
       ),
       isValid: firstName.trim() !== "",
       onChange: setFirstName,
@@ -99,7 +99,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       value: lastName,
       displayValue: lastName,
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message"
+        "onboarding-enter-details-input-error-message-generic"
       ),
       isValid: lastName.trim() !== "",
       onChange: setLastName,
@@ -113,8 +113,9 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       ),
       value: location,
       displayValue: location,
-      // TODO: Localize string
-      errorMessage: "Search and select your location",
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message-location"
+      ),
       isValid: location.trim() !== "",
       onChange: setLocation,
     },
@@ -127,8 +128,9 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
         dateStyle: "medium",
       }),
-      // TODO: Localize string
-      errorMessage: "You have to be at least 13 years old",
+      errorMessage: l10n.getString(
+        "onboarding-enter-details-input-error-message-age"
+      ),
       isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
     },
