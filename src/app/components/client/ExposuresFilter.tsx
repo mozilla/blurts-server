@@ -4,15 +4,8 @@
 
 import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
-import React, {
-  ReactElement,
-  createContext,
-  useContext,
-  useRef,
-  useState,
-} from "react";
+import React, { createContext, useContext, useRef, useState } from "react";
 import Image from "next/image";
-import ModalImage from "../../components/client/assets/modal-default-img.svg";
 import {
   AriaPopoverProps,
   AriaRadioProps,
@@ -30,8 +23,6 @@ import {
   useRadioGroupState,
 } from "react-stately";
 import { useL10n } from "../../hooks/l10n";
-import { ModalOverlay } from "./dialog/ModalOverlay";
-import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
