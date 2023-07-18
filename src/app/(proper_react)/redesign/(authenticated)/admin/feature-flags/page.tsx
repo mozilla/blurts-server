@@ -4,7 +4,11 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import {
+  FeatureFlag,
+  addFeatureFlag,
+  getAllFeatureFlags,
+} from "../../../../../../db/tables/featureFlags";
 import { FeatureFlagRow } from "knex/types/tables";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -43,7 +47,12 @@ export default async function FeatureFlagPage() {
           {data.map((item) => (
             <tr key={item.name}>
               <td>{item.name}</td>
-              <td>{String(item.is_enabled)}</td>
+              <td>
+                <input
+                  type="checkbox"
+                  checked={item.is_enabled ? true : false}
+                ></input>
+              </td>
               <td>{item.dependencies}</td>
               <td>{item.allow_list?.join(", ")}</td>
               <td>{item.wait_list?.join(", ")}</td>
@@ -56,6 +65,56 @@ export default async function FeatureFlagPage() {
 
   const featureFlags = (await getAllFeatureFlags()) || null;
 
+  const AddFeatureFlag = () => {
+    /*
+    const newFlag = {
+      name: "FreeBrokerScan",
+      isEnabled: true,
+      allowList: ["rhelmer+test1@mozilla.com", "rhelmer+test2@mozilla.com"],
+      owner: "rhelmer@mozilla.com",
+    } as FeatureFlag;
+
+    addFeatureFlag(newFlag)
+      .then((res) => console.debug(res))
+      .catch((ex) => console.error(ex));
+    */
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Enabled</th>
+            <th>Dependencies</th>
+            <th>Allow List</th>
+            <th>Wait List</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input type="checkbox" />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <button name="Add">Add</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  };
+
   return (
     <div className={styles.wrapper}>
       <nav className={styles.tabBar}>
@@ -66,6 +125,8 @@ export default async function FeatureFlagPage() {
       <div className={styles.start}>
         <h1>All Feature Flags</h1>
         <AllFlagsTable data={featureFlags} />
+        <h1>Add New Feature Flag</h1>
+        <AddFeatureFlag />
       </div>
     </div>
   );
