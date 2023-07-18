@@ -35,6 +35,7 @@ import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
+import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
 
 export type FilterState = {
   exposureType: string;
@@ -48,22 +49,8 @@ type ExposuresFilterProps = {
 
 export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
   const l10n = useL10n();
-  const [explainerTitle, setExplainerTitle] = useState<string>("");
-  const [explainerContent, setExplainerContent] = useState<
-    ReactElement | string
-  >("");
 
-  const showExplainerContentExposureType = () => {
-    setExplainerTitle(l10n.getString("modal-exposure-type-title"));
-    setExplainerContent(explainerContentExposureType);
-    explainerDialogState.open();
-  };
-
-  const showExplainerContentStatus = () => {
-    setExplainerTitle(l10n.getString("modal-exposure-status-title"));
-    setExplainerContent(explainerContentStatus);
-    explainerDialogState.open();
-  };
+  const [explainerDialog, setExplainerDialog] = useState<any>(null);
 
   // Explainer dialog
   const explainerDialogState = useOverlayTriggerState({});
@@ -72,71 +59,36 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     explainerDialogState
   );
 
+  const openExplainerDialog = (content: "exposure" | "status") => {
+    explainerDialogState.open();
+    getExplainerDialog(content);
+  };
+
+  const getExplainerDialog = (content: "exposure" | "status") => {
+    if (content === "exposure") {
+      setExplainerDialog(
+        <ExposuresFilterExplainer
+          content={"exposure"}
+          explainerDialogProps={explainerDialogTrigger}
+          explainerDialogState={explainerDialogState}
+        />
+      );
+    }
+    setExplainerDialog(
+      <ExposuresFilterExplainer
+        content={"status"}
+        explainerDialogProps={explainerDialogTrigger}
+        explainerDialogState={explainerDialogState}
+      />
+    );
+  };
+
   // Filter Dialog
   const filterDialogState = useOverlayTriggerState({});
   const filterBtnRef = useRef<HTMLButtonElement>(null);
   const { overlayProps } = useOverlayTrigger(
     { type: "dialog" },
     filterDialogState
-  );
-
-  const explainerContentExposureType = (
-    <div className={styles.modalBodyContent}>
-      <p>
-        {l10n.getString("modal-exposure-type-description", {
-          data_broker_sites_total_num: 190,
-        })}
-      </p>
-      <br />
-      <ol>
-        <li>
-          {l10n.getFragment("modal-exposure-type-data-breach", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-        <li>
-          {l10n.getFragment("modal-exposure-type-data-broker-part-one", {
-            elems: { b: <strong /> },
-          })}
-          <br />
-          {l10n.getString("modal-exposure-type-data-broker-part-two")}
-        </li>
-      </ol>
-      <Button variant="primary" onClick={() => explainerDialogState.close()}>
-        {l10n.getString("modal-cta-ok")}
-      </Button>
-    </div>
-  );
-
-  const explainerContentStatus = (
-    <div className={styles.modalBodyContent}>
-      <p>
-        {l10n.getString("modal-exposure-status-description", {
-          data_broker_sites_total_num: 190,
-        })}
-      </p>
-      <br />
-      <ul>
-        <li>
-          {l10n.getFragment("modal-exposure-status-action-needed", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-        <li>
-          {l10n.getFragment("modal-exposure-status-in-progress", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-        <li>
-          {l10n.getFragment("modal-exposure-status-fixed", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-      </ul>
-      <Button variant="primary" onClick={() => explainerDialogState.close()}>
-        {l10n.getString("modal-cta-ok")}
-      </Button>
-    </div>
   );
 
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
@@ -300,7 +252,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
             <button
               aria-label={l10n.getString("modal-open-alt")}
               {...explainerDialogTrigger.triggerProps}
-              onClick={showExplainerContentExposureType}
+              // onClick={showExplainerContentExposureType}
+              onClick={() => openExplainerDialog("exposure")}
             >
               <QuestionMarkCircle
                 width="15"
@@ -316,7 +269,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
             {l10n.getString("dashboard-exposures-filter-status")}
             <button
               aria-label={l10n.getString("modal-open-alt")}
-              onClick={showExplainerContentStatus}
+              onClick={() => openExplainerDialog("status")}
             >
               <QuestionMarkCircle
                 width="15"
@@ -328,21 +281,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
         </ul>
         <div className={styles.rightSpace}></div>
       </div>
-      {explainerDialogState.isOpen && (
-        <ModalOverlay
-          state={explainerDialogState}
-          {...explainerDialogTrigger.overlayProps}
-          isDismissable={true}
-        >
-          <Dialog
-            title={explainerTitle}
-            illustration={<Image src={ModalImage} alt="" />}
-            onDismiss={() => explainerDialogState.close()}
-          >
-            {explainerContent}
-          </Dialog>
-        </ModalOverlay>
-      )}
+      {explainerDialogState.isOpen && explainerDialog}
       {filterDialogState.isOpen && (
         <Popover state={filterDialogState} triggerRef={filterBtnRef}>
           <div className={styles.exposuresFilterWrapper} {...overlayProps}>
