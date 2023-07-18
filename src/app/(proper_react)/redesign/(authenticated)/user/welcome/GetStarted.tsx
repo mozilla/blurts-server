@@ -27,6 +27,7 @@ export const GetStarted = (props: Props) => {
     explainerDialogState
   );
 
+  const dataBrokerTotalCount = Number(process.env.ONEREP_DATA_BROKER_COUNT);
   return (
     <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
@@ -71,10 +72,7 @@ export const GetStarted = (props: Props) => {
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-content",
-                        {
-                          // TODO: Can we get this value from the OneRep API?
-                          dataBrokerCount: 190,
-                        }
+                        { dataBrokerTotalCount }
                       )}
                     </p>
                   </li>

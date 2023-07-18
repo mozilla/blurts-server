@@ -8,22 +8,24 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
+import { useL10n } from "../../../../../hooks/l10n";
 
 export const FindExposures = () => {
   const [scanProgress, setScanProgress] = useState(0);
   const [scanFinished, setScanFinished] = useState(false);
   const [checkingScanProgress, setCheckingScanProgress] = useState(false);
   const router = useRouter();
+  const l10n = useL10n();
 
-  const progressSteps = 6;
-  const maxProgress = 100;
-  const totalBreachesCount = 672;
-  const scannedBreachesCount = Math.ceil(
-    (totalBreachesCount * scanProgress) / 100
+  const dataBrokerTotalCount = Number(process.env.ONEREP_DATA_BROKER_COUNT);
+  const dataBrokerScannedCount = Math.ceil(
+    (dataBrokerTotalCount * scanProgress) / 100
   );
+  const maxProgress = 100;
+  const percentageSteps = 6;
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      const nextProgress = scanProgress + progressSteps;
+      const nextProgress = scanProgress + percentageSteps;
       setScanProgress(Math.min(nextProgress, maxProgress));
 
       // For development we are periodically checking the scan progress and set
@@ -57,11 +59,12 @@ export const FindExposures = () => {
   function ProgressLabel() {
     return (
       <div className={styles.progressLabel}>
-        Scanning for exposures…
+        {l10n.getString("onboarding-find-exposures-progress-label")}
         <div className={styles.progressLabelIndicator}>
-          {/* TODO: Localize string */}
-          <span>{scannedBreachesCount}</span>
-          {` of ${totalBreachesCount} known data breaches`}
+          {l10n.getString("onboarding-find-exposures-progress-label-counter", {
+            dataBrokerScannedCount,
+            dataBrokerTotalCount,
+          })}
         </div>
       </div>
     );
