@@ -21,6 +21,7 @@ import monitorLogo from "../../../../images/monitor-logo.webp";
 
 export type Props = {
   user: Session["user"];
+  dataBrokerCount: number;
 };
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
@@ -31,7 +32,7 @@ export const View = (props: Props) => {
 
   const currentComponent =
     currentStep === "findExposures" ? (
-      <FindExposures />
+      <FindExposures dataBrokerCount={props.dataBrokerCount} />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
         user={props.user}
@@ -39,7 +40,10 @@ export const View = (props: Props) => {
         onGoBack={() => setCurrentStep("getStarted")}
       />
     ) : (
-      <GetStarted onStart={() => setCurrentStep("enterInfo")} />
+      <GetStarted
+        dataBrokerCount={props.dataBrokerCount}
+        onStart={() => setCurrentStep("enterInfo")}
+      />
     );
 
   return (

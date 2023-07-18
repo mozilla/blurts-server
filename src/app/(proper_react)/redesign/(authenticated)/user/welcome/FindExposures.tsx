@@ -10,16 +10,19 @@ import { ProgressBar } from "../../../../../components/client/ProgressBar";
 import styles from "./FindExposures.module.scss";
 import { useL10n } from "../../../../../hooks/l10n";
 
-export const FindExposures = () => {
+export type Props = {
+  dataBrokerCount: number;
+};
+
+export const FindExposures = ({ dataBrokerCount }: Props) => {
   const [scanProgress, setScanProgress] = useState(0);
   const [scanFinished, setScanFinished] = useState(false);
   const [checkingScanProgress, setCheckingScanProgress] = useState(false);
   const router = useRouter();
   const l10n = useL10n();
 
-  const dataBrokerTotalCount = Number(process.env.ONEREP_DATA_BROKER_COUNT);
   const dataBrokerScannedCount = Math.ceil(
-    (dataBrokerTotalCount * scanProgress) / 100
+    (dataBrokerCount * scanProgress) / 100
   );
   const maxProgress = 100;
   const percentageSteps = 6;
@@ -61,9 +64,9 @@ export const FindExposures = () => {
       <div className={styles.progressLabel}>
         {l10n.getString("onboarding-find-exposures-progress-label")}
         <div className={styles.progressLabelIndicator}>
-          {l10n.getString("onboarding-find-exposures-progress-label-counter", {
+          {l10n.getString("onboarding-find-exposures-progress-broker-counter", {
             dataBrokerScannedCount,
-            dataBrokerTotalCount,
+            dataBrokerTotalCount: dataBrokerCount,
           })}
         </div>
       </div>

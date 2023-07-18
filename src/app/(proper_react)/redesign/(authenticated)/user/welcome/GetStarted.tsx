@@ -16,6 +16,7 @@ import { Button } from "../../../../../components/server/Button";
 import styles from "./GetStarted.module.scss";
 
 export type Props = {
+  dataBrokerCount: number;
   onStart: () => void;
 };
 
@@ -27,7 +28,6 @@ export const GetStarted = (props: Props) => {
     explainerDialogState
   );
 
-  const dataBrokerTotalCount = Number(process.env.ONEREP_DATA_BROKER_COUNT);
   return (
     <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
@@ -72,7 +72,7 @@ export const GetStarted = (props: Props) => {
                     <p>
                       {l10n.getString(
                         "onboarding-get-started-how-it-works-dialog-step1-content",
-                        { dataBrokerTotalCount }
+                        { dataBrokerTotalCount: props.dataBrokerCount }
                       )}
                     </p>
                   </li>

@@ -19,5 +19,10 @@ export default async function Onboarding() {
     return redirect("/redesign/user/dashboard/");
   }
 
-  return <View user={session.user} />;
+  const dataBrokerCount = parseInt(
+    process.env.ONEREP_DATA_BROKER_COUNT as string,
+    10
+  );
+
+  return <View user={session.user} dataBrokerCount={dataBrokerCount} />;
 }
