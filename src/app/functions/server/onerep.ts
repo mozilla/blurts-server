@@ -269,8 +269,8 @@ export async function isEligible() {
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScan(profileId);
 
-  if (scanResult.length) {
-    const latestScanDate = new Date(scanResult[0]["created_at"]);
+  if (scanResult.onerep_scan_results.data.length) {
+    const latestScanDate = new Date(scanResult["created_at"]);
     const lastMonth = new Date();
     lastMonth.setMonth(lastMonth.getMonth() - 1);
 

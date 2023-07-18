@@ -45,7 +45,7 @@ export async function GET(
       ] as number;
 
       const latestScans = await getLatestOnerepScan(profileId);
-      const latestScanId = latestScans[0]?.onerep_scan_id;
+      const latestScanId = latestScans?.onerep_scan_id;
 
       if (latestScanId) {
         const scan = await getScanDetails(profileId, latestScanId);
