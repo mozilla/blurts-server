@@ -49,7 +49,6 @@ onboarding-enter-details-placeholder-location = Enter city and state
 onboarding-enter-details-label-date-of-birth = Date of birth
 onboarding-enter-details-input-error-message-generic = Required to complete the scan
 onboarding-enter-details-input-error-message-location = Search and select your location
-onboarding-enter-details-input-error-message-age = You have to be at least 13 years old
 
 onboarding-find-exposures-progress-label = Scanning for exposures…
 # Variables:

@@ -129,7 +129,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         dateStyle: "medium",
       }),
       errorMessage: l10n.getString(
-        "onboarding-enter-details-input-error-message-age"
+        "onboarding-enter-details-input-error-message-generic"
       ),
       isValid: meetsAgeRequirement(dateOfBirth),
       onChange: setDateOfBirth,
