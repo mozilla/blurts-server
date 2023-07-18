@@ -17,7 +17,6 @@ export interface Props extends ComponentProps<"button"> {
 
 export const Button = (props: Props & HTMLAttributes<HTMLButtonElement>) => {
   const {
-    type,
     children,
     destructive,
     disabled,
