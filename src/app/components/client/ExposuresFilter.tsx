@@ -58,26 +58,14 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
 
   const openExplainerDialog = (content: "exposure" | "status") => {
     explainerDialogState.open();
-    getExplainerDialog(content);
-  };
-
-  const getExplainerDialog = (content: "exposure" | "status") => {
-    if (content === "exposure") {
-      setExplainerDialog(
-        <ExposuresFilterExplainer
-          content={"exposure"}
-          explainerDialogProps={explainerDialogTrigger}
-          explainerDialogState={explainerDialogState}
-        />
-      );
-    }
-    setExplainerDialog(
+    const dialogContent = (
       <ExposuresFilterExplainer
-        content={"status"}
+        content={content}
         explainerDialogProps={explainerDialogTrigger}
         explainerDialogState={explainerDialogState}
       />
     );
+    setExplainerDialog(dialogContent);
   };
 
   // Filter Dialog
