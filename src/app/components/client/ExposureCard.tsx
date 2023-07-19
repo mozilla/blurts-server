@@ -127,7 +127,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="relatives"
           icon={<MultipleUsersIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel="Family members"
+          exposureCategoryLabel={l10n.getString("exposure-card-family-members")}
           num={exposureItem.relatives.length}
         />
       );
@@ -137,7 +137,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="phones"
           icon={<PhoneIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel="Phone Number"
+          exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
           num={exposureItem.phones.length}
         />
       );
@@ -147,7 +147,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="emails"
           icon={<EmailIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel="Email"
+          exposureCategoryLabel={l10n.getString("exposure-card-email")}
           num={exposureItem.emails.length}
         />
       );
@@ -157,7 +157,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="addresses"
           icon={<LocationPinIcon alt="" width="13" height="13" />}
-          exposureCategoryLabel="Address"
+          exposureCategoryLabel={l10n.getString("exposure-card-address")}
           num={exposureItem.addresses.length}
         />
       );
@@ -167,7 +167,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="other"
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-          exposureCategoryLabel="Other"
+          exposureCategoryLabel={l10n.getString("exposure-card-other")}
           num={0}
         />
       );
@@ -190,7 +190,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<PasswordIcon alt="" width="13" height="13" />}
-            exposureCategoryLabel="Password"
+            exposureCategoryLabel={l10n.getString("exposure-card-password")}
           />
         );
       } else if (item === "phone-numbers") {
@@ -198,7 +198,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<PhoneIcon alt="" width="13" height="13" />}
-            exposureCategoryLabel="Phone Number"
+            exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
           />
         );
       } else if (item === "ip-addresses") {
@@ -206,7 +206,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<PhoneIcon alt="" width="13" height="13" />}
-            exposureCategoryLabel="IP Address"
+            exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
           />
         );
       }
@@ -214,9 +214,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
       else {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item} // Use the item as the key, assuming it's unique
+            key={item}
             icon={<QuestionMarkCircle alt="" width="16" height="16" />}
-            exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)}
+            exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)} // Other exposure categories labels not localized for now
           />
         );
       }
