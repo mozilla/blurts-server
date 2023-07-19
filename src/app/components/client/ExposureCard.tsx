@@ -214,8 +214,6 @@ export const ExposureCard = (props: ExposureCardProps) => {
     });
   }
 
-  console.log(props.exposureData);
-
   const ExposureCategoriesListElem = () => {
     const array = exposureCategoriesArray;
     const listItems = array.map((item, index) => (
