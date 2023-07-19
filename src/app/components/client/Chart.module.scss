@@ -1,11 +1,15 @@
 @import "../../tokens";
 
 .chartContainer {
-  width: $content-sm;
   text-align: center;
   display: flex;
+  gap: $spacing-md;
   flex-direction: column;
   align-items: center;
+
+  @media screen and (min-width: $screen-lg) {
+    align-items: flex-start;
+  }
 
   figcaption {
     font: $text-body-xs;
@@ -19,12 +23,24 @@
 
 .chartAndLegendWrapper {
   display: flex;
-  gap: $spacing-2xl;
-  min-width: $content-xs;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @media screen and (min-width: $screen-lg) {
+    flex-direction: row;
+    gap: $spacing-xl;
+  }
 
   .chart {
-    flex: 1 0 $content-sm;
+    flex: 1;
+    width: 100%;
 
+    @media screen and (min-width: $screen-lg) {
+      flex: 1 0 $content-xs;
+      width: auto;
+    }
+
+    // Font size set in Chart.tsx
     .headingNr {
       font-family: var(--font-inter);
       font-weight: 600;
@@ -43,10 +59,18 @@
   }
 
   .legend {
-    flex: 0 0 $content-xs;
-    height: auto;
-    display: flex;
-    align-items: center;
+    align-self: center;
+
+    @media screen and (min-width: $screen-md) {
+      flex: 0 0 150px;
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      flex: 0 0 200px;
+      height: auto;
+      display: flex;
+      align-items: center;
+    }
 
     thead {
       // These styles are taken from

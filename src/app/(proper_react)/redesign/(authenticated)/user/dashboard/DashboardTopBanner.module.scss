@@ -2,30 +2,56 @@
 
 .container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: 1px solid rgba($color-purple-50, 0.2);
   border-radius: $border-radius-md;
-  padding: $layout-lg $spacing-xl;
+  padding: $layout-xs;
   background-color: $color-white;
   background-image: url("./images/dashboard-top-banner-wave.svg");
   background-size: cover;
   background-position: center;
+  gap: $layout-xs;
+  align-items: center;
 
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
+  @media screen and (min-width: $screen-md) {
+    padding: $layout-lg $layout-xs;
+    flex-direction: row;
+  }
 
-    h3 {
-      font: $text-title-2xs;
+  .explainerContentWrapper {
+    padding: $layout-xs;
+
+    @media screen and (min-width: $screen-md) {
+      justify-content: center;
+      flex: 0.5 1 0%;
+
+      @media screen and (min-width: $screen-xl) {
+        flex: 1 1 0%;
+      }
     }
 
-    .cta {
-      align-self: start;
+    .explainerContent {
+      display: flex;
+      gap: $spacing-md;
+      flex-direction: column;
+
+      @media screen and (min-width: $screen-md) {
+        max-width: $content-sm;
+      }
+
+      h3 {
+        font: $text-title-2xs;
+      }
+
+      .cta {
+        align-self: start;
+      }
     }
   }
 
-  & > * {
-    flex: 1 1 0%;
+  .chart {
+    @media screen and (min-width: $screen-md) {
+      flex: 1 1 0%;
+    }
   }
 }

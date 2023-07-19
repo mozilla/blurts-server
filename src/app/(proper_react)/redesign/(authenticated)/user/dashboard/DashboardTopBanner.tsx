@@ -6,6 +6,7 @@ import styles from "./DashboardTopBanner.module.scss";
 import { ReactElement } from "react";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
+import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 
 export type DashboardTopBannerProps = {
   type:
@@ -19,6 +20,15 @@ export type DashboardTopBannerProps = {
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
+
+  // all values are mocked for now
+  const chartData: Array<[string, number]> = [
+    ["Home address", 11],
+    ["Family members", 12],
+    ["Contact Info", 1],
+    ["Full name", 5],
+    ["Other", 2],
+  ];
 
   const contentData = {
     LetsFixDataContent: {
@@ -116,9 +126,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
+      <div className={styles.explainerContentWrapper}>
         {content && (
-          <>
+          <div className={styles.explainerContent}>
             <h3>{content.headline}</h3>
             <p>{content.description}</p>
             <span className={styles.cta}>
@@ -126,10 +136,12 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
                 {content.cta.content}
               </Button>
             </span>
-          </>
+          </div>
         )}
       </div>
-      <div className={styles.chart}>Chart goes here</div>
+      <div className={styles.chart}>
+        <Chart data={chartData} totalExposures={908} />
+      </div>
     </div>
   );
 };
