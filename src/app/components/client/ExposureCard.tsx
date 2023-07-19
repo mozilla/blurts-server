@@ -69,58 +69,6 @@ type ScannedExposureCategoryProps = {
   icon: ReactElement;
 };
 
-const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
-  const l10n = useL10n();
-
-  const description = l10n.getString("exposure-card-num-found", {
-    exposure_num: 1, // We don't count categories for breaches.
-  });
-
-  return (
-    <div className={styles.detailsFoundItem}>
-      <dt>
-        <span className={styles.exposureTypeIcon}>{props.icon}</span>
-        {props.whichExposed}
-      </dt>
-      <dd>{description}</dd>
-    </div>
-  );
-};
-const ScannedExposureCategory = (props: ScannedExposureCategoryProps) => {
-  const l10n = useL10n();
-
-  // let headline;
-
-  // switch (props.whichExposed) {
-  //   case "relatives":
-  //     headline = l10n.getString("exposure-card-family-members");
-  //     break;
-  //   case "email":
-  //     headline = l10n.getString("exposure-card-email");
-  //     break;
-  //   case "email-addresses":
-  //     headline = l10n.getString("exposure-card-email");
-  //     break;
-  //   default:
-  //     headline = props.whichExposed;
-  //     break;
-  // }
-
-  const description = l10n.getString("exposure-card-num-found", {
-    exposure_num: props.num,
-  });
-
-  return (
-    <div className={styles.detailsFoundItem}>
-      <dt>
-        <span className={styles.exposureTypeIcon}>{props.icon}</span>
-        {props.whichExposed}
-      </dt>
-      <dd>{description}</dd>
-    </div>
-  );
-};
-
 export const ExposureCard = (props: ExposureCardProps) => {
   const {
     exposureImg,
@@ -131,16 +79,45 @@ export const ExposureCard = (props: ExposureCardProps) => {
     locale,
   } = props;
 
-  const exposureCategoriesArray: React.ReactElement[] = [];
-
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
   });
-
+  const exposureCategoriesArray: React.ReactElement[] = [];
   const exposureItem = props.exposureData;
+
+  const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
+    const description = l10n.getString("exposure-card-num-found", {
+      exposure_num: 1, // We don't count categories for breaches.
+    });
+
+    return (
+      <div className={styles.detailsFoundItem}>
+        <dt>
+          <span className={styles.exposureTypeIcon}>{props.icon}</span>
+          {props.whichExposed}
+        </dt>
+        <dd>{description}</dd>
+      </div>
+    );
+  };
+  const ScannedExposureCategory = (props: ScannedExposureCategoryProps) => {
+    const description = l10n.getString("exposure-card-num-found", {
+      exposure_num: props.num,
+    });
+
+    return (
+      <div className={styles.detailsFoundItem}>
+        <dt>
+          <span className={styles.exposureTypeIcon}>{props.icon}</span>
+          {props.whichExposed}
+        </dt>
+        <dd>{description}</dd>
+      </div>
+    );
+  };
 
   // Scan Result Categories
   if (isScanResult(exposureItem)) {
