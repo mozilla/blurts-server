@@ -59,12 +59,12 @@ export type ExposureCardProps = {
 };
 
 type BreachExposureCategoryProps = {
-  whichExposed: string;
+  exposureCategoryLabel: string;
   icon: ReactElement;
 };
 
 type ScannedExposureCategoryProps = {
-  whichExposed: string;
+  exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;
 };
@@ -97,7 +97,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
       <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {props.whichExposed}
+          {props.exposureCategoryLabel}
         </dt>
         <dd>{description}</dd>
       </div>
@@ -112,7 +112,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
       <div className={styles.detailsFoundItem}>
         <dt>
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {props.whichExposed}
+          {props.exposureCategoryLabel}
         </dt>
         <dd>{description}</dd>
       </div>
@@ -126,7 +126,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="relatives"
           icon={<MultipleUsersIcon alt="" width="13" height="13" />}
-          whichExposed="Family members"
+          exposureCategoryLabel="Family members"
           num={exposureItem.relatives.length}
         />
       );
@@ -136,7 +136,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="phones"
           icon={<PhoneIcon alt="" width="13" height="13" />}
-          whichExposed="Phone Number"
+          exposureCategoryLabel="Phone Number"
           num={exposureItem.phones.length}
         />
       );
@@ -146,7 +146,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="emails"
           icon={<EmailIcon alt="" width="13" height="13" />}
-          whichExposed="Email"
+          exposureCategoryLabel="Email"
           num={exposureItem.emails.length} // Use emails.length instead of phones.length
         />
       );
@@ -156,7 +156,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="addresses"
           icon={<LocationPinIcon alt="" width="13" height="13" />}
-          whichExposed="Address"
+          exposureCategoryLabel="Address"
           num={exposureItem.addresses.length}
         />
       );
@@ -166,7 +166,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <ScannedExposureCategory
           key="other"
           icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-          whichExposed="Other"
+          exposureCategoryLabel="Other"
           num={0}
         />
       );
@@ -181,7 +181,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<EmailIcon alt="" width="13" height="13" />}
-            whichExposed="Email"
+            exposureCategoryLabel="Email"
           />
         );
       } else if (item === "passwords") {
@@ -189,7 +189,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />} // todo: add password icon
-            whichExposed="Password"
+            exposureCategoryLabel="Password"
           />
         );
       } else if (item === "phone-numbers") {
@@ -197,7 +197,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<PhoneIcon alt="" width="13" height="13" />} // todo: add password icon
-            whichExposed="Phone Number"
+            exposureCategoryLabel="Phone Number"
           />
         );
       }
@@ -207,12 +207,10 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item} // Use the item as the key, assuming it's unique
             icon={<QuestionMarkCircle alt="" width="13" height="13" />} // todo: add password icon
-            whichExposed={formatOtherBreachCategoriesLabel(item)}
+            exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)}
           />
         );
       }
-
-      // console.log(scanResultItem.Name + " has " + item);
     });
   }
 
