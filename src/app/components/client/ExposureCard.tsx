@@ -214,6 +214,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
     });
   }
 
+  console.log(props.exposureData);
+
   const ExposureCategoriesListElem = () => {
     const array = exposureCategoriesArray;
     const listItems = array.map((item, index) => (
@@ -304,7 +306,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                       height="13"
                     />
                   </span>
-                </a>{" "}
+                </a>
                 {l10n.getString(
                   "exposure-card-description-info-for-sale-part-two"
                 )}

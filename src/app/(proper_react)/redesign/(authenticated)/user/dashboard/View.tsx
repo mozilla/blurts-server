@@ -65,7 +65,7 @@ export const View = (props: Props) => {
               exposureImg={TwitterImage}
               exposureData={breach}
               exposureName={breach.Name}
-              exposureDetailsLink={""}
+              exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
               dateFound={breach.AddedDate}
               statusPillType={"needAction"}
               locale={props.locale}
@@ -168,7 +168,7 @@ export const View = (props: Props) => {
                 exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.data_broker}
-                exposureDetailsLink={""}
+                exposureDetailsLink={exposure.link}
                 dateFound={dateObject(exposure.created_at)}
                 statusPillType={"needAction"}
                 locale={props.locale}
