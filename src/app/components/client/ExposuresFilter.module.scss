@@ -20,12 +20,7 @@
   }
 
   button {
-    all: unset;
-    cursor: pointer;
-
-    &:hover {
-      color: $color-grey-30;
-    }
+    @include question-mark-circle-btn;
   }
 
   ul.filterHeaderList {
