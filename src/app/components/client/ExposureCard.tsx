@@ -188,7 +188,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // todo: add password icon
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel="Password"
           />
         );
@@ -196,7 +196,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<PhoneIcon alt="" width="13" height="13" />} // todo: add password icon
+            icon={<PhoneIcon alt="" width="13" height="13" />}
             exposureCategoryLabel="Phone Number"
           />
         );
@@ -206,7 +206,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item} // Use the item as the key, assuming it's unique
-            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // todo: add password icon
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)}
           />
         );
