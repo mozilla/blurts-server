@@ -13,11 +13,23 @@ import { headers } from "next/headers";
 import { View } from "./View";
 import { getUserBreaches } from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
+import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
+import { authOptions } from "../../../../../api/utils/auth";
+import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
+import { isEligible } from "../../../../../functions/server/onerep";
 
 export default async function DashboardPage() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    throw new Error("No session");
+  }
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
+
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  const scanResult = await getLatestOnerepScan(profileId);
+  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
 
   if (
     !hasSetupOnerep(session?.user) &&
@@ -33,5 +45,13 @@ export default async function DashboardPage() {
   const breaches = await getUserBreaches({ user: session.user });
   const locale = getLocale();
 
-  return <View user={session.user} userBreaches={breaches} locale={locale} />;
+  return (
+    <View
+      user={session.user}
+      userScannedResults={scanResultItems}
+      userBreaches={breaches}
+      locale={locale}
+      isUserScannedResults={!!scanResultItems}
+    />
+  );
 }

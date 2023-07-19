@@ -15,6 +15,7 @@ import {
   MultipleUsersIcon,
   OpenInNew,
   PhoneIcon,
+  QuestionMarkCircle,
 } from "../server/Icons";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
@@ -57,10 +58,67 @@ export type ExposureCardProps = {
   locale: string;
 };
 
-type DetailsFoundProps = {
-  whichExposed: string; // family | email | phone | address | creditcard | password
+type BreachExposureCategoryProps = {
+  whichExposed: string;
+  icon: ReactElement;
+};
+
+type ScannedExposureCategoryProps = {
+  whichExposed: string;
   num: number;
   icon: ReactElement;
+};
+
+const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
+  const l10n = useL10n();
+
+  const description = l10n.getString("exposure-card-num-found", {
+    exposure_num: 1, // We don't count categories for breaches.
+  });
+
+  return (
+    <div className={styles.detailsFoundItem}>
+      <dt>
+        <span className={styles.exposureTypeIcon}>{props.icon}</span>
+        {props.whichExposed}
+      </dt>
+      <dd>{description}</dd>
+    </div>
+  );
+};
+const ScannedExposureCategory = (props: ScannedExposureCategoryProps) => {
+  const l10n = useL10n();
+
+  // let headline;
+
+  // switch (props.whichExposed) {
+  //   case "relatives":
+  //     headline = l10n.getString("exposure-card-family-members");
+  //     break;
+  //   case "email":
+  //     headline = l10n.getString("exposure-card-email");
+  //     break;
+  //   case "email-addresses":
+  //     headline = l10n.getString("exposure-card-email");
+  //     break;
+  //   default:
+  //     headline = props.whichExposed;
+  //     break;
+  // }
+
+  const description = l10n.getString("exposure-card-num-found", {
+    exposure_num: props.num,
+  });
+
+  return (
+    <div className={styles.detailsFoundItem}>
+      <dt>
+        <span className={styles.exposureTypeIcon}>{props.icon}</span>
+        {props.whichExposed}
+      </dt>
+      <dd>{description}</dd>
+    </div>
+  );
 };
 
 export const ExposureCard = (props: ExposureCardProps) => {
@@ -73,6 +131,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
     locale,
   } = props;
 
+  const exposureCategoriesArray: React.ReactElement[] = [];
+
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
   const dateFormatter = new Intl.DateTimeFormat(locale, {
@@ -80,46 +140,114 @@ export const ExposureCard = (props: ExposureCardProps) => {
     dateStyle: "medium",
   });
 
-  const DetailsFoundItem = (props: DetailsFoundProps) => {
-    let headline;
+  const exposureItem = props.exposureData;
 
-    switch (props.whichExposed) {
-      case "family":
-        headline = l10n.getString("exposure-card-family-members");
-        break;
-      case "email":
-        headline = l10n.getString("exposure-card-email");
-        break;
-      case "phone":
-        headline = l10n.getString("exposure-card-phone-number");
-        break;
-      case "address":
-        headline = l10n.getString("exposure-card-address");
-        break;
-      case "creditcard":
-        headline = l10n.getString("exposure-card-credit-card");
-        break;
-      case "password":
-        headline = l10n.getString("exposure-card-password");
-        break;
-      default:
-        headline = l10n.getString("exposure-card-other");
+  // Scan Result Categories
+  if (isScanResult(exposureItem)) {
+    if (exposureItem.relatives.length > 0) {
+      exposureCategoriesArray.push(
+        <ScannedExposureCategory
+          key="relatives"
+          icon={<MultipleUsersIcon alt="" width="13" height="13" />}
+          whichExposed="Family members"
+          num={exposureItem.relatives.length}
+        />
+      );
     }
+    if (exposureItem.phones.length > 0) {
+      exposureCategoriesArray.push(
+        <ScannedExposureCategory
+          key="phones"
+          icon={<PhoneIcon alt="" width="13" height="13" />}
+          whichExposed="Phone Number"
+          num={exposureItem.phones.length}
+        />
+      );
+    }
+    if (exposureItem.emails.length > 0) {
+      exposureCategoriesArray.push(
+        <ScannedExposureCategory
+          key="emails"
+          icon={<EmailIcon alt="" width="13" height="13" />}
+          whichExposed="Email"
+          num={exposureItem.emails.length} // Use emails.length instead of phones.length
+        />
+      );
+    }
+    if (exposureItem.addresses.length > 0) {
+      exposureCategoriesArray.push(
+        <ScannedExposureCategory
+          key="addresses"
+          icon={<LocationPinIcon alt="" width="13" height="13" />}
+          whichExposed="Address"
+          num={exposureItem.addresses.length}
+        />
+      );
+    } else {
+      // "Other" item when none of the conditions above are met
+      exposureCategoriesArray.push(
+        <ScannedExposureCategory
+          key="other"
+          icon={<QuestionMarkCircle alt="" width="13" height="13" />}
+          whichExposed="Other"
+          num={0}
+        />
+      );
+    }
+  }
 
-    const description = l10n.getString("exposure-card-num-found", {
-      exposure_num: props.num,
+  // Breach Categories
+  else {
+    exposureItem.DataClasses.map((item) => {
+      if (item === "email-addresses") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={item}
+            icon={<EmailIcon alt="" width="13" height="13" />}
+            whichExposed="Email"
+          />
+        );
+      } else if (item === "passwords") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={item}
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // todo: add password icon
+            whichExposed="Password"
+          />
+        );
+      } else if (item === "phone-numbers") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={item}
+            icon={<PhoneIcon alt="" width="13" height="13" />} // todo: add password icon
+            whichExposed="Phone Number"
+          />
+        );
+      }
+      // Handle all other breach categories
+      else {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={item} // Use the item as the key, assuming it's unique
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // todo: add password icon
+            whichExposed={formatOtherBreachCategoriesLabel(item)}
+          />
+        );
+      }
+
+      // console.log(scanResultItem.Name + " has " + item);
     });
+  }
 
-    return (
-      <div className={styles.detailsFoundItem}>
-        <dt>
-          <span className={styles.exposureTypeIcon}>{props.icon}</span>
-          {headline}
-        </dt>
-        <dd>{description}</dd>
-      </div>
-    );
+  const ExposureCategoriesListElem = () => {
+    const array = exposureCategoriesArray;
+    const listItems = array.map((item, index) => (
+      <React.Fragment key={index}>{item}</React.Fragment>
+    ));
+
+    return <>{listItems}</>;
   };
+
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
@@ -242,27 +370,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
             <div className={styles.exposedInfoWrapper}>
               <p>{l10n.getString("exposure-card-your-exposed-info")}:</p>
               <dl>
-                {/* TODO: Pass list of details found instead of hardcoding it */}
-                <DetailsFoundItem
-                  icon={<MultipleUsersIcon alt="" width="13" height="13" />}
-                  whichExposed="family"
-                  num={0}
-                />
-                <DetailsFoundItem
-                  icon={<PhoneIcon alt="" width="13" height="13" />}
-                  whichExposed="phone"
-                  num={5}
-                />
-                <DetailsFoundItem
-                  icon={<EmailIcon alt="" width="13" height="13" />}
-                  whichExposed="email"
-                  num={4}
-                />
-                <DetailsFoundItem
-                  icon={<LocationPinIcon alt="" width="13" height="13" />}
-                  whichExposed="address"
-                  num={0}
-                />
+                <ExposureCategoriesListElem />
               </dl>
             </div>
             <span className={styles.fixItBtn}>
@@ -278,3 +386,13 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return exposureCard;
 };
+
+function formatOtherBreachCategoriesLabel(sentence: string) {
+  const words = sentence.split("-");
+  const formattedWords = words.map((word) => {
+    const firstLetter = word.charAt(0).toUpperCase();
+    const restOfWord = word.slice(1);
+    return firstLetter + restOfWord;
+  });
+  return formattedWords.join(" ");
+}
