@@ -148,7 +148,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           key="emails"
           icon={<EmailIcon alt="" width="13" height="13" />}
           exposureCategoryLabel="Email"
-          num={exposureItem.emails.length} // Use emails.length instead of phones.length
+          num={exposureItem.emails.length}
         />
       );
     }
