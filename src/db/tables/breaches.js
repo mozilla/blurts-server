@@ -19,6 +19,20 @@ async function getAllBreaches() {
 }
 
 /**
+ * Get all count from "breaches" table
+ *
+ * @returns Count of all records from "breaches" table
+ */
+async function getAllBreachesCount() {
+  const breachesCount = await knex('breaches')
+    .count({ count: "*" })
+    .first()
+    .then(result => result?.count)
+  // @ts-ignore The above query is returning a string
+  return parseInt(breachesCount, 10)
+}
+
+/**
  * Upsert breaches into "breaches" table
  * Skip inserting when 'name' field (unique) has a conflict
  *
@@ -80,6 +94,7 @@ async function updateBreachFaviconUrl(name, faviconUrl) {
 
 export {
   getAllBreaches,
+  getAllBreachesCount,
   upsertBreaches,
   updateBreachFaviconUrl
 }

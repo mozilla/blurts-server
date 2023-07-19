@@ -29,7 +29,7 @@ type StepId = "getStarted" | "enterInfo" | "findExposures";
 
 export const View = ({ user, dataBrokerCount, breachesTotalCount }: Props) => {
   const l10n = useL10n();
-  const [currentStep, setCurrentStep] = useState<StepId>("findExposures");
+  const [currentStep, setCurrentStep] = useState<StepId>("getStarted");
 
   const currentComponent =
     currentStep === "findExposures" ? (
