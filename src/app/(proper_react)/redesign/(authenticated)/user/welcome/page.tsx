@@ -24,5 +24,11 @@ export default async function Onboarding() {
     10
   );
 
-  return <View user={session.user} dataBrokerCount={dataBrokerCount} />;
+  return (
+    <View
+      user={session.user}
+      dataBrokerCount={dataBrokerCount}
+      breachesTotalCount={672}
+    />
+  );
 }
