@@ -14,6 +14,7 @@ import {
   LocationPinIcon,
   MultipleUsersIcon,
   OpenInNew,
+  PasswordIcon,
   PhoneIcon,
   QuestionMarkCircle,
 } from "../server/Icons";
@@ -188,7 +189,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
+            icon={<PasswordIcon alt="" width="13" height="13" />}
             exposureCategoryLabel="Password"
           />
         );
@@ -206,7 +207,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item} // Use the item as the key, assuming it's unique
-            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
+            icon={<QuestionMarkCircle alt="" width="16" height="16" />}
             exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)}
           />
         );
