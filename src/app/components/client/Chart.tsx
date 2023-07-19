@@ -140,10 +140,7 @@ export const DoughnutChart = (props: Props) => {
           </table>
         </div>
       </div>
-      <figcaption>
-        This chart shows the total number of exposures that are fixed (
-        {sumOfFixedExposures} out of {props.totalExposures}).
-      </figcaption>
+      <figcaption>{l10n.getString("exposure-chart-caption")}</figcaption>
     </figure>
   );
 };

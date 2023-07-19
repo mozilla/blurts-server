@@ -38,6 +38,7 @@ exposure-chart-legend-heading-nr = Number
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }x
+exposure-chart-caption = This chart shows how many times your info is actively exposed.
 
 # Here's What We Fixed Progress Card
 
