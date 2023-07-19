@@ -240,6 +240,18 @@ $text-body-xs: 400 12px / 1.5 var(--font-inter), sans-serif;
 $tab-bar-height: 100px;
 $width-first-column-filter-bar: 50px;
 
+// Question circle mark for explainer dialogs
+@mixin question-mark-circle-btn {
+  all: unset;
+  cursor: pointer;
+  height: 25px; // height of the button
+  color: $color-grey-40;
+
+  &:hover {
+    color: $color-grey-30;
+  }
+}
+
 @mixin visually-hidden {
   // These styles are taken from
   // https://react-spectrum.adobe.com/react-aria/VisuallyHidden.html

@@ -9,8 +9,29 @@
 
   figcaption {
     text-align: center;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
     font: $text-body-xs;
     font-style: italic;
+
+    button {
+      @include question-mark-circle-btn;
+    }
+  }
+}
+
+.modalBodyContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .confirmButtonWrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: $content-xs;
+    padding-block-start: $spacing-md;
   }
 }
 
@@ -32,10 +53,6 @@
     flex: 1;
     width: 100%;
     max-width: 250px;
-
-    // @media screen and (min-width: $screen-lg) {
-    //   width: 250px;
-    // }
 
     // Font size set in Chart.tsx
     .headingNr {
@@ -85,6 +102,7 @@
       font: $text-body-xs;
 
       td {
+        padding-block: $spacing-xs;
         padding-inline: $spacing-xs;
       }
 

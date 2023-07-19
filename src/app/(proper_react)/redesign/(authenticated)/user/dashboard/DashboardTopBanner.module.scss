@@ -19,9 +19,12 @@
   }
 
   .explainerContentWrapper {
-    padding: $layout-xs;
+    padding: $spacing-sm;
+    display: flex;
+    align-items: center;
 
     @media screen and (min-width: $screen-md) {
+      padding: $spacing-md;
       justify-content: center;
       flex: 0.5 1 0%;
 
