@@ -201,6 +201,14 @@ export const ExposureCard = (props: ExposureCardProps) => {
             exposureCategoryLabel="Phone Number"
           />
         );
+      } else if (item === "ip-addresses") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={item}
+            icon={<PhoneIcon alt="" width="13" height="13" />}
+            exposureCategoryLabel="IP Address"
+          />
+        );
       }
       // Handle all other breach categories
       else {
@@ -365,10 +373,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
 function formatOtherBreachCategoriesLabel(sentence: string) {
   const words = sentence.split("-");
-  const formattedWords = words.map((word) => {
-    const firstLetter = word.charAt(0).toUpperCase();
-    const restOfWord = word.slice(1);
-    return firstLetter + restOfWord;
-  });
-  return formattedWords.join(" ");
+  const firstWord = words[0];
+  const capitalizedFirstWord =
+    firstWord.charAt(0).toUpperCase() + firstWord.slice(1);
+  const restOfWords = words.slice(1).join(" ");
+  return capitalizedFirstWord + " " + restOfWords;
 }
