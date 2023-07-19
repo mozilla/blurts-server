@@ -16,7 +16,6 @@ import { getLocale } from "../../../../../functions/server/l10n";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
-import { isEligible } from "../../../../../functions/server/onerep";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
