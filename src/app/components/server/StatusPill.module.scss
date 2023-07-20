@@ -4,7 +4,11 @@
   font: $text-body-xs;
   font-weight: 600;
   display: inline-block;
-  min-width: 120px; // keep the width fixed
+  min-width: 90px; // keep the width fixed
+
+  @media screen and (min-width: $screen-md) {
+    min-width: 120px; // keep the width fixed
+  }
   text-align: center;
   padding: $spacing-sm 0;
   border-radius: $border-radius-sm;

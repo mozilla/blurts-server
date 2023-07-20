@@ -67,7 +67,7 @@ export const View = (props: Props) => {
               exposureName={breach.Name}
               exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
               dateFound={breach.AddedDate}
-              statusPillType={"needAction"}
+              statusPillType="needAction"
               locale={props.locale}
             />
           </li>
@@ -170,7 +170,7 @@ export const View = (props: Props) => {
                 exposureName={exposure.data_broker}
                 exposureDetailsLink={exposure.link}
                 dateFound={dateObject(exposure.created_at)}
-                statusPillType={"needAction"}
+                statusPillType="needAction"
                 locale={props.locale}
               />
             </li>
@@ -183,7 +183,7 @@ export const View = (props: Props) => {
                 exposureName={exposure.Name}
                 exposureDetailsLink={""}
                 dateFound={exposure.AddedDate}
-                statusPillType={"needAction"}
+                statusPillType="needAction"
                 locale={props.locale}
               />
             </li>

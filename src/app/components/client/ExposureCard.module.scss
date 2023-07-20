@@ -53,15 +53,16 @@
         display: none;
       }
 
+      .exposureCompanyTitle {
+        font: $text-body-sm;
+        max-width: 120px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
       @media screen and (min-width: $screen-lg) {
         flex: 1 1 0%;
-
-        .exposureCompanyTitle {
-          max-width: 150px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
 
         &.hideOnMobile {
           display: block;
@@ -108,6 +109,22 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
+
+        @media screen and (min-width: $screen-lg) {
+          flex: 1 1 0;
+
+          .fixItBtn {
+            width: 150px;
+            flex: 1 1 0;
+          }
+        }
+
+        .exposedInfoTitle {
+          @media screen and (min-width: $screen-lg) {
+            align-self: center;
+            flex: 0 0 150px; // 150px is the width of categories title
+          }
+        }
       }
 
       @media screen and (min-width: $screen-lg) {
@@ -128,14 +145,20 @@
         margin-left: 0;
         padding-left: 0;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: $spacing-sm;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: $spacing-sm;
+
+        @media screen and (min-width: $screen-sm) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
 
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: $layout-xs;
+          flex-wrap: wrap;
+          justify-content: flex-start;
         }
 
         .detailsFoundItem {

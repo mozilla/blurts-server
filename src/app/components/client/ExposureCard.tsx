@@ -356,7 +356,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
           )}
           <div className={styles.exposedInfoContainer}>
             <div className={styles.exposedInfoWrapper}>
-              <p>{l10n.getString("exposure-card-your-exposed-info")}:</p>
+              <p className={styles.exposedInfoTitle}>
+                {l10n.getString("exposure-card-your-exposed-info")}:
+              </p>
               <dl>
                 <ExposureCategoriesListElem />
               </dl>
