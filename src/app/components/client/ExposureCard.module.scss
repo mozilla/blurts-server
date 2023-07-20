@@ -2,7 +2,7 @@
 
 .exposureCard {
   // Variables
-  --exposureDetailsIconWidth: 25px;
+  --exposureDetailsIconWidth: 28px;
 
   font: $text-body-sm;
   background-color: $color-white;
@@ -134,13 +134,17 @@
         .detailsFoundItem {
           dt {
             display: flex;
-            gap: $spacing-xs;
             align-items: center;
 
             .exposureTypeIcon {
               width: var(--exposureDetailsIconWidth);
               color: $color-purple-60;
-              margin-top: 2px;
+              display: flex;
+              justify-content: flex-start;
+
+              .secondaryFill {
+                color: $color-red-20;
+              }
             }
           }
 
