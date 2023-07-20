@@ -273,20 +273,18 @@ function getRandomLightNebulaColor(name: string) {
     "#FFB4DB",
   ];
 
-  const charValue = name
-    .split("")
-    .map((letter) => letter.codePointAt(0))
-    .reduce((sum: number | undefined, codePoint) => {
-      if (sum !== undefined) {
-        return sum + codePoint!;
-      }
-      return codePoint;
-    }, 0);
+  const charValues = name.split("").map((letter) => letter.codePointAt(0));
 
-  if (charValue === undefined) {
+  const charSum = charValues.reduce((sum: number | undefined, codePoint) => {
+    if (codePoint === undefined) return sum;
+    if (sum === undefined) return codePoint;
+    return sum + codePoint;
+  }, undefined);
+
+  if (charSum === undefined) {
     return colors[0];
   }
 
-  const colorIndex = charValue % colors.length;
+  const colorIndex = charSum % colors.length;
   return colors[colorIndex];
 }
