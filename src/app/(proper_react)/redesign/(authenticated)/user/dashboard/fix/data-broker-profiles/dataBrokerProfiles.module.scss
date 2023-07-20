@@ -25,6 +25,27 @@
   }
 }
 
+.removalStepsList {
+  font: $text-body-md;
+  text-align: left;
+
+  li {
+    margin-bottom: $spacing-md;
+
+    > strong {
+      display: block;
+      margin-bottom: $spacing-xs;
+      font-weight: 700;
+    }
+
+    // The subhead/bullet content is wrapped in a span to style to OL marker (1.)
+    > span {
+      font: $text-body-sm;
+      font-weight: normal;
+    }
+  }
+}
+
 .content {
   text-align: center;
   max-width: $content-md;
