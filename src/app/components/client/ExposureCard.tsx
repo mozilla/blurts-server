@@ -182,7 +182,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <BreachExposureCategory
             key={item}
             icon={<EmailIcon alt="" width="13" height="13" />}
-            exposureCategoryLabel="Email"
+            exposureCategoryLabel={l10n.getString("exposure-card-email")}
           />
         );
       } else if (item === "passwords") {
@@ -205,7 +205,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<PhoneIcon alt="" width="13" height="13" />}
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
           />
         );
@@ -215,7 +215,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<QuestionMarkCircle alt="" width="16" height="16" />}
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)} // Other exposure categories labels not localized for now
           />
         );
@@ -371,11 +371,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
   return exposureCard;
 };
 
-function formatOtherBreachCategoriesLabel(sentence: string) {
-  const words = sentence.split("-");
-  const firstWord = words[0];
-  const capitalizedFirstWord =
-    firstWord.charAt(0).toUpperCase() + firstWord.slice(1);
-  const restOfWords = words.slice(1).join(" ");
-  return capitalizedFirstWord + " " + restOfWords;
+function formatOtherBreachCategoriesLabel(sentence: string): string {
+  return sentence
+    .replaceAll("-", " ")
+    .replace(/^[a-z]/, (i) => i.toUpperCase());
 }
