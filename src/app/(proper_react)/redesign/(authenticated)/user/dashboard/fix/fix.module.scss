@@ -1,0 +1,39 @@
+@import "../../../../../../tokens";
+
+.fixWrapper {
+  margin: 0 auto $spacing-2xl;
+  max-width: $content-xl;
+  border-radius: $border-radius-md;
+  padding: $layout-lg $spacing-xl $spacing-2xl;
+  background-color: $color-white;
+  background-image: url("./images/content-background.svg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.fixSection {
+  position: relative;
+}
+
+.navArrowBack {
+  position: absolute;
+  left: $spacing-md;
+  top: $layout-xl;
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.navArrowNext {
+  position: absolute;
+  right: $spacing-md;
+  top: $layout-xl;
+}
+
+.navClose {
+  position: absolute;
+  right: $spacing-md;
+  top: $spacing-md;
+}
