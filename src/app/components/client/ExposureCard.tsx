@@ -252,7 +252,11 @@ export const ExposureCard = (props: ExposureCardProps) => {
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-company")}
             </dt>
-            <dd>{exposureName}</dd>
+            <dd>
+              <span className={styles.exposureCompanyTitle}>
+                {exposureName}
+              </span>
+            </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-exposure-type")}
             </dt>
