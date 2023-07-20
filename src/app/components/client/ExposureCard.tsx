@@ -215,8 +215,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-            exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)} // Other exposure categories labels not localized for now
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
+            exposureCategoryLabel={l10n.getString(item)} // categories are localized in data-classes.ftl
           />
         );
       }
@@ -370,9 +370,3 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return exposureCard;
 };
-
-function formatOtherBreachCategoriesLabel(sentence: string): string {
-  return sentence
-    .replaceAll("-", " ")
-    .replace(/^[a-z]/, (i) => i.toUpperCase());
-}
