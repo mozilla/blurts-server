@@ -114,15 +114,19 @@
           flex: 1 1 0;
 
           .fixItBtn {
-            width: 150px;
-            flex: 1 1 0;
+            flex-shrink: 0;
           }
         }
 
         .exposedInfoTitle {
           @media screen and (min-width: $screen-lg) {
             align-self: center;
-            flex: 0 0 150px; // 150px is the width of categories title
+            flex: 0 0 90px; // fix width of categories title
+          }
+
+          @media screen and (min-width: $screen-xl) {
+            align-self: center;
+            flex: 0 0 150px;
           }
         }
       }
