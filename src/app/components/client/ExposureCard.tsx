@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { CSSProperties, ReactElement, useState } from "react";
+import React, { CSSProperties, ReactElement, useEffect, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill, StatusPillType } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
@@ -58,6 +58,7 @@ export type ExposureCardProps = {
   statusPillType: StatusPillType;
   locale: string;
   fromEmail?: string;
+  color: string;
 };
 
 type BreachExposureCategoryProps = {
@@ -80,10 +81,12 @@ export const ExposureCard = (props: ExposureCardProps) => {
     exposureDetailsLink,
     statusPillType,
     locale,
+    color,
   } = props;
 
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
+
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
@@ -251,7 +254,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
     return (
       <span
         className={styles.fallbackLogo}
-        style={{ background: getRandomLightNebulaColor() } as CSSProperties}
+        style={{ background: props.color } as CSSProperties}
       >
         {firstLetter}
       </span>
@@ -377,7 +380,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                       height="13"
                     />
                   </span>
-                </a>{" "}
+                </a>
                 {l10n.getString(
                   "exposure-card-description-data-breach-part-two"
                 )}
@@ -406,36 +409,3 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return exposureCard;
 };
-
-function getRandomLightNebulaColor() {
-  const colors = [
-    "#C689FF",
-    "#D9BFFF",
-    "#AB71FF",
-    "#E7DFFF",
-    "#AB71FF",
-    "#3FE1B0",
-    "#54FFBD",
-    "#88FFD1",
-    "#B3FFE3",
-    "#D1FFEE",
-    "#F770FF",
-    "#F68FFF",
-    "#F6B8FF",
-    "#00B3F4",
-    "#00DDFF",
-    "#80EBFF",
-    "#FF8450",
-    "#FFA266",
-    "#FFB587",
-    "#FFD5B2",
-    "#FF848B",
-    "#FF9AA2",
-    "#FFBDC5",
-    "#FF8AC5",
-    "#FFB4DB",
-  ];
-
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
-}

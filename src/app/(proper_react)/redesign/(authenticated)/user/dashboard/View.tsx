@@ -6,7 +6,6 @@
 
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
-import TwitterImage from "../../../../../components/client/assets/twitter-icon.png";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
@@ -69,6 +68,7 @@ export const View = (props: Props) => {
               dateFound={breach.AddedDate}
               statusPillType="needAction"
               locale={props.locale}
+              color={getRandomLightNebulaColor(breach.Name)}
             />
           </li>
         );
@@ -184,6 +184,7 @@ export const View = (props: Props) => {
                 dateFound={dateObject(exposure.created_at)}
                 statusPillType="needAction"
                 locale={props.locale}
+                color={getRandomLightNebulaColor(exposure.data_broker)}
               />
             </li>
           ) : (
@@ -197,6 +198,7 @@ export const View = (props: Props) => {
                 dateFound={exposure.AddedDate}
                 statusPillType="needAction"
                 locale={props.locale}
+                color={getRandomLightNebulaColor(exposure.Name)}
               />
             </li>
           )}
@@ -240,3 +242,53 @@ export const View = (props: Props) => {
     </div>
   );
 };
+
+// Same logic as breachLogo.js
+function getRandomLightNebulaColor(name: string): string {
+  const colors = [
+    "#C689FF",
+    "#D9BFFF",
+    "#AB71FF",
+    "#E7DFFF",
+    "#AB71FF",
+    "#3FE1B0",
+    "#54FFBD",
+    "#88FFD1",
+    "#B3FFE3",
+    "#D1FFEE",
+    "#F770FF",
+    "#F68FFF",
+    "#F6B8FF",
+    "#00B3F4",
+    "#00DDFF",
+    "#80EBFF",
+    "#FF8450",
+    "#FFA266",
+    "#FFB587",
+    "#FFD5B2",
+    "#FF848B",
+    "#FF9AA2",
+    "#FFBDC5",
+    "#FF8AC5",
+    "#FFB4DB",
+  ];
+
+  const charValue = name
+    .split("")
+    .map((letter) => letter.codePointAt(0))
+    .reduce(
+      (sum: number | undefined, codePoint) =>
+        sum !== undefined ? sum + codePoint! : codePoint,
+      0
+    );
+
+  if (charValue === undefined) {
+    // Handle the case where charValue is undefined.
+    // You may choose to return a default color or throw an error.
+    // For simplicity, let's return the first color from the array.
+    return colors[0];
+  }
+
+  const colorIndex = charValue % colors.length;
+  return colors[colorIndex];
+}
