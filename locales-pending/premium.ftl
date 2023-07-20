@@ -88,6 +88,7 @@ exposure-card-phone-number = Phone number
 exposure-card-address = Address
 exposure-card-credit-card = Credit Card
 exposure-card-password = Password
+exposure-card-ip-address = IP Address
 exposure-card-other = Other
 # Variables:
 # $exposure_num is the number of exposures found for a particular type, e.g. 3 found 

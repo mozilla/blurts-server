@@ -27,7 +27,8 @@ import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
-  userScannedResults?: ScanResult[];
+  isUserScannedResults: boolean;
+  userScannedResults: ScanResult[];
   locale: string;
 };
 
@@ -64,9 +65,9 @@ export const View = (props: Props) => {
               exposureImg={TwitterImage}
               exposureData={breach}
               exposureName={breach.Name}
-              exposureDetailsLink={""}
+              exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
               dateFound={breach.AddedDate}
-              statusPillType={"fixed"}
+              statusPillType={"needAction"}
               locale={props.locale}
             />
           </li>
@@ -83,7 +84,7 @@ export const View = (props: Props) => {
     (elem: BundledVerifiedEmails) => elem.breaches
   );
   const scannedResultsDataArray =
-    props.userScannedResults?.map((elem: ScanResult) => elem) || [];
+    props.userScannedResults.map((elem: ScanResult) => elem) || [];
 
   // Merge exposure cards
   const combinedArray = [
@@ -167,9 +168,9 @@ export const View = (props: Props) => {
                 exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.data_broker}
-                exposureDetailsLink={""}
+                exposureDetailsLink={exposure.link}
                 dateFound={dateObject(exposure.created_at)}
-                statusPillType={"fixed"}
+                statusPillType={"needAction"}
                 locale={props.locale}
               />
             </li>
@@ -182,7 +183,7 @@ export const View = (props: Props) => {
                 exposureName={exposure.Name}
                 exposureDetailsLink={""}
                 dateFound={exposure.AddedDate}
-                statusPillType={"fixed"}
+                statusPillType={"needAction"}
                 locale={props.locale}
               />
             </li>
@@ -218,7 +219,9 @@ export const View = (props: Props) => {
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
-            {props.userScannedResults ? exposureCardElems : breachExposureCards}
+            {props.isUserScannedResults
+              ? exposureCardElems
+              : breachExposureCards}
           </ul>
         </section>
       </div>
