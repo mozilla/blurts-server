@@ -3,10 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import {
-  canSubscribeToPremium,
-  hasSetupOnerep,
-} from "../../../../../functions/universal/user";
+import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { redirect } from "next/navigation";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
@@ -20,27 +17,23 @@ import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
-    throw new Error("No session");
+    return redirect("/");
   }
+
   const headersList = headers();
   const countryCode = getCountryCode(headersList);
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
-  const scanResult = await getLatestOnerepScan(profileId);
-  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
-
   if (
-    !hasSetupOnerep(session?.user) &&
+    !profileId &&
     canSubscribeToPremium({ user: session?.user, countryCode: countryCode })
   ) {
-    return redirect("/user/welcome/");
+    return redirect("/redesign/user/welcome/");
   }
 
-  if (!session?.user) {
-    return redirect("/");
-  }
-
+  const scanResult = await getLatestOnerepScan(profileId);
+  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const breaches = await getUserBreaches({ user: session.user });
   const locale = getLocale();
 
