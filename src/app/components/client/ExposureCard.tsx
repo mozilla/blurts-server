@@ -266,7 +266,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>
             <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-company-logo")}
+              {l10n.getString("exposure-card-label-company-logo")}
             </dt>
             <dd
               className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
@@ -283,7 +283,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               )}
             </dd>
             <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-company")}
+              {l10n.getString("exposure-card-label-company")}
             </dt>
             <dd>
               <span className={styles.exposureCompanyTitle}>
