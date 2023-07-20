@@ -25,11 +25,11 @@ async function getAllBreaches() {
  */
 async function getAllBreachesCount() {
   const breachesCount = await knex('breaches')
-    .count({ count: "*" })
+    .count({ count: "id" })
     .first()
-    .then(result => result?.count)
-  // @ts-ignore The above query is returning a string
-  return parseInt(breachesCount, 10)
+    .then(result => result?.count || "")
+  // Make sure we are returning a number.
+  return parseInt(breachesCount.toString(), 10)
 }
 
 /**

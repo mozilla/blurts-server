@@ -25,16 +25,16 @@ const getCurrentScanCountForRange = ({
   progressRange: Array<number>;
 }): number => {
   const [rangeStart, rangeEnd] = progressRange;
-  const currentCount = Math.ceil(
-    (totalCount * (currentProgress - rangeStart)) / (rangeEnd - rangeStart)
-  );
-
   if (currentProgress < rangeStart) {
     return 0;
   }
   if (currentProgress >= rangeEnd) {
     return totalCount;
   }
+  const currentCount = Math.ceil(
+    (totalCount * (currentProgress - rangeStart)) / (rangeEnd - rangeStart)
+  );
+
   return currentCount;
 };
 
