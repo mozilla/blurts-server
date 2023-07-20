@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { CSSProperties, ReactElement, useEffect, useState } from "react";
+import React, { CSSProperties, ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill, StatusPillType } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
@@ -254,7 +254,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
     return (
       <span
         className={styles.fallbackLogo}
-        style={{ background: props.color } as CSSProperties}
+        style={{ background: color } as CSSProperties}
       >
         {firstLetter}
       </span>

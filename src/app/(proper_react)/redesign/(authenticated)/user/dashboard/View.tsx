@@ -244,7 +244,7 @@ export const View = (props: Props) => {
 };
 
 // Same logic as breachLogo.js
-function getRandomLightNebulaColor(name: string): string {
+function getRandomLightNebulaColor(name: string) {
   const colors = [
     "#C689FF",
     "#D9BFFF",
@@ -276,11 +276,12 @@ function getRandomLightNebulaColor(name: string): string {
   const charValue = name
     .split("")
     .map((letter) => letter.codePointAt(0))
-    .reduce(
-      (sum: number | undefined, codePoint) =>
-        sum !== undefined ? sum + codePoint! : codePoint,
-      0
-    );
+    .reduce((sum: number | undefined, codePoint) => {
+      if (sum !== undefined) {
+        return sum + codePoint!;
+      }
+      return codePoint;
+    }, 0);
 
   if (charValue === undefined) {
     return colors[0];
