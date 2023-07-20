@@ -283,9 +283,6 @@ function getRandomLightNebulaColor(name: string): string {
     );
 
   if (charValue === undefined) {
-    // Handle the case where charValue is undefined.
-    // You may choose to return a default color or throw an error.
-    // For simplicity, let's return the first color from the array.
     return colors[0];
   }
 
