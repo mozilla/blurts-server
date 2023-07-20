@@ -65,6 +65,7 @@ export const View = (props: Props) => {
               exposureImg={TwitterImage}
               exposureData={breach}
               exposureName={breach.Name}
+              fromEmail={verifiedEmail.email}
               exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
               dateFound={breach.AddedDate}
               statusPillType="needAction"
@@ -159,6 +160,19 @@ export const View = (props: Props) => {
 
   const exposureCardElems = filteredExposures.map(
     (exposure: ScanResult | HibpLikeDbBreach, index) => {
+      let email;
+      // Find the corresponding email for this exposure
+      if (!isScanResult(exposure)) {
+        props.userBreaches.breachesData.verifiedEmails.forEach(
+          (verifiedEmail) => {
+            if (
+              verifiedEmail.breaches.some((breach) => breach.Id === exposure.Id)
+            ) {
+              email = verifiedEmail.email;
+            }
+          }
+        );
+      }
       return (
         <>
           {isScanResult(exposure) ? (
@@ -181,6 +195,7 @@ export const View = (props: Props) => {
                 exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.Name}
+                fromEmail={email}
                 exposureDetailsLink={""}
                 dateFound={exposure.AddedDate}
                 statusPillType="needAction"

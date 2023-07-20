@@ -57,11 +57,13 @@ export type ExposureCardProps = {
   dateFound: Date;
   statusPillType: StatusPillType;
   locale: string;
+  fromEmail?: string;
 };
 
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
+  email: string;
 };
 
 type ScannedExposureCategoryProps = {
@@ -89,6 +91,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const exposureCategoriesArray: React.ReactElement[] = [];
   const exposureItem = props.exposureData;
 
+  const verifiedEmailofBreach = props.fromEmail;
+
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
     const description = l10n.getString("exposure-card-num-found", {
       exposure_num: 1, // We don't count categories for breaches.
@@ -100,7 +104,11 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {props.exposureCategoryLabel}
         </dt>
-        <dd>{description}</dd>
+        <dd>
+          {props.email === "email-addresses"
+            ? verifiedEmailofBreach
+            : description}
+        </dd>
       </div>
     );
   };
@@ -181,6 +189,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<EmailIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-email")}
           />
@@ -189,6 +198,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<PasswordIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-password")}
           />
@@ -197,6 +207,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<PhoneIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
           />
@@ -205,6 +216,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
           />
@@ -215,6 +227,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
             exposureCategoryLabel={l10n.getString(item)} // categories are localized in data-classes.ftl
           />
