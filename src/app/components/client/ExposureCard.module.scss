@@ -45,6 +45,17 @@
     justify-content: space-between;
     height: 30px; // fixed height to standardize image/icon heights
 
+    .fallbackLogo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50px;
+      color: black;
+      font: $text-title-3xs;
+    }
+
     dd {
       display: flex;
       align-items: center;

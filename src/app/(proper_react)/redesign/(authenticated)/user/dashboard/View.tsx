@@ -62,7 +62,6 @@ export const View = (props: Props) => {
             className={styles.exposureListItem}
           >
             <ExposureCard
-              exposureImg={TwitterImage}
               exposureData={breach}
               exposureName={breach.Name}
               fromEmail={verifiedEmail.email}
@@ -161,7 +160,7 @@ export const View = (props: Props) => {
   const exposureCardElems = filteredExposures.map(
     (exposure: ScanResult | HibpLikeDbBreach, index) => {
       let email;
-      // Find the corresponding email for this exposure
+      // Get the email assosciated with breach
       if (!isScanResult(exposure)) {
         props.userBreaches.breachesData.verifiedEmails.forEach(
           (verifiedEmail) => {
@@ -179,7 +178,6 @@ export const View = (props: Props) => {
             // Scanned result
             <li key={index} className={styles.exposureListItem}>
               <ExposureCard
-                exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.data_broker}
                 exposureDetailsLink={exposure.link}
@@ -192,7 +190,6 @@ export const View = (props: Props) => {
             // Breaches result
             <li key={index} className={styles.exposureListItem}>
               <ExposureCard
-                exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.Name}
                 fromEmail={email}

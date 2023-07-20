@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactElement, useState } from "react";
+import React, { CSSProperties, ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill, StatusPillType } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
@@ -50,7 +50,7 @@ export function isScanResult(
 }
 
 export type ExposureCardProps = {
-  exposureImg: StaticImageData;
+  exposureImg?: StaticImageData;
   exposureName: string;
   exposureData: Exposure;
   exposureDetailsLink: string;
@@ -245,6 +245,18 @@ export const ExposureCard = (props: ExposureCardProps) => {
     return <>{listItems}</>;
   };
 
+  function fallbackLogo(exposureId: string) {
+    const firstLetter = exposureId[0].toUpperCase();
+
+    return (
+      <span
+        className={styles.fallbackLogo}
+        style={{ background: getRandomLightNebulaColor() } as CSSProperties}
+      >
+        {firstLetter}
+      </span>
+    );
+  }
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
@@ -256,11 +268,16 @@ export const ExposureCard = (props: ExposureCardProps) => {
             <dd
               className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}
             >
-              <Image
-                className={styles.exposureImage}
-                alt=""
-                src={exposureImg}
-              />
+              {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
+              {exposureImg ? (
+                <Image
+                  className={styles.exposureImage}
+                  alt=""
+                  src={exposureImg}
+                />
+              ) : (
+                <>{fallbackLogo(props.exposureName)}</>
+              )}
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-company")}
@@ -389,3 +406,36 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return exposureCard;
 };
+
+function getRandomLightNebulaColor() {
+  const colors = [
+    "#C689FF",
+    "#D9BFFF",
+    "#AB71FF",
+    "#E7DFFF",
+    "#AB71FF",
+    "#3FE1B0",
+    "#54FFBD",
+    "#88FFD1",
+    "#B3FFE3",
+    "#D1FFEE",
+    "#F770FF",
+    "#F68FFF",
+    "#F6B8FF",
+    "#00B3F4",
+    "#00DDFF",
+    "#80EBFF",
+    "#FF8450",
+    "#FFA266",
+    "#FFB587",
+    "#FFD5B2",
+    "#FF848B",
+    "#FF9AA2",
+    "#FFBDC5",
+    "#FF8AC5",
+    "#FFB4DB",
+  ];
+
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}
