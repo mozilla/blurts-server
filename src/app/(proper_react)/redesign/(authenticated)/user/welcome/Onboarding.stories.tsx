@@ -18,6 +18,7 @@ export const Onboarding: Story = {
     <OnboardingEl
       user={{ email: "example@example.com" }}
       dataBrokerCount={190}
+      breachesTotalCount={678}
     />
   ),
 };
