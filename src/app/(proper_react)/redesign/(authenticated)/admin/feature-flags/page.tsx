@@ -68,10 +68,10 @@ export default async function FeatureFlagPage() {
   const AddFeatureFlag = () => {
     /*
     const newFlag = {
-      name: "FreeBrokerScan",
+      name: "",
       isEnabled: true,
-      allowList: ["rhelmer+test1@mozilla.com", "rhelmer+test2@mozilla.com"],
-      owner: "rhelmer@mozilla.com",
+      allowList: [],
+      owner: "",
     } as FeatureFlag;
 
     addFeatureFlag(newFlag)
