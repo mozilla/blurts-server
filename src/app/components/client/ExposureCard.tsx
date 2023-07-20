@@ -269,7 +269,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               {l10n.getString("exposure-card-company-logo")}
             </dt>
             <dd
-              className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}
+              className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
               {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
               {exposureImg ? (
