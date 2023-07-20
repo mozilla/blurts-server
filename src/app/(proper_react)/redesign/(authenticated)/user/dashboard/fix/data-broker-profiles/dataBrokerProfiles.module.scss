@@ -51,3 +51,20 @@
   display: block;
   max-width: 100%;
 }
+
+// TODO: Replace with @include question-mark-circle-btn;
+.questionTooltipWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xs;
+  font: $text-title-3xs;
+}
+
+.questionTooltip {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  // TODO: Add hover/focus state
+}
