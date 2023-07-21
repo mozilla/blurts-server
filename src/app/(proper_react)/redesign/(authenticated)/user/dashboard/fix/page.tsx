@@ -2,17 +2,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-// import Link from "next/link";
-import React from "react";
+import { redirect } from "next/navigation";
 
 export default function FixPage() {
-  return (
-    <div>
-      <div>BOX</div>
-    </div>
-  );
+  redirect("/redesign/user/dashboard/fix/data-broker-profiles/start-free-scan");
 }
-
-// Routes
-// - Data Broker Profiles
-//  -

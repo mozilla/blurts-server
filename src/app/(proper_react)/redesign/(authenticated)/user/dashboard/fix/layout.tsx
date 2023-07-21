@@ -12,8 +12,8 @@ import {
   NavigationItem,
 } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
-import imageArrowLeft from "./images/icon-arrow-left.svg";
-import imageArrowRight from "./images/icon-arrow-right.svg";
+import ImageArrowLeft from "./images/icon-arrow-left.svg";
+import ImageArrowRight from "./images/icon-arrow-right.svg";
 
 import imageClose from "./images/icon-close.svg";
 import stepDataBrokerProfilesIcon from "./images/step-counter-data-broker-profiles.svg";
@@ -41,16 +41,18 @@ function NavigationClose() {
 
 function NavigationArrowBack() {
   return (
+    // FIXME: This navigation arrow should point to the previous step in whichever context it is loaded
     <Link className={styles.navArrowBack} href="/redesign/user/dashboard">
-      <Image alt="" src={imageArrowLeft} />
+      <Image alt="" src={ImageArrowLeft} />
     </Link>
   );
 }
 
 function NavigationArrowNext() {
   return (
+    // FIXME: This navigation arrow should point to the next step in whichever context it is loaded
     <Link className={styles.navArrowNext} href="/redesign/user/dashboard">
-      <Image alt="" src={imageArrowRight} />
+      <Image alt="" src={ImageArrowRight} />
     </Link>
   );
 }
@@ -60,7 +62,6 @@ const FixLayout = (props: Props) => {
     {
       key: "data-broker-profiles",
       labelStringId: "fix-flow-nav-data-broker-profiles",
-      name: "Data broker profiles",
       href: "/redesign/user/dashboard/fix/data-broker-profiles",
       status: "#",
       currentStepId: "dataBrokerProfiles",
@@ -69,7 +70,6 @@ const FixLayout = (props: Props) => {
     {
       key: "high-risk-data-breaches",
       labelStringId: "fix-flow-nav-high-risk-data-breaches",
-      name: "High risk data breaches",
       href: "/redesign/user/dashboard/fix/high-risk-data-breaches",
       status: "#",
       currentStepId: "highRiskDataBreaches",
@@ -78,7 +78,6 @@ const FixLayout = (props: Props) => {
     {
       key: "leaked-passwords",
       labelStringId: "fix-flow-nav-leaked-passwords",
-      name: "Leaked passwords",
       href: "/redesign/user/dashboard/fix/leaked-passwords",
       status: "#",
       currentStepId: "leakedPasswords",
@@ -87,7 +86,6 @@ const FixLayout = (props: Props) => {
     {
       key: "security-recommendations",
       labelStringId: "fix-flow-nav-security-recommendations",
-      name: "Security recommendations",
       href: "/redesign/user/dashboard/fix/security-recommendations",
       status: "#",
       currentStepId: "securityRecommendations",

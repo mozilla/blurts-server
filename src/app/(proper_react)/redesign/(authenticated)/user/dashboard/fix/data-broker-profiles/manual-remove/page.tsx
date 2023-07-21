@@ -4,9 +4,9 @@
 
 import Link from "next/link";
 import React from "react";
-import styles from "./../dataBrokerProfiles.module.scss";
-import { getL10n } from "./../../../../../../../../functions/server/l10n";
-import buttonStyles from "./../../../../../../../../components/server/button.module.scss";
+import styles from "../dataBrokerProfiles.module.scss";
+import { getL10n } from "../../../../../../../../functions/server/l10n";
+import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 
 export default function ManualRemove() {
   const l10n = getL10n();
@@ -88,7 +88,7 @@ export default function ManualRemove() {
           )}
         </Link>
         <Link
-          className="button secondary"
+          className={`${buttonStyles.button} ${buttonStyles.secondary}`}
           href={
             "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
           }

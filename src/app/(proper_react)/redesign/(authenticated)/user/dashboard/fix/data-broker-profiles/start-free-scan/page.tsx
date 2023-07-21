@@ -6,10 +6,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import ImageCityScape from "./images/city-scape.svg";
-import buttonStyles from "./../../../../../../../../components/server/button.module.scss";
-import styles from "./../dataBrokerProfiles.module.scss";
+import buttonStyles from "../../../../../../../../components/server/button.module.scss";
+import styles from "../dataBrokerProfiles.module.scss";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 
 export default function StartFreeScan() {
@@ -58,7 +57,7 @@ export default function StartFreeScan() {
           )}
         </Link>
         <Link
-          className="button secondary"
+          className={`${buttonStyles.button} ${buttonStyles.secondary}`}
           href={"/redesign/user/dashboard/fix/high-risk-data-breaches"}
         >
           {l10n.getString(

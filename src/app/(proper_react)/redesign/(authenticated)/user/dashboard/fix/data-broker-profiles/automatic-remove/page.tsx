@@ -4,9 +4,8 @@
 
 "use client";
 
-// import Image from "next/image";
 import React, { useState } from "react";
-import styles from "./../dataBrokerProfiles.module.scss";
+import styles from "../dataBrokerProfiles.module.scss";
 import { Button } from "../../../../../../../../components/server/Button";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 

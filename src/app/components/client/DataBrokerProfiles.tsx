@@ -7,7 +7,7 @@
 import Image from "next/image";
 import styles from "./DataBrokerProfiles.module.scss";
 import { useL10n } from "../../hooks/l10n";
-import iconChevronDown from "./assets/icon-chevron-down.svg";
+import IconChevronDown from "./assets/icon-chevron-down.svg";
 import { useState } from "react";
 import { ScanResult } from "../../functions/server/onerep";
 
@@ -47,7 +47,7 @@ export const DataBrokerProfiles = (props: Props) => {
                 "fix-flow-data-broker-profiles-view-data-broker-profiles-button-view-more"
               )}
         </span>
-        <Image alt="" src={iconChevronDown} />
+        <Image alt="" src={IconChevronDown} />
       </button>
     </div>
   );
@@ -65,7 +65,7 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
       <div
         data-broker={props.data.data_broker}
         className={styles.imagePlaceholder}
-      ></div>
+      />
       {/* TODO: Add logic to show unique image per data broker */}
       {/* <Image src={} alt={props.data.data_broker} /> */}
       <a href={props.data.url}>
