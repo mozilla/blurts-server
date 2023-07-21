@@ -17,6 +17,7 @@
     margin: 0;
     padding: 0;
 
+    // Hide all cards after the first four at this breakpoint
     &:nth-child(n + 5) {
       display: none;
     }
@@ -51,6 +52,7 @@
       display: unset;
     }
 
+    // Hide all cards after the first six at this breakpoint
     li:nth-child(n + 7) {
       display: none;
     }
@@ -63,6 +65,7 @@
       display: unset;
     }
 
+    // Hide all cards after the first eight at this breakpoint
     li:nth-child(n + 9) {
       display: none;
     }
