@@ -3,7 +3,6 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Link from "next/link";
-import React from "react";
 import styles from "../dataBrokerProfiles.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
