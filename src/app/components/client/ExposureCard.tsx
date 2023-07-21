@@ -249,7 +249,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
   };
 
   function fallbackLogo(exposureId: string) {
-    const firstLetter = exposureId[0].toUpperCase();
+    const firstLetter = exposureId?.[0]?.toUpperCase() || "";
 
     return (
       <span
