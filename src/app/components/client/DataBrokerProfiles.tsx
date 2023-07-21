@@ -68,7 +68,7 @@ export const DataBrokerProfileCard = (props: DataBrokerProfileCardProps) => {
       />
       {/* TODO: Add logic to show unique image per data broker */}
       {/* <Image src={} alt={props.data.data_broker} /> */}
-      <a href={props.data.url}>
+      <a href={props.data.link}>
         {l10n.getString(
           "fix-flow-data-broker-profiles-view-data-broker-profiles-view-profile"
         )}
