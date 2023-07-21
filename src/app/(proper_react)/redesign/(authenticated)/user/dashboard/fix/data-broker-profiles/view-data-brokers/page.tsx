@@ -13,14 +13,16 @@ import { getLatestOnerepScan } from "../../../../../../../../../db/tables/onerep
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
+import { redirect } from "next/navigation";
 
 export default async function ViewDataBrokers() {
   const l10n = getL10n();
   const session = await getServerSession(authOptions);
 
   if (!session?.user?.subscriber?.id) {
-    throw new Error("No session");
+    redirect("/redesign/user/dashboard/");
   }
+
   const result = await getOnerepProfileId(session.user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScan(profileId);
