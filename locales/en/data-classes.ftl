@@ -25,6 +25,7 @@ career-levels = Career levels
 cellular-network-names = Cellular network names
 charitable-donations = Charitable donations
 chat-logs = Chat logs
+clothing-sizes = Clothing sizes
 credit-card-cvv = Credit card CVV
 credit-cards = Credit cards
 credit-status-information = Credit status information
