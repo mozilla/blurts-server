@@ -15,6 +15,11 @@ import { useL10n } from "../../../../../../../../hooks/l10n";
 export default function StartFreeScan() {
   const l10n = useL10n();
 
+  // FIXME: Using this variables causes a hydration error
+  // const dataBrokerCount = process.env.ONEREP_DATA_BROKER_COUNT as string;
+  // const dataBrokerCount = parseInt(process.env.ONEREP_DATA_BROKER_COUNT as string,10);
+  const dataBrokerCount = 190;
+
   return (
     <div className={styles.contentWrapper}>
       <Image className={styles.cityScape} src={ImageCityScape} alt="" />
@@ -26,7 +31,8 @@ export default function StartFreeScan() {
         </h3>
         <p>
           {l10n.getString(
-            "fix-flow-data-broker-profiles-start-free-scan-content-p1"
+            "fix-flow-data-broker-profiles-start-free-scan-content-p1",
+            { data_broker_count: dataBrokerCount }
           )}
         </p>
         <p>

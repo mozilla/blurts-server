@@ -15,6 +15,10 @@ export default function AutomaticRemove() {
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
+  // FIXME: Using this variables causes a hydration error
+  // const dataBrokerCount = parseInt(process.env.ONEREP_DATA_BROKER_COUNT as string,10);
+  const dataBrokerCount = 190;
+
   return (
     <div>
       <div className={`${styles.content} ${styles.contentAutomaticRemove}`}>
@@ -27,7 +31,7 @@ export default function AutomaticRemove() {
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-subheadline",
             {
-              data_broker_count: 190,
+              data_broker_count: dataBrokerCount,
             }
           )}
         </p>
@@ -73,7 +77,7 @@ export default function AutomaticRemove() {
                 {l10n.getString(
                   "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
                   {
-                    data_broker_count: 190,
+                    data_broker_count: dataBrokerCount,
                   }
                 )}
               </li>
