@@ -61,7 +61,7 @@ export const Steps = (props: {
   return (
     <ul className={styles.steps}>
       {props.navigationItems.map(
-        ({ key, labelStringId, href, currentStepId, imageId, status }) => (
+        ({ key, labelStringId, href, imageId, status }) => (
           <li
             key={key}
             aria-current={pathname.includes(href) ? "step" : undefined}
