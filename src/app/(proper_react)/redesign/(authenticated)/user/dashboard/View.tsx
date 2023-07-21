@@ -158,39 +158,34 @@ export const View = (props: Props) => {
   );
 
   const exposureCardElems = filteredExposures.map(
-    (exposure: ScanResult | HibpLikeDbBreach, index) => {
-      return (
-        <>
-          {isScanResult(exposure) ? (
-            // Scanned result
-            <li key={index} className={styles.exposureListItem}>
-              <ExposureCard
-                exposureImg={TwitterImage}
-                exposureData={exposure}
-                exposureName={exposure.data_broker}
-                exposureDetailsLink={exposure.link}
-                dateFound={dateObject(exposure.created_at)}
-                statusPillType={"needAction"}
-                locale={props.locale}
-              />
-            </li>
-          ) : (
-            // Breaches result
-            <li key={index} className={styles.exposureListItem}>
-              <ExposureCard
-                exposureImg={TwitterImage}
-                exposureData={exposure}
-                exposureName={exposure.Name}
-                exposureDetailsLink={""}
-                dateFound={exposure.AddedDate}
-                statusPillType={"needAction"}
-                locale={props.locale}
-              />
-            </li>
-          )}
-        </>
-      );
-    }
+    (exposure: ScanResult | HibpLikeDbBreach) =>
+      isScanResult(exposure) ? (
+        // Scanned result
+        <li key={exposure.id} className={styles.exposureListItem}>
+          <ExposureCard
+            exposureImg={TwitterImage}
+            exposureData={exposure}
+            exposureName={exposure.data_broker}
+            exposureDetailsLink={exposure.link}
+            dateFound={dateObject(exposure.created_at)}
+            statusPillType={"needAction"}
+            locale={props.locale}
+          />
+        </li>
+      ) : (
+        // Breaches result
+        <li key={exposure.Id} className={styles.exposureListItem}>
+          <ExposureCard
+            exposureImg={TwitterImage}
+            exposureData={exposure}
+            exposureName={exposure.Name}
+            exposureDetailsLink={""}
+            dateFound={exposure.AddedDate}
+            statusPillType={"needAction"}
+            locale={props.locale}
+          />
+        </li>
+      )
   );
 
   return (
