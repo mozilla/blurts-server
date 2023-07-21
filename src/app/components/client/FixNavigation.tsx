@@ -7,7 +7,6 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import styles from "./FixNavigation.module.scss";
-// import stepDoneIcon from "./assets/step-counter-done.svg";
 import { useState } from "react";
 import { useL10n } from "../../hooks/l10n";
 
@@ -16,6 +15,10 @@ type StepId =
   | "highRiskDataBreaches"
   | "leakedPasswords"
   | "securityRecommendations";
+
+export type Props = {
+  navigationItems: Array<NavigationItem>;
+};
 
 export const FixNavigation = (props: Props) => {
   // TODO: Add logic to abstract away from hard-coded dataBrokerProfiles section
@@ -40,11 +43,10 @@ export const FixNavigation = (props: Props) => {
 export interface NavigationItem {
   key: string;
   labelStringId: string;
-  name: string;
   href: string;
   status: string;
   currentStepId: string;
-  imageId: unknown;
+  imageId: string;
 }
 
 export const Steps = (props: {
@@ -69,7 +71,7 @@ export const Steps = (props: {
           >
             <Image
               // TODO: Add "isDone" logic
-              src={props.currentStep === currentStepId ? imageId : imageId}
+              src={imageId}
               alt=""
               width={22}
               height={22}
@@ -83,18 +85,3 @@ export const Steps = (props: {
     </ul>
   );
 };
-
-// TODO: Use isStepDone function to set active/done state when on to next step after Data Broker Profiles fixes
-// function isStepDone(step: StepId, currentStep: StepId): boolean {
-//   if (step === "dataBrokerProfiles") {
-//     return currentStep !== "dataBrokerProfiles";
-//   }
-//   if (step === "leakedPasswords") {
-//     return currentStep === "highRiskDataBreaches";
-//   }
-
-//   if (step === "securityRecommendations") {
-//     return currentStep === "leakedPasswords";
-//   }
-//   return false;
-// }
