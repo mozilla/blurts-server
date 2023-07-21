@@ -15,7 +15,7 @@ fix-flow-data-broker-profiles-start-free-scan-button-skip = Skip for now
 fix-flow-data-broker-profiles-view-data-broker-profiles-headline = 
   { $data_broker_sites_results_num ->
       [one] { $data_broker_sites_results_num } site is selling your personal information
-      *[other] { $data_broker_sites_results_num } sites are selling your personal information
+     *[other] { $data_broker_sites_results_num } sites are selling your personal information
   }
 fix-flow-data-broker-profiles-view-data-broker-profiles-content = Data brokers make up a $240 billion industry of gathering your personal info and selling it to anyone searching for you. Remove these now to protect your privacy.
 fix-flow-data-broker-profiles-view-data-broker-profiles-button-remove-for-me = Remove them for me
@@ -28,9 +28,9 @@ fix-flow-data-broker-profiles-manual-remove-how-to-remove-headline = Here’s ho
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-title = Visit each site and find removal instructions
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-1-content = They may be called data suppression, delete my data, do not show my data, or opt out instructions.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-title = Follow the steps outlined on the site
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some sites may allow you to fill out an opt-out form online, while others may require you tomail a letter. 
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-2-content = Some sites may allow you to fill out an opt-out form online, while others may require you to mail a letter. 
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-title = Mark as fixed on this page
-fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content = This will help you keep track of which exposures still need your attention, and make youroverall exposures go down.
+fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-3-content = This will help you keep track of which exposures still need your attention, and make your overall exposures go down.
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-title = Watch for re-exposures
 fix-flow-data-broker-profiles-manual-remove-how-to-remove-step-4-content = This process does not remove your information from public records, so even after your information is removed, sites often add you back. If you’d like us to handle this for you and automatically remove any new exposures, upgrade to Monitor Premium.
 fix-flow-data-broker-profiles-manual-remove-review-profiles-headline = Review & remove your profiles
