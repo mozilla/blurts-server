@@ -60,8 +60,7 @@ export default function AutomaticRemove() {
             {l10n.getString(
               "fix-flow-data-broker-profiles-automatic-remove-save-percent",
               { percent: 10 }
-            )}{" "}
-            🎉
+            )}
           </span>
         </div>
         <div className={styles.upgradeContentWrapper}>

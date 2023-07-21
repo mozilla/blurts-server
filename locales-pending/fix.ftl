@@ -50,7 +50,7 @@ fix-flow-data-broker-profiles-automatic-remove-subheadline = {
 }
 # Variables:
 # $percent is the percentage you can save subscribing to an annual/yearly plan
-fix-flow-data-broker-profiles-automatic-remove-save-percent = Save { $percent }% with yearly plan
+fix-flow-data-broker-profiles-automatic-remove-save-percent = Save { $percent }% with yearly plan 🎉
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline = { -brand-premium } Protection
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly = Yearly
 fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly = Monthly
