@@ -48,13 +48,20 @@ onboarding-enter-details-label-location = City and state
 onboarding-enter-details-placeholder-location = Enter city and state
 onboarding-enter-details-label-date-of-birth = Date of birth
 onboarding-enter-details-input-error-message-generic = Required to complete the scan
-onboarding-enter-details-input-error-message-location = Search and select your location
+onboarding-enter-details-input-error-message-location = Type location and select from list
 
 onboarding-find-exposures-progress-label = Scanning for exposures…
+# Variables:
+#   $breachesTotalCount (number) - number of scanned breaches, e.g. 672
+#   $breachesScannedCount (number) - number of the currently scanned breaches, e.g. between 0 and $breachesTotalCount
+onboarding-find-exposures-progress-breaches-counter = {
+    $breachesTotalCount ->
+        *[other] { $breachesScannedCount } of { $breachesTotalCount } known data breaches
+}
 # Variables:
 #   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
 #   $dataBrokerScannedCount (number) - number of the currently scanned data broker sites, e.g. between 0 and $dataBrokerTotalCount
 onboarding-find-exposures-progress-broker-counter = {
     $dataBrokerTotalCount ->
-        *[other] { $dataBrokerScannedCount } of { $dataBrokerTotalCount } known data breaches
+        *[other] { $dataBrokerScannedCount } of { $dataBrokerTotalCount } data broker sites
 }

@@ -22,26 +22,30 @@ import monitorLogo from "../../../../images/monitor-logo.webp";
 export type Props = {
   user: Session["user"];
   dataBrokerCount: number;
+  breachesTotalCount: number;
 };
 
 type StepId = "getStarted" | "enterInfo" | "findExposures";
 
-export const View = (props: Props) => {
+export const View = ({ user, dataBrokerCount, breachesTotalCount }: Props) => {
   const l10n = useL10n();
   const [currentStep, setCurrentStep] = useState<StepId>("getStarted");
 
   const currentComponent =
     currentStep === "findExposures" ? (
-      <FindExposures dataBrokerCount={props.dataBrokerCount} />
+      <FindExposures
+        dataBrokerCount={dataBrokerCount}
+        breachesTotalCount={breachesTotalCount}
+      />
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
-        user={props.user}
+        user={user}
         onScanStarted={() => setCurrentStep("findExposures")}
         onGoBack={() => setCurrentStep("getStarted")}
       />
     ) : (
       <GetStarted
-        dataBrokerCount={props.dataBrokerCount}
+        dataBrokerCount={dataBrokerCount}
         onStart={() => setCurrentStep("enterInfo")}
       />
     );

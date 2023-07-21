@@ -165,6 +165,7 @@ export const Dashboard: Story = {
         }}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
+        isUserScannedResults={true}
       />
     </Shell>
   ),
