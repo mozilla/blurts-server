@@ -14,6 +14,15 @@
 
 .fixSection {
   position: relative;
+
+  @media screen and (min-width: $screen-md) {
+    // Add horizontal padding to account for next/prev arrow placement on larger screens
+    padding: 0 $spacing-2xl;
+  }
+
+  @media screen and (min-width: $screen-xl) {
+    padding: 0;
+  }
 }
 
 .navArrowBack {
@@ -24,12 +33,21 @@
   background-color: transparent;
   border: 0;
   cursor: pointer;
+  display: none;
 }
 
 .navArrowNext {
   position: absolute;
   right: $spacing-md;
   top: $layout-xl;
+  display: none;
+}
+
+.navArrowBack,
+.navArrowNext {
+  @media screen and (min-width: $screen-md) {
+    display: block;
+  }
 }
 
 .navClose {

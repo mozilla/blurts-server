@@ -47,14 +47,14 @@ export default async function ViewDataBrokers() {
         </p>
       </div>
       <div className={styles.content}>
-        <h3 className={styles.questionTooltipWrapper}>
+        <h4 className={styles.questionTooltipWrapper}>
           {l10n.getString(
             "fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites"
           )}
           <button className={styles.questionTooltip}>
             <Image alt="" src={iconQuestionMark} />
           </button>
-        </h3>
+        </h4>
         <DataBrokerProfiles data={scanResultItems} />
       </div>
       <div className={styles.buttonsWrapper}>

@@ -59,6 +59,14 @@
   max-width: $content-md;
   margin: 0 auto $spacing-2xl;
 
+  h3 {
+    font: $text-title-2xs;
+  }
+
+  h4 {
+    font: $text-title-3xs;
+  }
+
   p,
   h3 {
     margin-block-end: $spacing-md;
