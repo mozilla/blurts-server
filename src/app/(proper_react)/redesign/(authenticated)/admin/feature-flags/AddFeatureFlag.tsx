@@ -6,7 +6,7 @@
 
 export const AddFeatureFlag = () => {
   // @ts-ignore FIXME determine correct event type
-  const handleSubmit = void (async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const data = {
@@ -29,11 +29,14 @@ export const AddFeatureFlag = () => {
     };
 
     // Send the form data to our forms API on Vercel and get a response.
-    const response = await fetch(endpoint, options);
-    if (response.ok) {
-      window.location.reload(); // FIXME re-render component w/o page reload
-    }
-  });
+    fetch(endpoint, options)
+      .then((response) => {
+        if (response.ok) {
+          window.location.reload(); // FIXME re-render component w/o page reload
+        }
+      })
+      .catch((ex) => console.error(ex));
+  };
   return (
     <form onSubmit={handleSubmit}>
       <table>
