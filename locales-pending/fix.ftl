@@ -9,6 +9,7 @@ fix-flow-data-broker-profiles-start-free-scan-headline = Find out which sites ar
 # $data_broker_count is the number of data brokers scanned monthly
 fix-flow-data-broker-profiles-start-free-scan-content-p1 =
   { $data_broker_count ->
+    [one] Before you review your data breaches, would you like us to search for you on { $data_broker_count } data broker site that may be selling your personal information?
     *[other] Before you review your data breaches, would you like us to search for you on { $data_broker_count } data broker sites that may be selling your personal information?
   }
 fix-flow-data-broker-profiles-start-free-scan-content-p2 = Your first scan is free and only takes a few minutes.
@@ -45,7 +46,8 @@ fix-flow-data-broker-profiles-automatic-remove-headline = We’ll auto-remove th
 # Variables:
 # $data_broker_count is the number of data brokers scanned monthly
 fix-flow-data-broker-profiles-automatic-remove-subheadline = {
-  $data_broker_count ->
+    $data_broker_count ->
+      [one] Removing these stops the sale of your personal info on { $data_broker_count } site. Upgrade to { -brand-monitor-premium } and you’ll get:
       *[other] Removing these stops the sale of your personal info on { $data_broker_count } sites. Upgrade to { -brand-monitor-premium } and you’ll get:
 }
 # Variables:
@@ -67,6 +69,7 @@ fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts = Alerts w
 # $data_broker_count is the number of data brokers scanned monthly
 fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan =
   { $data_broker_count ->
+    [one] Monthly scan of { $data_broker_count } data broker site that may be selling your personal info
     *[other] Monthly scan of { $data_broker_count } data broker sites that may be selling your personal info
   }
 # Variables:
