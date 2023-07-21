@@ -4,15 +4,14 @@
 
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
-import {
-  FeatureFlag,
-  addFeatureFlag,
-  getAllFeatureFlags,
-} from "../../../../../../db/tables/featureFlags";
+import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { AddFeatureFlag } from "./AddFeatureFlag";
+import { ToggleFlagEnabled } from "./ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
+import { ModifyInputField } from "./ModifyInputField";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
@@ -41,6 +40,7 @@ export default async function FeatureFlagPage() {
             <th>Dependencies</th>
             <th>Allow List</th>
             <th>Wait List</th>
+            <th>Owner</th>
           </tr>
         </thead>
         <tbody>
@@ -48,14 +48,42 @@ export default async function FeatureFlagPage() {
             <tr key={item.name}>
               <td>{item.name}</td>
               <td>
-                <input
-                  type="checkbox"
-                  checked={item.is_enabled ? true : false}
-                ></input>
+                <ToggleFlagEnabled
+                  id="isEnabled"
+                  name={item.name}
+                  isEnabled={item.is_enabled}
+                />
+                {item.is_enabled}
               </td>
-              <td>{item.dependencies}</td>
-              <td>{item.allow_list?.join(", ")}</td>
-              <td>{item.wait_list?.join(", ")}</td>
+              <td>
+                {" "}
+                <ModifyInputField
+                  id="dependencies"
+                  name={item.name}
+                  defaultValue={item.dependencies?.join(",")}
+                />
+              </td>
+              <td>
+                <ModifyInputField
+                  id="allowList"
+                  name={item.name}
+                  defaultValue={item.allow_list?.join(",")}
+                />
+              </td>
+              <td>
+                <ModifyInputField
+                  id="waitList"
+                  name={item.name}
+                  defaultValue={item.wait_list?.join(",")}
+                />
+              </td>
+              <td>
+                <ModifyInputField
+                  id="owner"
+                  name={item.name}
+                  defaultValue={item.owner}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -64,56 +92,6 @@ export default async function FeatureFlagPage() {
   };
 
   const featureFlags = (await getAllFeatureFlags()) || null;
-
-  const AddFeatureFlag = () => {
-    /*
-    const newFlag = {
-      name: "",
-      isEnabled: true,
-      allowList: [],
-      owner: "",
-    } as FeatureFlag;
-
-    addFeatureFlag(newFlag)
-      .then((res) => console.debug(res))
-      .catch((ex) => console.error(ex));
-    */
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Enabled</th>
-            <th>Dependencies</th>
-            <th>Allow List</th>
-            <th>Wait List</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input />
-            </td>
-            <td>
-              <input type="checkbox" />
-            </td>
-            <td>
-              <input />
-            </td>
-            <td>
-              <input />
-            </td>
-            <td>
-              <input />
-            </td>
-            <td>
-              <button name="Add">Add</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    );
-  };
 
   return (
     <div className={styles.wrapper}>
