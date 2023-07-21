@@ -212,7 +212,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     <>
       <div className={styles.filterHeaderWrapper}>
         <ul className={styles.filterHeaderList}>
-          <li>
+          <li className={styles.exposureImageWrapper}>
             <button
               className={styles.filterBtn}
               ref={filterBtnRef}

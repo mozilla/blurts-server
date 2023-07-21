@@ -76,8 +76,8 @@ open-in-new-tab-alt = Open link in a new tab
 
 # Status Pill
 
-status-pill-action-needed = Action Needed
-status-pill-progress = In Progress
+status-pill-action-needed = Action needed
+status-pill-progress = In progress
 status-pill-fixed = Fixed
 
 # Exposure Card
@@ -103,7 +103,7 @@ exposure-card-description-info-for-sale-part-two = Remove this profile to protec
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link>
 exposure-card-description-data-breach-part-two = We’ll walk you through the steps to fix it.
-exposure-card-your-exposed-info = Your exposed info
+exposure-card-your-exposed-info = Your exposed info:
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
 exposure-card-cta = Let’s fix it

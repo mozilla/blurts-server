@@ -45,6 +45,17 @@
     justify-content: space-between;
     height: 30px; // fixed height to standardize image/icon heights
 
+    .fallbackLogo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50px;
+      color: black;
+      font: $text-title-3xs;
+    }
+
     dd {
       display: flex;
       align-items: center;
@@ -53,17 +64,30 @@
         display: none;
       }
 
+      .exposureCompanyTitle {
+        font: $text-body-sm;
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
       @media screen and (min-width: $screen-lg) {
         flex: 1 1 0%;
+
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
 
         &.hideOnMobile {
           display: block;
         }
       }
 
-      .exposureImage {
-        max-width: 120px;
-        height: 100%;
+      .exposureImageWrapper {
+        .exposureImage {
+          height: 100%;
+        }
       }
     }
   }
@@ -101,6 +125,26 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
+
+        @media screen and (min-width: $screen-lg) {
+          flex: 1 1 0;
+
+          .fixItBtn {
+            flex-shrink: 0;
+          }
+        }
+
+        .exposedInfoTitle {
+          @media screen and (min-width: $screen-lg) {
+            align-self: center;
+            flex: 0 0 90px; // fix width of categories title
+          }
+
+          @media screen and (min-width: $screen-xl) {
+            align-self: center;
+            flex: 0 0 150px;
+          }
+        }
       }
 
       @media screen and (min-width: $screen-lg) {
@@ -121,14 +165,20 @@
         margin-left: 0;
         padding-left: 0;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: $spacing-sm;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: $spacing-sm;
+
+        @media screen and (min-width: $screen-sm) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
 
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: $layout-xs;
+          flex-wrap: wrap;
+          justify-content: flex-start;
         }
 
         .detailsFoundItem {

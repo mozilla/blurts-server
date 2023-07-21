@@ -238,6 +238,7 @@ $text-body-xs: 400 clamp(10px, 0.975svw, 12px) / 1.5 var(--font-inter),
   sans-serif;
 
 $tab-bar-height: 100px;
+$width-first-column-filter-bar: 50px;
 
 @mixin visually-hidden {
   // These styles are taken from
