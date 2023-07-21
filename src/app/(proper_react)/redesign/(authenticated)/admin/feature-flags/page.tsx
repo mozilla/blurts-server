@@ -56,7 +56,6 @@ export default async function FeatureFlagPage() {
                 {item.is_enabled}
               </td>
               <td>
-                {" "}
                 <ModifyInputField
                   id="dependencies"
                   name={item.name}
