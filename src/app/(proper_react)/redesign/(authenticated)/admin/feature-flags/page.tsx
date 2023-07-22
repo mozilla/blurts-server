@@ -5,13 +5,13 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
-import { AddFeatureFlag } from "./AddFeatureFlag";
-import { ToggleFlagEnabled } from "./ToggleFlagEnabled";
+import { AddFeatureFlag } from "./components/AddFeatureFlag";
+import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
-import { ModifyInputField } from "./ModifyInputField";
+import { ModifyInputField } from "./components/ModifyInputField";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
