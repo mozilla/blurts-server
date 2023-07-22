@@ -51,6 +51,10 @@
       @media screen and (min-width: $screen-lg) {
         flex: 1 1 0%;
 
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
+
         &.hideOnMobile {
           display: flex;
         }
