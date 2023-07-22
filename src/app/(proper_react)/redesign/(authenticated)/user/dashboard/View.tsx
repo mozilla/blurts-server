@@ -6,7 +6,6 @@
 
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
-import TwitterImage from "../../../../../components/client/assets/twitter-icon.png";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
@@ -27,7 +26,8 @@ import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
-  userScannedResults?: ScanResult[];
+  isUserScannedResults: boolean;
+  userScannedResults: ScanResult[];
   locale: string;
 };
 
@@ -61,13 +61,14 @@ export const View = (props: Props) => {
             className={styles.exposureListItem}
           >
             <ExposureCard
-              exposureImg={TwitterImage}
               exposureData={breach}
               exposureName={breach.Name}
-              exposureDetailsLink={""}
+              fromEmail={verifiedEmail.email}
+              exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
               dateFound={breach.AddedDate}
-              statusPillType={"fixed"}
+              statusPillType="needAction"
               locale={props.locale}
+              color={getRandomLightNebulaColor(breach.Name)}
             />
           </li>
         );
@@ -83,7 +84,7 @@ export const View = (props: Props) => {
     (elem: BundledVerifiedEmails) => elem.breaches
   );
   const scannedResultsDataArray =
-    props.userScannedResults?.map((elem: ScanResult) => elem) || [];
+    props.userScannedResults.map((elem: ScanResult) => elem) || [];
 
   // Merge exposure cards
   const combinedArray = [
@@ -158,32 +159,46 @@ export const View = (props: Props) => {
 
   const exposureCardElems = filteredExposures.map(
     (exposure: ScanResult | HibpLikeDbBreach, index) => {
+      let email;
+      // Get the email assosciated with breach
+      if (!isScanResult(exposure)) {
+        props.userBreaches.breachesData.verifiedEmails.forEach(
+          (verifiedEmail) => {
+            if (
+              verifiedEmail.breaches.some((breach) => breach.Id === exposure.Id)
+            ) {
+              email = verifiedEmail.email;
+            }
+          }
+        );
+      }
       return (
         <>
           {isScanResult(exposure) ? (
             // Scanned result
             <li key={index} className={styles.exposureListItem}>
               <ExposureCard
-                exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.data_broker}
-                exposureDetailsLink={""}
+                exposureDetailsLink={exposure.link}
                 dateFound={dateObject(exposure.created_at)}
-                statusPillType={"fixed"}
+                statusPillType="needAction"
                 locale={props.locale}
+                color={getRandomLightNebulaColor(exposure.data_broker)}
               />
             </li>
           ) : (
             // Breaches result
             <li key={index} className={styles.exposureListItem}>
               <ExposureCard
-                exposureImg={TwitterImage}
                 exposureData={exposure}
                 exposureName={exposure.Name}
+                fromEmail={email}
                 exposureDetailsLink={""}
                 dateFound={exposure.AddedDate}
-                statusPillType={"fixed"}
+                statusPillType="needAction"
                 locale={props.locale}
+                color={getRandomLightNebulaColor(exposure.Name)}
               />
             </li>
           )}
@@ -218,10 +233,58 @@ export const View = (props: Props) => {
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
-            {props.userScannedResults ? exposureCardElems : breachExposureCards}
+            {props.isUserScannedResults
+              ? exposureCardElems
+              : breachExposureCards}
           </ul>
         </section>
       </div>
     </div>
   );
 };
+
+// Same logic as breachLogo.js
+function getRandomLightNebulaColor(name: string) {
+  const colors = [
+    "#C689FF",
+    "#D9BFFF",
+    "#AB71FF",
+    "#E7DFFF",
+    "#AB71FF",
+    "#3FE1B0",
+    "#54FFBD",
+    "#88FFD1",
+    "#B3FFE3",
+    "#D1FFEE",
+    "#F770FF",
+    "#F68FFF",
+    "#F6B8FF",
+    "#00B3F4",
+    "#00DDFF",
+    "#80EBFF",
+    "#FF8450",
+    "#FFA266",
+    "#FFB587",
+    "#FFD5B2",
+    "#FF848B",
+    "#FF9AA2",
+    "#FFBDC5",
+    "#FF8AC5",
+    "#FFB4DB",
+  ];
+
+  const charValues = name.split("").map((letter) => letter.codePointAt(0));
+
+  const charSum = charValues.reduce((sum: number | undefined, codePoint) => {
+    if (codePoint === undefined) return sum;
+    if (sum === undefined) return codePoint;
+    return sum + codePoint;
+  }, undefined);
+
+  if (charSum === undefined) {
+    return colors[0];
+  }
+
+  const colorIndex = charSum % colors.length;
+  return colors[colorIndex];
+}

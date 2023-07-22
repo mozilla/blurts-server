@@ -20,12 +20,16 @@ async function getOnerepScanResults(
   >;
 }
 
-async function getLatestOnerepScan(onerepProfileId: number): Promise<{
+export interface GetLatestOnerepScanResult {
   onerep_scan_id: number;
   created_at: number;
   updated_at: number;
   onerep_scan_results: { data: ScanResult[] } | null;
-} | null> {
+}
+
+async function getLatestOnerepScan(
+  onerepProfileId: number
+): Promise<GetLatestOnerepScanResult | null> {
   return (
     await knex("onerep_scans")
       .select(
