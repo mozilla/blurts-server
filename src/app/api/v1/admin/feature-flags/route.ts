@@ -66,7 +66,7 @@ export async function PUT(req: NextRequest) {
       const reqBody = (await req.json()) as FeatureFlagPutRequest;
       // if toggle request
       if (reqBody.isEnabled !== undefined && reqBody.isEnabled) {
-        await enableFeatureFlagByName(reqBody.name);
+        await enableFeatureFlagByName(reqBody.name, reqBody.isEnabled);
       } else if (reqBody.isEnabled !== undefined && !reqBody.isEnabled) {
         await disableFeatureFlagByName(reqBody.name);
       }

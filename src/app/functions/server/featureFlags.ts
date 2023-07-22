@@ -9,6 +9,7 @@ import {
 
 export async function getFlag(name: string): Promise<FeatureFlag> {
   const data = await getFeatureFlagByName(name);
+
   const flag: FeatureFlag = {
     name: data.name,
     isEnabled: data.is_enabled,
