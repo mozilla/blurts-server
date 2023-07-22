@@ -53,7 +53,8 @@ export async function GET(
         // Store scan results only for development environments.
         if (
           scan.status === "finished" &&
-          process.env.NODE_ENV === "development"
+          (process.env.NODE_ENV === "development" ||
+            process.env.APP_ENV === "heroku")
         ) {
           const allScanResults = await getAllScanResults(profileId);
           await setOnerepScanResults(profileId, scan.id, {

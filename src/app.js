@@ -24,12 +24,12 @@ import { noSearchEngineIndex } from './middleware/noSearchEngineIndex.js'
 import { RateLimitError } from './utils/error.js'
 
 const app = express()
-const isDev = AppConstants.NODE_ENV === 'dev'
+const isDev = AppConstants.NODE_ENV === 'development'
 
 // init sentry
 Sentry.init({
   dsn: AppConstants.SENTRY_DSN,
-  environment: AppConstants.NODE_ENV,
+  environment: AppConstants.APP_ENV,
   debug: isDev,
   beforeSend (event, hint) {
     if (!hint.originalException.locales || hint.originalException.locales[0] === 'en') return event // return if no localization or localization is in english
