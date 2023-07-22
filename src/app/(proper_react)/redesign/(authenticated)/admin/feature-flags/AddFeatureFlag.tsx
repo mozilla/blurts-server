@@ -4,21 +4,52 @@
 
 "use client";
 
+import { FormEventHandler } from "react";
+import { useRouter } from "next/navigation";
+
+// TODO investigate way to harmonize this with `FeatureFlag` type
+interface FeatureFlagElement {
+  name: {
+    value: string;
+  };
+  isEnabled: {
+    value: string;
+  };
+  dependencies: {
+    value: string;
+  };
+  allowList: {
+    value: string;
+  };
+  waitList: {
+    value: string;
+  };
+  owner: {
+    value: string;
+  };
+}
+
 export const AddFeatureFlag = () => {
-  // @ts-ignore FIXME determine correct event type
-  const handleSubmit = (event) => {
+  const router = useRouter();
+
+  const handleSubmit = (
+    event: FormEventHandler<HTMLFormElement> & {
+      target: FeatureFlagElement;
+    }
+  ) => {
     event.preventDefault();
 
     const data = {
-      name: event?.target?.name.value,
-      isEnabled: event?.target?.isEnabled.value ? true : false,
-      dependencies: event?.target?.dependencies.value.split(","),
-      allowList: event?.target?.allowList.value.split(","),
-      waitList: event?.target?.waitList.value.split(","),
-      owner: event?.target?.owner.value,
+      name: event.target.name.value,
+      isEnabled: event.target.isEnabled ? true : false,
+      dependencies: event.target.dependencies.value.split(","),
+      allowList: event.target.allowList.value.split(","),
+      waitList: event.target.waitList.value.split(","),
+      owner: event.target.owner.value,
     };
 
     const endpoint = "/api/v1/admin/feature-flags" as string;
+    console.debug("body:", data);
 
     const options = {
       method: "POST",
@@ -28,11 +59,10 @@ export const AddFeatureFlag = () => {
       body: JSON.stringify(data),
     };
 
-    // Send the form data to our forms API on Vercel and get a response.
     fetch(endpoint, options)
       .then((response) => {
         if (response.ok) {
-          window.location.reload(); // FIXME re-render component w/o page reload
+          router.refresh();
         }
       })
       .catch((ex) => console.error(ex));
