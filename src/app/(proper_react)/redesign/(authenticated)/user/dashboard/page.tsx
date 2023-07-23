@@ -35,7 +35,8 @@ export default async function DashboardPage() {
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const breaches = await getUserBreaches({ user: session.user });
-  const summary = await dashboardSummary(session.user);
+  const summary = dashboardSummary(scanResultItems, breaches);
+  console.debug({ summary });
   const locale = getLocale();
 
   return (

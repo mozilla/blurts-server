@@ -2,66 +2,152 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { Session } from "next-auth";
 import { BreachDataTypes } from "../../../utils/breachResolution";
-import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
-import { getBreaches } from "./getBreaches";
-import { getAllEmailsAndBreaches } from "../../../../src/utils/breaches.js";
-import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
 
 export interface DashboardSummary {
-  data_breach_total_num: number;
-  data_broker_total_num: number;
-  total_exposures: number;
-  exposures_types: {
+  dataBreachTotalNum: number;
+  dataBrokerTotalNum: number;
+  totalExposures: number;
+  allExposures: {
     // shared
-    email_addresses: number;
-    phone_numbers: number;
+    emailAddresses: number;
+    phoneNumbers: number;
 
     // data brokers
-    address?: number;
-    family_members?: number;
-    full_names?: number;
+    addresses: number;
+    familyMembers: number;
+    fullNames: number;
 
     // data breaches
-    social_security_numbers?: number;
-    ip_addresses?: number;
-    passwords?: number;
-    credit_card_numbers?: number;
-    debit_card_numbers?: number;
-    pin_numbers?: number;
-    security_questions?: number;
+    socialSecurityNumbers: number;
+    ipAddresses: number;
+    passwords: number;
+    creditCardNumbers: number;
+    pinNumbers: number;
+    securityQuestions: number;
   };
+  sanitizedExposures: Array<Record<string, number>>;
 }
 
-export async function dashboardSummary(
-  user: Session["user"]
-): Promise<DashboardSummary> {
+export function dashboardSummary(
+  scannedResults,
+  { breachesData }
+): DashboardSummary {
   const summary: DashboardSummary = {
-    data_breach_total_num: 0,
-    data_broker_total_num: 0,
-    total_exposures: 0,
-    exposures_types: {
-      email_addresses: 0,
-      phone_numbers: 0,
+    dataBreachTotalNum: 0,
+    dataBrokerTotalNum: 0,
+    totalExposures: 0,
+    allExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pinNumbers: 0,
+      securityQuestions: 0,
     },
+    sanitizedExposures: [],
   };
 
-  // get breaches data
-  const subscriber = await getSubscriberByEmail(user.email);
-  const allBreaches = await getBreaches();
-  const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
-  console.debug(JSON.stringify(breachesData));
-
-  // get scanned results from data brokers
-  const scannedResults = await getLatestOnerepScan(
-    user.subscriber?.onerep_profile_id as number
-  );
-  console.debug(JSON.stringify(scannedResults));
-
   // calculate broker summary from scanned results
+  if (scannedResults) {
+    scannedResults.forEach((r) => {
+      // count email
+      summary.totalExposures += r.emails.length;
+      summary.allExposures.emailAddresses += r.emails.length;
+
+      // count phones
+      summary.totalExposures += r.phones.length;
+      summary.allExposures.phoneNumbers += r.phones.length;
+
+      // count physical addresses
+      summary.totalExposures += r.addresses.length;
+      summary.allExposures.addresses += r.addresses.length;
+
+      // count relatives
+      summary.totalExposures += r.relatives.length;
+      summary.allExposures.familyMembers += r.relatives.length;
+
+      // count full name
+      summary.totalExposures++;
+      summary.allExposures.fullNames++;
+    });
+  }
 
   // calculate breaches summary from breaches data
+  if (breachesData.verifiedEmails) {
+    for (const emailBreaches of breachesData.verifiedEmails) {
+      const breaches = emailBreaches.breaches;
+      breaches.forEach((b) => {
+        const dataClasses = b.DataClasses;
 
+        // count password
+        if (dataClasses?.includes(BreachDataTypes.Passwords)) {
+          summary.totalExposures++;
+          summary.allExposures.passwords++;
+        }
+
+        // count ssn
+        if (dataClasses?.includes(BreachDataTypes.SSN)) {
+          summary.totalExposures++;
+          summary.allExposures.socialSecurityNumbers++;
+        }
+
+        // count IP
+        if (dataClasses?.includes(BreachDataTypes.IP)) {
+          summary.totalExposures++;
+          summary.allExposures.ipAddresses++;
+        }
+
+        // count credit card
+        if (dataClasses?.includes(BreachDataTypes.CreditCard)) {
+          summary.totalExposures++;
+          summary.allExposures.creditCardNumbers++;
+        }
+
+        // count pin numbers
+        if (dataClasses?.includes(BreachDataTypes.PIN)) {
+          summary.totalExposures++;
+          summary.allExposures.pinNumbers++;
+        }
+
+        // count security questions
+        if (dataClasses?.includes(BreachDataTypes.SecurityQuestions)) {
+          summary.totalExposures++;
+          summary.allExposures.securityQuestions++;
+        }
+      });
+    }
+  }
+
+  return sanitizeExposures(summary);
+}
+
+function sanitizeExposures(summary: DashboardSummary): DashboardSummary {
+  const { allExposures } = summary;
+  const sortedExposures = Object.entries(allExposures).sort(
+    (a, b) => b[1] - a[1]
+  );
+
+  const other =
+    summary.totalExposures -
+    sortedExposures.slice(0, 4).reduce((acc, cur) => acc + cur[1], 0);
+
+  const sanitizedExposures = sortedExposures
+    .map((e) => {
+      const key = e[0];
+      return { [key]: e[1] };
+    })
+    .splice(0, 4);
+  sanitizedExposures.push({ other });
+
+  summary.sanitizedExposures = sanitizedExposures;
+  console.debug({ sanitizedExposures });
   return summary;
 }
