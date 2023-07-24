@@ -44,10 +44,10 @@ export const AddFeatureFlag = () => {
     const data = {
       name: eventTarget.name.value,
       isEnabled: eventTarget.isEnabled.checked ? true : false,
-      dependencies: event.target.dependencies.value.split(","),
-      allowList: event.target.allowList.value.split(","),
-      waitList: event.target.waitList.value.split(","),
-      owner: event.target.owner.value,
+      dependencies: eventTarget.dependencies.value.split(","),
+      allowList: eventTarget.allowList.value.split(","),
+      waitList: eventTarget.waitList.value.split(","),
+      owner: eventTarget.owner.value,
     };
 
     const endpoint = "/api/v1/admin/feature-flags" as string;
