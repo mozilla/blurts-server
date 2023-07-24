@@ -41,8 +41,6 @@ export const AddFeatureFlag = () => {
 
     const eventTarget: FeatureFlagElement = event.target;
 
-    console.debug(eventTarget);
-
     const data = {
       name: eventTarget.name.value,
       isEnabled: eventTarget.isEnabled.checked ? true : false,
@@ -67,6 +65,8 @@ export const AddFeatureFlag = () => {
         if (response.ok) {
           router.refresh();
         }
+        // @ts-ignore convince TS this is a <form> element
+        eventTarget.reset();
       })
       .catch((ex) => console.error(ex));
   };
