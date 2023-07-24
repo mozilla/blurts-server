@@ -30,6 +30,24 @@ export interface DashboardSummary {
   sanitizedExposures: Array<Record<string, number>>;
 }
 
+const exposureKeyMap: Record<string, string> = {
+  emailAddresses: "email-addresses",
+  phoneNumbers: "phone-numbers",
+
+  // data brokers
+  addresses: "physical-addresses",
+  familyMembers: "family-members-names",
+  fullNames: "full-names",
+
+  // data breaches
+  socialSecurityNumbers: "social-security-numbers",
+  ipAddresses: "ip-addresses",
+  passwords: "passwords",
+  creditCardNumbers: "credit-cards",
+  pinNumbers: "pins",
+  securityQuestions: "security-questions-and-answers",
+};
+
 export function dashboardSummary(
   scannedResults: ScanResult[],
   { breachesData }: UserBreaches
@@ -137,7 +155,7 @@ function sanitizeExposures(summary: DashboardSummary): DashboardSummary {
   const sanitizedExposures = Object.entries(allExposures)
     .sort((a, b) => b[1] - a[1])
     .map((e) => {
-      const key = e[0];
+      const key = exposureKeyMap[e[0]];
       return { [key]: e[1] };
     })
     .splice(0, NUM_OF_TOP_EXPOSURES);
