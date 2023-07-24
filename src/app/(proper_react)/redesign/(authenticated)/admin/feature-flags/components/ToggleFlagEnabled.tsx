@@ -30,7 +30,7 @@ export const ToggleFlagEnabled = (props: {
     const name = eventTarget.name;
     const isEnabled = eventTarget.checked ? true : false;
 
-    const endpoint = `/api/v1/admin/feature-flags/${name }`;
+    const endpoint = `/api/v1/admin/feature-flags/${name}`;
     const options = {
       method: "POST",
       headers: {

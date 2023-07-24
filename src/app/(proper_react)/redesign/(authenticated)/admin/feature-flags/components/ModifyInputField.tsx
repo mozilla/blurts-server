@@ -34,7 +34,7 @@ export const ModifyInputField = (props: {
     const name = event.target.name.value;
     const value = event.target.value.value;
 
-    const endpoint = `/api/v1/admin/feature-flags/${name }`;
+    const endpoint = `/api/v1/admin/feature-flags/${name}`;
 
     const options = {
       method: "POST",
