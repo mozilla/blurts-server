@@ -3,7 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { BreachDataTypes } from "../../../utils/breachResolution";
-
+import type { UserBreaches } from "./getUserBreaches";
+import type { ScanResult } from "./onerep";
 export interface DashboardSummary {
   dataBreachTotalNum: number;
   dataBrokerTotalNum: number;
@@ -30,8 +31,8 @@ export interface DashboardSummary {
 }
 
 export function dashboardSummary(
-  scannedResults,
-  { breachesData }
+  scannedResults: ScanResult[],
+  { breachesData }: UserBreaches
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
