@@ -4,7 +4,7 @@
 
 "use client";
 
-import React, { ReactElement, useState } from "react";
+import React, { CSSProperties, ReactElement, useState } from "react";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill, StatusPillType } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
@@ -50,18 +50,21 @@ export function isScanResult(
 }
 
 export type ExposureCardProps = {
-  exposureImg: StaticImageData;
+  exposureImg?: StaticImageData;
   exposureName: string;
   exposureData: Exposure;
   exposureDetailsLink: string;
   dateFound: Date;
   statusPillType: StatusPillType;
   locale: string;
+  fromEmail?: string;
+  color: string;
 };
 
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
+  email: string;
 };
 
 type ScannedExposureCategoryProps = {
@@ -78,16 +81,20 @@ export const ExposureCard = (props: ExposureCardProps) => {
     exposureDetailsLink,
     statusPillType,
     locale,
+    color,
   } = props;
 
   const l10n = useL10n();
   const [exposureCardExpanded, setExposureCardExpanded] = useState(false);
+
   const dateFormatter = new Intl.DateTimeFormat(locale, {
     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "medium",
   });
   const exposureCategoriesArray: React.ReactElement[] = [];
   const exposureItem = props.exposureData;
+
+  const verifiedEmailofBreach = props.fromEmail;
 
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
     const description = l10n.getString("exposure-card-num-found", {
@@ -100,7 +107,11 @@ export const ExposureCard = (props: ExposureCardProps) => {
           <span className={styles.exposureTypeIcon}>{props.icon}</span>
           {props.exposureCategoryLabel}
         </dt>
-        <dd>{description}</dd>
+        <dd>
+          {props.email === "email-addresses"
+            ? verifiedEmailofBreach
+            : description}
+        </dd>
       </div>
     );
   };
@@ -181,6 +192,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<EmailIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-email")}
           />
@@ -189,6 +201,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<PasswordIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-password")}
           />
@@ -197,6 +210,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<PhoneIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
           />
@@ -205,6 +219,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
+            email={item}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
           />
@@ -215,8 +230,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-            exposureCategoryLabel={formatOtherBreachCategoriesLabel(item)} // Other exposure categories labels not localized for now
+            email={item}
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
+            exposureCategoryLabel={l10n.getString(item)} // categories are localized in data-classes.ftl
           />
         );
       }
@@ -232,27 +248,48 @@ export const ExposureCard = (props: ExposureCardProps) => {
     return <>{listItems}</>;
   };
 
+  function fallbackLogo(exposureId: string) {
+    const firstLetter = exposureId?.[0]?.toUpperCase() || "";
+
+    return (
+      <span
+        className={styles.fallbackLogo}
+        style={{ background: color } as CSSProperties}
+      >
+        {firstLetter}
+      </span>
+    );
+  }
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
         <div className={styles.exposureHeader}>
           <dl className={styles.exposureHeaderList}>
             <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-company-logo")}
+              {l10n.getString("exposure-card-label-company-logo")}
             </dt>
             <dd
-              className={`${styles.exposureImageWrapper} ${styles.hideOnMobile}`}
+              className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
-              <Image
-                className={styles.exposureImage}
-                alt=""
-                src={exposureImg}
-              />
+              {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
+              {exposureImg ? (
+                <Image
+                  className={styles.exposureImage}
+                  alt=""
+                  src={exposureImg}
+                />
+              ) : (
+                <>{fallbackLogo(props.exposureName)}</>
+              )}
             </dd>
             <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-company")}
+              {l10n.getString("exposure-card-label-company")}
             </dt>
-            <dd>{exposureName}</dd>
+            <dd>
+              <span className={styles.exposureCompanyTitle}>
+                {exposureName}
+              </span>
+            </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-exposure-type")}
             </dt>
@@ -343,7 +380,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                       height="13"
                     />
                   </span>
-                </a>{" "}
+                </a>
                 {l10n.getString(
                   "exposure-card-description-data-breach-part-two"
                 )}
@@ -352,7 +389,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
           )}
           <div className={styles.exposedInfoContainer}>
             <div className={styles.exposedInfoWrapper}>
-              <p>{l10n.getString("exposure-card-your-exposed-info")}:</p>
+              <p className={styles.exposedInfoTitle}>
+                {l10n.getString("exposure-card-your-exposed-info")}
+              </p>
               <dl>
                 <ExposureCategoriesListElem />
               </dl>
@@ -370,9 +409,3 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   return exposureCard;
 };
-
-function formatOtherBreachCategoriesLabel(sentence: string): string {
-  return sentence
-    .replaceAll("-", " ")
-    .replace(/^[a-z]/, (i) => i.toUpperCase());
-}

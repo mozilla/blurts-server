@@ -6,7 +6,6 @@
 
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
-import TwitterImage from "../../../../../components/client/assets/twitter-icon.png";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
@@ -62,13 +61,14 @@ export const View = (props: Props) => {
             className={styles.exposureListItem}
           >
             <ExposureCard
-              exposureImg={TwitterImage}
               exposureData={breach}
               exposureName={breach.Name}
+              fromEmail={verifiedEmail.email}
               exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
               dateFound={breach.AddedDate}
-              statusPillType={"needAction"}
+              statusPillType="needAction"
               locale={props.locale}
+              color={getRandomLightNebulaColor(breach.Name)}
             />
           </li>
         );
@@ -158,34 +158,49 @@ export const View = (props: Props) => {
   );
 
   const exposureCardElems = filteredExposures.map(
-    (exposure: ScanResult | HibpLikeDbBreach) =>
-      isScanResult(exposure) ? (
+    (exposure: ScanResult | HibpLikeDbBreach) => {
+      let email;
+      // Get the email assosciated with breach
+      if (!isScanResult(exposure)) {
+        props.userBreaches.breachesData.verifiedEmails.forEach(
+          (verifiedEmail) => {
+            if (
+              verifiedEmail.breaches.some((breach) => breach.Id === exposure.Id)
+            ) {
+              email = verifiedEmail.email;
+            }
+          }
+        );
+      }
+      return isScanResult(exposure) ? (
         // Scanned result
         <li key={exposure.id} className={styles.exposureListItem}>
           <ExposureCard
-            exposureImg={TwitterImage}
             exposureData={exposure}
             exposureName={exposure.data_broker}
             exposureDetailsLink={exposure.link}
             dateFound={dateObject(exposure.created_at)}
-            statusPillType={"needAction"}
+            statusPillType="needAction"
             locale={props.locale}
+            color={getRandomLightNebulaColor(exposure.data_broker)}
           />
         </li>
       ) : (
         // Breaches result
         <li key={exposure.Id} className={styles.exposureListItem}>
           <ExposureCard
-            exposureImg={TwitterImage}
             exposureData={exposure}
             exposureName={exposure.Name}
+            fromEmail={email}
             exposureDetailsLink={""}
             dateFound={exposure.AddedDate}
-            statusPillType={"needAction"}
+            statusPillType="needAction"
             locale={props.locale}
+            color={getRandomLightNebulaColor(exposure.Name)}
           />
         </li>
-      )
+      );
+    }
   );
 
   return (
@@ -223,3 +238,49 @@ export const View = (props: Props) => {
     </div>
   );
 };
+
+// Same logic as breachLogo.js
+function getRandomLightNebulaColor(name: string) {
+  const colors = [
+    "#C689FF",
+    "#D9BFFF",
+    "#AB71FF",
+    "#E7DFFF",
+    "#AB71FF",
+    "#3FE1B0",
+    "#54FFBD",
+    "#88FFD1",
+    "#B3FFE3",
+    "#D1FFEE",
+    "#F770FF",
+    "#F68FFF",
+    "#F6B8FF",
+    "#00B3F4",
+    "#00DDFF",
+    "#80EBFF",
+    "#FF8450",
+    "#FFA266",
+    "#FFB587",
+    "#FFD5B2",
+    "#FF848B",
+    "#FF9AA2",
+    "#FFBDC5",
+    "#FF8AC5",
+    "#FFB4DB",
+  ];
+
+  const charValues = name.split("").map((letter) => letter.codePointAt(0));
+
+  const charSum = charValues.reduce((sum: number | undefined, codePoint) => {
+    if (codePoint === undefined) return sum;
+    if (sum === undefined) return codePoint;
+    return sum + codePoint;
+  }, undefined);
+
+  if (charSum === undefined) {
+    return colors[0];
+  }
+
+  const colorIndex = charSum % colors.length;
+  return colors[colorIndex];
+}
