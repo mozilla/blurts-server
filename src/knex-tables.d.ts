@@ -3,6 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Knex } from "knex";
+import { ScanResult } from "./app/functions/server/onerep";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -142,6 +143,15 @@ declare module "knex/types/tables" {
     "domain" | "description"
   >;
   type BreachAutoInsertedColumns = Extract<keyof BreachRow, "id">;
+
+  interface OnerepScanRow {
+    id: number;
+    onerep_profile_id: number;
+    onerep_scan_id: number;
+    onerep_scan_results: ScanResult;
+    created_at: Date;
+    updated_at: Date;
+  }
 
   interface Tables {
     feature_flags: Knex.CompositeTableType<

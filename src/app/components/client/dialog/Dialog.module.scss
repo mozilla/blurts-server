@@ -13,8 +13,9 @@
   gap: $spacing-xl;
   border-radius: $border-radius-md;
   padding: $layout-sm;
+
   @media screen and (min-width: $screen-lg) {
-    padding: $layout-xl;
+    padding: $layout-lg $layout-xl;
   }
 
   .dismissButton {
@@ -41,5 +42,12 @@
     font: $text-title-2xs;
     text-align: center;
     color: $color-grey-50;
+  }
+
+  ul,
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
   }
 }

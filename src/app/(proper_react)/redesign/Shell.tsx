@@ -25,7 +25,10 @@ export const Shell = (props: Props) => {
   return (
     <MobileShell session={props.session}>
       <div className={styles.wrapper}>
-        <nav className={styles.mainMenu}>
+        <nav
+          className={styles.mainMenu}
+          aria-label={l10n.getString("main-nav-label")}
+        >
           <Link href="/" className={styles.homeLink}>
             <Image
               src={monitorLogo}

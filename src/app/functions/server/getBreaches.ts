@@ -13,7 +13,7 @@ import { upsertBreaches } from "../../../db/tables/breaches.js";
 import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
 const log = mozlog("hibp");
-let breaches: HibpLikeDbBreach[];
+let breaches: Array<Breach | HibpLikeDbBreach>;
 
 export async function getBreaches() {
   if (breaches) {

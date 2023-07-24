@@ -9,28 +9,14 @@ import "../src/app/globals.css";
 import { L10nProvider } from "../src/contextProviders/localization";
 import { metropolis } from "../src/app/fonts/Metropolis/metropolis";
 import { ReactAriaI18nProvider } from "../src/contextProviders/react-aria";
+import { getEnL10nBundlesSync } from "../src/app/functions/server/mockL10n";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
-function loadL10nModule() {
-  if (process.env.NODE_ENV === "test") {
-    // In Jest, loading this module throws errors because it uses
-    // require.context(). Since we don't need to look at actual strings in our
-    // unit tests, we can just skip loading the bundles.
-    return {
-      getL10nBundles: () => [],
-      getLocale: () => "en",
-    };
-  }
-
-  return require("../src/app/functions/server/l10n");
-}
 
 const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
   storyFn
 ) => {
-  const { getL10nBundles, getLocale } = loadL10nModule();
-  const l10nBundles = getL10nBundles();
+  const l10nBundles = getEnL10nBundlesSync();
 
   useEffect(() => {
     // We have to add these classes to the body, rather than simply wrapping the
@@ -44,9 +30,7 @@ const AppDecorator: Exclude<Preview["decorators"], undefined>[0] = (
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
-      <ReactAriaI18nProvider locale={getLocale(l10nBundles)}>
-        {storyFn()}
-      </ReactAriaI18nProvider>
+      <ReactAriaI18nProvider locale="en">{storyFn()}</ReactAriaI18nProvider>
     </L10nProvider>
   );
 };

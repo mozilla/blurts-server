@@ -4,9 +4,9 @@
 
 import AppConstants from '../appConstants.js'
 
-const { NODE_ENV } = AppConstants
-const noindexEnvs = ['dev', 'heroku', 'stage']
-const noSearchEngineIndex = !noindexEnvs.includes(NODE_ENV)
+const { APP_ENV } = AppConstants
+const noindexEnvs = ['local', 'heroku', 'stage']
+const noSearchEngineIndex = !noindexEnvs.includes(APP_ENV)
   ? (_req, _res, next) => next()
   : (_req, res, next) => {
       res.header('X-Robots-Tag', 'noindex')

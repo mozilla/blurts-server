@@ -131,13 +131,3 @@ export interface BreachResolutionRequest {
   breachId: number;
   resolutionsChecked: Array<keyof HibpBreachDataTypes>;
 }
-
-export interface UserBreaches {
-  breachesData: {
-    verifiedEmails: Array<VerifiedEmail>;
-    unverifiedEmails: Array;
-  };
-  emailVerifiedCount: number;
-  emailTotalCount: number;
-  emailSelectIndex: number;
-}

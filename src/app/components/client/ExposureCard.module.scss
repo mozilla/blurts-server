@@ -2,19 +2,19 @@
 
 .exposureCard {
   // Variables
-  --exposureDetailsIconWidth: 25px;
+  --exposureDetailsIconWidth: 28px;
 
   font: $text-body-sm;
+  background-color: $color-white;
   border: 2px solid rgba($color-purple-70, 0.2);
   border-radius: $border-radius-md;
-  max-width: $content-xl;
 
   .exposureHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: $spacing-sm $spacing-md;
+    padding: $spacing-md $spacing-md;
     gap: $layout-xs;
 
     @media screen and (min-width: $screen-lg) {
@@ -22,6 +22,7 @@
     }
 
     .chevron {
+      flex-shrink: 0;
       all: unset;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
@@ -44,6 +45,17 @@
     justify-content: space-between;
     height: 30px; // fixed height to standardize image/icon heights
 
+    .fallbackLogo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+      border-radius: 50px;
+      color: black;
+      font: $text-title-3xs;
+    }
+
     dd {
       display: flex;
       align-items: center;
@@ -52,17 +64,30 @@
         display: none;
       }
 
+      .exposureCompanyTitle {
+        font: $text-body-sm;
+        max-width: 200px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
       @media screen and (min-width: $screen-lg) {
         flex: 1 1 0%;
+
+        &.exposureImageWrapper {
+          flex: 0.2 0 $width-first-column-filter-bar;
+        }
 
         &.hideOnMobile {
           display: block;
         }
       }
 
-      .exposureImage {
-        max-width: 120px;
-        height: 100%;
+      .exposureImageWrapper {
+        .exposureImage {
+          height: 100%;
+        }
       }
     }
   }
@@ -100,6 +125,26 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
+
+        @media screen and (min-width: $screen-lg) {
+          flex: 1 1 0;
+
+          .fixItBtn {
+            flex-shrink: 0;
+          }
+        }
+
+        .exposedInfoTitle {
+          @media screen and (min-width: $screen-lg) {
+            align-self: center;
+            flex: 0 0 90px; // fix width of categories title
+          }
+
+          @media screen and (min-width: $screen-xl) {
+            align-self: center;
+            flex: 0 0 150px;
+          }
+        }
       }
 
       @media screen and (min-width: $screen-lg) {
@@ -120,26 +165,36 @@
         margin-left: 0;
         padding-left: 0;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: $spacing-sm;
+        grid-template-columns: 1fr 1fr;
+        grid-row-gap: $spacing-sm;
+
+        @media screen and (min-width: $screen-sm) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
 
         @media screen and (min-width: $screen-lg) {
           display: flex;
           flex-direction: row;
           align-items: center;
           gap: $layout-xs;
+          flex-wrap: wrap;
+          justify-content: flex-start;
         }
 
         .detailsFoundItem {
           dt {
             display: flex;
-            gap: $spacing-xs;
             align-items: center;
 
             .exposureTypeIcon {
               width: var(--exposureDetailsIconWidth);
               color: $color-purple-60;
-              margin-top: 2px;
+              display: flex;
+              justify-content: flex-start;
+
+              .secondaryFill {
+                color: $color-red-20;
+              }
             }
           }
 

@@ -11,6 +11,9 @@ export default function AdminPage() {
         <li>
           <a href="/admin/emails">Email preview</a>
         </li>
+        <li>
+          <a href="/admin/location-search">Location search</a>
+        </li>
       </ul>
     </section>
   );

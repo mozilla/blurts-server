@@ -1,0 +1,24 @@
+@import "../../tokens";
+
+.listBox {
+  list-style: none;
+  margin: 0;
+  padding: $spacing-sm 0;
+}
+
+.item {
+  background: $color-white;
+  color: color;
+  cursor: pointer;
+  outline: none;
+
+  &.isSelected {
+    background: $color-purple-10;
+  }
+  &.isFocused {
+    background: $color-grey-10;
+  }
+  &.isDisabled {
+    color: $color-grey-30;
+  }
+}

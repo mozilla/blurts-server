@@ -96,7 +96,7 @@ export const ProgressCard = (props: Props) => {
       </p>
       <div className={styles.confirmButtonWrapper}>
         <Button
-          type="primary"
+          variant="primary"
           onClick={() => explainerDialogState.close()}
           autoFocus={true}
           className={styles.startButton}
