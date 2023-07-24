@@ -269,16 +269,12 @@ export async function isEligible() {
   const flagName = "FreeBrokerScan";
   const flag = await getFlag(flagName);
 
-  if (!flag) {
+  if (
+    !flag ||
+    !flag.isEnabled ||
+    flag.allowList?.includes(session.user.email)
+  ) {
     return false;
-  }
-
-  if (!flag.isEnabled) {
-    throw new Error("Flag is not enabled");
-  }
-
-  if (!flag.allowList?.includes(session.user.email)) {
-    throw new Error("User is not on allow list for feature");
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);
