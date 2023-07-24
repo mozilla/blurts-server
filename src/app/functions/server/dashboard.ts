@@ -82,6 +82,7 @@ export function dashboardSummary(
   }
 
   // calculate breaches summary from breaches data
+  // TODO: Modify after MNTOR-1947: Refactor user breaches object
   if (breachesData.verifiedEmails) {
     for (const emailBreaches of breachesData.verifiedEmails) {
       const breaches = emailBreaches.breaches;
