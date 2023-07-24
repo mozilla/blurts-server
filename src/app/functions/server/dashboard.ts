@@ -87,40 +87,40 @@ export function dashboardSummary(
     for (const emailBreaches of breachesData.verifiedEmails) {
       const breaches = emailBreaches.breaches;
       breaches.forEach((b) => {
-        const dataClasses = b.DataClasses;
+        const dataClasses = b.DataClasses ?? [];
 
         // count password
-        if (dataClasses?.includes(BreachDataTypes.Passwords)) {
+        if (dataClasses.includes(BreachDataTypes.Passwords)) {
           summary.totalExposures++;
           summary.allExposures.passwords++;
         }
 
         // count ssn
-        if (dataClasses?.includes(BreachDataTypes.SSN)) {
+        if (dataClasses.includes(BreachDataTypes.SSN)) {
           summary.totalExposures++;
           summary.allExposures.socialSecurityNumbers++;
         }
 
         // count IP
-        if (dataClasses?.includes(BreachDataTypes.IP)) {
+        if (dataClasses.includes(BreachDataTypes.IP)) {
           summary.totalExposures++;
           summary.allExposures.ipAddresses++;
         }
 
         // count credit card
-        if (dataClasses?.includes(BreachDataTypes.CreditCard)) {
+        if (dataClasses.includes(BreachDataTypes.CreditCard)) {
           summary.totalExposures++;
           summary.allExposures.creditCardNumbers++;
         }
 
         // count pin numbers
-        if (dataClasses?.includes(BreachDataTypes.PIN)) {
+        if (dataClasses.includes(BreachDataTypes.PIN)) {
           summary.totalExposures++;
           summary.allExposures.pinNumbers++;
         }
 
         // count security questions
-        if (dataClasses?.includes(BreachDataTypes.SecurityQuestions)) {
+        if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
           summary.totalExposures++;
           summary.allExposures.securityQuestions++;
         }
