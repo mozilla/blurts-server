@@ -290,7 +290,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               </span>
             </dd>
             <dt className={styles.visuallyHidden}>
-              {l10n.getString("exposure-card-exposure-type")}
+              {l10n.getString("exposure-card-exposure-types")}
             </dt>
             <dd className={styles.hideOnMobile}>
               <ExposureTypeEl type={exposureData} />

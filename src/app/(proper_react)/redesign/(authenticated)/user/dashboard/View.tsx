@@ -198,7 +198,7 @@ export const View = (props: Props) => {
             exposureData={exposure}
             exposureName={exposure.Name}
             fromEmail={email}
-            exposureDetailsLink={""}
+            exposureDetailsLink=""
             dateFound={exposure.AddedDate}
             statusPillType="needAction"
             locale={props.locale}
