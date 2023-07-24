@@ -26,7 +26,7 @@ export const ModifyInputField = (props: {
   const router = useRouter();
 
   const handleBlur = (
-    event: FocusEventHandler<HTMLFormElement> & {
+    event: FocusEventHandler<HTMLInputElement> & {
       target: FeatureFieldElement;
     }
   ) => {
@@ -56,7 +56,7 @@ export const ModifyInputField = (props: {
       id={props.id}
       name={props.name}
       defaultValue={props.defaultValue}
-      onBlur={handleBlur}
+      onBlur={handleBlur as unknown as FocusEventHandler<HTMLInputElement>}
     />
   );
 };

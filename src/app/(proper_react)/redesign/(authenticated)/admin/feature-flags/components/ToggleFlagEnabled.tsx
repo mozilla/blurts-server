@@ -20,7 +20,7 @@ export const ToggleFlagEnabled = (props: {
   const router = useRouter();
 
   const handleChange = (
-    event: ChangeEventHandler<HTMLFormElement> & {
+    event: ChangeEventHandler<HTMLInputElement> & {
       target: FeatureToggleElement;
     }
   ) => {
@@ -53,7 +53,7 @@ export const ToggleFlagEnabled = (props: {
       name={props.name}
       type="checkbox"
       checked={props.isEnabled}
-      onChange={handleChange}
+      onChange={handleChange as unknown as ChangeEventHandler<HTMLInputElement>}
     ></input>
   );
 };
