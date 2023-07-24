@@ -17,7 +17,7 @@ export default async function Onboarding() {
 
   const userIsEligible = await isEligible();
   if (!userIsEligible) {
-    return redirect("/redesign/user/dashboard/");
+    return redirect("/");
   }
 
   const dataBrokerCount = parseInt(
