@@ -196,7 +196,7 @@ export const View = (props: Props) => {
         >
           <ExposureCard
             exposureData={exposure}
-            exposureName={exposure.Name}
+            exposureName={exposure.Title}
             fromEmail={email}
             exposureDetailsLink=""
             dateFound={exposure.AddedDate}
