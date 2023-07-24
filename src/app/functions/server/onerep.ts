@@ -272,7 +272,7 @@ export async function isEligible() {
   if (
     !flag ||
     !flag.isEnabled ||
-    flag.allowList?.includes(session.user.email)
+    !flag.allowList?.includes(session.user.email)
   ) {
     return false;
   }
