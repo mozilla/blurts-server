@@ -132,21 +132,19 @@ export function dashboardSummary(
 }
 
 function sanitizeExposures(summary: DashboardSummary): DashboardSummary {
+  const NUM_OF_TOP_EXPOSURES = 4;
   const { allExposures } = summary;
-  const sortedExposures = Object.entries(allExposures).sort(
-    (a, b) => b[1] - a[1]
-  );
-
-  const other =
-    summary.totalExposures -
-    sortedExposures.slice(0, 4).reduce((acc, cur) => acc + cur[1], 0);
-
-  const sanitizedExposures = sortedExposures
+  const sanitizedExposures = Object.entries(allExposures)
+    .sort((a, b) => b[1] - a[1])
     .map((e) => {
       const key = e[0];
       return { [key]: e[1] };
     })
-    .splice(0, 4);
+    .splice(0, NUM_OF_TOP_EXPOSURES);
+  const other = sanitizedExposures.reduce(
+    (total, cur) => total - (Object.values(cur).pop() || 0),
+    summary.totalExposures
+  );
   sanitizedExposures.push({ other });
 
   summary.sanitizedExposures = sanitizedExposures;
