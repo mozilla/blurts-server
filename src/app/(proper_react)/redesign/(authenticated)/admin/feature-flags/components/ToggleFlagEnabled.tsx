@@ -4,6 +4,13 @@
 
 "use client";
 import { useRouter } from "next/navigation";
+import { ChangeEventHandler } from "react";
+
+interface FeatureToggleElement {
+  id: string;
+  name: string;
+  checked: string;
+}
 
 export const ToggleFlagEnabled = (props: {
   id: string | undefined;
@@ -12,13 +19,18 @@ export const ToggleFlagEnabled = (props: {
 }) => {
   const router = useRouter();
 
-  // @ts-ignore FIXME determine correct event type
-  const handleChange = (event) => {
-    const id = event.target.id;
-    const name = event.target.name;
-    const isEnabled = event.target.checked;
+  const handleChange = (
+    event: ChangeEventHandler<HTMLFormElement> & {
+      target: FeatureToggleElement;
+    }
+  ) => {
+    const eventTarget: FeatureToggleElement = event.target;
 
-    const endpoint = `/api/v1/admin/feature-flags/${name as string}`;
+    const id = eventTarget.id;
+    const name = eventTarget.name;
+    const isEnabled = eventTarget.checked ? true : false;
+
+    const endpoint = `/api/v1/admin/feature-flags/${name }`;
     const options = {
       method: "POST",
       headers: {

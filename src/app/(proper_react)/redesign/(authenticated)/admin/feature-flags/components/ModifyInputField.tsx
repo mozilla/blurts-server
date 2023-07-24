@@ -4,6 +4,19 @@
 
 "use client";
 import { useRouter } from "next/navigation";
+import { FocusEventHandler } from "react";
+
+interface FeatureFieldElement {
+  id: {
+    value: string;
+  };
+  name: {
+    value: string;
+  };
+  value: {
+    value: string;
+  };
+}
 
 export const ModifyInputField = (props: {
   id: string | undefined;
@@ -12,13 +25,16 @@ export const ModifyInputField = (props: {
 }) => {
   const router = useRouter();
 
-  // @ts-ignore FIXME determine correct event type
-  const handleChange = (event) => {
-    const id = event.target.id;
-    const name = event.target.name;
-    const value = event.target.value;
+  const handleBlur = (
+    event: FocusEventHandler<HTMLFormElement> & {
+      target: FeatureFieldElement;
+    }
+  ) => {
+    const id = event.target.id.value;
+    const name = event.target.name.value;
+    const value = event.target.value.value;
 
-    const endpoint = `/api/v1/admin/feature-flags/${name as string}`;
+    const endpoint = `/api/v1/admin/feature-flags/${name }`;
 
     const options = {
       method: "POST",
@@ -40,7 +56,7 @@ export const ModifyInputField = (props: {
       id={props.id}
       name={props.name}
       defaultValue={props.defaultValue}
-      onBlur={handleChange}
+      onBlur={handleBlur}
     />
   );
 };

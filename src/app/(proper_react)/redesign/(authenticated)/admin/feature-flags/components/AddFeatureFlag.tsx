@@ -4,8 +4,8 @@
 
 "use client";
 
-import { FormEventHandler } from "react";
 import { useRouter } from "next/navigation";
+import { FormEvent } from "react";
 
 // TODO investigate way to harmonize this with `FeatureFlag` type
 interface FeatureFlagElement {
@@ -13,7 +13,7 @@ interface FeatureFlagElement {
     value: string;
   };
   isEnabled: {
-    value: string;
+    checked: string;
   };
   dependencies: {
     value: string;
@@ -33,15 +33,19 @@ export const AddFeatureFlag = () => {
   const router = useRouter();
 
   const handleSubmit = (
-    event: FormEventHandler<HTMLFormElement> & {
+    event: FormEvent<HTMLFormElement> & {
       target: FeatureFlagElement;
     }
   ) => {
     event.preventDefault();
 
+    const eventTarget: FeatureFlagElement = event.target;
+
+    console.debug(eventTarget);
+
     const data = {
-      name: event.target.name.value,
-      isEnabled: event.target.isEnabled ? true : false,
+      name: eventTarget.name.value,
+      isEnabled: eventTarget.isEnabled.checked ? true : false,
       dependencies: event.target.dependencies.value.split(","),
       allowList: event.target.allowList.value.split(","),
       waitList: event.target.waitList.value.split(","),
@@ -49,7 +53,6 @@ export const AddFeatureFlag = () => {
     };
 
     const endpoint = "/api/v1/admin/feature-flags" as string;
-    console.debug("body:", data);
 
     const options = {
       method: "POST",
