@@ -50,7 +50,7 @@ export const AddFeatureFlag = () => {
       owner: eventTarget.owner.value,
     };
 
-    const endpoint = "/api/v1/admin/feature-flags" as string;
+    const endpoint = "/api/v1/admin/feature-flags";
 
     const options = {
       method: "POST",
