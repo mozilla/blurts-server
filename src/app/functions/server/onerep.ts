@@ -266,7 +266,12 @@ export async function isEligible() {
     throw new Error("No session");
   }
 
-  const flag = await getFlag("FreeBrokerScan");
+  const flagName = "FreeBrokerScan";
+  const flag = await getFlag(flagName);
+
+  if (!flag) {
+    return false;
+  }
 
   if (!flag.isEnabled) {
     throw new Error("Flag is not enabled");
