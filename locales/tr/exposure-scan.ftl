@@ -20,5 +20,6 @@ exposure-landing-result-overflow-hero-cta-label = İhlalleri çözmek için giri
 exposure-landing-result-overflow-footer-cta-label = Tümünü görüntülemek için giriş yapın
 exposure-landing-result-some-hero-cta-label = İhlalleri çözmek için giriş yapın
 exposure-landing-result-some-footer-cta-label = İhlalleri çözmek için giriş yapın
+exposure-landing-result-none-hero-lead = Haberler iyi! Bilinen hiçbir bir ihlalde yer almıyorsunuz. Güvende kalmak için yeni ihlal uyarılarına kaydolabilirsiniz. Kaydolduğunuzda bu e-posta adresini izlemeye devam eder ve yeni bir ihlale karıştığını tespit edersek size haber veririz.
 exposure-landing-result-none-hero-cta-label = Yeni ihlallerden haberdar olun
 exposure-landing-result-none-footer-cta-label = Uyarılara kaydolun

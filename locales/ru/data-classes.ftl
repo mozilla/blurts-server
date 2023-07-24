@@ -25,6 +25,7 @@ career-levels = Должности
 cellular-network-names = Названия операторов сотовой связи
 charitable-donations = Благотворительные пожертвования
 chat-logs = История чатов
+clothing-sizes = Размеры одежды
 credit-card-cvv = CVV-коды банковских карт
 credit-cards = Банковские карты
 credit-status-information = Наличие кредитов
