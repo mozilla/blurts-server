@@ -158,7 +158,7 @@ export const View = (props: Props) => {
   );
 
   const exposureCardElems = filteredExposures.map(
-    (exposure: ScanResult | HibpLikeDbBreach) => {
+    (exposure: ScanResult | HibpLikeDbBreach, index) => {
       let email;
       // Get the email assosciated with breach
       if (!isScanResult(exposure)) {
@@ -174,7 +174,10 @@ export const View = (props: Props) => {
       }
       return isScanResult(exposure) ? (
         // Scanned result
-        <li key={exposure.id} className={styles.exposureListItem}>
+        <li
+          key={`scan-${exposure.id}-${index}`}
+          className={styles.exposureListItem}
+        >
           <ExposureCard
             exposureData={exposure}
             exposureName={exposure.data_broker}
@@ -187,7 +190,10 @@ export const View = (props: Props) => {
         </li>
       ) : (
         // Breaches result
-        <li key={exposure.Id} className={styles.exposureListItem}>
+        <li
+          key={`breach-${exposure.Id}-${index}`}
+          className={styles.exposureListItem}
+        >
           <ExposureCard
             exposureData={exposure}
             exposureName={exposure.Name}
