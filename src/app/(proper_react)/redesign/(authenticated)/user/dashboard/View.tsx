@@ -208,7 +208,6 @@ export const View = (props: Props) => {
       );
     }
   );
-
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
   return (
