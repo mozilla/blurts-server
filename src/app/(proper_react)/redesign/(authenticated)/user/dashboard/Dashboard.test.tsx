@@ -8,6 +8,11 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, { Dashboard } from "./Dashboard.stories";
 
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
+
 it("passes the axe accessibility test suite", async () => {
   const ComposedDashboard = composeStory(Dashboard, Meta);
   const { container } = render(<ComposedDashboard />);
