@@ -1,11 +1,11 @@
 # Unit Testing Framework
 
-- Status: proposed
-  - Supercedees E-compatible unit test frameworks (#0001)
+- Status: Accepted
+  - Supercedees ES-compatible unit test frameworks (ADR#0000)
 - Deciders: Monitor team
-- Date: 2023-06-14
+- Date: 2023-07-25
 
-Technical Story: [description | ticket/issue URL] <!-- optional -->
+Technical Story: [MNTOR-1823](https://mozilla-hub.atlassian.net/browse/MNTOR-1823)
 
 ## Context and Problem Statement
 
@@ -24,17 +24,18 @@ With the transition to Next.js/React, the team wants to consider testing framewo
 
 ## Decision Outcome
 
-TBD
+Jest (with the Rust Compiler)
 
-<!--### Positive Consequences
+This decision was made in an effort to go with what has the most support for our framework (Nextjs).
 
-* [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
-* …
+### Positive Consequences
+
+- Easy to port past tests (Already completed in #3168)
+- Compability with Nextjs framework
 
 ### Negative Consequences
 
-* [e.g., compromising quality attribute, follow-up decisions required, …]
-* …-->
+- Still doesn't fully support ES6+ modules
 
 ---
 
