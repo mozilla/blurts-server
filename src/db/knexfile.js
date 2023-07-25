@@ -8,9 +8,9 @@
 import pgConnectionStr from 'pg-connection-string'
 
 import AppConstants from '../appConstants.js'
-const { DATABASE_URL, NODE_ENV } = AppConstants
+const { DATABASE_URL, APP_ENV, NODE_ENV } = AppConstants
 const connectionObj = pgConnectionStr.parse(DATABASE_URL)
-if (NODE_ENV === 'heroku') {
+if (APP_ENV === 'heroku') {
   // @ts-ignore TODO: Check if this typing error is correct, or if the types are wrong?
   connectionObj.ssl = { rejectUnauthorized: false }
 }

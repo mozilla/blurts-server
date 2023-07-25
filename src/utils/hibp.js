@@ -2,16 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { get } from 'node:https'
-import { access, constants, createWriteStream } from 'node:fs'
-import { dirname, resolve as pathResolve } from 'node:path'
-import { fileURLToPath } from 'node:url'
 import mozlog from './log.js'
 import AppConstants from '../appConstants.js'
 import { getAllBreaches, upsertBreaches } from '../db/tables/breaches.js'
 import { InternalServerError } from '../utils/error.js'
 import { getMessage } from '../utils/fluent.js'
-import { mkdir } from 'node:fs/promises'
 const { HIBP_THROTTLE_MAX_TRIES, HIBP_THROTTLE_DELAY, HIBP_API_ROOT, HIBP_KANON_API_ROOT, HIBP_KANON_API_TOKEN } = AppConstants
 
 // TODO: fix hardcode
@@ -184,58 +179,9 @@ async function loadBreachesIntoApp (app) {
   // `downloadBreachIcons` resolves, but by setting it to an empty Map first,
   // we don't delay the server start - we just won't have breach logos yet.
   app.locals.breachLogoMap = new Map()
-  downloadBreachIcons(breaches).then(breachLogoMap => {
-    app.locals.breachLogoMap = breachLogoMap
-  })
   app.locals.breaches = breaches
   app.locals.breachesLoadedDateTime = Date.now()
   log.info('done-loading-breaches', 'great success 👍')
-}
-
-/**
- * @param {any[]} breaches
- */
-async function downloadBreachIcons (breaches) {
-  const breachDomains = breaches
-    .map(breach => breach.Domain)
-    .filter(breachDomain => breachDomain.length > 0)
-  const logoFolder = AppConstants.LIVE_RELOAD === 'true'
-    ? pathResolve(dirname(fileURLToPath(import.meta.url)), '../client/images/logo_cache/')
-    : pathResolve(dirname(fileURLToPath(import.meta.url)), '../../dist/images/logo_cache/')
-  try {
-    await mkdir(logoFolder)
-  } catch {
-    // Do nothing; if the directory already exists, that's fine.
-  }
-  const logoMapElems = await Promise.all(breachDomains.map(breachDomain => {
-    return new Promise((resolve, reject) => {
-      const logoPath = pathResolve(logoFolder, breachDomain.toLowerCase() + '.ico')
-      access(logoPath, constants.F_OK, (accessError) => {
-        if (!accessError) {
-          resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
-          return
-        }
-        get(`https://icons.duckduckgo.com/ip3/${breachDomain}.ico`, (response) => {
-          if (response.statusCode !== 200) {
-            resolve(null)
-            return
-          }
-
-          const file = createWriteStream(logoPath)
-          response.pipe(file)
-          file.on('finish', () => {
-            file.close()
-            resolve([breachDomain, `/images/logo_cache/${breachDomain.toLowerCase()}.ico`])
-          })
-          file.on('error', (error) => reject(error))
-        }).on('error', (_error) => {
-          resolve(null)
-        })
-      })
-    })
-  }))
-
-  return new Map(logoMapElems.filter(elm => elm !== null))
 }
 
 /**

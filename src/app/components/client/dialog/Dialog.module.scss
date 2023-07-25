@@ -43,4 +43,11 @@
     text-align: center;
     color: $color-grey-50;
   }
+
+  ul,
+  ol {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
 }

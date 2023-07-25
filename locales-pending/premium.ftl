@@ -1,4 +1,4 @@
-# Strings in this file are not yet final, and thus should not be localised yet.
+# Strings in this file are not yet final, and thus should not be localized yet.
 
 -brand-fx-desktop = { -brand-firefox } for Desktop
 -brand-fx-mobile = { -brand-firefox } for Mobile
@@ -26,7 +26,7 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
-# Chart summarising total exposures
+# Chart summarizing total exposures
 
 # The number inside <nr> will be displayed in a large font,
 # the label inside <label> will be shown underneath, in a smaller font.
@@ -76,8 +76,8 @@ open-in-new-tab-alt = Open link in a new tab
 
 # Status Pill
 
-status-pill-action-needed = Action Needed
-status-pill-progress = In Progress
+status-pill-action-needed = Action needed
+status-pill-progress = In progress
 status-pill-fixed = Fixed
 
 # Exposure Card
@@ -88,6 +88,7 @@ exposure-card-phone-number = Phone number
 exposure-card-address = Address
 exposure-card-credit-card = Credit Card
 exposure-card-password = Password
+exposure-card-ip-address = IP Address
 exposure-card-other = Other
 # Variables:
 # $exposure_num is the number of exposures found for a particular type, e.g. 3 found 
@@ -98,11 +99,11 @@ exposure-card-num-found =
 exposure-card-description-info-for-sale-part-one = This site is selling and publishing <data_broker_link>details about you.</data_broker_link>
 exposure-card-description-info-for-sale-part-two = Remove this profile to protect your privacy.
 # Variables:
-# $data_breach_company is the company assosciated with the data breach.
+# $data_breach_company is the company associated with the data breach.
 # $data_breach_date is the date of the data breach.
 exposure-card-description-data-breach-part-one = Your information was exposed in the <data_breach_link>{ $data_breach_company } data breach on { $data_breach_date }.</data_breach_link>
 exposure-card-description-data-breach-part-two = We’ll walk you through the steps to fix it.
-exposure-card-your-exposed-info = Your exposed info
+exposure-card-your-exposed-info = Your exposed info:
 exposure-card-exposure-type-data-broker = Info for sale
 exposure-card-exposure-type-data-breach = Data breach
 exposure-card-cta = Let’s fix it
@@ -113,7 +114,50 @@ exposure-card-label-date-found = Date found
 # Status of the exposure card, could be In Progress, Fixed or Action Needed
 exposure-card-label-status = Status
 
+# About Exposure Types Modal
+
+modal-exposure-type-title = About exposure types
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be more than 1.
+modal-exposure-type-description = We search for you in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info. Here are the two types of exposures we find:
+modal-exposure-type-data-breach = <b>Data breach</b> means your information has been compromised in a breach and could be in the wrong hands. 
+  Resolving these typically requires accessing your accounts, so you’ll need to take manual steps to resolve each breach even if you’ve upgraded to { -brand-premium }.
+modal-exposure-type-data-broker-part-one = <b>Info for sale</b> means a data broker site is publicly publishing and selling your personal info. 
+  You’ll need to manually request removal from each site. 
+modal-exposure-type-data-broker-part-two = If you’re a { -brand-premium } user, we automatically remove all profiles for you. 
+  In both cases, removals typically take 7-14 days. Some can take longer, while others can happen within the hour.
+
+# About Exposure Statuses Modal
+
+modal-exposure-status-title = About exposure statuses
+# Variables:
+# $data_broker_sites_total_num is the total number of data broker sites available to scan. It will always be plural.
+modal-exposure-status-description = We search for exposures in all known data breaches and { $data_broker_sites_total_num } data broker sites that sell your personal info.
+  Your exposures will have one of the following statuses: 
+modal-exposure-status-action-needed = <b>Action needed</b> means it is currently active and you need to take steps to fix it.
+modal-exposure-status-in-progress = <b>In progress</b> means we are actively working on fixing the exposure for you. This is a { -brand-premium } feature.
+modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved and theres no action for you to take.
+
 # Dashboard
+
+dashboard-exposures-filter = Filter
+dashboard-exposures-filter-company = Company
+dashboard-exposures-filter-exposure-type = Exposure type
+dashboard-exposures-filter-exposure-type-info-for-sale = Your info for sale
+dashboard-exposures-filter-exposure-type-data-breach = Data breach
+dashboard-exposures-filter-date-found = Date found
+dashboard-exposures-filter-date-found-last-seven-days = Last 7 days
+dashboard-exposures-filter-date-found-last-thirty-days = Last 30 days
+dashboard-exposures-filter-date-found-last-year = Last year
+dashboard-exposures-filter-status = Status
+dashboard-exposures-filter-status-action-needed = Action Needed
+dashboard-exposures-filter-status-in-progress = In Progress
+dashboard-exposures-filter-status-fixed = Fixed
+popover-open-filter-settings-alt = Select filters
+dashboard-exposures-filter-show-all = Show all
+dashboard-exposures-filter-show-results = Show results
+dashboard-exposures-filter-reset = Reset
+
 
 dashboard-top-banner-protect-your-data-title = Let’s protect your data
 # Variables:
@@ -122,7 +166,7 @@ dashboard-top-banner-protect-your-data-title = Let’s protect your data
 dashboard-top-banner-protect-your-data-description = We found your data in { $data_breach_total_num } data breaches and { $data_broker_total_num } sites selling your personal info. We’ll guide you on how to fix it.
 dashboard-top-banner-protect-your-data-cta = Let’s fix it
 
-dashboard-top-banner-monitor-protects-your-even-more-title = Monitor now protects you even more
+dashboard-top-banner-monitor-protects-your-even-more-title = { -product-short-name } now protects you even more
 # Variables:
 # $data_broker_sites_total_num is the total number of data broker sites available to scan.
 dashboard-top-banner-monitor-protects-your-even-more-description = 
@@ -143,16 +187,16 @@ dashboard-top-banner-lets-keep-protecting-title = Let’s keep protecting your d
 # $remaining_exposures_total_num is the remaining number of exposures the user has to resolve.
 dashboard-top-banner-lets-keep-protecting-description = 
   { $remaining_exposures_total_num -> 
-    [one] You still have { $remaining_exposures_total_num} exposure left to fix. Keep going and protect yourself. We’ll guide you step by step.
-    *[other] You still have { $remaining_exposures_total_num} exposures left to fix. Keep going and protect yourself. We’ll guide you step by step.
+    [one] You still have { $remaining_exposures_total_num } exposure left to fix. Keep going and protect yourself. We’ll guide you step by step.
+    *[other] You still have { $remaining_exposures_total_num } exposures left to fix. Keep going and protect yourself. We’ll guide you step by step.
   }
 dashboard-top-banner-lets-keep-protecting-cta = Let’s keep going
 
 dashboard-top-banner-your-data-is-protected-title = Your data is protected
 # Variables: 
-# $starting_exposures_total_num is the number of exposures the user has resolved.
+# $starting_exposure_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-description = 
-  { $starting_exposures_total_num ->
+  { $starting_exposure_total_num ->
     [one] Great work, the exposure of your data is fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
     *[other] Great work, all { $starting_exposure_total_num } exposures of your data are fixed or in progress! We’ll keep monitoring and will alert you of any new exposures.
   }
