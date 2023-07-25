@@ -1,0 +1,135 @@
+@import "../../tokens";
+
+.dataBrokerProfileCardsWapper {
+  text-align: center;
+}
+
+// This view shows the first X many data broker profile cards based on the break point. It uses nth-child to set/unset visibility.
+.dataBrokerProfileCards {
+  padding: $spacing-md 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  list-style: none;
+  width: 100%;
+
+  li {
+    margin: 0;
+    padding: 0;
+
+    // Hide all cards after the first four at this breakpoint
+    &:nth-child(n + 5) {
+      display: none;
+    }
+  }
+
+  // The `.showAll` class is active when user clicks "View more" button to see all data broker profiles. It overrides all the breakpoint specific logic to show every card.
+  &.showAll {
+    li {
+      display: unset;
+      @media screen and (min-width: $screen-md) {
+        &:nth-child(n + 5) {
+          display: unset;
+        }
+      }
+      @media screen and (min-width: $screen-xl) {
+        &:nth-child(n + 7),
+        &:nth-child(n + 9) {
+          display: unset;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: $screen-sm) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    li:nth-child(n + 5) {
+      display: unset;
+    }
+
+    // Hide all cards after the first six at this breakpoint
+    li:nth-child(n + 7) {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: $screen-xl) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    li:nth-child(n + 7) {
+      display: unset;
+    }
+
+    // Hide all cards after the first eight at this breakpoint
+    li:nth-child(n + 9) {
+      display: none;
+    }
+  }
+}
+
+.dataBrokerProfileCard {
+  background-color: $color-white;
+  box-shadow: $box-shadow-sm;
+  border-radius: $border-radius-sm;
+  text-align: center;
+  padding: $spacing-sm $spacing-sm $spacing-md;
+  font: $text-body-sm;
+
+  img {
+    margin: 0 auto $spacing-sm;
+    // Magic Number: width of logo
+    width: 120px;
+    height: auto;
+    display: block;
+  }
+}
+
+.viewProfilesToggle {
+  appearance: none;
+  background-color: transparent;
+  border: 0;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  gap: $spacing-sm;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+
+  &.active {
+    img {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+// TODO: Style actual data broker logo
+// TEMPORARY LOGO PLACEHOLDER
+.imagePlaceholder {
+  display: block;
+  height: 30px;
+  width: 120px;
+  max-width: 100%;
+  background-color: $color-grey-30;
+  margin: 0 auto $spacing-sm;
+  overflow: hidden;
+
+  &::after {
+    content: attr(data-broker);
+    color: $color-white;
+    font: $text-body-xs;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    padding-left: $spacing-xs;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: relative;
+  }
+}
