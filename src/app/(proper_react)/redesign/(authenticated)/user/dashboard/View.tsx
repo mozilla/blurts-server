@@ -209,8 +209,6 @@ export const View = (props: Props) => {
     }
   );
 
-  console.log([props.bannerData]);
-
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
   return (
