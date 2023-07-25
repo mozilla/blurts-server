@@ -11,6 +11,7 @@ import { Shell } from "../../../Shell";
 import { StateAbbr } from "../../../../../../utils/states";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import { createRandomScan } from "../../../../../../apiMocks/mockData";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
@@ -18,33 +19,6 @@ const meta: Meta<typeof DashboardEl> = {
 };
 export default meta;
 type Story = StoryObj<typeof DashboardEl>;
-
-const _ScanResultMockItem: ScanResult = {
-  id: 1,
-  profile_id: 1,
-  first_name: "John",
-  last_name: "Doe",
-  middle_name: "string",
-  age: `${30}`,
-  addresses: [
-    {
-      city: "123",
-      state: "State" as StateAbbr,
-      street: "Street",
-      zip: "123456",
-    },
-  ],
-  phones: [""],
-  emails: [""],
-  data_broker: "Familytree.com",
-  created_at: "11/09/23",
-  updated_at: "11/09/23",
-  url: "",
-  link: "",
-  relatives: [],
-  status: "new",
-  data_broker_id: 0,
-};
 
 const BreachMockItem1: HibpLikeDbBreach = {
   AddedDate: new Date("2018-11-07T14:48:00.000Z"),
@@ -138,13 +112,31 @@ const breachItemArraySample: HibpLikeDbBreach[] = [
   BreachMockItem4,
 ];
 
-const dashboardSummary: Record<string, number>[] = [
-  { "physical-addresses": 90 },
-  { "family-members-names": 29 },
-  { "full-names": 98 },
-  { "phone-numbers": 8 },
-  { "other-data-class": 80 },
-];
+const dashboardSummary: DashboardSummary = {
+  dataBreachTotalNum: 0,
+  dataBrokerTotalNum: 0,
+  totalExposures: 0,
+  allExposures: {
+    emailAddresses: 0,
+    phoneNumbers: 0,
+    addresses: 0,
+    familyMembers: 0,
+    fullNames: 0,
+    socialSecurityNumbers: 0,
+    ipAddresses: 0,
+    passwords: 0,
+    creditCardNumbers: 0,
+    pinNumbers: 0,
+    securityQuestions: 0,
+  },
+  sanitizedExposures: [
+    { "physical-addresses": 90 },
+    { "family-members-names": 29 },
+    { "full-names": 98 },
+    { "phone-numbers": 8 },
+    { "other-data-class": 80 },
+  ],
+};
 
 export const DashboardWithScan: Story = {
   render: () => (
@@ -173,7 +165,7 @@ export const DashboardWithScan: Story = {
         }}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
-        chartData={dashboardSummary}
+        bannerData={dashboardSummary}
       />
     </Shell>
   ),
@@ -206,7 +198,7 @@ export const DashboardWithoutScan: Story = {
         }}
         userScannedResults={[]}
         locale={"en"}
-        chartData={dashboardSummary}
+        bannerData={dashboardSummary}
       />
     </Shell>
   ),

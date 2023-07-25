@@ -44,7 +44,7 @@ export default async function DashboardPage() {
       userScannedResults={scanResultItems}
       userBreaches={breaches}
       locale={locale}
-      chartData={summary.sanitizedExposures}
+      bannerData={summary}
     />
   );
 }

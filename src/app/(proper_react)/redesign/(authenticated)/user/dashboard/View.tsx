@@ -22,13 +22,13 @@ import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
-  isUserScannedResults: boolean;
   userScannedResults: ScanResult[];
-  chartData: Record<string, number>[];
+  bannerData: DashboardSummary;
   locale: string;
 };
 
@@ -209,6 +209,8 @@ export const View = (props: Props) => {
     }
   );
 
+  console.log([props.bannerData]);
+
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
   return (
@@ -221,13 +223,12 @@ export const View = (props: Props) => {
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
-          chartData={props.chartData}
+          bannerData={props.bannerData}
           type={
             isScanResultItemsEmpty
               ? "DataBrokerScanUpsellContent"
               : "LetsFixDataContent"
           }
-          chart={<></>}
         />
         <section className={styles.exposuresArea}>
           <h2 className={styles.exposuresAreaHeadline}>
