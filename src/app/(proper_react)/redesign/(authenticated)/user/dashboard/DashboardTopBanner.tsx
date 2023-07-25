@@ -6,6 +6,7 @@ import styles from "./DashboardTopBanner.module.scss";
 import { ReactElement } from "react";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
+import { useRouter } from "next/navigation";
 
 export type DashboardTopBannerProps = {
   type:
@@ -19,6 +20,7 @@ export type DashboardTopBannerProps = {
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
+  const router = useRouter();
 
   const contentData = {
     LetsFixDataContent: {
@@ -34,7 +36,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       cta: {
         content: l10n.getString("dashboard-top-banner-protect-your-data-cta"),
         onClick: () => {
-          // do something
+          router.push(
+            `/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers`
+          );
         },
       },
     },
