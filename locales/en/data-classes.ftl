@@ -153,3 +153,4 @@ website-activity = Website activity
 work-habits = Work habits
 years-of-birth = Years of birth
 years-of-professional-experience = Years of professional experience
+other-data-class = Other

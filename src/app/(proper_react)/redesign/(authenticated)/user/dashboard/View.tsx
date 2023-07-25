@@ -22,12 +22,14 @@ import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
   isUserScannedResults: boolean;
   userScannedResults: ScanResult[];
+  chartData: DashboardSummary;
   locale: string;
 };
 
@@ -218,7 +220,11 @@ export const View = (props: Props) => {
         </a>
       </Toolbar>
       <div className={styles.dashboardContent}>
-        <DashboardTopBanner type={"LetsFixDataContent"} chart={<></>} />
+        <DashboardTopBanner
+          chartData={props.chartData}
+          type={"LetsFixDataContent"}
+          chart={<></>}
+        />
         <section className={styles.exposuresArea}>
           <h2 className={styles.exposuresAreaHeadline}>
             {l10n.getString("dashboard-exposures-area-headline")}

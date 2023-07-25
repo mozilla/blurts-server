@@ -18,8 +18,8 @@ import Image from "next/image";
 
 export type Props = {
   data: Array<[string, number]>;
-  totalExposures: number;
 };
+
 export const DoughnutChart = (props: Props) => {
   const l10n = useL10n();
 

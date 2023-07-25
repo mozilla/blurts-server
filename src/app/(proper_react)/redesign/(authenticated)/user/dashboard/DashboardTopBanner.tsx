@@ -7,6 +7,7 @@ import { ReactElement } from "react";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type DashboardTopBannerProps = {
   type:
@@ -16,19 +17,32 @@ export type DashboardTopBannerProps = {
     | "ResumeBreachResolutionContent"
     | "YourDataIsProtected";
   chart: ReactElement;
+  chartData: DashboardSummary;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
 
+  // console.log(props.chartData.sanitizedExposures);
+
+  const chartData: [string, number][] = props.chartData.sanitizedExposures.map(
+    (obj) => {
+      const [key, value] = Object.entries(obj)[0];
+      return [l10n.getString(key), value];
+    }
+  );
+
+  // console.log(arrayOfTuples);
+
+  // console.log(transformedData);
   // all values are mocked for now
-  const chartData: Array<[string, number]> = [
-    ["Home address", 11],
-    ["Family members", 12],
-    ["Contact Info", 1],
-    ["Full name", 5],
-    ["Other", 2],
-  ];
+  // const chartData: Array<[string, number]> = [
+  //   ["Home address", 11],
+  //   ["Family members", 12],
+  //   ["Contact Info", 1],
+  //   ["Full name", 5],
+  //   ["Other", 2],
+  // ];
 
   const contentData = {
     LetsFixDataContent: {
@@ -140,7 +154,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         )}
       </div>
       <div className={styles.chart}>
-        <Chart data={chartData} totalExposures={908} />
+        <Chart data={chartData} />
       </div>
     </div>
   );

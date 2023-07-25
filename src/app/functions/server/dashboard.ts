@@ -163,7 +163,7 @@ function sanitizeExposures(summary: DashboardSummary): DashboardSummary {
     (total, cur) => total - (Object.values(cur).pop() || 0),
     summary.totalExposures
   );
-  sanitizedExposures.push({ other });
+  sanitizedExposures.push({ ["other-data-class"]: other });
 
   summary.sanitizedExposures = sanitizedExposures;
   console.debug({ sanitizedExposures });
