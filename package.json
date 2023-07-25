@@ -90,7 +90,7 @@
     "@storybook/blocks": "^7.0.18",
     "@storybook/nextjs": "^7.0.18",
     "@storybook/react": "^7.0.18",
-    "@storybook/testing-library": "^0.0.14-next.2",
+    "@storybook/testing-library": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
