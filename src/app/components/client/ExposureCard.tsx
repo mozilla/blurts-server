@@ -240,9 +240,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
   }
 
   const ExposureCategoriesListElem = () => {
-    const array = exposureCategoriesArray;
-    const listItems = array.map((item, index) => (
-      <React.Fragment key={index}>{item}</React.Fragment>
+    const listItems = exposureCategoriesArray.map((item) => (
+      <React.Fragment key={item.key}>{item}</React.Fragment>
     ));
 
     return <>{listItems}</>;

@@ -79,7 +79,7 @@ it("explainer dialog shows on step 2", async () => {
 
   expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   const explainerTrigger = screen.getByRole("button", {
-    name: "See how we protect your data",
+    name: "Why do we need this info?",
   });
   await user.click(explainerTrigger);
   expect(screen.getByRole("dialog")).toBeInTheDocument();

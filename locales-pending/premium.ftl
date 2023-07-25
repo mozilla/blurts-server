@@ -41,6 +41,11 @@ exposure-chart-legend-value-nr = { $nr }x
 
 # Here's What We Fixed Progress Card
 
+exposure-card-company-logo = Company logo
+exposure-card-company = Company domain
+exposure-card-exposure-type = Exposure type
+exposure-card-date-found = Date of the exposure
+
 progress-card-heres-what-we-fixed-headline = Here is what we fixed
 progress-card-resolved-by-you-headline = Resolved by you
 progress-card-auto-removed-headline = Auto-removed

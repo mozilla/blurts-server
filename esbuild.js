@@ -28,8 +28,8 @@ esbuild.build({
   external: ['*.webp', '*.svg'],
   outdir: 'dist',
   format: 'esm',
-  minify: AppConstants.NODE_ENV !== 'dev',
-  sourcemap: AppConstants.NODE_ENV !== 'dev',
+  minify: AppConstants.NODE_ENV !== 'development',
+  sourcemap: AppConstants.NODE_ENV !== 'development',
   splitting: false, // see note below
   treeShaking: true,
   platform: 'neutral',

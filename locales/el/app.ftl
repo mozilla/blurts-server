@@ -822,5 +822,6 @@ breach-detail-cta-signup = Έλεγχος για παραβιάσεις
 
 ## Floating banner
 
+floating-banner-text = Ενισχύστε την ασφάλειά σας στο διαδίκτυο με νέα, συμβουλές και ενημερώσεις από τη { -brand-Mozilla }.
 floating-banner-link-label = Εγγραφή
 floating-banner-dismiss-button-label = Όχι, ευχαριστώ
