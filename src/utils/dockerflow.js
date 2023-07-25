@@ -29,7 +29,7 @@ if (!fs.existsSync(versionJsonPath)) {
 }
 
 export function vers() {
-  if (AppConstants.NODE_ENV === "heroku") {
+  if (AppConstants.APP_ENV === "heroku") {
     /* eslint-disable no-process-env */
     return {
       commit: process.env.HEROKU_SLUG_COMMIT,

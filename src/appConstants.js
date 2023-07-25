@@ -8,6 +8,7 @@ dotenv.config()
 
 const requiredEnvVars = [
   'ADMINS',
+  'APP_ENV',
   'COOKIE_SECRET',
   'CSRF_SECRET',
   'DATABASE_URL',
@@ -65,8 +66,7 @@ const optionalEnvVars = [
 /** @type {Record<string, string>} */
 const AppConstants = { }
 
-// @ts-ignore TS thinks NODE_ENV can't be "heroku". Shut up TS, you're drunk!
-if (!process.env.SERVER_URL && (process.env.NODE_ENV) === 'heroku') {
+if (!process.env.SERVER_URL && (process.env.APP_ENV) === 'heroku') {
   process.env.SERVER_URL = `https://${process.env.HEROKU_APP_NAME}.herokuapp.com`
 }
 
