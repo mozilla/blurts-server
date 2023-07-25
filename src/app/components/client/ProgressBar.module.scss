@@ -1,0 +1,40 @@
+@import "../../tokens";
+
+$progressBarHeight: 56px;
+.progressContainer {
+  .labelContainer {
+    font: $text-title-2xs;
+    padding: 0 $spacing-sm;
+    margin-bottom: $spacing-sm;
+  }
+
+  .progressBar {
+    background: $color-grey-05;
+    border-radius: calc($progressBarHeight / 2);
+    height: $progressBarHeight;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+
+    &Percentage {
+      color: $color-white;
+      position: absolute;
+      font: $text-title-xs;
+      left: $spacing-lg;
+      // Center vertically plus some extra for visual balance of the label
+      // within the progress bar.
+      top: 52%;
+      transform: translateY(-50%);
+      z-index: 1;
+    }
+
+    &Inner {
+      background: $gradient-linear-purple;
+      border-radius: calc($progressBarHeight / 2);
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+    }
+  }
+}

@@ -16,6 +16,13 @@ import {
 import { RelevantLocation } from "../../../scripts/build/createLocationAutocompleteData/types";
 import styles from "./LocationAutocomplete.module.scss";
 
+export function getDetailsFromLocationString(locationString: string) {
+  const [city, state, countryCode] = locationString
+    .split(",")
+    .map((item) => item.trim());
+  return { city, state, countryCode };
+}
+
 const getLocationSuggestions = async ({
   searchParams,
   abortController,
@@ -136,9 +143,8 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
         {(location) => {
           const relevantLocation = location as RelevantLocation;
           const textValue = getLocationString(relevantLocation);
-          const [city, state, countryCode] = textValue
-            .split(",")
-            .map((item) => item.trim());
+          const { city, state, countryCode } =
+            getDetailsFromLocationString(textValue);
           return (
             <Item key={relevantLocation.id} textValue={textValue}>
               <div className={styles.locationItem}>

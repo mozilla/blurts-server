@@ -13,8 +13,11 @@ onboarding-get-started-how-it-works-dialog-heading-line1 = We’re here to prote
 onboarding-get-started-how-it-works-dialog-heading-line2 = Here’s how it works:
 onboarding-get-started-how-it-works-dialog-step1-heading = Scan for exposures
 # Variables:
-#   $dataBrokerCount (number) - number of scanned data broker sites, e.g. 190
-onboarding-get-started-how-it-works-dialog-step1-content = With just a few key pieces of information, we’ll search for you in all known data breaches and { $dataBrokerCount } major data broker sites. All users get the first scan free.
+#   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
+onboarding-get-started-how-it-works-dialog-step1-content = {
+    $dataBrokerTotalCount ->
+        *[other] With just a few key pieces of information, we’ll search for you in all known data breaches and { $dataBrokerTotalCount } major data broker sites. All users get the first scan free.
+}
 onboarding-get-started-how-it-works-dialog-step2-heading = Remove your personal info
 onboarding-get-started-how-it-works-dialog-step2-content = We’ll show you what personal info each data broker site is selling. You’ll need to contact each data broker to request removal. Removal typically takes 7-10 business days, but some can take longer. Upgrade to { -brand-premium } and we’ll handle this for you.
 onboarding-get-started-how-it-works-dialog-step3-heading = Resolve data breaches
@@ -44,4 +47,21 @@ onboarding-enter-details-placeholder-last-name = Enter last name
 onboarding-enter-details-label-location = City and state
 onboarding-enter-details-placeholder-location = Enter city and state
 onboarding-enter-details-label-date-of-birth = Date of birth
-onboarding-enter-details-input-error-message = Required to complete the scan
+onboarding-enter-details-input-error-message-generic = Required to complete the scan
+onboarding-enter-details-input-error-message-location = Type location and select from list
+
+onboarding-find-exposures-progress-label = Scanning for exposures…
+# Variables:
+#   $breachesTotalCount (number) - number of scanned breaches, e.g. 672
+#   $breachesScannedCount (number) - number of the currently scanned breaches, e.g. between 0 and $breachesTotalCount
+onboarding-find-exposures-progress-breaches-counter = {
+    $breachesTotalCount ->
+        *[other] { $breachesScannedCount } of { $breachesTotalCount } known data breaches
+}
+# Variables:
+#   $dataBrokerTotalCount (number) - number of scanned data broker sites, e.g. 190
+#   $dataBrokerScannedCount (number) - number of the currently scanned data broker sites, e.g. between 0 and $dataBrokerTotalCount
+onboarding-find-exposures-progress-broker-counter = {
+    $dataBrokerTotalCount ->
+        *[other] { $dataBrokerScannedCount } of { $dataBrokerTotalCount } data broker sites
+}
