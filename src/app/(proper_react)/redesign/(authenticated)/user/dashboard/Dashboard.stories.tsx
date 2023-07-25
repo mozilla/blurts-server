@@ -111,10 +111,34 @@ const breachItemArraySample: HibpLikeDbBreach[] = [
   BreachMockItem4,
 ];
 
-const dashboardSummary: DashboardSummary = {
+const dashboardSummaryNoScan: DashboardSummary = {
   dataBreachTotalNum: 0,
-  dataBrokerTotalNum: 0,
-  totalExposures: 0,
+  dataBrokerTotalNum: 51,
+  totalExposures: 51,
+  allExposures: {
+    emailAddresses: 0,
+    phoneNumbers: 0,
+    addresses: 0,
+    familyMembers: 0,
+    fullNames: 0,
+    socialSecurityNumbers: 0,
+    ipAddresses: 0,
+    passwords: 0,
+    creditCardNumbers: 0,
+    pinNumbers: 0,
+    securityQuestions: 0,
+  },
+  sanitizedExposures: [
+    { "email-addresses": 30 },
+    { "phone-numbers": 19 },
+    { "social-security-numbers": 2 },
+  ],
+};
+
+const dashboardSummaryWithScan: DashboardSummary = {
+  dataBreachTotalNum: 88,
+  dataBrokerTotalNum: 217,
+  totalExposures: 305,
   allExposures: {
     emailAddresses: 0,
     phoneNumbers: 0,
@@ -164,7 +188,7 @@ export const DashboardWithScan: Story = {
         }}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
-        bannerData={dashboardSummary}
+        bannerData={dashboardSummaryWithScan}
       />
     </Shell>
   ),
@@ -197,7 +221,7 @@ export const DashboardWithoutScan: Story = {
         }}
         userScannedResults={[]}
         locale={"en"}
-        bannerData={dashboardSummary}
+        bannerData={dashboardSummaryNoScan}
       />
     </Shell>
   ),
