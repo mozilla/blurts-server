@@ -147,6 +147,9 @@ export const Dashboard: Story = {
           emailVerifiedCount: 0,
           emailTotalCount: 0,
           emailSelectIndex: 0,
+          ssnBreaches: [],
+          phoneBreaches: [],
+          passwordBreaches: [],
           breachesData: {
             unverifiedEmails: [],
             verifiedEmails: [
@@ -162,6 +165,7 @@ export const Dashboard: Story = {
         }}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
+        isUserScannedResults={true}
       />
     </Shell>
   ),

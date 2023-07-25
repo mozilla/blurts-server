@@ -6,15 +6,22 @@ import { cookies } from "next/headers";
 import { Session } from "next-auth";
 
 import { getBreaches } from "./getBreaches";
-import { appendBreachResolutionChecklist } from "./breachResolution";
+import {
+  appendBreachResolutionChecklist,
+  BreachDataTypes,
+} from "./breachResolution";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
 import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
 } from "../../../../src/utils/breaches.js";
 import { EmailRow } from "../../../db/tables/emailAddresses";
+import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 export type UserBreaches = {
+  ssnBreaches: Array<HibpLikeDbBreach>;
+  passwordBreaches: Array<HibpLikeDbBreach>;
+  phoneBreaches: Array<HibpLikeDbBreach>;
   emailVerifiedCount: number;
   emailTotalCount: number;
   emailSelectIndex: number;
@@ -36,6 +43,25 @@ export async function getUserBreaches({
   const breachesData = await getAllEmailsAndBreaches(subscriber, allBreaches);
   appendBreachResolutionChecklist(breachesData, options);
 
+  const ssnBreaches: HibpLikeDbBreach[] = [];
+  const passwordBreaches: HibpLikeDbBreach[] = [];
+  const phoneBreaches: HibpLikeDbBreach[] = [];
+  for (const { breaches } of breachesData.verifiedEmails) {
+    breaches.forEach((b) => {
+      if (b.DataClasses.includes(BreachDataTypes.SSN)) {
+        ssnBreaches.push(b);
+      }
+
+      if (b.DataClasses.includes(BreachDataTypes.Passwords)) {
+        passwordBreaches.push(b);
+      }
+
+      if (b.DataClasses.includes(BreachDataTypes.Phone)) {
+        phoneBreaches.push(b);
+      }
+    });
+  }
+
   const emailVerifiedCount = breachesData.verifiedEmails?.length ?? 0;
   const emailTotalCount =
     emailVerifiedCount + (breachesData.unverifiedEmails?.length ?? 0);
@@ -52,5 +78,8 @@ export async function getUserBreaches({
     emailVerifiedCount,
     emailTotalCount,
     emailSelectIndex,
+    ssnBreaches,
+    passwordBreaches,
+    phoneBreaches,
   };
 }
