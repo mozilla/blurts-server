@@ -41,7 +41,7 @@ function errorHandler (err, req, res, next) {
     success: false,
     status: errStatus,
     message: process.env.NODE_ENV !== 'production' ? errMsg : 'Something went wrong', // hide error message when in production
-    stack: process.env.NODE_ENV === 'dev' ? err.stack : {} // hide stack when not in dev
+    stack: process.env.NODE_ENV === 'development' ? err.stack : {} // hide stack when not in dev
   })
 }
 

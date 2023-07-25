@@ -37,7 +37,7 @@ const ScanResultMockItem: ScanResult = {
   phones: [""],
   emails: [""],
   data_broker: "Familytree.com",
-  created_at: "11/09/23",
+  created_at: "2011-12-19T15:28:46.493Z",
   updated_at: "11/09/23",
   url: "",
   link: "",
