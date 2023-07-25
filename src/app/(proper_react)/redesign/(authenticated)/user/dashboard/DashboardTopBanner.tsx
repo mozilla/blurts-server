@@ -17,32 +17,16 @@ export type DashboardTopBannerProps = {
     | "ResumeBreachResolutionContent"
     | "YourDataIsProtected";
   chart: ReactElement;
-  chartData: DashboardSummary;
+  chartData: Record<string, number>[];
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
 
-  // console.log(props.chartData.sanitizedExposures);
-
-  const chartData: [string, number][] = props.chartData.sanitizedExposures.map(
-    (obj) => {
-      const [key, value] = Object.entries(obj)[0];
-      return [l10n.getString(key), value];
-    }
-  );
-
-  // console.log(arrayOfTuples);
-
-  // console.log(transformedData);
-  // all values are mocked for now
-  // const chartData: Array<[string, number]> = [
-  //   ["Home address", 11],
-  //   ["Family members", 12],
-  //   ["Contact Info", 1],
-  //   ["Full name", 5],
-  //   ["Other", 2],
-  // ];
+  const chartData: [string, number][] = props.chartData.map((obj) => {
+    const [key, value] = Object.entries(obj)[0];
+    return [l10n.getString(key), value];
+  });
 
   const contentData = {
     LetsFixDataContent: {

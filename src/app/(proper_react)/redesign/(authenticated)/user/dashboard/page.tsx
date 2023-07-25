@@ -36,7 +36,6 @@ export default async function DashboardPage() {
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const breaches = await getUserBreaches({ user: session.user });
   const summary = dashboardSummary(scanResultItems, breaches);
-  console.debug({ summary });
   const locale = getLocale();
 
   return (
@@ -45,7 +44,7 @@ export default async function DashboardPage() {
       userScannedResults={scanResultItems}
       userBreaches={breaches}
       locale={locale}
-      chartData={summary}
+      chartData={summary.sanitizedExposures}
       isUserScannedResults={!!scanResultItems}
     />
   );

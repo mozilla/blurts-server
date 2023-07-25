@@ -22,20 +22,18 @@ import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
-import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
   isUserScannedResults: boolean;
   userScannedResults: ScanResult[];
-  chartData: DashboardSummary;
+  chartData: Record<string, number>[];
   locale: string;
 };
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-
   const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
     (count, emailData) => count + emailData.breaches.length,
     0

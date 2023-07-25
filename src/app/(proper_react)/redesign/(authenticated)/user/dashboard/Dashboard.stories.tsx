@@ -138,6 +138,14 @@ const breachItemArraySample: HibpLikeDbBreach[] = [
   BreachMockItem4,
 ];
 
+const dashboardSummary: Record<string, number>[] = [
+  { "physical-addresses": 90 },
+  { "family-members-names": 29 },
+  { "full-names": 98 },
+  { "phone-numbers": 8 },
+  { "other-data-class": 80 },
+];
+
 export const Dashboard: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={null}>
@@ -166,6 +174,7 @@ export const Dashboard: Story = {
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
         isUserScannedResults={true}
+        chartData={dashboardSummary}
       />
     </Shell>
   ),
