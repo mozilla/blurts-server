@@ -37,7 +37,7 @@ exposure-chart-legend-heading-type = Exposure
 exposure-chart-legend-heading-nr = Number
 # Variables:
 #   $nr (number) - Number of a particular type of exposure found for the user
-exposure-chart-legend-value-nr = { $nr }x
+exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
 
 modal-active-number-of-exposures-title = About your number of active exposures
