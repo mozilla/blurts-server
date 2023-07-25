@@ -8,7 +8,6 @@ import { View as DashboardEl } from "./View";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
-import { StateAbbr } from "../../../../../../utils/states";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import { createRandomScan } from "../../../../../../apiMocks/mockData";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";

@@ -3,14 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./DashboardTopBanner.module.scss";
-import { ReactElement } from "react";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
-import {
-  DashboardSummary,
-  dashboardSummary,
-} from "../../../../../functions/server/dashboard";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type DashboardTopBannerProps = {
   type:
