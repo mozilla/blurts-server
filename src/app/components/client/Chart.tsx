@@ -73,7 +73,6 @@ export const DoughnutChart = (props: Props) => {
       />
     );
   });
-
   const modalContent = (
     <div className={styles.modalBodyContent}>
       <p>
