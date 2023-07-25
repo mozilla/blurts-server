@@ -54,7 +54,7 @@ export function dashboardSummary(
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
-    dataBrokerTotalNum: 0,
+    dataBrokerTotalNum: scannedResults.length,
     totalExposures: 0,
     allExposures: {
       emailAddresses: 0,
@@ -99,12 +99,15 @@ export function dashboardSummary(
     });
   }
 
+  const uniqueBreaches = new Set();
+
   // calculate breaches summary from breaches data
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
   if (breachesData.verifiedEmails) {
     for (const emailBreaches of breachesData.verifiedEmails) {
       const breaches = emailBreaches.breaches;
       breaches.forEach((b) => {
+        uniqueBreaches.add(b.Name);
         const dataClasses = b.DataClasses ?? [];
 
         // count password
@@ -145,6 +148,9 @@ export function dashboardSummary(
       });
     }
   }
+
+  // count unique breaches
+  summary.dataBreachTotalNum = uniqueBreaches.size;
 
   return sanitizeExposures(summary);
 }
