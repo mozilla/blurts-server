@@ -27,6 +27,10 @@
   .exposuresAreaDescription {
     font: $text-body-md;
   }
+
+  .exposuresFilterWrapper {
+    padding-block: $spacing-md;
+  }
 }
 
 .exposureList {
@@ -35,4 +39,8 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-lg;
+}
+
+.visuallyHidden {
+  @include visually-hidden;
 }

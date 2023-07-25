@@ -87,7 +87,11 @@ async function onerepFetch(
   path: string,
   options: Parameters<typeof fetch>[1] = {}
 ) {
-  const url = "https://api.onerep.com" + path;
+  const onerepApiBase = process.env.ONEREP_API_BASE;
+  if (!onerepApiBase) {
+    throw new Error("ONEREP_API_BASE env var not set");
+  }
+  const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
   headers.set(
     "Authorization",
@@ -265,8 +269,8 @@ export async function isEligible() {
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScan(profileId);
 
-  if (scanResult.length) {
-    const latestScanDate = new Date(scanResult[0]["created_at"]);
+  if (scanResult?.onerep_scan_results?.data?.length) {
+    const latestScanDate = new Date(scanResult["created_at"]);
     const lastMonth = new Date();
     lastMonth.setMonth(lastMonth.getMonth() - 1);
 
@@ -295,4 +299,29 @@ export async function getScanDetails(
     );
   }
   return response.json() as Promise<Scan>;
+}
+
+export async function getAllScanResults(
+  profileId: number
+): Promise<ScanResult[]> {
+  const scanPagesAll = [];
+  const firstPage = await listScanResults(profileId, {
+    per_page: 100,
+  });
+  // Results are paginated, use per_page maximum and collect all pages into one result.
+  if (firstPage.meta.last_page > 1) {
+    let currentPage = 2;
+    while (currentPage <= firstPage.meta.last_page) {
+      const nextPage = await listScanResults(profileId, {
+        per_page: 100,
+        page: currentPage,
+      });
+      currentPage++;
+      nextPage.data.forEach((element: object) => scanPagesAll.push(element));
+    }
+  } else {
+    scanPagesAll.push(firstPage.data);
+  }
+
+  return scanPagesAll.flat();
 }
