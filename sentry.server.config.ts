@@ -9,6 +9,7 @@
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
+  environment: process.env.APP_ENV,
   dsn: process.env.SENTRY_DSN,
 
   // Adjust this value in production, or use tracesSampler for greater control

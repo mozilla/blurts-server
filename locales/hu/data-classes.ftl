@@ -25,6 +25,7 @@ career-levels = Karrier szintek
 cellular-network-names = Mobilhálózatok nevei
 charitable-donations = Jótékonysági adományok
 chat-logs = Csevegőnaplók
+clothing-sizes = Ruhaméretek
 credit-card-cvv = Bankkártyák CVV adatai
 credit-cards = Bankkártyák
 credit-status-information = Hitelképességi információk
