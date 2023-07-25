@@ -4,10 +4,10 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import { FixNavigation } from "../FixNavigation";
-import stepDataBrokerProfilesIcon from "../../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-data-broker-profiles.svg";
-import stepHighRiskDataBreachesIcon from "../../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-high-risk.svg";
-import stepLeakedPasswordsIcon from "../../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-leaked-passwords.svg";
-import stepSecurityRecommendationsIcon from "../../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/step-counter-security-recommendations.svg";
+import stepDataBrokerProfilesIcon from "../assets/step-counter-data-broker-profiles.svg";
+import stepHighRiskDataBreachesIcon from "../assets/step-counter-high-risk.svg";
+import stepLeakedPasswordsIcon from "../assets/step-counter-leaked-passwords.svg";
+import stepSecurityRecommendationsIcon from "../assets/step-counter-security-recommendations.svg";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof FixNavigation> = {
