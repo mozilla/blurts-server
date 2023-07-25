@@ -15,7 +15,6 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import Image from "next/image";
-import AppConstants from "../../../../src/appConstants";
 
 export type Props = {
   data: Array<[string, number]>;
