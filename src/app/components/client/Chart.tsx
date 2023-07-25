@@ -15,6 +15,7 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import Image from "next/image";
+import AppConstants from "../../../../src/appConstants";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -76,7 +77,11 @@ export const DoughnutChart = (props: Props) => {
 
   const modalContent = (
     <div className={styles.modalBodyContent}>
-      <p>{l10n.getString("modal-active-number-of-exposures-part-one")}</p>
+      <p>
+        {l10n.getString("modal-active-number-of-exposures-part-one", {
+          limit: 5,
+        })}
+      </p>
       <p>{l10n.getString("modal-active-number-of-exposures-part-two")}</p>
       <p>{l10n.getString("modal-active-number-of-exposures-part-three")}</p>
       <div className={styles.confirmButtonWrapper}>

@@ -41,7 +41,9 @@ exposure-chart-legend-value-nr = { $nr }x
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
 
 modal-active-number-of-exposures-title = About your number of active exposures
-modal-active-number-of-exposures-part-one = This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to 5 email addresses that you are currently monitoring.
+# Variables:
+#   $limit (number) - Number of email addresses included in the plan
+modal-active-number-of-exposures-part-one = This chart includes the total number of times we found each type of data exposed across all data broker profiles and all data breaches for up to { $limit } email addresses that you are currently monitoring.
 modal-active-number-of-exposures-part-two = For example, if you have 10 exposures of your phone number, that might mean one phone number is exposed across 10 different sites, or it could mean 2 different phone numbers were exposed across 5 different sites.
 modal-active-number-of-exposures-part-three = This chart does not include any exposures that are in-progress of being auto-removed. Once your exposures are fixed, they will be added to your total number of fixed exposures on the Fixed page.
 
