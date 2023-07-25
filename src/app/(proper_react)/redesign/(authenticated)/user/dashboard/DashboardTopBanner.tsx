@@ -15,7 +15,7 @@ export type DashboardTopBannerProps = {
     | "DataBrokerScanUpsellContent"
     | "NoExposuresFoundContent"
     | "ResumeBreachResolutionContent"
-    | "YourDataIsProtected";
+    | "YourDataIsProtectedContent";
   chart: ReactElement;
   chartData: Record<string, number>[];
 };
@@ -99,7 +99,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         },
       },
     },
-    YourDataIsProtected: {
+    YourDataIsProtectedContent: {
       headline: l10n.getString(
         "dashboard-top-banner-your-data-is-protected-title"
       ),

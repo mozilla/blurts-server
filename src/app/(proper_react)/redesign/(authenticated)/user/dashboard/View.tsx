@@ -209,6 +209,8 @@ export const View = (props: Props) => {
     }
   );
 
+  const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -220,7 +222,11 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           chartData={props.chartData}
-          type={"LetsFixDataContent"}
+          type={
+            isScanResultItemsEmpty
+              ? "DataBrokerScanUpsellContent"
+              : "LetsFixDataContent"
+          }
           chart={<></>}
         />
         <section className={styles.exposuresArea}>
@@ -239,9 +245,7 @@ export const View = (props: Props) => {
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
-            {props.isUserScannedResults
-              ? exposureCardElems
-              : breachExposureCards}
+            {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
           </ul>
         </section>
       </div>

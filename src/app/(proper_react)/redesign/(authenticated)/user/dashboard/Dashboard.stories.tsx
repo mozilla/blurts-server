@@ -146,7 +146,7 @@ const dashboardSummary: Record<string, number>[] = [
   { "other-data-class": 80 },
 ];
 
-export const Dashboard: Story = {
+export const DashboardWithScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
@@ -173,7 +173,39 @@ export const Dashboard: Story = {
         }}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
-        isUserScannedResults={true}
+        chartData={dashboardSummary}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardWithoutScan: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        user={{ email: "example@example.com" }}
+        userBreaches={{
+          emailVerifiedCount: 0,
+          emailTotalCount: 0,
+          emailSelectIndex: 0,
+          ssnBreaches: [],
+          phoneBreaches: [],
+          passwordBreaches: [],
+          breachesData: {
+            unverifiedEmails: [],
+            verifiedEmails: [
+              {
+                breaches: breachItemArraySample,
+                email: "test@example.com",
+                id: 0,
+                primary: true,
+                verified: true,
+              },
+            ],
+          },
+        }}
+        userScannedResults={[]}
+        locale={"en"}
         chartData={dashboardSummary}
       />
     </Shell>
