@@ -12,6 +12,7 @@ exposure-landing-result-hero-heading =
         [one] Βρήκαμε το <email>{ $email }</email> σε <count>1</count> παραβίαση δεδομένων.
        *[other] Βρήκαμε το <email>{ $email }</email> σε <count>{ $count }</count> παραβιάσεις δεδομένων.
     }
+exposure-landing-result-card-added = Ημερομηνία προσθήκης:
 exposure-landing-result-card-data = Εκτεθειμένα δεδομένα:
 exposure-landing-result-card-nothing = Δεν βρέθηκαν παραβιάσεις
 exposure-landing-result-footer-attribution = Τα δεδομένα παραβιάσεων παρέχονται από το <hibp-link>{ -brand-HIBP }</hibp-link>
