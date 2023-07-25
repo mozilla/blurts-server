@@ -25,6 +25,7 @@ career-levels = Tingkat karier
 cellular-network-names = Nama jaringan seluler
 charitable-donations = Donasi sosial
 chat-logs = Log obrolan
+clothing-sizes = Ukuran pakaian
 credit-card-cvv = CVV kartu kredit
 credit-cards = Kartu kredit
 credit-status-information = Informasi status kredit
