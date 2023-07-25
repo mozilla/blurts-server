@@ -172,37 +172,39 @@ export const View = (props: Props) => {
           }
         );
       }
-      return (
-        <>
-          {isScanResult(exposure) ? (
-            // Scanned result
-            <li key={index} className={styles.exposureListItem}>
-              <ExposureCard
-                exposureData={exposure}
-                exposureName={exposure.data_broker}
-                exposureDetailsLink={exposure.link}
-                dateFound={dateObject(exposure.created_at)}
-                statusPillType="needAction"
-                locale={props.locale}
-                color={getRandomLightNebulaColor(exposure.data_broker)}
-              />
-            </li>
-          ) : (
-            // Breaches result
-            <li key={index} className={styles.exposureListItem}>
-              <ExposureCard
-                exposureData={exposure}
-                exposureName={exposure.Name}
-                fromEmail={email}
-                exposureDetailsLink={""}
-                dateFound={exposure.AddedDate}
-                statusPillType="needAction"
-                locale={props.locale}
-                color={getRandomLightNebulaColor(exposure.Name)}
-              />
-            </li>
-          )}
-        </>
+      return isScanResult(exposure) ? (
+        // Scanned result
+        <li
+          key={`scan-${exposure.id}-${index}`}
+          className={styles.exposureListItem}
+        >
+          <ExposureCard
+            exposureData={exposure}
+            exposureName={exposure.data_broker}
+            exposureDetailsLink={exposure.link}
+            dateFound={dateObject(exposure.created_at)}
+            statusPillType="needAction"
+            locale={props.locale}
+            color={getRandomLightNebulaColor(exposure.data_broker)}
+          />
+        </li>
+      ) : (
+        // Breaches result
+        <li
+          key={`breach-${exposure.Id}-${index}`}
+          className={styles.exposureListItem}
+        >
+          <ExposureCard
+            exposureData={exposure}
+            exposureName={exposure.Title}
+            fromEmail={email}
+            exposureDetailsLink=""
+            dateFound={exposure.AddedDate}
+            statusPillType="needAction"
+            locale={props.locale}
+            color={getRandomLightNebulaColor(exposure.Name)}
+          />
+        </li>
       );
     }
   );

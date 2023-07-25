@@ -25,6 +25,7 @@ career-levels = 職業水平
 cellular-network-names = 行動網路名稱
 charitable-donations = 慈善捐款紀錄
 chat-logs = 聊天紀錄
+clothing-sizes = 衣服尺寸
 credit-card-cvv = 信用卡驗證碼
 credit-cards = 信用卡
 credit-status-information = 信用狀態資訊
