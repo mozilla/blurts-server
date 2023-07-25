@@ -25,6 +25,7 @@ career-levels = Uratasot
 cellular-network-names = Matkapuhelinverkkojen nimet
 charitable-donations = Hyväntekeväisyyteen liittyvät lahjoitukset
 chat-logs = Keskustelulokit
+clothing-sizes = Vaatteiden koot
 credit-card-cvv = Luottokortin CVV
 credit-cards = Luottokortit
 credit-status-information = Luottokelpoisuustieto
