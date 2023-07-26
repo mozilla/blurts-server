@@ -18,14 +18,7 @@
     font-weight: 600;
 
     button {
-      all: unset;
-      cursor: pointer;
-      height: 25px; // height of the button
-      color: $color-grey-40;
-
-      &:hover {
-        color: $color-grey-30;
-      }
+      @include question-mark-circle-btn;
     }
   }
 
