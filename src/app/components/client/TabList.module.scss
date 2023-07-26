@@ -1,0 +1,25 @@
+@import "../../tokens";
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  padding: $spacing-sm;
+  position: relative;
+
+  &::after {
+    bottom: 0;
+    content: "";
+    height: $border-focus-width;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  &[aria-selected="true"] {
+    &::after {
+      background: $color-purple-70;
+    }
+  }
+}
