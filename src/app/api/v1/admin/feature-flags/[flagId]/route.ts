@@ -36,7 +36,7 @@ export async function GET(
   }
 }
 
-export async function POST(req: NextRequest) {
+export async function PUT(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (isAdmin(session?.user?.email || "")) {
     // Signed in

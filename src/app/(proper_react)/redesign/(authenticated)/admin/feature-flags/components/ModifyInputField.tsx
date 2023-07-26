@@ -8,14 +8,14 @@ import { FocusEventHandler } from "react";
 
 interface FeatureFieldElement {
   id: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
   name: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
   value: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
 }
 
 export const ModifyInputField = (props: {
@@ -30,14 +30,19 @@ export const ModifyInputField = (props: {
       target: FeatureFieldElement;
     }
   ) => {
-    const id = event.target.id.value;
-    const name = event.target.name.value;
-    const value = event.target.value.value;
+    const eventTarget: FeatureFieldElement = event.target;
+    const id = eventTarget.id?.value;
+    const name = eventTarget.name?.value;
+    const value = eventTarget.value?.value;
+
+    if (!name) {
+      throw new Error("No flag name provided");
+    }
 
     const endpoint = `/api/v1/admin/feature-flags/${name}`;
 
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

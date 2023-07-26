@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 import { ChangeEventHandler } from "react";
 
 interface FeatureToggleElement {
-  id: string;
-  name: string;
-  checked: string;
+  id: string | null;
+  name: string | null;
+  checked: string | null;
 }
 
 export const ToggleFlagEnabled = (props: {
@@ -30,9 +30,13 @@ export const ToggleFlagEnabled = (props: {
     const name = eventTarget.name;
     const isEnabled = eventTarget.checked ? true : false;
 
+    if (!name) {
+      throw new Error("No flag name provided");
+    }
+
     const endpoint = `/api/v1/admin/feature-flags/${name}`;
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },

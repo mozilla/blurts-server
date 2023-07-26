@@ -10,23 +10,23 @@ import { FormEvent } from "react";
 // TODO investigate way to harmonize this with `FeatureFlag` type
 interface FeatureFlagElement {
   name: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
   isEnabled: {
-    checked: string;
-  };
+    checked: string | null;
+  } | null;
   dependencies: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
   allowList: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
   waitList: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
   owner: {
-    value: string;
-  };
+    value: string | null;
+  } | null;
 }
 
 export const AddFeatureFlag = () => {
@@ -47,11 +47,11 @@ export const AddFeatureFlag = () => {
 
     const data = {
       name: eventTarget.name.value,
-      isEnabled: eventTarget.isEnabled.checked ? true : false,
-      dependencies: eventTarget.dependencies.value.split(","),
-      allowList: eventTarget.allowList.value.split(","),
-      waitList: eventTarget.waitList.value.split(","),
-      owner: eventTarget.owner.value,
+      isEnabled: eventTarget.isEnabled?.checked ? true : false,
+      dependencies: eventTarget.dependencies?.value?.split(","),
+      allowList: eventTarget.allowList?.value?.split(","),
+      waitList: eventTarget.waitList?.value?.split(","),
+      owner: eventTarget.owner?.value,
     };
 
     const endpoint = "/api/v1/admin/feature-flags";
