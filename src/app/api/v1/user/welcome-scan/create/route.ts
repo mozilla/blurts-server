@@ -42,7 +42,7 @@ export async function POST(
 
   const eligible = await isEligible();
   if (!eligible) {
-    throw new Error("User has no more manual scans left");
+    throw new Error("User is not eligible for feature");
   }
 
   const params: UserInfo = await req.json();

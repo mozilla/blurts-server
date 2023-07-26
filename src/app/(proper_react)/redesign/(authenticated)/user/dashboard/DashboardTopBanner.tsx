@@ -3,10 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./DashboardTopBanner.module.scss";
-import { ReactElement } from "react";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
-import { useRouter } from "next/navigation";
+import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type DashboardTopBannerProps = {
   type:
@@ -14,13 +14,19 @@ export type DashboardTopBannerProps = {
     | "DataBrokerScanUpsellContent"
     | "NoExposuresFoundContent"
     | "ResumeBreachResolutionContent"
-    | "YourDataIsProtected";
-  chart: ReactElement;
+    | "YourDataIsProtectedContent";
+  bannerData: DashboardSummary;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
-  const router = useRouter();
+
+  const chartData: [string, number][] = props.bannerData.sanitizedExposures.map(
+    (obj) => {
+      const [key, value] = Object.entries(obj)[0];
+      return [l10n.getString(key), value];
+    }
+  );
 
   const contentData = {
     LetsFixDataContent: {
@@ -28,17 +34,15 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-protect-your-data-description",
         {
-          // TODO: Replace all mocked exposure data
-          data_breach_total_num: 95,
-          data_broker_total_num: 15,
+          data_breach_total_num: props.bannerData.dataBreachTotalNum,
+          data_broker_total_num: props.bannerData.dataBrokerTotalNum,
         }
       ),
       cta: {
         content: l10n.getString("dashboard-top-banner-protect-your-data-cta"),
         onClick: () => {
-          router.push(
-            `/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers`
-          );
+          window.location.href =
+            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
         },
       },
     },
@@ -83,6 +87,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-lets-keep-protecting-description",
         {
+          //TODO: Add remaining total exposures
           remaining_exposures_total_num: 40,
         }
       ),
@@ -95,13 +100,14 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         },
       },
     },
-    YourDataIsProtected: {
+    YourDataIsProtectedContent: {
       headline: l10n.getString(
         "dashboard-top-banner-your-data-is-protected-title"
       ),
       description: l10n.getString(
         "dashboard-top-banner-your-data-is-protected-description",
         {
+          //TODO: Add original count of exposures
           starting_exposure_total_num: 100,
         }
       ),
@@ -120,9 +126,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.content}>
+      <div className={styles.explainerContentWrapper}>
         {content && (
-          <>
+          <div className={styles.explainerContent}>
             <h3>{content.headline}</h3>
             <p>{content.description}</p>
             <span className={styles.cta}>
@@ -130,10 +136,12 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
                 {content.cta.content}
               </Button>
             </span>
-          </>
+          </div>
         )}
       </div>
-      <div className={styles.chart}>Chart goes here</div>
+      <div className={styles.chart}>
+        <Chart data={chartData} />
+      </div>
     </div>
   );
 };
