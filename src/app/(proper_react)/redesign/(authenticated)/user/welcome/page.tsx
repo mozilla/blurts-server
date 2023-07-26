@@ -5,7 +5,10 @@
 import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
 import { redirect } from "next/navigation";
-import { isEligible } from "../../../../../functions/server/onerep";
+import {
+  isEligible,
+  ONEREP_DATA_BROKER_COUNT,
+} from "../../../../../functions/server/onerep";
 import { View } from "./View";
 import { getAllBreachesCount } from "../../../../../../db/tables/breaches";
 
@@ -20,16 +23,12 @@ export default async function Onboarding() {
     return redirect("/redesign/user/dashboard/");
   }
 
-  const dataBrokerCount = parseInt(
-    process.env.ONEREP_DATA_BROKER_COUNT as string,
-    10
-  );
   const allBreachesCount = await getAllBreachesCount();
 
   return (
     <View
       user={session.user}
-      dataBrokerCount={dataBrokerCount}
+      dataBrokerCount={ONEREP_DATA_BROKER_COUNT}
       breachesTotalCount={allBreachesCount}
     />
   );
