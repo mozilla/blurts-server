@@ -39,6 +39,9 @@ export async function POST(req: NextRequest) {
     // Signed in
     try {
       const newFlag = (await req.json()) as FeatureFlag;
+      if (!newFlag || !newFlag.name) {
+        throw new Error("No flag or flag name provided");
+      }
       const resp = await addFeatureFlag(newFlag);
       return NextResponse.json(resp);
     } catch (e) {

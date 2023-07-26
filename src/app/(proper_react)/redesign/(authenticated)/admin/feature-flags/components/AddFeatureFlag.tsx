@@ -41,6 +41,10 @@ export const AddFeatureFlag = () => {
 
     const eventTarget: FeatureFlagElement = event.target;
 
+    if (!eventTarget || !eventTarget.name) {
+      throw new Error("No flag name provided");
+    }
+
     const data = {
       name: eventTarget.name.value,
       isEnabled: eventTarget.isEnabled.checked ? true : false,
