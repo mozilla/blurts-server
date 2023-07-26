@@ -1,7 +1,7 @@
 # Unit Testing Framework
 
 - Status: Accepted
-  - Supercedees ES-compatible unit test frameworks (ADR#0000)
+  - Supersedes ES-compatible unit test frameworks (ADR#0000)
 - Deciders: Monitor team
 - Date: 2023-07-25
 
