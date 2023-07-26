@@ -7,15 +7,9 @@ import { useRouter } from "next/navigation";
 import { FocusEventHandler } from "react";
 
 interface FeatureFieldElement {
-  id: {
-    value: string | null;
-  } | null;
-  name: {
-    value: string | null;
-  } | null;
-  value: {
-    value: string | null;
-  } | null;
+  id: string | null;
+  name: string | null;
+  value: string | null;
 }
 
 export const ModifyInputField = (props: {
@@ -31,9 +25,13 @@ export const ModifyInputField = (props: {
     }
   ) => {
     const eventTarget: FeatureFieldElement = event.target;
-    const id = eventTarget.id?.value;
-    const name = eventTarget.name?.value;
-    const value = eventTarget.value?.value;
+    const id = eventTarget.id;
+    const name = eventTarget.name;
+    const value = eventTarget.value;
+
+    if (!id) {
+      throw new Error("No id provided");
+    }
 
     if (!name) {
       throw new Error("No flag name provided");
