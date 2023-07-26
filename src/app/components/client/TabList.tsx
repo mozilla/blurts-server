@@ -21,8 +21,8 @@ export interface TabListProps {
   tabs: Array<{
     key: Key;
     name: string;
+    content?: ReactNode;
   }>;
-  props: TabsProps;
   defaultSelectedKey?: string;
   onSelectionChange?: (key: Key) => void;
 }
@@ -47,18 +47,6 @@ function Tab({ item, state }: TabParams) {
   );
 }
 
-function TabPanel({ state, ...props }: { state: TabListState<object> }) {
-  const ref = useRef(null);
-  const { tabPanelProps } = useTabPanel(props, state, ref);
-  const { selectedItem } = state;
-
-  return (
-    <div {...tabPanelProps} ref={ref} className={styles.tabPanel}>
-      {selectedItem?.props.children}
-    </div>
-  );
-}
-
 function Tabs(props: TabsProps) {
   const state = useTabListState(props);
   const ref = useRef(null);
@@ -77,12 +65,24 @@ function Tabs(props: TabsProps) {
   );
 }
 
+function TabPanel({ state, ...props }: { state: TabListState<object> }) {
+  const ref = useRef(null);
+  const { tabPanelProps } = useTabPanel(props, state, ref);
+  const { selectedItem } = state;
+
+  return (
+    <div {...tabPanelProps} ref={ref} className={styles.tabPanel}>
+      {selectedItem?.props.children}
+    </div>
+  );
+}
+
 export const TabList = ({ tabs, ...props }: TabListProps) => {
   return (
     <Tabs {...props}>
       {tabs.map((tab) => (
         <Item key={tab.key} title={tab.name}>
-          {tab.name} tab content
+          {tab.content}
         </Item>
       ))}
     </Tabs>

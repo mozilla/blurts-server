@@ -4,6 +4,7 @@
 
 "use client";
 
+import { Key, useState } from "react";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -18,7 +19,7 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { useState } from "react";
+import { TabList } from "../../../../../components/client/TabList";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
@@ -209,37 +210,55 @@ export const View = (props: Props) => {
     }
   );
 
+  const [selectedTab, setSelectedTab] = useState<Key>("first");
+  const tabsData = [
+    {
+      name: "Action needed",
+      key: "action-neeed",
+    },
+    {
+      name: "Fixed",
+      key: "fixed",
+    },
+  ];
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
-        TODO:{" "}
-        <a href="https://react-spectrum.adobe.com/react-aria/useTabList.html">
-          add a tab list
-        </a>
+        <TabList
+          tabs={tabsData}
+          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+        />
       </Toolbar>
       <div className={styles.dashboardContent}>
-        <DashboardTopBanner type={"LetsFixDataContent"} chart={<></>} />
-        <section className={styles.exposuresArea}>
-          <h2 className={styles.exposuresAreaHeadline}>
-            {l10n.getString("dashboard-exposures-area-headline")}
-          </h2>
-          <p className={styles.exposuresAreaDescription}>
-            {l10n.getString("dashboard-exposures-area-description", {
-              // TODO: Use real user data
-              exposures_total_num: 1337,
-              data_breach_total_num: totalBreaches,
-              data_broker_total_num: 1337,
-            })}
-          </p>
-          <div className={styles.exposuresFilterWrapper}>
-            <ExposuresFilter setFilterValues={setFilters} />
-          </div>
-          <ul className={styles.exposureList}>
-            {props.isUserScannedResults
-              ? exposureCardElems
-              : breachExposureCards}
-          </ul>
-        </section>
+        {selectedTab === "action-neeed" ? (
+          <>
+            <DashboardTopBanner type={"LetsFixDataContent"} chart={<></>} />
+            <section className={styles.exposuresArea}>
+              <h2 className={styles.exposuresAreaHeadline}>
+                {l10n.getString("dashboard-exposures-area-headline")}
+              </h2>
+              <p className={styles.exposuresAreaDescription}>
+                {l10n.getString("dashboard-exposures-area-description", {
+                  // TODO: Use real user data
+                  exposures_total_num: 1337,
+                  data_breach_total_num: totalBreaches,
+                  data_broker_total_num: 1337,
+                })}
+              </p>
+              <div className={styles.exposuresFilterWrapper}>
+                <ExposuresFilter setFilterValues={setFilters} />
+              </div>
+              <ul className={styles.exposureList}>
+                {props.isUserScannedResults
+                  ? exposureCardElems
+                  : breachExposureCards}
+              </ul>
+            </section>
+          </>
+        ) : (
+          <>Fixed tab content</>
+        )}
       </div>
     </div>
   );

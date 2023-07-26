@@ -2,9 +2,11 @@
 
 .tabs {
   display: flex;
+  gap: $spacing-sm;
 }
 
 .tab {
+  cursor: pointer;
   padding: $spacing-sm;
   position: relative;
 
