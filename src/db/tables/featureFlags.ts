@@ -22,7 +22,10 @@ export type FeatureFlag = {
 };
 
 async function getAllFeatureFlags() {
-  return await knex("feature_flags").whereNull("deleted_at").returning("*");
+  return await knex("feature_flags")
+    .whereNull("deleted_at")
+    .orderBy("name")
+    .returning("*");
 }
 
 async function getFeatureFlagByName(name: string) {
@@ -62,6 +65,36 @@ async function deleteFeatureFlagByName(name: string) {
   return res[0];
 }
 
+async function updateDependencies(name: string, dependencies: string[]) {
+  log.info("updateDependencies", { name, dependencies });
+  const res = await knex("feature_flags")
+    .where("name", name)
+    .update({
+      dependencies,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      modified_at: knex.fn.now(),
+    })
+    .returning("*");
+
+  return res[0];
+}
+
+async function updateOwner(name: string, owner: string) {
+  log.info("updateOwner", { name, owner });
+  const res = await knex("feature_flags")
+    .where("name", name)
+    .update({
+      owner: owner,
+      // @ts-ignore knex.fn.now() results in it being set to a date,
+      // even if it's not typed as a JS date object:
+      modified_at: knex.fn.now(),
+    })
+    .returning("*");
+
+  return res[0];
+}
+
 async function updateAllowList(name: string, allowList: string[]) {
   log.info("updateAllowList", { name, allowList });
   const res = await knex("feature_flags")
@@ -92,12 +125,12 @@ async function updateWaitList(name: string, waitList: string[]) {
   return res[0];
 }
 
-async function enableFeatureFlagByName(name: string) {
+async function enableFeatureFlagByName(name: string, isEnabled: boolean) {
   log.info("enableFeatureFlagByName", name);
   const res = await knex("feature_flags")
     .where("name", name)
     .update({
-      is_enabled: true,
+      is_enabled: isEnabled,
       // @ts-ignore knex.fn.now() results in it being set to a date,
       // even if it's not typed as a JS date object:
       modified_at: knex.fn.now(),
@@ -128,6 +161,8 @@ export {
   addFeatureFlag,
   deleteFeatureFlagByName,
   updateAllowList,
+  updateDependencies,
+  updateOwner,
   updateWaitList,
   enableFeatureFlagByName,
   disableFeatureFlagByName,
