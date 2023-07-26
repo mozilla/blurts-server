@@ -13,7 +13,7 @@ import { getLocale } from "../../../../../functions/server/l10n";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 import { authOptions } from "../../../../../api/utils/auth";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
-
+import { dashboardSummary } from "../../../../../functions/server/dashboard";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -35,6 +35,7 @@ export default async function DashboardPage() {
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const breaches = await getUserBreaches({ user: session.user });
+  const summary = dashboardSummary(scanResultItems, breaches);
   const locale = getLocale();
 
   return (
@@ -43,7 +44,7 @@ export default async function DashboardPage() {
       userScannedResults={scanResultItems}
       userBreaches={breaches}
       locale={locale}
-      isUserScannedResults={!!scanResultItems}
+      bannerData={summary}
     />
   );
 }

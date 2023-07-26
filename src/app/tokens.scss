@@ -235,11 +235,22 @@ $text-body-lg: 400 clamp(16px, 1.5svw, 18px) / 1.5 var(--font-inter), sans-serif
 $text-body-md: 400 clamp(14px, 1.3svw, 16px) / 1.5 var(--font-inter), sans-serif;
 $text-body-sm: 400 clamp(12px, 1.14svw, 14px) / 1.5 var(--font-inter),
   sans-serif;
-$text-body-xs: 400 clamp(10px, 0.975svw, 12px) / 1.5 var(--font-inter),
-  sans-serif;
+$text-body-xs: 400 12px / 1.5 var(--font-inter), sans-serif;
 
 $tab-bar-height: 100px;
 $width-first-column-filter-bar: 50px;
+
+// Question circle mark for explainer dialogs
+@mixin question-mark-circle-btn {
+  all: unset;
+  cursor: pointer;
+  height: 25px; // height of the button
+  color: $color-grey-40;
+
+  &:hover {
+    color: $color-grey-30;
+  }
+}
 
 @mixin visually-hidden {
   // These styles are taken from

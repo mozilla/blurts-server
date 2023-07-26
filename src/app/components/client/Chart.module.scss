@@ -1,15 +1,37 @@
 @import "../../tokens";
 
 .chartContainer {
-  width: $content-sm;
   text-align: center;
   display: flex;
+  gap: $spacing-lg;
   flex-direction: column;
   align-items: center;
 
   figcaption {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
     font: $text-body-xs;
     font-style: italic;
+
+    button {
+      @include question-mark-circle-btn;
+    }
+  }
+}
+
+.modalBodyContent {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .confirmButtonWrapper {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    min-width: $content-xs;
+    padding-block-start: $spacing-md;
   }
 }
 
@@ -19,12 +41,20 @@
 
 .chartAndLegendWrapper {
   display: flex;
-  gap: $spacing-2xl;
-  min-width: $content-xs;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @media screen and (min-width: $screen-lg) {
+    flex-direction: row;
+    gap: $spacing-xl;
+  }
 
   .chart {
-    flex: 1 0 $content-sm;
+    flex: 1;
+    width: 100%;
+    max-width: 250px;
 
+    // Font size set in Chart.tsx
     .headingNr {
       font-family: var(--font-inter);
       font-weight: 600;
@@ -43,10 +73,13 @@
   }
 
   .legend {
-    flex: 0 0 $content-xs;
-    height: auto;
-    display: flex;
-    align-items: center;
+    align-self: center;
+
+    @media screen and (min-width: $screen-lg) {
+      height: auto;
+      display: flex;
+      align-items: center;
+    }
 
     thead {
       // These styles are taken from
@@ -69,6 +102,7 @@
       font: $text-body-xs;
 
       td {
+        padding-block: $spacing-xs;
         padding-inline: $spacing-xs;
       }
 
@@ -95,22 +129,10 @@
   }
 }
 .slice:nth-child(3) {
-  stroke: $color-purple-80;
+  stroke: $color-purple-70;
 }
 .legend tbody tr:nth-child(2) {
   .chartAndLegendWrapper:has(.slice:nth-child(3):hover) & {
-    color: $color-purple-80;
-  }
-
-  rect {
-    fill: $color-purple-80;
-  }
-}
-.slice:nth-child(4) {
-  stroke: $color-purple-70;
-}
-.legend tbody tr:nth-child(3) {
-  .chartAndLegendWrapper:has(.slice:nth-child(4):hover) & {
     color: $color-purple-70;
   }
 
@@ -118,23 +140,11 @@
     fill: $color-purple-70;
   }
 }
-.slice:nth-child(5) {
-  stroke: $color-purple-60;
-}
-.legend tbody tr:nth-child(4) {
-  .chartAndLegendWrapper:has(.slice:nth-child(5):hover) & {
-    color: $color-purple-60;
-  }
-
-  rect {
-    fill: $color-purple-60;
-  }
-}
-.slice:nth-child(6) {
+.slice:nth-child(4) {
   stroke: $color-purple-50;
 }
-.legend tbody tr:nth-child(5) {
-  .chartAndLegendWrapper:has(.slice:nth-child(6):hover) & {
+.legend tbody tr:nth-child(3) {
+  .chartAndLegendWrapper:has(.slice:nth-child(4):hover) & {
     color: $color-purple-50;
   }
 
@@ -142,23 +152,11 @@
     fill: $color-purple-50;
   }
 }
-.slice:nth-child(7) {
-  stroke: $color-purple-40;
-}
-.legend tbody tr:nth-child(6) {
-  .chartAndLegendWrapper:has(.slice:nth-child(7):hover) & {
-    color: $color-purple-40;
-  }
-
-  rect {
-    fill: $color-purple-40;
-  }
-}
-.slice:nth-child(8) {
+.slice:nth-child(5) {
   stroke: $color-purple-30;
 }
-.legend tbody tr:nth-child(7) {
-  .chartAndLegendWrapper:has(.slice:nth-child(8):hover) & {
+.legend tbody tr:nth-child(4) {
+  .chartAndLegendWrapper:has(.slice:nth-child(5):hover) & {
     color: $color-purple-30;
   }
 
@@ -166,23 +164,11 @@
     fill: $color-purple-30;
   }
 }
-.slice:nth-child(9) {
-  stroke: $color-purple-20;
-}
-.legend tbody tr:nth-child(8) {
-  .chartAndLegendWrapper:has(.slice:nth-child(9):hover) & {
-    color: $color-purple-20;
-  }
-
-  rect {
-    fill: $color-purple-20;
-  }
-}
-.slice:nth-child(10) {
+.slice:nth-child(6) {
   stroke: $color-purple-10;
 }
-.legend tbody tr:nth-child(9) {
-  .chartAndLegendWrapper:has(.slice:nth-child(10):hover) & {
+.legend tbody tr:nth-child(5) {
+  .chartAndLegendWrapper:has(.slice:nth-child(6):hover) & {
     color: $color-purple-10;
   }
 
@@ -190,16 +176,64 @@
     fill: $color-purple-10;
   }
 }
-.slice:nth-child(11) {
-  stroke: $color-purple-05;
+.slice:nth-child(7) {
+  stroke: $color-purple-80;
 }
-.legend tbody tr:nth-child(10) {
-  .chartAndLegendWrapper:has(.slice:nth-child(11):hover) & {
-    color: $color-purple-05;
+.legend tbody tr:nth-child(6) {
+  .chartAndLegendWrapper:has(.slice:nth-child(7):hover) & {
+    color: $color-purple-80;
   }
 
   rect {
-    fill: $color-purple-05;
+    fill: $color-purple-80;
+  }
+}
+.slice:nth-child(8) {
+  stroke: $color-purple-60;
+}
+.legend tbody tr:nth-child(7) {
+  .chartAndLegendWrapper:has(.slice:nth-child(8):hover) & {
+    color: $color-purple-60;
+  }
+
+  rect {
+    fill: $color-purple-60;
+  }
+}
+.slice:nth-child(9) {
+  stroke: $color-purple-40;
+}
+.legend tbody tr:nth-child(8) {
+  .chartAndLegendWrapper:has(.slice:nth-child(9):hover) & {
+    color: $color-purple-40;
+  }
+
+  rect {
+    fill: $color-purple-40;
+  }
+}
+.slice:nth-child(10) {
+  stroke: $color-purple-20;
+}
+.legend tbody tr:nth-child(9) {
+  .chartAndLegendWrapper:has(.slice:nth-child(10):hover) & {
+    color: $color-purple-20;
+  }
+
+  rect {
+    fill: $color-purple-20;
+  }
+}
+.slice:nth-child(11) {
+  stroke: $color-violet-90;
+}
+.legend tbody tr:nth-child(10) {
+  .chartAndLegendWrapper:has(.slice:nth-child(11):hover) & {
+    color: $color-violet-90;
+  }
+
+  rect {
+    fill: $color-violet-90;
   }
 }
 /* stylelint-enable no-descending-specificity */
