@@ -22,18 +22,18 @@ import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
-  isUserScannedResults: boolean;
   userScannedResults: ScanResult[];
+  bannerData: DashboardSummary;
   locale: string;
 };
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-
   const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
     (count, emailData) => count + emailData.breaches.length,
     0
@@ -172,40 +172,43 @@ export const View = (props: Props) => {
           }
         );
       }
-      return (
-        <>
-          {isScanResult(exposure) ? (
-            // Scanned result
-            <li key={index} className={styles.exposureListItem}>
-              <ExposureCard
-                exposureData={exposure}
-                exposureName={exposure.data_broker}
-                exposureDetailsLink={exposure.link}
-                dateFound={dateObject(exposure.created_at)}
-                statusPillType="needAction"
-                locale={props.locale}
-                color={getRandomLightNebulaColor(exposure.data_broker)}
-              />
-            </li>
-          ) : (
-            // Breaches result
-            <li key={index} className={styles.exposureListItem}>
-              <ExposureCard
-                exposureData={exposure}
-                exposureName={exposure.Name}
-                fromEmail={email}
-                exposureDetailsLink={""}
-                dateFound={exposure.AddedDate}
-                statusPillType="needAction"
-                locale={props.locale}
-                color={getRandomLightNebulaColor(exposure.Name)}
-              />
-            </li>
-          )}
-        </>
+      return isScanResult(exposure) ? (
+        // Scanned result
+        <li
+          key={`scan-${exposure.id}-${index}`}
+          className={styles.exposureListItem}
+        >
+          <ExposureCard
+            exposureData={exposure}
+            exposureName={exposure.data_broker}
+            exposureDetailsLink={exposure.link}
+            dateFound={dateObject(exposure.created_at)}
+            statusPillType="needAction"
+            locale={props.locale}
+            color={getRandomLightNebulaColor(exposure.data_broker)}
+          />
+        </li>
+      ) : (
+        // Breaches result
+        <li
+          key={`breach-${exposure.Id}-${index}`}
+          className={styles.exposureListItem}
+        >
+          <ExposureCard
+            exposureData={exposure}
+            exposureName={exposure.Title}
+            fromEmail={email}
+            exposureDetailsLink=""
+            dateFound={exposure.AddedDate}
+            statusPillType="needAction"
+            locale={props.locale}
+            color={getRandomLightNebulaColor(exposure.Name)}
+          />
+        </li>
       );
     }
   );
+  const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
   return (
     <div className={styles.wrapper}>
@@ -216,7 +219,14 @@ export const View = (props: Props) => {
         </a>
       </Toolbar>
       <div className={styles.dashboardContent}>
-        <DashboardTopBanner type={"LetsFixDataContent"} chart={<></>} />
+        <DashboardTopBanner
+          bannerData={props.bannerData}
+          type={
+            isScanResultItemsEmpty
+              ? "DataBrokerScanUpsellContent"
+              : "LetsFixDataContent"
+          }
+        />
         <section className={styles.exposuresArea}>
           <h2 className={styles.exposuresAreaHeadline}>
             {l10n.getString("dashboard-exposures-area-headline")}
@@ -233,9 +243,7 @@ export const View = (props: Props) => {
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
           <ul className={styles.exposureList}>
-            {props.isUserScannedResults
-              ? exposureCardElems
-              : breachExposureCards}
+            {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
           </ul>
         </section>
       </div>

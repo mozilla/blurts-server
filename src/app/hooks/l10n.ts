@@ -5,7 +5,7 @@
 "use client";
 
 import { ReactLocalization, useLocalization } from "@fluent/react";
-import { createElement, Fragment } from "react";
+import { Fragment, createElement, useEffect, useState } from "react";
 
 /**
  * Equivalent to ReactLocalization.getString, but returns a React Fragment.
@@ -21,17 +21,25 @@ export type GetFragment = (
   id: Parameters<ReactLocalization["getString"]>[0],
   args?: Parameters<ReactLocalization["getElement"]>[2],
   fallback?: Parameters<ReactLocalization["getString"]>[2]
-) => ReturnType<ReactLocalization["getElement"]>;
+) => ReturnType<ReactLocalization["getElement"]> | null;
 
 export type ExtendedReactLocalization = ReactLocalization & {
   getFragment: GetFragment;
 };
 
 export const useL10n = (): ExtendedReactLocalization => {
+  const [isMounted, setIsMounted] = useState(false);
   const { l10n } = useLocalization();
 
-  const getFragment: GetFragment = (id, args, fallback) =>
-    l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args);
+  useEffect(() => {
+    setIsMounted(true);
+  }, [isMounted]);
+
+  const getFragment: GetFragment = (id, args, fallback) => {
+    return isMounted
+      ? l10n.getElement(createElement(Fragment, null, fallback ?? id), id, args)
+      : null;
+  };
 
   const extendedL10n: ExtendedReactLocalization =
     l10n as ExtendedReactLocalization;

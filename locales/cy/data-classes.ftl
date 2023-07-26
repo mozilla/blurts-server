@@ -25,6 +25,7 @@ career-levels = Lefelau gyrfaol
 cellular-network-names = Enwau rhwydwaith cellol
 charitable-donations = Rhoddion elusennol
 chat-logs = Cofnodion sgwrsio
+clothing-sizes = Meintiau dillad
 credit-card-cvv = CVV cerdyn credyd
 credit-cards = Cardiau credyd
 credit-status-information = Manylion statws credyd

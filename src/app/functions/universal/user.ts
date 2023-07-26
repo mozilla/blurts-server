@@ -6,7 +6,7 @@ import { Session } from "next-auth";
 import { ISO8601DateString } from "../../../utils/parse.js";
 
 export function hasPremium(user?: Session["user"]): boolean {
-  return user?.fxa?.subscriptions.includes("monitor") ?? false;
+  return user?.fxa?.subscriptions?.includes("monitor") ?? false;
 }
 
 export function canSubscribeToPremium(params: {

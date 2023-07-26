@@ -25,6 +25,7 @@ career-levels = posizione lavorativa
 cellular-network-names = nomi di rete cellulare
 charitable-donations = donazioni in beneficenza
 chat-logs = registri di chat
+clothing-sizes = taglie di abbigliamento
 credit-card-cvv = CVV di carta di credito
 credit-cards = carte di credito
 credit-status-information = informazioni sullo stato del credito

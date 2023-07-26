@@ -26,6 +26,5 @@ const data: Array<[string, number]> = [
 export const FixedExposures: Story = {
   args: {
     data: data,
-    totalExposures: 309,
   },
 };
