@@ -1,0 +1,154 @@
+@import "../../tokens";
+
+.stepsWrapper {
+  margin-block-end: $spacing-2xl;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: $spacing-lg;
+
+  @media screen and (min-width: $screen-md) {
+    height: 33%;
+  }
+
+  @media screen and (min-width: $screen-md) {
+    padding-inline: $spacing-2xl;
+  }
+
+  @media screen and (min-width: $screen-lg) {
+    padding-inline: $layout-xl;
+  }
+}
+
+@media screen and (min-width: $screen-md) {
+  .steps {
+    $stepGap: $spacing-xl;
+    padding-inline-start: 0;
+    list-style-type: none;
+    display: flex;
+    gap: $stepGap;
+    max-width: $content-md;
+    position: relative;
+
+    li {
+      $iconDiameter: 27px;
+      $iconBorderWidth: 4px;
+      $connectingLineHeight: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $spacing-xs;
+      text-align: center;
+      font: $text-body-xs;
+      font-weight: 400;
+      color: $color-grey-30;
+      width: $layout-xl;
+
+      img {
+        background-color: $color-grey-30;
+        padding: 5px;
+        margin-block: $iconBorderWidth;
+        width: $iconDiameter;
+        height: $iconDiameter;
+        border-radius: 100%;
+        box-sizing: content-box;
+        pointer-events: none;
+        user-select: none;
+        // Overlap the `::before` (the horizontal line)
+        z-index: 1;
+      }
+
+      // This is the horizontal line preceding every step indicator on desktop.
+      // It starts with `+ 2` because the lines are only between indicators, so
+      // the first one doesn't have a line preceding it, and nth-child is
+      // 1-indexed, i.e. it doesn't start at 0.
+      &:nth-child(n + 2)::before {
+        content: "";
+        background-color: $color-grey-30;
+        width: $layout-xl;
+        display: block;
+        height: $connectingLineHeight;
+        position: absolute;
+        top: calc(
+          ($iconDiameter + $connectingLineHeight) / 2 + $iconBorderWidth
+        );
+      }
+      // TODO: Update logic to calculate this programmatically without the magic numbers
+      // MAGIC NUMBERS ALL THE WAY DOWN
+      &:nth-child(2)::before {
+        left: 13%;
+      }
+      &:nth-child(3)::before {
+        left: 40%;
+      }
+      &:nth-child(4)::before {
+        left: 67%;
+      }
+
+      &[aria-current="step"] {
+        img {
+          margin-block: 0;
+          border: $iconBorderWidth solid $color-purple-10;
+        }
+      }
+
+      &.isCompleted,
+      &[aria-current="step"] {
+        color: $color-purple-70;
+
+        &::before {
+          background-color: $color-purple-10;
+        }
+
+        img {
+          background-color: $color-purple-70;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: calc($screen-md - 1px)) {
+  .steps {
+    padding-inline-start: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    gap: $spacing-sm;
+
+    li {
+      img {
+        // On mobile, the actual step images aren't actually shown; instead, we
+        // display flat horizontal lines, which we simulate by giving the images
+        // a 0 height and a border. The images are <1kB in size, so that
+        // shouldn't matter too much.
+        height: 0;
+        border: 3px solid $color-grey-30;
+        border-radius: 3px;
+        min-width: $layout-sm;
+        width: 100%;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      &[aria-current="step"] img {
+        border-color: $color-purple-10;
+      }
+
+      &.isCompleted img {
+        border-color: $color-purple-70;
+      }
+
+      .stepLabel {
+        padding-block: $spacing-sm;
+        padding-inline: $spacing-md;
+        color: $color-purple-70;
+        font: $text-body-xs;
+        font-weight: 600;
+      }
+
+      &:not([aria-current="step"]) .stepLabel {
+        @include visually-hidden;
+      }
+    }
+  }
+}

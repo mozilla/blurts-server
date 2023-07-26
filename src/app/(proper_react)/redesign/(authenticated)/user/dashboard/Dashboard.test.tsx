@@ -6,10 +6,24 @@ import { it, expect } from "@jest/globals";
 import { render } from "@testing-library/react";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
-import Meta, { Dashboard } from "./Dashboard.stories";
+import Meta, {
+  DashboardWithScan,
+  DashboardWithoutScan,
+} from "./Dashboard.stories";
+
+jest.mock("next/navigation", () => ({
+  useRouter: jest.fn(),
+  usePathname: jest.fn(),
+}));
 
 it("passes the axe accessibility test suite", async () => {
-  const ComposedDashboard = composeStory(Dashboard, Meta);
+  const ComposedDashboard = composeStory(DashboardWithScan, Meta);
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite", async () => {
+  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });

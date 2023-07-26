@@ -23,12 +23,13 @@ import { TabList } from "../../../../../components/client/TabList";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
+import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type Props = {
   user: Session["user"];
   userBreaches: UserBreaches;
-  isUserScannedResults: boolean;
   userScannedResults: ScanResult[];
+  bannerData: DashboardSummary;
   locale: string;
 };
 
@@ -221,6 +222,7 @@ export const View = (props: Props) => {
       );
     }
   );
+  const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
   return (
     <div className={styles.wrapper}>
@@ -233,7 +235,14 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         {selectedTab === "action-neeed" ? (
           <>
-            <DashboardTopBanner type={"LetsFixDataContent"} chart={<></>} />
+            <DashboardTopBanner
+              bannerData={props.bannerData}
+              type={
+                isScanResultItemsEmpty
+                  ? "DataBrokerScanUpsellContent"
+                  : "LetsFixDataContent"
+              }
+            />
             <section className={styles.exposuresArea}>
               <h2 className={styles.exposuresAreaHeadline}>
                 {l10n.getString("dashboard-exposures-area-headline")}
@@ -250,9 +259,9 @@ export const View = (props: Props) => {
                 <ExposuresFilter setFilterValues={setFilters} />
               </div>
               <ul className={styles.exposureList}>
-                {props.isUserScannedResults
-                  ? exposureCardElems
-                  : breachExposureCards}
+                {isScanResultItemsEmpty
+                  ? breachExposureCards
+                  : exposureCardElems}
               </ul>
             </section>
           </>
