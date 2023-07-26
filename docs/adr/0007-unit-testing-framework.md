@@ -59,6 +59,7 @@ Use Jest and the default compiler, [SWC](https://swc.rs/)
 - Good, Ignores `.next` from test resolving
 - Good, Loads `next.config.js ` for flags that enable experimental SWC transforms
 - Good, SWC is faster than Babel
+- Good, needs no additional configuration to be able to test UI code
 - Bad, does not fully support ES6+ modules
 
 ### Jest (with Babel)
