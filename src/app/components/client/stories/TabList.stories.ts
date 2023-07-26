@@ -17,14 +17,17 @@ const tabsData = [
   {
     key: "first",
     name: "First",
+    content: "First tab content",
   },
   {
     key: "second",
     name: "Second",
+    content: "Second tab content",
   },
   {
     key: "third",
     name: "Third",
+    content: "Third tab content",
   },
 ];
 
