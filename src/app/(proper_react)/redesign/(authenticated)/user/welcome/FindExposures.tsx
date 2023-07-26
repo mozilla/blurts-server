@@ -71,7 +71,7 @@ export const FindExposures = ({
       // the result if finished.
       if (
         (process.env.NODE_ENV === "development" ||
-          process.env.APP_ENV === "heroku") &&
+          process.env.NEXT_PUBLIC_APP_ENV === "heroku") &&
         !checkingScanProgress &&
         !scanFinished
       ) {
