@@ -5,10 +5,13 @@
 import { notFound, redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { getAllFeatureFlags } from "../../../../../../db/tables/featureFlags";
+import { AddFeatureFlag } from "./components/AddFeatureFlag";
+import { ToggleFlagEnabled } from "./components/ToggleFlagEnabled";
 import { FeatureFlagRow } from "knex/types/tables";
 import { authOptions, isAdmin } from "../../../../../api/utils/auth";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import styles from "./page.module.scss";
+import { ModifyInputField } from "./components/ModifyInputField";
 
 export default async function FeatureFlagPage() {
   const session = await getServerSession(authOptions);
@@ -37,16 +40,49 @@ export default async function FeatureFlagPage() {
             <th>Dependencies</th>
             <th>Allow List</th>
             <th>Wait List</th>
+            <th>Owner</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item) => (
             <tr key={item.name}>
               <td>{item.name}</td>
-              <td>{String(item.is_enabled)}</td>
-              <td>{item.dependencies}</td>
-              <td>{item.allow_list?.join(", ")}</td>
-              <td>{item.wait_list?.join(", ")}</td>
+              <td>
+                <ToggleFlagEnabled
+                  id="isEnabled"
+                  name={item.name}
+                  isEnabled={item.is_enabled}
+                />
+                {item.is_enabled}
+              </td>
+              <td>
+                <ModifyInputField
+                  id="dependencies"
+                  name={item.name}
+                  defaultValue={item.dependencies?.join(",")}
+                />
+              </td>
+              <td>
+                <ModifyInputField
+                  id="allowList"
+                  name={item.name}
+                  defaultValue={item.allow_list?.join(",")}
+                />
+              </td>
+              <td>
+                <ModifyInputField
+                  id="waitList"
+                  name={item.name}
+                  defaultValue={item.wait_list?.join(",")}
+                />
+              </td>
+              <td>
+                <ModifyInputField
+                  id="owner"
+                  name={item.name}
+                  defaultValue={item.owner}
+                />
+              </td>
             </tr>
           ))}
         </tbody>
@@ -66,6 +102,8 @@ export default async function FeatureFlagPage() {
       <div className={styles.start}>
         <h1>All Feature Flags</h1>
         <AllFlagsTable data={featureFlags} />
+        <h1>Add New Feature Flag</h1>
+        <AddFeatureFlag />
       </div>
     </div>
   );
