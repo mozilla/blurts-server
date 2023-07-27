@@ -222,7 +222,9 @@ dashboard-top-banner-your-data-is-protected-description =
   }
 dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 
-dashboard-exposures-area-headline = View all exposures that are fixed or in-progress
+dashboard-exposures-area-headline = View all sites where your info is exposed
+dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
+
 # Variables: 
 # $exposures_total_num is the total number of exposures the user has.
 # $data_breach_total_num is the total number of data breaches the user has.
