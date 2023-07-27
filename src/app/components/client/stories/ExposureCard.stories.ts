@@ -55,6 +55,7 @@ const BreachMockItem: HibpLikeDbBreach = {
   Id: 0,
   IsFabricated: false,
   IsMalware: false,
+  IsResolved: false,
   IsRetired: false,
   IsSensitive: false,
   IsSpamList: false,
