@@ -29,12 +29,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
     }
   );
 
-  const breachChartData: [string, number][] =
-    props.bannerData.sanitizedBreachExposures.map((obj) => {
-      const [key, value] = Object.entries(obj)[0];
-      return [l10n.getString(key), value];
-    });
-
   const contentData = {
     LetsFixDataContent: {
       headline: l10n.getString("dashboard-top-banner-protect-your-data-title"),
@@ -130,6 +124,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   };
 
   const content = contentData[props.type];
+  console.log(props.hasRunScan);
 
   return (
     <div className={styles.container}>
@@ -147,7 +142,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         )}
       </div>
       <div className={styles.chart}>
-        <Chart data={props.hasRunScan ? chartData : breachChartData} />
+        <Chart hasRunScan={props.hasRunScan} data={chartData} />
       </div>
     </div>
   );
