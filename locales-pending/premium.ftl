@@ -157,6 +157,9 @@ modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved 
 
 # Dashboard
 
+dashboard-tab-label-action-needed = Action needed
+dashboard-tab-label-fixed = Fixed
+
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Company
 dashboard-exposures-filter-exposure-type = Exposure type

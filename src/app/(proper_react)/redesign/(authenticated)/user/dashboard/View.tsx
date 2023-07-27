@@ -36,14 +36,14 @@ export type Props = {
 export const View = (props: Props) => {
   const l10n = useL10n();
 
-  const [selectedTab, setSelectedTab] = useState<Key>("first");
+  const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
   const tabsData = [
     {
-      name: "Action needed",
-      key: "action-neeed",
+      name: l10n.getString("dashboard-tab-label-action-needed"),
+      key: "action-needed",
     },
     {
-      name: "Fixed",
+      name: l10n.getString("dashboard-tab-label-fixed"),
       key: "fixed",
     },
   ];
@@ -233,7 +233,7 @@ export const View = (props: Props) => {
         />
       </Toolbar>
       <div className={styles.dashboardContent}>
-        {selectedTab === "action-neeed" ? (
+        {selectedTab === "action-needed" ? (
           <>
             <DashboardTopBanner
               bannerData={props.bannerData}
