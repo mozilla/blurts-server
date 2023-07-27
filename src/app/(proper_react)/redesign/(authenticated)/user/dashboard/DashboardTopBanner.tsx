@@ -124,7 +124,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   };
 
   const content = contentData[props.type];
-  console.log(props.hasRunScan);
 
   return (
     <div className={styles.container}>
