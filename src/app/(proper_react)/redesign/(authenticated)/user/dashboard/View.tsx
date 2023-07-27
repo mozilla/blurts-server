@@ -187,6 +187,7 @@ export const View = (props: Props) => {
         );
       }
 
+      // FIXME: Use the actual exposure status as soon as we have real data.
       const status =
         selectedTab === "fixed"
           ? Math.random() >= 0.5
