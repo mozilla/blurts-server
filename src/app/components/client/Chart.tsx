@@ -15,6 +15,7 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 export type Props = {
   data: Array<[string, number]>;
@@ -177,6 +178,16 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
+            <div className={styles.prompt}>
+              <p>
+                {l10n.getString("exposure-chart-returning-user-upgrade-prompt")}
+              </p>
+              <Link href="/redesign/user/welcome">
+                {l10n.getString(
+                  "exposure-chart-returning-user-upgrade-prompt-cta"
+                )}
+              </Link>
+            </div>
           </div>
         </div>
         <figcaption>

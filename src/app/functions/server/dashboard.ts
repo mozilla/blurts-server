@@ -182,7 +182,7 @@ export function dashboardSummary(
           }
         }
 
-        // count ssn
+        // count SSN
         if (dataClasses.includes(BreachDataTypes.SSN)) {
           summary.totalExposures++;
           summary.allExposures.socialSecurityNumbers++;
@@ -230,6 +230,14 @@ export function dashboardSummary(
             summary.fixedExposures.securityQuestions++;
             summary.dataBreachFixedNum++;
           }
+        }
+
+        // count phone numbers
+        if (dataClasses.includes(BreachDataTypes.Phone)) {
+          summary.totalExposures++;
+          summary.allExposures.phoneNumbers++;
+        } else {
+          summary.totalExposures++;
         }
       });
     }

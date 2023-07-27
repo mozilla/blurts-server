@@ -16,6 +16,7 @@ export type DashboardTopBannerProps = {
     | "ResumeBreachResolutionContent"
     | "YourDataIsProtectedContent";
   bannerData: DashboardSummary;
+  hasRunScan: boolean;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -27,6 +28,12 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       return [l10n.getString(key), value];
     }
   );
+
+  const breachChartData: [string, number][] =
+    props.bannerData.sanitizedBreachExposures.map((obj) => {
+      const [key, value] = Object.entries(obj)[0];
+      return [l10n.getString(key), value];
+    });
 
   const contentData = {
     LetsFixDataContent: {
@@ -61,7 +68,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           "dashboard-top-banner-monitor-protects-your-even-more-cta"
         ),
         onClick: () => {
-          // do something
+          window.location.href = "/redesign/user/welcome";
         },
       },
     },
@@ -140,7 +147,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         )}
       </div>
       <div className={styles.chart}>
-        <Chart data={chartData} />
+        <Chart data={props.hasRunScan ? chartData : breachChartData} />
       </div>
     </div>
   );
