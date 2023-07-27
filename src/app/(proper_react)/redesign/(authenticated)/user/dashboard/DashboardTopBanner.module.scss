@@ -12,7 +12,7 @@
   gap: $layout-xs;
   padding: $layout-xs;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg) {
     padding: $layout-md;
     flex-direction: row;
   }
@@ -20,6 +20,7 @@
   .explainerContentWrapper {
     align-items: center;
     display: flex;
+    justify-content: center;
 
     @media screen and (min-width: $screen-md) {
       justify-content: center;

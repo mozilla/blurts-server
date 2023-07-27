@@ -44,7 +44,7 @@ export const View = (props: Props) => {
     status: "",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
-  const [selectedTab, setSelectedTab] = useState<Key>("fixed");
+  const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
 
   const tabsData = [
     {

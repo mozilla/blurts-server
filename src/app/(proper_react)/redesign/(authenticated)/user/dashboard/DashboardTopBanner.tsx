@@ -136,7 +136,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             <p>{content.description}</p>
             <span className={styles.cta}>
               <Button variant="primary" small onClick={content.cta.onClick}>
-                {content.cta?.content}
+                {content.cta.content}
               </Button>
             </span>
           </div>
