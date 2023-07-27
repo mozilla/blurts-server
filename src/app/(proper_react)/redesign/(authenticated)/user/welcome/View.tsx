@@ -19,17 +19,23 @@ import { EnterInfo } from "./EnterInfo";
 import { useL10n } from "../../../../../hooks/l10n";
 import monitorLogo from "../../../../images/monitor-logo.webp";
 
+type StepId = "getStarted" | "enterInfo" | "findExposures";
+
 export type Props = {
   user: Session["user"];
   dataBrokerCount: number;
   breachesTotalCount: number;
+  stepId?: StepId;
 };
 
-type StepId = "getStarted" | "enterInfo" | "findExposures";
-
-export const View = ({ user, dataBrokerCount, breachesTotalCount }: Props) => {
+export const View = ({
+  user,
+  dataBrokerCount,
+  breachesTotalCount,
+  stepId = "getStarted",
+}: Props) => {
   const l10n = useL10n();
-  const [currentStep, setCurrentStep] = useState<StepId>("getStarted");
+  const [currentStep, setCurrentStep] = useState<StepId>(stepId);
 
   const currentComponent =
     currentStep === "findExposures" ? (
