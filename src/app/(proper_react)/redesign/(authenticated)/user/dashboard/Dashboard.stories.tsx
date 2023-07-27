@@ -226,3 +226,36 @@ export const DashboardWithoutScan: Story = {
     </Shell>
   ),
 };
+
+export const DashboardEmptyListState: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        user={{ email: "example@example.com" }}
+        userBreaches={{
+          emailVerifiedCount: 0,
+          emailTotalCount: 0,
+          emailSelectIndex: 0,
+          ssnBreaches: [],
+          phoneBreaches: [],
+          passwordBreaches: [],
+          breachesData: {
+            unverifiedEmails: [],
+            verifiedEmails: [
+              {
+                breaches: [],
+                email: "test@example.com",
+                id: 0,
+                primary: true,
+                verified: true,
+              },
+            ],
+          },
+        }}
+        userScannedResults={[]}
+        locale={"en"}
+        bannerData={dashboardSummaryNoScan}
+      />
+    </Shell>
+  ),
+};
