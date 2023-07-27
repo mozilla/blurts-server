@@ -152,40 +152,60 @@ export function dashboardSummary(
         uniqueBreaches.add(b.Name);
         const dataClasses = b.DataClasses ?? [];
 
+        // count emails
+        if (dataClasses.includes(BreachDataTypes.Email)) {
+          summary.totalExposures++;
+          summary.allExposures.emailAddresses++;
+          if (b.IsResolved) summary.fixedExposures.emailAddresses++;
+        }
+
+        // count phone numbers
+        if (dataClasses.includes(BreachDataTypes.Phone)) {
+          summary.totalExposures++;
+          summary.allExposures.phoneNumbers++;
+          if (b.IsResolved) summary.fixedExposures.phoneNumbers++;
+        }
+
         // count password
         if (dataClasses.includes(BreachDataTypes.Passwords)) {
           summary.totalExposures++;
           summary.allExposures.passwords++;
+          if (b.IsResolved) summary.fixedExposures.passwords++;
         }
 
         // count ssn
         if (dataClasses.includes(BreachDataTypes.SSN)) {
           summary.totalExposures++;
           summary.allExposures.socialSecurityNumbers++;
+          if (b.IsResolved) summary.fixedExposures.socialSecurityNumbers++;
         }
 
         // count IP
         if (dataClasses.includes(BreachDataTypes.IP)) {
           summary.totalExposures++;
           summary.allExposures.ipAddresses++;
+          if (b.IsResolved) summary.fixedExposures.ipAddresses++;
         }
 
         // count credit card
         if (dataClasses.includes(BreachDataTypes.CreditCard)) {
           summary.totalExposures++;
           summary.allExposures.creditCardNumbers++;
+          if (b.IsResolved) summary.fixedExposures.creditCardNumbers++;
         }
 
         // count pin numbers
         if (dataClasses.includes(BreachDataTypes.PIN)) {
           summary.totalExposures++;
           summary.allExposures.pinNumbers++;
+          if (b.IsResolved) summary.fixedExposures.pinNumbers++;
         }
 
         // count security questions
         if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
           summary.totalExposures++;
           summary.allExposures.securityQuestions++;
+          if (b.IsResolved) summary.fixedExposures.securityQuestions++;
         }
       });
     }
