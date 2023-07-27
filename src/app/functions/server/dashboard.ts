@@ -156,56 +156,80 @@ export function dashboardSummary(
         if (dataClasses.includes(BreachDataTypes.Email)) {
           summary.totalExposures++;
           summary.allExposures.emailAddresses++;
-          if (b.IsResolved) summary.fixedExposures.emailAddresses++;
+          if (b.IsResolved) {
+            summary.fixedExposures.emailAddresses++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count phone numbers
         if (dataClasses.includes(BreachDataTypes.Phone)) {
           summary.totalExposures++;
           summary.allExposures.phoneNumbers++;
-          if (b.IsResolved) summary.fixedExposures.phoneNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.phoneNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count password
         if (dataClasses.includes(BreachDataTypes.Passwords)) {
           summary.totalExposures++;
           summary.allExposures.passwords++;
-          if (b.IsResolved) summary.fixedExposures.passwords++;
+          if (b.IsResolved) {
+            summary.fixedExposures.passwords++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count ssn
         if (dataClasses.includes(BreachDataTypes.SSN)) {
           summary.totalExposures++;
           summary.allExposures.socialSecurityNumbers++;
-          if (b.IsResolved) summary.fixedExposures.socialSecurityNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.socialSecurityNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count IP
         if (dataClasses.includes(BreachDataTypes.IP)) {
           summary.totalExposures++;
           summary.allExposures.ipAddresses++;
-          if (b.IsResolved) summary.fixedExposures.ipAddresses++;
+          if (b.IsResolved) {
+            summary.fixedExposures.ipAddresses++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count credit card
         if (dataClasses.includes(BreachDataTypes.CreditCard)) {
           summary.totalExposures++;
           summary.allExposures.creditCardNumbers++;
-          if (b.IsResolved) summary.fixedExposures.creditCardNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.creditCardNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count pin numbers
         if (dataClasses.includes(BreachDataTypes.PIN)) {
           summary.totalExposures++;
           summary.allExposures.pinNumbers++;
-          if (b.IsResolved) summary.fixedExposures.pinNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.pinNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count security questions
         if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
           summary.totalExposures++;
           summary.allExposures.securityQuestions++;
-          if (b.IsResolved) summary.fixedExposures.securityQuestions++;
+          if (b.IsResolved) {
+            summary.fixedExposures.securityQuestions++;
+            summary.dataBreachFixedNum++;
+          }
         }
       });
     }
@@ -213,20 +237,30 @@ export function dashboardSummary(
 
   // count unique breaches
   summary.dataBreachTotalNum = uniqueBreaches.size;
-
-  return sanitizeExposures(summary, summary.dataBrokerTotalNum === 0);
+  const isBreachesOnly = summary.dataBrokerTotalNum === 0;
+  summary.sanitizedExposures = sanitizeExposures(
+    summary.allExposures,
+    summary.totalExposures,
+    isBreachesOnly
+  );
+  summary.fixedSanitizedExposures = sanitizeExposures(
+    summary.fixedExposures,
+    summary.dataBreachFixedNum + summary.dataBrokerFixedNum,
+    isBreachesOnly
+  );
+  return summary;
 }
 
 function sanitizeExposures(
-  summary: DashboardSummary,
+  exposures: Exposures,
+  totalExposures: number,
   breachesOnly = false
-): DashboardSummary {
+): SanitizedExposures {
   let numOfTopExposures = 4; // when we have both exposure types
   if (breachesOnly) {
     numOfTopExposures = 2; // when we have breaches only
   }
-  const { allExposures } = summary;
-  const sanitizedExposures = Object.entries(allExposures)
+  const sanitizedExposures = Object.entries(exposures)
     .sort((a, b) => b[1] - a[1])
     .map((e) => {
       const key = exposureKeyMap[e[0]];
@@ -235,11 +269,9 @@ function sanitizeExposures(
     .splice(0, numOfTopExposures);
   const other = sanitizedExposures.reduce(
     (total, cur) => total - (Object.values(cur).pop() || 0),
-    summary.totalExposures
+    totalExposures
   );
   sanitizedExposures.push({ "other-data-class": other });
-
-  summary.sanitizedExposures = sanitizedExposures;
   console.debug({ sanitizedExposures });
-  return summary;
+  return sanitizedExposures;
 }
