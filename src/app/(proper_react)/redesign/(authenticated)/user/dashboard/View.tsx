@@ -33,6 +33,8 @@ export type Props = {
   locale: string;
 };
 
+export type TabType = "action-needed" | "fixed";
+
 export const View = (props: Props) => {
   const l10n = useL10n();
 
@@ -266,11 +268,12 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          type={
+          content={
             isScanResultItemsEmpty
               ? "DataBrokerScanUpsellContent"
               : "LetsFixDataContent"
           }
+          type={selectedTab as TabType}
         />
         <section className={styles.exposuresArea}>
           {selectedTab === "action-needed" ? (
@@ -279,12 +282,6 @@ export const View = (props: Props) => {
             <TabContentFixed />
           )}
         </section>
-        <div className={styles.exposuresFilterWrapper}>
-          <ExposuresFilter setFilterValues={setFilters} />
-        </div>
-        <ul className={styles.exposureList}>
-          {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
-        </ul>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter setFilterValues={setFilters} />
         </div>
