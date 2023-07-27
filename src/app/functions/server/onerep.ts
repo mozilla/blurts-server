@@ -13,6 +13,7 @@ import {
 import { StateAbbr } from "../../../utils/states.js";
 import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
 import { authOptions } from "../../api/utils/auth";
+import { getFlag } from "./featureFlags";
 const log = mozlog("external.onerep");
 
 export type ProfileData = {
@@ -265,6 +266,17 @@ export async function isEligible() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
     throw new Error("No session");
+  }
+
+  const flagName = "FreeBrokerScan";
+  const flag = await getFlag(flagName);
+
+  if (
+    !flag ||
+    !flag.isEnabled ||
+    !flag.allowList?.includes(session.user.email)
+  ) {
+    return false;
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);

@@ -39,6 +39,9 @@ export async function POST(req: NextRequest) {
     // Signed in
     try {
       const newFlag = (await req.json()) as FeatureFlag;
+      if (!newFlag || !newFlag.name) {
+        throw new Error("No flag or flag name provided");
+      }
       const resp = await addFeatureFlag(newFlag);
       return NextResponse.json(resp);
     } catch (e) {
@@ -66,7 +69,7 @@ export async function PUT(req: NextRequest) {
       const reqBody = (await req.json()) as FeatureFlagPutRequest;
       // if toggle request
       if (reqBody.isEnabled !== undefined && reqBody.isEnabled) {
-        await enableFeatureFlagByName(reqBody.name);
+        await enableFeatureFlagByName(reqBody.name, reqBody.isEnabled);
       } else if (reqBody.isEnabled !== undefined && !reqBody.isEnabled) {
         await disableFeatureFlagByName(reqBody.name);
       }
