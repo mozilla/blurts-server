@@ -5,27 +5,30 @@
 "use client";
 
 import { signIn } from "next-auth/react";
+import { usePathname } from "next/navigation";
 import { useL10n } from "../../../hooks/l10n";
 
 export type Props = {
   autoSignIn?: boolean;
 };
 
-function initSignIn() {
-  void signIn("fxa", { callbackUrl: "/user/breaches" });
+function initSignIn(callbackUrl: string) {
+  void signIn("fxa", { callbackUrl });
 }
 
 export const SignInButton = ({ autoSignIn }: Props) => {
   const l10n = useL10n();
+  const pathname = usePathname();
 
+  const callbackUrl = pathname === "/" ? "/user/breaches" : pathname;
   if (autoSignIn) {
-    initSignIn();
+    initSignIn(callbackUrl);
     return null;
   }
 
   return (
     <button
-      onClick={() => initSignIn()}
+      onClick={() => initSignIn(callbackUrl)}
       data-cta-id="sign-in-1"
       className="button secondary"
     >
