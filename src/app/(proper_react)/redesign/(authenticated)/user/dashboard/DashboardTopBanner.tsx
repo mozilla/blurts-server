@@ -3,19 +3,22 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./DashboardTopBanner.module.scss";
+import { TabType } from "./View";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
+import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 
 export type DashboardTopBannerProps = {
-  type:
+  content:
     | "LetsFixDataContent"
     | "DataBrokerScanUpsellContent"
     | "NoExposuresFoundContent"
     | "ResumeBreachResolutionContent"
     | "YourDataIsProtectedContent";
   bannerData: DashboardSummary;
+  type: TabType;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -122,12 +125,12 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
     },
   };
 
-  const content = contentData[props.type];
+  const content = contentData[props.content];
 
   return (
     <div className={styles.container}>
       <div className={styles.explainerContentWrapper}>
-        {content && (
+        {content && props.type !== "fixed" && (
           <div className={styles.explainerContent}>
             <h3>{content.headline}</h3>
             <p>{content.description}</p>
@@ -137,6 +140,13 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
               </Button>
             </span>
           </div>
+        )}
+        {props.type === "fixed" && (
+          <ProgressCard
+            resolvedByYou={3}
+            autoRemoved={5}
+            totalNumExposures={20}
+          />
         )}
       </div>
       <div className={styles.chart}>

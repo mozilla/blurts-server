@@ -33,10 +33,19 @@ export type Props = {
   locale: string;
 };
 
+export type TabType = "action-needed" | "fixed";
+
 export const View = (props: Props) => {
   const l10n = useL10n();
 
+  const initialFilterState: FilterState = {
+    exposureType: "",
+    dateFound: "",
+    status: "",
+  };
+  const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
+
   const tabsData = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
@@ -52,18 +61,9 @@ export const View = (props: Props) => {
     (count, emailData) => count + emailData.breaches.length,
     0
   );
-
   const dateObject = (isoString: string): Date => {
     return new Date(isoString);
   };
-
-  const initialFilterState: FilterState = {
-    exposureType: "",
-    dateFound: "",
-    status: "",
-  };
-
-  const [filters, setFilters] = useState<FilterState>(initialFilterState);
 
   // Only breaches exposure cards
   const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
@@ -186,6 +186,15 @@ export const View = (props: Props) => {
           }
         );
       }
+
+      // FIXME: Use the actual exposure status as soon as we have real data.
+      const status =
+        selectedTab === "fixed"
+          ? Math.random() >= 0.5
+            ? "progress"
+            : "fixed"
+          : "needAction";
+
       return isScanResult(exposure) ? (
         // Scanned result
         <li
@@ -197,7 +206,7 @@ export const View = (props: Props) => {
             exposureName={exposure.data_broker}
             exposureDetailsLink={exposure.link}
             dateFound={dateObject(exposure.created_at)}
-            statusPillType="needAction"
+            statusPillType={status}
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.data_broker)}
           />
@@ -214,7 +223,7 @@ export const View = (props: Props) => {
             fromEmail={email}
             exposureDetailsLink=""
             dateFound={exposure.AddedDate}
-            statusPillType="needAction"
+            statusPillType={status}
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.Name)}
           />
@@ -224,50 +233,62 @@ export const View = (props: Props) => {
   );
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
+  const TabContentActionNeeded = () => (
+    <>
+      <h2 className={styles.exposuresAreaHeadline}>
+        {l10n.getString("dashboard-exposures-area-headline")}
+      </h2>
+      <p className={styles.exposuresAreaDescription}>
+        {l10n.getString("dashboard-exposures-area-description", {
+          // TODO: Use real user data
+          exposures_total_num: 1337,
+          data_breach_total_num: totalBreaches,
+          data_broker_total_num: 1337,
+        })}
+      </p>
+    </>
+  );
+
+  const TabContentFixed = () => (
+    <>
+      <h2 className={styles.exposuresAreaHeadline}>
+        {l10n.getString("dashboard-fixed-area-headline")}
+      </h2>
+    </>
+  );
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+          defaultSelectedKey={selectedTab}
         />
       </Toolbar>
       <div className={styles.dashboardContent}>
-        {selectedTab === "action-needed" ? (
-          <>
-            <DashboardTopBanner
-              bannerData={props.bannerData}
-              type={
-                isScanResultItemsEmpty
-                  ? "DataBrokerScanUpsellContent"
-                  : "LetsFixDataContent"
-              }
-            />
-            <section className={styles.exposuresArea}>
-              <h2 className={styles.exposuresAreaHeadline}>
-                {l10n.getString("dashboard-exposures-area-headline")}
-              </h2>
-              <p className={styles.exposuresAreaDescription}>
-                {l10n.getString("dashboard-exposures-area-description", {
-                  // TODO: Use real user data
-                  exposures_total_num: 1337,
-                  data_breach_total_num: totalBreaches,
-                  data_broker_total_num: 1337,
-                })}
-              </p>
-              <div className={styles.exposuresFilterWrapper}>
-                <ExposuresFilter setFilterValues={setFilters} />
-              </div>
-              <ul className={styles.exposureList}>
-                {isScanResultItemsEmpty
-                  ? breachExposureCards
-                  : exposureCardElems}
-              </ul>
-            </section>
-          </>
-        ) : (
-          <>Fixed tab content</>
-        )}
+        <DashboardTopBanner
+          bannerData={props.bannerData}
+          content={
+            isScanResultItemsEmpty
+              ? "DataBrokerScanUpsellContent"
+              : "LetsFixDataContent"
+          }
+          type={selectedTab as TabType}
+        />
+        <section className={styles.exposuresArea}>
+          {selectedTab === "action-needed" ? (
+            <TabContentActionNeeded />
+          ) : (
+            <TabContentFixed />
+          )}
+        </section>
+        <div className={styles.exposuresFilterWrapper}>
+          <ExposuresFilter setFilterValues={setFilters} />
+        </div>
+        <ul className={styles.exposureList}>
+          {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
+        </ul>
       </div>
     </div>
   );
