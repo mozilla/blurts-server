@@ -16,6 +16,7 @@ export type DashboardTopBannerProps = {
     | "ResumeBreachResolutionContent"
     | "YourDataIsProtectedContent";
   bannerData: DashboardSummary;
+  hasRunScan: boolean;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -61,7 +62,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           "dashboard-top-banner-monitor-protects-your-even-more-cta"
         ),
         onClick: () => {
-          // do something
+          window.location.href = "/redesign/user/welcome";
         },
       },
     },
@@ -140,7 +141,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         )}
       </div>
       <div className={styles.chart}>
-        <Chart data={chartData} />
+        <Chart hasRunScan={props.hasRunScan} data={chartData} />
       </div>
     </div>
   );
