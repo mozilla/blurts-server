@@ -201,9 +201,9 @@ function sanitizeExposures(
   summary: DashboardSummary,
   breachesOnly = false
 ): DashboardSummary {
-  let NUM_OF_TOP_EXPOSURES = 4;
+  let numOfTopExposures = 4; // when we have both exposure types
   if (breachesOnly) {
-    NUM_OF_TOP_EXPOSURES = 2;
+    numOfTopExposures = 2; // when we have breaches only
   }
   const { allExposures } = summary;
   const sanitizedExposures = Object.entries(allExposures)
@@ -212,7 +212,7 @@ function sanitizeExposures(
       const key = exposureKeyMap[e[0]];
       return { [key]: e[1] };
     })
-    .splice(0, NUM_OF_TOP_EXPOSURES);
+    .splice(0, numOfTopExposures);
   const other = sanitizedExposures.reduce(
     (total, cur) => total - (Object.values(cur).pop() || 0),
     summary.totalExposures
