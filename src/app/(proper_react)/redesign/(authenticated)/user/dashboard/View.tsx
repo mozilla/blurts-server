@@ -212,12 +212,7 @@ export const View = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar user={props.user}>
-        TODO:{" "}
-        <a href="https://react-spectrum.adobe.com/react-aria/useTabList.html">
-          add a tab list
-        </a>
-      </Toolbar>
+      <Toolbar user={props.user} />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
