@@ -83,6 +83,12 @@ export type RemovalStatus =
   | "optout_in_progress"
   | "waiting_for_verification"
   | "removed";
+export const RemovalStatusMap = {
+  New: "new",
+  OptOutInProgress: "optout_in_progress",
+  WaitingForVerification: "waiting_for_verification",
+  Removed: "removed",
+};
 
 export const ONEREP_DATA_BROKER_COUNT = 190;
 
