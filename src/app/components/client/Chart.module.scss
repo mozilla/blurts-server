@@ -50,10 +50,10 @@
   }
 
   .chart {
-    flex: 1;
-    width: 100%;
-    max-width: 250px;
     align-self: center;
+    flex: 1;
+    max-width: 200px;
+    width: 100%;
 
     // Font size set in Chart.tsx
     .headingNr {
@@ -78,12 +78,6 @@
     flex-direction: column;
     display: flex;
     gap: $spacing-sm;
-
-    @media screen and (min-width: $screen-lg) {
-      height: auto;
-      align-items: center;
-      max-width: 200px; // width of legend and prompt
-    }
 
     .prompt {
       font: $text-body-xs;

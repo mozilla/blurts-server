@@ -1,30 +1,28 @@
 @import "../../../../../tokens";
 
 .container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid rgba($color-purple-50, 0.2);
-  border-radius: $border-radius-md;
-  padding: $layout-xs;
   background-color: $color-white;
   background-image: url("./images/dashboard-top-banner-wave.svg");
-  background-size: cover;
   background-position: center;
+  background-size: cover;
+  border-radius: $border-radius-md;
+  border: 1px solid rgba($color-purple-50, 0.2);
+  display: flex;
+  flex-direction: column;
   gap: $layout-xs;
-  align-items: center;
+  padding: $layout-xs;
 
-  @media screen and (min-width: $screen-md) {
-    padding: $layout-lg $layout-xs;
+  @media screen and (min-width: $screen-lg) {
+    padding: $layout-md;
     flex-direction: row;
   }
 
   .explainerContentWrapper {
-    padding: $spacing-sm;
-    display: flex;
     align-items: center;
+    display: flex;
+    justify-content: center;
 
     @media screen and (min-width: $screen-md) {
-      padding: $spacing-md;
       justify-content: center;
       flex: 0.5 1 0%;
 

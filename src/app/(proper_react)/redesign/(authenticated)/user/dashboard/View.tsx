@@ -4,6 +4,7 @@
 
 "use client";
 
+import { Key, useState } from "react";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -18,7 +19,7 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { useState } from "react";
+import { TabList } from "../../../../../components/client/TabList";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
@@ -32,24 +33,37 @@ export type Props = {
   locale: string;
 };
 
+export type TabType = "action-needed" | "fixed";
+
 export const View = (props: Props) => {
   const l10n = useL10n();
-  const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
-    (count, emailData) => count + emailData.breaches.length,
-    0
-  );
-
-  const dateObject = (isoString: string): Date => {
-    return new Date(isoString);
-  };
 
   const initialFilterState: FilterState = {
     exposureType: "",
     dateFound: "",
     status: "",
   };
-
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
+  const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
+
+  const tabsData = [
+    {
+      name: l10n.getString("dashboard-tab-label-action-needed"),
+      key: "action-needed",
+    },
+    {
+      name: l10n.getString("dashboard-tab-label-fixed"),
+      key: "fixed",
+    },
+  ];
+
+  const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
+    (count, emailData) => count + emailData.breaches.length,
+    0
+  );
+  const dateObject = (isoString: string): Date => {
+    return new Date(isoString);
+  };
 
   // Only breaches exposure cards
   const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
@@ -172,6 +186,15 @@ export const View = (props: Props) => {
           }
         );
       }
+
+      // FIXME: Use the actual exposure status as soon as we have real data.
+      const status =
+        selectedTab === "fixed"
+          ? Math.random() >= 0.5
+            ? "progress"
+            : "fixed"
+          : "needAction";
+
       return isScanResult(exposure) ? (
         // Scanned result
         <li
@@ -183,7 +206,7 @@ export const View = (props: Props) => {
             exposureName={exposure.data_broker}
             exposureDetailsLink={exposure.link}
             dateFound={dateObject(exposure.created_at)}
-            statusPillType="needAction"
+            statusPillType={status}
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.data_broker)}
           />
@@ -200,7 +223,7 @@ export const View = (props: Props) => {
             fromEmail={email}
             exposureDetailsLink=""
             dateFound={exposure.AddedDate}
-            statusPillType="needAction"
+            statusPillType={status}
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.Name)}
           />
@@ -210,43 +233,63 @@ export const View = (props: Props) => {
   );
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
+  const TabContentActionNeeded = () => (
+    <>
+      <h2 className={styles.exposuresAreaHeadline}>
+        {l10n.getString("dashboard-exposures-area-headline")}
+      </h2>
+      <p className={styles.exposuresAreaDescription}>
+        {l10n.getString("dashboard-exposures-area-description", {
+          // TODO: Use real user data
+          exposures_total_num: 1337,
+          data_breach_total_num: totalBreaches,
+          data_broker_total_num: 1337,
+        })}
+      </p>
+    </>
+  );
+
+  const TabContentFixed = () => (
+    <>
+      <h2 className={styles.exposuresAreaHeadline}>
+        {l10n.getString("dashboard-fixed-area-headline")}
+      </h2>
+    </>
+  );
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
-        TODO:{" "}
-        <a href="https://react-spectrum.adobe.com/react-aria/useTabList.html">
-          add a tab list
-        </a>
+        <TabList
+          tabs={tabsData}
+          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+          defaultSelectedKey={selectedTab}
+        />
       </Toolbar>
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          type={
+          content={
             isScanResultItemsEmpty
               ? "DataBrokerScanUpsellContent"
               : "LetsFixDataContent"
           }
+          type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
         />
         <section className={styles.exposuresArea}>
-          <h2 className={styles.exposuresAreaHeadline}>
-            {l10n.getString("dashboard-exposures-area-headline")}
-          </h2>
-          <p className={styles.exposuresAreaDescription}>
-            {l10n.getString("dashboard-exposures-area-description", {
-              // TODO: Use real user data
-              exposures_total_num: 1337,
-              data_breach_total_num: totalBreaches,
-              data_broker_total_num: 1337,
-            })}
-          </p>
-          <div className={styles.exposuresFilterWrapper}>
-            <ExposuresFilter setFilterValues={setFilters} />
-          </div>
-          <ul className={styles.exposureList}>
-            {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
-          </ul>
+          {selectedTab === "action-needed" ? (
+            <TabContentActionNeeded />
+          ) : (
+            <TabContentFixed />
+          )}
         </section>
+        <div className={styles.exposuresFilterWrapper}>
+          <ExposuresFilter setFilterValues={setFilters} />
+        </div>
+        <ul className={styles.exposureList}>
+          {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
+        </ul>
       </div>
     </div>
   );
