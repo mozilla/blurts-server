@@ -271,11 +271,18 @@ export async function isEligible() {
   const flagName = "FreeBrokerScan";
   const flag = await getFlag(flagName);
 
-  if (
-    !flag ||
-    !flag.isEnabled ||
-    !flag.allowList?.includes(session.user.email)
-  ) {
+  if (!flag) {
+    console.warn("Flag does not exist:", flagName);
+    return false;
+  }
+
+  if (!flag.isEnabled) {
+    console.warn("Flag is not enabled:", flagName);
+    return false;
+  }
+
+  if (!flag.allowList?.includes(session.user.email)) {
+    console.warn("User is not on allow list for flag:", flagName);
     return false;
   }
 
@@ -290,6 +297,7 @@ export async function isEligible() {
 
     // FIXME only premium users get once monthly
     if (latestScanDate > lastMonth) {
+      console.warn("User has already used free scan");
       return false;
     }
   }
