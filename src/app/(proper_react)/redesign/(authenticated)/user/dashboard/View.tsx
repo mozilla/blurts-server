@@ -46,7 +46,6 @@ export const View = (props: Props) => {
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
-
   const tabsData = [
     {
       name: l10n.getString("dashboard-tab-label-action-needed"),
@@ -57,6 +56,7 @@ export const View = (props: Props) => {
       key: "fixed",
     },
   ];
+  const isActionNeededTab = selectedTab === "action-needed";
 
   const dateObject = (isoString: string): Date => {
     return new Date(isoString);
@@ -118,6 +118,23 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
+  const getBreachStatus = (
+    exposure: ScanResult | HibpLikeDbBreach
+  ): StatusPillType => {
+    if (isScanResult(exposure)) {
+      switch (exposure.status) {
+        case "removed":
+          return "fixed";
+        case "waiting_for_verification":
+          return "progress";
+        default:
+          return "needAction";
+      }
+    }
+
+    return exposure.IsResolved ? "fixed" : "needAction";
+  };
+
   const filteredExposures = arraySortedByDate.filter(
     (exposure: ScanResult | HibpLikeDbBreach) => {
       const exposureType = isScanResult(exposure)
@@ -164,27 +181,13 @@ export const View = (props: Props) => {
         }
       }
 
-      // TODO: Filter by status
-      return true;
+      // Filter by status
+      // FIXME: Also take filter values into account.
+      const breachStatus = getBreachStatus(exposure);
+      const isActionNeeded = breachStatus === "needAction";
+      return isActionNeededTab ? isActionNeeded : !isActionNeeded;
     }
   );
-
-  const getBreachStatus = (
-    exposure: ScanResult | HibpLikeDbBreach
-  ): StatusPillType => {
-    if (isScanResult(exposure)) {
-      switch (exposure.status) {
-        case "removed":
-          return "fixed";
-        case "waiting_for_verification":
-          return "progress";
-        default:
-          return "needAction";
-      }
-    }
-
-    return exposure.IsResolved ? "fixed" : "needAction";
-  };
 
   const exposureCardElems = filteredExposures.map(
     (exposure: ScanResult | HibpLikeDbBreach, index) => {
@@ -290,11 +293,7 @@ export const View = (props: Props) => {
           hasRunScan={!isScanResultItemsEmpty}
         />
         <section className={styles.exposuresArea}>
-          {selectedTab === "action-needed" ? (
-            <TabContentActionNeeded />
-          ) : (
-            <TabContentFixed />
-          )}
+          {isActionNeededTab ? <TabContentActionNeeded /> : <TabContentFixed />}
         </section>
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter setFilterValues={setFilters} />
