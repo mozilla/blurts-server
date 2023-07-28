@@ -24,6 +24,7 @@ import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { StatusPillType } from "../../../../../components/server/StatusPill";
 
 export type Props = {
   user: Session["user"];
@@ -119,14 +120,14 @@ export const View = (props: Props) => {
 
   const filteredExposures = arraySortedByDate.filter(
     (exposure: ScanResult | HibpLikeDbBreach) => {
-      const getExposureType = isScanResult(exposure)
+      const exposureType = isScanResult(exposure)
         ? "data-broker"
         : "data-breach";
 
       // Filter by exposure type
       if (
         filters.exposureType &&
-        filters.exposureType !== getExposureType &&
+        filters.exposureType !== exposureType &&
         filters.exposureType !== "show-all-exposure-type"
       ) {
         return false;
@@ -162,10 +163,28 @@ export const View = (props: Props) => {
           }
         }
       }
+
       // TODO: Filter by status
       return true;
     }
   );
+
+  const getBreachStatus = (
+    exposure: ScanResult | HibpLikeDbBreach
+  ): StatusPillType => {
+    if (isScanResult(exposure)) {
+      switch (exposure.status) {
+        case "removed":
+          return "fixed";
+        case "waiting_for_verification":
+          return "progress";
+        default:
+          return "needAction";
+      }
+    }
+
+    return exposure.IsResolved ? "fixed" : "needAction";
+  };
 
   const exposureCardElems = filteredExposures.map(
     (exposure: ScanResult | HibpLikeDbBreach, index) => {
@@ -183,13 +202,7 @@ export const View = (props: Props) => {
         );
       }
 
-      // FIXME: Use the actual exposure status as soon as we have real data.
-      const status =
-        selectedTab === "fixed"
-          ? Math.random() >= 0.5
-            ? "progress"
-            : "fixed"
-          : "needAction";
+      const status = getBreachStatus(exposure);
 
       return isScanResult(exposure) ? (
         // Scanned result
