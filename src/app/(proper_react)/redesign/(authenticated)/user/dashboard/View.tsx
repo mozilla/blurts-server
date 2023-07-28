@@ -135,57 +135,70 @@ export const View = (props: Props) => {
     return exposure.IsResolved ? "fixed" : "needAction";
   };
 
+  const getDaysAgoDate = (numOfDays: number) => {
+    const currentDate = new Date();
+    return new Date(currentDate.getTime() - numOfDays * 24 * 60 * 60 * 1000);
+  };
+
   const filteredExposures = arraySortedByDate.filter(
     (exposure: ScanResult | HibpLikeDbBreach) => {
-      const exposureType = isScanResult(exposure)
-        ? "data-broker"
-        : "data-breach";
-
-      // Filter by exposure type
+      // Filter by status
+      const breachStatus = getBreachStatus(exposure);
       if (
-        filters.exposureType &&
-        filters.exposureType !== exposureType &&
-        filters.exposureType !== "show-all-exposure-type"
+        (isActionNeededTab && breachStatus !== "needAction") ||
+        (!isActionNeededTab && breachStatus === "needAction")
       ) {
         return false;
       }
 
+      let isFilteredByStatus;
+      switch (filters.status) {
+        case "action-needed":
+          isFilteredByStatus = breachStatus === "needAction";
+          break;
+        case "in-progress":
+          isFilteredByStatus = breachStatus === "progress";
+          break;
+        case "fixed":
+          isFilteredByStatus = breachStatus === "fixed";
+          break;
+        default:
+          isFilteredByStatus = true;
+          break;
+      }
+
+      // Filter by exposure type
+      const exposureType = isScanResult(exposure)
+        ? "data-broker"
+        : "data-breach";
+      const isFilteredByExposureType =
+        filters.exposureType === "" ||
+        filters.exposureType === "show-all-exposure-type" ||
+        filters.exposureType === exposureType;
+
       // Filter by date
-      if (filters.dateFound && filters.dateFound !== "show-all-date-found") {
-        const currentDate = new Date();
+      let isFilteredByDate = true;
+      if (filters.dateFound !== "" && filters.dateFound !== "show-all-date") {
         const exposureDate = isScanResult(exposure)
           ? new Date(exposure.created_at)
           : exposure.AddedDate;
-
-        if (filters.dateFound === "seven-days") {
-          const sevenDaysAgo = new Date(
-            currentDate.getTime() - 7 * 24 * 60 * 60 * 1000
-          );
-          if (exposureDate < sevenDaysAgo) {
-            return false;
-          }
-        } else if (filters.dateFound === "thirty-days") {
-          const thirtyDaysAgo = new Date(
-            currentDate.getTime() - 30 * 24 * 60 * 60 * 1000
-          );
-          if (exposureDate < thirtyDaysAgo) {
-            return false;
-          }
-        } else if (filters.dateFound === "last-year") {
-          const oneYearAgo = new Date(
-            currentDate.getTime() - 365 * 24 * 60 * 60 * 1000
-          );
-          if (exposureDate < oneYearAgo) {
-            return false;
-          }
+        switch (filters.dateFound) {
+          case "seven-days":
+            isFilteredByDate = exposureDate >= getDaysAgoDate(7);
+            break;
+          case "thirty-days":
+            isFilteredByDate = exposureDate >= getDaysAgoDate(30);
+            break;
+          case "last-year":
+            isFilteredByDate = exposureDate >= getDaysAgoDate(365);
+            break;
+          default:
+            // Do nothing
+            break;
         }
       }
 
-      // Filter by status
-      // FIXME: Also take filter values into account.
-      const breachStatus = getBreachStatus(exposure);
-      const isActionNeeded = breachStatus === "needAction";
-      return isActionNeededTab ? isActionNeeded : !isActionNeeded;
+      return isFilteredByExposureType && isFilteredByDate && isFilteredByStatus;
     }
   );
 
