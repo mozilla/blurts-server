@@ -15,9 +15,11 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import ModalImage from "../client/assets/modal-default-img.svg";
 import Image from "next/image";
+import Link from "next/link";
 
 export type Props = {
   data: Array<[string, number]>;
+  hasRunScan: boolean;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -92,6 +94,15 @@ export const DoughnutChart = (props: Props) => {
           {l10n.getString("modal-cta-ok")}
         </Button>
       </div>
+    </div>
+  );
+
+  const prompt = (
+    <div className={styles.prompt}>
+      <p>{l10n.getString("exposure-chart-returning-user-upgrade-prompt")}</p>
+      <Link href="/redesign/user/welcome">
+        {l10n.getString("exposure-chart-returning-user-upgrade-prompt-cta")}
+      </Link>
     </div>
   );
 
@@ -177,6 +188,7 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
+            {!props.hasRunScan ? prompt : null}
           </div>
         </div>
         <figcaption>

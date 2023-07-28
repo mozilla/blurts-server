@@ -221,6 +221,7 @@ export const View = (props: Props) => {
               ? "DataBrokerScanUpsellContent"
               : "LetsFixDataContent"
           }
+          hasRunScan={!isScanResultItemsEmpty}
         />
         <section className={styles.exposuresArea}>
           <h2 className={styles.exposuresAreaHeadline}>
