@@ -12,7 +12,7 @@
   gap: $layout-xs;
   padding: $layout-xs;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-xl) {
     padding: $layout-md;
     flex-direction: row;
   }

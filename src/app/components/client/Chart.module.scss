@@ -44,7 +44,7 @@
   flex-direction: column;
   gap: $spacing-md;
 
-  @media screen and (min-width: $screen-lg) {
+  @media screen and (min-width: $screen-sm) {
     flex-direction: row;
     gap: $spacing-xl;
   }
