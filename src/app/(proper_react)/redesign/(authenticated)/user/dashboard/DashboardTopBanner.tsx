@@ -25,7 +25,12 @@ export type DashboardTopBannerProps = {
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
 
-  const chartData: [string, number][] = props.bannerData.sanitizedExposures.map(
+  const isFixedTab = props.type === "fixed";
+
+  const chartDataKey = isFixedTab
+    ? "fixedSanitizedExposures"
+    : "sanitizedExposures";
+  const chartData: [string, number][] = props.bannerData[chartDataKey].map(
     (obj) => {
       const [key, value] = Object.entries(obj)[0];
       return [l10n.getString(key), value];
@@ -129,30 +134,32 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const content = contentData[props.content];
 
   return (
-    <div className={styles.container}>
-      <div className={styles.explainerContentWrapper}>
-        {content && props.type !== "fixed" && (
-          <div className={styles.explainerContent}>
-            <h3>{content.headline}</h3>
-            <p>{content.description}</p>
-            <span className={styles.cta}>
-              <Button variant="primary" small onClick={content.cta.onClick}>
-                {content.cta.content}
-              </Button>
-            </span>
-          </div>
-        )}
-        {props.type === "fixed" && (
-          <ProgressCard
-            resolvedByYou={3}
-            autoRemoved={5}
-            totalNumExposures={20}
-          />
-        )}
+    <>
+      <div className={styles.container}>
+        <div className={styles.explainerContentWrapper}>
+          {content && !isFixedTab && (
+            <div className={styles.explainerContent}>
+              <h3>{content.headline}</h3>
+              <p>{content.description}</p>
+              <span className={styles.cta}>
+                <Button variant="primary" small onClick={content.cta.onClick}>
+                  {content.cta.content}
+                </Button>
+              </span>
+            </div>
+          )}
+          {isFixedTab && (
+            <ProgressCard
+              resolvedByYou={3}
+              autoRemoved={5}
+              totalNumExposures={20}
+            />
+          )}
+        </div>
+        <div className={styles.chart}>
+          <Chart hasRunScan={props.hasRunScan} data={chartData} />
+        </div>
       </div>
-      <div className={styles.chart}>
-        <Chart hasRunScan={props.hasRunScan} data={chartData} />
-      </div>
-    </div>
+    </>
   );
 };
