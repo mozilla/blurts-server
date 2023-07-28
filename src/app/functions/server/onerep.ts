@@ -291,15 +291,8 @@ export async function isEligible() {
   const scanResult = await getLatestOnerepScan(profileId);
 
   if (scanResult?.onerep_scan_results?.data?.length) {
-    const latestScanDate = new Date(scanResult["created_at"]);
-    const lastMonth = new Date();
-    lastMonth.setMonth(lastMonth.getMonth() - 1);
-
-    // FIXME only premium users get once monthly
-    if (latestScanDate > lastMonth) {
-      console.warn("User has already used free scan");
-      return false;
-    }
+    console.warn("User has already used free scan");
+    return false;
   }
 
   return true;
