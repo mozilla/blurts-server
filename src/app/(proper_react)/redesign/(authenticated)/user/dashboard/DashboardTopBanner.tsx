@@ -26,6 +26,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
 
   const isFixedTab = props.type === "fixed";
+  const { totalExposures, dataBrokerFixedNum } = props.bannerData;
 
   const chartDataKey = isFixedTab
     ? "fixedSanitizedExposures"
@@ -62,7 +63,10 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-monitor-protects-your-even-more-description",
         {
-          data_broker_sites_total_num: 190,
+          data_broker_sites_total_num: parseInt(
+            process.env.ONEREP_DATA_BROKER_COUNT || "",
+            10
+          ),
         }
       ),
       cta: {
@@ -79,7 +83,10 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-no-exposures-found-description",
         {
-          data_broker_sites_total_num: 190,
+          data_broker_sites_total_num: parseInt(
+            process.env.ONEREP_DATA_BROKER_COUNT || "",
+            10
+          ),
         }
       ),
       cta: {
@@ -96,8 +103,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-lets-keep-protecting-description",
         {
-          //TODO: Add remaining total exposures
-          remaining_exposures_total_num: 40,
+          remaining_exposures_total_num: totalExposures - dataBrokerFixedNum,
         }
       ),
       cta: {
@@ -116,8 +122,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-your-data-is-protected-description",
         {
-          //TODO: Add original count of exposures
-          starting_exposure_total_num: 100,
+          starting_exposure_total_num: totalExposures,
         }
       ),
       cta: {
@@ -150,9 +155,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           )}
           {isFixedTab && (
             <ProgressCard
-              resolvedByYou={3}
-              autoRemoved={5}
-              totalNumExposures={20}
+              resolvedByYou={0}
+              autoRemoved={0}
+              totalNumExposures={totalExposures}
             />
           )}
         </div>

@@ -57,10 +57,6 @@ export const View = (props: Props) => {
     },
   ];
 
-  const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
-    (count, emailData) => count + emailData.breaches.length,
-    0
-  );
   const dateObject = (isoString: string): Date => {
     return new Date(isoString);
   };
@@ -233,21 +229,24 @@ export const View = (props: Props) => {
   );
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
 
-  const TabContentActionNeeded = () => (
-    <>
-      <h2 className={styles.exposuresAreaHeadline}>
-        {l10n.getString("dashboard-exposures-area-headline")}
-      </h2>
-      <p className={styles.exposuresAreaDescription}>
-        {l10n.getString("dashboard-exposures-area-description", {
-          // TODO: Use real user data
-          exposures_total_num: 1337,
-          data_breach_total_num: totalBreaches,
-          data_broker_total_num: 1337,
-        })}
-      </p>
-    </>
-  );
+  const TabContentActionNeeded = () => {
+    const { dataBreachTotalNum, dataBrokerTotalNum, totalExposures } =
+      props.bannerData;
+    return (
+      <>
+        <h2 className={styles.exposuresAreaHeadline}>
+          {l10n.getString("dashboard-exposures-area-headline")}
+        </h2>
+        <p className={styles.exposuresAreaDescription}>
+          {l10n.getString("dashboard-exposures-area-description", {
+            exposures_total_num: totalExposures,
+            data_breach_total_num: dataBreachTotalNum,
+            data_broker_total_num: dataBrokerTotalNum,
+          })}
+        </p>
+      </>
+    );
+  };
 
   const TabContentFixed = () => (
     <>
