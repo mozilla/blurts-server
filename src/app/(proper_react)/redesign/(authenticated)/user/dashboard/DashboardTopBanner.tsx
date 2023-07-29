@@ -7,6 +7,7 @@ import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { useRouter } from "next/navigation";
 
 export type DashboardTopBannerProps = {
   type:
@@ -16,10 +17,12 @@ export type DashboardTopBannerProps = {
     | "ResumeBreachResolutionContent"
     | "YourDataIsProtectedContent";
   bannerData: DashboardSummary;
+  hasRunScan: boolean;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
+  const router = useRouter();
 
   const chartData: [string, number][] = props.bannerData.sanitizedExposures.map(
     (obj) => {
@@ -61,7 +64,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           "dashboard-top-banner-monitor-protects-your-even-more-cta"
         ),
         onClick: () => {
-          // do something
+          router.push("/redesign/user/welcome");
         },
       },
     },
@@ -140,7 +143,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         )}
       </div>
       <div className={styles.chart}>
-        <Chart data={chartData} />
+        <Chart hasRunScan={props.hasRunScan} data={chartData} />
       </div>
     </div>
   );

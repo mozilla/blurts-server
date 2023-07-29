@@ -107,7 +107,7 @@ function formatDataClassesArray (dataClasses) {
  * do not store them in our database, at the time of writing).
  *
  * @typedef {{ FaviconUrl?: string }} WithFaviconUrl
- * @typedef {WithFaviconUrl & Omit<import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach, "IsResolved" | "recencyIndex" | "ResolutionsChecked" | "AddedDate" | "ModifiedDate"> & { AddedDate: Date; ModifiedDate: Date; }} HibpLikeDbBreach
+ * @typedef {WithFaviconUrl & Omit<import('../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.d.ts').Breach, "recencyIndex" | "ResolutionsChecked" | "AddedDate" | "ModifiedDate"> & { AddedDate: Date; ModifiedDate: Date; }} HibpLikeDbBreach
  */
 
 /**
