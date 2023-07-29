@@ -68,7 +68,7 @@ export interface Breach {
   Id: number;
   IsFabricated: boolean;
   IsMalware: boolean;
-  IsResolved: boolean;
+  IsResolved?: boolean;
   IsRetired: boolean;
   IsSensitive: boolean;
   IsSpamList: boolean;

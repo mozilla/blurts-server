@@ -39,6 +39,8 @@ exposure-chart-legend-heading-nr = Number
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
+exposure-chart-returning-user-upgrade-prompt = Home address, family members and more are not yet included.
+exposure-chart-returning-user-upgrade-prompt-cta = Start a free scan
 
 modal-active-number-of-exposures-title = About your number of active exposures
 # Variables:
