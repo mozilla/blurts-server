@@ -83,10 +83,17 @@ async function setOnerepScanResults(
     });
 }
 
+async function getScansCount(startDate: string, endDate: string) {
+  return await knex("onerep_scans")
+    .count("id")
+    .whereBetween("created_at", [startDate, endDate]);
+}
+
 export {
   getLatestOnerepScan,
   getOnerepScanResults,
   setOnerepProfileId,
   setOnerepScan,
   setOnerepScanResults,
+  getScansCount,
 };
