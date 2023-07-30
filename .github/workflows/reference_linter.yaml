@@ -3,14 +3,14 @@ on:
   push:
     paths:
       - 'locales/en/**.ftl'
-      - 'pendingTranslations.ftl'
+      - 'locales-pending/*.ftl'
     branches:
       - main
       - localization
   pull_request:
     paths:
       - 'locales/en/**.ftl'
-      - 'pendingTranslations.ftl'
+      - 'locales-pending/*.ftl'
     branches:
       - main
       - localization
