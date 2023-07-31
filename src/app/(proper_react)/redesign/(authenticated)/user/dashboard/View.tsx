@@ -304,6 +304,9 @@ export const View = (props: Props) => {
           }
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
+          ctaCallback={() => {
+            setSelectedTab("fixed");
+          }}
         />
         <section className={styles.exposuresArea}>
           {isActionNeededTab ? <TabContentActionNeeded /> : <TabContentFixed />}

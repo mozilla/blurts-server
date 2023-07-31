@@ -20,6 +20,7 @@ export type DashboardTopBannerProps = {
   bannerData: DashboardSummary;
   hasRunScan: boolean;
   type: TabType;
+  ctaCallback?: () => void;
 };
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
@@ -130,7 +131,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           "dashboard-top-banner-your-data-is-protected-cta"
         ),
         onClick: () => {
-          // do something
+          props?.ctaCallback?.();
         },
       },
     },
