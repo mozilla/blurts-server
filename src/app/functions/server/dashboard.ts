@@ -4,30 +4,39 @@
 
 import { BreachDataTypes } from "../../../utils/breachResolution";
 import type { UserBreaches } from "./getUserBreaches";
-import type { ScanResult } from "./onerep";
+import { ScanResult, RemovalStatusMap } from "./onerep";
+
+type Exposures = {
+  // shared
+  emailAddresses: number;
+  phoneNumbers: number;
+
+  // data brokers
+  addresses: number;
+  familyMembers: number;
+  fullNames: number;
+
+  // data breaches
+  socialSecurityNumbers: number;
+  ipAddresses: number;
+  passwords: number;
+  creditCardNumbers: number;
+  pinNumbers: number;
+  securityQuestions: number;
+};
+
+type SanitizedExposures = Array<Record<string, number>>;
 export interface DashboardSummary {
   dataBreachTotalNum: number;
+  dataBreachFixedNum: number;
   dataBrokerTotalNum: number;
+  dataBrokerFixedNum: number;
+  dataBrokerInProgressNum: number;
   totalExposures: number;
-  allExposures: {
-    // shared
-    emailAddresses: number;
-    phoneNumbers: number;
-
-    // data brokers
-    addresses: number;
-    familyMembers: number;
-    fullNames: number;
-
-    // data breaches
-    socialSecurityNumbers: number;
-    ipAddresses: number;
-    passwords: number;
-    creditCardNumbers: number;
-    pinNumbers: number;
-    securityQuestions: number;
-  };
-  sanitizedExposures: Array<Record<string, number>>;
+  allExposures: Exposures;
+  sanitizedExposures: SanitizedExposures;
+  fixedExposures: Exposures;
+  fixedSanitizedExposures: SanitizedExposures;
 }
 
 const exposureKeyMap: Record<string, string> = {
@@ -54,7 +63,10 @@ export function dashboardSummary(
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
+    dataBreachFixedNum: 0,
     dataBrokerTotalNum: scannedResults.length,
+    dataBrokerFixedNum: 0,
+    dataBrokerInProgressNum: 0,
     totalExposures: 0,
     allExposures: {
       emailAddresses: 0,
@@ -72,30 +84,60 @@ export function dashboardSummary(
       securityQuestions: 0,
     },
     sanitizedExposures: [],
+    fixedExposures: {
+      emailAddresses: 0,
+      phoneNumbers: 0,
+      addresses: 0,
+      familyMembers: 0,
+      fullNames: 0,
+
+      // data breaches
+      socialSecurityNumbers: 0,
+      ipAddresses: 0,
+      passwords: 0,
+      creditCardNumbers: 0,
+      pinNumbers: 0,
+      securityQuestions: 0,
+    },
+    fixedSanitizedExposures: [],
   };
 
   // calculate broker summary from scanned results
   if (scannedResults) {
     scannedResults.forEach((r) => {
-      // count email
-      summary.totalExposures += r.emails.length;
+      // check removal status
+      const isFixed = r.status === RemovalStatusMap.Removed;
+      const isInProgress =
+        r.status === RemovalStatusMap.OptOutInProgress ||
+        r.status === RemovalStatusMap.WaitingForVerification;
+      if (isInProgress) {
+        summary.dataBrokerInProgressNum++;
+      } else if (isFixed) {
+        summary.dataBrokerFixedNum++;
+      }
+      // total exposure: add email, phones, addresses, relatives, full name (1)
+      summary.totalExposures +=
+        r.emails.length +
+        r.phones.length +
+        r.addresses.length +
+        r.relatives.length +
+        1;
+
+      // for all exposures: email, phones, addresses, relatives, full name (1)
       summary.allExposures.emailAddresses += r.emails.length;
-
-      // count phones
-      summary.totalExposures += r.phones.length;
       summary.allExposures.phoneNumbers += r.phones.length;
-
-      // count physical addresses
-      summary.totalExposures += r.addresses.length;
       summary.allExposures.addresses += r.addresses.length;
-
-      // count relatives
-      summary.totalExposures += r.relatives.length;
       summary.allExposures.familyMembers += r.relatives.length;
-
-      // count full name
-      summary.totalExposures++;
       summary.allExposures.fullNames++;
+
+      // for fixed exposures: email, phones, addresses, relatives, full name (1)
+      if (isFixed) {
+        summary.fixedExposures.emailAddresses += r.emails.length;
+        summary.fixedExposures.phoneNumbers += r.phones.length;
+        summary.fixedExposures.addresses += r.addresses.length;
+        summary.fixedExposures.familyMembers += r.relatives.length;
+        summary.fixedExposures.fullNames++;
+      }
     });
   }
 
@@ -110,40 +152,84 @@ export function dashboardSummary(
         uniqueBreaches.add(b.Name);
         const dataClasses = b.DataClasses ?? [];
 
+        // count emails
+        if (dataClasses.includes(BreachDataTypes.Email)) {
+          summary.totalExposures++;
+          summary.allExposures.emailAddresses++;
+          if (b.IsResolved) {
+            summary.fixedExposures.emailAddresses++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count phone numbers
+        if (dataClasses.includes(BreachDataTypes.Phone)) {
+          summary.totalExposures++;
+          summary.allExposures.phoneNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.phoneNumbers++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
         // count password
         if (dataClasses.includes(BreachDataTypes.Passwords)) {
           summary.totalExposures++;
           summary.allExposures.passwords++;
+          if (b.IsResolved) {
+            summary.fixedExposures.passwords++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count ssn
         if (dataClasses.includes(BreachDataTypes.SSN)) {
           summary.totalExposures++;
           summary.allExposures.socialSecurityNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.socialSecurityNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count IP
         if (dataClasses.includes(BreachDataTypes.IP)) {
           summary.totalExposures++;
           summary.allExposures.ipAddresses++;
+          if (b.IsResolved) {
+            summary.fixedExposures.ipAddresses++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count credit card
         if (dataClasses.includes(BreachDataTypes.CreditCard)) {
           summary.totalExposures++;
           summary.allExposures.creditCardNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.creditCardNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count pin numbers
         if (dataClasses.includes(BreachDataTypes.PIN)) {
           summary.totalExposures++;
           summary.allExposures.pinNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.pinNumbers++;
+            summary.dataBreachFixedNum++;
+          }
         }
 
         // count security questions
         if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
           summary.totalExposures++;
           summary.allExposures.securityQuestions++;
+          if (b.IsResolved) {
+            summary.fixedExposures.securityQuestions++;
+            summary.dataBreachFixedNum++;
+          }
         }
       });
     }
@@ -151,27 +237,41 @@ export function dashboardSummary(
 
   // count unique breaches
   summary.dataBreachTotalNum = uniqueBreaches.size;
-
-  return sanitizeExposures(summary);
+  const isBreachesOnly = summary.dataBrokerTotalNum === 0;
+  summary.sanitizedExposures = sanitizeExposures(
+    summary.allExposures,
+    summary.totalExposures,
+    isBreachesOnly
+  );
+  summary.fixedSanitizedExposures = sanitizeExposures(
+    summary.fixedExposures,
+    summary.dataBreachFixedNum + summary.dataBrokerFixedNum,
+    isBreachesOnly
+  );
+  return summary;
 }
 
-function sanitizeExposures(summary: DashboardSummary): DashboardSummary {
-  const NUM_OF_TOP_EXPOSURES = 4;
-  const { allExposures } = summary;
-  const sanitizedExposures = Object.entries(allExposures)
+function sanitizeExposures(
+  exposures: Exposures,
+  totalExposures: number,
+  breachesOnly = false
+): SanitizedExposures {
+  let numOfTopExposures = 4; // when we have both exposure types
+  if (breachesOnly) {
+    numOfTopExposures = 2; // when we have breaches only
+  }
+  const sanitizedExposures = Object.entries(exposures)
     .sort((a, b) => b[1] - a[1])
     .map((e) => {
       const key = exposureKeyMap[e[0]];
       return { [key]: e[1] };
     })
-    .splice(0, NUM_OF_TOP_EXPOSURES);
+    .splice(0, numOfTopExposures);
   const other = sanitizedExposures.reduce(
     (total, cur) => total - (Object.values(cur).pop() || 0),
-    summary.totalExposures
+    totalExposures
   );
-  sanitizedExposures.push({ ["other-data-class"]: other });
-
-  summary.sanitizedExposures = sanitizedExposures;
+  sanitizedExposures.push({ "other-data-class": other });
   console.debug({ sanitizedExposures });
-  return summary;
+  return sanitizedExposures;
 }
