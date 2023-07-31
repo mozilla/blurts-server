@@ -1,14 +1,14 @@
 import { Upload } from "@aws-sdk/lib-storage";
 import { S3 } from "@aws-sdk/client-s3";
-import 'dotenv/config'
+import "dotenv/config"
 
-const accessKeyId = process.env.AWS_ACCESS_KEY_ID || '';
-const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY || '';
+const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
+const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const region = process.env.AWS_REGION;
 const Bucket = process.env.S3_BUCKET;
 
 const s3 = new S3({
-  region: region || "us-east",
+  region,
   credentials: {
     accessKeyId,
     secretAccessKey,
