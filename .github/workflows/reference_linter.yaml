@@ -12,7 +12,6 @@ on:
       - 'locales-pending/*.ftl'
     branches:
       - main
-      - localization
   workflow_dispatch:
 jobs:
   linter:
