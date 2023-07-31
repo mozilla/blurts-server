@@ -23,7 +23,9 @@
 
     .chevron {
       flex-shrink: 0;
-      all: unset;
+      background-color: transparent;
+      border-style: none;
+      padding: 0;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
       height: 20px; //height of down chevron
