@@ -9,6 +9,7 @@ import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { useRouter } from "next/navigation";
 
 export type DashboardTopBannerProps = {
   content:
@@ -25,6 +26,7 @@ export type DashboardTopBannerProps = {
 
 export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const l10n = useL10n();
+  const router = useRouter();
 
   const isFixedTab = props.type === "fixed";
   const { totalExposures, dataBrokerFixedNum } = props.bannerData;
@@ -75,7 +77,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           "dashboard-top-banner-monitor-protects-your-even-more-cta"
         ),
         onClick: () => {
-          window.location.href = "/redesign/user/welcome";
+          router.push("/redesign/user/welcome");
         },
       },
     },
