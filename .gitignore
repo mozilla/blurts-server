@@ -65,4 +65,4 @@ next-env.d.ts
 .sentryclirc
 
 # Location autocomplete data
-locationAutocompleteData.json
+# locationAutocompleteData.json
