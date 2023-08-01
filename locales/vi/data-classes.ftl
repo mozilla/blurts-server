@@ -25,6 +25,7 @@ career-levels = Cấp độ nghề nghiệp
 cellular-network-names = Tên mạng di động
 charitable-donations = Quyên góp từ thiện
 chat-logs = Nhật ký trò chuyện
+clothing-sizes = Kích cỡ quần áo
 credit-card-cvv = Thẻ tín dụng CVV
 credit-cards = Thẻ tín dụng
 credit-status-information = Thông tin trạng thái tín dụng

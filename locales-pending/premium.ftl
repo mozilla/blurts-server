@@ -39,6 +39,8 @@ exposure-chart-legend-heading-nr = Number
 #   $nr (number) - Number of a particular type of exposure found for the user
 exposure-chart-legend-value-nr = { $nr }×
 exposure-chart-caption = This chart shows how many times your info is actively exposed.
+exposure-chart-returning-user-upgrade-prompt = Home address, family members and more are not yet included.
+exposure-chart-returning-user-upgrade-prompt-cta = Start a free scan
 
 modal-active-number-of-exposures-title = About your number of active exposures
 # Variables:
@@ -225,3 +227,4 @@ dashboard-exposures-area-headline = View all exposures that are fixed or in-prog
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-exposures-area-description = We found your information exposed { $exposures_total_num } times over { $data_breach_total_num } data breaches and { $data_broker_total_num } data broker sites that are selling your personal info.
+dashboard-exposures-all-fixed-label = All fixed here!

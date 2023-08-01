@@ -5,6 +5,7 @@
 "use client";
 
 import { Key, useState } from "react";
+import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -24,6 +25,7 @@ import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 
 export type Props = {
   user: Session["user"];
@@ -223,51 +225,49 @@ export const View = (props: Props) => {
     }
   );
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+  const noUnresolvedExposures = exposureCardElems.length === 0;
 
   return (
     <div className={styles.wrapper}>
-      <Toolbar user={props.user}>
-        <TabList
-          tabs={tabsData}
-          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
-        />
-      </Toolbar>
+      <Toolbar user={props.user} />
       <div className={styles.dashboardContent}>
-        {selectedTab === "action-neeed" ? (
-          <>
-            <DashboardTopBanner
-              bannerData={props.bannerData}
-              type={
-                isScanResultItemsEmpty
-                  ? "DataBrokerScanUpsellContent"
-                  : "LetsFixDataContent"
-              }
-            />
-            <section className={styles.exposuresArea}>
-              <h2 className={styles.exposuresAreaHeadline}>
-                {l10n.getString("dashboard-exposures-area-headline")}
-              </h2>
-              <p className={styles.exposuresAreaDescription}>
-                {l10n.getString("dashboard-exposures-area-description", {
-                  // TODO: Use real user data
-                  exposures_total_num: 1337,
-                  data_breach_total_num: totalBreaches,
-                  data_broker_total_num: 1337,
-                })}
-              </p>
-              <div className={styles.exposuresFilterWrapper}>
-                <ExposuresFilter setFilterValues={setFilters} />
-              </div>
-              <ul className={styles.exposureList}>
-                {isScanResultItemsEmpty
-                  ? breachExposureCards
-                  : exposureCardElems}
-              </ul>
-            </section>
-          </>
-        ) : (
-          <>Fixed tab content</>
-        )}
+        <DashboardTopBanner
+          bannerData={props.bannerData}
+          type={
+            isScanResultItemsEmpty
+              ? "DataBrokerScanUpsellContent"
+              : "LetsFixDataContent"
+          }
+          hasRunScan={!isScanResultItemsEmpty}
+        />
+        <section className={styles.exposuresArea}>
+          <h2 className={styles.exposuresAreaHeadline}>
+            {l10n.getString("dashboard-exposures-area-headline")}
+          </h2>
+          <p className={styles.exposuresAreaDescription}>
+            {l10n.getString("dashboard-exposures-area-description", {
+              // TODO: Use real user data
+              exposures_total_num: 1337,
+              data_breach_total_num: totalBreaches,
+              data_broker_total_num: 1337,
+            })}
+          </p>
+          <div className={styles.exposuresFilterWrapper}>
+            <ExposuresFilter setFilterValues={setFilters} />
+          </div>
+          {noUnresolvedExposures ? (
+            <div className={styles.noExposures}>
+              <Image src={AllFixedLogo} alt="" />
+              <strong>
+                {l10n.getString("dashboard-exposures-all-fixed-label")}
+              </strong>
+            </div>
+          ) : (
+            <ul className={styles.exposureList}>
+              {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
+            </ul>
+          )}
+        </section>
       </div>
     </div>
   );

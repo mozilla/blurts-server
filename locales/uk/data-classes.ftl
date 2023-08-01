@@ -25,6 +25,7 @@ career-levels = Посади
 cellular-network-names = Назви операторів мобільного зв'язку
 charitable-donations = Благодійні внески
 chat-logs = Журнали чатів
+clothing-sizes = Розміри одягу
 credit-card-cvv = CVV-коди кредитних карток
 credit-cards = Кредитні картки
 credit-status-information = Інформація про стан кредитів

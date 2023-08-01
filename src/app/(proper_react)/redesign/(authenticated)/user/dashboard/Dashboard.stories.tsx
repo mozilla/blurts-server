@@ -112,10 +112,26 @@ const breachItemArraySample: HibpLikeDbBreach[] = [
 ];
 
 const dashboardSummaryNoScan: DashboardSummary = {
-  dataBreachTotalNum: 0,
-  dataBrokerTotalNum: 51,
+  dataBreachTotalNum: 20,
+  dataBreachFixedNum: 0,
+  dataBrokerFixedNum: 0,
+  dataBrokerInProgressNum: 0,
+  dataBrokerTotalNum: 0,
   totalExposures: 51,
   allExposures: {
+    emailAddresses: 30,
+    phoneNumbers: 19,
+    addresses: 0,
+    familyMembers: 0,
+    fullNames: 0,
+    socialSecurityNumbers: 2,
+    ipAddresses: 0,
+    passwords: 0,
+    creditCardNumbers: 0,
+    pinNumbers: 0,
+    securityQuestions: 0,
+  },
+  fixedExposures: {
     emailAddresses: 0,
     phoneNumbers: 0,
     addresses: 0,
@@ -133,13 +149,37 @@ const dashboardSummaryNoScan: DashboardSummary = {
     { "phone-numbers": 19 },
     { "social-security-numbers": 2 },
   ],
+  fixedSanitizedExposures: [],
 };
 
 const dashboardSummaryWithScan: DashboardSummary = {
   dataBreachTotalNum: 88,
   dataBrokerTotalNum: 217,
+  dataBreachFixedNum: 0,
+  dataBrokerFixedNum: 0,
+  dataBrokerInProgressNum: 0,
   totalExposures: 305,
   allExposures: {
+    emailAddresses: 0,
+    phoneNumbers: 8,
+    addresses: 90,
+    familyMembers: 29,
+    fullNames: 98,
+    socialSecurityNumbers: 0,
+    ipAddresses: 0,
+    passwords: 0,
+    creditCardNumbers: 40,
+    pinNumbers: 0,
+    securityQuestions: 40,
+  },
+  sanitizedExposures: [
+    { "physical-addresses": 90 },
+    { "family-members-names": 29 },
+    { "full-names": 98 },
+    { "phone-numbers": 8 },
+    { "other-data-class": 80 },
+  ],
+  fixedExposures: {
     emailAddresses: 0,
     phoneNumbers: 0,
     addresses: 0,
@@ -152,13 +192,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
     pinNumbers: 0,
     securityQuestions: 0,
   },
-  sanitizedExposures: [
-    { "physical-addresses": 90 },
-    { "family-members-names": 29 },
-    { "full-names": 98 },
-    { "phone-numbers": 8 },
-    { "other-data-class": 80 },
-  ],
+  fixedSanitizedExposures: [],
 };
 
 export const DashboardWithScan: Story = {
@@ -211,6 +245,39 @@ export const DashboardWithoutScan: Story = {
             verifiedEmails: [
               {
                 breaches: breachItemArraySample,
+                email: "test@example.com",
+                id: 0,
+                primary: true,
+                verified: true,
+              },
+            ],
+          },
+        }}
+        userScannedResults={[]}
+        locale={"en"}
+        bannerData={dashboardSummaryNoScan}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardEmptyListState: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        user={{ email: "example@example.com" }}
+        userBreaches={{
+          emailVerifiedCount: 0,
+          emailTotalCount: 0,
+          emailSelectIndex: 0,
+          ssnBreaches: [],
+          phoneBreaches: [],
+          passwordBreaches: [],
+          breachesData: {
+            unverifiedEmails: [],
+            verifiedEmails: [
+              {
+                breaches: [],
                 email: "test@example.com",
                 id: 0,
                 primary: true,
