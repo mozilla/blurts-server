@@ -4,6 +4,8 @@
 
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -18,11 +20,11 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { useState } from "react";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 
 export type Props = {
   user: Session["user"];
@@ -34,6 +36,7 @@ export type Props = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
+
   const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
     (count, emailData) => count + emailData.breaches.length,
     0
@@ -54,25 +57,27 @@ export const View = (props: Props) => {
   // Only breaches exposure cards
   const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
     .map((verifiedEmail) => {
-      const breachCardsForThisEmail = verifiedEmail.breaches.map((breach) => {
-        return (
-          <li
-            key={`${verifiedEmail.email}_${breach.Id.toString()}`}
-            className={styles.exposureListItem}
-          >
-            <ExposureCard
-              exposureData={breach}
-              exposureName={breach.Name}
-              fromEmail={verifiedEmail.email}
-              exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
-              dateFound={breach.AddedDate}
-              statusPillType="needAction"
-              locale={props.locale}
-              color={getRandomLightNebulaColor(breach.Name)}
-            />
-          </li>
-        );
-      });
+      const breachCardsForThisEmail = verifiedEmail.breaches.map(
+        (breach, breachId) => {
+          return (
+            <li
+              key={`${verifiedEmail.email}_${breach.Id.toString()}_${breachId}`}
+              className={styles.exposureListItem}
+            >
+              <ExposureCard
+                exposureData={breach}
+                exposureName={breach.Name}
+                fromEmail={verifiedEmail.email}
+                exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
+                dateFound={breach.AddedDate}
+                statusPillType="needAction"
+                locale={props.locale}
+                color={getRandomLightNebulaColor(breach.Name)}
+              />
+            </li>
+          );
+        }
+      );
       // Technically a JSX.Element can be `any`, but we know it's not.
       // (At least, I *think* that's why this rule triggers.)
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
@@ -209,6 +214,7 @@ export const View = (props: Props) => {
     }
   );
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+  const noUnresolvedExposures = exposureCardElems.length === 0;
 
   return (
     <div className={styles.wrapper}>
@@ -238,9 +244,18 @@ export const View = (props: Props) => {
           <div className={styles.exposuresFilterWrapper}>
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
-          <ul className={styles.exposureList}>
-            {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
-          </ul>
+          {noUnresolvedExposures ? (
+            <div className={styles.noExposures}>
+              <Image src={AllFixedLogo} alt="" />
+              <strong>
+                {l10n.getString("dashboard-exposures-all-fixed-label")}
+              </strong>
+            </div>
+          ) : (
+            <ul className={styles.exposureList}>
+              {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
+            </ul>
+          )}
         </section>
       </div>
     </div>

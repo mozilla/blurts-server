@@ -25,6 +25,7 @@ career-levels = Karriärnivåer
 cellular-network-names = Mobilnätsnamn
 charitable-donations = Välgörande donationer
 chat-logs = Chattloggar
+clothing-sizes = Klädstorlekar
 credit-card-cvv = Kreditkort CVV
 credit-cards = Kreditkort
 credit-status-information = Kreditstatusinformation

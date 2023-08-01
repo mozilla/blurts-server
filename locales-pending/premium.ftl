@@ -32,7 +32,10 @@ footer-external-link-faq-tooltip = Frequently asked questions
 # the label inside <label> will be shown underneath, in a smaller font.
 # Variables:
 #   $nr (number) - Total number of exposures found for the user
-exposure-chart-heading = <nr>{ $nr }</nr> <label>exposures</label>
+exposure-chart-heading = { $nr ->
+  [one] <nr>{ $nr }</nr> <label>exposure</label>
+  *[other] <nr>{ $nr }</nr> <label>exposures</label>
+}
 exposure-chart-legend-heading-type = Exposure
 exposure-chart-legend-heading-nr = Number
 # Variables:
@@ -227,3 +230,4 @@ dashboard-exposures-area-headline = View all exposures that are fixed or in-prog
 # $data_breach_total_num is the total number of data breaches the user has.
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-exposures-area-description = We found your information exposed { $exposures_total_num } times over { $data_breach_total_num } data breaches and { $data_broker_total_num } data broker sites that are selling your personal info.
+dashboard-exposures-all-fixed-label = All fixed here!
