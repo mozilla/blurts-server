@@ -242,7 +242,9 @@ $width-first-column-filter-bar: 50px;
 
 // Question circle mark for explainer dialogs
 @mixin question-mark-circle-btn {
-  all: unset;
+  background-color: transparent;
+  border-style: none;
+  padding: 0;
   cursor: pointer;
   height: 25px; // height of the button
   color: $color-grey-40;
