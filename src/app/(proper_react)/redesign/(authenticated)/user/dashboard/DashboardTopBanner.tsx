@@ -56,6 +56,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: {
         content: l10n.getString("dashboard-top-banner-protect-your-data-cta"),
+        // Ignored for test coverage; to be replaced by a link:
+        /* c8 ignore next 4 */
         onClick: () => {
           window.location.href =
             "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
@@ -91,6 +93,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: {
         content: l10n.getString("dashboard-top-banner-no-exposures-found-cta"),
+        // Ignored for test coverage; to be implemented:
+        /* c8 ignore next 3 */
         onClick: () => {
           // do something
         },
@@ -110,6 +114,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         content: l10n.getString(
           "dashboard-top-banner-lets-keep-protecting-cta"
         ),
+        // Ignored for test coverage; to be implemented:
+        /* c8 ignore next 3 */
         onClick: () => {
           // do something
         },
@@ -129,6 +135,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         content: l10n.getString(
           "dashboard-top-banner-your-data-is-protected-cta"
         ),
+        // Ignored for test coverage; to be implemented:
+        /* c8 ignore next 3 */
         onClick: () => {
           props?.ctaCallback?.();
         },

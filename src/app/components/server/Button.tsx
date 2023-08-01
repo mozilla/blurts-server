@@ -29,9 +29,15 @@ export const Button = (props: Props & HTMLAttributes<HTMLButtonElement>) => {
   const classes = [
     styles.button,
     styles[variant],
+    // Ignored for test coverage; not used in tested pages yet:
+    /* c8 ignore next */
     destructive && styles.destructive,
     small && styles.small,
+    // Ignored for test coverage; not used in tested pages yet:
+    /* c8 ignore next */
     isLoading && styles.isLoading,
+    // Ignored for test coverage; not used in tested pages yet:
+    /* c8 ignore next */
     disabled && styles.disabled,
   ]
     .filter(Boolean)
