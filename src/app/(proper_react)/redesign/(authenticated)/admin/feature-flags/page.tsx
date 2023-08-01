@@ -20,7 +20,7 @@ export default async function FeatureFlagPage() {
     return redirect("/");
   }
 
-  if (!isAdmin) {
+  if (!isAdmin(session.user.email)) {
     return notFound();
   }
 
