@@ -32,6 +32,7 @@ export type Props = {
   userScannedResults: ScanResult[];
   bannerData: DashboardSummary;
   locale: string;
+  featureFlagsEnabled: { [key: string]: boolean };
 };
 
 export const View = (props: Props) => {
@@ -73,6 +74,7 @@ export const View = (props: Props) => {
                 statusPillType="needAction"
                 locale={props.locale}
                 color={getRandomLightNebulaColor(breach.Name)}
+                featureFlagsEnabled={props.featureFlagsEnabled}
               />
             </li>
           );
@@ -191,6 +193,7 @@ export const View = (props: Props) => {
             statusPillType="needAction"
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.data_broker)}
+            featureFlagsEnabled={props.featureFlagsEnabled}
           />
         </li>
       ) : (
@@ -208,6 +211,7 @@ export const View = (props: Props) => {
             statusPillType="needAction"
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.Name)}
+            featureFlagsEnabled={props.featureFlagsEnabled}
           />
         </li>
       );
@@ -216,17 +220,29 @@ export const View = (props: Props) => {
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
 
+  let type = "";
+  if (
+    props.featureFlagsEnabled["FreeBrokerScan"] &&
+    props.featureFlagsEnabled["PremiumBrokerRemoval"]
+  ) {
+    type = isScanResultItemsEmpty
+      ? "DataBrokerScanUpsellContent"
+      : "LetsFixDataContent";
+  }
+
   return (
     <div className={styles.wrapper}>
+      Free broken scan enabled:{" "}
+      {props.featureFlagsEnabled["FreeBrokerScan"] ? "yes" : "no"}
+      <br />
+      Premium broker removal enabled:{" "}
+      {props.featureFlagsEnabled["PremiumBrokerRemoval"] ? "yes" : "no"}
+      <br />
       <Toolbar user={props.user} />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          type={
-            isScanResultItemsEmpty
-              ? "DataBrokerScanUpsellContent"
-              : "LetsFixDataContent"
-          }
+          type={type}
           hasRunScan={!isScanResultItemsEmpty}
         />
         <section className={styles.exposuresArea}>

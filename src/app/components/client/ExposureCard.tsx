@@ -59,6 +59,7 @@ export type ExposureCardProps = {
   locale: string;
   fromEmail?: string;
   color: string;
+  featureFlagsEnabled: { [key: string]: boolean };
 };
 
 type BreachExposureCategoryProps = {
@@ -82,6 +83,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
     statusPillType,
     locale,
     color,
+    featureFlagsEnabled,
   } = props;
 
   const l10n = useL10n();
@@ -395,11 +397,15 @@ export const ExposureCard = (props: ExposureCardProps) => {
                 <ExposureCategoriesListElem />
               </dl>
             </div>
-            <span className={styles.fixItBtn}>
-              <Button variant={"primary"}>
-                {l10n.getString("exposure-card-cta")}
-              </Button>
-            </span>
+            {featureFlagsEnabled["PremiumBrokerRemoval"] ? (
+              <span className={styles.fixItBtn}>
+                <Button variant={"primary"}>
+                  {l10n.getString("exposure-card-cta")}
+                </Button>
+              </span>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
