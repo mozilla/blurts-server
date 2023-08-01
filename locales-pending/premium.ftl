@@ -32,7 +32,10 @@ footer-external-link-faq-tooltip = Frequently asked questions
 # the label inside <label> will be shown underneath, in a smaller font.
 # Variables:
 #   $nr (number) - Total number of exposures found for the user
-exposure-chart-heading = <nr>{ $nr }</nr> <label>exposures</label>
+exposure-chart-heading = { $nr ->
+  [one] <nr>{ $nr }</nr> <label>exposure</label>
+  *[other] <nr>{ $nr }</nr> <label>exposures</label>
+}
 exposure-chart-legend-heading-type = Exposure
 exposure-chart-legend-heading-nr = Number
 # Variables:
