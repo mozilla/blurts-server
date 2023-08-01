@@ -69,7 +69,7 @@ progress-card-percentage-complete = { $percentage }% complete
 # Variables:
 # $percentage is the percentage value of exposures remaining, e.g. 70%.
 progress-card-percentage-remaining = { $percentage }% in progress
-full-names = Full name
+full-name = Full name
 
 # Here's What We Fixed Modal
 
