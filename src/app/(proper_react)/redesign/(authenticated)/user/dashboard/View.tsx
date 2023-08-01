@@ -4,6 +4,7 @@
 
 "use client";
 
+import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
@@ -23,6 +24,7 @@ import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 
 export type Props = {
   user: Session["user"];
@@ -209,6 +211,7 @@ export const View = (props: Props) => {
     }
   );
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
+  const noUnresolvedExposures = exposureCardElems.length === 0;
 
   return (
     <div className={styles.wrapper}>
@@ -238,9 +241,18 @@ export const View = (props: Props) => {
           <div className={styles.exposuresFilterWrapper}>
             <ExposuresFilter setFilterValues={setFilters} />
           </div>
-          <ul className={styles.exposureList}>
-            {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
-          </ul>
+          {noUnresolvedExposures ? (
+            <div className={styles.noExposures}>
+              <Image src={AllFixedLogo} alt="" />
+              <strong>
+                {l10n.getString("dashboard-exposures-all-fixed-label")}
+              </strong>
+            </div>
+          ) : (
+            <ul className={styles.exposureList}>
+              {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
+            </ul>
+          )}
         </section>
       </div>
     </div>
