@@ -4,7 +4,7 @@
 
 "use client";
 
-import { Key, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
@@ -20,7 +20,6 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { TabList } from "../../../../../components/client/TabList";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
@@ -37,18 +36,6 @@ export type Props = {
 
 export const View = (props: Props) => {
   const l10n = useL10n();
-
-  const [selectedTab, setSelectedTab] = useState<Key>("first");
-  const tabsData = [
-    {
-      name: "Action needed",
-      key: "action-neeed",
-    },
-    {
-      name: "Fixed",
-      key: "fixed",
-    },
-  ];
 
   const totalBreaches = props.userBreaches.breachesData.verifiedEmails.reduce(
     (count, emailData) => count + emailData.breaches.length,
