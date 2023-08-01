@@ -11,6 +11,11 @@ const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
 const region = process.env.AWS_REGION;
 const Bucket = process.env.S3_BUCKET;
 
+if (!accessKeyId || !secretAccessKey || !region || !Bucket) {
+  console.error("Environment vars for s3 upload are not set correctly")
+  process.exit()
+}
+
 const s3 = new S3({
   region,
   credentials: {
