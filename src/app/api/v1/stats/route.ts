@@ -4,10 +4,11 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import { getScansCount } from "../../../../db/tables/onerep_scans";
+import { bearerToken } from "../../utils/auth";
 
-export async function GET(request: NextRequest) {
-  const token = request.nextUrl.searchParams.get("token");
-  if (token !== process.env.STATS_TOKEN) {
+export async function GET(req: NextRequest) {
+  const headerToken = bearerToken(req);
+  if (headerToken !== process.env.STATS_TOKEN) {
     return NextResponse.json({ success: "false" }, { status: 401 });
   }
 
