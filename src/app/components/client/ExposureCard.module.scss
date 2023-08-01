@@ -23,7 +23,9 @@
 
     .chevron {
       flex-shrink: 0;
-      all: unset;
+      background-color: transparent;
+      border-style: none;
+      padding: 0;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
       height: 20px; //height of down chevron
@@ -97,6 +99,7 @@
     overflow: hidden;
     padding: 0 $layout-lg;
     height: 0;
+    display: none;
 
     a,
     span {
@@ -113,6 +116,7 @@
       overflow: auto;
       height: auto;
       padding: $spacing-lg;
+      display: block;
     }
 
     .exposedInfoContainer {
