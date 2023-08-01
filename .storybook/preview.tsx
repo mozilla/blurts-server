@@ -46,6 +46,10 @@ const preview: Preview = {
     },
     // https://storybook.js.org/docs/react/configure/story-layout
     layout: "fullscreen",
+    nextjs: {
+      // See https://storybook.js.org/blog/integrate-nextjs-and-storybook-automatically/#nextnavigation
+      appDirectory: true,
+    },
   },
   decorators: [AppDecorator],
 };
