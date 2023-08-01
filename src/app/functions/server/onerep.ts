@@ -13,7 +13,7 @@ import {
 import { StateAbbr } from "../../../utils/states.js";
 import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
 import { authOptions } from "../../api/utils/auth";
-import { getFlag } from "./featureFlags";
+import { isFlagEnabled } from "./featureFlags";
 const log = mozlog("external.onerep");
 
 export type ProfileData = {
@@ -274,21 +274,7 @@ export async function isEligible() {
     throw new Error("No session");
   }
 
-  const flagName = "FreeBrokerScan";
-  const flag = await getFlag(flagName);
-
-  if (!flag) {
-    console.warn("Flag does not exist:", flagName);
-    return false;
-  }
-
-  if (!flag.isEnabled) {
-    console.warn("Flag is not enabled:", flagName);
-    return false;
-  }
-
-  if (!flag.allowList?.includes(session.user.email)) {
-    console.warn("User is not on allow list for flag:", flagName);
+  if (!(await isFlagEnabled("FreeBrokerScan"))) {
     return false;
   }
 
