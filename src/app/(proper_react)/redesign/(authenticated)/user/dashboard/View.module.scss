@@ -41,6 +41,14 @@
   gap: $spacing-lg;
 }
 
+.noExposures {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+}
+
 .visuallyHidden {
   @include visually-hidden;
 }
