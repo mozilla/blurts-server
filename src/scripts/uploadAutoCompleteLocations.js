@@ -34,7 +34,7 @@ const DATA_COUNTRY_CODE = "US";
 const LOCATIONS_DATA_FILE = "locationAutocompleteData.json";
 const FETCH_REMOTE_DATASETS = true;
 const CLEANUP_TMP_DATA_AFTER_FINISHED = true;
-const SENTRY_SLUG = "cron-create-location-autocomplete"
+const SENTRY_SLUG = "cron-create-location-autocomplete";
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
@@ -64,7 +64,7 @@ const allowedFeatureCodes = [
 function logProgress(currentCount, totalCount) {
   const progress = Math.round(((currentCount + 1) / totalCount) * 100);
   process.stdout.write(
-    `-> ${totalCount}/${currentCount + 1} (${progress}%) \r`
+    `-> ${currentCount + 1} / ${totalCount} (${progress}%) \r`
   );
 }
 
@@ -275,13 +275,13 @@ try {
           population,
           ...(alternateNames &&
             alternateNames.length > 0 && {
-              alternateNames: alternateNamesFinal,
-            }),
+            alternateNames: alternateNamesFinal,
+          }),
         });
       }
 
       return relevantLocations;
-    },[]
+    }, []
   );
 
   // Filter out locations that have another populated place as a parent.
@@ -341,8 +341,7 @@ try {
 
   const endTime = Date.now();
   console.info(
-    `Created location data file successfully: Executed in ${
-      (endTime - startTime) / 1000
+    `Created location data file successfully: Executed in ${(endTime - startTime) / 1000
     }s`
   );
 } catch (error) {
