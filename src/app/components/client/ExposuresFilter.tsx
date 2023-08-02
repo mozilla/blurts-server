@@ -5,6 +5,7 @@
 import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
 import React, {
+  FormEventHandler,
   ReactElement,
   ReactNode,
   createContext,
@@ -100,12 +101,15 @@ export const ExposuresFilter = ({
     }));
   };
 
-  const handleSaveButtonClick = () => {
+  const handleSaveButtonClick: FormEventHandler = (event) => {
+    event.preventDefault();
+
     setFilterValues(filterState);
+    filterDialogState.close();
   };
 
   const ExposuresFilterContent = (
-    <>
+    <form onSubmit={handleSaveButtonClick}>
       <div className={styles.exposuresFilterRadioButtons}>
         <FilterRadioGroup
           type="exposure-type"
@@ -172,19 +176,21 @@ export const ExposuresFilter = ({
       </div>
       <div className={styles.filterControls}>
         <Button
+          type="button"
           small
           variant="secondary"
           onClick={() => setFilterState(initialFilterValues)}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
         </Button>
-        <Button small variant="primary" onClick={handleSaveButtonClick}>
+        <Button type="submit" small variant="primary">
           {l10n.getString("dashboard-exposures-filter-show-results")}
         </Button>
       </div>
       <button
         {...dismissButtonProps}
         ref={dismissButtonRef}
+        type="button"
         className={styles.dismissButton}
         onClick={() => {
           filterDialogState.close();
@@ -197,7 +203,7 @@ export const ExposuresFilter = ({
           height="14"
         />
       </button>
-    </>
+    </form>
   );
 
   return (
