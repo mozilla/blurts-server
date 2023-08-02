@@ -14,10 +14,12 @@ import React, {
 } from "react";
 import Image from "next/image";
 import {
+  AriaDialogProps,
   AriaPopoverProps,
   AriaRadioProps,
   Overlay,
   useButton,
+  useDialog,
   useOverlayTrigger,
   usePopover,
   useRadio,
@@ -254,9 +256,11 @@ export const ExposuresFilter = ({
       {explainerDialogState.isOpen && explainerDialog}
       {filterDialogState.isOpen && (
         <Popover state={filterDialogState} triggerRef={filterBtnRef}>
-          <div className={styles.exposuresFilterWrapper} {...overlayProps}>
-            {ExposuresFilterContent}
-          </div>
+          <FilterDialog>
+            <div className={styles.exposuresFilterWrapper} {...overlayProps}>
+              {ExposuresFilterContent}
+            </div>
+          </FilterDialog>
         </Popover>
       )}
     </>
@@ -295,6 +299,20 @@ const Popover = (props: PopoverProps) => {
         </Overlay>
       )}
     </>
+  );
+};
+
+type FilterDialogProps = AriaDialogProps & {
+  children: ReactNode;
+};
+const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const { dialogProps } = useDialog(otherProps, dialogRef);
+
+  return (
+    <div {...dialogProps} ref={dialogRef}>
+      {children}
+    </div>
   );
 };
 
