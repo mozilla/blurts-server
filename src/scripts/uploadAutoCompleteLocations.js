@@ -37,6 +37,7 @@ const CLEANUP_TMP_DATA_AFTER_FINISHED = true;
 const SENTRY_SLUG = "cron-create-location-autocomplete";
 
 Sentry.init({
+  environment: process.env.APP_ENV,
   dsn: process.env.SENTRY_DSN,
   tracesSampleRate: 1.0,
 });
