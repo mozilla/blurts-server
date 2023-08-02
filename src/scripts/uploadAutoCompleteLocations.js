@@ -21,25 +21,32 @@ import {
   readFileSync,
   rmSync,
   writeFileSync,
-  WriteStream,
 } from "fs";
+import { uploadToS3 } from "./s3.js";
+import Sentry from "@sentry/nextjs"
 import os from "os";
 import path from "path";
+import fs from "fs";
 import AdmZip from "adm-zip";
-
-import {
-  AlternateNameData,
-  LocationData,
-  RelevantLocation,
-  RelevantLocationAlternate,
-  DataFileUrls,
-} from "./types";
 
 const REMOTE_DATA_URL = "https://download.geonames.org/export/dump";
 const DATA_COUNTRY_CODE = "US";
 const LOCATIONS_DATA_FILE = "locationAutocompleteData.json";
 const FETCH_REMOTE_DATASETS = true;
 const CLEANUP_TMP_DATA_AFTER_FINISHED = true;
+const SENTRY_SLUG = "cron-create-location-autocomplete";
+
+Sentry.init({
+  environment: process.env.APP_ENV,
+  dsn: process.env.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
+
+
+const checkInId = Sentry.captureCheckIn({
+  monitorSlug: SENTRY_SLUG,
+  status: "in_progress"
+});
 
 // Only include populated places that are a city, town, village, or another
 // agglomeration of buildings where people live and work.
@@ -55,19 +62,16 @@ const allowedFeatureCodes = [
   "PPLL",
 ];
 
-function logProgress(currentCount: number, totalCount: number) {
+function logProgress(currentCount, totalCount) {
   const progress = Math.round(((currentCount + 1) / totalCount) * 100);
   process.stdout.write(
-    `-> ${totalCount}/${currentCount + 1} (${progress}%) \r`
+    `-> ${currentCount + 1} / ${totalCount} (${progress}%) \r`
   );
 }
 
 function writeFromRemoteFile({
   url,
   writeStream,
-}: {
-  url: string;
-  writeStream: WriteStream;
 }) {
   return new Promise((resolve, reject) => {
     https.get(url, (res) => {
@@ -86,7 +90,7 @@ async function fetchRemoteArchive({
   remoteArchiveUrl,
   localDownloadPath,
   localExtractionPath,
-}: DataFileUrls) {
+}) {
   console.info(
     `Downloading remote file: ${remoteArchiveUrl} -> ${localDownloadPath}`
   );
@@ -98,7 +102,7 @@ async function fetchRemoteArchive({
 
   console.info(`Extracting: ${localDownloadPath} -> ${localExtractionPath}`);
   const zip = new AdmZip(localDownloadPath);
-  await new Promise<void>((resolve, reject) => {
+  await new Promise((resolve, reject) => {
     zip.extractAllToAsync(localExtractionPath, true, false, (error) =>
       error ? reject(error) : resolve()
     );
@@ -168,7 +172,7 @@ try {
         isHistoric,
         _from,
         _to,
-      ] = alternateNamesLine.split("\t") as AlternateNameData; // lines are tab delimited
+      ] = alternateNamesLine.split("\t") // lines are tab delimited
 
       const isAbbreviation = isolanguage === "abbr";
       const isRelevantAlternateName =
@@ -187,7 +191,7 @@ try {
     })
     .filter(
       (alternateName) => alternateName
-    ) as Array<RelevantLocationAlternate>;
+    );
 
   console.info("Reading file: Hierarchy");
   const hierachyData = readFileSync(
@@ -236,7 +240,7 @@ try {
         _dem,
         _timezone,
         _modificationDate,
-      ] = location.split("\t") as LocationData; // lines are tab delimited
+      ] = location.split("\t") // lines are tab delimited
 
       const isPopulatedPlaceOfInterest =
         featureClass === allowedFeatureClass &&
@@ -272,14 +276,13 @@ try {
           population,
           ...(alternateNames &&
             alternateNames.length > 0 && {
-              alternateNames: alternateNamesFinal,
-            }),
+            alternateNames: alternateNamesFinal,
+          }),
         });
       }
 
       return relevantLocations;
-    },
-    [] as Array<RelevantLocation>
+    }, []
   );
 
   // Filter out locations that have another populated place as a parent.
@@ -326,6 +329,9 @@ try {
   };
   writeFileSync(LOCATIONS_DATA_FILE, JSON.stringify(locationDataFinal));
 
+  let readStream = fs.createReadStream(LOCATIONS_DATA_FILE);
+  await uploadToS3(`autocomplete/${LOCATIONS_DATA_FILE}`, readStream)
+
   if (CLEANUP_TMP_DATA_AFTER_FINISHED) {
     console.info("Cleaning up data directory");
     rmSync(tmpDirPath, {
@@ -336,12 +342,16 @@ try {
 
   const endTime = Date.now();
   console.info(
-    `Created location data file successfully: Executed in ${
-      (endTime - startTime) / 1000
+    `Created location data file successfully: Executed in ${(endTime - startTime) / 1000
     }s`
   );
 } catch (error) {
   console.error("Creating location file failed with:", error);
 }
 
-process.exit();
+Sentry.captureCheckIn({
+  checkInId,
+  monitorSlug: SENTRY_SLUG,
+  status: "ok"
+})
+setTimeout(process.exit, 1000)

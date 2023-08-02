@@ -22,11 +22,12 @@ type Story = StoryObj<typeof DashboardEl>;
 const BreachMockItem1: HibpLikeDbBreach = {
   AddedDate: new Date("2018-11-07T14:48:00.000Z"),
   BreachDate: "11/09/23",
-  DataClasses: [],
+  DataClasses: ["email-addresses", "passwords"],
   Description: "",
   Domain: "",
   Id: 0,
   IsFabricated: false,
+  IsResolved: true,
   IsMalware: false,
   IsRetired: false,
   IsSensitive: false,
@@ -42,7 +43,7 @@ const BreachMockItem1: HibpLikeDbBreach = {
 const BreachMockItem2: HibpLikeDbBreach = {
   AddedDate: new Date("2013-12-07T14:48:00.000Z"),
   BreachDate: "11/09/23",
-  DataClasses: [],
+  DataClasses: ["auth-tokens", "dates-of-birth", "phone-numbers"],
   Description: "",
   Domain: "",
   Id: 0,
@@ -56,13 +57,13 @@ const BreachMockItem2: HibpLikeDbBreach = {
   ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
   Name: "",
   PwnCount: 0,
-  Title: "Twitter",
+  Title: "Instagram",
 };
 
 const BreachMockItem3: HibpLikeDbBreach = {
   AddedDate: new Date("2023-07-17T14:48:00.000Z"),
   BreachDate: "11/09/23",
-  DataClasses: [],
+  DataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
   Description: "",
   Domain: "",
   Id: 0,
@@ -76,13 +77,13 @@ const BreachMockItem3: HibpLikeDbBreach = {
   ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
   Name: "",
   PwnCount: 0,
-  Title: "Twitter",
+  Title: "Uber",
 };
 
 const BreachMockItem4: HibpLikeDbBreach = {
   AddedDate: new Date("2023-06-18T14:48:00.000Z"),
   BreachDate: "11/09/23",
-  DataClasses: [],
+  DataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
   Description: "",
   Domain: "",
   Id: 0,
@@ -96,7 +97,7 @@ const BreachMockItem4: HibpLikeDbBreach = {
   ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
   Name: "",
   PwnCount: 0,
-  Title: "Twitter",
+  Title: "Facebook",
 };
 
 const scannedResultsArraySample: ScanResult[] = Array.from(
@@ -158,7 +159,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
   dataBreachFixedNum: 0,
   dataBrokerFixedNum: 0,
   dataBrokerInProgressNum: 0,
-  totalExposures: 305,
+  totalExposures: 1000,
   allExposures: {
     emailAddresses: 0,
     phoneNumbers: 8,

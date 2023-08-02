@@ -13,7 +13,7 @@ import {
   SearchLocationParams,
   SearchLocationResults,
 } from "../../api/v1/location-autocomplete/route";
-import { RelevantLocation } from "../../../scripts/build/createLocationAutocompleteData/types";
+import { RelevantLocation } from "../../api/v1/location-autocomplete/types";
 import styles from "./LocationAutocomplete.module.scss";
 
 export function getDetailsFromLocationString(locationString: string) {
