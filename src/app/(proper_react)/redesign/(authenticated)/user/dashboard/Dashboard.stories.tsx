@@ -175,7 +175,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
   sanitizedExposures: [
     { "physical-addresses": 90 },
     { "family-members-names": 29 },
-    { "full-names": 98 },
+    { "full-name": 98 },
     { "phone-numbers": 8 },
     { "other-data-class": 80 },
   ],

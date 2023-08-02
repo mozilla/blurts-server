@@ -46,7 +46,7 @@ const exposureKeyMap: Record<string, string> = {
   // data brokers
   addresses: "physical-addresses",
   familyMembers: "family-members-names",
-  fullNames: "full-names",
+  fullNames: "full-name",
 
   // data breaches
   socialSecurityNumbers: "social-security-numbers",

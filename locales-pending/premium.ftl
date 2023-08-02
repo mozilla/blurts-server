@@ -32,7 +32,10 @@ footer-external-link-faq-tooltip = Frequently asked questions
 # the label inside <label> will be shown underneath, in a smaller font.
 # Variables:
 #   $nr (number) - Total number of exposures found for the user
-exposure-chart-heading = <nr>{ $nr }</nr> <label>exposures</label>
+exposure-chart-heading = { $nr ->
+  [one] <nr>{ $nr }</nr> <label>exposure</label>
+  *[other] <nr>{ $nr }</nr> <label>exposures</label>
+}
 exposure-chart-legend-heading-type = Exposure
 exposure-chart-legend-heading-nr = Number
 # Variables:
@@ -69,6 +72,7 @@ progress-card-percentage-complete = { $percentage }% complete
 # Variables:
 # $percentage is the percentage value of exposures remaining, e.g. 70%.
 progress-card-percentage-remaining = { $percentage }% in progress
+full-name = Full name
 
 # Here's What We Fixed Modal
 
