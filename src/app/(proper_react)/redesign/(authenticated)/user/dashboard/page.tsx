@@ -2,18 +2,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { canSubscribeToPremium } from "../../../../../functions/universal/user";
-import { redirect } from "next/navigation";
-import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth";
 import { View } from "./View";
+import { authOptions } from "../../../../../api/utils/auth";
+import { dashboardSummary } from "../../../../../functions/server/dashboard";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getUserBreaches } from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
-import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
-import { authOptions } from "../../../../../api/utils/auth";
+import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
-import { dashboardSummary } from "../../../../../functions/server/dashboard";
+import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
+
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
