@@ -221,15 +221,12 @@ export const View = (props: Props) => {
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
 
-  let type = "NoContent";
-  if (
-    props.featureFlagsEnabled.FreeBrokerScan &&
-    props.featureFlagsEnabled.PremiumBrokerRemoval
-  ) {
-    type = isScanResultItemsEmpty
-      ? "DataBrokerScanUpsellContent"
-      : "LetsFixDataContent";
-  }
+  const featureFlagsEnabled =
+    props.featureFlagsEnabled?.FreeBrokerScan &&
+    props.featureFlagsEnabled?.PremiumBrokerRemoval;
+  const type = isScanResultItemsEmpty
+    ? "DataBrokerScanUpsellContent"
+    : "LetsFixDataContent";
 
   return (
     <div className={styles.wrapper}>
@@ -237,7 +234,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          type={type}
+          type={featureFlagsEnabled ? type : "NoContent"}
           hasRunScan={!isScanResultItemsEmpty}
         />
         <section className={styles.exposuresArea}>
