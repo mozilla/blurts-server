@@ -1,0 +1,40 @@
+@import "../../../../../../../tokens.scss";
+
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: $layout-lg;
+  flex-direction: row;
+  padding-inline: $layout-lg;
+
+  .breachContentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    h3 {
+      font: $text-title-2xs;
+    }
+
+    .recommendations {
+      padding-top: $spacing-md;
+      p {
+        font: $text-body-sm;
+      }
+      ol {
+        padding-top: $spacing-md;
+        list-style-position: inside;
+        padding-left: 0;
+      }
+    }
+  }
+
+  .illustrationWrapper {
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 100%;
+    }
+  }
+}
