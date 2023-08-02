@@ -398,7 +398,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                 <ExposureCategoriesListElem />
               </dl>
             </div>
-            {featureFlagsEnabled?.PremiumBrokerRemoval ? (
+            {featureFlagsEnabled.PremiumBrokerRemoval ? (
               <span className={styles.fixItBtn}>
                 <Button variant={"primary"}>
                   {l10n.getString("exposure-card-cta")}
