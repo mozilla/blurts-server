@@ -87,16 +87,7 @@ type LocationLongitude = "string";
  * Feature classes and codes: http://www.geonames.org/export/codes.html.
  * char(1)
  */
-type LocationFeatureClass =
-  | "A"
-  | "H"
-  | "L"
-  | "P"
-  | "R"
-  | "S"
-  | "T"
-  | "U"
-  | "V";
+type LocationFeatureClass = "A" | "H" | "L" | "P" | "R" | "S" | "T" | "U" | "V";
 /**
  * Feature classes and codes: http://www.geonames.org/export/codes.html.
  * varchar(10)
