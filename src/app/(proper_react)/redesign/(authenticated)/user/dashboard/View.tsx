@@ -220,7 +220,7 @@ export const View = (props: Props) => {
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
 
-  let type = "";
+  let type = "NoContent";
   if (
     props.featureFlagsEnabled?.FreeBrokerScan &&
     props.featureFlagsEnabled?.PremiumBrokerRemoval

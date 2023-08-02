@@ -15,7 +15,8 @@ export type DashboardTopBannerProps = {
     | "DataBrokerScanUpsellContent"
     | "NoExposuresFoundContent"
     | "ResumeBreachResolutionContent"
-    | "YourDataIsProtectedContent";
+    | "YourDataIsProtectedContent"
+    | "NoContent";
   bannerData: DashboardSummary;
   hasRunScan: boolean;
 };
@@ -123,6 +124,11 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         },
       },
     },
+    NoContent: {
+      headline: null,
+      description: null,
+      cta: null,
+    },
   };
 
   const content = contentData[props.type];
@@ -132,13 +138,17 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       <div className={styles.explainerContentWrapper}>
         {content && (
           <div className={styles.explainerContent}>
-            <h3>{content.headline}</h3>
-            <p>{content.description}</p>
-            <span className={styles.cta}>
-              <Button variant="primary" small onClick={content.cta.onClick}>
-                {content.cta.content}
-              </Button>
-            </span>
+            {content.headline ? <h3>{content.headline}</h3> : ""}
+            {content.description ? <p>{content.description}</p> : ""}
+            {content.cta ? (
+              <span className={styles.cta}>
+                <Button variant="primary" small onClick={content.cta.onClick}>
+                  {content.cta.content}
+                </Button>
+              </span>
+            ) : (
+              ""
+            )}
           </div>
         )}
       </div>
