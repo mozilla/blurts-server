@@ -223,6 +223,7 @@ export const DashboardWithScan: Story = {
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{}}
       />
     </Shell>
   ),
@@ -256,6 +257,7 @@ export const DashboardWithoutScan: Story = {
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{}}
       />
     </Shell>
   ),
@@ -289,6 +291,7 @@ export const DashboardEmptyListState: Story = {
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{}}
       />
     </Shell>
   ),
