@@ -5,19 +5,19 @@
 "use client";
 
 import { CSSProperties } from "react";
+import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
 import { useOverlayTrigger } from "react-aria";
-import { QuestionMarkCircle } from "../server/Icons";
 import styles from "./ProgressCard.module.scss";
+import { ModalOverlay } from "./dialog/ModalOverlay";
+import { Dialog } from "./dialog/Dialog";
+import { Button } from "../server/Button";
+import { useL10n } from "../../hooks/l10n";
 import ExploringLaptopPlus from "./assets/exploring-laptop-check.svg";
 import ExploringLaptopMinus from "./assets/exploring-laptop-minus.svg";
 import SparklingCheck from "./assets/sparkling-check.svg";
-import Image from "next/image";
-import { getL10n } from "../../functions/server/l10n";
+import { QuestionMarkCircle } from "../server/Icons";
 import ModalImage from "../client/assets/modal-default-img.svg";
-import { Button } from "../server/Button";
-import { ModalOverlay } from "./dialog/ModalOverlay";
-import { Dialog } from "./dialog/Dialog";
 
 export type Props = {
   resolvedByYou: number;
@@ -40,7 +40,7 @@ export const ProgressCard = (props: Props) => {
   const percentageCompleteNum = Math.round(PercentageComplete(props)); // Ensures a whole number
   const percentageRemainingNumber = 100 - percentageCompleteNum;
 
-  const l10n = getL10n();
+  const l10n = useL10n();
   const explainerDialogState = useOverlayTriggerState({});
   const explainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },

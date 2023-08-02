@@ -23,7 +23,7 @@ export interface TabListProps {
     name: string;
     content?: ReactNode;
   }>;
-  defaultSelectedKey?: string;
+  defaultSelectedKey?: Key;
   onSelectionChange?: (key: Key) => void;
 }
 

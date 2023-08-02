@@ -72,6 +72,7 @@ progress-card-percentage-complete = { $percentage }% complete
 # Variables:
 # $percentage is the percentage value of exposures remaining, e.g. 70%.
 progress-card-percentage-remaining = { $percentage }% in progress
+full-name = Full name
 
 # Here's What We Fixed Modal
 
@@ -162,6 +163,9 @@ modal-exposure-status-fixed = <b>Fixed</b> means the exposure has been resolved 
 
 # Dashboard
 
+dashboard-tab-label-action-needed = Action needed
+dashboard-tab-label-fixed = Fixed
+
 dashboard-exposures-filter = Filter
 dashboard-exposures-filter-company = Company
 dashboard-exposures-filter-exposure-type = Exposure type
@@ -224,7 +228,9 @@ dashboard-top-banner-your-data-is-protected-description =
   }
 dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 
-dashboard-exposures-area-headline = View all exposures that are fixed or in-progress
+dashboard-exposures-area-headline = View all sites where your info is exposed
+dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
+
 # Variables: 
 # $exposures_total_num is the total number of exposures the user has.
 # $data_breach_total_num is the total number of data breaches the user has.
