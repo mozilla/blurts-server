@@ -232,12 +232,6 @@ export const View = (props: Props) => {
 
   return (
     <div className={styles.wrapper}>
-      Free broken scan enabled:{" "}
-      {props.featureFlagsEnabled?.FreeBrokerScan ? "yes" : "no"}
-      <br />
-      Premium broker removal enabled:{" "}
-      {props.featureFlagsEnabled?.PremiumBrokerRemoval ? "yes" : "no"}
-      <br />
       <Toolbar user={props.user} />
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
