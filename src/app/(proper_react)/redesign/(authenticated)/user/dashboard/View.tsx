@@ -25,6 +25,7 @@ import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
+import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 
 export type Props = {
   user: Session["user"];
@@ -32,7 +33,7 @@ export type Props = {
   userScannedResults: ScanResult[];
   bannerData: DashboardSummary;
   locale: string;
-  featureFlagsEnabled: { [key: string]: boolean };
+  featureFlagsEnabled: FeatureFlagsEnabled;
 };
 
 export const View = (props: Props) => {
@@ -222,8 +223,8 @@ export const View = (props: Props) => {
 
   let type = "NoContent";
   if (
-    props.featureFlagsEnabled?.FreeBrokerScan &&
-    props.featureFlagsEnabled?.PremiumBrokerRemoval
+    props.featureFlagsEnabled.FreeBrokerScan &&
+    props.featureFlagsEnabled.PremiumBrokerRemoval
   ) {
     type = isScanResultItemsEmpty
       ? "DataBrokerScanUpsellContent"

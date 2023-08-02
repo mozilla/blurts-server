@@ -22,6 +22,7 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { ScanResult } from "../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
+import { FeatureFlagsEnabled } from "../../functions/server/featureFlags";
 
 export type Exposure = ScanResult | HibpLikeDbBreach;
 
@@ -59,7 +60,7 @@ export type ExposureCardProps = {
   locale: string;
   fromEmail?: string;
   color: string;
-  featureFlagsEnabled: { [key: string]: boolean };
+  featureFlagsEnabled: FeatureFlagsEnabled;
 };
 
 type BreachExposureCategoryProps = {

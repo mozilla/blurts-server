@@ -10,6 +10,11 @@ import {
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../api/utils/auth";
 
+export type FeatureFlagsEnabled = {
+  FreeBrokerScan: boolean;
+  PremiumBrokerRemoval: boolean;
+};
+
 export async function isFlagEnabled(name: string): Promise<boolean> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) {
