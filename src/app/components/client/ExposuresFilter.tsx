@@ -6,6 +6,7 @@ import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
 import React, {
   ReactElement,
+  ReactNode,
   createContext,
   useContext,
   useRef,
@@ -24,6 +25,7 @@ import {
 } from "react-aria";
 import {
   OverlayTriggerState,
+  RadioGroupProps,
   RadioGroupState,
   useOverlayTriggerState,
   useRadioGroupState,
@@ -109,7 +111,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
   const ExposuresFilterContent = (
     <>
       <div className={styles.exposuresFilterRadioButtons}>
-        <RadioGroup
+        <FilterRadioGroup
           type="exposure-type"
           value={filterState.exposureType}
           onChange={(value) => handleRadioChange("exposureType", value)}
@@ -128,8 +130,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
               "dashboard-exposures-filter-exposure-type-data-breach"
             )}
           </Radio>
-        </RadioGroup>
-        <RadioGroup
+        </FilterRadioGroup>
+        <FilterRadioGroup
           value={filterState.dateFound}
           onChange={(value) => handleRadioChange("dateFound", value)}
           type="date-found"
@@ -151,8 +153,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           <Radio value="last-year">
             {l10n.getString("dashboard-exposures-filter-date-found-last-year")}
           </Radio>
-        </RadioGroup>
-        <RadioGroup
+        </FilterRadioGroup>
+        <FilterRadioGroup
           value={filterState.status}
           onChange={(value) => handleRadioChange("status", value)}
           type="status"
@@ -170,7 +172,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           <Radio value="fixed">
             {l10n.getString("dashboard-exposures-filter-status-fixed")}
           </Radio>
-        </RadioGroup>
+        </FilterRadioGroup>
       </div>
       <div className={styles.filterControls}>
         <Button
@@ -309,29 +311,16 @@ const Popover = (props: PopoverProps) => {
 };
 
 // from https://react-spectrum.adobe.com/react-aria/useRadioGroup.html
-type RadioGroupProps = {
-  label: string;
-  children: React.ReactNode;
-  value: string;
+type FilterRadioGroupProps = RadioGroupProps & {
   type: "exposure-type" | "date-found" | "status";
-  onChange: (value: string) => void;
+  children: ReactNode;
 };
 
-type RadioProps = {
-  children: React.ReactNode;
-};
+const RadioContext = createContext<RadioGroupState | null>(null);
 
-const RadioContext = createContext<{
-  value: string;
-  onChange: (value: string) => void;
-}>({
-  value: "",
-  onChange: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-});
-
-function RadioGroup(props: RadioGroupProps) {
-  const { children, label, type, value, onChange } = props;
-  const state = useRadioGroupState(props);
+function FilterRadioGroup(props: FilterRadioGroupProps) {
+  const { type, children, ...otherProps } = props;
+  const state = useRadioGroupState(otherProps);
   const { radioGroupProps, labelProps } = useRadioGroup(props, state);
 
   return (
@@ -343,43 +332,32 @@ function RadioGroup(props: RadioGroupProps) {
           height="15"
           alt=""
         />
-        {label}
+        {otherProps.label}
       </span>
       <div className={styles.radioButtonsWrapper}>
-        <RadioContext.Provider value={{ value, onChange }}>
-          {children}
-        </RadioContext.Provider>
+        <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
       </div>
     </div>
   );
 }
 
+type RadioProps = {
+  children: React.ReactNode;
+};
+
 function Radio(props: RadioProps & AriaRadioProps) {
   const { children } = props;
-  const state = useContext(RadioContext);
+  const radioGroupState = useContext(RadioContext);
   const ref = useRef<HTMLInputElement>(null);
-  const checked = state ? state.value === props.value : false;
-  const radioGroupState: RadioGroupState = {
-    name: props.value,
-    selectedValue: checked ? props.value : null,
-    isDisabled: false,
-    isReadOnly: false,
-    isRequired: false,
-    validationState: "valid",
-    lastFocusedValue: null,
-    setSelectedValue: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-    setLastFocusedValue: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-  };
-  const handleChange = () => {
-    if (state?.onChange) {
-      state.onChange(props.value);
-    }
-  };
-  const { inputProps } = useRadio(props, radioGroupState, ref);
+  // TypeScript can't verify that this element is always contained inside a
+  // <FilterRadioGroup>, and thus that `radioGroupState` is not null, so we have
+  // to tell it ourselves:
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { inputProps } = useRadio(props, radioGroupState!, ref);
 
   return (
     <label className={styles.radioItem}>
-      <input {...inputProps} ref={ref} onChange={handleChange} type="radio" />
+      <input {...inputProps} ref={ref} type="radio" />
       {children}
     </label>
   );
