@@ -64,37 +64,6 @@ export const View = (props: Props) => {
     return new Date(isoString);
   };
 
-  // Only breaches exposure cards
-  const breachExposureCards = props.userBreaches.breachesData.verifiedEmails
-    .map((verifiedEmail) => {
-      const breachCardsForThisEmail = verifiedEmail.breaches.map(
-        (breach, breachId) => {
-          return (
-            <li
-              key={`${verifiedEmail.email}_${breach.Id.toString()}_${breachId}`}
-              className={styles.exposureListItem}
-            >
-              <ExposureCard
-                exposureData={breach}
-                exposureName={breach.Name}
-                fromEmail={verifiedEmail.email}
-                exposureDetailsLink={""} //TODO: Find out what link to add in a breach card
-                dateFound={breach.AddedDate}
-                statusPillType="needAction"
-                locale={props.locale}
-                color={getRandomLightNebulaColor(breach.Name)}
-              />
-            </li>
-          );
-        }
-      );
-      // Technically a JSX.Element can be `any`, but we know it's not.
-      // (At least, I *think* that's why this rule triggers.)
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-      return breachCardsForThisEmail;
-    })
-    .flat();
-
   const breachesDataArray = props.userBreaches.breachesData.verifiedEmails.map(
     (elem: BundledVerifiedEmails) => elem.breaches
   );
@@ -249,7 +218,7 @@ export const View = (props: Props) => {
             exposureData={exposure}
             exposureName={exposure.Title}
             fromEmail={email}
-            exposureDetailsLink=""
+            exposureDetailsLink={`/breach-details/${exposure.Name}`}
             dateFound={exposure.AddedDate}
             statusPillType={status}
             locale={props.locale}
@@ -329,9 +298,7 @@ export const View = (props: Props) => {
             </strong>
           </div>
         ) : (
-          <ul className={styles.exposureList}>
-            {isScanResultItemsEmpty ? breachExposureCards : exposureCardElems}
-          </ul>
+          <ul className={styles.exposureList}>{exposureCardElems}</ul>
         )}
       </div>
     </div>
