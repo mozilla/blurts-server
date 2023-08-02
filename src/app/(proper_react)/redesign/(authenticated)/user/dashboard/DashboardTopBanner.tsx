@@ -29,7 +29,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
   const router = useRouter();
 
   const isFixedTab = props.type === "fixed";
-  const { totalExposures, dataBrokerFixedNum } = props.bannerData;
+  const { totalExposures, dataBrokerFixedNum, dataBreachFixedNum } =
+    props.bannerData;
 
   const chartDataKey = isFixedTab
     ? "fixedSanitizedExposures"
@@ -158,8 +159,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           )}
           {isFixedTab && (
             <ProgressCard
-              resolvedByYou={0}
-              autoRemoved={0}
+              resolvedByYou={dataBreachFixedNum}
+              autoRemoved={dataBrokerFixedNum}
               totalNumExposures={totalExposures}
             />
           )}

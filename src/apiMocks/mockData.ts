@@ -34,7 +34,13 @@ export function createRandomScan(): ScanResult {
     last_name: faker.person.lastName(),
     middle_name: faker.person.middleName(),
     age: faker.number.int({ min: 14, max: 120 }).toString(),
-    status: "new", // state is always "new" by default, see the `ScanResult` type definition.
+    // state is always "new" by default, see the `ScanResult` type definition.
+    status: faker.helpers.arrayElement([
+      "new",
+      "optout_in_progress",
+      "waiting_for_verification",
+      "removed",
+    ]),
     addresses: Array.from({ length: 3 }, () => ({
       zip: faker.location.zipCode(),
       city: faker.location.city(),
