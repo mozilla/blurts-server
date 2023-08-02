@@ -42,9 +42,9 @@ export const View = (props: Props) => {
   const l10n = useL10n();
 
   const initialFilterState: FilterState = {
-    exposureType: "",
-    dateFound: "",
-    status: "",
+    exposureType: "show-all-exposure-type",
+    dateFound: "show-all-date-found",
+    status: "show-all-status",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
@@ -176,13 +176,12 @@ export const View = (props: Props) => {
         ? "data-broker"
         : "data-breach";
       const isFilteredByExposureType =
-        filters.exposureType === "" ||
         filters.exposureType === "show-all-exposure-type" ||
         filters.exposureType === exposureType;
 
       // Filter by date
       let isFilteredByDate = true;
-      if (filters.dateFound !== "" && filters.dateFound !== "show-all-date") {
+      if (filters.dateFound !== "show-all-date-found") {
         const exposureDate = isScanResult(exposure)
           ? new Date(exposure.created_at)
           : exposure.AddedDate;
@@ -317,7 +316,10 @@ export const View = (props: Props) => {
           {isActionNeededTab ? <TabContentActionNeeded /> : <TabContentFixed />}
         </section>
         <div className={styles.exposuresFilterWrapper}>
-          <ExposuresFilter setFilterValues={setFilters} />
+          <ExposuresFilter
+            initialFilterValues={initialFilterState}
+            setFilterValues={setFilters}
+          />
         </div>
         {noUnresolvedExposures ? (
           <div className={styles.noExposures}>

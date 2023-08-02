@@ -37,16 +37,20 @@ import CalendarIcon from "./assets/calendar.svg";
 import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
 
 export type FilterState = {
-  exposureType: string;
-  dateFound: string;
-  status: string;
+  exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
+  dateFound: "show-all-date-found" | "seven-days" | "thirty-days" | "last-year";
+  status: "show-all-status" | "action-needed" | "in-progress" | "fixed";
 };
 
 type ExposuresFilterProps = {
+  initialFilterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
 };
 
-export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
+export const ExposuresFilter = ({
+  initialFilterValues,
+  setFilterValues,
+}: ExposuresFilterProps) => {
   const l10n = useL10n();
 
   const [explainerDialog, setExplainerDialog] = useState<ReactElement>();
@@ -84,18 +88,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     dismissButtonRef
   ).buttonProps;
 
-  const emptyFilterState = {
-    exposureType: "",
-    dateFound: "",
-    status: "",
-  };
-
-  const [filterState, setFilterState] = useState<FilterState>(emptyFilterState);
-
-  const checkEmptyFilterState =
-    filterState.exposureType === "" &&
-    filterState.dateFound === "" &&
-    filterState.status === "";
+  const [filterState, setFilterState] =
+    useState<FilterState>(initialFilterValues);
 
   const handleRadioChange = (type: string, value: string) => {
     setFilterState((prevFilterState) => ({
@@ -176,19 +170,13 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
       </div>
       <div className={styles.filterControls}>
         <Button
-          disabled={checkEmptyFilterState}
           small
           variant="secondary"
-          onClick={() => setFilterState(emptyFilterState)}
+          onClick={() => setFilterState(initialFilterValues)}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
         </Button>
-        <Button
-          disabled={checkEmptyFilterState}
-          small
-          variant="primary"
-          onClick={handleSaveButtonClick}
-        >
+        <Button small variant="primary" onClick={handleSaveButtonClick}>
           {l10n.getString("dashboard-exposures-filter-show-results")}
         </Button>
       </div>
