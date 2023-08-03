@@ -224,7 +224,10 @@ export const DashboardWithScan: Story = {
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{}}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
       />
     </Shell>
   ),
