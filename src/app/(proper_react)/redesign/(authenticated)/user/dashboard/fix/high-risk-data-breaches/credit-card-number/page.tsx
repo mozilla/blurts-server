@@ -7,7 +7,7 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 export default function CreditCardDataBreach() {
   return (
     <div>
-      <HighRiskBreachLayout dataBreach="creditCard" />
+      <HighRiskBreachLayout typeOfBreach="creditCard" />
     </div>
   );
 }

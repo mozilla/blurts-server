@@ -7,20 +7,39 @@
 import styles from "./HighRiskBreachLayout.module.scss";
 import CreditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
 import Image from "next/image";
+import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
 
 type HighRiskBreachLayoutProps = {
-  dataBreach: "creditCard" | "socialSecurityNumbers" | "bankAccount" | "PIN";
+  typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
+  breachData?: UserBreaches; //TODO: Remove conditional when other high-risk data categories are available on the BE
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
+  // Using mocked data for now, except for SSN breaches
   const mockedData = [
-    { breachName: "Nike", date: "5/04/17" },
-    { breachName: "Adidas", date: "6/12/18" },
-    { breachName: "Puma", date: "2/22/19" },
+    { Name: "Nike", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
+    { Name: "Adidas", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
+    { Name: "Puma", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
   ];
 
-  const listOfBreaches = mockedData
-    .map((item) => `${item.breachName} on ${item.date}`)
+  //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
+  const exposedData = (() => {
+    if (props.breachData && props.typeOfBreach === "ssnBreaches")
+      return props.breachData.ssnBreaches;
+    if (props.typeOfBreach === "creditCard") return mockedData;
+    if (props.typeOfBreach === "bankAccount") return mockedData;
+    if (props.typeOfBreach === "PIN") return mockedData;
+    return [];
+  })();
+
+  // TODO: Make locale location-sensitive in the future
+  const dateFormatter = new Intl.DateTimeFormat("en-US", {
+    // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
+    dateStyle: "short",
+  });
+
+  const listOfBreaches = exposedData
+    .map((item) => `${item.Name} on ${dateFormatter.format(item.AddedDate)}`)
     .join(", ");
 
   let title, secondaryDescription, recommendationSteps;
@@ -64,14 +83,14 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     </ol>
   );
 
-  switch (props.dataBreach) {
+  switch (props.typeOfBreach) {
     case "creditCard":
       title = "Your credit card number was exposed";
       secondaryDescription =
         "Anyone who gets it can make unauthorized purchases that you may be liable for. Act now to prevent financial harm.";
       recommendationSteps = CreditCardRecommendationSteps;
       break;
-    case "socialSecurityNumbers":
+    case "ssnBreaches":
       title = "Social Security Number Data Breach";
       secondaryDescription =
         "Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.";

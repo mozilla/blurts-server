@@ -7,7 +7,7 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 export default function BankAccountDataBreach() {
   return (
     <div>
-      <HighRiskBreachLayout dataBreach="bankAccount" />
+      <HighRiskBreachLayout typeOfBreach="bankAccount" />
     </div>
   );
 }

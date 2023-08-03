@@ -7,7 +7,7 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 export default function PinNumberDataBreach() {
   return (
     <div>
-      <HighRiskBreachLayout dataBreach="PIN" />
+      <HighRiskBreachLayout typeOfBreach="PIN" />
     </div>
   );
 }

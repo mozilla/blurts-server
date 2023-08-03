@@ -7,7 +7,7 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 export default function SocialSecurityNumberDataBreach() {
   return (
     <div>
-      <HighRiskBreachLayout dataBreach="socialSecurityNumbers" />
+      <HighRiskBreachLayout typeOfBreach="ssnBreaches" />
     </div>
   );
 }
