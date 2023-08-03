@@ -7,24 +7,12 @@ import {
   isScanResult,
 } from "../../../../../components/client/ExposureCard";
 import { FilterState } from "../../../../../components/client/ExposuresFilter";
-import { StatusPillType } from "../../../../../components/server/StatusPill";
 
 export function filterExposures(
   exposures: Exposure[],
   filters: FilterState
 ): Exposure[] {
   return exposures.filter((exposure) => {
-    const status = getExposureStatus(exposure);
-    if (filters.status === "action-needed" && status !== "needAction") {
-      return false;
-    }
-    if (filters.status === "fixed" && status !== "fixed") {
-      return false;
-    }
-    if (filters.status === "in-progress" && status !== "progress") {
-      return false;
-    }
-
     if (filters.exposureType === "data-breach" && isScanResult(exposure)) {
       return false;
     }
@@ -58,21 +46,6 @@ export function filterExposures(
     return true;
   });
 }
-
-const getExposureStatus = (exposure: Exposure): StatusPillType => {
-  if (isScanResult(exposure)) {
-    switch (exposure.status) {
-      case "removed":
-        return "fixed";
-      case "waiting_for_verification":
-        return "progress";
-      default:
-        return "needAction";
-    }
-  }
-
-  return exposure.IsResolved ? "fixed" : "needAction";
-};
 
 const getDaysAgoTimestamp = (numOfDays: number) => {
   return Date.now() - numOfDays * 24 * 60 * 60 * 1000;

@@ -46,7 +46,6 @@ export const View = (props: Props) => {
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
     dateFound: "show-all-date-found",
-    status: "show-all-status",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
