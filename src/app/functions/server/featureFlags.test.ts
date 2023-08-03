@@ -32,7 +32,7 @@ it("throws if there is no valid session", async () => {
 });
 
 it("returns false if flag not provided or nonexistent", async () => {
-  //@ts-ignore TS should prevent, but let's test at runtime anyway.
+  // @ts-expect-error TS should prevent, but let's test at runtime anyway.
   await expect(isFlagEnabled()).rejects.toThrowError(
     "No name provided to isFlagEnabled"
   );
