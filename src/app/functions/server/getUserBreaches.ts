@@ -23,6 +23,9 @@ import { HibpLikeDbBreach } from "../../../utils/hibp";
 //TODO: deprecate with MNTOR-2021
 export type UserBreaches = {
   ssnBreaches: Array<HibpLikeDbBreach>;
+  bankAccountBreaches: Array<HibpLikeDbBreach>;
+  pinNumberBreaches: Array<HibpLikeDbBreach>;
+  creditCardNumberBreaches: Array<HibpLikeDbBreach>;
   passwordBreaches: Array<HibpLikeDbBreach>;
   phoneBreaches: Array<HibpLikeDbBreach>;
   emailVerifiedCount: number;
@@ -48,12 +51,28 @@ export async function getUserBreaches({
   appendBreachResolutionChecklist(breachesData, options);
 
   const ssnBreaches: HibpLikeDbBreach[] = [];
+  const bankAccountBreaches: HibpLikeDbBreach[] = [];
+  const creditCardNumberBreaches: HibpLikeDbBreach[] = [];
+  const pinNumberBreaches: HibpLikeDbBreach[] = [];
+
   const passwordBreaches: HibpLikeDbBreach[] = [];
   const phoneBreaches: HibpLikeDbBreach[] = [];
   for (const { breaches } of breachesData.verifiedEmails) {
     breaches.forEach((b) => {
       if (b.DataClasses.includes(BreachDataTypes.SSN)) {
         ssnBreaches.push(b);
+      }
+
+      if (b.DataClasses.includes(BreachDataTypes.BankAccount)) {
+        bankAccountBreaches.push(b);
+      }
+
+      if (b.DataClasses.includes(BreachDataTypes.CreditCard)) {
+        creditCardNumberBreaches.push(b);
+      }
+
+      if (b.DataClasses.includes(BreachDataTypes.PIN)) {
+        pinNumberBreaches.push(b);
       }
 
       if (b.DataClasses.includes(BreachDataTypes.Passwords)) {
@@ -83,6 +102,9 @@ export async function getUserBreaches({
     emailTotalCount,
     emailSelectIndex,
     ssnBreaches,
+    bankAccountBreaches,
+    pinNumberBreaches,
+    creditCardNumberBreaches,
     passwordBreaches,
     phoneBreaches,
   };
