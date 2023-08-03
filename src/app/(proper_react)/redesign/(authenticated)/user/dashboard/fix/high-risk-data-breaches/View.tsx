@@ -5,7 +5,7 @@
 "use client";
 
 import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
+import Link from "next/link";
 
 type Props = {
   breaches: UserBreaches;
@@ -14,10 +14,21 @@ type Props = {
 export const View = (props: Props) => {
   return (
     <div>
-      <HighRiskBreachLayout
-        typeOfBreach="ssnBreaches"
-        breachData={props.breaches}
-      />
+      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number">
+        SSN Breaches
+      </Link>
+      <br />
+      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card-number">
+        Credit card
+      </Link>
+      <br />
+      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account">
+        Bank Account
+      </Link>
+      <br />
+      <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number">
+        Pin Number
+      </Link>
     </div>
   );
 };

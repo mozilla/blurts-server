@@ -1,4 +1,4 @@
-@import "../../../../../../../tokens.scss";
+@import "../../../../../../../tokens";
 
 .container {
   display: grid;
@@ -26,6 +26,13 @@
         list-style-position: inside;
         padding-left: 0;
       }
+    }
+
+    .buttons {
+      padding-top: $spacing-md;
+      display: flex;
+      gap: $spacing-md;
+      align-items: center;
     }
   }
 

@@ -6,8 +6,15 @@
 
 import styles from "./HighRiskBreachLayout.module.scss";
 import CreditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
+import BankAccountIllustration from "../images/high-risk-data-breach-bank-account.svg";
+import PinNumberIllustration from "../images/high-risk-data-breach-pin.svg";
+import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
 import Image from "next/image";
 import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { usePathname } from "next/navigation";
+import { Button } from "../../../../../../../components/server/Button";
+import Link from "next/link";
+import { useState } from "react";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
@@ -22,6 +29,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     { Name: "Puma", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
   ];
 
+  const [isBreachResolved, setIsBreachResolved] = useState(false);
   //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
   const exposedData = (() => {
     if (props.breachData && props.typeOfBreach === "ssnBreaches")
@@ -42,7 +50,8 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     .map((item) => `${item.Name} on ${dateFormatter.format(item.AddedDate)}`)
     .join(", ");
 
-  let title, secondaryDescription, recommendationSteps;
+  let title, secondaryDescription, recommendationSteps, breachIllustration;
+
   const primaryDescription = `It appeared in ${mockedData.length} data breaches: ${listOfBreaches}.`;
 
   const CreditCardRecommendationSteps = (
@@ -89,29 +98,37 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       secondaryDescription =
         "Anyone who gets it can make unauthorized purchases that you may be liable for. Act now to prevent financial harm.";
       recommendationSteps = CreditCardRecommendationSteps;
+      breachIllustration = CreditCardIllustration;
       break;
     case "ssnBreaches":
       title = "Social Security Number Data Breach";
       secondaryDescription =
         "Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.";
       recommendationSteps = SocialSecurityNumberRecommendationSteps;
+      breachIllustration = SocialSecurityNumberIllustration;
       break;
     case "bankAccount":
       title = "Bank Account Data Breach";
       secondaryDescription =
         "Taking action ASAP could give you more legal protections to help you recover any losses. ";
       recommendationSteps = BankAccountRecommendationSteps;
+      breachIllustration = BankAccountIllustration;
       break;
     case "PIN":
       title = "PIN Data Breach";
       secondaryDescription =
         "Taking action ASAP could give you more legal protections to help you recover any losses.";
       recommendationSteps = PinNumberRecoomendationSteps;
+      breachIllustration = PinNumberIllustration;
       break;
     default:
       title = "";
       break;
   }
+
+  const handleMarkedAsFixed = (val: boolean) => {
+    setIsBreachResolved(val);
+  };
 
   return (
     <div className={styles.container}>
@@ -127,9 +144,21 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           </p>
           {recommendationSteps}
         </div>
+        <div className={styles.buttons}>
+          <Button
+            variant="primary"
+            small
+            onClick={() => {
+              handleMarkedAsFixed;
+            }}
+          >
+            Mark as fixed
+          </Button>
+          <Link href="/">Skip for now</Link>
+        </div>
       </div>
       <div className={styles.illustrationWrapper}>
-        <Image src={CreditCardIllustration} alt="" />
+        <Image src={breachIllustration} alt="" />
       </div>
     </div>
   );
