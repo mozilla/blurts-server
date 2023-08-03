@@ -6,10 +6,8 @@ import { cookies } from "next/headers";
 import { Session } from "next-auth";
 
 import { getBreaches } from "./getBreaches";
-import {
-  appendBreachResolutionChecklist,
-  BreachDataTypes,
-} from "./breachResolution";
+import { appendBreachResolutionChecklist } from "./breachResolution";
+import { BreachDataTypes } from "../universal/breach";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
 import {
   BundledVerifiedEmails,
