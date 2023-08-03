@@ -35,6 +35,7 @@ $progressBarHeight: 56px;
       left: 0;
       position: absolute;
       top: 0;
+      transition: width 200ms linear;
     }
   }
 }
