@@ -262,6 +262,14 @@ export const View = (props: Props) => {
     </>
   );
 
+  const featureFlagsEnabled =
+    props.featureFlagsEnabled?.FreeBrokerScan &&
+    props.featureFlagsEnabled?.PremiumBrokerRemoval;
+
+  const type = isScanResultItemsEmpty
+    ? "DataBrokerScanUpsellContent"
+    : "LetsFixDataContent";
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -274,11 +282,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          content={
-            isScanResultItemsEmpty
-              ? "DataBrokerScanUpsellContent"
-              : "LetsFixDataContent"
-          }
+          content={featureFlagsEnabled ? type : "NoContent"}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
           ctaCallback={() => {
