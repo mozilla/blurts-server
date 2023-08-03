@@ -27,6 +27,7 @@ import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { StatusPillType } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
+import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 
 export type Props = {
   user: Session["user"];
@@ -34,6 +35,7 @@ export type Props = {
   userScannedResults: ScanResult[];
   bannerData: DashboardSummary;
   locale: string;
+  featureFlagsEnabled: FeatureFlagsEnabled;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -206,6 +208,7 @@ export const View = (props: Props) => {
             statusPillType={status}
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.data_broker)}
+            featureFlagsEnabled={props.featureFlagsEnabled}
           />
         </li>
       ) : (
@@ -223,6 +226,7 @@ export const View = (props: Props) => {
             statusPillType={status}
             locale={props.locale}
             color={getRandomLightNebulaColor(exposure.Name)}
+            featureFlagsEnabled={props.featureFlagsEnabled}
           />
         </li>
       );

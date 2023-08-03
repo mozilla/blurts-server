@@ -15,6 +15,7 @@ import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
+import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -39,6 +40,10 @@ export default async function DashboardPage() {
   const summary = dashboardSummary(scanResultItems, breaches);
   const locale = getLocale();
 
+  const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan");
+  const PremiumBrokerRemoval = await isFlagEnabled("PremiumBrokerRemoval");
+  const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
+
   return (
     <View
       user={session.user}
@@ -46,6 +51,7 @@ export default async function DashboardPage() {
       userBreaches={breaches}
       locale={locale}
       bannerData={summary}
+      featureFlagsEnabled={featureFlagsEnabled}
     />
   );
 }
