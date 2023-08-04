@@ -31,6 +31,9 @@ export const L10nProvider = (props: {
   // To enable server-side rendering, all tags are converted to plain text nodes.
   // They will be upgraded to regular HTML elements in the browser:
   const parseMarkup: MarkupParser | undefined =
+    // Ignored for test coverage, since `document` is mocked (and thus defined)
+    // in unit tests:
+    /* c8 ignore next 7 */
     typeof document === "undefined"
       ? (str: string) => [
           {

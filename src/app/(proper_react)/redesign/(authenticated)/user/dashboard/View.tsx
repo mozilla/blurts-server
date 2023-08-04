@@ -13,6 +13,7 @@ import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
 import type { UserBreaches } from "../../../../../functions/server/getUserBreaches";
 import {
+  Exposure,
   ExposureCard,
   isScanResult,
 } from "../../../../../components/client/ExposureCard";
@@ -27,6 +28,7 @@ import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { StatusPillType } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
+import { filterExposures } from "./filterExposures";
 
 export type Props = {
   user: Session["user"];
@@ -44,7 +46,6 @@ export const View = (props: Props) => {
   const initialFilterState: FilterState = {
     exposureType: "show-all-exposure-type",
     dateFound: "show-all-date-found",
-    status: "show-all-status",
   };
   const [filters, setFilters] = useState<FilterState>(initialFilterState);
   const [selectedTab, setSelectedTab] = useState<Key>("action-needed");
@@ -64,17 +65,14 @@ export const View = (props: Props) => {
     return new Date(isoString);
   };
 
-  const breachesDataArray = props.userBreaches.breachesData.verifiedEmails.map(
-    (elem: BundledVerifiedEmails) => elem.breaches
-  );
+  const breachesDataArray = props.userBreaches.breachesData.verifiedEmails
+    .map((elem: BundledVerifiedEmails) => elem.breaches)
+    .flat();
   const scannedResultsDataArray =
     props.userScannedResults.map((elem: ScanResult) => elem) || [];
 
   // Merge exposure cards
-  const combinedArray = [
-    ...breachesDataArray.flat(),
-    ...scannedResultsDataArray,
-  ];
+  const combinedArray = [...breachesDataArray, ...scannedResultsDataArray];
 
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
@@ -91,9 +89,7 @@ export const View = (props: Props) => {
     return timestampB - timestampA;
   });
 
-  const getBreachStatus = (
-    exposure: ScanResult | HibpLikeDbBreach
-  ): StatusPillType => {
+  const getExposureStatus = (exposure: Exposure): StatusPillType => {
     if (isScanResult(exposure)) {
       switch (exposure.status) {
         case "removed":
@@ -108,126 +104,63 @@ export const View = (props: Props) => {
     return exposure.IsResolved ? "fixed" : "needAction";
   };
 
-  const getDaysAgoDate = (numOfDays: number) => {
-    const currentDate = new Date();
-    return new Date(currentDate.getTime() - numOfDays * 24 * 60 * 60 * 1000);
-  };
-
-  const filteredExposures = arraySortedByDate.filter(
-    (exposure: ScanResult | HibpLikeDbBreach) => {
-      // Filter by status
-      const breachStatus = getBreachStatus(exposure);
-      if (
-        (isActionNeededTab && breachStatus !== "needAction") ||
-        (!isActionNeededTab && breachStatus === "needAction")
-      ) {
-        return false;
-      }
-
-      let isFilteredByStatus;
-      switch (filters.status) {
-        case "action-needed":
-          isFilteredByStatus = breachStatus === "needAction";
-          break;
-        case "in-progress":
-          isFilteredByStatus = breachStatus === "progress";
-          break;
-        case "fixed":
-          isFilteredByStatus = breachStatus === "fixed";
-          break;
-        default:
-          isFilteredByStatus = true;
-          break;
-      }
-
-      // Filter by exposure type
-      const exposureType = isScanResult(exposure)
-        ? "data-broker"
-        : "data-breach";
-      const isFilteredByExposureType =
-        filters.exposureType === "show-all-exposure-type" ||
-        filters.exposureType === exposureType;
-
-      // Filter by date
-      let isFilteredByDate = true;
-      if (filters.dateFound !== "show-all-date-found") {
-        const exposureDate = isScanResult(exposure)
-          ? new Date(exposure.created_at)
-          : exposure.AddedDate;
-        switch (filters.dateFound) {
-          case "seven-days":
-            isFilteredByDate = exposureDate >= getDaysAgoDate(7);
-            break;
-          case "thirty-days":
-            isFilteredByDate = exposureDate >= getDaysAgoDate(30);
-            break;
-          case "last-year":
-            isFilteredByDate = exposureDate >= getDaysAgoDate(365);
-            break;
-          default:
-            // Do nothing
-            break;
-        }
-      }
-
-      return isFilteredByExposureType && isFilteredByDate && isFilteredByStatus;
-    }
-  );
-
-  const exposureCardElems = filteredExposures.map(
-    (exposure: ScanResult | HibpLikeDbBreach, index) => {
-      let email;
-      // Get the email assosciated with breach
-      if (!isScanResult(exposure)) {
-        props.userBreaches.breachesData.verifiedEmails.forEach(
-          (verifiedEmail) => {
-            if (
-              verifiedEmail.breaches.some((breach) => breach.Id === exposure.Id)
-            ) {
-              email = verifiedEmail.email;
-            }
-          }
-        );
-      }
-
-      const status = getBreachStatus(exposure);
-
-      return isScanResult(exposure) ? (
-        // Scanned result
-        <li
-          key={`scan-${exposure.id}-${index}`}
-          className={styles.exposureListItem}
-        >
-          <ExposureCard
-            exposureData={exposure}
-            exposureName={exposure.data_broker}
-            exposureDetailsLink={exposure.link}
-            dateFound={dateObject(exposure.created_at)}
-            statusPillType={status}
-            locale={props.locale}
-            color={getRandomLightNebulaColor(exposure.data_broker)}
-          />
-        </li>
-      ) : (
-        // Breaches result
-        <li
-          key={`breach-${exposure.Id}-${index}`}
-          className={styles.exposureListItem}
-        >
-          <ExposureCard
-            exposureData={exposure}
-            exposureName={exposure.Title}
-            fromEmail={email}
-            exposureDetailsLink={`/breach-details/${exposure.Name}`}
-            dateFound={exposure.AddedDate}
-            statusPillType={status}
-            locale={props.locale}
-            color={getRandomLightNebulaColor(exposure.Name)}
-          />
-        </li>
+  const tabSpecificExposures = arraySortedByDate.filter(
+    (exposure: Exposure) => {
+      const exposureStatus = getExposureStatus(exposure);
+      return (
+        (isActionNeededTab && exposureStatus === "needAction") ||
+        (!isActionNeededTab && exposureStatus !== "needAction")
       );
     }
   );
+  const filteredExposures = filterExposures(tabSpecificExposures, filters);
+
+  const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
+    let email;
+    // Get the email assosciated with breach
+    if (!isScanResult(exposure)) {
+      props.userBreaches.breachesData.verifiedEmails.forEach(
+        (verifiedEmail) => {
+          if (
+            verifiedEmail.breaches.some((breach) => breach.Id === exposure.Id)
+          ) {
+            email = verifiedEmail.email;
+          }
+        }
+      );
+    }
+
+    const status = getExposureStatus(exposure);
+
+    return isScanResult(exposure) ? (
+      // Scanned result
+      <li key={`scan-${exposure.id}`} className={styles.exposureListItem}>
+        <ExposureCard
+          exposureData={exposure}
+          exposureName={exposure.data_broker}
+          exposureDetailsLink={exposure.link}
+          dateFound={dateObject(exposure.created_at)}
+          statusPillType={status}
+          locale={props.locale}
+          color={getRandomLightNebulaColor(exposure.data_broker)}
+        />
+      </li>
+    ) : (
+      // Breaches result
+      <li key={`breach-${exposure.Id}`} className={styles.exposureListItem}>
+        <ExposureCard
+          exposureData={exposure}
+          exposureName={exposure.Title}
+          fromEmail={email}
+          exposureDetailsLink={`/breach-details/${exposure.Name}`}
+          dateFound={exposure.AddedDate}
+          statusPillType={status}
+          locale={props.locale}
+          color={getRandomLightNebulaColor(exposure.Name)}
+        />
+      </li>
+    );
+  });
   const isScanResultItemsEmpty = props.userScannedResults.length === 0;
   const noUnresolvedExposures = exposureCardElems.length === 0;
 

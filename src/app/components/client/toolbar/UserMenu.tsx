@@ -13,11 +13,15 @@ export type Props = {
 
 export const UserMenu = (props: Props) => {
   // Placeholder to enable login/logout until we create an actual menu
+  // Ignored for test coverage; to be implemented:
+  /* c8 ignore next 3 */
   if (!props.user) {
     return <button onClick={() => void signIn("fxa")}>Sign in</button>;
   }
 
   return (
+    // Ignored for test coverage; to be implemented:
+    /* c8 ignore next */
     <button onClick={() => void signOut({ callbackUrl: "/" })}>Sign out</button>
   );
 };

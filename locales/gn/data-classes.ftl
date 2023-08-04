@@ -25,6 +25,7 @@ career-levels = Carréra rapykuere
 cellular-network-names = Red celular réra
 charitable-donations = Jopói mba’eporãrã
 chat-logs = Chat rehegua jehaipy
+clothing-sizes = Ao tuichakue
 credit-card-cvv = Kuatia’atã ñemurã CVV
 credit-cards = Kuatia’atã ñemurã
 credit-status-information = Ñemurã rekotee marandu
