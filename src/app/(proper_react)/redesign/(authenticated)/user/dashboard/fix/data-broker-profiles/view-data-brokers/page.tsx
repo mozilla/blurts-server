@@ -2,18 +2,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import Image from "next/image";
 import Link from "next/link";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import styles from "../dataBrokerProfiles.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import { DataBrokerProfiles } from "../../../../../../../../components/client/DataBrokerProfiles";
-import iconQuestionMark from "./images/icon-question-mark.svg";
 import { getLatestOnerepScan } from "../../../../../../../../../db/tables/onerep_scans";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getOnerepProfileId } from "../../../../../../../../../db/tables/subscribers";
 import { redirect } from "next/navigation";
+import { AboutBrokersIcon } from "./AboutBrokersIcon";
 
 export default async function ViewDataBrokers() {
   const l10n = getL10n();
@@ -51,9 +50,7 @@ export default async function ViewDataBrokers() {
           {l10n.getString(
             "fix-flow-data-broker-profiles-view-data-broker-profiles-view-info-on-sites"
           )}
-          <button className={styles.questionTooltip}>
-            <Image alt="" src={iconQuestionMark} />
-          </button>
+          <AboutBrokersIcon />
         </h4>
         <DataBrokerProfiles data={scanResultItems} />
       </div>
