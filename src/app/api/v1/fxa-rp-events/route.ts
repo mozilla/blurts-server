@@ -19,7 +19,7 @@ import {
   activateProfile,
   deactivateProfile,
   optoutProfile,
-} from "../../../functions/server/onerep.js";
+} from "../../../functions/server/onerep";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -66,7 +66,7 @@ const getJwtPubKey = async (): Promise<Array<jwt.JwtPayload> | undefined> => {
  */
 const authenticateFxaJWT = async (
   req: NextRequest
-): Promise<jwt.JwtPayload> => {
+): Promise<jwt.JwtPayload | string> => {
   // bearer token
   const headerToken = bearerToken(req);
 
@@ -79,7 +79,7 @@ const authenticateFxaJWT = async (
   }
 
   // Verify the token is valid
-  const jwkPem = jwkToPem(jwk);
+  const jwkPem = jwkToPem(jwk as jwkToPem.JWK);
   const decoded = jwt.verify(headerToken, jwkPem, {
     algorithms: ["RS256"],
   });
