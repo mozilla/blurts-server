@@ -42,7 +42,6 @@ import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
   dateFound: "show-all-date-found" | "seven-days" | "thirty-days" | "last-year";
-  status: "show-all-status" | "action-needed" | "in-progress" | "fixed";
 };
 
 type ExposuresFilterProps = {
@@ -152,25 +151,6 @@ export const ExposuresFilter = ({
           </Radio>
           <Radio value="last-year">
             {l10n.getString("dashboard-exposures-filter-date-found-last-year")}
-          </Radio>
-        </FilterRadioGroup>
-        <FilterRadioGroup
-          value={filterState.status}
-          onChange={(value) => handleRadioChange("status", value)}
-          type="status"
-          label={l10n.getString("dashboard-exposures-filter-status")}
-        >
-          <Radio value="show-all-status">
-            {l10n.getString("dashboard-exposures-filter-show-all")}
-          </Radio>
-          <Radio value="action-needed">
-            {l10n.getString("dashboard-exposures-filter-status-action-needed")}
-          </Radio>
-          <Radio value="in-progress">
-            {l10n.getString("dashboard-exposures-filter-status-in-progress")}
-          </Radio>
-          <Radio value="fixed">
-            {l10n.getString("dashboard-exposures-filter-status-fixed")}
           </Radio>
         </FilterRadioGroup>
       </div>

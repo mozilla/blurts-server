@@ -11,6 +11,8 @@ import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
 
+const ONEREP_DATA_BROKER_COUNT = 190;
+
 export type DashboardTopBannerProps = {
   content:
     | "LetsFixDataContent"
@@ -54,6 +56,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: {
         content: l10n.getString("dashboard-top-banner-protect-your-data-cta"),
+        // Ignored for test coverage; to be replaced by a link:
+        /* c8 ignore next 4 */
         onClick: () => {
           window.location.href =
             "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
@@ -67,10 +71,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-monitor-protects-your-even-more-description",
         {
-          data_broker_sites_total_num: parseInt(
-            process.env.ONEREP_DATA_BROKER_COUNT || "",
-            10
-          ),
+          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
         }
       ),
       cta: {
@@ -87,14 +88,13 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-no-exposures-found-description",
         {
-          data_broker_sites_total_num: parseInt(
-            process.env.ONEREP_DATA_BROKER_COUNT || "",
-            10
-          ),
+          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
         }
       ),
       cta: {
         content: l10n.getString("dashboard-top-banner-no-exposures-found-cta"),
+        // Ignored for test coverage; to be implemented:
+        /* c8 ignore next 3 */
         onClick: () => {
           // do something
         },
@@ -114,6 +114,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         content: l10n.getString(
           "dashboard-top-banner-lets-keep-protecting-cta"
         ),
+        // Ignored for test coverage; to be implemented:
+        /* c8 ignore next 3 */
         onClick: () => {
           // do something
         },
@@ -133,6 +135,8 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         content: l10n.getString(
           "dashboard-top-banner-your-data-is-protected-cta"
         ),
+        // Ignored for test coverage; to be implemented:
+        /* c8 ignore next 3 */
         onClick: () => {
           props?.ctaCallback?.();
         },

@@ -4,6 +4,8 @@
 
 import { RefObject, useEffect, useState } from "react";
 
+// Ignored for test coverage, as tests would be too mock-heavy to be useful:
+/* c8 ignore start */
 const useElementWidthImp = (ref: RefObject<HTMLElement> | undefined) => {
   const [width, setWidth] = useState<number>(0);
 
@@ -22,3 +24,4 @@ export const useElementWidth =
   typeof window === "undefined" || typeof window.matchMedia !== "function"
     ? () => 0
     : useElementWidthImp;
+/* c8 ignore stop */
