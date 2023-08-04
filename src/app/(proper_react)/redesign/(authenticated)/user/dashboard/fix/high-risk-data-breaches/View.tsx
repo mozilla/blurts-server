@@ -10,7 +10,6 @@ import Link from "next/link";
 type Props = {
   breaches: UserBreaches;
 };
-
 export const View = (props: Props) => {
   return (
     <div>

@@ -10,6 +10,7 @@ import { appendBreachResolutionChecklist } from "./breachResolution";
 import { BreachDataTypes } from "../universal/breach";
 import { getSubscriberByEmail } from "../../../../src/db/tables/subscribers.js";
 import {
+  AllEmailsAndBreaches,
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
 } from "../../../../src/utils/breaches.js";
@@ -51,28 +52,12 @@ export async function getUserBreaches({
   appendBreachResolutionChecklist(breachesData, options);
 
   const ssnBreaches: HibpLikeDbBreach[] = [];
-  const bankAccountBreaches: HibpLikeDbBreach[] = [];
-  const creditCardNumberBreaches: HibpLikeDbBreach[] = [];
-  const pinNumberBreaches: HibpLikeDbBreach[] = [];
-
   const passwordBreaches: HibpLikeDbBreach[] = [];
   const phoneBreaches: HibpLikeDbBreach[] = [];
   for (const { breaches } of breachesData.verifiedEmails) {
     breaches.forEach((b) => {
       if (b.DataClasses.includes(BreachDataTypes.SSN)) {
         ssnBreaches.push(b);
-      }
-
-      if (b.DataClasses.includes(BreachDataTypes.BankAccount)) {
-        bankAccountBreaches.push(b);
-      }
-
-      if (b.DataClasses.includes(BreachDataTypes.CreditCard)) {
-        creditCardNumberBreaches.push(b);
-      }
-
-      if (b.DataClasses.includes(BreachDataTypes.PIN)) {
-        pinNumberBreaches.push(b);
       }
 
       if (b.DataClasses.includes(BreachDataTypes.Passwords)) {
@@ -95,20 +80,18 @@ export async function getUserBreaches({
     typeof emailSelectedCookie !== "undefined"
       ? Number.parseInt(emailSelectedCookie.value, 10)
       : 0;
-
+  
   return {
     breachesData,
     emailVerifiedCount,
     emailTotalCount,
     emailSelectIndex,
     ssnBreaches,
-    bankAccountBreaches,
-    pinNumberBreaches,
-    creditCardNumberBreaches,
     passwordBreaches,
     phoneBreaches,
   };
 }
+    
 
 /**
  * NOTE: new function to replace getUserBreaches
