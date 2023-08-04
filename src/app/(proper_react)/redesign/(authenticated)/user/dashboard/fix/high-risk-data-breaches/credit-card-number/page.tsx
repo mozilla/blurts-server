@@ -13,7 +13,6 @@ export default async function CreditCardDataBreach() {
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  // Original data breaches
   const breaches = await getUserBreaches({ user: session.user });
 
   return (
