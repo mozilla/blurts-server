@@ -6,66 +6,39 @@ import { getServerSession } from "next-auth";
 import {
   UserBreaches,
   getUserBreaches,
-  processBreachesData,
 } from "../../../../../../../functions/server/getUserBreaches";
 import { authOptions } from "../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
 import { View } from "./View";
-import { HibpLikeDbBreach } from "../../../../../../../../utils/hibp";
-import { createRandomBreach } from "../../../../../../../../apiMocks/mockData";
-import {
-  AllEmailsAndBreaches,
-  BundledVerifiedEmails,
-} from "../../../../../../../../utils/breaches";
 
 export default async function HighRiskDataBreaches() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
+  const breaches = await getUserBreaches({ user: session.user });
 
-  // Original data breaches
-  // const userBreachesData: UserBreaches = await getUserBreaches({
-  //   user: session.user,
-  // });
-  // const breaches = await getUserBreaches({ user: session.user });
-
-  // Mocked data breaches
-
-  const scannedResultsArraySample: HibpLikeDbBreach[] = [];
-
-  for (let i = 0; i < 5; i++) {
-    const breachItem = createRandomBreach({ isHighRiskOnly: true }); // Use a different fakerSeed for each iteration
-    scannedResultsArraySample.push(breachItem);
-  }
-
-  const mockedUserBreaches: UserBreaches = {
-    ssnBreaches: [],
-    passwordBreaches: [],
-    phoneBreaches: [],
-    bankAccountBreaches: [],
-    pinNumberBreaches: [],
-    creditCardNumberBreaches: [],
-    emailVerifiedCount: 2,
-    emailTotalCount: 5,
-    emailSelectIndex: 1,
-    breachesData: {
-      unverifiedEmails: [],
-      verifiedEmails: [
-        {
-          breaches: scannedResultsArraySample,
-          email: "email@example.com",
-          id: 2,
-          primary: true,
-          verified: true,
-        },
-      ],
-    },
-  };
-
-  const sanitizedBreaches = processBreachesData(
-    mockedUserBreaches.breachesData
-  );
-  //TODO: Add logic to check completion between high risk states
-  return <View breaches={sanitizedBreaches} />;
+  return <View breaches={breaches} />;
 }
+
+// export const getHighRiskBreachLink = (breaches: UserBreaches) => {
+
+//   if (breaches.ssnBreaches && breaches.ssnBreaches.length > 0) {
+//     return "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number"
+//   }
+
+//   if (breaches.pinNumberBreaches && breaches.pinNumberBreaches.length > 0) {
+//     return "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number"
+//   }
+
+//   if (breaches.creditCardNumberBreaches && breaches.creditCardNumberBreaches.length > 0) {
+//     return "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card-number"
+//   }
+
+//   if (breaches.bankAccountBreaches && breaches.bankAccountBreaches.length > 0) {
+//     return "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account"
+//   }
+
+//   //TODO: Handle case where user does not have leaked passwords either
+//   return "/redesign/user/dashboard/fix/leaked-passwords"
+// }

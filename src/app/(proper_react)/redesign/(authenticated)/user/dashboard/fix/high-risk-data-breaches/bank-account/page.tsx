@@ -3,11 +3,22 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../../../../../../api/utils/auth";
+import { redirect } from "next/navigation";
+import { getUserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 
-export default function BankAccountDataBreach() {
+export default async function BankAccountDataBreach() {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
+  }
+  // Original data breaches
+  const breaches = await getUserBreaches({ user: session.user });
+
   return (
     <div>
-      <HighRiskBreachLayout typeOfBreach="bankAccount" />
+      <HighRiskBreachLayout typeOfBreach="bankAccount" breachData={breaches} />
     </div>
   );
 }

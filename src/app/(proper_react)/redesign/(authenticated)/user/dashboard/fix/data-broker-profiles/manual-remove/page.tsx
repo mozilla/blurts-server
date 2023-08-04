@@ -6,9 +6,21 @@ import Link from "next/link";
 import styles from "../dataBrokerProfiles.module.scss";
 import { getL10n } from "../../../../../../../../functions/server/l10n";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../../../../../../api/utils/auth";
+import { redirect } from "next/navigation";
+import {
+  UserBreaches,
+  getUserBreaches,
+} from "../../../../../../../../functions/server/getUserBreaches";
 
-export default function ManualRemove() {
+export default async function ManualRemove() {
   const l10n = getL10n();
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
+  }
+  const breaches = await getUserBreaches({ user: session.user });
 
   return (
     <div>
@@ -88,9 +100,7 @@ export default function ManualRemove() {
         </Link>
         <Link
           className={`${buttonStyles.button} ${buttonStyles.secondary}`}
-          href={
-            "/redesign/user/dashboard/fix/data-broker-profiles/manual-remove"
-          }
+          href={getHighRiskBreachLink(breaches)}
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-skip"
@@ -100,3 +110,27 @@ export default function ManualRemove() {
     </div>
   );
 }
+
+export const getHighRiskBreachLink = (breaches: UserBreaches) => {
+  if (breaches.ssnBreaches && breaches.ssnBreaches.length > 0) {
+    return "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number";
+  }
+
+  if (breaches.pinNumberBreaches && breaches.pinNumberBreaches.length > 0) {
+    return "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number";
+  }
+
+  if (
+    breaches.creditCardNumberBreaches &&
+    breaches.creditCardNumberBreaches.length > 0
+  ) {
+    return "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card-number";
+  }
+
+  if (breaches.bankAccountBreaches && breaches.bankAccountBreaches.length > 0) {
+    return "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account";
+  }
+
+  //TODO: Handle case where user does not have leaked passwords either
+  return "/redesign/user/dashboard/fix/leaked-passwords";
+};

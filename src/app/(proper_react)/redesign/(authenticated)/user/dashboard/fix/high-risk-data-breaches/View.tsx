@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
+// "use client";
 
 import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import Link from "next/link";
@@ -15,7 +15,7 @@ export const View = (props: Props) => {
   return (
     <div>
       <HighRiskBreachLayout
-        typeOfBreach="ssnBreaches"
+        typeOfBreach="creditCard"
         breachData={props.breaches}
       />
 
