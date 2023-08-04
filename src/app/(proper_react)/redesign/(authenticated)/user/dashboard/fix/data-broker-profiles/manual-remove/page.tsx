@@ -9,10 +9,7 @@ import buttonStyles from "../../../../../../../../components/server/button.modul
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
-import {
-  UserBreaches,
-  getUserBreaches,
-} from "../../../../../../../../functions/server/getUserBreaches";
+import { getUserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { getHighRiskBreachLink } from "../../../../../../../../functions/universal/highRiskBreachLink";
 
 export default async function ManualRemove() {
