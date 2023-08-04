@@ -11,6 +11,8 @@ import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
 
+const ONEREP_DATA_BROKER_COUNT = 190;
+
 export type DashboardTopBannerProps = {
   content:
     | "LetsFixDataContent"
@@ -67,10 +69,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-monitor-protects-your-even-more-description",
         {
-          data_broker_sites_total_num: parseInt(
-            process.env.ONEREP_DATA_BROKER_COUNT || "",
-            10
-          ),
+          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
         }
       ),
       cta: {
@@ -87,10 +86,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-no-exposures-found-description",
         {
-          data_broker_sites_total_num: parseInt(
-            process.env.ONEREP_DATA_BROKER_COUNT || "",
-            10
-          ),
+          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
         }
       ),
       cta: {
