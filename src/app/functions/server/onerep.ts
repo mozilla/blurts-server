@@ -165,6 +165,23 @@ export async function activateProfile(profileId: number): Promise<void> {
   }
 }
 
+export async function deactivateProfile(profileId: number): Promise<void> {
+  const response: Response = await onerepFetch(
+    `/profiles/${profileId}/deactivate`,
+    {
+      method: "PUT",
+    }
+  );
+  if (!response.ok) {
+    log.info(
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+    );
+    throw new Error(
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+    );
+  }
+}
+
 export async function optoutProfile(profileId: number): Promise<void> {
   const response = await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",

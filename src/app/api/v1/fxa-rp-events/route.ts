@@ -11,9 +11,15 @@ import {
   getSubscriberByFxaUid,
   updateFxAProfileData,
   updatePrimaryEmail,
+  getOnerepProfileId,
 } from "../../../../db/tables/subscribers.js";
 import { bearerToken } from "../../utils/auth";
 import appConstants from "../../../../appConstants";
+import {
+  activateProfile,
+  deactivateProfile,
+  optoutProfile,
+} from "../../../functions/server/onerep.js";
 
 const FXA_PROFILE_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/profile-change";
@@ -23,13 +29,14 @@ const FXA_SUBSCRIPTION_CHANGE_EVENT =
   "https://schemas.accounts.firefox.com/event/subscription-state-change";
 const FXA_DELETE_USER_EVENT =
   "https://schemas.accounts.firefox.com/event/delete-user";
+const MONITOR_PREMIUM_CAPABILITY = "monitor";
 
 /**
  * Fetch FxA JWT Public for verification
  *
  * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
  */
-const getJwtPubKey = async () => {
+const getJwtPubKey = async (): Promise<Array<jwt.JwtPayload> | undefined> => {
   const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwks`;
   try {
     const response = await fetch(jwtKeyUri, {
@@ -57,7 +64,9 @@ const getJwtPubKey = async () => {
  * @param {NextRequest} req
  * @returns {Promise<jwt.JwtPayload>} decoded JWT data, which should contain FxA events
  */
-const authenticateFxaJWT = async (req: NextRequest) => {
+const authenticateFxaJWT = async (
+  req: NextRequest
+): Promise<jwt.JwtPayload> => {
   // bearer token
   const headerToken = bearerToken(req);
 
@@ -228,6 +237,29 @@ export async function POST(request: NextRequest) {
           event,
           updatedSubscriptionFromEvent,
         });
+
+        // get profile id
+        const result = await getOnerepProfileId(subscriber);
+        const oneRepProfileId = result[0]["onerep_profile_id"] as number;
+
+        if (
+          updatedSubscriptionFromEvent.isActive &&
+          updatedSubscriptionFromEvent.capabilities.includes(
+            MONITOR_PREMIUM_CAPABILITY
+          )
+        ) {
+          // activate and opt out profiles
+          await activateProfile(oneRepProfileId);
+          await optoutProfile(oneRepProfileId);
+        } else if (
+          !updatedSubscriptionFromEvent.isActive &&
+          updatedSubscriptionFromEvent.capabilities.includes(
+            MONITOR_PREMIUM_CAPABILITY
+          )
+        ) {
+          // deactivation stops opt out process
+          await deactivateProfile(oneRepProfileId);
+        }
         break;
       }
       default:
