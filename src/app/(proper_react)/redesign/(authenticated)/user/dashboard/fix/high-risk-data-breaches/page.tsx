@@ -31,6 +31,7 @@ export default async function HighRiskDataBreaches() {
   // const breaches = await getUserBreaches({ user: session.user });
 
   // Mocked data breaches
+
   const scannedResultsArraySample: HibpLikeDbBreach[] = [];
 
   for (let i = 0; i < 5; i++) {
@@ -65,7 +66,6 @@ export default async function HighRiskDataBreaches() {
   const sanitizedBreaches = processBreachesData(
     mockedUserBreaches.breachesData
   );
-
   //TODO: Add logic to check completion between high risk states
   return <View breaches={sanitizedBreaches} />;
 }

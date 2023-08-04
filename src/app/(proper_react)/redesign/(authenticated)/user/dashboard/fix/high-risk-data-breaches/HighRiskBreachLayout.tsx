@@ -11,7 +11,6 @@ import PinNumberIllustration from "../images/high-risk-data-breach-pin.svg";
 import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
 import Image from "next/image";
 import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { usePathname } from "next/navigation";
 import { Button } from "../../../../../../../components/server/Button";
 import Link from "next/link";
 import { useState } from "react";
@@ -22,21 +21,17 @@ type HighRiskBreachLayoutProps = {
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
-  // Using mocked data for now, except for SSN breaches
-  const mockedData = [
-    { Name: "Nike", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
-    { Name: "Adidas", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
-    { Name: "Puma", AddedDate: new Date("2013-12-07T14:48:00.000Z") },
-  ];
-
   const [isBreachResolved, setIsBreachResolved] = useState(false);
   //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
   const exposedData = (() => {
     if (props.breachData && props.typeOfBreach === "ssnBreaches")
       return props.breachData.ssnBreaches;
-    if (props.typeOfBreach === "creditCard") return mockedData;
-    if (props.typeOfBreach === "bankAccount") return mockedData;
-    if (props.typeOfBreach === "PIN") return mockedData;
+    if (props.breachData && props.typeOfBreach === "creditCard")
+      return props.breachData.creditCardNumberBreaches;
+    if (props.breachData && props.typeOfBreach === "bankAccount")
+      return props.breachData.bankAccountBreaches;
+    if (props.breachData && props.typeOfBreach === "PIN")
+      return props.breachData.pinNumberBreaches;
     return [];
   })();
 
@@ -52,7 +47,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   let title, secondaryDescription, recommendationSteps, breachIllustration;
 
-  const primaryDescription = `It appeared in ${mockedData.length} data breaches: ${listOfBreaches}.`;
+  const primaryDescription = `It appeared in ${exposedData.length} data breaches: ${listOfBreaches}.`;
 
   const CreditCardRecommendationSteps = (
     <ol>

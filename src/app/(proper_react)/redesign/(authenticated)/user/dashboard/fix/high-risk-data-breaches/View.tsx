@@ -6,6 +6,7 @@
 
 import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import Link from "next/link";
+import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 
 type Props = {
   breaches: UserBreaches;
@@ -13,6 +14,11 @@ type Props = {
 export const View = (props: Props) => {
   return (
     <div>
+      <HighRiskBreachLayout
+        typeOfBreach="ssnBreaches"
+        breachData={props.breaches}
+      />
+
       <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number">
         SSN Breaches
       </Link>
