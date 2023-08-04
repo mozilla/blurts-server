@@ -13,6 +13,7 @@ import {
   UserBreaches,
   getUserBreaches,
 } from "../../../../../../../../functions/server/getUserBreaches";
+import { getHighRiskBreachLink } from "../../../../../../../../functions/universal/highRiskBreachLink";
 
 export default async function ManualRemove() {
   const l10n = getL10n();
@@ -110,27 +111,3 @@ export default async function ManualRemove() {
     </div>
   );
 }
-
-export const getHighRiskBreachLink = (breaches: UserBreaches) => {
-  if (breaches.ssnBreaches && breaches.ssnBreaches.length > 0) {
-    return "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number";
-  }
-
-  if (breaches.pinNumberBreaches && breaches.pinNumberBreaches.length > 0) {
-    return "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number";
-  }
-
-  if (
-    breaches.creditCardNumberBreaches &&
-    breaches.creditCardNumberBreaches.length > 0
-  ) {
-    return "/redesign/user/dashboard/fix/high-risk-data-breaches/credit-card-number";
-  }
-
-  if (breaches.bankAccountBreaches && breaches.bankAccountBreaches.length > 0) {
-    return "/redesign/user/dashboard/fix/high-risk-data-breaches/bank-account";
-  }
-
-  //TODO: Handle case where user does not have leaked passwords either
-  return "/redesign/user/dashboard/fix/leaked-passwords";
-};
