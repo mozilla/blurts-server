@@ -15,7 +15,7 @@ import { Button } from "../../../../../../../components/server/Button";
 import Link from "next/link";
 import { useState } from "react";
 import { getHighRiskBreachLink } from "../../../../../../../functions/universal/highRiskBreachLink";
-// import { getHighRiskBreachLink } from "./page";
+import { usePathname } from "next/navigation";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
@@ -23,6 +23,8 @@ type HighRiskBreachLayoutProps = {
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
+  const pathname = usePathname();
+
   const [isBreachResolved, setIsBreachResolved] = useState(false);
   //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
   const exposedData = (() => {
@@ -151,7 +153,12 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           >
             Mark as fixed
           </Button>
-          <Link href={getHighRiskBreachLink(props.breachData)}>
+          <Link
+            href={getHighRiskBreachLink({
+              breaches: props.breachData,
+              pathname: pathname,
+            })}
+          >
             Skip for now
           </Link>
         </div>
