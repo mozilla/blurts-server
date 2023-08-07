@@ -2,10 +2,13 @@
 
 .container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
   grid-gap: $layout-lg;
   flex-direction: row;
   padding-inline: $layout-lg;
+
+  @media screen and (min-width: $screen-xl) {
+    grid-template-columns: 2fr 1fr;
+  }
 
   .breachContentWrapper {
     display: flex;
@@ -37,8 +40,15 @@
   }
 
   .illustrationWrapper {
-    display: flex;
     align-items: center;
+
+    &.hideOnMobile {
+      display: none;
+
+      @media screen and (min-width: $screen-xl) {
+        display: flex;
+      }
+    }
 
     img {
       width: 100%;

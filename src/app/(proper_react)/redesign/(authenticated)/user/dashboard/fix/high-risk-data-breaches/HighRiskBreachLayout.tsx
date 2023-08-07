@@ -156,7 +156,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           </Link>
         </div>
       </div>
-      <div className={styles.illustrationWrapper}>
+      <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
         <Image src={breachIllustration} alt="" />
       </div>
     </div>
