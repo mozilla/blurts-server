@@ -7,7 +7,7 @@
 import styles from "./HighRiskBreachLayout.module.scss";
 import CreditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
 import BankAccountIllustration from "../images/high-risk-data-breach-bank-account.svg";
-import PinNumberIllustration from "../images/high-risk-data-breach-pin.svg";
+import pinIllustration from "../images/high-risk-data-breach-pin.svg";
 import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
 import Image from "next/image";
 import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
@@ -33,7 +33,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     if (props.breachData && props.typeOfBreach === "bankAccount")
       return props.breachData.bankAccountBreaches;
     if (props.breachData && props.typeOfBreach === "PIN")
-      return props.breachData.pinNumberBreaches;
+      return props.breachData.pinBreaches;
     return [];
   })();
 
@@ -81,7 +81,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     </ol>
   );
 
-  const PinNumberRecoomendationSteps = (
+  const pinRecoomendationSteps = (
     <ol>
       <li>Notify your bank immediately that your PIN has been compromised.</li>
       <li>Change your PIN anywhere you’ve used the same one.</li>
@@ -115,8 +115,8 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       title = "PIN Data Breach";
       secondaryDescription =
         "Taking action ASAP could give you more legal protections to help you recover any losses.";
-      recommendationSteps = PinNumberRecoomendationSteps;
-      breachIllustration = PinNumberIllustration;
+      recommendationSteps = pinRecoomendationSteps;
+      breachIllustration = pinIllustration;
       break;
     default:
       title = "";

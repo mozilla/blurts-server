@@ -118,7 +118,7 @@ const mockedUserBreaches: UserBreaches = {
     BreachMockItem3,
     BreachMockItem4,
   ],
-  pinNumberBreaches: [
+  pinBreaches: [
     BreachMockItem1,
     BreachMockItem2,
     BreachMockItem3,

@@ -3,9 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { BreachDataTypes } from "../../../utils/breachResolution";
+<<<<<<< HEAD
 import { ScanResult } from "./onerep";
 import { RemovalStatusMap } from "../universal/scanResult";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+=======
+import { RemovalStatusMap } from "../universal/scanResult";
+import type { UserBreaches } from "./getUserBreaches";
+import { ScanResult } from "./onerep";
+>>>>>>> a83c15528 (change pinNumber to pin)
 
 type Exposures = {
   // shared
@@ -22,7 +28,11 @@ type Exposures = {
   ipAddresses: number;
   passwords: number;
   creditCardNumbers: number;
+<<<<<<< HEAD
   pins: number;
+=======
+  pin: number;
+>>>>>>> a83c15528 (change pinNumber to pin)
   securityQuestions: number;
   bankAccountNumbers: number;
 };
@@ -55,7 +65,11 @@ const exposureKeyMap: Record<string, string> = {
   ipAddresses: "ip-addresses",
   passwords: "passwords",
   creditCardNumbers: "credit-cards",
+<<<<<<< HEAD
   pins: "pins",
+=======
+  pin: "pins",
+>>>>>>> a83c15528 (change pinNumber to pin)
   securityQuestions: "security-questions-and-answers",
   bankAccountNumbers: "bank-account-numbers",
 };
@@ -83,7 +97,11 @@ export function dashboardSummary(
       ipAddresses: 0,
       passwords: 0,
       creditCardNumbers: 0,
+<<<<<<< HEAD
       pins: 0,
+=======
+      pin: 0,
+>>>>>>> a83c15528 (change pinNumber to pin)
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
@@ -100,7 +118,11 @@ export function dashboardSummary(
       ipAddresses: 0,
       passwords: 0,
       creditCardNumbers: 0,
+<<<<<<< HEAD
       pins: 0,
+=======
+      pin: 0,
+>>>>>>> a83c15528 (change pinNumber to pin)
       securityQuestions: 0,
       bankAccountNumbers: 0,
     },
@@ -152,6 +174,7 @@ export function dashboardSummary(
     const dataClasses = b.dataClasses ?? [];
     const increment = b.emailsEffected?.length ?? 0;
 
+<<<<<<< HEAD
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
       summary.totalExposures += increment;
@@ -160,6 +183,98 @@ export function dashboardSummary(
         summary.fixedExposures.emailAddresses += increment;
         summary.dataBreachFixedNum += increment;
       }
+=======
+        // count emails
+        if (dataClasses.includes(BreachDataTypes.Email)) {
+          summary.totalExposures++;
+          summary.allExposures.emailAddresses++;
+          if (b.IsResolved) {
+            summary.fixedExposures.emailAddresses++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count phone numbers
+        if (dataClasses.includes(BreachDataTypes.Phone)) {
+          summary.totalExposures++;
+          summary.allExposures.phoneNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.phoneNumbers++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count password
+        if (dataClasses.includes(BreachDataTypes.Passwords)) {
+          summary.totalExposures++;
+          summary.allExposures.passwords++;
+          if (b.IsResolved) {
+            summary.fixedExposures.passwords++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count ssn
+        if (dataClasses.includes(BreachDataTypes.SSN)) {
+          summary.totalExposures++;
+          summary.allExposures.socialSecurityNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.socialSecurityNumbers++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count IP
+        if (dataClasses.includes(BreachDataTypes.IP)) {
+          summary.totalExposures++;
+          summary.allExposures.ipAddresses++;
+          if (b.IsResolved) {
+            summary.fixedExposures.ipAddresses++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count credit card
+        if (dataClasses.includes(BreachDataTypes.CreditCard)) {
+          summary.totalExposures++;
+          summary.allExposures.creditCardNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.creditCardNumbers++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count pin numbers
+        if (dataClasses.includes(BreachDataTypes.PIN)) {
+          summary.totalExposures++;
+          summary.allExposures.pin++;
+          if (b.IsResolved) {
+            summary.fixedExposures.pin++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count security questions
+        if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
+          summary.totalExposures++;
+          summary.allExposures.securityQuestions++;
+          if (b.IsResolved) {
+            summary.fixedExposures.securityQuestions++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+
+        // count bank account numbers questions
+        if (dataClasses.includes(BreachDataTypes.BankAccount)) {
+          summary.totalExposures++;
+          summary.allExposures.bankAccountNumbers++;
+          if (b.IsResolved) {
+            summary.fixedExposures.bankAccountNumbers++;
+            summary.dataBreachFixedNum++;
+          }
+        }
+      });
+>>>>>>> a83c15528 (change pinNumber to pin)
     }
 
     // count phone numbers

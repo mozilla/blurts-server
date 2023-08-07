@@ -8,7 +8,7 @@ import { authOptions } from "../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
 import { getUserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 
-export default async function PinNumberDataBreach() {
+export default async function pinDataBreach() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
     return redirect("/");

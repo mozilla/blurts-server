@@ -9,7 +9,7 @@ export const getHighRiskBreachLink = (breaches: UserBreaches) => {
     return "/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number";
   }
 
-  if (breaches.pinNumberBreaches && breaches.pinNumberBreaches.length > 0) {
+  if (breaches.pinBreaches && breaches.pinBreaches.length > 0) {
     return "/redesign/user/dashboard/fix/high-risk-data-breaches/pin-number";
   }
 
