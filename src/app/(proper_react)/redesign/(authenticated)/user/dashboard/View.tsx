@@ -35,7 +35,10 @@ export type Props = {
   userScannedResults: ScanResult[];
   bannerData: DashboardSummary;
   locale: string;
-  featureFlagsEnabled: FeatureFlagsEnabled;
+  featureFlagsEnabled: Pick<
+    FeatureFlagsEnabled,
+    "FreeBrokerScan" | "PremiumBrokerRemoval"
+  >;
 };
 
 export type TabType = "action-needed" | "fixed";

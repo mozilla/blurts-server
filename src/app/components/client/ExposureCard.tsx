@@ -60,7 +60,7 @@ export type ExposureCardProps = {
   locale: string;
   fromEmail?: string;
   color: string;
-  featureFlagsEnabled: FeatureFlagsEnabled;
+  featureFlagsEnabled: Pick<FeatureFlagsEnabled, "PremiumBrokerRemoval">;
 };
 
 type BreachExposureCategoryProps = {
