@@ -59,19 +59,26 @@ it("returns flag state if exists", async () => {
     }
   });
 
+  //@ts-expect-error override flag name
   await expect(isFlagEnabled("falseFlag")).resolves.toBe(false);
+  //@ts-expect-error override flag name
   await expect(isFlagEnabled("trueFlag")).resolves.toBe(true);
+  //@ts-expect-error override flag name
   await expect(isFlagEnabled("trueExpiredFlag")).resolves.toBe(false);
+  //@ts-expect-error override flag name
   await expect(isFlagEnabled("trueDeletedFlag")).resolves.toBe(false);
+  //@ts-expect-error override flag name
   await expect(isFlagEnabled("trueNoAllowListFlag")).resolves.toBe(true);
 
   const allowedUser = { email: "test1" };
+  //@ts-expect-error override flag name
   await expect(isFlagEnabled("trueAllowListFlag", allowedUser)).resolves.toBe(
     true
   );
 
   const disallowedUser = { email: "test2" };
   await expect(
+    //@ts-expect-error override flag name
     isFlagEnabled("falseAllowListFlag", disallowedUser)
   ).resolves.toBe(false);
 });
