@@ -15,7 +15,9 @@ export type FeatureFlagsEnabled = {
   PremiumBrokerRemoval: boolean;
 };
 
-export async function isFlagEnabled(name: keyof FeatureFlagsEnabled): Promise<boolean> {
+export async function isFlagEnabled(
+  name: keyof FeatureFlagsEnabled
+): Promise<boolean> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) {
     throw new Error("No session");
@@ -48,10 +50,12 @@ export async function isFlagEnabled(name: keyof FeatureFlagsEnabled): Promise<bo
 
   if (flag.deletedAt) {
     console.warn("Flag has been deleted:", flag.name);
+    return false;
   }
 
   if (flag.expiredAt) {
     console.warn("Flag has expired:", flag.name);
+    return false;
   }
 
   if (!flag.isEnabled) {
@@ -59,14 +63,11 @@ export async function isFlagEnabled(name: keyof FeatureFlagsEnabled): Promise<bo
     return false;
   }
 
-  if (!flag.allowList?.length) {
-    console.info("Flag does not have an allow list, enabling:", flag.name);
-  }
-
-  if (flag.allowList?.length && !flag.allowList?.includes(session.user.email)) {
+  if (!flag.allowList?.length || flag.allowList?.includes(session.user.email)) {
+    return true;
+  } else {
     console.warn("User is not on allow list for flag:", flag.name);
-    return false;
   }
 
-  return true;
+  return false;
 }
