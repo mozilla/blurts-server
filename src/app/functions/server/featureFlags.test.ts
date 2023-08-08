@@ -5,7 +5,7 @@
 // import { it, expect, jest } from "@jest/globals";
 
 import { getFeatureFlagByName } from "../../../db/tables/featureFlags";
-import { FeatureFlagsEnabled, isFlagEnabled } from "./featureFlags";
+import { isFlagEnabled } from "./featureFlags";
 
 jest.mock("../../../db/tables/featureFlags");
 
