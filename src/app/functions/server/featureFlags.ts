@@ -2,24 +2,26 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { captureException } from "@sentry/node";
 import {
   FeatureFlag,
   getFeatureFlagByName,
 } from "../../../db/tables/featureFlags";
+import { Session } from "next-auth";
 
-export async function getFlag(name: string): Promise<FeatureFlag | undefined> {
-  if (!name) {
-    const err = new Error("No name provided to getFlag");
-    captureException(err);
-    throw err;
-  }
+export type FeatureFlagsEnabled = {
+  FreeBrokerScan: boolean;
+  PremiumBrokerRemoval: boolean;
+};
 
+export async function isFlagEnabled(
+  name: keyof FeatureFlagsEnabled,
+  user?: Session["user"]
+): Promise<boolean> {
   const data = await getFeatureFlagByName(name);
 
   if (!data) {
     console.warn("Feature flag does not exist:", name);
-    return;
+    return false;
   }
 
   const flag: FeatureFlag = {
@@ -34,5 +36,27 @@ export async function getFlag(name: string): Promise<FeatureFlag | undefined> {
     owner: data.owner,
   };
 
-  return flag;
+  if (flag.deletedAt) {
+    console.warn("Flag has been deleted:", flag.name);
+    return false;
+  }
+
+  if (flag.expiredAt) {
+    console.warn("Flag has expired:", flag.name);
+    return false;
+  }
+
+  if (!flag.isEnabled) {
+    console.warn("Flag is not enabled:", flag.name);
+    return false;
+  }
+
+  if (!flag.allowList || !flag.allowList.length) {
+    return true;
+  } else if (user && flag.allowList?.includes(user.email)) {
+    return true;
+  } else {
+    console.warn("User is not on the allow list for flag:", flag.name);
+    return false;
+  }
 }
