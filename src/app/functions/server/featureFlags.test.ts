@@ -4,28 +4,14 @@
 
 // import { it, expect, jest } from "@jest/globals";
 
-import {
-  getFeatureFlagByName,
-  FeatureFlagsEnabled,
-} from "../../../db/tables/featureFlags";
+import { getFeatureFlagByName } from "../../../db/tables/featureFlags";
+import { FeatureFlagsEnabled, isFlagEnabled } from "./featureFlags";
 
 jest.mock("../../../db/tables/featureFlags");
-
-jest.mock("next-auth", () => ({
-  getServerSession: jest.fn(() => {
-    return { user: { email: "test@example.com" } };
-  }),
-}));
-
-jest.mock("../../api/utils/auth", () => ({
-  authOptions: jest.fn(),
-}));
 
 jest.mock("../../../db/tables/featureFlags", () => ({
   getFeatureFlagByName: jest.fn(),
 }));
-
-import { isFlagEnabled } from "./featureFlags";
 
 beforeEach(() => {
   jest.resetModules();
@@ -33,21 +19,39 @@ beforeEach(() => {
 
 it("returns flag state if exists", async () => {
   (getFeatureFlagByName as jest.Mock).mockImplementation((name) => {
-    if (name === "validFalseFlag") {
-      return { name: "validFalseFlag", is_enabled: false };
-    } else if (name === "validTrueFlag") {
-      return { name: "validTrueFlag", is_enabled: true };
-    } else if (name === "validTrueExpiredFlag") {
+    if (name === "falseFlag") {
+      return { name: "falseFlag", is_enabled: false };
+    } else if (name === "trueFlag") {
+      return { name: "trueFlag", is_enabled: true };
+    } else if (name === "trueExpiredFlag") {
       return {
-        name: "validTrueExpiredFlag",
+        name: "trueExpiredFlag",
         is_enabled: true,
         expired_at: Date.now(),
       };
-    } else if (name === "validTrueDeletedFlag") {
+    } else if (name === "trueDeletedFlag") {
       return {
-        name: "validTrueDeletedFlag",
+        name: "trueDeletedFlag",
         is_enabled: true,
         deleted_at: Date.now(),
+      };
+    } else if (name === "trueNoAllowListFlag") {
+      return {
+        name: "trueNoAllowListFlag",
+        is_enabled: true,
+        allow_list: [],
+      };
+    } else if (name === "trueAllowListFlag") {
+      return {
+        name: "trueAllowListFlag",
+        is_enabled: true,
+        allow_list: ["test1"],
+      };
+    } else if (name === "falseAllowListFlag") {
+      return {
+        name: "trueAllowListFlag",
+        is_enabled: true,
+        allow_list: ["test1"],
       };
     } else {
       console.debug("flag name:", name);
@@ -55,16 +59,19 @@ it("returns flag state if exists", async () => {
     }
   });
 
+  await expect(isFlagEnabled("falseFlag")).resolves.toBe(false);
+  await expect(isFlagEnabled("trueFlag")).resolves.toBe(true);
+  await expect(isFlagEnabled("trueExpiredFlag")).resolves.toBe(false);
+  await expect(isFlagEnabled("trueDeletedFlag")).resolves.toBe(false);
+  await expect(isFlagEnabled("trueNoAllowListFlag")).resolves.toBe(true);
+
+  const allowedUser = { email: "test1" };
+  await expect(isFlagEnabled("trueAllowListFlag", allowedUser)).resolves.toBe(
+    true
+  );
+
+  const disallowedUser = { email: "test2" };
   await expect(
-    isFlagEnabled("validFalseFlag" as FeatureFlagsEnabled)
-  ).resolves.toBe(false);
-  await expect(
-    isFlagEnabled("validTrueFlag" as FeatureFlagsEnabled)
-  ).resolves.toBe(true);
-  await expect(
-    isFlagEnabled("validTrueExpiredFlag" as FeatureFlagsEnabled)
-  ).resolves.toBe(false);
-  await expect(
-    isFlagEnabled("validTrueDeletedFlag" as FeatureFlagsEnabled)
+    isFlagEnabled("falseAllowListFlag", disallowedUser)
   ).resolves.toBe(false);
 });

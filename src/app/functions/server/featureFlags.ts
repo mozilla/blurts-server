@@ -7,8 +7,7 @@ import {
   FeatureFlag,
   getFeatureFlagByName,
 } from "../../../db/tables/featureFlags";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/utils/auth";
+import { Session } from "next-auth";
 
 export type FeatureFlagsEnabled = {
   FreeBrokerScan: boolean;
@@ -16,19 +15,9 @@ export type FeatureFlagsEnabled = {
 };
 
 export async function isFlagEnabled(
-  name: keyof FeatureFlagsEnabled
+  name: keyof FeatureFlagsEnabled,
+  user?: Session["user"]
 ): Promise<boolean> {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.email) {
-    throw new Error("No session");
-  }
-
-  if (!name) {
-    const err = new Error("No name provided to isFlagEnabled");
-    captureException(err);
-    throw err;
-  }
-
   const data = await getFeatureFlagByName(name);
 
   if (!data) {
@@ -63,11 +52,12 @@ export async function isFlagEnabled(
     return false;
   }
 
-  if (!flag.allowList?.length || flag.allowList?.includes(session.user.email)) {
+  if (!flag.allowList || !flag.allowList.length) {
+    return true;
+  } else if (user && flag.allowList?.includes(user.email)) {
     return true;
   } else {
-    console.warn("User is not on allow list for flag:", flag.name);
+    console.warn("User is not on the allow list for flag:", flag.name);
+    return false;
   }
-
-  return false;
 }

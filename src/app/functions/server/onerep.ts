@@ -274,7 +274,7 @@ export async function isEligible() {
     throw new Error("No session");
   }
 
-  if (!(await isFlagEnabled("FreeBrokerScan"))) {
+  if (!(await isFlagEnabled("FreeBrokerScan", session.user))) {
     return false;
   }
 

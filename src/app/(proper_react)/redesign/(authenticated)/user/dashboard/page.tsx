@@ -40,8 +40,11 @@ export default async function DashboardPage() {
   const summary = dashboardSummary(scanResultItems, breaches);
   const locale = getLocale();
 
-  const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan");
-  const PremiumBrokerRemoval = await isFlagEnabled("PremiumBrokerRemoval");
+  const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
+  const PremiumBrokerRemoval = await isFlagEnabled(
+    "PremiumBrokerRemoval",
+    session.user
+  );
   const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
 
   return (
