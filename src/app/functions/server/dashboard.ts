@@ -4,7 +4,8 @@
 
 import { BreachDataTypes } from "../../../utils/breachResolution";
 import type { UserBreaches } from "./getUserBreaches";
-import { ScanResult, RemovalStatusMap } from "./onerep";
+import { ScanResult } from "./onerep";
+import { RemovalStatusMap } from "../universal/scanResult";
 
 type Exposures = {
   // shared

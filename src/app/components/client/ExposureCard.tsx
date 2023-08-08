@@ -44,9 +44,7 @@ export const ExposureTypeEl = (props: ExposureTypElProps) => {
 };
 
 // Typeguard function
-export function isScanResult(
-  obj: ScanResult | HibpLikeDbBreach
-): obj is ScanResult {
+export function isScanResult(obj: Exposure): obj is ScanResult {
   return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }
 

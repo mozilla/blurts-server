@@ -19,9 +19,9 @@ export function getCountryCode(
   const acceptLanguage = headers.get("Accept-Language");
   if (acceptLanguage) {
     const acceptedLocales = acceptLanguage.split(",");
-    const primaryLocale = acceptedLocales[0] ?? "";
+    const primaryLocale = acceptedLocales[0];
     const [locale, _weight] = primaryLocale.split(";");
-    const [_language, country] = (locale ?? "").split("-");
+    const [_language, country] = locale.split("-");
     if (country) {
       return country.toLowerCase();
     }

@@ -4,7 +4,13 @@
 
 import { faker } from "@faker-js/faker";
 import { ScanResult } from "../app/functions/server/onerep";
+import {
+  RemovalStatus,
+  RemovalStatusMap,
+} from "../app/functions/universal/scanResult";
 import { StateAbbr } from "../utils/states";
+import type { HibpLikeDbBreach } from "../utils/hibp";
+import { BreachDataTypes } from "../app/functions/universal/breach";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -21,12 +27,19 @@ export function mockedOneRepScanResults() {
   };
 }
 
+export type RandomScanOptions = Partial<{
+  createdDate: Date;
+  fakerSeed: number;
+}>;
+
 /**
  * Generates scan result with randomly-generated mock data.
  *
+ * @param options
  * @returns {ScanResult} - A single scan result.
  */
-export function createRandomScan(): ScanResult {
+export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
+  faker.seed(options.fakerSeed);
   return {
     id: faker.number.int(),
     profile_id: faker.number.int(),
@@ -34,13 +47,9 @@ export function createRandomScan(): ScanResult {
     last_name: faker.person.lastName(),
     middle_name: faker.person.middleName(),
     age: faker.number.int({ min: 14, max: 120 }).toString(),
-    // state is always "new" by default, see the `ScanResult` type definition.
-    status: faker.helpers.arrayElement([
-      "new",
-      "optout_in_progress",
-      "waiting_for_verification",
-      "removed",
-    ]),
+    status: faker.helpers.arrayElement(
+      Object.values(RemovalStatusMap)
+    ) as RemovalStatus,
     addresses: Array.from({ length: 3 }, () => ({
       zip: faker.location.zipCode(),
       city: faker.location.city(),
@@ -53,8 +62,41 @@ export function createRandomScan(): ScanResult {
     link: faker.internet.url(),
     data_broker: faker.internet.domainName(),
     data_broker_id: faker.number.int(),
-    created_at: faker.date.recent({ days: 2 }).toISOString(),
+    created_at:
+      options.createdDate?.toISOString() ??
+      faker.date.recent({ days: 2 }).toISOString(),
     updated_at: faker.date.recent({ days: 1 }).toISOString(),
     url: faker.internet.url(),
+  };
+}
+
+export type RandomBreachOptions = Partial<{
+  addedDate: Date;
+  isResolved: boolean;
+  fakerSeed: number;
+}>;
+export function createRandomBreach(
+  options: RandomBreachOptions = {}
+): HibpLikeDbBreach {
+  faker.seed(options.fakerSeed);
+  return {
+    AddedDate: options.addedDate ?? faker.date.recent(),
+    BreachDate: faker.date.recent().toISOString(),
+    DataClasses: faker.helpers.arrayElements(Object.values(BreachDataTypes)),
+    Description: faker.word.words(),
+    Domain: faker.internet.domainName(),
+    Id: faker.number.int(),
+    IsFabricated: faker.datatype.boolean(),
+    IsMalware: faker.datatype.boolean(),
+    IsRetired: faker.datatype.boolean(),
+    IsSensitive: faker.datatype.boolean(),
+    IsSpamList: faker.datatype.boolean(),
+    IsVerified: faker.datatype.boolean(),
+    LogoPath: faker.system.fileName(),
+    ModifiedDate: faker.date.recent(),
+    Name: faker.word.noun(),
+    PwnCount: faker.number.int(),
+    Title: faker.word.noun(),
+    IsResolved: options.isResolved ?? faker.datatype.boolean(),
   };
 }

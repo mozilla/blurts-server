@@ -5,27 +5,7 @@
 import { getL10n } from "./l10n";
 import AppConstants from "../../../appConstants.js";
 import { Breach } from "../../(nextjs_migration)/(authenticated)/user/breaches/breaches";
-
-/**
- * Equivalent of Typescript "enum"
- * These enum types map to HIBP's breach data types, defined in HIBP's API
- * Always reference enum instead of strings to avoid spelling error / typos (ie. BreachDataTypes.Passwords)
- */
-const BreachDataTypes = {
-  Passwords: "passwords",
-  Email: "email-addresses",
-  SSN: "social-security-numbers",
-  CreditCard: "partial-credit-card-data",
-  BankAccount: "bank-account-numbers",
-  PIN: "pins",
-  IP: "ip-addresses",
-  Address: "physical-addresses",
-  DoB: "dates-of-birth",
-  Phone: "phone-numbers",
-  SecurityQuestions: "security-questions-and-answers",
-  HistoricalPasswords: "historical-passwords",
-  General: "general",
-} as const;
+import { BreachDataTypes } from "../universal/breach";
 
 /**
  * TODO: Map from google doc: https://docs.google.com/document/d/1KoItFsTYVIBInIG2YmA7wSxkKS4vti_X0A0td_yaHVM/edit#

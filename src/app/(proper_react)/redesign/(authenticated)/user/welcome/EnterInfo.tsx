@@ -127,6 +127,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       value: dateOfBirth,
       displayValue: new Date(dateOfBirth).toLocaleDateString("en-US", {
         dateStyle: "medium",
+        timeZone: "UTC",
       }),
       errorMessage: l10n.getString(
         "onboarding-enter-details-input-error-message-generic"
