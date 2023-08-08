@@ -7,15 +7,9 @@
 import { getFeatureFlagByName } from "../../../db/tables/featureFlags";
 import { isFlagEnabled } from "./featureFlags";
 
-jest.mock("../../../db/tables/featureFlags");
-
 jest.mock("../../../db/tables/featureFlags", () => ({
   getFeatureFlagByName: jest.fn(),
 }));
-
-beforeEach(() => {
-  jest.resetModules();
-});
 
 it("returns flag state if exists", async () => {
   (getFeatureFlagByName as jest.Mock).mockImplementation((name) => {
