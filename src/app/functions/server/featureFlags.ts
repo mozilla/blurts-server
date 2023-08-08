@@ -15,7 +15,7 @@ export type FeatureFlagsEnabled = {
   PremiumBrokerRemoval: boolean;
 };
 
-export async function isFlagEnabled(name: string): Promise<boolean> {
+export async function isFlagEnabled(name: keyof FeatureFlagsEnabled): Promise<boolean> {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) {
     throw new Error("No session");
