@@ -13,9 +13,11 @@ import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
 } from "../../../../src/utils/breaches.js";
+import { getSubBreaches } from "../../../utils/subscriberBreaches";
 import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
+//TODO: deprecate with MNTOR-2021
 export type UserBreaches = {
   ssnBreaches: Array<HibpLikeDbBreach>;
   passwordBreaches: Array<HibpLikeDbBreach>;
@@ -29,6 +31,7 @@ export type UserBreaches = {
   };
 };
 
+//TODO: deprecate with MNTOR-2021
 export async function getUserBreaches({
   user,
   options = {},
@@ -80,4 +83,16 @@ export async function getUserBreaches({
     passwordBreaches,
     phoneBreaches,
   };
+}
+
+/**
+ * NOTE: new function to replace getUserBreaches
+ *
+ * @param user
+ */
+export async function getSubscriberBreaches(user: Session["user"]) {
+  const subscriber = await getSubscriberByEmail(user.email);
+  const allBreaches = await getBreaches();
+  const breachesData = await getSubBreaches(subscriber, allBreaches);
+  return breachesData;
 }

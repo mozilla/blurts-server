@@ -9,7 +9,10 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { getUserBreaches } from "../../../../../functions/server/getUserBreaches";
+import {
+  getUserBreaches,
+  getSubscriberBreaches,
+} from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
@@ -38,6 +41,9 @@ export default async function DashboardPage() {
   const breaches = await getUserBreaches({ user: session.user });
   const summary = dashboardSummary(scanResultItems, breaches);
   const locale = getLocale();
+
+  const subBreaches = await getSubscriberBreaches(session.user);
+  console.log(JSON.stringify(subBreaches));
 
   return (
     <View
