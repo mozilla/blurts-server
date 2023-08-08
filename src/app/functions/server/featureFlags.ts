@@ -46,6 +46,14 @@ export async function isFlagEnabled(name: string): Promise<boolean> {
     owner: data.owner,
   };
 
+  if (flag.deletedAt) {
+    console.warn("Flag has been deleted:", flag.name);
+  }
+
+  if (flag.expiredAt) {
+    console.warn("Flag has expired:", flag.name);
+  }
+
   if (!flag.isEnabled) {
     console.warn("Flag is not enabled:", flag.name);
     return false;
