@@ -12,6 +12,7 @@ import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import {
   getUserBreaches,
   getSubscriberBreaches,
+  guidedExperienceBreaches,
 } from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
@@ -42,6 +43,9 @@ export default async function DashboardPage() {
   const subBreaches = await getSubscriberBreaches(session.user);
   console.log(JSON.stringify(subBreaches));
   const summary = dashboardSummary(scanResultItems, subBreaches);
+  console.log(JSON.stringify(summary));
+  const guidedBreaches = guidedExperienceBreaches(subBreaches);
+  console.log(JSON.stringify(guidedBreaches));
   const locale = getLocale();
 
   return (

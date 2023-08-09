@@ -13,7 +13,10 @@ import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
 } from "../../../../src/utils/breaches.js";
-import { getSubBreaches } from "../../../utils/subscriberBreaches";
+import {
+  SubscriberBreach,
+  getSubBreaches,
+} from "../../../utils/subscriberBreaches";
 import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
@@ -90,9 +93,49 @@ export async function getUserBreaches({
  *
  * @param user
  */
-export async function getSubscriberBreaches(user: Session["user"]) {
+export async function getSubscriberBreaches(
+  user: Session["user"]
+): Promise<SubscriberBreach[]> {
   const subscriber = await getSubscriberByEmail(user.email);
   const allBreaches = await getBreaches();
   const breachesData = await getSubBreaches(subscriber, allBreaches);
   return breachesData;
+}
+
+type GuideExperienceBreaches = {
+  ssnBreaches: SubscriberBreach[];
+  passwordBreaches: SubscriberBreach[];
+  phoneBreaches: SubscriberBreach[];
+  pinBreaches: SubscriberBreach[];
+};
+
+// NOTE: Better name for this function?
+export function guidedExperienceBreaches(
+  subscriberBreaches: SubscriberBreach[]
+): GuideExperienceBreaches {
+  const guidedExperienceBreaches: GuideExperienceBreaches = {
+    ssnBreaches: [],
+    passwordBreaches: [],
+    phoneBreaches: [],
+    pinBreaches: [],
+  };
+  subscriberBreaches.forEach((b) => {
+    if (b.dataClasses.includes(BreachDataTypes.SSN)) {
+      guidedExperienceBreaches.ssnBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
+      guidedExperienceBreaches.passwordBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.Phone)) {
+      guidedExperienceBreaches.phoneBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.PIN)) {
+      guidedExperienceBreaches.pinBreaches.push(b);
+    }
+  });
+
+  return guidedExperienceBreaches;
 }
