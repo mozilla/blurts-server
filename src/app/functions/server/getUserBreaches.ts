@@ -102,38 +102,50 @@ export async function getSubscriberBreaches(
   return breachesData;
 }
 
-type GuideExperienceBreaches = {
-  ssnBreaches: SubscriberBreach[];
+interface GuideExperienceBreaches {
+  highRisk: {
+    ssnBreaches: SubscriberBreach[];
+    creditCardBreaches: SubscriberBreach[];
+    pinBreaches: SubscriberBreach[];
+    bankBreaches: SubscriberBreach[];
+  };
   passwordBreaches: SubscriberBreach[];
-  phoneBreaches: SubscriberBreach[];
-  pinBreaches: SubscriberBreach[];
-};
+}
 
 // NOTE: Better name for this function?
 export function guidedExperienceBreaches(
   subscriberBreaches: SubscriberBreach[]
 ): GuideExperienceBreaches {
   const guidedExperienceBreaches: GuideExperienceBreaches = {
-    ssnBreaches: [],
+    highRisk: {
+      ssnBreaches: [],
+      creditCardBreaches: [],
+      pinBreaches: [],
+      bankBreaches: [],
+    },
     passwordBreaches: [],
-    phoneBreaches: [],
-    pinBreaches: [],
   };
   subscriberBreaches.forEach((b) => {
+    // high risks
     if (b.dataClasses.includes(BreachDataTypes.SSN)) {
-      guidedExperienceBreaches.ssnBreaches.push(b);
+      guidedExperienceBreaches.highRisk.ssnBreaches.push(b);
     }
 
-    if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
-      guidedExperienceBreaches.passwordBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.Phone)) {
-      guidedExperienceBreaches.phoneBreaches.push(b);
+    if (b.dataClasses.includes(BreachDataTypes.CreditCard)) {
+      guidedExperienceBreaches.highRisk.creditCardBreaches.push(b);
     }
 
     if (b.dataClasses.includes(BreachDataTypes.PIN)) {
-      guidedExperienceBreaches.pinBreaches.push(b);
+      guidedExperienceBreaches.highRisk.pinBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.BankAccount)) {
+      guidedExperienceBreaches.highRisk.bankBreaches.push(b);
+    }
+
+    // other
+    if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
+      guidedExperienceBreaches.passwordBreaches.push(b);
     }
   });
 
