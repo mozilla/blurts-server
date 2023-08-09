@@ -21,10 +21,10 @@ import {
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { ScanResult } from "../../functions/server/onerep";
-import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { FeatureFlagsEnabled } from "../../functions/server/featureFlags";
+import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
-export type Exposure = ScanResult | HibpLikeDbBreach;
+export type Exposure = ScanResult | SubscriberBreach;
 
 export type ExposureTypElProps = {
   type: Exposure;
@@ -56,7 +56,7 @@ export type ExposureCardProps = {
   dateFound: Date;
   statusPillType: StatusPillType;
   locale: string;
-  fromEmail?: string;
+  fromEmail?: ReactElement;
   color: string;
   featureFlagsEnabled: Pick<FeatureFlagsEnabled, "PremiumBrokerRemoval">;
 };
@@ -64,7 +64,7 @@ export type ExposureCardProps = {
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
-  email: string;
+  fromEmail: ReactElement;
 };
 
 type ScannedExposureCategoryProps = {
@@ -95,8 +95,6 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const exposureCategoriesArray: React.ReactElement[] = [];
   const exposureItem = props.exposureData;
 
-  const verifiedEmailofBreach = props.fromEmail;
-
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
     const description = l10n.getString("exposure-card-num-found", {
       exposure_num: 1, // We don't count categories for breaches.
@@ -109,8 +107,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
           {props.exposureCategoryLabel}
         </dt>
         <dd>
-          {props.email === "email-addresses"
-            ? verifiedEmailofBreach
+          {props.exposureCategoryLabel === l10n.getString("exposure-card-email")
+            ? props.fromEmail
             : description}
         </dd>
       </div>
@@ -188,41 +186,41 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   // Breach Categories
   else {
-    exposureItem.DataClasses.map((item) => {
+    exposureItem.dataClasses.map((item) => {
       if (item === "email-addresses") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            email={item}
             icon={<EmailIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-email")}
+            fromEmail={<>pending email</>}
           />
         );
       } else if (item === "passwords") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            email={item}
             icon={<PasswordIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-password")}
+            fromEmail={<>pending email</>}
           />
         );
       } else if (item === "phone-numbers") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            email={item}
             icon={<PhoneIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
+            fromEmail={<>pending email</>}
           />
         );
       } else if (item === "ip-addresses") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            email={item}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
+            fromEmail={<>pending email</>}
           />
         );
       }
@@ -231,9 +229,9 @@ export const ExposureCard = (props: ExposureCardProps) => {
         exposureCategoriesArray.push(
           <BreachExposureCategory
             key={item}
-            email={item}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
             exposureCategoryLabel={l10n.getString(item)} // categories are localized in data-classes.ftl
+            fromEmail={<>pending email</>}
           />
         );
       }
@@ -365,7 +363,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                   {
                     vars: {
                       data_breach_company: exposureName,
-                      data_breach_date: exposureData.BreachDate,
+                      data_breach_date: exposureData.breachDate,
                     },
                     elems: {
                       data_breach_link: <a href={exposureDetailsLink} />,

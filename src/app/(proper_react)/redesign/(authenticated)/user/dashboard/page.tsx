@@ -58,7 +58,7 @@ export default async function DashboardPage() {
     <View
       user={session.user}
       userScannedResults={scanResultItems}
-      userBreaches={breaches}
+      userBreaches={subBreaches}
       locale={locale}
       bannerData={summary}
       featureFlagsEnabled={featureFlagsEnabled}
