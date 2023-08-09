@@ -43,13 +43,11 @@ export const FalseDoorTest = (props: FalseDoorTestProps) => {
       <div className={styles.content}>
         <div className={styles.imageAndCopy}>
           <Image src={ShieldIcon} alt="" className={styles.logo} />
-          <p
-            dangerouslySetInnerHTML={{
-              __html: l10n.getString("false-door-test-content", {
-                lineBreak: "<br />",
-              }),
-            }}
-          />
+          <p>
+            {l10n.getString("false-door-test-content-part-one")}
+            <br />
+            {l10n.getString("false-door-test-content-part-two")}
+          </p>
         </div>
         <Link className={styles.cta} href={waitlistLink}>
           {l10n.getString("false-door-test-cta")}

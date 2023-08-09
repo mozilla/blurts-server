@@ -942,9 +942,10 @@ floating-banner-link-label = Sign up
 floating-banner-dismiss-button-label = No thanks
 
 ## False door test
+# This test is a method to observe engagement with the Monitor premium banner to gauge user interest.
 
 # Variables: 
-#  $lineBreak adds a line break to the string.
-false-door-test-content = No one should be able to buy your personal information. { $lineBreak }Automatically remove data from sites trying to sell it.
+false-door-test-content-part-one = No one should be able to buy your personal information.
+false-door-test-content-part-two = Automatically remove data from sites trying to sell it.
 false-door-test-cta = Count me in
 popup-close = Close
