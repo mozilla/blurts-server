@@ -11,7 +11,7 @@ import {
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
-interface SubscriberBreach {
+export interface SubscriberBreach {
   addedDate: string;
   breachDate: string;
   dataClasses: Array<string>;

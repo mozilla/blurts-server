@@ -3,9 +3,9 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { BreachDataTypes } from "../../../utils/breachResolution";
-import type { UserBreaches } from "./getUserBreaches";
 import { ScanResult } from "./onerep";
 import { RemovalStatusMap } from "../universal/scanResult";
+import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 
 type Exposures = {
   // shared
@@ -60,7 +60,7 @@ const exposureKeyMap: Record<string, string> = {
 
 export function dashboardSummary(
   scannedResults: ScanResult[],
-  { breachesData }: UserBreaches
+  subscriberBreaches: SubscriberBreach[]
 ): DashboardSummary {
   const summary: DashboardSummary = {
     dataBreachTotalNum: 0,
@@ -142,102 +142,94 @@ export function dashboardSummary(
     });
   }
 
-  const uniqueBreaches = new Set();
-
   // calculate breaches summary from breaches data
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
-  if (breachesData.verifiedEmails) {
-    for (const emailBreaches of breachesData.verifiedEmails) {
-      const breaches = emailBreaches.breaches;
-      breaches.forEach((b) => {
-        uniqueBreaches.add(b.Name);
-        const dataClasses = b.DataClasses ?? [];
+  subscriberBreaches.forEach((b) => {
+    const dataClasses = b.dataClasses ?? [];
 
-        // count emails
-        if (dataClasses.includes(BreachDataTypes.Email)) {
-          summary.totalExposures++;
-          summary.allExposures.emailAddresses++;
-          if (b.IsResolved) {
-            summary.fixedExposures.emailAddresses++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count phone numbers
-        if (dataClasses.includes(BreachDataTypes.Phone)) {
-          summary.totalExposures++;
-          summary.allExposures.phoneNumbers++;
-          if (b.IsResolved) {
-            summary.fixedExposures.phoneNumbers++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count password
-        if (dataClasses.includes(BreachDataTypes.Passwords)) {
-          summary.totalExposures++;
-          summary.allExposures.passwords++;
-          if (b.IsResolved) {
-            summary.fixedExposures.passwords++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count ssn
-        if (dataClasses.includes(BreachDataTypes.SSN)) {
-          summary.totalExposures++;
-          summary.allExposures.socialSecurityNumbers++;
-          if (b.IsResolved) {
-            summary.fixedExposures.socialSecurityNumbers++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count IP
-        if (dataClasses.includes(BreachDataTypes.IP)) {
-          summary.totalExposures++;
-          summary.allExposures.ipAddresses++;
-          if (b.IsResolved) {
-            summary.fixedExposures.ipAddresses++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count credit card
-        if (dataClasses.includes(BreachDataTypes.CreditCard)) {
-          summary.totalExposures++;
-          summary.allExposures.creditCardNumbers++;
-          if (b.IsResolved) {
-            summary.fixedExposures.creditCardNumbers++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count pin numbers
-        if (dataClasses.includes(BreachDataTypes.PIN)) {
-          summary.totalExposures++;
-          summary.allExposures.pinNumbers++;
-          if (b.IsResolved) {
-            summary.fixedExposures.pinNumbers++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-
-        // count security questions
-        if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
-          summary.totalExposures++;
-          summary.allExposures.securityQuestions++;
-          if (b.IsResolved) {
-            summary.fixedExposures.securityQuestions++;
-            summary.dataBreachFixedNum++;
-          }
-        }
-      });
+    // count emails
+    if (dataClasses.includes(BreachDataTypes.Email)) {
+      summary.totalExposures++;
+      summary.allExposures.emailAddresses++;
+      if (b.isResolved) {
+        summary.fixedExposures.emailAddresses++;
+        summary.dataBreachFixedNum++;
+      }
     }
-  }
+
+    // count phone numbers
+    if (dataClasses.includes(BreachDataTypes.Phone)) {
+      summary.totalExposures++;
+      summary.allExposures.phoneNumbers++;
+      if (b.isResolved) {
+        summary.fixedExposures.phoneNumbers++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+
+    // count password
+    if (dataClasses.includes(BreachDataTypes.Passwords)) {
+      summary.totalExposures++;
+      summary.allExposures.passwords++;
+      if (b.isResolved) {
+        summary.fixedExposures.passwords++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+
+    // count ssn
+    if (dataClasses.includes(BreachDataTypes.SSN)) {
+      summary.totalExposures++;
+      summary.allExposures.socialSecurityNumbers++;
+      if (b.isResolved) {
+        summary.fixedExposures.socialSecurityNumbers++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+
+    // count IP
+    if (dataClasses.includes(BreachDataTypes.IP)) {
+      summary.totalExposures++;
+      summary.allExposures.ipAddresses++;
+      if (b.isResolved) {
+        summary.fixedExposures.ipAddresses++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+
+    // count credit card
+    if (dataClasses.includes(BreachDataTypes.CreditCard)) {
+      summary.totalExposures++;
+      summary.allExposures.creditCardNumbers++;
+      if (b.isResolved) {
+        summary.fixedExposures.creditCardNumbers++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+
+    // count pin numbers
+    if (dataClasses.includes(BreachDataTypes.PIN)) {
+      summary.totalExposures++;
+      summary.allExposures.pinNumbers++;
+      if (b.isResolved) {
+        summary.fixedExposures.pinNumbers++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+
+    // count security questions
+    if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
+      summary.totalExposures++;
+      summary.allExposures.securityQuestions++;
+      if (b.isResolved) {
+        summary.fixedExposures.securityQuestions++;
+        summary.dataBreachFixedNum++;
+      }
+    }
+  });
 
   // count unique breaches
-  summary.dataBreachTotalNum = uniqueBreaches.size;
+  summary.dataBreachTotalNum = subscriberBreaches.length;
   const isBreachesOnly = summary.dataBrokerTotalNum === 0;
   summary.sanitizedExposures = sanitizeExposures(
     summary.allExposures,
