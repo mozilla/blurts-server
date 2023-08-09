@@ -7,9 +7,16 @@ import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
 import { getL10nBundles } from "../functions/server/l10n";
 import { HandleFalseDoorTest } from "./components/client/FalseDoorTest";
+import { isFlagEnabled } from "../functions/server/featureFlags";
 
-export default function MigrationLayout({ children }: { children: ReactNode }) {
+export default async function MigrationLayout({
+  children,
+}: {
+  children: ReactNode;
+}) {
   const l10nBundles = getL10nBundles();
+
+  const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
@@ -24,7 +31,7 @@ export default function MigrationLayout({ children }: { children: ReactNode }) {
       />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}
-      <HandleFalseDoorTest />
+      {falseDoorFlag && <HandleFalseDoorTest />}
     </L10nProvider>
   );
 }
