@@ -224,6 +224,10 @@ export const DashboardWithScan: Story = {
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
       />
     </Shell>
   ),
@@ -257,6 +261,10 @@ export const DashboardWithoutScan: Story = {
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
       />
     </Shell>
   ),
@@ -290,6 +298,10 @@ export const DashboardEmptyListState: Story = {
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
       />
     </Shell>
   ),
