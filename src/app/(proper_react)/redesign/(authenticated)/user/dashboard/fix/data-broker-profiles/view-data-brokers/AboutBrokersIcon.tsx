@@ -1,0 +1,87 @@
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+"use client";
+
+import { useRef } from "react";
+import { useButton, useOverlayTrigger } from "react-aria";
+import { useOverlayTriggerState } from "react-stately";
+import Image from "next/image";
+import styles from "./AboutBrokersIcon.module.scss";
+import DialogIllustration from "./images/Exploring on Laptop.svg";
+import { QuestionMarkCircle } from "../../../../../../../../components/server/Icons";
+import { useL10n } from "../../../../../../../../hooks/l10n";
+import { ModalOverlay } from "../../../../../../../../components/client/dialog/ModalOverlay";
+import { Dialog } from "../../../../../../../../components/client/dialog/Dialog";
+import { Button } from "../../../../../../../../components/server/Button";
+
+export const AboutBrokersIcon = () => {
+  const l10n = useL10n();
+  const overlayTriggerState = useOverlayTriggerState({
+    defaultOpen: false,
+  });
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    overlayTriggerState
+  );
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(triggerProps, triggerRef);
+
+  return (
+    <>
+      <button
+        {...buttonProps}
+        className={styles.triggerButton}
+        ref={triggerRef}
+      >
+        <QuestionMarkCircle
+          alt={l10n.getString(
+            "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-trigger-label"
+          )}
+          width={18}
+          height={18}
+        />
+      </button>
+      {overlayTriggerState.isOpen && (
+        <ModalOverlay
+          state={overlayTriggerState}
+          {...overlayProps}
+          isDismissable={true}
+        >
+          <Dialog
+            title={l10n.getString(
+              "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-title"
+            )}
+            illustration={<Image src={DialogIllustration} alt="" />}
+          >
+            <div className={styles.dialogContents}>
+              <p>
+                {l10n.getString(
+                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph1"
+                )}
+              </p>
+              <p>
+                {l10n.getString(
+                  "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-paragraph2"
+                )}
+              </p>
+              <div className={styles.confirmButtonWrapper}>
+                <Button
+                  variant="primary"
+                  onClick={() => overlayTriggerState.close()}
+                  autoFocus={true}
+                  className={styles.startButton}
+                >
+                  {l10n.getString(
+                    "fix-flow-data-broker-profiles-view-data-broker-profiles-more-dialog-confirm"
+                  )}
+                </Button>
+              </div>
+            </div>
+          </Dialog>
+        </ModalOverlay>
+      )}
+    </>
+  );
+};
