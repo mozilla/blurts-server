@@ -1,19 +1,27 @@
 @import "../../../tokens.scss";
 
 .falseDoorTestWrapper {
+  --monitorLogoSizeSmall: 30px;
+  --monitorLogoSizeBig: 50px;
+  font: $text-body-md;
   position: fixed;
   bottom: 0;
   left: 0;
   z-index: 10;
-  padding-inline: $spacing-2xl;
+  padding-inline: $spacing-lg;
   padding-block: $spacing-md;
   width: 100%;
   align-items: center;
   background-color: #ffdff0;
   display: flex;
-  flex: row;
+  flex-direction: row;
   justify-content: space-between;
   gap: $spacing-xl;
+
+  @media screen and (min-width: $screen-lg) {
+    padding-inline: $spacing-2xl;
+    padding-block: $spacing-md;
+  }
 
   .dismiss {
     align-self: flex-start;
@@ -24,16 +32,30 @@
   .content {
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    padding-left: $spacing-xl;
+    flex: column;
+    flex-wrap: wrap;
     align-items: center;
     gap: $spacing-md;
     width: 100%;
     justify-content: space-between;
 
+    .imageAndCopy {
+      display: flex;
+      gap: $spacing-md;
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      padding-left: $spacing-2xl;
+    }
+
     .logo {
-      width: 50px;
-      height: 50px;
+      width: var(--monitorLogoSizeSmall);
+      height: var(--monitorLogoSizeSmall);
+
+      @media screen and (min-width: $screen-lg) {
+        width: var(--monitorLogoSizeBig);
+        height: var(--monitorLogoSizeBig);
+      }
     }
 
     p {
@@ -41,13 +63,17 @@
     }
 
     .cta {
-      margin-left: auto;
+      all: unset;
       padding-inline: $spacing-xl;
-      padding-block: $spacing-md;
+      padding-block: $spacing-sm;
       background: $color-blue-50;
       font-weight: 600;
       color: $color-white;
       border-radius: $border-radius-xs;
+
+      @media screen and (min-width: $screen-lg) {
+        margin-left: auto;
+      }
     }
   }
 }

@@ -11,6 +11,7 @@ import { CloseBtn } from "../../../components/server/Icons";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { useL10n } from "../../../hooks/l10n";
+import Link from "next/link";
 
 export const HandleFalseDoorTest = () => {
   const [cookies, setCookie] = useCookies(["falseDoorDismissed"]);
@@ -34,24 +35,28 @@ type FalseDoorTestProps = {
 };
 export const FalseDoorTest = (props: FalseDoorTestProps) => {
   const l10n = useL10n();
+  const waitlistLink =
+    "https://www.mozilla.org/en-US/newsletter/monitor_waitlist";
 
   return (
     <div className={styles.falseDoorTestWrapper}>
       <div className={styles.content}>
-        <Image src={ShieldIcon} alt="" className={styles.logo} />
-        <p>
-          No one should be able to buy your personal information.
-          <br />
-          Automatically remove data from sites trying to sell it.
-        </p>
-        <button className={styles.cta}>Count me in</button>
+        <div className={styles.imageAndCopy}>
+          <Image src={ShieldIcon} alt="" className={styles.logo} />
+          <p
+            dangerouslySetInnerHTML={{
+              __html: l10n.getString("false-door-test-content", {
+                lineBreak: "<br />",
+              }),
+            }}
+          />
+        </div>
+        <Link className={styles.cta} href={waitlistLink}>
+          {l10n.getString("false-door-test-cta")}
+        </Link>
       </div>
       <button className={styles.dismiss} onClick={props.onDismiss}>
-        <CloseBtn
-          alt={l10n.getString("modal-close-alt")}
-          width="15"
-          height="15"
-        />
+        <CloseBtn alt={l10n.getString("popup-close")} width="15" height="15" />
       </button>
     </div>
   );

@@ -940,3 +940,11 @@ breach-detail-cta-signup = Check for breaches
 floating-banner-text = Boost your online security with news, tips, and updates from { -brand-Mozilla }.
 floating-banner-link-label = Sign up
 floating-banner-dismiss-button-label = No thanks
+
+## False door test
+
+# Variables: 
+#  $lineBreak adds a line break to the string.
+false-door-test-content = No one should be able to buy your personal information. { $lineBreak }Automatically remove data from sites trying to sell it.
+false-door-test-cta = Count me in
+popup-close = Close
