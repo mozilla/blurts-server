@@ -146,84 +146,85 @@ export function dashboardSummary(
   // TODO: Modify after MNTOR-1947: Refactor user breaches object
   subscriberBreaches.forEach((b) => {
     const dataClasses = b.dataClasses ?? [];
+    const increment = b.emailsEffected.length;
 
     // count emails
     if (dataClasses.includes(BreachDataTypes.Email)) {
-      summary.totalExposures++;
-      summary.allExposures.emailAddresses++;
+      summary.totalExposures += increment;
+      summary.allExposures.emailAddresses += increment;
       if (b.isResolved) {
-        summary.fixedExposures.emailAddresses++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.emailAddresses += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count phone numbers
     if (dataClasses.includes(BreachDataTypes.Phone)) {
-      summary.totalExposures++;
-      summary.allExposures.phoneNumbers++;
+      summary.totalExposures += increment;
+      summary.allExposures.phoneNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.phoneNumbers++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.phoneNumbers += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count password
     if (dataClasses.includes(BreachDataTypes.Passwords)) {
-      summary.totalExposures++;
-      summary.allExposures.passwords++;
+      summary.totalExposures += increment;
+      summary.allExposures.passwords += increment;
       if (b.isResolved) {
-        summary.fixedExposures.passwords++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.passwords += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count ssn
     if (dataClasses.includes(BreachDataTypes.SSN)) {
-      summary.totalExposures++;
-      summary.allExposures.socialSecurityNumbers++;
+      summary.totalExposures += increment;
+      summary.allExposures.socialSecurityNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.socialSecurityNumbers++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.socialSecurityNumbers += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count IP
     if (dataClasses.includes(BreachDataTypes.IP)) {
-      summary.totalExposures++;
-      summary.allExposures.ipAddresses++;
+      summary.totalExposures += increment;
+      summary.allExposures.ipAddresses += increment;
       if (b.isResolved) {
-        summary.fixedExposures.ipAddresses++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.ipAddresses += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count credit card
     if (dataClasses.includes(BreachDataTypes.CreditCard)) {
-      summary.totalExposures++;
-      summary.allExposures.creditCardNumbers++;
+      summary.totalExposures += increment;
+      summary.allExposures.creditCardNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.creditCardNumbers++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.creditCardNumbers += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
-      summary.totalExposures++;
-      summary.allExposures.pinNumbers++;
+      summary.totalExposures += increment;
+      summary.allExposures.pinNumbers += increment;
       if (b.isResolved) {
-        summary.fixedExposures.pinNumbers++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.pinNumbers += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
 
     // count security questions
     if (dataClasses.includes(BreachDataTypes.SecurityQuestions)) {
-      summary.totalExposures++;
-      summary.allExposures.securityQuestions++;
+      summary.totalExposures += increment;
+      summary.allExposures.securityQuestions += increment;
       if (b.isResolved) {
-        summary.fixedExposures.securityQuestions++;
-        summary.dataBreachFixedNum++;
+        summary.fixedExposures.securityQuestions += increment;
+        summary.dataBreachFixedNum += increment;
       }
     }
   });
