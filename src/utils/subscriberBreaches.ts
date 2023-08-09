@@ -24,7 +24,6 @@ interface SubscriberBreach {
   name: string;
   title: string;
   emailsEffected: string[];
-  otherDataClassesEffected: Record<string, number>; // excluding email
 }
 
 type SubscriberBreachMap = Record<number, SubscriberBreach>;
@@ -91,11 +90,7 @@ export async function getSubBreaches(
         name: breach.Name,
         title: breach.Title,
         emailsEffected: [email.email],
-        otherDataClassesEffected: {},
       };
-      subscriberBreach.dataClasses.forEach((d) => {
-        subscriberBreach.otherDataClassesEffected[d] = 1;
-      });
 
       // if current breach does not exist in breaches map
       if (!uniqueBreaches[subscriberBreach.id]) {
@@ -104,9 +99,6 @@ export async function getSubBreaches(
         // append email & other data classes counts
         const curBreach = uniqueBreaches[subscriberBreach.id];
         curBreach.emailsEffected?.push(email.email);
-        subscriberBreach.dataClasses.forEach((d) => {
-          subscriberBreach.otherDataClassesEffected[d]++;
-        });
       }
     }
   }
