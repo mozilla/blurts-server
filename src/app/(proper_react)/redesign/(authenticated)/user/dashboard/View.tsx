@@ -28,6 +28,7 @@ import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { StatusPillType } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
+import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 
 export type Props = {
@@ -36,6 +37,10 @@ export type Props = {
   userScannedResults: ScanResult[];
   bannerData: DashboardSummary;
   locale: string;
+  featureFlagsEnabled: Pick<
+    FeatureFlagsEnabled,
+    "FreeBrokerScan" | "PremiumBrokerRemoval"
+  >;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -143,6 +148,7 @@ export const View = (props: Props) => {
           statusPillType={status}
           locale={props.locale}
           color={getRandomLightNebulaColor(exposure.data_broker)}
+          featureFlagsEnabled={props.featureFlagsEnabled}
         />
       </li>
     ) : (
@@ -157,6 +163,7 @@ export const View = (props: Props) => {
           statusPillType={status}
           locale={props.locale}
           color={getRandomLightNebulaColor(exposure.Name)}
+          featureFlagsEnabled={props.featureFlagsEnabled}
         />
       </li>
     );
@@ -191,6 +198,14 @@ export const View = (props: Props) => {
     </>
   );
 
+  const featureFlagsEnabled =
+    props.featureFlagsEnabled?.FreeBrokerScan &&
+    props.featureFlagsEnabled?.PremiumBrokerRemoval;
+
+  const type = isScanResultItemsEmpty
+    ? "DataBrokerScanUpsellContent"
+    : "LetsFixDataContent";
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -203,11 +218,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          content={
-            isScanResultItemsEmpty
-              ? "DataBrokerScanUpsellContent"
-              : "LetsFixDataContent"
-          }
+          content={featureFlagsEnabled ? type : "NoContent"}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
           ctaCallback={() => {
