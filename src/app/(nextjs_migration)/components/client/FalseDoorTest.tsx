@@ -54,7 +54,11 @@ export const FalseDoorTest = (props: FalseDoorTestProps) => {
         </Link>
       </div>
       <button className={styles.dismiss} onClick={props.onDismiss}>
-        <CloseBtn alt={l10n.getString("popup-close")} width="15" height="15" />
+        <CloseBtn
+          alt={l10n.getString("false-door-test-popup-close")}
+          width="15"
+          height="15"
+        />
       </button>
     </div>
   );

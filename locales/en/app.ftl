@@ -948,4 +948,4 @@ floating-banner-dismiss-button-label = No thanks
 false-door-test-content-part-one = No one should be able to buy your personal information.
 false-door-test-content-part-two = Automatically remove data from sites trying to sell it.
 false-door-test-cta = Count me in
-popup-close = Close
+false-door-test-popup-close = Close
