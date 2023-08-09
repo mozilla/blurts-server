@@ -5,7 +5,7 @@
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import { filterBreachDataTypes } from "./breachResolution.js";
+import { BreachDataTypes, filterBreachDataTypes } from "./breachResolution.js";
 import {
   Breach,
   Subscriber,
@@ -24,6 +24,7 @@ export interface SubscriberBreach {
   name: string;
   title: string;
   emailsEffected: string[];
+  dataClassesEffected: Array<Record<string, any>>;
 }
 
 type SubscriberBreachMap = Record<number, SubscriberBreach>;
@@ -77,11 +78,14 @@ export async function getSubBreaches(
       : [];
 
     for (const breach of foundBreaches) {
+      const filteredBreachDataClasses: string[] = filterBreachDataTypes(
+        breach.DataClasses
+      );
       const subscriberBreach: SubscriberBreach = {
         id: breach.Id,
         addedDate: breach.AddedDate,
         breachDate: breach.BreachDate,
-        dataClasses: filterBreachDataTypes(breach.DataClasses),
+        dataClasses: filteredBreachDataClasses,
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,
@@ -90,6 +94,13 @@ export async function getSubBreaches(
         name: breach.Name,
         title: breach.Title,
         emailsEffected: [email.email],
+        dataClassesEffected: filteredBreachDataClasses.map((c) => {
+          if (c === BreachDataTypes.Email) {
+            return { [c]: [email.email] };
+          } else {
+            return { [c]: 1 };
+          }
+        }),
       };
 
       // if current breach does not exist in breaches map
@@ -99,6 +110,14 @@ export async function getSubBreaches(
         // append email & other data classes counts
         const curBreach = uniqueBreaches[subscriberBreach.id];
         curBreach.emailsEffected?.push(email.email);
+        curBreach.dataClassesEffected.forEach((d, index) => {
+          const key = Object.keys(d)[0];
+          if (key === BreachDataTypes.Email) {
+            curBreach.dataClassesEffected[index][key].push(email.email);
+          } else {
+            curBreach.dataClassesEffected[index][key]++;
+          }
+        });
       }
     }
   }
