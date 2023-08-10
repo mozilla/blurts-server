@@ -24,6 +24,7 @@ export interface SubscriberBreach {
   name: string;
   title: string;
   emailsEffected: string[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dataClassesEffected: Array<Record<string, any>>;
 }
 
