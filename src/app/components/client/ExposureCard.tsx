@@ -64,7 +64,7 @@ type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
   count?: number;
-  emails?: Record<string, any>;
+  emails?: string[];
 };
 
 type ScannedExposureCategoryProps = {
@@ -98,7 +98,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
     const emailsList = (
       <ul className={styles.emailsList}>
-        {props.emails?.map((email: any, index: number) => (
+        {props.emails?.map((email: string, index: number) => (
           <li key={index}>{email}</li>
         ))}
       </ul>
@@ -196,6 +196,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
       (item: Record<string, Record<string, number | string[]>>) => {
         const dataClass = Object.keys(item)[0];
         const value = item[dataClass];
+        const emails = typeof value === "string" ? value : [];
         const count = typeof value === "number" ? value : 0;
 
         if (dataClass === "email-addresses") {
@@ -204,7 +205,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               key={dataClass}
               icon={<EmailIcon alt="" width="13" height="13" />}
               exposureCategoryLabel={l10n.getString("exposure-card-email")}
-              emails={value} // Only emails get listed
+              emails={emails} // Only emails get listed
             />
           );
         } else if (dataClass === "passwords") {
