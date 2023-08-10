@@ -7,7 +7,6 @@ import { ExposureCard } from "../ExposureCard";
 import FamilyTreeImage from "../assets/familytree.png";
 import TwitterImage from "../assets/twitter-icon.png";
 import { ScanResult } from "../../../functions/server/onerep";
-import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { StateAbbr } from "../../../../utils/states";
 import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 

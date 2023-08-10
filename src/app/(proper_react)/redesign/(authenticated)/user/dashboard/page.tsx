@@ -10,7 +10,6 @@ import { authOptions } from "../../../../../api/utils/auth";
 import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import {
-  getUserBreaches,
   getSubscriberBreaches,
   guidedExperienceBreaches,
 } from "../../../../../functions/server/getUserBreaches";
@@ -40,7 +39,6 @@ export default async function DashboardPage() {
 
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
-  const breaches = await getUserBreaches({ user: session.user });
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = dashboardSummary(scanResultItems, subBreaches);
   const guidedBreaches = guidedExperienceBreaches(subBreaches);
