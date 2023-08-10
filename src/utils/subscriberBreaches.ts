@@ -11,7 +11,7 @@ import {
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
-type DataClassEffected = {
+export type DataClassEffected = {
   [dataType: string]: number | string[];
 };
 export interface SubscriberBreach {

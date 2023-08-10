@@ -22,7 +22,10 @@ import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { ScanResult } from "../../functions/server/onerep";
 import { FeatureFlagsEnabled } from "../../functions/server/featureFlags";
-import { SubscriberBreach } from "../../../utils/subscriberBreaches";
+import {
+  DataClassEffected,
+  SubscriberBreach,
+} from "../../../utils/subscriberBreaches";
 
 export type Exposure = ScanResult | SubscriberBreach;
 
@@ -192,65 +195,61 @@ export const ExposureCard = (props: ExposureCardProps) => {
 
   //Breach Categories
   else {
-    exposureItem.dataClassesEffected.map(
-      (item: Record<string, Record<string, number | string[]>>) => {
-        const dataClass = Object.keys(item)[0];
-        const value = item[dataClass];
-        const emails = Array.isArray(value) ? value : [];
-        const count = typeof value === "number" ? value : 0;
+    exposureItem.dataClassesEffected.map((item: DataClassEffected) => {
+      const dataClass = Object.keys(item)[0];
+      const value = item[dataClass];
+      const emails = Array.isArray(value) ? value : [];
+      const count = typeof value === "number" ? value : 0;
 
-        if (dataClass === "email-addresses") {
-          exposureCategoriesArray.push(
-            <BreachExposureCategory
-              key={dataClass}
-              icon={<EmailIcon alt="" width="13" height="13" />}
-              exposureCategoryLabel={l10n.getString("exposure-card-email")}
-              emails={emails} // Only emails get listed
-            />
-          );
-        } else if (dataClass === "passwords") {
-          exposureCategoriesArray.push(
-            <BreachExposureCategory
-              key={dataClass}
-              icon={<PasswordIcon alt="" width="13" height="13" />}
-              exposureCategoryLabel={l10n.getString("exposure-card-password")}
-              count={count}
-            />
-          );
-        } else if (dataClass === "phone-numbers") {
-          exposureCategoriesArray.push(
-            <BreachExposureCategory
-              key={dataClass}
-              icon={<PhoneIcon alt="" width="13" height="13" />}
-              exposureCategoryLabel={l10n.getString(
-                "exposure-card-phone-number"
-              )}
-              count={count}
-            />
-          );
-        } else if (dataClass === "ip-addresses") {
-          exposureCategoriesArray.push(
-            <BreachExposureCategory
-              key={dataClass}
-              icon={<QuestionMarkCircle alt="" width="13" height="13" />}
-              exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
-              count={count}
-            />
-          );
-        }
-        // Handle all other breach categories
-        else {
-          exposureCategoriesArray.push(
-            <BreachExposureCategory
-              key={dataClass}
-              icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
-              exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
-              count={count}
-            />
-          );
-        }
+      if (dataClass === "email-addresses") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={dataClass}
+            icon={<EmailIcon alt="" width="13" height="13" />}
+            exposureCategoryLabel={l10n.getString("exposure-card-email")}
+            emails={emails} // Only emails get listed
+          />
+        );
+      } else if (dataClass === "passwords") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={dataClass}
+            icon={<PasswordIcon alt="" width="13" height="13" />}
+            exposureCategoryLabel={l10n.getString("exposure-card-password")}
+            count={count}
+          />
+        );
+      } else if (dataClass === "phone-numbers") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={dataClass}
+            icon={<PhoneIcon alt="" width="13" height="13" />}
+            exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
+            count={count}
+          />
+        );
+      } else if (dataClass === "ip-addresses") {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={dataClass}
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />}
+            exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
+            count={count}
+          />
+        );
       }
-    );
+      // Handle all other breach categories
+      else {
+        exposureCategoriesArray.push(
+          <BreachExposureCategory
+            key={dataClass}
+            icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
+            exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
+            count={count}
+          />
+        );
+      }
+    });
   }
 
   const ExposureCategoriesListElem = () => {

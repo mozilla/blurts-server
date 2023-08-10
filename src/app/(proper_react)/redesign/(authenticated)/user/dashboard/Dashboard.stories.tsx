@@ -22,7 +22,12 @@ type Story = StoryObj<typeof DashboardEl>;
 const BreachMockItem1: SubscriberBreach = {
   addedDate: "2023-06-18T14:48:00.000Z",
   breachDate: "11/09/23",
-  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  dataClasses: [
+    "email-addresses",
+    "ip-addresses",
+    "phone-numbers",
+    "passwords",
+  ],
   description: "",
   domain: "",
   id: 3,
@@ -34,6 +39,8 @@ const BreachMockItem1: SubscriberBreach = {
   dataClassesEffected: [
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
+    { "phone-numbers": 1 },
+    { passwords: 1 },
   ],
 };
 
