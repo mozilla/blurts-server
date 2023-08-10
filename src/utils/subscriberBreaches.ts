@@ -26,8 +26,8 @@ export interface SubscriberBreach {
   modifiedDate: string;
   name: string;
   title: string;
-  emailsEffected: string[];
-  dataClassesEffected: Array<DataClassEffected>;
+  emailsEffected?: string[];
+  dataClassesEffected: DataClassEffected[];
 }
 
 type SubscriberBreachMap = Record<number, SubscriberBreach>;

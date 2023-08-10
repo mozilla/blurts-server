@@ -11,6 +11,10 @@ import {
 import { StateAbbr } from "../utils/states";
 import type { HibpLikeDbBreach } from "../utils/hibp";
 import { BreachDataTypes } from "../app/functions/universal/breach";
+import {
+  DataClassEffected,
+  SubscriberBreach,
+} from "../utils/subscriberBreaches";
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
@@ -73,32 +77,28 @@ export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
 export type RandomBreachOptions = Partial<{
   addedDate: Date;
   isResolved: boolean;
+  dataClassesEffected: DataClassEffected[];
   fakerSeed: number;
 }>;
 
 // TODO: MNTOR-2033 Update this random breach function with new data breach object, and deprecate all BreachMockItems
 export function createRandomBreach(
   options: RandomBreachOptions = {}
-): HibpLikeDbBreach {
+): SubscriberBreach {
   faker.seed(options.fakerSeed);
   return {
-    AddedDate: options.addedDate ?? faker.date.recent(),
-    BreachDate: faker.date.recent().toISOString(),
-    DataClasses: faker.helpers.arrayElements(Object.values(BreachDataTypes)),
-    Description: faker.word.words(),
-    Domain: faker.internet.domainName(),
-    Id: faker.number.int(),
-    IsFabricated: faker.datatype.boolean(),
-    IsMalware: faker.datatype.boolean(),
-    IsRetired: faker.datatype.boolean(),
-    IsSensitive: faker.datatype.boolean(),
-    IsSpamList: faker.datatype.boolean(),
-    IsVerified: faker.datatype.boolean(),
-    LogoPath: faker.system.fileName(),
-    ModifiedDate: faker.date.recent(),
-    Name: faker.word.noun(),
-    PwnCount: faker.number.int(),
-    Title: faker.word.noun(),
-    IsResolved: options.isResolved ?? faker.datatype.boolean(),
+    addedDate:
+      options.addedDate?.toISOString() ?? faker.date.recent().toISOString(),
+    breachDate: faker.date.recent().toISOString(),
+    dataClasses: faker.helpers.arrayElements(Object.values(BreachDataTypes)),
+    description: faker.word.words(),
+    domain: faker.internet.domainName(),
+    id: faker.number.int(),
+    favIconUrl: faker.system.fileName(),
+    modifiedDate: faker.date.recent().toISOString(),
+    name: faker.word.noun(),
+    title: faker.word.noun(),
+    isResolved: options.isResolved ?? faker.datatype.boolean(),
+    dataClassesEffected: [],
   };
 }
