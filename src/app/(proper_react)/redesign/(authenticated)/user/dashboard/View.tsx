@@ -68,9 +68,9 @@ export const View = (props: Props) => {
     return new Date(isoString);
   };
 
-  const breachesDataArray = props.userBreaches
-    .map((elem: SubscriberBreach) => elem)
-    .flat();
+  const breachesDataArray =
+    props.userBreaches.map((elem: SubscriberBreach) => elem) || [];
+
   const scannedResultsDataArray =
     props.userScannedResults.map((elem: ScanResult) => elem) || [];
 
