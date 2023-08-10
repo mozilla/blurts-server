@@ -49,7 +49,12 @@ export const FalseDoorTest = (props: FalseDoorTestProps) => {
             {l10n.getString("false-door-test-content-part-two")}
           </p>
         </div>
-        <Link className={styles.cta} href={waitlistLink}>
+        <Link
+          className={styles.cta}
+          target="_blank"
+          href={waitlistLink}
+          onClick={props.onDismiss}
+        >
           {l10n.getString("false-door-test-cta")}
         </Link>
       </div>
