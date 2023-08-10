@@ -75,10 +75,7 @@ import {
   Breach,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches";
-// import { getUserEmails } from "../db/tables/emailAddresses.js";
-// import { getBreachesForEmail } from "./hibp.js";
 
-// const userBreaches = {}
 jest.mock("../db/tables/emailAddresses.js", () => ({
   getUserEmails: jest.fn().mockReturnValue([]),
 }));
@@ -155,7 +152,7 @@ const allBreaches: Breach[] = [
 ];
 
 describe("getSubBreaches", () => {
-  it.only("dataClassesEffected and emailsEffected", async () => {
+  it("dataClassesEffected and emailsEffected", async () => {
     // mockGetBreachesForEmail = jest.fn().mockResolvedValue(mockBreaches)
 
     const subBreaches = await getSubBreaches(subscriber, allBreaches);
@@ -169,5 +166,18 @@ describe("getSubBreaches", () => {
     });
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 1 });
     expect(subBreaches[0].emailsEffected.length).toEqual(1);
+  });
+  it("dataClassesEffected for multiple emails", async () => {
+    const subBreaches = await getSubBreaches(subscriber, allBreaches);
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].dataClasses).toEqual([
+      "email-addresses",
+      "passwords",
+    ]);
+    expect(subBreaches[0].dataClassesEffected[0]).toEqual({
+      "email-addresses": ["asdf1@mailinator.com", "asdf1@mailinator.com"],
+    });
+    expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 2 });
+    expect(subBreaches[0].emailsEffected.length).toEqual(2);
   });
 });
