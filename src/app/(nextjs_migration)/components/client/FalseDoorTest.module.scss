@@ -70,6 +70,7 @@
       font-weight: 600;
       color: $color-white;
       border-radius: $border-radius-xs;
+      cursor: pointer;
 
       @media screen and (min-width: $screen-lg) {
         margin-left: auto;
