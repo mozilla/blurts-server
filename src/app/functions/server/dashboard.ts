@@ -22,7 +22,7 @@ type Exposures = {
   ipAddresses: number;
   passwords: number;
   creditCardNumbers: number;
-  pinNumbers: number;
+  pins: number;
   securityQuestions: number;
 };
 
@@ -54,7 +54,7 @@ const exposureKeyMap: Record<string, string> = {
   ipAddresses: "ip-addresses",
   passwords: "passwords",
   creditCardNumbers: "credit-cards",
-  pinNumbers: "pins",
+  pins: "pins",
   securityQuestions: "security-questions-and-answers",
 };
 
@@ -81,7 +81,7 @@ export function dashboardSummary(
       ipAddresses: 0,
       passwords: 0,
       creditCardNumbers: 0,
-      pinNumbers: 0,
+      pins: 0,
       securityQuestions: 0,
     },
     sanitizedExposures: [],
@@ -97,7 +97,7 @@ export function dashboardSummary(
       ipAddresses: 0,
       passwords: 0,
       creditCardNumbers: 0,
-      pinNumbers: 0,
+      pins: 0,
       securityQuestions: 0,
     },
     fixedSanitizedExposures: [],
@@ -211,9 +211,9 @@ export function dashboardSummary(
     // count pin numbers
     if (dataClasses.includes(BreachDataTypes.PIN)) {
       summary.totalExposures += increment;
-      summary.allExposures.pinNumbers += increment;
+      summary.allExposures.pins += increment;
       if (b.isResolved) {
-        summary.fixedExposures.pinNumbers += increment;
+        summary.fixedExposures.pins += increment;
         summary.dataBreachFixedNum += increment;
       }
     }

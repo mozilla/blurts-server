@@ -120,7 +120,7 @@ const dashboardSummaryNoScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 0,
   },
   fixedExposures: {
@@ -133,7 +133,7 @@ const dashboardSummaryNoScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 0,
   },
   sanitizedExposures: [
@@ -161,7 +161,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 40,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 40,
   },
   sanitizedExposures: [
@@ -181,7 +181,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 0,
   },
   fixedSanitizedExposures: [],
