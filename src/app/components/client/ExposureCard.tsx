@@ -196,7 +196,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
       (item: Record<string, Record<string, number | string[]>>) => {
         const dataClass = Object.keys(item)[0];
         const value = item[dataClass];
-        const emails = typeof value === "string" ? value : [];
+        const emails = Array.isArray(value) ? value : []; // Convert to an array if not already
         const count = typeof value === "number" ? value : 0;
 
         if (dataClass === "email-addresses") {
