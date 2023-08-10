@@ -11,7 +11,6 @@ import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
-import type { UserBreaches } from "../../../../../functions/server/getUserBreaches";
 import {
   Exposure,
   ExposureCard,
@@ -85,14 +84,8 @@ export const View = (props: Props) => {
     const dateB =
       (b as SubscriberBreach).addedDate || (b as ScanResult).created_at;
 
-    const timestampA =
-      typeof dateA === "object"
-        ? new Date(dateA).getTime()
-        : new Date(dateA).getTime();
-    const timestampB =
-      typeof dateB === "object"
-        ? new Date(dateB).getTime()
-        : new Date(dateB).getTime();
+    const timestampA = new Date(dateA).getTime();
+    const timestampB = new Date(dateB).getTime();
 
     return timestampB - timestampA;
   });
