@@ -102,7 +102,7 @@ export async function getSubscriberBreaches(
   return breachesData;
 }
 
-interface GuideExperienceBreaches {
+interface GuidedExperienceBreaches {
   highRisk: {
     ssnBreaches: SubscriberBreach[];
     creditCardBreaches: SubscriberBreach[];
@@ -115,8 +115,8 @@ interface GuideExperienceBreaches {
 // NOTE: Better name for this function?
 export function guidedExperienceBreaches(
   subscriberBreaches: SubscriberBreach[]
-): GuideExperienceBreaches {
-  const guidedExperienceBreaches: GuideExperienceBreaches = {
+): GuidedExperienceBreaches {
+  const guidedExperienceBreaches: GuidedExperienceBreaches = {
     highRisk: {
       ssnBreaches: [],
       creditCardBreaches: [],
