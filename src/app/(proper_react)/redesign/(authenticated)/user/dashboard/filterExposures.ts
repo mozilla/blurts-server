@@ -22,23 +22,23 @@ export function filterExposures(
 
     const exposureDate = isScanResult(exposure)
       ? new Date(exposure.created_at)
-      : exposure.AddedDate;
+      : exposure.addedDate;
 
     if (
       filters.dateFound === "seven-days" &&
-      exposureDate.getTime() < getDaysAgoTimestamp(7)
+      (exposureDate as Date).getTime() < getDaysAgoTimestamp(7)
     ) {
       return false;
     }
     if (
       filters.dateFound === "thirty-days" &&
-      exposureDate.getTime() < getDaysAgoTimestamp(30)
+      (exposureDate as Date).getTime() < getDaysAgoTimestamp(30)
     ) {
       return false;
     }
     if (
       filters.dateFound === "last-year" &&
-      exposureDate.getTime() < getDaysAgoTimestamp(365)
+      (exposureDate as Date).getTime() < getDaysAgoTimestamp(365)
     ) {
       return false;
     }
