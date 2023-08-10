@@ -130,6 +130,10 @@
         flex-direction: column;
         gap: $spacing-md;
 
+        .dataClassesList {
+          align-items: start;
+        }
+
         @media screen and (min-width: $screen-lg) {
           flex: 1 1 0;
 
