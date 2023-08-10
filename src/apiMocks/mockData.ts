@@ -74,6 +74,7 @@ export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
 }
 
 export type RandomBreachOptions = Partial<{
+  dataClasses: string[];
   addedDate: Date;
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];
@@ -89,7 +90,9 @@ export function createRandomBreach(
     addedDate:
       options.addedDate?.toISOString() ?? faker.date.recent().toISOString(),
     breachDate: faker.date.recent().toISOString(),
-    dataClasses: faker.helpers.arrayElements(Object.values(BreachDataTypes)),
+    dataClasses:
+      options.dataClasses ??
+      faker.helpers.arrayElements(Object.values(BreachDataTypes)),
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
@@ -98,6 +101,6 @@ export function createRandomBreach(
     name: faker.word.noun(),
     title: faker.word.noun(),
     isResolved: options.isResolved ?? faker.datatype.boolean(),
-    dataClassesEffected: [],
+    dataClassesEffected: options.dataClassesEffected ?? [],
   };
 }

@@ -8,7 +8,10 @@ import { View as DashboardEl } from "./View";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
-import { createRandomScan } from "../../../../../../apiMocks/mockData";
+import {
+  createRandomScan,
+  createRandomBreach,
+} from "../../../../../../apiMocks/mockData";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 
@@ -19,84 +22,43 @@ const meta: Meta<typeof DashboardEl> = {
 export default meta;
 type Story = StoryObj<typeof DashboardEl>;
 
-const BreachMockItem1: SubscriberBreach = {
-  addedDate: "2023-06-18T14:48:00.000Z",
-  breachDate: "11/09/23",
-  dataClasses: [
-    "email-addresses",
-    "ip-addresses",
-    "phone-numbers",
-    "passwords",
-  ],
-  description: "",
-  domain: "",
-  id: 3,
-  modifiedDate: "2013-12-07T14:48:00.000Z",
-  name: "",
-  title: "Facebook",
-  favIconUrl: "",
-  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+const BreachMockItem1: SubscriberBreach = createRandomBreach({
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
   dataClassesEffected: [
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
     { "phone-numbers": 1 },
     { passwords: 1 },
   ],
-};
+});
 
-const BreachMockItem2: SubscriberBreach = {
-  addedDate: "2023-06-18T14:48:00.000Z",
-  breachDate: "11/09/23",
+const BreachMockItem2: SubscriberBreach = createRandomBreach({
   dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  description: "",
-  domain: "",
-  id: 3,
-  modifiedDate: "2013-12-07T14:48:00.000Z",
-  name: "",
-  title: "Instagram",
-  favIconUrl: "",
-  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
   dataClassesEffected: [
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
   ],
-};
+});
 
-const BreachMockItem3: SubscriberBreach = {
-  addedDate: "2023-06-18T14:48:00.000Z",
-  breachDate: "11/09/23",
+const BreachMockItem3: SubscriberBreach = createRandomBreach({
   dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  description: "",
-  domain: "",
-  id: 3,
-  modifiedDate: "2013-12-07T14:48:00.000Z",
-  name: "",
-  title: "Uber",
-  favIconUrl: "",
-  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
   dataClassesEffected: [
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
   ],
-};
+});
 
-const BreachMockItem4: SubscriberBreach = {
-  addedDate: "2023-06-18T14:48:00.000Z",
-  breachDate: "11/09/23",
+const BreachMockItem4: SubscriberBreach = createRandomBreach({
   dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  description: "",
-  domain: "",
-  id: 3,
-  modifiedDate: "2013-12-07T14:48:00.000Z",
-  name: "",
-  title: "Facebook",
-  favIconUrl: "",
-  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
   dataClassesEffected: [
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
   ],
-};
+});
 
 const scannedResultsArraySample: ScanResult[] = Array.from(
   { length: 5 },
