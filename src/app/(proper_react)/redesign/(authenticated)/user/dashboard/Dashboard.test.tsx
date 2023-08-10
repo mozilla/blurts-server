@@ -10,6 +10,10 @@ import Meta, {
   DashboardWithScan,
   DashboardWithoutScan,
 } from "./Dashboard.stories";
+import {
+  DataBreach,
+  DataBroker,
+} from "../../../../../components/client/stories/ExposureCard.stories";
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -25,5 +29,17 @@ it("passes the axe accessibility test suite", async () => {
 it("passes the axe accessibility test suite", async () => {
   const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
   const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("breach card passes the axe accessiblity test suite", async () => {
+  const ComposedExposureCard = composeStory(DataBreach, Meta);
+  const { container } = render(<ComposedExposureCard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("broker data card passes the axe accessiblity test suite", async () => {
+  const ComposedExposureCard = composeStory(DataBroker, Meta);
+  const { container } = render(<ComposedExposureCard />);
   expect(await axe(container)).toHaveNoViolations();
 });
