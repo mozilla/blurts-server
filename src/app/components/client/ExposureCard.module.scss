@@ -202,6 +202,16 @@
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
+
+            .emailsList {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+
+              li {
+                list-style-type: none;
+              }
+            }
           }
         }
       }

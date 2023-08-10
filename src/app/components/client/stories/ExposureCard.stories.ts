@@ -9,6 +9,7 @@ import TwitterImage from "../assets/twitter-icon.png";
 import { ScanResult } from "../../../functions/server/onerep";
 import { HibpLikeDbBreach } from "../../../../utils/hibp";
 import { StateAbbr } from "../../../../utils/states";
+import { SubscriberBreach } from "../../../../utils/subscriberBreaches";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 const meta: Meta<typeof ExposureCard> = {
@@ -46,24 +47,22 @@ const ScanResultMockItem: ScanResult = {
   data_broker_id: 0,
 };
 
-const BreachMockItem: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-07-10"),
-  BreachDate: "11/09/23",
-  DataClasses: [],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2023-07-10"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Twitter",
+const BreachMockItem: SubscriberBreach = {
+  addedDate: "2023-06-18T14:48:00.000Z",
+  breachDate: "11/09/23",
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  description: "",
+  domain: "",
+  id: 3,
+  modifiedDate: "2013-12-07T14:48:00.000Z",
+  name: "",
+  title: "Facebook",
+  favIconUrl: "",
+  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
 export const DataBroker: Story = {
@@ -83,7 +82,7 @@ export const DataBreach: Story = {
     exposureName: "Twitter",
     exposureData: BreachMockItem,
     exposureDetailsLink: "linkehere.com",
-    dateFound: BreachMockItem.AddedDate,
+    dateFound: new Date(BreachMockItem.addedDate),
     statusPillType: "needAction",
   },
 };

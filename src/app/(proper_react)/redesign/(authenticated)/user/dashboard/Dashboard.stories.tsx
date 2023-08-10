@@ -31,6 +31,10 @@ const BreachMockItem1: SubscriberBreach = {
   title: "Facebook",
   favIconUrl: "",
   emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
 const BreachMockItem2: SubscriberBreach = {
@@ -45,6 +49,10 @@ const BreachMockItem2: SubscriberBreach = {
   title: "Instagram",
   favIconUrl: "",
   emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
 const BreachMockItem3: SubscriberBreach = {
@@ -59,6 +67,10 @@ const BreachMockItem3: SubscriberBreach = {
   title: "Uber",
   favIconUrl: "",
   emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
 const BreachMockItem4: SubscriberBreach = {
@@ -73,6 +85,10 @@ const BreachMockItem4: SubscriberBreach = {
   title: "Facebook",
   favIconUrl: "",
   emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
 const scannedResultsArraySample: ScanResult[] = Array.from(

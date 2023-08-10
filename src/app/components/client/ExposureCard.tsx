@@ -56,7 +56,6 @@ export type ExposureCardProps = {
   dateFound: Date;
   statusPillType: StatusPillType;
   locale: string;
-  fromEmail?: ReactElement;
   color: string;
   featureFlagsEnabled: Pick<FeatureFlagsEnabled, "PremiumBrokerRemoval">;
 };
@@ -64,7 +63,8 @@ export type ExposureCardProps = {
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
-  fromEmail: ReactElement;
+  count?: number;
+  emails?: Record<string, any>;
 };
 
 type ScannedExposureCategoryProps = {
@@ -96,9 +96,13 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const exposureItem = props.exposureData;
 
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
-    const description = l10n.getString("exposure-card-num-found", {
-      exposure_num: 1, // We don't count categories for breaches.
-    });
+    const emailsList = (
+      <ul className={styles.emailsList}>
+        {props.emails?.map((email: any, index: number) => (
+          <li key={index}>{email}</li>
+        ))}
+      </ul>
+    );
 
     return (
       <div className={styles.detailsFoundItem}>
@@ -107,9 +111,11 @@ export const ExposureCard = (props: ExposureCardProps) => {
           {props.exposureCategoryLabel}
         </dt>
         <dd>
-          {props.exposureCategoryLabel === l10n.getString("exposure-card-email")
-            ? props.fromEmail
-            : description}
+          {props.emails && emailsList}
+          {props.count &&
+            l10n.getString("exposure-card-num-found", {
+              exposure_num: props.count,
+            })}
         </dd>
       </div>
     );
@@ -184,43 +190,46 @@ export const ExposureCard = (props: ExposureCardProps) => {
     }
   }
 
-  // Breach Categories
+  //Breach Categories
   else {
-    exposureItem.dataClasses.map((item) => {
-      if (item === "email-addresses") {
+    exposureItem.dataClassesEffected.map((item: Record<string, any>) => {
+      const dataClass = Object.keys(item)[0];
+      const value = item[dataClass];
+
+      if (dataClass === "email-addresses") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
+            key={dataClass}
             icon={<EmailIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-email")}
-            fromEmail={<>pending email</>}
+            emails={value}
           />
         );
-      } else if (item === "passwords") {
+      } else if (dataClass === "passwords") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
+            key={dataClass}
             icon={<PasswordIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-password")}
-            fromEmail={<>pending email</>}
+            count={value}
           />
         );
-      } else if (item === "phone-numbers") {
+      } else if (dataClass === "phone-numbers") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
+            key={dataClass}
             icon={<PhoneIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
-            fromEmail={<>pending email</>}
+            count={value}
           />
         );
-      } else if (item === "ip-addresses") {
+      } else if (dataClass === "ip-addresses") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
+            key={dataClass}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
-            fromEmail={<>pending email</>}
+            count={value}
           />
         );
       }
@@ -228,10 +237,10 @@ export const ExposureCard = (props: ExposureCardProps) => {
       else {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
+            key={dataClass}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
-            exposureCategoryLabel={l10n.getString(item)} // categories are localized in data-classes.ftl
-            fromEmail={<>pending email</>}
+            exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
+            count={value}
           />
         );
       }

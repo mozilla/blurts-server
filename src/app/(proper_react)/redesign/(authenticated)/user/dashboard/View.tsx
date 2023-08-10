@@ -4,7 +4,7 @@
 
 "use client";
 
-import { Key, ReactElement, useState } from "react";
+import { Key, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
@@ -124,18 +124,6 @@ export const View = (props: Props) => {
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
-    const emails: string[] = [];
-    if (!isScanResult(exposure)) {
-      emails.push(...exposure.emailsEffected);
-    }
-    const emailList: ReactElement = (
-      <ul>
-        {emails.map((email, index) => (
-          <li key={index}>{email}</li>
-        ))}
-      </ul>
-    );
-
     const status = getExposureStatus(exposure);
 
     return isScanResult(exposure) ? (
@@ -158,7 +146,6 @@ export const View = (props: Props) => {
         <ExposureCard
           exposureData={exposure}
           exposureName={exposure.title}
-          fromEmail={emailList}
           exposureDetailsLink={`/breach-details/${exposure.name}`}
           dateFound={dateObject(exposure.addedDate)}
           statusPillType={status}
