@@ -17,7 +17,7 @@ type DataClassEffected = {
 export interface SubscriberBreach {
   addedDate: string;
   breachDate: string;
-  dataClasses: Array<string>;
+  dataClasses: string[];
   description: string;
   domain: string;
   id: number;
