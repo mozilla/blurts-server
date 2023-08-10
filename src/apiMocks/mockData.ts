@@ -75,6 +75,8 @@ export type RandomBreachOptions = Partial<{
   isResolved: boolean;
   fakerSeed: number;
 }>;
+
+// TODO: MNTOR-2033 Update this random breach function with new data breach object, and deprecate all BreachMockItems
 export function createRandomBreach(
   options: RandomBreachOptions = {}
 ): HibpLikeDbBreach {

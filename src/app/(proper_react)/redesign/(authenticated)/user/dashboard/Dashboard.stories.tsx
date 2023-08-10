@@ -5,12 +5,12 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { View as DashboardEl } from "./View";
-import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import { createRandomScan } from "../../../../../../apiMocks/mockData";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
@@ -19,85 +19,76 @@ const meta: Meta<typeof DashboardEl> = {
 export default meta;
 type Story = StoryObj<typeof DashboardEl>;
 
-const BreachMockItem1: HibpLikeDbBreach = {
-  AddedDate: new Date("2018-11-07T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: ["email-addresses", "passwords"],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsResolved: true,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2011-12-15T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Twitter",
+const BreachMockItem1: SubscriberBreach = {
+  addedDate: "2023-06-18T14:48:00.000Z",
+  breachDate: "11/09/23",
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  description: "",
+  domain: "",
+  id: 3,
+  modifiedDate: "2013-12-07T14:48:00.000Z",
+  name: "",
+  title: "Facebook",
+  favIconUrl: "",
+  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
-const BreachMockItem2: HibpLikeDbBreach = {
-  AddedDate: new Date("2013-12-07T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: ["auth-tokens", "dates-of-birth", "phone-numbers"],
-  Description: "",
-  Domain: "",
-  Id: 1,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Instagram",
+const BreachMockItem2: SubscriberBreach = {
+  addedDate: "2023-06-18T14:48:00.000Z",
+  breachDate: "11/09/23",
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  description: "",
+  domain: "",
+  id: 3,
+  modifiedDate: "2013-12-07T14:48:00.000Z",
+  name: "",
+  title: "Instagram",
+  favIconUrl: "",
+  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
-const BreachMockItem3: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-07-17T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  Description: "",
-  Domain: "",
-  Id: 2,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Uber",
+const BreachMockItem3: SubscriberBreach = {
+  addedDate: "2023-06-18T14:48:00.000Z",
+  breachDate: "11/09/23",
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  description: "",
+  domain: "",
+  id: 3,
+  modifiedDate: "2013-12-07T14:48:00.000Z",
+  name: "",
+  title: "Uber",
+  favIconUrl: "",
+  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
-const BreachMockItem4: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-06-18T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
-  Description: "",
-  Domain: "",
-  Id: 3,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Facebook",
+const BreachMockItem4: SubscriberBreach = {
+  addedDate: "2023-06-18T14:48:00.000Z",
+  breachDate: "11/09/23",
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  description: "",
+  domain: "",
+  id: 3,
+  modifiedDate: "2013-12-07T14:48:00.000Z",
+  name: "",
+  title: "Facebook",
+  favIconUrl: "",
+  emailsEffected: ["email1@gmail.com", "email2@yahoo.com"],
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
 };
 
 const scannedResultsArraySample: ScanResult[] = Array.from(
@@ -105,7 +96,7 @@ const scannedResultsArraySample: ScanResult[] = Array.from(
   createRandomScan
 );
 
-const breachItemArraySample: HibpLikeDbBreach[] = [
+const breachItemArraySample: SubscriberBreach[] = [
   BreachMockItem1,
   BreachMockItem2,
   BreachMockItem3,
@@ -201,26 +192,7 @@ export const DashboardWithScan: Story = {
     <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
         user={{ email: "example@example.com" }}
-        userBreaches={{
-          emailVerifiedCount: 0,
-          emailTotalCount: 0,
-          emailSelectIndex: 0,
-          ssnBreaches: [],
-          phoneBreaches: [],
-          passwordBreaches: [],
-          breachesData: {
-            unverifiedEmails: [],
-            verifiedEmails: [
-              {
-                breaches: breachItemArraySample,
-                email: "test@example.com",
-                id: 4,
-                primary: true,
-                verified: true,
-              },
-            ],
-          },
-        }}
+        userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
@@ -238,26 +210,7 @@ export const DashboardWithoutScan: Story = {
     <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
         user={{ email: "example@example.com" }}
-        userBreaches={{
-          emailVerifiedCount: 0,
-          emailTotalCount: 0,
-          emailSelectIndex: 0,
-          ssnBreaches: [],
-          phoneBreaches: [],
-          passwordBreaches: [],
-          breachesData: {
-            unverifiedEmails: [],
-            verifiedEmails: [
-              {
-                breaches: breachItemArraySample,
-                email: "test@example.com",
-                id: 5,
-                primary: true,
-                verified: true,
-              },
-            ],
-          },
-        }}
+        userBreaches={breachItemArraySample}
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
@@ -275,26 +228,7 @@ export const DashboardEmptyListState: Story = {
     <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
         user={{ email: "example@example.com" }}
-        userBreaches={{
-          emailVerifiedCount: 0,
-          emailTotalCount: 0,
-          emailSelectIndex: 0,
-          ssnBreaches: [],
-          phoneBreaches: [],
-          passwordBreaches: [],
-          breachesData: {
-            unverifiedEmails: [],
-            verifiedEmails: [
-              {
-                breaches: [],
-                email: "test@example.com",
-                id: 6,
-                primary: true,
-                verified: true,
-              },
-            ],
-          },
-        }}
+        userBreaches={breachItemArraySample}
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
