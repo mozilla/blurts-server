@@ -8,14 +8,17 @@ import { L10nProvider } from "../../contextProviders/localization";
 import { getL10nBundles } from "../functions/server/l10n";
 import { HandleFalseDoorTest } from "./components/client/FalseDoorTest";
 import { isFlagEnabled } from "../functions/server/featureFlags";
+import { getCountryCode } from "../functions/server/getCountryCode";
+import { headers } from "next/headers";
 
 export default async function MigrationLayout({
   children,
 }: {
   children: ReactNode;
 }) {
+  const headersList = headers();
   const l10nBundles = getL10nBundles();
-
+  const countryCode = getCountryCode(headersList);
   const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
 
   return (
@@ -31,7 +34,9 @@ export default async function MigrationLayout({
       />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}
-      {falseDoorFlag && <HandleFalseDoorTest />}
+      {falseDoorFlag && countryCode.toLowerCase() === "us" && (
+        <HandleFalseDoorTest />
+      )}
     </L10nProvider>
   );
 }
