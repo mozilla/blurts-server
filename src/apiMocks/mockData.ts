@@ -9,7 +9,6 @@ import {
   RemovalStatusMap,
 } from "../app/functions/universal/scanResult";
 import { StateAbbr } from "../utils/states";
-import type { HibpLikeDbBreach } from "../utils/hibp";
 import { BreachDataTypes } from "../app/functions/universal/breach";
 import {
   DataClassEffected,
