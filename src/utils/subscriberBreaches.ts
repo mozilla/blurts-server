@@ -11,6 +11,9 @@ import {
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
 
+type DataClassEffected = {
+  [dataType: string]: number | string[];
+};
 export interface SubscriberBreach {
   addedDate: string;
   breachDate: string;
@@ -24,8 +27,7 @@ export interface SubscriberBreach {
   name: string;
   title: string;
   emailsEffected: string[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dataClassesEffected: Array<Record<string, any>>;
+  dataClassesEffected: Array<DataClassEffected>;
 }
 
 type SubscriberBreachMap = Record<number, SubscriberBreach>;
@@ -111,9 +113,11 @@ export async function getSubBreaches(
         curBreach.dataClassesEffected.forEach((d, index) => {
           const key = Object.keys(d)[0];
           if (key === BreachDataTypes.Email) {
-            curBreach.dataClassesEffected[index][key].push(email.email);
+            (curBreach.dataClassesEffected[index][key] as string[]).push(
+              email.email
+            );
           } else {
-            curBreach.dataClassesEffected[index][key]++;
+            (curBreach.dataClassesEffected[index][key] as number)++;
           }
         });
       }
