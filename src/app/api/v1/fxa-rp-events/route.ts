@@ -34,7 +34,7 @@ const MONITOR_PREMIUM_CAPABILITY = "monitor";
 /**
  * Fetch FxA JWT Public for verification
  *
- * @returns {Promise<Array<jwt.JwtPayload> | undefined>} keys an array of FxA JWT keys
+ * @returns keys an array of FxA JWT keys
  */
 const getJwtPubKey = async (): Promise<Array<jwt.JwtPayload> | undefined> => {
   const jwtKeyUri = `${appConstants.OAUTH_ACCOUNT_URI}/jwks`;
@@ -61,10 +61,10 @@ const getJwtPubKey = async (): Promise<Array<jwt.JwtPayload> | undefined> => {
 /**
  * Authenticate FxA JWT for FxA relay event requests
  *
- * @param {NextRequest} req
- * @returns {Promise<jwt.JwtPayload>} decoded JWT data, which should contain FxA events
+ * @param req
+ * @returns decoded JWT data, which should contain FxA events
  */
-const authenticateFxaJWT = async (
+const authenticateFxaJwt = async (
   req: NextRequest
 ): Promise<jwt.JwtPayload | string> => {
   // bearer token
@@ -116,7 +116,7 @@ interface JwtPayload {
 export async function POST(request: NextRequest) {
   let decodedJWT: JwtPayload;
   try {
-    decodedJWT = (await authenticateFxaJWT(request)) as JwtPayload;
+    decodedJWT = (await authenticateFxaJwt(request)) as JwtPayload;
   } catch (e) {
     console.error("fxaRpEvents", e);
     captureException(e);
