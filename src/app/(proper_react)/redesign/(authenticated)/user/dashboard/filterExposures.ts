@@ -22,7 +22,7 @@ export function filterExposures(
 
     const exposureDate = isScanResult(exposure)
       ? new Date(exposure.created_at)
-      : exposure.AddedDate;
+      : new Date(exposure.addedDate);
 
     if (
       filters.dateFound === "seven-days" &&

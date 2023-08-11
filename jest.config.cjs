@@ -230,7 +230,7 @@ const customJestConfig = {
       lines: 60,
       statements: 60,
     },
-    "src/utils/*.js": {
+    "src/utils/*.{js,ts}": {
       branches: 19,
       functions: 0,
       lines: 0,

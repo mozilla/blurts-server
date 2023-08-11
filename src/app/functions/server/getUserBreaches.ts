@@ -13,9 +13,14 @@ import {
   BundledVerifiedEmails,
   getAllEmailsAndBreaches,
 } from "../../../../src/utils/breaches.js";
+import {
+  SubscriberBreach,
+  getSubBreaches,
+} from "../../../utils/subscriberBreaches";
 import { EmailRow } from "../../../db/tables/emailAddresses";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
+//TODO: deprecate with MNTOR-2021
 export type UserBreaches = {
   ssnBreaches: Array<HibpLikeDbBreach>;
   passwordBreaches: Array<HibpLikeDbBreach>;
@@ -29,6 +34,7 @@ export type UserBreaches = {
   };
 };
 
+//TODO: deprecate with MNTOR-2021
 export async function getUserBreaches({
   user,
   options = {},
@@ -80,4 +86,68 @@ export async function getUserBreaches({
     passwordBreaches,
     phoneBreaches,
   };
+}
+
+/**
+ * NOTE: new function to replace getUserBreaches
+ *
+ * @param user
+ */
+export async function getSubscriberBreaches(
+  user: Session["user"]
+): Promise<SubscriberBreach[]> {
+  const subscriber = await getSubscriberByEmail(user.email);
+  const allBreaches = await getBreaches();
+  const breachesData = await getSubBreaches(subscriber, allBreaches);
+  return breachesData;
+}
+
+interface GuidedExperienceBreaches {
+  highRisk: {
+    ssnBreaches: SubscriberBreach[];
+    creditCardBreaches: SubscriberBreach[];
+    pinBreaches: SubscriberBreach[];
+    bankBreaches: SubscriberBreach[];
+  };
+  passwordBreaches: SubscriberBreach[];
+}
+
+// NOTE: Better name for this function?
+export function guidedExperienceBreaches(
+  subscriberBreaches: SubscriberBreach[]
+): GuidedExperienceBreaches {
+  const guidedExperienceBreaches: GuidedExperienceBreaches = {
+    highRisk: {
+      ssnBreaches: [],
+      creditCardBreaches: [],
+      pinBreaches: [],
+      bankBreaches: [],
+    },
+    passwordBreaches: [],
+  };
+  subscriberBreaches.forEach((b) => {
+    // high risks
+    if (b.dataClasses.includes(BreachDataTypes.SSN)) {
+      guidedExperienceBreaches.highRisk.ssnBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.CreditCard)) {
+      guidedExperienceBreaches.highRisk.creditCardBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.PIN)) {
+      guidedExperienceBreaches.highRisk.pinBreaches.push(b);
+    }
+
+    if (b.dataClasses.includes(BreachDataTypes.BankAccount)) {
+      guidedExperienceBreaches.highRisk.bankBreaches.push(b);
+    }
+
+    // other
+    if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
+      guidedExperienceBreaches.passwordBreaches.push(b);
+    }
+  });
+
+  return guidedExperienceBreaches;
 }

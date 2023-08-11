@@ -21,10 +21,13 @@ import {
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { ScanResult } from "../../functions/server/onerep";
-import { HibpLikeDbBreach } from "../../../utils/hibp";
 import { FeatureFlagsEnabled } from "../../functions/server/featureFlags";
+import {
+  DataClassEffected,
+  SubscriberBreach,
+} from "../../../utils/subscriberBreaches";
 
-export type Exposure = ScanResult | HibpLikeDbBreach;
+export type Exposure = ScanResult | SubscriberBreach;
 
 export type ExposureTypElProps = {
   type: Exposure;
@@ -56,7 +59,6 @@ export type ExposureCardProps = {
   dateFound: Date;
   statusPillType: StatusPillType;
   locale: string;
-  fromEmail?: string;
   color: string;
   featureFlagsEnabled: Pick<FeatureFlagsEnabled, "PremiumBrokerRemoval">;
 };
@@ -64,7 +66,8 @@ export type ExposureCardProps = {
 type BreachExposureCategoryProps = {
   exposureCategoryLabel: string;
   icon: ReactElement;
-  email: string;
+  count?: number;
+  emails?: string[];
 };
 
 type ScannedExposureCategoryProps = {
@@ -95,12 +98,14 @@ export const ExposureCard = (props: ExposureCardProps) => {
   const exposureCategoriesArray: React.ReactElement[] = [];
   const exposureItem = props.exposureData;
 
-  const verifiedEmailofBreach = props.fromEmail;
-
   const BreachExposureCategory = (props: BreachExposureCategoryProps) => {
-    const description = l10n.getString("exposure-card-num-found", {
-      exposure_num: 1, // We don't count categories for breaches.
-    });
+    const emailsList = (
+      <ul className={styles.emailsList}>
+        {props.emails?.map((email: string, index: number) => (
+          <li key={index}>{email}</li>
+        ))}
+      </ul>
+    );
 
     return (
       <div className={styles.detailsFoundItem}>
@@ -109,9 +114,11 @@ export const ExposureCard = (props: ExposureCardProps) => {
           {props.exposureCategoryLabel}
         </dt>
         <dd>
-          {props.email === "email-addresses"
-            ? verifiedEmailofBreach
-            : description}
+          {props.emails && emailsList}
+          {props.count &&
+            l10n.getString("exposure-card-num-found", {
+              exposure_num: props.count,
+            })}
         </dd>
       </div>
     );
@@ -186,43 +193,48 @@ export const ExposureCard = (props: ExposureCardProps) => {
     }
   }
 
-  // Breach Categories
+  //Breach Categories
   else {
-    exposureItem.DataClasses.map((item) => {
-      if (item === "email-addresses") {
+    exposureItem.dataClassesEffected.map((item: DataClassEffected) => {
+      const dataClass = Object.keys(item)[0];
+      const value = item[dataClass];
+      const emails = Array.isArray(value) ? value : [];
+      const count = typeof value === "number" ? value : 0;
+
+      if (dataClass === "email-addresses") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
-            email={item}
+            key={dataClass}
             icon={<EmailIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-email")}
+            emails={emails} // Only emails get listed
           />
         );
-      } else if (item === "passwords") {
+      } else if (dataClass === "passwords") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
-            email={item}
+            key={dataClass}
             icon={<PasswordIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-password")}
+            count={count}
           />
         );
-      } else if (item === "phone-numbers") {
+      } else if (dataClass === "phone-numbers") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
-            email={item}
+            key={dataClass}
             icon={<PhoneIcon alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-phone-number")}
+            count={count}
           />
         );
-      } else if (item === "ip-addresses") {
+      } else if (dataClass === "ip-addresses") {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
-            email={item}
+            key={dataClass}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />}
             exposureCategoryLabel={l10n.getString("exposure-card-ip-address")}
+            count={count}
           />
         );
       }
@@ -230,10 +242,10 @@ export const ExposureCard = (props: ExposureCardProps) => {
       else {
         exposureCategoriesArray.push(
           <BreachExposureCategory
-            key={item}
-            email={item}
+            key={dataClass}
             icon={<QuestionMarkCircle alt="" width="13" height="13" />} // default icon for categories without a unique one
-            exposureCategoryLabel={l10n.getString(item)} // categories are localized in data-classes.ftl
+            exposureCategoryLabel={l10n.getString(dataClass)} // categories are localized in data-classes.ftl
+            count={count}
           />
         );
       }
@@ -365,7 +377,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
                   {
                     vars: {
                       data_breach_company: exposureName,
-                      data_breach_date: exposureData.BreachDate,
+                      data_breach_date: exposureData.breachDate,
                     },
                     elems: {
                       data_breach_link: <a href={exposureDetailsLink} />,
@@ -392,7 +404,7 @@ export const ExposureCard = (props: ExposureCardProps) => {
               <p className={styles.exposedInfoTitle}>
                 {l10n.getString("exposure-card-your-exposed-info")}
               </p>
-              <dl>
+              <dl className={styles.dataClassesList}>
                 <ExposureCategoriesListElem />
               </dl>
             </div>

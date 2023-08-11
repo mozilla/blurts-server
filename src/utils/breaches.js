@@ -15,7 +15,7 @@ import { filterBreachDataTypes } from './breachResolution.js'
  */
 
 /**
- * TODO: deprecate
+ * TODO: deprecate with MNTOR-2021
  * Get all emails and breaches for a user via app.locals
  * This function will be replaced after 'breaches" table is created
  * and all records can be retrieved from the one table
@@ -52,6 +52,8 @@ async function getAllEmailsAndBreaches (user, allBreaches) {
 }
 
 /**
+ * TODO: deprecate with MNTOR-2021
+ *
  * @param {any[]} foundBreaches
  */
 function addRecencyIndex (foundBreaches) {
@@ -81,6 +83,8 @@ function addRecencyIndex (foundBreaches) {
  */
 
 /**
+ * TODO: deprecate with MNTOR-2021
+ *
  * @param {{ user: any; email: any; recordId: any; recordVerified: any; allBreaches: import('./hibp.js').HibpLikeDbBreach[]; }} options
  * @returns {Promise<BundledVerifiedEmails>}
  */
