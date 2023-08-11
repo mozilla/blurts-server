@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { it, expect } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
@@ -49,4 +49,28 @@ it("switches between tab panels", async () => {
   await user.click(tabFixedTrigger);
   expect(tabFixedTriggerAriaSelected).toBe("true");
   expect(tabActionNeededTriggerAriaSelected).toBe("false");
+});
+
+it("shows and hides the progress card explainer dialog", async () => {
+  const user = userEvent.setup();
+  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
+  render(<ComposedDashboard />);
+
+  const tabFixedTrigger = screen.getByRole("tab", {
+    name: "Fixed",
+  });
+  await user.click(tabFixedTrigger);
+
+  const progressCardHeader = screen.getByText("Here is what we fixed");
+  const explainerTrigger =
+    within(progressCardHeader).getByLabelText("Open modal");
+  await user.click(explainerTrigger);
+
+  const explainerDialog = screen.getByRole("dialog");
+  expect(explainerDialog).toBeInTheDocument();
+  const explainerCloseButton = within(explainerDialog).getByRole("button", {
+    name: "OK",
+  });
+  await user.click(explainerCloseButton);
+  expect(explainerDialog).not.toBeInTheDocument();
 });
