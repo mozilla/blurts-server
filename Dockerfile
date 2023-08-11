@@ -15,9 +15,6 @@ COPY --chown=app:app . /app
 
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
-VOLUME /nimbus-config
-COPY ./config/nimbus.yaml /nimbus-config
-
 COPY .env-dist ./.env
 ARG S3_BUCKET
 ENV S3_BUCKET=$S3_BUCKET
