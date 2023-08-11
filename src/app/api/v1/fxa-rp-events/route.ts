@@ -240,7 +240,7 @@ export async function POST(request: NextRequest) {
 
         // get profile id
         const result = await getOnerepProfileId(subscriber);
-        const oneRepProfileId = result[0]["onerep_profile_id"] as number;
+        const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
 
         if (
           updatedSubscriptionFromEvent.isActive &&
