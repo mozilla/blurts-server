@@ -946,5 +946,6 @@ floating-banner-dismiss-button-label = No thanks
 # A false door test is a method to observe engagement with the Monitor premium banner to gauge user interest.
 false-door-test-content-part-one = No one should be able to buy your personal information.
 false-door-test-content-part-two = Automatically remove data from sites trying to sell it.
+false-door-test-content-part-two-dashboard = Auto-delete data from sites trying to sell it.
 false-door-test-cta = Count me in
 false-door-test-popup-close = Close
