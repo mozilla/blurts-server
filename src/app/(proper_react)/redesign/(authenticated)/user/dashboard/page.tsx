@@ -9,12 +9,16 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import { getUserBreaches } from "../../../../../functions/server/getUserBreaches";
+import {
+  getSubscriberBreaches,
+  guidedExperienceBreaches,
+} from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
+import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -35,17 +39,27 @@ export default async function DashboardPage() {
 
   const scanResult = await getLatestOnerepScan(profileId);
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
-  const breaches = await getUserBreaches({ user: session.user });
-  const summary = dashboardSummary(scanResultItems, breaches);
+  const subBreaches = await getSubscriberBreaches(session.user);
+  const summary = dashboardSummary(scanResultItems, subBreaches);
+  const guidedBreaches = guidedExperienceBreaches(subBreaches);
+  console.log(JSON.stringify(guidedBreaches));
   const locale = getLocale();
+
+  const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
+  const PremiumBrokerRemoval = await isFlagEnabled(
+    "PremiumBrokerRemoval",
+    session.user
+  );
+  const featureFlagsEnabled = { FreeBrokerScan, PremiumBrokerRemoval };
 
   return (
     <View
       user={session.user}
       userScannedResults={scanResultItems}
-      userBreaches={breaches}
+      userBreaches={subBreaches}
       locale={locale}
       bannerData={summary}
+      featureFlagsEnabled={featureFlagsEnabled}
     />
   );
 }

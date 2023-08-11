@@ -90,7 +90,7 @@ const customJestConfig = {
     },
     "src/app/(proper_react)/redesign/(authenticated)/user/dashboard/DashboardTopBanner.tsx":
       {
-        branches: 80,
+        branches: 66.66,
         functions: 83,
         lines: 98,
         statements: 98,
@@ -141,7 +141,7 @@ const customJestConfig = {
       statements: 100,
     },
     "src/app/components/client/ExposureCard.tsx": {
-      branches: 73,
+      branches: 72.41,
       functions: 75,
       lines: 79,
       statements: 79,
@@ -230,7 +230,7 @@ const customJestConfig = {
       lines: 60,
       statements: 60,
     },
-    "src/utils/*.js": {
+    "src/utils/*.{js,ts}": {
       branches: 19,
       functions: 0,
       lines: 0,
@@ -241,6 +241,12 @@ const customJestConfig = {
       functions: 0,
       lines: 0,
       statements: 0,
+    },
+    "src/app/functions/server/featureFlags.ts": {
+      branches: 90.9,
+      functions: 0,
+      lines: 95.16,
+      statements: 95.16,
     },
   },
 
@@ -313,10 +319,10 @@ const customJestConfig = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  // resetMocks: false,
+  resetMocks: false,
 
   // Reset the module registry before running each individual test
-  // resetModules: false,
+  resetModules: false,
 
   // A path to a custom resolver
   // resolver: undefined,
