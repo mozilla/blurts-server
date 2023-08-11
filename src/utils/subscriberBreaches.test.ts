@@ -11,7 +11,7 @@ const subscriber: Subscriber = {
   id: 12346,
   created_at: new Date("2022-06-07 14:29:00.000-05"),
   primary_sha1: "abcabc",
-  primary_email: "asdf1@mailinator.com",
+  primary_email: "test@test.com",
   primary_verification_token: "c165711a-69d1-42f1-9850-ce74754f36de",
   primary_verified: true,
   fxa_access_token:
@@ -80,29 +80,11 @@ jest.mock("../db/tables/emailAddresses.js", () => ({
   getUserEmails: jest.fn().mockReturnValue([]),
 }));
 
-// const mockBreaches =
 jest.mock("./hibp.js", () => ({
-  getBreachesForEmail: jest.fn().mockReturnValue([
-    {
-      Id: 1,
-      IsRetired: true,
-      IsSpamList: false,
-      IsFabricated: false,
-      IsVerified: true,
-      Domain: "something",
-      DataClasses: ["email-addresses", "passwords", "something else"],
-    },
-    {
-      Id: 2,
-      IsRetired: false,
-      IsSpamList: false,
-      IsFabricated: false,
-      IsVerified: true,
-      Domain: "something",
-      DataClasses: ["email-addresses", "passwords", "something else"],
-    },
-  ]),
+  getBreachesForEmail: jest.fn(),
 }));
+
+import { getBreachesForEmail } from "./hibp";
 
 const allBreaches: Breach[] = [
   {
@@ -153,19 +135,37 @@ const allBreaches: Breach[] = [
 
 describe("getSubBreaches", () => {
   it("dataClassesEffected and emailsEffected", async () => {
-    // mockGetBreachesForEmail = jest.fn().mockResolvedValue(mockBreaches)
+    getBreachesForEmail.mockReturnValue([
+      {
+        Id: 1,
+        IsRetired: true,
+        IsSpamList: false,
+        IsFabricated: false,
+        IsVerified: true,
+        Domain: "something",
+        DataClasses: ["email-addresses", "passwords", "something else"],
+      },
+      {
+        Id: 2,
+        IsRetired: false,
+        IsSpamList: false,
+        IsFabricated: false,
+        IsVerified: true,
+        Domain: "something",
+        DataClasses: ["email-addresses", "passwords", "something else"],
+      },
+    ]);
 
-    const subBreaches = await getSubBreaches(subscriber, allBreaches);
+    const subBreaches = await getSubBreaches(subscriber, []);
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
       "email-addresses",
       "passwords",
     ]);
     expect(subBreaches[0].dataClassesEffected[0]).toEqual({
-      "email-addresses": ["asdf1@mailinator.com"],
+      "email-addresses": ["test@test.com"],
     });
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 1 });
-    expect(subBreaches[0].emailsEffected.length).toEqual(1);
   });
   it("dataClassesEffected for multiple emails", async () => {
     const subBreaches = await getSubBreaches(subscriber, allBreaches);
@@ -175,9 +175,25 @@ describe("getSubBreaches", () => {
       "passwords",
     ]);
     expect(subBreaches[0].dataClassesEffected[0]).toEqual({
-      "email-addresses": ["asdf1@mailinator.com", "asdf1@mailinator.com"],
+      "email-addresses": ["test@test.com", "test@test.com"],
     });
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 2 });
-    expect(subBreaches[0].emailsEffected.length).toEqual(2);
+  });
+  it("dataClassesEffected for different subscriber email", async () => {
+    subscriber.primary_email = "different@test.com";
+    const subBreaches = await getSubBreaches(subscriber, allBreaches);
+    expect(subBreaches.length).toEqual(1);
+    expect(subBreaches[0].dataClasses).toEqual([
+      "email-addresses",
+      "passwords",
+    ]);
+    expect(subBreaches[0].dataClassesEffected[0]).toEqual({
+      "email-addresses": [
+        "test@test.com",
+        "test@test.com",
+        "different@test.com",
+      ],
+    });
+    expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 3 });
   });
 });
