@@ -63,6 +63,3 @@ next-env.d.ts
 
 # Sentry Auth Token
 .sentryclirc
-
-# Location autocomplete data
-locationAutocompleteData.json

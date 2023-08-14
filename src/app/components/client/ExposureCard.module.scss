@@ -23,7 +23,9 @@
 
     .chevron {
       flex-shrink: 0;
-      all: unset;
+      background-color: transparent;
+      border-style: none;
+      padding: 0;
       cursor: pointer;
       color: rgba($color-purple-70, 0.7);
       height: 20px; //height of down chevron
@@ -97,6 +99,7 @@
     overflow: hidden;
     padding: 0 $layout-lg;
     height: 0;
+    display: none;
 
     a,
     span {
@@ -113,6 +116,7 @@
       overflow: auto;
       height: auto;
       padding: $spacing-lg;
+      display: block;
     }
 
     .exposedInfoContainer {
@@ -125,6 +129,10 @@
         display: flex;
         flex-direction: column;
         gap: $spacing-md;
+
+        .dataClassesList {
+          align-items: start;
+        }
 
         @media screen and (min-width: $screen-lg) {
           flex: 1 1 0;
@@ -191,10 +199,6 @@
               color: $color-purple-60;
               display: flex;
               justify-content: flex-start;
-
-              .secondaryFill {
-                color: $color-red-20;
-              }
             }
           }
 
@@ -202,6 +206,16 @@
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
+
+            .emailsList {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+
+              li {
+                list-style-type: none;
+              }
+            }
           }
         }
       }
