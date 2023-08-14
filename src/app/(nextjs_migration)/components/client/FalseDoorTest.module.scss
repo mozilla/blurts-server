@@ -27,6 +27,11 @@
     align-self: flex-start;
     margin-left: auto;
     color: $color-grey-40;
+
+    &:focus {
+      border: 1px solid $color-informational-active;
+      outline: $border-focus-width solid $color-informational-focus;
+    }
   }
 
   .content {
@@ -71,6 +76,10 @@
       color: $color-white;
       border-radius: $border-radius-xs;
       cursor: pointer;
+
+      &:focus {
+        outline: $border-focus-width solid $color-blue-30;
+      }
 
       @media screen and (min-width: $screen-lg) {
         margin-left: auto;
