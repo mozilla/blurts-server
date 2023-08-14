@@ -25,6 +25,7 @@ export interface GetLatestOnerepScanResult {
   created_at: number;
   updated_at: number;
   onerep_scan_results: { data: ScanResult[] } | null;
+  onerep_scan_reason: string;
 }
 
 async function getLatestOnerepScan(
@@ -36,7 +37,8 @@ async function getLatestOnerepScan(
         "onerep_scan_id",
         "created_at",
         "updated_at",
-        "onerep_scan_results"
+        "onerep_scan_results",
+        "onerep_scan_reason"
       )
       .where("onerep_profile_id", onerepProfileId)
       .orderBy("created_at", "desc")
@@ -46,6 +48,7 @@ async function getLatestOnerepScan(
     created_at: number;
     updated_at: number;
     onerep_scan_results: { data: ScanResult[] };
+    onerep_scan_reason: "manual" | "initial" | "monitoring";
   }>;
 }
 
@@ -61,10 +64,14 @@ async function setOnerepProfileId(
   });
 }
 
-async function setOnerepScan(onerepProfileId: number, onerepScanId: number) {
+async function setOnerepManualScan(
+  onerepProfileId: number,
+  onerepScanId: number
+) {
   await knex("onerep_scans").insert({
     onerep_profile_id: onerepProfileId,
     onerep_scan_id: onerepScanId,
+    onerep_scan_reason: "manual",
     created_at: knex.fn.now(),
   });
 }
@@ -72,15 +79,28 @@ async function setOnerepScan(onerepProfileId: number, onerepScanId: number) {
 async function setOnerepScanResults(
   onerepProfileId: number,
   onerepScanId: number,
-  onerepScanResults: object
+  onerepScanResults: object,
+  onerepScanReason: "manual" | "initial" | "monitoring"
 ) {
-  await knex("onerep_scans")
-    .where("onerep_profile_id", onerepProfileId)
-    .andWhere("onerep_scan_id", onerepScanId)
-    .update({
+  if (onerepScanReason === "manual") {
+    // Manual scans update an existing row.
+    await knex("onerep_scans")
+      .where("onerep_profile_id", onerepProfileId)
+      .andWhere("onerep_scan_id", onerepScanId)
+      .update({
+        onerep_scan_results: onerepScanResults,
+        updated_at: knex.fn.now(),
+      });
+  } else {
+    // Initial and Monitoring scans always create a new row.
+    await knex("onerep_scans").insert({
+      onerep_profile_id: onerepProfileId,
+      onerep_scan_id: onerepScanId,
       onerep_scan_results: onerepScanResults,
-      updated_at: knex.fn.now(),
+      onerep_scan_reason: onerepScanReason,
+      created_at: knex.fn.now(),
     });
+  }
 }
 
 async function getScansCount(startDate: string, endDate: string) {
@@ -93,7 +113,7 @@ export {
   getLatestOnerepScan,
   getOnerepScanResults,
   setOnerepProfileId,
-  setOnerepScan,
+  setOnerepManualScan,
   setOnerepScanResults,
   getScansCount,
 };

@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
 import { redirect } from "next/navigation";
 import {
-  isEligible,
+  isEligibleForFreeScan,
   ONEREP_DATA_BROKER_COUNT,
 } from "../../../../../functions/server/onerep";
 import { View } from "./View";
@@ -18,7 +18,7 @@ export default async function Onboarding() {
     return <SignInButton autoSignIn={true} />;
   }
 
-  const userIsEligible = await isEligible();
+  const userIsEligible = await isEligibleForFreeScan();
   if (!userIsEligible) {
     return redirect("/");
   }

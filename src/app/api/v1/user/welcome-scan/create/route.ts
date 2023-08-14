@@ -9,7 +9,7 @@ import { NextRequest, NextResponse } from "next/server";
 import {
   createProfile,
   createScan,
-  isEligible,
+  isEligibleForFreeScan,
 } from "../../../../../functions/server/onerep";
 import type { ProfileData } from "../../../../../functions/server/onerep";
 import { meetsAgeRequirement } from "../../../../../functions/universal/user";
@@ -17,7 +17,7 @@ import AppConstants from "../../../../../../appConstants";
 import { getSubscriberByEmail } from "../../../../../../db/tables/subscribers";
 import {
   setOnerepProfileId,
-  setOnerepScan,
+  setOnerepManualScan,
 } from "../../../../../../db/tables/onerep_scans";
 import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
@@ -40,7 +40,7 @@ export async function POST(
 ): Promise<NextResponse<WelcomeScanBody | unknown>> {
   const session = await getServerSession(authOptions);
 
-  const eligible = await isEligible();
+  const eligible = await isEligibleForFreeScan();
   if (!eligible) {
     throw new Error("User is not eligible for feature");
   }
@@ -83,7 +83,7 @@ export async function POST(
         // Start exposure scan
         const scan = await createScan(profileId);
         const scanId = scan.id;
-        await setOnerepScan(profileId, scanId);
+        await setOnerepManualScan(profileId, scanId);
 
         return NextResponse.json({ success: true }, { status: 200 });
       }
