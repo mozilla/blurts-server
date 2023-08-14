@@ -943,7 +943,7 @@ floating-banner-dismiss-button-label = No thanks
 
 ## False door test
 
-## Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
 
 false-door-test-content-part-one = No one should be able to buy your personal information.
 false-door-test-content-part-two = Automatically remove data from sites trying to sell it.
