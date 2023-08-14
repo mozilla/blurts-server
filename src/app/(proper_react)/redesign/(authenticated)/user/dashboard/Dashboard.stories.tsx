@@ -5,12 +5,15 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
 import { View as DashboardEl } from "./View";
-import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
 import { ScanResult } from "../../../../../functions/server/onerep";
 import { Shell } from "../../../Shell";
 import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
-import { createRandomScan } from "../../../../../../apiMocks/mockData";
+import {
+  createRandomScan,
+  createRandomBreach,
+} from "../../../../../../apiMocks/mockData";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
+import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 
 const meta: Meta<typeof DashboardEl> = {
   title: "Pages/Dashboard",
@@ -19,92 +22,50 @@ const meta: Meta<typeof DashboardEl> = {
 export default meta;
 type Story = StoryObj<typeof DashboardEl>;
 
-const BreachMockItem1: HibpLikeDbBreach = {
-  AddedDate: new Date("2018-11-07T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: [],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2011-12-15T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Twitter",
-};
+const BreachMockItem1: SubscriberBreach = createRandomBreach({
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+    { "phone-numbers": 1 },
+    { passwords: 1 },
+  ],
+});
 
-const BreachMockItem2: HibpLikeDbBreach = {
-  AddedDate: new Date("2013-12-07T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: [],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Twitter",
-};
+const BreachMockItem2: SubscriberBreach = createRandomBreach({
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
+});
 
-const BreachMockItem3: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-07-17T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: [],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Twitter",
-};
+const BreachMockItem3: SubscriberBreach = createRandomBreach({
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
+});
 
-const BreachMockItem4: HibpLikeDbBreach = {
-  AddedDate: new Date("2023-06-18T14:48:00.000Z"),
-  BreachDate: "11/09/23",
-  DataClasses: [],
-  Description: "",
-  Domain: "",
-  Id: 0,
-  IsFabricated: false,
-  IsMalware: false,
-  IsRetired: false,
-  IsSensitive: false,
-  IsSpamList: false,
-  IsVerified: false,
-  LogoPath: "",
-  ModifiedDate: new Date("2013-12-07T14:48:00.000Z"),
-  Name: "",
-  PwnCount: 0,
-  Title: "Twitter",
-};
+const BreachMockItem4: SubscriberBreach = createRandomBreach({
+  dataClasses: ["email-addresses", "ip-addresses", "phone-numbers"],
+  addedDate: new Date("2023-06-18T14:48:00.000Z"),
+  dataClassesEffected: [
+    { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
+    { "ip-addresses": 1 },
+  ],
+});
 
 const scannedResultsArraySample: ScanResult[] = Array.from(
   { length: 5 },
   createRandomScan
 );
 
-const breachItemArraySample: HibpLikeDbBreach[] = [
+const breachItemArraySample: SubscriberBreach[] = [
   BreachMockItem1,
   BreachMockItem2,
   BreachMockItem3,
@@ -128,7 +89,7 @@ const dashboardSummaryNoScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 0,
   },
   fixedExposures: {
@@ -141,7 +102,7 @@ const dashboardSummaryNoScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 0,
   },
   sanitizedExposures: [
@@ -158,7 +119,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
   dataBreachFixedNum: 0,
   dataBrokerFixedNum: 0,
   dataBrokerInProgressNum: 0,
-  totalExposures: 305,
+  totalExposures: 1000,
   allExposures: {
     emailAddresses: 0,
     phoneNumbers: 8,
@@ -169,13 +130,13 @@ const dashboardSummaryWithScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 40,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 40,
   },
   sanitizedExposures: [
     { "physical-addresses": 90 },
     { "family-members-names": 29 },
-    { "full-names": 98 },
+    { "full-name": 98 },
     { "phone-numbers": 8 },
     { "other-data-class": 80 },
   ],
@@ -189,7 +150,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
-    pinNumbers: 0,
+    pins: 0,
     securityQuestions: 0,
   },
   fixedSanitizedExposures: [],
@@ -200,29 +161,14 @@ export const DashboardWithScan: Story = {
     <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
         user={{ email: "example@example.com" }}
-        userBreaches={{
-          emailVerifiedCount: 0,
-          emailTotalCount: 0,
-          emailSelectIndex: 0,
-          ssnBreaches: [],
-          phoneBreaches: [],
-          passwordBreaches: [],
-          breachesData: {
-            unverifiedEmails: [],
-            verifiedEmails: [
-              {
-                breaches: breachItemArraySample,
-                email: "test@example.com",
-                id: 0,
-                primary: true,
-                verified: true,
-              },
-            ],
-          },
-        }}
+        userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
       />
     </Shell>
   ),
@@ -233,29 +179,32 @@ export const DashboardWithoutScan: Story = {
     <Shell l10n={getEnL10nSync()} session={null}>
       <DashboardEl
         user={{ email: "example@example.com" }}
-        userBreaches={{
-          emailVerifiedCount: 0,
-          emailTotalCount: 0,
-          emailSelectIndex: 0,
-          ssnBreaches: [],
-          phoneBreaches: [],
-          passwordBreaches: [],
-          breachesData: {
-            unverifiedEmails: [],
-            verifiedEmails: [
-              {
-                breaches: breachItemArraySample,
-                email: "test@example.com",
-                id: 0,
-                primary: true,
-                verified: true,
-              },
-            ],
-          },
-        }}
+        userBreaches={breachItemArraySample}
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardEmptyListState: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        user={{ email: "example@example.com" }}
+        userBreaches={breachItemArraySample}
+        userScannedResults={[]}
+        locale={"en"}
+        bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
       />
     </Shell>
   ),

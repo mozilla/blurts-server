@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { BreachDataTypes } from "../../../../functions/server/breachResolution.ts";
+import { BreachDataTypes } from "../../../../functions/universal/breach.js";
 
 export type BreachResolutionTypes = Record<
   keyof BreachDataTypes,
@@ -50,7 +50,7 @@ export interface BreachStats {
 }
 
 export interface SubscriberBreachResolution {
-  useBreachId: boolean;
+  useBreachId?: boolean;
   [email: string]: {
     [id: number]: {
       isResolved: boolean;

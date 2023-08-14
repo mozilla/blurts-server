@@ -5,7 +5,7 @@
 import { NextResponse, NextRequest } from "next/server";
 import uFuzzy from "@leeoniya/ufuzzy";
 
-import { RelevantLocation } from "../../../../scripts/build/createLocationAutocompleteData/types";
+import { RelevantLocation } from "./types";
 // The location autocomplete data will be created during the build step.
 // @ts-ignore-next-line
 // eslint-disable-next-line import/no-unresolved

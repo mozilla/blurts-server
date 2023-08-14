@@ -13,7 +13,8 @@ import {
 import { StateAbbr } from "../../../utils/states.js";
 import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
 import { authOptions } from "../../api/utils/auth";
-import { getFlag } from "./featureFlags";
+import { isFlagEnabled } from "./featureFlags";
+import { RemovalStatus } from "../universal/scanResult.js";
 const log = mozlog("external.onerep");
 
 export type ProfileData = {
@@ -78,18 +79,6 @@ export type ListScanResultsResponse = {
   meta: OneRepMeta;
   data: ScanResult[];
 };
-export type RemovalStatus =
-  | "new"
-  | "optout_in_progress"
-  | "waiting_for_verification"
-  | "removed";
-export const RemovalStatusMap = {
-  New: "new",
-  OptOutInProgress: "optout_in_progress",
-  WaitingForVerification: "waiting_for_verification",
-  Removed: "removed",
-};
-
 export const ONEREP_DATA_BROKER_COUNT = 190;
 
 async function onerepFetch(
@@ -274,21 +263,7 @@ export async function isEligible() {
     throw new Error("No session");
   }
 
-  const flagName = "FreeBrokerScan";
-  const flag = await getFlag(flagName);
-
-  if (!flag) {
-    console.warn("Flag does not exist:", flagName);
-    return false;
-  }
-
-  if (!flag.isEnabled) {
-    console.warn("Flag is not enabled:", flagName);
-    return false;
-  }
-
-  if (!flag.allowList?.includes(session.user.email)) {
-    console.warn("User is not on allow list for flag:", flagName);
+  if (!(await isFlagEnabled("FreeBrokerScan", session.user))) {
     return false;
   }
 

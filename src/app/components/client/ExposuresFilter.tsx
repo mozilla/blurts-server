@@ -5,7 +5,9 @@
 import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
 import React, {
+  FormEventHandler,
   ReactElement,
+  ReactNode,
   createContext,
   useContext,
   useRef,
@@ -13,10 +15,12 @@ import React, {
 } from "react";
 import Image from "next/image";
 import {
+  AriaDialogProps,
   AriaPopoverProps,
   AriaRadioProps,
   Overlay,
   useButton,
+  useDialog,
   useOverlayTrigger,
   usePopover,
   useRadio,
@@ -24,6 +28,7 @@ import {
 } from "react-aria";
 import {
   OverlayTriggerState,
+  RadioGroupProps,
   RadioGroupState,
   useOverlayTriggerState,
   useRadioGroupState,
@@ -35,16 +40,19 @@ import CalendarIcon from "./assets/calendar.svg";
 import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
 
 export type FilterState = {
-  exposureType: string;
-  dateFound: string;
-  status: string;
+  exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
+  dateFound: "show-all-date-found" | "seven-days" | "thirty-days" | "last-year";
 };
 
 type ExposuresFilterProps = {
+  initialFilterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
 };
 
-export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
+export const ExposuresFilter = ({
+  initialFilterValues,
+  setFilterValues,
+}: ExposuresFilterProps) => {
   const l10n = useL10n();
 
   const [explainerDialog, setExplainerDialog] = useState<ReactElement>();
@@ -82,18 +90,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     dismissButtonRef
   ).buttonProps;
 
-  const emptyFilterState = {
-    exposureType: "",
-    dateFound: "",
-    status: "",
-  };
-
-  const [filterState, setFilterState] = useState<FilterState>(emptyFilterState);
-
-  const checkEmptyFilterState =
-    filterState.exposureType === "" &&
-    filterState.dateFound === "" &&
-    filterState.status === "";
+  const [filterState, setFilterState] =
+    useState<FilterState>(initialFilterValues);
 
   const handleRadioChange = (type: string, value: string) => {
     setFilterState((prevFilterState) => ({
@@ -102,14 +100,17 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
     }));
   };
 
-  const handleSaveButtonClick = () => {
+  const handleSaveButtonClick: FormEventHandler = (event) => {
+    event.preventDefault();
+
     setFilterValues(filterState);
+    filterDialogState.close();
   };
 
   const ExposuresFilterContent = (
-    <>
+    <form onSubmit={handleSaveButtonClick}>
       <div className={styles.exposuresFilterRadioButtons}>
-        <RadioGroup
+        <FilterRadioGroup
           type="exposure-type"
           value={filterState.exposureType}
           onChange={(value) => handleRadioChange("exposureType", value)}
@@ -128,8 +129,8 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
               "dashboard-exposures-filter-exposure-type-data-breach"
             )}
           </Radio>
-        </RadioGroup>
-        <RadioGroup
+        </FilterRadioGroup>
+        <FilterRadioGroup
           value={filterState.dateFound}
           onChange={(value) => handleRadioChange("dateFound", value)}
           type="date-found"
@@ -151,48 +152,25 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           <Radio value="last-year">
             {l10n.getString("dashboard-exposures-filter-date-found-last-year")}
           </Radio>
-        </RadioGroup>
-        <RadioGroup
-          value={filterState.status}
-          onChange={(value) => handleRadioChange("status", value)}
-          type="status"
-          label={l10n.getString("dashboard-exposures-filter-status")}
-        >
-          <Radio value="show-all-status">
-            {l10n.getString("dashboard-exposures-filter-show-all")}
-          </Radio>
-          <Radio value="action-needed">
-            {l10n.getString("dashboard-exposures-filter-status-action-needed")}
-          </Radio>
-          <Radio value="in-progress">
-            {l10n.getString("dashboard-exposures-filter-status-in-progress")}
-          </Radio>
-          <Radio value="fixed">
-            {l10n.getString("dashboard-exposures-filter-status-fixed")}
-          </Radio>
-        </RadioGroup>
+        </FilterRadioGroup>
       </div>
       <div className={styles.filterControls}>
         <Button
-          disabled={checkEmptyFilterState}
+          type="button"
           small
           variant="secondary"
-          onClick={() => setFilterState(emptyFilterState)}
+          onClick={() => setFilterState(initialFilterValues)}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
         </Button>
-        <Button
-          disabled={checkEmptyFilterState}
-          small
-          variant="primary"
-          onClick={handleSaveButtonClick}
-        >
+        <Button type="submit" small variant="primary">
           {l10n.getString("dashboard-exposures-filter-show-results")}
         </Button>
       </div>
       <button
         {...dismissButtonProps}
         ref={dismissButtonRef}
+        type="button"
         className={styles.dismissButton}
         onClick={() => {
           filterDialogState.close();
@@ -205,7 +183,7 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
           height="14"
         />
       </button>
-    </>
+    </form>
   );
 
   return (
@@ -264,9 +242,11 @@ export const ExposuresFilter = ({ setFilterValues }: ExposuresFilterProps) => {
       {explainerDialogState.isOpen && explainerDialog}
       {filterDialogState.isOpen && (
         <Popover state={filterDialogState} triggerRef={filterBtnRef}>
-          <div className={styles.exposuresFilterWrapper} {...overlayProps}>
-            {ExposuresFilterContent}
-          </div>
+          <FilterDialog>
+            <div className={styles.exposuresFilterWrapper} {...overlayProps}>
+              {ExposuresFilterContent}
+            </div>
+          </FilterDialog>
         </Popover>
       )}
     </>
@@ -308,30 +288,31 @@ const Popover = (props: PopoverProps) => {
   );
 };
 
+type FilterDialogProps = AriaDialogProps & {
+  children: ReactNode;
+};
+const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const { dialogProps } = useDialog(otherProps, dialogRef);
+
+  return (
+    <div {...dialogProps} ref={dialogRef}>
+      {children}
+    </div>
+  );
+};
+
 // from https://react-spectrum.adobe.com/react-aria/useRadioGroup.html
-type RadioGroupProps = {
-  label: string;
-  children: React.ReactNode;
-  value: string;
+type FilterRadioGroupProps = RadioGroupProps & {
   type: "exposure-type" | "date-found" | "status";
-  onChange: (value: string) => void;
+  children: ReactNode;
 };
 
-type RadioProps = {
-  children: React.ReactNode;
-};
+const RadioContext = createContext<RadioGroupState | null>(null);
 
-const RadioContext = createContext<{
-  value: string;
-  onChange: (value: string) => void;
-}>({
-  value: "",
-  onChange: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-});
-
-function RadioGroup(props: RadioGroupProps) {
-  const { children, label, type, value, onChange } = props;
-  const state = useRadioGroupState(props);
+function FilterRadioGroup(props: FilterRadioGroupProps) {
+  const { type, children, ...otherProps } = props;
+  const state = useRadioGroupState(otherProps);
   const { radioGroupProps, labelProps } = useRadioGroup(props, state);
 
   return (
@@ -343,43 +324,32 @@ function RadioGroup(props: RadioGroupProps) {
           height="15"
           alt=""
         />
-        {label}
+        {otherProps.label}
       </span>
       <div className={styles.radioButtonsWrapper}>
-        <RadioContext.Provider value={{ value, onChange }}>
-          {children}
-        </RadioContext.Provider>
+        <RadioContext.Provider value={state}>{children}</RadioContext.Provider>
       </div>
     </div>
   );
 }
 
+type RadioProps = {
+  children: React.ReactNode;
+};
+
 function Radio(props: RadioProps & AriaRadioProps) {
   const { children } = props;
-  const state = useContext(RadioContext);
+  const radioGroupState = useContext(RadioContext);
   const ref = useRef<HTMLInputElement>(null);
-  const checked = state ? state.value === props.value : false;
-  const radioGroupState: RadioGroupState = {
-    name: props.value,
-    selectedValue: checked ? props.value : null,
-    isDisabled: false,
-    isReadOnly: false,
-    isRequired: false,
-    validationState: "valid",
-    lastFocusedValue: null,
-    setSelectedValue: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-    setLastFocusedValue: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-  };
-  const handleChange = () => {
-    if (state?.onChange) {
-      state.onChange(props.value);
-    }
-  };
-  const { inputProps } = useRadio(props, radioGroupState, ref);
+  // TypeScript can't verify that this element is always contained inside a
+  // <FilterRadioGroup>, and thus that `radioGroupState` is not null, so we have
+  // to tell it ourselves:
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const { inputProps } = useRadio(props, radioGroupState!, ref);
 
   return (
     <label className={styles.radioItem}>
-      <input {...inputProps} ref={ref} onChange={handleChange} type="radio" />
+      <input {...inputProps} ref={ref} type="radio" />
       {children}
     </label>
   );

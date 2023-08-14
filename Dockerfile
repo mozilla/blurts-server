@@ -16,6 +16,8 @@ COPY --chown=app:app . /app
 RUN npm ci --audit=false && rm -rf ~app/.npm /tmp/*
 
 COPY .env-dist ./.env
+ARG S3_BUCKET
+ENV S3_BUCKET=$S3_BUCKET
 RUN npm run build
 
 ARG SENTRY_RELEASE
