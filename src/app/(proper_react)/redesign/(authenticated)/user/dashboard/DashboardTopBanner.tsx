@@ -13,14 +13,16 @@ import { useRouter } from "next/navigation";
 
 const ONEREP_DATA_BROKER_COUNT = 190;
 
+export type BannerContent =
+  | "LetsFixDataContent"
+  | "DataBrokerScanUpsellContent"
+  | "NoExposuresFoundContent"
+  | "ResumeBreachResolutionContent"
+  | "YourDataIsProtectedContent"
+  | "NoContent";
+
 export type DashboardTopBannerProps = {
-  content:
-    | "LetsFixDataContent"
-    | "DataBrokerScanUpsellContent"
-    | "NoExposuresFoundContent"
-    | "ResumeBreachResolutionContent"
-    | "YourDataIsProtectedContent"
-    | "NoContent";
+  content: BannerContent;
   bannerData: DashboardSummary;
   hasRunScan: boolean;
   type: TabType;
@@ -55,15 +57,18 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           data_broker_total_num: props.bannerData.dataBrokerTotalNum,
         }
       ),
-      cta: {
-        content: l10n.getString("dashboard-top-banner-protect-your-data-cta"),
-        // Ignored for test coverage; to be replaced by a link:
-        /* c8 ignore next 4 */
-        onClick: () => {
-          window.location.href =
-            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers";
-        },
-      },
+      cta: (
+        <Button
+          buttonType="link"
+          href={
+            "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
+          }
+          small
+          variant="primary"
+        >
+          {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
+        </Button>
+      ),
     },
     DataBrokerScanUpsellContent: {
       headline: l10n.getString(
@@ -75,14 +80,21 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
         }
       ),
-      cta: {
-        content: l10n.getString(
-          "dashboard-top-banner-monitor-protects-your-even-more-cta"
-        ),
-        onClick: () => {
-          router.push("/redesign/user/welcome");
-        },
-      },
+      cta: (
+        <Button
+          // Ignored for test coverage; to be implemented:
+          /* c8 ignore next 3 */
+          onClick={() => {
+            router.push("/redesign/user/welcome");
+          }}
+          small
+          variant="primary"
+        >
+          {l10n.getString(
+            "dashboard-top-banner-monitor-protects-your-even-more-cta"
+          )}
+        </Button>
+      ),
     },
     NoExposuresFoundContent: {
       headline: l10n.getString("dashboard-top-banner-no-exposures-found-title"),
@@ -92,14 +104,19 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
         }
       ),
-      cta: {
-        content: l10n.getString("dashboard-top-banner-no-exposures-found-cta"),
-        // Ignored for test coverage; to be implemented:
-        /* c8 ignore next 3 */
-        onClick: () => {
-          // do something
-        },
-      },
+      cta: (
+        <Button
+          // Ignored for test coverage; to be implemented:
+          /* c8 ignore next 3 */
+          onClick={() => {
+            // do something
+          }}
+          small
+          variant="primary"
+        >
+          {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
+        </Button>
+      ),
     },
     ResumeBreachResolutionContent: {
       headline: l10n.getString(
@@ -111,16 +128,19 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           remaining_exposures_total_num: totalExposures - dataBrokerFixedNum,
         }
       ),
-      cta: {
-        content: l10n.getString(
-          "dashboard-top-banner-lets-keep-protecting-cta"
-        ),
-        // Ignored for test coverage; to be implemented:
-        /* c8 ignore next 3 */
-        onClick: () => {
-          // do something
-        },
-      },
+      cta: (
+        <Button
+          // Ignored for test coverage; to be implemented:
+          /* c8 ignore next 3 */
+          onClick={() => {
+            // do something
+          }}
+          small
+          variant="primary"
+        >
+          {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
+        </Button>
+      ),
     },
     YourDataIsProtectedContent: {
       headline: l10n.getString(
@@ -132,16 +152,19 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           starting_exposure_total_num: totalExposures,
         }
       ),
-      cta: {
-        content: l10n.getString(
-          "dashboard-top-banner-your-data-is-protected-cta"
-        ),
-        // Ignored for test coverage; to be implemented:
-        /* c8 ignore next 3 */
-        onClick: () => {
-          props?.ctaCallback?.();
-        },
-      },
+      cta: (
+        <Button
+          // Ignored for test coverage; to be implemented:
+          /* c8 ignore next 3 */
+          onClick={() => {
+            props?.ctaCallback?.();
+          }}
+          small
+          variant="primary"
+        >
+          {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
+        </Button>
+      ),
     },
     NoContent: {
       headline: null,
@@ -161,11 +184,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
               <h3>{content.headline}</h3>
               <p>{content.description}</p>
               {content.cta ? (
-                <span className={styles.cta}>
-                  <Button variant="primary" small onClick={content.cta.onClick}>
-                    {content.cta.content}
-                  </Button>
-                </span>
+                <span className={styles.cta}>{content.cta}</span>
               ) : (
                 ""
               )}

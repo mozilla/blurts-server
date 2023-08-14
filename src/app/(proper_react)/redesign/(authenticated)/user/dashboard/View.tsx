@@ -9,7 +9,7 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
-import { DashboardTopBanner } from "./DashboardTopBanner";
+import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
 import {
   Exposure,
@@ -30,15 +30,16 @@ import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 
 export type Props = {
-  user: Session["user"];
-  userBreaches: SubscriberBreach[];
-  userScannedResults: ScanResult[];
+  countryCode: string;
   bannerData: DashboardSummary;
-  locale: string;
   featureFlagsEnabled: Pick<
     FeatureFlagsEnabled,
     "FreeBrokerScan" | "PremiumBrokerRemoval"
   >;
+  locale: string;
+  user: Session["user"];
+  userBreaches: SubscriberBreach[];
+  userScannedResults: ScanResult[];
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -183,9 +184,17 @@ export const View = (props: Props) => {
     props.featureFlagsEnabled?.FreeBrokerScan &&
     props.featureFlagsEnabled?.PremiumBrokerRemoval;
 
-  const type = isScanResultItemsEmpty
-    ? "DataBrokerScanUpsellContent"
-    : "LetsFixDataContent";
+  let contentType: BannerContent = "NoContent";
+  if (featureFlagsEnabled) {
+    if (isScanResultItemsEmpty) {
+      contentType = "DataBrokerScanUpsellContent";
+    } else if (
+      !noUnresolvedExposures &&
+      props.countryCode.toLocaleLowerCase() === "us"
+    ) {
+      contentType = "LetsFixDataContent";
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -199,7 +208,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          content={featureFlagsEnabled ? type : "NoContent"}
+          content={contentType}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
           ctaCallback={() => {

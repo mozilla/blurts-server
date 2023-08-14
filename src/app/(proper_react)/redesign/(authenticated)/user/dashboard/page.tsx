@@ -54,6 +54,7 @@ export default async function DashboardPage() {
 
   return (
     <View
+      countryCode={countryCode}
       user={session.user}
       userScannedResults={scanResultItems}
       userBreaches={subBreaches}

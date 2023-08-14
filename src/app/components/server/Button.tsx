@@ -2,27 +2,35 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import React, { ComponentProps, HTMLAttributes, ReactNode } from "react";
+import { HTMLAttributes, ReactNode } from "react";
+import Link from "next/link";
 import styles from "./button.module.scss";
 
-export interface Props extends ComponentProps<"button"> {
+export interface Props {
   children: ReactNode;
-  destructive?: boolean;
-  isLoading?: boolean;
-  small?: boolean;
   variant: "primary" | "secondary";
+  buttonType?: "button" | "link";
+  destructive?: boolean;
   disabled?: boolean;
+  href?: string;
+  isLoading?: boolean;
   onClick?: () => void;
+  small?: boolean;
 }
 
-export const Button = (props: Props & HTMLAttributes<HTMLButtonElement>) => {
+export const Button = (
+  props: Props & HTMLAttributes<HTMLButtonElement | HTMLLinkElement>
+) => {
   const {
+    buttonType,
     children,
     destructive,
     disabled,
-    variant,
+    href,
     isLoading,
+    onClick,
     small,
+    variant,
     ...otherProps
   } = props;
 
@@ -43,8 +51,12 @@ export const Button = (props: Props & HTMLAttributes<HTMLButtonElement>) => {
     .filter(Boolean)
     .join(" ");
 
-  return (
-    <button {...otherProps} className={classes}>
+  return buttonType === "link" && href ? (
+    <Link href={href} className={classes}>
+      {children}
+    </Link>
+  ) : (
+    <button {...otherProps} className={classes} onClick={onClick}>
       {children}
     </button>
   );
