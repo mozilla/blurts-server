@@ -36,6 +36,14 @@ it("passes the axe accessibility test suite 3", async () => {
   expect(await axe(container)).toHaveNoViolations();
 });
 
+it("shows the “let’s fix it” banner content", () => {
+  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  render(<ComposedDashboard />);
+
+  const letsFixItBannerContent = screen.getByText("Let’s protect your data");
+  expect(letsFixItBannerContent).toBeInTheDocument();
+});
+
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
