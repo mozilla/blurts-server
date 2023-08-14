@@ -30,7 +30,6 @@ import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 
 export type Props = {
-  countryCode: string;
   bannerData: DashboardSummary;
   featureFlagsEnabled: Pick<
     FeatureFlagsEnabled,
@@ -40,6 +39,7 @@ export type Props = {
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScannedResults: ScanResult[];
+  countryCode?: string;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -190,6 +190,7 @@ export const View = (props: Props) => {
       contentType = "DataBrokerScanUpsellContent";
     } else if (
       !noUnresolvedExposures &&
+      props.countryCode &&
       props.countryCode.toLocaleLowerCase() === "us"
     ) {
       contentType = "LetsFixDataContent";

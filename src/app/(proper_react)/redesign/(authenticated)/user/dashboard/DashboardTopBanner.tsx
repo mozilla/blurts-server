@@ -166,11 +166,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         </Button>
       ),
     },
-    NoContent: {
-      headline: null,
-      description: null,
-      cta: null,
-    },
+    NoContent: null,
   };
 
   const content = contentData[props.content];
