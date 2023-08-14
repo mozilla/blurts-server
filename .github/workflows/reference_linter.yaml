@@ -8,6 +8,7 @@ on:
       - main
   pull_request:
     paths:
+      - '.github/workflows/reference_linter.yaml'
       - 'locales/en/**.ftl'
       - 'locales-pending/*.ftl'
     branches:
