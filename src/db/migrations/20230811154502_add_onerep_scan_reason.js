@@ -14,6 +14,6 @@ export function up (knex) {
 
 export function down (knex) {
   return knex.schema.table('onerep_scans', (table) => {
-    table.string('onerep_scan_reason')
+    table.dropColumn('onerep_scan_reason')
   })
 }
