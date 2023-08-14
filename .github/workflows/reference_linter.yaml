@@ -2,18 +2,18 @@ name: Lint Reference Files
 on:
   push:
     paths:
+      - '.github/workflows/reference_linter.yaml'
       - 'locales/en/**.ftl'
-      - 'pendingTranslations.ftl'
+      - 'locales-pending/*.ftl'
     branches:
       - main
-      - localization
   pull_request:
     paths:
+      - '.github/workflows/reference_linter.yaml'
       - 'locales/en/**.ftl'
-      - 'pendingTranslations.ftl'
+      - 'locales-pending/*.ftl'
     branches:
       - main
-      - localization
   workflow_dispatch:
 jobs:
   linter:
