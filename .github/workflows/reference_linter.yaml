@@ -2,6 +2,7 @@ name: Lint Reference Files
 on:
   push:
     paths:
+      - '.github/workflows/reference_linter.yaml'
       - 'locales/en/**.ftl'
       - 'locales-pending/*.ftl'
     branches:
