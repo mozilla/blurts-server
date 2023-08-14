@@ -174,10 +174,12 @@ export const ExposuresFilter = ({
       <button
         {...dismissButtonProps}
         ref={dismissButtonRef}
+        type="button"
         className={styles.dismissButton}
         onClick={() => {
+          setFilterState(filterValues);
+          setFilterValues(filterValues);
           filterDialogState.close();
-          setFilterState(filterState);
         }}
       >
         <CloseBtn
@@ -192,6 +194,7 @@ export const ExposuresFilter = ({
   return (
     <>
       <div className={styles.filterHeaderWrapper}>
+        <pre>{JSON.stringify(filterValues, null, 2)}</pre>
         <ul className={styles.filterHeaderList}>
           <li className={styles.exposureImageWrapper}>
             <button

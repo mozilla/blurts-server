@@ -348,6 +348,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
             variant="secondary"
             onClick={() => onGoBack()}
             className={styles.startButton}
+            type="button"
           >
             {l10n.getString("onboarding-steps-enter-info-back")}
           </Button>
