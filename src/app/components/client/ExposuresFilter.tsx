@@ -46,11 +46,13 @@ export type FilterState = {
 
 type ExposuresFilterProps = {
   initialFilterValues: FilterState;
+  filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
 };
 
 export const ExposuresFilter = ({
   initialFilterValues,
+  filterValues,
   setFilterValues,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
@@ -90,8 +92,7 @@ export const ExposuresFilter = ({
     dismissButtonRef
   ).buttonProps;
 
-  const [filterState, setFilterState] =
-    useState<FilterState>(initialFilterValues);
+  const [filterState, setFilterState] = useState<FilterState>(filterValues);
 
   const handleRadioChange = (type: string, value: string) => {
     setFilterState((prevFilterState) => ({
@@ -159,7 +160,10 @@ export const ExposuresFilter = ({
           type="button"
           small
           variant="secondary"
-          onClick={() => setFilterState(initialFilterValues)}
+          onClick={() => {
+            setFilterState(initialFilterValues);
+            setFilterValues(filterState);
+          }}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
         </Button>
@@ -170,7 +174,6 @@ export const ExposuresFilter = ({
       <button
         {...dismissButtonProps}
         ref={dismissButtonRef}
-        type="button"
         className={styles.dismissButton}
         onClick={() => {
           filterDialogState.close();
