@@ -7,8 +7,9 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 2;
-  padding-inline: $spacing-lg;
+  // Overlap all regular content on the site with a z-index,
+  // except for ModalOverlay which, at the time of writing, has a z-index of 2
+  z-index: 1;
   padding-block: $spacing-md;
   width: 100%;
   align-items: center;
