@@ -22,17 +22,28 @@ type HighRiskBreachLayoutProps = {
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
   //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
-  const exposedData = (() => {
-    if (props.breachData && props.typeOfBreach === "ssnBreaches")
-      return props.breachData.highRisk.ssnBreaches as SubscriberBreach[];
-    if (props.breachData && props.typeOfBreach === "creditCard")
-      return props.breachData.highRisk.creditCardBreaches as SubscriberBreach[];
-    if (props.breachData && props.typeOfBreach === "bankAccount")
-      return props.breachData.highRisk.bankBreaches as SubscriberBreach[];
-    if (props.breachData && props.typeOfBreach === "PIN")
-      return props.breachData.highRisk.pinBreaches as SubscriberBreach[];
-    return [];
-  })();
+  const highRiskDataBreaches = props.breachData.highRisk;
+
+  let exposedData: SubscriberBreach[] = [];
+
+  if (props.breachData) {
+    switch (props.typeOfBreach) {
+      case "ssnBreaches":
+        exposedData = highRiskDataBreaches.ssnBreaches;
+        break;
+      case "creditCard":
+        exposedData = highRiskDataBreaches.creditCardBreaches;
+        break;
+      case "bankAccount":
+        exposedData = highRiskDataBreaches.bankBreaches;
+        break;
+      case "PIN":
+        exposedData = highRiskDataBreaches.pinBreaches;
+        break;
+      default:
+        break;
+    }
+  }
 
   // TODO: Make locale location-sensitive in the future
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
@@ -41,7 +52,10 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
   });
 
   const listOfBreaches = exposedData
-    .map((item) => `${item.name} on ${item.addedDate}`)
+    .map(
+      (item: SubscriberBreach) =>
+        `${item.name} on ${dateFormatter.format(new Date(item.addedDate))}`
+    )
     .join(", ");
 
   let title, secondaryDescription, recommendationSteps, breachIllustration;
