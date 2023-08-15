@@ -2,11 +2,11 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { HTMLAttributes, ReactNode } from "react";
+import { ComponentProps, HTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
 import styles from "./button.module.scss";
 
-export interface Props {
+export interface Props extends ComponentProps<"button"> {
   children: ReactNode;
   variant: "primary" | "secondary";
   buttonType?: "button" | "link";
