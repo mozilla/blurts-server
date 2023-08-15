@@ -20,6 +20,9 @@ type HandleFalseDoorTestProps = {
   link: string;
 };
 
+// Ignoring full coverage here because we'll be creating a custom cookies hook
+// TODO: MNTOR-2043
+/* c8 ignore start */
 export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
   const [cookies, setCookie] = useCookies(["falseDoorDismissed"]);
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
@@ -55,6 +58,7 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
     </>
   );
 };
+/* c8 ignore stop */
 
 type FalseDoorTestProps = {
   onDismiss?: () => void;
