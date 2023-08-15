@@ -92,7 +92,6 @@ const dashboardSummaryNoScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
-    bankAccountNumbers: 0,
   },
   fixedExposures: {
     emailAddresses: 0,
@@ -106,7 +105,6 @@ const dashboardSummaryNoScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
-    bankAccountNumbers: 0,
   },
   sanitizedExposures: [
     { "email-addresses": 30 },
@@ -135,7 +133,6 @@ const dashboardSummaryWithScan: DashboardSummary = {
     creditCardNumbers: 40,
     pins: 0,
     securityQuestions: 40,
-    bankAccountNumbers: 20,
   },
   sanitizedExposures: [
     { "physical-addresses": 90 },
@@ -156,7 +153,6 @@ const dashboardSummaryWithScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
-    bankAccountNumbers: 20,
   },
   fixedSanitizedExposures: [],
 };
@@ -170,7 +166,11 @@ export const DashboardWithScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+<<<<<<< HEAD
         user={mockSession.user}
+=======
+        user={{ email: "example@example.com" }}
+>>>>>>> f15953466 (rebase error)
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
         isEligibleForFreeScan={false}
@@ -250,7 +250,11 @@ export const DashboardEmptyListState: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
+<<<<<<< HEAD
         user={mockSession.user}
+=======
+        user={{ email: "example@example.com" }}
+>>>>>>> f15953466 (rebase error)
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
         isEligibleForFreeScan={true}

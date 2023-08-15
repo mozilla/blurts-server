@@ -9,19 +9,11 @@ import {
   RemovalStatusMap,
 } from "../app/functions/universal/scanResult";
 import { StateAbbr } from "../utils/states";
-<<<<<<< HEAD
 import { BreachDataTypes } from "../app/functions/universal/breach";
 import {
   DataClassEffected,
   SubscriberBreach,
 } from "../utils/subscriberBreaches";
-=======
-import type { HibpLikeDbBreach } from "../utils/hibp";
-import {
-  BreachDataTypes,
-  HighRiskDataBreachTypes,
-} from "../app/functions/universal/breach";
->>>>>>> a17d27be3 (Refactor getUserBreaches func to export process func)
 
 // Setting this to a constant value produces the same result when the same methods
 // with the same version of faker are called.
