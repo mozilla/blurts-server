@@ -3,15 +3,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { FalseDoorTest } from "./FalseDoorTest";
+import { FalseDoorBanner } from "./FalseDoorBanner";
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
-const meta: Meta<typeof FalseDoorTest> = {
+const meta: Meta<typeof FalseDoorBanner> = {
   title: "False Door Banner",
-  component: FalseDoorTest,
+  component: FalseDoorBanner,
 };
 export default meta;
-type Story = StoryObj<typeof FalseDoorTest>;
+type Story = StoryObj<typeof FalseDoorBanner>;
 
 export const FalseDoorBannerDashboard: Story = {
   args: {

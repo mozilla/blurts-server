@@ -49,7 +49,7 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
   return (
     <>
       {shouldShowFalseDoor && (
-        <FalseDoorTest
+        <FalseDoorBanner
           checkIsOnDashboard={isOnDashboard}
           link={waitlistLink}
           onDismiss={handleDismiss}
@@ -65,7 +65,7 @@ type FalseDoorTestProps = {
   checkIsOnDashboard: boolean;
   link: string;
 };
-export const FalseDoorTest = (props: FalseDoorTestProps) => {
+export const FalseDoorBanner = (props: FalseDoorTestProps) => {
   const l10n = useL10n();
 
   const icon = props.checkIsOnDashboard ? ShieldOutlineIcon : ShieldIcon;
