@@ -9,15 +9,17 @@ import {
   deactivateProfile,
   isEligibleForPremium,
 } from "../../../../../../functions/server/onerep";
+import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
 
 export default async function Unsubscribed() {
-  if (!(await isEligibleForPremium())) {
-    throw new Error("Not eligible for premium");
-  }
-
   const session = await getServerSession(authOptions);
   if (!session || !session.user || !session.user.subscriber) {
     throw new Error("No session");
+  }
+
+  if (!(await isEligibleForPremium(session.user, getCountryCode(headers())))) {
+    throw new Error("Not eligible for premium");
   }
 
   const result = await getOnerepProfileId(session.user.subscriber.id);

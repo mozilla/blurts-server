@@ -22,6 +22,8 @@ import {
 import { setProfileDetails } from "../../../../../../db/tables/onerep_profiles";
 import { StateAbbr } from "../../../../../../utils/states";
 import { ISO8601DateString } from "../../../../../../utils/parse";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
 
 export interface WelcomeScanBody {
   success: boolean;
@@ -39,8 +41,14 @@ export async function POST(
   req: NextRequest
 ): Promise<NextResponse<WelcomeScanBody | unknown>> {
   const session = await getServerSession(authOptions);
+  if (!session || !session.user || !session.user.subscriber) {
+    throw new Error("No session");
+  }
 
-  const eligible = await isEligibleForFreeScan();
+  const eligible = await isEligibleForFreeScan(
+    session.user,
+    getCountryCode(headers())
+  );
   if (!eligible) {
     throw new Error("User is not eligible for feature");
   }

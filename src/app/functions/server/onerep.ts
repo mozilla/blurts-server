@@ -2,8 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import { headers } from "next/headers";
+import type { Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
 import mozlog from "../../../utils/log.js";
 import {
@@ -12,10 +11,8 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
-import { authOptions } from "../../api/utils/auth";
 import { isFlagEnabled } from "./featureFlags";
 import { RemovalStatus } from "../universal/scanResult.js";
-import { getCountryCode } from "./getCountryCode";
 const log = mozlog("external.onerep");
 
 export type ProfileData = {
@@ -280,22 +277,23 @@ export async function listScanResults(
   return response.json() as Promise<ListScanResultsResponse>;
 }
 
-export async function isEligibleForFreeScan() {
-  const countryCode = getCountryCode(headers());
+export async function isEligibleForFreeScan(
+  user: Session["user"],
+  countryCode: string
+) {
   if (countryCode !== "us") {
     return false;
   }
 
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber?.id) {
+  if (!user?.subscriber?.id) {
     throw new Error("No session");
   }
 
-  if (!(await isFlagEnabled("FreeBrokerScan", session.user))) {
+  if (!(await isFlagEnabled("FreeBrokerScan", user))) {
     return false;
   }
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const result = await getOnerepProfileId(user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScan(profileId);
 
@@ -307,8 +305,10 @@ export async function isEligibleForFreeScan() {
   return true;
 }
 
-export async function isEligibleForPremium() {
-  const countryCode = getCountryCode(headers());
+export async function isEligibleForPremium(
+  user: Session["user"],
+  countryCode: string
+) {
   if (countryCode !== "us") {
     return false;
   }
@@ -316,12 +316,12 @@ export async function isEligibleForPremium() {
   if (countryCode !== "us") {
     return false;
   }
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber?.id) {
+
+  if (!user?.subscriber?.id) {
     throw new Error("No session");
   }
 
-  if (!(await isFlagEnabled("PremiumBrokerRemoval", session.user))) {
+  if (!(await isFlagEnabled("PremiumBrokerRemoval", user))) {
     return false;
   }
 

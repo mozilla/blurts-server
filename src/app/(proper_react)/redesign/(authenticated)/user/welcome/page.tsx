@@ -11,14 +11,20 @@ import {
 } from "../../../../../functions/server/onerep";
 import { View } from "./View";
 import { getAllBreachesCount } from "../../../../../../db/tables/breaches";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { authOptions } from "../../../../../api/utils/auth";
 
 export default async function Onboarding() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (!session) {
     return <SignInButton autoSignIn={true} />;
   }
 
-  const userIsEligible = await isEligibleForFreeScan();
+  const userIsEligible = await isEligibleForFreeScan(
+    session.user,
+    getCountryCode(headers())
+  );
   if (!userIsEligible) {
     return redirect("/");
   }
