@@ -7,7 +7,6 @@
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "../dataBrokerProfiles.module.scss";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
-import { getHighRiskBreachLink } from "../../../../../../../../functions/universal/highRiskBreachLink";
 import { UserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -98,10 +97,7 @@ export const ManualRemoveView = (props: ManualRemoveViewProps) => {
         </Link>
         <Link
           className={`${buttonStyles.button} ${buttonStyles.secondary}`}
-          href={getHighRiskBreachLink({
-            breaches: props.breaches,
-            pathname: pathname,
-          })}
+          href="/" // TODO: MNTOR-1700 Add routing logic here
         >
           {l10n.getString(
             "fix-flow-data-broker-profiles-manual-remove-button-skip"
