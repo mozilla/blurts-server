@@ -15,7 +15,11 @@ import { useL10n } from "../../../hooks/l10n";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export const HandleFalseDoorTest = () => {
+type HandleFalseDoorTestProps = {
+  link: string;
+};
+
+export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
   const [cookies, setCookie] = useCookies(["falseDoorDismissed"]);
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
   const pathname = usePathname();
@@ -34,6 +38,7 @@ export const HandleFalseDoorTest = () => {
       {shouldShowFalseDoor && (
         <FalseDoorTest
           checkIsOnDashboard={isOnDashboard}
+          link={props.link}
           onDismiss={handleDismiss}
         />
       )}
@@ -44,11 +49,10 @@ export const HandleFalseDoorTest = () => {
 type FalseDoorTestProps = {
   onDismiss?: () => void;
   checkIsOnDashboard: boolean;
+  link: string;
 };
 export const FalseDoorTest = (props: FalseDoorTestProps) => {
   const l10n = useL10n();
-  const waitlistLink =
-    "https://www.mozilla.org/en-US/newsletter/monitor_waitlist";
 
   const icon = props.checkIsOnDashboard ? ShieldOutlineIcon : ShieldIcon;
 
@@ -72,7 +76,7 @@ export const FalseDoorTest = (props: FalseDoorTestProps) => {
         <Link
           className={styles.cta}
           target="_blank"
-          href={waitlistLink}
+          href={props.link}
           onClick={props.onDismiss}
         >
           {l10n.getString("false-door-test-cta")}

@@ -10,6 +10,7 @@ import { HandleFalseDoorTest } from "./components/client/FalseDoorTest";
 import { isFlagEnabled } from "../functions/server/featureFlags";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { headers } from "next/headers";
+import AppConstants from "../../appConstants";
 
 export default async function MigrationLayout({
   children,
@@ -20,6 +21,7 @@ export default async function MigrationLayout({
   const l10nBundles = getL10nBundles();
   const countryCode = getCountryCode(headersList);
   const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
+  const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
@@ -34,8 +36,8 @@ export default async function MigrationLayout({
       />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}
-      {falseDoorFlag && countryCode.toLowerCase() === "us" && (
-        <HandleFalseDoorTest />
+      {falseDoorFlag && waitlistLink && countryCode.toLowerCase() === "us" && (
+        <HandleFalseDoorTest link={waitlistLink} />
       )}
     </L10nProvider>
   );
