@@ -7,7 +7,7 @@
 import Image from "next/image";
 import ShieldIcon from "./assets/shield-icon.svg";
 import ShieldOutlineIcon from "./assets/shield-outline-icon.svg";
-import styles from "./FalseDoorTest.module.scss";
+import styles from "./FalseDoorBanner.module.scss";
 import { CloseBtn } from "../../../components/server/Icons";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
@@ -16,14 +16,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { appendUtmParams } from "../../../../utils/utmParams";
 
-type HandleFalseDoorTestProps = {
+type HandleFalseDoorBanner = {
   link: string;
 };
 
 // Ignoring full coverage here because we'll be creating a custom cookies hook
 // TODO: MNTOR-2043
 /* c8 ignore start */
-export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
+export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
   const [cookies, setCookie] = useCookies(["falseDoorDismissed"]);
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
   const pathname = usePathname();
@@ -60,12 +60,12 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
 };
 /* c8 ignore stop */
 
-type FalseDoorTestProps = {
+type FalseDoorBanner = {
   onDismiss?: () => void;
   checkIsOnDashboard: boolean;
   link: string;
 };
-export const FalseDoorBanner = (props: FalseDoorTestProps) => {
+export const FalseDoorBanner = (props: FalseDoorBanner) => {
   const l10n = useL10n();
 
   const icon = props.checkIsOnDashboard ? ShieldOutlineIcon : ShieldIcon;

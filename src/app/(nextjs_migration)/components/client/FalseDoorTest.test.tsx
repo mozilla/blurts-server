@@ -8,7 +8,7 @@ import { composeStory } from "@storybook/react";
 import Meta, {
   FalseDoorBannerDashboard,
   FalseDoorBannerDefault,
-} from "./FalseDoorTest.stories";
+} from "./FalseDoorBanner.stories";
 
 it("shows false door test variant on dashboard", () => {
   const ComposedFalseDoorBanner = composeStory(FalseDoorBannerDashboard, Meta);
