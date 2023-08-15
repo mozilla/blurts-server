@@ -21,9 +21,7 @@ type HighRiskBreachLayoutProps = {
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
-  //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
   const highRiskDataBreaches = props.breachData.highRisk;
-
   let exposedData: SubscriberBreach[] = [];
 
   if (props.breachData) {
