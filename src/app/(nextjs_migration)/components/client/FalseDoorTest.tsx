@@ -14,6 +14,7 @@ import { useCookies } from "react-cookie";
 import { useL10n } from "../../../hooks/l10n";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { appendUtmParams } from "../../../../utils/utmParams";
 
 type HandleFalseDoorTestProps = {
   link: string;
@@ -24,6 +25,15 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
   const pathname = usePathname();
   const isOnDashboard = pathname === "/user/breaches";
+
+  const waitlistLink = appendUtmParams({
+    linkUrl: props.link,
+    utmParams: {
+      utm_source: "monitor",
+      utm_medium: "monitor-product",
+      utm_content: `banner-phase-1-us_${pathname}`,
+    },
+  });
 
   const handleDismiss = () => {
     setCookie("falseDoorDismissed", "true", { path: "/" });
@@ -38,7 +48,7 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorTestProps) => {
       {shouldShowFalseDoor && (
         <FalseDoorTest
           checkIsOnDashboard={isOnDashboard}
-          link={props.link}
+          link={waitlistLink}
           onDismiss={handleDismiss}
         />
       )}
