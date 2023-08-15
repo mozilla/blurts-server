@@ -4,12 +4,12 @@
 
 // "use client";
 
-import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import Link from "next/link";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 
 type Props = {
-  breaches: UserBreaches;
+  breaches: GuidedExperienceBreaches;
 };
 export const View = (props: Props) => {
   return (

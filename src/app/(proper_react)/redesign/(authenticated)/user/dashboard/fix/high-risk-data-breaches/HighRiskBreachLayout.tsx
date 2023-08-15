@@ -10,32 +10,27 @@ import BankAccountIllustration from "../images/high-risk-data-breach-bank-accoun
 import pinIllustration from "../images/high-risk-data-breach-pin.svg";
 import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
 import Image from "next/image";
-import { UserBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { Button } from "../../../../../../../components/server/Button";
 import Link from "next/link";
-import { useState } from "react";
-import { getHighRiskBreachLink } from "../../../../../../../functions/universal/highRiskBreachLink";
-import { usePathname } from "next/navigation";
+import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
-  breachData: UserBreaches; //TODO: Remove conditional when other high-risk data categories are available on the BE
+  breachData: GuidedExperienceBreaches;
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
-  const pathname = usePathname();
-
-  const [isBreachResolved, setIsBreachResolved] = useState(false);
   //TODO: Build out other high-risk data breach types - Remaining credit card, pin, bank account.
   const exposedData = (() => {
     if (props.breachData && props.typeOfBreach === "ssnBreaches")
-      return props.breachData.ssnBreaches;
+      return props.breachData.highRisk.ssnBreaches as SubscriberBreach[];
     if (props.breachData && props.typeOfBreach === "creditCard")
-      return props.breachData.creditCardNumberBreaches;
+      return props.breachData.highRisk.creditCardBreaches as SubscriberBreach[];
     if (props.breachData && props.typeOfBreach === "bankAccount")
-      return props.breachData.bankAccountBreaches;
+      return props.breachData.highRisk.bankBreaches as SubscriberBreach[];
     if (props.breachData && props.typeOfBreach === "PIN")
-      return props.breachData.pinBreaches;
+      return props.breachData.highRisk.pinBreaches as SubscriberBreach[];
     return [];
   })();
 
@@ -46,7 +41,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
   });
 
   const listOfBreaches = exposedData
-    .map((item) => `${item.Name} on ${dateFormatter.format(item.AddedDate)}`)
+    .map((item) => `${item.name} on ${item.addedDate}`)
     .join(", ");
 
   let title, secondaryDescription, recommendationSteps, breachIllustration;
@@ -125,10 +120,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       break;
   }
 
-  const handleMarkedAsFixed = (val: boolean) => {
-    setIsBreachResolved(val);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.breachContentWrapper}>
@@ -148,16 +139,14 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
             variant="primary"
             small
             onClick={() => {
-              handleMarkedAsFixed;
+              // MNTOR-1700 Add routing logic here
             }}
           >
             Mark as fixed
           </Button>
           <Link
-            href={getHighRiskBreachLink({
-              breaches: props.breachData,
-              pathname: pathname,
-            })}
+            // TODO: MNTOR-1700 Add routing logic here
+            href="/"
           >
             Skip for now
           </Link>

@@ -80,18 +80,25 @@ const dashboardSummaryNoScan: DashboardSummary = {
   dataBrokerInProgressNum: 0,
   dataBrokerTotalNum: 0,
   totalExposures: 51,
+  sanitizedExposures: [
+    { "email-addresses": 30 },
+    { "phone-numbers": 19 },
+    { "social-security-numbers": 2 },
+  ],
+  fixedSanitizedExposures: [],
   allExposures: {
-    emailAddresses: 30,
-    phoneNumbers: 19,
+    emailAddresses: 0,
+    phoneNumbers: 0,
     addresses: 0,
     familyMembers: 0,
     fullNames: 0,
-    socialSecurityNumbers: 2,
+    socialSecurityNumbers: 0,
     ipAddresses: 0,
     passwords: 0,
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
+    bankAccountNumbers: 0,
   },
   fixedExposures: {
     emailAddresses: 0,
@@ -105,13 +112,8 @@ const dashboardSummaryNoScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
+    bankAccountNumbers: 0,
   },
-  sanitizedExposures: [
-    { "email-addresses": 30 },
-    { "phone-numbers": 19 },
-    { "social-security-numbers": 2 },
-  ],
-  fixedSanitizedExposures: [],
 };
 
 const dashboardSummaryWithScan: DashboardSummary = {
@@ -121,19 +123,6 @@ const dashboardSummaryWithScan: DashboardSummary = {
   dataBrokerFixedNum: 0,
   dataBrokerInProgressNum: 0,
   totalExposures: 1000,
-  allExposures: {
-    emailAddresses: 0,
-    phoneNumbers: 8,
-    addresses: 90,
-    familyMembers: 29,
-    fullNames: 98,
-    socialSecurityNumbers: 0,
-    ipAddresses: 0,
-    passwords: 0,
-    creditCardNumbers: 40,
-    pins: 0,
-    securityQuestions: 40,
-  },
   sanitizedExposures: [
     { "physical-addresses": 90 },
     { "family-members-names": 29 },
@@ -141,6 +130,21 @@ const dashboardSummaryWithScan: DashboardSummary = {
     { "phone-numbers": 8 },
     { "other-data-class": 80 },
   ],
+  fixedSanitizedExposures: [],
+  allExposures: {
+    emailAddresses: 0,
+    phoneNumbers: 0,
+    addresses: 0,
+    familyMembers: 0,
+    fullNames: 0,
+    socialSecurityNumbers: 0,
+    ipAddresses: 0,
+    passwords: 0,
+    creditCardNumbers: 0,
+    pins: 0,
+    securityQuestions: 0,
+    bankAccountNumbers: 0,
+  },
   fixedExposures: {
     emailAddresses: 0,
     phoneNumbers: 0,
@@ -153,8 +157,8 @@ const dashboardSummaryWithScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
+    bankAccountNumbers: 0,
   },
-  fixedSanitizedExposures: [],
 };
 
 const mockSession = {

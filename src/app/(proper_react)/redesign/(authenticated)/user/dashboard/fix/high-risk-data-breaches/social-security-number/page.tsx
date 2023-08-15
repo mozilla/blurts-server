@@ -6,18 +6,25 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
-import { getUserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import {
+  getSubscriberBreaches,
+  guidedExperienceBreaches,
+} from "../../../../../../../../functions/server/getUserBreaches";
 
 export default async function SocialSecurityNumberDataBreach() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
-  const breaches = await getUserBreaches({ user: session.user });
+  const breaches = await getSubscriberBreaches(session.user);
+  const guidedExperience = guidedExperienceBreaches(breaches);
 
   return (
     <div>
-      <HighRiskBreachLayout breachData={breaches} typeOfBreach="ssnBreaches" />
+      <HighRiskBreachLayout
+        breachData={guidedExperience}
+        typeOfBreach="ssnBreaches"
+      />
     </div>
   );
 }
