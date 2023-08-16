@@ -38,8 +38,23 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
     },
   });
 
-  const handleDismiss = () => {
+  const handleDismiss = (event?: Event) => {
     setCookie("falseDoorDismissed", "true", { path: "/" });
+
+    console.debug("event.target:", event?.target);
+    if (event && event.target && "id" in event.target) {
+      let action;
+      if (event?.target.id === "close-button") {
+        action = "dismissed";
+      } else {
+        action = "opened";
+      }
+      window.gtag("event", "clicked_false_door", {
+        action,
+        result: "success",
+        page_location: location.href,
+      });
+    }
   };
 
   useEffect(() => {
@@ -88,15 +103,21 @@ export const FalseDoorBanner = (props: FalseDoorBanner) => {
           {content}
         </div>
         <Link
+          id="open-button"
           className={styles.cta}
           target="_blank"
           href={props.link}
+          data-cta-id="false-door"
           onClick={props.onDismiss}
         >
           {l10n.getString("false-door-test-cta")}
         </Link>
       </div>
-      <button className={styles.dismiss} onClick={props.onDismiss}>
+      <button
+        id="close-button"
+        className={styles.dismiss}
+        onClick={props.onDismiss}
+      >
         <CloseBtn
           alt={l10n.getString("false-door-test-popup-close")}
           width="15"
