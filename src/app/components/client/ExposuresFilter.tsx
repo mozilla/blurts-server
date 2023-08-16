@@ -10,24 +10,21 @@ import React, {
   ReactNode,
   createContext,
   useContext,
+  useEffect,
   useRef,
   useState,
 } from "react";
 import Image from "next/image";
 import {
   AriaDialogProps,
-  AriaPopoverProps,
   AriaRadioProps,
-  Overlay,
   useButton,
   useDialog,
   useOverlayTrigger,
-  usePopover,
   useRadio,
   useRadioGroup,
 } from "react-aria";
 import {
-  OverlayTriggerState,
   RadioGroupProps,
   RadioGroupState,
   useOverlayTriggerState,
@@ -38,6 +35,7 @@ import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
 import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
+import { Popover } from "./Popover";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -79,6 +77,7 @@ export const ExposuresFilter = ({
   };
 
   // Filter Dialog
+  const popoverRef = useRef(null);
   const filterDialogState = useOverlayTriggerState({});
   const filterBtnRef = useRef<HTMLButtonElement>(null);
   const { overlayProps } = useOverlayTrigger(
@@ -88,7 +87,13 @@ export const ExposuresFilter = ({
 
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
-    { onPress: () => filterDialogState.close() },
+    {
+      onPress: () => {
+        setFilterState(filterValues);
+        setFilterValues(filterValues);
+        filterDialogState.close();
+      },
+    },
     dismissButtonRef
   ).buttonProps;
 
@@ -162,7 +167,7 @@ export const ExposuresFilter = ({
           variant="secondary"
           onClick={() => {
             setFilterState(initialFilterValues);
-            setFilterValues(filterState);
+            setFilterValues(initialFilterValues);
           }}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
@@ -176,11 +181,6 @@ export const ExposuresFilter = ({
         ref={dismissButtonRef}
         type="button"
         className={styles.dismissButton}
-        onClick={() => {
-          setFilterState(filterValues);
-          setFilterValues(filterValues);
-          filterDialogState.close();
-        }}
       >
         <CloseBtn
           alt={l10n.getString("modal-close-alt")}
@@ -191,10 +191,17 @@ export const ExposuresFilter = ({
     </form>
   );
 
+  // Reset current filter state if selection has not been confirmed.
+  useEffect(() => {
+    const shouldResetFilterState = filterValues !== filterState;
+    if (!filterDialogState.isOpen && shouldResetFilterState) {
+      setFilterState(filterValues);
+    }
+  }, [filterDialogState, filterValues, filterState]);
+
   return (
     <>
       <div className={styles.filterHeaderWrapper}>
-        <pre>{JSON.stringify(filterValues, null, 2)}</pre>
         <ul className={styles.filterHeaderList}>
           <li className={styles.exposureImageWrapper}>
             <button
@@ -247,48 +254,20 @@ export const ExposuresFilter = ({
       </div>
       {explainerDialogState.isOpen && explainerDialog}
       {filterDialogState.isOpen && (
-        <Popover state={filterDialogState} triggerRef={filterBtnRef}>
-          <FilterDialog>
-            <div className={styles.exposuresFilterWrapper} {...overlayProps}>
+        <Popover
+          crossOffset={100}
+          isOpen={filterDialogState.isOpen}
+          offset={10}
+          popoverRef={popoverRef}
+          state={filterDialogState}
+          triggerRef={filterBtnRef}
+        >
+          <FilterDialog {...overlayProps}>
+            <div className={styles.exposuresFilterWrapper} ref={popoverRef}>
               {ExposuresFilterContent}
             </div>
           </FilterDialog>
         </Popover>
-      )}
-    </>
-  );
-};
-
-type PopoverProps = {
-  children: React.ReactNode;
-  state: OverlayTriggerState;
-} & Omit<AriaPopoverProps, "popoverRef">;
-
-const Popover = (props: PopoverProps) => {
-  const popoverRef = useRef<HTMLDivElement>(null);
-  const { popoverProps, underlayProps } = usePopover(
-    {
-      ...props,
-      offset: 10,
-      crossOffset: 100,
-      popoverRef,
-    },
-    props.state
-  );
-
-  return (
-    <>
-      {props.state.isOpen && (
-        <Overlay>
-          <div {...underlayProps} />
-          <div
-            {...popoverProps}
-            ref={popoverRef}
-            className={styles.filterPopOver}
-          >
-            {props.children}
-          </div>
-        </Overlay>
       )}
     </>
   );
@@ -299,10 +278,10 @@ type FilterDialogProps = AriaDialogProps & {
 };
 const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const { dialogProps } = useDialog(otherProps, dialogRef);
+  const { dialogProps } = useDialog({ ...otherProps }, dialogRef);
 
   return (
-    <div {...dialogProps} ref={dialogRef}>
+    <div {...dialogProps} className={styles.filterDialog} ref={dialogRef}>
       {children}
     </div>
   );
