@@ -89,14 +89,16 @@ const FixLayout = (props: FixLayoutProps) => {
   ];
 
   return (
-    <div className={styles.fixWrapper}>
-      <FixNavigation navigationItems={navigationItemsContent} />
-      <NavigationClose />
-      <section className={styles.fixSection}>
-        <NavigationArrowBack />
-        <NavigationArrowNext />
-        {props.children}
-      </section>
+    <div className={styles.fixContainer}>
+      <div className={styles.fixWrapper}>
+        <FixNavigation navigationItems={navigationItemsContent} />
+        <NavigationClose />
+        <section className={styles.fixSection}>
+          <NavigationArrowBack />
+          <NavigationArrowNext />
+          {props.children}
+        </section>
+      </div>
     </div>
   );
 };

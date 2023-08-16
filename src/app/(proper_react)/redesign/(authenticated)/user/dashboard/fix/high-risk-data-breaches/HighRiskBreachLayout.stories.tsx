@@ -25,7 +25,7 @@ type Story = StoryObj<typeof HighRiskDataBreaches>;
 
 export const SocialSecurityNumberBreach: Story = {
   render: () => (
-    <FixLayout navArrowBackVisible={false}>
+    <FixLayout>
       <HighRiskDataBreaches
         breaches={guidedExperienceBreaches(breachesArraySample)}
       />
