@@ -14,6 +14,7 @@ import { GuidedExperienceBreaches } from "../../../../../../../functions/server/
 import { Button } from "../../../../../../../components/server/Button";
 import Link from "next/link";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
+import { ClockIcon } from "../../../../../../../components/server/Icons";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
@@ -162,6 +163,10 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           >
             Skip for now
           </Link>
+        </div>
+        <div className={styles.estimatedTime}>
+          <ClockIcon width="20" height="20" />
+          Your estimated time: 10+ minutes
         </div>
       </div>
       <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
