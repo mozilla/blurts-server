@@ -201,6 +201,7 @@ dashboard-top-banner-monitor-protects-your-even-more-description =
       *[other] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
   }
 dashboard-top-banner-monitor-protects-your-even-more-cta = Get first scan free
+dashboard-top-banner-monitor-protects-your-even-more-learn-more = Learn more
 
 dashboard-top-banner-no-exposures-found-title = No exposures found
 # Variables:
@@ -237,3 +238,4 @@ dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
 dashboard-exposures-area-description = We found your information exposed { $exposures_total_num } times over { $data_breach_total_num } data breaches and { $data_broker_total_num } data broker sites that are selling your personal info.
 dashboard-exposures-all-fixed-label = All fixed here!
+dashboard-exposures-all-fixed-free-scan = Next <free_scan_link>start your free scan</free_scan_link> of { $data_broker_total_num } sites that may be selling your personal info.
