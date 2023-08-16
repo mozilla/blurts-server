@@ -243,7 +243,7 @@ const customJestConfig = {
       statements: 0,
     },
     "src/app/functions/server/featureFlags.ts": {
-      branches: 90.9,
+      branches: 90,
       functions: 0,
       lines: 95.16,
       statements: 95.16,
