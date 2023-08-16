@@ -21,12 +21,6 @@ import stepHighRiskDataBreachesIcon from "./images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "./images/step-counter-security-recommendations.svg";
 
-type Props = {
-  navArrowBackVisible: boolean;
-  children: ReactNode;
-  navigationItems: Array<NavigationItem>;
-};
-
 // TODO:
 // Add logic to protect routes for specific users (premium/not, scan started/not)
 // Question: Can FXA redirect user back to specific URL (for returning upgrade users during fix data broker)
@@ -57,7 +51,11 @@ function NavigationArrowNext() {
   );
 }
 
-const FixLayout = (props: Props) => {
+export type FixLayoutProps = {
+  children: ReactNode;
+};
+
+const FixLayout = (props: FixLayoutProps) => {
   const navigationItemsContent = [
     {
       key: "data-broker-profiles",
