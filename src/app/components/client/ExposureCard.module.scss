@@ -130,6 +130,10 @@
         flex-direction: column;
         gap: $spacing-md;
 
+        .dataClassesList {
+          align-items: start;
+        }
+
         @media screen and (min-width: $screen-lg) {
           flex: 1 1 0;
 
@@ -202,6 +206,16 @@
             padding-inline-start: var(--exposureDetailsIconWidth);
             font: $text-body-xs;
             font-weight: 600;
+
+            .emailsList {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+
+              li {
+                list-style-type: none;
+              }
+            }
           }
         }
       }

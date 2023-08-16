@@ -9,9 +9,8 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
-import { DashboardTopBanner } from "./DashboardTopBanner";
+import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
 import { useL10n } from "../../../../../hooks/l10n";
-import type { UserBreaches } from "../../../../../functions/server/getUserBreaches";
 import {
   Exposure,
   ExposureCard,
@@ -22,25 +21,25 @@ import {
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
 import { ScanResult } from "../../../../../functions/server/onerep";
-import { HibpLikeDbBreach } from "../../../../../../utils/hibp";
-import { BundledVerifiedEmails } from "../../../../../../utils/breaches";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { StatusPillType } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
 import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
+import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 
 export type Props = {
-  user: Session["user"];
-  userBreaches: UserBreaches;
-  userScannedResults: ScanResult[];
   bannerData: DashboardSummary;
-  locale: string;
   featureFlagsEnabled: Pick<
     FeatureFlagsEnabled,
     "FreeBrokerScan" | "PremiumBrokerRemoval"
   >;
+  locale: string;
+  user: Session["user"];
+  userBreaches: SubscriberBreach[];
+  userScannedResults: ScanResult[];
+  countryCode?: string;
 };
 
 export type TabType = "action-needed" | "fixed";
@@ -70,8 +69,8 @@ export const View = (props: Props) => {
     return new Date(isoString);
   };
 
-  const breachesDataArray = props.userBreaches.breachesData.verifiedEmails
-    .map((elem: BundledVerifiedEmails) => elem.breaches)
+  const breachesDataArray = props.userBreaches
+    .map((elem: SubscriberBreach) => elem)
     .flat();
   const scannedResultsDataArray =
     props.userScannedResults.map((elem: ScanResult) => elem) || [];
@@ -82,14 +81,12 @@ export const View = (props: Props) => {
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
-      (a as HibpLikeDbBreach).AddedDate || (a as ScanResult).created_at;
+      (a as SubscriberBreach).addedDate || (a as ScanResult).created_at;
     const dateB =
-      (b as HibpLikeDbBreach).AddedDate || (b as ScanResult).created_at;
+      (b as SubscriberBreach).addedDate || (b as ScanResult).created_at;
 
-    const timestampA =
-      typeof dateA === "object" ? dateA.getTime() : new Date(dateA).getTime();
-    const timestampB =
-      typeof dateB === "object" ? dateB.getTime() : new Date(dateB).getTime();
+    const timestampA = new Date(dateA).getTime();
+    const timestampB = new Date(dateB).getTime();
 
     return timestampB - timestampA;
   });
@@ -106,7 +103,7 @@ export const View = (props: Props) => {
       }
     }
 
-    return exposure.IsResolved ? "fixed" : "needAction";
+    return exposure.isResolved ? "fixed" : "needAction";
   };
 
   const tabSpecificExposures = arraySortedByDate.filter(
@@ -121,20 +118,6 @@ export const View = (props: Props) => {
   const filteredExposures = filterExposures(tabSpecificExposures, filters);
 
   const exposureCardElems = filteredExposures.map((exposure: Exposure) => {
-    let email;
-    // Get the email assosciated with breach
-    if (!isScanResult(exposure)) {
-      props.userBreaches.breachesData.verifiedEmails.forEach(
-        (verifiedEmail) => {
-          if (
-            verifiedEmail.breaches.some((breach) => breach.Id === exposure.Id)
-          ) {
-            email = verifiedEmail.email;
-          }
-        }
-      );
-    }
-
     const status = getExposureStatus(exposure);
 
     return isScanResult(exposure) ? (
@@ -153,16 +136,15 @@ export const View = (props: Props) => {
       </li>
     ) : (
       // Breaches result
-      <li key={`breach-${exposure.Id}`} className={styles.exposureListItem}>
+      <li key={`breach-${exposure.id}`} className={styles.exposureListItem}>
         <ExposureCard
           exposureData={exposure}
-          exposureName={exposure.Title}
-          fromEmail={email}
-          exposureDetailsLink={`/breach-details/${exposure.Name}`}
-          dateFound={exposure.AddedDate}
+          exposureName={exposure.title}
+          exposureDetailsLink={`/breach-details/${exposure.name}`}
+          dateFound={dateObject(exposure.addedDate)}
           statusPillType={status}
           locale={props.locale}
-          color={getRandomLightNebulaColor(exposure.Name)}
+          color={getRandomLightNebulaColor(exposure.name)}
           featureFlagsEnabled={props.featureFlagsEnabled}
         />
       </li>
@@ -202,9 +184,18 @@ export const View = (props: Props) => {
     props.featureFlagsEnabled?.FreeBrokerScan &&
     props.featureFlagsEnabled?.PremiumBrokerRemoval;
 
-  const type = isScanResultItemsEmpty
-    ? "DataBrokerScanUpsellContent"
-    : "LetsFixDataContent";
+  let contentType: BannerContent = "NoContent";
+  if (featureFlagsEnabled) {
+    if (isScanResultItemsEmpty) {
+      contentType = "DataBrokerScanUpsellContent";
+    } else if (
+      !noUnresolvedExposures &&
+      props.countryCode &&
+      props.countryCode.toLocaleLowerCase() === "us"
+    ) {
+      contentType = "LetsFixDataContent";
+    }
+  }
 
   return (
     <div className={styles.wrapper}>
@@ -218,7 +209,7 @@ export const View = (props: Props) => {
       <div className={styles.dashboardContent}>
         <DashboardTopBanner
           bannerData={props.bannerData}
-          content={featureFlagsEnabled ? type : "NoContent"}
+          content={contentType}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
           ctaCallback={() => {

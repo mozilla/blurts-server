@@ -50,7 +50,7 @@ export interface BreachStats {
 }
 
 export interface SubscriberBreachResolution {
-  useBreachId: boolean;
+  useBreachId?: boolean;
   [email: string]: {
     [id: number]: {
       isResolved: boolean;
