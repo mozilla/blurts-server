@@ -21,7 +21,7 @@ import stepHighRiskDataBreachesIcon from "./images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "./images/step-counter-security-recommendations.svg";
 
-export type Props = {
+type Props = {
   navArrowBackVisible: boolean;
   children: ReactNode;
   navigationItems: Array<NavigationItem>;
