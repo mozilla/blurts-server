@@ -9,6 +9,7 @@ import { composeStory } from "@storybook/react";
 import { axe } from "jest-axe";
 import Meta, {
   DashboardWithScan,
+  DashboardWithScanUserFromUs,
   DashboardWithoutScan,
 } from "./Dashboard.stories";
 
@@ -17,16 +18,30 @@ jest.mock("next/navigation", () => ({
   usePathname: jest.fn(),
 }));
 
-it("passes the axe accessibility test suite", async () => {
+it("passes the axe accessibility test suite 1", async () => {
   const ComposedDashboard = composeStory(DashboardWithScan, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
 
-it("passes the axe accessibility test suite", async () => {
+it("passes the axe accessibility test suite 2", async () => {
+  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  const { container } = render(<ComposedDashboard />);
+  expect(await axe(container)).toHaveNoViolations();
+});
+
+it("passes the axe accessibility test suite 3", async () => {
   const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
+});
+
+it("shows the “let’s fix it” banner content", () => {
+  const ComposedDashboard = composeStory(DashboardWithScanUserFromUs, Meta);
+  render(<ComposedDashboard />);
+
+  const letsFixItBannerContent = screen.getByText("Let’s protect your data");
+  expect(letsFixItBannerContent).toBeInTheDocument();
 });
 
 it("switches between tab panels", async () => {
