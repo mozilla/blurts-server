@@ -7,10 +7,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { ReactNode } from "react";
-import {
-  FixNavigation,
-  NavigationItem,
-} from "../../../../../../components/client/FixNavigation";
+import { FixNavigation } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
 import ImageArrowLeft from "./images/icon-arrow-left.svg";
 import ImageArrowRight from "./images/icon-arrow-right.svg";
@@ -20,12 +17,6 @@ import stepDataBrokerProfilesIcon from "./images/step-counter-data-broker-profil
 import stepHighRiskDataBreachesIcon from "./images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "./images/step-counter-security-recommendations.svg";
-
-export type Props = {
-  navArrowBackVisible: boolean;
-  children: ReactNode;
-  navigationItems: Array<NavigationItem>;
-};
 
 // TODO:
 // Add logic to protect routes for specific users (premium/not, scan started/not)
@@ -57,7 +48,11 @@ function NavigationArrowNext() {
   );
 }
 
-const FixLayout = (props: Props) => {
+export type FixLayoutProps = {
+  children: ReactNode;
+};
+
+const FixLayout = (props: FixLayoutProps) => {
   const navigationItemsContent = [
     {
       key: "data-broker-profiles",
