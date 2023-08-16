@@ -60,8 +60,7 @@ const optionalEnvVars = [
   'PORT',
   'RECRUITMENT_BANNER_LINK',
   'RECRUITMENT_BANNER_TEXT',
-  'SENTRY_DSN_LEGACY',
-  'FALSE_DOOR_TEST_LINK_PHASE_ONE'
+  'SENTRY_DSN_LEGACY'
 ]
 
 /** @type {Record<string, string>} */
