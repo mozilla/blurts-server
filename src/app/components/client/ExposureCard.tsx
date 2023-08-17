@@ -272,6 +272,13 @@ export const ExposureCard = (props: ExposureCardProps) => {
       </span>
     );
   }
+
+  const letsFixItBtn = (
+    <span className={styles.fixItBtn}>
+      <Button variant={"primary"}>{l10n.getString("exposure-card-cta")}</Button>
+    </span>
+  );
+
   const exposureCard = (
     <div>
       <div className={styles.exposureCard}>
@@ -408,15 +415,14 @@ export const ExposureCard = (props: ExposureCardProps) => {
                 <ExposureCategoriesListElem />
               </dl>
             </div>
-            {featureFlagsEnabled.PremiumBrokerRemoval ? (
-              <span className={styles.fixItBtn}>
-                <Button variant={"primary"}>
-                  {l10n.getString("exposure-card-cta")}
-                </Button>
-              </span>
-            ) : (
-              ""
-            )}
+            {/* {featureFlagsEnabled.PremiumBrokerRemoval && props.exposureData ? ( */}
+            {(isScanResult(props.exposureData) &&
+              featureFlagsEnabled.PremiumBrokerRemoval &&
+              props.exposureData.status === "new") ||
+            (!isScanResult(props.exposureData) &&
+              !props.exposureData.isResolved)
+              ? letsFixItBtn
+              : null}
           </div>
         </div>
       </div>
