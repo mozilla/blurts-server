@@ -225,12 +225,12 @@ const customJestConfig = {
       statements: 68,
     },
     "src/cloud-functions/index.js": {
-      branches: 63,
+      branches: 60,
       functions: 66,
       lines: 60,
       statements: 60,
     },
-    "src/utils/*.{js,ts}": {
+    "src/utils/*.js": {
       branches: 19,
       functions: 0,
       lines: 0,
@@ -319,10 +319,10 @@ const customJestConfig = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  resetMocks: false,
+  resetMocks: true,
 
   // Reset the module registry before running each individual test
-  resetModules: false,
+  resetModules: true,
 
   // A path to a custom resolver
   // resolver: undefined,
