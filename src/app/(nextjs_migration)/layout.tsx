@@ -21,8 +21,7 @@ export default async function MigrationLayout({
   const l10nBundles = getL10nBundles();
   const countryCode = getCountryCode(headersList);
   const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
-  const waitlistLink =
-    "https://www.mozilla.org/en-US/newsletter/monitor-waitlist/"; // TODO move to environment variable https://mozilla-hub.atlassian.net/browse/MNTOR-2053
+  const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
