@@ -76,7 +76,6 @@
     "pg": "^8.9.0",
     "react": "^18.2.0",
     "react-aria": "^3.26.0",
-    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-stately": "^3.23.0",
     "uuid": "^9.0.0"
@@ -96,8 +95,8 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
-    "@types/adm-zip": "^0.5.0",
     "@types/jest-axe": "^3.5.5",
+    "@types/adm-zip": "^0.5.0",
     "@types/jsonwebtoken": "^9.0.2",
     "@types/jwk-to-pem": "^2.0.1",
     "@types/nodemailer": "^6.4.8",
@@ -126,8 +125,8 @@
     "stylelint": "^15.6.0",
     "stylelint-config-recommended-scss": "^11.0.0",
     "stylelint-scss": "^5.0.0",
-    "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
+    "ts-jest": "^29.1.0",
     "typescript": "^5.0.4"
   }
 }

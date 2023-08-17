@@ -6,23 +6,9 @@ import { ReactNode } from "react";
 import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
 import { getL10nBundles } from "../functions/server/l10n";
-import { HandleFalseDoorTest } from "./components/client/FalseDoorBanner";
-import { isFlagEnabled } from "../functions/server/featureFlags";
-import { getCountryCode } from "../functions/server/getCountryCode";
-import { headers } from "next/headers";
-import AppConstants from "../../appConstants";
 
-export default async function MigrationLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
-  const headersList = headers();
+export default function MigrationLayout({ children }: { children: ReactNode }) {
   const l10nBundles = getL10nBundles();
-  const countryCode = getCountryCode(headersList);
-  const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
-  const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
-
   return (
     <L10nProvider bundleSources={l10nBundles}>
       {/* This script predates the use of React and thus shouldn’t wait for
@@ -36,9 +22,6 @@ export default async function MigrationLayout({
       />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}
-      {falseDoorFlag && waitlistLink && countryCode.toLowerCase() === "us" && (
-        <HandleFalseDoorTest link={waitlistLink} />
-      )}
     </L10nProvider>
   );
 }

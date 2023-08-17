@@ -11,7 +11,6 @@ import { Session } from "next-auth";
 export type FeatureFlagsEnabled = {
   FreeBrokerScan: boolean;
   PremiumBrokerRemoval: boolean;
-  FalseDoorTest: boolean;
 };
 
 export async function isFlagEnabled(
