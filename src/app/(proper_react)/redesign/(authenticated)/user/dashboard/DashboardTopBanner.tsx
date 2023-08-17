@@ -95,7 +95,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         </Button>
       ),
       learnMore: (
-        <a href="/">
+        <a href="https://mozilla.org/products/monitor/how-it-works/">
           {l10n.getString(
             "dashboard-top-banner-monitor-protects-your-even-more-learn-more"
           )}
