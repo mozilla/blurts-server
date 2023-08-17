@@ -37,6 +37,24 @@
       gap: $spacing-md;
       align-items: center;
     }
+
+    .breachItemsWrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $spacing-xs;
+
+      .breachItem {
+        font: $text-body-sm;
+        font-weight: 600;
+        background: $color-grey-10;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: $border-radius-md;
+
+        .date {
+          font-weight: 400;
+        }
+      }
+    }
   }
 
   .estimatedTime {

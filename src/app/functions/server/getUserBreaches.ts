@@ -102,7 +102,7 @@ export async function getSubscriberBreaches(
   return breachesData;
 }
 
-interface GuidedExperienceBreaches {
+export interface GuidedExperienceBreaches {
   highRisk: {
     ssnBreaches: SubscriberBreach[];
     creditCardBreaches: SubscriberBreach[];

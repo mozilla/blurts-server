@@ -50,16 +50,22 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     dateStyle: "short",
   });
 
-  const listOfBreaches = exposedData
-    .map(
-      (item: SubscriberBreach) =>
-        `${item.name} on ${dateFormatter.format(new Date(item.addedDate))}`
-    )
-    .join(", ");
+  const listOfBreaches = exposedData.map((item: SubscriberBreach) => (
+    <div key={item.id} className={styles.breachItem}>
+      {item.name}
+      <span className={styles.date}>{` on ${dateFormatter.format(
+        new Date(item.addedDate)
+      )}`}</span>
+    </div>
+  ));
+
+  const breachList = (
+    <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
+  );
 
   let title, secondaryDescription, recommendationSteps, breachIllustration;
 
-  const primaryDescription = `It appeared in ${exposedData.length} data breaches: ${listOfBreaches}.`;
+  const primaryDescription = `It appeared in ${exposedData.length} data breaches:`;
 
   const CreditCardRecommendationSteps = (
     <ol>
@@ -138,6 +144,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       <div className={styles.breachContentWrapper}>
         <h3>{title}</h3>
         <p>{primaryDescription}</p>
+        {breachList}
         <p>{secondaryDescription}</p>
         <div className={styles.recommendations}>
           <h4>Here’s what to do</h4>
