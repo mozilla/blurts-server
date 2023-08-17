@@ -1,0 +1,51 @@
+@import "../../../tokens";
+
+.wrapper {
+  display: inline-flex;
+  position: relative;
+}
+
+.trigger {
+  border-style: none;
+  color: white;
+  cursor: pointer;
+  height: 42px;
+  overflow: hidden;
+  padding: 0;
+  width: 42px;
+}
+
+.menuList {
+  border-radius: $border-radius-md;
+  box-shadow: $box-shadow-md;
+  list-style-type: none;
+  min-width: $content-xs;
+  padding: $spacing-sm 0;
+  position: relative;
+  right: 0;
+
+  &::before {
+    content: "";
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    top: -6px;
+    right: $spacing-md;
+    transform: rotate(45deg);
+    background-color: white;
+  }
+}
+
+.menuItemWrapper {
+  &:focus {
+    outline: none;
+    background: $color-grey-10;
+  }
+}
+
+.menuItemCta {
+  align-items: center;
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-sm;
+}
