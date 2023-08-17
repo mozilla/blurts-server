@@ -52,9 +52,9 @@ export async function isFlagEnabled(
     return false;
   }
 
-  if (!user) {
+  if (!flag.allowList || !flag.allowList.length) {
     return true;
-  } else if (flag.allowList?.includes(user.email)) {
+  } else if (user && flag.allowList?.includes(user.email)) {
     return true;
   } else {
     console.warn("User is not on the allow list for flag:", flag.name);
