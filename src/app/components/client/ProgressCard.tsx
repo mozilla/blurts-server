@@ -4,10 +4,10 @@
 
 "use client";
 
-import { CSSProperties } from "react";
+import { CSSProperties, useRef } from "react";
 import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
-import { useOverlayTrigger } from "react-aria";
+import { useButton, useOverlayTrigger } from "react-aria";
 import styles from "./ProgressCard.module.scss";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
@@ -107,13 +107,20 @@ export const ProgressCard = (props: Props) => {
     </div>
   );
 
+  const explainerDialogTriggerRef = useRef<HTMLButtonElement>(null);
+  const explainerDialogTriggerProps = useButton(
+    explainerDialogTrigger.triggerProps,
+    explainerDialogTriggerRef
+  ).buttonProps;
+
   return (
     <div className={styles.progressCard}>
       <div className={styles.header}>
         {l10n.getString("progress-card-heres-what-we-fixed-headline")}
         <button
           aria-label={l10n.getString("modal-open-alt")}
-          {...explainerDialogTrigger.triggerProps}
+          ref={explainerDialogTriggerRef}
+          {...explainerDialogTriggerProps}
           onClick={() => explainerDialogState.open()}
         >
           <QuestionMarkCircle alt="" width="15" height="15" />
