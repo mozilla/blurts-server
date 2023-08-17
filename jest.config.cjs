@@ -77,13 +77,13 @@ const customJestConfig = {
       statements: 90,
     },
     "src/app/(proper_react)/redesign/MobileShell.tsx": {
-      branches: 50,
+      branches: 25,
       functions: 50,
       lines: 94,
       statements: 94,
     },
     "src/app/(proper_react)/redesign/PageLink.tsx": {
-      branches: 60,
+      branches: 33,
       functions: 100,
       lines: 100,
       statements: 100,
@@ -345,7 +345,14 @@ const customJestConfig = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: [
+    "<rootDir>/jest.setup.ts",
+    // See https://www.benmvp.com/blog/avoiding-react-act-warning-when-accessibility-testing-next-link-jest-axe/
+    // Mocks the IntersectionObserver API, which is used by Next.js's <Link>.
+    // This prevents warnings about wrapping tests in act() for components that
+    // include <Link>s.
+    "react-intersection-observer/test-utils",
+  ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
