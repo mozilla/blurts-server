@@ -821,3 +821,14 @@ breach-detail-cta-signup = Gwiriwch am dor-data
 floating-banner-text = Rhowch hwb i'ch diogelwch ar-lein gyda newyddion, awgrymiadau a diweddariadau gan { -brand-Mozilla }.
 floating-banner-link-label = Ymuno
 floating-banner-dismiss-button-label = Dim diolch
+
+## False door test
+
+
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+
+false-door-test-content-part-one = Ni ddylai neb allu prynu eich gwybodaeth bersonol.
+false-door-test-content-part-two = Dileu data yn awtomatig o wefannau sy'n ceisio ei werthu.
+false-door-test-content-part-two-dashboard = Auto-dileu data o safleoedd sy'n ceisio ei werthu.
+false-door-test-cta = Cyfrwch fi i mewn
+false-door-test-popup-close = Cau

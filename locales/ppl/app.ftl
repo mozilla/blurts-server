@@ -1,3 +1,6 @@
+# Strings for the main app
+
+
 ## The following messages are brand and should be kept entirely in English
 ## unless otherwise indicated.
 
@@ -15,7 +18,6 @@
 
 ##
 
-terms-and-privacy = Tay nechtuktia wan Teichtakayu
 GitHub-link-title = GitHub
 error-scan-page-token = Tiktemujtuk miak amatitantukayit tik achi kawit. Ken tamanawilis, tiktzaktiwit ka tikchiwa yankwik tatemulis. Shikejeku neman.
 error-could-not-add-email = Te tiktalijket ne amatitantukayit tik ne tamatilkimil.
@@ -33,6 +35,9 @@ user-add-invalid-email = Te Yek Amatitanti
 user-add-too-many-emails = Tikpepeta muchi ne amatitantukayit weli tikpepeta
 user-add-email-verify-subject = Shikita su yek nemi mutukay tik { -product-name }.
 user-add-duplicate-email = Ini amatitanti mutalijtuka tik { -product-name }.
+# Variables:
+#   $preferencesLink (String) - Link to preferences
+#   $userEmail (String) - User email address
 user-add-duplicate-email-part-2 = Shipashalu tik mu { $preferencesLink } pal tikpepeta ne estadoj ipal { $userEmail }.
 error-headline = Tatakul
 user-verify-token-error = Kineki se token pal tikita yek.
@@ -46,11 +51,11 @@ scan-placeholder = Shikalakti ne Amatitantukayit
 scan-submit = Shiktemu Muamatitantukay
 scan-error = Muneki se yek amatitanti.
 download-firefox-banner-button = Shiktemulti { -brand-name }
-# Appears after Firefox Monitor has sent a verification email to a new user. 
+# Appears after Firefox Monitor has sent a verification email to a new user.
 signup-modal-sent = Mutitanijtuk!
 sign-up = Shikchiwa mucuentaj
 form-signup-error = Muneki se yek amatitanti.
-# breach-date = the calendar date a particular data theft occurred. 
+# breach-date = the calendar date a particular data theft occurred.
 breach-date = Keman kinekit kalakit ichtaka:
 # compromised accounts = the total number of user accounts exposed in data breach
 compromised-accounts = Cuejcuentaj ijtakujtuk:
@@ -60,6 +65,8 @@ unsub-headline = Shikishti mutukay tik { -product-name-nowrap }
 unsub-blurb = Yajini yawi kishtia ne itukay muamatitan tik ne listaj { -product-name-nowrap } wan tea yawi metznawatia keman kinekit kalakit ichtaka uksenpa.
 unsub-button = Shikishti mutukay
 # Breach data provided by Have I Been Pwned.
+# Variables:
+#   $hibp-link (String) - Link to Have I Been Pwned
 hibp-attribution = { $hibp-link } tamakak ne datoj ipanpa ne kaltapanalis
 share-twitter = Achka muchi kipia 100 cuentaj salujtuk. Have any of yours been exposed in a data breach? Find out.
 share-facebook-headline = Shikita asu mudatoj kichtektiwit ichtaka.
@@ -67,7 +74,6 @@ share-facebook-blurb = Tichikuyulua ajaka kichtek ush kineki kikwi ne mukwejkwen
 og-site-description = Shikita asu ajaka kichtek ichtaka mudatoj iwan { -product-name }. Shikchiwa se cuentaj pal timetznawatisket wan timetzmachtisket  ken tiktajpia mucuentaj.
 show-all = Shikneshti muchi
 fxa-scan-another-email = Tikneki tikpepeta ukse titantukayit?
-sign-in = Shiktali mutukay
 sign-out = Shikishti mutukay
 # Manage Firefox Account, link to page where account holders can change their account settings.
 manage-fxa = Shiktuktia { -brand-fxa }
@@ -101,20 +107,19 @@ preferences = Tay nikneki
 # Link title
 home = Nuchan
 # Link title
-breaches = Kaltapanalis
-# Link title
 security-tips = Tanajnawatil pal tiktajpia mudatoj
 fxa-account = { -brand-fxa }
 # Aria button message to open menu. "Open Firefox Account Navigation"
 open-fxa-menu = Shiktapu ne pashalualis { -brand-fxa }
 # Appears above a snippet about the breach most recently reported to Firefox Monitor.
-latest-breach = Yankwik taichtekilis ipal mudatoj tikachilijtuk
+latest-breach = Ne tipal taichtekilis mutalilijtuk
 # Link title
 more-about-this-breach = Shikmati ukchupi keman taichtekikket mudatoj
 take-control = Shimukwepa wan shitajshiti mutamatil.
 cant-stop-hackers = Tesu tiweli ma ne hackers kichtekit nemit mudatoj, man tiweli tikajkawa tikchiwa tay tesu metzpalewia wan muchiwa ukyek mutekiw.
 read-more-tips = Shiamatachiayuk ipanpa ne tanajnawatil.
 how-hackers-work = Shimumachti ken ne hackers kaltapanat.
+monitor-your-online-accounts = Shikchiwa se cuentaj iwan { -brand-fxa } pal tikpepeta kwak kaltapanat.
 stay-alert = Shikishpelwi ne yankwik kaltapanalis
 if-your-info = Asu muinformación nesi tik se kaltapanalis yankwik, tiu-timetztitaniliat se tanawatilis.
 search-all-emails = Shiktemu itzalan muchi ne itujtukay correoj asu kaltapanket tik yejemet wan ma metznawatikan keman metzmajmawat uksenpa.
@@ -192,7 +197,9 @@ feat-security-tips = Tanawatilis ipal tapalewilis pal tikmanawi mucuejcuentaj
 feat-sensitive = Tatemulis chupiuk yek ipal kaltapanalis tesajsay
 feat-enroll-multiple = Shikachitili miak correoj kan mupepetat ne kajkaltapanalis
 # This string is shown beneath each of the user’s email addresses to indicate
-# how many known breaches that email address was found in. 
+# how many known breaches that email address was found in.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 appears-in-x-breaches =
     { $breachCount ->
         [one] Nesi tik { $breachCount } kaltapanalis matituk.
@@ -203,6 +210,8 @@ find-out-what-hackers-know = Shikajsi ne tay ne hacker kimatiaya mupanpa. Shimum
 search-for-your-email = Shiktemu mudirección correoj tik ne kaltapanalis pal datoj ipal tukniwan hasta 2007.
 back-to-top = Shimukwepa kan tipewa
 comm-opt-0 = Shinechtuktili asu se ipal nudirección ipal correoj muajsi tik ne kaltapanalis ipal datoj.
+# Variables:
+#   $primaryEmail (String) - User primary email address
 comm-opt-1 = Shiktitani muchi ne kaltapanilis ka { $primaryEmail }.
 stop-monitoring-this = Makaya shikpepeta ini email.
 resend-verification = Shiktitani uksenpa ne correoj kan mupepettuk.
@@ -211,7 +220,7 @@ send-verification = Shiktitani ne ilpika kan mupepettuk
 # This string is a header on the user preferences page and
 # appears above a check-box list of user options which allow
 # the user to choose whether or not they want to receive breach
-# alerts for all of their monitored email addresses to a single 
+# alerts for all of their monitored email addresses to a single
 # email address.
 breach-summary = Ne resumen ipal ne kaltapanilis
 show-breaches-for-this-email = Shikneshti muchi ne kaltapanalis ipal ini correoj.
@@ -224,8 +233,15 @@ remove-fxm-blurb =
 manage-email-addresses = Shiktajpia ne dijdirección ipal correoj
 # Link title
 latest-breach-link = Shikita asu tinenki tik ini kaltapanalis
+
+## Variables:
+##   $userName (String) - Username
+
 welcome-back = Yek tiwalajtuk uksenpa { $userName }!
 welcome-user = Yek tiwalajtuk { $userName }!
+
+##
+
 breach-alert-subject = { -product-name } kiajsik mucorreoj tik se kaltapanalis yankwik dajdatoj
 your-info-was-discovered-headline = Muajsik muinformación tik se yankwik kaltapanalis datoj
 your-info-was-discovered-blurb =
@@ -249,6 +265,8 @@ ba-next-step-blurb-3 =
 faq1 = Naja te nikishmati ini compañiaj u sitioj Matapan. Taika ninemi tik ini kaltapanalis?
 faq2 = Taika teutakik nechilwia ipanpa ini kaltapanalis?
 faq3 = Ken nikmati asu ini se correoj tejkia ipal { -product-name }?
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 new-breaches-found =
     { $breachCount ->
         [one] { $breachCount } UKSENPA MUKALTAPANKET
@@ -256,24 +274,32 @@ new-breaches-found =
     }
 sign-up-headline-1 = Shikpia tanawatilis iwan { -brand-fxa }.
 account-not-required = Ne taiwan titajtachia { -brand-name } tesu muneki pal { -brand-fxa }. Tiweli tikpia información ipanpa tay ne tamaka { -brand-Mozilla }.
+
+## Variables:
+##   $breachName (String) - Number of the breach
+
 was-your-info-exposed = Ne muinformación muneshtij keman muichtektuk ne dajdatoj { $breachName }?
-find-out-if = Shikmati asu mudajdatoj muneshtijket keman mukaltapanket.
 fb-not-comp = Ne correoj tesu neski tik ne mukaltapanalis { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-breaches-found =
     { $breachCount ->
         [one] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
        *[other] Melka, yaja neski tik { $breachCount } seuk mukaltapanalis.
     }
 fb-comp-only = Ini correoj neski tik ne mukaltapanalis { $breachName }.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 fb-comp-and-others =
     { $breachCount ->
         [one] Ini correoj neski tik { $breachCount } mukaltapanalis ipal majmattuk dajdatoj, nusan{ $breachName }.
        *[other] Ini correoj neski tik { $breachCount } mukaltapanalis ipal majmattuk dajdatoj, nusan{ $breachName }.
     }
+
+##
+
 no-other-breaches-found = Te muajsik seuk mukaltapanalis tik ini talul tatemulis.
 no-results-blurb = Uni mukaltapanalis tesu kanaj tik ne basej ipal dajdatoj tupal.
-all-breaches-headline = Muchi ne mukaltapanalis tik { -product-name }
-search-breaches = Shiktemu mukaltapanalis
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Shikneshti:
 
@@ -317,6 +343,8 @@ known-data-breaches-exposed =
     }
 # Button
 see-additional-breaches = Shikita sejseuk mukaltapanalis
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 scan-results-known-breaches =
     { $breachCount ->
         [one] Ini correoj neski tik 1 mukaltapanalis matituk
@@ -325,6 +353,8 @@ scan-results-known-breaches =
 # This string is shown at the top of the scan results page and is followed
 # by the email address that the user searched.
 # In page, it reads "Results for: searchedEmail@monitor.com"
+# Variables:
+#   $userEmail (String) - User email address
 results-for = Walkisalis ipal: { $userEmail }
 other-monitored-emails = Seuk correoj mupepettuk
 email-verification-required = Muneki mupepeta mucorreoj
@@ -340,6 +370,8 @@ get-ongoing-breach-monitoring = Shikpepeta mukaltapanalis tik miak dijdirección
 # This is a button and follows a headline reading "Was your info exposed in the ___ breach?"
 find-out = Shikmajmati
 new-unsub-error = Shikwi se ipal mucojcorreoj ne { -product-name } kititan pal tikishtia mutukay.
+# Variables:
+#   $breachCount (Integer) - Number of breaches
 other-known-breaches-found =
     { $breachCount ->
         [one] Melka yaja kia nesik tik { $breachCount } seuk mukaltapanalis matituk
@@ -357,8 +389,10 @@ breach-overview-title = Ken nesi muchi
 # $breachTitle is the name of the breached company or website.
 # $breachDate and $addedDate are calendar dates.
 breach-overview-new = Ne { $breachDate }, mukaltapanket tik { $breachTitle }. Kan muajsik wan muyekitak ne mukaltapanalis, yaja mutalij tik ne basej dajdatoj tik { $addedDate }.
-# When a user is signed in, this appears in the drop down menu 
-# and is followed by the user's primary Firefox Account email. 
+# When a user is signed in, this appears in the drop down menu
+# and is followed by the user's primary Firefox Account email.
+# Variables:
+#   $userEmail (String) - User email address
 signed-in-as = Timukalaktij ken: { $userEmail }
 # Appears on the All Breaches page and is followed by a list of filter options
 # that a user can filter the visible breaches by.
@@ -390,4 +424,49 @@ email-sent = Ne amatitanti mutitanijtuk!
 
 
 ##
+
+
+## VPN promotional banner.  HTML tags should not be translated, e.g. `<em>`
+
+
+## Relay and VPN educational/ad units
+
+
+# Monitor V2
+
+
+## The following messages are brands and should be kept entirely in English
+
+
+##
+
+
+## Search Engine Optimization
+
+
+## Header
+
+sign-in = Shiktali mutukay
+
+## Site navigation
+
+
+## User menu
+
+
+## Footer
+
+terms-and-privacy = Tay nechtuktia wan Teichtakayu
+
+## Error page
+
+
+## Breach overview page
+
+search-breaches = Shiktemu mukaltapanalis
+
+## Public breach detail page
+
+
+## Floating banner
 

@@ -742,3 +742,14 @@ breach-detail-cta-signup = Auf Datenlecks überprüfen
 floating-banner-text = Erhöhen Sie Ihre Online-Sicherheit mit Nachrichten, Tipps und Updates von { -brand-Mozilla }.
 floating-banner-link-label = Registrieren
 floating-banner-dismiss-button-label = Nein, danke
+
+## False door test
+
+
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+
+false-door-test-content-part-one = Niemand sollte Ihre persönlichen Daten kaufen können.
+false-door-test-content-part-two = Entfernt automatisch Daten von Websites, die versuchen, sie zu verkaufen.
+false-door-test-content-part-two-dashboard = Löschen Sie automatisch Daten von Websites, die versuchen, sie zu verkaufen.
+false-door-test-cta = Mitzählen
+false-door-test-popup-close = Schließen

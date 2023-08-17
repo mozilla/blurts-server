@@ -25,6 +25,7 @@ career-levels = Carrièreniveaus
 cellular-network-names = Mobiel-netwerknamen
 charitable-donations = Liefdadigheidsdoelen
 chat-logs = Chatlogboeken
+clothing-sizes = Kledingmaten
 credit-card-cvv = Creditcard-CVV
 credit-cards = Creditcards
 credit-status-information = Informatie over kredietstatus

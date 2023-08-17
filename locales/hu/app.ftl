@@ -795,3 +795,14 @@ breach-detail-cta-signup = Adatvédelmi incidensek keresése
 floating-banner-text = Növelje online biztonságát a { -brand-Mozilla } híreivel, tippjeivel és frissítéseivel.
 floating-banner-link-label = Regisztráció
 floating-banner-dismiss-button-label = Köszönöm, nem
+
+## False door test
+
+
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+
+false-door-test-content-part-one = Senki sem vásárolhatja meg a személyes információit.
+false-door-test-content-part-two = Automatikusan távolítsa el az adatokat az azokat eladni próbáló oldalakról.
+false-door-test-content-part-two-dashboard = Adatok automatikus törlése az azokat eladni próbáló oldalakról.
+false-door-test-cta = Számítson rám
+false-door-test-popup-close = Bezárás

@@ -29,3 +29,37 @@ export const Secondary: Story = {
     children: "Button",
   },
 };
+
+export const PrimarySmall: Story = {
+  args: {
+    variant: "primary",
+    children: "Button",
+    small: true,
+  },
+};
+
+export const SecondarySmall: Story = {
+  args: {
+    variant: "secondary",
+    children: "Button",
+    small: true,
+  },
+};
+
+export const PrimaryLink: Story = {
+  args: {
+    variant: "primary",
+    children: "Button",
+    buttonType: "link",
+    href: "/",
+  },
+};
+
+export const SecondaryLink: Story = {
+  args: {
+    variant: "secondary",
+    children: "Button",
+    buttonType: "link",
+    href: "/",
+  },
+};
