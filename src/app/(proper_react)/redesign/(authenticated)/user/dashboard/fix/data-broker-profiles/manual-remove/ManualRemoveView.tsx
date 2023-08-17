@@ -8,7 +8,6 @@ import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "../dataBrokerProfiles.module.scss";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
 import { UserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 
 type ManualRemoveViewProps = {
@@ -17,7 +16,6 @@ type ManualRemoveViewProps = {
 
 export const ManualRemoveView = (props: ManualRemoveViewProps) => {
   const l10n = useL10n();
-  const pathname = usePathname();
 
   return (
     <div>
