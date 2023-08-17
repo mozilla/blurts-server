@@ -42,8 +42,8 @@ async function addFeatureFlag(flag: FeatureFlag) {
     is_enabled: flag.isEnabled,
     description: flag.description,
     dependencies: flag.dependencies,
-    allow_list: flag.allowList?.map((e) => e.trim()).filter((e) => !!e),
-    wait_list: flag.waitList?.map((e) => e.trim()).filter((e) => !!e),
+    allow_list: flag.allowList?.filter((e) => !!e.trim()),
+    wait_list: flag.waitList?.filter((e) => !!e.trim()),
     expired_at: flag.expiredAt,
     owner: flag.owner,
   };
@@ -96,7 +96,7 @@ async function updateOwner(name: string, owner: string) {
 }
 
 async function updateAllowList(name: string, allowList: string[]) {
-  allowList = allowList.map((e) => e.trim()).filter((e) => !!e);
+  allowList = allowList.filter((e) => !!e.trim());
   log.info("updateAllowList", { name, allowList });
   const res = await knex("feature_flags")
     .where("name", name)
@@ -112,7 +112,7 @@ async function updateAllowList(name: string, allowList: string[]) {
 }
 
 async function updateWaitList(name: string, waitList: string[]) {
-  waitList = waitList.map((e) => e.trim()).filter((e) => !!e);
+  waitList = waitList.filter((e) => !!e.trim());
   log.info("updateWaitList", { name, waitList });
   const res = await knex("feature_flags")
     .where("name", name)
