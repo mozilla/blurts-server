@@ -7,14 +7,9 @@
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import styles from "../dataBrokerProfiles.module.scss";
 import buttonStyles from "../../../../../../../../components/server/button.module.scss";
-import { UserBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 import Link from "next/link";
 
-type ManualRemoveViewProps = {
-  breaches: UserBreaches;
-};
-
-export const ManualRemoveView = (props: ManualRemoveViewProps) => {
+export const ManualRemoveView = () => {
   const l10n = useL10n();
 
   return (
