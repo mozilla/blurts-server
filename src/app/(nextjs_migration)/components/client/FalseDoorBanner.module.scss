@@ -1,0 +1,90 @@
+@import "../../../tokens.scss";
+
+.falseDoorTestWrapper {
+  --monitorLogoSizeSmall: 30px;
+  --monitorLogoSizeBig: 50px;
+  font: $text-body-md;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  // Overlap all regular content on the site with a z-index,
+  // except for ModalOverlay which, at the time of writing, has a z-index of 2
+  z-index: 1;
+  padding-block: $spacing-md;
+  width: 100%;
+  align-items: center;
+  background-color: #ffdff0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: $spacing-xl;
+
+  @media screen and (min-width: $screen-lg) {
+    padding-inline: $spacing-2xl;
+    padding-block: $spacing-md;
+  }
+
+  .dismiss {
+    align-self: flex-start;
+    margin-left: auto;
+    color: $color-grey-40;
+
+    &:focus {
+      border: 1px solid $color-informational-active;
+      outline: $border-focus-width solid $color-informational-focus;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    flex: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: $spacing-md;
+    width: 100%;
+    justify-content: space-between;
+
+    .imageAndCopy {
+      display: flex;
+      gap: $spacing-md;
+    }
+
+    @media screen and (min-width: $screen-lg) {
+      padding-left: $spacing-2xl;
+    }
+
+    .logo {
+      width: var(--monitorLogoSizeSmall);
+      height: var(--monitorLogoSizeSmall);
+
+      @media screen and (min-width: $screen-lg) {
+        width: var(--monitorLogoSizeBig);
+        height: var(--monitorLogoSizeBig);
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .cta {
+      text-decoration: none;
+      padding-inline: $spacing-xl;
+      padding-block: $spacing-sm;
+      background: $color-blue-50;
+      font-weight: 600;
+      color: $color-white;
+      border-radius: $border-radius-xs;
+      cursor: pointer;
+
+      &:focus {
+        outline: $border-focus-width solid $color-blue-30;
+      }
+
+      @media screen and (min-width: $screen-lg) {
+        margin-left: auto;
+      }
+    }
+  }
+}
