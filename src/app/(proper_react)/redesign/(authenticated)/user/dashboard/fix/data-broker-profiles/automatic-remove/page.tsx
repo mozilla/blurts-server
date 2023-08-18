@@ -129,7 +129,10 @@ export default function AutomaticRemove() {
                     { price: "X.XX" }
                   )}
             </span>
-            <Button variant="primary">
+            <Button
+              variant="primary"
+              onClick={() => (window.location.href = "../../subscribed")} // TODO replace with final UI
+            >
               {selectedPlanIsYearly
                 ? l10n.getString(
                     "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button"

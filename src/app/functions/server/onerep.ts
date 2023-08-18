@@ -2,8 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { getServerSession } from "next-auth";
-import AppConstants from "../../../appConstants.js";
+import type { Session } from "next-auth";
 import { getOnerepProfileId } from "../../../db/tables/subscribers.js";
 import mozlog from "../../../utils/log.js";
 import {
@@ -12,7 +11,6 @@ import {
 } from "../../../utils/parse.js";
 import { StateAbbr } from "../../../utils/states.js";
 import { getLatestOnerepScan } from "../../../db/tables/onerep_scans";
-import { authOptions } from "../../api/utils/auth";
 import { isFlagEnabled } from "./featureFlags";
 import { RemovalStatus } from "../universal/scanResult.js";
 const log = mozlog("external.onerep");
@@ -89,12 +87,13 @@ async function onerepFetch(
   if (!onerepApiBase) {
     throw new Error("ONEREP_API_BASE env var not set");
   }
+  const onerepApiKey = process.env.ONEREP_API_KEY;
+  if (!onerepApiKey) {
+    throw new Error("ONEREP_API_BASE env var not set");
+  }
   const url = new URL(path, onerepApiBase);
   const headers = new Headers(options.headers);
-  headers.set(
-    "Authorization",
-    `Basic ${Buffer.from(`${AppConstants.ONEREP_API_KEY}:`).toString("base64")}`
-  );
+  headers.set("Authorization", `Bearer ${onerepApiKey}`);
   headers.set("Accept", "application/json");
   headers.set("Content-Type", "application/json");
   return fetch(url, { ...options, headers });
@@ -154,16 +153,37 @@ export async function activateProfile(profileId: number): Promise<void> {
   }
 }
 
+export async function deactivateProfile(profileId: number): Promise<void> {
+  const response: Response = await onerepFetch(
+    `/profiles/${profileId}/deactivate`,
+    {
+      method: "PUT",
+    }
+  );
+  if (!response.ok) {
+    log.info(
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+    );
+    throw new Error(
+      `Failed to deactivate OneRep profile: [${response.status}] [${response.statusText}]`
+    );
+  }
+}
+
 export async function optoutProfile(profileId: number): Promise<void> {
   const response = await onerepFetch(`/profiles/${profileId}/optout`, {
     method: "POST",
   });
   if (!response.ok) {
     log.info(
-      `Failed to opt-out OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to opt-out OneRep profile: [${response.status}] [${
+        response.statusText
+      }] [${JSON.stringify(await response.json())}]`
     );
     throw new Error(
-      `Failed to opt-out OneRep profile: [${response.status}] [${response.statusText}]`
+      `Failed to opt-out OneRep profile: [${response.status}] [${
+        response.statusText
+      }] [${JSON.stringify(await response.json())}]`
     );
   }
 }
@@ -257,22 +277,51 @@ export async function listScanResults(
   return response.json() as Promise<ListScanResultsResponse>;
 }
 
-export async function isEligible() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.subscriber?.id) {
-    throw new Error("No session");
-  }
-
-  if (!(await isFlagEnabled("FreeBrokerScan", session.user))) {
+export async function isEligibleForFreeScan(
+  user: Session["user"],
+  countryCode: string
+) {
+  if (countryCode !== "us") {
     return false;
   }
 
-  const result = await getOnerepProfileId(session.user.subscriber.id);
+  if (!user?.subscriber?.id) {
+    throw new Error("No session");
+  }
+
+  if (!(await isFlagEnabled("FreeBrokerScan", user))) {
+    return false;
+  }
+
+  const result = await getOnerepProfileId(user.subscriber.id);
   const profileId = result[0]["onerep_profile_id"] as number;
   const scanResult = await getLatestOnerepScan(profileId);
 
   if (scanResult?.onerep_scan_results?.data?.length) {
     console.warn("User has already used free scan");
+    return false;
+  }
+
+  return true;
+}
+
+export async function isEligibleForPremium(
+  user: Session["user"],
+  countryCode: string
+) {
+  if (countryCode !== "us") {
+    return false;
+  }
+
+  if (countryCode !== "us") {
+    return false;
+  }
+
+  if (!user?.subscriber?.id) {
+    throw new Error("No session");
+  }
+
+  if (!(await isFlagEnabled("PremiumBrokerRemoval", user))) {
     return false;
   }
 
