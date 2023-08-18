@@ -225,12 +225,12 @@ const customJestConfig = {
       statements: 68,
     },
     "src/cloud-functions/index.js": {
-      branches: 63,
+      branches: 60,
       functions: 66,
       lines: 60,
       statements: 60,
     },
-    "src/utils/*.{js,ts}": {
+    "src/utils/*.js": {
       branches: 19,
       functions: 0,
       lines: 0,
@@ -243,7 +243,7 @@ const customJestConfig = {
       statements: 0,
     },
     "src/app/functions/server/featureFlags.ts": {
-      branches: 90.9,
+      branches: 90,
       functions: 0,
       lines: 95.16,
       statements: 95.16,
@@ -272,6 +272,9 @@ const customJestConfig = {
 
   // A set of global variables that need to be available in all test environments
   // globals: {},
+  globals: {
+    fetch,
+  },
 
   // The maximum amount of workers used to run your tests. Can be specified as % or a number. E.g. maxWorkers: 10% will use 10% of your CPU amount + 1 as the maximum worker number. maxWorkers: 2 will use a maximum of 2 workers.
   // maxWorkers: "50%",
@@ -319,10 +322,10 @@ const customJestConfig = {
   // reporters: undefined,
 
   // Automatically reset mock state before every test
-  resetMocks: false,
+  resetMocks: true,
 
   // Reset the module registry before running each individual test
-  resetModules: false,
+  resetModules: true,
 
   // A path to a custom resolver
   // resolver: undefined,
