@@ -67,8 +67,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   let title, secondaryDescription, recommendationSteps, breachIllustration;
 
-  const primaryDescription = `It appeared in ${exposedData.length} data breaches:`;
-
   const CreditCardRecommendationSteps = (
     <ol>
       <li>{l10n.getString("high-risk-breach-credit-card-step-one")}</li>
@@ -143,15 +141,16 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     <div className={styles.container}>
       <div className={styles.breachContentWrapper}>
         <h3>{title}</h3>
-        <p>{primaryDescription}</p>
+        <p>
+          {l10n.getString("high-risk-breach-summary", {
+            num_breaches: exposedData.length,
+          })}
+        </p>
         {breachList}
         <p>{secondaryDescription}</p>
         <div className={styles.recommendations}>
-          <h4>Here’s what to do</h4>
-          <p>
-            This requires access to your sensitive info, so you’ll need to
-            manually fix it.
-          </p>
+          <h4> {l10n.getString("high-risk-breach-heading")}</h4>
+          <p>{l10n.getString("high-risk-breach-subheading")}</p>
           {recommendationSteps}
         </div>
         <div className={styles.buttons}>
@@ -162,18 +161,20 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
               // MNTOR-1700 Add routing logic here
             }}
           >
-            Mark as fixed
+            {l10n.getString("high-risk-mark-as-fixed")}
           </Button>
           <Link
             // TODO: MNTOR-1700 Add routing logic here
             href="/"
           >
-            Skip for now
+            {l10n.getString("high-risk-breach-skip")}
           </Link>
         </div>
         <div className={styles.estimatedTime}>
           <ClockIcon width="20" height="20" />
-          Your estimated time: 10+ minutes
+          {l10n.getString("high-risk-breach-estimated-time", {
+            estimated_time: 15,
+          })}
         </div>
       </div>
       <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>

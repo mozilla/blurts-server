@@ -279,6 +279,20 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 
 # High Risk Data Breaches
 
+high-risk-breach-heading = Here’s what to do
+high-risk-breach-subheading = This requires access to your sensitive info, so you’ll need to manually fix it.
+# Variables
+# $num_breaches is the number of breaches where the high risk data was found.
+high-risk-breach-summary = { $num_breaches ->
+  [one] It appeared in { $num_breaches } data breach:
+  *[other] It appeared in { $num_breaches } data breaches:
+}
+high-risk-breach-mark-as-fixed = Mark as fixed
+high-risk-breach-skip = Skip for now
+# Variables:
+# $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It is never singular.
+high-risk-breach-estimated-time = Your estimated time: { $estimated_time }+ minutes
+
 # Credit Card Breaches
 
 high-risk-breach-credit-card-title = Your credit card number was exposed.
