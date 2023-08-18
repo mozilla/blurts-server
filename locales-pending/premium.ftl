@@ -281,23 +281,31 @@ premium-upsell-dialog-title = Choose the level of protection that’s right for 
 
 # Credit Card Breaches
 
+high-risk-breach-credit-card-title = Your credit card number was exposed.
+high-risk-breach-credit-card-description = Anyone who gets it can make unauthorized purchases that you may be liable for. Act now to prevent financial harm.
 high-risk-breach-credit-card-step-one = If you still have this card, contact the issuer to report it stolen.
 high-risk-breach-credit-card-step-two = Request a new card with a new number.
 high-risk-breach-credit-card-step-three = Check your accounts for unauthorized charges.
 
 # Bank Account Breaches
 
+high-risk-breach-bank-account-title = Bank Account Data Breach
+high-risk-breach-bank-account-description = Taking action ASAP could give you more legal protections to help you recover any losses.
 high-risk-breach-bank-account-step-one = Notify your bank immediately that your account number has been compromised.
 high-risk-breach-bank-account-step-two = Change your account number.
 high-risk-breach-bank-account-step-three = Check your accounts for unauthorized charges.
 
 # Social Security Number Breaches
 
+high-risk-breach-social-security-title = Social Security Number Data Breach
+high-risk-breach-social-security-description = Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.
 high-risk-breach-social-security-step-one = Protect yourself by setting up a fraud alert or freezing your credit.
 high-risk-breach-social-security-step-two = Check your credit report for unrecognized accounts.
 
 # PIN Breaches 
 
+high-risk-breach-pin-title = PIN Data Breach
+high-risk-breach-pin-description = Taking action ASAP could give you more legal protections to help you recover any losses.
 high-risk-breach-pin-step-one = Notify your bank immediately that your PIN has been compromised.
 high-risk-breach-pin-step-two = Change your PIN anywhere you’ve used the same one.
 high-risk-breach-pin-step-one = Check your accounts for unauthorized charges.

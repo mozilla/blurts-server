@@ -105,30 +105,32 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   switch (props.typeOfBreach) {
     case "creditCard":
-      title = "Your credit card number was exposed";
-      secondaryDescription =
-        "Anyone who gets it can make unauthorized purchases that you may be liable for. Act now to prevent financial harm.";
+      title = l10n.getString("high-risk-breach-credit-card-title");
+      secondaryDescription = l10n.getString(
+        "high-risk-breach-credit-card-description"
+      );
       recommendationSteps = CreditCardRecommendationSteps;
       breachIllustration = CreditCardIllustration;
       break;
     case "ssnBreaches":
-      title = "Social Security Number Data Breach";
-      secondaryDescription =
-        "Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.";
+      title = l10n.getString("high-risk-breach-social-security-title");
+      secondaryDescription = l10n.getString(
+        "high-risk-breach-social-security-description"
+      );
       recommendationSteps = SocialSecurityNumberRecommendationSteps;
       breachIllustration = SocialSecurityNumberIllustration;
       break;
     case "bankAccount":
-      title = "Bank Account Data Breach";
-      secondaryDescription =
-        "Taking action ASAP could give you more legal protections to help you recover any losses. ";
+      title = l10n.getString("high-risk-breach-bank-account-title");
+      secondaryDescription = l10n.getString(
+        "high-risk-breach-bank-account-description"
+      );
       recommendationSteps = BankAccountRecommendationSteps;
       breachIllustration = BankAccountIllustration;
       break;
     case "PIN":
-      title = "PIN Data Breach";
-      secondaryDescription =
-        "Taking action ASAP could give you more legal protections to help you recover any losses.";
+      title = l10n.getString("high-risk-breach-pin-title");
+      secondaryDescription = l10n.getString("high-risk-breach-pin-description");
       recommendationSteps = pinRecoomendationSteps;
       breachIllustration = pinIllustration;
       break;
