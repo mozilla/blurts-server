@@ -92,7 +92,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     </ol>
   );
 
-  const pinRecoomendationSteps = (
+  const pinRecommendationSteps = (
     <ol>
       {" "}
       <li>{l10n.getString("high-risk-breach-pin-step-one")}</li>
@@ -129,7 +129,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     case "PIN":
       title = l10n.getString("high-risk-breach-pin-title");
       secondaryDescription = l10n.getString("high-risk-breach-pin-description");
-      recommendationSteps = pinRecoomendationSteps;
+      recommendationSteps = pinRecommendationSteps;
       breachIllustration = pinIllustration;
       break;
     default:

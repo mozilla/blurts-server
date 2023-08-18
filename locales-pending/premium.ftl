@@ -322,4 +322,4 @@ high-risk-breach-pin-title = PIN Data Breach
 high-risk-breach-pin-description = Taking action ASAP could give you more legal protections to help you recover any losses.
 high-risk-breach-pin-step-one = Notify your bank immediately that your PIN has been compromised.
 high-risk-breach-pin-step-two = Change your PIN anywhere you’ve used the same one.
-high-risk-breach-pin-step-one = Check your accounts for unauthorized charges.
+high-risk-breach-pin-step-three = Check your accounts for unauthorized charges.
