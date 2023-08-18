@@ -52,7 +52,7 @@ export type FixLayoutProps = {
   children: ReactNode;
 };
 
-export const FixLayout = (props: FixLayoutProps) => {
+const FixLayout = (props: FixLayoutProps) => {
   const navigationItemsContent = [
     {
       key: "data-broker-profiles",
@@ -103,4 +103,4 @@ export const FixLayout = (props: FixLayoutProps) => {
   );
 };
 
-// export default FixLayout;
+export default FixLayout;
