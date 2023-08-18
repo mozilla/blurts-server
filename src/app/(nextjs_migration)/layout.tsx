@@ -47,7 +47,7 @@ export default async function MigrationLayout({
       {falseDoorFlag &&
         waitlistLink &&
         countryCode.toLowerCase() === "us" &&
-        locale === "en" && <HandleFalseDoorTest link={waitlistLink} />}
+        locale === "en-US" && <HandleFalseDoorTest link={waitlistLink} />}
     </L10nProvider>
   );
 }
