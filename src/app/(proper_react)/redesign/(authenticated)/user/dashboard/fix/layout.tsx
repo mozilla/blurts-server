@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { FixNavigation } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
 import ImageArrowLeft from "./images/icon-arrow-left.svg";
@@ -17,6 +17,7 @@ import stepDataBrokerProfilesIcon from "./images/step-counter-data-broker-profil
 import stepHighRiskDataBreachesIcon from "./images/step-counter-high-risk.svg";
 import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg";
 import stepSecurityRecommendationsIcon from "./images/step-counter-security-recommendations.svg";
+import { usePathname } from "next/navigation";
 
 // TODO:
 // Add logic to protect routes for specific users (premium/not, scan started/not)
@@ -53,6 +54,15 @@ export type FixLayoutProps = {
 };
 
 const FixLayout = (props: FixLayoutProps) => {
+  const pathname = usePathname();
+  const [isHighRiskDataBreach, setIsHighRiskDataBreach] = useState(false);
+
+  useEffect(() => {
+    if (pathname.includes("high-risk-data-breaches")) {
+      setIsHighRiskDataBreach(true);
+    }
+  }, [pathname]);
+
   const navigationItemsContent = [
     {
       key: "data-broker-profiles",
@@ -90,7 +100,11 @@ const FixLayout = (props: FixLayoutProps) => {
 
   return (
     <div className={styles.fixContainer}>
-      <div className={styles.fixWrapper}>
+      <div
+        className={`${styles.fixWrapper} ${
+          isHighRiskDataBreach ? styles.highRiskDataBreachContentBg : ""
+        }`}
+      >
         <FixNavigation navigationItems={navigationItemsContent} />
         <NavigationClose />
         <section className={styles.fixSection}>

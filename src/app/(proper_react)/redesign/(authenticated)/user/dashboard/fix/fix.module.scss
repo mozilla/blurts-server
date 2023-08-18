@@ -10,61 +10,66 @@
   @media screen and (min-width: $screen-md) {
     padding: $layout-sm;
   }
-}
-.fixWrapper {
-  max-width: $content-xl;
-  --arrowGapOffset: -50px;
-  padding: $layout-sm;
-  background-color: $color-white;
-  background-image: url("./images/content-background.svg");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
 
-.navClose {
-  position: absolute;
-  right: $spacing-md;
-  top: $spacing-md;
-}
+  .fixWrapper {
+    max-width: $content-xl;
+    --arrowGapOffset: -50px;
+    padding: $layout-sm;
+    background-color: $color-white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-image: url("./images/content-background.svg");
 
-.fixSection {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (min-width: $screen-md) {
-    // Add horizontal padding to account for next/prev arrow placement on larger screens
-    padding: 0 $spacing-2xl;
+    &.highRiskDataBreachContentBg {
+      background-image: url("./images/high-risk-breaches-content-background.svg");
+    }
   }
 
-  @media screen and (min-width: $screen-xl) {
-    padding: 0;
-  }
-
-  .navArrowBack {
+  .navClose {
     position: absolute;
-    left: 0;
-    appearance: none;
-    background-color: transparent;
-    border: 0;
-    cursor: pointer;
-    display: none;
+    right: $spacing-md;
+    top: $spacing-md;
   }
 
-  .navArrowNext {
-    position: absolute;
-    right: 0;
-    display: none;
-  }
-
-  .navArrowBack,
-  .navArrowNext {
-    margin-top: var(--arrowGapOffset);
+  .fixSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     @media screen and (min-width: $screen-md) {
-      display: block;
+      // Add horizontal padding to account for next/prev arrow placement on larger screens
+      padding: 0 $spacing-2xl;
+    }
+
+    @media screen and (min-width: $screen-xl) {
+      padding: 0;
+    }
+
+    .navArrowBack {
+      position: absolute;
+      left: 0;
+      appearance: none;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      display: none;
+    }
+
+    .navArrowNext {
+      position: absolute;
+      right: 0;
+      display: none;
+    }
+
+    .navArrowBack,
+    .navArrowNext {
+      margin-top: var(--arrowGapOffset);
+
+      @media screen and (min-width: $screen-md) {
+        display: block;
+      }
     }
   }
 }
