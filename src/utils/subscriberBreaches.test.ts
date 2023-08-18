@@ -134,81 +134,69 @@ const allBreaches: Breach[] = [
   },
 ];
 
+const breachesWithNoneResolved = [
+  {
+    Id: 1,
+    IsRetired: true,
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    Domain: "something",
+    DataClasses: ["email-addresses", "passwords", "something else"],
+  },
+  {
+    Id: 2,
+    IsRetired: false,
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    Domain: "something",
+    DataClasses: ["email-addresses", "passwords", "something else"],
+  },
+];
+
+const breachesWithOneResolved = [
+  {
+    Id: 1,
+    IsRetired: true,
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    Domain: "something",
+    DataClasses: ["email-addresses", "passwords", "something else"],
+  },
+  {
+    Id: 40,
+    IsRetired: false,
+    IsSpamList: false,
+    IsFabricated: false,
+    IsVerified: true,
+    Domain: "something",
+    DataClasses: ["email-addresses", "passwords", "something else"],
+  },
+];
+
 describe("getSubBreaches", () => {
-  beforeAll(() => {
-    const firstMockBreaches = [
-      {
-        Id: 1,
-        IsRetired: true,
-        IsSpamList: false,
-        IsFabricated: false,
-        IsVerified: true,
-        Domain: "something",
-        DataClasses: ["email-addresses", "passwords", "something else"],
-      },
-      {
-        Id: 2,
-        IsRetired: false,
-        IsSpamList: false,
-        IsFabricated: false,
-        IsVerified: true,
-        Domain: "something",
-        DataClasses: ["email-addresses", "passwords", "something else"],
-      },
-    ];
-
-    const secondMockBreaches = [
-      {
-        Id: 1,
-        IsRetired: true,
-        IsSpamList: false,
-        IsFabricated: false,
-        IsVerified: true,
-        Domain: "something",
-        DataClasses: ["email-addresses", "passwords", "something else"],
-      },
-      {
-        Id: 40,
-        IsRetired: false,
-        IsSpamList: false,
-        IsFabricated: false,
-        IsVerified: true,
-        Domain: "something",
-        DataClasses: ["email-addresses", "passwords", "something else"],
-      },
-    ];
-
-    getBreachesForEmail
-      .mockReturnValueOnce(firstMockBreaches)
-      .mockReturnValueOnce(secondMockBreaches)
-      .mockReturnValueOnce(firstMockBreaches)
-      .mockReturnValueOnce(firstMockBreaches)
-      .mockReturnValueOnce(firstMockBreaches);
-
-    getUserEmails
-      .mockReturnValueOnce([])
-      .mockReturnValueOnce([])
-      .mockReturnValueOnce([
-        {
-          id: -1,
-          subscriber_id: 2,
-          email: "additional@test.com",
-          verified: true,
-          sha1: "",
-        },
-      ])
-      .mockReturnValueOnce([]);
-  });
-
-  afterAll(() => {
-    jest.resetAllMocks();
-  });
-
-  it("dataClassesEffected and emailsEffected", async () => {
+  it("summarises which dataClasses and emails are breached for the given user", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithNoneResolved);
     const subBreaches = await getSubBreaches(subscriber, []);
     expect(subBreaches.length).toEqual(1);
-    expect(subBreaches[0].isResolved).toBeFalsy();
-    expect(subBreaches[0].dataClasses).toEqual([
+    expect(subBreaches[0].isResolved).toBe(false);
+    expect(subBreaches[0].dataClasses).toStrictEqual([
       "email-addresses",
       "passwords",
     ]);
@@ -218,23 +206,51 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 1 });
   });
 
-  it("isResolved", async () => {
-    // getBreachesForEmail.mockReturnValueOnce();
+  it("returns that a breach is resolved", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithOneResolved);
 
     const subBreaches = await getSubBreaches(subscriber, []);
     expect(subBreaches.length).toEqual(1);
-    expect(subBreaches[0].isResolved).toBeTruthy();
-    expect(subBreaches[0].dataClasses).toEqual([
-      "email-addresses",
-      "passwords",
-    ]);
-    expect(subBreaches[0].dataClassesEffected[0]).toEqual({
-      "email-addresses": ["test@test.com"],
-    });
-    expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 1 });
+    expect(subBreaches[0].isResolved).toBe(true);
   });
 
-  it("dataClassesEffected for multiple emails", async () => {
+  it("can summarise data for multiple emails", async () => {
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    ).mockResolvedValueOnce([
+      {
+        id: -1,
+        subscriber_id: 2,
+        email: "additional@test.com",
+        verified: true,
+        sha1: "",
+      },
+    ]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    )
+      .mockResolvedValueOnce(breachesWithNoneResolved)
+      .mockResolvedValueOnce(breachesWithNoneResolved);
     const subBreaches = await getSubBreaches(subscriber, allBreaches);
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
@@ -250,9 +266,27 @@ describe("getSubBreaches", () => {
     expect(subBreaches[0].dataClassesEffected[1]).toEqual({ passwords: 2 });
   });
 
-  it("dataClassesEffected for different subscriber email", async () => {
-    subscriber.primary_email = "different@test.com";
-    const subBreaches = await getSubBreaches(subscriber, allBreaches);
+  it("also returns valid dataClassesEffected with a different subscriber email", async () => {
+    const differentSubscriber = {
+      ...subscriber,
+      primary_email: "different@test.com",
+    };
+    (
+      getUserEmails as jest.Mock<
+        ReturnType<typeof getUserEmails>,
+        Parameters<typeof getUserEmails>
+      >
+    )
+      // The only affected email is the user's primary email; they have no
+      // additional email addresses in this test:
+      .mockResolvedValueOnce([]);
+    (
+      getBreachesForEmail as jest.Mock<
+        ReturnType<typeof getBreachesForEmail>,
+        Parameters<typeof getBreachesForEmail>
+      >
+    ).mockResolvedValueOnce(breachesWithNoneResolved);
+    const subBreaches = await getSubBreaches(differentSubscriber, allBreaches);
     expect(subBreaches.length).toEqual(1);
     expect(subBreaches[0].dataClasses).toEqual([
       "email-addresses",
