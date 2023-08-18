@@ -22,7 +22,14 @@ export default async function MigrationLayout({
   const countryCode = getCountryCode(headersList);
   const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
   const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
-  const locale = getLocale();
+  const acceptLanguage = headersList.get("Accept-Language");
+
+  let locale = "";
+  if (acceptLanguage) {
+    const acceptedLocales = acceptLanguage.split(",");
+    const primaryLocale = acceptedLocales[0];
+    locale = primaryLocale.split(";")[0];
+  }
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
