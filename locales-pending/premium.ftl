@@ -287,6 +287,11 @@ high-risk-breach-summary = { $num_breaches ->
   [one] It appeared in { $num_breaches } data breach:
   *[other] It appeared in { $num_breaches } data breaches:
 }
+# Variables
+# $breach_name is the name of the breach where the high risk data was found.
+# $breach_date is the date when the breach occurred. 
+# An example of this string is Twitter on 13/09/18.
+high-risk-breach-name-and-date = { $breach_name } <breach_date>on { $breach_date }</breach_date>
 high-risk-breach-mark-as-fixed = Mark as fixed
 high-risk-breach-skip = Skip for now
 # Variables:

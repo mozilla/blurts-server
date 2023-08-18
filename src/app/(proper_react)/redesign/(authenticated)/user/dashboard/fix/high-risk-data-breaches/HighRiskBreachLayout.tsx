@@ -54,10 +54,13 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   const listOfBreaches = exposedData.map((item: SubscriberBreach) => (
     <div key={item.id} className={styles.breachItem}>
-      {item.name}
-      <span className={styles.date}>{` on ${dateFormatter.format(
-        new Date(item.addedDate)
-      )}`}</span>
+      {l10n.getFragment("high-risk-breach-name-and-date", {
+        elems: { breach_date: <span className={styles.date} /> },
+        vars: {
+          breach_name: item.name,
+          breach_date: dateFormatter.format(new Date(item.addedDate)),
+        },
+      })}
     </div>
   ));
 
