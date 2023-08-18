@@ -276,3 +276,28 @@ false-door-test-phase-2-content-part-two-dashboard = Automatically remove data f
 # Premium upsell dialog
 
 premium-upsell-dialog-title = Choose the level of protection that’s right for you
+
+# High Risk Data Breaches
+
+# Credit Card Breaches
+
+high-risk-breach-credit-card-step-one = If you still have this card, contact the issuer to report it stolen.
+high-risk-breach-credit-card-step-two = Request a new card with a new number.
+high-risk-breach-credit-card-step-three = Check your accounts for unauthorized charges.
+
+# Bank Account Breaches
+
+high-risk-breach-bank-account-step-one = Notify your bank immediately that your account number has been compromised.
+high-risk-breach-bank-account-step-two = Change your account number.
+high-risk-breach-bank-account-step-three = Check your accounts for unauthorized charges.
+
+# Social Security Number Breaches
+
+high-risk-breach-social-security-step-one = Protect yourself by setting up a fraud alert or freezing your credit.
+high-risk-breach-social-security-step-two = Check your credit report for unrecognized accounts.
+
+# PIN Breaches 
+
+high-risk-breach-pin-step-one = Notify your bank immediately that your PIN has been compromised.
+high-risk-breach-pin-step-two = Change your PIN anywhere you’ve used the same one.
+high-risk-breach-pin-step-one = Check your accounts for unauthorized charges.

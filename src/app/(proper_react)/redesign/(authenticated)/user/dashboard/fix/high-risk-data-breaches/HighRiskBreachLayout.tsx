@@ -15,6 +15,7 @@ import { Button } from "../../../../../../../components/server/Button";
 import Link from "next/link";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { ClockIcon } from "../../../../../../../components/server/Icons";
+import { useL10n } from "../../../../../../../hooks/l10n";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
@@ -22,6 +23,7 @@ type HighRiskBreachLayoutProps = {
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
+  const l10n = useL10n();
   const highRiskDataBreaches = props.breachData.highRisk;
   let exposedData: SubscriberBreach[] = [];
 
@@ -69,39 +71,35 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   const CreditCardRecommendationSteps = (
     <ol>
-      <li>
-        If you still have this card, contact the issuer to report it stolen.
-      </li>
-      <li>Request a new card with a new number.</li>
-      <li>Check your accounts for unauthorized charges.</li>
+      <li>{l10n.getString("high-risk-breach-credit-card-step-one")}</li>
+      <li>{l10n.getString("high-risk-breach-credit-card-step-two")}</li>
+
+      <li>{l10n.getString("high-risk-breach-credit-card-step-three")}</li>
     </ol>
   );
 
   const BankAccountRecommendationSteps = (
     <ol>
-      <li>
-        Notify your bank immediately that your account number has been
-        compromised.
-      </li>
-      <li>Change your account number.</li>
-      <li>Check your accounts for unauthorized charges.</li>
+      <li>{l10n.getString("high-risk-breach-bank-account-step-one")}</li>
+      <li>{l10n.getString("high-risk-breach-bank-account-step-two")}</li>
+      <li>{l10n.getString("high-risk-breach-bank-account-step-three")}</li>
     </ol>
   );
 
   const SocialSecurityNumberRecommendationSteps = (
     <ol>
-      <li>
-        Protect yourself by setting up a fraud alert or freezing your credit.
-      </li>
-      <li>Check your credit report for unrecognized accounts.</li>
+      <li>{l10n.getString("high-risk-breach-social-security-step-one")}</li>
+
+      <li>{l10n.getString("high-risk-breach-social-security-step-two")}</li>
     </ol>
   );
 
   const pinRecoomendationSteps = (
     <ol>
-      <li>Notify your bank immediately that your PIN has been compromised.</li>
-      <li>Change your PIN anywhere you’ve used the same one.</li>
-      <li>Check your accounts for unauthorized charges.</li>
+      {" "}
+      <li>{l10n.getString("high-risk-breach-pin-step-one")}</li>
+      <li>{l10n.getString("high-risk-breach-pin-step-two")}</li>
+      <li>{l10n.getString("high-risk-breach-pin-step-three")}</li>
     </ol>
   );
 
