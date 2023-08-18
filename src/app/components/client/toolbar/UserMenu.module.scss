@@ -1,51 +1,82 @@
 @import "../../../tokens";
 
-.wrapper {
-  display: inline-flex;
-  position: relative;
-}
-
+$button-size: 42px;
 .trigger {
+  background: white;
+  border-radius: 50%;
   border-style: none;
-  color: white;
   cursor: pointer;
-  height: 42px;
-  overflow: hidden;
+  height: $button-size;
   padding: 0;
-  width: 42px;
+  width: $button-size;
+
+  &:focus {
+    outline: 2px solid $color-purple-70;
+  }
 }
 
 .menuList {
   border-radius: $border-radius-md;
   box-shadow: $box-shadow-md;
+  font: $text-body-md;
   list-style-type: none;
   min-width: $content-xs;
+  outline: 0;
   padding: $spacing-sm 0;
   position: relative;
   right: 0;
 
   &::before {
-    content: "";
-    height: 12px;
-    width: 12px;
-    position: absolute;
-    top: -6px;
-    right: $spacing-md;
-    transform: rotate(45deg);
+    $tooltip-size: 12px;
     background-color: white;
+    content: "";
+    height: $tooltip-size;
+    position: absolute;
+    right: calc($spacing-md + $button-size * 0.5);
+    top: 0;
+    transform: translateY(-50%) rotate(45deg);
+    width: $tooltip-size;
   }
 }
 
 .menuItemWrapper {
+  padding: $spacing-sm calc($spacing-md * 1.5);
+  position: relative;
+
   &:focus {
     outline: none;
     background: $color-grey-10;
+  }
+
+  &:first-of-type {
+    margin-bottom: $spacing-sm;
+    padding: calc($spacing-sm * 1.5) calc($spacing-md * 1.5);
+
+    b {
+      color: $color-purple-90;
+      margin-bottom: $spacing-xs;
+    }
+
+    &::after {
+      background: $monitor-gradient;
+      content: "";
+      height: 2px;
+      left: 0;
+      bottom: 0;
+      position: absolute;
+      width: 100%;
+    }
   }
 }
 
 .menuItemCta {
   align-items: center;
+  background: none;
+  border: 0;
+  color: $color-black;
   display: flex;
   gap: $spacing-sm;
-  padding: $spacing-sm;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
 }

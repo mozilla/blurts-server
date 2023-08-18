@@ -153,10 +153,10 @@ $gradient-linear-purple: linear-gradient(
   $color-purple-60
 );
 $monitor-gradient: linear-gradient(
-  90deg,
+  -90deg,
   $color-yellow-50,
   $color-pink-60 50%,
-  $color-blue-40
+  $color-purple-70
 );
 
 // Layout //

@@ -34,6 +34,12 @@ function ComboBox(props: ComboBoxProps) {
   const isInvalid = validationState === "invalid";
   const showError = errorMessage && isInvalid;
 
+  if (!state.isOpen && props.items?.length > 0) {
+    state.open();
+  } else if (state.isOpen) {
+    state.close();
+  }
+
   return (
     <>
       <div className={styles.comboBox}>
@@ -56,7 +62,6 @@ function ComboBox(props: ComboBoxProps) {
       </div>
       {state.isOpen && (
         <Popover
-          isVisible={props.items?.length > 0}
           offset={4}
           popoverRef={popoverRef}
           state={state}

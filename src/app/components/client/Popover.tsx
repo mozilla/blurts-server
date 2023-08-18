@@ -16,16 +16,9 @@ import styles from "./Popover.module.scss";
 export interface PopoverProps extends AriaPopoverProps {
   children: React.ReactNode;
   state: OverlayTriggerState;
-  isVisible: boolean;
 }
 
-function Popover({
-  children,
-  offset,
-  state,
-  isVisible,
-  ...props
-}: PopoverProps) {
+function Popover({ children, offset, state, ...props }: PopoverProps) {
   const { popoverProps } = usePopover({ ...props, offset }, state);
 
   // The <DismissButton> components allow screen reader users
@@ -35,7 +28,7 @@ function Popover({
       <div
         {...popoverProps}
         ref={props.popoverRef as React.RefObject<HTMLDivElement>}
-        className={`${styles.popover} ${isVisible ? styles.isVisible : ""}`}
+        className={`${styles.popover} ${state.isOpen ? styles.isVisible : ""}`}
         style={{
           ...popoverProps.style,
         }}
