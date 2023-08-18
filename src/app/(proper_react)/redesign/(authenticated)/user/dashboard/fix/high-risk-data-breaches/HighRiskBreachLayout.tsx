@@ -74,7 +74,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     <ol>
       <li>{l10n.getString("high-risk-breach-credit-card-step-one")}</li>
       <li>{l10n.getString("high-risk-breach-credit-card-step-two")}</li>
-
       <li>{l10n.getString("high-risk-breach-credit-card-step-three")}</li>
     </ol>
   );
@@ -90,14 +89,12 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
   const SocialSecurityNumberRecommendationSteps = (
     <ol>
       <li>{l10n.getString("high-risk-breach-social-security-step-one")}</li>
-
       <li>{l10n.getString("high-risk-breach-social-security-step-two")}</li>
     </ol>
   );
 
   const pinRecommendationSteps = (
     <ol>
-      {" "}
       <li>{l10n.getString("high-risk-breach-pin-step-one")}</li>
       <li>{l10n.getString("high-risk-breach-pin-step-two")}</li>
       <li>{l10n.getString("high-risk-breach-pin-step-three")}</li>
