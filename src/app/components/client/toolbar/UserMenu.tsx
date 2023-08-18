@@ -30,8 +30,6 @@ export type UserMenuProps = {
   user: Session["user"] | null;
 };
 
-const menuItemIconSize = 24;
-
 export const UserMenu = (props: UserMenuProps) => {
   const l10n = useL10n();
 
@@ -84,12 +82,7 @@ export const UserMenu = (props: UserMenuProps) => {
           target="_blank"
         >
           {l10n.getString("user-menu-manage-fxa-label")}
-          <Image
-            src={OpenInIcon}
-            alt=""
-            height={menuItemIconSize}
-            width={menuItemIconSize}
-          />
+          <Image src={OpenInIcon} alt="" height={24} width={24} />
         </a>
       </Item>
       <Item
@@ -100,13 +93,9 @@ export const UserMenu = (props: UserMenuProps) => {
           className={styles.menuItemCta}
           href="/redesign/user/settings/"
           ref={settingsItemRef}
+          title={l10n.getString("user-menu-settings-tooltip")}
         >
-          <Image
-            src={SettingsIcon}
-            alt=""
-            height={menuItemIconSize}
-            width={menuItemIconSize}
-          />
+          <Image src={SettingsIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-settings-label")}
         </Link>
       </Item>
@@ -118,20 +107,17 @@ export const UserMenu = (props: UserMenuProps) => {
           className={styles.menuItemCta}
           href={process.env.NEXT_PUBLIC_EXTERNAL_SUPPORT_URL}
           ref={helpItemRef}
+          rel="noopener noreferrer"
           target="_blank"
+          title={l10n.getString("user-menu-help-label-tooltip")}
         >
-          <Image
-            src={HelpIcon}
-            alt=""
-            height={menuItemIconSize}
-            width={menuItemIconSize}
-          />
+          <Image src={HelpIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-help-label")}
         </a>
       </Item>
       <Item
         key={itemKeys.signout}
-        textValue={l10n.getString("user-menu-help-label")}
+        textValue={l10n.getString("user-menu-signout-label")}
       >
         <button
           className={styles.menuItemCta}
@@ -139,12 +125,7 @@ export const UserMenu = (props: UserMenuProps) => {
           title={l10n.getString("user-menu-signout-tooltip")}
           onClick={() => void signOut({ callbackUrl: "/" })}
         >
-          <Image
-            src={SignOutIcon}
-            alt=""
-            height={menuItemIconSize}
-            width={menuItemIconSize}
-          />
+          <Image src={SignOutIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-signout-label")}
         </button>
       </Item>
@@ -174,12 +155,16 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
       <button
         {...menuTriggerProps}
         ref={ref}
-        onClick={() => state.open()}
         className={styles.trigger}
+        title={l10n.getString("user-menu-trigger-tooltip")}
+        onClick={() => state.open()}
       >
         <Image
-          // alt={l10n.getString("user-menu-trigger-close-label")}
-          alt={l10n.getString("user-menu-trigger-open-label")}
+          alt={
+            !state.open
+              ? l10n.getString("user-menu-trigger-open-label")
+              : l10n.getString("user-menu-trigger-close-label")
+          }
           height={42}
           src={props.user.fxa?.avatar || ""}
           unoptimized
