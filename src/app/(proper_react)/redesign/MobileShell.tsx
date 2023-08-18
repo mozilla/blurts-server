@@ -11,6 +11,7 @@ import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
+import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 
@@ -59,7 +60,7 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          {/* For the app and user menus */}
+          <UserMenu user={props.session && props.session.user} />
         </div>
       </header>
       <div className={styles.nonHeader}>

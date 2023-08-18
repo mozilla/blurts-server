@@ -1,6 +1,7 @@
 @import "../../../tokens";
 
 $button-size: 42px;
+
 .trigger {
   background: white;
   border-radius: 50%;
@@ -9,6 +10,10 @@ $button-size: 42px;
   height: $button-size;
   padding: 0;
   width: $button-size;
+
+  @media screen and (max-width: $screen-md) {
+    margin-right: $spacing-sm;
+  }
 
   &:focus {
     outline: 2px solid $color-purple-70;
@@ -36,6 +41,10 @@ $button-size: 42px;
     top: 0;
     transform: translateY(-50%) rotate(45deg);
     width: $tooltip-size;
+
+    @media screen and (max-width: $screen-md) {
+      right: calc($button-size * 0.5);
+    }
   }
 }
 
