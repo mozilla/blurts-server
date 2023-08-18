@@ -19,3 +19,10 @@ export const BreachDataTypes = {
   HistoricalPasswords: "historical-passwords",
   General: "general",
 } as const;
+
+export const HighRiskDataTypes = {
+  SSN: "social-security-numbers",
+  CreditCard: "partial-credit-card-data",
+  BankAccount: "bank-account-numbers",
+  PIN: "pins",
+} as const;

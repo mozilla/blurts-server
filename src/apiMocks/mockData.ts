@@ -9,7 +9,10 @@ import {
   RemovalStatusMap,
 } from "../app/functions/universal/scanResult";
 import { StateAbbr } from "../utils/states";
-import { BreachDataTypes } from "../app/functions/universal/breach";
+import {
+  BreachDataTypes,
+  HighRiskDataTypes,
+} from "../app/functions/universal/breach";
 import {
   DataClassEffected,
   SubscriberBreach,
@@ -86,14 +89,16 @@ export type RandomBreachOptions = Partial<{
 export function createRandomBreach(
   options: RandomBreachOptions = {}
 ): SubscriberBreach {
+  const dataClasses = options.isHighRiskOnly
+    ? faker.helpers.arrayElements(Object.values(HighRiskDataTypes))
+    : faker.helpers.arrayElements(Object.values(BreachDataTypes));
+
   faker.seed(options.fakerSeed);
   return {
     addedDate:
       options.addedDate?.toISOString() ?? faker.date.recent().toISOString(),
     breachDate: faker.date.recent().toISOString(),
-    dataClasses:
-      options.dataClasses ??
-      faker.helpers.arrayElements(Object.values(BreachDataTypes)),
+    dataClasses: options.dataClasses ?? dataClasses,
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
