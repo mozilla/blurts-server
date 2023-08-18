@@ -15,7 +15,8 @@ $button-size: 42px;
     margin-right: $spacing-sm;
   }
 
-  &:focus {
+  &:focus,
+  &:hover {
     outline: 2px solid $color-purple-70;
   }
 }
@@ -84,6 +85,7 @@ $button-size: 42px;
   background: none;
   border: 0;
   color: $color-black;
+  cursor: pointer;
   display: flex;
   gap: $spacing-sm;
   margin: 0;

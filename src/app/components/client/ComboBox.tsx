@@ -29,16 +29,10 @@ function ComboBox(props: ComboBoxProps) {
         listBoxRef,
         popoverRef,
       },
-      state
+      { ...state, isOpen: props.items?.length > 0 }
     );
   const isInvalid = validationState === "invalid";
   const showError = errorMessage && isInvalid;
-
-  if (!state.isOpen && props.items?.length > 0) {
-    state.open();
-  } else if (state.isOpen) {
-    state.close();
-  }
 
   return (
     <>
