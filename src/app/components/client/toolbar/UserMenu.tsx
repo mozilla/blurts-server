@@ -39,7 +39,7 @@ export const UserMenu = (props: UserMenuProps) => {
   const signOutItemRef = useRef<HTMLButtonElement>(null);
 
   if (!props.user) {
-    return <SignInButton autoSignIn />;
+    return <SignInButton />;
   }
 
   const itemKeys = {
@@ -160,11 +160,7 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
         onClick={() => state.open()}
       >
         <Image
-          alt={
-            !state.open
-              ? l10n.getString("user-menu-trigger-open-label")
-              : l10n.getString("user-menu-trigger-close-label")
-          }
+          alt={l10n.getString("user-menu-trigger-label")}
           height={42}
           src={props.user.fxa?.avatar || ""}
           unoptimized

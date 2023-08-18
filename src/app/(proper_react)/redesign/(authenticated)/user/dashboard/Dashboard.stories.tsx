@@ -156,11 +156,16 @@ const dashboardSummaryWithScan: DashboardSummary = {
   fixedSanitizedExposures: [],
 };
 
+const mockSession = {
+  expires: new Date().toISOString(),
+  user: { email: "example@example.com" },
+};
+
 export const DashboardWithScan: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
-        user={{ email: "example@example.com" }}
+        user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
@@ -176,10 +181,10 @@ export const DashboardWithScan: Story = {
 
 export const DashboardWithScanUserFromUs: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         countryCode="us"
-        user={{ email: "example@example.com" }}
+        user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
         locale={"en"}
@@ -195,9 +200,9 @@ export const DashboardWithScanUserFromUs: Story = {
 
 export const DashboardWithoutScan: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
-        user={{ email: "example@example.com" }}
+        user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
         locale={"en"}
@@ -213,9 +218,9 @@ export const DashboardWithoutScan: Story = {
 
 export const DashboardEmptyListState: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
-        user={{ email: "example@example.com" }}
+        user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
         locale={"en"}

@@ -23,8 +23,7 @@ toolbar-app-picker-product-fx-desktop = { -brand-fx-desktop }
 toolbar-app-picker-product-fx-mobile = { -brand-fx-mobile }
 toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 
-user-menu-trigger-open-label = Open menu
-user-menu-trigger-close-label = Close menu
+user-menu-trigger-label = Open menu
 user-menu-trigger-tooltip = Profile
 user-menu-manage-fxa-label = Manage your { -brand-fxa }
 user-menu-settings-label = Settings
