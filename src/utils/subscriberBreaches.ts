@@ -71,17 +71,7 @@ export async function getSubBreaches(
     );
 
     // breach resolution
-    const breachResolution = subscriber.breach_resolution
-      ? subscriber.breach_resolution[email.email]
-        ? subscriber.breach_resolution[email.email]
-        : // I think something's off with the code coverage measurement;
-          // AFAIK the next line does get hit. I don't think the line after that
-          // does, though, since `breach_resolution` is always defined.
-          // (i.e. I'm not sure why that check is there, and why one results in
-          // an empty array, and another in an empty object...)
-          /* c8 ignore next */
-          {}
-      : [];
+    const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
       const filteredBreachDataClasses: string[] = filterBreachDataTypes(
