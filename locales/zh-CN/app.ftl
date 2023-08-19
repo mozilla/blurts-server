@@ -693,3 +693,11 @@ breach-detail-cta-signup = 检查是否有外泄事件
 floating-banner-text = 通过来自 { -brand-Mozilla } 的新闻、提示和更新提高您的网络浏览安全。
 floating-banner-link-label = 注册
 floating-banner-dismiss-button-label = 不了，谢谢
+
+## False door test
+
+
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+
+false-door-test-cta = 我需要！
+false-door-test-popup-close = 关闭
