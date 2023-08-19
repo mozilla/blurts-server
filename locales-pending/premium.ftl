@@ -241,7 +241,11 @@ dashboard-exposures-all-fixed-label = All fixed here!
 
 # Variables: 
 # $data_broker_total_num is the total number of data brokers selling the user’s data.
-dashboard-exposures-all-fixed-free-scan = Next <free_scan_link>start your free scan</free_scan_link> of { $data_broker_total_num } sites that may be selling your personal info.
+dashboard-exposures-all-fixed-free-scan = {
+    $data_broker_total_num ->
+      [one] Next <link>start your free scan</link> of { $data_broker_total_num } site that may be selling your personal info.
+     *[other] Next <link>start your free scan</link> of { $data_broker_total_num } sites that may be selling your personal info.
+  }
 
 ## False door test
 
