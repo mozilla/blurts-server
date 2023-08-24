@@ -49,7 +49,7 @@ export class LandingPage {
     return {
       // identify expected URLs
       mozillaLogoUrl: "https://www.mozilla.org",
-      allBreachesUrl: "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/breaches",
+      allBreachesUrl: "/breaches",
       FAQUrl: "/firefox-monitor-faq",
       TermsUrl: "/privacy/firefox-monitor",
       GithubUrl: "https://github.com/mozilla/blurts-server",
