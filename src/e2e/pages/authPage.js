@@ -17,9 +17,8 @@ export class AuthPage {
 
   async continue () {
     await Promise.all([
-      this.continueButton.click(),
-      // delay for handling fxa auth loading
-      this.page.waitForURL('**/oauth/**', { timeout: 120 * 1000 }),
+      this.page.waitForNavigation(),
+      this.continueButton.click()
     ])
   }
 
