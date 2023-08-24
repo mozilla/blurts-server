@@ -17,13 +17,13 @@ export const ENV_URLS = {
 }
 
 export const setEnvVariables = async (email) => {
-  process.env['E2E_TEST_ENV'] = process.env.E2E_TEST_ENV || 'stage'
-  process.env['E2E_TEST_ACCOUNT_EMAIL'] = email
-  process.env['E2E_TEST_BASE_URL'] = ENV_URLS[process.env.E2E_TEST_ENV] || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net'
+  process.env.E2E_TEST_ENV = process.env.E2E_TEST_ENV || 'local'
+  process.env.E2E_TEST_ACCOUNT_EMAIL = email
+  process.env.E2E_TEST_BASE_URL = ENV_URLS[process.env.E2E_TEST_ENV] || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net'
 }
 
 export const getBaseUrl = async () => {
-  return ENV_URLS[process.env.E2E_TEST_ENV]
+  return ENV_URLS[process.env.E2E_TEST_ENV] || ENV_URLS.local
 }
 
 export const getVerificationCode = async (testEmail, page, attempts = 10) => {

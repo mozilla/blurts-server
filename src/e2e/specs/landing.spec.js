@@ -9,7 +9,7 @@ test.describe('Landing Page element verification', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
   })
-  test(' Verify that the site footer options work correctly ', async ({ landingPage, page }) => {
+  test(' Verify that the site footer options work correctly ', async ({ landingPage }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
