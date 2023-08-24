@@ -22,10 +22,8 @@ export const setEnvVariables = async (email) => {
   process.env['E2E_TEST_BASE_URL'] = ENV_URLS[process.env.E2E_TEST_ENV] || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net'
 }
 
-export const getBaseUrl = async (page) => {
-  // trim base url
-  const cu = page.url() || "https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net/"
-  return cu.slice(0, -1)
+export const getBaseUrl = async () => {
+  return ENV_URLS[process.env.E2E_TEST_ENV]
 }
 
 export const getVerificationCode = async (testEmail, page, attempts = 10) => {

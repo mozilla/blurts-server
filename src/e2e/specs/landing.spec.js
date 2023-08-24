@@ -16,7 +16,7 @@ test.describe('Landing Page element verification', () => {
       description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095095",
     });
 
-    const currentUrl = await getBaseUrl(page);
+    const currentUrl = await getBaseUrl();
     const links = await landingPage.links()
 
     // verify the actual hrefs in the footer matches expected
