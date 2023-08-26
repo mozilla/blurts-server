@@ -10,7 +10,7 @@ exposure-landing-result-error = Une erreur s’est produite lors de la vérifica
 #   $count (number) - Number of data breaches in which the user's data was found
 exposure-landing-result-hero-heading =
     { $count ->
-        [one] Nous avons détecté <email>{ $email }</email> dans <count>1</count> fuite de données.
+        [one] Nous avons détecté <email>{ $email }</email> dans <count>{ $count }</count> fuite de données.
        *[other] Nous avons détecté <email>{ $email }</email> dans <count>{ $count }</count> fuites de données.
     }
 exposure-landing-result-card-added = Fuite de données ajoutée :
