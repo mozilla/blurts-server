@@ -771,14 +771,6 @@ breach-detail-cta-signup = Ehechajey oĩpa ñembogua
 
 ## Floating banner
 
+floating-banner-text = Eñemohekorosãve ñandutípe marandu, ha { -brand-Mozilla } ñembohekopyahu ndive.
 floating-banner-link-label = Eñemboheraguapy
 floating-banner-dismiss-button-label = Nahániri, aguyje
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-two-dashboard = Embogue pya’e umi mba’ekuaarã tenda oñehepyme’ẽséva rehegua.
-false-door-test-cta = Aime nendive
-false-door-test-popup-close = Mboty

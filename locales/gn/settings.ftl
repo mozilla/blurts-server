@@ -64,6 +64,9 @@ settings-send-email-verification-button = Emondo juajuha jehechajeyrã
 ## Unsubscribe Dialog Survey
 
 settings-unsubscribe-dialog-title = Rombyasy resẽ haguére. <br /> ¿Ikatúpa emombe’umi mba’érepa resẽra’e?
+settings-unsubscribe-dialog-info = Nde rekoasakue ore romomba’eterei. Romoñe’ẽ peteĩteĩva ñembohovái ha rohecharamo akóinte.
 settings-unsubscribe-dialog-message-placeholder = ¿Mba’épa pe ohoporãvekuaáva?
+# $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
+settings-unsubscribe-dialog-confirmation = Ikatúpa, ehecháke opaite ne mba’epuru { -brand-monitor-premium } rehegua <a { $faq_href }>oñembogue tapiáta</a> opaite rire nde kuatiañemure ag̃agua.
 settings-unsubscribe-dialog-continue = Emongu’ejey pe jeipe’a
 settings-unsubscribe-dialog-cancel = Marave ndoikói, jajevyjey
