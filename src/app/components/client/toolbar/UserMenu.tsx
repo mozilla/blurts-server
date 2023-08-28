@@ -27,7 +27,7 @@ import HelpIcon from "./images/menu-icon-help.svg";
 import SignOutIcon from "./images/menu-icon-signout.svg";
 
 export type UserMenuProps = {
-  user: Session["user"] | null;
+  user?: Session["user"];
 };
 
 export const UserMenu = (props: UserMenuProps) => {
@@ -109,7 +109,7 @@ export const UserMenu = (props: UserMenuProps) => {
           ref={helpItemRef}
           rel="noopener noreferrer"
           target="_blank"
-          title={l10n.getString("user-menu-help-label-tooltip")}
+          title={l10n.getString("user-menu-help-tooltip")}
         >
           <Image src={HelpIcon} alt="" height={24} width={24} />
           {l10n.getString("user-menu-help-label")}

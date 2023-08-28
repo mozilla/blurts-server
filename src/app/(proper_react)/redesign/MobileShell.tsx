@@ -60,7 +60,7 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          <UserMenu user={props.session && props.session.user} />
+          <UserMenu user={props.session?.user} />
         </div>
       </header>
       <div className={styles.nonHeader}>
