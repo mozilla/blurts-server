@@ -10,14 +10,14 @@
   // Overlap all regular content on the site with a z-index,
   // except for ModalOverlay which, at the time of writing, has a z-index of 2
   z-index: 1;
-  padding-block: $spacing-md;
   width: 100%;
-  align-items: center;
   background-color: #ffdff0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   gap: $spacing-xl;
+  padding-inline: $spacing-sm;
+  padding-block: $spacing-md;
 
   @media screen and (min-width: $screen-lg) {
     padding-inline: $spacing-2xl;
@@ -25,9 +25,16 @@
   }
 
   .dismiss {
-    align-self: flex-start;
-    margin-left: auto;
+    right: $spacing-sm;
+    position: absolute;
     color: $color-grey-40;
+
+    @media screen and (min-width: $screen-lg) {
+      align-self: flex-start;
+      margin-left: auto;
+      position: static;
+      right: 0;
+    }
 
     &:focus {
       border: 1px solid $color-informational-active;
@@ -43,7 +50,8 @@
     align-items: center;
     gap: $spacing-md;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
+    padding: $spacing-sm $spacing-lg $spacing-sm $spacing-sm;
 
     .imageAndCopy {
       display: flex;
@@ -51,7 +59,8 @@
     }
 
     @media screen and (min-width: $screen-lg) {
-      padding-left: $spacing-2xl;
+      justify-content: space-between;
+      padding: 0;
     }
 
     .logo {

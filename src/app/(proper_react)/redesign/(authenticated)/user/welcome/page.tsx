@@ -6,19 +6,25 @@ import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
 import { redirect } from "next/navigation";
 import {
-  isEligible,
+  isEligibleForFreeScan,
   ONEREP_DATA_BROKER_COUNT,
 } from "../../../../../functions/server/onerep";
 import { View } from "./View";
 import { getAllBreachesCount } from "../../../../../../db/tables/breaches";
+import { getCountryCode } from "../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
+import { authOptions } from "../../../../../api/utils/auth";
 
 export default async function Onboarding() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
   if (!session) {
     return <SignInButton autoSignIn={true} />;
   }
 
-  const userIsEligible = await isEligible();
+  const userIsEligible = await isEligibleForFreeScan(
+    session.user,
+    getCountryCode(headers())
+  );
   if (!userIsEligible) {
     return redirect("/");
   }

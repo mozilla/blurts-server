@@ -774,3 +774,14 @@ breach-detail-cta-signup = Periksa pembobolan data
 floating-banner-text = Tingkatkan keamanan daring Anda dengan berita, kiat, dan pembaruan dari { -brand-Mozilla }.
 floating-banner-link-label = Daftar
 floating-banner-dismiss-button-label = Tidak, terima kasih
+
+## False door test
+
+
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+
+false-door-test-content-part-one = Tidak seorang pun dapat membeli informasi pribadi Anda.
+false-door-test-content-part-two = Secara otomatis menghapus data dari situs yang mencoba menjualnya.
+false-door-test-content-part-two-dashboard = Hapus otomatis data dari situs yang mencoba menjualnya.
+false-door-test-cta = Hitung saya
+false-door-test-popup-close = Tutup

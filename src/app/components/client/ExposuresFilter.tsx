@@ -199,6 +199,12 @@ export const ExposuresFilter = ({
     }
   }, [filterDialogState, filterValues, filterState]);
 
+  const exposureTypeExplainerTriggerRef = useRef<HTMLButtonElement>(null);
+  const exposureTypeExplainerTriggerProps = useButton(
+    explainerDialogTrigger.triggerProps,
+    exposureTypeExplainerTriggerRef
+  ).buttonProps;
+
   return (
     <>
       <div className={styles.filterHeaderWrapper}>
@@ -222,8 +228,9 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-exposure-type")}
             <button
+              ref={exposureTypeExplainerTriggerRef}
               aria-label={l10n.getString("modal-open-alt")}
-              {...explainerDialogTrigger.triggerProps}
+              {...exposureTypeExplainerTriggerProps}
               onClick={() => openExplainerDialog("exposure")}
             >
               <QuestionMarkCircle

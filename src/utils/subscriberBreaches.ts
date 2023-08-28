@@ -71,11 +71,7 @@ export async function getSubBreaches(
     );
 
     // breach resolution
-    const breachResolution = subscriber.breach_resolution
-      ? subscriber.breach_resolution[email.email]
-        ? subscriber.breach_resolution[email.email]
-        : {}
-      : [];
+    const breachResolution = subscriber.breach_resolution?.[email.email] ?? {};
 
     for (const breach of foundBreaches) {
       const filteredBreachDataClasses: string[] = filterBreachDataTypes(

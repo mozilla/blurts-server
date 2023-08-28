@@ -846,3 +846,14 @@ breach-detail-cta-signup = Preverite kraje podatkov
 floating-banner-text = Okrepite svojo spletno varnost z novicami, nasveti in posodobitvami { -brand-Mozilla(sklon: "rodilnik") }.
 floating-banner-link-label = Prijava
 floating-banner-dismiss-button-label = Ne, hvala
+
+## False door test
+
+
+# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
+
+false-door-test-content-part-one = Nihče ne bi smel imeti možnosti kupiti vaših osebnih podatkov.
+false-door-test-content-part-two = Samodejno odstrani podatke s strani, ki jih poskušajo prodajati.
+false-door-test-content-part-two-dashboard = Samodejno izbriši podatke s strani, ki jih poskušajo prodajati.
+false-door-test-cta = Štejte me zraven
+false-door-test-popup-close = Zapri
