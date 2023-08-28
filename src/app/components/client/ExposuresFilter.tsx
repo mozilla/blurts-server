@@ -285,7 +285,7 @@ type FilterDialogProps = AriaDialogProps & {
 };
 const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
-  const { dialogProps } = useDialog({ ...otherProps }, dialogRef);
+  const { dialogProps } = useDialog(otherProps, dialogRef);
 
   return (
     <div {...dialogProps} className={styles.filterDialog} ref={dialogRef}>
