@@ -9,13 +9,10 @@ import CreditCardIllustration from "../images/high-risk-data-breach-credit-card.
 import BankAccountIllustration from "../images/high-risk-data-breach-bank-account.svg";
 import pinIllustration from "../images/high-risk-data-breach-pin.svg";
 import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
-import Image from "next/image";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { Button } from "../../../../../../../components/server/Button";
-import Link from "next/link";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
-import { ClockIcon } from "../../../../../../../components/server/Icons";
 import { useL10n } from "../../../../../../../hooks/l10n";
+import { ResolutionContentLayout } from "../ResolutionContentLayout";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
@@ -138,48 +135,31 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
   }
 
   return (
-    <div className={styles.container}>
-      <div className={styles.breachContentWrapper}>
-        <h3>{title}</h3>
-        <p>
-          {l10n.getString("high-risk-breach-summary", {
-            num_breaches: exposedData.length,
-          })}
-        </p>
-        {breachList}
-        <p>{secondaryDescription}</p>
-        <div className={styles.recommendations}>
-          <h4>{l10n.getString("high-risk-breach-heading")}</h4>
-          <p>{l10n.getString("high-risk-breach-subheading")}</p>
-          {recommendationSteps}
-        </div>
-        <div className={styles.buttons}>
-          <Button
-            variant="primary"
-            small
-            onClick={() => {
-              // MNTOR-1700 Add routing logic here
-            }}
-          >
-            {l10n.getString("high-risk-mark-as-fixed")}
-          </Button>
-          <Link
-            // TODO: MNTOR-1700 Add routing logic here
-            href="/"
-          >
-            {l10n.getString("high-risk-breach-skip")}
-          </Link>
-        </div>
-        <div className={styles.estimatedTime}>
-          <ClockIcon width="20" height="20" />
-          {l10n.getString("high-risk-breach-estimated-time", {
-            estimated_time: 15,
-          })}
-        </div>
+    <ResolutionContentLayout
+      type="highRisk"
+      title={title}
+      illustration={breachIllustration}
+      cta={{
+        label: l10n.getString("high-risk-breach-mark-as-fixed"),
+        onClick: () => {
+          // TODO: MNTOR-1700 Add routing logic + fix event here
+        },
+        skip: "/", // TODO: MNTOR-1700 Add routing logic here
+      }}
+      estimatedTime={15}
+    >
+      <p>
+        {l10n.getString("high-risk-breach-summary", {
+          num_breaches: exposedData.length,
+        })}
+      </p>
+      {breachList}
+      <p>{secondaryDescription}</p>
+      <div className={styles.recommendations}>
+        <h4>{l10n.getString("high-risk-breach-heading")}</h4>
+        <p>{l10n.getString("high-risk-breach-subheading")}</p>
+        {recommendationSteps}
       </div>
-      <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
-        <Image src={breachIllustration} alt="" />
-      </div>
-    </div>
+    </ResolutionContentLayout>
   );
 };
