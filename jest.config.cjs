@@ -76,6 +76,12 @@ const customJestConfig = {
       lines: 50,
       statements: 90,
     },
+    "src/app/(nextjs_migration)/components/client/SignInButton.tsx": {
+      branches: 100,
+      functions: 0,
+      lines: 42,
+      statements: 42,
+    },
     "src/app/(proper_react)/redesign/MobileShell.tsx": {
       branches: 50,
       functions: 50,
@@ -199,6 +205,12 @@ const customJestConfig = {
       functions: 37,
       lines: 72,
       statements: 72,
+    },
+    "src/app/components/client/toolbar/UserMenu.tsx": {
+      branches: 66,
+      functions: 28,
+      lines: 80,
+      statements: 80,
     },
     "src/app/components/server/Icons.tsx": {
       branches: 90,
