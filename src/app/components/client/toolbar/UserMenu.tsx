@@ -79,6 +79,7 @@ export const UserMenu = (props: UserMenuProps) => {
           className={styles.menuItemCta}
           href={process.env.NEXT_PUBLIC_FXA_SETTINGS_URL}
           ref={fxaItemRef}
+          rel="noopener noreferrer"
           target="_blank"
         >
           {l10n.getString("user-menu-manage-fxa-label")}
