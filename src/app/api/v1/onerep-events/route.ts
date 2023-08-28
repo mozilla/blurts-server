@@ -19,7 +19,7 @@ interface OnerepWebhookRequest {
       id: number;
       profile_id: number;
       status: "finished";
-      reason: "manual";
+      reason: "manual" | "initial" | "monitoring";
       created_at: string;
       updated_at: string;
       url: string;
@@ -29,20 +29,19 @@ interface OnerepWebhookRequest {
 }
 
 export async function POST(req: NextRequest) {
-  let finalBuffer;
+  let finalBuffer: Buffer;
   try {
     if (!process.env.ONEREP_WEBHOOK_SECRET) {
       throw new Error("env var ONEREP_WEBHOOK_SECRET must be set");
     }
 
-    const buffers = [];
-    // @ts-ignore TODO convince TypeScript req.body is not null
+    const buffers: Buffer[] = [];
+    // @ts-ignore FIXME Type error: Type 'ReadableStream<Uint8Array>' must have a '[Symbol.asyncIterator]()' method that returns an async iterator.
     for await (const data of req.body) {
       buffers.push(data);
     }
     finalBuffer = Buffer.concat(buffers);
 
-    // @ts-ignore TODO convince TypeScript that .get exists here
     const actualSignature = req.headers.get("signature");
 
     const expectedSignature = crypto
@@ -68,6 +67,7 @@ export async function POST(req: NextRequest) {
       console.debug("Unexpected OneRep webhook type received:", result.type);
       return;
     }
+
     if (result.data.object.status !== "finished") {
       console.debug(
         "Received OneRep webhook, but scan not finished",
@@ -78,13 +78,19 @@ export async function POST(req: NextRequest) {
 
     const profileId = result.data.object.profile_id;
     const scanId = result.data.object.id;
+    const reason = result.data.object.reason;
 
     // The webhook just tells us which scan ID finished, we need to fetch the payload.
     const scanListFull = await getAllScanResults(profileId);
     // Store full list of results in the DB.
-    await setOnerepScanResults(profileId, scanId, {
-      data: scanListFull,
-    });
+    await setOnerepScanResults(
+      profileId,
+      scanId,
+      {
+        data: scanListFull,
+      },
+      reason
+    );
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {

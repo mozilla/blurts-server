@@ -771,5 +771,6 @@ breach-detail-cta-signup = Ehechajey oĩpa ñembogua
 
 ## Floating banner
 
+floating-banner-text = Eñemohekorosãve ñandutípe marandu, ha { -brand-Mozilla } ñembohekopyahu ndive.
 floating-banner-link-label = Eñemboheraguapy
 floating-banner-dismiss-button-label = Nahániri, aguyje

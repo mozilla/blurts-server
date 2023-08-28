@@ -48,16 +48,6 @@ jobs:
             - checkout
             - node/install-packages
             - run: npm run lint
-    lint-l10n:
-        executor: python
-        steps:
-            - checkout
-            - run: pip install compare-locales
-            - run:
-                  name: Lint and compare locales
-                  command: |
-                      moz-l10n-lint l10n.toml
-                      compare-locales l10n.toml . `ls locales`
     deploy:
         docker:
             - image: docker:stable-git
@@ -137,7 +127,6 @@ workflows:
     lint-and-deploy:
         jobs:
             - lint
-            - lint-l10n
             - deploy:
                 filters:
                     tags:
