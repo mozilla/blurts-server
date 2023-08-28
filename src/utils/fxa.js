@@ -113,7 +113,7 @@ async function getProfileData (accessToken) {
  * @param {string} path
  */
 async function sendMetricsFlowPing (path) {
-  const fxaMetricsFlowUrl = new URL(path, AppConstants.FXA_SETTINGS_URL)
+  const fxaMetricsFlowUrl = new URL(path, AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL)
   try {
     const response = await fetch(fxaMetricsFlowUrl, {
       headers: { Origin: AppConstants.SERVER_URL }
