@@ -10,7 +10,6 @@ import React, {
   ReactNode,
   createContext,
   useContext,
-  useEffect,
   useRef,
   useState,
 } from "react";
@@ -77,8 +76,19 @@ export const ExposuresFilter = ({
   };
 
   // Filter Dialog
+  const [filterState, setFilterState] = useState<FilterState>(filterValues);
   const popoverRef = useRef(null);
-  const filterDialogState = useOverlayTriggerState({});
+  const handleRadioChange = (type: string, value: string) => {
+    setFilterState((prevFilterState) => ({
+      ...prevFilterState,
+      [type]: value,
+    }));
+  };
+  const filterDialogState = useOverlayTriggerState({
+    onOpenChange: () => {
+      setFilterState(filterValues);
+    },
+  });
   const filterBtnRef = useRef<HTMLButtonElement>(null);
   const { overlayProps } = useOverlayTrigger(
     { type: "dialog" },
@@ -89,22 +99,11 @@ export const ExposuresFilter = ({
   const dismissButtonProps = useButton(
     {
       onPress: () => {
-        setFilterState(filterValues);
-        setFilterValues(filterValues);
         filterDialogState.close();
       },
     },
     dismissButtonRef
   ).buttonProps;
-
-  const [filterState, setFilterState] = useState<FilterState>(filterValues);
-
-  const handleRadioChange = (type: string, value: string) => {
-    setFilterState((prevFilterState) => ({
-      ...prevFilterState,
-      [type]: value,
-    }));
-  };
 
   const handleSaveButtonClick: FormEventHandler = (event) => {
     event.preventDefault();
@@ -191,14 +190,6 @@ export const ExposuresFilter = ({
     </form>
   );
 
-  // Reset current filter state if selection has not been confirmed.
-  useEffect(() => {
-    const shouldResetFilterState = filterValues !== filterState;
-    if (!filterDialogState.isOpen && shouldResetFilterState) {
-      setFilterState(filterValues);
-    }
-  }, [filterDialogState, filterValues, filterState]);
-
   const exposureTypeExplainerTriggerRef = useRef<HTMLButtonElement>(null);
   const exposureTypeExplainerTriggerProps = useButton(
     explainerDialogTrigger.triggerProps,
@@ -263,7 +254,6 @@ export const ExposuresFilter = ({
       {filterDialogState.isOpen && (
         <Popover
           crossOffset={100}
-          isOpen={filterDialogState.isOpen}
           offset={10}
           popoverRef={popoverRef}
           state={filterDialogState}
