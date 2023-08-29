@@ -81,9 +81,11 @@
       z-index: 1;
 
       .mainMenu {
+        align-items: center;
         display: flex;
         background-color: $color-white;
         box-shadow: $box-shadow-sm;
+        flex-direction: column;
 
         ul {
           list-style-type: none;

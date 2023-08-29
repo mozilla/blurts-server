@@ -10,9 +10,11 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
+import PremiumBadge from "../../components/server/PremiumBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
+import { hasPremium } from "../../functions/universal/user";
 
 export type Props = {
   children: ReactNode;
@@ -86,6 +88,9 @@ export const MobileShell = (props: Props) => {
                 </a>
               </li>
             </ul>
+            {props.session?.user && hasPremium(props.session.user) && (
+              <PremiumBadge />
+            )}
           </div>
         </nav>
         <div className={styles.content}>{props.children}</div>

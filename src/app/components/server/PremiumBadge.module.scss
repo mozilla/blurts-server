@@ -1,0 +1,20 @@
+@import "../../tokens";
+
+.badge {
+  align-items: center;
+  background-color: $color-purple-70;
+  border-radius: $border-radius-xl;
+  color: white;
+  display: flex;
+  font: $text-body-sm;
+  font-weight: 600;
+  gap: $spacing-xs;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md $spacing-sm $spacing-sm;
+  user-select: none;
+
+  @media screen and (max-width: $screen-md) {
+    margin: $spacing-md;
+    min-width: $screen-xs;
+  }
+}
