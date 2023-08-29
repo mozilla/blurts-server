@@ -169,7 +169,7 @@ At the beginning of a test suite run, the `test-blurts` database will be populat
 
 At the end of a test suite run in CircleCI, coverage info will be sent to [Coveralls](https://coveralls.io/) to assess coverage changes and provide a neat badge. To upload coverage locally, you need a root `.coveralls.yml` which contains a token – get this from another member of the Monitor team.
 
-End-to-End tests use Playwright and can be run via `npm run e2e`.
+End-to-End tests use Playwright and can be run via `npm run e2e`. [E2E-How-To](https://github.com/mozilla/blurts-server/src/e2e) for more info.
 
 #### Test Firefox Integration
 
