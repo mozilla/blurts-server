@@ -19,7 +19,7 @@ export const Toolbar = (props: Props) => {
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
         <AppPicker />
-        <UserMenu user={props.user} />
+        {props.user && <UserMenu user={props.user} />}
       </div>
     </nav>
   );
