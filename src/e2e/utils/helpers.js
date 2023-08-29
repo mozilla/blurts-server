@@ -22,6 +22,10 @@ export const setEnvVariables = async (email) => {
   process.env.E2E_TEST_BASE_URL = ENV_URLS[process.env.E2E_TEST_ENV] || 'https://stage.firefoxmonitor.nonprod.cloudops.mozgcp.net'
 }
 
+export const getBaseUrl = async () => {
+  return ENV_URLS[process.env.E2E_TEST_ENV] || ENV_URLS.local
+}
+
 export const getVerificationCode = async (testEmail, page, attempts = 10) => {
   if (attempts === 0) {
     throw new InternalServerError('Unable to retrieve restmail data')
