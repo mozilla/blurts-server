@@ -17,9 +17,11 @@ export type Props = {
 export default function PremiumBadge({ user }: Props) {
   const l10n = useL10n();
 
+  /* c8 ignore start */
   const onUpgrade = () => {
     // TODO: MNTOR-1292: Show premium upsell modal
   };
+  /* c8 ignore end */
 
   return user && hasPremium(user) ? (
     <div className={styles.badge}>

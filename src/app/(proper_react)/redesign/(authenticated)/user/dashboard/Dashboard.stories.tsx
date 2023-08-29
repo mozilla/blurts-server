@@ -156,6 +156,11 @@ const dashboardSummaryWithScan: DashboardSummary = {
   fixedSanitizedExposures: [],
 };
 
+const mockSession = {
+  expires: new Date().toISOString(),
+  user: { email: "example@example.com" },
+};
+
 const userWithPremiumSubscription = {
   email: "example@example.com",
   fxa: {
@@ -170,7 +175,7 @@ const userWithPremiumSubscription = {
 
 export const DashboardWithScan: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
@@ -188,7 +193,7 @@ export const DashboardWithScan: Story = {
 
 export const DashboardWithScanUserFromUs: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         countryCode="us"
         user={{ email: "example@example.com" }}
@@ -207,7 +212,7 @@ export const DashboardWithScanUserFromUs: Story = {
 
 export const DashboardWithoutScan: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
@@ -225,7 +230,7 @@ export const DashboardWithoutScan: Story = {
 
 export const DashboardEmptyListState: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
@@ -243,7 +248,7 @@ export const DashboardEmptyListState: Story = {
 
 export const DashboardFreeUser: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         countryCode="us"
         user={{ email: "example@example.com" }}
@@ -262,7 +267,10 @@ export const DashboardFreeUser: Story = {
 
 export const DashboardPremiumUser: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell
+      l10n={getEnL10nSync()}
+      session={{ ...mockSession, user: userWithPremiumSubscription }}
+    >
       <DashboardEl
         countryCode="us"
         user={userWithPremiumSubscription}

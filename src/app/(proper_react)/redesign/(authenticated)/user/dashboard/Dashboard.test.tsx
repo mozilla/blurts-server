@@ -69,16 +69,18 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
   render(<ComposedDashboard />);
 
-  const premiumCta = screen.getByRole("button", {
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
     name: "Upgrade to Premium",
   });
-  expect(premiumCta).toBeInTheDocument();
+  expect(premiumCtas.length).toBe(2);
 });
 
 it("shows the premium badge if the user is a premium subscriber", () => {
   const ComposedDashboard = composeStory(DashboardPremiumUser, Meta);
   render(<ComposedDashboard />);
 
-  const premiumBadge = screen.getByText("Premium");
-  expect(premiumBadge).toBeInTheDocument();
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
 });
