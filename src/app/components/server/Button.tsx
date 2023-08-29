@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ComponentProps, HTMLAttributes, ReactNode } from "react";
+import { ComponentProps, HTMLAttributes, ReactNode, useRef } from "react";
 import Link from "next/link";
 import styles from "./button.module.scss";
+import { useButton } from "react-aria";
 
 export interface Props extends ComponentProps<"button"> {
   children: ReactNode;
@@ -14,12 +15,11 @@ export interface Props extends ComponentProps<"button"> {
   disabled?: boolean;
   href?: string;
   isLoading?: boolean;
-  onClick?: () => void;
   small?: boolean;
 }
 
 export const Button = (
-  props: Props & HTMLAttributes<HTMLButtonElement | HTMLLinkElement>
+  props: Props & Parameters<typeof useButton>[0] // AriaButtonOptions
 ) => {
   const {
     buttonType,
@@ -28,11 +28,13 @@ export const Button = (
     disabled,
     href,
     isLoading,
-    onClick,
     small,
     variant,
     ...otherProps
   } = props;
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(otherProps, buttonRef);
 
   const classes = [
     styles.button,
@@ -56,7 +58,7 @@ export const Button = (
       {children}
     </Link>
   ) : (
-    <button {...otherProps} className={classes} onClick={onClick}>
+    <button {...buttonProps} ref={buttonRef} className={classes}>
       {children}
     </button>
   );
