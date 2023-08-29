@@ -2,15 +2,15 @@
 # License, v. 2.0. If a copy of the MPL was not distributed with this
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 
+# For more information on configuring this file:
+# https://mozilla.github.io/glean/book/reference/yaml/metrics.html
+
 ---
 $schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
 
 app_events:
   page_view:
     type: event
-    lifetime: ping
-    send_in_pings:
-      - events
     description: |
       A generic page view event with extras.
     bugs:
@@ -30,9 +30,6 @@ app_events:
         type: string
   button_click:
     type: event
-    lifetime: ping
-    send_in_pings:
-      - events
     description: |
       A generic button click event with extras.
     bugs:
