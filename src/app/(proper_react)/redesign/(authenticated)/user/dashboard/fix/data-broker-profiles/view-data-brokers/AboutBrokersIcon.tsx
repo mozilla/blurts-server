@@ -9,7 +9,7 @@ import { useButton, useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
 import Image from "next/image";
 import styles from "./AboutBrokersIcon.module.scss";
-import DialogIllustration from "./images/Exploring on Laptop.svg";
+import DialogIllustration from "./images/about-brokers-illustration.svg";
 import { QuestionMarkCircle } from "../../../../../../../../components/server/Icons";
 import { useL10n } from "../../../../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../../../../components/client/dialog/ModalOverlay";

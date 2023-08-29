@@ -25,6 +25,7 @@ career-levels = Karriêrenivo's
 cellular-network-names = Mobyl-netwurknammen
 charitable-donations = Goeddiedigensdoelen
 chat-logs = Chatlochboeken
+clothing-sizes = Kleanmjitten
 credit-card-cvv = Creditcard-CVV
 credit-cards = Creditcards
 credit-status-information = Ynformaasje oer kreditsteat

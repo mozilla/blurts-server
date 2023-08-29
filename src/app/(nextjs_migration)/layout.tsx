@@ -5,7 +5,7 @@
 import { ReactNode } from "react";
 import Script from "next/script";
 import { L10nProvider } from "../../contextProviders/localization";
-import { getL10nBundles } from "../functions/server/l10n";
+import { getL10nBundles, getLocale } from "../functions/server/l10n";
 import { HandleFalseDoorTest } from "./components/client/FalseDoorBanner";
 import { isFlagEnabled } from "../functions/server/featureFlags";
 import { getCountryCode } from "../functions/server/getCountryCode";
@@ -22,6 +22,14 @@ export default async function MigrationLayout({
   const countryCode = getCountryCode(headersList);
   const falseDoorFlag = await isFlagEnabled("FalseDoorTest");
   const waitlistLink = AppConstants.FALSE_DOOR_TEST_LINK_PHASE_ONE;
+  const acceptLanguage = headersList.get("Accept-Language");
+
+  let locale = "";
+  if (acceptLanguage) {
+    const acceptedLocales = acceptLanguage.split(",");
+    const primaryLocale = acceptedLocales[0];
+    locale = primaryLocale.split(";")[0];
+  }
 
   return (
     <L10nProvider bundleSources={l10nBundles}>
@@ -36,9 +44,12 @@ export default async function MigrationLayout({
       />
       <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
       {children}
-      {falseDoorFlag && waitlistLink && countryCode.toLowerCase() === "us" && (
-        <HandleFalseDoorTest link={waitlistLink} />
-      )}
+      {falseDoorFlag &&
+        waitlistLink &&
+        countryCode.toLowerCase() === "us" &&
+        ["en", "en-GB", "en-US", "en-CA"].includes(locale) && (
+          <HandleFalseDoorTest link={waitlistLink} />
+        )}
     </L10nProvider>
   );
 }
