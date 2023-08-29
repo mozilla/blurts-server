@@ -11,6 +11,8 @@ import Meta, {
   DashboardWithScan,
   DashboardWithScanUserFromUs,
   DashboardWithoutScan,
+  DashboardFreeUser,
+  DashboardPremiumUser,
 } from "./Dashboard.stories";
 
 jest.mock("next/navigation", () => ({
@@ -61,4 +63,22 @@ it("switches between tab panels", async () => {
   await user.click(tabFixedTrigger);
   expect(tabFixedTrigger.getAttribute("aria-selected")).toBe("true");
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
+});
+
+it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
+  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  render(<ComposedDashboard />);
+
+  const premiumCta = screen.getByRole("button", {
+    name: "Upgrade to Premium",
+  });
+  expect(premiumCta).toBeInTheDocument();
+});
+
+it("shows the premium badge if the user is a premium subscriber", () => {
+  const ComposedDashboard = composeStory(DashboardPremiumUser, Meta);
+  render(<ComposedDashboard />);
+
+  const premiumBadge = screen.getByText("Premium");
+  expect(premiumBadge).toBeInTheDocument();
 });

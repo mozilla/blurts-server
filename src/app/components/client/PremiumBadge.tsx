@@ -18,7 +18,7 @@ export default function PremiumBadge({ user }: Props) {
   const l10n = useL10n();
 
   const onUpgrade = () => {
-    console.log("upgrade");
+    // TODO: MNTOR-1292: Show premium upsell modal
   };
 
   return user && hasPremium(user) ? (

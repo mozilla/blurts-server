@@ -156,6 +156,18 @@ const dashboardSummaryWithScan: DashboardSummary = {
   fixedSanitizedExposures: [],
 };
 
+const userWithPremiumSubscription = {
+  email: "example@example.com",
+  fxa: {
+    locale: "us",
+    twoFactorAuthentication: false,
+    metricsEnabled: false,
+    avatar: "",
+    avatarDefault: true,
+    subscriptions: ["monitor"],
+  },
+};
+
 export const DashboardWithScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={null}>
@@ -220,6 +232,44 @@ export const DashboardEmptyListState: Story = {
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardFreeUser: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        countryCode="us"
+        user={{ email: "example@example.com" }}
+        userBreaches={breachItemArraySample}
+        userScannedResults={scannedResultsArraySample}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardPremiumUser: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        countryCode="us"
+        user={userWithPremiumSubscription}
+        userBreaches={breachItemArraySample}
+        userScannedResults={scannedResultsArraySample}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
