@@ -24,6 +24,7 @@ export const PageLink = (props: Props) => {
     /* c8 ignore next */
     activeClassSuffix ?? ""
   }`.trim();
+  /* c8 ignore stop */
 
   return <Link {...otherProps} className={className} />;
 };
