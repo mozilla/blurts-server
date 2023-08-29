@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { ComponentProps, HTMLAttributes, ReactNode, useRef } from "react";
+import { ComponentProps, ReactNode, useRef } from "react";
 import Link from "next/link";
 import styles from "./button.module.scss";
 import { useButton } from "react-aria";
