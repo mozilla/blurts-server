@@ -113,7 +113,7 @@ rec-gen-3 =
     Ani eme’ẽ mba’ekuaarã ndejehegua natekotevẽirõ. Ojejerurérõ 
     emoingévo térã eme’ẽ ñanduti veve kundaharape, código postal térã pumbyry papapy, ikatu embotove.
 # Recommendation subhead
-rec-gen-4-subhead = Embohekopyahu meme software ha tembipuru’i
+rec-gen-4-subhead = Embohekopyahu meme software ha tembiporu’i
 rec-gen-4 =
-    Pe ñembohekopyahu tembipuru’i, kundahára ha apopyvusu oku’éva ne pumbyry ha’evéva ojapo 
+    Ñembohekopyahu tembiporu’i, kundahára ha apopyvusu oku’éva ne pumbyry ha’evéva ojapo 
     mba’e’okágui hekorosãva. Ko’ã ñembohekopyahu omoiporã jejavy, software ñembyaikuaa ha tekorosã apañuãi.
