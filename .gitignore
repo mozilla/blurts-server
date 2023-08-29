@@ -63,3 +63,7 @@ next-env.d.ts
 
 # Sentry Auth Token
 .sentryclirc
+
+# Glean
+.venv
+/src/telemetry/generated/

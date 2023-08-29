@@ -24,7 +24,8 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "create-location-data": "node src/scripts/uploadAutoCompleteLocations.js",
-    "get-location-data": "node src/scripts/getAutoCompleteLocations.js"
+    "get-location-data": "node src/scripts/getAutoCompleteLocations.js",
+    "build-glean": "glean translate src/telemetry/metrics.yaml --format javascript --output src/telemetry/generated"
   },
   "nodemonConfig": {
     "watch": [
@@ -53,6 +54,7 @@
     "@fluent/langneg": "^0.6.2",
     "@fluent/react": "^0.15.0",
     "@leeoniya/ufuzzy": "^1.0.8",
+    "@mozilla/glean": "^2.0.1",
     "@sentry/nextjs": "^7.58.1",
     "@sentry/node": "^7.58.1",
     "@sentry/tracing": "^7.58.1",

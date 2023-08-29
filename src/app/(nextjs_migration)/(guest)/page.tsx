@@ -12,6 +12,7 @@ import LaptopImage from "../../../client/images/landing-laptop@2x.webp";
 import LockImage from "../../../client/images/landing-lock@2x.webp";
 import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
+import { PageLoad } from "../components/client/PageLoad";
 import { getNonce } from "../functions/server/getNonce";
 
 export default function Home() {
@@ -34,6 +35,7 @@ export default function Home() {
         src="/nextjs_migration/client/js/landing.js"
         nonce={getNonce()}
       />
+      <PageLoad pageTitle="Home" />
       <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>
