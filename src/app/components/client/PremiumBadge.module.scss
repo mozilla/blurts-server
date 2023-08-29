@@ -12,9 +12,4 @@
   justify-content: center;
   padding: $spacing-sm $spacing-md $spacing-sm $spacing-sm;
   user-select: none;
-
-  @media screen and (max-width: $screen-md) {
-    margin: $spacing-md;
-    min-width: $screen-xs;
-  }
 }

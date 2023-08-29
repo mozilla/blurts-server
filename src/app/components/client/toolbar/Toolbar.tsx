@@ -7,8 +7,7 @@ import styles from "./Toolbar.module.scss";
 import { UserMenu } from "./UserMenu";
 import { Session } from "next-auth";
 import { AppPicker } from "./AppPicker";
-import PremiumBadge from "../../server/PremiumBadge";
-import { hasPremium } from "../../../functions/universal/user";
+import PremiumBadge from "../../client/PremiumBadge";
 
 export type Props = {
   user: Session["user"] | null;
@@ -20,7 +19,7 @@ export const Toolbar = (props: Props) => {
     <nav className={styles.toolbar}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
-        {props.user && hasPremium(props.user) && <PremiumBadge />}
+        <PremiumBadge user={props.user} />
         <AppPicker />
         <UserMenu user={props.user} />
       </div>

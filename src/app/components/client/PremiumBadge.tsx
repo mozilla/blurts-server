@@ -3,17 +3,32 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image from "next/image";
+import { Session } from "next-auth";
 import styles from "./PremiumBadge.module.scss";
 import ShieldIcon from "./assets/shield-icon.svg";
 import { useL10n } from "../../hooks/l10n";
+import { hasPremium } from "../../functions/universal/user";
+import { Button } from "../server/Button";
 
-export default function PremiumBadge() {
+export type Props = {
+  user: Session["user"] | null;
+};
+
+export default function PremiumBadge({ user }: Props) {
   const l10n = useL10n();
 
-  return (
+  const onUpgrade = () => {
+    console.log("upgrade");
+  };
+
+  return user && hasPremium(user) ? (
     <div className={styles.badge}>
       <Image src={ShieldIcon} alt="" width="24" height="24" />
       {l10n.getString("premium-badge-label")}
     </div>
+  ) : (
+    <Button variant="primary" small onClick={onUpgrade}>
+      {l10n.getString("premium-cta-label")}
+    </Button>
   );
 }

@@ -27,6 +27,7 @@ footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
 premium-badge-label = { -brand-premium }
+premium-cta-label = Upgrade to Premium
 
 # Chart summarizing total exposures
 

@@ -121,6 +121,15 @@
           }
         }
       }
+
+      .premiumCta {
+        margin: $spacing-md;
+        min-width: $screen-xs;
+
+        & > button {
+          width: 100%;
+        }
+      }
     }
   }
 
