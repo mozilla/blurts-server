@@ -28,6 +28,7 @@ import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
+export const ONEREP_DATA_BROKER_COUNT = 190;
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -197,6 +198,22 @@ export const View = (props: Props) => {
     }
   }
 
+  // Fixed in: MNTOR-2011
+  const freeScanCta = isScanResultItemsEmpty ? (
+    <p>
+      {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
+        vars: {
+          data_broker_total_num: ONEREP_DATA_BROKER_COUNT,
+        },
+        elems: {
+          free_scan_link: <a href="/redesign/user/welcome" />,
+        },
+      })}
+    </p>
+  ) : (
+    ""
+  );
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -231,6 +248,7 @@ export const View = (props: Props) => {
             <strong>
               {l10n.getString("dashboard-exposures-all-fixed-label")}
             </strong>
+            {freeScanCta}
           </div>
         ) : (
           <ul className={styles.exposureList}>{exposureCardElems}</ul>
