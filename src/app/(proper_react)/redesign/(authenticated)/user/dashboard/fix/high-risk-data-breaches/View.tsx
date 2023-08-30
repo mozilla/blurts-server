@@ -6,12 +6,8 @@
 
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import Link from "next/link";
-import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 
-type Props = {
-  breaches: GuidedExperienceBreaches;
-};
-export const View = (props: Props) => {
+export const View = () => {
   return (
     <div>
       {/* TODO: MNTOR-1700 Add routing logic here
