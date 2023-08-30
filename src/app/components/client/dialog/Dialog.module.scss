@@ -35,7 +35,9 @@
   }
 
   &.horizontal {
-    flex-direction: row;
+    @media screen and (min-width: $screen-lg) {
+      flex-direction: row;
+    }
 
     .header {
       background-color: $color-grey-05;
