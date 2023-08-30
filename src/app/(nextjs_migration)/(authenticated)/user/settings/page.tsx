@@ -239,6 +239,7 @@ export default async function Settings() {
                 className="settings-link-fxa"
                 href={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 {l10n.getString("settings-fxa-link-label")}
               </a>
