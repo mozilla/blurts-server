@@ -47,7 +47,7 @@ export const ExposuresFilterExplainer = (
       </ol>
       <Button
         variant="primary"
-        onClick={() => props.explainerDialogState.close()}
+        onPress={() => props.explainerDialogState.close()}
       >
         {l10n.getString("modal-cta-ok")}
       </Button>
@@ -81,7 +81,7 @@ export const ExposuresFilterExplainer = (
       </ul>
       <Button
         variant="primary"
-        onClick={() => props.explainerDialogState.close()}
+        onPress={() => props.explainerDialogState.close()}
       >
         {l10n.getString("modal-cta-ok")}
       </Button>
