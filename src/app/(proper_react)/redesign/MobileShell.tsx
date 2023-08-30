@@ -88,7 +88,7 @@ export const MobileShell = (props: Props) => {
               </li>
             </ul>
             <div className={styles.premiumCta}>
-              <PremiumBadge user={props.session?.user || null} />
+              <PremiumBadge user={props.session?.user ?? null} />
             </div>
           </div>
         </nav>
