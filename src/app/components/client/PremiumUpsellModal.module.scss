@@ -1,3 +1,80 @@
-.modal {
-  border: 1px solid red;
+@import "../../tokens";
+
+.modalContent {
+  dl {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    padding: 0;
+
+    dt {
+      font-weight: 600;
+      margin-bottom: $spacing-sm;
+    }
+
+    dd {
+      background: url("../../(proper_react)/redesign/(authenticated)/user/dashboard/fix/images/icon-check-mark.svg")
+        no-repeat left top;
+      list-style: none;
+      margin: 0;
+      padding-left: $spacing-lg;
+    }
+  }
+}
+
+.products {
+  padding: $spacing-lg 0;
+
+  & > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  [role="tablist"] {
+    background: $color-grey-10;
+    border-radius: $border-radius-xl;
+    gap: 0;
+    padding: $spacing-xs;
+  }
+  [role="tab"] {
+    border-radius: $border-radius-xl;
+    color: $color-grey-40;
+    padding: $spacing-xs $spacing-md;
+
+    &[aria-selected="true"] {
+      background: white;
+      color: $color-blue-50;
+    }
+    &::after {
+      display: none;
+    }
+  }
+  [role="tabpanel"] {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+    padding: $spacing-sm 0;
+  }
+
+  .pricingInfo {
+    font-weight: 600;
+    margin: $spacing-xs 0 $spacing-md;
+    text-align: center;
+  }
+}
+
+.pricingPill {
+  border: 2px solid $color-purple-70;
+  align-items: center;
+  border-radius: $border-radius-xl;
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-sm $spacing-lg;
+
+  .pricingLabel {
+    display: flex;
+    flex-direction: column;
+  }
 }

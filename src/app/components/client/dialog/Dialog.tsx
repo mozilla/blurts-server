@@ -13,6 +13,7 @@ export type Props = {
   onDismiss?: () => void;
   title?: ReactNode;
   illustration?: ReactNode;
+  variant?: "vertical" | "horizontal";
 } & AriaDialogProps;
 
 export const Dialog = ({
@@ -20,6 +21,7 @@ export const Dialog = ({
   onDismiss,
   title,
   illustration,
+  variant,
   ...otherProps
 }: Props) => {
   const l10n = useL10n();
@@ -48,17 +50,23 @@ export const Dialog = ({
     ) : null;
 
   return (
-    <div {...dialogProps} ref={dialogRef} className={styles.dialog}>
+    <div
+      {...dialogProps}
+      ref={dialogRef}
+      className={`${styles.dialog} ${variant ? styles[variant] : ""}`}
+    >
       {dismissButton}
-      {illustration && (
-        <div className={styles.illustrationWrapper}>{illustration}</div>
-      )}
-      {title && (
-        <div {...titleProps} className={styles.title}>
-          {title}
-        </div>
-      )}
-      {children}
+      <div className={styles.header}>
+        {illustration && (
+          <div className={styles.illustrationWrapper}>{illustration}</div>
+        )}
+        {title && (
+          <div {...titleProps} className={styles.title}>
+            {title}
+          </div>
+        )}
+      </div>
+      <div className={styles.content}>{children}</div>
     </div>
   );
 };

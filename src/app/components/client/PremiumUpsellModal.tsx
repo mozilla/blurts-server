@@ -4,15 +4,101 @@
 
 "use client";
 
-import { ReactNode } from "react";
-import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
+import { Key, ReactNode, useState } from "react";
+import Image from "next/image";
+import {
+  Item,
+  type OverlayTriggerProps,
+  type OverlayTriggerState,
+} from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import styles from "./PremiumUpsellModal.module.scss";
+import ModalImage from "../client/assets/premium-upsell-modal-icon.svg";
+import { TabList } from "./TabList";
 
 export interface PremiumUpsellModalProps {
   children: ReactNode;
   state: OverlayTriggerState;
+}
+
+const upsellModalTitle = "Choose the level of protection that’s right for you";
+
+const upsellModalMontlyPlanTabLabel = "Monthly";
+const upsellModalMonthlyBillingPeriodText = "Billed monthly";
+const upsellModalMonthlyPlanCtaLabel = "Select monthly plan";
+
+const upsellModalYearlyPlanTabLabel = "Yearly";
+const upsellModalYearlyBillingPeriodText = "Billed annually";
+const upsellModalYearlyPlanInfo = "Save 10% with yearly plan 🎉";
+const upsellModalYearlyPlanCtaLabel = "Select yearly plan";
+
+const upsellModalBillingInfoTitle = "Premium protection";
+const upsellModalBillingAmountLabel = (amount: string) => `$${amount} / mo`;
+
+const upsellModalFeaturesListTitle = "Features:";
+const upsellModalFeaturesListItem1 =
+  "Monthly scan of 190 data broker sites that may be selling your personal info";
+const upsellModalFeaturesListItem2 =
+  "Automatic removal of personal info from sites that are selling it";
+const upsellModalFeaturesListItem3 =
+  "Guided experience through high risk data breaches that require manual steps";
+const upsellModalFeaturesListItem4 = "Continuous monitoring for new exposures";
+const upsellModalFeaturesListItem5 = " Alerts when your data has been breached";
+
+function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
+  return (
+    <>
+      <small className={styles.pricingInfo}>{upsellModalYearlyPlanInfo}</small>
+      <div className={styles.pricingPill}>
+        <div className={styles.pricingLabel}>
+          <b>{upsellModalBillingInfoTitle}</b>
+          <small>
+            {isMonthly
+              ? upsellModalMonthlyBillingPeriodText
+              : upsellModalYearlyBillingPeriodText}
+          </small>
+        </div>
+        <b>{upsellModalBillingAmountLabel(isMonthly ? "X.XX" : "Y.YY")}</b>
+      </div>
+    </>
+  );
+}
+
+function PremiumUpsellModalContent() {
+  const [selectedTab, setSelectedTab] = useState<Key>("yearly");
+  const tabsData = [
+    {
+      name: upsellModalYearlyPlanTabLabel,
+      key: "yearly",
+      content: <PremiumPricingLabel />,
+    },
+    {
+      name: upsellModalMontlyPlanTabLabel,
+      key: "monthly",
+      content: <PremiumPricingLabel isMonthly />,
+    },
+  ];
+
+  return (
+    <div className={styles.modalContent}>
+      <div className={styles.products}>
+        <TabList
+          tabs={tabsData}
+          onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
+          defaultSelectedKey={selectedTab}
+        />
+      </div>
+      <dl className={styles.list}>
+        <dt>{upsellModalFeaturesListTitle}</dt>
+        <dd>{upsellModalFeaturesListItem1}</dd>
+        <dd>{upsellModalFeaturesListItem2}</dd>
+        <dd>{upsellModalFeaturesListItem3}</dd>
+        <dd>{upsellModalFeaturesListItem4}</dd>
+        <dd>{upsellModalFeaturesListItem5}</dd>
+      </dl>
+    </div>
+  );
 }
 
 function PremiumUpsellModal({
@@ -25,8 +111,13 @@ function PremiumUpsellModal({
       {children}
       {state.isOpen && (
         <ModalOverlay state={state} {...otherProps} isDismissable={true}>
-          <Dialog title="Title" onDismiss={() => void state.close()}>
-            <div>Dialog</div>
+          <Dialog
+            title={upsellModalTitle}
+            illustration={<Image src={ModalImage} alt="" />}
+            onDismiss={() => void state.close()}
+            variant="horizontal"
+          >
+            <PremiumUpsellModalContent />
           </Dialog>
         </ModalOverlay>
       )}
