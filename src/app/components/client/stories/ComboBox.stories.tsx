@@ -34,3 +34,13 @@ export const TextComboBoxEmpty: Story = {
     children: (item) => <Item>{(item as ItemObject).value}</Item>,
   },
 };
+
+export const TextComboBoxRequired: Story = {
+  args: {
+    label: "ComboBox label",
+    placeholder: "Type here",
+    isRequired: true,
+    items,
+    children: (item) => <Item>{(item as ItemObject).value}</Item>,
+  },
+};

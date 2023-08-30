@@ -54,9 +54,8 @@ function ComboBox(props: ComboBoxProps) {
           </div>
         )}
       </div>
-      {state.isOpen && (
+      {state.isOpen && props.items?.length > 0 && (
         <Popover
-          isVisible={props.items?.length > 0}
           offset={4}
           popoverRef={popoverRef}
           state={state}

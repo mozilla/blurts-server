@@ -239,6 +239,7 @@ export const View = (props: Props) => {
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
             initialFilterValues={initialFilterState}
+            filterValues={filters}
             setFilterValues={setFilters}
           />
         </div>
