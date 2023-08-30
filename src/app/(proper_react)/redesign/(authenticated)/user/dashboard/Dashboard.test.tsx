@@ -71,7 +71,7 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
 
   // We show a CTA on desktop in the toolbar and in the mobile menu
   const premiumCtas = screen.queryAllByRole("button", {
-    name: "Upgrade to Premium",
+    name: "Upgrade to ⁨Premium⁩",
   });
   expect(premiumCtas.length).toBe(2);
 });
