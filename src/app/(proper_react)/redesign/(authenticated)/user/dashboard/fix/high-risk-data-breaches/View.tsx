@@ -14,11 +14,8 @@ type Props = {
 export const View = (props: Props) => {
   return (
     <div>
-      <HighRiskBreachLayout
-        typeOfBreach="creditCard"
-        breachData={props.breaches}
-      />
-
+      {/* TODO: MNTOR-1700 Add routing logic here
+       Remove all bottom links */}
       <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number">
         SSN Breaches
       </Link>

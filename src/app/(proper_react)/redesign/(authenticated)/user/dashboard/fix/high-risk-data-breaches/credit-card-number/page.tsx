@@ -20,11 +20,11 @@ export default async function CreditCardDataBreach() {
   const guidedExperience = guidedExperienceBreaches(breaches);
 
   return (
-    <div>
+    <>
       <HighRiskBreachLayout
         typeOfBreach="creditCard"
         breachData={guidedExperience}
       />
-    </div>
+    </>
   );
 }

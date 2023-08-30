@@ -15,7 +15,7 @@ import { useL10n } from "../../../../../../../hooks/l10n";
 import { ResolutionContentLayout } from "../ResolutionContentLayout";
 
 type HighRiskBreachLayoutProps = {
-  typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "PIN";
+  typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "pin";
   breachData: GuidedExperienceBreaches;
 };
 
@@ -35,7 +35,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       case "bankAccount":
         exposedData = highRiskDataBreaches.bankBreaches;
         break;
-      case "PIN":
+      case "pin":
         exposedData = highRiskDataBreaches.pinBreaches;
         break;
       default:
@@ -123,7 +123,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       recommendationSteps = BankAccountRecommendationSteps;
       breachIllustration = BankAccountIllustration;
       break;
-    case "PIN":
+    case "pin":
       title = l10n.getString("high-risk-breach-pin-title");
       secondaryDescription = l10n.getString("high-risk-breach-pin-description");
       recommendationSteps = pinRecommendationSteps;

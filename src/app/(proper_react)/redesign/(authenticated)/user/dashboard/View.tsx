@@ -278,7 +278,7 @@ export const View = (props: Props) => {
 };
 
 // Same logic as breachLogo.js
-export function getRandomLightNebulaColor(name: string) {
+function getRandomLightNebulaColor(name: string) {
   const colors = [
     "#C689FF",
     "#D9BFFF",

@@ -57,11 +57,8 @@ function guidedExperienceBreaches(
       guidedExperienceBreaches.passwordBreaches.push(b);
     }
   });
-
   return guidedExperienceBreaches;
 }
-
-console.log(guidedExperienceBreaches(scannedResultsArraySample));
 
 export const HighRiskDataBreach: Story = {
   args: {

@@ -20,8 +20,8 @@ export default async function pinDataBreach() {
   const guidedExperience = guidedExperienceBreaches(breaches);
 
   return (
-    <div>
-      <HighRiskBreachLayout typeOfBreach="PIN" breachData={guidedExperience} />
-    </div>
+    <>
+      <HighRiskBreachLayout typeOfBreach="pin" breachData={guidedExperience} />
+    </>
   );
 }
