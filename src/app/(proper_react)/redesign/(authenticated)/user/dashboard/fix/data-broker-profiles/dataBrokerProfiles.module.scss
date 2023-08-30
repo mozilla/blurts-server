@@ -1,5 +1,9 @@
 @import "../../../../../../../tokens";
 
+.main {
+  flex-direction: column;
+}
+
 .contentWrapper {
   max-width: $content-md;
   margin: 0 auto;
@@ -89,7 +93,6 @@
   max-width: 100%;
 }
 
-// TODO: Replace with @include question-mark-circle-btn;
 .questionTooltipWrapper {
   display: flex;
   align-items: center;
@@ -99,11 +102,7 @@
 }
 
 .questionTooltip {
-  appearance: none;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  // TODO: Add hover/focus state
+  @include question-mark-circle-btn;
 }
 
 .contentAutomaticRemove {

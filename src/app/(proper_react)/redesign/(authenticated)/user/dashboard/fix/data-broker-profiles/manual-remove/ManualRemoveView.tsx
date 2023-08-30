@@ -13,7 +13,7 @@ export const ManualRemoveView = () => {
   const l10n = useL10n();
 
   return (
-    <>
+    <div className={styles.main}>
       <div className={styles.content}>
         <h3>
           {l10n.getString(
@@ -97,6 +97,6 @@ export const ManualRemoveView = () => {
           )}
         </Link>
       </div>
-    </>
+    </div>
   );
 };
