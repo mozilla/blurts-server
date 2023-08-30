@@ -196,7 +196,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       cta={primaryCta}
       estimatedTime={props.typeOfBreach !== "none" ? 15 : undefined}
     >
-      {props.typeOfBreach !== "none" ? (
+      {props.typeOfBreach !== "none" && (
         <>
           <p>
             {l10n.getString("high-risk-breach-summary", {
@@ -210,8 +210,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
             {recommendationSteps}
           </div>
         </>
-      ) : (
-        ""
       )}
       {secondaryDescription}
     </ResolutionContentLayout>
