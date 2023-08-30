@@ -12,6 +12,7 @@ breach-detail-meta-title = { -brand-fx-monitor } - Παραβίαση δεδομ
 # Variables:
 #   $company (String) - Name of the company that was breached, e.g. "PHP Freaks"
 breach-detail-meta-social-title = Επηρεαστήκατε από την παραβίαση δεδομένων { $company };
+breach-detail-meta-social-description = Χρησιμοποιήστε το { -brand-fx-monitor } για να μάθετε εάν τα προσωπικά σας δεδομένα εκτέθηκαν σε αυτήν την παραβίαση και να κατανοήσετε τι πρέπει να κάνετε στη συνέχεια.
 breach-scan-meta-title = { -brand-fx-monitor } - Αποτελέσματα παραβίασης
 breach-scan-meta-social-title = { -brand-fx-monitor } - Αποτελέσματα παραβίασης
 breach-scan-meta-social-description = Συνδεθείτε στο { -brand-fx-monitor } για να επιλύσετε παραβιάσεις και να έχετε συνεχή εποπτεία για τυχόν νέες παραβιάσεις.
@@ -79,6 +80,7 @@ breach-checklist-pw-header-text = Ενημερώστε τους κωδικούς
 # Variables:
 #   $firefoxRelayLink (string) - a link to Firefox Relay, with { -breach-checklist-link-firefox-relay } as the label
 breach-checklist-email-header-2 = Προστατέψτε το email σας με μια υπηρεσία απόκρυψης email, όπως το { $firefoxRelayLink }.
+breach-checklist-email-body = Αυτό μπορεί να αποκρύψει την πραγματική σας διεύθυνση email κατά την προώθηση των email στα πραγματικά εισερχόμενά σας.
 
 ## Prompts the user for changes when there is a breach detected of social security number
 
@@ -105,14 +107,17 @@ breach-checklist-pin-body = Βεβαιωθείτε ότι το νέο σας PIN
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Χρησιμοποιήστε το διαδίκτυο ιδιωτικά με ένα VPN, όπως το { $mozillaVpnLink }.
+breach-checklist-ip-body = Η διεύθυνση IP σας (διεύθυνση πρωτοκόλλου διαδικτύου) προσδιορίζει την τοποθεσία και τον πάροχο υπηρεσιών διαδικτύου σας. Ένα VPN μπορεί να αποκρύψει την πραγματική διεύθυνση IP σας ώστε να χρησιμοποιείτε το διαδίκτυο ιδιωτικά.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
 breach-checklist-address-header = Αλλάξτε τυχόν κωδικούς πρόσβασης ή PIN που περιλαμβάνουν οποιοδήποτε μέρος της διεύθυνσής σας.
+breach-checklist-address-body = Οι διευθύνσεις είναι εύκολο να βρεθούν σε δημόσια αρχεία και μπορούν να κάνουν πιο προφανείς αυτούς τους κωδικούς πρόσβασης και τα PIN.
 
 ## Prompts the user for changes when there is a breach detected of date of birth
 
 breach-checklist-dob-header = Αλλάξτε τυχόν κωδικούς πρόσβασης ή PIN που περιλαμβάνουν την ημερομηνία γέννησής σας.
+breach-checklist-dob-body = Οι ημερομηνίες γέννησης είναι εύκολο να βρεθούν στα δημόσια αρχεία και τα άτομα που τις βρίσκουν μπορούν εύκολα να μαντέψουν το PIN σας.
 
 ## Prompts the user for changes when there is a breach detected of phone number
 
@@ -127,6 +132,9 @@ breach-checklist-sq-header-text = Ενημερώστε τις ερωτήσεις
 ## Prompts the user for changes when there is a breach detected of historical password
 
 breach-checklist-hp-header = Δημιουργήστε μοναδικούς, ισχυρούς κωδικούς πρόσβασης για οποιονδήποτε λογαριασμό έχετε ξαναχρησιμοποιήσει κωδικούς πρόσβασης.
+# Variables:
+#   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
+breach-checklist-hp-body-2 = Μια εφαρμογή διαχείρισης κωδικών πρόσβασης, όπως το { $passwordManagerLink } (το οποίο είναι δωρεάν και ενσωματωμένο στο { -brand-firefox }), μπορεί να σας βοηθήσει να έχετε ασφαλή πρόσβαση σε όλους τους κωδικούς πρόσβασής σας από όλες τις συσκευές σας.
 
 ## Prompts the user for changes when there is a breach detected of other types
 

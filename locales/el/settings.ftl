@@ -44,6 +44,7 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Ακύρωση συνδρομής { -brand-premium }
+settings-cancel-premium-subscription-info = Η συνδρομή σας θα μετατραπεί σε δωρεάν λογαριασμό μετά το πέρας του τρέχοντος κύκλου χρέωσης. Τα αποτελέσματα της σάρωσης προστασίας απορρήτου θα διαγραφούν οριστικά και θα έχετε την εποπτεία μόνο 1 διεύθυνσης email για παραβιάσεις δεδομένων.
 settings-cancel-premium-subscription-link-label = Κάντε ακύρωση από τον { -brand-fx-account(case: "acc", capitalization: "lower") } σας
 
 ## Deactivate account
