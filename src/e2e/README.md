@@ -22,7 +22,7 @@ cp .env-dist .env
 
 #### Add some additional values to the .env file
 
-`E2E_TEST_ENV=` <'local' | 'dev' | 'stage'> stage is default, for prod please use GA
+`E2E_TEST_ENV=<'local' | 'dev' | 'stage'>` stage is default, for prod please use GA
 
 `E2E_TEST_ACCOUNT_EMAIL=`
 
