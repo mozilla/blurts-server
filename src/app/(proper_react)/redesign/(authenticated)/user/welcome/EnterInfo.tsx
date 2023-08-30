@@ -5,10 +5,10 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
-import { useOverlayTrigger } from "react-aria";
+import { useButton, useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
 import { useL10n } from "../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
@@ -166,12 +166,10 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const invalidInputKeys = getInvalidFields();
-    if (!invalidInputKeys?.length) {
-      confirmDialogState.open();
-    } else {
+    if (invalidInputKeys?.length > 0) {
       setInvalidInputs(invalidInputKeys);
+      confirmDialogState.close();
     }
   };
 
@@ -286,13 +284,20 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
     </Dialog>
   );
 
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(
+    explainerDialogTrigger.triggerProps,
+    triggerRef
+  );
+
   return (
     <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-enter-details-title")}</h1>
       <p>
         {l10n.getString("onboarding-enter-details-text")}
         <button
-          {...explainerDialogTrigger.triggerProps}
+          {...buttonProps}
+          ref={triggerRef}
           onClick={() => explainerDialogState.open()}
           className={styles.explainerTrigger}
         >
@@ -356,6 +361,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
             {...confirmDialogTrigger.triggerProps}
             variant="primary"
             autoFocus={true}
+            type="submit"
             className={styles.startButton}
           >
             {l10n.getString("onboarding-steps-find-exposures-label")}
@@ -373,7 +379,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         </ModalOverlay>
       )}
 
-      {confirmDialogState.isOpen && (
+      {confirmDialogState.isOpen && getInvalidFields().length === 0 && (
         <ModalOverlay
           state={confirmDialogState}
           {...explainerDialogTrigger.overlayProps}
