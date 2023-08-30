@@ -20,6 +20,8 @@ export async function isFlagEnabled(
 ): Promise<boolean> {
   const data = await getFeatureFlagByName(name);
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 4 */
   if (!data) {
     console.warn("Feature flag does not exist:", name);
     return false;

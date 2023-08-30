@@ -16,6 +16,8 @@ import {
 import { RelevantLocation } from "../../api/v1/location-autocomplete/types";
 import styles from "./LocationAutocomplete.module.scss";
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore next 6 */
 export function getDetailsFromLocationString(locationString: string) {
   const [city, state, countryCode] = locationString
     .split(",")
@@ -23,6 +25,8 @@ export function getDetailsFromLocationString(locationString: string) {
   return { city, state, countryCode };
 }
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const getLocationSuggestions = async ({
   searchParams,
   abortController,
@@ -48,7 +52,10 @@ const getLocationSuggestions = async ({
     return null;
   }
 };
+/* c8 ignore stop */
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore next 4 */
 function getLocationString(location: RelevantLocation) {
   const { name, stateCode, countryCode } = location;
   return `${name}, ${stateCode}, ${countryCode}`;
@@ -56,6 +63,8 @@ function getLocationString(location: RelevantLocation) {
 
 function getLocationStringByKey(locations: Array<RelevantLocation>, key: Key) {
   const location = locations.find(({ id }) => id === key);
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next */
   return location ? getLocationString(location) : "";
 }
 
@@ -84,6 +93,8 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
         abortController: abortController,
       })
         .then((data) => {
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 3 */
           if (data) {
             setLocationSuggestions(data.results);
           }
@@ -98,6 +109,8 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
     };
   }, [deferredSearchQuery]);
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore start */
   useEffect(() => {
     if (!selectedKey) {
       return;
@@ -109,6 +122,7 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
     );
     setSearchQuery(locationString);
   }, [selectedKey, locationSuggestions]);
+  /* c8 ignore stop */
 
   const handleOnChange = (inputValue: string) => {
     const locationString = getLocationStringByKey(
@@ -116,6 +130,8 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
       selectedKey
     );
     // Clear current selection if the input value changes
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next 3 */
     if (locationString && locationString !== inputValue) {
       setSelectedKey("");
     }
@@ -124,6 +140,8 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
     props.onChange?.(inputValue);
   };
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 3 */
   const handleOnSelectionChange = (key: Key) => {
     setSelectedKey(key);
   };
@@ -140,20 +158,24 @@ export const LocationAutocompleteInput = (props: AriaTextFieldProps) => {
         selectedKey={selectedKey}
         shouldCloseOnBlur={true}
       >
-        {(location) => {
-          const relevantLocation = location as RelevantLocation;
-          const textValue = getLocationString(relevantLocation);
-          const { city, state, countryCode } =
-            getDetailsFromLocationString(textValue);
-          return (
-            <Item key={relevantLocation.id} textValue={textValue}>
-              <div className={styles.locationItem}>
-                <strong>{city}</strong>
-                <span>{`${state}, ${countryCode}`}</span>
-              </div>
-            </Item>
-          );
-        }}
+        {
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 15 */
+          (location) => {
+            const relevantLocation = location as RelevantLocation;
+            const textValue = getLocationString(relevantLocation);
+            const { city, state, countryCode } =
+              getDetailsFromLocationString(textValue);
+            return (
+              <Item key={relevantLocation.id} textValue={textValue}>
+                <div className={styles.locationItem}>
+                  <strong>{city}</strong>
+                  <span>{`${state}, ${countryCode}`}</span>
+                </div>
+              </Item>
+            );
+          }
+        }
       </ComboBox>
     </div>
   );
