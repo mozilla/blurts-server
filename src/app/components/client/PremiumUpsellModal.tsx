@@ -11,7 +11,7 @@ import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
 import { TabList } from "./TabList";
 import { Button } from "../server/Button";
-
+import { useL10n } from "../../hooks/l10n";
 import ModalImage from "../client/assets/premium-upsell-modal-icon.svg";
 import styles from "./PremiumUpsellModal.module.scss";
 
@@ -20,61 +20,62 @@ export interface PremiumUpsellModalProps {
   state: OverlayTriggerState;
 }
 
-const upsellModalTitle = "Choose the level of protection that’s right for you";
-
-const upsellModalMontlyPlanTabLabel = "Monthly";
-const upsellModalMonthlyBillingPeriodText = "Billed monthly";
-const upsellModalMonthlyPlanCtaLabel = "Select monthly plan";
-
-const upsellModalYearlyPlanTabLabel = "Yearly";
-const upsellModalYearlyBillingPeriodText = "Billed annually";
-const upsellModalYearlyPlanInfo = "Save 10% with yearly plan 🎉";
-const upsellModalYearlyPlanCtaLabel = "Select yearly plan";
-
-const upsellModalBillingInfoTitle = "Premium protection";
-const upsellModalBillingAmountLabel = (amount: string) => `$${amount} / mo`;
-
-const upsellModalFeaturesListTitle = "Features:";
-const upsellModalFeaturesListItem1 =
-  "Monthly scan of 190 data broker sites that may be selling your personal info";
-const upsellModalFeaturesListItem2 =
-  "Automatic removal of personal info from sites that are selling it";
-const upsellModalFeaturesListItem3 =
-  "Guided experience through high risk data breaches that require manual steps";
-const upsellModalFeaturesListItem4 = "Continuous monitoring for new exposures";
-const upsellModalFeaturesListItem5 = " Alerts when your data has been breached";
-
 function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
+  const l10n = useL10n();
+
   return (
     <>
-      <small className={styles.pricingInfo}>{upsellModalYearlyPlanInfo}</small>
+      <small className={styles.pricingInfo}>
+        {l10n.getString(
+          "fix-flow-data-broker-profiles-automatic-remove-save-percent",
+          { percent: 10 }
+        )}
+      </small>
       <div className={styles.pricingPill}>
         <div className={styles.pricingLabel}>
-          <b>{upsellModalBillingInfoTitle}</b>
+          <b>
+            {l10n.getString(
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-headline"
+            )}
+          </b>
           <small>
             {isMonthly
-              ? upsellModalMonthlyBillingPeriodText
-              : upsellModalYearlyBillingPeriodText}
+              ? l10n.getString(
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-frequency"
+                )
+              : l10n.getString(
+                  "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-frequency"
+                )}
           </small>
         </div>
-        <b>{upsellModalBillingAmountLabel(isMonthly ? "X.XX" : "Y.YY")}</b>
+        <b>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-price",
+            { price: isMonthly ? "X.XX" : "Y.YY" }
+          )}
+        </b>
       </div>
     </>
   );
 }
 
 function PremiumUpsellModalContent() {
+  const l10n = useL10n();
   const [selectedTab, setSelectedTab] = useState<Key>("yearly");
 
   const isMonthly = selectedTab === "monthly";
   const tabsData = [
     {
-      name: upsellModalYearlyPlanTabLabel,
+      name: l10n.getString(
+        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-yearly"
+      ),
       key: "yearly",
       content: <PremiumPricingLabel />,
     },
     {
-      name: upsellModalMontlyPlanTabLabel,
+      name: l10n.getString(
+        "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-toggle-monthly"
+      ),
       key: "monthly",
       content: <PremiumPricingLabel isMonthly />,
     },
@@ -90,12 +91,37 @@ function PremiumUpsellModalContent() {
         />
       </div>
       <dl className={styles.list}>
-        <dt>{upsellModalFeaturesListTitle}</dt>
-        <dd>{upsellModalFeaturesListItem1}</dd>
-        <dd>{upsellModalFeaturesListItem2}</dd>
-        <dd>{upsellModalFeaturesListItem3}</dd>
-        <dd>{upsellModalFeaturesListItem4}</dd>
-        <dd>{upsellModalFeaturesListItem5}</dd>
+        <dt>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-headline"
+          )}
+        </dt>
+        <dd>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
+            { data_broker_count: 190 }
+          )}
+        </dd>
+        <dd>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-remove-personal-info"
+          )}
+        </dd>
+        <dd>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-guided-experience"
+          )}
+        </dd>
+        <dd>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-continuous-monitoring"
+          )}
+        </dd>
+        <dd>
+          {l10n.getString(
+            "fix-flow-data-broker-profiles-automatic-remove-features-breach-alerts"
+          )}
+        </dd>
       </dl>
       <Button
         buttonType="link"
@@ -104,8 +130,12 @@ function PremiumUpsellModalContent() {
         variant="primary"
       >
         {isMonthly
-          ? upsellModalMonthlyPlanCtaLabel
-          : upsellModalYearlyPlanCtaLabel}
+          ? l10n.getString(
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-monthly-button"
+            )
+          : l10n.getString(
+              "fix-flow-data-broker-profiles-automatic-remove-features-select-plan-yearly-button"
+            )}
       </Button>
     </div>
   );
@@ -116,13 +146,15 @@ function PremiumUpsellModal({
   state,
   ...otherProps
 }: PremiumUpsellModalProps & OverlayTriggerProps) {
+  const l10n = useL10n();
+
   return (
     <div className={styles.modal}>
       {children}
       {state.isOpen && (
         <ModalOverlay state={state} {...otherProps} isDismissable={true}>
           <Dialog
-            title={upsellModalTitle}
+            title={l10n.getString("premium-upsell-modal-title")}
             illustration={<Image src={ModalImage} alt="" />}
             onDismiss={() => void state.close()}
             variant="horizontal"
