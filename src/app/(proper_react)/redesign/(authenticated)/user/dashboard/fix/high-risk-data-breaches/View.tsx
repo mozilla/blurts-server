@@ -17,7 +17,7 @@ export const View = (props: Props) => {
       {/* TODO: MNTOR-1700 Add routing logic here, currently default to no high risk breach data  */}
       <HighRiskBreachLayout typeOfBreach="none" breachData={props.breaches} />
 
-      {/* Remove all bottom links  */}
+      {/* TODO: Remove all bottom links  */}
       <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number">
         SSN Breaches
       </Link>

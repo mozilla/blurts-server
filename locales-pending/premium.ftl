@@ -338,7 +338,7 @@ high-risk-breach-none-title = Great news, we didn’t find any high risk data br
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com 
 high-risk-breach-none-description = { $num_email -> 
   [one] We detect data breaches based on your email address, and we didn’t find any high risk data breaches for { $email_list }.
-  *[other] We detect data breaches based on your email addresses, and we didn’t find any high risk data breaches for: { $email_list }.
+  *[other] We detect data breaches based on your email addresses, and we didn’t find any high risk data breaches for { $email_list }.
 }
 high-risk-breach-none-sub-description-part-one = High risk data breaches include:
 high-risk-breach-none-sub-description-ssn = Social security number

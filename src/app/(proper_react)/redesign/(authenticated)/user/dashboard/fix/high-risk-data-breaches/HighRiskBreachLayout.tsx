@@ -101,6 +101,13 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     </ol>
   );
 
+  // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
+  const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
+  const emailsFormatter = new Intl.ListFormat("en", {
+    style: "long",
+    type: "conjunction",
+  });
+
   switch (props.typeOfBreach) {
     case "creditCard":
       title = l10n.getString("high-risk-breach-credit-card-title");
@@ -142,7 +149,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
             {l10n.getString("high-risk-breach-none-description", {
               // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
               num_email: 2, // mocked
-              email_list: "mocked@gmailcom, tony@gmail.com", // mocked
+              email_list: emailsFormatter.format(emailsMonitored),
             })}
           </p>
           <p>
@@ -184,7 +191,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       : {
           label: l10n.getString("high-risk-breach-none-continue"),
           onClick: () => {
-            // TODO: MNTOR-1700 Add routing logic + fix event here
+            // TODO: MNTOR-1700 Add routing logic
           },
         };
 
