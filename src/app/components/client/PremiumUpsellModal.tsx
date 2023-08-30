@@ -6,16 +6,14 @@
 
 import { Key, ReactNode, useState } from "react";
 import Image from "next/image";
-import {
-  Item,
-  type OverlayTriggerProps,
-  type OverlayTriggerState,
-} from "react-stately";
+import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
 import { ModalOverlay } from "./dialog/ModalOverlay";
-import styles from "./PremiumUpsellModal.module.scss";
-import ModalImage from "../client/assets/premium-upsell-modal-icon.svg";
 import { TabList } from "./TabList";
+import { Button } from "../server/Button";
+
+import ModalImage from "../client/assets/premium-upsell-modal-icon.svg";
+import styles from "./PremiumUpsellModal.module.scss";
 
 export interface PremiumUpsellModalProps {
   children: ReactNode;
@@ -67,6 +65,8 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
 
 function PremiumUpsellModalContent() {
   const [selectedTab, setSelectedTab] = useState<Key>("yearly");
+
+  const isMonthly = selectedTab === "monthly";
   const tabsData = [
     {
       name: upsellModalYearlyPlanTabLabel,
@@ -82,7 +82,7 @@ function PremiumUpsellModalContent() {
 
   return (
     <div className={styles.modalContent}>
-      <div className={styles.products}>
+      <div className={styles.productPlans}>
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
@@ -97,6 +97,16 @@ function PremiumUpsellModalContent() {
         <dd>{upsellModalFeaturesListItem4}</dd>
         <dd>{upsellModalFeaturesListItem5}</dd>
       </dl>
+      <Button
+        buttonType="link"
+        className={styles.productCta}
+        href=""
+        variant="primary"
+      >
+        {isMonthly
+          ? upsellModalMonthlyPlanCtaLabel
+          : upsellModalYearlyPlanCtaLabel}
+      </Button>
     </div>
   );
 }

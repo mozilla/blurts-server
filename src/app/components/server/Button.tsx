@@ -8,6 +8,7 @@ import styles from "./button.module.scss";
 import { useButton } from "react-aria";
 
 export interface Props extends ComponentProps<"button"> {
+  className: string;
   children: ReactNode;
   variant: "primary" | "secondary";
   buttonType?: "button" | "link";
@@ -23,6 +24,7 @@ export const Button = (
 ) => {
   const {
     buttonType,
+    className,
     children,
     destructive,
     disabled,
@@ -49,6 +51,7 @@ export const Button = (
     // Ignored for test coverage; not used in tested pages yet:
     /* c8 ignore next */
     disabled && styles.disabled,
+    className,
   ]
     .filter(Boolean)
     .join(" ");

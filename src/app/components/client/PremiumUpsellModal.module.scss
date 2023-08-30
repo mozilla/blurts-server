@@ -8,7 +8,6 @@
     padding: 0;
 
     dt {
-      font-weight: 600;
       margin-bottom: $spacing-sm;
     }
 
@@ -22,7 +21,7 @@
   }
 }
 
-.products {
+.productPlans {
   padding: $spacing-lg 0;
 
   & > div {
@@ -77,4 +76,9 @@
     display: flex;
     flex-direction: column;
   }
+}
+
+.productCta {
+  margin: $spacing-lg 0 $spacing-sm;
+  width: 100%;
 }
