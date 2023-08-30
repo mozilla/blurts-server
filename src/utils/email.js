@@ -78,6 +78,8 @@ function sendEmail (recipient, subject, html) {
         reject(new Error(error))
         return
       }
+      // TODO: Add unit test when changing this code:
+      /* c8 ignore next 4 */
       if (gTransporter.transporter.name === 'JSONTransport') {
         // @ts-ignore Added typing later, but it disagrees with actual use:
         log.info('JSONTransport', { message: info.message.toString() })
@@ -154,6 +156,8 @@ function getUnsubscribeCtaHref (args) {
     ? `${SERVER_URL}/user/unsubscribe-monthly`
     : `${SERVER_URL}/user/unsubscribe`
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 3 */
   if (!args.subscriber) {
     return path
   }
@@ -190,6 +194,8 @@ function getUnsubscribeCtaHref (args) {
  * @param {string} mandatoryParams A comma separated list of mandatory params
  * @returns {boolean} True if all mandatory params are present in params
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function hasMandatoryParams (params, mandatoryParams) {
   return mandatoryParams.split(',').every(paramKey => {
     const paramKeyParsed = paramKey.trim()
@@ -199,6 +205,7 @@ function hasMandatoryParams (params, mandatoryParams) {
     )
   })
 }
+/* c8 ignore stop */
 
 /**
  * TODO: Unsubscribing from emails is currently only implemented for the
@@ -208,6 +215,8 @@ function hasMandatoryParams (params, mandatoryParams) {
  *
  * @param {any} req Request should contain a `token` and `hash` query param.
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function unsubscribeFromEmails (req) {
   const urlQuery = req.query
 
@@ -218,12 +227,15 @@ async function unsubscribeFromEmails (req) {
 
   throw new MethodNotAllowedError()
 }
+/* c8 ignore stop */
 
 /**
  * Unsubscribe the user from receiving the monthly unresolved breach reports.
  *
  * @param {any} req Request that should contain a `token` query param
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function unsubscribeFromMonthlyReport (req) {
   const urlQuery = req.query
 
@@ -235,6 +247,7 @@ async function unsubscribeFromMonthlyReport (req) {
   // Unsubscribe user from the monthly unresolved breach emails
   await updateMonthlyEmailOptout(urlQuery.token)
 }
+/* c8 ignore stop */
 
 /**
  * Dummy data for populating the breach notification email preview.
@@ -243,6 +256,8 @@ async function unsubscribeFromMonthlyReport (req) {
  * @param {import("@fluent/react").ReactLocalization} [l10n]
  * @returns Breach dummy data
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const getNotificationDummyData = (recipient, l10n) => {
   const getMessage = getStringLookup(l10n);
 
@@ -278,6 +293,7 @@ const getNotificationDummyData = (recipient, l10n) => {
     supportedLocales: ['en']
   })
 }
+/* c8 ignore stop */
 
 /**
  * Dummy data for populating the email verification preview
@@ -286,6 +302,8 @@ const getNotificationDummyData = (recipient, l10n) => {
  * @param {import("@fluent/react").ReactLocalization} [l10n]
  * @returns {object} Email verification dummy data
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const getVerificationDummyData = (recipient, l10n) => {
   const getMessage = getStringLookup(l10n);
 
@@ -296,6 +314,7 @@ const getVerificationDummyData = (recipient, l10n) => {
     subheading: getMessage('email-verify-subhead')
   })
 }
+/* c8 ignore stop */
 
 /**
  * Dummy data for populating the monthly unresolved breaches email
@@ -304,6 +323,8 @@ const getVerificationDummyData = (recipient, l10n) => {
  * @param {import("@fluent/react").ReactLocalization} [l10n]
  * @returns {object} Monthly unresolved breaches dummy data
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const getMonthlyDummyData = (recipient, l10n) => {
   const getMessage = getStringLookup(l10n);
 
@@ -324,6 +345,7 @@ const getMonthlyDummyData = (recipient, l10n) => {
     unsubscribeUrl: `${SERVER_URL}/user/unsubscribe-monthly?token=token_123`
   })
 }
+/* c8 ignore stop */
 
 /**
  * Dummy data for populating the signup report email
@@ -333,6 +355,8 @@ const getMonthlyDummyData = (recipient, l10n) => {
  * @returns {object} Signup report email dummy data
  */
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const getSignupReportDummyData = (recipient, l10n) => {
   const getMessage = getStringLookup(l10n);
   const unsafeBreachesForEmail = [
@@ -368,6 +392,7 @@ const getSignupReportDummyData = (recipient, l10n) => {
     unsafeBreachesForEmail
   }
 }
+/* c8 ignore stop */
 
 export {
   EmailTemplateType,

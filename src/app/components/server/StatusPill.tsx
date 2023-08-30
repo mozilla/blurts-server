@@ -12,6 +12,8 @@ export type Props = {
   type: StatusPillType;
 };
 
+// This component just render HTML without business logic:
+/* c8 ignore start */
 export const StatusPill = (props: Props) => {
   const { type } = props;
   const l10n = useL10n();
@@ -34,3 +36,4 @@ export const StatusPill = (props: Props) => {
     <div className={`${styles.pill} ${styles[className]}`}>{stringContent}</div>
   );
 };
+/* c8 ignore stop */

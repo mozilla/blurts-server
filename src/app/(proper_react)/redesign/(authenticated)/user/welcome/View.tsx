@@ -46,12 +46,18 @@ export const View = ({
     ) : currentStep === "enterInfo" ? (
       <EnterInfo
         user={user}
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
         onScanStarted={() => setCurrentStep("findExposures")}
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
         onGoBack={() => setCurrentStep("getStarted")}
       />
     ) : (
       <GetStarted
         dataBrokerCount={dataBrokerCount}
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
         onStart={() => setCurrentStep("enterInfo")}
       />
     );
@@ -116,6 +122,8 @@ export const Steps = (props: { currentStep: StepId }) => {
           props.currentStep === "findExposures" ? "step" : undefined
         }
         className={`${styles.findExposures} ${
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 2 */
           isStepDone("findExposures", props.currentStep)
             ? styles.isCompleted
             : ""

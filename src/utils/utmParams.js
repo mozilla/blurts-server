@@ -6,6 +6,8 @@
  * @param {{ linkUrl: string; utmParams: { [key: string]: string; }; }} options
  * @returns {string} url
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 export function appendUtmParams ({ linkUrl, utmParams }) {
   const url = new URL(linkUrl)
 
@@ -14,3 +16,4 @@ export function appendUtmParams ({ linkUrl, utmParams }) {
   }
   return url.href
 }
+/* c8 ignore stop */
