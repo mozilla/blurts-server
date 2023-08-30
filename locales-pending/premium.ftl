@@ -332,7 +332,7 @@ high-risk-breach-pin-step-three = Check your accounts for unauthorized charges.
 
 # No high risk breaches found
 
-high-risk-breach-none-title = Great news, we didn't find any high risk data breaches
+high-risk-breach-none-title = Great news, we didn’t find any high risk data breaches
 # Variables
 # $num_email is number of emails that the user is monitoring for breaches.
 # $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com 
@@ -346,5 +346,4 @@ high-risk-breach-none-sub-description-bank-account = Bank account info
 high-risk-breach-none-sub-description-cc-number = Credit card numbers
 high-risk-breach-none-sub-description-pin = PINs
 high-risk-breach-none-continue = Continue
-
 
