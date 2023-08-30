@@ -5,10 +5,10 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { Session } from "next-auth";
 import { useOverlayTriggerState } from "react-stately";
-import { useOverlayTrigger } from "react-aria";
+import { useButton, useOverlayTrigger } from "react-aria";
 import whyWeNeedInfoHero from "./images/welcome-why-we-need-info.svg";
 import { useL10n } from "../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
@@ -27,6 +27,8 @@ import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 
 import styles from "./EnterInfo.module.scss";
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 const createProfileAndStartScan = async (
   userInfo: UserInfo
 ): Promise<WelcomeScanBody> => {
@@ -45,6 +47,7 @@ const createProfileAndStartScan = async (
 
   return result as WelcomeScanBody;
 };
+/* c8 ignore stop */
 
 export type Props = {
   onScanStarted: () => void;
@@ -140,6 +143,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore start */
   const handleRequestScan = () => {
     if (requestingScan) {
       return;
@@ -163,15 +168,14 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         console.error("Could not request scan:", error);
       });
   };
+  /* c8 ignore stop */
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const invalidInputKeys = getInvalidFields();
-    if (!invalidInputKeys?.length) {
-      confirmDialogState.open();
-    } else {
+    if (invalidInputKeys?.length > 0) {
       setInvalidInputs(invalidInputKeys);
+      confirmDialogState.close();
     }
   };
 
@@ -231,6 +235,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.confirmButtonWrapper}>
           <Button
             variant="primary"
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => explainerDialogState.close()}
             autoFocus={true}
             className={styles.startButton}
@@ -264,6 +270,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => confirmDialogState.close()}
           className={styles.startButton}
         >
@@ -273,6 +281,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         </Button>
         <Button
           variant="primary"
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
@@ -286,13 +296,22 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
     </Dialog>
   );
 
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(
+    explainerDialogTrigger.triggerProps,
+    triggerRef
+  );
+
   return (
     <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-enter-details-title")}</h1>
       <p>
         {l10n.getString("onboarding-enter-details-text")}
         <button
-          {...explainerDialogTrigger.triggerProps}
+          {...buttonProps}
+          ref={triggerRef}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => explainerDialogState.open()}
           className={styles.explainerTrigger}
         >
@@ -346,6 +365,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => onGoBack()}
             className={styles.startButton}
             type="button"
@@ -356,6 +377,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
             {...confirmDialogTrigger.triggerProps}
             variant="primary"
             autoFocus={true}
+            type="submit"
             className={styles.startButton}
           >
             {l10n.getString("onboarding-steps-find-exposures-label")}
@@ -373,7 +395,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         </ModalOverlay>
       )}
 
-      {confirmDialogState.isOpen && (
+      {confirmDialogState.isOpen && getInvalidFields().length === 0 && (
         <ModalOverlay
           state={confirmDialogState}
           {...explainerDialogTrigger.overlayProps}

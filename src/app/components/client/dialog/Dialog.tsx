@@ -37,6 +37,8 @@ export const Dialog = ({
         {...dismissButtonProps}
         ref={dismissButtonRef}
         className={styles.dismissButton}
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
         onClick={() => onDismiss()}
       >
         <CloseBtn

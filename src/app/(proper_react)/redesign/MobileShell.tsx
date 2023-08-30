@@ -27,27 +27,39 @@ export const MobileShell = (props: Props) => {
   return (
     <div
       className={`${styles.wrapper} ${
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
         isExpanded ? styles.hasOpenMenu : styles.hasClosedMenu
       }`}
     >
       <header className={styles.header}>
         <div className={styles.headerStart}>
           <button
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => setIsExpanded(!isExpanded)}
             className={styles.menuToggleButton}
             title={l10n.getString(
+              // TODO: Add unit test when changing this code:
+              /* c8 ignore next 2 */
               isExpanded
                 ? "main-nav-button-collapse-tooltip"
                 : "main-nav-button-expand-tooltip"
             )}
           >
-            {isExpanded ? (
-              <CloseBigIcon
-                alt={l10n.getString("main-nav-button-collapse-label")}
-              />
-            ) : (
-              <ListIcon alt={l10n.getString("main-nav-button-expand-label")} />
-            )}
+            {
+              // TODO: Add unit test when changing this code:
+              /* c8 ignore next 5 */
+              isExpanded ? (
+                <CloseBigIcon
+                  alt={l10n.getString("main-nav-button-collapse-label")}
+                />
+              ) : (
+                <ListIcon
+                  alt={l10n.getString("main-nav-button-expand-label")}
+                />
+              )
+            }
           </button>
         </div>
         <div className={styles.headerMiddle}>

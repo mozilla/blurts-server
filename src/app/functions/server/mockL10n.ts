@@ -14,16 +14,15 @@ import type { LocaleData } from "./l10n";
 // the modules we import based on that, without going async - so we need `require`.
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+// Code in this file is only used in tests and Storybook, not in production:
+/* c8 ignore start */
+
 export function getEnL10nBundlesSync(): LocaleData[] {
-  // Ignored for test coverage, since tests don't run in a Webpack context:
-  /* c8 ignore next 2 */
   return process.env.STORYBOOK === "true"
     ? getEnL10nBundlesInWebpackContext()
     : getEnL10nBundlesInNodeContext();
 }
 
-// Ignored for test coverage, since tests don't run in a Webpack context:
-/* c8 ignore start */
 export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
   const referenceStringsContext: { keys: () => string[] } & ((
     path: string
@@ -61,7 +60,6 @@ export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
     },
   ];
 }
-/* c8 ignore stop */
 
 export function getEnL10nBundlesInNodeContext(): LocaleData[] {
   const {

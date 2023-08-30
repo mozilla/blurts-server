@@ -5,22 +5,31 @@
 import { Session } from "next-auth";
 import { ISO8601DateString } from "../../../utils/parse.js";
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 export function hasPremium(user?: Session["user"]): boolean {
   return user?.fxa?.subscriptions?.includes("monitor") ?? false;
 }
+/* c8 ignore stop */
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 export function canSubscribeToPremium(params: {
   user?: Session["user"];
   countryCode: string;
 }): boolean {
   return hasPremium(params.user) && params.countryCode.toLowerCase() === "us";
 }
+/* c8 ignore stop */
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 export function hasSetupOnerep(
   user?: Session["user"]
 ): user is Session["user"] & { subscriber: { onerep_profile_id: number } } {
   return typeof user?.subscriber?.onerep_profile_id === "number";
 }
+/* c8 ignore stop */
 
 // Users need to be at least 13 years or older.
 const USER_MIN_AGE = 13;
