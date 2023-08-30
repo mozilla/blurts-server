@@ -6,7 +6,7 @@
 
 import Image from "next/image";
 import { useOverlayTriggerState } from "react-stately";
-import { useOverlayTrigger } from "react-aria";
+import { useButton, useOverlayTrigger } from "react-aria";
 import howItWorksHero from "./images/welcome-how-it-works.svg";
 import { useL10n } from "../../../../../hooks/l10n";
 import { ModalOverlay } from "../../../../../components/client/dialog/ModalOverlay";
@@ -14,6 +14,7 @@ import { Dialog } from "../../../../../components/client/dialog/Dialog";
 import { Button } from "../../../../../components/server/Button";
 
 import styles from "./GetStarted.module.scss";
+import { useRef } from "react";
 
 export type Props = {
   dataBrokerCount: number;
@@ -28,6 +29,12 @@ export const GetStarted = (props: Props) => {
     explainerDialogState
   );
 
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const { buttonProps } = useButton(
+    explainerDialogTrigger.triggerProps,
+    triggerRef
+  );
+
   return (
     <div className={styles.stepContent}>
       <h1>{l10n.getString("onboarding-get-started-heading")}</h1>
@@ -35,7 +42,8 @@ export const GetStarted = (props: Props) => {
       <p>{l10n.getString("onboarding-get-started-content-price")}</p>
       <p>
         <button
-          {...explainerDialogTrigger.triggerProps}
+          {...buttonProps}
+          ref={triggerRef}
           onClick={() => explainerDialogState.open()}
           className={styles.explainerTrigger}
         >

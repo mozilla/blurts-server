@@ -265,3 +265,6 @@ false-door-test-content-part-two = Automatically remove data from sites trying t
 false-door-test-content-part-two-dashboard = Auto-delete data from sites trying to sell it.
 false-door-test-cta = Count me in
 false-door-test-popup-close = Close
+false-door-test-phase-2-content-part-one = Did you know there are sites selling your private info?
+false-door-test-phase-2-content-part-two = Automatically remove data from sketchy sites.
+false-door-test-phase-2-content-part-two-dashboard = Automatically remove data from broker sites. 
