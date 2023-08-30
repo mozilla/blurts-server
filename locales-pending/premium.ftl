@@ -295,12 +295,13 @@ high-risk-breach-name-and-date = { $breach_name } <breach_date>on { $breach_date
 high-risk-breach-mark-as-fixed = Mark as fixed
 high-risk-breach-skip = Skip for now
 # Variables:
-# $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It is never singular.
+# $estimated_time is the estimated time it would take for a user to complete breach resolution steps. It not be singular, and the + is meant as "or more".
+# An example of this string is Your estimated time: 15+ minutes.
 high-risk-breach-estimated-time = Your estimated time: { $estimated_time }+ minutes
 
 # Credit Card Breaches
 
-high-risk-breach-credit-card-title = Your credit card number was exposed.
+high-risk-breach-credit-card-title = Your credit card number was exposed
 high-risk-breach-credit-card-description = Anyone who gets it can make unauthorized purchases that you may be liable for. Act now to prevent financial harm.
 high-risk-breach-credit-card-step-one = If you still have this card, contact the issuer to report it stolen.
 high-risk-breach-credit-card-step-two = Request a new card with a new number.
@@ -308,7 +309,7 @@ high-risk-breach-credit-card-step-three = Check your accounts for unauthorized c
 
 # Bank Account Breaches
 
-high-risk-breach-bank-account-title = Bank Account Data Breach
+high-risk-breach-bank-account-title = Your bank account was exposed
 high-risk-breach-bank-account-description = Taking action ASAP could give you more legal protections to help you recover any losses.
 high-risk-breach-bank-account-step-one = Notify your bank immediately that your account number has been compromised.
 high-risk-breach-bank-account-step-two = Change your account number.
@@ -316,14 +317,14 @@ high-risk-breach-bank-account-step-three = Check your accounts for unauthorized 
 
 # Social Security Number Breaches
 
-high-risk-breach-social-security-title = Social Security Number Data Breach
+high-risk-breach-social-security-title = Your social security number was exposed
 high-risk-breach-social-security-description = Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.
 high-risk-breach-social-security-step-one = Protect yourself by setting up a fraud alert or freezing your credit.
 high-risk-breach-social-security-step-two = Check your credit report for unrecognized accounts.
 
 # PIN Breaches 
 
-high-risk-breach-pin-title = PIN Data Breach
+high-risk-breach-pin-title = Your PIN was exposed
 high-risk-breach-pin-description = Taking action ASAP could give you more legal protections to help you recover any losses.
 high-risk-breach-pin-step-one = Notify your bank immediately that your PIN has been compromised.
 high-risk-breach-pin-step-two = Change your PIN anywhere you’ve used the same one.

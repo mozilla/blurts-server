@@ -51,6 +51,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   const listOfBreaches = exposedData.map((item: SubscriberBreach) => (
     <div key={item.id} className={styles.breachItem}>
+      {/* TODO: Localize all date values MNTOR-2111 */}
       {l10n.getFragment("high-risk-breach-name-and-date", {
         elems: { breach_date: <span className={styles.date} /> },
         vars: {
