@@ -178,7 +178,7 @@ export const ExposuresFilter = ({
           variant="secondary"
           // TODO: Add unit test when changing this code:
           /* c8 ignore next 4 */
-          onClick={() => {
+          onPress={() => {
             setFilterState(initialFilterValues);
             setFilterValues(initialFilterValues);
           }}
