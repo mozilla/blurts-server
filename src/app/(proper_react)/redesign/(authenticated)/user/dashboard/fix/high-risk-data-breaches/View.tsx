@@ -6,12 +6,18 @@
 
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import Link from "next/link";
+import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 
-export const View = () => {
+type Props = {
+  breaches: GuidedExperienceBreaches;
+};
+export const View = (props: Props) => {
   return (
     <div>
-      {/* TODO: MNTOR-1700 Add routing logic here
-       Remove all bottom links */}
+      {/* TODO: MNTOR-1700 Add routing logic here, currently default to no high risk breach data  */}
+      <HighRiskBreachLayout typeOfBreach="none" breachData={props.breaches} />
+
+      {/* Remove all bottom links  */}
       <Link href="/redesign/user/dashboard/fix/high-risk-data-breaches/social-security-number">
         SSN Breaches
       </Link>

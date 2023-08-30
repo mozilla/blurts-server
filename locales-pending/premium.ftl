@@ -329,3 +329,22 @@ high-risk-breach-pin-description = Taking action ASAP could give you more legal 
 high-risk-breach-pin-step-one = Notify your bank immediately that your PIN has been compromised.
 high-risk-breach-pin-step-two = Change your PIN anywhere you’ve used the same one.
 high-risk-breach-pin-step-three = Check your accounts for unauthorized charges.
+
+# No high risk breaches found
+
+high-risk-breach-none-title = Great news, we didn't find any high risk data breaches
+# Variables
+# $num_email is number of emails that the user is monitoring for breaches.
+# $email_list is list of emails that the user is monitoring for breaches. E.g. john@yahoo.com, ali@gmail.com, sam@hotmail.com 
+high-risk-breach-none-description = { $num_email -> 
+  [one] We detect data breaches based on your email address, and we didn’t find any high risk data breaches for { $email_list }.
+  *[other] We detect data breaches based on your email addresses, and we didn’t find any high risk data breaches for: { $email_list }.
+}
+high-risk-breach-none-sub-description-part-one = High risk data breaches include:
+high-risk-breach-none-sub-description-ssn = Social security number
+high-risk-breach-none-sub-description-bank-account = Bank account info
+high-risk-breach-none-sub-description-cc-number = Credit card numbers
+high-risk-breach-none-sub-description-pin = PINs
+high-risk-breach-none-continue = Continue
+
+
