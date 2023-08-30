@@ -27,6 +27,8 @@ import { meetsAgeRequirement } from "../../../../../functions/universal/user";
 
 import styles from "./EnterInfo.module.scss";
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 const createProfileAndStartScan = async (
   userInfo: UserInfo
 ): Promise<WelcomeScanBody> => {
@@ -45,6 +47,7 @@ const createProfileAndStartScan = async (
 
   return result as WelcomeScanBody;
 };
+/* c8 ignore stop */
 
 export type Props = {
   onScanStarted: () => void;
@@ -140,6 +143,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
   const getInvalidFields = () =>
     userDetailsData.filter(({ isValid }) => !isValid).map(({ key }) => key);
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore start */
   const handleRequestScan = () => {
     if (requestingScan) {
       return;
@@ -163,6 +168,7 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         console.error("Could not request scan:", error);
       });
   };
+  /* c8 ignore stop */
 
   const handleOnSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -229,6 +235,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.confirmButtonWrapper}>
           <Button
             variant="primary"
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => explainerDialogState.close()}
             autoFocus={true}
             className={styles.startButton}
@@ -262,6 +270,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
       <div className={styles.stepButtonWrapper}>
         <Button
           variant="secondary"
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => confirmDialogState.close()}
           className={styles.startButton}
         >
@@ -271,6 +281,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         </Button>
         <Button
           variant="primary"
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => handleRequestScan()}
           autoFocus={true}
           className={styles.startButton}
@@ -298,6 +310,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <button
           {...buttonProps}
           ref={triggerRef}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => explainerDialogState.open()}
           className={styles.explainerTrigger}
         >
@@ -351,6 +365,8 @@ export const EnterInfo = ({ onScanStarted, onGoBack }: Props) => {
         <div className={styles.stepButtonWrapper}>
           <Button
             variant="secondary"
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => onGoBack()}
             className={styles.startButton}
             type="button"

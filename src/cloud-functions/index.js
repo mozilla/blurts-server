@@ -37,6 +37,8 @@ const app = express();
 app.use(bearerToken);
 // sentry error handler
 app.use(
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 5 */
   Sentry.Handlers.errorHandler({
     shouldHandleError(error) {
       if (error instanceof TooManyRequestsError) return true;
@@ -47,11 +49,15 @@ app.use(errorHandler);
 app.post("/api/v1/hibp/notify", notify);
 
 async function init() {
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 3 */
   await initFluentBundles();
   await initEmail();
 }
 init();
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 /**
  * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
  * This function attempts to retrieve the breach info from the local cache, if not found
@@ -217,5 +223,6 @@ async function notify(req, res) {
     throw new Error(`Notifying subscribers of breach failed: ${error}`);
   }
 }
+/* c8 ignore stop */
 
 export { app };

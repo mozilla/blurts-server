@@ -52,6 +52,8 @@ function breachSummary (verifiedEmails) {
 
 function breachedDataTypes (verifiedEmails) {
   const breachedDataTypes = {}
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next */
   if (!verifiedEmails) return breachedDataTypes
 
   verifiedEmails.forEach(email => {
