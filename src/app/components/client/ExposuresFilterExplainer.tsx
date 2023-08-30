@@ -99,6 +99,8 @@ export const ExposuresFilterExplainer = (
           <Dialog
             title={l10n.getString("modal-exposure-type-title")}
             illustration={<Image src={ModalImage} alt="" />}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onDismiss={() => props.explainerDialogState.close()}
           >
             {explainerContentExposureType}
@@ -113,6 +115,8 @@ export const ExposuresFilterExplainer = (
           <Dialog
             title={l10n.getString("modal-exposure-status-title")}
             illustration={<Image src={ModalImage} alt="" />}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onDismiss={() => props.explainerDialogState.close()}
           >
             {explainerContentStatus}

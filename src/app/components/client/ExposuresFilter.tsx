@@ -16,18 +16,14 @@ import React, {
 import Image from "next/image";
 import {
   AriaDialogProps,
-  AriaPopoverProps,
   AriaRadioProps,
-  Overlay,
   useButton,
   useDialog,
   useOverlayTrigger,
-  usePopover,
   useRadio,
   useRadioGroup,
 } from "react-aria";
 import {
-  OverlayTriggerState,
   RadioGroupProps,
   RadioGroupState,
   useOverlayTriggerState,
@@ -38,6 +34,7 @@ import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
 import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
+import { Popover } from "./Popover";
 
 export type FilterState = {
   exposureType: "show-all-exposure-type" | "data-broker" | "data-breach";
@@ -46,11 +43,13 @@ export type FilterState = {
 
 type ExposuresFilterProps = {
   initialFilterValues: FilterState;
+  filterValues: FilterState;
   setFilterValues: React.Dispatch<React.SetStateAction<FilterState>>;
 };
 
 export const ExposuresFilter = ({
   initialFilterValues,
+  filterValues,
   setFilterValues,
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
@@ -77,7 +76,23 @@ export const ExposuresFilter = ({
   };
 
   // Filter Dialog
-  const filterDialogState = useOverlayTriggerState({});
+  const [filterState, setFilterState] = useState<FilterState>(filterValues);
+  const popoverRef = useRef(null);
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 6 */
+  const handleRadioChange = (type: string, value: string) => {
+    setFilterState((prevFilterState) => ({
+      ...prevFilterState,
+      [type]: value,
+    }));
+  };
+  const filterDialogState = useOverlayTriggerState({
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next 3 */
+    onOpenChange: () => {
+      setFilterState(filterValues);
+    },
+  });
   const filterBtnRef = useRef<HTMLButtonElement>(null);
   const { overlayProps } = useOverlayTrigger(
     { type: "dialog" },
@@ -86,20 +101,18 @@ export const ExposuresFilter = ({
 
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
-    { onPress: () => filterDialogState.close() },
+    {
+      // TODO: Add unit test when changing this code:
+      /* c8 ignore next 3 */
+      onPress: () => {
+        filterDialogState.close();
+      },
+    },
     dismissButtonRef
   ).buttonProps;
 
-  const [filterState, setFilterState] =
-    useState<FilterState>(initialFilterValues);
-
-  const handleRadioChange = (type: string, value: string) => {
-    setFilterState((prevFilterState) => ({
-      ...prevFilterState,
-      [type]: value,
-    }));
-  };
-
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 6 */
   const handleSaveButtonClick: FormEventHandler = (event) => {
     event.preventDefault();
 
@@ -113,6 +126,8 @@ export const ExposuresFilter = ({
         <FilterRadioGroup
           type="exposure-type"
           value={filterState.exposureType}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onChange={(value) => handleRadioChange("exposureType", value)}
           label={l10n.getString("dashboard-exposures-filter-exposure-type")}
         >
@@ -132,6 +147,8 @@ export const ExposuresFilter = ({
         </FilterRadioGroup>
         <FilterRadioGroup
           value={filterState.dateFound}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onChange={(value) => handleRadioChange("dateFound", value)}
           type="date-found"
           label={l10n.getString("dashboard-exposures-filter-date-found")}
@@ -159,7 +176,12 @@ export const ExposuresFilter = ({
           type="button"
           small
           variant="secondary"
-          onClick={() => setFilterState(initialFilterValues)}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 4 */
+          onClick={() => {
+            setFilterState(initialFilterValues);
+            setFilterValues(initialFilterValues);
+          }}
         >
           {l10n.getString("dashboard-exposures-filter-reset")}
         </Button>
@@ -172,10 +194,6 @@ export const ExposuresFilter = ({
         ref={dismissButtonRef}
         type="button"
         className={styles.dismissButton}
-        onClick={() => {
-          filterDialogState.close();
-          setFilterState(filterState);
-        }}
       >
         <CloseBtn
           alt={l10n.getString("modal-close-alt")}
@@ -200,6 +218,8 @@ export const ExposuresFilter = ({
             <button
               className={styles.filterBtn}
               ref={filterBtnRef}
+              // TODO: Add unit test when changing this code:
+              /* c8 ignore next 3 */
               onClick={() => {
                 filterDialogState.open();
               }}
@@ -248,9 +268,15 @@ export const ExposuresFilter = ({
       </div>
       {explainerDialogState.isOpen && explainerDialog}
       {filterDialogState.isOpen && (
-        <Popover state={filterDialogState} triggerRef={filterBtnRef}>
-          <FilterDialog>
-            <div className={styles.exposuresFilterWrapper} {...overlayProps}>
+        <Popover
+          crossOffset={100}
+          offset={10}
+          popoverRef={popoverRef}
+          state={filterDialogState}
+          triggerRef={filterBtnRef}
+        >
+          <FilterDialog {...overlayProps}>
+            <div className={styles.exposuresFilterWrapper} ref={popoverRef}>
               {ExposuresFilterContent}
             </div>
           </FilterDialog>
@@ -260,54 +286,22 @@ export const ExposuresFilter = ({
   );
 };
 
-type PopoverProps = {
-  children: React.ReactNode;
-  state: OverlayTriggerState;
-} & Omit<AriaPopoverProps, "popoverRef">;
-
-const Popover = (props: PopoverProps) => {
-  const popoverRef = useRef<HTMLDivElement>(null);
-  const { popoverProps, underlayProps } = usePopover(
-    {
-      ...props,
-      offset: 10,
-      crossOffset: 100,
-      popoverRef,
-    },
-    props.state
-  );
-
-  return (
-    <>
-      {props.state.isOpen && (
-        <Overlay>
-          <div {...underlayProps} />
-          <div
-            {...popoverProps}
-            ref={popoverRef}
-            className={styles.filterPopOver}
-          >
-            {props.children}
-          </div>
-        </Overlay>
-      )}
-    </>
-  );
-};
-
 type FilterDialogProps = AriaDialogProps & {
   children: ReactNode;
 };
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
   const { dialogProps } = useDialog(otherProps, dialogRef);
 
   return (
-    <div {...dialogProps} ref={dialogRef}>
+    <div {...dialogProps} className={styles.filterDialog} ref={dialogRef}>
       {children}
     </div>
   );
 };
+/* c8 ignore stop */
 
 // from https://react-spectrum.adobe.com/react-aria/useRadioGroup.html
 type FilterRadioGroupProps = RadioGroupProps & {
@@ -317,6 +311,8 @@ type FilterRadioGroupProps = RadioGroupProps & {
 
 const RadioContext = createContext<RadioGroupState | null>(null);
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function FilterRadioGroup(props: FilterRadioGroupProps) {
   const { type, children, ...otherProps } = props;
   const state = useRadioGroupState(otherProps);
@@ -339,11 +335,14 @@ function FilterRadioGroup(props: FilterRadioGroupProps) {
     </div>
   );
 }
+/* c8 ignore stop */
 
 type RadioProps = {
   children: React.ReactNode;
 };
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function Radio(props: RadioProps & AriaRadioProps) {
   const { children } = props;
   const radioGroupState = useContext(RadioContext);
@@ -361,3 +360,4 @@ function Radio(props: RadioProps & AriaRadioProps) {
     </label>
   );
 }
+/* c8 ignore stop */

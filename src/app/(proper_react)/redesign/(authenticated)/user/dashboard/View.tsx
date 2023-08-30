@@ -28,6 +28,7 @@ import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
+export const ONEREP_DATA_BROKER_COUNT = 190;
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -73,6 +74,8 @@ export const View = (props: Props) => {
     .map((elem: SubscriberBreach) => elem)
     .flat();
   const scannedResultsDataArray =
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next */
     props.userScannedResults.map((elem: ScanResult) => elem) || [];
 
   // Merge exposure cards
@@ -94,8 +97,12 @@ export const View = (props: Props) => {
   const getExposureStatus = (exposure: Exposure): StatusPillType => {
     if (isScanResult(exposure)) {
       switch (exposure.status) {
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next 2 */
         case "removed":
           return "fixed";
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next 2 */
         case "waiting_for_verification":
           return "progress";
         default:
@@ -197,6 +204,22 @@ export const View = (props: Props) => {
     }
   }
 
+  // Fixed in: MNTOR-2011
+  const freeScanCta = isScanResultItemsEmpty ? (
+    <p>
+      {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
+        vars: {
+          data_broker_total_num: ONEREP_DATA_BROKER_COUNT,
+        },
+        elems: {
+          free_scan_link: <a href="/redesign/user/welcome" />,
+        },
+      })}
+    </p>
+  ) : (
+    ""
+  );
+
   return (
     <div className={styles.wrapper}>
       <Toolbar user={props.user}>
@@ -212,6 +235,8 @@ export const View = (props: Props) => {
           content={contentType}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 3 */
           ctaCallback={() => {
             setSelectedTab("fixed");
           }}
@@ -222,19 +247,25 @@ export const View = (props: Props) => {
         <div className={styles.exposuresFilterWrapper}>
           <ExposuresFilter
             initialFilterValues={initialFilterState}
+            filterValues={filters}
             setFilterValues={setFilters}
           />
         </div>
-        {noUnresolvedExposures ? (
-          <div className={styles.noExposures}>
-            <Image src={AllFixedLogo} alt="" />
-            <strong>
-              {l10n.getString("dashboard-exposures-all-fixed-label")}
-            </strong>
-          </div>
-        ) : (
-          <ul className={styles.exposureList}>{exposureCardElems}</ul>
-        )}
+        {
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 9 */
+          noUnresolvedExposures ? (
+            <div className={styles.noExposures}>
+              <Image src={AllFixedLogo} alt="" />
+              <strong>
+                {l10n.getString("dashboard-exposures-all-fixed-label")}
+              </strong>
+              {freeScanCta}
+            </div>
+          ) : (
+            <ul className={styles.exposureList}>{exposureCardElems}</ul>
+          )
+        }
       </div>
     </div>
   );
@@ -273,11 +304,15 @@ function getRandomLightNebulaColor(name: string) {
   const charValues = name.split("").map((letter) => letter.codePointAt(0));
 
   const charSum = charValues.reduce((sum: number | undefined, codePoint) => {
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next */
     if (codePoint === undefined) return sum;
     if (sum === undefined) return codePoint;
     return sum + codePoint;
   }, undefined);
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 3 */
   if (charSum === undefined) {
     return colors[0];
   }

@@ -201,6 +201,7 @@ dashboard-top-banner-monitor-protects-your-even-more-description =
       *[other] We can now find exposures of your personal info on { $data_broker_sites_total_num } data broker sites that publish and sell your personal info for a profit.
   }
 dashboard-top-banner-monitor-protects-your-even-more-cta = Get first scan free
+dashboard-top-banner-monitor-protects-your-even-more-learn-more = Learn more
 
 dashboard-top-banner-no-exposures-found-title = No exposures found
 # Variables:
@@ -238,6 +239,14 @@ dashboard-fixed-area-headline = View all exposures that are fixed or in-progress
 dashboard-exposures-area-description = We found your information exposed { $exposures_total_num } times over { $data_breach_total_num } data breaches and { $data_broker_total_num } data broker sites that are selling your personal info.
 dashboard-exposures-all-fixed-label = All fixed here!
 
+# Variables: 
+# $data_broker_total_num is the total number of data brokers selling the user’s data.
+dashboard-exposures-all-fixed-free-scan = {
+    $data_broker_total_num ->
+      [one] Next <link>start your free scan</link> of { $data_broker_total_num } site that may be selling your personal info.
+     *[other] Next <link>start your free scan</link> of { $data_broker_total_num } sites that may be selling your personal info.
+  }
+
 ## False door test
 
 # Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
@@ -247,3 +256,6 @@ false-door-test-content-part-two = Automatically remove data from sites trying t
 false-door-test-content-part-two-dashboard = Auto-delete data from sites trying to sell it.
 false-door-test-cta = Count me in
 false-door-test-popup-close = Close
+false-door-test-phase-2-content-part-one = Did you know there are sites selling your private info?
+false-door-test-phase-2-content-part-two = Automatically remove data from sketchy sites.
+false-door-test-phase-2-content-part-two-dashboard = Automatically remove data from broker sites. 

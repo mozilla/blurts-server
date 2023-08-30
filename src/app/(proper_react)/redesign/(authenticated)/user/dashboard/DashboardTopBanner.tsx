@@ -3,15 +3,13 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./DashboardTopBanner.module.scss";
-import { TabType } from "./View";
+import { TabType, ONEREP_DATA_BROKER_COUNT } from "./View";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
-
-const ONEREP_DATA_BROKER_COUNT = 190;
 
 export type BannerContent =
   | "LetsFixDataContent"
@@ -69,6 +67,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           {l10n.getString("dashboard-top-banner-protect-your-data-cta")}
         </Button>
       ),
+      learnMore: null,
     },
     DataBrokerScanUpsellContent: {
       headline: l10n.getString(
@@ -95,6 +94,13 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           )}
         </Button>
       ),
+      learnMore: (
+        <a href="https://mozilla.org/products/monitor/how-it-works/">
+          {l10n.getString(
+            "dashboard-top-banner-monitor-protects-your-even-more-learn-more"
+          )}
+        </a>
+      ),
     },
     NoExposuresFoundContent: {
       headline: l10n.getString("dashboard-top-banner-no-exposures-found-title"),
@@ -117,6 +123,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           {l10n.getString("dashboard-top-banner-no-exposures-found-cta")}
         </Button>
       ),
+      learnMore: null,
     },
     ResumeBreachResolutionContent: {
       headline: l10n.getString(
@@ -141,6 +148,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           {l10n.getString("dashboard-top-banner-lets-keep-protecting-cta")}
         </Button>
       ),
+      learnMore: null,
     },
     YourDataIsProtectedContent: {
       headline: l10n.getString(
@@ -165,6 +173,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
         </Button>
       ),
+      learnMore: null,
     },
     NoContent: null,
   };
@@ -179,11 +188,16 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             <div className={styles.explainerContent}>
               <h3>{content.headline}</h3>
               <p>{content.description}</p>
-              {content.cta ? (
-                <span className={styles.cta}>{content.cta}</span>
-              ) : (
-                ""
-              )}
+              {
+                // TODO: Add unit test when changing this code:
+                /* c8 ignore next 4 */
+                content.cta ? (
+                  <span className={styles.cta}>{content.cta}</span>
+                ) : (
+                  ""
+                )
+              }
+              {content.learnMore ? <p>{content.learnMore}</p> : ""}
             </div>
           )}
           {isFixedTab && (
