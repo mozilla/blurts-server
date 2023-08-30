@@ -25,7 +25,7 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 
 user-menu-trigger-label = Open menu
 user-menu-trigger-tooltip = Profile
-user-menu-manage-fxa-label = Manage your { -brand-fxa }
+user-menu-manage-fxa-label = Manage your { -brand-fxa-account }
 user-menu-settings-label = Settings
 user-menu-settings-tooltip = Configure { -brand-fx-monitor }
 user-menu-help-label = Help and support
