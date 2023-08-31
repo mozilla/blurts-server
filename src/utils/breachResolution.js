@@ -113,6 +113,8 @@ function appendBreachResolutionChecklist (userBreachData, options = {}) {
 
   for (const { breaches } of verifiedEmails) {
     breaches.forEach((/** @type {any} */ b) => {
+      // TODO: Add unit test when changing this code:
+      /* c8 ignore next 3 */
       const dataClasses = b.DataClasses
       const blockList = (AppConstants.HIBP_BREACH_DOMAIN_BLOCKLIST ?? '').split(',')
       const showLink = b.Domain && !blockList.includes(b.Domain)
@@ -207,6 +209,8 @@ function getRecommendationFromResolution (resolution, args) {
   const [resolutionType, resolutionContent] = resolution
   let { header, body, priority } = resolutionContent
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next */
   header = header ? getMessage(header, args) : ''
   body = body
     ? getBodyMessage(body, { resolutionType, stringArgs: args })

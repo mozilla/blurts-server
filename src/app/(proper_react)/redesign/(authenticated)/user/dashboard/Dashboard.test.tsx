@@ -11,6 +11,9 @@ import Meta, {
   DashboardWithScan,
   DashboardWithScanUserFromUs,
   DashboardWithoutScan,
+  DashboardFreeUser,
+  DashboardPremiumUser,
+  DashboardNoSession,
 } from "./Dashboard.stories";
 
 jest.mock("next/navigation", () => ({
@@ -61,4 +64,35 @@ it("switches between tab panels", async () => {
   await user.click(tabFixedTrigger);
   expect(tabFixedTrigger.getAttribute("aria-selected")).toBe("true");
   expect(tabActionNeededTrigger.getAttribute("aria-selected")).toBe("false");
+});
+
+it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
+  const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  expect(premiumCtas.length).toBe(2);
+});
+
+it("shows the premium badge if the user is a premium subscriber", () => {
+  const ComposedDashboard = composeStory(DashboardPremiumUser, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumBadges = screen.queryAllByText("Premium");
+  expect(premiumBadges.length).toBe(2);
+});
+
+it("shows the premium upgrade cta if there is no user session", () => {
+  const ComposedDashboard = composeStory(DashboardNoSession, Meta);
+  render(<ComposedDashboard />);
+
+  // We show a CTA on desktop in the toolbar and in the mobile menu
+  const premiumCtas = screen.queryAllByRole("button", {
+    name: "Upgrade to ⁨Premium⁩",
+  });
+  expect(premiumCtas.length).toBe(2);
 });

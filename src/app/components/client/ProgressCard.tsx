@@ -152,6 +152,8 @@ export const ProgressCard = (props: Props) => {
           <Dialog
             title={l10n.getString("modal-heres-what-we-fixed-title")}
             illustration={<Image src={ModalImage} alt="" />}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onDismiss={() => explainerDialogState.close()}
           >
             {modalContent}

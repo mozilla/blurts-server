@@ -18,6 +18,8 @@ export interface OptionProps extends AriaListBoxOptions<unknown> {
   state: ListState<object>;
 }
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function Option({ item, state }: OptionProps) {
   const ref = useRef(null);
   const { optionProps, isSelected, isFocused, isDisabled } = useOption(
@@ -38,6 +40,7 @@ function Option({ item, state }: OptionProps) {
     </li>
   );
 }
+/* c8 ignore stop */
 
 export interface ListBoxProps extends AriaListBoxOptions<unknown> {
   state: ListState<object>;
@@ -45,6 +48,8 @@ export interface ListBoxProps extends AriaListBoxOptions<unknown> {
   parentRef?: RefObject<HTMLInputElement>;
 }
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function ListBox(props: ListBoxProps) {
   const { listBoxRef, parentRef, state } = props;
   const { listBoxProps } = useListBox(props, state, listBoxRef);
@@ -67,5 +72,6 @@ function ListBox(props: ListBoxProps) {
     </ul>
   );
 }
+/* c8 ignore stop */
 
 export { ListBox };

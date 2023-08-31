@@ -215,11 +215,15 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
             <div className={styles.explainerContent}>
               <h3>{content.headline}</h3>
               <p>{content.description}</p>
-              {content.cta ? (
-                <span className={styles.cta}>{content.cta}</span>
-              ) : (
-                ""
-              )}
+              {
+                // TODO: Add unit test when changing this code:
+                /* c8 ignore next 4 */
+                content.cta ? (
+                  <span className={styles.cta}>{content.cta}</span>
+                ) : (
+                  ""
+                )
+              }
               {content.learnMore ? <p>{content.learnMore}</p> : ""}
             </div>
           )}

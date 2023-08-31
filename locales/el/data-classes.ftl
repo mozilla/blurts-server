@@ -25,6 +25,7 @@ career-levels = Επίπεδα καριέρας
 cellular-network-names = Ονόματα δικτύων κινητής τηλεφωνίας
 charitable-donations = Φιλανθρωπικές δωρεές
 chat-logs = Αρχεία συνομιλιών
+clothing-sizes = Μεγέθη ρούχων
 credit-card-cvv = CVV πιστωτικής κάρτας
 credit-cards = Πιστωτικές κάρτες
 credit-status-information = Πληροφορίες πιστωτικής κατάστασης
