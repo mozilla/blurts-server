@@ -20,6 +20,7 @@ import Link from "next/link";
 export type Props = {
   data: Array<[string, number]>;
   hasRunScan: boolean;
+  isEligibleForFreeScan: boolean;
 };
 
 export const DoughnutChart = (props: Props) => {
@@ -190,7 +191,7 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.hasRunScan ? prompt : null}
+            {!props.hasRunScan && props.isEligibleForFreeScan ? prompt : null}
           </div>
         </div>
         <figcaption>

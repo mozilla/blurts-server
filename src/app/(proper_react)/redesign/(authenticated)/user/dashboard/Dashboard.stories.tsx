@@ -180,6 +180,7 @@ export const DashboardWithScan: Story = {
         user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        isEligibleForFreeScan={false}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
@@ -192,6 +193,7 @@ export const DashboardWithScan: Story = {
 };
 
 export const DashboardWithScanUserFromUs: Story = {
+  name: "Dashboard with scan, user from US",
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
@@ -199,6 +201,7 @@ export const DashboardWithScanUserFromUs: Story = {
         user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
@@ -211,12 +214,34 @@ export const DashboardWithScanUserFromUs: Story = {
 };
 
 export const DashboardWithoutScan: Story = {
+  name: "Dashboard without scan",
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
+        isEligibleForFreeScan={false}
+        locale={"en"}
+        bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardWithoutScanUserFromUs: Story = {
+  name: "Dashboard without scan, user from US",
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
+      <DashboardEl
+        user={{ email: "example@example.com" }}
+        userBreaches={breachItemArraySample}
+        userScannedResults={[]}
+        isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
         featureFlagsEnabled={{
@@ -235,6 +260,7 @@ export const DashboardEmptyListState: Story = {
         user={mockSession.user}
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
+        isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
         featureFlagsEnabled={{
@@ -254,6 +280,7 @@ export const DashboardFreeUser: Story = {
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
@@ -276,6 +303,7 @@ export const DashboardPremiumUser: Story = {
         user={userWithPremiumSubscription}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
@@ -295,6 +323,7 @@ export const DashboardNoSession: Story = {
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        isEligibleForFreeScan={false}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
