@@ -16,6 +16,25 @@ import Meta, {
   DashboardNoSession,
 } from "./Dashboard.stories";
 
+const ENV = process.env;
+
+function enablePremium() {
+  process.env.PREMIUM_ENABLED = "true";
+}
+
+function disablePremium() {
+  process.env = { ...ENV };
+}
+
+beforeEach(() => {
+  jest.resetModules();
+  disablePremium();
+});
+
+afterAll(() => {
+  disablePremium();
+});
+
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
   usePathname: jest.fn(),
@@ -67,6 +86,7 @@ it("switches between tab panels", async () => {
 });
 
 it("shows the premium upgrade cta if the user is not a premium subscriber", () => {
+  enablePremium();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
   render(<ComposedDashboard />);
 
@@ -78,6 +98,7 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
 });
 
 it("opens and closes the premium upsell modal", async () => {
+  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
   render(<ComposedDashboard />);
@@ -112,6 +133,7 @@ it("opens and closes the premium upsell modal", async () => {
 });
 
 it("toggles between the product offerings in the premium upsell modal", async () => {
+  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
   render(<ComposedDashboard />);
@@ -147,6 +169,7 @@ it("toggles between the product offerings in the premium upsell modal", async ()
 });
 
 it("shows the premium badge if the user is a premium subscriber", () => {
+  enablePremium();
   const ComposedDashboard = composeStory(DashboardPremiumUser, Meta);
   render(<ComposedDashboard />);
 
@@ -156,6 +179,7 @@ it("shows the premium badge if the user is a premium subscriber", () => {
 });
 
 it("shows the premium upgrade cta if there is no user session", () => {
+  enablePremium();
   const ComposedDashboard = composeStory(DashboardNoSession, Meta);
   render(<ComposedDashboard />);
 
