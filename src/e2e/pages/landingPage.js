@@ -12,6 +12,9 @@ export class LandingPage {
     this.howItWorksSec = page.locator('.how-it-works')
     this.questionsAboutSec = page.locator('.top-questions-about-monitor')
     this.seeIfDataBreachSec = page.locator('.see-if-data-breach')
+    this.falseBannerOpenButton = page.locator('#open-button')
+
+    // footer section
     this.MozillaFooterLogoImage = page.getByAltText("Mozilla")
     this.MozillaFooterLogoLink = page.locator('footer a').first()
     this.AllBreachesLink = page.getByRole('link', { name: 'All Breaches' })
@@ -25,6 +28,19 @@ export class LandingPage {
     this.falseBannerCloseButton = page.locator('#close-button')
     this.scanEmailAddressInput = page.locator('#scan-email-address')
     this.checkForBreachesButton =  page.getByRole('button', {name: 'Check for breaches'})
+
+    // hero section
+    this.heroHeader = page.locator('.hero div h1').innerText()
+    this.heroDescription = page.locator('.hero p').innerText()
+    this.heroEmailInput = page.locator('#scan-email-address')
+    this.heroCTAButton = page.locator('form button:has-text("Check for breaches")')
+    this.heroImage = page.locator('.hero figure img')
+    this.whyUseMonitorSection = page.locator('.why-use-monitor')
+    this.howItWorksSection = page.locator('.how-it-works')
+    this.yourPrivacyIsSafeWithUsSection = page.locator('.safe-with-us')
+    this.landingFAQSection = page.locator('.top-questions-about-monitor')
+    this.landingFAQSectionButtons = page.locator('.top-questions-about-monitor details summary')
+    this.seeIfDataBreachSection = page.locator('.see-if-data-breach')
   }
 
   async open () {
@@ -72,9 +88,21 @@ export class LandingPage {
     await this.firefoxLogo.click()
   }
 
+  async heroSectionTexts(){
+    return {
+      heroHeaderText: "Find out if your personal information has been compromised",
+      heroDescriptionText: "Stay safe with privacy tools from the makers of Firefox that protect you from hackers and companies that publish and sell your personal information. We'll alert you of any known data breaches, find and remove your exposed info and continually watch for new exposures.",
+      heroEmailInputPlaceholder: "Enter email address",
+    }
+  }
+
   async checkBanner(){
-    if(await this.falseDoorBanner.isVisible()){
-      await this.falseBannerCloseButton.click()
+    await this.page.waitForSelector('//div[starts-with(@class, "FalseDoorBanner_falseDoorTest")]',{
+      state: "visible"
+  });
+
+    if(await this.falseBannerOpenButton.isVisible()){
+      await this.falseBannerCloseButton.click({ force: true })
     }
   }
 

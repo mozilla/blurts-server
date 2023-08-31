@@ -7,6 +7,7 @@ import { test, expect } from '../fixtures/basePage.js'
 test.describe('Landing Page element verification', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
+    await landingPage.checkBanner()
   })
 
   test(' Verify that the site footer options work correctly ', async ({ landingPage }) => {
@@ -43,16 +44,96 @@ test.describe('Landing Page element verification', () => {
   })
 
   test('Verify that the site footer is displayed correctly', async ({ landingPage }) => {
+      // link to testrail case
+      test.info().annotations.push({
+        type: "testrail",
+        description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095094",
+      });
+
+      // visually verify landing page footer is displayed correctly
+      await expect(async () => {
+        await expect(await landingPage.landingFooter).toHaveScreenshot(
+          `${process.env.E2E_TEST_ENV}-landingFooter.png`
+        )
+      }).toPass({
+        timeout: 2000
+      })
+
+    })
+
+  test('Verify that the Landing Page content is displayed correctly', async ({ landingPage }) => {
     // link to testrail case
     test.info().annotations.push({
       type: "testrail",
-      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095094",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095093",
     });
 
-    // visually verify landing page footer is displayed correctly
+    const links = await landingPage.heroSectionTexts()
+
+    // 1. Verify the "Find out if your personal information has been compromised" section.
     await expect(async () => {
-      await expect(landingPage.landingFooter).toHaveScreenshot(
-        `${process.env.E2E_TEST_ENV}-landingFooter.png`
+      // verify hero title;
+      expect(await landingPage.heroHeader).toBe(links.heroHeaderText)
+
+      // verify hero description;
+      expect(await landingPage.heroDescription).toBe(links.heroDescriptionText)
+
+      // verify email field placeholder
+      expect(await landingPage.heroEmailInput.getAttribute('placeholder')).toBe(links.heroEmailInputPlaceholder)
+
+      // verify "Check for breaches" blue button;
+      await expect(await landingPage.heroCTAButton).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-heroCTAButton.png`
+      )
+
+      // verify An appropriate image (fishing pole fishing an email icon from a laptop cluttered by notifications);
+      await expect(await landingPage.heroImage).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-heroImage.png`
+      )
+    }).toPass({
+      timeout: 2000
+    })
+
+    // 2. Verify the "Why use Firefox Monitor?" section.
+    await expect(async () => {
+      await expect(await landingPage.whyUseMonitorSection).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-whyUseMonitorSection.png`
+      )
+    }).toPass({
+      timeout: 2000
+    })
+
+    // 3. Verify the "Hereâ€™s how it works" section.
+    await expect(async () => {
+      await expect(await landingPage.howItWorksSection).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-howItWorksSection.png`
+      )
+    }).toPass({
+      timeout: 2000
+    })
+
+    // 4. Verify the "Your privacy is safe with us" section.
+    await expect(async () => {
+      await expect(await landingPage.yourPrivacyIsSafeWithUsSection).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-yourPrivacyIsSafeWithUsSection.png`
+      )
+    }).toPass({
+      timeout: 2000
+    })
+
+    // 5. Verify the "Top questions about Firefox Monitor" section.
+    await expect(async () => {
+      await expect(await landingPage.landingFAQSection).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-landingFAQSection.png`
+      )
+    }).toPass({
+      timeout: 2000
+    })
+
+    // 6. Verify the "See if youâ€™ve been in a data breach" section.
+    await expect(async () => {
+      await expect(await landingPage.seeIfDataBreachSection).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-seeIfDataBreachSection.png`
       )
     }).toPass({
       timeout: 2000
