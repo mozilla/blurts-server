@@ -175,6 +175,33 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       learnMore: null,
     },
+    YourDataIsProtectedAllFixedContent: {
+      headline: l10n.getString(
+        "dashboard-top-banner-your-data-is-protected-title"
+      ),
+      description: l10n.getString(
+        "dashboard-top-banner-your-data-is-protected-all-fixed-description",
+        {
+          starting_exposure_total_num: totalExposures,
+        }
+      ),
+      cta: (
+        <Button
+          // Ignored for test coverage; to be implemented:
+          /* c8 ignore next 3 */
+          onClick={() => {
+            props?.ctaCallback?.();
+          }}
+          small
+          variant="primary"
+        >
+          {l10n.getString(
+            "dashboard-top-banner-your-data-is-protected-all-fixed-cta"
+          )}
+        </Button>
+      ),
+      learnMore: null,
+    },
     NoContent: null,
   };
 
