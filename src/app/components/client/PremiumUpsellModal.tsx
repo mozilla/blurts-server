@@ -80,6 +80,12 @@ function PremiumUpsellModalContent() {
     },
   ];
 
+  const premiumSubscriptionUrl =
+    process.env.FXA_SUBSCRIPTIONS_URL &&
+    process.env.PREMIUM_PRODUCT_ID &&
+    process.env.PREMIUM_PLAN_ID_US &&
+    `${process.env.FXA_SUBSCRIPTIONS_URL}/products/${process.env.PREMIUM_PRODUCT_ID}?plan=${process.env.PREMIUM_PLAN_ID_US}`;
+
   return (
     <div className={styles.modalContent}>
       <div className={styles.productPlans}>
@@ -125,9 +131,7 @@ function PremiumUpsellModalContent() {
       <Button
         buttonType="link"
         className={styles.productCta}
-        href={`${process.env.FXA_SUBSCRIPTIONS_URL ?? ""}/products/${
-          process.env.PREMIUM_PRODUCT_ID ?? ""
-        }?plan=${process.env.PREMIUM_PLAN_ID_US ?? ""}`}
+        href={premiumSubscriptionUrl}
         variant="primary"
       >
         {isMonthly
