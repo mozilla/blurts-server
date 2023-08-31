@@ -5,22 +5,18 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useGlean } from "../../../hooks/useGlean";
 
-interface PageLoadProps {
-  pageTitle: string;
-}
-
 // Empty component that records a page view on first load.
-export const PageLoad = ({ pageTitle }: PageLoadProps) => {
+export const PageLoadEvent = () => {
   const { appEvents } = useGlean();
+  const pathname = usePathname();
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    if (pageTitle) {
-      appEvents.pageView.record({ label: pageTitle });
-    }
-  }, [appEvents, pageTitle]);
+    appEvents.pageView.record({ path: pathname });
+  }, [appEvents.pageView, pathname]);
 
   // This component doesn't render anything.
   return <></>;

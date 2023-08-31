@@ -12,8 +12,8 @@ import LaptopImage from "../../../client/images/landing-laptop@2x.webp";
 import LockImage from "../../../client/images/landing-lock@2x.webp";
 import MailImage from "../../../client/images/landing-mail@2x.webp";
 import NaturePhoneImage from "../../../client/images/landing-nature-phone@2x.webp";
-import { PageLoad } from "../components/client/PageLoad";
 import { getNonce } from "../functions/server/getNonce";
+import { PageLoadEvent } from "../components/client/PageLoadEvent";
 
 export default function Home() {
   const l10n = getL10n();
@@ -35,7 +35,7 @@ export default function Home() {
         src="/nextjs_migration/client/js/landing.js"
         nonce={getNonce()}
       />
-      <PageLoad pageTitle="Home" />
+      <PageLoadEvent />
       <section className="hero">
         <div>
           <h1>{l10n.getString("exposure-landing-hero-heading")}</h1>

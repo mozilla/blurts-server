@@ -25,25 +25,6 @@ app_events:
       - glean-team@mozilla.com
     expires: never
     extra_keys:
-      label:
-        description: The title of the page.
-        type: string
-  button_click:
-    type: event
-    description: |
-      A generic button click event with extras.
-    bugs:
-      # TODO: Add bug link
-      - https://bugzilla.mozilla.org/1691365
-    data_reviews:
-      # TODO: Add data review link
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1691365#c0
-    data_sensitivity:
-      - technical
-    notification_emails:
-      - glean-team@mozilla.com
-    expires: never
-    extra_keys:
-      label:
-        description: The label of the button.
+      path:
+        description: The path of the page.
         type: string
