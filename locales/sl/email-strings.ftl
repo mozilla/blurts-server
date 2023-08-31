@@ -87,9 +87,9 @@ email-2022-hibp-attribution = Podatke o krajah zagotavlja <a { $hibp-link-attr }
 ##   $email-address (string) - Email address
 
 email-unresolved-heading = Imate nerazrešene kraje podatkov
-email-unresolved-subhead = Vaš e-poštni naslov je bil razkrit. <br>Popravite težavo takoj s { -product-name }.
+email-unresolved-subhead = Vaš e-poštni naslov je bil razkrit. <br>Odpravite težavo takoj s { -product-name }.
 email-is-affected = Vaš e-poštni naslov { $email-address } je odkrit v vsaj eni kraji podatkov
-email-more-detail = Prijavite se v { -product-name }, če si želite ogledati več podrobnosti o svojih krajah (vključno s tem, kdaj je do njih prišlo in kateri podatki so bili izpostavljeni), ter izvedeti, kaj morate storiti, če je vaša e-pošta izpostavljena v kraji podatkov.
+email-more-detail = Prijavite se v { -product-name }, če si želite ogledati več podrobnosti o krajah vaših podatkov (vključno s tem, kdaj je do njih prišlo in kateri podatki so bili izpostavljeni), ter izvedeti, kaj morate storiti, če je vaša e-pošta izpostavljena v kraji podatkov.
 email-breach-status = Trenutno stanje kraje
 # table row 1 label
 email-monitored = Skupaj nadzorovanih e-poštnih naslovov:
@@ -111,8 +111,8 @@ email-verify-simply-click = Preprosto kliknite spodnjo povezavo, da dokončate p
 ## Variables:
 ##   $email-address (string) - Email address
 
-email-breach-summary = Tukaj je povzetek varnostnih podatkov
-email-breach-detected = Rezultati iskanja za vaš račun { $email-address } so odkrili, da je bil vaš e-poštni naslov morda izpostavljen. Priporočamo, da takoj ukrepate in odpravite to kršitev.
+email-breach-summary = Tukaj je povzetek kraje podatkov
+email-breach-detected = Rezultati iskanja za vaš račun { $email-address } kažejo, da je bil vaš e-poštni naslov morda izpostavljen. Priporočamo, da takoj ukrepate in razrešite to krajo.
 email-no-breach-detected = Odlična novica! Odkrili nismo nobene kraje podatkov, ki bi vplivale na vaš e-poštni naslov { $email-address }.
 email-dashboard-cta = Pojdi na nadzorno ploščo
 
