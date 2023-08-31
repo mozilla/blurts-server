@@ -44,7 +44,6 @@ export function getEnL10nBundlesInWebpackContext(): LocaleData[] {
   );
   const referenceSourceFilenames = referenceStringsContext.keys();
   const pendingSourceFilenames = pendingTranslationsContext.keys();
-  console.log({ referenceSourceFilenames, pendingSourceFilenames });
   const bundleSources: string[] = referenceSourceFilenames
     .map((filePath) => referenceStringsContext(filePath))
     .concat(
