@@ -161,7 +161,7 @@ const mockSession = {
   user: { email: "example@example.com" },
 };
 
-const userWithPremiumSubscription = {
+export const userWithPremiumSubscription = {
   email: "example@example.com",
   fxa: {
     locale: "us",

@@ -19,7 +19,9 @@ export const Toolbar = (props: Props) => {
     <nav className={styles.toolbar}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
-        <PremiumBadge user={props.user} />
+        {process.env.PREMIUM_ENABLED === "true" && (
+          <PremiumBadge user={props.user} />
+        )}
         <AppPicker />
         <UserMenu user={props.user} />
       </div>

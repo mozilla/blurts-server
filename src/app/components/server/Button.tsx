@@ -8,10 +8,10 @@ import styles from "./button.module.scss";
 import { useButton } from "react-aria";
 
 export interface Props extends ComponentProps<"button"> {
-  className: string;
   children: ReactNode;
   variant: "primary" | "secondary";
   buttonType?: "button" | "link";
+  className?: string;
   destructive?: boolean;
   disabled?: boolean;
   href?: string;
@@ -23,15 +23,15 @@ export const Button = (
   props: Props & Parameters<typeof useButton>[0] // AriaButtonOptions
 ) => {
   const {
+    children,
+    variant,
     buttonType,
     className,
-    children,
     destructive,
     disabled,
     href,
     isLoading,
     small,
-    variant,
     ...otherProps
   } = props;
 

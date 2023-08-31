@@ -4,7 +4,7 @@
 
 "use client";
 
-import { Key, ReactNode, useState } from "react";
+import { Key, useState } from "react";
 import Image from "next/image";
 import type { OverlayTriggerProps, OverlayTriggerState } from "react-stately";
 import { Dialog } from "./dialog/Dialog";
@@ -16,7 +16,6 @@ import ModalImage from "../client/assets/premium-upsell-modal-icon.svg";
 import styles from "./PremiumUpsellModal.module.scss";
 
 export interface PremiumUpsellModalProps {
-  children: ReactNode;
   state: OverlayTriggerState;
 }
 
@@ -126,7 +125,9 @@ function PremiumUpsellModalContent() {
       <Button
         buttonType="link"
         className={styles.productCta}
-        href=""
+        href={`${process.env.FXA_SUBSCRIPTIONS_URL ?? ""}/products/${
+          process.env.PREMIUM_PRODUCT_ID ?? ""
+        }?plan=${process.env.PREMIUM_PLAN_ID_US ?? ""}`}
         variant="primary"
       >
         {isMonthly
@@ -142,7 +143,6 @@ function PremiumUpsellModalContent() {
 }
 
 function PremiumUpsellModal({
-  children,
   state,
   ...otherProps
 }: PremiumUpsellModalProps & OverlayTriggerProps) {
@@ -150,7 +150,6 @@ function PremiumUpsellModal({
 
   return (
     <div className={styles.modal}>
-      {children}
       {state.isOpen && (
         <ModalOverlay state={state} {...otherProps} isDismissable={true}>
           <Dialog
