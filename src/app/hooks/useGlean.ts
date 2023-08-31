@@ -19,11 +19,13 @@ export const useGlean = () => {
       maxEvents: 1,
     });
 
-    // Enable logging pings to the browser console.
-    Glean.setLogPings(true);
+    if (process.env.NODE_ENV === "development") {
+      // Enable logging pings to the browser console.
+      Glean.setLogPings(true);
 
-    // Set the tag and sends pings to the debug ping viewer.
-    Glean.setDebugViewTag("monitor-testing");
+      // Set the tag and sends pings to the debug ping viewer.
+      Glean.setDebugViewTag("monitor-testing");
+    }
   }, []);
 
   // Return all generated Glean objects required for recording data.
