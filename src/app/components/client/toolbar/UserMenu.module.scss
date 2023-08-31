@@ -60,6 +60,8 @@ $button-size: 42px;
   }
 
   &:first-of-type {
+    // Margin to create visual space between the pseudo element and
+    // the first item after it.
     margin-bottom: $spacing-sm;
     padding: calc($spacing-sm * 1.5) calc($spacing-md * 1.5);
 
