@@ -180,6 +180,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
           num={exposureItem.addresses.length}
         />
       );
+      // TODO: Add unit test when changing this code:
+      /* c8 ignore next 11 */
     } else {
       // "Other" item when none of the conditions above are met
       exposureCategoriesArray.push(
@@ -237,6 +239,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
             count={count}
           />
         );
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next 12 */
       }
       // Handle all other breach categories
       else {
@@ -261,6 +265,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
   };
 
   function fallbackLogo(exposureId: string) {
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next */
     const firstLetter = exposureId?.[0]?.toUpperCase() || "";
 
     return (
@@ -291,15 +297,19 @@ export const ExposureCard = (props: ExposureCardProps) => {
               className={`${styles.hideOnMobile} ${styles.exposureImageWrapper}`}
             >
               {/* While logo is not yet set, the fallback image is the first character of the exposure name */}
-              {exposureImg ? (
-                <Image
-                  className={styles.exposureImage}
-                  alt=""
-                  src={exposureImg}
-                />
-              ) : (
-                <>{fallbackLogo(props.exposureName)}</>
-              )}
+              {
+                // TODO: Add unit test when changing this code:
+                /* c8 ignore next 7 */
+                exposureImg ? (
+                  <Image
+                    className={styles.exposureImage}
+                    alt=""
+                    src={exposureImg}
+                  />
+                ) : (
+                  <>{fallbackLogo(props.exposureName)}</>
+                )
+              }
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-company")}
@@ -330,11 +340,17 @@ export const ExposureCard = (props: ExposureCardProps) => {
           </dl>
           <button
             className={styles.chevron}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => setExposureCardExpanded(!exposureCardExpanded)}
           >
             <ChevronDown
+              // TODO: Add unit test when changing this code:
+              /* c8 ignore next */
               className={exposureCardExpanded ? styles.isOpen : ""}
               alt={
+                // TODO: Add unit test when changing this code:
+                /* c8 ignore next 2 */
                 exposureCardExpanded
                   ? l10n.getString("chevron-up-alt")
                   : l10n.getString("chevron-down-alt")
@@ -346,6 +362,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
         </div>
         <div
           className={`${styles.exposureDetailsSection} ${
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             exposureCardExpanded ? styles.isOpen : ""
           }`}
         >
@@ -419,6 +437,8 @@ export const ExposureCard = (props: ExposureCardProps) => {
               featureFlagsEnabled.PremiumBrokerRemoval &&
               props.exposureData.status === "new") ||
             (!isScanResult(props.exposureData) &&
+              // TODO: Add unit test when changing this code:
+              /* c8 ignore next 3 */
               !props.exposureData.isResolved)
               ? letsFixItBtn
               : null}

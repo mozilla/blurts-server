@@ -10,9 +10,9 @@ settings-page-title = Nastavitve { -product-short-name(sklon: "rodilnik") }
 
 ## Breach alert preferences
 
-settings-alert-preferences-title = Nastavitve opozoril o kršitvah
+settings-alert-preferences-title = Nastavitve opozoril o krajah
 settings-alert-preferences-option-one = Pošlji opozorila na ogrožen e-poštni naslov
-settings-alert-preferences-option-two = Pošlji vsa opozorila o vdorih podatkov na primarni e-poštni naslov
+settings-alert-preferences-option-two = Pošlji vsa opozorila o krajah podatkov na primarni e-poštni naslov
 
 ## Monitored email addresses
 
@@ -48,8 +48,8 @@ settings-email-number-of-breaches-info =
 ## Cancel Premium subscription
 
 settings-cancel-premium-subscription-title = Prekliči naročnino na { -brand-premium }
-settings-cancel-premium-subscription-info = Vaša naročnina se bo po koncu trenutnega obračunskega obdobja vrnila v brezplačen račun. Rezultati pregleda zaradi zaščite zasebnosti bodo trajno izbrisani, nadzor nad krajami podatkov pa bo na voljo samo za 1 e-poštni naslov.
-settings-cancel-premium-subscription-link-label = Prekliči iz svojega { -brand-fx-account }
+settings-cancel-premium-subscription-info = Vaša naročnina se bo po koncu trenutnega obračunskega obdobja vrnila v brezplačen račun. Vaši rezultati pregleda zaščite zasebnosti bodo trajno izbrisani, nadzor nad krajami podatkov pa bo na voljo samo za en e-poštni naslov.
+settings-cancel-premium-subscription-link-label = Prekliči iz svojega { -brand-fx-account }a
 
 ## Deactivate account
 
@@ -66,10 +66,10 @@ settings-send-email-verification-button = Pošlji potrditveno povezavo
 
 ## Unsubscribe Dialog Survey
 
-settings-unsubscribe-dialog-title = Žal nam je, da odhajate. <br /> Nam poveste, zakaj odhajate?
+settings-unsubscribe-dialog-title = Žal nam je, da odhajate. <br /> Nam poveste, zakaj?
 settings-unsubscribe-dialog-info = Vaše izkušnje so za nas pomembne. Vsak odziv preberemo in ga tudi upoštevamo.
 settings-unsubscribe-dialog-message-placeholder = Kaj bi lahko bilo bolje?
 # $faq_href is the URL for the faq page. HTML tags should not be translated, e.g. `<a>`
-settings-unsubscribe-dialog-confirmation = Upoštevajte, da bodo vse vaše storitve { -brand-monitor-premium }a <a { $faq_href }>trajno izbrisane</a> po koncu vašega trenutnega obračunskega obdobja.
+settings-unsubscribe-dialog-confirmation = Upoštevajte, da bodo vse vaše storitve { -brand-monitor-premium } <a { $faq_href }>trajno izbrisane</a> po koncu vašega trenutnega obračunskega obdobja.
 settings-unsubscribe-dialog-continue = Nadaljuj na preklic
-settings-unsubscribe-dialog-cancel = Ni važno, vzemite me nazaj
+settings-unsubscribe-dialog-cancel = Premislil sem si, vzemite me nazaj

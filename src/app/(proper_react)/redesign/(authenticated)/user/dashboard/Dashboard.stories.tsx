@@ -156,9 +156,26 @@ const dashboardSummaryWithScan: DashboardSummary = {
   fixedSanitizedExposures: [],
 };
 
+const mockSession = {
+  expires: new Date().toISOString(),
+  user: { email: "example@example.com" },
+};
+
+const userWithPremiumSubscription = {
+  email: "example@example.com",
+  fxa: {
+    locale: "us",
+    twoFactorAuthentication: false,
+    metricsEnabled: false,
+    avatar: "",
+    avatarDefault: true,
+    subscriptions: ["monitor"],
+  },
+};
+
 export const DashboardWithScan: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
@@ -176,7 +193,7 @@ export const DashboardWithScan: Story = {
 
 export const DashboardWithScanUserFromUs: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         countryCode="us"
         user={{ email: "example@example.com" }}
@@ -195,7 +212,7 @@ export const DashboardWithScanUserFromUs: Story = {
 
 export const DashboardWithoutScan: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
@@ -213,13 +230,73 @@ export const DashboardWithoutScan: Story = {
 
 export const DashboardEmptyListState: Story = {
   render: () => (
-    <Shell l10n={getEnL10nSync()} session={null}>
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
         locale={"en"}
         bannerData={dashboardSummaryNoScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardFreeUser: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
+      <DashboardEl
+        countryCode="us"
+        user={{ email: "example@example.com" }}
+        userBreaches={breachItemArraySample}
+        userScannedResults={scannedResultsArraySample}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardPremiumUser: Story = {
+  render: () => (
+    <Shell
+      l10n={getEnL10nSync()}
+      session={{ ...mockSession, user: userWithPremiumSubscription }}
+    >
+      <DashboardEl
+        countryCode="us"
+        user={userWithPremiumSubscription}
+        userBreaches={breachItemArraySample}
+        userScannedResults={scannedResultsArraySample}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardNoSession: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={null}>
+      <DashboardEl
+        countryCode="us"
+        user={{ email: "example@example.com" }}
+        userBreaches={breachItemArraySample}
+        userScannedResults={scannedResultsArraySample}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
           FreeBrokerScan: true,
           PremiumBrokerRemoval: true,
