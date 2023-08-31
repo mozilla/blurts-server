@@ -708,6 +708,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 
 ## Search Engine Optimization
 
+meta-desc-2 = Ehecha { -brand-fx-monitor } ndive eguerekópa mba’ekuaarã ñembogua. Roipytyvõta eikuaa hag̃ua mba’épa ejapóta ha roma’ẽag̃uíta oimeraẽva ñembogua pyahúre.
 
 ## Header
 
@@ -759,6 +760,7 @@ error-page-error-other-copy = Eha’ã pyahujey térã ejujey ag̃amieve
 ## Breach overview page
 
 all-breaches-headline-2 = Opaite ñembogua ohecháva { -brand-fx-monitor }
+all-breaches-lead = Rohechapaite umi mba’ekuaarã ñembogua roikuaa hag̃ua ne maranduetépa oñembyaikuaára’e. Ko’ápe oĩ peteĩ tysýi opaite ñembogua oñemomaranduva’ekue rehegua ary 2007 guive.
 search-breaches = Ñembyai jeheka
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Mba’ekuaarã imarãkuaáva:

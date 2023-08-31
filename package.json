@@ -16,6 +16,7 @@
     "test": "jest",
     "e2e": "playwright test src/e2e/",
     "e2e:debug": "playwright test src/e2e/ --ui",
+    "e2e:smoke": "playwright test src/e2e/ --grep @smoke",
     "functions": "nodemon --exec 'functions-framework --target=app --signature-type=http --source=src/cloud-functions'",
     "db:migrate": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:latest --knexfile src/db/knexfile.js",
     "db:rollback": "node -r dotenv/config node_modules/knex/bin/cli.js migrate:rollback --knexfile src/db/knexfile.js",
