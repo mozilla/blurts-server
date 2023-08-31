@@ -86,6 +86,8 @@ export const AppPicker = () => {
   const l10n = useL10n();
 
   const referringHost =
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next 3 */
     typeof document !== "undefined"
       ? document.location.host
       : "monitor.firefox.com";
@@ -102,6 +104,8 @@ export const AppPicker = () => {
   };
   const mozillaLinkRef = useRef<HTMLAnchorElement>(null);
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore start */
   const onSelect = (itemKey: Key) => {
     Object.entries(products).forEach(([key, productData]) => {
       if (itemKey === productData.id) {
@@ -122,6 +126,7 @@ export const AppPicker = () => {
       });
     }
   };
+  /* c8 ignore stop */
 
   return (
     <AppPickerTrigger
@@ -223,6 +228,8 @@ const AppPickerTrigger = <T extends object>({
   const l10n = useL10n();
   const appPickerTriggerState = useMenuTriggerState({
     ...otherProps,
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore start */
     onOpenChange: (isOpen) => {
       otherProps.onOpenChange?.(isOpen);
       gaEvent({
@@ -231,6 +238,7 @@ const AppPickerTrigger = <T extends object>({
         label: referringHost,
       });
     },
+    /* c8 ignore stop */
   });
 
   const triggerButtonRef = useRef<HTMLButtonElement>(null);
@@ -276,6 +284,8 @@ type AppPickerPopoverProps = Omit<AriaPopoverProps, "popoverRef"> & {
   children: ReactNode;
   state: OverlayTriggerState;
 };
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const AppPickerPopover = ({
   children,
   state,
@@ -308,9 +318,12 @@ const AppPickerPopover = ({
     </Overlay>
   );
 };
+/* c8 ignore stop */
 
 type AppPickerMenuProps<T> = AriaMenuProps<T>;
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
   const l10n = useL10n();
 
@@ -333,6 +346,7 @@ const AppPickerMenu = <T extends object>(props: AppPickerMenuProps<T>) => {
     </>
   );
 };
+/* c8 ignore stop */
 
 type AppPickerItemProps<T> = {
   // TODO: Figure out correct type:
@@ -340,6 +354,8 @@ type AppPickerItemProps<T> = {
   state: TreeState<T>;
 };
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
   const menuItemRef = useRef<HTMLLIElement>(null);
   const { menuItemProps, isFocused } = useMenuItem(
@@ -362,3 +378,4 @@ const AppPickerItem = <T extends object>(props: AppPickerItemProps<T>) => {
     </li>
   );
 };
+/* c8 ignore stop */

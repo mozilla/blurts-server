@@ -78,6 +78,8 @@ export const ExposuresFilter = ({
   // Filter Dialog
   const [filterState, setFilterState] = useState<FilterState>(filterValues);
   const popoverRef = useRef(null);
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 6 */
   const handleRadioChange = (type: string, value: string) => {
     setFilterState((prevFilterState) => ({
       ...prevFilterState,
@@ -85,6 +87,8 @@ export const ExposuresFilter = ({
     }));
   };
   const filterDialogState = useOverlayTriggerState({
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next 3 */
     onOpenChange: () => {
       setFilterState(filterValues);
     },
@@ -98,6 +102,8 @@ export const ExposuresFilter = ({
   const dismissButtonRef = useRef<HTMLButtonElement>(null);
   const dismissButtonProps = useButton(
     {
+      // TODO: Add unit test when changing this code:
+      /* c8 ignore next 3 */
       onPress: () => {
         filterDialogState.close();
       },
@@ -105,6 +111,8 @@ export const ExposuresFilter = ({
     dismissButtonRef
   ).buttonProps;
 
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next 6 */
   const handleSaveButtonClick: FormEventHandler = (event) => {
     event.preventDefault();
 
@@ -118,6 +126,8 @@ export const ExposuresFilter = ({
         <FilterRadioGroup
           type="exposure-type"
           value={filterState.exposureType}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onChange={(value) => handleRadioChange("exposureType", value)}
           label={l10n.getString("dashboard-exposures-filter-exposure-type")}
         >
@@ -137,6 +147,8 @@ export const ExposuresFilter = ({
         </FilterRadioGroup>
         <FilterRadioGroup
           value={filterState.dateFound}
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onChange={(value) => handleRadioChange("dateFound", value)}
           type="date-found"
           label={l10n.getString("dashboard-exposures-filter-date-found")}
@@ -164,6 +176,8 @@ export const ExposuresFilter = ({
           type="button"
           small
           variant="secondary"
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next 4 */
           onClick={() => {
             setFilterState(initialFilterValues);
             setFilterValues(initialFilterValues);
@@ -204,6 +218,8 @@ export const ExposuresFilter = ({
             <button
               className={styles.filterBtn}
               ref={filterBtnRef}
+              // TODO: Add unit test when changing this code:
+              /* c8 ignore next 3 */
               onClick={() => {
                 filterDialogState.open();
               }}
@@ -273,6 +289,8 @@ export const ExposuresFilter = ({
 type FilterDialogProps = AriaDialogProps & {
   children: ReactNode;
 };
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
   const dialogRef = useRef<HTMLDivElement>(null);
   const { dialogProps } = useDialog(otherProps, dialogRef);
@@ -283,6 +301,7 @@ const FilterDialog = ({ children, ...otherProps }: FilterDialogProps) => {
     </div>
   );
 };
+/* c8 ignore stop */
 
 // from https://react-spectrum.adobe.com/react-aria/useRadioGroup.html
 type FilterRadioGroupProps = RadioGroupProps & {
@@ -292,6 +311,8 @@ type FilterRadioGroupProps = RadioGroupProps & {
 
 const RadioContext = createContext<RadioGroupState | null>(null);
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function FilterRadioGroup(props: FilterRadioGroupProps) {
   const { type, children, ...otherProps } = props;
   const state = useRadioGroupState(otherProps);
@@ -314,11 +335,14 @@ function FilterRadioGroup(props: FilterRadioGroupProps) {
     </div>
   );
 }
+/* c8 ignore stop */
 
 type RadioProps = {
   children: React.ReactNode;
 };
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function Radio(props: RadioProps & AriaRadioProps) {
   const { children } = props;
   const radioGroupState = useContext(RadioContext);
@@ -336,3 +360,4 @@ function Radio(props: RadioProps & AriaRadioProps) {
     </label>
   );
 }
+/* c8 ignore stop */

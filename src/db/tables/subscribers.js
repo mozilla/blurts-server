@@ -14,17 +14,22 @@ const log = mozlog('DB.subscribers')
 /**
  * @param {string} token
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscriberByToken (token) {
   const res = await knex('subscribers')
     .where('primary_verification_token', '=', token)
 
   return res[0]
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} token
  * @param {string} emailSha1
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscriberByTokenAndHash (token, emailSha1) {
   const res = await knex.table('subscribers')
     .first()
@@ -34,17 +39,23 @@ async function getSubscriberByTokenAndHash (token, emailSha1) {
     })
   return res
 }
+/* c8 ignore stop */
 
 /**
  * @param {string[]} hashes
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscribersByHashes (hashes) {
   return await knex('subscribers').whereIn('primary_sha1', hashes).andWhere('primary_verified', '=', true)
 }
+/* c8 ignore stop */
 
 /**
  * @param {number} id
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscriberById (id) {
   const [subscriber] = await knex('subscribers').where({
     id
@@ -52,10 +63,13 @@ async function getSubscriberById (id) {
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} uid
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscriberByFxaUid (uid) {
   const [subscriber] = await knex('subscribers').where({
     fxa_uid: uid
@@ -63,10 +77,13 @@ async function getSubscriberByFxaUid (uid) {
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} email
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscriberByEmail (email) {
   const [subscriber] = await knex('subscribers').where({
     primary_email: email,
@@ -75,6 +92,8 @@ async function getSubscriberByEmail (email) {
   const subscriberAndEmails = await joinEmailAddressesToSubscriber(subscriber)
   return subscriberAndEmails
 }
+/* c8 ignore stop */
+
 /**
  * Update primary email for subscriber
  *
@@ -82,6 +101,8 @@ async function getSubscriberByEmail (email) {
  * @param {string} updatedEmail primary email to be updated to
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updatePrimaryEmail (subscriber, updatedEmail) {
   const trx = await knex.transaction()
   let subscriberTableUpdated, emailTableUpdated
@@ -122,6 +143,7 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
   const updatedSubscriber = Array.isArray(subscriberTableUpdated) ? subscriberTableUpdated[0] : null
   return updatedSubscriber
 }
+/* c8 ignore stop */
 
 /**
  * Update fxa_refresh_token and fxa_profile_json for subscriber
@@ -132,6 +154,8 @@ async function updatePrimaryEmail (subscriber, updatedEmail) {
  * @param {any} fxaProfileData from Firefox Account
  * @returns {Promise<any>} updated subscriber knex object in DB
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaProfileData) {
   const fxaUID = JSON.parse(fxaProfileData).uid
   const updated = await knex('subscribers')
@@ -152,6 +176,7 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
   }
   return updatedSubscriber
 }
+/* c8 ignore stop */
 
 /**
  * Update fxa_profile_json for subscriber
@@ -160,6 +185,8 @@ async function updateFxAData (subscriber, fxaAccessToken, fxaRefreshToken, fxaPr
  * @param {string} fxaProfileData from Firefox Account
  * @returns {Promise<object>} updated subscriber knex object in DB
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updateFxAProfileData (subscriber, fxaProfileData) {
   await knex('subscribers').where('id', subscriber.id)
     .update({
@@ -170,6 +197,7 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
     })
   return getSubscriberById(subscriber.id)
 }
+/* c8 ignore stop */
 
 /**
  * Remove fxa tokens and profile data for subscriber
@@ -177,6 +205,8 @@ async function updateFxAProfileData (subscriber, fxaProfileData) {
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber knex object in DB
  * @returns {Promise<import('knex/types/tables').SubscriberRow | null>} updated subscriber knex object in DB
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function removeFxAData (subscriber) {
   log.debug('removeFxAData', subscriber)
   const updated = await knex('subscribers')
@@ -199,10 +229,13 @@ async function removeFxAData (subscriber) {
   }
   return updatedSubscriber
 }
+/* c8 ignore stop */
 
 /**
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setBreachesLastShownNow (subscriber) {
   // TODO: turn 2 db queries into a single query (also see #942)
   const nowDateTime = new Date()
@@ -217,11 +250,14 @@ async function setBreachesLastShownNow (subscriber) {
     })
   return getSubscriberByEmail(subscriber.primary_email)
 }
+/* c8 ignore stop */
 
 /**
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  * @param {boolean} allEmailsToPrimary
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   const updated = await knex('subscribers')
     .where('id', subscriber.id)
@@ -235,6 +271,7 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
   const updatedSubscriber = Array.isArray(updated) ? updated[0] : null
   return updatedSubscriber
 }
+/* c8 ignore stop */
 
 /**
  * OBSOLETE, preserved for backwards compatibility
@@ -243,6 +280,8 @@ async function setAllEmailsToPrimary (subscriber, allEmailsToPrimary) {
  * @param {*} options {user, updatedResolvedBreaches}
  * @returns subscriber
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setBreachesResolved (options) {
   const { user, updatedResolvedBreaches } = options
   await knex('subscribers')
@@ -255,6 +294,7 @@ async function setBreachesResolved (options) {
     })
   return getSubscriberByEmail(user.primary_email)
 }
+/* c8 ignore stop */
 
 /**
  * Set "breach_resolution" column with the latest breach resolution object
@@ -265,6 +305,8 @@ async function setBreachesResolved (options) {
  * @param {any} updatedBreachesResolution {emailId: [{breachId: {isResolved: bool, resolutionsChecked: [BreachType]}}, {}...]}
  * @returns subscriber
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setBreachResolution (user, updatedBreachesResolution) {
   await knex('subscribers')
     .where('id', user.id)
@@ -276,10 +318,13 @@ async function setBreachResolution (user, updatedBreachesResolution) {
     })
   return getSubscriberByEmail(user.primary_email)
 }
+/* c8 ignore stop */
 
 /**
  * @param {{ user: import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber; updatedWaitlistsJoined: any; }} options
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function setWaitlistsJoined (options) {
   const { user, updatedWaitlistsJoined } = options
   await knex('subscribers')
@@ -292,19 +337,25 @@ async function setWaitlistsJoined (options) {
     })
   return getSubscriberByEmail(user.primary_email)
 }
+/* c8 ignore stop */
 
 /**
  * @param {import('../../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js').Subscriber} subscriber
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function removeSubscriber (subscriber) {
   await knex('email_addresses').where({ subscriber_id: subscriber.id }).del()
   await knex('subscribers').where({ id: subscriber.id }).del()
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} token
  * @param {string} emailSha1
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function removeSubscriberByToken (token, emailSha1) {
   const subscriber = await getSubscriberByTokenAndHash(token, emailSha1)
   if (!subscriber) {
@@ -318,7 +369,10 @@ async function removeSubscriberByToken (token, emailSha1) {
     .del()
   return subscriber
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteUnverifiedSubscribers () {
   // @ts-ignore DELETE_UNVERIFIED_SUBSCRIBERS_TIMER should not be undefined
   const expiredDateTime = new Date(Date.now() - DELETE_UNVERIFIED_SUBSCRIBERS_TIMER * 1000)
@@ -329,12 +383,16 @@ async function deleteUnverifiedSubscribers () {
     .del()
   log.info('deleteUnverifiedSubscribers', { msg: `Deleted ${numDeleted} rows.` })
 }
+/* c8 ignore stop */
+
 /**
  * Delete subscriber when a FxA user id is provided
  * Also deletes all the additional email addresses associated with the account
  *
  * @param {any} sub subscriber object
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteSubscriber (sub) {
   const trx = await knex.transaction()
   log.debug('deleteSubscriber', JSON.stringify(sub))
@@ -351,11 +409,14 @@ async function deleteSubscriber (sub) {
   //  const subscriber = await knex('subscribers').returning('id').where('fxa_uid', fxaUID).del()
   //  if (subscriber && subscriber[0]) { await knex('email_addresses').where({ subscriber_id: subscriber[0].id }).del() }
 }
+/* c8 ignore stop */
 
 /**
  * @param {number} id
  * @param {string} email
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteResolutionsWithEmail (id, email) {
   /** @type {any} */
   const [subscriber] = await knex('subscribers').where({
@@ -371,11 +432,14 @@ async function deleteResolutionsWithEmail (id, email) {
   }
   console.info(`No resolution with ${email} found, skip`)
 }
+/* c8 ignore stop */
 
 /**
  * @param {number} id
  * @param {any} stats
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updateBreachStats (id, stats) {
   await knex('subscribers')
     .where('id', id)
@@ -386,10 +450,13 @@ async function updateBreachStats (id, stats) {
       updated_at: knex.fn.now(),
     })
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} email
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updateMonthlyEmailTimestamp (email) {
   const res = await knex('subscribers')
     .update({
@@ -403,34 +470,46 @@ async function updateMonthlyEmailTimestamp (email) {
 
   return res
 }
+/* c8 ignore stop */
 
 /**
  * Unsubscribe user from monthly unresolved breach emails
  *
  * @param {string} token User verification token
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updateMonthlyEmailOptout (token) {
   await knex('subscribers')
     .update('monthly_email_optout', true)
     .where('primary_verification_token', token)
 }
+/* c8 ignore stop */
 
 /**
  * @param {number} subscriberId
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getOnerepProfileId (subscriberId) {
   return await knex('subscribers')
     .select('onerep_profile_id')
     .where('id', subscriberId)
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 function getSubscribersWithUnresolvedBreachesQuery () {
   return knex('subscribers')
     .whereRaw('monthly_email_optout IS NOT TRUE')
     .whereRaw("greatest(created_at, monthly_email_at) < (now() - interval '30 days')")
     .whereRaw("(breach_stats #>> '{numBreaches, numUnresolved}')::int > 0")
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscribersWithUnresolvedBreaches (limit = 0) {
   let query = getSubscribersWithUnresolvedBreachesQuery()
     .select('primary_email', 'primary_verification_token', 'breach_stats', 'signup_language')
@@ -439,13 +518,17 @@ async function getSubscribersWithUnresolvedBreaches (limit = 0) {
   }
   return await query
 }
+/* c8 ignore stop */
 
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getSubscribersWithUnresolvedBreachesCount () {
   const query = getSubscribersWithUnresolvedBreachesQuery()
   // @ts-ignore This will return a string
   const count = parseInt((await query.count({ count: '*' }))[0].count)
   return count
 }
+/* c8 ignore stop */
 
 
 /**
@@ -453,6 +536,8 @@ async function getSubscribersWithUnresolvedBreachesCount () {
  *
  * @param {any} subscriber
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function joinEmailAddressesToSubscriber (subscriber) {
   if (subscriber) {
     const emailAddressRecords = await knex('email_addresses').where({
@@ -464,6 +549,8 @@ async function joinEmailAddressesToSubscriber (subscriber) {
   }
   return subscriber
 }
+/* c8 ignore stop */
+
 export {
   getOnerepProfileId,
   getSubscriberByToken,
