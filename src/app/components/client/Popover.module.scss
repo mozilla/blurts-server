@@ -5,7 +5,7 @@
   box-shadow: none;
   border-radius: $border-radius-sm;
 
-  &.isVisible {
+  &.isOpen {
     box-shadow: $box-shadow-sm;
   }
 }

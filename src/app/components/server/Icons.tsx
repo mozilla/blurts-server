@@ -9,6 +9,9 @@ import styles from "./Icons.module.scss";
 //       then added to react-icons: https://react-icons.github.io/react-icons/.
 //       These manually-created components are a workaround until that is done.
 
+// These components just render HTML without business logic:
+/* c8 ignore start */
+
 // Keywords: cross, X
 export const ArrowIcon = ({
   alt,

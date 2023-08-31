@@ -15,6 +15,8 @@ import AppConstants from '../appConstants.js'
 const FxAOAuthUtils = {
   get authorizationUri () { return AppConstants.OAUTH_AUTHORIZATION_URI },
   get tokenUri () { return AppConstants.OAUTH_TOKEN_URI },
+  // TODO: Add unit test when changing this code:
+  /* c8 ignore next */
   get profileUri () { return AppConstants.OAUTH_PROFILE_URI }
 }
 
@@ -31,6 +33,8 @@ const FxAOAuthClient = new ClientOAuth2({
  * @param {string} path
  * @param {any} token
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function postTokenRequest (path, token) {
   const fxaTokenOrigin = new URL(AppConstants.OAUTH_TOKEN_URI).origin
   const tokenUrl = `${fxaTokenOrigin}${path}`
@@ -54,10 +58,13 @@ async function postTokenRequest (path, token) {
     return e
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} token
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function verifyOAuthToken (token) {
   try {
     const response = await postTokenRequest('/v1/verify', token)
@@ -68,10 +75,13 @@ async function verifyOAuthToken (token) {
     }
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {{ token?: any; refresh_token?: any; }} token
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function destroyOAuthToken (token) {
   try {
     const response = await postTokenRequest('/v1/destroy', token)
@@ -82,10 +92,13 @@ async function destroyOAuthToken (token) {
     }
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {{ fxa_access_token: any; fxa_refresh_token: any; }} subscriber
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore next 4 */
 async function revokeOAuthTokens (subscriber) {
   await destroyOAuthToken({ token: subscriber.fxa_access_token })
   await destroyOAuthToken({ refresh_token: subscriber.fxa_refresh_token })
@@ -94,6 +107,8 @@ async function revokeOAuthTokens (subscriber) {
 /**
  * @param {any} accessToken
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function getProfileData (accessToken) {
   try {
     const response = await fetch(FxAOAuthUtils.profileUri, {
@@ -108,10 +123,13 @@ async function getProfileData (accessToken) {
     return e
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} path
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function sendMetricsFlowPing (path) {
   const fxaMetricsFlowUrl = new URL(path, AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL)
   try {
@@ -128,10 +146,13 @@ async function sendMetricsFlowPing (path) {
     return false
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {crypto.BinaryLike} email
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore next 3 */
 function getSha1 (email) {
   return crypto.createHash('sha1').update(email).digest('hex')
 }

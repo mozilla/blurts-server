@@ -21,5 +21,6 @@ const initialFilterState: FilterState = {
 export const ExposuresFilterDefault: Story = {
   args: {
     initialFilterValues: initialFilterState,
+    filterValues: initialFilterState,
   },
 };

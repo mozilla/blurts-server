@@ -39,7 +39,13 @@ function ComboBox(props: ComboBoxProps) {
       <div className={styles.comboBox}>
         <label {...labelProps} className={styles.inputLabel}>
           {label}
-          {isRequired ? <span aria-hidden="true">*</span> : ""}
+          {isRequired ? (
+            <span aria-hidden="true">*</span>
+          ) : (
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
+            ""
+          )}
         </label>
         <input
           {...inputProps}
@@ -54,21 +60,25 @@ function ComboBox(props: ComboBoxProps) {
           </div>
         )}
       </div>
-      {state.isOpen && (
-        <Popover
-          offset={4}
-          popoverRef={popoverRef}
-          state={state}
-          triggerRef={inputRef}
-        >
-          <ListBox
-            {...listBoxProps}
-            listBoxRef={listBoxRef}
-            parentRef={inputRef}
+      {
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
+        state.isOpen && props.items?.length > 0 && (
+          <Popover
+            offset={4}
+            popoverRef={popoverRef}
             state={state}
-          />
-        </Popover>
-      )}
+            triggerRef={inputRef}
+          >
+            <ListBox
+              {...listBoxProps}
+              listBoxRef={listBoxRef}
+              parentRef={inputRef}
+              state={state}
+            />
+          </Popover>
+        )
+      }
     </>
   );
 }

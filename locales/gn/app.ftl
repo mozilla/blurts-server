@@ -92,7 +92,7 @@ fxa-what-to-do-blurb-1 =
     ¿Ehecha peteĩ mba’ete eikuaa’ỹva? Ne mba’ekuaarã ikatu oñevendémara’e 
     térã oñemyasãima. Kóva avei ikatu ha’e mba’ete nderesaráiva emoheñói hag̃ua térã  peteĩ mba’apohaguasu omoambuéva héra.
 fxa-what-to-do-subhead-2 = Anive eipuru ñe’ẽñemi ojekuaareíva ha emoambue opaite tenda eipuruhápe.
-fxa-wtd-blurb-2 = Umi mba’evaiapoha tembipurupyahugua oipurujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
+fxa-wtd-blurb-2 = Umi mba’evaiapoha tembiporupyahugua oipurujeykuaa ñe’ẽñemi ojehechakuaáva eike hag̃ua ambue mba’etépe. Emoheñói ñe’ẽñemi pyahu ha ha ha’eñóva peteĩteĩva mba’etépe, ejapokuaáva ne mba’ete banco pegua, ne ñanduti veve ha ambue ñanduti renda eñongatu hague ne maranduete.
 fxa-what-to-do-blurb-3 =
     Heta mba’evai ohechauka ñanduti veve ha ñe’ẽñemi año, hákatu oĩ avei omoinge marandu virugua ñemiguáva.
     Ne mba’ete banco térã kuatia’atã ñemurã papapy ojehechakuaa kuri, emombe’u ne báncope ikatuha oiko mba’evai.
@@ -708,6 +708,7 @@ ad-unit-6-before-you-complete = Emoĩmba mboyve pe jehaipy oĩtava, eipuru ñand
 
 ## Search Engine Optimization
 
+meta-desc-2 = Ehecha { -brand-fx-monitor } ndive eguerekópa mba’ekuaarã ñembogua. Roipytyvõta eikuaa hag̃ua mba’épa ejapóta ha roma’ẽag̃uíta oimeraẽva ñembogua pyahúre.
 
 ## Header
 
@@ -759,6 +760,7 @@ error-page-error-other-copy = Eha’ã pyahujey térã ejujey ag̃amieve
 ## Breach overview page
 
 all-breaches-headline-2 = Opaite ñembogua ohecháva { -brand-fx-monitor }
+all-breaches-lead = Rohechapaite umi mba’ekuaarã ñembogua roikuaa hag̃ua ne maranduetépa oñembyaikuaára’e. Ko’ápe oĩ peteĩ tysýi opaite ñembogua oñemomaranduva’ekue rehegua ary 2007 guive.
 search-breaches = Ñembyai jeheka
 # the kind of user data exposed to hackers in data breach.
 exposed-data = Mba’ekuaarã imarãkuaáva:

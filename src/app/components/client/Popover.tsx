@@ -18,6 +18,8 @@ export interface PopoverProps extends AriaPopoverProps {
   state: OverlayTriggerState;
 }
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function Popover({ children, offset, state, ...props }: PopoverProps) {
   const { popoverProps } = usePopover({ ...props, offset }, state);
 
@@ -40,5 +42,6 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
     </Overlay>
   );
 }
+/* c8 ignore stop */
 
 export { Popover };

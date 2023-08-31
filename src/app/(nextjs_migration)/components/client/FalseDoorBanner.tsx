@@ -24,7 +24,7 @@ type HandleFalseDoorBanner = {
 // TODO: MNTOR-2043
 /* c8 ignore start */
 export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
-  const [cookies, setCookie] = useCookies(["falseDoorDismissed"]);
+  const [cookies, setCookie] = useCookies(["falseDoorDismissedPhase2"]);
   const [shouldShowFalseDoor, setShouldShowFalseDoor] = useState(false);
   const pathname = usePathname();
   const isOnDashboard = pathname === "/user/breaches";
@@ -34,12 +34,12 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
     utmParams: {
       utm_source: "monitor",
       utm_medium: "monitor-product",
-      utm_content: `banner-phase-1-us_${pathname}`,
+      utm_content: `banner-phase-2-us_${pathname}`,
     },
   });
 
   const handleDismiss = (event?: Event) => {
-    setCookie("falseDoorDismissed", "true", { path: "/" });
+    setCookie("falseDoorDismissedPhase2", "true", { path: "/" });
 
     console.debug("event.target:", event?.target);
     if (event && event.target && "id" in event.target) {
@@ -58,8 +58,8 @@ export const HandleFalseDoorTest = (props: HandleFalseDoorBanner) => {
   };
 
   useEffect(() => {
-    setShouldShowFalseDoor(!cookies.falseDoorDismissed);
-  }, [cookies.falseDoorDismissed]);
+    setShouldShowFalseDoor(!cookies.falseDoorDismissedPhase2);
+  }, [cookies.falseDoorDismissedPhase2]);
 
   return (
     <>
@@ -87,11 +87,11 @@ export const FalseDoorBanner = (props: FalseDoorBanner) => {
 
   const content = (
     <p>
-      {l10n.getString("false-door-test-content-part-one")}
+      {l10n.getString("false-door-test-phase-2-content-part-one")}
       <br />
       {props.checkIsOnDashboard
-        ? l10n.getString("false-door-test-content-part-two-dashboard")
-        : l10n.getString("false-door-test-content-part-two")}
+        ? l10n.getString("false-door-test-phase-2-content-part-two-dashboard")
+        : l10n.getString("false-door-test-phase-2-content-part-two")}
     </p>
   );
 

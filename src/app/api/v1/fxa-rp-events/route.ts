@@ -236,8 +236,28 @@ export async function POST(request: NextRequest) {
         });
 
         // get profile id
-        const result = await getOnerepProfileId(subscriber);
+        const result = await getOnerepProfileId(subscriber.id);
         const oneRepProfileId = result?.[0]?.["onerep_profile_id"] as number;
+
+        console.debug("fxa_subscription_change", JSON.stringify(result));
+        console.debug("fxa_subscription_change", { oneRepProfileId });
+
+        // MNTOR-2103: if one rep profile id doesn't exist in the db, fail silently
+        if (!oneRepProfileId) {
+          console.error(
+            "No OneRep profile Id found, subscriber: ",
+            subscriber.id
+          );
+
+          captureException(
+            new Error(`No OneRep profile Id found, subscriber: ${
+              subscriber.id as string
+            }\n
+            Event: ${event}\n
+            updateFromEvent: ${JSON.stringify(updatedSubscriptionFromEvent)}`)
+          );
+          break;
+        }
 
         if (
           updatedSubscriptionFromEvent.isActive &&

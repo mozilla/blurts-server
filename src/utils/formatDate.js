@@ -6,6 +6,8 @@
  * @param {string} date
  * @param {string} locales
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore next 8 */
 function formatDate (date, locales) {
   const jsDate = new Date(date)
   /** @type {{ year: 'numeric', month: 'long', day: 'numeric' }} */

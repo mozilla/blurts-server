@@ -25,7 +25,7 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 
 user-menu-trigger-label = Open menu
 user-menu-trigger-tooltip = Profile
-user-menu-manage-fxa-label = Manage your { -brand-fxa-account }
+user-menu-manage-fxa-label = Manage your { -brand-fx-account }
 user-menu-settings-label = Settings
 user-menu-settings-tooltip = Configure { -brand-fx-monitor }
 user-menu-help-label = Help and support
@@ -35,6 +35,9 @@ user-menu-signout-tooltip = Sign out of { -brand-fx-monitor }
 
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
+
+premium-badge-label = { -brand-premium }
+premium-cta-label = Upgrade to { -brand-premium }
 
 # Chart summarizing total exposures
 
@@ -266,3 +269,6 @@ false-door-test-content-part-two = Automatically remove data from sites trying t
 false-door-test-content-part-two-dashboard = Auto-delete data from sites trying to sell it.
 false-door-test-cta = Count me in
 false-door-test-popup-close = Close
+false-door-test-phase-2-content-part-one = Did you know there are sites selling your private info?
+false-door-test-phase-2-content-part-two = Automatically remove data from sketchy sites.
+false-door-test-phase-2-content-part-two-dashboard = Automatically remove data from broker sites. 
