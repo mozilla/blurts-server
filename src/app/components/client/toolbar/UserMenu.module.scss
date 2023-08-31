@@ -51,7 +51,7 @@ $button-size: 42px;
 
 .menuItemWrapper {
   cursor: pointer;
-  padding: $spacing-sm calc($spacing-md * 1.5);
+  padding: $spacing-sm $spacing-lg;
   position: relative;
 
   &:focus {
