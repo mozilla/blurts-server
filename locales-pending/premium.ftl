@@ -26,6 +26,9 @@ toolbar-app-picker-by-mozilla = Made by { -brand-mozilla }
 footer-external-link-faq-label = FAQs
 footer-external-link-faq-tooltip = Frequently asked questions
 
+premium-badge-label = { -brand-premium }
+premium-cta-label = Upgrade to { -brand-premium }
+
 # Chart summarizing total exposures
 
 # The number inside <nr> will be displayed in a large font,

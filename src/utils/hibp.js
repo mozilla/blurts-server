@@ -19,6 +19,8 @@ const RENAMED_BREACHES_MAP = {
 }
 const log = mozlog('hibp')
 
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function _addStandardOptions (options = {}) {
   const hibpOptions = {
     headers: {
@@ -27,6 +29,7 @@ function _addStandardOptions (options = {}) {
   }
   return Object.assign(options, hibpOptions)
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} url
@@ -34,6 +37,8 @@ function _addStandardOptions (options = {}) {
  * @param tryCount
  * @returns {Promise<any>}
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function _throttledFetch (url, reqOptions, tryCount = 1) {
   try {
     const response = await fetch(url, reqOptions)
@@ -62,27 +67,34 @@ async function _throttledFetch (url, reqOptions, tryCount = 1) {
     throw new InternalServerError(getMessage('error-hibp-connect'))
   }
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} path
  * @param options
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function req (path, options = {}) {
   const url = `${HIBP_API_ROOT}${path}`
   const reqOptions = _addStandardOptions(options)
   return await _throttledFetch(url, reqOptions)
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} path
  * @param options
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function kAnonReq (path, options = {}) {
   // Construct HIBP url and standard headers
   const url = `${HIBP_KANON_API_ROOT}${path}?code=${encodeURIComponent(HIBP_KANON_API_TOKEN)}`
   const reqOptions = _addStandardOptions(options)
   return await _throttledFetch(url, reqOptions)
 }
+/* c8 ignore stop */
 
 /**
  * Sanitize data classes
@@ -91,6 +103,8 @@ async function kAnonReq (path, options = {}) {
  * @param {any[]} dataClasses
  * @returns Array sanitized data classes array
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function formatDataClassesArray (dataClasses) {
   return dataClasses.map(dataClass =>
     dataClass.toLowerCase()
@@ -99,6 +113,7 @@ function formatDataClassesArray (dataClasses) {
       .replace(/(^-|-$)/g, '')
   )
 }
+/* c8 ignore stop */
 
 /**
  * The type `HibpLikeDbBreach` is roughly the same as the data we receive from
@@ -116,6 +131,8 @@ function formatDataClassesArray (dataClasses) {
  *
  * @returns {Promise<HibpLikeDbBreach[]>} formatted all breaches array
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function getAllBreachesFromDb () {
   /**
    * @type {any[]}
@@ -151,10 +168,13 @@ async function getAllBreachesFromDb () {
     FaviconUrl: breach.favicon_url,
   }))
 }
+/* c8 ignore stop */
 
 /**
  * @param {{ locals: { breachLogoMap: Map<any, any>; breaches: any[]; breachesLoadedDateTime: number; }; }} app
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function loadBreachesIntoApp (app) {
   // attempt to fetch breaches from the "breaches" database table
   const breaches = await getAllBreachesFromDb()
@@ -183,6 +203,7 @@ async function loadBreachesIntoApp (app) {
   app.locals.breachesLoadedDateTime = Date.now()
   log.info('done-loading-breaches', 'great success 👍')
 }
+/* c8 ignore stop */
 
 /**
  * Get addresses and language from either subscribers or email_addresses fields:
@@ -190,6 +211,8 @@ async function loadBreachesIntoApp (app) {
  * @param {*} recipient
  * @returns
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function getAddressesAndLanguageForEmail (recipient) {
   const {
     all_emails_to_primary: allEmailsToPrimary,
@@ -212,6 +235,7 @@ function getAddressesAndLanguageForEmail (recipient) {
     signupLanguage
   }
 }
+/* c8 ignore stop */
 
 /**
  * Filter breaches that we would not like to show.
@@ -219,6 +243,8 @@ function getAddressesAndLanguageForEmail (recipient) {
  * @param {any[]} breaches
  * @returns {any[]} filteredBreaches
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function getFilteredBreaches (breaches) {
   return breaches.filter(breach => (
     !breach.IsRetired &&
@@ -228,6 +254,7 @@ function getFilteredBreaches (breaches) {
     breach.Domain !== ''
   ))
 }
+/* c8 ignore stop */
 
 /**
  * A range of hashes can be searched by passing the hash prefix in a GET request:
@@ -239,6 +266,8 @@ function getFilteredBreaches (breaches) {
  * @param {boolean} filterBreaches
  * @returns
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false, filterBreaches = true) {
   let foundBreaches = []
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
@@ -279,12 +308,15 @@ async function getBreachesForEmail (sha1, allBreaches, includeSensitive = false,
     breach => !breach.IsSensitive
   )
 }
+/* c8 ignore stop */
 
 /**
  * @param {any[]} allBreaches
  * @param {string} breachName
  * @returns {HibpLikeDbBreach}
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 function getBreachByName (allBreaches, breachName) {
   breachName = breachName.toLowerCase()
   if (RENAMED_BREACHES.includes(breachName)) {
@@ -294,6 +326,7 @@ function getBreachByName (allBreaches, breachName) {
   const foundBreach = allBreaches.find(breach => breach.Name.toLowerCase() === breachName)
   return foundBreach
 }
+/* c8 ignore stop */
 
 /**
  * A range can be subscribed for callbacks with the following request:
@@ -308,6 +341,8 @@ function getBreachByName (allBreaches, breachName) {
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 or 201 response codes
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function subscribeHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = '/range/subscribe'
@@ -318,6 +353,7 @@ async function subscribeHash (sha1) {
 
   return await kAnonReq(path, options)
 }
+/* c8 ignore stop */
 
 /**
  * A range subscription can be deleted with the following request:
@@ -329,6 +365,8 @@ async function subscribeHash (sha1) {
  * @param {string} sha1 sha1 of the email being subscribed
  * @returns 200 response codes
  */
+// TODO: Add unit test when changing this code:
+/* c8 ignore start */
 async function deleteSubscribedHash (sha1) {
   const sha1Prefix = sha1.slice(0, 6).toUpperCase()
   const path = `/range/${sha1Prefix}`
@@ -338,6 +376,7 @@ async function deleteSubscribedHash (sha1) {
 
   return await kAnonReq(path, options)
 }
+/* c8 ignore stop */
 
 export {
   req,

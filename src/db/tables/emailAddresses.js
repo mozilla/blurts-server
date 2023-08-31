@@ -21,26 +21,34 @@ const log = mozlog('DB.email_addresses')
 /**
  * @param {string} token
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getEmailByToken (token) {
   const res = await knex('email_addresses')
     .where('verification_token', '=', token)
 
   return res[0]
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} emailAddressId
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getEmailById (emailAddressId) {
   const res = await knex('email_addresses')
     .where('id', '=', emailAddressId)
 
   return res[0]
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} email
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getEmailAddressRecordByEmail (email) {
   const emailAddresses = await knex('email_addresses').where({
     email, verified: true
@@ -54,11 +62,14 @@ async function getEmailAddressRecordByEmail (email) {
   }
   return emailAddresses[0]
 }
+/* c8 ignore stop */
 
 /**
  * @param {{ id: number; }} user
  * @param {string} email
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function addSubscriberUnverifiedEmailHash (user, email) {
   const res = await knex.transaction(trx => {
     return trx('email_addresses')
@@ -76,11 +87,14 @@ async function addSubscriberUnverifiedEmailHash (user, email) {
   })
   return await res[0]
 }
+/* c8 ignore stop */
 
 /**
  * @param {number | string} emailAddressId
  * @param {import("@fluent/react").ReactLocalization} l10n
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
   const newVerificationToken = uuidv4()
 
@@ -108,10 +122,13 @@ async function resetUnverifiedEmailAddress (emailAddressId, l10n) {
     .returning('*')
   return res[0]
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} token
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function verifyEmailHash (token) {
   const unverifiedEmail = await getEmailByToken(token)
   if (!unverifiedEmail) {
@@ -120,6 +137,7 @@ async function verifyEmailHash (token) {
   const verifiedEmail = await _verifyNewEmail(unverifiedEmail)
   return verifiedEmail[0]
 }
+/* c8 ignore stop */
 
 // TODO: refactor into an upsert? https://jaketrent.com/post/upsert-knexjs/
 // Used internally, ideally should not be called by consumers.
@@ -128,6 +146,8 @@ async function verifyEmailHash (token) {
  * @param {any} aFoundCallback
  * @param {any} aNotFoundCallback
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
   const existingEntries = await knex('subscribers')
     .where('primary_sha1', sha1)
@@ -140,6 +160,7 @@ async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
     return await aNotFoundCallback()
   }
 }
+/* c8 ignore stop */
 
 // Used internally.
 /**
@@ -148,6 +169,8 @@ async function _getSha1EntryAndDo (sha1, aFoundCallback, aNotFoundCallback) {
  * @param {string} signupLanguage
  * @param verified
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
   log.debug('_addEmailHash', { sha1, email, signupLanguage, verified })
   try {
@@ -183,6 +206,7 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
     throw new InternalServerError(getMessage('error-could-not-add-email'))
   }
 }
+/* c8 ignore stop */
 
 /**
  * Add a subscriber:
@@ -197,6 +221,8 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
  * @param {string | null} fxaProfileData from Firefox Account
  * @returns {Promise<import('knex/types/tables').SubscriberRow>} subscriber knex object added to DB
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
   console.log({ email })
   console.log({ signupLanguage })
@@ -208,6 +234,7 @@ async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaR
   }
   return verifiedSubscriber
 }
+/* c8 ignore stop */
 
 /**
  * When an email is verified, convert it into a subscriber:
@@ -218,6 +245,8 @@ async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaR
  * @param {any} emailHash knex object in DB
  * @returns {Promise<any>} verified subscriber knex object in DB
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function _verifySubscriber (emailHash) {
   await subscribeHash(emailHash.primary_sha1)
 
@@ -233,11 +262,14 @@ async function _verifySubscriber (emailHash) {
 
   return verifiedSubscriber
 }
+/* c8 ignore stop */
 
 // Verifies new emails added by existing users
 /**
  * @param {{ sha1: string; id: number; }} emailHash
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function _verifyNewEmail (emailHash) {
   await subscribeHash(emailHash.sha1)
 
@@ -253,6 +285,7 @@ async function _verifyNewEmail (emailHash) {
 
   return verifiedEmail
 }
+/* c8 ignore stop */
 
 /**
  * @typedef {object} EmailRow Email data, as returned from the database table `email_addresses`
@@ -267,6 +300,8 @@ async function _verifyNewEmail (emailHash) {
  * @param {number} userId
  * @returns {Promise<EmailRow[]>}
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getUserEmails (userId) {
   const userEmails = await knex('email_addresses')
     .where('subscriber_id', '=', userId)
@@ -274,6 +309,7 @@ async function getUserEmails (userId) {
 
   return userEmails
 }
+/* c8 ignore stop */
 
 // This is used by SES callbacks to remove email addresses when recipients
 // perma-bounce or mark our emails as spam
@@ -281,6 +317,8 @@ async function getUserEmails (userId) {
 /**
  * @param {string} email
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function removeEmail (email) {
   const subscriber = await getSubscriberByEmail(email)
   if (!subscriber) {
@@ -307,32 +345,42 @@ async function removeEmail (email) {
     })
     .del()
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} emailId
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function removeOneSecondaryEmail (emailId) {
   await knex('email_addresses')
     .where("id", emailId)
     .del()
 }
+/* c8 ignore stop */
 
 /**
  * @param {string[]} hashes
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getEmailAddressesByHashes (hashes) {
   return await knex('email_addresses')
     .join('subscribers', 'email_addresses.subscriber_id', '=', 'subscribers.id')
     .whereIn('email_addresses.sha1', hashes)
     .andWhere('email_addresses.verified', '=', true)
 }
+/* c8 ignore stop */
 
 /**
  * @param {string} uid
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function deleteEmailAddressesByUid (uid) {
   await knex('email_addresses').where("subscriber_id", uid).del()
 }
+/* c8 ignore stop */
 
 export {
   getEmailByToken,

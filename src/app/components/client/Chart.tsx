@@ -87,6 +87,8 @@ export const DoughnutChart = (props: Props) => {
       <div className={styles.confirmButtonWrapper}>
         <Button
           variant="primary"
+          // TODO: Add unit test when changing this code:
+          /* c8 ignore next */
           onClick={() => explainerDialogState.close()}
           autoFocus={true}
           className={styles.startButton}
@@ -195,6 +197,8 @@ export const DoughnutChart = (props: Props) => {
           {l10n.getString("exposure-chart-caption")}
           <button
             aria-label={l10n.getString("modal-open-alt")}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onClick={() => explainerDialogState.open()}
           >
             <QuestionMarkCircle
@@ -214,6 +218,8 @@ export const DoughnutChart = (props: Props) => {
           <Dialog
             title={l10n.getString("modal-active-number-of-exposures-title")}
             illustration={<Image src={ModalImage} alt="" />}
+            // TODO: Add unit test when changing this code:
+            /* c8 ignore next */
             onDismiss={() => explainerDialogState.close()}
           >
             {modalContent}
