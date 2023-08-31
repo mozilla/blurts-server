@@ -11,6 +11,9 @@ import AppConstants from '../appConstants.js'
 import { localStorage } from './localStorage.js'
 import { InternalServerError } from '../utils/error.js'
 
+// This file will be removed once we've fully switched to React
+/* c8 ignore start */
+
 const supportedLocales = AppConstants.SUPPORTED_LOCALES?.split(',')
 /** @type {Record<string, FluentBundle>} */
 const fluentBundles = {}

@@ -13,16 +13,21 @@ const log = mozlog('DB.breaches')
  *
  * @returns Array of all records from "breaches" table
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllBreaches() {
   return knex('breaches')
     .returning("*")
 }
+/* c8 ignore stop */
 
 /**
  * Get all count from "breaches" table
  *
  * @returns Count of all records from "breaches" table
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function getAllBreachesCount() {
   const breachesCount = await knex('breaches')
     .count({ count: "id" })
@@ -31,6 +36,7 @@ async function getAllBreachesCount() {
   // Make sure we are returning a number.
   return parseInt(breachesCount.toString(), 10)
 }
+/* c8 ignore stop */
 
 /**
  * Upsert breaches into "breaches" table
@@ -39,6 +45,8 @@ async function getAllBreachesCount() {
  * @param {any[]} hibpBreaches breaches array from HIBP API
  * @returns
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function upsertBreaches(hibpBreaches) {
   log.debug('upsertBreaches', hibpBreaches[0])
 
@@ -77,6 +85,7 @@ async function upsertBreaches(hibpBreaches) {
     }
   })
 }
+/* c8 ignore stop */
 
 /**
  * Update logo path of a breach by name
@@ -84,6 +93,8 @@ async function upsertBreaches(hibpBreaches) {
  * @param {string} name 
  * @param {string} faviconUrl
  */
+// Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
+/* c8 ignore start */
 async function updateBreachFaviconUrl(name, faviconUrl) {
   await knex('breaches')
     .where("name", name)
@@ -91,6 +102,7 @@ async function updateBreachFaviconUrl(name, faviconUrl) {
       favicon_url: faviconUrl
     })
 }
+/* c8 ignore stop */
 
 export {
   getAllBreaches,
