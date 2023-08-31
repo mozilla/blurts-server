@@ -19,7 +19,9 @@ export const useGlean = () => {
       maxEvents: 1,
     });
 
-    if (process.env.NODE_ENV === "development") {
+    // Log pings to the console and send pings to the debug ping viewer
+    // when running locally.
+    if (process.env.NEXT_PUBLIC_APP_ENV === "local") {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
 
