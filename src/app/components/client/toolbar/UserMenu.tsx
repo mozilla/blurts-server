@@ -18,7 +18,6 @@ import type { Node } from "@react-types/shared";
 import type { ReactNode, Key } from "react";
 
 import { Popover } from "../Popover";
-import { SignInButton } from "../../../(nextjs_migration)/components/client/SignInButton";
 import { useL10n } from "../../../hooks/l10n";
 import styles from "./UserMenu.module.scss";
 import OpenInIcon from "./images/menu-icon-open-in.svg";
@@ -39,7 +38,7 @@ export const UserMenu = (props: UserMenuProps) => {
   const signOutItemRef = useRef<HTMLButtonElement>(null);
 
   if (!props.user) {
-    return <SignInButton />;
+    return null;
   }
 
   const itemKeys = {
