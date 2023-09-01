@@ -28,6 +28,8 @@ type ResolutionContentLayoutProps = {
   children: ReactNode;
 };
 
+// TODO: Add test once routes from MNTOR-1700 is available
+/* c8 ignore start */
 export const ResolutionContentLayout = (
   props: ResolutionContentLayoutProps
 ) => {
@@ -72,3 +74,4 @@ export const ResolutionContentLayout = (
     </div>
   );
 };
+/* c8 ignore stop */
