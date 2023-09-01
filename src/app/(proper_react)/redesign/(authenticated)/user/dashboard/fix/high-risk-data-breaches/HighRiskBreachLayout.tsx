@@ -183,6 +183,8 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     props.typeOfBreach !== "none"
       ? {
           label: l10n.getString("high-risk-breach-mark-as-fixed"),
+          // TODO: Add test once MNTOR-1700 logic is added
+          /* c8 ignore start */
           onClick: () => {
             // TODO: MNTOR-1700 Add routing logic + fix event here
           },
@@ -193,6 +195,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           onClick: () => {
             // TODO: MNTOR-1700 Add routing logic
           },
+          /* c8 ignore stop */
         };
 
   let illustrationAlt;
