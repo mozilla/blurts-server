@@ -8,21 +8,19 @@
 ---
 $schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
 
-app_events:
-  page_view:
+page:
+  view:
     type: event
     description: |
-      A generic page view event with extras.
+      An event triggered when the page is loaded.
     bugs:
-      # TODO: Add bug link
-      - https://bugzilla.mozilla.org/1691365
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2022
     data_reviews:
-      # TODO: Add data review link
-      - https://bugzilla.mozilla.org/show_bug.cgi?id=1691365#c0
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1848664#c6
     data_sensitivity:
-      - technical
+      - interaction
     notification_emails:
-      - glean-team@mozilla.com
+      - rhelmer@mozilla.com
     expires: never
     extra_keys:
       path:
