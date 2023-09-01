@@ -15,7 +15,10 @@ import { ReactNode } from "react";
 type ResolutionContentLayoutProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
   title: string;
-  illustration: string;
+  illustration: {
+    img: string;
+    alt: string;
+  };
   cta: {
     label: string;
     onClick: () => void;
@@ -56,7 +59,7 @@ export const ResolutionContentLayout = (
         </div>
         {props.estimatedTime && (
           <div className={styles.estimatedTime}>
-            <ClockIcon width="20" height="20" />
+            <ClockIcon width="20" height="20" alt="" />
             {l10n.getString("high-risk-breach-estimated-time", {
               estimated_time: props.estimatedTime,
             })}
@@ -64,7 +67,7 @@ export const ResolutionContentLayout = (
         )}
       </div>
       <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
-        <Image src={props.illustration} alt="" />
+        <Image src={props.illustration.img} alt={props.illustration.alt} />
       </div>
     </div>
   );

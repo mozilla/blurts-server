@@ -195,11 +195,40 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           },
         };
 
+  let illustrationAlt;
+  switch (props.typeOfBreach) {
+    case "bankAccount":
+      illustrationAlt = l10n.getString(
+        "high-risk-breach-bank-account-illustration-alt"
+      );
+      break;
+    case "creditCard":
+      illustrationAlt = l10n.getString(
+        "high-risk-breach-credit-card-illustration-alt"
+      );
+      break;
+    case "pin":
+      illustrationAlt = l10n.getString("high-risk-breach-pin-illustration-alt");
+      break;
+    case "ssnBreaches":
+      illustrationAlt = l10n.getString(
+        "high-risk-breach-social-security-illustration-alt"
+      );
+      break;
+    default:
+      illustrationAlt = l10n.getString(
+        "high-risk-breach-none-illustration-alt"
+      );
+  }
+
   return (
     <ResolutionContentLayout
       type="highRisk"
       title={title}
-      illustration={breachIllustration}
+      illustration={{
+        alt: illustrationAlt,
+        img: breachIllustration,
+      }}
       cta={primaryCta}
       estimatedTime={props.typeOfBreach !== "none" ? 15 : undefined}
     >

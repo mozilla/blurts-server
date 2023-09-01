@@ -3,17 +3,18 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { createRandomBreach } from "../../../../../../../../apiMocks/mockData";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { BreachDataTypes } from "../../../../../../../functions/universal/breach";
+import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 
 const meta: Meta<typeof HighRiskBreachLayout> = {
-  title: "HighRiskDataBreach",
+  title: "ResolutionLayout",
   component: HighRiskBreachLayout,
 };
 export default meta;
+
 type Story = StoryObj<typeof HighRiskBreachLayout>;
 
 const scannedResultsArraySample: SubscriberBreach[] = Array.from(
@@ -60,9 +61,37 @@ function guidedExperienceBreaches(
   return guidedExperienceBreaches;
 }
 
-export const HighRiskDataBreach: Story = {
+export const CreditCard: Story = {
   args: {
     typeOfBreach: "creditCard",
+    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+  },
+};
+
+export const BankAccount: Story = {
+  args: {
+    typeOfBreach: "bankAccount",
+    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+  },
+};
+
+export const SSN: Story = {
+  args: {
+    typeOfBreach: "ssnBreaches",
+    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+  },
+};
+
+export const PIN: Story = {
+  args: {
+    typeOfBreach: "pin",
+    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+  },
+};
+
+export const None: Story = {
+  args: {
+    typeOfBreach: "none",
     breachData: guidedExperienceBreaches(scannedResultsArraySample),
   },
 };

@@ -306,6 +306,7 @@ high-risk-breach-credit-card-description = Anyone who gets it can make unauthori
 high-risk-breach-credit-card-step-one = If you still have this card, contact the issuer to report it stolen.
 high-risk-breach-credit-card-step-two = Request a new card with a new number.
 high-risk-breach-credit-card-step-three = Check your accounts for unauthorized charges.
+high-risk-breach-credit-card-illustration-alt = Credit card illustration
 
 # Bank Account Breaches
 
@@ -314,6 +315,7 @@ high-risk-breach-bank-account-description = Taking action ASAP could give you mo
 high-risk-breach-bank-account-step-one = Notify your bank immediately that your account number has been compromised.
 high-risk-breach-bank-account-step-two = Change your account number.
 high-risk-breach-bank-account-step-three = Check your accounts for unauthorized charges.
+high-risk-breach-bank-account-illustration-alt = Bank illustration
 
 # Social Security Number Breaches
 
@@ -321,6 +323,7 @@ high-risk-breach-social-security-title = Your social security number was exposed
 high-risk-breach-social-security-description = Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.
 high-risk-breach-social-security-step-one = Protect yourself by setting up a fraud alert or freezing your credit.
 high-risk-breach-social-security-step-two = Check your credit report for unrecognized accounts.
+high-risk-breach-social-security-illustration-alt = Magnifying glass illustration
 
 # PIN Breaches 
 
@@ -329,6 +332,7 @@ high-risk-breach-pin-description = Taking action ASAP could give you more legal 
 high-risk-breach-pin-step-one = Notify your bank immediately that your PIN has been compromised.
 high-risk-breach-pin-step-two = Change your PIN anywhere you’ve used the same one.
 high-risk-breach-pin-step-three = Check your accounts for unauthorized charges.
+high-risk-breach-pin-illustration-alt = PIN Illustration
 
 # No high risk breaches found
 
@@ -346,4 +350,6 @@ high-risk-breach-none-sub-description-bank-account = Bank account info
 high-risk-breach-none-sub-description-cc-number = Credit card numbers
 high-risk-breach-none-sub-description-pin = PINs
 high-risk-breach-none-continue = Continue
+high-risk-breach-none-illustration-alt = Armour illustration
+
 
