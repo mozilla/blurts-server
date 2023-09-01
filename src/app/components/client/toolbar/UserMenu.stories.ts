@@ -24,7 +24,7 @@ const dummyUserData = {
   },
 };
 
-export const Default: Story = {
+export const UserMenuDefault: Story = {
   args: {
     user: dummyUserData,
   },

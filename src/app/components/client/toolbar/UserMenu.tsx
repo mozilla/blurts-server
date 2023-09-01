@@ -63,8 +63,6 @@ export const UserMenu = (props: UserMenuProps) => {
       case itemKeys.signout:
         signOutItemRef.current?.click();
         break;
-      default:
-      // do nothing
     }
   };
 
