@@ -6,7 +6,7 @@
 
 import { useEffect } from "react";
 import Glean from "@mozilla/glean/web";
-import * as appEvents from "../../telemetry/generated/appEvents";
+import * as pageEvents from "../../telemetry/generated/page";
 
 // Custom hook that initializes Glean and returns the Glean objects required
 // to record data.
@@ -14,7 +14,10 @@ export const useGlean = () => {
   // Initialize Glean only on the first render
   // of our custom hook.
   useEffect(() => {
-    Glean.initialize("monitor-testing", true, {
+    // Enable upload only if the user has not opted out of tracking.
+    const uploadEnabled = navigator.doNotTrack !== "1";
+
+    Glean.initialize("monitor.frontend", uploadEnabled, {
       // This will submit an events ping every time an event is recorded.
       maxEvents: 1,
     });
@@ -32,6 +35,6 @@ export const useGlean = () => {
 
   // Return all generated Glean objects required for recording data.
   return {
-    appEvents,
+    pageEvents,
   };
 };

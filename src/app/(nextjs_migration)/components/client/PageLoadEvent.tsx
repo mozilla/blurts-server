@@ -10,13 +10,13 @@ import { useGlean } from "../../../hooks/useGlean";
 
 // Empty component that records a page view on first load.
 export const PageLoadEvent = () => {
-  const { appEvents } = useGlean();
+  const { pageEvents } = useGlean();
   const pathname = usePathname();
 
   // On first load of the page, record a page view.
   useEffect(() => {
-    appEvents.pageView.record({ path: pathname });
-  }, [appEvents.pageView, pathname]);
+    pageEvents.view.record({ path: pathname });
+  }, [pageEvents.view, pathname]);
 
   // This component doesn't render anything.
   return <></>;
