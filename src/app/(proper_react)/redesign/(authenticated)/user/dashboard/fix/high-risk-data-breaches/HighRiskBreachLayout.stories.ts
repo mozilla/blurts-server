@@ -23,6 +23,7 @@ const scannedResultsArraySample: SubscriberBreach[] = Array.from(
 );
 
 //TODO: Be able to import this from getUserBreaches
+/* c8 ignore start */
 function guidedExperienceBreaches(
   subscriberBreaches: SubscriberBreach[]
 ): GuidedExperienceBreaches {
@@ -60,6 +61,7 @@ function guidedExperienceBreaches(
   });
   return guidedExperienceBreaches;
 }
+/* c8 ignore stop */
 
 export const CreditCard: Story = {
   args: {
