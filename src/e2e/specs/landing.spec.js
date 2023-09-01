@@ -130,7 +130,7 @@ test.describe('Landing Page element verification', () => {
       timeout: 2000
     })
 
-    // 6. Verify the "See if youâ€™ve been in a data breach" section.
+    // 6. Verify the "See if you've been in a data breach" section.
     await expect(async () => {
       await expect(await landingPage.seeIfDataBreachSection).toHaveScreenshot(
         `${process.env.E2E_TEST_ENV}-seeIfDataBreachSection.png`
