@@ -49,7 +49,7 @@ test.describe('Landing Page element verification', () => {
       description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095094",
     });
 
-    // visaually verify landing page footer is displayed correctly
+    // visually verify landing page footer is displayed correctly
     await expect(async () => {
       await expect(landingPage.landingFooter).toHaveScreenshot(
         `${process.env.E2E_TEST_ENV}-landingFooter.png`
