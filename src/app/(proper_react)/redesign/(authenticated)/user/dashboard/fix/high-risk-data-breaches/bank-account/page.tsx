@@ -20,11 +20,9 @@ export default async function BankAccountDataBreach() {
   const guidedExperience = guidedExperienceBreaches(breaches);
 
   return (
-    <>
-      <HighRiskBreachLayout
-        typeOfBreach="bankAccount"
-        breachData={guidedExperience}
-      />
-    </>
+    <HighRiskBreachLayout
+      typeOfBreach="bankAccount"
+      breachData={guidedExperience}
+    />
   );
 }

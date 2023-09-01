@@ -20,11 +20,9 @@ export default async function SocialSecurityNumberDataBreach() {
   const guidedExperience = guidedExperienceBreaches(breaches);
 
   return (
-    <>
-      <HighRiskBreachLayout
-        breachData={guidedExperience}
-        typeOfBreach="ssnBreaches"
-      />
-    </>
+    <HighRiskBreachLayout
+      breachData={guidedExperience}
+      typeOfBreach="ssnBreaches"
+    />
   );
 }
