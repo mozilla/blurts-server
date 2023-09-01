@@ -2,12 +2,12 @@
 rec-ssn-subhead = Preglejte svoja kreditna poročila
 # Link title
 rec-ssn-cta = Zahtevajte kreditna poročila
-rec-ssn = Po zakonu prejmete tri brezplačna poročila o kreditni sposobnosti na leto. Zahteva in pregled ne vplivata na vaše dobroimetje. Poiščite račune, posojila ali kreditne kartice, ki jih ne prepoznate.
+rec-ssn = Po zakonu letno prejmete tri brezplačna poročila o dobroimetju. Zahteve in pregledi poročil ne vplivajo na vaše dobroimetje. Poiščite račune, posojila ali kreditne kartice, ki jih ne prepoznate.
 # Recommendation subhead
 rec-pw-1-subhead = Spremenite svoje geslo
 # Link title
 rec-pw-1-cta = Spremeni geslo za to stran
-rec-pw-1-2 = Naj bo to geslo edinstveno in drugačno od ostalih, ki jih uporabljate. Dobra strategija, ki ji je treba slediti, je združiti dve ali več nepovezanih besed v celotno geslo, ki vključuje številke in simbole.
+rec-pw-1-2 = Naj bo to geslo edinstveno in drugačno od ostalih, ki jih uporabljate. Dobra strategija je, da dve ali več nepovezanih besed združite v besedno zvezo, ki ji dodate številke in simbole.
 # Recommendation subhead
 rec-pw-2-subhead = Posodobite druge prijave z enakim geslom
 # Link title

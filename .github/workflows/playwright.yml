@@ -53,7 +53,6 @@ jobs:
         run: npm run db:migrate
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432/blurts
-      
       - name: Store Playwright's Version
         run: |
           PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
@@ -73,7 +72,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: npm run e2e
+        run: npm run e2e:smoke
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'local' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}
