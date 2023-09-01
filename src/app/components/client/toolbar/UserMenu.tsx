@@ -160,13 +160,15 @@ function MenuTrigger(props: MenuTriggerComponentProps) {
         title={l10n.getString("user-menu-trigger-tooltip")}
         onClick={() => state.open()}
       >
-        <Image
-          alt={l10n.getString("user-menu-trigger-label")}
-          height={42}
-          src={props.user.fxa?.avatar || ""}
-          unoptimized
-          width={42}
-        />
+        {props.user.fxa?.avatar && (
+          <Image
+            alt={l10n.getString("user-menu-trigger-label")}
+            height={42}
+            src={props.user.fxa?.avatar}
+            unoptimized
+            width={42}
+          />
+        )}
       </button>
       {state.isOpen && (
         <Popover
