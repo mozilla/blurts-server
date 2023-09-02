@@ -8,6 +8,7 @@ test.describe('Landing Page element verification', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
   })
+
   test(' Verify that the site footer options work correctly ', async ({ landingPage }) => {
     // link to testrail case
     test.info().annotations.push({
@@ -36,6 +37,23 @@ test.describe('Landing Page element verification', () => {
       await expect(landingPage.howItWorksSec).toBeVisible()
       await expect(landingPage.questionsAboutSec).toBeVisible()
       await expect(landingPage.seeIfDataBreachSec).toBeVisible()
+    }).toPass({
+      timeout: 2000
+    })
+  })
+
+  test('Verify that the site footer is displayed correctly', async ({ landingPage }) => {
+    // link to testrail case
+    test.info().annotations.push({
+      type: "testrail",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095094",
+    });
+
+    // visually verify landing page footer is displayed correctly
+    await expect(async () => {
+      await expect(landingPage.landingFooter).toHaveScreenshot(
+        `${process.env.E2E_TEST_ENV}-landingFooter.png`
+      )
     }).toPass({
       timeout: 2000
     })
