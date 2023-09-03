@@ -17,6 +17,7 @@ export type BannerContent =
   | "NoExposuresFoundContent"
   | "ResumeBreachResolutionContent"
   | "YourDataIsProtectedContent"
+  | "YourDataIsProtectedAllFixedContent"
   | "NoContent";
 
 export type DashboardTopBannerProps = {

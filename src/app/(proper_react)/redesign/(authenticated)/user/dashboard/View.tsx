@@ -204,6 +204,17 @@ export const View = (props: Props) => {
     }
   }
 
+  // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
+  // In the future, add logic for !premium, subbing that with !featureFlagsEnabled for now
+  if (
+    props.countryCode &&
+    props.countryCode?.toLocaleLowerCase() === "us" &&
+    noUnresolvedExposures &&
+    !featureFlagsEnabled
+  ) {
+    contentType = "YourDataIsProtectedAllFixedContent";
+  }
+
   // Fixed in: MNTOR-2011
   const freeScanCta = isScanResultItemsEmpty ? (
     <p>
