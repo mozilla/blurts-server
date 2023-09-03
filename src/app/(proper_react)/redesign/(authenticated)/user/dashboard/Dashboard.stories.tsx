@@ -65,6 +65,11 @@ const scannedResultsArraySample: ScanResult[] = Array.from(
   createRandomScan
 );
 
+const scannedResolvedResultsArraySample: ScanResult[] = Array.from(
+  { length: 5 },
+  () => createRandomScan({ status: "removed" })
+);
+
 const breachItemArraySample: SubscriberBreach[] = [
   BreachMockItem1,
   BreachMockItem2,
@@ -254,6 +259,25 @@ export const DashboardFreeUser: Story = {
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardFreeUserAllResolved: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
+      <DashboardEl
+        countryCode="us"
+        user={{ email: "example@example.com" }}
+        userBreaches={[]}
+        userScannedResults={scannedResolvedResultsArraySample}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{
