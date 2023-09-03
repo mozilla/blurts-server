@@ -178,7 +178,7 @@ export const settings = data => {
           <p class='settings-section-info'>${getMessage('settings-deactivate-account-info')}</p>
           <a
             class='settings-link-fxa'
-            href='${AppConstants.FXA_SETTINGS_URL}'
+            href='${AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}'
             target='_blank'
           >
             ${getMessage('settings-fxa-link-label')}
