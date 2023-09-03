@@ -36,8 +36,8 @@ manage-emails-link = Urejanje e-poštnih sporočil
 
 ## Breaches resolved filter
 
-filter-label-unresolved = Nerazrešene kršitve podatkov
-filter-label-resolved = Odpravljene kršitve
+filter-label-unresolved = Nerazrešene kraje podatkov
+filter-label-resolved = Razrešene kraje
 
 ## Breaches table
 
@@ -48,14 +48,14 @@ column-detected = ZAZNANO
 column-status-badge-resolved = Razrešeno
 # “Active” is shown next to a breach if the user still has at least one recommended action to perform in response to the breach.
 column-status-badge-active = Aktivno
-breaches-resolve-heading = Odpravite to kršitev:
+breaches-resolve-heading = Razrešite to krajo:
 breaches-none-headline = Ni najdenih kršitev
 # Variables:
 #   $email (String) - An email address that we did not find breaches for, e.g. `someone@example.com`
 breaches-none-copy = Dobra novica! Za { $email } niso bile prijavljene znane kraje. To e-pošto bomo še naprej spremljali in vas obvestili, če bo prišlo do novih kraj.
 breaches-none-cta-blurb = Ali želite spremljati drugo pošto?
 breaches-none-cta-button = Dodaj e-poštni naslov
-breaches-all-resolved-headline = Vse kršitve odpravljene
+breaches-all-resolved-headline = Vse kraje razrešene
 # Variables:
 #   $email (String) - An email address for which all breaches have been resolved, e.g. `someone@example.com`
 breaches-all-resolved-copy = Bravo! Razrešili ste vse kraje podatkov za { $email }. To e-pošto bomo še naprej spremljali in vas obvestili, če bo prišlo do novih kraj.
