@@ -23,6 +23,7 @@ export type DashboardTopBannerProps = {
   content: BannerContent;
   bannerData: DashboardSummary;
   hasRunScan: boolean;
+  isEligibleForFreeScan: boolean;
   type: TabType;
   ctaCallback?: () => void;
 };
@@ -209,7 +210,11 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
           )}
         </div>
         <div className={styles.chart}>
-          <Chart hasRunScan={props.hasRunScan} data={chartData} />
+          <Chart
+            hasRunScan={props.hasRunScan}
+            data={chartData}
+            isEligibleForFreeScan={props.isEligibleForFreeScan}
+          />
         </div>
       </div>
     </>

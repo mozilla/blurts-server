@@ -11,6 +11,7 @@ import Meta, {
   DashboardWithScan,
   DashboardWithScanUserFromUs,
   DashboardWithoutScan,
+  DashboardWithoutScanUserFromUs,
   DashboardFreeUser,
   DashboardPremiumUser,
   DashboardNoSession,
@@ -53,7 +54,7 @@ it("passes the axe accessibility test suite 2", async () => {
 });
 
 it("passes the axe accessibility test suite 3", async () => {
-  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
+  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
   const { container } = render(<ComposedDashboard />);
   expect(await axe(container)).toHaveNoViolations();
 });
@@ -66,9 +67,25 @@ it("shows the “let’s fix it” banner content", () => {
   expect(letsFixItBannerContent).toBeInTheDocument();
 });
 
+it("shows the 'Start a free scan' CTA to free US-based users who haven't performed a scan yet", () => {
+  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
+  render(<ComposedDashboard />);
+
+  const freeScanCta = screen.getByRole("link", { name: "Start a free scan" });
+  expect(freeScanCta).toBeInTheDocument();
+});
+
+it("does not show the 'Start a free scan' CTA for non-US users", () => {
+  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
+  render(<ComposedDashboard />);
+
+  const freeScanCta = screen.queryByRole("link", { name: "Start a free scan" });
+  expect(freeScanCta).not.toBeInTheDocument();
+});
+
 it("switches between tab panels", async () => {
   const user = userEvent.setup();
-  const ComposedDashboard = composeStory(DashboardWithoutScan, Meta);
+  const ComposedDashboard = composeStory(DashboardWithoutScanUserFromUs, Meta);
   render(<ComposedDashboard />);
 
   const tabActionNeededTrigger = screen.getByRole("tab", {
