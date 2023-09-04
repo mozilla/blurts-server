@@ -20,7 +20,7 @@ import Meta, {
 const ENV = process.env;
 
 function enablePremium() {
-  process.env.PREMIUM_ENABLED = "true";
+  process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "true";
 }
 
 function disablePremium() {
