@@ -4,7 +4,7 @@
 
 import type { Meta, StoryObj } from "@storybook/react";
 import PremiumBadge from "../PremiumBadge";
-import { userWithPremiumSubscription } from "../../../(proper_react)/redesign/(authenticated)/user/dashboard/Dashboard.stories";
+import { createUserWithPremiumSubscription } from "../../../../apiMocks/mockData";
 
 const meta: Meta<typeof PremiumBadge> = {
   title: "Premium Badge",
@@ -22,6 +22,6 @@ export const PremiumUpsellCta: Story = {
 
 export const PremiumSubscriberBadge: Story = {
   args: {
-    user: userWithPremiumSubscription,
+    user: createUserWithPremiumSubscription(),
   },
 };

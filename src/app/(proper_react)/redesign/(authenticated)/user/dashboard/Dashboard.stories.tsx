@@ -11,6 +11,7 @@ import { getEnL10nSync } from "../../../../../functions/server/mockL10n";
 import {
   createRandomScan,
   createRandomBreach,
+  createUserWithPremiumSubscription,
 } from "../../../../../../apiMocks/mockData";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
@@ -161,18 +162,6 @@ const mockSession = {
   user: { email: "example@example.com" },
 };
 
-export const userWithPremiumSubscription = {
-  email: "example@example.com",
-  fxa: {
-    locale: "us",
-    twoFactorAuthentication: false,
-    metricsEnabled: false,
-    avatar: "",
-    avatarDefault: true,
-    subscriptions: ["monitor"],
-  },
-};
-
 export const DashboardWithScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
@@ -293,26 +282,29 @@ export const DashboardFreeUser: Story = {
 };
 
 export const DashboardPremiumUser: Story = {
-  render: () => (
-    <Shell
-      l10n={getEnL10nSync()}
-      session={{ ...mockSession, user: userWithPremiumSubscription }}
-    >
-      <DashboardEl
-        countryCode="us"
-        user={userWithPremiumSubscription}
-        userBreaches={breachItemArraySample}
-        userScannedResults={scannedResultsArraySample}
-        isEligibleForFreeScan={true}
-        locale={"en"}
-        bannerData={dashboardSummaryWithScan}
-        featureFlagsEnabled={{
-          FreeBrokerScan: true,
-          PremiumBrokerRemoval: true,
-        }}
-      />
-    </Shell>
-  ),
+  render: () => {
+    const userData = createUserWithPremiumSubscription();
+    return (
+      <Shell
+        l10n={getEnL10nSync()}
+        session={{ ...mockSession, user: userData }}
+      >
+        <DashboardEl
+          countryCode="us"
+          user={userData}
+          userBreaches={breachItemArraySample}
+          userScannedResults={scannedResultsArraySample}
+          isEligibleForFreeScan={true}
+          locale={"en"}
+          bannerData={dashboardSummaryWithScan}
+          featureFlagsEnabled={{
+            FreeBrokerScan: true,
+            PremiumBrokerRemoval: true,
+          }}
+        />
+      </Shell>
+    );
+  },
 };
 
 export const DashboardNoSession: Story = {
