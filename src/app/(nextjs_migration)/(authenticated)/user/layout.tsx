@@ -16,6 +16,7 @@ import MonitorLogo from "../../../../client/images/monitor-logo-transparent@2x.w
 import MozillaLogo from "../../../../client/images/moz-logo-1color-white-rgb-01.svg";
 import { getL10n } from "../../../functions/server/l10n";
 import { authOptions } from "../../../api/utils/auth";
+import { getNonce } from "../../functions/server/getNonce";
 export type Props = {
   children: ReactNode;
 };
@@ -30,7 +31,11 @@ const MainLayout = async (props: Props) => {
 
   return (
     <>
-      <Script type="module" src="/nextjs_migration/client/js/nav.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/nav.js"
+        nonce={getNonce()}
+      />
       <header>
         <div className="header-wrapper">
           <a href="/user/breaches">
@@ -61,6 +66,7 @@ const MainLayout = async (props: Props) => {
             <UserMenu
               session={session}
               fxaSettingsUrl={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
+              nonce={getNonce()}
             />
           </div>
         </div>
