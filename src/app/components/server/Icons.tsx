@@ -283,9 +283,7 @@ export const CloseBtn = ({
 
 // Link to icon: https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=3515-9584&mode=design&t=O0YJKrRAhztcOpXU-4
 // Keywords: View Grid, ViewGrid, Bento, AppPicker, App Picker
-export const BentoIcon = (
-  props: SVGProps<SVGSVGElement> & { alt?: string }
-) => {
+export const BentoIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
   return (
     <svg
       width="24"
@@ -310,7 +308,7 @@ export const BentoIcon = (
 
 // Link to icon: https://www.figma.com/file/olFHozlwrdYlCkZaG4B262/Nebula-Design-System-V2-(WIP)?type=design&node-id=109-1405&mode=design&t=WbRVICi1MjCbri9t-4
 export const FilterIcon = (
-  props: SVGProps<SVGSVGElement> & { alt?: string }
+  props: SVGProps<SVGSVGElement> & { alt: string }
 ) => {
   return (
     <svg
@@ -336,7 +334,7 @@ export const FilterIcon = (
 
 // Keywords: lock
 export const PasswordIcon = (
-  props: SVGProps<SVGSVGElement> & { alt?: string }
+  props: SVGProps<SVGSVGElement> & { alt: string }
 ) => {
   return (
     <svg
