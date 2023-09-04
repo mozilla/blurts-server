@@ -28,7 +28,6 @@ function disablePremium() {
 }
 
 beforeEach(() => {
-  jest.resetModules();
   disablePremium();
 });
 
