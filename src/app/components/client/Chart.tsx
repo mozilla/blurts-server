@@ -191,7 +191,7 @@ export const DoughnutChart = (props: Props) => {
                 ))}
               </tbody>
             </table>
-            {!props.hasRunScan && props.isEligibleForFreeScan ? prompt : null}
+            {!props.hasRunScan && props.isEligibleForFreeScan && prompt}
           </div>
         </div>
         <figcaption>
