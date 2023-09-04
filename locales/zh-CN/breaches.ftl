@@ -69,11 +69,11 @@ breach-checklist-link-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## Prompts the user for changes when there is a breach detected of password
 
-breach-checklist-pw-header-text = 更新您的密码并启用双因素身份验证 (2FA)。
+breach-checklist-pw-header-text = 更新您的密码并启用双因子身份验证（2FA）。
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
 # Variables:
 #   $passwordManagerLink (string) - a link to the password manager documentation, with { -breach-checklist-link-password-manager } as the label
-breach-checklist-pw-body-text = 在大多数情况下，我们建议您在该公司的网站上更改密码。但是<b>他们的网站可能会关闭或包含恶意内容</b>，因此您<breached-company-link>访问该网站</breached-company-link>时，请谨慎行事。为了加强保护，请确保您对不同的帐户使用不同的密码，这样任何泄露的密码都无法用于访问其他帐户。 { $passwordManagerLink } 可以帮助您安全地跟踪所有密码。
+breach-checklist-pw-body-text = 在大多数情况下，我们建议您在该公司的网站上更改密码。但是<b>他们的网站可能会关闭或包含恶意内容</b>，因此您<breached-company-link>访问该网站</breached-company-link>时，请谨慎行事。为了加强保护，请确保您对不同的账户使用不同的密码，这样任何泄露的密码都无法用于访问其他账户。{ $passwordManagerLink } 可以帮助您安全地跟踪所有密码。
 
 ## Prompts the user for changes when there is a breach detected of email
 
@@ -139,7 +139,7 @@ breach-checklist-phone-header-2 = 使用 { $firefoxRelayLink } 等服务来保�
 
 breach-checklist-sq-header-text = 更新您的安全问题。
 # The `breached-company-link` tags will be replaced with link tags or stripped if no link is available.
-breach-checklist-sq-body-text = 在大多数情况下，我们建议您在该公司的网站上更新您的安全问题。但是<b>他们的网站可能会关闭或包含恶意内容</b>，因此您<breached-company-link>访问该网站</breached-company-link>时，请谨慎行事。为了加强保护，请在您使用过的任何重要帐户上更新这些安全问题，并为不同的帐户创建不同的密码。
+breach-checklist-sq-body-text = 在大多数情况下，我们建议您在该公司的网站上更新您的安全问题。但是<b>他们的网站可能会关闭或包含恶意内容</b>，因此您<breached-company-link>访问该网站</breached-company-link>时，请谨慎行事。为了加强保护，请在您使用过的任何重要账户上更新这些安全问题，并为不同的账户创建不同的密码。
 
 ## Prompts the user for changes when there is a breach detected of historical password
 

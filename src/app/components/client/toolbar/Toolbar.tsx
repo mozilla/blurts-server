@@ -23,7 +23,7 @@ export const Toolbar = (props: Props) => {
           <PremiumBadge user={props.user} />
         )}
         <AppPicker />
-        <UserMenu user={props.user} />
+        {props.user && <UserMenu user={props.user} />}
       </div>
     </nav>
   );

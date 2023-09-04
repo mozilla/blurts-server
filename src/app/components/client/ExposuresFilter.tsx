@@ -6,7 +6,6 @@ import styles from "./ExposuresFilter.module.scss";
 import { CloseBtn, FilterIcon, QuestionMarkCircle } from "../server/Icons";
 import React, {
   FormEventHandler,
-  ReactElement,
   ReactNode,
   createContext,
   useContext,
@@ -33,7 +32,10 @@ import { useL10n } from "../../hooks/l10n";
 import { Button } from "../server/Button";
 import NoteIcon from "./assets/note.svg";
 import CalendarIcon from "./assets/calendar.svg";
-import { ExposuresFilterExplainer } from "./ExposuresFilterExplainer";
+import {
+  ExposuresFilterStatusExplainer,
+  ExposuresFilterTypeExplainer,
+} from "./ExposuresFilterExplainer";
 import { Popover } from "./Popover";
 
 export type FilterState = {
@@ -54,26 +56,29 @@ export const ExposuresFilter = ({
 }: ExposuresFilterProps) => {
   const l10n = useL10n();
 
-  const [explainerDialog, setExplainerDialog] = useState<ReactElement>();
-
-  // Explainer dialog
-  const explainerDialogState = useOverlayTriggerState({});
-  const explainerDialogTrigger = useOverlayTrigger(
+  // Type filter explainer dialog
+  const exposureTypeExplainerDialogState = useOverlayTriggerState({});
+  const exposureTypeExplainerDialogTrigger = useOverlayTrigger(
     { type: "dialog" },
-    explainerDialogState
+    exposureTypeExplainerDialogState
   );
+  const exposureTypeExplainerTriggerRef = useRef<HTMLButtonElement>(null);
+  const exposureTypeExplainerTriggerProps = useButton(
+    exposureTypeExplainerDialogTrigger.triggerProps,
+    exposureTypeExplainerTriggerRef
+  ).buttonProps;
 
-  const openExplainerDialog = (content: "exposure" | "status") => {
-    explainerDialogState.open();
-    const dialogContent = (
-      <ExposuresFilterExplainer
-        content={content}
-        explainerDialogProps={explainerDialogTrigger}
-        explainerDialogState={explainerDialogState}
-      />
-    );
-    setExplainerDialog(dialogContent);
-  };
+  // Status filter explainer dialog
+  const exposureStatusExplainerDialogState = useOverlayTriggerState({});
+  const exposureStatusExplainerDialogTrigger = useOverlayTrigger(
+    { type: "dialog" },
+    exposureStatusExplainerDialogState
+  );
+  const exposureStatusExplainerTriggerRef = useRef<HTMLButtonElement>(null);
+  const exposureStatusExplainerTriggerProps = useButton(
+    exposureStatusExplainerDialogTrigger.triggerProps,
+    exposureStatusExplainerTriggerRef
+  ).buttonProps;
 
   // Filter Dialog
   const [filterState, setFilterState] = useState<FilterState>(filterValues);
@@ -178,7 +183,7 @@ export const ExposuresFilter = ({
           variant="secondary"
           // TODO: Add unit test when changing this code:
           /* c8 ignore next 4 */
-          onClick={() => {
+          onPress={() => {
             setFilterState(initialFilterValues);
             setFilterValues(initialFilterValues);
           }}
@@ -203,12 +208,6 @@ export const ExposuresFilter = ({
       </button>
     </form>
   );
-
-  const exposureTypeExplainerTriggerRef = useRef<HTMLButtonElement>(null);
-  const exposureTypeExplainerTriggerProps = useButton(
-    explainerDialogTrigger.triggerProps,
-    exposureTypeExplainerTriggerRef
-  ).buttonProps;
 
   return (
     <>
@@ -235,10 +234,9 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-exposure-type")}
             <button
+              {...exposureTypeExplainerTriggerProps}
               ref={exposureTypeExplainerTriggerRef}
               aria-label={l10n.getString("modal-open-alt")}
-              {...exposureTypeExplainerTriggerProps}
-              onClick={() => openExplainerDialog("exposure")}
             >
               <QuestionMarkCircle
                 width="15"
@@ -253,8 +251,9 @@ export const ExposuresFilter = ({
           <li className={styles.hideOnMobile}>
             {l10n.getString("dashboard-exposures-filter-status")}
             <button
+              {...exposureStatusExplainerTriggerProps}
+              ref={exposureStatusExplainerTriggerRef}
               aria-label={l10n.getString("modal-open-alt")}
-              onClick={() => openExplainerDialog("status")}
             >
               <QuestionMarkCircle
                 width="15"
@@ -266,7 +265,18 @@ export const ExposuresFilter = ({
         </ul>
         <div className={styles.rightSpace}></div>
       </div>
-      {explainerDialogState.isOpen && explainerDialog}
+      {exposureTypeExplainerDialogState.isOpen && (
+        <ExposuresFilterTypeExplainer
+          explainerDialogProps={exposureTypeExplainerDialogTrigger}
+          explainerDialogState={exposureTypeExplainerDialogState}
+        />
+      )}
+      {exposureStatusExplainerDialogState.isOpen && (
+        <ExposuresFilterStatusExplainer
+          explainerDialogProps={exposureStatusExplainerDialogTrigger}
+          explainerDialogState={exposureStatusExplainerDialogState}
+        />
+      )}
       {filterDialogState.isOpen && (
         <Popover
           crossOffset={100}

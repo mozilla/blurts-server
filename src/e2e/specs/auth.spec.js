@@ -4,7 +4,7 @@
 
 import { test, expect } from '../fixtures/basePage.js'
 
-test.describe('Authentication flow verification', () => {
+test.describe('Authentication flow verification @smoke', () => {
   test.beforeEach(async ({ landingPage }) => {
     await landingPage.open()
   })
@@ -26,7 +26,6 @@ test.describe('Authentication flow verification', () => {
     // Fill out sign up form
     const randomEmail = `${Date.now()}_tstact@restmail.net`
     await authPage.signUp(randomEmail, page)
-    // await page.waitForTimeout(6000)
 
     // assert successful login
     await expect(dataBreachPage.dataBreachesHeader).toBeVisible()
