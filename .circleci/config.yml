@@ -47,6 +47,7 @@ jobs:
         steps:
             - checkout
             - node/install-packages
+            - run: npm run build-glean
             - run: npm run lint
     deploy:
         docker:
