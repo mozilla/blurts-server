@@ -273,6 +273,6 @@ false-door-test-phase-2-content-part-one = Did you know there are sites selling 
 false-door-test-phase-2-content-part-two = Automatically remove data from sketchy sites.
 false-door-test-phase-2-content-part-two-dashboard = Automatically remove data from broker sites. 
 
-# Premium upsell modal
+# Premium upsell dialog
 
-premium-upsell-modal-title = Choose the level of protection that’s right for you
+premium-upsell-dialog-title = Choose the level of protection that’s right for you

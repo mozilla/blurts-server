@@ -22,10 +22,18 @@
     flex-direction: column;
     gap: $spacing-md;
     padding: $layout-sm $layout-sm $spacing-sm;
+
+    @media screen and (min-width: $screen-lg) {
+      padding: $layout-md $layout-xl $spacing-sm;
+    }
   }
 
   .content {
     padding: $spacing-sm $layout-sm $layout-sm;
+
+    @media screen and (min-width: $screen-lg) {
+      padding: $spacing-sm $layout-xl $layout-md;
+    }
   }
 
   .title {
@@ -45,14 +53,15 @@
       gap: $spacing-xl;
       justify-content: center;
       text-align: left;
-    }
-
-    .header,
-    .content {
-      padding: $layout-xs;
 
       @media screen and (min-width: $screen-lg) {
-        padding: $layout-md;
+        padding: $layout-md $layout-sm $layout-md $layout-xl;
+      }
+    }
+
+    .content {
+      @media screen and (min-width: $screen-lg) {
+        padding: $layout-md $layout-xl $layout-md $layout-sm;
       }
     }
 
