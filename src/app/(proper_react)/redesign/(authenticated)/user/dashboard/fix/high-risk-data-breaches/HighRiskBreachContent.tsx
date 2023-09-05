@@ -39,24 +39,24 @@ export const HighRiskBreachContent = (typeOfBreach: string) => {
     </ol>
   );
 
+  const stepOneSSNLink =
+    "https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts";
+  const stepTwoSSNLink = "https://www.annualcreditreport.com/index.action";
+
   const SocialSecurityNumberRecommendationSteps = (
     <ol>
       {/* TOOD: Add question mark modal explaining the SSN breach resolution - MNTOR-2127 */}
       <li>
         {l10n.getFragment("high-risk-breach-social-security-step-one", {
           elems: {
-            link_to_info: (
-              <a href="https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts" />
-            ),
+            link_to_info: <a href={stepOneSSNLink} />,
           },
         })}
       </li>
       <li>
         {l10n.getFragment("high-risk-breach-social-security-step-two", {
           elems: {
-            link_to_info: (
-              <a href="https://www.annualcreditreport.com/index.action" />
-            ),
+            link_to_info: <a href={stepTwoSSNLink} />,
           },
         })}
       </li>
