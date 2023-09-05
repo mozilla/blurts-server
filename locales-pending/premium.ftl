@@ -321,8 +321,8 @@ high-risk-breach-bank-account-illustration-alt = Bank illustration
 
 high-risk-breach-social-security-title = Your social security number was exposed
 high-risk-breach-social-security-description = Scammers can open up new loans or credit cards with your social security number. Act fast to prevent financial harm.
-high-risk-breach-social-security-step-one = Protect yourself by setting up a fraud alert or freezing your credit.
-high-risk-breach-social-security-step-two = Check your credit report for unrecognized accounts.
+high-risk-breach-social-security-step-one = Protect yourself by <link_to_info>setting up a fraud alert or freezing your credit.</link_to_info>
+high-risk-breach-social-security-step-two = <link_to_info>Check your credit report</link_to_info> for unrecognized accounts.
 high-risk-breach-social-security-illustration-alt = Magnifying glass illustration
 
 # PIN Breaches 
@@ -351,5 +351,3 @@ high-risk-breach-none-sub-description-cc-number = Credit card numbers
 high-risk-breach-none-sub-description-pin = PINs
 high-risk-breach-none-continue = Continue
 high-risk-breach-none-illustration-alt = Armour illustration
-
-

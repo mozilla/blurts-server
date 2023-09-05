@@ -68,6 +68,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   let title, secondaryDescription, recommendationSteps, breachIllustration;
 
+  //TODO: Move high risk content into its own file, turn links into variables MNTOR-2126
   const CreditCardRecommendationSteps = (
     <ol>
       <li>{l10n.getString("high-risk-breach-credit-card-step-one")}</li>
@@ -86,8 +87,24 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   const SocialSecurityNumberRecommendationSteps = (
     <ol>
-      <li>{l10n.getString("high-risk-breach-social-security-step-one")}</li>
-      <li>{l10n.getString("high-risk-breach-social-security-step-two")}</li>
+      <li>
+        {l10n.getFragment("high-risk-breach-social-security-step-one", {
+          elems: {
+            link_to_info: (
+              <a href="https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts" />
+            ),
+          },
+        })}
+      </li>
+      <li>
+        {l10n.getFragment("high-risk-breach-social-security-step-two", {
+          elems: {
+            link_to_info: (
+              <a href="https://www.annualcreditreport.com/index.action" />
+            ),
+          },
+        })}
+      </li>
     </ol>
   );
 
