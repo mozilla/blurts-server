@@ -2,13 +2,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+"use client";
+
 import styles from "./ResolutionContentLayout.module.scss";
 import Image from "next/image";
 import { Button } from "../../../../../../components/server/Button";
 import Link from "next/link";
-import { useL10n } from "../../../../../../hooks/l10n";
 import { ClockIcon } from "../../../../../../components/server/Icons";
 import { ReactNode } from "react";
+import { useL10n } from "../../../../../../hooks/l10n";
 
 type ResolutionContentLayoutProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
@@ -34,6 +36,7 @@ export const ResolutionContentLayout = (
   const l10n = useL10n();
 
   return (
+    // TODO: Check with design if toolbar should be on this page
     <div className={styles.container}>
       <div className={styles.breachContentWrapper}>
         <h3>{props.title}</h3>
