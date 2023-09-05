@@ -128,7 +128,7 @@ it("opens and closes the premium upsell dialog", async () => {
   expect(
     screen.getByText("Choose the level of protection that’s right for you")
   ).toBeInTheDocument();
-  const closeButtonIcon1 = screen.getByLabelText("Close modal");
+  const closeButtonIcon1 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon1.parentElement as HTMLElement);
   expect(
     screen.queryByText("Choose the level of protection that’s right for you")
@@ -139,7 +139,7 @@ it("opens and closes the premium upsell dialog", async () => {
   expect(
     screen.getByText("Choose the level of protection that’s right for you")
   ).toBeInTheDocument();
-  const closeButtonIcon2 = screen.getByLabelText("Close modal");
+  const closeButtonIcon2 = screen.getByLabelText("Close");
   await user.click(closeButtonIcon2.parentElement as HTMLElement);
   expect(
     screen.queryByText("Choose the level of protection that’s right for you")
