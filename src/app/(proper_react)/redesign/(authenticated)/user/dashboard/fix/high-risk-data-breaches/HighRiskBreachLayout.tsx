@@ -5,15 +5,11 @@
 "use client";
 
 import styles from "./HighRiskBreachLayout.module.scss";
-import CreditCardIllustration from "../images/high-risk-data-breach-credit-card.svg";
-import BankAccountIllustration from "../images/high-risk-data-breach-bank-account.svg";
-import pinIllustration from "../images/high-risk-data-breach-pin.svg";
-import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ssn.svg";
-import NoBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { useL10n } from "../../../../../../../hooks/l10n";
 import { ResolutionContentLayout } from "../ResolutionContentLayout";
+import { HighRiskBreachContent } from "./HighRiskBreachContent";
 
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "pin" | "none";
@@ -67,133 +63,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     <div className={styles.breachItemsWrapper}>{listOfBreaches}</div>
   );
 
-  let title, secondaryDescription, recommendationSteps, breachIllustration;
-
-  //TODO: Move high risk content into its own file, turn links into variables MNTOR-2126
-  const CreditCardRecommendationSteps = (
-    <ol>
-      <li>{l10n.getString("high-risk-breach-credit-card-step-one")}</li>
-      <li>{l10n.getString("high-risk-breach-credit-card-step-two")}</li>
-      <li>{l10n.getString("high-risk-breach-credit-card-step-three")}</li>
-    </ol>
-  );
-
-  const BankAccountRecommendationSteps = (
-    <ol>
-      <li>{l10n.getString("high-risk-breach-bank-account-step-one")}</li>
-      <li>{l10n.getString("high-risk-breach-bank-account-step-two")}</li>
-      <li>{l10n.getString("high-risk-breach-bank-account-step-three")}</li>
-    </ol>
-  );
-
-  const SocialSecurityNumberRecommendationSteps = (
-    <ol>
-      <li>
-        {l10n.getFragment("high-risk-breach-social-security-step-one", {
-          elems: {
-            link_to_info: (
-              <a href="https://consumer.ftc.gov/articles/what-know-about-credit-freezes-fraud-alerts" />
-            ),
-          },
-        })}
-      </li>
-      <li>
-        {l10n.getFragment("high-risk-breach-social-security-step-two", {
-          elems: {
-            link_to_info: (
-              <a href="https://www.annualcreditreport.com/index.action" />
-            ),
-          },
-        })}
-      </li>
-    </ol>
-  );
-
-  const pinRecommendationSteps = (
-    <ol>
-      <li>{l10n.getString("high-risk-breach-pin-step-one")}</li>
-      <li>{l10n.getString("high-risk-breach-pin-step-two")}</li>
-      <li>{l10n.getString("high-risk-breach-pin-step-three")}</li>
-    </ol>
-  );
-
-  // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
-  const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
-  const emailsFormatter = new Intl.ListFormat("en-US", {
-    style: "long",
-    type: "conjunction",
-  });
-
-  switch (props.typeOfBreach) {
-    case "creditCard":
-      title = l10n.getString("high-risk-breach-credit-card-title");
-      secondaryDescription = (
-        <p>{l10n.getString("high-risk-breach-credit-card-description")}</p>
-      );
-      recommendationSteps = CreditCardRecommendationSteps;
-      breachIllustration = CreditCardIllustration;
-      break;
-    case "ssnBreaches":
-      title = l10n.getString("high-risk-breach-social-security-title");
-      secondaryDescription = (
-        <p>{l10n.getString("high-risk-breach-social-security-description")}</p>
-      );
-      recommendationSteps = SocialSecurityNumberRecommendationSteps;
-      breachIllustration = SocialSecurityNumberIllustration;
-      break;
-    case "bankAccount":
-      title = l10n.getString("high-risk-breach-bank-account-title");
-      secondaryDescription = (
-        <p>{l10n.getString("high-risk-breach-bank-account-description")}</p>
-      );
-      recommendationSteps = BankAccountRecommendationSteps;
-      breachIllustration = BankAccountIllustration;
-      break;
-    case "pin":
-      title = l10n.getString("high-risk-breach-pin-title");
-      secondaryDescription = (
-        <p>{l10n.getString("high-risk-breach-pin-description")}</p>
-      );
-      recommendationSteps = pinRecommendationSteps;
-      breachIllustration = pinIllustration;
-      break;
-    default:
-      title = l10n.getString("high-risk-breach-none-title");
-      secondaryDescription = (
-        <>
-          <p>
-            {l10n.getString("high-risk-breach-none-description", {
-              // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
-              email_list: emailsFormatter.format(emailsMonitored),
-            })}
-          </p>
-          <p>
-            {l10n.getString("high-risk-breach-none-sub-description-part-one")}
-          </p>
-          <ul>
-            <li>
-              {l10n.getString("high-risk-breach-none-sub-description-ssn")}
-            </li>
-            <li>
-              {l10n.getString(
-                "high-risk-breach-none-sub-description-bank-account"
-              )}
-            </li>
-            <li>
-              {l10n.getString(
-                "high-risk-breach-none-sub-description-cc-number"
-              )}
-            </li>
-            <li>
-              {l10n.getString("high-risk-breach-none-sub-description-pin")}
-            </li>
-          </ul>
-        </>
-      );
-      breachIllustration = NoBreachesIllustration;
-      break;
-  }
-
   const primaryCta =
     props.typeOfBreach !== "none"
       ? {
@@ -213,39 +82,14 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           /* c8 ignore stop */
         };
 
-  let illustrationAlt;
-  switch (props.typeOfBreach) {
-    case "bankAccount":
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-bank-account-illustration-alt"
-      );
-      break;
-    case "creditCard":
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-credit-card-illustration-alt"
-      );
-      break;
-    case "pin":
-      illustrationAlt = l10n.getString("high-risk-breach-pin-illustration-alt");
-      break;
-    case "ssnBreaches":
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-social-security-illustration-alt"
-      );
-      break;
-    default:
-      illustrationAlt = l10n.getString(
-        "high-risk-breach-none-illustration-alt"
-      );
-  }
-
+  const highRiskBreachContent = HighRiskBreachContent(props.typeOfBreach);
   return (
     <ResolutionContentLayout
       type="highRisk"
-      title={title}
+      title={highRiskBreachContent.title}
       illustration={{
-        alt: illustrationAlt,
-        img: breachIllustration,
+        alt: highRiskBreachContent.illustrationAlt,
+        img: highRiskBreachContent.breachIllustration,
       }}
       cta={primaryCta}
       estimatedTime={props.typeOfBreach !== "none" ? 15 : undefined}
@@ -258,11 +102,11 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
             })}
           </p>
           {breachList}
-          {secondaryDescription}
+          {highRiskBreachContent.secondaryDescription}
           <div className={styles.recommendations}>
             <h4>{l10n.getString("high-risk-breach-heading")}</h4>
             <p>{l10n.getString("high-risk-breach-subheading")}</p>
-            {recommendationSteps}
+            {highRiskBreachContent.recommendationSteps}
           </div>
         </>
       )}
