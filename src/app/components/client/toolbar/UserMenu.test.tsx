@@ -38,20 +38,6 @@ it("opens and closes the user menu", async () => {
   expect(screen.queryByText("example@example.com")).not.toBeInTheDocument();
 });
 
-it("opens and closes the user menu", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(UserMenuDefault, Meta);
-  const { container } = render(<ComposedDashboard />);
-  expect(screen.queryByText("example@example.com")).not.toBeInTheDocument();
-
-  const menuTrigger = screen.getByRole("button");
-  await user.click(menuTrigger);
-  expect(screen.queryByText("example@example.com")).toBeInTheDocument();
-
-  await user.click(container);
-  expect(screen.queryByText("example@example.com")).not.toBeInTheDocument();
-});
-
 it("checks if the user menu items are interactive", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
