@@ -49,7 +49,7 @@ it("returns flag state if exists", async () => {
       };
     } else {
       console.debug("flag name:", name);
-      fail("Unknown flag passed to mock");
+      throw new Error("Unknown flag passed to mock");
     }
   });
 
