@@ -6,11 +6,14 @@
 
 import Image from "next/image";
 import { Session } from "next-auth";
-import styles from "./PremiumBadge.module.scss";
-import ShieldIcon from "./assets/shield-icon.svg";
+import { useOverlayTrigger } from "react-aria";
+import { useOverlayTriggerState } from "react-stately";
+import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
+import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { hasPremium } from "../../functions/universal/user";
-import { Button } from "../server/Button";
+import ShieldIcon from "./assets/shield-icon.svg";
+import styles from "./PremiumBadge.module.scss";
 
 export type Props = {
   user: Session["user"] | null;
@@ -19,11 +22,11 @@ export type Props = {
 export default function PremiumBadge({ user }: Props) {
   const l10n = useL10n();
 
-  /* c8 ignore start */
-  const onUpgrade = () => {
-    // TODO: MNTOR-1292: Show premium upsell modal
-  };
-  /* c8 ignore end */
+  const dialogState = useOverlayTriggerState({ defaultOpen: false });
+  const { triggerProps, overlayProps } = useOverlayTrigger(
+    { type: "dialog" },
+    dialogState
+  );
 
   return user && hasPremium(user) ? (
     <div className={styles.badge}>
@@ -31,8 +34,11 @@ export default function PremiumBadge({ user }: Props) {
       {l10n.getString("premium-badge-label")}
     </div>
   ) : (
-    <Button variant="primary" small onClick={onUpgrade}>
-      {l10n.getString("premium-cta-label")}
-    </Button>
+    <>
+      <Button {...triggerProps} variant="primary" small>
+        {l10n.getString("premium-cta-label")}
+      </Button>
+      <PremiumUpsellDialog {...overlayProps} state={dialogState} />
+    </>
   );
 }
