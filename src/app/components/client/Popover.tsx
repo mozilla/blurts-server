@@ -30,7 +30,7 @@ function Popover({ children, offset, state, ...props }: PopoverProps) {
       <div
         {...popoverProps}
         ref={props.popoverRef as React.RefObject<HTMLDivElement>}
-        className={`${styles.popover} ${state.isOpen ? styles.isOpen : ""}`}
+        className={`${styles.popover} ${state.isOpen ? styles.isVisible : ""}`}
         style={{
           ...popoverProps.style,
         }}

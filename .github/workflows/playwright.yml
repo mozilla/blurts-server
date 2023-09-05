@@ -73,6 +73,7 @@ jobs:
 
       - name: Run Playwright tests
         run: npm run e2e:smoke
+        timeout-minutes: 10
         env:
           E2E_TEST_ENV: ${{ inputs.environment != null && inputs.environment || 'local' }}
           E2E_TEST_BASE_URL: ${{ secrets.E2E_TEST_BASE_URL }}

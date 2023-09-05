@@ -60,7 +60,7 @@ const MainLayout = async (props: Props) => {
             </button>
             <UserMenu
               session={session}
-              fxaSettingsUrl={AppConstants.FXA_SETTINGS_URL}
+              fxaSettingsUrl={AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}
             />
           </div>
         </div>
