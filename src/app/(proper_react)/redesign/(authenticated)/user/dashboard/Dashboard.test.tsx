@@ -98,7 +98,8 @@ it("shows the premium upgrade cta if there is no user session", () => {
   expect(premiumCtas.length).toBe(2);
 });
 
-it("shows returned free user who has resolved all tasks premium upsell and all fixed description", () => {
+it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
+  const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUserAllResolved, Meta);
   render(<ComposedDashboard />);
 
@@ -113,4 +114,8 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
     name: "Get Continuous Protection",
   });
   expect(bannerPremiumCta.length).toBe(1);
+
+  // click on cta
+  await user.click(bannerPremiumCta[0]);
+  expect(bannerPremiumCta[0]).not.toBeInTheDocument();
 });
