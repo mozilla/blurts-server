@@ -294,6 +294,7 @@ export const DashboardFreeUserAllResolved: Story = {
         user={{ email: "example@example.com" }}
         userBreaches={[]}
         userScannedResults={scannedResolvedResultsArraySample}
+        isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
         featureFlagsEnabled={{

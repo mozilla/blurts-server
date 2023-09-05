@@ -206,6 +206,7 @@ it("shows the premium upgrade cta if there is no user session", () => {
 });
 
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
+  enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUserAllResolved, Meta);
   render(<ComposedDashboard />);
