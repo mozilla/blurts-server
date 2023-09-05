@@ -22,14 +22,11 @@ export const useGlean = () => {
       maxEvents: 1,
     });
 
-    // Log pings to the console and send pings to the debug ping viewer
-    // when running locally.
+    // Glean debugging options can be found here:
+    // https://mozilla.github.io/glean/book/reference/debug/index.html
     if (process.env.NEXT_PUBLIC_APP_ENV === "local") {
       // Enable logging pings to the browser console.
       Glean.setLogPings(true);
-
-      // Set the tag and sends pings to the debug ping viewer.
-      Glean.setDebugViewTag("monitor-testing");
     }
   }, []);
 
