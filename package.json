@@ -9,7 +9,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev --port=6060",
-    "build": "npm run get-location-data && next build",
+    "build": "npm run get-location-data && npm run build-glean && next build",
     "start": "next start",
     "lint": "stylelint '**/*.scss' && prettier --check './src' && next lint --max-warnings=0",
     "fix": "prettier --write './src' && next lint --fix && stylelint --fix '**/*.scss'",
