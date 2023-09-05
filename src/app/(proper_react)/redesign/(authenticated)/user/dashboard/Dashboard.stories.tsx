@@ -170,11 +170,7 @@ export const DashboardWithScan: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
-<<<<<<< HEAD
         user={mockSession.user}
-=======
-        user={{ email: "example@example.com" }}
->>>>>>> f15953466 (rebase error)
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
         isEligibleForFreeScan={false}
@@ -254,11 +250,7 @@ export const DashboardEmptyListState: Story = {
   render: () => (
     <Shell l10n={getEnL10nSync()} session={mockSession}>
       <DashboardEl
-<<<<<<< HEAD
         user={mockSession.user}
-=======
-        user={{ email: "example@example.com" }}
->>>>>>> f15953466 (rebase error)
         userBreaches={breachItemArraySample}
         userScannedResults={[]}
         isEligibleForFreeScan={true}

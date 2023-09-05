@@ -6,10 +6,8 @@ import { HighRiskBreachLayout } from "../HighRiskBreachLayout";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
-import {
-  getSubscriberBreaches,
-  guidedExperienceBreaches,
-} from "../../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { getGuidedExperienceBreaches } from "../../../../../../../../functions/universal/guidedExperienceBreaches";
 import { getLocale } from "../../../../../../../../functions/server/l10n";
 
 export default async function BankAccountDataBreach() {
@@ -19,7 +17,7 @@ export default async function BankAccountDataBreach() {
     return redirect("/");
   }
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperience = guidedExperienceBreaches(breaches);
+  const guidedExperience = getGuidedExperienceBreaches(breaches);
 
   return (
     <HighRiskBreachLayout

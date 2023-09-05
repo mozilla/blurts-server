@@ -5,8 +5,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { createRandomBreach } from "../../../../../../../../apiMocks/mockData";
-import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
-import { BreachDataTypes } from "../../../../../../../functions/universal/breach";
+import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { HighRiskBreachLayout } from "./HighRiskBreachLayout";
 
 const meta: Meta<typeof HighRiskBreachLayout> = {
@@ -22,79 +21,37 @@ const scannedResultsArraySample: SubscriberBreach[] = Array.from(
   () => createRandomBreach({ isHighRiskOnly: true })
 );
 
-//TODO: Be able to import this from getUserBreaches
-// TODO: Write unit tests - MNTOR-2075
-/* c8 ignore start */
-function guidedExperienceBreaches(
-  subscriberBreaches: SubscriberBreach[]
-): GuidedExperienceBreaches {
-  const guidedExperienceBreaches: GuidedExperienceBreaches = {
-    highRisk: {
-      ssnBreaches: [],
-      creditCardBreaches: [],
-      pinBreaches: [],
-      bankBreaches: [],
-    },
-    passwordBreaches: [],
-  };
-  subscriberBreaches.forEach((b) => {
-    // high risks
-    if (b.dataClasses.includes(BreachDataTypes.SSN)) {
-      guidedExperienceBreaches.highRisk.ssnBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.CreditCard)) {
-      guidedExperienceBreaches.highRisk.creditCardBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.PIN)) {
-      guidedExperienceBreaches.highRisk.pinBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.BankAccount)) {
-      guidedExperienceBreaches.highRisk.bankBreaches.push(b);
-    }
-
-    // other
-    if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
-      guidedExperienceBreaches.passwordBreaches.push(b);
-    }
-  });
-  return guidedExperienceBreaches;
-}
-/* c8 ignore stop */
-
 export const CreditCard: Story = {
   args: {
     typeOfBreach: "creditCard",
-    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
   },
 };
 
 export const BankAccount: Story = {
   args: {
     typeOfBreach: "bankAccount",
-    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
   },
 };
 
 export const SSN: Story = {
   args: {
     typeOfBreach: "ssnBreaches",
-    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
   },
 };
 
 export const PIN: Story = {
   args: {
     typeOfBreach: "pin",
-    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
   },
 };
 
 export const None: Story = {
   args: {
     typeOfBreach: "none",
-    breachData: guidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
   },
 };

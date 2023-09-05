@@ -3,10 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { getServerSession } from "next-auth";
-import {
-  getSubscriberBreaches,
-  guidedExperienceBreaches,
-} from "../../../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../../../functions/server/getUserBreaches";
+import { getGuidedExperienceBreaches } from "../../../../../../../functions/universal/guidedExperienceBreaches";
 import { authOptions } from "../../../../../../../api/utils/auth";
 import { redirect } from "next/navigation";
 import { View } from "./View";
@@ -17,7 +15,7 @@ export default async function HighRiskDataBreaches() {
     return redirect("/");
   }
   const breaches = await getSubscriberBreaches(session.user);
-  const guidedExperience = guidedExperienceBreaches(breaches);
+  const guidedExperience = getGuidedExperienceBreaches(breaches);
 
   return <View breaches={guidedExperience} />;
 }

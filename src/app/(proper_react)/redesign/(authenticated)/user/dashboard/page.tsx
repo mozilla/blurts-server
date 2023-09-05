@@ -10,6 +10,10 @@ import { authOptions } from "../../../../../api/utils/auth";
 import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
 import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
+<<<<<<< HEAD
+=======
+import { getGuidedExperienceBreaches } from "../../../../../functions/universal/guidedExperienceBreaches";
+>>>>>>> 05b7418bb (move getGuidedExperienceBreaches into universal folder)
 import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
@@ -39,6 +43,11 @@ export default async function DashboardPage() {
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = dashboardSummary(scanResultItems, subBreaches);
+<<<<<<< HEAD
+=======
+  const guidedBreaches = getGuidedExperienceBreaches(subBreaches);
+  console.log(JSON.stringify(guidedBreaches));
+>>>>>>> 05b7418bb (move getGuidedExperienceBreaches into universal folder)
   const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(
