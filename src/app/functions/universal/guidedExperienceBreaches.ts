@@ -38,7 +38,8 @@ export function getGuidedExperienceBreaches(
       guidedExperienceBreaches.highRisk.bankBreaches.push(b);
     }
 
-    // other
+    // TODO: Add tests when passwords component has been made - MNTOR-1712
+    /* c8 ignore next 3 */
     if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
       guidedExperienceBreaches.passwordBreaches.push(b);
     }
