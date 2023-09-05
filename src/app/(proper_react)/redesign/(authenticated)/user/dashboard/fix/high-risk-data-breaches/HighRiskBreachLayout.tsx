@@ -52,7 +52,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       {l10n.getFragment("high-risk-breach-name-and-date", {
         elems: { breach_date: <span className={styles.date} /> },
         vars: {
-          breach_name: item.name,
+          breach_name: item.title,
           breach_date: dateFormatter.format(new Date(item.addedDate)),
         },
       })}
