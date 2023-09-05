@@ -26,8 +26,7 @@ it("shows and hides the explainer dialog", async () => {
   render(<ComposedProgressCard />);
 
   const progressCardHeader = screen.getByText("Here is what we fixed");
-  const explainerTrigger =
-    within(progressCardHeader).getByLabelText("Open modal");
+  const explainerTrigger = within(progressCardHeader).getByLabelText("Open");
   await user.click(explainerTrigger);
 
   const explainerDialog = screen.getByRole("dialog");
