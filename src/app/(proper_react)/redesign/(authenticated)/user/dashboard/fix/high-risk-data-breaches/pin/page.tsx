@@ -10,8 +10,10 @@ import {
   getSubscriberBreaches,
   guidedExperienceBreaches,
 } from "../../../../../../../../functions/server/getUserBreaches";
+import { getLocale } from "../../../../../../../../functions/server/l10n";
 
 export default async function pinDataBreach() {
+  const locale = getLocale();
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
@@ -20,6 +22,10 @@ export default async function pinDataBreach() {
   const guidedExperience = guidedExperienceBreaches(breaches);
 
   return (
-    <HighRiskBreachLayout typeOfBreach="pin" breachData={guidedExperience} />
+    <HighRiskBreachLayout
+      typeOfBreach="pin"
+      breachData={guidedExperience}
+      locale={locale}
+    />
   );
 }

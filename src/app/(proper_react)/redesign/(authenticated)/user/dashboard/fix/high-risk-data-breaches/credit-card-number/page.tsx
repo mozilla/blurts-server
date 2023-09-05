@@ -10,8 +10,10 @@ import {
   getSubscriberBreaches,
   guidedExperienceBreaches,
 } from "../../../../../../../../functions/server/getUserBreaches";
+import { getLocale } from "../../../../../../../../functions/server/l10n";
 
 export default async function CreditCardDataBreach() {
+  const locale = getLocale();
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
@@ -23,6 +25,7 @@ export default async function CreditCardDataBreach() {
     <HighRiskBreachLayout
       typeOfBreach="creditCard"
       breachData={guidedExperience}
+      locale={locale}
     />
   );
 }

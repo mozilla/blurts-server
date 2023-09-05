@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode } from "react";
 import { FixNavigation } from "../../../../../../components/client/FixNavigation";
 import styles from "./fix.module.scss";
 import ImageArrowLeft from "./images/icon-arrow-left.svg";

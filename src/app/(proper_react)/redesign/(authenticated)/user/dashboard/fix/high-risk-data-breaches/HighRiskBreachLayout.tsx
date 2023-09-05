@@ -18,6 +18,7 @@ import { ResolutionContentLayout } from "../ResolutionContentLayout";
 type HighRiskBreachLayoutProps = {
   typeOfBreach: "creditCard" | "ssnBreaches" | "bankAccount" | "pin" | "none";
   breachData: GuidedExperienceBreaches;
+  locale: string;
 };
 
 export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
@@ -100,7 +101,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
-  // TODO: Make locale location-sensitive in the future
   const emailsFormatter = new Intl.ListFormat("en-US", {
     style: "long",
     type: "conjunction",
