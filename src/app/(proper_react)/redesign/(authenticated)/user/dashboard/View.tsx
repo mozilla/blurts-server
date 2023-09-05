@@ -29,7 +29,6 @@ import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlag
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
 import { hasPremium } from "../../../../../functions/universal/user";
-export const ONEREP_DATA_BROKER_COUNT = 190;
 
 export type Props = {
   bannerData: DashboardSummary;
