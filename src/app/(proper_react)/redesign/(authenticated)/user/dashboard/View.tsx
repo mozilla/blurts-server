@@ -41,6 +41,7 @@ export type Props = {
   user: Session["user"];
   userBreaches: SubscriberBreach[];
   userScannedResults: ScanResult[];
+  isEligibleForFreeScan: boolean;
   countryCode?: string;
 };
 
@@ -111,6 +112,8 @@ export const View = (props: Props) => {
       }
     }
 
+    // TODO: Add unit test when changing this code:
+    /* c8 ignore next */
     return exposure.isResolved ? "fixed" : "needAction";
   };
 
@@ -221,7 +224,10 @@ export const View = (props: Props) => {
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
-          data_broker_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_total_num: parseInt(
+            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+            10
+          ),
         },
         elems: {
           free_scan_link: <a href="/redesign/user/welcome" />,
@@ -247,6 +253,7 @@ export const View = (props: Props) => {
           content={contentType}
           type={selectedTab as TabType}
           hasRunScan={!isScanResultItemsEmpty}
+          isEligibleForFreeScan={props.isEligibleForFreeScan}
           // TODO: Add unit test when changing this code:
           /* c8 ignore next 3 */
           ctaCallback={() => {

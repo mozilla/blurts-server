@@ -166,7 +166,7 @@ sensitive-sites-copy =
     dostop do vašega e-poštnega računa).
 delayed-reporting-headline = Zakaj je trajalo toliko časa, da je bila kraja podatkov prijavljena?
 delayed-reporting-copy =
-    Včasih traja mesece ali leta, da pride do izpostavitve poverilnic 
+    Včasih traja mesece ali leta, da pride do izpostavitve prijavnih podatkov 
     v primeru kraje podatkov. Kraje podatkov se dodajo v našo bazo 
     takoj ko so odkrite in preverjene.
 about-fxm-headline = O { -product-name }ju
@@ -340,16 +340,16 @@ no-other-breaches-found = V osnovnem iskanju ni bilo drugih kraj podatkov
 no-results-blurb = Te kraje ni v naši bazi podatkov.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-note = <span>Vaš e-poštni naslov ni prikazan v tem razkritju, vendar je vaša telefonska številka morda še vedno ranljiva.</span> Nekateri računi, ki so bili ogroženi v razkritju podatkov na Facebooku, so vključevali telefonske številke in druge osebne podatke, ne pa tudi e-poštnih naslovov. Če ste se kdaj prijavili za Facebook račun – tudi če ga še ne uporabljate – vam priporočamo, da se zaščitite s temi koraki
+facebook-breach-note = <span>Vaš e-poštni naslov ni prikazan v tem razkritju, vendar je vaša telefonska številka morda še vedno ranljiva.</span> Nekateri računi, ki so bili ogroženi v razkritju podatkov na Facebooku, so vključevali telefonske številke in druge osebne podatke, ne pa tudi e-poštnih naslovov. Če ste kdaj ustvarili račun za Facebook – tudi če ga trenutno ne uporabljate – vam priporočamo, da se zaščitite z naslednjimi koraki
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
 facebook-breach-what-to-do-1-headline = <span>V <a>svojem profilu na Facebooku</a> nastavite svoje podatke na "Samo jaz" ali drugo nejavno nastavitev.</span>
 facebook-breach-what-to-do-1-copy = Med tem razkritjem so se hekerji dokopali do podatkov profila, ki je bil nastavljen kot "odprt za javnost" ali "deljen s prijatelji". Te podatke je mogoče združiti z drugimi podatki za dostop do še več vaših osebnih podatkov in računov.
 # This string contains nested markup that is later used to style and link the text inside of it.
 # Please do not modify or remove "<a>", "</a>", "<span>" and "</span>".
-facebook-breach-what-to-do-2-headline = <span>Spremenite geslo, PIN ali druge varnostne podatke za svoje <a>račune pri operaterju</a>, da preprečite zamenjavo SIM</span>.
+facebook-breach-what-to-do-2-headline = <span>Spremenite geslo, PIN ali druge prijavne podatke za svoje <a>račune pri mobilnem operaterju</a>, da preprečite zamenjavo SIM</span>.
 facebook-breach-what-to-do-2-copy = Pri zamenjavi SIM, imenovani tudi SIM-jacking, heker s telefonskimi številkami, datumom rojstva in drugimi podatki prevzame mobilno številko osebe in nato vdre v njeno e-pošto, družbena omrežja in celo finančne račune.
-facebook-breach-what-to-do-3 = Oglejte si vsa priporočila na naši Facebook strani
+facebook-breach-what-to-do-3 = Oglejte si vsa priporočila na naši strani o razkritju podatkov na Facebooku
 # "Appears in-page as: Showing: All Breaches"
 currently-showing = Prikazano:
 
@@ -705,7 +705,7 @@ ad-unit-2-do-you-worry = Vas skrbi varnost na javnih omrežjih Wi-Fi?
 ad-unit-3-stay-in-the-game = Ostanite v igri!
 ad-unit-3-lets-you-keep = { -brand-mozilla-vpn } vam ponuja varno in stabilno povezavo med igranjem iger ali pretakanjem filmov.
 # ad 3 list item 1
-ad-unit-3-prevent-throttling = Prepreči dušenje
+ad-unit-3-prevent-throttling = Prepreči omejevanje
 # ad 3 list item 2
 ad-unit-3-be-anywhere = Bodite kjerkoli na svetu
 # ad 3 list item 3
@@ -713,7 +713,7 @@ ad-unit-3-access-more = Več dostopa
 # ad 4 heading
 ad-unit-4-shopping-with = Nakupovanje z e-poštnimi maskami
 ad-unit-4-want-to-buy = Želite nekaj kupiti na spletu, vendar ne poznate ali popolnoma zaupate trgovini?
-ad-unit-4-shop-online = Pri spletnem nakupovanju uporabite masko za e-pošto. Prejmite potrditveno sporočilo na pravi e-poštni naslov in masko izklopite kadarkoli pozneje.
+ad-unit-4-shop-online = Pri spletnem nakupovanju uporabite e-poštno masko. Prejmite potrditveno sporočilo na pravi e-poštni naslov in izključite masko kadarkoli pozneje.
 # ad 5 heading
 ad-unit-5-on-the-go = Na poti s { -brand-relay }
 ad-unit-5-instantly-make = V trenutku si ustvarite e-poštno masko po meri, kjerkoli ste in kamorkoli greste!
@@ -721,15 +721,15 @@ ad-unit-5-instantly-make = V trenutku si ustvarite e-poštno masko po meri, kjer
 ad-unit-5-connect-on-the-go = Povežite se na poti
 ad-unit-5-privately-sign-in = Uporabite e-poštno masko, ko se želite zasebno prijaviti v svoji priljubljeni kavarni ali v javno omrežje Wi-Fi
 # ad 5 subheading 2
-ad-unit-5-email-receipts = Prejmi e-poštna potrdila o prejemu
+ad-unit-5-email-receipts = Prejmi potrdila o prejemu e-pošte
 ad-unit-5-share-custom-email = Delite e-poštno masko po meri za račune za nakupovanje v trgovini, ne da bi delili svoj pravi e-poštni naslov
 # ad 5 subheading 3
 ad-unit-5-use-on-phone = Uporabite v telefonu
 ad-unit-5-no-matter-where = Ne glede na to, kje ste, si v nekaj sekundah ustvarite e-poštno masko po meri za kar koli želite
 # ad 6 heading
 ad-unit-6-worry-free = Brezskrbna registracija
-ad-unit-6-want-to-start = Želite skleniti novo naročnino, se odzvati na povabilo ali prejeti ugodno promocijsko kodo, ne da bi vaš e-poštni predal preplavili vsiljeno pošto?
-ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e-poštno masko namesto prave, da zaščitite svoje podatke in obdržite nadzor nad mapo »Prejeto«
+ad-unit-6-want-to-start = Želite skleniti novo naročnino, se odzvati na povabilo ali prejeti ugodno promocijsko kodo, ne da bi vaš e-poštni predal preplavila vsiljena pošta?
+ad-unit-6-before-you-complete = Preden dokončate naslednjo prijavo, uporabite e-poštno masko namesto pravega e-poštnega naslova, da zaščitite svoje podatke in obdržite nadzor nad mapo Prejeto
 
 # Monitor V2
 
@@ -838,7 +838,7 @@ exposed-data = Izpostavljeni podatki:
 ## Public breach detail page
 
 find-out-if-2 = Ugotovite, ali ste bili vpleteni v to krajo
-find-out-if-description = Pomagali vam bomo hitro ugotoviti, ali je bil vaš e-poštni naslov izpostavljen v tej kraji, in razumeli, kaj morate storiti naprej.
+find-out-if-description = Pomagali vam bomo hitro ugotoviti, ali je bil vaš e-poštni naslov izpostavljen v tej kraji, in razumeti, kaj morate storiti.
 breach-detail-cta-signup = Preverite kraje podatkov
 
 ## Floating banner

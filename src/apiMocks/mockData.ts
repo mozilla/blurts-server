@@ -107,3 +107,17 @@ export function createRandomBreach(
     dataClassesEffected: options.dataClassesEffected ?? [],
   };
 }
+
+export function createUserWithPremiumSubscription() {
+  return {
+    email: "example@example.com",
+    fxa: {
+      locale: "us",
+      twoFactorAuthentication: false,
+      metricsEnabled: false,
+      avatar: "",
+      avatarDefault: true,
+      subscriptions: ["monitor"],
+    },
+  };
+}

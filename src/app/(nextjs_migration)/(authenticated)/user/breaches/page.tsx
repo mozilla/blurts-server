@@ -116,7 +116,7 @@ export default async function UserBreaches() {
       <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
 
       <main data-partial="breaches">
-        {process.env.PREMIUM_ENABLED === "true" &&
+        {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" &&
         !(await isUserSubscribed()) ? (
           <section>
             <a

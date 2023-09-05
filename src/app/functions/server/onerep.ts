@@ -77,7 +77,6 @@ export type ListScanResultsResponse = {
   meta: OneRepMeta;
   data: ScanResult[];
 };
-export const ONEREP_DATA_BROKER_COUNT = 190;
 
 async function onerepFetch(
   path: string,

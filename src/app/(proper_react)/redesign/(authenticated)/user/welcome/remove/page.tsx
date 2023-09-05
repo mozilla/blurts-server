@@ -24,7 +24,10 @@ export default async function UserWelcomeRemove() {
     throw new Error("No session");
   }
 
-  if (process.env.PREMIUM_ENABLED !== "true" || !(await isUserSubscribed())) {
+  if (
+    process.env.NEXT_PUBLIC_PREMIUM_ENABLED !== "true" ||
+    !(await isUserSubscribed())
+  ) {
     return (
       <Script id="redirect">window.location = &quot;results&quot;;</Script>
     );

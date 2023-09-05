@@ -11,6 +11,7 @@ export interface Props extends ComponentProps<"button"> {
   children: ReactNode;
   variant: "primary" | "secondary";
   buttonType?: "button" | "link";
+  className?: string;
   destructive?: boolean;
   disabled?: boolean;
   href?: string;
@@ -22,14 +23,15 @@ export const Button = (
   props: Props & Parameters<typeof useButton>[0] // AriaButtonOptions
 ) => {
   const {
-    buttonType,
     children,
+    variant,
+    buttonType,
+    className,
     destructive,
     disabled,
     href,
     isLoading,
     small,
-    variant,
     ...otherProps
   } = props;
 
@@ -49,6 +51,7 @@ export const Button = (
     // Ignored for test coverage; not used in tested pages yet:
     /* c8 ignore next */
     disabled && styles.disabled,
+    className,
   ]
     .filter(Boolean)
     .join(" ");
