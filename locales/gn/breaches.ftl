@@ -118,7 +118,7 @@ breach-checklist-pin-body = Aníke ne PIN pyahu, térã oimeraẽva ambue PIN, n
 # Variables:
 #   $mozillaVpnLink (string) - a link to the Mozilla VPN website, with { -breach-checklist-link-mozilla-vpn } as the label
 breach-checklist-ip-header-2 = Eipuru ñanduti tekoñemíme VPN ndive, { $mozillaVpnLink } ojapoháicha.
-breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’epuru me’ẽhára. VPN omokañykuaa nde IP kundaharape eipurukuaa hag̃ua Ñanduti teko ñemíme.
+breach-checklist-ip-body = Nde IP kundaharape (Ñanduti rapereko kundaharape) ohechauka ne rendaite ha Ñanduti mba’epuru me’ẽhára. VPN omokañykuaa nde IP kundaharape eiporukuaa hag̃ua Ñanduti teko ñemíme.
 
 ## Prompts the user for changes when there is a breach detected of physical address
 
