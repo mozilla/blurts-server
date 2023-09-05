@@ -7,30 +7,30 @@ import * as Sentry from "@sentry/node";
 import "@sentry/tracing";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 
-import AppConstants from "../appConstants.js";
+import AppConstants from "../src/appConstants.js";
 
-import { getSubscribersByHashes } from "../db/tables/subscribers.js";
-import { getEmailAddressesByHashes } from "../db/tables/emailAddresses.js";
-import { getTemplate } from "../views/emails/email2022.js";
-import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
+import { getSubscribersByHashes } from "../src/db/tables/subscribers.js";
+import { getEmailAddressesByHashes } from "../src/db/tables/emailAddresses.js";
+import { getTemplate } from "../src/views/emails/email2022.js";
+import { breachAlertEmailPartial } from "../src/views/emails/emailBreachAlert.js";
 
-import { bearerToken } from "../middleware/util.js";
-import { errorHandler } from "../middleware/error.js";
+import { bearerToken } from "../src/middleware/util.js";
+import { errorHandler } from "../src/middleware/error.js";
 
 import {
   initEmail,
   EmailTemplateType,
   getEmailCtaHref,
   sendEmail,
-} from "../utils/email.js";
+} from "../src/utils/email.js";
 
-import { initFluentBundles, getMessage } from "../utils/fluent.js";
+import { initFluentBundles, getMessage } from "../src/utils/fluent.js";
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   loadBreachesIntoApp,
-} from "../utils/hibp.js";
-import { BadRequestError, TooManyRequestsError } from "../utils/error.js";
+} from "../src/utils/hibp.js";
+import { BadRequestError, TooManyRequestsError } from "../src/utils/error.js";
 
 const app = express();
 

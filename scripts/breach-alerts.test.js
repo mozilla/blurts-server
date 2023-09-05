@@ -6,7 +6,7 @@ import { test, expect, jest } from "@jest/globals";
 
 import { createResponse, createRequest } from "node-mocks-http";
 
-import AppConstants from "../appConstants.js";
+import AppConstants from "../src/appConstants.js";
 
 jest.mock("@sentry/node", () => {
   return {
@@ -15,8 +15,8 @@ jest.mock("@sentry/node", () => {
     },
   };
 });
-jest.mock("../utils/hibp.js");
-jest.mock("../utils/email.js");
+jest.mock("../src/utils/hibp.js");
+jest.mock("../src/utils/email.js");
 
 test("accepts valid payload", async () => {
   const req = createRequest({
@@ -39,11 +39,11 @@ test("accepts valid payload", async () => {
     IsSpamList: false,
   };
 
-  const mockedUtilsHibp = jest.requireMock("../utils/hibp.js");
+  const mockedUtilsHibp = jest.requireMock("../src/utils/hibp.js");
   mockedUtilsHibp.getBreachByName.mockReturnValue(breachAlert);
 
   // Call code-under-test
-  const { app } = await import("./index.js");
+  const { app } = await import("./breach-alerts.js");
 
   await app._router(req, resp);
 
@@ -71,7 +71,7 @@ test("rejects invalid bearer token", async () => {
   const resp = createResponse();
 
   // Call code-under-test
-  const { app } = await import("./index.js");
+  const { app } = await import("./breach-alerts.js");
   await app._router(req, resp);
 
   // Check expectations
