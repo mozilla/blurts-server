@@ -17,14 +17,12 @@ import Meta, {
   DashboardNoSession,
 } from "./Dashboard.stories";
 
-const ENV = process.env;
-
 function enablePremium() {
   process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "true";
 }
 
 function disablePremium() {
-  process.env = { ...ENV };
+  process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "false";
 }
 
 beforeEach(() => {
