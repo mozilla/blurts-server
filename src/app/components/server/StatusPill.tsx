@@ -5,18 +5,21 @@
 import React from "react";
 import styles from "./StatusPill.module.scss";
 import { useL10n } from "../../hooks/l10n";
+import { Exposure, isScanResult } from "../client/ExposureCard";
 
 export type StatusPillType = "needAction" | "progress" | "fixed";
 
-export type Props = {
-  type: StatusPillType;
-};
+type DirectTypeProps = { type: StatusPillType };
+type ExposureProps = { exposure: Exposure };
+export type Props = DirectTypeProps | ExposureProps;
 
-// This component just render HTML without business logic:
+// This component just renders HTML without business logic:
 /* c8 ignore start */
 export const StatusPill = (props: Props) => {
-  const { type } = props;
   const l10n = useL10n();
+  const type = hasDirectType(props)
+    ? props.type
+    : getExposureStatus(props.exposure);
 
   let stringContent = "";
   let className = "";
@@ -36,4 +39,23 @@ export const StatusPill = (props: Props) => {
     <div className={`${styles.pill} ${styles[className]}`}>{stringContent}</div>
   );
 };
+
+function hasDirectType(props: Props): props is DirectTypeProps {
+  return typeof (props as DirectTypeProps).type === "string";
+}
 /* c8 ignore stop */
+
+export const getExposureStatus = (exposure: Exposure): StatusPillType => {
+  if (isScanResult(exposure)) {
+    switch (exposure.status) {
+      case "removed":
+        return "fixed";
+      case "waiting_for_verification":
+        return "progress";
+      default:
+        return "needAction";
+    }
+  }
+
+  return exposure.isResolved ? "fixed" : "needAction";
+};
