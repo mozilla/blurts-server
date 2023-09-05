@@ -4,10 +4,10 @@
   display: grid;
   grid-gap: $layout-lg;
   flex-direction: row;
-  padding-inline: $layout-lg;
 
   @media screen and (min-width: $screen-xl) {
     grid-template-columns: 2fr 1fr;
+    padding-inline: $layout-lg;
   }
 
   .breachContentWrapper {
