@@ -188,8 +188,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: (
         <Button
-          // Ignored for test coverage; to be implemented:
-          /* c8 ignore next 3 */
           onClick={() => {
             props?.ctaCallback?.();
           }}

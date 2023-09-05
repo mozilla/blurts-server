@@ -246,8 +246,8 @@ dashboard-top-banner-your-data-is-protected-cta = See what’s fixed
 # $starting_exposure_total_num is the number of exposures the user has resolved.
 dashboard-top-banner-your-data-is-protected-all-fixed-description = 
   { $starting_exposure_total_num ->
-    [one] Great work, you’ve fixed 1 exposure of your data! Upgrade to Premium for continuous protection.
-    *[other] Great work, you’ve fixed all { $starting_exposure_total_num } exposures of your data! Upgrade to Premium for continuous protection.
+    [one] Great work, you’ve fixed 1 exposure of your data! Upgrade to { -brand-premium } for continuous protection.
+    *[other] Great work, you’ve fixed all { $starting_exposure_total_num } exposures of your data! Upgrade to { -brand-premium } for continuous protection.
   }
 dashboard-top-banner-your-data-is-protected-all-fixed-cta = Get Continuous Protection
 
