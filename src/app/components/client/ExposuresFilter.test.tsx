@@ -29,7 +29,7 @@ it("shows and hides the exposure type explainer", async () => {
 
   const exposureTypeHeader = screen.getByText("Exposure type");
   const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
-    name: "Open modal",
+    name: "Open",
   });
   await user.click(explainerTrigger);
 
@@ -49,7 +49,7 @@ it("shows and hides the status explainer", async () => {
 
   const exposureTypeHeader = screen.getByText("Status");
   const explainerTrigger = within(exposureTypeHeader).getByRole("button", {
-    name: "Open modal",
+    name: "Open",
   });
   await user.click(explainerTrigger);
 

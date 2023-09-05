@@ -161,7 +161,7 @@ const userMenu = data => `
     hidden
   >
     <li tabindex='1'>
-      <a href='${AppConstants.FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
+      <a href='${AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL}' target='_blank' class='user-menu-header'>
         <b class='user-menu-email'>${data.fxaProfile?.email}</b>
         <div class='user-menu-subtitle'>
           ${getMessage('menu-item-fxa')}

@@ -19,9 +19,11 @@ export const Toolbar = (props: Props) => {
     <nav className={styles.toolbar}>
       <div className={styles.start}>{props.children}</div>
       <div className={styles.end}>
-        <PremiumBadge user={props.user} />
+        {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" && (
+          <PremiumBadge user={props.user} />
+        )}
         <AppPicker />
-        <UserMenu user={props.user} />
+        {props.user && <UserMenu user={props.user} />}
       </div>
     </nav>
   );

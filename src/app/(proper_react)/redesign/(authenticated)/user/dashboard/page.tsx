@@ -19,6 +19,7 @@ import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
 import { getOnerepProfileId } from "../../../../../../db/tables/subscribers";
 
 import { isFlagEnabled } from "../../../../../functions/server/featureFlags";
+import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.subscriber?.id) {
@@ -45,6 +46,11 @@ export default async function DashboardPage() {
   console.log(JSON.stringify(guidedBreaches));
   const locale = getLocale();
 
+  const userIsEligibleForFreeScan = await isEligibleForFreeScan(
+    session.user,
+    countryCode
+  );
+
   const FreeBrokerScan = await isFlagEnabled("FreeBrokerScan", session.user);
   const PremiumBrokerRemoval = await isFlagEnabled(
     "PremiumBrokerRemoval",
@@ -56,6 +62,7 @@ export default async function DashboardPage() {
     <View
       countryCode={countryCode}
       user={session.user}
+      isEligibleForFreeScan={userIsEligibleForFreeScan}
       userScannedResults={scanResultItems}
       userBreaches={subBreaches}
       locale={locale}

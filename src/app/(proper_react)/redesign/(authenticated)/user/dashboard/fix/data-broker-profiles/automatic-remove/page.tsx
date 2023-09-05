@@ -14,9 +14,10 @@ export default function AutomaticRemove() {
 
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
-  // FIXME: Using this variables causes a hydration error
-  // const dataBrokerCount = parseInt(process.env.ONEREP_DATA_BROKER_COUNT as string,10);
-  const dataBrokerCount = 190;
+  const dataBrokerCount = parseInt(
+    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+    10
+  );
 
   return (
     <div>
