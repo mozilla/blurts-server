@@ -9,7 +9,12 @@ import SocialSecurityNumberIllustration from "../images/high-risk-data-breach-ss
 import NoBreachesIllustration from "../images/high-risk-breaches-none.svg";
 import { useL10n } from "../../../../../../../hooks/l10n";
 
-export const HighRiskBreachContent = (typeOfBreach: string) => {
+type HighRiskBreachContentProps = {
+  typeOfBreach: string;
+  locale: string;
+};
+
+export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   const l10n = useL10n();
   let title,
     secondaryDescription,
@@ -18,7 +23,7 @@ export const HighRiskBreachContent = (typeOfBreach: string) => {
     illustrationAlt;
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
-  const emailsFormatter = new Intl.ListFormat("en-US", {
+  const emailsFormatter = new Intl.ListFormat(props.locale, {
     style: "long",
     type: "conjunction",
   });
@@ -71,7 +76,7 @@ export const HighRiskBreachContent = (typeOfBreach: string) => {
     </ol>
   );
 
-  switch (typeOfBreach) {
+  switch (props.typeOfBreach) {
     case "creditCard":
       title = l10n.getString("high-risk-breach-credit-card-title");
       secondaryDescription = (

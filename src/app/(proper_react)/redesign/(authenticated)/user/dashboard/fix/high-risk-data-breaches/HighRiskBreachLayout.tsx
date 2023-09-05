@@ -82,7 +82,10 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           /* c8 ignore stop */
         };
 
-  const highRiskBreachContent = HighRiskBreachContent(props.typeOfBreach);
+  const highRiskBreachContent = HighRiskBreachContent({
+    locale: props.locale,
+    typeOfBreach: props.typeOfBreach,
+  });
   return (
     <ResolutionContentLayout
       type="highRisk"
