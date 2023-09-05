@@ -164,7 +164,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           <p>
             {l10n.getString("high-risk-breach-none-description", {
               // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
-              num_email: 2, // mocked
               email_list: emailsFormatter.format(emailsMonitored),
             })}
           </p>
