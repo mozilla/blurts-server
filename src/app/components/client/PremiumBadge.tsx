@@ -35,12 +35,7 @@ export default function PremiumBadge({ user }: Props) {
     </div>
   ) : (
     <>
-      <Button
-        {...triggerProps}
-        variant="primary"
-        small
-        onPress={() => dialogState.open()}
-      >
+      <Button {...triggerProps} variant="primary" small>
         {l10n.getString("premium-cta-label")}
       </Button>
       <PremiumUpsellModal {...overlayProps} state={dialogState} />
