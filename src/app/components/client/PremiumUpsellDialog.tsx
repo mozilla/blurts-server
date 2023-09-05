@@ -12,10 +12,10 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { TabList } from "./TabList";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import ModalImage from "../client/assets/premium-upsell-modal-icon.svg";
-import styles from "./PremiumUpsellModal.module.scss";
+import ModalImage from "../client/assets/premium-upsell-dialog-icon.svg";
+import styles from "./PremiumUpsellDialog.module.scss";
 
-export interface PremiumUpsellModalProps {
+export interface PremiumUpsellDialogProps {
   state: OverlayTriggerState;
 }
 
@@ -58,7 +58,7 @@ function PremiumPricingLabel({ isMonthly }: { isMonthly?: boolean }) {
   );
 }
 
-function PremiumUpsellModalContent() {
+function PremiumUpsellDialogContent() {
   const l10n = useL10n();
   const [selectedTab, setSelectedTab] = useState<Key>("yearly");
 
@@ -146,10 +146,10 @@ function PremiumUpsellModalContent() {
   );
 }
 
-function PremiumUpsellModal({
+function PremiumUpsellDialog({
   state,
   ...otherProps
-}: PremiumUpsellModalProps & OverlayTriggerProps) {
+}: PremiumUpsellDialogProps & OverlayTriggerProps) {
   const l10n = useL10n();
 
   return (
@@ -157,12 +157,12 @@ function PremiumUpsellModal({
       {state.isOpen && (
         <ModalOverlay state={state} {...otherProps} isDismissable={true}>
           <Dialog
-            title={l10n.getString("premium-upsell-modal-title")}
+            title={l10n.getString("premium-upsell-dialog-title")}
             illustration={<Image src={ModalImage} alt="" />}
             onDismiss={() => void state.close()}
             variant="horizontal"
           >
-            <PremiumUpsellModalContent />
+            <PremiumUpsellDialogContent />
           </Dialog>
         </ModalOverlay>
       )}
@@ -170,4 +170,4 @@ function PremiumUpsellModal({
   );
 }
 
-export { PremiumUpsellModal };
+export { PremiumUpsellDialog };

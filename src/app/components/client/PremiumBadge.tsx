@@ -8,7 +8,7 @@ import Image from "next/image";
 import { Session } from "next-auth";
 import { useOverlayTrigger } from "react-aria";
 import { useOverlayTriggerState } from "react-stately";
-import { PremiumUpsellModal } from "./PremiumUpsellModal";
+import { PremiumUpsellDialog } from "./PremiumUpsellDialog";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
 import { hasPremium } from "../../functions/universal/user";
@@ -38,7 +38,7 @@ export default function PremiumBadge({ user }: Props) {
       <Button {...triggerProps} variant="primary" small>
         {l10n.getString("premium-cta-label")}
       </Button>
-      <PremiumUpsellModal {...overlayProps} state={dialogState} />
+      <PremiumUpsellDialog {...overlayProps} state={dialogState} />
     </>
   );
 }

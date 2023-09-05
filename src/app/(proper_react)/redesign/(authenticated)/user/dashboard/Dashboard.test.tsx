@@ -113,7 +113,7 @@ it("shows the premium upgrade cta if the user is not a premium subscriber", () =
   expect(premiumCtas.length).toBe(2);
 });
 
-it("opens and closes the premium upsell modal", async () => {
+it("opens and closes the premium upsell dialog", async () => {
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
@@ -148,7 +148,7 @@ it("opens and closes the premium upsell modal", async () => {
   ).not.toBeInTheDocument();
 });
 
-it("toggles between the product offerings in the premium upsell modal", async () => {
+it("toggles between the product offerings in the premium upsell dialog", async () => {
   enablePremium();
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(DashboardFreeUser, Meta);
