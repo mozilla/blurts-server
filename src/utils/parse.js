@@ -40,9 +40,11 @@ export function parseIso8601Datetime (datetime) {
   // > Support for ISO 8601 formats differs in that date-only strings
   // > (e.g. "1970-01-01") are treated as UTC, not local.
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date#parameters
-  try {
-    return new Date(datetime)
-  } catch (_e) {
-    return null
+  const parsedDate = new Date(datetime)
+
+  if (Number.isNaN(parsedDate.valueOf())) {
+    return null;
   }
+
+  return parsedDate;
 }
