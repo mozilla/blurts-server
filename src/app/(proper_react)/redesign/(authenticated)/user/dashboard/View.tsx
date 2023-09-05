@@ -212,7 +212,7 @@ export const View = (props: Props) => {
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
           data_broker_total_num: parseInt(
-            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
             10
           ),
         },

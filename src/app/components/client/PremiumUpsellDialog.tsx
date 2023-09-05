@@ -105,7 +105,7 @@ function PremiumUpsellDialogContent() {
             "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
             {
               data_broker_count: parseInt(
-                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
                 10
               ),
             }

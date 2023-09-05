@@ -15,7 +15,7 @@ export default function AutomaticRemove() {
   const [selectedPlanIsYearly, setSelectedPlanIsYearly] = useState(true);
 
   const dataBrokerCount = parseInt(
-    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
     10
   );
 
