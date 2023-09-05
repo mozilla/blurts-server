@@ -40,8 +40,9 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
       case "pin":
         exposedData = highRiskDataBreaches.pinBreaches;
         break;
+      case "none":
       default:
-        "none";
+        exposedData = [];
         break;
     }
   }
