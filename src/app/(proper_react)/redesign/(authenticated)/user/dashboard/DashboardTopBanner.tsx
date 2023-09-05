@@ -195,7 +195,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       cta: (
         <Button
           onClick={() => {
-            props?.ctaCallback?.();
+            router.push("/redesign/user/welcome");
           }}
           small
           variant="primary"
