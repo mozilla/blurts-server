@@ -104,7 +104,12 @@ function PremiumUpsellDialogContent() {
         <dd>
           {l10n.getString(
             "fix-flow-data-broker-profiles-automatic-remove-features-monthly-scan",
-            { data_broker_count: 190 }
+            {
+              data_broker_count: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+                10
+              ),
+            }
           )}
         </dd>
         <dd>

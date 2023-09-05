@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./DashboardTopBanner.module.scss";
-import { TabType, ONEREP_DATA_BROKER_COUNT } from "./View";
+import { TabType } from "./View";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
@@ -46,6 +46,11 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
     }
   );
 
+  const dataBrokerCount = parseInt(
+    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+    10
+  );
+
   const contentData = {
     LetsFixDataContent: {
       headline: l10n.getString("dashboard-top-banner-protect-your-data-title"),
@@ -77,7 +82,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-monitor-protects-your-even-more-description",
         {
-          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_sites_total_num: dataBrokerCount,
         }
       ),
       cta: (
@@ -108,7 +113,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-no-exposures-found-description",
         {
-          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_sites_total_num: dataBrokerCount,
         }
       ),
       cta: (

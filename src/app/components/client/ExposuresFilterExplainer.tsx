@@ -38,7 +38,10 @@ export const ExposuresFilterTypeExplainer = (
         <div className={styles.modalBodyContent}>
           <p>
             {l10n.getString("modal-exposure-type-description", {
-              data_broker_sites_total_num: 190,
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+                10
+              ),
             })}
           </p>
           <br />
@@ -94,7 +97,10 @@ export const ExposuresFilterStatusExplainer = (
         <div className={styles.modalBodyContent}>
           <p>
             {l10n.getString("modal-exposure-status-description", {
-              data_broker_sites_total_num: 190,
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT ?? "",
+                10
+              ),
             })}
           </p>
           <br />
