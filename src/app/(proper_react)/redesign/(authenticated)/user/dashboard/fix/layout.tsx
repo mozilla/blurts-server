@@ -55,13 +55,7 @@ export type FixLayoutProps = {
 
 const FixLayout = (props: FixLayoutProps) => {
   const pathname = usePathname();
-  const [isHighRiskDataBreach, setIsHighRiskDataBreach] = useState(false);
-
-  useEffect(() => {
-    if (pathname.includes("high-risk-data-breaches")) {
-      setIsHighRiskDataBreach(true);
-    }
-  }, [pathname]);
+  const isHighRiskDataBreach = pathname.includes("high-risk-data-breaches");
 
   const navigationItemsContent = [
     {

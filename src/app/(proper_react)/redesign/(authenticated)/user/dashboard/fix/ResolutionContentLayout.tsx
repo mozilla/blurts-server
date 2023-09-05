@@ -2,8 +2,6 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
 import styles from "./ResolutionContentLayout.module.scss";
 import Image from "next/image";
 import { Button } from "../../../../../../components/server/Button";

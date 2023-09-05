@@ -45,15 +45,12 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     }
   }
 
-  // TODO: Make locale location-sensitive in the future
   const dateFormatter = new Intl.DateTimeFormat("en-US", {
-    // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat/DateTimeFormat#datestyle
     dateStyle: "short",
   });
 
   const listOfBreaches = exposedData.map((item: SubscriberBreach) => (
     <div key={item.id} className={styles.breachItem}>
-      {/* TODO: Localize all date values MNTOR-2111 */}
       {l10n.getFragment("high-risk-breach-name-and-date", {
         elems: { breach_date: <span className={styles.date} /> },
         vars: {
@@ -103,7 +100,8 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
 
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
-  const emailsFormatter = new Intl.ListFormat("en", {
+  // TODO: Make locale location-sensitive in the future
+  const emailsFormatter = new Intl.ListFormat("en-US", {
     style: "long",
     type: "conjunction",
   });

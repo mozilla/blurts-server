@@ -364,9 +364,7 @@ export const PasswordIcon = (
 };
 
 // Keywords: time, estimated, watch
-export const ClockIcon = (
-  props: SVGProps<SVGSVGElement> & { alt?: string }
-) => {
+export const ClockIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
   return (
     <svg
       width="18"

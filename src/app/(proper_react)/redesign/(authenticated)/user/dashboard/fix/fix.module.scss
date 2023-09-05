@@ -66,7 +66,7 @@
 
     .navArrowBack,
     .navArrowNext {
-      margin-top: var(--arrowGapOffset);
+      margin-top: -50px; // Move up the arrows, since they're not perfectly vertically centered
 
       @media screen and (min-width: $screen-md) {
         display: block;
