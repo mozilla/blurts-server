@@ -6,8 +6,6 @@ import { test, expect, jest } from "@jest/globals";
 
 import { createResponse, createRequest } from "node-mocks-http";
 
-import AppConstants from "../src/appConstants.js";
-
 jest.mock("@sentry/node", () => {
   return {
     Handlers: {
@@ -23,7 +21,7 @@ test("accepts valid payload", async () => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${AppConstants.HIBP_NOTIFY_TOKEN}`,
+      Authorization: `Bearer ${process.env.HIBP_NOTIFY_TOKEN}`,
     },
     url: "/api/v1/hibp/notify",
     body: { breachName: "Test1", hashPrefix: "...", hashSuffixes: ["..."] },

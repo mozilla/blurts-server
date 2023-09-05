@@ -7,8 +7,6 @@ import * as Sentry from "@sentry/node";
 import "@sentry/tracing";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 
-import AppConstants from "../src/appConstants.js";
-
 import { getSubscribersByHashes } from "../src/db/tables/subscribers.js";
 import { getEmailAddressesByHashes } from "../src/db/tables/emailAddresses.js";
 import { getTemplate } from "../src/views/emails/email2022.js";
@@ -72,7 +70,7 @@ init();
  * @param {import('express').Response} res
  */
 async function notify(req, res) {
-  if (!req.token || req.token !== AppConstants.HIBP_NOTIFY_TOKEN) {
+  if (!req.token || req.token !== process.env.HIBP_NOTIFY_TOKEN) {
     const errorMessage =
       "HIBP notify endpoint requires valid authorization token.";
     // FIXME
