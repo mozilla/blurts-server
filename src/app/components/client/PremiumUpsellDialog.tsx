@@ -92,7 +92,6 @@ function PremiumUpsellDialogContent() {
         <TabList
           tabs={tabsData}
           onSelectionChange={(selectedKey) => setSelectedTab(selectedKey)}
-          defaultSelectedKey={selectedTab}
         />
       </div>
       <dl className={styles.list}>
