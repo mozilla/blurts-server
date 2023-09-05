@@ -41,6 +41,7 @@ export const HighRiskBreachContent = (typeOfBreach: string) => {
 
   const SocialSecurityNumberRecommendationSteps = (
     <ol>
+      {/* TOOD: Add question mark modal explaining the SSN breach resolution - MNTOR-2127 */}
       <li>
         {l10n.getFragment("high-risk-breach-social-security-step-one", {
           elems: {
