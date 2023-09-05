@@ -17,6 +17,7 @@ import Meta, {
   DashboardNoSession,
   DashboardFreeUserAllResolved,
 } from "./Dashboard.stories";
+import { useRouter } from "next/navigation";
 
 function enablePremium() {
   process.env.NEXT_PUBLIC_PREMIUM_ENABLED = "true";
@@ -208,6 +209,8 @@ it("shows the premium upgrade cta if there is no user session", () => {
 it("shows returned free user who has resolved all tasks premium upsell and all fixed description", async () => {
   enablePremium();
   const user = userEvent.setup();
+  const routeSpy = jest.fn();
+  useRouter.mockReturnValue({ push: routeSpy });
   const ComposedDashboard = composeStory(DashboardFreeUserAllResolved, Meta);
   render(<ComposedDashboard />);
 
@@ -225,5 +228,5 @@ it("shows returned free user who has resolved all tasks premium upsell and all f
 
   // click on cta
   await user.click(bannerPremiumCta[0]);
-  expect(bannerPremiumCta[0]).not.toBeInTheDocument();
+  expect(routeSpy).toHaveBeenCalled();
 });
