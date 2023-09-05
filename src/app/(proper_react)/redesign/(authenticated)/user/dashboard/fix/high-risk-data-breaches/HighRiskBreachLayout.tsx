@@ -258,6 +258,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
             })}
           </p>
           {breachList}
+          {secondaryDescription}
           <div className={styles.recommendations}>
             <h4>{l10n.getString("high-risk-breach-heading")}</h4>
             <p>{l10n.getString("high-risk-breach-subheading")}</p>
@@ -265,7 +266,6 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
           </div>
         </>
       )}
-      {secondaryDescription}
     </ResolutionContentLayout>
   );
 };
