@@ -11,6 +11,10 @@ export class SettingsPage {
     this.emailHeader = page.getByText(/Monitored email addresses/)
     this.deactivateHeader = page.getByText(/Deactivate account/)
     this.addEmailButton = page.getByText(/Add email address/)
+    this.settingsEmailSettings = page.locator('.settings-email-item')
+    this.settingsContent = page.locator('.settings-content')
+    this.sendToAffectedEmailRadioButton = page.locator('input[data-alert-option="0"]')
+    this.sendToPrimaryEmailRadioButton = page.locator('input[data-alert-option="1"]')
   }
 
   async open () {

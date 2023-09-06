@@ -102,7 +102,7 @@ export async function getSubscriberBreaches(
   return breachesData;
 }
 
-interface GuidedExperienceBreaches {
+export interface GuidedExperienceBreaches {
   highRisk: {
     ssnBreaches: SubscriberBreach[];
     creditCardBreaches: SubscriberBreach[];
@@ -110,44 +110,4 @@ interface GuidedExperienceBreaches {
     bankBreaches: SubscriberBreach[];
   };
   passwordBreaches: SubscriberBreach[];
-}
-
-// NOTE: Better name for this function?
-export function guidedExperienceBreaches(
-  subscriberBreaches: SubscriberBreach[]
-): GuidedExperienceBreaches {
-  const guidedExperienceBreaches: GuidedExperienceBreaches = {
-    highRisk: {
-      ssnBreaches: [],
-      creditCardBreaches: [],
-      pinBreaches: [],
-      bankBreaches: [],
-    },
-    passwordBreaches: [],
-  };
-  subscriberBreaches.forEach((b) => {
-    // high risks
-    if (b.dataClasses.includes(BreachDataTypes.SSN)) {
-      guidedExperienceBreaches.highRisk.ssnBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.CreditCard)) {
-      guidedExperienceBreaches.highRisk.creditCardBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.PIN)) {
-      guidedExperienceBreaches.highRisk.pinBreaches.push(b);
-    }
-
-    if (b.dataClasses.includes(BreachDataTypes.BankAccount)) {
-      guidedExperienceBreaches.highRisk.bankBreaches.push(b);
-    }
-
-    // other
-    if (b.dataClasses.includes(BreachDataTypes.Passwords)) {
-      guidedExperienceBreaches.passwordBreaches.push(b);
-    }
-  });
-
-  return guidedExperienceBreaches;
 }
