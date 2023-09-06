@@ -1,57 +1,75 @@
 @import "../../../../../../tokens";
 
-.fixWrapper {
-  margin: 0 auto $spacing-2xl;
-  max-width: $content-xl;
-  border-radius: $border-radius-md;
-  padding: $layout-lg $spacing-xl $spacing-2xl;
-  background-color: $color-white;
-  background-image: url("./images/content-background.svg");
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.fixSection {
-  position: relative;
+.fixContainer {
+  background-color: $color-grey-05;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media screen and (min-width: $screen-md) {
-    // Add horizontal padding to account for next/prev arrow placement on larger screens
-    padding: 0 $spacing-2xl;
+    padding: $layout-sm;
   }
 
-  @media screen and (min-width: $screen-xl) {
-    padding: 0;
+  .fixWrapper {
+    max-width: $content-xl;
+    width: 100%;
+    padding: $layout-sm;
+    background-color: $color-white;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background-image: url("./images/content-background.svg");
+
+    &.highRiskDataBreachContentBg {
+      background-image: url("./images/high-risk-breaches-content-background.svg");
+    }
   }
-}
 
-.navArrowBack {
-  position: absolute;
-  left: $spacing-md;
-  top: $layout-xl;
-  appearance: none;
-  background-color: transparent;
-  border: 0;
-  cursor: pointer;
-  display: none;
-}
-
-.navArrowNext {
-  position: absolute;
-  right: $spacing-md;
-  top: $layout-xl;
-  display: none;
-}
-
-.navArrowBack,
-.navArrowNext {
-  @media screen and (min-width: $screen-md) {
-    display: block;
+  .navClose {
+    position: absolute;
+    right: $spacing-md;
+    top: $spacing-md;
   }
-}
 
-.navClose {
-  position: absolute;
-  right: $spacing-md;
-  top: $spacing-md;
+  .fixSection {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (min-width: $screen-md) {
+      // Add horizontal padding to account for next/prev arrow placement on larger screens
+      padding: 0 $spacing-2xl;
+    }
+
+    @media screen and (min-width: $screen-xl) {
+      padding: 0;
+    }
+
+    .navArrowBack {
+      position: absolute;
+      left: 0;
+      appearance: none;
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+      display: none;
+    }
+
+    .navArrowNext {
+      position: absolute;
+      right: 0;
+      display: none;
+    }
+
+    .navArrowBack,
+    .navArrowNext {
+      margin-top: -50px; // Move up the arrows, since they're not perfectly vertically centered
+
+      @media screen and (min-width: $screen-md) {
+        display: block;
+      }
+    }
+  }
 }

@@ -8,7 +8,7 @@
 .mainMenu {
   display: none;
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg) {
     flex: 0 0 auto;
     display: flex;
     flex-direction: column;
@@ -109,7 +109,7 @@
     }
   }
 
-  @media screen and (min-width: $screen-md) {
+  @media screen and (min-width: $screen-lg) {
     flex-direction: row;
     align-items: center;
     padding-block: 0;

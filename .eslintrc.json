@@ -20,7 +20,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["header", "jsdoc", "@typescript-eslint", "check-file"],
+  "plugins": ["header", "jsdoc", "@typescript-eslint", "check-file", "jest"],
   "rules": {
     "header/header": [
       "warn",
@@ -73,6 +73,11 @@
       "rules": {
         "header/header": "off"
       }
+    },
+    {
+      "files": ["**/*.test.{ts,tsx,js}"],
+      "plugins": ["jest"],
+      "extends": ["plugin:jest/recommended"]
     },
     {
       "files": [

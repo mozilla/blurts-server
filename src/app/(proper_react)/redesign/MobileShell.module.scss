@@ -9,7 +9,7 @@
 .header {
   display: none;
 
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: $screen-lg) {
     position: sticky;
     background-color: $color-white;
     box-shadow: $box-shadow-sm;
@@ -72,7 +72,7 @@
     display: none;
   }
 
-  @media screen and (max-width: $screen-md) {
+  @media screen and (max-width: $screen-lg) {
     .hasOpenMenu & .mainMenuLayer {
       display: block;
       position: sticky;
