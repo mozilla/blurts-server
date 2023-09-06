@@ -14,9 +14,6 @@ import { getEmailAddressesByHashes } from "../src/db/tables/emailAddresses.js";
 import { getTemplate } from "../src/views/emails/email2022.js";
 import { breachAlertEmailPartial } from "../src/views/emails/emailBreachAlert.js";
 
-import { bearerToken } from "../src/middleware/util.js";
-import { errorHandler } from "../src/middleware/error.js";
-
 import {
   initEmail,
   EmailTemplateType,
@@ -34,22 +31,9 @@ import {
 const projectId = "rhelmer-monitor-local-dev";
 const subscriptionName = "hibp-cron";
 
-async function init() {
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore next 3 */
-  await initFluentBundles();
-  await initEmail();
-  await poll();
-}
-
-init()
-  .then((res) => console.info("init complete"))
-  .catch((err) => console.error(err));
-
 // TODO: Add unit test when changing this code:
-/* c8 ignore start */
 /**
- * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
+ * Fetch the latest
  * This function attempts to retrieve the breach info from the local cache, if not found
  * it retrieves it from the database
  * A breach notification contains the following parameters:
@@ -57,7 +41,6 @@ init()
  * - hashPrefix
  * - hashSuffixes
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
- *
  */
 async function poll() {
   const subClient = new pubsub.v1.SubscriberClient({
@@ -89,7 +72,7 @@ async function poll() {
     }
 
     const { breachName, hashPrefix, hashSuffixes } = data;
-    /*
+    /* FIXME provide alternative method to load breach alerts outside Express
     await loadBreachesIntoApp(req.app);
     let breachAlert = getBreachByName(req.app.locals.breaches, breachName);
 
@@ -105,7 +88,7 @@ async function poll() {
     }
     */
     const breachAlert = {
-      Name: "Test",
+      Name: breachName,
       IsVerified: true,
       Domain: "example.com",
       IsFabricated: false,
@@ -168,6 +151,14 @@ async function poll() {
       const hashes = hashSuffixes.map(
         (suffix) => reqHashPrefix + suffix.toLowerCase()
       );
+
+      subClient.acknowledge({
+        subscription: formattedSubscription,
+        ackIds: [message.ackId],
+      });
+
+      continue; // FIXME
+
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
       const recipients = subscribers.concat(emailAddresses);
@@ -219,21 +210,26 @@ async function poll() {
           const emailTemplate = getTemplate(data, breachAlertEmailPartial);
           const subject = getMessage("breach-alert-subject");
 
-          // await sendEmail(data.recipientEmail, subject, emailTemplate);
+          await sendEmail(data.recipientEmail, subject, emailTemplate);
 
           notifiedRecipients.push(breachedEmail);
         }
       }
 
       console.info("notified", { length: notifiedRecipients.length });
-
-      subClient.acknowledge({
-        subscription: formattedSubscription,
-        ackIds: [message.ackId],
-      });
     } catch (error) {
       console.error(`Notifying subscribers of breach failed: ${error}`);
     }
   }
 }
-/* c8 ignore stop */
+
+async function init() {
+  // TODO: Add unit test when changing this code
+  await initFluentBundles();
+  await initEmail();
+  await poll();
+}
+
+init()
+  .then((_res) => console.info("init complete"))
+  .catch((err) => console.error(err));
