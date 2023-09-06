@@ -10,6 +10,7 @@ import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
+import PremiumButton from "../../../../../components/client/PremiumButton";
 
 export type BannerContent =
   | "LetsFixDataContent"
@@ -193,17 +194,9 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         }
       ),
       cta: (
-        <Button
-          onClick={() => {
-            router.push("/redesign/user/welcome");
-          }}
-          small
-          variant="primary"
-        >
-          {l10n.getString(
-            "dashboard-top-banner-your-data-is-protected-all-fixed-cta"
-          )}
-        </Button>
+        <PremiumButton
+          label={"dashboard-top-banner-your-data-is-protected-all-fixed-cta"}
+        />
       ),
       learnMore: null,
     },
