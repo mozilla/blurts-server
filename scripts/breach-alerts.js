@@ -30,7 +30,6 @@ import {
   getBreachByName,
   loadBreachesIntoApp,
 } from "../src/utils/hibp.js";
-import { BadRequestError, TooManyRequestsError } from "../src/utils/error.js";
 
 const projectId = "rhelmer-monitor-local-dev";
 const subscriptionName = "hibp-cron";
@@ -42,7 +41,10 @@ async function init() {
   await initEmail();
   await poll();
 }
-init();
+
+init()
+  .then((res) => console.info("init complete"))
+  .catch((err) => console.error(err));
 
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
@@ -75,7 +77,7 @@ async function poll() {
   });
 
   // Process the messages.
-  for (const message of response.receivedMessages || []) {
+  for (const message of response.receivedMessages) {
     console.log(`Received message: ${message.message.data}`);
     const data = JSON.parse(message.message.data);
 
@@ -103,6 +105,7 @@ async function poll() {
     }
     */
     const breachAlert = {
+      Name: "Test",
       IsVerified: true,
       Domain: "example.com",
       IsFabricated: false,

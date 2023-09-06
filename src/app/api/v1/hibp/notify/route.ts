@@ -11,6 +11,12 @@ const projectId = "rhelmer-monitor-local-dev";
 const topicName = "hibp-breaches";
 const subscriptionName = "hibp-cron";
 
+/**
+ * Whenever a breach is detected on the HIBP side, HIBP sends a request to this endpoint.
+ * The payload is checked for validity, and immediately queued if it is valid.
+ *
+ * @param req
+ */
 export async function POST(req: NextRequest) {
   const headerToken = bearerToken(req);
   if (headerToken !== process.env.HIBP_NOTIFY_TOKEN) {
@@ -29,7 +35,6 @@ export async function POST(req: NextRequest) {
   const pubsub = new PubSub({ projectId });
 
   const [topics] = await pubsub.getTopics();
-
   const [topic] = topics.filter(
     (a) => a.name === `projects/${projectId}/topics/${topicName}`
   );
