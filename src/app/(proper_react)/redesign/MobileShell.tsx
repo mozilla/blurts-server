@@ -12,6 +12,7 @@ import styles from "./MobileShell.module.scss";
 import monitorLogo from "../images/monitor-logo.webp";
 import PremiumBadge from "../../components/client/PremiumBadge";
 import { CloseBigIcon, ListIcon } from "../../components/server/Icons";
+import { UserMenu } from "../../components/client/toolbar/UserMenu";
 import { useL10n } from "../../hooks/l10n";
 import { PageLink } from "./PageLink";
 
@@ -72,7 +73,7 @@ export const MobileShell = (props: Props) => {
           </Link>
         </div>
         <div className={styles.headerEnd}>
-          {/* For the app and user menus */}
+          <UserMenu user={props.session?.user} />
         </div>
       </header>
       <div className={styles.nonHeader}>
@@ -99,9 +100,11 @@ export const MobileShell = (props: Props) => {
                 </a>
               </li>
             </ul>
-            <div className={styles.premiumCta}>
-              <PremiumBadge user={props.session?.user ?? null} />
-            </div>
+            {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" && (
+              <div className={styles.premiumCta}>
+                <PremiumBadge user={props.session?.user ?? null} />
+              </div>
+            )}
           </div>
         </nav>
         <div className={styles.content}>{props.children}</div>

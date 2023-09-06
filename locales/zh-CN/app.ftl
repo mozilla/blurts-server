@@ -118,7 +118,7 @@ stay-alert = 时刻留意新的数据外泄事件
 if-your-info = 如果您的信息出现于新的数据外泄事件中，我们会向您发送警报。
 search-all-emails = 搜索您在使用的所有邮箱地址，检查是否有数据外泄事件，也在有新威胁时收到警报。
 monitor-several-emails = 监控多个电子邮件地址
-take-action = 采取措施保护您的账号
+take-action = 采取措施保护您的账户
 keep-your-data-safe = 了解您需要做些什么来保护您的数据，以免受网络犯罪的影响。
 website-breach = 网站信息外泄
 sensitive-breach = 网站敏感信息外泄
@@ -646,7 +646,7 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 menu-button-title = 用户菜单
 menu-button-alt = 打开用户菜单
-menu-list-accessible-label = 帐户菜单
+menu-list-accessible-label = 账户菜单
 menu-item-fxa = 管理您的 { -brand-fx-account }
 menu-item-fxa-alt = 打开 { -brand-fx-account } 页面
 menu-item-settings = 设置
@@ -693,11 +693,3 @@ breach-detail-cta-signup = 检查是否有外泄事件
 floating-banner-text = 通过来自 { -brand-Mozilla } 的新闻、提示和更新提高您的网络浏览安全。
 floating-banner-link-label = 注册
 floating-banner-dismiss-button-label = 不了，谢谢
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-cta = 我需要！
-false-door-test-popup-close = 关闭

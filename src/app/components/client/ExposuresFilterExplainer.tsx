@@ -12,117 +12,123 @@ import { ModalOverlay } from "./dialog/ModalOverlay";
 import { Dialog } from "./dialog/Dialog";
 import { Button } from "../server/Button";
 
-type ExposuresFilterExplainerProps = {
-  content: "exposure" | "status";
+type ExposuresFilterTypeExplainerProps = {
   explainerDialogState: OverlayTriggerState;
   explainerDialogProps: OverlayTriggerAria;
 };
 
-export const ExposuresFilterExplainer = (
-  props: ExposuresFilterExplainerProps
+export const ExposuresFilterTypeExplainer = (
+  props: ExposuresFilterTypeExplainerProps
 ) => {
   const l10n = useL10n();
 
-  const explainerContentExposureType = (
-    <div className={styles.modalBodyContent}>
-      <p>
-        {l10n.getString("modal-exposure-type-description", {
-          data_broker_sites_total_num: 190,
-        })}
-      </p>
-      <br />
-      <ol>
-        <li>
-          {l10n.getFragment("modal-exposure-type-data-breach", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-        <li>
-          {l10n.getFragment("modal-exposure-type-data-broker-part-one", {
-            elems: { b: <strong /> },
-          })}
+  return (
+    <ModalOverlay
+      state={props.explainerDialogState}
+      {...props.explainerDialogProps.overlayProps}
+      isDismissable
+    >
+      <Dialog
+        title={l10n.getString("modal-exposure-type-title")}
+        illustration={<Image src={ModalImage} alt="" />}
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
+        onDismiss={() => props.explainerDialogState.close()}
+      >
+        <div className={styles.modalBodyContent}>
+          <p>
+            {l10n.getString("modal-exposure-type-description", {
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                10
+              ),
+            })}
+          </p>
           <br />
-          {l10n.getString("modal-exposure-type-data-broker-part-two")}
-        </li>
-      </ol>
-      <Button
-        variant="primary"
-        onClick={() => props.explainerDialogState.close()}
-      >
-        {l10n.getString("modal-cta-ok")}
-      </Button>
-    </div>
+          <ol>
+            <li>
+              {l10n.getFragment("modal-exposure-type-data-breach", {
+                elems: { b: <strong /> },
+              })}
+            </li>
+            <li>
+              {l10n.getFragment("modal-exposure-type-data-broker-part-one", {
+                elems: { b: <strong /> },
+              })}
+              <br />
+              {l10n.getString("modal-exposure-type-data-broker-part-two")}
+            </li>
+          </ol>
+          <Button
+            variant="primary"
+            onPress={() => props.explainerDialogState.close()}
+          >
+            {l10n.getString("modal-cta-ok")}
+          </Button>
+        </div>
+      </Dialog>
+    </ModalOverlay>
   );
+};
 
-  const explainerContentStatus = (
-    <div className={styles.modalBodyContent}>
-      <p>
-        {l10n.getString("modal-exposure-status-description", {
-          data_broker_sites_total_num: 190,
-        })}
-      </p>
-      <br />
-      <ul>
-        <li>
-          {l10n.getFragment("modal-exposure-status-action-needed", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-        <li>
-          {l10n.getFragment("modal-exposure-status-in-progress", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-        <li>
-          {l10n.getFragment("modal-exposure-status-fixed", {
-            elems: { b: <strong /> },
-          })}
-        </li>
-      </ul>
-      <Button
-        variant="primary"
-        onClick={() => props.explainerDialogState.close()}
-      >
-        {l10n.getString("modal-cta-ok")}
-      </Button>
-    </div>
-  );
+type ExposuresFilterStatusExplainerProps = {
+  explainerDialogState: OverlayTriggerState;
+  explainerDialogProps: OverlayTriggerAria;
+};
+
+export const ExposuresFilterStatusExplainer = (
+  props: ExposuresFilterStatusExplainerProps
+) => {
+  const l10n = useL10n();
 
   return (
-    <>
-      {props.content === "exposure" ? (
-        <ModalOverlay
-          state={props.explainerDialogState}
-          {...props.explainerDialogProps.overlayProps}
-          isDismissable
-        >
-          <Dialog
-            title={l10n.getString("modal-exposure-type-title")}
-            illustration={<Image src={ModalImage} alt="" />}
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onDismiss={() => props.explainerDialogState.close()}
+    <ModalOverlay
+      state={props.explainerDialogState}
+      {...props.explainerDialogProps.overlayProps}
+      isDismissable
+    >
+      <Dialog
+        title={l10n.getString("modal-exposure-status-title")}
+        illustration={<Image src={ModalImage} alt="" />}
+        // TODO: Add unit test when changing this code:
+        /* c8 ignore next */
+        onDismiss={() => props.explainerDialogState.close()}
+      >
+        <div className={styles.modalBodyContent}>
+          <p>
+            {l10n.getString("modal-exposure-status-description", {
+              data_broker_sites_total_num: parseInt(
+                process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+                10
+              ),
+            })}
+          </p>
+          <br />
+          <ul>
+            <li>
+              {l10n.getFragment("modal-exposure-status-action-needed", {
+                elems: { b: <strong /> },
+              })}
+            </li>
+            <li>
+              {l10n.getFragment("modal-exposure-status-in-progress", {
+                elems: { b: <strong /> },
+              })}
+            </li>
+            <li>
+              {l10n.getFragment("modal-exposure-status-fixed", {
+                elems: { b: <strong /> },
+              })}
+            </li>
+          </ul>
+          <Button
+            variant="primary"
+            onPress={() => props.explainerDialogState.close()}
           >
-            {explainerContentExposureType}
-          </Dialog>
-        </ModalOverlay>
-      ) : (
-        <ModalOverlay
-          state={props.explainerDialogState}
-          {...props.explainerDialogProps.overlayProps}
-          isDismissable
-        >
-          <Dialog
-            title={l10n.getString("modal-exposure-status-title")}
-            illustration={<Image src={ModalImage} alt="" />}
-            // TODO: Add unit test when changing this code:
-            /* c8 ignore next */
-            onDismiss={() => props.explainerDialogState.close()}
-          >
-            {explainerContentStatus}
-          </Dialog>
-        </ModalOverlay>
-      )}
-    </>
+            {l10n.getString("modal-cta-ok")}
+          </Button>
+        </div>
+      </Dialog>
+    </ModalOverlay>
   );
 };

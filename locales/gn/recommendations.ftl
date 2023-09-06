@@ -19,8 +19,8 @@ rec-pw-2-subhead = Embohekopyahu ambue tembiapo ñepyrũ ko ñe’ẽñemímente
 # Link title
 rec-pw-2-cta-fx = Ehecha tembiapo ñepyrũ { -brand-name }-pe
 rec-pw-2 =
-    Eipurujeývo ñe’ẽñemi ombohetakuaa mba’ekuaarã ñembyai. Kóva oikóvo 
-    ñe’ẽñemi eipurukuaa, umi mba’evai apoha ikatu oipuru oike hag̃ua ambue mba’etépe.
+    Eiporujeývo ñe’ẽñemi ombohetakuaa mba’ekuaarã ñembyai. Kóva oikóvo 
+    ñe’ẽñemi eiporukuaa, umi mba’evai apoha ikatu oiporu oike hag̃ua ambue mba’etépe.
 # Recommendation subhead
 rec-pw-3-subhead = Eipuru ñe’ẽñemi ñangarekoha eraha hag̃ua ne ñe’ẽñemi opa hendápe
 # Link title

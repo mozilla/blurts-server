@@ -131,7 +131,7 @@ async function getProfileData (accessToken) {
 // TODO: Add unit test when changing this code:
 /* c8 ignore start */
 async function sendMetricsFlowPing (path) {
-  const fxaMetricsFlowUrl = new URL(path, AppConstants.FXA_SETTINGS_URL)
+  const fxaMetricsFlowUrl = new URL(path, AppConstants.NEXT_PUBLIC_FXA_SETTINGS_URL)
   try {
     const response = await fetch(fxaMetricsFlowUrl, {
       headers: { Origin: AppConstants.SERVER_URL }
