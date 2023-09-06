@@ -103,7 +103,7 @@ test.describe('Landing Page element verification', () => {
       timeout: 2000
     })
 
-    // 3. Verify the "Hereâ€™s how it works" section.
+    // 3. Verify the "Here's how it works" section.
     await expect(async () => {
       await expect(await landingPage.howItWorksSection).toHaveScreenshot(
         `${process.env.E2E_TEST_ENV}-howItWorksSection.png`
