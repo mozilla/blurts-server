@@ -193,7 +193,7 @@ appears-in-x-breaches =
     }
 check-for-breaches = Buscar violaciones
 find-out-what-hackers-know = Averiguá lo que los piratas informáticos saben acerca tuyo. Descubrí cómo estar siempre un paso adelante de ellos.
-get-email-alerts = Mantenete seguro: recibí alertas por correo electrónico cuando tu información aparezca en una violación conocida
+get-email-alerts = Mantenete seguro: recibí alertas por correo electrónico cuando tu información aparezca en una filtración conocida
 search-for-your-email = Buscá tu dirección de correo en violaciones de datos públicos yendo hasta 2007.
 back-to-top = Volver al inicio
 comm-opt-0 = Enviame un correo electrónico si alguna de mis direcciones de correo electrónico de las que están a continuación aparece en una violación de datos.
@@ -759,14 +759,3 @@ breach-detail-cta-signup = Verificá si hay filtraciones
 floating-banner-text = Aumentá tu seguridad en línea con noticias, consejos y actualizaciones de { -brand-Mozilla }.
 floating-banner-link-label = Registrate
 floating-banner-dismiss-button-label = No, gracias
-
-## False door test
-
-
-# Strings used in a banner (false door test) to observe engagement with Monitor premium and gauge user interest.
-
-false-door-test-content-part-one = Nadie debería poder comprar tu información personal.
-false-door-test-content-part-two = Elimina datos automáticamente de los sitios que intentan venderlos.
-false-door-test-content-part-two-dashboard = Elimina automáticamente datos de sitios que intentan venderlos.
-false-door-test-cta = Cuenta conmigo
-false-door-test-popup-close = Cerrar
