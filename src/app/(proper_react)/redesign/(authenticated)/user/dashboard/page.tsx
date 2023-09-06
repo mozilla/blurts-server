@@ -9,10 +9,7 @@ import { View } from "./View";
 import { authOptions } from "../../../../../api/utils/auth";
 import { dashboardSummary } from "../../../../../functions/server/dashboard";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
-import {
-  getSubscriberBreaches,
-  guidedExperienceBreaches,
-} from "../../../../../functions/server/getUserBreaches";
+import { getSubscriberBreaches } from "../../../../../functions/server/getUserBreaches";
 import { getLocale } from "../../../../../functions/server/l10n";
 import { canSubscribeToPremium } from "../../../../../functions/universal/user";
 import { getLatestOnerepScan } from "../../../../../../db/tables/onerep_scans";
@@ -42,8 +39,6 @@ export default async function DashboardPage() {
   const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
   const subBreaches = await getSubscriberBreaches(session.user);
   const summary = dashboardSummary(scanResultItems, subBreaches);
-  const guidedBreaches = guidedExperienceBreaches(subBreaches);
-  console.log(JSON.stringify(guidedBreaches));
   const locale = getLocale();
 
   const userIsEligibleForFreeScan = await isEligibleForFreeScan(

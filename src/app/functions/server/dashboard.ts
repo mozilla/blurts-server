@@ -24,6 +24,7 @@ type Exposures = {
   creditCardNumbers: number;
   pins: number;
   securityQuestions: number;
+  bankAccountNumbers: number;
 };
 
 type SanitizedExposures = Array<Record<string, number>>;
@@ -56,6 +57,7 @@ const exposureKeyMap: Record<string, string> = {
   creditCardNumbers: "credit-cards",
   pins: "pins",
   securityQuestions: "security-questions-and-answers",
+  bankAccountNumbers: "bank-account-numbers",
 };
 
 export function dashboardSummary(
@@ -83,6 +85,7 @@ export function dashboardSummary(
       creditCardNumbers: 0,
       pins: 0,
       securityQuestions: 0,
+      bankAccountNumbers: 0,
     },
     sanitizedExposures: [],
     fixedExposures: {
@@ -99,6 +102,7 @@ export function dashboardSummary(
       creditCardNumbers: 0,
       pins: 0,
       securityQuestions: 0,
+      bankAccountNumbers: 0,
     },
     fixedSanitizedExposures: [],
   };
