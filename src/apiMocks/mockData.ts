@@ -9,7 +9,10 @@ import {
   RemovalStatusMap,
 } from "../app/functions/universal/scanResult";
 import { StateAbbr } from "../utils/states";
-import { BreachDataTypes } from "../app/functions/universal/breach";
+import {
+  BreachDataTypes,
+  HighRiskDataTypes,
+} from "../app/functions/universal/breach";
 import {
   DataClassEffected,
   SubscriberBreach,
@@ -79,20 +82,26 @@ export type RandomBreachOptions = Partial<{
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];
   fakerSeed: number;
+  isHighRiskOnly: boolean;
 }>;
 
 // TODO: MNTOR-2033 Update this random breach function with new data breach object, and deprecate all BreachMockItems
 export function createRandomBreach(
   options: RandomBreachOptions = {}
 ): SubscriberBreach {
+  const dataClassTypes = options.isHighRiskOnly
+    ? HighRiskDataTypes
+    : BreachDataTypes;
+  const dataClasses = faker.helpers.arrayElements(
+    Object.values(dataClassTypes)
+  );
+
   faker.seed(options.fakerSeed);
   return {
     addedDate:
       options.addedDate?.toISOString() ?? faker.date.recent().toISOString(),
     breachDate: faker.date.recent().toISOString(),
-    dataClasses:
-      options.dataClasses ??
-      faker.helpers.arrayElements(Object.values(BreachDataTypes)),
+    dataClasses: dataClasses,
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
