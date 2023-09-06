@@ -97,7 +97,7 @@ export class LandingPage {
   }
 
   async checkBanner(){
-    await this.page.waitForSelector('//div[starts-with(@class, "FalseDoorBanner_falseDoorTest")]',{
+    await this.page.waitForSelector('//div[class^="FalseDoorBanner_falseDoorTest"]',{
       state: "visible"
   });
 
