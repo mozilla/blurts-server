@@ -673,7 +673,7 @@ ad-unit-5-on-the-go = Pya’eterei { -brand-relay } ndive
 ad-unit-5-instantly-make = ¡Ejapo ñanduti veve rovara’ãnga oimeraẽva tendápe ha eho ehohápe!
 # ad 5 subheading 1
 ad-unit-5-connect-on-the-go = Eikékatu pya’e porã
-ad-unit-5-privately-sign-in = Eipuru ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oipurukuaávape
+ad-unit-5-privately-sign-in = Eipuru ñanduti veve rovara’ãnga emoñepyrũnguévo ne rembiapo tekoñemigua ekaruhápe térã Wi-Fi opavave oiporukuaávape
 # ad 5 subheading 2
 ad-unit-5-email-receipts = Og̃uahẽ kuatia ñanduti veve rupive
 ad-unit-5-share-custom-email = Emoherakuã peteĩ ñanduti veve rovara’ãnga nemba’eteéva kuatia ñemba’ejoguakue eme’ẽ’ỹ rehe ne ñanduti veve teete

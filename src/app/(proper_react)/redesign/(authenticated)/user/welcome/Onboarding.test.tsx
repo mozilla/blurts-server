@@ -112,9 +112,7 @@ it("form input elements have invalid state if left empty on step 2", async () =>
   expect(firstNameInput.getAttribute("aria-invalid")).toBe(null);
   expect(lastNameInput.getAttribute("aria-invalid")).toBe(null);
   expect(locationInput.getAttribute("aria-invalid")).toBe(null);
-  if (dateInput) {
-    expect(dateInput.getAttribute("aria-invalid")).toBe(null);
-  }
+  expect(dateInput?.getAttribute("aria-invalid")).toBe(null);
 
   const proceedButton = screen.getByRole("button", {
     name: "Find exposures",
@@ -124,9 +122,7 @@ it("form input elements have invalid state if left empty on step 2", async () =>
   expect(firstNameInput.getAttribute("aria-invalid")).toBe("true");
   expect(lastNameInput.getAttribute("aria-invalid")).toBe("true");
   expect(locationInput.getAttribute("aria-invalid")).toBe("true");
-  if (dateInput) {
-    expect(dateInput.getAttribute("aria-invalid")).toBe("true");
-  }
+  expect(dateInput?.getAttribute("aria-invalid")).toBe("true");
 });
 
 it("passes the axe accessibility test suite on step 3", async () => {
