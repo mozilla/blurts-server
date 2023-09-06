@@ -102,8 +102,8 @@ modal-heres-what-we-fixed-description-part-three = <b>In Progress</b> includes a
   difficult sites could take longer. You may also start to see removals
   happening within the same day.
 modal-cta-ok = OK
-modal-open-alt = Open modal
-modal-close-alt = Close modal
+modal-open-alt = Open
+modal-close-alt = Close
 
 # Icon alts / aria-labels
 chevron-down-alt = Expand
@@ -272,3 +272,7 @@ false-door-test-popup-close = Close
 false-door-test-phase-2-content-part-one = Did you know there are sites selling your private info?
 false-door-test-phase-2-content-part-two = Automatically remove data from sketchy sites.
 false-door-test-phase-2-content-part-two-dashboard = Automatically remove data from broker sites. 
+
+# Premium upsell dialog
+
+premium-upsell-dialog-title = Choose the level of protection that’s right for you

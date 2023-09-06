@@ -28,7 +28,6 @@ import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
-export const ONEREP_DATA_BROKER_COUNT = 190;
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -212,7 +211,10 @@ export const View = (props: Props) => {
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
-          data_broker_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_total_num: parseInt(
+            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+            10
+          ),
         },
         elems: {
           free_scan_link: <a href="/redesign/user/welcome" />,
