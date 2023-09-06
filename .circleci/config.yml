@@ -7,6 +7,18 @@ executors:
               auth:
                 username: $DOCKER_USER
                 password: $DOCKER_PASS
+    
+    node_with_python:
+        docker:
+            - image: cimg/node:18.12.1
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+            - image: cimg/python:3.9.7
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
+
     python:
         docker:
             - image: cimg/python:3.9.7
@@ -43,7 +55,7 @@ orbs:
 
 jobs:
     lint:
-        executor: node
+        executor: node_with_python
         steps:
             - checkout
             - node/install-packages
