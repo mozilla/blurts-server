@@ -59,6 +59,8 @@ jobs:
         steps:
             - checkout
             - node/install-packages
+            - run: sudo apt-get update
+            - run: sudo apt-get install python3.10-venv
             - run: npm run build-glean
             - run: npm run lint
     deploy:
