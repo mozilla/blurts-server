@@ -2,10 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import express from "express";
 import * as Sentry from "@sentry/node";
 import "@sentry/tracing";
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
+
+import * as pubsub from "@google-cloud/pubsub";
+import * as grpc from "@grpc/grpc-js";
 
 import { getSubscribersByHashes } from "../src/db/tables/subscribers.js";
 import { getEmailAddressesByHashes } from "../src/db/tables/emailAddresses.js";
@@ -30,27 +32,15 @@ import {
 } from "../src/utils/hibp.js";
 import { BadRequestError, TooManyRequestsError } from "../src/utils/error.js";
 
-const app = express();
-
-app.use(bearerToken);
-// sentry error handler
-app.use(
-  // TODO: Add unit test when changing this code:
-  /* c8 ignore next 5 */
-  Sentry.Handlers.errorHandler({
-    shouldHandleError(error) {
-      if (error instanceof TooManyRequestsError) return true;
-    },
-  })
-);
-app.use(errorHandler);
-app.post("/api/v1/hibp/notify", notify);
+const projectId = "rhelmer-monitor-local-dev";
+const subscriptionName = "hibp-cron";
 
 async function init() {
   // TODO: Add unit test when changing this code:
   /* c8 ignore next 3 */
   await initFluentBundles();
   await initEmail();
+  await poll();
 }
 init();
 
@@ -66,161 +56,181 @@ init();
  * - hashSuffixes
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  *
- * @param {import('express').RequestHandler} req
- * @param {import('express').Response} res
  */
-async function notify(req, res) {
-  if (!req.token || req.token !== process.env.HIBP_NOTIFY_TOKEN) {
-    const errorMessage =
-      "HIBP notify endpoint requires valid authorization token.";
-    // FIXME
-    // throw new UnauthorizedError(errorMessage)
-    return res.status(403, errorMessage);
-  }
+async function poll() {
+  const subClient = new pubsub.v1.SubscriberClient({
+    servicePath: "localhost",
+    port: "8085",
+    sslCreds: grpc.credentials.createInsecure(),
+  });
 
-  if (
-    !["breachName", "hashPrefix", "hashSuffixes"].every(
-      req.body?.hasOwnProperty,
-      req.body
-    )
-  ) {
-    throw new BadRequestError(
-      "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
-    );
-  }
-
-  const { breachName, hashPrefix, hashSuffixes } = req.body;
-
-  await loadBreachesIntoApp(req.app);
-  let breachAlert = getBreachByName(req.app.locals.breaches, breachName);
-
-  if (!breachAlert) {
-    // If breach isn't found, try to reload breaches from HIBP
-    console.debug("notify", "Breach is not found, reloading breaches...");
-    await loadBreachesIntoApp(req.app);
-    breachAlert = getBreachByName(req.app.locals.breaches, breachName);
-    if (!breachAlert) {
-      // If breach *still* isn't found, we have a real error
-      throw new Error("Unrecognized breach: " + breachName);
-    }
-  }
-
-  const { IsVerified, Domain, IsFabricated, IsSpamList } = breachAlert;
-
-  // If any of the following conditions are not satisfied:
-  // Do not send the breach alert email! The `logId`s are being used for
-  // logging in case we decide to not send the alert.
-  const emailDeliveryConditions = [
-    {
-      logId: "isNotVerified",
-      condition: !IsVerified,
-    },
-    {
-      logId: "domainEmpty",
-      condition: Domain === "",
-    },
-    {
-      logId: "isFabricated",
-      condition: IsFabricated,
-    },
-    {
-      logId: "isSpam",
-      condition: IsSpamList,
-    },
-  ];
-
-  const unsatisfiedConditions = emailDeliveryConditions.filter(
-    (condition) => condition.condition
+  const formattedSubscription = subClient.subscriptionPath(
+    projectId,
+    subscriptionName
   );
 
-  const doNotSendEmail = unsatisfiedConditions.length > 0;
+  const [response] = await subClient.pull({
+    subscription: formattedSubscription,
+    maxMessages: 10,
+  });
 
-  if (doNotSendEmail) {
-    // Get a list of the failed condition `logId`s
-    const conditionLogIds = unsatisfiedConditions
-      .map((condition) => condition.logId)
-      .join(", ");
+  // Process the messages.
+  for (const message of response.receivedMessages || []) {
+    console.log(`Received message: ${message.message.data}`);
+    const data = JSON.parse(message.message.data);
 
-    console.info("Breach alert email was not sent.", {
-      name: breachAlert.Name,
-      reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
-    });
-
-    return res.status(200).json({
-      info: "Breach loaded into database. Subscribers not notified.",
-    });
-  }
-
-  try {
-    const reqHashPrefix = hashPrefix.toLowerCase();
-    const hashes = hashSuffixes.map(
-      (suffix) => reqHashPrefix + suffix.toLowerCase()
-    );
-    const subscribers = await getSubscribersByHashes(hashes);
-    const emailAddresses = await getEmailAddressesByHashes(hashes);
-    const recipients = subscribers.concat(emailAddresses);
-
-    console.info(EmailTemplateType.Notification, {
-      breachAlertName: breachAlert.Name,
-      length: recipients.length,
-    });
-
-    const utmCampaignId = "breach-alert";
-    const notifiedRecipients = [];
-
-    for (const recipient of recipients) {
-      console.info("notify", { recipient });
-
-      // Get subscriber ID from:
-      // - `subscriber_id`: if `email_addresses` record
-      // - `id`: if `subscribers` record
-      const subscriberId = recipient.subscriber_id ?? recipient.id;
-      const { recipientEmail, breachedEmail, signupLanguage } =
-        getAddressesAndLanguageForEmail(recipient);
-
-      const requestedLanguage = signupLanguage
-        ? acceptedLanguages(signupLanguage)
-        : [];
-
-      const availableLanguages = req.app.locals.AVAILABLE_LANGUAGES;
-      const supportedLocales = negotiateLanguages(
-        requestedLanguage,
-        availableLanguages,
-        { defaultLocale: "en" }
+    if (!(data.breachName && data.hashPrefix && data.hashSuffixes)) {
+      console.error(
+        "HIBP breach notification: requires breachName, hashPrefix, and hashSuffixes."
       );
-
-      if (!notifiedRecipients.includes(breachedEmail)) {
-        const data = {
-          breachData: breachAlert,
-          breachLogos: req.app.locals.breachLogoMap,
-          breachedEmail,
-          ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
-          heading: getMessage("email-spotted-new-breach"),
-          // Override recipient if explicitly set in req
-          recipientEmail: req.body.recipient ?? recipientEmail,
-          subscriberId,
-          supportedLocales,
-          utmCampaign: utmCampaignId,
-        };
-
-        const emailTemplate = getTemplate(data, breachAlertEmailPartial);
-        const subject = getMessage("breach-alert-subject");
-
-        await sendEmail(data.recipientEmail, subject, emailTemplate);
-
-        notifiedRecipients.push(breachedEmail);
-      }
+      continue;
     }
 
-    console.info("notified", { length: notifiedRecipients.length });
+    const { breachName, hashPrefix, hashSuffixes } = data;
+    /*
+    await loadBreachesIntoApp(req.app);
+    let breachAlert = getBreachByName(req.app.locals.breaches, breachName);
 
-    res.status(200).json({
-      info: "Notified subscribers of breach.",
-    });
-  } catch (error) {
-    throw new Error(`Notifying subscribers of breach failed: ${error}`);
+    if (!breachAlert) {
+      // If breach isn't found, try to reload breaches from HIBP
+      console.debug("notify", "Breach is not found, reloading breaches...");
+      await loadBreachesIntoApp(req.app);
+      breachAlert = getBreachByName(req.app.locals.breaches, breachName);
+      if (!breachAlert) {
+        // If breach *still* isn't found, we have a real error
+        throw new Error("Unrecognized breach: " + breachName);
+      }
+    }
+    */
+    const breachAlert = {
+      IsVerified: true,
+      Domain: "example.com",
+      IsFabricated: false,
+      IsSpamList: false,
+    }; // FIXME
+
+    const { IsVerified, Domain, IsFabricated, IsSpamList } = breachAlert;
+
+    // If any of the following conditions are not satisfied:
+    // Do not send the breach alert email! The `logId`s are being used for
+    // logging in case we decide to not send the alert.
+    const emailDeliveryConditions = [
+      {
+        logId: "isNotVerified",
+        condition: !IsVerified,
+      },
+      {
+        logId: "domainEmpty",
+        condition: Domain === "",
+      },
+      {
+        logId: "isFabricated",
+        condition: IsFabricated,
+      },
+      {
+        logId: "isSpam",
+        condition: IsSpamList,
+      },
+    ];
+
+    const unsatisfiedConditions = emailDeliveryConditions.filter(
+      (condition) => condition.condition
+    );
+
+    const doNotSendEmail = unsatisfiedConditions.length > 0;
+
+    if (doNotSendEmail) {
+      // Get a list of the failed condition `logId`s
+      const conditionLogIds = unsatisfiedConditions
+        .map((condition) => condition.logId)
+        .join(", ");
+
+      console.info("Breach alert email was not sent.", {
+        name: breachAlert.Name,
+        reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
+      });
+
+      console.info("Breach loaded into database. Subscribers not notified.");
+
+      subClient.acknowledge({
+        subscription: formattedSubscription,
+        ackIds: [message.ackId],
+      });
+
+      continue;
+    }
+
+    try {
+      const reqHashPrefix = hashPrefix.toLowerCase();
+      const hashes = hashSuffixes.map(
+        (suffix) => reqHashPrefix + suffix.toLowerCase()
+      );
+      const subscribers = await getSubscribersByHashes(hashes);
+      const emailAddresses = await getEmailAddressesByHashes(hashes);
+      const recipients = subscribers.concat(emailAddresses);
+
+      console.info(EmailTemplateType.Notification, {
+        breachAlertName: breachAlert.Name,
+        length: recipients.length,
+      });
+
+      const utmCampaignId = "breach-alert";
+      const notifiedRecipients = [];
+
+      for (const recipient of recipients) {
+        console.info("notify", { recipient });
+
+        // Get subscriber ID from:
+        // - `subscriber_id`: if `email_addresses` record
+        // - `id`: if `subscribers` record
+        const subscriberId = recipient.subscriber_id ?? recipient.id;
+        const { recipientEmail, breachedEmail, signupLanguage } =
+          getAddressesAndLanguageForEmail(recipient);
+
+        const requestedLanguage = signupLanguage
+          ? acceptedLanguages(signupLanguage)
+          : [];
+
+        // const availableLanguages = req.app.locals.AVAILABLE_LANGUAGES;
+        const availableLanguages = "en"; // FIXME
+        const supportedLocales = negotiateLanguages(
+          requestedLanguage,
+          availableLanguages,
+          { defaultLocale: "en" }
+        );
+
+        if (!notifiedRecipients.includes(breachedEmail)) {
+          const data = {
+            breachData: breachAlert,
+            breachLogos: [], //req.app.locals.breachLogoMap FIXME
+            breachedEmail,
+            ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
+            heading: getMessage("email-spotted-new-breach"),
+            // Override recipient if explicitly set in req
+            recipientEmail,
+            subscriberId,
+            supportedLocales,
+            utmCampaign: utmCampaignId,
+          };
+
+          const emailTemplate = getTemplate(data, breachAlertEmailPartial);
+          const subject = getMessage("breach-alert-subject");
+
+          // await sendEmail(data.recipientEmail, subject, emailTemplate);
+
+          notifiedRecipients.push(breachedEmail);
+        }
+      }
+
+      console.info("notified", { length: notifiedRecipients.length });
+
+      subClient.acknowledge({
+        subscription: formattedSubscription,
+        ackIds: [message.ackId],
+      });
+    } catch (error) {
+      console.error(`Notifying subscribers of breach failed: ${error}`);
+    }
   }
 }
 /* c8 ignore stop */
-
-export { app };
