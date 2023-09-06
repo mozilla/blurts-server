@@ -6,8 +6,6 @@ import { BreachDataTypes } from "./breach";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { GuidedExperienceBreaches } from "../server/getUserBreaches";
 
-// NOTE: Better name for this function?
-
 export function getGuidedExperienceBreaches(
   subscriberBreaches: SubscriberBreach[]
 ): GuidedExperienceBreaches {

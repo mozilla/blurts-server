@@ -378,7 +378,6 @@ export const ClockIcon = (props: SVGProps<SVGSVGElement> & { alt: string }) => {
       className={`${props.className ?? ""} ${styles.colorifyFill}`}
     >
       <title>{props.alt}</title>
-
       <path
         fillRule="evenodd"
         clipRule="evenodd"

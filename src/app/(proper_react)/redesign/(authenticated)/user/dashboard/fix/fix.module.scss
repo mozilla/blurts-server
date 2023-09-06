@@ -14,7 +14,6 @@
   .fixWrapper {
     max-width: $content-xl;
     width: 100%;
-    --arrowGapOffset: -50px; // Move up the arrows, since they're not perfectly vertically centered
     padding: $layout-sm;
     background-color: $color-white;
     background-size: cover;
