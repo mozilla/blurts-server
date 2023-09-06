@@ -54,14 +54,26 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       <li>
         {l10n.getFragment("high-risk-breach-social-security-step-one", {
           elems: {
-            link_to_info: <a href={stepOneSSNLink} />,
+            link_to_info: (
+              <a
+                href={stepOneSSNLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            ),
           },
         })}
       </li>
       <li>
         {l10n.getFragment("high-risk-breach-social-security-step-two", {
           elems: {
-            link_to_info: <a href={stepTwoSSNLink} />,
+            link_to_info: (
+              <a
+                href={stepTwoSSNLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            ),
           },
         })}
       </li>

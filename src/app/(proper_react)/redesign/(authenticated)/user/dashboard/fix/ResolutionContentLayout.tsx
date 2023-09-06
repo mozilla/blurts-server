@@ -15,10 +15,7 @@ import { useL10n } from "../../../../../../hooks/l10n";
 type ResolutionContentLayoutProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
   title: string;
-  illustration: {
-    img: string;
-    alt: string;
-  };
+  illustration: string;
   cta: {
     label: string;
     onClick: () => void;
@@ -70,7 +67,7 @@ export const ResolutionContentLayout = (
         )}
       </div>
       <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
-        <Image src={props.illustration.img} alt={props.illustration.alt} />
+        <Image src={props.illustration} alt="" />
       </div>
     </div>
   );
