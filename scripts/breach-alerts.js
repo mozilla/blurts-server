@@ -25,17 +25,15 @@ import { initFluentBundles, getMessage } from "../src/utils/fluent.js";
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
-  loadBreachesIntoApp,
+  getAllBreachesFromDb,
 } from "../src/utils/hibp.js";
 
 const projectId = "rhelmer-monitor-local-dev";
 const subscriptionName = "hibp-cron";
 
-// TODO: Add unit test when changing this code:
 /**
- * Fetch the latest
- * This function attempts to retrieve the breach info from the local cache, if not found
- * it retrieves it from the database
+ * Fetch the latest HIBP breach data from GCP PubSub queue.
+ *
  * A breach notification contains the following parameters:
  * - breachName
  * - hashPrefix
@@ -72,28 +70,10 @@ async function poll() {
     }
 
     const { breachName, hashPrefix, hashSuffixes } = data;
-    /* FIXME provide alternative method to load breach alerts outside Express
-    await loadBreachesIntoApp(req.app);
-    let breachAlert = getBreachByName(req.app.locals.breaches, breachName);
 
-    if (!breachAlert) {
-      // If breach isn't found, try to reload breaches from HIBP
-      console.debug("notify", "Breach is not found, reloading breaches...");
-      await loadBreachesIntoApp(req.app);
-      breachAlert = getBreachByName(req.app.locals.breaches, breachName);
-      if (!breachAlert) {
-        // If breach *still* isn't found, we have a real error
-        throw new Error("Unrecognized breach: " + breachName);
-      }
-    }
-    */
-    const breachAlert = {
-      Name: breachName,
-      IsVerified: true,
-      Domain: "example.com",
-      IsFabricated: false,
-      IsSpamList: false,
-    }; // FIXME
+    // FIXME the script hangs for a ~1 minute after call a DB-related function for the first time.
+    const breaches = await getAllBreachesFromDb();
+    const breachAlert = getBreachByName(breaches, breachName);
 
     const { IsVerified, Domain, IsFabricated, IsSpamList } = breachAlert;
 
@@ -152,13 +132,6 @@ async function poll() {
         (suffix) => reqHashPrefix + suffix.toLowerCase()
       );
 
-      subClient.acknowledge({
-        subscription: formattedSubscription,
-        ackIds: [message.ackId],
-      });
-
-      continue; // FIXME
-
       const subscribers = await getSubscribersByHashes(hashes);
       const emailAddresses = await getEmailAddressesByHashes(hashes);
       const recipients = subscribers.concat(emailAddresses);
@@ -185,7 +158,6 @@ async function poll() {
           ? acceptedLanguages(signupLanguage)
           : [];
 
-        // const availableLanguages = req.app.locals.AVAILABLE_LANGUAGES;
         const availableLanguages = "en"; // FIXME
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
@@ -196,11 +168,10 @@ async function poll() {
         if (!notifiedRecipients.includes(breachedEmail)) {
           const data = {
             breachData: breachAlert,
-            breachLogos: [], //req.app.locals.breachLogoMap FIXME
+            breachLogos: [], // FIXME
             breachedEmail,
             ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
             heading: getMessage("email-spotted-new-breach"),
-            // Override recipient if explicitly set in req
             recipientEmail,
             subscriberId,
             supportedLocales,
@@ -217,6 +188,11 @@ async function poll() {
       }
 
       console.info("notified", { length: notifiedRecipients.length });
+
+      subClient.acknowledge({
+        subscription: formattedSubscription,
+        ackIds: [message.ackId],
+      });
     } catch (error) {
       console.error(`Notifying subscribers of breach failed: ${error}`);
     }
@@ -224,7 +200,6 @@ async function poll() {
 }
 
 async function init() {
-  // TODO: Add unit test when changing this code
   await initFluentBundles();
   await initEmail();
   await poll();
