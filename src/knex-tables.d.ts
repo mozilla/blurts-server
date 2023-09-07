@@ -4,6 +4,7 @@
 
 import { Knex } from "knex";
 import { ScanResult } from "./app/functions/server/onerep";
+import { StateAbbr } from "./utils/states";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -162,6 +163,26 @@ declare module "knex/types/tables" {
     "id" | "created_at" | "updated_at"
   >;
 
+  interface OnerepProfileRow {
+    id: number;
+    onerep_profile_id: null | SubscriberRow["onerep_profile_id"];
+    first_name: string;
+    last_name: string;
+    city_name: string;
+    state_code: StateAbbr;
+    date_of_birth: Date;
+    created_at: Date;
+    updated_at: Date;
+  }
+  type OnerepProfileOptionalColumns = Extract<
+    keyof OnerepProfileRow,
+    "onerep_profile_id"
+  >;
+  type OnerepProfileAutoInsertedColumns = Extract<
+    keyof OnerepProfileRow,
+    "id" | "created_at" | "updated_at"
+  >;
+
   interface Tables {
     feature_flags: Knex.CompositeTableType<
       FeatureFlagRow,
@@ -217,6 +238,19 @@ declare module "knex/types/tables" {
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
       Partial<Omit<OnerepScanRow, "id" | "created_at">> &
         Pick<OnerepScanRow, "updated_at">
+    >;
+
+    onerep_profiles: Knex.CompositeTableType<
+      OnerepProfileRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<
+        OnerepProfileRow,
+        OnerepProfileAutoInsertedColumns | OnerepProfileOptionalColumns
+      > &
+        Partial<Pick<OnerepProfileRow, OnerepProfileOptionalColumns>>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
+      Partial<Omit<OnerepProfileRow, "id" | "created_at">> &
+        Pick<OnerepProfileRow, "updated_at">
     >;
   }
 }
