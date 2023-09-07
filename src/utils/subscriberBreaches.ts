@@ -5,11 +5,12 @@
 import { getUserEmails } from "../db/tables/emailAddresses.js";
 import { HibpLikeDbBreach, getBreachesForEmail } from "./hibp.js";
 import { getSha1 } from "./fxa.js";
-import { BreachDataTypes, filterBreachDataTypes } from "./breachResolution.js";
+import { filterBreachDataTypes } from "./breachResolution.js";
 import {
   Breach,
   Subscriber,
 } from "../app/(nextjs_migration)/(authenticated)/user/breaches/breaches.js";
+import { BreachDataTypes } from "../app/functions/universal/breach";
 
 export type DataClassEffected = {
   [dataType: string]: number | string[];
@@ -17,7 +18,10 @@ export type DataClassEffected = {
 export interface SubscriberBreach {
   addedDate: string;
   breachDate: string;
-  dataClasses: string[];
+  dataClasses: Array<(typeof BreachDataTypes)[keyof typeof BreachDataTypes]>;
+  resolvedDataClasses: Array<
+    (typeof BreachDataTypes)[keyof typeof BreachDataTypes]
+  >;
   description: string;
   domain: string;
   id: number;
@@ -82,6 +86,8 @@ export async function getSubBreaches(
         addedDate: breach.AddedDate,
         breachDate: breach.BreachDate,
         dataClasses: filteredBreachDataClasses,
+        resolvedDataClasses:
+          breachResolution[breach.Id]?.resolutionsChecked ?? [],
         description: breach.Description,
         domain: breach.Domain,
         isResolved: breachResolution[breach.Id]?.isResolved || false,

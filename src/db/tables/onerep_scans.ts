@@ -9,17 +9,14 @@ import { Subscriber } from "../../app/(nextjs_migration)/(authenticated)/user/br
 import { OnerepScanResultRow, OnerepScanRow } from "knex/types/tables";
 const knex = initKnex(knexConfig);
 
-export interface GetLatestOnerepScanResult {
-  onerep_scan_id: number;
-  created_at: number;
-  updated_at: number;
-  onerep_scan_results: { data: ScanResult[] } | null;
-  onerep_scan_reason: string;
+export interface LatestOnerepScanData {
+  scan: OnerepScanRow | null;
+  results: OnerepScanResultRow[];
 }
 
 async function getLatestOnerepScanResults(
   onerepProfileId: number
-): Promise<{ scan: OnerepScanRow | null; results: OnerepScanResultRow[] }> {
+): Promise<LatestOnerepScanData> {
   const scan = await knex("onerep_scans")
     .first()
     .where("onerep_profile_id", onerepProfileId)
