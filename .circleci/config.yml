@@ -64,7 +64,11 @@ jobs:
             - run: npm run build-glean
             - run: npm run lint
     deploy:
-        executor: node_with_python
+        docker:
+            - image: docker:stable-git
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
         working_directory: /dockerflow
         steps:
             - checkout
