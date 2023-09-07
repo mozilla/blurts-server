@@ -1,7 +1,7 @@
 @import "../../tokens";
 
 .stepsWrapper {
-  margin-block-end: $spacing-2xl;
+  margin-block-end: $layout-lg;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,18 +22,62 @@
 
 @media screen and (min-width: $screen-md) {
   .steps {
-    $stepGap: $spacing-xl;
+    $stepGap: $layout-xl;
+    $iconDiameter: 27px;
+    $iconBorderWidth: 4px;
+    $connectingLineHeight: 4px;
+
     padding-inline-start: 0;
     list-style-type: none;
     display: flex;
     gap: $stepGap;
-    max-width: $content-md;
     position: relative;
+    max-width: $content-md;
+    align-items: center;
+
+    .progressBarLineContainer {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      margin: auto;
+
+      .progressBarLineWrapper {
+        width: 100%;
+        height: 3px;
+        background-color: $color-grey-30;
+        position: relative;
+
+        .activeProgressBarLine {
+          background-color: $color-purple-10;
+          height: 3px;
+          position: absolute;
+
+          // These are not arbitrary "magic numbers." The width represents an increment of 100/8 due to the progress bar's ratio.
+          // 16.6667 is the closest round approximation of 100/8.
+          &.duringDataBrokerProfiles {
+            width: calc(16.6667% + $iconDiameter);
+          }
+          &.beginHighRiskDataBreaches {
+            width: 33.3333%;
+          }
+          &.duringHighRiskDataBreaches {
+            width: 50%;
+          }
+          &.beginLeakedPasswords {
+            width: 66.6667%;
+          }
+          &.duringLeakedPasswords {
+            width: calc(87.5% - $iconDiameter);
+          }
+          &.beginSecurityRecommendations {
+            width: 100%;
+          }
+        }
+      }
+    }
 
     li {
-      $iconDiameter: 27px;
-      $iconBorderWidth: 4px;
-      $connectingLineHeight: 4px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -42,7 +86,12 @@
       font: $text-body-xs;
       font-weight: 400;
       color: $color-grey-30;
-      width: $layout-xl;
+
+      .stepLabel {
+        margin-top: $layout-md;
+        position: absolute;
+        width: 100px;
+      }
 
       img {
         background-color: $color-grey-30;
@@ -56,33 +105,6 @@
         user-select: none;
         // Overlap the `::before` (the horizontal line)
         z-index: 1;
-      }
-
-      // This is the horizontal line preceding every step indicator on desktop.
-      // It starts with `+ 2` because the lines are only between indicators, so
-      // the first one doesn't have a line preceding it, and nth-child is
-      // 1-indexed, i.e. it doesn't start at 0.
-      &:nth-child(n + 2)::before {
-        content: "";
-        background-color: $color-grey-30;
-        width: $layout-xl;
-        display: block;
-        height: $connectingLineHeight;
-        position: absolute;
-        top: calc(
-          ($iconDiameter + $connectingLineHeight) / 2 + $iconBorderWidth
-        );
-      }
-      // TODO: Update logic to calculate this programmatically without the magic numbers
-      // MAGIC NUMBERS ALL THE WAY DOWN
-      &:nth-child(2)::before {
-        left: 13%;
-      }
-      &:nth-child(3)::before {
-        left: 40%;
-      }
-      &:nth-child(4)::before {
-        left: 67%;
       }
 
       &[aria-current="step"] {
@@ -144,6 +166,7 @@
         color: $color-purple-70;
         font: $text-body-xs;
         font-weight: 600;
+        top: $spacing-lg;
       }
 
       &:not([aria-current="step"]) .stepLabel {

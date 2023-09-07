@@ -58,6 +58,10 @@ export const Steps = (props: {
 }) => {
   const l10n = useL10n();
 
+  const activeProgressBarPosition = calculateActiveProgressBarPosition(
+    props.pathname
+  );
+
   return (
     <ul className={styles.steps}>
       {props.navigationItems.map(
@@ -82,6 +86,37 @@ export const Steps = (props: {
           </li>
         )
       )}
+      <li className={styles.progressBarLineContainer}>
+        <div className={styles.progressBarLineWrapper}>
+          <div
+            className={`${
+              styles.activeProgressBarLine
+            } ${calculateActiveProgressBarPosition(props.pathname)}`}
+          ></div>
+        </div>
+      </li>
     </ul>
   );
 };
+
+function calculateActiveProgressBarPosition(pathname: string) {
+  if (pathname === "/redesign/user/dashboard/fix/high-risk-data-breaches") {
+    return styles.beginHighRiskDataBreaches;
+  } else if (
+    pathname.startsWith("/redesign/user/dashboard/fix/high-risk-data-breaches")
+  ) {
+    return styles.duringHighRiskDataBreaches;
+  } else if (pathname === "/redesign/user/dashboard/fix/leaked-passwords") {
+    return styles.beginLeakedPasswords;
+  } else if (
+    pathname.startsWith("/redesign/user/dashboard/fix/leaked-passwords")
+  ) {
+    return styles.duringLeakedPasswords;
+  } else if (
+    pathname === "/redesign/user/dashboard/fix/security-recommendations"
+  ) {
+    return styles.beginSecurityRecommendations;
+  } else {
+    return "";
+  }
+}
