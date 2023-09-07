@@ -38,6 +38,7 @@ const subscriptionName = "hibp-cron";
  * - breachName
  * - hashPrefix
  * - hashSuffixes
+ *
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
 async function poll() {
@@ -52,6 +53,7 @@ async function poll() {
     subscriptionName
   );
 
+  console.debug("polling pubsub...");
   const [response] = await subClient.pull({
     subscription: formattedSubscription,
     maxMessages: 10,
@@ -158,7 +160,7 @@ async function poll() {
           ? acceptedLanguages(signupLanguage)
           : [];
 
-        const availableLanguages = "en"; // FIXME
+        const availableLanguages = process.env.SUPPORTED_LOCALES;
         const supportedLocales = negotiateLanguages(
           requestedLanguage,
           availableLanguages,
@@ -206,5 +208,5 @@ async function init() {
 }
 
 init()
-  .then((_res) => console.info("init complete"))
+  .then(async (_res) => console.info("breach-alerts finished"))
   .catch((err) => console.error(err));
