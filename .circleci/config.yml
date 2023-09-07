@@ -69,6 +69,10 @@ jobs:
               auth:
                 username: $DOCKER_USER
                 password: $DOCKER_PASS
+            - image: cimg/python:3.9.7
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
         working_directory: /dockerflow
         steps:
             - checkout
