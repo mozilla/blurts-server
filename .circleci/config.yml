@@ -143,7 +143,9 @@ workflows:
                     tags:
                         only: /.*/
                     branches:
-                        only: main
+                        only:
+                            - main
+                            - debug-deploy-with-glean
 
             - deploy_heroku:
                 name: Deploy main to Heroku
@@ -152,7 +154,9 @@ workflows:
                     - lint
                 filters:
                     branches:
-                        only: main
+                        only:
+                            - main
+                            - debug-deploy-with-glean
 
             - deploy_heroku:
                 name: Deploy l10n to Heroku
