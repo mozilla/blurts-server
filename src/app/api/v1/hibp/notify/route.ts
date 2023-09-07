@@ -39,16 +39,18 @@ export async function POST(req: NextRequest) {
     (a) => a.name === `projects/${projectId}/topics/${topicName}`
   );
 
-  if (process.env.NODE_ENV === "development") {
-    try {
-      await pubsub.createTopic(topicName);
-      await pubsub.topic(topicName).createSubscription(subscriptionName);
-    } catch (ex) {
-      console.debug(ex);
+  if (topic.name !== `projects/${projectId}/topics/${topicName}`) {
+    if (process.env.NODE_ENV === "development") {
+      try {
+        await pubsub.createTopic(topicName);
+        await pubsub.topic(topicName).createSubscription(subscriptionName);
+      } catch (ex) {
+        console.debug(ex);
+      }
+    } else {
+      console.error("Topic not found:", topicName);
+      return NextResponse.json({ success: "false" }, { status: 500 });
     }
-  } else {
-    console.error("Topic not found:", topicName);
-    return NextResponse.json({ success: "false" }, { status: 500 });
   }
 
   try {
