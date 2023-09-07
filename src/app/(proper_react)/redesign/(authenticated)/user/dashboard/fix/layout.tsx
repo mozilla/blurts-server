@@ -55,7 +55,10 @@ export type FixLayoutProps = {
 
 const FixLayout = (props: FixLayoutProps) => {
   const pathname = usePathname();
-  const isHighRiskDataBreach = pathname.includes("high-risk-data-breaches");
+  const showBackgroundImage = [
+    "high-risk-data-breaches",
+    "security-recommendations",
+  ].some((path) => pathname.includes(path));
 
   const navigationItemsContent = [
     {
@@ -96,7 +99,7 @@ const FixLayout = (props: FixLayoutProps) => {
     <div className={styles.fixContainer}>
       <div
         className={`${styles.fixWrapper} ${
-          isHighRiskDataBreach ? styles.highRiskDataBreachContentBg : ""
+          showBackgroundImage ? styles.contentBackgroundImage : ""
         }`}
       >
         <FixNavigation navigationItems={navigationItemsContent} />

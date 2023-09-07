@@ -16,11 +16,7 @@ type HighRiskBreachContentProps = {
 
 export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   const l10n = useL10n();
-  let title,
-    secondaryDescription,
-    recommendationSteps,
-    breachIllustration,
-    illustrationAlt;
+  let title, description, recommendations, breachIllustration, illustrationAlt;
   // TODO: Expose email list & count here https://mozilla-hub.atlassian.net/browse/MNTOR-2112
   const emailsMonitored = ["email1@gmail.com", "email2@gmail.com"]; // mocked
   const emailsFormatter = new Intl.ListFormat(props.locale, {
@@ -91,10 +87,14 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
   switch (props.typeOfBreach) {
     case "creditCard":
       title = l10n.getString("high-risk-breach-credit-card-title");
-      secondaryDescription = (
+      description = (
         <p>{l10n.getString("high-risk-breach-credit-card-description")}</p>
       );
-      recommendationSteps = CreditCardRecommendationSteps;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: CreditCardRecommendationSteps,
+      };
       breachIllustration = CreditCardIllustration;
       illustrationAlt = l10n.getString(
         "high-risk-breach-credit-card-illustration-alt"
@@ -102,10 +102,14 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     case "ssnBreaches":
       title = l10n.getString("high-risk-breach-social-security-title");
-      secondaryDescription = (
+      description = (
         <p>{l10n.getString("high-risk-breach-social-security-description")}</p>
       );
-      recommendationSteps = SocialSecurityNumberRecommendationSteps;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: SocialSecurityNumberRecommendationSteps,
+      };
       breachIllustration = SocialSecurityNumberIllustration;
       illustrationAlt = l10n.getString(
         "high-risk-breach-social-security-illustration-alt"
@@ -113,10 +117,14 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     case "bankAccount":
       title = l10n.getString("high-risk-breach-bank-account-title");
-      secondaryDescription = (
+      description = (
         <p>{l10n.getString("high-risk-breach-bank-account-description")}</p>
       );
-      recommendationSteps = BankAccountRecommendationSteps;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: BankAccountRecommendationSteps,
+      };
       breachIllustration = BankAccountIllustration;
       illustrationAlt = l10n.getString(
         "high-risk-breach-bank-account-illustration-alt"
@@ -124,16 +132,18 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
       break;
     case "pin":
       title = l10n.getString("high-risk-breach-pin-title");
-      secondaryDescription = (
-        <p>{l10n.getString("high-risk-breach-pin-description")}</p>
-      );
-      recommendationSteps = pinRecommendationSteps;
+      description = <p>{l10n.getString("high-risk-breach-pin-description")}</p>;
+      recommendations = {
+        title: l10n.getString("high-risk-breach-heading"),
+        subtitle: l10n.getString("high-risk-breach-subheading"),
+        steps: pinRecommendationSteps,
+      };
       breachIllustration = pinIllustration;
       illustrationAlt = l10n.getString("high-risk-breach-pin-illustration-alt");
       break;
     default:
       title = l10n.getString("high-risk-breach-none-title");
-      secondaryDescription = (
+      description = (
         <>
           <p>
             {l10n.getString("high-risk-breach-none-description", {
@@ -173,8 +183,8 @@ export const HighRiskBreachContent = (props: HighRiskBreachContentProps) => {
 
   return {
     title,
-    secondaryDescription,
-    recommendationSteps,
+    description,
+    recommendations,
     breachIllustration,
     illustrationAlt,
   };

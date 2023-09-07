@@ -4,59 +4,40 @@
 
 "use client";
 
-import styles from "./ResolutionContentLayout.module.scss";
 import Image from "next/image";
 import { Button } from "../../../../../../components/server/Button";
 import Link from "next/link";
 import { ClockIcon } from "../../../../../../components/server/Icons";
 import { ReactNode } from "react";
 import { useL10n } from "../../../../../../hooks/l10n";
+import styles from "./ResolutionContainer.module.scss";
 
-type ResolutionContentLayoutProps = {
+type ResolutionContainerProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
   title: string;
-  illustration: string;
-  cta: {
-    label: string;
-    onClick: () => void;
-    skip?: string;
+  illustration: {
+    img: string;
+    alt: string;
   };
   estimatedTime?: number;
   children: ReactNode;
+  label?: string;
+  cta?: ReactNode;
 };
 
 // TODO: Add test once routes from MNTOR-1700 is available
 /* c8 ignore start */
-export const ResolutionContentLayout = (
-  props: ResolutionContentLayoutProps
-) => {
+export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
 
   return (
     // TODO: Check with design if toolbar should be on this page
     <div className={styles.container}>
       <div className={styles.breachContentWrapper}>
+        {props.label && <div className={styles.label}>{props.label}</div>}
         <h3>{props.title}</h3>
         {props.children}
-        <div className={styles.buttons}>
-          <Button
-            variant="primary"
-            small
-            onClick={() => {
-              props.cta.onClick;
-            }}
-          >
-            {props.cta.label}
-          </Button>
-          {props.cta.skip && (
-            <Link
-              // TODO: MNTOR-1700 Add routing logic here
-              href={props.cta.skip}
-            >
-              {l10n.getString("high-risk-breach-skip")}
-            </Link>
-          )}
-        </div>
+        {props.cta && <div className={styles.buttons}>{props.cta}</div>}
         {props.estimatedTime && (
           <div className={styles.estimatedTime}>
             <ClockIcon width="20" height="20" alt="" />
@@ -67,7 +48,7 @@ export const ResolutionContentLayout = (
         )}
       </div>
       <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
-        <Image src={props.illustration} alt="" />
+        <Image src={props.illustration.img} alt={props.illustration.alt} />
       </div>
     </div>
   );
