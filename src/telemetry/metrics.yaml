@@ -1,0 +1,28 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+# For more information on configuring this file:
+# https://mozilla.github.io/glean/book/reference/yaml/metrics.html
+
+---
+$schema: moz://mozilla.org/schemas/glean/metrics/2-0-0
+
+page:
+  view:
+    type: event
+    description: |
+      An event triggered when the page is loaded.
+    bugs:
+      - https://mozilla-hub.atlassian.net/browse/MNTOR-2022
+    data_reviews:
+      - https://bugzilla.mozilla.org/show_bug.cgi?id=1848664#c6
+    data_sensitivity:
+      - interaction
+    notification_emails:
+      - rhelmer@mozilla.com
+    expires: never
+    extra_keys:
+      path:
+        description: The path of the page.
+        type: string
