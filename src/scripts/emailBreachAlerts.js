@@ -54,11 +54,17 @@ const subscriptionName = "hibp-cron";
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
 async function poll() {
-  const subClient = new pubsub.v1.SubscriberClient({
-    servicePath: "localhost",
-    port: "8085",
-    sslCreds: grpc.credentials.createInsecure(),
-  });
+  let options = {};
+  if (process.env.NODE_ENV === "development") {
+    console.debug("Dev mode, connecting to local pubsub emulator");
+    options = {
+      servicePath: "localhost",
+      port: "8085",
+      sslCreds: grpc.credentials.createInsecure()
+    }
+  }
+
+  const subClient = new pubsub.v1.SubscriberClient(options);
 
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
