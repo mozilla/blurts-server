@@ -1,18 +1,18 @@
 # Use queues for more resilient backend services
 
-* Status: proposed
-* Deciders: TODO
-* Date: 2023-04-06
+- Status: proposed
+- Deciders: TODO
+- Date: 2023-04-06
 
 ## Context and Problem Statement
 
 Monitor has had occasional service problems when traffic spikes, which impact user availability of the service. This
 proposal separates the user-facing parts of the system from the data ingestion, so one failing does not impact the other.
 
-* When users add an email address to Monitor, the user is registered with the breach provider (HIBP)
-  * NOTE: this uses ranges of sha256 hash sums to provide k-anonymity, so PII like raw email addresses is not sent to HIBP
-* HIBP calls Monitor's `/hibp` API for each hash range, which (for large breaches) can cause substantial database write activity
-* Monitor sends email to user to notify them of breaches, which causes more users to click through to the site
+- When users add an email address to Monitor, the user is registered with the breach provider (HIBP)
+  - NOTE: this uses ranges of sha256 hash sums to provide k-anonymity, so PII like raw email addresses is not sent to HIBP
+- HIBP calls Monitor's `/hibp` API for each hash range, which (for large breaches) can cause substantial database write activity
+- Monitor sends email to user to notify them of breaches, which causes more users to click through to the site
 
 The primary problem in the past few outages have been from unhandled exceptions in handling the incoming data, which cause
 the app server(s) to restart. k8s notices that the pods are unhealthy and restarts them, which prolongs the downtime. Restarting
@@ -42,34 +42,40 @@ After:
 
 ## Decision Drivers
 
-* deliver information about newly-reported breaches to users as soon as possible
-* availability, security, and performance must be provided simultaneously
-* local development workflow impact should be as minimial as possible
+- deliver information about newly-reported breaches to users as soon as possible
+- availability, security, and performance must be provided simultaneously
+- local development workflow impact should be as minimial as possible
 
 ## Considered Options
 
-* GCP Cloud Tasks
-  * Cloud Tasks is a fully managed service that allows you to manage the execution, dispatch, and    delivery of a large number of distributed tasks. Using Cloud Tasks, you can perform work asynchronously outside of a user or service-to-service request.
-* GCP Pub/Sub
-  * Google Cloud Pub/Sub provides messaging between applications. Cloud Pub/Sub is designed to provide reliable, many-to-many, asynchronous messaging between applications. Publisher applications can send messages to a "topic" and other applications can subscribe to that topic to receive the messages.
-* AWS SQS
-  * Amazon SQS is a message queue service used by distributed applications to exchange messages through a polling model, and can be used to decouple sending and receiving components.
-* RabbitMQ
-  * RabbitMQ is a messaging broker - an intermediary for messaging. It gives your applications a common platform to send and receive messages, and your messages a safe place to live until received.
+- GCP Cloud Tasks
+  - Cloud Tasks is a fully managed service that allows you to manage the execution, dispatch, and delivery of a large number of distributed tasks. Using Cloud Tasks, you can perform work asynchronously outside of a user or service-to-service request.
+- GCP Pub/Sub
+  - Google Cloud Pub/Sub provides messaging between applications. Cloud Pub/Sub is designed to provide reliable, many-to-many, asynchronous messaging between applications. Publisher applications can send messages to a "topic" and other applications can subscribe to that topic to receive the messages.
+- AWS SQS
+  - Amazon SQS is a message queue service used by distributed applications to exchange messages through a polling model, and can be used to decouple sending and receiving components.
+- RabbitMQ
+  - RabbitMQ is a messaging broker - an intermediary for messaging. It gives your applications a common platform to send and receive messages, and your messages a safe place to live until received.
 
 ## Decision Outcome
 
-Chosen option: "GCP Cloud Tasks", because Monitor services already run in GCP, and it is relatively
+Chosen option: "GCP Pub/Sub", because Monitor services already run in GCP, and it is relatively
 simple to scale. In all cases, some level of monitoring and tuning is necessary to provide sufficiently
 capacity to ensure that tasks are not lost.
 
-From https://cloud.google.com/pubsub/docs/choosing-pubsub-or-cloud-tasks:
-> Overall Cloud Tasks are appropriate for use cases where a task producer needs to defer or control the execution timing of a specific webhook or remote procedure call. Pub/Sub is optimal for more general event data ingestion and distribution patterns where some degree of control over execution can be sacrificed.
-
 This will be realized in two phases:
 
-1. Separate out the data ingestion parts of the system, and host these separately from the user-facing APIs and pages.
-2. Introduce a queue between external providers and the data ingestion parts of the system.
+### Phase 1
+
+- Separate out the data ingestion parts of the system, and host these separately from the user-facing APIs and pages.
+- Introduce a queue between external providers and the data ingestion parts of the system.
+- Introduce an hourly cron job to act as the worker which ingests messages and performs the task (such as looking up impacted users and sending breach alerts).
+
+A cron job is easier for SRE to support for now, but is not running often enough to use for user-facing features, and isn't as easy to scale as HTTP endpoints.
+
+### Phase 2
+
+- Replace the cron job with an internal HTTP endpoint (backed by e.g. GCP Cloud Functions, or a separate app in our existing Kubernetes cluster).
 
 ### A note on PostgreSQL performance
 
@@ -78,10 +84,10 @@ This proposal focuses on queueing to be able to control the flow of tasks, but t
 further improvements that have been identified that would make Postgres itself more resilient to spikes in
 demand:
 
-* Use read replica(s)
-  * Right now, Monitor uses the same Postgres instance for reads and writes
-  * The GCP Cloud SQL managed service makes this pretty straightforward to set up, but Monitor will need to be modified to always send writes to the main server and reads to the replica(s).
-* Examine Postgres statistics and adjust indexes as necessary.
+- Use read replica(s)
+  - Right now, Monitor uses the same Postgres instance for reads and writes
+  - The GCP Cloud SQL managed service makes this pretty straightforward to set up, but Monitor will need to be modified to always send writes to the main server and reads to the replica(s).
+- Examine Postgres statistics and adjust indexes as necessary.
 
 There are likely schema changes that would improve performance as well, but we need to be careful to
 maintain backwards compatibility during migrations.
@@ -90,44 +96,45 @@ maintain backwards compatibility during migrations.
 
 ### [GCP Cloud Tasks](https://cloud.google.com/tasks)
 
-* Pros:
-  * Supports option of using cloud functions vs. having to host workers in k8s
-  * Relatively simple to set up and use compared to other options
-  * Mozilla is already using this cloud vendor
-* Cons:
-  * Locked in to GCP ecosystem
-  * Hard to test locally/offline
-    * No official emulator, unofficial open-source emulators exist
-  * Might be more difficult for external users of open-source
-  * No support for strict ordering
-    * https://cloud.google.com/tasks/docs/common-pitfalls
+- Pros:
+  - Supports option of using cloud functions vs. having to host workers in k8s
+  - Relatively simple to set up and use compared to other options
+  - Mozilla is already using this cloud vendor
+- Cons:
+  - Locked in to GCP ecosystem
+  - Hard to test locally/offline
+    - No official emulator, unofficial open-source emulators exist
+  - Might be more difficult for external users of open-source
+  - No support for strict ordering
+    - https://cloud.google.com/tasks/docs/common-pitfalls
 
 ### [GCP Pub/Sub](https://cloud.google.com/pubsub/docs/overview)
-* Pros:
-  * Mozilla is already using this cloud vendor
-  * Official emulator available to test locally/offline
-  * Configurable support for ordered delivery
-* Cons:
-  * Locked in to GCP ecosystem
-  * Might be more difficult for external users of open-source
+
+- Pros:
+  - Mozilla is already using this cloud vendor
+  - Official emulator available to test locally/offline
+  - Configurable support for ordered delivery
+- Cons:
+  - Locked in to GCP ecosystem
+  - Might be more difficult for external users of open-source
 
 ### [AWS SQS](https://aws.amazon.com/sqs/)
 
-* Pros:
-  * Mozilla is already using this cloud vendor
-  * Configurable support for ordered delivery
-* Cons:
-  * Locked in to AWS ecosystem
-  * Hard to test locally/offline
-    * No official emulator, unofficial open-source emulators exist
-  * Might be more difficult for external users of open-source
+- Pros:
+  - Mozilla is already using this cloud vendor
+  - Configurable support for ordered delivery
+- Cons:
+  - Locked in to AWS ecosystem
+  - Hard to test locally/offline
+    - No official emulator, unofficial open-source emulators exist
+  - Might be more difficult for external users of open-source
 
 ### [RabbitMQ](https://www.rabbitmq.com/)
 
-* Pros:
-  * Self-hosted
-  * Easy to run locally/offline
-  * Might be easier for external users of open-source
-  * Support for strict in-order delivery
-* Cons:
-  * Self-hosted, need to host and manage our own RabbitMQ cluster
+- Pros:
+  - Self-hosted
+  - Easy to run locally/offline
+  - Might be easier for external users of open-source
+  - Support for strict in-order delivery
+- Cons:
+  - Self-hosted, need to host and manage our own RabbitMQ cluster
