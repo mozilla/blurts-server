@@ -101,15 +101,14 @@ export function createRandomBreach(
 
   faker.seed(options.fakerSeed);
   return {
-    addedDate:
-      options.addedDate?.toISOString() ?? faker.date.recent().toISOString(),
-    breachDate: faker.date.recent().toISOString(),
+    addedDate: options.addedDate ?? faker.date.recent(),
+    breachDate: faker.date.recent(),
     dataClasses: dataClasses,
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
     favIconUrl: faker.system.fileName(),
-    modifiedDate: faker.date.recent().toISOString(),
+    modifiedDate: faker.date.recent(),
     name: faker.word.noun(),
     title: faker.word.noun(),
     isResolved: options.isResolved ?? faker.datatype.boolean(),
