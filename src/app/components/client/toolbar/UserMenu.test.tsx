@@ -64,6 +64,9 @@ it("checks if the user menu items are interactive", async () => {
   expect(settingsItem).toBeInTheDocument();
   const settingsItemWrapper = settingsItem.parentElement;
   const clickSettingsItemSpy = jest.spyOn(settingsItem, "click");
+  // Prevent the click from actually executing; otherwise we'll get a warning
+  // that JSDOM doesn't know how to mock switching from one page to another:
+  clickSettingsItemSpy.mockImplementationOnce(() => undefined);
   await user.click(settingsItemWrapper as HTMLElement);
   expect(clickSettingsItemSpy).toHaveBeenCalled();
 

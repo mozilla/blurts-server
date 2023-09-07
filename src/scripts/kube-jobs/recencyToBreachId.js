@@ -87,7 +87,6 @@ console.log(`Start time is: ${startTime}`)
 // load all breaches for ref
 const allBreaches = await getAllBreachesFromDb()
 if (allBreaches && allBreaches.length > 0) console.log('breaches loaded successfully! ', allBreaches.length)
-// console.log(JSON.stringify(allBreaches[0]))
 
 // find all subscribers who resolved any breaches in the past,
 // replace recency index with breach id
@@ -144,14 +143,12 @@ for (const subscriber of subscribersArr) {
 
       // find breach id for the breach
       const breachId = allBreaches.find(b => b.Name === breachName)?.Id
-      console.log({ breachId })
       newResolutions[email][breachId] = v2[email][recencyIndex]
     }
   }
 
   // check if v2 is changed, if so, upsert the new v2
   newResolutions.useBreachId = true
-  // console.log(JSON.stringify(newResolutions))
   updateCollection.push({ user: subscriber, updatedBreachesResolution: newResolutions })
 }
 

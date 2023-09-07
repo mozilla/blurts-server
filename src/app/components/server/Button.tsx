@@ -10,7 +10,6 @@ import { useButton } from "react-aria";
 export interface Props extends ComponentProps<"button"> {
   children: ReactNode;
   variant: "primary" | "secondary";
-  buttonType?: "button" | "link";
   className?: string;
   destructive?: boolean;
   disabled?: boolean;
@@ -25,7 +24,6 @@ export const Button = (
   const {
     children,
     variant,
-    buttonType,
     className,
     destructive,
     disabled,
@@ -56,7 +54,7 @@ export const Button = (
     .filter(Boolean)
     .join(" ");
 
-  return buttonType === "link" && href ? (
+  return typeof href === "string" ? (
     <Link href={href} className={classes}>
       {children}
     </Link>
