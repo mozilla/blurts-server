@@ -80,12 +80,6 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
    pip3 install -r .github/requirements.txt
    ```
 
-5. Generate required Glean files (needs re-ran anytime Glean `.yaml` files are updated):
-
-   ```sh
-   npm run build-glean
-   ```
-
 ### Run
 
 1. To run the server similar to production using a build phase, which includes minified and bundled assets:
