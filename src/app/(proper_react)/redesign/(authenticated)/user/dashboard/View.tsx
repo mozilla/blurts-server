@@ -28,6 +28,7 @@ import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
+import { hasPremium } from "../../../../../functions/universal/user";
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -204,6 +205,17 @@ export const View = (props: Props) => {
     ) {
       contentType = "LetsFixDataContent";
     }
+  }
+
+  // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
+  if (
+    props.countryCode &&
+    props.countryCode?.toLocaleLowerCase() === "us" &&
+    noUnresolvedExposures &&
+    !isScanResultItemsEmpty &&
+    !hasPremium(props.user)
+  ) {
+    contentType = "YourDataIsProtectedAllFixedContent";
   }
 
   // Fixed in: MNTOR-2011

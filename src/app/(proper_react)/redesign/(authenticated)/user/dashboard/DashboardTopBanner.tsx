@@ -10,6 +10,7 @@ import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
+import PremiumButton from "../../../../../components/client/PremiumButton";
 
 export type BannerContent =
   | "LetsFixDataContent"
@@ -17,6 +18,7 @@ export type BannerContent =
   | "NoExposuresFoundContent"
   | "ResumeBreachResolutionContent"
   | "YourDataIsProtectedContent"
+  | "YourDataIsProtectedAllFixedContent"
   | "NoContent";
 
 export type DashboardTopBannerProps = {
@@ -178,6 +180,23 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         >
           {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
         </Button>
+      ),
+      learnMore: null,
+    },
+    YourDataIsProtectedAllFixedContent: {
+      headline: l10n.getString(
+        "dashboard-top-banner-your-data-is-protected-title"
+      ),
+      description: l10n.getString(
+        "dashboard-top-banner-your-data-is-protected-all-fixed-description",
+        {
+          starting_exposure_total_num: totalExposures,
+        }
+      ),
+      cta: (
+        <PremiumButton
+          label={"dashboard-top-banner-your-data-is-protected-all-fixed-cta"}
+        />
       ),
       learnMore: null,
     },
