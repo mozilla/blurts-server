@@ -64,7 +64,11 @@ jobs:
             - run: npm run build-glean
             - run: npm run lint
     deploy:
-        executor: node_with_python
+        docker:
+            - image: docker:stable-git
+              auth:
+                username: $DOCKER_USER
+                password: $DOCKER_PASS
         working_directory: /dockerflow
         steps:
             - checkout
@@ -118,7 +122,7 @@ jobs:
         # is based on:
         # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/jobs/deploy-via-git.yml
         # https://github.com/CircleCI-Public/heroku-orb/blob/master/src/commands/deploy-via-git.yml
-        executor: python/default
+        executor: heroku/default
         parameters:
             app-name:
                 description: "The name of the Heroku App"
