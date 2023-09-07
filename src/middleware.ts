@@ -57,7 +57,11 @@ function generateCspData() {
   const cspHeaderParts = [
     "default-src 'self'",
     "base-uri 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://*.googletagmanager.com`,
+    `script-src 'self' ` +
+      (process.env.NODE_ENV === "development"
+        ? "'unsafe-eval' 'unsafe-inline'"
+        : `'nonce-${nonce}'`) +
+      ` https://*.googletagmanager.com`,
     "script-src-attr 'none'",
     `connect-src 'self' ${
       process.env.NODE_ENV === "development" ? "webpack://*" : ""
