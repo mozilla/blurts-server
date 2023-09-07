@@ -152,6 +152,14 @@ declare module "knex/types/tables" {
     created_at: Date;
     updated_at: Date;
   }
+  type OnerepScanOptionalColumns = Extract<
+    keyof OnerepScanRow,
+    "onerep_profile_id"
+  >;
+  type OnerepScanAutoInsertedColumns = Extract<
+    keyof OnerepScanRow,
+    "id" | "created_at" | "updated_at"
+  >;
 
   interface Tables {
     feature_flags: Knex.CompositeTableType<
@@ -195,6 +203,19 @@ declare module "knex/types/tables" {
         Partial<Pick<BreachRow, BreachOptionalColumns>>,
       // On updates, don't allow updating the ID; all other fields are optional:
       Partial<Omit<BreachRow, "id">>
+    >;
+
+    onerep_scans: Knex.CompositeTableType<
+      OnerepScanRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<
+        OnerepScanRow,
+        OnerepScanAutoInsertedColumns | OnerepScanOptionalColumns
+      > &
+        Partial<Pick<OnerepScanRow, OnerepScanOptionalColumns>>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
+      Partial<Omit<OnerepScanRow, "id" | "created_at">> &
+        Pick<OnerepScanRow, "updated_at">
     >;
   }
 }
