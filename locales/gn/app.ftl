@@ -727,8 +727,8 @@ brand-mozilla-vpn = { -brand-mozilla-vpn }
 
 ## User menu
 
-menu-button-title = Puruhára jeporavoha
-menu-button-alt = Embojuruja puruhára jeporavoha
+menu-button-title = Poruhára jeporavoha
+menu-button-alt = Embojuruja poruhára jeporavoha
 menu-list-accessible-label = Mba’ete jeporavoha
 menu-item-fxa = Eñangareko nde { -brand-fx-account }
 menu-item-fxa-alt = Embojuruja { -brand-fx-account } kuatiarogue
