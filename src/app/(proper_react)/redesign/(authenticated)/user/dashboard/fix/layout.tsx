@@ -2,113 +2,45 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
-import Link from "next/link";
-import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../../../../api/utils/auth";
+import { getSubscriberBreaches } from "../../../../../../functions/server/getUserBreaches";
+import { getGuidedExperienceBreaches } from "../../../../../../functions/universal/guidedExperienceBreaches";
+import { redirect } from "next/navigation";
 import { ReactNode } from "react";
-import { FixNavigation } from "../../../../../../components/client/FixNavigation";
-import styles from "./fix.module.scss";
-import ImageArrowLeft from "./images/icon-arrow-left.svg";
-import ImageArrowRight from "./images/icon-arrow-right.svg";
+import { FixView } from "./FixView";
+import { getLatestOnerepScan } from "../../../../../../../db/tables/onerep_scans";
+import { getOnerepProfileId } from "../../../../../../../db/tables/subscribers";
+import { canSubscribeToPremium } from "../../../../../../functions/universal/user";
+import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
+import { headers } from "next/headers";
 
-import imageClose from "./images/icon-close.svg";
-import stepDataBrokerProfilesIcon from "./images/step-counter-data-broker-profiles.svg";
-import stepHighRiskDataBreachesIcon from "./images/step-counter-high-risk.svg";
-import stepLeakedPasswordsIcon from "./images/step-counter-leaked-passwords.svg";
-import stepSecurityRecommendationsIcon from "./images/step-counter-security-recommendations.svg";
-import { usePathname } from "next/navigation";
+export default async function Layout({ children }: { children: ReactNode }) {
+  const session = await getServerSession(authOptions);
+  console.log(session);
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
+  }
+  const breaches = await getSubscriberBreaches(session.user);
+  const guidedExperience = getGuidedExperienceBreaches(breaches);
 
-// TODO:
-// Add logic to protect routes for specific users (premium/not, scan started/not)
-// Question: Can FXA redirect user back to specific URL (for returning upgrade users during fix data broker)
+  const headersList = headers();
+  const countryCode = getCountryCode(headersList);
+  const result = await getOnerepProfileId(session.user.subscriber.id);
+  const profileId = result[0]["onerep_profile_id"] as number;
+  if (
+    !profileId &&
+    canSubscribeToPremium({ user: session?.user, countryCode: countryCode })
+  ) {
+    return redirect("/redesign/user/welcome/");
+  }
 
-function NavigationClose() {
+  const scanResult = await getLatestOnerepScan(profileId);
+  const scanResultItems = scanResult?.onerep_scan_results?.data ?? [];
+
   return (
-    <Link href="redesign/user/dashboard" className={styles.navClose}>
-      <Image alt="" src={imageClose} />
-    </Link>
+    <FixView breaches={guidedExperience} userScannedResults={scanResultItems}>
+      {children}
+    </FixView>
   );
 }
-
-function NavigationArrowBack() {
-  return (
-    // FIXME: This navigation arrow should point to the previous step in whichever context it is loaded
-    <Link className={styles.navArrowBack} href="/redesign/user/dashboard">
-      <Image alt="" src={ImageArrowLeft} />
-    </Link>
-  );
-}
-
-function NavigationArrowNext() {
-  return (
-    // FIXME: This navigation arrow should point to the next step in whichever context it is loaded
-    <Link className={styles.navArrowNext} href="/redesign/user/dashboard">
-      <Image alt="" src={ImageArrowRight} />
-    </Link>
-  );
-}
-
-export type FixLayoutProps = {
-  children: ReactNode;
-};
-
-const FixLayout = (props: FixLayoutProps) => {
-  const pathname = usePathname();
-  const isHighRiskDataBreach = pathname.includes("high-risk-data-breaches");
-
-  const navigationItemsContent = [
-    {
-      key: "data-broker-profiles",
-      labelStringId: "fix-flow-nav-data-broker-profiles",
-      href: "/redesign/user/dashboard/fix/data-broker-profiles",
-      status: "#",
-      currentStepId: "dataBrokerProfiles",
-      imageId: stepDataBrokerProfilesIcon,
-    },
-    {
-      key: "high-risk-data-breaches",
-      labelStringId: "fix-flow-nav-high-risk-data-breaches",
-      href: "/redesign/user/dashboard/fix/high-risk-data-breaches",
-      status: "#",
-      currentStepId: "highRiskDataBreaches",
-      imageId: stepHighRiskDataBreachesIcon,
-    },
-    {
-      key: "leaked-passwords",
-      labelStringId: "fix-flow-nav-leaked-passwords",
-      href: "/redesign/user/dashboard/fix/leaked-passwords",
-      status: "#",
-      currentStepId: "leakedPasswords",
-      imageId: stepLeakedPasswordsIcon,
-    },
-    {
-      key: "security-recommendations",
-      labelStringId: "fix-flow-nav-security-recommendations",
-      href: "/redesign/user/dashboard/fix/security-recommendations",
-      status: "#",
-      currentStepId: "securityRecommendations",
-      imageId: stepSecurityRecommendationsIcon,
-    },
-  ];
-
-  return (
-    <div className={styles.fixContainer}>
-      <div
-        className={`${styles.fixWrapper} ${
-          isHighRiskDataBreach ? styles.highRiskDataBreachContentBg : ""
-        }`}
-      >
-        <FixNavigation navigationItems={navigationItemsContent} />
-        <NavigationClose />
-        <section className={styles.fixSection}>
-          <NavigationArrowBack />
-          <NavigationArrowNext />
-          {props.children}
-        </section>
-      </div>
-    </div>
-  );
-};
-
-export default FixLayout;

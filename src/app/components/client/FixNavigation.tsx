@@ -5,7 +5,6 @@
 "use client";
 
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import styles from "./FixNavigation.module.scss";
 import { useState } from "react";
 import { useL10n } from "../../hooks/l10n";
@@ -18,6 +17,7 @@ type StepId =
 
 export type Props = {
   navigationItems: Array<NavigationItem>;
+  pathname: string;
 };
 
 export const FixNavigation = (props: Props) => {
@@ -35,6 +35,7 @@ export const FixNavigation = (props: Props) => {
         navigationItems={props.navigationItems}
         showDataBrokerProfiles={showDataBrokerProfiles}
         currentStep={currentStep}
+        pathname={props.pathname}
       />
     </nav>
   );
@@ -44,7 +45,7 @@ export interface NavigationItem {
   key: string;
   labelStringId: string;
   href: string;
-  status: string;
+  status: string | number;
   currentStepId: string;
   imageId: string;
 }
@@ -53,10 +54,9 @@ export const Steps = (props: {
   showDataBrokerProfiles: boolean;
   currentStep: StepId;
   navigationItems: Array<NavigationItem>;
+  pathname: string;
 }) => {
   const l10n = useL10n();
-
-  const pathname = usePathname();
 
   return (
     <ul className={styles.steps}>
@@ -64,9 +64,9 @@ export const Steps = (props: {
         ({ key, labelStringId, href, imageId, status }) => (
           <li
             key={key}
-            aria-current={pathname.includes(href) ? "step" : undefined}
+            aria-current={props.pathname.includes(href) ? "step" : undefined}
             className={`${styles.fixNavigationItem} ${
-              pathname.includes(href) ? styles.active : ""
+              props.pathname.includes(href) ? styles.active : ""
             }`}
           >
             <Image
