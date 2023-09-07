@@ -18,9 +18,10 @@ import SignOutIcon from "../../../../client/images/icon-signout.svg";
 export type Props = {
   session: Session | null;
   fxaSettingsUrl: string;
+  nonce: string | undefined;
 };
 
-export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
+export const UserMenu = ({ session, fxaSettingsUrl, nonce }: Props) => {
   const l10n = useL10n();
   if (!session) {
     return null;
@@ -28,7 +29,11 @@ export const UserMenu = ({ session, fxaSettingsUrl }: Props) => {
 
   return (
     <div className="user-menu-wrapper" tabIndex={-1}>
-      <Script type="module" src="/nextjs_migration/client/js/userMenu.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/userMenu.js"
+        nonce={nonce}
+      />
       <button
         aria-expanded="false"
         aria-haspopup="true"

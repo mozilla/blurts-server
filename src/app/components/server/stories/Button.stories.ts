@@ -50,7 +50,6 @@ export const PrimaryLink: Story = {
   args: {
     variant: "primary",
     children: "Button",
-    buttonType: "link",
     href: "/",
   },
 };
@@ -59,7 +58,6 @@ export const SecondaryLink: Story = {
   args: {
     variant: "secondary",
     children: "Button",
-    buttonType: "link",
     href: "/",
   },
 };

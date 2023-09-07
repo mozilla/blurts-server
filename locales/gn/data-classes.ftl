@@ -17,7 +17,7 @@ biometric-data = Biométrico mba’ekuaarã
 # This string is the shortened version of "Biographies", and 
 # refers to biographical data about a user.
 bios = Haijehegua
-browser-user-agent-details = Puruhára pytyvõha kundahára mba’emimi
+browser-user-agent-details = Poruhára pytyvõha kundahára mba’emimi
 browsing-histories = Kundaha rembiasakue
 buying-preferences = Erohoryvéva jejogua
 car-ownership-statuses = Mba’yruguata mba’etee rehegua
@@ -143,9 +143,9 @@ survey-results = Ñeporandúgui osẽva
 taxation-records = Registro fiscal
 time-zones = Tendaguasu aravogua
 travel-habits = Jehokuévo ejapomeméva
-user-statuses = Puruhára rekotee
-user-website-urls = Puruhára ñanduti renda URLs
-usernames = Puruhára réra
+user-statuses = Poruhára rekotee
+user-website-urls = Poruhára ñanduti renda URLs
+usernames = Poruhára réra
 utility-bills = Mba’epurupyre kuatia
 vehicle-details = Mba’yruguata mba’emimi
 vehicle-identification-numbers-vins = Papapy mba’yrumýi jekuaarã (VINs)
