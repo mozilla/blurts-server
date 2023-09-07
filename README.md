@@ -104,6 +104,33 @@ We track commits that are largely style/formatting via `.git-blame-ignore-revs`.
 
 Monitor uses GCP PubSub for processing incoming breach data, this can be tested locally using an emulator: https://cloud.google.com/pubsub/docs/emulator
 
+#### Run the GCP PubSub emulator:
+
+```sh
+gcloud beta emulators pubsub start --project=rhelmer-monitor-local-dev
+```
+
+### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
+
+```sh
+$(gcloud beta emulators pubsub env-init)
+npm run dev
+```
+
+### Incoming WebHook requests from HIBP will be of the form:
+
+```sh
+curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["test"] }' \
+  -H "Authorization: Bearer unsafe-default-token-for-dev" \
+  http://localhost:6060/api/v1/hibp/notify
+```
+
+### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
+
+```sh
+node scripts/breach-alerts.js
+```
+
 ### Database
 
 To create the database tables ...
