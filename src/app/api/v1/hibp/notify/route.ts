@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     (a) => a.name === `projects/${projectId}/topics/${topicName}`
   );
 
-  if (topic.name !== `projects/${projectId}/topics/${topicName}`) {
+  if (!topic || topic.name !== `projects/${projectId}/topics/${topicName}`) {
     if (process.env.NODE_ENV === "development") {
       try {
         await pubsub.createTopic(topicName);

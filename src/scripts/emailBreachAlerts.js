@@ -2,31 +2,43 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import * as Sentry from "@sentry/node";
-import "@sentry/tracing";
+import Sentry from "@sentry/nextjs"
 import { acceptedLanguages, negotiateLanguages } from "@fluent/langneg";
 
 import * as pubsub from "@google-cloud/pubsub";
 import * as grpc from "@grpc/grpc-js";
 
-import { getSubscribersByHashes } from "../src/db/tables/subscribers.js";
-import { getEmailAddressesByHashes } from "../src/db/tables/emailAddresses.js";
-import { getTemplate } from "../src/views/emails/email2022.js";
-import { breachAlertEmailPartial } from "../src/views/emails/emailBreachAlert.js";
+import { getSubscribersByHashes } from "../db/tables/subscribers.js";
+import { getEmailAddressesByHashes } from "../db/tables/emailAddresses.js";
+import { getTemplate } from "../views/emails/email2022.js";
+import { breachAlertEmailPartial } from "../views/emails/emailBreachAlert.js";
 
 import {
   initEmail,
   EmailTemplateType,
   getEmailCtaHref,
   sendEmail,
-} from "../src/utils/email.js";
+} from "../utils/email.js";
 
-import { initFluentBundles, getMessage } from "../src/utils/fluent.js";
+import { initFluentBundles, getMessage } from "../utils/fluent.js";
 import {
   getAddressesAndLanguageForEmail,
   getBreachByName,
   getAllBreachesFromDb,
-} from "../src/utils/hibp.js";
+} from "../utils/hibp.js";
+
+const SENTRY_SLUG = "cron-breach-alerts";
+
+Sentry.init({
+  environment: process.env.APP_ENV,
+  dsn: process.env.SENTRY_DSN,
+  tracesSampleRate: 1.0,
+});
+
+const checkInId = Sentry.captureCheckIn({
+  monitorSlug: SENTRY_SLUG,
+  status: "in_progress",
+});
 
 const projectId = "rhelmer-monitor-local-dev";
 const subscriptionName = "hibp-cron";
@@ -208,5 +220,11 @@ async function init() {
 }
 
 init()
-  .then(async (_res) => console.info("breach-alerts finished"))
+  .then(async (_res) => {
+    Sentry.captureCheckIn({
+      checkInId,
+      monitorSlug: SENTRY_SLUG,
+      status: "ok",
+    });
+  })
   .catch((err) => console.error(err));

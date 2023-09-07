@@ -128,7 +128,7 @@ curl -d '{ "breachName": "000webhost", "hashPrefix": "test", "hashSuffixes": ["t
 ### This pubsub queue will be consumed by this cron job, which is responsible for looking up and emailing impacted users:
 
 ```sh
-node scripts/breach-alerts.js
+node src/scripts/emailBreachAlerts.js
 ```
 
 ### Database
