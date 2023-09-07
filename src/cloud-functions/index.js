@@ -143,10 +143,12 @@ async function notify(req, res) {
       .map((condition) => condition.logId)
       .join(", ");
 
-    console.info("Breach alert email was not sent.", {
-      name: breachAlert.Name,
-      reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
-    });
+    if (process.env.NODE_ENV !== "test") {
+      console.info("Breach alert email was not sent.", {
+        name: breachAlert.Name,
+        reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
+      });
+    }
 
     return res.status(200).json({
       info: "Breach loaded into database. Subscribers not notified.",

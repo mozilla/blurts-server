@@ -224,8 +224,6 @@ async function _addEmailHash (sha1, email, signupLanguage, verified = false) {
 // Not covered by tests; mostly side-effects. See test-coverage.md#mock-heavy
 /* c8 ignore start */
 async function addSubscriber (email, signupLanguage, fxaAccessToken = null, fxaRefreshToken = null, fxaProfileData = null) {
-  console.log({ email })
-  console.log({ signupLanguage })
   const emailHash = await _addEmailHash(getSha1(email), email, signupLanguage, true)
   const verified = await _verifySubscriber(emailHash)
   const verifiedSubscriber = Array.isArray(verified) ? verified[0] : null

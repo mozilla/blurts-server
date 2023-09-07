@@ -124,7 +124,7 @@ export default async function UserBreaches() {
       />
 
       <main data-partial="breaches">
-        {process.env.PREMIUM_ENABLED === "true" &&
+        {process.env.NEXT_PUBLIC_PREMIUM_ENABLED === "true" &&
         !(await isUserSubscribed()) ? (
           <section>
             <a

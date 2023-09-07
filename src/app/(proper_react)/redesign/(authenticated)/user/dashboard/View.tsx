@@ -28,7 +28,7 @@ import AllFixedLogo from "./images/dashboard-all-fixed.svg";
 import { FeatureFlagsEnabled } from "../../../../../functions/server/featureFlags";
 import { filterExposures } from "./filterExposures";
 import { SubscriberBreach } from "../../../../../../utils/subscriberBreaches";
-export const ONEREP_DATA_BROKER_COUNT = 190;
+import { hasPremium } from "../../../../../functions/universal/user";
 
 export type Props = {
   bannerData: DashboardSummary;
@@ -207,12 +207,26 @@ export const View = (props: Props) => {
     }
   }
 
+  // MNTOR-1940: US user who is returning to the experience, free, and has resolved all their tasks
+  if (
+    props.countryCode &&
+    props.countryCode?.toLocaleLowerCase() === "us" &&
+    noUnresolvedExposures &&
+    !isScanResultItemsEmpty &&
+    !hasPremium(props.user)
+  ) {
+    contentType = "YourDataIsProtectedAllFixedContent";
+  }
+
   // Fixed in: MNTOR-2011
   const freeScanCta = isScanResultItemsEmpty ? (
     <p>
       {l10n.getFragment("dashboard-exposures-all-fixed-free-scan", {
         vars: {
-          data_broker_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_total_num: parseInt(
+            process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+            10
+          ),
         },
         elems: {
           free_scan_link: <a href="/redesign/user/welcome" />,

@@ -16,3 +16,9 @@ jobs:
       - run: npm ci
       - run: cp .env-dist .env
       - run: npm test
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: coverage-report
+          path: coverage/
+          retention-days: 30
