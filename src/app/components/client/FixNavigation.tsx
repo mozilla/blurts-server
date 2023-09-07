@@ -8,6 +8,7 @@ import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
 import { useState } from "react";
 import { useL10n } from "../../hooks/l10n";
+import { CheckIcon } from "../server/Icons";
 
 type StepId =
   | "dataBrokerProfiles"
@@ -58,9 +59,36 @@ export const Steps = (props: {
 }) => {
   const l10n = useL10n();
 
-  const activeProgressBarPosition = calculateActiveProgressBarPosition(
-    props.pathname
-  );
+  const stepOrder = [
+    "/redesign/user/dashboard/fix/data-broker-profiles",
+    "/redesign/user/dashboard/fix/high-risk-data-breaches",
+    "/redesign/user/dashboard/fix/leaked-passwords",
+    "/redesign/user/dashboard/fix/security-recommendations",
+  ];
+
+  function calculateActiveProgressBarPosition(pathname: string) {
+    if (pathname === "/redesign/user/dashboard/fix/high-risk-data-breaches") {
+      return styles.beginHighRiskDataBreaches;
+    } else if (
+      pathname.startsWith(
+        "/redesign/user/dashboard/fix/high-risk-data-breaches"
+      )
+    ) {
+      return styles.duringHighRiskDataBreaches;
+    } else if (pathname === "/redesign/user/dashboard/fix/leaked-passwords") {
+      return styles.beginLeakedPasswords;
+    } else if (
+      pathname.startsWith("/redesign/user/dashboard/fix/leaked-passwords")
+    ) {
+      return styles.duringLeakedPasswords;
+    } else if (
+      pathname === "/redesign/user/dashboard/fix/security-recommendations"
+    ) {
+      return styles.beginSecurityRecommendations;
+    } else {
+      return "";
+    }
+  }
 
   return (
     <ul className={styles.steps}>
@@ -69,17 +97,15 @@ export const Steps = (props: {
           <li
             key={key}
             aria-current={props.pathname.includes(href) ? "step" : undefined}
-            className={`${styles.fixNavigationItem} ${
+            className={`${styles.navigationItem} ${
               props.pathname.includes(href) ? styles.active : ""
             }`}
           >
-            <Image
-              // TODO: Add "isDone" logic
-              src={imageId}
-              alt=""
-              width={22}
-              height={22}
-            />
+            <div className={styles.stepIcon}>
+              <Image src={imageId} alt="" width={22} height={22} />
+              {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
+            </div>
+
             <div className={styles.stepLabel}>
               {l10n.getString(labelStringId)} ({status})
             </div>
@@ -98,25 +124,3 @@ export const Steps = (props: {
     </ul>
   );
 };
-
-function calculateActiveProgressBarPosition(pathname: string) {
-  if (pathname === "/redesign/user/dashboard/fix/high-risk-data-breaches") {
-    return styles.beginHighRiskDataBreaches;
-  } else if (
-    pathname.startsWith("/redesign/user/dashboard/fix/high-risk-data-breaches")
-  ) {
-    return styles.duringHighRiskDataBreaches;
-  } else if (pathname === "/redesign/user/dashboard/fix/leaked-passwords") {
-    return styles.beginLeakedPasswords;
-  } else if (
-    pathname.startsWith("/redesign/user/dashboard/fix/leaked-passwords")
-  ) {
-    return styles.duringLeakedPasswords;
-  } else if (
-    pathname === "/redesign/user/dashboard/fix/security-recommendations"
-  ) {
-    return styles.beginSecurityRecommendations;
-  } else {
-    return "";
-  }
-}

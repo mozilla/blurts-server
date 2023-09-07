@@ -23,7 +23,8 @@
 @media screen and (min-width: $screen-md) {
   .steps {
     $stepGap: $layout-xl;
-    $iconDiameter: 27px;
+    $iconDiameter: 40px;
+    $checkIconDiameter: 15px;
     $iconBorderWidth: 4px;
     $connectingLineHeight: 4px;
 
@@ -87,42 +88,52 @@
       font-weight: 400;
       color: $color-grey-30;
 
+      &.navigationItem {
+        // Overlap the horizontal line
+        z-index: 1;
+      }
+
+      .stepIcon {
+        width: $iconDiameter;
+        height: $iconDiameter;
+        margin-block: $iconBorderWidth;
+        pointer-events: none;
+        user-select: none;
+        box-sizing: border-box;
+
+        & > * {
+          width: 100%;
+          height: 100%;
+          border-radius: 100%;
+          padding: $spacing-sm;
+          background-color: $color-grey-30;
+
+          &.checkIcon {
+            color: $color-white;
+            padding: 12px; // Specific padding for check mark icon
+          }
+        }
+      }
+
+      &[aria-current="step"] .stepIcon > * {
+        outline: $iconBorderWidth solid $color-purple-10;
+      }
+
       .stepLabel {
-        margin-top: $layout-md;
+        padding-top: $layout-md;
         position: absolute;
         width: 100px;
       }
 
-      img {
-        background-color: $color-grey-30;
-        padding: 5px;
-        margin-block: $iconBorderWidth;
-        width: $iconDiameter;
-        height: $iconDiameter;
-        border-radius: 100%;
-        box-sizing: content-box;
-        pointer-events: none;
-        user-select: none;
-        // Overlap the `::before` (the horizontal line)
-        z-index: 1;
-      }
-
-      &[aria-current="step"] {
-        img {
-          margin-block: 0;
-          border: $iconBorderWidth solid $color-purple-10;
-        }
+      &[aria-current="step"] .stepLabel {
+        padding-top: calc($layout-md + $spacing-sm);
       }
 
       &.isCompleted,
       &[aria-current="step"] {
         color: $color-purple-70;
 
-        &::before {
-          background-color: $color-purple-10;
-        }
-
-        img {
+        .stepIcon > * {
           background-color: $color-purple-70;
         }
       }
@@ -138,7 +149,7 @@
     gap: $spacing-sm;
 
     li {
-      img {
+      .stepIcon {
         // On mobile, the actual step images aren't actually shown; instead, we
         // display flat horizontal lines, which we simulate by giving the images
         // a 0 height and a border. The images are <1kB in size, so that
@@ -152,11 +163,11 @@
         user-select: none;
       }
 
-      &[aria-current="step"] img {
+      &[aria-current="step"] .stepIcon {
         border-color: $color-purple-10;
       }
 
-      &.isCompleted img {
+      &.isCompleted .stepIcon {
         border-color: $color-purple-70;
       }
 
