@@ -7,22 +7,23 @@
 import type { SecurityRecommendationContent } from "./security-recommendations/securityRecommendationsData";
 import type { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { useL10n } from "../../../../../../hooks/l10n";
-import { getLocale } from "../../../../../../functions/server/l10n";
 import styles from "./ResolutionContent.module.scss";
 
 interface ResolutionContentProps {
   content: SecurityRecommendationContent;
   exposedData: SubscriberBreach[];
+  locale: string;
 }
 
 export const ResolutionContent = ({
   content,
   exposedData,
+  locale,
 }: ResolutionContentProps) => {
   const l10n = useL10n();
 
   const { description, recommendations } = content;
-  const dateFormatter = new Intl.DateTimeFormat(getLocale(), {
+  const dateFormatter = new Intl.DateTimeFormat(locale, {
     dateStyle: "short",
   });
 

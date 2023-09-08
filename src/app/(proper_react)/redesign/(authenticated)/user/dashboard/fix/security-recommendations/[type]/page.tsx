@@ -5,9 +5,10 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
+import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
-import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
+import { getLocale } from "../../../../../../../../functions/server/l10n";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -19,6 +20,7 @@ export default async function SecurityRecommendations({
   params,
 }: SecurityRecommendationsProps) {
   const session = await getServerSession(authOptions);
+  const locale = getLocale();
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
@@ -37,6 +39,7 @@ export default async function SecurityRecommendations({
       label="Security recommendations"
       pageData={pageData}
       exposedData={breaches}
+      locale={locale}
     />
   );
 }

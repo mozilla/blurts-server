@@ -89,6 +89,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
         <ResolutionContent
           content={highRiskBreachContent}
           exposedData={exposedData}
+          locale={props.locale}
         />
       )}
     </ResolutionContainer>

@@ -15,12 +15,14 @@ export interface SecurityRecommendationsLayoutProps {
   label: string;
   pageData: SecurityRecommendation;
   exposedData: SubscriberBreach[];
+  locale: string;
 }
 
 export function SecurityRecommendationsLayout({
   label,
   pageData,
   exposedData,
+  locale,
 }: SecurityRecommendationsLayoutProps) {
   const l10n = useL10n();
   const { title, illustration, content } = pageData;
@@ -46,7 +48,11 @@ export function SecurityRecommendationsLayout({
         </Button>
       }
     >
-      <ResolutionContent content={content} exposedData={exposedData} />
+      <ResolutionContent
+        content={content}
+        exposedData={exposedData}
+        locale={locale}
+      />
     </ResolutionContainer>
   );
 }
