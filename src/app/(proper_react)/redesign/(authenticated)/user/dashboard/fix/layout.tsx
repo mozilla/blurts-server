@@ -17,7 +17,6 @@ import { headers } from "next/headers";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
-  console.log(session);
   if (!session?.user?.subscriber?.id) {
     return redirect("/");
   }
