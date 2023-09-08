@@ -38,20 +38,6 @@ it("opens and closes the user menu", async () => {
   expect(screen.queryByText("example@example.com")).not.toBeInTheDocument();
 });
 
-it("opens and closes the user menu", async () => {
-  const user = userEvent.setup();
-  const ComposedDashboard = composeStory(UserMenuDefault, Meta);
-  const { container } = render(<ComposedDashboard />);
-  expect(screen.queryByText("example@example.com")).not.toBeInTheDocument();
-
-  const menuTrigger = screen.getByRole("button");
-  await user.click(menuTrigger);
-  expect(screen.queryByText("example@example.com")).toBeInTheDocument();
-
-  await user.click(container);
-  expect(screen.queryByText("example@example.com")).not.toBeInTheDocument();
-});
-
 it("checks if the user menu items are interactive", async () => {
   const user = userEvent.setup();
   const ComposedDashboard = composeStory(UserMenuDefault, Meta);
@@ -78,6 +64,9 @@ it("checks if the user menu items are interactive", async () => {
   expect(settingsItem).toBeInTheDocument();
   const settingsItemWrapper = settingsItem.parentElement;
   const clickSettingsItemSpy = jest.spyOn(settingsItem, "click");
+  // Prevent the click from actually executing; otherwise we'll get a warning
+  // that JSDOM doesn't know how to mock switching from one page to another:
+  clickSettingsItemSpy.mockImplementationOnce(() => undefined);
   await user.click(settingsItemWrapper as HTMLElement);
   expect(clickSettingsItemSpy).toHaveBeenCalled();
 

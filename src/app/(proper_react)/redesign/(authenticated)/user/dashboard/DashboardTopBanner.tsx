@@ -3,13 +3,14 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import styles from "./DashboardTopBanner.module.scss";
-import { TabType, ONEREP_DATA_BROKER_COUNT } from "./View";
+import { TabType } from "./View";
 import { Button } from "../../../../../components/server/Button";
 import { useL10n } from "../../../../../hooks/l10n";
 import { DoughnutChart as Chart } from "../../../../../components/client/Chart";
 import { ProgressCard } from "../../../../../components/client/ProgressCard";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { useRouter } from "next/navigation";
+import PremiumButton from "../../../../../components/client/PremiumButton";
 
 export type BannerContent =
   | "LetsFixDataContent"
@@ -17,6 +18,7 @@ export type BannerContent =
   | "NoExposuresFoundContent"
   | "ResumeBreachResolutionContent"
   | "YourDataIsProtectedContent"
+  | "YourDataIsProtectedAllFixedContent"
   | "NoContent";
 
 export type DashboardTopBannerProps = {
@@ -46,6 +48,11 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
     }
   );
 
+  const dataBrokerCount = parseInt(
+    process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+    10
+  );
+
   const contentData = {
     LetsFixDataContent: {
       headline: l10n.getString("dashboard-top-banner-protect-your-data-title"),
@@ -58,7 +65,6 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       ),
       cta: (
         <Button
-          buttonType="link"
           href={
             "/redesign/user/dashboard/fix/data-broker-profiles/view-data-brokers"
           }
@@ -77,7 +83,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-monitor-protects-your-even-more-description",
         {
-          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_sites_total_num: dataBrokerCount,
         }
       ),
       cta: (
@@ -108,7 +114,7 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
       description: l10n.getString(
         "dashboard-top-banner-no-exposures-found-description",
         {
-          data_broker_sites_total_num: ONEREP_DATA_BROKER_COUNT,
+          data_broker_sites_total_num: dataBrokerCount,
         }
       ),
       cta: (
@@ -173,6 +179,23 @@ export const DashboardTopBanner = (props: DashboardTopBannerProps) => {
         >
           {l10n.getString("dashboard-top-banner-your-data-is-protected-cta")}
         </Button>
+      ),
+      learnMore: null,
+    },
+    YourDataIsProtectedAllFixedContent: {
+      headline: l10n.getString(
+        "dashboard-top-banner-your-data-is-protected-title"
+      ),
+      description: l10n.getString(
+        "dashboard-top-banner-your-data-is-protected-all-fixed-description",
+        {
+          starting_exposure_total_num: totalExposures,
+        }
+      ),
+      cta: (
+        <PremiumButton
+          label={"dashboard-top-banner-your-data-is-protected-all-fixed-cta"}
+        />
       ),
       learnMore: null,
     },

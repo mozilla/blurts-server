@@ -20,6 +20,7 @@ import { getBreaches } from "../../../../functions/server/getBreaches";
 import { getBreachesForEmail } from "../../../../../utils/hibp";
 import { getSha1 } from "../../../../../utils/fxa";
 import { getSubscriberById } from "../../../../../db/tables/subscribers";
+import { getNonce } from "../../../functions/server/getNonce";
 
 const emailNeedsVerificationSub = (email: EmailRow) => {
   const l10n = getL10n();
@@ -179,8 +180,16 @@ export default async function Settings() {
 
   return (
     <>
-      <Script type="module" src="/nextjs_migration/client/js/settings.js" />
-      <Script type="module" src="/nextjs_migration/client/js/dialog.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/settings.js"
+        nonce={getNonce()}
+      />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/dialog.js"
+        nonce={getNonce()}
+      />
       <main data-partial="settings">
         <div className="settings js-settings">
           <h2 className="settings-title">

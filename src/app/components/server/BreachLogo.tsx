@@ -3,7 +3,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import Image from "next/image";
-import styles from "./BreachLogo.module.css";
+import styles from "./BreachLogo.module.scss";
 import { HibpLikeDbBreach } from "../../../utils/hibp";
 
 /**
@@ -21,6 +21,10 @@ export type Props = {
   htmlTags?: boolean;
 };
 
+// The <BreachLogo> component is currently a bit troublesome to test because it
+// takes a `HibpLikeDataBreach`, for which we don't have a mock generator. We
+// can add a unit test when we convert it to take SubscriberBreaches.
+/* c8 ignore start */
 export function BreachLogo(props: Props) {
   if (typeof props.breach.FaviconUrl === "string") {
     const ImageType = props.htmlTags ? "img" : Image;
@@ -36,19 +40,17 @@ export function BreachLogo(props: Props) {
     );
   }
 
-  // Add CSS variable and a dedicated class for the logo placeholder
-  // as fallback for emails
-  const { className, variableName } = getColorForName(props.breach.Name);
-  const classNames = `${styles.breachLogo} ${className}`;
+  return <FallbackLogo name={props.breach.Title} />;
+}
+/* c8 ignore stop */
+
+export function FallbackLogo(props: { name: string }) {
+  const color = getColorForName(props.name);
+  const classNames = `${styles.breachLogo} ${styles[color]}`;
 
   return (
-    <span
-      role="img"
-      aria-hidden="true"
-      className={classNames}
-      style={{ backgroundColor: `var(${variableName})` }}
-    >
-      {props.breach.Name.substring(0, 1)}
+    <span role="img" aria-hidden="true" className={classNames}>
+      {props.name.substring(0, 1)}
     </span>
   );
 }
@@ -59,38 +61,29 @@ export function BreachLogo(props: Props) {
  */
 function getColorForName(name: string) {
   const logoColors = [
-    {
-      className: "bg-blue-5",
-      variableName: "--blue-5",
-    },
-    {
-      className: "bg-purple-5",
-      variableName: "--purple-5",
-    },
-    {
-      className: "bg-green-05",
-      variableName: "--green-05",
-    },
-    {
-      className: "bg-violet-5",
-      variableName: "--violet-5",
-    },
-    {
-      className: "bg-orange-5",
-      variableName: "--orange-5",
-    },
-    {
-      className: "bg-yellow-5",
-      variableName: "--yellow-5",
-    },
-    {
-      className: "bg-red-5",
-      variableName: "--red-5",
-    },
-    {
-      className: "bg-pink-5",
-      variableName: "--pink-5",
-    },
+    "purple40",
+    "purple30",
+    "purple10",
+    "purple05",
+    "green50",
+    "green40",
+    "green30",
+    "green20",
+    "green10",
+    "violet30",
+    "violet20",
+    "violet10",
+    "blue30",
+    "blue20",
+    "blue10",
+    "red30",
+    "red20",
+    "red10",
+    "orange30",
+    "orange20",
+    "orange10",
+    "pink20",
+    "pink10",
   ];
 
   const charValue = name

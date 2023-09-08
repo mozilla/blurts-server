@@ -5,10 +5,7 @@
 import { getServerSession } from "next-auth";
 import { SignInButton } from "../../../../../(nextjs_migration)/components/client/SignInButton";
 import { redirect } from "next/navigation";
-import {
-  isEligibleForFreeScan,
-  ONEREP_DATA_BROKER_COUNT,
-} from "../../../../../functions/server/onerep";
+import { isEligibleForFreeScan } from "../../../../../functions/server/onerep";
 import { View } from "./View";
 import { getAllBreachesCount } from "../../../../../../db/tables/breaches";
 import { getCountryCode } from "../../../../../functions/server/getCountryCode";
@@ -34,7 +31,10 @@ export default async function Onboarding() {
   return (
     <View
       user={session.user}
-      dataBrokerCount={ONEREP_DATA_BROKER_COUNT}
+      dataBrokerCount={parseInt(
+        process.env.NEXT_PUBLIC_ONEREP_DATA_BROKER_COUNT as string,
+        10
+      )}
       breachesTotalCount={allBreachesCount}
     />
   );

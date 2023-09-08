@@ -24,4 +24,35 @@ test.describe('Settings Page', () => {
       contentType: 'image/png'
     })
   })
+
+  test('Verify that a user can select between the Breach alert preferences', async ({
+    page,
+    settingsPage,
+  }) => {
+    test.info().annotations.push({
+      type: "issue",
+      description: "https://testrail.stage.mozaws.net/index.php?/cases/view/2095115",
+    });
+
+    // go to monitor settings page
+    await settingsPage.open()
+
+    // select "send breach alerts to the affected email address" option
+    await settingsPage.sendToAffectedEmailRadioButton.click()
+    await expect(async () => {
+      // verify option is selected
+      await expect(page.locator('input[data-alert-option="0"]')).toBeChecked()
+    }).toPass({
+      timeout: 2000
+    })
+
+    // select "send asll breach alerts to the primary email address"
+    await settingsPage.sendToPrimaryEmailRadioButton.click()
+    await expect(async () => {
+      // verify option is selected
+      await expect(page.locator('input[data-alert-option="1"]')).toBeChecked()
+    }).toPass({
+      timeout: 2000
+    })
+  })
 })

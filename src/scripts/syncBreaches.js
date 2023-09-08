@@ -99,7 +99,7 @@ if (seen.size !== breaches.length) {
 
   // get
   const result = await getAllBreaches()
-  console.log(result.length)
+  console.log("Number of breaches in the database after upsert:", result.length)
 }
 
 await getBreachIcons(breaches)

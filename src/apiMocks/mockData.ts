@@ -9,7 +9,10 @@ import {
   RemovalStatusMap,
 } from "../app/functions/universal/scanResult";
 import { StateAbbr } from "../utils/states";
-import { BreachDataTypes } from "../app/functions/universal/breach";
+import {
+  BreachDataTypes,
+  HighRiskDataTypes,
+} from "../app/functions/universal/breach";
 import {
   DataClassEffected,
   SubscriberBreach,
@@ -33,6 +36,7 @@ export function mockedOneRepScanResults() {
 export type RandomScanOptions = Partial<{
   createdDate: Date;
   fakerSeed: number;
+  status: RemovalStatus;
 }>;
 
 /**
@@ -50,9 +54,11 @@ export function createRandomScan(options: RandomScanOptions = {}): ScanResult {
     last_name: faker.person.lastName(),
     middle_name: faker.person.middleName(),
     age: faker.number.int({ min: 14, max: 120 }).toString(),
-    status: faker.helpers.arrayElement(
-      Object.values(RemovalStatusMap)
-    ) as RemovalStatus,
+    status:
+      options.status ??
+      (faker.helpers.arrayElement(
+        Object.values(RemovalStatusMap)
+      ) as RemovalStatus),
     addresses: Array.from({ length: 3 }, () => ({
       zip: faker.location.zipCode(),
       city: faker.location.city(),
@@ -79,20 +85,26 @@ export type RandomBreachOptions = Partial<{
   isResolved: boolean;
   dataClassesEffected: DataClassEffected[];
   fakerSeed: number;
+  isHighRiskOnly: boolean;
 }>;
 
 // TODO: MNTOR-2033 Update this random breach function with new data breach object, and deprecate all BreachMockItems
 export function createRandomBreach(
   options: RandomBreachOptions = {}
 ): SubscriberBreach {
+  const dataClassTypes = options.isHighRiskOnly
+    ? HighRiskDataTypes
+    : BreachDataTypes;
+  const dataClasses = faker.helpers.arrayElements(
+    Object.values(dataClassTypes)
+  );
+
   faker.seed(options.fakerSeed);
   return {
     addedDate:
       options.addedDate?.toISOString() ?? faker.date.recent().toISOString(),
     breachDate: faker.date.recent().toISOString(),
-    dataClasses:
-      options.dataClasses ??
-      faker.helpers.arrayElements(Object.values(BreachDataTypes)),
+    dataClasses: dataClasses,
     description: faker.word.words(),
     domain: faker.internet.domainName(),
     id: faker.number.int(),
@@ -102,5 +114,19 @@ export function createRandomBreach(
     title: faker.word.noun(),
     isResolved: options.isResolved ?? faker.datatype.boolean(),
     dataClassesEffected: options.dataClassesEffected ?? [],
+  };
+}
+
+export function createUserWithPremiumSubscription() {
+  return {
+    email: "example@example.com",
+    fxa: {
+      locale: "us",
+      twoFactorAuthentication: false,
+      metricsEnabled: false,
+      avatar: "",
+      avatarDefault: true,
+      subscriptions: ["monitor"],
+    },
   };
 }
