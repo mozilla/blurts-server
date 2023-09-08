@@ -351,3 +351,30 @@ high-risk-breach-none-sub-description-bank-account = Bank account info
 high-risk-breach-none-sub-description-cc-number = Credit card numbers
 high-risk-breach-none-sub-description-pin = PINs
 high-risk-breach-none-continue = Continue
+
+# Security recommendations
+
+security-recommendation-steps-title = Here’s your advice:
+
+# Phone security recommendation
+
+security-recommendation-phone-title = Protect your email address
+security-recommendation-phone-description = Unfortunately you can’t take it back. But there are steps you can take to make sure you stay safe.
+security-recommendation-phone-step-one = Block spam numbers to prevent more junk calls
+security-recommendation-phone-step-two = Don’t click on links in texts from unknown senders; if it appears to be from a trusted source, call directly to confirm
+security-recommendation-phone-step-three = Use a <link_to_info>{ -brand-relay } phone mask</link_to_info> to protect your phone in the future
+
+# Email security recommendation
+
+security-recommendation-email-title = Protect your email address
+security-recommendation-email-description = Unfortunately you can’t fix this. But there are steps you can take to protect yourself.
+security-recommendation-email-step-one = Don’t click on links in emails from unknown senders; If it appears to be from trusted source, call directly to confirm
+security-recommendation-email-step-two = Be aware of <link_to_info>phishing scams</link_to_info>
+security-recommendation-email-step-three = Mark suspicious emails as spam and block the sender
+security-recommendation-email-step-four = Use <link_to_info>{ -brand-relay } email masks</link_to_info> to protect your email in the future
+
+# IP security recommendation
+
+security-recommendation-ip-title = Use a VPN for added privacy
+security-recommendation-ip-description = Your IP address pinpoints your location and internet service provider. Hackers could use this information to find your location or try to connect to your devices.
+security-recommendation-ip-step-one = Use a VPN (such as <link_to_info>{ -brand-mozilla-vpn }</link_to_info>) to hide your real IP address and use the internet privately.

@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import emailIllustration from "../images/security-recommendations-email.svg";
 import phoneIllustration from "../images/security-recommendations-phone.svg";
 import ipIllustration from "../images/security-recommendations-ip.svg";
+import { getL10n } from "../../../../../../../functions/server/l10n";
 
 export type SecurityRecommendationContent = {
   description: ReactNode;
@@ -25,99 +26,130 @@ export type SecurityRecommendation = {
   content: SecurityRecommendationContent;
 };
 
-const securityRecommendationsData: SecurityRecommendation[] = [
-  {
-    type: "phone",
-    title: "Protect your email address",
-    illustration: phoneIllustration,
-    content: {
-      description: (
-        <p>
-          Unfortunately you can’t take it back. But there are steps you can take
-          to make sure you stay safe.
-        </p>
-      ),
-      recommendations: {
-        title: "Here’s your advice:",
-        steps: (
-          <ol>
-            <li>Block spam numbers to prevent more junk calls</li>
-            <li>
-              Don’t click on links in texts from unknown senders; if it appears
-              to be from a trusted source, call directly to confirm{" "}
-            </li>
-            <li>
-              Use a <a href="">Firefox Relay phone mask</a> to protect your
-              phone in the future
-            </li>
-          </ol>
-        ),
-      },
-    },
-  },
-  {
-    type: "email",
-    title: "Protect your email address",
-    illustration: emailIllustration,
-    content: {
-      description: (
-        <p>
-          Unfortunately you can’t fix this. But there are steps you can take to
-          protect yourself.
-        </p>
-      ),
-      recommendations: {
-        title: "Here’s your advice:",
-        steps: (
-          <ol>
-            <li>
-              Don’t click on links in emails from unknown senders; If it appears
-              to be from trusted source, call directly to confirm
-            </li>
-            <li>
-              Be aware of <a href="">phishing scams</a>
-            </li>
-            <li>Mark suspicious emails as spam and block the sender</li>
-            <li>
-              Use <a href="">Relay email masks</a> to protect your email in the
-              future
-            </li>
-          </ol>
-        ),
-      },
-    },
-  },
-  {
-    type: "ip",
-    title: "Use a VPN for added privacy",
-    illustration: ipIllustration,
-    content: {
-      description: (
-        <p>
-          Your IP address pinpoints your location and internet service provider.
-          Hackers could use this information to find your location or try to
-          connect to your devices.
-        </p>
-      ),
-      recommendations: {
-        title: "Here’s your advice:",
-        steps: (
-          <ul>
-            <li>
-              Use a VPN (such as <a href="">Mozilla VPN</a>) to hide your real
-              IP address and use the internet privately.
-            </li>
-          </ul>
-        ),
-      },
-    },
-  },
-];
-
 function getSecurityRecommendationsByType(dataType: string) {
+  const l10n = getL10n();
+
+  const securityRecommendationsData: SecurityRecommendation[] = [
+    {
+      type: "phone",
+      title: l10n.getString("security-recommendation-phone-title"),
+      illustration: phoneIllustration,
+      content: {
+        description: (
+          <p>{l10n.getString("security-recommendation-phone-description")}</p>
+        ),
+        recommendations: {
+          title: l10n.getString("security-recommendation-steps-title"),
+          steps: (
+            <ol>
+              <li>
+                {l10n.getString("security-recommendation-phone-step-one")}
+              </li>
+              <li>
+                {l10n.getString("security-recommendation-phone-step-two")}
+              </li>
+              <li>
+                {l10n.getFragment("security-recommendation-phone-step-three", {
+                  elems: {
+                    link_to_info: (
+                      <a
+                        href="https://relay.firefox.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      />
+                    ),
+                  },
+                })}
+              </li>
+            </ol>
+          ),
+        },
+      },
+    },
+    {
+      type: "email",
+      title: l10n.getString("security-recommendation-email-title"),
+      illustration: emailIllustration,
+      content: {
+        description: (
+          <p>{l10n.getString("security-recommendation-email-description")}</p>
+        ),
+        recommendations: {
+          title: l10n.getString("security-recommendation-steps-title"),
+          steps: (
+            <ol>
+              <li>
+                {l10n.getString("security-recommendation-email-step-one")}
+              </li>
+              <li>
+                {l10n.getFragment("security-recommendation-email-step-two", {
+                  elems: {
+                    link_to_info: (
+                      <a
+                        href="https://consumer.ftc.gov/articles/how-recognize-and-avoid-phishing-scams"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      />
+                    ),
+                  },
+                })}
+              </li>
+              <li>
+                {l10n.getString("security-recommendation-email-step-three")}
+              </li>
+              <li>
+                {l10n.getFragment("security-recommendation-email-step-four", {
+                  elems: {
+                    link_to_info: (
+                      <a
+                        href="https://relay.firefox.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      />
+                    ),
+                  },
+                })}
+              </li>
+            </ol>
+          ),
+        },
+      },
+    },
+    {
+      type: "ip",
+      title: l10n.getString("security-recommendation-ip-title"),
+      illustration: ipIllustration,
+      content: {
+        description: (
+          <p>{l10n.getString("security-recommendation-ip-description")}</p>
+        ),
+        recommendations: {
+          title: l10n.getString("security-recommendation-steps-title"),
+          steps: (
+            <ul>
+              <li>
+                {l10n.getFragment("security-recommendation-ip-step-one", {
+                  elems: {
+                    link_to_info: (
+                      <a
+                        href="https://www.mozilla.org/products/vpn/?entrypoint_experiment=vpn-refresh-pricing&entrypoint_variation=1"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      />
+                    ),
+                  },
+                })}
+              </li>
+            </ul>
+          ),
+        },
+      },
+    },
+  ];
+
   return securityRecommendationsData.find(
     (content) => content.type === dataType
   );
 }
 
-export { securityRecommendationsData, getSecurityRecommendationsByType };
+export { getSecurityRecommendationsByType };
