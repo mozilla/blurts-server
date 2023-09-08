@@ -105,7 +105,7 @@ Monitor uses GCP PubSub for processing incoming breach data, this can be tested 
 #### Run the GCP PubSub emulator:
 
 ```sh
-gcloud beta emulators pubsub start --project=rhelmer-monitor-local-dev
+gcloud beta emulators pubsub start --project=your-project-name
 ```
 
 ### In a different shell, set the environment to point at the emulator and run Monitor in dev mode:
