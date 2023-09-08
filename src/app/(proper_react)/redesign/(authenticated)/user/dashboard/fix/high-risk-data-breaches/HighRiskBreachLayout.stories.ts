@@ -21,37 +21,54 @@ const scannedResultsArraySample: SubscriberBreach[] = Array.from(
   () => createRandomBreach({ isHighRiskOnly: true })
 );
 
+const emailArray: string[] = ["test@test.com"];
+
 export const CreditCard: Story = {
   args: {
     typeOfBreach: "creditCard",
-    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(
+      scannedResultsArraySample,
+      emailArray
+    ),
   },
 };
 
 export const BankAccount: Story = {
   args: {
     typeOfBreach: "bankAccount",
-    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(
+      scannedResultsArraySample,
+      emailArray
+    ),
   },
 };
 
 export const SSN: Story = {
   args: {
     typeOfBreach: "ssnBreaches",
-    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(
+      scannedResultsArraySample,
+      emailArray
+    ),
   },
 };
 
 export const PIN: Story = {
   args: {
     typeOfBreach: "pin",
-    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(
+      scannedResultsArraySample,
+      emailArray
+    ),
   },
 };
 
 export const None: Story = {
   args: {
     typeOfBreach: "none",
-    breachData: getGuidedExperienceBreaches(scannedResultsArraySample),
+    breachData: getGuidedExperienceBreaches(
+      scannedResultsArraySample,
+      emailArray
+    ),
   },
 };

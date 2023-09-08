@@ -19,5 +19,8 @@ export async function getSubscriberEmails(
   (await getUserEmails(subscriber.id)).forEach((er) =>
     emailArray.push(er.email)
   );
+
+  // push the primary email
+  emailArray.push(user.email);
   return emailArray;
 }
