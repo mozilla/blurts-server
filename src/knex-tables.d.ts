@@ -3,8 +3,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import { Knex } from "knex";
-import { ScanResult } from "./app/functions/server/onerep";
 import { StateAbbr } from "./utils/states";
+import { RemovalStatus } from "./app/functions/universal/scanResult";
 
 // See https://knexjs.org/guide/#typescript
 declare module "knex/types/tables" {
@@ -149,7 +149,6 @@ declare module "knex/types/tables" {
     id: number;
     onerep_profile_id: number;
     onerep_scan_id: number;
-    onerep_scan_results: ScanResult;
     onerep_scan_reason: "manual" | "initial" | "monitoring";
     created_at: Date;
     updated_at: Date;
@@ -160,6 +159,43 @@ declare module "knex/types/tables" {
   >;
   type OnerepScanAutoInsertedColumns = Extract<
     keyof OnerepScanRow,
+    "id" | "created_at" | "updated_at"
+  >;
+
+  interface OnerepScanResultRow {
+    id: number;
+    onerep_scan_result_id: number;
+    onerep_scan_id: OnerepScanRow["onerep_scan_id"];
+    link: string;
+    age?: number;
+    data_broker: string;
+    data_broker_id: number;
+    emails: string[];
+    phones: string[];
+    addresses: Array<{
+      city: string;
+      state: StateAbbr;
+      street?: string;
+      zip?: string;
+    }>;
+    relatives: string[];
+    first_name: string;
+    middle_name?: string;
+    last_name: string;
+    status: RemovalStatus;
+    created_at: Date;
+    updated_at: Date;
+  }
+  type OnerepScanResultOptionalColumns = Extract<
+    keyof OnerepScanResultRow,
+    "middle_name"
+  >;
+  type OnerepScanResultSerializedColumns = Extract<
+    keyof OnerepScanResultRow,
+    "emails" | "phones" | "addresses" | "relatives"
+  >;
+  type OnerepScanResultAutoInsertedColumns = Extract<
+    keyof OnerepScanResultRow,
     "id" | "created_at" | "updated_at"
   >;
 
@@ -238,6 +274,23 @@ declare module "knex/types/tables" {
       // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
       Partial<Omit<OnerepScanRow, "id" | "created_at">> &
         Pick<OnerepScanRow, "updated_at">
+    >;
+
+    onerep_scan_results: Knex.CompositeTableType<
+      OnerepScanResultRow,
+      // On updates, auto-generated columns cannot be set, and nullable columns are optional:
+      Omit<
+        OnerepScanResultRow,
+        | OnerepScanResultAutoInsertedColumns
+        | OnerepScanResultOptionalColumns
+        | OnerepScanResultSerializedColumns
+      > &
+        Partial<Pick<OnerepScanResultRow, OnerepScanResultOptionalColumns>> &
+        Record<OnerepScanResultSerializedColumns, string>,
+      // On updates, don't allow updating the ID and created date; all other fields are optional, except updated_at:
+      Partial<Omit<OnerepScanResultRow, "id" | "created_at">> &
+        Pick<OnerepScanResultRow, "updated_at"> &
+        Record<OnerepScanResultSerializedColumns, string>
     >;
 
     onerep_profiles: Knex.CompositeTableType<

@@ -13,7 +13,7 @@ import {
 } from "../../../../../../db/tables/subscribers";
 
 import {
-  getLatestOnerepScan,
+  getLatestOnerepScanResults,
   setOnerepScanResults,
 } from "../../../../../../db/tables/onerep_scans";
 import {
@@ -44,10 +44,10 @@ export async function GET(
         "onerep_profile_id"
       ] as number;
 
-      const latestScans = await getLatestOnerepScan(profileId);
-      const latestScanId = latestScans?.onerep_scan_id;
+      const latestScan = await getLatestOnerepScanResults(profileId);
+      const latestScanId = latestScan.scan?.onerep_scan_id;
 
-      if (latestScanId) {
+      if (typeof latestScanId !== "undefined") {
         const scan = await getScanDetails(profileId, latestScanId);
 
         // Store scan results only for development environments.
@@ -60,9 +60,7 @@ export async function GET(
           await setOnerepScanResults(
             profileId,
             scan.id,
-            {
-              data: allScanResults,
-            },
+            allScanResults,
             "manual"
           );
         }

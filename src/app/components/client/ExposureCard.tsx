@@ -6,6 +6,7 @@
 
 import React, { ReactElement, useState } from "react";
 import Link from "next/link";
+import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { StatusPill } from "../server/StatusPill";
 import Image, { StaticImageData } from "next/image";
@@ -21,7 +22,6 @@ import {
 } from "../server/Icons";
 import { Button } from "../server/Button";
 import { useL10n } from "../../hooks/l10n";
-import { ScanResult } from "../../functions/server/onerep";
 import {
   DataClassEffected,
   SubscriberBreach,
@@ -29,11 +29,11 @@ import {
 import { parseIso8601Datetime } from "../../../utils/parse";
 import { FallbackLogo } from "../server/BreachLogo";
 
-export type Exposure = ScanResult | SubscriberBreach;
+export type Exposure = OnerepScanResultRow | SubscriberBreach;
 
 // Typeguard function
-export function isScanResult(obj: Exposure): obj is ScanResult {
-  return (obj as ScanResult).data_broker !== undefined; // only ScanResult has an instance of data_broker
+export function isScanResult(obj: Exposure): obj is OnerepScanResultRow {
+  return (obj as OnerepScanResultRow).data_broker !== undefined; // only ScanResult has an instance of data_broker
 }
 
 export type ExposureCardProps = {
@@ -60,7 +60,7 @@ export const ExposureCard = ({ exposureData, ...props }: ExposureCardProps) => {
 
 export type ScanResultCardProps = {
   exposureImg?: StaticImageData;
-  scanResult: ScanResult;
+  scanResult: OnerepScanResultRow;
   locale: string;
   isPremiumBrokerRemovalEnabled: boolean;
 };
@@ -202,11 +202,7 @@ const ScanResultCard = (props: ScanResultCardProps) => {
               {l10n.getString("exposure-card-date-found")}
             </dt>
             <dd className={styles.hideOnMobile}>
-              {dateFormatter.format(
-                // We should be able to result that OneRep's `created_at` property is a properly-formatted data string
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                parseIso8601Datetime(scanResult.created_at)!
-              )}
+              {dateFormatter.format(scanResult.created_at)}
             </dd>
             <dt className={styles.visuallyHidden}>
               {l10n.getString("exposure-card-label-status")}

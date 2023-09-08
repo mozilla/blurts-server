@@ -12,7 +12,7 @@ import {
   optoutProfile,
 } from "../../../../../../functions/server/onerep";
 import {
-  getLatestOnerepScan,
+  getLatestOnerepScanResults,
   setOnerepScanResults,
 } from "../../../../../../../db/tables/onerep_scans";
 import { getCountryCode } from "../../../../../../functions/server/getCountryCode";
@@ -40,8 +40,8 @@ export default async function Subscribed() {
 
   const dev =
     process.env.NODE_ENV === "development" || process.env.APP_ENV === "heroku";
-  const latestScan = await getLatestOnerepScan(profileId);
-  if (!latestScan) {
+  const latestScan = await getLatestOnerepScanResults(profileId);
+  if (!latestScan.scan) {
     throw new Error("Must have performed manual scan");
   }
 
@@ -52,8 +52,8 @@ export default async function Subscribed() {
   if (dev) {
     await setOnerepScanResults(
       profileId,
-      latestScan.onerep_scan_id,
-      { data: scans },
+      latestScan.scan.onerep_scan_id,
+      scans,
       "initial"
     );
   }

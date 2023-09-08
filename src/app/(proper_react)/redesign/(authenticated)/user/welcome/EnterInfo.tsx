@@ -40,12 +40,12 @@ const createProfileAndStartScan = async (
     body: JSON.stringify(userInfo),
   });
 
-  const result = await response.json();
+  const result: WelcomeScanBody = await response.json();
   if (!result?.success) {
     throw new Error("Could not start scan");
   }
 
-  return result as WelcomeScanBody;
+  return result;
 };
 /* c8 ignore stop */
 

@@ -7,6 +7,7 @@
 import { Key, useState } from "react";
 import Image from "next/image";
 import { Session } from "next-auth";
+import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./View.module.scss";
 import { Toolbar } from "../../../../../components/client/toolbar/Toolbar";
 import { BannerContent, DashboardTopBanner } from "./DashboardTopBanner";
@@ -20,7 +21,6 @@ import {
   ExposuresFilter,
   FilterState,
 } from "../../../../../components/client/ExposuresFilter";
-import { ScanResult } from "../../../../../functions/server/onerep";
 import { DashboardSummary } from "../../../../../functions/server/dashboard";
 import { getExposureStatus } from "../../../../../components/server/StatusPill";
 import { TabList } from "../../../../../components/client/TabList";
@@ -39,7 +39,7 @@ export type Props = {
   locale: string;
   user: Session["user"];
   userBreaches: SubscriberBreach[];
-  userScannedResults: ScanResult[];
+  userScannedResults: OnerepScanResultRow[];
   isEligibleForFreeScan: boolean;
   countryCode?: string;
 };
@@ -70,20 +70,18 @@ export const View = (props: Props) => {
   const breachesDataArray = props.userBreaches
     .map((elem: SubscriberBreach) => elem)
     .flat();
-  const scannedResultsDataArray =
-    // TODO: Add unit test when changing this code:
-    /* c8 ignore next */
-    props.userScannedResults.map((elem: ScanResult) => elem) || [];
 
   // Merge exposure cards
-  const combinedArray = [...breachesDataArray, ...scannedResultsDataArray];
+  const combinedArray = [...breachesDataArray, ...props.userScannedResults];
 
   // Sort in descending order
   const arraySortedByDate = combinedArray.sort((a, b) => {
     const dateA =
-      (a as SubscriberBreach).addedDate || (a as ScanResult).created_at;
+      (a as SubscriberBreach).addedDate ||
+      (a as OnerepScanResultRow).created_at;
     const dateB =
-      (b as SubscriberBreach).addedDate || (b as ScanResult).created_at;
+      (b as SubscriberBreach).addedDate ||
+      (b as OnerepScanResultRow).created_at;
 
     const timestampA = new Date(dateA).getTime();
     const timestampB = new Date(dateB).getTime();
