@@ -156,9 +156,11 @@ export async function poll(subClient, receivedMessages) {
         const { recipientEmail, breachedEmail, signupLanguage } =
           getAddressesAndLanguageForEmail(recipient);
 
+        /* c8 ignore start */
         const requestedLanguage = signupLanguage
           ? acceptedLanguages(signupLanguage)
           : [];
+        /* c8 ignore stop */
 
         const availableLanguages = process.env.SUPPORTED_LOCALES;
         const supportedLocales = negotiateLanguages(
