@@ -8,7 +8,6 @@ import Image from "next/image";
 import styles from "./FixNavigation.module.scss";
 import { useState } from "react";
 import { useL10n } from "../../hooks/l10n";
-import { CheckIcon } from "../server/Icons";
 
 type StepId =
   | "dataBrokerProfiles"

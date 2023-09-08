@@ -67,7 +67,9 @@ export const FixView = (props: FixViewProps) => {
   const totalPasswordBreaches = props.breaches.passwordBreaches.length;
   const totalSecurityRecommendations = Object.values(
     props.breaches.securityRecommendations
-  ).length;
+  ).filter((value) => {
+    return value.length > 0;
+  }).length;
 
   const navigationItemsContent = [
     {
