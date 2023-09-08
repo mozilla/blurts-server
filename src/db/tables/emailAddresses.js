@@ -393,5 +393,5 @@ export {
   removeOneSecondaryEmail,
   getEmailAddressesByHashes,
   deleteEmailAddressesByUid,
-  knex
+  knex as knexEmailAddresses
 }

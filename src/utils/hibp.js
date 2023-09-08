@@ -390,5 +390,5 @@ export {
   getFilteredBreaches,
   subscribeHash,
   deleteSubscribedHash,
-  knex
+  knex as knexHibp
 }
