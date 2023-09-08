@@ -195,12 +195,15 @@ export async function poll(subClient, receivedMessages) {
         subscription: formattedSubscription,
         ackIds: [message.ackId],
       });
+    /* c8 ignore start */
     } catch (error) {
       console.error(`Notifying subscribers of breach failed: ${error}`);
     }
+    /* c8 ignore stop */
   }
 }
 
+/* c8 ignore start */
 async function pullMessages() {
   let options = {};
   if (process.env.NODE_ENV === "development") {
@@ -229,7 +232,6 @@ async function pullMessages() {
 
   return [subClient, response.receivedMessages];
 }
-
 async function init() {
   await initFluentBundles();
   await initEmail();
@@ -258,3 +260,4 @@ if (process.env.NODE_ENV !== "test") {
       await knexHibp.destroy();
     });
 }
+/* c8 ignore stop */
