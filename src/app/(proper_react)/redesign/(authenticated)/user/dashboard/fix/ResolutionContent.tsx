@@ -4,10 +4,20 @@
 
 "use client";
 
+import type { SecurityRecommendationContent } from "./security-recommendations/securityRecommendationsContent";
+import type { SubscriberBreach } from "../../../../../../../utils/subscriberBreaches";
 import { useL10n } from "../../../../../../hooks/l10n";
 import styles from "./ResolutionContent.module.scss";
 
-export const ResolutionContent = ({ content, exposedData }: any) => {
+interface ResolutionContentProps {
+  content: SecurityRecommendationContent;
+  exposedData: SubscriberBreach[];
+}
+
+export const ResolutionContent = ({
+  content,
+  exposedData,
+}: ResolutionContentProps) => {
   const l10n = useL10n();
 
   const { description, recommendations } = content;
@@ -17,7 +27,7 @@ export const ResolutionContent = ({ content, exposedData }: any) => {
 
   const listOfBreaches =
     exposedData &&
-    exposedData.map(({ id, title, breachDate }: any) => (
+    exposedData.map(({ id, title, breachDate }) => (
       <div key={id} className={styles.breachItem}>
         {l10n.getFragment("high-risk-breach-name-and-date", {
           elems: { breach_date: <span className={styles.date} /> },
@@ -42,11 +52,13 @@ export const ResolutionContent = ({ content, exposedData }: any) => {
         </>
       )}
       {description}
-      <div className={styles.recommendations}>
-        <h4>{recommendations.title}</h4>
-        {recommendations.subtitle && <p>{recommendations.subtitle}</p>}
-        {recommendations.steps}
-      </div>
+      {recommendations && (
+        <div className={styles.recommendations}>
+          <h4>{recommendations.title}</h4>
+          {recommendations.subtitle && <p>{recommendations.subtitle}</p>}
+          {recommendations.steps}
+        </div>
+      )}
     </>
   );
 };

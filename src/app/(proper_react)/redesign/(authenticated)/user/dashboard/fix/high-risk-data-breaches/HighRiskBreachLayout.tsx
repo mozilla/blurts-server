@@ -4,7 +4,6 @@
 
 "use client";
 
-import styles from "./HighRiskBreachLayout.module.scss";
 import { GuidedExperienceBreaches } from "../../../../../../../functions/server/getUserBreaches";
 import { SubscriberBreach } from "../../../../../../../../utils/subscriberBreaches";
 import { useL10n } from "../../../../../../../hooks/l10n";
@@ -91,8 +90,8 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     >
       {hasBreaches && (
         <ResolutionContent
-          exposedData={exposedData}
           content={highRiskBreachContent}
+          exposedData={exposedData}
         />
       )}
     </ResolutionContainer>

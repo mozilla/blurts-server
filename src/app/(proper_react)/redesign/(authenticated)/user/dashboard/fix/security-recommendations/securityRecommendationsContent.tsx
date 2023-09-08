@@ -2,11 +2,31 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
+import type { ReactNode } from "react";
 import emailIllustration from "../images/security-recommendations-email.svg";
 import phoneIllustration from "../images/security-recommendations-phone.svg";
 import ipIllustration from "../images/security-recommendations-ip.svg";
 
-export default [
+export type SecurityRecommendationContent = {
+  description: ReactNode;
+  recommendations?: {
+    title: string;
+    steps: ReactNode;
+    subtitle?: string;
+  };
+};
+
+export type SecurityRecommendation = {
+  type: "phone" | "email" | "ip";
+  title: string;
+  illustration: {
+    img: string;
+    alt: string;
+  };
+  content: SecurityRecommendationContent;
+};
+
+const securityRecommendationsContent: SecurityRecommendation[] = [
   {
     type: "phone",
     title: "Protect your email address",
@@ -15,8 +35,12 @@ export default [
       alt: "",
     },
     content: {
-      description:
-        "Unfortunately you can’t take it back. But there are steps you can take to make sure you stay safe. ",
+      description: (
+        <p>
+          Unfortunately you can’t take it back. But there are steps you can take
+          to make sure you stay safe.
+        </p>
+      ),
       recommendations: {
         title: "Here’s your advice:",
         steps: (
@@ -43,8 +67,12 @@ export default [
       alt: "",
     },
     content: {
-      description:
-        "Unfortunately you can’t fix this. But there are steps you can take to protect yourself.",
+      description: (
+        <p>
+          Unfortunately you can’t fix this. But there are steps you can take to
+          protect yourself.
+        </p>
+      ),
       recommendations: {
         title: "Here’s your advice:",
         steps: (
@@ -74,8 +102,13 @@ export default [
       alt: "",
     },
     content: {
-      description:
-        "Your IP address pinpoints your location and internet service provider. Hackers could use this information to find your location or try to connect to your devices.",
+      description: (
+        <p>
+          Your IP address pinpoints your location and internet service provider.
+          Hackers could use this information to find your location or try to
+          connect to your devices.
+        </p>
+      ),
       recommendations: {
         title: "Here’s your advice:",
         steps: (
@@ -90,3 +123,5 @@ export default [
     },
   },
 ];
+
+export default securityRecommendationsContent;

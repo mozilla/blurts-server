@@ -2,25 +2,29 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-"use client";
-
+import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { ResolutionContainer } from "../../ResolutionContainer";
-import { ResolutionContent } from "../../ResolutionContent";
-import { Button } from "../../../../../../../../components/server/Button";
-
+import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
 import securityRecommendations from "../securityRecommendationsContent";
+import { authOptions } from "../../../../../../../../api/utils/auth";
+import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
 
-export default function SecurityRecommendationsEmail({ params }: any) {
-  const label = "Security recommendations";
+interface SecurityRecommendationsProps {
+  params: {
+    type: string;
+  };
+}
 
-  const exposedData = [
-    {
-      id: "id123",
-      title: "test",
-      breachDate: "123",
-    },
-  ];
+export default async function SecurityRecommendations({
+  params,
+}: SecurityRecommendationsProps) {
+  const session = await getServerSession(authOptions);
+  if (!session?.user?.subscriber?.id) {
+    return redirect("/");
+  }
+  // TODO: Filter breaches for dataClassesEffected depending on
+  // security recommendation type.
+  const breaches = await getSubscriberBreaches(session.user);
 
   const { type } = params;
   const pageData = securityRecommendations.find(
@@ -30,28 +34,11 @@ export default function SecurityRecommendationsEmail({ params }: any) {
     redirect("/redesign/user/dashboard");
   }
 
-  const { title, illustration, content } = pageData;
-
   return (
-    <ResolutionContainer
-      label={label}
-      type="securityRecommendations"
-      title={title}
-      illustration={illustration}
-      cta={
-        <Button
-          variant="primary"
-          small
-          onClick={() => {
-            // TODO: Go to next security recommendation or close “fix flow”
-          }}
-          autoFocus={true}
-        >
-          Got it!
-        </Button>
-      }
-    >
-      <ResolutionContent content={content} exposedData={exposedData} />
-    </ResolutionContainer>
+    <SecurityRecommendationsLayout
+      label="Security recommendations"
+      pageData={pageData}
+      exposedData={breaches}
+    />
   );
 }
