@@ -5,28 +5,21 @@
 "use client";
 
 import Image from "next/image";
-import { Button } from "../../../../../../components/server/Button";
-import Link from "next/link";
+import type { ReactNode } from "react";
 import { ClockIcon } from "../../../../../../components/server/Icons";
-import { ReactNode } from "react";
 import { useL10n } from "../../../../../../hooks/l10n";
 import styles from "./ResolutionContainer.module.scss";
 
 type ResolutionContainerProps = {
   type: "highRisk" | "leakedPasswords" | "securityRecommendations";
   title: string;
-  illustration: {
-    img: string;
-    alt: string;
-  };
+  illustration: string;
   estimatedTime?: number;
   children: ReactNode;
   label?: string;
   cta?: ReactNode;
 };
 
-// TODO: Add test once routes from MNTOR-1700 is available
-/* c8 ignore start */
 export const ResolutionContainer = (props: ResolutionContainerProps) => {
   const l10n = useL10n();
 
@@ -48,9 +41,8 @@ export const ResolutionContainer = (props: ResolutionContainerProps) => {
         )}
       </div>
       <div className={`${styles.illustrationWrapper} ${styles.hideOnMobile}`}>
-        <Image src={props.illustration.img} alt={props.illustration.alt} />
+        <Image src={props.illustration} alt="" />
       </div>
     </div>
   );
 };
-/* c8 ignore stop */

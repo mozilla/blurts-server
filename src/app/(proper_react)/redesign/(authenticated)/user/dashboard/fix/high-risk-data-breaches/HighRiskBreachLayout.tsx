@@ -81,10 +81,7 @@ export const HighRiskBreachLayout = (props: HighRiskBreachLayoutProps) => {
     <ResolutionContainer
       type="highRisk"
       title={highRiskBreachContent.title}
-      illustration={{
-        alt: highRiskBreachContent.illustrationAlt,
-        img: highRiskBreachContent.breachIllustration,
-      }}
+      illustration={highRiskBreachContent.illustration}
       cta={cta}
       estimatedTime={hasBreaches ? 15 : undefined}
     >

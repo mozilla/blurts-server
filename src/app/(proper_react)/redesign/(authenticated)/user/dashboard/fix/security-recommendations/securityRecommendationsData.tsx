@@ -21,10 +21,7 @@ export type SecurityRecommendationTypes = "phone" | "email" | "ip";
 export type SecurityRecommendation = {
   type: SecurityRecommendationTypes;
   title: string;
-  illustration: {
-    img: string;
-    alt: string;
-  };
+  illustration: string;
   content: SecurityRecommendationContent;
 };
 
@@ -32,10 +29,7 @@ const securityRecommendationsData: SecurityRecommendation[] = [
   {
     type: "phone",
     title: "Protect your email address",
-    illustration: {
-      img: phoneIllustration,
-      alt: "",
-    },
+    illustration: phoneIllustration,
     content: {
       description: (
         <p>
@@ -64,10 +58,7 @@ const securityRecommendationsData: SecurityRecommendation[] = [
   {
     type: "email",
     title: "Protect your email address",
-    illustration: {
-      img: emailIllustration,
-      alt: "",
-    },
+    illustration: emailIllustration,
     content: {
       description: (
         <p>
@@ -99,10 +90,7 @@ const securityRecommendationsData: SecurityRecommendation[] = [
   {
     type: "ip",
     title: "Use a VPN for added privacy",
-    illustration: {
-      img: ipIllustration,
-      alt: "",
-    },
+    illustration: ipIllustration,
     content: {
       description: (
         <p>
