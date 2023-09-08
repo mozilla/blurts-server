@@ -41,6 +41,8 @@ const checkInId = Sentry.captureCheckIn({
   status: "in_progress",
 });
 
+// Only process this many messages before exiting.
+const maxMessages = 1000;
 const projectId = process.env.GCP_PUBSUB_PROJECT_ID;
 const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
 
@@ -54,32 +56,14 @@ const subscriptionName = process.env.GCP_PUBSUB_SUBSCRIPTION_NAME;
  *
  * More about how account identities are anonymized: https://blog.mozilla.org/security/2018/06/25/scanning-breached-accounts-k-anonymity/
  */
-async function poll() {
-  let options = {};
-  if (process.env.NODE_ENV === "development") {
-    console.debug("Dev mode, connecting to local pubsub emulator");
-    options = {
-      servicePath: "localhost",
-      port: "8085",
-      sslCreds: grpc.credentials.createInsecure()
-    }
-  }
-
-  const subClient = new pubsub.v1.SubscriberClient(options);
-
+export async function poll(subClient, receivedMessages) {
   const formattedSubscription = subClient.subscriptionPath(
     projectId,
     subscriptionName
   );
 
-  console.debug("polling pubsub...");
-  const [response] = await subClient.pull({
-    subscription: formattedSubscription,
-    maxMessages: 10,
-  });
-
-  // Process the messages.
-  for (const message of response.receivedMessages) {
+  // Process the messages. Skip any that cannot be processed, and do not mark as acknowledged.
+  for (const message of receivedMessages) {
     console.log(`Received message: ${message.message.data}`);
     const data = JSON.parse(message.message.data);
 
@@ -136,8 +120,6 @@ async function poll() {
         reason: `The following conditions were not satisfied: ${conditionLogIds}.`,
       });
 
-      console.info("Breach loaded into database. Subscribers not notified.");
-
       subClient.acknowledge({
         subscription: formattedSubscription,
         ackIds: [message.ackId],
@@ -188,7 +170,7 @@ async function poll() {
         if (!notifiedRecipients.includes(breachedEmail)) {
           const data = {
             breachData: breachAlert,
-            breachLogos: [], // FIXME
+            breachLogos: [], // FIXME this appears to be unused?
             breachedEmail,
             ctaHref: getEmailCtaHref(utmCampaignId, "dashboard-cta"),
             heading: getMessage("email-spotted-new-breach"),
@@ -219,27 +201,60 @@ async function poll() {
   }
 }
 
+async function pullMessages() {
+  let options = {};
+  if (process.env.NODE_ENV === "development") {
+    console.debug("Dev mode, connecting to local pubsub emulator");
+    options = {
+      servicePath: "localhost",
+      port: "8085",
+      sslCreds: grpc.credentials.createInsecure()
+    }
+  }
+
+  const subClient = new pubsub.v1.SubscriberClient(options);
+
+  const formattedSubscription = subClient.subscriptionPath(
+    projectId,
+    subscriptionName
+  );
+
+  // If there are no messages, this will wait until the default timeout for the pull API.
+  // @see https://cloud.google.com/pubsub/docs/pull
+  console.debug("polling pubsub...");
+  const [response] = await subClient.pull({
+    subscription: formattedSubscription,
+    maxMessages,
+  });
+
+  return [subClient, response.receivedMessages];
+}
+
 async function init() {
   await initFluentBundles();
   await initEmail();
-  await poll();
+
+  const [subClient, receivedMessages] = await pullMessages();
+  await poll(subClient, receivedMessages);
 }
 
-init()
-  .then(async (_res) => {
-    if (!(projectId && subscriptionName)) {
-      throw new Error("env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME")
-    }
-    Sentry.captureCheckIn({
-      checkInId,
-      monitorSlug: SENTRY_SLUG,
-      status: "ok",
+if (process.env.NODE_ENV !== "test") {
+  init()
+    .then(async (_res) => {
+      if (!(projectId && subscriptionName)) {
+        throw new Error("env vars not set: GCP_PUBSUB_PROJECT_ID and GCP_PUBSUB_SUBSCRIPTION_NAME")
+      }
+      Sentry.captureCheckIn({
+        checkInId,
+        monitorSlug: SENTRY_SLUG,
+        status: "ok",
+      });
+    })
+    .catch((err) => console.error(err))
+    .finally(async() => {
+      // Tear down knex connection pools
+      await knexSubscribers.destroy();
+      await knexEmailAddresses.destroy();
+      await knexHibp.destroy();
     });
-  })
-  .catch((err) => console.error(err))
-  .finally(async() => {
-    // Tear down knex connection pools
-    await knexSubscribers.destroy();
-    await knexEmailAddresses.destroy();
-    await knexHibp.destroy();
-  });
+}
