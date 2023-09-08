@@ -5,9 +5,9 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { SecurityRecommendationsLayout } from "../SecurityRecommendationsLayout";
-import securityRecommendations from "../securityRecommendationsContent";
 import { authOptions } from "../../../../../../../../api/utils/auth";
 import { getSubscriberBreaches } from "../../../../../../../../functions/server/getUserBreaches";
+import { getSecurityRecommendationsByType } from "../securityRecommendationsData";
 
 interface SecurityRecommendationsProps {
   params: {
@@ -27,9 +27,7 @@ export default async function SecurityRecommendations({
   const breaches = await getSubscriberBreaches(session.user);
 
   const { type } = params;
-  const pageData = securityRecommendations.find(
-    (content) => content.type === type
-  );
+  const pageData = getSecurityRecommendationsByType(type);
   if (!pageData) {
     redirect("/redesign/user/dashboard");
   }

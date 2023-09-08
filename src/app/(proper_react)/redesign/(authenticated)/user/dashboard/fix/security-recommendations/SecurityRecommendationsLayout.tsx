@@ -4,7 +4,7 @@
 
 "use client";
 
-import type { SecurityRecommendation } from "./securityRecommendationsContent";
+import type { SecurityRecommendation } from "./securityRecommendationsData";
 import { ResolutionContainer } from "../ResolutionContainer";
 import { ResolutionContent } from "../ResolutionContent";
 import { Button } from "../../../../../../../components/server/Button";
@@ -33,9 +33,10 @@ export function SecurityRecommendationsLayout({
         <Button
           variant="primary"
           small
+          // TODO: Add test once MNTOR-1700 logic is added
+          /* c8 ignore next 3 */
           onClick={() => {
-            // TODO: Go to next security recommendation or close “fix flow”
-            alert("Got it!");
+            // TODO: MNTOR-1700 Add routing logic
           }}
           autoFocus={true}
         >

@@ -16,8 +16,10 @@ export type SecurityRecommendationContent = {
   };
 };
 
+export type SecurityRecommendationTypes = "phone" | "email" | "ip";
+
 export type SecurityRecommendation = {
-  type: "phone" | "email" | "ip";
+  type: SecurityRecommendationTypes;
   title: string;
   illustration: {
     img: string;
@@ -26,7 +28,7 @@ export type SecurityRecommendation = {
   content: SecurityRecommendationContent;
 };
 
-const securityRecommendationsContent: SecurityRecommendation[] = [
+const securityRecommendationsData: SecurityRecommendation[] = [
   {
     type: "phone",
     title: "Protect your email address",
@@ -124,4 +126,10 @@ const securityRecommendationsContent: SecurityRecommendation[] = [
   },
 ];
 
-export default securityRecommendationsContent;
+function getSecurityRecommendationsByType(dataType: string) {
+  return securityRecommendationsData.find(
+    (content) => content.type === dataType
+  );
+}
+
+export { securityRecommendationsData, getSecurityRecommendationsByType };
