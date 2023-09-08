@@ -65,6 +65,9 @@ export const FixView = (props: FixViewProps) => {
   );
   const totalDataBrokerProfiles = props.userScannedResults.length;
   const totalPasswordBreaches = props.breaches.passwordBreaches.length;
+  const totalSecurityRecommendations = Object.values(
+    props.breaches.securityRecommendations
+  ).length;
 
   const navigationItemsContent = [
     {
@@ -95,7 +98,7 @@ export const FixView = (props: FixViewProps) => {
       key: "security-recommendations",
       labelStringId: "fix-flow-nav-security-recommendations",
       href: "/redesign/user/dashboard/fix/security-recommendations",
-      status: "#",
+      status: totalSecurityRecommendations,
       currentStepId: "securityRecommendations",
       imageId: stepSecurityRecommendationsIcon,
     },

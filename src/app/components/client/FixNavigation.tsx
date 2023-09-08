@@ -59,13 +59,6 @@ export const Steps = (props: {
 }) => {
   const l10n = useL10n();
 
-  const stepOrder = [
-    "/redesign/user/dashboard/fix/data-broker-profiles",
-    "/redesign/user/dashboard/fix/high-risk-data-breaches",
-    "/redesign/user/dashboard/fix/leaked-passwords",
-    "/redesign/user/dashboard/fix/security-recommendations",
-  ];
-
   function calculateActiveProgressBarPosition(pathname: string) {
     if (pathname === "/redesign/user/dashboard/fix/high-risk-data-breaches") {
       return styles.beginHighRiskDataBreaches;
@@ -103,6 +96,7 @@ export const Steps = (props: {
           >
             <div className={styles.stepIcon}>
               <Image src={imageId} alt="" width={22} height={22} />
+              {/* // TODO: Add logic to mark icon as checked when step is complete */}
               {/* <CheckIcon className={styles.checkIcon} alt="" width={22} height={22} />  */}
             </div>
 
