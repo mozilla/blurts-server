@@ -11,6 +11,7 @@ import { isFlagEnabled } from "../functions/server/featureFlags";
 import { getCountryCode } from "../functions/server/getCountryCode";
 import { headers } from "next/headers";
 import AppConstants from "../../appConstants";
+import { getNonce } from "./functions/server/getNonce";
 
 export default async function MigrationLayout({
   children,
@@ -41,8 +42,13 @@ export default async function MigrationLayout({
         src="/nextjs_migration/client/js/resizeObserver.js"
         rel="preload"
         crossOrigin="anonymous"
+        nonce={getNonce()}
       />
-      <Script type="module" src="/nextjs_migration/client/js/analytics.js" />
+      <Script
+        type="module"
+        src="/nextjs_migration/client/js/analytics.js"
+        nonce={getNonce()}
+      />
       {children}
       {falseDoorFlag &&
         waitlistLink &&

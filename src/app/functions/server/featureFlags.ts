@@ -14,6 +14,15 @@ export type FeatureFlagsEnabled = {
   FalseDoorTest: boolean;
 };
 
+// This function is specifically meant to not execute in tests:
+/* c8 ignore next 6 */
+const warn: typeof console.warn = (...args) => {
+  if (process.env.NODE_ENV === "test") {
+    return;
+  }
+  console.warn(...args);
+};
+
 export async function isFlagEnabled(
   name: keyof FeatureFlagsEnabled,
   user?: Session["user"]
@@ -23,7 +32,7 @@ export async function isFlagEnabled(
   // TODO: Add unit test when changing this code:
   /* c8 ignore next 4 */
   if (!data) {
-    console.warn("Feature flag does not exist:", name);
+    warn("Feature flag does not exist:", name);
     return false;
   }
 
@@ -40,17 +49,17 @@ export async function isFlagEnabled(
   };
 
   if (flag.deletedAt) {
-    console.warn("Flag has been deleted:", flag.name);
+    warn("Flag has been deleted:", flag.name);
     return false;
   }
 
   if (flag.expiredAt) {
-    console.warn("Flag has expired:", flag.name);
+    warn("Flag has expired:", flag.name);
     return false;
   }
 
   if (!flag.isEnabled) {
-    console.warn("Flag is not enabled:", flag.name);
+    warn("Flag is not enabled:", flag.name);
     return false;
   }
 
@@ -59,7 +68,7 @@ export async function isFlagEnabled(
   } else if (flag.allowList?.includes(user.email)) {
     return true;
   } else {
-    console.warn("User is not on the allow list for flag:", flag.name);
+    warn("User is not on the allow list for flag:", flag.name);
     return false;
   }
 }

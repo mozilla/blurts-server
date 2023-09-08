@@ -1,4 +1,5 @@
 exposure-landing-hero-heading = Find ud af, om dine personlige oplysninger er blevet kompromitteret.
+exposure-landing-hero-lead = Pas på dig selv med funktioner til beskyttelse af personlige oplysninger fra udviklerne af { -brand-firefox }. Funktionerne beskytter dig mod hackere og virksomheder, der udgiver og sælger dine personlige oplysninger. Vi advarer dig om alle kendte datalæk, finder og fjerner dine eksponerede data og tjekker konstant for nye eksponeringer.
 exposure-landing-hero-email-label = Mailadresse
 exposure-landing-hero-email-placeholder = Indtast en mailadresse
 exposure-landing-hero-cta-label = Undersøg for datalæk

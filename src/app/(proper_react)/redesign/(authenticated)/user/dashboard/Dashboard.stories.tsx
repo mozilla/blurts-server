@@ -32,6 +32,7 @@ const BreachMockItem1: SubscriberBreach = createRandomBreach({
     { "phone-numbers": 1 },
     { passwords: 1 },
   ],
+  isResolved: true,
 });
 
 const BreachMockItem2: SubscriberBreach = createRandomBreach({
@@ -41,6 +42,7 @@ const BreachMockItem2: SubscriberBreach = createRandomBreach({
     { "email-addresses": ["email1@gmail.com", "email2@gmail.com"] },
     { "ip-addresses": 1 },
   ],
+  isResolved: false,
 });
 
 const BreachMockItem3: SubscriberBreach = createRandomBreach({
@@ -61,9 +63,17 @@ const BreachMockItem4: SubscriberBreach = createRandomBreach({
   ],
 });
 
-const scannedResultsArraySample: ScanResult[] = Array.from(
+const scannedResultsArraySample: ScanResult[] = [
+  createRandomScan({ status: "removed" }),
+  createRandomScan({ status: "waiting_for_verification" }),
+  createRandomScan({ status: "optout_in_progress" }),
+  createRandomScan({ status: "new" }),
+  createRandomScan(),
+];
+
+const scannedResolvedResultsArraySample: ScanResult[] = Array.from(
   { length: 5 },
-  createRandomScan
+  () => createRandomScan({ status: "removed" })
 );
 
 const breachItemArraySample: SubscriberBreach[] = [
@@ -92,6 +102,7 @@ const dashboardSummaryNoScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
+    bankAccountNumbers: 0,
   },
   fixedExposures: {
     emailAddresses: 0,
@@ -105,6 +116,7 @@ const dashboardSummaryNoScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
+    bankAccountNumbers: 0,
   },
   sanitizedExposures: [
     { "email-addresses": 30 },
@@ -133,6 +145,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
     creditCardNumbers: 40,
     pins: 0,
     securityQuestions: 40,
+    bankAccountNumbers: 0,
   },
   sanitizedExposures: [
     { "physical-addresses": 90 },
@@ -153,6 +166,7 @@ const dashboardSummaryWithScan: DashboardSummary = {
     creditCardNumbers: 0,
     pins: 0,
     securityQuestions: 0,
+    bankAccountNumbers: 0,
   },
   fixedSanitizedExposures: [],
 };
@@ -269,6 +283,26 @@ export const DashboardFreeUser: Story = {
         user={{ email: "example@example.com" }}
         userBreaches={breachItemArraySample}
         userScannedResults={scannedResultsArraySample}
+        isEligibleForFreeScan={true}
+        locale={"en"}
+        bannerData={dashboardSummaryWithScan}
+        featureFlagsEnabled={{
+          FreeBrokerScan: true,
+          PremiumBrokerRemoval: true,
+        }}
+      />
+    </Shell>
+  ),
+};
+
+export const DashboardFreeUserAllResolved: Story = {
+  render: () => (
+    <Shell l10n={getEnL10nSync()} session={mockSession}>
+      <DashboardEl
+        countryCode="us"
+        user={{ email: "example@example.com" }}
+        userBreaches={[]}
+        userScannedResults={scannedResolvedResultsArraySample}
         isEligibleForFreeScan={true}
         locale={"en"}
         bannerData={dashboardSummaryWithScan}
