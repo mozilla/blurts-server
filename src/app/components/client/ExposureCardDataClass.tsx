@@ -5,13 +5,13 @@
 "use client";
 
 import { ReactElement } from "react";
+import { OnerepScanResultRow } from "knex/types/tables";
 import styles from "./ExposureCard.module.scss";
 import { SubscriberBreach } from "../../../utils/subscriberBreaches";
 import { useL10n } from "../../hooks/l10n";
-import { ScanResult } from "../../functions/server/onerep";
 
 type DataBrokerDataClassProps = {
-  scanResultData: ScanResult;
+  scanResultData: OnerepScanResultRow;
   exposureCategoryLabel: string;
   num: number;
   icon: ReactElement;

@@ -83,14 +83,7 @@ export async function POST(req: NextRequest) {
     // The webhook just tells us which scan ID finished, we need to fetch the payload.
     const scanListFull = await getAllScanResults(profileId);
     // Store full list of results in the DB.
-    await setOnerepScanResults(
-      profileId,
-      scanId,
-      {
-        data: scanListFull,
-      },
-      reason
-    );
+    await setOnerepScanResults(profileId, scanId, scanListFull, reason);
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (ex) {
